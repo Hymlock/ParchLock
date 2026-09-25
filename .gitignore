@@ -46,6 +46,10 @@ android/local.properties
 tools/screenshots/
 harness/screenshots/
 harness/shots-*/
+# tools/anchorhead-regression.js writes this one to the repo root on every run
+# (line 76, `path: 'anchorhead-after-fix.png'`), so it is regenerated output
+# rather than debris -- ignored so a test run never leaves the tree dirty.
+anchorhead-after-fix.png
 
 # ---- bus runtime state --------------------------------------------------
 # .ai-bus/bin and the config are tracked; the runtime directory is live
