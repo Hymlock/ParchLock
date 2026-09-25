@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "C:/Users/hymlo/Downloads/Projects/Parchmap-main/Parchmap-main/native-hooks/build/relwithdebinfo/CMakeFiles/pm_vm_probe_smoke.dir/embed.manifest"

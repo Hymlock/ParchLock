@@ -1,0 +1,1682 @@
+[
+  {
+    "story": "games/CounterfeitMonkey.gblorb.js",
+    "errors": [],
+    "skipTail": [
+      {
+        "i": 1,
+        "action": "yes"
+      },
+      {
+        "i": 2,
+        "action": "yes"
+      },
+      {
+        "i": 3,
+        "action": "space"
+      },
+      {
+        "i": 4,
+        "action": "yes"
+      },
+      {
+        "i": 5,
+        "action": "yes"
+      },
+      {
+        "i": 6,
+        "action": "yes"
+      },
+      {
+        "i": 7,
+        "action": "look"
+      },
+      {
+        "i": 8,
+        "action": "playable"
+      }
+    ],
+    "before": {
+      "playerAddr": 5524049,
+      "locAddr": 5524017,
+      "locName": "back alley",
+      "locDict": [
+        "back",
+        "alley",
+        "rooms"
+      ],
+      "locIK1_25": 3,
+      "locIK1_26": 0,
+      "locP334": 58,
+      "locKids": [
+        {
+          "id": 5522609,
+          "name": "sky",
+          "parentId": 5524017,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true,
+            "p143_marked_visible": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 5524113,
+          "name": "dull house-bac",
+          "parentId": 5524017,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true,
+            "p143_marked_visible": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 5524145,
+          "name": "yellow buildings",
+          "parentId": 5524017,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "pluralname": true,
+            "mark_as_thing": true,
+            "p143_marked_visible": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 5524177,
+          "name": "beige buildings",
+          "parentId": 5524017,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "pluralname": true,
+            "mark_as_thing": true,
+            "p143_marked_visible": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        }
+      ],
+      "inventory": [
+        {
+          "id": 5524081,
+          "name": "letter-re device device blunt-nos remover",
+          "parentId": 5524049,
+          "attrs": {
+            "moved": true,
+            "mark_as_thing": true,
+            "p143_marked_visible": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        }
+      ],
+      "payloadNow": {
+        "roomId": null,
+        "roomName": "",
+        "exits": 0,
+        "discovered": 0,
+        "inventory": 0,
+        "engineMode": "heuristic",
+        "sources": [
+          "heuristic",
+          "emglken-stub",
+          "text-gate",
+          "dark-scope",
+          "graphics-dock",
+          "live-heap-quixe",
+          "buffer-tap",
+          "z-ram",
+          "grammar-ram"
+        ]
+      },
+      "pid25": 25,
+      "pid26": 26,
+      "pid334": 334,
+      "roomCount": 106
+    },
+    "moved": {
+      "command": "north",
+      "locName": "sigil street",
+      "locAddr": 5523697
+    },
+    "hunt": {
+      "src": 5524017,
+      "dest": 5523697,
+      "moveCard": "north",
+      "oppCard": "south",
+      "srcIK1_25": 3,
+      "destIK1_25": 2,
+      "srcIK1_26": 0,
+      "destIK1_26": 0,
+      "srcP334": 58,
+      "destP334": 59,
+      "childIndex": {},
+      "destHits": 9,
+      "destHitSample": [
+        3575704,
+        3575740,
+        3575832,
+        3575836,
+        3575856,
+        3576108,
+        3643284,
+        3643416,
+        6072452
+      ],
+      "recipCount": 2,
+      "recip": [
+        {
+          "nDir": 12,
+          "scheme": "clock",
+          "key": "p334",
+          "zeroBased": true,
+          "sIdx": 58,
+          "dIdx": 59,
+          "slot": 0,
+          "opp": 4,
+          "base": 3640500,
+          "at": 3643284,
+          "recip": true,
+          "score": 44,
+          "srcFilled": [
+            {
+              "i": 0,
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "DEST"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 4,
+              "w": 5524017,
+              "kind": "SRC",
+              "name": "SRC"
+            },
+            {
+              "i": 7,
+              "w": 5523505,
+              "kind": "obj",
+              "name": "obj:ampersand bend"
+            }
+          ]
+        },
+        {
+          "nDir": 12,
+          "scheme": "clock",
+          "key": "p334",
+          "zeroBased": false,
+          "sIdx": 57,
+          "dIdx": 58,
+          "slot": 0,
+          "opp": 4,
+          "base": 3640548,
+          "at": 3643284,
+          "recip": true,
+          "score": 44,
+          "srcFilled": [
+            {
+              "i": 0,
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "DEST"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 4,
+              "w": 5524017,
+              "kind": "SRC",
+              "name": "SRC"
+            },
+            {
+              "i": 7,
+              "w": 5523505,
+              "kind": "obj",
+              "name": "obj:ampersand bend"
+            }
+          ]
+        }
+      ],
+      "best": [
+        {
+          "nDir": 12,
+          "scheme": "clock",
+          "key": "p334",
+          "zeroBased": true,
+          "sIdx": 58,
+          "dIdx": 59,
+          "slot": 0,
+          "opp": 4,
+          "base": 3640500,
+          "at": 3643284,
+          "recip": true,
+          "score": 44,
+          "srcFilled": [
+            {
+              "i": 0,
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "DEST"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 4,
+              "w": 5524017,
+              "kind": "SRC",
+              "name": "SRC"
+            },
+            {
+              "i": 7,
+              "w": 5523505,
+              "kind": "obj",
+              "name": "obj:ampersand bend"
+            }
+          ]
+        },
+        {
+          "nDir": 12,
+          "scheme": "clock",
+          "key": "p334",
+          "zeroBased": false,
+          "sIdx": 57,
+          "dIdx": 58,
+          "slot": 0,
+          "opp": 4,
+          "base": 3640548,
+          "at": 3643284,
+          "recip": true,
+          "score": 44,
+          "srcFilled": [
+            {
+              "i": 0,
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "DEST"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 4,
+              "w": 5524017,
+              "kind": "SRC",
+              "name": "SRC"
+            },
+            {
+              "i": 7,
+              "w": 5523505,
+              "kind": "obj",
+              "name": "obj:ampersand bend"
+            }
+          ]
+        },
+        {
+          "nDir": 12,
+          "scheme": "clock",
+          "key": "IK1_26",
+          "zeroBased": true,
+          "sIdx": 0,
+          "dIdx": 0,
+          "slot": 0,
+          "opp": 4,
+          "base": 3643284,
+          "at": 3643284,
+          "recip": false,
+          "score": 4,
+          "srcFilled": [
+            {
+              "i": 0,
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "DEST"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 0,
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "DEST"
+            }
+          ]
+        },
+        {
+          "nDir": 12,
+          "scheme": "clock",
+          "key": "IK1_26",
+          "zeroBased": true,
+          "sIdx": 0,
+          "dIdx": 0,
+          "slot": 0,
+          "opp": 4,
+          "base": 3643416,
+          "at": 3643416,
+          "recip": false,
+          "score": 4,
+          "srcFilled": [
+            {
+              "i": 0,
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "DEST"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 0,
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "DEST"
+            }
+          ]
+        },
+        {
+          "nDir": 20,
+          "scheme": "clock",
+          "key": "IK1_26",
+          "zeroBased": true,
+          "sIdx": 0,
+          "dIdx": 0,
+          "slot": 0,
+          "opp": 4,
+          "base": 3643284,
+          "at": 3643284,
+          "recip": false,
+          "score": 4,
+          "srcFilled": [
+            {
+              "i": 0,
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "DEST"
+            },
+            {
+              "i": 16,
+              "w": 5524017,
+              "kind": "SRC",
+              "name": "SRC"
+            },
+            {
+              "i": 19,
+              "w": 5523505,
+              "kind": "obj",
+              "name": "obj:ampersand bend"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 0,
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "DEST"
+            },
+            {
+              "i": 16,
+              "w": 5524017,
+              "kind": "SRC",
+              "name": "SRC"
+            },
+            {
+              "i": 19,
+              "w": 5523505,
+              "kind": "obj",
+              "name": "obj:ampersand bend"
+            }
+          ]
+        },
+        {
+          "nDir": 12,
+          "scheme": "clock",
+          "key": "IK1_25",
+          "zeroBased": true,
+          "sIdx": 3,
+          "dIdx": 2,
+          "slot": 0,
+          "opp": 4,
+          "base": 3643140,
+          "at": 3643284,
+          "recip": false,
+          "score": 3,
+          "srcFilled": [
+            {
+              "i": 0,
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "DEST"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 5,
+              "w": 5523313,
+              "kind": "obj",
+              "name": "obj:temporary barrier"
+            }
+          ]
+        },
+        {
+          "nDir": 12,
+          "scheme": "clock",
+          "key": "IK1_25",
+          "zeroBased": true,
+          "sIdx": 3,
+          "dIdx": 2,
+          "slot": 0,
+          "opp": 4,
+          "base": 3643272,
+          "at": 3643416,
+          "recip": false,
+          "score": 3,
+          "srcFilled": [
+            {
+              "i": 0,
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "DEST"
+            }
+          ],
+          "destFilled": []
+        },
+        {
+          "nDir": 12,
+          "scheme": "clock",
+          "key": "IK1_25",
+          "zeroBased": false,
+          "sIdx": 2,
+          "dIdx": 1,
+          "slot": 0,
+          "opp": 4,
+          "base": 3643188,
+          "at": 3643284,
+          "recip": false,
+          "score": 3,
+          "srcFilled": [
+            {
+              "i": 0,
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "DEST"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 5,
+              "w": 5523313,
+              "kind": "obj",
+              "name": "obj:temporary barrier"
+            }
+          ]
+        }
+      ]
+    },
+    "draft": {
+      "sources": [
+        {
+          "name": "glulx-ram",
+          "confidence": 0.95
+        }
+      ],
+      "engineMode": "structural",
+      "vmType": "glulx",
+      "roomId": 5523697,
+      "roomName": "sigil street",
+      "discoveredObjects": [
+        {
+          "id": 5522609,
+          "name": "sky",
+          "parentId": 5523697,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true,
+            "p143_marked_visible": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 5523729,
+          "name": "elderly apartment",
+          "parentId": 5523697,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "pluralname": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 5523761,
+          "name": "reflectiv window windows glass reflectio",
+          "parentId": 5523697,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 5523793,
+          "name": "alleyway alley narrow",
+          "parentId": 5523697,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 5523825,
+          "name": "clothing shops store shops stores boutique boutiques shop store stores boutique",
+          "parentId": 5523697,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "pluralname": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 5523857,
+          "name": "typograph office sign display poster typograph font fonts comma commas punctuati",
+          "parentId": 5523697,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        }
+      ],
+      "inventory": [
+        {
+          "id": 5524081,
+          "name": "letter-re device device blunt-nos remover",
+          "parentId": 5524049,
+          "attrs": {
+            "moved": true,
+            "mark_as_thing": true,
+            "p143_marked_visible": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        }
+      ],
+      "exits": [
+        {
+          "label": "south",
+          "prop": 4,
+          "targetRoomId": 5524017,
+          "targetRoomName": "",
+          "isDoor": false,
+          "isLocked": false,
+          "isNonCardinal": false,
+          "hinted": false,
+          "confidence": 0.85
+        }
+      ],
+      "probe": {
+        "status": "glulx-ram-research",
+        "playerId": 5524049,
+        "roomId": 5523697,
+        "scopeCount": 6,
+        "exitFormula": {
+          "nDir": 12,
+          "scheme": "clock",
+          "key": "p334",
+          "zeroBased": true,
+          "base": 3640500
+        }
+      }
+    },
+    "openTrial": null
+  },
+  {
+    "story": "games/CosmoServe.gblorb.js",
+    "errors": [],
+    "skipTail": [
+      {
+        "i": 32,
+        "action": "space"
+      },
+      {
+        "i": 33,
+        "action": "space"
+      },
+      {
+        "i": 34,
+        "action": "space"
+      },
+      {
+        "i": 35,
+        "action": "space"
+      },
+      {
+        "i": 36,
+        "action": "space"
+      },
+      {
+        "i": 37,
+        "action": "space"
+      },
+      {
+        "i": 38,
+        "action": "space"
+      },
+      {
+        "i": 39,
+        "action": "space"
+      }
+    ],
+    "before": {
+      "playerAddr": 1226899,
+      "locAddr": 1227091,
+      "locName": "my office",
+      "locDict": [
+        "my",
+        "office",
+        "rooms"
+      ],
+      "locIK1_25": 0,
+      "locIK1_26": 0,
+      "locP334": 0,
+      "locKids": [
+        {
+          "id": 1229075,
+          "name": "hint",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227187,
+          "name": "my couch",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "supporter": true,
+            "transparent": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227219,
+          "name": "wooden chair",
+          "parentId": 1227091,
+          "attrs": {
+            "enterable": true,
+            "scenery": true,
+            "static": true,
+            "supporter": true,
+            "transparent": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227251,
+          "name": "messy stack pile paper papers stuff paperwork seat desk junk",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227283,
+          "name": "turborf pascal code",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true,
+            "p81_readable": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227315,
+          "name": "important letters",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true,
+            "p81_readable": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227347,
+          "name": "crumpled letter",
+          "parentId": 1227091,
+          "attrs": {
+            "concealed": true,
+            "mark_as_thing": true,
+            "p81_readable": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227379,
+          "name": "overdue bills",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true,
+            "p81_readable": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227411,
+          "name": "important bill",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true,
+            "p81_readable": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227443,
+          "name": "business card",
+          "parentId": 1227091,
+          "attrs": {
+            "static": true,
+            "mark_as_thing": true,
+            "p81_readable": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227475,
+          "name": "786sx computer case",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "switchable": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227507,
+          "name": "five screws",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227539,
+          "name": "swirling threads",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227571,
+          "name": "strands of golden thread gold",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227603,
+          "name": "tiny lights",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227635,
+          "name": "flickers",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227667,
+          "name": "fireworks",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        }
+      ],
+      "inventory": [
+        {
+          "id": 1226931,
+          "name": "comfy clothes jeans shirt t-shirt clothing",
+          "parentId": 1226899,
+          "attrs": {
+            "clothing": true,
+            "moved": true,
+            "worn": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1226963,
+          "name": "twenty dollars",
+          "parentId": 1226899,
+          "attrs": {
+            "moved": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        }
+      ],
+      "payloadNow": {
+        "roomId": null,
+        "roomName": "",
+        "exits": 0,
+        "discovered": 0,
+        "inventory": 0,
+        "engineMode": "heuristic",
+        "sources": [
+          "heuristic",
+          "emglken-stub",
+          "text-gate",
+          "dark-scope",
+          "graphics-dock",
+          "live-heap-quixe",
+          "buffer-tap",
+          "z-ram",
+          "grammar-ram"
+        ]
+      },
+      "pid25": 25,
+      "pid26": 26,
+      "pid334": 334,
+      "roomCount": 124
+    },
+    "moved": null,
+    "hunt": null,
+    "draft": {
+      "sources": [
+        {
+          "name": "glulx-ram",
+          "confidence": 0.95
+        }
+      ],
+      "engineMode": "structural",
+      "vmType": "glulx",
+      "roomId": 1227091,
+      "roomName": "my office",
+      "discoveredObjects": [
+        {
+          "id": 1229075,
+          "name": "hint",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227187,
+          "name": "my couch",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "supporter": true,
+            "transparent": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227219,
+          "name": "wooden chair",
+          "parentId": 1227091,
+          "attrs": {
+            "enterable": true,
+            "scenery": true,
+            "static": true,
+            "supporter": true,
+            "transparent": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227251,
+          "name": "messy stack pile paper papers stuff paperwork seat desk junk",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227283,
+          "name": "turborf pascal code",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true,
+            "p81_readable": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227315,
+          "name": "important letters",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true,
+            "p81_readable": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227347,
+          "name": "crumpled letter",
+          "parentId": 1227091,
+          "attrs": {
+            "concealed": true,
+            "mark_as_thing": true,
+            "p81_readable": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227379,
+          "name": "overdue bills",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true,
+            "p81_readable": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227411,
+          "name": "important bill",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "mark_as_thing": true,
+            "p81_readable": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227443,
+          "name": "business card",
+          "parentId": 1227091,
+          "attrs": {
+            "static": true,
+            "mark_as_thing": true,
+            "p81_readable": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227475,
+          "name": "786sx computer case",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "switchable": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227507,
+          "name": "five screws",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227539,
+          "name": "swirling threads",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227571,
+          "name": "strands of golden thread gold",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227603,
+          "name": "tiny lights",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227635,
+          "name": "flickers",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1227667,
+          "name": "fireworks",
+          "parentId": 1227091,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        }
+      ],
+      "inventory": [
+        {
+          "id": 1226931,
+          "name": "comfy clothes jeans shirt t-shirt clothing",
+          "parentId": 1226899,
+          "attrs": {
+            "clothing": true,
+            "moved": true,
+            "worn": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1226963,
+          "name": "twenty dollars",
+          "parentId": 1226899,
+          "attrs": {
+            "moved": true,
+            "proper": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        }
+      ],
+      "exits": [],
+      "probe": {
+        "status": "glulx-ram-research",
+        "playerId": 1226899,
+        "roomId": 1227091,
+        "scopeCount": 17,
+        "exitFormula": null
+      }
+    },
+    "openTrial": null
+  },
+  {
+    "story": "games/Alabaster.gblorb.js",
+    "errors": [],
+    "skipTail": [
+      {
+        "i": 0,
+        "action": "yes"
+      },
+      {
+        "i": 1,
+        "action": "space"
+      },
+      {
+        "i": 2,
+        "action": "space"
+      },
+      {
+        "i": 3,
+        "action": "playable"
+      }
+    ],
+    "before": {
+      "playerAddr": 1276730,
+      "locAddr": 1294202,
+      "locName": "dark woods",
+      "locDict": [
+        "dark",
+        "woods"
+      ],
+      "locIK1_25": 0,
+      "locIK1_26": 0,
+      "locP334": 0,
+      "locKids": [
+        {
+          "id": 1294234,
+          "name": "snow white her princess girl",
+          "parentId": 1294202,
+          "attrs": {
+            "animate": true,
+            "transparent": true,
+            "female": true,
+            "proper": true,
+            "mentioned": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1294298,
+          "name": "sky stars star starlight moon moonlight sun sunlight clouds haze cloud",
+          "parentId": 1294202,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "neuter": true,
+            "mentioned": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1294330,
+          "name": "roots root",
+          "parentId": 1294202,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "neuter": true,
+            "pluralname": true,
+            "mentioned": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1294362,
+          "name": "trees woods tree forest woods wood foliage leaves leaf branch branches shadows",
+          "parentId": 1294202,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "neuter": true,
+            "pluralname": true,
+            "mentioned": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1294394,
+          "name": "undergrow bush bushes shrubbery plant plants",
+          "parentId": 1294202,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "neuter": true,
+            "mentioned": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1294426,
+          "name": "aspen aspen trunk trunks",
+          "parentId": 1294202,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "neuter": true,
+            "mentioned": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1294458,
+          "name": "pine pines",
+          "parentId": 1294202,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "neuter": true,
+            "mentioned": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1294522,
+          "name": "corpse hart decomposi dead deer body beast stag noble",
+          "parentId": 1294202,
+          "attrs": {
+            "animate": true,
+            "transparent": true,
+            "mentioned": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        }
+      ],
+      "inventory": [
+        {
+          "id": 1276762,
+          "name": "dagger knife blade hilt",
+          "parentId": 1276730,
+          "attrs": {
+            "moved": true,
+            "neuter": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1276794,
+          "name": "lantern oil battered old lamp",
+          "parentId": 1276730,
+          "attrs": {
+            "light": true,
+            "moved": true,
+            "neuter": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1276826,
+          "name": "heart-siz box ornamente wood wooden",
+          "parentId": 1276730,
+          "attrs": {
+            "container": true,
+            "moved": true,
+            "openable": true,
+            "neuter": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        }
+      ],
+      "payloadNow": {
+        "roomId": null,
+        "roomName": "",
+        "exits": 0,
+        "discovered": 0,
+        "inventory": 0,
+        "engineMode": "heuristic",
+        "sources": [
+          "heuristic",
+          "emglken-stub",
+          "text-gate",
+          "dark-scope",
+          "graphics-dock",
+          "live-heap-quixe",
+          "buffer-tap",
+          "z-ram",
+          "grammar-ram"
+        ]
+      },
+      "pid25": 25,
+      "pid26": 26,
+      "pid334": 334,
+      "roomCount": 2
+    },
+    "moved": null,
+    "hunt": null,
+    "draft": {
+      "sources": [
+        {
+          "name": "glulx-ram",
+          "confidence": 0.95
+        }
+      ],
+      "engineMode": "structural",
+      "vmType": "glulx",
+      "roomId": 1294202,
+      "roomName": "dark woods",
+      "discoveredObjects": [
+        {
+          "id": 1294234,
+          "name": "snow white her princess girl",
+          "parentId": 1294202,
+          "attrs": {
+            "animate": true,
+            "transparent": true,
+            "female": true,
+            "proper": true,
+            "mentioned": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1294298,
+          "name": "sky stars star starlight moon moonlight sun sunlight clouds haze cloud",
+          "parentId": 1294202,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "neuter": true,
+            "mentioned": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1294330,
+          "name": "roots root",
+          "parentId": 1294202,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "neuter": true,
+            "pluralname": true,
+            "mentioned": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1294362,
+          "name": "trees woods tree forest woods wood foliage leaves leaf branch branches shadows",
+          "parentId": 1294202,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "neuter": true,
+            "pluralname": true,
+            "mentioned": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1294394,
+          "name": "undergrow bush bushes shrubbery plant plants",
+          "parentId": 1294202,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "neuter": true,
+            "mentioned": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1294426,
+          "name": "aspen aspen trunk trunks",
+          "parentId": 1294202,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "neuter": true,
+            "mentioned": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1294458,
+          "name": "pine pines",
+          "parentId": 1294202,
+          "attrs": {
+            "scenery": true,
+            "static": true,
+            "neuter": true,
+            "mentioned": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1294522,
+          "name": "corpse hart decomposi dead deer body beast stag noble",
+          "parentId": 1294202,
+          "attrs": {
+            "animate": true,
+            "transparent": true,
+            "mentioned": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        }
+      ],
+      "inventory": [
+        {
+          "id": 1276762,
+          "name": "dagger knife blade hilt",
+          "parentId": 1276730,
+          "attrs": {
+            "moved": true,
+            "neuter": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1276794,
+          "name": "lantern oil battered old lamp",
+          "parentId": 1276730,
+          "attrs": {
+            "light": true,
+            "moved": true,
+            "neuter": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        },
+        {
+          "id": 1276826,
+          "name": "heart-siz box ornamente wood wooden",
+          "parentId": 1276730,
+          "attrs": {
+            "container": true,
+            "moved": true,
+            "openable": true,
+            "neuter": true,
+            "mark_as_thing": true
+          },
+          "confidence": 0.85,
+          "discovered": true
+        }
+      ],
+      "exits": [],
+      "probe": {
+        "status": "glulx-ram-research",
+        "playerId": 1276730,
+        "roomId": 1294202,
+        "scopeCount": 8,
+        "exitFormula": null
+      }
+    },
+    "openTrial": {
+      "command": "open heart-siz",
+      "addr": 1276826,
+      "name": "heart-siz box ornamente wood wooden",
+      "dict": [
+        "heart-siz",
+        "box",
+        "ornamente",
+        "wood"
+      ],
+      "lsbBefore": [
+        "container",
+        "moved",
+        "openable",
+        "neuter",
+        "mark_as_thing"
+      ],
+      "beforeBytes": [
+        16,
+        72,
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      "afterBytes": [
+        16,
+        104,
+        0,
+        66,
+        2,
+        0,
+        0
+      ],
+      "bytesChanged": true,
+      "look": "s stiff on its hinges, but you get it open with a little effort.\n \nShe angles her head so that she can watch you without seeming to. It isn't as stealthy as she might have hoped.\n \nYou can say that the safe haven is too far away to reach tonight, explain that you must stop here to collect the hart's heart, or ask where the safe haven is.\n \n>  \nMore"
+    }
+  }
+]

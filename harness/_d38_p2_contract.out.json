@@ -1,0 +1,5780 @@
+[
+  {
+    "story": "games/CounterfeitMonkey.gblorb.js",
+    "errors": [],
+    "skipTail": [
+      {
+        "i": 0,
+        "action": "yes"
+      },
+      {
+        "i": 1,
+        "action": "yes"
+      },
+      {
+        "i": 2,
+        "action": "yes"
+      },
+      {
+        "i": 3,
+        "action": "space"
+      },
+      {
+        "i": 4,
+        "action": "yes"
+      },
+      {
+        "i": 5,
+        "action": "yes"
+      },
+      {
+        "i": 6,
+        "action": "yes"
+      },
+      {
+        "i": 7,
+        "action": "look"
+      },
+      {
+        "i": 8,
+        "action": "playable"
+      }
+    ],
+    "before": {
+      "playerAddr": 5524049,
+      "locAddr": 5524017,
+      "locMeta": {
+        "addr": 5524017,
+        "dict": [
+          "back",
+          "alley",
+          "rooms"
+        ],
+        "name": "back alley rooms",
+        "kinds": [
+          "K1_room",
+          "K0_kind"
+        ],
+        "KD_Count": 3,
+        "IK1_Count": 0,
+        "IK1_link": 0,
+        "room_index": 5312109,
+        "local_map": 58,
+        "in_dir": 0,
+        "out_dir": 0,
+        "hash": 16780311
+      },
+      "locKids": [
+        {
+          "addr": 5522609,
+          "name": "sky backdrops",
+          "dict": [
+            "sky",
+            "backdrops"
+          ],
+          "kinds": [
+            "K7_backdrop",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing",
+            "p143_marked_visible"
+          ],
+          "parent": 5524017
+        },
+        {
+          "addr": 5524113,
+          "name": "dull house-bac facades",
+          "dict": [
+            "dull",
+            "house-bac",
+            "facades"
+          ],
+          "kinds": [
+            "K32_facade",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing",
+            "p143_marked_visible"
+          ],
+          "parent": 5524017
+        },
+        {
+          "addr": 5524145,
+          "name": "yellow buildings facades",
+          "dict": [
+            "yellow",
+            "buildings",
+            "facades"
+          ],
+          "kinds": [
+            "K32_facade",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "pluralname",
+            "mark_as_thing",
+            "p143_marked_visible"
+          ],
+          "parent": 5524017
+        },
+        {
+          "addr": 5524177,
+          "name": "beige buildings facades",
+          "dict": [
+            "beige",
+            "buildings",
+            "facades"
+          ],
+          "kinds": [
+            "K32_facade",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "pluralname",
+            "mark_as_thing",
+            "p143_marked_visible"
+          ],
+          "parent": 5524017
+        }
+      ],
+      "inventory": [
+        {
+          "addr": 5524081,
+          "name": "letter-re device things device blunt-nos remover",
+          "dict": [
+            "letter-re",
+            "device",
+            "things",
+            "device",
+            "blunt-nos",
+            "remover"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "moved",
+            "mark_as_thing",
+            "p143_marked_visible"
+          ]
+        }
+      ],
+      "dirs": [
+        {
+          "card": "north",
+          "dict": [
+            "north",
+            "direction",
+            "n"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5270325,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2055004
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5270325
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                1
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "northeast",
+          "dict": [
+            "northeast",
+            "direction",
+            "ne"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5270365,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2055306
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5270365
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                1
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "northwest",
+          "dict": [
+            "northwest",
+            "direction",
+            "nw"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5270405,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2055608
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5270405
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                1
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "south",
+          "dict": [
+            "south",
+            "direction",
+            "s"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5270445,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2055910
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5270445
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                1
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "southeast",
+          "dict": [
+            "southeast",
+            "direction",
+            "se"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5270485,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2056212
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5270485
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                1
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "southwest",
+          "dict": [
+            "southwest",
+            "direction",
+            "sw"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5270525,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2056514
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5270525
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                1
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "east",
+          "dict": [
+            "east",
+            "direction",
+            "e"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5270565,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2056816
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5270565
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                1
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "west",
+          "dict": [
+            "west",
+            "direction",
+            "w"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5270605,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2057118
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5270605
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                1
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "up",
+          "dict": [
+            "up",
+            "direction",
+            "u"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5270645,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2057420
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5270645
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                0
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "down",
+          "dict": [
+            "down",
+            "direction",
+            "d"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5270685,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2057722
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5270685
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                0
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "in",
+          "dict": [
+            "inside",
+            "direction",
+            "in"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5270725,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2058024
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5270725
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                0
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "out",
+          "dict": [
+            "outside",
+            "direction",
+            "out"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5270765,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2058326
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5270765
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                0
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "starboard",
+          "dict": [
+            "starboard",
+            "direction"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5368741,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2234669
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5368741
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                0
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "port",
+          "dict": [
+            "port",
+            "direction"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5368781,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2235022
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5368781
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                0
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "fore",
+          "dict": [
+            "fore",
+            "direction"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5368829,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2235375
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5368829
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                0
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "aft",
+          "dict": [
+            "aft",
+            "direction"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5368877,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2235728
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5368877
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                0
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "aft-port",
+          "dict": [
+            "aft-port",
+            "direction"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5368925,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2236132
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5368925
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                0
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "aft-starb",
+          "dict": [
+            "aft-starb",
+            "direction"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5368965,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2236536
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5368965
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                0
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "fore-port",
+          "dict": [
+            "fore-port",
+            "direction"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5369005,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2236991
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5369005
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                0
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "fore-star",
+          "dict": [
+            "fore-star",
+            "direction"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 5369045,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                2237395
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                5369045
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 309,
+              "name": "p271_earthbound_directional",
+              "len": 1,
+              "words": [
+                0
+              ]
+            },
+            {
+              "id": 340,
+              "name": "action_bitmap",
+              "len": 16,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "dumpsterHits": [
+        {
+          "addr": 5516721,
+          "dict": [
+            "how",
+            "to",
+            "unlock",
+            "the",
+            "lockers",
+            "quips"
+          ],
+          "kinds": [
+            "K21_quip",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "parent": 5514193,
+          "parentIsLoc": false,
+          "found_in": [
+            5285813
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "proper",
+            "mark_as_thing",
+            "p155_one_time",
+            "p159_player_directed",
+            "p172_shallowly_buried"
+          ],
+          "name": "how to unlock the lockers quips"
+        },
+        {
+          "addr": 5527409,
+          "dict": [
+            "box",
+            "of",
+            "tampons",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "parent": 5527121,
+          "parentIsLoc": false,
+          "found_in": [
+            5321693
+          ],
+          "lsb": [
+            "mark_as_thing"
+          ],
+          "name": "box of tampons things"
+        },
+        {
+          "addr": 5527473,
+          "dict": [
+            "locker",
+            "container",
+            "lockers"
+          ],
+          "kinds": [
+            "K5_container",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "parent": 5526897,
+          "parentIsLoc": false,
+          "found_in": [
+            5321869
+          ],
+          "lsb": [
+            "container",
+            "openable",
+            "static",
+            "mark_as_thing"
+          ],
+          "name": "locker lockers"
+        },
+        {
+          "addr": 5530673,
+          "dict": [
+            "contraban",
+            "box",
+            "container"
+          ],
+          "kinds": [
+            "K5_container",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "parent": 0,
+          "parentIsLoc": false,
+          "found_in": [
+            5330573
+          ],
+          "lsb": [
+            "container",
+            "open",
+            "mark_as_thing"
+          ],
+          "name": "contraban box"
+        },
+        {
+          "addr": 5534289,
+          "dict": [
+            "kitchen",
+            "cabinet",
+            "cabinets",
+            "cupboard",
+            "cupboards",
+            "cabinets"
+          ],
+          "kinds": [
+            "K55_kitchen_cabinet",
+            "K45_cabinet",
+            "K5_container"
+          ],
+          "parent": 5534257,
+          "parentIsLoc": false,
+          "found_in": [
+            5341053
+          ],
+          "lsb": [
+            "container",
+            "openable",
+            "scenery",
+            "static",
+            "mark_as_thing"
+          ],
+          "name": "kitchen cabinets cupboard cupboards cabinets"
+        },
+        {
+          "addr": 5534769,
+          "dict": [
+            "bathroom",
+            "cabinet",
+            "cabinets",
+            "cupboard",
+            "cupboards",
+            "cabinets"
+          ],
+          "kinds": [
+            "K59_bathroom_cabinet",
+            "K45_cabinet",
+            "K5_container"
+          ],
+          "parent": 5534641,
+          "parentIsLoc": false,
+          "found_in": [
+            5342357
+          ],
+          "lsb": [
+            "container",
+            "openable",
+            "scenery",
+            "static",
+            "mark_as_thing"
+          ],
+          "name": "bathroom cabinets cupboard cupboards cabinets"
+        },
+        {
+          "addr": 5535057,
+          "dict": [
+            "drawer",
+            "drawers",
+            "drawer"
+          ],
+          "kinds": [
+            "K43_drawer",
+            "K5_container",
+            "K2_thing"
+          ],
+          "parent": 0,
+          "parentIsLoc": false,
+          "found_in": [
+            5343149
+          ],
+          "lsb": [
+            "container",
+            "openable",
+            "mark_as_thing"
+          ],
+          "name": "drawers"
+        },
+        {
+          "addr": 5535089,
+          "dict": [
+            "drawer",
+            "drawers",
+            "drawer"
+          ],
+          "kinds": [
+            "K43_drawer",
+            "K5_container",
+            "K2_thing"
+          ],
+          "parent": 0,
+          "parentIsLoc": false,
+          "found_in": [
+            5343237
+          ],
+          "lsb": [
+            "container",
+            "openable",
+            "mark_as_thing"
+          ],
+          "name": "drawers"
+        },
+        {
+          "addr": 5536305,
+          "dict": [
+            "mailboxes",
+            "container",
+            "mailbox"
+          ],
+          "kinds": [
+            "K5_container",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "parent": 5536273,
+          "parentIsLoc": false,
+          "found_in": [
+            5346525
+          ],
+          "lsb": [
+            "container",
+            "open",
+            "scenery",
+            "static",
+            "pluralname",
+            "mark_as_thing"
+          ],
+          "name": "mailboxes mailbox"
+        },
+        {
+          "addr": 5537009,
+          "dict": [
+            "complete",
+            "lojban",
+            "books",
+            "ugly",
+            "yellow",
+            "binding"
+          ],
+          "kinds": [
+            "K73_book",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "parent": 5536977,
+          "parentIsLoc": false,
+          "found_in": [
+            5348573
+          ],
+          "lsb": [
+            "mark_as_thing"
+          ],
+          "name": "complete lojban books ugly yellow binding notes"
+        },
+        {
+          "addr": 5538577,
+          "dict": [
+            "electrica",
+            "equipment",
+            "things",
+            "mare's",
+            "nest",
+            "metal"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "parent": 5538545,
+          "parentIsLoc": false,
+          "found_in": [
+            5352925
+          ],
+          "lsb": [
+            "static",
+            "mark_as_thing"
+          ],
+          "name": "electrica equipment things mare's nest metal digital readouts boxes wires readout box wire series"
+        },
+        {
+          "addr": 5540337,
+          "dict": [
+            "bin",
+            "container"
+          ],
+          "kinds": [
+            "K5_container",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "parent": 5540209,
+          "parentIsLoc": false,
+          "found_in": [
+            5357709
+          ],
+          "lsb": [
+            "container",
+            "open",
+            "mark_as_thing"
+          ],
+          "name": "bin"
+        }
+      ],
+      "openableHits": [],
+      "draft": {
+        "sources": [
+          {
+            "name": "glulx-ram",
+            "confidence": 0.95
+          }
+        ],
+        "engineMode": "structural",
+        "vmType": "glulx",
+        "roomId": 5524017,
+        "roomName": "back alley rooms",
+        "discoveredObjects": [
+          {
+            "id": 5522609,
+            "name": "sky backdrops",
+            "parentId": 5524017,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true,
+              "p143_marked_visible": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 5524113,
+            "name": "dull house-bac facades",
+            "parentId": 5524017,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true,
+              "p143_marked_visible": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 5524145,
+            "name": "yellow buildings facades",
+            "parentId": 5524017,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "pluralname": true,
+              "mark_as_thing": true,
+              "p143_marked_visible": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 5524177,
+            "name": "beige buildings facades",
+            "parentId": 5524017,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "pluralname": true,
+              "mark_as_thing": true,
+              "p143_marked_visible": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          }
+        ],
+        "inventory": [
+          {
+            "id": 5524081,
+            "name": "letter-re device things device blunt-nos remover",
+            "parentId": 5524049,
+            "attrs": {
+              "moved": true,
+              "mark_as_thing": true,
+              "p143_marked_visible": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          }
+        ],
+        "exits": [],
+        "probe": {
+          "status": "glulx-ram-research",
+          "playerId": 5524049,
+          "roomId": 5524017,
+          "scopeCount": 4
+        }
+      },
+      "payloadNow": {
+        "roomId": null,
+        "roomName": "",
+        "exits": 0,
+        "discovered": 0,
+        "inventory": 0,
+        "engineMode": "heuristic",
+        "sources": [
+          "heuristic",
+          "emglken-stub",
+          "text-gate",
+          "dark-scope",
+          "graphics-dock",
+          "live-heap-quixe",
+          "buffer-tap",
+          "z-ram",
+          "grammar-ram"
+        ]
+      },
+      "k1Props": [
+        {
+          "id": 2,
+          "name": "name",
+          "words": [
+            5505745,
+            5505713
+          ]
+        },
+        {
+          "id": 5,
+          "name": "add_to_scope",
+          "words": [
+            5251509
+          ]
+        },
+        {
+          "id": 10,
+          "name": "component_sibling",
+          "words": [
+            5251469
+          ]
+        },
+        {
+          "id": 15,
+          "name": "initial",
+          "words": [
+            5251485
+          ]
+        },
+        {
+          "id": 16,
+          "name": "list_together",
+          "words": [
+            0
+          ]
+        },
+        {
+          "id": 17,
+          "name": "map_region",
+          "words": [
+            2075756
+          ]
+        },
+        {
+          "id": 18,
+          "name": "parse_name",
+          "words": [
+            5251501
+          ]
+        },
+        {
+          "id": 21,
+          "name": "room_index",
+          "words": [
+            5251493
+          ]
+        },
+        {
+          "id": 40,
+          "name": "short_name_indef",
+          "words": [
+            101
+          ]
+        },
+        {
+          "id": 275,
+          "name": "p200_as_yet_unknown",
+          "words": [
+            1
+          ]
+        },
+        {
+          "id": 278,
+          "name": "p205_non_checkpoint",
+          "words": [
+            1
+          ]
+        },
+        {
+          "id": 279,
+          "name": "p207_nonsecret",
+          "words": [
+            1
+          ]
+        },
+        {
+          "id": 280,
+          "name": "p209_nonsouthern",
+          "words": [
+            1
+          ]
+        },
+        {
+          "id": 282,
+          "name": "p215_indoors",
+          "words": [
+            0
+          ]
+        },
+        {
+          "id": 286,
+          "name": "p223_publicly_available",
+          "words": [
+            1
+          ]
+        },
+        {
+          "id": 288,
+          "name": "p230_posture_friendly",
+          "words": [
+            1
+          ]
+        },
+        {
+          "id": 308,
+          "name": "p269_nautical",
+          "words": [
+            0
+          ]
+        },
+        {
+          "id": 329,
+          "name": "p164_summary",
+          "words": [
+            5251517
+          ]
+        },
+        {
+          "id": 330,
+          "name": "p43_introduction",
+          "words": [
+            5251477
+          ]
+        },
+        {
+          "id": 331,
+          "name": "p44_disambiguation_id",
+          "words": [
+            2
+          ]
+        }
+      ],
+      "commonHead": [
+        {
+          "id": 1,
+          "name": ""
+        },
+        {
+          "id": 2,
+          "name": "name"
+        },
+        {
+          "id": 3,
+          "name": ""
+        },
+        {
+          "id": 4,
+          "name": ""
+        },
+        {
+          "id": 5,
+          "name": "add_to_scope"
+        },
+        {
+          "id": 6,
+          "name": "article"
+        },
+        {
+          "id": 7,
+          "name": "capacity"
+        },
+        {
+          "id": 8,
+          "name": "component_child"
+        },
+        {
+          "id": 9,
+          "name": "component_parent"
+        },
+        {
+          "id": 10,
+          "name": "component_sibling"
+        },
+        {
+          "id": 11,
+          "name": "description"
+        },
+        {
+          "id": 12,
+          "name": "door_dir"
+        },
+        {
+          "id": 13,
+          "name": "door_to"
+        },
+        {
+          "id": 14,
+          "name": "found_in"
+        },
+        {
+          "id": 15,
+          "name": "initial"
+        },
+        {
+          "id": 16,
+          "name": "list_together"
+        },
+        {
+          "id": 17,
+          "name": "map_region"
+        },
+        {
+          "id": 18,
+          "name": "parse_name"
+        },
+        {
+          "id": 19,
+          "name": "plural"
+        },
+        {
+          "id": 20,
+          "name": "regional_found_in"
+        },
+        {
+          "id": 21,
+          "name": "room_index"
+        },
+        {
+          "id": 22,
+          "name": "short_name"
+        },
+        {
+          "id": 23,
+          "name": "vector"
+        },
+        {
+          "id": 24,
+          "name": "with_key"
+        },
+        {
+          "id": 25,
+          "name": "KD_Count"
+        },
+        {
+          "id": 26,
+          "name": "IK1_Count"
+        },
+        {
+          "id": 27,
+          "name": "IK2_Count"
+        },
+        {
+          "id": 28,
+          "name": "IK4_Count"
+        },
+        {
+          "id": 29,
+          "name": "IK5_Count"
+        },
+        {
+          "id": 30,
+          "name": "IK6_Count"
+        },
+        {
+          "id": 31,
+          "name": "IK8_Count"
+        },
+        {
+          "id": 32,
+          "name": "IK1_link"
+        },
+        {
+          "id": 33,
+          "name": "IK2_link"
+        },
+        {
+          "id": 34,
+          "name": "IK5_link"
+        },
+        {
+          "id": 35,
+          "name": "IK6_link"
+        },
+        {
+          "id": 36,
+          "name": "IK8_link"
+        },
+        {
+          "id": 37,
+          "name": "articles"
+        },
+        {
+          "id": 38,
+          "name": "grammar"
+        },
+        {
+          "id": 39,
+          "name": "inside_description"
+        },
+        {
+          "id": 40,
+          "name": "short_name_indef"
+        }
+      ],
+      "attrSample": [
+        "absent",
+        "animate",
+        "clothing",
+        "concealed",
+        "container",
+        "door",
+        "edible",
+        "enterable",
+        "light",
+        "lockable",
+        "locked",
+        "moved",
+        "on",
+        "open",
+        "openable",
+        "scenery",
+        "static",
+        "supporter",
+        "switchable",
+        "talkable",
+        "transparent",
+        "visited",
+        "worn",
+        "male"
+      ],
+      "roomCount": 106,
+      "look": " it. \n \nThis alley runs north to the open street, towards the town square. That's the way we'll want to go first.\n \nYou can find out more if you LOOK AT THE YELLOW BUILDINGS (or shorten it to L YELLOW BUILDINGS).\n> \nMore"
+    },
+    "after": {
+      "locAddr": 5523697,
+      "locMeta": {
+        "addr": 5523697,
+        "dict": [
+          "sigil",
+          "street",
+          "rooms"
+        ],
+        "name": "sigil street rooms",
+        "kinds": [
+          "K1_room",
+          "K0_kind"
+        ],
+        "KD_Count": 2,
+        "IK1_Count": 0,
+        "IK1_link": 0,
+        "room_index": 5311237,
+        "local_map": 59,
+        "in_dir": 0,
+        "out_dir": 0,
+        "hash": 919888
+      },
+      "locKids": [
+        {
+          "addr": 5522609,
+          "name": "sky backdrops",
+          "dict": [
+            "sky",
+            "backdrops"
+          ],
+          "kinds": [
+            "K7_backdrop",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing",
+            "p143_marked_visible"
+          ],
+          "parent": 5523697
+        },
+        {
+          "addr": 5523729,
+          "name": "elderly apartment things",
+          "dict": [
+            "elderly",
+            "apartment",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "pluralname",
+            "mark_as_thing"
+          ],
+          "parent": 5523697
+        },
+        {
+          "addr": 5523761,
+          "name": "reflectiv window mirrors windows glass reflectio",
+          "dict": [
+            "reflectiv",
+            "window",
+            "mirrors",
+            "windows",
+            "glass",
+            "reflectio"
+          ],
+          "kinds": [
+            "K63_mirror",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing"
+          ],
+          "parent": 5523697
+        },
+        {
+          "addr": 5523793,
+          "name": "alleyway facades alley narrow",
+          "dict": [
+            "alleyway",
+            "facades",
+            "alley",
+            "narrow"
+          ],
+          "kinds": [
+            "K32_facade",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing"
+          ],
+          "parent": 5523697
+        },
+        {
+          "addr": 5523825,
+          "name": "clothing shops facades store shops stores boutique boutiques shop store stores boutique boutiques",
+          "dict": [
+            "clothing",
+            "shops",
+            "facades",
+            "store",
+            "shops",
+            "stores"
+          ],
+          "kinds": [
+            "K32_facade",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "pluralname",
+            "mark_as_thing"
+          ],
+          "parent": 5523697
+        },
+        {
+          "addr": 5523857,
+          "name": "typograph office facades sign display poster typograph font fonts comma commas punctuati",
+          "dict": [
+            "typograph",
+            "office",
+            "facades",
+            "sign",
+            "display",
+            "poster"
+          ],
+          "kinds": [
+            "K32_facade",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing"
+          ],
+          "parent": 5523697
+        }
+      ],
+      "draft": {
+        "sources": [
+          {
+            "name": "glulx-ram",
+            "confidence": 0.95
+          }
+        ],
+        "engineMode": "structural",
+        "vmType": "glulx",
+        "roomId": 5523697,
+        "roomName": "sigil street rooms",
+        "discoveredObjects": [
+          {
+            "id": 5522609,
+            "name": "sky backdrops",
+            "parentId": 5523697,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true,
+              "p143_marked_visible": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 5523729,
+            "name": "elderly apartment things",
+            "parentId": 5523697,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "pluralname": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 5523761,
+            "name": "reflectiv window mirrors windows glass reflectio",
+            "parentId": 5523697,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 5523793,
+            "name": "alleyway facades alley narrow",
+            "parentId": 5523697,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 5523825,
+            "name": "clothing shops facades store shops stores boutique boutiques shop store stores boutique boutiques",
+            "parentId": 5523697,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "pluralname": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 5523857,
+            "name": "typograph office facades sign display poster typograph font fonts comma commas punctuati",
+            "parentId": 5523697,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          }
+        ],
+        "inventory": [
+          {
+            "id": 5524081,
+            "name": "letter-re device things device blunt-nos remover",
+            "parentId": 5524049,
+            "attrs": {
+              "moved": true,
+              "mark_as_thing": true,
+              "p143_marked_visible": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          }
+        ],
+        "exits": [],
+        "probe": {
+          "status": "glulx-ram-research",
+          "playerId": 5524049,
+          "roomId": 5523697,
+          "scopeCount": 6
+        }
+      },
+      "look": "runs between buildings to the south, while the street continues east.\n \nYou can find out more if you LOOK AT THE ELDERLY APARTMENTS (or shorten it to L ELDERLY APARTMENTS).\n> \nMore"
+    },
+    "moved": true,
+    "hunt": {
+      "destHits": 9,
+      "destHitSample": [
+        3575704,
+        3575740,
+        3575832,
+        3575836,
+        3575856,
+        3576108,
+        3643284,
+        3643416,
+        6072452
+      ],
+      "srcLocal": 58,
+      "destLocal": 59,
+      "srcKd": 3,
+      "destKd": 2,
+      "srcIk1": 0,
+      "destIk1": 0,
+      "northDoor": {
+        "north": 0,
+        "south": 0,
+        "northRaw": null,
+        "southRaw": null,
+        "northAll": [
+          {
+            "id": 1,
+            "name": null,
+            "words": [
+              7877643,
+              7857499,
+              7876667
+            ]
+          },
+          {
+            "id": 2,
+            "name": "name",
+            "words": [
+              5511793,
+              5505713
+            ]
+          },
+          {
+            "id": 5,
+            "name": "add_to_scope",
+            "words": [
+              5270333
+            ]
+          },
+          {
+            "id": 15,
+            "name": "initial",
+            "words": [
+              5270341
+            ]
+          },
+          {
+            "id": 17,
+            "name": "map_region",
+            "words": [
+              2055004
+            ]
+          },
+          {
+            "id": 18,
+            "name": "parse_name",
+            "words": [
+              5270349
+            ]
+          },
+          {
+            "id": 21,
+            "name": "room_index",
+            "words": [
+              5270325
+            ]
+          },
+          {
+            "id": 22,
+            "name": "short_name",
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "name": "with_key",
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 40,
+            "name": "short_name_indef",
+            "words": [
+              101
+            ]
+          },
+          {
+            "id": 309,
+            "name": "p271_earthbound_directional",
+            "words": [
+              1
+            ]
+          },
+          {
+            "id": 329,
+            "name": "p164_summary",
+            "words": [
+              5270357
+            ]
+          },
+          {
+            "id": 340,
+            "name": "action_bitmap",
+            "words": [
+              16842752,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 413,
+            "name": null,
+            "words": [
+              5511953
+            ]
+          },
+          {
+            "id": 414,
+            "name": null,
+            "words": [
+              37
+            ]
+          },
+          {
+            "id": 415,
+            "name": null,
+            "words": [
+              716
+            ]
+          },
+          {
+            "id": 416,
+            "name": null,
+            "words": [
+              5511921
+            ]
+          },
+          {
+            "id": 417,
+            "name": null,
+            "words": [
+              5511889
+            ]
+          },
+          {
+            "id": 419,
+            "name": null,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 420,
+            "name": null,
+            "words": [
+              5511889
+            ]
+          }
+        ]
+      },
+      "srcName": "back alley rooms",
+      "destName": "sigil street rooms",
+      "best": [
+        {
+          "nDir": 12,
+          "idx": 57,
+          "slot": 11,
+          "at": 3643284,
+          "base": 3640504,
+          "destSlot": [
+            11
+          ],
+          "row": [
+            {
+              "i": 4,
+              "kind": "obj",
+              "name": "temporary barrier doors door",
+              "dict": [
+                "temporary",
+                "barrier",
+                "doors"
+              ]
+            },
+            {
+              "i": 11,
+              "kind": "DEST",
+              "name": "sigil street rooms",
+              "dict": [
+                "sigil",
+                "street",
+                "rooms"
+              ]
+            }
+          ],
+          "recipHasSrc": true,
+          "recipSrcSlot": [
+            3
+          ],
+          "recip": [
+            {
+              "i": 3,
+              "kind": "SRC",
+              "name": "back alley rooms",
+              "dict": [
+                "back",
+                "alley",
+                "rooms"
+              ]
+            },
+            {
+              "i": 6,
+              "kind": "room",
+              "name": "ampersand bend rooms district",
+              "dict": [
+                "ampersand",
+                "bend",
+                "rooms"
+              ]
+            }
+          ]
+        },
+        {
+          "nDir": 12,
+          "idx": 58,
+          "slot": 0,
+          "at": 3643284,
+          "base": 3640500,
+          "destSlot": [
+            0
+          ],
+          "row": [
+            {
+              "i": 0,
+              "kind": "DEST",
+              "name": "sigil street rooms",
+              "dict": [
+                "sigil",
+                "street",
+                "rooms"
+              ]
+            }
+          ],
+          "recipHasSrc": true,
+          "recipSrcSlot": [
+            4
+          ],
+          "recip": [
+            {
+              "i": 4,
+              "kind": "SRC",
+              "name": "back alley rooms",
+              "dict": [
+                "back",
+                "alley",
+                "rooms"
+              ]
+            },
+            {
+              "i": 7,
+              "kind": "room",
+              "name": "ampersand bend rooms district",
+              "dict": [
+                "ampersand",
+                "bend",
+                "rooms"
+              ]
+            }
+          ]
+        },
+        {
+          "nDir": 12,
+          "idx": 58,
+          "slot": 1,
+          "at": 3643284,
+          "base": 3640496,
+          "destSlot": [
+            1
+          ],
+          "row": [
+            {
+              "i": 1,
+              "kind": "DEST",
+              "name": "sigil street rooms",
+              "dict": [
+                "sigil",
+                "street",
+                "rooms"
+              ]
+            }
+          ],
+          "recipHasSrc": true,
+          "recipSrcSlot": [
+            5
+          ],
+          "recip": [
+            {
+              "i": 5,
+              "kind": "SRC",
+              "name": "back alley rooms",
+              "dict": [
+                "back",
+                "alley",
+                "rooms"
+              ]
+            },
+            {
+              "i": 8,
+              "kind": "room",
+              "name": "ampersand bend rooms district",
+              "dict": [
+                "ampersand",
+                "bend",
+                "rooms"
+              ]
+            }
+          ]
+        },
+        {
+          "nDir": 12,
+          "idx": 58,
+          "slot": 2,
+          "at": 3643284,
+          "base": 3640492,
+          "destSlot": [
+            2
+          ],
+          "row": [
+            {
+              "i": 2,
+              "kind": "DEST",
+              "name": "sigil street rooms",
+              "dict": [
+                "sigil",
+                "street",
+                "rooms"
+              ]
+            }
+          ],
+          "recipHasSrc": true,
+          "recipSrcSlot": [
+            6
+          ],
+          "recip": [
+            {
+              "i": 6,
+              "kind": "SRC",
+              "name": "back alley rooms",
+              "dict": [
+                "back",
+                "alley",
+                "rooms"
+              ]
+            },
+            {
+              "i": 9,
+              "kind": "room",
+              "name": "ampersand bend rooms district",
+              "dict": [
+                "ampersand",
+                "bend",
+                "rooms"
+              ]
+            }
+          ]
+        },
+        {
+          "nDir": 12,
+          "idx": 58,
+          "slot": 3,
+          "at": 3643284,
+          "base": 3640488,
+          "destSlot": [
+            3
+          ],
+          "row": [
+            {
+              "i": 3,
+              "kind": "DEST",
+              "name": "sigil street rooms",
+              "dict": [
+                "sigil",
+                "street",
+                "rooms"
+              ]
+            }
+          ],
+          "recipHasSrc": true,
+          "recipSrcSlot": [
+            7
+          ],
+          "recip": [
+            {
+              "i": 7,
+              "kind": "SRC",
+              "name": "back alley rooms",
+              "dict": [
+                "back",
+                "alley",
+                "rooms"
+              ]
+            },
+            {
+              "i": 10,
+              "kind": "room",
+              "name": "ampersand bend rooms district",
+              "dict": [
+                "ampersand",
+                "bend",
+                "rooms"
+              ]
+            }
+          ]
+        },
+        {
+          "nDir": 12,
+          "idx": 58,
+          "slot": 6,
+          "at": 3643284,
+          "base": 3640476,
+          "destSlot": [
+            6
+          ],
+          "row": [
+            {
+              "i": 6,
+              "kind": "DEST",
+              "name": "sigil street rooms",
+              "dict": [
+                "sigil",
+                "street",
+                "rooms"
+              ]
+            }
+          ],
+          "recipHasSrc": true,
+          "recipSrcSlot": [
+            10
+          ],
+          "recip": [
+            {
+              "i": 10,
+              "kind": "SRC",
+              "name": "back alley rooms",
+              "dict": [
+                "back",
+                "alley",
+                "rooms"
+              ]
+            }
+          ]
+        },
+        {
+          "nDir": 16,
+          "idx": 58,
+          "slot": 11,
+          "at": 3643284,
+          "base": 3639528,
+          "destSlot": [
+            11
+          ],
+          "row": [
+            {
+              "i": 4,
+              "kind": "obj",
+              "name": "temporary barrier doors door",
+              "dict": [
+                "temporary",
+                "barrier",
+                "doors"
+              ]
+            },
+            {
+              "i": 11,
+              "kind": "DEST",
+              "name": "sigil street rooms",
+              "dict": [
+                "sigil",
+                "street",
+                "rooms"
+              ]
+            }
+          ],
+          "recipHasSrc": true,
+          "recipSrcSlot": [
+            11
+          ],
+          "recip": [
+            {
+              "i": 11,
+              "kind": "SRC",
+              "name": "back alley rooms",
+              "dict": [
+                "back",
+                "alley",
+                "rooms"
+              ]
+            },
+            {
+              "i": 14,
+              "kind": "room",
+              "name": "ampersand bend rooms district",
+              "dict": [
+                "ampersand",
+                "bend",
+                "rooms"
+              ]
+            }
+          ]
+        },
+        {
+          "nDir": 16,
+          "idx": 58,
+          "slot": 0,
+          "at": 3643284,
+          "base": 3639572,
+          "destSlot": [
+            0
+          ],
+          "row": [
+            {
+              "i": 0,
+              "kind": "DEST",
+              "name": "sigil street rooms",
+              "dict": [
+                "sigil",
+                "street",
+                "rooms"
+              ]
+            }
+          ],
+          "recipHasSrc": true,
+          "recipSrcSlot": [
+            0
+          ],
+          "recip": [
+            {
+              "i": 0,
+              "kind": "SRC",
+              "name": "back alley rooms",
+              "dict": [
+                "back",
+                "alley",
+                "rooms"
+              ]
+            },
+            {
+              "i": 3,
+              "kind": "room",
+              "name": "ampersand bend rooms district",
+              "dict": [
+                "ampersand",
+                "bend",
+                "rooms"
+              ]
+            }
+          ]
+        },
+        {
+          "nDir": 16,
+          "idx": 58,
+          "slot": 1,
+          "at": 3643284,
+          "base": 3639568,
+          "destSlot": [
+            1
+          ],
+          "row": [
+            {
+              "i": 1,
+              "kind": "DEST",
+              "name": "sigil street rooms",
+              "dict": [
+                "sigil",
+                "street",
+                "rooms"
+              ]
+            }
+          ],
+          "recipHasSrc": true,
+          "recipSrcSlot": [
+            1
+          ],
+          "recip": [
+            {
+              "i": 1,
+              "kind": "SRC",
+              "name": "back alley rooms",
+              "dict": [
+                "back",
+                "alley",
+                "rooms"
+              ]
+            },
+            {
+              "i": 4,
+              "kind": "room",
+              "name": "ampersand bend rooms district",
+              "dict": [
+                "ampersand",
+                "bend",
+                "rooms"
+              ]
+            }
+          ]
+        },
+        {
+          "nDir": 16,
+          "idx": 58,
+          "slot": 2,
+          "at": 3643284,
+          "base": 3639564,
+          "destSlot": [
+            2
+          ],
+          "row": [
+            {
+              "i": 2,
+              "kind": "DEST",
+              "name": "sigil street rooms",
+              "dict": [
+                "sigil",
+                "street",
+                "rooms"
+              ]
+            }
+          ],
+          "recipHasSrc": true,
+          "recipSrcSlot": [
+            2
+          ],
+          "recip": [
+            {
+              "i": 2,
+              "kind": "SRC",
+              "name": "back alley rooms",
+              "dict": [
+                "back",
+                "alley",
+                "rooms"
+              ]
+            },
+            {
+              "i": 5,
+              "kind": "room",
+              "name": "ampersand bend rooms district",
+              "dict": [
+                "ampersand",
+                "bend",
+                "rooms"
+              ]
+            }
+          ]
+        }
+      ],
+      "slot0": [
+        {
+          "ptr": 3575856,
+          "roomsN": 1,
+          "zeros": 9,
+          "junk": 1,
+          "hasDest": true,
+          "words": [
+            {
+              "i": 0,
+              "kind": "DEST",
+              "name": "sigil street rooms",
+              "dict": [
+                "sigil",
+                "street",
+                "rooms"
+              ]
+            },
+            {
+              "i": 2,
+              "kind": "junk",
+              "name": "",
+              "dict": []
+            },
+            {
+              "i": 4,
+              "kind": "obj",
+              "name": "north direction n",
+              "dict": [
+                "north",
+                "direction",
+                "n"
+              ]
+            }
+          ]
+        },
+        {
+          "ptr": 3643284,
+          "roomsN": 1,
+          "zeros": 11,
+          "junk": 0,
+          "hasDest": true,
+          "words": [
+            {
+              "i": 0,
+              "kind": "DEST",
+              "name": "sigil street rooms",
+              "dict": [
+                "sigil",
+                "street",
+                "rooms"
+              ]
+            }
+          ]
+        },
+        {
+          "ptr": 3643416,
+          "roomsN": 1,
+          "zeros": 11,
+          "junk": 0,
+          "hasDest": true,
+          "words": [
+            {
+              "i": 0,
+              "kind": "DEST",
+              "name": "sigil street rooms",
+              "dict": [
+                "sigil",
+                "street",
+                "rooms"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "openTrial": {
+      "command": "open how",
+      "addr": 5516721,
+      "dict": [
+        "how",
+        "to",
+        "unlock",
+        "the",
+        "lockers",
+        "quips"
+      ],
+      "name": "how to unlock the lockers quips",
+      "lsbBefore": [
+        "scenery",
+        "static",
+        "proper",
+        "mark_as_thing",
+        "p155_one_time",
+        "p159_player_directed",
+        "p172_shallowly_buried"
+      ],
+      "beforeBytes": null,
+      "afterBytes": [
+        0,
+        128,
+        1,
+        16,
+        4,
+        74,
+        0
+      ],
+      "bytesChanged": true,
+      "look": "nt to take an action in the game world, try giving a direct command, such as EXAMINE THE ASP or WAVE THE P-REMOVER AT THE PHONEY.\n \nYou can find out more if you LOOK AT THE ELDERLY APARTMENTS (or shorten it to L ELDERLY APARTMENTS).\n> \nMore"
+    }
+  },
+  {
+    "story": "games/CosmoServe.gblorb.js",
+    "errors": [],
+    "skipTail": [
+      {
+        "i": 30,
+        "action": "space"
+      },
+      {
+        "i": 31,
+        "action": "space"
+      },
+      {
+        "i": 32,
+        "action": "space"
+      },
+      {
+        "i": 33,
+        "action": "space"
+      },
+      {
+        "i": 34,
+        "action": "space"
+      },
+      {
+        "i": 35,
+        "action": "space"
+      },
+      {
+        "i": 36,
+        "action": "space"
+      },
+      {
+        "i": 37,
+        "action": "space"
+      },
+      {
+        "i": 38,
+        "action": "space"
+      },
+      {
+        "i": 39,
+        "action": "space"
+      }
+    ],
+    "before": {
+      "playerAddr": 1226899,
+      "locAddr": 1227091,
+      "locMeta": {
+        "addr": 1227091,
+        "dict": [
+          "my",
+          "office",
+          "rooms"
+        ],
+        "name": "my office rooms",
+        "kinds": [
+          "K1_room",
+          "K0_kind"
+        ],
+        "KD_Count": 0,
+        "IK1_Count": 0,
+        "IK1_link": 0,
+        "room_index": 1200695,
+        "local_map": 992633,
+        "in_dir": 992621,
+        "out_dir": 992629,
+        "hash": 992637
+      },
+      "locKids": [
+        {
+          "addr": 1229075,
+          "name": "hint backdrops",
+          "dict": [
+            "hint",
+            "backdrops"
+          ],
+          "kinds": [
+            "K7_backdrop",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227123,
+          "name": "",
+          "dict": [],
+          "kinds": [
+            "K18_invisible_catchall",
+            "K5_container",
+            "K2_thing"
+          ],
+          "lsb": [
+            "container",
+            "open",
+            "scenery",
+            "static",
+            "proper",
+            "privately_named",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227187,
+          "name": "my couch",
+          "dict": [
+            "my",
+            "couch",
+            "supporter"
+          ],
+          "kinds": [
+            "K6_supporter",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "supporter",
+            "transparent",
+            "proper",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227219,
+          "name": "wooden chair",
+          "dict": [
+            "wooden",
+            "chair",
+            "supporter"
+          ],
+          "kinds": [
+            "K6_supporter",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "enterable",
+            "scenery",
+            "static",
+            "supporter",
+            "transparent",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227251,
+          "name": "messy stack things pile paper papers stuff paperwork seat desk junk",
+          "dict": [
+            "messy",
+            "stack",
+            "things",
+            "pile",
+            "paper",
+            "papers"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227283,
+          "name": "turborf pascal code things",
+          "dict": [
+            "turborf",
+            "pascal",
+            "code",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing",
+            "p81_readable"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227315,
+          "name": "important letters things",
+          "dict": [
+            "important",
+            "letters",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing",
+            "p81_readable"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227347,
+          "name": "crumpled letter things",
+          "dict": [
+            "crumpled",
+            "letter",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "concealed",
+            "mark_as_thing",
+            "p81_readable"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227379,
+          "name": "overdue bills things",
+          "dict": [
+            "overdue",
+            "bills",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing",
+            "p81_readable"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227411,
+          "name": "important bill things",
+          "dict": [
+            "important",
+            "bill",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing",
+            "p81_readable"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227443,
+          "name": "business card things",
+          "dict": [
+            "business",
+            "card",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "static",
+            "mark_as_thing",
+            "p81_readable"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227475,
+          "name": "786sx computer devices case",
+          "dict": [
+            "786sx",
+            "computer",
+            "devices",
+            "case"
+          ],
+          "kinds": [
+            "K13_device",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "switchable",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227507,
+          "name": "five screws things",
+          "dict": [
+            "five",
+            "screws",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "proper",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227539,
+          "name": "swirling threads things",
+          "dict": [
+            "swirling",
+            "threads",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "proper",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227571,
+          "name": "strands of golden thread things gold",
+          "dict": [
+            "strands",
+            "of",
+            "golden",
+            "thread",
+            "things",
+            "gold"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "proper",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227603,
+          "name": "tiny lights things",
+          "dict": [
+            "tiny",
+            "lights",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "proper",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227635,
+          "name": "flickers things",
+          "dict": [
+            "flickers",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "proper",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227667,
+          "name": "fireworks things",
+          "dict": [
+            "fireworks",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "proper",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        }
+      ],
+      "inventory": [
+        {
+          "addr": 1226931,
+          "name": "comfy clothes things jeans shirt t-shirt clothing",
+          "dict": [
+            "comfy",
+            "clothes",
+            "things",
+            "jeans",
+            "shirt",
+            "t-shirt"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "clothing",
+            "moved",
+            "worn",
+            "proper",
+            "mark_as_thing"
+          ]
+        },
+        {
+          "addr": 1226963,
+          "name": "twenty dollars things",
+          "dict": [
+            "twenty",
+            "dollars",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "moved",
+            "proper",
+            "mark_as_thing"
+          ]
+        }
+      ],
+      "dirs": [
+        {
+          "card": "north",
+          "dict": [
+            "north",
+            "direction",
+            "n"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 1199999,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                631456
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                1199999
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 278,
+              "name": "action_bitmap",
+              "len": 12,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "northeast",
+          "dict": [
+            "northeast",
+            "direction",
+            "ne"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 1200031,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                631758
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                1200031
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 278,
+              "name": "action_bitmap",
+              "len": 12,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "northwest",
+          "dict": [
+            "northwest",
+            "direction",
+            "nw"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 1200063,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                632060
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                1200063
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 278,
+              "name": "action_bitmap",
+              "len": 12,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "south",
+          "dict": [
+            "south",
+            "direction",
+            "s"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 1200095,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                632362
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                1200095
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 278,
+              "name": "action_bitmap",
+              "len": 12,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "southeast",
+          "dict": [
+            "southeast",
+            "direction",
+            "se"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 1200127,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                632664
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                1200127
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 278,
+              "name": "action_bitmap",
+              "len": 12,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "southwest",
+          "dict": [
+            "southwest",
+            "direction",
+            "sw"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 1200159,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                632966
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                1200159
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 278,
+              "name": "action_bitmap",
+              "len": 12,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "east",
+          "dict": [
+            "east",
+            "direction",
+            "e"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 1200191,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                633268
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                1200191
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 278,
+              "name": "action_bitmap",
+              "len": 12,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "west",
+          "dict": [
+            "west",
+            "direction",
+            "w"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 1200223,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                633570
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                1200223
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 278,
+              "name": "action_bitmap",
+              "len": 12,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "up",
+          "dict": [
+            "up",
+            "direction",
+            "u"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 1200255,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                633872
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                1200255
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 278,
+              "name": "action_bitmap",
+              "len": 12,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "down",
+          "dict": [
+            "down",
+            "direction",
+            "d"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 1200287,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                634174
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                1200287
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 278,
+              "name": "action_bitmap",
+              "len": 12,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "in",
+          "dict": [
+            "inside",
+            "direction",
+            "in"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 1200319,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                634476
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                1200319
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 278,
+              "name": "action_bitmap",
+              "len": 12,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "card": "out",
+          "dict": [
+            "outside",
+            "direction",
+            "out"
+          ],
+          "door_dir": 0,
+          "door_to": 0,
+          "vector": null,
+          "room_index": 1200351,
+          "with_key": 3,
+          "KD_Count": 0,
+          "props": [
+            {
+              "id": 17,
+              "name": "map_region",
+              "len": 1,
+              "words": [
+                634778
+              ]
+            },
+            {
+              "id": 21,
+              "name": "room_index",
+              "len": 1,
+              "words": [
+                1200351
+              ]
+            },
+            {
+              "id": 24,
+              "name": "with_key",
+              "len": 1,
+              "words": [
+                3
+              ]
+            },
+            {
+              "id": 278,
+              "name": "action_bitmap",
+              "len": 12,
+              "words": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "dumpsterHits": [
+        {
+          "addr": 1227891,
+          "dict": [
+            "empty",
+            "cupboard",
+            "container"
+          ],
+          "kinds": [
+            "K5_container",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "parent": 1227699,
+          "parentIsLoc": false,
+          "found_in": [
+            1201951
+          ],
+          "lsb": [
+            "container",
+            "open",
+            "openable",
+            "scenery",
+            "static",
+            "mark_as_thing"
+          ],
+          "name": "empty cupboard"
+        },
+        {
+          "addr": 1228627,
+          "dict": [
+            "dps",
+            "car",
+            "container",
+            "van",
+            "boxes"
+          ],
+          "kinds": [
+            "K5_container",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "parent": 1228467,
+          "parentIsLoc": false,
+          "found_in": [
+            1203047
+          ],
+          "lsb": [
+            "container",
+            "open",
+            "scenery",
+            "static",
+            "mark_as_thing"
+          ],
+          "name": "dps car van boxes"
+        },
+        {
+          "addr": 1230899,
+          "dict": [
+            "plumbing",
+            "book",
+            "container"
+          ],
+          "kinds": [
+            "K5_container",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "parent": 1230867,
+          "parentIsLoc": false,
+          "found_in": [
+            1206447
+          ],
+          "lsb": [
+            "container",
+            "open",
+            "mark_as_thing"
+          ],
+          "name": "plumbing book"
+        },
+        {
+          "addr": 1231315,
+          "dict": [
+            "inboxread",
+            "rooms"
+          ],
+          "kinds": [
+            "K1_room",
+            "K0_kind"
+          ],
+          "parent": 0,
+          "parentIsLoc": false,
+          "found_in": null,
+          "lsb": [
+            "light",
+            "proper",
+            "mark_as_room"
+          ],
+          "name": "inboxread rooms"
+        },
+        {
+          "addr": 1234227,
+          "dict": [
+            "large",
+            "box",
+            "container"
+          ],
+          "kinds": [
+            "K5_container",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "parent": 0,
+          "parentIsLoc": false,
+          "found_in": [
+            1211551
+          ],
+          "lsb": [
+            "container",
+            "openable",
+            "mark_as_thing"
+          ],
+          "name": "large box"
+        },
+        {
+          "addr": 1235475,
+          "dict": [
+            "virtual",
+            "boxoffice",
+            "rooms"
+          ],
+          "kinds": [
+            "K1_room",
+            "K0_kind"
+          ],
+          "parent": 0,
+          "parentIsLoc": false,
+          "found_in": null,
+          "lsb": [
+            "light",
+            "mark_as_room"
+          ],
+          "name": "virtual boxoffice rooms"
+        },
+        {
+          "addr": 1235539,
+          "dict": [
+            "virtual",
+            "box",
+            "office",
+            "container",
+            "chamber",
+            "pyramids"
+          ],
+          "kinds": [
+            "K5_container",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "parent": 1235475,
+          "parentIsLoc": false,
+          "found_in": [
+            1213479
+          ],
+          "lsb": [
+            "container",
+            "open",
+            "scenery",
+            "static",
+            "proper",
+            "mark_as_thing"
+          ],
+          "name": "virtual box office chamber pyramids pyramid camels poster posters camel"
+        },
+        {
+          "addr": 1237875,
+          "dict": [
+            "chester",
+            "hanes",
+            "absent",
+            "males"
+          ],
+          "kinds": [
+            "K27_absent_male",
+            "K10_man",
+            "K8_person"
+          ],
+          "parent": 0,
+          "parentIsLoc": false,
+          "found_in": [
+            1217007
+          ],
+          "lsb": [
+            "animate",
+            "transparent",
+            "proper",
+            "mark_as_thing",
+            "p77_timely"
+          ],
+          "name": "chester hanes absent males"
+        },
+        {
+          "addr": 1242995,
+          "dict": [
+            "confusing",
+            "map",
+            "things",
+            "scrawling",
+            "scrawling",
+            "paintings"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "parent": 1242931,
+          "parentIsLoc": false,
+          "found_in": [
+            1224519
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "proper",
+            "mark_as_thing"
+          ],
+          "name": "confusing map things scrawling scrawling paintings cave boxes arrows numbers wall"
+        }
+      ],
+      "openableHits": [],
+      "draft": {
+        "sources": [
+          {
+            "name": "glulx-ram",
+            "confidence": 0.95
+          }
+        ],
+        "engineMode": "structural",
+        "vmType": "glulx",
+        "roomId": 1227091,
+        "roomName": "my office rooms",
+        "discoveredObjects": [
+          {
+            "id": 1229075,
+            "name": "hint backdrops",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227187,
+            "name": "my couch",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "supporter": true,
+              "transparent": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227219,
+            "name": "wooden chair",
+            "parentId": 1227091,
+            "attrs": {
+              "enterable": true,
+              "scenery": true,
+              "static": true,
+              "supporter": true,
+              "transparent": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227251,
+            "name": "messy stack things pile paper papers stuff paperwork seat desk junk",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227283,
+            "name": "turborf pascal code things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true,
+              "p81_readable": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227315,
+            "name": "important letters things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true,
+              "p81_readable": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227347,
+            "name": "crumpled letter things",
+            "parentId": 1227091,
+            "attrs": {
+              "concealed": true,
+              "mark_as_thing": true,
+              "p81_readable": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227379,
+            "name": "overdue bills things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true,
+              "p81_readable": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227411,
+            "name": "important bill things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true,
+              "p81_readable": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227443,
+            "name": "business card things",
+            "parentId": 1227091,
+            "attrs": {
+              "static": true,
+              "mark_as_thing": true,
+              "p81_readable": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227475,
+            "name": "786sx computer devices case",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "switchable": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227507,
+            "name": "five screws things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227539,
+            "name": "swirling threads things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227571,
+            "name": "strands of golden thread things gold",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227603,
+            "name": "tiny lights things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227635,
+            "name": "flickers things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227667,
+            "name": "fireworks things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          }
+        ],
+        "inventory": [
+          {
+            "id": 1226931,
+            "name": "comfy clothes things jeans shirt t-shirt clothing",
+            "parentId": 1226899,
+            "attrs": {
+              "clothing": true,
+              "moved": true,
+              "worn": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1226963,
+            "name": "twenty dollars things",
+            "parentId": 1226899,
+            "attrs": {
+              "moved": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          }
+        ],
+        "exits": [],
+        "probe": {
+          "status": "glulx-ram-research",
+          "playerId": 1226899,
+          "roomId": 1227091,
+          "scopeCount": 18
+        }
+      },
+      "payloadNow": {
+        "roomId": null,
+        "roomName": "",
+        "exits": 0,
+        "discovered": 0,
+        "inventory": 0,
+        "engineMode": "heuristic",
+        "sources": [
+          "heuristic",
+          "emglken-stub",
+          "text-gate",
+          "dark-scope",
+          "graphics-dock",
+          "live-heap-quixe",
+          "buffer-tap",
+          "z-ram",
+          "grammar-ram"
+        ]
+      },
+      "k1Props": [
+        {
+          "id": 2,
+          "name": "name",
+          "words": [
+            1225363,
+            1225331
+          ]
+        },
+        {
+          "id": 5,
+          "name": "add_to_scope",
+          "words": [
+            1198319
+          ]
+        },
+        {
+          "id": 10,
+          "name": "component_sibling",
+          "words": [
+            1198287
+          ]
+        },
+        {
+          "id": 15,
+          "name": "initial",
+          "words": [
+            1198295
+          ]
+        },
+        {
+          "id": 16,
+          "name": "list_together",
+          "words": [
+            0
+          ]
+        },
+        {
+          "id": 18,
+          "name": "parse_name",
+          "words": [
+            1198311
+          ]
+        },
+        {
+          "id": 21,
+          "name": "room_index",
+          "words": [
+            1198303
+          ]
+        },
+        {
+          "id": 270,
+          "name": "p110_wet",
+          "words": [
+            0
+          ]
+        }
+      ],
+      "commonHead": [
+        {
+          "id": 1,
+          "name": ""
+        },
+        {
+          "id": 2,
+          "name": "name"
+        },
+        {
+          "id": 3,
+          "name": ""
+        },
+        {
+          "id": 4,
+          "name": ""
+        },
+        {
+          "id": 5,
+          "name": "add_to_scope"
+        },
+        {
+          "id": 6,
+          "name": "article"
+        },
+        {
+          "id": 7,
+          "name": "capacity"
+        },
+        {
+          "id": 8,
+          "name": "component_child"
+        },
+        {
+          "id": 9,
+          "name": "component_parent"
+        },
+        {
+          "id": 10,
+          "name": "component_sibling"
+        },
+        {
+          "id": 11,
+          "name": "description"
+        },
+        {
+          "id": 12,
+          "name": "door_dir"
+        },
+        {
+          "id": 13,
+          "name": "door_to"
+        },
+        {
+          "id": 14,
+          "name": "found_in"
+        },
+        {
+          "id": 15,
+          "name": "initial"
+        },
+        {
+          "id": 16,
+          "name": "list_together"
+        },
+        {
+          "id": 17,
+          "name": "map_region"
+        },
+        {
+          "id": 18,
+          "name": "parse_name"
+        },
+        {
+          "id": 19,
+          "name": "plural"
+        },
+        {
+          "id": 20,
+          "name": "regional_found_in"
+        },
+        {
+          "id": 21,
+          "name": "room_index"
+        },
+        {
+          "id": 22,
+          "name": "short_name"
+        },
+        {
+          "id": 23,
+          "name": "vector"
+        },
+        {
+          "id": 24,
+          "name": "with_key"
+        },
+        {
+          "id": 25,
+          "name": "KD_Count"
+        },
+        {
+          "id": 26,
+          "name": "IK1_Count"
+        },
+        {
+          "id": 27,
+          "name": "IK2_Count"
+        },
+        {
+          "id": 28,
+          "name": "IK4_Count"
+        },
+        {
+          "id": 29,
+          "name": "IK5_Count"
+        },
+        {
+          "id": 30,
+          "name": "IK6_Count"
+        },
+        {
+          "id": 31,
+          "name": "IK8_Count"
+        },
+        {
+          "id": 32,
+          "name": "IK1_link"
+        },
+        {
+          "id": 33,
+          "name": "IK2_link"
+        },
+        {
+          "id": 34,
+          "name": "IK5_link"
+        },
+        {
+          "id": 35,
+          "name": "IK6_link"
+        },
+        {
+          "id": 36,
+          "name": "IK8_link"
+        },
+        {
+          "id": 37,
+          "name": "articles"
+        },
+        {
+          "id": 38,
+          "name": "grammar"
+        },
+        {
+          "id": 39,
+          "name": "inside_description"
+        },
+        {
+          "id": 40,
+          "name": "short_name_indef"
+        }
+      ],
+      "attrSample": [
+        "absent",
+        "animate",
+        "clothing",
+        "concealed",
+        "container",
+        "door",
+        "edible",
+        "enterable",
+        "light",
+        "lockable",
+        "locked",
+        "moved",
+        "on",
+        "open",
+        "openable",
+        "scenery",
+        "static",
+        "supporter",
+        "switchable",
+        "talkable",
+        "transparent",
+        "visited",
+        "worn",
+        "male"
+      ],
+      "roomCount": 124,
+      "look": "                                                                                                                     \n \n \nDo you need instructions before entering the 20th century? Y/N >look\n \nPlease answer yes or no.>  "
+    },
+    "after": {
+      "locAddr": 1227091,
+      "locMeta": {
+        "addr": 1227091,
+        "dict": [
+          "my",
+          "office",
+          "rooms"
+        ],
+        "name": "my office rooms",
+        "kinds": [
+          "K1_room",
+          "K0_kind"
+        ],
+        "KD_Count": 0,
+        "IK1_Count": 0,
+        "IK1_link": 0,
+        "room_index": 1200695,
+        "local_map": 992633,
+        "in_dir": 992621,
+        "out_dir": 992629,
+        "hash": 992637
+      },
+      "locKids": [
+        {
+          "addr": 1229075,
+          "name": "hint backdrops",
+          "dict": [
+            "hint",
+            "backdrops"
+          ],
+          "kinds": [
+            "K7_backdrop",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227123,
+          "name": "",
+          "dict": [],
+          "kinds": [
+            "K18_invisible_catchall",
+            "K5_container",
+            "K2_thing"
+          ],
+          "lsb": [
+            "container",
+            "open",
+            "scenery",
+            "static",
+            "proper",
+            "privately_named",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227187,
+          "name": "my couch",
+          "dict": [
+            "my",
+            "couch",
+            "supporter"
+          ],
+          "kinds": [
+            "K6_supporter",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "supporter",
+            "transparent",
+            "proper",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227219,
+          "name": "wooden chair",
+          "dict": [
+            "wooden",
+            "chair",
+            "supporter"
+          ],
+          "kinds": [
+            "K6_supporter",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "enterable",
+            "scenery",
+            "static",
+            "supporter",
+            "transparent",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227251,
+          "name": "messy stack things pile paper papers stuff paperwork seat desk junk",
+          "dict": [
+            "messy",
+            "stack",
+            "things",
+            "pile",
+            "paper",
+            "papers"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227283,
+          "name": "turborf pascal code things",
+          "dict": [
+            "turborf",
+            "pascal",
+            "code",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing",
+            "p81_readable"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227315,
+          "name": "important letters things",
+          "dict": [
+            "important",
+            "letters",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing",
+            "p81_readable"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227347,
+          "name": "crumpled letter things",
+          "dict": [
+            "crumpled",
+            "letter",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "concealed",
+            "mark_as_thing",
+            "p81_readable"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227379,
+          "name": "overdue bills things",
+          "dict": [
+            "overdue",
+            "bills",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing",
+            "p81_readable"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227411,
+          "name": "important bill things",
+          "dict": [
+            "important",
+            "bill",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "mark_as_thing",
+            "p81_readable"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227443,
+          "name": "business card things",
+          "dict": [
+            "business",
+            "card",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "static",
+            "mark_as_thing",
+            "p81_readable"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227475,
+          "name": "786sx computer devices case",
+          "dict": [
+            "786sx",
+            "computer",
+            "devices",
+            "case"
+          ],
+          "kinds": [
+            "K13_device",
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "switchable",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227507,
+          "name": "five screws things",
+          "dict": [
+            "five",
+            "screws",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "proper",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227539,
+          "name": "swirling threads things",
+          "dict": [
+            "swirling",
+            "threads",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "proper",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227571,
+          "name": "strands of golden thread things gold",
+          "dict": [
+            "strands",
+            "of",
+            "golden",
+            "thread",
+            "things",
+            "gold"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "proper",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227603,
+          "name": "tiny lights things",
+          "dict": [
+            "tiny",
+            "lights",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "proper",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227635,
+          "name": "flickers things",
+          "dict": [
+            "flickers",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "proper",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        },
+        {
+          "addr": 1227667,
+          "name": "fireworks things",
+          "dict": [
+            "fireworks",
+            "things"
+          ],
+          "kinds": [
+            "K2_thing",
+            "K0_kind"
+          ],
+          "lsb": [
+            "scenery",
+            "static",
+            "proper",
+            "mark_as_thing"
+          ],
+          "parent": 1227091
+        }
+      ],
+      "draft": {
+        "sources": [
+          {
+            "name": "glulx-ram",
+            "confidence": 0.95
+          }
+        ],
+        "engineMode": "structural",
+        "vmType": "glulx",
+        "roomId": 1227091,
+        "roomName": "my office rooms",
+        "discoveredObjects": [
+          {
+            "id": 1229075,
+            "name": "hint backdrops",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227187,
+            "name": "my couch",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "supporter": true,
+              "transparent": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227219,
+            "name": "wooden chair",
+            "parentId": 1227091,
+            "attrs": {
+              "enterable": true,
+              "scenery": true,
+              "static": true,
+              "supporter": true,
+              "transparent": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227251,
+            "name": "messy stack things pile paper papers stuff paperwork seat desk junk",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227283,
+            "name": "turborf pascal code things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true,
+              "p81_readable": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227315,
+            "name": "important letters things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true,
+              "p81_readable": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227347,
+            "name": "crumpled letter things",
+            "parentId": 1227091,
+            "attrs": {
+              "concealed": true,
+              "mark_as_thing": true,
+              "p81_readable": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227379,
+            "name": "overdue bills things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true,
+              "p81_readable": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227411,
+            "name": "important bill things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "mark_as_thing": true,
+              "p81_readable": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227443,
+            "name": "business card things",
+            "parentId": 1227091,
+            "attrs": {
+              "static": true,
+              "mark_as_thing": true,
+              "p81_readable": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227475,
+            "name": "786sx computer devices case",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "switchable": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227507,
+            "name": "five screws things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227539,
+            "name": "swirling threads things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227571,
+            "name": "strands of golden thread things gold",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227603,
+            "name": "tiny lights things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227635,
+            "name": "flickers things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1227667,
+            "name": "fireworks things",
+            "parentId": 1227091,
+            "attrs": {
+              "scenery": true,
+              "static": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          }
+        ],
+        "inventory": [
+          {
+            "id": 1226931,
+            "name": "comfy clothes things jeans shirt t-shirt clothing",
+            "parentId": 1226899,
+            "attrs": {
+              "clothing": true,
+              "moved": true,
+              "worn": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          },
+          {
+            "id": 1226963,
+            "name": "twenty dollars things",
+            "parentId": 1226899,
+            "attrs": {
+              "moved": true,
+              "proper": true,
+              "mark_as_thing": true
+            },
+            "confidence": 0.85,
+            "discovered": true
+          }
+        ],
+        "exits": [],
+        "probe": {
+          "status": "glulx-ram-research",
+          "playerId": 1226899,
+          "roomId": 1227091,
+          "scopeCount": 18
+        }
+      },
+      "look": "                                                                             \n \n \nDo you need instructions before entering the 20th century? Y/N >look\n \nPlease answer yes or no.>  "
+    },
+    "moved": false,
+    "hunt": null,
+    "openTrial": {
+      "command": "open empty",
+      "addr": 1227891,
+      "dict": [
+        "empty",
+        "cupboard",
+        "container"
+      ],
+      "name": "empty cupboard",
+      "lsbBefore": [
+        "container",
+        "open",
+        "openable",
+        "scenery",
+        "static",
+        "mark_as_thing"
+      ],
+      "beforeBytes": null,
+      "afterBytes": [
+        16,
+        224,
+        1,
+        0,
+        4,
+        0,
+        0
+      ],
+      "bytesChanged": true,
+      "look": "                                                                                                                                         \n \n \nDo you need instructions before entering the 20th century? Y/N >look\n \nPlease answer yes or no.>  "
+    }
+  }
+]

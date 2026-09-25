@@ -1,0 +1,468 @@
+var WorldModel = {
+
+    engineMode: "heuristic",
+    lastPayload: null,
+    providers: [],
+
+    registerProvider: (provider) => {
+        if (!provider || !provider.name) return;
+        WorldModel.providers = WorldModel.providers.filter(function (p) { return p.name !== provider.name; });
+        WorldModel.providers.push(provider);
+    },
+
+    // D158: every provider registers itself from a `setTimeout(..., 0)` at
+    // script load. A navigation that lands between the script executing and
+    // that timer firing throws the timer away, and nothing ever registers
+    // again -- the provider objects all exist, `WorldModel.providers` is
+    // empty, and the entire payload is dead: no underlined words, no
+    // inventory, no map, no stats, engineMode stuck on "heuristic".
+    //
+    // Reproduced by finishing the tutorial, whose last act is
+    // `location.replace(location.href)` to restart the module, and reported
+    // independently by the operator after saving and loading a game. It is a
+    // race, so it strikes intermittently -- measured three times over ten
+    // runs -- and it looks permanent from the player's side because every
+    // subsequent turn re-collects from the same empty registry.
+    //
+    // Re-registering from the objects themselves is idempotent
+    // (registerProvider replaces by name) and costs one array check per
+    // collect when the registry is already populated.
+    ensureProviders: function () {
+        if (WorldModel.providers && WorldModel.providers.length) return;
+        var wire = function (name, obj, fn) {
+            try {
+                if (typeof obj === "undefined" || !obj) return;
+                WorldModel.registerProvider({ name: name, collect: fn });
+            } catch (e) {}
+        };
+        try { wire("z-ram", typeof ZRamProvider !== "undefined" && ZRamProvider,
+            function () { return ZRamProvider.collect(); }); } catch (e) {}
+        try { wire("grammar-ram", typeof GrammarProvider !== "undefined" && GrammarProvider,
+            function () { return GrammarProvider.collect(); }); } catch (e) {}
+        try { wire("buffer-tap", typeof BufferTapProvider !== "undefined" && BufferTapProvider,
+            function () { return BufferTapProvider.collect(); }); } catch (e) {}
+        try { wire("dark-scope", typeof DarkScope !== "undefined" && DarkScope,
+            function () { return DarkScope.collect(); }); } catch (e) {}
+        try { wire("graphics-dock", typeof GraphicsDock !== "undefined" && GraphicsDock,
+            function () { return GraphicsDock.collect(); }); } catch (e) {}
+        try {
+            if (typeof GlkTapProvider !== "undefined" && GlkTapProvider && GlkTapProvider.collect) {
+                WorldModel.registerProvider(GlkTapProvider);
+            }
+        } catch (e) {}
+        try {
+            if (typeof EmglkenProvider !== "undefined" && EmglkenProvider) {
+                WorldModel.registerProvider(EmglkenProvider);
+            }
+        } catch (e) {}
+    },
+
+    createEmptyPayload: () => ({
+        engineMode: WorldModel.engineMode,
+        vmType: "unknown",
+        schemaId: null,
+        sources: [],
+        roomId: null,
+        playerId: null,
+        roomName: "",
+        roomConfidence: 0,
+        exits: [],
+        inventory: [],
+        discoveredObjects: [],
+        hudMetrics: [],
+        specialCommands: [],
+        resourceWarnings: [],
+        darkness: false,
+        nativeGraphicsActive: false,
+        glkBounds: null,
+        probe: null
+    }),
+
+    isStructuralFact: (extra) => {
+        if (!extra) return false;
+        if (extra.engineMode === "structural") return true;
+        if (extra.probe && extra.probe.status === "z-ram-live") return true;
+        return (extra.sources || []).some(function (s) {
+            if (!s || !s.name) return false;
+            var n = String(s.name);
+            if (n !== "z-ram" && n !== "glulx-ram" && n !== "live-heap") return false;
+            return (s.confidence || 0) >= 0.5;
+        });
+    },
+
+    idBacked: (arr) => {
+        return (arr || []).filter(function (o) {
+            return o && o.id != null && o.id !== "" && o.name;
+        });
+    },
+
+    /* Recover player inventory from RAM parent links when the z-ram
+       provider's children(probe.playerId) is empty. Anchorhead's live
+       player object is the unnamed parent of worn items (id 20), while
+       findPlayerId can return a named "player" class (id 654) with no
+       children. Uses attrs.worn + parentId only — never printed text.
+       Note (D31): this fallback only pulls DIRECT children of the
+       recovered parent id, same one-level limit the primary inventory
+       path had before it was fixed to recurse via
+       ZRamReader.walkVisibleDescendants. No catalog story currently
+       exercises this fallback WITH a nested held container (Anchorhead,
+       the only story known to need this path, has no such case in the
+       regression suite), so it hasn't been extended to recurse — if a
+       story is ever found that needs both this recovery path and nested
+       container visibility, extend this the same way. */
+    recoverInventory: (payload) => {
+        var inv = WorldModel.idBacked(payload && payload.inventory);
+        if (inv.length) return inv;
+        var objs = (payload && payload.discoveredObjects) || [];
+        // D58/D68: only structurally truly-worn objects identify inventory root.
+        // scenery+worn (Glow Bar) must not promote a CustomPlayer wrapper.
+        var worn = objs.filter(function (o) {
+            if (!o || o.parentId == null || !o.attrs) return false;
+            if (typeof AttributeSchema !== "undefined" && AttributeSchema.isTrulyWorn) {
+                return AttributeSchema.isTrulyWorn(o.attrs);
+            }
+            if (!(o.attrs.worn || o.attrs.isWorn)) return false;
+            if (o.attrs.scenery && !(o.attrs.clothing || o.attrs.wearable)) return false;
+            return true;
+        });
+        var pid = worn.length ? worn[0].parentId : (payload && payload.probe && payload.probe.playerId);
+        if (pid == null || pid === "") return inv;
+        return WorldModel.idBacked(objs.filter(function (o) {
+            return o && o.parentId != null && String(o.parentId) === String(pid);
+        }));
+    },
+
+    /* findPlayerId()/probe.playerId can name the wrong object on games
+       whose real PC instance differs from the generic named "player"
+       class Inform declares (Anchorhead: probe.playerId resolves to the
+       named class object 654, but every actual inventory item's real
+       parentId is the unnamed PC instance 20 — the same ambiguity
+       recoverInventory already routes around for discoverability). If
+       ActionSynth (heldContainerName/payloadPlayerId) trusts the wrong
+       probe.playerId, it misreads every top-level held item as nested
+       inside an unknown container, suppressing drop/examine/wear/remove
+       entirely (D31 regression). Correct payload.playerId to whichever
+       parentId actually holds the recovered inventory — the parentId
+       shared by inventory items that is NOT itself the id of another
+       inventory item (a genuine nested container's id WOULD appear in
+       this same array; the true player object never does). */
+    correctPlayerId: (payload) => {
+        var inv = (payload && payload.inventory) || [];
+        if (!inv.length) return payload && payload.playerId;
+        var itemIds = {};
+        inv.forEach(function (o) { if (o && o.id != null) itemIds[String(o.id)] = true; });
+        var counts = {};
+        inv.forEach(function (o) {
+            if (!o || o.parentId == null) return;
+            var key = String(o.parentId);
+            if (itemIds[key]) return;
+            counts[key] = (counts[key] || 0) + 1;
+        });
+        var bestKey = null, bestCount = 0;
+        Object.keys(counts).forEach(function (k) {
+            if (counts[k] > bestCount) { bestCount = counts[k]; bestKey = k; }
+        });
+        if (bestKey == null) return payload.playerId;
+        var numeric = +bestKey;
+        return isNaN(numeric) ? bestKey : numeric;
+    },
+
+    // A room's compiled Z-machine short-name property is not always the
+    // same string the game shows the player (D53 audit, wump2ka.z5.js: a
+    // procedurally-generated dungeon crawl compiles each room's short name
+    // as an internal debug-style label like "C_ROOMS_3", while what the
+    // player actually sees -- in this game's own status bar -- is "Room
+    // #3 / A vast, rough room"). This produced garbled "C_ROOMS_N" labels
+    // throughout the map and Known Rooms panel. Per D47, a room's real
+    // identity is its RAM ObjectId, never its display Name -- so refining
+    // the display string to match what the game itself already shows the
+    // player is not a text-mining/identity concern (D24/D25 govern
+    // discoveredObjects/exits/inventory/room IDENTITY, not a cosmetic
+    // label), the same carve-out D9/D12 already give HUD/behavioral text.
+    // Reads the story's own status GridWindow (`.GridWindow.reverse`,
+    // already a recognized convention in this codebase for the reversed
+    // status/subheader row -- not new text-mining machinery), takes the
+    // first whitespace-padded column (room name/title only, discarding any
+    // second column like score/health that some games pack onto the same
+    // row), and prefers it over the raw RAM short name only when it looks
+    // like real text. Never touches roomId/ObjectId or any structural
+    // field -- exits/inventory/discoveredObjects/identity are untouched.
+    // D80: live Playwright capture (real DOM text, not assumed) proved
+    // `.GridWindow.reverse`'s text for a game like wump2ka.z5.js is NOT
+    // multiple newline-separated lines -- it is ONE line packing multiple
+    // 3+-space-gap-separated COLUMNS, e.g. "Room #19   Score: 2   A vast,
+    // creased, watery room   Health: 73%". D54's original "first column of
+    // the first line" logic therefore always picked the generic id column,
+    // never the real descriptive title sitting in a later column of that
+    // SAME line. Anchorhead ("Outside the Real Estate Office   day one")
+    // and Zork1 ("Clearing   Score: 0  Turns: 5") only ever have ONE
+    // real-title column plus standard status metadata, so they were never
+    // affected. Fix: split the whole text into columns (real newlines, if
+    // a game ever emits them, are treated as column breaks too, so this
+    // still covers that shape), discard any column that is a bare
+    // generic room-id label or a standard IF status-bar metric (Score/
+    // Health/Moves/Turns -- genre-wide conventions, not per-title), and
+    // take the first surviving column. A single-column game's own title
+    // never matches either discard pattern, so its behavior is unchanged.
+    refineRoomDisplayName: (payload) => {
+        if (!payload || !payload.roomName) return payload && payload.roomName;
+        try {
+            if (typeof $ === "undefined") return payload.roomName;
+            // D165: the status row is only a BETTER source than RAM when RAM
+            // has nothing player-facing to offer. D54/D80 introduced this for
+            // wump2ka, whose rooms compile to internal labels like "C_ROOMS_3"
+            // -- there the printed row genuinely is the only real name.
+            //
+            // When RAM already holds a real name, reading the row instead can
+            // only lose. The status window is a fixed-width character grid, and
+            // on a phone it has about 31 columns against 48 on desktop, so a
+            // game that right-aligns a second field writes it over the first:
+            // Anchorhead's row reads "Outside the Real Estatday onee" at 412px,
+            // and that string was being adopted as the room's name -- into the
+            // map, Known Rooms and the tracker. That is D137 surfacing as a
+            // visibly corrupted name rather than as a missing stat.
+            //
+            // So the row is consulted only for a room whose own compiled name
+            // is internal/meta. Every other game keeps the name the story file
+            // itself carries, at any screen width.
+            try {
+                if (typeof MapTopology !== "undefined" && MapTopology.isInternalRoomName
+                    && !MapTopology.isInternalRoomName(payload.roomName)) {
+                    return payload.roomName;
+                }
+            } catch (eInt) {}
+            var el = $(".GridWindow.reverse").first();
+            if (!el || !el.length) return payload.roomName;
+            var raw = String(el.clone().find("style").remove().end().text() || "");
+            var columns = raw
+                .split(/\r?\n| {3,}/)
+                .map(function (col) { return col.trim(); })
+                .filter(function (col) { return !!col; });
+            if (!columns.length) return payload.roomName;
+            var genericRoomNumber = /^(Room\s*#?\s*\d+|#\d+)$/i;
+            var statusMetric = /^(Score|Health|Moves?|Turns?)\s*:/i;
+            var banner = columns.find(function (col) {
+                return !genericRoomNumber.test(col) && !statusMetric.test(col);
+            });
+            return banner || columns[0];
+        } catch (e) { return payload.roomName; }
+    },
+
+    // D65: payload.exits (until now) came ONLY from RAM providers' own
+    // pre-travel lookahead (ZRamReader.lookAheadExits), which D61 gated
+    // to Inform-compiled games only -- a real, honest absence for any
+    // other compiler (ZIL-compiled Zork1/2/3, v3 header), not a guess.
+    // But MapTopology.applyStateDelta already records a compiler-agnostic,
+    // 100% real fact for every game: once the player actually types a
+    // direction and actually moves, that edge is written onto the FROM
+    // room's own `Exits` map (`room.Exits[dir] = destId`). Nothing fed
+    // that already-known, already-confirmed fact back into payload.exits,
+    // so the radial (Qol.js) and Actionable's direction highlighting only
+    // ever offered directions for Inform games with a working RAM
+    // lookahead -- confirmed live on Zork1 (no directions ever appeared in
+    // the radial, even standing in a room whose exit had just been
+    // traveled and was already visibly linked on the map). This merges in
+    // any exit already confirmed for the CURRENT room's own map entry,
+    // never overriding a pre-travel entry that's already present (a
+    // pre-travel RAM hint outranks nothing here -- this only ADDS entries
+    // for directions with no existing hint at all).
+    mergeConfirmedExits: (payload) => {
+        var exits = (payload && payload.exits) || [];
+        try {
+            if (typeof ParchLockMap === "undefined" || !ParchLockMap.Rooms) return exits;
+            var curRoom = null;
+            if (payload.roomId != null && payload.roomId !== "") {
+                curRoom = ParchLockMap.Rooms.find(function (r) {
+                    return r && r.HasRealId && String(r.ObjectId) === String(payload.roomId);
+                });
+            }
+            if (!curRoom && payload.roomId == null && payload.roomName && typeof ParchLockMap.GetRoom === "function") {
+                curRoom = ParchLockMap.GetRoom(payload.roomName);
+            }
+            if (!curRoom || !curRoom.Exits) return exits;
+            // D69: `TranslatorUI.remapRoomExitKeys` deliberately keeps every
+            // room's own `Exits` keys in SHORT/abbreviated form ("nw"/"se"/
+            // "e"/"w") so `Map.js Draw()`'s `#map .room.dir-XXX` slot lookup
+            // works -- but RAM pre-travel lookahead labels are always the
+            // FULL word ("northwest"/"southeast"/"east"/"west"). Comparing
+            // the two forms directly (as this function originally did)
+            // never recognized them as the same direction, so a room with
+            // both a RAM hint AND a confirmed short-form entry for the same
+            // real exit got BOTH pushed into `payload.exits` as if they were
+            // two different directions -- confirmed live on Anchorhead's
+            // starting room, whose radial showed "northwest" and "nw" (and
+            // "southeast"/"se", "east"/"e", "west"/"w") side by side.
+            // `MapTopology.normalizeLabel` is the existing, single-source-of-
+            // truth short-to-long canonicalizer already used everywhere else
+            // in this exact system (`classifyExit`/`link`/state-delta) --
+            // reused here rather than inventing a second alias table.
+            var canonOf = function (dir) {
+                return (typeof MapTopology !== "undefined" && MapTopology.normalizeLabel)
+                    ? MapTopology.normalizeLabel(dir)
+                    : dir;
+            };
+            var haveLabel = {};
+            exits.forEach(function (e) {
+                var lab = String((e && e.label) || "").toLowerCase();
+                if (!lab) return;
+                haveLabel[lab] = true;
+                haveLabel[canonOf(lab)] = true;
+            });
+            Object.keys(curRoom.Exits).forEach(function (dir) {
+                var canon = canonOf(dir) || dir;
+                if (haveLabel[dir] || haveLabel[canon]) return;
+                exits.push({ label: canon, command: canon, confidence: 0.99, confirmed: true });
+                haveLabel[dir] = true;
+                haveLabel[canon] = true;
+            });
+        } catch (e) {}
+        return exits;
+    },
+
+    collectHeuristic: () => {
+        /* D24: heuristic is HUD/meta telemetry only. Never a source for
+           discoveredObjects / exits / inventory / roomName / roomId. */
+        return {
+            sources: [{ name: "heuristic", confidence: 0 }],
+            roomName: "",
+            roomConfidence: 0,
+            roomId: null,
+            exits: [],
+            inventory: [],
+            discoveredObjects: []
+        };
+    },
+
+    collectProviders: () => {
+        WorldModel._providerFacts = [];
+        var merged = {
+            sources: [],
+            roomName: "",
+            roomConfidence: 0,
+            roomId: null,
+            playerId: null,
+            exits: [],
+            inventory: [],
+            discoveredObjects: [],
+            vmType: "unknown",
+            probe: null,
+            engineMode: WorldModel.engineMode,
+            specialCommands: [],
+            hudMetrics: []
+        };
+
+        WorldModel.ensureProviders();
+
+        var h = WorldModel.collectHeuristic();
+        merged.sources = h.sources.slice();
+
+        (WorldModel.providers || []).forEach(function (provider) {
+            try {
+                if (typeof provider.collect !== "function") return;
+                var extra = provider.collect() || {};
+                WorldModel._providerFacts.push(extra);
+                if (extra.sources && extra.sources.length) {
+                    merged.sources = merged.sources.concat(extra.sources);
+                }
+                if (extra.vmType) merged.vmType = extra.vmType;
+                if (extra.hudMetrics && extra.hudMetrics.length) {
+                    merged.hudMetrics = (merged.hudMetrics || []).concat(extra.hudMetrics);
+                }
+                if (extra.specialCommands && extra.specialCommands.length) {
+                    merged.specialCommands = (merged.specialCommands || []).concat(extra.specialCommands);
+                }
+                if (!WorldModel.isStructuralFact(extra)) {
+                    /* D24: P0/P1 may not fill roomId/roomName/exits/inventory/discoveredObjects */
+                    return;
+                }
+                if (extra.probe) merged.probe = extra.probe;
+                if (extra.engineMode) merged.engineMode = extra.engineMode;
+                if (extra.roomId) merged.roomId = extra.roomId;
+                if (extra.roomName) {
+                    merged.roomName = extra.roomName;
+                    merged.roomConfidence = Math.max(merged.roomConfidence || 0, extra.roomConfidence || 0.9);
+                }
+                merged.discoveredObjects = WorldModel.idBacked(extra.discoveredObjects);
+                merged.inventory = WorldModel.idBacked(extra.inventory);
+                merged.exits = (extra.exits || []).slice();
+            } catch (e) {}
+        });
+
+        return merged;
+    },
+
+    tick: () => {
+        var payload = WorldModel.createEmptyPayload();
+        var m = WorldModel.collectProviders();
+        payload.sources = m.sources;
+        payload.roomId = m.roomId || null;
+        payload.roomName = m.roomName;
+        payload.roomConfidence = m.roomConfidence;
+        payload.exits = m.exits;
+        payload.inventory = m.inventory;
+        payload.discoveredObjects = m.discoveredObjects;
+        payload.specialCommands = m.specialCommands || [];
+        payload.hudMetrics = m.hudMetrics || [];
+        payload.vmType = m.vmType;
+        payload.probe = m.probe;
+        payload.playerId = (m.probe && m.probe.playerId) || null;
+        payload.engineMode = m.engineMode || WorldModel.engineMode;
+        payload.discoveredObjects = (function (arr) {
+            var best = {};
+            (arr || []).forEach(function (o) {
+                if (!o || o.id == null || o.id === "" || !o.name) return;
+                var k = String(o.id);
+                if (!best[k] || (o.confidence || 0) > (best[k].confidence || 0)) best[k] = o;
+            });
+            return Object.keys(best).map(function (k) { return best[k]; });
+        })(payload.discoveredObjects);
+        payload.inventory = WorldModel.idBacked(payload.inventory);
+        payload.exits = (function (arr) {
+            var best = {};
+            (arr || []).forEach(function (e) {
+                if (!e || !e.label) return;
+                var k = String(e.label).toLowerCase();
+                if (!best[k] || (e.confidence || 0) > (best[k].confidence || 0)) best[k] = e;
+            });
+            return Object.keys(best).map(function (k) { return best[k]; });
+        })(payload.exits);
+        /* Single apply path: collectProviders already exclusive-replaces
+           structural fields (including empty z-ram-live rooms). No second
+           z-ram collect. recoverInventory uses attrs.worn + parentId only. */
+        if (WorldModel.isStructuralFact(payload)) {
+            payload.inventory = WorldModel.recoverInventory(payload);
+            payload.playerId = WorldModel.correctPlayerId(payload);
+            payload.roomName = WorldModel.refineRoomDisplayName(payload);
+            // D54: after refinement, meta/internal names are honest absence
+            // for map/UI — never leave "(Inform Library)" / "(darkness
+            // object)" / C_ROOMS_* as the authoritative roomName.
+            try {
+                if (typeof MapTopology !== "undefined" && MapTopology.isInternalRoomName
+                    && MapTopology.isInternalRoomName(payload.roomName)) {
+                    payload.roomName = "";
+                    payload.roomId = null;
+                    payload.exits = [];
+                    payload.discoveredObjects = [];
+                }
+            } catch (eMeta) {}
+            payload.exits = WorldModel.mergeConfirmedExits(payload);
+            if (!payload.engineMode || payload.engineMode === "heuristic") payload.engineMode = "structural";
+        }
+        WorldModel.lastPayload = payload;
+        try { window.__PARCHLOCK_WORLD__ = payload; } catch (e) {}
+        // D149: one observation per applied payload, which is one per turn.
+        // Wrapped in its own try so a tracker fault can never cost the player
+        // their world state -- the tracker is a read-only HUD and must degrade
+        // to showing nothing rather than break the turn.
+        try {
+            if (typeof StatTracker !== "undefined" && StatTracker.Tick) StatTracker.Tick();
+        } catch (eStat) {}
+        return payload;
+    }
+};
+
+try {
+    if (typeof EmglkenProvider !== "undefined" && EmglkenProvider) {
+        WorldModel.registerProvider(EmglkenProvider);
+    }
+} catch (e) {}

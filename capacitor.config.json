@@ -1,0 +1,12 @@
+{
+  "appId": "com.parchlock.app",
+  "appName": "ParchLock",
+  "webDir": "capacitor-www",
+  "bundledWebRuntime": false,
+  "android": {
+    "allowMixedContent": false
+  },
+  "server": {
+    "androidScheme": "https"
+  }
+}

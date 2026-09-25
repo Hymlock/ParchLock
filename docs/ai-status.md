@@ -1,0 +1,269 @@
+# AI Status
+
+## D109 update (2026-09-22, codex)
+The shared speech payload applies a narrow anchor-to-anker pronunciation hint so
+Anchorhead uses a K sound in both Android and desktop voices. Display text is unchanged.
+
+## D108 update (2026-09-22, codex)
+Read-aloud now tracks consumed character length per Glk BufferLine, so later paragraphs
+appended to the same element are spoken exactly once. A shared deterministic preparation
+pass for Android and desktop suppresses diagram strokes/prompts, retains lexical labels,
+and normalizes all-caps titles/compass labels.
+
+## Current phase
+D100-D104 COMPLETE in source and in the rebuilt dev APK (2026-09-21, claude sole active seat; codex and grok out of credits). Operator device confirmation pending reinstall.
+
+## D104 / session close (claude)
+Read-aloud reworked (BufferLine elements, not mutation text) plus optional "Skip lines repeated from the previous turn" (default off); see PRODUCTION_PLAN D104 and ARCHITECTURE_UML section 39. D103 tutorial reviewed live (appears at first line prompt on mobile only, no observer churn, Escape completes without toggling the map, Options replay works). Regression: 15-script critical suite plus both D100 harnesses green (d94 54, d96 98, d95 29, d100-read-aloud 23, d100-live-turns 16). d95-mic-hold needed the tutorial dismissed in its page setup (PL_MobileTutorialSeen), same as suites dismiss the splash. SW shell v16. Dev APK rebuilt 07:33: ParchLock-dist/ParchLock-dev.apk sha256 356ae4667d8e91fd..., every checked file inside the APK matches source. Not verified: real-device behaviour (intro speech, tutorial, Back button), web speechSynthesis path in the live-turn harness. Open decisions for the operator: ReadAloudDialogs default (first-run Help popup is not spoken), the no-prompt reachability gap after D102, release signing/legal gates from D99. Stale claims by grok/codex remain on the bus (both out of credits); operator authorised claude to edit under them.
+
+## D103 update
+The first usable mobile line prompt now presents a two-step installation-wide tutorial: actionable
+quick tap versus hold, then input/submit hold -> Tools. Completion/Skip persists globally and Options
+can replay it. Existing gesture handlers are untouched. Expanded D96 is 98/98; portrait and landscape
+visual inspection passed. Broader regression, cache bump, distribution and APK rebuild remain.
+
+## D102 update
+Mobile no longer displays or reserves space for the bottom Menu handle. Existing input
+long-hold radial access is unchanged; its Tools button opens the comprehensive list with
+Open map, Modules, and Exit game added once. Desktop is unchanged. Evidence: D96 82/82.
+Claude's independent live Anchorhead probe also passed with no D102 defects.
+
+## D101 update
+The duplicate Tools fix is retained and now directly tested in game and Tools menu
+contexts. Mobile Display **Text size** uses a prose-only relative reading scale while
+D94's fixed character-cell layer remains unchanged; desktop keeps its existing prose
+scaling and fixed grid. Evidence: D94 54/54 and D96 112/112. No distribution/APK rebuild
+is being raced while Grok's separate D100 read-aloud work is live.
+
+## Historical D99 program
+D99 ParchLock release program with D97 story policy and D98 Module Manager.
+Canonical plan: `PRODUCTION_PLAN.md` sections 12-13 (§12.8 Grok closeout). Target
+architecture: `ARCHITECTURE_UML.md` sections 34-35. Codex implemented; Grok finished
+full adversarial audit+fix: Tools duplicate fixed; Display font experiment reversed
+(operator); packaging leftovers cleaned; 15/15 critical harnesses green; dist+dev APK
+rebuilt. External gates remain operator-owned.
+
+## D99 completion update
+
+Product identity, D98 local Module Manager, documentation/legal set, runtime and source
+allow-lists, Android namespace/permissions/signing flow, generated-asset cleanup and
+dead Emglken runtime exclusion are implemented. Focused desktop/mobile/module/semantic
+suites and the Android debug build pass. The known Wumpus/zblorb holistic-scope gap is
+recorded as a residual mapping limitation, not hidden as a pass.
+
+## Last update
+2026-09-20 (evening), claude: D94 -- intermittent blank game screen (missing
+UndoRestoreSync.onStateRestored threw inside the VM boot; also the true cause of the
+"pre-existing" ui-regression failure D93 mis-attributed to Glk) and misaligned mobile text
+(GlkOte measured its character cell in #parchment while rendering in #windowport; fixed by
+css/CharCell.css). Guards: harness/d94-cell-and-boot.js, harness/audit-restore-sync.js
+(real-module cases), tools/check-missing-methods.js. Five desktop Playwright suites now
+dismiss the ParchLock splash like the app does. APK versionCode 25. See PRODUCTION_PLAN.md
+D94 and ARCHITECTURE_UML.md section 31. Operator granted claude permission to edit files
+held by other seats. NEXT: mic hold-to-talk investigation (operator report).
+
+2026-09-20, claude: PRODUCTION_PLAN.md/ARCHITECTURE_UML.md fully updated for this
+session's work -- see decision log D88 (updated, stages 1-6 shipped)/D89 (critical
+whole-catalog RAM-reading recovery, joint with codex)/D90 (stale-fixture repairs)/D91
+(GrammarProvider pre-existing bug)/D92 (mobile PWA + native Android conversion), plus
+ARCHITECTURE_UML.md sections 28 (updated implementation status)/29 (RAM-reading recovery
+architecture)/30 (mobile architecture). One known open item tracked separately, not
+blocking: harness/d23-topology-smoke.js regression in codex's MapTopology.js pathing
+changes, flagged to codex (bus #536), not yet resolved. Full regression suite
+re-confirmed green after doc updates (18 core harnesses spot-checked directly).
+
+## Current task
+D88 staged implementation, actively in progress with claude piloting and grok as the one
+live brain (codex is intentionally not running -- out of credits, operator directive: one
+brain only alongside the pilot). Stages 1-6 are done and verified (see Stage 6 entry
+below); Stages 7-8 (held-out challenge, cleanup) remain. Stage 1 baseline
+capture is CLOSED: grok's tools/d88-baseline-capture.js (632 lines, loads real Zork1
+z-code, exercises GrammarProvider against real grammar-ram, caught a real finding --
+grammarSourceHardcodesLookInventory: true) runs clean to tools/screenshots/matrix/
+d88-baseline.json; a second independent capture (tools/d88-baseline-capture-claude.js,
+synthetic-payload, executes real ActionSynth/Actionable.Open/Qol/Autocomplete/
+commandForExitLabel) cross-checks it. Stage 6 (consumer cutover) not started --
+deliberately deferred to be driven by the operator's actual mobile bug reports rather
+than a guessed touch-handling implementation.
+
+Known operational issue: the grok brain hit a fatal mailbox desync shortly after
+finishing Stage 1 (`message #483 is no longer current unread mail for grok`), crashed,
+was auto-restarted by bus-supervise, and the fresh process began waking on EMPTY
+timeouts (no new mail) and burning multi-minute provider calls re-stating an
+already-closed Stage 1 finding. Told to stand down (#504). Worth watching for
+recurrence -- looks like a real bug in the brain's idle-wake logic, not normal behavior
+(contrast with 2026-09-14's logs, which correctly no-op'd idle timeouts as
+"wake-idle-skipped").
+
+## Last update
+2026-09-19, claude: took the baton (codex out of credits, no D88 product code existed on
+disk; its Mendel/Halley/Hegel audits were read-only and left nothing recoverable). Fixed
+both named Stage 1 stale fixtures (harness/d31-known-topics.js ask-template regex,
+harness/command-consistency-regression.js Input.Inject mock return value); both green,
+independently re-verified by grok (#490). The bus's grok/codex brain processes had been
+dead since 2026-09-14 (no service supervisor in this bus version, per Portable-AI-Bus's
+own docs); restarted via `node scripts/bus-up.js --root . --console claude --brains
+codex,grok` after clearing a stale baton stall with `mailbox.js reassign`. Per operator
+correction, killed the codex brain (pid 36708) and its supervisor immediately after start
+and relaunched bus-supervise scoped to `--seats grok` only -- one live brain, matching
+"one brain per instance" alongside the human-piloted seat. Grok's process genuinely runs
+(~6 min real inference time per call, confirmed via brain-grok.log stall-resolution
+timing) and produced an independent, technically specific audit (#489-491) that found a
+real gap: `Intent.ASK_ABOUT` had no producing path in js/SemanticActions.js since
+ActionSynth never emits an "ask about" verb (Actionable.Open() builds it ad hoc,
+per-topic). Fixed with a dedicated `SemanticActions.resolveAskAboutFormsForObject`
+entry point (kept separate from `resolveForObject` so Stage 2's ActionSynth byte-parity
+gate stays intact) that mirrors Actionable.Open()'s real construction; proved exact
+parity against the REAL Actionable.Open() output (not a reimplementation guess) via a
+jQuery-mocked vm sandbox in harness/d88-semantic-parity.js fixture 4.
+
+Stage 2 (semantic registry, shadow mode): js/SemanticActions.js added, wired into
+play.html as a script tag only (no consumer calls it yet -- UI still runs through
+ActionSynth). harness/d88-semantic-parity.js: 19/19, deep parity with
+ActionSynth.commandsForObject/commandsForPayloadObjectId/collectFromPayload proven byte-
+for-byte across mixed-attr, nested-container, and inspect-disabled fixtures.
+
+Stage 3 (role-aware multiword recognition): SemanticActions.recognizeTypedCommand added,
+covering look-at/talk-to/switch-on/switch-off/give-to/put-in/ask-about templates with
+exact unique-name matching (never partial/fuzzy). harness/d88-multiword-recognition.js:
+16/16, including same-named-object ambiguity (D47-style) and partial-command fail-closed
+cases.
+
+Full harness/*.js sweep re-run after each stage; clean throughout (only underscore-
+prefixed live-browser/CDP probe scripts fail outside a real browser, expected).
+
+Stage 4 (passive TurnRecorder evidence): SemanticActions.turnRecorderAnalyzer registered
+against the REAL, unmodified js/TurnRecorder.js (registration call added in play.html
+only). Records provisional-only evidence for recognized multiword commands; every entry
+is unconditionally confirmed:false -- no per-engine structural opcode witness is wired
+yet, so nothing here can promote to confirmed semantics (matches the invariant that
+behavioral/transcript signal alone is never proof). harness/d88-passive-evidence.js:
+9/9, including proof that recording evidence has zero effect on resolveForObject's
+output (shadow mode).
+
+Stage 5 (sidecar persistence): PM_SemanticActions_<release-serial-checksum-adapter-locale>
+namespace, separate from PM_AttrCalib_* v2 (never read/rewritten). Fails closed on
+corrupt JSON, version mismatch, and buildKey mismatch. Only confirmed:true entries are
+ever persisted -- today that's always zero, by construction, since nothing is confirmed
+yet; the empty-persist case and a real confirmed-entry case are both covered. D85
+substitute-verb data imports once as provisional (never confirmed) evidence. One
+additive line in js/UndoRestoreSync.js's existing resync() (same pattern as its other
+subsystem tick/Refresh calls) clears generation-bound evidence on real undo/restore/
+restart. harness/d88-sidecar-persistence.js: 17/17.
+
+Stage 6 (unified consumer cutover) DONE, behind SemanticActions.CutoverFlag
+(localStorage "PM_SemanticActions_Cutover" === "1", default OFF -- legacy path
+byte-identical unless explicitly enabled). Swapped consumers, each proven flag-on
+output identical to flag-off legacy output in harness/d88-stage6-cutover.js (13/13):
+left-click primary command (js/Actionable.js Init() click.pmAct, via new
+Actionable.resolveObjectCommands/resolveExitCommand helpers), object/inventory radials
+and ask-about (Actionable.Open(), via the same helpers plus resolveAskAboutTopics),
+input radial (js/Qol.js GetRadialCommands), autocomplete (js/Autocomplete.js
+RamCommandSeeds). Usage-by-intent added additively (Actionable.intentUsageCounts /
+noteIntentUsage), legacy usageCounts/verbCounts untouched, per the plan's "retain legacy
+counters for comparison during the soak."
+
+Genuine touch long-press added (ARCHITECTURE_UML.md's mobile gate -- contextmenu
+simulation is explicitly not proof): real touchstart/touchmove/touchend/touchcancel
+handlers in Actionable.Init(), additive only (click.pmAct/contextmenu.pmAct
+completely unchanged). Real timing (LongPressMs/LongPressMoveCancelPx), real
+cancellation on movement past threshold, real duplicate-submission prevention
+(touchend after a fired long-press calls preventDefault so the trailing synthetic
+click/contextmenu cannot also submit). harness/d88-touch-longpress.js: 9/9.
+
+Also fixed, found via the Stage 6 regression sweep (pre-existing, unrelated to D88,
+operator-approved to fix now): js/GrammarProvider.js's readVerbWords had an
+alphabetical slice(0,80) cap that silently excluded late-alphabet verbs (take/look/
+pray/xyzzy all missing on Advent); collect() also hardcoded look/inventory,
+duplicating js/Qol.js's own universals. Both removed -- no artificial cap (same
+discipline as the rest of this codebase's D77 "let OpenRadial page real overflow"
+rule), specialCommands is now exactly the real per-build dictionary-verb words, never
+padded. Verified bounded/real, not runaway: Advent 228, curses 276, adverbum 293
+verb-flagged words, each decoded from that game's own dictionary (never an external
+list). harness/d34-dictionary-verbs.js: 54/54 (was 42/54).
+
+Stages 7-8 (held-out title-blind challenge, legacy cleanup) not started, gated on an
+operator decision to flip the cutover flag on by default after a soak period.
+
+Full harness/*.js sweep re-run after Stages 4-5; clean (only underscore-prefixed live-
+browser/CDP probe scripts fail outside a real browser, expected, unrelated to D88).
+
+## Workflow states
+- PLANNING
+- READY_FOR_IMPLEMENTATION
+- IMPLEMENTATION_IN_PROGRESS
+- READY_FOR_REVIEW
+- REVIEW_IN_PROGRESS
+- READY_FOR_FIXES
+- DONE
+
+## Log
+- 2026-09-16 codex: Two isolated proposals converged on stable intents plus parallel
+  dialect providers. An isolated challenge rejected transcript diversity as semantic
+  proof and added fail-closed INSPECT, ambiguity, touch, localization, side-effect,
+  persistence, and delayed-output gates. Recorded as D88; documentation only.
+- 2026-09-16 codex: D87 audit remediation ready for review. Structural location
+  strategies are compiler-aware and coexist: Infocom keeps native containment,
+  Inform enterable nesting is walked, and parentless games use learned changing
+  globals. Names remain display labels. Command lifecycle, radials, navigation,
+  persistence, action contexts, autocomplete, and server endpoints were repaired.
+  Full evidence is recorded in PRODUCTION_PLAN.md and docs/ai-handoff.md.
+- 2026-09-13 claude: D79 (`js/ZRamReader.js` `findLocationGlobal` scoring fix) shipped, verified,
+  documented. Do not reopen.
+- 2026-09-13 claude: found+fixed Wumpus room-title bug scope; codex claimed js/WorldModel.js.
+- 2026-09-13 codex: first edit landed, self-reported passing, but modeled the bug as multi-line
+  with a fabricated harness fixture; claude verified against real captured data and found it
+  still failed for wump2ka, took the file over directly.
+- 2026-09-13 claude: D80 (real column-based fix) shipped, verified live, documented correctly in
+  both plan/architecture files; corrected the earlier inaccurate entries.
+- 2026-09-13 claude: D81 (Actionable.js room-scope tracking was name-keyed, not RAM-id-keyed --
+  the same bug class D47 already closed for MapTopology/Map.js, extended to this subsystem)
+  shipped, verified live across wump2ka/Anchorhead/Zork1, documented.
+- 2026-09-13 claude: D82 (Deadline.z3.js real playthrough found the player object itself leaking
+  into room-scope discoveredObjects) shipped, verified, documented.
+- 2026-09-13 claude: D83 found (Bronze.zblorb.js never resolves a real room via parent(player) or
+  findLocationGlobal) -- documented as an honest, open limitation rather than a forced guess.
+- 2026-09-13 claude: D84 -- per-game learned location-global calibration, closing D83 generically.
+  Investigated and rejected hooking the interpreter's `variable()` accessor (JIT compiler bypasses
+  it for the common global-store path, confirmed via direct `lib/zvm.js` source inspection);
+  shipped a plain-RAM-read correlation approach instead (same primitives `findLocationGlobal`
+  already uses, no new VM patch surface). Verified live: Bronze now resolves rooms correctly after
+  ~8 moves; Anchorhead/wump2ka/Zork1 unaffected. New harness `attr-calibrator-location-global.js`
+  (13/13). Full regression suite green. No active task remains.
+- 2026-09-13 claude: operator reported a live UI bug in `Alabaster.gblorb.js` (Glulx/Quixe host,
+  not Z-machine/ZVM) -- widening the browser window after load permanently removes the
+  `.Input.LineInput` element (confirmed live via real resize, not assumed); Anchorhead (ZVM)
+  survives the identical resize fine. Traced partway: `Parchmap.js` `Init()` references
+  `$(window).resize(Parchmap.UpdateUI)` but `Parchmap.UpdateUI` is never defined anywhere in the
+  codebase (a real, confirmed dead reference) -- however `has-line-input`'s body-class toggle is
+  just a passive per-tick reflection of the input's actual state (`Parchmap.Loop`, every 200ms),
+  not the cause, so fixing that dead reference alone is unlikely to be the real fix. The disppearing
+  DOM element itself points to the interpreter's/GlkOte host's own resize-triggered window-layout
+  code (`lib/main.js`/`lib/quixe.js`), which is Glulx/Quixe-specific plumbing this project has not
+  yet started decoding (operator: "we have not started decoding these types of modules... they're
+  an entirely different system... we don't have to concentrate on them yet"). PARKED, not fixed --
+  no code changed, claim released, diagnostic scripts/screenshots cleaned up. Revisit only as part
+  of deliberate Glulx/Quixe work (same scope boundary as D28/D36/D38), not as a one-off patch.
+
+- 2026-09-22 codex: D110 implemented and ready for adversarial review. All adaptive
+  command radials share uncapped usage-first ordering with deterministic prior/index
+  tie-breaks; non-submitting launchers/stems count once; More/Tools are excluded.
+  Focused structural harness: 144/144. Existing real-browser mobile/desktop suite with
+  D110 DOM checks: 102/102. Cache advanced to v25.
+- 2026-09-22 codex: Claude audit #762 verified D110 A-H and found one overlap defect:
+  a stem tap plus its accepted completion counted twice. Operator selected exact-once
+  accounting. Pending stem completions now deduct their accepted overlap; unrelated
+  submissions clear the link while preserving abandoned taps. Cache advanced to v26.
+- 2026-09-22 codex: D111 automatic mobile arrow pad implemented from structural
+  GridWindow+CharInput eligibility. Buffer prompts are excluded; auto/manual ownership,
+  dismissal, prompt-replacement grace, and direct keyboard-strip access are preserved.
+  Anchorhead live gate: six arrows, 183 animation frames, zero visibility transitions;
+  real keyboard Q exits HELP. Cache advanced to v27.
+
+- 2026-09-20 (claude): D96 -- mobile Menu is now a retractable bottom handle (no longer over the text field) and a faint right-edge Map tab opens/closes the map; also fixed first-launch Help popup losing its dialog flag. See PRODUCTION_PLAN.md D96, ARCHITECTURE_UML.md section 33, harness/d96-menu-handle-map-tab.js (109 checks). APK versionCode 28, cache v7.
+
+- 2026-09-20 (claude): D97/D98/D99 recorded (planning only): D99 = master ledger of the ParchLock release program (retained scope), D97 = story policy, D98 = Module Manager with codex review #609 folded in; ARCHITECTURE_UML.md sections 34 (release/documentation) and 35 (module library). No implementation authorized; operator gates open: source delivery, signing-key custody, allowBackup/INTERNET, PL prefix confirmation, legal name.
+
+- 2026-09-20 (claude): FINAL PLAN submitted to codex for implementation by operator instruction: PRODUCTION_PLAN.md sections 12 (D99 ParchLock release program) and 13 (D98 Module Manager) are the canonical text; ARCHITECTURE_UML.md sections 34-35; operator decisions Q1-Q6 in section 12.3 (source zip bundled with every release + Git later; operator keeps signing key; allowBackup off; INTERNET removed; PL prefix; credit only). Single-writer freeze begins when codex confirms claims reconciled; grok review/test-only. Implementation pending.
+
+- 2026-09-20 (claude): SEAT FINALIZED -- claude is out of usage credits. All claims released. Handoff: PRODUCTION_PLAN.md sections 12 (D99) and 13 (D98) + ARCHITECTURE_UML.md sections 34-35 are the final plan for the ParchLock program and Module Manager (implementation pending, codex single writer). The sole-editor rule for those two docs cannot be honored while claude is out: operator must designate an editor. Operator gates all answered (section 12.3). No product code was changed after D96 (APK versionCode 28, cache v7).

@@ -1,0 +1,6 @@
+# ninja log v7
+11	73	8108729322530599	CMakeFiles/pm_vm_probe.dir/src/pm_vm_probe.c.obj	7ff96719ea5a8aa0
+17	98	8108729322591061	CMakeFiles/pm_vm_probe_smoke.dir/tests/smoke_probe.c.obj	1b13a17e2915f95c
+74	341	8108729325608095	pm_vm_probe.dll	9f2019e4b06f508b
+74	341	8108729325608095	pm_vm_probe.lib	9f2019e4b06f508b
+341	580	8108729325828416	pm_vm_probe_smoke.exe	451d14d5a26eab6c

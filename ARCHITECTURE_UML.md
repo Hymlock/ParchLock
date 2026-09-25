@@ -1,0 +1,2346 @@
+# Parchmap - Architecture (UML companion)
+
+## September 16 Repair State
+
+Implementation and validation are complete and ready for review; see the production
+plan's audit section for evidence. Room display text, including Wumpus's D80
+descriptor, is not an identity key. CurrentRoomId stores the RAM ObjectId;
+DisplayedRoomId refers to the map-array entry. Graph exit targets remain array IDs.
+
+```mermaid
+flowchart LR
+    Typed[Native typed Enter] --> Accepted[TurnRecorder accepted-submit event]
+    Inject[Input.Inject submit] --> Accepted
+    Accepted --> Usage[Actionable usage counts]
+    Accepted --> Sync[UndoRestoreSync pending boundary]
+    Accepted --> Calibration[Frozen turn calibration]
+    Calibration --> RAM[Validated location-global hypothesis]
+    RAM --> Payload[WorldModel roomId and display label]
+    Payload --> Graph[MapTopology identity-keyed graph]
+    Graph --> Map[Map current and displayed room references]
+    Map --> Route[Navigator expected-arrival check]
+    Sync --> Graph
+```
+
+Calibration cache version 2 invalidates earlier location and bit conclusions that
+could be supported by constant globals or incidental mutations. Attribute-bit
+promotion requires a unique candidate across complementary mutations. Import
+validation is shared through WorkspaceUI.ValidateMap; failed writes must restore
+prior persisted data, and corrupt startup maps are preserved rather than overwritten.
+
+> Companion to [`PRODUCTION_PLAN.md`](PRODUCTION_PLAN.md).  
+> Related: [`GUI_BASELINE.md`](GUI_BASELINE.md).  
+> The plan is prose authority; this is the picture. **If they disagree, the plan wins.**
+
+**Status:** Audited 2026-09-11 (updated BUILD 41 dual-host + RemGlk + portable probe); **corrected 2026-09-12: D24-D30 (no heuristic fallback for actionable/map/radial, real attribute-bit schema, deterministic input-line radial, real-gameplay verification, non-Inform formats committed not deferred, docs-completeness gate, full map-beautification mechanics restored) - see PRODUCTION_PLAN.md decision log for full text.** **Holistic live-audit in progress 2026-09-12 (D52-D57 and ongoing): operator-directed real-gameplay audit of Anchorhead + wump2ka.z5.js (Z-machine only for now; Glulx/D38 paused not cancelled), Grok's seat currently exhausted (resumes 2026-09-18) so claude is running it solo, finding and generically fixing real bugs (nested inventory, map identity/dedup, numbered-exit commands, room display names, takeable/room-scope-leak attribute bugs) as they surface - not per-story patches, see decision log.**  
+**Rendering:** Mermaid (GitHub / VS Code)
+
+| Legend | Meaning |
+|---|---|
+| [yes] | exists now |
+| [~] | partial / wrong backend |
+| [ ] | target |
+| [!] | risk seam |
+
+### Audit note
+Updated for **BUILD 41**: L2.5 Translator (D12), dual-host Emglken opt-in, RemGlk/GlkTap providers, portable `pm_vm_probe` + `DISTRIBUTE.md` (D13). Default product host remains Quixe/ZVM (`play.html`). Emglken host is `play-emglken.html`.
+- D14 BUILD 45 O1-O4 chrome complete; HEAP optional
+
+---
+
+## 1. Current vs target stack
+
+```mermaid
+flowchart TB
+  subgraph TODAY["Current default BUILD 41 - Quixe/ZVM"]
+    HTML1[index/play.html] --> JQ[jQuery shell]
+    JQ --> MAIN[lib/main.js]
+    MAIN --> ZVM[lib/zvm.js]
+    MAIN --> QUIXE[lib/quixe.js]
+    JQ --> LOOP[Parchmap.Loop 200ms DOM poll]
+    LOOP --> ACT[Actionable heuristics]
+    LOOP --> MAP[Map string rooms]
+    LOOP --> INV[Inventory command inject]
+  end
+
+  subgraph TARGET["Target"]
+    HTML2[index/play.html] --> UI[L3 Overlay chrome]
+    UI -->|commands| L2[L2 Glk / AsyncGlk seam]
+    L2 --> T[L2.5 WorldModel Translator]
+    T -->|UIPayload + confidence| UI
+    L2 -->|GlkOte| EM[Emglken]
+    EM --> BOC[Bocfel Z]
+    EM --> GLU[Glulxe/Git Glulx]
+    BOC -.->|exports optional| P2[P2 Z RAM provider]
+    GLU -.->|exports optional| P3[P3 Inform-Glulx provider]
+    L2 --> P0[P0 Behavioral provider - HUD/meta only]
+    P0 --> T
+    P2 --> T
+    P3 --> T
+  end
+```
+
+Target has no P1 Heuristic provider feeding the Translator (D24) - the TODAY subgraph's `ACT[Actionable heuristics]` above is what gets replaced, not carried into TARGET.
+
+---
+
+## 2. Layer + Translator components
+
+```mermaid
+flowchart LR
+  subgraph L3["L3 Overlay"]
+    MAPUI[Map / floors]
+    RAD[Radials / tools]
+    TREE[Inventory tree]
+    HUD[HUD]
+    WIN[Glk bounds]
+  end
+
+  subgraph T["L2.5 Translator"]
+    MERGE[Merge + confidence]
+    GATE[RAM-scope shield - containment/light, D24: no text matching]
+    SYN[Action synth]
+    ROUTE[Route queue]
+    PAY[UIPayload out]
+  end
+
+  subgraph L2["L2 Glk seam"]
+    TURN[Turn sync]
+    TOK[Stream tokens]
+    INJ[extevent inject]
+    WINT[Window tree]
+  end
+
+  subgraph L1["L1 VM optional"]
+    RAM[RAM exports]
+    HOOK[Save/Undo hooks]
+    DICT[Dictionary / strings]
+    CALIB[Opcode calibration hooks - D73]
+  end
+
+  subgraph PROV["Providers"]
+    P0[P0 Behavioral - HUD/meta only]
+    P2[P2 Z RAM]
+    P3[P3 Inform-Glulx]
+  end
+
+  L1 --> PROV
+  L2 --> PROV
+  PROV --> T --> L3
+  L2 --> T
+```
+
+P1 Heuristic is not part of the actionable/map/radial provider set (D24) - dropped from this diagram accordingly.
+
+---
+
+## 3. Per-turn sequence (Translator-centric)
+
+```mermaid
+sequenceDiagram
+  participant VM as L1 VM
+  participant GLK as AsyncGlk
+  participant P as Providers
+  participant TR as Translator
+  participant UI as L3 Overlay
+
+  VM->>GLK: output / input cycle
+  GLK->>P: turn/update + windows/text
+  P->>TR: provider facts + confidence
+  opt structural available
+    TR->>VM: read tree/exits via exports
+  end
+  TR->>TR: merge, spoiler gate, synth
+  TR->>UI: UIPayload
+  UI->>UI: render
+  UI->>GLK: extevent command
+  GLK->>VM: line input
+```
+
+---
+
+## 4. Provider ladder (capability)
+
+```mermaid
+flowchart TD
+  START[Story loaded] --> DET{Format / exports?}
+  DET -->|always| P0[Enable P0 Behavioral - HUD/meta only]
+  DET -->|Z + vm_read exports| P2[Enable P2 Z RAM]
+  DET -->|Inform-Glulx fingerprinted| P3[Enable P3 Glulx RAM]
+  DET -->|other format, out of scope - D39| NONE[No actionable/map/radial overlay - D24]
+  P0 --> TR[Translator]
+  P2 --> TR
+  P3 --> TR
+  NONE --> TR
+  TR --> UI[L3 UIPayload]
+```
+
+P1 Heuristic is not part of this ladder for actionable/map/radial (D24) - it has been removed as a source for those three fields. A format that reaches `NONE` gets HUD/meta from P0 only and no actionable/map/radial overlay until a real structural provider exists for it.
+
+---
+
+## 5. Containment matrix (structural providers only)
+
+```mermaid
+flowchart TB
+  P[Player] --> R[Resolve real room via parents]
+  R --> WALK[child/sibling walk]
+  WALK --> ATTR{Attributes}
+  ATTR -->|open OR transparent container| REC1[Recurse]
+  ATTR -->|supporter| REC2[Recurse]
+  ATTR -->|closed opaque| HIDE[Do not recurse]
+  ATTR -->|enterable| VEH[Recurse + ancestor room]
+  ATTR -->|animate| NPC[Recurse held/worn]
+  ATTR -->|worn clothing container| PKT[Recurse unless closed]
+```
+
+Full Inform light/scope (`OffersLight`, `thedark`) is Phase 8 - this is containment only.
+
+---
+
+## 6. Keep / replace / eliminated (D24)
+
+```mermaid
+flowchart TB
+  subgraph KEEP["Keep UX"]
+    K1[Map pan/zoom/notes]
+    K2[Radials / tools chrome]
+    K3[Slash commands]
+    K4[Save packages]
+    K5[GameList / themes]
+    K6[tools regressions]
+  end
+  subgraph REPLACE["Replace backends - RAM only, D17/D24"]
+    R1[Turn sync]
+    R2[Noun/action source]
+    R3[Room identity]
+    R4[Inventory SoT]
+    R5[Quixe/ZVM host]
+  end
+  subgraph ELIMINATED["No forever fallback (D24)"]
+    F1[P1 Heuristic text-mining - removed for actionable/map/radial]
+    F2[Show nothing when P2/P3 absent, per room/object/format]
+  end
+  KEEP --> REPLACE
+  REPLACE --> ELIMINATED
+```
+
+P0 Behavioral remains for HUD/meta telemetry only (Phase 7) - it was never the actionable/map/radial source and is unaffected by D24.
+
+---
+
+## 7. DevKit & harness
+
+```mermaid
+flowchart LR
+  SKSE[SKSEDevKit] -.-> L1build[L1 export builds]
+  ENS[Ensouled harness patterns] --> G1[docs-sync]
+  ENS --> G3[spoiler-shield]
+  TOOLS[tools/ Playwright] --> G6[ui-regression]
+  HAR[harness/] --> G4[payload-schema]
+  HAR --> G7[translator-merge]
+```
+
+---
+
+## 8. UIPayload contract
+
+```mermaid
+classDiagram
+  class UIPayload {
+    +string engineMode
+    +string vmType
+    +string schemaId
+    +ProviderTrace[] sources
+    +int roomId
+    +string roomName
+    +float roomConfidence
+    +Exit[] exits
+    +InvNode[] inventory
+    +DiscObject[] discoveredObjects
+    +HudMetric[] hudMetrics
+    +string[] specialCommands
+    +Warning[] resourceWarnings
+    +bool darkness
+    +bool nativeGraphicsActive
+    +WindowRects glkBounds
+  }
+  class ProviderTrace {
+    +string name
+    +float confidence
+  }
+  class Exit {
+    +string label
+    +int targetRoomId
+    +bool isDoor
+    +bool isLocked
+    +bool isNonCardinal
+    +int zDelta
+    +float confidence
+  }
+  class InvNode {
+    +int id
+    +string name
+    +bool isWorn
+    +bool isContainer
+    +bool isOpen
+    +string[] actions
+    +InvNode[] contents
+  }
+  class DiscObject {
+    +int id
+    +string name
+    +int parentId
+    +string[] actions
+    +float confidence
+  }
+  UIPayload --> ProviderTrace
+  UIPayload --> Exit
+  UIPayload --> InvNode
+  UIPayload --> DiscObject
+```
+
+HUD / resourceWarnings / some specialCommands are heuristic-labeled even when present.
+
+---
+
+## 9. Protocol-first integration
+
+```mermaid
+flowchart TB
+  subgraph PUBLIC["Usable now"]
+    U[GlkOte.update]
+    E[extevent]
+    B[before_select_hook]
+    D[Dialog signals]
+    R[.glktra]
+  end
+  subgraph NEED["Needs Emglken RFC/fork"]
+    X[vm_read_u8/u16/u32]
+    Y[vm_ram_base/length]
+    Z[undo/restore signals]
+  end
+  PUBLIC --> P0[P0 Behavioral]
+  NEED --> P2[P2/P3 Structural]
+  P0 --> TR[Translator]
+  P2 --> TR
+  TR --> UI[L3 outside windowport]
+```
+
+---
+
+## 10. Original module migration (O1-O5)
+
+```mermaid
+flowchart LR
+  O1[O1 Host swap] --> O2[O2 Turn sync + Translator seam]
+  O2 --> O3[O3 Inventory/synth UI]
+  O3 --> O4[O4 Map IDs + Navigator]
+  O2 --> O5[O5 tools/harness]
+```
+
+---
+
+## 11. L3 geometry contract (GUI baseline)
+
+```mermaid
+flowchart TB
+  subgraph DESKTOP["Desktop ~1400x900"]
+    BUF[Buffer + status grid]
+    MAPPANE[Map / Items / Known Rooms]
+    RAD[Radials over buffer]
+  end
+  subgraph MOBILE["Mobile"]
+    MODAL[Maps/tools modals]
+    PIN[Pinned input]
+  end
+  BUF --- MAPPANE
+  RAD -.-> BUF
+  MODAL --- PIN
+```
+
+Preserve unless a phase gate explicitly changes it.
+
+---
+
+## 12. Decision anchors (must match plan section 11)
+
+- D1 Plan authority; TXT advisory  
+- D2 TS-first new engine code  
+- D3 Inform-family = structural RAM *target* (not ship-first)  
+- D4 Spoiler default on  
+- D5 DevKits/harnesses first-class  
+- D6 Host migrate before deep RAM  
+- D7 WASM layout after perf gate  
+- D8 Protocol-first; RAM behind exports  
+- D9 Confidence merge  
+- D10 Outside `#windowport`; gen-aware caches  
+- D11 In-place O1-O5 updates  
+- D12 WorldModel Translator mandatory; provider order P0/P1/P2/P3 for HUD/meta; reject RAM-first gate  
+- D24 No heuristic/text-mining fallback for actionable/map/radial, any VM format - show nothing instead  
+- D25 Real attribute-bit schema (sourced profile) required; no name-regex attribute guessing  
+- D26 Input-line radial: keep general UI chrome, RAM-derive the game-content portion (D23-compliant, no compass assumption)  
+- D27 Real gameplay + screenshots required to close a UI-facing phase, not synthetic fixtures alone  
+- D28 SUPERSEDED by D39 (2026-09-12) - originally "every format gets a real structural RAM provider eventually (Phase 10: Hugo/TADS/Adrift)"; kept for decision-log history only, no longer describes committed work  
+- D39 Hugo/TADS/Adrift removed from the plan entirely, 2026-09-12 (operator directive) - not a deferral or a pause, these formats are no longer planned work of any kind. Scope is Z-machine (done) and Glulx (in progress, D38) only  
+- D29 Docs-completeness gate: every phase updates the relevant plan/architecture sections and leaves every touched legacy system either correctly updated or fully removed - never half-migrated or contradictory  
+- D30 Phase 6 map-beautification restored to full fidelity from the conversion guide (rigid-cluster/soft-spring physics, named planarization method, concrete pixel params, sub-map hulls, spoke-angle seeding, Z-axis dual rendering) - see §26  
+- D31 Three requirements restored after being dropped entirely from the original conversion: nested-container "take out of X" verb suppression, RAM-scope-corrected NPC Known Topics palette, 320px responsive panel-collapse threshold - see PRODUCTION_PLAN.md Phase 4 / §6.6  
+- D32 Click-historical-map-node-to-rewind (N real UNDOs) restored (Phase 5); vehicle parent(parent(player)) room resolution restated in PRODUCTION_PLAN.md prose (previously picture-only here in §5, violating the plan's own prose-authority rule)  
+- D33 Plan-vs-actual-code reconciliation (2026-09-12): fixed six stale claims found by re-reading current code, incl. this doc's §15 wrongly framing already-implemented ZvmCapture.js/ZRamProvider.js as "target"; docs are now claude-sole-editor, grok reports via mailbox only  
+- D34 Grammar-table verb extraction (real per-object verb lists from the game's compiled Grammar Table) - researched 2026-09-12 and closed as not RAM-deterministically viable (Inform's compiled grammar table is verb-indexed syntax/token-type data, not an object-id-to-verb map; per-object legality lives in compiled routines, not a static table). `js/GrammarProvider.js` is no longer dead code: a bounded, accepted follow-up now exposes the real Inform-only dictionary verb-flag vocabulary (game-wide input-line commands, format-gated off on Infocom, never attached to a specific object) via `ZRamReader.parseDictionary`'s `entries`/`informVerbFlags`. `ActionSynth.rules` remains the ceiling for object-radial per-object verbs.  
+- D35 wump2ka.z5's numbered exits are I7-style compass objects (doorDir property), a different RAM structure than the I6 direction-property fix (D23/#28-#29) resolves; tracked as its own committed discovery task, not a block on that accepted fix. **2026-09-12 attempt 1 (rejected/reverted):** a doorDir implementation (js/ZRamReader.js compassDirections/numberedExitLabel) matched decoded object short-name text against compass words/ordinals - the same D24/D25 name-text-guessing anti-pattern this cutover eliminates elsewhere. Reverted by claude. **2026-09-12 attempt 2 (accepted):** rebuilt with zero name/text involvement - `directionDoorDirs`/`isIndivTable` find the direction-holder object and confirm the room's I7 individual-property table purely by RAM structure (child count, shared common-property values, numeric key-range check). Independently re-verified (harness suites + full Playwright regression); wump2ka now shows honest dest-less exit-N stubs. Destination-resolution for these exits is still open future work.  
+- D36 Gap closed 2026-09-12: D34's grammar/dictionary-vocabulary research was Z-machine-specific (Txd/Infodump prior art); doc didn't commit to redoing it for Glulx. Now explicit committed work, sequenced strictly behind Glulx's own basic structural RAM provider landing first (Phase 4 provider, in progress - see D38). Must independently prove viability or non-viability the same way D34 did; "not RAM-deterministically solvable, attribute-approximation is the ceiling" is an acceptable honest outcome, not a mandate that it must yield a vocabulary win. Amended 2026-09-12 (D39): the Hugo/TADS/Adrift portion of this commitment is removed along with those formats.  
+- D40/D49/D51 Anchorhead's I6 library compiled the nw/se diagonal properties (12/13) in the opposite order from the assumed profile - real per-story evidence, not a universal ABI. `js/ZRamReader.js` `directionProps.diagonalSwapped/diagonalCalibrated` self-calibrate from a real confirmed move (`calibrateDiagonalFromTravel`), persisted per exact game file (`ZRamReader.gameIdentityKey`/`hydrateDiagonalCalibration`/`persistDiagonalCalibration`, keyed off header release+serial) so a later session of the same game starts pre-calibrated. Until calibrated, BOTH real candidate words are offered (never a guessed single label, never hidden - D51 superseded an intermediate "honest neutral placeholder" attempt that hid the exit entirely, rejected on live testing) via `ambiguousDiagonal`-flagged exits; `js/Map.js` `Draw()`'s D48 same-destination collapse has a narrow exception for this flag so both candidate boxes render (tentative styling) until one is proven.  
+- D42/D46/D48 Map "duplicate room" bug (a room reached by more than one direction rendering as two boxes): first attempt (D42) dimmed the repeat slot, then (D46) replaced its label with a cross-reference - both rejected on live testing, since the fixed compass grid gives every direction its own permanent visible slot regardless of label content. Final fix (D48): `Draw()` tracks destination ids already shown this pass and does not render a box at all for a repeat direction to an already-shown destination - verified generic for 2-, 3-, and N-direction collisions, not a 2-direction special case.  
+- D47 Room map identity was still name-keyed underneath (`js/MapTopology.js` `ensureRoom` called `GetRoom(name)`, a case-insensitive string match) despite `ObjectId` already being captured - meant two different real rooms sharing a printed name (e.g. two "it's too dark to see" rooms) would incorrectly merge. Fixed: identity now keys off the real RAM room id first (`HasRealId` flag distinguishes a genuine id from a synthetic placeholder so a stub upgrading to its real id doesn't fork); display Name remains free to update to whatever the current payload calls the same real room. Closes the identity-keying half of the long-tracked Phase 5/D32 map-identity item.  
+- D52 Grok's bus seat exhausted its weekly usage limit (confirmed both by its own mailbox loop and an operator screenshot of 100% usage, resets 2026-09-18) - the planned two-agent holistic live-audit (playing Anchorhead + wump2ka.z5.js as real players, iterating until clean) is running solo in the meantime. Scope narrowed to Z-machine only per operator directive; Glulx/D38 work is paused, not cancelled. A follow-on research task (decompile direction-action-routine bytecode to resolve the nw/se ambiguity with zero pre-travel uncertainty, improving on D49/D51's evidence-only approach) is queued for Grok's seat once it resumes.  
+- D53/D57 Nested-container inventory item (D31) vanished entirely instead of nesting, and separately a room's own worn/held items leaked into ROOM-scope `discoveredObjects` (duplicating them out of inventory with wrong verbs offered). Both root-caused to the same class of issue: `js/ZRamReader.js` `walkVisibleDescendants` and `js/ZRamProvider.js`'s inventory-root resolution were using the wrong/leaked signals to find the real player id and to decide what counts as "in scope." Fixed at the source in both directions - the deep inventory walk is now rooted at a verified-correct holder id (probed directly, never guessed from a coincidental leak), and an unnamed-but-animate child (the player, commonly unnamed in Z-machine terms) is no longer transparently recursed into from room scope. Both fixes are universal RAM-walk corrections, not per-story patches.  
+- D54 A game's compiled room short-name property is not always its player-facing display text (wump2ka.z5.js: internal "C_ROOMS_3" vs. the game's own printed "Room #3"). `WorldModel.refineRoomDisplayName` reads the story's own status bar (`.GridWindow.reverse`, an existing recognized convention, not new text-mining) as a DISPLAY-only refinement - identity stays the RAM ObjectId (D47) throughout; discoveredObjects/exits/inventory are untouched.  
+- D55 Numbered I7 door_dir exits (D35) were completely non-functional via click/radial/route-navigation: every consumer submitted the internal display label ("exit-91") instead of the real parser command ("x1"/"x2"/..., ordinal LOCAL to each room's own populated exits, not the game-wide door_dir set - a wrong-ranking bug caught and fixed before shipping). `label` and `command` are now separate fields on every exit (identical for ordinary compass exits); every real submission path (`Actionable.js`, `Qol.js`, `Navigator.js`) now uses `command`.  
+- D56 "Take" was never offered on any takeable object in any game: `AttributeSchema.js` documented `takeable`'s derivation (`!static && !scenery`, since Inform has no dedicated bit for it) but never implemented it, so `attrs.takeable` was permanently `undefined` everywhere. Universal one-function fix in `AttributeSchema.applyTo()`.  
+- D62 A room's display Name is now fixed the first time a real RAM id is attached, never overwritten by a later visit's different reading -- live-confirmed wump2ka.z5.js prints a DIFFERENT "Room #N" for the exact SAME real room object on different visits (thematic, not a stable label), which broke the prior "always update to latest name" policy. Also fixed `MapTopology.applyStateDelta`'s own destination lookup to resolve by real RAM id (`ensureRoom`) instead of name, so a pre-travel hint (recorded under a room's un-refined stub name) and the post-travel confirmation correctly recognize each other as the same room.  
+- D63 Root architecture gap: the map's compass grid only has DOM slots for the 12 fixed direction words, so a game whose exits are numbered (not compass words at all -- Wumpus's entire navigation vocabulary, not an occasional extra) could never render any neighbor room, only "here." Fixed generically: `Draw()` now assigns any non-compass exit key to whichever compass slot isn't already claimed by a real compass exit this pass, purely for visual positioning (a map box click re-centers by the room's real Name/Id, never submits a direction, so this never changes exit behavior).  
+- D61 Root-cause, catalog-wide fix (not per-module patching): `js/ZRamReader.js`'s WHOLE direction-property scanning apparatus (PROFILE 7-18, the wider candidates scan, I7 door_dir) is an Inform-6/7 compiler assumption, not a Z-machine spec fact -- confirmed misfiring on Zork 1 (pre-Inform, ZIL-compiled, v3), producing 5 bogus "exit-N" phantom exits from coincidental property values, while real exits were never detected (explaining the reported missing map connections and missing actionable-word highlighting). Fixed generically: new `isInformCompiled(mem)` (reusing the D34 compiler-stamp signal, cached per memory buffer) gates the entire apparatus; a non-Inform game gets zero pre-travel exit hints (honest absence, D24) and relies on the already-compiler-agnostic state-delta labeling instead. Closes this bug class for the whole non-Inform side of the catalog at once, per the operator's explicit "handle all modules, don't decode each one" requirement.  
+- D59 A held-but-not-worn wearable item's radial showed both "Wear" and "Remove" (contradictory): `ActionSynth.rules.wearable` contributes the fixed pair `["wear","remove"]`, and the not-worn inventory branch filtered `take` but never `remove`. One-line universal fix. Also re-verified this session purely via radial-driven/auto-nav play (no typed commands): direction clicks, object radials, and multi-hop "go to room" navigation all confirmed working correctly.  
+- D60 Numbered I7 door_dir exits (D35/D55) were never underlined/clickable in the room text - their label ("exit-91", the raw property number) never matches a real game's own printed wording ("Exit 1"). Now labeled "exit N" using the SAME real structurally-derived ordinal the "xN" command already uses (not a text-mining regression: the ordinal is 100% RAM-derived; only the human-readable word chosen to label an already-resolved exit changed) - makes the exit genuinely clickable in text when it matches, never worse when it doesn't.  
+- D64 An object's structural shortName is a display string only, not guaranteed real parser vocabulary - live-confirmed on wump2ka.z5.js ("scrawled note" shortName vs. real printed/parseable "scrap of paper"). Fixed generically: `ZRamReader.parserWords`/`reverseDictionary` decode the object's real compiler-reserved property-1 name-word list (gated on `isInformCompiled`, cached per buffer); `Actionable.js` tries the object's own name-phrases first (unchanged for the common case) and only falls back to these real alias words when the shortName never appears in printed text, remembering whichever phrase is confirmed (`Actionable.VerifiedNouns`) so it survives past the current tick; `ActionSynth.commandsForObject` now builds commands from that verified noun instead of always trusting `obj.name`. Closes the "scrap of paper not highlighted" report.  
+- D65 The radial never offered a compass direction for a non-Inform game even long after real travel had confirmed it and the map already showed it - confirmed live on Zork1 after D61's (correct) gate left `payload.exits` permanently empty for pre-travel hints on any non-Inform game, but nothing else fed the OTHER real, compiler-agnostic exit source (`MapTopology`'s own confirmed `room.Exits`, written the moment a real typed direction is followed by real travel) back into `payload.exits`. Fixed generically: new `WorldModel.mergeConfirmedExits` adds any already-confirmed direction for the CURRENT room (real-id-first lookup, D62-style) that isn't already covered by a pre-travel hint. Works for every compiler, not just non-Inform games.  
+- D66 A brand-new room showed zero neighbors even when the map already knew an adjacent room sat on its other side, because `Map.js Draw()` only ever rendered the CURRENT room's own outgoing `Exits` (edges are written on the departure room only, by design -- never guessing travel is reversible). Fixed generically, display-only: `Draw()` now also renders any OTHER known room with a confirmed edge pointing TO the current room, at the real, language-level compass-opposite slot, marked `tentative-exit` (D51's existing "known but not confirmed from here" treatment) -- never written into `Exits`, never submits a command, a map click still only re-centers.  
+- D78 "Take X out of Y" (D31's only synthesized command for a nested-in-held-container item) never actually completes on a real Inform game -- operator's own live Anchorhead transcript proved it (repeated "I only understood you as far as wanting to take the umbrella", never "Taken.") while plain "take X" succeeded immediately. Same label/command split shape as D55/D64: `verb` keeps the useful "take out of Y" display label, `command` now submits the verified-working plain "take X". Generic fix, not per-title. Verified live via a real radial click.  
+- D79 **The actual root cause of the session-long "Wumpus room-mapping still feels broken" reports**: `js/ZRamReader.js` `findLocationGlobal` -- the FALLBACK room-detector used whenever `parent(player)` is untrustworthy -- is not a rare backup for wump2ka.z5.js, it's the PRIMARY mechanism, since this game's player object has `parent === 0` almost always (confirmed live via direct RAM read; this game does not use the standard Inform "player contained in room" model). The fallback's own scoring formula was the bug: it weighted raw global-slot index (`g<=3: +40`) far above a real structural signal it also computed but under-weighted (how many distinct global slots reference the same candidate value). Live-reproduced proof: after a real, game-text-confirmed move, the CORRECT new room (referenced by 4 distinct globals: 16/37/38/41) lost to a WRONG room (referenced by only 2: 3/12) purely because of the index bonus. A 24-move real-play regression check showed `CurrentRoom` frozen on one value for the entire session pre-fix despite the real room changing throughout -- a more complete explanation for the standing complaint than any single earlier fix (D62/D67/D72/D74/D75/D76), which were all independently correct but never examined the fallback's actual room SELECTION. A cleaner alternative (extending D73's live opcode-observation hooks to watch `variable()` writes and directly OBSERVE the location global, rather than score-guess it) was investigated first with live evidence, not just theory -- a real trace of every global write during a confirmed move showed none matched the correct room id, meaning this game recomputes location on demand rather than caching it via an observable store, closing off that otherwise-preferred approach for this case. Fix: reference-count is now the dominant scoring term (`min(refCount,8)*15`), the old index bonus reduced to a small tiebreaker (max +3) that can no longer overturn it. Verified live: the same 24-move sequence now tracks 13 real, distinct rooms with zero anomalies. Generic (scoring-weight change only, no per-title branching) -- benefits any current/future game whose player isn't room-contained the standard way.  
+- D80 `WorldModel.refineRoomDisplayName` was reading only column 0 of `.GridWindow.reverse`'s status text, so wump2ka's map showed generic "Room #N" labels for already-visited rooms. Repeated direct Playwright capture of the real DOM text (not assumed) proved the status text is ONE line with no literal newline, packing multiple 3+-space-gap columns (`Room #19 / Score: 2 / A vast, creased, watery room / Health: 73%`) -- the bug was wrong column index, not wrong line. Fix: split the whole text into columns, discard bare generic room-id columns and standard Score/Health/Moves/Turns metric columns (genre-wide, not per-title), take the first survivor. Anchorhead/Zork1 (one real title column each) are unchanged. `harness/d46-room-identity.js` fixtures now use the exact real captured strings. A first attempt by codex (bus seat) claimed this fixed with a fabricated harness fixture (an invented string with a `\n` that does not exist in the real DOM) and a live-evidence claim that did not match reality; claude caught it via direct re-verification and implemented the real fix directly. See `AGENTS.md`/`docs/ai-plan.md`: bus seats must show real captured evidence, not invented fixtures; only claude edits this file and `PRODUCTION_PLAN.md`.  
+- D81 `js/Actionable.js` `Refresh()`'s room-scope tracking (`RoomLines`/`RoomHeading`/`Scope.roomName`) was still name-keyed, the same bug class D47 already closed for `MapTopology`/`Map.js` but never extended to this separate subsystem. `roomChanged` compared a display-name string even though the real `payload.roomId` sat unused in the same function -- a non-movement display-name update (e.g. a stub-to-real name upgrade) could false-trigger a room change, discarding still-current room highlighting. Fix: `roomChanged` now keys off `payload.roomId` (new `Scope.roomId`) whenever the payload is structural, name comparison only as a non-structural fallback. `.Style_subheader` transcript-banner matching is untouched -- it only locates text position for wump2ka's unstable-label case (D62), never decides whether a room changed, and per operator correction was never meant to apply to any other game's room-change detection. Verified live across all three games (wump2ka/Anchorhead/Zork1) with repeated non-movement probes (score/inventory/wait/xyzzy): stable baseline highlighting, no loss. Closes the second identity-keyed subsystem under D47's principle.
+- D82 `js/ZRamProvider.js`'s primary room-scope `discoveredObjects` filter never excluded the resolved `playerId` (only `resolveInventoryRootId`'s separate fallback scan did) -- found live on `Deadline.z3.js`, whose start room's only real RAM child is the player object itself (id 160, real printable shortName `"player"`, not caught by `isMetaName`'s compiler-placeholder patterns). A room with no other modeled objects therefore offered the player itself as a room-scope actionable item. Fix: apply the same existing `playerId` exclusion to the primary filter. Verified live: `discoveredObjects` for that room now correctly resolves to `[]` (honest absence) instead of `["player"]`. One-line, generic, compiler/title-agnostic.
+- D83 (RESOLVED by D84) `Bronze.zblorb.js` never resolved a real room via either location mechanism: `parent(playerId)` is permanently object 1 ("Class", a metaclass placeholder, not a room), and `findLocationGlobal`'s fallback also returned 0 for this title. Investigated via repeated direct RAM capture across real moves, not assumed. Originally left as an honest, documented gap rather than a forced per-title fix (P0/D24) -- see D84 for the actual generic fix.
+- D84 Per-game LEARNED location-global calibration, closing D83/D79's gap generically (operator: "done correctly and in the most deterministic way possible that does not break our systems"). A fixed universal global slot was tried and directly disproven (Bronze's tracker sits at a different slot than any Anchorhead uses). Hooking the interpreter's `variable()` accessor to catch the write was investigated and rejected: direct inspection of `lib/zvm.js`'s JIT compiler showed the common "store into a global" path is a raw `ram.setUint16(...)` write that bypasses `variable()` entirely -- patching that would mean hooking every RAM write in the whole VM, far hotter and less scoped than the six existing opcode hooks, so out of scope for `ZvmCapture.js`. Fix instead reads already-settled RAM directly (`ZRamReader.u16`, the same primitive `findLocationGlobal` uses) after every submitted command, correlating each valid candidate slot against a confirmed room-name-text-change trigger (`WorldModel.refineRoomDisplayName`, text used only as a transition signal per D24/D47, never as identity). A slot confirms only after 3 consistent, uncontradicted observations including a revisit match; any contradiction permanently disqualifies it. `findLocationGlobal` consults the confirmed slot first, falling through unchanged otherwise. Verified live: Bronze now resolves and stably tracks real rooms after ~8 moves; Anchorhead/wump2ka/Zork1 unaffected. New harness `attr-calibrator-location-global.js` (13/13). Zero per-title code.
+- D85 (SHIPPED 2026-09-14, codex-reviewed) Per-game learned verb-disablement + substitute-verb calibration. `AOTYRZ.z5.js` keeps "examine" as valid grammar (D34 unaffected) but its action routine is a permanent stub printing one identical line for any object. No RAM/opcode signal exists -- the only real signal is response TEXT compared for byte-identical equality across multiple different real objects. `AttrCalibrator.js` gains `observeVerbBehavior()`/`_splitAnyVerbNoun()`; `ActionSynth` consults the learned facts ahead of the hardcoded `"examine"` literal. Standalone verification completed live on AOTYRZ.z5.js using D86 stage 1's corrected entry-point coverage: three distinct objects confirmed byte-identical stub text correctly triggered disablement; a real distinct response (the closet) correctly never false-triggered; the radial correctly stopped offering "examine" once confirmed -- the original bug report fixed end-to-end (`tools/d85-verb-disablement-proof.js`, 4/4). No working substitute verb exists in this title (honest absence, live-confirmed); the substitute-learning branch is verified via a permanent synthetic harness instead (`harness/attr-calibrator-verb-disablement.js`, 21/21). Two real regressions found by codex's adversarial review and fixed: (#441) alias-driven commands (`Actionable.commandNounFor`, D64) were invisible to `_splitAnyVerbNoun`'s exact-name-only match; (#444) that fix's own noun-text keying let one object under two spellings falsely satisfy the 3-distinct-object threshold -- fixed by keying observations on stable object id. See PRODUCTION_PLAN.md D85 for the full evidence trail.
+- D86 (FULLY SHIPPED 2026-09-14 -- v13, real multi-round adversarial review with codex, #379 through #433; codex confirmed no remaining architectural blocker in #421, then adversarially reviewed the actual stage 1 implementation diff -- #429/#432 -- finding and getting fixed real issues: a duplicated comment, a stale comment, proof assertions that overclaimed more than they checked, and missing cross-title coverage, before signing off "I do not see a blocking defect in stage 1" in #432) Unified turn recorder: a new, small `js/TurnRecorder.js` (capture substrate only) loaded before `js/AttrCalibrator.js`, replacing three separately hand-built correlation windows (D73-75's `_pending`, D84's `_locWindow`, D85's `_verbBehaviorWindow`) with a single active-id for opcode attribution (single-threaded JS serializes real command execution) plus boundary-stamping for transcript/status (a new command's acceptance freezes the previous turn's `endLine` right then; that turn's own ~450ms timer still reads/analyzes using the frozen boundary - not force-closed-and-read-immediately, which risked cutting a still-settling turn short or bleeding into the next one's text, a real regression codex caught and this design now avoids) consumed by analyzers that register against the recorder, writing to TRUE deep diagnostic clones (not shallow -- the table's nested structure would otherwise leak writes into real state) until individually cut over. Capture is lazy by construction; the recorder stays domain-ignorant, aggregating each analyzer's own witness rather than embedding "relevant status change" itself. **v13 addition (#412-414/#421, a real currently-shipped bug, verified directly against `js/AttrCalibrator.js:268-312`):** boundary-stamping alone (v12) froze only `endLine` -- `_resolveLocationWindow` still reads status text and RAM globals FRESH at its own 450ms timer, so a second command accepted before that timer fires can corrupt the first turn's read with the second turn's state, TODAY, independent of D86. Fix: `prepare()` may return a `captureAfter(turnDraft) => snapshot` callback, invoked exactly once per requesting analyzer at natural close or at the same moment a later command boundary-stamps the turn (before that later command's own interpreter handling runs); the result is stored as `turn.analyzerSnapshots[analyzerId]`. `analyze()` reads only `turn.analyzerSnapshots[...]`, never live DOM/VM/`ZRamReader` itself -- closing the independence gap for every post-turn signal, not just the transcript line count. **A real, previously-undiscovered PRE-EXISTING bug was found and verified live during this review:** every command submitted via map click/radial click/arrow-key/menu button (`Map.js`/`Qol.js`/`WorkspaceUI.js`/`Navigator.js`/`TranslatorUI.js`/`Input.js` all call `Input.Inject(text, true)` directly) fires a jQuery-synthesized keypress that does NOT reach `AttrCalibrator`'s native capture listener (confirmed live: 1 hit for real typed Enter, 0 hits for direct `Input.Inject`) -- D73-75/D84/D85 have been blind to all click/radial/map-driven commands this whole session. Fix: a small, in-place edit inside `Input.Inject` itself (captures the TRUE final appended value, not the raw argument -- `Input.Inject` appends to existing input text, so using the raw argument would corrupt which noun/object analyzers correlate against) notifies the recorder right before the synthetic keypress fires. **Entry points, settled:** native keypress capture (typed) + `Input.Inject`'s in-place hook (everything else) -- `Actionable.Submit` is explicitly NOT a separate entry point (it always calls `Input.Inject` after its own guard passes; wrapping both would double-fire for one real command). Full VM-instruction-level tracing stays rejected (tested live against D84/D85, changed neither outcome). **CUTOVER + CLEANUP COMPLETE, 2026-09-14:** `analyzers.verbSuccess`/`.locationGlobal`/`.verbBehavior` are now the sole real writers (diagnostic-clone/persist-swap machinery removed once each analyzer's live A/B proof confirmed byte-for-byte equivalence); the three legacy windows' dead function bodies (`observeCommand`/`_resolvePending`, `observeLocation`/`_resolveLocationWindow`, `observeVerbBehavior`/`_resolveVerbBehavior`) are deleted entirely, along with their trigger calls in both entry-point hooks. `_correlateLocation`/`_correlateVerbBehavior` (extracted, behavior-preserving refactors of the old resolvers) are the shared cores both the legacy path used and the analyzers now use directly. Five pre-existing node harnesses that drove the deleted functions directly were migrated to drive the new analyzer interface instead; all 6 of D86's own live proofs were rewritten from real-vs-diagnostic A/B comparisons into direct correctness proofs of the now-sole system. Full regression green (11 node harnesses, all Playwright suites). See PRODUCTION_PLAN.md D86 for the full staged migration plan, cutover/cleanup detail, and live mailbox audit trail. `CALIB[Opcode calibration hooks]` (L1 subgraph, §2): `js/TurnRecorder.js` is now the live capture substrate feeding the three analyzers in `js/AttrCalibrator.js`.
+- D77 "Put in trenchcoat" missing for umbrella but present for the (removed) ring: not an availability difference (verified `ActionSynth` gave both "put in" the whole time) -- the bug was a hardcoded `.slice(0, 8)` in the target-picker submenu, silently truncating candidates with zero prioritization, so trenchcoat (a real container) fell past the cutoff behind room scenery; which object you clicked shifted the truncation point, explaining the exact discrepancy. `ParchmapQol.OpenRadial` already has its own real 16-item/2-ring paging with a genuine "More..." overflow -- operator explicitly rejected a "reorder but keep the cap" fix ("there is not supposed to be a limit"). Final fix: removed the extra cap entirely from all three submenus (put in/give to, use with, ask about); only ORDER is biased (real containers/recipients first) so the common case doesn't need "More...", but nothing is ever dropped. Verified live: all 10 real candidates now shown.  
+- D76 Closed the Reset Map loose end D74 left open (operator asked directly whether it's safe for heavy repeated use). `ParchmapMap.Clear()` still called the legacy `EnteredRoom` stub-creation path; two fix attempts were caught by the existing regression suite before landing the right one -- calling the full `MapTopology.tick()` silently regenerated neighbors immediately (broke Reset Map's own "clear the map" promise, caught by `map-pathing-regression.js`), and calling a fresh `WorldModel.tick()` first was intermittently flaky (raced the normal per-turn re-tick, caught by running the same test 5x). Final: reuse the EXISTING `WorldModel.lastPayload` and call only `MapTopology.ensureRoom` -- no stub, no premature neighbor regen, no extra tick. Stress-tested: 4 reset cycles x 3 games, zero orphaned rooms, map always renders, inventory survives every round.  
+- D75 "Inventory did not work at all" (Bear's Night Out fine, wump2ka.z5.js broken): the real held item's parent chain (185->171->37) showed the true holder (171, the unnamed prop D57/D58 already found) had `animate:false` this session, so `resolveInventoryRootId`'s animate-gated fallback never considered it and inventory read empty despite real held items -- a false NEGATIVE from the same known per-session attribute randomization. Fixed by reusing D73's infrastructure rather than another heuristic: a real successful take's `insert_obj(item, holderId)` call is 100% observed ground truth for who's holding things; `AttrCalibrator` now records it (`table.inventoryRootId`) and `ZRamProvider.resolveInventoryRootId` consults it before its own animate-gated fallback. Verified live end-to-end -- the exact failing repro now shows both real held items.  
+- D74 Root cause of "after Reset Map + continuing to play, mapping simply didn't work": FOUR separate call sites still set `ParchmapMap.CurrentRoom` directly from the raw `payload.roomName` string each tick, none checking it against the FROZEN identity name (D62) `MapTopology.ensureRoom` had already resolved for the same real room -- since wump2ka.z5.js re-randomizes its printed room label on revisits, `CurrentRoom` could silently drift to a label matching no `Rooms[]` entry, so `Map.js Draw()`'s `GetRoom(CurrentRoom)` lookup found nothing and rendered zero boxes. Fixed with one shared resolver, `MapTopology.resolveCurrentRoomName(payload)`, used by all four sites instead of each deriving (or just re-using) the raw string independently.  
+- D73 **Correction of D34/D58**: `lib/zvm.js` is a pure-JS JIT-compiling interpreter whose opcode methods (`test_attr`/`set_attr`/`clear_attr`/`get_prop`/`insert_obj`/`remove_obj`) are ordinary, live, prototype-patchable functions, not baked into closures -- watching them run, not just reading static RAM, is possible and cheap. Live proof (wump2ka.z5.js "take canteen"): the real TAKE precondition never tests bit 19 ("static"), proving the static profile checked the wrong bits, not that unobservable custom code overrode it. New `js/AttrCalibrator.js` + six new guarded prototype patches in `js/ZvmCapture.js` correlate a submitted command to its real object id (reusing `AttributeSchema._findIdByName`) and classify success/fail from the actual opcodes observed, not a transcript guess. A capture-phase `keypress` listener on `.Input.LineInput` was added after finding live that `Actionable.Submit` alone misses direct-typed commands (the most common real interaction) entirely. **Phase C/D (persistence + consumption) now implemented**: per-verb bit calibration (open/wear/lock/switch, 3-confirmation threshold, mirrors `ZRamReader`'s diagonal-calibration localStorage pattern) plus a per-object direct override for take/drop (takeable has no single mutated bit to learn generically -- a confirmed real take/refusal is remembered per-object instead), both consumed additively by `AttributeSchema.applyTo()`. Live-verified across all three catalog games: wump2ka.z5.js's canteen now correctly predicts takeable after one real take (the flagship fix); Anchorhead's already-correct predictions are provably unchanged; Zork1 (non-Inform) confirms the hook mechanism is VM-level generic, not Inform-specific. Z-machine only; Glulx needs its own separate feasibility check first (D36/D38 precedent).  
+- D72 **The real, cross-game root cause of the map "feeling messed up"**: TWO separate legacy room-creation systems (`TranslatorUI.applyRoom`'s call to `Map.js EnteredRoom`, and `MapIdentity.applyExits`, an even older "Phase 5" layer) each independently ran their own NAME-STRING "create if not found" check on every tick, racing `MapTopology`'s real-id-based authority (already resolved the same room moments earlier the same tick). Any exact-string mismatch (routine during real transitions, e.g. before/after D54 refinement settles) forked off a permanently orphaned duplicate room keyed by a synthetic hash id -- not Wumpus randomness (D58), a genuine architecture race, just most visible in Wumpus due to its constant renumbering. Fixed by removing both redundant create-paths (kept their non-identity side effects: Draw/Save/RebuildRoomsList) rather than patching around them. Verified zero orphaned/duplicate rooms across real 8-20 move click-driven playthroughs on all three games (Wumpus/Anchorhead/Zork1).  
+- D71 Follow-on to D63/D66: a compass slot's corner label ("N"/"NE") was a STATIC label from `Build()` time, never updated per-render -- so a borrowed slot (D63, numbered-exit games) kept showing a fake compass letter forever. Fixed: `DrawRoom` takes an optional real-label override, `Draw()`'s exits loop passes the room's actual direction/exit key, and every slot's label resets to its native letter at the top of each `Draw()` pass so a borrowed label never lingers once the slot goes back to a real compass exit.  
+- D70 Minor D64 refinement, same click-driven pass: an object's `VerifiedNouns` entry could get overwritten by whichever matching phrase was processed LAST rather than the best one (Anchorhead's office door submitted "open real" -- functionally correct but obscure -- instead of "open office"). Fixed: since `wrapTargets` is already sorted longest-first, only replace an existing entry with a match at least as long, so the first (longest/best) match wins and a later short one never downgrades it.  
+- D69 Follow-on bug from D65, found via a fresh real click-driven Anchorhead playtest: `WorldModel.mergeConfirmedExits` compared `room.Exits` keys directly against RAM-lookahead labels, but `TranslatorUI.js remapRoomExitKeys` deliberately keeps `room.Exits` in SHORT form ("nw"/"e"/"w") for `Map.js` slot lookups while RAM lookahead always uses the FULL word ("northwest"/"east"/"west") -- so a room with both produced visible duplicates in the radial ("northwest" AND "nw" side by side). Fixed by canonicalizing both sides through the existing `MapTopology.normalizeLabel` (the same short-to-long expander already used everywhere else) before comparing/pushing, instead of a new alias table.  
+- D68 "Glow Bar incorrectly shows as worn" root-caused: the SAME unnamed-transparent-wrapper leak D57 fixed for the confirmed-animate case, just also triggered by D58's documented random non-animate roll on a decorative prop -- the `worn` bit itself was always correct, the bug was exposing it as a loose room object at all. Fixed generically: `worn` means "currently equipped by its parent" regardless of whether that parent tests animate this session, so an item reached ONLY via the unnamed-wrapper bypass (not a normal, directly-visible container child) is never surfaced while its own `worn` bit is set.  
+- D67 The actual root cause of "the map doesn't update correctly until you travel back and forth" -- confirmed live via real click-driven repro (typed commands + real screenshots) after D66 made it much more visible: `Draw()` cleared `shown` from every slot at the top of each call but never `tentative-exit`, and `.room.tentative-exit{opacity:0.7}` beats the base `.room{opacity:0}` rule on CSS specificity alone, with or without `shown` -- so any slot ever marked tentative stayed permanently visible showing stale, no-longer-relevant room names until the main exits loop happened to revisit that exact slot again. One-line fix: clear both classes together at the top of `Draw()`. A real, catalog-wide bug (affects any game using D51's tentative mechanism), not just Zork1/D66 -- just never forced into the open before.  
+- D58 Correction of a same-session over-claim: odd-looking attribute combos in wump2ka.z5.js (a procedurally-generated dungeon) are NOT an attribute-schema mismatch requiring per-story calibration - operator correctly pointed out the game's randomness is in which objects it generates, not in its one-time-compiled bit-to-semantic mapping. Behaviorally re-verified (real `take X` outcomes vs. RAM-read predictions): the standard schema is correct; apparent mismatches were this game's own custom per-object code overriding default TAKE behavior with hand-authored refusal text, the same already-accepted "attribute-approximation is a ceiling" limitation D34 documented. No new schema-calibration project needed. The real, narrower residual item: `resolveInventoryRootId`'s room-child fallback (D57) can occasionally misidentify the true player id in this specific game because its procedural generator sometimes dresses an unrelated prop with an `animate` flag and attached items; tightened to require a plural PC-shaped inventory, reducing but not perfectly eliminating the false-positive window - Anchorhead unaffected and re-verified 100% stable.  
+
+---
+
+## 13. Open questions (Phase 0-2)
+
+Superseded by **§17** for BUILD 41+. Keep historical bullets in git history if needed.
+
+
+---
+
+## 14. Dual-host runtime (BUILD 41)
+
+```mermaid
+flowchart TB
+  subgraph DEFAULT["Default product"]
+    PLAY[play.html] --> MAIN[lib/main.js]
+    MAIN --> ZVM[zvm.js Z]
+    MAIN --> QUIXE[quixe.js Glulx]
+    PLAY --> PM[js/Parchmap.js Loop]
+    PM --> WM1[WorldModel heuristic]
+  end
+
+  subgraph EMGLKEN["Opt-in Emglken host"]
+    PE[play-emglken.html] --> TAP[parchment-single-tapped.html]
+    TAP --> BOC[Bocfel via Parchment 2026.8.23]
+    TAP --> WM2[WorldModel]
+    WM2 --> REM[RemGlkTapProvider P0]
+    WM2 --> GLK[GlkTapProvider]
+    WM2 --> stub[EmglkenProvider]
+    WM2 --> PROBE[VmProbeLoader + lib/pm_vm_probe.wasm]
+    PROBE -->|story bytes| ZOBJ[Z object-table summary]
+    REM -->|GlkOte.update| PAY[UIPayload]
+  end
+```
+
+**Packaging:** runtime ships under repo root per `DISTRIBUTE.md`. Relative `meta[name=parchmap-root]`. No SKSEDevKit/emsdk required to play.
+
+---
+
+## 15. Provider map (implemented vs target)
+
+| Provider | File | Rank | Status |
+|---|---|---|---|
+| Heuristic | `js/WorldModel.js` collectHeuristic | P1 | **[removed, D24]** eliminated as a source for discoveredObjects/exits/inventory/roomName; not consulted by Actionable/Map/radial |
+| RemGlk / GlkOte.update | `js/RemGlkTapProvider.js` | P0 | [yes] live on Emglken tapped host |
+| Glk DOM tap | `js/GlkTapProvider.js` | P0/P1 assist | [yes] |
+| Emglken stub meta | `js/EmglkenProvider.js` | meta | [yes] |
+| Story-byte Z probe | `js/VmProbeLoader.js` + `lib/pm_vm_probe.*` | P2 light | [yes] ABI2 summary only - NOT live scope |
+| Live ZVM RAM walk | target `js/ZvmCapture.js` + `js/ZRamProvider.js` + probe ABI3 | P2 full on play.html | [ ] CRITICAL PATH - player/location/children/dictionary |
+| Live ZVM RAM walk (D22: all rooms/modules) | **implemented** `js/ZvmCapture.js` + `js/ZRamProvider.js`/`js/ZRamReader.js` (verified 2026-09-12 - these are real, working files, not target/nonexistent as previously stated here) | P2 full on play.html | [~] CRITICAL PATH remaining scope is **coverage breadth** (D22 arbitrary-room proof beyond Alley/start-rooms), not file existence - player/location/children/dictionary cascade itself is built and passing (Phase 1/2 harnesses, D22 matrix 7/7) |
+| Live Bocfel HEAP | native-hooks linked into terp | P2 full alt | [ ] optional parallel to ZVM path |
+| Inform-Glulx RAM | - | P3 | [ ] |
+
+---
+
+## 16. Probe ABI (shipped WASM)
+
+```mermaid
+flowchart LR
+  STORY[story .z5/.z8 bytes] --> LOAD[VmProbeLoader]
+  LOAD --> WASM[lib/pm_vm_probe.wasm]
+  WASM --> INFO[pm_vm_probe_info]
+  WASM --> SCAN[pm_vm_probe_scan_stub]
+  WASM --> ZSUM[pm_vm_probe_z_summary ABI2]
+  ZSUM --> WM[WorldModel structural facts]
+```
+
+Build-only: `native-hooks/build.ps1` (MSVC) and Emscripten wasm preset. Outputs copied to `lib/` for distribution.
+
+---
+
+## 17. Open questions (updated)
+
+1. When to promote Emglken from opt-in to default without regressing Quixe UX?
+2. (Resolved by D24) Object-table data shown under the spoiler shield is governed purely by RAM-scope containment/light rules (Phase 1), not by a printed-text match - nothing outside current real-time scope is ever shown, so there is no separate "how much text-derived data is safe" question left.
+3. Specialized prompt UIs (yes/no, restore, content gates): handle in RemGlk `specialCommands` before broad module-matrix testing.
+4. Live HEAP still blocked on terp export surface - keep story-byte structural probe as the shippable P2 light path.
+
+
+
+## 18. BUILD 45 chrome consumers (corrected, D24)
+
+```mermaid
+flowchart LR
+  WM[WorldModel UIPayload - RAM-scope only] --> TUI[TranslatorUI]
+  TUI --> Map[ParchmapMap EnteredRoom / MapIdentity - roomId-keyed]
+  TUI --> Act[Actionable marks + inventory - RAM object ids only, no roomNouns text pool]
+  TUI --> Spec[specialCommands bar - dictionary-derived]
+  TUI --> HUD[labeled hudMetrics]
+  AS[ActionSynth] --> Act
+  Nav[Navigator StepQueue] --> Input
+  Bridge[HostEmglkenBridge] -->|vm=emglken| WM
+```
+
+TextGate / BufferTap / GlkTap still load as WorldModel providers (script tags stay) but their `collect()` now returns empty `discoveredObjects` / `exits` / `roomName` (D24/D29: no half-migrated text-mining). `TextGate.isVisible` is a no-op always-true; RAM-scope is the spoiler shield. They are not on this diagram because they no longer feed actionable/map/radial.
+
+- Quixe path: P2 Z RAM structural + optional probe (no heuristic text-mining feeding actionable/map/radial)
+- Emglken path: iframe tapped host -> bridge merges child WorldModel into parent chrome
+
+
+## 19. Emglken entry (BUILD 45)
+
+`play.html?host=emglken` / `play-emglken.html` ? top-level `parchment-single-tapped.html` (not nested iframe).
+
+
+## 20. Product rule (D15)
+
+All player UX flows through `play.html` + Quixe for catalog modules. Emglken entry points are experimental only.
+
+
+## 21. Visible UI rule (D16)
+
+Players only see Parchmap (`play.html`). Engine hosts and Translator internals are background. Debug chrome requires explicit user opt-in.
+
+
+## 22. Deterministic RAM-primary contract (D17-D20, corrected by D24)
+
+```mermaid
+flowchart TD
+  ZVM[play.html ZVM live memory m/ram]
+  ZVM --> PL[player object id]
+  PL --> LOC[roomId = parent player]
+  LOC --> KIDS[child walk + open containers + supporters - Phase 1 gating]
+  KIDS --> NAMES[short_name + dictionary Word<->ObjectID]
+  LOC --> EXITS[direction props look-ahead doors]
+  NAMES --> WM[WorldModel UIPayload P2]
+  EXITS --> WM
+  WM -->|confidence wins| ACT[Actionable marks data-object-id]
+  WM -->|roomId graph| MAP[Map / Navigator]
+  WM -.->|P2 not live yet: field is empty, not text-derived| EMPTY[No actionable/map/radial for this room/format]
+```
+
+### Provider precedence (field-level, D24: no P1 fallback for these fields)
+| Field | Winner when P2 live | When P2 not live |
+|---|---|---|
+| roomId / roomName | P2 parent(player) | empty (no room resolved) |
+| exits | P2 direction props + door attrs | empty (no exits shown) |
+| discoveredObjects / actionable | P2 in-scope object IDs + dictionary | empty (no marks rendered) |
+| inventory tree | P2 child(player) worn/carried attrs | empty (no inventory tree) |
+| verbs/radials | P2 attrs (calibrated per-game via live opcode observation, D73, when confirmed) + grammar table via ActionSynth | empty (no radial verbs) |
+
+P0 behavioral may still populate HUD/meta fields (hudMetrics, specialCommands hints) independent of P2 - those were never part of this precedence table and are unaffected by D24.
+
+### Guide gaps mapped into architecture
+- Dictionary Word<->ObjectID -> every `.pm-act[data-object-id]`
+- Look-ahead exits ? UIPayload.exits before travel
+- @restore/@undo hooks ? Phase 8 resync bus
+- Grammar table ? ActionSynth input
+- Planarization / Glk shielding ? Phase 6 MapBeautify + GraphicsDock
+- Live attribute-bit calibration -> js/AttrCalibrator.js (D73)
+
+### Explicit non-goals retained
+- Text-mining as proof of actionable correctness
+- Visible non-Parchmap hosts / debug panels by default
+- Blocking play.html UX until Emglken HEAP exports exist (ZVM live memory is an acceptable P2 path)
+
+Live ZVM RAM walk is the CRITICAL PATH for deterministic actionable marks.
+
+
+## 23. Deterministic click / input commands (D21)
+
+```mermaid
+flowchart LR
+  Mark[".pm-act data-object-id"] --> Left[Left-click]
+  Mark --> Right[Right-click]
+  Inv[Inventory button data-object-id] --> Left
+  Inv --> Right
+  RAM[ZRamProvider scope+attrs] --> AS[ActionSynth semantic availability]
+  AS --> RES[SemanticActions resolver - D88]
+  Left --> RES
+  Right --> RES
+  RES --> Submit[Actionable.Submit exact resolved command]
+  AC[Autocomplete.RamCommandSeeds] --> Input[Line input suggestions]
+  RES --> AC
+```
+
+Before the D88 consumer cutover, `ActionSynth.commandsForPayloadObjectId` remains the
+compatibility adapter and must produce byte-equivalent output. After cutover, left-click,
+radials, and autocomplete consume the same resolved descriptor; none may rebuild parser
+text from a first-token verb.
+
+
+## 24. Universal coverage contract (D22)
+
+Product scope is **all rooms ? all catalog modules ? all supported module systems**, with one UI (`play.html`).
+
+```mermaid
+flowchart TB
+  subgraph Systems
+    Z3[Z3]
+    Z5[Z5]
+    Z8[Z8]
+    ZB[Zblorb]
+    GL[Glulx / Emglken]
+    SPEC[Specialized e.g. wump2ka]
+  end
+  Systems --> Play[play.html sole UI]
+  Play --> Cap[ZvmCapture / RemGlk tap]
+  Cap --> Prov[Providers P0/P1/P2/P3]
+  Prov --> WM[WorldModel Translator]
+  WM --> UI[Actionable Map Inventory Autocomplete]
+  UI --> Rule[D17 P2 wins / D21 RAM clicks / no room-specific branches]
+```
+
+| Concern | Rule |
+|---|---|
+| Room change | Every turn re-resolve location (valid parent, else status/map ? findRoomsByName with children preference) |
+| Module change | Same providers; story bytes / live RAM only differ |
+| System change | Quixe Z ? P2 ZRamProvider; Emglken Glulx ? P0/P3; never fork UI |
+| Fixture vs product | Harness fixtures (incl. Alley) prove the path; **Alley is never a product dependency**; matrix harness proves universality |
+
+Open: Glulx live P3 parity still tracks Emglken HEAP export; until then Glulx stays P0 behavioral under the same chrome.
+
+
+## 25. Non-compass topological mapping (D23)
+
+```mermaid
+flowchart TB
+  RAM[ZRam look-ahead exits] --> EX[UIPayload.exits]
+  DELTA[StateDelta prevRoom + lastCommand + newRoom] --> EX
+  EX --> CLASS{cardinal?}
+  CLASS -->|yes| GRID[Grid vector optional]
+  CLASS -->|no| FORCE[Non-cardinal spokes + force]
+  GRID --> MAP[Map Exits any label]
+  FORCE --> MAP
+  MAP --> NAV[Navigator over any exit keys]
+```
+
+Compass vocabulary is optional layout hint only, never a mapping/pathing prerequisite (unchanged from D23, restated here for cross-reference from §26).
+
+---
+
+## 26. Map Beautification Engine (Phase 6, D30)
+
+Full mechanics restored from `Full Stack Engine Level Conversion.txt` - the prior version of this doc had this reduced to a single generic sentence.
+
+```mermaid
+flowchart TB
+  ROOMS[Rooms + exits from WorldModel] --> CLASS{Edge type}
+  CLASS -->|cardinal N/S/E/W/U/D| RIGID[Rigid Structural Cluster - hard offset dx dy dz, 80px grid stride]
+  CLASS -->|non-cardinal - D23| SPRING[Soft distance spring]
+  RIGID --> CLUSTERBODY[Cluster treated as one rigid body]
+  CLUSTERBODY --> REPEL[Inter-cluster bounding-box repulsion]
+  SPRING --> ANCHOR[Anchored to nearest cluster perimeter]
+  REPEL --> SOLVE[Force-directed solver settles layout]
+  ANCHOR --> SOLVE
+  SOLVE --> B1[1: Planarize - Sugiyama/barycenter edge-crossing minimization]
+  SOLVE --> B2[2: Orthogonal 90 degree grid alignment]
+  SOLVE --> B3[3: Label/node collision - 20px min padding]
+  SOLVE --> B4[4: Elevation layering - see Z-axis below]
+  SOLVE --> B5[5: Sub-map clustering - boundary hull per Rigid Cluster]
+  B1 --> RENDER[Canvas render]
+  B2 --> RENDER
+  B3 --> RENDER
+  B4 --> RENDER
+  B5 --> RENDER
+```
+
+**Non-cardinal initial placement:** before the solver settles, seed each of a room's `N` non-cardinal exit stubs at `θ_i = 360° / N · i` (radial spoke seeding) rather than starting from a coincidental overlap.
+
+**Z-axis:** `Z=0` at start; `+1` on up/climb; `-1` on down/descend; horizontal movement inherits current `Z`. Two required rendering modes: **Multi-Floor Tabs** (default) and **Phantom Layering** (ghost floors above/below the active one). Vertical links render as `↑`/`↓` perimeter badges, never long cross-canvas lines. One-way vertical exits (RAM-flagged non-reversible) get a distinct high-contrast warning arrow style.
+
+**Gate (D27):** screenshot evidence of a >=N-room mixed cardinal/non-cardinal fixture with zero edge/label crossings, plus a multi-floor fixture showing both Tab and Phantom-Layering modes.
+
+Compass vocabulary is an optional layout hint, never a prerequisite for mapping, pathing, or RAM mining.
+
+---
+
+## 27. Live opcode calibration for attribute semantics (D73)
+
+`js/AttributeSchema.js`'s static PROFILE (§3.3) is a documented guess at attribute-bit meaning. This section covers the escape hatch: watching the compiled game's own opcodes actually run, rather than only reading static RAM bits.
+
+```mermaid
+sequenceDiagram
+  participant Player
+  participant IN as Input (typed) / Actionable.Submit (clicked)
+  participant AC as AttrCalibrator
+  participant ZC as ZvmCapture (patched VM prototype)
+  participant VM as lib/zvm.js (JIT-compiled game routine)
+
+  Player->>IN: submit "take canteen"
+  IN->>AC: observeCommand(command) - keypress capture (typed) or Submit wrap (clicked)
+  AC->>AC: parse verb/noun, resolve real object id (AttributeSchema._findIdByName)
+  AC->>AC: open correlation window (~450ms, keyed to that object id)
+  IN->>VM: real turn executes
+  VM->>ZC: test_attr / get_prop / set_attr / insert_obj / remove_obj (real opcodes)
+  ZC->>AC: onOpcode(op, vm, args, result) for every call
+  AC->>AC: append to window if args[0] == target object id
+  AC->>AC: resolve window - success iff a mutating op (insert_obj/remove_obj/set_attr/clear_attr) occurred
+  AC-->>AC: (Phase C) persist per-game learned bit, keyed by ZRamReader.gameIdentityKey
+  AC-->>AttributeSchema: (Phase D) applyTo() consults AttrCalibrator.overrideFor() before the static PROFILE loop
+```
+
+Phase B, C, and D are all implemented (D73): Phase B observes and correlates (in-memory trace); Phase C persists confirmed per-game overrides to `localStorage` (mirrors the existing diagonal-exit calibration pattern, D49) - a per-verb learned bit for open/wear/lock/switch, and a per-object direct override for take/drop (which has no single learnable bit); Phase D wires both into `applyTo()`, additively - a game/flag with no confirmed observation behaves identically to the static profile alone. Live-verified fixing the canteen bug on wump2ka.z5.js with zero regression on Anchorhead and confirmed VM-generic (works identically) on non-Inform Zork1.
+
+Z-machine (`lib/zvm.js`) only. Glulx/Quixe would need its own separate feasibility study first (matches the existing Glulx-sequenced-behind-Z-machine discipline, D36/D38).
+
+---
+
+## 28. Semantic action dialect and command resolution (D88)
+
+**Implementation status, 2026-09-19/20: Stages 1-6 of 8 shipped** (`js/SemanticActions.js`,
+`harness/d88-*.js`; see PRODUCTION_PLAN.md D88/D90/D91 for full evidence). Everything
+below describes the shipped contract, not a plan. `resolveForObject`/
+`resolveForPayloadObjectId` currently populate only precedence step 7 (migration
+compatibility, byte-parity with `ActionSynth`); steps 1-6 are real, empty hooks pending
+Stages 7+ evidence. `resolveAskAboutFormsForObject` and `resolveExitCommand` are
+separate entry points (not folded into `resolveForObject`) so that byte-parity gate
+stays exact. The Stage 6 consumer cutover is live but **default OFF**
+(`SemanticActions.CutoverFlag`, `localStorage`); flipping it swaps `js/Actionable.js`/
+`js/Qol.js`/`js/Autocomplete.js` from calling `ActionSynth`/ad hoc construction directly
+to reading this resolver instead, with zero output difference either way (proven, not
+assumed, in `harness/d88-stage6-cutover.js`). Genuine touch long-press
+(`js/Actionable.js` `Init()` `touchstart`/`touchmove`/`touchend`/`touchcancel`
+handlers) is additive to the existing `click.pmAct`/`contextmenu.pmAct` handlers, not a
+replacement.
+
+D88 inserts a pure semantic layer between structural action synthesis and every
+desktop/mobile command surface. It does not replace the provider ladder or collapse
+engine-specific structural strategies. Intent, UI label, parser template, and rendered
+command are separate values.
+
+```mermaid
+flowchart LR
+  WM[WorldModel structural payload] --> AS[ActionSynth semantic availability]
+  AS --> ACT[SemanticAction intent + roles + object ids]
+  SP[StructuralCommandProvider] --> REG[SemanticActions registry]
+  OP[ObservedDialectProvider] --> REG
+  IZ[InformZDialectProvider] --> REG
+  ZIL[ZilDialectProvider] --> REG
+  GLX[Future InformGlulxDialectProvider] --> REG
+  DICT[DictionaryCapabilityProvider lexical evidence only] --> REG
+  ACT --> REG
+  REG --> RC[ResolvedCommand or null]
+  RC --> LC[Left click]
+  RC --> OR[Object and inventory radials]
+  RC --> MR[Touch long-press radial]
+  RC --> IR[Input radial]
+  RC --> AC[Autocomplete]
+  RC --> NAV[Navigator]
+  LC --> SUB[One accepted submission path]
+  OR --> SUB
+  MR --> SUB
+  IR --> SUB
+  AC --> SUB
+  NAV --> SUB
+  SUB --> TR[TurnRecorder]
+  TR --> EV[Passive command-form evidence]
+  EV --> OP
+```
+
+### Core records
+
+`SemanticAction` contains stable `intent`, direct/indirect object ids, context,
+structural command when already authoritative, and payload generation.
+`CommandForm` contains a role-aware token template such as
+`[literal("look"), literal("at"), slot("direct")]`, provider/source, scope, safety
+class, evidence, and confidence. `ResolvedCommand` adds the stable UI label, exact
+rendered parser command, form id, target ids, and provenance. The resolver is pure: it
+cannot call `Input.Inject`, `Actionable.Submit`, or an interpreter API.
+
+### Deterministic resolution
+
+```mermaid
+flowchart TD
+  A[SemanticAction] --> S{Target current and unambiguous?}
+  S -->|no| N[Return null]
+  S -->|yes| V[Apply confirmed scoped vetoes]
+  V --> P1{Explicit structural command?}
+  P1 -->|yes| R[Render once]
+  P1 -->|no| P2{Confirmed object/context form?}
+  P2 -->|yes| R
+  P2 -->|no| P3{Confirmed build-wide semantic form?}
+  P3 -->|yes| R
+  P3 -->|no| P4{Decoded compiler grammar?}
+  P4 -->|yes| R
+  P4 -->|no| P5{Capability-gated compiler profile?}
+  P5 -->|yes| R
+  P5 -->|no| P6{Migration compatibility form?}
+  P6 -->|yes| R
+  P6 -->|no| N
+  R --> O[ResolvedCommand]
+```
+
+No failed form causes an automatic retry. No missing INSPECT falls through to the
+first attribute action. Dictionary words cannot create compound templates. Ambiguous
+nouns and parser clarification yield no learning observation until a stable target is
+resolved.
+
+### Evidence and persistence boundary
+
+Typed and injected submissions carry optional `{intent, formId, objectIds}` metadata
+through the existing two-entry-point `TurnRecorder` contract. Role-aware recognition
+may annotate typed commands only when a known template and unique object spans match.
+Structural opcode/state witnesses can confirm mutating semantics. Transcript response
+patterns may identify a global stub or provisional object-specific behavior, but are
+not sufficient to classify an unknown command as INSPECT; randomized presentation text
+must not alter semantic classification.
+
+New evidence lives in versioned `PM_SemanticActions_<buildIdentity>` sidecar storage,
+keyed by release, serial, checksum, adapter version, locale/grammar regime, intent,
+template signature, and scope. D85/v2 data remains untouched and is imported at most
+once as provisional legacy evidence. Restore/undo/restart clears pending and
+generation-bound observations; only independently established build-stable grammar
+facts survive. Corrupt, foreign-build, or contradictory evidence fails closed.
+
+### Mobile and out-of-sample gate
+
+`contextmenu` simulation at a narrow viewport is not proof of mobile support. The gate
+must exercise pointer/touch long-press, virtual-keyboard Enter, pagination, cancellation,
+and the same descriptor/rendered command used by desktop click, radial, autocomplete,
+and navigation.
+
+The final evaluator chooses held-out stories/builds after code freeze and withholds
+title/serial labels from assertions. Required cases cover Inform Z and non-Inform ZIL,
+randomized Wumpus, AOTYRZ, same-name collisions, multiword-only and localized grammar,
+random failure/success text, parser correction/disambiguation, delayed/menu output,
+save/restore/undo/restart, and same-release/serial binaries with different checksums.
+Default-on requires zero wrong automatic submissions and no title/build-specific branch.
+
+
+## 29. RAM-reading recovery: scope/attribute/exit walk (D89)
+
+`js/ZRamReader.js` and `js/ZRamProvider.js` are the sole authority for turning live
+Z-machine memory into a `UIPayload` (D3/D9/D24). Three walks compose, each already
+covered by its own prior decision, and D89 is the record that all three went missing
+together (a bulk file-state event, not an edit by any seat) and were restored to their
+documented behavior, not reinvented:
+
+```mermaid
+flowchart TD
+  MEM[Live Z-machine memory] --> SNAP[ZRamReader.snapshot - hint-free]
+  SNAP --> LIKELY[findLikelyLocation: parent-player -> learned-global -> scored-scan]
+  LIKELY --> SCOPE[scopeObjects - room children]
+  SCOPE --> ATTRS[attrsFromObject -> AttributeSchema.applyTo]
+  SCOPE --> WRAP{unnamed child?}
+  WRAP -->|animate D57| SKIP[not recursed - contents stay hidden]
+  WRAP -->|not animate| RECURSE[transparent recurse]
+  RECURSE --> WORN{worn bit D68?}
+  WORN -->|yes, via bypass| DROP[excluded - stays with wearer]
+  SCOPE --> EXITS[lookAheadExits]
+  EXITS --> INFORM{isInformCompiled D61?}
+  INFORM -->|no| NOEXIT[honest empty - MapTopology state-delta is the fallback]
+  INFORM -->|yes| DIAG[nw/se ambiguous-until-calibrated D49/D51]
+  INFORM -->|yes| DOORDIR[door_dir/IndivTable numbered exits D35]
+  DOORDIR --> DESTCHK[destIsMapRoom validates real dest]
+  DESTCHK -->|fails| STUB[honest dest-less stub]
+  SNAP --> PLAYER[findPlayerId - accepts unnamed self-object]
+  PLAYER --> INVROOT[resolveInventoryRootId D53/D57/D58/D75]
+  INVROOT --> WALK[walkVisibleDescendants - deep inventory]
+  ZP[ZRamProvider.collect] --> SNAPCALL{snap.roomId set?}
+  SNAPCALL -->|yes| TRUST[trust it - never overridden by a text hint]
+  SNAPCALL -->|no| HINT[status-text hint ladder - last resort only]
+```
+
+**The invariant this section exists to name:** `ZRamProvider.collect()`'s text-hint
+ladder (`resolveStatusRoom` -> `findLikelyLocation` with a hint -> `matchRoomFromText`
+-> `findRoomsByName`) is a fallback for when structural resolution finds NOTHING, never
+a second opinion permitted to override an already-successful structural answer.
+`resolveStatusRoom()`'s primary source is `ParchmapMap.CurrentRoom` -- itself set from
+the PREVIOUS resolved room -- so treating the hint as authoritative on every tick is
+self-reinforcing: one wrong early guess becomes permanent, since every later tick
+re-feeds that same wrong name back in as its own hint (confirmed live: an NPC name
+"Michael" matched via the hint path and never let go, even though the hint-free
+structural path was already correct the whole time). `collect()` now checks
+`snap.roomId` first, unconditionally, before ever consulting the hint ladder.
+
+Room-scope discovery (`scopeObjects`) and deep inventory discovery
+(`walkVisibleDescendants`, reached via `resolveInventoryRootId`) are deliberately
+separate walks with separate exclusion rules -- `scopeObjects` excludes the resolved
+`playerId` from room scope (D82) and gates unnamed-wrapper recursion on the wrapper's
+own `animate`/`worn` bits (D57/D68); `resolveInventoryRootId` has its own precedence
+(D75's opcode-observed confirmed root first, then a direct-holds check, then an
+animate+plural-children structural fallback, D53/D57/D58) because a game's resolved
+`playerId` is not always the object that actually holds items. Neither walk may borrow
+the other's exclusion logic as a shortcut; each was independently found broken and
+independently restored.
+
+## 30. Mobile: portrait-primary shell, PWA shell, and native Android conversion (D93, supersedes D92's landscape framing)
+
+> D92 originally shipped a landscape-lock/rotate-hint mechanism; the operator later
+> identified this as a mistake, not a preference ("I was wrong about landscape view...
+> It needs to be portrait view"). D93 replaces that framing below. The PWA-shell and
+> Capacitor-conversion mechanics D92 established are unchanged and still described
+> here; only the orientation policy and the mobile hit-testing/reachability bugs D93
+> found along the way are new. See `docs/mobile-ui-plan-d93.md` for the full planning
+> record (44 gates, six adversarial audit rounds) and PRODUCTION_PLAN.md's D93 entry
+> for live verification evidence.
+
+```mermaid
+flowchart LR
+  BOOT[play.html load, compact viewport] --> PORTRAIT[body.pm-mobile.pm-portrait -- default, no lock]
+  PORTRAIT --> STACK[#parchment pointer-events:none]
+  STACK --> HIT[LineInput / .pm-act / Glk dialogs all hit-testable]
+  PORTRAIT --> TOOLS[#tools-toggle display:block under pm-mobile -- reachable without typing /tools]
+  PORTRAIT --> ROW["[mic][input][submit] overlay row, gutters reserved in .Input.LineInput's own width"]
+  ROW --> SUBMIT[Input.Inject('', true) -- append nothing, submit existing value]
+  ROW --> MIC[Native STT or Web Speech -> Input.Inject transcript, false -- insert only, never auto-submit]
+  LOAD[play.html load] --> SW{isSecureContext?}
+  SW -->|https or localhost| REG[service-worker.js registers]
+  SW -->|file:// or LAN http://| NOREG[no offline cache - app still runs fully]
+  REG --> SHELL[App-shell cache-first: html/css/js/lib]
+  REG --> RUNTIME[Everything else network-first, cache fallback]
+  BUILD[build-android.bat] --> DIST[make-dist.bat -> static dist]
+  BUILD --> BUMP[bump versionCode]
+  BUILD --> COPY[cap copy android]
+  BUILD --> GRADLE[gradlew assembleDebug]
+  GRADLE --> APK[Parchmap.apk - bundled WebView, no hosting]
+```
+
+**Portrait is the default, fully-supported orientation** (`js/MobileLayout.js`).
+`requestFullscreenLandscape` and its first-gesture `touchend`/`click` capture-phase
+listener chain -- which silently rotated a portrait session into landscape on the very
+first tap anywhere, including a tap meant for the menu, a noun, or the input -- are
+DELETED, not disabled. `#pm-rotate-hint` stays in the DOM (a possible future, explicitly
+optional landscape-enhancement affordance) but is permanently hidden by `apply()`
+rather than shown for portrait. `manifest.json`'s `orientation` is `portrait-primary`.
+`isCompact()` no longer includes `pointer: coarse` in its OR -- a touchscreen
+desktop/laptop at a desktop-sized viewport (including this project's own 1400x900
+layout-regression viewport) must not receive the mobile shell; touch capability and
+compact layout are different questions.
+
+**The stacking-context bug that made mobile "not work" was found and fixed at its
+source, not worked around per-symptom:** `#parchment` (an always-present, invisible
+`opacity:0` overlay div, confirmed otherwise fully inert -- the one place that would
+give it real scrollable content is commented-out dead code) shared `#windowport`'s
+`z-index:3` on mobile and, as a later DOM sibling, silently won hit-testing over
+*everything* inside `#windowport` -- the line input, every `.pm-act` actionable mark,
+and Glk's own native Save/Restore dialog, confirmed live via `elementFromPoint` for
+each. `body.pm-mobile #parchment { pointer-events: none; }` restores all three at once;
+desktop's `#parchment` (`z-index: auto`, never affected) is untouched.
+
+**Reachability:** `#tools-toggle`'s desktop-only `/tools`-typed-first gate is overridden
+to `display: block` under `body.pm-mobile` -- previously the entire Tools surface
+(Items/Transcript/History/Display/Commands/Theme/Maps/Save-files) had no discoverable
+path on a touch device at all.
+
+**Touch long-press** (D88 Stage 6's real `touchstart`/`touchmove`/`touchend`/
+`touchcancel` handlers, already correct, just unable to fire while the stacking bug
+stood) is hardened: a `pm-press-pending` class applies `user-select: none` only while a
+press is pending (not permanently -- a permanent rule would silently block copying
+story text), preventing Android's native text-selection from winning the race and
+firing a `touchcancel` that kills the radial; `ParchmapQol.HideRadialMenu` ignores a
+`mousedown` within 400ms of `OpenRadial`, a defensive guard against a browser-
+synthesized compatibility event from the same touch dismissing the radial it just
+opened.
+
+**Input row** (`play.html`, `js/Input.js`'s `BindInputRow`/`InitMic`/`ToggleMic`): a
+fixed-position submit button (desktop + mobile) and mic button (mobile only) sit beside
+Glk's own `.Input.LineInput` as host-owned siblings -- not children of it, since GlkOte
+re-renders that node every prompt, so a reparent-on-each-prompt scheme was rejected in
+favor of an overlay with a CSS-reserved gutter in the input's own width. Submit calls
+`Input.Inject("", true)` specifically (append nothing, just submit the existing value --
+`Inject(currentValue, true)` would duplicate the command, since `Inject` always appends
+to whatever the box already holds). Mic prefers the native Capacitor path
+(`@capacitor-community/speech-recognition` + `RECORD_AUDIO`) inside the APK when
+`window.Capacitor.Plugins.SpeechRecognition` is present; otherwise it uses the
+browser `SpeechRecognition`/`webkitSpeechRecognition` Web API where available,
+and hides entirely where neither path exists (e.g. iOS Safari without Web Speech).
+Both paths insert via `Input.Inject(transcript, false)` only -- never auto-submit
+(see PRODUCTION_PLAN.md D93 full-closure round). Both controls hide via the existing
+`has-line-input` body class whenever no line input is on screen (a MORE-prompt,
+char-input, etc).
+
+**PWA shell** (`manifest.json`, `service-worker.js`) precaches the fixed app-shell file
+list (html/css/js/lib/icons) cache-first for instant offline boot; the ~300-file game
+catalog and anything else is network-first with a cache fallback, so a game already
+opened once works offline without precaching the whole catalog. Service workers only
+register in a secure context (`https://` or the literal host `localhost` -- a browser
+platform rule); `file://` and a plain LAN `http://` IP both run the full app but do not
+get offline caching, which is documented rather than silently degraded.
+`service-worker.js`'s `CACHE_VERSION` is bumped whenever `APP_SHELL`'s contents change
+(including `manifest.json` itself) so an already-installed PWA doesn't stay stuck
+serving a stale cached shell.
+
+**Native Android conversion** uses Capacitor (bundles the static app inside the `.apk`,
+runs in the app's own private WebView), not a Trusted Web Activity (Bubblewrap) --
+a TWA fundamentally requires the app to already be hosted at a live,
+Digital-Asset-Links-verified HTTPS origin, which contradicts "self-contained, no
+hosting." `build-android.bat` is the single build entry point and always produces both
+outputs (static dist + `Parchmap.apk`) in one run. Update-in-place (not a duplicate
+install) requires `applicationId` (fixed), the signing certificate (Gradle's
+auto-created debug keystore, never regenerated by the script), and `versionCode`
+(auto-incremented every run via `android/bump-version.ps1`) to all match "same app,
+newer version" -- re-verified after the D93 changes (versionCode 5->6, `BUILD
+SUCCESSFUL`, compiled `android/app/src/main/assets/public/` output directly grepped to
+confirm the real source changes propagated, not stale cached assets). Toolchain (JDK 17
++ 21 Temurin, Android SDK platform-tools/34/build-tools 34.0.0) lives in the shared
+`AndroidDevKit` at `C:\Users\hymlo\Downloads\Projects\AndroidDevKit\sdk`, not inside
+this repo. `make-dist.bat`'s root-file copy is a deny-list (ships any new root file
+automatically), not a hardcoded allow-list, specifically so the next new root-level
+artifact does not require a fresh manual ship-list edit the way `manifest.json`/
+`service-worker.js` initially did.
+
+**Full closure (same day, operator directive -- nothing left deferred):**
+`capacitor.config.json`'s `webDir` is now repo-relative (`capacitor-www/`, built by
+`make-dist.bat`'s new optional destination argument), not an absolute outside-repo
+path. `AndroidManifest.xml`'s Activity carries `android:windowSoftInputMode=
+"adjustResize"`, matching the resize-based model the existing `visualViewport`/
+`--pm-kb-inset` CSS already assumes. Android's hardware back button (`@capacitor/app`,
+`js/MobileLayout.js`'s `bindAndroidBackButton`) mirrors `js/Input.js`'s own Escape-key
+dismiss priority (radial -> Message -> native dialog -> map) and exits only when
+nothing is left to close. Glk `CharInput` prompts (Y/N, menus, "press any key") share
+mobile bottom-strip positioning with `LineInput`, but are a different prompt mode:
+body `has-char-input` shows the host submit arrow (`#pm-input-submit`), which fires a
+synthetic keypress into the CharInput (begin/MORE/continue) without opening the OS
+soft keyboard (`inputmode=none`, blur, readonly). Soft-keyboard policy on mobile:
+the IME stays closed unless the player **short-taps** a visible `.Input.LineInput`
+(sets `pmUserFocus` + `inputmode=text`); GlkOte's auto-`focus()` is rejected via a
+`focusin` gate and per-tick `SyncMobilePromptFocus`; long-press on the line field
+opens the input radial **without** IME; Tools/Menu/story touches call
+`Input.DismissKeyboard`. The input-line radial also has a long-press path on
+`#pm-input-submit` (a focused field's own long-press would open OS text-selection,
+not a page radial). Desktop right-click on the line field is unchanged. The Tools radial (`WorkspaceUI.
+OpenTools`, not D26-protected) renders as a scrollable vertical list with real 44px
+targets on `body.pm-mobile` instead of paginating behind "More..." -- desktop's
+circular Tools radial is unchanged. The mic button's native path
+(`@capacitor-community/speech-recognition`, `android.permission.RECORD_AUDIO`) runs
+`available()` -> `checkPermissions()`/`requestPermissions()` -> `start()` inside the
+APK, falling back to the pre-existing browser `SpeechRecognition` path outside it; both
+insert-only, never auto-submit. See PRODUCTION_PLAN.md's D93 closure-round entry for
+the full live-verification evidence, including a real, self-caught Gradle manifest
+merge failure (a literal `--` inside an XML comment) fixed before the final rebuild.
+
+<!-- D93-MOBILE-FOLLOWUP-ARCH (moved here from a duplicate "19. Emglken entry (BUILD 43)" tail; the Emglken entry itself is section 19, BUILD 45) -->
+### Post-D93 operator follow-ups: input, dialogs, mic (partly superseded)
+
+Keyboard gate applies only to Glk .Input.LineInput / .Input.CharInput. Native Glk #dialog save/restore name fields are excluded from blur/dismiss so the soft keyboard stays up while typing a save name.
+
+Mobile line row (LTR): command field, submit (➤), mic (far right). The mic behaviour recorded here at the time (hold-to-talk default via Global.Prefs.MicHoldToTalk, tap-to-toggle alternate, Options toggle) is superseded in detail by section 32 (D95 voice input state machine); the Menu/Map chrome by section 33 (D96).
+
+After undo/restore/restart, UndoRestoreSync.resync refreshes WorldModel + Actionable + map and scrolls the buffer. D106 corrects the former assumption that scrolling made restored story text appear: successful native file restore additionally submits one settled `look` (section 41); undo/restart stay passive.
+
+
+## 31. VM restore hooks and the truthful character cell (D94)
+
+Two contracts that the mobile shell depends on, each of which failed silently and was
+found only by reproducing on a phone-sized browser.
+
+```mermaid
+flowchart TD
+  subgraph HOOK[Restore/restart observer -- must never break the VM]
+    VMR[ZVM restore_undo / restore_file / restart] --> WRAP[ZvmCapture wrapper: passive observer]
+    WRAP -->|try/catch + operation identity| ORS[UndoRestoreSync.onStateRestored]
+    ORS -->|coalesced 250ms timer| RS[UndoRestoreSync.resync]
+    RS --> RF[WorldModel + MapTopology + Actionable + Map + TranslatorUI + scroll]
+  end
+  subgraph CELL[One character cell, measured where it is rendered]
+    GO[GlkOte Y: hidden test pane in #parchment, width of 12345678 / 8] --> COLS[columns and rows told to the game]
+    CC[css/CharCell.css: identical cell rules for #parchment AND #windowport] --> GO
+    CC --> REAL[real GridWindow + BufferWindow in #windowport]
+    COLS --> GAME[game hard-wraps, boxes and centres text to that width]
+  end
+```
+
+**Restore/restart observer (`js/ZvmCapture.js` -> `js/UndoRestoreSync.js`).** Phase 8's
+"terp-level @restore/@undo hooks" wrap the VM's `restore_undo`, `restore_file` and
+`restart`; after a successful restore or any restart they call
+`UndoRestoreSync.onStateRestored(operation)`, the opcode-level entry to the same `resync()` the
+typed-command path uses (section 23/D86). Two invariants: (1) the callee must exist --
+`onStateRestored` was missing, so the call threw inside the VM's own boot-time `restart`
+and aborted game start (an intermittent blank game pane, because the wrapper is installed
+by a polling timer and only crashed when it landed before the VM's first `restart`);
+(2) the wrapper is a passive observer, so it calls the callee inside `try/catch` with an
+existence check and an observer failure can never propagate into the VM. Guarded by
+`harness/audit-restore-sync.js` (real module, not a mock), `tools/check-missing-methods.js`
+(every `Module.method(` call in `js/` must resolve; comments and existence-guarded calls
+ignored) and the boot section of `harness/d94-cell-and-boot.js`.
+
+**Truthful character cell (`css/CharCell.css`).** GlkOte tells the game how many columns
+and rows fit by measuring one character in a hidden test pane, and games treat the grid's
+width as the screen width: they hard-wrap boxed text at it and pad centred text to it.
+That pane is appended to `#parchment` (GlkOte's gameport) but the real windows live in
+`#windowport`, and all Parchmap font rules are scoped to `#windowport` -- so on mobile the
+game measured 14px/15px cells while the screen rendered 10px grid and 20px prose, the game
+was told 44 columns when ~62 fit, and both the boxed quote and the centred title wrapped
+wrongly. On the mobile shell (`body.pm-mobile`) the stylesheet enforces: **one cell for
+grid and prose** (the prose column must hold at least as many characters as the grid
+reports), sized as `min(Display font, fit)` where `fit` guarantees `--pm-cell-cols`
+(default 50) columns; and **identical rules on the measuring pane and the real windows**,
+so measured == rendered by construction. Grid spans render full-height edge to edge so
+boxed text is a solid block. Desktop is untouched. `harness/d94-cell-and-boot.js` asserts
+measured == rendered for grid and prose at five phone sizes, that the reported columns fit
+the prose column, that no grid line wraps, that Anchorhead's quote and title stay intact,
+and that desktop keeps its metrics; it fails if the stylesheet is removed. Trade-off: the
+Display font size becomes an upper bound on mobile (about 12.5px effective on a 412px
+phone); `--pm-cell-cols` is the single tuning knob. `css/CharCell.css` is in the service
+worker's `APP_SHELL` (cache v5) and in `make-dist.bat`'s critical-file check.
+
+## 32. Voice input state machine (D95)
+
+`Input.Mic` (js/Input.js) drives the mobile microphone button. The button is the ONLY
+indicator -- no text is ever shown for the mic (operator requirement).
+
+```mermaid
+stateDiagram-v2
+  [*] --> Idle
+  Idle --> Listening: press (hold mode) / tap (tap mode)  -- lit immediately
+  Listening --> Listening: recognizer segment ends by itself while still held -> next segment (hold mode)
+  Listening --> Finishing: release / second tap -- dimmed, stop() the recognizer
+  Listening --> Error: real failure (permission, no mic, network)
+  Finishing --> Idle: commit accumulated text ONCE (insert only, never submit)
+  Error --> Idle: ~2.5s red frame + circle-and-line sign
+  Listening --> Idle: tap mode: recognizer ended on silence (text inserted, button goes dark)
+```
+
+Design constraints taken from the engines' real behaviour, not an idealised model: Android's
+`SpeechRecognizer` (via @capacitor-community/speech-recognition) ends every session by itself
+after a pause, so hold mode chains segments and accumulates text; a session that heard nothing
+rejects ("No match"/"No speech input"), which is a normal outcome and not an error; availability
+and permission are async (checked once, then cached), the permission prompt steals the touch,
+so a release before recognition starts cancels cleanly. The button carries
+`user-select:none`, `-webkit-touch-callout:none`, `touch-action:none` and suppresses
+`contextmenu`, because a long press otherwise triggers selection or the OS menu, which fires
+`touchcancel` and ends the recording early. A 60s watchdog and page-visibility/blur aborts
+ensure a lost `touchend` cannot leave the mic lit and recording. CSS specificity note: the mobile
+base rule `body.pm-mobile #pm-input-mic` and generic `button { border: ... !important }` rules
+outrank a naive state class, so the lit/error/busy states carry matching specificity and the
+border colours are `!important`. Guarded by `harness/d95-mic-hold.js` (native plugin modelled
+from its source; real touch events). Cannot be proven on a physical phone from this environment.
+
+## 33. Bottom Menu handle and right-edge Map tab (D96)
+
+Mobile shell only (`body.pm-mobile`); desktop keeps the top-right Menu chip and has no Map tab.
+
+```mermaid
+stateDiagram-v2
+  [*] --> Collapsed
+  Collapsed --> Expanded: tap handle (capture-phase click stopped before the jQuery binding)
+  Expanded --> GameMenu: tap Menu (existing click -> WorkspaceUI.OpenGameMenu)
+  Expanded --> Collapsed: 4s timer / tap elsewhere / GameMenu opens
+  Collapsed --> [*]: hidden while keyboard is up, a dialog is open, or a radial is open
+```
+
+Layout contract (css/Parchmap.css, end of file): `--pm-handle-h` (16px, 0 with the keyboard up) is a
+strip reserved under the input row. Everything anchored to the input row adds that ONE variable
+(input row, mic/submit, CharInput row, Tools list, buffer bottom padding, fade mask, autocomplete,
+map sheet padding), so the handle can never overlap the text field and the strip cannot drift.
+Collapsed = transparent hit area + 40x4 bar drawn by `::after` (no text; aria-label kept). Expanded =
+normal button ABOVE the input row.
+
+Right edge: `#pm-map-tab` (z 23) calls `ParchmapMap.Toggle()`. The exit rail
+(`#exits .row.vertical.right`, z 24) shares that edge: three rotated 33vh cells (up / e / down) whose
+labels are travel taps. The tab sits at the up/e seam; the rail strip is `pointer-events:none` and only
+its real labels take pointer events, so a long exit name wins an overlap and the rest of the tab stays
+tappable. Dialog ownership: `app-dialog-open` is set by `Message.Show` and is no longer cleared by
+Parchmap's 100ms boot cleanup while `Message.IsOpen` (first-launch Help popup). Guarded by
+`harness/d96-menu-handle-map-tab.js`.
+
+## 34. ParchLock release and documentation architecture (D99 -- implementation in progress)
+
+Status: IMPLEMENTATION COMPLETE; READY FOR FINAL ADVERSARIAL REVIEW (2026-09-20).
+Product identity, public docs, runtime/source allow-list packaging, generated-asset
+cleanup and Android hardening are implemented. Operator/external release gates remain.
+Canonical text: PRODUCTION_PLAN.md section 12 (D99), with D97 (story policy, section 12.2) and D98 (section 13,
+see architecture section 35) as subordinate parts. Adversarial review #596-#611 converged. Current packaging (deny-list `make-dist.bat`, product still named
+Parchmap) is described by sections 14 and 30.
+
+```mermaid
+flowchart TD
+  PI[ProductInfo: one canonical source<br/>name, credit line, version, date, links]
+  PI --> UI[Splash, footer, About / Credits / Legal, metadata]
+  PI --> DOCS[Public docs: README, USER_GUIDE, RELEASE_NOTES,<br/>PRIVACY, CREDITS, NOTICE, THIRD_PARTY_NOTICES, SOURCE-BUILD]
+  SRC[Working repository<br/>dev corpus, harness, plans, AI docs stay here] --> RT[Runtime ALLOW-LIST manifest]
+  SRC --> SA[Source ALLOW-LIST manifest, non-story]
+  RT --> PC[PC dist zip]
+  RT --> CW[capacitor-www]
+  CW --> AS[android assets public]
+  AS --> APK[Signed release APK]
+  SA --> SRCZ["ParchLock-source.zip, bundled with every distributed binary<br/>build scripts, native-hooks, wasm recipe, android without keystore"]
+  PC --> G{Gates: exact-set both directions,<br/>forbidden name/content scan, decoded APK scan,<br/>brand scan with exact-string allow-list,<br/>reference + service-worker closure, hash parity}
+  CW --> G
+  AS --> G
+  APK --> G
+  SRCZ --> G
+```
+
+Rules carried by the plan (each is an acceptance criterion, not an implementation):
+
+- **Identity.** Display "ParchLock!"; artifact name "ParchLock"; `ParchLock.apk`; appId and
+  namespace `com.parchlock.app` (the Java package directory moves with it; custom URL scheme
+  equals the appId). Product-owned tokens convert PM_ to PL_, pm- to pl-, __PARCHMAP_* to
+  __PARCHLOCK_*; upstream Parchment/GlkOte contract identifiers (`#parchment`, `parchment.css`,
+  `lib/parchment-modern/*`) and exact historical/legal attribution strings are protected. Every mechanical
+  set asserts no target name already exists and runs the full harness sweep plus the Playwright suites.
+- **Credit.** "Adapted by Hymlock Groves. Based on Parchmap by Roy Lazarovich." (credit only; the operator chose NO copyright line for now) Upstream is never
+  claimed as owned; GPLv3 text stays verbatim; a modification notice carries the real release date.
+- **Story policy (D97).** Packaging keeps copying games/ exactly as today; the operator removes
+  story files by hand and checks the result; documentation is written as if no games ship and says the
+  user is responsible for modules they add. There is deliberately NO automated story-rights or
+  story-payload release gate.
+- **Corresponding source (operator decision).** A `ParchLock-source.zip` is bundled with EVERY distributed
+  binary/package (PC zip and APK release folder), with source directions in the docs and the About/Legal
+  screen. It is built from its own explicit non-story allow-list (scripts to control compilation, native-hooks
+  CMake source for `pm_vm_probe.wasm`, the source-only Emglken/Bocfel/Glulxe build recipe, the android project without any
+  keystore, licences, the exact shipped third-party library copies), matches the exact build, and excludes games, dev
+  fixtures, AI/internal docs, screenshots, logs and secrets. A Git repository is ALSO intended later (visibility,
+  contents and host undecided; it must be clean from its first commit and each release tagged). Referring people only
+  to upstream Parchment/Parchmap does not satisfy the source obligation for ParchLock's own changes.
+- **Privacy.** Local storage, permissions, backup and outbound behaviour are stated; speech
+  recognition is performed by the operating system or browser provider, never claimed to stay on-device.
+- **Release signing.** External keystore kept by the operator (custody decided, creation deferred to release time; backups are the operator's responsibility), fail-closed, clean build, apksigner verification; `allowBackup`
+  decided OFF and the app `INTERNET` permission decided REMOVED (operator, walk-through Q3/Q4; applied in the release phase, validated on the MERGED manifest; rollback: restore `INTERNET` if real-device voice input regresses).
+- **Doc hygiene.** PRODUCTION_PLAN.md, ARCHITECTURE_UML.md, GUI_BASELINE.md, AI docs, harness, tools,
+  screenshots and logs are repository-only and never packaged.
+- **Runtime host.** Shipped packages use the standard `lib/main.js` ZVM/Quixe path. Experimental Emglken
+  scripts, bridge, redirect page, modern tapped host and duplicate WASM trees remain available only in the
+  repository/corresponding-source archive and are excluded by the runtime allow-list.
+
+## 35. Module library (D98 -- implemented)
+
+Status: IMPLEMENTED AND LOCALLY VERIFIED; READY FOR FINAL ADVERSARIAL REVIEW (2026-09-20); canonical text PRODUCTION_PLAN.md section 13. Compared before design against the current code: `lib/main.js` `launch()` (engine
+chosen by the story URL extension, story bytes fetched by jQuery JSONP into `processBase64Zcode`),
+`js/MainMenu.js` (former server-upload import), `js/GameList.js` consumers, `ParchLock.js`
+(`SetTitle`, `PL_LastStory`, `EnsureStoryOrRecover`), `js/VmProbeLoader.js` and section 20/21 rules.
+
+```mermaid
+flowchart LR
+  UIm["Modules dialog: add file or files, add folder,<br/>remove imported, hide built-in, remove all or hide all"] --> ML[ModuleLibrary]
+  ML --> INS[inspect: sniff bytes, strict blorb parse,<br/>compat level, metadata]
+  INS -->|reject with reason, never stored| UIm
+  INS --> IDB[(IndexedDB: authoritative bytes + record)]
+  IDB --> CACHE[localStorage: versioned sync cache<br/>rebuilt by reconcile]
+  ML --> LIST[library list, counts, flags, Continue, SetTitle]
+  LIST --- GL[GameList.js built-in catalog, unchanged data,<br/>plus hidden-built-ins list]
+  PLAY[play.html ?story=local/HASH.EXT.js] --> HOOK[jQuery.ajax wrapper: canonical local URLs only]
+  HOOK --> IDB
+  HOOK --> ENG[lib/main.js launch: ZVM or Quixe by extension]
+  PROBE[VmProbeLoader.scanCurrentStory] --> IDB
+```
+
+Contracts:
+
+- **Identity.** id = SHA-256 of the story bytes (reviewed pure-JS fallback where `crypto.subtle` is
+  unavailable); story path `local/<64 hex>.<ext>.js`; the extension is chosen by sniffing, never from the
+  user's file name; `Parchmap.GameFilename` for a local story is that relative path, so per-story keys
+  survive remove and re-add of identical bytes; identical bytes under different names dedupe.
+- **Compatibility matrix (observed engine windows).** ZVM accepts Z-machine versions 3, 4, 5, 8
+  (`lib/zvm.js`); Quixe accepts Glulx 0x00020000 <= v < 0x00030200 (`lib/quixe.js`). Z-machine 3/4/5/8
+  and zblorb = FULL (map, actions, items). Glulx (ulx, gblorb) = PLAY-ONLY: it loads and plays through
+  Quixe exactly like the catalog's existing gblorb games; the map/action/item layers are Z-machine
+  features (D38/D28/D36 scope boundary). Anything else is rejected with a specific reason. A path is
+  called "proven" only with a real or generated valid fixture; the corpus has none for z4 or raw ulx.
+- **Loader seam.** The wrapper intercepts only canonical local URLs, delegates everything else
+  byte-for-byte, returns a jQuery-compatible Deferred, installs before DOM ready, never falls back to the
+  network, and is a deliberate compatibility seam (vendored `lib/main.js` is not patched). Probe
+  loading resolves local bytes directly. The experimental Emglken host is source-only and not a shipped
+  runtime route; imported modules always use the standard ZVM/Quixe extension dispatch.
+- **Information.** Title/author only from embedded IFmd (XML mode, DOCTYPE rejected, capped, text nodes
+  only) else a sanitized editable file name, each labelled with its origin; Z release/serial are identity
+  data. No filename-only catalog matching.
+- **Removal v1.** Deletes module bytes, index row, library flags, PL_LastStory and the exact hash-path
+  map keys. It does not touch Parchment Dialog saves (`dirent:<usage>:<gameid>:<filename>`,
+  `content:<same>`), autosaves (`autosave:<VM signature>`) or calibration data (keyed by header
+  release+serial, possibly shared with a built-in copy) until real-save tests prove ownership.
+  Built-ins are hidden, never deleted; no automatic HEAD probing.
+- **Boot without a module.** A defined-empty, undefined or 404 GameList and a missing games/ folder
+  must not throw on either page; the library shows an empty state; Continue appears only for a story
+  that still exists; play.html without a story keeps the recovery start screen (section 30).
+- **Consistency.** IndexedDB is authoritative; the localStorage cache is versioned and reconciled at
+  startup; add/remove are atomic with quota rollback; tabs converge through BroadcastChannel/storage
+  events; a running session survives removal elsewhere but reload/Continue fails cleanly.
+- **Naming.** New product-owned names are final from the start (`PL_Modules_*`, `pl-module-*`, a
+  `parchlock-*` database); pre-existing legacy keys/classes it must touch sit behind one `LEGACY`
+  adapter table so the mechanical rename edits a single place.
+
+## 36. Display text scaling and menu de-duplication (D101)
+
+Mobile rendering has two deliberately separate typographic layers:
+
+```mermaid
+flowchart LR
+  PREF[Display: Text size] --> APPLY[Global.ApplyDisplayPrefs]
+  APPLY --> READ[--pl-reading-scale]
+  READ --> PROSE[Reflowable BufferLine.Style_normal prose]
+  CELL[D94 measured character cell] --> FIXED[Grid, pre, headings, reverse/status, boxed text]
+  CELL --> MEASURE[#parchment measurement parity]
+```
+
+- `--pl-reading-scale` is relative to the 20px preference default, so the default is exactly
+  100% and does not alter the D94 baseline. It applies only to normal reflowable BufferWindow
+  prose and inline descendants, with a 9px floor at the smallest setting.
+- `--pl-cell-font` remains the single mobile fixed-cell authority for Glk measurement and
+  rendering. Grid output, preformatted lines, headings, status rows, and story-authored boxed or
+  centred output do not inherit the reading scale. This preserves the minimum-column and no-wrap
+  guarantees that fixed Anchorhead's mobile quote/title.
+- Desktop keeps its existing preference-driven normal prose size and fixed 14px grid.
+- The game radial has one Tools list entry and no centre `.radial-tools` button. The Tools radial
+  itself has no recursive Tools entry. Both contracts are asserted on desktop and mobile by D96.
+
+This replaces only the rejected broad D99 font override; that override remains removed. D94
+54/54 and D96 112/112 are the acceptance gates for any future changes to these layers.
+
+## 37. Mobile menu reachability (D102)
+
+```mermaid
+flowchart LR
+  HOLD[Hold line input or submit] --> RADIAL[Existing input radial]
+  RADIAL --> TOOLS[Tools button]
+  TOOLS --> LIST[Scrollable comprehensive Tools list]
+  LIST --> GAME[Save / Restore / Open map / Exit]
+  LIST --> DATA[Save files / Map files / Modules]
+  LIST --> APP[Items / Transcript / History / Display / Commands / Options / Theme / Help / About]
+```
+
+- No input-radial producer, ranking, gesture, or command handler changes in D102.
+- `#game-menu` remains available on desktop and is hidden only under `body.pl-mobile`.
+- Mobile `--pl-handle-h` is zero; every existing offset that references it automatically
+  closes the former reserved strip without a second set of positional constants.
+- `WorkspaceUI.OpenTools` adds only the three mobile-unique former Menu actions. Shared
+  actions are not duplicated; desktop receives the pre-D102 list unchanged.
+- The right-edge Map tab and Android Back/Escape radial dismissal retain their existing
+  paths. During a story state with no line or character prompt there is no long-hold
+  target; this is an accepted consequence of removing the always-available handle.
+
+## 38. First-install mobile gesture tutorial (D103)
+
+```mermaid
+flowchart TD
+  LOAD[Mobile app load] --> WAIT{Real line prompt visible and no overlay?}
+  WAIT -->|no| OBS[MutationObserver waits]
+  OBS --> WAIT
+  WAIT -->|yes, key absent| ACTION[Step 1: actionable words]
+  ACTION --> INPUT[Step 2: input hold and Tools]
+  INPUT --> DONE[Done / Skip / Escape / Android Back]
+  DONE --> KEY[(PL_MobileTutorialSeen = 1)]
+  KEY --> QUIET[Future stories and reloads stay quiet]
+  OPTIONS[Options: Replay mobile tutorial] --> CLEAR[Clear only tutorial key]
+  CLEAR --> WAIT
+```
+
+- The tutorial observes the existing action and input systems; it does not implement or alter
+  their gestures. Actionable quick tap remains the deterministic primary command, actionable
+  hold remains `Actionable.Open`, and input/submit hold remains the existing input radial.
+- Readiness is capability-based: compact mobile shell, visible line prompt, no splash, dialog,
+  or radial. It is independent of story identity and does not wait indefinitely for an actionable
+  mark, since some valid prompts have none.
+- One installation-wide localStorage key prevents per-module recurrence. Reset is explicit and
+  scoped only to that key. Desktop reset arms the next mobile run without opening mobile UI.
+- The generated modal owns pointer input, traps keyboard focus, supports Escape and Android Back,
+  and spotlights a real actionable when available followed by the live line input. Glk input
+  replacement is handled by observer-driven accessibility annotation.
+
+## 39. Read-aloud pipeline (D104, supersedes the D100 delta design)
+
+```mermaid
+flowchart TD
+  GLK[GlkOte prints div.BufferLine] --> MO[MutationObserver on .BufferWindow]
+  UL[Word-underline pass pl-act rewrites old text ~170ms later] --> MO
+  MO -->|trigger only, record text ignored| DEB[350 ms debounce]
+  DEB --> FL[flush]
+  FL --> GATE{Splash up or ReadAloud off?}
+  GATE -->|yes| STOP[return]
+  GATE -->|no| COL[collectNewLines: BufferLine elements not in WeakSet spokenLines]
+  COL --> SKIP[skip blank, prompt, Style_input, .Input, noise]
+  SKIP --> REP{ReadAloudSkipRepeats and line in previous flush?}
+  REP -->|yes| DROP[drop line]
+  REP -->|no| KEEP[keep]
+  KEEP --> SPK[scrub then speak: native TextToSpeech stop+40ms defer, else speechSynthesis]
+```
+
+- Identity is per DOM line element, so the underline pass (which edits inside existing lines)
+  can never re-trigger speech. No fingerprint history exists; the only cross-turn memory is
+  `lastLineFps`, replaced on every flush.
+- `start()` does not seed silently, so title/intro text already painted is read;
+  `seedSilent()` (mark everything on screen handled) is used only when speech is enabled
+  mid-game or a new story starts.
+- Native path on Android: `Capacitor.Plugins.TextToSpeech` (`@capacitor-community/text-to-speech`);
+  `harness/d100-live-turns.js` stubs exactly that plugin.
+- Known scope limits: only `.BufferWindow` text is read (grid windows/status are not);
+  app dialogs are opt-in (`ReadAloudDialogs`, default off, so the first-run Help popup is not spoken).
+
+## 40. Mobile input contract: keyboard intent, character prompts and the arrow pad (D105)
+
+```mermaid
+stateDiagram-v2
+  [*] --> Closed
+  Closed --> Line: short tap on line field
+  Closed --> Char: short tap on char strip (focus persistent proxy)
+  Line --> Closed: command submitted (Glk replaces the field), incl. a menu prompt opening
+  Char --> Closed: leaving a char prompt for the command line
+  Line --> Closed: story tap / Tools / Menu / radial / mic / dialog / IME dismissed
+  Char --> Closed: same dismiss gestures, or no prompt for 1.5 s
+```
+
+- **Single truth:** `Input._kbIntent` (null | "line" | "char"). It is set only by a short tap on the strip. **Line intent is tied to the one field the player tapped (`Input._kbLineEl`): when Glk replaces it, a command was submitted and the keyboard retracts (operator: it must never cover the reply).** Char intent survives Glk recreating the CharInput because the persistent proxy holds focus. It is cleared by `Input.DismissKeyboard` (every dismiss caller), an app overlay (`CharKeys.onOverlay` from `ParchLock.HandleOverlayOpened`), and the IME being dismissed (blur of a still-connected field/proxy).
+- **Line prompt:** unchanged (short tap = keyboard, hold with keyboard closed = input radial). New: with the keyboard open a hold starts **no** radial
+  timer and `ParchLockQol.ShowRadialMenu` ignores a native `contextmenu`, so the OS Cut/Copy/Paste UI works. Submit-arrow hold still opens the radial.
+- **Char strip:** a short tap opens the keyboard; a HOLD opens the same input radial as the line field (dismissing the keyboard), so Tools > Arrow keys is reachable from the visible strip; the strip renders for a char prompt in ANY window (Anchorhead HELP is a GridWindow request). On a compact mobile/Capacitor or coarse-touch runtime, ParchLock owns game-input focus and Glk only records the current prompt for hardware-key routing. Compact mouse/keyboard desktops keep normal Glk focus. Android Back therefore dismisses without a refocus loop.
+- **Char prompt:** supersedes the D93 "submit arrow only, no soft keyboard" rule. A short tap focuses `#pl-key-proxy` (persistent, JS-created, mobile only, holds a
+  sentinel so Backspace is observable). `CharKeys.decode` (pure) commits exactly once per non-composing input, first code point only; events are re-issued via
+  jQuery keypress/keydown to the single visible `.Input.CharInput` (zero or several => fail closed), the same mechanism as `Input.SubmitPrompt`.
+- **Arrow pad:** Tools > Arrow keys (mobile). Radial-style overlay (arrows around, Enter in the centre, outside tap closes) driving the current prompt.
+  Char prompt: keydown 37-40 / keypress 13; line prompt: history Up/Down, caret Left/Right, Enter submits.
+- Known limits: only BMP characters reach a char request; desktop is unchanged (no proxy, no pad, no Tools entry).
+
+## 41. Post-restore visible-state contract (D106)
+
+```mermaid
+flowchart LR
+  RF[successful ZVM restore_file] --> GC[Glk native main-window clear]
+  GC --> ID[ZvmCapture preserves operation identity]
+  ID --> SETTLE[UndoRestoreSync: coalesced 250ms settle + resync]
+  SETTLE --> READY{one visible line input; no dialog}
+  READY -->|not yet| RETRY[bounded 125ms retry]
+  RETRY --> READY
+  READY -->|ready| CLEAR[remove stale BufferLines; preserve live Glk prompt]
+  CLEAR --> LOOK[Actionable.Submit look exactly once]
+  LOOK --> OUT[restored room is printed; normal observers run]
+  RU[restore_undo / restart / failed restore] --> PASSIVE[resync only; no injected turn]
+```
+
+The VM restore hook is authoritative because typed-command observation fires before the
+native file chooser has produced a result. `ZvmCapture` therefore passes the exact successful
+operation into `UndoRestoreSync`; only `restore_file` clears the VM's main window with
+`glk_window_clear` and arms the visible-state request. A DOM-only clear is insufficient because
+Glk retains its own buffer model and recreates those lines on its next update. The request
+waits for the dialog to be removed and for exactly one real Glk line input, removes the
+older lines from that input's `.BufferWindow` while retaining its Glk-owned prompt, then uses
+`Actionable.Submit("look")` instead of a private VM shortcut. This preserves the established
+submission choke point for transcript echo, map/topology, command recording, semantic learning,
+read-aloud, and mobile keyboard dismissal. A generation token makes it single-shot and the retry
+limit prevents a command remaining armed indefinitely when a story never returns to line input.
+Undo, restart, and unsuccessful restore retain D94's passive observer behavior.
+
+## 42. Parser-owned command descriptor pipeline (D107)
+
+```mermaid
+flowchart LR
+  RAM[Inform property 1 parserWords] --> POOL[Current room + inventory objects]
+  POOL --> OWN[Alias owners by distinct object id]
+  OWN --> PICK[Unique alias, exact display token, stable order]
+  PICK --> CN[CommandNouns rebuilt for current scope]
+  TEXT[Printed room text] --> VN[VerifiedNouns visible phrase]
+  VN --> MARK[Full actionable underline]
+  CN --> SYN[ActionSynth / SemanticActions]
+  SYN --> TAP[Left-click primary]
+  SYN --> RAD[Object radial]
+  CN --> PAIR[Ask-about / use-with operands]
+  CN --> CAL{Exactly one object id?}
+  CAL -->|yes| LEARN[AttrCalibrator observation]
+  CAL -->|no| DROP[Fail closed; no learned attribution]
+```
+
+- Display identity and parser identity are intentionally separate. The longest printed
+  phrase may be underlined while commands use only compiler-owned parser vocabulary.
+- `CommandNouns` is a current-scope projection, not a permanent object cache. A noun that
+  is unique in one room can become ambiguous after movement or inventory changes, so every
+  changed `Actionable.Refresh` replaces the projection atomically.
+- Alias frequency counts distinct RAM object ids, not payload rows. Selection prefers a
+  scope-unique word, then the rightmost exact display token, then property-list order.
+  Short structural words remain eligible; the length/noise filter belongs only to prose
+  underlining. When no alias is unique, the module parser retains disambiguation authority.
+- Non-Inform providers and any object with `aliases: []` preserve the existing display-name
+  fallback. No response-text interpretation or module-specific dictionary is introduced.
+- `commandNounFor` remains the single consumer boundary for ActionSynth, SemanticActions,
+  left-clicks, radials, ask-about, use-with, and calibration. Calibration adds a stricter
+  unique-object gate because a parser clarification response is not evidence about either
+  ambiguous object.
+- `harness/d107-compound-noun.js` proves the exact Huge Cave `long-handled shovel` path via
+  both the actual radial and actual underline click, plus changing two-key scope, duplicate
+  records, short aliases, and empty-alias fallback.
+
+## 43. Complete-turn narrator pipeline (D108)
+
+GlkOte append mode may reuse the last BufferLine. Element identity is therefore not a
+complete consumption cursor: ReadAloud keeps a WeakMap from each output element to its
+consumed text length. New elements contribute all text, grown elements contribute only
+their suffix, and same-length underline rewrites remain silent.
+
+The suffix then enters one deterministic preparation stage shared by native Android
+TextToSpeech and desktop Web Speech. It preserves normal prose and exact labels, removes
+diagram geometry and bare prompts, normalizes all-capital words and compass labels,
+deduplicates only exact case-insensitive labels, and emits one newline-free payload.
+This stage is independent of parser nouns, semantic actions, module identity, and story
+title; neither speech engine receives a separate interpretation path.
+
+### D109 pronunciation hints
+
+Portable pronunciation corrections run at the end of the shared plain-text preparation
+stage, before the native/Web engine branch. The first bounded rule maps the English
+"anchor" stem to spoken "anker", correcting Anchorhead without touching display text or
+unrelated CH words. Rules must remain narrow, deterministic, idempotent, engine-neutral,
+and backed by positive and negative fixtures.
+
+## 44. Adaptive radial ordering (D110)
+
+```mermaid
+flowchart LR
+  SUBMIT[Accepted complete command] --> AC[Exact command / verb counts]
+  TAP[Non-submitting launcher or stem tap] --> RC[Radial interaction key]
+  AC --> COUNT[Uncapped UsageCount]
+  RC --> COUNT
+  PRIOR[Static module-derived prior] --> SORT[Sort: UsageCount, Prior, original index]
+  COUNT --> SORT
+  SORT --> PAGE[Paginate after ranking]
+  COUNT --> LEADER[Unique global leader before pagination]
+  COUNT --> FILL[Visible fill capped at six uses]
+  PAGE --> DOM[Inner/first positions receive highest-ranked pills]
+```
+
+`ParchLockQol.RankRadialCommands` is a presentation-only copy transform shared by
+adaptive input and actionable-object radials. It never mutates producer order and it
+does not group by source. `UsageCount` is ranking authority; `Prior` is a static
+confidence tie-break; original index is the explicit stable final tie-break. `Usage`
+is only the capped visual bonus. Leader selection uses the full ranked set before a
+page slice, so saturated fills cannot create a false tie or page-local leader.
+
+Complete command pills rely on `TurnRecorder.subscribeAcceptedSubmit` and are not also
+counted by click. Action-only and `Enter:false` pills carry `UsageKey` plus `TrackTap`
+and increment `radialInteractionCounts` exactly once at the click boundary. **More...**,
+center **Tools**, the mobile Tools list, and the game menu are excluded. Counts remain
+session-local, preserving the existing lifecycle and story-switch behavior.
+
+For `radial:*` keys only, the most recent tap is a pending completion. The next accepted
+command consumes it when the normalized command equals that key or starts with the key
+plus a word boundary. `radialAcceptedOverlapCounts` subtracts that paired event from
+`accepted + radial`, preventing one tap-and-submit action from ranking as two while
+retaining both the exact accepted-command count and unmatched/abandoned tap signals.
+Any nonmatching accepted command clears the pending key. Launcher keys are independent
+buttons and never enter this completion-pairing path.
+
+## 45. Automatic native-menu arrow pad (D111)
+
+```mermaid
+flowchart LR
+  CI[Exactly one visible CharInput] --> GW{Closest Glk window}
+  GW -->|BufferWindow| NO[No automatic pad]
+  GW -->|GridWindow| BLOCK{Dialog, tutorial, radial?}
+  BLOCK -->|yes| NO
+  BLOCK -->|no| EDGE[Eligibility rising edge]
+  EDGE --> AUTO[Open auto-owned pad once]
+  AUTO --> GAP[Glk replaces CharInput]
+  GAP -->|brief no-prompt gap| HOLD[750ms grace; remain visible]
+  HOLD --> AUTO
+  AUTO --> STRIP[Bottom CharInput strip remains uncovered]
+  STRIP --> KEY[Short tap closes auto pad and opens keyboard proxy]
+  AUTO --> EXIT[Line/Buffer prompt or overlay]
+  EXIT --> CLOSE[Close only auto-owned pad; reset visit]
+```
+
+The trigger uses Glk window/input structure only. It never reads transcript text,
+cursor glyphs, story title, module identity, coordinates, or timing to classify a
+menu. `_autoEligible` spans prompt-node replacement, `_autoPadOwned` separates
+automatic lifecycle from manual Tools use, and user dismissal is sticky for the
+current eligible visit. Manual pads at line prompts retain history/caret behavior.
+
+## 46. Map panel: search, collapsible controls, unified notation (D112)
+
+```mermaid
+flowchart TD
+  ROOMFILTER[#room-filter input] --> KNOWN[RebuildRoomsList]
+  ROOMFILTER --> NOTES[RebuildNotesList]
+  ICON[Any of 4 note-icon triggers] --> FOCUS[FocusNotesForRoom]
+  FOCUS --> SCOPE[NotesScopeRoomKey = room]
+  FOCUS --> OPENSEC[Open Notes details, clear search]
+  HOLD[Hold/right-click a Known Rooms row] --> ADDNOTE[AddNoteToRoom popup]
+  ADDNOTE --> REFRESH[RefreshMapPanels]
+  EDIT[Edit/delete icon on a note] --> CHECK{Notes[index] still matches captured text?}
+  CHECK -->|yes| MUTATE[EditNote/RemoveNote]
+  CHECK -->|no, stale| NOOP[Fail closed -- no mutation]
+  MUTATE --> REFRESH
+  REFRESH --> KNOWN
+  REFRESH --> NOTES
+```
+
+Full design: `docs/map-panel-plan-d112.md`. The map canvas gets no new gesture at
+all (deliberately, to sidestep drag/pan conflict) -- hold/right-click to add a
+note only exists on Known Rooms rows. Room boxes never render note text inline
+(only the existing icon); the permanent Notes section header is always visible
+regardless of note count, collapse state, or the optional Add-note button
+preference (`Global.Prefs.ShowNotesAddButton`, default off, Options > Interface
+& Accessibility). `RefreshMapPanels()` is the single shared refresh point every
+mutation/load/import site calls, keeping Known Rooms and Notes in sync.
+
+## 47. App-wide navigation guard (D113)
+
+```mermaid
+flowchart LR
+  CLICK[Any click on an a href] --> DL{has download attribute?}
+  DL -->|yes| ALLOW1[Allow -- real save/export, e.g. blob: DownloadText]
+  DL -->|no| FRAG{href starts with #, or empty?}
+  FRAG -->|yes| ALLOW2[Allow -- in-page anchor]
+  FRAG -->|no| ABS{Absolute scheme+// or mailto:/tel:?}
+  ABS -->|yes| ALLOW3[Allow -- real external URL, OS handles it]
+  ABS -->|no| BLOCK[preventDefault -- would unload the whole app]
+```
+
+`Global.BindNavigationGuard` (js/Global.js, self-invoked once at load, the one
+script both `index.html` and `play.html` load) is a single delegated `click`
+listener on `document`. Root cause it fixes: a relative `<a href>` navigates
+the Capacitor Android WebView's single document away entirely (no real
+multi-window support), unloading all JS/game state -- indistinguishable from a
+crash/reset. `js/ProductInfo.js`'s own About-dialog doc links are fixed at the
+source (fetch + render inside the existing `Message.Show` dialog) as the
+worked example. The app's two intentional whole-app exits (Choose story / Exit
+game) are untouched -- both are programmatic `location.href` assignments,
+never `<a href>` clicks.
+
+## 48. Real file export on Android (D114)
+
+```mermaid
+flowchart TD
+  DL[ParchLockQol.DownloadText] --> CHECK{Capacitor Filesystem + Share plugins present?}
+  CHECK -->|no -- desktop/browser| ANCHOR[blob: URL + a download click, unchanged]
+  CHECK -->|yes -- Android APK| WRITE[Filesystem.writeFile to Cache dir]
+  WRITE --> SHARE[Share.share with the written file's uri]
+  SHARE -->|user picks a target| SAVED[Saved via native share sheet]
+  SHARE -->|user cancels| SILENT[No error shown]
+  SHARE -->|genuine failure| ERR[Message.Show error]
+```
+
+Root cause: `MainActivity.java` is a bare `BridgeActivity` with no download
+handling, and Android's WebView does not reliably fire download handling for
+`blob:` URLs at all. Every export in the app (Download map, Text export,
+transcript, save-package) funnels through this one function, so fixing it here
+fixed all of them at once. `@capacitor/filesystem` + `@capacitor/share` added
+as real native dependencies (`npm install` + `npx cap sync android`), auto-
+registering into `window.Capacitor.Plugins` the same way `@capacitor/app`
+already did, with no HTML script tag needed.
+
+## 49. Hardware back button never exits silently (D115)
+
+Extends §45's neighbor concern: `MobileLayout.bindAndroidBackButton`'s dismiss
+priority chain (tutorial -> arrow pad -> radial menu -> Message dialog ->
+native Glk dialog -> map panel) is unchanged, but its final fallback -- nothing
+else open, e.g. reading ordinary story text or a native `[Please press
+SPACE.]` MORE/CharInput prompt -- used to call `CapApp.exitApp()` immediately.
+Now it requires `confirm("Exit ParchLock?")` first, the same native
+confirmation this app already uses for Reset Map and Remove-all-modules.
+Considered and rejected: auto-submitting the exact key a CharInput prompt is
+waiting for, since `read_char` (opcode 246) carries no metadata on what key is
+expected (§45's own documented limitation) -- guessing risks sending the wrong
+command into an unrelated char-prompt context.
+
+## 50. Top compass strip clears the real occupied top region (D116)
+
+`#exits .row.horizontal.top` and `#current-room-notes` are fixed-position
+overlays independent of `#windowport`'s own layout. Two obstacles stack at the
+top of a mobile screen, and both must be cleared, not just one:
+`env(safe-area-inset-top)` (the OS status bar) plus the restored Glk status
+`GridWindow` from §version D93 G47 (`display:block!important` on mobile -- the
+"Deck Nine / Score / Turns" banner), which has no static CSS height since Glk
+computes it dynamically. `MobileLayout.apply()` measures the real
+`GridWindow.reverse` element's rendered height every layout pass (same live-
+measurement discipline as `--pl-kb-inset`) into `--pl-statusbar-h`; both
+overlays' `top` offset is `8px + --pl-safe-top + --pl-statusbar-h + 4px`,
+matching `#windowport`'s own `top: 8px + --pl-safe-top` starting point plus
+the banner's real height.
+
+## 51. Programmable directional radial overlay (D117)
+
+```mermaid
+flowchart TD
+  HANDLE[Idle pulsing handle, centered above input row] -->|press+hold >= 420ms| EXPAND[expand: build compass rose]
+  HANDLE -->|short tap, no hold| SETTINGS[ShowSettings panel]
+  HANDLE -->|Alt+D, keyboard path| EXPAND
+  EXPAND --> SLICES[GetSlices: room Exits + D63 borrowed slots + custom slices]
+  SLICES --> DRAG[updateHover: angle+radius bucketing per pointermove]
+  DRAG --> CHASE[chaseIfNeeded: ring follows finger past its reach]
+  DRAG -->|release over a highlighted slice| SUBMIT[Actionable.Submit]
+  DRAG -->|release over nothing| CANCEL[collapse, no submit]
+  SETTINGS --> STORE[PL_DirRadial_&lt;GameFilename&gt; localStorage]
+  STORE --> SLICES
+```
+
+Full design: `docs/directional-radial-plan-d117.md`. Built on Pointer Events
+(`setPointerCapture`) -- the same event model `ParchLockMap`'s own map-drag
+already uses -- so mouse (desktop) and touch (mobile) share one code path with
+no platform-specific implementation. `GetSlices()` merges three sources every
+expand: the room's real exits via `ParchLockMap.GetCurrentRoom().Exits` (ring
+0 compass words, ring 1 Up/Down/In/Out -- radius-separated from their compass
+neighbors, not a tight angle, after a live-reported overlap bug); any exit key
+not in the compass `LAYOUT` table borrows a leftover ring-0-then-ring-1 slot
+(`BORROW_SLOTS`, the same claimed-angles-excluded-first principle as
+`js/Map.js`'s own `ALL_SLOTS`/`assignSlot`) so non-compass/numbered-exit games
+(D63) still get a usable radial; and the current module's player-defined
+custom slices (`GetCustomSlices`, `PL_DirRadial_<GameFilename>` localStorage,
+same per-story keying convention as `ParchLockMap.Save`/`Load`), added/edited/
+removed through `ShowSettings` (opened by a short tap on the handle, or
+Options > "Configure directions..."). `RadiusForRing(ring)` generalizes beyond
+the two built-in rings -- ring 2+ is entirely player-defined and steps outward
+by `RING_STEP` each time, unbounded. `chaseIfNeeded` shifts the whole ring
+container toward the pointer once it presses beyond the current reach, clamped
+to the viewport, so a handle near a screen edge never leaves a slice
+unreachable. `BindKeyboard` is a fully separate keyboard-only path (Alt+D
+opens; Tab/arrows cycle; Enter submits; Escape cancels), ignoring all keys
+while focus is in a real text field.
+
+Deferred at first (day 1) rather than merged into this widget: D111's (§45)
+GridWindow-CharInput auto arrow pad -- see §52 below, where the operator
+asked for that merge and it was implemented and adversarially audited by
+codex (D117's own audit, bus #782) the same session.
+
+## 52. Merging D111's arrow pad into the DirectionalRadial widget (D118)
+
+```mermaid
+flowchart TD
+  SYNC[CharKeys.syncAutoPad -- UNCHANGED eligibility/lifecycle] -->|eligible, rising edge| OPEN[CharKeys.openArrowPad]
+  TOOLS[Tools > Arrow keys, manual] --> OPEN
+  OPEN --> EXPAND[DirectionalRadial.ExpandArrows]
+  EXPAND --> SHELL[Same handle/ring shell, mode='arrows']
+  SHELL --> BTN[Real button per Up/Left/Enter/Right/Down -- discrete tap, never slide]
+  BTN -->|pointerdown, preventDefault| PRESS[CharKeys.pressKey -- UNCHANGED key dispatch]
+  SHELL --> OUTSIDE[bindOutsideTapClose: tap outside the ring]
+  OUTSIDE --> CLOSE[CharKeys.closeArrowPad]
+  ESC[Escape / back button / dialog opens] --> CLOSE
+  CLOSE --> COLLAPSE[DirectionalRadial.collapse]
+```
+
+`js/CharKeys.js` keeps its entire eligibility/lifecycle state machine
+untouched (`_autoEligible`, `syncAutoPad`, `autoPadBlocked`,
+`_autoExitTimer`, `_autoSuppressed`, `_autoPadOwned`, all §45's own design) --
+only its four rendering functions (`openArrowPad`/`closeArrowPad`/
+`isPadOpen`/`refreshPad`) now delegate to `DirectionalRadial`'s shared shell
+(§51) instead of building a separate `#pl-arrowpad` DOM tree; `buildPad()`
+and `CharKeys.pad` are retired. Every external caller (`js/Input.js`'s
+Escape chain, `js/MobileLayout.js`'s back button, `js/WorkspaceUI.js`'s
+Tools menu) needed zero changes -- identical function signatures throughout.
+`expand()` gained a `mode` parameter (`"exits"`, unchanged slide-to-select
+over the room's real exits/custom slices; `"arrows"`, new discrete
+tap-per-button with real `<button>` elements, Enter positioned at a
+`ring: "center"` sentinel rather than a normal angle/radius slice).
+
+Three real defects surfaced only once implemented, not by inspection: (1) a
+self-blocking deadlock, since the shared `pl-dirpad-open` class the D117
+audit's mutual-exclusion fix checked is now ALSO set by the auto-pad's own
+open state -- fixed by excluding `DirectionalRadial._mode === "arrows"` from
+that check; (2) `#pl-dirpad-ring`'s `pointer-events: none` (needed so
+exits-mode slices rely on pointer capture, never direct events) is inherited
+-- without an explicit `pointer-events: auto` override, every arrow button
+would have been silently unclickable in a real browser, a class of bug no
+fake-DOM test harness can catch; (3) the retired `#pl-arrowpad`'s real
+full-screen backdrop provided "tap outside closes it" for free -- rebuilt
+explicitly as a capture-phase document listener scoped to exactly while
+arrow mode is open.
+
+Verified against D111's own real-browser acceptance suites
+(`harness/d105-review-fixes.js`, `harness/d105-input-contract.js`), updated
+for the new selectors rather than replaced -- 187 real animation frames
+across six actual arrow presses with zero visibility transitions (the exact
+D111 "no flicker" gate), plus the real "tap outside closes it," "Escape
+closes it," line-history recall, and responsive geometry at three viewports,
+all passing unchanged.
+
+## 53. D117/D118 audit fixes (bus #786) + merged-settings gap + desktop arrow overlay (D119)
+
+```mermaid
+flowchart TD
+  APPLY[DirectionalRadial.ApplyEnabledState] --> PLAYABLE{IsStoryPlayable?}
+  PLAYABLE -->|no: no-story class, or no BufferWindow/GridWindow content yet| HIDE[handle.hidden = true; desktop overlay stays closed]
+  PLAYABLE -->|yes| PREF{DirectionalRadialEnabled and platform checks}
+  PREF -->|mobile| MOBILE[leave CharKeys auto-detect/Tools entry fully in control -- untouched]
+  PREF -->|desktop, DesktopArrowPadEnabled| OPEN2[CharKeys.openArrowPad -- manual entry point, no new code path]
+  PREF -->|desktop, off| CLOSE2[CharKeys.closeArrowPad]
+  OBSERVER[MutationObserver: windowport childList + body class attr] --> APPLY
+  CANOPEN[DirectionalRadial.CanOpen] --> PLAYABLE
+```
+
+Codex's D117/D118 audit (bus #786) reproduced 2 blockers + 3 high-severity defects live in
+Chromium, all fixed: (1) the no-story recovery screen's Continue/Choose-a-story controls were real
+`<a href>` anchors, unconditionally dead under D113's navigation guard -- now real `<button>`s doing
+a programmatic `location.href` assignment, the same pattern §47's own intentional exits already
+use; (2) the handle had no playable-story gate at all and was hit-testable before any game existed
+-- `IsStoryPlayable()` reuses `js/ParchLock.js`'s own established BufferWindow-text-length signal,
+checked by both `ApplyEnabledState` and `CanOpen`, re-evaluated live by two narrow
+`MutationObserver`s matching `js/ParchLock.js:183`'s existing precedent; (3) the handle's own Enter
+keydown bubbled into the document-level keyboard handler and was read twice, opening and
+immediately submitting North in one keystroke -- fixed with `stopPropagation()`; (4) arrow-mode
+buttons were keyboard-inert (`pressKey` only fired from `pointerdown`) -- fixed with a
+`firedByPointer` flag so a keyboard-only `click` (Enter/Space on a focused button) fires it exactly
+once too; (5) `forceReset()` bypassed `CharKeys.closeArrowPad`'s ownership bookkeeping in arrows
+mode, leaking `_autoPadOwned`/`_autoEligible` state across a blur/visibilitychange cycle -- fixed by
+routing through `CharKeys.resetAutoPadState()` + `closeArrowPad("system")` instead of collapsing
+directly.
+
+Separately, `Global.Prefs.DirectionalRadialEnabled` (§51) was found to have never actually gated
+§52's merged arrow-pad mode -- only the exits-mode handle respected it. `autoPadBlocked()` and
+`openArrowPad()` now both also check it, so the one Options checkbox genuinely governs both modes
+of the one merged widget.
+
+New this decision: `Global.Prefs.DesktopArrowPadEnabled` (default `false` -- a real PC keyboard
+already has arrow keys). A manual-only Options checkbox, desktop branch only, drives the existing
+`CharKeys.openArrowPad()`/`closeArrowPad()` entry points directly from `ApplyEnabledState()`,
+strictly scoped to `!pl-mobile` so it can never interact with mobile's own auto-detect/Tools-menu
+ownership of the pad in either direction. `syncAutoPad`'s native-grid-menu auto-detection remains
+gated to `pl-mobile` exactly as it always was (via `Input.ManagesMobileIme()`), so there is no
+auto-open on desktop for this toggle to conflict with.
+
+`harness/directional-radial.js` grew to 108/108; `harness/parchlock-recovery-nav.js` new, 11/11;
+`harness/d105-review-fixes.js` 43/43 and `harness/d105-input-contract.js` 58/58 both unchanged and
+green.
+
+## 54. Non-live adaptive tutorial + phone-landscape portrait prompt (D120)
+
+```mermaid
+flowchart TD
+  MM[MainMenu.Init on index.html] --> CHK{Global.TutorialIsComplete?}
+  CHK -->|no| REDIRECT[location.replace tutorial.html]
+  CHK -->|yes, or legacy PL_MobileTutorialSeen migrated| LIB[real module library loads]
+  REDIRECT --> T1[Chapter 1: dummy library]
+  T1 --> T2[Chapter 2: dummy play screen]
+  T2 --> T3[Chapter 3: dummy map]
+  T3 --> T4[Chapter 4: finish]
+  T4 -->|Done or Skip| MARK[Global.TutorialMarkComplete]
+  MARK --> LIB2[location.replace index.html]
+  OPT[WorkspaceUI Options: Replay tutorial] -->|confirm, leaves live game| REDIRECT
+  OPT2[Options: Reset tutorial] --> CLEAR[Global.TutorialClear]
+  GJS[js/Global.js: shared on all 3 pages] --> CHK
+  GJS --> MARK
+  GJS --> PP{IsPhoneLandscape?}
+  PP -->|smallest dim < 600 and landscape| PROMPT[pl-portrait-prompt overlay]
+  PP -->|tablet or portrait| NOPROMPT[no overlay]
+```
+
+Full contract in `docs/ai-plan.md`'s stored D113 plan, itself adversarially audited and corrected
+(bus #785/#786: splash-routing risk, harness-suppression-key blast radius, voice/tone) before this
+implementation. Operator: "let's go ahead and implement this in full."
+
+**Isolation.** `tutorial.html` + `js/Tutorial.js` + `css/Tutorial.css` load only `jquery.min.js`,
+`ProductInfo.js`, `Global.js`, and themselves -- never `Input.js`, `Map.js`, `ModuleLibrary.js`,
+`ReadAloud.js`, `MainMenu.js`, `WorkspaceUI.js`, `DirectionalRadial.js`, `CharKeys.js`, or
+`MobileLayout.js`. Runs entirely on in-memory "Training Adventure" dummy data (two library cards,
+one room, a three-room map); its only durable writes anywhere are `Global.TutorialMarkComplete()`
+and an optional `sessionStorage` (not `localStorage`) progress key. `harness/tutorial-isolation.js`
+proves the dependency allowlist mechanically; `harness/tutorial-storage-spy.js` seeds sentinel
+values into every real storage key category (prefs, last-story, map slots, custom directional
+slices, favorites, done-status) and proves a full sweep of dummy interactions through both Done and
+Skip leaves every one byte-identical.
+
+**Completion contract.** `Global.TutorialVersion`/`TutorialStorageKey` (`PL_TutorialSeen`)
+supersede the retired `PL_MobileTutorialSeen`, with deliberate migration: an existing legacy
+completion is honored once then written forward, so upgrading players never see a surprise full
+tutorial. One shared implementation in `js/Global.js` (loaded by all three pages) is what lets
+`index.html`'s routing and `tutorial.html`'s own finish path never disagree with each other.
+
+**Routing lives in `js/MainMenu.js`'s `Init()`, deliberately not in `img/ParchLockSplash.js`.**
+The splash is a per-session, per-PAGE gate that also runs independently on `play.html` with no
+concept of "first install" at all; routing through its shared callback would have risked
+redirecting a legitimate direct-to-play launch (an Android cold-start resume, or D119's own
+no-story "Continue" button) into training instead of the player's actual game.
+
+**MobileTutorial retirement.** The entire object (`js/MobileLayout.js`) and its CSS
+(`css/ParchLock.css`) are deleted outright, not left as dead code. `DirectionalRadial.CanOpen()`
+and `CharKeys.autoPadBlocked()`/`reconcileOverlays()`/`sync()` had their `MobileTutorial`/
+`pl-mobile-tutorial-open` checks removed rather than renamed to a new flag: since the tutorial is a
+genuinely separate route that never loads either file, there is no remaining scenario where
+"tutorial active" and "widget opening" can occur in the same JS context to guard against -- a
+replacement flag would have been dead code, not real defense-in-depth.
+
+**Settings.** `js/WorkspaceUI.js`'s old mobile-only "Replay mobile tutorial" becomes
+platform-neutral **Replay tutorial** (warns via `confirm()` before leaving the live game
+underneath, same pattern as Exit Game, since Options only exists on `play.html`) and
+**Reset tutorial** (completion-key-only, no navigation).
+
+**Real bugs found only by live-testing, not by inspection**, three in the tutorial's own
+interaction logic (an over-broad `stopPropagation` on the handle's keydown that would have
+swallowed every later Enter, not just the opening one; a compass demo that never closed if the
+player released without hitting a direction; `#tut-card` missing `box-sizing: border-box`, silently
+rendering 37px wider than specified and eating into the desktop panel's own gap) and a deeper
+responsive-layout chain: `css/ParchLock.css`'s base `body { position: fixed; height: 100% }` (the
+live app's own SimpleBar-scrolls-internally convention) was silently inherited by `tutorial.html`,
+making the whole page non-scrollable (confirmed: `window.scrollTo()` a no-op) until overridden for
+`body.pl-tutorial` specifically -- which is what `placeSpotlight()`'s whole scroll-correction
+system (verify-and-retry with absolute `scrollTo`, safe-area-aware centering above the mobile
+card, a separate ordinary-scroll path for short-height desktop-width viewports like a landscape
+phone) depends on working at all. `harness/tutorial-flow.js` covers the full 23-step walkthrough at
+four viewports (320x640 through 1280x800, including tablet): 204/204 -- 844x390 phone-landscape was
+proven at this same geometry first, then moved out of this click-through matrix once the portrait
+prompt below began correctly blocking interaction there; its coverage now lives in
+`harness/portrait-prompt.js`.
+
+**Phone-landscape portrait prompt (same-session operator follow-up).** A narrower ask than D93's
+original "don't discourage landscape at all" (which stands, untouched, for tablets):
+`Global.IsPhoneLandscape()`/`BindPortraitPrompt()` show a pure CSS overlay -- nothing paused,
+destroyed, or reloaded underneath -- whenever the viewport's *smaller* dimension is under 600
+(Android's own `sw600dp` tablet qualifier) and the aspect is landscape, dimension-only per
+`MobileLayout.isCompact()`'s own established precedent. One implementation in `js/Global.js`
+covers `index.html`, `play.html`, and `tutorial.html` identically. `harness/portrait-prompt.js`:
+27/27, including the exact threshold boundary and a live mid-session rotation proving progress
+survives untouched.
+
+**Cache.** `service-worker.js` `APP_SHELL` gains `tutorial.html`/`css/Tutorial.css`/
+`js/Tutorial.js` plus `js/MainMenu.js` (a pre-existing precache gap found while touching this file,
+not introduced by D120); `CACHE_VERSION` bumped accordingly.
+
+**Follow-up (same session, persona-based review + live desktop reports).** Operator: "take on the
+persona of a user and take the tutorial in full... make any adjustments you feel it needs."
+Screenshotting all 24 steps and reviewing as a first-time player (not just automated checks) found
+seven real issues in `js/Tutorial.js`/`css/Tutorial.css`/`tutorial.html`: the map tab visible in
+every chapter instead of just the play screen; spotlight halos clipping into adjacent card text;
+an actionable-word target that wrapped across a line break, spotlighting an entire paragraph
+instead of one word; the directions-handle demo overlapping the button above it; edge banners
+positioned relative to the whole scene instead of the story box, landing them over the page
+heading; the finish chapter's own payoff heading scrolling off-screen; and three copy fixes for
+presumptuous or inaccurate phrasing. Two more were found only on a real wide desktop monitor
+(bigger than this session's own test matrix): `#tut-shade` rendering unconditionally while
+`#tut-spotlight`'s own box-shadow already darkens everything outside itself, stacking two
+55%-opacity layers into ~80% effective darkness (barely visible on a phone-width test, overwhelming
+on a wide one) -- fixed to render only for the no-target case; and even the corrected single layer
+still read as too harsh next to the bright instruction panel, lightened to 25%.
+
+Separately, live-testing `play.html` itself on the same wide monitor surfaced three pre-existing
+bugs in the D117 handle (§51), unrelated to D120's own code: `#pl-dirpad-handle`'s `left: 50%` CSS
+centers it on the whole viewport, correct on mobile's single-column layout but landing it at the
+seam between the story and map columns once desktop shows the map panel side-by-side -- fixed with
+a new `DirectionalRadial.RecenterHandle()` that measures `#windowport`'s own live center instead
+(mobile's own `!important` rule is untouched and still wins there); `CanOpen()`'s `map-open` block
+was written for mobile's real full-screen map sheet but fired identically on desktop, where
+`map-open` just means the side panel is visible and never covers the story -- silently disabling
+the handle any time the map panel was open on desktop; and `RecenterHandle()` itself needed a
+`transitionend` listener on `#windowport`, since `css/ParchLock.css` animates its width over a real
+0.3s transition when `map-open` changes and the class-change observer alone fired too early,
+capturing the pre-transition width. Desktop also gained the same quick-access map tab mobile
+already had (`#pl-map-tab`'s click handler was never mobile-scoped, only the CSS hiding it was).
+
+`harness/directional-radial.js` grew to 112/112; `harness/d119-live-audit.js` grew to 50/50 (a new
+Part 5 reproducing the exact wide-desktop, map-open scenario end to end).
+
+## 55. Top reflow band, and real file export on Android (D121)
+
+Two operator-reported defects in the same shipped APK, both of which had a prior "fix" that
+passed its regression suite while being broken on the device.
+
+### 55.1 `ParchLockQol.DownloadText` handed native a `Blob`
+
+D114 (§48) routed exports through `@capacitor/filesystem` + `@capacitor/share`, but passed the
+`Blob` straight to `Filesystem.writeFile`. A `Blob` cannot cross the Capacitor bridge — it
+serialises to `{}` — and the plugin's own typings say so ("Note: Blob data is only supported on
+Web"). The Android side rejects in `FilesystemMethodOptions.kt` (`getString("data") ?: return
+null`) with the literal string `The 'writeFile' input parameters aren't valid.`, which
+`DownloadText`'s own catch then rendered back to the player. Every export funnels through that one
+function, so map text, map JSON, transcript, browser-save and save-package all failed identically.
+
+Native now receives a **string plus an explicit `encoding: "utf8"`** — without the encoding the
+plugin base64-decodes `data`, so fixing the Blob alone only trades one failure for another. The
+`Blob` is still correct for the browser fallback and is constructed there. `directory: "CACHE"` +
+the existing `${applicationId}.fileprovider` / `<cache-path>` declaration were already right and
+are unchanged; no manifest or permission change was needed.
+
+`harness/qol-download-text.js` previously asserted `data instanceof Blob` — it had encoded the bug
+as the expected behaviour, and its `writeFile` stub always resolved. It now asserts a string, the
+encoding, and a **bridge-serialisation guard** (`JSON.parse(JSON.stringify(opts))` must still
+carry `data`), so a `Blob` fails closed.
+
+### 55.2 The top chrome is a reflow band, not an overlay
+
+Three independent sources rendered into the top of the mobile play screen with no shared layout
+and no tier assignment: the compass chip row (`js/Map.js` `CreateMiniMap`/`DrawRoom`), the
+non-cardinal spokes (`js/MapBeautify.js` `nonCardinalSpokes`), and the notation icons
+(`#current-room-notes` plus each `.exit`'s `.room-notes`). They piled on each other and on the
+story text, and none took a tap.
+
+D116 tried twice to fix this by shifting `#exits .row.horizontal.top`'s `top` past the safe-area
+inset and then past the in-app Glk status banner. That was the wrong shape of fix: `#exits` is
+`z-index: auto` while `#windowport` is `z-index: 3`, so moving the strip *down* moved it *into*
+`#windowport`'s rect, where it is painted over and hit-tested away.
+
+`#exits` is now a real reflow band on mobile — a fixed flex **column** anchored at
+`--pl-safe-top + --pl-statusbar-h` (i.e. directly under the status banner), spanning
+`#windowport`'s width, at the documented exit-rail tier (24). Its rendered height is published as
+`--pl-band-h` and reserved as `padding-top` on the story `.BufferWindow`, with an opaque
+`#windowport::before` mask spanning the gap. This is the top-edge mirror of the bottom input
+strip's long-standing reserve/mask pattern (`.BufferWindow` `padding-bottom` +
+`#windowport::after`). Rows use `flex-wrap`, so a label that does not fit moves to a new line and
+the band grows; the text follows it down. Unused exits are `display: none` (not merely
+`opacity: 0`) so an empty band collapses to `0px` and the text sits directly under the banner.
+
+Deliberately **not** touched: GlkOte's metrics. `Y()` measures the gameport (`#parchment`) and
+frames are absolutely positioned from VM-authored geometry, so changing the panes would force an
+`arrange` round-trip and re-flow the status grid's column count. Padding the buffer changes where
+text renders without changing what the VM is told — the same trade already accepted at the bottom.
+
+Supporting corrections, each of which independently broke the feature:
+
+- `--pl-statusbar-h` was measured only inside `MobileLayout.apply()`, which never ran after the
+  Glk status window was created on story load, so it was `0px` for the entire session. A
+  `MutationObserver` on `#windowport` now re-measures it.
+- Both observers bind to elements declared *later* in `play.html` than the `MobileLayout.js`
+  script tag, so they must wait for `DOMContentLoaded`; binding from `init()` silently attached to
+  `null` and reproduced the exact D116 symptom.
+- The band is `position: fixed`, for which `offsetParent` is always `null`, so the usual
+  `offsetParent !== null` visibility guard reported `0` forever. It uses `getClientRects()`.
+- `nonCardinalSpokes` tore down and rebuilt its block ~5x/second via `ParchLock.Loop`. It now
+  no-ops on an unchanged content signature, and clears stale spokes when walking into a room with
+  none (previously it bailed before the host lookup and left the old room's buttons on screen).
+- Elevating `#exits` put the bottom row and left rail inside its stacking context, above the story
+  text; their 33vw x 100vh cells would have swallowed taps, so they get the same
+  `pointer-events: none` / labels-`auto` contract the right rail already had.
+
+`harness/exits-safe-area.js` was rewritten against these structural properties rather than literal
+`calc()` strings (28/28). A live Playwright probe at 412x860 verified the behaviour end to end —
+band `0px` when empty, `28px` with one chip, buffer reserve tracking to `32px`, `--pl-band-h`
+matching the rendered height, the chip winning `elementFromPoint`, and the mask opaque and
+non-interactive. That probe is what caught the null-binding and `offsetParent` bugs, neither of
+which any source-text assertion could see.
+
+## 56. Equipment sheet (D122)
+
+Inventory was a flat chip list inside the map sheet that encoded containment as a **text suffix**
+(`towel (in trenchcoat)`, `key to the house (in keyring)`). The structure was never missing — it
+was being computed and then discarded: `payload.inventory` is a flat array of
+`{id, name, parentId, attrs}` (D31) plus `payload.playerId`, and `Actionable.RenderInventory`
+already built a `parentId -> children` index before flattening it into suffixed labels.
+
+`js/EquipmentUI.js` keeps the tree and gives it its own sheet.
+
+**Nesting is unbounded.** A sub-container is just a container whose parent is another container, so
+the walk recurses to arbitrary depth with a `seen` cycle guard; the operator's own save is three
+levels (`trenchcoat` worn > `keyring` > `key to the house`). The chosen comparator is applied
+independently at *every* level, which is what "containers alphabetical, then their contents
+alphabetical" means.
+
+**The self container is explicit.** `payload.playerId` becomes a real base-level `Yourself` node
+holding worn gear, so worn state is structure rather than a name suffix. Worn/container detection
+reuses `AttributeSchema.isTrulyWorn` and the `container`/`supporter`/`open` bits — deliberately not
+a second opinion on what `Actionable` already decides.
+
+**Indent is dynamic.** A fixed per-level step walks deep chains off a phone screen at about four
+levels, so the step is derived from the panel width and the tree's real depth
+(`--equip-indent`, clamped 8-18px, capped so the deepest row's indent never exceeds ~45% of the
+panel), recomputed on resize. Names ellipsize, so nothing can overflow regardless.
+
+**Sorting**: A-Z, Z-A, most recent, least recent, containers first, worn first. The payload carries
+no timestamps, so recency is an observed first-seen sequence persisted per story under
+`PL_EquipSeq_<GameFilename>`.
+
+**Search/filter** keeps a match's whole container path — a hit inside a sub-container would
+otherwise be severed from its parents and become unreachable.
+
+**Drag and drop uses Pointer Events, not HTML5 DnD**, which does not fire on touch at all; one
+implementation therefore serves phone and desktop. A drag only begins past an 8px threshold so a
+tap still reaches the action radial. Drop legality is structural: open container -> `put X in Y`,
+supporter -> `put X on Y`, the self node -> `take X`, closed container refused, and a container may
+never be dropped into itself or any descendant. The drop **submits the game command** and lets the
+next payload re-render; it never mutates the model locally, so the game stays the authority exactly
+as every other action in this app does.
+
+**Navigation contract**: `#pl-equip-tab` sits beneath `#pl-map-tab` and is only reachable while a
+sheet is open. Map -> equipment swaps the sheets; equipment -> main screen, never back to the map.
+`Actionable.ShowInventory` now opens this sheet, which moves `/items`, the Tools list and the
+desktop control panel at once without touching any caller. The old `#items-tab` markup stays in the
+DOM (RenderInventory still writes its "Last response" text) but is hidden inside the map.
+
+Two regressions were caught by the live probe and are worth recording, because neither was visible
+to a source-text check:
+
+- D121's `body.pl-mobile #exits` rule is specificity (0,2,1) and silently outranked the
+  long-standing `body.map-open #exits { display: none }` at (0,2,0) — so on mobile, opening a sheet
+  stopped hiding the exit rails, and the right rail's labels (z-index 24) sat over the sheet tabs
+  and ate their taps. Restored at matching specificity for both sheets.
+- `#room-filter` scrolled away with the list it filters; both search lines are now `position:
+  sticky` within their own scrollers.
+
+Tests: `harness/equipment-ui.js` (25/25) proves the model, arbitrary-depth nesting, per-level
+sorting, path-preserving search and every drop rule against the operator's own three-level
+inventory. Live Playwright: 20/20 at 412x860 and 8/8 at 1400x900 covering tab visibility, the
+map/equipment/main-screen cycle, tree render, no-overflow at depth, sticky controls, sort, flat
+view and search.
+
+## 57. Live tutorial restored (D124)
+
+D120 replaced the original live tour with a separate route (`tutorial.html` + a `js/Tutorial.js`
+that rebuilt imitation library/play/map screens and asked the player to perform tasks against those
+fakes). The operator rejected it outright. D124 is the full conversion back to the D103 style
+(`PRODUCTION_PLAN.md:744`) — cards drawn over the **real** running app — with three changes the
+operator specified.
+
+**No task interactivity.** The original tour still demanded gestures. This one is information only:
+Back / Next / Skip, nothing else. `body.pl-tutorial` puts `pointer-events: none` on the app
+(including the line input, so no IME opens and resizes the shell under a spotlight measurement),
+so a highlighted control is explained but cannot be operated and the tour cannot be derailed.
+Navigation controls remain — skipping or continuing is the point, it is the *task* interactivity
+that was the pain.
+
+**It still walks the whole UI.** The tour drives the real sheets itself through the app's own body
+classes (`map-open`, `equip-open`), so the player sees every screen without touching anything.
+
+**Read aloud.** Each step speaks through the existing `ReadAloud.speak()`, cancelling the prior
+utterance.
+
+**It opens by saying what ParchLock is** — a graphical interface that gives text-based interactive
+fiction a live map, tappable objects, an equipment screen, notes, voice and narration — by name.
+
+17 steps cover everything added since D103: the D121 exits band, the D122 equipment sheet
+(container tree, sub-containers, the self container, sort/search, drag-and-drop), the pinned map
+search, notes, narration and the D123 text size, and real file export.
+
+**Routing.** Because it explains live screens, it needs a real module to point at, so
+`js/MainMenu.js` no longer redirects first-time players into an isolated route — they pick a story
+normally and the tour starts once it is on screen. `tutorial.html` is kept as a redirect to
+`index.html` rather than deleted, so bookmarks, the service-worker precache entry and
+`make-dist.bat`'s allow-list all keep resolving.
+
+**Degradation matters here.** Several targets are legitimately absent or zero-sized at tour time —
+`#pl-input-mic` carries `hidden` until voice is available, the D121 exits band collapses to `0px`
+in a room with no mapped exits, and there may be no `.pl-act` in the opening paragraph yet — so
+each such step names an ordered fallback and, failing all of them, renders a centred card. The tour
+never frames empty space.
+
+**Completion and restart.** Finish or Skip records the existing versioned key via
+`Global.TutorialMarkComplete()`; Finish then reloads `play.html` with the same `?story=`, restarting
+the module fresh. Nothing is lost, because the tour is non-interactive and the player never advanced
+the story. Options' "Replay tutorial" now replays in place instead of navigating away.
+
+Tests: `harness/tutorial-live.js` (41/41). `harness/tutorial-flow.js`, `tutorial-isolation.js` and
+`tutorial-storage-spy.js` asserted the retired route's contract and are moved to `.retired/`. Live
+Playwright: 18/18 across 412x860 and 1400x900 — all 17 steps reachable, 12-13 spotlighting genuine
+live elements, both real sheets opened by the tour, app inert throughout, completion recorded and
+the module reloaded fresh.
+
+## 58. Save to device via the Storage Access Framework (D129)
+
+Operator-reported: "Download" opened the **share** sheet, not a file picker, so there was no way to
+put a file into the phone's own Downloads folder the way a desktop browser does.
+
+**The safety mechanism is scoped storage.** Since Android 10 (API 29) an app cannot write into
+shared storage by path, and at `targetSdk 36` there is no opt-out left. `@capacitor/filesystem`'s
+`Directory.Documents` resolves to `Environment.getExternalStoragePublicDirectory(...)` and writes
+through raw `java.io.File` (`LegacyFilesystemImplementation.kt:53`), which the platform refuses.
+`MANAGE_EXTERNAL_STORAGE` would bypass it but is a Play-policy-restricted permission intended for
+file managers and backup tools, and is not justifiable for saving a transcript.
+
+D114's cache-dir + share-sheet route was the correct answer to "get this file off the device"; it
+is simply the wrong verb for "save this file onto the device". The sanctioned API for the latter is
+the **Storage Access Framework**: `ACTION_CREATE_DOCUMENT` shows the system's real "Save to..."
+picker, the player chooses Downloads or any folder, and the app writes to the returned `content://`
+URI. It requires **no permission on any API level**, because granting a location *is* the
+permission. That is the desktop Save-As behaviour that was asked for.
+
+No installed plugin exposes it, so `android/app/src/main/java/com/parchlock/app/SaveFilePlugin.java`
+is a small local Capacitor plugin that fires the intent and writes the bytes with `"wt"` (truncating,
+so overwriting an existing file cannot leave a tail of the longer previous contents). It is
+registered in `MainActivity.onCreate` **before** `super.onCreate()` — `registerPlugin` feeds
+`bridgeBuilder`, which `super.onCreate` consumes, so registering afterwards yields a plugin the
+WebView can never see.
+
+`ParchLockQol.DownloadText` now prefers `SaveFile` and keeps the Filesystem+Share route as the
+fallback for an APK built before the plugin existed, with the browser blob-anchor below that. MIME
+type is derived from the export's own extension, because the picker filters visible folders by type
+and a wrong one can make a file manager look empty. Backing out of the picker rejects with
+`"canceled"`, which the existing `/cancel/i` suppression already treats as "not an error".
+
+Verified: `harness/qol-download-text.js` 23/23 covers plugin-present, MIME derivation, both
+rejection kinds and the fallback ordering. The native side compiles (`compileDebugJavaWithJavac`)
+and `ParchLock-dev.apk` contains `Lcom/parchlock/app/SaveFilePlugin;` in `classes7.dex`. The
+picker's on-device behaviour is still an operator gate.
+
+## 59. Commanding non-standard items: spells, instruments, and held containers (D146-D148)
+
+Three layers cooperate to turn a RAM object into a command the story will actually accept. Each was
+found broken for non-standard items -- the Enchanter family's spells -- and each is fixed by the same
+rule: a word may only be submitted if the story file itself contains it.
+
+### The dictionary as the single arbiter
+
+`ZRamReader.hasDictionaryWord(mem, word)` is the primitive. It reads `parseDictionary(mem).words`, a
+map of decoded entry text to entry address that exists for **every** compiler, unlike the `entries`
+array and its `isVerb` flags, which `parseDictionary` only populates for the Inform v4+ 9-byte layout.
+Measured word counts: Enchanter (ZIL v3) 723, Advent 786, Anchorhead 2257. The result is cached per
+`gameIdentityKey`, because the function is consulted once per object per render and a parse Z-decodes
+up to 4000 entries. A word longer than the stored entry (6 characters in v3, 9 from v4) is retried
+against its own truncation, which is exactly what the interpreter does to typed input (D144).
+
+`Actionable.isGameWord(word)` wraps it and returns false whenever RAM is unavailable, so an
+unverifiable word is never treated as verified.
+
+```
+          ZRamReader.parseDictionary(mem).words        (every compiler)
+                        |
+          ZRamReader.hasDictionaryWord   <-- cached per game file
+                        |
+          Actionable.isGameWord          <-- false when RAM is absent
+                 /              \
+   disambiguatedNoun          availableInstrumentals
+   (qualifier from the        (which two-object verbs
+    object's own name)         this story really has)
+```
+
+### Instrumental verbs
+
+`Actionable.INSTRUMENTALS` is an ordered list of `{verb, label, build(a, b)}`. `build` carries the
+phrasing that verb genuinely takes, because the instrument is not always in the same slot:
+
+| verb | phrasing | instrument |
+|---|---|---|
+| `use` | `use A with B` | A |
+| `cast` | `cast A at B` | A |
+| `unlock` | `unlock B with A` | A, second |
+
+`availableInstrumentals()` filters that list through `isGameWord`, and the radial pushes one launcher
+per survivor. A story with none gets no launcher, which is the D24 position: an honest absence beats a
+command that cannot parse. This replaced a single hardcoded `use X with Y` launcher offered in every
+game; `use` is absent from the RAM dictionaries of Zork 1, Planetfall, Enchanter, Balances and
+Anchorhead, and Enchanter answers `use book with me` with `I don't know the word "use".`
+
+Both nouns passed to `build` come from `disambiguatedNoun`, since with three spells held
+`cast spell at spell` names nothing.
+
+### Qualifiers from the printed name
+
+`disambiguatedNoun` previously drew qualifiers only from mined aliases. It may now also use a token of
+the object's own printed name **when `isGameWord` confirms it**. The distinction from D107 matters:
+D107's failure was submitting a word the parser has never heard of (`long-handled`), whereas a word
+that ships in the story's dictionary parses by construction -- the same self-verification discipline as
+D142's structural vocabulary mining. A rival's printed name tokens are added to the `taken` set
+alongside its mined words, because two objects both named `... spell` are not separated by `spell`
+whichever list supplied it.
+
+### Descending into a held container whose bits do not decode
+
+`canSeeInside(attrs)` requires `container && (open || transparent)`, or `supporter`. Those are
+Inform-6 bit meanings, and D73/D145 established that the mapping genuinely differs per compiler.
+
+`ZRamReader.attrInsideTrusted(mem)` reports whether that answer can be believed here: true for Inform,
+true once `AttrCalibrator.hasConfirmedFlag(mem, "container")` holds, false otherwise.
+`walkVisibleDescendants` -- whose two callers both root at the player, so this is the inventory walk --
+then applies one narrow relaxation:
+
+> descend into a named child-bearing object when the bits are untrusted **and** the object carries
+> neither a `container` nor a `supporter` bit.
+
+A bit that did decode is always obeyed, open or closed, so a closed opaque bag still hides its
+contents (D31/D68) whatever the compiler. The relaxation covers only the case where nothing decoded at
+all, so nothing is being overridden. Enchanter's held spell book is exactly that: its bits read
+moved/openable/scored/static/switchable, `canSeeInside` said no, and blorb/nitfol/frotz/gnusto never
+reached the payload -- the whole spell path was unreachable from the UI.
+
+A first attempt relaxed on `attrInsideTrusted` alone, which would have spilled every closed container
+in every ZIL game. `harness/d31-nested-inventory.js` failed 2 of 60 and the gate was narrowed rather
+than the test weakened.
+
+### Marks versus commands (D146)
+
+`headNounOf` requires confirmed vocabulary, which is correct for building a command and wrong for
+choosing which word to underline -- Anchorhead's `transom window` has no minable words, so a
+longest-token rule marked `transom` and left `window` unmarked in the same sentence. `headTokenOf`
+(rightmost real token, no vocabulary requirement) exists for marks only and never reaches a command.
+The wrap loop enforces one mark per object with no exemption for name-derived targets, walking targets
+in two passes so a full-name or head-noun match wins over an incidental alias.
+
+Verified: `harness/command-disambiguation.js` 28/28, `harness/d31-nested-inventory.js` 60/60. Live:
+Enchanter scope 2 -> 6 objects, ambiguous commands 1 -> 0. Spellbreaker's five identical `cube`s stay
+ambiguous, correctly -- they are indistinguishable until the player labels them, which is the puzzle.
+
+
+## 60. Character tracker (D149)
+
+`js/StatTracker.js` reports the stats a module actually tracks and nothing else. Every number it shows
+was verified against the game's own evidence first; an unverifiable stat has no row, which is D24's
+honest absence applied to the HUD. No per-title branching.
+
+### Source precedence
+
+```
+  header (v3 Flags1 bit 1)        -> is there a score at all, or is this a clock?
+  status window columns (v4+)     -> Score/Health/HIT POINTS, as plain | percent | n/m
+  globals                         -> promoted ONLY after tracking a stat through a real CHANGE
+  SCORE / DIAGNOSE reply          -> the only route to a maximum, a rank, and hunger/rest/thirst
+                                     (costs a turn, so never issued unasked)
+```
+
+A stat printed by the game outranks a seeded or promoted slot and is never overwritten by one.
+
+### Why globals are a candidate and not a source
+
+The Inform library often uses the v3 slots (Advent `G1`=score, `G2`=moves; Balances the same), but
+Anchorhead's `G2` is constant at 105 with its real counter at `G4`/`G10`, and Planetfall's `G2` climbs 40
+a turn because it is a clock. So promotion requires the stat to have actually **changed** between
+samples: at turn one a scoreless game has dozens of zero globals and any of them would match a score of
+0. A slot that later disagrees with the text is demoted. Same shape as D73's AttrCalibrator and D134's
+ExitCalibrator.
+
+### The v3 seeding path
+
+A v3 status line is drawn by the interpreter from globals 0/1/2, so the layout is the standard. But every
+v3 game here renders the room name alone (D137), leaving no text to verify against, so verification comes
+from behaviour instead: slot 2 is a turn counter only once it has risen by 1..8 on consecutive turns and
+never fallen. Confirming that confirms the pairing too, since the same clause places the score in slot 1.
+Planetfall fails this and registers nothing, which is the correct outcome.
+
+### Deaths
+
+No module exposes a counter. Every ending in both libraries prints a `*** ... ***` banner, so the banner
+is classified rather than one sentence matched: a win is a win, a quit is ignored, and **anything else is
+an involuntary ending and counts** -- which is what makes it work on modules nobody has probed. Only text
+that arrived since the last look is scanned, and each banner is keyed by text plus turn, so a banner in
+the scrollback is not re-counted. Zork 1's death cost 10 points, so a score decrease emits `score-down`
+and never the rising cue; if a death and a score change land together the death cue wins.
+
+### Audio
+
+The app had no audio of any kind. Both cues are WebAudio oscillators -- a rising 659->880 Hz triangle for
+a score gain, a 220->110 Hz sine fall for a death -- because a bundled asset would need registering in
+`play.html`, the service worker precache list and `make-dist.bat`'s allow-list, which is exactly the trap
+that let D120's `tutorial.html` ship missing. The context is created lazily so it is born inside a real
+user gesture, and cues are skipped while the tab is hidden.
+
+### Relevance gating, generalised
+
+`#pl-stats` hides its whole block at zero confirmed stats, and `EquipmentUI.categoryCounts` hides the
+checkbox of any category with no items in this module. Hidden controls keep their checked state, so a
+category that appears later returns already enabled and nothing is filtered by a control never seen. The
+`Spells` category and D147's `Cast` launcher share one gate: `cast` present in this story's own
+dictionary.
+
+### Custom status windows
+
+Every one is the ordinary Glk grid window with game-authored contents (Slavers: HIT POINTS + a `Paths:`
+exit list + QUEST RATE; wump2ka: Score + Health%; Sherlock: a clock; curses: a bare turn count and an
+in-game date; Anchorhead: `day one`). The decision is to mirror, never suppress by default -- some carry
+things the tracker does not model, and hiding a window the player relies on is a regression. The game's
+window is never written to: the VM owns those cells, which is the cause of D137.
+
+Verified: `harness/stat-tracker.js` 68/68, `tools/stat-tracker-live.js` 12/12 against Deadline, wump2ka,
+Slavers, LDoDoom, Zork 1 and Anchorhead.

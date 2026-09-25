@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        
+        <title>ParchLock - Interactive Fiction</title>
+
+        <meta charset="utf-8">
+        <meta name="description" content="ParchLock is a free program that allows you to play interactive fiction stories, also known as text adventure games, and offers some quality of life improvements such as automatic mapping, note taking, quick navigation, and auto complete.">
+        <meta name="keywords" content="interactive, fiction, parchmap, parchment, zork, play, free, map, automap, navigation, autocomplete, notes, easy">
+        <meta name="viewport" content="width=device-width,user-scalable=no">
+		<script>
+			(function () {
+				try {
+					if (sessionStorage.getItem("PL_ParchLockSplashSeen") !== "1" && String(window.name || "").indexOf("__PARCHLOCK_SPLASH_SEEN__") === -1) {
+						document.documentElement.classList.add("parchlock-splash-pending");
+					}
+				} catch (e) {
+					document.documentElement.classList.add("parchlock-splash-pending");
+				}
+			})();
+		</script>
+
+        <meta property="og:description" content="ParchLock is a free program that allows you to play interactive fiction stories, also known as text adventure games, and offers some quality of life improvements such as automatic mapping, note taking, quick navigation, and auto complete.">
+        <meta property="og:title" content="ParchLock - interactive fiction">
+        <meta property="og:type" content="website">
+
+        <link rel="stylesheet" href="css/parchment.css">
+		<link rel="stylesheet" href="css/ParchLock.css">
+		<link rel="stylesheet" href="css/Tutorial.css">
+		<link rel="stylesheet" href="img/ParchLockSplash.css">
+
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="img/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="img/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="img/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="img/apple-touch-icon-152x152.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon-180x180.png" />
+
+        <script src="lib/jquery.min.js"></script>
+        <script src="lib/jquery.slimscroll.min.js"></script>
+        <script src="js/ProductInfo.js"></script>
+        <script src="js/ModuleLibrary.js"></script>
+        <script src="js/Global.js"></script>
+        <script src="js/Consts.js"></script>
+        <script src="js/Input.js"></script>
+        <script src="js/Message.js"></script>
+        <script src="js/GameList.js"></script>
+        <script src="js/MainMenu.js"></script>
+        <script src="js/Tutorial.js"></script>
+
+    </head>
+
+    <body class="main-menu map-open">
+
+		<div id="parchlock-splash" data-scene="map" role="dialog" aria-modal="true" aria-labelledby="parchlock-splash-title">
+			<img class="parchlock-splash__picture" src="img/parchlock-splash-living-map.png" alt="An elaborate hand-drawn fantasy map on an explorer's table">
+			<div class="parchlock-splash__shade" aria-hidden="true"></div>
+			<div class="parchlock-splash__motion" aria-hidden="true">
+				<span class="pl-route pl-route--one"></span>
+				<span class="pl-route pl-route--two"></span>
+				<span class="pl-route pl-route--three"></span>
+				<span class="pl-dust pl-dust--one"></span>
+				<span class="pl-dust pl-dust--two"></span>
+				<span class="pl-dust pl-dust--three"></span>
+				<span class="pl-dust pl-dust--four"></span>
+				<span class="pl-page pl-page--one"></span>
+				<span class="pl-page pl-page--two"></span>
+				<span class="pl-page pl-page--three"></span>
+				<span class="pl-leaf pl-leaf--one"></span>
+				<span class="pl-leaf pl-leaf--two"></span>
+				<span class="pl-leaf pl-leaf--three"></span>
+			</div>
+			<div class="parchlock-splash__content">
+				<p class="parchlock-splash__eyebrow">Every story has a way in</p>
+				<h1 class="parchlock-splash__title" id="parchlock-splash-title">ParchLock!</h1>
+				<div class="parchlock-splash__rule" aria-hidden="true"></div>
+				<p class="parchlock-splash__credits">Adapted by <strong>Hymlock Groves</strong><br>Based on Parchmap by Roy Lazarovich</p>
+				<button class="parchlock-splash__start" type="button">Start the Adventure!</button>
+			</div>
+		</div>
+		<script src="img/ParchLockSplash.js"></script>
+        
+        <!-- http://iplayif.com/lib/ -->
+        <!-- http://parchment.toolness.com/if-archive/games/zcode/ -->
+        <!-- https://ifarchive.org/indexes/if-archiveXgamesXzcode.html -->
+        <!-- https://iplayif.com/tools/zcode2js.html -->
+        <!-- &vm=zvm -->
+
+        <div id="windowport" class="oldschool" data-simplebar>
+
+            <div class="status TextGrid">
+
+                <div id="toolbar">
+                    <div id="filter-options">
+                        <div class="icon icon-fav-on" data-filter="fav" title="Show only starred"></div>
+                        <div class="icon icon-done-off" data-filter="done-off" title="Show only unfinished"></div>
+                        <div class="icon icon-done-on" data-filter="done-on" title="Show only finished"></div>
+                    </div>
+                    <div id="modules" class="icon icon-import" title="Manage modules" role="button" tabindex="0" aria-label="Manage modules"></div>
+                    <div id="about" class="icon icon-about" title="About ParchLock" role="button" tabindex="0" aria-label="About ParchLock">i</div>
+                    <div id="toggle-theme" class="icon icon-theme" title="Toggle dark\light theme"></div>
+                </div>
+                
+                <tt class="zvm-fg-2" id="listing-stories">
+                    Select a story
+                </tt>
+
+                <div>
+                    <input type="text" id="filter" placeholder="Title or Author">
+                </div>
+
+            </div>
+
+            <br>
+
+            <div id="games-list">
+
+            </div>
+
+            <div id="show-all" data-filter="all">
+
+                The story list has been filtered, <u>show all stories</u>
+
+            </div>
+
+        </div>
+
+        <div id="map" data-simplebar>
+
+            <h1>ParchLock</h1>
+            <h2 data-product-credit>Adapted by Hymlock Groves. Based on Parchmap by Roy Lazarovich.</h2>
+
+            <p>
+                ParchLock is an awesome program built around the <i>Parchment</i> interactive fiction interpreter that offers some quality of life improvements such as automatic mapping, note taking, quick navigation to known rooms, and auto complete.
+            </p>
+
+            <u>
+                Key features
+            </u>
+
+            <ul>
+                <li>
+                    <strong>Auto mapping</strong> - ParchLock automatically builds a map of the game world as you explore it.
+
+                    <br><br>
+                    Type <span class="code">/clear map</span> to erase the map and start a new one starting from the room you're in.
+                </li>
+                <li>
+                    <strong>Note taking</strong> - ParchLock allows you to easily add notes to remind you of tasks and interesting things in the room, these notes will appear on the map.
+
+                    <br><br>
+                    Type <span class="code">/note locked door, look for a key;</span> to add this note to the current room.
+                    <br><br>
+                    Type <span class="code">/clear notes</span> to erase all the notes in the current room.
+                </li>
+                <li>
+                    <strong>Auto navigation</strong> - ParchLock will even calculate a route from the room you're in to a target room (if it can) based on the current state of the map.
+
+                    <br><br>
+                    Type <span class="code">/goto kitchen;</span> to have Parchment calculate a route from the room you're in to the kitchen and inject the instructions into the input line.
+                </li>
+                <li>
+                    <strong>Auto complete</strong> - ParchLock keeps a list of words that it find in the story and will help you type less, it will even suggest room names when you use special commands that accept room names as parameters such as <span class="code">/goto</span> and <span class="code">/room-notes</span>.
+                </li>
+            </ul>
+            
+            <p>
+                Choose an available module to play, or open Modules to add compatible files stored on this device.
+            </p>
+
+            <p>
+                Z-machine modules receive full mapping, module-derived actions, items, and radials. Glulx modules are currently play-only.
+            </p>
+
+            <footer></footer>
+
+        </div>
+
+        <div id="message" class="crt">
+
+			<h2></h2>
+
+			<div></div>
+
+			<span id="close" title="Close message">x</span>
+
+		</div>
+
+    </body>
+
+</html>

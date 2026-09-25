@@ -1,0 +1,11 @@
+const fs = require("fs");
+const plan = fs.readFileSync("PRODUCTION_PLAN.md","utf8");
+const i = plan.indexOf("### Phase 2");
+console.log(plan.slice(i, i+1200));
+console.log("---");
+const j = plan.indexOf("### Phase 4");
+console.log(plan.slice(j, j+900));
+console.log("---UML providers---");
+const uml = fs.readFileSync("ARCHITECTURE_UML.md","utf8");
+const k = uml.indexOf("provider");
+console.log(uml.slice(uml.indexOf("## 15"), uml.indexOf("## 15")+1800));

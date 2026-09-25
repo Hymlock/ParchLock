@@ -1,0 +1,7077 @@
+[
+  {
+    "story": "games/CounterfeitMonkey.gblorb.js",
+    "errors": [],
+    "skipLog": [
+      {
+        "i": 0,
+        "action": "yes"
+      },
+      {
+        "i": 1,
+        "action": "yes"
+      },
+      {
+        "i": 2,
+        "action": "yes"
+      },
+      {
+        "i": 3,
+        "action": "space"
+      },
+      {
+        "i": 4,
+        "action": "yes"
+      },
+      {
+        "i": 5,
+        "action": "yes"
+      },
+      {
+        "i": 6,
+        "action": "yes"
+      },
+      {
+        "i": 7,
+        "action": "look"
+      },
+      {
+        "i": 8,
+        "action": "playable"
+      }
+    ],
+    "identifierNameAt": [
+      1
+    ],
+    "commonHead": [
+      {
+        "i": 0,
+        "n": ""
+      },
+      {
+        "i": 1,
+        "n": "name"
+      },
+      {
+        "i": 2,
+        "n": ""
+      },
+      {
+        "i": 3,
+        "n": ""
+      },
+      {
+        "i": 4,
+        "n": "add_to_scope"
+      },
+      {
+        "i": 5,
+        "n": "article"
+      },
+      {
+        "i": 6,
+        "n": "capacity"
+      },
+      {
+        "i": 7,
+        "n": "component_child"
+      },
+      {
+        "i": 8,
+        "n": "component_parent"
+      },
+      {
+        "i": 9,
+        "n": "component_sibling"
+      },
+      {
+        "i": 10,
+        "n": "description"
+      },
+      {
+        "i": 11,
+        "n": "door_dir"
+      },
+      {
+        "i": 12,
+        "n": "door_to"
+      },
+      {
+        "i": 13,
+        "n": "found_in"
+      },
+      {
+        "i": 14,
+        "n": "initial"
+      },
+      {
+        "i": 15,
+        "n": "list_together"
+      },
+      {
+        "i": 16,
+        "n": "map_region"
+      },
+      {
+        "i": 17,
+        "n": "parse_name"
+      },
+      {
+        "i": 18,
+        "n": "plural"
+      },
+      {
+        "i": 19,
+        "n": "regional_found_in"
+      },
+      {
+        "i": 20,
+        "n": "room_index"
+      },
+      {
+        "i": 21,
+        "n": "short_name"
+      },
+      {
+        "i": 22,
+        "n": "vector"
+      },
+      {
+        "i": 23,
+        "n": "with_key"
+      },
+      {
+        "i": 24,
+        "n": "KD_Count"
+      },
+      {
+        "i": 25,
+        "n": "IK1_Count"
+      },
+      {
+        "i": 26,
+        "n": "IK2_Count"
+      },
+      {
+        "i": 27,
+        "n": "IK4_Count"
+      },
+      {
+        "i": 28,
+        "n": "IK5_Count"
+      },
+      {
+        "i": 29,
+        "n": "IK6_Count"
+      },
+      {
+        "i": 30,
+        "n": "IK8_Count"
+      },
+      {
+        "i": 31,
+        "n": "IK1_link"
+      },
+      {
+        "i": 32,
+        "n": "IK2_link"
+      },
+      {
+        "i": 33,
+        "n": "IK5_link"
+      },
+      {
+        "i": 34,
+        "n": "IK6_link"
+      },
+      {
+        "i": 35,
+        "n": "IK8_link"
+      }
+    ],
+    "loc": {
+      "addr": 5524017,
+      "name": "back alley",
+      "dict": [
+        "back",
+        "alley",
+        "rooms"
+      ],
+      "kinds": [
+        "K1_room",
+        "K0_kind"
+      ],
+      "lsb": [
+        "light",
+        "visited",
+        "proper",
+        "mark_as_room"
+      ],
+      "open": false,
+      "openable": false,
+      "container": false,
+      "parent": 0,
+      "bytes": [
+        0,
+        1,
+        32,
+        16,
+        2,
+        0,
+        0
+      ]
+    },
+    "locKey": {
+      "addr": 5524017,
+      "name": "back alley",
+      "dict": [
+        "back",
+        "alley",
+        "rooms"
+      ],
+      "p20": 4294967295,
+      "p25": 3,
+      "p26": null,
+      "p31": 5524241,
+      "p334": 58,
+      "p336": 3,
+      "instIds": [
+        1,
+        2,
+        5,
+        10,
+        15,
+        16,
+        17,
+        18,
+        20,
+        21,
+        22,
+        24,
+        25,
+        31,
+        40,
+        275,
+        278,
+        279,
+        280,
+        282,
+        286,
+        288,
+        308,
+        329,
+        330,
+        331,
+        332,
+        333,
+        334,
+        335,
+        336
+      ]
+    },
+    "locKids": [
+      {
+        "addr": 5522609,
+        "name": "sky",
+        "dict": [
+          "sky",
+          "backdrops"
+        ],
+        "kinds": [
+          "K7_backdrop",
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "scenery",
+          "static",
+          "mark_as_thing",
+          "p143_marked_visible"
+        ],
+        "open": false,
+        "openable": false,
+        "container": false,
+        "parent": 5524017,
+        "bytes": [
+          0,
+          128,
+          1,
+          0,
+          36,
+          0,
+          0
+        ]
+      },
+      {
+        "addr": 5524113,
+        "name": "dull house-bac",
+        "dict": [
+          "dull",
+          "house-bac",
+          "facades"
+        ],
+        "kinds": [
+          "K32_facade",
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "scenery",
+          "static",
+          "mark_as_thing",
+          "p143_marked_visible"
+        ],
+        "open": false,
+        "openable": false,
+        "container": false,
+        "parent": 5524017,
+        "bytes": [
+          0,
+          128,
+          1,
+          0,
+          36,
+          0,
+          0
+        ]
+      },
+      {
+        "addr": 5524145,
+        "name": "yellow buildings",
+        "dict": [
+          "yellow",
+          "buildings",
+          "facades"
+        ],
+        "kinds": [
+          "K32_facade",
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "scenery",
+          "static",
+          "pluralname",
+          "mark_as_thing",
+          "p143_marked_visible"
+        ],
+        "open": false,
+        "openable": false,
+        "container": false,
+        "parent": 5524017,
+        "bytes": [
+          0,
+          128,
+          1,
+          4,
+          36,
+          0,
+          0
+        ]
+      },
+      {
+        "addr": 5524177,
+        "name": "beige buildings",
+        "dict": [
+          "beige",
+          "buildings",
+          "facades"
+        ],
+        "kinds": [
+          "K32_facade",
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "scenery",
+          "static",
+          "pluralname",
+          "mark_as_thing",
+          "p143_marked_visible"
+        ],
+        "open": false,
+        "openable": false,
+        "container": false,
+        "parent": 5524017,
+        "bytes": [
+          0,
+          128,
+          1,
+          4,
+          36,
+          0,
+          0
+        ]
+      }
+    ],
+    "inventory": [
+      {
+        "addr": 5524081,
+        "name": "letter-re device device blunt-nos remover",
+        "dict": [
+          "letter-re",
+          "device",
+          "things",
+          "device",
+          "blunt-nos",
+          "remover"
+        ],
+        "kinds": [
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "moved",
+          "mark_as_thing",
+          "p143_marked_visible"
+        ],
+        "open": false,
+        "openable": false,
+        "container": false,
+        "parent": 5524049,
+        "bytes": [
+          0,
+          8,
+          0,
+          0,
+          36,
+          0,
+          0
+        ]
+      }
+    ],
+    "p25": {
+      "present": 100,
+      "uniq": 100,
+      "sample": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    "p334": {
+      "present": 106,
+      "uniq": 76,
+      "sample": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        81,
+        60,
+        59,
+        58,
+        102,
+        84
+      ]
+    },
+    "dirs": [
+      {
+        "card": "north",
+        "addr": 5511857,
+        "childIndex": 0,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              1
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              37
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "card": "northeast",
+        "addr": 5511889,
+        "childIndex": 1,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              1
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              62
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "card": "northwest",
+        "addr": 5511921,
+        "childIndex": 2,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              1
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              12
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "card": "south",
+        "addr": 5511953,
+        "childIndex": 3,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              1
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              37
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "card": "southeast",
+        "addr": 5511985,
+        "childIndex": 4,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              1
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              62
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "card": "southwest",
+        "addr": 5512017,
+        "childIndex": 5,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              1
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              12
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              5
+            ]
+          }
+        ]
+      },
+      {
+        "card": "east",
+        "addr": 5512049,
+        "childIndex": 6,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              1
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              62
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              6
+            ]
+          }
+        ]
+      },
+      {
+        "card": "west",
+        "addr": 5512081,
+        "childIndex": 7,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              1
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              12
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              7
+            ]
+          }
+        ]
+      },
+      {
+        "card": "up",
+        "addr": 5512113,
+        "childIndex": 8,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              12
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              8
+            ]
+          }
+        ]
+      },
+      {
+        "card": "down",
+        "addr": 5512145,
+        "childIndex": 9,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              62
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              9
+            ]
+          }
+        ]
+      },
+      {
+        "card": "in",
+        "addr": 5512177,
+        "childIndex": 10,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 415,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              10
+            ]
+          }
+        ]
+      },
+      {
+        "card": "out",
+        "addr": 5512209,
+        "childIndex": 11,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 415,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              11
+            ]
+          }
+        ]
+      },
+      {
+        "card": "starboard",
+        "addr": 5544497,
+        "childIndex": 12,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              62
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              12
+            ]
+          }
+        ]
+      },
+      {
+        "card": "port",
+        "addr": 5544529,
+        "childIndex": 13,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              12
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "card": "fore",
+        "addr": 5544561,
+        "childIndex": 14,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              37
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              14
+            ]
+          }
+        ]
+      },
+      {
+        "card": "aft",
+        "addr": 5544593,
+        "childIndex": 15,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              37
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              15
+            ]
+          }
+        ]
+      },
+      {
+        "card": "aft-port",
+        "addr": 5544625,
+        "childIndex": 16,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              12
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              16
+            ]
+          }
+        ]
+      },
+      {
+        "card": "aft-starb",
+        "addr": 5544657,
+        "childIndex": 17,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              62
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              17
+            ]
+          }
+        ]
+      },
+      {
+        "card": "fore-port",
+        "addr": 5544689,
+        "childIndex": 18,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              12
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              18
+            ]
+          }
+        ]
+      },
+      {
+        "card": "fore-star",
+        "addr": 5544721,
+        "childIndex": 19,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 309,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 340,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 414,
+            "words": [
+              62
+            ]
+          },
+          {
+            "id": 419,
+            "words": [
+              19
+            ]
+          },
+          {
+            "id": 420,
+            "words": [
+              0
+            ]
+          }
+        ]
+      }
+    ],
+    "locIndiv": [
+      {
+        "id": 275,
+        "name": "p200_as_yet_unknown",
+        "words": [
+          1
+        ],
+        "b0": 108,
+        "isObj": false,
+        "isRoom": false
+      },
+      {
+        "id": 278,
+        "name": "p205_non_checkpoint",
+        "words": [
+          1
+        ],
+        "b0": 108,
+        "isObj": false,
+        "isRoom": false
+      },
+      {
+        "id": 279,
+        "name": "p207_nonsecret",
+        "words": [
+          1
+        ],
+        "b0": 108,
+        "isObj": false,
+        "isRoom": false
+      },
+      {
+        "id": 280,
+        "name": "p209_nonsouthern",
+        "words": [
+          1
+        ],
+        "b0": 108,
+        "isObj": false,
+        "isRoom": false
+      },
+      {
+        "id": 282,
+        "name": "p215_indoors",
+        "words": [
+          0
+        ],
+        "b0": null,
+        "isObj": false,
+        "isRoom": false
+      },
+      {
+        "id": 286,
+        "name": "p223_publicly_available",
+        "words": [
+          1
+        ],
+        "b0": 108,
+        "isObj": false,
+        "isRoom": false
+      },
+      {
+        "id": 288,
+        "name": "p230_posture_friendly",
+        "words": [
+          1
+        ],
+        "b0": 108,
+        "isObj": false,
+        "isRoom": false
+      },
+      {
+        "id": 308,
+        "name": "p269_nautical",
+        "words": [
+          0
+        ],
+        "b0": null,
+        "isObj": false,
+        "isRoom": false
+      },
+      {
+        "id": 329,
+        "name": "p164_summary",
+        "words": [
+          5312157
+        ],
+        "b0": 0,
+        "isObj": false,
+        "isRoom": false
+      },
+      {
+        "id": 330,
+        "name": "p43_introduction",
+        "words": [
+          5312125
+        ],
+        "b0": 0,
+        "isObj": false,
+        "isRoom": false
+      },
+      {
+        "id": 331,
+        "name": "p44_disambiguation_id",
+        "words": [
+          2
+        ],
+        "b0": 117,
+        "isObj": false,
+        "isRoom": false
+      },
+      {
+        "id": 332,
+        "name": "p72_in_direction",
+        "words": [
+          0
+        ],
+        "b0": null,
+        "isObj": false,
+        "isRoom": false
+      },
+      {
+        "id": 333,
+        "name": "p73_out_direction",
+        "words": [
+          0
+        ],
+        "b0": null,
+        "isObj": false,
+        "isRoom": false
+      },
+      {
+        "id": 334,
+        "name": "p82_local_map",
+        "words": [
+          58
+        ],
+        "b0": 49,
+        "isObj": false,
+        "isRoom": false
+      },
+      {
+        "id": 335,
+        "name": "p86_hash_code",
+        "words": [
+          16780311
+        ],
+        "b0": 0,
+        "isObj": false,
+        "isRoom": false
+      },
+      {
+        "id": 336,
+        "name": "room_index_2",
+        "words": [
+          3
+        ],
+        "b0": 108,
+        "isObj": false,
+        "isRoom": false
+      }
+    ],
+    "indivSample": [
+      {
+        "id": 256,
+        "n": "create"
+      },
+      {
+        "id": 257,
+        "n": "recreate"
+      },
+      {
+        "id": 258,
+        "n": "destroy"
+      },
+      {
+        "id": 259,
+        "n": "remaining"
+      },
+      {
+        "id": 260,
+        "n": "copy"
+      },
+      {
+        "id": 261,
+        "n": "call"
+      },
+      {
+        "id": 262,
+        "n": "print"
+      },
+      {
+        "id": 263,
+        "n": "print_to_array"
+      },
+      {
+        "id": 264,
+        "n": "p141_recurring"
+      },
+      {
+        "id": 265,
+        "n": "p176_marked_relevant"
+      },
+      {
+        "id": 266,
+        "n": "p178_listed_plausible"
+      },
+      {
+        "id": 267,
+        "n": "p180_flagged_ready"
+      },
+      {
+        "id": 268,
+        "n": "p183_silent_thus_far"
+      },
+      {
+        "id": 269,
+        "n": "p185_strongly_phrased"
+      },
+      {
+        "id": 270,
+        "n": "p187_listed"
+      },
+      {
+        "id": 271,
+        "n": "p189_background_information"
+      },
+      {
+        "id": 272,
+        "n": "p190_alert"
+      },
+      {
+        "id": 273,
+        "n": "p191_motivational"
+      },
+      {
+        "id": 274,
+        "n": "p198_examined"
+      },
+      {
+        "id": 275,
+        "n": "p200_as_yet_unknown"
+      },
+      {
+        "id": 276,
+        "n": "p202_obvious"
+      },
+      {
+        "id": 277,
+        "n": "p203_staid"
+      },
+      {
+        "id": 278,
+        "n": "p205_non_checkpoint"
+      },
+      {
+        "id": 279,
+        "n": "p207_nonsecret"
+      },
+      {
+        "id": 280,
+        "n": "p209_nonsouthern"
+      },
+      {
+        "id": 281,
+        "n": "p211_near"
+      },
+      {
+        "id": 282,
+        "n": "p215_indoors"
+      },
+      {
+        "id": 283,
+        "n": "p217_fueled"
+      },
+      {
+        "id": 284,
+        "n": "p219_operational"
+      },
+      {
+        "id": 285,
+        "n": "p222_essential"
+      },
+      {
+        "id": 286,
+        "n": "p223_publicly_available"
+      },
+      {
+        "id": 287,
+        "n": "p225_horizontal"
+      },
+      {
+        "id": 288,
+        "n": "p230_posture_friendly"
+      },
+      {
+        "id": 289,
+        "n": "p234_edit_allowing"
+      },
+      {
+        "id": 290,
+        "n": "p236_noisy"
+      },
+      {
+        "id": 291,
+        "n": "p238_solid"
+      },
+      {
+        "id": 292,
+        "n": "p240_contained"
+      },
+      {
+        "id": 293,
+        "n": "p242_legal"
+      },
+      {
+        "id": 294,
+        "n": "p245_seen"
+      },
+      {
+        "id": 295,
+        "n": "p247_fake"
+      },
+      {
+        "id": 296,
+        "n": "p249_r_concrete"
+      },
+      {
+        "id": 297,
+        "n": "p251_short"
+      },
+      {
+        "id": 298,
+        "n": "p253_strong"
+      },
+      {
+        "id": 299,
+        "n": "p255_naughty_sounding"
+      },
+      {
+        "id": 300,
+        "n": "p257_blinding"
+      },
+      {
+        "id": 301,
+        "n": "p258_previously_mentioned"
+      },
+      {
+        "id": 302,
+        "n": "p259_shrine_hiding"
+      },
+      {
+        "id": 303,
+        "n": "p261_built"
+      },
+      {
+        "id": 304,
+        "n": "p263_buried"
+      },
+      {
+        "id": 305,
+        "n": "p265_pending"
+      },
+      {
+        "id": 306,
+        "n": "p267_quittable"
+      },
+      {
+        "id": 307,
+        "n": "p268_stolen"
+      },
+      {
+        "id": 308,
+        "n": "p269_nautical"
+      },
+      {
+        "id": 309,
+        "n": "p271_earthbound_directional"
+      },
+      {
+        "id": 310,
+        "n": "p274_static"
+      },
+      {
+        "id": 311,
+        "n": "p276_upgraded"
+      },
+      {
+        "id": 312,
+        "n": "p277_creature_enabled"
+      },
+      {
+        "id": 313,
+        "n": "p278_multiply_made"
+      },
+      {
+        "id": 314,
+        "n": "p279_disguised"
+      },
+      {
+        "id": 315,
+        "n": "p281_won"
+      },
+      {
+        "id": 316,
+        "n": "p283_gelled"
+      },
+      {
+        "id": 317,
+        "n": "p285_loaded"
+      },
+      {
+        "id": 318,
+        "n": "p291_inked"
+      },
+      {
+        "id": 319,
+        "n": "p295_bored_of_politics"
+      },
+      {
+        "id": 320,
+        "n": "value_range"
+      },
+      {
+        "id": 321,
+        "n": "p14_adaptive_text_viewpoint"
+      },
+      {
+        "id": 322,
+        "n": "p150_first_delimiter"
+      },
+      {
+        "id": 323,
+        "n": "p151_second_delimiter"
+      },
+      {
+        "id": 324,
+        "n": "p152_alternate_second_delimi"
+      },
+      {
+        "id": 325,
+        "n": "p153_indefinite_name_phrase"
+      },
+      {
+        "id": 326,
+        "n": "p154_definite_name_phrase"
+      },
+      {
+        "id": 327,
+        "n": "p288_article"
+      },
+      {
+        "id": 328,
+        "n": "p289_image"
+      },
+      {
+        "id": 329,
+        "n": "p164_summary"
+      },
+      {
+        "id": 330,
+        "n": "p43_introduction"
+      },
+      {
+        "id": 331,
+        "n": "p44_disambiguation_id"
+      },
+      {
+        "id": 332,
+        "n": "p72_in_direction"
+      },
+      {
+        "id": 333,
+        "n": "p73_out_direction"
+      },
+      {
+        "id": 334,
+        "n": "p82_local_map"
+      },
+      {
+        "id": 335,
+        "n": "p86_hash_code"
+      }
+    ],
+    "closedHere": [],
+    "openableHere": [],
+    "moveTrials": [
+      {
+        "command": "north",
+        "locBefore": 5524017,
+        "locAfter": 5523697,
+        "changed": true,
+        "locName": "sigil street",
+        "closedHere": [],
+        "look": "gs to the south, while the street continues east.\n \nYou can find out more if you LOOK AT THE ELDERLY APARTMENTS (or shorten it to L ELDERLY APARTMENTS).\n> \nMore"
+      },
+      {
+        "command": "east",
+        "locBefore": 5523697,
+        "locAfter": 5523505,
+        "changed": true,
+        "locName": "ampersand bend district",
+        "closedHere": [
+          {
+            "addr": 5523313,
+            "name": "temporary barrier",
+            "dict": [
+              "temporary",
+              "barrier",
+              "doors",
+              "door"
+            ],
+            "kinds": [
+              "K4_door",
+              "K2_thing",
+              "K0_kind"
+            ],
+            "lsb": [
+              "door",
+              "lockable",
+              "locked",
+              "openable",
+              "static",
+              "transparent",
+              "mark_as_thing"
+            ],
+            "open": false,
+            "openable": true,
+            "container": false,
+            "parent": 5523505,
+            "bytes": [
+              32,
+              70,
+              17,
+              0,
+              4,
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    ],
+    "hunt": {
+      "src": 5524017,
+      "dest": 5523697,
+      "srcKey": {
+        "name": "back alley",
+        "p20": 4294967295,
+        "p25": 3,
+        "p26": null,
+        "p334": 58,
+        "p336": 3
+      },
+      "destKey": {
+        "name": "sigil street",
+        "p20": 4294967295,
+        "p25": 2,
+        "p26": null,
+        "p334": 59,
+        "p336": 2
+      },
+      "destHits": 9,
+      "destHitSample": [
+        3575704,
+        3575740,
+        3575832,
+        3575836,
+        3575856,
+        3576108,
+        3643284,
+        3643416,
+        6072452
+      ],
+      "pairs": [],
+      "triples": [],
+      "neighborhoods": [
+        {
+          "at": 3575704,
+          "window": [
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 5,
+              "kind": "junk"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            }
+          ]
+        },
+        {
+          "at": 3575740,
+          "window": [
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            }
+          ]
+        },
+        {
+          "at": 3575832,
+          "window": [
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 4929079,
+              "kind": "junk"
+            },
+            {
+              "w": 4929071,
+              "kind": "junk"
+            },
+            {
+              "w": 5524049,
+              "kind": "obj",
+              "dict": []
+            },
+            {
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            }
+          ]
+        },
+        {
+          "at": 3575836,
+          "window": [
+            {
+              "w": 4929079,
+              "kind": "junk"
+            },
+            {
+              "w": 4929071,
+              "kind": "junk"
+            },
+            {
+              "w": 5524049,
+              "kind": "obj",
+              "dict": []
+            },
+            {
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 5524049,
+              "kind": "obj",
+              "dict": []
+            }
+          ]
+        },
+        {
+          "at": 3575856,
+          "window": [
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 5524049,
+              "kind": "obj",
+              "dict": []
+            },
+            {
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 7,
+              "kind": "junk"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 5511857,
+              "kind": "DIR",
+              "card": "north"
+            }
+          ]
+        },
+        {
+          "at": 3576108,
+          "window": [
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 4294967295,
+              "kind": "junk"
+            },
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 4,
+              "kind": "junk"
+            }
+          ]
+        },
+        {
+          "at": 3643284,
+          "window": [
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            }
+          ]
+        },
+        {
+          "at": 3643416,
+          "window": [
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            }
+          ]
+        },
+        {
+          "at": 6072452,
+          "window": [
+            {
+              "w": 5310725,
+              "kind": "junk"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 5523697,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "w": 101,
+              "kind": "junk"
+            },
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 1,
+              "kind": "junk"
+            }
+          ]
+        }
+      ],
+      "indexTrials": [
+        {
+          "field": "p334",
+          "nDir": 12,
+          "slot": 0,
+          "idx": 58,
+          "didx": 59,
+          "n": 2,
+          "best": [
+            {
+              "at": 3643284,
+              "base": 3640500,
+              "destSlots": [
+                0
+              ],
+              "srcSlots": [
+                4
+              ],
+              "srcFilled": [
+                {
+                  "i": 0,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 4,
+                  "kind": "SRC",
+                  "name": "back alley"
+                },
+                {
+                  "i": 7,
+                  "kind": "room",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "recip": true
+            },
+            {
+              "at": 3643416,
+              "base": 3640632,
+              "destSlots": [
+                0
+              ],
+              "srcSlots": [],
+              "srcFilled": [
+                {
+                  "i": 0,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 11,
+                  "kind": "room",
+                  "name": "fair"
+                }
+              ],
+              "recip": false
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 12,
+          "slot": 1,
+          "idx": 58,
+          "didx": 59,
+          "n": 2,
+          "best": [
+            {
+              "at": 3643284,
+              "base": 3640496,
+              "destSlots": [
+                1
+              ],
+              "srcSlots": [
+                5
+              ],
+              "srcFilled": [
+                {
+                  "i": 1,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 5,
+                  "kind": "SRC",
+                  "name": "back alley"
+                },
+                {
+                  "i": 8,
+                  "kind": "room",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "recip": true
+            },
+            {
+              "at": 3643416,
+              "base": 3640628,
+              "destSlots": [
+                1
+              ],
+              "srcSlots": [],
+              "srcFilled": [
+                {
+                  "i": 1,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [],
+              "recip": false
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 12,
+          "slot": 2,
+          "idx": 58,
+          "didx": 59,
+          "n": 2,
+          "best": [
+            {
+              "at": 3643284,
+              "base": 3640492,
+              "destSlots": [
+                2
+              ],
+              "srcSlots": [
+                6
+              ],
+              "srcFilled": [
+                {
+                  "i": 2,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 6,
+                  "kind": "SRC",
+                  "name": "back alley"
+                },
+                {
+                  "i": 9,
+                  "kind": "room",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "recip": true
+            },
+            {
+              "at": 3643416,
+              "base": 3640624,
+              "destSlots": [
+                2
+              ],
+              "srcSlots": [],
+              "srcFilled": [
+                {
+                  "i": 2,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [],
+              "recip": false
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 12,
+          "slot": 3,
+          "idx": 58,
+          "didx": 59,
+          "n": 2,
+          "best": [
+            {
+              "at": 3643284,
+              "base": 3640488,
+              "destSlots": [
+                3
+              ],
+              "srcSlots": [
+                7
+              ],
+              "srcFilled": [
+                {
+                  "i": 3,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 7,
+                  "kind": "SRC",
+                  "name": "back alley"
+                },
+                {
+                  "i": 10,
+                  "kind": "room",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "recip": true
+            },
+            {
+              "at": 3643416,
+              "base": 3640620,
+              "destSlots": [
+                3
+              ],
+              "srcSlots": [],
+              "srcFilled": [
+                {
+                  "i": 3,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [],
+              "recip": false
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 12,
+          "slot": 4,
+          "idx": 58,
+          "didx": 59,
+          "n": 2,
+          "best": [
+            {
+              "at": 3643284,
+              "base": 3640484,
+              "destSlots": [
+                4
+              ],
+              "srcSlots": [
+                8
+              ],
+              "srcFilled": [
+                {
+                  "i": 4,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 8,
+                  "kind": "SRC",
+                  "name": "back alley"
+                },
+                {
+                  "i": 11,
+                  "kind": "room",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "recip": true
+            },
+            {
+              "at": 3643416,
+              "base": 3640616,
+              "destSlots": [
+                4
+              ],
+              "srcSlots": [],
+              "srcFilled": [
+                {
+                  "i": 4,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [],
+              "recip": false
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 12,
+          "slot": 5,
+          "idx": 58,
+          "didx": 59,
+          "n": 2,
+          "best": [
+            {
+              "at": 3643284,
+              "base": 3640480,
+              "destSlots": [
+                5
+              ],
+              "srcSlots": [
+                9
+              ],
+              "srcFilled": [
+                {
+                  "i": 5,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 9,
+                  "kind": "SRC",
+                  "name": "back alley"
+                }
+              ],
+              "recip": true
+            },
+            {
+              "at": 3643416,
+              "base": 3640612,
+              "destSlots": [
+                5
+              ],
+              "srcSlots": [],
+              "srcFilled": [
+                {
+                  "i": 5,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [],
+              "recip": false
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 12,
+          "slot": 6,
+          "idx": 58,
+          "didx": 59,
+          "n": 2,
+          "best": [
+            {
+              "at": 3643284,
+              "base": 3640476,
+              "destSlots": [
+                6
+              ],
+              "srcSlots": [
+                10
+              ],
+              "srcFilled": [
+                {
+                  "i": 6,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 10,
+                  "kind": "SRC",
+                  "name": "back alley"
+                }
+              ],
+              "recip": true
+            },
+            {
+              "at": 3643416,
+              "base": 3640608,
+              "destSlots": [
+                6
+              ],
+              "srcSlots": [],
+              "srcFilled": [
+                {
+                  "i": 6,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [],
+              "recip": false
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 12,
+          "slot": 7,
+          "idx": 58,
+          "didx": 59,
+          "n": 2,
+          "best": [
+            {
+              "at": 3643284,
+              "base": 3640472,
+              "destSlots": [
+                7
+              ],
+              "srcSlots": [
+                11
+              ],
+              "srcFilled": [
+                {
+                  "i": 0,
+                  "kind": "obj",
+                  "dict": [
+                    "temporary",
+                    "barrier",
+                    "doors"
+                  ]
+                },
+                {
+                  "i": 7,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 11,
+                  "kind": "SRC",
+                  "name": "back alley"
+                }
+              ],
+              "recip": true
+            },
+            {
+              "at": 3643416,
+              "base": 3640604,
+              "destSlots": [
+                7
+              ],
+              "srcSlots": [],
+              "srcFilled": [
+                {
+                  "i": 7,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [],
+              "recip": false
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 16,
+          "slot": 0,
+          "idx": 58,
+          "didx": 59,
+          "n": 2,
+          "best": [
+            {
+              "at": 3643284,
+              "base": 3639572,
+              "destSlots": [
+                0
+              ],
+              "srcSlots": [
+                0
+              ],
+              "srcFilled": [
+                {
+                  "i": 0,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 0,
+                  "kind": "SRC",
+                  "name": "back alley"
+                },
+                {
+                  "i": 3,
+                  "kind": "room",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "recip": true
+            },
+            {
+              "at": 3643416,
+              "base": 3639704,
+              "destSlots": [
+                0
+              ],
+              "srcSlots": [],
+              "srcFilled": [
+                {
+                  "i": 0,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 7,
+                  "kind": "room",
+                  "name": "fair"
+                },
+                {
+                  "i": 8,
+                  "kind": "room",
+                  "name": "heritage corner"
+                },
+                {
+                  "i": 9,
+                  "kind": "room",
+                  "name": "midway"
+                },
+                {
+                  "i": 10,
+                  "kind": "room",
+                  "name": "monumenta staircase"
+                },
+                {
+                  "i": 11,
+                  "kind": "room",
+                  "name": "church forecourt"
+                }
+              ],
+              "recip": false
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 16,
+          "slot": 1,
+          "idx": 58,
+          "didx": 59,
+          "n": 2,
+          "best": [
+            {
+              "at": 3643284,
+              "base": 3639568,
+              "destSlots": [
+                1
+              ],
+              "srcSlots": [
+                1
+              ],
+              "srcFilled": [
+                {
+                  "i": 1,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 1,
+                  "kind": "SRC",
+                  "name": "back alley"
+                },
+                {
+                  "i": 4,
+                  "kind": "room",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "recip": true
+            },
+            {
+              "at": 3643416,
+              "base": 3639700,
+              "destSlots": [
+                1
+              ],
+              "srcSlots": [],
+              "srcFilled": [
+                {
+                  "i": 1,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 8,
+                  "kind": "room",
+                  "name": "fair"
+                },
+                {
+                  "i": 9,
+                  "kind": "room",
+                  "name": "heritage corner"
+                },
+                {
+                  "i": 10,
+                  "kind": "room",
+                  "name": "midway"
+                },
+                {
+                  "i": 11,
+                  "kind": "room",
+                  "name": "monumenta staircase"
+                },
+                {
+                  "i": 12,
+                  "kind": "room",
+                  "name": "church forecourt"
+                }
+              ],
+              "recip": false
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 16,
+          "slot": 2,
+          "idx": 58,
+          "didx": 59,
+          "n": 2,
+          "best": [
+            {
+              "at": 3643284,
+              "base": 3639564,
+              "destSlots": [
+                2
+              ],
+              "srcSlots": [
+                2
+              ],
+              "srcFilled": [
+                {
+                  "i": 2,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 2,
+                  "kind": "SRC",
+                  "name": "back alley"
+                },
+                {
+                  "i": 5,
+                  "kind": "room",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "recip": true
+            },
+            {
+              "at": 3643416,
+              "base": 3639696,
+              "destSlots": [
+                2
+              ],
+              "srcSlots": [],
+              "srcFilled": [
+                {
+                  "i": 2,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 9,
+                  "kind": "room",
+                  "name": "fair"
+                },
+                {
+                  "i": 10,
+                  "kind": "room",
+                  "name": "heritage corner"
+                },
+                {
+                  "i": 11,
+                  "kind": "room",
+                  "name": "midway"
+                },
+                {
+                  "i": 12,
+                  "kind": "room",
+                  "name": "monumenta staircase"
+                },
+                {
+                  "i": 13,
+                  "kind": "room",
+                  "name": "church forecourt"
+                }
+              ],
+              "recip": false
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 16,
+          "slot": 3,
+          "idx": 58,
+          "didx": 59,
+          "n": 2,
+          "best": [
+            {
+              "at": 3643284,
+              "base": 3639560,
+              "destSlots": [
+                3
+              ],
+              "srcSlots": [
+                3
+              ],
+              "srcFilled": [
+                {
+                  "i": 3,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 3,
+                  "kind": "SRC",
+                  "name": "back alley"
+                },
+                {
+                  "i": 6,
+                  "kind": "room",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "recip": true
+            },
+            {
+              "at": 3643416,
+              "base": 3639692,
+              "destSlots": [
+                3
+              ],
+              "srcSlots": [],
+              "srcFilled": [
+                {
+                  "i": 3,
+                  "kind": "DEST",
+                  "name": "sigil street"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 10,
+                  "kind": "room",
+                  "name": "fair"
+                },
+                {
+                  "i": 11,
+                  "kind": "room",
+                  "name": "heritage corner"
+                },
+                {
+                  "i": 12,
+                  "kind": "room",
+                  "name": "midway"
+                },
+                {
+                  "i": 13,
+                  "kind": "room",
+                  "name": "monumenta staircase"
+                },
+                {
+                  "i": 14,
+                  "kind": "room",
+                  "name": "church forecourt"
+                }
+              ],
+              "recip": false
+            }
+          ]
+        }
+      ],
+      "gridHits": [
+        {
+          "base": 3575552,
+          "slot": 2,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 2,
+          "srcFilled": [
+            {
+              "i": 2,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "i": 4,
+              "kind": "junk"
+            },
+            {
+              "i": 7,
+              "kind": "junk"
+            },
+            {
+              "i": 11,
+              "kind": "DEST",
+              "name": "sigil street"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 6,
+              "kind": "junk"
+            },
+            {
+              "i": 8,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575552,
+          "slot": 11,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 2,
+          "srcFilled": [
+            {
+              "i": 2,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "i": 4,
+              "kind": "junk"
+            },
+            {
+              "i": 7,
+              "kind": "junk"
+            },
+            {
+              "i": 11,
+              "kind": "DEST",
+              "name": "sigil street"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 6,
+              "kind": "junk"
+            },
+            {
+              "i": 8,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575556,
+          "slot": 1,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 2,
+          "srcFilled": [
+            {
+              "i": 1,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "i": 3,
+              "kind": "junk"
+            },
+            {
+              "i": 6,
+              "kind": "junk"
+            },
+            {
+              "i": 10,
+              "kind": "DEST",
+              "name": "sigil street"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 5,
+              "kind": "junk"
+            },
+            {
+              "i": 7,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575556,
+          "slot": 10,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 2,
+          "srcFilled": [
+            {
+              "i": 1,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "i": 3,
+              "kind": "junk"
+            },
+            {
+              "i": 6,
+              "kind": "junk"
+            },
+            {
+              "i": 10,
+              "kind": "DEST",
+              "name": "sigil street"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 5,
+              "kind": "junk"
+            },
+            {
+              "i": 7,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575560,
+          "slot": 0,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 2,
+          "srcFilled": [
+            {
+              "i": 0,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "i": 2,
+              "kind": "junk"
+            },
+            {
+              "i": 5,
+              "kind": "junk"
+            },
+            {
+              "i": 9,
+              "kind": "DEST",
+              "name": "sigil street"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 4,
+              "kind": "junk"
+            },
+            {
+              "i": 6,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575560,
+          "slot": 9,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 2,
+          "srcFilled": [
+            {
+              "i": 0,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "i": 2,
+              "kind": "junk"
+            },
+            {
+              "i": 5,
+              "kind": "junk"
+            },
+            {
+              "i": 9,
+              "kind": "DEST",
+              "name": "sigil street"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 4,
+              "kind": "junk"
+            },
+            {
+              "i": 6,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575564,
+          "slot": 8,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 2,
+          "srcFilled": [
+            {
+              "i": 1,
+              "kind": "junk"
+            },
+            {
+              "i": 4,
+              "kind": "junk"
+            },
+            {
+              "i": 8,
+              "kind": "DEST",
+              "name": "sigil street"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 3,
+              "kind": "junk"
+            },
+            {
+              "i": 5,
+              "kind": "junk"
+            },
+            {
+              "i": 11,
+              "kind": "DEST",
+              "name": "sigil street"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575568,
+          "slot": 7,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 2,
+          "srcFilled": [
+            {
+              "i": 0,
+              "kind": "junk"
+            },
+            {
+              "i": 3,
+              "kind": "junk"
+            },
+            {
+              "i": 7,
+              "kind": "DEST",
+              "name": "sigil street"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 2,
+              "kind": "junk"
+            },
+            {
+              "i": 4,
+              "kind": "junk"
+            },
+            {
+              "i": 10,
+              "kind": "DEST",
+              "name": "sigil street"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575572,
+          "slot": 6,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 1,
+          "destJunk": 3,
+          "srcFilled": [
+            {
+              "i": 2,
+              "kind": "junk"
+            },
+            {
+              "i": 6,
+              "kind": "DEST",
+              "name": "sigil street"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 1,
+              "kind": "junk"
+            },
+            {
+              "i": 3,
+              "kind": "junk"
+            },
+            {
+              "i": 9,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "i": 11,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575576,
+          "slot": 5,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 3,
+          "srcFilled": [
+            {
+              "i": 1,
+              "kind": "junk"
+            },
+            {
+              "i": 5,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "i": 11,
+              "kind": "junk"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 0,
+              "kind": "junk"
+            },
+            {
+              "i": 2,
+              "kind": "junk"
+            },
+            {
+              "i": 8,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "i": 10,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575580,
+          "slot": 4,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 2,
+          "srcFilled": [
+            {
+              "i": 0,
+              "kind": "junk"
+            },
+            {
+              "i": 4,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "i": 10,
+              "kind": "junk"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 1,
+              "kind": "junk"
+            },
+            {
+              "i": 7,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "i": 9,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575584,
+          "slot": 3,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 1,
+          "destJunk": 3,
+          "srcFilled": [
+            {
+              "i": 3,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "i": 9,
+              "kind": "junk"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 0,
+              "kind": "junk"
+            },
+            {
+              "i": 6,
+              "kind": "DEST",
+              "name": "sigil street"
+            },
+            {
+              "i": 8,
+              "kind": "junk"
+            },
+            {
+              "i": 11,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        }
+      ]
+    },
+    "hunt2": {
+      "src": 5523697,
+      "dest": 5523505,
+      "srcKey": {
+        "name": "sigil street",
+        "p20": 4294967295,
+        "p25": 2,
+        "p26": null,
+        "p334": 59,
+        "p336": 2
+      },
+      "destKey": {
+        "name": "ampersand bend district",
+        "p20": 4294967295,
+        "p25": 1,
+        "p26": null,
+        "p334": 60,
+        "p336": 1
+      },
+      "destHits": 8,
+      "destHitSample": [
+        3575704,
+        3575740,
+        3575832,
+        3575836,
+        3575856,
+        3576108,
+        3643360,
+        6068216
+      ],
+      "pairs": [],
+      "triples": [],
+      "neighborhoods": [
+        {
+          "at": 3575704,
+          "window": [
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 5523505,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 6,
+              "kind": "junk"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            }
+          ]
+        },
+        {
+          "at": 3575740,
+          "window": [
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 5523505,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            }
+          ]
+        },
+        {
+          "at": 3575832,
+          "window": [
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 4929079,
+              "kind": "junk"
+            },
+            {
+              "w": 4929071,
+              "kind": "junk"
+            },
+            {
+              "w": 5524049,
+              "kind": "obj",
+              "dict": []
+            },
+            {
+              "w": 5523505,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "w": 5523505,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            }
+          ]
+        },
+        {
+          "at": 3575836,
+          "window": [
+            {
+              "w": 4929079,
+              "kind": "junk"
+            },
+            {
+              "w": 4929071,
+              "kind": "junk"
+            },
+            {
+              "w": 5524049,
+              "kind": "obj",
+              "dict": []
+            },
+            {
+              "w": 5523505,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "w": 5523505,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 5524049,
+              "kind": "obj",
+              "dict": []
+            }
+          ]
+        },
+        {
+          "at": 3575856,
+          "window": [
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 5524049,
+              "kind": "obj",
+              "dict": []
+            },
+            {
+              "w": 5523505,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 7,
+              "kind": "junk"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 5512049,
+              "kind": "DIR",
+              "card": "east"
+            }
+          ]
+        },
+        {
+          "at": 3576108,
+          "window": [
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 2,
+              "kind": "junk"
+            },
+            {
+              "w": 5523505,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 4294967295,
+              "kind": "junk"
+            },
+            {
+              "w": 1,
+              "kind": "junk"
+            },
+            {
+              "w": 4,
+              "kind": "junk"
+            }
+          ]
+        },
+        {
+          "at": 3643360,
+          "window": [
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 5524017,
+              "kind": "room",
+              "name": "back alley"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 5523505,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            },
+            {
+              "w": 0,
+              "kind": "zero"
+            }
+          ]
+        },
+        {
+          "at": 6068216,
+          "window": [
+            {
+              "w": 5310221,
+              "kind": "junk"
+            },
+            {
+              "w": 70285,
+              "kind": "junk"
+            },
+            {
+              "w": 70329,
+              "kind": "junk"
+            },
+            {
+              "w": 5523345,
+              "kind": "room",
+              "name": "fair"
+            },
+            {
+              "w": 5523505,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "w": 5310229,
+              "kind": "junk"
+            },
+            {
+              "w": 5310285,
+              "kind": "junk"
+            },
+            {
+              "w": 2094844,
+              "kind": "junk"
+            },
+            {
+              "w": 5310293,
+              "kind": "junk"
+            }
+          ]
+        }
+      ],
+      "indexTrials": [
+        {
+          "field": "p25",
+          "nDir": 12,
+          "slot": 7,
+          "idx": 2,
+          "didx": 1,
+          "n": 1,
+          "best": [
+            {
+              "at": 3643360,
+              "base": 3643236,
+              "destSlots": [
+                7
+              ],
+              "srcSlots": [
+                0
+              ],
+              "srcFilled": [
+                {
+                  "i": 4,
+                  "kind": "room",
+                  "name": "back alley"
+                },
+                {
+                  "i": 7,
+                  "kind": "DEST",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 0,
+                  "kind": "SRC",
+                  "name": "sigil street"
+                }
+              ],
+              "recip": true
+            }
+          ]
+        },
+        {
+          "field": "p25",
+          "nDir": 12,
+          "slot": 8,
+          "idx": 2,
+          "didx": 1,
+          "n": 1,
+          "best": [
+            {
+              "at": 3643360,
+              "base": 3643232,
+              "destSlots": [
+                8
+              ],
+              "srcSlots": [
+                1
+              ],
+              "srcFilled": [
+                {
+                  "i": 5,
+                  "kind": "room",
+                  "name": "back alley"
+                },
+                {
+                  "i": 8,
+                  "kind": "DEST",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 1,
+                  "kind": "SRC",
+                  "name": "sigil street"
+                }
+              ],
+              "recip": true
+            }
+          ]
+        },
+        {
+          "field": "p25",
+          "nDir": 12,
+          "slot": 9,
+          "idx": 2,
+          "didx": 1,
+          "n": 1,
+          "best": [
+            {
+              "at": 3643360,
+              "base": 3643228,
+              "destSlots": [
+                9
+              ],
+              "srcSlots": [
+                2
+              ],
+              "srcFilled": [
+                {
+                  "i": 6,
+                  "kind": "room",
+                  "name": "back alley"
+                },
+                {
+                  "i": 9,
+                  "kind": "DEST",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 2,
+                  "kind": "SRC",
+                  "name": "sigil street"
+                }
+              ],
+              "recip": true
+            }
+          ]
+        },
+        {
+          "field": "p25",
+          "nDir": 12,
+          "slot": 10,
+          "idx": 2,
+          "didx": 1,
+          "n": 1,
+          "best": [
+            {
+              "at": 3643360,
+              "base": 3643224,
+              "destSlots": [
+                10
+              ],
+              "srcSlots": [
+                3
+              ],
+              "srcFilled": [
+                {
+                  "i": 7,
+                  "kind": "room",
+                  "name": "back alley"
+                },
+                {
+                  "i": 10,
+                  "kind": "DEST",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 3,
+                  "kind": "SRC",
+                  "name": "sigil street"
+                }
+              ],
+              "recip": true
+            }
+          ]
+        },
+        {
+          "field": "p25",
+          "nDir": 12,
+          "slot": 11,
+          "idx": 2,
+          "didx": 1,
+          "n": 1,
+          "best": [
+            {
+              "at": 3643360,
+              "base": 3643220,
+              "destSlots": [
+                11
+              ],
+              "srcSlots": [
+                4
+              ],
+              "srcFilled": [
+                {
+                  "i": 8,
+                  "kind": "room",
+                  "name": "back alley"
+                },
+                {
+                  "i": 11,
+                  "kind": "DEST",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 4,
+                  "kind": "SRC",
+                  "name": "sigil street"
+                }
+              ],
+              "recip": true
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 12,
+          "slot": 0,
+          "idx": 59,
+          "didx": 60,
+          "n": 1,
+          "best": [
+            {
+              "at": 3643360,
+              "base": 3640528,
+              "destSlots": [
+                0
+              ],
+              "srcSlots": [
+                2
+              ],
+              "srcFilled": [
+                {
+                  "i": 0,
+                  "kind": "DEST",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 2,
+                  "kind": "SRC",
+                  "name": "sigil street"
+                }
+              ],
+              "recip": true
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 12,
+          "slot": 1,
+          "idx": 59,
+          "didx": 60,
+          "n": 1,
+          "best": [
+            {
+              "at": 3643360,
+              "base": 3640524,
+              "destSlots": [
+                1
+              ],
+              "srcSlots": [
+                3
+              ],
+              "srcFilled": [
+                {
+                  "i": 1,
+                  "kind": "DEST",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 3,
+                  "kind": "SRC",
+                  "name": "sigil street"
+                }
+              ],
+              "recip": true
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 12,
+          "slot": 2,
+          "idx": 59,
+          "didx": 60,
+          "n": 1,
+          "best": [
+            {
+              "at": 3643360,
+              "base": 3640520,
+              "destSlots": [
+                2
+              ],
+              "srcSlots": [
+                4
+              ],
+              "srcFilled": [
+                {
+                  "i": 2,
+                  "kind": "DEST",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 4,
+                  "kind": "SRC",
+                  "name": "sigil street"
+                }
+              ],
+              "recip": true
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 12,
+          "slot": 3,
+          "idx": 59,
+          "didx": 60,
+          "n": 1,
+          "best": [
+            {
+              "at": 3643360,
+              "base": 3640516,
+              "destSlots": [
+                3
+              ],
+              "srcSlots": [
+                5
+              ],
+              "srcFilled": [
+                {
+                  "i": 0,
+                  "kind": "room",
+                  "name": "back alley"
+                },
+                {
+                  "i": 3,
+                  "kind": "DEST",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 5,
+                  "kind": "SRC",
+                  "name": "sigil street"
+                }
+              ],
+              "recip": true
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 12,
+          "slot": 4,
+          "idx": 59,
+          "didx": 60,
+          "n": 1,
+          "best": [
+            {
+              "at": 3643360,
+              "base": 3640512,
+              "destSlots": [
+                4
+              ],
+              "srcSlots": [
+                6
+              ],
+              "srcFilled": [
+                {
+                  "i": 1,
+                  "kind": "room",
+                  "name": "back alley"
+                },
+                {
+                  "i": 4,
+                  "kind": "DEST",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 6,
+                  "kind": "SRC",
+                  "name": "sigil street"
+                }
+              ],
+              "recip": true
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 12,
+          "slot": 5,
+          "idx": 59,
+          "didx": 60,
+          "n": 1,
+          "best": [
+            {
+              "at": 3643360,
+              "base": 3640508,
+              "destSlots": [
+                5
+              ],
+              "srcSlots": [
+                7
+              ],
+              "srcFilled": [
+                {
+                  "i": 2,
+                  "kind": "room",
+                  "name": "back alley"
+                },
+                {
+                  "i": 5,
+                  "kind": "DEST",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 7,
+                  "kind": "SRC",
+                  "name": "sigil street"
+                }
+              ],
+              "recip": true
+            }
+          ]
+        },
+        {
+          "field": "p334",
+          "nDir": 12,
+          "slot": 6,
+          "idx": 59,
+          "didx": 60,
+          "n": 1,
+          "best": [
+            {
+              "at": 3643360,
+              "base": 3640504,
+              "destSlots": [
+                6
+              ],
+              "srcSlots": [
+                8
+              ],
+              "srcFilled": [
+                {
+                  "i": 3,
+                  "kind": "room",
+                  "name": "back alley"
+                },
+                {
+                  "i": 6,
+                  "kind": "DEST",
+                  "name": "ampersand bend district"
+                }
+              ],
+              "destFilled": [
+                {
+                  "i": 8,
+                  "kind": "SRC",
+                  "name": "sigil street"
+                }
+              ],
+              "recip": true
+            }
+          ]
+        }
+      ],
+      "gridHits": [
+        {
+          "base": 3575564,
+          "slot": 11,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 3,
+          "destJunk": 0,
+          "srcFilled": [
+            {
+              "i": 3,
+              "kind": "junk"
+            },
+            {
+              "i": 4,
+              "kind": "junk"
+            },
+            {
+              "i": 5,
+              "kind": "junk"
+            },
+            {
+              "i": 11,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            }
+          ],
+          "destFilled": [],
+          "recip": false
+        },
+        {
+          "base": 3575568,
+          "slot": 10,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 3,
+          "destJunk": 0,
+          "srcFilled": [
+            {
+              "i": 2,
+              "kind": "junk"
+            },
+            {
+              "i": 3,
+              "kind": "junk"
+            },
+            {
+              "i": 4,
+              "kind": "junk"
+            },
+            {
+              "i": 10,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            }
+          ],
+          "destFilled": [],
+          "recip": false
+        },
+        {
+          "base": 3575580,
+          "slot": 7,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 3,
+          "destJunk": 1,
+          "srcFilled": [
+            {
+              "i": 0,
+              "kind": "junk"
+            },
+            {
+              "i": 1,
+              "kind": "junk"
+            },
+            {
+              "i": 7,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "i": 9,
+              "kind": "junk"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 11,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575584,
+          "slot": 6,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 3,
+          "destJunk": 2,
+          "srcFilled": [
+            {
+              "i": 0,
+              "kind": "junk"
+            },
+            {
+              "i": 6,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "i": 8,
+              "kind": "junk"
+            },
+            {
+              "i": 11,
+              "kind": "junk"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 10,
+              "kind": "junk"
+            },
+            {
+              "i": 11,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575588,
+          "slot": 5,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 3,
+          "srcFilled": [
+            {
+              "i": 5,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "i": 7,
+              "kind": "junk"
+            },
+            {
+              "i": 10,
+              "kind": "junk"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 9,
+              "kind": "junk"
+            },
+            {
+              "i": 10,
+              "kind": "junk"
+            },
+            {
+              "i": 11,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575592,
+          "slot": 4,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 3,
+          "srcFilled": [
+            {
+              "i": 4,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "i": 6,
+              "kind": "junk"
+            },
+            {
+              "i": 9,
+              "kind": "junk"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 8,
+              "kind": "junk"
+            },
+            {
+              "i": 9,
+              "kind": "junk"
+            },
+            {
+              "i": 10,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575596,
+          "slot": 3,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 3,
+          "srcFilled": [
+            {
+              "i": 3,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "i": 5,
+              "kind": "junk"
+            },
+            {
+              "i": 8,
+              "kind": "junk"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 7,
+              "kind": "junk"
+            },
+            {
+              "i": 8,
+              "kind": "junk"
+            },
+            {
+              "i": 9,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575600,
+          "slot": 2,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 3,
+          "srcFilled": [
+            {
+              "i": 2,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "i": 4,
+              "kind": "junk"
+            },
+            {
+              "i": 7,
+              "kind": "junk"
+            },
+            {
+              "i": 11,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 6,
+              "kind": "junk"
+            },
+            {
+              "i": 7,
+              "kind": "junk"
+            },
+            {
+              "i": 8,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575600,
+          "slot": 11,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 3,
+          "srcFilled": [
+            {
+              "i": 2,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "i": 4,
+              "kind": "junk"
+            },
+            {
+              "i": 7,
+              "kind": "junk"
+            },
+            {
+              "i": 11,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 6,
+              "kind": "junk"
+            },
+            {
+              "i": 7,
+              "kind": "junk"
+            },
+            {
+              "i": 8,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575604,
+          "slot": 1,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 3,
+          "srcFilled": [
+            {
+              "i": 1,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "i": 3,
+              "kind": "junk"
+            },
+            {
+              "i": 6,
+              "kind": "junk"
+            },
+            {
+              "i": 10,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 5,
+              "kind": "junk"
+            },
+            {
+              "i": 6,
+              "kind": "junk"
+            },
+            {
+              "i": 7,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575604,
+          "slot": 10,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 3,
+          "srcFilled": [
+            {
+              "i": 1,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "i": 3,
+              "kind": "junk"
+            },
+            {
+              "i": 6,
+              "kind": "junk"
+            },
+            {
+              "i": 10,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 5,
+              "kind": "junk"
+            },
+            {
+              "i": 6,
+              "kind": "junk"
+            },
+            {
+              "i": 7,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        },
+        {
+          "base": 3575608,
+          "slot": 0,
+          "match": "addr",
+          "srcSlot": -1,
+          "srcJunk": 2,
+          "destJunk": 3,
+          "srcFilled": [
+            {
+              "i": 0,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            },
+            {
+              "i": 2,
+              "kind": "junk"
+            },
+            {
+              "i": 5,
+              "kind": "junk"
+            },
+            {
+              "i": 9,
+              "kind": "DEST",
+              "name": "ampersand bend district"
+            }
+          ],
+          "destFilled": [
+            {
+              "i": 4,
+              "kind": "junk"
+            },
+            {
+              "i": 5,
+              "kind": "junk"
+            },
+            {
+              "i": 6,
+              "kind": "junk"
+            }
+          ],
+          "recip": false
+        }
+      ]
+    },
+    "openTrial": {
+      "command": "open temporary",
+      "addr": 5523313,
+      "name": "temporary barrier",
+      "dict": [
+        "temporary",
+        "barrier",
+        "doors",
+        "door"
+      ],
+      "beforeBytes": [
+        32,
+        70,
+        17,
+        0,
+        4,
+        0,
+        0
+      ],
+      "afterBytes": [
+        32,
+        70,
+        17,
+        0,
+        36,
+        0,
+        0
+      ],
+      "bytesChanged": true,
+      "lsbBefore": [
+        "door",
+        "lockable",
+        "locked",
+        "openable",
+        "static",
+        "transparent",
+        "mark_as_thing"
+      ],
+      "lsbAfter": [
+        "door",
+        "lockable",
+        "locked",
+        "openable",
+        "static",
+        "transparent",
+        "mark_as_thing",
+        "p143_marked_visible"
+      ],
+      "look": " BARRIER).\n>open temporary\nThe temporary barrier is locked. We'd need to set the code-lock to the right number.\n \nYou can find out more if you LOOK AT THE TEMPORARY BARRIER (or shorten it to L TEMPORARY BARRIER).\n> \nMore"
+    },
+    "playableLook": " it. \n \nThis alley runs north to the open street, towards the town square. That's the way we'll want to go first.\n \nYou can find out more if you LOOK AT THE YELLOW BUILDINGS (or shorten it to L YELLOW BUILDINGS).\n> \nMore"
+  },
+  {
+    "story": "games/Alabaster.gblorb.js",
+    "errors": [],
+    "skipLog": [
+      {
+        "i": 30,
+        "action": "look"
+      },
+      {
+        "i": 31,
+        "action": "look"
+      },
+      {
+        "i": 32,
+        "action": "look"
+      },
+      {
+        "i": 33,
+        "action": "look"
+      },
+      {
+        "i": 34,
+        "action": "look"
+      },
+      {
+        "i": 35,
+        "action": "look"
+      },
+      {
+        "i": 36,
+        "action": "look"
+      },
+      {
+        "i": 37,
+        "action": "look"
+      },
+      {
+        "i": 38,
+        "action": "look"
+      },
+      {
+        "i": 39,
+        "action": "look"
+      }
+    ],
+    "identifierNameAt": [
+      1
+    ],
+    "commonHead": [
+      {
+        "i": 0,
+        "n": ""
+      },
+      {
+        "i": 1,
+        "n": "name"
+      },
+      {
+        "i": 2,
+        "n": ""
+      },
+      {
+        "i": 3,
+        "n": ""
+      },
+      {
+        "i": 4,
+        "n": "add_to_scope"
+      },
+      {
+        "i": 5,
+        "n": "article"
+      },
+      {
+        "i": 6,
+        "n": "capacity"
+      },
+      {
+        "i": 7,
+        "n": "component_child"
+      },
+      {
+        "i": 8,
+        "n": "component_parent"
+      },
+      {
+        "i": 9,
+        "n": "component_sibling"
+      },
+      {
+        "i": 10,
+        "n": "description"
+      },
+      {
+        "i": 11,
+        "n": "door_dir"
+      },
+      {
+        "i": 12,
+        "n": "door_to"
+      },
+      {
+        "i": 13,
+        "n": "found_in"
+      },
+      {
+        "i": 14,
+        "n": "initial"
+      },
+      {
+        "i": 15,
+        "n": "list_together"
+      },
+      {
+        "i": 16,
+        "n": "map_region"
+      },
+      {
+        "i": 17,
+        "n": "parse_name"
+      },
+      {
+        "i": 18,
+        "n": "plural"
+      },
+      {
+        "i": 19,
+        "n": "regional_found_in"
+      },
+      {
+        "i": 20,
+        "n": "room_index"
+      },
+      {
+        "i": 21,
+        "n": "short_name"
+      },
+      {
+        "i": 22,
+        "n": "vector"
+      },
+      {
+        "i": 23,
+        "n": "with_key"
+      },
+      {
+        "i": 24,
+        "n": "IK_0"
+      },
+      {
+        "i": 25,
+        "n": "IK_1"
+      },
+      {
+        "i": 26,
+        "n": "IK_2"
+      },
+      {
+        "i": 27,
+        "n": "IK_4"
+      },
+      {
+        "i": 28,
+        "n": "IK_5"
+      },
+      {
+        "i": 29,
+        "n": "IK_6"
+      },
+      {
+        "i": 30,
+        "n": "IK_8"
+      },
+      {
+        "i": 31,
+        "n": "IK1_link"
+      },
+      {
+        "i": 32,
+        "n": "IK2_link"
+      },
+      {
+        "i": 33,
+        "n": "IK5_link"
+      },
+      {
+        "i": 34,
+        "n": "IK6_link"
+      },
+      {
+        "i": 35,
+        "n": "IK8_link"
+      }
+    ],
+    "loc": {
+      "addr": 1294202,
+      "name": "dark woods",
+      "dict": [
+        "dark",
+        "woods"
+      ],
+      "kinds": [
+        "K1_room",
+        "K0_kind"
+      ],
+      "lsb": [
+        "visited",
+        "mark_as_room"
+      ],
+      "open": false,
+      "openable": false,
+      "container": false,
+      "parent": 0,
+      "bytes": [
+        0,
+        0,
+        32,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    "locKey": {
+      "addr": 1294202,
+      "name": "dark woods",
+      "dict": [
+        "dark",
+        "woods"
+      ],
+      "p20": 4294967295,
+      "p25": 0,
+      "p26": null,
+      "p31": 0,
+      "p334": null,
+      "p336": null,
+      "instIds": [
+        1,
+        2,
+        10,
+        15,
+        16,
+        18,
+        20,
+        21,
+        22,
+        24,
+        25,
+        31
+      ]
+    },
+    "locKids": [
+      {
+        "addr": 1294234,
+        "name": "snow white her princess girl",
+        "dict": [
+          "snow",
+          "white",
+          "her",
+          "princess",
+          "girl"
+        ],
+        "kinds": [
+          "K24_woman",
+          "K8_person",
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "animate",
+          "transparent",
+          "female",
+          "proper",
+          "mentioned",
+          "mark_as_thing"
+        ],
+        "open": false,
+        "openable": false,
+        "container": false,
+        "parent": 1294202,
+        "bytes": [
+          2,
+          0,
+          16,
+          73,
+          2,
+          0,
+          0
+        ]
+      },
+      {
+        "addr": 1294298,
+        "name": "sky stars star starlight moon moonlight sun sunlight clouds haze cloud",
+        "dict": [
+          "sky",
+          "stars",
+          "star",
+          "starlight",
+          "moon",
+          "moonlight"
+        ],
+        "kinds": [
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "scenery",
+          "static",
+          "neuter",
+          "mentioned",
+          "mark_as_thing"
+        ],
+        "open": false,
+        "openable": false,
+        "container": false,
+        "parent": 1294202,
+        "bytes": [
+          0,
+          128,
+          1,
+          66,
+          2,
+          0,
+          0
+        ]
+      },
+      {
+        "addr": 1294330,
+        "name": "roots root",
+        "dict": [
+          "roots",
+          "root"
+        ],
+        "kinds": [
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "scenery",
+          "static",
+          "neuter",
+          "pluralname",
+          "mentioned",
+          "mark_as_thing"
+        ],
+        "open": false,
+        "openable": false,
+        "container": false,
+        "parent": 1294202,
+        "bytes": [
+          0,
+          128,
+          1,
+          70,
+          2,
+          0,
+          0
+        ]
+      },
+      {
+        "addr": 1294362,
+        "name": "trees woods tree forest woods wood foliage leaves leaf branch branches shadows",
+        "dict": [
+          "trees",
+          "woods",
+          "tree",
+          "forest",
+          "woods",
+          "wood"
+        ],
+        "kinds": [
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "scenery",
+          "static",
+          "neuter",
+          "pluralname",
+          "mentioned",
+          "mark_as_thing"
+        ],
+        "open": false,
+        "openable": false,
+        "container": false,
+        "parent": 1294202,
+        "bytes": [
+          0,
+          128,
+          1,
+          70,
+          2,
+          0,
+          0
+        ]
+      },
+      {
+        "addr": 1294394,
+        "name": "undergrow bush bushes shrubbery plant plants",
+        "dict": [
+          "undergrow",
+          "bush",
+          "bushes",
+          "shrubbery",
+          "plant",
+          "plants"
+        ],
+        "kinds": [
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "scenery",
+          "static",
+          "neuter",
+          "mentioned",
+          "mark_as_thing"
+        ],
+        "open": false,
+        "openable": false,
+        "container": false,
+        "parent": 1294202,
+        "bytes": [
+          0,
+          128,
+          1,
+          66,
+          2,
+          0,
+          0
+        ]
+      },
+      {
+        "addr": 1294426,
+        "name": "aspen aspen trunk trunks",
+        "dict": [
+          "aspen",
+          "aspen",
+          "trunk",
+          "trunks"
+        ],
+        "kinds": [
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "scenery",
+          "static",
+          "neuter",
+          "mentioned",
+          "mark_as_thing"
+        ],
+        "open": false,
+        "openable": false,
+        "container": false,
+        "parent": 1294202,
+        "bytes": [
+          0,
+          128,
+          1,
+          66,
+          2,
+          0,
+          0
+        ]
+      },
+      {
+        "addr": 1294458,
+        "name": "pine pines",
+        "dict": [
+          "pine",
+          "pines"
+        ],
+        "kinds": [
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "scenery",
+          "static",
+          "neuter",
+          "mentioned",
+          "mark_as_thing"
+        ],
+        "open": false,
+        "openable": false,
+        "container": false,
+        "parent": 1294202,
+        "bytes": [
+          0,
+          128,
+          1,
+          66,
+          2,
+          0,
+          0
+        ]
+      },
+      {
+        "addr": 1294490,
+        "name": "",
+        "dict": [],
+        "kinds": [
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "scenery",
+          "static",
+          "neuter",
+          "mentioned",
+          "mark_as_thing"
+        ],
+        "open": false,
+        "openable": false,
+        "container": false,
+        "parent": 1294202,
+        "bytes": [
+          0,
+          128,
+          1,
+          66,
+          2,
+          0,
+          0
+        ]
+      },
+      {
+        "addr": 1294522,
+        "name": "corpse hart decomposi dead deer body beast stag noble",
+        "dict": [
+          "corpse",
+          "hart",
+          "decomposi",
+          "dead",
+          "deer",
+          "animal"
+        ],
+        "kinds": [
+          "K25_animal",
+          "K8_person",
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "animate",
+          "transparent",
+          "mentioned",
+          "mark_as_thing"
+        ],
+        "open": false,
+        "openable": false,
+        "container": false,
+        "parent": 1294202,
+        "bytes": [
+          2,
+          0,
+          16,
+          64,
+          2,
+          0,
+          0
+        ]
+      }
+    ],
+    "inventory": [
+      {
+        "addr": 1276762,
+        "name": "dagger knife blade hilt",
+        "dict": [
+          "dagger",
+          "knife",
+          "blade",
+          "hilt"
+        ],
+        "kinds": [
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "moved",
+          "neuter",
+          "mark_as_thing"
+        ],
+        "open": false,
+        "openable": false,
+        "container": false,
+        "parent": 1276730,
+        "bytes": [
+          0,
+          8,
+          0,
+          2,
+          2,
+          0,
+          0
+        ]
+      },
+      {
+        "addr": 1276794,
+        "name": "lantern oil battered old lamp",
+        "dict": [
+          "lantern",
+          "oil",
+          "battered",
+          "old",
+          "lamp"
+        ],
+        "kinds": [
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "light",
+          "moved",
+          "neuter",
+          "mark_as_thing"
+        ],
+        "open": false,
+        "openable": false,
+        "container": false,
+        "parent": 1276730,
+        "bytes": [
+          0,
+          9,
+          0,
+          2,
+          2,
+          0,
+          0
+        ]
+      },
+      {
+        "addr": 1276826,
+        "name": "heart-siz box ornamente wood wooden",
+        "dict": [
+          "heart-siz",
+          "box",
+          "ornamente",
+          "wood",
+          "wooden"
+        ],
+        "kinds": [
+          "K5_container",
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "container",
+          "moved",
+          "openable",
+          "neuter",
+          "mark_as_thing"
+        ],
+        "open": false,
+        "openable": true,
+        "container": true,
+        "parent": 1276730,
+        "bytes": [
+          16,
+          72,
+          0,
+          2,
+          2,
+          0,
+          0
+        ]
+      }
+    ],
+    "p25": {
+      "present": 1,
+      "uniq": 1,
+      "sample": [
+        0
+      ]
+    },
+    "p334": {
+      "present": 0,
+      "uniq": 0,
+      "sample": []
+    },
+    "dirs": [
+      {
+        "card": "north",
+        "addr": 1276346,
+        "childIndex": 0,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 6,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 15,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 279,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 301,
+            "words": [
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "card": "northeast",
+        "addr": 1276378,
+        "childIndex": 1,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 6,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 15,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 279,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 301,
+            "words": [
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "card": "northwest",
+        "addr": 1276410,
+        "childIndex": 2,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 6,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 15,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 279,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 301,
+            "words": [
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "card": "south",
+        "addr": 1276442,
+        "childIndex": 3,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 6,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 15,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 279,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 301,
+            "words": [
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "card": "southeast",
+        "addr": 1276474,
+        "childIndex": 4,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 6,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 15,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 279,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 301,
+            "words": [
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "card": "southwest",
+        "addr": 1276506,
+        "childIndex": 5,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 6,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 15,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 279,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 301,
+            "words": [
+              5
+            ]
+          }
+        ]
+      },
+      {
+        "card": "east",
+        "addr": 1276538,
+        "childIndex": 6,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 6,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 15,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 279,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 301,
+            "words": [
+              6
+            ]
+          }
+        ]
+      },
+      {
+        "card": "west",
+        "addr": 1276570,
+        "childIndex": 7,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 6,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 15,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 279,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 301,
+            "words": [
+              7
+            ]
+          }
+        ]
+      },
+      {
+        "card": "up",
+        "addr": 1276602,
+        "childIndex": 8,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 6,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 15,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 279,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 301,
+            "words": [
+              8
+            ]
+          }
+        ]
+      },
+      {
+        "card": "down",
+        "addr": 1276634,
+        "childIndex": 9,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 6,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 15,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 279,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 301,
+            "words": [
+              9
+            ]
+          }
+        ]
+      },
+      {
+        "card": "in",
+        "addr": 1276666,
+        "childIndex": 10,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 6,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 15,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 279,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 301,
+            "words": [
+              10
+            ]
+          }
+        ]
+      },
+      {
+        "card": "out",
+        "addr": 1276698,
+        "childIndex": 11,
+        "p11": null,
+        "p12": null,
+        "p20": null,
+        "p22": 0,
+        "p24": 3,
+        "p25": null,
+        "small": [
+          {
+            "id": 6,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 15,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 22,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 24,
+            "words": [
+              3
+            ]
+          },
+          {
+            "id": 279,
+            "words": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 300,
+            "words": [
+              0
+            ]
+          },
+          {
+            "id": 301,
+            "words": [
+              11
+            ]
+          }
+        ]
+      }
+    ],
+    "locIndiv": [],
+    "indivSample": [
+      {
+        "id": 256,
+        "n": "create"
+      },
+      {
+        "id": 257,
+        "n": "recreate"
+      },
+      {
+        "id": 258,
+        "n": "destroy"
+      },
+      {
+        "id": 259,
+        "n": "remaining"
+      },
+      {
+        "id": 260,
+        "n": "copy"
+      },
+      {
+        "id": 261,
+        "n": "call"
+      },
+      {
+        "id": 262,
+        "n": "print"
+      },
+      {
+        "id": 263,
+        "n": "print_to_array"
+      },
+      {
+        "id": 264,
+        "n": "p95_flagged_ready"
+      },
+      {
+        "id": 265,
+        "n": "p99_silent_thus_far"
+      },
+      {
+        "id": 266,
+        "n": "p101_flagged_topical"
+      },
+      {
+        "id": 267,
+        "n": "p103_listed"
+      },
+      {
+        "id": 268,
+        "n": "p105_exposed"
+      },
+      {
+        "id": 269,
+        "n": "p111_strong"
+      },
+      {
+        "id": 270,
+        "n": "p113_far_off"
+      },
+      {
+        "id": 271,
+        "n": "p115_covered"
+      },
+      {
+        "id": 272,
+        "n": "p117_unexamined"
+      },
+      {
+        "id": 273,
+        "n": "p119_protruding"
+      },
+      {
+        "id": 274,
+        "n": "p121_introduced"
+      },
+      {
+        "id": 275,
+        "n": "p123_unused"
+      },
+      {
+        "id": 276,
+        "n": "p125_knowing"
+      },
+      {
+        "id": 277,
+        "n": "p127_prompted"
+      },
+      {
+        "id": 278,
+        "n": "p129_dull"
+      },
+      {
+        "id": 279,
+        "n": "action_bitmap"
+      },
+      {
+        "id": 280,
+        "n": "p6_opposite"
+      },
+      {
+        "id": 281,
+        "n": "before"
+      },
+      {
+        "id": 282,
+        "n": "p15_planned_conversation"
+      },
+      {
+        "id": 283,
+        "n": "p110_mood"
+      },
+      {
+        "id": 284,
+        "n": "p13_true_name"
+      },
+      {
+        "id": 285,
+        "n": "p14_proper_scene"
+      },
+      {
+        "id": 286,
+        "n": "p16_uncertainty_refusal"
+      },
+      {
+        "id": 287,
+        "n": "p10_comment"
+      },
+      {
+        "id": 288,
+        "n": "p11_response"
+      },
+      {
+        "id": 289,
+        "n": "p12_nag"
+      },
+      {
+        "id": 290,
+        "n": "p96_flagged_unready"
+      },
+      {
+        "id": 291,
+        "n": "p97_quip_precedence"
+      },
+      {
+        "id": 292,
+        "n": "p104_unlisted"
+      },
+      {
+        "id": 293,
+        "n": "p78_summary"
+      },
+      {
+        "id": 294,
+        "n": "p65_first_delimiter"
+      },
+      {
+        "id": 295,
+        "n": "p66_second_delimiter"
+      },
+      {
+        "id": 296,
+        "n": "p67_alternate_second_delimit"
+      },
+      {
+        "id": 297,
+        "n": "p68_indefinite_name_phrase"
+      },
+      {
+        "id": 298,
+        "n": "p69_definite_name_phrase"
+      },
+      {
+        "id": 299,
+        "n": "p107_assigned_number"
+      },
+      {
+        "id": 300,
+        "n": "IK3_Link"
+      },
+      {
+        "id": 301,
+        "n": "IK_3"
+      },
+      {
+        "id": 302,
+        "n": "saved_short_name"
+      },
+      {
+        "id": 303,
+        "n": "p124_besmirched"
+      },
+      {
+        "id": 304,
+        "n": "IK34_Link"
+      },
+      {
+        "id": 305,
+        "n": "IK_34"
+      },
+      {
+        "id": 306,
+        "n": "cap_short_name"
+      },
+      {
+        "id": 307,
+        "n": "IK30_Link"
+      },
+      {
+        "id": 308,
+        "n": "IK_30"
+      },
+      {
+        "id": 309,
+        "n": "IK33_Link"
+      },
+      {
+        "id": 310,
+        "n": "IK_33"
+      },
+      {
+        "id": 311,
+        "n": "IK32_Link"
+      },
+      {
+        "id": 312,
+        "n": "IK_32"
+      },
+      {
+        "id": 313,
+        "n": "IK31_Link"
+      },
+      {
+        "id": 314,
+        "n": "IK_31"
+      },
+      {
+        "id": 315,
+        "n": "IK102_Link"
+      },
+      {
+        "id": 316,
+        "n": "IK_102"
+      },
+      {
+        "id": 317,
+        "n": "IK103_Link"
+      },
+      {
+        "id": 318,
+        "n": "IK_103"
+      },
+      {
+        "id": 319,
+        "n": "IK101_Link"
+      },
+      {
+        "id": 320,
+        "n": "IK_101"
+      },
+      {
+        "id": 321,
+        "n": "IK29_Link"
+      },
+      {
+        "id": 322,
+        "n": "IK_29"
+      },
+      {
+        "id": 323,
+        "n": "IK157_Link"
+      },
+      {
+        "id": 324,
+        "n": "IK156_Link"
+      },
+      {
+        "id": 325,
+        "n": "IK_156"
+      },
+      {
+        "id": 326,
+        "n": "IK_157"
+      },
+      {
+        "id": 327,
+        "n": "IK159_Link"
+      },
+      {
+        "id": 328,
+        "n": "IK_159"
+      },
+      {
+        "id": 329,
+        "n": "IK161_Link"
+      },
+      {
+        "id": 330,
+        "n": "IK_161"
+      },
+      {
+        "id": 331,
+        "n": "IK163_Link"
+      },
+      {
+        "id": 332,
+        "n": "IK_163"
+      },
+      {
+        "id": 333,
+        "n": "IK165_Link"
+      },
+      {
+        "id": 334,
+        "n": "IK_165"
+      },
+      {
+        "id": 335,
+        "n": "IK167_Link"
+      }
+    ],
+    "closedHere": [
+      {
+        "addr": 1276826,
+        "name": "heart-siz box ornamente wood wooden",
+        "dict": [
+          "heart-siz",
+          "box",
+          "ornamente",
+          "wood",
+          "wooden"
+        ],
+        "kinds": [
+          "K5_container",
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "container",
+          "moved",
+          "openable",
+          "neuter",
+          "mark_as_thing"
+        ],
+        "open": false,
+        "openable": true,
+        "container": true,
+        "parent": 1276730,
+        "bytes": [
+          16,
+          72,
+          0,
+          2,
+          2,
+          0,
+          0
+        ]
+      }
+    ],
+    "openableHere": [
+      {
+        "addr": 1276826,
+        "name": "heart-siz box ornamente wood wooden",
+        "dict": [
+          "heart-siz",
+          "box",
+          "ornamente",
+          "wood",
+          "wooden"
+        ],
+        "kinds": [
+          "K5_container",
+          "K2_thing",
+          "K0_kind"
+        ],
+        "lsb": [
+          "container",
+          "moved",
+          "openable",
+          "neuter",
+          "mark_as_thing"
+        ],
+        "open": false,
+        "openable": true,
+        "container": true,
+        "parent": 1276730,
+        "bytes": [
+          16,
+          72,
+          0,
+          2,
+          2,
+          0,
+          0
+        ]
+      }
+    ],
+    "moveTrials": [
+      {
+        "command": "north",
+        "locBefore": 1294202,
+        "locAfter": 1294202,
+        "changed": false,
+        "locName": "dark woods",
+        "closedHere": [
+          {
+            "addr": 1276826,
+            "name": "heart-siz box ornamente wood wooden",
+            "dict": [
+              "heart-siz",
+              "box",
+              "ornamente",
+              "wood",
+              "wooden"
+            ],
+            "kinds": [
+              "K5_container",
+              "K2_thing",
+              "K0_kind"
+            ],
+            "lsb": [
+              "container",
+              "moved",
+              "openable",
+              "neuter",
+              "mark_as_thing"
+            ],
+            "open": false,
+            "openable": true,
+            "container": true,
+            "parent": 1276730,
+            "bytes": [
+              16,
+              72,
+              0,
+              2,
+              2,
+              0,
+              0
+            ]
+          }
+        ],
+        "look": ": say that the safe haven is too far away to reach tonight? explain that you must stop here to collect the hart's heart? ask where the safe haven is?\n \n>  \nMore"
+      },
+      {
+        "command": "east",
+        "locBefore": 1294202,
+        "locAfter": 1294202,
+        "changed": false,
+        "locName": "dark woods",
+        "closedHere": [
+          {
+            "addr": 1276826,
+            "name": "heart-siz box ornamente wood wooden",
+            "dict": [
+              "heart-siz",
+              "box",
+              "ornamente",
+              "wood",
+              "wooden"
+            ],
+            "kinds": [
+              "K5_container",
+              "K2_thing",
+              "K0_kind"
+            ],
+            "lsb": [
+              "container",
+              "moved",
+              "openable",
+              "neuter",
+              "mark_as_thing"
+            ],
+            "open": false,
+            "openable": true,
+            "container": true,
+            "parent": 1276730,
+            "bytes": [
+              16,
+              72,
+              0,
+              2,
+              2,
+              0,
+              0
+            ]
+          }
+        ],
+        "look": ": say that the safe haven is too far away to reach tonight? explain that you must stop here to collect the hart's heart? ask where the safe haven is?\n \n>  \nMore"
+      },
+      {
+        "command": "south",
+        "locBefore": 1294202,
+        "locAfter": 1294202,
+        "changed": false,
+        "locName": "dark woods",
+        "closedHere": [
+          {
+            "addr": 1276826,
+            "name": "heart-siz box ornamente wood wooden",
+            "dict": [
+              "heart-siz",
+              "box",
+              "ornamente",
+              "wood",
+              "wooden"
+            ],
+            "kinds": [
+              "K5_container",
+              "K2_thing",
+              "K0_kind"
+            ],
+            "lsb": [
+              "container",
+              "moved",
+              "openable",
+              "neuter",
+              "mark_as_thing"
+            ],
+            "open": false,
+            "openable": true,
+            "container": true,
+            "parent": 1276730,
+            "bytes": [
+              16,
+              72,
+              0,
+              2,
+              2,
+              0,
+              0
+            ]
+          }
+        ],
+        "look": ": say that the safe haven is too far away to reach tonight? explain that you must stop here to collect the hart's heart? ask where the safe haven is?\n \n>  \nMore"
+      },
+      {
+        "command": "west",
+        "locBefore": 1294202,
+        "locAfter": 1294202,
+        "changed": false,
+        "locName": "dark woods",
+        "closedHere": [
+          {
+            "addr": 1276826,
+            "name": "heart-siz box ornamente wood wooden",
+            "dict": [
+              "heart-siz",
+              "box",
+              "ornamente",
+              "wood",
+              "wooden"
+            ],
+            "kinds": [
+              "K5_container",
+              "K2_thing",
+              "K0_kind"
+            ],
+            "lsb": [
+              "container",
+              "moved",
+              "openable",
+              "neuter",
+              "mark_as_thing"
+            ],
+            "open": false,
+            "openable": true,
+            "container": true,
+            "parent": 1276730,
+            "bytes": [
+              16,
+              72,
+              0,
+              2,
+              2,
+              0,
+              0
+            ]
+          }
+        ],
+        "look": ": say that the safe haven is too far away to reach tonight? explain that you must stop here to collect the hart's heart? ask where the safe haven is?\n \n>  \nMore"
+      }
+    ],
+    "hunt": null,
+    "hunt2": null,
+    "openTrial": {
+      "command": "open heart-siz",
+      "addr": 1276826,
+      "name": "heart-siz box ornamente wood wooden",
+      "dict": [
+        "heart-siz",
+        "box",
+        "ornamente",
+        "wood",
+        "wooden"
+      ],
+      "beforeBytes": [
+        16,
+        72,
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      "afterBytes": [
+        16,
+        104,
+        0,
+        66,
+        2,
+        0,
+        0
+      ],
+      "bytesChanged": true,
+      "lsbBefore": [
+        "container",
+        "moved",
+        "openable",
+        "neuter",
+        "mark_as_thing"
+      ],
+      "lsbAfter": [
+        "container",
+        "moved",
+        "open",
+        "openable",
+        "neuter",
+        "mentioned",
+        "mark_as_thing"
+      ],
+      "look": "o. It isn't as stealthy as she might have hoped.\n \nYou can say that the safe haven is too far away to reach tonight, explain that you must stop here to collect the hart's heart, or ask where the safe haven is.\n \n>  \nMore"
+    },
+    "playableLook": "to have to hunt such an animal in the darkness.\n \nYou consider explanations for your stop: say that the safe haven is too far away to reach tonight? explain that you must stop here to collect the hart's heart?\n \n>  \nMore"
+  }
+]

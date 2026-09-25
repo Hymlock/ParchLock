@@ -1,0 +1,754 @@
+[
+  {
+    "file": "CounterfeitMonkey.gblorb.js",
+    "bytes": 7907072,
+    "ramstart": 3575552,
+    "decoding": 2512191,
+    "idTableHits": 1,
+    "idTable": {
+      "tableAddr": 7686392,
+      "region": "RAM",
+      "common": {
+        "addr": 7686424,
+        "count": 41,
+        "sample": [
+          "name",
+          "add_to_scope",
+          "article",
+          "capacity",
+          "component_child",
+          "component_parent",
+          "component_sibling",
+          "description",
+          "door_dir"
+        ]
+      },
+      "indiv": {
+        "addr": 7686588,
+        "count": 536,
+        "sample": [
+          "create",
+          "recreate",
+          "destroy",
+          "remaining",
+          "copy",
+          "call",
+          "print",
+          "print_to_array",
+          "p141_recurring",
+          "p176_marked_relevant",
+          "p178_listed_plausible",
+          "p180_flagged_ready"
+        ]
+      },
+      "attrs": {
+        "addr": 7688732,
+        "count": 56,
+        "sample": [
+          "absent",
+          "animate",
+          "clothing",
+          "concealed",
+          "container",
+          "door",
+          "edible",
+          "enterable",
+          "light",
+          "lockable",
+          "locked",
+          "moved"
+        ]
+      },
+      "actions": {
+        "addr": 7688956,
+        "count": 246,
+        "sample": [
+          "Go",
+          "Take",
+          "Answer",
+          "Remove",
+          "Ask",
+          "AskFor",
+          "Tell",
+          "Wait",
+          "MistakeAction",
+          "A98_discussing",
+          "A97_discussing_it_with",
+          "Listen"
+        ]
+      },
+      "arrays": {
+        "addr": 0,
+        "count": 3295283
+      }
+    },
+    "attrNames": [
+      {
+        "bit": 0,
+        "name": "absent"
+      },
+      {
+        "bit": 1,
+        "name": "animate"
+      },
+      {
+        "bit": 2,
+        "name": "clothing"
+      },
+      {
+        "bit": 3,
+        "name": "concealed"
+      },
+      {
+        "bit": 4,
+        "name": "container"
+      },
+      {
+        "bit": 5,
+        "name": "door"
+      },
+      {
+        "bit": 6,
+        "name": "edible"
+      },
+      {
+        "bit": 7,
+        "name": "enterable"
+      },
+      {
+        "bit": 8,
+        "name": "light"
+      },
+      {
+        "bit": 9,
+        "name": "lockable"
+      },
+      {
+        "bit": 10,
+        "name": "locked"
+      },
+      {
+        "bit": 11,
+        "name": "moved"
+      },
+      {
+        "bit": 12,
+        "name": "on"
+      },
+      {
+        "bit": 13,
+        "name": "open"
+      },
+      {
+        "bit": 14,
+        "name": "openable"
+      },
+      {
+        "bit": 15,
+        "name": "scenery"
+      },
+      {
+        "bit": 16,
+        "name": "static"
+      },
+      {
+        "bit": 17,
+        "name": "supporter"
+      },
+      {
+        "bit": 18,
+        "name": "switchable"
+      },
+      {
+        "bit": 19,
+        "name": "talkable"
+      },
+      {
+        "bit": 20,
+        "name": "transparent"
+      },
+      {
+        "bit": 21,
+        "name": "visited"
+      },
+      {
+        "bit": 22,
+        "name": "worn"
+      },
+      {
+        "bit": 23,
+        "name": "male"
+      },
+      {
+        "bit": 24,
+        "name": "female"
+      },
+      {
+        "bit": 25,
+        "name": "neuter"
+      },
+      {
+        "bit": 26,
+        "name": "pluralname"
+      },
+      {
+        "bit": 27,
+        "name": "ambigpluralname"
+      },
+      {
+        "bit": 28,
+        "name": "proper"
+      },
+      {
+        "bit": 29,
+        "name": "remove_proper"
+      },
+      {
+        "bit": 30,
+        "name": "privately_named"
+      },
+      {
+        "bit": 31,
+        "name": "mentioned"
+      },
+      {
+        "bit": 32,
+        "name": "pushable"
+      },
+      {
+        "bit": 33,
+        "name": "mark_as_room"
+      },
+      {
+        "bit": 34,
+        "name": "mark_as_thing"
+      },
+      {
+        "bit": 35,
+        "name": "workflag"
+      },
+      {
+        "bit": 36,
+        "name": "workflag2"
+      },
+      {
+        "bit": 37,
+        "name": "p143_marked_visible"
+      },
+      {
+        "bit": 38,
+        "name": "p145_g_required"
+      },
+      {
+        "bit": 39,
+        "name": "p147_g_present"
+      },
+      {
+        "bit": 40,
+        "name": "p149_currently_being_process"
+      },
+      {
+        "bit": 41,
+        "name": "p155_one_time"
+      },
+      {
+        "bit": 42,
+        "name": "p157_restrictive"
+      },
+      {
+        "bit": 43,
+        "name": "p159_player_directed"
+      },
+      {
+        "bit": 44,
+        "name": "p161_beat_opened"
+      },
+      {
+        "bit": 45,
+        "name": "p170_dead_ended"
+      },
+      {
+        "bit": 46,
+        "name": "p172_shallowly_buried"
+      },
+      {
+        "bit": 47,
+        "name": "p174_upwardly_restrictive"
+      },
+      {
+        "bit": 48,
+        "name": "<unknown attribute>"
+      },
+      {
+        "bit": 49,
+        "name": "<unknown attribute>"
+      },
+      {
+        "bit": 50,
+        "name": "<unknown attribute>"
+      },
+      {
+        "bit": 51,
+        "name": "<unknown attribute>"
+      },
+      {
+        "bit": 52,
+        "name": "<unknown attribute>"
+      },
+      {
+        "bit": 53,
+        "name": "<unknown attribute>"
+      },
+      {
+        "bit": 54,
+        "name": "<unknown attribute>"
+      },
+      {
+        "bit": 55,
+        "name": "<unknown attribute>"
+      }
+    ],
+    "interestingCommon": [
+      {
+        "id": 2,
+        "name": "name"
+      },
+      {
+        "id": 5,
+        "name": "add_to_scope"
+      },
+      {
+        "id": 6,
+        "name": "article"
+      },
+      {
+        "id": 12,
+        "name": "door_dir"
+      },
+      {
+        "id": 13,
+        "name": "door_to"
+      },
+      {
+        "id": 14,
+        "name": "found_in"
+      },
+      {
+        "id": 16,
+        "name": "list_together"
+      },
+      {
+        "id": 17,
+        "name": "map_region"
+      },
+      {
+        "id": 18,
+        "name": "parse_name"
+      },
+      {
+        "id": 19,
+        "name": "plural"
+      },
+      {
+        "id": 20,
+        "name": "regional_found_in"
+      },
+      {
+        "id": 21,
+        "name": "room_index"
+      },
+      {
+        "id": 22,
+        "name": "short_name"
+      },
+      {
+        "id": 23,
+        "name": "vector"
+      },
+      {
+        "id": 25,
+        "name": "KD_Count"
+      },
+      {
+        "id": 37,
+        "name": "articles"
+      },
+      {
+        "id": 40,
+        "name": "short_name_indef"
+      }
+    ],
+    "interestingIndiv": [
+      {
+        "id": 282,
+        "name": "p215_indoors"
+      },
+      {
+        "id": 309,
+        "name": "p271_earthbound_directional"
+      },
+      {
+        "id": 332,
+        "name": "p72_in_direction"
+      },
+      {
+        "id": 333,
+        "name": "p73_out_direction"
+      },
+      {
+        "id": 334,
+        "name": "p82_local_map"
+      }
+    ],
+    "commonHead": [
+      {
+        "id": 1,
+        "name": ""
+      },
+      {
+        "id": 2,
+        "name": "name"
+      },
+      {
+        "id": 3,
+        "name": ""
+      },
+      {
+        "id": 4,
+        "name": ""
+      },
+      {
+        "id": 5,
+        "name": "add_to_scope"
+      },
+      {
+        "id": 6,
+        "name": "article"
+      },
+      {
+        "id": 7,
+        "name": "capacity"
+      },
+      {
+        "id": 8,
+        "name": "component_child"
+      },
+      {
+        "id": 9,
+        "name": "component_parent"
+      },
+      {
+        "id": 10,
+        "name": "component_sibling"
+      },
+      {
+        "id": 11,
+        "name": "description"
+      },
+      {
+        "id": 12,
+        "name": "door_dir"
+      },
+      {
+        "id": 13,
+        "name": "door_to"
+      },
+      {
+        "id": 14,
+        "name": "found_in"
+      },
+      {
+        "id": 15,
+        "name": "initial"
+      },
+      {
+        "id": 16,
+        "name": "list_together"
+      },
+      {
+        "id": 17,
+        "name": "map_region"
+      },
+      {
+        "id": 18,
+        "name": "parse_name"
+      },
+      {
+        "id": 19,
+        "name": "plural"
+      },
+      {
+        "id": 20,
+        "name": "regional_found_in"
+      },
+      {
+        "id": 21,
+        "name": "room_index"
+      },
+      {
+        "id": 22,
+        "name": "short_name"
+      },
+      {
+        "id": 23,
+        "name": "vector"
+      },
+      {
+        "id": 24,
+        "name": "with_key"
+      },
+      {
+        "id": 25,
+        "name": "KD_Count"
+      },
+      {
+        "id": 26,
+        "name": "IK1_Count"
+      },
+      {
+        "id": 27,
+        "name": "IK2_Count"
+      },
+      {
+        "id": 28,
+        "name": "IK4_Count"
+      },
+      {
+        "id": 29,
+        "name": "IK5_Count"
+      },
+      {
+        "id": 30,
+        "name": "IK6_Count"
+      },
+      {
+        "id": 31,
+        "name": "IK8_Count"
+      },
+      {
+        "id": 32,
+        "name": "IK1_link"
+      },
+      {
+        "id": 33,
+        "name": "IK2_link"
+      },
+      {
+        "id": 34,
+        "name": "IK5_link"
+      },
+      {
+        "id": 35,
+        "name": "IK6_link"
+      },
+      {
+        "id": 36,
+        "name": "IK8_link"
+      },
+      {
+        "id": 37,
+        "name": "articles"
+      },
+      {
+        "id": 38,
+        "name": "grammar"
+      },
+      {
+        "id": 39,
+        "name": "inside_description"
+      },
+      {
+        "id": 40,
+        "name": "short_name_indef"
+      }
+    ],
+    "indivHead": [
+      {
+        "id": 256,
+        "name": "create"
+      },
+      {
+        "id": 257,
+        "name": "recreate"
+      },
+      {
+        "id": 258,
+        "name": "destroy"
+      },
+      {
+        "id": 259,
+        "name": "remaining"
+      },
+      {
+        "id": 260,
+        "name": "copy"
+      },
+      {
+        "id": 261,
+        "name": "call"
+      },
+      {
+        "id": 262,
+        "name": "print"
+      },
+      {
+        "id": 263,
+        "name": "print_to_array"
+      },
+      {
+        "id": 264,
+        "name": "p141_recurring"
+      },
+      {
+        "id": 265,
+        "name": "p176_marked_relevant"
+      },
+      {
+        "id": 266,
+        "name": "p178_listed_plausible"
+      },
+      {
+        "id": 267,
+        "name": "p180_flagged_ready"
+      },
+      {
+        "id": 268,
+        "name": "p183_silent_thus_far"
+      },
+      {
+        "id": 269,
+        "name": "p185_strongly_phrased"
+      },
+      {
+        "id": 270,
+        "name": "p187_listed"
+      },
+      {
+        "id": 271,
+        "name": "p189_background_information"
+      },
+      {
+        "id": 272,
+        "name": "p190_alert"
+      },
+      {
+        "id": 273,
+        "name": "p191_motivational"
+      },
+      {
+        "id": 274,
+        "name": "p198_examined"
+      },
+      {
+        "id": 275,
+        "name": "p200_as_yet_unknown"
+      },
+      {
+        "id": 276,
+        "name": "p202_obvious"
+      },
+      {
+        "id": 277,
+        "name": "p203_staid"
+      },
+      {
+        "id": 278,
+        "name": "p205_non_checkpoint"
+      },
+      {
+        "id": 279,
+        "name": "p207_nonsecret"
+      },
+      {
+        "id": 280,
+        "name": "p209_nonsouthern"
+      },
+      {
+        "id": 281,
+        "name": "p211_near"
+      },
+      {
+        "id": 282,
+        "name": "p215_indoors"
+      },
+      {
+        "id": 283,
+        "name": "p217_fueled"
+      },
+      {
+        "id": 284,
+        "name": "p219_operational"
+      },
+      {
+        "id": 285,
+        "name": "p222_essential"
+      },
+      {
+        "id": 286,
+        "name": "p223_publicly_available"
+      },
+      {
+        "id": 287,
+        "name": "p225_horizontal"
+      },
+      {
+        "id": 288,
+        "name": "p230_posture_friendly"
+      },
+      {
+        "id": 289,
+        "name": "p234_edit_allowing"
+      },
+      {
+        "id": 290,
+        "name": "p236_noisy"
+      },
+      {
+        "id": 291,
+        "name": "p238_solid"
+      },
+      {
+        "id": 292,
+        "name": "p240_contained"
+      },
+      {
+        "id": 293,
+        "name": "p242_legal"
+      },
+      {
+        "id": 294,
+        "name": "p245_seen"
+      },
+      {
+        "id": 295,
+        "name": "p247_fake"
+      }
+    ]
+  },
+  {
+    "file": "Alabaster.gblorb.js",
+    "bytes": 1660416,
+    "ramstart": 864000,
+    "decoding": 605771,
+    "idTableHits": 0,
+    "idTable": null,
+    "attrNames": [],
+    "interestingCommon": [],
+    "interestingIndiv": [],
+    "commonHead": [],
+    "indivHead": []
+  },
+  {
+    "file": "CosmoServe.gblorb.js",
+    "bytes": 1477632,
+    "ramstart": 1030656,
+    "decoding": 740021,
+    "idTableHits": 0,
+    "idTable": null,
+    "attrNames": [],
+    "interestingCommon": [],
+    "interestingIndiv": [],
+    "commonHead": [],
+    "indivHead": []
+  }
+]

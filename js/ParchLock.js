@@ -1,0 +1,467 @@
+var ParchLock = {
+
+    GameFilename: "",
+    StoryPath: "",
+    GameId: "",
+    LoopReference: null,
+    ContentHeight: 0,
+    ContentLength: 0,
+    ScrollInit: false,
+    MapAutoHidden: false,
+    DialogWasOpen: false,
+
+    Init: () => {
+
+        Global.LoadPrefs();
+        // D117 audit fix (codex): DirectionalRadial.Init() self-invokes at
+        // DOMContentLoaded and calls ApplyEnabledState() at THAT point --
+        // which can run before Global.LoadPrefs() above has overlaid the
+        // real saved Prefs (script-load/event-timing race, not guaranteed
+        // ordering). A disabled preference could then be silently ignored
+        // until some later, unrelated refresh happened to call
+        // ApplyEnabledState() again. Re-applying it here, immediately after
+        // LoadPrefs() is guaranteed to have run, closes that race for good
+        // regardless of script/event ordering elsewhere.
+        try { if (typeof DirectionalRadial !== "undefined") DirectionalRadial.ApplyEnabledState(); } catch (e) {}
+        ProductInfo.applyDocumentIdentity();
+        ModuleLibrary.init();
+        ParchLock.SetTitle();
+        ParchLock.GameId = localStorage.getItem("PL_GameId_" + ParchLock.GameFilename) || "";
+        Message.Init();
+        Input.BindKeyboard();
+        Input.BindInputRow();
+        // Remember last story for APK/cold-start resume (no story in URL).
+        try {
+            if (ParchLock.StoryPath && ModuleLibrary.find(ParchLock.StoryPath)) {
+                localStorage.setItem(ModuleLibrary.legacy.lastStory, ParchLock.StoryPath);
+            }
+        } catch (eLS) {}
+        ParchLock.EnsureStoryOrRecover();
+
+        setTimeout(() => {
+
+            ParchLock.SetupUI();
+            if (typeof WorldModel !== "undefined") WorldModel.tick();
+		if (typeof TranslatorUI !== "undefined") TranslatorUI.tick();
+		if (typeof DarkScope !== "undefined" && typeof $ !== "undefined") { try { DarkScope.noteText($("#windowport").text()); } catch (e) {} }
+		if (typeof GraphicsDock !== "undefined") { try { GraphicsDock.detect(); } catch (e) {} }
+		if (typeof MapBeautify !== "undefined") { try { MapBeautify.tick(); } catch (e) {} } // init-payload
+            if (Global.GetUrlParameter("story")) {
+                // Clear any leftover no-story recovery from a prior bad session
+                // so a second open of the same story is not blocked.
+                try {
+                    document.body.classList.remove("no-story");
+                    var ss = document.getElementById("start-screen");
+                    if (ss) { ss.hidden = true; }
+                    // D96: the first-launch Help popup is opened synchronously by Message.Init, before this
+                    // timer; clearing app-dialog-open under it left Menu/mic/submit live behind an open dialog.
+                    if (!(typeof Message !== "undefined" && Message.IsOpen)) $("body").removeClass("radial-open app-dialog-open");
+                    else $("body").removeClass("radial-open");
+                    $("#radial-menu").removeClass("show pl-tools-list");
+                } catch (eClr) {}
+                ParchLock.Loop();
+            }
+
+        }, 100);
+
+        $(window).on("resize", function () { if (typeof WorkspaceUI !== "undefined") WorkspaceUI.UpdateGrid(); });
+
+        /*
+        var saveHash = localStorage.getItem("PL_Save_" + ParchLock.GameFilename);
+        if (saveHash) location.hash = saveHash;
+        */
+
+        /*
+        window.onerror = function(error, url, line) {
+
+            Message.Show("A wild error has appeared!", "Looks like something went wrong, here is what we know:<br><br>" + error);
+        };
+        */
+    },
+
+    Loop: () => {
+
+        clearTimeout(ParchLock.LoopReference);
+
+        if (!ParchLock.ScrollInit && $("#windowport .BufferWindow").text().length > 0) {
+
+            ParchLock.ScrollInit = true;
+            
+            // new SimpleBar($('#windowport .BufferWindow')[0]);
+        }
+
+        Input.Process();
+        ParchLock.CheckNativeDialog();
+        // D93: line vs char prompts are different Glk modes. LineInput is
+        // free-text (keyboard OK when user focuses it). CharInput is
+        // "press any key" / Y-N -- soft keyboard should stay closed; the
+        // host submit arrow completes the prompt (Input.SubmitPrompt).
+        var lineReady = $(".Input.LineInput:visible").length > 0;
+        var charReady = $(".Input.CharInput:visible").length > 0;
+        $("body").toggleClass("has-line-input", lineReady);
+        $("body").toggleClass("has-char-input", charReady);
+        try {
+            if (typeof Input !== "undefined" && Input.SyncMobilePromptFocus) {
+                Input.SyncMobilePromptFocus(lineReady, charReady);
+            }
+        } catch (eFocus) {}
+        if (lineReady && ParchLockMap.AutoOpenPending && !Message.IsOpen) { ParchLockMap.AutoOpenPending = false; ParchLockMap.Show(); }
+        ParchLock.ScrollToBottom();
+
+        // if (Global.Prefs.MapAnimation) ParchLockMap.Draw(ParchLockMap.DisplayedRoom);
+
+        var contentLength = $("#windowport .BufferWindow").text().length;
+        if (contentLength != ParchLock.ContentLength) {
+
+            ParchLock.ContentLength = contentLength;
+            Autocomplete.UpdateWords();
+            ParchLock.GetRoom();
+        }
+        Actionable.Refresh();
+        WorkspaceUI.UpdateGrid();
+        if (typeof WorldModel !== "undefined") WorldModel.tick();
+        if (typeof TranslatorUI !== "undefined" && TranslatorUI.tick) TranslatorUI.tick();
+        if (typeof UndoRestoreSync !== "undefined") UndoRestoreSync.tick();
+
+        ParchLock.LoopReference = setTimeout(ParchLock.Loop, 200);
+    },
+
+    CheckNativeDialog: () => {
+
+        var dialogOpen = $("#dialog, #dialog_screen, #dialog_frame").length > 0;
+        $("body").toggleClass("native-dialog-open", dialogOpen);
+        if (dialogOpen) $("#dialog_display").text("Preview Data").attr("title", "Preview the stored file contents");
+        if (dialogOpen && ParchLock.GameId) localStorage.setItem("PL_GameId_" + ParchLock.GameFilename, ParchLock.GameId);
+
+        if (dialogOpen && !ParchLock.DialogWasOpen) ParchLock.HandleOverlayOpened();
+        if (!dialogOpen && ParchLock.DialogWasOpen) ParchLock.HandleOverlayClosed();
+
+        ParchLock.DialogWasOpen = dialogOpen;
+    },
+
+    HandleOverlayOpened: () => {
+
+        try { if (typeof CharKeys !== "undefined") CharKeys.onOverlay(); } catch (eCk) {}
+
+        if ($("body").hasClass("map-open")) {
+
+            ParchLock.MapAutoHidden = true;
+            ParchLockMap.Hide();
+        }
+    },
+
+    HandleOverlayClosed: () => {
+
+        setTimeout(() => {
+
+            var overlayOpen = Message.IsOpen || $("#dialog, #dialog_screen, #dialog_frame").length > 0;
+            if (!overlayOpen && ParchLock.MapAutoHidden) {
+
+                ParchLock.MapAutoHidden = false;
+                ParchLockMap.Show();
+            }
+        }, 50);
+    },
+
+    SetupUI: () => {
+
+        $("#map footer").text(ProductInfo.buildLabel(BUILD));
+        $("#map #info-hide").click(ParchLock.HideInfo);
+        $("#toggle-crt").click(ParchLock.ToggleCRT);
+        $("#toggle-map-anim").click(ParchLock.ToggleMapAnim);
+        $("#toggle-show-info").click(ParchLock.ToggleShowInfo);
+        $("#toggle-map-2way").click(ParchLock.ToggleMap2Way);
+        $("#control-panel .inject").click(ParchLock.InjectButtonClicked);
+        $("#import-export").click(ParchLockQol.ShowSaveManager);
+        $("#start-modules").off("click.plModules").on("click.plModules", ModuleLibrary.openManager);
+
+        ParchLockMap.Build();
+        ParchLockMap.Load();
+        ParchLockQol.Init();
+        Actionable.Init();
+        WorkspaceUI.Init();
+        new MutationObserver(ParchLock.CheckNativeDialog).observe(document.getElementById("windowport"), { childList: true });
+    },
+
+    ToggleMapAnim: (e) => {
+
+        if (e) Global.Prefs.MapAnimation = !Global.Prefs.MapAnimation;
+
+        if (Global.Prefs.MapAnimation) 
+            $("#toggle-map-anim").addClass("on");
+        else
+            $("#toggle-map-anim").removeClass("on");
+
+        Global.SavePrefs();
+    },
+
+    ToggleShowInfo: (e) => {
+
+        if (e) Global.Prefs.ShowInfoOnStart = !Global.Prefs.ShowInfoOnStart;
+
+        if (Global.Prefs.ShowInfoOnStart) 
+            $("#toggle-show-info").addClass("on");
+        else
+            $("#toggle-show-info").removeClass("on");
+
+        Global.SavePrefs();
+    },
+
+    ToggleMap2Way: (e) => {
+
+        if (e) Global.Prefs.AssumeTwoWayConnections = !Global.Prefs.AssumeTwoWayConnections;
+
+        if (Global.Prefs.AssumeTwoWayConnections) 
+            $("#toggle-map-2way").addClass("on");
+        else
+            $("#toggle-map-2way").removeClass("on");
+
+        Global.SavePrefs();
+    },
+
+    SetTitle: () => {
+
+        var story = new URLSearchParams(window.location.search).get("story");
+        ParchLock.StoryPath = story ? ModuleLibrary.normalizePath(story) : "";
+        ParchLock.GameFilename = "";
+        if (ParchLock.StoryPath) ParchLock.GameFilename = ParchLock.StoryPath.indexOf("games/") === 0
+            ? ParchLock.StoryPath.slice(6)
+            : ParchLock.StoryPath;
+        var game = ModuleLibrary.find(ParchLock.StoryPath);
+
+        if (game) {
+            
+            $("#map h1").text(game.Title);
+
+            $("#loadingpane > div").text("Loading " + game.Title + "...");
+
+            if (game.Subtitle) $("#map h2").text(game.Subtitle);
+            if (game.Author) $("#map h3").text("By " + game.Author);
+
+            $("title").text(game.Title + " - " + ProductInfo.displayName);
+        }
+        else {
+            
+            $("#map h1").text(ProductInfo.displayName);
+        }
+    },
+
+    // play.html with no ?story= used to show Tools/Menu on a black pane
+    // (APK cold start / bad resume). Show recovery UI and optional last story.
+    EnsureStoryOrRecover: () => {
+        try {
+            var story = new URLSearchParams(window.location.search).get("story");
+            var installed = story && ModuleLibrary.find(story);
+            if (installed) {
+                document.body.classList.remove("no-story");
+                var ss = document.getElementById("start-screen");
+                if (ss) ss.hidden = true;
+                return;
+            }
+            document.body.classList.add("no-story");
+            var el = document.getElementById("start-screen");
+            if (!el) return;
+            el.hidden = false;
+            var last = "";
+            try { last = localStorage.getItem("PL_LastStory") || ""; } catch (e) {}
+            var html = "<h1>" + ProductInfo.displayName + "</h1>";
+            var lastModule = last ? ModuleLibrary.find(last) : null;
+            // codex audit (bus #786, blocker 1): these were real <a href>
+            // anchors, which Global.BindNavigationGuard unconditionally
+            // blocks (every relative-anchor click, everywhere, by design --
+            // D113). That guard's own comment already documents the
+            // established exemption: this app's two intentional whole-app
+            // exits (Choose story / Exit game in js/WorkspaceUI.js) are
+            // real <button>s doing a programmatic `location.href` assignment,
+            // never an <a> click. Continue/Choose-a-story here now follow
+            // that exact same convention instead of diverging from it or
+            // adding a second, parallel exemption mechanism to the guard.
+            if (lastModule) {
+                html += "<p>Continue " + $("<div>").text(lastModule.Title || "your last story").html() + "?</p>";
+                html += "<button id='start-continue' class='pl-primary' type='button'>Continue</button>";
+            } else {
+                html += story ? "<p>That module is no longer installed.</p>" : "<p>No story is loaded.</p>";
+            }
+            html += "<button id='start-modules' class='pl-secondary' type='button'>Manage modules</button>";
+            html += "<button id='start-choose' class='pl-secondary' type='button'>Choose a story</button>";
+            el.innerHTML = html;
+            $("#start-modules").off("click.plModules").on("click.plModules", ModuleLibrary.openManager);
+            if (lastModule) {
+                $("#start-continue").off("click.plContinue").on("click.plContinue", function () {
+                    location.href = "play.html?story=" + encodeURIComponent(lastModule.Path);
+                });
+            }
+            $("#start-choose").off("click.plChoose").on("click.plChoose", function () {
+                location.href = "index.html";
+            });
+        } catch (e) {}
+    },
+
+    // Intentionally a no-op. The timed "Story did not load" overlay false-
+    // positivized on live Anchorhead after exit/re-enter (operator). Cold
+    // start without ?story= still uses EnsureStoryOrRecover only.
+    CheckStoryLoadHealth: () => {},
+
+    ScrollToBottom: () => {
+
+        var p = $("#parchment .simplebar-content-wrapper")[0];
+
+        if (p) {
+
+            if (p.scrollHeight != ParchLock.ContentHeight) {
+
+                ParchLock.ContentHeight = p.scrollHeight;
+                $("#parchment .simplebar-content-wrapper").animate( { scrollTop: p.scrollHeight }, 0 );
+            }
+        }
+    },
+
+    GetRoom: () => {
+
+        if (!$(".Input.LineInput").is(":visible")) return;
+
+        try {
+            if (typeof WorldModel !== "undefined" && WorldModel.tick) WorldModel.tick();
+            var p = WorldModel && WorldModel.lastPayload;
+            var structural = p && p.probe && p.probe.status === "z-ram-live" && p.roomName;
+            /* D24: identity only. Room-graph entry is MapTopology.tick(payload) via TranslatorUI.tick. */
+            if (structural && typeof ParchLockMap !== "undefined") {
+                var roomName = ParchLock.CleanRoomName(p.roomName);
+                // D74: resolve through MapTopology's real-id-first identity
+                // before setting CurrentRoom, same as every other write
+                // site -- a raw cleaned name can still be a fresh,
+                // re-randomized reading for a game like wump2ka.z5.js.
+                if (roomName) {
+                    var cleanedPayload = Object.assign({}, p, { roomName: roomName });
+                    ParchLockMap.CurrentRoom = (typeof MapTopology !== "undefined" && MapTopology.resolveCurrentRoomName)
+                        ? MapTopology.resolveCurrentRoomName(cleanedPayload)
+                        : roomName;
+                }
+            }
+        } catch (e) {}
+    },
+
+    CleanRoomName: (roomName) => {
+
+        roomName = (roomName || "").replace(/\u00a0/g, " ").trim();
+        roomName = roomName.replace(/[.,;:\s]+$/g, "").trim();
+
+        if (!roomName || roomName.length < 2 || roomName.length > 80) return "";
+        if (!/[a-z0-9]/i.test(roomName)) return "";
+        if (/^[.\-_* ]+$/.test(roomName)) return "";
+        if (roomName.toLowerCase() == APPNAME.toLowerCase()) return "";
+
+        return roomName;
+    },
+
+    InjectButtonClicked: function() {
+
+        var inject = $(this).data("inject");
+        if (inject) {
+         
+            Input.Clear();
+            Input.Inject(inject, true);
+        }
+    },
+
+    ImportExport: () => {
+
+        if (!ParchLock.GameId) {
+
+            Input.Clear();
+            Input.Inject("restore", true);
+
+            $("#dialog_buttonrow #dialog_cancel").trigger("click");
+
+            ParchLock.ImportExport();
+            return;
+        }
+
+        var title = "Import\\Export";
+
+        var body = "On this screen you'll be able to grab your saved game and map data and transfer them by e-mail to be later imported on another computer, and you'll be able to import saved game and map data previously exported.";
+        body += "<h3>What would you like to do today?</h3>";
+        
+        body += "<button id='button-import' class='large-button' style='margin-right: 20px'>Import</button>";
+        body += "<button id='button-export' class='large-button'>Export</button>";
+
+        Message.Show(title, body);
+
+        $("#button-import").unbind().click(ParchLock.Import);
+        $("#button-export").unbind().click(ParchLock.Export);
+    },
+
+    Import: () => {
+
+        var title = "Import";
+
+        body = "<h3>How to Import</h3>"
+
+        body += "<ol><li>Paste the entire text you've copied in a previous export operation into the box below.</li>";
+        body += "<li>Click <span class='code'>Import</span>.</li>";
+        body += "<li>The restore game screen will automatically display.</li>";
+        body += "<li>Select your newly imported saved game, the map will also be updated.</li></ol>";
+
+        body += "<textarea id='the-box'></textarea>";
+
+        body += "<button id='button-import' class='large-button'>Import</button>";
+
+        Message.Show(title, body, true);
+
+        $("#button-import").unbind().click(ParchLock.ImportData);
+
+    },
+
+    ImportData: () => {
+
+        ParchLockQol.ImportPackageData($("#the-box").val());
+    },
+
+    Export: () => {
+
+        var title = "Export";
+
+        body = "<h3>How to Export</h3>"
+
+        body += "<ol><li>Click inside the box below to automatically select all text.</li>";
+        body += "<li>Press <span class='code'>CTRL+C</span> to copy the text to your clipboard.</li>";
+        body += "<li>Paste the text in an e-mail message or any other way you can think of to transfer text.</li>";
+        body += "<li>Click <span class='code'>Import\\Export</span> in the PC you wish to import to and follow the instructions.</li></ol>";
+
+        body += "<textarea id='the-box' onclick='this.focus();this.select()'></textarea>";
+
+        setTimeout(() => {
+
+            $("#the-box").val(ParchLock.GetSaveData());
+
+        }, 100);
+
+        Message.Show(title, body, true);
+    },
+
+    GetSaveData: () => {
+
+        var s = [];
+
+        Object.keys(localStorage).forEach(k => {
+
+            if (ParchLock.GameId && /^(dirent|content):/.test(k) && k.split(":")[2] === ParchLock.GameId) {
+
+                s.push({Key: k, Data: localStorage.getItem(k)});
+            }
+
+        });
+
+        var o = {
+
+            Story: ParchLock.GameFilename,
+            Map: ParchLockMap.Rooms,
+            Save: s
+        };
+
+        return JSON.stringify(o);
+    }
+}
+
+$(document).ready(ParchLock.Init);
+

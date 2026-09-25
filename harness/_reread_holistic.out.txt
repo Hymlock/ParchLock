@@ -1,0 +1,1114 @@
+﻿LENS { plan: 28048, uml: 14984, guide: 54803 }
+
+########## PLAN Objective @ 1592 ##########
+Objective (consolidated)
+
+Build a **turn-synchronous overlay** whose UI is driven by a **normalized world-model payload**, not by ad-hoc DOM scraping:
+
+1. Maintain a **WorldModel Translator** that always emits one `UIPayload` (with confidence / provenance).
+2. Feed that translator from **pluggable providers** (behavioral Glk/commands, Z RAM, Inform-Glulx RAM, heuristic text) - never a single fragile source.
+3. Apply a **Text-Gated Visibility Shield** so undiscovered entities are not spoiled by default.
+4. Synthesize **state-aware actions** for radials when structural data exists; keep safe generics in heuristic mode.
+5. Drive map, inventory tree, HUD, and pathfinding from the payload.
+6. **Degrade gracefully** when RAM introspection is unavailable.
+7. **Deterministic structural primary (D17):** when P2/P3 RAM data is available, map identity and actionable words MUST come from VM object IDs / dictionary bindings / in-scope children ? not from fragile prose text-mining. P1 heuristic is forever-fallback only.
+8. **Universal coverage (D22):** the same P2/P3 deterministic path MUST work for **every room/location**, **every catalog story module**, and **every supported module system** (Z3/Z5/Z8/Zblorb on Quixe; Glulx when under the same chrome; specialized modules like wump2ka/yagwad via the same play.html Translator). Alley/Anchorhead is a **fixture only**, never a product dependency or code branch. The RAM miner must be holistic for all rooms/modules/systems.
+
+
+**Non-goals**
+- General IF IDE/debugger UI.
+- Perfect spoiler-free play for every experimental Inform extension.
+- Shipping SKSE/Skyrim into Parchmap (DevKits = toolchain patterns only).
+- Covering author Glk graphics with our canvas.
+- Blocking all UI progress until RAM mining is "complete."
+
+---
+
+## 2. Repo-aligned current-state audit
+
+Verified against `C:\Users\hymlo\Downloads\Projects\Parchmap-main\Parchmap-main` on 2026-09-11.
+
+### 2.1 Runtime host (today)
+
+| Piece | Status | Notes |
+|---|---|---|
+| `lib/main.js` + `lib/zvm.js` + `lib/quixe.js` | [yes] / [!] | Legacy Parchment JS VMs. Upstream modern Parchment uses Emglken + Bocfel + Glulxe/Git + AsyncGlk + RemGlk-rs. |
+| `lib/jquery*.js`, `ie.js`, `resourcemap.js` | [yes] | jQuery shell; not a Phase-0 blocker. |
+| `play.html` / `index.html` | [yes] | Play shell + chooser; `?story=` contract. |
+| `games/` (~298 `*.js` story wrappers) + `user/` | [yes] | Catalog + uploads. Host migration must keep these loadable (or migrate wrappers). |
+| `LICENSE` | [yes] | **GPL-3.0** - any vendored terp licenses must remain compatible/noticed. |
+| `Consts.js` | [yes] | `BUILD = 33`. |
+
+### 2.2 Overlay modules (today)
+
+| Module | Role today | Data source | Disposition |
+|---|---|---|---|
+| `js/Parchmap.js` | Orchestration; ~200ms `Loop` | DOM text-length deltas | Replace turn authority; keep shell |
+| `js/Actionable.js` | Dotted nouns + radial | Regex / English lists | Dual-backend via Translator; keep UX |
+| `js/Map.js` | Automap | String room names | ID graph when structural; keep pan/zoom/notes |
+| `js/Navigator.js` | `/goto` | Name graph; randomized short path | Replace with A*/Dijkstra + step queue |
+| `js/Input.js` | Slash cmds; inject into `.Input.LineInput` | DOM | Prefer `extevent`; keep slash UX |
+| `js/Autocomplete.js` | Tab complete | Buffer harvest | Keep; seed dict when available |
+| `js/Qol.js` / `WorkspaceUI.js` | Items, maps modal, display, packages | Mixed / inventory inject | Nested tree later; keep chrome |
+| `js/Directions.
+
+########## PLAN Phase 2 CRITICAL @ 12438 ##########
+Phase 2 - Live Z RAM provider (P2) - CRITICAL PATH [ ]
+
+**This phase is the heart of deterministic actionable + mapping.** Without it, alley objects (cans/window/fence) cannot be proven from RAM.
+
+**Universal Phase 2 acceptance (D22):** not done until the live walk works in **arbitrary rooms** across the catalog matrix (not only Alley), with object-id marks + ActionSynth radials + inventory from RAM.
+
+Required deliverables (from conversion guide, folded in):
+1. Live memory capture on `play.html` ZVM path (`window.__PARCHMAP_ZVM__` / `m`+`ram`) and/or Bocfel `get_vm_ram_ptr` when Emglken is under the same chrome.
+2. `get_player_object_id` (export or Inform global fingerprint).
+3. Location cascade: `roomId = parent(player)`; room short name from props.
+4. In-scope walk: children of room + open/transparent containers + supporters (false-positive matrix).
+5. Short-name decode + **dictionary Word<->ObjectID** binding for every actionable mark.
+6. Look-ahead exits/doors from direction properties + lock/open attrs (no travel required).
+7. Translator merge: P2 **wins** over P0/P1 for roomId, exits, discoveredObjects when confidence >= structural threshold.
+8. Actionable primary = Translator structural marks only when P2 present (Phase 4 depends on this).
+
+**Gate:** Anchorhead Alley RAM-backed marks include object IDs for cans/window/fence (harness); zexplorer-style containment fixtures; heuristic fallback if live RAM missing.
+
+### Phase 3 - Text-gate + nested inventory UI [x]
+
+Discovery set; closed-opaque non-recursion; Items panel consumes tree when present.  
+**Gate:** spoiler-shield + nesting fixtures; Loop demoted.
+
+### Phase 4 - Action synthesis + unambiguous commands [~] (blocked on Phase 2 structural)
+
+Attr/relation verb matrix (I6 profile as starting ruleset); **RAM dictionary Word<->ObjectID** for every clickable word; **grammar-table verb extraction** for non-standard actions; adjective+noun unambiguous commands; invalid-action suppression from attribute bitfields; Actionable primary = Translator when structural.  
+**Gate:** fewer illegal verbs; less disambiguation on multi-key fixtures.
+
+### Phase 5 - Map object-id identity + path queue [x]
+
+ID graph; state-delta non-cardinal edges; Navigator A* + step queue + interrupt; note-key migrator.  
+**Gate:** locked-door interrupt; notes survive rename collisions.
+
+### Phase 6 - Beautify / Z-axis / Glk coexistence [~]
+
+Hybrid layout + mental-map preservation; **planarization / edge-crossing minimization / orthogonalization / label collision repulsion**; floor tabs + Z-axis; radial inside text-buffer bounds; dock map if graphics window; **responsive Glk window-tree bounding-box shielding**.  
+**Gate:** visual fixtures; graphics story does not obscure art.
+
+### Phase 7 - HUD / meta / resource heuristics [x]
+
+Grid KV mining; 0-arg verbs; global-var ticks - all labeled heuristic.  
+**Gate:** no unlabeled "engine truth" HUD.
+
+### Phase 8 - Save/undo sync + scope/light + Inform-Glulx hardening [~]
+
+Resync triggers; **terp-level @restore/@undo (Z) and restore/restorestat (Glulx) hooks** so map/discovery cannot desync; OffersLight-class checks; I7/PunyInform/I6 schema fingerprints; optional dbg.  
+**Gate:** undo coherence; dark-room scope; I7 sample.
+
+### Phase 9 - Hardening & release [~]
+
+Perf, a11y, license NOTICE, format fallbacks.  
+**Gate:** full harness green.
+
+---
+
+## 6A. Original Parchmap system update plan (in-scope)
+
+In-place upgrade packages (not clean-room rewrite). GUI baseline (BUILD 3
+
+########## PLAN Phase 4-6 @ 14082 ##########
+Phase 4 - Action synthesis + unambiguous commands [~] (blocked on Phase 2 structural)
+
+Attr/relation verb matrix (I6 profile as starting ruleset); **RAM dictionary Word<->ObjectID** for every clickable word; **grammar-table verb extraction** for non-standard actions; adjective+noun unambiguous commands; invalid-action suppression from attribute bitfields; Actionable primary = Translator when structural.  
+**Gate:** fewer illegal verbs; less disambiguation on multi-key fixtures.
+
+### Phase 5 - Map object-id identity + path queue [x]
+
+ID graph; state-delta non-cardinal edges; Navigator A* + step queue + interrupt; note-key migrator.  
+**Gate:** locked-door interrupt; notes survive rename collisions.
+
+### Phase 6 - Beautify / Z-axis / Glk coexistence [~]
+
+Hybrid layout + mental-map preservation; **planarization / edge-crossing minimization / orthogonalization / label collision repulsion**; floor tabs + Z-axis; radial inside text-buffer bounds; dock map if graphics window; **responsive Glk window-tree bounding-box shielding**.  
+**Gate:** visual fixtures; graphics story does not obscure art.
+
+### Phase 7 - HUD / meta / resource heuristics [x]
+
+Grid KV mining; 0-arg verbs; global-var ticks - all labeled heuristic.  
+**Gate:** no unlabeled "engine truth" HUD.
+
+### Phase 8 - Save/undo sync + scope/light + Inform-Glulx hardening [~]
+
+Resync triggers; **terp-level @restore/@undo (Z) and restore/restorestat (Glulx) hooks** so map/discovery cannot desync; OffersLight-class checks; I7/PunyInform/I6 schema fingerprints; optional dbg.  
+**Gate:** undo coherence; dark-room scope; I7 sample.
+
+### Phase 9 - Hardening & release [~]
+
+Perf, a11y, license NOTICE, format fallbacks.  
+**Gate:** full harness green.
+
+---
+
+## 6A. Original Parchmap system update plan (in-scope)
+
+In-place upgrade packages (not clean-room rewrite). GUI baseline (BUILD 33) constrains visual contracts.
+
+### Compatibility rules
+
+1. Ship behind `engineMode`; heuristic forever-fallback.  
+2. Do not regress README UX.  
+3. Keep `tools/*-regression.js` green; extend fixtures.  
+4. Explicit persist migrators (name keys -> ids).  
+5. Preserve radial slot / map viewport mental map across backend switches.
+
+### Module upgrade matrix
+
+| Module | Update | Phase | Signal |
+|---|---|---|---|
+| `lib/*` Quixe/ZVM | Replace with Emglken host | 1 | platform-smoke + Anchorhead/LostPig/Advent |
+| `play.html` / `index.html` | Shell outside `#windowport`; new entry | 1 | startup-menu PASS |
+| `css/Parchmap.css` | Tree/floors/dark/dock styles; keep teal language | 3-6 | visual fixtures |
+| `Parchmap.js` | Loop -> Glk sync; Translator consumer | 1,3,8 | Loop fallback-only |
+| `Input.js` | `extevent` + slash + step queue | 1,5 | no double-submit |
+| `Actionable.js` | Dual-backend via Translator | 1,4 | highlight-scope PASS |
+| `Map.js` | ID graph + beautify hooks | 5-6 | layout + map I/O PASS |
+| `Navigator.js` | A* + interrupt queue | 5 | locked-door fixture |
+| `Autocomplete.js` | Dict seed when structural | 2-4 | tab-complete useful |
+| `Qol.js` / `WorkspaceUI.js` | Nested items; drawers later | 3,7 | items UX retained |
+| `Directions.js` | Non-cardinal labels | 5 | fixture |
+| `GameList` / menus / prefs | engineMode pref; build bump | 1,9 | chooser stable |
+| `tools/` + `harness/` | HTTP helper; Translator gates | 0+ | 5/5 + new gates |
+| `games/` / `user/` | Keep loadable | 1 | stories boot |
+| PHP helpers | Optional | defer | n/a |
+
+### Packages
+
+- **O1** Host & boot (`lib`, html, Consts, boot/Input a
+
+########## PLAN 6B gaps @ 18260 ##########
+6B. Conversion-guide gap closure (folded from Full Stack Engine Level Conversion.txt)
+
+The conversion TXT is **advisory** (D1). These items were unintentionally thin, skipped, or softened in earlier drafts and are now **first-class plan requirements**:
+
+| Gap | Plan home | Acceptance |
+|---|---|---|
+| RAM Dictionary Word<->ObjectID | Phase 2 + 4 | Every `.pm-act` has `data-object-id` from dictionary/props when P2 live |
+| `get_player_object_id` + location<-parent(player) | Phase 2 | UIPayload.roomId equals parent(player) on fixtures |
+| Look-ahead exits/doors from RAM | Phase 2 + 5 | Exits list populated before travel; door lock/open from attrs |
+| @restore/@undo opcode hooks | Phase 8 | Map/discovery resync without relying only on typed command sniffing |
+| Grammar-table verb extraction | Phase 4 | Non-standard verbs appear in radials when present in grammar RAM |
+| Planarization / crossing / collision beautify | Phase 6 | Map connectors do not cross labels on >=N-room fixtures |
+| Responsive Glk window-tree shielding | Phase 6 | Overlay never covers graphics buffer; docks when needed |
+| Supporter vs opaque-container matrix | Phase 2-3 | Closed opaque not recursed; supporters always recursed |
+| Worn vs carried inventory grouping | Phase 3 | Items panel groups worn vs carried when attrs known |
+| Invalid action suppression from attrs | Phase 4 | No WEAR on non-wearable etc. when attrs known |
+
+**Explicitly NOT restoring from the guide:** RAM-correctness-first gate that blocks all UI; requiring Emglken before any play.html UX; showing WorldModel debug panels by default.
+
+
+## 6C. Universal module / room / system coverage (D22)
+
+| Layer | Must work for | Acceptance |
+|---|---|---|
+| Rooms / locations | Every reachable room in a story | `roomId` + scoped children update each turn; no Alley-only branches |
+| Story modules | Full catalog: Advent, Anchorhead, Lost Pig, z3/z5/z8/zblorb fixtures | `harness/matrix-playhtml.js` + per-story RAM smoke |
+| Specialized modules | wump2ka, yagwad, restore/yes-no prompt games | `specialCommands` + play.html chrome; no Jerry-rigged entry |
+| Module systems | Quixe/ZVM (primary P2); Emglken/Bocfel+Glulxe (P0/P3 path under same chrome) | Single `play.html` product UI; providers swap, UI does not |
+| Clicks / input | All of the above when P2/P3 live | D21 left/right + autocomplete from ActionSynth |
+
+Hard rule: **no story-specific or room-specific product code paths** except harness fixtures. **Alley is never a product dependency.** Location resolution uses RAM + status/map name scoring only.
+
+
+## 7. Systems remove / replace / keep
+
+| System | Action | Respect intent by |
+|---|---|---|
+| DOM text-length turn detection | Replace | Glk event sync |
+| Heuristic nouns as sole truth | Replace primary; keep provider | Same radials |
+| Room-name string graph | Replace when structural | Same map UX |
+| Inject `inventory` as SoT | Replace primary | Same panel, nested tree |
+| Quixe/ZVM host | Replace | Same library on modern terps |
+| Map notes/snapshots/packages | Keep | Migrate keys |
+| Slash/menus/themes | Keep | Rewire backends |
+| Screenshot regressions | Keep | Extend |
+| PHP log/upload | Defer | Not engine-critical |
+
+---
+
+## 8. Risks & mitigations
+
+| Risk | Mitigation |
+|---|---|
+| RAM-first stall | D12 Translator + P0/P1 ship first |
+| Wrong attribute map | Profiles + fixtures + fallback |
+| Guide "zero false positives" | Aspiration; measure precision/recall |
+| Emglken upgrade breaks HEAP hacks | Official
+
+########## PLAN 6C universal @ 19863 ##########
+6C. Universal module / room / system coverage (D22)
+
+| Layer | Must work for | Acceptance |
+|---|---|---|
+| Rooms / locations | Every reachable room in a story | `roomId` + scoped children update each turn; no Alley-only branches |
+| Story modules | Full catalog: Advent, Anchorhead, Lost Pig, z3/z5/z8/zblorb fixtures | `harness/matrix-playhtml.js` + per-story RAM smoke |
+| Specialized modules | wump2ka, yagwad, restore/yes-no prompt games | `specialCommands` + play.html chrome; no Jerry-rigged entry |
+| Module systems | Quixe/ZVM (primary P2); Emglken/Bocfel+Glulxe (P0/P3 path under same chrome) | Single `play.html` product UI; providers swap, UI does not |
+| Clicks / input | All of the above when P2/P3 live | D21 left/right + autocomplete from ActionSynth |
+
+Hard rule: **no story-specific or room-specific product code paths** except harness fixtures. **Alley is never a product dependency.** Location resolution uses RAM + status/map name scoring only.
+
+
+## 7. Systems remove / replace / keep
+
+| System | Action | Respect intent by |
+|---|---|---|
+| DOM text-length turn detection | Replace | Glk event sync |
+| Heuristic nouns as sole truth | Replace primary; keep provider | Same radials |
+| Room-name string graph | Replace when structural | Same map UX |
+| Inject `inventory` as SoT | Replace primary | Same panel, nested tree |
+| Quixe/ZVM host | Replace | Same library on modern terps |
+| Map notes/snapshots/packages | Keep | Migrate keys |
+| Slash/menus/themes | Keep | Rewire backends |
+| Screenshot regressions | Keep | Extend |
+| PHP log/upload | Defer | Not engine-critical |
+
+---
+
+## 8. Risks & mitigations
+
+| Risk | Mitigation |
+|---|---|
+| RAM-first stall | D12 Translator + P0/P1 ship first |
+| Wrong attribute map | Profiles + fixtures + fallback |
+| Guide "zero false positives" | Aspiration; measure precision/recall |
+| Emglken upgrade breaks HEAP hacks | Official exports only |
+| Save/undo desync | Generation-aware cache; resync hooks |
+| Scope rule drift | DM4 fixtures in Phase 8 |
+| Non-Inform QoL loss | heuristic/behavioral modes |
+| Doc/UML drift | docs-sync gate |
+| GPL license interactions | NOTICE audit Phase 9 |
+
+---
+
+## 9. Success definition
+
+**Program success (conversion "done"):**
+1. Modern host plays Inform-family Z + Glulx from catalog.  
+2. Translator always drives L3; heuristic/behavioral work without RAM.  
+3. When exports exist, Z structural provider improves map IDs / inventory / radials on fixtures.  
+4. Spoiler-shield fixtures pass.  
+5. Save/undo does not desync map/discovery.  
+6. Graphics-window coexistence.  
+7. Harness green; README UX preserved.
+
+**Interim success (shipable earlier):** Phase 1 complete with regressions green and behavioral map - even with zero RAM.
+
+---
+
+## 10. References
+
+- `Full Stack Engine Level Conversion.txt` (advisory)
+- `GUI_BASELINE.md` (BUILD 33 live PASS)
+- Parchment / Emglken / AsyncGlk / RemGlk-rs
+- Z-Machine Standards ├é┬º12; Inform 6 Guide ch.17/26/28 + Appendix B; DM4 ├é┬º19/├é┬º32
+- Glulx Inform Technical Reference
+- Emscripten memory growth docs
+- Zarf HL overlay notes; babelmap; jzip.js; zexplorer
+- Ensouled plan/UML + harness patterns; SKSEDevKit README
+
+---
+
+## 11. Decision log
+
+| ID | Decision | Status |
+|---|---|---|
+| D1 | Plan is authority; conversion TXT is advisory | [yes] |
+| D2 | TS-first for new engine code; minimal L1 C exports as needed | [yes] |
+| D3 | Inform-family Z/Glulx is the **structural RAM target**; other VMs stay heuristic/behavioral | [yes] |
+| D4 | Spoile
+
+########## PLAN Decision log D17+ @ 24486 ##########
+| D17 | When P2/P3 structural RAM is available it is **primary** for roomId, exits, and actionable object marks; P1 text-mining is degraded forever-fallback only | [yes] |
+| D18 | Actionable words bind to VM Object IDs via RAM dictionary/short-name tables (Word<->ObjectID); no orphan underlines without an id when P2 live | [yes] |
+| D19 | Player/location cascade is mandatory for P2: player object id ? parent(player)=location ? child walk for scope | [yes] |
+| D20 | Conversion-guide gaps in ?6B are in-scope; guide remains advisory where it conflicts with D8-D12/D15-D16 | [yes] |
+
+## Implementation status (live)
+
+**BUILD 46+** ? live Z-RAM scope + D21 clicks working on Alley fixture; **D22 universal matrix still required** before Phase 2 can be marked complete.
+
+### Heart requirement (must work in-game)
+- Enter Alley (Anchorhead) ? actionable marks for **cans / window / fence** come from **P2 object IDs in scope**, not from prose regex. *(regression fixture)*
+- **Any room** in Anchorhead / Lost Pig / Advent / catalog z3?z5?z8?zblorb: when P2 live, marks carry `data-object-id`; left/right-click use ActionSynth; inventory id-backed.
+- Specialized modules (wump2ka, yagwad, etc.): same play.html path; specialCommands from RemGlk/prompt scan; structural when Z RAM available, behavioral otherwise ? never a separate UI.
+- Map room identity uses **roomId** from live location resolution (parent(player) when valid, else status/map name ? `findRoomsByName` preferring instances with children).
+- Old fragile text-mining must not be the displayed truth when RAM is available.
+
+### Done (infrastructure / chrome + Alley fixture)
+- Live Z-RAM Alley fixture PASS (room 107; can/fence/window object ids; ActionSynth radials)
+- D21 left/right-click + inventory RAM commands
+
+- play-emglken.html
+- VmProbeLoader
+- RemGlkTapProvider
+- D12-D16, D17-D22 locked in this doc revision
+- play.html-only product UI; debug HUD opt-in
+- WorldModel Translator seam + provider merge + confidence
+- Navigator step-queue (no comma-inject); Reset Map control
+- Probe ABI2 story-byte `z_summary` (P2 **light**, not live scope)
+- Portable package / NOTICE / harness gates / matrix boot checks
+
+### Not done (D22 matrix + remaining gaps)
+- **D22:** prove P2 across rooms + catalog z3/z5/z8/zblorb + Lost Pig/Advent + specialized modules (not only Alley)
+- Grammar-table verb extraction (beyond attr-profile ActionSynth)
+- Terp-level @undo/@restore hooks (typed-command resync exists; opcode hooks still open)
+- Look-ahead exits polish + map identity from roomId everywhere
+- Beautify planarize + Glk shielding polish
+
+### Not done (was marked done too early ? corrected)
+- Phase 2 live Z RAM: player id, location cascade, room children, short names, dictionary Word<->ObjectID
+- Phase 4 structural Actionable primary (depends on Phase 2)
+- Look-ahead exits from direction properties
+- Grammar-table verb extraction
+- Planarization-grade beautify + full Glk window-tree shielding
+- Terp-level @restore/@undo hooks
+
+### Next (ordered)
+1. Phase 2 live ZVM memory capture on play.html + player/location/scope walk + dictionary binding
+2. Actionable/Map consume P2-only marks when structural confidence high
+3. Harness: alley RAM-backed cans/window/fence (fail if only text-mine)
+4. Look-ahead exits + Phase 4 attr/grammar radials
+5. Phase 6/8 guide-gap polish
+
+
+
+### D21 ? Click/input RAM commands (BUILD 46)
+Left-click primary / right-click radial / autocomplete seeds come from ActionSynth over RAM object attrs (inc
+
+########## PLAN Implementation status @ 25075 ##########
+Implementation status (live)
+
+**BUILD 46+** ? live Z-RAM scope + D21 clicks working on Alley fixture; **D22 universal matrix still required** before Phase 2 can be marked complete.
+
+### Heart requirement (must work in-game)
+- Enter Alley (Anchorhead) ? actionable marks for **cans / window / fence** come from **P2 object IDs in scope**, not from prose regex. *(regression fixture)*
+- **Any room** in Anchorhead / Lost Pig / Advent / catalog z3?z5?z8?zblorb: when P2 live, marks carry `data-object-id`; left/right-click use ActionSynth; inventory id-backed.
+- Specialized modules (wump2ka, yagwad, etc.): same play.html path; specialCommands from RemGlk/prompt scan; structural when Z RAM available, behavioral otherwise ? never a separate UI.
+- Map room identity uses **roomId** from live location resolution (parent(player) when valid, else status/map name ? `findRoomsByName` preferring instances with children).
+- Old fragile text-mining must not be the displayed truth when RAM is available.
+
+### Done (infrastructure / chrome + Alley fixture)
+- Live Z-RAM Alley fixture PASS (room 107; can/fence/window object ids; ActionSynth radials)
+- D21 left/right-click + inventory RAM commands
+
+- play-emglken.html
+- VmProbeLoader
+- RemGlkTapProvider
+- D12-D16, D17-D22 locked in this doc revision
+- play.html-only product UI; debug HUD opt-in
+- WorldModel Translator seam + provider merge + confidence
+- Navigator step-queue (no comma-inject); Reset Map control
+- Probe ABI2 story-byte `z_summary` (P2 **light**, not live scope)
+- Portable package / NOTICE / harness gates / matrix boot checks
+
+### Not done (D22 matrix + remaining gaps)
+- **D22:** prove P2 across rooms + catalog z3/z5/z8/zblorb + Lost Pig/Advent + specialized modules (not only Alley)
+- Grammar-table verb extraction (beyond attr-profile ActionSynth)
+- Terp-level @undo/@restore hooks (typed-command resync exists; opcode hooks still open)
+- Look-ahead exits polish + map identity from roomId everywhere
+- Beautify planarize + Glk shielding polish
+
+### Not done (was marked done too early ? corrected)
+- Phase 2 live Z RAM: player id, location cascade, room children, short names, dictionary Word<->ObjectID
+- Phase 4 structural Actionable primary (depends on Phase 2)
+- Look-ahead exits from direction properties
+- Grammar-table verb extraction
+- Planarization-grade beautify + full Glk window-tree shielding
+- Terp-level @restore/@undo hooks
+
+### Next (ordered)
+1. Phase 2 live ZVM memory capture on play.html + player/location/scope walk + dictionary binding
+2. Actionable/Map consume P2-only marks when structural confidence high
+3. Harness: alley RAM-backed cans/window/fence (fail if only text-mine)
+4. Look-ahead exits + Phase 4 attr/grammar radials
+5. Phase 6/8 guide-gap polish
+
+
+
+### D21 ? Click/input RAM commands (BUILD 46)
+Left-click primary / right-click radial / autocomplete seeds come from ActionSynth over RAM object attrs (including inventory). No prose-regex verb guessing when P2 live.
+
+
+########## UML ?22 RAM-primary @ 11627 ##########
+22. Deterministic RAM-primary contract (D17-D20)
+
+```mermaid
+flowchart TD
+  ZVM[play.html ZVM live memory m/ram]
+  ZVM --> PL[player object id]
+  PL --> LOC[roomId = parent player]
+  LOC --> KIDS[child walk + open containers + supporters]
+  KIDS --> NAMES[short_name + dictionary Word<->ObjectID]
+  LOC --> EXITS[direction props look-ahead doors]
+  NAMES --> WM[WorldModel UIPayload P2]
+  EXITS --> WM
+  WM -->|confidence wins| ACT[Actionable marks data-object-id]
+  WM -->|roomId graph| MAP[Map / Navigator]
+  P1[P1 text heuristic] -.->|only if P2 missing| WM
+```
+
+### Provider precedence (field-level)
+| Field | Winner when P2 live | Fallback |
+|---|---|---|
+| roomId / roomName | P2 parent(player) | P0 status/subheader ? P1 |
+| exits | P2 direction props + door attrs | P0 movement observe ? P1 |
+| discoveredObjects / actionable | P2 in-scope object IDs + dictionary | P1 heuristic (labeled) |
+| inventory tree | P2 child(player) worn/carried attrs | P1 inventory text |
+| verbs/radials | P2 attrs + grammar table | safe generics |
+
+### Guide gaps mapped into architecture
+- Dictionary Word<->ObjectID -> every `.pm-act[data-object-id]`
+- Look-ahead exits ? UIPayload.exits before travel
+- @restore/@undo hooks ? Phase 8 resync bus
+- Grammar table ? ActionSynth input
+- Planarization / Glk shielding ? Phase 6 MapBeautify + GraphicsDock
+
+### Explicit non-goals retained
+- Text-mining as proof of actionable correctness
+- Visible non-Parchmap hosts / debug panels by default
+- Blocking play.html UX until Emglken HEAP exports exist (ZVM live memory is an acceptable P2 path)
+
+Live ZVM RAM walk is the CRITICAL PATH for deterministic actionable marks.
+
+
+## 23. Deterministic click / input commands (D21)
+
+```mermaid
+flowchart LR
+  Mark[".pm-act data-object-id"] --> Left[Left-click]
+  Mark --> Right[Right-click]
+  Inv[Inventory button data-object-id] --> Left
+  Inv --> Right
+  Left --> AS1[ActionSynth.commandsForPayloadObjectId]
+  Right --> AS2[ActionSynth radial verbs from RAM attrs]
+  AS1 --> Submit[Actionable.Submit]
+  AS2 --> Submit
+  RAM[ZRamProvider scope+attrs] --> AS1
+  RAM --> AS2
+  AC[Autocomplete.RamCommandSeeds] --> Input[Line input suggestions]
+  AS1 --> AC
+```
+
+
+## 24. Universal coverage contract (D22)
+
+Product scope is **all rooms ? all catalog modules ? all supported module systems**, with one UI (`play.html`).
+
+```mermaid
+flowchart TB
+  subgraph Systems
+    Z3[Z3]
+    Z5[Z5]
+    Z8[Z8]
+    ZB[Zblorb]
+    GL[Glulx / Emglken]
+    SPEC[Specialized e.g. wump2ka]
+  end
+  Systems --> Play[play.html sole UI]
+  Play --> Cap[ZvmCapture / RemGlk tap]
+  Cap --> Prov[Providers P0/P1/P2/P3]
+  Prov --> WM[WorldModel Translator]
+  WM --> UI[Actionable Map Inventory Autocomplete]
+  UI --> Rule[D17 P2 wins / D21 RAM clicks / no room-specific branches]
+```
+
+| Concern | Rule |
+|---|---|
+| Room change | Every turn re-resolve location (valid parent, else status/map ? findRoomsByName with children preference) |
+| Module change | Same providers; story bytes / live RAM only differ |
+| System change | Quixe Z ? P2 ZRamProvider; Emglken Glulx ? P0/P3; never fork UI |
+| Fixture vs product | Harness fixtures (incl. Alley) prove the path; **Alley is never a product dependency**; matrix harness proves universality |
+
+Open: Glulx live P3 parity still tracks Emglken HEAP export; until then Glulx stays P0 behavioral under the same chrome.
+
+
+########## UML ?23 clicks @ 13287 ##########
+23. Deterministic click / input commands (D21)
+
+```mermaid
+flowchart LR
+  Mark[".pm-act data-object-id"] --> Left[Left-click]
+  Mark --> Right[Right-click]
+  Inv[Inventory button data-object-id] --> Left
+  Inv --> Right
+  Left --> AS1[ActionSynth.commandsForPayloadObjectId]
+  Right --> AS2[ActionSynth radial verbs from RAM attrs]
+  AS1 --> Submit[Actionable.Submit]
+  AS2 --> Submit
+  RAM[ZRamProvider scope+attrs] --> AS1
+  RAM --> AS2
+  AC[Autocomplete.RamCommandSeeds] --> Input[Line input suggestions]
+  AS1 --> AC
+```
+
+
+## 24. Universal coverage contract (D22)
+
+Product scope is **all rooms ? all catalog modules ? all supported module systems**, with one UI (`play.html`).
+
+```mermaid
+flowchart TB
+  subgraph Systems
+    Z3[Z3]
+    Z5[Z5]
+    Z8[Z8]
+    ZB[Zblorb]
+    GL[Glulx / Emglken]
+    SPEC[Specialized e.g. wump2ka]
+  end
+  Systems --> Play[play.html sole UI]
+  Play --> Cap[ZvmCapture / RemGlk tap]
+  Cap --> Prov[Providers P0/P1/P2/P3]
+  Prov --> WM[WorldModel Translator]
+  WM --> UI[Actionable Map Inventory Autocomplete]
+  UI --> Rule[D17 P2 wins / D21 RAM clicks / no room-specific branches]
+```
+
+| Concern | Rule |
+|---|---|
+| Room change | Every turn re-resolve location (valid parent, else status/map ? findRoomsByName with children preference) |
+| Module change | Same providers; story bytes / live RAM only differ |
+| System change | Quixe Z ? P2 ZRamProvider; Emglken Glulx ? P0/P3; never fork UI |
+| Fixture vs product | Harness fixtures (incl. Alley) prove the path; **Alley is never a product dependency**; matrix harness proves universality |
+
+Open: Glulx live P3 parity still tracks Emglken HEAP export; until then Glulx stays P0 behavioral under the same chrome.
+
+
+########## UML ?24 universal @ 13817 ##########
+24. Universal coverage contract (D22)
+
+Product scope is **all rooms ? all catalog modules ? all supported module systems**, with one UI (`play.html`).
+
+```mermaid
+flowchart TB
+  subgraph Systems
+    Z3[Z3]
+    Z5[Z5]
+    Z8[Z8]
+    ZB[Zblorb]
+    GL[Glulx / Emglken]
+    SPEC[Specialized e.g. wump2ka]
+  end
+  Systems --> Play[play.html sole UI]
+  Play --> Cap[ZvmCapture / RemGlk tap]
+  Cap --> Prov[Providers P0/P1/P2/P3]
+  Prov --> WM[WorldModel Translator]
+  WM --> UI[Actionable Map Inventory Autocomplete]
+  UI --> Rule[D17 P2 wins / D21 RAM clicks / no room-specific branches]
+```
+
+| Concern | Rule |
+|---|---|
+| Room change | Every turn re-resolve location (valid parent, else status/map ? findRoomsByName with children preference) |
+| Module change | Same providers; story bytes / live RAM only differ |
+| System change | Quixe Z ? P2 ZRamProvider; Emglken Glulx ? P0/P3; never fork UI |
+| Fixture vs product | Harness fixtures (incl. Alley) prove the path; **Alley is never a product dependency**; matrix harness proves universality |
+
+Open: Glulx live P3 parity still tracks Emglken HEAP export; until then Glulx stays P0 behavioral under the same chrome.
+
+
+########## UML provider map @ 8865 ##########
+15. Provider map (implemented vs target)
+
+| Provider | File | Rank | Status |
+|---|---|---|---|
+| Heuristic | `js/WorldModel.js` collectHeuristic | P1 | [yes] live on Quixe path |
+| RemGlk / GlkOte.update | `js/RemGlkTapProvider.js` | P0 | [yes] live on Emglken tapped host |
+| Glk DOM tap | `js/GlkTapProvider.js` | P0/P1 assist | [yes] |
+| Emglken stub meta | `js/EmglkenProvider.js` | meta | [yes] |
+| Story-byte Z probe | `js/VmProbeLoader.js` + `lib/pm_vm_probe.*` | P2 light | [yes] ABI2 summary only - NOT live scope |
+| Live ZVM RAM walk (D22: all rooms/modules) | target `js/ZvmCapture.js` + `js/ZRamProvider.js` + probe ABI3 | P2 full on play.html | [ ] CRITICAL PATH - player/location/children/dictionary |
+| Live Bocfel HEAP | native-hooks linked into terp | P2 full alt | [ ] optional parallel to ZVM path |
+| Inform-Glulx RAM | - | P3 | [ ] |
+
+---
+
+## 16. Probe ABI (shipped WASM)
+
+```mermaid
+flowchart LR
+  STORY[story .z5/.z8 bytes] --> LOAD[VmProbeLoader]
+  LOAD --> WASM[lib/pm_vm_probe.wasm]
+  WASM --> INFO[pm_vm_probe_info]
+  WASM --> SCAN[pm_vm_probe_scan_stub]
+  WASM --> ZSUM[pm_vm_probe_z_summary ABI2]
+  ZSUM --> WM[WorldModel structural facts]
+```
+
+Build-only: `native-hooks/build.ps1` (MSVC) and Emscripten wasm preset. Outputs copied to `lib/` for distribution.
+
+---
+
+## 17. Open questions (updated)
+
+1. When to promote Emglken from opt-in to default without regressing Quixe UX?
+2. How much object-table data is safe to show under the text-gated spoiler shield?
+3. Specialized prompt UIs (yes/no, restore, content gates): handle in RemGlk `specialCommands` before broad module-matrix testing.
+4. Live HEAP still blocked on terp export surface - keep story-byte structural probe as the shippable P2 light path.
+
+
+
+## 18. BUILD 45 chrome consumers
+
+```mermaid
+flowchart LR
+  WM[WorldModel UIPayload] --> TUI[TranslatorUI]
+  TUI --> Map[ParchmapMap EnteredRoom / MapIdentity]
+  TUI --> Act[Actionable inventory + roomNouns]
+  TUI --> Spec[specialCommands bar]
+  TUI --> HUD[labeled hudMetrics]
+  TG[TextGate] --> WM
+  AS[ActionSynth] --> Act
+  Nav[Navigator StepQueue] --> Input
+  Bridge[HostEmglkenBridge] -->|vm=emglken| WM
+```
+
+- Quixe path: heuristic + TextGate + optional probe
+- Emglken path: iframe tapped host -> bridge merges child WorldModel into parent chrome
+
+
+## 19. Emglken entry (BUILD 45)
+
+`play.html?host=emglken` / `play-emglken.html` ? top-level `parchment-single-tapped.html` (not nested iframe).
+
+
+## 20. Product rule (D15)
+
+All player UX flows through `play.html` + Quixe for catalog modules. Emglken entry points are experimental only.
+
+
+## 21. Visible UI rule (D16)
+
+Players only see Parchmap (`play.html`). Engine hosts and Translator internals are background. Debug chrome requires explicit user opt-in.
+
+
+## 22. Deterministic RAM-primary contract (D17-D20)
+
+```mermaid
+flowchart TD
+  ZVM[play.html ZVM live memory m/ram]
+  ZVM --> PL[player object id]
+  PL --> LOC[roomId = parent player]
+  LOC --> KIDS[child walk + open containers + supporters]
+  KIDS --> NAMES[short_name + dictionary Word<->ObjectID]
+  LOC --> EXITS[direction props look-ahead doors]
+  NAMES --> WM[WorldModel UIPayload P2]
+  EXITS --> WM
+  WM -->|confidence wins| ACT[Actionable marks data-object-id]
+  WM -->|roomId graph| MAP[Map / Navigator]
+  P1[P1 text heuristic] -.->|only if P2 missing| WM
+```
+
+### Provider precedence (field-level)
+| Field | Winner when P2 live | Fallback |
+|---|---|---|
+| roomId / roomName | P2 parent(player) | P0 status/subheader ? P1 |
+| exits 
+
+########## GUIDE non-cardinal @ 25284 ##########
+Non-Cardinal & Topological Graphing Engine
+To support games using numbered exits (Exit 1, Exit 2), nautical terms (Port, Starboard), or abstract portals:
+
+Command-Agnostic Edge Creation (State-Delta Protocol):
+
+Record Prev_Room_ID = parent(player_obj) before command execution.
+
+Read Current_Room_ID = parent(player_obj) after execution.
+
+IF Current_Room_ID != Prev_Room_ID:
+
+Create or update map edge: MapGraph[Prev_Room_ID][Last_Input_Command] = Current_Room_ID.
+
+Store the literal input command ("1", "x3", "swim", "port") as the link label.
+
+Force-Directed Topological Layout Renderer:
+
+Cardinal Exits (N/S/E/W/U/D): Lock to fixed grid vector offsets $[X, Y, Z]$.
+
+Non-Cardinal Exits: Switch canvas renderer to a Force-Directed Graph Layout. Calculate radial spoke angles ($\theta_i = \frac{360^\circ}{N} \cdot i$) for initial exit stubs, then allow the force-directed solver to resolve node placement smoothly without overlapping.
+
+6. Extended Combined UI Payload Schema
+The ParchmapEngine output payload emitted at the end of each turn must adhere to this structured format:
+
+JavaScript
+
+return {
+    // Room & Core Graph Identifiers
+    roomId: 142, // Unique VM RAM Memory Object ID
+    roomName: "Sitting Room",
+    
+    // Dynamic Exit Mapping
+    exits: [
+        { direction: "west", targetRoomId: 108, isDoor: false },
+        { direction: "north", targetRoomId: 149, isDoor: true, isLocked: false },
+        { direction: "x1", targetRoomId: 204, isNonCardinal: true } // Handles Wumpus/custom exits
+    ],
+    
+    // Multi-Level Nested Inventory Tree
+    inventory: [
+        {
+            id: 45,
+            name: "trenchcoat",
+            isWorn: true,
+            isContainer: true,
+            isOpen: true,
+            contents: [
+                { id: 102, name: "flashlight", isTakeable: true, actions: ["TAKE FROM TRENCHCOAT", "EXAMINE"] },
+                { id: 104, name: "old tin", isContainer: true, isOpen: false, contents: [] }
+            ]
+        },
+        {
+            id: 88,
+            name: "keyring",
+            isWorn: false,
+            isContainer: true,
+            isOpen: true,
+            contents: [
+                { id: 89, name: "house key", actions: ["EXAMINE", "USE WITH..."] }
+            ]
+        }
+    ],
+
+    // Discovered Actionable Objects (Text-Gated)
+    discoveredObjects: [
+        {
+            id: 154,
+            name: "family album",
+            parentId: 142, // On sofa in sitting room
+            actions: ["EXAMINE", "TAKE", "READ"] // Strictly synthesized from RAM attributes
+        }
+    ],
+
+    // Dynamic HUD & Special Mechanics
+    hudMetrics: [
+        { label: "Score", value: "3" },
+        { label: "Health", value: "100%" },
+        { label: "Glow Bar", value: "90%" }
+    ],
+    specialCommands: ["shownum", "explore", "boost", "nomonsters", "prepare"],
+    resourceWarnings: [
+        { metric: "Glow Bar Battery", level: "Warning", turnsRemaining: 8 }
+    ]
+};
+Addendum: Hybrid Grid-Force Solver Spec
+Add this section to your master prompt under Section 2 (Room State & Look-Ahead Mapping):
+
+#### 2.3 Hybrid Grid-Force Layout Solver (Mixed Cardinal / Non-Cardinal)
+
+To support games that mix cardinal directions with non-cardinal exits in the same graph:
+
+1. Node Clustering & Constrained Physics:
+   - Cardinal Edges: Enforce hard relative offset vectors [dx, dy, dz]. Group adjacent cardinal rooms into "Rigid Structu
+
+########## GUIDE hybrid grid-force @ 28461 ##########
+Hybrid Grid-Force Layout Solver (Mixed Cardinal / Non-Cardinal)
+
+To support games that mix cardinal directions with non-cardinal exits in the same graph:
+
+1. Node Clustering & Constrained Physics:
+   - Cardinal Edges: Enforce hard relative offset vectors [dx, dy, dz]. Group adjacent cardinal rooms into "Rigid Structural Clusters".
+   - Non-Cardinal Edges: Apply soft distance springs between nodes or clusters.
+
+2. Cluster Collision Resolution:
+   - Treat entire Cardinal Clusters as rigid bodies in the force simulation.
+   - Calculate cluster bounding boxes and apply inter-cluster repulsion forces to prevent overlapping sub-maps.
+   - Anchor non-cardinal edge lines directly to the perimeter of the respective cluster nodes.
+The map layout engine actively runs a continuous Graph Beautification Pipeline to ensure the canvas remains clean, readable, and intuitive to navigate at a glance.
+
+Instead of letting nodes scatter into a chaotic spiderweb, the layout engine enforces five core aesthetic and readability rules:
+
+Core Layout Beautification Rules
+Edge-Crossing Minimization (Planarization): The solver continuously calculates edge routes to prevent connector lines from crossing over each other or passing straight through room boxes.
+
+Orthogonal Grid Alignment: Cardinal exits (N/S/E/W) snap strictly to $90^\circ$ right angles and clean grid lines. Parallel hallways render as straight rows rather than jagged stair-steps.
+
+Label & Node Collision Prevention: Room title boxes, exit badges, and item indicators dynamically repel neighboring elements, ensuring text never overlaps or becomes obscured.
+
+Hierarchical Elevation Layering (Vertical Stacking): Exits like UP, DOWN, CLIMB, or ENTER CELLAR automatically assign nodes to distinct elevation planes or tabbed floor layers, preventing multi-story buildings from collapsing into a single flat mess.
+
+Sub-Map Clustering: Rooms inside a distinct structure (e.g., a mansion interior vs. the surrounding forest) compact into distinct visual regions, drawing clean boundary hulls around separate zones.
+
+Master Prompt Addendum: Automatic Graph Beautification
+Add this specification under Section 2 (Room State & Look-Ahead Mapping) in your master prompt:
+
+#### 2.4 Graph Layout Beautification & Optimization Heuristics
+
+The map renderer must pass all graph state through an automatic Beautification Pipeline prior to rendering:
+
+1. Planarization & Crossing Minimization:
+   - Minimize edge intersections using planar graph heuristics (e.g., Sugiyama/Barycenter method for layered layouts).
+   - Route non-cardinal edge paths around room nodes rather than directly through them.
+
+2. Orthogonalization & Grid Snapping:
+   - Force cardinal edges (N/S/E/W) to enforce strict right-angle alignment and uniform spacing (e.g., 80px stride).
+   - Align parallel rooms along shared horizontal or vertical axes.
+
+3. Elevation & Multi-Floor Layering:
+   - Separate room nodes along a visual Z-axis when traversed via 'UP', 'DOWN', 'CLIMB', or 'DESCEND'.
+   - Offer a multi-floor tabbed view or semi-transparent visual elevation offset for stacked room layers.
+
+4. Bounding Box & Label Padding:
+   - Enforce minimum collision padding (20px) around room text boxes and interactive chips.
+   - Automatically reposition node labels if an adjacent connector line intersects the label boundary.
+
+fully. Verticality (multi-story buildings, cellars, pits, attics, and towers) is tracked deterministically in
+
+########## GUIDE RAM look-ahead / exits @ 1539 ##########
+Look-Ahead Mapping
+Current Location: Query player_obj = RAM[PLAYER_ID_OFFSET] and resolve Current_Room = RAM[player_obj.parent].
+
+Path Recording: Track movement edges in a graph: MapGraph[Prev_Room][Direction] = Current_Room.
+
+Exit Inspection: Iterate through room direction properties (n_to, s_to, e_to, w_to, ne_to, nw_to, se_to, sw_to, u_to, d_to, in_to, out_to):
+
+Room ID: Draw a confirmed/stub map node.
+
+Door Object ID: Query door attributes (open, locked) and destination in RAM; render door icon.
+
+Routine Address / 0: Mark as dynamic/unmapped until traversed.
+
+3. Scope, Inventory, & Container Traversal
+Run a recursive Object Tree traversal on every turn starting at Current_Room:
+
+Tree Order: Current_Room -> child -> sibling -> sibling ...
+
+Container Recurse: If an object has child != 0 AND (supporter OR (container AND (open OR transparent))), recurse to capture nested objects.
+
+Inventory Panel: Traverse child(player_obj) separately. Group items by worn vs. carried.
+
+Dictionary Extraction: For every object in scope, extract its dictionary vocabulary words (name property array) and string pointer (short_name).
+
+4. The Text-Gated Visibility Shield (Anti-Spoiler)
+To prevent spoiling unexamined items or hidden rooms:
+
+Tokenize Output: Intercept the current turnΓÇÖs Glk main window text buffer (glk_put_string / stream).
+
+Match Vocabulary: Cross-reference the objectΓÇÖs RAM dictionary words against the tokenized output text.
+
+Visibility State:
+
+Objects in RAM scope are UNSEEN by default.
+
+If a vocabulary word for Object_X appears in the printed text (or if Object_X is in player inventory), transition its status to DISCOVERED.
+
+Only DISCOVERED objects and rooms are sent to the UI.
+
+5. Deterministic Verb & Action Synthesis (Radial / Context UI)
+Derive valid interactions directly from RAM attribute bitfields for all DISCOVERED objects:
+
+Attribute Mapping:
+
+takeable AND parent != player $\rightarrow$ TAKE <OBJ>
+
+worn $\rightarrow$ REMOVE <OBJ> | takeable AND parent == player AND wearable $\rightarrow$ WEAR <OBJ>
+
+container/openable AND !open $\rightarrow$ OPEN <OBJ> | open $\rightarrow$ CLOSE <OBJ>
+
+lockable AND locked AND player holds key $\rightarrow$ UNLOCK <OBJ> WITH <KEY>
+
+animate (NPC) $\rightarrow$ TALK TO <NPC>, EXAMINE <NPC>, ASK <NPC> ABOUT <TOPIC>
+
+switchable AND !on $\rightarrow$ TURN ON <OBJ>
+
+Topic Mining: Match printed text nouns against global dictionary words to populate a "Known Topics" palette for NPC interactions.
+
+6. Advanced Engine Integration
+Auto-Navigation (/goto): Run A* or Dijkstra across MapGraph. Compute shortest path between Current_Room and target node, then inject movement commands (n, e, enter door, etc.) into Parchment's input buffer.
+
+Environmental Warnings: Query light attribute on Current_Room and objects in player inventory. If Current_Room lacks light and no carried item has light, trigger a "Darkness / Hazard Warning" in the UI.
+
+State / Turn Sync: Pair every map node visit with turn_number. Clicking a historical room node enables calculate-and-issue $N$ UNDO commands to rewind state accurately.
+
+EXPECTED MODULE SKELETON
+Deliver a modular JavaScript class (parchmap-engine.js) that hooks into Parchment's execution loop:
+
+
+class ParchmapEngine {
+    constructor(parchmentVM, glkDriver) {
+        this.vm = parchmentVM;         // Access to ZVM or Git/Glulxe RAM
+        this.glk = glkDriver;           // Access to Glk output streams
+        t
+
+########## GUIDE Word ObjectID / actionable @ 689 ##########
+Action Synthesis ] ΓöÇΓöÇ> [ UI Overlay Emission ]
+(Raw Object Tree &       (Matches Scope vs.        (Derives Verbs &         (Updates Map, Radial Menu,
+ Memory Offsets)          Glk Output Tokens)        Valid Command Pairs)     Inventory & Route Graph)
+
+TECHNICAL SPECIFICATIONS
+1. Dual-VM Memory Inspection (Z-Machine & Glulx)
+Detect the active VM type at initialization:
+
+Z-Machine (zvm - Z3, Z5, Z8, ZBlorb):
+
+Read 16-bit memory addresses, 8-bit attribute bitfields, and Inform object tables starting at OBJECT_TABLE header offset.
+
+Extract dictionary word tokens from the Z-Machine dictionary header.
+
+Glulx (git / glulxe - ULX, GBlorb):
+
+Read 32-bit RAM addresses, 32-bit object record structures, and RAM layout tables.
+
+Decode Glulx string objects (compressed/uncompressed) and Glulx dictionary structures.
+
+2. Room State & Look-Ahead Mapping
+Current Location: Query player_obj = RAM[PLAYER_ID_OFFSET] and resolve Current_Room = RAM[player_obj.parent].
+
+Path Recording: Track movement edges in a graph: MapGraph[Prev_Room][Direction] = Current_Room.
+
+Exit Inspection: Iterate through room direction properties (n_to, s_to, e_to, w_to, ne_to, nw_to, se_to, sw_to, u_to, d_to, in_to, out_to):
+
+Room ID: Draw a confirmed/stub map node.
+
+Door Object ID: Query door attributes (open, locked) and destination in RAM; render door icon.
+
+Routine Address / 0: Mark as dynamic/unmapped until traversed.
+
+3. Scope, Inventory, & Container Traversal
+Run a recursive Object Tree traversal on every turn starting at Current_Room:
+
+Tree Order: Current_Room -> child -> sibling -> sibling ...
+
+Container Recurse: If an object has child != 0 AND (supporter OR (container AND (open OR transparent))), recurse to capture nested objects.
+
+Inventory Panel: Traverse child(player_obj) separately. Group items by worn vs. carried.
+
+Dictionary Extraction: For every object in scope, extract its dictionary vocabulary words (name property array) and string pointer (short_name).
+
+4. The Text-Gated Visibility Shield (Anti-Spoiler)
+To prevent spoiling unexamined items or hidden rooms:
+
+Tokenize Output: Intercept the current turnΓÇÖs Glk main window text buffer (glk_put_string / stream).
+
+Match Vocabulary: Cross-reference the objectΓÇÖs RAM dictionary words against the tokenized output text.
+
+Visibility State:
+
+Objects in RAM scope are UNSEEN by default.
+
+If a vocabulary word for Object_X appears in the printed text (or if Object_X is in player inventory), transition its status to DISCOVERED.
+
+Only DISCOVERED objects and rooms are sent to the UI.
+
+5. Deterministic Verb & Action Synthesis (Radial / Context UI)
+Derive valid interactions directly from RAM attribute bitfields for all DISCOVERED objects:
+
+Attribute Mapping:
+
+takeable AND parent != player $\rightarrow$ TAKE <OBJ>
+
+worn $\rightarrow$ REMOVE <OBJ> | takeable AND parent == player AND wearable $\rightarrow$ WEAR <OBJ>
+
+container/openable AND !open $\rightarrow$ OPEN <OBJ> | open $\rightarrow$ CLOSE <OBJ>
+
+lockable AND locked AND player holds key $\rightarrow$ UNLOCK <OBJ> WITH <KEY>
+
+animate (NPC) $\rightarrow$ TALK TO <NPC>, EXAMINE <NPC>, ASK <NPC> ABOUT <TOPIC>
+
+switchable AND !on $\rightarrow$ TURN ON <OBJ>
+
+Topic Mining: Match printed text nouns against global dictionary words to populate a "Known Topics" palette for NPC interactions.
+
+6. Advanced Engine Integration
+Auto-Navigation (/goto): Run A* or Dijkstra across MapGraph. Compute shortest path between Cu
+
+########## GUIDE state-delta @ 25442 ##########
+Command-Agnostic Edge Creation (State-Delta Protocol):
+
+Record Prev_Room_ID = parent(player_obj) before command execution.
+
+Read Current_Room_ID = parent(player_obj) after execution.
+
+IF Current_Room_ID != Prev_Room_ID:
+
+Create or update map edge: MapGraph[Prev_Room_ID][Last_Input_Command] = Current_Room_ID.
+
+Store the literal input command ("1", "x3", "swim", "port") as the link label.
+
+Force-Directed Topological Layout Renderer:
+
+Cardinal Exits (N/S/E/W/U/D): Lock to fixed grid vector offsets $[X, Y, Z]$.
+
+Non-Cardinal Exits: Switch canvas renderer to a Force-Directed Graph Layout. Calculate radial spoke angles ($\theta_i = \frac{360^\circ}{N} \cdot i$) for initial exit stubs, then allow the force-directed solver to resolve node placement smoothly without overlapping.
+
+6. Extended Combined UI Payload Schema
+The ParchmapEngine output payload emitted at the end of each turn must adhere to this structured format:
+
+JavaScript
+
+return {
+    // Room & Core Graph Identifiers
+    roomId: 142, // Unique VM RAM Memory Object ID
+    roomName: "Sitting Room",
+    
+    // Dynamic Exit Mapping
+    exits: [
+        { direction: "west", targetRoomId: 108, isDoor: false },
+        { direction: "north", targetRoomId: 149, isDoor: true, isLocked: false },
+        { direction: "x1", targetRoomId: 204, isNonCardinal: true } // Handles Wumpus/custom exits
+    ],
+    
+    // Multi-Level Nested Inventory Tree
+    inventory: [
+        {
+            id: 45,
+            name: "trenchcoat",
+            isWorn: true,
+            isContainer: true,
+            isOpen: true,
+            contents: [
+                { id: 102, name: "flashlight", isTakeable: true, actions: ["TAKE FROM TRENCHCOAT", "EXAMINE"] },
+                { id: 104, name: "old tin", isContainer: true, isOpen: false, contents: [] }
+            ]
+        },
+        {
+            id: 88,
+            name: "keyring",
+            isWorn: false,
+            isContainer: true,
+            isOpen: true,
+            contents: [
+                { id: 89, name: "house key", actions: ["EXAMINE", "USE WITH..."] }
+            ]
+        }
+    ],
+
+    // Discovered Actionable Objects (Text-Gated)
+    discoveredObjects: [
+        {
+            id: 154,
+            name: "family album",
+            parentId: 142, // On sofa in sitting room
+            actions: ["EXAMINE", "TAKE", "READ"] // Strictly synthesized from RAM attributes
+        }
+    ],
+
+    // Dynamic HUD & Special Mechanics
+    hudMetrics: [
+        { label: "Score", value: "3" },
+        { label: "Health", value: "100%" },
+        { label: "Glow Bar", value: "90%" }
+    ],
+    specialCommands: ["shownum", "explore", "boost", "nomonsters", "prepare"],
+    resourceWarnings: [
+        { metric: "Glow Bar Battery", level: "Warning", turnsRemaining: 8 }
+    ]
+};
+Addendum: Hybrid Grid-Force Solver Spec
+Add this section to your master prompt under Section 2 (Room State & Look-Ahead Mapping):
+
+#### 2.3 Hybrid Grid-Force Layout Solver (Mixed Cardinal / Non-Cardinal)
+
+To support games that mix cardinal directions with non-cardinal exits in the same graph:
+
+1. Node Clustering & Constrained Physics:
+   - Cardinal Edges: Enforce hard relative offset vectors [dx, dy, dz]. Group adjacent cardinal rooms into "Rigid Structural Clusters".
+   - Non-Cardinal Edges: Apply soft distance springs between nodes or clusters.
+
+2. Cluster Collision Resolution:
+   - Treat entire Cardina

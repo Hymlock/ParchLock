@@ -1,0 +1,716 @@
+﻿[
+  {
+    "file": "CounterfeitMonkey.gblorb.js",
+    "bytes": 7907072,
+    "header": {
+      "magic": "Glul",
+      "version": 196866,
+      "ramstart": 3575552,
+      "extstart": 7907072,
+      "endmem": 7907072,
+      "stacksize": 600064,
+      "startfunc": 60,
+      "decoding": 2512191,
+      "checksum": 3790778345
+    },
+    "info": {
+      "tag": "Info",
+      "layout": 65536,
+      "informVer": "6.34",
+      "glulxBack": "0.38",
+      "release": 10,
+      "serial": "210312"
+    },
+    "objectTableHits": [
+      {
+        "attrBytes": 7,
+        "size": 32,
+        "start": 5505265,
+        "count": 2494,
+        "sequential": 2494,
+        "region": "RAM"
+      }
+    ],
+    "parentedInStaticImage": 1916,
+    "childed": 190,
+    "treeOkChildParentMatch": 190,
+    "firstDumps": [
+      {
+        "addr": 5505265,
+        "objHex": "70 00 00 00 00 00 00 00 00 54 01 11 00 26 59 fb 00 55 38 b8 00 00 00 00 00 00 00 00 00 54 02 11",
+        "namePtr": 2513403,
+        "nameType": 225,
+        "nameHex": "e1 48 fd bd 09 e1 92 2f 25 e9 c1 08 e1 87 f3 6a",
+        "props": 5585080,
+        "propCount": 1,
+        "parent": 0,
+        "child": 5505553,
+        "decoded": "Class"
+      },
+      {
+        "addr": 5505297,
+        "objHex": "70 00 00 00 00 00 00 00 00 54 01 31 00 26 5a 00 00 55 38 d1 00 00 00 00 00 00 00 00 00 00 00 00",
+        "namePtr": 2513408,
+        "nameType": 225,
+        "nameHex": "e1 92 2f 25 e9 c1 08 e1 87 f3 6a 17 9a 00 e1 8b",
+        "props": 5585105,
+        "propCount": 1,
+        "parent": 0,
+        "child": 0,
+        "decoded": "Object"
+      },
+      {
+        "addr": 5505329,
+        "objHex": "70 00 00 00 00 00 00 00 00 54 01 51 00 26 5a 07 00 55 38 ea 00 00 00 00 00 00 00 00 00 00 00 00",
+        "namePtr": 2513415,
+        "nameType": 225,
+        "nameHex": "e1 87 f3 6a 17 9a 00 e1 8b 6d 5e f0 09 e1 55 fd",
+        "props": 5585130,
+        "propCount": 1,
+        "parent": 0,
+        "child": 0,
+        "decoded": "Routine"
+      },
+      {
+        "addr": 5505361,
+        "objHex": "70 00 00 00 00 00 00 00 00 54 01 71 00 26 5a 0e 00 55 39 03 00 00 00 00 00 00 00 00 00 00 00 00",
+        "namePtr": 2513422,
+        "nameType": 225,
+        "nameHex": "e1 8b 6d 5e f0 09 e1 55 fd 55 3d 02 e1 f5 62 bd",
+        "props": 5585155,
+        "propCount": 1,
+        "parent": 0,
+        "child": 0,
+        "decoded": "String"
+      },
+      {
+        "addr": 5505393,
+        "objHex": "70 08 00 00 00 00 00 00 00 54 01 91 00 26 73 bd 00 55 39 15 00 00 00 00 00 00 00 00 00 54 1a b1",
+        "namePtr": 2519997,
+        "nameType": 225,
+        "nameHex": "e1 03 6b f2 df 9b 00 e1 92 ed c9 04 e1 da 85 75",
+        "props": 5585173,
+        "propCount": 0,
+        "parent": 0,
+        "child": 5511857,
+        "decoded": "compass"
+      },
+      {
+        "addr": 5505425,
+        "objHex": "70 00 00 00 00 00 00 00 00 54 01 b1 00 26 74 e2 00 55 39 19 00 00 00 00 00 00 00 00 00 00 00 00",
+        "namePtr": 2520290,
+        "nameType": 225,
+        "nameHex": "e1 12 9e 7f 16 a0 f7 0e 2f 25 e9 c1 24 22 e1 12",
+        "props": 5585177,
+        "propCount": 0,
+        "parent": 0,
+        "child": 0,
+        "decoded": "(darkness object)"
+      }
+    ],
+    "firstNames": [
+      "Class",
+      "Object",
+      "Routine",
+      "String",
+      "compass",
+      "(darkness object)",
+      "(Inform Parser)",
+      "(Inform Library)",
+      "(property_numberspace_forcer)",
+      "VPH_Class",
+      "(ValuePropertyHolder_43)",
+      "(ValuePropertyHolder_47)",
+      "(ValuePropertyHolder_63)",
+      "(ValuePropertyHolder_80)",
+      "K0_kind",
+      "K1_room",
+      "K39_road",
+      "K44_kitchen",
+      "K56_bathroom",
+      "K60_public_restroom",
+      "K72_office",
+      "K2_thing",
+      "K6_supporter",
+      "K31_keychain",
+      "K36_rideable_vehicle",
+      "K46_furniture_counter",
+      "K49_stove",
+      "K57_toilet",
+      "K64_bed",
+      "K65_clothed_bed"
+    ],
+    "playerish": [
+      {
+        "addr": 5507409,
+        "name": "K15_player_s_holdall",
+        "parent": 5505265,
+        "child": 0
+      }
+    ],
+    "compassKids": [
+      {
+        "addr": 5511857,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5511889,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5511921,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5511953,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5511985,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5512017,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5512049,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5512081,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5512113,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5512145,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5512177,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5512209,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5544497,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5544529,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5544561,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5544593,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5544625,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5544657,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5544689,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5544721,
+        "name": "",
+        "parent": 5505393
+      }
+    ],
+    "instanceSample": [],
+    "dictHits": []
+  },
+  {
+    "file": "Alabaster.gblorb.js",
+    "bytes": 1660416,
+    "header": {
+      "magic": "Glul",
+      "version": 196865,
+      "ramstart": 864000,
+      "extstart": 1660416,
+      "endmem": 1660416,
+      "stacksize": 65536,
+      "startfunc": 60,
+      "decoding": 605771,
+      "checksum": 1082380065
+    },
+    "info": {
+      "tag": "Info",
+      "layout": 65536,
+      "informVer": "6.31",
+      "glulxBack": "0.38",
+      "release": 3,
+      "serial": "090609"
+    },
+    "objectTableHits": [
+      {
+        "attrBytes": 7,
+        "size": 32,
+        "start": 1274746,
+        "count": 684,
+        "sequential": 684,
+        "region": "RAM"
+      }
+    ],
+    "parentedInStaticImage": 479,
+    "childed": 6,
+    "treeOkChildParentMatch": 6,
+    "firstDumps": [
+      {
+        "addr": 1274746,
+        "objHex": "70 00 00 00 00 00 00 00 00 13 73 9a 00 09 42 57 00 13 c9 01 00 00 00 00 00 00 00 00 00 13 73 fa",
+        "namePtr": 606807,
+        "nameType": 225,
+        "nameHex": "e1 a4 04 65 b6 e1 0d bf df ec af b2 e1 0d 4b 5f",
+        "props": 1296641,
+        "propCount": 1,
+        "parent": 0,
+        "child": 1274874,
+        "decoded": "Class"
+      },
+      {
+        "addr": 1274778,
+        "objHex": "70 00 00 00 00 00 00 00 00 13 73 ba 00 09 42 5c 00 13 c9 1a 00 00 00 00 00 00 00 00 00 00 00 00",
+        "namePtr": 606812,
+        "nameType": 225,
+        "nameHex": "e1 0d bf df ec af b2 e1 0d 4b 5f 20 6f 01 e1 c4",
+        "props": 1296666,
+        "propCount": 1,
+        "parent": 0,
+        "child": 0,
+        "decoded": "Object"
+      },
+      {
+        "addr": 1274810,
+        "objHex": "70 00 00 00 00 00 00 00 00 13 73 da 00 09 42 63 00 13 c9 33 00 00 00 00 00 00 00 00 00 00 00 00",
+        "namePtr": 606819,
+        "nameType": 225,
+        "nameHex": "e1 0d 4b 5f 20 6f 01 e1 c4 85 20 bd 05 e1 37 df",
+        "props": 1296691,
+        "propCount": 1,
+        "parent": 0,
+        "child": 0,
+        "decoded": "Routine"
+      },
+      {
+        "addr": 1274842,
+        "objHex": "70 00 00 00 00 00 00 00 00 13 73 fa 00 09 42 6a 00 13 c9 4c 00 00 00 00 00 00 00 00 00 00 00 00",
+        "namePtr": 606826,
+        "nameType": 225,
+        "nameHex": "e1 c4 85 20 bd 05 e1 37 df b9 fa a6 1d 58 e1 44",
+        "props": 1296716,
+        "propCount": 1,
+        "parent": 0,
+        "child": 0,
+        "decoded": "String"
+      },
+      {
+        "addr": 1274874,
+        "objHex": "70 00 00 00 00 00 00 00 00 13 74 1a 00 09 45 da 00 13 c9 65 00 13 73 7a 00 13 74 da 00 00 00 00",
+        "namePtr": 607706,
+        "nameType": 225,
+        "nameHex": "e1 a4 64 ec 2a 73 83 01 ff 2a 48 b1 e1 57 c6 ae",
+        "props": 1296741,
+        "propCount": 4,
+        "parent": 1274746,
+        "child": 0,
+        "decoded": "CompassDirection"
+      },
+      {
+        "addr": 1274906,
+        "objHex": "70 08 00 00 00 00 00 00 00 13 74 3a 00 09 45 e6 00 13 c9 a1 00 00 00 00 00 00 00 00 00 13 79 ba",
+        "namePtr": 607718,
+        "nameType": 225,
+        "nameHex": "e1 57 c6 ae 32 5b e1 0d 78 4c 0b e1 31 88 e7 59",
+        "props": 1296801,
+        "propCount": 0,
+        "parent": 0,
+        "child": 1276346,
+        "decoded": "compass"
+      }
+    ],
+    "firstNames": [
+      "Class",
+      "Object",
+      "Routine",
+      "String",
+      "CompassDirection",
+      "compass",
+      "(LibraryMessages)",
+      "(darkness object)",
+      "(Inform Parser)",
+      "(Inform Library)",
+      "(property_numberspace_forcer)",
+      "K0_kind",
+      "K1_room",
+      "K2_thing",
+      "K3_direction",
+      "K4_door",
+      "K5_container",
+      "K6_supporter",
+      "K7_backdrop",
+      "K8_person",
+      "K9_region",
+      "K23_man",
+      "K24_woman",
+      "K25_animal",
+      "K26_device",
+      "K27_vehicle",
+      "K28_player_s_holdall",
+      "K29_subject",
+      "K30_quip",
+      "K31_performative_quip"
+    ],
+    "playerish": [
+      {
+        "addr": 1275578,
+        "name": "K28_player_s_holdall",
+        "parent": 1274746,
+        "child": 0
+      }
+    ],
+    "compassKids": [
+      {
+        "addr": 1276346,
+        "name": "",
+        "parent": 1274906
+      },
+      {
+        "addr": 1276378,
+        "name": "",
+        "parent": 1274906
+      },
+      {
+        "addr": 1276410,
+        "name": "",
+        "parent": 1274906
+      },
+      {
+        "addr": 1276442,
+        "name": "",
+        "parent": 1274906
+      },
+      {
+        "addr": 1276474,
+        "name": "",
+        "parent": 1274906
+      },
+      {
+        "addr": 1276506,
+        "name": "",
+        "parent": 1274906
+      },
+      {
+        "addr": 1276538,
+        "name": "",
+        "parent": 1274906
+      },
+      {
+        "addr": 1276570,
+        "name": "",
+        "parent": 1274906
+      },
+      {
+        "addr": 1276602,
+        "name": "",
+        "parent": 1274906
+      },
+      {
+        "addr": 1276634,
+        "name": "",
+        "parent": 1274906
+      },
+      {
+        "addr": 1276666,
+        "name": "",
+        "parent": 1274906
+      },
+      {
+        "addr": 1276698,
+        "name": "",
+        "parent": 1274906
+      }
+    ],
+    "instanceSample": [
+      "CompassDirection"
+    ],
+    "dictHits": [
+      {
+        "addr": 1638128,
+        "count": 1386,
+        "entrySize": 16,
+        "sample": [
+          ",",
+          ".",
+          "a",
+          "abandoned",
+          "abel",
+          "about",
+          "achieve",
+          "adam",
+          "adam-name",
+          "adjust",
+          "admit",
+          "again"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "Grooverland.gblorb.js",
+    "bytes": 2045696,
+    "header": {
+      "magic": "Glul",
+      "version": 196866,
+      "ramstart": 1323520,
+      "extstart": 2045696,
+      "endmem": 2045696,
+      "stacksize": 65536,
+      "startfunc": 60,
+      "decoding": 998489,
+      "checksum": 2436083411
+    },
+    "info": {
+      "tag": "Info",
+      "layout": 65536,
+      "informVer": "6.33",
+      "glulxBack": "0.38",
+      "release": 5,
+      "serial": "241005"
+    },
+    "objectTableHits": [
+      {
+        "attrBytes": 7,
+        "size": 32,
+        "start": 1527004,
+        "count": 534,
+        "sequential": 534,
+        "region": "RAM"
+      }
+    ],
+    "parentedInStaticImage": 300,
+    "childed": 86,
+    "treeOkChildParentMatch": 86,
+    "firstDumps": [
+      {
+        "addr": 1527004,
+        "objHex": "70 00 00 00 00 00 00 00 00 17 4c fc 00 0f 40 70 00 17 8f a3 00 00 00 00 00 00 00 00 00 17 4d fc",
+        "namePtr": 999536,
+        "nameType": 225,
+        "nameHex": "e1 ba e2 f7 08 e1 1f 9e 43 b3 ad 13 e1 72 0c f8",
+        "props": 1544099,
+        "propCount": 1,
+        "parent": 0,
+        "child": 1527292,
+        "decoded": "Class"
+      },
+      {
+        "addr": 1527036,
+        "objHex": "70 00 00 00 00 00 00 00 00 17 4d 1c 00 0f 40 75 00 17 8f bc 00 00 00 00 00 00 00 00 00 00 00 00",
+        "namePtr": 999541,
+        "nameType": 225,
+        "nameHex": "e1 1f 9e 43 b3 ad 13 e1 72 0c f8 c1 25 e1 50 7e",
+        "props": 1544124,
+        "propCount": 1,
+        "parent": 0,
+        "child": 0,
+        "decoded": "Object"
+      },
+      {
+        "addr": 1527068,
+        "objHex": "70 00 00 00 00 00 00 00 00 17 4d 3c 00 0f 40 7c 00 17 8f d5 00 00 00 00 00 00 00 00 00 00 00 00",
+        "namePtr": 999548,
+        "nameType": 225,
+        "nameHex": "e1 72 0c f8 c1 25 e1 50 7e 0f 4e 04 e1 9d 4d 74",
+        "props": 1544149,
+        "propCount": 1,
+        "parent": 0,
+        "child": 0,
+        "decoded": "Routine"
+      },
+      {
+        "addr": 1527100,
+        "objHex": "70 00 00 00 00 00 00 00 00 17 4d 5c 00 0f 40 82 00 17 8f ee 00 00 00 00 00 00 00 00 00 00 00 00",
+        "namePtr": 999554,
+        "nameType": 225,
+        "nameHex": "e1 50 7e 0f 4e 04 e1 9d 4d 74 36 08 e1 1d 23 1d",
+        "props": 1544174,
+        "propCount": 1,
+        "parent": 0,
+        "child": 0,
+        "decoded": "String"
+      },
+      {
+        "addr": 1527132,
+        "objHex": "70 08 00 00 00 00 00 00 00 17 4d 7c 00 0f 42 e5 00 17 90 00 00 00 00 00 00 00 00 00 00 17 51 bc",
+        "namePtr": 1000165,
+        "nameType": 225,
+        "nameHex": "e1 ad 89 02 bf 47 e1 72 ef 35 02 e1 e2 41 f0 42",
+        "props": 1544192,
+        "propCount": 0,
+        "parent": 0,
+        "child": 1528252,
+        "decoded": "compass"
+      },
+      {
+        "addr": 1527164,
+        "objHex": "70 00 00 00 00 00 00 00 00 17 4d 9c 00 0f 44 07 00 17 90 04 00 00 00 00 00 00 00 00 00 00 00 00",
+        "namePtr": 1000455,
+        "nameType": 225,
+        "nameHex": "e1 dd fe 7c 67 b8 ef c5 e6 d0 6c eb dd 13 e1 dd",
+        "props": 1544196,
+        "propCount": 0,
+        "parent": 0,
+        "child": 0,
+        "decoded": "(darkness object)"
+      }
+    ],
+    "firstNames": [
+      "Class",
+      "Object",
+      "Routine",
+      "String",
+      "compass",
+      "(darkness object)",
+      "(Inform Parser)",
+      "(Inform Library)",
+      "(property_numberspace_forcer)",
+      "VPH_Class",
+      "(ValuePropertyHolder_43)",
+      "(ValuePropertyHolder_47)",
+      "K0_kind",
+      "K1_room",
+      "K2_thing",
+      "K6_supporter",
+      "K17_keychain",
+      "K8_person",
+      "K10_man",
+      "K11_woman",
+      "K12_animal",
+      "K4_door",
+      "K5_container",
+      "K14_vehicle",
+      "K15_player_s_holdall",
+      "K7_backdrop",
+      "K13_device",
+      "K16_passkey",
+      "K18_regalia",
+      "K19_beverage"
+    ],
+    "playerish": [
+      {
+        "addr": 1527772,
+        "name": "K15_player_s_holdall",
+        "parent": 1527004,
+        "child": 0
+      }
+    ],
+    "compassKids": [
+      {
+        "addr": 1528252,
+        "name": "",
+        "parent": 1527132
+      },
+      {
+        "addr": 1528284,
+        "name": "",
+        "parent": 1527132
+      },
+      {
+        "addr": 1528316,
+        "name": "",
+        "parent": 1527132
+      },
+      {
+        "addr": 1528348,
+        "name": "",
+        "parent": 1527132
+      },
+      {
+        "addr": 1528380,
+        "name": "",
+        "parent": 1527132
+      },
+      {
+        "addr": 1528412,
+        "name": "",
+        "parent": 1527132
+      },
+      {
+        "addr": 1528444,
+        "name": "",
+        "parent": 1527132
+      },
+      {
+        "addr": 1528476,
+        "name": "",
+        "parent": 1527132
+      },
+      {
+        "addr": 1528508,
+        "name": "",
+        "parent": 1527132
+      },
+      {
+        "addr": 1528540,
+        "name": "",
+        "parent": 1527132
+      },
+      {
+        "addr": 1528572,
+        "name": "",
+        "parent": 1527132
+      },
+      {
+        "addr": 1528604,
+        "name": "",
+        "parent": 1527132
+      },
+      {
+        "addr": 1539580,
+        "name": "",
+        "parent": 1527132
+      },
+      {
+        "addr": 1539612,
+        "name": "",
+        "parent": 1527132
+      }
+    ],
+    "instanceSample": [],
+    "dictHits": []
+  }
+]

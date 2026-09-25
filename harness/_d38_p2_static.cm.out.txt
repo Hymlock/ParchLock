@@ -1,0 +1,256 @@
+﻿[
+  {
+    "file": "CounterfeitMonkey.gblorb.js",
+    "bytes": 7907072,
+    "header": {
+      "magic": "Glul",
+      "version": 196866,
+      "ramstart": 3575552,
+      "extstart": 7907072,
+      "endmem": 7907072,
+      "stacksize": 600064,
+      "startfunc": 60,
+      "decoding": 2512191,
+      "checksum": 3790778345
+    },
+    "info": {
+      "tag": "Info",
+      "layout": 65536,
+      "informVer": "6.34",
+      "glulxBack": "0.38",
+      "release": 10,
+      "serial": "210312"
+    },
+    "objectTableHits": [
+      {
+        "attrBytes": 7,
+        "size": 32,
+        "start": 5505265,
+        "count": 2494,
+        "sequential": 2494,
+        "region": "RAM"
+      }
+    ],
+    "parentedInStaticImage": 1916,
+    "childed": 190,
+    "treeOkChildParentMatch": 190,
+    "firstDumps": [
+      {
+        "addr": 5505265,
+        "objHex": "70 00 00 00 00 00 00 00 00 54 01 11 00 26 59 fb 00 55 38 b8 00 00 00 00 00 00 00 00 00 54 02 11",
+        "namePtr": 2513403,
+        "nameType": 225,
+        "nameHex": "e1 48 fd bd 09 e1 92 2f 25 e9 c1 08 e1 87 f3 6a",
+        "props": 5585080,
+        "propCount": 1,
+        "parent": 0,
+        "child": 5505553,
+        "decoded": "Class"
+      },
+      {
+        "addr": 5505297,
+        "objHex": "70 00 00 00 00 00 00 00 00 54 01 31 00 26 5a 00 00 55 38 d1 00 00 00 00 00 00 00 00 00 00 00 00",
+        "namePtr": 2513408,
+        "nameType": 225,
+        "nameHex": "e1 92 2f 25 e9 c1 08 e1 87 f3 6a 17 9a 00 e1 8b",
+        "props": 5585105,
+        "propCount": 1,
+        "parent": 0,
+        "child": 0,
+        "decoded": "Object"
+      },
+      {
+        "addr": 5505329,
+        "objHex": "70 00 00 00 00 00 00 00 00 54 01 51 00 26 5a 07 00 55 38 ea 00 00 00 00 00 00 00 00 00 00 00 00",
+        "namePtr": 2513415,
+        "nameType": 225,
+        "nameHex": "e1 87 f3 6a 17 9a 00 e1 8b 6d 5e f0 09 e1 55 fd",
+        "props": 5585130,
+        "propCount": 1,
+        "parent": 0,
+        "child": 0,
+        "decoded": "Routine"
+      },
+      {
+        "addr": 5505361,
+        "objHex": "70 00 00 00 00 00 00 00 00 54 01 71 00 26 5a 0e 00 55 39 03 00 00 00 00 00 00 00 00 00 00 00 00",
+        "namePtr": 2513422,
+        "nameType": 225,
+        "nameHex": "e1 8b 6d 5e f0 09 e1 55 fd 55 3d 02 e1 f5 62 bd",
+        "props": 5585155,
+        "propCount": 1,
+        "parent": 0,
+        "child": 0,
+        "decoded": "String"
+      },
+      {
+        "addr": 5505393,
+        "objHex": "70 08 00 00 00 00 00 00 00 54 01 91 00 26 73 bd 00 55 39 15 00 00 00 00 00 00 00 00 00 54 1a b1",
+        "namePtr": 2519997,
+        "nameType": 225,
+        "nameHex": "e1 03 6b f2 df 9b 00 e1 92 ed c9 04 e1 da 85 75",
+        "props": 5585173,
+        "propCount": 0,
+        "parent": 0,
+        "child": 5511857,
+        "decoded": "compass"
+      },
+      {
+        "addr": 5505425,
+        "objHex": "70 00 00 00 00 00 00 00 00 54 01 b1 00 26 74 e2 00 55 39 19 00 00 00 00 00 00 00 00 00 00 00 00",
+        "namePtr": 2520290,
+        "nameType": 225,
+        "nameHex": "e1 12 9e 7f 16 a0 f7 0e 2f 25 e9 c1 24 22 e1 12",
+        "props": 5585177,
+        "propCount": 0,
+        "parent": 0,
+        "child": 0,
+        "decoded": "(darkness object)"
+      }
+    ],
+    "firstNames": [
+      "Class",
+      "Object",
+      "Routine",
+      "String",
+      "compass",
+      "(darkness object)",
+      "(Inform Parser)",
+      "(Inform Library)",
+      "(property_numberspace_forcer)",
+      "VPH_Class",
+      "(ValuePropertyHolder_43)",
+      "(ValuePropertyHolder_47)",
+      "(ValuePropertyHolder_63)",
+      "(ValuePropertyHolder_80)",
+      "K0_kind",
+      "K1_room",
+      "K39_road",
+      "K44_kitchen",
+      "K56_bathroom",
+      "K60_public_restroom",
+      "K72_office",
+      "K2_thing",
+      "K6_supporter",
+      "K31_keychain",
+      "K36_rideable_vehicle",
+      "K46_furniture_counter",
+      "K49_stove",
+      "K57_toilet",
+      "K64_bed",
+      "K65_clothed_bed"
+    ],
+    "playerish": [
+      {
+        "addr": 5507409,
+        "name": "K15_player_s_holdall",
+        "parent": 5505265,
+        "child": 0
+      }
+    ],
+    "compassKids": [
+      {
+        "addr": 5511857,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5511889,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5511921,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5511953,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5511985,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5512017,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5512049,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5512081,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5512113,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5512145,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5512177,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5512209,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5544497,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5544529,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5544561,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5544593,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5544625,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5544657,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5544689,
+        "name": "",
+        "parent": 5505393
+      },
+      {
+        "addr": 5544721,
+        "name": "",
+        "parent": 5505393
+      }
+    ],
+    "instanceSample": [],
+    "dictHits": []
+  }
+]
