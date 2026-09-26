@@ -3586,3 +3586,89 @@ not exist (the field is `discoveredObjects`), so readings of them were of
 `undefined`; and wump2ka opens with a "Would you like to restore a saved game?"
 prompt that must be answered before any command lands, so a probe that skips it
 measures the prompt rather than the game.
+
+
+## D170 Locating the room banner: two real faults, one still open
+
+Operator: "this instance of Wumpus does not want to underline exits or items...
+we need all items and exits to reliably underline."
+
+`Actionable.Refresh` finds the room's banner in the transcript by matching its
+NAME against `ParchLockMap.CurrentRoom`. D81 recorded that this search exists
+only for "wump2ka's unstable-label case (D62)" -- so it is keyed on the one
+value D62 says is not stable. Two measured faults follow from that.
+
+### 1 The status row is merged on a phone, so the name is garbage
+
+`refineRoomDisplayName` splits the status row into columns on 3+ spaces. On a
+handset there are none to split on: the status window is a fixed-width grid of
+about 31 columns at 412px against 48 on desktop (D137), so a right-aligned
+metric lands hard against a room name that has itself been truncated to fit.
+
+Measured live at 412px on wump2ka:
+
+    payloadRoomName = "A fair-sized, pocked, watery caverHealth: 83%"
+
+One column, matching neither the generic-room-number nor the status-metric
+discard pattern, adopted whole as the room's name -- and then unable to match
+its own printed banner, for the rest of the session. A metric glued to the end
+of a column is now stripped. The name stays TRUNCATED ("caver", not "cavern")
+because the grid really did cut it off; inventing the missing letters would be
+a guess (D24/D61).
+
+This is why the report came from a handset. Desktop probes never showed it.
+
+### 2 The locator could not survive that truncation, or a stale label
+
+Two changes, both narrow:
+
+- The banner is matched against `payload.roomName` BEFORE the map's stored
+  label. The payload name is read on the same turn; the map's is a stored
+  string that D62 says can go stale. Measured: room "A fair-sized, pocked
+  cavern" against a printed banner of "A large, textured, watery room", where
+  the payload name WAS the printed banner.
+- A name match is allowed to be a prefix of the banner in either direction,
+  with at least 8 shared characters, so grid truncation matches while unrelated
+  rooms still cannot collide.
+- A banner printed AFTER the player's last command wins over a name match that
+  predates it. Measured: heading=28 against lastInput=196 in a 200-line buffer,
+  where RoomLines then covered two lines from 168 lines earlier, long scrolled
+  off screen.
+
+`harness/d170-room-banner-locator.js` pins the measured shape deterministically,
+because the live failure is not deterministic -- wump2ka generates a new cave
+every game, and six sessions reproduced it twice and six more not at all.
+
+### Still open, and NOT claimed as fixed
+
+Underlining still fails in some wumpus states after both fixes. Measured at the
+failure: names AGREE, a heading IS found (165) with lastInput 172,
+`discoveredObjects` 2 and `exits` 1 -- so there is something to mark, the
+locator found the right place, and nothing was marked. The remaining fault is
+therefore past the locator, in the marking pass itself.
+
+The codex seat audited this independently and corrected two of this seat's
+readings, both worth recording so they are not repeated: in the operator's
+failing screenshot the status line FITS the full name, so fault 1 is not that
+screenshot's cause; and the `x3 -> A vast, polished cave` overlay is MapBeautify,
+not a BufferLine, so it is not evidence of a stale transcript. Codex also named
+three cases the harness does not yet cover: restore (lastInput = -1), a swim
+reprint within the SAME roomId, and a look whose title is not a
+`.Style_subheader` at all.
+
+The last of those fits the evidence best. When an in-room step reprints a room
+without a matched banner, `roomChanged` is false (same roomId), `newHeading` is
+false, and `RoomLines` still holds connected lines -- so the refresh block is
+skipped entirely and RoomLines keeps pointing at the previous room's text.
+
+### Cross-module verification
+
+Anchorhead, LostPig, 905, Zork1 and Enchanter were run at 412px before and
+after, and the output is byte-identical in every one: same room names, same
+mark counts, same map rooms. Two PRE-EXISTING faults surfaced while doing it and
+are recorded here rather than fixed under this entry: Zork 1 underlines nothing
+at all, and Enchanter names its room after an object ("scribbled scroll").
+
+`tools/ui-regression.js` times out on this machine. Verified environmental, not
+a regression: the D168 commit, which passed earlier the same day, times out
+identically with these changes stashed and with a clean browser.

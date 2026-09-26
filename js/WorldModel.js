@@ -241,6 +241,27 @@ var WorldModel = {
             if (!columns.length) return payload.roomName;
             var genericRoomNumber = /^(Room\s*#?\s*\d+|#\d+)$/i;
             var statusMetric = /^(Score|Health|Moves?|Turns?)\s*:/i;
+
+            // D170: the column split needs 3+ spaces, and on a phone there are
+            // none to find. The status window is a fixed-width character grid
+            // about 31 columns wide at 412px against 48 on desktop (D137), so a
+            // right-aligned metric is written hard up against a room name that
+            // has itself been truncated to fit. Measured live on wump2ka at
+            // 412px: "A fair-sized, pocked, watery caverHealth: 83%" -- one
+            // column, matching neither discard pattern, adopted whole as the
+            // room's name and then unable to match its own printed banner.
+            //
+            // Stripping a metric that is glued to the end of a column recovers
+            // the name. It stays TRUNCATED ("caver", not "cavern") because the
+            // grid really did cut it off, and inventing the missing letters
+            // would be a guess (D24/D61) -- the banner matching in
+            // js/Actionable.js tolerates that truncation instead.
+            var stripGluedMetric = function (col) {
+                return col.replace(/\s*(Score|Health|Moves?|Turns?)\s*:\s*\S*\s*$/i, "").trim();
+            };
+            columns = columns.map(stripGluedMetric).filter(function (col) { return !!col; });
+            if (!columns.length) return payload.roomName;
+
             var banner = columns.find(function (col) {
                 return !genericRoomNumber.test(col) && !statusMetric.test(col);
             });

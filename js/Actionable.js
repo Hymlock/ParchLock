@@ -772,11 +772,79 @@ var Actionable = {
         var lastInput = -1;
         lines.forEach((line, index) => { if (line.querySelector(".Style_input")) lastInput = index; });
         var scope = Actionable.Scope, room = ParchLockMap.CurrentRoom;
+        // D170: match the banner against the payload's room name BEFORE the
+        // map's. `ParchLockMap.CurrentRoom` is a stored label, and D62 already
+        // established that wump2ka's display name is not stable per visit --
+        // so the stored one can disagree with the banner the game just
+        // printed, while the payload's name is read from the same turn.
+        // Measured: room "A fair-sized, pocked cavern" against a printed
+        // banner of "A large, textured, watery room", where the payload name
+        // WAS the printed banner. Both are tried, so a game whose names are
+        // stable (the two agree) is completely unaffected.
+        var headingNames = [];
+        try { if (payload && payload.roomName) headingNames.push(String(payload.roomName).toLowerCase()); } catch (eN) {}
+        if (room) headingNames.push(String(room).toLowerCase());
+
+        // D170: the name may be a TRUNCATED form of the banner. wump2ka's only
+        // player-facing name comes from the status row, and on a phone that row
+        // is a ~31-column grid that cuts it off -- "A fair-sized, pocked,
+        // watery caver" against a printed banner of "...watery cavern". An
+        // exact comparison therefore never matches on a phone, which is why
+        // this was reported from a handset and not from the desktop build.
+        // A prefix match in either direction accepts the truncation without
+        // accepting anything else: one of the two strings must be a complete
+        // leading run of the other, so unrelated rooms still cannot collide.
+        var nameMatches = function (text) {
+            var t = ParchLock.CleanRoomName(text).toLowerCase();
+            if (!t) return false;
+            for (var i = 0; i < headingNames.length; i++) {
+                var n = headingNames[i];
+                if (!n) continue;
+                if (t === n) return true;
+                var shorter = t.length < n.length ? t : n;
+                var longer = t.length < n.length ? n : t;
+                // Guard against a stub matching half the cave: require the
+                // shared prefix to be substantial before trusting it.
+                if (shorter.length >= 8 && longer.indexOf(shorter) === 0) return true;
+            }
+            return false;
+        };
+
         var heading = -1;
         lines.forEach((line, index) => {
             var headers = $(line).find('.Style_subheader').addBack('.Style_subheader');
-            if (headers.toArray().some(el => ParchLock.CleanRoomName(el.textContent).toLowerCase() === String(room || "").toLowerCase())) heading = index;
+            if (headers.toArray().some(el => nameMatches(el.textContent))) heading = index;
         });
+
+        // D170 (operator: "this instance of Wumpus does not want to underline
+        // exits or items").
+        //
+        // The search above locates the room's banner by matching its NAME --
+        // and D62 already established that wump2ka's display name is not a
+        // stable per-visit label, which is the very reason this text search
+        // exists at all. So it is built on the one thing it cannot rely on.
+        // When the stored name and the printed banner disagree, the match
+        // lands on an OLD occurrence of the stale name far up the transcript.
+        //
+        // Measured live: room "A fair-sized, pocked cavern" against a printed
+        // banner of "A large, textured, watery room" gave heading=28 with
+        // lastInput=196 in a 200-line buffer. RoomLines then became two lines
+        // from 168 lines earlier, long scrolled off screen, and every exit and
+        // item in the description the player was actually reading went
+        // unmarked -- exactly the reported symptom.
+        //
+        // A banner printed AFTER the player's last command is, by definition,
+        // the room they are in now. That is positional rather than
+        // name-derived, so it holds even when the label changed between
+        // visits. Used only when the name match found nothing current: a match
+        // that is already after the last input is left exactly as it was, so
+        // every game whose names ARE stable behaves as before.
+        var recentHeading = -1;
+        lines.forEach((line, index) => {
+            if (index <= lastInput) return;
+            if ($(line).find('.Style_subheader').addBack('.Style_subheader').length) recentHeading = index;
+        });
+        if (recentHeading >= 0 && heading <= lastInput) heading = recentHeading;
         var latest = lines.slice(Math.max(lastInput, heading >= lastInput ? heading : -1) + 1).filter(line => !Actionable.IsInstruction(line));
         var text = latest.map(line => line.textContent).join("\n");
         var command = $("#windowport .Style_input").last().text().trim().toLowerCase();
