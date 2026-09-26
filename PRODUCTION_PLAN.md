@@ -3467,3 +3467,122 @@ buttons; asserts the unavailable mic stays inside the viewport and keeps
 `position: fixed` in all three sheet states; asserts mobile does NOT shrink; and
 drives the real tutorial to the sort/search step to assert `resolveTarget`
 returns the options row itself rather than the fallback sheet.
+
+
+## D169 Carried value and weight, tracked headlessly
+
+Operator: in wump2ka the value you leave the cave with is part of your final
+score, so it has to be tracked, and it has to update as items change rather
+than only when asked.
+
+### The game states it, but only when asked
+
+Every inventory ends with the three figures:
+
+    You are carrying 11 lbs of stuff (26% of your current capacity).
+    It's all worth about $693.
+
+That text is the BOOTSTRAP, not the mechanism. It only appears when an
+inventory runs, so on its own it gives a number that is as stale as the last
+time the player happened to ask. The mechanism is the one D167 built for score:
+a known total identifies which slot in RAM holds it, and after that the figure
+is read straight out of memory every turn with no command and no text.
+
+### Where wump2ka keeps it
+
+Not in a global, and not in a common property. Measured: every common property
+on every carried object holds a routine or string ADDRESS -- this game computes
+almost everything -- so a common-property scan finds nothing at all. The
+per-item figures live in the INDIVIDUAL property table, reachable through
+`ZRamReader.parseIndivTable` on common property 3:
+
+    Transmat Popper 650, canteen 8, scribbled note 0, Glow Bar 35  = 693
+    drop the Popper                                                = 43
+    Glow Bar alone                                                 = 35
+
+Exact against the game's own text in all three states. The property number is
+never hardcoded: it is whichever individual property sums to the total the game
+printed. Confirmed live end to end -- after the slot is pinned, dropping the
+Popper with NO inventory command moves the figure to 43, and taking it back
+moves it to 693.
+
+### Pinning discipline
+
+Normally two independent agreements, for the same reason D167 requires two
+scoring events: at a single observation a small total makes several unrelated
+slots add up by coincidence. The exception is a single surviving candidate over
+a non-trivial total across several items -- one property out of 255 summing to
+exactly 693 over four objects is evidence, not coincidence, and waiting for a
+second inventory would leave the figure stale for no gain. Both guards matter:
+with one item ANY property equal to the total matches trivially, and a total of
+0 or 1 matches far too much. A contradiction tears the pin down.
+
+### Weight is deliberately NOT pinned here, and that is the honest answer
+
+Weight is individual property 100, and it pins the same way -- except that the
+canteen computes its own, because what it weighs depends on how much water is
+in it. A computed slot returns a routine ADDRESS, thousands rather than a
+handful of pounds. Summing it would silently omit that item and report a
+confident wrong number.
+
+So `sumIndiv` returns null the moment any holder reports an implausible
+quantity, and weight falls back to the figure the game itself last printed.
+Capacity likewise. Measured: value pins to `indiv:98` and goes live; weight
+stays `inventory-text` for as long as the canteen is carried. That is D24/D61 --
+honest staleness over a confident fabrication.
+
+The badge is given to value (a "+650" IS the event) and withheld from weight and
+capacity, which move on the same turn and would say one thing three times.
+
+Notation is captured from what the story printed rather than assumed: the
+currency symbol and the unit of mass both come out of the matched text, so a
+game that uses something other than dollars and pounds is not relabelled.
+
+### Glow Bar switch on/off -- root cause found, NOT fixed
+
+Operator: "Glow bar doesn't seem to have turn on and turn off available, and it
+used to." The story itself handles it perfectly -- "You switch the Glow Bar
+on." -- and AttrCalibrator does learn the verb from that. The problem is that
+the radial will not offer what the player has not already typed somewhere else.
+
+A dictionary-gated fallback for objects with no attribute evidence was written
+and then REMOVED, because measuring it showed it fixes nothing here. wump2ka's
+objects do have attributes; they are simply wrong:
+
+    Glow Bar       scenery, worn
+    canteen        light, static
+    scribbled note clothing, wearable, locked
+
+A carried Glow Bar is not scenery and a note is not clothing. This game's
+attribute bits are being read with the standard Inform-6 layout and it does not
+use that layout, which is exactly the class of problem D73/D145 already
+describe. The fix therefore belongs in the attribute schema for this game, not
+in a verb list -- patching the verb list would paper over a wrong schema that is
+also feeding the equipment sheet and every other attribute consumer.
+
+Recorded rather than guessed at. Anchorhead was measured alongside and is
+entirely correct (trenchcoat -> wear/remove/search/open/close, rain ->
+eat/drink), so this is specific to how wump2ka's bits are being interpreted.
+
+### Wumpus intermittency -- resolved for the radial, open for underlining
+
+wump2ka GENERATES A NEW CAVE EVERY GAME. Measured across four fresh sessions:
+three started with Popper / brittle skeleton / scribbled note / canteen /
+fungus (6-9 discovered objects, 16-20 underline marks), one started with frozen
+skeleton / cold note / pick (3 objects, 4 marks).
+
+That is the operator's "sometimes the canteen can't be taken from the radial" --
+in some games it is not in the cave at all. When it is present it was marked and
+actionable in every run.
+
+It is NOT a complete explanation for the underlining report: one earlier session
+showed six described rooms with zero marks, and even a bare cave still marks its
+exits and skeleton. That case remains open. What is new is that it can now be
+provoked by varying startup timing, which it could not be before.
+
+Two measurement corrections worth recording, because both produced confident
+nonsense earlier: `payload.discovered`, `payload.nouns` and `payload.objects` do
+not exist (the field is `discoveredObjects`), so readings of them were of
+`undefined`; and wump2ka opens with a "Would you like to restore a saved game?"
+prompt that must be answered before any command lands, so a probe that skips it
+measures the prompt rather than the game.

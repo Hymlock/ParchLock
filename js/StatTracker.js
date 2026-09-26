@@ -496,6 +496,10 @@ var StatTracker = {
         StatTracker.promoteTurnCounter(model);
         StatTracker.promoteGlobals(model);
         StatTracker.readConfirmedGlobals(model, globals);
+        // D169: once a carried-total slot is pinned it is read every turn,
+        // with no command and no text -- so the figure moves the moment the
+        // player picks something up or drops it.
+        StatTracker.readCarryFromRam(model, mem);
         StatTracker.save(key, model);
         return model;
     },
@@ -738,6 +742,230 @@ var StatTracker = {
     // ---- deaths ----------------------------------------------------------
     // Guarded against double counting: the same banner text can be re-rendered
     // when the buffer redraws, and that is not a second death.
+    // ---- D169 carried value and weight -----------------------------------
+    //
+    // Operator: in wump2ka the value you leave the cave with is part of your
+    // final score, so it has to be tracked, and it has to update as you swap
+    // items rather than only when you ask.
+    //
+    // The game states all three numbers itself, unprompted, at the end of any
+    // inventory:
+    //
+    //   "You are carrying 11 lbs of stuff (26% of your current capacity).
+    //    It's all worth about $693."
+    //
+    // That text is the BOOTSTRAP, not the mechanism -- it only appears when an
+    // inventory runs. The mechanism is the same one D167 uses for score: a
+    // known total identifies which slot in RAM holds it, and after that the
+    // number is read straight out of memory every turn with no command.
+    //
+    // Measured on wump2ka: per-item value lives in INDIVIDUAL property 98 and
+    // weight in 100 (Inform's `private`-style table, reachable through
+    // ZRamReader.parseIndivTable on common property 3). The plain properties
+    // are all routine/string addresses -- this game computes almost everything
+    // -- so a naive common-property scan finds nothing, which is why the
+    // individual table is where this looks.
+    //
+    //   Transmat Popper 650, canteen 8, scribbled note 0, Glow Bar 35 = 693,
+    //   drop the Popper -> 43, Glow Bar alone -> 35.
+    //
+    // Exact against the game's own text in all three states. The property
+    // NUMBERS are still never hardcoded: they are whichever individual
+    // property sums to the total the game printed, confirmed twice.
+    CARRY: {
+        // "carrying 11 lbs of stuff", "carrying 4 lbs"
+        weight: /carrying\s+(\d+)\s*(lbs?|pounds?|kg|kilos?)\b/i,
+        // "(26% of your current capacity)"
+        capacity: /\((\d+)\s*%\s*of\s+your\s+current\s+capacity\)/i,
+        // "It's all worth about $693.", "worth 693 gold"
+        value: /worth\s+(?:about\s+)?([$£€])?\s*(\d+)/i
+    },
+    // A plain per-item quantity is small. A property holding a routine or a
+    // string returns its ADDRESS, which is many thousands -- the canteen's
+    // weight is computed that way, because what it weighs depends on how much
+    // water is in it. A candidate value above this is not a quantity.
+    MAX_ITEM_QUANTITY: 5000,
+    CARRY_CONFIRM: 2,
+
+    // Every object the player is holding, including one level of container
+    // nesting, straight from RAM. Mirrors how ZRamProvider roots the
+    // inventory so the two cannot disagree about who the player is.
+    carriedIds: function (mem) {
+        var ids = [];
+        try {
+            var p = (typeof WorldModel !== "undefined" && WorldModel.lastPayload) || null;
+            var root = null;
+            try {
+                root = ZRamProvider.resolveInventoryRootId(
+                    mem, p && p.playerId, null, p && p.roomId);
+            } catch (e) {}
+            // The payload's own inventory tree is the fallback: on the first
+            // inventory of a session the player object is sometimes not
+            // resolved yet, and returning nothing there costs the bootstrap a
+            // whole observation.
+            if (root == null) {
+                var flat = function (list) {
+                    (list || []).forEach(function (it) {
+                        if (it && it.id != null) ids.push(it.id);
+                        if (it && it.contents) flat(it.contents);
+                    });
+                };
+                flat(p && p.inventory);
+                return ids;
+            }
+            (ZRamReader.children(mem, root) || []).forEach(function (c) {
+                var cid = (c && c.id != null) ? c.id : c;
+                if (cid == null) return;
+                ids.push(cid);
+                (ZRamReader.children(mem, cid) || []).forEach(function (g) {
+                    var gid = (g && g.id != null) ? g.id : g;
+                    if (gid != null) ids.push(gid);
+                });
+            });
+        } catch (e) {}
+        return ids;
+    },
+
+    // Sum one individual property across the carried set. Returns null when
+    // any holder reports an implausible quantity, because a computed slot
+    // makes the total meaningless rather than merely wrong.
+    sumIndiv: function (mem, ids, prop) {
+        var total = 0, seen = 0;
+        for (var i = 0; i < ids.length; i++) {
+            var t = null;
+            try { t = ZRamReader.parseIndivTable(mem, ZRamReader.readProp(mem, ids[i], 3)); } catch (e) {}
+            if (!t || !Object.prototype.hasOwnProperty.call(t, prop)) continue;
+            var v = t[prop];
+            if (typeof v !== "number") continue;
+            if (v > StatTracker.MAX_ITEM_QUANTITY) return null;   // computed, not stored
+            total += v;
+            seen++;
+        }
+        return seen ? total : null;
+    },
+
+    // Narrow the candidate property for one carried total against a known
+    // figure the game just printed. Same discipline as pinScoreByDelta: one
+    // agreement narrows, CARRY_CONFIRM agreements pin, a contradiction tears
+    // the pin down rather than letting a stale slot keep reporting.
+    pinCarryProp: function (model, mem, field, known) {
+        if (typeof known !== "number") return;
+        var ids = StatTracker.carriedIds(mem);
+        if (!ids.length) return;
+        var carry = model.carry || (model.carry = {});
+        var st = carry[field] || (carry[field] = { prop: null, hits: 0, candidates: null });
+
+        if (st.prop != null) {
+            var live = StatTracker.sumIndiv(mem, ids, st.prop);
+            // A null sum means an item computes this slot this turn -- not a
+            // contradiction, just nothing to check against.
+            if (live != null && live !== known) { st.prop = null; st.hits = 0; st.candidates = null; }
+            else return;
+        }
+
+        var matches = [];
+        for (var prop = 1; prop <= 255; prop++) {
+            if (StatTracker.sumIndiv(mem, ids, prop) === known) matches.push(prop);
+        }
+        if (!matches.length) return;
+        st.candidates = st.candidates
+            ? st.candidates.filter(function (p) { return matches.indexOf(p) !== -1; })
+            : matches;
+        if (!st.candidates.length) { st.candidates = matches; st.hits = 0; return; }
+        st.hits++;
+        // Normally two independent agreements, because at a single observation
+        // a bare inventory makes several unrelated slots add up to the same
+        // small number by coincidence.
+        //
+        // The exception is a SINGLE surviving candidate over a non-trivial
+        // total across several items: measured on wump2ka, one property out of
+        // 255 summed to exactly 693 over four objects. That is evidence, not
+        // coincidence, and waiting for a second inventory would leave the
+        // figure stale for no gain. Both guards matter -- one item makes any
+        // property equal to the total match trivially, and a total of 0 or 1
+        // matches far too much.
+        var decisive = st.candidates.length === 1 && known > 1 && ids.length > 1;
+        if (st.hits >= StatTracker.CARRY_CONFIRM || decisive) st.prop = st.candidates[0];
+    },
+
+    // Once pinned, this is the headless path: no command, no text, every turn.
+    readCarryFromRam: function (model, mem) {
+        if (!mem || !model.carry) return;
+        var ids = StatTracker.carriedIds(mem);
+        [["value", "Value", "money"], ["weight", "Carried", "weight"]].forEach(function (spec) {
+            var st = model.carry[spec[0]];
+            if (!st || st.prop == null) return;
+            var total = StatTracker.sumIndiv(mem, ids, st.prop);
+            // Null here means an item computes its own figure this turn. The
+            // last known total stays on screen rather than being replaced by a
+            // number that silently omits that item.
+            if (total == null) return;
+            var s = model.stats[spec[0]];
+            if (!s) {
+                model.stats[spec[0]] = { key: spec[0], label: spec[1], value: total, max: null,
+                    unit: spec[2], kind: "counter", seen: StatTracker.CONFIRM_SAMPLES,
+                    source: "indiv:" + st.prop, confirmed: true, lastChange: null };
+                return;
+            }
+            s.source = "indiv:" + st.prop;
+            s.confirmed = true;
+            if (s.value !== total) {
+                var d = total - s.value;
+                s.value = total;
+                s.lastChange = d;
+                StatTracker.emitChange(model, spec[0], d);
+            }
+        });
+    },
+
+    // The bootstrap: whatever the game just told us, plus an attempt to pin
+    // the RAM slot that agrees with it.
+    observeCarryText: function (model, text, mem) {
+        if (!text) return false;
+        var got = false;
+        var w = StatTracker.CARRY.weight.exec(text);
+        var c = StatTracker.CARRY.capacity.exec(text);
+        var v = StatTracker.CARRY.value.exec(text);
+        if (!w && !c && !v) return false;
+
+        var set = function (key, label, value, unit, notation) {
+            if (typeof value !== "number" || isNaN(value)) return;
+            got = true;
+            var s = model.stats[key];
+            if (!s) {
+                s = model.stats[key] = { key: key, label: label, value: value, max: null, unit: unit,
+                    kind: unit === "percent" ? "gauge" : "counter",
+                    seen: StatTracker.CONFIRM_SAMPLES, source: "inventory-text",
+                    confirmed: true, lastChange: null };
+                if (notation) { s.symbol = notation.symbol; s.uom = notation.uom; }
+                return;
+            }
+            if (notation) {
+                if (notation.symbol) s.symbol = notation.symbol;
+                if (notation.uom) s.uom = notation.uom;
+            }
+            // A RAM-pinned figure is live every turn; this text is only as
+            // fresh as the last inventory, so it must not overwrite it.
+            if (String(s.source || "").indexOf("indiv:") === 0) return;
+            if (s.value !== value) {
+                var d = value - s.value;
+                s.value = value; s.lastChange = d;
+                StatTracker.emitChange(model, key, d);
+            }
+            s.confirmed = true;
+        };
+
+        if (v) set("value", "Value", parseInt(v[2], 10), "money", { symbol: v[1] || "$" });
+        if (w) set("weight", "Carried", parseInt(w[1], 10), "weight", { uom: w[2] || "lbs" });
+        if (c) set("capacity", "Capacity", parseInt(c[1], 10), "percent");
+
+        if (mem) {
+            if (v) StatTracker.pinCarryProp(model, mem, "value", parseInt(v[2], 10));
+            if (w) StatTracker.pinCarryProp(model, mem, "weight", parseInt(w[1], 10));
+        }
+        return got;
+    },
+
     observeText: function (text, turnMarker) {
         var model = StatTracker.model();
         var found = StatTracker.bannersIn(text);
@@ -852,7 +1080,11 @@ var StatTracker = {
             if (k === "score" && model.scoreUnavailable) return;
             out.push(s);
         });
-        var ORDER = { score: 0, health: 1, stamina: 2, hunger: 3, thirst: 4, sleep: 5, turns: 8, time: 9 };
+        // D169: value sits next to score because in wump2ka it IS part of the
+        // final score; carried weight and capacity follow it as the two
+        // figures that constrain what you can still pick up.
+        var ORDER = { score: 0, value: 1, health: 2, stamina: 3, hunger: 4, thirst: 5, sleep: 6,
+                      weight: 7, capacity: 8, turns: 10, time: 11 };
         out.sort(function (a, b) {
             var d = (ORDER[a.key] == null ? 6 : ORDER[a.key]) - (ORDER[b.key] == null ? 6 : ORDER[b.key]);
             return d || String(a.key).localeCompare(String(b.key));
@@ -914,6 +1146,12 @@ var StatTracker = {
             try {
                 StatTracker.observeText(fresh, StatTracker._turn);
                 StatTracker.consumeProbeReply(fresh);
+                // D169: the carried-value bootstrap needs BOTH the text the
+                // game just printed and live RAM, which only meet here.
+                if (StatTracker.observeCarryText(StatTracker.model(), fresh, mem)
+                    && StatTracker._key) {
+                    StatTracker.save(StatTracker._key, StatTracker.model());
+                }
             } catch (e) {}
         }
 
@@ -1059,6 +1297,13 @@ var StatTracker = {
                 val.textContent = s.band || "";
             } else if (s.unit === "percent") {
                 val.textContent = s.value + "%";
+            } else if (s.unit === "money") {
+                // D169: the game's own notation. wump2ka prints dollars; the
+                // symbol is captured from what it printed rather than assumed,
+                // so a game using another one is not relabelled.
+                val.textContent = (s.symbol || "$") + s.value;
+            } else if (s.unit === "weight") {
+                val.textContent = s.value + " " + (s.uom || "lbs");
             } else if (s.max != null) {
                 val.textContent = s.value + " / " + s.max;
             } else {
@@ -1118,7 +1363,11 @@ var StatTracker = {
                 // A turn counter and a clock advance every single turn, so a
                 // badge on those is not an event -- it is permanent clutter.
                 // Only a change the player would want pointed out is marked.
-                var worthMarking = (s.key !== "turns" && s.key !== "time");
+                // D169: "Value +650" is exactly the event worth pointing out.
+                // Weight and capacity move with it on the same turn, so
+                // badging all three would say one thing three times.
+                var worthMarking = (s.key !== "turns" && s.key !== "time"
+                                    && s.key !== "weight" && s.key !== "capacity");
                 if (worthMarking) {
                     s.badgeDelta = s.lastChange;
                     s.badgeUntil = Date.now() + 1500;

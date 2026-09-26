@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v55"; // D168 equipment sheet reflow, mic position, collapsible equipment options
+const CACHE_VERSION = "parchlock-shell-v56"; // D169 headless carried value/weight tracking
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [
