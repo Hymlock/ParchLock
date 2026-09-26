@@ -4006,3 +4006,74 @@ Measured after:
 own figure, the return to RAM once every item reports a plain weight, and that
 carrying more actually weighs more. `harness/stat-tracker.js` 92 and
 `tools/stat-tracker-live.js` 12 unchanged.
+
+
+## D175 Two defects the audit found in D173, one of them in its own test
+
+The grok seat audited D173 and found both. Recording them because the second is
+the more instructive.
+
+### The pin baseline was the running total
+
+`pinScoreByDelta` read `stats.score.value` for its `known`. D173 counts an
+announced change onto that field and marks it confirmed, so the NEXT
+notification would narrow against a delta-derived running total rather than an
+absolute the game stated.
+
+This tick was safe, because the apply runs after the pin. The tick AFTER was
+not: if the displayed total had drifted at all -- an undo, a missed
+notification, a double apply -- then `known + delta` is a number RAM never
+holds, every candidate is rejected, and the slot never pins. Headless reading
+would never start, which is the exact mechanism D173 exists to bootstrap. The
+fix would have destroyed the thing it was meant to enable, one turn later.
+
+`model.scorePinKnown` now carries the pin baseline and is written from three
+absolute sources only: a SCORE reply, the status row, and a pinned global.
+The displayed value may run; the baseline may not.
+
+### The replay guard was keyed on a TICK counter, and the test hid it
+
+The guard used `StatTracker._turn`. That is a TICK counter -- D153 measured
+observe() running about forty times per game turn -- so live, a replayed
+notification always lands on a different tick, gets a different stamp, and is
+counted again.
+
+The harness passed because it held `_turn` still. That is a false green: the
+test asserted the exact condition that never occurs in the app.
+
+The key is now the GAME's own turn counter plus the notification text, mirroring
+how `observeText` dedupes death and win banners. That is the right key because a
+restore returns the game to an earlier turn, so a replayed notification produces
+the same id it produced the first time and is correctly ignored. The test now
+advances forty ticks while holding the game turn, and would fail against the old
+implementation.
+
+### Recorded, not fixed
+
+Two exposures the audit raised and I am leaving documented rather than papering
+over:
+
+**Notification before RAM updates.** If the announcement appears in the buffer
+before the global is written, the pin misses that event and the HUD runs ahead.
+Once the slot pins, `readConfirmedGlobals` snaps the display back to RAM.
+
+**Undo with an unpinned slot.** A counted change that is then undone leaves the
+display high until a SCORE reply, a status sample or a pin corrects it.
+`StatTracker` does not subscribe to `UndoRestoreSync`; with the pin baseline now
+separate, an undo can no longer poison the pin, which was the serious half.
+
+### Rejected again: an automatic probe for the no-baseline case
+
+The audit reaffirmed it, on a rule rather than on cost: a probe is never issued
+unasked. D149 established it, D169 honours it for value and weight, and the
+Identify control remains the opt-in. So a player who never triggers a SCORE
+reply and has no status column still sees no movement on their first points --
+an honest absence (D24) rather than an invented total. The measurement that
+SCORE is free (D173) stands; being free is not the same as being asked for.
+
+### Coverage
+
+`harness/stat-tracker.js` 95 (3 new): the SCORE reply seeding the pin baseline,
+the baseline staying put while the display counts a change, and the replay guard
+tested forty ticks later on the same game turn. `tools/stat-tracker-live.js` 12
+and `tools/carry-value-live.js` 19 unchanged.

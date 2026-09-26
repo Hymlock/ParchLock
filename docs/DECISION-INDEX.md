@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 162 decisions across
-4009 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 163 decisions across
+4080 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -21,6 +21,7 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 
 | D | claim | files | games |
 |---|-------|-------|-------|
+| D175 | Two defects the audit found in D173, one of them in its own test |  |  |
 | D174 | A pinned figure that cannot answer this turn must not freeze |  | wump2ka |
 | D173 | An announced score change has to be COUNTED, not only used to pin |  | Anchorhead |
 | D172 | The command line ran under the send and mic buttons |  |  |

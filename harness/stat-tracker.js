@@ -376,10 +376,14 @@ assert(pm3.globals.score == null && !pm3.stats.score,
     assert(S.parseScoreDelta("Your score has just gone up by two points.") === 2,
         "D173: the notification's worded delta is read as +2");
 
-    // The turn the notification arrives.
+    // The turn the notification arrives. A game turn counter is established
+    // first, because D175 keys the replay guard on the GAME's turn rather than
+    // on the tick counter.
+    m.stats.turns = { key: "turns", label: "Turns", value: 29, unit: "plain",
+                      kind: "counter", seen: 2, source: "status", confirmed: true };
     S._turn++;
     S.takeEvents();
-    S._pendingDelta = 2;
+    S._pendingDelta = S.parseScoreDelta("Your score has just gone up by two points.");
     S.observe({}, "");
     S._pendingDelta = null;
     m = S.model();
@@ -391,19 +395,55 @@ assert(pm3.globals.score == null && !pm3.stats.score,
 
     // Replay: a restore or transcript reprint can re-present the SAME
     // notification. It must not be counted twice.
+    //
+    // D175: this test used to hold S._turn still, which made it a FALSE GREEN.
+    // _turn is a TICK counter and D153 measured observe() running about forty
+    // times per game turn, so live a replay always lands on a different tick.
+    // The ticks are advanced here, and the GAME's turn counter -- which is what
+    // a restore actually returns to -- is what must make the stamp match.
+    const afterFirst = S.model().stats.score.value;
+
+    S._turn += 40;                       // forty ticks later, same game turn
     S._pendingDelta = 2;
+    S.parseScoreDelta("Your score has just gone up by two points.");
     S.observe({}, "");
     S._pendingDelta = null;
-    assert(S.model().stats.score.value === 2,
-        `D173: the same notification replayed on the same turn is not double counted (${S.model().stats.score.value})`);
+    assert(S.model().stats.score.value === afterFirst,
+        `D175: the same notification replayed 40 TICKS later, same game turn, is not double counted (${S.model().stats.score.value})`);
 
-    // A later event on a later turn still counts.
+    // A later event on a later game turn still counts.
     S._turn++;
-    S._pendingDelta = 5;
+    S.model().stats.turns.value = 34;
+    S._pendingDelta = S.parseScoreDelta("Your score has just gone up by five points.");
     S.observe({}, "");
     S._pendingDelta = null;
     assert(S.model().stats.score.value === 7,
         `D173: a later announced change still counts (2 + 5 = 7, got ${S.model().stats.score.value})`);
+}
+
+// D175: the pin baseline must be an absolute the game stated, never the
+// running total D173 maintains for display. Otherwise the NEXT notification
+// narrows against a drifted number, `known + delta` is a value RAM never holds,
+// every candidate is rejected and the slot can never pin -- killing the very
+// headless path this was built to bootstrap.
+{
+    S._key = null; S._model = null; S._samples = []; S._events = []; S._turn = 0;
+    for (const k of Object.keys(store)) delete store[k];
+    S.observe({}, "");
+    S.applyScoreReply("You have so far scored 0 out of a possible 100 points.");
+    let m2 = S.model();
+    assert(m2.scorePinKnown === 0,
+        "D175: a SCORE reply seeds the pin baseline");
+
+    S._turn++;
+    S._pendingDelta = 2;
+    S.parseScoreDelta("Your score has just gone up by two points.");
+    S.observe({}, "");
+    S._pendingDelta = null;
+    m2 = S.model();
+    assert(m2.stats.score.value === 2, "D175: the HUD counts the change");
+    assert(m2.scorePinKnown === 0,
+        `D175: but the pin baseline stays the last stated absolute, not the running total (${m2.scorePinKnown})`);
 }
 
 // Without an absolute to add to, a delta must NOT invent a total (D24).

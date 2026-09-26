@@ -240,7 +240,9 @@ var StatTracker = {
 
     parseScoreDelta: (text) => {
         var m = StatTracker.SCORE_DELTA.exec(String(text || ""));
-        if (!m) return null;
+        if (!m) { StatTracker._pendingDeltaText = null; return null; }
+        // D175: the matched notification itself is part of the replay key.
+        StatTracker._pendingDeltaText = m[0];
         var raw = String(m[2]).toLowerCase();
         var n = /^\d+$/.test(raw) ? parseInt(raw, 10) : StatTracker.NUMBER_WORDS[raw];
         if (!n || !isFinite(n)) return null;
@@ -277,9 +279,25 @@ var StatTracker = {
         // transcript reprint can re-present an OLD notification as if it were
         // new, and would re-apply it. Keyed by turn and amount rather than by
         // buffer position, which is what actually changes under a redraw.
-        var stamp = StatTracker._turn + ":" + delta;
-        if (model.lastDeltaStamp === stamp) return;
-        model.lastDeltaStamp = stamp;
+        // D175: the first version of this keyed on `StatTracker._turn`, which
+        // is a TICK counter -- D153 measured observe() running about forty
+        // times per game turn -- so a replayed notification on a later tick got
+        // a different stamp and was counted again. The harness passed because
+        // it holds _turn still, which made it a false green; the grok seat
+        // caught it by reading rather than by trusting the test.
+        //
+        // The GAME's own turn counter is the right key: after a restore the
+        // game returns to an earlier turn, so a replayed notification produces
+        // the same id it produced the first time and is correctly ignored.
+        // Keyed on the notification text too, mirroring how observeText dedupes
+        // death and win banners, so two different events in one turn are not
+        // collapsed into one.
+        var gameTurn = (model.stats.turns && typeof model.stats.turns.value === "number")
+            ? model.stats.turns.value : ("t" + StatTracker._turn);
+        var stamp = gameTurn + ":" + delta + ":" + String(StatTracker._pendingDeltaText || "").slice(0, 60);
+        model.seenDeltas = model.seenDeltas || {};
+        if (model.seenDeltas[stamp]) return;
+        model.seenDeltas[stamp] = 1;
 
         var next = scoreBefore + delta;
         if (typeof s.max === "number" && s.max > 0 && (next < 0 || next > s.max)) return;
@@ -307,8 +325,18 @@ var StatTracker = {
             // resulting total. One notification narrowed 64 globals to three on
             // Anchorhead; adding this pins it in one step whenever the total is
             // already known from any source.
-            var known = (model.stats.score && typeof model.stats.score.value === "number"
-                         && model.stats.score.confirmed) ? model.stats.score.value : null;
+            // D175: this MUST be an absolute the game itself stated, never the
+            // displayed value. D173 counts an announced change onto the HUD and
+            // marks it confirmed, so reading stats.score here would make the
+            // NEXT notification narrow against a delta-derived running total.
+            // The grok seat traced the poison path: if the HUD has drifted at
+            // all -- an undo, a missed notification, a double apply -- then
+            // `known + delta` is a number RAM never holds, every candidate is
+            // rejected, and the slot never pins. Headless reading would then
+            // never start, which is the very mechanism D173 exists to
+            // bootstrap. `scorePinKnown` is written only from a SCORE reply,
+            // the status row or a pinned global.
+            var known = (typeof model.scorePinKnown === "number") ? model.scorePinKnown : null;
             var hits = [];
             for (var i = 0; i < globals.length; i++) {
                 if (globals[i] - prev[i] !== delta) continue;
@@ -586,6 +614,9 @@ var StatTracker = {
 
     // A stat needs CONFIRM_SAMPLES sightings before it is shown at all.
     recordObservation: function (model, k, rec) {
+        // D175: the status row prints an absolute, so it is a valid pin
+        // baseline -- unlike the running total D173 maintains for display.
+        if (k === "score" && typeof rec.value === "number") model.scorePinKnown = rec.value;
         var prev = model.stats[k];
         if (!prev) {
             model.stats[k] = {
@@ -816,6 +847,8 @@ var StatTracker = {
                 stat.confirmed = true;
                 StatTracker.emitChange(model, k, delta);
             }
+            // D175: RAM is an absolute, so it may seed the pin baseline.
+            if (k === "score") model.scorePinKnown = v;
         });
     },
 
@@ -1105,6 +1138,8 @@ var StatTracker = {
         var s = model.stats.score || { key: "score", label: "Score", unit: "plain",
                                        kind: "score", seen: 0, source: "score-command" };
         s.value = parsed.score;
+        // D175: the game stated this outright, so it is a valid pin baseline.
+        model.scorePinKnown = parsed.score;
         if (parsed.max != null) { s.max = parsed.max; s.unit = "fraction"; }
         s.seen = Math.max(s.seen || 0, StatTracker.CONFIRM_SAMPLES);
         s.confirmed = true;
