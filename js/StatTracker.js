@@ -192,9 +192,14 @@ var StatTracker = {
                 if (scale.steps[i][0].test(t)) {
                     out[scale.key] = { key: scale.key, band: scale.steps[i][1],
                                        step: i, steps: scale.steps.length, unit: "ordinal" };
-                    // Keep scanning: a later, worse band in the same reply wins,
-                    // because "You have a light wound" and "serious wound" can
-                    // both appear and the graver one is the true state.
+                    // D166: the FIRST match wins. An earlier draft kept scanning
+                    // so a graver band would override, which read Zork 1's "You
+                    // are in perfect health. You can be killed by a serious
+                    // wound." as "wounded" -- the second sentence is a statement
+                    // of what COULD happen, not of the player's condition. These
+                    // replies state the current state first, so stopping there
+                    // is both simpler and right.
+                    break;
                 }
             }
         });
@@ -971,17 +976,38 @@ var StatTracker = {
         try {
             var model = StatTracker.model();
             model.probed = true;
-            StatTracker._probePending = { score: true, diagnose: true };
-            StatTracker._probeTurns = 0;
-            if (typeof Actionable !== "undefined" && Actionable.Submit) Actionable.Submit("score");
-            // DIAGNOSE is ZIL-only; Inform replies "That's not a verb I
-            // recognise", which parseDiagnoseReply discards, so trying it
-            // costs one turn and is never wrong.
-            setTimeout(function () {
+            // D166 (operator-reported): asking for stats printed "That's not a
+            // verb I recognize" into the story, every time. Submitting a verb
+            // the story does not have is the one thing this codebase already
+            // knows how to avoid -- D147's isGameWord answers whether a word is
+            // in THIS story's dictionary -- so a probe is only ever sent for a
+            // verb that exists. Measured: 905 has no SCORE verb at all
+            // ("[That verb is not recognized.]") and Anchorhead has no
+            // DIAGNOSE, which is exactly where the noise came from.
+            var canAsk = function (verb) {
                 try {
-                    if (typeof Actionable !== "undefined" && Actionable.Submit) Actionable.Submit("diagnose");
-                } catch (e) {}
-            }, 1800);
+                    if (typeof Actionable === "undefined" || !Actionable.isGameWord) return true;
+                    return Actionable.isGameWord(verb);
+                } catch (e) { return true; }
+            };
+            var askScore = canAsk("score"), askDiagnose = canAsk("diagnose");
+            StatTracker._probePending = { score: askScore, diagnose: askDiagnose };
+            StatTracker._probeTurns = 0;
+            if (!askScore && !askDiagnose) {
+                // Nothing to ask: say so rather than spending a turn on a
+                // command the parser will reject.
+                StatTracker._probePending = null;
+                StatTracker.Render();
+                return;
+            }
+            if (askScore && typeof Actionable !== "undefined" && Actionable.Submit) Actionable.Submit("score");
+            if (askDiagnose) {
+                setTimeout(function () {
+                    try {
+                        if (typeof Actionable !== "undefined" && Actionable.Submit) Actionable.Submit("diagnose");
+                    } catch (e) {}
+                }, askScore ? 1800 : 0);
+            }
         } catch (e) {}
     },
 

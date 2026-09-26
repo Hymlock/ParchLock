@@ -4320,17 +4320,38 @@ body.pl-mobile #pl-input-mic.pl-mic-unavailable::after {
    On a narrow screen the header simply stacks instead -- one row of icons, then
    a full-width search box. Scoped to the library page so nothing else moves. */
 @media only screen and (max-width: 1023px) {
+	/* #listing-stories is the banner strip -- it carries the light background
+	   and its text is deliberately `color: transparent` on mobile, so the bar
+	   exists to hold the toolbar icons. The icons therefore sit ON it, which
+	   means #toolbar stays absolutely positioned and overlays the banner
+	   rather than taking up flow above it.
+	   The search field is what genuinely does not fit alongside at 412px, so
+	   that alone moves to its own full-width row underneath. */
+	body.main-menu #windowport .status.TextGrid {
+		position: relative;
+	}
 	body.main-menu #windowport #toolbar {
-		position: static;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
 		display: flex;
 		align-items: center;
 		gap: 8px;
-		padding: 4px 8px 0;
+		padding: 0 8px;
+		min-height: 32px;
+		z-index: 2;
 	}
 	body.main-menu #windowport #toolbar #filter-options {
 		display: flex;
 		align-items: center;
 		gap: 8px;
+	}
+	/* Match the toolbar's height so the icons are vertically centred on it. */
+	body.main-menu #windowport #listing-stories {
+		display: block;
+		min-height: 32px;
+		line-height: 32px;
 	}
 	body.main-menu #windowport #filter {
 		position: static;

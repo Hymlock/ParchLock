@@ -51,6 +51,13 @@
         <script src="js/Message.js"></script>
         <script src="js/GameList.js"></script>
         <script src="js/MainMenu.js"></script>
+        <!-- D166: the library tour was silent. Tutorial.speak() returns
+             immediately when ReadAloud is undefined, and this page never
+             loaded it, so the whole module-screen half of the tour was
+             skipped by the narration. Its auto-read path collects from
+             "#windowport .BufferWindow", which does not exist here, so it
+             narrates the tour cards without ever reading the story list. -->
+        <script src="js/ReadAloud.js"></script>
         <script src="js/Tutorial.js"></script>
 
     </head>

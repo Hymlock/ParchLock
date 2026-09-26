@@ -3166,3 +3166,73 @@ anchorhead, ui-regression, layout-regression, stat-tracker-live,
 inventory-recovery-live, tutorial-live, startup-menu, highlight-scope. Zero
 uncaught page errors across Cutthroats, Anchorhead, Zork 1, wump2ka, 905 and
 Enchanter.
+
+
+## D166 Four operator-reported UI and probe defects
+
+### The module banner: icons above it, not on it
+
+Operator: "the empty Gray bar is not a mistake it is the banner! It's just that
+the icons are not located on it they're being cast above it."
+
+`#listing-stories` carries the light background and is `color: transparent` on
+mobile, so the bar exists precisely to hold the toolbar icons. D161 had made
+`#toolbar` `position: static` to stop it colliding with the search field, and
+that pushed the icons into the flow ABOVE the banner instead of over it.
+
+The toolbar is absolutely positioned again and overlays the banner, with
+`.status.TextGrid` as its containing block; only the search field -- the part
+that genuinely does not fit alongside at 412px -- moves to its own full-width
+row underneath. Measured at 412px: toolbar and `#listing-stories` both at y=66
+h=32, icons centred at y=70, search at y=104.
+
+### The strip is "Status", not "Character"
+
+Renamed at the operator's request.
+
+### Asking for stats printed a parser error
+
+Operator: "the readout is interrupted by the statement that's not a verb I
+recognize every time."
+
+Identify stats submitted SCORE and DIAGNOSE unconditionally. Submitting a verb
+the story does not have is the one thing this codebase already knows how to
+avoid -- D147's `isGameWord` answers whether a word is in THIS story's
+dictionary -- so a probe is now only sent for a verb that exists. Measured:
+
+    Anchorhead  score in dict, diagnose NOT -> asks score only, no error
+    905         neither in dict             -> submits nothing, no turn spent
+    Zork 1      both in dict                -> asks both, both answer
+
+905 was the worst case: it has no SCORE verb at all ("[That verb is not
+recognized.]") and no DIAGNOSE, so every press produced two parser errors and
+spent two turns for nothing. It now spends none.
+
+### A health band read from a hypothetical
+
+Found while verifying the above, not reported: Zork 1 answers "You are in
+perfect health. You can be killed by a serious wound." and the tracker showed
+**wounded**. The scale loop kept scanning so a graver band would override,
+which is wrong -- the second sentence says what COULD happen, not what is true.
+These replies state the current condition first, so the first match wins.
+Verified across perfect / light wound / serious wound phrasings.
+
+### The library tour was silent
+
+Operator: "read aloud needs to start when the tutorial starts It completely
+skips the first module screen tutorial windows."
+
+`Tutorial.speak()` returns immediately when `ReadAloud` is undefined, and
+`index.html` never loaded `js/ReadAloud.js` -- only `play.html` did. So the
+entire module-screen half of the tour was narrated by nothing.
+
+Adding it there is safe rather than merely expedient: `ReadAloud.speak` is
+gated on the narration preference, and its automatic path collects from
+`#windowport .BufferWindow`, which does not exist on the library page. Verified
+live -- the tour cards are spoken and no part of the 309-title story list leaks
+into narration.
+
+Verified: stat-tracker 68/68, d162-travel-commands, d158-provider-recovery,
+equipment-ui, d150-noun-and-verbs, d31-nested-inventory, exits-safe-area,
+docs-sync, layout-regression, ui-regression, startup-menu, tutorial-live,
+stat-tracker-live, map-pathing, anchorhead.
