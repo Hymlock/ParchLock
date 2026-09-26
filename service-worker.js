@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v59"; // D172 command line reserves the send/mic gutter with the equipment sheet
+const CACHE_VERSION = "parchlock-shell-v60"; // D173 announced score changes are counted, restoring score, tone and badge
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

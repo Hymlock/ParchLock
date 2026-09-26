@@ -247,6 +247,51 @@ var StatTracker = {
         return /down/i.test(m[1]) ? -n : n;
     },
 
+    // D173: count an announced change against the total the game itself last
+    // confirmed. Every guard here answers a specific hazard raised in review.
+    applyScoreDeltaToDisplay: function (model, delta, scoreBefore) {
+        if (!delta) return;
+        var s = model.stats.score;
+        if (!s) return;
+
+        // No baseline, no arithmetic. A delta with nothing to add it to gives a
+        // RELATIVE figure, and presenting that as the score would be inventing
+        // a total. Most games start at 0, but "most games" is not evidence
+        // (D24) -- so the row simply does not move until the game has stated an
+        // absolute, via SCORE, the status row, or a pinned global.
+        if (scoreBefore === null) return;
+
+        // The status row moves the score by itself (Zork 1 has a real Score
+        // column and recordObservation already emits from it), so adding the
+        // delta as well would count the same points twice.
+        if (s.source === "status") return;
+
+        // Already moved this tick -- by a pinned global reading RAM, or by a
+        // status sample. RAM is ground truth; do not add on top of it. This is
+        // the post-pin double-count: once the slot is known, `source` becomes
+        // "global:N" rather than "status", so a source test alone misses it.
+        if (s.value !== scoreBefore) return;
+
+        // Replay guard. `fresh` comes from a buffer-length watermark, not a
+        // seen-set, and SCORE_DELTA is `.exec` without /g -- so a restore or a
+        // transcript reprint can re-present an OLD notification as if it were
+        // new, and would re-apply it. Keyed by turn and amount rather than by
+        // buffer position, which is what actually changes under a redraw.
+        var stamp = StatTracker._turn + ":" + delta;
+        if (model.lastDeltaStamp === stamp) return;
+        model.lastDeltaStamp = stamp;
+
+        var next = scoreBefore + delta;
+        if (typeof s.max === "number" && s.max > 0 && (next < 0 || next > s.max)) return;
+
+        s.value = next;
+        s.confirmed = true;
+        s.lastChange = delta;
+        // The cue and the badge are driven from here, which is why this one
+        // write restores all three reported symptoms at once.
+        StatTracker.emitChange(model, "score", delta);
+    },
+
     // Identify the score's global from a known change. Candidates are narrowed
     // across successive notifications rather than guessed at from one, so a
     // coincidence has to survive every scoring event to stay in the running.
@@ -462,6 +507,13 @@ var StatTracker = {
         // consumer below is actually asking about.
         // D167: a score notification arrived this turn -- use it to identify the
         // score's global while the previous sample is still the newest one.
+        // D173: capture the score BEFORE anything this tick can move it. This
+        // is the value pinScoreByDelta must treat as `known` -- the total the
+        // game held before the notification -- and it is also what tells us,
+        // further down, whether the number has already been moved by RAM.
+        var scoreBefore = (model.stats.score && model.stats.score.confirmed
+            && typeof model.stats.score.value === "number") ? model.stats.score.value : null;
+
         if (StatTracker._pendingDelta) {
             StatTracker.pinScoreByDelta(model, StatTracker._pendingDelta, globals);
         }
@@ -496,6 +548,34 @@ var StatTracker = {
         StatTracker.promoteTurnCounter(model);
         StatTracker.promoteGlobals(model);
         StatTracker.readConfirmedGlobals(model, globals);
+
+        // D173 (operator: "the system just simply will not register it").
+        //
+        // The game announced "Your score has just gone up by two points." and
+        // the HUD stayed at 0, with no tone and no badge. D167 used that
+        // notification ONLY to identify which global holds the score, and on
+        // Anchorhead one event cannot identify it -- globals 15 and 16 both
+        // shadow the score, so no unique candidate emerges and pinScoreByDelta
+        // deliberately refuses to tie-break from a single event. Nothing then
+        // wrote stats.score, and because the cue and the badge both hang off
+        // emitChange, all three symptoms followed from that one freeze.
+        //
+        // Counting an announced change is a DIFFERENT job from identifying the
+        // slot, and D167 only did the second. The game stated its previous
+        // total (its own SCORE reply) and then stated the change; adding them
+        // is arithmetic on the game's own words, not a guess.
+        //
+        // Ordering is the whole safety argument, and comes from the grok seat's
+        // review: this runs AFTER pinScoreByDelta and AFTER
+        // readConfirmedGlobals, and `scoreBefore` was captured before either.
+        // So the pin still narrows against the absolute the game last confirmed
+        // and never against a delta-applied running total -- which would make
+        // it require globals to hold `total + delta`, a value RAM never holds,
+        // and the slot would then never pin at all.
+        if (StatTracker._pendingDelta) {
+            StatTracker.applyScoreDeltaToDisplay(model, StatTracker._pendingDelta, scoreBefore);
+        }
+
         // D169: once a carried-total slot is pinned it is read every turn,
         // with no command and no text -- so the figure moves the moment the
         // player picks something up or drops it.

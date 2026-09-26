@@ -3869,3 +3869,89 @@ sheet against the map rather than against a constant, so the two can never drift
 apart again (29 assertions). The selector accepts CharInput as well as
 LineInput, since the same CSS rule governs both and a story sitting at a
 "press any key" prompt would otherwise skip the check silently.
+
+
+## D173 An announced score change has to be COUNTED, not only used to pin
+
+Operator: "the score is not automatically updating -- this is the first two
+points earned in the game but the system just simply will not register it", and
+separately "I believe this caused the audio and the graphic not to display".
+
+Both are one defect, and D167's own text names it: the cue chain is
+`value change -> emitChange -> playCues`, so a frozen score silences everything
+downstream.
+
+### Why the first event could never register
+
+D167 used the notification ONLY to identify which global holds the score. On
+Anchorhead one event cannot identify it: globals 15 and 16 both shadow the
+score, so no unique candidate emerges and `pinScoreByDelta` deliberately refuses
+to tie-break from a single event -- a safety rule that is correct and is NOT
+relaxed here. Nothing then wrote `stats.score`, the HUD stayed at 0, and the
+tone and badge never fired.
+
+Counting an announced change is a different job from identifying the slot, and
+D167 only did the second.
+
+### What it does now
+
+The game stated its previous total in its own SCORE reply, then stated the
+change. Adding them is arithmetic on the game's own words. `stats.score` is
+moved by the delta and `emitChange` fires, which restores the number, the tone
+and the "+2" badge from one write.
+
+### Ordering is the whole safety argument
+
+From the grok seat's review, and it is a ship-blocker if got wrong: the delta is
+applied AFTER `pinScoreByDelta` and AFTER `readConfirmedGlobals`, against a
+`scoreBefore` captured before either ran. So the pin still narrows against the
+absolute the game last confirmed, never against a delta-applied running total --
+which would have made it require a global holding `total + delta`, a value RAM
+never holds, and the slot would then never pin at all. The fix would have broken
+the very mechanism it was meant to bootstrap.
+
+Four further guards, each answering a specific hazard raised in that review:
+
+  no baseline      a delta with nothing to add to is RELATIVE, and presenting it
+                   as the score would invent a total. Most games start at 0, but
+                   "most games" is not evidence (D24), so the row does not move
+                   until the game has stated an absolute.
+  status source    Zork 1 has a real Score column and `recordObservation`
+                   already emits from it; adding the delta too would count the
+                   same points twice.
+  already moved    if the value changed this tick -- by a pinned global reading
+                   RAM, or by a status sample -- the delta is not added on top.
+                   A source test alone misses this, because after pinning the
+                   source is "global:N" rather than "status".
+  replay           `fresh` comes from a buffer-length watermark, not a seen-set,
+                   and SCORE_DELTA is `.exec` without /g, so a restore or a
+                   transcript reprint can re-present an OLD notification as new.
+                   Keyed by turn and amount, which is what survives a redraw.
+
+### Rejected: an automatic SCORE probe
+
+Worth recording because it turned on a measurement that corrects D167. D167
+states "[the SCORE reply] costs a turn, so it is never issued automatically".
+That was written without being measured, and it is WRONG -- SCORE is a meta
+action:
+
+    anchor.z8   before 7  afterSCORE 7  afterLOOK 8
+    Zork1.z3    before 6  afterSCORE 6  afterLOOK 7   (status row agrees 6,6,7)
+    LostPig.z8  before 6  afterSCORE 6  afterLOOK 7
+    wump2ka.z5  before 7  afterSCORE 7  afterLOOK 8
+
+So an automatic bootstrap probe WAS available, and it would have handled the
+no-baseline case that this fix honestly refuses. It was not taken: the grok seat
+argued the announced change should be counted directly rather than answered with
+an injected command, which avoids transcript noise, reentrancy from issuing a
+command inside `Tick`, and any story where SCORE has a side effect. The
+measurement is recorded here because the false assumption in D167 should not
+survive to mislead a third time.
+
+### Coverage
+
+`harness/stat-tracker.js` 92 (7 new): the baseline from a real SCORE reply, the
+worded delta, the count itself, the score-up event that drives tone and badge,
+the replay guard, a later event still counting, and a delta with no baseline
+refusing to invent a score. `tools/stat-tracker-live.js` 12 and
+`tools/carry-value-live.js` 16 unchanged.

@@ -353,5 +353,74 @@ assert(pm3.globals.score == null && !pm3.stats.score,
     "a story that reported no scoring never grows a score row from a stray line");
 
 
-console.log("\n" + pass + " PASS / " + fail + " FAIL");
+
+
+// ---- D173: an announced change must be COUNTED, not only used to pin ------
+// The operator's exact case, Anchorhead: the game replied "0 out of a possible
+// 100", then announced "Your score has just gone up by two points." -- and the
+// HUD stayed at 0, with no tone and no badge. D167 used that notification only
+// to identify which global holds the score, and on this game one event cannot:
+// globals 15 and 16 both shadow the score, so pinScoreByDelta correctly refuses
+// to tie-break. Nothing wrote stats.score, and the cue and badge hang off that
+// write, so all three symptoms followed from one freeze.
+{
+    S._key = null; S._model = null; S._samples = []; S._events = []; S._turn = 0;
+    for (const k of Object.keys(store)) delete store[k];
+
+    S.observe({}, "");                       // establish a model
+    S.applyScoreReply("You have so far scored 0 out of a possible 100 points.");
+    let m = S.model();
+    assert(m.stats.score && m.stats.score.value === 0 && m.stats.score.max === 100,
+        "D173: the game's own SCORE reply gives an absolute baseline (0 of 100)");
+
+    assert(S.parseScoreDelta("Your score has just gone up by two points.") === 2,
+        "D173: the notification's worded delta is read as +2");
+
+    // The turn the notification arrives.
+    S._turn++;
+    S.takeEvents();
+    S._pendingDelta = 2;
+    S.observe({}, "");
+    S._pendingDelta = null;
+    m = S.model();
+    assert(m.stats.score.value === 2,
+        `D173: the announced change is counted (0 + 2 = 2, got ${m.stats.score.value})`);
+    const ev = S.takeEvents();
+    assert(ev.some(e => e.type === "score-up" && e.delta === 2),
+        "D173: and it emits score-up, which is what drives the tone and the badge");
+
+    // Replay: a restore or transcript reprint can re-present the SAME
+    // notification. It must not be counted twice.
+    S._pendingDelta = 2;
+    S.observe({}, "");
+    S._pendingDelta = null;
+    assert(S.model().stats.score.value === 2,
+        `D173: the same notification replayed on the same turn is not double counted (${S.model().stats.score.value})`);
+
+    // A later event on a later turn still counts.
+    S._turn++;
+    S._pendingDelta = 5;
+    S.observe({}, "");
+    S._pendingDelta = null;
+    assert(S.model().stats.score.value === 7,
+        `D173: a later announced change still counts (2 + 5 = 7, got ${S.model().stats.score.value})`);
+}
+
+// Without an absolute to add to, a delta must NOT invent a total (D24).
+{
+    S._key = null; S._model = null; S._samples = []; S._events = []; S._turn = 0;
+    for (const k of Object.keys(store)) delete store[k];
+    S.observe({}, "");
+    S._turn++;
+    S._pendingDelta = 2;
+    S.observe({}, "");
+    S._pendingDelta = null;
+    const sc = S.model().stats.score;
+    assert(!sc || sc.value !== 2,
+        "D173: a delta with no confirmed baseline does not invent a score");
+}
+
+
+
+console.log(`${pass} PASS / ${fail} FAIL`);
 process.exit(fail ? 1 : 0);
