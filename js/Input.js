@@ -423,8 +423,13 @@ var Input = {
     //   * The permission/availability checks are async and the permission prompt
     //     steals the touch, so feedback must not wait on them, and a release that
     //     happens before recognition has started must cancel cleanly.
-    // Nothing is inserted until the gesture ends, and nothing is ever submitted:
-    // the player reviews the transcript like anything they typed (R2).
+    // Nothing is inserted until the gesture ends. D167 (operator request)
+    // revises R2's "nothing is ever submitted": a HOLD gesture now submits the
+    // transcript on release when Global.Prefs.MicAutoSendOnRelease is on (the
+    // default), because holding the button is itself a deliberate "say this and
+    // go". TAP mode still only inserts and never submits -- the operator asked
+    // for that explicitly, and it keeps the original dictate-then-edit flow for
+    // anyone who wants it. The preference turns the hold behaviour off too.
     // ======================================================================
     NativeMicPlugin: () => (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.SpeechRecognition) || null,
     // D133: support means "a recognizer exists", nothing more. An earlier cut
@@ -690,9 +695,35 @@ var Input = {
             M.active = false; M.held = false; M.finalizing = false; M.seg = null; M.parts = [];
             if (errMsg) { M.ui("error", errMsg); return; }
             M.ui("idle");
-            if (text) Input.Mic.insert(text);
+            if (text) Input.Mic.insert(text, M.hold);
         },
-        insert: (text) => {
+        // `fromHold` is true only for a press-and-hold gesture, never for tap.
+        insert: (text, fromHold) => {
+            var autoSend = true;
+            try {
+                if (typeof Global !== "undefined" && Global.Prefs
+                    && Global.Prefs.MicAutoSendOnRelease === false) autoSend = false;
+            } catch (e) {}
+            if (fromHold && autoSend) {
+                // Submit through the same choke-point every other control uses
+                // (map room taps, exit chips, the radial), so voice is not a
+                // second submission path with its own rules.
+                var say = String(text || "").trim();
+                if (say) {
+                    try { Input.Clear(); } catch (e) {}
+                    try {
+                        if (typeof Actionable !== "undefined" && Actionable.Submit) {
+                            Actionable.Submit(say);
+                            return;
+                        }
+                    } catch (e) {}
+                    // No Actionable (library page, or it failed to load): fall
+                    // through and insert rather than losing what was said.
+                }
+            }
+            Input.Mic.place(text);
+        },
+        place: (text) => {
             var cur = $(".Input.LineInput").val() || "";
             Input.Inject((cur && !/\s$/.test(cur) ? " " : "") + text, false);
             // Do not Focus() on mobile -- leaves the IME up after speech.

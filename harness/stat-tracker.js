@@ -273,5 +273,85 @@ const html = fs.readFileSync(path.resolve(__dirname, "..", "play.html"), "utf8")
 assert(/StatTracker\.js/.test(html), "and is actually loaded by play.html");
 assert(/id="pl-stats"/.test(html), "and the tracker has its mount point in the equipment sheet");
 
+
+// ---- D167: identifying a stat's global from an announced change ----------
+// The operator's requirement is that stats be read HEADLESSLY -- from RAM, not
+// by asking the game. The obstacle was never reading a global, it was knowing
+// WHICH one, and both libraries volunteer that for free: "Your score has just
+// gone up by two points." costs no command and no turn.
+[["Your score has just gone up by two points.", 2],
+ ["[Your score has just gone up by one point.]", 1],
+ ["Your score has just gone down by three points.", -3],
+ ["[Your score has just gone up by 5 points.]", 5],
+ ["Your score has just gone up by ten points.", 10]].forEach(function (c) {
+    assert(S.parseScoreDelta(c[0]) === c[1],
+        "a score notification is read as a delta: " + JSON.stringify(c[0].slice(0, 40)));
+});
+assert(S.parseScoreDelta("You can't see any such thing.") === null,
+    "ordinary prose is never mistaken for a score change");
+
+// One delta narrows; it does not guess.
+S.reset();
+var pm = S.model();
+S._samples = [{ observed: {}, globals: [0, 5, 7, 0, 5] }];
+S.pinScoreByDelta(pm, 2, [0, 7, 7, 0, 7]);
+assert(pm.globals.score == null,
+    "two globals moved by the announced amount, so NEITHER is pinned -- a coincidence must not become the score");
+assert((pm.scoreCandidates || []).length === 2, "both are kept as candidates");
+
+// A second notification intersects them down to one.
+S._samples = [{ observed: {}, globals: [0, 7, 7, 0, 7] }];
+S.pinScoreByDelta(pm, 3, [0, 10, 7, 0, 9]);
+assert(pm.globals.score === 1,
+    "the slot that moved correctly BOTH times is the score -- narrowed across events, never guessed from one");
+assert(pm.stats.score && pm.stats.score.value === 10,
+    "and its live value comes straight out of that global");
+assert(String(pm.stats.score.source).indexOf("global:") === 0,
+    "the source records that it is now read from RAM, not from text");
+
+// Inform keeps a shadow copy of the score, so two slots can follow it forever.
+// Measured on Anchorhead: globals 15 and 16 both move with the score. Once a
+// second change has narrowed the field, a remaining tie is real and the
+// candidates are interchangeable for display.
+S.reset();
+var tie = S.model();
+S._samples = [{ observed: {}, globals: [0, 5, 5, 9] }];
+S.pinScoreByDelta(tie, 2, [0, 7, 7, 9]);
+assert(tie.globals.score == null, "the first change leaves the tie unresolved");
+S._samples = [{ observed: {}, globals: [0, 7, 7, 9] }];
+S.pinScoreByDelta(tie, 3, [0, 10, 10, 9]);
+assert(tie.globals.score === 1,
+    "after a second change two slots still moving together and holding the same value are interchangeable -- the lower is taken rather than deadlocking forever");
+assert(tie.stats.score.value === 10, "and it reports the right number");
+
+// A tie whose members DISAGREE is still ambiguous and waits.
+S.reset();
+var dis = S.model();
+S._samples = [{ observed: {}, globals: [0, 5, 1] }];
+S.pinScoreByDelta(dis, 2, [0, 7, 3]);
+S._samples = [{ observed: {}, globals: [0, 7, 3] }];
+S.pinScoreByDelta(dis, 2, [0, 9, 5]);
+assert(dis.globals.score == null,
+    "two slots that move together but hold DIFFERENT values are not interchangeable and stay unresolved");
+
+// A known total settles it in a single step.
+S.reset();
+var pm2 = S.model();
+pm2.stats.score = { key: "score", value: 5, confirmed: true, unit: "plain", kind: "score", seen: 2 };
+S._samples = [{ observed: {}, globals: [0, 5, 5, 0] }];
+S.pinScoreByDelta(pm2, 2, [0, 7, 7, 0]);
+assert(pm2.globals.score == null || pm2.stats.score.value === 7,
+    "with a known total the candidate must also HOLD that total after the change");
+
+// A game with no score is never given one.
+S.reset();
+var pm3 = S.model();
+pm3.scoreUnavailable = true;
+S._samples = [{ observed: {}, globals: [0, 1] }];
+S.pinScoreByDelta(pm3, 1, [0, 2]);
+assert(pm3.globals.score == null && !pm3.stats.score,
+    "a story that reported no scoring never grows a score row from a stray line");
+
+
 console.log("\n" + pass + " PASS / " + fail + " FAIL");
 process.exit(fail ? 1 : 0);

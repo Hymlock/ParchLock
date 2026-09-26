@@ -16,6 +16,9 @@ var Global = {
         // Mobile mic: true = hold-to-talk (default, noisy environments);
         // false = tap to toggle listen on/off.
         MicHoldToTalk: true,
+        // D167: a hold gesture submits what was heard on release. Tap mode is
+        // unaffected and always only inserts.
+        MicAutoSendOnRelease: true,
         // D100 read-aloud: default ON; new story buffer text only.
         ReadAloud: true,
         ReadAloudStatus: false,

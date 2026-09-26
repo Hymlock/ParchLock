@@ -46,7 +46,13 @@ var StatTracker = {
     // permanent gauge.
     CONFIRM_SAMPLES: 2,
     MAX_SAMPLES: 8,
-    MAX_GLOBALS: 64,
+    // D167: the Z-machine allows 240 globals and a story may keep a statistic
+    // anywhere in that range. Scanning only the first 64 silently truncated the
+    // search space for EVERY stat: measured on Anchorhead, the score lives in
+    // globals 15 and 16, but its turn counter is at 4/10 and other games put
+    // theirs far higher, so a short scan is a correctness limit rather than an
+    // optimisation. 240 u16 reads per sample is negligible next to a turn.
+    MAX_GLOBALS: 240,
 
     _samples: [],
     _events: [],
@@ -206,6 +212,111 @@ var StatTracker = {
         return Object.keys(out).length ? out : null;
     },
 
+    // ---- score-change notifications --------------------------------------
+    // D167: the operator's requirement is that the score be readable HEADLESSLY
+    // -- straight out of RAM, without asking the game or spending a turn. The
+    // obstacle was never reading a global; it was working out WHICH global,
+    // because promoteGlobals can only identify a slot once it has seen the
+    // value change, and on a phone there is no status text to see it change in
+    // (D137) and a one-off SCORE reply supplies no change either.
+    //
+    // Both libraries volunteer the missing piece unprompted. Inform prints
+    // "Your score has just gone up by two points." and ZIL the same in square
+    // brackets -- no command, no turn, just narration the game was printing
+    // anyway. A known DELTA is exactly what identifies the slot: the score
+    // global is the one whose value moved by precisely that much.
+    //
+    // So this is a bootstrap, not a text-based score. One notification pins the
+    // slot; from then on readConfirmedGlobals reads the number out of RAM every
+    // turn with no text involved at all, which is also what makes the cue fire
+    // on the exact turn the score moves.
+    NUMBER_WORDS: {
+        a: 1, an: 1, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7,
+        eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12, thirteen: 13,
+        fourteen: 14, fifteen: 15, sixteen: 16, seventeen: 17, eighteen: 18,
+        nineteen: 19, twenty: 20, thirty: 30, forty: 40, fifty: 50
+    },
+    SCORE_DELTA: /score\s+(?:has\s+)?just\s+gone\s+(up|down)\s+by\s+([a-z]+|\d+)\s+point/i,
+
+    parseScoreDelta: (text) => {
+        var m = StatTracker.SCORE_DELTA.exec(String(text || ""));
+        if (!m) return null;
+        var raw = String(m[2]).toLowerCase();
+        var n = /^\d+$/.test(raw) ? parseInt(raw, 10) : StatTracker.NUMBER_WORDS[raw];
+        if (!n || !isFinite(n)) return null;
+        return /down/i.test(m[1]) ? -n : n;
+    },
+
+    // Identify the score's global from a known change. Candidates are narrowed
+    // across successive notifications rather than guessed at from one, so a
+    // coincidence has to survive every scoring event to stay in the running.
+    pinScoreByDelta: function (model, delta, globals) {
+        try {
+            if (!delta || !globals || !globals.length) return;
+            var samples = StatTracker._samples.filter(function (x) { return x.globals && x.globals.length; });
+            var prev = samples.length ? samples[samples.length - 1].globals : null;
+            if (!prev || prev.length !== globals.length) return;
+            // A known absolute value is a second, independent constraint and it
+            // is usually enough to settle the slot outright: the score global
+            // must both have MOVED by the announced delta and now HOLD the
+            // resulting total. One notification narrowed 64 globals to three on
+            // Anchorhead; adding this pins it in one step whenever the total is
+            // already known from any source.
+            var known = (model.stats.score && typeof model.stats.score.value === "number"
+                         && model.stats.score.confirmed) ? model.stats.score.value : null;
+            var hits = [];
+            for (var i = 0; i < globals.length; i++) {
+                if (globals[i] - prev[i] !== delta) continue;
+                if (known !== null && globals[i] !== known + delta) continue;
+                hits.push(i);
+            }
+            if (!hits.length) return;
+            var prior = model.scoreCandidates;
+            if (prior && prior.length) {
+                var keep = hits.filter(function (i) { return prior.indexOf(i) >= 0; });
+                // An empty intersection means the earlier guess was wrong, not
+                // that this one is: start again from what was just observed.
+                hits = keep.length ? keep : hits;
+            }
+            model.scoreCandidates = hits;
+            model.scoreDeltaEvents = (model.scoreDeltaEvents || 0) + 1;
+            if (hits.length > 1) {
+                // One announced change never settles a tie -- a coincidence
+                // must not become the score. Only once a second change has
+                // narrowed the field is a remaining tie treated as real.
+                if (model.scoreDeltaEvents < 2) return;
+                // Several slots can legitimately follow the score at once --
+                // Inform keeps a shadow copy for its own change detection, and
+                // measured on Anchorhead globals 15 and 16 both move with it.
+                // When every surviving candidate holds the SAME value they are
+                // interchangeable for display, so there is nothing left to
+                // disambiguate; take the lowest and let a later contradiction
+                // demote it. Candidates that disagree are still ambiguous and
+                // wait for the next announced change.
+                var v0 = globals[hits[0]];
+                for (var k = 1; k < hits.length; k++) {
+                    if (globals[hits[k]] !== v0) return;
+                }
+            }
+            var idx = hits[0];
+            if (model.scoreUnavailable) return;
+            model.globals.score = idx;
+            var sc = model.stats.score;
+            if (!sc) {
+                sc = model.stats.score = { key: "score", label: "Score", unit: "plain",
+                                           kind: "score", seen: StatTracker.CONFIRM_SAMPLES,
+                                           max: null, confirmed: true, value: globals[idx],
+                                           lastChange: null };
+            }
+            sc.source = "global:" + idx;
+            sc.confirmed = true;
+            if (sc.value !== globals[idx]) {
+                sc.lastChange = globals[idx] - sc.value;
+                sc.value = globals[idx];
+            }
+        } catch (e) {}
+    },
+
     // ---- end-of-game banners --------------------------------------------
     // Every ending in both libraries prints a "*** ... ***" banner, so the
     // banner is classified rather than one sentence being matched. Anything
@@ -349,6 +460,12 @@ var StatTracker = {
         // Recording a sample only when something actually differs makes the
         // window span real changes rather than real time, which is what every
         // consumer below is actually asking about.
+        // D167: a score notification arrived this turn -- use it to identify the
+        // score's global while the previous sample is still the newest one.
+        if (StatTracker._pendingDelta) {
+            StatTracker.pinScoreByDelta(model, StatTracker._pendingDelta, globals);
+        }
+
         var prev = StatTracker._samples[StatTracker._samples.length - 1];
         var same = false;
         if (prev && prev.globals.length === globals.length) {
@@ -671,6 +788,22 @@ var StatTracker = {
             if (mem) {
                 var g = StatTracker.readGlobals(mem);
                 if (g.length) {
+                    // D167: a known total narrows the outstanding candidates on
+                    // its own -- any slot that does not currently HOLD that
+                    // number cannot be the score. This is what lets one press of
+                    // Identify finish a job an announced delta had started,
+                    // after which the value is read from RAM every turn.
+                    var cand = model.scoreCandidates;
+                    if (cand && cand.length > 1) {
+                        var keep = cand.filter(function (i) { return g[i] === parsed.score; });
+                        if (keep.length) {
+                            model.scoreCandidates = keep;
+                            if (keep.length === 1 && !model.scoreUnavailable) {
+                                model.globals.score = keep[0];
+                                s.source = "global:" + keep[0];
+                            }
+                        }
+                    }
                     var obs = { score: { key: "score", value: parsed.score, max: null, unit: "plain" } };
                     if (parsed.turns != null) obs.turns = { key: "turns", value: parsed.turns, max: null, unit: "plain" };
                     StatTracker._samples.push({ observed: obs, globals: g });
@@ -759,20 +892,30 @@ var StatTracker = {
         try {
             if (typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) mem = ZRamProvider.getMem();
         } catch (e) {}
-        StatTracker.observe(mem, StatTracker.statusText());
-
         // Only the text that arrived since the last look is scanned, so an
         // old banner still sitting in the scrollback is not re-counted.
+        var fresh = "";
         try {
             var buf = document.querySelector(".BufferWindow");
             var text = buf ? String(buf.innerText || buf.textContent || "") : "";
-            if (text.length > StatTracker._lastBufferLen) {
-                var fresh = text.slice(StatTracker._lastBufferLen);
-                StatTracker.observeText(fresh, StatTracker._turn);
-                StatTracker.consumeProbeReply(fresh);
-            }
+            if (text.length > StatTracker._lastBufferLen) fresh = text.slice(StatTracker._lastBufferLen);
             StatTracker._lastBufferLen = text.length;
         } catch (e) {}
+
+        // D167: read the score notification BEFORE observing, because pinning
+        // the slot compares this turn's globals against the previous sample --
+        // and observe() is what pushes the new one.
+        StatTracker._pendingDelta = fresh ? StatTracker.parseScoreDelta(fresh) : null;
+
+        StatTracker.observe(mem, StatTracker.statusText());
+        StatTracker._pendingDelta = null;
+
+        if (fresh) {
+            try {
+                StatTracker.observeText(fresh, StatTracker._turn);
+                StatTracker.consumeProbeReply(fresh);
+            } catch (e) {}
+        }
 
         StatTracker.Render();
         StatTracker.playCues(StatTracker.takeEvents());
@@ -785,6 +928,19 @@ var StatTracker = {
     // that let D120's tutorial.html ship missing. An oscillator needs none of
     // them. The context is created lazily so it is born inside a real user
     // gesture wherever possible, which is what autoplay policy requires.
+    // D167: an AudioContext created outside a user gesture starts SUSPENDED on
+    // Android and in Chrome, so the first cue would be silent even once events
+    // flow correctly. Arming it on the first real touch/click costs nothing and
+    // is the only moment the platform will allow it.
+    _acArmed: false,
+    armAudio: function () {
+        if (StatTracker._acArmed) return;
+        StatTracker._acArmed = true;
+        try {
+            var ac = StatTracker.audio();
+            if (ac && ac.state === "suspended" && ac.resume) ac.resume();
+        } catch (e) {}
+    },
     _ac: null,
     audio: () => {
         try {
@@ -947,12 +1103,34 @@ var StatTracker = {
             }
 
             // A brief flash on change, paired with the cue.
+            // D167: the operator asked for a small graphic, not only a colour
+            // flash. A rising "+2" is readable at a glance and still works on a
+            // muted phone.
+            //
+            // It cannot be a one-shot element with its own timer: Render is
+            // driven by WorldModel.apply and was measured running about a
+            // hundred times per turn, and each pass wipes the rows -- a badge
+            // created on the tick the score moved was destroyed ~25ms later by
+            // the next one, which is why nothing was ever visible. Instead the
+            // change is given a deadline and every render inside that window
+            // draws it, so it survives the rebuilds and then simply stops.
             if (s.lastChange) {
-                chip.classList.add(s.lastChange > 0 ? "pl-stat-up" : "pl-stat-down");
-                setTimeout(function () {
-                    chip.classList.remove("pl-stat-up", "pl-stat-down");
-                }, 1400);
+                // A turn counter and a clock advance every single turn, so a
+                // badge on those is not an event -- it is permanent clutter.
+                // Only a change the player would want pointed out is marked.
+                var worthMarking = (s.key !== "turns" && s.key !== "time");
+                if (worthMarking) {
+                    s.badgeDelta = s.lastChange;
+                    s.badgeUntil = Date.now() + 1500;
+                }
                 s.lastChange = null;
+            }
+            if (s.badgeUntil && Date.now() < s.badgeUntil && s.badgeDelta) {
+                var badge = document.createElement("span");
+                badge.className = "pl-stat-badge " + (s.badgeDelta > 0 ? "up" : "down");
+                badge.textContent = (s.badgeDelta > 0 ? "+" : "") + s.badgeDelta;
+                chip.appendChild(badge);
+                chip.classList.add(s.badgeDelta > 0 ? "pl-stat-up" : "pl-stat-down");
             }
             rows.appendChild(chip);
         });
@@ -1046,6 +1224,14 @@ var StatTracker = {
 try {
     if (typeof document !== "undefined" && document.addEventListener) {
         document.addEventListener("DOMContentLoaded", function () { StatTracker.Bind(); });
+        // One-shot, capture-phase, passive: never interferes with the gesture
+        // it is listening for.
+        ["pointerdown", "touchstart", "keydown"].forEach(function (evt) {
+            document.addEventListener(evt, function armOnce() {
+                try { StatTracker.armAudio(); } catch (e) {}
+                document.removeEventListener(evt, armOnce, true);
+            }, true);
+        });
     }
 } catch (e) {}
 

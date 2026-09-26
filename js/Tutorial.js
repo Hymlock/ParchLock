@@ -130,9 +130,11 @@ var Tutorial = {
         },
         {
             title: "Exits, above the story",
-            body: "Every way out of your current room appears in the band under the status line, with the room " +
-                  "each one leads to once you have been there. Tap one to travel. The band grows and pushes the " +
-                  "story down when there is more to show, so it never covers your text.",
+            body: "Every way out of your current room is shown for you. Compass directions sit in the band " +
+                  "under the status line, and the rest run down the left and right edges of the screen — each " +
+                  "labelled with the room it leads to once you have been there. Tap any of them to travel. " +
+                  "The band grows and pushes the story down when there is more to show, so it never covers " +
+                  "your text.",
             target: ["#exits .row.horizontal.top", "#windowport .GridWindow.reverse", "#windowport .BufferWindow"]
         },
         {
@@ -162,7 +164,9 @@ var Tutorial = {
         {
             title: "Notes",
             body: "You can attach your own notes to any room — a locked door, a code, something to come back " +
-                  "for. Notes are searchable alongside the rooms themselves.",
+                  "for. To make one, press and hold a room in this list (right click on a desktop) and choose " +
+                  "to add a note. If you would rather have a visible button on every room, turn that on in " +
+                  "Options. Notes are searchable alongside the rooms themselves.",
             target: ["#rooms-list", "#map"],
             sheet: "map"
         },

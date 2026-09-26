@@ -4362,3 +4362,27 @@ body.pl-mobile #pl-input-mic.pl-mic-unavailable::after {
 		box-sizing: border-box;
 	}
 }
+
+/* D167: the small graphic that accompanies a score change. Deliberately legible
+   on its own -- the audio cue is easy to miss on a muted phone. */
+.pl-stat { position: relative; }
+.pl-stat-badge {
+	position: absolute;
+	right: 6px;
+	top: 2px;
+	font-size: 13px;
+	font-weight: bold;
+	pointer-events: none;
+	animation: pl-stat-rise 1.5s ease-out forwards;
+}
+.pl-stat-badge.up { color: var(--pl-accent, #2a6); }
+.pl-stat-badge.down { color: #c44; }
+@keyframes pl-stat-rise {
+	0%   { opacity: 0; transform: translateY(6px); }
+	15%  { opacity: 1; transform: translateY(0); }
+	70%  { opacity: 1; transform: translateY(-6px); }
+	100% { opacity: 0; transform: translateY(-14px); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.pl-stat-badge { animation: none; opacity: 1; }
+}

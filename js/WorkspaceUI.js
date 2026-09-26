@@ -109,6 +109,19 @@ var WorkspaceUI = {
             .appendTo(micLabel);
         micLabel.append(document.createTextNode("Hold mic to talk (off = tap to toggle)"));
 
+        // D167: holding the mic is itself a deliberate "say this and go", so a
+        // hold-release submits by default. Tap mode never submits, whatever
+        // this is set to.
+        var micSendLabel = $("<label>").appendTo("#game-options");
+        $("<input type='checkbox'>")
+            .prop("checked", Global.Prefs.MicAutoSendOnRelease !== false)
+            .on("change", function () {
+                Global.Prefs.MicAutoSendOnRelease = !!this.checked;
+                Global.SavePrefs();
+            })
+            .appendTo(micSendLabel);
+        micSendLabel.append(document.createTextNode("Send automatically when the mic is released (hold mode only)"));
+
         // D100 read-aloud (Options only; no chrome button). Default ON = new story text.
         var raLabel = $("<label>").appendTo("#game-options");
         var raCheck = $("<input type='checkbox'>")
