@@ -3801,3 +3801,46 @@ One residual measured after the fix: a tick with a VALID roomId (45) and
 `discoveredObjects` 0. That is a scope/wipe question rather than a room-identity
 one, and the grok seat's analysis of `snapshot`'s internal-name handling and
 `WorldModel`'s D54 block is the place to resume.
+
+
+### D171 addendum: D84 kept its precedence, and three claims verified
+
+The grok seat audited 7b493e2 and confirmed the fix on the operator's own save:
+roomId 34 (was a stuck 25), objects [fungus, river, light rain, rubble],
+liveNouns 5, marks 5 -- where before it was marks 2 with exits only and no
+items. It also conceded the point it had argued against: the visible nouns
+belong to C_ROOMS_10, not C_ROOMS_1, and it had been treating the stuck id as
+ground truth.
+
+Three things it raised, all now settled by measurement rather than argument:
+
+**D84 was made unreachable, and is restored.** Returning the indexed room first
+short-circuited `findLikelyLocation` before D84's learned-slot consult, making
+that path dead code for any story with a compiled index. D84's slot is learned
+from repeated, contradiction-free observation of the exact game, which is
+stronger evidence than a number read off the status row, so it is now consulted
+first. It is null on wump2ka (nothing confirmed for that identity), so this costs
+nothing there and restores the learned path everywhere else.
+
+**D62's renumbering claim: not reproduced.** If wump2ka really relabels the same
+RAM room with a different "Room #N" on revisit, D171's identity would hop
+between C_ROOMS boxes and the map would grow duplicates. Measured over 3
+sessions and 40 moves each: 114 revisit ticks, ZERO conflicts -- no printed
+number ever carried a different room title, and no title ever appeared under two
+numbers. Map rooms stayed at 1-4 with no duplicate growth. D62's original
+observation is consistent with being an artifact of the stuck-id bug D79 found
+afterwards.
+
+**D54's naming system: intact.** Operator: "we had a naming system for rooms
+that prevented the appearance of those stupid back end names -- those should
+never appear to the user". Because D171 keeps indexed rooms alive in `snapshot`
+instead of zeroing them, this needed re-checking. Measured across 42 ticks,
+scanning map data, Known Rooms, the exits band, the notes panel and
+CurrentRoom: ZERO internal names shown, ZERO empty room names. The map reads
+"A tiny, rough cave", "A vast, pocked chamber" and so on, exactly as D54/D80/
+D165 intend.
+
+**The residual is not a defect.** The measured tick with a valid roomId 45 and
+discoveredObjects 0 was audited as `scopeObjects` genuinely finding no printable
+children -- a cave with nothing named in RAM. That is honest absence (D24), not
+a wipe, and the D54 block should not be changed for it.

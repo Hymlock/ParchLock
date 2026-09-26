@@ -919,6 +919,26 @@ var ZRamReader = {
         var h = ZRamReader.header(mem);
         if (!h) return 0;
 
+        // D84 keeps its precedence. Its slot is LEARNED from repeated,
+        // contradiction-free observation of this exact game, which is stronger
+        // evidence than a number read off the status row -- and the grok seat's
+        // audit of D171 caught that returning the indexed room first made D84
+        // unreachable for every story that has a compiled index, i.e. dead code
+        // rather than a deliberate ordering. It is null on wump2ka today
+        // (nothing confirmed for that identity), so this costs nothing there
+        // and restores the learned path everywhere else.
+        try {
+            if (typeof AttrCalibrator !== "undefined" && AttrCalibrator.confirmedLocationGlobal) {
+                var learned = AttrCalibrator.confirmedLocationGlobal(mem);
+                if (learned != null) {
+                    var learnedVal = ZRamReader.u16(mem, h.globals + learned * 2);
+                    if (learnedVal >= 2 && ZRamReader.isPlausibleMapRoom(mem, learnedVal)) {
+                        return learnedVal;
+                    }
+                }
+            }
+        } catch (eL84) {}
+
         // D171: this is the path snapshot() actually uses, so the compiled
         // room index is consulted here as well as in findLocationGlobal.
         // A story that numbers its rooms in the object table and prints that
