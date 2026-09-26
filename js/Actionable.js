@@ -839,12 +839,45 @@ var Actionable = {
         // visits. Used only when the name match found nothing current: a match
         // that is already after the last input is left exactly as it was, so
         // every game whose names ARE stable behaves as before.
-        var recentHeading = -1;
+        // Measured, and it is why the name match alone cannot work here: with
+        // lastInput at 196 in a 200-line buffer, the name matched a banner at
+        // line 81 -- an earlier visit whose generated label happened to agree.
+        // RoomLines then covered that old room's text, while the description
+        // the player was reading sat unmarked between the real banner and the
+        // command. `latest` does not rescue it either: measured latestCount 3,
+        // because the player had since typed another command, so the visible
+        // description is ABOVE the last input, not after it.
+        //
+        // The most recent banner in the transcript is the room you are in --
+        // you cannot be in a room whose banner was printed before a later
+        // room's. That is positional and needs no stable label, which is the
+        // whole difficulty in wump2ka (D62). Applied only when it is MORE
+        // RECENT than the name match, so a game whose names are stable keeps
+        // picking exactly the line it picked before.
+        // Two guards, both from measurements by the grok seat against the
+        // operator's save, which falsified a blunter version of this rule:
+        //
+        //   heading(name-match) 49, lastInput 47, lastBanner 63
+        //
+        // Taking the last banner unconditionally moved the anchor to 63 -- an
+        // end-of-game banner -- so RoomLines covered the score/quit epilogue,
+        // liveNouns went empty and marks fell to 0 while the look with Exit
+        // 1/2/3 was still on screen. Overshooting is its own bug.
+        //
+        // 1. A name match that is ALREADY after the player's last command is
+        //    the current room's banner. Nothing later can improve on it.
+        // 2. Not every subheader is a room. The end-of-game banners are
+        //    asterisk-delimited in both libraries (ZIL four, Inform three --
+        //    see StatTracker's death/win detection), so they are excluded as
+        //    anchors rather than being allowed to define a room's text.
+        var lastBanner = -1;
         lines.forEach((line, index) => {
-            if (index <= lastInput) return;
-            if ($(line).find('.Style_subheader').addBack('.Style_subheader').length) recentHeading = index;
+            var hs = $(line).find('.Style_subheader').addBack('.Style_subheader');
+            if (!hs.length) return;
+            if (/\*\*\*/.test(String(line.textContent || ""))) return;
+            lastBanner = index;
         });
-        if (recentHeading >= 0 && heading <= lastInput) heading = recentHeading;
+        if (heading <= lastInput && lastBanner > heading) heading = lastBanner;
         var latest = lines.slice(Math.max(lastInput, heading >= lastInput ? heading : -1) + 1).filter(line => !Actionable.IsInstruction(line));
         var text = latest.map(line => line.textContent).join("\n");
         var command = $("#windowport .Style_input").last().text().trim().toLowerCase();

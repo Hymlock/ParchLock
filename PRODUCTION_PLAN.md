@@ -3672,3 +3672,41 @@ at all, and Enchanter names its room after an object ("scribbled scroll").
 `tools/ui-regression.js` times out on this machine. Verified environmental, not
 a regression: the D168 commit, which passed earlier the same day, times out
 identically with these changes stashed and with a clean browser.
+
+
+### D170 addendum: the locator's second guard, from an adversarial pass
+
+The grok seat measured the first version of this rule against the operator's
+save and falsified it. Recorded because the failure it found is the same shape
+as the bug it was fixing:
+
+    heading(name-match) 49, lastInput 47, lastBanner 63
+
+Taking the last banner unconditionally moved the anchor to 63 -- an end-of-game
+banner -- so RoomLines covered the score/quit epilogue, liveNouns went empty and
+marks fell to 0 while the look with Exit 1/2/3 was still on screen. Fixing an
+anchor that was too old by always taking the newest one simply made it too new.
+
+The tell is in the numbers: 49 was already AFTER lastInput 47, so it was the
+current room's banner and nothing later could improve on it. Two guards now:
+
+  1. `heading <= lastInput` is required before the last banner may win. A name
+     match already after the player's last command is kept.
+  2. A subheader containing `***` is never an anchor. Both libraries delimit
+     end-of-game banners that way (ZIL four asterisks, Inform three), the same
+     convention StatTracker's death/win detection relies on.
+
+Three of that seat's other hypotheses were also falsified with measurements, and
+are recorded so they are not re-run: the payload does NOT go non-structural on a
+swim turn (structural true, engineMode structural, probe z-ram-live on every
+snapshot including zero-mark ticks); the signature early-return happens BEFORE
+Stale(), so it cannot be what leaves marks stale; and the room title IS emitted
+as `Style_subheader` in this save, while the exit lines are `Style_normal` and
+are not eaten by IsInstruction.
+
+Operator detail that narrows what remains: "everything worked fine on regular
+room startups -- where the startup did not have all exits blocked by water."
+A zero-mark tick has been measured with heading -1 AND discoveredObjects 0,
+which is an empty payload rather than a misplaced anchor -- so the remaining
+fault is most likely in resolving objects while the player is in water, not in
+locating the banner.

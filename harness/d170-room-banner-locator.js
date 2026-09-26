@@ -42,12 +42,13 @@ function locate(lines, lastInput, currentRoom, payloadRoomName) {
         if (headingNames.indexOf(clean(line.text).toLowerCase()) !== -1) heading = index;
     });
 
-    let recentHeading = -1;
+    let lastBanner = -1;
     lines.forEach((line, index) => {
-        if (index <= lastInput) return;
-        if (line.subheader) recentHeading = index;
+        if (!line.subheader) return;
+        if (/\*\*\*/.test(line.text)) return;   // end-of-game banner, not a room
+        lastBanner = index;
     });
-    if (recentHeading >= 0 && heading <= lastInput) heading = recentHeading;
+    if (heading <= lastInput && lastBanner > heading) heading = lastBanner;
     return heading;
 }
 
@@ -110,6 +111,27 @@ function buildBuffer() {
     lines[185] = { text: 'filler 185', subheader: false };
     const h = locate(lines, 196, 'Nowhere', 'Nowhere');
     check(h === -1, `no banner found reports -1 rather than guessing (got ${h})`);
+}
+
+// ---- grok seat, #790: the blunt "last banner wins" rule OVERSHOOTS -------
+// Measured against the operator's save: heading(name-match) 49, lastInput 47,
+// lastBanner 63. Taking 63 anchored RoomLines to the score/quit epilogue and
+// dropped marks to 0 while the look with Exit 1/2/3 was still on screen.
+{
+    const lines = [];
+    for (let i = 0; i < 70; i++) lines.push({ text: 'filler ' + i, subheader: false, input: false });
+    lines[47] = { text: '>look', subheader: false, input: true };
+    lines[49] = { text: 'A vast, textured, watery region', subheader: true };
+    for (let i = 50; i <= 62; i++) lines[i] = { text: 'Exit ' + (i - 49) + ' curves away.', subheader: false };
+    lines[63] = { text: '*** You have died ***', subheader: true };
+
+    const h = locate(lines, 47, 'A vast, textured, watery region', 'A vast, textured, watery region');
+    check(h === 49, `a name match already after the last command is kept (got ${h})`);
+    check(h !== 63, 'the end-of-game banner never becomes the room anchor');
+
+    // Even with no name match at all, an asterisk banner is not a room.
+    const h2 = locate(lines, 47, 'Nowhere at all', 'Nowhere at all');
+    check(h2 !== 63, `an asterisk banner is excluded as an anchor (got ${h2})`);
 }
 
 console.log(`${pass} PASS / ${fail} FAIL`);
