@@ -714,3 +714,163 @@ Recommendation, in order:
 - `HIT POINTS: 15/15` was read at full health. Whether that game's maximum ever moves is unverified, so the
   denominator must be re-read every turn rather than latched.
 - Sherlock's and curses' unlabelled date/turn columns are recognised as text but not yet modelled.
+
+# D167 plan — nine operator-reported items (investigation done, nothing implemented yet)
+
+Grounded in `ARCHITECTURE_UML.md` §55 (D121 reflow band), the D95 voice-input entry,
+D149's tracker design and the current code. Each item below says what was MEASURED,
+what the fix is, and what is still unknown.
+
+---
+
+## 1. Tutorial: the exits step describes only the top band
+
+Step 6 says "Every way out of your current room appears in the band under the status
+line", but the operator's screenshots show exits also rendered on the **left and right
+rails** (`#exits .row.vertical.left` / `.right` — "W Narrow Street", "SE Alley", "N
+Narrow Beach"). `css/ParchLock.css:3422` confirms the vertical rails are a real,
+separately-styled surface.
+
+**Fix**: reword step 6 to describe both surfaces — the band above the story and the
+rails down each side — and say that tapping any of them travels. Wording only; no
+behaviour change. `js/Tutorial.js` STEPS[5].
+
+## 2. Tutorial: the notes step never says how to make a note
+
+Step 10 explains what notes are and that they are searchable, but not the gesture.
+D112 built the interaction: hold (or right-click) a room in Known Rooms to add a note,
+plus an optional always-visible add button behind `Global.Prefs.ShowNotesAddButton`
+(default false).
+
+**Fix**: extend step 10's body with the actual gesture, and mention the Options
+toggle for players who would rather have a visible button. Wording only.
+
+## 3. Microphone: press-and-hold should auto-send
+
+Already two modes (D95, `js/Input.js:412`): `Global.Prefs.MicHoldToTalk`, defaulting to
+hold (`js/Input.js:630`). What is missing is submission — a hold-release drops the
+transcript into the line input and stops there.
+
+**Fix**: new preference `MicAutoSendOnRelease`, default **on**, consulted only in HOLD
+mode. On release with a non-empty transcript, submit through `Actionable.Submit` (the
+single choke-point every other control already uses) instead of only filling the field.
+Tap mode is explicitly unchanged — the operator asked for tap NOT to auto-send, which
+also preserves the "dictate, then edit" flow.
+
+Risk: a mis-heard phrase is submitted as a turn. Mitigated by it being a preference and
+by tap mode remaining manual.
+
+## 4 + 5. The score does not update, so no sound and no graphic fire
+
+**These are one defect.** The cue chain is `value change -> emitChange -> _events ->
+playCues` (`js/StatTracker.js:426`, `:778`, `:831`), and the flash is the `pl-stat-up`
+class added in `Render` when `lastChange` is set (`:950`). If the model's score never
+moves, nothing downstream can fire. The operator's screenshot shows `SCORE 0 / 100`
+while the story reports 5.
+
+Why it is stuck, measured earlier: Anchorhead's status grid is too narrow on a phone to
+print a score (D137), so the text source yields nothing; and `promoteGlobals` only pins
+a global after the stat has been seen to **change** across samples, which a single
+SCORE reply can never provide.
+
+**The operator's requirement is that this be headless** — read from RAM, not by asking
+the game or parsing prose. The plan honours that, with one bootstrap:
+
+1. **Bootstrap (one-off, free).** Inform prints "Your score has just gone up by two
+   points." of its own accord — visible in the operator's screenshot 19, costing no
+   turn and requiring no command. Parsing that delta gives the one thing the promoter
+   lacks: a known change. With `score = N` from the SCORE reply and a known delta `d`,
+   the candidate set collapses to the single global whose value moved by exactly `d`.
+2. **Steady state (fully headless).** Once pinned, `readConfirmedGlobals` already reads
+   the score straight from RAM every turn with no text involved, which is what makes
+   the cue fire on the exact turn the score moves.
+3. A contradiction demotes the slot and the bootstrap can run again, so this is
+   self-healing rather than a one-shot guess.
+
+Also to verify while here: the cue path itself has never been observed firing end to
+end. `playCues` skips when `document.hidden`, and `audio()` creates the AudioContext
+lazily — on Android a context created outside a user gesture starts suspended, so the
+first cue may be silent even once events flow. Needs a real check, and possibly a
+resume-on-first-touch.
+
+**Graphic**: `pl-stat-up` is currently a 1.4s background flash on the chip. The operator
+asked for "a small graphic". Propose a brief `+N` badge rising from the score chip,
+which is also meaningful when the sound is off or the device is muted.
+
+## 6. Drag and drop makes the equipment screen jump
+
+`EquipmentUI.Render` is called from `Actionable.RenderInventory` on every inventory
+refresh, and D127 already defers a rebuild that lands mid-drag (`_renderPending`). The
+remaining jump is the rebuild that runs on the NEXT payload after the drop: the list is
+wiped (`host.innerHTML = ""`) and rebuilt, so the scroll offset resets and the sheet
+snaps.
+
+**Fix**: preserve and restore the scroll offset of the scrolling ancestor across a
+rebuild, and cancel the drag auto-scroll RAF (`_scrollRaf`) on drop rather than letting
+a queued frame land afterwards. No behavioural change beyond the screen staying put.
+
+## 7. Auto-scroll to new output, with the start of the new text visible
+
+`ParchLock.ScrollToBottom` exists (`js/ParchLock.js:305`) and is already called on
+restore (`js/UndoRestoreSync.js:31`). There is no general "new output arrived" hook that
+scrolls.
+
+**Fix**, two parts:
+- New preference `AutoScrollOnOutput`, default **on**, with an Options toggle.
+- Scroll on new output. The operator's better request is to stop at the START of the
+  new text rather than the bottom, so a long room description is read from its first
+  line. Implement as: scroll so the first new line sits just under the reflow band, and
+  fall back to bottom when the new text is shorter than the viewport. The marker for
+  "where the new text begins" already exists in spirit — `ReadAloud.collectNewLines`
+  tracks exactly that boundary — so the same idea can be reused without duplicating it.
+
+## 8. Anchorhead's manual is taken but never appears in inventory
+
+Not diagnosed, and I will not guess at it. What is established:
+
+- The object cannot be found statically: no object in Anchorhead has "manual" in its
+  short name, and an alias search finds nothing either because Anchorhead's objects
+  largely mine no vocabulary at all (measured in D150 — even "real estate office door"
+  returns `aliases: []`).
+- Depth is NOT the cause. `walkVisibleDescendants(root, 2)` reaches three levels, and
+  the operator's own screenshot shows keys inside a keyring inside a worn trenchcoat
+  being listed correctly.
+- So the likely candidates are that the game parents it somewhere the inventory root
+  does not cover, or that its short name is parenthesised/meta and the walk skips it.
+
+**Needs a reproduction.** Cheapest route: drive Anchorhead to the Library with a
+walkthrough in a live probe, take the manual, and dump the object's id, parent chain and
+attributes against `payload.inventory`. That is a long scripted session but it is
+deterministic and it is the only way to answer this honestly.
+
+## 9. The black band behind the top directions failed
+
+Architecture is D121 (`ARCHITECTURE_UML.md` §55.2): `#exits` is a reflow band whose
+measured height is published as `--pl-band-h` (`js/MobileLayout.js:242`); the story
+buffer reserves it as `padding-top` (`css/ParchLock.css:3618`) and `#windowport::before`
+paints an opaque mask of exactly `--pl-band-h + 4px` (`:3633`).
+
+In the operator's Sitting Room screenshot the chip is drawn over story text, so mask
+height and buffer reserve have diverged from the band's real height for that frame. The
+measurement is deliberately skipped when unchanged (`if (h === lastH) return;`) and is
+coalesced to one read per frame, so a plausible cause is a band height that changes
+without any of the watched mutation sources firing.
+
+**Needs measurement, not a guess**: reproduce a one-chip band in a room that also has a
+right-rail exit, and compare the live `--pl-band-h`, the band's `getBoundingClientRect`,
+the buffer's computed `padding-top` and the mask's height in the same frame.
+
+---
+
+## Order of work
+
+1. Items 1, 2 (tutorial wording) and 3 (mic auto-send) — small, independent, low risk.
+2. Items 4 + 5 (score bootstrap, headless tracking, cue verification, +N badge) — the
+   highest-value fix, since it makes the whole tracker live.
+3. Items 6 and 7 (scroll preservation, auto-scroll preference).
+4. Item 9 (band measurement) — needs a live reproduction first.
+5. Item 8 (Anchorhead manual) — needs the scripted walkthrough; done last because it is
+   the most expensive to reproduce and affects one observed item.
+
+Each gets its regression coverage in the same pass, and `CACHE_VERSION` bumps once at
+the end.
