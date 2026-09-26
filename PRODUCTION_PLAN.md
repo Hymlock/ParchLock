@@ -3710,3 +3710,94 @@ A zero-mark tick has been measured with heading -1 AND discoveredObjects 0,
 which is an empty payload rather than a misplaced anchor -- so the remaining
 fault is most likely in resolving objects while the player is in water, not in
 locating the banner.
+
+
+## D171 The compiled room index: why Wumpus underlined nothing
+
+Operator: "this instance of Wumpus does not want to underline exits or items",
+and crucially "everything worked fine on regular room startups".
+
+D170 fixed two real faults in WHERE the room's text was found. This is the fault
+in WHICH ROOM the app thought the player was in, and it is the one that produced
+the operator's bare rooms.
+
+### The measurement
+
+wump2ka compiles its rooms as numbered objects -- C_ROOMS_1 is object 25 and
+C_ROOMS_121 is object 145, contiguous -- and prints that same index to the
+player as "Room #N". Asking, for every tick, which candidate room's objects
+actually appear in the text the game just printed:
+
+    5 sessions, 45 ticks
+    the two answers AGREED                                 : 39
+    disagreed                                              : 6
+      findLocationGlobal described the visible room        : 0
+      the compiled-index answer described the visible room : 6
+
+    example, printed "Room #4":
+      findLocationGlobal -> id 35, 7 objects, 0 of them on screen
+      compiled index     -> id 28, 2 objects, 1 on screen ("river", "fungus")
+
+39/45 agreement is itself the evidence that the mapping is real; across 121
+rooms, chance agreement would be negligible. D79's own entry records the same
+mapping from the other side: "You are in room #2" with the correct RAM id 26,
+and C_ROOMS_2 is object 26.
+
+### Why the existing scan could not get there
+
+Two distinct failures, both measured:
+
+    printed #25  correct id 49: refs 2, kids 1  -> LOST to id 51 (refs 4)
+    printed #10  correct id 34: refs 4, kids 5  -> REJECTED by isPlausibleMapRoom
+
+The second cannot be fixed by reweighting, because the correct room was never an
+eligible candidate. That gate is attribute-based, and this story randomises
+attribute bits per session (D57/D58) -- the same mechanism D75 had to route
+around for the inventory holder. A compiled name of C_ROOMS_<n> is the
+compiler's own evidence that the object IS a room, so it is not subject to that
+randomisation and the gate is skipped for an indexed room.
+
+A wrong room means `scopeObjects` enumerates objects the player cannot see, so
+the printed items have nothing to match and NOTHING underlines -- decided at
+startup and persisting for the session, exactly as reported.
+
+### What was changed
+
+`ZRamReader.compiledRoomIndex` builds n -> objectId once per game identity by
+scanning the object table for the compiler's own `C_ROOMS_<n>` names.
+`printedRoomNumber` reads the number the story prints in its status row.
+`findLikelyLocation` (the path `snapshot` actually uses) and
+`findLocationGlobal` both consult it first, and `snapshot` no longer lets the
+attribute plausibility gate veto an indexed room.
+
+Identity remains the RAM ObjectId throughout (D47). The printed number only
+SELECTS among real compiled objects -- it never becomes an id, is never stored
+and never names a room -- and the status row stays display-only (D54). Gated on
+the story actually having such an index, so every other game falls through to
+the existing scan untouched.
+
+### Verification
+
+wump2ka: 8 sessions x 30 turns, ZERO rooms with visible exit text and no marks.
+The same probe previously failed in most runs. Marks 4-11 throughout.
+
+Cross-module at 412px, byte-identical to baseline: Anchorhead 6 marks / 3 rooms,
+Zork1 0 marks / 3 rooms (pre-existing), Enchanter 3 / 1, LostPig 6 / 1, 905
+10 / 2. Suites: d170-room-banner-locator 11, d162 38, d158 8, d31 60,
+stat-tracker 85, highlight-scope, alley-actionable, alley-ram-actionable,
+map-pathing -- all pass.
+
+### Rejected while doing this, and why it is recorded
+
+A companion change in `js/WorldModel.js` -- relaxing `refineRoomDisplayName`'s
+early return and no longer discarding exits/objects in the D54 internal-name
+block -- was implemented, measured, and REVERTED: it took Enchanter from 3 marks
+to 0, reproducibly, twice against twice. Bisected by file. The remaining
+residual below is real but not worth a cross-module regression.
+
+### Still open
+
+One residual measured after the fix: a tick with a VALID roomId (45) and
+`discoveredObjects` 0. That is a scope/wipe question rather than a room-identity
+one, and the grok seat's analysis of `snapshot`'s internal-name handling and
+`WorldModel`'s D54 block is the place to resume.

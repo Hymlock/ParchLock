@@ -918,6 +918,22 @@ var ZRamReader = {
     findLikelyLocation: (mem, playerId, textHint) => {
         var h = ZRamReader.header(mem);
         if (!h) return 0;
+
+        // D171: this is the path snapshot() actually uses, so the compiled
+        // room index is consulted here as well as in findLocationGlobal.
+        // A story that numbers its rooms in the object table and prints that
+        // same number to the player has told us which room it is; see the
+        // full reasoning on findLocationGlobal. Gated on the index existing,
+        // so a story without one is untouched.
+        try {
+            var roomIdx = ZRamReader.compiledRoomIndex(mem);
+            if (roomIdx && roomIdx.count) {
+                var printedNo = ZRamReader.printedRoomNumber();
+                var indexed = (printedNo != null) ? roomIdx.table[printedNo] : null;
+                if (indexed != null && indexed >= 2) return indexed;
+            }
+        } catch (eRi) {}
+
         var count = ZRamReader.objectCount(mem, h);
         function isMeta(nm) {
             nm = String(nm || "");
@@ -1030,9 +1046,88 @@ var ZRamReader = {
     // or two special-purpose slots. This is now the DOMINANT scoring term;
     // raw slot index is kept only as a small final tiebreaker, never able
     // to overturn a real reference-count difference the way it used to.
+    // D171: a compiled room INDEX, for stories that number their rooms in the
+    // object table. wump2ka compiles 121 objects named C_ROOMS_1..C_ROOMS_121
+    // (measured: C_ROOMS_1 is object 25 and C_ROOMS_121 is object 145, so the
+    // table is contiguous), and prints the same index to the player as
+    // "Room #N". The name is the compiler's own, not prose, so this is
+    // structural evidence in exactly the sense D24 requires -- and a compiled
+    // name of C_ROOMS_n is itself proof the object IS a room, which matters
+    // because the attribute-based plausibility gate cannot be trusted on this
+    // story (D57/D58: it randomises attribute bits per session).
+    ROOM_INDEX_NAME: /^C_ROOMS_(\d+)$/,
+    _roomIndex: null,
+    compiledRoomIndex: (mem) => {
+        var key = "?";
+        try { key = ZRamReader.gameIdentityKey ? ZRamReader.gameIdentityKey(mem) : "?"; } catch (e) {}
+        var cached = ZRamReader._roomIndex;
+        if (cached && cached.key === key) return cached;
+        var table = {}, n = 0;
+        try {
+            var h = ZRamReader.header(mem);
+            var count = ZRamReader.objectCount(mem, h);
+            for (var id = 1; id <= count; id++) {
+                var m = ZRamReader.ROOM_INDEX_NAME.exec(ZRamReader.shortName(mem, id) || "");
+                if (!m) continue;
+                table[parseInt(m[1], 10)] = id;
+                n++;
+            }
+        } catch (e) {}
+        cached = ZRamReader._roomIndex = { key: key, table: table, count: n };
+        return cached;
+    },
+
+    // The room number the story itself prints in its status row. Read only to
+    // SELECT among the compiled objects above -- it never becomes an id, is
+    // never stored, and never names a room, so identity remains the RAM
+    // ObjectId (D47) and the status row stays display-only (D54).
+    printedRoomNumber: () => {
+        try {
+            if (typeof document === "undefined") return null;
+            var el = document.querySelector(".GridWindow.reverse") || document.querySelector(".GridWindow");
+            if (!el) return null;
+            var m = /Room\s*#\s*(\d+)/i.exec(String(el.innerText || el.textContent || ""));
+            return m ? parseInt(m[1], 10) : null;
+        } catch (e) { return null; }
+    },
+
     findLocationGlobal: (mem, playerId) => {
         var h = ZRamReader.header(mem);
         if (!h) return 0;
+
+        // D171 (operator: Wumpus "does not want to underline exits or items").
+        //
+        // The scan below could not find the right room on this story, in two
+        // distinct ways, both measured live at 412px:
+        //
+        //   printed #25  correct id 49: refs 2, kids 1 -> LOST to id 51 (refs 4)
+        //   printed #10  correct id 34: refs 4, kids 5 -> REJECTED outright by
+        //                isPlausibleMapRoom
+        //
+        // The second cannot be fixed by reweighting, because the correct room
+        // was never an eligible candidate: the gate is attribute-based and this
+        // story randomises attribute bits per session (D57/D58). A wrong room
+        // means scopeObjects enumerates objects the player cannot see, so the
+        // printed items have nothing to match and NOTHING underlines -- decided
+        // at startup and persisting, exactly as reported.
+        //
+        // Adjudicated over 45 ticks in 5 sessions by asking which candidate's
+        // objects actually appear in the text the game just printed: the two
+        // agreed on 39, and of the 6 disagreements the compiled-index answer
+        // described the visible room 6 times and the scan 0. D79's own entry
+        // records the same mapping from the other side -- "You are in room #2"
+        // with the correct RAM id 26, and C_ROOMS_2 is object 26.
+        //
+        // Gated on the story actually having a compiled room index, so a game
+        // without one is untouched and falls through to the scan below.
+        try {
+            var idx = ZRamReader.compiledRoomIndex(mem);
+            if (idx && idx.count) {
+                var printed = ZRamReader.printedRoomNumber();
+                var byIndex = (printed != null) ? idx.table[printed] : null;
+                if (byIndex != null && byIndex >= 2) return byIndex;
+            }
+        } catch (eIdx) {}
         // D84: consult the per-game LEARNED, confirmed global slot (real,
         // repeated, contradiction-free observation via AttrCalibrator --
         // see js/AttrCalibrator.js confirmedLocationGlobal/_correlateLocation)
@@ -1559,17 +1654,34 @@ var ZRamReader = {
         if (typeof ZRamReader.findLikelyLocation === "function") {
             roomId = ZRamReader.findLikelyLocation(mem, playerId, "");
         }
-        if (roomId && !ZRamReader.isPlausibleMapRoom(mem, roomId)) {
+        // D171: a compiled C_ROOMS_<n> name is the compiler's own evidence that
+        // this object IS a room, so the attribute-based plausibility gate must
+        // not veto it -- that gate reads bits this story randomises per session
+        // (D57/D58), and it was measured rejecting the correct room outright
+        // (printed #10, id 34, refs 4, kids 5, plausible false).
+        var indexedRoom = ZRamReader.ROOM_INDEX_NAME.test(ZRamReader.shortName(mem, roomId) || "");
+        if (roomId && !indexedRoom && !ZRamReader.isPlausibleMapRoom(mem, roomId)) {
             roomId = 0;
         }
         if (roomId) roomName = ZRamReader.shortName(mem, roomId) || "";
         // D54: honest absence when the only short-name is meta/internal.
         // Never ship "(Inform Library)" / "(darkness object)" / C_ROOMS_* as
         // payload.roomName (map display uses refineRoomDisplayName later).
+        //
+        // D171: that is a rule about the NAME, but it was discarding the ID as
+        // well -- and `scope` and `exits` below are both gated on roomId, so a
+        // story whose rooms carry internal compiled names shipped NO objects
+        // and NO exits at all. Measured: discoveredObjects 0 on a room whose
+        // description was full of exits and items, which is the operator's
+        // bare room. Identity is the RAM ObjectId (D47) and is not a display
+        // concern, so an INDEXED room now keeps its id and loses only its name.
+        // A genuinely meta object -- "(darkness object)", a Class -- is not a
+        // room at all and still zeroes both, exactly as before.
         if (roomName && (roomName.charAt(0) === "("
             || /^(class|object|compass|kind|nothing|thedark)$/i.test(roomName)
             || /^c_rooms(_?\d+)?$/i.test(roomName))) {
-            roomId = 0; roomName = "";
+            roomName = "";
+            if (!indexedRoom) roomId = 0;
         }
         var scope = roomId ? ZRamReader.scopeObjects(mem, roomId, { depth: 2 }) : [];
         scope = (scope || []).filter(function (o) { return o && o.name && String(o.name).charAt(0) !== "("; });

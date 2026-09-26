@@ -177,17 +177,39 @@ async function submit(page, cmd) {
                         sub: !!(l.querySelector && l.querySelector(".Style_subheader")),
                         header: !!(l.querySelector && l.querySelector(".Style_header"))
                     }));
-                    let playerParent = null, loc = null;
+                    let playerParent = null, loc = null, chain = [], ram = null;
                     try {
-                        if (window.ZRamReader && window.ZvmCapture) {
-                            ZvmCapture.tick();
-                            const mem = ZRamReader.memory && ZRamReader.memory();
-                            const pid = ZRamReader.playerId && ZRamReader.playerId(mem);
-                            if (mem && pid) {
-                                const o = ZRamReader.object && ZRamReader.object(mem, pid);
-                                playerParent = o && o.parent;
+                        const mem = window.ZRamProvider && ZRamProvider.getMem && ZRamProvider.getMem();
+                        const pid = (payload && payload.playerId) || (payload && payload.probe && payload.probe.playerId) || 0;
+                        if (mem && window.ZRamReader && pid) {
+                            const links = ZRamReader.objectLinks(mem, pid);
+                            playerParent = links && links.parent;
+                            let walk = links, guard = 0;
+                            while (walk && walk.parent > 0 && guard++ < 8) {
+                                const cid = walk.parent;
+                                const cn = ZRamReader.shortName(mem, cid) || "";
+                                const attrs = (ZRamReader.attrsFromObject && ZRamReader.attrsFromObject(mem, cid)) || {};
+                                const kids = (ZRamReader.children && ZRamReader.children(mem, cid)) || [];
+                                const plausible = !!(ZRamReader.isPlausibleMapRoom && ZRamReader.isPlausibleMapRoom(mem, cid));
+                                chain.push({
+                                    id: cid, name: cn, parent: (ZRamReader.objectLinks(mem, cid) || {}).parent,
+                                    kids: kids.length, plausible,
+                                    container: !!attrs.container, supporter: !!attrs.supporter, vehicle: !!attrs.vehicle
+                                });
+                                walk = ZRamReader.objectLinks(mem, cid);
                             }
-                            loc = ZRamReader.findLikelyLocation && ZRamReader.findLikelyLocation(mem);
+                            loc = ZRamReader.findLikelyLocation(mem, pid, "") || 0;
+                            ram = {
+                                playerId: pid,
+                                playerName: ZRamReader.shortName(mem, pid) || "",
+                                loc, locName: loc ? (ZRamReader.shortName(mem, loc) || "") : "",
+                                locPlausible: !!(loc && ZRamReader.isPlausibleMapRoom(mem, loc)),
+                                enclosing: (ZRamReader.enclosingRoom && ZRamReader.enclosingRoom(mem, pid)) || 0,
+                                snapRoomId: (ZRamReader.snapshot(mem) || {}).roomId || 0,
+                                snapRoomName: (ZRamReader.snapshot(mem) || {}).roomName || "",
+                                snapObjects: ((ZRamReader.snapshot(mem) || {}).discoveredObjects || []).map((o) => o && o.name),
+                                snapExits: ((ZRamReader.snapshot(mem) || {}).exits || []).map((e) => e && e.label)
+                            };
                         }
                     } catch (eLoc) { playerParent = String(eLoc); }
                     const structural = Actionable.isStructuralPayload(payload);
@@ -216,7 +238,11 @@ async function submit(page, cmd) {
                         roomHeadingConnected: !!(Actionable.RoomHeading && Actionable.RoomHeading.isConnected),
                         signature: String(Actionable.Signature || "").slice(0, 180),
                         liveMarksArrLen: (Actionable.LiveMarks || []).length,
-                        playerParent, loc,
+                        playerId: payload && payload.playerId,
+                        objCount: ((payload && payload.discoveredObjects) || []).length,
+                        exitCount: ((payload && payload.exits) || []).length,
+                        playerParent, loc, chain, ram,
+                        underwater: /partly underwater|need to swim/i.test(lines.map((l) => l.textContent).join("\n")),
                         stylesAfter,
                         gate: {
                             roomChanged: structural && payload && payload.roomId != null
@@ -258,6 +284,8 @@ async function submit(page, cmd) {
     if (await page.locator(".Input.LineInput:visible").count()) {
         await submit(page, "look");
         shots.push(await measure("after-look"));
+        await submit(page, "x2");
+        shots.push(await measure("after-x2"));
         await submit(page, "swim");
         shots.push(await measure("after-swim"));
         await submit(page, "x1");
@@ -293,7 +321,13 @@ async function submit(page, cmd) {
                 roomLinesHasExit: s.last.after.roomLinesHasExit,
                 latestHasExit: s.last.after.latestHasExit,
                 playerParent: s.last.after.playerParent,
-                loc: s.last.after.loc
+                loc: s.last.after.loc,
+                playerId: s.last.after.playerId,
+                objCount: s.last.after.objCount,
+                chain: s.last.after.chain,
+                ram: s.last.after.ram,
+                underwater: s.last.after.underwater,
+                liveNouns: s.last.after.liveNouns
             },
             tail: (s.textTail || "").slice(-280)
         }))
