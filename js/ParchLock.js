@@ -91,6 +91,7 @@ var ParchLock = {
         }
 
         Input.Process();
+        ParchLock.AutoScrollOnOutput();
         ParchLock.CheckNativeDialog();
         // D93: line vs char prompts are different Glk modes. LineInput is
         // free-text (keyboard OK when user focuses it). CharInput is
@@ -302,16 +303,72 @@ var ParchLock = {
     // start without ?story= still uses EnsureStoryOrRecover only.
     CheckStoryLoadHealth: () => {},
 
+    // D167 (operator request): scroll to new output as it arrives, and where
+    // possible put the START of that output at the top of the view rather than
+    // its end -- a long room description should be read from its first line,
+    // not joined halfway down.
+    //
+    // The trick is that the height of the buffer BEFORE the new text arrived is
+    // exactly the offset at which that text begins. Scrolling there puts the
+    // first new line at the top. When the addition is short the target clamps
+    // to the bottom, so a one-line reply still behaves like an ordinary scroll.
+    _lastBufferHeight: 0,
+    // D167: the story's scrolling element is the Glk buffer window itself
+    // (`.BufferWindow`), NOT "#parchment .simplebar-content-wrapper" -- that
+    // selector matches nothing in the current layout, which is why
+    // ScrollToBottom below has quietly been a no-op. Resolved once, here, so
+    // both callers agree, with the old selector kept as a fallback in case a
+    // layout that does use SimpleBar comes back.
+    StoryScroller: () => {
+        try {
+            var w = document.querySelector("#windowport .BufferWindow");
+            if (w && w.scrollHeight > w.clientHeight) return w;
+            var sb = document.querySelector("#parchment .simplebar-content-wrapper");
+            if (sb) return sb;
+            return w || null;
+        } catch (e) { return null; }
+    },
+
+    AutoScrollOnOutput: () => {
+        try {
+            if (typeof Global !== "undefined" && Global.Prefs
+                && Global.Prefs.AutoScrollOnOutput === false) {
+                // Still track the height so turning the option back on does not
+                // treat the whole backlog as newly arrived.
+                var w0 = ParchLock.StoryScroller();
+                if (w0) ParchLock._lastBufferHeight = w0.scrollHeight;
+                return;
+            }
+            var w = ParchLock.StoryScroller();
+            if (!w) return;
+            var prev = ParchLock._lastBufferHeight || 0;
+            var now = w.scrollHeight;
+            if (now <= prev) { ParchLock._lastBufferHeight = now; return; }
+            ParchLock._lastBufferHeight = now;
+            if (!prev) return;                       // first paint: nothing to follow
+            var maxTop = Math.max(0, now - w.clientHeight);
+            // A few pixels of the previous line are left showing so the break
+            // between turns is visible rather than flush against the band.
+            var startOfNew = Math.max(0, prev - 24);
+            w.scrollTop = Math.min(startOfNew, maxTop);
+        } catch (e) {}
+    },
+
     ScrollToBottom: () => {
 
-        var p = $("#parchment .simplebar-content-wrapper")[0];
+        // D167: resolved through StoryScroller now -- the hardcoded SimpleBar
+        // selector matches nothing in the current layout, so this had stopped
+        // doing anything at all (including after a restore, where
+        // UndoRestoreSync calls it precisely to bring the restored room into
+        // view).
+        var p = ParchLock.StoryScroller();
 
         if (p) {
 
             if (p.scrollHeight != ParchLock.ContentHeight) {
 
                 ParchLock.ContentHeight = p.scrollHeight;
-                $("#parchment .simplebar-content-wrapper").animate( { scrollTop: p.scrollHeight }, 0 );
+                p.scrollTop = p.scrollHeight;
             }
         }
     },

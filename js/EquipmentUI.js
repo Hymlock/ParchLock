@@ -360,6 +360,20 @@ var EquipmentUI = {
     },
 
     // ---- rendering ------------------------------------------------------
+    // The equipment sheet scrolls via SimpleBar, so the element that actually
+    // moves is a wrapper, not #equipment-list. Find whichever ancestor really
+    // has overflow rather than assuming which one it is.
+    scrollerFor: function (el) {
+        try {
+            var n = el;
+            while (n && n !== document.body) {
+                if (n.scrollHeight > n.clientHeight + 1) return n;
+                n = n.parentElement;
+            }
+        } catch (e) {}
+        return null;
+    },
+
     Render: function () {
         var host = document.getElementById("equipment-list");
         if (!host) return;
@@ -378,6 +392,16 @@ var EquipmentUI = {
         EquipmentUI._renderPending = false;
         var m = EquipmentUI.model();
         var rows = EquipmentUI.rows(m);
+
+        // D167 (operator-reported: "the screen snaps around instead of staying
+        // in place where you place the item"). Render runs from
+        // Actionable.RenderInventory on every inventory refresh, so a drop is
+        // immediately followed by a rebuild -- and wiping the list resets the
+        // scroll offset of whatever is scrolling it, which reads as the sheet
+        // jumping under the finger. D127 already deferred a rebuild landing
+        // MID-drag; this is the one that lands just after.
+        var scroller = EquipmentUI.scrollerFor(host);
+        var keepTop = scroller ? scroller.scrollTop : 0;
 
         host.innerHTML = "";
         var count = document.getElementById("equipment-count");
@@ -503,6 +527,14 @@ var EquipmentUI = {
             if (!o.demo) EquipmentUI.markDropTarget(el, o);
             host.appendChild(el);
         });
+
+        // Put the scroll position back after the rebuild (see the note where
+        // keepTop is captured). Clamped, because the list can be shorter now
+        // -- dropping the last item out of a container removes a row.
+        if (scroller && keepTop) {
+            var maxTop = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+            scroller.scrollTop = Math.min(keepTop, maxTop);
+        }
     },
 
     // ---- drag and drop --------------------------------------------------

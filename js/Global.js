@@ -19,6 +19,11 @@ var Global = {
         // D167: a hold gesture submits what was heard on release. Tap mode is
         // unaffected and always only inserts.
         MicAutoSendOnRelease: true,
+        // D167: position new story output so its FIRST line is at the top,
+        // rather than landing at the end of it. Turning this off does not stop
+        // the view moving -- GlkOte scrolls the buffer to the bottom on its own
+        // -- it only stops ParchLock repositioning to the start.
+        AutoScrollOnOutput: true,
         // D100 read-aloud: default ON; new story buffer text only.
         ReadAloud: true,
         ReadAloudStatus: false,

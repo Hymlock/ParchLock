@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v53"; // D166 banner icons, Status heading, dictionary-gated probes, library tour narration
+const CACHE_VERSION = "parchlock-shell-v54"; // D167 headless stats + cues, mic auto-send, scroll follow, equipment scroll
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

@@ -3236,3 +3236,139 @@ Verified: stat-tracker 68/68, d162-travel-commands, d158-provider-recovery,
 equipment-ui, d150-noun-and-verbs, d31-nested-inventory, exits-safe-area,
 docs-sync, layout-regression, ui-regression, startup-menu, tutorial-live,
 stat-tracker-live, map-pathing, anchorhead.
+
+
+## D167 Nine operator-reported items, and a wumpus investigation
+
+Planned first in the session scratchpad; items 1-7 implemented, 8 and 9 not
+reproduced and deliberately left alone.
+
+### 1/2 Tutorial wording
+
+The exits step claimed every exit appears in the band under the status line.
+The side rails carry them too (`css/ParchLock.css:3422`), so the wording now
+describes both surfaces. The notes step explained what notes are but never how
+to make one; it now gives the gesture D112 actually built (hold a room in Known
+Rooms, right click on desktop) and mentions the Options button.
+
+### 3 Microphone auto-send
+
+D95 already had both modes. What was missing was submission: a hold-release
+left the transcript sitting in the input. `MicAutoSendOnRelease` (default on,
+Options toggle) submits through `Actionable.Submit`, the same choke-point every
+other control uses. Tap mode still only inserts, as the operator asked, which
+also preserves the dictate-then-edit flow. This revises R2's "nothing is ever
+submitted" and the comment in `js/Input.js` now says so rather than contradicting
+the code.
+
+### 4/5 The score, the sound and the graphic were ONE defect
+
+The cue chain is `value change -> emitChange -> playCues`, and the graphic is
+driven by the same change. With the score frozen, nothing downstream could fire,
+so three reported symptoms had one cause. Four separate faults were found:
+
+**MAX_GLOBALS was 64.** The Z-machine allows 240. This silently truncated the
+search space for EVERY statistic, not just score. Measured: Anchorhead keeps its
+score in globals 15 and 16 and its turn counter at 4/10; other games sit higher.
+
+**Identifying the slot headlessly.** The operator's requirement is that stats be
+read from RAM, not by asking the game. The obstacle was never reading a global,
+it was knowing WHICH one: `promoteGlobals` can only identify a slot once it has
+seen the value change, on a phone there is no status text to see it change in
+(D137), and a one-off SCORE reply supplies no change either. Both libraries
+volunteer the missing piece unprompted -- "Your score has just gone up by two
+points." costs no command and no turn -- and a known delta is exactly what
+identifies the slot. One event narrows the field, a second settles it, and a
+known total narrows it further. After that `readConfirmedGlobals` reads the
+number out of RAM every turn with no text at all.
+
+**Inform keeps a shadow copy.** Measured on Anchorhead: globals 15 AND 16 both
+follow the score, so a unique candidate never emerges. Candidates that move
+together and hold the same value are interchangeable for display and the lower
+is taken -- but only after a second event, never from one, so a coincidence
+still cannot become the score.
+
+**Audio started suspended.** A context created outside a user gesture is
+suspended on Android and in Chrome, so the first cue would have been silent
+whatever else was fixed. It is armed on the first real touch, click or key.
+
+**The badge was destroyed faster than it could be seen.** `Render` is driven by
+`WorldModel.apply` and was measured running about a hundred times per turn; a
+one-shot element created on the tick the score moved was wiped ~25ms later by
+the next render. The change now carries a deadline and every render inside that
+window draws it. Turns and clocks are excluded -- a "+1" every single turn is
+clutter, not an event.
+
+Measured per module at 412px afterwards: Zork 1 score=10 (moved) and turns from
+globals 1/2; Enchanter the same; Deadline time 8:16 and correctly no score;
+Slavers health and quest rate; wump2ka score and turns; Anchorhead and 905
+turns. Verified end to end on Zork 1 that the tone really reaches the audio
+layer (659->880 Hz) and the badge really renders ("+10").
+
+### 6 The equipment sheet jumped after a drop
+
+`Render` runs from `Actionable.RenderInventory` on every inventory refresh, so a
+drop is immediately followed by a rebuild, and wiping the list resets the scroll
+offset. D127 already deferred a rebuild landing MID-drag; this is the one that
+lands just after. The offset is captured and restored around the rebuild,
+clamped because the list can be shorter afterwards.
+
+### 7 Following new output
+
+`ParchLock.ScrollToBottom` targeted `#parchment .simplebar-content-wrapper`,
+which **matches nothing in the current layout** -- so it had quietly been a
+no-op, including after a restore where UndoRestoreSync calls it deliberately.
+The real scrolling element is the Glk buffer window. Both callers now resolve it
+through one helper.
+
+New output is positioned so its FIRST line is at the top rather than its last:
+the buffer's height before the text arrived is exactly where that text begins.
+`AutoScrollOnOutput` (default on, Options toggle) controls it.
+
+Stated honestly: turning the option off does not stop the view moving. GlkOte
+scrolls the buffer to the bottom on its own, so the option governs ParchLock's
+repositioning, not all scrolling, and the Options label says so.
+
+### 8 Anchorhead's manual -- NOT diagnosed
+
+No object in Anchorhead carries "manual" in its short name, and an alias search
+finds nothing either because Anchorhead's objects mine almost no vocabulary
+(D150 measured even "real estate office door" returning `aliases: []`). Depth is
+ruled out: the walk reaches three levels and the operator's own screenshot shows
+keys inside a keyring inside a worn trenchcoat listed correctly. It needs the
+live game state; guessing at it would be inventing a cause.
+
+### 9 The band behind the top directions -- NOT reproduced
+
+Measured `--pl-band-h`, the band's real height, the buffer's `padding-top` and
+the mask's height in the same frame across five room states, plus
+`--pl-statusbar-h`, the status bar's real bottom and both elements' tops. All
+agree exactly every time (band 28px, reserve and mask 32px, band top 38 = status
+bottom 38). Both measurements are observer-driven. Nothing to fix without a
+reproduction.
+
+### Wumpus underlining -- investigated, no systematic fault found
+
+Operator report of unreliable underlining. Measured across six sessions:
+
+- Room naming is UNCHANGED by D165 and still correct. wump2ka's compiled names
+  are internal (`C_ROOMS_17`, `C_ROOMS_15`...), so the printed banner is still
+  used exactly as D54/D80 intended. Confirmed live: `ramShortName="C_ROOMS_17"`,
+  `roomName="A fair-sized, rough cave"`, and the transcript subheader matches,
+  so `Actionable.Refresh` still locates the room heading.
+- Three sessions of 18 moves each: no failure. Two further sessions: 13 of 13
+  described rooms underlined.
+- One session did show six described rooms with no marks, at `roomId=120` with
+  only 1-3 objects in scope -- possibly a room whose text genuinely contains
+  none of its object names rather than a marking fault.
+
+Worth recording because it misleads when measuring: wump2ka has no compass. It
+prints "You don't have a compass and you were a terrible Scout. The best you can
+do is number the exits", so travel is `x1`/`x2`/`x3`. A probe driving it with
+compass words never changes room at all and reports false health.
+
+Also: the buffer TRIMS old lines, so a cumulative `.pl-act` count goes DOWN over
+a session. Older text losing its underlines is the transcript being trimmed, not
+marking failing.
+
+Left open pending a narrower reproduction.

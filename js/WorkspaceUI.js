@@ -122,6 +122,17 @@ var WorkspaceUI = {
             .appendTo(micSendLabel);
         micSendLabel.append(document.createTextNode("Send automatically when the mic is released (hold mode only)"));
 
+        // D167: follow new output automatically, starting at its first line.
+        var scrollLabel = $("<label>").appendTo("#game-options");
+        $("<input type='checkbox'>")
+            .prop("checked", Global.Prefs.AutoScrollOnOutput !== false)
+            .on("change", function () {
+                Global.Prefs.AutoScrollOnOutput = !!this.checked;
+                Global.SavePrefs();
+            })
+            .appendTo(scrollLabel);
+        scrollLabel.append(document.createTextNode("Scroll new story text to the top (off = ordinary scrolling)"));
+
         // D100 read-aloud (Options only; no chrome button). Default ON = new story text.
         var raLabel = $("<label>").appendTo("#game-options");
         var raCheck = $("<input type='checkbox'>")
