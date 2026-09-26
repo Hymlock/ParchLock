@@ -3955,3 +3955,54 @@ worded delta, the count itself, the score-up event that drives tone and badge,
 the replay guard, a later event still counting, and a delta with no baseline
 refusing to invent a score. `tools/stat-tracker-live.js` 12 and
 `tools/carry-value-live.js` 16 unchanged.
+
+
+## D174 A pinned figure that cannot answer this turn must not freeze
+
+Found while answering the operator's question about how wump2ka reports weight
+and value. It does NOT report them in its score section -- `score`, `full` and
+`full score` all answer only "You have so far scored 1 point in 4 turns." The
+figures appear solely in the inventory line, which is what D169 already parses.
+The operator's request is satisfied in the app's own STATUS panel, where D169
+places Value immediately after Score with weight and capacity following.
+
+The measurement taken to confirm that found a real defect in D169.
+
+### The freeze
+
+Measured on wump2ka:
+
+    Glow Bar alone       weight 4  [indiv:100]   pinned from RAM, correct
+    + canteen            weight 4  [indiv:100]   WRONG -- capacity went 10% -> 22%
+    canteen dropped      weight 5  [indiv:100]   correct again
+
+The canteen computes its own weight, because what it weighs depends on how much
+water is in it, so `sumIndiv` correctly refuses to return a total that omits it.
+D169 then kept the last known figure -- and, worse, `observeCarryText` refused
+the fresh inventory text that DID carry the real weight, because a RAM-pinned
+source outranks text.
+
+So the row showed a stale number while still labelled `indiv:100`, i.e. still
+claiming to be read live from memory. A wrong number presented as authoritative
+is the one outcome D24 exists to prevent, and it was worse than the honest
+absence D169 thought it was choosing.
+
+### The fix
+
+`readCarryFromRam` marks the stat `ramStale` when the sum is unavailable, and
+clears it as soon as RAM can answer again. `observeCarryText` may override a
+RAM-sourced figure only while that flag is set, and corrects `source` to
+`inventory-text` when it does, so the row never claims a provenance it does not
+have.
+
+Measured after:
+
+    + canteen            weight 9  [inventory-text]   the game's own figure
+    canteen dropped      weight 5  [indiv:100]        back to live RAM
+
+### Coverage
+
+`tools/carry-value-live.js` 19 (3 new): the fallback while an item computes its
+own figure, the return to RAM once every item reports a plain weight, and that
+carrying more actually weighs more. `harness/stat-tracker.js` 92 and
+`tools/stat-tracker-live.js` 12 unchanged.

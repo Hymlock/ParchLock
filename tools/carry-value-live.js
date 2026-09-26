@@ -102,6 +102,25 @@ const stat = (page, key) => page.evaluate((key) => {
         check(w && w.source === 'inventory-text',
             `weight stays text-sourced while the canteen computes its own (${w && w.source})`);
 
+        // D174: a pinned slot that cannot answer this turn must not freeze.
+        // Measured before the fix: weight pinned at 4 from RAM with the Glow
+        // Bar alone, then stayed 4 after picking up the canteen -- which
+        // computes its own weight -- while the game's own capacity reading went
+        // 10% -> 22%. The fresh inventory text that carried the real figure was
+        // refused because a RAM source outranked it, so the row showed a stale
+        // number still labelled live.
+        const wCanteen = await stat(page, 'weight');
+        check(wCanteen && wCanteen.source === 'inventory-text',
+            `weight falls back to the game's own text while an item computes its own (${wCanteen && wCanteen.source})`);
+
+        await go('drop canteen');
+        await go('i');
+        const wDropped = await stat(page, 'weight');
+        check(wDropped && /^indiv:/.test(wDropped.source || ''),
+            `and returns to RAM once every item reports a plain weight (${wDropped && wDropped.source})`);
+        check(wCanteen && wDropped && wCanteen.value > wDropped.value,
+            `carrying more weighed more (${wCanteen && wCanteen.value} vs ${wDropped && wDropped.value})`);
+
         // A pinned slot must never report a total that omits a holder.
         const omits = await page.evaluate(() => {
             const m = StatTracker.model();

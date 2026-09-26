@@ -976,11 +976,27 @@ var StatTracker = {
             var st = model.carry[spec[0]];
             if (!st || st.prop == null) return;
             var total = StatTracker.sumIndiv(mem, ids, st.prop);
-            // Null here means an item computes its own figure this turn. The
-            // last known total stays on screen rather than being replaced by a
-            // number that silently omits that item.
-            if (total == null) return;
+            // Null here means an item computes its own figure this turn, so the
+            // RAM sum would silently omit it and must not be shown.
+            //
+            // D174: but simply returning froze the figure. Measured on wump2ka:
+            // carrying the Glow Bar alone pins weight at 4 from RAM; pick up
+            // the canteen, which computes its own weight, and the sum goes
+            // unavailable -- so the row kept showing 4 while the game's own
+            // capacity reading went from 10% to 22%. Worse, the fresh inventory
+            // text that DID carry the real figure was refused, because a
+            // RAM-pinned source outranks text. The number was stale and still
+            // labelled live, which is the one thing D24 forbids above all.
+            //
+            // The flag lets that turn's text correct it, and is cleared as soon
+            // as RAM can answer again.
+            var cur = model.stats[spec[0]];
+            if (total == null) {
+                if (cur) cur.ramStale = true;
+                return;
+            }
             var s = model.stats[spec[0]];
+            if (s) s.ramStale = false;
             if (!s) {
                 model.stats[spec[0]] = { key: spec[0], label: spec[1], value: total, max: null,
                     unit: spec[2], kind: "counter", seen: StatTracker.CONFIRM_SAMPLES,
@@ -1025,8 +1041,17 @@ var StatTracker = {
                 if (notation.uom) s.uom = notation.uom;
             }
             // A RAM-pinned figure is live every turn; this text is only as
-            // fresh as the last inventory, so it must not overwrite it.
-            if (String(s.source || "").indexOf("indiv:") === 0) return;
+            // fresh as the last inventory, so it must not overwrite it --
+            // UNLESS RAM could not answer this turn (D174: an item that
+            // computes its own figure, such as wump2ka's canteen, whose weight
+            // depends on how much water is in it). Then this text is the only
+            // current source there is, and the alternative is a stale number
+            // presented as live. The source is corrected too, so the row stops
+            // claiming to come from RAM while it does not.
+            if (String(s.source || "").indexOf("indiv:") === 0) {
+                if (!s.ramStale) return;
+                s.source = "inventory-text";
+            }
             if (s.value !== value) {
                 var d = value - s.value;
                 s.value = value; s.lastChange = d;
