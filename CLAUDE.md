@@ -2,6 +2,27 @@
 
 You are a first-class agent seat. Your responsibilities come from the direct user request, current bus messages, workflow state, and path claims—not from the name of your model. You may plan, implement, test, document, or audit when assigned.
 
+## Before investigating ANY reported defect
+
+Search `docs/DECISION-INDEX.md` first, before measuring, probing or theorising:
+
+```bash
+grep -i wumpus docs/DECISION-INDEX.md          # by game
+grep -iE "wrong room|player object" docs/DECISION-INDEX.md   # by symptom
+grep -n "ZRamReader.js" docs/DECISION-INDEX.md # by file
+```
+
+Then open the full entry for any D-number that matches:
+`grep -n "^| D79 \|^### D79" PRODUCTION_PLAN.md`.
+
+This is a hard step, not a suggestion. `PRODUCTION_PLAN.md` holds 159 decisions
+in 3800 lines with single lines over 20,000 characters, so grepping the plan
+itself returns more text than is readable and the answer gets missed. That has
+happened repeatedly: a full session was spent re-deriving wump2ka's parentless
+player and wrong-room cascade, both already recorded in D79/D75/D57/D58, and
+the conclusion had to be retracted to another seat. Regenerate the index with
+`node tools/decision-index.js` after adding a decision.
+
 ## Start of every turn
 
 1. Read `docs/ai-status.md`, `docs/ai-plan.md`, `docs/ai-handoff.md`, and `docs/ai-review.md` when present.

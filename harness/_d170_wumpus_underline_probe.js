@@ -199,16 +199,33 @@ async function submit(page, cmd) {
                                 walk = ZRamReader.objectLinks(mem, cid);
                             }
                             loc = ZRamReader.findLikelyLocation(mem, pid, "") || 0;
+                            const printed = ZRamReader.printedRoomNumber ? ZRamReader.printedRoomNumber() : null;
+                            const idx = ZRamReader.compiledRoomIndex ? ZRamReader.compiledRoomIndex(mem) : null;
+                            const indexed = (printed != null && idx && idx.table) ? idx.table[printed] : null;
+                            let d84slot = null, d84val = null;
+                            try {
+                                if (window.AttrCalibrator && AttrCalibrator.confirmedLocationGlobal) {
+                                    d84slot = AttrCalibrator.confirmedLocationGlobal(mem);
+                                    if (d84slot != null) {
+                                        const h = ZRamReader.header(mem);
+                                        d84val = ZRamReader.u16(mem, h.globals + d84slot * 2);
+                                    }
+                                }
+                            } catch (e84) {}
+                            const snap = ZRamReader.snapshot(mem) || {};
                             ram = {
                                 playerId: pid,
                                 playerName: ZRamReader.shortName(mem, pid) || "",
                                 loc, locName: loc ? (ZRamReader.shortName(mem, loc) || "") : "",
                                 locPlausible: !!(loc && ZRamReader.isPlausibleMapRoom(mem, loc)),
+                                printed, indexed, idxCount: idx && idx.count,
+                                d84slot, d84val, d84name: d84val ? (ZRamReader.shortName(mem, d84val) || "") : "",
                                 enclosing: (ZRamReader.enclosingRoom && ZRamReader.enclosingRoom(mem, pid)) || 0,
-                                snapRoomId: (ZRamReader.snapshot(mem) || {}).roomId || 0,
-                                snapRoomName: (ZRamReader.snapshot(mem) || {}).roomName || "",
-                                snapObjects: ((ZRamReader.snapshot(mem) || {}).discoveredObjects || []).map((o) => o && o.name),
-                                snapExits: ((ZRamReader.snapshot(mem) || {}).exits || []).map((e) => e && e.label)
+                                snapRoomId: snap.roomId || 0,
+                                snapRoomName: snap.roomName || "",
+                                snapObjCount: (snap.discoveredObjects || []).length,
+                                snapObjects: (snap.discoveredObjects || []).map((o) => o && o.name),
+                                snapExits: (snap.exits || []).map((e) => e && e.label)
                             };
                         }
                     } catch (eLoc) { playerParent = String(eLoc); }
@@ -327,7 +344,14 @@ async function submit(page, cmd) {
                 chain: s.last.after.chain,
                 ram: s.last.after.ram,
                 underwater: s.last.after.underwater,
-                liveNouns: s.last.after.liveNouns
+                liveNouns: s.last.after.liveNouns,
+                printed: s.last.after.ram && s.last.after.ram.printed,
+                indexed: s.last.after.ram && s.last.after.ram.indexed,
+                d84slot: s.last.after.ram && s.last.after.ram.d84slot,
+                d84val: s.last.after.ram && s.last.after.ram.d84val,
+                d84name: s.last.after.ram && s.last.after.ram.d84name,
+                snapObjCount: s.last.after.ram && s.last.after.ram.snapObjCount,
+                snapExits: s.last.after.ram && s.last.after.ram.snapExits
             },
             tail: (s.textTail || "").slice(-280)
         }))
