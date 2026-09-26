@@ -3372,3 +3372,98 @@ a session. Older text losing its underlines is the transcript being trimmed, not
 marking failing.
 
 Left open pending a narrower reproduction.
+
+
+## D168 Desktop sheet reflow, the mislaid mic button, and collapsible equipment options
+
+Three operator-reported items. The first two share a shape worth naming: both
+were CSS declarations that were present, spelled correctly and wrong only in
+where they put the box. Every check in the repo that could have caught them was
+a source-text check, so all of them stayed green.
+
+### The equipment sheet painted over live story text (desktop)
+
+`#equipment` is the map's peer -- same tier, same half of the screen, the same
+`calc(50vw - 40px)` box -- and the CSS comment above it already said it is
+driven "exactly as the map is driven by body.map-open". But the one rule that
+makes room for a sheet lists only the map:
+
+```css
+body.map-open #parchment, body.map-open #windowport { width: calc(50vw - 40px) !important; }
+```
+
+So opening equipment left the story at full width with the sheet on top of it.
+Measured at 1920px: map-open takes `#windowport` from 1864px to 942px; equip-open
+left it at 1864px while the sheet occupied 980-1900. Every line of story text
+past the halfway mark was simply covered, which is exactly what the operator's
+screenshot shows.
+
+Fixed with a desktop-scoped rule rather than by adding `equip-open` to the rule
+above, because on mobile both sheets are full-screen and the map's own mobile
+override deliberately keeps the story full width underneath. The fixed send and
+mic buttons get the same treatment the map already gives them, or they would
+have ended up under the sheet once the story moved.
+
+### The mic button was thrown off the top of the screen (desktop)
+
+D133's "voice unavailable" state draws a circle-and-slash as an `::after`, which
+is absolutely positioned and so needs a positioned containing block. The rule
+added `position: relative` to provide one. The button is already
+`position: fixed`, which IS one -- so `relative` added nothing and destroyed the
+fixed positioning. The button dropped into document flow at the top of the page,
+and its own `bottom: 31px` then resolved against that box instead of the
+viewport, putting it at **top: -31px**.
+
+Measured: `getBoundingClientRect()` returns `[904, -31, 44, 44]` with computed
+`position: relative`, against `[904, 1005, 44, 44]` and `fixed` after the fix.
+
+Desktop only, and that is not a coincidence: the mobile rule carries
+`position: fixed !important`, so the unavailable state never overrode it there.
+The operator saw the button "stuck in the upper right hand corner" on PC while
+mobile was fine.
+
+Worth recording for future measurement: the unavailable state is what a `file://`
+copy legitimately gets, because a browser cannot remember microphone permission
+for a file. The button being absent from the input row on a local copy is
+correct; being at the top of the screen was not.
+
+### Equipment options are collapsible, and collapsed by default
+
+Operator request, for mobile and desktop. Uses the same `details`/`summary`
+disclosure as `#map-controls-tab`, so there is one collapse idiom in the app
+rather than two, and no `open` attribute, so closed is the state on every open.
+Measured gain in list space: the first item moves up 92px on desktop and
+**220px on mobile**.
+
+Two things this had to get right:
+
+**The sticky moved to the wrapper.** `#equipment-controls` was
+`position: sticky; top: 0`. A sticky element inside a collapsed `details` has
+nothing to stick to, so the disclosure itself is now the pinned element and the
+summary is what stays at the top of a scrolling sheet.
+
+**A hidden filter must not be a silent one.** A category left unticked while the
+row is closed would shorten the list with nothing on screen to explain it --
+indistinguishable, to a player hunting for something they are carrying, from the
+game not reporting it. `EquipmentUI.syncOptionsLabel` counts the non-default
+settings onto the summary, and deliberately ignores a control that is hidden for
+this module (the Spells checkbox outside a game that can cast, D149), because a
+control the player cannot see must never be reported as an active filter.
+
+**The tutorial uses those controls as a display** (operator-raised). Two steps
+target `#equipment-controls`, and `Tutorial.resolveTarget` skips any target with
+no width or height -- so a collapsed disclosure would NOT have failed loudly. It
+would have quietly fallen through to highlighting the whole sheet while
+`harness/tutorial-live.js`, which only asserts the selector is mentioned in the
+source, stayed green. The tour now opens the disclosure for exactly those steps
+and closes it again on the next one, so the player is left with the collapsed
+default.
+
+### Coverage
+
+`tools/panel-reflow-live.js` (26 assertions) is geometric throughout: it
+compares real `getBoundingClientRect()` boxes for the story, the sheet and the
+buttons; asserts the unavailable mic stays inside the viewport and keeps
+`position: fixed` in all three sheet states; asserts mobile does NOT shrink; and
+drives the real tutorial to the sort/search step to assert `resolveTarget`
+returns the options row itself rather than the fallback sheet.

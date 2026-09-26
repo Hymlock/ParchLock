@@ -468,6 +468,20 @@ var Tutorial = {
         if (!def) { Tutorial.finish(); return; }
 
         Tutorial.applySheet(def.sheet || null);
+
+        // D168: the options row is now collapsed by default, so the two steps
+        // that describe sort/search/filters would otherwise point at a box
+        // that is not on screen and fall through to highlighting the whole
+        // sheet. Open the disclosure for exactly those steps and close it
+        // again afterwards, so the tour shows the controls without changing
+        // the state the player is left in.
+        try {
+            var opts = document.getElementById("equipment-options");
+            if (opts) {
+                var wants = (def.target || []).indexOf("#equipment-controls") !== -1;
+                opts.open = wants;
+            }
+        } catch (e) {}
         if (def.sheet !== "equipment") {
             try { if (typeof EquipmentUI !== "undefined" && EquipmentUI.SetDemo) EquipmentUI.SetDemo(false); } catch (e) {}
         }
@@ -648,6 +662,11 @@ var Tutorial = {
         } catch (e) {}
 
         try { if (typeof EquipmentUI !== "undefined" && EquipmentUI.SetDemo) EquipmentUI.SetDemo(false); } catch (e) {}
+        // Leave the options row as the player will meet it: collapsed (D168).
+        try {
+            var opts = document.getElementById("equipment-options");
+            if (opts) opts.open = false;
+        } catch (e) {}
         document.body.classList.remove("pl-tutorial", "map-open", "equip-open");
         var wrap = document.getElementById("pl-tut-overlay");
         if (wrap && wrap.parentNode) wrap.parentNode.removeChild(wrap);

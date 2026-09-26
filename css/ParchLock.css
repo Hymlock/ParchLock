@@ -258,9 +258,31 @@ body.light #map ::-moz-selection
 	transition: width 0.3s;
 }
 
-body.map-open #parchment, body.map-open #windowport 
+body.map-open #parchment, body.map-open #windowport
 {
 	width: calc(50vw - 40px) !important;
+}
+
+/* The equipment sheet is the map's peer: same tier, same half of the screen,
+ * same `calc(50vw - 40px)` box (see #equipment). But only the map ever
+ * reflowed the story, so on a PC the sheet was painted straight over live
+ * text -- every line past the halfway point was simply covered. The map's
+ * own mobile override deliberately keeps the story full width under the
+ * full-screen sheet, and #equipment is full-screen on mobile too, so this is
+ * scoped to desktop rather than added to the rule above. */
+body:not(.pl-mobile).equip-open #parchment,
+body:not(.pl-mobile).equip-open #windowport
+{
+	width: calc(50vw - 40px) !important;
+}
+
+/* The send and mic buttons are fixed to the right edge and would otherwise sit
+ * underneath the sheet. The map already moves them; equipment must match. */
+body:not(.pl-mobile).equip-open #pl-input-submit {
+	left: calc(38px + 52vw - 88px - 50px - var(--pl-mic-gutter, 0px) + 6px);
+}
+body:not(.pl-mobile).equip-open #pl-input-mic {
+	left: calc(38px + 52vw - 88px - 50px - var(--pl-mic-gutter, 0px) + 6px + 50px);
 }
 
 #map
@@ -4020,13 +4042,19 @@ body.pl-mobile #equipment-refresh { min-height: 44px; }
 }
 
 /* Same contract for the equipment sheet's search + sort controls: the sheet
- * scrolls, the controls do not. */
-#equipment-controls {
+ * scrolls, the controls do not. D168 moved the sticky onto the disclosure
+ * wrapper rather than the row inside it -- a sticky element inside a collapsed
+ * <details> has nothing to stick to, so the summary has to be the pinned
+ * thing. The row keeps only its own spacing. */
+#equipment-options {
 	position: sticky;
 	top: 0;
 	z-index: 2;
 	background: var(--pl-surface, #121514);
 	padding-top: 4px;
+	padding-bottom: 4px;
+}
+#equipment-controls {
 	padding-bottom: 8px;
 }
 
@@ -4092,9 +4120,28 @@ body.pl-mobile #map #map-toolbar button { min-height: 44px; flex: 1 1 auto; }
 	opacity: 0.6;
 }
 
-#equipment-controls {
+#equipment-options {
 	border-bottom: 1px solid var(--pl-border, #2a6);
 	margin-bottom: 10px;
+}
+/* Matches #map-controls-tab summary so both disclosures read the same. The
+ * 44px min-height is the same touch target every other control uses. */
+#equipment-options > summary {
+	cursor: pointer;
+	padding: 10px 4px;
+	font-size: 15px;
+	min-height: 44px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	list-style-position: inside;
+}
+/* A filter left on while the row is closed would otherwise silently shorten
+ * the list with nothing on screen to explain it. */
+#equipment-options-label[data-active]::after {
+	content: " (" attr(data-active) " active)";
+	font-size: 12px;
+	color: var(--pl-accent, #2a9);
 }
 
 /* Depth guides: a thin rail per level so a deep chain stays readable even
@@ -4114,7 +4161,7 @@ body.pl-mobile #map #map-toolbar button { min-height: 44px; flex: 1 1 auto; }
 body.light .equip-row { background: #fff; }
 body.light .equip-container { background: rgba(0, 0, 0, 0.04); }
 body.light #equipment { background: #fdfdfb; color: #1E1E1E; }
-body.light #equipment-controls { background: #fdfdfb; }
+body.light #equipment-options { background: #fdfdfb; }
 
 /* D122 (regression caught by the live probe): the D121 band rule
  * `body.pl-mobile #exits { display: flex }` is specificity (0,2,1), which
@@ -4200,9 +4247,17 @@ body.equip-dragging-active .equip-dragging {
  * gone wrong, the capability simply is not here. It stays clickable on
  * purpose: js/Input.js binds it to an explanation of what is missing and what
  * to do about it. */
+/* No `position` declaration here on purpose. The ::after slash below is
+ * absolutely positioned and needs a positioned containing block -- but the
+ * button is ALREADY `position: fixed`, which is one. An earlier draft added
+ * `position: relative`, which does not add a containing block so much as
+ * destroy the fixed one: the button fell back into document flow at the top of
+ * the page and the bottom/left offsets then threw it off the top-right corner
+ * of the viewport (measured at top: -31px). Desktop only, because the mobile
+ * rule above carries `position: fixed !important` and so was never overridden
+ * -- which is why this only ever showed on PC. */
 #pl-input-mic.pl-mic-unavailable,
 body.pl-mobile #pl-input-mic.pl-mic-unavailable {
-	position: relative;
 	opacity: 0.55;
 	border-color: var(--pl-border) !important;
 	color: var(--pl-muted, #8a9a94);

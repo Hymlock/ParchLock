@@ -309,6 +309,16 @@
 
 
 
+			<!-- D168 (operator): the options row cost the list six lines of
+			     height on every screen before a single item was visible.
+			     Collapsed by default on mobile AND desktop, using the same
+			     details/summary disclosure as #map-controls-tab so there is
+			     one collapse idiom in the app rather than two. No `open`
+			     attribute: closed is the default state on every open.
+			     EquipmentUI keeps the summary honest about filters that are
+			     active while hidden. -->
+			<details id="equipment-options">
+				<summary><span id="equipment-options-label">Options</span></summary>
 			<div id="equipment-controls">
 				<label class="equip-ctl" for="equipment-sort">Sort
 					<select id="equipment-sort">
@@ -331,6 +341,7 @@
 					<button id="equipment-refresh" type="button" title="Request inventory from the game">Refresh</button>
 				</div>
 			</div>
+			</details>
 
 			<!-- D150: the count belongs to the item list, not the title. In the
 			     title it sat above the stats strip and read as though it were

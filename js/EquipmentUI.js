@@ -374,9 +374,36 @@ var EquipmentUI = {
         return null;
     },
 
+    // D168: the options row is collapsed by default, so a filter left switched
+    // on is invisible while it is still shortening the list. Counting the
+    // non-default settings onto the summary keeps the disclosure honest --
+    // without it, "Container view off plus Worn unticked" looks exactly like
+    // "the game is not reporting those items", which is the wrong conclusion
+    // to hand a player who is trying to find something they are carrying.
+    syncOptionsLabel: function () {
+        var label = document.getElementById("equipment-options-label");
+        if (!label) return;
+        var p = EquipmentUI.Prefs, n = 0;
+        if (p.sort && p.sort !== "alpha") n++;
+        if (!p.containerView) n++;
+        if (p.filter) n++;
+        ["worn", "carried", "containers", "spells"].forEach(function (cat) {
+            // Only count a category the module actually offers: the spells
+            // checkbox is hidden outside a game that can cast (D149), and a
+            // hidden control must never be reported as an active filter.
+            var box = document.getElementById("equipment-cat-" + cat);
+            if (!box || box.offsetParent === null) return;
+            if (p.categories && p.categories[cat] === false) n++;
+        });
+        if (n) label.setAttribute("data-active", String(n));
+        else label.removeAttribute("data-active");
+    },
+
     Render: function () {
         var host = document.getElementById("equipment-list");
         if (!host) return;
+
+        EquipmentUI.syncOptionsLabel();
 
         // D127: never rebuild the list mid-drag. Render() is called from
         // Actionable.RenderInventory on every inventory refresh, and wiping
