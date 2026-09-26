@@ -1313,8 +1313,58 @@ var StatTracker = {
             } catch (e) {}
         }
 
+        StatTracker.autoIdentify();
         StatTracker.Render();
         StatTracker.playCues(StatTracker.takeEvents());
+    },
+
+    // D177 (operator): ask the story for its stats ONCE when a module first
+    // comes up, instead of waiting for the player to find the Identify button.
+    //
+    // D173 counts an announced score change against a total the game has
+    // stated, and refuses to invent one (D24). But Anchorhead's desktop status
+    // row shows "day one", not a score, so with no SCORE reply there is no
+    // total to count against and the row sits at 0 through the player's first
+    // points -- the single most likely complaint from a new tester.
+    //
+    // Two objections previously kept this out, and both are now answered.
+    // D167 claimed the reply costs a turn; measured, it does not -- SCORE is a
+    // meta action, confirmed on anchor (7/7/8), Zork1 (6/6/7, corroborated by
+    // the game's own status row), LostPig (6/6/7) and wump2ka (7/7/8). And the
+    // grok seat's reentrancy concern was about submitting from inside the
+    // payload cycle; this fires once at session start, and only after the game
+    // is demonstrably in play.
+    //
+    // That last gate is the important one. wump2ka opens with "Would you like
+    // to restore a saved game?", which is an ordinary line prompt -- sending
+    // "score" there would ANSWER it. So the probe waits for a real room, which
+    // no pre-game prompt has.
+    _autoIdentified: {},
+    autoIdentify: function () {
+        try {
+            var key = StatTracker._key;
+            if (!key || StatTracker._autoIdentified[key]) return;
+            var model = StatTracker.model();
+            // Already asked, in this session or a previous one.
+            if (model.probed || model.scoreUnavailable) return;
+            // A score already known from any source needs no probe.
+            if (model.stats.score && model.stats.score.confirmed) {
+                StatTracker._autoIdentified[key] = 1;
+                return;
+            }
+            // The game must be IN PLAY: a real room, and a line prompt waiting.
+            var p = (typeof WorldModel !== "undefined" && WorldModel.lastPayload) || null;
+            if (!p || p.roomId == null) return;
+            if (typeof document === "undefined") return;
+            if (!document.querySelector(".Input.LineInput")) return;
+            // Nothing in flight, and a command the story actually knows.
+            if (StatTracker._probePending) return;
+            if (typeof Actionable === "undefined" || !Actionable.isGameWord
+                || !Actionable.isGameWord("score")) return;
+
+            StatTracker._autoIdentified[key] = 1;
+            StatTracker.Identify();
+        } catch (e) {}
     },
 
     // ---- sound -----------------------------------------------------------

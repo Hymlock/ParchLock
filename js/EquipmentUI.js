@@ -780,6 +780,16 @@ var EquipmentUI = {
     Show: function () {
         document.body.classList.remove("map-open");
         document.body.classList.add("equip-open");
+        // D177 (operator: "I can wait until the actual inventory sheet is
+        // loaded"). The STATUS block lives at the top of this sheet, so opening
+        // it is the moment the stats are first looked at -- and it is a
+        // guaranteed in-play moment, which a page-load timer is not. Asking
+        // here gives the score a total to count against before the player earns
+        // anything, instead of leaving the row at 0 through their first points.
+        // StatTracker.autoIdentify is idempotent per game and refuses unless a
+        // real room and a line prompt are present, so it cannot answer a
+        // pre-game prompt such as wump2ka's "restore a saved game?".
+        try { if (typeof StatTracker !== "undefined" && StatTracker.autoIdentify) StatTracker.autoIdentify(); } catch (e) {}
         EquipmentUI.Render();
     },
 
