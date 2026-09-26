@@ -38,6 +38,7 @@ call "%SRC%\make-dist.bat" "%PC_DIST%" || exit /b 1
 echo [2/4] Building clean Capacitor web assets...
 call "%SRC%\make-dist.bat" "%CAP_WWW%" || exit /b 1
 if exist "%CAP_WWW%\ParchLock-source.zip" del /q "%CAP_WWW%\ParchLock-source.zip"
+if exist "%CAP_WWW%\ParchLock.exe" del /q "%CAP_WWW%\ParchLock.exe"
 
 echo [3/4] Copying assets into Android...
 if exist "%APK_WEB%" rmdir /s /q "%APK_WEB%"
@@ -52,6 +53,14 @@ for %%F in (play.html manifest.json js\ProductInfo.js js\ModuleLibrary.js js\Par
 )
 if exist "%APK_WEB%\ParchLock-source.zip" (
   echo ERROR: source archive must not be embedded in the APK.
+  exit /b 1
+)
+if exist "%APK_WEB%\ParchLock.exe" (
+  echo ERROR: PC launcher must not be embedded in the APK.
+  exit /b 1
+)
+if not exist "%PC_DIST%\ParchLock.exe" (
+  echo ERROR: Desktop launcher missing from %PC_DIST%.
   exit /b 1
 )
 

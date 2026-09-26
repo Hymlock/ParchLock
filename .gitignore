@@ -22,6 +22,7 @@ capacitor-www/
 # Wiped with rmdir /s /q and rebuilt on every Android build.
 android/app/src/main/assets/
 ParchLock-source.zip
+ParchLock.exe
 
 # ---- Gradle / Android build output -------------------------------------
 android/.gradle/

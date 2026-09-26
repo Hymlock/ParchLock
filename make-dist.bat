@@ -58,8 +58,13 @@ if exist "%SRC%\games" robocopy "%SRC%\games" "%DEST%\games" *.* %ROBO% >nul
 if errorlevel 8 goto :fail
 if exist "%SRC%\user\_user-files-go-here.txt" copy /y "%SRC%\user\_user-files-go-here.txt" "%DEST%\user\" >nul
 
+echo Building PC launcher...
+call "%SRC%\build-pc-launcher.bat" || goto :fail
+copy /y "%SRC%\ParchLock.exe" "%DEST%\ParchLock.exe" >nul || goto :fail
+
 for %%F in (
   play.html index.html manifest.json service-worker.js
+  ParchLock.exe
   js\ProductInfo.js js\ModuleLibrary.js js\MobileLayout.js js\Input.js
   js\Qol.js js\Actionable.js js\ParchLock.js css\ParchLock.css
   js\StatTracker.js js\EquipmentUI.js
@@ -75,7 +80,7 @@ rem generated Android assets, secrets or signing material.
 mkdir "%SOURCE_STAGE%" || goto :fail
 for %%F in (
   index.html play.html manifest.json service-worker.js
-  make-dist.bat build-android.bat package.json package-lock.json capacitor.config.json
+  make-dist.bat build-android.bat build-pc-launcher.bat package.json package-lock.json capacitor.config.json
   LICENSE NOTICE README.md USER_GUIDE.md RELEASE_NOTES.md PRIVACY.md
   CREDITS.md THIRD_PARTY_NOTICES.md SOURCE_BUILD.md
 ) do copy /y "%SRC%\%%F" "%SOURCE_STAGE%\%%F" >nul || goto :sourcefail
@@ -84,6 +89,8 @@ for %%D in (css img js lib licenses) do (
   if errorlevel 8 goto :sourcefail
 )
 robocopy "%SRC%\native-hooks" "%SOURCE_STAGE%\native-hooks" *.* %ROBO% /XD build /XF *.log >nul
+if errorlevel 8 goto :sourcefail
+robocopy "%SRC%\pc-launcher" "%SOURCE_STAGE%\pc-launcher" *.cs /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
 if errorlevel 8 goto :sourcefail
 mkdir "%SOURCE_STAGE%\vendor\emglken-stage" 2>nul
 for %%F in (package.json package-lock.json README.md smoke.mjs smoke.cjs) do if exist "%SRC%\vendor\emglken-stage\%%F" copy /y "%SRC%\vendor\emglken-stage\%%F" "%SOURCE_STAGE%\vendor\emglken-stage\%%F" >nul

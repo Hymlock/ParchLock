@@ -3844,3 +3844,28 @@ D165 intend.
 discoveredObjects 0 was audited as `scopeObjects` genuinely finding no printable
 children -- a cave with nothing named in RAM. That is honest absence (D24), not
 a wipe, and the D54 block should not be changed for it.
+
+
+## D172 The command line ran under the send and mic buttons
+
+Operator, desktop: with the equipment sheet open the input line continued
+underneath the send and microphone buttons; with the map open it did not.
+
+D168 gave `equip-open` its own rules for where those two fixed buttons SIT, so
+they would not be left behind the sheet. But the space they sit in is reserved
+by the LINE's own width, and that rule was still keyed to `map-open` alone:
+
+    body.map-open #windowport .BufferWindow .Input.LineInput,
+    body.map-open ... .Input.CharInput { width: calc(52vw - 88px - 50px - ...) }
+
+So the buttons moved and the line did not shorten with them. Same 52vw
+expression now applies to `body:not(.pl-mobile).equip-open`, because D168
+deliberately gave both sheets the same geometry.
+
+Measured after the fix, at 1920px: the line's right edge is 848 with the first
+button at 854, identical to the map, and both sheets reserve the same 810px
+width. `tools/panel-reflow-live.js` asserts all three, comparing the equipment
+sheet against the map rather than against a constant, so the two can never drift
+apart again (29 assertions). The selector accepts CharInput as well as
+LineInput, since the same CSS rule governs both and a story sitting at a
+"press any key" prompt would otherwise skip the check silently.

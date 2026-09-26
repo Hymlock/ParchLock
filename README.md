@@ -12,7 +12,10 @@ structure; it does not determine ownership or permission.
 
 ## Start
 
-- Desktop: open `play.html`, or serve the folder from localhost.
+- Desktop: double-click `ParchLock.exe` in the distribution folder. It serves the
+  files on localhost and opens Chrome or Edge full screen so voice input can work.
+  Opening `play.html` directly still plays, but the microphone cannot remember
+  permission on a `file://` page.
 - Android: install `ParchLock.apk` from a release folder.
 - Library: open `index.html` and select **Modules** to add files.
 

@@ -93,6 +93,34 @@ const box = (page, sel) => page.evaluate((s) => {
         check(submit.r <= sheet.l + 4,
             `send button stays clear of the sheet (right ${submit.r}, sheet ${sheet.l})`);
 
+        // D172 (operator): the command line must not run UNDER those buttons.
+        // Moving the buttons is only half of it -- the line's own width is what
+        // reserves the space they occupy, and that was keyed to map-open alone,
+        // so with the equipment sheet open the line extended straight under
+        // them. Compared against the map, which was always correct.
+        const lineEq = await box(page, '#windowport .BufferWindow .Input.LineInput, #windowport .BufferWindow .Input.CharInput');
+        const micEq = await box(page, '#pl-input-mic');
+        if (lineEq) {
+            const firstBtn = Math.min(submit.l, micEq ? micEq.l : submit.l);
+            check(lineEq.r <= firstBtn + 2,
+                `equip-open: command line stops before the buttons (line right ${lineEq.r}, first button ${firstBtn})`);
+        } else {
+            check(false, 'equip-open: a command line is present to measure');
+        }
+
+        await page.evaluate(() => ParchLockMap.Show());
+        await page.waitForTimeout(900);
+        const lineMap = await box(page, '#windowport .BufferWindow .Input.LineInput, #windowport .BufferWindow .Input.CharInput');
+        const subMap = await box(page, '#pl-input-submit');
+        const micMap = await box(page, '#pl-input-mic');
+        if (lineMap) {
+            const firstBtn = Math.min(subMap.l, micMap ? micMap.l : subMap.l);
+            check(lineMap.r <= firstBtn + 2,
+                `map-open: command line stops before the buttons (line right ${lineMap.r}, first button ${firstBtn})`);
+            check(lineEq && Math.abs(lineEq.w - lineMap.w) <= 2,
+                `both sheets reserve the same line width (${lineEq && lineEq.w} vs ${lineMap.w})`);
+        }
+
         await ctx.close();
     }
 

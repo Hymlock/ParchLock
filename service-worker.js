@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v58"; // D171 compiled room index fixes Wumpus room identity
+const CACHE_VERSION = "parchlock-shell-v59"; // D172 command line reserves the send/mic gutter with the equipment sheet
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

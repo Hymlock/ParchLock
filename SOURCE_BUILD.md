@@ -14,7 +14,11 @@ AI workflow files, build output, signing keys and secrets.
 Run `npm ci`, then:
 
 - `make-dist.bat` rebuilds the static runtime and source archive from explicit
-  allow-lists.
+  allow-lists. It also runs `build-pc-launcher.bat` (Windows `csc`) so
+  `ParchLock.exe` sits next to `play.html` in the desktop folder. `build-android.bat`
+  is the full distribution builder: it calls `make-dist.bat` for the PC folder and
+  for Capacitor, then builds the APK. The PC launcher is stripped from Android
+  web assets and must not enter the APK.
 - `build-android.bat dev` builds a debug development APK.
 - `build-android.bat release` requires the external signing environment
   documented in that script, performs a clean release build, and verifies the

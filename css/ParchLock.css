@@ -2402,6 +2402,15 @@ body.light #notes-container .icon-delete-note { background-image: url(../img/ico
  * looks exactly as it did before, instead of showing a dead 50px gap. */
 #windowport .BufferWindow .Input.LineInput, #windowport .BufferWindow .Input.CharInput { position: fixed !important; top: auto !important; bottom: 32px !important; left: 38px !important; right: auto !important; width: calc(100vw - 88px - 50px - var(--pl-mic-gutter, 0px)) !important; margin: 0 !important; height: 42px; z-index: 3; background: var(--pl-surface) !important; }
 body.map-open #windowport .BufferWindow .Input.LineInput, body.map-open #windowport .BufferWindow .Input.CharInput { width: calc(52vw - 88px - 50px - var(--pl-mic-gutter, 0px)) !important; }
+/* D172 (operator, desktop): the command line ran UNDERNEATH the send and mic
+ * buttons whenever the equipment sheet was open, but not with the map. D168
+ * gave equip-open its own rules for where those two fixed buttons SIT, and
+ * moved them to match the map -- but the line's own width is what reserves the
+ * space they sit in, and that was still keyed to map-open alone. So the
+ * buttons moved and the line did not shorten with them. Same 52vw expression
+ * as the map, because D168 deliberately gave both sheets the same geometry. */
+body:not(.pl-mobile).equip-open #windowport .BufferWindow .Input.LineInput,
+body:not(.pl-mobile).equip-open #windowport .BufferWindow .Input.CharInput { width: calc(52vw - 88px - 50px - var(--pl-mic-gutter, 0px)) !important; }
 
 /* D93 (R1/G10/G28): submit control, desktop -- reserves the 50px this rule
  * just subtracted from the input's own width (44px button + 6px gap),
