@@ -337,10 +337,28 @@ var StatTracker = {
             // bootstrap. `scorePinKnown` is written only from a SCORE reply,
             // the status row or a pinned global.
             var known = (typeof model.scorePinKnown === "number") ? model.scorePinKnown : null;
+            // D176: the hold-total filter is only valid while the baseline is
+            // CURRENT. D175 fixed a baseline that ran too high by freezing it
+            // at the last absolute -- and thereby created the opposite fault,
+            // traced by the grok seat: after SCORE 0 and a counted +2, the
+            // baseline is still 0, so a following +5 demands a global holding
+            // 5 while RAM holds 7. Every candidate is rejected and the slot
+            // never pins; and because RAM can only refresh the baseline once
+            // pinned, that is a catch-22 with no way out.
+            //
+            // The display having moved past the last stated absolute is exactly
+            // the signal that the baseline is stale. When it has, only the
+            // MOVEMENT filter is applied -- which needs no baseline and is the
+            // original D167 evidence -- rather than a total that is known to be
+            // out of date. Nothing is loosened while the baseline is current.
+            var baselineCurrent = known === null
+                || !(model.stats.score && typeof model.stats.score.value === "number")
+                || model.stats.score.value === known;
+
             var hits = [];
             for (var i = 0; i < globals.length; i++) {
                 if (globals[i] - prev[i] !== delta) continue;
-                if (known !== null && globals[i] !== known + delta) continue;
+                if (known !== null && baselineCurrent && globals[i] !== known + delta) continue;
                 hits.push(i);
             }
             if (!hits.length) return;

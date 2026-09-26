@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v62"; // D175 pin baseline separated from the running total; replay guard keyed on the game turn
+const CACHE_VERSION = "parchlock-shell-v63"; // D176 hold-total filter applies only while the pin baseline is current
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

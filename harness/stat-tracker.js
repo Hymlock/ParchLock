@@ -446,6 +446,54 @@ assert(pm3.globals.score == null && !pm3.stats.score,
         `D175: but the pin baseline stays the last stated absolute, not the running total (${m2.scorePinKnown})`);
 }
 
+// D176: the slot must still PIN after the display has counted a change.
+// D175 froze the pin baseline at the last stated absolute, which fixed a
+// baseline that ran too high and created one stuck too low: after SCORE 0 and a
+// counted +2, a following +5 demanded a global holding 5 while RAM held 7, so
+// every candidate was rejected and the slot could never pin -- and RAM can only
+// refresh the baseline once pinned. The 95-assertion suite missed it because it
+// only checked the HUD arithmetic, never that pinning still worked. That was a
+// second false green in the same feature, so this asserts the pin itself.
+{
+    S._key = null; S._model = null; S._samples = []; S._events = []; S._turn = 0;
+    for (const k of Object.keys(store)) delete store[k];
+
+    // A story whose score really lives in global 7.
+    const g = (score) => { const a = new Array(16).fill(0); a[7] = score; a[2] = 1; return a; };
+    S.observe(null, "");
+    S._samples.push({ globals: g(0) });
+    S.applyScoreReply("You have so far scored 0 out of a possible 100 points.");
+    let m3 = S.model();
+    m3.scoreUnavailable = false;      // set by an earlier NO_SCORE block; not under test here
+    m3.stats.turns = { key: "turns", label: "Turns", value: 10, unit: "plain",
+                       kind: "counter", seen: 2, source: "status", confirmed: true };
+
+    // Event one: +2. RAM moves 0 -> 2.
+    S._turn++; m3.stats.turns.value = 11;
+    S._samples = [{ globals: g(0) }];
+    S._pendingDelta = S.parseScoreDelta("Your score has just gone up by two points.");
+    S.pinScoreByDelta(m3, 2, g(2));
+    S.applyScoreDeltaToDisplay(m3, 2, 0);
+    S._pendingDelta = null;
+    assert(m3.stats.score.value === 2, `D176: the display counts event one (${m3.stats.score.value})`);
+
+    // Event two: +5. RAM moves 2 -> 7, while the baseline is still the stated 0.
+    S._turn++; m3.stats.turns.value = 12;
+    S._samples = [{ globals: g(2) }];
+    S.pinScoreByDelta(m3, 5, g(7));
+    // Before D176 the hold-total filter rejected every candidate here, so
+    // pinScoreByDelta returned at `if (!hits.length) return;` WITHOUT recording
+    // a candidate or counting the event. Those two fields are therefore the
+    // direct evidence that hits survived.
+    assert(m3.scoreDeltaEvents === 2,
+        `D176: event two is counted, so hits were not empty (${m3.scoreDeltaEvents})`);
+    assert(JSON.stringify(m3.scoreCandidates) === "[7]",
+        `D176: and the real slot is still the surviving candidate (${JSON.stringify(m3.scoreCandidates)})`);
+    const pinned = m3.globals && m3.globals.score;
+    assert(pinned === 7,
+        `D176: the slot pins on the stale baseline (got ${pinned})`);
+}
+
 // Without an absolute to add to, a delta must NOT invent a total (D24).
 {
     S._key = null; S._model = null; S._samples = []; S._events = []; S._turn = 0;

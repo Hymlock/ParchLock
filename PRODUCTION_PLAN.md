@@ -4077,3 +4077,49 @@ SCORE is free (D173) stands; being free is not the same as being asked for.
 the baseline staying put while the display counts a change, and the replay guard
 tested forty ticks later on the same game turn. `tools/stat-tracker-live.js` 12
 and `tools/carry-value-live.js` 19 unchanged.
+
+
+## D176 The pin baseline stuck too LOW, which D175 created
+
+The grok seat audited D175 and found that fixing a baseline which ran too high
+had produced the mirror fault.
+
+After a SCORE reply of 0 and a counted +2, `scorePinKnown` is still 0 -- by
+design, because only an absolute may seed it. A following +5 then makes the pin
+demand a global holding `0 + 5 = 5`, while RAM holds 7. Every candidate is
+rejected, the slot never pins, and because RAM can only refresh the baseline
+ONCE pinned, there is no way out. A catch-22 for the headless path.
+
+The hold-total filter is only sound while the baseline is CURRENT. The display
+having moved past the last stated absolute is exactly the signal that it is not,
+so in that case only the MOVEMENT filter is applied -- `globals[i] - prev[i] ===
+delta`, which needs no baseline and is the original D167 evidence. Nothing is
+loosened while the baseline is current.
+
+### The suite missed it, again
+
+95 assertions passed over this feature while the pin was dead, because they only
+checked the HUD arithmetic and never that pinning still worked. That is the
+second false green in the same feature -- after the tick-keyed replay guard in
+D175 -- and both were found by reading the code rather than by running the
+tests.
+
+The new assertions are on `scoreDeltaEvents` and `scoreCandidates`, because
+before the fix `pinScoreByDelta` returned at `if (!hits.length) return;` WITHOUT
+recording either. Verified by removing the fix: the suite drops to 98/1 with
+"event two is counted, so hits were not empty (1)". A test that does not fail
+against the bug it describes is not evidence.
+
+### Recorded, not fixed
+
+Confirmed by the audit and left documented:
+
+  - the replay guard falls back to the TICK counter for a story that exposes no
+    turn counter, which reintroduces the D175 bug for those stories only
+  - `ramStale` (D174) is set as soon as RAM cannot answer, but the row keeps its
+    `indiv:` source and its stale number until the next inventory line arrives.
+    A take that does not reprint the inventory leaves a live-looking figure
+    until then. Better than refusing the text outright, still not honest
+  - if any story computes an item's VALUE the way wump2ka computes the
+    canteen's WEIGHT, the same freeze applies; it shares the code path, so the
+    same flag covers it
