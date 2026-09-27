@@ -1439,6 +1439,14 @@ var StatTracker = {
             } catch (e) {}
         }
 
+        // D187: retried every turn until it fires. D177 added this call and it
+        // was lost in a later rewrite of this file, leaving autoIdentify
+        // reachable ONLY from EquipmentUI.Show -- and at the instant that sheet
+        // opens the payload often has no room yet, so the in-play guard refuses
+        // and nothing ever asks again. Measured: Anchorhead and wump2ka never
+        // probed at all, while Zork 1 did, which is why it looked like it
+        // worked. From here it is genuinely automatic.
+        StatTracker.autoIdentify();
         StatTracker.Render();
         StatTracker.playCues(StatTracker.takeEvents());
     },
