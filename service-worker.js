@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v63"; // D176 hold-total filter applies only while the pin baseline is current
+const CACHE_VERSION = "parchlock-shell-v64"; // D178 readings do not persist across module starts
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

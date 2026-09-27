@@ -456,6 +456,43 @@ var StatTracker = {
             Object.keys(m).forEach(function (k) {
                 if (parsed && parsed[k] != null) m[k] = parsed[k];
             });
+
+            // D178 (operator: "the score system for Wumpus is persisting
+            // across separate starts of the module").
+            //
+            // What is worth persisting is what was LEARNED about the story --
+            // which global holds the score, which individual property holds an
+            // item's value -- because those are facts about the compiled file
+            // and are true for every play of it. What must NOT persist is a
+            // READING, because it belongs to a game that is over.
+            //
+            // Measured on wump2ka: finishing a session carrying the Transmat
+            // Popper and starting a fresh one showed VALUE $685 and CARRIED
+            // 5 lbs before the player had picked anything up, while they were
+            // actually holding only the Glow Bar (35 / 4 lbs). The figures were
+            // the previous game's, presented as this game's.
+            //
+            // Every reading is therefore unconfirmed on load. `visibleStats`
+            // shows only confirmed stats, so a row stays absent until it has
+            // been re-derived this session -- from the status row, from RAM
+            // through a pinned slot, or from the game's own text. That is D24's
+            // honest absence rather than a stale number worn as a current one.
+            // The pins in `model.globals` and `model.carry` survive untouched,
+            // so re-derivation is immediate rather than starting from scratch.
+            Object.keys(m.stats || {}).forEach(function (k) {
+                var s = m.stats[k];
+                if (!s) return;
+                s.confirmed = false;
+                s.lastChange = null;
+                s.badgeUntil = 0;
+                s.badgeDelta = 0;
+            });
+            // Session-scoped bookkeeping: a baseline and the notifications
+            // already counted belong to the game that stated them.
+            delete m.scorePinKnown;
+            delete m.lastDeltaStamp;
+            m.seenDeltas = {};
+            m.seenBanners = {};
         } catch (e) {}
         return m;
     },
@@ -1313,7 +1350,6 @@ var StatTracker = {
             } catch (e) {}
         }
 
-        StatTracker.autoIdentify();
         StatTracker.Render();
         StatTracker.playCues(StatTracker.takeEvents());
     },
@@ -1335,29 +1371,29 @@ var StatTracker = {
     // payload cycle; this fires once at session start, and only after the game
     // is demonstrably in play.
     //
-    // That last gate is the important one. wump2ka opens with "Would you like
-    // to restore a saved game?", which is an ordinary line prompt -- sending
-    // "score" there would ANSWER it. So the probe waits for a real room, which
-    // no pre-game prompt has.
+    // D177: asked when the inventory sheet opens (EquipmentUI.Show), not from
+    // Tick. wump2ka's restore question is an ordinary line prompt -- "score"
+    // would answer it -- so refuse that text even if the sheet is open.
+    // Identify() submits a line command, so CharInput is not enough.
     _autoIdentified: {},
     autoIdentify: function () {
         try {
             var key = StatTracker._key;
             if (!key || StatTracker._autoIdentified[key]) return;
             var model = StatTracker.model();
-            // Already asked, in this session or a previous one.
             if (model.probed || model.scoreUnavailable) return;
-            // A score already known from any source needs no probe.
             if (model.stats.score && model.stats.score.confirmed) {
                 StatTracker._autoIdentified[key] = 1;
                 return;
             }
-            // The game must be IN PLAY: a real room, and a line prompt waiting.
-            var p = (typeof WorldModel !== "undefined" && WorldModel.lastPayload) || null;
-            if (!p || p.roomId == null) return;
             if (typeof document === "undefined") return;
+            var buf = "";
+            try {
+                var el = document.querySelector(".BufferWindow");
+                buf = el ? String(el.innerText || el.textContent || "") : "";
+            } catch (eBuf) {}
+            if (/would you like to restore a saved game/i.test(buf.slice(-1200))) return;
             if (!document.querySelector(".Input.LineInput")) return;
-            // Nothing in flight, and a command the story actually knows.
             if (StatTracker._probePending) return;
             if (typeof Actionable === "undefined" || !Actionable.isGameWord
                 || !Actionable.isGameWord("score")) return;

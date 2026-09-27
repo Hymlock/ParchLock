@@ -4123,3 +4123,62 @@ Confirmed by the audit and left documented:
   - if any story computes an item's VALUE the way wump2ka computes the
     canteen's WEIGHT, the same freeze applies; it shares the code path, so the
     same flag covers it
+
+
+## D178 A persisted READING is not a persisted FACT
+
+Operator: "the score system at least for Wumpus is persisting across separate
+starts of the module", and separately that the value shown was wrong.
+
+Measured on wump2ka: finish a session carrying the Transmat Popper, start a
+fresh one, and before the player has picked anything up the panel reads
+VALUE $685 and CARRIED 5 lbs -- while they are actually holding only the Glow
+Bar, 35 and 4 lbs. The previous game's figures, presented as this game's.
+
+What is worth persisting is what was LEARNED about the story: which global holds
+the score, which individual property holds an item's value. Those are facts
+about the compiled file and are true for every play of it. A READING is not --
+it belongs to a game that is over.
+
+Every stat is therefore unconfirmed on load. `visibleStats` shows only confirmed
+stats, so a row stays absent until it has been re-derived this session, which is
+D24's honest absence rather than a stale number worn as a current one. The pins
+in `model.globals` and `model.carry` survive untouched, so re-derivation is
+immediate. Session-scoped bookkeeping -- the pin baseline, the notifications
+already counted -- is dropped with them.
+
+Measured after: session two starts with no value or weight row at all, and both
+return as soon as the game states or RAM supplies them.
+
+## Wumpus attribute bits do not follow the Inform-6 profile
+
+Three operator reports -- food pellets never highlighted, the canteen offering
+no Take, the Glow Bar offering no on/off -- are ONE cause, and it is not in the
+verb layer. Measured live, the room's own children and the verbs synthesized for
+them:
+
+    canteen   attrs [light, static]                     -> [examine]
+    fungus    attrs [locked, open, switchable, talkable] -> [examine, take,
+                                                             switch on, switch off, talk to]
+    fog       attrs [talkable, takeable]                -> [examine, take, talk to]
+    pit       attrs [talkable, takeable]                -> [examine, take, talk to]
+
+The app is offering to TALK TO a pit and SWITCH ON fungus, while withholding
+Take from a canteen the game lets you pick up. These are not borderline
+readings; they are a different attribute layout being read through the Inform-6
+map. D145 already established that bits mean different things to different
+compilers and that semantic flags must not be asserted for a non-Inform game
+without calibration -- but that guard is gated on `isInformCompiled`, and this
+story passes it while plainly not sharing the profile.
+
+The food pellets are the same story from the other end: the room's children
+include objects 198 and 199 whose compiled short names are `(bar1)` and
+`(bar2)`, while the game prints "two food pellets". They are filtered as
+internal before they can be marked, so no verb or highlight layer can reach
+them.
+
+Recorded rather than fixed: the correct repair is in the attribute schema and in
+how an object's printed name is bound to a parenthesised compiled name, not in
+ActionSynth's verb list. A verb-list patch was written for this during D169 and
+REMOVED after measuring that it fixed nothing, which is the evidence that the
+layer below is where the fault is.
