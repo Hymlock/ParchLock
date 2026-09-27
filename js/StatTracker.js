@@ -487,12 +487,13 @@ var StatTracker = {
                 s.badgeUntil = 0;
                 s.badgeDelta = 0;
             });
-            // Session-scoped bookkeeping: a baseline and the notifications
-            // already counted belong to the game that stated them.
             delete m.scorePinKnown;
             delete m.lastDeltaStamp;
             m.seenDeltas = {};
             m.seenBanners = {};
+            m.deaths = 0;
+            m.wins = 0;
+            m.probed = false;
         } catch (e) {}
         return m;
     },
@@ -567,8 +568,11 @@ var StatTracker = {
         var key = null;
         try { key = ZRamReader.gameIdentityKey ? ZRamReader.gameIdentityKey(mem) : null; } catch (e) {}
         key = key || "unknown";
-        if (StatTracker._key !== key) {
+        var story = "";
+        try { story = (typeof ParchLock !== "undefined" && ParchLock.GameFilename) || ""; } catch (eStory) {}
+        if (StatTracker._key !== key || StatTracker._storyFile !== story) {
             StatTracker._key = key;
+            StatTracker._storyFile = story;
             StatTracker._samples = [];
             StatTracker._model = StatTracker.load(key);
         }
@@ -899,10 +903,9 @@ var StatTracker = {
                 var delta = v - stat.value;
                 stat.value = v;
                 stat.lastChange = delta;
-                stat.confirmed = true;
                 StatTracker.emitChange(model, k, delta);
             }
-            // D175: RAM is an absolute, so it may seed the pin baseline.
+            stat.confirmed = true;
             if (k === "score") model.scorePinKnown = v;
         });
     },
@@ -946,7 +949,7 @@ var StatTracker = {
         // "(26% of your current capacity)"
         capacity: /\((\d+)\s*%\s*of\s+your\s+current\s+capacity\)/i,
         // "It's all worth about $693.", "worth 693 gold"
-        value: /worth\s+(?:about\s+)?([$£€])?\s*(\d+)/i
+        value: /all worth\s+(?:about\s+)?([$£€])?\s*(\d+)/i
     },
     // A plain per-item quantity is small. A property holding a routine or a
     // string returns its ADDRESS, which is many thousands -- the canteen's
