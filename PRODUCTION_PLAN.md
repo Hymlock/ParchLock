@@ -4182,3 +4182,29 @@ how an object's printed name is bound to a parenthesised compiled name, not in
 ActionSynth's verb list. A verb-list patch was written for this during D169 and
 REMOVED after measuring that it fixed nothing, which is the evidence that the
 layer below is where the fault is.
+
+
+## D180 The stats were not part of the undo/restore/restart resync
+
+Raised by the grok seat auditing D178: answering the restore prompt in the same
+page wiped the map but left the stats alone.
+
+`UndoRestoreSync.resync` is the single point every undo, restore and restart
+passes through, and it already re-syncs the topology, the actionable scope and
+the map. The stats were the one subsystem it never told, so a restored game kept
+the abandoned timeline's score and carried totals on screen until something
+happened to overwrite them.
+
+`StatTracker.Resync` is now called from it. The unconfirm step D178 introduced on
+load is extracted as `forgetReadings` and shared by both paths, so a reading
+dropped on load and a reading dropped on a restore can never diverge.
+
+Measured through the real resync path: the carry pin (individual property 98)
+and the global pins survive, while readings are dropped and then re-derived on
+the same tick from whatever is live -- the status row, RAM through a pinned
+slot, the game's own text. A figure that CANNOT be re-derived now stays absent
+instead of lingering, which is the whole point.
+
+Recorded honestly: a scripted restart could not be driven far enough to confirm
+this end to end through the game's own dialogue, so the verification is of the
+resync path itself rather than of a full restart.

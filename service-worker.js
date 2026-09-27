@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v64"; // D178 readings do not persist across module starts
+const CACHE_VERSION = "parchlock-shell-v65"; // D180 stats join the undo/restore/restart resync
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

@@ -19,6 +19,12 @@ var UndoRestoreSync = {
                 MapTopology.prevRoomName = "";
                 if (WorldModel.lastPayload) MapTopology.tick(WorldModel.lastPayload);
             }
+            // D180: the stats are a subsystem of this resync too. Undo,
+            // restore and restart all move the story to a different point in
+            // time, and a score or a carried total from the abandoned one is
+            // not this game's figure. Readings are dropped; what was LEARNED
+            // about the story file is kept, so they come back immediately.
+            if (typeof StatTracker !== "undefined" && StatTracker.Resync) StatTracker.Resync();
             if (typeof Actionable !== "undefined" && Actionable.Refresh) Actionable.Refresh();
             if (typeof ParchLockMap !== "undefined" && ParchLockMap.Draw) ParchLockMap.Draw();
             // Operator: restore updated the map but story text stayed stale.

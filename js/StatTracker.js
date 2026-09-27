@@ -479,21 +479,7 @@ var StatTracker = {
             // honest absence rather than a stale number worn as a current one.
             // The pins in `model.globals` and `model.carry` survive untouched,
             // so re-derivation is immediate rather than starting from scratch.
-            Object.keys(m.stats || {}).forEach(function (k) {
-                var s = m.stats[k];
-                if (!s) return;
-                s.confirmed = false;
-                s.lastChange = null;
-                s.badgeUntil = 0;
-                s.badgeDelta = 0;
-            });
-            delete m.scorePinKnown;
-            delete m.lastDeltaStamp;
-            m.seenDeltas = {};
-            m.seenBanners = {};
-            m.deaths = 0;
-            m.wins = 0;
-            m.probed = false;
+            StatTracker.forgetReadings(m);
         } catch (e) {}
         return m;
     },
@@ -522,6 +508,49 @@ var StatTracker = {
         if (!StatTracker._model) StatTracker._model = StatTracker.blank();
         return StatTracker._model;
     },
+    // D180: drop every READING while keeping everything LEARNED. Shared by the
+    // load path (D178/D179) and by a mid-session resync, so the two can never
+    // drift apart.
+    //
+    // `model.globals` and `model.carry` are untouched: which global holds the
+    // score and which individual property holds an item's value are facts about
+    // the compiled file, true for every play of it, so re-derivation is
+    // immediate rather than starting again from nothing.
+    forgetReadings: function (m) {
+        if (!m) return m;
+        Object.keys(m.stats || {}).forEach(function (k) {
+            var s = m.stats[k];
+            if (!s) return;
+            s.confirmed = false;
+            s.lastChange = null;
+            s.badgeUntil = 0;
+            s.badgeDelta = 0;
+        });
+        delete m.scorePinKnown;
+        delete m.lastDeltaStamp;
+        m.seenDeltas = {};
+        m.seenBanners = {};
+        m.deaths = 0;
+        m.wins = 0;
+        m.probed = false;
+        return m;
+    },
+
+    // D180: undo, restore and restart all land in UndoRestoreSync.resync, which
+    // already re-syncs the map, the topology and the actionable scope. The
+    // stats were the one subsystem it never told, so a restored game kept the
+    // abandoned timeline's score and carried totals on screen until something
+    // happened to overwrite them. Raised by the grok seat's audit of D178.
+    Resync: function () {
+        try {
+            StatTracker.forgetReadings(StatTracker.model());
+            StatTracker._samples = [];
+            StatTracker._probePending = null;
+            StatTracker._probeTurns = 0;
+            if (StatTracker._key) StatTracker.save(StatTracker._key, StatTracker.model());
+        } catch (e) {}
+    },
+
     reset: () => {
         StatTracker._samples = [];
         StatTracker._events = [];
