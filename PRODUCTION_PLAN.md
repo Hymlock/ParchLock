@@ -4240,3 +4240,28 @@ no badge -- while the new value is still adopted.
 
 Also restored here: a pre-existing comment explaining the topology reset, which
 the adversarial diff removed along with the code it sat above.
+
+
+## D182 Declining the restore prompt is a new game, and only one place knew it
+
+The grok seat re-audited D180 and found it did not close the case it was written
+for.
+
+`UndoRestoreSync.noteCommand` matches `undo|restore|restart|load`. Answering
+"no" to "Would you like to restore a saved game?" is the command `no`, so it
+never reaches `resync` at all -- and `resync` is where D180 wired the stats in.
+That path is `MapTopology.handlePossibleNewGameAnswer`, which wipes `PL_Map_*`
+and the room graph and never told the stats. So the map was cleared for the new
+game while the previous game's score and carried totals stayed on screen, which
+is precisely the operator's original report.
+
+`StatTracker.Resync()` now runs beside the map wipe. Typed RESTART, `@restart`
+and `restore_file` continue to arrive through `onStateRestored` -> `resync`, so
+both routes into a new game are covered rather than one.
+
+Measured: declining the prompt takes the map from 2 rooms to 1 and clears the
+carried weight. The carried VALUE stayed, correctly -- it is pinned to an
+individual property and re-read from live RAM, and in a simulated handler call
+the player really is still holding the items. A true end-to-end check needs a
+real new game driven through the story's own dialogue, which neither seat has
+managed to script; that remains the open verification.

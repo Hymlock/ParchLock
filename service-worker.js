@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v66"; // D181 a restore fires no score cue or badge
+const CACHE_VERSION = "parchlock-shell-v67"; // D182 declining a restore prompt resyncs the stats too
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

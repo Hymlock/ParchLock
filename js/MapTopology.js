@@ -724,6 +724,16 @@ var MapTopology = {
                     try { ParchLockMap.UpdateStats(); ParchLockMap.RebuildRoomsList(); ParchLockMap.RebuildNotesList(); ParchLockMap.ApplyNotesAddButtonPref(); ParchLockMap.Draw(); } catch (eD) {}
                 }
             } catch (e) {}
+            // D182 (grok seat): declining the restore prompt starts a NEW game,
+            // and this is the only place that knows it. UndoRestoreSync.resync
+            // -- where D180 wired the stats in -- is never reached, because
+            // noteCommand only matches undo/restore/restart/load and the
+            // player's command here is simply "no". So the map was wiped while
+            // the previous game's score and carried totals stayed on screen:
+            // the exact gap D180 was meant to close and did not.
+            try {
+                if (typeof StatTracker !== "undefined" && StatTracker.Resync) StatTracker.Resync();
+            } catch (eS) {}
             return;
         }
         if (/^(y|yes)\b/.test(s)) {
