@@ -380,6 +380,16 @@ var Actionable = {
     // this changes WHERE the array is computed, never its contents.
     resolveObjectCommands: (objectId, kind) => {
         try {
+            var hit = Actionable.payloadPool().find(function (o) {
+                return o && String(o.id) === String(objectId);
+            });
+            if (hit && hit.examineOnly) {
+                var noun = Actionable.commandNounFor(hit) || hit.name;
+                if (!noun) return [];
+                return [{ verb: "examine", command: "examine " + noun, confidence: 0.9 }];
+            }
+        } catch (eEx) {}
+        try {
             if (typeof SemanticActions !== "undefined" && SemanticActions.CutoverFlag && SemanticActions.CutoverFlag.isEnabled()) {
                 return SemanticActions.resolveForPayloadObjectId(objectId, kind === "inventory" ? "inventory" : "room") || [];
             }
@@ -1295,7 +1305,7 @@ var Actionable = {
                             var wantsContainer = /^put\b/.test(vLower);
                             var wantsRecipient = /^(give|ask|show|tell)\b/.test(vLower);
                             var pool = Actionable.payloadPool().filter(function (o) {
-                                return o && String(o.id) !== String(objectId);
+                                return o && String(o.id) !== String(objectId) && !o.examineOnly;
                             });
                             if (wantsContainer || wantsRecipient) {
                                 var primary = [], rest = [];
@@ -1334,12 +1344,15 @@ var Actionable = {
                 };
             });
             try {
-                // D77: no artificial cap here either -- ParchLockQol.OpenRadial
-                // already pages/overflows ("More...") anything beyond its own
-                // display capacity, so every real "Use with..." candidate is
-                // passed through, never silently dropped ahead of that.
+                var srcObj = Actionable.payloadPool().find(function (o) {
+                    return o && String(o.id) === String(objectId);
+                });
+                if (srcObj && srcObj.examineOnly) {
+                    ParchLockQol.OpenRadial(x, y, slices, context);
+                    return;
+                }
                 var others = Actionable.payloadPool().filter(function (o) {
-                    return o && String(o.id) !== String(objectId);
+                    return o && String(o.id) !== String(objectId) && !o.examineOnly;
                 });
                 // D147: one launcher per instrumental verb this story's own
                 // dictionary actually contains, instead of a single hardcoded
@@ -1349,7 +1362,7 @@ var Actionable = {
                     Actionable.availableInstrumentals().forEach(function (inst) {
                         slices.push({ Label: inst.label, Score: 50, Usage: 0, UsageKey: "launcher:" + inst.verb + "-with:" + objectId, TrackTap: true, Action: function () {
                             ParchLockQol.OpenRadial(x, y, Actionable.payloadPool().filter(function (o) {
-                                return o && String(o.id) !== String(objectId);
+                                return o && String(o.id) !== String(objectId) && !o.examineOnly;
                             }).map(function (other) {
                                 var source = Actionable.payloadPool().find(function (o) { return String(o.id) === String(objectId); });
                                 // D141/D147: the disambiguating form on BOTH

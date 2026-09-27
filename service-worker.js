@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v69"; // D184 objects the compiler never named become highlightable
+const CACHE_VERSION = "parchlock-shell-v70"; // D185 promoted objects are examine-only in every consumer
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

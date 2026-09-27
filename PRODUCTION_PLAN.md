@@ -4377,3 +4377,44 @@ The inventory and snapshot filters are untouched, so a promoted object that is
 TAKEN leaves the room text correctly and does not appear in the equipment sheet.
 That is a second, inventory-side change using the same matched word, and it is
 not done here.
+
+
+## D185 examineOnly was a flag with no consumers
+
+Found by the grok seat auditing D184, and it is the hole I had flagged as most
+likely -- I set the flag and did not audit every reader of `payloadPool`.
+
+`ActionSynth.commandsForPayloadObjectId` searches `discoveredObjects` and
+`inventory` only. A promoted object is in NEITHER, so `resolveObjectCommands`
+returned an empty list: tapping an underlined pellet submitted nothing at all.
+Meanwhile the context menu still walked `payloadPool` for Use-with and
+Ask-about, so a right-click on the pellets could offer Cast and Use-with against
+every other object in scope, and no Examine.
+
+That is precisely the issues 2-3 class -- verbs synthesized from attributes
+D58/D73 show cannot be trusted here -- reappearing on the objects D184 had just
+made visible. Making something visible without deciding what it can DO is not a
+neutral act.
+
+Wired in `js/Actionable.js`: `resolveObjectCommands` returns examine-only for a
+flagged object, the context menu returns after the Examine slice, and
+`examineOnly` objects are dropped from Use-with and put-in target lists. The
+input-line radial was already safe; it builds from `collectFromPayload`, which
+never sees these.
+
+Measured: tapping the mark now yields exactly ["examine pellets"], three runs
+out of three. The catalog empty-set check and the actionable suites are
+unchanged.
+
+Accepted from the same audit, recorded rather than fixed:
+
+  - the promotion scan runs on every Refresh. Candidate lists are tiny and the
+    regex is per alias, so it is not a ship blocker; cache on room text plus
+    candidate ids if it ever shows in a profile, and never across a room change
+  - on turn one the current room is excluded by `payload.roomId` even before
+    `ParchLockMap.Rooms` is populated, so the remaining window is another map
+    room appearing as an unnamed child before `ensureRoom` runs. Unlikely here,
+    since wump2ka's rooms are `C_ROOMS_n` rather than parenthesised
+  - after one of two identical siblings is taken, the surviving mark can point
+    at the departed id for a single tick. Splitting one printed phrase into two
+    marks would be worse (D146)
