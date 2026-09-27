@@ -4208,3 +4208,35 @@ instead of lingering, which is the whole point.
 Recorded honestly: a scripted restart could not be driven far enough to confirm
 this end to end through the game's own dialogue, so the verification is of the
 resync path itself rather than of a full restart.
+
+
+## D181 A restore is not a score
+
+The grok seat, auditing D180 adversarially, edited the resync to run
+`StatTracker.Resync` BEFORE `WorldModel.tick` rather than after. The reasoning
+is right and the placement is kept: the other way round, the tick re-derives
+from the restored state first, the figures move -- measured 685 to 35 -- and
+that is indistinguishable from the player scoring, so the score-up tone fires on
+a restore.
+
+Ordering alone does not close it, which is why this is a separate entry.
+`forgetReadings` clears `confirmed` and deliberately KEEPS `value`, so that a
+figure which cannot be re-derived is not silently zeroed. The re-derivation that
+follows therefore still computes a delta against the abandoned timeline's
+number.
+
+Two guards, because the cue and the badge are reached by two different paths:
+
+  - `emitChange` refuses when the stat is not confirmed. A stat with no previous
+    reading has nothing to differ FROM, so its first value this session is an
+    observation, not a change.
+  - `recordObservation` decides whether a previous reading existed BEFORE this
+    sighting confirms the stat. It confirms on sighting count, so by the time it
+    compared values the stat looked established again -- and a score-down event
+    still fired, which renders a "-650" badge for a move the player never made.
+
+Measured after: the first reading following a resync emits NOTHING -- no tone,
+no badge -- while the new value is still adopted.
+
+Also restored here: a pre-existing comment explaining the topology reset, which
+the adversarial diff removed along with the code it sat above.

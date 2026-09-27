@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 166 decisions across
-4211 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 167 decisions across
+4243 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -21,6 +21,7 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 
 | D | claim | files | games |
 |---|-------|-------|-------|
+| D181 | A restore is not a score |  |  |
 | D180 | The stats were not part of the undo/restore/restart resync |  |  |
 | D178 | A persisted READING is not a persisted FACT |  | wump2ka |
 | D176 | The pin baseline stuck too LOW, which D175 created |  |  |

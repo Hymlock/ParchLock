@@ -12,6 +12,19 @@ var UndoRestoreSync = {
         UndoRestoreSync.pending = false;
         try {
             if (typeof ZvmCapture !== "undefined" && ZvmCapture.tick) ZvmCapture.tick();
+            // D180: the stats are a subsystem of this resync too. Undo, restore
+            // and restart all move the story to a different point in time, and a
+            // score or a carried total from the abandoned one is not this game's
+            // figure. Readings are dropped; what was LEARNED about the story file
+            // is kept, so they come back immediately.
+            //
+            // D181 (grok seat, adversarial): this MUST run before
+            // WorldModel.tick. The other way round, the tick re-derives from the
+            // restored state first and the figures move -- 693 to 35 -- which is
+            // indistinguishable from the player scoring, so the score-up tone
+            // fires on a restore. Order alone is not sufficient (see
+            // StatTracker.emitChange), but it is necessary.
+            if (typeof StatTracker !== "undefined" && StatTracker.Resync) StatTracker.Resync();
             if (typeof WorldModel !== "undefined" && WorldModel.tick) WorldModel.tick();
             // Reset topology previous room so next location is fresh from RAM cascade
             if (typeof MapTopology !== "undefined") {
@@ -19,12 +32,6 @@ var UndoRestoreSync = {
                 MapTopology.prevRoomName = "";
                 if (WorldModel.lastPayload) MapTopology.tick(WorldModel.lastPayload);
             }
-            // D180: the stats are a subsystem of this resync too. Undo,
-            // restore and restart all move the story to a different point in
-            // time, and a score or a carried total from the abandoned one is
-            // not this game's figure. Readings are dropped; what was LEARNED
-            // about the story file is kept, so they come back immediately.
-            if (typeof StatTracker !== "undefined" && StatTracker.Resync) StatTracker.Resync();
             if (typeof Actionable !== "undefined" && Actionable.Refresh) Actionable.Refresh();
             if (typeof ParchLockMap !== "undefined" && ParchLockMap.Draw) ParchLockMap.Draw();
             // Operator: restore updated the map but story text stayed stale.

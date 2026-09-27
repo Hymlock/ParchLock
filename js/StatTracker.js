@@ -544,6 +544,7 @@ var StatTracker = {
     Resync: function () {
         try {
             StatTracker.forgetReadings(StatTracker.model());
+            StatTracker._autoIdentified = {};
             StatTracker._samples = [];
             StatTracker._probePending = null;
             StatTracker._probeTurns = 0;
@@ -714,6 +715,11 @@ var StatTracker = {
             };
             return;
         }
+        // D181: whether this stat had a previous reading must be judged BEFORE
+        // this sighting confirms it, or the first observation after a resync
+        // looks like a change and renders a badge for a move the player never
+        // made (measured: a "-650" on a restore).
+        var hadReading = prev.confirmed === true;
         prev.seen = (prev.seen || 1) + 1;
         prev.label = rec.label;
         // The denominator of an n/m gauge is re-read every turn rather than
@@ -724,9 +730,11 @@ var StatTracker = {
         if (prev.seen >= StatTracker.CONFIRM_SAMPLES) prev.confirmed = true;
         if (rec.value !== prev.value) {
             var delta = rec.value - prev.value;
-            prev.lastChange = delta;
             prev.value = rec.value;
-            StatTracker.emitChange(model, k, delta);
+            if (hadReading) {
+                prev.lastChange = delta;
+                StatTracker.emitChange(model, k, delta);
+            }
         }
     },
 
@@ -741,7 +749,21 @@ var StatTracker = {
     // A score increase is the only thing that earns the rising cue. A decrease
     // is a real, normal event -- Zork 1 charges 10 points for dying -- and must
     // stay silent.
+    // D181: a stat that is not confirmed has no previous reading to differ
+    // from, so its first value this session is an OBSERVATION, not a change.
+    // Without this, the re-derivation that follows a restore computes a delta
+    // against the abandoned timeline's number -- the grok seat measured 685 to
+    // 35 -- and the score-up tone fires as though the player had just scored.
+    // Ordering the resync before the tick is necessary but not sufficient,
+    // because forgetReadings clears `confirmed` and deliberately keeps `value`
+    // so a figure that cannot be re-derived is not silently zeroed.
+    firstReadingAfterForget: function (model, k) {
+        var s = model && model.stats && model.stats[k];
+        return !!(s && s.confirmed === false);
+    },
+
     emitChange: function (model, k, delta) {
+        if (StatTracker.firstReadingAfterForget(model, k)) return;
         if (k === "score" && delta > 0) {
             StatTracker._events.push({ type: "score-up", key: k, delta: delta });
         } else if (k === "score") {

@@ -494,6 +494,29 @@ assert(pm3.globals.score == null && !pm3.stats.score,
         `D176: the slot pins on the stale baseline (got ${pinned})`);
 }
 
+// D181: a restore must not fire the score-up tone. The grok seat found that
+// re-deriving after a resync computes a delta against the abandoned timeline's
+// number (measured 685 -> 35), which is indistinguishable from scoring.
+{
+    S._key = null; S._model = null; S._samples = []; S._events = []; S._turn = 0;
+    for (const k of Object.keys(store)) delete store[k];
+    S.observe(null, "");
+    S.applyScoreReply("You have so far scored 685 out of a possible 1000 points.");
+    let m4 = S.model();
+    assert(m4.stats.score.confirmed === true, "D181: the score is confirmed before the restore");
+
+    S.takeEvents();
+    S.forgetReadings(m4);
+    assert(m4.stats.score.confirmed === false, "D181: a resync unconfirms it");
+
+    // Re-derivation lands a very different number, as a restore would.
+    S.recordObservation(m4, "score", { label: "Score", value: 35, max: 1000, unit: "plain" });
+    const ev4 = S.takeEvents();
+    assert(ev4.length === 0,
+        `D181: the first reading after a resync emits NOTHING -- no tone, no badge (${JSON.stringify(ev4.map(e=>e.type))})`);
+    assert(S.model().stats.score.value === 35, "D181: but the new reading is adopted");
+}
+
 // Without an absolute to add to, a delta must NOT invent a total (D24).
 {
     S._key = null; S._model = null; S._samples = []; S._events = []; S._turn = 0;
