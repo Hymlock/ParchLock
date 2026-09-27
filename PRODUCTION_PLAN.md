@@ -4301,3 +4301,79 @@ Audit conclusions worth keeping:
   - one narrow miss left deliberately: if a score moves on the very sighting
     that confirms the stat, no badge is drawn. Rare, and the alternative is
     badging a stat the app has not yet decided to trust
+
+
+## D184 An object the compiler never named
+
+Operator: "highlighting still misses food pellets as an object listed in the
+main room". Measured: they are objects 198 and 199, compiled short names
+"(bar1)" and "(bar2)", carrying real parser vocabulary
+["food","pellet","pellets","protein","tasty","nutritiou"] and printed to the
+player as "two food pellets". `scopeObjects` treats a parenthesised name as an
+unnamed WRAPPER -- walk its children, do not push it -- so they were discarded
+before any highlight could reach them.
+
+### The first attempt, and why it is worth recording
+
+v1 named them inside `ZRamReader` from the longest vocabulary word. On wump2ka
+it worked. Across the catalog it was destructive:
+
+    Anchorhead   (Poe) -> mystery, (M_South) -> crawlway, (m_maze1) -> presses
+    LostPig      (key) -> reddish, (missingBR) -> outside
+    905          (thief) -> dried        <- 905's PLAYER object, per D151
+
+Renaming rooms and parser internals is bad; surfacing the player as a room
+object is D82's defect by another route. The vocabulary lists contain adjectives
+and words belonging to a whole maze, so "longest word" is arbitrary rather than
+evidential. Reverted.
+
+Second lesson, and the more important one: the cross-module A/B that has been
+this session's safety check SHOWED NO CHANGE for all three affected stories,
+because those objects were not in scope in the rooms the probe visited. A
+mark-count comparison is not a safety proof.
+
+### What ships instead
+
+Nothing is renamed in the RAM layer. `scopeObjects` behaves exactly as before
+and additionally RECORDS such objects as candidates. The decision is made in
+`js/Actionable.js`, where the printed text already lives, and a candidate
+becomes real only when the game has just printed one of its OWN words, in this
+room, this turn -- the same question D64/D70 already answer for named objects.
+
+Exclusions, each a decision taken elsewhere rather than a judgement made here:
+the resolved player id (D82, and 905 proves a player can own words), the current
+room id and every id in the map's room set, words containing digits ("barrel1"
+is the compiler's tag, "barrel" is the noun), words at the dictionary slot width
+("nutritiou" is truncated), and any word a NAMED object in scope already owns,
+since the parser would resolve it elsewhere.
+
+Identical siblings are deliberately not excluded by that last rule: both pellets
+own every one of their words because they are two instances of one printed
+phrase. They are de-duplicated by word instead, so one phrase yields one mark
+(D146).
+
+Promoted objects are marked `examineOnly`. `payloadPool` is also the radial
+pool, and synthesizing verbs from these objects' attributes is exactly what
+D58/D73 show cannot be trusted on this story -- it is how a pit came to offer
+TALK TO.
+
+### Verification, to the standard the v1 failure demanded
+
+`tools/unnamed-promotion-live.js` asserts the promoted set is EMPTY for
+Anchorhead, Zork1, LostPig, 905 and Enchanter in every room visited -- not that
+mark counts are unchanged -- and that the player id and room id are never
+promoted. On wump2ka it asserts promotion happens.
+
+Measured: wump2ka promotes ["pellets#199", "barrel#266"] -- two different
+objects with the same defect, caught by one rule with no per-object code, which
+was the operator's own generality test. All five other stories promote nothing.
+Cross-module A/B unchanged: Anchorhead 6/3, Zork1 0/3, Enchanter 3/1,
+LostPig 6/1, 905 10/2. d31 60, d162 38, d158 8, stat-tracker 108,
+highlight-scope, alley-actionable, alley-ram-actionable, map-pathing all pass.
+
+### Known limit, stated rather than shipped quietly
+
+The inventory and snapshot filters are untouched, so a promoted object that is
+TAKEN leaves the room text correctly and does not appear in the equipment sheet.
+That is a second, inventory-side change using the same matched word, and it is
+not done here.

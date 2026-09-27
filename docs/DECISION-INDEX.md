@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 169 decisions across
-4304 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 170 decisions across
+4380 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -21,6 +21,7 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 
 | D | claim | files | games |
 |---|-------|-------|-------|
+| D184 | An object the compiler never named |  | wump2ka |
 | D183 | The badge does not read the event stream |  |  |
 | D182 | Declining the restore prompt is a new game, and only one place knew it |  |  |
 | D181 | A restore is not a score |  |  |

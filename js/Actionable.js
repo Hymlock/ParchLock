@@ -597,13 +597,109 @@ var Actionable = {
     },
     Stale: () => $(".pl-act:not(.is-stale)").addClass("is-stale").removeAttr("tabindex role"),
     IsInstruction: line => /^\s*\(?\s*(?:type|press|for help|for more information|release\s+\d|serial number)\b/i.test(line.textContent),
+    // D184: an object the compiler gave no printable name can still own real
+    // parser vocabulary. wump2ka's food pellets are objects "(bar1)"/"(bar2)"
+    // carrying ["food","pellet","pellets",...], printed as "two food pellets"
+    // and never highlightable because the meta-name filter discards them.
+    //
+    // A first attempt named them inside ZRamReader and was reverted: measured
+    // across the catalog it renamed Anchorhead's rooms, LostPig's internals and
+    // 905's PLAYER object, because "what should this be called" has no
+    // evidential answer in a RAM module. The answer lives HERE, where the
+    // printed text is: a candidate becomes real only when the game has just
+    // printed one of its own words, in this room, this turn -- the same
+    // question D64/D70 already answer for named objects.
+    promoteUnnamed: (payload, roomText) => {
+        var out = [];
+        try {
+            var cands = (payload && payload.unnamedCandidates) || [];
+            if (!cands.length || !roomText) return out;
+            var text = String(roomText).toLowerCase();
+
+            // Hard exclusions. Each is a decision already taken elsewhere, not
+            // a judgement made here.
+            var blocked = {};
+            if (payload.playerId != null) blocked[String(payload.playerId)] = 1;   // D82
+            if (payload.roomId != null) blocked[String(payload.roomId)] = 1;
+            try {
+                (ParchLockMap.Rooms || []).forEach(function (r) {
+                    if (r && r.ObjectId != null) blocked[String(r.ObjectId)] = 1;   // never a room
+                });
+            } catch (eR) {}
+
+            // A word that also belongs to a NAMED object in scope cannot
+            // identify this one -- the parser would resolve it elsewhere and
+            // the mark would lie about which object it points at.
+            //
+            // Identical siblings are deliberately NOT excluded this way. Both
+            // pellets own every one of their words, because they are two
+            // instances of the same thing printed as one phrase ("two food
+            // pellets"). Requiring a word unique among them would reject the
+            // only noun the room actually prints. They are de-duplicated by
+            // word below instead, so one phrase yields one mark (D146).
+            var owned = {};
+            (payload.discoveredObjects || []).concat(payload.inventory || []).forEach(function (o) {
+                ((o && o.aliases) || []).forEach(function (w) {
+                    owned[String(w || "").toLowerCase()] = 1;
+                });
+            });
+
+            var cut = 9;
+            try {
+                var mem = ZRamProvider.getMem();
+                var h = mem && ZRamReader.header(mem);
+                if (h && h.version <= 3) cut = 6;
+            } catch (eH) {}
+
+            var takenWords = {};
+            cands.forEach(function (c) {
+                if (!c || c.id == null || blocked[String(c.id)]) return;
+                var best = null;
+                ((c.aliases) || []).forEach(function (w) {
+                    var t = String(w || "").toLowerCase().trim();
+                    if (!t || t.length < 3) return;
+                    if (t.length >= cut) return;                    // maybe truncated
+                    if (!/^[a-z][a-z'-]*$/.test(t)) return;         // "barrel1" is a compiler tag
+                    if (owned[t]) return;                          // a named object owns this word
+                    if (!new RegExp("(^|[^a-z])" + t + "([^a-z]|$)").test(text)) return;
+                    if (!best || t.length > best.length) best = t;
+                });
+                if (!best) return;
+                // One printed phrase, one mark: identical siblings collapse.
+                if (takenWords[best]) return;
+                takenWords[best] = 1;
+                out.push({
+                    id: c.id, name: best, parentId: c.parentId,
+                    aliases: c.aliases, attrs: {},
+                    // D184: attributes for these are exactly the ones D58/D73
+                    // show cannot be trusted on this story, so no verb is
+                    // synthesized from them. The object is highlightable and
+                    // examinable; it does not open the full radial.
+                    examineOnly: true
+                });
+            });
+        } catch (e) {}
+        return out;
+    },
+
     payloadPool: () => {
         try {
             var p = WorldModel && WorldModel.lastPayload;
             if (!p) return [];
-            return (p.discoveredObjects || []).concat(p.inventory || []).filter(function (o) {
+            var base = (p.discoveredObjects || []).concat(p.inventory || []).filter(function (o) {
                 return o && o.id != null && o.id !== "" && o.name;
             });
+            var text = "";
+            try {
+                text = (Actionable.RoomLines || []).filter(function (l) { return l && l.isConnected; })
+                    .map(function (l) { return l.textContent || ""; }).join(" ");
+            } catch (eT) {}
+            var seen = {};
+            base.forEach(function (o) { seen[String(o.id)] = 1; });
+            Actionable.promoteUnnamed(p, text).forEach(function (o) {
+                if (!seen[String(o.id)]) base.push(o);
+            });
+            return base;
         } catch (e) { return []; }
     },
 

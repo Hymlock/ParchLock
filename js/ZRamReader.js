@@ -1327,6 +1327,7 @@ var ZRamReader = {
         opts = opts || {};
         var depth = typeof opts.depth === "number" ? opts.depth : 2;
         var out = [];
+        var candidates = [];
         var seen = {};
         function walk(id, d, viaUnnamedBypass) {
             if (!id || seen[id] || d < 0) return;
@@ -1336,6 +1337,24 @@ var ZRamReader = {
                 if (!name || name.charAt(0) === "(") {
                     var wrapperAttrs = ZRamReader.attrsFromObject(mem, cid);
                     if (wrapperAttrs.animate) return; // D57: an unnamed animate being's own contents are not this room's scope
+                    // D184: an object the compiler gave no printable name can
+                    // still own real parser vocabulary -- wump2ka's food
+                    // pellets are objects "(bar1)"/"(bar2)" carrying
+                    // ["food","pellet","pellets",...] and printed to the player
+                    // as "two food pellets".
+                    //
+                    // It is NOT named or pushed here. A first attempt did that
+                    // and was reverted: measured across the catalog it renamed
+                    // Anchorhead's rooms, LostPig's internals and 905's PLAYER
+                    // object, because "which word" has no answer inside a RAM
+                    // module. The candidate is only RECORDED; whether it is a
+                    // real, visible object is decided in js/Actionable.js,
+                    // against the text the game actually printed this turn.
+                    // Behaviour here is unchanged for every existing consumer.
+                    try {
+                        var vocab = ZRamReader.parserWordsAny(mem, cid) || [];
+                        if (vocab.length) candidates.push({ id: cid, parentId: id, aliases: vocab });
+                    } catch (eV) {}
                     walk(cid, d - 1, true);
                     return;
                 }
@@ -1360,6 +1379,9 @@ var ZRamReader = {
             });
         }
         walk(roomId, depth, false);
+        // D184: attached rather than returned, so every existing caller
+        // keeps receiving exactly the array it always did.
+        try { Object.defineProperty(out, "unnamedCandidates", { value: candidates, enumerable: false }); } catch (eC) {}
         return out;
     },
 
@@ -1704,6 +1726,10 @@ var ZRamReader = {
             if (!indexedRoom) roomId = 0;
         }
         var scope = roomId ? ZRamReader.scopeObjects(mem, roomId, { depth: 2 }) : [];
+        // D184: carried out of the walk before the meta-name filter discards
+        // the wrappers they came from. Candidates only -- js/Actionable.js
+        // decides whether any is a thing the player can actually see.
+        var unnamedCandidates = (scope && scope.unnamedCandidates) || [];
         scope = (scope || []).filter(function (o) { return o && o.name && String(o.name).charAt(0) !== "("; });
         scope.forEach(function (o) {
             var key = (o.name || "").toLowerCase();
@@ -1722,6 +1748,7 @@ var ZRamReader = {
             roomId: roomId,
             roomName: roomName,
             discoveredObjects: scope,
+            unnamedCandidates: unnamedCandidates,
             inventory: inventory,
             exits: exits,
             dictCount: dict.count || 0,

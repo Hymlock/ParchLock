@@ -221,7 +221,14 @@ var ZRamProvider = {
             // alone, so without this a room whose only real RAM child is the
             // player itself would offer nonsensical affordances like
             // "examine player."
-            snap.discoveredObjects = ZRamReader.scopeObjects(mem, loc, { depth: 2 }).filter(function (o) {
+            var scoped = ZRamReader.scopeObjects(mem, loc, { depth: 2 });
+            // D184: objects the compiler left unnamed but which own real parser
+            // vocabulary. Carried as CANDIDATES only -- js/Actionable.js decides
+            // whether any of them is a thing the player can actually see, by
+            // matching their own words against the text the game just printed.
+            // Nothing downstream treats these as discovered objects.
+            snap.unnamedCandidates = (scoped && scoped.unnamedCandidates) || [];
+            snap.discoveredObjects = scoped.filter(function (o) {
                 if (!o || !o.name || String(o.name).charAt(0) === "(") return false;
                 if (snap.playerId != null && String(o.id) === String(snap.playerId)) return false;
                 return true;
@@ -268,6 +275,8 @@ var ZRamProvider = {
             roomId: snap.roomId || null,
             roomName: snap.roomName || "",
             discoveredObjects: objs,
+            // D184: candidates travel beside the objects, never among them.
+            unnamedCandidates: snap.unnamedCandidates || [],
             inventory: snap.inventory || [],
             exits: snap.exits || [],
             probe: {

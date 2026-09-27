@@ -69,6 +69,8 @@ var WorldModel = {
         exits: [],
         inventory: [],
         discoveredObjects: [],
+        // D184: unnamed-but-vocabulary-owning objects, decided in Actionable.
+        unnamedCandidates: [],
         hudMetrics: [],
         specialCommands: [],
         resourceWarnings: [],
@@ -365,6 +367,7 @@ var WorldModel = {
             exits: [],
             inventory: [],
             discoveredObjects: [],
+            unnamedCandidates: [],
             vmType: "unknown",
             probe: null,
             engineMode: WorldModel.engineMode,
@@ -404,6 +407,9 @@ var WorldModel = {
                     merged.roomConfidence = Math.max(merged.roomConfidence || 0, extra.roomConfidence || 0.9);
                 }
                 merged.discoveredObjects = WorldModel.idBacked(extra.discoveredObjects);
+                // D184: carried alongside, never merged INTO discoveredObjects.
+                // These are candidates, not objects; js/Actionable.js decides.
+                merged.unnamedCandidates = extra.unnamedCandidates || [];
                 merged.inventory = WorldModel.idBacked(extra.inventory);
                 merged.exits = (extra.exits || []).slice();
             } catch (e) {}
@@ -422,6 +428,8 @@ var WorldModel = {
         payload.exits = m.exits;
         payload.inventory = m.inventory;
         payload.discoveredObjects = m.discoveredObjects;
+        // D184: candidates ride alongside, never inside, discoveredObjects.
+        payload.unnamedCandidates = m.unnamedCandidates || [];
         payload.specialCommands = m.specialCommands || [];
         payload.hudMetrics = m.hudMetrics || [];
         payload.vmType = m.vmType;

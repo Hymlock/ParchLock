@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v68"; // D183 the badge no longer renders a change the player never made
+const CACHE_VERSION = "parchlock-shell-v69"; // D184 objects the compiler never named become highlightable
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [
