@@ -122,18 +122,13 @@ const read = (page) => page.evaluate(() => {
         // Anchorhead is scoreless in its status row and shows "day one".
         s = await load(browser, 'games/anchor.z8.js', ['look', 'wait', 'wait']);
         r = await read(s.page);
-        // D187: this asserted Anchorhead shows NO score at all, which held only
-        // while nothing ever asked. The automatic probe now asks, and the game
-        // answers "0 out of a possible 100", so a score row legitimately
-        // appears. The original intent -- never FABRICATE a score from a status
-        // row that does not carry one -- is unchanged and is what is asserted
-        // now: if a score exists it must come from the game's own reply or from
-        // a pinned global, never from the row. Weakening this to "any score is
-        // fine" would lose the guard; deleting it would lose it entirely.
-        var sc = r.byKey && r.byKey.score;
-        check(!sc || sc.src !== 'status',
-            'Anchorhead: any score comes from the game itself, never invented from a "day one" row'
-            + (sc ? ' (source ' + sc.src + ')' : ' (no score row)'));
+        // D188: restored to its original form. D187 briefly made an automatic
+        // SCORE probe fire, which gave Anchorhead a score row and broke this --
+        // and the probe was removed because injecting a command is not headless
+        // and its buffer churn destroyed the room's underlines. With no probe,
+        // the original premise holds again: nothing asks, so nothing invents.
+        check(!r.keys.includes('score'),
+            'Anchorhead: no score is invented from a status row that only says "day one"');
         await s.ctx.close();
 
         console.log('\n' + pass + ' PASS / ' + fail + ' FAIL');

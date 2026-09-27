@@ -5359,3 +5359,47 @@ Zork1/Enchanter, independently shifted LostPig); phase-b 11/11; nested inventory
 action trace. Six-title unnamed-promotion live sweep passed. Windows launcher
 compiled successfully; its GUI relaunch behavior and native Android remain
 operator tests. Web shell cache is v71. No distribution/APK was rebuilt by this audit.
+
+
+## D188 An injected command is not headless
+
+Operator: "In Anchorhead the score probes automatically when you start the game
+which kills the underlining -- it's supposed to be headless. There was also
+supposed to be a system that took care of this without producing a score
+automatically; it's already in the system."
+
+Correct on every point, and D177/D187 were my error.
+
+The automatic probe submitted SCORE by itself. That types a command into the
+story and prints a reply, and the resulting buffer churn destroys the room's
+underlines -- so a feature meant to populate one row was breaking the thing the
+whole app exists for. Measuring that the reply costs no TURN (D173) was not the
+same as measuring that it costs nothing, and I treated it as if it were.
+
+The system the operator refers to is already here and sits directly above the
+call I added: `promoteGlobals` identifies the score's global by watching RAM
+change across turns, and `readConfirmedGlobals` then reads it every turn with no
+command and no text. That is what headless means in this app. D152/D153 built it
+for exactly this reason.
+
+Both automatic call sites are removed -- the per-turn one in `Tick` and the one
+in `EquipmentUI.Show`. `Identify stats` remains as the explicit opt-in, which is
+the shape D149 established and which two audits this session defended
+("a probe is never issued unasked").
+
+Measured after removal:
+
+    anchor.z8   SCORE injected false   underlines 6    commands seen: look, look
+    wump2ka     SCORE injected false   underlines 13   score 1 from the status row
+
+No command appears in the transcript that the player did not type.
+
+`tools/stat-tracker-live.js` is restored to its original assertion -- that
+Anchorhead invents no score from a "day one" row. D187 had weakened it to
+accommodate the probe; with the probe gone the original premise holds again, and
+a test bent to fit a change is worse than no test.
+
+The honest consequence, stated rather than buried: on a story whose status row
+carries no score, the row stays absent until the globals path identifies the
+slot from an observed change, or the player presses Identify stats. That is
+D24's honest absence, and it is what the operator asked for.
