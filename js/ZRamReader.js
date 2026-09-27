@@ -114,6 +114,78 @@ var ZRamReader = {
         return 0;
     },
 
+    // Inform tables.c: object properties, class IDs + zero, identifier count,
+    // property-name packed strings, then 48 attribute-name packed strings.
+    // Read declarations, never infer semantics from object names or played verbs.
+    _attributeNamesCache: new WeakMap(),
+    informAttributeNames: (mem) => {
+        if (!mem || typeof mem !== "object") return null;
+        if (ZRamReader._attributeNamesCache.has(mem)) return ZRamReader._attributeNamesCache.get(mem);
+        var result = null;
+        try {
+            var h = ZRamReader.header(mem), len = mem.byteLength || mem.length || 0;
+            if (!h || [4, 5, 8].indexOf(h.version) < 0 || !ZRamReader.isInformCompiled(mem)) return null;
+            var firstObject = ZRamReader.objectBase(h, 1);
+            var firstProps = ZRamReader.u16(mem, firstObject + 12);
+            var count = (firstProps - firstObject) / h.entrySize, end = 0;
+            if (!Number.isInteger(count) || count < 1 || count > 20000 || !len || h.globals >= len) return null;
+            for (var id = 1; id <= count; id++) {
+                var base = ZRamReader.objectBase(h, id);
+                var ptr = ZRamReader.u16(mem, base + 12);
+                if (ptr < firstProps || ptr >= h.globals) return null;
+                var at = ptr + 1 + 2 * ZRamReader.u8(mem, ptr), previous = 64;
+                while (at < h.globals && ZRamReader.u8(mem, at)) {
+                    var first = ZRamReader.u8(mem, at++), num = first & 63;
+                    if (!num || num >= previous) return null;
+                    previous = num;
+                    var size = (first & 128) ? (ZRamReader.u8(mem, at++) & 63) || 64 : (first & 64) ? 2 : 1;
+                    at += size;
+                }
+                if (at >= h.globals) return null;
+                end = Math.max(end, at + 1);
+            }
+            var classes = 0, seen = {};
+            while (end + 2 <= h.globals) {
+                var cls = ZRamReader.u16(mem, end); end += 2;
+                if (!cls) break;
+                if (cls > count || seen[cls] || ++classes > count) return null;
+                seen[cls] = true;
+            }
+            var properties = ZRamReader.u16(mem, end);
+            var namesAt = end + properties * 2;
+            if (properties < 64 || namesAt + 96 > h.globals) return null;
+            var scale = h.version === 8 ? 8 : 4;
+            var decode = function (packed) {
+                var address = packed * scale, stop = address;
+                if (address < h.himem || address + 2 > len) return null;
+                for (var words = 0; words < 40 && stop + 2 <= len; words++, stop += 2) {
+                    if (ZRamReader.u8(mem, stop) & 128) return ZRamReader.decodeZsc(mem, address, words + 1);
+                }
+                return null;
+            };
+            if (decode(ZRamReader.u16(mem, end + 2)) !== "name") return null;
+            var bits = {};
+            for (var bit = 0; bit < 48; bit++) {
+                var packed = ZRamReader.u16(mem, namesAt + bit * 2);
+                if (!packed) continue;
+                var name = decode(packed);
+                if (name === "unknown attribute") continue;
+                if (!name || !/^[a-zA-Z_][a-zA-Z_0-9]*$/.test(name)) return null;
+                name = name.toLowerCase();
+                if (Object.prototype.hasOwnProperty.call(bits, name)) return null;
+                bits[name] = bit;
+            }
+            // Require the complete action-relevant library contract, not an
+            // accidental string run or a stripped/partial symbol table.
+            if (!["animate", "static", "scenery", "container", "open", "openable", "on", "switchable", "worn"].every(function (name) {
+                return Object.prototype.hasOwnProperty.call(bits, name);
+            })) return null;
+            result = { bits: bits, address: namesAt, source: "inform-attribute-names" };
+            return result;
+        } catch (e) { return null; }
+        finally { ZRamReader._attributeNamesCache.set(mem, result); }
+    },
+
     attr: (obj, n) => {
         if (!obj || !obj.attrBytes) return false;
         var byte = obj.attrBytes[Math.floor(n / 8)];
@@ -1297,7 +1369,7 @@ var ZRamReader = {
             var obj = ZRamReader.objectLinks(mem, id);
             if (!obj) return {};
             if (typeof AttributeSchema !== "undefined" && AttributeSchema.applyTo) {
-                return AttributeSchema.applyTo({}, obj);
+                return AttributeSchema.applyTo({}, obj, mem);
             }
             return {};
         } catch (e) { return {}; }

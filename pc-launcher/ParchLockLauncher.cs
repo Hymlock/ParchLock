@@ -2,7 +2,6 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
-using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -26,11 +25,17 @@ internal static class ParchLockLauncher
                 return 1;
             }
 
-            int port = FreePort();
+            // Browser saves and permissions belong to the origin, including its port.
+            const int port = 49371;
             listener = new HttpListener();
             listener.Prefixes.Add("http://127.0.0.1:" + port + "/");
             listener.Prefixes.Add("http://localhost:" + port + "/");
-            listener.Start();
+            try { listener.Start(); }
+            catch (HttpListenerException ex)
+            {
+                throw new InvalidOperationException(
+                    "ParchLock could not open its fixed local address (port 49371). Close another ParchLock instance or the program using that port and try again. The port is kept fixed to preserve browser saves and settings.", ex);
+            }
 
             Thread worker = new Thread(delegate() { Serve(listener, root); });
             worker.IsBackground = true;
@@ -70,15 +75,6 @@ internal static class ParchLockLauncher
                 try { listener.Close(); } catch { }
             }
         }
-    }
-
-    private static int FreePort()
-    {
-        TcpListener tcp = new TcpListener(IPAddress.Loopback, 0);
-        tcp.Start();
-        int port = ((IPEndPoint)tcp.LocalEndpoint).Port;
-        tcp.Stop();
-        return port;
     }
 
     private static Process StartFullscreen(string url)

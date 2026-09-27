@@ -438,6 +438,7 @@ var StatTracker = {
     blank: () => ({
         stats: {},          // key -> stat record
         globals: {},        // key -> confirmed global index
+        carry: {},          // field -> learned individual-property pin
         deaths: 0,
         wins: 0,
         scoreUnavailable: false,
@@ -528,6 +529,17 @@ var StatTracker = {
         });
         delete m.scorePinKnown;
         delete m.lastDeltaStamp;
+        delete m.scoreCandidates;
+        delete m.scoreDeltaEvents;
+        Object.keys(m.carry || {}).forEach(function (key) {
+            var pin = m.carry[key];
+            if (!pin || pin.prop == null || !Array.isArray(pin.candidates) ||
+                pin.candidates.length !== 1 || pin.candidates[0] !== pin.prop) {
+                delete m.carry[key];
+            } else {
+                delete pin.lastEvidence;
+            }
+        });
         m.seenDeltas = {};
         m.seenBanners = {};
         m.deaths = 0;
@@ -548,11 +560,25 @@ var StatTracker = {
             StatTracker._samples = [];
             StatTracker._probePending = null;
             StatTracker._probeTurns = 0;
+            StatTracker._events = [];
+            StatTracker._pendingDelta = null;
+            StatTracker._pendingDeltaText = null;
+            clearTimeout(StatTracker._diagnoseTimer);
+            StatTracker._diagnoseTimer = null;
+            if (typeof document !== "undefined") {
+                var buffer = document.querySelector(".BufferWindow");
+                StatTracker._lastBufferLen = buffer ? String(buffer.innerText || buffer.textContent || "").length : 0;
+            }
             if (StatTracker._key) StatTracker.save(StatTracker._key, StatTracker.model());
         } catch (e) {}
     },
 
     reset: () => {
+        clearTimeout(StatTracker._diagnoseTimer);
+        StatTracker._diagnoseTimer = null;
+        StatTracker._pendingDelta = null;
+        StatTracker._pendingDeltaText = null;
+        StatTracker._lastBufferLen = 0;
         StatTracker._samples = [];
         StatTracker._events = [];
         StatTracker._model = StatTracker.blank();
@@ -1083,7 +1109,7 @@ var StatTracker = {
             var live = StatTracker.sumIndiv(mem, ids, st.prop);
             // A null sum means an item computes this slot this turn -- not a
             // contradiction, just nothing to check against.
-            if (live != null && live !== known) { st.prop = null; st.hits = 0; st.candidates = null; }
+            if (live != null && live !== known) { st.prop = null; st.hits = 0; st.candidates = null; st.lastEvidence = null; }
             else return;
         }
 
@@ -1095,8 +1121,10 @@ var StatTracker = {
         st.candidates = st.candidates
             ? st.candidates.filter(function (p) { return matches.indexOf(p) !== -1; })
             : matches;
-        if (!st.candidates.length) { st.candidates = matches; st.hits = 0; return; }
-        st.hits++;
+        if (!st.candidates.length) { st.candidates = matches; st.hits = 0; st.lastEvidence = null; }
+        var evidence = ids.slice().sort(function (a, b) { return a - b; }).join(",") + ":" + known;
+        if (st.lastEvidence !== evidence) st.hits++;
+        st.lastEvidence = evidence;
         // Normally two independent agreements, because at a single observation
         // a bare inventory makes several unrelated slots add up to the same
         // small number by coincidence.
@@ -1109,7 +1137,7 @@ var StatTracker = {
         // property equal to the total match trivially, and a total of 0 or 1
         // matches far too much.
         var decisive = st.candidates.length === 1 && known > 1 && ids.length > 1;
-        if (st.hits >= StatTracker.CARRY_CONFIRM || decisive) st.prop = st.candidates[0];
+        if (st.candidates.length === 1 && (st.hits >= StatTracker.CARRY_CONFIRM || decisive)) st.prop = st.candidates[0];
     },
 
     // Once pinned, this is the headless path: no command, no text, every turn.
@@ -1734,7 +1762,9 @@ var StatTracker = {
             }
             if (askScore && typeof Actionable !== "undefined" && Actionable.Submit) Actionable.Submit("score");
             if (askDiagnose) {
-                setTimeout(function () {
+                clearTimeout(StatTracker._diagnoseTimer);
+                StatTracker._diagnoseTimer = setTimeout(function () {
+                    StatTracker._diagnoseTimer = null;
                     try {
                         if (typeof Actionable !== "undefined" && Actionable.Submit) Actionable.Submit("diagnose");
                     } catch (e) {}

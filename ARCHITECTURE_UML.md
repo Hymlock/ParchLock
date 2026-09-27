@@ -1,5 +1,373 @@
 # Parchmap - Architecture (UML companion)
 
+<!-- CHAPTER-CHECK:START version=1 -->
+## Chapter Check: Read This First
+
+This reference layer is maintained inside this document. No external index, bus history,
+agent memory, or helper script is required. Companion: [PRODUCTION_PLAN.md](PRODUCTION_PLAN.md). Read this layer before interpreting the
+historical body below. Older headings saying "current", "shipped", "ready", or "verified"
+describe their recorded scope and date; they do not certify today's code.
+
+**Reference revision:** 1, 2026-09-27. **Runtime audit:** not performed by this indexing change.
+The local manifest below records the indexed body fingerprint and coverage. If it differs
+from the current body, the index is stale: inspect the changed/unregistered material before
+relying on it. A matching fingerprint establishes indexing freshness, not technical truth.
+
+### Required Chapter-Check Procedure
+
+When asked to "chapter check", perform these steps before proposing or applying a fix:
+
+1. State the requested behavior, symptoms, affected files/functions, platforms, and engine
+   families. Read this document's system directory and the companion's read-first section.
+2. Read the local contract summaries, relevant registered sections/decision rows, and their
+   follow-ups. Expand through dependencies until no relevant linked rule remains unread.
+   Read scoped supersession notes; a higher decision number alone is not precedence.
+3. Search the ENTIRE historical body in BOTH documents for the affected symbols, filenames,
+   feature names, aliases, decision IDs, rejected alternatives, and related systems.
+   Index hits are starting points, never proof that unmatched sections are irrelevant.
+   For a broad request spanning all systems, cover every system-directory row.
+4. Compare the applicable rules to current code and the relevant tests. A historical test
+   result is evidence about that recorded test/run, not proof of current implementation,
+   all modules, all rooms, desktop, or a native Android device.
+5. Report: request/scope; sections and decision IDs consulted in each document; existing
+   solution or prior rejected approach; constraints and affected parallel strategies;
+   conflicts/open questions; proposed change; focused verification needed.
+6. Give one verdict: **covered already**, **compatible change**, **conflict requiring
+   resolution**, or **insufficient evidence**. Explain the evidence. Never claim a complete
+   compatibility check after a truncated read, an index-only read, or an unresolved conflict.
+   Update affected contracts, links, evidence, and the register with any authorized change.
+
+Use bounded reads: locate an explicit anchor, then read through the next heading of the
+same or higher level; subordinate sections belong to the chapter. Decision-row anchors
+identify individual table records. Long records may need several reads. Preserve their
+qualifiers and later amendments. Search commands such as
+`rg -n -o "symbol|filename|D184" PRODUCTION_PLAN.md ARCHITECTURE_UML.md` are discovery aids;
+line numbers are temporary, not permanent citations.
+
+### Bounded Full-Body Search
+
+An external claim-only index is optional and cannot replace this check. A topic may appear
+only inside a long decision row or a subsection with a generic title. Avoid printing whole
+matching lines: some historical rows exceed 20,000 characters. Use `rg -n -o` for compact
+locations, or run this embedded JavaScript through `node - DOCUMENT QUERY [SKIP]`.
+It searches the entire body, returns at most 30 short excerpts with stable section IDs,
+and prints the next offset when more hits remain. Repeat for aliases and both documents.
+A hit is not a complete section read; retrieve its registered chapter and amendments.
+
+<!-- CHAPTER-SEARCH:START -->
+```javascript
+const fs = require("fs");
+const [file, query, skipArg = "0"] = process.argv.slice(2);
+const skip = Number(skipArg);
+if (!file || !query || !Number.isSafeInteger(skip) || skip < 0)
+  throw new Error("Usage: node - DOCUMENT QUERY [SKIP]");
+const text = fs.readFileSync(file, "utf8").replace(/\r\n/g, "\n");
+const body = text.split("<!-- CHAPTER-BODY:START -->\n")[1];
+if (body === undefined) throw new Error("Missing body marker");
+const anchors = [...body.matchAll(/<a id="([^"]+)" data-chapter-id="\1"><\/a>/g)];
+const haystack = body.toLowerCase(), needle = query.toLowerCase();
+let count = 0, shown = 0, unit = 0;
+for (let at = haystack.indexOf(needle); at !== -1;
+     at = haystack.indexOf(needle, at + needle.length)) {
+  if (count++ < skip) continue;
+  while (unit + 1 < anchors.length && anchors[unit + 1].index <= at) unit++;
+  const owner = anchors[unit] && anchors[unit].index <= at ? anchors[unit] : null;
+  if (shown++ === 30) {
+    console.log(JSON.stringify({ more: true, nextSkip: skip + 30 }));
+    break;
+  }
+  console.log(JSON.stringify({
+    id: owner ? owner[1] : "body-preamble",
+    offsetInUnit: at - (owner ? owner.index : 0),
+    excerpt: body.slice(Math.max(0, at - 70), at + Math.min(needle.length, 80) + 110)
+      .replace(/\s+/g, " ")
+  }));
+}
+if (shown <= 30) console.log(JSON.stringify({ more: false, totalMatches: count }));
+```
+<!-- CHAPTER-SEARCH:END -->
+
+
+### Authority, Status, and Evidence
+
+Direct operator instructions govern the task. The production plan defines intended product
+rules; architecture explains implementation contracts. A contradiction is reported and
+reconciled in both, not silently resolved by deleting a parallel strategy or treating
+observed code as permission to change intent. Code establishes actual behavior; tests
+establish only what they exercise. Neither makes an obsolete document claim current.
+
+The register's **Record** status means preserved source material requiring a scope check,
+not a claim that its feature is unimplemented. Lifecycle fields, when explicitly reviewed,
+use: **Proposed**, **Implemented**, **Partial**, **Superseded**, **Rejected**, **Historical**,
+or **Unresolved**. Implementation status and verification are separate. Keep platform,
+engine/module scope, evidence command/path, date, limitations, and superseding scope nearby.
+Do not mechanically infer lifecycle status from a heading or from the word "PASS".
+
+For new or substantively changed sections, record this small contract block:
+
+- Stable ID and lifecycle status.
+- Scope: behavior, platforms, engine/capability boundaries.
+- Contract: required behavior and forbidden behavior.
+- Implementation: owning files/functions and dependent consumers.
+- Relationships: extends / supersedes / superseded-by, with exact rule scope and links.
+- Evidence: tests and observed result/date; remaining unverified cases and open issues.
+
+### Maintenance and Self-Check
+
+- All material below `CHAPTER-BODY:START` is the preserved source body. Every Markdown
+  heading outside fenced code, other than the document title, has an explicit local anchor
+  and a register entry. Every decision-table row also has its own anchor and entry.
+- IDs are permanent. On insertion allocate the next unused local numeric ID; never renumber
+  existing sections because they moved. Preserve decision IDs and explicit aliases.
+  On split/merge, retain the old anchor as a redirect/tombstone pointing to its replacements.
+- Update the system directory and contract summaries when a system changes. Add newly
+  touched file/function names as search terms. Follow both direct and transitive dependencies.
+  Update the companion where a change affects its contract; do not duplicate its full history.
+- Record precisely which earlier rule changes. Leave unaffected requirements and compiler/
+  engine-specific strategies in force. Preserve rejected designs and the reason for rejection.
+- Reconcile the register against ALL headings and decision rows, excluding fenced examples.
+  Require unique anchors, one primary entry per body unit, valid local/cross-document links,
+  and no unregistered appendices/addenda. Check the companion's links after anchor changes.
+- Recompute the manifest only AFTER reconciling contracts, directory, register, and links.
+  Fingerprint = SHA-256 of the exact UTF-8 body following the BODY marker newline, with CRLF
+  normalized to LF. This includes anchors. Record unit counts and the final unit ID.
+  Changing prose without new headings still invalidates the fingerprint.
+- An agent can calculate and compare this using standard Node.js `crypto`/`fs` or a standard
+  SHA-256 tool. No project-specific utility is required. A stale manifest requires a
+  full heading/row scan plus relevant changed-body review, not merely a new hash.
+- Before finalizing, exercise retrieval for the changed topic plus at least one dependent
+  system; report consulted IDs, unresolved conflicts, and verification limits. Documentation
+  indexing alone must not mark an implementation issue resolved or an APK verified.
+
+### System Directory and Contract Summaries
+
+These are retrieval contracts, not replacements for the linked detailed text. Each row
+names search aliases/files and adjacent systems that must be checked. Follow all referenced
+decisions and their later mentions, not only the first matching record.
+
+| System / search aliases | Architecture starting sections; plan follow-ups | Contract and dependent systems |
+|---|---|---|
+| Engine/provider; RAM, compiler, ZRamReader, WorldModel | Sections [2](#ar-ch2), [3](#ar-ch3), [4](#ar-ch4), [5](#ar-ch5), [15](#ar-ch15), [22](#ar-ch22), [23](#ar-ch23), [24](#ar-ch24), [27](#ar-ch27), [28](#ar-ch28), [29](#ar-ch29); [D134](PRODUCTION_PLAN.md#pl-d134)/[D151](PRODUCTION_PLAN.md#pl-d151)/[D158](PRODUCTION_PLAN.md#pl-d158)/[D170](PRODUCTION_PLAN.md#pl-d170)-[D171](PRODUCTION_PLAN.md#pl-d171) | Keep structural identity and capability-selected parallel providers; check commands, mapping and caches. |
+| Commands/actionables; inspect, parser nouns, spells; Actionable, ActionSynth, SemanticActions | Sections [23](#ar-ch23), [28](#ar-ch28), [42](#ar-ch42), [59](#ar-ch59); [D141](PRODUCTION_PLAN.md#pl-d141)-[D148](PRODUCTION_PLAN.md#pl-d148)/[D184](PRODUCTION_PLAN.md#pl-d184) | Evidence and scope govern exact parser commands; dictionary words alone are not semantic proof. Check inventory, radials and calibration. |
+| Mapping/travel; room ID, exits; MapTopology, Navigator, ExitCalibrator | Sections [8](#ar-ch8), [25](#ar-ch25), [26](#ar-ch26), [29](#ar-ch29), [46](#ar-ch46); [D134](PRODUCTION_PLAN.md#pl-d134)/[D138](PRODUCTION_PLAN.md#pl-d138)-[D140](PRODUCTION_PLAN.md#pl-d140)/[D155](PRODUCTION_PLAN.md#pl-d155)/[D161](PRODUCTION_PLAN.md#pl-d161)-[D165](PRODUCTION_PLAN.md#pl-d165)/[D170](PRODUCTION_PLAN.md#pl-d170)-[D171](PRODUCTION_PLAN.md#pl-d171) | Preserve identities, non-compass commands and path transitions. Check providers, notes, restore and directional consumers. |
+| Radials/arrow pad; native HELP, usage; DirectionalRadial, CharKeys, Qol | Sections [40](#ar-ch40), [44](#ar-ch44), [45](#ar-ch45), [51](#ar-ch51), [52](#ar-ch52), [53](#ar-ch53); [D120](PRODUCTION_PLAN.md#pl-d120)/[D161](PRODUCTION_PLAN.md#pl-d161) | Separate travel and character-key modes, preserve lifecycle/exclusion and exactly-once activation. Check input, settings, startup and tutorial. |
+| Input/layout; keyboard, character cell, status banner; MobileLayout, Input | Sections [30](#ar-ch30), [31](#ar-ch31), [32](#ar-ch32), [33](#ar-ch33), [36](#ar-ch36), [37](#ar-ch37), [38](#ar-ch38), [39](#ar-ch39), [40](#ar-ch40), [50](#ar-ch50), [53](#ar-ch53), [55](#ar-ch55); [D137](PRODUCTION_PLAN.md#pl-d137)/[D156](PRODUCTION_PLAN.md#pl-d156)/[D166](PRODUCTION_PLAN.md#pl-d166)/[D168](PRODUCTION_PLAN.md#pl-d168)/[D172](PRODUCTION_PLAN.md#pl-d172) | Respect VM-owned grid cells and input intent; check sheets, overlays, narrator and desktop/mobile geometry. |
+| Narrator/mic; speech, TTS; ReadAloud, VoiceInput | Sections [32](#ar-ch32), [39](#ar-ch39), [43](#ar-ch43); [D109](PRODUCTION_PLAN.md#pl-d109)/[D133](PRODUCTION_PLAN.md#pl-d133)/[D159](PRODUCTION_PLAN.md#pl-d159)/[D166](PRODUCTION_PLAN.md#pl-d166)-[D167](PRODUCTION_PLAN.md#pl-d167) | Spoken text and display differ deliberately; preserve complete-turn and voice-mode contracts. Check tutorial, auto-travel and native/web adapters. |
+| Restore/storage; undo, new game; UndoRestoreSync | Sections [31](#ar-ch31), [35](#ar-ch35), [41](#ar-ch41); [D178](PRODUCTION_PLAN.md#pl-d178)/[D180](PRODUCTION_PLAN.md#pl-d180)-[D183](PRODUCTION_PLAN.md#pl-d183) | Restore synchronizes dependent state; cached readings cannot masquerade as current facts. Check map, notes, narration, calibration and tracking. |
+| Notes/equipment; inventory, Known Rooms; Map, EquipmentUI | Sections [5](#ar-ch5), [26](#ar-ch26), [46](#ar-ch46), [56](#ar-ch56), [59](#ar-ch59); [D125](PRODUCTION_PLAN.md#pl-d125)-[D128](PRODUCTION_PLAN.md#pl-d128)/[D131](PRODUCTION_PLAN.md#pl-d131)/[D148](PRODUCTION_PLAN.md#pl-d148)/[D168](PRODUCTION_PLAN.md#pl-d168)-[D169](PRODUCTION_PLAN.md#pl-d169)/[D174](PRODUCTION_PLAN.md#pl-d174)/[D184](PRODUCTION_PLAN.md#pl-d184) | Preserve identity-scoped notes and nested inventory; check commands, sheets, stats and saves. |
+| Tutorial/library; onboarding, favorites; Tutorial, MainMenu, ModuleLibrary | Sections [35](#ar-ch35), [38](#ar-ch38), [54](#ar-ch54), [57](#ar-ch57); [D130](PRODUCTION_PLAN.md#pl-d130)/[D132](PRODUCTION_PLAN.md#pl-d132)/[D136](PRODUCTION_PLAN.md#pl-d136)/[D149](PRODUCTION_PLAN.md#pl-d149)/[D160](PRODUCTION_PLAN.md#pl-d160)/[D166](PRODUCTION_PLAN.md#pl-d166)-[D167](PRODUCTION_PLAN.md#pl-d167) | Sections [57](#ar-ch57) revises section 54's isolated lifecycle. Check readiness, speech, settings, sheets and splash. |
+| Character/status; score, health, weight, badge; StatTracker | Sections [60](#ar-ch60); [D157](PRODUCTION_PLAN.md#pl-d157)/[D167](PRODUCTION_PLAN.md#pl-d167)/[D169](PRODUCTION_PLAN.md#pl-d169)/[D173](PRODUCTION_PLAN.md#pl-d173)-[D176](PRODUCTION_PLAN.md#pl-d176)/[D178](PRODUCTION_PLAN.md#pl-d178)/[D180](PRODUCTION_PLAN.md#pl-d180)-[D183](PRODUCTION_PLAN.md#pl-d183) | Baseline diagram requires later plan amendments; preserve provenance, fallback and reset rules. Check inventory, VM grid and persistence. |
+| Packaging/navigation/export; APK, Back, PC; Global, ProductInfo, make-dist | Sections [30](#ar-ch30), [34](#ar-ch34), [35](#ar-ch35), [47](#ar-ch47), [48](#ar-ch48), [49](#ar-ch49), [53](#ar-ch53), [55](#ar-ch55), [58](#ar-ch58); [D99](PRODUCTION_PLAN.md#pl-d99)/[D119](PRODUCTION_PLAN.md#pl-d119)/[D121](PRODUCTION_PLAN.md#pl-d121)/[D129](PRODUCTION_PLAN.md#pl-d129) | Respect runtime allowlists, intentional navigation and current native-save contract. Check caches, startup and native integrations. |
+| Verification/open questions; evidence, regression | Sections [7](#ar-ch7), [12](#ar-ch12), [13](#ar-ch13), [17](#ar-ch17), [24](#ar-ch24) and each topic's evidence | Diagrams and old PASS counts are not current runtime verification; compare code and targeted tests. |
+
+### Scoped Corrections and Known Documentation Gaps
+
+- **Tutorial lifecycle:** [D124](PRODUCTION_PLAN.md#pl-d124) replaces [D120](PRODUCTION_PLAN.md#pl-d120)'s isolated-route behavior with a live tour.
+  [D130](PRODUCTION_PLAN.md#pl-d130)/[D132](PRODUCTION_PLAN.md#pl-d132)/[D136](PRODUCTION_PLAN.md#pl-d136) and later tutorial corrections refine timing/placement. Preserve unrelated
+  [D120](PRODUCTION_PLAN.md#pl-d120) behavior only where not replaced. The old standalone tutorial plan is historical
+  input, not authority to undo the shipped live-tour decision.
+- **Directional/arrow UI:** [D118](PRODUCTION_PLAN.md#pl-d118) merges [D111](PRODUCTION_PLAN.md#pl-d111)'s rendering shell; [D119](PRODUCTION_PLAN.md#pl-d119) corrects lifecycle,
+  settings, startup, and desktop behavior. [D117](PRODUCTION_PLAN.md#pl-d117)'s original prototype/deferred statements
+  are historical for those implemented portions. Later [D120](PRODUCTION_PLAN.md#pl-d120)/[D161](PRODUCTION_PLAN.md#pl-d161) refinements also apply.
+- **Export:** read [D114](PRODUCTION_PLAN.md#pl-d114) together with [D121](PRODUCTION_PLAN.md#pl-d121) and [D129](PRODUCTION_PLAN.md#pl-d129) (Storage Access Framework); do not
+  restore an older sharing-only assumption over the later device-save path.
+- **Tracking:** architecture section 60 is the [D149](PRODUCTION_PLAN.md#pl-d149) baseline, not a complete account of
+  [D167](PRODUCTION_PLAN.md#pl-d167)/[D169](PRODUCTION_PLAN.md#pl-d169)/[D173](PRODUCTION_PLAN.md#pl-d173)-[D176](PRODUCTION_PLAN.md#pl-d176)/[D178](PRODUCTION_PLAN.md#pl-d178)/[D180](PRODUCTION_PLAN.md#pl-d180)-[D183](PRODUCTION_PLAN.md#pl-d183). Read those plan amendments before changing score,
+  weight/value, persistence, badges, or restore behavior.
+- **Commands/room discovery:** read the foundational deterministic contracts together with
+  [D134](PRODUCTION_PLAN.md#pl-d134)/[D138](PRODUCTION_PLAN.md#pl-d138)-[D148](PRODUCTION_PLAN.md#pl-d148)/[D151](PRODUCTION_PLAN.md#pl-d151)-[D165](PRODUCTION_PLAN.md#pl-d165)/[D170](PRODUCTION_PLAN.md#pl-d170)-[D171](PRODUCTION_PLAN.md#pl-d171)/[D184](PRODUCTION_PLAN.md#pl-d184) where relevant. This is an extends relationship,
+  not blanket permission to replace compiler-specific paths.
+- **Tracker corrections are scoped:** [D175](PRODUCTION_PLAN.md#pl-d175) corrects
+  [D173](PRODUCTION_PLAN.md#pl-d173)'s baseline/replay handling; [D176](PRODUCTION_PLAN.md#pl-d176)
+  then corrects the low baseline introduced by D175. [D181](PRODUCTION_PLAN.md#pl-d181)
+  corrects restore-related scoring after [D180](PRODUCTION_PLAN.md#pl-d180), and
+  [D183](PRODUCTION_PLAN.md#pl-d183) refines badge suppression. Read the whole relevant
+  chain; do not treat the earlier intermediate behavior as a parallel requirement.
+- **Unnamed-object actions:** [D185](PRODUCTION_PLAN.md#pl-d185) repairs the missing
+  consumers of [D184](PRODUCTION_PLAN.md#pl-d184)'s `examineOnly` flag. Promotion alone
+  is not a functioning primary action or safe radial; follow both entries, including
+  their remaining inventory/scope limitations.
+- **First-query capabilities:** [section 61](#ar-ch61) / [D186](PRODUCTION_PLAN.md#pl-d186)
+  adds compiled attribute declarations ahead of the existing after-use learners;
+  it also tightens inspect-only actions and stats lifecycle rules.
+- Some earlier status banners and diagrams describe old builds. This indexing change
+  preserves them as records; it does not claim to reconcile every historical runtime claim.
+  Unlisted conflicts discovered during chapter checks must be recorded explicitly.
+
+**Local manifest:** 86 headings; 0 decision rows; 86 registered units.
+**Last registered unit:** `ar-s086`. **Body SHA-256 (LF):**
+`ea3d1ae7a48a130986b07d5bed1813522405673855dcea2ec9c453958ec9d7ac`
+
+Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
+This manifest covers the entire preserved body, including unheaded prose and later addenda.
+A new heading/row must receive a new ID even if appended under an existing chapter.
+### Embedded Integrity Check
+
+Run the following JavaScript with standard Node.js, supplying this document's path as the
+first argument (for example, `node - PRODUCTION_PLAN.md` with the block on standard input).
+It is intentionally stored here rather than in a separate maintenance script. It checks
+freshness, coverage, duplicate anchors and explicit chapter links; it cannot prove semantic
+agreement with code. Do not update the manifest merely to silence a failure.
+
+<!-- CHAPTER-CHECK-VALIDATOR:START -->
+```javascript
+const fs = require("fs");
+const crypto = require("crypto");
+const path = require("path");
+const file = process.argv[2];
+if (!file) throw new Error("Supply the document path");
+const text = fs.readFileSync(file, "utf8").replace(/\r\n/g, "\n");
+const marker = "<!-- CHAPTER-BODY:START -->\n";
+if (text.split(marker).length !== 2) throw new Error("Missing/duplicate body marker");
+const [front, body] = text.split(marker);
+const fail = message => { throw new Error(message); };
+const digest = crypto.createHash("sha256").update(body, "utf8").digest("hex");
+const recorded = front.match(/Body SHA-256 \(LF\):\*\*\n`([a-f0-9]{64})`/);
+if (!recorded || recorded[1] !== digest) fail("Stale body fingerprint");
+const anchors = [...text.matchAll(/<a id="((?:pl|ar)-[a-z0-9-]+)"/g)].map(m => m[1]);
+if (new Set(anchors).size !== anchors.length) fail("Duplicate anchor");
+const units = [...body.matchAll(/data-chapter-id="([^"]+)"/g)].map(m => m[1]);
+const register = front.split("\n<!-- LOCAL-REGISTER:START -->\n")[1];
+if (!register) fail("Missing register");
+const refs = [...register.matchAll(/^\| \[([^\]]+)\]\(#([^)]*)\)/gm)];
+if (refs.length !== units.length || refs.some(m => m[1] !== m[2])
+    || new Set(refs.map(m => m[1])).size !== units.length
+    || units.some(id => !refs.some(m => m[1] === id))) fail("Register mismatch");
+let fence = null, headings = 0, rows = 0;
+const lines = body.split("\n");
+for (let i = 0; i < lines.length; i++) {
+  const line = lines[i], f = line.match(/^\s{0,3}(`{3,}|~{3,})/);
+  if (f) {
+    if (!fence) fence = f[1];
+    else if (f[1][0] === fence[0] && f[1].length >= fence.length) fence = null;
+    continue;
+  }
+  if (fence) continue;
+  if (/^#{2,6}\s/.test(line)) {
+    headings++;
+    if (!/data-chapter-id=/.test(lines[i - 1] || "")) fail("Unregistered heading: " + line);
+  }
+  if (/^\|\s*(?:<a[^>]*><\/a>)*D\d+\s*\|/.test(line)) {
+    rows++;
+    if (!/data-chapter-id=/.test(line)) fail("Unregistered decision row");
+  }
+}
+const counts = front.match(/Local manifest:\*\* (\d+) headings; (\d+) decision rows; (\d+) registered units/);
+if (!counts || +counts[1] !== headings || +counts[2] !== rows
+    || +counts[3] !== units.length || headings + rows !== units.length) fail("Coverage mismatch");
+for (const m of text.matchAll(/\]\(([^)\s]*?)#((?:pl|ar)-[^)\s]+)\)/g)) {
+  const target = m[1] ? path.resolve(path.dirname(file), m[1]) : file;
+  const targetText = fs.readFileSync(target, "utf8");
+  if (!targetText.includes('<a id="' + m[2] + '"')) fail("Broken chapter link: " + m[0]);
+}
+console.log(JSON.stringify({ file, headings, rows, units: units.length, integrity: "PASS" }));
+```
+<!-- CHAPTER-CHECK-VALIDATOR:END -->
+
+
+<!-- CHAPTER-CHECK:END -->
+
+<!-- LOCAL-REGISTER:START -->
+<a id="ar-register"></a>
+## Local Chapter and Decision Register
+
+Read the system directory first, then only the relevant entries. Every preserved heading and
+decision-table row appears here; headings inside code fences are examples and are excluded.
+
+| Stable reference | Source heading or decision | Unit | Status |
+|---|---|---|---|
+| [ar-s001](#ar-s001) | September 16 Repair State | H2 | Record |
+| [ar-s002](#ar-s002) | Audit note | H3 | Record |
+| [ar-s003](#ar-s003) | 1. Current vs target stack | H2 | Record |
+| [ar-s004](#ar-s004) | 2. Layer + Translator components | H2 | Record |
+| [ar-s005](#ar-s005) | 3. Per-turn sequence (Translator-centric) | H2 | Record |
+| [ar-s006](#ar-s006) | 4. Provider ladder (capability) | H2 | Record |
+| [ar-s007](#ar-s007) | 5. Containment matrix (structural providers only) | H2 | Record |
+| [ar-s008](#ar-s008) | 6. Keep / replace / eliminated (D24) | H2 | Record |
+| [ar-s009](#ar-s009) | 7. DevKit & harness | H2 | Record |
+| [ar-s010](#ar-s010) | 8. UIPayload contract | H2 | Record |
+| [ar-s011](#ar-s011) | 9. Protocol-first integration | H2 | Record |
+| [ar-s012](#ar-s012) | 10. Original module migration (O1-O5) | H2 | Record |
+| [ar-s013](#ar-s013) | 11. L3 geometry contract (GUI baseline) | H2 | Record |
+| [ar-s014](#ar-s014) | 12. Decision anchors (must match plan section 11) | H2 | Record |
+| [ar-s015](#ar-s015) | 13. Open questions (Phase 0-2) | H2 | Record |
+| [ar-s016](#ar-s016) | 14. Dual-host runtime (BUILD 41) | H2 | Record |
+| [ar-s017](#ar-s017) | 15. Provider map (implemented vs target) | H2 | Record |
+| [ar-s018](#ar-s018) | 16. Probe ABI (shipped WASM) | H2 | Record |
+| [ar-s019](#ar-s019) | 17. Open questions (updated) | H2 | Record |
+| [ar-s020](#ar-s020) | 18. BUILD 45 chrome consumers (corrected, D24) | H2 | Record |
+| [ar-s021](#ar-s021) | 19. Emglken entry (BUILD 45) | H2 | Record |
+| [ar-s022](#ar-s022) | 20. Product rule (D15) | H2 | Record |
+| [ar-s023](#ar-s023) | 21. Visible UI rule (D16) | H2 | Record |
+| [ar-s024](#ar-s024) | 22. Deterministic RAM-primary contract (D17-D20, corrected by D24) | H2 | Record |
+| [ar-s025](#ar-s025) | Provider precedence (field-level, D24: no P1 fallback for these fields) | H3 | Record |
+| [ar-s026](#ar-s026) | Guide gaps mapped into architecture | H3 | Record |
+| [ar-s027](#ar-s027) | Explicit non-goals retained | H3 | Record |
+| [ar-s028](#ar-s028) | 23. Deterministic click / input commands (D21) | H2 | Record |
+| [ar-s029](#ar-s029) | 24. Universal coverage contract (D22) | H2 | Record |
+| [ar-s030](#ar-s030) | 25. Non-compass topological mapping (D23) | H2 | Record |
+| [ar-s031](#ar-s031) | 26. Map Beautification Engine (Phase 6, D30) | H2 | Record |
+| [ar-s032](#ar-s032) | 27. Live opcode calibration for attribute semantics (D73) | H2 | Record |
+| [ar-s033](#ar-s033) | 28. Semantic action dialect and command resolution (D88) | H2 | Record |
+| [ar-s034](#ar-s034) | Core records | H3 | Record |
+| [ar-s035](#ar-s035) | Deterministic resolution | H3 | Record |
+| [ar-s036](#ar-s036) | Evidence and persistence boundary | H3 | Record |
+| [ar-s037](#ar-s037) | Mobile and out-of-sample gate | H3 | Record |
+| [ar-s038](#ar-s038) | 29. RAM-reading recovery: scope/attribute/exit walk (D89) | H2 | Record |
+| [ar-s039](#ar-s039) | 30. Mobile: portrait-primary shell, PWA shell, and native Android conversion (D93, supersedes D92's landscape framing) | H2 | Record |
+| [ar-s040](#ar-s040) | Post-D93 operator follow-ups: input, dialogs, mic (partly superseded) | H3 | Record |
+| [ar-s041](#ar-s041) | 31. VM restore hooks and the truthful character cell (D94) | H2 | Record |
+| [ar-s042](#ar-s042) | 32. Voice input state machine (D95) | H2 | Record |
+| [ar-s043](#ar-s043) | 33. Bottom Menu handle and right-edge Map tab (D96) | H2 | Record |
+| [ar-s044](#ar-s044) | 34. ParchLock release and documentation architecture (D99 -- implementation in progress) | H2 | Record |
+| [ar-s045](#ar-s045) | 35. Module library (D98 -- implemented) | H2 | Record |
+| [ar-s046](#ar-s046) | 36. Display text scaling and menu de-duplication (D101) | H2 | Record |
+| [ar-s047](#ar-s047) | 37. Mobile menu reachability (D102) | H2 | Record |
+| [ar-s048](#ar-s048) | 38. First-install mobile gesture tutorial (D103) | H2 | Record |
+| [ar-s049](#ar-s049) | 39. Read-aloud pipeline (D104, supersedes the D100 delta design) | H2 | Record |
+| [ar-s050](#ar-s050) | 40. Mobile input contract: keyboard intent, character prompts and the arrow pad (D105) | H2 | Record |
+| [ar-s051](#ar-s051) | 41. Post-restore visible-state contract (D106) | H2 | Record |
+| [ar-s052](#ar-s052) | 42. Parser-owned command descriptor pipeline (D107) | H2 | Record |
+| [ar-s053](#ar-s053) | 43. Complete-turn narrator pipeline (D108) | H2 | Record |
+| [ar-s054](#ar-s054) | D109 pronunciation hints | H3 | Record |
+| [ar-s055](#ar-s055) | 44. Adaptive radial ordering (D110) | H2 | Record |
+| [ar-s056](#ar-s056) | 45. Automatic native-menu arrow pad (D111) | H2 | Record |
+| [ar-s057](#ar-s057) | 46. Map panel: search, collapsible controls, unified notation (D112) | H2 | Record |
+| [ar-s058](#ar-s058) | 47. App-wide navigation guard (D113) | H2 | Record |
+| [ar-s059](#ar-s059) | 48. Real file export on Android (D114) | H2 | Record |
+| [ar-s060](#ar-s060) | 49. Hardware back button never exits silently (D115) | H2 | Record |
+| [ar-s061](#ar-s061) | 50. Top compass strip clears the real occupied top region (D116) | H2 | Record |
+| [ar-s062](#ar-s062) | 51. Programmable directional radial overlay (D117) | H2 | Record |
+| [ar-s063](#ar-s063) | 52. Merging D111's arrow pad into the DirectionalRadial widget (D118) | H2 | Record |
+| [ar-s064](#ar-s064) | 53. D117/D118 audit fixes (bus #786) + merged-settings gap + desktop arrow overlay (D119) | H2 | Record |
+| [ar-s065](#ar-s065) | 54. Non-live adaptive tutorial + phone-landscape portrait prompt (D120) | H2 | Record |
+| [ar-s066](#ar-s066) | 55. Top reflow band, and real file export on Android (D121) | H2 | Record |
+| [ar-s067](#ar-s067) | 55.1 `ParchLockQol.DownloadText` handed native a `Blob` | H3 | Record |
+| [ar-s068](#ar-s068) | 55.2 The top chrome is a reflow band, not an overlay | H3 | Record |
+| [ar-s069](#ar-s069) | 56. Equipment sheet (D122) | H2 | Record |
+| [ar-s070](#ar-s070) | 57. Live tutorial restored (D124) | H2 | Record |
+| [ar-s071](#ar-s071) | 58. Save to device via the Storage Access Framework (D129) | H2 | Record |
+| [ar-s072](#ar-s072) | 59. Commanding non-standard items: spells, instruments, and held containers (D146-D148) | H2 | Record |
+| [ar-s073](#ar-s073) | The dictionary as the single arbiter | H3 | Record |
+| [ar-s074](#ar-s074) | Instrumental verbs | H3 | Record |
+| [ar-s075](#ar-s075) | Qualifiers from the printed name | H3 | Record |
+| [ar-s076](#ar-s076) | Descending into a held container whose bits do not decode | H3 | Record |
+| [ar-s077](#ar-s077) | Marks versus commands (D146) | H3 | Record |
+| [ar-s078](#ar-s078) | 60. Character tracker (D149) | H2 | Record |
+| [ar-s079](#ar-s079) | Source precedence | H3 | Record |
+| [ar-s080](#ar-s080) | Why globals are a candidate and not a source | H3 | Record |
+| [ar-s081](#ar-s081) | The v3 seeding path | H3 | Record |
+| [ar-s082](#ar-s082) | Deaths | H3 | Record |
+| [ar-s083](#ar-s083) | Audio | H3 | Record |
+| [ar-s084](#ar-s084) | Relevance gating, generalised | H3 | Record |
+| [ar-s085](#ar-s085) | Custom status windows | H3 | Record |
+| [ar-s086](#ar-s086) | 61. Compiled attribute declarations and audit corrections (D186) | H2 | Implemented |
+<!-- LOCAL-REGISTER:END -->
+
+<!-- CHAPTER-BODY:START -->
+
+
+<a id="ar-s001" data-chapter-id="ar-s001"></a>
 ## September 16 Repair State
 
 Implementation and validation are complete and ready for review; see the production
@@ -42,12 +410,14 @@ prior persisted data, and corrupt startup maps are preserved rather than overwri
 | [ ] | target |
 | [!] | risk seam |
 
+<a id="ar-s002" data-chapter-id="ar-s002"></a>
 ### Audit note
 Updated for **BUILD 41**: L2.5 Translator (D12), dual-host Emglken opt-in, RemGlk/GlkTap providers, portable `pm_vm_probe` + `DISTRIBUTE.md` (D13). Default product host remains Quixe/ZVM (`play.html`). Emglken host is `play-emglken.html`.
 - D14 BUILD 45 O1-O4 chrome complete; HEAP optional
 
 ---
 
+<a id="ar-s003" data-chapter-id="ar-s003"></a><a id="ar-ch1"></a>
 ## 1. Current vs target stack
 
 ```mermaid
@@ -84,6 +454,7 @@ Target has no P1 Heuristic provider feeding the Translator (D24) - the TODAY sub
 
 ---
 
+<a id="ar-s004" data-chapter-id="ar-s004"></a><a id="ar-ch2"></a>
 ## 2. Layer + Translator components
 
 ```mermaid
@@ -134,6 +505,7 @@ P1 Heuristic is not part of the actionable/map/radial provider set (D24) - dropp
 
 ---
 
+<a id="ar-s005" data-chapter-id="ar-s005"></a><a id="ar-ch3"></a>
 ## 3. Per-turn sequence (Translator-centric)
 
 ```mermaid
@@ -159,6 +531,7 @@ sequenceDiagram
 
 ---
 
+<a id="ar-s006" data-chapter-id="ar-s006"></a><a id="ar-ch4"></a>
 ## 4. Provider ladder (capability)
 
 ```mermaid
@@ -179,6 +552,7 @@ P1 Heuristic is not part of this ladder for actionable/map/radial (D24) - it has
 
 ---
 
+<a id="ar-s007" data-chapter-id="ar-s007"></a><a id="ar-ch5"></a>
 ## 5. Containment matrix (structural providers only)
 
 ```mermaid
@@ -198,6 +572,7 @@ Full Inform light/scope (`OffersLight`, `thedark`) is Phase 8 - this is containm
 
 ---
 
+<a id="ar-s008" data-chapter-id="ar-s008"></a><a id="ar-ch6"></a>
 ## 6. Keep / replace / eliminated (D24)
 
 ```mermaid
@@ -229,6 +604,7 @@ P0 Behavioral remains for HUD/meta telemetry only (Phase 7) - it was never the a
 
 ---
 
+<a id="ar-s009" data-chapter-id="ar-s009"></a><a id="ar-ch7"></a>
 ## 7. DevKit & harness
 
 ```mermaid
@@ -243,6 +619,7 @@ flowchart LR
 
 ---
 
+<a id="ar-s010" data-chapter-id="ar-s010"></a><a id="ar-ch8"></a>
 ## 8. UIPayload contract
 
 ```mermaid
@@ -304,6 +681,7 @@ HUD / resourceWarnings / some specialCommands are heuristic-labeled even when pr
 
 ---
 
+<a id="ar-s011" data-chapter-id="ar-s011"></a><a id="ar-ch9"></a>
 ## 9. Protocol-first integration
 
 ```mermaid
@@ -329,6 +707,7 @@ flowchart TB
 
 ---
 
+<a id="ar-s012" data-chapter-id="ar-s012"></a><a id="ar-ch10"></a>
 ## 10. Original module migration (O1-O5)
 
 ```mermaid
@@ -341,6 +720,7 @@ flowchart LR
 
 ---
 
+<a id="ar-s013" data-chapter-id="ar-s013"></a><a id="ar-ch11"></a>
 ## 11. L3 geometry contract (GUI baseline)
 
 ```mermaid
@@ -363,6 +743,7 @@ Preserve unless a phase gate explicitly changes it.
 
 ---
 
+<a id="ar-s014" data-chapter-id="ar-s014"></a><a id="ar-ch12"></a>
 ## 12. Decision anchors (must match plan section 11)
 
 - D1 Plan authority; TXT advisory  
@@ -431,6 +812,7 @@ Preserve unless a phase gate explicitly changes it.
 
 ---
 
+<a id="ar-s015" data-chapter-id="ar-s015"></a><a id="ar-ch13"></a>
 ## 13. Open questions (Phase 0-2)
 
 Superseded by **§17** for BUILD 41+. Keep historical bullets in git history if needed.
@@ -438,6 +820,7 @@ Superseded by **§17** for BUILD 41+. Keep historical bullets in git history if 
 
 ---
 
+<a id="ar-s016" data-chapter-id="ar-s016"></a><a id="ar-ch14"></a>
 ## 14. Dual-host runtime (BUILD 41)
 
 ```mermaid
@@ -467,6 +850,7 @@ flowchart TB
 
 ---
 
+<a id="ar-s017" data-chapter-id="ar-s017"></a><a id="ar-ch15"></a>
 ## 15. Provider map (implemented vs target)
 
 | Provider | File | Rank | Status |
@@ -483,6 +867,7 @@ flowchart TB
 
 ---
 
+<a id="ar-s018" data-chapter-id="ar-s018"></a><a id="ar-ch16"></a>
 ## 16. Probe ABI (shipped WASM)
 
 ```mermaid
@@ -499,6 +884,7 @@ Build-only: `native-hooks/build.ps1` (MSVC) and Emscripten wasm preset. Outputs 
 
 ---
 
+<a id="ar-s019" data-chapter-id="ar-s019"></a><a id="ar-ch17"></a>
 ## 17. Open questions (updated)
 
 1. When to promote Emglken from opt-in to default without regressing Quixe UX?
@@ -508,6 +894,7 @@ Build-only: `native-hooks/build.ps1` (MSVC) and Emscripten wasm preset. Outputs 
 
 
 
+<a id="ar-s020" data-chapter-id="ar-s020"></a><a id="ar-ch18"></a>
 ## 18. BUILD 45 chrome consumers (corrected, D24)
 
 ```mermaid
@@ -528,21 +915,25 @@ TextGate / BufferTap / GlkTap still load as WorldModel providers (script tags st
 - Emglken path: iframe tapped host -> bridge merges child WorldModel into parent chrome
 
 
+<a id="ar-s021" data-chapter-id="ar-s021"></a><a id="ar-ch19"></a>
 ## 19. Emglken entry (BUILD 45)
 
 `play.html?host=emglken` / `play-emglken.html` ? top-level `parchment-single-tapped.html` (not nested iframe).
 
 
+<a id="ar-s022" data-chapter-id="ar-s022"></a><a id="ar-ch20"></a>
 ## 20. Product rule (D15)
 
 All player UX flows through `play.html` + Quixe for catalog modules. Emglken entry points are experimental only.
 
 
+<a id="ar-s023" data-chapter-id="ar-s023"></a><a id="ar-ch21"></a>
 ## 21. Visible UI rule (D16)
 
 Players only see Parchmap (`play.html`). Engine hosts and Translator internals are background. Debug chrome requires explicit user opt-in.
 
 
+<a id="ar-s024" data-chapter-id="ar-s024"></a><a id="ar-ch22"></a>
 ## 22. Deterministic RAM-primary contract (D17-D20, corrected by D24)
 
 ```mermaid
@@ -560,6 +951,7 @@ flowchart TD
   WM -.->|P2 not live yet: field is empty, not text-derived| EMPTY[No actionable/map/radial for this room/format]
 ```
 
+<a id="ar-s025" data-chapter-id="ar-s025"></a>
 ### Provider precedence (field-level, D24: no P1 fallback for these fields)
 | Field | Winner when P2 live | When P2 not live |
 |---|---|---|
@@ -571,6 +963,7 @@ flowchart TD
 
 P0 behavioral may still populate HUD/meta fields (hudMetrics, specialCommands hints) independent of P2 - those were never part of this precedence table and are unaffected by D24.
 
+<a id="ar-s026" data-chapter-id="ar-s026"></a>
 ### Guide gaps mapped into architecture
 - Dictionary Word<->ObjectID -> every `.pm-act[data-object-id]`
 - Look-ahead exits ? UIPayload.exits before travel
@@ -579,6 +972,7 @@ P0 behavioral may still populate HUD/meta fields (hudMetrics, specialCommands hi
 - Planarization / Glk shielding ? Phase 6 MapBeautify + GraphicsDock
 - Live attribute-bit calibration -> js/AttrCalibrator.js (D73)
 
+<a id="ar-s027" data-chapter-id="ar-s027"></a>
 ### Explicit non-goals retained
 - Text-mining as proof of actionable correctness
 - Visible non-Parchmap hosts / debug panels by default
@@ -587,6 +981,7 @@ P0 behavioral may still populate HUD/meta fields (hudMetrics, specialCommands hi
 Live ZVM RAM walk is the CRITICAL PATH for deterministic actionable marks.
 
 
+<a id="ar-s028" data-chapter-id="ar-s028"></a><a id="ar-ch23"></a>
 ## 23. Deterministic click / input commands (D21)
 
 ```mermaid
@@ -610,6 +1005,7 @@ radials, and autocomplete consume the same resolved descriptor; none may rebuild
 text from a first-token verb.
 
 
+<a id="ar-s029" data-chapter-id="ar-s029"></a><a id="ar-ch24"></a>
 ## 24. Universal coverage contract (D22)
 
 Product scope is **all rooms ? all catalog modules ? all supported module systems**, with one UI (`play.html`).
@@ -642,6 +1038,7 @@ flowchart TB
 Open: Glulx live P3 parity still tracks Emglken HEAP export; until then Glulx stays P0 behavioral under the same chrome.
 
 
+<a id="ar-s030" data-chapter-id="ar-s030"></a><a id="ar-ch25"></a>
 ## 25. Non-compass topological mapping (D23)
 
 ```mermaid
@@ -660,6 +1057,7 @@ Compass vocabulary is optional layout hint only, never a mapping/pathing prerequ
 
 ---
 
+<a id="ar-s031" data-chapter-id="ar-s031"></a><a id="ar-ch26"></a>
 ## 26. Map Beautification Engine (Phase 6, D30)
 
 Full mechanics restored from `Full Stack Engine Level Conversion.txt` - the prior version of this doc had this reduced to a single generic sentence.
@@ -696,6 +1094,7 @@ Compass vocabulary is an optional layout hint, never a prerequisite for mapping,
 
 ---
 
+<a id="ar-s032" data-chapter-id="ar-s032"></a><a id="ar-ch27"></a>
 ## 27. Live opcode calibration for attribute semantics (D73)
 
 `js/AttributeSchema.js`'s static PROFILE (§3.3) is a documented guess at attribute-bit meaning. This section covers the escape hatch: watching the compiled game's own opcodes actually run, rather than only reading static RAM bits.
@@ -727,6 +1126,7 @@ Z-machine (`lib/zvm.js`) only. Glulx/Quixe would need its own separate feasibili
 
 ---
 
+<a id="ar-s033" data-chapter-id="ar-s033"></a><a id="ar-ch28"></a>
 ## 28. Semantic action dialect and command resolution (D88)
 
 **Implementation status, 2026-09-19/20: Stages 1-6 of 8 shipped** (`js/SemanticActions.js`,
@@ -779,6 +1179,7 @@ flowchart LR
   EV --> OP
 ```
 
+<a id="ar-s034" data-chapter-id="ar-s034"></a>
 ### Core records
 
 `SemanticAction` contains stable `intent`, direct/indirect object ids, context,
@@ -789,6 +1190,7 @@ class, evidence, and confidence. `ResolvedCommand` adds the stable UI label, exa
 rendered parser command, form id, target ids, and provenance. The resolver is pure: it
 cannot call `Input.Inject`, `Actionable.Submit`, or an interpreter API.
 
+<a id="ar-s035" data-chapter-id="ar-s035"></a>
 ### Deterministic resolution
 
 ```mermaid
@@ -817,6 +1219,7 @@ first attribute action. Dictionary words cannot create compound templates. Ambig
 nouns and parser clarification yield no learning observation until a stable target is
 resolved.
 
+<a id="ar-s036" data-chapter-id="ar-s036"></a>
 ### Evidence and persistence boundary
 
 Typed and injected submissions carry optional `{intent, formId, objectIds}` metadata
@@ -834,6 +1237,7 @@ once as provisional legacy evidence. Restore/undo/restart clears pending and
 generation-bound observations; only independently established build-stable grammar
 facts survive. Corrupt, foreign-build, or contradictory evidence fails closed.
 
+<a id="ar-s037" data-chapter-id="ar-s037"></a>
 ### Mobile and out-of-sample gate
 
 `contextmenu` simulation at a narrow viewport is not proof of mobile support. The gate
@@ -849,6 +1253,7 @@ save/restore/undo/restart, and same-release/serial binaries with different check
 Default-on requires zero wrong automatic submissions and no title/build-specific branch.
 
 
+<a id="ar-s038" data-chapter-id="ar-s038"></a><a id="ar-ch29"></a>
 ## 29. RAM-reading recovery: scope/attribute/exit walk (D89)
 
 `js/ZRamReader.js` and `js/ZRamProvider.js` are the sole authority for turning live
@@ -906,6 +1311,7 @@ animate+plural-children structural fallback, D53/D57/D58) because a game's resol
 the other's exclusion logic as a shortcut; each was independently found broken and
 independently restored.
 
+<a id="ar-s039" data-chapter-id="ar-s039"></a><a id="ar-ch30"></a>
 ## 30. Mobile: portrait-primary shell, PWA shell, and native Android conversion (D93, supersedes D92's landscape framing)
 
 > D92 originally shipped a landscape-lock/rotate-hint mechanism; the operator later
@@ -1053,6 +1459,7 @@ the full live-verification evidence, including a real, self-caught Gradle manife
 merge failure (a literal `--` inside an XML comment) fixed before the final rebuild.
 
 <!-- D93-MOBILE-FOLLOWUP-ARCH (moved here from a duplicate "19. Emglken entry (BUILD 43)" tail; the Emglken entry itself is section 19, BUILD 45) -->
+<a id="ar-s040" data-chapter-id="ar-s040"></a>
 ### Post-D93 operator follow-ups: input, dialogs, mic (partly superseded)
 
 Keyboard gate applies only to Glk .Input.LineInput / .Input.CharInput. Native Glk #dialog save/restore name fields are excluded from blur/dismiss so the soft keyboard stays up while typing a save name.
@@ -1062,6 +1469,7 @@ Mobile line row (LTR): command field, submit (➤), mic (far right). The mic beh
 After undo/restore/restart, UndoRestoreSync.resync refreshes WorldModel + Actionable + map and scrolls the buffer. D106 corrects the former assumption that scrolling made restored story text appear: successful native file restore additionally submits one settled `look` (section 41); undo/restart stay passive.
 
 
+<a id="ar-s041" data-chapter-id="ar-s041"></a><a id="ar-ch31"></a>
 ## 31. VM restore hooks and the truthful character cell (D94)
 
 Two contracts that the mobile shell depends on, each of which failed silently and was
@@ -1117,6 +1525,7 @@ Display font size becomes an upper bound on mobile (about 12.5px effective on a 
 phone); `--pm-cell-cols` is the single tuning knob. `css/CharCell.css` is in the service
 worker's `APP_SHELL` (cache v5) and in `make-dist.bat`'s critical-file check.
 
+<a id="ar-s042" data-chapter-id="ar-s042"></a><a id="ar-ch32"></a>
 ## 32. Voice input state machine (D95)
 
 `Input.Mic` (js/Input.js) drives the mobile microphone button. The button is the ONLY
@@ -1149,6 +1558,7 @@ outrank a naive state class, so the lit/error/busy states carry matching specifi
 border colours are `!important`. Guarded by `harness/d95-mic-hold.js` (native plugin modelled
 from its source; real touch events). Cannot be proven on a physical phone from this environment.
 
+<a id="ar-s043" data-chapter-id="ar-s043"></a><a id="ar-ch33"></a>
 ## 33. Bottom Menu handle and right-edge Map tab (D96)
 
 Mobile shell only (`body.pm-mobile`); desktop keeps the top-right Menu chip and has no Map tab.
@@ -1177,6 +1587,7 @@ tappable. Dialog ownership: `app-dialog-open` is set by `Message.Show` and is no
 Parchmap's 100ms boot cleanup while `Message.IsOpen` (first-launch Help popup). Guarded by
 `harness/d96-menu-handle-map-tab.js`.
 
+<a id="ar-s044" data-chapter-id="ar-s044"></a><a id="ar-ch34"></a>
 ## 34. ParchLock release and documentation architecture (D99 -- implementation in progress)
 
 Status: IMPLEMENTATION COMPLETE; READY FOR FINAL ADVERSARIAL REVIEW (2026-09-20).
@@ -1237,6 +1648,7 @@ Rules carried by the plan (each is an acceptance criterion, not an implementatio
   scripts, bridge, redirect page, modern tapped host and duplicate WASM trees remain available only in the
   repository/corresponding-source archive and are excluded by the runtime allow-list.
 
+<a id="ar-s045" data-chapter-id="ar-s045"></a><a id="ar-ch35"></a>
 ## 35. Module library (D98 -- implemented)
 
 Status: IMPLEMENTED AND LOCALLY VERIFIED; READY FOR FINAL ADVERSARIAL REVIEW (2026-09-20); canonical text PRODUCTION_PLAN.md section 13. Compared before design against the current code: `lib/main.js` `launch()` (engine
@@ -1294,6 +1706,7 @@ Contracts:
   `parchlock-*` database); pre-existing legacy keys/classes it must touch sit behind one `LEGACY`
   adapter table so the mechanical rename edits a single place.
 
+<a id="ar-s046" data-chapter-id="ar-s046"></a><a id="ar-ch36"></a>
 ## 36. Display text scaling and menu de-duplication (D101)
 
 Mobile rendering has two deliberately separate typographic layers:
@@ -1321,6 +1734,7 @@ flowchart LR
 This replaces only the rejected broad D99 font override; that override remains removed. D94
 54/54 and D96 112/112 are the acceptance gates for any future changes to these layers.
 
+<a id="ar-s047" data-chapter-id="ar-s047"></a><a id="ar-ch37"></a>
 ## 37. Mobile menu reachability (D102)
 
 ```mermaid
@@ -1343,6 +1757,7 @@ flowchart LR
   paths. During a story state with no line or character prompt there is no long-hold
   target; this is an accepted consequence of removing the always-available handle.
 
+<a id="ar-s048" data-chapter-id="ar-s048"></a><a id="ar-ch38"></a>
 ## 38. First-install mobile gesture tutorial (D103)
 
 ```mermaid
@@ -1371,6 +1786,7 @@ flowchart TD
   and spotlights a real actionable when available followed by the live line input. Glk input
   replacement is handled by observer-driven accessibility annotation.
 
+<a id="ar-s049" data-chapter-id="ar-s049"></a><a id="ar-ch39"></a>
 ## 39. Read-aloud pipeline (D104, supersedes the D100 delta design)
 
 ```mermaid
@@ -1400,6 +1816,7 @@ flowchart TD
 - Known scope limits: only `.BufferWindow` text is read (grid windows/status are not);
   app dialogs are opt-in (`ReadAloudDialogs`, default off, so the first-run Help popup is not spoken).
 
+<a id="ar-s050" data-chapter-id="ar-s050"></a><a id="ar-ch40"></a>
 ## 40. Mobile input contract: keyboard intent, character prompts and the arrow pad (D105)
 
 ```mermaid
@@ -1424,6 +1841,7 @@ stateDiagram-v2
   Char prompt: keydown 37-40 / keypress 13; line prompt: history Up/Down, caret Left/Right, Enter submits.
 - Known limits: only BMP characters reach a char request; desktop is unchanged (no proxy, no pad, no Tools entry).
 
+<a id="ar-s051" data-chapter-id="ar-s051"></a><a id="ar-ch41"></a>
 ## 41. Post-restore visible-state contract (D106)
 
 ```mermaid
@@ -1453,6 +1871,7 @@ read-aloud, and mobile keyboard dismissal. A generation token makes it single-sh
 limit prevents a command remaining armed indefinitely when a story never returns to line input.
 Undo, restart, and unsuccessful restore retain D94's passive observer behavior.
 
+<a id="ar-s052" data-chapter-id="ar-s052"></a><a id="ar-ch42"></a>
 ## 42. Parser-owned command descriptor pipeline (D107)
 
 ```mermaid
@@ -1491,6 +1910,7 @@ flowchart LR
   both the actual radial and actual underline click, plus changing two-key scope, duplicate
   records, short aliases, and empty-alias fallback.
 
+<a id="ar-s053" data-chapter-id="ar-s053"></a><a id="ar-ch43"></a>
 ## 43. Complete-turn narrator pipeline (D108)
 
 GlkOte append mode may reuse the last BufferLine. Element identity is therefore not a
@@ -1505,6 +1925,7 @@ deduplicates only exact case-insensitive labels, and emits one newline-free payl
 This stage is independent of parser nouns, semantic actions, module identity, and story
 title; neither speech engine receives a separate interpretation path.
 
+<a id="ar-s054" data-chapter-id="ar-s054"></a><a id="ar-d109"></a>
 ### D109 pronunciation hints
 
 Portable pronunciation corrections run at the end of the shared plain-text preparation
@@ -1513,6 +1934,7 @@ stage, before the native/Web engine branch. The first bounded rule maps the Engl
 unrelated CH words. Rules must remain narrow, deterministic, idempotent, engine-neutral,
 and backed by positive and negative fixtures.
 
+<a id="ar-s055" data-chapter-id="ar-s055"></a><a id="ar-ch44"></a>
 ## 44. Adaptive radial ordering (D110)
 
 ```mermaid
@@ -1550,6 +1972,7 @@ retaining both the exact accepted-command count and unmatched/abandoned tap sign
 Any nonmatching accepted command clears the pending key. Launcher keys are independent
 buttons and never enter this completion-pairing path.
 
+<a id="ar-s056" data-chapter-id="ar-s056"></a><a id="ar-ch45"></a>
 ## 45. Automatic native-menu arrow pad (D111)
 
 ```mermaid
@@ -1575,6 +1998,7 @@ menu. `_autoEligible` spans prompt-node replacement, `_autoPadOwned` separates
 automatic lifecycle from manual Tools use, and user dismissal is sticky for the
 current eligible visit. Manual pads at line prompts retain history/caret behavior.
 
+<a id="ar-s057" data-chapter-id="ar-s057"></a><a id="ar-ch46"></a>
 ## 46. Map panel: search, collapsible controls, unified notation (D112)
 
 ```mermaid
@@ -1603,6 +2027,7 @@ preference (`Global.Prefs.ShowNotesAddButton`, default off, Options > Interface
 & Accessibility). `RefreshMapPanels()` is the single shared refresh point every
 mutation/load/import site calls, keeping Known Rooms and Notes in sync.
 
+<a id="ar-s058" data-chapter-id="ar-s058"></a><a id="ar-ch47"></a>
 ## 47. App-wide navigation guard (D113)
 
 ```mermaid
@@ -1627,6 +2052,7 @@ worked example. The app's two intentional whole-app exits (Choose story / Exit
 game) are untouched -- both are programmatic `location.href` assignments,
 never `<a href>` clicks.
 
+<a id="ar-s059" data-chapter-id="ar-s059"></a><a id="ar-ch48"></a>
 ## 48. Real file export on Android (D114)
 
 ```mermaid
@@ -1649,6 +2075,7 @@ as real native dependencies (`npm install` + `npx cap sync android`), auto-
 registering into `window.Capacitor.Plugins` the same way `@capacitor/app`
 already did, with no HTML script tag needed.
 
+<a id="ar-s060" data-chapter-id="ar-s060"></a><a id="ar-ch49"></a>
 ## 49. Hardware back button never exits silently (D115)
 
 Extends §45's neighbor concern: `MobileLayout.bindAndroidBackButton`'s dismiss
@@ -1663,6 +2090,7 @@ waiting for, since `read_char` (opcode 246) carries no metadata on what key is
 expected (§45's own documented limitation) -- guessing risks sending the wrong
 command into an unrelated char-prompt context.
 
+<a id="ar-s061" data-chapter-id="ar-s061"></a><a id="ar-ch50"></a>
 ## 50. Top compass strip clears the real occupied top region (D116)
 
 `#exits .row.horizontal.top` and `#current-room-notes` are fixed-position
@@ -1678,6 +2106,7 @@ overlays' `top` offset is `8px + --pl-safe-top + --pl-statusbar-h + 4px`,
 matching `#windowport`'s own `top: 8px + --pl-safe-top` starting point plus
 the banner's real height.
 
+<a id="ar-s062" data-chapter-id="ar-s062"></a><a id="ar-ch51"></a>
 ## 51. Programmable directional radial overlay (D117)
 
 ```mermaid
@@ -1722,6 +2151,7 @@ GridWindow-CharInput auto arrow pad -- see §52 below, where the operator
 asked for that merge and it was implemented and adversarially audited by
 codex (D117's own audit, bus #782) the same session.
 
+<a id="ar-s063" data-chapter-id="ar-s063"></a><a id="ar-ch52"></a>
 ## 52. Merging D111's arrow pad into the DirectionalRadial widget (D118)
 
 ```mermaid
@@ -1773,6 +2203,7 @@ D111 "no flicker" gate), plus the real "tap outside closes it," "Escape
 closes it," line-history recall, and responsive geometry at three viewports,
 all passing unchanged.
 
+<a id="ar-s064" data-chapter-id="ar-s064"></a><a id="ar-ch53"></a>
 ## 53. D117/D118 audit fixes (bus #786) + merged-settings gap + desktop arrow overlay (D119)
 
 ```mermaid
@@ -1821,6 +2252,7 @@ auto-open on desktop for this toggle to conflict with.
 `harness/d105-review-fixes.js` 43/43 and `harness/d105-input-contract.js` 58/58 both unchanged and
 green.
 
+<a id="ar-s065" data-chapter-id="ar-s065"></a><a id="ar-ch54"></a>
 ## 54. Non-live adaptive tutorial + phone-landscape portrait prompt (D120)
 
 ```mermaid
@@ -1947,11 +2379,13 @@ already had (`#pl-map-tab`'s click handler was never mobile-scoped, only the CSS
 `harness/directional-radial.js` grew to 112/112; `harness/d119-live-audit.js` grew to 50/50 (a new
 Part 5 reproducing the exact wide-desktop, map-open scenario end to end).
 
+<a id="ar-s066" data-chapter-id="ar-s066"></a><a id="ar-ch55"></a>
 ## 55. Top reflow band, and real file export on Android (D121)
 
 Two operator-reported defects in the same shipped APK, both of which had a prior "fix" that
 passed its regression suite while being broken on the device.
 
+<a id="ar-s067" data-chapter-id="ar-s067"></a>
 ### 55.1 `ParchLockQol.DownloadText` handed native a `Blob`
 
 D114 (§48) routed exports through `@capacitor/filesystem` + `@capacitor/share`, but passed the
@@ -1973,6 +2407,7 @@ as the expected behaviour, and its `writeFile` stub always resolved. It now asse
 encoding, and a **bridge-serialisation guard** (`JSON.parse(JSON.stringify(opts))` must still
 carry `data`), so a `Blob` fails closed.
 
+<a id="ar-s068" data-chapter-id="ar-s068"></a>
 ### 55.2 The top chrome is a reflow band, not an overlay
 
 Three independent sources rendered into the top of the mobile play screen with no shared layout
@@ -2025,6 +2460,7 @@ matching the rendered height, the chip winning `elementFromPoint`, and the mask 
 non-interactive. That probe is what caught the null-binding and `offsetParent` bugs, neither of
 which any source-text assertion could see.
 
+<a id="ar-s069" data-chapter-id="ar-s069"></a><a id="ar-ch56"></a>
 ## 56. Equipment sheet (D122)
 
 Inventory was a flat chip list inside the map sheet that encoded containment as a **text suffix**
@@ -2088,6 +2524,7 @@ inventory. Live Playwright: 20/20 at 412x860 and 8/8 at 1400x900 covering tab vi
 map/equipment/main-screen cycle, tree render, no-overflow at depth, sticky controls, sort, flat
 view and search.
 
+<a id="ar-s070" data-chapter-id="ar-s070"></a><a id="ar-ch57"></a>
 ## 57. Live tutorial restored (D124)
 
 D120 replaced the original live tour with a separate route (`tutorial.html` + a `js/Tutorial.js`
@@ -2139,6 +2576,7 @@ Playwright: 18/18 across 412x860 and 1400x900 — all 17 steps reachable, 12-13 
 live elements, both real sheets opened by the tour, app inert throughout, completion recorded and
 the module reloaded fresh.
 
+<a id="ar-s071" data-chapter-id="ar-s071"></a><a id="ar-ch58"></a>
 ## 58. Save to device via the Storage Access Framework (D129)
 
 Operator-reported: "Download" opened the **share** sheet, not a file picker, so there was no way to
@@ -2176,12 +2614,14 @@ rejection kinds and the fallback ordering. The native side compiles (`compileDeb
 and `ParchLock-dev.apk` contains `Lcom/parchlock/app/SaveFilePlugin;` in `classes7.dex`. The
 picker's on-device behaviour is still an operator gate.
 
+<a id="ar-s072" data-chapter-id="ar-s072"></a><a id="ar-ch59"></a>
 ## 59. Commanding non-standard items: spells, instruments, and held containers (D146-D148)
 
 Three layers cooperate to turn a RAM object into a command the story will actually accept. Each was
 found broken for non-standard items -- the Enchanter family's spells -- and each is fixed by the same
 rule: a word may only be submitted if the story file itself contains it.
 
+<a id="ar-s073" data-chapter-id="ar-s073"></a>
 ### The dictionary as the single arbiter
 
 `ZRamReader.hasDictionaryWord(mem, word)` is the primitive. It reads `parseDictionary(mem).words`, a
@@ -2207,6 +2647,7 @@ unverifiable word is never treated as verified.
     object's own name)         this story really has)
 ```
 
+<a id="ar-s074" data-chapter-id="ar-s074"></a>
 ### Instrumental verbs
 
 `Actionable.INSTRUMENTALS` is an ordered list of `{verb, label, build(a, b)}`. `build` carries the
@@ -2227,6 +2668,7 @@ Anchorhead, and Enchanter answers `use book with me` with `I don't know the word
 Both nouns passed to `build` come from `disambiguatedNoun`, since with three spells held
 `cast spell at spell` names nothing.
 
+<a id="ar-s075" data-chapter-id="ar-s075"></a>
 ### Qualifiers from the printed name
 
 `disambiguatedNoun` previously drew qualifiers only from mined aliases. It may now also use a token of
@@ -2237,6 +2679,7 @@ D142's structural vocabulary mining. A rival's printed name tokens are added to 
 alongside its mined words, because two objects both named `... spell` are not separated by `spell`
 whichever list supplied it.
 
+<a id="ar-s076" data-chapter-id="ar-s076"></a>
 ### Descending into a held container whose bits do not decode
 
 `canSeeInside(attrs)` requires `container && (open || transparent)`, or `supporter`. Those are
@@ -2260,6 +2703,7 @@ A first attempt relaxed on `attrInsideTrusted` alone, which would have spilled e
 in every ZIL game. `harness/d31-nested-inventory.js` failed 2 of 60 and the gate was narrowed rather
 than the test weakened.
 
+<a id="ar-s077" data-chapter-id="ar-s077"></a>
 ### Marks versus commands (D146)
 
 `headNounOf` requires confirmed vocabulary, which is correct for building a command and wrong for
@@ -2274,12 +2718,14 @@ Enchanter scope 2 -> 6 objects, ambiguous commands 1 -> 0. Spellbreaker's five i
 ambiguous, correctly -- they are indistinguishable until the player labels them, which is the puzzle.
 
 
+<a id="ar-s078" data-chapter-id="ar-s078"></a><a id="ar-ch60"></a>
 ## 60. Character tracker (D149)
 
 `js/StatTracker.js` reports the stats a module actually tracks and nothing else. Every number it shows
 was verified against the game's own evidence first; an unverifiable stat has no row, which is D24's
 honest absence applied to the HUD. No per-title branching.
 
+<a id="ar-s079" data-chapter-id="ar-s079"></a>
 ### Source precedence
 
 ```
@@ -2292,6 +2738,7 @@ honest absence applied to the HUD. No per-title branching.
 
 A stat printed by the game outranks a seeded or promoted slot and is never overwritten by one.
 
+<a id="ar-s080" data-chapter-id="ar-s080"></a>
 ### Why globals are a candidate and not a source
 
 The Inform library often uses the v3 slots (Advent `G1`=score, `G2`=moves; Balances the same), but
@@ -2301,6 +2748,7 @@ samples: at turn one a scoreless game has dozens of zero globals and any of them
 0. A slot that later disagrees with the text is demoted. Same shape as D73's AttrCalibrator and D134's
 ExitCalibrator.
 
+<a id="ar-s081" data-chapter-id="ar-s081"></a>
 ### The v3 seeding path
 
 A v3 status line is drawn by the interpreter from globals 0/1/2, so the layout is the standard. But every
@@ -2309,6 +2757,7 @@ from behaviour instead: slot 2 is a turn counter only once it has risen by 1..8 
 never fallen. Confirming that confirms the pairing too, since the same clause places the score in slot 1.
 Planetfall fails this and registers nothing, which is the correct outcome.
 
+<a id="ar-s082" data-chapter-id="ar-s082"></a>
 ### Deaths
 
 No module exposes a counter. Every ending in both libraries prints a `*** ... ***` banner, so the banner
@@ -2318,6 +2767,7 @@ that arrived since the last look is scanned, and each banner is keyed by text pl
 the scrollback is not re-counted. Zork 1's death cost 10 points, so a score decrease emits `score-down`
 and never the rising cue; if a death and a score change land together the death cue wins.
 
+<a id="ar-s083" data-chapter-id="ar-s083"></a>
 ### Audio
 
 The app had no audio of any kind. Both cues are WebAudio oscillators -- a rising 659->880 Hz triangle for
@@ -2326,6 +2776,7 @@ a score gain, a 220->110 Hz sine fall for a death -- because a bundled asset wou
 that let D120's `tutorial.html` ship missing. The context is created lazily so it is born inside a real
 user gesture, and cues are skipped while the tab is hidden.
 
+<a id="ar-s084" data-chapter-id="ar-s084"></a>
 ### Relevance gating, generalised
 
 `#pl-stats` hides its whole block at zero confirmed stats, and `EquipmentUI.categoryCounts` hides the
@@ -2334,6 +2785,7 @@ category that appears later returns already enabled and nothing is filtered by a
 `Spells` category and D147's `Cast` launcher share one gate: `cast` present in this story's own
 dictionary.
 
+<a id="ar-s085" data-chapter-id="ar-s085"></a>
 ### Custom status windows
 
 Every one is the ordinary Glk grid window with game-authored contents (Slavers: HIT POINTS + a `Paths:`
@@ -2344,3 +2796,47 @@ window is never written to: the VM owns those cells, which is the cause of D137.
 
 Verified: `harness/stat-tracker.js` 68/68, `tools/stat-tracker-live.js` 12/12 against Deadline, wump2ka,
 Slavers, LDoDoom, Zork 1 and Anchorhead.
+
+<a id="ar-s086" data-chapter-id="ar-s086"></a><a id="ar-ch61"></a>
+## 61. Compiled attribute declarations and audit corrections (D186)
+
+Implemented in source, 2026-09-27. Contract and evidence:
+[D186](PRODUCTION_PLAN.md#pl-d186). Amendments to sections 22/27/28/60 are scoped
+to first-query schema resolution, inspect-only commands and stats lifecycle.
+
+The first-use capability path is now:
+compiled Inform identifier/attribute-name tables ->
+ZRamReader.informAttributeNames(mem) -> AttributeSchema.bitFor/applyTo ->
+takeable derivation -> existing observed overrides -> ActionSynth -> existing
+actionable/radial consumers. No command is executed to populate this path.
+Compiler declaration names are metadata, not mined room prose or object-name
+guesses. In Wumpus five custom attributes precede the library declarations,
+which invalidates the fixed bit positions without invalidating the declarations.
+
+The extractor follows the bounded end of the object-property area, the class
+list terminator, the identifier count and the compiler's 48-entry attribute
+array. Packed strings must terminate within bounds; declared names must be
+valid and unique, with a complete action-relevant library subset. A WeakMap
+caches immutable declarations per memory instance. Failure returns null and
+preserves the existing profile/learners. Z4/Z5/Z8 Inform only; no Glulx/ZIL
+reinterpretation. Learned overrides retain their current priority. The ordinary
+Anchorhead/905 profiles match exactly; LostPig supplies another shifted profile.
+
+This corrects the older wording that the canteen was fully fixed by observing
+one TAKE: that repaired subsequent queries, not the first query. The canteen
+and Glow Bar now expose their declared actions before any observed item command.
+Arbitrary custom-handler acceptance remains state-dependent; this is not a
+general symbolic execution engine or a guarantee that every offered verb succeeds.
+
+Related audit corrections: examineOnly goes through the shared inspect policy;
+StatTracker.blank includes carry pins; carry candidate ties fail closed and
+unchanged observations do not accumulate evidence; load/resync drop provisional
+correlations but retain uniquely evidenced pins. Resync also discards queued
+events/pending deltas, seeds the transcript watermark and cancels deferred
+diagnose. Existing UndoRestoreSync ordering is unchanged. The desktop launcher
+binds a stable origin on port 49371, reporting a conflict rather than silently
+moving saves/settings to another browser origin.
+
+Verification scope and counts are recorded in D186, including first-query
+desktop/mobile browser checks with empty action traces. Native Android and
+packaged launcher relaunch are not claimed verified; web cache v71, no package rebuilt here.

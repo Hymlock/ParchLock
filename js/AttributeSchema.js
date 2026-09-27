@@ -96,18 +96,26 @@ var AttributeSchema = {
     _wrapped: false,
     MISS_THRESHOLD: 3,
 
-    bitFor: function (flagName) {
+    bitFor: function (flagName, mem) {
         if (!flagName || !Object.prototype.hasOwnProperty.call(AttributeSchema.PROFILE, flagName)) return null;
+        try {
+            mem = mem || AttributeSchema._getMem();
+            var declared = typeof ZRamReader !== "undefined" && ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem);
+            if (declared) {
+                var name = flagName === "wearable" ? "clothing" : flagName === "isOpen" ? "open" : flagName;
+                return Object.prototype.hasOwnProperty.call(declared.bits, name) ? declared.bits[name] : null;
+            }
+        } catch (e) {}
         var n = AttributeSchema.PROFILE[flagName];
         return typeof n === "number" ? n : null;
     },
 
-    applyTo: function (attrs, obj) {
+    applyTo: function (attrs, obj, mem) {
         attrs = attrs || {};
         var keys = Object.keys(AttributeSchema.PROFILE);
         for (var i = 0; i < keys.length; i++) {
             var flag = keys[i];
-            var bit = AttributeSchema.bitFor(flag);
+            var bit = AttributeSchema.bitFor(flag, mem);
             if (bit === null) continue;
             if (typeof ZRamReader !== "undefined" && typeof ZRamReader.attr === "function") {
                 attrs[flag] = ZRamReader.attr(obj, bit);

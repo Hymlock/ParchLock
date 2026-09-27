@@ -385,8 +385,10 @@ var Actionable = {
             });
             if (hit && hit.examineOnly) {
                 var noun = Actionable.commandNounFor(hit) || hit.name;
-                if (!noun) return [];
-                return [{ verb: "examine", command: "examine " + noun, confidence: 0.9 }];
+                if (!noun || typeof ActionSynth === "undefined" || ActionSynth.inspectVerbDisabled()) return [];
+                var inspect = ActionSynth.defaultInspectVerb();
+                if (!inspect) return [];
+                return [{ verb: inspect, command: inspect + " " + noun, confidence: 0.9 }];
             }
         } catch (eEx) {}
         try {

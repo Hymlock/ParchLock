@@ -555,5 +555,57 @@ assert(pm3.globals.score == null && !pm3.stats.score,
 
 
 
+// D186: exercise the real persistence/calibration/lifecycle functions, not source strings.
+{
+    const oldIds = S.carriedIds, oldSum = S.sumIndiv;
+    let ids = [1], quantities = { 98: 7, 100: 7 };
+    S.carriedIds = () => ids;
+    S.sumIndiv = (mem, holders, prop) => quantities[prop] == null ? null : quantities[prop];
+    const m = S.blank();
+    S.pinCarryProp(m, {}, "weight", 7);
+    S.pinCarryProp(m, {}, "weight", 7);
+    assert(m.carry.weight.prop == null, "D186: repeated equal candidates never select the first property");
+    quantities = { 98: 8, 100: 9 };
+    S.pinCarryProp(m, {}, "weight", 9);
+    assert(m.carry.weight.prop === 100, "D186: changed evidence uniquely resolves the carried property");
+    S.save("d186-carry", m);
+    const loaded = S.load("d186-carry");
+    assert(loaded.carry && loaded.carry.weight.prop === 100, "D186: a learned carry pin survives reload");
+    const repeated = S.blank();
+    S.pinCarryProp(repeated, {}, "weight", 9);
+    S.pinCarryProp(repeated, {}, "weight", 9);
+    assert(repeated.carry.weight.prop == null, "D186: unchanged single-item evidence does not accumulate confirmations");
+    S._model = loaded; S._key = null;
+    S._events = [{ type: "score-up", delta: 5 }];
+    S._pendingDelta = 5;
+    S._pendingDeltaText = "old timeline";
+    loaded.scoreCandidates = [7, 9]; loaded.scoreDeltaEvents = 2;
+    S.Resync();
+    assert(S._events.length === 0 && !S._pendingDelta && !S._pendingDeltaText,
+        "D186: restore discards queued cues and delta from the abandoned timeline");
+    assert(!loaded.scoreCandidates && !loaded.scoreDeltaEvents,
+        "D186: restore discards provisional score correlation while keeping learned pins");
+    assert(loaded.carry && loaded.carry.weight.prop === 100, "D186: restore retains the confirmed carry property");
+    S.carriedIds = oldIds; S.sumIndiv = oldSum;
+}
+{
+    const vm = require("vm"), context = { console };
+    vm.createContext(context);
+    vm.runInContext(fs.readFileSync(path.resolve(__dirname, "../js/Actionable.js"), "utf8"), context);
+    const A = context.Actionable;
+    A.payloadPool = () => [{ id: 1, name: "pellets", examineOnly: true }];
+    A.commandNounFor = () => "pellets";
+    context.ActionSynth = { inspectVerbDisabled: () => true, defaultInspectVerb: () => "examine" };
+    assert(A.resolveObjectCommands(1, "room").length === 0,
+        "D186: promoted unnamed objects respect a disabled inspect verb");
+    context.ActionSynth.inspectVerbDisabled = () => false;
+    context.ActionSynth.defaultInspectVerb = () => "look at";
+    assert(A.resolveObjectCommands(1, "room")[0].command === "look at pellets",
+        "D186: promoted objects preserve the established multiword inspect form");
+    context.ActionSynth.defaultInspectVerb = () => "examine";
+    assert(A.resolveObjectCommands(1, "room")[0].command === "examine pellets",
+        "D186: ordinary examine-only behavior remains unchanged");
+}
+
 console.log(`${pass} PASS / ${fail} FAIL`);
 process.exit(fail ? 1 : 0);
