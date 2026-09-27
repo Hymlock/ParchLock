@@ -953,8 +953,10 @@ var StatTracker = {
             if (v !== stat.value) {
                 var delta = v - stat.value;
                 stat.value = v;
-                stat.lastChange = delta;
-                StatTracker.emitChange(model, k, delta);
+                if (stat.confirmed === true) {
+                    stat.lastChange = delta;
+                    StatTracker.emitChange(model, k, delta);
+                }
             }
             stat.confirmed = true;
             if (k === "score") model.scorePinKnown = v;
@@ -1146,13 +1148,15 @@ var StatTracker = {
                 return;
             }
             s.source = "indiv:" + st.prop;
-            s.confirmed = true;
             if (s.value !== total) {
                 var d = total - s.value;
                 s.value = total;
-                s.lastChange = d;
-                StatTracker.emitChange(model, spec[0], d);
+                if (s.confirmed === true) {
+                    s.lastChange = d;
+                    StatTracker.emitChange(model, spec[0], d);
+                }
             }
+            s.confirmed = true;
         });
     },
 
@@ -1196,8 +1200,11 @@ var StatTracker = {
             }
             if (s.value !== value) {
                 var d = value - s.value;
-                s.value = value; s.lastChange = d;
-                StatTracker.emitChange(model, key, d);
+                s.value = value;
+                if (s.confirmed === true) {
+                    s.lastChange = d;
+                    StatTracker.emitChange(model, key, d);
+                }
             }
             s.confirmed = true;
         };

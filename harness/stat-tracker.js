@@ -515,6 +515,28 @@ assert(pm3.globals.score == null && !pm3.stats.score,
     assert(ev4.length === 0,
         `D181: the first reading after a resync emits NOTHING -- no tone, no badge (${JSON.stringify(ev4.map(e=>e.type))})`);
     assert(S.model().stats.score.value === 35, "D181: but the new reading is adopted");
+    assert(!S.model().stats.score.lastChange,
+        "D181: and lastChange is not left set -- Render would badge it");
+}
+
+{
+    S._key = null; S._model = null; S._samples = []; S._events = []; S._turn = 0;
+    for (const k of Object.keys(store)) delete store[k];
+    S.observe(null, "");
+    S.applyScoreReply("You have so far scored 685 out of a possible 1000 points.");
+    const mRam = S.model();
+    mRam.globals.score = 1;
+    S.forgetReadings(mRam);
+    S.takeEvents();
+    const g = new Array(20).fill(0);
+    g[1] = 35;
+    S.readConfirmedGlobals(mRam, g);
+    const evRam = S.takeEvents();
+    assert(evRam.length === 0,
+        `D181: RAM re-derive after forget emits nothing (${JSON.stringify(evRam.map(e=>e.type))})`);
+    assert(mRam.stats.score.value === 35, "D181: RAM adopts 35");
+    assert(!mRam.stats.score.lastChange, "D181: RAM path does not leave lastChange for the badge");
+    assert(mRam.stats.score.confirmed === true, "D181: RAM re-confirms");
 }
 
 // Without an absolute to add to, a delta must NOT invent a total (D24).

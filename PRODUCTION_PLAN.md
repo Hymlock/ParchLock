@@ -4265,3 +4265,39 @@ individual property and re-read from live RAM, and in a simulated handler call
 the player really is still holding the items. A true end-to-end check needs a
 real new game driven through the story's own dialogue, which neither seat has
 managed to script; that remains the open verification.
+
+
+## D183 The badge does not read the event stream
+
+Found by the grok seat auditing D181. The guard I added stopped the EVENT, and
+the badge never depended on the event.
+
+`Render` draws from `stat.lastChange`. D181 suppressed `emitChange` for a stat
+with no previous reading, which silenced the tone -- but every write path still
+assigned `lastChange` first, so the badge rendered anyway. Two consumers, one
+guard, and I only covered the one I was thinking about.
+
+Worse in `readCarryFromRam`, which set `confirmed = true` BEFORE comparing, so
+by the time D181's test ran the stat always looked established. A restore with a
+pinned inventory would have badged "Value -658".
+
+`readConfirmedGlobals` had the same shape from the other side: it emitted while
+still unconfirmed, so the tone was correctly skipped, and still set
+`lastChange`, so the badge showed "-650".
+
+Fixed in all three write paths, identically: assign `lastChange` and emit only
+when the stat was confirmed BEFORE the new number is adopted, then confirm. The
+split D181 chose -- clear `confirmed`, keep `value` -- is unchanged and was not
+the fault; the ordering of confirm against compare was.
+
+Audit conclusions worth keeping:
+
+  - `confirmed === false` as the test for "no previous reading" is accepted as
+    correct for display, and the mid-CONFIRM_SAMPLES silence it also produces is
+    the same rule rather than a restore-only special case
+  - `handlePossibleNewGameAnswer` is the only new-game path that bypasses
+    `resync`; typed RESTART, `@restart`, `restore_file`, module re-entry and the
+    Qol restore inject are all covered elsewhere
+  - one narrow miss left deliberately: if a score moves on the very sighting
+    that confirms the stat, no badge is drawn. Rare, and the alternative is
+    badging a stat the app has not yet decided to trust
