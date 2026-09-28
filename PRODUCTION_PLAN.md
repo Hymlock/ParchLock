@@ -5771,13 +5771,33 @@ decoded tables declare talkable/supporter/clothing they belong in the required
 set; if a meaningful number omit them, the current omission is right.
 
 Measured across all 225 decoded tables: `talkable` 225/225, `supporter` 225/225,
-`clothing` 225/225. Zero tables omit any of the three. The required subset is now
-twelve names. By construction this is a no-op on the present catalog -- re-run
-confirms 225 declaring, 323 PASS / 0 FAIL, alias suite 32 PASS / 0 FAIL -- and
-it makes a stripped table fail loudly instead of quietly under-reporting
-supporters. The tension above is real and is recorded rather than resolved: the
-change can only ever cause a whole-table rejection, and it rests on 271 modules,
-not on the format guaranteeing it.
+`clothing` 225/225. Zero tables omit any of the three.
+
+**Outcome: the three stay OPTIONAL. The required subset remains the original
+nine.** Promoting them was implemented in 7f76a26, sent for audit as the item I
+least trusted, and reverted in the same round on grok's answer. That answer is
+the record, and it is better than my reasoning was:
+
+> bitFor already omits a missing optional flag. That is the right failure for a
+> dialect or a stripped table: keep the declared map you did parse, leave
+> supporter unset. Requiring those three turns a missing name into a WHOLE-TABLE
+> reject and a PROFILE fallback -- the harm D193 just removed for HugeCave.
+> 225/225 on this catalog is not a format guarantee. The next shifted table that
+> declares the original nine and not `clothing` would be thrown away.
+
+So the measurement's value is the opposite of what the plan's rule predicted: it
+is recorded *so nobody has to re-measure in order to leave them optional*. 100%
+coverage of a 271-module catalog is not a property of the format, and the cost of
+being wrong is asymmetric -- a silent per-flag omission on a rare table is
+cheaper than PROFILE overwriting a correctly shifted animate/static/scenery map.
+The reasoning lives at the required-subset check in `js/ZRamReader.js` so the
+next reader does not re-derive it.
+
+The plan's own rule ("if effectively all declare them, they belong in the
+required set") was therefore wrong, and is superseded here. Adding a name to the
+required set is not a way to strengthen validation; it is a way to convert a
+partial success into a total fallback. It must not be used to "fix" praser5 and
+sutwin, the two required-subset failures in the 46.
 
 ### D193 verification gate from the plan, run as specified
 

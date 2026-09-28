@@ -200,16 +200,21 @@ var ZRamReader = {
             }
             // Require the complete action-relevant library contract, not an
             // accidental string run or a stripped/partial symbol table.
-            // D193 item 2: talkable, supporter and clothing were deliberately
-            // left out of this set until somebody measured whether real tables
-            // carry them, because bitFor OMITS rather than mixes -- a table
-            // parsing without `supporter` makes a real supporter read as not
-            // one, silently withholding search and put-on. Measured across all
-            // 225 decoded tables: 225/225 declare all three. So their absence
-            // marks a stripped table rather than a dialect, and rejecting is
-            // correct. This is a no-op on the present catalog by construction.
-            if (!["animate", "static", "scenery", "container", "open", "openable", "on", "switchable", "worn",
-                  "talkable", "supporter", "clothing"].every(function (name) {
+            // D193 item 2, settled: talkable, supporter and clothing stay OUT
+            // of this set, and the measurement is recorded here so nobody has
+            // to re-measure to leave them optional. All 225 decoded tables
+            // declare all three (225/225), which was the plan's own trigger for
+            // promoting them -- and adding them was implemented, audited and
+            // REVERTED on grok's audit of 7f76a26. The reason: bitFor OMITS a
+            // missing optional flag, which is the right failure for a dialect
+            // or a stripped table -- keep the declared map you did parse and
+            // leave supporter unset. REQUIRING them turns one missing name into
+            // a whole-table reject and a PROFILE fallback, which is exactly the
+            // harm D193 removed for HugeCave. 225/225 on this catalog is not a
+            // format guarantee: the next shifted table declaring the nine but
+            // not `clothing` would be thrown away. A silent omit on a rare
+            // table is cheaper than PROFILE overwriting a correct shifted map.
+            if (!["animate", "static", "scenery", "container", "open", "openable", "on", "switchable", "worn"].every(function (name) {
                 return Object.prototype.hasOwnProperty.call(bits, name);
             })) return null;
             result = { bits: bits, address: namesAt, source: "inform-attribute-names" };

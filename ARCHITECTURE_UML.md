@@ -2819,11 +2819,13 @@ list terminator, the identifier count and the compiler's 48-entry attribute
 array. Packed strings must terminate within bounds; declared names must be
 valid, and unique per BIT -- several names may share one bit ([D193](PRODUCTION_PLAN.md#pl-d193)
 aliases), but one name may not claim two bits -- with a complete
-action-relevant library subset. Since D193 that subset is twelve names: animate,
-static, scenery, container, open, openable, on, switchable, worn, and
-talkable/supporter/clothing, the last three added on the measurement that
-225/225 decoded tables declare them, so absence marks a stripped table rather
-than a dialect. A WeakMap
+action-relevant library subset: the nine names animate, static, scenery,
+container, open, openable, on, switchable, worn. `talkable`, `supporter` and
+`clothing` stay OPTIONAL although all 225 decoded tables declare them --
+promoting them was built and reverted under [D193](PRODUCTION_PLAN.md#pl-d193)
+item 2, because requiring a name turns one omission into a whole-table reject
+and a PROFILE fallback, while `bitFor` omitting an unset optional flag preserves
+the shifted map that was parsed correctly. A WeakMap
 caches immutable declarations per memory instance. Failure returns null and
 preserves the existing profile/learners. Z4/Z5/Z8 Inform only; no Glulx/ZIL
 reinterpretation. Learned overrides retain their current priority. The ordinary
