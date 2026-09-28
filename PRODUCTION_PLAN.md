@@ -194,9 +194,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 251 headings; 103 decision rows; 354 registered units.
-**Last registered unit:** `pl-s251`. **Body SHA-256 (LF):**
-`ab244e77a970af37ce77f8a09f9ef395c704b34b11872e530c9786ac00ba9b1b`
+**Local manifest:** 253 headings; 103 decision rows; 356 registered units.
+**Last registered unit:** `pl-s253`. **Body SHA-256 (LF):**
+`8e555d609bc2aeff0a304db7f3c59ac829c05e2a9e30db27d45e985beef9c874`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -630,6 +630,8 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s249](#pl-s249) | Known limit, stated rather than shipped quietly | H3 | Record |
 | [pl-s250](#pl-s250) | D185 examineOnly was a flag with no consumers | H2 | Record |
 | [pl-s251](#pl-s251) | D186 First-query compiled attribute declarations and audit repairs | H2 | Implemented |
+| [pl-s252](#pl-s252) | D188 An injected command is not headless | H2 | Record |
+| [pl-s253](#pl-s253) | D186 Verification follow-up and non-Glulx coverage gaps | H2 | Verified / Partial |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -5361,6 +5363,7 @@ compiled successfully; its GUI relaunch behavior and native Android remain
 operator tests. Web shell cache is v71. No distribution/APK was rebuilt by this audit.
 
 
+<a id="pl-s252" data-chapter-id="pl-s252"></a><a id="pl-d188"></a>
 ## D188 An injected command is not headless
 
 Operator: "In Anchorhead the score probes automatically when you start the game
@@ -5403,3 +5406,91 @@ The honest consequence, stated rather than buried: on a story whose status row
 carries no score, the row stays absent until the globals path identifies the
 slot from an observed change, or the player presses Identify stats. That is
 D24's honest absence, and it is what the operator asked for.
+
+<a id="pl-s253" data-chapter-id="pl-s253"></a>
+## D186 Verification follow-up and non-Glulx coverage gaps
+
+2026-09-27, Codex; Claude bus850 requested actual attribute-level comparisons,
+not highlight counts. This follow-up closes those requested verification gaps
+and records the separate findings from the operator's expanded catalog sweep.
+No product code was changed during this verification pass.
+
+`node harness/attr-calibrator-phase-cd.js --catalog`: 323 assertions pass.
+All 298 non-Glulx catalog files are included (264 raw Z-code wrappers and 34
+ZBlorb wrappers, with the ZCOD chunk decoded). Of these, 271 are Inform and 27
+keep the non-Inform fallback. Every attribute on all 56,974 Inform objects is
+compared against the old profile, including off-screen objects and unvisited
+rooms. 205 modules expose a validated table; 44 modules have 8,589 changed
+objects. Each changed flag is enumerated with object ID, raw attribute bytes,
+old and declared bit positions, and the reason (declared flag, absent declaration,
+or takeable derived from static/scenery). Direct byte masks independently check
+the decoded values. This proves table consumption, not arbitrary handler success.
+
+`node harness/attr-calibrator-phase-cd.js --live`: 35 assertions pass. Every
+scoped object/player/room is compared at each sampled state. Anchorhead covers
+four rooms, has zero attribute differences and preserves unnamed inventory
+holder20 and its possessions. 905 covers three rooms with zero differences,
+preserves the real (thief) player and the initial clothing/watch inventory.
+LostPig covers three actual rooms after solving its opening listen/direction
+gate; its differences are explicitly explained by six custom declarations
+preceding the library attributes. Initial attempts that merely tried blocked
+directions failed the coverage assertion and were corrected, not counted.
+`tools/inventory-recovery-live.js`: 6/6, including empty-handed Zork1.
+
+The partial-table regression removes only switchable, leaving the other names
+valid: the entire table is rejected and EVERY bitFor uses the old profile.
+No half-declared/half-standard map is installed. Optional absent flags in a
+validated table remain absent; they do not borrow a standard position.
+
+Expanded startup smoke: `--breadth=298` visits all 298 modules, with zero caught
+browser exceptions. This is NOT a full gameplay/mapping pass: 218 early snapshots
+had no settled mapped room, and eight had no line prompt (including native
+opening menus). Neither count is labelled an application defect. Multi-room
+correctness is claimed only for the deeper checks above. Native Android,
+save/restore, voice and complete puzzle progression across the catalog remain
+outside this smoke run. Concurrent D187/D188 work was preserved, not audited as
+part of the fixed attribute-table contract.
+
+Confirmed missing support: 20 of the 66 fallback Inform modules declare valid
+attribute aliases such as door/nolook, female/absent, clothing/npc_hidden or
+animate/villain. Inform symbols.c writes these slash-separated names explicitly;
+D186's single-identifier validation rejects them. This is a conservative false
+negative, especially relevant to shifted layouts such as HugeCave. An isolated
+proposed reader that splits and validates each alias recovers all 20, with no
+product-file edit. The fix must reject a name reused at different bit positions,
+retain all-or-nothing table validation and preserve the independent providers.
+Sent to Grok (live ZRamReader owner) and Claude; implementation pending handoff.
+The other 46 fallback modules have older/unsupported table shapes, unsupported
+versions, or incomplete library subsets. They need separately evidenced decoders,
+not relaxed bounds or guessed offsets. General custom-handler predicates remain
+an independent missing capability; a grammar word or bit does not prove success
+in every room/state. The existing D188 no-unasked-command contract still applies.
+
+**Explicit remaining 46-module inventory (audit snapshot 2026-09-27):**
+These are gaps in the new declaration decoder, NOT a statement that the games
+cannot run. Existing fallback behavior remains. The categories identify the
+first rejected structural check, not a proven root cause or permission to
+relax that check. The isolated alias-only proposal left all 46 unchanged;
+later structural work may reveal additional aliases behind earlier failures.
+
+- Packed attribute-name decoding rejected (5): `Adventureland.z5.js`,
+  `break-in.z5.js`, `I-0.z5.js`, `karn.z5.js`, `lost.z5.js`.
+- Identifier count/table-boundary check rejected (22): `b2demo.z5.js`,
+  `bedlam.z5.js`, `booth.z5.js`, `cheater.z5.js`, `Enemies.z8.js`,
+  `frozen.z5.js`, `godot.z5.js`, `Gumshoe.z5.js`, `library.z5.js`,
+  `lists.z5.js`, `mhpquest.z5.js`, `mindelec.z5.js`, `night.z5.js`,
+  `paperchase.z5.js`, `phlegm.z5.js`, `SoFar.z8.js`, `tatctae.z8.js`,
+  `tk1.z5.js`, `tube.z5.js`, `vindaloo.z5.js`, `weather.z5.js`, `wedding.z5.js`.
+- Object-property ordering check rejected (14): `bse.z5.js`, `claw.z5.js`,
+  `curses.z5.js`, `heist.z8.js`, `inhumane.z5.js`, `Jigsaw.z8.js`,
+  `magic-toyshop.z5.js`, `minster.z5.js`, `ninepts.z5.js`, `piece_v3.z5.js`,
+  `Slackerx.z5.js`, `spirit.z5.js`, `theatre.z5.js`, `windhal1.z8.js`.
+- Inform Z3, outside this reader's Z4/Z5/Z8 gate (3): `catseye.z3.js`,
+  `gussdeath.z3.js`, `moonglow.z3.js`.
+- Required library-attribute subset unavailable (2): `praser5.z5.js`,
+  `sutwin.z5.js`.
+
+Detailed generated evidence is in tools/screenshots/matrix/d186-attribute-catalog.json
+(including reader source hashes), d186-attribute-live.json, d186-module-breadth.json,
+d186-fallback-reasons.json and d186-alias-proposal.json. These are internal audit
+artifacts, not distribution content. See architecture section62 for the contract.

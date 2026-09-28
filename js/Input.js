@@ -31,7 +31,10 @@ var Input = {
 
     Inject: (text, hitEnter) => {
         try { if (typeof MapTopology !== "undefined") MapTopology.noteCommand(arguments[0]); } catch (e) {}
-        if (!$(".Input.LineInput:visible").length || (hitEnter && (Message.IsOpen || $("#dialog").length))) return false;
+        if (!$(".Input.LineInput").length || (hitEnter && (Message.IsOpen || $("#dialog").length))) return false;
+        if (!$(".Input.LineInput:visible").length
+            && !(typeof StatTracker !== "undefined" && StatTracker._hideCarryProbe)
+            && !(document.body && document.body.classList.contains("equip-open"))) return false;
         $(".Input.LineInput").val($(".Input.LineInput").val() + text);
         if (hitEnter) {
 

@@ -780,13 +780,13 @@ var EquipmentUI = {
     Show: function () {
         document.body.classList.remove("map-open");
         document.body.classList.add("equip-open");
-        // D188: the sheet does NOT ask the story for stats. D177 did, and an
-        // injected SCORE command is not headless: it prints into the
-        // transcript and the buffer churn destroys the room's underlines
-        // (operator, Anchorhead). StatTracker's globals path already reports
-        // the score without asking; the Identify stats button stays as the
-        // explicit opt-in for a player who wants the maximum and rank.
         EquipmentUI.Render();
+        try {
+            if (typeof StatTracker !== "undefined" && StatTracker.requestCarryBootstrap) {
+                StatTracker._carryBootstrapAt = 0;
+                StatTracker.requestCarryBootstrap();
+            }
+        } catch (eBoot) {}
     },
 
     Hide: function () {
@@ -826,7 +826,12 @@ var EquipmentUI = {
         });
 
         var refresh = document.getElementById("equipment-refresh");
-        if (refresh) refresh.addEventListener("click", function () { if (typeof Actionable !== "undefined") Actionable.Submit("inventory"); });
+        if (refresh) refresh.addEventListener("click", function () {
+            if (typeof StatTracker !== "undefined" && StatTracker.requestCarryBootstrap) {
+                StatTracker._carryBootstrapAt = 0;
+                StatTracker.requestCarryBootstrap();
+            } else if (typeof Actionable !== "undefined") Actionable.Submit("inventory");
+        });
 
         var close = document.getElementById("equipment-close");
         if (close) close.addEventListener("click", function () { EquipmentUI.Hide(); });

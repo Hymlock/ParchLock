@@ -194,9 +194,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 86 headings; 0 decision rows; 86 registered units.
-**Last registered unit:** `ar-s086`. **Body SHA-256 (LF):**
-`ea3d1ae7a48a130986b07d5bed1813522405673855dcea2ec9c453958ec9d7ac`
+**Local manifest:** 87 headings; 0 decision rows; 87 registered units.
+**Last registered unit:** `ar-s087`. **Body SHA-256 (LF):**
+`df2d9ff96672b6b0e62364883b3cadb3f52a20697dcd892a890dcedfeeec1102`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -362,6 +362,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s084](#ar-s084) | Relevance gating, generalised | H3 | Record |
 | [ar-s085](#ar-s085) | Custom status windows | H3 | Record |
 | [ar-s086](#ar-s086) | 61. Compiled attribute declarations and audit corrections (D186) | H2 | Implemented |
+| [ar-s087](#ar-s087) | 62. Attribute audit coverage and remaining decoder gaps | H2 | Verified / Partial |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -2840,3 +2841,32 @@ moving saves/settings to another browser origin.
 Verification scope and counts are recorded in D186, including first-query
 desktop/mobile browser checks with empty action traces. Native Android and
 packaged launcher relaunch are not claimed verified; web cache v71, no package rebuilt here.
+
+<a id="ar-s087" data-chapter-id="ar-s087"></a><a id="ar-ch62"></a>
+## 62. Attribute audit coverage and remaining decoder gaps
+
+2026-09-27 verification follow-up to section61 and Claude bus850. Full results,
+commands and limits: [production audit](PRODUCTION_PLAN.md#pl-s253).
+The catalog test compares all 56,974 objects in 271 Inform modules, including
+ZCOD payloads in Blorb, and preserves the null-declaration path for 27 others.
+44 modules differ from the assumed standard map; differences are explicitly
+recorded per flag, not inferred from unchanged highlight counts. Live scope
+comparison covers four Anchorhead rooms, three 905 rooms and three LostPig
+rooms. Anchorhead/905 have exact parity and retain their fragile inventory roots.
+The missing-required-flag fixture proves table rejection is all-or-nothing.
+
+The broader 298-module browser run verifies startup only, not all game states:
+zero caught browser exceptions; early empty map readings and native menus are
+coverage limitations, not automatic failures. Existing providers and opcode
+learners remain parallel mechanisms. D188 prohibits unasked gameplay commands
+as a substitute for headless observation.
+
+Pending decoder extension: accept the compiler's slash-separated attribute
+aliases as multiple names for ONE bit; validate every identifier and reject
+cross-bit duplicate names before publishing any map. Inform symbols.c's
+write_the_identifier_names supplies this format. An isolated candidate decoded
+20 additional modules rejected by D186's single-name regex. The product reader
+is not changed by this audit; Grok owns that file and has the finding. Forty-six
+other fallback modules still need version/layout-specific structural evidence.
+Do not merge this work with heuristic action guessing or remove existing fallback
+providers. Full state-dependent action-handler interpretation remains separate.

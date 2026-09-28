@@ -1223,7 +1223,7 @@ var StatTracker = {
             // presented as live. The source is corrected too, so the row stops
             // claiming to come from RAM while it does not.
             if (String(s.source || "").indexOf("indiv:") === 0) {
-                if (!s.ramStale) return;
+                if (!s.ramStale && !model.preferInventoryText) return;
                 s.source = "inventory-text";
             }
             if (s.value !== value) {
@@ -1235,16 +1235,28 @@ var StatTracker = {
                 }
             }
             s.confirmed = true;
+            s.ramStale = false;
         };
-
-        if (v) set("value", "Value", parseInt(v[2], 10), "money", { symbol: v[1] || "$" });
-        if (w) set("weight", "Carried", parseInt(w[1], 10), "weight", { uom: w[2] || "lbs" });
-        if (c) set("capacity", "Capacity", parseInt(c[1], 10), "percent");
 
         if (mem) {
             if (v) StatTracker.pinCarryProp(model, mem, "value", parseInt(v[2], 10));
             if (w) StatTracker.pinCarryProp(model, mem, "weight", parseInt(w[1], 10));
         }
+        // D189 (grok/codex audit, both accepting): the game PRINTING
+        // "It's all worth about $N" is itself the evidence. Gating the display
+        // on `valuePinned || preferInventoryText` meant a player who simply
+        // typed INVENTORY got nothing -- preferInventoryText is only set by the
+        // app's own bootstrap -- so the first carrying line was read, used to
+        // narrow the property candidates, and then thrown away. Measured: the
+        // row stayed absent, or froze at an earlier figure, until a later pin.
+        //
+        // Weight and capacity on the very next lines were never gated this way,
+        // so value was the odd one out rather than the careful one. The pin is
+        // unaffected: pinCarryProp above still requires a unique candidate, and
+        // readCarryFromRam still overrides this with RAM once a slot is pinned.
+        if (v) set("value", "Value", parseInt(v[2], 10), "money", { symbol: v[1] || "$" });
+        if (w) set("weight", "Carried", parseInt(w[1], 10), "weight", { uom: w[2] || "lbs" });
+        if (c) set("capacity", "Capacity", parseInt(c[1], 10), "percent");
         return got;
     },
 
@@ -1432,9 +1444,26 @@ var StatTracker = {
                 StatTracker.consumeProbeReply(fresh);
                 // D169: the carried-value bootstrap needs BOTH the text the
                 // game just printed and live RAM, which only meet here.
-                if (StatTracker.observeCarryText(StatTracker.model(), fresh, mem)
-                    && StatTracker._key) {
+                var carryHit = StatTracker.observeCarryText(StatTracker.model(), fresh, mem);
+                if (carryHit && StatTracker._key) {
                     StatTracker.save(StatTracker._key, StatTracker.model());
+                }
+                if (StatTracker._carryProbeTurnCheck) {
+                    StatTracker._carryProbeTurnCheck = false;
+                    StatTracker.model().preferInventoryText = false;
+                    if (!carryHit) StatTracker._carryProbeUseless = true;
+                    var after = StatTracker.model().stats.turns;
+                    var before = StatTracker._carryTurnsBefore;
+                    if (!StatTracker._carryTurnWarned && after && before != null
+                        && typeof after.value === "number" && after.value > before) {
+                        StatTracker._carryTurnWarned = true;
+                        try {
+                            if (typeof Message !== "undefined" && Message.Show) {
+                                Message.Show("Inventory check",
+                                    "Each time you open Equipment, the story checks your pack. In this game that uses a turn.");
+                            }
+                        } catch (eMsg) {}
+                    }
                 }
             } catch (e) {}
         }
@@ -1472,6 +1501,46 @@ var StatTracker = {
     // would answer it -- so refuse that text even if the sheet is open.
     // Identify() submits a line command, so CharInput is not enough.
     _autoIdentified: {},
+    _carryBootstrapAt: 0,
+    _hideCarryProbe: false,
+    _carryProbeTurnCheck: false,
+    _carryTurnsBefore: null,
+    _carryTurnWarned: false,
+    _carryProbeUseless: false,
+    requestCarryBootstrap: function () {
+        try {
+            var now = Date.now();
+            if (StatTracker._carryProbeUseless) return;
+            if (now - (StatTracker._carryBootstrapAt || 0) < 800) return;
+            if (typeof document === "undefined") return;
+            var buf = "";
+            try {
+                var el = document.querySelector(".BufferWindow");
+                buf = el ? String(el.innerText || el.textContent || "") : "";
+            } catch (eBuf) {}
+            if (/would you like to restore a saved game/i.test(buf.slice(-1200))) return;
+            if (!document.querySelector(".Input.LineInput")) return;
+            if (StatTracker._probePending) return;
+            var verb = "inventory";
+            if (typeof Actionable === "undefined" || !Actionable.Submit) return;
+            if (Actionable.isGameWord && !Actionable.isGameWord("inventory")) {
+                if (Actionable.isGameWord("i")) verb = "i";
+                else return;
+            }
+            var model = StatTracker.model();
+            model.preferInventoryText = true;
+            ["value", "weight", "capacity"].forEach(function (k) {
+                if (model.stats[k]) model.stats[k].ramStale = true;
+            });
+            StatTracker._carryTurnsBefore = (model.stats.turns && typeof model.stats.turns.value === "number")
+                ? model.stats.turns.value : null;
+            StatTracker._hideCarryProbe = true;
+            StatTracker._carryBootstrapAt = now;
+            setTimeout(function () {
+                try { Actionable.Submit(verb); } catch (eS) {}
+            }, 0);
+        } catch (e) {}
+    },
     autoIdentify: function () {
         try {
             var key = StatTracker._key;

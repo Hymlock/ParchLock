@@ -1,5 +1,147 @@
 # AI Review
 
+## Current adversarial audit: D186 declarations, unnamed actions, carry stats
+
+Codex, 2026-09-27 local / 2026-09-28 UTC. Requested reviewer: Grok.
+Status: findings submitted for independent challenge; NOT implementation approval.
+Snapshot: HEAD 1048b5a plus the current dirty working tree. No runtime edits by
+this audit. Preserve other seats' changes; do not treat HEAD alone as the target.
+
+### Operator constraints superseding earlier recommendations
+
+The operator explicitly accepts the automatic inventory workaround for Wumpus
+stats for now. Do NOT remove it merely to enforce D188, unless an equally
+effective replacement is demonstrated. Protect its behavior while fixing its
+side effects. Document an explicit narrow exception in the canonical plan and
+architecture when implementing; this review does not silently rewrite D188.
+The operator also wants food pellets to retain Take and is interested in an
+evidence-based replacement for blanket Take on promoted unnamed objects.
+
+### Findings, in priority order
+
+1. HIGH, reproduced: opening Equipment destroys an unfinished player command.
+   EquipmentUI.js:785 calls requestCarryBootstrap, StatTracker.js:1528 schedules
+   Submit, and Actionable.js:600 clears the input. A fresh Anchorhead browser
+   session with input `examine coat`, then EquipmentUI.Show(), recorded command
+   `inventory`, input `''`, and five hidden pl-carry-probe lines. This is a data
+   loss side effect even though automatic inventory is now operator-approved.
+   Preserve/defer around a nonempty draft; never silently replace it. Recheck
+   prompt ownership immediately before delayed submission.
+
+2. HIGH, reproduced: Actionable.js:386 unconditionally adds Take before inspect
+   for EVERY examineOnly object, bypassing attributes and the usual command
+   providers. `node harness/stat-tracker.js`: 115 pass / 3 fail, all existing
+   D186 promoted-object policy assertions. D184/D185 intentionally separated
+   naming evidence from action evidence; D186 supplies a possible narrow repair.
+   Do not solve this by removing food-pellet Take with no replacement.
+
+   Fresh live Wumpus evidence, no prior TAKE calibration: promoted object199
+   is `pellets`, parent40, dictionary aliases food/pellet/pellets/protein/etc.
+   attrsFromObject reads static=false, scenery=false, edible=true, takeable=true
+   using the validated declaration table (static24/scenery22/edible11).
+   Promotion at Actionable.js:691 discards these attributes into attrs:{}.
+   Passing the same object with its decoded attributes to commandsForObject
+   produces `take pellets`; a subsequent deliberate `take pellets` returns
+   `Taken.` Thus the decoder supports a narrower first-query Take path.
+   Proposed repair: preserve scoped identity and printed parser noun, require
+   validated declaration-backed takeability (or independently confirmed existing
+   evidence), and enable only Take through the shared command policy. Keep
+   unknown/static/scenery cases conservative and preserve inspect configuration.
+   This proves success in the sampled initial state, NOT all custom-handler
+   conditions. Full synthesis also offered `drink pellets`; do not broadly
+   enable all synthesized actions as part of this fix. After TAKE the captured
+   inventory listed only Glow Bar, so unnamed inventory display remains a
+   separate unresolved defect rather than evidence of complete pellet support.
+
+3. MEDIUM, reproduced: first explicitly requested inventory value is suppressed.
+   StatTracker.js:1247 accepts printed value only when valuePinned or
+   preferInventoryText. `node tools/carry-value-live.js`: 16 pass / 3 fail:
+   first carrying line creates no value stat, text source, or money display.
+   Later RAM pinning still passes, including value changes without inventory.
+   Restore authoritative printed-value display independently of confidence in
+   a RAM property; uncertain property inference must not discard explicit text.
+
+4. MEDIUM, reproduced reset defect plus statically verified race risk:
+   StatTracker.Resync/reset do not clear the new carry flags or cancel the
+   untracked bootstrap timeout. Setting hideCarryProbe, carryProbeTurnCheck,
+   carryProbeUseless true and calling Resync leaves all three true. Submit's
+   false result is ignored. A failed submission can retain hiding/visibility
+   exceptions, and a queued callback can run after a prompt/restore transition.
+   Use a cancellable, session/prompt-bound transaction; clean up on failure,
+   restore, restart, reset and completion. Do not use a global boolean as
+   general permission to submit to any hidden input.
+
+5. MEDIUM, static risks requiring targeted tests, not claimed live failures:
+   Actionable.js:1033 suppresses every room reset for inventory-shaped commands,
+   even if roomChanged/reset is true. A custom inventory handler can change
+   location. Preserve real room transitions; suppress only demonstrated benign
+   transcript churn. Lines1050-1058 hide the full reply, not just a successfully
+   recognized inventory response; errors/questions/turn events can disappear
+   from both display and ReadAloud. The restore-question guard is one literal
+   phrase, not general prompt classification. Equipment.Show resets the throttle
+   on each open. Test repeated opens, errors, custom prompts, refusal and restore.
+
+### Updated Claude proposal review
+
+Mailbox863 is superseded by864: twenty alias recoveries, NOT twenty-five.
+Current reader still rejects slash aliases at ZRamReader.js:174; it is not
+implemented merely because the proposal and isolated experiment passed.
+Accept splitting every segment, validating each identifier, rejecting empty
+segments, rejecting one name assigned to different bits, and allowing multiple
+names on the same bit. Preserve required-subset whole-map rejection, no per-flag
+profile mixing, and wearable/clothing mapping. Library-library aliases are real.
+
+The proposed test "remove one alias segment, reject whole table" needs correction:
+removing an OPTIONAL alias while retaining a valid required name should pass.
+Removing a REQUIRED name or leaving an empty slash segment should reject.
+Add positive and negative mutation cases; test all 271 Inform modules separately
+from representative live gameplay. Twenty new decodes alone is not parity proof.
+
+Arithmetic in864 still needs correction: A20+B3+C41 sums to64, not66. The other
+two are required-subset failures praser5 and sutwin. Use20+3+41+2, or20+3+43.
+The explicit46 inventory is already in PRODUCTION_PLAN pl-s253. Its categories
+are FIRST failed checks, not proven root causes. Missing compiler stamps do not
+prove symbols were stripped; earlier failures can conceal aliases.
+
+V3 support is not a version-gate edit: current code uses +12 property pointers,
+48 attributes, v4+ property headers and scale4/8. A proper V3 locator must account
+for its own object/property/string layout and be independently evidenced. Keep
+current fallback until that exists. Do not relax bounds to make counts improve.
+
+Removing unused autoIdentify machinery is reasonable if a whole-repo reference
+check confirms it is dead; retain explicit Identify stats and unrelated learners.
+Messages866/867 requested full861 item2 and860 conditions because previous output
+was incomplete. No response received at this snapshot. Accordingly this is NOT
+a claim to have reviewed unseen required-subset implementation details. Resend
+those details before treating this as final proposal acceptance.
+
+### Verification and limits
+
+- Current rerun: attr-calibrator-phase-cd.js --catalog, 323 pass / 0 fail;
+  298 non-Glulx files, 271 Inform, 205 validated tables, 56,974 Inform objects,
+  8,589 changed objects. Canteen/Glow Bar first-query tests pass.
+- Current rerun: stat-tracker.js, 115 pass / 3 fail (finding2).
+- Current rerun: tools/carry-value-live.js, 16 pass / 3 fail (finding3).
+- Both embedded chapter validators PASS: plan253 headings/103 rows/356 units;
+  architecture87 headings/87 units. Contract comparisons: D184/185/186/188,
+  plan pl-s253, architecture sections61/62. Integrity is not semantic approval.
+- Prior recorded evidence: declaration live35/35, inventory recovery6/6,
+  alias-only experiment20 additional decodes, all46 other fallbacks unchanged.
+  These were NOT rerun as new full gameplay coverage in this audit.
+- Prior breadth smoke298 with zero caught browser exceptions does NOT establish
+  all rooms, custom handlers, save/restore, Android, voice or puzzle correctness.
+- No runtime fixes, APK, distribution build, or native-device validation here.
+
+SHA256 snapshot: Actionable C49A237268288AEE60F250C021D6DB7A0272972587D01E15ED54EEBD3BDE4E69;
+StatTracker 34249181052F9E540A36A62365F744D8C2BB03EDD4219E3817A1455B01E2D86A;
+ZRamReader 5E39C5CA26F54678592DD87914D59212D58D2F728F0A6B217E1DB5941751194F.
+
+Grok: challenge these findings against CURRENT code, reproduce failures, and
+review the narrow pellet Take approach. Keep the approved stats workaround
+unless an equally effective alternative is demonstrated. Return accept/reject
+per finding with evidence and exact paths needed; do not mark the whole work
+complete from this report. Update canonical contracts alongside approved fixes.
+
 ## D109 review target
 Verify that Anchorhead, anchor, and anchored receive the K-sound spelling hint; anchovy,
 ranch, and visible story text remain unchanged; repeated preparation is idempotent; and

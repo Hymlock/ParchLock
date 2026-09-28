@@ -246,25 +246,43 @@ function driveVerbSuccess(AttrCalibrator, command, opcodes, forceObjectId) {
 }
 
 if (process.argv.includes("--catalog")) {
-    const report = { modules: [], totals: { files: 0, inform: 0, declared: 0, objects: 0, changedObjects: 0 } };
-    for (const file of fs.readdirSync(path.join(root, "games")).filter(f => /\.z[1-8]\.js$/i.test(f))) {
+    const report = { sourceHashes: Object.fromEntries(["js/ZRamReader.js", "js/AttributeSchema.js"].map(f =>
+        [f, require("crypto").createHash("sha256").update(fs.readFileSync(path.join(root, f))).digest("hex")])),
+        modules: [], nonInform: [], totals: { files: 0, inform: 0, declared: 0, objects: 0, changedObjects: 0 } };
+    for (const file of fs.readdirSync(path.join(root, "games")).filter(f => /\.(z[1-8]|zblorb)\.js$/i.test(f))) {
         let mem;
         vm.runInNewContext(fs.readFileSync(path.join(root, "games", file), "utf8"), {
             processBase64Zcode: encoded => { mem = new Uint8Array(Buffer.from(encoded, "base64")); }
         }, { timeout: 1000 });
+        if (Buffer.from(mem.slice(0, 4)).toString() === "FORM") {
+            const container = Buffer.from(mem);
+            mem = null;
+            for (let at = 12; at + 8 <= container.length;) {
+                const size = container.readUInt32BE(at + 4);
+                if (at + 8 + size > container.length) throw new Error("Invalid Blorb: " + file);
+                if (container.toString("ascii", at, at + 4) === "ZCOD") { mem = new Uint8Array(container.subarray(at + 8, at + 8 + size)); break; }
+                at += 8 + size + (size % 2);
+            }
+            if (!mem) throw new Error("No ZCOD chunk: " + file);
+        }
         report.totals.files++;
         const c = {}; vm.createContext(c);
         ["ZRamReader", "AttributeSchema"].forEach(name => vm.runInContext(fs.readFileSync(path.join(root, "js", name + ".js"), "utf8"), c));
         const R = c.ZRamReader, A = c.AttributeSchema;
         A._getMem = () => mem;
-        if (!R.isInformCompiled(mem)) continue;
+        if (!R.isInformCompiled(mem)) {
+            const header = R.header(mem), table = R.informAttributeNames(mem);
+            report.nonInform.push({ file, header, table });
+            assert(header && table === null, "D186 catalog: " + file + " valid Z header; no Inform schema installed");
+            continue;
+        }
         report.totals.inform++;
         const table = R.informAttributeNames(mem), h = R.header(mem);
         const entry = { file, table, count: 0, changed: [], errors: [] };
         if (table) report.totals.declared++;
         const first = R.objectBase(h, 1);
         const count = (R.u16(mem, first + (h.version <= 3 ? 7 : 12)) - first) / h.entrySize;
-        if (!Number.isInteger(count) || count < 1) { entry.errors.push("Object boundary unavailable"); report.modules.push(entry); continue; }
+        if (!Number.isInteger(count) || count < 1) { entry.errors.push("Object boundary unavailable"); report.modules.push(entry); assert(false, "D186 catalog: " + file + " invalid object boundary"); continue; }
         for (let id = 1; id <= count; id++) {
             const base = R.objectBase(h, id);
             const obj = { id, attrBytes: Array.from(mem.slice(base, base + (h.version <= 3 ? 4 : 6))) };
@@ -306,8 +324,10 @@ async function liveAttributeAudit() {
         for (const [file, commands] of [
             ["anchor.z8.js", ["look", "se", "nw", "w", "n", "s", "e"]],
             ["905.z5.js", ["look", "stand", "get off bed", "east", "west", "south", "north", "west", "east", "north", "south"]],
-            ["LostPig.z8.js", ["look", "north", "south", "east", "west", "down", "north", "east", "south", "west", "up"]]
+            ["LostPig.z8.js", ["look", "listen", "listen", "northeast", "look", "east", "west", "north", "south", "up", "down"]]
         ]) {
+            const only = process.argv.find(a => a.startsWith("--only="));
+            if (only && !file.includes(only.slice(7))) continue;
             const context = await browser.newContext({ viewport: { width: 1400, height: 900 } });
             try {
                 const page = await context.newPage();
@@ -377,7 +397,63 @@ async function liveAttributeAudit() {
 }
 async function finish() {
     if (process.argv.includes("--live")) await liveAttributeAudit();
+    const breadth = process.argv.find(a => a.startsWith("--breadth="));
+    if (breadth) await breadthAudit(Number(breadth.split("=")[1]));
     console.log("\n" + pass + " PASS / " + fail + " FAIL");
     process.exitCode = fail ? 1 : 0;
+}
+async function breadthAudit(limit) {
+    const { chromium } = require("playwright"), { pathToFileURL } = require("url");
+    const catalog = JSON.parse(fs.readFileSync(path.join(root, "tools/screenshots/matrix/d186-attribute-catalog.json"), "utf8"));
+    const groups = [catalog.nonInform, catalog.modules.filter(m => m.changed.length), catalog.modules.filter(m => !m.table), catalog.modules.filter(m => m.table && !m.changed.length)];
+    const files = [];
+    for (let i = 0; files.length < limit && groups.some(g => i < g.length); i++) {
+        for (const group of groups) if (group[i] && files.length < limit) files.push(group[i].file);
+    }
+    const report = [], browser = await chromium.launch();
+    try {
+        for (const file of files) {
+            const context = await browser.newContext({ viewport: { width: 1280, height: 850 } });
+            const item = { file, errors: [] };
+            try {
+                const page = await context.newPage();
+                page.on("pageerror", e => item.errors.push(String(e)));
+                page.setDefaultTimeout(5000);
+                await page.addInitScript(() => {
+                    sessionStorage.setItem("PL_ParchLockSplashSeen", "1");
+                    localStorage.setItem("PL_TutorialSeen", "1");
+                    localStorage.setItem("PL_TutorialLibrarySeen", "1");
+                });
+                await page.goto(pathToFileURL(path.join(root, "play.html")).href + "?story=games/" + file);
+                await page.waitForFunction(() => !!document.querySelector(".BufferWindow"), { timeout: 10000 });
+                await page.waitForTimeout(600);
+                await page.evaluate(() => { if (window.Message) Message.Hide(); });
+                for (let k = 0; k < 6 && !await page.locator(".Input.LineInput").count(); k++) {
+                    await page.keyboard.press("Space"); await page.waitForTimeout(180);
+                }
+                Object.assign(item, await page.evaluate(() => {
+                    const p = WorldModel.lastPayload || {}, m = ZRamProvider.getMem();
+                    const ids = [...new Set((p.discoveredObjects || []).concat(p.inventory || []).map(o => o.id).filter(Boolean))];
+                    const read = ZRamReader.informAttributeNames, declared = read(m);
+                    const attrs = ids.map(id => ({ id, name: ZRamReader.shortName(m, id), attrs: ZRamReader.attrsFromObject(m, id) }));
+                    let standard;
+                    try {
+                        ZRamReader.informAttributeNames = () => null;
+                        standard = ids.map(id => ({ id, attrs: ZRamReader.attrsFromObject(m, id) }));
+                    } finally { ZRamReader.informAttributeNames = read; }
+                    return { room: p.roomId, player: p.playerId, inventory: (p.inventory || []).map(o => ({ id: o.id, name: o.name })),
+                        lineInput: !!document.querySelector(".Input.LineInput"), declared: declared && declared.bits,
+                        attrs, standard, text: (document.querySelector(".BufferWindow").innerText || "").slice(-700),
+                        errorPaneText: (document.querySelector("#errorpane") || {}).textContent || "" };
+                }));
+            } catch (e) { item.errors.push(String(e)); }
+            finally { await context.close(); }
+            report.push(item);
+            console.log("BREADTH", report.length, file, JSON.stringify({ room: item.room, input: item.lineInput, objects: item.attrs && item.attrs.length, errors: item.errors.length }));
+            fs.writeFileSync(path.join(root, "tools/screenshots/matrix/d186-module-breadth.json"), JSON.stringify(report, null, 2));
+        }
+    } finally { await browser.close(); }
+    console.log("BREADTH SUMMARY", JSON.stringify({ modules: report.length, errors: report.filter(x => x.errors.length).length,
+        noLineInput: report.filter(x => !x.lineInput).length, noMappedRoom: report.filter(x => !x.room).length }));
 }
 finish().catch(e => { console.error(e); process.exitCode = 1; });

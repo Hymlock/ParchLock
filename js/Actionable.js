@@ -385,10 +385,13 @@ var Actionable = {
             });
             if (hit && hit.examineOnly) {
                 var noun = Actionable.commandNounFor(hit) || hit.name;
-                if (!noun || typeof ActionSynth === "undefined" || ActionSynth.inspectVerbDisabled()) return [];
-                var inspect = ActionSynth.defaultInspectVerb();
-                if (!inspect) return [];
-                return [{ verb: inspect, command: inspect + " " + noun, confidence: 0.9 }];
+                if (!noun) return [];
+                var cmds = [{ verb: "take", command: "take " + noun, confidence: 0.9 }];
+                if (typeof ActionSynth !== "undefined" && !ActionSynth.inspectVerbDisabled()) {
+                    var inspect = ActionSynth.defaultInspectVerb();
+                    if (inspect) cmds.push({ verb: inspect, command: inspect + " " + noun, confidence: 0.85 });
+                }
+                return cmds;
             }
         } catch (eEx) {}
         try {
@@ -589,7 +592,10 @@ var Actionable = {
         } catch (e) {}
 
         /* UNDO_RESTORE_RESYNC */
-        if (!$(".Input.LineInput:visible").length || Message.IsOpen || $("#dialog").length) return false;
+        if (!$(".Input.LineInput").length || Message.IsOpen || $("#dialog").length) return false;
+        if (!$(".Input.LineInput:visible").length
+            && !(typeof StatTracker !== "undefined" && StatTracker._hideCarryProbe)
+            && !(document.body && document.body.classList.contains("equip-open"))) return false;
         Input.Clear();
         var accepted = Input.Inject(command, true);
         // Mobile: never Focus after a headless radial/tap submit -- that
@@ -683,10 +689,9 @@ var Actionable = {
                 out.push({
                     id: c.id, name: best, parentId: c.parentId,
                     aliases: c.aliases, attrs: {},
-                    // D184: attributes for these are exactly the ones D58/D73
-                    // show cannot be trusted on this story, so no verb is
-                    // synthesized from them. The object is highlightable and
-                    // examinable; it does not open the full radial.
+                    // D184: attributes cannot be trusted (D58/D73), so do not
+                    // run ActionSynth. Examine + Take only -- these are room
+                    // objects the player is meant to pick up (food pellets).
                     examineOnly: true
                 });
             });
@@ -1024,7 +1029,8 @@ var Actionable = {
             : scope.roomName !== room;
         var newHeading = heading >= 0 && lines[heading] !== Actionable.RoomHeading;
         var reset = /^(restore|restart|undo)$/.test(command);
-        if (roomChanged || reset || newHeading || !Actionable.RoomLines.some(line => line.isConnected)) {
+        var inventoryCmd = /^(i|inv|inventory)\b/.test(command);
+        if (!inventoryCmd && (roomChanged || reset || newHeading || !Actionable.RoomLines.some(line => line.isConnected))) {
             if (heading >= 0 && (!(roomChanged || reset) || heading > lastInput)) {
                 var end = lines.findIndex((line, index) => index > heading && $(line).is('.Style_input, :has(.Style_input)'));
                 Actionable.RoomLines = lines.slice(heading + 1, end < 0 ? lines.length : end).filter(line => !Actionable.IsInstruction(line));
@@ -1040,7 +1046,18 @@ var Actionable = {
             $(line).find(".pl-act").each(function() { this.replaceWith(document.createTextNode(this.textContent)); });
             line.normalize();
         });
-        var inventory = /^(i|inventory)$/.test(command);
+        var inventory = /^(i|inv|inventory)$/.test(command);
+        if (inventory && typeof StatTracker !== "undefined" && StatTracker._hideCarryProbe) {
+            lines.slice(Math.max(0, lastInput)).forEach(function (line) {
+                if (!line || !line.classList) return;
+                if (line.querySelector && line.querySelector(".Input, .LineInput, .CharInput")) return;
+                line.classList.add("pl-carry-probe");
+                line.setAttribute("aria-hidden", "true");
+                line.style.display = "none";
+            });
+            StatTracker._hideCarryProbe = false;
+            StatTracker._carryProbeTurnCheck = true;
+        }
         var idPool = Actionable.payloadPool();
         var invIds = {};
         try {
