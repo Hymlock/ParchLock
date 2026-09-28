@@ -5676,3 +5676,85 @@ stat-tracker 118, carry-value-live 19, stat-tracker-live 12, ui-regression,
 layout-regression (its "items tab" coverage is what exercises the sheet),
 plus re-checks that a typed draft still survives, the bootstrap still runs
 without one, and the pellets still offer exactly examine and take.
+
+<a id="pl-d193"></a>
+## D193 One bit, several declared names
+
+pl-s253 recorded this gap and left it open: "Sent to Grok (live ZRamReader
+owner) and Claude; implementation pending handoff." It stayed open through three
+adversarial rounds that audited D189-D192 instead, so the reviewed proposal was
+never built. This is that implementation.
+
+Inform's `symbols.c` `write_the_identifier_names` writes every name declared at
+one attribute position into a single slash-separated string: `door/nolook`,
+`female/absent`, `clothing/npc_hidden`, `animate/villain`. D186 validated that
+whole string as one identifier, so a module that aliases any attribute had its
+ENTIRE table rejected and fell back to the assumed standard profile -- the worst
+possible outcome for exactly the modules whose layout is shifted, which is why
+the audit flagged HugeCave.
+
+`ZRamReader.informAttributeNames` now splits each entry on `/` and validates
+every segment. The relaxation is *several names per bit*, and nothing else:
+
+- an empty segment (`door/`, `/nolook`, `door//nolook`) means the string is not
+  a name list, and rejects the whole table;
+- a non-identifier segment rejects the whole table, as before;
+- one name at two DIFFERENT bit positions rejects the whole table -- that is a
+  misread table, not a declaration. Several names at the SAME bit is the alias;
+- the required-library-subset rule is untouched and still all-or-nothing, so a
+  table missing `static` or `switchable` is still discarded whole;
+- no per-flag mixing of declared and standard bits; an absent optional flag
+  stays absent rather than borrowing a standard position.
+
+### Verified
+
+Measured, not asserted. Catalog before: 298 files, 271 Inform, **205** declaring,
+56,974 objects, 8,589 changed. After: **225** declaring, 10,723 changed. 323 PASS
+/ 0 FAIL both runs -- which is precisely why the pass count is not the evidence.
+
+`tools/attribute-alias-catalog.js` (32 PASS / 0 FAIL) proves the two separate
+claims a catalog count cannot:
+
+1. **Additive.** All 205 previously-declaring modules produce a bit-for-bit
+   identical map. The recovered set is exactly the 20 the audit predicted --
+   chix, detective, dumont, fable, FFF, Fork, gostak, HugeCave, KoA, mary,
+   Mulldoon, orion, saveprinceton, schooldays, Shapes, temple, Vacation,
+   vespers, zdungeon, ztuu -- and each is independently confirmed to contain a
+   shared-bit alias, so the gain is attributable to the stated cause.
+2. **Validation still bites.** Eight mutation cases drive real module memory
+   through the real decoder with one decoded name rewritten (by stubbing
+   `decodeZsc`, the function the reader actually calls, not a reimplementation).
+   Dropping an OPTIONAL alias keeps the table; removing a REQUIRED name, an
+   empty segment at either end or doubled, a non-identifier segment, and one
+   name claiming two bits each reject it. This is codex's correction at
+   docs/ai-review.md:94-96 implemented as tests.
+
+Suites: attr-calibrator-phase-cd 25, phase-b 11, verb-disablement 22, catalog
+323, alias-catalog 32. Live at 1400x900 on HugeCave, ztuu and vespers, with
+anchor as an already-declaring control: zero page errors, rooms map, and the
+control's attributes and 10 marks are unchanged.
+
+### Residual: a probe that does not answer the opening prompt proves nothing
+
+Found while verifying this, and it is a verification defect, not a product one.
+HugeCave opens with `Do you want to RESTORE a saved game?`. A probe that sends
+`look` straight into that yes/no prompt gets "Please answer yes or no." twice,
+never sees room prose, and reports 4 scope objects and **zero** actionable marks
+-- which reads exactly like an underlining failure. Answering `no` first gives 8
+scope objects and 10 marks. The room name and id are correct in both cases
+because they come from RAM, which makes the hollow reading look credible.
+
+This shape is shared by `tools/attribute-declaration-ab.js` and the scratch
+probes, and it is a plausible contributor to pl-s253's "218 early snapshots had
+no settled mapped room" in the 298-module breadth smoke. **To fix:** live probes
+must detect and answer an opening yes/no prompt before collecting any evidence,
+and should refuse to report scope/mark evidence for a module still sitting at a
+pre-game prompt rather than reporting zeros. Not done here; it changes shared
+harness files and would put untested probe logic under a decoder change.
+
+### Still open, unchanged by this
+
+The other 46 fallback modules (pl-s253's inventory) are untouched. Inform Z3 in
+particular is not a version-gate edit: that reader needs its own object,
+property and string layout, independently evidenced. Bounds were not relaxed and
+no offsets were guessed to improve a count.

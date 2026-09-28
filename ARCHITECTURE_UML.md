@@ -2861,12 +2861,16 @@ coverage limitations, not automatic failures. Existing providers and opcode
 learners remain parallel mechanisms. D188 prohibits unasked gameplay commands
 as a substitute for headless observation.
 
-Pending decoder extension: accept the compiler's slash-separated attribute
-aliases as multiple names for ONE bit; validate every identifier and reject
-cross-bit duplicate names before publishing any map. Inform symbols.c's
-write_the_identifier_names supplies this format. An isolated candidate decoded
-20 additional modules rejected by D186's single-name regex. The product reader
-is not changed by this audit; Grok owns that file and has the finding. Forty-six
-other fallback modules still need version/layout-specific structural evidence.
+Implemented in [D193](PRODUCTION_PLAN.md#pl-d193): the reader accepts the
+compiler's slash-separated attribute aliases as multiple names for ONE bit.
+Inform symbols.c's write_the_identifier_names supplies this format. Every
+segment is validated as an identifier; an empty segment or a name claiming two
+different bits rejects the whole table, and the required-library-subset
+all-or-nothing rule is unchanged. Several names per bit is the only relaxation.
+Measured: 205 -> 225 declaring modules, the 20 predicted by the audit, each
+independently confirmed to contain a shared-bit alias; all 205 previously
+decoded modules are bit-for-bit identical. Forty-six other fallback modules
+still need version/layout-specific structural evidence and are unchanged; Inform
+Z3 in particular is not a version-gate edit (own object/property/string layout).
 Do not merge this work with heuristic action guessing or remove existing fallback
 providers. Full state-dependent action-handler interpretation remains separate.

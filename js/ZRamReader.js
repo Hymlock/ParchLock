@@ -174,12 +174,29 @@ var ZRamReader = {
             for (var bit = 0; bit < 48; bit++) {
                 var packed = ZRamReader.u16(mem, namesAt + bit * 2);
                 if (!packed) continue;
-                var name = decode(packed);
-                if (name === "unknown attribute") continue;
-                if (!name || !/^[a-zA-Z_][a-zA-Z_0-9]*$/.test(name)) return null;
-                name = name.toLowerCase();
-                if (Object.prototype.hasOwnProperty.call(bits, name)) return null;
-                bits[name] = bit;
+                var entry = decode(packed);
+                if (entry === "unknown attribute") continue;
+                if (!entry) return null;
+                // D193: one bit may carry several declared names. Inform's
+                // symbols.c writes every alias for a position into a single
+                // slash-separated string -- "door/nolook", "female/absent",
+                // "clothing/npc_hidden", "animate/villain". Validating the
+                // whole string as one identifier rejected the table outright
+                // and sent 20 modules back to the standard profile, which is
+                // exactly wrong for a shifted layout like HugeCave.
+                var segments = String(entry).split("/");
+                for (var seg = 0; seg < segments.length; seg++) {
+                    var name = segments[seg];
+                    // An empty segment means this string is not a name list;
+                    // the table is then untrustworthy as a whole.
+                    if (!/^[a-zA-Z_][a-zA-Z_0-9]*$/.test(name)) return null;
+                    name = name.toLowerCase();
+                    // Several names may share one bit -- that is what an alias
+                    // is. One name may NOT claim two different bits: that is a
+                    // misread table, not a declaration.
+                    if (Object.prototype.hasOwnProperty.call(bits, name) && bits[name] !== bit) return null;
+                    bits[name] = bit;
+                }
             }
             // Require the complete action-relevant library contract, not an
             // accidental string run or a stripped/partial symbol table.

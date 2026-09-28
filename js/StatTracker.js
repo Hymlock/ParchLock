@@ -556,7 +556,6 @@ var StatTracker = {
     Resync: function () {
         try {
             StatTracker.forgetReadings(StatTracker.model());
-            StatTracker._autoIdentified = {};
             StatTracker._samples = [];
             StatTracker._probePending = null;
             StatTracker._probeTurns = 0;
@@ -1505,7 +1504,6 @@ var StatTracker = {
     // Tick. wump2ka's restore question is an ordinary line prompt -- "score"
     // would answer it -- so refuse that text even if the sheet is open.
     // Identify() submits a line command, so CharInput is not enough.
-    _autoIdentified: {},
     _carryBootstrapAt: 0,
     _hideCarryProbe: false,
     _carryProbeTurnCheck: false,
@@ -1612,32 +1610,12 @@ var StatTracker = {
             }, 0);
         } catch (e) {}
     },
-    autoIdentify: function () {
-        try {
-            var key = StatTracker._key;
-            if (!key || StatTracker._autoIdentified[key]) return;
-            var model = StatTracker.model();
-            if (model.probed || model.scoreUnavailable) return;
-            if (model.stats.score && model.stats.score.confirmed) {
-                StatTracker._autoIdentified[key] = 1;
-                return;
-            }
-            if (typeof document === "undefined") return;
-            var buf = "";
-            try {
-                var el = document.querySelector(".BufferWindow");
-                buf = el ? String(el.innerText || el.textContent || "") : "";
-            } catch (eBuf) {}
-            if (/would you like to restore a saved game/i.test(buf.slice(-1200))) return;
-            if (!document.querySelector(".Input.LineInput")) return;
-            if (StatTracker._probePending) return;
-            if (typeof Actionable === "undefined" || !Actionable.isGameWord
-                || !Actionable.isGameWord("score")) return;
-
-            StatTracker._autoIdentified[key] = 1;
-            StatTracker.Identify();
-        } catch (e) {}
-    },
+    // D193: `autoIdentify` was removed here. D188 deleted both of its call
+    // sites -- an injected SCORE is not headless observation -- which left the
+    // body reachable only by name, from nowhere. A whole-repo reference check
+    // (js/, tools/, harness/, play.html, JSON) found the definition and no
+    // caller. `Identify()` is retained: it is the explicit, player-initiated
+    // path, and the opcode learners are untouched.
 
     // ---- sound -----------------------------------------------------------
     // Synthesised, because the app ships no audio at all and a bundled asset
