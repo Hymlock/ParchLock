@@ -196,7 +196,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 87 headings; 0 decision rows; 87 registered units.
 **Last registered unit:** `ar-s087`. **Body SHA-256 (LF):**
-`14597950f631575edd162f037045036d75e0fd7839323ea96e36662535cd83f3`
+`0f642678e20a6c4d02f507deea9955a22cc00cbb840712d19dfe82b93b7007bf`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -2882,8 +2882,13 @@ different bits rejects the whole table, and the required-library-subset
 all-or-nothing rule is unchanged. Several names per bit is the only relaxation.
 Measured: 205 -> 225 declaring modules, the 20 predicted by the audit, each
 independently confirmed to contain a shared-bit alias; all 205 previously
-decoded modules are bit-for-bit identical. Forty-six other fallback modules
-still need version/layout-specific structural evidence and are unchanged; Inform
-Z3 in particular is not a version-gate edit (own object/property/string layout).
+decoded modules are bit-for-bit identical. The other 46 are unchanged, and
+[D196](PRODUCTION_PLAN.md#pl-d196) now says what is wrong with each: only THREE
+of them (the Inform Z3 titles catseye, gussdeath, moonglow) contain a real,
+contiguous attribute-name table and are recoverable at all. Z3 remains not a
+version-gate edit -- it needs its own object-entry size, 32 attributes, the
+31-word property-defaults table and +7 property pointers. The remaining 43 carry
+no attribute-name table in the file, so no locator work reaches them; the opcode
+learners are the only mechanism that can. The realistic ceiling is 228 of 271.
 Do not merge this work with heuristic action guessing or remove existing fallback
 providers. Full state-dependent action-handler interpretation remains separate.

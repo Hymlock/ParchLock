@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 79 decisions across
-6052 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 80 decisions across
+6189 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -21,6 +21,7 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 
 | D | claim | files | games |
 |---|-------|-------|-------|
+| D196 | The 46 fallback modules: what is actually missing |  |  |
 | D195 | One probe transaction at a time |  | wump2ka |
 | D194 | A refused probe must put the model back |  | wump2ka |
 | D193 | item 2: the required subset, measured instead of argued | tools/attribute-declaration-ab.js | LostPig wump2ka anchor |

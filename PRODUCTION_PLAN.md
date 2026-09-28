@@ -194,9 +194,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 288 headings; 103 decision rows; 391 registered units.
-**Last registered unit:** `pl-s288`. **Body SHA-256 (LF):**
-`0b4cdaa095a70b9893f5fb581682420e1368add778a3432ec55340f3a227051f`
+**Local manifest:** 296 headings; 103 decision rows; 399 registered units.
+**Last registered unit:** `pl-s296`. **Body SHA-256 (LF):**
+`8ad1c945f800d4e9be719606c9ede1dbf6ecebcedd6b79922ff91bda78e93a6d`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -667,6 +667,14 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s286](#pl-s286) | F6: D192 finding 5 | H3 | Record |
 | [pl-s287](#pl-s287) | Verified | H3 | Record |
 | [pl-s288](#pl-s288) | The pattern worth naming | H3 | Record |
+| [pl-s289](#pl-s289) | D196 The 46 fallback modules: what is actually missing | H2 | Implemented |
+| [pl-s290](#pl-s290) | Step 1: which gate actually fires | H3 | Record |
+| [pl-s291](#pl-s291) | Step 2: is the table absent, or merely mislocated? | H3 | Record |
+| [pl-s292](#pl-s292) | Step 3: clustering, because a match is not a table | H3 | Record |
+| [pl-s293](#pl-s293) | The answer | H3 | Record |
+| [pl-s294](#pl-s294) | Why the 14 would have been a trap | H3 | Record |
+| [pl-s295](#pl-s295) | Verified | H3 | Record |
+| [pl-s296](#pl-s296) | Limits, stated | H3 | Record |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -5939,7 +5947,7 @@ that has to be opened first. Show() is what both real controls call and is where
 this is not a click-through of the real chrome. A probe that opens the panel
 first would be stronger evidence.
 
-<a id="pl-s280" data-chapter-id="pl-s280"></a>
+<a id="pl-s280" data-chapter-id="pl-s280"></a><a id="pl-d195"></a>
 ## D195 One probe transaction at a time
 
 Codex's adversarial review of 93f1799 (D190-D194 lifecycle). Both code findings
@@ -6049,3 +6057,132 @@ document validators whose first check masked five decisions of accumulated
 breakage. The two real defects both survived a green stat suite because no test
 drove the sequence a player performs -- opening the sheet twice. Codex found all
 of it by reproducing rather than reading.
+
+<a id="pl-s289" data-chapter-id="pl-s289"></a><a id="pl-d196"></a>
+## D196 The 46 fallback modules: what is actually missing
+
+pl-s253 lists the 46 in five categories and states they "identify the FIRST
+rejected structural check, not a proven root cause". Codex sharpened that:
+"Missing compiler stamps do not prove symbols were stripped; earlier failures can
+conceal aliases." D193 proved the warning right once -- 20 modules filed under a
+decode rejection whose real cause was the single-identifier regex. This is the
+investigation that finds the real causes, and it changes the answer.
+
+No product file is modified by any of this.
+
+<a id="pl-s290" data-chapter-id="pl-s290"></a>
+### Step 1: which gate actually fires
+
+`tools/decoder-gap-diagnostic.js` instruments all 13 rejection points in
+`informAttributeNames` by source substitution -- each anchor asserted to appear
+exactly once, so a drifted reader throws rather than silently mis-reporting -- and
+records the gate plus the observed values. Post-D193, grouped by the gate that
+really fires:
+
+- `property-name-count` 22: `properties` is 0 or 1 with `end` already at
+  `h.globals` for 19 of them, i.e. the walk consumed everything up to the globals
+  boundary and then read a global as a count. bedlam/phlegm/wedding are different:
+  `properties` is 72/72/77, plausible, but `namesAt + 96` lands past `h.globals`.
+- `prop-number-order` 14: every one fails on `num === previous`, never on
+  `num === 0`. Fourteen modules, one shape -- consecutive property entries with
+  the same number, against the decoder's strict-decrease assumption.
+- `attr-string-undecodable` 5: all five with `bit:0, packed:72`. Identical value,
+  so `namesAt` points at something that is not the attribute-name array.
+- `version-gate` 3: Inform, version 3.
+- `required-subset` 2: praser5 declares only `closed`/`general`; sutwin declares
+  nothing at all.
+
+The 14 looked like the prize: one coherent cause, biggest payoff, and relaxing
+`>=` to `>` would have "recovered" them. That would have been wrong -- see step 2.
+
+<a id="pl-s291" data-chapter-id="pl-s291"></a>
+### Step 2: is the table absent, or merely mislocated?
+
+The decisive question, because it separates work-that-can-succeed from
+work-that-cannot. Scan each module for Inform identifiers and see whether they
+are there at all.
+
+Two corrections were needed to the method, and both mattered:
+
+1. The first scan started at `h.himem`, mirroring the decoder's own
+   `address < h.himem` bound -- which makes the scan structurally unable to detect
+   the case where that bound is what is wrong. Now the whole file is scanned.
+2. The first scan matched `number`, `before` and `after`, which are ordinary
+   English words present in story text. Discriminators are now identifiers that
+   cannot occur in prose: `each_turn`, `cant_go`, `add_to_scope`, `react_before`,
+   `list_together`, `n_to`, `short_name`, and the long attribute names.
+
+Controls first, which is what makes a negative result mean anything: anchor 14
+attribute names, HugeCave 14, ztuu 13.
+
+Result across the 46: **5 modules show attribute names, 41 show none.** My earlier
+provisional conclusion -- that none of the 46 has a table and 225 is the absolute
+ceiling -- was wrong, and wrong in the interesting direction.
+
+<a id="pl-s292" data-chapter-id="pl-s292"></a>
+### Step 3: clustering, because a match is not a table
+
+A handful of scattered matches is coincidence; an identifier-names array is
+contiguous. Measuring the address span of the hits separates them:
+
+| module | distinct names | address span | verdict |
+| --- | --- | --- | --- |
+| `gussdeath.z3.js` | 13 | 136 bytes | real contiguous table |
+| `catseye.z3.js` | 3 | 52 bytes | real table, smaller library |
+| `moonglow.z3.js` | 3 | 52 bytes | real table, smaller library |
+| `Enemies.z8.js` | 2 | 12,710 bytes | scattered: coincidence, not a table |
+| `vindaloo.z5.js` | 1 | 2 bytes | one word twice: coincidence |
+
+So the five become **three**, and the three are exactly the Inform Z3 titles.
+
+<a id="pl-s293" data-chapter-id="pl-s293"></a>
+### The answer
+
+- **3 modules (catseye, gussdeath, moonglow) contain a real attribute-name
+  table** and are recoverable in principle. All three are Inform Z3. Grok's ruling
+  stands and is now evidenced from the other direction: this is not a version-gate
+  edit. A Z3 reader needs its own object-entry size, 32 attributes rather than 48,
+  the 31-word property-defaults table and `+7` rather than `+12` property
+  pointers. Real work, but the data is there to read.
+- **43 modules contain no attribute-name table at all.** Nine of them do carry a
+  genuine property-name array (`react_before`, `add_to_scope`, `list_together`
+  matched: Adventureland, bedlam, break-in, bse, I-0, karn, lost, phlegm,
+  wedding), which proves the identifier-names machinery is not wholly absent in
+  those builds while the attribute array specifically is. The rest show nothing,
+  or only prose coincidences.
+- **The realistic ceiling is 228 of 271, not 271.** 225 today, plus 3 behind a Z3
+  decoder. The remaining 43 are not a decoder problem and no locator work will
+  move them; they stay on the standard profile, with the opcode learners
+  (D73/D134 AttrCalibrator) as the only mechanism that can ever improve them,
+  because those learn from watching real opcodes rather than reading symbols.
+
+<a id="pl-s294" data-chapter-id="pl-s294"></a>
+### Why the 14 would have been a trap
+
+`prop-number-order`'s 14 modules share one failing shape and would have tempted a
+one-character relaxation of the strict-decrease check. But all 14 show zero
+attribute names on the whole-file scan -- curses, Jigsaw and theatre among them.
+Relaxing that gate would have walked the decoder past it to find nothing, and any
+"success" would have been a mislocated table producing confident wrong attributes:
+worse than the honest fallback, and exactly the D24/D25 anti-pattern. The gate
+grouping in pl-s253 is vindicated as a list of first-failed checks and refuted as
+a work plan.
+
+<a id="pl-s295" data-chapter-id="pl-s295"></a>
+### Verified
+
+`node tools/decoder-gap-diagnostic.js` (13 gates instrumented, 271 Inform modules,
+225 declaring / 46 fallback) and `node tools/decoder-gap-diagnostic.js --symbols`
+(whole-file scan, controls at 14/14/13). Evidence in
+`tools/screenshots/matrix/d196-symbol-presence.json`.
+
+<a id="pl-s296" data-chapter-id="pl-s296"></a>
+### Limits, stated
+
+The property-name counts in step 3 were matched but not clustering-verified, so
+"nine carry a property-name array" is weaker evidence than the attribute-table
+claims, which are. The scan proves an identifier is decodable at some address; it
+does not prove the compiler emitted it as part of a table, which is why clustering
+was measured for every recovery candidate and why Enemies and vindaloo were
+rejected. A negative result still rests on the probe list being representative;
+the controls scoring 13-14 of 15 is the evidence that it is.

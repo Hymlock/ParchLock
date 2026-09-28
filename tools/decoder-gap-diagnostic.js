@@ -20,6 +20,20 @@
 //      alternative layout behind it, or 22 unrelated accidents?
 //
 // Usage: node tools/decoder-gap-diagnostic.js [--json <out>] [--module <file>]
+//        node tools/decoder-gap-diagnostic.js --symbols   (see below)
+//
+// --symbols answers the question the gate grouping cannot: for a module that
+// fails, is the identifier-names table ABSENT from the file, or present and
+// merely mislocated? Absent means no decoder can ever recover it. Mislocated
+// means a better locator would.
+//
+// Method and its two corrections. A first pass scanned only from `himem`
+// upward, mirroring the decoder's own `address < h.himem` bound -- which makes
+// the scan unable to detect exactly the case where that bound is what is wrong.
+// This scans the WHOLE file. It also discriminates on identifiers that cannot
+// occur in prose (`each_turn`, `cant_go`, `n_to`, `short_name`), because a
+// first pass matched `number`, `before` and `after`, which are ordinary English
+// words and appear in game text.
 const fs = require("fs"), path = require("path"), vm = require("vm");
 const root = path.resolve(__dirname, "..");
 
@@ -145,6 +159,60 @@ for (const gate of Object.keys(byGate).sort((a, b) => byGate[b].length - byGate[
     const g = byGate[gate];
     console.log("\n[" + gate + "]  " + g.length + " module(s)");
     g.forEach(r => console.log("   " + r.file.padEnd(24) + " v" + r.version + "  " + JSON.stringify(r.detail)));
+}
+
+// ------------------------------------------------- symbol-presence discriminator
+if (process.argv.indexOf("--symbols") > -1) {
+    // Inform identifiers that cannot plausibly appear in story prose.
+    const ATTRS = ["switchable", "openable", "scenery", "workflag", "pluralname",
+        "transparent", "concealed", "enterable", "supporter", "talkable",
+        "pluralname", "lockable", "clothing", "animate", "edible"];
+    const PROPS = ["each_turn", "cant_go", "found_in", "short_name", "react_before",
+        "react_after", "when_open", "when_closed", "time_left", "n_to", "s_to",
+        "d_to", "u_to", "door_dir", "with_key", "add_to_scope", "list_together",
+        "parse_name", "invent", "describe"];
+    const ctx2 = {}; vm.createContext(ctx2);
+    vm.runInContext(fs.readFileSync(path.join(root, "js", "ZRamReader.js"), "utf8"), ctx2);
+    const R2 = ctx2.ZRamReader;
+
+    const scan = (mem, wanted) => {
+        const found = new Set(), len = mem.length;
+        // Whole file, every even address. No himem assumption.
+        for (let a = 0; a + 2 <= len && found.size < wanted.length; a += 2) {
+            let stop = a, w = 0;
+            for (; w < 10 && stop + 2 <= len; w++, stop += 2) if (mem[stop] & 128) break;
+            if (w >= 10) continue;
+            let s; try { s = R2.decodeZsc(mem, a, w + 1); } catch (e) { continue; }
+            if (s && wanted.indexOf(s) > -1) found.add(s);
+        }
+        return found;
+    };
+
+    const subjects = fallback.map(r => r.file);
+    const controls = ["anchor.z8.js", "HugeCave.z8.js", "ztuu.z5.js"];
+    console.log("\n\n=== symbol presence (whole-file scan, prose-proof identifiers) ===");
+    console.log("CONTROLS (known to declare a table):");
+    const report = [];
+    for (const file of controls.concat(["--"], subjects)) {
+        if (file === "--") { console.log("\nTHE " + subjects.length + " FALLBACK MODULES:"); continue; }
+        let mem; try { mem = loadMem(file); } catch (e) { continue; }
+        if (!mem) continue;
+        const a = scan(mem, ATTRS), p = scan(mem, PROPS);
+        const verdict = a.size ? "ATTRS PRESENT" : (p.size ? "props only -> attr names ABSENT" : "NO SYMBOLS AT ALL");
+        report.push({ file, attrs: a.size, props: p.size, verdict });
+        console.log("  " + file.padEnd(24) + " attrNames=" + String(a.size).padEnd(3) +
+            " propNames=" + String(p.size).padEnd(3) + "  " + verdict +
+            (p.size && !a.size ? "   props: " + [...p].slice(0, 5).join(",") : ""));
+    }
+    const grouped = {};
+    report.filter(r => subjects.indexOf(r.file) > -1).forEach(r => (grouped[r.verdict] = (grouped[r.verdict] || 0) + 1));
+    console.log("\nSUMMARY of the " + subjects.length + " fallback modules:");
+    Object.keys(grouped).forEach(k => console.log("  " + String(grouped[k]).padStart(3) + "  " + k));
+    const recoverable = report.filter(r => subjects.indexOf(r.file) > -1 && r.attrs > 0);
+    console.log("\nRecoverable in principle (attribute names present but table not located): " + recoverable.length);
+    recoverable.forEach(r => console.log("   " + r.file + " attrNames=" + r.attrs));
+    fs.writeFileSync(path.join(root, "tools/screenshots/matrix/d196-symbol-presence.json"), JSON.stringify(report, null, 2));
+    console.log("wrote tools/screenshots/matrix/d196-symbol-presence.json");
 }
 
 const outIdx = process.argv.indexOf("--json");
