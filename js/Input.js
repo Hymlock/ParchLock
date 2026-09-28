@@ -33,7 +33,7 @@ var Input = {
         try { if (typeof MapTopology !== "undefined") MapTopology.noteCommand(arguments[0]); } catch (e) {}
         if (!$(".Input.LineInput").length || (hitEnter && (Message.IsOpen || $("#dialog").length))) return false;
         if (!$(".Input.LineInput:visible").length
-            && !(typeof StatTracker !== "undefined" && StatTracker._hideCarryProbe)
+            && !(typeof StatTracker !== "undefined" && StatTracker._carryProbeSubmitting)
             && !(document.body && document.body.classList.contains("equip-open"))) return false;
         $(".Input.LineInput").val($(".Input.LineInput").val() + text);
         if (hitEnter) {

@@ -612,7 +612,7 @@ var Actionable = {
         /* UNDO_RESTORE_RESYNC */
         if (!$(".Input.LineInput").length || Message.IsOpen || $("#dialog").length) return false;
         if (!$(".Input.LineInput:visible").length
-            && !(typeof StatTracker !== "undefined" && StatTracker._hideCarryProbe)
+            && !(typeof StatTracker !== "undefined" && StatTracker._carryProbeSubmitting)
             && !(document.body && document.body.classList.contains("equip-open"))) return false;
         Input.Clear();
         var accepted = Input.Inject(command, true);

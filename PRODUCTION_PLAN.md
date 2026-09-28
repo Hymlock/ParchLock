@@ -5553,3 +5553,60 @@ Anchorhead 6/3, Zork1 0/2, Enchanter 3/1, LostPig 6/1, 905 10/2.
 A promoted object that has been TAKEN still does not appear in the equipment
 sheet -- the inventory-side filter is untouched (D184). Now that TAKE is offered
 on these objects, that gap is reachable by a player rather than theoretical.
+
+
+## D191 The carry probe's lifecycle: a draft, a queued submit, and a permission
+
+Findings 1 and 4 of the codex audit, both accepted by grok. I had implemented
+only findings 2 and 3 and written these up as open questions -- I fixed what was
+failing a test and stopped, which is not the same as resolving the accepted
+findings. Recorded because the omission was the mistake, not the code.
+
+Finding 5 IS correctly deferred: grok classified it as "untested risk, not a
+live fail", so it stays open rather than being guessed at.
+
+### A typed draft must never be overwritten
+
+The bootstrap submits through the same line the player types into, so opening
+the equipment sheet mid-command replaced a half-written "examine canteen" with
+"inventory". It now stands down when the line holds a draft, and -- because the
+submit is deferred and the player can start typing during the deferral -- it
+re-checks at the moment of submission rather than only when queued.
+
+Whitespace alone does not count as a draft, so a stray space cannot block the
+bootstrap for the rest of the session.
+
+Measured: with "examine canteen" typed, opening the sheet leaves it untouched
+and the probe flags stand down cleanly; with the line empty the bootstrap runs
+and the value row appears.
+
+### Probe state belongs to the game that created it
+
+`Resync` and `reset` dropped the model's readings but left every carry-probe
+flag set and a queued `Submit` in flight. A restored or restarted game could
+inherit `_carryProbeUseless` from the abandoned one and never probe again, or
+fire a submission belonging to a game that no longer exists. `clearCarryProbe`
+now cancels the timer and clears all seven flags, and both paths call it.
+
+### A permission scoped to one submission, not to a mode
+
+`_hideCarryProbe` was doing two unrelated jobs. It tells
+`Actionable.RenderInventory` which lines to hide, which is correct. It was ALSO
+read by `Actionable.Submit` and `Input.Inject` as "an injection may proceed
+while the line input is hidden" -- so for as long as a probe was pending, ANY
+injection could submit into a hidden input, which is much broader than one
+suppressed command.
+
+Those two gates now read `_carryProbeSubmitting`, which is true only across the
+probe's own `Submit` call and is cleared in a `finally`. The line-hiding
+consumer keeps `_hideCarryProbe` unchanged.
+
+### Verified
+
+stat-tracker 118, carry-value-live 19, stat-tracker-live 12, d31 60,
+global-navigation-guard 13, unnamed-promotion-live catalog empty-set,
+highlight-scope, alley-actionable, layout-regression, ui-regression.
+
+The operator's instruction stands and is honoured: the Wumpus auto-inventory
+workaround is NOT removed. This changes when it may fire and what it is allowed
+to do while firing, not whether it exists.

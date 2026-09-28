@@ -565,6 +565,10 @@ var StatTracker = {
             StatTracker._pendingDeltaText = null;
             clearTimeout(StatTracker._diagnoseTimer);
             StatTracker._diagnoseTimer = null;
+            // D191: the carry probe is session state too -- a queued Submit
+            // belongs to the game that queued it, and a "useless" verdict
+            // belongs to the story that earned it.
+            StatTracker.clearCarryProbe();
             if (typeof document !== "undefined") {
                 var buffer = document.querySelector(".BufferWindow");
                 StatTracker._lastBufferLen = buffer ? String(buffer.innerText || buffer.textContent || "").length : 0;
@@ -586,6 +590,7 @@ var StatTracker = {
         StatTracker._v3 = null;
         StatTracker._probePending = null;
         StatTracker._probeTurns = 0;
+        StatTracker.clearCarryProbe();          // D191
     },
 
     // ---- header facts ----------------------------------------------------
@@ -1507,6 +1512,39 @@ var StatTracker = {
     _carryTurnsBefore: null,
     _carryTurnWarned: false,
     _carryProbeUseless: false,
+    // D191: the player's own half-typed command. Any non-empty value counts --
+    // whitespace alone does not, so an accidental space does not block the
+    // bootstrap forever.
+    lineInputHasDraft: function () {
+        try {
+            if (typeof document === "undefined") return false;
+            var el = document.querySelector(".Input.LineInput");
+            return !!(el && String(el.value || "").trim());
+        } catch (e) { return false; }
+    },
+
+    // D191 finding 4 (codex/grok): Resync and reset dropped the model's
+    // readings but left every carry-probe flag set, and left a queued Submit
+    // in flight. A restored or restarted game could therefore inherit
+    // _carryProbeUseless from the abandoned one and never probe again, or fire
+    // a Submit belonging to a game that no longer exists. _hideCarryProbe left
+    // true also widens the hidden-input checks in Actionable and Input to ANY
+    // hidden LineInput, which is far broader than one suppressed probe.
+    clearCarryProbe: function () {
+        try { if (StatTracker._carryProbeTimer) clearTimeout(StatTracker._carryProbeTimer); } catch (e) {}
+        StatTracker._carryProbeTimer = null;
+        StatTracker._carryBootstrapAt = 0;
+        StatTracker._hideCarryProbe = false;
+        StatTracker._carryProbeTurnCheck = false;
+        StatTracker._carryTurnsBefore = null;
+        StatTracker._carryTurnWarned = false;
+        StatTracker._carryProbeUseless = false;
+        StatTracker._carryProbeSubmitting = false;
+    },
+
+    _carryProbeTimer: null,
+    _carryProbeSubmitting: false,
+
     requestCarryBootstrap: function () {
         try {
             var now = Date.now();
@@ -1534,10 +1572,32 @@ var StatTracker = {
             });
             StatTracker._carryTurnsBefore = (model.stats.turns && typeof model.stats.turns.value === "number")
                 ? model.stats.turns.value : null;
+            // D191 finding 1 (codex/grok): the probe submits through the same
+            // line the player types into, so a half-written command was being
+            // replaced by "inventory". Never clobber a draft -- and re-check at
+            // the moment of submission, because the player can start typing
+            // during the deferral.
+            if (StatTracker.lineInputHasDraft()) return;
+
             StatTracker._hideCarryProbe = true;
             StatTracker._carryBootstrapAt = now;
-            setTimeout(function () {
-                try { Actionable.Submit(verb); } catch (eS) {}
+            StatTracker._carryProbeTimer = setTimeout(function () {
+                StatTracker._carryProbeTimer = null;
+                try {
+                    if (StatTracker.lineInputHasDraft()) {
+                        // Stand down rather than overwrite what they typed.
+                        StatTracker._hideCarryProbe = false;
+                        return;
+                    }
+                    // D191: this permission is scoped to THIS submission only.
+                    // _hideCarryProbe stays set for the line-hiding consumer in
+                    // Actionable.RenderInventory, but it must not also mean
+                    // "any injection may proceed while the input is hidden",
+                    // which is what the two gates were reading it as.
+                    StatTracker._carryProbeSubmitting = true;
+                    try { Actionable.Submit(verb); }
+                    finally { StatTracker._carryProbeSubmitting = false; }
+                } catch (eS) { StatTracker._carryProbeSubmitting = false; }
             }, 0);
         } catch (e) {}
     },
