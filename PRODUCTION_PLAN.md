@@ -205,7 +205,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 312 headings; 103 decision rows; 415 registered units.
 **Last registered unit:** `pl-s312`. **Body SHA-256 (LF):**
-`dcea026c191bba2dbaf52d6fb291326f8aaf98e648b8b73268d3f72746160f7b`
+`c5dc47c868ee99a31494270f18c01d0a0fdafde41487ae7496c6c5d19ea43154`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -6509,16 +6509,25 @@ alone would reject the controls. The threshold is 3 or more distinct names withi
 256 bytes, and the controls land at 14 names in 244B, 14 in 244B and 13 in 164B,
 which is what shows the window was not chosen to fit the answer.
 
-Output now, from the tracked command:
+After D200 implemented those three recoveries, the same tracked command now
+preserves their historical cluster evidence while counting their actual reader
+state. Its current terminal output is:
 
-    recoverable in principle: 3
-       catseye.z3.js    v3   3 names in  52B
-       gussdeath.z3.js  v3  13 names in 136B
-       moonglow.z3.js   v3   3 names in  52B
+    recoverable before D200, DECLARING TODAY: 3 of 3
+       catseye.z3.js    v3   3 names in  52B   declaring=true
+       gussdeath.z3.js  v3  13 names in 136B   declaring=true
+       moonglow.z3.js   v3   3 names in  52B   declaring=true
+    still fallback but clustered (new recovery candidates): 0
     no attribute-name table in the file: 43
     rejected as coincidence: Enemies.z8.js(2), vindaloo.z5.js(1)
-    CEILING: 225 declaring today + 3 recoverable = 228 of 271
+    CEILING: 228 declaring today + 0 recoverable = 228 of 271
     controls: anchor=14/244B  HugeCave=14/244B  ztuu=13/164B
+              catseye=3/52B  gussdeath=13/136B  moonglow=3/52B
+
+The D199 repair remains the density classifier and reproducible command. D200
+changed the modules' lifecycle category, not the clustering conclusion; this
+refreshed exhibit prevents the plan from quoting a terminal state the tool no
+longer prints.
 
 <a id="pl-s308" data-chapter-id="pl-s308"></a>
 ### The pattern, fourth instance
