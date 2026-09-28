@@ -175,17 +175,47 @@ if (process.argv.indexOf("--symbols") > -1) {
     vm.runInContext(fs.readFileSync(path.join(root, "js", "ZRamReader.js"), "utf8"), ctx2);
     const R2 = ctx2.ZRamReader;
 
+    // Codex, D197 follow-up: this scan used to stop at the first hit per name and
+    // report only counts, so it printed "Recoverable ... 5" and listed Enemies and
+    // vindaloo -- contradicting the 3/43/228 conclusion D196 cites it for. The
+    // clustering that cut 5 to 3 lived in a throwaway shell one-liner. It lives
+    // here now: every hit ADDRESS is collected, and the classification is computed
+    // and printed by the tracked command.
+    const WINDOW = 256;          // bytes; an identifier-names array is contiguous
+    const CLUSTER_MIN = 3;       // distinct names inside one window to call it a table
+
     const scan = (mem, wanted) => {
-        const found = new Set(), len = mem.length;
-        // Whole file, every even address. No himem assumption.
-        for (let a = 0; a + 2 <= len && found.size < wanted.length; a += 2) {
+        const hits = [], len = mem.length;
+        // Whole file, every even address. No himem assumption, and no early exit:
+        // a name can occur in the table AND in the dictionary or prose, so we need
+        // all occurrences to find the dense one.
+        for (let a = 0; a + 2 <= len; a += 2) {
             let stop = a, w = 0;
             for (; w < 10 && stop + 2 <= len; w++, stop += 2) if (mem[stop] & 128) break;
             if (w >= 10) continue;
             let s; try { s = R2.decodeZsc(mem, a, w + 1); } catch (e) { continue; }
-            if (s && wanted.indexOf(s) > -1) found.add(s);
+            if (s && wanted.indexOf(s) > -1) hits.push({ name: s, at: a });
         }
-        return found;
+        return hits;
+    };
+
+    // The tightest window containing the most DISTINCT names. Overall span is the
+    // wrong metric: anchor.z8 spans ~470KB because its names also appear in the
+    // dictionary, yet it plainly has a table. Density is what distinguishes a
+    // contiguous array from scattered coincidences.
+    const densest = (hits) => {
+        const sorted = hits.slice().sort((x, y) => x.at - y.at);
+        let best = { count: 0, at: null, span: 0, names: [] };
+        for (let i = 0; i < sorted.length; i++) {
+            const names = new Set(); let j = i, last = sorted[i].at;
+            while (j < sorted.length && sorted[j].at - sorted[i].at <= WINDOW) {
+                names.add(sorted[j].name); last = sorted[j].at; j++;
+            }
+            if (names.size > best.count) {
+                best = { count: names.size, at: sorted[i].at, span: last - sorted[i].at, names: [...names].sort() };
+            }
+        }
+        return best;
     };
 
     const subjects = fallback.map(r => r.file);
@@ -197,22 +227,53 @@ if (process.argv.indexOf("--symbols") > -1) {
         if (file === "--") { console.log("\nTHE " + subjects.length + " FALLBACK MODULES:"); continue; }
         let mem; try { mem = loadMem(file); } catch (e) { continue; }
         if (!mem) continue;
-        const a = scan(mem, ATTRS), p = scan(mem, PROPS);
-        const verdict = a.size ? "ATTRS PRESENT" : (p.size ? "props only -> attr names ABSENT" : "NO SYMBOLS AT ALL");
-        report.push({ file, attrs: a.size, props: p.size, verdict });
-        console.log("  " + file.padEnd(24) + " attrNames=" + String(a.size).padEnd(3) +
-            " propNames=" + String(p.size).padEnd(3) + "  " + verdict +
-            (p.size && !a.size ? "   props: " + [...p].slice(0, 5).join(",") : ""));
+        const aHits = scan(mem, ATTRS), pHits = scan(mem, PROPS);
+        const aNames = new Set(aHits.map(h => h.name)), pNames = new Set(pHits.map(h => h.name));
+        const cluster = densest(aHits);
+        const hasTable = cluster.count >= CLUSTER_MIN;
+        const verdict = hasTable ? "TABLE PRESENT (clustered)"
+            : (aNames.size ? "scattered matches only -> NO TABLE"
+                : (pNames.size ? "property names only -> NO attribute table" : "NO SYMBOLS AT ALL"));
+        report.push({ file, attrNamesDistinct: aNames.size, propNamesDistinct: pNames.size,
+                      clusterDistinct: cluster.count, clusterAt: cluster.at, clusterSpan: cluster.span,
+                      clusterNames: cluster.names, hasTable, verdict,
+                      attrHits: aHits.map(h => h.name + "@" + h.at) });
+        console.log("  " + file.padEnd(24) + " attrNames=" + String(aNames.size).padEnd(3) +
+            " densest=" + String(cluster.count).padEnd(3) + " in " + String(cluster.span).padEnd(5) + "B" +
+            "  " + verdict);
     }
+
+    const subjectRows = report.filter(r => subjects.indexOf(r.file) > -1);
     const grouped = {};
-    report.filter(r => subjects.indexOf(r.file) > -1).forEach(r => (grouped[r.verdict] = (grouped[r.verdict] || 0) + 1));
-    console.log("\nSUMMARY of the " + subjects.length + " fallback modules:");
-    Object.keys(grouped).forEach(k => console.log("  " + String(grouped[k]).padStart(3) + "  " + k));
-    const recoverable = report.filter(r => subjects.indexOf(r.file) > -1 && r.attrs > 0);
-    console.log("\nRecoverable in principle (attribute names present but table not located): " + recoverable.length);
-    recoverable.forEach(r => console.log("   " + r.file + " attrNames=" + r.attrs));
-    fs.writeFileSync(path.join(root, "tools/screenshots/matrix/d196-symbol-presence.json"), JSON.stringify(report, null, 2));
-    console.log("wrote tools/screenshots/matrix/d196-symbol-presence.json");
+    subjectRows.forEach(r => (grouped[r.verdict] = (grouped[r.verdict] || 0) + 1));
+    console.log("\nSUMMARY of the " + subjects.length + " fallback modules" +
+        "  (a table = " + CLUSTER_MIN + "+ distinct names within " + WINDOW + " bytes):");
+    Object.keys(grouped).sort((a, b) => grouped[b] - grouped[a])
+        .forEach(k => console.log("  " + String(grouped[k]).padStart(3) + "  " + k));
+
+    // The classification D196 cites. Computed and printed here so the command
+    // reproduces the documented conclusion instead of contradicting it.
+    const recoverable = subjectRows.filter(r => r.hasTable);
+    const absent = subjectRows.filter(r => !r.hasTable);
+    console.log("\n=== FINAL CLASSIFICATION (D196) ===");
+    console.log("  recoverable in principle (clustered attribute-name table present): " + recoverable.length);
+    recoverable.forEach(r => console.log("     " + r.file.padEnd(22) + " v" + (rows.find(x => x.file === r.file) || {}).version +
+        "  " + r.clusterDistinct + " names in " + r.clusterSpan + "B: " + r.clusterNames.join(",")));
+    console.log("  no attribute-name table in the file: " + absent.length);
+    console.log("  rejected as coincidence (matched but never clustered): " +
+        subjectRows.filter(r => !r.hasTable && r.attrNamesDistinct > 0)
+                   .map(r => r.file + "(" + r.attrNamesDistinct + ")").join(", "));
+    console.log("  CEILING: " + declared.length + " declaring today + " + recoverable.length +
+        " recoverable = " + (declared.length + recoverable.length) + " of " + rows.length + " Inform modules");
+    console.log("  controls (must all show a table): " +
+        report.filter(r => controls.indexOf(r.file) > -1)
+              .map(r => r.file + "=" + r.clusterDistinct + "/" + r.clusterSpan + "B").join("  "));
+
+    try {
+        fs.writeFileSync(path.join(root, "tools/screenshots/matrix/d196-symbol-presence.json"), JSON.stringify(report, null, 2));
+        console.log("\n(also wrote tools/screenshots/matrix/d196-symbol-presence.json -- local convenience;");
+        console.log(" .gitignore excludes tools/screenshots/, so the COMMAND above is the citation)");
+    } catch (e) { console.log("\n(could not write the local JSON: " + e.message + ")"); }
 }
 
 const outIdx = process.argv.indexOf("--json");

@@ -49,11 +49,17 @@ lines.forEach((line, i) => {
         add(m[1], (bold ? bold[1] : rest).trim(), rest);
         return;
     }
-    m = /^#{2,4}\s*D(\d+)(?:\s*[-–]\s*D\d+)?\s*(.*)$/.exec(line);
+    // A lifecycle prefix may precede the number, e.g.
+    // "## TEMPORARY DRAFT - D198 ZIL/Infocom capability completion". Without
+    // allowing it, such an entry is silently absent from the index -- which is
+    // how D198 went missing while the plan's own validator passed, since that
+    // checks registration and fingerprints, not index coverage.
+    m = /^#{2,4}\s*(?:([A-Z][A-Za-z ]*?)\s*[-–:]\s*)?D(\d+)(?:\s*[-–]\s*D\d+)?\s*(.*)$/.exec(line);
     if (m) {
-        const title = m[2].trim();
+        const prefix = (m[1] || '').trim();
+        const title = m[3].trim();
         const body = lines.slice(i + 1, i + 14).join(' ');
-        add(m[1], title || '(see entry)', body);
+        add(m[2], (prefix ? prefix + ': ' : '') + (title || '(see entry)'), body);
     }
 });
 
