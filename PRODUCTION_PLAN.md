@@ -5494,3 +5494,62 @@ Detailed generated evidence is in tools/screenshots/matrix/d186-attribute-catalo
 (including reader source hashes), d186-attribute-live.json, d186-module-breadth.json,
 d186-fallback-reasons.json and d186-alias-proposal.json. These are internal audit
 artifacts, not distribution content. See architecture section62 for the contract.
+
+
+## D190 Take on a promoted object, gated by the module's own declaration
+
+Both audits accepted that the operator wants the food pellets to be takeable,
+and both rejected the two easy ways of getting there.
+
+A blanket Take had been added ahead of the inspect verb. It made the pellets
+takeable and broke D185's policy: three assertions failed, because a disabled
+inspect verb must yield NO command and a learned substitute ("look at") must
+keep its place. Offering Take unconditionally also says nothing true about the
+object -- it is the guess D24 forbids, applied to every promoted object at once.
+
+Enabling full synthesis was rejected on measurement rather than principle. With
+the declared attributes the pellets read [edible, workflag, takeable], so
+ActionSynth offers ["examine", "take", "eat", "drink"]. Drinking a food pellet
+is the same class of nonsense as offering to talk to a pit, which is what D186
+was written to stop.
+
+### What ships
+
+The inspect verb keeps its policy and its position. Take is appended only when
+the object's own DECLARED attributes say `takeable && !static && !scenery`, and
+those attributes are populated only where D186 decoded this module's
+attribute-name table. Where no table decoded, `attrs` stays empty and the object
+remains examine-only exactly as D184 shipped it -- which is the whole reason
+D184 used `{}` there, and that reasoning still holds wherever the compiler's own
+declaration is unavailable.
+
+So the gate reads the compiler's declaration, never the standard profile that
+D58/D73 show misreads this story.
+
+### Blast radius, measured before the change
+
+Promotion is empty on every story but one, so this policy governs exactly one
+object in the catalogue:
+
+    wump2ka   1 promoted: pellets#199  attrs [edible, workflag, takeable]
+    anchor 0    LostPig 0    905 0    Zork1 0    Enchanter 0
+
+That measurement is why this is a narrow change rather than a catalogue-wide
+risk, and it was taken first rather than assumed.
+
+### Verified
+
+    commands offered : ["examine pellets", "take pellets"]  -- 4 runs, no "drink"
+    the command works: TAKE PELLETS then INVENTORY lists them -- 3 runs of 3
+
+harness/stat-tracker 118 (the three D185 policy assertions pass unchanged rather
+than being rewritten to fit), unnamed-promotion-live catalog empty-set,
+carry-value-live 19, stat-tracker-live 12, d31 60, attr-calibrator-phase-cd 25,
+highlight-scope, alley-actionable, alley-ram-actionable. Cross-module unchanged:
+Anchorhead 6/3, Zork1 0/2, Enchanter 3/1, LostPig 6/1, 905 10/2.
+
+### Still open
+
+A promoted object that has been TAKEN still does not appear in the equipment
+sheet -- the inventory-side filter is untouched (D184). Now that TAKE is offered
+on these objects, that gap is reachable by a player rather than theoretical.

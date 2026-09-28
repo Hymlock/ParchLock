@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v71"; // D188 no injected score probe; the globals path stays headless
+const CACHE_VERSION = "parchlock-shell-v72"; // D189/D190 carry bootstrap ungated; declaration-gated Take
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

@@ -386,10 +386,28 @@ var Actionable = {
             if (hit && hit.examineOnly) {
                 var noun = Actionable.commandNounFor(hit) || hit.name;
                 if (!noun) return [];
-                var cmds = [{ verb: "take", command: "take " + noun, confidence: 0.9 }];
+                var cmds = [];
+                // The inspect verb keeps its policy: disabled means no command
+                // at all, and a learned substitute ("look at") is honoured.
                 if (typeof ActionSynth !== "undefined" && !ActionSynth.inspectVerbDisabled()) {
                     var inspect = ActionSynth.defaultInspectVerb();
                     if (inspect) cmds.push({ verb: inspect, command: inspect + " " + noun, confidence: 0.85 });
+                }
+                // D190: Take, but only when the MODULE'S OWN declared attributes
+                // say so. A blanket Take was added to make the pellets takeable
+                // and broke the inspect policy above; full synthesis was
+                // rejected by both audits because it also offered "drink
+                // pellets" -- measured, not hypothetical.
+                //
+                // These attrs are populated by promoteUnnamed ONLY where D186
+                // decoded the module's declared attribute table, so this gate
+                // reads the compiler's own declaration rather than the standard
+                // profile that D58/D73 show cannot be trusted here. Where no
+                // table decoded, attrs stay empty and the object remains
+                // examine-only, exactly as before.
+                var pa = hit.attrs || {};
+                if (pa.takeable && !pa.static && !pa.scenery) {
+                    cmds.push({ verb: "take", command: "take " + noun, confidence: 0.9 });
                 }
                 return cmds;
             }
@@ -669,6 +687,19 @@ var Actionable = {
                 if (h && h.version <= 3) cut = 6;
             } catch (eH) {}
 
+            // Resolved once per pass: the table is cached per memory instance,
+            // but the absence of one should not be re-tested per candidate.
+            var mem = null, hasDeclared = false;
+            try {
+                mem = (typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) ? ZRamProvider.getMem() : null;
+                hasDeclared = !!(mem && typeof ZRamReader !== "undefined"
+                    && ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem));
+            } catch (eD) {}
+            var declaredAttrs = function (id) {
+                if (!hasDeclared) return {};
+                try { return ZRamReader.attrsFromObject(mem, id) || {}; } catch (eA) { return {}; }
+            };
+
             var takenWords = {};
             cands.forEach(function (c) {
                 if (!c || c.id == null || blocked[String(c.id)]) return;
@@ -688,7 +719,13 @@ var Actionable = {
                 takenWords[best] = 1;
                 out.push({
                     id: c.id, name: best, parentId: c.parentId,
-                    aliases: c.aliases, attrs: {},
+                    aliases: c.aliases,
+                    // D190: the declared attributes, and ONLY when D186 decoded
+                    // this module's own attribute-name table. D184 shipped {}
+                    // here because the standard profile misreads this story --
+                    // that reasoning stands wherever no table decoded, and is
+                    // why this is conditional rather than unconditional.
+                    attrs: declaredAttrs(c.id),
                     // D184: attributes cannot be trusted (D58/D73), so do not
                     // run ActionSynth. Examine + Take only -- these are room
                     // objects the player is meant to pick up (food pellets).
