@@ -5758,3 +5758,45 @@ The other 46 fallback modules (pl-s253's inventory) are untouched. Inform Z3 in
 particular is not a version-gate edit: that reader needs its own object,
 property and string layout, independently evidenced. Bounds were not relaxed and
 no offsets were guessed to improve a count.
+
+### D193 item 2: the required subset, measured instead of argued
+
+The plan (bus 861) deliberately refused to guess this one. `bitFor` OMITS rather
+than mixes, so a table that parses without `supporter` makes a real supporter
+read as not one, and search/put-on are withheld silently -- but adding a name to
+the required set REJECTS every table lacking it, sending those modules back to
+the assumed standard profile, which is the exact harm D193 exists to remove.
+Grok declined to change it without data. The plan's rule was: if effectively all
+decoded tables declare talkable/supporter/clothing they belong in the required
+set; if a meaningful number omit them, the current omission is right.
+
+Measured across all 225 decoded tables: `talkable` 225/225, `supporter` 225/225,
+`clothing` 225/225. Zero tables omit any of the three. The required subset is now
+twelve names. By construction this is a no-op on the present catalog -- re-run
+confirms 225 declaring, 323 PASS / 0 FAIL, alias suite 32 PASS / 0 FAIL -- and
+it makes a stripped table fail loudly instead of quietly under-reporting
+supporters. The tension above is real and is recorded rather than resolved: the
+change can only ever cause a whole-table rejection, and it rests on 271 modules,
+not on the format guaranteeing it.
+
+### D193 verification gate from the plan, run as specified
+
+Plan 861 required `tools/attribute-declaration-ab.js` on anchor/905/LostPig/
+wump2ka with anchor and 905 at zero differing objects. Run at 1400x900:
+
+- `anchor.z8.js` declaredTable=true, inventory=4, **objectsDiffering=0**
+- `905.z5.js` declaredTable=true, inventory=2, **objectsDiffering=0**
+- `wump2ka.z5.js` 10 differing -- D186's intended corrections (canteen
+  static/light -> container/open/takeable; Glow Bar scenery/worn -> switchable)
+- `LostPig.z8.js` 9 differing -- moon/forest/field/farm/tracks -> scenery
+  instead of takeable; pants -> clothing/wearable/worn
+
+wump2ka and LostPig were already declaring BEFORE D193; they are not among the
+recovered 20, so those diffs are D186's and are unchanged by this work.
+
+The plan also asked for "the partial-table test repeated on an ALIASED table:
+remove one segment of an aliased pair and confirm the whole map is still
+rejected." That requirement was superseded by codex at docs/ai-review.md:94-96 --
+removing an OPTIONAL alias while a valid required name remains must PASS, and
+only a missing REQUIRED name or an empty segment may reject. The suite
+implements the correction, and asserts both directions.

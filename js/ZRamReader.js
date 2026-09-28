@@ -200,7 +200,16 @@ var ZRamReader = {
             }
             // Require the complete action-relevant library contract, not an
             // accidental string run or a stripped/partial symbol table.
-            if (!["animate", "static", "scenery", "container", "open", "openable", "on", "switchable", "worn"].every(function (name) {
+            // D193 item 2: talkable, supporter and clothing were deliberately
+            // left out of this set until somebody measured whether real tables
+            // carry them, because bitFor OMITS rather than mixes -- a table
+            // parsing without `supporter` makes a real supporter read as not
+            // one, silently withholding search and put-on. Measured across all
+            // 225 decoded tables: 225/225 declare all three. So their absence
+            // marks a stripped table rather than a dialect, and rejecting is
+            // correct. This is a no-op on the present catalog by construction.
+            if (!["animate", "static", "scenery", "container", "open", "openable", "on", "switchable", "worn",
+                  "talkable", "supporter", "clothing"].every(function (name) {
                 return Object.prototype.hasOwnProperty.call(bits, name);
             })) return null;
             result = { bits: bits, address: namesAt, source: "inform-attribute-names" };

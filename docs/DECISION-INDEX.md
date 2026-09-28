@@ -4,7 +4,7 @@ One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
 This exists because the plan itself is not greppable: 77 decisions across
-5761 lines, with single lines over 20,000 characters, so one grep match
+5803 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -21,7 +21,7 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 
 | D | claim | files | games |
 |---|-------|-------|-------|
-| D193 | One bit, several declared names |  |  |
+| D193 | item 2: the required subset, measured instead of argued | tools/attribute-declaration-ab.js | LostPig wump2ka anchor |
 | D192 | Four leftovers from the second audit round |  |  |
 | D191 | The carry probe's lifecycle: a draft, a queued submit, and a permission |  |  |
 | D190 | Take on a promoted object, gated by the module's own declaration |  |  |

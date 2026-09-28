@@ -2817,7 +2817,13 @@ which invalidates the fixed bit positions without invalidating the declarations.
 The extractor follows the bounded end of the object-property area, the class
 list terminator, the identifier count and the compiler's 48-entry attribute
 array. Packed strings must terminate within bounds; declared names must be
-valid and unique, with a complete action-relevant library subset. A WeakMap
+valid, and unique per BIT -- several names may share one bit ([D193](PRODUCTION_PLAN.md#pl-d193)
+aliases), but one name may not claim two bits -- with a complete
+action-relevant library subset. Since D193 that subset is twelve names: animate,
+static, scenery, container, open, openable, on, switchable, worn, and
+talkable/supporter/clothing, the last three added on the measurement that
+225/225 decoded tables declare them, so absence marks a stripped table rather
+than a dialect. A WeakMap
 caches immutable declarations per memory instance. Failure returns null and
 preserves the existing profile/learners. Z4/Z5/Z8 Inform only; no Glulx/ZIL
 reinterpretation. Learned overrides retain their current priority. The ordinary
