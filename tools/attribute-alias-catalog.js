@@ -84,20 +84,34 @@ function preD193Reader() {
 }
 
 // ---------------------------------------------------------------- 1. additive
-const current = JSON.parse(fs.readFileSync(path.join(root, "tools/screenshots/matrix/d186-attribute-catalog.json"), "utf8"));
+// Codex (B): the first repair derived the PRE-D193 side live but still read the
+// CURRENT side from tools/screenshots/matrix/d186-attribute-catalog.json -- a
+// path .gitignore excludes wholesale (.gitignore:47, `tools/screenshots/`). On a
+// clean checkout that file does not exist, and on a dirty one it can be stale
+// relative to js/ZRamReader.js. So "self-sufficient" was only half true. BOTH
+// sides are now decoded in process from the games directory: old reader and
+// current reader, same memory, same run. No artifact is read at all.
 const SKIP_ADDITIVE = process.argv.indexOf("--mutations-only") > -1;
 
 if (!SKIP_ADDITIVE) {
-    // "before" is computed, not read from a file that may already be "after".
-    const informFiles = current.modules.map(m => m.file);
-    const pre = preD193Reader();
-    const before = { modules: informFiles.map(file => {
-        const mem = loadMem(file);
-        pre._attributeNamesCache = new WeakMap();
-        let table = null;
-        try { table = pre.informAttributeNames(mem); } catch (e) { table = null; }
-        return { file, table };
-    }) };
+    const games = fs.readdirSync(path.join(root, "games")).filter(f => /\.(z[1-8]|zblorb)\.js$/i.test(f));
+    const pre = preD193Reader(), now = freshReader();
+    const before = { modules: [] }, current = { modules: [] };
+    for (const file of games) {
+        let mem;
+        try { mem = loadMem(file); } catch (e) { continue; }
+        if (!mem) continue;
+        let inform = false;
+        try { inform = now.isInformCompiled(mem); } catch (e) {}
+        if (!inform) continue;                       // non-Inform is a separate, intended path
+        const decode = (R) => {
+            R._attributeNamesCache = new WeakMap();
+            try { return R.informAttributeNames(mem); } catch (e) { return null; }
+        };
+        before.modules.push({ file, table: decode(pre) });
+        current.modules.push({ file, table: decode(now) });
+    }
+    console.log("decoded " + current.modules.length + " Inform modules with BOTH readers in process");
     const byFile = m => Object.fromEntries(m.modules.map(x => [x.file, x]));
     const b = byFile(before), a = byFile(current);
     const wasDeclared = Object.keys(b).filter(f => b[f].table);

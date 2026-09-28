@@ -14,9 +14,13 @@
 //
 // Verified to FAIL against 93f1799 (5 of 6 checks) before the fix, which is the
 // only reason to trust them passing now. Run against real wump2ka, not a stub.
+// Codex (A): this file was promoted from a scratchpad probe, which had to require
+// Playwright by absolute path because it lived outside the tree. Inside tools/ it
+// must not -- an absolute root made the asserted regression run on one machine at
+// one path only, which is a worse defect than the one it was written to catch.
 const path = require('node:path'); const { pathToFileURL } = require('node:url');
-const root = 'C:/Users/hymlo/Downloads/Projects/Parchmap-main/Parchmap-main';
-const { chromium } = require(path.join(root, 'node_modules', 'playwright'));
+const root = path.resolve(__dirname, '..');
+const { chromium } = require('playwright');
 
 (async () => {
   const browser = await chromium.launch();
@@ -83,6 +87,34 @@ const { chromium } = require(path.join(root, 'node_modules', 'playwright'));
   check(after.stale.every(s => s !== true), 'F2 Resync after bootstrap leaves no ramStale marks', JSON.stringify(after));
   check(after.rollback === false, 'F2 rollback snapshot consumed', JSON.stringify(after));
   check(after.timer === false, 'F2 timer cancelled', JSON.stringify(after));
+
+  // ---- F2b (codex): the transition NOT covered above. The rollback snapshot is
+  // released the moment a Submit succeeds, on the reasoning that the ordinary
+  // reply path then owns preferInventoryText and the ramStale marks. If a Resync
+  // lands after the submit but BEFORE the reply, no rollback exists and the reply
+  // never comes -- so whoever owns those flags must still leave them clean.
+  // Codex did not claim a reproduced product failure here; this establishes what
+  // the behaviour actually is rather than assuming it.
+  await page.evaluate(() => { try{EquipmentUI.Hide();}catch(e){} });
+  try { await page.click('#message #close', { timeout: 700 }); } catch(e){}
+  await page.waitForTimeout(1200);
+  const midFlight = await page.evaluate(async () => {
+    StatTracker.clearCarryProbe();
+    StatTracker._carryProbeSentAt = 0; StatTracker._hideCarryProbe = false; StatTracker._carryBootstrapAt = 0;
+    StatTracker.requestCarryBootstrap();
+    await new Promise(r => setTimeout(r, 30));        // let the deferred submit run
+    const sentOk = (window.__sent || []).slice(-1)[0] || '';
+    const releasedOnSuccess = StatTracker._carryProbeRollback === null;
+    StatTracker.Resync();                             // resync AFTER submit, BEFORE reply
+    const m = StatTracker.model();
+    return { sentOk, releasedOnSuccess,
+             prefer: !!m.preferInventoryText,
+             stale: ['value','weight','capacity'].map(k => m.stats[k] ? !!m.stats[k].ramStale : null) };
+  });
+  check(/=>true$/.test(midFlight.sentOk), 'F2b the probe did submit before the Resync', JSON.stringify(midFlight));
+  check(midFlight.releasedOnSuccess === true, 'F2b rollback released on Submit success (documented behaviour)', JSON.stringify(midFlight));
+  check(midFlight.prefer === false, 'F2b Resync mid-flight leaves preferInventoryText false', JSON.stringify(midFlight));
+  check(midFlight.stale.every(s => s !== true), 'F2b Resync mid-flight leaves no ramStale marks', JSON.stringify(midFlight));
 
   console.log('\nerrors=' + errs.length + (errs.length ? ' ' + errs[0] : ''));
   console.log(fails ? (fails + ' FAIL') : 'all checks pass');

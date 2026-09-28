@@ -1549,6 +1549,23 @@ var StatTracker = {
     clearCarryProbe: function () {
         try { if (StatTracker._carryProbeTimer) clearTimeout(StatTracker._carryProbeTimer); } catch (e) {}
         StatTracker.rollbackCarryProbe();       // D195: undo what the cancelled probe changed
+        // D197 (codex): the snapshot is released the instant a Submit succeeds,
+        // because from there the reply path legitimately owns these flags. But a
+        // Resync/restore/restart/undo landing AFTER the submit and BEFORE the
+        // reply leaves no snapshot to restore AND no reply ever coming, so
+        // preferInventoryText and the ramStale marks stayed set -- the same
+        // symptom D194 fixed, by a different route. Reproduced, not theoretical.
+        //
+        // clearCarryProbe means "nothing is in flight and nothing will complete",
+        // so no awaiting-inventory state may survive it, snapshot or not. Safe
+        // because Resync calls forgetReadings first: the stats are being rebuilt.
+        try {
+            var m = StatTracker.model();
+            m.preferInventoryText = false;
+            ["value", "weight", "capacity"].forEach(function (k) {
+                if (m.stats[k]) m.stats[k].ramStale = false;
+            });
+        } catch (eN) {}
         StatTracker._carryProbeTimer = null;
         StatTracker._carryProbeSentAt = 0;
         StatTracker._carryBootstrapAt = 0;

@@ -194,9 +194,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 296 headings; 103 decision rows; 399 registered units.
-**Last registered unit:** `pl-s296`. **Body SHA-256 (LF):**
-`8ad1c945f800d4e9be719606c9ede1dbf6ecebcedd6b79922ff91bda78e93a6d`
+**Local manifest:** 303 headings; 103 decision rows; 406 registered units.
+**Last registered unit:** `pl-s303`. **Body SHA-256 (LF):**
+`d604498dd05b0ade01cd92f89381135522c31324517a1d2a9aaca332fc8a2100`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -675,6 +675,13 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s294](#pl-s294) | Why the 14 would have been a trap | H3 | Record |
 | [pl-s295](#pl-s295) | Verified | H3 | Record |
 | [pl-s296](#pl-s296) | Limits, stated | H3 | Record |
+| [pl-s297](#pl-s297) | D197 A verifier that only runs here is not a verifier | H2 | Implemented |
+| [pl-s298](#pl-s298) | A: the suite ran on one machine at one path | H3 | Record |
+| [pl-s299](#pl-s299) | B: "self-contained" was half true | H3 | Record |
+| [pl-s300](#pl-s300) | C: codex's uncovered transition was a real defect | H3 | Record |
+| [pl-s301](#pl-s301) | My own instance of B, which codex did not catch | H3 | Record |
+| [pl-s302](#pl-s302) | Verified | H3 | Record |
+| [pl-s303](#pl-s303) | Still open | H3 | Record |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -6173,8 +6180,11 @@ a work plan.
 
 `node tools/decoder-gap-diagnostic.js` (13 gates instrumented, 271 Inform modules,
 225 declaring / 46 fallback) and `node tools/decoder-gap-diagnostic.js --symbols`
-(whole-file scan, controls at 14/14/13). Evidence in
-`tools/screenshots/matrix/d196-symbol-presence.json`.
+(whole-file scan, controls at 14/14/13). Both commands are tracked, take no
+arguments and print the controls beside the result: the COMMAND is the citation.
+`tools/screenshots/matrix/d196-symbol-presence.json` is written as a local
+convenience only -- `.gitignore:47` excludes that directory, so it is not
+available to a reviewer on a clean checkout. See D197.
 
 <a id="pl-s296" data-chapter-id="pl-s296"></a>
 ### Limits, stated
@@ -6186,3 +6196,91 @@ does not prove the compiler emitted it as part of a table, which is why clusteri
 was measured for every recovery candidate and why Enemies and vindaloo were
 rejected. A negative result still rests on the probe list being representative;
 the controls scoring 13-14 of 15 is the evidence that it is.
+
+<a id="pl-s297" data-chapter-id="pl-s297"></a>
+## D197 A verifier that only runs here is not a verifier
+
+Codex's audit of 4367e5f accepted F1/F2/F3 on independent re-runs (lifecycle 6/6,
+alias 32/0, stat 118/0, both validators PASS) and refused to close F4/F5, with two
+verification defects and one uncovered transition. All three were real. The third
+was a live product defect.
+
+<a id="pl-s298" data-chapter-id="pl-s298"></a>
+### A: the suite ran on one machine at one path
+
+`tools/carry-probe-lifecycle-live.js` carried `root =
+'C:/Users/hymlo/Downloads/Projects/Parchmap-main/Parchmap-main'` and required
+Playwright through that absolute path. It was promoted straight from a scratchpad
+probe, where the absolute require was necessary because the file sat outside the
+tree; inside `tools/` it is simply broken for everyone else. An asserted
+regression nobody else can run is a worse defect than the one it was written to
+catch. Now `path.resolve(__dirname, '..')` and a plain `require('playwright')`.
+Verified: no `tools/*.js` contains an absolute path any more.
+
+<a id="pl-s299" data-chapter-id="pl-s299"></a>
+### B: "self-contained" was half true
+
+D195 removed the `--baseline` file and derived the PRE-D193 reader in process --
+and left the CURRENT side reading
+`tools/screenshots/matrix/d186-attribute-catalog.json`. `.gitignore:47` excludes
+`tools/screenshots/` wholesale, so that file is untracked: absent on a clean
+checkout, and stale relative to `js/ZRamReader.js` on a dirty one. The claim in
+mail #882 that the verifier was clean-checkout self-contained was wrong.
+
+Both sides are now decoded in process from `games/`, old reader and current
+reader, same memory, same run, no artifact read at all. Proven rather than
+asserted: with the artifact moved away, the suite still reports 271 Inform
+modules, 205 -> 225, the same 20, 32 PASS / 0 FAIL.
+
+<a id="pl-s300" data-chapter-id="pl-s300"></a>
+### C: codex's uncovered transition was a real defect
+
+Codex asked for a case covering a SUCCESSFUL Submit followed by a resync before
+the reply, noting the rollback is released immediately on success, and was
+explicit that it was not claiming a reproduced failure. Written, and it failed at
+once: `prefer=true`, `ramStale=[true,true,true]`.
+
+The mechanism. The snapshot is released the instant a Submit succeeds, on the
+sound reasoning that the reply path then owns those flags -- keeping it would let
+a later cancel overwrite a real reading. But a Resync landing after the submit and
+before the reply leaves no snapshot to restore AND no reply ever coming, so the
+flags stayed set. Same user-visible symptom as D194 (totals stuck marked stale),
+reached by a different route, and D194/D195 did not cover it.
+
+Fix: `clearCarryProbe` now unconditionally normalises `preferInventoryText` and
+the three `ramStale` marks after attempting the snapshot rollback. Its contract is
+"nothing is in flight and nothing will complete", so no awaiting-inventory state
+may survive it, snapshot or not. Safe because `Resync` calls `forgetReadings`
+first, so the stats are being rebuilt anyway. The accepted Wumpus auto-inventory
+workaround is untouched.
+
+<a id="pl-s301" data-chapter-id="pl-s301"></a>
+### My own instance of B, which codex did not catch
+
+D196 cites `tools/screenshots/matrix/d196-symbol-presence.json` as its evidence.
+That is the same ignored directory. A reviewer on a clean checkout cannot open the
+file backing the 228-of-271 claim. The convention in pl-s253 for these artifacts
+is "internal audit artifacts, not distribution content", which is fine for a
+screenshot and not fine for the only record of a measurement.
+
+Corrected by making the regeneration command the primary citation rather than the
+path: `node tools/decoder-gap-diagnostic.js --symbols`, which is tracked, takes no
+arguments and prints the controls alongside the result. The JSON remains a local
+convenience. Noting the pattern rather than just the instance: three times now the
+evidence for a claim has been less durable than the claim -- a temp file that no
+longer exists (F5), an untracked artifact (B), and this.
+
+<a id="pl-s302" data-chapter-id="pl-s302"></a>
+### Verified
+
+`tools/carry-probe-lifecycle-live.js` 10 checks, all pass, portable paths, real
+wump2ka at 1400x900. The four new F2b checks were confirmed to FAIL before the fix
+in the same run that exposed them. `tools/attribute-alias-catalog.js` 32/0 with
+the artifact deliberately moved away. stat-tracker 118/0, stat-tracker-live 12/0,
+carry-value-live 19/0. Both embedded validators PASS.
+
+<a id="pl-s303" data-chapter-id="pl-s303"></a>
+### Still open
+
+F6 / D192 finding 5, unchanged. `harness/_carry_equip_live.js` still asserts
+nothing; codex's call on delete-or-convert, not taken unilaterally.
