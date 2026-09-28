@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 83 decisions across
-6554 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 84 decisions across
+6617 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -21,6 +21,7 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 
 | D | claim | files | games |
 |---|-------|-------|-------|
+| D200 | Inform Z3 declaration reader | js/ZRamReader.js | catseye gussdeath moonglow |
 | D199 | The citation now reproduces the conclusion |  |  |
 | D198 | TEMPORARY DRAFT: ZIL/Infocom capability completion through existing systems |  |  |
 | D197 | A verifier that only runs here is not a verifier | tools/carry-probe-lifecycle-live.js |  |

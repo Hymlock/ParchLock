@@ -115,7 +115,8 @@ var ZRamReader = {
     },
 
     // Inform tables.c: object properties, class IDs + zero, identifier count,
-    // property-name packed strings, then 48 attribute-name packed strings.
+    // property-name packed strings, then version-sized attribute-name strings
+    // (32 in v3, 48 in v4+).
     // Read declarations, never infer semantics from object names or played verbs.
     _attributeNamesCache: new WeakMap(),
     informAttributeNames: (mem) => {
@@ -130,21 +131,26 @@ var ZRamReader = {
         var result = null;
         try {
             var h = ZRamReader.header(mem), len = mem.byteLength || mem.length || 0;
-            if (!h || [4, 5, 8].indexOf(h.version) < 0 || !ZRamReader.isInformCompiled(mem)) return null;
+            if (!h || [3, 4, 5, 8].indexOf(h.version) < 0 || !ZRamReader.isInformCompiled(mem)) return null;
+            var v3 = h.version <= 3;
+            var propPointerOffset = v3 ? 7 : 12;
+            var attributeCount = v3 ? 32 : 48;
             var firstObject = ZRamReader.objectBase(h, 1);
-            var firstProps = ZRamReader.u16(mem, firstObject + 12);
+            var firstProps = ZRamReader.u16(mem, firstObject + propPointerOffset);
             var count = (firstProps - firstObject) / h.entrySize, end = 0;
             if (!Number.isInteger(count) || count < 1 || count > 20000 || !len || h.globals >= len) return null;
             for (var id = 1; id <= count; id++) {
                 var base = ZRamReader.objectBase(h, id);
-                var ptr = ZRamReader.u16(mem, base + 12);
+                var ptr = ZRamReader.u16(mem, base + propPointerOffset);
                 if (ptr < firstProps || ptr >= h.globals) return null;
-                var at = ptr + 1 + 2 * ZRamReader.u8(mem, ptr), previous = 64;
+                var at = ptr + 1 + 2 * ZRamReader.u8(mem, ptr), previous = v3 ? 32 : 64;
                 while (at < h.globals && ZRamReader.u8(mem, at)) {
-                    var first = ZRamReader.u8(mem, at++), num = first & 63;
+                    var first = ZRamReader.u8(mem, at++), num = first & (v3 ? 31 : 63);
                     if (!num || num >= previous) return null;
                     previous = num;
-                    var size = (first & 128) ? (ZRamReader.u8(mem, at++) & 63) || 64 : (first & 64) ? 2 : 1;
+                    var size;
+                    if (v3) size = (first >> 5) + 1;
+                    else size = (first & 128) ? (ZRamReader.u8(mem, at++) & 63) || 64 : (first & 64) ? 2 : 1;
                     at += size;
                 }
                 if (at >= h.globals) return null;
@@ -159,8 +165,8 @@ var ZRamReader = {
             }
             var properties = ZRamReader.u16(mem, end);
             var namesAt = end + properties * 2;
-            if (properties < 64 || namesAt + 96 > h.globals) return null;
-            var scale = h.version === 8 ? 8 : 4;
+            if (properties < 64 || namesAt + attributeCount * 2 > h.globals) return null;
+            var scale = v3 ? 2 : h.version === 8 ? 8 : 4;
             var decode = function (packed) {
                 var address = packed * scale, stop = address;
                 if (address < h.himem || address + 2 > len) return null;
@@ -171,7 +177,7 @@ var ZRamReader = {
             };
             if (decode(ZRamReader.u16(mem, end + 2)) !== "name") return null;
             var bits = {};
-            for (var bit = 0; bit < 48; bit++) {
+            for (var bit = 0; bit < attributeCount; bit++) {
                 var packed = ZRamReader.u16(mem, namesAt + bit * 2);
                 if (!packed) continue;
                 var entry = decode(packed);
@@ -214,7 +220,10 @@ var ZRamReader = {
             // format guarantee: the next shifted table declaring the nine but
             // not `clothing` would be thrown away. A silent omit on a rare
             // table is cheaper than PROFILE overwriting a correct shifted map.
-            if (!["animate", "static", "scenery", "container", "open", "openable", "on", "switchable", "worn"].every(function (name) {
+            var required = v3
+                ? ["container", "general", "moved", "open", "on", "scenery", "static", "visited", "workflag"]
+                : ["animate", "static", "scenery", "container", "open", "openable", "on", "switchable", "worn"];
+            if (!required.every(function (name) {
                 return Object.prototype.hasOwnProperty.call(bits, name);
             })) return null;
             result = { bits: bits, address: namesAt, source: "inform-attribute-names" };

@@ -190,6 +190,10 @@ decisions and their later mentions, not only the first matching record.
 - **First-query capabilities:** [D186](#pl-d186) resolves D169/pl-s240's schema
   mismatch using compiled attribute declarations; D73 remains the after-use learner.
   It also tightens D185 inspect policy and D169/D178/D180/D181 stat lifecycles.
+- **Inform Z3 declarations:** [D200](#pl-d200) extends D186's bounded declaration
+  reader to the three structurally recoverable Inform Z3 modules. It does not extend
+  declaration recovery to ZIL/Infocom or the 43 Inform modules with no table, and it
+  leaves D73 and the existing opcode/behavior learners in place.
 - **ZIL/Infocom capability expansion is reuse-first:** [D198](#pl-d198) is a temporary
   proposed continuation of [D88](#pl-d88), [D134](#pl-d134), and
   [D142-D145](#pl-d142). It does not authorize a second semantic registry, recorder,
@@ -199,9 +203,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 311 headings; 103 decision rows; 414 registered units.
-**Last registered unit:** `pl-s311`. **Body SHA-256 (LF):**
-`c1f439d182acdf1cbf46b34d7f4327ebe55b6e93a2820c28b7e6eda53eac5756`
+**Local manifest:** 312 headings; 103 decision rows; 415 registered units.
+**Last registered unit:** `pl-s312`. **Body SHA-256 (LF):**
+`dcea026c191bba2dbaf52d6fb291326f8aaf98e648b8b73268d3f72746160f7b`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -695,6 +699,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s309](#pl-s309) | Release state | H3 | Record |
 | [pl-s310](#pl-s310) | Verified | H3 | Record |
 | [pl-s311](#pl-s311) | Closing the D186-D197 arc | H3 | Record |
+| [pl-s312](#pl-s312) | D200 Inform Z3 declaration reader | H2 | Implemented |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -6551,3 +6556,61 @@ and inventory room-reset suppression, untested risk rather than a live failure.
 and was not taken unilaterally. A v3 attribute reader for D196's three recoverable
 modules is scoped but unstarted, and per the D198 audit its v3 layout work should
 be shared with the ZIL lane rather than built twice.
+
+<a id="pl-s312" data-chapter-id="pl-s312"></a><a id="pl-d200"></a>
+## D200 Inform Z3 declaration reader
+
+**Lifecycle:** Implemented and adversarially audited, 2026-09-28. **Scope:** the
+compiled Inform attribute-name path in `js/ZRamReader.js`, for the three Inform Z3
+modules that D196 proved contain a real table: `catseye.z3.js`, `gussdeath.z3.js`,
+and `moonglow.z3.js`. This supersedes only D196/D199's statement that their reader
+was scoped but unstarted. D198's ZIL grammar/action plan remains proposed, and the
+43 table-absent Inform modules remain on the existing PROFILE, opcode and behavioral
+fallback paths.
+
+**Contract and implementation:** `informAttributeNames` now selects its bounded
+layout by Z-machine version. V3 uses the already-shared `ZRamReader` fundamentals:
+31 property-default words, 9-byte object entries, four attribute bytes, the property
+pointer at object offset `+7`, descending one-byte V3 property headers, 32 attribute
+slots, and packed-string scale two. V4/V5/V8 retain their prior 63 defaults, 14-byte
+entries, `+12` pointer, 48 slots and existing property/string rules. The Inform
+compiler gate remains mandatory, so this does not reinterpret ZIL/Infocom V3. These
+version facts agree with the Z-Machine Standard's V1-V3 object-table layout; current
+Inform compiler documentation also confirms that the symbol-name table can be
+omitted, which is why absence remains an expected capability result rather than a
+reason to loosen bounds.
+
+The small `catseye` and `moonglow` libraries genuinely declare only 14 names, while
+`gussdeath` declares 28. V3 therefore has its own required structural core
+(`container`, `general`, `moved`, `open`, `on`, `scenery`, `static`, `visited`,
+`workflag`) instead of pretending that every old library declared the later V4+
+action set. This is not a standard-profile fallback: after a table is accepted,
+`AttributeSchema.bitFor` returns `null` for any name absent from that declaration,
+and `applyTo` omits that flag. It never reads the standard bit at the same number.
+Removing a required declaration rejects the whole V3 table. Corruption, duplicate
+names at different bits, bad property order, bad string bounds and partial required
+sets still fail closed.
+
+**Adversarial result:** the full catalog is 327 PASS / 0 FAIL across 298 modules and
+56,974 Inform objects. Declaration coverage rises exactly 225 -> 228 of 271 Inform
+modules: `catseye` 39 objects, `gussdeath` 29 and `moonglow` 39. All 27 non-Inform
+modules, including the 24 ZIL/Infocom V3 modules in D198's future lane, still return
+no declaration table. The focused suite is 29/29 and includes a V3 missing-required
+mutation. Neighbor gates remain green: phase B 11/11, verb disablement 22/22,
+nested inventory 60/60, dictionary verbs 54/54 and semantic parity 24/24.
+
+`tools/decoder-gap-diagnostic.js` was repointed rather than weakened: all 13 rejection
+anchors instrument the generalized reader, the required-subset report reads the
+reader's version-owned set, and `--symbols` preserves the historical evidence while
+reporting current state. Its final classification is three of three D200 recoveries
+declaring today, zero new clustered candidates, 43 table-absent modules, and a current
+ceiling of 228/271. `service-worker.js` advances to `parchlock-shell-v80`.
+
+**Packaging and limits:** `build-android.bat dev` completed successfully after the
+runtime change; source, desktop staging, Capacitor staging and Android bundled
+`js/ZRamReader.js` had identical SHA-256 bytes, producing
+`C:\Users\hymlo\Downloads\ParchLock-dist\ParchLock-dev.apk`. This verifies build
+inclusion, not native-device gameplay in every state. The unrelated
+`harness/command-consistency-regression.js` usage-ranking assertion was red before
+and after this change; both that harness and `js/Actionable.js` are unchanged from
+HEAD, so it is recorded without being folded into D200.

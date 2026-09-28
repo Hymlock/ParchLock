@@ -190,13 +190,17 @@ decisions and their later mentions, not only the first matching record.
 - **First-query capabilities:** [section 61](#ar-ch61) / [D186](PRODUCTION_PLAN.md#pl-d186)
   adds compiled attribute declarations ahead of the existing after-use learners;
   it also tightens inspect-only actions and stats lifecycle rules.
+- **Inform Z3 declaration layouts:** [section 63](#ar-ch63) /
+  [D200](PRODUCTION_PLAN.md#pl-d200) extends that same reader with a bounded V3
+  layout while preserving the Inform gate, optional-name omission and every
+  existing fallback provider.
 - Some earlier status banners and diagrams describe old builds. This indexing change
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 87 headings; 0 decision rows; 87 registered units.
-**Last registered unit:** `ar-s087`. **Body SHA-256 (LF):**
-`0f642678e20a6c4d02f507deea9955a22cc00cbb840712d19dfe82b93b7007bf`
+**Local manifest:** 88 headings; 0 decision rows; 88 registered units.
+**Last registered unit:** `ar-s088`. **Body SHA-256 (LF):**
+`ed3a616854c354dd7ceec0f2ae15b6dbbdcfe89b33bfbf5ae5eba685b0296d6a`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -363,6 +367,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s085](#ar-s085) | Custom status windows | H3 | Record |
 | [ar-s086](#ar-s086) | 61. Compiled attribute declarations and audit corrections (D186) | H2 | Implemented |
 | [ar-s087](#ar-s087) | 62. Attribute audit coverage and remaining decoder gaps | H2 | Verified / Partial |
+| [ar-s088](#ar-s088) | 63. Inform Z3 declaration layout (D200) | H2 | Implemented |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -2892,3 +2897,41 @@ no attribute-name table in the file, so no locator work reaches them; the opcode
 learners are the only mechanism that can. The realistic ceiling is 228 of 271.
 Do not merge this work with heuristic action guessing or remove existing fallback
 providers. Full state-dependent action-handler interpretation remains separate.
+
+<a id="ar-s088" data-chapter-id="ar-s088"></a><a id="ar-ch63"></a>
+## 63. Inform Z3 declaration layout (D200)
+
+D200 extends section 61's declaration pipeline; it does not add a parallel schema
+provider or a title-specific exception. `ZRamReader.informAttributeNames` owns both
+version layouts and is still selected only after `isInformCompiled` succeeds.
+
+```mermaid
+flowchart LR
+  H[Z-machine header + Inform gate] --> V{version}
+  V -->|V3| V3[31 defaults; 9-byte objects; +7 props; 32 attrs; scale 2]
+  V -->|V4/V5/V8| V4[63 defaults; 14-byte objects; +12 props; 48 attrs; scale 4/8]
+  V3 --> B[bounded property walk + identifier table]
+  V4 --> B
+  B --> R{version-owned required set complete?}
+  R -->|yes| D[declared name-to-bit map]
+  R -->|no| F[null: existing fallback providers]
+  D --> A[AttributeSchema.bitFor/applyTo]
+  A --> O[absent optional name is omitted]
+  A --> C[ActionSynth and existing consumers]
+```
+
+The V3 branch follows the version's native object and property representation rather
+than changing only a version allow-list. Its accepted structural core is the nine names
+actually shared by the three recovered old libraries. This narrower required set does
+not resurrect standard-profile bits for missing names: once any declaration table is
+accepted, `AttributeSchema.bitFor` returns `null` for an undeclared flag. Thus the
+14-name `catseye`/`moonglow` maps remain sparse and truthful; the 28-name `gussdeath`
+map exposes its additional capabilities; and no absent `animate`, `openable`,
+`switchable`, `worn`, `talkable`, `supporter` or `clothing` declaration is invented.
+
+The capability boundary is now 228 declaring Inform modules and 43 table-absent Inform
+modules. All 27 non-Inform modules remain outside this path, including all ZIL/Infocom
+V3 stories addressed by the separate proposed D198 adapter. `tools/decoder-gap-diagnostic.js`
+uses the reader's own version-owned `required` set and reports the D200 trio as historical
+recoveries that declare today, so the tracked citation no longer contradicts runtime.
+Evidence and packaging limits are recorded in [D200](PRODUCTION_PLAN.md#pl-d200).

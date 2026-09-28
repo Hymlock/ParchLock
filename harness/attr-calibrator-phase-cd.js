@@ -226,15 +226,34 @@ function driveVerbSuccess(AttrCalibrator, command, opcodes, forceObjectId) {
     A._getMem = () => partial;
     assert(R.informAttributeNames(partial) === null && Object.keys(A.PROFILE).every(k => A.bitFor(k, partial) === A.PROFILE[k]),
         "D186: one missing required declaration rejects the WHOLE table; no mixed positions");
-    for (const file of ["anchor.z8.js", "905.z5.js", "Zork1-TheGreatUndergroundEmpire.z3.js", "Enchanter.z3.js", "LostPig.z8.js"]) {
+    const z3Expected = {
+        "catseye.z3.js": { container: 1, scenery: 8, static: 10, workflag: 12 },
+        "gussdeath.z3.js": { animate: 0, container: 3, scenery: 17, static: 19, workflag: 25 },
+        "moonglow.z3.js": { container: 1, scenery: 8, static: 10, workflag: 12 }
+    };
+    for (const file of ["anchor.z8.js", "905.z5.js", "Zork1-TheGreatUndergroundEmpire.z3.js", "Enchanter.z3.js",
+        "catseye.z3.js", "gussdeath.z3.js", "moonglow.z3.js", "LostPig.z8.js"]) {
         let game;
         vm.runInNewContext(fs.readFileSync(path.join(root, "games", file), "utf8"), {
             processBase64Zcode: encoded => { game = new Uint8Array(Buffer.from(encoded, "base64")); }
         });
         A._getMem = () => game;
         const table = R.informAttributeNames(game);
-        if (/z3\.js$/.test(file)) {
+        if (!R.isInformCompiled(game)) {
             assert(table === null, "D186: " + file + " preserves the non-Inform fallback");
+        } else if (z3Expected[file]) {
+            const expected = z3Expected[file];
+            assert(table && Object.keys(expected).every(name => table.bits[name] === expected[name])
+                && R.header(game).entrySize === 9 && R.objectLinks(game, 1).attrBytes.length === 4,
+                "D200: " + file + " reads its real 32-attribute Inform Z3 declaration table");
+            if (file === "catseye.z3.js") {
+                const damaged = new Uint8Array(game);
+                const requiredBit = table.bits.container;
+                damaged[table.address + requiredBit * 2] = 0;
+                damaged[table.address + requiredBit * 2 + 1] = 0;
+                assert(R.informAttributeNames(damaged) === null,
+                    "D200: an Inform Z3 table missing a required declaration fails closed");
+            }
         } else if (file === "LostPig.z8.js") {
             assert(table && table.bits.static !== A.PROFILE.static,
                 "D186: another shifted compiler layout is independently decoded (LostPig)");

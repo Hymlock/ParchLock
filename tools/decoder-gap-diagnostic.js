@@ -40,8 +40,11 @@ const root = path.resolve(__dirname, "..");
 // Each entry: unique anchor in js/ZRamReader.js -> instrumented replacement.
 // `__g(gate, detail)` records and returns a sentinel instead of null.
 const GATES = [
-    ["if (!h || [4, 5, 8].indexOf(h.version) < 0 || !ZRamReader.isInformCompiled(mem)) return null;",
-     "if (!h || [4, 5, 8].indexOf(h.version) < 0 || !ZRamReader.isInformCompiled(mem)) return __g('version-gate', { version: h && h.version, inform: ZRamReader.isInformCompiled(mem) });"],
+    // D200 repointed: v3 is now an accepted version, so the gate reads [3,4,5,8].
+    // The anchor assertion caught this correctly -- it threw rather than
+    // silently instrumenting nothing.
+    ["if (!h || [3, 4, 5, 8].indexOf(h.version) < 0 || !ZRamReader.isInformCompiled(mem)) return null;",
+     "if (!h || [3, 4, 5, 8].indexOf(h.version) < 0 || !ZRamReader.isInformCompiled(mem)) return __g('version-gate', { version: h && h.version, inform: ZRamReader.isInformCompiled(mem) });"],
 
     ["if (!Number.isInteger(count) || count < 1 || count > 20000 || !len || h.globals >= len) return null;",
      "if (!Number.isInteger(count) || count < 1 || count > 20000 || !len || h.globals >= len) return __g('object-count', { count: count, firstObject: firstObject, firstProps: firstProps, entrySize: h.entrySize, globals: h.globals, len: len, integer: Number.isInteger(count) });"],
@@ -58,8 +61,8 @@ const GATES = [
     ["if (cls > count || seen[cls] || ++classes > count) return null;",
      "if (cls > count || seen[cls] || classes + 1 > count) return __g('class-list', { cls: cls, count: count, classes: classes, end: end, repeat: !!seen[cls] });"],
 
-    ["if (properties < 64 || namesAt + 96 > h.globals) return null;",
-     "if (properties < 64 || namesAt + 96 > h.globals) return __g('property-name-count', { properties: properties, namesAt: namesAt, end: end, globals: h.globals, tooFew: properties < 64 });"],
+    ["if (properties < 64 || namesAt + attributeCount * 2 > h.globals) return null;",
+     "if (properties < 64 || namesAt + attributeCount * 2 > h.globals) return __g('property-name-count', { properties: properties, namesAt: namesAt, end: end, globals: h.globals, tooFew: properties < 64 });"],
 
     ["if (decode(ZRamReader.u16(mem, end + 2)) !== \"name\" ) return null;", null], // placeholder, real anchor below
 
@@ -82,8 +85,11 @@ const GATES = [
 const NAME_ANCHOR = ["if (decode(ZRamReader.u16(mem, end + 2)) !== \"name\") return null;",
     "if (decode(ZRamReader.u16(mem, end + 2)) !== \"name\") return __g('first-property-not-name', { decoded: decode(ZRamReader.u16(mem, end + 2)), packed: ZRamReader.u16(mem, end + 2), end: end, himem: h.himem, scale: scale });"];
 
+// D200: the required set is now version-dependent (a different nine for v3), so
+// this reads the reader's own `required` variable rather than a hardcoded copy.
+// A hardcoded list would have silently reported the wrong missing names for v3.
 const REQUIRED_ANCHOR = ["})) return null;",
-    "})) return __g('required-subset', { declared: Object.keys(bits).sort(), missing: [\"animate\",\"static\",\"scenery\",\"container\",\"open\",\"openable\",\"on\",\"switchable\",\"worn\"].filter(function (n) { return !Object.prototype.hasOwnProperty.call(bits, n); }) });"];
+    "})) return __g('required-subset', { version: h.version, declared: Object.keys(bits).sort(), required: required, missing: required.filter(function (n) { return !Object.prototype.hasOwnProperty.call(bits, n); }) });"];
 
 function instrumentedSource() {
     // Normalised so multi-line anchors match regardless of the checkout's
@@ -219,7 +225,13 @@ if (process.argv.indexOf("--symbols") > -1) {
     };
 
     const subjects = fallback.map(r => r.file);
-    const controls = ["anchor.z8.js", "HugeCave.z8.js", "ztuu.z5.js"];
+    // D200 implemented the v3 reader, so these three now DECLARE and have left
+    // the fallback set. Codex's requirement: keep "recoverable before D200"
+    // visible and distinct from "declaring today", without reclassifying the 43.
+    // Scanned alongside the controls so the clustered evidence that predicted
+    // them stays reproducible from this command.
+    const D200_RECOVERED = ["catseye.z3.js", "gussdeath.z3.js", "moonglow.z3.js"];
+    const controls = ["anchor.z8.js", "HugeCave.z8.js", "ztuu.z5.js"].concat(D200_RECOVERED);
     console.log("\n\n=== symbol presence (whole-file scan, prose-proof identifiers) ===");
     console.log("CONTROLS (known to declare a table):");
     const report = [];
@@ -255,10 +267,22 @@ if (process.argv.indexOf("--symbols") > -1) {
     // reproduces the documented conclusion instead of contradicting it.
     const recoverable = subjectRows.filter(r => r.hasTable);
     const absent = subjectRows.filter(r => !r.hasTable);
-    console.log("\n=== FINAL CLASSIFICATION (D196) ===");
-    console.log("  recoverable in principle (clustered attribute-name table present): " + recoverable.length);
-    recoverable.forEach(r => console.log("     " + r.file.padEnd(22) + " v" + (rows.find(x => x.file === r.file) || {}).version +
-        "  " + r.clusterDistinct + " names in " + r.clusterSpan + "B: " + r.clusterNames.join(",")));
+    console.log("\n=== FINAL CLASSIFICATION (D196, as implemented by D200) ===");
+    const rec200 = report.filter(r => D200_RECOVERED.indexOf(r.file) > -1);
+    const recoveredToday = rec200.filter(r => {
+        const row = rows.find(x => x.file === r.file);
+        return !!(row && row.declared);
+    });
+    console.log("  recoverable before D200, DECLARING TODAY: " + recoveredToday.length + " of " + D200_RECOVERED.length);
+    rec200.forEach(r => console.log("     " + r.file.padEnd(22) + " v" + ((rows.find(x => x.file === r.file) || {}).version) +
+        "  " + r.clusterDistinct + " names in " + r.clusterSpan + "B" +
+        "  declaring=" + !!(rows.find(x => x.file === r.file) || {}).declared));
+    if (recoverable.length) {
+        console.log("  still fallback but clustered (would be new recovery candidates): " + recoverable.length);
+        recoverable.forEach(r => console.log("     " + r.file + "  " + r.clusterDistinct + " names in " + r.clusterSpan + "B"));
+    } else {
+        console.log("  still fallback but clustered (new recovery candidates): 0");
+    }
     console.log("  no attribute-name table in the file: " + absent.length);
     console.log("  rejected as coincidence (matched but never clustered): " +
         subjectRows.filter(r => !r.hasTable && r.attrNamesDistinct > 0)
