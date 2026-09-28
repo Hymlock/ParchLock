@@ -214,6 +214,18 @@ function driveVerbSuccess(AttrCalibrator, command, opcodes, forceObjectId) {
     assert(verbs.includes("switch on") && verbs.includes("switch off") && !bar.worn && !bar.scenery,
         "D186: Glow Bar offers both switch directions initially, without false worn/scenery flags");
     assert(R.informAttributeNames(bytes) === declarations, "D186: immutable declarations are cached per memory instance");
+    R._informCompiledCache = new WeakMap();
+    const originalU8 = R.u8;
+    let compilerStampReads = 0;
+    R.u8 = function (mem, at) {
+        if (at === 0x3C || at === 0x3D) compilerStampReads++;
+        return originalU8(mem, at);
+    };
+    const viewA = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+    const viewB = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+    assert(R.isInformCompiled(viewA) && R.isInformCompiled(viewB) && compilerStampReads === 2,
+        "D200 audit: Inform detection is cached by backing buffer across fresh DataView wrappers");
+    R.u8 = originalU8;
     const corrupt = new Uint8Array(bytes);
     corrupt[declarations.address] = 255; corrupt[declarations.address + 1] = 255;
     assert(R.informAttributeNames(corrupt) === null, "D186: corrupt table is rejected, not partially installed");

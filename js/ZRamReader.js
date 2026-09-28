@@ -661,9 +661,9 @@ var ZRamReader = {
     // a guess) -- MapTopology's state-delta labeling (the real typed
     // command, confirmed by actual travel) already handles exit discovery
     // for ANY compiler, Inform or not, and is completely unaffected.
-    // Cached per memory-buffer OBJECT (a WeakMap, not a single flag) --
-    // this is a whole-game constant fact, safe to cache for repeated calls
-    // against the SAME live mem view, but a single module-level flag would
+    // Cached per backing memory buffer (a WeakMap, not a single flag) --
+    // this is a whole-game constant fact, safe to cache across the fresh
+    // DataView wrappers ZRamProvider creates, but a single module-level flag would
     // incorrectly persist across a different game's mem buffer within the
     // same JS process (never an issue in the real browser, where each
     // `?story=` load is a fresh page/fresh module state, but a real
@@ -672,7 +672,8 @@ var ZRamReader = {
     _informCompiledCache: (typeof WeakMap !== "undefined") ? new WeakMap() : null,
     isInformCompiled: (mem) => {
         var cache = ZRamReader._informCompiledCache;
-        if (cache && mem && cache.has(mem)) return cache.get(mem);
+        var cacheKey = mem && mem.buffer ? mem.buffer : mem;
+        if (cache && cacheKey && cache.has(cacheKey)) return cache.get(cacheKey);
         var result = false;
         try {
             var a = ZRamReader.u8(mem, 0x3C);
@@ -684,7 +685,7 @@ var ZRamReader = {
                 result = ZRamReader.informDictionaryLayout(mem, dict && dict.entries);
             }
         } catch (e) { result = false; }
-        if (cache && mem) cache.set(mem, result);
+        if (cache && cacheKey) cache.set(cacheKey, result);
         return result;
     },
 

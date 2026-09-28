@@ -205,7 +205,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 312 headings; 103 decision rows; 415 registered units.
 **Last registered unit:** `pl-s312`. **Body SHA-256 (LF):**
-`c5dc47c868ee99a31494270f18c01d0a0fdafde41487ae7496c6c5d19ea43154`
+`57ed058a3bf60c3a2264125b5c90f9ba65cae3512017ef9880c261d225ebf461`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -6613,7 +6613,12 @@ anchors instrument the generalized reader, the required-subset report reads the
 reader's version-owned set, and `--symbols` preserves the historical evidence while
 reporting current state. Its final classification is three of three D200 recoveries
 declaring today, zero new clustered candidates, 43 table-absent modules, and a current
-ceiling of 228/271. `service-worker.js` advances to `parchlock-shell-v80`.
+ceiling of 228/271. The adversarial follow-up also corrected `isInformCompiled`'s
+WeakMap key from the provider's short-lived `DataView` wrapper to its stable backing
+`ArrayBuffer`; repeated ticks now reuse the same structural compiler result without
+changing detection semantics or cross-story isolation. A focused regression proves
+that two distinct views over one game perform one compiler-stamp read. `service-worker.js`
+advances to `parchlock-shell-v81`.
 
 **Packaging and limits:** `build-android.bat dev` completed successfully after the
 runtime change; source, desktop staging, Capacitor staging and Android bundled

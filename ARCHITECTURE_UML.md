@@ -200,7 +200,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 88 headings; 0 decision rows; 88 registered units.
 **Last registered unit:** `ar-s088`. **Body SHA-256 (LF):**
-`ed3a616854c354dd7ceec0f2ae15b6dbbdcfe89b33bfbf5ae5eba685b0296d6a`
+`d7b271341090d232e2b3bb6fc8c5606641edf459f8db49db89102977e2656353`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -2934,4 +2934,7 @@ modules. All 27 non-Inform modules remain outside this path, including all ZIL/I
 V3 stories addressed by the separate proposed D198 adapter. `tools/decoder-gap-diagnostic.js`
 uses the reader's own version-owned `required` set and reports the D200 trio as historical
 recoveries that declare today, so the tracked citation no longer contradicts runtime.
+The Inform compiler gate caches by the underlying `ArrayBuffer`, not by the disposable
+`DataView` returned on each provider read. This preserves per-game isolation while making
+the whole-file classification genuinely once per loaded memory buffer.
 Evidence and packaging limits are recorded in [D200](PRODUCTION_PLAN.md#pl-d200).
