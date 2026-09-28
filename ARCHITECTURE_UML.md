@@ -196,7 +196,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 87 headings; 0 decision rows; 87 registered units.
 **Last registered unit:** `ar-s087`. **Body SHA-256 (LF):**
-`df2d9ff96672b6b0e62364883b3cadb3f52a20697dcd892a890dcedfeeec1102`
+`14597950f631575edd162f037045036d75e0fd7839323ea96e36662535cd83f3`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -2867,7 +2867,12 @@ The broader 298-module browser run verifies startup only, not all game states:
 zero caught browser exceptions; early empty map readings and native menus are
 coverage limitations, not automatic failures. Existing providers and opcode
 learners remain parallel mechanisms. D188 prohibits unasked gameplay commands
-as a substitute for headless observation.
+as a substitute for headless observation, with ONE operator-approved exception:
+the carried-value probe submits an inventory command when the player opens the
+equipment sheet. That is an explicit user action, not an unasked one, and the
+operator directed that it be kept unless an equally effective headless
+replacement is proven. D194/D195 constrain it -- one transaction at a time, and
+every non-submitting path restores what it changed.
 
 Implemented in [D193](PRODUCTION_PLAN.md#pl-d193): the reader accepts the
 compiler's slash-separated attribute aliases as multiple names for ONE bit.

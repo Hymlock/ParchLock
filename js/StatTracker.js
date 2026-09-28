@@ -1528,9 +1528,29 @@ var StatTracker = {
     // a Submit belonging to a game that no longer exists. _hideCarryProbe left
     // true also widens the hidden-input checks in Actionable and Input to ANY
     // hidden LineInput, which is far broader than one suppressed probe.
+    // D194/D195: put back whatever the pending probe changed on the model.
+    // Idempotent, and a no-op once the model has been replaced by a new game,
+    // so it can never resurrect an abandoned timeline's flags.
+    _carryProbeRollback: null,
+    rollbackCarryProbe: function () {
+        try {
+            var r = StatTracker._carryProbeRollback;
+            if (!r) return;
+            StatTracker._carryProbeRollback = null;
+            var m = StatTracker.model();
+            if (m !== r.model) return;
+            m.preferInventoryText = r.prefer;
+            Object.keys(r.stale).forEach(function (k) {
+                if (m.stats[k]) m.stats[k].ramStale = r.stale[k];
+            });
+        } catch (e) {}
+    },
+
     clearCarryProbe: function () {
         try { if (StatTracker._carryProbeTimer) clearTimeout(StatTracker._carryProbeTimer); } catch (e) {}
+        StatTracker.rollbackCarryProbe();       // D195: undo what the cancelled probe changed
         StatTracker._carryProbeTimer = null;
+        StatTracker._carryProbeSentAt = 0;
         StatTracker._carryBootstrapAt = 0;
         StatTracker._hideCarryProbe = false;
         StatTracker._carryProbeTurnCheck = false;
@@ -1541,12 +1561,30 @@ var StatTracker = {
     },
 
     _carryProbeTimer: null,
+    _carryProbeSentAt: 0,           // D195: bounds the in-flight guard
     _carryProbeSubmitting: false,
 
     requestCarryBootstrap: function () {
         try {
             var now = Date.now();
             if (StatTracker._carryProbeUseless) return;
+            // D195 (codex): ONE probe transaction at a time. The 800ms throttle
+            // below cannot carry this, because EquipmentUI.Show() sets
+            // _carryBootstrapAt = 0 immediately before calling -- deliberately,
+            // so that opening the sheet always refreshes -- which means two
+            // Shows in quick succession both pass it. The second call then
+            // overwrote _carryProbeTimer without clearing the first, so BOTH
+            // timers fired and the story received `inventory` twice: two turns
+            // in a game like Wumpus where the probe costs one.
+            //
+            // Two states count as in flight:
+            //   - a submission is queued but has not run yet;
+            //   - one was sent and its reply has not been consumed. Bounded by
+            //     time so a story that never answers cannot wedge the probe
+            //     off permanently.
+            if (StatTracker._carryProbeTimer) return;
+            if (StatTracker._hideCarryProbe
+                && now - (StatTracker._carryProbeSentAt || 0) < 4000) return;
             if (now - (StatTracker._carryBootstrapAt || 0) < 800) return;
             if (typeof document === "undefined") return;
             var buf = "";
@@ -1583,8 +1621,14 @@ var StatTracker = {
             // mutated, leaving value/weight marked ramStale permanently, which
             // is what the player sees as "no longer updating". D192 rolled back
             // _hideCarryProbe on a refusal but not these.
+            // D195 (codex): the snapshot lives on StatTracker, not in this
+            // closure. D194 put it in a local, so clearCarryProbe -- which
+            // cancels the timer on Resync, restore, restart and undo -- had no
+            // way to undo the mutation it was cancelling, and left
+            // preferInventoryText and the ramStale marks set for a probe that
+            // will now never run.
             var model = StatTracker.model();
-            var rollback = { prefer: model.preferInventoryText, stale: {} };
+            var rollback = { model: model, prefer: model.preferInventoryText, stale: {} };
             model.preferInventoryText = true;
             ["value", "weight", "capacity"].forEach(function (k) {
                 if (model.stats[k]) {
@@ -1592,16 +1636,8 @@ var StatTracker = {
                     model.stats[k].ramStale = true;
                 }
             });
-            var undoProbeMutation = function () {
-                try {
-                    var m = StatTracker.model();
-                    if (m !== model) return;          // a new game; nothing of ours to undo
-                    m.preferInventoryText = rollback.prefer;
-                    Object.keys(rollback.stale).forEach(function (k) {
-                        if (m.stats[k]) m.stats[k].ramStale = rollback.stale[k];
-                    });
-                } catch (eU) {}
-            };
+            StatTracker._carryProbeRollback = rollback;
+            var undoProbeMutation = StatTracker.rollbackCarryProbe;
             StatTracker._carryTurnsBefore = (model.stats.turns && typeof model.stats.turns.value === "number")
                 ? model.stats.turns.value : null;
 
@@ -1625,6 +1661,15 @@ var StatTracker = {
                     var sent = false;
                     try { sent = Actionable.Submit(verb); }
                     finally { StatTracker._carryProbeSubmitting = false; }
+                    // D195: a sent probe is in flight until its reply is
+                    // consumed. Stamp it so the entry guard can bound the wait,
+                    // and drop the rollback -- from here the ordinary reply path
+                    // owns preferInventoryText and the ramStale marks, and
+                    // undoing them later would discard a real reading.
+                    if (sent) {
+                        StatTracker._carryProbeSentAt = Date.now();
+                        StatTracker._carryProbeRollback = null;
+                    }
                     // D192: if the Submit was refused, nothing will arrive to
                     // consume the hide flag -- and Actionable clears it only on
                     // a successful listing. Left armed, it would hide the next

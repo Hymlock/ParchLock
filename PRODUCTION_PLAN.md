@@ -194,9 +194,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 253 headings; 103 decision rows; 356 registered units.
-**Last registered unit:** `pl-s253`. **Body SHA-256 (LF):**
-`8e555d609bc2aeff0a304db7f3c59ac829c05e2a9e30db27d45e985beef9c874`
+**Local manifest:** 288 headings; 103 decision rows; 391 registered units.
+**Last registered unit:** `pl-s288`. **Body SHA-256 (LF):**
+`0b4cdaa095a70b9893f5fb581682420e1368add778a3432ec55340f3a227051f`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -632,6 +632,41 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s251](#pl-s251) | D186 First-query compiled attribute declarations and audit repairs | H2 | Implemented |
 | [pl-s252](#pl-s252) | D188 An injected command is not headless | H2 | Record |
 | [pl-s253](#pl-s253) | D186 Verification follow-up and non-Glulx coverage gaps | H2 | Verified / Partial |
+| [pl-s254](#pl-s254) | D190 Take on a promoted object, gated by the module's own declaration | H2 | Implemented |
+| [pl-s255](#pl-s255) | What ships | H3 | Record |
+| [pl-s256](#pl-s256) | Blast radius, measured before the change | H3 | Record |
+| [pl-s257](#pl-s257) | Verified | H3 | Record |
+| [pl-s258](#pl-s258) | Still open | H3 | Record |
+| [pl-s259](#pl-s259) | D191 The carry probe's lifecycle: a draft, a queued submit, and a permission | H2 | Implemented |
+| [pl-s260](#pl-s260) | A typed draft must never be overwritten | H3 | Record |
+| [pl-s261](#pl-s261) | Probe state belongs to the game that created it | H3 | Record |
+| [pl-s262](#pl-s262) | A permission scoped to one submission, not to a mode | H3 | Record |
+| [pl-s263](#pl-s263) | Verified | H3 | Record |
+| [pl-s264](#pl-s264) | D192 Four leftovers from the second audit round | H2 | Implemented |
+| [pl-s265](#pl-s265) | The draft check ran after the damage | H3 | Record |
+| [pl-s266](#pl-s266) | A refused Submit left the hide flag armed | H3 | Record |
+| [pl-s267](#pl-s267) | The equip-open bypass contradicted D86 | H3 | Record |
+| [pl-s268](#pl-s268) | The attribute table was re-parsed about a hundred times a turn | H3 | Record |
+| [pl-s269](#pl-s269) | Also settled by that round, recorded rather than changed | H3 | Record |
+| [pl-s270](#pl-s270) | Verified | H3 | Record |
+| [pl-s271](#pl-s271) | D193 One bit, several declared names | H2 | Implemented |
+| [pl-s272](#pl-s272) | Verified | H3 | Record |
+| [pl-s273](#pl-s273) | Residual: a probe that does not answer the opening prompt proves nothing | H3 | Record |
+| [pl-s274](#pl-s274) | Still open, unchanged by this | H3 | Record |
+| [pl-s275](#pl-s275) | D193 item 2: the required subset, measured instead of argued | H3 | Record |
+| [pl-s276](#pl-s276) | D193 verification gate from the plan, run as specified | H3 | Record |
+| [pl-s277](#pl-s277) | D194 A refused probe must put the model back | H2 | Implemented |
+| [pl-s278](#pl-s278) | Verified | H3 | Record |
+| [pl-s279](#pl-s279) | Residual | H3 | Record |
+| [pl-s280](#pl-s280) | D195 One probe transaction at a time | H2 | Implemented |
+| [pl-s281](#pl-s281) | F1 CRITICAL: two sheet opens, two turns | H3 | Record |
+| [pl-s282](#pl-s282) | F2 HIGH: a cancelled probe left its mutations behind | H3 | Record |
+| [pl-s283](#pl-s283) | F3 HIGH: both documents failed their own validators | H3 | Record |
+| [pl-s284](#pl-s284) | F4: a harness that cannot fail | H3 | Record |
+| [pl-s285](#pl-s285) | F5: the additive proof's documented command proved nothing | H3 | Record |
+| [pl-s286](#pl-s286) | F6: D192 finding 5 | H3 | Record |
+| [pl-s287](#pl-s287) | Verified | H3 | Record |
+| [pl-s288](#pl-s288) | The pattern worth naming | H3 | Record |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -5496,6 +5531,7 @@ d186-fallback-reasons.json and d186-alias-proposal.json. These are internal audi
 artifacts, not distribution content. See architecture section62 for the contract.
 
 
+<a id="pl-s254" data-chapter-id="pl-s254"></a>
 ## D190 Take on a promoted object, gated by the module's own declaration
 
 Both audits accepted that the operator wants the food pellets to be takeable,
@@ -5513,6 +5549,7 @@ ActionSynth offers ["examine", "take", "eat", "drink"]. Drinking a food pellet
 is the same class of nonsense as offering to talk to a pit, which is what D186
 was written to stop.
 
+<a id="pl-s255" data-chapter-id="pl-s255"></a>
 ### What ships
 
 The inspect verb keeps its policy and its position. Take is appended only when
@@ -5526,6 +5563,7 @@ declaration is unavailable.
 So the gate reads the compiler's declaration, never the standard profile that
 D58/D73 show misreads this story.
 
+<a id="pl-s256" data-chapter-id="pl-s256"></a>
 ### Blast radius, measured before the change
 
 Promotion is empty on every story but one, so this policy governs exactly one
@@ -5537,6 +5575,7 @@ object in the catalogue:
 That measurement is why this is a narrow change rather than a catalogue-wide
 risk, and it was taken first rather than assumed.
 
+<a id="pl-s257" data-chapter-id="pl-s257"></a>
 ### Verified
 
     commands offered : ["examine pellets", "take pellets"]  -- 4 runs, no "drink"
@@ -5548,6 +5587,7 @@ carry-value-live 19, stat-tracker-live 12, d31 60, attr-calibrator-phase-cd 25,
 highlight-scope, alley-actionable, alley-ram-actionable. Cross-module unchanged:
 Anchorhead 6/3, Zork1 0/2, Enchanter 3/1, LostPig 6/1, 905 10/2.
 
+<a id="pl-s258" data-chapter-id="pl-s258"></a>
 ### Still open
 
 A promoted object that has been TAKEN still does not appear in the equipment
@@ -5555,6 +5595,7 @@ sheet -- the inventory-side filter is untouched (D184). Now that TAKE is offered
 on these objects, that gap is reachable by a player rather than theoretical.
 
 
+<a id="pl-s259" data-chapter-id="pl-s259"></a>
 ## D191 The carry probe's lifecycle: a draft, a queued submit, and a permission
 
 Findings 1 and 4 of the codex audit, both accepted by grok. I had implemented
@@ -5565,6 +5606,7 @@ findings. Recorded because the omission was the mistake, not the code.
 Finding 5 IS correctly deferred: grok classified it as "untested risk, not a
 live fail", so it stays open rather than being guessed at.
 
+<a id="pl-s260" data-chapter-id="pl-s260"></a>
 ### A typed draft must never be overwritten
 
 The bootstrap submits through the same line the player types into, so opening
@@ -5580,6 +5622,7 @@ Measured: with "examine canteen" typed, opening the sheet leaves it untouched
 and the probe flags stand down cleanly; with the line empty the bootstrap runs
 and the value row appears.
 
+<a id="pl-s261" data-chapter-id="pl-s261"></a>
 ### Probe state belongs to the game that created it
 
 `Resync` and `reset` dropped the model's readings but left every carry-probe
@@ -5588,6 +5631,7 @@ inherit `_carryProbeUseless` from the abandoned one and never probe again, or
 fire a submission belonging to a game that no longer exists. `clearCarryProbe`
 now cancels the timer and clears all seven flags, and both paths call it.
 
+<a id="pl-s262" data-chapter-id="pl-s262"></a>
 ### A permission scoped to one submission, not to a mode
 
 `_hideCarryProbe` was doing two unrelated jobs. It tells
@@ -5601,6 +5645,7 @@ Those two gates now read `_carryProbeSubmitting`, which is true only across the
 probe's own `Submit` call and is cleared in a `finally`. The line-hiding
 consumer keeps `_hideCarryProbe` unchanged.
 
+<a id="pl-s263" data-chapter-id="pl-s263"></a>
 ### Verified
 
 stat-tracker 118, carry-value-live 19, stat-tracker-live 12, d31 60,
@@ -5612,11 +5657,13 @@ workaround is NOT removed. This changes when it may fire and what it is allowed
 to do while firing, not whether it exists.
 
 
+<a id="pl-s264" data-chapter-id="pl-s264"></a>
 ## D192 Four leftovers from the second audit round
 
 Grok re-audited D189-D191 and accepted them, with four things still to close.
 Each is small; three were mine to have got right the first time.
 
+<a id="pl-s265" data-chapter-id="pl-s265"></a>
 ### The draft check ran after the damage
 
 D191 checked for a typed draft AFTER setting `preferInventoryText` and marking
@@ -5624,6 +5671,7 @@ three stats `ramStale`. So opening the sheet mid-command correctly skipped the
 Submit and still left the model dirtied by a probe that never ran. The check now
 runs before the model is touched at all.
 
+<a id="pl-s266" data-chapter-id="pl-s266"></a>
 ### A refused Submit left the hide flag armed
 
 `_hideCarryProbe` is cleared by Actionable only on a SUCCESSFUL listing. If
@@ -5631,6 +5679,7 @@ runs before the model is touched at all.
 the PLAYER typed would have been hidden. It is now cleared when Submit reports
 it was refused.
 
+<a id="pl-s267" data-chapter-id="pl-s267"></a>
 ### The equip-open bypass contradicted D86
 
 `Actionable.Submit` and `Input.Inject` both allowed an injection into a hidden
@@ -5645,6 +5694,7 @@ With the sheet open the line input is VISIBLE on both desktop and mobile at
 412px, so drag-and-drop and Refresh pass the ordinary visibility test and never
 depended on the bypass. The probe keeps its own narrow permission.
 
+<a id="pl-s268" data-chapter-id="pl-s268"></a>
 ### The attribute table was re-parsed about a hundred times a turn
 
 `informAttributeNames` caches in a WeakMap keyed on `mem` -- but
@@ -5656,6 +5706,7 @@ on every Refresh. Keyed on the underlying buffer now.
 Correctness was never affected, which is why no test caught it; it was a cost
 and a false comment.
 
+<a id="pl-s269" data-chapter-id="pl-s269"></a>
 ### Also settled by that round, recorded rather than changed
 
 The auto-inventory workaround is NOT made redundant by D189. D189 only lets a
@@ -5670,6 +5721,7 @@ the gate reads this tick's attributes. No second RAM read is warranted.
 
 Finding 5 remains deliberately open -- untested risk, not a live fail.
 
+<a id="pl-s270" data-chapter-id="pl-s270"></a>
 ### Verified
 
 stat-tracker 118, carry-value-live 19, stat-tracker-live 12, ui-regression,
@@ -5677,7 +5729,7 @@ layout-regression (its "items tab" coverage is what exercises the sheet),
 plus re-checks that a typed draft still survives, the bootstrap still runs
 without one, and the pellets still offer exactly examine and take.
 
-<a id="pl-d193"></a>
+<a id="pl-s271" data-chapter-id="pl-s271"></a><a id="pl-d193"></a>
 ## D193 One bit, several declared names
 
 pl-s253 recorded this gap and left it open: "Sent to Grok (live ZRamReader
@@ -5706,6 +5758,7 @@ every segment. The relaxation is *several names per bit*, and nothing else:
 - no per-flag mixing of declared and standard bits; an absent optional flag
   stays absent rather than borrowing a standard position.
 
+<a id="pl-s272" data-chapter-id="pl-s272"></a>
 ### Verified
 
 Measured, not asserted. Catalog before: 298 files, 271 Inform, **205** declaring,
@@ -5734,6 +5787,7 @@ Suites: attr-calibrator-phase-cd 25, phase-b 11, verb-disablement 22, catalog
 anchor as an already-declaring control: zero page errors, rooms map, and the
 control's attributes and 10 marks are unchanged.
 
+<a id="pl-s273" data-chapter-id="pl-s273"></a>
 ### Residual: a probe that does not answer the opening prompt proves nothing
 
 Found while verifying this, and it is a verification defect, not a product one.
@@ -5752,6 +5806,7 @@ and should refuse to report scope/mark evidence for a module still sitting at a
 pre-game prompt rather than reporting zeros. Not done here; it changes shared
 harness files and would put untested probe logic under a decoder change.
 
+<a id="pl-s274" data-chapter-id="pl-s274"></a>
 ### Still open, unchanged by this
 
 The other 46 fallback modules (pl-s253's inventory) are untouched. Inform Z3 in
@@ -5759,6 +5814,7 @@ particular is not a version-gate edit: that reader needs its own object,
 property and string layout, independently evidenced. Bounds were not relaxed and
 no offsets were guessed to improve a count.
 
+<a id="pl-s275" data-chapter-id="pl-s275"></a>
 ### D193 item 2: the required subset, measured instead of argued
 
 The plan (bus 861) deliberately refused to guess this one. `bitFor` OMITS rather
@@ -5799,6 +5855,7 @@ required set is not a way to strengthen validation; it is a way to convert a
 partial success into a total fallback. It must not be used to "fix" praser5 and
 sutwin, the two required-subset failures in the 46.
 
+<a id="pl-s276" data-chapter-id="pl-s276"></a>
 ### D193 verification gate from the plan, run as specified
 
 Plan 861 required `tools/attribute-declaration-ab.js` on anchor/905/LostPig/
@@ -5821,7 +5878,7 @@ removing an OPTIONAL alias while a valid required name remains must PASS, and
 only a missing REQUIRED name or an empty segment may reject. The suite
 implements the correction, and asserts both directions.
 
-<a id="pl-d194"></a>
+<a id="pl-s277" data-chapter-id="pl-s277"></a><a id="pl-d194"></a>
 ## D194 A refused probe must put the model back
 
 Operator, on the build from D193: "wumpus is no longer automatically updating
@@ -5859,6 +5916,7 @@ Not changed: the `Message.IsOpen` guard itself stays. A modal is a legitimate
 reason to refuse an injection, and the advisory is shown once per game
 (`_carryTurnWarned`), so dismissing it restores normal behaviour.
 
+<a id="pl-s278" data-chapter-id="pl-s278"></a>
 ### Verified
 
 Live on wump2ka at 1400x900, three opens, `Actionable.Submit` wrapped to record
@@ -5871,6 +5929,7 @@ every command and its return:
 
 stat-tracker 118/0, stat-tracker-live 12/0, carry-value-live 19/0.
 
+<a id="pl-s279" data-chapter-id="pl-s279"></a>
 ### Residual
 
 `EquipmentUI.Show()` was driven directly because `#pl-equip-tab` and `#items-tab`
@@ -5879,3 +5938,114 @@ that has to be opened first. Show() is what both real controls call and is where
 `requestCarryBootstrap` is invoked, so the path under test is the same one, but
 this is not a click-through of the real chrome. A probe that opens the panel
 first would be stronger evidence.
+
+<a id="pl-s280" data-chapter-id="pl-s280"></a>
+## D195 One probe transaction at a time
+
+Codex's adversarial review of 93f1799 (D190-D194 lifecycle). Both code findings
+reproduced on real wump2ka before acceptance, and both new tests were confirmed
+to FAIL against 93f1799 -- 5 of 6 checks -- before being trusted green.
+
+<a id="pl-s281" data-chapter-id="pl-s281"></a>
+### F1 CRITICAL: two sheet opens, two turns
+
+ACCEPT. `EquipmentUI.Show()` sets `_carryBootstrapAt = 0` immediately before
+calling `requestCarryBootstrap`, deliberately, so that opening the sheet always
+refreshes. That defeats the 800ms throttle, so two Shows in quick succession both
+passed it; the second then overwrote `_carryProbeTimer` without clearing the
+first, so BOTH timers fired. Measured: `["inventory=>true","inventory=>true"]` --
+two real commands, two turns in a game where the probe costs one.
+
+Repair: an in-flight guard at entry, covering two states. A submission queued but
+not yet run (`_carryProbeTimer`), and one sent whose reply has not been consumed
+(`_hideCarryProbe` within 4s of the new `_carryProbeSentAt`). The bound matters:
+gating on `_hideCarryProbe` alone would let a story that never answers wedge the
+probe off for the rest of the session.
+
+<a id="pl-s282" data-chapter-id="pl-s282"></a>
+### F2 HIGH: a cancelled probe left its mutations behind
+
+ACCEPT. D194 put the rollback snapshot in a closure local to
+`requestCarryBootstrap`, so `clearCarryProbe` -- which cancels the timer on
+Resync, restore, restart and undo -- had no way to undo the mutation it was
+cancelling. Measured after a synchronous Resync: `prefer=true`,
+`ramStale=[true,true,true]`.
+
+Repair: the snapshot moves onto `StatTracker._carryProbeRollback` and
+`rollbackCarryProbe()` becomes a method that `clearCarryProbe` calls. It is
+idempotent and no-ops once the model has been replaced, so it cannot resurrect an
+abandoned timeline. The snapshot is dropped when a Submit succeeds, because from
+that point the ordinary reply path owns those flags and undoing them later would
+discard a real reading.
+
+<a id="pl-s283" data-chapter-id="pl-s283"></a>
+### F3 HIGH: both documents failed their own validators
+
+ACCEPT, and worse than reported. Extracting the embedded CHAPTER-CHECK validator
+and running it: both files failed `Stale body fingerprint`, which is the FIRST
+check, hiding everything behind it. Behind it, the plan had **26 unregistered
+headings** -- every heading of D190 through D194. D190-D192 were appended without
+registration in an earlier session, and D193/D194 copied that precedent, so the
+register had been silently broken for five decisions.
+
+Reconciled on substance, not silenced: 26 units registered as `pl-s254`-`pl-s279`
+with anchors and register rows, manifest recomputed from the validator's own
+counting rules, fingerprints refreshed last. Plan now 279 headings / 103 decision
+rows / 382 registered units; architecture 87 / 0 / 87. Both report
+`integrity: PASS`.
+
+Also accepted: architecture section 62 stated D188's no-unasked-commands rule
+without the operator-approved inventory exception. Corrected there.
+
+<a id="pl-s284" data-chapter-id="pl-s284"></a>
+### F4: a harness that cannot fail
+
+`harness/_carry_equip_live.js` prints JSON and asserts nothing. The leading
+underscore is this repository's convention for an ad-hoc probe rather than a
+suite, so it is not counted in any suite total -- but codex's underlying point
+stands and is the important one: nothing anywhere asserted this lifecycle. The
+substantive answer is F1/F2's new suite, not annotations on a debug script.
+
+<a id="pl-s285" data-chapter-id="pl-s285"></a>
+### F5: the additive proof's documented command proved nothing
+
+ACCEPT, and this is the most uncomfortable finding. `tools/attribute-alias-catalog.js`
+took `--baseline <catalog.json>`, and the only catalog artifact on disk is the
+CURRENT one -- which the D193 catalog run had already overwritten. Anyone
+following the documented command compared current against itself and got
+"recovered 0" plus a clean additive result. The evidence I cited was real when I
+took it, in a temp file that no longer exists, and the command recorded for
+reproducing it could not reproduce it.
+
+Repair: no baseline file is accepted any more. The tool derives the pre-D193
+result in process from the current reader with the alias split textually removed,
+under the same appears-exactly-once assertion the gap diagnostic uses. Re-run
+from a clean checkout: 205 -> 225, the same 20 modules, 32 PASS / 0 FAIL. Codex's
+independent old-vs-current comparison across 298 modules agrees: old 205, new
+225, exactly 20 gained, zero old maps changed, mutations 10/10.
+
+<a id="pl-s286" data-chapter-id="pl-s286"></a>
+### F6: D192 finding 5
+
+Still open, still deliberately: full-reply hiding and inventory room-reset
+suppression in `Actionable.js`. Untested risk, not a live failure.
+
+<a id="pl-s287" data-chapter-id="pl-s287"></a>
+### Verified
+
+New `tools/carry-probe-lifecycle-live.js`, 6 checks, real wump2ka at 1400x900
+with `Actionable.Submit` wrapped to record every command and its return value.
+Confirmed to fail 5 of 6 against 93f1799. stat-tracker 118/0, stat-tracker-live
+12/0, carry-value-live 19/0, alias-catalog 32/0, attr-calibrator cd/b/verb
+25/11/22, catalog 323/0 at 225 declaring, both embedded validators PASS,
+docs-sync PASS.
+
+<a id="pl-s288" data-chapter-id="pl-s288"></a>
+### The pattern worth naming
+
+Three of these six are tests or evidence that could not fail: a suite that prints
+without asserting, a documented command that compares a file with itself, and
+document validators whose first check masked five decisions of accumulated
+breakage. The two real defects both survived a green stat suite because no test
+drove the sequence a player performs -- opening the sheet twice. Codex found all
+of it by reproducing rather than reading.

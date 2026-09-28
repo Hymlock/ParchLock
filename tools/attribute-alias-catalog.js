@@ -19,7 +19,9 @@
 // removing an optional alias must PASS; removing a required name or leaving an
 // empty segment must REJECT.
 //
-// Usage: node tools/attribute-alias-catalog.js [--baseline <catalog.json>]
+// Usage: node tools/attribute-alias-catalog.js [--mutations-only]
+// No baseline file is needed or accepted: the pre-change result is derived from
+// the current reader with the alias split textually removed (see PRE_D193).
 const fs = require("fs"), path = require("path"), vm = require("vm");
 const root = path.resolve(__dirname, "..");
 
@@ -60,13 +62,42 @@ function decodeWith(file, rewrite) {
     return R.informAttributeNames(mem);
 }
 
-// ---------------------------------------------------------------- 1. additive
-const argIdx = process.argv.indexOf("--baseline");
-const baselinePath = argIdx > -1 ? process.argv[argIdx + 1] : null;
-const current = JSON.parse(fs.readFileSync(path.join(root, "tools/screenshots/matrix/d186-attribute-catalog.json"), "utf8"));
+// A reader with the D193 alias split REMOVED, to derive the pre-D193 result in
+// process. Codex, finding 5: the documented `--baseline <catalog.json>` command
+// silently proved nothing, because the only catalog artifact on disk is the
+// CURRENT one -- comparing current against itself reports "recovered 0" and a
+// clean additive result. An external baseline file is the wrong mechanism for a
+// claim this important; derive the old behaviour from the old code instead.
+const PRE_D193 = [
+    'var segments = String(entry).split("/");',
+    'var segments = [String(entry)];      // pre-D193: the whole entry as one name'
+];
+function preD193Reader() {
+    let src = fs.readFileSync(path.join(root, "js", "ZRamReader.js"), "utf8").replace(/\r\n/g, "\n");
+    const n = src.split(PRE_D193[0]).length - 1;
+    if (n !== 1) throw new Error("pre-D193 anchor appears " + n + " times, expected 1 -- reader drifted");
+    src = src.replace(PRE_D193[0], PRE_D193[1]);
+    const c = {}; vm.createContext(c);
+    vm.runInContext(src, c);
+    vm.runInContext(fs.readFileSync(path.join(root, "js", "AttributeSchema.js"), "utf8"), c);
+    return c.ZRamReader;
+}
 
-if (baselinePath && fs.existsSync(baselinePath)) {
-    const before = JSON.parse(fs.readFileSync(baselinePath, "utf8"));
+// ---------------------------------------------------------------- 1. additive
+const current = JSON.parse(fs.readFileSync(path.join(root, "tools/screenshots/matrix/d186-attribute-catalog.json"), "utf8"));
+const SKIP_ADDITIVE = process.argv.indexOf("--mutations-only") > -1;
+
+if (!SKIP_ADDITIVE) {
+    // "before" is computed, not read from a file that may already be "after".
+    const informFiles = current.modules.map(m => m.file);
+    const pre = preD193Reader();
+    const before = { modules: informFiles.map(file => {
+        const mem = loadMem(file);
+        pre._attributeNamesCache = new WeakMap();
+        let table = null;
+        try { table = pre.informAttributeNames(mem); } catch (e) { table = null; }
+        return { file, table };
+    }) };
     const byFile = m => Object.fromEntries(m.modules.map(x => [x.file, x]));
     const b = byFile(before), a = byFile(current);
     const wasDeclared = Object.keys(b).filter(f => b[f].table);
@@ -89,7 +120,7 @@ if (baselinePath && fs.existsSync(baselinePath)) {
     }
     console.log("previously declared: " + wasDeclared.length + " -> now: " + Object.keys(a).filter(f => a[f].table).length);
 } else {
-    console.log("(no --baseline given; skipping the additive comparison)");
+    console.log("(--mutations-only: additive comparison skipped)");
 }
 
 // ------------------------------------------------------- 2. mutation cases
