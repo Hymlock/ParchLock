@@ -5820,3 +5820,62 @@ rejected." That requirement was superseded by codex at docs/ai-review.md:94-96 -
 removing an OPTIONAL alias while a valid required name remains must PASS, and
 only a missing REQUIRED name or an empty segment may reject. The suite
 implements the correction, and asserts both directions.
+
+<a id="pl-d194"></a>
+## D194 A refused probe must put the model back
+
+Operator, on the build from D193: "wumpus is no longer automatically updating
+its stats -- did you disable the automatic inventory checking on the stats
+opening?"
+
+It was not disabled. Measured against 1048b5a (pre-D189) on wump2ka, three sheet
+opens: **pre-D189 the probe never fired at all** -- `sent: []`, value and weight
+absent every time. On current code the first open yields `value=35
+weight=4 source=inventory-text`. D189-D192 are what made it work in that game.
+
+The real defect is on the SECOND and later opens, and it is self-inflicted:
+
+1. Wumpus spends a turn on `inventory`, so the probe raises its own advisory --
+   "Each time you open Equipment, the story checks your pack. In this game that
+   uses a turn."
+2. `Actionable.Submit` refuses while `Message.IsOpen` (its first guard, ahead of
+   any probe permission). So while that advisory is on screen the probe cannot
+   submit.
+3. `requestCarryBootstrap` had ALREADY set `preferInventoryText` and marked
+   value/weight/capacity `ramStale` before deferring the submit. Nothing arrives
+   to clear them, because nothing was submitted.
+
+So the totals stayed on screen but permanently marked stale, which is precisely
+"no longer automatically updating". D192 rolled back `_hideCarryProbe` on a
+refusal and stopped there; this is the other half of the same leftover.
+
+Fix: capture the prior `preferInventoryText` and the three `ramStale` values
+before mutating, and restore them on every path that does not submit -- the
+draft stand-down, a refused Submit, and the catch. The undo is a no-op if the
+model has been replaced by a new game, so it cannot resurrect an abandoned
+timeline's flags.
+
+Not changed: the `Message.IsOpen` guard itself stays. A modal is a legitimate
+reason to refuse an injection, and the advisory is shown once per game
+(`_carryTurnWarned`), so dismissing it restores normal behaviour.
+
+### Verified
+
+Live on wump2ka at 1400x900, three opens, `Actionable.Submit` wrapped to record
+every command and its return:
+
+- before: open 3 `value=35/inventory-text/STALE` after `inventory=>false`
+- after:  open 3 `value=35/inventory-text` (not stale), `prefer=false`
+- dismissing the advisory between opens: open 3 submits `inventory=>true` again,
+  so recovery is complete rather than merely non-destructive
+
+stat-tracker 118/0, stat-tracker-live 12/0, carry-value-live 19/0.
+
+### Residual
+
+`EquipmentUI.Show()` was driven directly because `#pl-equip-tab` and `#items-tab`
+are both invisible at desktop width in a fresh probe -- they live inside a panel
+that has to be opened first. Show() is what both real controls call and is where
+`requestCarryBootstrap` is invoked, so the path under test is the same one, but
+this is not a click-through of the real chrome. A probe that opens the panel
+first would be stronger evidence.

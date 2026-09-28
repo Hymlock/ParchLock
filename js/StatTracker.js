@@ -1574,11 +1574,34 @@ var StatTracker = {
             // the submit is deferred and the player can start typing meanwhile.
             if (StatTracker.lineInputHasDraft()) return;
 
+            // D194: remember exactly what this probe changes, so a refused or
+            // abandoned submission can put it back. Operator-reported: Wumpus
+            // stopped auto-updating its stats after the first sheet open. Cause:
+            // the probe consumes a turn in that game, so it raises its own "this
+            // uses a turn" advisory -- and Actionable.Submit refuses while
+            // Message.IsOpen. The submission then failed with the model ALREADY
+            // mutated, leaving value/weight marked ramStale permanently, which
+            // is what the player sees as "no longer updating". D192 rolled back
+            // _hideCarryProbe on a refusal but not these.
             var model = StatTracker.model();
+            var rollback = { prefer: model.preferInventoryText, stale: {} };
             model.preferInventoryText = true;
             ["value", "weight", "capacity"].forEach(function (k) {
-                if (model.stats[k]) model.stats[k].ramStale = true;
+                if (model.stats[k]) {
+                    rollback.stale[k] = model.stats[k].ramStale;
+                    model.stats[k].ramStale = true;
+                }
             });
+            var undoProbeMutation = function () {
+                try {
+                    var m = StatTracker.model();
+                    if (m !== model) return;          // a new game; nothing of ours to undo
+                    m.preferInventoryText = rollback.prefer;
+                    Object.keys(rollback.stale).forEach(function (k) {
+                        if (m.stats[k]) m.stats[k].ramStale = rollback.stale[k];
+                    });
+                } catch (eU) {}
+            };
             StatTracker._carryTurnsBefore = (model.stats.turns && typeof model.stats.turns.value === "number")
                 ? model.stats.turns.value : null;
 
@@ -1590,6 +1613,7 @@ var StatTracker = {
                     if (StatTracker.lineInputHasDraft()) {
                         // Stand down rather than overwrite what they typed.
                         StatTracker._hideCarryProbe = false;
+                        undoProbeMutation();            // D194
                         return;
                     }
                     // D191: this permission is scoped to THIS submission only.
@@ -1605,8 +1629,19 @@ var StatTracker = {
                     // consume the hide flag -- and Actionable clears it only on
                     // a successful listing. Left armed, it would hide the next
                     // inventory the PLAYER typed.
-                    if (sent === false) StatTracker._hideCarryProbe = false;
-                } catch (eS) { StatTracker._carryProbeSubmitting = false; }
+                    // D194: and put the model back. Nothing is coming to clear
+                    // preferInventoryText or the ramStale marks, so left set
+                    // they make the carried totals read as stale for the rest of
+                    // the session even though the numbers on screen are correct.
+                    if (sent === false) {
+                        StatTracker._hideCarryProbe = false;
+                        undoProbeMutation();
+                    }
+                } catch (eS) {
+                    StatTracker._carryProbeSubmitting = false;
+                    StatTracker._hideCarryProbe = false;
+                    undoProbeMutation();                // D194
+                }
             }, 0);
         } catch (e) {}
     },
