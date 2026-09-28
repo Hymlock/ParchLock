@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v73"; // D191 carry probe lifecycle: draft, queued submit, scoped permission
+const CACHE_VERSION = "parchlock-shell-v74"; // D192 draft ordering, refused submit, equip-open bypass, cache key
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

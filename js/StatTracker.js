@@ -1565,6 +1565,17 @@ var StatTracker = {
                 if (Actionable.isGameWord("i")) verb = "i";
                 else return;
             }
+            // D192 (grok round 2): this check has to come BEFORE the model is
+            // touched. D191 placed it after, so opening the sheet with a draft
+            // skipped the Submit but still set preferInventoryText and marked
+            // three stats ramStale -- side effects of a probe that never ran.
+            //
+            // The probe submits through the same line the player types into, so
+            // a half-written command would otherwise be replaced by
+            // "inventory". Re-checked again at submission time below, because
+            // the submit is deferred and the player can start typing meanwhile.
+            if (StatTracker.lineInputHasDraft()) return;
+
             var model = StatTracker.model();
             model.preferInventoryText = true;
             ["value", "weight", "capacity"].forEach(function (k) {
@@ -1572,12 +1583,6 @@ var StatTracker = {
             });
             StatTracker._carryTurnsBefore = (model.stats.turns && typeof model.stats.turns.value === "number")
                 ? model.stats.turns.value : null;
-            // D191 finding 1 (codex/grok): the probe submits through the same
-            // line the player types into, so a half-written command was being
-            // replaced by "inventory". Never clobber a draft -- and re-check at
-            // the moment of submission, because the player can start typing
-            // during the deferral.
-            if (StatTracker.lineInputHasDraft()) return;
 
             StatTracker._hideCarryProbe = true;
             StatTracker._carryBootstrapAt = now;
@@ -1595,8 +1600,14 @@ var StatTracker = {
                     // "any injection may proceed while the input is hidden",
                     // which is what the two gates were reading it as.
                     StatTracker._carryProbeSubmitting = true;
-                    try { Actionable.Submit(verb); }
+                    var sent = false;
+                    try { sent = Actionable.Submit(verb); }
                     finally { StatTracker._carryProbeSubmitting = false; }
+                    // D192: if the Submit was refused, nothing will arrive to
+                    // consume the hide flag -- and Actionable clears it only on
+                    // a successful listing. Left armed, it would hide the next
+                    // inventory the PLAYER typed.
+                    if (sent === false) StatTracker._hideCarryProbe = false;
                 } catch (eS) { StatTracker._carryProbeSubmitting = false; }
             }, 0);
         } catch (e) {}

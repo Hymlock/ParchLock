@@ -33,8 +33,18 @@ var Input = {
         try { if (typeof MapTopology !== "undefined") MapTopology.noteCommand(arguments[0]); } catch (e) {}
         if (!$(".Input.LineInput").length || (hitEnter && (Message.IsOpen || $("#dialog").length))) return false;
         if (!$(".Input.LineInput:visible").length
-            && !(typeof StatTracker !== "undefined" && StatTracker._carryProbeSubmitting)
-            && !(document.body && document.body.classList.contains("equip-open"))) return false;
+            // D192 (grok round 2): the `equip-open` escape has been removed.
+            // It allowed ANY injection into a hidden line input for as long as
+            // the sheet was open -- a radial or a map tap, not just the sheet's
+            // own drag-and-drop -- which contradicts D86's rule that
+            // Input.Inject is the single non-typed choke point. The probe's own
+            // submission has its own narrow permission below.
+            //
+            // Measured before removing it: with the sheet open the line input
+            // is VISIBLE on both desktop and mobile (412px), so the sheet's
+            // drag-and-drop and Refresh still pass the visibility test above
+            // and never needed this clause.
+            && !(typeof StatTracker !== "undefined" && StatTracker._carryProbeSubmitting)) return false;
         $(".Input.LineInput").val($(".Input.LineInput").val() + text);
         if (hitEnter) {
 

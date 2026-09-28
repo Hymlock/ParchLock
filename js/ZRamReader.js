@@ -120,7 +120,13 @@ var ZRamReader = {
     _attributeNamesCache: new WeakMap(),
     informAttributeNames: (mem) => {
         if (!mem || typeof mem !== "object") return null;
-        if (ZRamReader._attributeNamesCache.has(mem)) return ZRamReader._attributeNamesCache.get(mem);
+        // D192 (grok round 2): key the cache on the underlying BUFFER, not on
+        // the DataView. ZRamProvider.getMem() constructs a new DataView on every
+        // call, so a WeakMap keyed on `mem` never hit and this table was
+        // re-parsed on every Refresh -- roughly a hundred times a turn -- while
+        // the comment claimed it was cached per memory instance.
+        var cacheKey = (mem && mem.buffer) || mem;
+        if (ZRamReader._attributeNamesCache.has(cacheKey)) return ZRamReader._attributeNamesCache.get(cacheKey);
         var result = null;
         try {
             var h = ZRamReader.header(mem), len = mem.byteLength || mem.length || 0;
@@ -183,7 +189,7 @@ var ZRamReader = {
             result = { bits: bits, address: namesAt, source: "inform-attribute-names" };
             return result;
         } catch (e) { return null; }
-        finally { ZRamReader._attributeNamesCache.set(mem, result); }
+        finally { ZRamReader._attributeNamesCache.set(cacheKey, result); }
     },
 
     attr: (obj, n) => {

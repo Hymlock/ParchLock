@@ -5610,3 +5610,69 @@ highlight-scope, alley-actionable, layout-regression, ui-regression.
 The operator's instruction stands and is honoured: the Wumpus auto-inventory
 workaround is NOT removed. This changes when it may fire and what it is allowed
 to do while firing, not whether it exists.
+
+
+## D192 Four leftovers from the second audit round
+
+Grok re-audited D189-D191 and accepted them, with four things still to close.
+Each is small; three were mine to have got right the first time.
+
+### The draft check ran after the damage
+
+D191 checked for a typed draft AFTER setting `preferInventoryText` and marking
+three stats `ramStale`. So opening the sheet mid-command correctly skipped the
+Submit and still left the model dirtied by a probe that never ran. The check now
+runs before the model is touched at all.
+
+### A refused Submit left the hide flag armed
+
+`_hideCarryProbe` is cleared by Actionable only on a SUCCESSFUL listing. If
+`Submit` returned false nothing arrived to consume it, and the next inventory
+the PLAYER typed would have been hidden. It is now cleared when Submit reports
+it was refused.
+
+### The equip-open bypass contradicted D86
+
+`Actionable.Submit` and `Input.Inject` both allowed an injection into a hidden
+line input for as long as the equipment sheet was open. That is far broader than
+the sheet's own drag-and-drop: any radial or map tap could inject while the
+sheet was up, which contradicts D86's rule that `Input.Inject` is the single
+non-typed choke point.
+
+Removed -- but measured first, because the sheet's drag-and-drop submits through
+exactly this path (D122) and breaking it would have been a real regression.
+With the sheet open the line input is VISIBLE on both desktop and mobile at
+412px, so drag-and-drop and Refresh pass the ordinary visibility test and never
+depended on the bypass. The probe keeps its own narrow permission.
+
+### The attribute table was re-parsed about a hundred times a turn
+
+`informAttributeNames` caches in a WeakMap keyed on `mem` -- but
+`ZRamProvider.getMem()` constructs a NEW DataView on every call, so the key was
+never the same object twice and the cache never hit. The comment claimed the
+result was "cached per memory instance" while the table was in fact re-decoded
+on every Refresh. Keyed on the underlying buffer now.
+
+Correctness was never affected, which is why no test caught it; it was a cost
+and a false comment.
+
+### Also settled by that round, recorded rather than changed
+
+The auto-inventory workaround is NOT made redundant by D189. D189 only lets a
+listing the player already caused update the Value row; opening the sheet still
+prints no worth/lbs/capacity line of its own, and weight while the canteen is
+carried still cannot come from RAM. It stays, as a narrow documented exception
+beside D188 rather than a reversal of it.
+
+Stale promoted attributes are a non-issue: `payloadPool` re-runs `promoteUnnamed`
+every Refresh and `resolveObjectCommands` calls `payloadPool` again at click, so
+the gate reads this tick's attributes. No second RAM read is warranted.
+
+Finding 5 remains deliberately open -- untested risk, not a live fail.
+
+### Verified
+
+stat-tracker 118, carry-value-live 19, stat-tracker-live 12, ui-regression,
+layout-regression (its "items tab" coverage is what exercises the sheet),
+plus re-checks that a typed draft still survives, the bootstrap still runs
+without one, and the pellets still offer exactly examine and take.
