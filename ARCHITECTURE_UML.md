@@ -149,12 +149,12 @@ decisions and their later mentions, not only the first matching record.
 |---|---|---|
 | Engine/provider; RAM, compiler, ZRamReader, WorldModel | Sections [2](#ar-ch2), [3](#ar-ch3), [4](#ar-ch4), [5](#ar-ch5), [15](#ar-ch15), [22](#ar-ch22), [23](#ar-ch23), [24](#ar-ch24), [27](#ar-ch27), [28](#ar-ch28), [29](#ar-ch29), [64](#ar-ch64), [65](#ar-ch65); [D134](PRODUCTION_PLAN.md#pl-d134)/[D151](PRODUCTION_PLAN.md#pl-d151)/[D158](PRODUCTION_PLAN.md#pl-d158)/[D170](PRODUCTION_PLAN.md#pl-d170)-[D171](PRODUCTION_PLAN.md#pl-d171)/[D198](PRODUCTION_PLAN.md#pl-d198)/[D201](PRODUCTION_PLAN.md#pl-d201) | Keep structural identity and capability-selected parallel providers; check commands, mapping and caches. |
 | Commands/actionables; inspect, parser nouns, spells; Actionable, ActionSynth, SemanticActions | Sections [23](#ar-ch23), [28](#ar-ch28), [42](#ar-ch42), [59](#ar-ch59), [64](#ar-ch64), [65](#ar-ch65); [D141](PRODUCTION_PLAN.md#pl-d141)-[D148](PRODUCTION_PLAN.md#pl-d148)/[D184](PRODUCTION_PLAN.md#pl-d184)/[D198](PRODUCTION_PLAN.md#pl-d198)/[D201](PRODUCTION_PLAN.md#pl-d201) | Evidence and scope govern exact parser commands; dictionary words alone are not semantic proof. Check inventory, radials and calibration. |
-| Mapping/travel; room ID, exits; MapTopology, Navigator, ExitCalibrator | Sections [8](#ar-ch8), [25](#ar-ch25), [26](#ar-ch26), [29](#ar-ch29), [46](#ar-ch46), [64](#ar-ch64), [65](#ar-ch65); [D134](PRODUCTION_PLAN.md#pl-d134)/[D138](PRODUCTION_PLAN.md#pl-d138)-[D140](PRODUCTION_PLAN.md#pl-d140)/[D155](PRODUCTION_PLAN.md#pl-d155)/[D161](PRODUCTION_PLAN.md#pl-d161)-[D165](PRODUCTION_PLAN.md#pl-d165)/[D170](PRODUCTION_PLAN.md#pl-d170)-[D171](PRODUCTION_PLAN.md#pl-d171)/[D198](PRODUCTION_PLAN.md#pl-d198)/[D201](PRODUCTION_PLAN.md#pl-d201) | Preserve identities, non-compass commands and path transitions. Check providers, notes, restore and directional consumers. |
+| Mapping/travel; room ID, exits; MapTopology, Navigator, ExitCalibrator | Sections [8](#ar-ch8), [25](#ar-ch25), [26](#ar-ch26), [29](#ar-ch29), [46](#ar-ch46), [64](#ar-ch64), [65](#ar-ch65), [66](#ar-ch66); [D134](PRODUCTION_PLAN.md#pl-d134)/[D138](PRODUCTION_PLAN.md#pl-d138)-[D140](PRODUCTION_PLAN.md#pl-d140)/[D155](PRODUCTION_PLAN.md#pl-d155)/[D161](PRODUCTION_PLAN.md#pl-d161)-[D165](PRODUCTION_PLAN.md#pl-d165)/[D170](PRODUCTION_PLAN.md#pl-d170)-[D171](PRODUCTION_PLAN.md#pl-d171)/[D198](PRODUCTION_PLAN.md#pl-d198)/[D201](PRODUCTION_PLAN.md#pl-d201)/[D202](PRODUCTION_PLAN.md#pl-d202) | Preserve identities, non-compass commands and path transitions. Check providers, notes, restore and directional consumers. |
 | Radials/arrow pad; native HELP, usage; DirectionalRadial, CharKeys, Qol | Sections [40](#ar-ch40), [44](#ar-ch44), [45](#ar-ch45), [51](#ar-ch51), [52](#ar-ch52), [53](#ar-ch53); [D120](PRODUCTION_PLAN.md#pl-d120)/[D161](PRODUCTION_PLAN.md#pl-d161) | Separate travel and character-key modes, preserve lifecycle/exclusion and exactly-once activation. Check input, settings, startup and tutorial. |
 | Input/layout; keyboard, character cell, status banner; MobileLayout, Input | Sections [30](#ar-ch30), [31](#ar-ch31), [32](#ar-ch32), [33](#ar-ch33), [36](#ar-ch36), [37](#ar-ch37), [38](#ar-ch38), [39](#ar-ch39), [40](#ar-ch40), [50](#ar-ch50), [53](#ar-ch53), [55](#ar-ch55); [D137](PRODUCTION_PLAN.md#pl-d137)/[D156](PRODUCTION_PLAN.md#pl-d156)/[D166](PRODUCTION_PLAN.md#pl-d166)/[D168](PRODUCTION_PLAN.md#pl-d168)/[D172](PRODUCTION_PLAN.md#pl-d172) | Respect VM-owned grid cells and input intent; check sheets, overlays, narrator and desktop/mobile geometry. |
 | Narrator/mic; speech, TTS; ReadAloud, VoiceInput | Sections [32](#ar-ch32), [39](#ar-ch39), [43](#ar-ch43); [D109](PRODUCTION_PLAN.md#pl-d109)/[D133](PRODUCTION_PLAN.md#pl-d133)/[D159](PRODUCTION_PLAN.md#pl-d159)/[D166](PRODUCTION_PLAN.md#pl-d166)-[D167](PRODUCTION_PLAN.md#pl-d167) | Spoken text and display differ deliberately; preserve complete-turn and voice-mode contracts. Check tutorial, auto-travel and native/web adapters. |
 | Restore/storage; undo, new game; UndoRestoreSync | Sections [31](#ar-ch31), [35](#ar-ch35), [41](#ar-ch41); [D178](PRODUCTION_PLAN.md#pl-d178)/[D180](PRODUCTION_PLAN.md#pl-d180)-[D183](PRODUCTION_PLAN.md#pl-d183) | Restore synchronizes dependent state; cached readings cannot masquerade as current facts. Check map, notes, narration, calibration and tracking. |
-| Notes/equipment; inventory, Known Rooms; Map, EquipmentUI | Sections [5](#ar-ch5), [26](#ar-ch26), [46](#ar-ch46), [56](#ar-ch56), [59](#ar-ch59); [D125](PRODUCTION_PLAN.md#pl-d125)-[D128](PRODUCTION_PLAN.md#pl-d128)/[D131](PRODUCTION_PLAN.md#pl-d131)/[D148](PRODUCTION_PLAN.md#pl-d148)/[D168](PRODUCTION_PLAN.md#pl-d168)-[D169](PRODUCTION_PLAN.md#pl-d169)/[D174](PRODUCTION_PLAN.md#pl-d174)/[D184](PRODUCTION_PLAN.md#pl-d184) | Preserve identity-scoped notes and nested inventory; check commands, sheets, stats and saves. |
+| Notes/equipment; inventory, Known Rooms; Map, EquipmentUI | Sections [5](#ar-ch5), [26](#ar-ch26), [46](#ar-ch46), [56](#ar-ch56), [59](#ar-ch59), [66](#ar-ch66); [D125](PRODUCTION_PLAN.md#pl-d125)-[D128](PRODUCTION_PLAN.md#pl-d128)/[D131](PRODUCTION_PLAN.md#pl-d131)/[D148](PRODUCTION_PLAN.md#pl-d148)/[D168](PRODUCTION_PLAN.md#pl-d168)-[D169](PRODUCTION_PLAN.md#pl-d169)/[D174](PRODUCTION_PLAN.md#pl-d174)/[D184](PRODUCTION_PLAN.md#pl-d184) | Preserve identity-scoped notes and nested inventory; check commands, sheets, stats and saves. |
 | Tutorial/library; onboarding, favorites; Tutorial, MainMenu, ModuleLibrary | Sections [35](#ar-ch35), [38](#ar-ch38), [54](#ar-ch54), [57](#ar-ch57); [D130](PRODUCTION_PLAN.md#pl-d130)/[D132](PRODUCTION_PLAN.md#pl-d132)/[D136](PRODUCTION_PLAN.md#pl-d136)/[D149](PRODUCTION_PLAN.md#pl-d149)/[D160](PRODUCTION_PLAN.md#pl-d160)/[D166](PRODUCTION_PLAN.md#pl-d166)-[D167](PRODUCTION_PLAN.md#pl-d167) | Sections [57](#ar-ch57) revises section 54's isolated lifecycle. Check readiness, speech, settings, sheets and splash. |
 | Character/status; score, health, level, strength, weight, badge; StatTracker | Sections [60](#ar-ch60), [65](#ar-ch65); [D157](PRODUCTION_PLAN.md#pl-d157)/[D167](PRODUCTION_PLAN.md#pl-d167)/[D169](PRODUCTION_PLAN.md#pl-d169)/[D173](PRODUCTION_PLAN.md#pl-d173)-[D176](PRODUCTION_PLAN.md#pl-d176)/[D178](PRODUCTION_PLAN.md#pl-d178)/[D180](PRODUCTION_PLAN.md#pl-d180)-[D183](PRODUCTION_PLAN.md#pl-d183)/[D201](PRODUCTION_PLAN.md#pl-d201) | Baseline diagram requires later plan amendments; preserve provenance, fallback and reset rules. Check inventory, VM grid and persistence. |
 | Packaging/navigation/export; APK, Back, PC; Global, ProductInfo, make-dist | Sections [30](#ar-ch30), [34](#ar-ch34), [35](#ar-ch35), [47](#ar-ch47), [48](#ar-ch48), [49](#ar-ch49), [53](#ar-ch53), [55](#ar-ch55), [58](#ar-ch58); [D99](PRODUCTION_PLAN.md#pl-d99)/[D119](PRODUCTION_PLAN.md#pl-d119)/[D121](PRODUCTION_PLAN.md#pl-d121)/[D129](PRODUCTION_PLAN.md#pl-d129) | Respect runtime allowlists, intentional navigation and current native-save contract. Check caches, startup and native integrations. |
@@ -203,13 +203,14 @@ decisions and their later mentions, not only the first matching record.
   [D201](PRODUCTION_PLAN.md#pl-d201) separates structural player/room/item identity
   from status and parser-derived labels. Blank labels are not blank identities, but
   only containment-proven rooms and held items may use the recovery path.
+- **Map zoom LOD / world overview:** [section 66](#ar-ch66) / [D202](PRODUCTION_PLAN.md#pl-d202) is **PROPOSED** pre-GO. Hub chrome stays distinct from module direction vocabulary; overview uses OverviewEligible (not raw isPlayerFacingRoom), transient coordinates, latched MapMode, and Id-based recenter.
 - Some earlier status banners and diagrams describe old builds. This indexing change
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 90 headings; 0 decision rows; 90 registered units.
-**Last registered unit:** `ar-s090`. **Body SHA-256 (LF):**
-`856493f83735bca3403686d7cb2652deca3b19e1ed2101d714a7ed7278a62bb5`
+**Local manifest:** 91 headings; 0 decision rows; 91 registered units.
+**Last registered unit:** `ar-s091`. **Body SHA-256 (LF):**
+`0bfbf7cbb33191bdc593d5aac25dafaddf9809a8a0f14432a8e4d0ff904fc43c`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -379,6 +380,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s088](#ar-s088) | 63. Inform Z3 declaration layout (D200) | H2 | Implemented |
 | [ar-s089](#ar-s089) | 64. D198 ZIL/Infocom composition architecture | H2 | Implemented / valves default off |
 | [ar-s090](#ar-s090) | 65. Unnamed early-Inform identity composition (D201) | H2 | Implemented / live-browser verified |
+| [ar-s091](#ar-s091) | 66. Map zoom LOD / world overview (D202) — PROPOSED | H2 | Proposed / pre-GO |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -3334,3 +3336,65 @@ Wumpus, RoTA, Zork and ambiguous multi-body controls. A neutral old-library diag
 remains neutral until existing real-travel calibration resolves it. Any title/object/slot
 exception, scan-order tie, status-derived identity, vocabulary-derived action, duplicate
 metric observation, or consumer-specific branch fails the architecture.
+
+<a id="ar-s091" data-chapter-id="ar-s091"></a><a id="ar-ch66"></a>
+## 66. Map zoom LOD / world overview (D202) — PROPOSED
+
+**Lifecycle:** **PROPOSED** (pre-GO). Architecture companion to
+[D202](PRODUCTION_PLAN.md#pl-d202). No executable claim. Inserted 2026-09-30 after
+Codex adversarial plan audit #949 so plan + architecture stay aligned before
+implementation. Promote to Implemented only with D202 evidence.
+
+**Stable ID:** [ar-ch66](#ar-ch66) / `ar-s091`.
+**Scope:** `play.html` map canvas LOD only. Desktop and mobile. All catalog modules
+that already admit rooms into `ParchLockMap.Rooms[]`. No title adapters.
+**Contract (required):**
+
+- Two modes on one canvas family: **hub** (default / zoomed-in local neighborhood into
+  fixed `here`+`dir-*` chrome) and **overview** (zoomed-out layout of
+  OverviewEligible rooms).
+- Chrome ≠ vocabulary: twelve layout slots are positioning chrome; exit keys remain
+  module-built (compass / numbered / nautical / typed travel).
+- `OverviewEligible` is stricter than `isPlayerFacingRoom` alone: visited/current, or
+  intentionally hub-visible neighbor of DisplayedRoom; named unvisited look-ahead
+  stubs stay hidden.
+- Overview coordinates are **transient**; no `PL_Map_*` schema/migration churn.
+- Overview click sets DisplayedRoom by **Id**, preserves Scale/MapMode, recenters
+  overview; Reset/Center Current may return hub. Not a travel command surface.
+- Latched `MapMode` + graph/layout revision; `ApplyViewport`/pan/wheel must not
+  recursively redraw; invalidate on room/edge/name/note/delete/reset/import/restore/
+  module lifecycle and resize/orientation.
+- Edges: real exit-key labels, directed/one-way preserved, tentative distinguished,
+  no geometry from chrome vocabulary.
+- A11y/mobile: readable labels, ≥44px touch targets, keyboard focus/activation, ARIA
+  current/tentative; pan must not steal activation.
+- Empty overview must not ship ungated.
+
+**Contract (forbidden):** Replacing hub paint as the sole map product; masking hub;
+Alley/title layout hacks; spoiling look-ahead via raw Known Rooms filter; persisting
+overview layout on room records; deriving placement from `dir-*` slot names.
+
+**Implementation (planned):** `Map.js` (mode/scale/draw/click), `MapBeautify.js`
+(layoutHints seed + overview layout pass), `MapTopology.js` (OverviewEligible),
+`WorkspaceUI.js` (DrawPaths), `ParchLock.css` / `play.html` chrome as needed.
+**Relationships:** Extends D63/D66/D67/D71/D112/D54/D80/D23/D30/D134; does not
+supersede hub or room-build pipeline. Plan authority: [D202](PRODUCTION_PLAN.md#pl-d202).
+**Evidence:** none yet (PROPOSED).
+
+```mermaid
+flowchart TD
+  Scale[Scale + hysteresis] --> Latch{MapMode latch}
+  Latch -->|hub| Hub[Draw local hub into dir-* chrome]
+  Latch -->|overview| Pred[OverviewEligible filter]
+  Pred --> Lay[Transient overview layout by room Id]
+  Lay --> Nodes[Pooled overview nodes]
+  Lay --> Edges[DrawPaths: real exit keys / directed / tentative]
+  Nodes -->|click by Id| Focus[Set DisplayedRoomId; keep overview; recenter]
+  Reset[ResetViewport / Center Current] --> Hub
+  Graph[Room/edge/name/note/lifecycle/resize] --> Rev[Bump layout revision]
+  Rev --> Lay
+  Pan[Pan / wheel same mode] --> CSS[ApplyViewport CSS only]
+```
+
+Chrome vs vocabulary and hub-vs-overview must be kept distinct in docs and code
+comments. layoutHints remains a list/floor seed, not the overview layout product.
