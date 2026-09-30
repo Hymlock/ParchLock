@@ -193,18 +193,39 @@ var MapTopology = {
     // Matching on ObjectId first gets both cases right; falling back to
     // name only applies when no real id exists yet (an untraveled/hinted
     // stub with nothing else to key on).
-    ensureRoom: function (name, objectId) {
+    ensureRoom: function (name, objectId, evidence) {
         if (typeof ParchLockMap === "undefined" || !name) return null;
         var oid = objectId ? String(objectId) : null;
-        // Hard stop: never create/upgrade a map room for an ObjectId that is
-        // structurally not a place (animate NPC, clothing, etc.).
-        try {
-            if (oid && typeof ZRamReader !== "undefined" && ZRamReader.isPlausibleMapRoom
-                && typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) {
-                var _memER = ZRamProvider.getMem();
-                if (_memER && !ZRamReader.isPlausibleMapRoom(_memER, objectId)) return null;
-            }
-        } catch (eER) {}
+        // D201: a room already admitted under containment provenance (blank
+        // compiled short name + player-facing status/label) must remain
+        // addressable for link()/state-delta. Those callers pass only
+        // fromId/toId and cannot re-supply probe evidence. Re-running the
+        // isPlausibleMapRoom name gate here erased ExitMeta/Exits for the
+        // whole unnamed early-Inform family (exemplar: A Little Like Rogue)
+        // while named compilers (Anchorhead) stayed healthy. Reuse the
+        // existing real-id record before the new-admission hard stop.
+        var existingById = null;
+        if (oid) {
+            existingById = ParchLockMap.Rooms.find(function (r) {
+                return r && r.HasRealId && String(r.ObjectId) === oid;
+            }) || null;
+        }
+        // Hard stop for NEW admissions only: never create a map room for an
+        // ObjectId that is structurally not a place (animate NPC, clothing,
+        // etc.). Containment-proven current rooms remain the sole blank-name
+        // admission path (D201); this does not invent destinations.
+        if (!existingById) {
+            try {
+                if (oid && typeof ZRamReader !== "undefined" && ZRamReader.isPlausibleMapRoom
+                    && typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) {
+                    var _memER = ZRamProvider.getMem();
+                    var containmentProven = evidence && evidence.probe
+                        && evidence.probe.roomSource === "player-containment"
+                        && String(evidence.probe.roomId) === String(objectId);
+                    if (_memER && !containmentProven && !ZRamReader.isPlausibleMapRoom(_memER, objectId)) return null;
+                }
+            } catch (eER) {}
+        }
         // D54: internal/meta short-names are never map rooms — even when a
         // real ObjectId is known. "(Inform Library)", "(darkness object)",
         // and "C_ROOMS_N" must not enter Rooms[] or become CurrentRoom.
@@ -220,8 +241,8 @@ var MapTopology = {
         // call finally supplies the real one for the same name -- doing so
         // would fork the stub into a duplicate room instead of upgrading
         // it in place.
-        if (oid) {
-            room = ParchLockMap.Rooms.find(function (r) { return r && r.HasRealId && String(r.ObjectId) === oid; });
+        if (existingById) {
+            room = existingById;
         }
 
         if (!room) {
@@ -332,15 +353,39 @@ var MapTopology = {
         if (toName && MapTopology.isInternalRoomName(toName)) {
             toName = null;
         }
+        // D201 (system-wide): look-ahead often carries only targetRoomId when
+        // the destination's compiled short name is blank (early Inform) or
+        // was cleared as C_ROOMS_*. Once that ObjectId is already admitted
+        // under a player-facing label, recover the admitted Name so pathable
+        // Exits[] form between visited rooms -- the same feature named
+        // compilers get from non-blank targetRoomName. Unvisited blank
+        // ObjectIds stay name-less and remain ExitMeta hints until travel.
+        if ((!toName || MapTopology.isInternalRoomName(toName)) && meta && meta.toId != null
+            && typeof ParchLockMap !== "undefined" && ParchLockMap.Rooms) {
+            var admittedNamed = ParchLockMap.Rooms.find(function (r) {
+                return r && r.HasRealId && String(r.ObjectId) === String(meta.toId)
+                    && r.Name && !MapTopology.isInternalRoomName(r.Name);
+            });
+            if (admittedNamed) toName = admittedNamed.Name;
+        }
         // Do not mint map rooms for animate/clothing ObjectIds (NPC "Michael",
         // "Michael's pants") even when look-ahead resolves a destination id.
         // Doors remain allowed (D42). Structural check only when RAM is live.
+        // D201: once a destination ObjectId was already admitted (containment
+        // provenance + player-facing label), blank compiled short names must
+        // not strip toName here -- that left state-delta edges as ExitMeta
+        // hints only and produced isolated map rooms for the unnamed
+        // early-Inform family. Unvisited blank destinations stay name-less
+        // and remain hinted until travel admits them.
         try {
             if (toName && meta && meta.toId != null
                 && typeof ZRamReader !== "undefined" && ZRamReader.isPlausibleMapRoom
                 && typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) {
                 var _m2 = ZRamProvider.getMem();
-                if (_m2 && !ZRamReader.isPlausibleMapRoom(_m2, meta.toId)) {
+                var destAdmitted = (typeof ParchLockMap !== "undefined" && ParchLockMap.Rooms || []).some(function (r) {
+                    return r && r.HasRealId && String(r.ObjectId) === String(meta.toId);
+                });
+                if (_m2 && !destAdmitted && !ZRamReader.isPlausibleMapRoom(_m2, meta.toId)) {
                     toName = null;
                 }
             }
@@ -414,12 +459,15 @@ var MapTopology = {
                     && ZRamReader.isPlausibleMapRoom && typeof ZRamProvider !== "undefined"
                     && ZRamProvider.getMem) {
                     var _mem = ZRamProvider.getMem();
-                    if (_mem && !ZRamReader.isPlausibleMapRoom(_mem, payload.roomId)) {
+                    var containmentProven = payload.probe
+                        && payload.probe.roomSource === "player-containment"
+                        && String(payload.probe.roomId) === String(payload.roomId);
+                    if (_mem && !containmentProven && !ZRamReader.isPlausibleMapRoom(_mem, payload.roomId)) {
                         return (typeof ParchLockMap !== "undefined" && ParchLockMap.CurrentRoom) || "";
                     }
                 }
             } catch (eAnim) {}
-            var room = MapTopology.ensureRoom(payload.roomName, payload.roomId);
+            var room = MapTopology.ensureRoom(payload.roomName, payload.roomId, payload);
             if (!room) {
                 return (typeof ParchLockMap !== "undefined" && ParchLockMap.CurrentRoom) || "";
             }
@@ -455,11 +503,14 @@ var MapTopology = {
                 && ZRamReader.isPlausibleMapRoom && typeof ZRamProvider !== "undefined"
                 && ZRamProvider.getMem) {
                 var _m3 = ZRamProvider.getMem();
-                if (_m3 && !ZRamReader.isPlausibleMapRoom(_m3, payload.roomId)) return;
+                var containmentProven = payload.probe
+                    && payload.probe.roomSource === "player-containment"
+                    && String(payload.probe.roomId) === String(payload.roomId);
+                if (_m3 && !containmentProven && !ZRamReader.isPlausibleMapRoom(_m3, payload.roomId)) return;
             }
         } catch (ePay) {}
         if (MapTopology.isInternalRoomName(roomName)) return;
-        var room = MapTopology.ensureRoom(roomName, payload.roomId);
+        var room = MapTopology.ensureRoom(roomName, payload.roomId, payload);
         // D74: use the room's own FROZEN identity name (D62) from here on,
         // not the raw `payload.roomName` string just read this tick. Some
         // games (confirmed live: wump2ka.z5.js) re-randomize their printed

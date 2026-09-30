@@ -67,7 +67,7 @@ for %%F in (
   ParchLock.exe
   js\ProductInfo.js js\ModuleLibrary.js js\MobileLayout.js js\Input.js
   js\Qol.js js\Actionable.js js\ParchLock.js css\ParchLock.css
-  js\StatTracker.js js\EquipmentUI.js
+  js\StatTracker.js js\StatusGridDecoder.js js\EquipmentUI.js
   css\RobotoMono-ExtraLight.ttf lib\main.js
 ) do if not exist "%DEST%\%%F" (
   echo ERROR: Runtime allow-list missed %%F

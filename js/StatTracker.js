@@ -67,7 +67,8 @@ var StatTracker = {
         score: "score", points: "score",
         moves: "turns", move: "turns", turns: "turns", turn: "turns",
         health: "health", "hit points": "health", hp: "health", hits: "health",
-        stamina: "stamina", energy: "stamina", strength: "strength",
+        stamina: "stamina", energy: "stamina", strength: "strength", str: "strength",
+        level: "level", lvl: "level",
         hunger: "hunger", food: "hunger", thirst: "thirst", water: "thirst",
         sleep: "sleep", rest: "sleep", time: "time", day: "day",
         money: "money", cash: "money", gold: "gold"

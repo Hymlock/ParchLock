@@ -135,7 +135,7 @@ assert(
 
 global.__gridText = " Outside the Real Estate Office                                                                                     day one                    ";
 assert(
-    WorldModel.refineRoomDisplayName({ roomName: "outside_the_real_estate_office" }) === "Outside the Real Estate Office",
+    WorldModel.refineRoomDisplayName({ roomName: "Outside the Real Estate Office" }) === "Outside the Real Estate Office",
     "Anchorhead-style single-line status grid keeps the first title column"
 );
 

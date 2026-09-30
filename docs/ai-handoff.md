@@ -1,3 +1,13 @@
+
+# D201 cross-system audit follow-up (2026-09-29, grok)
+
+Audited D201 as system-wide (not LLR-only). Confirmed identity/status/inventory
+paths, then enabled missing map/exit decoding rather than stripping features:
+admitted-name recovery in `MapTopology.link`, containment-proven blank label
+preservation in `WorldModel`, blank location-shaped `isPlausibleExitTarget`,
+native LVL/STR StatTracker synonyms. Harness now covers travel/pathable edges
+(58/58). Working tree uncommitted. See docs/ai-status.md and PRODUCTION_PLAN D201.
+
 # AI Handoff
 
 ## D109 pronunciation handoff
@@ -143,3 +153,45 @@ TBD
 
 ## Notes
 Keep changes minimal.
+# D198 handoff (2026-09-29, codex)
+
+D198 implementation is complete behind default-off owner valves. Grok accepted the staged
+gates A-G (semantic #940, exits/lifecycle #942); Codex completed the final
+identity/deduplication and package audit when the reviewer became unavailable. Canonical
+plan/architecture and decision index are current. Focused and compatibility suites pass,
+the clean distribution excludes internal plans/tests, and source/desktop/Android runtime
+assets are byte-identical. Development APK:
+`C:\Users\hymlo\Downloads\ParchLock-dist\ParchLock-dev.apk`, SHA-256
+`0B01D64D6557DB23DC44CB6D34D19C327374F01678E039A0E9FE658EC0F84A0C`.
+
+Current deterministic evidence: grammar is recovered for validated pre-V6 Infocom families; only
+direct opcode-state TAKE(room) and DROP(inventory) may become D198 object forms. The grammar
+decoder does not prove direction-property linkage, so the exit valve remains a dormant,
+tested owner boundary and existing confirmed travel remains authoritative. Do not invent
+linkage from compass vocabulary. These are present evidence limits, not permanent architecture
+caps; stronger validated mappings and live structural witnesses extend the same owners.
+
+# D201 implementation handoff (2026-09-29, codex)
+
+D201 is fully researched, implemented and live-browser verified. A Little Like
+Rogue exposes a generic early-Inform shape: the live player and room have blank object short
+names, while the real player owns parser alias `yourself`, the declared animate bit and valid
+containment. Before D201, the resolver selected generated class object
+`K10_player_s_holdall`, then the room plausibility and display paths erased the real unnamed
+room. D200 attribute decoding was healthy and was not the cause.
+
+The implementation began with the tracked no-argument catalog/live audit specified in
+PRODUCTION_PLAN D201, then extended the existing ZRamReader/ZRamProvider/WorldModel
+translation boundary, not map or UI consumers: evidence-bearing player resolution, reuse of
+`enclosingRoom`, containment-proven unnamed room IDs, one status-grid decoder for room labels
+and `hudMetrics`, and unnamed carried-item payloads using parser-owned nouns. The post-state
+probe proved an additional blocker: after a real axe became a child of the resolved player,
+`walkVisibleDescendants` still returned empty because it treated every unnamed child as a
+wrapper. Level and Strength now flow generically through StatTracker's existing two-sighting
+confirmation and lifecycle rules. No title, serial, object, room or global-slot branch is
+permitted. The implementation adds `ZRamReader.resolvePlayer`, containment provenance,
+`StatusGridDecoder`, parser-labelled held inventory, exact-provenance map admission, and a
+deterministic pre-loader ZVM constructor hook. `harness/d201-unnamed-identity.js` passes
+53/53 over five alternating mobile/desktop randomized LLR starts and live RoTA, Bronze,
+Accuse, Anchorhead and Wumpus controls. Canonical detail: PRODUCTION_PLAN D201 and
+ARCHITECTURE_UML section 65.

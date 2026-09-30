@@ -24,9 +24,14 @@ var ZRamReader = {
         };
     },
 
+    _objectCountCache: new WeakMap(),
     objectCount: (mem, h) => {
         h = h || ZRamReader.header(mem);
         if (!h) return 0;
+        var cacheKey = (mem && mem.buffer) || mem;
+        if (cacheKey && typeof cacheKey === "object" && ZRamReader._objectCountCache.has(cacheKey)) {
+            return ZRamReader._objectCountCache.get(cacheKey);
+        }
         var first = h.objTable + h.defaultsWords * 2;
         var max = 0;
         for (var id = 1; id < 20000; id++) {
@@ -48,6 +53,7 @@ var ZRamReader = {
             if (parent > 20000 || sibling > 20000 || child > 20000) break;
             max = id;
         }
+        if (cacheKey && typeof cacheKey === "object") ZRamReader._objectCountCache.set(cacheKey, max);
         return max;
     },
 
@@ -932,16 +938,41 @@ var ZRamReader = {
     // A door is exactly the thing an exit passes THROUGH, so it is a valid
     // exit target and an invalid room. This predicate answers the second
     // question; isPlausibleMapRoom still answers the first, unchanged.
-    isPlausibleExitTarget: (mem, id) => {
+        isPlausibleExitTarget: (mem, id) => {
         try {
             if (ZRamReader.isPlausibleMapRoom(mem, id)) return true;
             var attrs = ZRamReader.attrsFromObject(mem, id) || {};
-            if (!attrs.door) return false;
-            // Still refuse a door whose own short-name is meta/internal, so a
-            // parenthesised compiler object cannot sneak in through this door.
+            if (attrs.door) {
+                // Still refuse a door whose own short-name is meta/internal, so a
+                // parenthesised compiler object cannot sneak in through this door.
+                var nmDoor = "";
+                try { nmDoor = ZRamReader.shortName(mem, id) || ""; } catch (eN) {}
+                return !!nmDoor && nmDoor.charAt(0) !== "(";
+            }
+            // D201: blank compiled short names fail the map-room name gate,
+            // but a structurally valid location remains a valid exit target
+            // for learned and look-ahead edges (system-wide; early-Inform
+            // unnamed rooms are the stress case). Reuse location and
+            // nesting guards; never admit animate/clothing or furniture
+            // nested inside a real place.
             var nm = "";
-            try { nm = ZRamReader.shortName(mem, id) || ""; } catch (eN) {}
-            return !!nm && nm.charAt(0) !== "(";
+            try { nm = ZRamReader.shortName(mem, id) || ""; } catch (eN2) {}
+            if (nm && nm.charAt(0) === "(") return false;
+            if (/^(class|object|compass|compassdirection|direction|kind|nothing|thedark)$/i.test(nm)) {
+                return false;
+            }
+            if (attrs.animate || attrs.clothing || attrs.worn || attrs.wearable) return false;
+            if (!ZRamReader.isLocationObject(mem, id, 0)) return false;
+            var obj = ZRamReader.objectLinks(mem, id);
+            if (obj && obj.parent > 0) {
+                var par = ZRamReader.objectLinks(mem, obj.parent);
+                if (par && par.parent === 0) {
+                    var pname = "";
+                    try { pname = ZRamReader.shortName(mem, obj.parent) || ""; } catch (eP) {}
+                    if (pname && pname.charAt(0) !== "(") return false;
+                }
+            }
+            return true;
         } catch (e) { return false; }
     },
 
@@ -1072,6 +1103,17 @@ var ZRamReader = {
                 if (indexed != null && indexed >= 2) return indexed;
             }
         } catch (eRi) {}
+
+        // D201: an unnamed early-Inform room is still a room when the resolved
+        // player is structurally contained by it. This comes after the learned
+        // D84 and indexed D171 lanes, so Wumpus's parentless-player/indexed-room
+        // handling is unchanged. enclosingRoom owns the cycle, Class and
+        // enterable-container guards; no arbitrary unnamed top-level object is
+        // admitted here.
+        try {
+            var enclosing = playerId ? ZRamReader.enclosingRoom(mem, playerId) : 0;
+            if (enclosing) return enclosing;
+        } catch (eD201Room) {}
 
         var count = ZRamReader.objectCount(mem, h);
         function isMeta(nm) {
@@ -1344,10 +1386,12 @@ var ZRamReader = {
         return bestScore >= 20 ? best : 0;
     },
 
-    findPlayerId: (mem, dict) => {
+    resolvePlayer: (mem, dict) => {
         var h = ZRamReader.header(mem);
-        if (!h) return 0;
+        if (!h) return { id: 0, source: "none", ambiguous: false, candidates: [] };
         var count = ZRamReader.objectCount(mem, h);
+        var inform = false;
+        try { inform = ZRamReader.isInformCompiled(mem); } catch (eInform) {}
         function isSelfObjectName(nm) {
             // Inform 6's default PC short-name is literally "(self object)".
             // That is the real player instance (Advent.z5.js id 20), not a
@@ -1362,33 +1406,85 @@ var ZRamReader = {
             if (nm.charAt(0) === "(") return true;
             return /^(class|object|routine|string|kind|nothing|compass|compassdirection|direction|room|thing|backdrop|region|door|directions)$/i.test(nm);
         }
-        var best = 0, bestScore = -1;
+        var globalRefs = {};
+        for (var gr = 0; gr < 160; gr++) {
+            var gv = ZRamReader.u16(mem, h.globals + gr * 2);
+            if (gv >= 2 && gv <= count) globalRefs[gv] = (globalRefs[gv] || 0) + 1;
+        }
+        var candidates = [], candidateOrder = 0;
         function consider(id, bonus) {
             if (id < 2 || id > count) return;
             var nm = ZRamReader.shortName(mem, id) || "";
-            if (isMetaName(nm)) return;
             var obj = ZRamReader.objectLinks(mem, id);
             if (!obj) return;
+            if ([obj.parent, obj.sibling, obj.child].some(function (v) { return v < 0 || v > count; })) return;
+            var parentName = obj.parent ? (ZRamReader.shortName(mem, obj.parent) || "") : "";
+            if (/^class$/i.test(parentName)) return;
+            var aliases = [];
+            try { if (inform) aliases = ZRamReader.parserWordsAny(mem, id) || []; } catch (eWords) {}
+            aliases = aliases.map(function (word) { return String(word || "").toLowerCase(); });
+            var exactSelfAlias = aliases.indexOf("yourself") >= 0;
+            var attrs = {};
+            try { attrs = ZRamReader.attrsFromObject(mem, id) || {}; } catch (eAttrs) {}
+            var parserSelf = !!(inform && exactSelfAlias && attrs.animate);
+            var namedSelf = isSelfObjectName(nm) || /^(yourself|cretin|grunk|body)$/i.test(nm);
+            var namedPlayer = /yourself|cretin|grunk|adventurer|player/i.test(nm);
+            if (!parserSelf && (isMetaName(nm) || (!namedSelf && !namedPlayer))) return;
             var score = bonus || 0;
             var low = nm.toLowerCase();
+            var source = "named-player";
+            if (parserSelf) { score += 100; source = "parser-self"; }
             if (isSelfObjectName(nm)) score += 40;
             else if (/^(yourself|cretin|grunk|body)$/.test(low)) score += 40;
             else if (/yourself|cretin|grunk|adventurer|player/.test(low)) score += 18;
-            else return; // only strong PC-name candidates in full/global scan
             if (obj.parent > 1) {
-                var pn = ZRamReader.shortName(mem, obj.parent) || "";
-                if (!isMetaName(pn)) {
+                if (!isMetaName(parentName) || !parentName) {
                     score += 10;
                     if (ZRamReader.children(mem, obj.parent).length) score += 8;
                 }
             }
             var kids = ZRamReader.children(mem, id);
             if (kids.length && kids.length < 24) score += 3;
-            if (score > bestScore) { bestScore = score; best = id; }
+            score += Math.min(globalRefs[id] || 0, 4) * 2;
+            candidates.push({
+                id: id,
+                score: score,
+                source: source,
+                name: nm,
+                aliases: aliases,
+                animate: !!attrs.animate,
+                parentId: obj.parent,
+                globalRefs: globalRefs[id] || 0,
+                order: candidateOrder++
+            });
         }
         for (var g = 0; g < 160; g++) consider(ZRamReader.u16(mem, h.globals + g * 2), 5);
         for (var id = 1; id <= count; id++) consider(id, 0);
-        return bestScore >= 18 ? best : 0;
+        // Global scanning can encounter the same object repeatedly. Keep its
+        // strongest evidence record, then sort without object-table order as a
+        // semantic tiebreaker. An equal top score is honest ambiguity.
+        var unique = {};
+        candidates.forEach(function (candidate) {
+            var prior = unique[candidate.id];
+            if (!prior || candidate.score > prior.score) unique[candidate.id] = candidate;
+        });
+        candidates = Object.keys(unique).map(function (key) { return unique[key]; });
+        candidates.sort(function (a, b) { return (b.score - a.score) || (a.order - b.order); });
+        var best = candidates[0];
+        var threshold = best && best.source === "parser-self" ? 100 : 18;
+        if (!best || best.score < threshold) {
+            return { id: 0, source: "none", ambiguous: false, candidates: candidates };
+        }
+        if (best.source === "parser-self" && candidates[1]
+            && candidates[1].source === "parser-self" && candidates[1].score === best.score) {
+            return { id: 0, source: "ambiguous", ambiguous: true, candidates: candidates };
+        }
+        return { id: best.id, source: best.source, ambiguous: false, candidates: candidates };
+    },
+
+    findPlayerId: (mem, dict) => {
+        var resolved = ZRamReader.resolvePlayer(mem, dict);
+        return resolved && resolved.id ? resolved.id : 0;
     },
 
 
@@ -1769,6 +1865,39 @@ var ZRamReader = {
                 if (!name || name.charAt(0) === "(") {
                     var wrapperAttrs = ZRamReader.attrsFromObject(mem, cid);
                     if (wrapperAttrs.animate) return;
+                    var aliases = [];
+                    try { aliases = ZRamReader.parserWordsAny(mem, cid) || []; } catch (eAliases) {}
+                    var itemLike = aliases.length && (
+                        wrapperAttrs.takeable || wrapperAttrs.worn || wrapperAttrs.clothing
+                        || wrapperAttrs.wearable || wrapperAttrs.edible || wrapperAttrs.container
+                        || wrapperAttrs.supporter || wrapperAttrs.openable || wrapperAttrs.switchable
+                        || wrapperAttrs.on || wrapperAttrs.light
+                    );
+                    if (itemLike) {
+                        var useful = aliases.filter(function (word) {
+                            return !/^(a|an|the|some|of|called|named)$/i.test(String(word || ""));
+                        });
+                        var parserLabel = String(useful[useful.length - 1] || aliases[aliases.length - 1] || "").trim();
+                        if (parserLabel) {
+                            out.push({
+                                id: cid,
+                                name: parserLabel,
+                                parentId: id,
+                                attrs: wrapperAttrs,
+                                aliases: aliases,
+                                labelProvenance: "parser-vocabulary",
+                                confidence: confidence,
+                                discovered: true
+                            });
+                            var itemCanLookIn = ZRamReader.canSeeInside(wrapperAttrs);
+                            if (!itemCanLookIn && !insideTrusted && !wrapperAttrs.container
+                                && !wrapperAttrs.supporter && ZRamReader.children(mem, cid).length) {
+                                itemCanLookIn = true;
+                            }
+                            if (d > 0 && itemCanLookIn) walk(cid, d - 1, false);
+                            return;
+                        }
+                    }
                     walk(cid, d - 1, true);
                     return;
                 }
@@ -1809,20 +1938,27 @@ var ZRamReader = {
         var h = ZRamReader.header(mem);
         if (!h) return { ok: false, error: "bad-header" };
         var dict = ZRamReader.parseDictionary(mem);
-        var playerId = ZRamReader.findPlayerId(mem, dict);
+        var playerResolution = ZRamReader.resolvePlayer(mem, dict);
+        var playerId = playerResolution.id || 0;
+        var containedRoom = 0;
+        try { containedRoom = playerId ? ZRamReader.enclosingRoom(mem, playerId) : 0; } catch (eContained) {}
         var roomId = 0;
         var roomName = "";
         if (typeof ZRamReader.findLikelyLocation === "function") {
             roomId = ZRamReader.findLikelyLocation(mem, playerId, "");
         }
+        var roomSource = roomId && containedRoom && roomId === containedRoom
+            ? "player-containment" : (roomId ? "existing-resolver" : "none");
         // D171: a compiled C_ROOMS_<n> name is the compiler's own evidence that
         // this object IS a room, so the attribute-based plausibility gate must
         // not veto it -- that gate reads bits this story randomises per session
         // (D57/D58), and it was measured rejecting the correct room outright
         // (printed #10, id 34, refs 4, kids 5, plausible false).
         var indexedRoom = ZRamReader.ROOM_INDEX_NAME.test(ZRamReader.shortName(mem, roomId) || "");
-        if (roomId && !indexedRoom && !ZRamReader.isPlausibleMapRoom(mem, roomId)) {
+        if (roomId && !indexedRoom && roomSource !== "player-containment"
+            && !ZRamReader.isPlausibleMapRoom(mem, roomId)) {
             roomId = 0;
+            roomSource = "none";
         }
         if (roomId) roomName = ZRamReader.shortName(mem, roomId) || "";
         // D54: honest absence when the only short-name is meta/internal.
@@ -1864,8 +2000,11 @@ var ZRamReader = {
             version: h.version,
             objectCount: ZRamReader.objectCount(mem, h),
             playerId: playerId,
+            playerSource: playerResolution.source,
+            playerAmbiguous: !!playerResolution.ambiguous,
             roomId: roomId,
             roomName: roomName,
+            roomSource: roomSource,
             discoveredObjects: scope,
             unnamedCandidates: unnamedCandidates,
             inventory: inventory,

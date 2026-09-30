@@ -112,8 +112,18 @@ var ZRamProvider = {
         } catch (e4) {}
         return playerId;
     },
+    statusTranslation: function () {
+        try {
+            if (typeof StatusGridDecoder !== "undefined" && StatusGridDecoder.fromDocument) {
+                return StatusGridDecoder.fromDocument(document);
+            }
+        } catch (e) {}
+        return { roomLabel: "", metrics: [], columns: [] };
+    },
     resolveStatusRoom: function () {
         try {
+            var translated = ZRamProvider.statusTranslation();
+            if (translated.roomLabel) return translated.roomLabel;
             if (typeof ParchLockMap !== "undefined" && ParchLockMap.CurrentRoom) {
                 var cr = String(ParchLockMap.CurrentRoom).trim();
                 if (cr && cr.charAt(0) !== "(") return cr;
@@ -178,6 +188,7 @@ var ZRamProvider = {
             };
         }
         var snap = ZRamReader.snapshot(mem) || {};
+        var statusInfo = ZRamProvider.statusTranslation();
         // Structural-first, generic for any game (not a per-title branch):
         // ZRamReader.snapshot() already ran its own hint-FREE resolution
         // ladder (parent(player) -> learned/confirmed global -> scored
@@ -199,7 +210,7 @@ var ZRamProvider = {
         // during the FIRST tick, before this fix.
         var loc = snap.roomId || 0;
         if (!loc) {
-            var status = ZRamProvider.resolveStatusRoom();
+            var status = statusInfo.roomLabel || ZRamProvider.resolveStatusRoom();
             try {
                 if (typeof ZRamReader.findLikelyLocation === "function") {
                     loc = ZRamReader.findLikelyLocation(mem, snap.playerId || 0, status || snap.roomName || "") || 0;
@@ -235,6 +246,15 @@ var ZRamProvider = {
             });
             snap.exits = ZRamReader.lookAheadExits(mem, loc);
             snap.confidence = 0.95;
+        }
+        // D201: status text may name an already-proven structural room, but it
+        // never creates the room ID. This is the same display-only exception
+        // Wumpus already uses for C_ROOMS_N and now also covers an honestly
+        // blank early-Inform short name.
+        if (snap.roomId && statusInfo.roomLabel
+            && (!snap.roomName || /^c_rooms(?:_?\d+)?$/i.test(snap.roomName))) {
+            snap.roomName = statusInfo.roomLabel;
+            snap.roomLabelProvenance = "status-grid";
         }
         if (snap.roomName && /^(class|object|kind|compass)$/i.test(snap.roomName)) {
             snap.roomId = 0; snap.roomName = ""; snap.discoveredObjects = []; snap.exits = [];
@@ -279,10 +299,13 @@ var ZRamProvider = {
             unnamedCandidates: snap.unnamedCandidates || [],
             inventory: snap.inventory || [],
             exits: snap.exits || [],
+            hudMetrics: statusInfo.metrics || [],
             probe: {
                 status: "z-ram-live",
                 playerId: snap.playerId || 0,
+                playerSource: snap.playerSource || "",
                 roomId: snap.roomId || 0,
+                roomSource: snap.roomSource || "",
                 scopeCount: objs.length
             },
             confidence: conf

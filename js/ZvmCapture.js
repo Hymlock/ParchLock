@@ -3,6 +3,33 @@ var ZvmCapture = {
     patchTries: 0,
     patched: false,
 
+    armConstructorHook: () => {
+        if (typeof window === "undefined" || window.ZVM) return false;
+        var descriptor;
+        try { descriptor = Object.getOwnPropertyDescriptor(window, "ZVM"); } catch (e) {}
+        if (descriptor && !descriptor.configurable) return false;
+        if (descriptor && (descriptor.get || descriptor.set)) return false;
+        try {
+            Object.defineProperty(window, "ZVM", {
+                configurable: true,
+                enumerable: true,
+                get: function () { return undefined; },
+                set: function (Ctor) {
+                    Object.defineProperty(window, "ZVM", {
+                        configurable: true,
+                        enumerable: true,
+                        writable: true,
+                        value: Ctor
+                    });
+                    ZvmCapture.install();
+                }
+            });
+            return true;
+        } catch (eHook) {
+            return false;
+        }
+    },
+
     install: () => {
         if (ZvmCapture.patched) return true;
         if (typeof window === "undefined" || !window.ZVM) return false;
@@ -128,6 +155,10 @@ var ZvmCapture = {
 };
 
 try {
+    // lib/main.js loads lib/zvm.js asynchronously and constructs the VM in
+    // the same promise turn. Polling alone can miss that interval on a fast
+    // desktop load, so intercept the constructor assignment before main.js.
+    ZvmCapture.armConstructorHook();
     if (!ZvmCapture.install()) {
         var _ziv = setInterval(function () {
             if (ZvmCapture.install() || ZvmCapture.patchTries > 200) clearInterval(_ziv);

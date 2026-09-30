@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v81"; // D200 Inform detection backing-buffer cache
+const CACHE_VERSION = "parchlock-shell-v84"; // D201 unnamed identity and status translation
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [
@@ -70,6 +70,7 @@ const APP_SHELL = [
     "js/MapBeautify.js",
     "js/EquipmentUI.js",
     "js/StatTracker.js",
+    "js/StatusGridDecoder.js",
     "js/MapIdentity.js",
     "js/ExitCalibrator.js",
     "js/MapTopology.js",

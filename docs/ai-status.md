@@ -1,5 +1,67 @@
 # AI Status
 
+## D201 cross-system audit (2026-09-29, grok)
+Full cross-system audit of D201 against PRODUCTION_PLAN §D201 / ARCHITECTURE §65.
+D201 is treated as **system-wide capability** (identity, StatusGridDecoder, map
+admission/evidence, inventory recovery, MapTopology); unnamed early-Inform (LLR3)
+is the stress case, not a title adapter.
+
+**Enablement fixes applied (not feature-stripping):**
+1. `MapTopology.link`: when look-ahead has blank `targetRoomName` but `toId` is
+   already admitted under a player-facing Name, recover that Name so pathable
+   `Exits[]` form between visited rooms (same feature named compilers get from
+   non-blank names). Unvisited blank ids stay ExitMeta hints.
+2. `WorldModel.tick`: blank display after refine no longer wipes
+   containment-proven `roomId`/exits/scope (D201 structural identity).
+3. `ZRamReader.isPlausibleExitTarget`: blank location-shaped destinations pass
+   (doors/animate/clothing/nested furniture still rejected) so ExitCalibrator
+   can emit learned edges for unnamed rooms.
+4. `StatTracker.CANON`: native `lvl`/`level` and `str`/`strength` synonyms
+   (no invented XP; games that only print LVL/STR stay LVL/STR).
+5. Prior MapTopology follow-up kept: `ensureRoom` reuses admitted `HasRealId`
+   before `isPlausibleMapRoom`; `link` does not strip admitted dest names.
+6. `harness/d201-unnamed-identity.js` extended: look-ahead/radial + travel +
+   pathable departure edge (multi-boot retry for LLR randomization). **58/58**.
+
+**Regression:** Anchorhead pathable se/w + travel west OK; Advent/LostPig named
+smoke OK; catalog audit 271 Inform / 45 parser-self / Mask fail-closed;
+`d46-room-identity` 27/27. No XP invented. Uncommitted working tree (user did
+not ask to commit). APK refresh still the packaging gate.
+
+## D201 map-topology follow-up (2026-09-29, grok audit)
+D201 identity/status work recovered unnamed early-Inform player/room/metrics, but
+MapTopology still dropped pathable edges for that family: `ensureRoom` re-applied
+`isPlausibleMapRoom` (blank compiled short names fail) before reusing an already-
+admitted real ObjectId, and `link()` nulled destination names the same way. Live
+LLR3 symptom: ExitMeta/radial empty or rooms isolated after travel; Anchorhead
+unaffected (named short names). Fix is system-wide for the unnamed early-Inform
+family, not an LLR/Alley special case: reuse admitted ObjectIds in `ensureRoom`,
+and keep player-facing `toName` in `link()` when the destination ObjectId is already
+admitted. Live verify: LLR3 radial populated from look-ahead ExitMeta; south travel
+writes `Exits.s`; Level/Strength confirm via StatusGridDecoder; Anchorhead still
+connects. Uncommitted working tree (D201 never landed as a git commit after D200).
+
+## D201 implemented (2026-09-29, codex)
+D201 now recovers unnamed early-Inform player, enclosing-room and held-item identity from
+compiler-owned structural evidence, with a shared status-grid presentation/metric decoder.
+The live Chromium gate passes 58/58 across five alternating mobile/desktop LLR starts and
+RoTA, Bronze, Accuse, Anchorhead and Wumpus controls. Catalog audit: 271 Inform modules,
+45 parser-self resolutions, Mask equal-score ambiguity correctly unresolved. The desktop
+ZVM capture race was removed with a constructor-assignment hook before `lib/main.js`.
+Distribution/cache wiring is current; APK refresh remains the final packaging gate.
+## D198 complete implementation (2026-09-29, codex)
+D198 gates A-G are implemented; Grok accepted the staged implementation through bus #942,
+and Codex completed the final identity/deduplication and package audit after that reviewer
+became unavailable. Exact executable-ZCOD
+identity, complete provider registration, bounded Infocom grammar decoding, three owner-local
+off/shadow/on valves, unique-ID opcode provenance, conservative TAKE/DROP semantic forms,
+fail-closed exit linkage and explicit restore lifecycle resets are shipped in source. The
+current decoder proves no direction-property linkage, so D198 correctly adds no speculative
+exits. The focused/compatibility suites and 30-check cross-owner contract matrix pass; both
+embedded document validators and package parity pass.
+Clean desktop/source distributions and `ParchLock-dev.apk` were built; APK SHA-256 is
+`0B01D64D6557DB23DC44CB6D34D19C327374F01678E039A0E9FE658EC0F84A0C`.
+
 ## D109 update (2026-09-22, codex)
 The shared speech payload applies a narrow anchor-to-anker pronunciation hint so
 Anchorhead uses a K sound in both Android and desktop voices. Display text is unchanged.
@@ -37,7 +99,7 @@ is being raced while Grok's separate D100 read-aloud work is live.
 
 ## Historical D99 program
 D99 ParchLock release program with D97 story policy and D98 Module Manager.
-Canonical plan: `PRODUCTION_PLAN.md` sections 12-13 (§12.8 Grok closeout). Target
+Canonical plan: `PRODUCTION_PLAN.md` sections 12-13 (Â§12.8 Grok closeout). Target
 architecture: `ARCHITECTURE_UML.md` sections 34-35. Codex implemented; Grok finished
 full adversarial audit+fix: Tools duplicate fixed; Display font experiment reversed
 (operator); packaging leftovers cleaned; 15/15 critical harnesses green; dist+dev APK
@@ -267,3 +329,4 @@ browser/CDP probe scripts fail outside a real browser, expected, unrelated to D8
 - 2026-09-20 (claude): FINAL PLAN submitted to codex for implementation by operator instruction: PRODUCTION_PLAN.md sections 12 (D99 ParchLock release program) and 13 (D98 Module Manager) are the canonical text; ARCHITECTURE_UML.md sections 34-35; operator decisions Q1-Q6 in section 12.3 (source zip bundled with every release + Git later; operator keeps signing key; allowBackup off; INTERNET removed; PL prefix; credit only). Single-writer freeze begins when codex confirms claims reconciled; grok review/test-only. Implementation pending.
 
 - 2026-09-20 (claude): SEAT FINALIZED -- claude is out of usage credits. All claims released. Handoff: PRODUCTION_PLAN.md sections 12 (D99) and 13 (D98) + ARCHITECTURE_UML.md sections 34-35 are the final plan for the ParchLock program and Module Manager (implementation pending, codex single writer). The sole-editor rule for those two docs cannot be honored while claude is out: operator must designate an editor. Operator gates all answered (section 12.3). No product code was changed after D96 (APK versionCode 28, cache v7).
+

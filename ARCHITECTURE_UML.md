@@ -8,7 +8,7 @@ agent memory, or helper script is required. Companion: [PRODUCTION_PLAN.md](PROD
 historical body below. Older headings saying "current", "shipped", "ready", or "verified"
 describe their recorded scope and date; they do not certify today's code.
 
-**Reference revision:** 1, 2026-09-27. **Runtime audit:** not performed by this indexing change.
+**Reference revision:** 3, 2026-09-29. **Runtime audit:** D201 implemented and live-browser verified across desktop/mobile and same-format controls.
 The local manifest below records the indexed body fingerprint and coverage. If it differs
 from the current body, the index is stale: inspect the changed/unregistered material before
 relying on it. A matching fingerprint establishes indexing freshness, not technical truth.
@@ -147,16 +147,16 @@ decisions and their later mentions, not only the first matching record.
 
 | System / search aliases | Architecture starting sections; plan follow-ups | Contract and dependent systems |
 |---|---|---|
-| Engine/provider; RAM, compiler, ZRamReader, WorldModel | Sections [2](#ar-ch2), [3](#ar-ch3), [4](#ar-ch4), [5](#ar-ch5), [15](#ar-ch15), [22](#ar-ch22), [23](#ar-ch23), [24](#ar-ch24), [27](#ar-ch27), [28](#ar-ch28), [29](#ar-ch29); [D134](PRODUCTION_PLAN.md#pl-d134)/[D151](PRODUCTION_PLAN.md#pl-d151)/[D158](PRODUCTION_PLAN.md#pl-d158)/[D170](PRODUCTION_PLAN.md#pl-d170)-[D171](PRODUCTION_PLAN.md#pl-d171) | Keep structural identity and capability-selected parallel providers; check commands, mapping and caches. |
-| Commands/actionables; inspect, parser nouns, spells; Actionable, ActionSynth, SemanticActions | Sections [23](#ar-ch23), [28](#ar-ch28), [42](#ar-ch42), [59](#ar-ch59); [D141](PRODUCTION_PLAN.md#pl-d141)-[D148](PRODUCTION_PLAN.md#pl-d148)/[D184](PRODUCTION_PLAN.md#pl-d184) | Evidence and scope govern exact parser commands; dictionary words alone are not semantic proof. Check inventory, radials and calibration. |
-| Mapping/travel; room ID, exits; MapTopology, Navigator, ExitCalibrator | Sections [8](#ar-ch8), [25](#ar-ch25), [26](#ar-ch26), [29](#ar-ch29), [46](#ar-ch46); [D134](PRODUCTION_PLAN.md#pl-d134)/[D138](PRODUCTION_PLAN.md#pl-d138)-[D140](PRODUCTION_PLAN.md#pl-d140)/[D155](PRODUCTION_PLAN.md#pl-d155)/[D161](PRODUCTION_PLAN.md#pl-d161)-[D165](PRODUCTION_PLAN.md#pl-d165)/[D170](PRODUCTION_PLAN.md#pl-d170)-[D171](PRODUCTION_PLAN.md#pl-d171) | Preserve identities, non-compass commands and path transitions. Check providers, notes, restore and directional consumers. |
+| Engine/provider; RAM, compiler, ZRamReader, WorldModel | Sections [2](#ar-ch2), [3](#ar-ch3), [4](#ar-ch4), [5](#ar-ch5), [15](#ar-ch15), [22](#ar-ch22), [23](#ar-ch23), [24](#ar-ch24), [27](#ar-ch27), [28](#ar-ch28), [29](#ar-ch29), [64](#ar-ch64), [65](#ar-ch65); [D134](PRODUCTION_PLAN.md#pl-d134)/[D151](PRODUCTION_PLAN.md#pl-d151)/[D158](PRODUCTION_PLAN.md#pl-d158)/[D170](PRODUCTION_PLAN.md#pl-d170)-[D171](PRODUCTION_PLAN.md#pl-d171)/[D198](PRODUCTION_PLAN.md#pl-d198)/[D201](PRODUCTION_PLAN.md#pl-d201) | Keep structural identity and capability-selected parallel providers; check commands, mapping and caches. |
+| Commands/actionables; inspect, parser nouns, spells; Actionable, ActionSynth, SemanticActions | Sections [23](#ar-ch23), [28](#ar-ch28), [42](#ar-ch42), [59](#ar-ch59), [64](#ar-ch64), [65](#ar-ch65); [D141](PRODUCTION_PLAN.md#pl-d141)-[D148](PRODUCTION_PLAN.md#pl-d148)/[D184](PRODUCTION_PLAN.md#pl-d184)/[D198](PRODUCTION_PLAN.md#pl-d198)/[D201](PRODUCTION_PLAN.md#pl-d201) | Evidence and scope govern exact parser commands; dictionary words alone are not semantic proof. Check inventory, radials and calibration. |
+| Mapping/travel; room ID, exits; MapTopology, Navigator, ExitCalibrator | Sections [8](#ar-ch8), [25](#ar-ch25), [26](#ar-ch26), [29](#ar-ch29), [46](#ar-ch46), [64](#ar-ch64), [65](#ar-ch65); [D134](PRODUCTION_PLAN.md#pl-d134)/[D138](PRODUCTION_PLAN.md#pl-d138)-[D140](PRODUCTION_PLAN.md#pl-d140)/[D155](PRODUCTION_PLAN.md#pl-d155)/[D161](PRODUCTION_PLAN.md#pl-d161)-[D165](PRODUCTION_PLAN.md#pl-d165)/[D170](PRODUCTION_PLAN.md#pl-d170)-[D171](PRODUCTION_PLAN.md#pl-d171)/[D198](PRODUCTION_PLAN.md#pl-d198)/[D201](PRODUCTION_PLAN.md#pl-d201) | Preserve identities, non-compass commands and path transitions. Check providers, notes, restore and directional consumers. |
 | Radials/arrow pad; native HELP, usage; DirectionalRadial, CharKeys, Qol | Sections [40](#ar-ch40), [44](#ar-ch44), [45](#ar-ch45), [51](#ar-ch51), [52](#ar-ch52), [53](#ar-ch53); [D120](PRODUCTION_PLAN.md#pl-d120)/[D161](PRODUCTION_PLAN.md#pl-d161) | Separate travel and character-key modes, preserve lifecycle/exclusion and exactly-once activation. Check input, settings, startup and tutorial. |
 | Input/layout; keyboard, character cell, status banner; MobileLayout, Input | Sections [30](#ar-ch30), [31](#ar-ch31), [32](#ar-ch32), [33](#ar-ch33), [36](#ar-ch36), [37](#ar-ch37), [38](#ar-ch38), [39](#ar-ch39), [40](#ar-ch40), [50](#ar-ch50), [53](#ar-ch53), [55](#ar-ch55); [D137](PRODUCTION_PLAN.md#pl-d137)/[D156](PRODUCTION_PLAN.md#pl-d156)/[D166](PRODUCTION_PLAN.md#pl-d166)/[D168](PRODUCTION_PLAN.md#pl-d168)/[D172](PRODUCTION_PLAN.md#pl-d172) | Respect VM-owned grid cells and input intent; check sheets, overlays, narrator and desktop/mobile geometry. |
 | Narrator/mic; speech, TTS; ReadAloud, VoiceInput | Sections [32](#ar-ch32), [39](#ar-ch39), [43](#ar-ch43); [D109](PRODUCTION_PLAN.md#pl-d109)/[D133](PRODUCTION_PLAN.md#pl-d133)/[D159](PRODUCTION_PLAN.md#pl-d159)/[D166](PRODUCTION_PLAN.md#pl-d166)-[D167](PRODUCTION_PLAN.md#pl-d167) | Spoken text and display differ deliberately; preserve complete-turn and voice-mode contracts. Check tutorial, auto-travel and native/web adapters. |
 | Restore/storage; undo, new game; UndoRestoreSync | Sections [31](#ar-ch31), [35](#ar-ch35), [41](#ar-ch41); [D178](PRODUCTION_PLAN.md#pl-d178)/[D180](PRODUCTION_PLAN.md#pl-d180)-[D183](PRODUCTION_PLAN.md#pl-d183) | Restore synchronizes dependent state; cached readings cannot masquerade as current facts. Check map, notes, narration, calibration and tracking. |
 | Notes/equipment; inventory, Known Rooms; Map, EquipmentUI | Sections [5](#ar-ch5), [26](#ar-ch26), [46](#ar-ch46), [56](#ar-ch56), [59](#ar-ch59); [D125](PRODUCTION_PLAN.md#pl-d125)-[D128](PRODUCTION_PLAN.md#pl-d128)/[D131](PRODUCTION_PLAN.md#pl-d131)/[D148](PRODUCTION_PLAN.md#pl-d148)/[D168](PRODUCTION_PLAN.md#pl-d168)-[D169](PRODUCTION_PLAN.md#pl-d169)/[D174](PRODUCTION_PLAN.md#pl-d174)/[D184](PRODUCTION_PLAN.md#pl-d184) | Preserve identity-scoped notes and nested inventory; check commands, sheets, stats and saves. |
 | Tutorial/library; onboarding, favorites; Tutorial, MainMenu, ModuleLibrary | Sections [35](#ar-ch35), [38](#ar-ch38), [54](#ar-ch54), [57](#ar-ch57); [D130](PRODUCTION_PLAN.md#pl-d130)/[D132](PRODUCTION_PLAN.md#pl-d132)/[D136](PRODUCTION_PLAN.md#pl-d136)/[D149](PRODUCTION_PLAN.md#pl-d149)/[D160](PRODUCTION_PLAN.md#pl-d160)/[D166](PRODUCTION_PLAN.md#pl-d166)-[D167](PRODUCTION_PLAN.md#pl-d167) | Sections [57](#ar-ch57) revises section 54's isolated lifecycle. Check readiness, speech, settings, sheets and splash. |
-| Character/status; score, health, weight, badge; StatTracker | Sections [60](#ar-ch60); [D157](PRODUCTION_PLAN.md#pl-d157)/[D167](PRODUCTION_PLAN.md#pl-d167)/[D169](PRODUCTION_PLAN.md#pl-d169)/[D173](PRODUCTION_PLAN.md#pl-d173)-[D176](PRODUCTION_PLAN.md#pl-d176)/[D178](PRODUCTION_PLAN.md#pl-d178)/[D180](PRODUCTION_PLAN.md#pl-d180)-[D183](PRODUCTION_PLAN.md#pl-d183) | Baseline diagram requires later plan amendments; preserve provenance, fallback and reset rules. Check inventory, VM grid and persistence. |
+| Character/status; score, health, level, strength, weight, badge; StatTracker | Sections [60](#ar-ch60), [65](#ar-ch65); [D157](PRODUCTION_PLAN.md#pl-d157)/[D167](PRODUCTION_PLAN.md#pl-d167)/[D169](PRODUCTION_PLAN.md#pl-d169)/[D173](PRODUCTION_PLAN.md#pl-d173)-[D176](PRODUCTION_PLAN.md#pl-d176)/[D178](PRODUCTION_PLAN.md#pl-d178)/[D180](PRODUCTION_PLAN.md#pl-d180)-[D183](PRODUCTION_PLAN.md#pl-d183)/[D201](PRODUCTION_PLAN.md#pl-d201) | Baseline diagram requires later plan amendments; preserve provenance, fallback and reset rules. Check inventory, VM grid and persistence. |
 | Packaging/navigation/export; APK, Back, PC; Global, ProductInfo, make-dist | Sections [30](#ar-ch30), [34](#ar-ch34), [35](#ar-ch35), [47](#ar-ch47), [48](#ar-ch48), [49](#ar-ch49), [53](#ar-ch53), [55](#ar-ch55), [58](#ar-ch58); [D99](PRODUCTION_PLAN.md#pl-d99)/[D119](PRODUCTION_PLAN.md#pl-d119)/[D121](PRODUCTION_PLAN.md#pl-d121)/[D129](PRODUCTION_PLAN.md#pl-d129) | Respect runtime allowlists, intentional navigation and current native-save contract. Check caches, startup and native integrations. |
 | Verification/open questions; evidence, regression | Sections [7](#ar-ch7), [12](#ar-ch12), [13](#ar-ch13), [17](#ar-ch17), [24](#ar-ch24) and each topic's evidence | Diagrams and old PASS counts are not current runtime verification; compare code and targeted tests. |
 
@@ -194,13 +194,22 @@ decisions and their later mentions, not only the first matching record.
   [D200](PRODUCTION_PLAN.md#pl-d200) extends that same reader with a bounded V3
   layout while preserving the Inform gate, optional-name omission and every
   existing fallback provider.
+- **ZIL/Infocom composition:** [section 64](#ar-ch64) /
+  [D198](PRODUCTION_PLAN.md#pl-d198) is implemented behind default-off independent valves and separately classifies
+  grammar families, capability evidence, and rollout. It reuses the Z3 base but
+  does not infer ZIL from a failed Inform gate or turn D200 declaration coverage
+  into grammar/action coverage.
+- **Unnamed early-Inform identity:** [section 65](#ar-ch65) /
+  [D201](PRODUCTION_PLAN.md#pl-d201) separates structural player/room/item identity
+  from status and parser-derived labels. Blank labels are not blank identities, but
+  only containment-proven rooms and held items may use the recovery path.
 - Some earlier status banners and diagrams describe old builds. This indexing change
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 88 headings; 0 decision rows; 88 registered units.
-**Last registered unit:** `ar-s088`. **Body SHA-256 (LF):**
-`d7b271341090d232e2b3bb6fc8c5606641edf459f8db49db89102977e2656353`
+**Local manifest:** 90 headings; 0 decision rows; 90 registered units.
+**Last registered unit:** `ar-s090`. **Body SHA-256 (LF):**
+`fb25605378d68447d399cb0ca9398e4d4379df58ddcef26a68c5c910207d42d6`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -368,6 +377,8 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s086](#ar-s086) | 61. Compiled attribute declarations and audit corrections (D186) | H2 | Implemented |
 | [ar-s087](#ar-s087) | 62. Attribute audit coverage and remaining decoder gaps | H2 | Verified / Partial |
 | [ar-s088](#ar-s088) | 63. Inform Z3 declaration layout (D200) | H2 | Implemented |
+| [ar-s089](#ar-s089) | 64. D198 ZIL/Infocom composition architecture | H2 | Implemented / valves default off |
+| [ar-s090](#ar-s090) | 65. Unnamed early-Inform identity composition (D201) | H2 | Implemented / live-browser verified |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -1567,7 +1578,7 @@ from its source; real touch events). Cannot be proven on a physical phone from t
 <a id="ar-s043" data-chapter-id="ar-s043"></a><a id="ar-ch33"></a>
 ## 33. Bottom Menu handle and right-edge Map tab (D96)
 
-Mobile shell only (`body.pm-mobile`); desktop keeps the top-right Menu chip and has no Map tab.
+This section records the original mobile chrome. D102 later removed the mobile Menu handle and retained radial Tools as the complete mobile menu; desktop keeps its top-right Menu chip and now also exposes the same quick-access Map tab.
 
 ```mermaid
 stateDiagram-v2
@@ -1585,13 +1596,19 @@ map sheet padding), so the handle can never overlap the text field and the strip
 Collapsed = transparent hit area + 40x4 bar drawn by `::after` (no text; aria-label kept). Expanded =
 normal button ABOVE the input row.
 
-Right edge: `#pm-map-tab` (z 23) calls `ParchmapMap.Toggle()`. The exit rail
+Right edge: `#pl-map-tab` (z 23) calls `ParchmapMap.Toggle()`. The exit rail
 (`#exits .row.vertical.right`, z 24) shares that edge: three rotated 33vh cells (up / e / down) whose
 labels are travel taps. The tab sits at the up/e seam; the rail strip is `pointer-events:none` and only
 its real labels take pointer events, so a long exit name wins an overlap and the rest of the tab stays
 tappable. Dialog ownership: `app-dialog-open` is set by `Message.Show` and is no longer cleared by
 Parchmap's 100ms boot cleanup while `Message.IsOpen` (first-launch Help popup). Guarded by
 `harness/d96-menu-handle-map-tab.js`.
+
+Current pointer-priority invariant: a right-rail exit label is above the translucent Map tab and
+therefore always receives a tap in shared pixels; the empty rail has no pointer surface, so uncovered
+tab pixels still toggle the map. D96 verifies both sides with a temporary DOM-only exit-label fixture
+when the sampled room has no visible right exit. The fixture never submits a command and is removed
+inside the assertion, so the check cannot mutate navigation or map state.
 
 <a id="ar-s044" data-chapter-id="ar-s044"></a><a id="ar-ch34"></a>
 ## 34. ParchLock release and documentation architecture (D99 -- implementation in progress)
@@ -2466,6 +2483,22 @@ matching the rendered height, the chip winning `elementFromPoint`, and the mask 
 non-interactive. That probe is what caught the null-binding and `offsetParent` bugs, neither of
 which any source-text assertion could see.
 
+**2026-09-29 lifecycle correction.** The protector no longer belongs to `#windowport::before`.
+DarkScope applies `filter: brightness(...)` to `#windowport`; CSS filters establish a containing
+block for fixed descendants, so the protector's viewport coordinates were silently rebased in dark
+rooms even while every measured height remained correct. `#exits` now paints its own opaque
+background plus 4px lower edge, making protector geometry identical to the auto-height band by
+construction. `--pl-band-h` still controls only story reflow and is published with `Math.ceil`.
+
+Native Glk dialogs are created inside `#windowport` (stacking context 3), whereas `#exits` is its
+sibling at 24; `#dialog_frame`'s internal z-index cannot escape the lower parent. Native/app dialog
+ownership therefore hides `#exits` and `#current-room-notes` for the whole overlay lifecycle, with
+`:has(#dialog_frame)` closing the creation frame before `native-dialog-open` is observed. The
+rotated left rail is offset by `8px + safe-left` and its label boxes have a 32px local height (the
+on-screen cross-axis thickness after rotation). No command producer or navigation consumer changes.
+The expanded live D96 matrix is 112/112 over five phone widths plus desktop, including a real
+RESTORE file-dialog cycle; the structural suite is 36/36, with D94 54/54 and D105 43/43 unchanged.
+
 <a id="ar-s069" data-chapter-id="ar-s069"></a><a id="ar-ch56"></a>
 ## 56. Equipment sheet (D122)
 
@@ -2938,3 +2971,338 @@ The Inform compiler gate caches by the underlying `ArrayBuffer`, not by the disp
 `DataView` returned on each provider read. This preserves per-game isolation while making
 the whole-file classification genuinely once per loaded memory buffer.
 Evidence and packaging limits are recorded in [D200](PRODUCTION_PLAN.md#pl-d200).
+
+<a id="ar-s089" data-chapter-id="ar-s089"></a><a id="ar-ch64"></a>
+## 64. D198 ZIL/Infocom composition architecture
+
+**Lifecycle:** IMPLEMENTED / VALVES DEFAULT OFF. This section is the architecture
+companion to [D198](PRODUCTION_PLAN.md#pl-d198). Identity, provider completeness, grammar
+classification/valve, semantic provenance/valve, exit valve boundary, and lifecycle reset
+are implemented in the 2026-09-29 working tree. The clean distribution and development APK
+have source/asset hash parity. Operator-device behavior and genuinely unseen external held-out
+stories remain release confidence checks.
+
+The implemented owners are `ModuleLibrary.captureExecutableIdentity`,
+`WorldModel.ensureProviders`, `GrammarProvider.decodeD198`/`D198GrammarValve`,
+`AttrCalibrator.d198ProvenanceForObject`,
+`SemanticActions.D198SemanticValve`/`confirmedObjectFormsFor`,
+`ExitCalibrator.D198ExitValve`/`setD198StructuralHints`, and the explicit calls in
+`UndoRestoreSync.resync`. No consumer-specific D198 branch, new VM hook, global trust
+manager, or alternate persistence store was added.
+
+```mermaid
+flowchart TD
+  B[Immutable executable ZCOD bytes] --> I[Canonical SHA-256 identity owner]
+  B --> C{Pure structural classifier}
+  C -->|confirmed-inform| IP[Existing Inform providers]
+  C -->|confirmed-zil-family| L[Bounded family locator + pure grammar decoder]
+  C -->|unknown| N[No new D198 facts]
+  L --> S{Capability state\nevidence + activation + version + refs}
+  S -->|absent/candidate/rejected| N
+  S -->|validated| GC[Immutable grammar cache]
+  B --> LV[Live object vocabulary/applicability reads]
+  GC --> GV{Grammar valve\noff / shadow / on}
+  LV --> GV
+  GV --> GP[Existing GrammarProvider + WorldModel registry]
+  OP[Existing opcode/state capture] --> PB[Provenance bridge]
+  GP --> PB
+  PB --> SV{Semantic valve\noff / shadow / on}
+  SV --> SA[Existing SemanticActions resolver]
+  EX[Validated family exit linkage] --> EV{Exit valve\noff / shadow / on}
+  EV --> EC[Existing ExitCalibrator / travel path]
+  SA --> U[Existing left-click, radial, autocomplete consumers]
+  EC --> M[Existing map/navigation consumers]
+  I --> P[Versioned build facts + generalized mappings]
+  P --> GP
+  P --> PB
+```
+
+**Classifier and capability boundary.** The only top-level classifications are
+`confirmed-inform`, `confirmed-zil-family`, and `unknown`; non-Inform is not evidence of
+ZIL. Deja Vu is a required negative fixture because it is early Inform Z3 while the current
+Inform detector returns false and its checksum is zero. Grammar family comes from validated
+structure. Z-machine version chooses widths and object/property layout but does not name a
+grammar family. Every capability carries separate `evidence` (`absent`,
+`candidate`, `validated`, `rejected`) and `activation` (`off`, `shadow`, `on`) plus decoder
+version and reason/evidence references. Classification is deterministic and has no rollout
+input. Anything other than validated evidence produces no active D198 fact.
+
+**Decoder and locator ownership.** `ZRamReader` remains the single owner of shared Z3
+object primitives used by D200 and D198. A pure grammar-family decoder belongs in or below
+`GrammarProvider`; research tools may call the same pure decoder, but their output is never
+runtime evidence. Runtime redecodes loaded bytes. Each locator starts at a documented root,
+proves monotonic bounds, terminators/count caps, dictionary/address cross-links,
+non-overlap, and uniqueness, and rejects its whole result on contradiction. It never scans
+arbitrary dynamic memory for the most plausible table. A family needs two unrelated builds
+and cross-family negatives; a singleton stays candidate. `ztools`/`infodump` is an external
+research/test oracle only, subject to license review before vendoring.
+
+Immutable/static grammar bytes may be parsed once per load only after the full table range
+is proved immutable. Dynamic object properties and vocabulary remain live reads. A valid
+dynamic grammar table is eligible for live decoding only with explicit write/lifecycle
+invalidation, never the immutable cache. Object-layout coverage and grammar/action
+coverage are reported separately; the D200 228-of-271 declaration result supplies no D198
+grammar ceiling. D198's catalog classifier independently identifies 24 validated ZIL-family
+builds.
+
+**Registry and valves.** The family decoder is fixed entirely beneath the existing
+`GrammarProvider`; D198 creates no new `WorldModel` provider. The D158-class
+provider-registry repair now ensures required providers by stable name rather than returning
+because any provider is present; it is prerequisite hardening rather than an alternate
+D198 delivery path. Partial-registry tests prove that repair. New grammar vocabulary,
+semantic forms, and exit hints each have an independent,
+versioned valve defaulting to `off`. For every off valve, provider payload, shared resolver,
+radials, autocomplete, map, persistence, and package output must deep-equal baseline.
+Valves cannot disable or relabel existing Inform grammar, legacy `ActionSynth`, learned
+travel, existing ZIL behavior, or `AttrCalibrator`.
+
+**Cross-system placement and protection.** The Phase 0A code audit rejects a monolithic
+shared D198 service. Reuse follows existing ownership boundaries:
+
+```mermaid
+flowchart LR
+  LB[ParchLock-owned load boundary] --> ML[ModuleLibrary inspect + hash]
+  ML --> MID[Container/module identity unchanged]
+  ML --> XID[Separate executable ZCOD digest]
+  XID --> GP[GrammarProvider family decoder]
+  XID --> SA[SemanticActions build facts]
+  XID --> EC[ExitCalibrator structural hints]
+  GP --> WM[WorldModel existing payload]
+  AC[AttrCalibrator provenance API] --> SA
+  SA --> CC[Existing command consumers]
+  EC --> MAP[Existing map/navigation]
+  UR[UndoRestoreSync ordered lifecycle] --> GP
+  UR --> SA
+  UR --> EC
+```
+
+`ModuleLibrary.inspect` retains container bytes as `bytes` after validating a
+Blorb executable, and `addFile` hashes those bytes for the module record. Built-ins expose
+path metadata without an equivalent digest. That behavior remains correct for module-library
+identity and duplicate management, but it is not executable identity. The load boundary now
+exposes a separate digest of the exact immutable ZCOD bytes delivered to the VM, computed
+once before `vm.prepare` for imports and built-ins. The named seam is a product-owned
+`jQuery.ajax` adapter installed by `ModuleLibrary` before `lib/main.js`; it passes the
+original response through only after inspecting and hashing the same bytes. It does not
+patch the minified loader or perform a second fetch. Container ID, path and executable
+digest remain distinct, and identity failure is fail-open for play but fail-closed for D198.
+
+Only build-derived facts may consume the executable digest. Existing maps and their notes,
+named map slots, interpreter saves/game IDs, favorites, completion marks, last-story,
+tutorial state, UI preferences and directional-radial settings retain their current keys.
+Equipment remains a view of `WorldModel.lastPayload.inventory`; stats readings remain
+session state. No current sidecar is globally rekeyed. New D198 schemas use their owner's
+existing prefix; old records cannot be silently promoted. Digest adoption by an existing
+calibrator or stats pin is outside Phase 0A and requires a later measured decision, after
+D198 valve-off parity, with dual-read/no-write shadow evidence.
+
+Capability state and immutable grammar caching stay beneath `GrammarProvider`; they do not
+become generic `WorldModel` policy. In shadow mode the exact side channel is
+`GrammarProvider._d198ShadowSnapshot`, available only through a diagnostics/test getter and
+never returned by `collect()`, copied to `__PL_GRAMMAR_VERBS__`, or placed in
+`WorldModel.lastPayload`. `WorldModel.specialCommands` receives D198 facts only after the
+grammar valve is on. `SemanticActions` owns command trust, evidence/rendered dedupe and the shared
+consumer result, using a new provenance query from `AttrCalibrator`; it does not consume
+`allowedVerbsFor` or name-based object lookup. `ExitCalibrator` independently owns structural
+exit hints plus travel contradictions. D198 hints are valve-gated, ephemeral per-load facts
+recomputed from current state; they never write `PM_ExitCalib_` or become durable confirmed
+exits. Only the existing real-travel `observe()` path persists candidates and confirmation.
+This deliberately keeps command trust out of room
+identity/structural provider precedence and keeps exit policy out of command-form resolution.
+
+The implemented provider-registry repair is shared and narrow: ensure every known provider by stable name
+while preserving current collection order and structural-field exclusivity. Owner-local
+valves remain separate (`GrammarProvider`, `SemanticActions`, `ExitCalibrator`); only test
+utilities may share deep-equality machinery. `UndoRestoreSync` retains explicit ordered calls
+because `StatTracker.Resync` before `WorldModel.tick` is a proven behavioral dependency. D198
+adds explicit resets/hydration at that coordinator rather than replacing it with an unordered
+event bus. Decoder caches are private and static-range-only; no general application cache is
+introduced. The D198 semantic valve defaults off and controls only D198 forms; D88's legacy
+`SemanticActions.CutoverFlag` still selects `ActionSynth` versus the shared resolver. A D198
+form reaches a consumer only when both are on. If either is off, D198 forms remain absent and
+ordinary D88 parity behavior is unchanged.
+
+The guarded implementation sequence froze green identity/payload baselines after repairing
+`command-consistency-regression.js` and `d46-room-identity.js`. It then delivered executable
+identity, provider completeness, the pure decoder, and one owner-local provenance/valve path
+at a time. Commands, mapping and diagnostics gain reusable results only through existing
+owners. Equipment, stats readings, narrator, tutorial, layout, notes and save UI remain
+unchanged unless a later independently reviewed decision establishes a direct need.
+
+**Semantic bridge and provenance.** D198 custom/non-standard actions are game-wide
+vocabulary only. Object-specific custom forms are outside this contract because a grammar
+action ID alone is not object applicability. This is not a permanent prohibition: a future
+decoder may extend the same bridge when it proves an opaque action mapping and a current
+object-specific structural witness. Standard intents may
+bridge only through a validated family mapping or unique action-specific opcode/state
+witness. The existing six capture hooks are reused, with no new hooks or active probes.
+Mutation/containment can witness some actions. Non-mutating ENTER and `TALK_TO` remain
+absent or provisional without a compiler mapping or separately approved structural witness.
+
+`AttrCalibrator` exposes provenance rather than letting D198 call the current
+behavior-threshold `allowedVerbsFor()`. The D198 bridge accepts compiler/static and
+opcode/state provenance, never behavioral/transcript evidence as confirmation. Correlation
+uses a scoped unique object ID and must not call `AttributeSchema._findIdByName`; equal
+printed names and aliases fail closed. Legacy calibrator behavior is preserved but not
+relabelled. Behavioral/transcript evidence may suppress or demote a candidate in
+`SemanticActions` ranking, but it can never set a D198 confirmed/build fact or satisfy the
+compiler/opcode provenance gate. The operator-approved Equipment inventory probe remains a separate documented
+exception and is not revoked.
+
+Evidence identity is ZCOD digest + family/action ID + roles/object IDs + provenance.
+Rendered identity is normalized command + role/object context. Provider/UI output dedupes
+on rendered identity and aggregates provenance. Trust descends from validated
+compiler/static structure, to target-specific opcode/state witness, to confirmed travel
+for exits, to provisional behavior/transcript. Incomparable conflicts fail closed. Stable
+structural address/action ID breaks ties; registration order and object-key order never do.
+
+These are evidence gates, not ceilings on deterministic development. Today only TAKE in
+room scope and DROP in inventory scope have both a direct opcode-state witness and a current
+containment guard, and today the decoder proves no direction-property linkage. Stronger
+validated family mappings, action-specific live-state witnesses, or direction linkage may
+add facts through `GrammarProvider`, `AttrCalibrator`/`SemanticActions`, and
+`ExitCalibrator` respectively. They must not be rejected merely because the first D198
+decoder could not prove them, and they must not bypass the existing owner, valve, identity,
+contradiction, or lifecycle contracts.
+
+**Identity, stores, and lifecycle.** The story/module identity owner reuses
+`ModuleLibrary.hash()` SHA-256 machinery to digest executable ZCOD bytes once, before VM
+mutation, for imports and built-ins. Container/module identity remains separate: identical
+ZCOD in different Blorbs shares semantic identity, while different ZCOD does not. Missing
+digest disables durable confirmed reads/writes. Crypto does not move into
+`SemanticActions` or `GrammarProvider`.
+
+Only immutable build facts (digest, family, validated static grammar/templates/action IDs)
+and contradiction-tested, cross-object generalized build mappings persist. Correlations,
+current state, accepted/refused outcomes, dynamic-table contents, and other generation facts
+do not. Command success is not permanent applicability. Module switch/hydration clears both
+classes in memory before matching-build load; undo/restore/restart clears provisional and
+generation state while confirmed build facts may survive. Old v1/v2 data loads only as
+explicit provisional evidence, never silent confirmation. Storage ownership stays
+`PL_AttrCalib_`, `PL_DiagonalCalib_`, `PL_SemanticActions_`/Cutover, and the deliberate
+legacy `PM_ExitCalib_`; there is no global prefix rewrite or third store.
+
+**Evaluation and release boundary.** The inspected catalog is not pristine double-blind.
+After metrics and failure rules are precommitted, prospective evaluator-blind tests use an
+independent evaluator and withhold identities/expectations from implementers; genuinely
+unseen lawful/free modules or generated fixtures are preferred, and implementers do not
+inspect heldout bytes after freeze. Phase 0 read-only work may record existing reds.
+`command-consistency-regression` line 44 must be green before semantic Phase 3/4 baseline
+freeze, and `d46-room-identity` 26/27 must be green before exit Phase 5 baseline freeze.
+
+The implementation gate covers malformed/ambiguous structures, contradictions, singleton
+families, cross-family negatives, duplicate names, dynamic invalidation, identity and
+lifecycle matrices, all three valve states, partial provider registries, import/built-in
+parity, existing Inform/ZIL paths, desktop/mobile, and every shared consumer. Subsequent
+packaging must close script order, service-worker cache, distribution/source allow-lists,
+Android assets, and hash parity. Unknown or unsafe evidence remains absent; later phases
+cannot authorize an earlier failed valve.
+
+<a id="ar-s090" data-chapter-id="ar-s090"></a><a id="ar-ch65"></a>
+## 65. Unnamed early-Inform identity composition (D201)
+
+**Lifecycle:** Implemented and live-browser verified on 2026-09-29. This section is
+the architecture companion to [D201](PRODUCTION_PLAN.md#pl-d201). It applies to Z-machine
+builds whose compiler leaves the live player, room, or carried item without a printable
+object short name while retaining structural containment, declared attributes, and parser
+vocabulary. It introduces no title adapter, provider, command registry, UI recovery path,
+or persistence store.
+
+```mermaid
+flowchart TD
+  MEM[Live Z-machine memory] --> PC[Player candidate evidence]
+  PC -->|declared animate + parser self alias + sane containment| UNIQUE{Unique winner?}
+  PC -->|Class-owned generated kind| REJECT[Reject candidate]
+  UNIQUE -->|no or tied| OLD[Existing named player and fallback lanes]
+  UNIQUE -->|yes| PID[Resolved player ObjectId]
+  PID --> ENC[Existing enclosingRoom walk]
+  ENC -->|proved containment| RID[Room ObjectId, name may be blank]
+  RID --> SCOPE[Existing scope and exit walks]
+  RID --> GRID[Shared status-grid decoder]
+  GRID -->|display label only| PAY[Existing UIPayload]
+  GRID -->|structured metrics| HUD[hudMetrics and StatTracker]
+  SCOPE --> PAY
+  PID --> HELD[Existing inventory containment walk]
+  HELD -->|named item| PAY
+  HELD -->|unnamed + parser vocabulary + held evidence| UITEM[Parser-owned item candidate]
+  UITEM --> PAY
+  PAY --> EXISTING[Map, notes, Equipment, Actionable, radials]
+```
+
+The resolver must preserve evidence provenance internally. `findPlayerId` may remain the
+ID-returning compatibility surface, but its owner must be one pure candidate resolver so
+snapshot, inventory and diagnostics do not score the same objects differently. Exact
+compiler-owned `yourself` plus the module's declared animate bit and non-Class containment
+is the early-I7 recovery pattern. Bounded live-global references and held children can
+increase confidence but are not ABI slots. A tie or contradiction returns no new fact.
+
+Location resolution composes through the existing `enclosingRoom` function rather than a
+second parent walk. That walk already owns bounds, cycles, Class rejection and Inform
+enterable container/supporter stepping. Its provenance permits the exact enclosing object
+to retain `roomId` when its short name is blank. General `isPlausibleMapRoom` behavior does
+not become "all unnamed top-level objects are rooms"; D164's actor, furniture, item and door
+rejections remain. D84 learned globals and D171 compiled indices stay independent fallbacks.
+
+Room identity and room presentation remain separate. One pure status-grid decoder at the
+ZRamProvider/WorldModel boundary reads either reversed or ordinary GridWindow content,
+removes style nodes, parses line/column structure and numeric trailing metric fields, and
+returns a structured room-label candidate plus metric records. `WorldModel.refineRoomDisplayName`
+uses the label only when the structural room exists and the compiled label is blank/internal.
+A real compiled name wins, and extracted text never becomes `roomId`, ObjectId, map/note
+storage identity, or player evidence. Metrics flow through `UIPayload.hudMetrics` and the
+existing StatTracker confirmation/provenance lifecycle. `LVL`/`level` and `STR`/`strength`
+are ordinary canonical synonyms; unknown labels retain their printed normalized identity.
+One DOM observation must not be counted twice through direct parsing and `hudMetrics`.
+The VM-owned custom status window remains visible and unwritten. This preserves D149 and
+D165, including mobile corruption defenses and two-sighting confirmation.
+
+Unnamed room objects continue through D184's existing just-printed promotion and D107's
+parser-noun boundary. Held objects need a parallel data shape, not a parallel subsystem:
+the inventory walk records the real ID, immediate parent, ordered parser aliases, declared
+attributes and a label-provenance marker when containment proves the object is carried.
+A conservative compiler-owned noun may fill the required display label, but it does not
+prove TAKE, READ, WEAR or any other intent. `ActionSynth`/`SemanticActions`, Actionable,
+Equipment and radials consume the normal payload and retain their present evidence gates.
+
+```mermaid
+sequenceDiagram
+  participant ZR as ZRamReader
+  participant ZP as ZRamProvider
+  participant WM as WorldModel
+  participant ST as StatTracker
+  participant UI as Existing consumers
+  ZR->>ZR: resolve unique player with provenance
+  ZR->>ZR: enclosingRoom(playerId)
+  ZR-->>ZP: roomId + blank compiled label + scope/exits/inventory
+  ZP->>ZP: decode status label and metrics once
+  ZP-->>WM: ordinary structural UIPayload + hudMetrics
+  WM->>WM: preserve IDs, refine missing label
+  WM->>ST: confirmed-source metric observations
+  WM-->>UI: one shared payload
+```
+
+The implementation begins with the no-argument catalog audit satisfying D199. It classifies
+every self-vocabulary candidate and all ambiguous cases before runtime evidence is consumed.
+`ZRamReader.resolvePlayer` owns player evidence and provenance; `findPlayerId` is the legacy
+ID surface. `StatusGridDecoder` owns pure presentation/metric translation. `ZRamProvider`
+emits the shared payload, and `WorldModel` plus `MapTopology` accept an unnamed room only
+with matching `player-containment` provenance. The inventory walk emits parser-labelled held
+items only when declared item attributes accompany real containment. `ZvmCapture` is loaded
+before `lib/main.js` and intercepts the asynchronously assigned ZVM constructor, ensuring
+the same live-RAM provider is available on fast desktop and mobile loads without changing
+the interpreter path.
+
+The catalog result is 271 Inform modules inspected, 45 parser-self resolutions and one
+equal-score multi-body fail-closed control (Mask). The live browser matrix is 58/58 across
+five alternating desktop/mobile randomized LLR starts plus RoTA, Bronze, Accuse, Anchorhead
+and Wumpus. Focused room identity, nested inventory, compound noun, StatTracker, restore,
+D198 and pathing controls pass. The historical broad D22 fixture retains its documented
+Wumpus/zblorb residuals; the dedicated current live Wumpus indexed-room/status control passes.
+Contract tests must continue to protect randomized LLR starts, movement/revisit, D184
+underlining, take/inventory/drop,
+Equipment, Level/Strength metrics, notes, restore/undo/restart/module switch,
+desktop/mobile status rows, and unchanged Anchorhead, Advent, Bronze, Cutthroats/905,
+Wumpus, RoTA, Zork and ambiguous multi-body controls. A neutral old-library diagonal
+remains neutral until existing real-travel calibration resolves it. Any title/object/slot
+exception, scan-order tie, status-derived identity, vocabulary-derived action, duplicate
+metric observation, or consumer-specific branch fails the architecture.

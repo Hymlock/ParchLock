@@ -28,10 +28,15 @@ var WorldModel = {
     // (registerProvider replaces by name) and costs one array check per
     // collect when the registry is already populated.
     ensureProviders: function () {
-        if (WorldModel.providers && WorldModel.providers.length) return;
+        WorldModel.providers = WorldModel.providers || [];
+        var has = function (name) {
+            return WorldModel.providers.some(function (provider) {
+                return provider && provider.name === name;
+            });
+        };
         var wire = function (name, obj, fn) {
             try {
-                if (typeof obj === "undefined" || !obj) return;
+                if (typeof obj === "undefined" || !obj || has(name)) return;
                 WorldModel.registerProvider({ name: name, collect: fn });
             } catch (e) {}
         };
@@ -47,12 +52,12 @@ var WorldModel = {
             function () { return GraphicsDock.collect(); }); } catch (e) {}
         try {
             if (typeof GlkTapProvider !== "undefined" && GlkTapProvider && GlkTapProvider.collect) {
-                WorldModel.registerProvider(GlkTapProvider);
+                if (!has(GlkTapProvider.name)) WorldModel.registerProvider(GlkTapProvider);
             }
         } catch (e) {}
         try {
             if (typeof EmglkenProvider !== "undefined" && EmglkenProvider) {
-                WorldModel.registerProvider(EmglkenProvider);
+                if (!has(EmglkenProvider.name)) WorldModel.registerProvider(EmglkenProvider);
             }
         } catch (e) {}
     },
@@ -207,9 +212,11 @@ var WorldModel = {
     // take the first surviving column. A single-column game's own title
     // never matches either discard pattern, so its behavior is unchanged.
     refineRoomDisplayName: (payload) => {
-        if (!payload || !payload.roomName) return payload && payload.roomName;
+        if (!payload) return "";
+        // Status text is presentation only. Without either an existing
+        // compiled label or a structural room ID there is nothing to label.
+        if (!payload.roomName && payload.roomId == null) return "";
         try {
-            if (typeof $ === "undefined") return payload.roomName;
             // D165: the status row is only a BETTER source than RAM when RAM
             // has nothing player-facing to offer. D54/D80 introduced this for
             // wump2ka, whose rooms compile to internal labels like "C_ROOMS_3"
@@ -228,19 +235,28 @@ var WorldModel = {
             // is internal/meta. Every other game keeps the name the story file
             // itself carries, at any screen width.
             try {
-                if (typeof MapTopology !== "undefined" && MapTopology.isInternalRoomName
+                if (payload.roomName && typeof MapTopology !== "undefined" && MapTopology.isInternalRoomName
                     && !MapTopology.isInternalRoomName(payload.roomName)) {
                     return payload.roomName;
                 }
             } catch (eInt) {}
+            // D201: this owner also accepts an honestly blank compiled label,
+            // but only after the provider has supplied a structural roomId.
+            // The decoder returns presentation and metrics, never identity.
+            if (payload.roomId != null && typeof StatusGridDecoder !== "undefined"
+                && StatusGridDecoder.fromDocument) {
+                var translated = StatusGridDecoder.fromDocument(document);
+                if (translated.roomLabel) return translated.roomLabel;
+            }
+            if (typeof $ === "undefined") return payload.roomName || "";
             var el = $(".GridWindow.reverse").first();
-            if (!el || !el.length) return payload.roomName;
+            if (!el || !el.length) return payload.roomName || "";
             var raw = String(el.clone().find("style").remove().end().text() || "");
             var columns = raw
                 .split(/\r?\n| {3,}/)
                 .map(function (col) { return col.trim(); })
                 .filter(function (col) { return !!col; });
-            if (!columns.length) return payload.roomName;
+            if (!columns.length) return payload.roomName || "";
             var genericRoomNumber = /^(Room\s*#?\s*\d+|#\d+)$/i;
             var statusMetric = /^(Score|Health|Moves?|Turns?)\s*:/i;
 
@@ -262,13 +278,13 @@ var WorldModel = {
                 return col.replace(/\s*(Score|Health|Moves?|Turns?)\s*:\s*\S*\s*$/i, "").trim();
             };
             columns = columns.map(stripGluedMetric).filter(function (col) { return !!col; });
-            if (!columns.length) return payload.roomName;
+            if (!columns.length) return payload.roomName || "";
 
             var banner = columns.find(function (col) {
                 return !genericRoomNumber.test(col) && !statusMetric.test(col);
             });
             return banner || columns[0];
-        } catch (e) { return payload.roomName; }
+        } catch (e) { return payload.roomName || ""; }
     },
 
     // D65: payload.exits (until now) came ONLY from RAM providers' own
@@ -468,10 +484,24 @@ var WorldModel = {
             try {
                 if (typeof MapTopology !== "undefined" && MapTopology.isInternalRoomName
                     && MapTopology.isInternalRoomName(payload.roomName)) {
-                    payload.roomName = "";
-                    payload.roomId = null;
-                    payload.exits = [];
-                    payload.discoveredObjects = [];
+                    // D201: empty/internal after refine is display absence.
+                    // Containment-proven room IDs must keep exits/scope while
+                    // the status label catches up -- wiping them erased the
+                    // structural identity the rest of D201 just recovered.
+                    // Truly meta printed names (C_ROOMS_*, parentheticals)
+                    // still clear identity, matching D54.
+                    var blankPending = !String(payload.roomName || "").trim();
+                    var containmentProven = !!(payload.probe
+                        && payload.probe.roomSource === "player-containment"
+                        && payload.roomId != null);
+                    if (blankPending && containmentProven) {
+                        payload.roomName = "";
+                    } else {
+                        payload.roomName = "";
+                        payload.roomId = null;
+                        payload.exits = [];
+                        payload.discoveredObjects = [];
+                    }
                 }
             } catch (eMeta) {}
             payload.exits = WorldModel.mergeConfirmedExits(payload);
