@@ -61,6 +61,101 @@ var ExitCalibrator = {
     _key: null,
     _table: null,
 
+    D198ExitValve: {
+        StorageKey: "PL_D198_ExitValve_v1",
+        _testOverride: null,
+        mode: function () {
+            var value = ExitCalibrator.D198ExitValve._testOverride;
+            if (value == null) {
+                try { value = typeof localStorage !== "undefined" && localStorage.getItem(ExitCalibrator.D198ExitValve.StorageKey); } catch (e) {}
+            }
+            return value === "shadow" || value === "on" ? value : "off";
+        },
+        setMode: function (mode) {
+            var value = mode === "shadow" || mode === "on" ? mode : "off";
+            if (value !== "shadow") ExitCalibrator.clearD198GenerationHints();
+            try {
+                if (typeof localStorage !== "undefined") {
+                    if (value === "off") localStorage.removeItem(ExitCalibrator.D198ExitValve.StorageKey);
+                    else localStorage.setItem(ExitCalibrator.D198ExitValve.StorageKey, value);
+                }
+            } catch (e) {}
+            return value;
+        }
+    },
+
+    _d198Clone: function (value) {
+        return value == null ? value : JSON.parse(JSON.stringify(value));
+    },
+
+    // D198 hints are generation-local inputs owned by this calibrator. They
+    // are accepted only with explicit validated family direction linkage;
+    // grammar vocabulary alone is intentionally insufficient.
+    setD198StructuralHints: function (family, links) {
+        ExitCalibrator._d198GenerationLinks = [];
+        var validFamily = family && family.classification === "confirmed-zil-family" &&
+            family.evidence === "validated" && family.directionLinkEvidence === "validated";
+        if (!validFamily || !Array.isArray(links)) return false;
+        var seen = {};
+        links.forEach(function (link) {
+            if (!link || link.roomId == null || !ExitCalibrator.normalizeDir(link.label)) return;
+            if (!(Number(link.prop) > 0) || ["b0", "w0", "b1", "w1", "b2"].indexOf(link.mode) < 0) return;
+            var clean = {
+                roomId: Number(link.roomId),
+                label: ExitCalibrator.normalizeDir(link.label),
+                prop: Number(link.prop),
+                mode: link.mode,
+                evidence: "validated-family-direction-link"
+            };
+            var key = clean.roomId + "|" + clean.label;
+            if (seen[key]) return;
+            seen[key] = true;
+            ExitCalibrator._d198GenerationLinks.push(clean);
+        });
+        return ExitCalibrator._d198GenerationLinks.length > 0;
+    },
+
+    clearD198GenerationHints: function () {
+        ExitCalibrator._d198GenerationLinks = [];
+        try { delete ExitCalibrator._d198ShadowSnapshot; } catch (e) { ExitCalibrator._d198ShadowSnapshot = null; }
+    },
+
+    d198ExitDiagnostics: function () {
+        return ExitCalibrator._d198Clone(ExitCalibrator._d198ShadowSnapshot || null);
+    },
+
+    _d198ExitsFor: function (mem, roomId) {
+        var out = [];
+        (ExitCalibrator._d198GenerationLinks || []).forEach(function (link) {
+            if (String(link.roomId) !== String(roomId)) return;
+            var dest = ExitCalibrator.destFor(mem, roomId, link.prop, link.mode);
+            if (!(Number(dest) > 0)) return;
+            try {
+                if (ZRamReader.isPlausibleExitTarget && !ZRamReader.isPlausibleExitTarget(mem, dest)) return;
+            } catch (e0) { return; }
+            var name = "";
+            try { name = ZRamReader.shortName(mem, dest) || ""; } catch (e1) {}
+            var attrs = {};
+            try { attrs = ZRamReader.attrsFromObject(mem, dest) || {}; } catch (e2) {}
+            var cardinal = { north: 1, south: 1, east: 1, west: 1, northeast: 1, northwest: 1,
+                southeast: 1, southwest: 1, up: 1, down: 1, "in": 1, out: 1 };
+            out.push({
+                label: link.label,
+                command: link.label,
+                prop: link.prop,
+                targetRoomId: dest,
+                targetRoomName: name,
+                isDoor: !!attrs.door,
+                isLocked: !!attrs.locked,
+                isNonCardinal: !cardinal[link.label],
+                hinted: true,
+                confidence: 0.8,
+                source: "d198-structural-exit-hint"
+            });
+        });
+        return out;
+    },
+
     DIRS: {
         n: "north", north: "north",
         s: "south", south: "south",
@@ -331,6 +426,20 @@ var ExitCalibrator = {
                 source: "exit-calibrator"
             });
         });
+        var mode = ExitCalibrator.D198ExitValve.mode();
+        if (mode !== "off") {
+            var hints = ExitCalibrator._d198ExitsFor(mem, roomId);
+            if (mode === "shadow") {
+                ExitCalibrator._d198ShadowSnapshot = ExitCalibrator._d198Clone({ roomId: roomId, exits: hints });
+            } else {
+                var labels = {};
+                out.forEach(function (exit) { labels[String(exit.label || "").toLowerCase()] = true; });
+                hints.forEach(function (exit) {
+                    var label = String(exit.label || "").toLowerCase();
+                    if (!labels[label]) { labels[label] = true; out.push(exit); }
+                });
+            }
+        }
         return out;
     },
 

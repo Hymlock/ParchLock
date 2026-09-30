@@ -61,6 +61,82 @@ var AttrCalibrator = {
 
     table: { version: 2, verbs: {}, objects: {} },
     hydratedForGame: null,
+    _d198GenerationEvidence: {},
+
+    _d198ExecutableDigest: function () {
+        try {
+            if (typeof ModuleLibrary === "undefined" || !ModuleLibrary.currentExecutableIdentity) return null;
+            var identity = ModuleLibrary.currentExecutableIdentity();
+            return identity && identity.digest ? String(identity.digest) : null;
+        } catch (e) { return null; }
+    },
+
+    _d198ScopedCorrelation: function (noun) {
+        try {
+            if (typeof WorldModel === "undefined" || !WorldModel.lastPayload) return null;
+            var p = WorldModel.lastPayload;
+            var wanted = String(noun || "").toLowerCase().trim();
+            var byId = {};
+            (p.discoveredObjects || []).concat(p.inventory || []).forEach(function (obj) {
+                if (!obj || obj.id == null) return;
+                var rendered = obj.name;
+                try {
+                    if (typeof Actionable !== "undefined" && Actionable.commandNounFor) rendered = Actionable.commandNounFor(obj);
+                } catch (e) {}
+                if (String(rendered || "").toLowerCase().trim() !== wanted) return;
+                byId[String(obj.id)] = obj.id;
+            });
+            var ids = Object.keys(byId);
+            if (ids.length !== 1) return null;
+            var id = byId[ids[0]];
+            var inInventory = (p.inventory || []).some(function (obj) { return obj && String(obj.id) === String(id); });
+            return { objectId: id, context: inInventory ? "inventory" : "room" };
+        } catch (e) { return null; }
+    },
+
+    _recordD198Provenance: function (entry) {
+        if (!entry || !entry.d198Correlation || entry.ambiguous || entry.rejected) return false;
+        if (String(entry.d198Correlation.objectId) !== String(entry.objectId)) return false;
+        var verb = AttrCalibrator.normalizeVerb(entry.verb);
+        var digest = AttrCalibrator._d198ExecutableDigest();
+        if (!digest) return false;
+        var actionId = "opcode:" + verb;
+        var key = digest + "|" + actionId + "|" + String(entry.objectId) + "|" + String(entry.d198Correlation.context || "unknown");
+        var record = {
+            verb: verb,
+            actionId: actionId,
+            executableDigest: digest,
+            objectId: entry.objectId,
+            context: entry.d198Correlation.context,
+            provenance: entry.success ? "opcode-state" : "behavioral-transcript",
+            confirmed: !!entry.success,
+            direct: true,
+            at: entry.at || null
+        };
+        if (!(entry.success || entry.behavioralAccept)) return false;
+        AttrCalibrator._d198GenerationEvidence[key] = record;
+        return true;
+    },
+
+    d198ProvenanceForObject: function (objectId, context) {
+        var out = [];
+        try {
+            var digest = AttrCalibrator._d198ExecutableDigest();
+            if (!digest) return out;
+            Object.keys(AttrCalibrator._d198GenerationEvidence || {}).sort().forEach(function (key) {
+                var record = AttrCalibrator._d198GenerationEvidence[key];
+                if (!record || record.executableDigest !== digest) return;
+                if (String(record.objectId) !== String(objectId)) return;
+                if (context && record.context !== context) return;
+                out.push(JSON.parse(JSON.stringify(record)));
+            });
+        } catch (e) {}
+        return out;
+    },
+
+    clearD198GenerationEvidence: function () {
+        AttrCalibrator._d198GenerationEvidence = {};
+    },
 
     // Map player phrasing to the canonical verb ActionSynth/rules use.
     normalizeVerb: function (verb) {
@@ -240,7 +316,8 @@ var AttrCalibrator = {
                     if (!mem) return null;
                     var id = AttributeSchema._findIdByName(mem, noun);
                     if (!id) return null;
-                    turn.__diagVerbSuccessCtx = { verb: verb, noun: noun, id: id, ops: ops || [], trace: [] };
+                    var d198Correlation = AttrCalibrator._d198ScopedCorrelation(noun);
+                    turn.__diagVerbSuccessCtx = { verb: verb, noun: noun, id: id, ops: ops || [], trace: [], d198Correlation: d198Correlation };
                     // codex #455/#456: analyze() must never read live DOM --
                     // captureAfter freezes the transcript slice at the SAME
                     // moment endLine itself is frozen (boundary-stamp or
@@ -295,6 +372,7 @@ var AttrCalibrator = {
                         behavioralAccept: !!(!mutated && !failedText && text && String(text).trim().length > 0),
                         rejected: !!failedText,
                         ambiguous: !!(mutated && failedText),
+                        d198Correlation: ctx.d198Correlation,
                         at: Date.now()
                     };
                     // Preserved byte-for-byte (existing diagnostic surface,
@@ -836,6 +914,7 @@ var AttrCalibrator = {
             }
             // Per-object functionable verbs (opcode or accepted-no-reject).
             if (AttrCalibrator._recordAllowedVerb(entry)) changed = true;
+            AttrCalibrator._recordD198Provenance(entry);
             if (changed) AttrCalibrator.persist(mem);
         } catch (e) {}
     },

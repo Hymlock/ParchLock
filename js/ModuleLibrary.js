@@ -13,6 +13,11 @@ var ModuleLibrary = (function () {
     var listeners = [];
     var dbPromise = null;
     var ajaxInstalled = false;
+    var executableIdentity = null;
+    var executableIdentityPromise = Promise.resolve(null);
+    var executableIdentityByPath = Object.create(null);
+    var executableIdentityPromiseByPath = Object.create(null);
+    var executableIdentitySequence = 0;
     var channel = null;
     var cache = loadJson(CACHE_KEY, []);
     var hidden = loadJson(HIDDEN_KEY, []);
@@ -171,8 +176,10 @@ var ModuleLibrary = (function () {
         var metadata = {};
         var format;
         var compat;
+        var executable = bytes;
         if (text(bytes, 0, 4) === "FORM") {
             var blorb = inspectBlorb(bytes);
+            executable = blorb.executable;
             metadata = blorb.metadata;
             if (blorb.type === "ZCOD") {
                 var zv = blorb.executable[0];
@@ -198,7 +205,7 @@ var ModuleLibrary = (function () {
             metadata.release = (bytes[2] << 8) | bytes[3];
             metadata.serial = text(bytes, 18, 6).replace(/[^ -~]/g, "");
         }
-        return { bytes: bytes, format: format, compat: compat, metadata: metadata };
+        return { bytes: bytes, executableBytes: executable, format: format, compat: compat, metadata: metadata };
     }
 
     function validateGlulx(bytes) {
@@ -371,6 +378,89 @@ var ModuleLibrary = (function () {
         return btoa(pieces.join(""));
     }
 
+    function isZcodeStoryRequest(value) {
+        return /\.(?:z3|z4|z5|z8|zblorb)(?:\.js)?$/i.test(normalizePath(value));
+    }
+
+    // Product-owned story-response seam. lib/main.js receives the returned
+    // base64 only after this promise resolves, then decodes the same response
+    // and calls ZVM.prepare. This records a digest of the executable ZCOD
+    // slice without patching the minified loader or racing a second fetch.
+    function captureExecutableIdentity(base64, rawUrl) {
+        if (!isZcodeStoryRequest(rawUrl) || typeof base64 !== "string") return Promise.resolve(base64);
+        var sourcePath = normalizePath(rawUrl);
+        var sourceName = sourcePath.replace(/\.js$/i, "");
+        var sequence = ++executableIdentitySequence;
+        var inspected;
+        try {
+            inspected = inspect(decodeBase64(base64), sourceName);
+        } catch (e) {
+            delete executableIdentityByPath[sourcePath];
+            executableIdentityPromiseByPath[sourcePath] = Promise.resolve(null);
+            if (sequence === executableIdentitySequence) executableIdentity = null;
+            executableIdentityPromise = Promise.resolve(null);
+            return Promise.resolve(base64);
+        }
+        if (!/^z(?:3|4|5|8|blorb)$/.test(inspected.format)) return Promise.resolve(base64);
+        var executable = inspected.executableBytes.slice();
+        delete executableIdentityByPath[sourcePath];
+        if (sequence === executableIdentitySequence) executableIdentity = null;
+        var pending;
+        try { pending = hash(executable); }
+        catch (eHash) { pending = Promise.reject(eHash); }
+        var safe = Promise.resolve(pending).then(function (digest) {
+            var identity = Object.freeze({
+                digest: digest,
+                format: inspected.format,
+                byteLength: executable.length,
+                sourcePath: sourcePath,
+                bytes: executable
+            });
+            executableIdentityByPath[sourcePath] = identity;
+            if (sequence === executableIdentitySequence) executableIdentity = identity;
+            return identity;
+        }, function () {
+            delete executableIdentityByPath[sourcePath];
+            if (sequence === executableIdentitySequence) executableIdentity = null;
+            return null;
+        });
+        executableIdentityPromiseByPath[sourcePath] = safe;
+        executableIdentityPromise = safe;
+        return safe.then(function () { return base64; });
+    }
+
+    function identityForPath(value) {
+        var sourcePath = value ? normalizePath(value) : "";
+        if (!sourcePath) {
+            try {
+                if (typeof ParchLock !== "undefined" && ParchLock.StoryPath) {
+                    sourcePath = normalizePath(ParchLock.StoryPath);
+                }
+            } catch (e) {}
+        }
+        return sourcePath ? (executableIdentityByPath[sourcePath] || null) : executableIdentity;
+    }
+
+    function currentExecutableIdentity(value) {
+        var identity = identityForPath(value);
+        if (!identity) return null;
+        return {
+            digest: identity.digest,
+            format: identity.format,
+            byteLength: identity.byteLength,
+            sourcePath: identity.sourcePath,
+            bytes: identity.bytes.slice()
+        };
+    }
+
+    function whenExecutableIdentityReady(value) {
+        var sourcePath = value ? normalizePath(value) : "";
+        var pending = sourcePath ? executableIdentityPromiseByPath[sourcePath] : executableIdentityPromise;
+        return (pending || Promise.resolve(null)).then(function () {
+            return currentExecutableIdentity(sourcePath);
+        });
+    }
+
     function installAjaxAdapter() {
         if (ajaxInstalled || typeof jQuery === "undefined") return;
         var original = jQuery.ajax;
@@ -379,12 +469,25 @@ var ModuleLibrary = (function () {
             var options = typeof args[0] === "string" ? (args[1] || {}) : (args[0] || {});
             var rawUrl = typeof args[0] === "string" ? args[0] : options.url;
             var normalized = normalizePath(rawUrl);
-            if (normalized.indexOf("local/") !== 0) return original.apply(this, args);
+            if (normalized.indexOf("local/") !== 0) {
+                var requestResult = original.apply(this, args);
+                if (!isZcodeStoryRequest(rawUrl)) return requestResult;
+                var wrapped = requestResult.then(function (data) {
+                    return captureExecutableIdentity(data, rawUrl);
+                });
+                if (requestResult.abort) wrapped.abort = function () { return requestResult.abort(); };
+                return wrapped;
+            }
             var deferred = jQuery.Deferred();
             var aborted = false;
             var promise = deferred.promise({ abort: function () { aborted = true; deferred.reject({ status: 0 }, "abort", "abort"); } });
             getBytes(rawUrl).then(function (bytes) {
-                if (!aborted) deferred.resolve(bytesToBase64(bytes), "success", promise);
+                if (aborted) return;
+                captureExecutableIdentity(bytesToBase64(bytes), rawUrl).then(function (data) {
+                    if (!aborted) deferred.resolve(data, "success", promise);
+                }).catch(function (error) {
+                    if (!aborted) deferred.reject({ status: 422 }, "error", error.message || String(error));
+                });
             }).catch(function (error) {
                 if (!aborted) deferred.reject({ status: 404 }, "error", error.message || String(error));
             });
@@ -564,6 +667,7 @@ var ModuleLibrary = (function () {
         removeLocal: removeLocal, hideBuiltIn: hideBuiltIn, removeAll: removeAll,
         restoreBuiltIns: restoreBuiltIns, renameLocal: renameLocal, openManager: openManager, onChanged: onChanged,
         reconcile: reconcile, inspect: inspect, hash: hash, sha256Fallback: sha256Fallback,
+        currentExecutableIdentity: currentExecutableIdentity, whenExecutableIdentityReady: whenExecutableIdentityReady,
         normalizePath: normalizePath, canonicalLocalPath: canonicalLocalPath, localPathPattern: LOCAL_RE, legacy: LEGACY
     };
 })();

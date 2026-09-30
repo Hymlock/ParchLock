@@ -11,7 +11,9 @@ const chain = {
 };
 const sandbox = {
     console, document: {}, window: {}, setTimeout() {},
-    $: selector => selector === '.Input.LineInput:visible' ? { length: visible ? 1 : 0 } : selector === '#dialog' ? { length: 0 } : chain,
+    $: selector => selector === '.Input.LineInput' || selector === '.Input.LineInput:visible'
+        ? { length: visible ? 1 : 0 }
+        : selector === '#dialog' ? { length: 0 } : chain,
     Message: { IsOpen: false },
     TurnRecorder: { subscribeAcceptedSubmit(id, fn) { subscribers[id] = fn; } },
     Input: {
@@ -24,6 +26,8 @@ const sandbox = {
         }
     },
     WorldModel: { lastPayload: null },
+    ZRamProvider: { getMem: () => ({}) },
+    ZRamReader: { hasDictionaryWord: (_mem, word) => word === 'use' },
     ParchLockQol: { OpenRadial(x, y, slices) { menu = slices; } },
     AttrCalibrator: { defaultInspectVerb: () => 'examine', inspectVerbCurrentlyDisabled: () => false }
 };

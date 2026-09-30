@@ -66,6 +66,11 @@ var UndoRestoreSync = {
             // later stage adds real confirmation, only the unconfirmed
             // remainder will be cleared here.
             if (typeof SemanticActions !== "undefined" && SemanticActions.generationReset) SemanticActions.generationReset();
+            // D198 keeps generation facts under their existing domain owners.
+            // Clear them explicitly without disturbing learned/persisted
+            // AttrCalibrator or ExitCalibrator tables.
+            if (typeof AttrCalibrator !== "undefined" && AttrCalibrator.clearD198GenerationEvidence) AttrCalibrator.clearD198GenerationEvidence();
+            if (typeof ExitCalibrator !== "undefined" && ExitCalibrator.clearD198GenerationHints) ExitCalibrator.clearD198GenerationHints();
         } catch (e) {}
     },
     tick: function () {

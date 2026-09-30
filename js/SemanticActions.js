@@ -109,6 +109,82 @@ var SemanticActions = {
         disable: function () { try { if (typeof localStorage !== "undefined") localStorage.removeItem("PL_SemanticActions_Cutover"); } catch (e) {} }
     },
 
+    // D198 semantic facts have an owner-local valve independent of D88's
+    // consumer cutover. A D198 form is visible only when both controls are
+    // on. Shadow mode records diagnostics but cannot alter resolver output.
+    D198SemanticValve: {
+        StorageKey: "PL_D198_SemanticValve_v1",
+        _testOverride: null,
+        mode: function () {
+            var value = SemanticActions.D198SemanticValve._testOverride;
+            if (value == null) {
+                try { value = typeof localStorage !== "undefined" && localStorage.getItem(SemanticActions.D198SemanticValve.StorageKey); } catch (e) {}
+            }
+            return value === "shadow" || value === "on" ? value : "off";
+        },
+        setMode: function (mode) {
+            var value = mode === "shadow" || mode === "on" ? mode : "off";
+            if (value !== "shadow") {
+                try { delete SemanticActions._d198SemanticShadowSnapshot; } catch (e0) { SemanticActions._d198SemanticShadowSnapshot = null; }
+            }
+            try {
+                if (typeof localStorage !== "undefined") {
+                    if (value === "off") localStorage.removeItem(SemanticActions.D198SemanticValve.StorageKey);
+                    else localStorage.setItem(SemanticActions.D198SemanticValve.StorageKey, value);
+                }
+            } catch (e) {}
+            return value;
+        }
+    },
+
+    _d198Clone: function (value) {
+        return value == null ? value : JSON.parse(JSON.stringify(value));
+    },
+
+    d198SemanticDiagnostics: function () {
+        return SemanticActions._d198Clone(SemanticActions._d198SemanticShadowSnapshot || null);
+    },
+
+    _d198FamilyDiagnostics: function () {
+        try {
+            if (typeof GrammarProvider === "undefined" || !GrammarProvider.d198Diagnostics) return null;
+            var mem = null;
+            if (typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) mem = ZRamProvider.getMem();
+            if (!mem && typeof AttributeSchema !== "undefined" && AttributeSchema._getMem) mem = AttributeSchema._getMem();
+            return mem ? GrammarProvider.d198Diagnostics(mem) : null;
+        } catch (e) { return null; }
+    },
+
+    _d198ConfirmedForms: function (obj, context, family) {
+        if (!obj || obj.id == null || (context !== "room" && context !== "inventory")) return [];
+        if (typeof AttrCalibrator === "undefined" || !AttrCalibrator.d198ProvenanceForObject) return [];
+        var noun = SemanticActions.commandNounForObj(obj);
+        if (!noun) return [];
+        return AttrCalibrator.d198ProvenanceForObject(obj.id, context).filter(function (record) {
+            if (!record || !record.confirmed || !record.direct || record.provenance !== "opcode-state") return false;
+            // Containment supplies a current applicability guard for these
+            // two actions. Other successful mutations describe past state,
+            // so they remain diagnostic until a current-state witness exists.
+            return (record.verb === "take" && context === "room") ||
+                (record.verb === "drop" && context === "inventory");
+        }).map(function (record) {
+            var familyId = family && family.family ? family.family : "validated-zil-family";
+            return {
+                verb: record.verb,
+                noun: noun,
+                objectId: obj.id,
+                command: record.verb + " " + noun,
+                confidence: 1,
+                intent: SemanticActions.intentForVerb(record.verb),
+                source: "d198-opcode-state",
+                evidence: [SemanticActions._d198Clone(record)],
+                evidenceIdentity: [record.executableDigest, familyId, record.actionId,
+                    context, String(obj.id), record.provenance].join("|"),
+                legacy: null
+            };
+        }).filter(function (form) { return !!form.intent; });
+    },
+
     // Mirrors Actionable.commandForExitLabel exactly (js/Actionable.js:131-
     // 139): same exits array, same case-insensitive label lookup, same
     // fallback to the raw label when no structural match exists. A separate
@@ -200,10 +276,26 @@ var SemanticActions = {
         return [];
     },
 
-    // Step 3: confirmed object/context-specific semantic form. No sidecar
-    // evidence store exists yet (stage 5). Intentionally empty in stage 2.
+    // Step 3: D198 object/context forms come only from direct opcode evidence
+    // correlated to one stable object id. Behavioral evidence and legacy
+    // allowedVerbs never enter this path.
     confirmedObjectFormsFor: function (obj, context, containerName, payload) {
-        return [];
+        var mode = SemanticActions.D198SemanticValve.mode();
+        if (mode === "off") return [];
+        var family = SemanticActions._d198FamilyDiagnostics();
+        var familyValid = !!(family && family.classification === "confirmed-zil-family" && family.evidence === "validated");
+        var forms = familyValid ? SemanticActions._d198ConfirmedForms(obj, context, family) : [];
+        if (mode === "shadow") {
+            SemanticActions._d198SemanticShadowSnapshot = SemanticActions._d198Clone({
+                family: family,
+                objectId: obj && obj.id,
+                context: context,
+                forms: forms
+            });
+            return [];
+        }
+        if (!familyValid || !SemanticActions.CutoverFlag.isEnabled()) return [];
+        return forms;
     },
 
     // Step 4: confirmed game-build-wide semantic form. Same as step 3.
@@ -255,12 +347,23 @@ var SemanticActions = {
         if (!obj || !obj.name || obj.id == null) return [];
 
         var byVerb = {};
+        var byRendered = {};
         var order = [];
         function apply(list) {
             (list || []).forEach(function (c) {
                 if (!c || !c.verb) return;
+                var rendered = [String(c.command || "").toLowerCase().replace(/\s+/g, " ").trim(),
+                    context || "", String(c.objectId == null ? "" : c.objectId)].join("|");
+                if (byRendered[rendered]) {
+                    var winner = byRendered[rendered];
+                    winner.evidence = (winner.evidence || []).concat((c.evidence || []).map(SemanticActions._d198Clone));
+                    winner.provenance = winner.provenance || [];
+                    if (c.source && winner.provenance.indexOf(c.source) < 0) winner.provenance.push(c.source);
+                    return;
+                }
                 if (byVerb.hasOwnProperty(c.verb)) return; // earlier step already won this verb
                 byVerb[c.verb] = c;
+                byRendered[rendered] = c;
                 order.push(c.verb);
             });
         }
@@ -584,6 +687,7 @@ var SemanticActions = {
     // today that is everything in Evidence, since nothing is confirmed yet.
     generationReset: function () {
         SemanticActions.Evidence.clear();
+        try { delete SemanticActions._d198SemanticShadowSnapshot; } catch (e) { SemanticActions._d198SemanticShadowSnapshot = null; }
     }
 };
 
