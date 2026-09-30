@@ -721,11 +721,13 @@ var ZRamReader = {
     // many siblings, same kind (common prop 2), each carrying door_dir
     // (common prop 21) as a property number. No short-name matching.
     directionDoorDirs: (mem) => {
-        var discovered = ZRamReader.discoverCompassProfile(mem);
-        if (discovered && discovered.profile) {
-            return Object.keys(discovered.profile).map(Number).sort(function (a, b) { return a - b; });
-        }
-        // Fallback: classic Inform door_dir on common prop 21 (Anchorhead-class).
+        // Labeled compass profile names direction WORDS only. It must not
+        // replace the door_dir SLOT list. wump2ka's compass children are
+        // both named walls (door_dir 7-18) and numbered exits (door_dir
+        // 91-95, short name "first exit"). Discovery drops any child whose
+        // words are not n/s/e/w/up, so returning profile keys deleted the
+        // numbered exits and the underlines that match "exit 1". Collect
+        // every door_dir value; labels are applied separately.
         var h = ZRamReader.header(mem);
         if (!h) return [];
         var count = ZRamReader.objectCount(mem, h);
@@ -751,6 +753,11 @@ var ZRamReader = {
                 }
             }
             if (good && slots.length >= 8 && slots.length > best.length) best = slots;
+        }
+        if (best.length) return best;
+        var discovered = ZRamReader.discoverCompassProfile(mem);
+        if (discovered && discovered.profile) {
+            return Object.keys(discovered.profile).map(Number).sort(function (a, b) { return a - b; });
         }
         return best;
     },

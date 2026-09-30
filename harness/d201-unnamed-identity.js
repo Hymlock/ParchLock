@@ -209,7 +209,7 @@ async function submit(page, command) {
             const exits = await live.page.evaluate(() => {
                 const w = WorldModel.lastPayload || {};
                 return (w.exits || []).map(e => ({
-                    label: e.label, command: e.command || e.label, toId: e.targetRoomId
+                    label: e.label, command: e.command || e.label, toId: e.targetRoomId, prop: e.prop
                 }));
             });
             const radial = await live.page.evaluate(() =>
@@ -246,6 +246,8 @@ async function submit(page, command) {
             await live.context.close();
         }
         check((exitSample || []).length > 0, "LLR look-ahead emits exits for radial/map consumers", JSON.stringify(exitSample));
+        check(!(exitSample || []).some(e => String(e.label || "").toLowerCase() === "up" && e.prop >= 12 && e.prop <= 15),
+            "LLR look-ahead does not label a cardinal slot as UP", JSON.stringify(exitSample));
         check((radialSample || []).length > 0, "LLR radial offers RAM look-ahead exits", JSON.stringify(radialSample));
         check(!!travelCase, "LLR can travel through a look-ahead exit", JSON.stringify(travelCase && travelCase.cmds || exitSample));
         if (travelCase) {
@@ -274,6 +276,18 @@ async function submit(page, command) {
     const anchorState = await state(anchor.page);
     check(!anchor.errors.length && anchorState.world.roomId && anchorState.world.roomName,
         "Anchorhead named-room control remains structural", JSON.stringify(anchorState.world));
+    const anchorExits = await anchor.page.evaluate(() => {
+        const mem = ZRamProvider.getMem();
+        const room = (WorldModel.lastPayload && WorldModel.lastPayload.roomId) || 0;
+        return (ZRamReader.lookAheadExits(mem, room) || []).map(e => ({
+            label: e.label, name: e.targetRoomName || ""
+        }));
+    });
+    check(anchorExits.some(e => e.label === "east") && anchorExits.some(e => e.label === "west")
+        && anchorExits.some(e => e.label === "in"),
+        "Anchorhead keeps east/west/in", JSON.stringify(anchorExits));
+    check(anchorExits.some(e => e.label === "southeast" && /alley/i.test(e.name)),
+        "Anchorhead still asserts Alley as southeast", JSON.stringify(anchorExits));
     await anchor.context.close();
 
     const wumpus = await boot(browser, "wump2ka.z5.js", true);
@@ -284,7 +298,56 @@ async function submit(page, command) {
         "Wumpus keeps its compiled indexed-room identity", JSON.stringify(wumpusState));
     check(!!wumpusState.world.roomName && !/^c_rooms/i.test(wumpusState.world.roomName),
         "Wumpus keeps its status-grid room descriptor", wumpusState.world.roomName);
+    const wumpDirs = await wumpus.page.evaluate(() => {
+        try { if (window.ZvmCapture) ZvmCapture.tick(); } catch (e) {}
+        try { if (window.WorldModel) WorldModel.tick(); } catch (e) {}
+        try { if (window.Actionable) Actionable.Refresh(); } catch (e) {}
+        const mem = ZRamProvider.getMem();
+        const room = (WorldModel.lastPayload && WorldModel.lastPayload.roomId) || 0;
+        const exits = (ZRamReader.lookAheadExits(mem, room) || []).map(e => ({
+            label: e.label, command: e.command, prop: e.prop, dest: e.targetRoomId
+        }));
+        const door = ZRamReader.directionDoorDirs(mem);
+        const text = (document.querySelector(".BufferWindow") || document.body).innerText || "";
+        const marks = Array.from(document.querySelectorAll(".pl-act:not(.is-stale)")).map(el =>
+            (el.textContent || "").replace(/\s+/g, " ").trim().toLowerCase());
+        return {
+            room, exits, door,
+            numbered: door.filter(n => n >= 64),
+            exitWords: (text.match(/exit\s+\d+/ig) || []).slice(0, 6),
+            marks
+        };
+    });
+    check(wumpDirs.numbered.indexOf(91) >= 0 && wumpDirs.numbered.indexOf(95) >= 0,
+        "Wumpus door_dir set keeps numbered exit slots 91-95", JSON.stringify(wumpDirs.numbered));
+    check(wumpDirs.exits.some(e => /^exit \d+$/.test(String(e.label || ""))),
+        "Wumpus look-ahead detects numbered exits", JSON.stringify(wumpDirs.exits));
+    check(!wumpDirs.exits.some(e => String(e.label || "").toLowerCase() === "up"),
+        "Wumpus does not invent an UP compass exit", JSON.stringify(wumpDirs.exits));
+    if (wumpDirs.exitWords.length) {
+        check(wumpDirs.marks.some(m => /exit\s*\d+/.test(m)),
+            "Wumpus underlines a printed numbered exit", JSON.stringify({ words: wumpDirs.exitWords, marks: wumpDirs.marks }));
+    }
     await wumpus.context.close();
+
+    const llrScore = await boot(browser, "LLR3.z8.js", true);
+    await submit(llrScore.page, "score");
+    await llrScore.page.waitForTimeout(400);
+    await llrScore.page.evaluate(() => {
+        try { if (window.WorldModel) WorldModel.tick(); } catch (e) {}
+        try { if (window.StatTracker) StatTracker.Tick(); } catch (e) {}
+    });
+    const llrAfter = await state(llrScore.page);
+    const exp = llrAfter.stats && llrAfter.stats.experience;
+    check(!!exp && exp.confirmed === true && typeof exp.value === "number" && exp.label === "EXP",
+        "LLR score text puts EXP on the status model", JSON.stringify(exp));
+    const gridExp = await llrScore.page.evaluate(() => {
+        const decoded = StatusGridDecoder.decode("East-west passage   LVL:1 STR:12/12 EXP:20   20 exp");
+        return (decoded.metrics || []).map(m => m.key + "=" + m.value + "/" + m.label);
+    });
+    check(gridExp.indexOf("experience=20/EXP") >= 0,
+        "status grid EXP:20 decodes as EXP", gridExp.join(","));
+    await llrScore.context.close();
 
     await browser.close();
     console.log(`\n${pass} PASS / ${fail} FAIL`);

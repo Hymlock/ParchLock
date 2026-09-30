@@ -11,7 +11,8 @@ var StatusGridDecoder = {
         level: "level", lvl: "level",
         hunger: "hunger", food: "hunger", thirst: "thirst", water: "thirst",
         sleep: "sleep", rest: "sleep", time: "time", day: "day",
-        money: "money", cash: "money", gold: "gold"
+        money: "money", cash: "money", gold: "gold",
+        experience: "experience", exp: "experience", xp: "experience"
     },
 
     canonKey: function (label) {
@@ -22,9 +23,11 @@ var StatusGridDecoder = {
     metric: function (label, value, maximum, percent) {
         var key = StatusGridDecoder.canonKey(label);
         if (!key) return null;
+        var shown = String(label || "").trim();
+        if (key === "experience") shown = "EXP";
         return {
             key: key,
-            label: String(label || "").trim(),
+            label: shown,
             value: parseInt(value, 10),
             max: maximum != null && maximum !== "" ? parseInt(maximum, 10) : null,
             unit: maximum != null && maximum !== "" ? "fraction" : (percent ? "percent" : "plain"),
@@ -38,7 +41,9 @@ var StatusGridDecoder = {
             return part.trim();
         }).filter(function (part) { return !!part; });
         var metrics = [], seen = {};
-        var known = /(hit points|quest rate|score|points|moves?|turns?|health|hp|hits|stamina|energy|strength|str|level|lvl|hunger|food|thirst|water|sleep|rest|time|day|money|cash|gold)\s*[:=]\s*(-?\d+)\s*(?:\/\s*(\d+)|(%))?/ig;
+        var known = /(hit points|quest rate|score|points|moves?|turns?|health|hp|hits|stamina|energy|strength|str|level|lvl|hunger|food|thirst|water|sleep|rest|time|day|money|cash|gold|experience|xp|exp)\s*[:=]\s*(-?\d+)\s*(?:\/\s*(\d+)|(%))?/ig;
+        // "20 exp" / "20 experience" — number before the word, no colon.
+        var leading = /(-?\d+)\s+(experience|xp|exp)\b/ig;
         var generic = /^([A-Za-z][A-Za-z .'-]{0,24}?)\s*[:=]\s*(-?\d+)\s*(?:\/\s*(\d+)|(%))?$/;
 
         function add(label, value, maximum, percent) {
@@ -52,6 +57,9 @@ var StatusGridDecoder = {
         var leftovers = segments.map(function (segment) {
             var stripped = segment.replace(known, function (whole, label, value, maximum, percent) {
                 add(label, value, maximum, percent);
+                return " ";
+            }).replace(leading, function (whole, value, label) {
+                add(label, value, null, null);
                 return " ";
             }).replace(/\s+/g, " ").trim();
             var full = generic.exec(stripped);
@@ -113,6 +121,9 @@ var StatusGridDecoder = {
         tracker.CANON.level = "level";
         tracker.CANON.lvl = "level";
         tracker.CANON.str = "strength";
+        tracker.CANON.experience = "experience";
+        tracker.CANON.exp = "experience";
+        tracker.CANON.xp = "experience";
         tracker.splitColumns = function (raw) {
             var decoded = StatusGridDecoder.decode(raw);
             return decoded.roomCandidates.concat(StatusGridDecoder.metricColumns(decoded.metrics));

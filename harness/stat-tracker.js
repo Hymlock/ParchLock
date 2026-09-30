@@ -76,6 +76,20 @@ assert(none && none.unavailable === true && none.scored === false,
 assert(S.parseScoreReply("You can't see any such thing.") === null,
     "an unrelated reply yields nothing rather than a zero score");
 
+// LLR3 SCORE, measured: experience is printed, and it is not the score.
+const llrScore = "You are a level 1 rogue, with 0 experience points. You need 50 points to progress to the next level.";
+const llrExp = S.parsePrintedMetrics(llrScore);
+assert(llrExp && llrExp.experience && llrExp.experience.value === 0 && llrExp.experience.label === "EXP",
+    "LLR score text surfaces the printed experience (0) as EXP");
+assert(!llrExp.score && Object.keys(llrExp).length === 1,
+    "the '50 points to progress' clause is not invented as a score or a second stat");
+const exp20 = S.parsePrintedMetrics("You gained 20 exp.");
+assert(exp20 && exp20.experience.value === 20, "a printed '20 exp' is experience, not an invented total");
+assert(S.parsePrintedMetrics("You have so far scored 1 point in 3 turns.") === null,
+    "wump2ka's score reply does not invent experience");
+assert(S.parsePrintedMetrics("You need 50 points to progress to the next level.") === null,
+    "a point threshold with no experience word contributes nothing");
+
 // ---- DIAGNOSE, measured ------------------------------------------------
 let d = S.parseDiagnoseReply("You are in perfect health. You can be killed by a serious wound.");
 assert(d && d.health && d.health.unit === "ordinal",

@@ -71,7 +71,8 @@ var StatTracker = {
         level: "level", lvl: "level",
         hunger: "hunger", food: "hunger", thirst: "thirst", water: "thirst",
         sleep: "sleep", rest: "sleep", time: "time", day: "day",
-        money: "money", cash: "money", gold: "gold"
+        money: "money", cash: "money", gold: "gold",
+        experience: "experience", exp: "experience", xp: "experience"
     },
     canonKey: (label) => {
         var l = String(label || "").trim().toLowerCase().replace(/\s+/g, " ");
@@ -159,6 +160,63 @@ var StatTracker = {
             return out;
         }
         return null;
+    },
+
+    // A module that prints experience does so in its own words. This reads
+    // only that printing — "with 0 experience points", "EXP: 20", "20 exp" —
+    // and never invents a total the text did not state. "50 points to
+    // progress" is not experience: the word points alone is a score family.
+    parsePrintedMetrics: (text) => {
+        var t = String(text || "");
+        if (!t) return null;
+        var out = {};
+        function take(label, value) {
+            var key = StatTracker.canonKey(label);
+            if (key !== "experience") return;
+            var n = parseInt(value, 10);
+            if (!isFinite(n)) return;
+            out[key] = { key: key, label: "EXP", value: n };
+        }
+        var reLabel = /(experience|xp|exp)\s*[:=]\s*(-?\d+)/ig;
+        var m;
+        while ((m = reLabel.exec(t))) take(m[1], m[2]);
+        var reWords = /(-?\d+)\s+experience\s+points?\b/ig;
+        while ((m = reWords.exec(t))) take("experience", m[1]);
+        var reAbbr = /(?:^|[^A-Za-z0-9])(-?\d+)\s+(xp|exp)\b/ig;
+        while ((m = reAbbr.exec(t))) take(m[2], m[1]);
+        return Object.keys(out).length ? out : null;
+    },
+
+    recordPrintedMetrics: function (model, text) {
+        var printed = StatTracker.parsePrintedMetrics(text);
+        if (!printed || !model) return false;
+        var wrote = false;
+        Object.keys(printed).forEach(function (k) {
+            var rec = printed[k];
+            var prev = model.stats[k];
+            if (!prev) {
+                model.stats[k] = {
+                    key: k, label: rec.label, value: rec.value, max: null,
+                    unit: "plain", kind: "counter",
+                    seen: StatTracker.CONFIRM_SAMPLES, source: "printed",
+                    confirmed: true, lastChange: null
+                };
+                wrote = true;
+                return;
+            }
+            var had = prev.confirmed === true;
+            prev.label = rec.label || prev.label;
+            prev.seen = Math.max(prev.seen || 0, StatTracker.CONFIRM_SAMPLES);
+            prev.confirmed = true;
+            if (prev.source !== "status" && prev.source !== "global") prev.source = prev.source || "printed";
+            if (rec.value !== prev.value) {
+                var delta = rec.value - prev.value;
+                prev.value = rec.value;
+                if (had) StatTracker.emitChange(model, k, delta);
+            }
+            wrote = true;
+        });
+        return wrote;
     },
 
     // ---- DIAGNOSE --------------------------------------------------------
@@ -1267,6 +1325,7 @@ var StatTracker = {
 
     observeText: function (text, turnMarker) {
         var model = StatTracker.model();
+        StatTracker.recordPrintedMetrics(model, text);
         var found = StatTracker.bannersIn(text);
         found.forEach(function (b) {
             var id = b.kind + "|" + b.text + "|" + (turnMarker == null ? "" : turnMarker);

@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v85"; // D201 compass discovery for shifted door_dir / false exit fix
+const CACHE_VERSION = "parchlock-shell-v86"; // D201 Wumpus numbered exits kept beside compass discovery; printed EXP
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

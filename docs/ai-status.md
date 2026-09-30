@@ -1,3 +1,19 @@
+## D201 Wumpus exits + printed EXP (2026-09-29, grok)
+
+Compass discovery labeled only direction words, then directionDoorDirs returned
+those profile keys instead of every door_dir slot. wump2ka's compass also holds
+numbered exits on door_dir 91-95 (short names "first exit" through "fifth exit").
+Dropping them emptied look-ahead, so "exit 1" stopped being detected and underlined.
+The slot list is structural again. Labeled profile is words only; discovered keys
+are a fallback when the uniform door_dir scan finds nothing. LLR still uses
+shifted prop 26 (12-23 = n/s/e/w, not stock UP on 15). Anchorhead e/w/in and
+Alley southeast unchanged.
+
+EXP is not invented. StatusGridDecoder and StatTracker surface it only when the
+story prints it: status "EXP: 20" / "20 exp", or LLR's score sentence
+"with N experience points". The chip label is EXP, beside LVL/STR.
+SW parchlock-shell-v86.
+
 ﻿## D201 false-exit fix: compass door_dir discovery (2026-09-29, grok)
 
 Live LLR3 bug after D201 pathable blank rooms: look-ahead labeled prop 15 as
