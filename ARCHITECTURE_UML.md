@@ -151,7 +151,7 @@ decisions and their later mentions, not only the first matching record.
 | Commands/actionables; inspect, parser nouns, spells; Actionable, ActionSynth, SemanticActions | Sections [23](#ar-ch23), [28](#ar-ch28), [42](#ar-ch42), [59](#ar-ch59), [64](#ar-ch64), [65](#ar-ch65); [D141](PRODUCTION_PLAN.md#pl-d141)-[D148](PRODUCTION_PLAN.md#pl-d148)/[D184](PRODUCTION_PLAN.md#pl-d184)/[D198](PRODUCTION_PLAN.md#pl-d198)/[D201](PRODUCTION_PLAN.md#pl-d201) | Evidence and scope govern exact parser commands; dictionary words alone are not semantic proof. Check inventory, radials and calibration. |
 | Mapping/travel; room ID, exits; MapTopology, Navigator, ExitCalibrator | Sections [8](#ar-ch8), [25](#ar-ch25), [26](#ar-ch26), [29](#ar-ch29), [46](#ar-ch46), [64](#ar-ch64), [65](#ar-ch65), [66](#ar-ch66); [D134](PRODUCTION_PLAN.md#pl-d134)/[D138](PRODUCTION_PLAN.md#pl-d138)-[D140](PRODUCTION_PLAN.md#pl-d140)/[D155](PRODUCTION_PLAN.md#pl-d155)/[D161](PRODUCTION_PLAN.md#pl-d161)-[D165](PRODUCTION_PLAN.md#pl-d165)/[D170](PRODUCTION_PLAN.md#pl-d170)-[D171](PRODUCTION_PLAN.md#pl-d171)/[D198](PRODUCTION_PLAN.md#pl-d198)/[D201](PRODUCTION_PLAN.md#pl-d201)/[D202](PRODUCTION_PLAN.md#pl-d202) | Preserve identities, non-compass commands and path transitions. Check providers, notes, restore and directional consumers. |
 | Radials/arrow pad; native HELP, usage; DirectionalRadial, CharKeys, Qol | Sections [40](#ar-ch40), [44](#ar-ch44), [45](#ar-ch45), [51](#ar-ch51), [52](#ar-ch52), [53](#ar-ch53); [D120](PRODUCTION_PLAN.md#pl-d120)/[D161](PRODUCTION_PLAN.md#pl-d161) | Separate travel and character-key modes, preserve lifecycle/exclusion and exactly-once activation. Check input, settings, startup and tutorial. |
-| Input/layout; keyboard, character cell, status banner; MobileLayout, Input | Sections [30](#ar-ch30), [31](#ar-ch31), [32](#ar-ch32), [33](#ar-ch33), [36](#ar-ch36), [37](#ar-ch37), [38](#ar-ch38), [39](#ar-ch39), [40](#ar-ch40), [50](#ar-ch50), [53](#ar-ch53), [55](#ar-ch55); [D137](PRODUCTION_PLAN.md#pl-d137)/[D156](PRODUCTION_PLAN.md#pl-d156)/[D166](PRODUCTION_PLAN.md#pl-d166)/[D168](PRODUCTION_PLAN.md#pl-d168)/[D172](PRODUCTION_PLAN.md#pl-d172) | Respect VM-owned grid cells and input intent; check sheets, overlays, narrator and desktop/mobile geometry. |
+| Input/layout; keyboard, character cell, status banner; MobileLayout, Input | Sections [30](#ar-ch30), [31](#ar-ch31), [32](#ar-ch32), [33](#ar-ch33), [36](#ar-ch36), [37](#ar-ch37), [38](#ar-ch38), [39](#ar-ch39), [40](#ar-ch40), [50](#ar-ch50), [53](#ar-ch53), [55](#ar-ch55), [67](#ar-ch67); [D137](PRODUCTION_PLAN.md#pl-d137)/[D156](PRODUCTION_PLAN.md#pl-d156)/[D166](PRODUCTION_PLAN.md#pl-d166)/[D168](PRODUCTION_PLAN.md#pl-d168)/[D172](PRODUCTION_PLAN.md#pl-d172)/[D203](PRODUCTION_PLAN.md#pl-d203) | Respect VM-owned grid cells and input intent; check sheets, overlays, narrator, side rails and desktop/mobile geometry. |
 | Narrator/mic; speech, TTS; ReadAloud, VoiceInput | Sections [32](#ar-ch32), [39](#ar-ch39), [43](#ar-ch43); [D109](PRODUCTION_PLAN.md#pl-d109)/[D133](PRODUCTION_PLAN.md#pl-d133)/[D159](PRODUCTION_PLAN.md#pl-d159)/[D166](PRODUCTION_PLAN.md#pl-d166)-[D167](PRODUCTION_PLAN.md#pl-d167) | Spoken text and display differ deliberately; preserve complete-turn and voice-mode contracts. Check tutorial, auto-travel and native/web adapters. |
 | Restore/storage; undo, new game; UndoRestoreSync | Sections [31](#ar-ch31), [35](#ar-ch35), [41](#ar-ch41); [D178](PRODUCTION_PLAN.md#pl-d178)/[D180](PRODUCTION_PLAN.md#pl-d180)-[D183](PRODUCTION_PLAN.md#pl-d183) | Restore synchronizes dependent state; cached readings cannot masquerade as current facts. Check map, notes, narration, calibration and tracking. |
 | Notes/equipment; inventory, Known Rooms; Map, EquipmentUI | Sections [5](#ar-ch5), [26](#ar-ch26), [46](#ar-ch46), [56](#ar-ch56), [59](#ar-ch59), [66](#ar-ch66); [D125](PRODUCTION_PLAN.md#pl-d125)-[D128](PRODUCTION_PLAN.md#pl-d128)/[D131](PRODUCTION_PLAN.md#pl-d131)/[D148](PRODUCTION_PLAN.md#pl-d148)/[D168](PRODUCTION_PLAN.md#pl-d168)-[D169](PRODUCTION_PLAN.md#pl-d169)/[D174](PRODUCTION_PLAN.md#pl-d174)/[D184](PRODUCTION_PLAN.md#pl-d184) | Preserve identity-scoped notes and nested inventory; check commands, sheets, stats and saves. |
@@ -208,9 +208,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 91 headings; 0 decision rows; 91 registered units.
-**Last registered unit:** `ar-s091`. **Body SHA-256 (LF):**
-`0bfbf7cbb33191bdc593d5aac25dafaddf9809a8a0f14432a8e4d0ff904fc43c`
+**Local manifest:** 92 headings; 0 decision rows; 92 registered units.
+**Last registered unit:** `ar-s092`. **Body SHA-256 (LF):**
+`d85f2bfee9b4492a8a880000cd996b0e4369271fc2e895494626e145f823ce57`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -381,6 +381,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s089](#ar-s089) | 64. D198 ZIL/Infocom composition architecture | H2 | Implemented / valves default off |
 | [ar-s090](#ar-s090) | 65. Unnamed early-Inform identity composition (D201) | H2 | Implemented / live-browser verified |
 | [ar-s091](#ar-s091) | 66. Map zoom LOD / world overview (D202) — PROPOSED | H2 | Proposed / pre-GO |
+| [ar-s092](#ar-s092) | 67. Mobile side-rail readable-content geometry (D203) — PROPOSED | H2 | Proposed / researched |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -3398,3 +3399,56 @@ flowchart TD
 
 Chrome vs vocabulary and hub-vs-overview must be kept distinct in docs and code
 comments. layoutHints remains a list/floor seed, not the overview layout product.
+
+<a id="ar-s092" data-chapter-id="ar-s092"></a><a id="ar-ch67"></a>
+## 67. Mobile side-rail readable-content geometry (D203) — PROPOSED
+
+**Lifecycle:** PROPOSED / researched, no executable claim. Companion to
+[D203](PRODUCTION_PLAN.md#pl-d203). This extends D121's side-rail reachability and
+D94's truthful cell geometry; it does not supersede either.
+
+**Stable ID:** [ar-ch67](#ar-ch67) / `ar-s092`.
+**Scope:** Mobile `play.html` Glk surface, left vertical exit rail, and fixed input
+controls. Desktop and map/command semantics remain unchanged.
+
+**Required architecture:** one usable mobile Glk rectangle owns both the visible
+`#windowport` and hidden measurement `#parchment`. Its left edge clears the protected
+envelope of the rotated left-rail targets; its right edge remains inside the safe
+viewport/right-side controls. LineInput and CharInput share the same left boundary.
+CharCell computes from the same usable width. Geometry is established before initial VM
+sizing and stays stable through normal turns.
+
+An unchanged-width rightward translation is the preferred operator-facing result only
+when measured full-grid and right-edge tests prove that no pixels or columns clip. The
+fallback is the smallest measured width reduction with truthful Glk remeasurement. The
+architecture never preserves nominal width by hiding output.
+
+**Preserved systems:** D121 safe-edge/touch target, pointer-event isolation, top reflow
+band, dialog suppression and Map-tab arbitration; D94 matching real/measurement cells;
+D93 fixed input controls and keyboard inset; D101/D123 readable prose scaling; D137
+status-grid integrity. No title, module, room or direction branch is permitted.
+
+**Forbidden:** rail masks over text; rail movement into the OS gesture edge; per-line
+transforms; visible/measurement geometry divergence; per-turn resize jitter; clipped
+GridWindow columns; changing exit commands or topology.
+
+```mermaid
+flowchart LR
+  Safe[Safe-area bounds] --> Envelope[Left rail protected envelope]
+  Rail[D121 reachable rail target] --> Envelope
+  Envelope --> Geometry[One stable usable Glk rectangle]
+  Geometry --> Visible[#windowport]
+  Geometry --> Measure[#parchment measurement]
+  Geometry --> Input[LineInput / CharInput left edge]
+  Geometry --> Fit[CharCell usable-width calculation]
+  Visible --> Proof{No text/target intersection}
+  Measure --> Proof
+  Input --> Proof
+  Proof -->|unchanged width proven| Shift[Translate right]
+  Proof -->|not proven| Inset[Minimal truthful inset + reflow]
+```
+
+**Evidence required before promotion:** live rectangle-overlap and hit-test harnesses at
+360/390/412 portrait widths and landscape equivalents; prose/actionables, full status
+grids, native HELP CharInput, preformatted output, keyboard/dialog/map states; desktop
+unchanged. Promote only with source/dist/Android parity and a cache-generation bump.

@@ -151,7 +151,7 @@ decisions and their later mentions, not only the first matching record.
 | Commands/actionables; inspect, examine, parser noun, spells; Actionable, ActionSynth, SemanticActions, GrammarProvider | D21, [D34](#pl-d34), [D58](#pl-d58), [D64](#pl-d64), [D70](#pl-d70), [D82](#pl-d82), [D88](#pl-d88), [D107](#pl-d107), [D141](#pl-d141)-[D148](#pl-d148), [D184](#pl-d184), [D198](#pl-d198), [D201](#pl-d201) | Use evidenced parser-owned forms and scoped objects; lexical membership alone does not establish semantic safety. Check inventory, radials, input, calibration and room changes. |
 | Mapping/travel; exits, compass, room ID; Map, MapTopology, Navigator, ExitCalibrator | [D23](#pl-d23), [D30](#pl-d30), [D47](#pl-d47)-[D63](#pl-d63), [D80](#pl-d80), [D84](#pl-d84), [D112](#pl-d112), [D134](#pl-d134), [D138](#pl-d138)-[D140](#pl-d140), [D155](#pl-d155), [D161](#pl-d161)-[D165](#pl-d165), [D170](#pl-d170)-[D171](#pl-d171), [D198](#pl-d198), [D201](#pl-d201), [D202](#pl-d202) | Preserve structural identities and actual travel commands, including non-compass/multiword exits. Check providers, actionables, notes, directional UI and restore. |
 | Radials/directions; arrow pad, native HELP, usage pill; DirectionalRadial, CharKeys, Qol | [D105](#pl-d105), [D110](#pl-d110)-[D111](#pl-d111), [D117](#pl-d117)-[D119](#pl-d119), [D120](#pl-d120), [D161](#pl-d161) | Distinguish travel from native character keys, maintain ownership/exclusion and exactly-once activation. Check input, startup, settings, tutorial, mobile and desktop. |
-| Input/layout; keyboard, viewport, character cell, status banner; Input, MobileLayout, CharCell | [D93](#pl-d93)-[D96](#pl-d96), [D101](#pl-d101)-[D105](#pl-d105), [D116](#pl-d116), [D119](#pl-d119), [D121](#pl-d121), [D137](#pl-d137), [D156](#pl-d156), [D166](#pl-d166), [D168](#pl-d168), [D172](#pl-d172) | Preserve VM grid geometry and keyboard intent; gate overlays and prevent clipping. Check narrator, mic, sheets, safe area and native menus. |
+| Input/layout; keyboard, viewport, character cell, status banner; Input, MobileLayout, CharCell | [D93](#pl-d93)-[D96](#pl-d96), [D101](#pl-d101)-[D105](#pl-d105), [D116](#pl-d116), [D119](#pl-d119), [D121](#pl-d121), [D137](#pl-d137), [D156](#pl-d156), [D166](#pl-d166), [D168](#pl-d168), [D172](#pl-d172), [D203](#pl-d203) | Preserve VM grid geometry and keyboard intent; gate overlays and prevent clipping. Check narrator, mic, sheets, side rails, safe area and native menus. |
 | Narrator/voice; TTS, speech, microphone; ReadAloud, VoiceInput | [D95](#pl-d95), [D100](#pl-d100), [D104](#pl-d104), [D108](#pl-d108)-[D109](#pl-d109), [D133](#pl-d133), [D159](#pl-d159), [D166](#pl-d166)-[D167](#pl-d167) | Separate spoken payload from display, preserve complete output and current voice-mode contract. Check turn boundaries, auto-travel, tutorial and Android/desktop adapters. |
 | Restore/storage; undo, restart, new game; UndoRestoreSync, WorkspaceUI | [D94](#pl-d94), [D98](#pl-d98)-[D99](#pl-d99), [D106](#pl-d106), [D178](#pl-d178), [D180](#pl-d180)-[D183](#pl-d183) | Resynchronize all dependent state on genuine lifecycle boundaries; persisted readings are not current facts. Check mapping, notes, speech, calibration, tracking and module identity. |
 | Map notes/equipment; Known Rooms, inventory, held containers; Map, EquipmentUI | [D31](#pl-d31), [D48](#pl-d48), [D59](#pl-d59), [D75](#pl-d75), [D112](#pl-d112), [D122](#pl-d122), [D125](#pl-d125)-[D128](#pl-d128), [D131](#pl-d131), [D148](#pl-d148), [D168](#pl-d168)-[D169](#pl-d169), [D174](#pl-d174), [D184](#pl-d184) | Keep notes tied to room identity and inventory scoped/nested; preserve sheet interaction and visibility rules. Check commands, search, layout, tracking and saves. |
@@ -208,9 +208,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 314 headings; 103 decision rows; 314 registered units.
-**Last registered unit:** `pl-s314`. **Body SHA-256 (LF):**
-`9b12c6881ebf8d0e915eabd735fc190c9feca28406deae56034757b438be68d1`
+**Local manifest:** 315 headings; 103 decision rows; 418 registered units.
+**Last registered unit:** `pl-s315`. **Body SHA-256 (LF):**
+`5952be15fbfa2ccf599952738ba0a1ff8b0d1cd389de16d2336686b7ec4bd67c`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -706,7 +706,8 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s311](#pl-s311) | Closing the D186-D197 arc | H3 | Record |
 | [pl-s312](#pl-s312) | D200 Inform Z3 declaration reader | H2 | Implemented |
 | [pl-s313](#pl-s313) | D201 Early Inform unnamed identity and inventory recovery | H2 | Implemented / live-browser verified |
-| [pl-s314](#pl-s314) | D202 Map zoom LOD / world overview (hub-preserving) | H2 | Proposed / amended after #949; awaiting re-audit |
+| [pl-s314](#pl-s314) | D202 Map zoom LOD / world overview (hub-preserving) | H2 | Proposed / re-audit accepted; awaiting operator GO |
+| [pl-s315](#pl-s315) | D203 Mobile left exit-rail readable-content safety | H2 | Proposed / researched; no implementation |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -7409,7 +7410,115 @@ planning/architecture text only.
 
 **Status.**
 
-**NOT started / awaiting Codex re-audit of this amended text.** Inserted 2026-09-30;
+**NOT started / Codex re-audit ACCEPTED 2026-09-30; awaiting operator GO.** Inserted 2026-09-30;
 compass/vocabulary framing corrected 2026-09-30; #949 pre-GO amendments applied
 2026-09-30 after corroboration against Map.js / MapBeautify.js / MapTopology.js.
 No executable/product code in this change set.
+
+<a id="pl-s315" data-chapter-id="pl-s315"></a><a id="pl-d203"></a>
+## D203 Mobile left exit-rail readable-content safety
+
+**Lifecycle:** Proposed / researched on 2026-09-30. **NOT implemented.** This records
+the operator's live-device report and a compatibility-safe implementation contract;
+no CSS, JavaScript, harness, cache, distribution, or APK change is authorized here.
+
+**Stable ID:** [D203](#pl-d203) / `pl-s315`.
+**Scope:** Mobile `play.html` only: the left vertical exit rail, Glk story/status
+windows, actionable command marks, and fixed line/character input. Desktop, map-sheet
+layout, command generation, room/exit identity, and travel behavior are out of scope.
+Architecture companion: [section 67](ARCHITECTURE_UML.md#ar-ch67), PROPOSED.
+
+**Observed defect and cause.** In the supplied portrait screenshot, the rotated left
+exit labels (`IN`, `W`, and destination text) occupy the same horizontal pixels as the
+story. This is not a module-decoding failure. D121 intentionally moved the rail to
+`left: calc(8px + var(--pl-safe-left))` and gave shown labels a reachable `min-height:
+32px`; after the row's `rotate(-90deg)`, that 32px cross-axis target extends inward.
+The mobile Glk shell begins at the same `8px + safe-left`, while D94 gives its windows
+only 10px inner padding. The rail and readable text therefore overlap by construction.
+The right-side whitespace visible in this screenshot is genuine room for this scene,
+but is not a universal reserved gutter: a full-width GridWindow, preformatted diagram,
+large reading scale, or another module may consume it.
+
+**Required behavior.** No visible left-rail label or its touch target may intersect a
+visible BufferLine, GridLine, actionable mark, LineInput, or CharInput. Preserve the
+operator's preferred appearance when geometry proves it safe: keep the usable text
+width and move the complete Glk surface slightly right into verified right-side slack.
+If that cannot be proven for a viewport/module state, reserve the smallest truthful
+left gutter and let GlkOte recalculate its available columns; never clip output to
+pretend width was preserved.
+
+**Compatibility contracts.** The implementation must:
+
+- preserve D121's safe-edge clearance, at least 32px reachable rotated target, pointer-
+  event isolation, dynamic top band, dialog suppression, and right Map-tab arbitration;
+- preserve D94's one-cell truth: `#windowport` and hidden measuring `#parchment` receive
+  identical usable horizontal geometry before Glk reports rows/columns to the VM;
+- keep one stable geometry during ordinary turns. Exit appearance/disappearance must
+  not repeatedly shift text, resize the VM, flash the map, or reopen the keyboard;
+- move/size the fixed line and character inputs with the readable Glk region while
+  leaving submit/microphone targets reachable and at least 44px;
+- keep status grids, native HELP/character prompts, boxed/preformatted output, the
+  bottom input protector, autocomplete, dark-room filtering, and accessibility focus
+  inside the same non-overlapping region;
+- use safe-area variables and measured rectangles, not a device model, title, story,
+  room, direction, or hardcoded screenshot width; and
+- leave desktop behavior byte/geometry compatible.
+
+**Rejected shortcuts.** Do not solve this with an opaque patch behind the rail (it
+hides story text), by moving the rail back into Android's edge-gesture zone (reopens
+D121's untappable-left-exit defect), by transforming BufferLines independently (breaks
+GridWindow/measurement alignment), by shrinking only the visible font (Glk still gets
+false columns), or by assuming this screenshot's right whitespace exists in every
+module. Do not alter exit labels, commands, or map topology.
+
+**Planned geometry decision.** Establish shared mobile variables for the left rail's
+actual protected envelope and the usable Glk rectangle. The implementation may use a
+CSS-constant envelope if live measurements prove the rail thickness invariant, or one
+coalesced `MobileLayout` measurement/high-water value if text/font/safe-area changes
+make it variable. Whichever path wins must be established before the interpreter's
+initial size report and remain stable until orientation/module geometry is deliberately
+recomputed.
+
+Apply the resulting rectangle to both `#windowport` and `#parchment`. Apply its left
+edge to fixed LineInput/CharInput and any content-bound overlays. A **pure translation
+with unchanged width** is accepted only when a harness proves the translated right edge,
+all GridWindow columns, and input controls remain inside the safe viewport/right rail at
+360, 390, 412, and representative wider phone widths. Otherwise reduce the physical
+usable width by only the measured overlap and recompute `--pl-cell-fit` from that same
+width. Correct reflow is preferable to invisible clipped columns.
+
+**Phases and gates.**
+
+1. **Baseline measurement:** reproduce the screenshot geometry and record rectangles
+   for both vertical rails, visible text glyph ranges, GridWindow spans, action pills,
+   line/char input, submit, mic, and safe-area boundaries. Confirm current overlap.
+2. **Geometry proof:** test unchanged-width translation first, as requested. Accept it
+   only if every right-edge/full-grid case remains visible. Otherwise select the minimal
+   shared inset and document the measured width cost.
+3. **Single-source implementation:** publish one side-clearance/usable-rectangle model;
+   update the Glk surface, measurement surface, input row, and CharCell fit together.
+   No per-turn geometry churn.
+4. **Regression:** prove zero rectangle intersection on portrait/landscape, light/dark,
+   keyboard open/closed, map open/closed, dialogs, native HELP, and changed text scale.
+   Confirm left labels remain tappable and the right rail/Map tab still arbitrate correctly.
+
+**Required tests.** Extend `harness/exits-safe-area.js`,
+`harness/d96-menu-handle-map-tab.js`, `harness/d94-cell-and-boot.js`, and
+`harness/mobile-fullscreen-landscape.js` with real-browser rectangle assertions rather
+than source-text-only checks. Use BufferWindow prose/actionables, a maximum-width status
+GridWindow (Anchorhead and LLR), native HELP CharInput, a preformatted/diagram output,
+and modules exposing `in/out/west` left-rail labels. Check at least 360x800, 390x844,
+412x915, and landscape equivalents. Any visible-text/left-target intersection, clipped
+reported column, input/button overlap, or lost hit test is a failure.
+
+**Likely implementation owners (later, not touched here):** `css/ParchLock.css`
+(mobile shell/input/rail geometry), `css/CharCell.css` (truthful fit width),
+`js/MobileLayout.js` only if measurement is necessary, and the four focused harnesses
+above. `Map.js` may be read for exit DOM lifecycle but must not change command or graph
+semantics. A runtime change requires a service-worker generation bump and normal
+source/dist/Android/APK parity checks.
+
+**Status:** research and planning complete; implementation awaits operator GO and an
+adversarial review of this contract. The visual suggestion is feasible for the supplied
+scene, but unchanged-width translation is deliberately a measured gate rather than a
+cross-module assumption.
