@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 92 headings; 0 decision rows; 92 registered units.
 **Last registered unit:** `ar-s092`. **Body SHA-256 (LF):**
-`7b478201d254016c134949582c6c9e7005640ef3db4e3ed5ea4ff5020f330c5e`
+`52c9e0f4f370919ba9ce9cec8a8a0fba3fd621089c377cfac56e8fb0c8155d73`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -3468,9 +3468,11 @@ unchanged. Promote only with source/dist/Android parity and a cache-generation b
 `--pl-mobile-readable-left` derive from the 8px edge gutter, 32px rail target, 10px
 window padding, and safe-area variables. The shell left edge is 30px plus safe-left;
 readable ink/input begins at 40px, while the original right edge remains fixed. Both Glk
-panes and CharCell fit consume that source. Live evidence: exits-safe-area 43/43, D96
-127/127, D94 54/54, mobile fullscreen 10/10; service-worker generation v89. Package/APK
-parity remains the release packaging gate.
+panes and CharCell fit consume that source. Live evidence: exits-safe-area 45/45, D96 left-rail/Map-tab matrix, D94 54/54, mobile
+fullscreen 10/10; service-worker generation v90. Package/APK parity remains the release
+packaging gate. Audit follow-up: band height uses `Math.ceil`; CharCell padding shares
+`--pl-mobile-cell-padding`; Map-tab width published. Open: historical right Map-tab vs
+text underlap at 360/390 (D96 AC deleted in 27d2fbe; not fixed by left-rail inset).
 
 **Adversarial note (grok / #952�#954):** Current full-bleed mobile shell leaves only �8px
 CSS right margin while the left protected envelope overlaps readable text by �22px, and

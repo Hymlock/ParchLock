@@ -33,6 +33,7 @@ function makeSandbox(opts) {
         documentElement: { style: { setProperty: function (k, v) { style[k] = v; } } },
         body: { classList: { _set: {}, toggle: function (name, on) { this._set[name] = !!on; } } },
         getElementById: function (id) { return id === "pl-rotate-hint" ? hint : null; },
+        querySelector: function () { return null; },
         addEventListener: function (evt, fn) { (handlers[evt] = handlers[evt] || []).push(fn); },
         removeEventListener: function (evt, fn) {
             handlers[evt] = (handlers[evt] || []).filter(function (h) { return h !== fn; });

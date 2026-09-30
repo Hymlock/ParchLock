@@ -47,8 +47,8 @@ body.pl-mobile :is(#windowport, #parchment) :is(.GridWindow, .BufferWindow) {
 	line-height: var(--pl-play-line-height, 1.4) !important;
 	letter-spacing: 0 !important;
 	word-spacing: 0 !important;
-	padding-left: 10px !important;
-	padding-right: 10px !important;
+	padding-left: var(--pl-mobile-cell-padding) !important;
+	padding-right: var(--pl-mobile-cell-padding) !important;
 }
 
 /* Grid rows must paint edge to edge. An inline span's background only covers

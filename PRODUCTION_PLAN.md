@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 315 headings; 103 decision rows; 418 registered units.
 **Last registered unit:** `pl-s315`. **Body SHA-256 (LF):**
-`55a1cdf3fd098d70d71a52f84ce1d94b4bc859b4d6f9367cf18daddcf700e610`
+`99dfe106649730e0f7873ff7333c8281071b70f42d7f043a1427e20ed25d6bc1`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -7563,9 +7563,13 @@ left edge moves from 8px to 30px, its 10px inner padding places readable ink at 
 rotated target's inner boundary), and width decreases by exactly the 22px overlap while the
 right edge stays fixed. Shared CSS variables drive `#windowport`, `#parchment`,
 `--pl-cell-fit`, LineInput/CharInput, autocomplete, and the bottom protector. Evidence:
-`harness/exits-safe-area.js` 43/43; `harness/d96-menu-handle-map-tab.js` 127/127 live
-Chromium across 320/360/390/412/430px plus desktop; `harness/d94-cell-and-boot.js` 54/54;
-`harness/mobile-fullscreen-landscape.js` 10/10. Cache generation: v89.
+`harness/exits-safe-area.js` 45/45; `harness/d96-menu-handle-map-tab.js` live Chromium
+across 320/360/390/412/430px plus desktop; `harness/d94-cell-and-boot.js` 54/54;
+`harness/mobile-fullscreen-landscape.js` 10/10. Cache generation: v90. Post-ACCEPT audit
+fix: band `Math.ceil` committed with the harness that required it; CharCell padding
+consumes `--pl-mobile-cell-padding`; `--pl-map-tab-width` published. Open note: 27d2fbe
+deleted D96 Map-tab-vs-text AC that still fails at 360/390 under the historical 8px right
+gutter; widening shell-right to 18px clears it but drops D94 below 48 columns at 320.
 
 **Adversarial amendment (grok, 2026-09-30) � geometry arithmetic + #954 protocol.**
 

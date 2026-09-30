@@ -2644,7 +2644,11 @@ html.pl-debug-translator #pl-hud-metrics { display: flex !important; }
 	--pl-mobile-edge-gutter: 8px;
 	--pl-mobile-cell-padding: 10px;
 	--pl-left-rail-target: 32px;
+	--pl-map-tab-width: 18px;
 	--pl-mobile-shell-left: calc(var(--pl-safe-left) + var(--pl-mobile-edge-gutter) + var(--pl-left-rail-target) - var(--pl-mobile-cell-padding));
+	/* Right edge stays the historical 8px gutter (D203 left-clearance must not
+	 * steal right width). Map-tab vs story-text clearance is enforced by the
+	 * restored D96 AC and content padding, not by widening this gutter. */
 	--pl-mobile-shell-right: calc(var(--pl-safe-right) + var(--pl-mobile-edge-gutter));
 	--pl-mobile-shell-width: calc(100vw - var(--pl-mobile-shell-left) - var(--pl-mobile-shell-right));
 	--pl-mobile-readable-left: calc(var(--pl-mobile-shell-left) + var(--pl-mobile-cell-padding));

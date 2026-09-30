@@ -234,7 +234,10 @@ var MobileLayout = {
                     // exactly when the element is display:none, which is the
                     // case that must reserve nothing (body.map-open hides the
                     // whole #exits tree, and body.no-story hides it too).
-                    var h = el.getClientRects().length ? Math.round(el.getBoundingClientRect().height) : 0;
+                    // Round outward: a fractional wrapped line must never be
+                    // under-reserved by a pixel. The protector itself is now
+                    // painted by #exits, so this value owns only story reflow.
+                    var h = el.getClientRects().length ? Math.ceil(el.getBoundingClientRect().height) : 0;
                     // Only touch the var when it actually moved: writing it
                     // unconditionally would dirty layout on every tick.
                     if (h === lastH) return;

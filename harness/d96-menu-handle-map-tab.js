@@ -165,6 +165,11 @@ const tap = async (page, sel) => {
                 const cs = await page.evaluate(() => { const c = getComputedStyle(document.getElementById('pl-map-tab')); return { bg: c.backgroundColor, fg: c.color }; });
                 const alpha = (s) => { const m = /rgba\(([^)]+)\)/.exec(s); return m ? parseFloat(m[1].split(',')[3]) : 1; };
                 ok(alpha(cs.bg) <= 0.15 && alpha(cs.fg) <= 0.6, tag + 'Map tab is translucent (bg a=' + alpha(cs.bg) + ', icon a=' + alpha(cs.fg) + ')');
+                // D203 audit note: the prior "Map tab covers no story text" AC still fails at
+                // 360/390 (textRight ~tab.l+8) with the historical 8px right gutter + 18px tab.
+                // Widening shell-right to 18px clears it but drops D94 below 48 columns at 320.
+                // Left-rail D203 keeps the right edge fixed; this right-underlap stays an open
+                // D96 gap rather than a silent deletion without a record.
             }
 
             {   // The right-hand exit rail (up / e / down labels) is tappable travel. A label that reaches the tab must WIN the tap,

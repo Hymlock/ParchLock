@@ -82,6 +82,8 @@ assert(/\.row\.vertical\.left\s+\.exit\.shown\s+\.dir-name,[\s\S]{0,180}?min-hei
 // --- D203: one truthful horizontal geometry ----------------------------
 assert(/--pl-mobile-shell-left:\s*calc\([^;]*--pl-left-rail-target[^;]*--pl-mobile-cell-padding/.test(css), "mobile shell left edge is derived from the rail target and shared cell padding");
 assert(/--pl-mobile-shell-width:\s*calc\(100vw\s*-\s*var\(--pl-mobile-shell-left\)\s*-\s*var\(--pl-mobile-shell-right\)\)/.test(css), "mobile shell width is derived from its published left/right edges");
+assert(/--pl-map-tab-width:\s*18px/.test(css), "mobile Map tab width is published for D96 right-edge arbitration");
+assert(/--pl-mobile-shell-right:\s*calc\(var\(--pl-safe-right\)\s*\+\s*var\(--pl-mobile-edge-gutter\)\)/.test(css), "D203 keeps the historical 8px right gutter (left clearance must not steal right width)");
 assert(/body\.pl-mobile\s+#parchment,[\s\S]{0,180}?left:\s*var\(--pl-mobile-shell-left\)[\s\S]{0,100}?width:\s*var\(--pl-mobile-shell-width\)/.test(css), "visible and hidden Glk panes consume the same D203 shell rectangle");
 assert(/\.Input\.LineInput,[\s\S]{0,260}?left:\s*var\(--pl-mobile-readable-left\)/.test(css), "fixed line input starts at the shared readable boundary");
 assert(/\.Input\.CharInput,[\s\S]{0,280}?left:\s*var\(--pl-mobile-readable-left\)/.test(css), "fixed character input starts at the shared readable boundary");
