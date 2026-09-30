@@ -386,6 +386,15 @@ var Actionable = {
             if (hit && hit.examineOnly) {
                 var noun = Actionable.commandNounFor(hit) || hit.name;
                 if (!noun) return [];
+                // D201: a promoted candidate may now carry attributes decoded
+                // from this module's own compiler declarations. Let the shared
+                // synthesizer expose only those directly evidenced capabilities
+                // (plus confirmed per-object learning); it deliberately omits
+                // dictionary-only guesses. Modules without declarations retain
+                // the historical inspect-only result below.
+                if (typeof ActionSynth !== "undefined" && ActionSynth.commandsForEvidenceObject) {
+                    return ActionSynth.commandsForEvidenceObject(hit, kind === "inventory" ? "inventory" : "room") || [];
+                }
                 var cmds = [];
                 // The inspect verb keeps its policy: disabled means no command
                 // at all, and a learned substitute ("look at") is honoured.

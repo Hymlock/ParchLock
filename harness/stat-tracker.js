@@ -90,10 +90,41 @@ assert(exp20 && exp20.experience.value === 20 && exp20.experience.max == null,
     "a printed '20 exp' is experience, not an invented total");
 assert(S.parsePrintedMetrics("EXP: 20/50").experience.max === 50,
     "an explicit EXP n/m form keeps the printed denominator");
+const llrExp20 = S.parsePrintedMetrics("You are a level 1 rogue, with 20 experience points. You need 30 more points to progress to the next level.");
+assert(llrExp20 && llrExp20.experience.value === 20 && llrExp20.experience.max === 50,
+    "LLR remaining points are added to current EXP to recover the next-level threshold");
 assert(S.parsePrintedMetrics("You have so far scored 1 point in 3 turns.") === null,
     "wump2ka's score reply does not invent experience");
 assert(S.parsePrintedMetrics("You need 50 points to progress to the next level.") === null,
     "a point threshold with no experience word contributes nothing");
+const llrModel = S.blank();
+S.recordPrintedMetrics(llrModel, llrScore, "score");
+assert(llrModel.scoreMetricKey === "experience" && llrModel.stats.experience.value === 0,
+    "an actual SCORE response deterministically binds this module's score notifications to EXP");
+S._pendingDeltaText = "score has just gone up by twenty points";
+S.applyScoreDeltaToDisplay(llrModel, 20, 0);
+assert(llrModel.stats.experience.value === 20 && llrModel.stats.experience.lastChange === 20,
+    "a later score popup updates EXP after the module relationship is proven");
+const proseModel = S.blank();
+S.recordPrintedMetrics(proseModel, "You gained 20 experience points.", "attack goblin");
+assert(proseModel.scoreMetricKey == null,
+    "experience prose without a SCORE command does not relabel score notifications");
+const autoExpModel = S.blank();
+S._samples = [{ observed: {}, globals: [0, 0, 7] }];
+autoExpModel.scoreCandidates = [0, 1];
+global.Actionable = { isGameWord: word => word === "experience" };
+assert(S.classifyExperienceScoreEvent(autoExpModel,
+    { level: { value: 1 }, strength: { value: 12 } }, 20, [20, 20, 8]) === true,
+    "an automatic first score popup becomes EXP when status, dictionary, delta and RAM agree");
+assert(autoExpModel.stats.experience.value === 20 && autoExpModel.stats.score == null,
+    "tied zero-to-total shadow globals yield one deterministic EXP value, not a duplicate Score");
+const ordinaryScoreModel = S.blank();
+ordinaryScoreModel.scoreCandidates = [0];
+assert(S.classifyExperienceScoreEvent(ordinaryScoreModel,
+    { score: { value: 20 } }, 20, [20, 0, 8]) === false,
+    "a conventional score module without LVL/STR context is never relabelled EXP");
+delete global.Actionable;
+S._samples = [];
 
 // ---- DIAGNOSE, measured ------------------------------------------------
 let d = S.parseDiagnoseReply("You are in perfect health. You can be killed by a serious wound.");

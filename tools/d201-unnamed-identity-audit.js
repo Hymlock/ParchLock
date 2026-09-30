@@ -30,6 +30,7 @@ for (const file of ["js/AttributeSchema.js", "js/ZRamReader.js"]) {
 const R = sandbox.ZRamReader;
 const files = fs.readdirSync(path.join(root, "games")).filter(file => /\.(?:z[1-8]|zblorb)\.js$/i.test(file));
 const rows = [];
+const compassProfiles = [];
 
 for (const file of files) {
     let mem;
@@ -55,6 +56,13 @@ for (const file of files) {
         });
     }
     const resolved = R.resolvePlayer(mem);
+    const compass = R.discoverCompassProfile(mem);
+    if (compass) compassProfiles.push({
+        file,
+        doorProp: compass.doorProp,
+        labeled: compass.labeled,
+        labels: Object.keys(compass.profile || {}).length
+    });
     rows.push({
         file,
         version: R.header(mem).version,
@@ -75,6 +83,7 @@ console.log(`Unique viable parser-self: ${unique.length}`);
 console.log(`Multiple viable parser-self candidates: ${multi.length}`);
 console.log(`Unresolved equal-score ambiguity: ${ambiguous.length}`);
 console.log(`Resolved through D201 parser-self: ${recovered.length}`);
+console.log(`Complete discovered compass profiles: ${compassProfiles.length}`);
 console.log("\nD201 parser-self resolutions:");
 for (const row of recovered) console.log(`  ${row.file.padEnd(28)} v${row.version} player=${row.playerId}`);
 if (multi.length) {
@@ -94,6 +103,14 @@ if (!llr || llr.playerId !== 96 || llr.source !== "parser-self" || llr.ambiguous
     console.log("\nPASS: LLR3 resolves unique parser-self object 96.");
 }
 
+const partialCompass = compassProfiles.filter(row => row.labeled < 8 || row.labels < 8);
+if (partialCompass.length) {
+    console.error("\nFAIL: partial compass profiles became authoritative: " + JSON.stringify(partialCompass));
+    process.exitCode = 1;
+} else {
+    console.log("PASS: every authoritative compass profile has at least eight parser-owned labels.");
+}
+
 const jsonAt = process.argv.indexOf("--json");
 if (jsonAt >= 0) {
     const out = path.resolve(process.cwd(), process.argv[jsonAt + 1]);
@@ -101,6 +118,6 @@ if (jsonAt >= 0) {
     fs.writeFileSync(out, JSON.stringify({ summary: {
         inform: rows.length, unique: unique.length, multi: multi.length,
         ambiguous: ambiguous.length, recovered: recovered.length
-    }, rows }, null, 2));
+    }, compassProfiles, rows }, null, 2));
     console.log("Wrote " + out);
 }

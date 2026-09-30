@@ -205,12 +205,14 @@ var StatTracker = {
         // Next-level requirement, only when experience was already printed in
         // this same text. Never promotes a bare "points to progress" line.
         if (out.experience && out.experience.max == null) {
-            var need = /need\s+(\d+)\s+points?\s+to\s+progress(?:\s+to\s+the\s+next\s+level)?/i.exec(t)
-                || /(\d+)\s+points?\s+to\s+progress(?:\s+to\s+the\s+next\s+level)?/i.exec(t);
+            var need = /need\s+(\d+)\s+(more\s+)?points?\s+to\s+progress(?:\s+to\s+the\s+next\s+level)?/i.exec(t)
+                || /(\d+)\s+(more\s+)?points?\s+to\s+progress(?:\s+to\s+the\s+next\s+level)?/i.exec(t);
             if (need) {
                 var req = parseInt(need[1], 10);
                 if (isFinite(req)) {
-                    out.experience.max = req;
+                    // "need 30 more" is a remaining amount, not the next
+                    // threshold. At EXP 20 the displayed denominator is 50.
+                    out.experience.max = need[2] ? out.experience.value + req : req;
                     out.experience.unit = "fraction";
                 }
             }
@@ -218,9 +220,29 @@ var StatTracker = {
         return Object.keys(out).length ? out : null;
     },
 
-    recordPrintedMetrics: function (model, text) {
+    scoreMetricKey: function (model) {
+        return model && model.scoreMetricKey === "experience" ? "experience" : "score";
+    },
+
+    recordPrintedMetrics: function (model, text, command) {
         var printed = StatTracker.parsePrintedMetrics(text);
         if (!printed || !model) return false;
+        // A SCORE response that explicitly names experience proves how this
+        // module classifies its own score notifications. Persist the semantic
+        // relationship, not a title/serial exception. From this point the
+        // existing delta/global learner updates EXP rather than a duplicate
+        // Score row. Ordinary prose mentioning experience proves no such link.
+        if (printed.experience && /^score\s*$/i.test(String(command || "").trim())) {
+            model.scoreMetricKey = "experience";
+            model.scorePinKnown = printed.experience.value;
+            if (model.globals.score != null) {
+                model.globals.experience = model.globals.score;
+                delete model.globals.score;
+            }
+            if (model.stats.score && /^global:/.test(String(model.stats.score.source || ""))) {
+                delete model.stats.score;
+            }
+        }
         var wrote = false;
         Object.keys(printed).forEach(function (k) {
             var rec = printed[k];
@@ -353,7 +375,8 @@ var StatTracker = {
     // confirmed. Every guard here answers a specific hazard raised in review.
     applyScoreDeltaToDisplay: function (model, delta, scoreBefore) {
         if (!delta) return;
-        var s = model.stats.score;
+        var metricKey = StatTracker.scoreMetricKey(model);
+        var s = model.stats[metricKey];
         if (!s) return;
 
         // No baseline, no arithmetic. A delta with nothing to add it to gives a
@@ -407,7 +430,7 @@ var StatTracker = {
         s.lastChange = delta;
         // The cue and the badge are driven from here, which is why this one
         // write restores all three reported symptoms at once.
-        StatTracker.emitChange(model, "score", delta);
+        StatTracker.emitChange(model, metricKey, delta);
     },
 
     // Identify the score's global from a known change. Candidates are narrowed
@@ -451,9 +474,11 @@ var StatTracker = {
             // MOVEMENT filter is applied -- which needs no baseline and is the
             // original D167 evidence -- rather than a total that is known to be
             // out of date. Nothing is loosened while the baseline is current.
+            var metricKey = StatTracker.scoreMetricKey(model);
+            var metric = model.stats[metricKey];
             var baselineCurrent = known === null
-                || !(model.stats.score && typeof model.stats.score.value === "number")
-                || model.stats.score.value === known;
+                || !(metric && typeof metric.value === "number")
+                || metric.value === known;
 
             var hits = [];
             for (var i = 0; i < globals.length; i++) {
@@ -490,12 +515,12 @@ var StatTracker = {
                 }
             }
             var idx = hits[0];
-            if (model.scoreUnavailable) return;
-            model.globals.score = idx;
-            var sc = model.stats.score;
+            if (metricKey === "score" && model.scoreUnavailable) return;
+            model.globals[metricKey] = idx;
+            var sc = model.stats[metricKey];
             if (!sc) {
-                sc = model.stats.score = { key: "score", label: "Score", unit: "plain",
-                                           kind: "score", seen: StatTracker.CONFIRM_SAMPLES,
+                sc = model.stats[metricKey] = { key: metricKey, label: metricKey === "experience" ? "EXP" : "Score", unit: "plain",
+                                           kind: metricKey === "experience" ? "counter" : "score", seen: StatTracker.CONFIRM_SAMPLES,
                                            max: null, confirmed: true, value: globals[idx],
                                            lastChange: null };
             }
@@ -506,6 +531,47 @@ var StatTracker = {
                 sc.value = globals[idx];
             }
         } catch (e) {}
+    },
+
+    // Some RPG-style stories call experience "score" in the standard Inform
+    // notification. The popup alone cannot prove that semantic. A first-hit
+    // classification is allowed only when four independent facts agree:
+    // game-authored LVL and STR fields, the story dictionary's EXPERIENCE
+    // word, a positive announced delta, and every surviving RAM candidate
+    // moving from zero to exactly that total. Shadow globals may remain tied;
+    // their shared value is still deterministic even though their address is
+    // not. A later SCORE response remains the stronger corroboration path.
+    classifyExperienceScoreEvent: function (model, observed, delta, globals) {
+        try {
+            if (!model || model.scoreMetricKey || !(delta > 0)) return false;
+            if (!observed || !observed.level || !observed.strength) return false;
+            if (typeof Actionable === "undefined" || !Actionable.isGameWord
+                || !Actionable.isGameWord("experience")) return false;
+            var candidates = model.scoreCandidates || [];
+            if (!candidates.length || !globals || !globals.length) return false;
+            var samples = StatTracker._samples.filter(function (x) { return x.globals && x.globals.length; });
+            var prev = samples.length ? samples[samples.length - 1].globals : null;
+            if (!prev || prev.length !== globals.length) return false;
+            for (var i = 0; i < candidates.length; i++) {
+                var idx = candidates[i];
+                if (prev[idx] !== 0 || globals[idx] !== delta) return false;
+            }
+            model.scoreMetricKey = "experience";
+            model.scorePinKnown = delta;
+            if (model.globals.score != null) {
+                model.globals.experience = model.globals.score;
+                delete model.globals.score;
+            }
+            delete model.stats.score;
+            model.stats.experience = {
+                key: "experience", label: "EXP", value: delta, max: null,
+                unit: "plain", kind: "counter", seen: StatTracker.CONFIRM_SAMPLES,
+                source: model.globals.experience != null
+                    ? "global:" + model.globals.experience : "score-notification+ram",
+                confirmed: true, lastChange: delta
+            };
+            return true;
+        } catch (e) { return false; }
     },
 
     // ---- end-of-game banners --------------------------------------------
@@ -542,6 +608,7 @@ var StatTracker = {
         deaths: 0,
         wins: 0,
         scoreUnavailable: false,
+        scoreMetricKey: null,
         rank: null,
         probed: false,
         seenBanners: {}
@@ -758,11 +825,14 @@ var StatTracker = {
         // is the value pinScoreByDelta must treat as `known` -- the total the
         // game held before the notification -- and it is also what tells us,
         // further down, whether the number has already been moved by RAM.
-        var scoreBefore = (model.stats.score && model.stats.score.confirmed
-            && typeof model.stats.score.value === "number") ? model.stats.score.value : null;
+        var scoreMetricKey = StatTracker.scoreMetricKey(model);
+        var scoreMetric = model.stats[scoreMetricKey];
+        var scoreBefore = (scoreMetric && scoreMetric.confirmed
+            && typeof scoreMetric.value === "number") ? scoreMetric.value : null;
 
         if (StatTracker._pendingDelta) {
             StatTracker.pinScoreByDelta(model, StatTracker._pendingDelta, globals);
+            StatTracker.classifyExperienceScoreEvent(model, observed, StatTracker._pendingDelta, globals);
         }
 
         var prev = StatTracker._samples[StatTracker._samples.length - 1];
@@ -894,9 +964,10 @@ var StatTracker = {
 
     emitChange: function (model, k, delta) {
         if (StatTracker.firstReadingAfterForget(model, k)) return;
-        if (k === "score" && delta > 0) {
+        var scoreFamily = k === "score" || (k === "experience" && model.scoreMetricKey === "experience");
+        if (scoreFamily && delta > 0) {
             StatTracker._events.push({ type: "score-up", key: k, delta: delta });
-        } else if (k === "score") {
+        } else if (scoreFamily) {
             StatTracker._events.push({ type: "score-down", key: k, delta: delta });
         } else {
             StatTracker._events.push({ type: "change", key: k, delta: delta });
@@ -1364,9 +1435,9 @@ var StatTracker = {
         return got;
     },
 
-    observeText: function (text, turnMarker) {
+    observeText: function (text, turnMarker, command) {
         var model = StatTracker.model();
-        StatTracker.recordPrintedMetrics(model, text);
+        StatTracker.recordPrintedMetrics(model, text, command);
         var found = StatTracker.bannersIn(text);
         found.forEach(function (b) {
             var id = b.kind + "|" + b.text + "|" + (turnMarker == null ? "" : turnMarker);
@@ -1545,7 +1616,9 @@ var StatTracker = {
 
         if (fresh) {
             try {
-                StatTracker.observeText(fresh, StatTracker._turn);
+                var command = "";
+                try { command = (typeof MapTopology !== "undefined" && MapTopology.lastCommand) || ""; } catch (eCmd) {}
+                StatTracker.observeText(fresh, StatTracker._turn, command);
                 StatTracker.consumeProbeReply(fresh);
                 // D169: the carried-value bootstrap needs BOTH the text the
                 // game just printed and live RAM, which only meet here.

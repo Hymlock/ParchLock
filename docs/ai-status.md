@@ -373,3 +373,19 @@ browser/CDP probe scripts fail outside a real browser, expected, unrelated to D8
 - 2026-09-20 (claude): SEAT FINALIZED -- claude is out of usage credits. All claims released. Handoff: PRODUCTION_PLAN.md sections 12 (D99) and 13 (D98) + ARCHITECTURE_UML.md sections 34-35 are the final plan for the ParchLock program and Module Manager (implementation pending, codex single writer). The sole-editor rule for those two docs cannot be honored while claude is out: operator must designate an editor. Operator gates all answered (section 12.3). No product code was changed after D96 (APK versionCode 28, cache v7).
 
 
+## D201 final adversarial audit (2026-09-30, codex)
+
+Catalog compass discovery now requires a complete eight-label planar family,
+rejects contradictory labels, and caches by VM backing buffer. This prevented
+Inevita's five-label partial profile from suppressing valid stock directions;
+212 complete catalog profiles remain authoritative. Uncatalogued, text-confirmed
+objects now reuse ActionSynth in a compiled-evidence-only mode: module-declared
+attributes and confirmed per-object learning can populate their radials, while
+parser vocabulary or dictionary membership alone cannot grant a verb. Ordinary
+catalogued objects and parallel providers are unchanged. Focused contract 7/7;
+catalog 271; StatTracker 132/132; live D201 gate 69/69; shell v88. A real
+submitted SCORE response that explicitly names experience now binds that
+module's score-popup/RAM learner to EXP; unrelated experience prose cannot.
+The ordinary first score popup can establish EXP without a command when
+LVL/STR, dictionary vocabulary, announced delta and zero-to-total RAM evidence
+all agree. "20 experience ... need 30 more" displays 20/50.

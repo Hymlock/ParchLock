@@ -1,4 +1,4 @@
-﻿/* ParchLock PWA service worker.
+/* ParchLock PWA service worker.
  *
  * Two-tier strategy, deliberately NOT "cache every game file up front" --
  * the catalog is ~300 story files and precaching all of them would be slow
@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v87"; // D201 EXP current/needed from printed next-level requirement
+const CACHE_VERSION = "parchlock-shell-v88"; // D201 complete compass + evidence-only unresolved-object actions
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

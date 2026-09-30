@@ -209,7 +209,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 90 headings; 0 decision rows; 90 registered units.
 **Last registered unit:** `ar-s090`. **Body SHA-256 (LF):**
-`fb25605378d68447d399cb0ca9398e4d4379df58ddcef26a68c5c910207d42d6`
+`856493f83735bca3403686d7cb2652deca3b19e1ed2101d714a7ed7278a62bb5`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -3293,11 +3293,39 @@ the same live-RAM provider is available on fast desktop and mobile loads without
 the interpreter path.
 
 The catalog result is 271 Inform modules inspected, 45 parser-self resolutions and one
-equal-score multi-body fail-closed control (Mask). The live browser matrix is 58/58 across
+equal-score multi-body fail-closed control (Mask). The live browser matrix is 69/69 across
 five alternating desktop/mobile randomized LLR starts plus RoTA, Bronze, Accuse, Anchorhead
 and Wumpus. Focused room identity, nested inventory, compound noun, StatTracker, restore,
 D198 and pathing controls pass. The historical broad D22 fixture retains its documented
 Wumpus/zblorb residuals; the dedicated current live Wumpus indexed-room/status control passes.
+
+The final adversarial pass makes dynamic compass discovery authoritative only when at least
+eight canonical parser-owned labels form a complete planar family. A partial profile cannot
+suppress the established profile; contradictory direction words return no label, and discovery
+is cached by the VM backing buffer. Catalog evidence is 212 complete profiles, with Inevita's
+five-label partial profile correctly left on the existing fallback. Numbered exits remain an
+independent structural lane.
+
+Uncatalogued room candidates retain a narrower command boundary than named objects. Printed
+parser vocabulary establishes addressability only. `ActionSynth.commandsForEvidenceObject`
+then admits the normal forms supported by validated compiler-declared attributes and confirmed
+per-object learning, while excluding dictionary-only additions such as DRINK. With no such
+capability evidence, only the established inspect verb remains. This reuses the shared
+synthesizer and radial consumer instead of creating a title adapter or parallel action system.
+The focused evidence-only contract is 7/7; StatTracker is 132/132.
+
+Experience also composes with the existing score learner without a module branch. An accepted
+`SCORE` command followed by a response that explicitly names experience records the module-local
+semantic relationship `scoreMetricKey=experience`. Only after that proof may score-notification
+deltas and a uniquely learned score global update the EXP record. Unrelated experience prose
+does not establish the relationship. A printed `need N more points` contributes a next-level
+threshold of current EXP plus N; a bare progress number remains insufficient evidence.
+
+The primary first-hit path needs no SCORE command. A positive automatic score delta is
+classified as EXP only when game-authored LVL and STR fields, dictionary-owned `experience`,
+and all surviving zero-to-announced-total RAM transitions agree. Equal shadow addresses may
+prove one value without an address tie-break. Failure of any condition preserves the ordinary
+score/absence path. No Equipment-open score injection is added; D188/D194/D195 remain intact.
 Contract tests must continue to protect randomized LLR starts, movement/revisit, D184
 underlining, take/inventory/drop,
 Equipment, Level/Strength metrics, notes, restore/undo/restart/module switch,

@@ -134,6 +134,33 @@ async function submit(page, command) {
     let takeCase = null;
     const llrRooms = [];
 
+    async function captureTakeCase(live) {
+        const candidate = await live.page.evaluate(() => {
+            const mem = ZRamProvider.getMem(), z = ZRamProvider.collect();
+            return (z.unnamedCandidates || []).find(item => {
+                const attrs = ZRamReader.attrsFromObject(mem, item.id) || {};
+                return attrs.takeable && item.aliases && item.aliases.length;
+            }) || null;
+        });
+        if (!candidate) return null;
+        const noun = candidate.aliases[candidate.aliases.length - 1];
+        await live.page.evaluate(() => { try { Actionable.Refresh(); } catch (e) {} });
+        await live.page.waitForTimeout(300);
+        const candidateState = await state(live.page);
+        const marked = candidateState.marks.some(mark => candidate.aliases.some(alias =>
+            mark.noun.toLowerCase() === String(alias).toLowerCase()
+            || mark.text.toLowerCase().indexOf(String(alias).toLowerCase()) >= 0));
+        const radialCommands = await live.page.evaluate(id =>
+            Actionable.resolveObjectCommands(id, "room").map(action => action.command), candidate.id);
+        await submit(live.page, "take " + noun);
+        const held = await state(live.page);
+        const item = held.world.inventory.find(entry => entry.id === candidate.id);
+        await submit(live.page, "drop " + noun);
+        const dropped = await state(live.page);
+        return { candidate, noun, marked, radialCommands, item,
+            dropped: !dropped.world.inventory.some(entry => entry.id === candidate.id) };
+    }
+
     for (let run = 0; run < 5; run++) {
         const live = await boot(browser, "LLR3.z8.js", run % 2 === 0);
         const before = await state(live.page);
@@ -156,35 +183,25 @@ async function submit(page, command) {
             `LLR run ${run + 1} keeps the same ObjectId on LOOK`);
 
         if (!takeCase) {
-            const candidate = await live.page.evaluate(() => {
-                const mem = ZRamProvider.getMem(), z = ZRamProvider.collect();
-                return (z.unnamedCandidates || []).find(item => {
-                    const attrs = ZRamReader.attrsFromObject(mem, item.id) || {};
-                    return attrs.takeable && item.aliases && item.aliases.length;
-                }) || null;
-            });
-            if (candidate) {
-                const noun = candidate.aliases[candidate.aliases.length - 1];
-                await live.page.evaluate(() => { try { Actionable.Refresh(); } catch (e) {} });
-                await live.page.waitForTimeout(300);
-                const candidateState = await state(live.page);
-                const marked = candidateState.marks.some(mark => candidate.aliases.some(alias =>
-                    mark.noun.toLowerCase() === String(alias).toLowerCase()
-                    || mark.text.toLowerCase().indexOf(String(alias).toLowerCase()) >= 0));
-                await submit(live.page, "take " + noun);
-                const held = await state(live.page);
-                const item = held.world.inventory.find(entry => entry.id === candidate.id);
-                await submit(live.page, "drop " + noun);
-                const dropped = await state(live.page);
-                takeCase = { candidate, noun, marked, item, dropped: !dropped.world.inventory.some(entry => entry.id === candidate.id) };
-            }
+            takeCase = await captureTakeCase(live);
         }
+        await live.context.close();
+    }
+    // The map is randomized and some valid starts contain no generated loose
+    // item. Preserve the five required identity starts above, then use bounded
+    // additional boots only to acquire the item/action fixture.
+    for (let retry = 0; retry < 7 && !takeCase; retry++) {
+        const live = await boot(browser, "LLR3.z8.js", retry % 2 === 0);
+        takeCase = await captureTakeCase(live);
         await live.context.close();
     }
     check(llrRooms.every(Boolean), "five randomized LLR starts all produce structural room IDs", JSON.stringify(llrRooms));
     check(!!takeCase, "at least one randomized LLR start exposes a takeable generated object");
     if (takeCase) {
         check(takeCase.marked, "LLR generated object is underlined through D184 parser vocabulary", JSON.stringify(takeCase));
+        check(takeCase.radialCommands.some(command => /^take\s+/i.test(command)
+            && takeCase.candidate.aliases.some(alias => command.toLowerCase() === "take " + String(alias).toLowerCase())),
+            "LLR generated object radial includes declaration-proven TAKE", JSON.stringify(takeCase));
         check(takeCase.item && takeCase.item.labelProvenance === "parser-vocabulary"
             && takeCase.item.aliases.indexOf(takeCase.noun) >= 0,
             "taken LLR object enters inventory with its real ID, aliases and parser label", JSON.stringify(takeCase));

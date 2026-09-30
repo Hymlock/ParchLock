@@ -616,16 +616,18 @@ var ZRamReader = {
     },
     directionLabelFromWords: (words, shortName) => {
         var map = ZRamReader.DIR_WORD_TO_LABEL;
-        var best = "";
+        var found = {};
         function consider(raw) {
             var w = String(raw || "").trim().toLowerCase();
             if (!w || !map[w]) return;
-            var lab = map[w];
-            if (!best || lab.length > best.length) best = lab;
+            found[map[w]] = 1;
         }
         consider(shortName);
         (words || []).forEach(consider);
-        return best || "";
+        var labels = Object.keys(found);
+        // Multiple canonical directions on one object are contradictory
+        // evidence. Parser-property order must not choose the winner.
+        return labels.length === 1 ? labels[0] : "";
     },
     // Among compass children of one kind, find the common property whose
     // values are distinct small integers (the door_dir / n_to slot numbers).
@@ -656,9 +658,10 @@ var ZRamReader = {
     },
     discoverCompassProfile: (mem) => {
         if (!mem) return null;
+        var cacheKey = (mem && mem.buffer) || mem;
         try {
-            if (ZRamReader._compassProfileCache && ZRamReader._compassProfileCache.has(mem)) {
-                return ZRamReader._compassProfileCache.get(mem);
+            if (ZRamReader._compassProfileCache && ZRamReader._compassProfileCache.has(cacheKey)) {
+                return ZRamReader._compassProfileCache.get(cacheKey);
             }
         } catch (eC) {}
         var result = null;
@@ -697,14 +700,19 @@ var ZRamReader = {
                         labeled++;
                     }
                 }
-                if (labeled >= 4 && (!best || labeled > best.labeled)) {
+                // A partial direction family must not replace the stock
+                // profile: doing so suppressed every stock direction absent
+                // from the partial map (catalog repro: Inevita exposed only
+                // five labels). Eight labels is the minimum complete planar
+                // compass family; smaller sets fail closed to existing logic.
+                if (labeled >= 8 && (!best || labeled > best.labeled)) {
                     best = { doorProp: doorProp, profile: profile, labeled: labeled, compassId: id };
                 }
             }
             result = best;
         } catch (e) { result = null; }
         try {
-            if (ZRamReader._compassProfileCache) ZRamReader._compassProfileCache.set(mem, result);
+            if (ZRamReader._compassProfileCache) ZRamReader._compassProfileCache.set(cacheKey, result);
         } catch (eS) {}
         return result;
     },
@@ -713,7 +721,7 @@ var ZRamReader = {
     // short names on compass children + door_dir slot), never a title branch.
     effectiveDirectionProfile: (mem) => {
         var discovered = mem ? ZRamReader.discoverCompassProfile(mem) : null;
-        if (discovered && discovered.profile && discovered.labeled >= 4) return discovered.profile;
+        if (discovered && discovered.profile && discovered.labeled >= 8) return discovered.profile;
         return (ZRamReader.directionProps && ZRamReader.directionProps.PROFILE) || {};
     },
 

@@ -39,7 +39,8 @@ var ActionSynth = {
         return false;
     },
 
-    verbsForAttrs: (attrs, objectId) => {
+    verbsForAttrs: (attrs, objectId, options) => {
+        options = options || {};
         var defaultVerb = ActionSynth.defaultInspectVerb();
         var verbs = ActionSynth.inspectVerbDisabled() ? [] : [defaultVerb];
         var a = attrs || {};
@@ -61,7 +62,7 @@ var ActionSynth = {
         // game's own attribute licenses it, food exists, and for a liquid the
         // story refuses it gracefully in one line rather than failing to parse.
         try {
-            if (a.edible && typeof Actionable !== "undefined" && Actionable.isGameWord
+            if (!options.directEvidenceOnly && a.edible && typeof Actionable !== "undefined" && Actionable.isGameWord
                 && Actionable.isGameWord("drink") && verbs.indexOf("drink") < 0) {
                 verbs.push("drink");
             }
@@ -173,7 +174,7 @@ var ActionSynth = {
         } catch (e) { return attrs; }
     },
 
-    commandsForObject: (obj, context, containerName) => {
+    commandsForObject: (obj, context, containerName, options) => {
         if (!obj || !obj.name) return [];
         // D64: obj.name is the object's structural short-name (a display
         // string, not guaranteed real parser vocabulary). Actionable
@@ -214,7 +215,7 @@ var ActionSynth = {
                 confidence: obj.confidence || 0.8
             }];
         }
-        var verbs = ActionSynth.verbsForAttrs(attrs, obj.id);
+        var verbs = ActionSynth.verbsForAttrs(attrs, obj.id, options);
         // Inventory: drop is "you are holding this", independent of takeable.
         // Zeroing takeable used to collateral-suppress drop because both verbs
         // shared one flag. Take stays gated on attrs.takeable and is removed
@@ -251,6 +252,18 @@ var ActionSynth = {
                 command: cmd,
                 confidence: obj.confidence || 0.8
             };
+        });
+    },
+
+    // D201: objects whose printable identity was recovered from just-printed
+    // parser vocabulary are real scoped IDs, but their identity remains less
+    // complete than a normal catalogued object. Reuse the ordinary synthesis
+    // rules for compiler-declared attributes and confirmed per-object learning,
+    // while excluding dictionary-only additions (currently DRINK for EDIBLE).
+    // Vocabulary proves how to address the object; it never proves a verb.
+    commandsForEvidenceObject: (obj, context) => {
+        return ActionSynth.commandsForObject(obj, context || "room", null, {
+            directEvidenceOnly: true
         });
     },
 
