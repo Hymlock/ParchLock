@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 315 headings; 103 decision rows; 418 registered units.
 **Last registered unit:** `pl-s315`. **Body SHA-256 (LF):**
-`0716677ea11c48041fc9f0ad62a61908be1bbc63b5e6cd820b66d50111448780`
+`88dde2b83e73048ece1c652961f16eced0736cf334de2b343bc07a05ed2a3316`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -7068,6 +7068,9 @@ this is overlay layout over already-admitted map graph data.
 one-hop neighbors painted into shared layout chrome). Hub re-center via neighbor click /
 Known Rooms eye remains available. Overview coordinates are transient; click targets
 room Id; MapMode is latched; edges preserve real exit keys and directed semantics.
+On touch-capable mobile map canvases, two-pointer pinch/spread is a required peer of
+the existing zoom buttons and wheel path; it changes the same Scale around the live
+gesture midpoint and enters/exits overview through the same MapMode hysteresis.
 **Contract (forbidden):** Replacing Draw()'s local-hub paint as the sole map product;
 throwing away the hub mental map / D63 borrowed-slot positioning / D71 real exit-key
 corner labels; revealing rooms that fail OverviewEligible merely because Scale is low;
@@ -7291,8 +7294,31 @@ temporarily writes helper fields, they must be stripped before `Save` or kept ou
   current room; tentative edges exposed accessibly.
 - Pan/drag must not steal node activation (retain existing `DragMoved` / button
   exclusion patterns; touch-friendly).
+- Mobile pinch/spread uses Pointer Events and active `pointerId` tracking on
+  `#rooms-shell`, with pointer capture where supported. The initial two-pointer distance,
+  midpoint, Scale, and Pan form one gesture baseline; distance ratio drives absolute
+  scale and midpoint movement may pan the same viewport so content stays under the
+  fingers. It must call the shared scale/viewport/mode path rather than writing a second
+  transform or mutating `Scale` behind the latch.
+- The second pointer cancels the one-pointer drag baseline and marks `DragMoved` so a
+  pinch cannot activate a room. When one pointer remains, re-baseline one-finger pan from
+  the current Pan without a jump. `pointerup`, `pointercancel`, lost capture, map close,
+  reset, and module lifecycle clear all gesture state; no stuck drag/pinch is permitted.
+- Prevent browser page zoom/scroll only inside the active map canvas during its gesture
+  (`touch-action`/`preventDefault` as narrowly scoped as browser support requires).
+  Controls, notes/items lists, dialogs, and map-sheet scrolling outside `#rooms-shell`
+  retain their normal touch behavior. Do not bind parallel Touch Events that double-fire
+  beside Pointer Events.
 - Desktop and mobile share one behavior; verify phone portrait and landscape plus
   desktop.
+
+**Unified zoom primitive (required).** Refactor the current delta-only `Zoom(delta,
+originX, originY)` as needed so buttons, wheel, and pinch all reach one bounded scale
+application primitive. Pinch supplies an absolute target derived from its gesture-start
+scale times the distance ratio; wheel/buttons may continue supplying deltas. Every path
+uses the same clamp, focal-point Pan compensation, `ApplyViewport`, MapMode latch, and
+revision rules. A pinch crossing the threshold once must produce one mode transition,
+not a redraw for every pointermove; ordinary in-mode moves remain CSS transforms only.
 
 **Thresholds (plan defaults -- tunable on GO):** e.g. hub for `Scale >= ~0.85`;
 overview for `Scale < ~0.85`; hysteresis of ~0.05 to avoid flicker at the boundary.
@@ -7334,11 +7360,14 @@ contract.
 failing OverviewEligible never appear; modules with non-compass exit keys (Wumpus
 numbered, nautical) still appear by room Id/edge; duplicate names / distinct Ids OK.
 
-**Phase 3 -- Edges + pan.** Generalize DrawPaths for overview edges per edge
+**Phase 3 -- Edges + pan/pinch.** Generalize DrawPaths for overview edges per edge
 contract; pan moves overview content usefully inside `#rooms-shell` without stealing
-activation.
+activation. Add the shared absolute-scale primitive and mobile two-pointer pinch/spread
+state machine described above; wheel/buttons remain behaviorally equivalent.
 **AC:** edges match admitted Exits between visible nodes (any exit key vocabulary);
-one-way/parallel/tentative distinguished; pan+zoom do not detach paths from nodes.
+one-way/parallel/tentative distinguished; pan+wheel/button/pinch zoom do not detach paths
+from nodes. Pinch preserves its midpoint, crosses the LOD latch correctly, never clicks a
+room, and cleanly hands a remaining pointer back to pan.
 
 **Phase 4 -- Polish + regression + a11y.** Clamp/min-scale as needed; mobile touch
 wheel/buttons; 44px targets; keyboard/ARIA; performance smoke on dense graphs
@@ -7359,7 +7388,10 @@ Duplicate names with distinct Ids; cycles; coordinate collisions; disconnected /
 imported graphs; one-way and parallel edges; named unvisited look-ahead excluded by
 OverviewEligible; reset/delete/import/restore/module switch invalidation; 100-plus
 rooms smoke; phone portrait/landscape and desktop; MapMode latch/hysteresis; click
-by Id preserves overview mode; Save/Load does not persist overview coordinates.
+by Id preserves overview mode; Save/Load does not persist overview coordinates. Add
+real-browser two-pointer sequences for pinch-in, spread-out, moving midpoint, threshold
+crossing, one-pointer handoff, pointercancel/lost-capture/map-close cleanup, and proof
+that controls/lists outside `#rooms-shell` still scroll and activate normally.
 
 **Files likely touched (implementation -- not in this edit).**
 
@@ -7400,6 +7432,11 @@ planning/architecture text only.
   viewport-cull in a later phase if needed; v1 targets IF-scale admitted sets.
 - **Mode flicker:** threshold without hysteresis could thrash Draw every wheel
   step -- require hysteresis / latch.
+- **Gesture collision:** treating two pointer streams as independent drags causes jumps,
+  duplicate transforms, accidental room clicks, or a stuck drag after cancellation --
+  require one pointer registry/state machine, shared zoom primitive, and lifecycle cleanup.
+- **Browser takeover:** broad `touch-action:none` would break map-sheet/list scrolling;
+  scope gesture suppression to `#rooms-shell` while preserving accessible zoom buttons.
 - **Anti-spoiler regression:** using raw `isPlayerFacingRoom` / Known Rooms filter
   alone would show named unvisited look-ahead — OverviewEligible is mandatory.
 - **Persistence regression:** mutating `LayoutX`/`LayoutY` for overview would leak

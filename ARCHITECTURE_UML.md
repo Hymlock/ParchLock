@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 92 headings; 0 decision rows; 92 registered units.
 **Last registered unit:** `ar-s092`. **Body SHA-256 (LF):**
-`ce77632b87c91475f267b34d47e5445ae62dd44c4f53e77677289accaf006219`
+`ca6a19a6b906bb1a1a68d0b811f42678b442610e5bbe47adfdf575a07379303b`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -3365,6 +3365,13 @@ that already admit rooms into `ParchLockMap.Rooms[]`. No title adapters.
 - Latched `MapMode` + graph/layout revision; `ApplyViewport`/pan/wheel must not
   recursively redraw; invalidate on room/edge/name/note/delete/reset/import/restore/
   module lifecycle and resize/orientation.
+- Mobile pinch/spread is a peer input to the same bounded scale primitive used by wheel
+  and zoom buttons. A two-pointer registry supplies distance ratio and live midpoint;
+  focal-point Pan compensation and MapMode hysteresis remain single-source.
+- Pinch owns the gesture while two pointers are active, sets `DragMoved` to suppress room
+  activation, re-baselines a remaining pointer back to pan without jumping, and clears on
+  pointer cancel/lost capture/map close/reset/module lifecycle. Browser gesture suppression
+  is scoped to `#rooms-shell`; controls and lists outside it keep normal touch behavior.
 - Edges: real exit-key labels, directed/one-way preserved, tentative distinguished,
   no geometry from chrome vocabulary.
 - A11y/mobile: readable labels, ≥44px touch targets, keyboard focus/activation, ARIA
@@ -3394,11 +3401,15 @@ flowchart TD
   Reset[ResetViewport / Center Current] --> Hub
   Graph[Room/edge/name/note/lifecycle/resize] --> Rev[Bump layout revision]
   Rev --> Lay
-  Pan[Pan / wheel same mode] --> CSS[ApplyViewport CSS only]
+  Gesture[Wheel / buttons / mobile pinch] --> ScalePath[Shared bounded scale + focal point]
+  ScalePath --> Latch
+  Pan[One-finger pan / pinch midpoint in same mode] --> CSS[ApplyViewport CSS only]
 ```
 
 Chrome vs vocabulary and hub-vs-overview must be kept distinct in docs and code
 comments. layoutHints remains a list/floor seed, not the overview layout product.
+Pinch must use Pointer Events without a duplicate Touch Events path; two-pointer movement
+must not recursively rebuild overview while the latched mode and graph revision are stable.
 
 <a id="ar-s092" data-chapter-id="ar-s092"></a><a id="ar-ch67"></a>
 ## 67. Mobile side-rail readable-content geometry (D203) — PROPOSED
