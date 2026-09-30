@@ -81,10 +81,15 @@ const llrScore = "You are a level 1 rogue, with 0 experience points. You need 50
 const llrExp = S.parsePrintedMetrics(llrScore);
 assert(llrExp && llrExp.experience && llrExp.experience.value === 0 && llrExp.experience.label === "EXP",
     "LLR score text surfaces the printed experience (0) as EXP");
+assert(llrExp.experience.max === 50 && llrExp.experience.unit === "fraction",
+    "LLR 'need 50 points to progress' is the next-level requirement beside current EXP");
 assert(!llrExp.score && Object.keys(llrExp).length === 1,
-    "the '50 points to progress' clause is not invented as a score or a second stat");
+    "the progress clause is not invented as a score or a second stat");
 const exp20 = S.parsePrintedMetrics("You gained 20 exp.");
-assert(exp20 && exp20.experience.value === 20, "a printed '20 exp' is experience, not an invented total");
+assert(exp20 && exp20.experience.value === 20 && exp20.experience.max == null,
+    "a printed '20 exp' is experience, not an invented total");
+assert(S.parsePrintedMetrics("EXP: 20/50").experience.max === 50,
+    "an explicit EXP n/m form keeps the printed denominator");
 assert(S.parsePrintedMetrics("You have so far scored 1 point in 3 turns.") === null,
     "wump2ka's score reply does not invent experience");
 assert(S.parsePrintedMetrics("You need 50 points to progress to the next level.") === null,

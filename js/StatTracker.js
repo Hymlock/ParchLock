@@ -163,27 +163,58 @@ var StatTracker = {
     },
 
     // A module that prints experience does so in its own words. This reads
-    // only that printing — "with 0 experience points", "EXP: 20", "20 exp" —
-    // and never invents a total the text did not state. "50 points to
-    // progress" is not experience: the word points alone is a score family.
+    // only that printing — "with 0 experience points", "EXP: 20", "20 exp",
+    // "EXP: 20/50" — and never invents a total the text did not state.
+    // "50 points to progress" alone is not experience (points is a score
+    // family). When the SAME text also states current experience, that
+    // progress clause is the printed next-level requirement (denominator),
+    // measured on LLR3 SCORE: "with 0 experience points. You need 50 points
+    // to progress to the next level." No RAM global held that 50 uniquely.
     parsePrintedMetrics: (text) => {
         var t = String(text || "");
         if (!t) return null;
         var out = {};
-        function take(label, value) {
+        function take(label, value, maximum) {
             var key = StatTracker.canonKey(label);
             if (key !== "experience") return;
             var n = parseInt(value, 10);
             if (!isFinite(n)) return;
-            out[key] = { key: key, label: "EXP", value: n };
+            var rec = { key: key, label: "EXP", value: n, max: null, unit: "plain" };
+            if (maximum != null && maximum !== "") {
+                var mx = parseInt(maximum, 10);
+                if (isFinite(mx)) { rec.max = mx; rec.unit = "fraction"; }
+            }
+            // A later match may add a denominator the earlier one lacked.
+            if (out[key] && out[key].max != null && rec.max == null) {
+                rec.max = out[key].max;
+                rec.unit = "fraction";
+            }
+            out[key] = rec;
         }
-        var reLabel = /(experience|xp|exp)\s*[:=]\s*(-?\d+)/ig;
+        var reLabelMax = /(experience|xp|exp)\s*[:=]\s*(-?\d+)\s*\/\s*(\d+)/ig;
         var m;
-        while ((m = reLabel.exec(t))) take(m[1], m[2]);
+        while ((m = reLabelMax.exec(t))) take(m[1], m[2], m[3]);
+        var reLabel = /(experience|xp|exp)\s*[:=]\s*(-?\d+)(?!\s*\/)/ig;
+        while ((m = reLabel.exec(t))) take(m[1], m[2], null);
         var reWords = /(-?\d+)\s+experience\s+points?\b/ig;
-        while ((m = reWords.exec(t))) take("experience", m[1]);
+        while ((m = reWords.exec(t))) take("experience", m[1], null);
+        var reAbbrMax = /(?:^|[^A-Za-z0-9])(-?\d+)\s*\/\s*(\d+)\s+(xp|exp)\b/ig;
+        while ((m = reAbbrMax.exec(t))) take(m[3], m[1], m[2]);
         var reAbbr = /(?:^|[^A-Za-z0-9])(-?\d+)\s+(xp|exp)\b/ig;
-        while ((m = reAbbr.exec(t))) take(m[2], m[1]);
+        while ((m = reAbbr.exec(t))) take(m[2], m[1], null);
+        // Next-level requirement, only when experience was already printed in
+        // this same text. Never promotes a bare "points to progress" line.
+        if (out.experience && out.experience.max == null) {
+            var need = /need\s+(\d+)\s+points?\s+to\s+progress(?:\s+to\s+the\s+next\s+level)?/i.exec(t)
+                || /(\d+)\s+points?\s+to\s+progress(?:\s+to\s+the\s+next\s+level)?/i.exec(t);
+            if (need) {
+                var req = parseInt(need[1], 10);
+                if (isFinite(req)) {
+                    out.experience.max = req;
+                    out.experience.unit = "fraction";
+                }
+            }
+        }
         return Object.keys(out).length ? out : null;
     },
 
@@ -194,10 +225,13 @@ var StatTracker = {
         Object.keys(printed).forEach(function (k) {
             var rec = printed[k];
             var prev = model.stats[k];
+            var unit = rec.unit || (rec.max != null ? "fraction" : "plain");
+            var kind = unit === "fraction" ? "gauge" : "counter";
             if (!prev) {
                 model.stats[k] = {
-                    key: k, label: rec.label, value: rec.value, max: null,
-                    unit: "plain", kind: "counter",
+                    key: k, label: rec.label, value: rec.value,
+                    max: rec.max != null ? rec.max : null,
+                    unit: unit, kind: kind,
                     seen: StatTracker.CONFIRM_SAMPLES, source: "printed",
                     confirmed: true, lastChange: null
                 };
@@ -209,6 +243,13 @@ var StatTracker = {
             prev.seen = Math.max(prev.seen || 0, StatTracker.CONFIRM_SAMPLES);
             prev.confirmed = true;
             if (prev.source !== "status" && prev.source !== "global") prev.source = prev.source || "printed";
+            // Denominator is re-read when the story states it again (same rule
+            // as n/m gauges elsewhere): never invent, never latch forever.
+            if (rec.max != null) {
+                prev.max = rec.max;
+                prev.unit = "fraction";
+                prev.kind = "gauge";
+            }
             if (rec.value !== prev.value) {
                 var delta = rec.value - prev.value;
                 prev.value = rec.value;

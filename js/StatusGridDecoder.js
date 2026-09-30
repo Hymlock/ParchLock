@@ -42,7 +42,8 @@ var StatusGridDecoder = {
         }).filter(function (part) { return !!part; });
         var metrics = [], seen = {};
         var known = /(hit points|quest rate|score|points|moves?|turns?|health|hp|hits|stamina|energy|strength|str|level|lvl|hunger|food|thirst|water|sleep|rest|time|day|money|cash|gold|experience|xp|exp)\s*[:=]\s*(-?\d+)\s*(?:\/\s*(\d+)|(%))?/ig;
-        // "20 exp" / "20 experience" — number before the word, no colon.
+        // "20 exp" / "20 experience" / "20/50 exp" — number before the word.
+        var leadingMax = /(-?\d+)\s*\/\s*(\d+)\s+(experience|xp|exp)\b/ig;
         var leading = /(-?\d+)\s+(experience|xp|exp)\b/ig;
         var generic = /^([A-Za-z][A-Za-z .'-]{0,24}?)\s*[:=]\s*(-?\d+)\s*(?:\/\s*(\d+)|(%))?$/;
 
@@ -57,6 +58,9 @@ var StatusGridDecoder = {
         var leftovers = segments.map(function (segment) {
             var stripped = segment.replace(known, function (whole, label, value, maximum, percent) {
                 add(label, value, maximum, percent);
+                return " ";
+            }).replace(leadingMax, function (whole, value, maximum, label) {
+                add(label, value, maximum, null);
                 return " ";
             }).replace(leading, function (whole, value, label) {
                 add(label, value, null, null);

@@ -341,12 +341,14 @@ async function submit(page, command) {
     const exp = llrAfter.stats && llrAfter.stats.experience;
     check(!!exp && exp.confirmed === true && typeof exp.value === "number" && exp.label === "EXP",
         "LLR score text puts EXP on the status model", JSON.stringify(exp));
+    check(!!exp && exp.max === 50,
+        "LLR score text puts next-level EXP requirement on the model", JSON.stringify(exp));
     const gridExp = await llrScore.page.evaluate(() => {
-        const decoded = StatusGridDecoder.decode("East-west passage   LVL:1 STR:12/12 EXP:20   20 exp");
-        return (decoded.metrics || []).map(m => m.key + "=" + m.value + "/" + m.label);
+        const decoded = StatusGridDecoder.decode("East-west passage   LVL:1 STR:12/12 EXP:20/50   20/50 exp");
+        return (decoded.metrics || []).map(m => m.key + "=" + m.value + (m.max != null ? ":" + m.max : "") + "/" + m.label);
     });
-    check(gridExp.indexOf("experience=20/EXP") >= 0,
-        "status grid EXP:20 decodes as EXP", gridExp.join(","));
+    check(gridExp.indexOf("experience=20:50/EXP") >= 0,
+        "status grid EXP:20/50 decodes as EXP with next-level max", gridExp.join(","));
     await llrScore.context.close();
 
     await browser.close();

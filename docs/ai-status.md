@@ -1,3 +1,12 @@
+## D201 EXP current / next-level (2026-09-29, grok)
+
+Live LLR RAM probe: no unique global held current EXP at 0 (156 zeros) and the
+printed next-level figure 50 never appeared in globals. Text path confirmed:
+SCORE "with N experience points. You need M points to progress to the next
+level." Status UI now shows EXP as N / M when both are printed together;
+bare "points to progress" still contributes nothing. StatusGridDecoder also
+accepts EXP:n/m and n/m exp. SW parchlock-shell-v87.
+
 ## D201 Wumpus exits + printed EXP (2026-09-29, grok)
 
 Compass discovery labeled only direction words, then directionDoorDirs returned
