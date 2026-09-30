@@ -2637,6 +2637,17 @@ html.pl-debug-translator #pl-hud-metrics { display: flex !important; }
 	--pl-safe-bottom: env(safe-area-inset-bottom, 0px);
 	--pl-safe-left: env(safe-area-inset-left, 0px);
 	--pl-safe-right: env(safe-area-inset-right, 0px);
+	/* D203: one geometry model for the mobile Glk shell. The 32px rotated
+	 * left-rail target begins at the 8px edge gutter; subtracting the 10px
+	 * window padding gives the shell a 30px left edge and puts readable ink
+	 * exactly at the target's 40px inner boundary. */
+	--pl-mobile-edge-gutter: 8px;
+	--pl-mobile-cell-padding: 10px;
+	--pl-left-rail-target: 32px;
+	--pl-mobile-shell-left: calc(var(--pl-safe-left) + var(--pl-mobile-edge-gutter) + var(--pl-left-rail-target) - var(--pl-mobile-cell-padding));
+	--pl-mobile-shell-right: calc(var(--pl-safe-right) + var(--pl-mobile-edge-gutter));
+	--pl-mobile-shell-width: calc(100vw - var(--pl-mobile-shell-left) - var(--pl-mobile-shell-right));
+	--pl-mobile-readable-left: calc(var(--pl-mobile-shell-left) + var(--pl-mobile-cell-padding));
 }
 
 /* D133: the desktop line input gives up this much width for the mic button. */
@@ -2679,9 +2690,9 @@ body.pl-mobile {
 body.pl-mobile #parchment,
 body.pl-mobile #windowport {
 	top: calc(8px + var(--pl-safe-top)) !important;
-	left: calc(8px + var(--pl-safe-left)) !important;
+	left: var(--pl-mobile-shell-left) !important;
 	right: auto !important;
-	width: calc(100vw - 16px - var(--pl-safe-left) - var(--pl-safe-right)) !important;
+	width: var(--pl-mobile-shell-width) !important;
 	/* Leave chrome + keyboard; map is a full-screen sheet when open.
 	 * min-height floor: cold-start vv=0 must never yield a blank pane. */
 	height: max(40vh, calc(var(--pl-layout-height) - 16px - var(--pl-safe-top) - var(--pl-kb-inset))) !important;
@@ -2959,7 +2970,7 @@ body.pl-mobile.map-open #map {
 body.pl-mobile.map-open #parchment,
 body.pl-mobile.map-open #windowport {
 	/* Keep story full-width under the sheet; do not squeeze to 52vw */
-	width: calc(100vw - 16px - var(--pl-safe-left) - var(--pl-safe-right)) !important;
+	width: var(--pl-mobile-shell-width) !important;
 }
 
 body.pl-mobile #rooms-shell {
@@ -2972,7 +2983,7 @@ body.pl-mobile #rooms-shell {
 body.pl-mobile #windowport .BufferWindow .Input.LineInput,
 body.pl-mobile.map-open #windowport .BufferWindow .Input.LineInput {
 	position: fixed !important;
-	left: calc(10px + var(--pl-safe-left)) !important;
+	left: var(--pl-mobile-readable-left) !important;
 	right: calc(10px + 44px + 6px + 44px + 6px + var(--pl-safe-right)) !important;
 	width: auto !important;
 	bottom: calc(10px + var(--pl-handle-h, 0px) + var(--pl-kb-inset) + var(--pl-safe-bottom)) !important;
@@ -2991,7 +3002,7 @@ body.pl-mobile.map-open #windowport .Input.CharInput {
 	top: auto !important;
 	height: auto !important;
 	position: fixed !important;
-	left: calc(10px + var(--pl-safe-left)) !important;
+	left: var(--pl-mobile-readable-left) !important;
 	right: calc(10px + 44px + 6px + var(--pl-safe-right)) !important;
 	width: auto !important;
 	bottom: calc(10px + var(--pl-handle-h, 0px) + var(--pl-kb-inset) + var(--pl-safe-bottom)) !important;
@@ -3008,8 +3019,8 @@ body.pl-mobile.has-line-input #windowport::after,
 body.pl-mobile.has-char-input #windowport::after {
 	content: "" !important;
 	position: fixed !important;
-	left: calc(8px + var(--pl-safe-left)) !important;
-	width: calc(100vw - 16px - var(--pl-safe-left) - var(--pl-safe-right)) !important;
+	left: var(--pl-mobile-shell-left) !important;
+	width: var(--pl-mobile-shell-width) !important;
 	height: calc(88px + var(--pl-handle-h, 0px) + var(--pl-kb-inset) + var(--pl-safe-bottom)) !important;
 	bottom: 0 !important;
 	background: var(--pl-bg, #0c1412) !important;
@@ -3226,7 +3237,7 @@ body.pl-mobile.has-char-input:not(.has-line-input) #pl-input-submit {
 }
 
 body.pl-mobile #autocomplete {
-	left: calc(10px + var(--pl-safe-left)) !important;
+	left: var(--pl-mobile-readable-left) !important;
 	right: calc(10px + var(--pl-safe-right)) !important;
 	width: auto !important;
 	bottom: calc(58px + var(--pl-handle-h, 0px) + var(--pl-kb-inset) + var(--pl-safe-bottom)) !important;
@@ -3510,6 +3521,11 @@ body.pl-mobile #exits {
 	box-sizing: border-box;
 	z-index: 24;
 	pointer-events: none;
+	/* The protector belongs to the content it protects. Keeping it on this
+	 * auto-height band prevents dark-room #windowport filters from rebasing a
+	 * separate fixed pseudo-element and moving the mask into story text. */
+	background: var(--pl-bg, #0c1412);
+	box-shadow: 0 4px 0 var(--pl-bg, #0c1412);
 }
 
 body.pl-mobile #exits .row.horizontal.top {
@@ -3576,6 +3592,19 @@ body.pl-mobile #exits .row.horizontal.top .room-name {
 body.pl-mobile #exits .row.horizontal.bottom,
 body.pl-mobile #exits .row.vertical.left,
 body.pl-mobile #exits .row.vertical.right { position: fixed; }
+
+/* Keep the left rail out of Android's edge-gesture zone. Its local height is
+ * the rail's on-screen thickness after rotation, so 32px creates a reliable
+ * target without widening the 33vh directional sectors or changing travel. */
+body.pl-mobile #exits .row.vertical.left {
+	left: calc(8px + var(--pl-safe-left, 0px));
+}
+body.pl-mobile #exits .row.vertical.left .exit.shown .dir-name,
+body.pl-mobile #exits .row.vertical.left .exit.shown .room-name {
+	display: inline-flex;
+	align-items: center;
+	min-height: 32px;
+}
 
 body.pl-mobile #exits .row.horizontal.bottom,
 body.pl-mobile #exits .row.vertical.left { pointer-events: none; }
@@ -3649,22 +3678,25 @@ body.pl-mobile #windowport .BufferWindow {
 	padding-top: calc(var(--pl-band-h, 0px) + 4px) !important;
 }
 
-/* D121: opaque mask behind the band, mirroring the bottom one at line ~2421.
- * Without it, story text scrolled up past the reserved gap would draw
- * through the band's transparent background. z-index 2 puts it above the
- * buffer text and below the band itself (24). */
-body.pl-mobile #windowport::before {
-	content: "";
-	position: fixed;
-	top: calc(8px + var(--pl-safe-top) + var(--pl-statusbar-h, 0px));
-	left: calc(8px + var(--pl-safe-left));
-	width: calc(100vw - 16px - var(--pl-safe-left) - var(--pl-safe-right));
-	/* Matches the buffer's reserve exactly (band + the same 4px breathing
-	 * room), so no sliver of scrolled text shows in the gap below the band. */
-	height: calc(var(--pl-band-h, 0px) + 4px);
-	background: var(--pl-bg, #0c1412);
-	z-index: 2;
-	pointer-events: none;
+/* D121 follow-up: the old windowport pseudo-mask is deliberately disabled.
+ * DarkScope filters #windowport, which rebases fixed descendants and moved
+ * that mask away from the band. #exits now paints its own exact-height
+ * backing and lower breathing edge above. */
+body.pl-mobile #windowport::before { content: none; }
+
+/* Native Glk dialogs are children of #windowport (stacking tier 3), while
+ * exits are a sibling at tier 24. A child z-index cannot escape its parent's
+ * stacking context, so suppress the chrome for both dialog systems instead
+ * of trying to out-rank it. :has() closes the native-dialog creation frame;
+ * the body classes remain the lifecycle-compatible path and fallback. */
+body.pl-mobile.native-dialog-open #exits,
+body.pl-mobile.app-dialog-open #exits,
+body.pl-mobile:has(#dialog_frame) #exits,
+body.pl-mobile.native-dialog-open #current-room-notes,
+body.pl-mobile.app-dialog-open #current-room-notes,
+body.pl-mobile:has(#dialog_frame) #current-room-notes {
+	visibility: hidden !important;
+	pointer-events: none !important;
 }
 
 /* D98 local Module Manager */

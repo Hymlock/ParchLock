@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 92 headings; 0 decision rows; 92 registered units.
 **Last registered unit:** `ar-s092`. **Body SHA-256 (LF):**
-`ca6a19a6b906bb1a1a68d0b811f42678b442610e5bbe47adfdf575a07379303b`
+`7b478201d254016c134949582c6c9e7005640ef3db4e3ed5ea4ff5020f330c5e`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -381,7 +381,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s089](#ar-s089) | 64. D198 ZIL/Infocom composition architecture | H2 | Implemented / valves default off |
 | [ar-s090](#ar-s090) | 65. Unnamed early-Inform identity composition (D201) | H2 | Implemented / live-browser verified |
 | [ar-s091](#ar-s091) | 66. Map zoom LOD / world overview (D202) — PROPOSED | H2 | Proposed / pre-GO |
-| [ar-s092](#ar-s092) | 67. Mobile side-rail readable-content geometry (D203) — PROPOSED | H2 | Proposed / researched |
+| [ar-s092](#ar-s092) | 67. Mobile side-rail readable-content geometry (D203) — IMPLEMENTED | H2 | Implemented / live-browser verified |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -3412,9 +3412,9 @@ Pinch must use Pointer Events without a duplicate Touch Events path; two-pointer
 must not recursively rebuild overview while the latched mode and graph revision are stable.
 
 <a id="ar-s092" data-chapter-id="ar-s092"></a><a id="ar-ch67"></a>
-## 67. Mobile side-rail readable-content geometry (D203) — PROPOSED
+## 67. Mobile side-rail readable-content geometry (D203) — IMPLEMENTED
 
-**Lifecycle:** PROPOSED / researched, no executable claim. Companion to
+**Lifecycle:** IMPLEMENTED / live-browser verified 2026-09-30. Companion to
 [D203](PRODUCTION_PLAN.md#pl-d203). This extends D121's side-rail reachability and
 D94's truthful cell geometry; it does not supersede either.
 
@@ -3463,6 +3463,14 @@ flowchart LR
 360/390/412 portrait widths and landscape equivalents; prose/actionables, full status
 grids, native HELP CharInput, preformatted output, keyboard/dialog/map states; desktop
 unchanged. Promote only with source/dist/Android parity and a cache-generation bump.
+
+**Implemented geometry:** `--pl-mobile-shell-left/right/width` and
+`--pl-mobile-readable-left` derive from the 8px edge gutter, 32px rail target, 10px
+window padding, and safe-area variables. The shell left edge is 30px plus safe-left;
+readable ink/input begins at 40px, while the original right edge remains fixed. Both Glk
+panes and CharCell fit consume that source. Live evidence: exits-safe-area 43/43, D96
+127/127, D94 54/54, mobile fullscreen 10/10; service-worker generation v89. Package/APK
+parity remains the release packaging gate.
 
 **Adversarial note (grok / #952�#954):** Current full-bleed mobile shell leaves only �8px
 CSS right margin while the left protected envelope overlaps readable text by �22px, and

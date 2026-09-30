@@ -33,8 +33,10 @@ body.pl-mobile {
 	 * Pro, Courier, Android's system monospace). GlkOte measures the real cell
 	 * anyway, so a small error here can only cost a column, never truth. */
 	--pl-cell-adv: 0.6;
-	/* Usable text width = window width minus the 2 x 10px side padding. */
-	--pl-cell-fit: calc((100vw - 16px - 20px - var(--pl-safe-left, 0px) - var(--pl-safe-right, 0px)) / (var(--pl-cell-cols) * var(--pl-cell-adv)));
+	/* D203: derive from the same shell width that owns #windowport and the
+	 * hidden #parchment measurement pane. This must never drift back into a
+	 * parallel 100vw formula. */
+	--pl-cell-fit: calc((var(--pl-mobile-shell-width) - var(--pl-mobile-cell-padding) - var(--pl-mobile-cell-padding)) / (var(--pl-cell-cols) * var(--pl-cell-adv)));
 	--pl-cell-font: max(9px, min(var(--pl-play-font-size, 20px), var(--pl-cell-fit)));
 }
 

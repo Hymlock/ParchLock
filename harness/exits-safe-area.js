@@ -48,6 +48,7 @@ if (band) {
     assert(/top:\s*calc\([^)]*var\(--pl-safe-top\)[^)]*var\(--pl-statusbar-h[^)]*\)/.test(b), "the band is anchored below BOTH the OS safe-area inset and the in-app Glk status banner");
     assert(/z-index:\s*24/.test(b), "the band is lifted to the documented exit-rail tier (24), above #windowport's 3 -- this is what D116 never did");
     assert(/pointer-events:\s*none/.test(b), "the band itself is transparent to taps so its full-width rows cannot swallow taps meant for the story");
+    assert(/background:\s*var\(--pl-bg/.test(b) && /box-shadow:\s*0\s+4px\s+0\s+var\(--pl-bg/.test(b), "the dynamic band paints its own opaque protector plus breathing edge");
 }
 
 // --- the compass row reflows instead of overlapping --------------------
@@ -67,12 +68,31 @@ assert(!!notes && /z-index:\s*24/.test(notes[1]), "the notation icon is lifted t
 
 // --- the reserve: this is what "pushes the text display window down" ---
 assert(/body\.pl-mobile\s+#windowport\s+\.BufferWindow\s*\{[^}]*padding-top:\s*calc\(var\(--pl-band-h/.test(css), "the story buffer reserves the band's real measured height as padding-top -- the text is pushed down rather than overlapped");
-assert(/body\.pl-mobile\s+#windowport::before\s*\{[^}]*height:\s*calc\(var\(--pl-band-h[^}]*pointer-events:\s*none/.test(css), "an opaque, non-interactive mask spans the reserved gap so scrolled story text cannot draw through the band");
+assert(/body\.pl-mobile\s+#windowport::before\s*\{\s*content:\s*none/.test(css), "the old windowport-fixed protector is retired so dark-room filters cannot rebase it into story text");
+assert(/html\.pl-dark-scope\s+#windowport\s*\{\s*filter:/.test(css), "the dark-room filter that creates the fixed-position containing block remains present, so the regression condition is explicitly covered");
 assert(/--pl-band-h:\s*0px/.test(css), "--pl-band-h defaults to 0px, so desktop and any engine without ResizeObserver reserve nothing");
+
+// --- overlay ownership and left-edge reachability ---------------------
+assert(/body\.pl-mobile\.native-dialog-open\s+#exits[\s\S]{0,500}?visibility:\s*hidden\s*!important/.test(css), "native dialogs suppress the entire exit layer instead of losing a stacking-context contest");
+assert(/body\.pl-mobile\.app-dialog-open\s+#exits/.test(css), "app dialogs suppress the same exit layer");
+assert(/body\.pl-mobile:has\(#dialog_frame\)\s+#exits/.test(css), "native-dialog DOM presence closes the frame before the lifecycle class is published");
+assert(/body\.pl-mobile\s+#exits\s+\.row\.vertical\.left\s*\{[^}]*left:\s*calc\(8px\s*\+\s*var\(--pl-safe-left/.test(css), "the left rail clears the OS safe inset and edge-gesture zone");
+assert(/\.row\.vertical\.left\s+\.exit\.shown\s+\.dir-name,[\s\S]{0,180}?min-height:\s*32px/.test(css), "left-rail labels have a 32px cross-axis touch target");
+
+// --- D203: one truthful horizontal geometry ----------------------------
+assert(/--pl-mobile-shell-left:\s*calc\([^;]*--pl-left-rail-target[^;]*--pl-mobile-cell-padding/.test(css), "mobile shell left edge is derived from the rail target and shared cell padding");
+assert(/--pl-mobile-shell-width:\s*calc\(100vw\s*-\s*var\(--pl-mobile-shell-left\)\s*-\s*var\(--pl-mobile-shell-right\)\)/.test(css), "mobile shell width is derived from its published left/right edges");
+assert(/body\.pl-mobile\s+#parchment,[\s\S]{0,180}?left:\s*var\(--pl-mobile-shell-left\)[\s\S]{0,100}?width:\s*var\(--pl-mobile-shell-width\)/.test(css), "visible and hidden Glk panes consume the same D203 shell rectangle");
+assert(/\.Input\.LineInput,[\s\S]{0,260}?left:\s*var\(--pl-mobile-readable-left\)/.test(css), "fixed line input starts at the shared readable boundary");
+assert(/\.Input\.CharInput,[\s\S]{0,280}?left:\s*var\(--pl-mobile-readable-left\)/.test(css), "fixed character input starts at the shared readable boundary");
+const charCell = fs.readFileSync(path.resolve(__dirname, "..", "css", "CharCell.css"), "utf8");
+assert(/--pl-cell-fit:\s*calc\(\(var\(--pl-mobile-shell-width\)[^;]*--pl-mobile-cell-padding/.test(charCell), "CharCell fit derives from the same published shell width and padding");
+assert(!/--pl-cell-fit:[^;]*100vw/.test(charCell), "CharCell no longer carries a parallel viewport-width formula");
 
 // --- the measured values must be REAL, not fallbacks -------------------
 const ml = fs.readFileSync(path.resolve(__dirname, "..", "js", "MobileLayout.js"), "utf8");
 assert(/ResizeObserver/.test(ml) && /--pl-band-h/.test(ml), "--pl-band-h is written from a real ResizeObserver on the band, not hardcoded");
+assert(/Math\.ceil\(el\.getBoundingClientRect\(\)\.height\)/.test(ml), "fractional band heights round outward so the story reserve cannot clip by one pixel");
 assert(/MutationObserver[\s\S]{0,400}windowport/.test(ml) || /windowport[\s\S]{0,400}MutationObserver/.test(ml), "#windowport is watched so --pl-statusbar-h is re-measured when the Glk status banner appears -- it is created on story load, long after every event apply() previously listened to, so the value was 0px for the whole session");
 assert(/GridWindow\.reverse/.test(ml) && /--pl-statusbar-h/.test(ml), "MobileLayout still measures the real GridWindow.reverse element rather than guessing the banner height");
 assert(/offsetParent\s*!==\s*null/.test(ml), "measurements only count elements that are actually rendered (offsetParent check), so a hidden band/banner contributes 0 rather than a stale height");

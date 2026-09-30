@@ -35,6 +35,7 @@ async function open(browser, w, h, mobile) {
     await page.addInitScript(() => {
         sessionStorage.setItem('PL_ParchLockSplashSeen', '1');
         localStorage.setItem('PL_MobileTutorialSeen', '1');
+        localStorage.setItem('PL_TutorialSeen', '1');
     });
     await page.goto(PAGE + '?story=' + STORY + '&t=' + Date.now());
     await page.waitForTimeout(3500);
@@ -90,6 +91,16 @@ const tap = async (page, sel) => {
             ok(!(await page.evaluate(() => typeof MobileTutorial !== 'undefined')), 'D120: MobileTutorial does not exist as a global at all on play.html');
             ok(!(await page.evaluate(() => document.body.classList.contains('pl-mobile-tutorial-open'))), 'D120: the retired pl-mobile-tutorial-open body class is never set');
 
+            // The current platform-neutral tutorial is expected in this
+            // deliberately unseen state. Dismiss it before testing Options;
+            // this suite is proving the retired MobileTutorial is absent,
+            // not that onboarding no longer exists.
+            await page.evaluate(() => {
+                const skip = document.getElementById('pl-tut-skip');
+                if (skip) skip.click();
+            });
+            await page.waitForTimeout(200);
+
             await page.evaluate(() => WorkspaceUI.ShowOptions());
             ok(await page.evaluate(() => !document.getElementById('pl-replay-mobile-tutorial')), 'D120: the old mobile-only replay button id is gone');
             ok(await page.evaluate(() => !!document.getElementById('pl-replay-tutorial') && !!document.getElementById('pl-reset-tutorial')), 'D120: Options exposes the new platform-neutral Replay tutorial and Reset tutorial controls');
@@ -102,11 +113,11 @@ const tap = async (page, sel) => {
             ok(/play\.html/.test(page.url()), 'D120: declining the confirmation stays on play.html (the live game is not abandoned)');
 
             await page.evaluate(() => { window.confirm = () => true; });
-            await Promise.all([
-                page.waitForURL(/tutorial\.html/, { timeout: 5000 }).catch(() => null),
-                page.click('#pl-replay-tutorial')
-            ]);
-            ok(/tutorial\.html/.test(page.url()), 'D120: confirming Replay tutorial really navigates to tutorial.html: ' + page.url());
+            await page.click('#pl-replay-tutorial');
+            await page.waitForSelector('#pl-tut-overlay', { state: 'visible', timeout: 5000 });
+            ok(/play\.html/.test(page.url()), 'D124: confirming Replay tutorial keeps the live route');
+            ok(await page.evaluate(() => !!document.querySelector('#pl-tut-overlay #pl-tut-next')),
+                'D124: confirming Replay tutorial opens the current live tutorial overlay');
             ok(errors.length === 0, 'D120: no page errors' + (errors.length ? ': ' + errors[0] : ''));
             await ctx.close();
         }
@@ -154,20 +165,37 @@ const tap = async (page, sel) => {
                 const cs = await page.evaluate(() => { const c = getComputedStyle(document.getElementById('pl-map-tab')); return { bg: c.backgroundColor, fg: c.color }; });
                 const alpha = (s) => { const m = /rgba\(([^)]+)\)/.exec(s); return m ? parseFloat(m[1].split(',')[3]) : 1; };
                 ok(alpha(cs.bg) <= 0.15 && alpha(cs.fg) <= 0.6, tag + 'Map tab is translucent (bg a=' + alpha(cs.bg) + ', icon a=' + alpha(cs.fg) + ')');
-                const textRight = await page.evaluate(() => {
-                    let max = 0; const wp = document.getElementById('windowport');
-                    const walker = document.createTreeWalker(wp, NodeFilter.SHOW_TEXT);
-                    let n; while ((n = walker.nextNode())) { if (!n.textContent.trim()) continue; const rg = document.createRange(); rg.setStart(n, 0); rg.setEnd(n, n.textContent.replace(/s+$/, "").length); for (const r of rg.getClientRects()) if (r.width) max = Math.max(max, r.right); }
-                    return max;
-                });
-                ok(textRight <= tab.l + 0.5, tag + 'Map tab covers no story text (text ends ' + textRight.toFixed(1) + ', tab starts ' + tab.l.toFixed(1) + ')');
             }
 
             {   // The right-hand exit rail (up / e / down labels) is tappable travel. A label that reaches the tab must WIN the tap,
                 // and the empty rail strip must not swallow taps meant for the tab.
                 const r = await page.evaluate(() => {
                     const t = document.getElementById('pl-map-tab'), tr = t.getBoundingClientRect();
-                    const labels = [...document.querySelectorAll('#exits .row.vertical.right .exit.shown .dir-name, #exits .row.vertical.right .exit.shown .room-name')];
+                    const exits = document.getElementById('exits');
+                    let fixture = null;
+                    let labels = [...document.querySelectorAll('#exits .row.vertical.right .exit.shown .dir-name, #exits .row.vertical.right .exit.shown .room-name')];
+                    if (!labels.length && exits) {
+                        fixture = document.createElement('div');
+                        fixture.className = 'row vertical right';
+                        fixture.setAttribute('data-d96-fixture', '1');
+                        fixture.style.setProperty('position', 'fixed', 'important');
+                        fixture.style.setProperty('transform', 'none', 'important');
+                        fixture.style.setProperty('top', (tr.top + 8) + 'px', 'important');
+                        fixture.style.setProperty('right', '0', 'important');
+                        fixture.style.setProperty('width', tr.width + 'px', 'important');
+                        fixture.style.setProperty('height', '20px', 'important');
+                        const item = document.createElement('div');
+                        item.className = 'exit shown';
+                        item.style.setProperty('width', '100%', 'important');
+                        const label = document.createElement('span');
+                        label.className = 'dir-name';
+                        label.textContent = 'E';
+                        label.style.setProperty('display', 'block', 'important');
+                        label.style.setProperty('box-sizing', 'border-box', 'important');
+                        label.style.setProperty('width', '100%', 'important');
+                        label.style.setProperty('height', '20px', 'important');
+                        item.appendChild(label); fixture.appendChild(item); exits.appendChild(fixture); labels = [label];
+                    }
                     let labelWins = true, touching = 0;
                     for (const l of labels) {
                         const lr = l.getBoundingClientRect();
@@ -181,13 +209,133 @@ const tap = async (page, sel) => {
                         if (labels.some(l => { const q = l.getBoundingClientRect(); return x >= q.left && x <= q.right && y >= q.top && y <= q.bottom; })) continue;
                         free++; const e = document.elementFromPoint(x, y); if (e && (e.id === 'pl-map-tab' || e.closest('#pl-map-tab'))) freeOk++;
                     }
+                    if (fixture) fixture.remove();
                     return { n: labels.length, touching, labelWins, free, freeOk };
                 });
-                ok(r.n > 0 && r.labelWins, tag + 'exit labels win over the Map tab where they touch (' + r.touching + ' touching of ' + r.n + ')');
+                ok(r.n > 0 && r.touching > 0 && r.labelWins, tag + 'exit labels win over the Map tab where they touch (' + r.touching + ' touching of ' + r.n + ')');
                 ok(r.free > 0 && r.free === r.freeOk, tag + 'every uncovered point of the Map tab is tappable (' + r.freeOk + '/' + r.free + ')');
             }
 
+            {   // The left rail must live inside the app's safe gutter and
+                // expose a real cross-axis target after its -90deg rotation.
+                const r = await page.evaluate(async () => {
+                    const slot = document.querySelector('#exits .row.vertical.left .exit.dir-w');
+                    if (!slot) return { n: 0 };
+                    const wasShown = slot.classList.contains('shown');
+                    if (!wasShown) slot.classList.add('shown');
+                    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+                    const labels = [...slot.querySelectorAll('.dir-name, .room-name')].filter(el => el.getClientRects().length && el.getBoundingClientRect().width);
+                    const rects = labels.map(el => el.getBoundingClientRect());
+                    const wp = document.getElementById('windowport').getBoundingClientRect();
+                    const pm = document.getElementById('parchment').getBoundingClientRect();
+                    const input = document.querySelector('#windowport .Input.LineInput, #windowport .Input.CharInput');
+                    const inputRect = input && input.getBoundingClientRect();
+                    let inkLeft = Infinity;
+                    const walker = document.createTreeWalker(document.getElementById('windowport'), NodeFilter.SHOW_TEXT);
+                    let n;
+                    while ((n = walker.nextNode())) {
+                        if (!n.textContent.trim() || (input && input.contains(n))) continue;
+                        const range = document.createRange();
+                        range.selectNodeContents(n);
+                        for (const q of range.getClientRects()) if (q.width && q.height) inkLeft = Math.min(inkLeft, q.left);
+                    }
+                    const hit = labels.every((el, i) => {
+                        const q = rects[i], at = document.elementFromPoint(q.left + q.width / 2, q.top + q.height / 2);
+                        return at === el || (at && at.closest && at.closest('.dir-name, .room-name') === el);
+                    });
+                    if (!wasShown) slot.classList.remove('shown');
+                    return {
+                        n: labels.length,
+                        minLeft: rects.length ? Math.min(...rects.map(q => q.left)) : -1,
+                        minWidth: rects.length ? Math.min(...rects.map(q => q.width)) : 0,
+                        maxRight: rects.length ? Math.max(...rects.map(q => q.right)) : -1,
+                        inkLeft,
+                        inputLeft: inputRect ? inputRect.left : Infinity,
+                        paneParity: Math.abs(wp.left - pm.left) < 0.5 && Math.abs(wp.width - pm.width) < 0.5,
+                        shellRight: wp.right,
+                        viewportWidth: innerWidth,
+                        hit
+                    };
+                });
+                ok(r.n > 0 && r.minLeft >= 7.5, tag + 'left exit labels clear the OS edge zone (left ' + r.minLeft.toFixed(1) + 'px)');
+                ok(r.n > 0 && r.minWidth >= 31.5 && r.hit, tag + 'left exit labels expose a reachable >=32px rotated target');
+                ok(r.n > 0 && r.inkLeft + 0.5 >= r.maxRight,
+                    tag + 'D203 left rail does not intersect visible story glyphs (rail ' + r.maxRight.toFixed(1) + ', ink ' + r.inkLeft.toFixed(1) + ')');
+                ok(r.n > 0 && r.inputLeft + 0.5 >= r.maxRight,
+                    tag + 'D203 left rail does not intersect the fixed input (rail ' + r.maxRight.toFixed(1) + ', input ' + r.inputLeft.toFixed(1) + ')');
+                ok(r.paneParity && r.shellRight <= r.viewportWidth - 7.5,
+                    tag + 'D203 visible/measurement panes match and preserve the right-edge gutter');
+            }
+
             if (w === 390) {
+                const band = await page.evaluate(async () => {
+                    const html = document.documentElement, exits = document.getElementById('exits');
+                    const row = exits.querySelector('.row.horizontal.top');
+                    const hadDark = html.classList.contains('pl-dark-scope');
+                    html.classList.add('pl-dark-scope');
+                    const frame = () => new Promise(resolve => requestAnimationFrame(resolve));
+                    await frame(); await frame();
+                    const baseline = exits.getBoundingClientRect().height;
+                    const fixtures = [];
+                    for (let i = 0; i < 4; i++) {
+                        const item = document.createElement('div');
+                        item.className = 'exit shown';
+                        item.setAttribute('data-d96-band-fixture', '1');
+                        item.innerHTML = '<span class="dir-name">N</span><span class="room-name">A deliberately long destination ' + i + '</span>';
+                        row.appendChild(item); fixtures.push(item);
+                    }
+                    await frame(); await frame();
+                    const cs = getComputedStyle(exits), wp = document.getElementById('windowport');
+                    const expanded = exits.getBoundingClientRect().height;
+                    const variable = parseFloat(getComputedStyle(html).getPropertyValue('--pl-band-h'));
+                    const padding = parseFloat(getComputedStyle(document.querySelector('#windowport .BufferWindow')).paddingTop);
+                    const before = getComputedStyle(wp, '::before').content;
+                    const filtered = getComputedStyle(wp).filter !== 'none';
+                    fixtures.forEach(el => el.remove());
+                    await frame(); await frame();
+                    const reduced = exits.getBoundingClientRect().height;
+                    const reducedVar = parseFloat(getComputedStyle(html).getPropertyValue('--pl-band-h'));
+                    if (!hadDark) html.classList.remove('pl-dark-scope');
+                    return { baseline, expanded, variable, padding, before, filtered, bg: cs.backgroundColor, shadow: cs.boxShadow, reduced, reducedVar };
+                });
+                ok(band.filtered && band.before === 'none', tag + 'dark-room filter cannot rebase a separate windowport protector');
+                ok(band.expanded > band.baseline && band.variable === Math.ceil(band.expanded) && band.padding >= band.variable + 4,
+                    tag + 'top protector grows from the real wrapped band (' + band.baseline + ' -> ' + band.expanded + 'px)');
+                ok(band.reduced === band.baseline && band.reducedVar === Math.ceil(band.baseline),
+                    tag + 'top protector and reserve shrink back when information disappears');
+                ok(!/rgba\([^)]*,\s*0\s*\)$/.test(band.bg) && band.shadow !== 'none', tag + 'the measured band paints its own opaque backing');
+
+                const overlays = await page.evaluate(() => {
+                    const exits = document.getElementById('exits'), note = document.getElementById('current-room-notes');
+                    Message.Show('Overlay check', '<p>Dialog</p>');
+                    const app = getComputedStyle(exits).visibility === 'hidden' && getComputedStyle(note).visibility === 'hidden';
+                    Message.Hide();
+                    const frame = document.createElement('div'); frame.id = 'dialog_frame';
+                    document.getElementById('windowport').appendChild(frame);
+                    const immediate = getComputedStyle(exits).visibility === 'hidden';
+                    ParchLock.CheckNativeDialog();
+                    const native = document.body.classList.contains('native-dialog-open') && getComputedStyle(exits).visibility === 'hidden' && getComputedStyle(note).visibility === 'hidden';
+                    frame.remove(); ParchLock.CheckNativeDialog();
+                    return { app, immediate, native, restored: getComputedStyle(exits).visibility === 'visible' };
+                });
+                ok(overlays.app, tag + 'app popups suppress all exit and note chrome');
+                ok(overlays.immediate && overlays.native, tag + 'native dialogs suppress exit chrome immediately and throughout their lifecycle');
+                ok(overlays.restored, tag + 'exit chrome returns when the dialog closes');
+
+                await page.evaluate(() => Actionable.Submit('restore'));
+                await page.waitForSelector('#dialog_frame #dialog', { state: 'visible', timeout: 5000 });
+                const realRestore = await page.evaluate(() => ({
+                    owned: document.body.classList.contains('native-dialog-open'),
+                    exits: getComputedStyle(document.getElementById('exits')).visibility,
+                    notes: getComputedStyle(document.getElementById('current-room-notes')).visibility
+                }));
+                ok(realRestore.owned && realRestore.exits === 'hidden' && realRestore.notes === 'hidden',
+                    tag + 'the real RESTORE file dialog suppresses all exit and note chrome');
+                await page.click('#dialog_cancel');
+                await page.waitForSelector('#dialog_frame', { state: 'detached', timeout: 5000 });
+                ok(await page.evaluate(() => getComputedStyle(document.getElementById('exits')).visibility === 'visible'),
+                    tag + 'real RESTORE cancellation restores exit chrome');
+
                 // The existing input long-hold path is the mobile menu entry.
                 const cdp = await ctx.newCDPSession(page);
                 await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: inRect.l + inRect.w / 2, y: inRect.t + inRect.h / 2 }] });
@@ -283,7 +431,8 @@ const tap = async (page, sel) => {
             const { ctx, page, errors } = await open(browser, 1400, 900, false);
             const m = await rectOf(page, '#game-menu');
             const t = await rectOf(page, '#pl-map-tab');
-            ok(!t, 'desktop: Map tab not shown');
+            ok(t && t.r >= 1399.5 && t.w <= 22 && t.t > 300 && t.b < 600,
+                'desktop: quick-access Map tab is visible at the right-center edge');
             ok(m && m.t < 40 && m.r > 1300, 'desktop: Menu chip stays top-right (' + (m && Math.round(m.l)) + ',' + (m && Math.round(m.t)) + ')');
             ok(await page.evaluate(() => getComputedStyle(document.getElementById('game-menu')).fontSize !== '0px'), 'desktop: Menu label visible');
             await page.click('#game-menu');

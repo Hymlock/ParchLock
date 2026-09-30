@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v88"; // D201 complete compass + evidence-only unresolved-object actions
+const CACHE_VERSION = "parchlock-shell-v89"; // D203 truthful mobile side-rail/content geometry
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

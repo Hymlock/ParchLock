@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 315 headings; 103 decision rows; 418 registered units.
 **Last registered unit:** `pl-s315`. **Body SHA-256 (LF):**
-`88dde2b83e73048ece1c652961f16eced0736cf334de2b343bc07a05ed2a3316`
+`55a1cdf3fd098d70d71a52f84ce1d94b4bc859b4d6f9367cf18daddcf700e610`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -707,7 +707,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s312](#pl-s312) | D200 Inform Z3 declaration reader | H2 | Implemented |
 | [pl-s313](#pl-s313) | D201 Early Inform unnamed identity and inventory recovery | H2 | Implemented / live-browser verified |
 | [pl-s314](#pl-s314) | D202 Map zoom LOD / world overview (hub-preserving) | H2 | Proposed / re-audit accepted; awaiting operator GO |
-| [pl-s315](#pl-s315) | D203 Mobile left exit-rail readable-content safety | H2 | Proposed / researched; no implementation |
+| [pl-s315](#pl-s315) | D203 Mobile left exit-rail readable-content safety | H2 | Implemented / live-browser verified |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -7455,9 +7455,10 @@ No executable/product code in this change set.
 <a id="pl-s315" data-chapter-id="pl-s315"></a><a id="pl-d203"></a>
 ## D203 Mobile left exit-rail readable-content safety
 
-**Lifecycle:** Proposed / researched on 2026-09-30. **NOT implemented.** This records
-the operator's live-device report and a compatibility-safe implementation contract;
-no CSS, JavaScript, harness, cache, distribution, or APK change is authorized here.
+**Lifecycle:** **Implemented and live-browser verified on 2026-09-30.** The mobile
+Glk shell, hidden measurement pane, character-cell fit, fixed inputs, autocomplete, and
+bottom protector now consume one published horizontal geometry. Distribution/APK refresh
+remains a packaging step; desktop geometry is unchanged.
 
 **Stable ID:** [D203](#pl-d203) / `pl-s315`.
 **Scope:** Mobile `play.html` only: the left vertical exit rail, Glk story/status
@@ -7555,11 +7556,16 @@ above. `Map.js` may be read for exit DOM lifecycle but must not change command o
 semantics. A runtime change requires a service-worker generation bump and normal
 source/dist/Android/APK parity checks.
 
-**Status:** research and planning complete; amended 2026-09-30 after grok adversarial
-audit of Codex #952�#954. Implementation still awaits operator GO and Codex re-audit of
-this amended contract. The visual suggestion is feasible for the supplied scene, but
-unchanged-width translation is deliberately a measured gate rather than a cross-module
-assumption.
+**Status:** implemented after grok's adversarial amendment and Codex ACCEPT in bus #956.
+The required one-/two-cell unchanged-width proof fails the quantified 22px envelope against
+the existing 8px right margin, so production uses the planned truthful fallback: the shell
+left edge moves from 8px to 30px, its 10px inner padding places readable ink at 40px (the
+rotated target's inner boundary), and width decreases by exactly the 22px overlap while the
+right edge stays fixed. Shared CSS variables drive `#windowport`, `#parchment`,
+`--pl-cell-fit`, LineInput/CharInput, autocomplete, and the bottom protector. Evidence:
+`harness/exits-safe-area.js` 43/43; `harness/d96-menu-handle-map-tab.js` 127/127 live
+Chromium across 320/360/390/412/430px plus desktop; `harness/d94-cell-and-boot.js` 54/54;
+`harness/mobile-fullscreen-landscape.js` 10/10. Cache generation: v89.
 
 **Adversarial amendment (grok, 2026-09-30) � geometry arithmetic + #954 protocol.**
 
@@ -7616,4 +7622,5 @@ text only):
    reporting fewer columns than the fit model holds, and do not freeze a false column
    count to preserve a screenshot font size (enable, don't mask).
 
-No product/CSS/JS/harness files are changed by this amendment.
+The amendment itself changed no runtime files; the implementation recorded above followed
+after Codex re-audit ACCEPT and operator authorization.
