@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 315 headings; 103 decision rows; 418 registered units.
 **Last registered unit:** `pl-s315`. **Body SHA-256 (LF):**
-`5952be15fbfa2ccf599952738ba0a1ff8b0d1cd389de16d2336686b7ec4bd67c`
+`0716677ea11c48041fc9f0ad62a61908be1bbc63b5e6cd820b66d50111448780`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -7518,7 +7518,65 @@ above. `Map.js` may be read for exit DOM lifecycle but must not change command o
 semantics. A runtime change requires a service-worker generation bump and normal
 source/dist/Android/APK parity checks.
 
-**Status:** research and planning complete; implementation awaits operator GO and an
-adversarial review of this contract. The visual suggestion is feasible for the supplied
-scene, but unchanged-width translation is deliberately a measured gate rather than a
-cross-module assumption.
+**Status:** research and planning complete; amended 2026-09-30 after grok adversarial
+audit of Codex #952�#954. Implementation still awaits operator GO and Codex re-audit of
+this amended contract. The visual suggestion is feasible for the supplied scene, but
+unchanged-width translation is deliberately a measured gate rather than a cross-module
+assumption.
+
+**Adversarial amendment (grok, 2026-09-30) � geometry arithmetic + #954 protocol.**
+
+Corroborated against `css/ParchLock.css` / `css/CharCell.css` (no runtime claim; plan
+text only):
+
+1. **Overlap math holds.** Mobile `#windowport`/`#parchment` and the left rail both start
+   at `left: calc(8px + var(--pl-safe-left))`. D94 windows use `padding: 0 10px`, so
+   readable glyphs begin at �`18px + safe-left`. D121 gives shown left-rail labels
+   `min-height: 32px` on a `rotate(-90deg)` / `transform-origin: 0 0` row, so the
+   protected envelope reaches �`40px + safe-left`. Nominal left overlap � **22px** at
+   `safe-left: 0`. Map tab width **18px** at `right: safe-right` is also corroborated;
+   the current windowport already underlaps that tab by �10px (`vw-8` right edge vs 18px
+   tab).
+
+2. **Unchanged-width CSS-box translation cannot clear the envelope.** With
+   `width: calc(100vw - 16px - safes)` the CSS right margin is exactly **8px**. Clearing
+   �22px on the left while keeping that width overflows the viewport by �14px and deepens
+   the map-tab underlap. At a representative 390CSS-px width and current CharCell fit
+   (`--pl-cell-cols: 50`, `--pl-cell-adv: 0.6`), one cell �7.1px and two cells �14.2px �
+   **neither clears 22px**; a clearing shift needs �22px (�3+ cells) and fails the
+   right-edge gate. Screenshot wrapping slack is **not** CSS margin (#954). Therefore:
+   run the operator-requested cell protocol for evidence, but treat
+   **unchanged-width full-box translation as expected to FAIL the right-edge gate under
+   today's full-bleed shell**. The likely accepted path is the smallest left inset equal
+   to the measured protected-envelope overlap (or the smallest cell quantum that clears
+   live ink/hit rectangles), with matching width reduction and truthful Glk/CharCell
+   remeasurement. Do not ship overflow/`overflow:hidden` masking to fake an unchanged
+   width.
+
+3. **#954 measurement protocol (now normative).** Geometry proof phase MUST test, in
+   order, a stable **1-cell then 2-cell** rightward shift of the shared usable Glk
+   rectangle, then the minimal additional offset that clears live left-rail
+   label/target rectangles. A "cell" is the live measured GlkOte/`CharCell` advance
+   (`font-size � --pl-cell-adv` or GlkOte's measured cell width � same value used for
+   column math), not a hardcoded 8/16px. Accept an unchanged-width result only if the
+   harness proves the translated right edge, every GridWindow column, LineInput/
+   CharInput, submit, and mic remain inside the safe viewport and do not collide with
+   the right rail / Map tab. Otherwise fall through to minimal inset + reflow.
+
+4. **Single-source width (CharCell divergence).** Today's `--pl-cell-fit` in
+   `css/CharCell.css` is a **parallel hardcoded** `100vw - 16px - 20px - safes` formula,
+   not derived from the computed `#windowport` box. Any D203 left/width change MUST
+   update windowport, parchment, content-bound inputs, and `--pl-cell-fit` from **one**
+   published usable-rectangle model. Divergent constants are a D94 regression.
+
+5. **Input left edge.** Fixed LineInput/CharInput currently use
+   `left: calc(10px + var(--pl-safe-left))` (not the windowport's 8px). The usable
+   rectangle's left edge applies to both inputs; do not leave a 2px orphan inset that
+   still intersects the rail envelope.
+
+6. **D137 / readable scale.** Prefer shrinking `--pl-cell-font` via truthful fit at the
+   existing `--pl-cell-cols` over lying about columns. Do not "fix" status collisions by
+   reporting fewer columns than the fit model holds, and do not freeze a false column
+   count to preserve a screenshot font size (enable, don't mask).
+
+No product/CSS/JS/harness files are changed by this amendment.

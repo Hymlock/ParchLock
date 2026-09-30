@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 92 headings; 0 decision rows; 92 registered units.
 **Last registered unit:** `ar-s092`. **Body SHA-256 (LF):**
-`d85f2bfee9b4492a8a880000cd996b0e4369271fc2e895494626e145f823ce57`
+`ce77632b87c91475f267b34d47e5445ae62dd44c4f53e77677289accaf006219`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -3452,3 +3452,10 @@ flowchart LR
 360/390/412 portrait widths and landscape equivalents; prose/actionables, full status
 grids, native HELP CharInput, preformatted output, keyboard/dialog/map states; desktop
 unchanged. Promote only with source/dist/Android parity and a cache-generation bump.
+
+**Adversarial note (grok / #952�#954):** Current full-bleed mobile shell leaves only �8px
+CSS right margin while the left protected envelope overlaps readable text by �22px, and
+`--pl-cell-fit` is a parallel vw formula. Unchanged-width box translation that clears the
+left envelope is expected to fail the right-edge gate; prefer measured minimal inset +
+one-source CharCell/input geometry. Normative proof order: 1-cell, 2-cell, then minimal
+clearing offset (cell = live Glk/CharCell advance).
