@@ -429,14 +429,20 @@ var ZRamReader = {
         } catch (e) {}
     },
 
-    directionLabelForProp: (propNum) => {
+    directionLabelForProp: (propNum, mem) => {
         var dp = ZRamReader.directionProps || {};
-        if ((propNum === 12 || propNum === 13) && !dp.diagonalCalibrated) {
+        var discovered = mem ? ZRamReader.discoverCompassProfile(mem) : null;
+        if (discovered && discovered.profile && discovered.profile[propNum]) {
+            return discovered.profile[propNum];
+        }
+        // Stock PROFILE diagonal neutrality only when discovery did not
+        // supply labels (D49). A discovered map already resolved nw/se.
+        if (!discovered && (propNum === 12 || propNum === 13) && !dp.diagonalCalibrated) {
             return "exit-" + propNum;
         }
         var profile = dp.PROFILE || {};
         var named = profile[propNum];
-        if (dp.diagonalSwapped) {
+        if (!discovered && dp.diagonalSwapped) {
             if (propNum === 12) named = profile[13];
             else if (propNum === 13) named = profile[12];
         }
@@ -587,10 +593,139 @@ var ZRamReader = {
         return true;
     },
 
+
+    // D201 follow-up (system-wide): Inform library revisions shift which
+    // common property holds door_dir, and early Inform leaves direction
+    // objects unnamed. Anchorhead-class builds still use prop 21 + printed
+    // names; LLR3-class builds use prop 26 + parser vocabulary only.
+    // Discover both structurally from the compass parent -- never by title.
+    _compassProfileCache: (typeof WeakMap !== "undefined") ? new WeakMap() : null,
+    DIR_WORD_TO_LABEL: {
+        n: "north", north: "north",
+        s: "south", south: "south",
+        e: "east", east: "east",
+        w: "west", west: "west",
+        ne: "northeast", northeast: "northeast",
+        nw: "northwest", northwest: "northwest",
+        se: "southeast", southeast: "southeast",
+        sw: "southwest", southwest: "southwest",
+        u: "up", up: "up",
+        d: "down", down: "down",
+        "in": "in", inside: "in",
+        out: "out", outside: "out"
+    },
+    directionLabelFromWords: (words, shortName) => {
+        var map = ZRamReader.DIR_WORD_TO_LABEL;
+        var best = "";
+        function consider(raw) {
+            var w = String(raw || "").trim().toLowerCase();
+            if (!w || !map[w]) return;
+            var lab = map[w];
+            if (!best || lab.length > best.length) best = lab;
+        }
+        consider(shortName);
+        (words || []).forEach(consider);
+        return best || "";
+    },
+    // Among compass children of one kind, find the common property whose
+    // values are distinct small integers (the door_dir / n_to slot numbers).
+    discoverCompassDoorDirProp: (mem, kids) => {
+        if (!mem || !kids || kids.length < 8) return 0;
+        var counts = {};
+        for (var i = 0; i < kids.length; i++) {
+            for (var p = 1; p <= 40; p++) {
+                var v = ZRamReader.readProp(mem, kids[i], p);
+                if (!(v >= 1 && v <= 63)) continue;
+                if (!counts[p]) counts[p] = { seen: {}, n: 0 };
+                if (!counts[p].seen[v]) {
+                    counts[p].seen[v] = 1;
+                    counts[p].n++;
+                }
+            }
+        }
+        var bestP = 0, bestN = 0;
+        Object.keys(counts).forEach(function (p) {
+            var n = counts[p].n;
+            // Prefer the classic Inform door_dir slot when it qualifies.
+            if (n >= 8 && (n > bestN || (n === bestN && +p === 21))) {
+                bestN = n;
+                bestP = +p;
+            }
+        });
+        return bestP;
+    },
+    discoverCompassProfile: (mem) => {
+        if (!mem) return null;
+        try {
+            if (ZRamReader._compassProfileCache && ZRamReader._compassProfileCache.has(mem)) {
+                return ZRamReader._compassProfileCache.get(mem);
+            }
+        } catch (eC) {}
+        var result = null;
+        try {
+            var h = ZRamReader.header(mem);
+            if (!h) return null;
+            var count = ZRamReader.objectCount(mem, h);
+            var limit = Math.min(count, 200);
+            var best = null;
+            for (var id = 1; id <= limit; id++) {
+                var kids = ZRamReader.children(mem, id);
+                if (kids.length < 8) continue;
+                var kind0 = 0, good = true;
+                for (var i = 0; i < kids.length; i++) {
+                    var kind = ZRamReader.readProp(mem, kids[i], 2);
+                    if (!kind) { good = false; break; }
+                    if (!kind0) kind0 = kind;
+                    else if (kind !== kind0) { good = false; break; }
+                }
+                if (!good) continue;
+                var doorProp = ZRamReader.discoverCompassDoorDirProp(mem, kids);
+                if (!doorProp) continue;
+                var profile = {};
+                var labeled = 0;
+                for (var k = 0; k < kids.length; k++) {
+                    var dd = ZRamReader.readProp(mem, kids[k], doorProp);
+                    if (!(dd >= 1 && dd <= 255)) continue;
+                    var nm = "";
+                    try { nm = ZRamReader.shortName(mem, kids[k]) || ""; } catch (eN) {}
+                    var words = [];
+                    try { words = ZRamReader.parserWordsAny(mem, kids[k]) || []; } catch (eW) {}
+                    var label = ZRamReader.directionLabelFromWords(words, nm);
+                    if (!label) continue;
+                    if (!profile[dd]) {
+                        profile[dd] = label;
+                        labeled++;
+                    }
+                }
+                if (labeled >= 4 && (!best || labeled > best.labeled)) {
+                    best = { doorProp: doorProp, profile: profile, labeled: labeled, compassId: id };
+                }
+            }
+            result = best;
+        } catch (e) { result = null; }
+        try {
+            if (ZRamReader._compassProfileCache) ZRamReader._compassProfileCache.set(mem, result);
+        } catch (eS) {}
+        return result;
+    },
+    // Effective direction-prop profile: discovered compass map when present,
+    // else the stock i6-lib PROFILE. Discovery is structural (parser words /
+    // short names on compass children + door_dir slot), never a title branch.
+    effectiveDirectionProfile: (mem) => {
+        var discovered = mem ? ZRamReader.discoverCompassProfile(mem) : null;
+        if (discovered && discovered.profile && discovered.labeled >= 4) return discovered.profile;
+        return (ZRamReader.directionProps && ZRamReader.directionProps.PROFILE) || {};
+    },
+
     // Direction objects are the children of a compass-like parent:
     // many siblings, same kind (common prop 2), each carrying door_dir
     // (common prop 21) as a property number. No short-name matching.
     directionDoorDirs: (mem) => {
+        var discovered = ZRamReader.discoverCompassProfile(mem);
+        if (discovered && discovered.profile) {
+            return Object.keys(discovered.profile).map(Number).sort(function (a, b) { return a - b; });
+        }
+        // Fallback: classic Inform door_dir on common prop 21 (Anchorhead-class).
         var h = ZRamReader.header(mem);
         if (!h) return [];
         var count = ZRamReader.objectCount(mem, h);
@@ -599,12 +734,13 @@ var ZRamReader = {
         for (var id = 1; id <= limit; id++) {
             var kids = ZRamReader.children(mem, id);
             if (kids.length < 8) continue;
+            var doorProp = ZRamReader.discoverCompassDoorDirProp(mem, kids) || 21;
             var slots = [];
             var seen = {};
             var kind0 = 0;
             var good = true;
             for (var i = 0; i < kids.length; i++) {
-                var dd = ZRamReader.readProp(mem, kids[i], 21);
+                var dd = ZRamReader.readProp(mem, kids[i], doorProp);
                 var kind = ZRamReader.readProp(mem, kids[i], 2);
                 if (!(dd >= 1 && dd <= 255) || !kind) { good = false; break; }
                 if (!kind0) kind0 = kind;
@@ -970,6 +1106,26 @@ var ZRamReader = {
                     var pname = "";
                     try { pname = ZRamReader.shortName(mem, obj.parent) || ""; } catch (eP) {}
                     if (pname && pname.charAt(0) !== "(") return false;
+                }
+            }
+            // Blank early-Inform rooms still need a place-like signal. A
+            // takeable, unlit, childless object (LLR "level one" region /
+            // meta marker held in a spare direction prop) is not a room.
+            // Real unnamed rooms typically carry light and/or contents, or
+            // are already admitted on the map after travel.
+            if (!nm) {
+                var kids = [];
+                try { kids = ZRamReader.children(mem, id) || []; } catch (eK) {}
+                var admitted = false;
+                try {
+                    if (typeof ParchLockMap !== "undefined" && ParchLockMap.Rooms) {
+                        admitted = ParchLockMap.Rooms.some(function (r) {
+                            return r && r.HasRealId && String(r.ObjectId) === String(id);
+                        });
+                    }
+                } catch (eA) {}
+                if (!admitted && !attrs.light && !attrs.door && !(kids && kids.length) && attrs.takeable) {
+                    return false;
                 }
             }
             return true;
@@ -1644,6 +1800,9 @@ var ZRamReader = {
         var count = ZRamReader.objectCount(mem, h);
         var seen = {};
         function pushExit(label, prop, val, opts) {
+            try {
+                if (ZRamReader.isPlausibleExitTarget && !ZRamReader.isPlausibleExitTarget(mem, val)) return;
+            } catch (ePl) { return; }
             var tname = ZRamReader.shortName(mem, val) || "";
             if (tname.charAt(0) === "(") return;
             opts = opts || {};
@@ -1718,18 +1877,20 @@ var ZRamReader = {
         // resolves to its own single real, swap-aware word via
         // directionLabelForProp, no ambiguity flag.
         var dp = ZRamReader.directionProps || {};
+        var discoveredProfile = ZRamReader.discoverCompassProfile(mem);
         var val12 = ZRamReader.readProp(mem, roomId, 12);
         var val13 = ZRamReader.readProp(mem, roomId, 13);
         var has12 = val12 >= 1 && val12 <= count;
         var has13 = val13 >= 1 && val13 <= count;
-        if (!dp.diagonalCalibrated) {
-            // Uncalibrated: still expose BOTH candidate compass words in the
-            // payload so the radial can offer NW and SE (D49/D51). MapTopology
-            // collapses same-destination Exits[] to a single edge so the map
-            // never draws two Alleys. Prefer listing southeast first when only
-            // prop 12 is populated -- Anchorhead's printed prose names the
-            // alley to the southeast; first Exits[] writer wins the map slot
-            // after same-dest collapse (still tentative until travel).
+        // When compass discovery already labeled props 12/13 (LLR-class
+        // shifted n/s), assert those labels -- do not dual-push nw/se.
+        if (discoveredProfile && discoveredProfile.profile &&
+            (discoveredProfile.profile[12] || discoveredProfile.profile[13])) {
+            if (has12) pushExit(ZRamReader.directionLabelForProp(12, mem), 12, val12, {});
+            if (has13) pushExit(ZRamReader.directionLabelForProp(13, mem), 13, val13, {});
+        } else if (!dp.diagonalCalibrated) {
+            // Uncalibrated stock PROFILE: still expose BOTH candidate compass
+            // words (D49/D51). MapTopology collapses same-destination Exits[].
             if (has12) {
                 pushExit("southeast", 12, val12, { ambiguousDiagonal: true });
                 pushExit("northwest", 12, val12, { ambiguousDiagonal: true });
@@ -1741,8 +1902,8 @@ var ZRamReader = {
                 pushExit("northwest", 13, val13, { ambiguousDiagonal: true });
             }
         } else {
-            if (has12) pushExit(ZRamReader.directionLabelForProp(12), 12, val12, {});
-            if (has13) pushExit(ZRamReader.directionLabelForProp(13), 13, val13, {});
+            if (has12) pushExit(ZRamReader.directionLabelForProp(12, mem), 12, val12, {});
+            if (has13) pushExit(ZRamReader.directionLabelForProp(13, mem), 13, val13, {});
         }
         // D35/D55/D60: I7-style door_dir exits. Label is "exit N" (space)
         // and the real parser command is "xN", where N is the ordinal among
@@ -1769,15 +1930,35 @@ var ZRamReader = {
                 }
             });
         }
-        var cand = ((ZRamReader.directionProps && ZRamReader.directionProps.candidates) || []).filter(function (p) { return p !== 12 && p !== 13; });
+        var stockCand = ((ZRamReader.directionProps && ZRamReader.directionProps.candidates) || []).filter(function (p) { return p !== 12 && p !== 13; });
+        var cand = stockCand.slice();
+        if (discoveredProfile && discoveredProfile.profile) {
+            Object.keys(discoveredProfile.profile).map(Number).forEach(function (p) {
+                if (p !== 12 && p !== 13 && cand.indexOf(p) < 0) cand.push(p);
+            });
+            // When discovery supplied a compass map, do not assert stock
+            // PROFILE labels for props discovery did not name (false
+            // north→meta slots on shifted libraries).
+            cand = cand.filter(function (p) {
+                return !!discoveredProfile.profile[p] || !(ZRamReader.directionProps.PROFILE || {})[p];
+            });
+        }
         cand.forEach(function (propNum) {
             var val = ZRamReader.readProp(mem, roomId, propNum);
             if (!(val >= 1 && val <= count)) return;
-            var mappedLabel = ZRamReader.directionLabelForProp(propNum);
+            var mappedLabel = ZRamReader.directionLabelForProp(propNum, mem);
             pushExit(mappedLabel, propNum, val, {});
         });
+        // Props already claimed by discovered compass labels or the
+        // stock/candidate passes must not be re-emitted as exit-N stubs
+        // (Anchorhead: prop 12 Alley was dual-listed as southeast + exit-12).
+        var claimed = { 12: 1, 13: 1 };
+        cand.forEach(function (p) { claimed[p] = 1; });
+        if (discoveredProfile && discoveredProfile.profile) {
+            Object.keys(discoveredProfile.profile).forEach(function (p) { claimed[p] = 1; });
+        }
         for (var p = 1; p <= 48; p++) {
-            if (cand.indexOf(p) >= 0) continue;
+            if (claimed[p]) continue;
             var v = ZRamReader.readProp(mem, roomId, p);
             if (!(v >= 2 && v <= count)) continue;
             var o2 = ZRamReader.objectLinks(mem, v);

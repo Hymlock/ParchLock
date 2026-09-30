@@ -1,7 +1,24 @@
+﻿## D201 false-exit fix: compass door_dir discovery (2026-09-29, grok)
+
+Live LLR3 bug after D201 pathable blank rooms: look-ahead labeled prop 15 as
+`up` (stock i6-lib PROFILE) while the build's compass stores `door_dir` on
+prop 26 and maps 12/13/14/15 = n/s/e/w via unnamed direction objects' parser
+words. Result: UP→Dank room on the radial/map while `up` is rejected; inflated
+exit counts; prop 7→`level one` meta admitted as north.
+
+Fix (system-wide, not LLR-titled): `ZRamReader.discoverCompassProfile` reads the
+compass parent's children, discovers the door_dir common property structurally,
+and labels slots from short names or parser vocabulary. `lookAheadExits` prefers
+that map; `pushExit` gates on `isPlausibleExitTarget`; blank takeable/unlit/
+childless meta targets are refused; claimed props are not re-emitted as exit-N.
+SW `parchlock-shell-v85`. Live: LLR no false UP, west/east correct; Anchorhead
+keeps e/w/in and asserts Alley as southeast from discovery; `d201-unnamed-identity`
+58/58. XP: D201 does not invent experience — LLR prints LVL/STR only; both confirm
+and update via StatusGridDecoder/StatTracker.
 # AI Status
 
 ## D201 cross-system audit (2026-09-29, grok)
-Full cross-system audit of D201 against PRODUCTION_PLAN §D201 / ARCHITECTURE §65.
+Full cross-system audit of D201 against PRODUCTION_PLAN Â§D201 / ARCHITECTURE Â§65.
 D201 is treated as **system-wide capability** (identity, StatusGridDecoder, map
 admission/evidence, inventory recovery, MapTopology); unnamed early-Inform (LLR3)
 is the stress case, not a title adapter.
@@ -99,7 +116,7 @@ is being raced while Grok's separate D100 read-aloud work is live.
 
 ## Historical D99 program
 D99 ParchLock release program with D97 story policy and D98 Module Manager.
-Canonical plan: `PRODUCTION_PLAN.md` sections 12-13 (Â§12.8 Grok closeout). Target
+Canonical plan: `PRODUCTION_PLAN.md` sections 12-13 (Ã‚Â§12.8 Grok closeout). Target
 architecture: `ARCHITECTURE_UML.md` sections 34-35. Codex implemented; Grok finished
 full adversarial audit+fix: Tools duplicate fixed; Display font experiment reversed
 (operator); packaging leftovers cleaned; 15/15 critical harnesses green; dist+dev APK
@@ -329,4 +346,5 @@ browser/CDP probe scripts fail outside a real browser, expected, unrelated to D8
 - 2026-09-20 (claude): FINAL PLAN submitted to codex for implementation by operator instruction: PRODUCTION_PLAN.md sections 12 (D99 ParchLock release program) and 13 (D98 Module Manager) are the canonical text; ARCHITECTURE_UML.md sections 34-35; operator decisions Q1-Q6 in section 12.3 (source zip bundled with every release + Git later; operator keeps signing key; allowBackup off; INTERNET removed; PL prefix; credit only). Single-writer freeze begins when codex confirms claims reconciled; grok review/test-only. Implementation pending.
 
 - 2026-09-20 (claude): SEAT FINALIZED -- claude is out of usage credits. All claims released. Handoff: PRODUCTION_PLAN.md sections 12 (D99) and 13 (D98) + ARCHITECTURE_UML.md sections 34-35 are the final plan for the ParchLock program and Module Manager (implementation pending, codex single writer). The sole-editor rule for those two docs cannot be honored while claude is out: operator must designate an editor. Operator gates all answered (section 12.3). No product code was changed after D96 (APK versionCode 28, cache v7).
+
 
