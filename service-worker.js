@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v91"; // D202/D204 map overview and deterministic status fulfillment
+const CACHE_VERSION = "parchlock-shell-v92"; // BUILD 50: recover UI after Glk exit from in-game QUIT
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

@@ -9,6 +9,10 @@ var ParchLock = {
     ScrollInit: false,
     MapAutoHidden: false,
     DialogWasOpen: false,
+    // Story-ended detection (glk_exit / disable with no further LineInput).
+    _everHadGlkInput: false,
+    _noInputStreak: 0,
+    _storyEndedOffered: false,
 
     Init: () => {
 
@@ -106,6 +110,7 @@ var ParchLock = {
                 Input.SyncMobilePromptFocus(lineReady, charReady);
             }
         } catch (eFocus) {}
+        try { ParchLock.CheckStoryEnded(lineReady, charReady); } catch (eEnded) {}
         if (lineReady && ParchLockMap.AutoOpenPending && !Message.IsOpen) { ParchLockMap.AutoOpenPending = false; ParchLockMap.Show(); }
         ParchLock.ScrollToBottom();
 
@@ -125,6 +130,48 @@ var ParchLock = {
         if (typeof UndoRestoreSync !== "undefined") UndoRestoreSync.tick();
 
         ParchLock.LoopReference = setTimeout(ParchLock.Loop, 200);
+    },
+
+    // Detect sustained Glk end-of-story (no enabled Line/Char input after the
+    // player had been prompting). Does not intercept RESTART/RESTORE/QUIT text;
+    // those still go to the story. Once Glk has exited and cleared input, offer
+    // WorkspaceUI.OfferStoryEnded once.
+    CheckStoryEnded: (lineReady, charReady) => {
+        try {
+            if (typeof WorkspaceUI === "undefined" || !WorkspaceUI.HasStory || !WorkspaceUI.HasStory()) return;
+            // Disabled inputs (Glk disable / specialinput) are not playable prompts.
+            var liveLine = $(".Input.LineInput:visible:not(:disabled)").length > 0;
+            var liveChar = $(".Input.CharInput:visible:not(:disabled)").length > 0;
+            if (liveLine || liveChar) {
+                ParchLock._everHadGlkInput = true;
+                ParchLock._noInputStreak = 0;
+                return;
+            }
+            // No enabled prompt. A visible-but-disabled husk (Glk disable) is still
+            // "ended" once specialinput dialogs are ruled out below -- do not treat
+            // lineReady/charReady (which count disabled fields) as still playing.
+            if (!ParchLock._everHadGlkInput || ParchLock._storyEndedOffered) return;
+            if (typeof Message !== "undefined" && Message.IsOpen) {
+                ParchLock._noInputStreak = 0;
+                return;
+            }
+            if ($("#dialog, #dialog_screen, #dialog_frame").length) {
+                ParchLock._noInputStreak = 0;
+                return;
+            }
+            if (document.body.classList.contains("no-story")) return;
+            if (document.documentElement.classList.contains("parchlock-splash-pending")) return;
+            var loading = document.getElementById("loadingpane");
+            if (loading && $(loading).is(":visible")) {
+                ParchLock._noInputStreak = 0;
+                return;
+            }
+            ParchLock._noInputStreak = (ParchLock._noInputStreak || 0) + 1;
+            // ~800ms at the 200ms Loop cadence -- long enough to skip mid-update flicker.
+            if (ParchLock._noInputStreak < 4) return;
+            ParchLock._storyEndedOffered = true;
+            if (WorkspaceUI.OfferStoryEnded) WorkspaceUI.OfferStoryEnded();
+        } catch (e) {}
     },
 
     CheckNativeDialog: () => {

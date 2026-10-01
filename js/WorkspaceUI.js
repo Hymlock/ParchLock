@@ -14,7 +14,7 @@ var WorkspaceUI = {
             ["Modules", "Modules opens the on-device library manager. It accepts Z-machine v3, v4, v5 and v8 files, zblorb packages, and Glulx ulx or gblorb files after checking their bytes. Z-machine modules have full mapping and action support; Glulx is play-only. Add files you have the right to use. Imported bytes do not upload to a ParchLock server. Clearing app or browser storage removes imported modules and local state."],
             ["Mapping", "Scroll over the map to zoom and drag to pan. Path lines connect the displayed room to known exits; these indicate discovered connections, not physical distances. Center returns to your current room and resets zoom. Search filters known rooms. Click a room to inspect its local connections; use its travel control to navigate. /map toggles the map. /goto room; travels, /see room; centers a room, and /see me; returns to your location. Dialogs retract the map temporarily and restore its previous state when closed."],
             ["Map files", "Maps opens named map saves for this story. Save map stores a named snapshot in this browser; Load restores one, and Delete removes it. Download map exports reloadable JSON; Load file imports that JSON or the map from a compatible save package. Text export and /export-map produce a readable map report. Map saves contain rooms, paths and notes, not the game's current position. The working map also saves automatically in this browser."],
-            ["Game saves and exit", "Save and Restore run the game's native save commands. Save files opens browser saves and portable packages containing saves plus the map. Download Package exports JSON; Save Package As offers a file-location picker where supported, otherwise a browser download. Import File or Paste Import restores a package for this story. Browser saves can be lost when browser data is cleared; downloads provide a separate backup. Preview Data in the native save editor displays file contents, not a disk path. Menu > Exit game and /quit warn about unsaved progress and offer Save game first; after saving, choose Exit again."],
+            ["Game saves and exit", "Save and Restore run the game's native save commands. Save files opens browser saves and portable packages containing saves plus the map. Download Package exports JSON; Save Package As offers a file-location picker where supported, otherwise a browser download. Import File or Paste Import restores a package for this story. Browser saves can be lost when browser data is cleared; downloads provide a separate backup. Preview Data in the native save editor displays file contents, not a disk path. Menu > Exit game and /quit warn about unsaved progress and offer Save game first; after saving, choose Exit again. When a story stops on its own (for example after in-game QUIT), ParchLock offers Return to library, Restart story, or Keep viewing the transcript."],
             ["Notes, display and options", "/note text; adds a note to the current room. /notes shows its notes; /room-notes room; shows another room's notes. /clear notes clears current-room notes, and /clear map resets the working map. /display adjusts font size and spacing; /theme switches color theme. Options controls map animation, startup help, assumed return paths, speech, and tutorial replay. /history opens command history; /commands opens the command palette; /transcript opens a readable transcript with copy/download. /help opens this reference."]
         ];
         Message.Show("ParchLock Help", sections.map(section => "<h3>" + section[0] + "</h3><p>" + section[1] + "</p>").join(""), true);
@@ -85,6 +85,32 @@ var WorkspaceUI = {
         $("#exit-save").click(() => WorkspaceUI.Command("save"));
         $("#exit-confirm").click(() => { location.href = "index.html"; });
         $("#exit-cancel").click(Message.Hide);
+    },
+    // After the story accepts QUIT (or otherwise glk_exit), GlkOte disables and
+    // removes LineInput and never navigates away. Offer a general end-of-story
+    // path back to the library / restart -- not a per-game quit interceptor.
+    OfferStoryEnded: () => {
+        if (!WorkspaceUI.HasStory()) return;
+        var story = "";
+        try { story = Global.GetUrlParameter("story") || ""; } catch (e) {}
+        Message.Show(
+            "Story ended",
+            "<p>The story has stopped and is no longer accepting commands. You can return to the library or restart this module.</p>" +
+            "<div class='qol-window-actions'>" +
+            "<button id='story-ended-library' type='button'>Return to library</button>" +
+            "<button id='story-ended-restart' type='button'>Restart story</button>" +
+            "<button id='story-ended-dismiss' type='button'>Keep viewing</button>" +
+            "</div>",
+            true
+        );
+        $("#story-ended-library").off("click.plStoryEnded").on("click.plStoryEnded", function () {
+            location.href = "index.html";
+        });
+        $("#story-ended-restart").off("click.plStoryEnded").on("click.plStoryEnded", function () {
+            if (story) location.href = "play.html?story=" + encodeURIComponent(story);
+            else location.reload();
+        });
+        $("#story-ended-dismiss").off("click.plStoryEnded").on("click.plStoryEnded", Message.Hide);
     },
     ShowOptions: () => {
         Message.Show("Game options", "<div id='game-options'></div>", true);
