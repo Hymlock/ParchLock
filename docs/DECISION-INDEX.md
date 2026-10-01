@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 87 decisions across
-7631 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 88 decisions across
+7703 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -21,6 +21,7 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 
 | D | claim | files | games |
 |---|-------|-------|-------|
+| D204 | Holistic statistics discovery and repeatable event monitoring — PROPOSED |  |  |
 | D203 | Mobile left exit-rail readable-content safety |  |  |
 | D202 | Map zoom LOD / world overview (hub-preserving) |  | Anchorhead |
 | D201 | Early Inform unnamed identity and inventory recovery |  | LLR3 |

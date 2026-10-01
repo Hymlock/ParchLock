@@ -1,6 +1,11 @@
 # D204 Holistic Statistics Discovery and Event Monitoring Proposition
 
-Status: research proposition for adversarial review. No product implementation is authorized by this document.
+Status: proposed pre-GO contract under adversarial review. No product implementation is authorized until
+this plan, `PRODUCTION_PLAN.md` D204, and `ARCHITECTURE_UML.md` section 68 reach review consensus.
+
+The optional disposable shadow-VM lane described below is not available in the repository today. The
+disclosed live ProbeBroker is therefore the only planned automatic bootstrap until a separate spike proves
+an exact disposable clone. The evidence ledger and every passive lane are independent of that future spike.
 
 ## 1. Objective
 
@@ -107,7 +112,9 @@ accepted submit
 
 The canonical command is derived once as `trim -> collapse whitespace -> lowercase`, retained beside the
 raw command, and never substituted for the text sent to the VM. `score`, `score `, ` SCORE`, radial SCORE,
-and voice SCORE therefore have one semantic identity without altering interpreter input.
+and voice SCORE therefore have one semantic identity without altering interpreter input. Canonicalization
+is binding-only: `score.` does not become `score`, and no dictionary synonym is substituted unless that
+exact accepted text independently has a proven command relationship.
 
 `captureAfter` freezes the same boundary for transcript, status, globals, and object properties. A later
 command boundary-stamps the earlier turn before its own VM work begins, preserving D86 ordering. A
@@ -125,7 +132,10 @@ cursor or equivalent TurnRecorder capture helper. Requirements:
 - survive buffer replacement, clear, redraw, restore, and window recreation;
 - emit each text span once per story epoch;
 - retain the owning submissionId when one exists, and an explicit unbound/terminal epoch otherwise;
-- preserve ReadAloud behavior byte-for-byte if its cursor is shared or migrated.
+- preserve ReadAloud behavior byte-for-byte if its cursor is shared or migrated. Prefer one domain-neutral
+  BufferLine delta helper with independent subscriber cursors; StatTracker must never read or advance
+  ReadAloud's consumed-length map. A byte-parity harness must prove that statistics subscription cannot
+  suppress, repeat, split, or reorder speech.
 
 This feed lets death/end output be observed even when no new `WorldModel.apply` payload follows it.
 
@@ -182,9 +192,11 @@ money/cash/gold, carried weight/capacity/value, deaths, and wins. Unknown labels
 under their normalized game-authored label. Admission never depends on being in this list.
 
 For every newly observed label, candidate global and player-property sources are intersected over real
-changes. A unique source is promoted; tied equal-value aliases may be retained as an equivalent source set
-and read deterministically; disagreeing ties remain unresolved. Contradiction demotes the binding without
-removing the story-authored visible metric.
+changes. A unique source is promoted only after two independent sealed-turn transitions agree, or after
+one sealed turn contains both an authoritative absolute status/reply value and the matching property move.
+Coincident equal values alone never promote. Tied equal-value aliases may be retained as an equivalent
+source set only when the same transition rule proves the set; disagreeing ties remain unresolved.
+Contradiction demotes the binding without removing the story-authored visible metric.
 
 ### 4.6 Score and experience relationship
 
@@ -235,18 +247,22 @@ Zork resurrection and roguelike restart/continue flows do not erase the event. T
 is deduplicated by output-span identity and epoch, not banner text plus tracker Tick. Restore/resync must
 not fabricate a death, and replayed transcript text must not recount one.
 
-The existing broad asterisk-banner classifier remains a useful lane, but its input moves to the exact
-output feed so it runs even without a final world payload.
+The existing broad asterisk-banner classifier remains a candidate lane, but its current non-win/non-quit
+default-to-death behavior is not sufficient to increment `model.deaths`. Its input moves to the exact output
+feed so it runs even without a final world payload, and a count requires a strong or corroborated class above.
 
 ### 4.9 Persistence and lifecycle
 
-Persist module/build facts only: canonical relationships, global/property bindings, equivalent source
-sets, confirmed field semantics, and reusable parser formats. Session/timeline readings, pending turns,
-targets, badges, and output cursors reset on story load and follow D178/D180-D183 restore ordering.
+Persist module/build facts only, keyed by executable story identity rather than save-timeline identity:
+canonical relationships, global/property bindings, equivalent source sets, confirmed field semantics, and
+reusable parser formats. Existing `unit: fraction` records migrate with `boundSemantics: unknown`; a fraction
+never implies `hard-cap`. Readings, pending turns, targets, badges, and output cursors are generation-local
+and follow D178/D180-D183 restore ordering.
 
-Death/win totals are explicitly product counters rather than VM readings. Preserve the current per-module
-behavior unless operator review chooses save-timeline semantics; either choice must be tested across
-restart, restore, new game, and module switch and documented in the UI.
+Death/win totals are product-owned **playthrough counters**, labelled `Deaths this playthrough` and `Wins
+this playthrough`. They reset on module load, explicit New Game, or accepted RESTART; they survive undo and
+restore within that playthrough, while output-span/epoch deduplication prevents replay from recounting.
+Module switch cannot leak either total. They are not written into module/build learned-fact storage.
 
 ### 4.10 Passive monitor and last-resort bootstrap
 
@@ -255,12 +271,14 @@ Use a strict escalation ladder:
 1. status-grid, transcript-delta, standard-header, and already-confirmed RAM/property evidence;
 2. passive multi-turn correlation from ordinary player actions;
 3. the existing explicit user-initiated Identify action;
-4. a controlled, disclosed live probe when unresolved statistics materially limit the HUD;
+4. a controlled, disclosed live probe at a deterministic statistics-surface demand gate;
 5. a disposable shadow-VM probe when exact cloning exists and is preferable to spending a live turn.
 
-The live probe is not an ordinary `Actionable.Submit("score")` hidden with CSS. A dedicated ProbeBroker
-must wait for an idle visible LineInput with no draft, dialog, character prompt, navigation queue, restore,
-or other probe in flight. At the first automatic live probe of each game start, and only then, it displays
+The live probe is not an ordinary `Actionable.Submit("score")` hidden with CSS. ProbeBroker extends the
+existing accepted-submit choke rather than creating a second one. It must wait for an idle visible LineInput
+with no draft, dialog, character prompt, navigation queue, restore, Identify transaction, carry probe
+(`_carryProbeSubmitting`/`clearCarryProbe`), or other probe in flight. At the first automatic live probe of
+each game start, and only then, it displays
 an app-owned notice such as `ParchLock may check this story's statistics with module-owned commands; this
 story may count a check as a turn.` The notice is not shown at startup when no probe is needed, and later
 probes in the same game session do not interrupt the player again. The TurnRecorder source is
@@ -271,11 +289,20 @@ must advance and the notice must remain truthful. Probe-owned command/reply line
 only after exact ownership is proven; they remain available in transcript/export diagnostics, and the app
 must never remove neighboring story output or disrupt actionable underlines.
 
-The live lane is dictionary-gated, at most once per requested verb per story epoch unless the user invokes
-Identify again, cancellable before submission, and disabled while a user draft exists. A preference can
-disable automatic checks without disabling passive discovery or manual Identify. Failure, parser rejection,
-timeout, or ambiguous content imports no semantic relationship and must not trigger another automatic probe
-loop.
+The demand gate is testable: after the initial line prompt and at least one accepted ordinary player turn
+have settled, the player opens the statistics/equipment surface, no passive lane or learned binding can
+supply the requested score/EXP/level family, the exact probe verb is owned by the module dictionary, the
+automatic-check preference is enabled, and all safe-idle gates pass. Merely reaching a timer or turn count
+never probes. The live lane is at most once per requested verb per story epoch unless the user explicitly
+invokes Identify again, cancellable before submission, and disabled while a user draft exists. Failure,
+parser rejection, timeout, or ambiguous content imports no semantic relationship and must not trigger
+another automatic probe loop.
+
+For D204, a **game start** is a module/interpreter load, explicit New Game, or accepted RESTART. Each creates
+a new `storyEpoch`, resets the one-disclosure flag and automatic per-verb budgets, and may therefore disclose
+again if a later demand gate needs a live probe. Restore and undo create resynchronization generations within
+the same game start: they clear pending transactions/output cursors but neither re-notify nor replenish an
+automatic probe budget. Manual Identify remains user-controlled.
 
 The shadow probe is not `Actionable.Submit("score")` with hidden CSS either. It requires a disposable interpreter
 instance restored from the same story/save state, receives the validated module-owned command, captures its
@@ -289,9 +316,11 @@ D204 ledger does not depend on implementing shadow cloning.
 
 ## 5. Implementation sequence
 
-1. **Freeze current behavior.** Add fixtures for all current StatTracker families and byte-parity tests
-   for ReadAloud output collection, TurnRecorder boundaries, v3 seeding, carry pins, restore ordering, and
-   D201 status decoding.
+1. **Freeze current behavior.** Add nine red-on-HEAD defect fixtures: compound cardinals; EXP target crossing;
+   TurnRecorder SCORE ownership despite a different map command; same-length output replacement; terminal
+   output without `WorldModel.apply`; multiple deltas; replay across extra tracker Ticks; player-property
+   correlation with a decoy; and the three `boundSemantics` behaviors. Add byte-parity tests for ReadAloud
+   output collection, TurnRecorder boundaries, v3 seeding, carry pins, restore ordering, and D201 decoding.
 2. **Build the transaction capture seam.** Add canonical command and exact transcript/status/RAM snapshots
    to a StatTracker TurnRecorder analyzer. Keep the existing Tick path in shadow mode and compare results.
 3. **Introduce the evidence schema.** Separate value shape from bound semantics and migrate current records
@@ -309,7 +338,8 @@ D204 ledger does not depend on implementing shadow cloning.
 8. **Cut over by owner-local valve.** `off` preserves current code, `shadow` records diagnostics without UI
    changes, and `on` uses the ledger. No D88/D198 valve is reused for this unrelated ownership domain.
 9. **Only after parity and live gates:** remove `_lastBufferLen` as a correctness dependency, refresh cache,
-   distribution, and APK, then update canonical plan/architecture chapters and user documentation.
+   distribution, and APK, then promote the already-registered canonical D204 plan/architecture sections and
+   update user documentation.
 
 ## 6. Verification matrix
 
@@ -325,6 +355,10 @@ D204 ledger does not depend on implementing shadow cloning.
 - a live bootstrap runs only at a safe idle boundary; its first use in each game start produces exactly one
   disclosure, later probes produce no repeated notification, and a turn it consumes remains counted; its
   source cannot train map, action usage, attributes, exits, semantics, narration, or tutorial state.
+- the demand gate cannot fire before a settled ordinary turn, without a statistics-surface request, when a
+  passive/learned value exists, for a non-dictionary verb, or while Identify/carry/navigation/restore is busy.
+- module load/New Game/RESTART reset disclosure and automatic budgets; restore/undo reset capture generations
+  without re-notifying or replenishing a spent automatic budget.
 - tied RAM candidates fail closed or form a proven equal-value equivalent set.
 - unique player-property correlation and later contradiction/demotion.
 - restore/restart clears pending transactions before the first post-resync observation.
@@ -344,6 +378,9 @@ D204 ledger does not depend on implementing shadow cloning.
 - **Enchanter family:** qualitative hunger/thirst/sleep and DIAGNOSE behavior.
 - **LDoDoom:** explicit no-scoring remains authoritative.
 - **D201 controls:** RoTA, Bronze, Accuse, Wumpus, and unnamed-room/inventory/map behavior unchanged.
+- **Isolation controls:** Wumpus percent health and carry value/weight retain their names and sources; D198
+  valves, numbered exits, unnamed-room identity and action evidence remain byte-equivalent; StatusGridDecoder
+  remains the sole status-grid translator.
 
 ### Catalog and regression gates
 

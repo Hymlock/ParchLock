@@ -156,7 +156,7 @@ decisions and their later mentions, not only the first matching record.
 | Restore/storage; undo, new game; UndoRestoreSync | Sections [31](#ar-ch31), [35](#ar-ch35), [41](#ar-ch41); [D178](PRODUCTION_PLAN.md#pl-d178)/[D180](PRODUCTION_PLAN.md#pl-d180)-[D183](PRODUCTION_PLAN.md#pl-d183) | Restore synchronizes dependent state; cached readings cannot masquerade as current facts. Check map, notes, narration, calibration and tracking. |
 | Notes/equipment; inventory, Known Rooms; Map, EquipmentUI | Sections [5](#ar-ch5), [26](#ar-ch26), [46](#ar-ch46), [56](#ar-ch56), [59](#ar-ch59), [66](#ar-ch66); [D125](PRODUCTION_PLAN.md#pl-d125)-[D128](PRODUCTION_PLAN.md#pl-d128)/[D131](PRODUCTION_PLAN.md#pl-d131)/[D148](PRODUCTION_PLAN.md#pl-d148)/[D168](PRODUCTION_PLAN.md#pl-d168)-[D169](PRODUCTION_PLAN.md#pl-d169)/[D174](PRODUCTION_PLAN.md#pl-d174)/[D184](PRODUCTION_PLAN.md#pl-d184) | Preserve identity-scoped notes and nested inventory; check commands, sheets, stats and saves. |
 | Tutorial/library; onboarding, favorites; Tutorial, MainMenu, ModuleLibrary | Sections [35](#ar-ch35), [38](#ar-ch38), [54](#ar-ch54), [57](#ar-ch57); [D130](PRODUCTION_PLAN.md#pl-d130)/[D132](PRODUCTION_PLAN.md#pl-d132)/[D136](PRODUCTION_PLAN.md#pl-d136)/[D149](PRODUCTION_PLAN.md#pl-d149)/[D160](PRODUCTION_PLAN.md#pl-d160)/[D166](PRODUCTION_PLAN.md#pl-d166)-[D167](PRODUCTION_PLAN.md#pl-d167) | Sections [57](#ar-ch57) revises section 54's isolated lifecycle. Check readiness, speech, settings, sheets and splash. |
-| Character/status; score, health, level, strength, weight, badge; StatTracker | Sections [60](#ar-ch60), [65](#ar-ch65); [D157](PRODUCTION_PLAN.md#pl-d157)/[D167](PRODUCTION_PLAN.md#pl-d167)/[D169](PRODUCTION_PLAN.md#pl-d169)/[D173](PRODUCTION_PLAN.md#pl-d173)-[D176](PRODUCTION_PLAN.md#pl-d176)/[D178](PRODUCTION_PLAN.md#pl-d178)/[D180](PRODUCTION_PLAN.md#pl-d180)-[D183](PRODUCTION_PLAN.md#pl-d183)/[D201](PRODUCTION_PLAN.md#pl-d201) | Baseline diagram requires later plan amendments; preserve provenance, fallback and reset rules. Check inventory, VM grid and persistence. |
+| Character/status; score, health, level, strength, weight, badge; StatTracker | Sections [60](#ar-ch60), [65](#ar-ch65), [68](#ar-ch68); [D157](PRODUCTION_PLAN.md#pl-d157)/[D167](PRODUCTION_PLAN.md#pl-d167)/[D169](PRODUCTION_PLAN.md#pl-d169)/[D173](PRODUCTION_PLAN.md#pl-d173)-[D176](PRODUCTION_PLAN.md#pl-d176)/[D178](PRODUCTION_PLAN.md#pl-d178)/[D180](PRODUCTION_PLAN.md#pl-d180)-[D183](PRODUCTION_PLAN.md#pl-d183)/[D201](PRODUCTION_PLAN.md#pl-d201)/[D204](PRODUCTION_PLAN.md#pl-d204) | Baseline diagram requires later plan amendments; preserve provenance, fallback and reset rules. Check inventory, VM grid and persistence. |
 | Packaging/navigation/export; APK, Back, PC; Global, ProductInfo, make-dist | Sections [30](#ar-ch30), [34](#ar-ch34), [35](#ar-ch35), [47](#ar-ch47), [48](#ar-ch48), [49](#ar-ch49), [53](#ar-ch53), [55](#ar-ch55), [58](#ar-ch58); [D99](PRODUCTION_PLAN.md#pl-d99)/[D119](PRODUCTION_PLAN.md#pl-d119)/[D121](PRODUCTION_PLAN.md#pl-d121)/[D129](PRODUCTION_PLAN.md#pl-d129) | Respect runtime allowlists, intentional navigation and current native-save contract. Check caches, startup and native integrations. |
 | Verification/open questions; evidence, regression | Sections [7](#ar-ch7), [12](#ar-ch12), [13](#ar-ch13), [17](#ar-ch17), [24](#ar-ch24) and each topic's evidence | Diagrams and old PASS counts are not current runtime verification; compare code and targeted tests. |
 
@@ -208,9 +208,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 92 headings; 0 decision rows; 92 registered units.
-**Last registered unit:** `ar-s092`. **Body SHA-256 (LF):**
-`52c9e0f4f370919ba9ce9cec8a8a0fba3fd621089c377cfac56e8fb0c8155d73`
+**Local manifest:** 93 headings; 0 decision rows; 93 registered units.
+**Last registered unit:** `ar-s093`. **Body SHA-256 (LF):**
+`03fcac4713cd99b1414226c7edc1eb9c5b31187e228beefa5dc0b509a4743529`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -382,6 +382,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s090](#ar-s090) | 65. Unnamed early-Inform identity composition (D201) | H2 | Implemented / live-browser verified |
 | [ar-s091](#ar-s091) | 66. Map zoom LOD / world overview (D202) — PROPOSED | H2 | Proposed / pre-GO |
 | [ar-s092](#ar-s092) | 67. Mobile side-rail readable-content geometry (D203) — IMPLEMENTED | H2 | Implemented / live-browser verified |
+| [ar-s093](#ar-s093) | 68. Holistic statistics evidence ledger (D204) - PROPOSED | H2 | Proposed / pre-GO |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -3480,3 +3481,81 @@ CSS right margin while the left protected envelope overlaps readable text by �
 left envelope is expected to fail the right-edge gate; prefer measured minimal inset +
 one-source CharCell/input geometry. Normative proof order: 1-cell, 2-cell, then minimal
 clearing offset (cell = live Glk/CharCell advance).
+
+<a id="ar-s093" data-chapter-id="ar-s093"></a><a id="ar-ch68"></a>
+## 68. Holistic statistics evidence ledger (D204) - PROPOSED
+
+**Lifecycle:** PROPOSED / pre-GO. Architecture companion to
+[D204](PRODUCTION_PLAN.md#pl-d204) and
+[`docs/statistics-discovery-plan-d204.md`](docs/statistics-discovery-plan-d204.md).
+No executable claim. Promote only after adversarial acceptance and the implementation
+matrix passes.
+
+**Authority and amendment.** This section composes section 60 rather than replacing
+`StatTracker`. Section 60's historical "probe is never issued unasked" rule remains the
+default, but D204 narrowly amends it: an operator-approved automatic live probe may occur
+only at the disclosed, dictionary-owned, statistics-surface demand gate below. There is no
+proven disposable interpreter clone in-tree today; shadow-VM probing is unavailable until
+a separate byte-equivalence spike succeeds.
+
+```mermaid
+flowchart TD
+  Submit[Accepted submit] --> TR[TurnRecorder owner]
+  TR --> Snap[Sealed status / output / globals / player props]
+  Output[BufferLine delta helper] --> CursorA[Independent speech cursor]
+  Output --> CursorS[Independent statistics cursor]
+  CursorS --> Snap
+  Snap --> Ledger[StatTurnEvidence ledger]
+  Grid[StatusGridDecoder] --> Ledger
+  Ledger --> Sem[Value shape + bound semantics]
+  Ledger --> Corr[Two-transition RAM correlation]
+  Ledger --> Events[Strong/corroborated event classifier]
+  Sem --> Model[Reconciled StatModel]
+  Corr --> Model
+  Events --> Model
+  Model --> HUD[Status/equipment HUD]
+  Demand[Statistics surface requested] --> Gate{Passive fact absent + safe idle + dictionary verb}
+  Gate -->|yes| Notice[First-probe disclosure once per game start]
+  Notice --> Probe[Existing submit choke; source stat-probe]
+  Probe --> TR
+```
+
+**Transaction contract.** `TurnRecorder` remains the only accepted-submit boundary.
+Binding canonical form is trim, whitespace collapse and lowercase only; raw VM text remains
+unchanged, punctuation is not stripped, and synonyms are not invented. A terminal output
+observer may close/publish the existing transaction but cannot synthesize another submit.
+The exact output feed uses BufferLine identity plus consumed suffix length and supports
+append, replacement, clear, redraw, restore and window recreation. ReadAloud and statistics
+own independent cursors; neither can mutate the other's progress.
+
+**Evidence contract.** Every metric keeps original label, value(s), `valueShape`,
+`boundSemantics`, source, submissionId, storyEpoch, locator, confidence and contradictions.
+Fractions migrate as unknown semantics. Only `hard-cap` clamps; `next-target` permits EXP
+threshold crossing; unknown never clamps. `StatusGridDecoder` remains the sole grid
+translator. Generic globals/player properties promote after two independent matching
+sealed-turn transitions, or one authoritative absolute observation plus its matching RAM
+move in the same sealed turn. Coincidence and conflicting ties fail closed.
+
+**Event contract.** Death/win is repeatable output-span evidence, not terminal app state.
+An asterisk banner's default classification is candidate-only; counts require a terminal/
+end-state transition, explicit game-authored death transition, or corroborated life-stat
+transition. Playthrough counters reset on module load/New Game/accepted RESTART, survive
+undo/restore without replay recount, and never persist as module facts.
+
+**Probe contract.** ProbeBroker shares the existing submission choke and serializes with
+manual Identify, `_carryProbeSubmitting`, navigation and restore. It may schedule only when
+the initial prompt and one ordinary accepted turn have settled, the player requests the
+statistics/equipment surface, the requested family is still absent, the exact verb belongs
+to the module dictionary, the preference is enabled, and idle LineInput has no draft or
+competing modal/CharInput/probe. Source `stat-probe` is visible to StatTracker and the real
+turn model but excluded from map, action usage, attributes, semantics, exits, narration and
+tutorial learning. A consumed turn remains counted. The first automatic probe in a game
+start discloses immediately before submission; later probes in that epoch are silent.
+Module load/New Game/RESTART create a new epoch and reset disclosure/per-verb budgets;
+undo/restore only reset capture generations. Failure imports nothing and cannot loop.
+
+**Isolation and cutover.** D204 owns an `off/shadow/on` valve. Shadow mode compares only;
+legacy and ledger paths cannot both publish UI/events. Existing v3 seeding, Wumpus health
+and carry metrics, carry property learning, D198 valves, numbered exits, D201 unnamed-room
+identity and `StatusGridDecoder` translation remain independent hard gates. No title,
+threshold, slot, property or death-phrase adapter is allowed.

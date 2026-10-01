@@ -208,9 +208,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 315 headings; 103 decision rows; 418 registered units.
-**Last registered unit:** `pl-s315`. **Body SHA-256 (LF):**
-`99dfe106649730e0f7873ff7333c8281071b70f42d7f043a1427e20ed25d6bc1`
+**Local manifest:** 316 headings; 103 decision rows; 419 registered units.
+**Last registered unit:** `pl-s316`. **Body SHA-256 (LF):**
+`09c5742f68953e54b641cf71d8f7f561d0e094c51e1936b58fa60409686f8c44`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -708,6 +708,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s313](#pl-s313) | D201 Early Inform unnamed identity and inventory recovery | H2 | Implemented / live-browser verified |
 | [pl-s314](#pl-s314) | D202 Map zoom LOD / world overview (hub-preserving) | H2 | Proposed / re-audit accepted; awaiting operator GO |
 | [pl-s315](#pl-s315) | D203 Mobile left exit-rail readable-content safety | H2 | Implemented / live-browser verified |
+| [pl-s316](#pl-s316) | D204 Holistic statistics discovery and repeatable event monitoring | H2 | Proposed / adversarial review |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -7628,3 +7629,74 @@ text only):
 
 The amendment itself changed no runtime files; the implementation recorded above followed
 after Codex re-audit ACCEPT and operator authorization.
+
+<a id="pl-s316" data-chapter-id="pl-s316"></a><a id="pl-d204"></a>
+## D204 Holistic statistics discovery and repeatable event monitoring — PROPOSED
+
+**Lifecycle:** PROPOSED / pre-GO. No runtime implementation is authorized until the
+standalone contract, this section, and architecture section 68 receive adversarial
+acceptance. Detailed research and verification matrix:
+[`docs/statistics-discovery-plan-d204.md`](docs/statistics-discovery-plan-d204.md).
+
+**Problem proved against current code.** `StatTracker` drops compound number words and
+all but one delta, treats every fraction denominator as a hard cap, associates SCORE
+semantics through mutable `MapTopology.lastCommand`, uses a whole-buffer length watermark,
+runs only from `WorldModel.apply`, deduplicates against tracker ticks instead of accepted
+turns, searches globals but not player properties, and defaults broad asterisk endings to
+death. These explain fragile EXP updates at level transitions, whitespace/input-route
+differences, missing final output, and uncounted repeatable deaths.
+
+**Single composed design.** Add one statistics analyzer to `TurnRecorder`; do not create a
+parallel turn owner, status translator, RAM reader, or event bus. Each sealed turn carries
+raw and binding-only canonical command (`trim`, collapse whitespace, lowercase), exact
+BufferLine output spans, status-grid metrics, globals, player properties, source and
+storyEpoch. Punctuation and unsubmitted synonyms do not canonicalize to SCORE. A
+domain-neutral append-aware output helper gives ReadAloud and statistics independent
+cursors; neither subscriber may advance the other.
+
+Every observation separates `valueShape` from `boundSemantics`. Existing fractions migrate
+as `unknown`, never implicitly `hard-cap`; EXP may use `next-target`, health/capacity may use
+`hard-cap`, and game-authored progress can remain `progress-goal` or unknown. Parse all
+bounded digit/English-cardinal deltas, including hyphenated and compound forms. Level, EXP
+and the next target reconcile in one UI transaction; crossing an old target is valid and a
+stale denominator is removed until replaced. Unknown labels remain visible.
+
+RAM promotion is evidence-driven and module-neutral. A global or player-property source
+requires two independent sealed-turn transitions, or one turn containing an authoritative
+absolute status/reply plus the matching move. Coincident values and disagreeing ties fail
+closed; proven equal-source sets may remain equivalent. `StatusGridDecoder` stays the sole
+grid translator. Wumpus percent health/carry value/weight, v3 paths, carry pins, D198 valves,
+numbered exits and D201 unnamed identity remain parallel and unchanged.
+
+**Deaths and wins.** Treat them as repeatable events, keyed by exact output-span identity,
+submission and story epoch. Broad `***...***` classification is candidate evidence only;
+increment requires an involuntary terminal/end-state transition, an explicit game-authored
+death transition, or a corroborated life-stat transition. Ordinary prose and low health are
+insufficient. Product-owned `Deaths this playthrough` / `Wins this playthrough` counters
+reset on module load, New Game and accepted RESTART; survive undo/restore in the same
+playthrough without replay recount; never enter learned-fact persistence.
+
+**Probe policy (operator-approved amendment to D188).** Passive status/output/RAM evidence
+and manual Identify remain first. The current tree has no proven disposable shadow VM, so
+the only planned automatic bootstrap is a disclosed live ProbeBroker transaction. It may
+run only after the initial prompt plus one settled ordinary turn, when the player requests
+the statistics/equipment surface, the requested score/EXP/level family remains unavailable,
+the exact verb is module-dictionary-owned, the preference is enabled, and LineInput is idle
+with no draft/dialog/CharInput/navigation/restore/Identify/carry/other probe. It uses the
+existing submit choke with source `stat-probe`; map, usage, attribute, semantic, exit,
+narration and tutorial learners ignore that source, while a real consumed story turn stays
+counted. The first automatic probe of a game start displays one truthful notice immediately
+before application; later probes in that game start are silent. Module load, New Game and
+accepted RESTART create a new storyEpoch and reset notice/per-verb budgets. Undo/restore
+only resynchronize within the epoch and do not re-notify or replenish a budget. Failure or
+ambiguity imports nothing and cannot loop. A future shadow clone remains a separate,
+byte-equivalence-gated spike and does not block D204.
+
+**Implementation order and release gates.** First add red-on-HEAD tests for all nine defects
+and freeze ReadAloud/TurnRecorder/D201/carry/v3 behavior. Then build analyzer/output capture
+in owner-local `off/shadow/on`, introduce the schema and migration, repair EXP, repair event
+classification, add generic player-property discovery, and only then enable ProbeBroker.
+The legacy writer and new analyzer are compare-only during shadow mode. Cutover requires
+LLR, RoTA, Zork, Deadline, Planetfall, Anchorhead, Wumpus, Slavers, Enchanter, LDoDoom and
+all D198/D201 isolation controls on desktop/mobile, plus a no-command census of every
+non-Glulx module. Only after parity may packaging/cache/APK and user documentation update.
