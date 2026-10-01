@@ -296,7 +296,7 @@ for parsing and diagnostic export. Suppression must be source/span-owned before 
 DOM text after the fact or consume neighboring story output. If exact suppression is unavailable, use the
 controlled visible probe path rather than risk corrupting transcript, actionables, or ReadAloud.
 
-The demand gate is testable: after the initial line prompt has settled, the player opens the
+The demand gate is testable: after the initial line prompt and any ordinary player turn have settled, the player opens the
 statistics/equipment surface and each requested metric or relationship must be fulfilled from a deterministic
 current source. Confirmed current RAM/property/status evidence satisfies the request without a command. A
 cached text reading or unrelated Score row does not satisfy missing current EXP, level, health, carry, or
@@ -312,7 +312,7 @@ Parser rejection, timeout, or ambiguous content imports no relationship and ends
 loop within the same opening. Manual Identify remains available.
 
 For D204, a **game start** is a module/interpreter load, explicit New Game, or accepted RESTART. Each creates
-    a new `storyEpoch` and resets the one-disclosure flag, and may therefore disclose again if a later demand
+a new `storyEpoch` and resets the one-disclosure flag, and may therefore disclose again if a later demand
 gate needs a live probe. Restore and undo create resynchronization generations within the same game start:
 they clear pending transactions/output cursors but do not re-notify. Manual Identify remains user-controlled.
 
@@ -351,8 +351,10 @@ D204 ledger does not depend on implementing shadow cloning.
 6. **Generalize discovery.** Correlate unknown status/reply metrics against globals and player properties;
    retain unknown labels; add conflict/demotion tests.
 7. **Implement ProbeBroker only after passive gates.** Prove safe-idle scheduling, `stat-probe` consumer
-   isolation, one notice at the first automatic probe of each game start, single-flight/once-per-verb limits,
-   transcript ownership, and real turn accounting. Then separately evaluate whether exact shadow cloning
+   isolation, one notice at the first automatic probe of each game start, every-open serial fulfillment,
+   transcript ownership, and real turn accounting. Never copy the Actionable inventory `display:none` hiding
+   technique for SCORE/DIAGNOSE, and replace Identify's score-plus-timer race with the same ordered broker.
+   Then separately evaluate whether exact shadow cloning
    can avoid the live turn.
 8. **Cut over by owner-local valve.** `off` preserves current code, `shadow` records diagnostics without UI
    changes, and `on` uses the ledger. No D88/D198 valve is reused for this unrelated ownership domain.

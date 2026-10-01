@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 316 headings; 103 decision rows; 419 registered units.
 **Last registered unit:** `pl-s316`. **Body SHA-256 (LF):**
-`fd67b0ff56576d06a2f3541d0a46f9e2a8e1827430af558b52a295e9a1e1ea4b`
+`1aaf42dcea74eafd32cd10952ef21065f4365e3c1c42676895c5a30e67282429`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -7696,7 +7696,9 @@ and queues fulfillment without clearing player input. Carry, SCORE, DIAGNOSE and
 required commands serialize as one ordered transaction for that opening, each waiting for
 its reply and the next idle prompt; none is dropped because another is also required.
 Rejection/timeout marks the affected field explicitly unavailable rather than leaving blank
-status and cannot loop within the same opening. Source `stat-probe` is ignored by map, usage,
+status and cannot loop within the same opening. Manual Identify uses that same broker; its
+SCORE and DIAGNOSE work may not overlap through timers. Statistics probes must not copy the
+Actionable inventory path's post-render `display:none` hiding. Source `stat-probe` is ignored by map, usage,
 attribute, semantic, exit, narration and tutorial learners while StatTracker and the real turn
 model receive the facts. The first automatic command of a game start displays one truthful
 notice that one or more module commands may run and consume turns; later openings in that

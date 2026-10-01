@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 93 headings; 0 decision rows; 93 registered units.
 **Last registered unit:** `ar-s093`. **Body SHA-256 (LF):**
-`63075b7125344974bd7eb25ae4d9b69fb70b9e58ebe45e362db83c72f44a53fb`
+`9aa80e8602d3ca74211fd3cd96242dbc36139a2edfad275f85495ba6e9ce8a7b`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -3514,7 +3514,7 @@ flowchart TD
   Corr --> Model
   Events --> Model
   Model --> HUD[Status/equipment HUD]
-  Demand[Statistics surface requested] --> Gate{Passive fact absent + safe idle + dictionary verb}
+  Demand[Statistics surface requested] --> Gate{Current deterministic fact absent + settled safe idle + dictionary verb}
   Gate -->|yes| Notice[First-probe disclosure once per game start]
   Notice --> Probe[Existing submit choke; source stat-probe]
   Probe --> TR
@@ -3554,6 +3554,8 @@ Blocked LineInput keeps the surface visibly `Checking...` and queues that same o
 clearing a draft. All required carry/SCORE/DIAGNOSE commands serialize in one ordered
 fulfillment transaction, each waiting for its reply and a new idle prompt. Rejection/timeout
 explicitly marks only the affected field unavailable and cannot loop within one opening.
+Manual Identify uses this broker too; SCORE and DIAGNOSE may not overlap through timers.
+Do not copy Actionable inventory's post-render `display:none` hiding for statistics probes.
 
 Exact Wumpus-style source/span ownership makes probes headless and silent: command echo and
 owned reply bypass visible transcript and narration but remain parser/diagnostic inputs. Without
