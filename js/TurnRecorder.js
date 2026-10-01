@@ -100,9 +100,11 @@ var TurnRecorder = {
     onAcceptedSubmit: function (command, source) {
         try {
             var event = Object.freeze({ submissionId: ++TurnRecorder._submissionId, command: String(command || ""), source: source || "unknown" });
-            if (typeof MapTopology !== "undefined") MapTopology.noteCommand(event.command);
-            if (typeof UndoRestoreSync !== "undefined") UndoRestoreSync.noteCommand(event.command);
-            if (typeof Navigator !== "undefined" && Navigator.Running && !Navigator.Submitting) Navigator.ClearQueue();
+            if (event.source !== "stat-probe") {
+                if (typeof MapTopology !== "undefined") MapTopology.noteCommand(event.command);
+                if (typeof UndoRestoreSync !== "undefined") UndoRestoreSync.noteCommand(event.command);
+                if (typeof Navigator !== "undefined" && Navigator.Running && !Navigator.Submitting) Navigator.ClearQueue();
+            }
             Object.keys(TurnRecorder._submitListeners).forEach(function (id) {
                 try { TurnRecorder._submitListeners[id](event); } catch (e) {}
             });
@@ -113,6 +115,7 @@ var TurnRecorder = {
             }
 
             var turn = {
+                submissionId: event.submissionId,
                 command: String(command || ""),
                 source: source || "unknown",
                 startLine: lineCountNow,
@@ -126,6 +129,7 @@ var TurnRecorder = {
 
             TurnRecorder._analyzers.forEach(function (a) {
                 try {
+                    if (turn.source === "stat-probe" && a.id !== "d204-stat-ledger") return;
                     var interest = a.prepare ? a.prepare(turn) : null;
                     if (!interest) return; // not interested in this turn -- cheapest path
                     turn._interests.push({ analyzer: a, interest: interest });

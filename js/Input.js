@@ -29,8 +29,9 @@ var Input = {
 
     Value: () => $(".Input.LineInput").val(),
 
-    Inject: (text, hitEnter) => {
-        try { if (typeof MapTopology !== "undefined") MapTopology.noteCommand(arguments[0]); } catch (e) {}
+    Inject: (text, hitEnter, source) => {
+        source = source || "inject";
+        try { if (source !== "stat-probe" && typeof MapTopology !== "undefined") MapTopology.noteCommand(text); } catch (e) {}
         if (!$(".Input.LineInput").length || (hitEnter && (Message.IsOpen || $("#dialog").length))) return false;
         if (!$(".Input.LineInput:visible").length
             // D192 (grok round 2): the `equip-open` escape has been removed.
@@ -57,18 +58,18 @@ var Input = {
                appended input value (not the raw `text` argument), since Inject
                appends to whatever the box already held. */
             // D100: new player turn — clear ReadAloud fingerprints (Claude #650).
-            try { if (typeof ReadAloud !== "undefined" && ReadAloud.onPlayerTurn) ReadAloud.onPlayerTurn(); } catch (eRA) {}
+            try { if (source !== "stat-probe" && typeof ReadAloud !== "undefined" && ReadAloud.onPlayerTurn) ReadAloud.onPlayerTurn(); } catch (eRA) {}
             try {
+                var finalValue = $(".Input.LineInput").val();
                 if (typeof AttrCalibrator !== "undefined") {
-                    var finalValue = $(".Input.LineInput").val();
                     // D86 CUTOVER: the legacy observeCommand/observeLocation/
                     // observeVerbBehavior calls are removed -- TurnRecorder's
                     // three registered analyzers (js/AttrCalibrator.js) are
                     // now the sole real writers, proven byte-for-byte
                     // equivalent via live A/B proofs before this cutover.
-                    if (typeof TurnRecorder !== "undefined" && TurnRecorder.onAcceptedSubmit) {
-                        TurnRecorder.onAcceptedSubmit(finalValue, "inject");
-                    }
+                }
+                if (typeof TurnRecorder !== "undefined" && TurnRecorder.onAcceptedSubmit) {
+                    TurnRecorder.onAcceptedSubmit(finalValue, source);
                 }
             } catch (eC) {}
 

@@ -8,6 +8,15 @@ var ParchLockMap = {
     AllowUpdate: true,
     Visible: false,
     Scale: 1,
+    MapMode: "hub",
+    OverviewThreshold: 0.82,
+    OverviewHysteresis: 0.05,
+    GraphRevision: 0,
+    OverviewLayoutRevision: -1,
+    OverviewCoords: {},
+    OverviewEdges: [],
+    ActivePointers: {},
+    PinchState: null,
     PanX: 0,
     PanY: 0,
     IsDragging: false,
@@ -33,6 +42,7 @@ var ParchLockMap = {
         ParchLockMap.CreateRooms(["w", "here", "e"]);
         ParchLockMap.CreateRooms(["sw", "s", "se"]);
         ParchLockMap.CreateRooms(["down", "out"]);
+        $("<div>").attr("id", "map-overview").attr("aria-label", "Known world overview").appendTo("#map #rooms");
 
         ParchLockMap.CreateMiniMap("horizontal top", ["nw", "n", "ne"]);
         ParchLockMap.CreateMiniMap("horizontal bottom", ["sw", "s", "se"]);
@@ -53,10 +63,11 @@ var ParchLockMap = {
         $("#zoom-reset").click(ParchLockMap.ResetViewport);
         $("#map #rooms-shell")
             .on("wheel", ParchLockMap.MapWheel)
-            .on("pointerdown", ParchLockMap.StartDrag);
+            .on("pointerdown", ParchLockMap.PointerDown)
+            .on("lostpointercapture", ParchLockMap.PointerUp);
         $(document)
-            .on("pointermove", ParchLockMap.Drag)
-            .on("pointerup pointercancel", ParchLockMap.EndDrag);
+            .on("pointermove", ParchLockMap.PointerMove)
+            .on("pointerup pointercancel", ParchLockMap.PointerUp);
 
         // D112: map controls (Center/Zoom/Reset/Maps) collapsible -- open
         // by default on desktop, collapsed by default on the mobile-compact
@@ -72,6 +83,11 @@ var ParchLockMap = {
         });
         ParchLockMap.ApplyNotesAddButtonPref();
         ParchLockMap.RebuildNotesList();
+
+        $(window).off("resize.pmMapOverview").on("resize.pmMapOverview", function () {
+            ParchLockMap.GraphRevision++;
+            if (ParchLockMap.MapMode === "overview") ParchLockMap.DrawOverview(ParchLockMap.DisplayedRoomId);
+        });
 
         ParchLockMap.AutoOpenPending = $(window).width() >= 850;
     },
@@ -159,6 +175,7 @@ var ParchLockMap = {
             return;
         }
         $("body").toggleClass("map-open");
+        if (!document.body.classList.contains("map-open")) ParchLockMap.ClearGesture();
     },
 
     Show: () => {
@@ -169,6 +186,7 @@ var ParchLockMap = {
     Hide: () => {
 
         $("body").removeClass("map-open");
+        ParchLockMap.ClearGesture();
     },
 
     CreateRooms: (rooms) => {
@@ -222,6 +240,12 @@ var ParchLockMap = {
         if (typeof roomName === "number") return ParchLockMap.Rooms[roomName];
         var matches = ParchLockMap.Rooms.filter(r => r && r.Name.toLowerCase() === String(roomName || "").toLowerCase());
         return matches.length === 1 ? matches[0] : undefined;
+    },
+
+    GetRoomById: function (id) {
+        return (ParchLockMap.Rooms || []).find(function (room) {
+            return room && String(room.Id) === String(id);
+        });
     },
 
     GetCurrentRoom: () => ParchLockMap.CurrentRoomId != null
@@ -364,6 +388,11 @@ var ParchLockMap = {
             && !MapTopology.isPlayerFacingRoom(room)) return;
         ParchLockMap.DisplayedRoom = room.Name;
         ParchLockMap.DisplayedRoomId = room.Id;
+
+        if (ParchLockMap.MapMode === "overview") {
+            ParchLockMap.DrawOverview(room.Id);
+            return;
+        }
 
         ParchLockMap.DrawRoom("here", room);
 
@@ -811,6 +840,7 @@ var ParchLockMap = {
     // out of sync with any of them.
     RefreshMapPanels: () => {
 
+        ParchLockMap.GraphRevision++;
         ParchLockMap.Save();
         ParchLockMap.Draw();
         ParchLockMap.RebuildRoomsList();
@@ -962,16 +992,100 @@ var ParchLockMap = {
         ParchLockMap.Draw(roomName);
     },
 
+    UpdateMapMode: function () {
+        var next = ParchLockMap.MapMode;
+        if (next === "hub" && ParchLockMap.Scale < ParchLockMap.OverviewThreshold) next = "overview";
+        else if (next === "overview" && ParchLockMap.Scale >= ParchLockMap.OverviewThreshold + ParchLockMap.OverviewHysteresis) next = "hub";
+        if (next === ParchLockMap.MapMode) return false;
+        ParchLockMap.MapMode = next;
+        $("#map #rooms").toggleClass("overview-mode", next === "overview");
+        if (next === "overview") ParchLockMap.DrawOverview(ParchLockMap.DisplayedRoomId);
+        else {
+            $("#map #rooms").css({ width: "", height: "" });
+            ParchLockMap.Draw(ParchLockMap.GetRoomById(ParchLockMap.DisplayedRoomId) || ParchLockMap.GetCurrentRoom());
+        }
+        return true;
+    },
+
+    DrawOverview: function (anchorId) {
+        var anchor = ParchLockMap.GetRoomById(anchorId) || ParchLockMap.GetCurrentRoom();
+        if (anchor) {
+            ParchLockMap.DisplayedRoom = anchor.Name;
+            ParchLockMap.DisplayedRoomId = anchor.Id;
+        }
+        var eligible = (ParchLockMap.Rooms || []).filter(function (room) {
+            return typeof MapTopology === "undefined" || !MapTopology.isOverviewEligible
+                || MapTopology.isOverviewEligible(room, anchor);
+        });
+        var host = document.getElementById("map-overview");
+        if (!host || !eligible.length || typeof MapBeautify === "undefined" || !MapBeautify.overviewLayout) return;
+        var coords = MapBeautify.overviewLayout(eligible, anchor && anchor.Id);
+        ParchLockMap.OverviewCoords = coords;
+        ParchLockMap.OverviewEdges = [];
+        host.replaceChildren();
+        var pitchX = 176, pitchY = 100, pad = 70;
+        var values = Object.keys(coords).map(function (id) { return coords[id]; });
+        var minX = Math.min.apply(Math, values.map(function (p) { return p.x; }));
+        var minY = Math.min.apply(Math, values.map(function (p) { return p.y; }));
+        var maxX = Math.max.apply(Math, values.map(function (p) { return p.x; }));
+        var maxY = Math.max.apply(Math, values.map(function (p) { return p.y; }));
+        host.style.width = ((maxX - minX) * pitchX + pad * 2 + 150) + "px";
+        host.style.height = ((maxY - minY) * pitchY + pad * 2 + 64) + "px";
+        $("#map #rooms").css({ width: host.style.width, height: host.style.height });
+        eligible.slice().sort(function (a, b) { return String(a.Id).localeCompare(String(b.Id), undefined, { numeric: true }); }).forEach(function (room) {
+            var p = coords[String(room.Id)], button = document.createElement("button");
+            button.type = "button";
+            button.className = "overview-room";
+            if (ParchLockMap.IsCurrentRoom(room)) button.classList.add("here");
+            if (anchor && String(anchor.Id) === String(room.Id)) button.classList.add("displayed");
+            button.dataset.roomId = room.Id;
+            button.textContent = room.Name;
+            button.title = room.Name;
+            button.setAttribute("aria-label", "Center map on " + room.Name);
+            if (ParchLockMap.IsCurrentRoom(room)) button.setAttribute("aria-current", "location");
+            button.style.left = (pad + (p.x - minX) * pitchX) + "px";
+            button.style.top = (pad + (p.y - minY) * pitchY) + "px";
+            button.addEventListener("click", function (event) {
+                event.stopPropagation();
+                if (ParchLockMap.DragMoved) return;
+                ParchLockMap.DrawOverview(room.Id);
+                requestAnimationFrame(function () { ParchLockMap.CenterOverviewRoom(room.Id); });
+            });
+            host.appendChild(button);
+        });
+        var visible = {};
+        eligible.forEach(function (room) { visible[String(room.Id)] = true; });
+        eligible.forEach(function (room) {
+            Object.keys(room.Exits || {}).sort().forEach(function (label) {
+                var toId = String(room.Exits[label]);
+                if (!visible[toId]) return;
+                var meta = (room.ExitMeta || {})[label] || {};
+                ParchLockMap.OverviewEdges.push({ from: String(room.Id), to: toId, label: label, tentative: !!(meta.hinted || meta.ambiguousDiagonal) });
+            });
+        });
+        ParchLockMap.OverviewLayoutRevision = ParchLockMap.GraphRevision;
+        requestAnimationFrame(WorkspaceUI.DrawPaths);
+    },
+
+    CenterOverviewRoom: function (id) {
+        var shell = document.getElementById("rooms-shell"), node = document.querySelector('#map-overview .overview-room[data-room-id="' + String(id).replace(/"/g, "") + '"]');
+        if (!shell || !node) return;
+        var sr = shell.getBoundingClientRect(), nr = node.getBoundingClientRect();
+        ParchLockMap.PanX += sr.left + sr.width / 2 - (nr.left + nr.width / 2);
+        ParchLockMap.PanY += sr.top + sr.height / 2 - (nr.top + nr.height / 2);
+        ParchLockMap.ApplyViewport();
+    },
+
     ApplyViewport: () => {
 
         $("#map #rooms").css("transform", "translate(" + ParchLockMap.PanX + "px, " + ParchLockMap.PanY + "px) scale(" + ParchLockMap.Scale + ")");
         $("#zoom-reset").text(Math.round(ParchLockMap.Scale * 100) + "%");
     },
 
-    Zoom: (delta, originX, originY) => {
+    SetScale: (targetScale, originX, originY) => {
 
         var oldScale = ParchLockMap.Scale;
-        var nextScale = Math.max(0.65, Math.min(1.8, Math.round((oldScale + delta) * 100) / 100));
+        var nextScale = Math.max(0.45, Math.min(1.8, Math.round(targetScale * 100) / 100));
         if (nextScale == oldScale) return;
 
         if (originX !== undefined && originY !== undefined) {
@@ -987,20 +1101,98 @@ var ParchLockMap = {
 
         ParchLockMap.Scale = nextScale;
         ParchLockMap.ApplyViewport();
+        ParchLockMap.UpdateMapMode();
+    },
+
+    Zoom: (delta, originX, originY) => {
+        ParchLockMap.SetScale(ParchLockMap.Scale + delta, originX, originY);
     },
 
     ResetViewport: () => {
 
         ParchLockMap.Scale = 1;
+        ParchLockMap.MapMode = "hub";
         ParchLockMap.PanX = 0;
         ParchLockMap.PanY = 0;
+        ParchLockMap.ClearGesture();
+        $("#map #rooms").removeClass("overview-mode");
+        $("#map #rooms").css({ width: "", height: "" });
         ParchLockMap.ApplyViewport();
+        ParchLockMap.Draw(ParchLockMap.GetCurrentRoom());
     },
 
     MapWheel: (e) => {
 
         e.preventDefault();
         ParchLockMap.Zoom(e.originalEvent.deltaY < 0 ? 0.1 : -0.1, e.originalEvent.clientX, e.originalEvent.clientY);
+    },
+
+    PointerDown: function (e) {
+        var ev = e.originalEvent || e;
+        if (ev.button != null && ev.button !== 0) return;
+        if ($(e.target).closest("button, input, .icon").length) return;
+        ParchLockMap.ActivePointers[ev.pointerId] = { x: ev.clientX, y: ev.clientY, type: ev.pointerType || "mouse" };
+        try { if (e.currentTarget.setPointerCapture) e.currentTarget.setPointerCapture(ev.pointerId); } catch (captureError) {}
+        var ids = Object.keys(ParchLockMap.ActivePointers);
+        if (ids.length >= 2) {
+            var a = ParchLockMap.ActivePointers[ids[0]], b = ParchLockMap.ActivePointers[ids[1]];
+            ParchLockMap.IsDragging = false;
+            ParchLockMap.DragMoved = true;
+            ParchLockMap.PinchState = {
+                distance: Math.max(1, Math.hypot(b.x - a.x, b.y - a.y)),
+                scale: ParchLockMap.Scale,
+                midpointX: (a.x + b.x) / 2,
+                midpointY: (a.y + b.y) / 2
+            };
+            $("#map #rooms").addClass("dragging");
+            if (ev.cancelable) ev.preventDefault();
+            return;
+        }
+        ParchLockMap.StartDrag(e);
+    },
+
+    PointerMove: function (e) {
+        var ev = e.originalEvent || e, pointer = ParchLockMap.ActivePointers[ev.pointerId];
+        if (!pointer) return;
+        pointer.x = ev.clientX; pointer.y = ev.clientY;
+        var ids = Object.keys(ParchLockMap.ActivePointers);
+        if (ParchLockMap.PinchState && ids.length >= 2) {
+            var a = ParchLockMap.ActivePointers[ids[0]], b = ParchLockMap.ActivePointers[ids[1]], state = ParchLockMap.PinchState;
+            var distance = Math.max(1, Math.hypot(b.x - a.x, b.y - a.y));
+            var midpointX = (a.x + b.x) / 2, midpointY = (a.y + b.y) / 2;
+            ParchLockMap.SetScale(state.scale * distance / state.distance, midpointX, midpointY);
+            ParchLockMap.PanX += midpointX - state.midpointX;
+            ParchLockMap.PanY += midpointY - state.midpointY;
+            state.midpointX = midpointX; state.midpointY = midpointY;
+            ParchLockMap.ApplyViewport();
+            if (ev.cancelable) ev.preventDefault();
+            return;
+        }
+        ParchLockMap.Drag(e);
+    },
+
+    PointerUp: function (e) {
+        var ev = e.originalEvent || e;
+        delete ParchLockMap.ActivePointers[ev.pointerId];
+        var ids = Object.keys(ParchLockMap.ActivePointers);
+        if (ParchLockMap.PinchState) {
+            ParchLockMap.PinchState = null;
+            if (ids.length === 1) {
+                var p = ParchLockMap.ActivePointers[ids[0]];
+                ParchLockMap.IsDragging = true;
+                ParchLockMap.DragStartX = p.x; ParchLockMap.DragStartY = p.y;
+                ParchLockMap.DragPanX = ParchLockMap.PanX; ParchLockMap.DragPanY = ParchLockMap.PanY;
+            } else ParchLockMap.EndDrag();
+            return;
+        }
+        if (!ids.length) ParchLockMap.EndDrag();
+    },
+
+    ClearGesture: function () {
+        ParchLockMap.ActivePointers = {};
+        ParchLockMap.PinchState = null;
+        ParchLockMap.IsDragging = false;
+        $("#map #rooms").removeClass("dragging");
     },
 
     StartDrag: (e) => {

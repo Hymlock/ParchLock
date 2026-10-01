@@ -36,6 +36,50 @@ var MapTopology = {
         if (room.Name && !MapTopology.isInternalRoomName(room.Name)) return true;
         return false;
     },
+    // D202: overview is stricter than the Known Rooms display filter. A
+    // named look-ahead stub is not overview-visible until visited, current,
+    // or already visible as a one-hop neighbor of the displayed hub.
+    isOverviewEligible: function (room, displayedRoom) {
+        if (!room || room.Id == null || !MapTopology.isPlayerFacingRoom(room)) return false;
+        var current = null;
+        try { current = typeof ParchLockMap !== "undefined" && ParchLockMap.GetCurrentRoom(); } catch (e) {}
+        if (current && String(current.Id) === String(room.Id)) return true;
+        if (room.VisitedName) return true;
+        var hub = displayedRoom;
+        if (!hub) {
+            try { hub = typeof ParchLockMap !== "undefined" && ParchLockMap.GetRoom(ParchLockMap.DisplayedRoomId); } catch (e2) {}
+        }
+        if (!hub) return false;
+        var visibleNeighbors = MapTopology.overviewNeighborIds(hub);
+        var direct = visibleNeighbors.some(function (id) { return String(id) === String(room.Id); });
+        if (direct) return true;
+        return MapTopology.overviewNeighborIds(room).some(function (id) {
+            return String(id) === String(hub.Id);
+        });
+    },
+    // Mirror the 12-slot hub renderer: system exit-N placeholders do not
+    // reveal destinations, duplicate destinations consume one slot, and no
+    // thirteenth custom edge can leak into overview before the hub can show it.
+    overviewNeighborIds: function (room) {
+        var slots = ["n", "ne", "e", "se", "s", "sw", "w", "nw", "up", "down", "in", "out"];
+        var claimed = {}, custom = 0, shown = {}, out = [];
+        Object.keys((room && room.Exits) || {}).forEach(function (key) {
+            if (slots.indexOf(key) >= 0) claimed[key] = true;
+        });
+        Object.keys((room && room.Exits) || {}).forEach(function (key) {
+            if (MapTopology.isSystemPropExitKey(key)) return;
+            var id = room.Exits[key];
+            if (id == null || shown[String(id)]) return;
+            if (slots.indexOf(key) < 0) {
+                while (custom < slots.length && claimed[slots[custom]]) custom++;
+                if (custom >= slots.length) return;
+                claimed[slots[custom++]] = true;
+            }
+            shown[String(id)] = true;
+            out.push(id);
+        });
+        return out;
+    },
     normalizeLabel: function (label) {
         var k = String(label || "").toLowerCase().trim();
         var aliases = { n: "north", s: "south", e: "east", w: "west", u: "up", d: "down", ne: "northeast", nw: "northwest", se: "southeast", sw: "southwest" };

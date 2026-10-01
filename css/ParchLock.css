@@ -2317,6 +2317,20 @@ button:hover
 body.tools-button-visible #tools-toggle { display: block; }
 #rooms-shell { position: relative; overflow: hidden; min-height: 44vh; touch-action: none; cursor: grab; }
 #map #rooms { margin-top: 0; }
+#map-overview { display: none; position: relative; min-width: 100%; min-height: 100%; }
+#map #rooms.overview-mode { display: block; position: relative; }
+#map #rooms.overview-mode > div:not(#map-overview) { visibility: hidden; pointer-events: none; }
+#map #rooms.overview-mode #map-overview { display: block; visibility: visible; pointer-events: auto; }
+#map-overview .overview-room {
+	position: absolute; width: 150px; min-height: 52px; padding: 7px 10px;
+	border: 1px solid var(--pl-border); border-radius: 6px; color: var(--pl-text);
+	background: var(--pl-surface-2); overflow: hidden; text-overflow: ellipsis;
+	white-space: nowrap; cursor: pointer; z-index: 2;
+}
+#map-overview .overview-room:hover, #map-overview .overview-room:focus-visible { border-color: var(--pl-accent); }
+#map-overview .overview-room.here { color: #07100d; background: var(--pl-accent); border-color: var(--pl-accent); }
+#map-overview .overview-room.displayed { outline: 2px solid var(--pl-accent); outline-offset: 2px; }
+#map #rooms.overview-mode .map-paths line.tentative { stroke-dasharray: 6 5; opacity: 0.65; }
 #map { overflow: hidden auto; }
 body.native-dialog-open #map, body.app-dialog-open #map { visibility: hidden; transition: none; }
 #windowport { overflow-x: clip; }
@@ -2652,6 +2666,13 @@ html.pl-debug-translator #pl-hud-metrics { display: flex !important; }
 	--pl-mobile-shell-right: calc(var(--pl-safe-right) + var(--pl-mobile-edge-gutter));
 	--pl-mobile-shell-width: calc(100vw - var(--pl-mobile-shell-left) - var(--pl-mobile-shell-right));
 	--pl-mobile-readable-left: calc(var(--pl-mobile-shell-left) + var(--pl-mobile-cell-padding));
+}
+
+/* D203 closeout: phones at 340px and wider have enough truthful cell width
+ * to reserve the complete Map-tab strip. Keep the 320px fallback at 8px so
+ * D94's 48-column minimum remains intact there. */
+@media (min-width: 340px) and (max-width: 850px) {
+	body.pl-mobile { --pl-mobile-shell-right: calc(var(--pl-safe-right) + var(--pl-map-tab-width)); }
 }
 
 /* D133: the desktop line input gives up this much width for the mic button. */

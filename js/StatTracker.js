@@ -179,10 +179,10 @@ var StatTracker = {
             if (key !== "experience") return;
             var n = parseInt(value, 10);
             if (!isFinite(n)) return;
-            var rec = { key: key, label: "EXP", value: n, max: null, unit: "plain" };
+            var rec = { key: key, label: "EXP", value: n, max: null, unit: "plain", boundSemantics: "unknown" };
             if (maximum != null && maximum !== "") {
                 var mx = parseInt(maximum, 10);
-                if (isFinite(mx)) { rec.max = mx; rec.unit = "fraction"; }
+                if (isFinite(mx)) { rec.max = mx; rec.unit = "fraction"; rec.boundSemantics = "next-target"; }
             }
             // A later match may add a denominator the earlier one lacked.
             if (out[key] && out[key].max != null && rec.max == null) {
@@ -214,6 +214,7 @@ var StatTracker = {
                     // threshold. At EXP 20 the displayed denominator is 50.
                     out.experience.max = need[2] ? out.experience.value + req : req;
                     out.experience.unit = "fraction";
+                    out.experience.boundSemantics = "next-target";
                 }
             }
         }
@@ -253,7 +254,7 @@ var StatTracker = {
                 model.stats[k] = {
                     key: k, label: rec.label, value: rec.value,
                     max: rec.max != null ? rec.max : null,
-                    unit: unit, kind: kind,
+                    unit: unit, kind: kind, boundSemantics: rec.boundSemantics || "unknown",
                     seen: StatTracker.CONFIRM_SAMPLES, source: "printed",
                     confirmed: true, lastChange: null
                 };
@@ -264,6 +265,7 @@ var StatTracker = {
             prev.label = rec.label || prev.label;
             prev.seen = Math.max(prev.seen || 0, StatTracker.CONFIRM_SAMPLES);
             prev.confirmed = true;
+            prev.boundSemantics = rec.boundSemantics || prev.boundSemantics || "unknown";
             if (prev.source !== "status" && prev.source !== "global") prev.source = prev.source || "printed";
             // Denominator is re-read when the story states it again (same rule
             // as n/m gauges elsewhere): never invent, never latch forever.
@@ -271,6 +273,10 @@ var StatTracker = {
                 prev.max = rec.max;
                 prev.unit = "fraction";
                 prev.kind = "gauge";
+            } else if (prev.boundSemantics === "next-target" && prev.max != null && rec.value >= prev.max) {
+                prev.max = null;
+                prev.unit = "plain";
+                prev.kind = "counter";
             }
             if (rec.value !== prev.value) {
                 var delta = rec.value - prev.value;
@@ -358,17 +364,41 @@ var StatTracker = {
         fourteen: 14, fifteen: 15, sixteen: 16, seventeen: 17, eighteen: 18,
         nineteen: 19, twenty: 20, thirty: 30, forty: 40, fifty: 50
     },
-    SCORE_DELTA: /score\s+(?:has\s+)?just\s+gone\s+(up|down)\s+by\s+([a-z]+|\d+)\s+point/i,
+    SCORE_DELTA: /score\s+(?:has\s+)?just\s+gone\s+(up|down)\s+by\s+([a-z][a-z -]*?|\d+)\s+points?\b/ig,
+
+    parseCardinal: function (raw) {
+        raw = String(raw || "").toLowerCase().trim();
+        if (/^\d+$/.test(raw)) return parseInt(raw, 10);
+        var small = Object.assign({}, StatTracker.NUMBER_WORDS, {
+            sixty: 60, seventy: 70, eighty: 80, ninety: 90
+        });
+        var total = 0, group = 0, used = false, invalid = false;
+        raw.replace(/-/g, " ").split(/\s+/).forEach(function (word) {
+            if (!word || word === "and") return;
+            if (small[word] != null) { group += small[word]; used = true; return; }
+            if (word === "hundred" && group) { group *= 100; used = true; return; }
+            if (word === "thousand" && group) { total += group * 1000; group = 0; used = true; return; }
+            invalid = true;
+        });
+        return used && !invalid ? total + group : null;
+    },
+
+    parseScoreDeltas: function (text) {
+        var out = [], re = new RegExp(StatTracker.SCORE_DELTA.source, "ig"), m;
+        while ((m = re.exec(String(text || "")))) {
+            var n = StatTracker.parseCardinal(m[2]);
+            if (!(n > 0)) continue;
+            out.push({ value: /down/i.test(m[1]) ? -n : n, text: m[0] });
+        }
+        return out;
+    },
 
     parseScoreDelta: (text) => {
-        var m = StatTracker.SCORE_DELTA.exec(String(text || ""));
-        if (!m) { StatTracker._pendingDeltaText = null; return null; }
+        var all = StatTracker.parseScoreDeltas(text);
+        if (!all.length) { StatTracker._pendingDeltaText = null; return null; }
         // D175: the matched notification itself is part of the replay key.
-        StatTracker._pendingDeltaText = m[0];
-        var raw = String(m[2]).toLowerCase();
-        var n = /^\d+$/.test(raw) ? parseInt(raw, 10) : StatTracker.NUMBER_WORDS[raw];
-        if (!n || !isFinite(n)) return null;
-        return /down/i.test(m[1]) ? -n : n;
+        StatTracker._pendingDeltaText = all.map(function (d) { return d.text; }).join(" | ");
+        return all.reduce(function (sum, d) { return sum + d.value; }, 0);
     },
 
     // D173: count an announced change against the total the game itself last
@@ -586,7 +616,8 @@ var StatTracker = {
         if (!t) return null;
         if (/\b(won|win|victorio|triumph|congratulat)/.test(t)) return "win";
         if (/\b(quit|session|have left|end of session)/.test(t)) return "quit";
-        return "death";
+        if (/\b(died|dead|death|killed|slain|fatal|eaten|devoured|lost your life|game over)\b/.test(t)) return "death";
+        return "candidate";
     },
     // Returns every banner in a chunk of text, classified.
     bannersIn: (text) => {
@@ -604,7 +635,9 @@ var StatTracker = {
     blank: () => ({
         stats: {},          // key -> stat record
         globals: {},        // key -> confirmed global index
+        properties: {},     // key -> confirmed player property number
         carry: {},          // field -> learned individual-property pin
+        evidence: [],       // bounded D204 provenance ledger
         deaths: 0,
         wins: 0,
         scoreUnavailable: false,
@@ -613,6 +646,23 @@ var StatTracker = {
         probed: false,
         seenBanners: {}
     }),
+
+    _storyEpoch: 0,
+    recordEvidence: function (fact) {
+        var model = StatTracker.model();
+        if (!model.evidence) model.evidence = [];
+        var rec = Object.assign({
+            storyEpoch: StatTracker._storyEpoch,
+            submissionId: null,
+            valueShape: "scalar",
+            boundSemantics: "unknown",
+            confidence: "authoritative",
+            contradictions: 0
+        }, fact || {});
+        model.evidence.push(rec);
+        if (model.evidence.length > 160) model.evidence.splice(0, model.evidence.length - 160);
+        return rec;
+    },
 
     load: (key) => {
         var m = StatTracker.blank();
@@ -684,7 +734,7 @@ var StatTracker = {
     // score and which individual property holds an item's value are facts about
     // the compiled file, true for every play of it, so re-derivation is
     // immediate rather than starting again from nothing.
-    forgetReadings: function (m) {
+    forgetReadings: function (m, resetPlaythrough) {
         if (!m) return m;
         Object.keys(m.stats || {}).forEach(function (k) {
             var s = m.stats[k];
@@ -708,9 +758,11 @@ var StatTracker = {
             }
         });
         m.seenDeltas = {};
-        m.seenBanners = {};
-        m.deaths = 0;
-        m.wins = 0;
+        if (resetPlaythrough !== false) {
+            m.seenBanners = {};
+            m.deaths = 0;
+            m.wins = 0;
+        }
         m.probed = false;
         return m;
     },
@@ -722,10 +774,14 @@ var StatTracker = {
     // happened to overwrite them. Raised by the grok seat's audit of D178.
     Resync: function () {
         try {
-            StatTracker.forgetReadings(StatTracker.model());
+            StatTracker.forgetReadings(StatTracker.model(), false);
             StatTracker._samples = [];
             StatTracker._probePending = null;
             StatTracker._probeTurns = 0;
+            StatTracker._probeQueue = [];
+            StatTracker._probeActive = null;
+            clearTimeout(StatTracker._probeTimer);
+            StatTracker._probeTimer = null;
             StatTracker._events = [];
             StatTracker._pendingDelta = null;
             StatTracker._pendingDeltaText = null;
@@ -735,10 +791,7 @@ var StatTracker = {
             // belongs to the game that queued it, and a "useless" verdict
             // belongs to the story that earned it.
             StatTracker.clearCarryProbe();
-            if (typeof document !== "undefined") {
-                var buffer = document.querySelector(".BufferWindow");
-                StatTracker._lastBufferLen = buffer ? String(buffer.innerText || buffer.textContent || "").length : 0;
-            }
+            StatTracker.primeOutputCursor();
             if (StatTracker._key) StatTracker.save(StatTracker._key, StatTracker.model());
         } catch (e) {}
     },
@@ -748,7 +801,9 @@ var StatTracker = {
         StatTracker._diagnoseTimer = null;
         StatTracker._pendingDelta = null;
         StatTracker._pendingDeltaText = null;
-        StatTracker._lastBufferLen = 0;
+        StatTracker._lineCursor = typeof WeakMap !== "undefined" ? new WeakMap() : null;
+        StatTracker._lineIds = typeof WeakMap !== "undefined" ? new WeakMap() : null;
+        StatTracker._nextLineId = 1;
         StatTracker._samples = [];
         StatTracker._events = [];
         StatTracker._model = StatTracker.blank();
@@ -756,6 +811,11 @@ var StatTracker = {
         StatTracker._v3 = null;
         StatTracker._probePending = null;
         StatTracker._probeTurns = 0;
+        StatTracker._probeQueue = [];
+        StatTracker._probeActive = null;
+        clearTimeout(StatTracker._probeTimer);
+        StatTracker._probeTimer = null;
+        StatTracker._lastSubmission = null;
         StatTracker.clearCarryProbe();          // D191
     },
 
@@ -787,6 +847,55 @@ var StatTracker = {
         return g;
     },
 
+    readPlayerProperties: function (mem) {
+        var out = {};
+        try {
+            var payload = typeof WorldModel !== "undefined" && WorldModel.lastPayload;
+            var playerId = payload && payload.playerId;
+            if (!mem || playerId == null || typeof ZRamReader === "undefined") return out;
+            (ZRamReader.listProps(mem, playerId) || []).forEach(function (prop) {
+                if (!prop || prop.num == null || prop.sz > 2) return;
+                var value = ZRamReader.readProp(mem, playerId, prop.num);
+                if (typeof value === "number" && isFinite(value)) out[prop.num] = value;
+            });
+        } catch (e) {}
+        return out;
+    },
+
+    promotePlayerProperties: function (model) {
+        var samples = StatTracker._samples.filter(function (s) { return s.playerProps; });
+        if (samples.length < StatTracker.CONFIRM_SAMPLES) return;
+        Object.keys(model.stats).forEach(function (key) {
+            if (model.properties[key] != null || model.globals[key] != null) return;
+            var withStat = samples.filter(function (s) { return s.observed[key]; });
+            if (withStat.length < StatTracker.CONFIRM_SAMPLES) return;
+            var values = withStat.map(function (s) { return s.observed[key].value; });
+            if (new Set(values).size < 2) return;
+            var candidates = Object.keys(withStat[0].playerProps || {}).filter(function (prop) {
+                return withStat.every(function (sample) { return sample.playerProps[prop] === sample.observed[key].value; });
+            });
+            if (candidates.length === 1) {
+                model.properties[key] = parseInt(candidates[0], 10);
+                model.stats[key].source = "player-prop:" + candidates[0];
+            }
+        });
+    },
+
+    readConfirmedProperties: function (model, properties) {
+        Object.keys(model.properties || {}).forEach(function (key) {
+            var prop = model.properties[key], stat = model.stats[key], value = properties[prop];
+            if (!stat || typeof value !== "number") return;
+            if (stat.source === "status" && stat.value !== value) { delete model.properties[key]; return; }
+            if (stat.value !== value) {
+                var delta = value - stat.value;
+                stat.value = value;
+                if (stat.confirmed) { stat.lastChange = delta; StatTracker.emitChange(model, key, delta); }
+            }
+            stat.confirmed = true;
+            stat.source = "player-prop:" + prop;
+        });
+    },
+
     // ---- the per-turn observation ----------------------------------------
     // `statusRaw` is the status window's text; `mem` may be null (no RAM, or a
     // provider that cannot supply it), in which case only the text path runs.
@@ -802,12 +911,15 @@ var StatTracker = {
             StatTracker._storyFile = story;
             StatTracker._samples = [];
             StatTracker._model = StatTracker.load(key);
+            StatTracker._storyEpoch++;
+            StatTracker._probeDisclosureEpoch = -1;
         }
         var model = StatTracker.model();
         if (facts.clockGame) model.scoreUnavailable = true;
 
         var observed = StatTracker.statsFromColumns(StatTracker.splitColumns(statusRaw));
         var globals = mem ? StatTracker.readGlobals(mem) : [];
+        var playerProps = mem ? StatTracker.readPlayerProperties(mem) : {};
 
         // D153: observe() is driven by WorldModel.apply, which was measured
         // running about forty times per TURN, not once. A plain rolling window
@@ -852,9 +964,16 @@ var StatTracker = {
                     }
                 }
             }
+            if (same) {
+                var ppk = Object.keys(prev.playerProps || {}), cpk = Object.keys(playerProps || {});
+                if (ppk.length !== cpk.length) same = false;
+                else for (var pi = 0; pi < cpk.length; pi++) {
+                    if (prev.playerProps[cpk[pi]] !== playerProps[cpk[pi]]) { same = false; break; }
+                }
+            }
         }
         if (!same) {
-            StatTracker._samples.push({ observed: observed, globals: globals });
+            StatTracker._samples.push({ observed: observed, globals: globals, playerProps: playerProps });
             if (StatTracker._samples.length > StatTracker.MAX_SAMPLES) StatTracker._samples.shift();
         }
 
@@ -864,7 +983,9 @@ var StatTracker = {
         StatTracker.seedInterpreterStatus(model, facts, globals);
         StatTracker.promoteTurnCounter(model);
         StatTracker.promoteGlobals(model);
+        StatTracker.promotePlayerProperties(model);
         StatTracker.readConfirmedGlobals(model, globals);
+        StatTracker.readConfirmedProperties(model, playerProps);
 
         // D173 (operator: "the system just simply will not register it").
         //
@@ -1435,12 +1556,18 @@ var StatTracker = {
         return got;
     },
 
-    observeText: function (text, turnMarker, command) {
+    observeText: function (text, turnMarker, command, evidence) {
         var model = StatTracker.model();
         StatTracker.recordPrintedMetrics(model, text, command);
         var found = StatTracker.bannersIn(text);
+        if (/\b(?:you (?:have )?died|you are dead|you were killed|a fatal blow|game over)\b/i.test(String(text || ""))
+            && !found.some(function (b) { return b.kind === "death"; })) {
+            found.push({ kind: "death", text: "game-authored death transition" });
+        }
         found.forEach(function (b) {
-            var id = b.kind + "|" + b.text + "|" + (turnMarker == null ? "" : turnMarker);
+            if (b.kind === "candidate" || b.kind === "quit") return;
+            var id = (evidence && evidence.spanId) || (b.kind + "|" + b.text + "|" + (turnMarker == null ? "" : turnMarker));
+            id = b.kind + "|" + id;
             if (model.seenBanners[id]) return;
             model.seenBanners[id] = 1;
             if (b.kind === "death") {
@@ -1450,6 +1577,13 @@ var StatTracker = {
                 model.wins = (model.wins || 0) + 1;
                 StatTracker._events.push({ type: "win", text: b.text });
             }
+        });
+        StatTracker.recordEvidence({
+            key: "output", value: String(text || ""), valueShape: "text",
+            source: (evidence && evidence.source) || "buffer-output",
+            submissionId: evidence && evidence.submissionId,
+            locator: evidence && evidence.spanId,
+            command: String(command || "").trim().toLowerCase()
         });
         if (StatTracker._key) StatTracker.save(StatTracker._key, model);
         return model;
@@ -1578,8 +1712,59 @@ var StatTracker = {
     // Called once per applied payload from WorldModel. Everything below this
     // point needs a DOM and is skipped cleanly in Node, so the harness can
     // require this file and test the logic above without stubbing a browser.
-    _lastBufferLen: 0,
+    _lineCursor: typeof WeakMap !== "undefined" ? new WeakMap() : null,
+    _lineIds: typeof WeakMap !== "undefined" ? new WeakMap() : null,
+    _nextLineId: 1,
+    _lastSubmission: null,
     _turn: 0,
+
+    lineText: function (line) {
+        return line ? String(line.innerText || line.textContent || "") : "";
+    },
+
+    primeOutputCursor: function () {
+        if (typeof document === "undefined" || typeof WeakMap === "undefined") return;
+        StatTracker._lineCursor = new WeakMap();
+        StatTracker._lineIds = new WeakMap();
+        StatTracker._nextLineId = 1;
+        var lines = document.querySelectorAll(".BufferWindow .BufferLine");
+        for (var i = 0; i < lines.length; i++) {
+            var text = StatTracker.lineText(lines[i]);
+            StatTracker._lineCursor.set(lines[i], { text: text, generation: 0 });
+            StatTracker._lineIds.set(lines[i], StatTracker._nextLineId++);
+        }
+    },
+
+    // Consume append and replacement output by stable DOM-node identity. Glk
+    // often rewrites a BufferLine in place; a single aggregate character
+    // offset misses those rewrites and was the cause of late EXP/level updates.
+    freshOutputSpans: function () {
+        var out = [];
+        if (typeof document === "undefined" || typeof WeakMap === "undefined") return out;
+        if (!StatTracker._lineCursor) StatTracker._lineCursor = new WeakMap();
+        if (!StatTracker._lineIds) StatTracker._lineIds = new WeakMap();
+        var lines = document.querySelectorAll(".BufferWindow .BufferLine");
+        for (var i = 0; i < lines.length; i++) {
+            var line = lines[i], text = StatTracker.lineText(line);
+            var state = StatTracker._lineCursor.get(line);
+            var id = StatTracker._lineIds.get(line);
+            if (!id) { id = StatTracker._nextLineId++; StatTracker._lineIds.set(line, id); }
+            if (!state) {
+                state = { text: "", generation: 0 };
+            }
+            if (text === state.text) { StatTracker._lineCursor.set(line, state); continue; }
+            var start = 0;
+            if (text.indexOf(state.text) === 0) start = state.text.length;
+            else state.generation++;
+            var fresh = text.slice(start);
+            StatTracker._lineCursor.set(line, { text: text, generation: state.generation });
+            if (fresh.trim()) out.push({
+                text: fresh,
+                spanId: "line:" + id + ":" + state.generation + ":" + start + ":" + text.length
+            });
+        }
+        return out;
+    },
 
     statusText: () => {
         try {
@@ -1596,15 +1781,8 @@ var StatTracker = {
         try {
             if (typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) mem = ZRamProvider.getMem();
         } catch (e) {}
-        // Only the text that arrived since the last look is scanned, so an
-        // old banner still sitting in the scrollback is not re-counted.
-        var fresh = "";
-        try {
-            var buf = document.querySelector(".BufferWindow");
-            var text = buf ? String(buf.innerText || buf.textContent || "") : "";
-            if (text.length > StatTracker._lastBufferLen) fresh = text.slice(StatTracker._lastBufferLen);
-            StatTracker._lastBufferLen = text.length;
-        } catch (e) {}
+        var spans = StatTracker.freshOutputSpans();
+        var fresh = spans.map(function (span) { return span.text; }).join("\n");
 
         // D167: read the score notification BEFORE observing, because pinning
         // the slot compares this turn's globals against the previous sample --
@@ -1616,9 +1794,15 @@ var StatTracker = {
 
         if (fresh) {
             try {
-                var command = "";
-                try { command = (typeof MapTopology !== "undefined" && MapTopology.lastCommand) || ""; } catch (eCmd) {}
-                StatTracker.observeText(fresh, StatTracker._turn, command);
+                var submission = StatTracker._lastSubmission || {};
+                var command = submission.command || "";
+                spans.forEach(function (span) {
+                    StatTracker.observeText(span.text, StatTracker._turn, command, {
+                        source: submission.source || "buffer-output",
+                        submissionId: submission.submissionId || null,
+                        spanId: span.spanId
+                    });
+                });
                 StatTracker.consumeProbeReply(fresh);
                 // D169: the carried-value bootstrap needs BOTH the text the
                 // game just printed and live RAM, which only meet here.
@@ -1655,6 +1839,7 @@ var StatTracker = {
         // no command and no text. Identify stats remains the explicit opt-in.
         StatTracker.Render();
         StatTracker.playCues(StatTracker.takeEvents());
+        StatTracker.runProbeQueue();
     },
 
     // D177 (operator): ask the story for its stats ONCE when a module first
@@ -1749,6 +1934,7 @@ var StatTracker = {
         StatTracker._carryTurnWarned = false;
         StatTracker._carryProbeUseless = false;
         StatTracker._carryProbeSubmitting = false;
+        setTimeout(function () { StatTracker.runProbeQueue(); }, 0);
     },
 
     _carryProbeTimer: null,
@@ -1850,7 +2036,7 @@ var StatTracker = {
                     // which is what the two gates were reading it as.
                     StatTracker._carryProbeSubmitting = true;
                     var sent = false;
-                    try { sent = Actionable.Submit(verb); }
+                    try { sent = Actionable.Submit(verb, "stat-probe"); }
                     finally { StatTracker._carryProbeSubmitting = false; }
                     // D195: a sent probe is in flight until its reply is
                     // consumed. Stamp it so the entry guard can bound the wait,
@@ -1999,7 +2185,11 @@ var StatTracker = {
             host.hidden = false;
             var hint = document.createElement("p");
             hint.className = "pl-stat-hint";
-            hint.textContent = model.probed
+            hint.textContent = model.fulfillment === "checking"
+                ? "Checking this story for current status..."
+                : model.fulfillment === "unavailable"
+                ? "Current status is unavailable at this prompt."
+                : model.probed
                 ? "This story does not report any character stats."
                 : "No stats in this story's status bar yet. Ask it directly — costs one turn.";
             rows.appendChild(hint);
@@ -2009,6 +2199,17 @@ var StatTracker = {
         }
         host.hidden = false;
         rows.innerHTML = "";
+
+        // Fulfillment state remains visible even when passive stats already
+        // occupy the strip; otherwise an on-open command check looked idle.
+        if (model.fulfillment === "checking" || model.fulfillment === "unavailable") {
+            var stateHint = document.createElement("p");
+            stateHint.className = "pl-stat-hint pl-stat-fulfillment";
+            stateHint.textContent = model.fulfillment === "checking"
+                ? "Checking this story for current status..."
+                : "Some current status is unavailable at this prompt.";
+            rows.appendChild(stateHint);
+        }
 
         stats.forEach(function (s) {
             var chip = document.createElement("div");
@@ -2117,56 +2318,153 @@ var StatTracker = {
         if (btn) btn.hidden = !!model.probed;
     },
 
-    // ---- the one opt-in write --------------------------------------------
-    // SCORE is the only route to a maximum and a rank, and it costs a turn, so
-    // it happens when the player asks and never on its own.
-    // D152: both probes are outstanding at once and each reply is matched by
-    // its own CONTENT, not by arrival order. A single "which probe is pending"
-    // slot lost the score reply every time: the DIAGNOSE submission overwrote
-    // the slot before the score reply had been read, so on a phone -- where the
-    // status grid is too narrow to print a score at all -- pressing Identify
-    // stats produced no score, which is the one case it exists for.
+    // ---- D204 deterministic on-demand fulfillment -------------------------
     _probePending: null,
     _probeTurns: 0,
-    Identify: function () {
+    _probeQueue: [],
+    _probeActive: null,
+    _probeTimer: null,
+    _probeDisclosureEpoch: -1,
+    D204Valve: {
+        StorageKey: "PL_D204_StatisticsValve_v1",
+        _testOverride: null,
+        mode: function () {
+            var value = StatTracker.D204Valve._testOverride;
+            if (value == null) {
+                try { value = localStorage.getItem(StatTracker.D204Valve.StorageKey); } catch (e) {}
+            }
+            return value === "off" || value === "shadow" ? value : "on";
+        },
+        setMode: function (mode) {
+            var value = mode === "shadow" || mode === "on" ? mode : "off";
+            try { localStorage.setItem(StatTracker.D204Valve.StorageKey, value); } catch (e) {}
+            return value;
+        }
+    },
+
+    canAsk: function (verb) {
         try {
-            var model = StatTracker.model();
-            model.probed = true;
-            // D166 (operator-reported): asking for stats printed "That's not a
-            // verb I recognize" into the story, every time. Submitting a verb
-            // the story does not have is the one thing this codebase already
-            // knows how to avoid -- D147's isGameWord answers whether a word is
-            // in THIS story's dictionary -- so a probe is only ever sent for a
-            // verb that exists. Measured: 905 has no SCORE verb at all
-            // ("[That verb is not recognized.]") and Anchorhead has no
-            // DIAGNOSE, which is exactly where the noise came from.
-            var canAsk = function (verb) {
-                try {
-                    if (typeof Actionable === "undefined" || !Actionable.isGameWord) return true;
-                    return Actionable.isGameWord(verb);
-                } catch (e) { return true; }
-            };
-            var askScore = canAsk("score"), askDiagnose = canAsk("diagnose");
-            StatTracker._probePending = { score: askScore, diagnose: askDiagnose };
-            StatTracker._probeTurns = 0;
-            if (!askScore && !askDiagnose) {
-                // Nothing to ask: say so rather than spending a turn on a
-                // command the parser will reject.
-                StatTracker._probePending = null;
+            if (typeof Actionable === "undefined" || !Actionable.isGameWord) return true;
+            return Actionable.isGameWord(verb);
+        } catch (e) { return false; }
+    },
+
+    hasPassiveMetric: function (key) {
+        var stat = StatTracker.model().stats[key];
+        return !!(stat && /^(?:status|global:|player-prop:|interpreter)/.test(String(stat.source || "")));
+    },
+
+    probeSafeNow: function () {
+        try {
+            if (typeof document === "undefined" || StatTracker.lineInputHasDraft()) return false;
+            if (typeof Navigator !== "undefined" && (Navigator.Running || Navigator.Awaiting)) return false;
+            if (!document.querySelector(".Input.LineInput")) return false;
+            if (document.querySelector(".Input.CharInput")) return false;
+            if (document.querySelector("#dialog, #dialog_frame, #dialog_screen")) return false;
+            if (typeof Message !== "undefined" && Message.IsOpen) return false;
+            return true;
+        } catch (e) { return false; }
+    },
+
+    queueProbe: function (kind, verb) {
+        if (!StatTracker.canAsk(verb)) return false;
+        if (StatTracker._probeActive && StatTracker._probeActive.kind === kind) return true;
+        if (StatTracker._probeQueue.some(function (p) { return p.kind === kind; })) return true;
+        StatTracker._probeQueue.push({ kind: kind, verb: verb, attempts: 0 });
+        return true;
+    },
+
+    requestStatusFulfillment: function (explicit) {
+        var model = StatTracker.model();
+        var mode = StatTracker.D204Valve.mode();
+        if (mode === "off" && !explicit) return;
+        model.probed = true;
+        model.fulfillment = "checking";
+        // A draft blocks the whole transaction, not merely INVENTORY. SCORE or
+        // DIAGNOSE must never overtake a skipped first command.
+        if (StatTracker.lineInputHasDraft()) {
+            model.fulfillment = "unavailable";
+            StatTracker.Render();
+            return;
+        }
+        // Inventory keeps its narrowly proven pre-render suppression. SCORE and
+        // DIAGNOSE use the ordinary output path; never hide their transcript.
+        StatTracker._carryBootstrapAt = 0;
+        StatTracker.requestCarryBootstrap();
+        var queued = false;
+        if (!StatTracker.hasPassiveMetric("score")) queued = StatTracker.queueProbe("score", "score") || queued;
+        var diagnoseKnown = ["health", "stamina", "hunger", "thirst", "sleep"].some(function (key) {
+            var s = model.stats[key];
+            return s && s.source === "diagnose";
+        });
+        if (diagnoseKnown || !StatTracker.hasPassiveMetric("health")) {
+            queued = StatTracker.queueProbe("diagnose", "diagnose") || queued;
+        }
+        if (mode === "shadow") {
+            StatTracker.recordEvidence({ key: "probe-plan", value: StatTracker._probeQueue.map(function (p) { return p.verb; }), valueShape: "list", source: "d204-shadow" });
+            StatTracker._probeQueue = [];
+            model.fulfillment = "complete";
+            StatTracker.Render();
+            return;
+        }
+        if (!queued && !StatTracker._hideCarryProbe) model.fulfillment = "complete";
+        if (!explicit && queued && StatTracker._probeDisclosureEpoch !== StatTracker._storyEpoch) {
+            StatTracker._probeDisclosureEpoch = StatTracker._storyEpoch;
+            try {
+                if (typeof Message !== "undefined" && Message.Show) {
+                    Message.Show("Status check", "ParchLock may quietly ask this story for status when you open Equipment. Some stories count that check as a turn.");
+                }
+            } catch (eNotice) {}
+        }
+        StatTracker.Render();
+        StatTracker.runProbeQueue();
+    },
+
+    finishProbe: function (state) {
+        clearTimeout(StatTracker._probeTimer);
+        StatTracker._probeTimer = null;
+        StatTracker._probeActive = null;
+        StatTracker._probePending = null;
+        if (!StatTracker._probeQueue.length) StatTracker.model().fulfillment = state || "complete";
+        StatTracker.Render();
+        StatTracker.runProbeQueue();
+    },
+
+    runProbeQueue: function () {
+        if (StatTracker._probeActive || !StatTracker._probeQueue.length) return;
+        // The inventory transaction must finish before another line command.
+        if (StatTracker._hideCarryProbe || StatTracker._carryProbeTimer) {
+            if (StatTracker._hideCarryProbe && Date.now() - (StatTracker._carryProbeSentAt || 0) > 5000) {
+                StatTracker.clearCarryProbe();
+            }
+            return;
+        }
+        var next = StatTracker._probeQueue[0];
+        if (!StatTracker.probeSafeNow()) {
+            if (++next.attempts > 24) {
+                StatTracker._probeQueue.shift();
+                StatTracker.model().fulfillment = "unavailable";
+                StatTracker.runProbeQueue();
                 StatTracker.Render();
                 return;
             }
-            if (askScore && typeof Actionable !== "undefined" && Actionable.Submit) Actionable.Submit("score");
-            if (askDiagnose) {
-                clearTimeout(StatTracker._diagnoseTimer);
-                StatTracker._diagnoseTimer = setTimeout(function () {
-                    StatTracker._diagnoseTimer = null;
-                    try {
-                        if (typeof Actionable !== "undefined" && Actionable.Submit) Actionable.Submit("diagnose");
-                    } catch (e) {}
-                }, askScore ? 1800 : 0);
-            }
-        } catch (e) {}
+            clearTimeout(StatTracker._probeTimer);
+            StatTracker._probeTimer = setTimeout(StatTracker.runProbeQueue, 250);
+            return;
+        }
+        StatTracker._probeQueue.shift();
+        StatTracker._probeActive = next;
+        StatTracker._probeTurns = 0;
+        StatTracker._probePending = {};
+        StatTracker._probePending[next.kind] = true;
+        var sent = false;
+        try { sent = Actionable.Submit(next.verb, "stat-probe"); } catch (e) {}
+        if (!sent) { StatTracker.finishProbe("unavailable"); return; }
+        StatTracker._probeTimer = setTimeout(function () { StatTracker.finishProbe("unavailable"); }, 5000);
+    },
+
+    Identify: function () {
+        StatTracker.requestStatusFulfillment(true);
     },
 
     // Called by Tick's text scan. Each parser is tried against the new text
@@ -2183,10 +2481,10 @@ var StatTracker = {
             var dg = StatTracker.parseDiagnoseReply(text);
             if (dg) { StatTracker.applyDiagnoseReply(text); pending.diagnose = false; }
         }
-        if (!pending.score && !pending.diagnose) { StatTracker._probePending = null; return; }
+        if (!pending.score && !pending.diagnose) { StatTracker.finishProbe("complete"); return; }
         // Give up after a few turns rather than misreading ordinary play as a
         // probe reply.
-        if (++StatTracker._probeTurns > 6) StatTracker._probePending = null;
+        if (++StatTracker._probeTurns > 6) StatTracker.finishProbe("unavailable");
     },
 
     Bind: function () {
@@ -2196,6 +2494,37 @@ var StatTracker = {
             if (btn && !btn._plBound) {
                 btn._plBound = true;
                 btn.addEventListener("click", function () { StatTracker.Identify(); });
+            }
+            if (typeof TurnRecorder !== "undefined") {
+                if (!StatTracker._submitUnsubscribe && TurnRecorder.subscribeAcceptedSubmit) {
+                    StatTracker._submitUnsubscribe = TurnRecorder.subscribeAcceptedSubmit("d204-stat-ledger", function (event) {
+                        StatTracker._lastSubmission = event;
+                    });
+                }
+                if (!StatTracker._analyzerBound && TurnRecorder.registerAnalyzer) {
+                    StatTracker._analyzerBound = true;
+                    TurnRecorder.registerAnalyzer({
+                        id: "d204-stat-ledger",
+                        prepare: function () { return { hasWitness: function () { return true; } }; },
+                        analyze: function (turn) {
+                            StatTracker.recordEvidence({
+                                key: "turn", value: turn.command, valueShape: "transaction",
+                                source: turn.source, submissionId: turn.submissionId,
+                                locator: "lines:" + turn.startLine + "-" + turn.endLine
+                            });
+                        }
+                    });
+                }
+            }
+            if (!StatTracker._outputObserver && typeof MutationObserver !== "undefined") {
+                var root = document.getElementById("windowport") || document.body;
+                var scheduled = false;
+                StatTracker._outputObserver = new MutationObserver(function () {
+                    if (scheduled) return;
+                    scheduled = true;
+                    setTimeout(function () { scheduled = false; StatTracker.Tick(); }, 20);
+                });
+                StatTracker._outputObserver.observe(root, { childList: true, subtree: true, characterData: true });
             }
         } catch (e) {}
     }

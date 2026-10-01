@@ -150,7 +150,7 @@ assert(S.bannersIn("*** You have won ***")[0].kind === "win",
 assert(S.bannersIn("*** You have quit ***")[0].kind === "quit",
     "a voluntary quit is neither");
 assert(S.bannersIn("*** You have been eaten by a dragon ***")[0].kind === "death",
-    "a module's OWN wording still counts as a death: anything that is not a win and not a quit is an involuntary ending, which is what makes this work on modules nobody has probed");
+    "explicit module-authored death wording is detected without treating every unknown banner as death");
 
 // ---- death counting ---------------------------------------------------
 S.reset();
@@ -655,6 +655,21 @@ assert(pm3.globals.score == null && !pm3.stats.score,
     context.ActionSynth.defaultInspectVerb = () => "examine";
     assert(A.resolveObjectCommands(1, "room")[0].command === "examine pellets",
         "D186: ordinary examine-only behavior remains unchanged");
+}
+
+// ---- D204 holistic ledger ----------------------------------------------
+assert(S.parseCardinal("twenty-eight") === 28, "D204 parses compound cardinal score deltas");
+assert(S.parseCardinal("twenty mystery") == null, "D204 rejects partially understood cardinal phrases");
+assert(S.parseScoreDelta("Your score has just gone up by twenty-eight points. Your score has just gone down by three points.") === 25,
+    "D204 combines every score delta in one settled output batch");
+{
+    S.reset();
+    S.observeText("*** You have died ***", 1, "north", { spanId: "line:1:0:0:21", submissionId: 1 });
+    const deaths = S.model().deaths;
+    S.Resync();
+    assert(S.model().deaths === deaths, "D204 restore invalidates readings without erasing playthrough deaths");
+    S.observeText("*** You have died ***", 2, "north", { spanId: "line:2:0:0:21", submissionId: 2 });
+    assert(S.model().deaths === deaths + 1, "D204 counts a later repeated death from a distinct output span");
 }
 
 console.log(`${pass} PASS / ${fail} FAIL`);

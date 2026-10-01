@@ -782,9 +782,8 @@ var EquipmentUI = {
         document.body.classList.add("equip-open");
         EquipmentUI.Render();
         try {
-            if (typeof StatTracker !== "undefined" && StatTracker.requestCarryBootstrap) {
-                StatTracker._carryBootstrapAt = 0;
-                StatTracker.requestCarryBootstrap();
+            if (typeof StatTracker !== "undefined" && StatTracker.requestStatusFulfillment) {
+                StatTracker.requestStatusFulfillment(false);
             }
         } catch (eBoot) {}
     },
@@ -827,9 +826,8 @@ var EquipmentUI = {
 
         var refresh = document.getElementById("equipment-refresh");
         if (refresh) refresh.addEventListener("click", function () {
-            if (typeof StatTracker !== "undefined" && StatTracker.requestCarryBootstrap) {
-                StatTracker._carryBootstrapAt = 0;
-                StatTracker.requestCarryBootstrap();
+            if (typeof StatTracker !== "undefined" && StatTracker.requestStatusFulfillment) {
+                StatTracker.requestStatusFulfillment(true);
             } else if (typeof Actionable !== "undefined") Actionable.Submit("inventory");
         });
 

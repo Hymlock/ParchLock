@@ -423,7 +423,22 @@ var Actionable = {
         } catch (eEx) {}
         try {
             if (typeof SemanticActions !== "undefined" && SemanticActions.CutoverFlag && SemanticActions.CutoverFlag.isEnabled()) {
-                return SemanticActions.resolveForPayloadObjectId(objectId, kind === "inventory" ? "inventory" : "room") || [];
+                var resolvedKind = kind === "inventory" ? "inventory" : "room";
+                var semantic = SemanticActions.resolveForPayloadObjectId(objectId, resolvedKind) || [];
+                // The precedence resolver chooses one semantic winner per verb,
+                // but the radial is also the discoverability surface for every
+                // distinct command already justified by the legacy deterministic
+                // synthesizer. Preserve those parallel forms after the winners;
+                // exact rendered duplicates are removed, never capabilities.
+                var legacy = (typeof ActionSynth !== "undefined" && objectId)
+                    ? (ActionSynth.commandsForPayloadObjectId(objectId, resolvedKind) || []) : [];
+                var seen = {};
+                return semantic.concat(legacy).filter(function (entry) {
+                    var key = String((entry && entry.command) || "").toLowerCase().replace(/\s+/g, " ").trim();
+                    if (!key || seen[key]) return false;
+                    seen[key] = true;
+                    return true;
+                });
             }
         } catch (e) {}
         try {
@@ -609,7 +624,7 @@ var Actionable = {
     // ever fire.
     LongPressMoveCancelPx: 20,
 
-    Submit: (command) => {
+    Submit: (command, source) => {
         try {
             if (/^(undo|restore|restart)$/i.test(String(command || "").trim())) {
                 window.__PL_RESYNC__ = Date.now();
@@ -634,7 +649,7 @@ var Actionable = {
             // and never needed this clause.
             && !(typeof StatTracker !== "undefined" && StatTracker._carryProbeSubmitting)) return false;
         Input.Clear();
-        var accepted = Input.Inject(command, true);
+        var accepted = Input.Inject(command, true, source || "inject");
         // Mobile: never Focus after a headless radial/tap submit -- that
         // pops the OS keyboard on every examine/go (operator). Keyboard
         // only after a deliberate short-tap on the line field.

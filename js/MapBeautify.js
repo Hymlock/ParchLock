@@ -108,6 +108,63 @@ var MapBeautify = {
         }
     },
 
+    // D202 transient world-overview layout. It returns coordinates instead
+    // of writing LayoutX/LayoutY, because Rooms[] is persisted wholesale.
+    overviewLayout: function (rooms, anchorId) {
+        rooms = (rooms || []).filter(Boolean).slice();
+        var byId = {}, eligible = {};
+        rooms.forEach(function (room) { byId[String(room.Id)] = room; eligible[String(room.Id)] = true; });
+        var idSort = function (a, b) { return String(a).localeCompare(String(b), undefined, { numeric: true }); };
+        var ids = Object.keys(byId).sort(idSort);
+        var vectors = {
+            n: [0, -1], north: [0, -1], s: [0, 1], south: [0, 1],
+            e: [1, 0], east: [1, 0], w: [-1, 0], west: [-1, 0],
+            ne: [1, -1], northeast: [1, -1], nw: [-1, -1], northwest: [-1, -1],
+            se: [1, 1], southeast: [1, 1], sw: [-1, 1], southwest: [-1, 1],
+            u: [0, -1], up: [0, -1], d: [0, 1], down: [0, 1],
+            "in": [-1, 0], out: [1, 0]
+        };
+        function fallback(label) {
+            var h = 2166136261, s = String(label || "exit").toLowerCase();
+            for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+            var ring = [[2,0],[2,1],[1,2],[0,2],[-1,2],[-2,1],[-2,0],[-2,-1],[-1,-2],[0,-2],[1,-2],[2,-1]];
+            return ring[(h >>> 0) % ring.length];
+        }
+        function vector(label) { return vectors[String(label || "").toLowerCase().trim()] || fallback(label); }
+        var coords = {}, occupied = {};
+        function place(id, x, y) {
+            var baseX = x, baseY = y, step = 0;
+            while (occupied[x + ":" + y]) {
+                step++;
+                var radius = Math.ceil(step / 8), phase = (step - 1) % 8;
+                var around = [[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1],[0,-1],[1,-1]][phase];
+                x = baseX + around[0] * radius; y = baseY + around[1] * radius;
+            }
+            coords[id] = { x: x, y: y }; occupied[x + ":" + y] = id;
+        }
+        var roots = [];
+        if (anchorId != null && byId[String(anchorId)]) roots.push(String(anchorId));
+        ids.forEach(function (id) { if (roots.indexOf(id) < 0) roots.push(id); });
+        var component = 0;
+        roots.forEach(function (root) {
+            if (coords[root]) return;
+            place(root, component * 5, component * 4);
+            component++;
+            var queue = [root];
+            while (queue.length) {
+                var id = queue.shift(), room = byId[id], origin = coords[id];
+                Object.keys((room && room.Exits) || {}).sort(idSort).forEach(function (label) {
+                    var target = String(room.Exits[label]);
+                    if (!eligible[target] || coords[target]) return;
+                    var v = vector(label);
+                    place(target, origin.x + v[0], origin.y + v[1]);
+                    queue.push(target);
+                });
+            }
+        });
+        return coords;
+    },
+
     applyFloorFilter: () => {
         if (typeof ParchLockMap === "undefined" || typeof $ === "undefined") return;
         MapBeautify.ensureFloors();

@@ -203,7 +203,7 @@ decisions and their later mentions, not only the first matching record.
   plans a shared player/location/display/inventory recovery for compiler-owned objects
   with blank short names. It may extend D184's parser-vocabulary lane, but it may not
   weaken D164's room rejection, override D84/D171, or make status text an identity source.
-- **Map zoom LOD is hub-preserving and proposed only:** [D202](#pl-d202) plans Scale-threshold overview of the OverviewEligible admitted graph without replacing Draw()'s local-neighborhood paint into shared layout chrome, MapBeautify's mental-map rule, or anti-spoiler admission. Direction *vocabulary* is module-built (compass profiles, numbered exits, nautical, typed travel) — not a fixed 12-word limit. Architecture companion: [ARCHITECTURE_UML.md §66](ARCHITECTURE_UML.md#ar-ch66) (**PROPOSED**, pre-GO). Amended after Codex #949.
+- **Map zoom LOD is hub-preserving and implemented:** [D202](#pl-d202) adds Scale-threshold overview of the OverviewEligible admitted graph without replacing Draw()'s local-neighborhood paint, MapBeautify's mental-map rule, or anti-spoiler admission. Direction *vocabulary* remains module-built; overview eligibility mirrors the hub's visible-edge filtering and 12 physical placement slots so internal `exit-N` look-ahead cannot leak. Architecture companion: [ARCHITECTURE_UML.md §66](ARCHITECTURE_UML.md#ar-ch66).
 - Some earlier status banners and diagrams describe old builds. This indexing change
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
@@ -708,7 +708,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s313](#pl-s313) | D201 Early Inform unnamed identity and inventory recovery | H2 | Implemented / live-browser verified |
 | [pl-s314](#pl-s314) | D202 Map zoom LOD / world overview (hub-preserving) | H2 | Proposed / re-audit accepted; awaiting operator GO |
 | [pl-s315](#pl-s315) | D203 Mobile left exit-rail readable-content safety | H2 | Implemented / live-browser verified |
-| [pl-s316](#pl-s316) | D204 Holistic statistics discovery and repeatable event monitoring | H2 | Proposed / adversarial review |
+| [pl-s316](#pl-s316) | D204 Holistic statistics discovery and repeatable event monitoring | H2 | Implemented / validation pending |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -7052,6 +7052,8 @@ evidence reason; they may remain honest absences, but may not be silently counte
 <a id="pl-s314" data-chapter-id="pl-s314"></a><a id="pl-d202"></a>
 ## D202 Map zoom LOD / world overview (hub-preserving)
 
+**Implementation state (2026-10-01): IMPLEMENTED, pending independent live/package validation.** The shipped source has a latched hub/overview mode, transient deterministic coordinates, ID-based recentering, accessible overview nodes, shared wheel/button/pinch scaling, and Pointer Events pan/pinch. Eligibility is player-known only and now mirrors the hub renderer's duplicate, `exit-N`, and 12-slot admission rules.
+
 **Lifecycle:** Proposed / amended after Codex #949 (2026-09-30). **NOT started.**
 No product/executable code, harness, CSS, SW, or packaging changes in this decision --
 planning + architecture companion text only. Implementation still requires an explicit
@@ -7631,7 +7633,9 @@ The amendment itself changed no runtime files; the implementation recorded above
 after Codex re-audit ACCEPT and operator authorization.
 
 <a id="pl-s316" data-chapter-id="pl-s316"></a><a id="pl-d204"></a>
-## D204 Holistic statistics discovery and repeatable event monitoring — PROPOSED
+## D204 Holistic statistics discovery and repeatable event monitoring — IMPLEMENTED
+
+**Implementation state (2026-10-01): IMPLEMENTED, pending independent live/package validation.** `StatTracker` now consumes stable BufferLine append/replacement spans, records submission/source provenance, correlates confirmed globals and player properties, preserves next-target EXP semantics, recognizes repeatable explicit death/win output, and fulfills command-only status serially at each Equipment open. The `off/shadow/on` valve defaults on; safe-idle gating covers drafts, dialogs, character prompts, and Navigator. Restore invalidates readings while retaining playthrough event fingerprints/counters. Object radial suggestions preserve semantic winners plus every distinct deterministic `ActionSynth` form, including confirmed `AttrCalibrator.allowedVerbsFor` learning, so enabling the cutover cannot silently remove `More...` pages.
 
 **Lifecycle:** PROPOSED / pre-GO. No runtime implementation is authorized until the
 standalone contract, this section, and architecture section 68 receive adversarial

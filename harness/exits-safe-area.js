@@ -84,6 +84,7 @@ assert(/--pl-mobile-shell-left:\s*calc\([^;]*--pl-left-rail-target[^;]*--pl-mobi
 assert(/--pl-mobile-shell-width:\s*calc\(100vw\s*-\s*var\(--pl-mobile-shell-left\)\s*-\s*var\(--pl-mobile-shell-right\)\)/.test(css), "mobile shell width is derived from its published left/right edges");
 assert(/--pl-map-tab-width:\s*18px/.test(css), "mobile Map tab width is published for D96 right-edge arbitration");
 assert(/--pl-mobile-shell-right:\s*calc\(var\(--pl-safe-right\)\s*\+\s*var\(--pl-mobile-edge-gutter\)\)/.test(css), "D203 keeps the historical 8px right gutter (left clearance must not steal right width)");
+assert(/@media\s*\(min-width:\s*340px\)\s*and\s*\(max-width:\s*850px\)[\s\S]{0,180}?--pl-mobile-shell-right:\s*calc\(var\(--pl-safe-right\)\s*\+\s*var\(--pl-map-tab-width\)\)/.test(css), "D203 reserves the full Map-tab strip where width permits while preserving the 320px fallback");
 assert(/body\.pl-mobile\s+#parchment,[\s\S]{0,180}?left:\s*var\(--pl-mobile-shell-left\)[\s\S]{0,100}?width:\s*var\(--pl-mobile-shell-width\)/.test(css), "visible and hidden Glk panes consume the same D203 shell rectangle");
 assert(/\.Input\.LineInput,[\s\S]{0,260}?left:\s*var\(--pl-mobile-readable-left\)/.test(css), "fixed line input starts at the shared readable boundary");
 assert(/\.Input\.CharInput,[\s\S]{0,280}?left:\s*var\(--pl-mobile-readable-left\)/.test(css), "fixed character input starts at the shared readable boundary");

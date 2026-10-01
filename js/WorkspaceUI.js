@@ -392,13 +392,36 @@ var WorkspaceUI = {
         });
     },
     DrawPaths: () => {
-        var root = document.getElementById("rooms"), center = root && root.querySelector(".dir-here.shown");
-        if (!center) return;
+        var root = document.getElementById("rooms");
+        if (!root) return;
         var svg = root.querySelector("svg");
         if (!svg) { svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); svg.classList.add("map-paths"); svg.setAttribute("aria-hidden", "true"); root.prepend(svg); }
         svg.replaceChildren();
         var box = root.getBoundingClientRect(), scale = ParchLockMap.Scale;
         svg.setAttribute("viewBox", "0 0 " + box.width / scale + " " + box.height / scale);
+        if (ParchLockMap.MapMode === "overview") {
+            var seen = {};
+            (ParchLockMap.OverviewEdges || []).forEach(function (edge) {
+                var from = root.querySelector('.overview-room[data-room-id="' + edge.from + '"]');
+                var to = root.querySelector('.overview-room[data-room-id="' + edge.to + '"]');
+                if (!from || !to) return;
+                var key = edge.from + ">" + edge.to + ":" + edge.label;
+                if (seen[key]) return;
+                seen[key] = true;
+                var a = from.getBoundingClientRect(), b = to.getBoundingClientRect();
+                var line = document.createElementNS(svg.namespaceURI, "line");
+                line.setAttribute("x1", (a.x + a.width / 2 - box.x) / scale);
+                line.setAttribute("y1", (a.y + a.height / 2 - box.y) / scale);
+                line.setAttribute("x2", (b.x + b.width / 2 - box.x) / scale);
+                line.setAttribute("y2", (b.y + b.height / 2 - box.y) / scale);
+                line.setAttribute("data-label", edge.label);
+                if (edge.tentative) line.classList.add("tentative");
+                svg.appendChild(line);
+            });
+            return;
+        }
+        var center = root.querySelector(".dir-here.shown");
+        if (!center) return;
         var a = center.getBoundingClientRect();
         root.querySelectorAll(".room.shown:not(.dir-here)").forEach(target => {
             var b = target.getBoundingClientRect(), ax = a.x + a.width / 2, ay = a.y + a.height / 2, bx = b.x + b.width / 2, by = b.y + b.height / 2;

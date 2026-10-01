@@ -203,7 +203,7 @@ decisions and their later mentions, not only the first matching record.
   [D201](PRODUCTION_PLAN.md#pl-d201) separates structural player/room/item identity
   from status and parser-derived labels. Blank labels are not blank identities, but
   only containment-proven rooms and held items may use the recovery path.
-- **Map zoom LOD / world overview:** [section 66](#ar-ch66) / [D202](PRODUCTION_PLAN.md#pl-d202) is **PROPOSED** pre-GO. Hub chrome stays distinct from module direction vocabulary; overview uses OverviewEligible (not raw isPlayerFacingRoom), transient coordinates, latched MapMode, and Id-based recenter.
+- **Map zoom LOD / world overview:** [section 66](#ar-ch66) / [D202](PRODUCTION_PLAN.md#pl-d202) is implemented pending live/package validation. Hub chrome stays distinct from module direction vocabulary; overview uses OverviewEligible, transient coordinates, latched MapMode, and Id-based recenter.
 - Some earlier status banners and diagrams describe old builds. This indexing change
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
@@ -380,9 +380,9 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s088](#ar-s088) | 63. Inform Z3 declaration layout (D200) | H2 | Implemented |
 | [ar-s089](#ar-s089) | 64. D198 ZIL/Infocom composition architecture | H2 | Implemented / valves default off |
 | [ar-s090](#ar-s090) | 65. Unnamed early-Inform identity composition (D201) | H2 | Implemented / live-browser verified |
-| [ar-s091](#ar-s091) | 66. Map zoom LOD / world overview (D202) — PROPOSED | H2 | Proposed / pre-GO |
+| [ar-s091](#ar-s091) | 66. Map zoom LOD / world overview (D202) — IMPLEMENTED | H2 | Implemented / validation pending |
 | [ar-s092](#ar-s092) | 67. Mobile side-rail readable-content geometry (D203) — IMPLEMENTED | H2 | Implemented / live-browser verified |
-| [ar-s093](#ar-s093) | 68. Holistic statistics evidence ledger (D204) - PROPOSED | H2 | Proposed / pre-GO |
+| [ar-s093](#ar-s093) | 68. Holistic statistics evidence ledger (D204) - IMPLEMENTED | H2 | Implemented / validation pending |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -3340,7 +3340,7 @@ exception, scan-order tie, status-derived identity, vocabulary-derived action, d
 metric observation, or consumer-specific branch fails the architecture.
 
 <a id="ar-s091" data-chapter-id="ar-s091"></a><a id="ar-ch66"></a>
-## 66. Map zoom LOD / world overview (D202) — PROPOSED
+## 66. Map zoom LOD / world overview (D202) — IMPLEMENTED
 
 **Lifecycle:** **PROPOSED** (pre-GO). Architecture companion to
 [D202](PRODUCTION_PLAN.md#pl-d202). No executable claim. Inserted 2026-09-30 after
@@ -3483,7 +3483,7 @@ one-source CharCell/input geometry. Normative proof order: 1-cell, 2-cell, then 
 clearing offset (cell = live Glk/CharCell advance).
 
 <a id="ar-s093" data-chapter-id="ar-s093"></a><a id="ar-ch68"></a>
-## 68. Holistic statistics evidence ledger (D204) - PROPOSED
+## 68. Holistic statistics evidence ledger (D204) - IMPLEMENTED
 
 **Lifecycle:** PROPOSED / pre-GO. Architecture companion to
 [D204](PRODUCTION_PLAN.md#pl-d204) and
