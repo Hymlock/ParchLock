@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 316 headings; 103 decision rows; 419 registered units.
 **Last registered unit:** `pl-s316`. **Body SHA-256 (LF):**
-`a18c1c916926e2fe89391487b5936c22abf09b5b1ecad53cb0a1a9d31f08e65b`
+`beae7cd79a2dfb865b6176aa2de5a1b4fbbec1562eb6f62a1c4092d1eea7416a`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -7066,9 +7066,11 @@ state before payload recovery, preserving room notes and existing calibration st
 Verification: new shared-reference test failed before implementation; command-disambiguation
 35/35, Equipment 57/57, nested inventory 60/60, noun/verb 10/10, live Huge Cave compound
 noun 17/17 after repairing its first-run failure. No module-specific IDs/colors were added.
-Audit must specifically challenge custom-parse detection: the resolver honors explicit
-customParseName/parseNameUnverified evidence, but exhaustive compiler-family discovery of
-those flags is not proven by these tests. Passive naming attribution remains the separate
+Custom-parse detection now includes non-executing Inform property-table discovery
+(`ZRamReader.informPropertyNames` / `objectHasCustomParseName`): a stored non-default
+`parse_name` marks rivals unverified without CALLing the routine. Tables absent from a
+module remain honest undetectable, not a proof of library parse_name. Individual-property
+Inform 7 overrides and live title coverage are still residual proof gates, not release claims. Passive naming attribution remains the separate
 research gate already specified below. Exact RoTA and mystery-vial saves and device coverage
 remain unverified, not claimed complete. This amendment is not a release-validation claim.
 

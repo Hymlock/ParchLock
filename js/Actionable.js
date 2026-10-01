@@ -181,7 +181,25 @@ var Actionable = {
             var words = (o.aliases || []).concat(String(o.name || "").toLowerCase().split(/[^a-z0-9'-]+/)).map(Actionable.vocabularyKey);
             if (tokens.length && tokens.every(function (t) { return words.indexOf(Actionable.vocabularyKey(t)) >= 0; })) candidates.push(o.id);
         });
-        var customUnverified = pool.some(function (o) { return o && (o.customParseName || o.parseNameUnverified) && !o.parserReferenceVerified; });
+        var mem = null;
+        try { mem = (typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) ? ZRamProvider.getMem() : null; } catch (eM) {}
+        var head = tokens.length ? tokens[tokens.length - 1] : "";
+        var customUnverified = pool.some(function (o) {
+            if (!o || o.id == null || o.parserReferenceVerified) return false;
+            var hasCustom = !!(o.customParseName || o.parseNameUnverified);
+            if (!hasCustom) {
+                try {
+                    hasCustom = !!(mem && typeof ZRamReader !== "undefined" && ZRamReader.objectHasCustomParseName
+                        && ZRamReader.objectHasCustomParseName(mem, o.id));
+                } catch (eC) { hasCustom = false; }
+            }
+            if (!hasCustom) return false;
+            if (String(o.id) === String(obj && obj.id)) return true;
+            if (candidates.indexOf(o.id) >= 0 || candidates.indexOf(String(o.id)) >= 0) return true;
+            // Custom parsers may accept a shared head without listing every adjective.
+            var words = (o.aliases || []).map(Actionable.vocabularyKey);
+            return !!(head && words.indexOf(Actionable.vocabularyKey(head)) >= 0);
+        });
         return { noun: noun, candidateIds: candidates, unique: !customUnverified && candidates.length === 1 && String(candidates[0]) === String(obj && obj.id), provenance: "scoped-vocabulary" };
     },
     displayNameFor: function (obj, pool, text) {
@@ -839,21 +857,36 @@ var Actionable = {
             });
             var text = "";
             try {
-                text = (Actionable.RoomLines || []).filter(function (l) { return l && l.isConnected; })
-                    .map(function (l) { return l.textContent || ""; }).join(" ");
+                // Prefer player-observed look + inventory prose (EquipmentUI peer).
+                // RoomLines alone miss inventory-only descriptors.
+                text = [Actionable.Scope.lastLookText || "", Actionable.Scope.lastInventoryText || ""]
+                    .concat((Actionable.RoomLines || []).filter(function (l) { return l && l.isConnected; })
+                        .map(function (l) { return l.textContent || ""; }))
+                    .join("\n");
             } catch (eT) {}
             var seen = {};
             base.forEach(function (o) { seen[String(o.id)] = 1; });
             Actionable.promoteUnnamed(p, text).forEach(function (o) {
                 if (!seen[String(o.id)]) base.push(o);
             });
+            var mem = null;
+            try {
+                mem = (typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) ? ZRamProvider.getMem() : null;
+            } catch (eM) {}
             return base.map(function (o) {
-                var label = Actionable.displayNameFor(o, base, text);
-                return label === o.name ? o : Object.assign({}, o, { name: label, structuralName: o.name, labelProvenance: "observed-vocabulary" });
+                var row = o;
+                try {
+                    if (mem && typeof ZRamReader !== "undefined" && ZRamReader.objectHasCustomParseName
+                        && ZRamReader.objectHasCustomParseName(mem, o.id)
+                        && !o.parserReferenceVerified) {
+                        row = Object.assign({}, o, { customParseName: true, parseNameUnverified: true });
+                    }
+                } catch (eP) {}
+                var label = Actionable.displayNameFor(row, base, text);
+                return label === row.name ? row : Object.assign({}, row, { name: label, structuralName: o.name, labelProvenance: "observed-vocabulary" });
             });
         } catch (e) { return []; }
     },
-
     exitLabels: () => {
         try {
             var p = WorldModel && WorldModel.lastPayload;

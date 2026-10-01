@@ -238,6 +238,100 @@ var ZRamReader = {
         finally { ZRamReader._attributeNamesCache.set(cacheKey, result); }
     },
 
+    // D201 descriptor amendment: property-name table from the same Inform
+    // identifying block informAttributeNames already trusts. Presence of a
+    // non-default parse_name on an object is detectable without CALLing it
+    // (Z-machine omits properties that equal the default). Absence of the
+    // table is an honest undetectable, not a proof of library parse_name.
+    _propertyNamesCache: (typeof WeakMap !== "undefined") ? new WeakMap() : null,
+    informPropertyNames: (mem) => {
+        if (!mem || typeof mem !== "object") return null;
+        var cache = ZRamReader._propertyNamesCache;
+        var cacheKey = (mem && mem.buffer) || mem;
+        if (cache && cache.has(cacheKey)) return cache.get(cacheKey);
+        var result = null;
+        try {
+            // Reuse the attribute-names validator: if that table is untrusted,
+            // property names in the same block are untrusted too.
+            if (!ZRamReader.informAttributeNames(mem)) return null;
+            var h = ZRamReader.header(mem), len = mem.byteLength || mem.length || 0;
+            if (!h || [3, 4, 5, 8].indexOf(h.version) < 0 || !ZRamReader.isInformCompiled(mem)) return null;
+            var v3 = h.version <= 3;
+            var propPointerOffset = v3 ? 7 : 12;
+            var firstObject = ZRamReader.objectBase(h, 1);
+            var firstProps = ZRamReader.u16(mem, firstObject + propPointerOffset);
+            var count = (firstProps - firstObject) / h.entrySize, end = 0;
+            if (!Number.isInteger(count) || count < 1 || count > 20000 || !len || h.globals >= len) return null;
+            for (var id = 1; id <= count; id++) {
+                var base = ZRamReader.objectBase(h, id);
+                var ptr = ZRamReader.u16(mem, base + propPointerOffset);
+                if (ptr < firstProps || ptr >= h.globals) return null;
+                var at = ptr + 1 + 2 * ZRamReader.u8(mem, ptr), previous = v3 ? 32 : 64;
+                while (at < h.globals && ZRamReader.u8(mem, at)) {
+                    var first = ZRamReader.u8(mem, at++), num = first & (v3 ? 31 : 63);
+                    if (!num || num >= previous) return null;
+                    previous = num;
+                    var size;
+                    if (v3) size = (first >> 5) + 1;
+                    else size = (first & 128) ? (ZRamReader.u8(mem, at++) & 63) || 64 : (first & 64) ? 2 : 1;
+                    at += size;
+                }
+                if (at >= h.globals) return null;
+                end = Math.max(end, at + 1);
+            }
+            var classes = 0, seen = {};
+            while (end + 2 <= h.globals) {
+                var cls = ZRamReader.u16(mem, end); end += 2;
+                if (!cls) break;
+                if (cls > count || seen[cls] || ++classes > count) return null;
+                seen[cls] = true;
+            }
+            var properties = ZRamReader.u16(mem, end);
+            var namesAt = end + properties * 2;
+            if (properties < 64 || namesAt > h.globals) return null;
+            var scale = v3 ? 2 : h.version === 8 ? 8 : 4;
+            var decode = function (packed) {
+                var address = packed * scale, stop = address;
+                if (address < h.himem || address + 2 > len) return null;
+                for (var words = 0; words < 40 && stop + 2 <= len; words++, stop += 2) {
+                    if (ZRamReader.u8(mem, stop) & 128) return ZRamReader.decodeZsc(mem, address, words + 1);
+                }
+                return null;
+            };
+            if (decode(ZRamReader.u16(mem, end + 2)) !== "name") return null;
+            var names = {};
+            for (var prop = 1; prop <= properties; prop++) {
+                var packed = ZRamReader.u16(mem, end + prop * 2);
+                if (!packed) continue;
+                var entry = decode(packed);
+                if (!entry) continue;
+                String(entry).split("/").forEach(function (raw) {
+                    if (!/^[a-zA-Z_][a-zA-Z_0-9]*$/.test(raw)) return;
+                    var key = String(raw).toLowerCase();
+                    if (Object.prototype.hasOwnProperty.call(names, key) && names[key] !== prop) return;
+                    names[key] = prop;
+                });
+            }
+            if (names.name !== 1) return null;
+            result = { names: names, propertyCount: properties, source: "inform-property-names" };
+            return result;
+        } catch (e) { return null; }
+        finally { if (cache) cache.set(cacheKey, result); }
+    },
+    // True when this Inform object stores a non-default parse_name routine.
+    // Does not CALL the routine. Returns false when the property-name table is
+    // unavailable (undetectable), matching the plan's honest-absence rule.
+    objectHasCustomParseName: (mem, id) => {
+        try {
+            if (!mem || !id || !ZRamReader.isInformCompiled(mem)) return false;
+            var table = ZRamReader.informPropertyNames(mem);
+            if (!table || table.names.parse_name == null) return false;
+            var propNum = table.names.parse_name;
+            var props = ZRamReader.listProps(mem, id) || [];
+            return props.some(function (p) { return p && p.num === propNum && p.value; });
+        } catch (e) { return false; }
+    },
+
     attr: (obj, n) => {
         if (!obj || !obj.attrBytes) return false;
         var byte = obj.attrBytes[Math.floor(n / 8)];

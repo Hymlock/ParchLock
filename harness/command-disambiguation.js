@@ -186,6 +186,8 @@ if (A.referenceFor) {
     delete vials[1].parseNameUnverified;
     setPool([vials[0]]);
     assert(A.referenceFor(vials[0]).unique, "scope changes restore unique references without a stale candidate cache");
+    const zsrc = require("fs").readFileSync(require("path").join(__dirname, "..", "js", "ZRamReader.js"), "utf8");
+    assert(/objectHasCustomParseName/.test(zsrc) && /informPropertyNames/.test(zsrc), "ZRamReader exposes non-executing parse_name property-table discovery");
 }
 console.log("\n" + pass + " PASS / " + fail + " FAIL");
 process.exit(fail ? 1 : 0);

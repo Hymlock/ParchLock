@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 93 headings; 0 decision rows; 93 registered units.
 **Last registered unit:** `ar-s093`. **Body SHA-256 (LF):**
-`63b67679df1d19801ed51ea2828b01247b286a56b0c1b3444b7dfea30b6040b4`
+`f112d7e1c55cc24bffdc590d4580ff88036868c1174c5af5adbf1b0399b969cd`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -3348,9 +3348,10 @@ actions intersect evidence across candidates, keep null UI objectId, and suppres
 object-specific learning via ambiguous-reference source. UI badges are aria-hidden and
 separate from parser text. UndoRestoreSync clears transient phrases before world recovery;
 room notes and retained learning are unchanged. No naming routine is executed for labels.
-Runtime customParseName/parseNameUnverified flags fail closed; comprehensive detection of
-custom parser overrides still requires independent evidence and is not implied by static
-alias uniqueness. See the normative D201 descriptor amendment immediately before D202 in
+Runtime customParseName/parseNameUnverified flags fail closed; Inform common-property
+`parse_name` overrides are detected by property-table presence (non-executing) when the
+identifying name table is trusted. Modules without that table, and unverified I7 individual
+parse_name overrides, remain residual proof gates rather than implied library behavior. See the normative D201 descriptor amendment immediately before D202 in
 PRODUCTION_PLAN.md for verification and unresolved fixture/proof gates.
 
 <a id="ar-s091" data-chapter-id="ar-s091"></a><a id="ar-ch66"></a>
