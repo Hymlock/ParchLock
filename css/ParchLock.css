@@ -2319,7 +2319,12 @@ body.tools-button-visible #tools-toggle { display: block; }
 #map #rooms { margin-top: 0; }
 #map-overview { display: none; position: relative; min-width: 100%; min-height: 100%; }
 #map #rooms.overview-mode { display: block; position: relative; }
-#map #rooms.overview-mode > div:not(#map-overview) { visibility: hidden; pointer-events: none; }
+#map #rooms.overview-mode > div:not(#map-overview) {
+	/* D202: hub rows must leave the flow. visibility:hidden alone still reserved
+	 * their height, pushing #map-overview (and SVG path endpoints) below the
+	 * #rooms box / viewBox so zoom, pan, and minimize clipped or detached lines. */
+	display: none;
+}
 #map #rooms.overview-mode #map-overview { display: block; visibility: visible; pointer-events: auto; }
 #map-overview .overview-room {
 	position: absolute; width: 150px; min-height: 52px; padding: 7px 10px;
@@ -2588,7 +2593,7 @@ body.has-line-input.map-open #windowport::after { width: calc(52vw - 56px); }
 }
 */
 
-/* BUILD 43 — Translator chrome */
+/* BUILD 43 â€” Translator chrome */
 #pl-special-commands {
   position: fixed; left: 50%; transform: translateX(-50%); bottom: 72px; z-index: 40;
   display: none; gap: 8px; flex-wrap: wrap; justify-content: center;
@@ -3004,7 +3009,7 @@ body.pl-mobile #rooms-shell {
 
 /* Line input pinned above the keyboard -- left/right gutters reserved for
  * the mic (left) and submit (right) buttons (D93 R1/R2/G10/G28/G35). */
-/* Line row LTR: [input][submit ➤][mic] — mic far right (operator). */
+/* Line row LTR: [input][submit âž¤][mic] â€” mic far right (operator). */
 body.pl-mobile #windowport .BufferWindow .Input.LineInput,
 body.pl-mobile.map-open #windowport .BufferWindow .Input.LineInput {
 	position: fixed !important;

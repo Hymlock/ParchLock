@@ -62,6 +62,18 @@ ok(/isSystemPropExitKey\(label\)/.test(mapSource) && /OverviewEdges\.push/.test(
     "DrawOverview OverviewEdges shares hub isSystemPropExitKey filter");
 ok(/isSystemPropExitKey\(dir\)/.test(mapSource), "hub Draw shares isSystemPropExitKey for system keys");
 
+
+const cssSource = fs.readFileSync("css/ParchLock.css", "utf8");
+ok(/#map #rooms\.overview-mode > div:not\(#map-overview\)\s*\{[\s\S]*?display:\s*none/.test(cssSource),
+    "overview mode removes hub rows from flow so path SVG covers overview nodes");
+const workspaceSource = fs.readFileSync("js/WorkspaceUI.js", "utf8");
+ok(/clientWidth/.test(workspaceSource) && /function localCenter\(el\)/.test(workspaceSource),
+    "DrawPaths maps endpoints from layout box + measured scale (stretch-safe under zoom)");
+ok(/querySelector\("svg\.map-paths"\)/.test(workspaceSource),
+    "DrawPaths targets svg.map-paths explicitly");
+ok(/requestAnimationFrame\(function \(\) \{ requestAnimationFrame\(WorkspaceUI\.DrawPaths\); \}\)/.test(mapSource),
+    "map Show remeasures paths after open/minimize restore");
+
 console.log(JSON.stringify({ ok: fail === 0, pass, fail }, null, 2));
 if (fail) process.exit(1);
 console.log("PASS: d202-map-overview (" + pass + " passed)");

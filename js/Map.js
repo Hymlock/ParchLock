@@ -181,6 +181,9 @@ var ParchLockMap = {
     Show: () => {
 
         $("body").removeClass("equip-open").addClass("map-open");
+        // Re-measure path endpoints after the sheet/column is shown (mobile
+        // translateY / desktop dock). Skip when layout is still 0x0.
+        requestAnimationFrame(function () { requestAnimationFrame(WorkspaceUI.DrawPaths); });
     },
 
     Hide: () => {

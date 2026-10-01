@@ -214,7 +214,7 @@ var WorkspaceUI = {
         raSkip.append(document.createTextNode("Skip lines repeated from the previous turn"));
         var rateRow = $("<div class='qol-display-row'>").css({ marginTop: "8px" }).appendTo("#game-options");
         $("<span>").text("Speech rate").appendTo(rateRow);
-        $("<button type='button'>").text("−").on("click", function () {
+        $("<button type='button'>").text("âˆ’").on("click", function () {
             var r = Math.round(((parseFloat(Global.Prefs.ReadAloudRate) || 1) - 0.1) * 10) / 10;
             Global.Prefs.ReadAloudRate = Math.max(0.7, r);
             Global.SavePrefs();
@@ -420,11 +420,29 @@ var WorkspaceUI = {
     DrawPaths: () => {
         var root = document.getElementById("rooms");
         if (!root) return;
-        var svg = root.querySelector("svg");
-        if (!svg) { svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); svg.classList.add("map-paths"); svg.setAttribute("aria-hidden", "true"); root.prepend(svg); }
+        var svg = root.querySelector("svg.map-paths");
+        if (!svg) {
+            svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.classList.add("map-paths");
+            svg.setAttribute("aria-hidden", "true");
+            root.prepend(svg);
+        }
         svg.replaceChildren();
-        var box = root.getBoundingClientRect(), scale = ParchLockMap.Scale;
-        svg.setAttribute("viewBox", "0 0 " + box.width / scale + " " + box.height / scale);
+        // Layout box (transform-independent) so the SVG viewBox stays aligned with
+        // room nodes under CSS translate/scale zoom, pan, and shell minimize/resize.
+        var w = root.clientWidth, h = root.clientHeight;
+        if (w < 1 || h < 1) return;
+        svg.setAttribute("viewBox", "0 0 " + w + " " + h);
+        var rootRect = root.getBoundingClientRect();
+        var sx = rootRect.width / w, sy = rootRect.height / h;
+        if (!(sx > 0) || !(sy > 0)) return;
+        function localCenter(el) {
+            var r = el.getBoundingClientRect();
+            return {
+                x: (r.left + r.width / 2 - rootRect.left) / sx,
+                y: (r.top + r.height / 2 - rootRect.top) / sy
+            };
+        }
         if (ParchLockMap.MapMode === "overview") {
             var seen = {};
             (ParchLockMap.OverviewEdges || []).forEach(function (edge) {
@@ -434,12 +452,12 @@ var WorkspaceUI = {
                 var key = edge.from + ">" + edge.to + ":" + edge.label;
                 if (seen[key]) return;
                 seen[key] = true;
-                var a = from.getBoundingClientRect(), b = to.getBoundingClientRect();
+                var a = localCenter(from), b = localCenter(to);
                 var line = document.createElementNS(svg.namespaceURI, "line");
-                line.setAttribute("x1", (a.x + a.width / 2 - box.x) / scale);
-                line.setAttribute("y1", (a.y + a.height / 2 - box.y) / scale);
-                line.setAttribute("x2", (b.x + b.width / 2 - box.x) / scale);
-                line.setAttribute("y2", (b.y + b.height / 2 - box.y) / scale);
+                line.setAttribute("x1", a.x);
+                line.setAttribute("y1", a.y);
+                line.setAttribute("x2", b.x);
+                line.setAttribute("y2", b.y);
                 line.setAttribute("data-label", edge.label);
                 if (edge.tentative) line.classList.add("tentative");
                 svg.appendChild(line);
@@ -448,16 +466,17 @@ var WorkspaceUI = {
         }
         var center = root.querySelector(".dir-here.shown");
         if (!center) return;
-        var a = center.getBoundingClientRect();
-        root.querySelectorAll(".room.shown:not(.dir-here)").forEach(target => {
-            var b = target.getBoundingClientRect(), ax = a.x + a.width / 2, ay = a.y + a.height / 2, bx = b.x + b.width / 2, by = b.y + b.height / 2;
-            var dx = bx - ax, dy = by - ay;
+        var a = localCenter(center);
+        root.querySelectorAll(".room.shown:not(.dir-here)").forEach(function (target) {
+            var b = localCenter(target);
+            var dx = b.x - a.x, dy = b.y - a.y;
             if (!dx && !dy) return;
             // Keep the path attached to the room centers; opaque room surfaces cover its interior.
             var line = document.createElementNS(svg.namespaceURI, "line");
-            line.setAttribute("x1", (ax - box.x) / scale); line.setAttribute("y1", (ay - box.y) / scale);
-            line.setAttribute("x2", (bx - box.x) / scale); line.setAttribute("y2", (by - box.y) / scale);
+            line.setAttribute("x1", a.x); line.setAttribute("y1", a.y);
+            line.setAttribute("x2", b.x); line.setAttribute("y2", b.y);
             svg.appendChild(line);
         });
     }
+
 };
