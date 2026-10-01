@@ -276,8 +276,8 @@ Use a strict escalation ladder:
 4. a controlled, disclosed live probe at a deterministic statistics-surface demand gate;
 5. a disposable shadow-VM probe when exact cloning exists and is preferable to spending a live turn.
 
-The live probe is not an ordinary `Actionable.Submit("score")` hidden with CSS. ProbeBroker extends the
-existing accepted-submit choke rather than creating a second one. It must wait for an idle visible LineInput
+The live probe is not an ordinary visible `Actionable.Submit("score")`. ProbeBroker extends the
+existing accepted-submit choke rather than creating a second one. It must wait for an idle LineInput
 with no draft, dialog, character prompt, navigation queue, restore, Identify transaction
 (`_probePending` or its `_diagnoseTimer`), carry probe (`_carryProbeSubmitting`/`clearCarryProbe`), or other
 probe in flight. At the first automatic live probe of
@@ -288,31 +288,40 @@ probes in the same game start/storyEpoch do not interrupt the player again. The 
 `stat-probe`, and map, command-usage, attribute, semantic, exit, narration, and tutorial consumers must
 ignore it as player intent while StatTracker and the real story turn/status model still receive its facts.
 The story's state change is not rolled back or denied: if the command consumes a turn, the HUD turn count
-must advance and the notice must remain truthful. Probe-owned command/reply lines may be visually collapsed
-only after exact ownership is proven; they remain available in transcript/export diagnostics, and the app
-must never remove neighboring story output or disrupt actionable underlines.
+must advance and the notice must remain truthful.
 
-The demand gate is testable: after the initial line prompt and at least one accepted ordinary player turn
-have settled, the player opens the statistics/equipment surface, no passive lane or learned binding can
-supply the specific requested metric or semantic relationship (for example EXP itself or the proven
-score-to-EXP relationship; an unrelated Score row is not sufficient), the exact probe verb is owned by the
-module dictionary, the
-automatic-check preference is enabled, and all safe-idle gates pass. Merely reaching a timer or turn count
-never probes. The live lane is at most once per requested verb per story epoch unless the user explicitly
-invokes Identify again, cancellable before submission, and disabled while a user draft exists. Failure,
-parser rejection, timeout, or ambiguous content imports no semantic relationship and must not trigger
-another automatic probe loop.
+Use the existing Wumpus-style headless/silent transaction whenever exact ownership is available: suppress
+the probe command echo and owned reply from the visible transcript and narration while still capturing them
+for parsing and diagnostic export. Suppression must be source/span-owned before rendering; it may never delete
+DOM text after the fact or consume neighboring story output. If exact suppression is unavailable, use the
+controlled visible probe path rather than risk corrupting transcript, actionables, or ReadAloud.
+
+The demand gate is testable: after the initial line prompt has settled, the player opens the
+statistics/equipment surface and each requested metric or relationship must be fulfilled from a deterministic
+current source. Confirmed current RAM/property/status evidence satisfies the request without a command. A
+cached text reading or unrelated Score row does not satisfy missing current EXP, level, health, carry, or
+another requested relationship. When a module-owned command is the only deterministic source, that command
+is required on **every** surface opening so the display is current. The exact probe verb must be owned by the
+module dictionary and the preference enabled. Merely reaching a timer or turn count never probes.
+
+If safe-idle gates are temporarily blocked by a user draft, CharInput, navigation, restore, or another probe,
+the surface stays open in an explicit `Checking...` state and the request remains queued for that same opening;
+it does not clear the draft, submit through a non-LineInput prompt, or silently display incomplete status.
+Parser rejection, timeout, or ambiguous content imports no relationship and ends in an explicit
+`Unavailable`/reason state for that field, never a blank or falsely current value and never an automatic retry
+loop within the same opening. Manual Identify remains available.
 
 For D204, a **game start** is a module/interpreter load, explicit New Game, or accepted RESTART. Each creates
-a new `storyEpoch`, resets the one-disclosure flag and automatic per-verb budgets, and may therefore disclose
-again if a later demand gate needs a live probe. Restore and undo create resynchronization generations within
-the same game start: they clear pending transactions/output cursors but neither re-notify nor replenish an
-automatic probe budget. Manual Identify remains user-controlled.
+    a new `storyEpoch` and resets the one-disclosure flag, and may therefore disclose again if a later demand
+gate needs a live probe. Restore and undo create resynchronization generations within the same game start:
+they clear pending transactions/output cursors but do not re-notify. Manual Identify remains user-controlled.
 
-One statistics/equipment-open gesture may schedule at most one automatic story command. The existing carry
-bootstrap has priority when it is eligible; if it runs, ProbeBroker does not submit during or after that same
-open gesture. A still-needed statistics probe may be reconsidered only on a later explicit surface-open
-gesture. This prevents sequential INVENTORY plus SCORE/DIAGNOSE turns from one tap.
+One statistics/equipment-open gesture creates one ordered fulfillment transaction. If carry, SCORE, DIAGNOSE,
+or another dictionary-owned command is the only deterministic source for different requested fields, all
+required commands serialize through the same submit choke for that opening. The next waits for the previous
+reply and a restored idle LineInput; commands never overlap, overwrite `_probePending`, or race carry. The
+one-time disclosure states that one or more module commands may be used and turns may be consumed. The screen
+remains `Checking...` until every requested field is fulfilled or explicitly unavailable.
 
 The shadow probe is not `Actionable.Submit("score")` with hidden CSS either. It requires a disposable interpreter
 instance restored from the same story/save state, receives the validated module-owned command, captures its
@@ -363,14 +372,14 @@ D204 ledger does not depend on implementing shadow cloning.
 - a shadow bootstrap, if supported, leaves live RAM, RNG, turn count, transcript, map, narration, learned
   commands, and persistence byte-equivalent; refusal or timeout imports nothing.
 - a live bootstrap runs only at a safe idle boundary; its first use in each game start produces exactly one
-  disclosure, later probes produce no repeated notification, and a turn it consumes remains counted; its
+  disclosure, later openings produce no repeated notification, and every turn it consumes remains counted; its
   source cannot train map, action usage, attributes, exits, semantics, narration, or tutorial state.
-- the demand gate cannot fire before a settled ordinary turn, without a statistics-surface request, when a
-  passive/learned value exists, for a non-dictionary verb, or while Identify/carry/navigation/restore is busy.
-- one surface-open gesture emits at most one automatic story command; an eligible carry bootstrap wins and
-  defers any statistics probe until a later explicit open.
-- module load/New Game/RESTART reset disclosure and automatic budgets; restore/undo reset capture generations
-  without re-notifying or replenishing a spent automatic budget.
+- headless ownership suppresses only exact probe command/reply spans and ReadAloud receives none of them;
+  visible fallback preserves all transcript neighbors when exact ownership is unavailable.
+- every surface opening produces current deterministic values; command-only sources run on every opening,
+  multiple required commands serialize, and blocked gates remain visibly `Checking...` until safe.
+- rejection/timeout marks only the affected field explicitly unavailable and cannot loop within one opening.
+- module load/New Game/RESTART reset disclosure; restore/undo reset capture generations without re-notifying.
 - tied RAM candidates fail closed or form a proven equal-value equivalent set.
 - unique player-property correlation and later contradiction/demotion.
 - restore/restart clears pending transactions before the first post-resync observation.

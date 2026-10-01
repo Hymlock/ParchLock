@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 316 headings; 103 decision rows; 419 registered units.
 **Last registered unit:** `pl-s316`. **Body SHA-256 (LF):**
-`7c41dd9ca62eaf0dd6f8c00a124aeefe74dfc2aace63d60929e7c3e9934ee00c`
+`fd67b0ff56576d06a2f3541d0a46f9e2a8e1827430af558b52a295e9a1e1ea4b`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -7677,24 +7677,31 @@ reset on module load, New Game and accepted RESTART; survive undo/restore in the
 playthrough without replay recount; never enter learned-fact persistence. `forgetReadings()`
 and `Resync()` must not zero them; resync advances capture generation for deduplication only.
 
-**Probe policy (operator-approved amendment to D188).** Passive status/output/RAM evidence
-and manual Identify remain first. The current tree has no proven disposable shadow VM, so
-the only planned automatic bootstrap is a disclosed live ProbeBroker transaction. It may
-run only after the initial prompt plus one settled ordinary turn, when the player requests
-the statistics/equipment surface, the specific requested metric or relationship remains
-unavailable (an unrelated Score row does not satisfy a missing EXP relationship),
-the exact verb is module-dictionary-owned, the preference is enabled, and LineInput is idle
-with no draft/dialog/CharInput/navigation/restore, no Identify `_probePending` or
-`_diagnoseTimer`, and no `_carryProbeSubmitting`/other probe. One surface-open gesture may
-submit at most one automatic story command: an eligible existing carry bootstrap has priority,
-and D204 waits for a later explicit open rather than stacking SCORE/DIAGNOSE behind it. It uses the
-existing submit choke with source `stat-probe`; map, usage, attribute, semantic, exit,
-narration and tutorial learners ignore that source, while a real consumed story turn stays
-counted. The first automatic probe of a game start displays one truthful notice immediately
-before application; later probes in that game start are silent. Module load, New Game and
-accepted RESTART create a new storyEpoch and reset notice/per-verb budgets. Undo/restore
-only resynchronize within the epoch and do not re-notify or replenish a budget. Failure or
-ambiguity imports nothing and cannot loop. A future shadow clone remains a separate,
+**Probe policy (operator-approved amendment to D188).** Passive deterministic current
+status/RAM evidence remains first. Every statistics/equipment opening must fulfill every
+requested field with a deterministic current value. When a module-owned command is the only
+deterministic source, that command runs on every opening; cached or unrelated Score does not
+satisfy missing current EXP. The current tree has no proven disposable shadow VM, so these
+commands use a disclosed live ProbeBroker transaction and any consumed turns remain real.
+
+The probe is headless and silent whenever exact Wumpus-style source/span ownership is
+available: its command echo and owned reply do not render or reach ReadAloud, but remain
+captured for parsing and diagnostic export. If exact suppression is unavailable, a controlled
+visible probe is required instead of deleting DOM text or risking neighboring output.
+
+The exact verb must be module-dictionary-owned and the preference enabled. If LineInput is
+blocked by a draft/dialog/CharInput/navigation/restore, Identify `_probePending`/
+`_diagnoseTimer`, carry submission, or another probe, the open surface remains `Checking...`
+and queues fulfillment without clearing player input. Carry, SCORE, DIAGNOSE and any other
+required commands serialize as one ordered transaction for that opening, each waiting for
+its reply and the next idle prompt; none is dropped because another is also required.
+Rejection/timeout marks the affected field explicitly unavailable rather than leaving blank
+status and cannot loop within the same opening. Source `stat-probe` is ignored by map, usage,
+attribute, semantic, exit, narration and tutorial learners while StatTracker and the real turn
+model receive the facts. The first automatic command of a game start displays one truthful
+notice that one or more module commands may run and consume turns; later openings in that
+storyEpoch remain silent. Module load, New Game and accepted RESTART reset only that notice;
+undo/restore resynchronize without re-notifying. A future shadow clone remains a separate,
 byte-equivalence-gated spike and does not block D204.
 
 **Implementation order and release gates.** First add red-on-HEAD tests for all nine defects

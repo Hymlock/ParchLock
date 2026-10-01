@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 93 headings; 0 decision rows; 93 registered units.
 **Last registered unit:** `ar-s093`. **Body SHA-256 (LF):**
-`0103f3611647d9bf82a405a6e45fe4fce3e1adf99392910feef785191c1d4fdc`
+`63075b7125344974bd7eb25ae4d9b69fb70b9e58ebe45e362db83c72f44a53fb`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -3545,19 +3545,24 @@ undo/restore without replay recount, and never persist as module facts. `forgetR
 
 **Probe contract.** ProbeBroker shares the existing submission choke and serializes with
 manual Identify (`_probePending` plus `_diagnoseTimer`), `_carryProbeSubmitting`, navigation
-and restore. It may schedule only when
-the initial prompt and one ordinary accepted turn have settled, the player requests the
-statistics/equipment surface, the specific requested metric or relationship is still absent
-(an unrelated Score row does not satisfy missing EXP), the exact verb belongs
-to the module dictionary, the preference is enabled, and idle LineInput has no draft or
-competing modal/CharInput/probe. One surface-open gesture may submit at most one automatic
-story command: eligible carry bootstrap has priority, and a stat probe waits for a later
-explicit open rather than stacking behind it. Source `stat-probe` is visible to StatTracker and the real
-turn model but excluded from map, action usage, attributes, semantics, exits, narration and
-tutorial learning. A consumed turn remains counted. The first automatic probe in a game
-start discloses immediately before submission; later probes in that epoch are silent.
-Module load/New Game/RESTART create a new epoch and reset disclosure/per-verb budgets;
-undo/restore only reset capture generations. Failure imports nothing and cannot loop.
+and restore. Every statistics/equipment opening fulfills every requested field from a
+deterministic current source. Confirmed current RAM/property/status evidence avoids a command;
+when a module-owned command is the only deterministic source, it runs on every opening.
+Unrelated/cached Score does not satisfy missing current EXP.
+
+Blocked LineInput keeps the surface visibly `Checking...` and queues that same opening without
+clearing a draft. All required carry/SCORE/DIAGNOSE commands serialize in one ordered
+fulfillment transaction, each waiting for its reply and a new idle prompt. Rejection/timeout
+explicitly marks only the affected field unavailable and cannot loop within one opening.
+
+Exact Wumpus-style source/span ownership makes probes headless and silent: command echo and
+owned reply bypass visible transcript and narration but remain parser/diagnostic inputs. Without
+exact ownership, use the controlled visible path; never remove rendered DOM or neighboring story
+output. Source `stat-probe` is visible to StatTracker and the real turn model but excluded from
+map, action usage, attributes, semantics, exits, narration and tutorial learning. Every consumed
+turn remains counted. The first automatic command in a game start discloses that one or more
+module commands may run; later openings in that epoch are silent. Module load/New Game/RESTART
+reset disclosure; undo/restore only reset capture generations.
 
 **Isolation and cutover.** D204 owns an `off/shadow/on` valve. Shadow mode compares only;
 legacy and ledger paths cannot both publish UI/events. Existing v3 seeding, Wumpus health
