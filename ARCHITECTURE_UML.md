@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 93 headings; 0 decision rows; 93 registered units.
 **Last registered unit:** `ar-s093`. **Body SHA-256 (LF):**
-`03fcac4713cd99b1414226c7edc1eb9c5b31187e228beefa5dc0b509a4743529`
+`0103f3611647d9bf82a405a6e45fe4fce3e1adf99392910feef785191c1d4fdc`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -3540,14 +3540,19 @@ move in the same sealed turn. Coincidence and conflicting ties fail closed.
 An asterisk banner's default classification is candidate-only; counts require a terminal/
 end-state transition, explicit game-authored death transition, or corroborated life-stat
 transition. Playthrough counters reset on module load/New Game/accepted RESTART, survive
-undo/restore without replay recount, and never persist as module facts.
+undo/restore without replay recount, and never persist as module facts. `forgetReadings()` and
+`Resync()` preserve those counters while advancing the output-capture generation.
 
 **Probe contract.** ProbeBroker shares the existing submission choke and serializes with
-manual Identify, `_carryProbeSubmitting`, navigation and restore. It may schedule only when
+manual Identify (`_probePending` plus `_diagnoseTimer`), `_carryProbeSubmitting`, navigation
+and restore. It may schedule only when
 the initial prompt and one ordinary accepted turn have settled, the player requests the
-statistics/equipment surface, the requested family is still absent, the exact verb belongs
+statistics/equipment surface, the specific requested metric or relationship is still absent
+(an unrelated Score row does not satisfy missing EXP), the exact verb belongs
 to the module dictionary, the preference is enabled, and idle LineInput has no draft or
-competing modal/CharInput/probe. Source `stat-probe` is visible to StatTracker and the real
+competing modal/CharInput/probe. One surface-open gesture may submit at most one automatic
+story command: eligible carry bootstrap has priority, and a stat probe waits for a later
+explicit open rather than stacking behind it. Source `stat-probe` is visible to StatTracker and the real
 turn model but excluded from map, action usage, attributes, semantics, exits, narration and
 tutorial learning. A consumed turn remains counted. The first automatic probe in a game
 start discloses immediately before submission; later probes in that epoch are silent.

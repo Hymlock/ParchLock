@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 316 headings; 103 decision rows; 419 registered units.
 **Last registered unit:** `pl-s316`. **Body SHA-256 (LF):**
-`09c5742f68953e54b641cf71d8f7f561d0e094c51e1936b58fa60409686f8c44`
+`7c41dd9ca62eaf0dd6f8c00a124aeefe74dfc2aace63d60929e7c3e9934ee00c`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -7674,15 +7674,20 @@ increment requires an involuntary terminal/end-state transition, an explicit gam
 death transition, or a corroborated life-stat transition. Ordinary prose and low health are
 insufficient. Product-owned `Deaths this playthrough` / `Wins this playthrough` counters
 reset on module load, New Game and accepted RESTART; survive undo/restore in the same
-playthrough without replay recount; never enter learned-fact persistence.
+playthrough without replay recount; never enter learned-fact persistence. `forgetReadings()`
+and `Resync()` must not zero them; resync advances capture generation for deduplication only.
 
 **Probe policy (operator-approved amendment to D188).** Passive status/output/RAM evidence
 and manual Identify remain first. The current tree has no proven disposable shadow VM, so
 the only planned automatic bootstrap is a disclosed live ProbeBroker transaction. It may
 run only after the initial prompt plus one settled ordinary turn, when the player requests
-the statistics/equipment surface, the requested score/EXP/level family remains unavailable,
+the statistics/equipment surface, the specific requested metric or relationship remains
+unavailable (an unrelated Score row does not satisfy a missing EXP relationship),
 the exact verb is module-dictionary-owned, the preference is enabled, and LineInput is idle
-with no draft/dialog/CharInput/navigation/restore/Identify/carry/other probe. It uses the
+with no draft/dialog/CharInput/navigation/restore, no Identify `_probePending` or
+`_diagnoseTimer`, and no `_carryProbeSubmitting`/other probe. One surface-open gesture may
+submit at most one automatic story command: an eligible existing carry bootstrap has priority,
+and D204 waits for a later explicit open rather than stacking SCORE/DIAGNOSE behind it. It uses the
 existing submit choke with source `stat-probe`; map, usage, attribute, semantic, exit,
 narration and tutorial learners ignore that source, while a real consumed story turn stays
 counted. The first automatic probe of a game start displays one truthful notice immediately

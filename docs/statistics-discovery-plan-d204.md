@@ -262,7 +262,9 @@ and follow D178/D180-D183 restore ordering.
 Death/win totals are product-owned **playthrough counters**, labelled `Deaths this playthrough` and `Wins
 this playthrough`. They reset on module load, explicit New Game, or accepted RESTART; they survive undo and
 restore within that playthrough, while output-span/epoch deduplication prevents replay from recounting.
-Module switch cannot leak either total. They are not written into module/build learned-fact storage.
+Module switch cannot leak either total. `forgetReadings()` and `Resync()` must not zero these counters;
+they only advance the output-capture generation so restored spans cannot recount. The counters are not
+written into module/build learned-fact storage.
 
 ### 4.10 Passive monitor and last-resort bootstrap
 
@@ -276,12 +278,13 @@ Use a strict escalation ladder:
 
 The live probe is not an ordinary `Actionable.Submit("score")` hidden with CSS. ProbeBroker extends the
 existing accepted-submit choke rather than creating a second one. It must wait for an idle visible LineInput
-with no draft, dialog, character prompt, navigation queue, restore, Identify transaction, carry probe
-(`_carryProbeSubmitting`/`clearCarryProbe`), or other probe in flight. At the first automatic live probe of
+with no draft, dialog, character prompt, navigation queue, restore, Identify transaction
+(`_probePending` or its `_diagnoseTimer`), carry probe (`_carryProbeSubmitting`/`clearCarryProbe`), or other
+probe in flight. At the first automatic live probe of
 each game start, and only then, it displays
 an app-owned notice such as `ParchLock may check this story's statistics with module-owned commands; this
 story may count a check as a turn.` The notice is not shown at startup when no probe is needed, and later
-probes in the same game session do not interrupt the player again. The TurnRecorder source is
+probes in the same game start/storyEpoch do not interrupt the player again. The TurnRecorder source is
 `stat-probe`, and map, command-usage, attribute, semantic, exit, narration, and tutorial consumers must
 ignore it as player intent while StatTracker and the real story turn/status model still receive its facts.
 The story's state change is not rolled back or denied: if the command consumes a turn, the HUD turn count
@@ -291,7 +294,9 @@ must never remove neighboring story output or disrupt actionable underlines.
 
 The demand gate is testable: after the initial line prompt and at least one accepted ordinary player turn
 have settled, the player opens the statistics/equipment surface, no passive lane or learned binding can
-supply the requested score/EXP/level family, the exact probe verb is owned by the module dictionary, the
+supply the specific requested metric or semantic relationship (for example EXP itself or the proven
+score-to-EXP relationship; an unrelated Score row is not sufficient), the exact probe verb is owned by the
+module dictionary, the
 automatic-check preference is enabled, and all safe-idle gates pass. Merely reaching a timer or turn count
 never probes. The live lane is at most once per requested verb per story epoch unless the user explicitly
 invokes Identify again, cancellable before submission, and disabled while a user draft exists. Failure,
@@ -303,6 +308,11 @@ a new `storyEpoch`, resets the one-disclosure flag and automatic per-verb budget
 again if a later demand gate needs a live probe. Restore and undo create resynchronization generations within
 the same game start: they clear pending transactions/output cursors but neither re-notify nor replenish an
 automatic probe budget. Manual Identify remains user-controlled.
+
+One statistics/equipment-open gesture may schedule at most one automatic story command. The existing carry
+bootstrap has priority when it is eligible; if it runs, ProbeBroker does not submit during or after that same
+open gesture. A still-needed statistics probe may be reconsidered only on a later explicit surface-open
+gesture. This prevents sequential INVENTORY plus SCORE/DIAGNOSE turns from one tap.
 
 The shadow probe is not `Actionable.Submit("score")` with hidden CSS either. It requires a disposable interpreter
 instance restored from the same story/save state, receives the validated module-owned command, captures its
@@ -357,6 +367,8 @@ D204 ledger does not depend on implementing shadow cloning.
   source cannot train map, action usage, attributes, exits, semantics, narration, or tutorial state.
 - the demand gate cannot fire before a settled ordinary turn, without a statistics-surface request, when a
   passive/learned value exists, for a non-dictionary verb, or while Identify/carry/navigation/restore is busy.
+- one surface-open gesture emits at most one automatic story command; an eligible carry bootstrap wins and
+  defers any statistics probe until a later explicit open.
 - module load/New Game/RESTART reset disclosure and automatic budgets; restore/undo reset capture generations
   without re-notifying or replenishing a spent automatic budget.
 - tied RAM candidates fail closed or form a proven equal-value equivalent set.
