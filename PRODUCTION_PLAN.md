@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 316 headings; 103 decision rows; 419 registered units.
 **Last registered unit:** `pl-s316`. **Body SHA-256 (LF):**
-`5472bcbc62a57474c7ef48a214f47ef56f2c94f2b5af5f54ddd34db86568bed0`
+`a18c1c916926e2fe89391487b5936c22abf09b5b1ecad53cb0a1a9d31f08e65b`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -7049,7 +7049,30 @@ inventory, Equipment, notes, lifecycle and both platforms must consume the same 
 IDs. Residual unsupported or ambiguous modules must be listed by the tracked audit with an
 evidence reason; they may remain honest absences, but may not be silently counted as fixed.
 
-**Temporary draft: descriptor-aware object identity extension (2026-10-01; research only, awaiting Grok).**
+**Normative D201 descriptor amendment (operator GO, 2026-10-01; source implementation under audit).**
+The reconciled #979/#981/#982 contract below is authoritative for this extension;
+Temporary/pre-GO labels below describe its research history, not current authorization.
+`Actionable.referenceFor` is the shared current-scope reference gate, using dictionary
+address equivalence and candidate IDs. `displayNameFor` preserves uniquely owned contiguous
+observed vocabulary phrases without joining across punctuation. Unnamed promotion retains
+physical siblings; marks carry candidateIds and bind objectId only for one owner. No
+multi-candidate mark writes VerifiedNouns. Item rows display observed names with separate
+aria-hidden instance badges; badges never enter commands. ActionSynth, semantic noun forms,
+radial operands, Equipment drops and scoped calibration share the gate. Ambiguous native
+actions are explicitly labeled any, intersect candidate command sets, and use a dedicated
+source excluded from object-specific learning. Restore resync clears transient phrase
+state before payload recovery, preserving room notes and existing calibration stores.
+
+Verification: new shared-reference test failed before implementation; command-disambiguation
+35/35, Equipment 57/57, nested inventory 60/60, noun/verb 10/10, live Huge Cave compound
+noun 17/17 after repairing its first-run failure. No module-specific IDs/colors were added.
+Audit must specifically challenge custom-parse detection: the resolver honors explicit
+customParseName/parseNameUnverified evidence, but exhaustive compiler-family discovery of
+those flags is not proven by these tests. Passive naming attribution remains the separate
+research gate already specified below. Exact RoTA and mystery-vial saves and device coverage
+remain unverified, not claimed complete. This amendment is not a release-validation claim.
+
+**Temporary draft: descriptor-aware object identity extension (2026-10-01; research history).**
 This extends D201, not a second world model. Chapter check: D47/D54 stable room IDs;
 D64/D70 printed matches; D107 parser-owned commands; D141/D142/D144/D146/D147/D150
 adjective selection; D184/D185/D190 unnamed promotion and Wumpus pellets; D122/D148

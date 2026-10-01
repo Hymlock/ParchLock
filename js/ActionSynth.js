@@ -176,6 +176,7 @@ var ActionSynth = {
 
     commandsForObject: (obj, context, containerName, options) => {
         if (!obj || !obj.name) return [];
+        if (!(options && options.allowAmbiguousReference) && typeof Actionable !== "undefined" && Actionable.referenceFor && !Actionable.referenceFor(obj).unique) return [];
         // D64: obj.name is the object's structural short-name (a display
         // string, not guaranteed real parser vocabulary). Actionable
         // remembers, per RAM object id, whichever phrase was actually

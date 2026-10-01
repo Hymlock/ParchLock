@@ -210,6 +210,10 @@ var SemanticActions = {
 
     commandNounForObj: function (obj) {
         try {
+            if (typeof Actionable !== "undefined" && Actionable.referenceFor) {
+                var reference = Actionable.referenceFor(obj);
+                return reference.unique ? reference.noun : "";
+            }
             if (typeof Actionable !== "undefined" && Actionable.commandNounFor) return Actionable.commandNounFor(obj);
         } catch (e) {}
         return obj && obj.name;

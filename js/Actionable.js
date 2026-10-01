@@ -158,6 +158,55 @@ var Actionable = {
     // dictionary words and its own header short-name. No prose is read, and a
     // qualifier is only added when a real rival is in scope RIGHT NOW, so an
     // unambiguous object keeps the exact short command it has today.
+    vocabularyKey: function (word) {
+        var w = String(word || "").toLowerCase();
+        try {
+            var mem = ZRamProvider.getMem();
+            ZRamReader.hasDictionaryWord(mem, w);
+            var dict = ZRamReader._dictWordCache || ZRamReader.parseDictionary(mem);
+            if (dict.words[w]) return "@" + dict.words[w];
+            var cut = ZRamReader.header(mem).version <= 3 ? 6 : 9;
+            if (/^[a-z]+$/.test(w) && dict.words[w.slice(0, cut)]) return "@" + dict.words[w.slice(0, cut)];
+        } catch (e) {}
+        return w;
+    },
+    referenceFor: function (obj, suppliedPool) {
+        var pool = suppliedPool || Actionable.payloadPool();
+        var noun = Actionable.disambiguatedNoun(obj);
+        var tokens = String(noun || "").toLowerCase().split(/[^a-z0-9'-]+/).filter(Boolean);
+        var owners = {}, candidates = [];
+        pool.concat(obj || []).forEach(function (o) {
+            if (!o || o.id == null || owners[String(o.id)]) return;
+            owners[String(o.id)] = true;
+            var words = (o.aliases || []).concat(String(o.name || "").toLowerCase().split(/[^a-z0-9'-]+/)).map(Actionable.vocabularyKey);
+            if (tokens.length && tokens.every(function (t) { return words.indexOf(Actionable.vocabularyKey(t)) >= 0; })) candidates.push(o.id);
+        });
+        var customUnverified = pool.some(function (o) { return o && (o.customParseName || o.parseNameUnverified) && !o.parserReferenceVerified; });
+        return { noun: noun, candidateIds: candidates, unique: !customUnverified && candidates.length === 1 && String(candidates[0]) === String(obj && obj.id), provenance: "scoped-vocabulary" };
+    },
+    displayNameFor: function (obj, pool, text) {
+        var aliases = (obj.aliases || []).map(Actionable.vocabularyKey);
+        if (!aliases.length) return obj.name;
+        var source = String(text || "").toLowerCase();
+        var matches = Array.from(source.matchAll(/[a-z][a-z'-]*/g));
+        var words = matches.map(function (match) { return match[0]; });
+        var best = "";
+        for (var i = 0; i < words.length; i++) {
+            var phrase = [];
+            for (var j = i; j < Math.min(words.length, i + 6); j++) {
+                if (j > i && !/^\s+$/.test(source.slice(matches[j - 1].index + words[j - 1].length, matches[j].index))) break;
+                if (aliases.indexOf(Actionable.vocabularyKey(words[j])) < 0) break;
+                phrase.push(words[j]);
+                if (phrase.length < 2) continue;
+                var owners = (pool || []).filter(function (o) {
+                    var mine = (o.aliases || []).map(Actionable.vocabularyKey);
+                    return phrase.every(function (w) { return mine.indexOf(Actionable.vocabularyKey(w)) >= 0; });
+                });
+                if (owners.length === 1 && String(owners[0].id) === String(obj.id) && phrase.join(" ").length > best.length) best = phrase.join(" ");
+            }
+        }
+        return best || obj.name;
+    },
     nounWordsOf: (obj) => {
         var out = {};
         try {
@@ -276,7 +325,16 @@ var Actionable = {
     disambiguatedNoun: (obj) => {
         var fallback = Actionable.expandTruncated(Actionable.commandNounFor(obj), obj);
         var noun = Actionable.headNounOf(obj);
-        if (!noun) return fallback;
+        if (!noun) {
+            var own = (obj && obj.aliases) || [];
+            var pool = Actionable.payloadPool();
+            var unique = own.find(function (word) {
+                return !/^(a|an|the|of|and|or|to|some)$/i.test(word) && !pool.some(function (r) {
+                    return String(r.id) !== String(obj.id) && (r.aliases || []).some(function (w) { return Actionable.vocabularyKey(w) === Actionable.vocabularyKey(word); });
+                });
+            });
+            return unique ? Actionable.expandTruncated(unique, obj) : fallback;
+        }
 
         var rivals = Actionable.rivalsFor(obj, noun);
         // Nothing else answers to this noun: the short form is unambiguous and
@@ -379,6 +437,8 @@ var Actionable = {
     // byte-parity with the legacy path (harness/d88-semantic-parity.js), so
     // this changes WHERE the array is computed, never its contents.
     resolveObjectCommands: (objectId, kind) => {
+        var target = Actionable.payloadPool().find(function (o) { return String(o.id) === String(objectId); });
+        if (target && !Actionable.referenceFor(target).unique) return [];
         try {
             var hit = Actionable.payloadPool().find(function (o) {
                 return o && String(o.id) === String(objectId);
@@ -536,6 +596,7 @@ var Actionable = {
                         if (cmds && cmds.length) { primary = cmds[0].command; primaryIntent = cmds[0].intent || null; }
                     }
                 } catch (err) {}
+                if (!primary) Actionable.Open(noun, kind, e.clientX, e.clientY, oid);
                 if (primary) {
                     Actionable.Submit(primary);
                     if (primaryIntent) Actionable.noteIntentUsage(primaryIntent);
@@ -748,11 +809,10 @@ var Actionable = {
                     if (!best || t.length > best.length) best = t;
                 });
                 if (!best) return;
-                // One printed phrase, one mark: identical siblings collapse.
-                if (takenWords[best]) return;
-                takenWords[best] = 1;
+                // Keep physical siblings; the marker owns a candidate set.
+                var label = Actionable.displayNameFor({ id: c.id, name: best, aliases: c.aliases }, cands, roomText);
                 out.push({
-                    id: c.id, name: best, parentId: c.parentId,
+                    id: c.id, name: label, parentId: c.parentId,
                     aliases: c.aliases,
                     // D190: the declared attributes, and ONLY when D186 decoded
                     // this module's own attribute-name table. D184 shipped {}
@@ -787,7 +847,10 @@ var Actionable = {
             Actionable.promoteUnnamed(p, text).forEach(function (o) {
                 if (!seen[String(o.id)]) base.push(o);
             });
-            return base;
+            return base.map(function (o) {
+                var label = Actionable.displayNameFor(o, base, text);
+                return label === o.name ? o : Object.assign({}, o, { name: label, structuralName: o.name, labelProvenance: "observed-vocabulary" });
+            });
         } catch (e) { return []; }
     },
 
@@ -916,11 +979,19 @@ var Actionable = {
                     mark.className = "pl-act";
                     mark.dataset.noun = matched.toLowerCase();
                     mark.dataset.kind = meta.kind;
-                    if (meta.objectId != null && meta.objectId !== "") mark.dataset.objectId = String(meta.objectId);
+                    if (meta.objectId != null && meta.objectId !== "") {
+                        var owners = Actionable.payloadPool().filter(function (o) {
+                            var words = Actionable.nounWordsOf(o);
+                            return String(o.name).toLowerCase() === matched.toLowerCase() || matched.toLowerCase().split(/\s+/).every(function (w) { return !!words[w] || (o.aliases || []).some(function (a) { return Actionable.vocabularyKey(a) === Actionable.vocabularyKey(w); }); });
+                        });
+                        mark.dataset.candidateIds = JSON.stringify(owners.map(function (o) { return o.id; }));
+                        if (owners.length === 1 && String(owners[0].id) === String(meta.objectId)) mark.dataset.objectId = String(meta.objectId);
+                    }
                     if (meta.dictAddr) mark.dataset.dictAddr = String(meta.dictAddr);
                     mark.textContent = matched;
                     mark.title = meta.kind === "direction" ? "Go " + mark.dataset.noun : "Examine " + mark.dataset.noun;
-                    if (meta.kind !== "direction" && !mark.dataset.objectId) return true;
+                    if (meta.kind !== "direction" && !mark.dataset.objectId) mark.title = "Ambiguous reference: " + mark.dataset.noun;
+                    meta.resolvedObjectId = mark.dataset.objectId || null;
                     frag.appendChild(mark);
                     frag.appendChild(document.createTextNode(source.slice(afterIdx)));
                     textNode.parentNode.replaceChild(frag, textNode);
@@ -1229,7 +1300,7 @@ var Actionable = {
         ordered.forEach(function (t) {
             if (t.objectId != null && markedIds[String(t.objectId)]) return;
             if (Actionable.wrapFirstExact(activeLines, t.phrase, t)) {
-                if (t.objectId != null) {
+                if (t.objectId != null && String(t.resolvedObjectId) === String(t.objectId)) {
                     markedIds[String(t.objectId)] = true;
                     var key = String(t.objectId);
                     var prev = Actionable.VerifiedNouns[key];
@@ -1324,6 +1395,30 @@ var Actionable = {
         try { if (typeof EquipmentUI !== "undefined" && EquipmentUI.Render) EquipmentUI.Render(); } catch (e) {}
     },
     Open: (noun, kind, x, y, objectId) => {
+        var object = Actionable.payloadPool().find(function (o) { return String(o.id) === String(objectId); });
+        if (!objectId || (object && !Actionable.referenceFor(object).unique)) {
+            if (kind !== "direction") {
+                var choices = Actionable.payloadPool().filter(function (o) {
+                    return (o.aliases || []).some(function (w) { return Actionable.vocabularyKey(w) === Actionable.vocabularyKey(noun); }) || String(o.name).toLowerCase() === String(noun).toLowerCase();
+                });
+                var ambiguity = choices.filter(function (o) { return Actionable.referenceFor(o).unique; }).map(function (o) {
+                    return { Label: o.name, Action: function () { Actionable.Open(o.name, kind, x, y, o.id); } };
+                });
+                if (!ambiguity.length) {
+                    if (choices.length && typeof ActionSynth !== "undefined") {
+                        var common = choices.map(function (o) { return ActionSynth.commandsForObject(o, kind === "inventory" ? "inventory" : "room", null, { allowAmbiguousReference: true, directEvidenceOnly: !!o.examineOnly }); });
+                        (common[0] || []).forEach(function (entry) {
+                            if (/\s$/.test(entry.command) || !common.every(function (list) { return list.some(function (c) { return c.command === entry.command; }); })) return;
+                            ambiguity.push({ Label: entry.verb + " " + noun + " (any)", Command: entry.command, Action: function () { Actionable.Submit(entry.command, "ambiguous-reference"); } });
+                        });
+                    }
+                    var inspect = typeof ActionSynth !== "undefined" && !ActionSynth.inspectVerbDisabled() ? ActionSynth.defaultInspectVerb() : "";
+                    if (inspect) ambiguity.push({ Label: "Clarify " + noun + "...", Action: function () { Input.Clear(); Input.Inject(inspect + " " + noun, false); Input.Focus(); } });
+                }
+                ParchLockQol.OpenRadial(x, y, ambiguity, { source: "text", noun: noun, kind: kind, objectId: null });
+                return;
+            }
+        }
         var context = { source: "text", noun: noun, kind: kind, objectId: objectId || null };
         var slices = [];
         // Score is a static confidence prior. Usage stays separate so the
@@ -1397,7 +1492,7 @@ var Actionable = {
                             var wantsContainer = /^put\b/.test(vLower);
                             var wantsRecipient = /^(give|ask|show|tell)\b/.test(vLower);
                             var pool = Actionable.payloadPool().filter(function (o) {
-                                return o && String(o.id) !== String(objectId) && !o.examineOnly;
+                                return o && String(o.id) !== String(objectId) && !o.examineOnly && Actionable.referenceFor(o).unique;
                             });
                             if (wantsContainer || wantsRecipient) {
                                 var primary = [], rest = [];
@@ -1420,7 +1515,7 @@ var Actionable = {
                                 return;
                             }
                             ParchLockQol.OpenRadial(x, y, targets.map(function (t) {
-                                var full = command + Actionable.commandNounFor(t);
+                                var full = command + Actionable.referenceFor(t).noun;
                                 return { Label: t.name, Command: full, Score: scoreFor(full, base), Usage: usageFor(full), Action: function () { Actionable.Submit(full); if (c.intent) Actionable.noteIntentUsage(c.intent); } };
                             }), context);
                         }
@@ -1454,7 +1549,7 @@ var Actionable = {
                     Actionable.availableInstrumentals().forEach(function (inst) {
                         slices.push({ Label: inst.label, Score: 50, Usage: 0, UsageKey: "launcher:" + inst.verb + "-with:" + objectId, TrackTap: true, Action: function () {
                             ParchLockQol.OpenRadial(x, y, Actionable.payloadPool().filter(function (o) {
-                                return o && String(o.id) !== String(objectId) && !o.examineOnly;
+                                return o && String(o.id) !== String(objectId) && !o.examineOnly && Actionable.referenceFor(o).unique;
                             }).map(function (other) {
                                 var source = Actionable.payloadPool().find(function (o) { return String(o.id) === String(objectId); });
                                 // D141/D147: the disambiguating form on BOTH

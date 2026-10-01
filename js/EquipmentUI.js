@@ -352,10 +352,13 @@ var EquipmentUI = {
     dropCommand: function (m, item, target) {
         if (!EquipmentUI.canAccept(target, item)) return null;
         if (EquipmentUI.isDescendant(m, item, target.id)) return null;  // no cycles
-        if (target.self) return "take " + item.name;
+        var sourceRef = typeof Actionable !== "undefined" && Actionable.referenceFor ? Actionable.referenceFor(item) : { noun: item.name, unique: true };
+        var targetRef = target.self ? null : (typeof Actionable !== "undefined" && Actionable.referenceFor ? Actionable.referenceFor(target) : { noun: target.name, unique: true });
+        if (!sourceRef.unique || (targetRef && !targetRef.unique)) return null;
+        if (target.self) return "take " + sourceRef.noun;
         var a = target.attrs || {};
-        if (a.container && a.open) return "put " + item.name + " in " + target.name;
-        if (a.supporter) return "put " + item.name + " on " + target.name;
+        if (a.container && a.open) return "put " + sourceRef.noun + " in " + targetRef.noun;
+        if (a.supporter) return "put " + sourceRef.noun + " on " + targetRef.noun;
         return null;
     },
 
@@ -505,8 +508,17 @@ var EquipmentUI = {
 
             var label = document.createElement("span");
             label.className = "equip-name";
-            label.textContent = o.name;
+            var text = typeof Actionable !== "undefined" ? Actionable.Scope.lastLookText + "\n" + Actionable.Scope.lastInventoryText : "";
+            label.textContent = typeof Actionable !== "undefined" && Actionable.displayNameFor ? Actionable.displayNameFor(o, m.items, text) : o.name;
             el.appendChild(label);
+            var siblings = m.items.filter(function (other) { return String(other.name).toLowerCase() === String(o.name).toLowerCase(); });
+            if (!row.self && siblings.length > 1) {
+                var badge = document.createElement("small");
+                badge.className = "equip-instance";
+                badge.setAttribute("aria-hidden", "true");
+                badge.textContent = "instance " + EquipmentUI._seq[String(o.id)];
+                el.appendChild(badge);
+            }
 
             var tags = [];
             if (row.self) tags.push("you");

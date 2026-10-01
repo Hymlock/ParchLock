@@ -10,6 +10,14 @@ var UndoRestoreSync = {
     resync: function () {
         UndoRestoreSync.generation++;
         UndoRestoreSync.pending = false;
+        if (typeof Actionable !== "undefined") {
+            Actionable.VerifiedNouns = {};
+            Actionable.CommandNouns = {};
+            Actionable.Scope.lastLookText = "";
+            Actionable.Scope.lastInventoryText = "";
+            Actionable.RoomLines = [];
+            Actionable.Signature = "";
+        }
         try {
             if (typeof ZvmCapture !== "undefined" && ZvmCapture.tick) ZvmCapture.tick();
             // D180: the stats are a subsystem of this resync too. Undo, restore

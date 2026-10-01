@@ -79,9 +79,11 @@ var AttrCalibrator = {
             var byId = {};
             (p.discoveredObjects || []).concat(p.inventory || []).forEach(function (obj) {
                 if (!obj || obj.id == null) return;
+                if (typeof Actionable !== "undefined" && Actionable.referenceFor && !Actionable.referenceFor(obj).unique) return;
                 var rendered = obj.name;
                 try {
-                    if (typeof Actionable !== "undefined" && Actionable.commandNounFor) rendered = Actionable.commandNounFor(obj);
+                    if (typeof Actionable !== "undefined" && Actionable.referenceFor) rendered = Actionable.referenceFor(obj).noun;
+                    else if (typeof Actionable !== "undefined" && Actionable.commandNounFor) rendered = Actionable.commandNounFor(obj);
                 } catch (e) {}
                 if (String(rendered || "").toLowerCase().trim() !== wanted) return;
                 byId[String(obj.id)] = obj.id;
@@ -295,6 +297,7 @@ var AttrCalibrator = {
         verbSuccess: {
             id: "diag-verbSuccess",
             prepare: function (turn) {
+                if (turn.source === "ambiguous-reference") return null;
                 try {
                     if (!AttrCalibrator._verbRegex) AttrCalibrator._verbRegex = AttrCalibrator.buildVerbRegex();
                     if (!AttrCalibrator._verbRegex) return null;
@@ -317,6 +320,7 @@ var AttrCalibrator = {
                     var id = AttributeSchema._findIdByName(mem, noun);
                     if (!id) return null;
                     var d198Correlation = AttrCalibrator._d198ScopedCorrelation(noun);
+                    if (typeof Actionable !== "undefined" && Actionable.payloadPool && Actionable.payloadPool().length && (!d198Correlation || String(d198Correlation.objectId) !== String(id))) return null;
                     turn.__diagVerbSuccessCtx = { verb: verb, noun: noun, id: id, ops: ops || [], trace: [], d198Correlation: d198Correlation };
                     // codex #455/#456: analyze() must never read live DOM --
                     // captureAfter freezes the transcript slice at the SAME
@@ -442,6 +446,7 @@ var AttrCalibrator = {
         verbBehavior: {
             id: "diag-verbBehavior",
             prepare: function (turn) {
+                if (turn.source === "ambiguous-reference") return null;
                 try {
                     var split = AttrCalibrator._splitAnyVerbNoun(turn.command);
                     if (!split) return null;
@@ -701,6 +706,11 @@ var AttrCalibrator = {
             // guess -- both are already-established, non-text-mined nouns.
             var matches = pool.filter(function (o) {
                 if (!o) return false;
+                if (typeof Actionable !== "undefined" && Actionable.referenceFor) {
+                    var reference = Actionable.referenceFor(o);
+                    if (!reference.unique) return false;
+                    if (String(reference.noun).toLowerCase() === noun) return true;
+                }
                 if (String(o.name).toLowerCase() === noun) return true;
                 var alias = (typeof Actionable !== "undefined" && Actionable.commandNounFor) ? Actionable.commandNounFor(o) : null;
                 return alias && String(alias).toLowerCase() === noun;

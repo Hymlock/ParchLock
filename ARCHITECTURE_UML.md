@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 93 headings; 0 decision rows; 93 registered units.
 **Last registered unit:** `ar-s093`. **Body SHA-256 (LF):**
-`220da341198e9ffef7b348e06537ed6a5ed95660df00f7a8c1d2338be95114a4`
+`63b67679df1d19801ed51ea2828b01247b286a56b0c1b3444b7dfea30b6040b4`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -3338,6 +3338,20 @@ Wumpus, RoTA, Zork and ambiguous multi-body controls. A neutral old-library diag
 remains neutral until existing real-travel calibration resolves it. Any title/object/slot
 exception, scan-order tie, status-derived identity, vocabulary-derived action, duplicate
 metric observation, or consumer-specific branch fails the architecture.
+
+**D201 descriptor amendment (operator-authorized 2026-10-01; implementation audit pending).**
+Actionable owns ephemeral current-scope reference resolution and observed-name refinement;
+WorldModel/RAM IDs remain identity owners. Candidate-set marks never assign first-wins
+physical IDs; unique marks alone update VerifiedNouns. Existing ActionSynth/SemanticActions,
+Equipment drops and calibration consume the same resolver. Explicit any-object native
+actions intersect evidence across candidates, keep null UI objectId, and suppress
+object-specific learning via ambiguous-reference source. UI badges are aria-hidden and
+separate from parser text. UndoRestoreSync clears transient phrases before world recovery;
+room notes and retained learning are unchanged. No naming routine is executed for labels.
+Runtime customParseName/parseNameUnverified flags fail closed; comprehensive detection of
+custom parser overrides still requires independent evidence and is not implied by static
+alias uniqueness. See the normative D201 descriptor amendment immediately before D202 in
+PRODUCTION_PLAN.md for verification and unresolved fixture/proof gates.
 
 <a id="ar-s091" data-chapter-id="ar-s091"></a><a id="ar-ch66"></a>
 ## 66. Map zoom LOD / world overview (D202) — IMPLEMENTED

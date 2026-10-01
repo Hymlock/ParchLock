@@ -166,5 +166,26 @@ assert(/isInformCompiled\(mem\)\) return attrs;/.test(as),
 assert(/hasConfirmedFlag/.test(ac) && /CONFIRM_THRESHOLD/.test(ac),
     "and a suppressed flag comes BACK automatically once the game's own opcodes confirm its bit -- no per-title branching");
 
+const vials = [{ id: 501, name: "vial", aliases: ["green", "vial"] }, { id: 502, name: "vial", aliases: ["ochre", "vial"] }];
+setPool(vials);
+assert(typeof A.referenceFor === "function", "shared identity-aware reference API exists");
+if (A.referenceFor) {
+    assert(A.referenceFor(vials[0]).unique && /green/.test(A.referenceFor(vials[0]).noun), "unnamed colored vial selects its unique descriptor");
+    const twins = [{ id: 601, name: "mysterious vial", aliases: ["vial"] }, { id: 602, name: "mysterious vial", aliases: ["vial"] }];
+    setPool(twins);
+    assert(!A.referenceFor(twins[0]).unique, "identical-looking rows never promise a unique parser target");
+    assert(A.referenceFor(twins[0]).candidateIds.length === 2, "shared reference retains both physical identities");
+    setPool([{ id: 701, name: "new", aliases: ["new", "scroll"] }, { id: 702, name: "scroll", aliases: ["old", "scroll"] }]);
+    assert(/new/.test(A.referenceFor(POOL[0]).noun), "adjective-only fallback retains distinguishing vocabulary");
+    assert(A.displayNameFor(vials[0], vials, "the green vial and the ochre vial") === "green vial", "visible descriptor is preserved");
+    assert(A.displayNameFor(vials[0], vials, "a vial") === "vial", "unseen color is not disclosed");
+    assert(A.displayNameFor(vials[0], vials, "green. vial") === "vial", "descriptor evidence never joins across sentence punctuation");
+    setPool(vials);
+    vials[1].parseNameUnverified = true;
+    assert(!A.referenceFor(vials[0]).unique, "unverified custom parser rival prevents a false uniqueness claim");
+    delete vials[1].parseNameUnverified;
+    setPool([vials[0]]);
+    assert(A.referenceFor(vials[0]).unique, "scope changes restore unique references without a stale candidate cache");
+}
 console.log("\n" + pass + " PASS / " + fail + " FAIL");
 process.exit(fail ? 1 : 0);
