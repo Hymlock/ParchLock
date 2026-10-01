@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 316 headings; 103 decision rows; 419 registered units.
 **Last registered unit:** `pl-s316`. **Body SHA-256 (LF):**
-`c6be91efbc7ab68b8ca38a230b82a736ae8ad3247456d398989fa2347651abb0`
+`1c99ed3364f9379fd2b51e417dde30cb66947422a4881c5d913f5fc1c7889cb2`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -7048,6 +7048,92 @@ Do not report completion from a room box alone: mapping, underlining, action for
 inventory, Equipment, notes, lifecycle and both platforms must consume the same recovered
 IDs. Residual unsupported or ambiguous modules must be listed by the tracked audit with an
 evidence reason; they may remain honest absences, but may not be silently counted as fixed.
+
+**Temporary draft: descriptor-aware object identity extension (2026-10-01; research only, awaiting Grok).**
+This extends D201, not a second world model. Chapter check: D47/D54 stable room IDs;
+D64/D70 printed matches; D107 parser-owned commands; D141/D142/D144/D146/D147/D150
+adjective selection; D184/D185/D190 unnamed promotion and Wumpus pellets; D122/D148
+Equipment containment; D198 semantic/learned actions. Architecture companions: sections
+42 (command descriptors), 60 (turn provenance), and 65 (D201 identity recovery).
+
+Evidence at 9779c71: live headless LLR3 boot and read-only object-table inspection found
+objects 155/156/176 with blank short names and vocabulary [red,vial], [blue,vial],
+[triangula,vial]. IDs are diagnostic evidence only, forbidden implementation constants.
+`ZRamReader.inventoryTree` selects the last useful alias as a fallback label, discarding
+descriptors from display. `Actionable.promoteUnnamed` selects the longest printed alias
+and deduplicates by that word: a shared vial mention can bind to the first sibling, and
+truncated triangular is excluded. `disambiguatedNoun` needs a head noun found in the
+display name; a label such as new may defeat that route. `wrapTargets` can attach a
+shared alias to an arbitrary object. `EquipmentUI.dropCommand` uses raw display names,
+bypassing the existing parser-owned resolver. Existing command-disambiguation harness
+passes 28/28; it does not prove these dynamically named cases or screenshot saves.
+RoTA's wrapper was not found by filename in this checkout; its exact story/save must be
+identified before claiming live reproduction. Mysterious-vial module identity remains
+unconfirmed. Screenshots prove symptoms, not object-to-name correspondence.
+
+Inform permits short_name and parse_name routines, and parse_name can override name and
+decide indistinguishability. Therefore dictionary membership alone proves neither a
+runtime descriptor's owner nor that a phrase uniquely selects an object. Primary sources:
+https://inform-fiction.org/manual/dm3/sectionA6.html and
+https://inform-fiction.org/manual/html/s29.html. Do not execute naming routines in the
+live interpreter merely to obtain labels; they can have side effects or expose knowledge.
+
+Proposed shared contract and implementation order:
+1. Add identity-bound name evidence to the existing payload/model, keyed by story identity,
+   storyEpoch and RAM object ID. Keep structuralName, observedDisplayName, aliases,
+   parserReference, provenance, candidate IDs and ambiguity separate. Never rename rooms
+   using item evidence or change Wumpus descriptor-based room handling.
+2. Preserve every sibling in the structural scope before deciding which text to underline.
+   A shared phrase owns a candidate set, not the first ID. Resolve a descriptor only when
+   current scope plus object-owned vocabulary yields one candidate; truncation comparisons
+   use real dictionary encoding, retaining the full spelling from observed output.
+   No transcript-wide color regex, name-order guess or unseen-RAM descriptor disclosure.
+3. Compose D141's selector with recovered base nouns; do not require the fallback display
+   token to be the head noun. Unique object-owned vocabulary can provide a reference, but
+   custom parse_name is marked unverified until accepted-turn target evidence confirms it.
+   Multiword combinations must be checked against all rivals using parser-equivalent words.
+4. For runtime naming outside static vocabulary, research passive naming-routine/output
+   attribution through ZvmCapture and TurnRecorder. Current six opcode hooks do not capture
+   a complete naming invocation; print_obj alone cannot prove library short_name output.
+   Require nested-call and stream-boundary evidence before enabling this observer. Do not
+   guess a binding from equal counts or inventory output ordering. Prefer current unique
+   printed/vocabulary evidence while stronger attribution is unavailable.
+5. Display truly indistinguishable objects as separate stable rows with UI-only instance
+   badges (for example mysterious vial, instance 1). Badges follow RAM IDs, not sort order;
+   do not submit invented numbers, hidden effects or RAM IDs to the story. If no parser
+   reference distinguishes them, retain the native ambiguity workflow and explicitly avoid
+   promising that clicking one selects that physical instance. Refine labels when the game
+   reveals differences; preserve identity on take/drop/restore and invalidate stale evidence.
+6. Route click, object radial, learned commands, instrumental actions, drag/drop and
+   autocomplete through the existing shared reference resolver. Keep ActionSynth,
+   SemanticActions and AttrCalibrator owners; no capability removal or new verb guessing.
+   A unique radial target does not justify silently substituting a generic noun.
+7. Red-on-current tests must cover identical mystery vials, three colored vials, new as an
+   adjective, descriptor-only scrolls, truncated triangular, custom parse_name, two-word
+   uniqueness, scope changes, stale marks, parser clarification, restored/renamed objects,
+   nested inventory and closed-container secrecy. Live controls: LLR, exact RoTA wrapper,
+   the mystery-vial module, Balances, Spellbreaker, Enchanter, Anchorhead, Wumpus and Zork;
+   desktop/mobile click/radial/drop must target the same object or preserve honest ambiguity.
+   No extra game turns, narrator output or hidden-item leak may result from passive capture.
+
+Post-implementation audit gates: object IDs never merge by label; one mark may represent
+multiple candidates without fabricating a target; observed names do not become capabilities;
+no permanently hidden prompt; lifecycle invalidation retains room notes and existing
+learning; existing D198/D201/D204 and inventory/disambiguation suites remain green.
+Grok must challenge target attribution and indistinguishable-instance behavior before
+runtime implementation. This draft does not claim the screenshot defects are fixed.
+
+**Grok #979 adversarial corrections (required before implementation; 2026-10-01).**
+Verified against live js/ZRamReader.inventoryTree, Actionable.promoteUnnamed/headNounOf/disambiguatedNoun/wrapTargets, EquipmentUI.dropCommand, D107/D141/D146/D184/D190/D201, architecture sections 42/65, and Inform DM4 section 29 indistinguishability (same name words; parse_name/TheSame only when present). Defect claims in the research draft are real on HEAD. Implementation must not start until Codex folds the following into the normative D201 extension (or a new D205) plus an architecture companion; this Temporary draft alone is not an implementation GO.
+
+1. **Multi-candidate consumer law (amends D107 / arch section 42).** A shared printed phrase may own a candidate set. When candidate-set size is not exactly 1, left-click primary, default radial submit, instrumental operands, autocomplete auto-insert, AttrCalibrator learning, and any silent objectId binding are forbidden. Allowed outcomes: submit the shared ambiguous parser noun for native clarification, open an explicit UI that lists only parser-distinguishable options, or no-op with honest ambiguity. Calibration and learned attribution remain exactly-one-object gates.
+2. **Distinguishable vs identical siblings (amends D184 takenWords collapse).** Keep D184/D146 one-phrase-one-mark collapse only when sibling object-owned vocabulary sets are equal under DM4 section 29 order-insensitive name equality (true identicals such as Wumpus food pellets: one mark, shared noun, existing examine/take evidence gates). When any sibling owns a scope-unique descriptor token that appears in current scope text—including a dictionary-truncated form whose full spelling is recovered from observed output—that sibling remains separately addressable and must not be dropped by first-wins takenWords[best]. A shared head noun alone must never select the first sibling.
+3. **Instance badges are display-only across every emitter.** UI-only instance ordinals and RAM ids must never appear in command strings, autocomplete stems, EquipmentUI.dropCommand, drag/drop payloads, instrumental phrases, learned verbs, or narrator/read-aloud. Separate Equipment rows may exist per RAM id; activation still routes through the shared resolver and preserves native ambiguity when references collide. Never promise that choosing badge N selects that physical instance when the parser cannot.
+4. **Display label composition.** Payload/inventory display must not reduce multi-alias unnamed items to the last useful alias when another alias is a scope-unique descriptor. Prefer an observed printed match; else a stable composition of unique descriptor plus head noun from object-owned vocabulary; else the honest last-alias fallback only when no unique descriptor exists. observedDisplayName, parserReference, and structural id stay separate fields.
+5. **Indistinguishability without executing naming routines.** Classify identicals by comparing object-owned dictionary name lists (and later accepted-turn parse_name/TheSame evidence if passively obtained). Do not call short_name or parse_name on the live story thread to obtain labels or decide sameness. Custom parse_name remains unverified until accepted-turn target evidence confirms it.
+6. **Lifecycle and isolation.** Evidence keys are (storyIdentity, storyEpoch, objectId). Restore/undo resync invalidates printed/descriptor bindings the current vocabulary/scope no longer supports; room notes and existing D198 learning retention rules stay unchanged. New Game/RESTART advances storyEpoch. Item descriptor evidence never renames rooms, never alters Wumpus indexed-room identity, and extends the pellet lane only through the identical-sibling mark rule in (2).
+7. **Fixture gate.** Shared-contract harnesses may use synthetic/LLR fixtures immediately. Title-specific claims for the exact RoTA wrapper and mystery-vial module remain non-claims until story/save artifacts are identified. Screenshots alone do not prove object-to-name correspondence.
+8. **Red-on-HEAD tests required before merge.** Three colored vials get unique descriptor commands; shared vial does not bind the first sibling; truncated triangula recovers observed triangular without inventing vocabulary; adjective new is not the sole command noun; identical mysterious vials show N display rows while commands stay natively ambiguous; Wumpus two pellets remain one mark with examine/take pellets only under existing gates; Equipment drop/put uses the shared resolver rather than raw item.name; AttrCalibrator records nothing on multi-candidate activation; restore clears stale descriptor bindings; closed-container secrecy and nested inventory stay green; D198/D201/D204 suites remain green.
 
 <a id="pl-s314" data-chapter-id="pl-s314"></a><a id="pl-d202"></a>
 ## D202 Map zoom LOD / world overview (hub-preserving)
