@@ -782,6 +782,7 @@ var StatTracker = {
             StatTracker._probeActive = null;
             clearTimeout(StatTracker._probeTimer);
             StatTracker._probeTimer = null;
+            StatTracker.endProbeOwnership();
             StatTracker._events = [];
             StatTracker._pendingDelta = null;
             StatTracker._pendingDeltaText = null;
@@ -815,6 +816,7 @@ var StatTracker = {
         StatTracker._probeActive = null;
         clearTimeout(StatTracker._probeTimer);
         StatTracker._probeTimer = null;
+        StatTracker.endProbeOwnership();
         StatTracker._lastSubmission = null;
         StatTracker.clearCarryProbe();          // D191
     },
@@ -2387,8 +2389,11 @@ var StatTracker = {
             StatTracker.Render();
             return;
         }
-        // Inventory keeps its narrowly proven pre-render suppression. SCORE and
-        // DIAGNOSE use the ordinary output path; never hide their transcript.
+        // Inventory keeps its narrowly proven span ownership (pl-carry-probe).
+        // SCORE/DIAGNOSE use the same headless contract via beginProbeOwnership:
+        // BufferLines created during the probe turn are marked pl-stat-probe
+        // synchronously at DOM insertion (before paint) so they never appear in
+        // #windowport narration, while textContent remains available for parsing.
         StatTracker._carryBootstrapAt = 0;
         StatTracker.requestCarryBootstrap();
         var queued = false;
@@ -2425,6 +2430,7 @@ var StatTracker = {
         StatTracker._probeTimer = null;
         StatTracker._probeActive = null;
         StatTracker._probePending = null;
+        StatTracker.endProbeOwnership();
         if (!StatTracker._probeQueue.length) StatTracker.model().fulfillment = state || "complete";
         StatTracker.Render();
         StatTracker.runProbeQueue();
@@ -2457,10 +2463,77 @@ var StatTracker = {
         StatTracker._probeTurns = 0;
         StatTracker._probePending = {};
         StatTracker._probePending[next.kind] = true;
+        StatTracker.beginProbeOwnership();
         var sent = false;
         try { sent = Actionable.Submit(next.verb, "stat-probe"); } catch (e) {}
         if (!sent) { StatTracker.finishProbe("unavailable"); return; }
         StatTracker._probeTimer = setTimeout(function () { StatTracker.finishProbe("unavailable"); }, 5000);
+    },
+
+    // ---- D204 quiet probe ownership (source/span before paint) ------------
+    // Distinct from Actionable's delayed inventory display:none path: this
+    // marks owned BufferLines in a sync MutationObserver microtask so the
+    // browser never paints SCORE/DIAGNOSE echo or reply into #windowport.
+    _statProbeOwned: false,
+    _probeDomGuard: null,
+
+    claimProbeNode: function (node) {
+        if (!node || node.nodeType !== 1) return;
+        var lines = [];
+        try {
+            if (node.classList && node.classList.contains("BufferLine")) lines.push(node);
+            if (node.querySelectorAll) {
+                Array.prototype.forEach.call(node.querySelectorAll(".BufferLine"), function (el) {
+                    lines.push(el);
+                });
+            }
+            if (node.classList && node.classList.contains("Style_input")) {
+                var parent = node.closest ? node.closest(".BufferLine") : null;
+                if (parent) lines.push(parent);
+            } else if (node.querySelectorAll) {
+                Array.prototype.forEach.call(node.querySelectorAll(".Style_input"), function (span) {
+                    var p = span.closest ? span.closest(".BufferLine") : null;
+                    if (p) lines.push(p);
+                });
+            }
+        } catch (eClaim) {}
+        lines.forEach(function (line) {
+            if (!line || !line.classList || line.classList.contains("pl-stat-probe")) return;
+            line.classList.add("pl-stat-probe");
+            try { line.setAttribute("aria-hidden", "true"); } catch (eA) {}
+        });
+    },
+
+    ensureProbeDomGuard: function () {
+        if (StatTracker._probeDomGuard) return;
+        if (typeof MutationObserver === "undefined" || typeof document === "undefined") return;
+        var root = document.getElementById("windowport") || document.body;
+        if (!root) return;
+        StatTracker._probeDomGuard = new MutationObserver(function (mutations) {
+            if (!StatTracker._statProbeOwned) return;
+            for (var i = 0; i < mutations.length; i++) {
+                var m = mutations[i];
+                for (var j = 0; j < m.addedNodes.length; j++) {
+                    StatTracker.claimProbeNode(m.addedNodes[j]);
+                }
+                if (m.type === "characterData" && m.target) {
+                    var el = m.target.nodeType === 3 ? m.target.parentElement : m.target;
+                    if (el && el.closest) StatTracker.claimProbeNode(el.closest(".BufferLine") || el);
+                }
+            }
+        });
+        try {
+            StatTracker._probeDomGuard.observe(root, { childList: true, subtree: true, characterData: true });
+        } catch (eObs) { StatTracker._probeDomGuard = null; }
+    },
+
+    beginProbeOwnership: function () {
+        StatTracker._statProbeOwned = true;
+        StatTracker.ensureProbeDomGuard();
+    },
+
+    endProbeOwnership: function () {
+        StatTracker._statProbeOwned = false;
     },
 
     Identify: function () {
@@ -2476,6 +2549,14 @@ var StatTracker = {
         if (pending.score) {
             var sc = StatTracker.parseScoreReply(text);
             if (sc) { StatTracker.applyScoreReply(text); pending.score = false; }
+            else {
+                // W&W family SCORE replies name experience, not "Your score is".
+                var printed = StatTracker.parsePrintedMetrics(text);
+                if (printed && printed.experience) {
+                    StatTracker.recordPrintedMetrics(StatTracker.model(), text, "score");
+                    pending.score = false;
+                }
+            }
         }
         if (pending.diagnose) {
             var dg = StatTracker.parseDiagnoseReply(text);
@@ -2516,6 +2597,7 @@ var StatTracker = {
                     });
                 }
             }
+            StatTracker.ensureProbeDomGuard();
             if (!StatTracker._outputObserver && typeof MutationObserver !== "undefined") {
                 var root = document.getElementById("windowport") || document.body;
                 var scheduled = false;

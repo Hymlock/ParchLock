@@ -237,8 +237,8 @@ var ReadAloud = {
                     try { ReadAloud.spokenLengths.set(el, raw.length); } catch (eSet) {}
                 }
                 if (el.querySelector && el.querySelector(".Style_input, .Input, .InvisibleCursor, .LineInput, .CharInput")) return;
-                if (el.classList && el.classList.contains("pl-carry-probe")) return;
-                if (el.closest && el.closest("[aria-hidden='true'], style, script, .pl-carry-probe")) return;
+                if (el.classList && (el.classList.contains("pl-carry-probe") || el.classList.contains("pl-stat-probe"))) return;
+                if (el.closest && el.closest("[aria-hidden='true'], style, script, .pl-carry-probe, .pl-stat-probe")) return;
                 if (raw.length <= previousLength) return;
                 var t = ReadAloud.normalize(raw.slice(previousLength));
                 if (!t || /^>+\s*$/.test(t) || ReadAloud.isNoise(t)) return;

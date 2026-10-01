@@ -757,6 +757,45 @@ assert(S.parseScoreDelta("Your score has just gone up by twenty-eight points. Yo
         "D204 Checking-with-chips keeps existing score chip");
 
     S.D204Valve._testOverride = null;
+
+    // Quiet/invisible SCORE/DIAGNOSE ownership (D204 headless contract).
+    assert(typeof S.beginProbeOwnership === "function" && typeof S.claimProbeNode === "function",
+        "D204 quiet probe ownership API is present");
+    S.beginProbeOwnership();
+    assert(S._statProbeOwned === true, "D204 beginProbeOwnership arms suppress flag");
+    const ownedAttrs = {};
+    const ownedLine = {
+        nodeType: 1,
+        classList: {
+            items: ["BufferLine"],
+            add(c) { if (this.items.indexOf(c) < 0) this.items.push(c); },
+            contains(c) { return this.items.indexOf(c) >= 0; }
+        },
+        setAttribute(k, v) { ownedAttrs[k] = v; },
+        querySelector() { return null; },
+        querySelectorAll() { return []; },
+        closest() { return null; }
+    };
+    S.claimProbeNode(ownedLine);
+    assert(ownedLine.classList.contains("pl-stat-probe"),
+        "D204 claimProbeNode marks BufferLine as pl-stat-probe during ownership");
+    assert(ownedAttrs["aria-hidden"] === "true",
+        "D204 claimed probe line is aria-hidden for narration consumers");
+    S.endProbeOwnership();
+    assert(S._statProbeOwned === false, "D204 endProbeOwnership clears suppress flag");
+
+    // LLR SCORE reply fulfills silent score probe via printed experience metrics.
+    S.reset();
+    S._probePending = { score: true };
+    S._probeActive = { kind: "score", verb: "score" };
+    S._probeQueue = [];
+    S.consumeProbeReply("You are a level 1 rogue, with 0 experience points. You need 50 points to progress to the next level.");
+    assert(!S._probePending, "D204 LLR SCORE printed-metrics complete the silent score probe");
+    assert(S.model().stats.experience && S.model().stats.experience.value === 0,
+        "D204 LLR EXP is captured from the silent SCORE probe reply");
+    assert(S.model().scoreMetricKey === "experience",
+        "D204 silent SCORE probe binds score notifications to EXP");
+
     delete global.document;
     delete global.Navigator;
     delete global.Actionable;
