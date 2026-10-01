@@ -34,11 +34,13 @@ const mem = {};
 const family = { classification: "confirmed-zil-family", evidence: "validated", directionLinkEvidence: "validated" };
 const link = [{ roomId: 10, label: "north", prop: 5, mode: "b0" }];
 
-eq(E.exitsFor(mem, 10), [], "valve defaults off");
+eq(E.exitsFor(mem, 10), [], "default-on valve emits nothing without validated hints");
 ok(!E.setD198StructuralHints({ classification: "confirmed-zil-family", evidence: "validated" }, link), "grammar-only family cannot authorize exits");
 eq(E._d198GenerationLinks, [], "rejected hints leave no generation facts");
 ok(E.setD198StructuralHints(family, link), "validated direction linkage accepted");
-eq(E.exitsFor(mem, 10), [], "accepted hint remains invisible while valve off");
+eq(E.exitsFor(mem, 10).map(x => [x.label, x.targetRoomId, x.source]), [["north", 20, "d198-structural-exit-hint"]], "accepted validated hint is active by default");
+E.D198ExitValve._testOverride = "off";
+eq(E.exitsFor(mem, 10), [], "explicit off keeps the validated hint invisible");
 E.D198ExitValve._testOverride = "shadow";
 eq(E.exitsFor(mem, 10), [], "shadow leaves existing exit output unchanged");
 const snap = E.d198ExitDiagnostics();

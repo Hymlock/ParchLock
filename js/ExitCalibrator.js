@@ -69,15 +69,14 @@ var ExitCalibrator = {
             if (value == null) {
                 try { value = typeof localStorage !== "undefined" && localStorage.getItem(ExitCalibrator.D198ExitValve.StorageKey); } catch (e) {}
             }
-            return value === "shadow" || value === "on" ? value : "off";
+            return value === "off" || value === "shadow" ? value : "on";
         },
         setMode: function (mode) {
             var value = mode === "shadow" || mode === "on" ? mode : "off";
             if (value !== "shadow") ExitCalibrator.clearD198GenerationHints();
             try {
                 if (typeof localStorage !== "undefined") {
-                    if (value === "off") localStorage.removeItem(ExitCalibrator.D198ExitValve.StorageKey);
-                    else localStorage.setItem(ExitCalibrator.D198ExitValve.StorageKey, value);
+                    localStorage.setItem(ExitCalibrator.D198ExitValve.StorageKey, value);
                 }
             } catch (e) {}
             return value;

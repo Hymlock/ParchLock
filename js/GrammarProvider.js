@@ -11,7 +11,7 @@ var GrammarProvider = {
             if (value == null) {
                 try { value = typeof localStorage !== "undefined" && localStorage.getItem(GrammarProvider.D198GrammarValve.StorageKey); } catch (e) {}
             }
-            return value === "shadow" || value === "on" ? value : "off";
+            return value === "off" || value === "shadow" ? value : "on";
         },
         setMode: function (mode) {
             var value = mode === "shadow" || mode === "on" ? mode : "off";
@@ -20,8 +20,7 @@ var GrammarProvider = {
             }
             try {
                 if (typeof localStorage !== "undefined") {
-                    if (value === "off") localStorage.removeItem(GrammarProvider.D198GrammarValve.StorageKey);
-                    else localStorage.setItem(GrammarProvider.D198GrammarValve.StorageKey, value);
+                    localStorage.setItem(GrammarProvider.D198GrammarValve.StorageKey, value);
                 }
             } catch (e) {}
             return value;

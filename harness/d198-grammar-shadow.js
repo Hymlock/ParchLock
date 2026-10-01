@@ -45,7 +45,8 @@ const advent = story('Advent.z5.js');
 const suspect = story('Suspect.z3.js');
 
 sandbox.ZRamProvider = { getMem: () => zork };
-ok(valve.mode() === 'off', 'grammar valve defaults off');
+ok(valve.mode() === 'on', 'grammar valve defaults on after validated activation');
+valve._testOverride = 'off';
 const offZork = GP.collect();
 ok(offZork.specialCommands.length === 0, 'off preserves legacy empty Infocom vocabulary');
 ok(GP.d198ShadowDiagnostics() === null, 'off creates no shadow snapshot');
@@ -85,7 +86,7 @@ const unknownOn = GP.collect();
 ok(unknownOn.specialCommands.length === 0, 'unknown family emits no facts even when valve is on');
 
 valve._testOverride = 'invalid';
-ok(valve.mode() === 'off', 'invalid valve values fail closed');
+ok(valve.mode() === 'on', 'invalid or absent valve values use the validated default');
 GP.collect();
 ok(GP.d198ShadowDiagnostics() === null, 'returning off clears generation-local shadow state');
 
@@ -95,7 +96,7 @@ ok(valve.mode() === 'shadow', 'persisted shadow mode reads back');
 GP._d198ShadowSnapshot = { sentinel: true };
 ok(valve.setMode('on') === 'on' && storage.get(valve.StorageKey) === 'on', 'versioned on mode reads back');
 ok(GP.d198ShadowDiagnostics() === null, 'leaving shadow clears the snapshot immediately');
-ok(valve.setMode('nonsense') === 'off' && !storage.has(valve.StorageKey), 'invalid persisted mode resets to off');
+ok(valve.setMode('nonsense') === 'off' && storage.get(valve.StorageKey) === 'off', 'invalid requested mode persists explicit rollback state');
 
 sandbox.ZRamProvider.getMem = () => null;
 valve._testOverride = 'shadow';

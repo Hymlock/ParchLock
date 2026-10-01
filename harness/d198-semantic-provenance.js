@@ -99,8 +99,11 @@ function semanticSandbox() {
 const { s, records } = semanticSandbox();
 const obj = { id: 7, name: "lamp", noun: "brass lamp" };
 records.push({ verb: "take", actionId: "opcode:take", executableDigest: "digest-a", objectId: 7, context: "room", provenance: "opcode-state", confirmed: true, direct: true });
+const active = s.SemanticActions.resolveForObject(obj, "room");
+eq(active.map(x => x.command), ["take brass lamp", "examine brass lamp"], "validated semantic path defaults on");
+s.SemanticActions.D198SemanticValve._testOverride = "off";
 const legacy = s.SemanticActions.resolveForObject(obj, "room");
-eq(legacy.map(x => x.command), ["examine brass lamp"], "semantic valve defaults off with exact legacy result");
+eq(legacy.map(x => x.command), ["examine brass lamp"], "explicit off preserves exact legacy result");
 s.SemanticActions.D198SemanticValve._testOverride = "shadow";
 eq(s.SemanticActions.resolveForObject(obj, "room").map(x => x.command), ["examine brass lamp"], "shadow mode preserves resolver output");
 const snapshot = s.SemanticActions.d198SemanticDiagnostics();
@@ -108,6 +111,7 @@ ok(snapshot && snapshot.forms[0].command === "take brass lamp", "shadow records 
 snapshot.forms[0].command = "mutated";
 ok(s.SemanticActions.d198SemanticDiagnostics().forms[0].command === "take brass lamp", "shadow diagnostics are cloned");
 s.SemanticActions.D198SemanticValve._testOverride = "on";
+s.SemanticActions.CutoverFlag._testOverride = false;
 eq(s.SemanticActions.resolveForObject(obj, "room").map(x => x.command), ["examine brass lamp"], "D88 cutover off blocks D198 visibility");
 s.SemanticActions.CutoverFlag._testOverride = true;
 eq(s.SemanticActions.resolveForObject(obj, "room").map(x => x.command), ["take brass lamp", "examine brass lamp"], "both valves expose confirmed scoped form first");

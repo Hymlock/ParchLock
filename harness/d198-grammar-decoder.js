@@ -86,9 +86,10 @@ ok(rejected.vocabulary.length === 0 && rejected.templates.length === 0, 'rejecte
 
 const zork = story('Zork1-TheGreatUndergroundEmpire.z3.js');
 sandbox.ZRamProvider = { getMem: () => zork };
+GP.D198GrammarValve._testOverride = 'off';
 const baselineCollect = GP.collect();
-ok(baselineCollect.specialCommands.length === 0, 'all-off decoder does not alter existing Infocom collect output');
-ok(!sandbox.window.__PL_GRAMMAR_VERBS__ || sandbox.window.__PL_GRAMMAR_VERBS__.length === 0, 'all-off decoder does not publish grammar verbs');
+ok(baselineCollect.specialCommands.length === 0, 'explicit-off decoder does not alter existing Infocom collect output');
+ok(!sandbox.window.__PL_GRAMMAR_VERBS__ || sandbox.window.__PL_GRAMMAR_VERBS__.length === 0, 'explicit-off decoder does not publish grammar verbs');
 ok(!Object.prototype.hasOwnProperty.call(GP, '_d198ShadowSnapshot'), 'Gate D does not create the Phase 2 shadow side channel');
 
 const source = fs.readFileSync(path.join(root, 'js/GrammarProvider.js'), 'utf8');

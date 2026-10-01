@@ -48,8 +48,8 @@ const calibrator = read("js/AttrCalibrator.js");
     [exits, "PL_D198_ExitValve_v1"]
 ].forEach(([source, key]) => {
     ok(source.includes(key), key + " is versioned and owner-local");
-    ok(/return value === "shadow" \|\| value === "on" \? value : "off"/.test(source),
-        key + " fails closed to off");
+    ok(/return value === "off" \|\| value === "shadow" \? value : "on"/.test(source),
+        key + " defaults on while retaining explicit off and shadow controls");
 });
 
 const executableLines = [grammar, semantic, exits, calibrator].join("\n")

@@ -87,7 +87,8 @@ var SemanticActions = {
     // that parity guarantee.
     // --- Stage 6: unified consumer cutover, behind one flag ---
     //
-    // Default OFF (legacy path unchanged, zero regression risk). A consumer
+    // Default ON after D198's parity gates. An explicit persisted 0 remains
+    // the rollback path. A consumer
     // checks CutoverFlag.isEnabled() and only then reads from this file
     // instead of calling ActionSynth/building its own construction --
     // exactly the "one flag" the plan specifies. Every function this stage
@@ -101,12 +102,12 @@ var SemanticActions = {
         isEnabled: function () {
             if (SemanticActions.CutoverFlag._testOverride != null) return SemanticActions.CutoverFlag._testOverride;
             try {
-                if (typeof localStorage !== "undefined") return localStorage.getItem("PL_SemanticActions_Cutover") === "1";
+                if (typeof localStorage !== "undefined") return localStorage.getItem("PL_SemanticActions_Cutover") !== "0";
             } catch (e) {}
-            return false;
+            return true;
         },
         enable: function () { try { if (typeof localStorage !== "undefined") localStorage.setItem("PL_SemanticActions_Cutover", "1"); } catch (e) {} },
-        disable: function () { try { if (typeof localStorage !== "undefined") localStorage.removeItem("PL_SemanticActions_Cutover"); } catch (e) {} }
+        disable: function () { try { if (typeof localStorage !== "undefined") localStorage.setItem("PL_SemanticActions_Cutover", "0"); } catch (e) {} }
     },
 
     // D198 semantic facts have an owner-local valve independent of D88's
@@ -120,7 +121,7 @@ var SemanticActions = {
             if (value == null) {
                 try { value = typeof localStorage !== "undefined" && localStorage.getItem(SemanticActions.D198SemanticValve.StorageKey); } catch (e) {}
             }
-            return value === "shadow" || value === "on" ? value : "off";
+            return value === "off" || value === "shadow" ? value : "on";
         },
         setMode: function (mode) {
             var value = mode === "shadow" || mode === "on" ? mode : "off";
@@ -129,8 +130,7 @@ var SemanticActions = {
             }
             try {
                 if (typeof localStorage !== "undefined") {
-                    if (value === "off") localStorage.removeItem(SemanticActions.D198SemanticValve.StorageKey);
-                    else localStorage.setItem(SemanticActions.D198SemanticValve.StorageKey, value);
+                    localStorage.setItem(SemanticActions.D198SemanticValve.StorageKey, value);
                 }
             } catch (e) {}
             return value;
