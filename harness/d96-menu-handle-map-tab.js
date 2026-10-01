@@ -278,6 +278,12 @@ const tap = async (page, sel) => {
                     const row = exits.querySelector('.row.horizontal.top');
                     const hadDark = html.classList.contains('pl-dark-scope');
                     html.classList.add('pl-dark-scope');
+                    const wp = document.getElementById('windowport');
+                    const stylesheetFiltered = getComputedStyle(wp).filter !== 'none';
+                    const oldFilter = wp.style.getPropertyValue('filter'), oldPriority = wp.style.getPropertyPriority('filter');
+                    // Fixture mutations trigger the live world updater, which resets
+                    // synthetic darkness. Hold the filter while measuring its effect.
+                    wp.style.setProperty('filter', 'brightness(0.92)', 'important');
                     const frame = () => new Promise(resolve => requestAnimationFrame(resolve));
                     await frame(); await frame();
                     const baseline = exits.getBoundingClientRect().height;
@@ -290,7 +296,7 @@ const tap = async (page, sel) => {
                         row.appendChild(item); fixtures.push(item);
                     }
                     await frame(); await frame();
-                    const cs = getComputedStyle(exits), wp = document.getElementById('windowport');
+                    const cs = getComputedStyle(exits);
                     const expanded = exits.getBoundingClientRect().height;
                     const variable = parseFloat(getComputedStyle(html).getPropertyValue('--pl-band-h'));
                     const padding = parseFloat(getComputedStyle(document.querySelector('#windowport .BufferWindow')).paddingTop);
@@ -300,10 +306,12 @@ const tap = async (page, sel) => {
                     await frame(); await frame();
                     const reduced = exits.getBoundingClientRect().height;
                     const reducedVar = parseFloat(getComputedStyle(html).getPropertyValue('--pl-band-h'));
+                    if (oldFilter) wp.style.setProperty('filter', oldFilter, oldPriority);
+                    else wp.style.removeProperty('filter');
                     if (!hadDark) html.classList.remove('pl-dark-scope');
-                    return { baseline, expanded, variable, padding, before, filtered, bg: cs.backgroundColor, shadow: cs.boxShadow, reduced, reducedVar };
+                    return { baseline, expanded, variable, padding, before, filtered, stylesheetFiltered, bg: cs.backgroundColor, shadow: cs.boxShadow, reduced, reducedVar };
                 });
-                ok(band.filtered && band.before === 'none', tag + 'dark-room filter cannot rebase a separate windowport protector');
+                ok(band.stylesheetFiltered && band.filtered && band.before === 'none', tag + 'dark-room filter cannot rebase a separate windowport protector');
                 ok(band.expanded > band.baseline && band.variable === Math.ceil(band.expanded) && band.padding >= band.variable + 4,
                     tag + 'top protector grows from the real wrapped band (' + band.baseline + ' -> ' + band.expanded + 'px)');
                 ok(band.reduced === band.baseline && band.reducedVar === Math.ceil(band.baseline),

@@ -7,9 +7,13 @@ var UndoRestoreSync = {
             UndoRestoreSync.pending = true;
         }
     },
-    resync: function () {
+    resync: function (reason) {
         UndoRestoreSync.generation++;
         UndoRestoreSync.pending = false;
+        if (reason === "restart" && typeof ParchLockMap !== "undefined") {
+            ParchLockMap.Clear({ seed: false });
+            ParchLockMap.Save();
+        }
         if (typeof Actionable !== "undefined") {
             Actionable.VerifiedNouns = {};
             Actionable.CommandNouns = {};
@@ -155,13 +159,18 @@ var UndoRestoreSync = {
         setTimeout(trySubmit, 750);
     },
     onStateRestored: function (reason) {
+        if (reason === "restart") {
+            var gameKey = typeof ParchLock !== "undefined" ? ParchLock.GameFilename : "";
+            if (UndoRestoreSync._startedGameKey === gameKey) UndoRestoreSync._restoreReason = "restart";
+            UndoRestoreSync._startedGameKey = gameKey;
+        }
         if (reason === "restore_file") UndoRestoreSync._restoreReason = reason;
         if (UndoRestoreSync._restoreTimer) return;
         UndoRestoreSync._restoreTimer = setTimeout(function () {
             var settledReason = UndoRestoreSync._restoreReason;
             UndoRestoreSync._restoreReason = "";
             UndoRestoreSync._restoreTimer = null;
-            UndoRestoreSync.resync();
+            UndoRestoreSync.resync(settledReason);
             if (settledReason === "restore_file") UndoRestoreSync.requestLookAfterRestore();
         }, 250);
     }

@@ -200,7 +200,10 @@ var Actionable = {
             var words = (o.aliases || []).map(Actionable.vocabularyKey);
             return !!(head && words.indexOf(Actionable.vocabularyKey(head)) >= 0);
         });
-        return { noun: noun, candidateIds: candidates, unique: !customUnverified && candidates.length === 1 && String(candidates[0]) === String(obj && obj.id), provenance: "scoped-vocabulary" };
+        // A custom parser is not evidence of a collision. Keep the existing
+        // interaction path; reserve the stricter proof for automatic learning.
+        var unique = candidates.length === 1 && String(candidates[0]) === String(obj && obj.id);
+        return { noun: noun, candidateIds: candidates, unique: unique, verified: unique && !customUnverified, provenance: "scoped-vocabulary" };
     },
     displayNameFor: function (obj, pool, text) {
         var aliases = (obj.aliases || []).map(Actionable.vocabularyKey);
@@ -1442,11 +1445,11 @@ var Actionable = {
                         var common = choices.map(function (o) { return ActionSynth.commandsForObject(o, kind === "inventory" ? "inventory" : "room", null, { allowAmbiguousReference: true, directEvidenceOnly: !!o.examineOnly }); });
                         (common[0] || []).forEach(function (entry) {
                             if (/\s$/.test(entry.command) || !common.every(function (list) { return list.some(function (c) { return c.command === entry.command; }); })) return;
-                            ambiguity.push({ Label: entry.verb + " " + noun + " (any)", Command: entry.command, Action: function () { Actionable.Submit(entry.command, "ambiguous-reference"); } });
+                            ambiguity.push({ Label: entry.verb.charAt(0).toUpperCase() + entry.verb.slice(1), Command: entry.command, Action: function () { Actionable.Submit(entry.command, "ambiguous-reference"); } });
                         });
                     }
                     var inspect = typeof ActionSynth !== "undefined" && !ActionSynth.inspectVerbDisabled() ? ActionSynth.defaultInspectVerb() : "";
-                    if (inspect) ambiguity.push({ Label: "Clarify " + noun + "...", Action: function () { Input.Clear(); Input.Inject(inspect + " " + noun, false); Input.Focus(); } });
+                    if (inspect && !ambiguity.length) ambiguity.push({ Label: "Specify...", Action: function () { Input.Clear(); Input.Inject(inspect + " " + noun, false); Input.Focus(); } });
                 }
                 ParchLockQol.OpenRadial(x, y, ambiguity, { source: "text", noun: noun, kind: kind, objectId: null });
                 return;

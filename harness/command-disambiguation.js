@@ -182,7 +182,7 @@ if (A.referenceFor) {
     assert(A.displayNameFor(vials[0], vials, "green. vial") === "vial", "descriptor evidence never joins across sentence punctuation");
     setPool(vials);
     vials[1].parseNameUnverified = true;
-    assert(!A.referenceFor(vials[0]).unique, "unverified custom parser rival prevents a false uniqueness claim");
+    assert(A.referenceFor(vials[0]).unique && !A.referenceFor(vials[0]).verified, "custom parser keeps unique interaction but cannot supply automatic learning proof");
     delete vials[1].parseNameUnverified;
     setPool([vials[0]]);
     assert(A.referenceFor(vials[0]).unique, "scope changes restore unique references without a stale candidate cache");

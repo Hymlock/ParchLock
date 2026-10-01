@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 93 headings; 0 decision rows; 93 registered units.
 **Last registered unit:** `ar-s093`. **Body SHA-256 (LF):**
-`f112d7e1c55cc24bffdc590d4580ff88036868c1174c5af5adbf1b0399b969cd`
+`f9a9f23bb9081e7333888b44e57822b0096407a84f5766dd95d85017373ba412`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -3348,11 +3348,19 @@ actions intersect evidence across candidates, keep null UI objectId, and suppres
 object-specific learning via ambiguous-reference source. UI badges are aria-hidden and
 separate from parser text. UndoRestoreSync clears transient phrases before world recovery;
 room notes and retained learning are unchanged. No naming routine is executed for labels.
-Runtime customParseName/parseNameUnverified flags fail closed; Inform common-property
+For automatic calibration, customParseName/parseNameUnverified flags fail closed; Inform common-property
 `parse_name` overrides are detected by property-table presence (non-executing) when the
 identifying name table is trusted. Modules without that table, and unverified I7 individual
 parse_name overrides, remain residual proof gates rather than implied library behavior. See the normative D201 descriptor amendment immediately before D202 in
 PRODUCTION_PLAN.md for verification and unresolved fixture/proof gates.
+
+**2026-10-01 shared interaction correction:** `referenceFor.unique` denotes one
+vocabulary candidate; `verified` additionally excludes unverified custom parsers.
+Click/drop use uniqueness, automatic calibration uses verification. A custom parser
+alone must not disable otherwise unique interaction. Ambiguous actions keep their
+learning exclusion but display short verb labels, not full commands. Native restart
+clears graph/notes/camera/gestures before payload recovery, unlike initial boot or
+restore-file. These are shared contracts, not module adapters.
 
 <a id="ar-s091" data-chapter-id="ar-s091"></a><a id="ar-ch66"></a>
 ## 66. Map zoom LOD / world overview (D202) — IMPLEMENTED
@@ -3361,6 +3369,14 @@ PRODUCTION_PLAN.md for verification and unresolved fixture/proof gates.
 [D202](PRODUCTION_PLAN.md#pl-d202). Shipped hub/overview LOD matches this section's
 required contracts (OverviewEligible, transient coords, latched MapMode, Id recenter,
 pinch/scale peers, real exit-key edges with system exit-N hub-mirror filtering).
+
+**Current production override (operator-authorized 2026-10-01):** automatic LOD
+switching is disabled through `OverviewEnabled: false` for all modules. The local
+hub remains active through wheel/button/pinch zoom; scale/pan transform its nodes
+and paths together. Center returns to scale 1/pan 0 and draws once. The overview
+design below remains inactive historical implementation; its enabled-mode claims
+and front summary are superseded. Shared navigation, room admission, notes and
+exit commands are unchanged. See the D202 stabilization amendment for validation.
 
 **Stable ID:** [ar-ch66](#ar-ch66) / `ar-s091`.
 **Scope:** `play.html` map canvas LOD only. Desktop and mobile. All catalog modules

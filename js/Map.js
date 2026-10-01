@@ -9,6 +9,7 @@ var ParchLockMap = {
     Visible: false,
     Scale: 1,
     MapMode: "hub",
+    OverviewEnabled: false,
     OverviewThreshold: 0.82,
     OverviewHysteresis: 0.05,
     GraphRevision: 0,
@@ -999,7 +1000,8 @@ var ParchLockMap = {
 
     UpdateMapMode: function () {
         var next = ParchLockMap.MapMode;
-        if (next === "hub" && ParchLockMap.Scale < ParchLockMap.OverviewThreshold) next = "overview";
+        if (!ParchLockMap.OverviewEnabled) next = "hub";
+        else if (next === "hub" && ParchLockMap.Scale < ParchLockMap.OverviewThreshold) next = "overview";
         else if (next === "overview" && ParchLockMap.Scale >= ParchLockMap.OverviewThreshold + ParchLockMap.OverviewHysteresis) next = "hub";
         if (next === ParchLockMap.MapMode) return false;
         ParchLockMap.MapMode = next;
@@ -1272,11 +1274,24 @@ var ParchLockMap = {
         ParchLockMap.UpdateStats();
     },
 
-    Clear: () => {
+    Clear: (options) => {
         ParchLockMap.PersistenceBlocked = false;
         ParchLockMap.Rooms = [];
         ParchLockMap.CurrentRoomId = null;
         ParchLockMap.DisplayedRoomId = null;
+        ParchLockMap.CurrentRoom = "";
+        ParchLockMap.DisplayedRoom = "";
+        ParchLockMap.GraphRevision++;
+        ParchLockMap.OverviewCoords = {};
+        ParchLockMap.OverviewEdges = [];
+        ParchLockMap.OverviewLayoutRevision = -1;
+        $("#map-overview").empty();
+        ParchLockMap.Scale = 1;
+        ParchLockMap.MapMode = "hub";
+        ParchLockMap.PanX = ParchLockMap.PanY = 0;
+        ParchLockMap.ClearGesture();
+        $("#map #rooms").removeClass("overview-mode").css({ width: "", height: "" });
+        ParchLockMap.ApplyViewport();
         if (typeof MapTopology !== "undefined") { MapTopology.prevRoomId = null; MapTopology.prevRoomName = ""; }
         // D76: Reset Map used to immediately recreate the current room via
         // the legacy `EnteredRoom(CurrentRoom)` -- a raw name-string push
@@ -1314,7 +1329,7 @@ var ParchLockMap = {
         try {
             var p = typeof WorldModel !== "undefined" && WorldModel.lastPayload;
             // D54/D76: never re-seed Reset Map from an internal/meta roomName.
-            if (p && p.roomName && typeof MapTopology !== "undefined" && MapTopology.ensureRoom
+            if (!(options && options.seed === false) && p && p.roomName && typeof MapTopology !== "undefined" && MapTopology.ensureRoom
                 && !MapTopology.isInternalRoomName(p.roomName)) {
                 var room = MapTopology.ensureRoom(p.roomName, p.roomId);
                 if (room) ParchLockMap.SetCurrentRoom(room);

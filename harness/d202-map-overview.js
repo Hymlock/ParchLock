@@ -42,6 +42,7 @@ ok(new Set(Object.values(first).map(p => p.x + ":" + p.y)).size === 4, "layout r
 ok(first["4"], "disconnected component is deterministically packed");
 
 const mapSource = fs.readFileSync("js/Map.js", "utf8");
+ok(/OverviewEnabled:\s*false/.test(mapSource) && /!ParchLockMap\.OverviewEnabled\) next = "hub"/.test(mapSource), "production zoom stays in the established hub layout at every scale");
 ok(/OverviewThreshold:\s*0\.82/.test(mapSource) && /OverviewHysteresis:\s*0\.05/.test(mapSource), "overview mode has a hysteresis latch");
 ok(/ActivePointers\[ev\.pointerId\]/.test(mapSource) && /setPointerCapture/.test(mapSource), "pinch tracks pointer ids and captures pointers");
 ok(/state\.scale \* distance \/ state\.distance/.test(mapSource), "pinch derives absolute scale from its gesture baseline");

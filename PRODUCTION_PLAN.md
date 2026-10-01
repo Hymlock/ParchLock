@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 316 headings; 103 decision rows; 419 registered units.
 **Last registered unit:** `pl-s316`. **Body SHA-256 (LF):**
-`beae7cd79a2dfb865b6176aa2de5a1b4fbbec1562eb6f62a1c4092d1eea7416a`
+`dc1a480de6f345e42f63970cb6662a4f802978e45d278281a2ef3a87b4c0f61a`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -7059,7 +7059,7 @@ physical siblings; marks carry candidateIds and bind objectId only for one owner
 multi-candidate mark writes VerifiedNouns. Item rows display observed names with separate
 aria-hidden instance badges; badges never enter commands. ActionSynth, semantic noun forms,
 radial operands, Equipment drops and scoped calibration share the gate. Ambiguous native
-actions are explicitly labeled any, intersect candidate command sets, and use a dedicated
+actions use concise verb labels, intersect candidate command sets, and use a dedicated
 source excluded from object-specific learning. Restore resync clears transient phrase
 state before payload recovery, preserving room notes and existing calibration stores.
 
@@ -7073,6 +7073,16 @@ module remain honest undetectable, not a proof of library parse_name. Individual
 Inform 7 overrides and live title coverage are still residual proof gates, not release claims. Passive naming attribution remains the separate
 research gate already specified below. Exact RoTA and mystery-vial saves and device coverage
 remain unverified, not claimed complete. This amendment is not a release-validation claim.
+
+**2026-10-01 regression correction (supersedes conflicting gates above).** A custom
+parse_name routine alone is not evidence of ambiguity. `referenceFor.unique` means one
+current-scope vocabulary candidate and retains normal click/drop interaction;
+`referenceFor.verified` additionally excludes unverified custom parsers and is required
+for automatic object-specific calibration. Actual multi-candidate references retain
+native disambiguation and the ambiguous-reference learning exclusion. Radial labels are
+short verbs; full parser commands remain separate. No title-specific interaction patch.
+Native restart clears the map graph, notes, camera and gesture state before world
+recovery; initial interpreter boot and restore-file retain their distinct lifecycle.
 
 **Temporary draft: descriptor-aware object identity extension (2026-10-01; research history).**
 This extends D201, not a second world model. Chapter check: D47/D54 stable room IDs;
@@ -7174,6 +7184,18 @@ Verified against live js/ZRamReader.inventoryTree, Actionable.promoteUnnamed/hea
 ## D202 Map zoom LOD / world overview (hub-preserving)
 
 **Implementation state (2026-10-01): IMPLEMENTED, pending independent live/package validation.** The shipped source has a latched hub/overview mode, transient deterministic coordinates, ID-based recentering, accessible overview nodes, shared wheel/button/pinch scaling, and Pointer Events pan/pinch. Eligibility is player-known only and now mirrors the hub renderer's duplicate, `exit-N`, and 12-slot admission rules.
+
+**Operator-authorized stabilization (2026-10-01; current production contract).**
+Automatic overview transitions are disabled (`OverviewEnabled: false`) for every
+module. The stable local hub is retained at every zoom level; wheel, buttons and
+mobile pinch/spread share continuous bounded transforms without replacing rooms or
+connection geometry. Center resets scale/pan and draws the current room once.
+The overview implementation below is retained as inactive historical design, not
+an enabled production feature. This supersedes the threshold/latch requirements
+and enabled-overview claims elsewhere in this chapter and front summary.
+Live desktop/mobile checks cover primary click, compact wheel labels, real drops
+into/out of a container, input after probes/map return, zoom/Center and native restart.
+Physical-device and exact saved-game fixtures remain operator validation gates.
 
 **Lifecycle:** **Implemented / validation pending** (2026-10-01). Product code, harnesses, CSS, and SW shipped under the accepted D202 contract; independent live/package validation remains. Codex #949 amendments and operator chrome-vs-vocabulary correction remain authoritative for the implemented behavior.
 

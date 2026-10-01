@@ -79,7 +79,7 @@ var AttrCalibrator = {
             var byId = {};
             (p.discoveredObjects || []).concat(p.inventory || []).forEach(function (obj) {
                 if (!obj || obj.id == null) return;
-                if (typeof Actionable !== "undefined" && Actionable.referenceFor && !Actionable.referenceFor(obj).unique) return;
+                if (typeof Actionable !== "undefined" && Actionable.referenceFor && !Actionable.referenceFor(obj).verified) return;
                 var rendered = obj.name;
                 try {
                     if (typeof Actionable !== "undefined" && Actionable.referenceFor) rendered = Actionable.referenceFor(obj).noun;
@@ -708,7 +708,7 @@ var AttrCalibrator = {
                 if (!o) return false;
                 if (typeof Actionable !== "undefined" && Actionable.referenceFor) {
                     var reference = Actionable.referenceFor(o);
-                    if (!reference.unique) return false;
+                    if (!reference.verified) return false;
                     if (String(reference.noun).toLowerCase() === noun) return true;
                 }
                 if (String(o.name).toLowerCase() === noun) return true;
