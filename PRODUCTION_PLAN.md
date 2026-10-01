@@ -706,7 +706,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s311](#pl-s311) | Closing the D186-D197 arc | H3 | Record |
 | [pl-s312](#pl-s312) | D200 Inform Z3 declaration reader | H2 | Implemented |
 | [pl-s313](#pl-s313) | D201 Early Inform unnamed identity and inventory recovery | H2 | Implemented / live-browser verified |
-| [pl-s314](#pl-s314) | D202 Map zoom LOD / world overview (hub-preserving) | H2 | Proposed / re-audit accepted; awaiting operator GO |
+| [pl-s314](#pl-s314) | D202 Map zoom LOD / world overview (hub-preserving) | H2 | Implemented / validation pending |
 | [pl-s315](#pl-s315) | D203 Mobile left exit-rail readable-content safety | H2 | Implemented / live-browser verified |
 | [pl-s316](#pl-s316) | D204 Holistic statistics discovery and repeatable event monitoring | H2 | Implemented / validation pending |
 <!-- LOCAL-REGISTER:END -->
@@ -7054,10 +7054,7 @@ evidence reason; they may remain honest absences, but may not be silently counte
 
 **Implementation state (2026-10-01): IMPLEMENTED, pending independent live/package validation.** The shipped source has a latched hub/overview mode, transient deterministic coordinates, ID-based recentering, accessible overview nodes, shared wheel/button/pinch scaling, and Pointer Events pan/pinch. Eligibility is player-known only and now mirrors the hub renderer's duplicate, `exit-N`, and 12-slot admission rules.
 
-**Lifecycle:** Proposed / amended after Codex #949 (2026-09-30). **NOT started.**
-No product/executable code, harness, CSS, SW, or packaging changes in this decision --
-planning + architecture companion text only. Implementation still requires an explicit
-operator GO after Codex re-audit ACCEPT of this amended plan.
+**Lifecycle:** **Implemented / validation pending** (2026-10-01). Product code, harnesses, CSS, and SW shipped under the accepted D202 contract; independent live/package validation remains. Codex #949 amendments and operator chrome-vs-vocabulary correction remain authoritative for the implemented behavior.
 
 **Stable ID:** [D202](#pl-d202) / `pl-s314`.
 **Scope:** `play.html` player map canvas only. Additive LOD on top of the existing
@@ -7095,7 +7092,7 @@ D23/D30/D134 (non-compass / multi-vocabulary exits already first-class in the gr
 D112 (map panel chrome), D54/D80 (anti-spoiler / player-facing names). Does **not**
 supersede the hub architecture or the room-build pipeline.
 Architecture companion: [ARCHITECTURE_UML.md section 66](ARCHITECTURE_UML.md#ar-ch66)
-(**PROPOSED**, pre-GO; not an implemented claim).
+(**IMPLEMENTED** / validation pending).
 **Evidence:** none yet (plan only). Research baselines:
 `/workspace/tmp/reports/parchmap-map-zoom-visibility-report.md` (2026-09-30; oversimplified
 "fixed 12-slot compass" wording corrected by
@@ -7450,10 +7447,7 @@ planning/architecture text only.
 
 **Status.**
 
-**NOT started / Codex re-audit ACCEPTED 2026-09-30; awaiting operator GO.** Inserted 2026-09-30;
-compass/vocabulary framing corrected 2026-09-30; #949 pre-GO amendments applied
-2026-09-30 after corroboration against Map.js / MapBeautify.js / MapTopology.js.
-No executable/product code in this change set.
+**Implemented / validation pending (2026-10-01).** Codex re-audit ACCEPTED 2026-09-30; operator GO executed; shipped hub/overview LOD under the accepted contract. Compass/vocabulary framing correction and #949 anti-spoiler amendments remain in force. Independent live/package validation still open.
 
 <a id="pl-s315" data-chapter-id="pl-s315"></a><a id="pl-d203"></a>
 ## D203 Mobile left exit-rail readable-content safety

@@ -672,5 +672,96 @@ assert(S.parseScoreDelta("Your score has just gone up by twenty-eight points. Yo
     assert(S.model().deaths === deaths + 1, "D204 counts a later repeated death from a distinct output span");
 }
 
+
+{
+    // D204 fulfillment gates (#974): draft abort, valve, nav-idle, Checking-with-chips.
+    // Live SCORE/DIAGNOSE probes on every Equipment open remain accepted authority --
+    // these asserts only lock the abort/serialization gates, not probe scarcity.
+    const children = [];
+    const rows = {
+        innerHTML: "",
+        appendChild(node) { children.push(node); this.innerHTML += (node.textContent || "") + "\n"; },
+        hidden: false
+    };
+    const host = { hidden: false };
+    const line = { value: "" };
+    let navigatorBusy = false;
+    global.Navigator = {
+        get Running() { return navigatorBusy; },
+        get Awaiting() { return false; }
+    };
+    global.document = {
+        querySelector(sel) {
+            if (sel === ".Input.LineInput") return line;
+            if (sel === ".Input.CharInput") return null;
+            if (sel === "#dialog, #dialog_frame, #dialog_screen") return null;
+            return null;
+        },
+        getElementById(id) {
+            if (id === "pl-stats") return host;
+            if (id === "pl-stats-rows") return rows;
+            if (id === "pl-stats-identify") return { hidden: false };
+            return null;
+        },
+        createElement() {
+            return {
+                className: "", textContent: "", style: {},
+                setAttribute() {}, appendChild() {},
+                classList: { add() {}, contains() { return false; } }
+            };
+        }
+    };
+    global.Actionable = { isGameWord() { return true; }, Submit() { return true; } };
+    global.Message = { IsOpen: false, Show() {} };
+
+    S.reset();
+    S.D204Valve._testOverride = "on";
+    line.value = "look east";
+    children.length = 0;
+    rows.innerHTML = "";
+    S.requestStatusFulfillment(true);
+    assert(S.model().fulfillment === "unavailable", "D204 draft at open aborts entire fulfillment");
+    assert(!S._probeQueue.length && !S._probeActive, "D204 draft abort queues no probes");
+
+    line.value = "";
+    S.reset();
+    S.D204Valve._testOverride = "off";
+    S.requestStatusFulfillment(false);
+    assert(S.model().fulfillment !== "checking" || !S._probeQueue.length,
+        "D204 valve off skips automatic open fulfillment");
+    S.D204Valve._testOverride = "shadow";
+    S.model().stats = {};
+    S.requestStatusFulfillment(true);
+    assert(S.model().fulfillment === "complete", "D204 shadow completes without live probes");
+    assert(!S._probeQueue.length, "D204 shadow records plan only and clears the queue");
+
+    S.D204Valve._testOverride = "on";
+    S.reset();
+    line.value = "";
+    navigatorBusy = true;
+    assert(S.probeSafeNow() === false, "D204 safe-idle blocks while Navigator is running");
+    navigatorBusy = false;
+    assert(S.probeSafeNow() === true, "D204 safe-idle allows a free LineInput with idle navigator");
+
+    // Checking hint remains visible alongside existing chips.
+    S.model().stats.score = { key: "score", label: "Score", value: 3, source: "status", kind: "counter", confirmed: true };
+    S.model().fulfillment = "checking";
+    children.length = 0;
+    rows.innerHTML = "";
+    S.Render();
+    assert(/Checking this story for current status/.test(rows.innerHTML),
+        "D204 Checking hint renders even when stat chips already exist");
+    assert(children.some(function (n) { return /pl-stat-fulfillment/.test(n.className || ""); }),
+        "D204 Checking-with-chips keeps a fulfillment hint node");
+    assert(children.some(function (n) { return /pl-stat-score/.test(n.className || ""); }),
+        "D204 Checking-with-chips keeps existing score chip");
+
+    S.D204Valve._testOverride = null;
+    delete global.document;
+    delete global.Navigator;
+    delete global.Actionable;
+    delete global.Message;
+}
+
 console.log(`${pass} PASS / ${fail} FAIL`);
 process.exit(fail ? 1 : 0);

@@ -468,8 +468,10 @@ var ParchLockMap = {
             // Never draw a map box under a hyphenated exit-N system key --
             // the same destination still renders via its real label when
             // present. (Operator: no "EXIT 16" system labels on the map.)
-            var dirKey = String(dir || "");
-            if (/^exit-\d+$/i.test(dirKey)) continue;
+            // Share MapTopology.isSystemPropExitKey with overview admission/edges:
+            // hyphenated exit-N system props stay hidden; numbered travel ("1"/"2"/"exit 1") does not.
+            if (typeof MapTopology !== "undefined" && MapTopology.isSystemPropExitKey
+                && MapTopology.isSystemPropExitKey(dir)) continue;
             var renderSlot = assignSlot(dir);
             if (!renderSlot) continue;
             ParchLockMap.DrawRoom(renderSlot, destRoom, dir);
@@ -1057,6 +1059,11 @@ var ParchLockMap = {
         eligible.forEach(function (room) { visible[String(room.Id)] = true; });
         eligible.forEach(function (room) {
             Object.keys(room.Exits || {}).sort().forEach(function (label) {
+                // Hub-mirror spoiler control: system exit-N prop keys never label overview
+                // edges. Numbered travel exits ("1"/"2"/"exit 1") stay visible via the
+                // shared isSystemPropExitKey predicate (hyphenated exit-N only).
+                if (typeof MapTopology !== "undefined" && MapTopology.isSystemPropExitKey
+                    && MapTopology.isSystemPropExitKey(label)) return;
                 var toId = String(room.Exits[label]);
                 if (!visible[toId]) return;
                 var meta = (room.ExitMeta || {})[label] || {};

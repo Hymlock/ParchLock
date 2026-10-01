@@ -48,6 +48,20 @@ ok(/state\.scale \* distance \/ state\.distance/.test(mapSource), "pinch derives
 ok(/ClearGesture/.test(mapSource) && /pointercancel/.test(mapSource) && /lostpointercapture/.test(mapSource), "cancel, reset, and lost capture clear gesture state");
 ok(/SetScale\(ParchLockMap\.Scale \+ delta/.test(mapSource), "wheel and buttons use the shared scale primitive");
 
+ok(sandbox.MapTopology.isSystemPropExitKey("exit-13"), "hyphenated exit-N is a system prop key");
+ok(!sandbox.MapTopology.isSystemPropExitKey("1"), "bare numbered travel exit is not a system prop key");
+ok(!sandbox.MapTopology.isSystemPropExitKey("exit 1"), "spaced exit N travel label is not a system prop key");
+{
+    const mixed = { Id: 10, Name: "Cave", VisitedName: "Cave", Exits: { "exit-13": 3, "1": 2, east: 0 }, ExitMeta: {} };
+    const ids = sandbox.MapTopology.overviewNeighborIds(mixed).map(String);
+    ok(ids.indexOf("3") < 0, "system exit-N destination is not overview-admitted");
+    ok(ids.indexOf("2") >= 0, "numbered travel destination remains overview-admitted");
+    ok(ids.indexOf("0") >= 0, "compass destination remains overview-admitted");
+}
+ok(/isSystemPropExitKey\(label\)/.test(mapSource) && /OverviewEdges\.push/.test(mapSource),
+    "DrawOverview OverviewEdges shares hub isSystemPropExitKey filter");
+ok(/isSystemPropExitKey\(dir\)/.test(mapSource), "hub Draw shares isSystemPropExitKey for system keys");
+
 console.log(JSON.stringify({ ok: fail === 0, pass, fail }, null, 2));
 if (fail) process.exit(1);
 console.log("PASS: d202-map-overview (" + pass + " passed)");

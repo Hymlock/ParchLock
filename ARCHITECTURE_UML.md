@@ -3342,10 +3342,10 @@ metric observation, or consumer-specific branch fails the architecture.
 <a id="ar-s091" data-chapter-id="ar-s091"></a><a id="ar-ch66"></a>
 ## 66. Map zoom LOD / world overview (D202) — IMPLEMENTED
 
-**Lifecycle:** **PROPOSED** (pre-GO). Architecture companion to
-[D202](PRODUCTION_PLAN.md#pl-d202). No executable claim. Inserted 2026-09-30 after
-Codex adversarial plan audit #949 so plan + architecture stay aligned before
-implementation. Promote to Implemented only with D202 evidence.
+**Lifecycle:** **IMPLEMENTED / validation pending** (2026-10-01). Architecture companion to
+[D202](PRODUCTION_PLAN.md#pl-d202). Shipped hub/overview LOD matches this section's
+required contracts (OverviewEligible, transient coords, latched MapMode, Id recenter,
+pinch/scale peers, real exit-key edges with system exit-N hub-mirror filtering).
 
 **Stable ID:** [ar-ch66](#ar-ch66) / `ar-s091`.
 **Scope:** `play.html` map canvas LOD only. Desktop and mobile. All catalog modules
@@ -3383,12 +3383,12 @@ that already admit rooms into `ParchLockMap.Rooms[]`. No title adapters.
 Alley/title layout hacks; spoiling look-ahead via raw Known Rooms filter; persisting
 overview layout on room records; deriving placement from `dir-*` slot names.
 
-**Implementation (planned):** `Map.js` (mode/scale/draw/click), `MapBeautify.js`
+**Implementation (shipped):** `Map.js` (mode/scale/draw/click), `MapBeautify.js`
 (layoutHints seed + overview layout pass), `MapTopology.js` (OverviewEligible),
 `WorkspaceUI.js` (DrawPaths), `ParchLock.css` / `play.html` chrome as needed.
 **Relationships:** Extends D63/D66/D67/D71/D112/D54/D80/D23/D30/D134; does not
 supersede hub or room-build pipeline. Plan authority: [D202](PRODUCTION_PLAN.md#pl-d202).
-**Evidence:** none yet (PROPOSED).
+**Evidence:** `harness/d202-map-overview.js`; implementation in `js/Map.js`, `js/MapBeautify.js`, `js/MapTopology.js`, `js/WorkspaceUI.js`, `css/ParchLock.css`. Live/package validation pending.
 
 ```mermaid
 flowchart TD
