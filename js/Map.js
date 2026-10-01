@@ -56,7 +56,7 @@ var ParchLockMap = {
             ParchLockMap.RebuildRoomsList();
             ParchLockMap.RebuildNotesList();
         });
-        $("#center-current-room").click(() => { ParchLockMap.ResetViewport(); ParchLockMap.Draw(); });
+        $("#center-current-room").click(() => { ParchLockMap.ResetViewport(); });
         $("#export-map").click(() => WorkspaceUI.ShowMaps());
         $("#zoom-in").click(() => ParchLockMap.Zoom(0.1));
         $("#zoom-out").click(() => ParchLockMap.Zoom(-0.1));
@@ -1095,7 +1095,8 @@ var ParchLockMap = {
     SetScale: (targetScale, originX, originY) => {
 
         var oldScale = ParchLockMap.Scale;
-        var nextScale = Math.max(0.45, Math.min(1.8, Math.round(targetScale * 100) / 100));
+        if (!Number.isFinite(targetScale)) return;
+        var nextScale = Math.max(0.45, Math.min(1.8, targetScale));
         if (nextScale == oldScale) return;
 
         if (originX !== undefined && originY !== undefined) {

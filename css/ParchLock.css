@@ -2318,6 +2318,7 @@ body.tools-button-visible #tools-toggle { display: block; }
 #rooms-shell { position: relative; overflow: hidden; min-height: 44vh; touch-action: none; cursor: grab; }
 #map #rooms { margin-top: 0; }
 #map-overview { display: none; position: relative; min-width: 100%; min-height: 100%; }
+#map #rooms:not(.overview-mode) > #map-overview { display: none; }
 #map #rooms.overview-mode { display: block; position: relative; }
 #map #rooms.overview-mode > div:not(#map-overview) {
 	/* D202: hub rows must leave the flow. visibility:hidden alone still reserved

@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 93 headings; 0 decision rows; 93 registered units.
 **Last registered unit:** `ar-s093`. **Body SHA-256 (LF):**
-`9aa80e8602d3ca74211fd3cd96242dbc36139a2edfad275f85495ba6e9ce8a7b`
+`220da341198e9ffef7b348e06537ed6a5ed95660df00f7a8c1d2338be95114a4`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -3484,6 +3484,8 @@ clearing offset (cell = live Glk/CharCell advance).
 
 <a id="ar-s093" data-chapter-id="ar-s093"></a><a id="ar-ch68"></a>
 ## 68. Holistic statistics evidence ledger (D204) - IMPLEMENTED
+
+**2026-10-01 lifecycle invariant (D204/D202):** Quiet stat/carry output owns output nodes, never a live prompt container. A persistent MutationObserver repairs Glk BufferLine reuse after ownership ends while preserving hidden output and narrator exclusions. Viewport modes are mutually exclusive by selector specificity; Center delegates its single draw to ResetViewport, and pinch uses unrounded scale. No new interpreter, navigation, or statistics owner is introduced.
 
 **Lifecycle:** PROPOSED / pre-GO. Architecture companion to
 [D204](PRODUCTION_PLAN.md#pl-d204) and

@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 316 headings; 103 decision rows; 419 registered units.
 **Last registered unit:** `pl-s316`. **Body SHA-256 (LF):**
-`1aaf42dcea74eafd32cd10952ef21065f4365e3c1c42676895c5a30e67282429`
+`c6be91efbc7ab68b8ca38a230b82a736ae8ad3247456d398989fa2347651abb0`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -7630,6 +7630,8 @@ after Codex re-audit ACCEPT and operator authorization.
 ## D204 Holistic statistics discovery and repeatable event monitoring — IMPLEMENTED
 
 **Implementation state (2026-10-01): IMPLEMENTED, pending independent live/package validation.** `StatTracker` now consumes stable BufferLine append/replacement spans, records submission/source provenance, correlates confirmed globals and player properties, preserves next-target EXP semantics, recognizes repeatable explicit death/win output, and fulfills command-only status serially at each Equipment open. The `off/shadow/on` valve defaults on; safe-idle gating covers drafts, dialogs, character prompts, and Navigator. Restore invalidates readings while retaining playthrough event fingerprints/counters. Object radial suggestions preserve semantic winners plus every distinct deterministic `ActionSynth` form, including confirmed `AttrCalibrator.allowedVerbsFor` learning, so enabling the cutover cannot silently remove `More...` pages.
+
+**2026-10-01 prompt/viewport repair (D204 + D202).** Probe ownership must never hide a live input's reusable BufferLine. The persistent DOM guard restores input-bearing stat/carry lines even after probe ownership ends, transferring quiet ownership to output children only. Probe scheduling, turn accounting, and status fulfillment remain unchanged. D202 hub explicitly hides the overview against later grid rules; Center draws once, and pinch scale retains continuous precision. Physical-device confirmation remains required.
 
 **Lifecycle:** PROPOSED / pre-GO. No runtime implementation is authorized until the
 standalone contract, this section, and architecture section 68 receive adversarial

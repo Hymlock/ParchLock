@@ -2477,6 +2477,32 @@ var StatTracker = {
     _statProbeOwned: false,
     _probeDomGuard: null,
 
+    protectProbeInputs: function (root) {
+        if (!root || !root.querySelectorAll) return;
+        Array.prototype.forEach.call(root.querySelectorAll(".BufferLine.pl-stat-probe, .BufferLine.pl-carry-probe"), function (line) {
+            if (!line.querySelector(".Input, .LineInput, .CharInput, input, textarea")) return;
+            var kind = line.classList.contains("pl-stat-probe") ? "pl-stat-probe" : "pl-carry-probe";
+            // Glk can reuse the last output line for the next live prompt.
+            Array.prototype.slice.call(line.childNodes).forEach(function (child) {
+                if (child.nodeType === 1 && (child.matches(".Input, .LineInput, .CharInput, input, textarea") || child.querySelector(".Input, .LineInput, .CharInput, input, textarea"))) return;
+                if (child.nodeType === 3) {
+                    var span = document.createElement("span");
+                    line.insertBefore(span, child);
+                    span.appendChild(child);
+                    child = span;
+                }
+                if (child.nodeType === 1) {
+                    child.classList.add(kind);
+                    child.setAttribute("aria-hidden", "true");
+                    if (kind === "pl-carry-probe") child.style.display = "none";
+                }
+            });
+            line.classList.remove("pl-stat-probe", "pl-carry-probe");
+            line.removeAttribute("aria-hidden");
+            line.style.removeProperty("display");
+        });
+    },
+
     claimProbeNode: function (node) {
         if (!node || node.nodeType !== 1) return;
         var lines = [];
@@ -2510,6 +2536,7 @@ var StatTracker = {
         var root = document.getElementById("windowport") || document.body;
         if (!root) return;
         StatTracker._probeDomGuard = new MutationObserver(function (mutations) {
+            StatTracker.protectProbeInputs(root);
             if (!StatTracker._statProbeOwned) return;
             for (var i = 0; i < mutations.length; i++) {
                 var m = mutations[i];
@@ -2521,6 +2548,7 @@ var StatTracker = {
                     if (el && el.closest) StatTracker.claimProbeNode(el.closest(".BufferLine") || el);
                 }
             }
+            StatTracker.protectProbeInputs(root);
         });
         try {
             StatTracker._probeDomGuard.observe(root, { childList: true, subtree: true, characterData: true });

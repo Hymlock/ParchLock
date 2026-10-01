@@ -1126,6 +1126,8 @@ var Actionable = {
                 line.setAttribute("aria-hidden", "true");
                 line.style.display = "none";
             });
+            if (StatTracker.ensureProbeDomGuard) StatTracker.ensureProbeDomGuard();
+            if (StatTracker.protectProbeInputs) StatTracker.protectProbeInputs(document.getElementById("windowport"));
             StatTracker._hideCarryProbe = false;
             StatTracker._carryProbeTurnCheck = true;
         }
