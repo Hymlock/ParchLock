@@ -27,6 +27,7 @@ var EquipmentUI = {
     _seqKey: null,
     _bound: false,
     _drag: null,
+    _press: null,
     _scrollRaf: null,
     _renderPending: false,
 
@@ -415,7 +416,7 @@ var EquipmentUI = {
         // aborted under their finger, mid-gesture, for no visible reason.
         // Defer to the drop instead; the payload is unchanged by a drag that
         // has not been released yet.
-        if (EquipmentUI._drag && EquipmentUI._drag.active) {
+        if (EquipmentUI._drag || EquipmentUI._press) {
             EquipmentUI._renderPending = true;
             return;
         }
@@ -542,8 +543,11 @@ var EquipmentUI = {
             if (!row.self && !o.demo) {
                 el.addEventListener("contextmenu", function (e) {
                     e.preventDefault();
+                    e.stopPropagation();
+                    if (Date.now() < (el._holdContextUntil || 0)) return;
                     if (typeof Actionable !== "undefined") Actionable.Open(String(o.name).toLowerCase(), "inventory", e.clientX, e.clientY, o.id);
                 });
+                EquipmentUI.bindHold(el, o);
 
                 // D125 (operator-reported): dragging used to start anywhere on
                 // the row, which meant the row needed touch-action:none and
@@ -577,6 +581,39 @@ var EquipmentUI = {
     },
 
     // ---- drag and drop --------------------------------------------------
+    bindHold: function (row, obj) {
+        var cancel = function (e) {
+            var press = EquipmentUI._press;
+            if (!press || press.row !== row) return;
+            clearTimeout(press.timer);
+            EquipmentUI._press = null;
+            if (press.fired && e && e.cancelable) e.preventDefault();
+            if (EquipmentUI._renderPending && !EquipmentUI._drag) EquipmentUI.Render();
+        };
+        row.addEventListener('touchstart', function (e) {
+            if (e.target.closest('.equip-grip') || e.touches.length !== 1) return;
+            cancel();
+            var t = e.touches[0];
+            var press = { row: row, x: t.clientX, y: t.clientY, fired: false };
+            EquipmentUI._press = press;
+            press.timer = setTimeout(function () {
+                if (EquipmentUI._press !== press || !row.isConnected || !EquipmentUI.IsOpen()
+                    || Message.IsOpen || document.getElementById('dialog')) return;
+                press.fired = true;
+                row._holdContextUntil = Date.now() + 1000;
+                Actionable.Open(String(obj.name).toLowerCase(), 'inventory', press.x, press.y, obj.id);
+            }, Actionable.LongPressMs);
+        }, { passive: true });
+        row.addEventListener('touchmove', function (e) {
+            var press = EquipmentUI._press, t = e.touches[0];
+            if (!press || press.row !== row || !t) return;
+            var dx = t.clientX - press.x, dy = t.clientY - press.y;
+            if (dx * dx + dy * dy > Actionable.LongPressMoveCancelPx * Actionable.LongPressMoveCancelPx) cancel(e);
+        }, { passive: false });
+        row.addEventListener('touchend', cancel, { passive: false });
+        row.addEventListener('touchcancel', cancel, { passive: false });
+    },
+
     // Pointer Events, not HTML5 drag-and-drop: the latter does not fire on
     // touch at all, and this has to work identically on phone and desktop.
     // A drag only begins past a movement threshold, so a plain tap still
@@ -719,7 +756,7 @@ var EquipmentUI = {
             EquipmentUI.killGhost();
             if (d) { d.el.classList.remove("equip-dragging"); document.body.classList.remove("equip-dragging-active"); }
             EquipmentUI.clearHover();
-            if (EquipmentUI._renderPending) {
+            if (EquipmentUI._renderPending && !EquipmentUI._press) {
                 EquipmentUI._renderPending = false;
                 try { EquipmentUI.Render(); } catch (eR) {}
             }
@@ -823,6 +860,8 @@ var EquipmentUI = {
     },
 
     Hide: function () {
+        if (EquipmentUI._press) clearTimeout(EquipmentUI._press.timer);
+        EquipmentUI._press = null;
         clearTimeout(EquipmentUI._dropTimer);
         EquipmentUI._dropTimer = null;
         document.body.classList.remove("equip-open");

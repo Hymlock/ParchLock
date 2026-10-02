@@ -743,6 +743,24 @@ assert(S.parseScoreDelta("Your score has just gone up by twenty-eight points. Yo
     navigatorBusy = false;
     assert(S.probeSafeNow() === true, "D204 safe-idle allows a free LineInput with idle navigator");
 
+    const clearCarry = S.clearCarryProbe;
+    let carryCancellations = 0;
+    S.clearCarryProbe = function () { carryCancellations++; };
+    S._probeQueue = [{ kind: "score", verb: "score", attempts: 0 }];
+    S._hideCarryProbe = true;
+    S._carryProbeSentAt = 0;
+    S._carryProbeTimer = {};
+    S.runProbeQueue();
+    assert(carryCancellations === 0 && S._probeQueue.length === 1, "queued but unsent inventory is not mistaken for a timed-out reply");
+    S._carryProbeTimer = null;
+    S._carryProbeSentAt = Date.now() - 6000;
+    S.runProbeQueue();
+    assert(carryCancellations === 1, "actually sent stalled inventory retains bounded timeout recovery");
+    S.clearCarryProbe = clearCarry;
+    S._hideCarryProbe = false;
+    S._carryProbeSentAt = 0;
+    S._probeQueue = [];
+
     // Checking hint remains visible alongside existing chips.
     S.model().stats.score = { key: "score", label: "Score", value: 3, source: "status", kind: "counter", confirmed: true };
     S.model().fulfillment = "checking";

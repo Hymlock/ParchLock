@@ -156,7 +156,7 @@ assert(E.edgeDelta(R, R.top + E.EDGE + 1) === 0, "the edge zone ends exactly whe
 assert(E.edgeDelta(null, 250) === 0, "a missing scroller is handled rather than throwing");
 
 assert(/_renderPending/.test(eqJs), "a re-render arriving mid-drag is deferred, not applied");
-assert(/if \(EquipmentUI\._drag && EquipmentUI\._drag\.active\)[\s\S]{0,120}_renderPending = true;[\s\S]{0,40}return;/.test(eqJs),
+assert(/if \(EquipmentUI\._drag \|\| EquipmentUI\._press\)[\s\S]{0,120}_renderPending = true;[\s\S]{0,40}return;/.test(eqJs),
     "Render bails out while a drag is active -- rebuilding the list would detach the grip holding the pointer capture and abort the player's drag mid-gesture");
 assert(/updateHover\(d, d\.lastX, d\.lastY\)/.test(eqJs),
     "the drop target is re-resolved on each auto-scroll frame, since rows move under a stationary pointer");

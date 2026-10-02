@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 316 headings; 103 decision rows; 419 registered units.
 **Last registered unit:** `pl-s316`. **Body SHA-256 (LF):**
-`8a322fee5b55ea8fb4953ab452560807e0929b9336c3298988debb907d5abf87`
+`4ded336bb8b55c92be44f0b37631a7ec4830ebbec01a386d06ad94bfd8bd38b4`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -7085,6 +7085,10 @@ short verbs; full parser commands remain separate. No title-specific interaction
 Native restart clears the map graph, notes, camera and gesture state before world
 recovery; initial interpreter boot and restore-file retain their distinct lifecycle.
 
+**Build 55 observed-label correction (Grok #1003).** Blank compiled names in Tolti-Aph expose parser-vocabulary fallbacks such as jerkins, daggers and new. Display refinement accepts a uniquely owned observed single-word alias only for parser-vocabulary fallback labels; structural printed names keep the two-word refinement threshold. Display equivalence uses the live ZVM's pure dictionary encoder when available, including alphabet shifts/truncation for new-looking/new-look; other engines retain existing vocabulary equivalence. Only contiguous already-observed phrases qualify, with no cross-punctuation composition, unseen descriptors, sibling-order attribution or invented noun. This is a display-only extension: structural IDs, shared command resolver, ambiguity gates, instance badges and learning remain unchanged. Live first-open Equipment must collect and show leather jerkin, dagger, blank parchment and new-looking journal without manual INVENTORY, alongside interaction/probe isolation tests.
+
+**Build 55 queue sequencing root:** D204's status queue treated a deferred, not-yet-sent inventory transaction's zero sent timestamp as an expired five-second reply. It cancelled the inventory timer before execution, denying observed labels and carry statistics their original source. Expiration requires no pending submission timer and a positive sent timestamp; real stalled replies retain bounded recovery. INVENTORY still uses the existing dictionary-supported, silent carry lane, modal/draft gates and rollback. Unit coverage distinguishes queued-unsent from sent-expired; live first Equipment open supplies the label evidence without user intervention.
+
 **Build 54 follow-up (2026-10-01).** Room pointer capture stays on the pressed room
 so desktop click selection survives pan/pinch integration. Equipment resolves the
 drop target before deferred DOM rebuilding and revalidates source/target IDs from
@@ -7395,6 +7399,8 @@ after Codex re-audit ACCEPT and operator authorization.
 **Implementation state (2026-10-01): IMPLEMENTED, pending independent live/package validation.** `StatTracker` now consumes stable BufferLine append/replacement spans, records submission/source provenance, correlates confirmed globals and player properties, preserves next-target EXP semantics, recognizes repeatable explicit death/win output, and fulfills command-only status serially at each Equipment open. The `off/shadow/on` valve defaults on; safe-idle gating covers drafts, dialogs, character prompts, and Navigator. Restore invalidates readings while retaining playthrough event fingerprints/counters. Object radial suggestions preserve semantic winners plus every distinct deterministic `ActionSynth` form, including confirmed `AttrCalibrator.allowedVerbsFor` learning, so enabling the cutover cannot silently remove `More...` pages.
 
 **2026-10-01 prompt/viewport repair (D204 + D202).** Probe ownership must never hide a live input's reusable BufferLine. The persistent DOM guard restores input-bearing stat/carry lines even after probe ownership ends, transferring quiet ownership to output children only. Probe scheduling, turn accounting, and status fulfillment remain unchanged. The original map is the sole renderer; Center draws once, and pinch scale retains continuous precision. Physical-device confirmation remains required.
+
+**2026-10-01 inventory regression resolution.** Commit `0066404` introduced a status disclosure during Equipment open without extending the existing map modal-ownership contract to Equipment. The desktop sheet covered the Message close control while `Message.IsOpen` correctly refused every drop/radial submission. Equipment must yield visibility to app/native dialogs, retaining its state and returning after dismissal. First-open disclosure precedes the whole probe transaction; its one-shot close continuation checks story epoch and sheet visibility before fulfilling status. No modal, draft or input injection gate is bypassed. Quiet SCORE/DIAGNOSE ownership is bounded by the submitting prompt and the interpreter's successor prompt, not metric recognition or a five-second timer: claim the reply, parse it, then release ownership even for unsupported replies. Player output after that prompt must remain visible. Inventory holds use explicit 500ms timing and movement cancellation rather than native contextmenu assumptions; pending holds and handle presses defer row replacement before the drag threshold. Preserve grip-only dragging, vertical scrolling, structural descriptor references, learning, containment, turn accounting and narrator exclusions. Validation must use real Message close clicks, real equipment context gestures/commands and touch drags; direct `Message.Hide()` is not evidence of dismissability.
 
 **Lifecycle:** PROPOSED / pre-GO. No runtime implementation is authorized until the
 standalone contract, this section, and architecture section 68 receive adversarial

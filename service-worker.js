@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v96"; // Room clicks, drop transactions, More and learning recovery.
+const CACHE_VERSION = "parchlock-shell-v97"; // Inventory modal, touch hold and prompt-bounded silent status ownership.
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 93 headings; 0 decision rows; 93 registered units.
 **Last registered unit:** `ar-s093`. **Body SHA-256 (LF):**
-`ae72224ea8f635f965b28e9d1050438a3a714b4e04a00b0d2c9f0debbd2dc036`
+`eb62c19ff0cdba5b510f46e76ad45fea94d420be41e0ac9ef84d796c036cd4dc`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -3459,7 +3459,13 @@ clearing offset (cell = live Glk/CharCell advance).
 <a id="ar-s093" data-chapter-id="ar-s093"></a><a id="ar-ch68"></a>
 ## 68. Holistic statistics evidence ledger (D204) - IMPLEMENTED
 
+**Build 55 display integration (D201/Grok #1003):** Inventory labels remain a view over structural identity. Uniquely matched observed single-word aliases can replace parser-vocabulary fallback names, never a structural printed name. The live ZVM dictionary encoder supplies display-only encoded-word equivalence for alphabet shifts and truncation; fallback engines retain existing equivalence. Observed contiguous phrase ownership is required; shared aliases do not bind one sibling. No command reference, object ID, learning gate or room identity changes. First-open silent inventory collection is part of the live Tolti-Aph label test.
+
+**Build 55 transaction order:** A deferred carry submission is not an expired reply. Status queue recovery may cancel inventory only after its submission timer has completed, its sent timestamp is positive and the reply deadline has elapsed. Zero sent timestamp plus a pending timer remains an in-flight queue reservation. Preserve existing dictionary permission, carry ownership, rollback and bounded stalled-reply cleanup.
+
 **2026-10-01 lifecycle invariant (D204/D202):** Quiet stat/carry output owns output nodes, never a live prompt container. A persistent MutationObserver repairs Glk BufferLine reuse after ownership ends while preserving hidden output and narrator exclusions. The original local-room map is the sole renderer; Center delegates its single draw to ResetViewport, and pinch uses unrounded scale. No new interpreter, navigation, or statistics owner is introduced.
+
+**2026-10-01 inventory integration repair:** Equipment uses the same app/native dialog visibility contract as Map, so a Message cannot be trapped below a sheet while blocking Submit. The one-time status disclosure completes before any probe is scheduled; Message's optional one-shot close continuation rechecks story epoch and Equipment state. Quiet output ownership captures the reply only until the submitting input is replaced by the interpreter's next prompt. Unrecognized replies close as unavailable rather than hiding later player commands. All existing modal/draft/injection guards remain. Equipment-local timed holds preserve pan-y scrolling; pending hold/handle-down state defers row replacement before the movement threshold. Live regression uses actual close clicks, mouse context menus, touchscreen holds and drags, plus unsupported LLR DIAGNOSE followed by visible player LOOK. This does not replace ActionSynth, descriptor identity, vocabulary learning, containment or statistics sources.
 
 **Lifecycle:** PROPOSED / pre-GO. Architecture companion to
 [D204](PRODUCTION_PLAN.md#pl-d204) and

@@ -19,7 +19,7 @@ var Message = {
         }
     },
 
-    Show: (title, body, disabledTypeToClose) => {
+    Show: (title, body, disabledTypeToClose, onClosed) => {
 
         // D154: Message.js is loaded by BOTH index.html and play.html, but
         // ParchLock.js is play-only. Calling it unguarded meant every call to
@@ -29,6 +29,7 @@ var Message = {
         // real one was never reported or displayed at all.
         try { if (typeof ParchLock !== "undefined") ParchLock.HandleOverlayOpened(); } catch (e) {}
         Message.NoTypeToClose = disabledTypeToClose || false;
+        Message._onClosed = typeof onClosed === 'function' ? onClosed : null;
 
         if (disabledTypeToClose)
             $("#message footer").hide();
@@ -59,6 +60,9 @@ var Message = {
         $("body").removeClass("app-dialog-open");
 
         $("#message").removeClass("show");
+        var onClosed = Message._onClosed;
+        Message._onClosed = null;
+        if (onClosed) setTimeout(onClosed, 0);
         try { if (typeof ParchLock !== "undefined") ParchLock.HandleOverlayClosed(); } catch (e) {}
         // Mobile: never focus inputs after closing a dialog (opens IME).
         if (document.body.classList.contains("pl-mobile")) {

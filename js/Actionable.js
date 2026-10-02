@@ -206,7 +206,17 @@ var Actionable = {
         return { noun: noun, candidateIds: candidates, unique: unique, verified: unique && !customUnverified, provenance: "scoped-vocabulary" };
     },
     displayNameFor: function (obj, pool, text) {
-        var aliases = (obj.aliases || []).map(Actionable.vocabularyKey);
+        // Display-only equivalence uses the live interpreter's encoding: a
+        // hyphen consumes an alphabet shift and can truncate before character 9.
+        var displayKey = function (word) {
+            var w = String(word || "").toLowerCase();
+            var vm = window.__PARCHLOCK_ZVM__;
+            if (vm && vm.encode && /^[a-z][a-z'-]*$/.test(w)) {
+                try { return "z:" + vm.encode(Array.from(w, function (c) { return c.charCodeAt(0); })).join(","); } catch (e) {}
+            }
+            return Actionable.vocabularyKey(w);
+        };
+        var aliases = (obj.aliases || []).map(displayKey);
         if (!aliases.length) return obj.name;
         var source = String(text || "").toLowerCase();
         var matches = Array.from(source.matchAll(/[a-z][a-z'-]*/g));
@@ -216,12 +226,12 @@ var Actionable = {
             var phrase = [];
             for (var j = i; j < Math.min(words.length, i + 6); j++) {
                 if (j > i && !/^\s+$/.test(source.slice(matches[j - 1].index + words[j - 1].length, matches[j].index))) break;
-                if (aliases.indexOf(Actionable.vocabularyKey(words[j])) < 0) break;
+                if (aliases.indexOf(displayKey(words[j])) < 0) break;
                 phrase.push(words[j]);
-                if (phrase.length < 2) continue;
+                if (phrase.length < 2 && obj.labelProvenance !== "parser-vocabulary") continue;
                 var owners = (pool || []).filter(function (o) {
-                    var mine = (o.aliases || []).map(Actionable.vocabularyKey);
-                    return phrase.every(function (w) { return mine.indexOf(Actionable.vocabularyKey(w)) >= 0; });
+                    var mine = (o.aliases || []).map(displayKey);
+                    return phrase.every(function (w) { return mine.indexOf(displayKey(w)) >= 0; });
                 });
                 if (owners.length === 1 && String(owners[0].id) === String(obj.id) && phrase.join(" ").length > best.length) best = phrase.join(" ");
             }

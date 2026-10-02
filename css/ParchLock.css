@@ -3931,6 +3931,11 @@ body.equip-open #exits { display: none; }
 
 body.equip-open #equipment { display: block; }
 
+/* Equipment follows the map's modal ownership contract. A status disclosure
+ * must not sit behind the sheet while its open flag blocks all commands. */
+body.native-dialog-open #equipment,
+body.app-dialog-open #equipment { visibility: hidden; }
+
 #equipment h1 { margin: 0 0 12px; font-size: 20px; }
 #equipment-close {
 	position: absolute;

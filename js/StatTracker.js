@@ -1822,7 +1822,8 @@ var StatTracker = {
                         && typeof after.value === "number" && after.value > before) {
                         StatTracker._carryTurnWarned = true;
                         try {
-                            if (typeof Message !== "undefined" && Message.Show) {
+                            if (StatTracker._probeDisclosureEpoch !== StatTracker._storyEpoch
+                                && typeof Message !== "undefined" && Message.Show) {
                                 Message.Show("Inventory check",
                                     "Each time you open Equipment, the story checks your pack. In this game that uses a turn.");
                             }
@@ -2389,6 +2390,22 @@ var StatTracker = {
             StatTracker.Render();
             return;
         }
+        // Disclose before starting any probe. Otherwise the inventory timer
+        // submits behind this modal, is refused, and never collects its reply.
+        var needsNotice = (!StatTracker.hasPassiveMetric("score") && StatTracker.canAsk("score"))
+            || (!StatTracker.hasPassiveMetric("health") && StatTracker.canAsk("diagnose"));
+        if (mode === "on" && !explicit && needsNotice
+            && StatTracker._probeDisclosureEpoch !== StatTracker._storyEpoch) {
+            StatTracker._probeDisclosureEpoch = StatTracker._storyEpoch;
+            var epoch = StatTracker._storyEpoch;
+            Message.Show("Status check", "ParchLock may quietly ask this story for status when you open Equipment. Some stories count that check as a turn.", false, function () {
+                if (!Message.IsOpen && StatTracker._storyEpoch === epoch && typeof EquipmentUI !== "undefined" && EquipmentUI.IsOpen()) {
+                    StatTracker.requestStatusFulfillment(false);
+                }
+            });
+            StatTracker.Render();
+            return;
+        }
         // Inventory keeps its narrowly proven span ownership (pl-carry-probe).
         // SCORE/DIAGNOSE use the same headless contract via beginProbeOwnership:
         // BufferLines created during the probe turn are marked pl-stat-probe
@@ -2413,14 +2430,6 @@ var StatTracker = {
             return;
         }
         if (!queued && !StatTracker._hideCarryProbe) model.fulfillment = "complete";
-        if (!explicit && queued && StatTracker._probeDisclosureEpoch !== StatTracker._storyEpoch) {
-            StatTracker._probeDisclosureEpoch = StatTracker._storyEpoch;
-            try {
-                if (typeof Message !== "undefined" && Message.Show) {
-                    Message.Show("Status check", "ParchLock may quietly ask this story for status when you open Equipment. Some stories count that check as a turn.");
-                }
-            } catch (eNotice) {}
-        }
         StatTracker.Render();
         StatTracker.runProbeQueue();
     },
@@ -2440,7 +2449,8 @@ var StatTracker = {
         if (StatTracker._probeActive || !StatTracker._probeQueue.length) return;
         // The inventory transaction must finish before another line command.
         if (StatTracker._hideCarryProbe || StatTracker._carryProbeTimer) {
-            if (StatTracker._hideCarryProbe && Date.now() - (StatTracker._carryProbeSentAt || 0) > 5000) {
+            if (!StatTracker._carryProbeTimer && StatTracker._hideCarryProbe
+                && StatTracker._carryProbeSentAt > 0 && Date.now() - StatTracker._carryProbeSentAt > 5000) {
                 StatTracker.clearCarryProbe();
             }
             return;
@@ -2549,6 +2559,18 @@ var StatTracker = {
                 }
             }
             StatTracker.protectProbeInputs(root);
+            // Claim the reply first, then release ownership at the VM's next
+            // prompt even if that reply contained no recognizable metric.
+            var nextInput = root.querySelector(".Input.LineInput, .Input.CharInput");
+            if (StatTracker._probeActive && nextInput && nextInput !== StatTracker._probeInput) {
+                var completed = StatTracker._probeActive;
+                StatTracker.endProbeOwnership();
+                setTimeout(function () {
+                    if (StatTracker._probeActive !== completed) return;
+                    StatTracker.Tick();
+                    if (StatTracker._probeActive === completed) StatTracker.finishProbe("unavailable");
+                }, 0);
+            }
         });
         try {
             StatTracker._probeDomGuard.observe(root, { childList: true, subtree: true, characterData: true });
@@ -2556,6 +2578,7 @@ var StatTracker = {
     },
 
     beginProbeOwnership: function () {
+        StatTracker._probeInput = document.querySelector(".Input.LineInput, .Input.CharInput");
         StatTracker._statProbeOwned = true;
         StatTracker.ensureProbeDomGuard();
     },

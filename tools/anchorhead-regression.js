@@ -59,8 +59,30 @@ async function interactionAudit() {
             await submit('open trenchcoat');
             await page.evaluate(() => EquipmentUI.Show());
             await page.waitForTimeout(700);
-            await page.evaluate(() => { if (Message.IsOpen) Message.Hide(); });
+            if (await page.locator('#message.show #close').count()) await page.locator('#message.show #close').click();
             await page.waitForTimeout(700);
+            check(await page.evaluate(() => {
+                const probes = [...document.querySelectorAll('.Style_input')].filter(el => /^(score|diagnose|inventory)$/.test(el.textContent.trim()));
+                return probes.length > 0 && probes.every(el => !!el.closest('.pl-stat-probe, .pl-carry-probe'));
+            }), 'status probes stay hidden after real disclosure dismissal');
+            const umbrellaRow = page.locator('.equip-row').filter({ hasText: /^umbrella$/ });
+            if (width < 600) {
+                const box = await umbrellaRow.boundingBox();
+                const cdp = await context.newCDPSession(page);
+                await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: box.x + 20, y: box.y + box.height / 2 }] });
+                await page.evaluate(() => EquipmentUI.Render());
+                await page.waitForTimeout(650);
+                await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+                await cdp.detach();
+            } else await umbrellaRow.click({ button: 'right' });
+            check(await page.locator('#radial-menu.show .radial-command').count() > 0, 'inventory real context gesture opens actions');
+            await page.locator('#radial-menu .radial-command').filter({ hasText: /^Examine$/ }).click();
+            await page.waitForTimeout(800);
+            check(await page.evaluate(() => /^(examine|inspect) umbrella$/.test([...document.querySelectorAll('.Style_input:not(.pl-stat-probe):not(.pl-carry-probe)')].pop()?.textContent.trim())), 'inventory radial submits real command while sheet stays open');
+            check(await page.evaluate(() => {
+                const echo = [...document.querySelectorAll('.Style_input')].reverse().find(el => /^(examine|inspect) umbrella$/.test(el.textContent.trim()));
+                return echo && !echo.closest('.pl-stat-probe, .pl-carry-probe');
+            }), 'inventory player command is not hidden as status output');
             const ids = await page.evaluate(() => { const m = EquipmentUI.model(); return { item: m.items.find(o => o.name === 'umbrella').id, coat: m.items.find(o => o.name === 'trenchcoat').id, player: m.playerId }; });
             const drag = async targetId => {
                 const grip = page.locator('.equip-row[data-object-id="' + ids.item + '"] .equip-grip');
@@ -70,6 +92,8 @@ async function interactionAudit() {
                 if (width < 600) {
                     const cdp = await context.newCDPSession(page);
                     await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: start.x + start.width / 2, y: start.y + start.height / 2 }] });
+                    await page.evaluate(() => EquipmentUI.Render());
+                    await page.waitForTimeout(250);
                     await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: end.x + end.width / 2, y: end.y + end.height / 2 }] });
                     await page.evaluate(() => EquipmentUI.Render());
                     await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
@@ -79,6 +103,8 @@ async function interactionAudit() {
                 }
                 await page.mouse.move(start.x + start.width / 2, start.y + start.height / 2);
                 await page.mouse.down();
+                await page.evaluate(() => EquipmentUI.Render());
+                await page.waitForTimeout(250);
                 await page.mouse.move(end.x + end.width / 2, end.y + end.height / 2, { steps: 12 });
                 await page.evaluate(() => EquipmentUI.Render());
                 await page.mouse.up();
@@ -128,6 +154,52 @@ async function interactionAudit() {
             check(errors.length === 0, 'no browser errors ' + errors.join('; '));
             await context.close();
         }
+        const context = await browser.newContext({ viewport: { width: 1200, height: 850 } });
+        const page = await context.newPage();
+        await page.goto(pathToFileURL(path.resolve(__dirname, '..', 'play.html')).href + '?story=games/LLR3.z8.js');
+        await page.waitForTimeout(700);
+        await page.evaluate(() => document.querySelector('.parchlock-splash__start')?.click());
+        await page.waitForTimeout(2000);
+        for (let i = 0; i < 12 && !await page.locator('.Input.LineInput').count(); i++) { await page.keyboard.press('Space'); await page.waitForTimeout(200); }
+        if (await page.locator('#message.show #close').count()) await page.locator('#message.show #close').click();
+        await page.evaluate(() => EquipmentUI.Show());
+        await page.waitForTimeout(200);
+        assert(await page.evaluate(() => Message.IsOpen && !StatTracker._hideCarryProbe && !StatTracker._probeActive), 'disclosure precedes any silent command transaction');
+        await page.locator('#message.show #close').click();
+        await page.waitForTimeout(1200);
+        assert(await page.evaluate(() => !StatTracker._statProbeOwned && !StatTracker._probeActive), 'unsupported DIAGNOSE releases ownership at returned prompt');
+        assert(await page.evaluate(() => StatTracker.model().stats.experience?.value === 0), 'silent LLR SCORE still fulfills experience');
+        const probes = await page.evaluate(() => [...document.querySelectorAll('.Style_input')].map(el => ({ text: el.textContent.trim(), hidden: !!el.closest('.pl-stat-probe, .pl-carry-probe') })));
+        assert(probes.some(p => p.text === 'score') && probes.some(p => p.text === 'diagnose') && probes.every(p => p.hidden), 'available first-open status probes execute silently after dismissal: ' + JSON.stringify(probes));
+        assert(await page.evaluate(() => { Input.Clear(); return Actionable.Submit('look'); }), 'normal player submission is accepted after unsupported probe');
+        await page.waitForTimeout(700);
+        const playerOutput = await page.evaluate(() => ({ echoes: [...document.querySelectorAll('.Style_input')].map(e => ({ text: e.textContent.trim(), hidden: !!e.closest('.pl-stat-probe, .pl-carry-probe') })), draft: document.querySelector('.Input.LineInput')?.value, owned: StatTracker._statProbeOwned, active: StatTracker._probeActive }));
+        assert(playerOutput.echoes.at(-1)?.text === 'look' && !playerOutput.echoes.at(-1).hidden, 'player output is not claimed by a completed unsupported probe: ' + JSON.stringify(playerOutput));
+        console.log('PASS: LLR first-open disclosure, silent SCORE/DIAGNOSE, EXP and player-output isolation');
+        await context.close();
+        const labelsContext = await browser.newContext({ viewport: { width: 1200, height: 915 } });
+        const labelsPage = await labelsContext.newPage();
+        await labelsPage.addInitScript(() => { localStorage.setItem('PL_TutorialSeen', '1'); localStorage.setItem('PL_MobileTutorialSeen', '1'); });
+        await labelsPage.goto(pathToFileURL(path.resolve(__dirname, '..', 'play.html')).href + '?story=games/RoTA.zblorb.js');
+        await labelsPage.waitForTimeout(1000);
+        await labelsPage.evaluate(() => document.querySelector('.parchlock-splash__start')?.click());
+        await labelsPage.waitForTimeout(2500);
+        for (let i = 0; i < 16 && !await labelsPage.locator('.Input.LineInput').count(); i++) { await labelsPage.keyboard.press('Space'); await labelsPage.waitForTimeout(300); }
+        if (await labelsPage.locator('#message.show #close').count()) await labelsPage.locator('#message.show #close').click();
+        await labelsPage.evaluate(() => EquipmentUI.Show());
+        await labelsPage.waitForTimeout(200);
+        if (await labelsPage.locator('#message.show #close').count()) await labelsPage.locator('#message.show #close').click();
+        await labelsPage.waitForTimeout(1200);
+        const observedLabels = await labelsPage.evaluate(() => {
+            EquipmentUI.Render();
+            return [...document.querySelectorAll('.equip-row:not(.equip-self)')].map(row => ({ id: row.dataset.objectId, label: row.querySelector('.equip-name').textContent }));
+        });
+        for (const label of ['leather jerkin', 'dagger', 'blank parchment', 'new-looking journal']) {
+            assert(observedLabels.some(row => row.label === label), 'RoTA observed inventory label: ' + label + ': ' + JSON.stringify(observedLabels));
+        }
+        assert(new Set(observedLabels.map(row => row.id)).size === observedLabels.length, 'observed label refinement preserves separate physical item IDs');
+        console.log('PASS: RoTA live observed inventory labels and physical IDs');
+        await labelsContext.close();
     } finally { await browser.close(); }
 }
 
