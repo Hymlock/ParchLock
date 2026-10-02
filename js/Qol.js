@@ -754,10 +754,15 @@ var ParchLockQol = {
         var capacity = window.innerWidth < 600 || window.innerHeight < 600 ? 6 : 16;
         if (commands.length > capacity) {
             var allCommands = commands.slice();
+            // Object suggestions are the continuation after the last action
+            // page, not a second More button beside the page navigator.
+            var continuation = allCommands.find(item => item.MoreSuggestions === true);
+            var pagedCommands = continuation ? allCommands.filter(item => item !== continuation) : allCommands;
             var page = pageIndex || 0;
-            var pageCount = Math.ceil(allCommands.length / (capacity - 1));
-            commands = allCommands.slice(page * (capacity - 1), (page + 1) * (capacity - 1));
-            commands.push({ Label: "More...", Action: () => ParchLockQol.OpenRadial(clientX, clientY, allCommands, context, (page + 1) % pageCount) });
+            var pageCount = Math.ceil(pagedCommands.length / (capacity - 1));
+            commands = pagedCommands.slice(page * (capacity - 1), (page + 1) * (capacity - 1));
+            if (continuation && page === pageCount - 1) commands.push(continuation);
+            else commands.push({ Label: "More...", Action: () => ParchLockQol.OpenRadial(clientX, clientY, allCommands, context, (page + 1) % pageCount) });
         }
         var size = Math.min(window.innerWidth - 16, window.innerHeight - 16, capacity === 6 || commands.length <= 8 ? 330 : 460);
         menu.css({ width: size, height: size });

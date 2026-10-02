@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v98"; // Desktop no-story startup opens the existing module library.
+const CACHE_VERSION = "parchlock-shell-v99"; // Single object-radial More continuation across action and suggestion pages.
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

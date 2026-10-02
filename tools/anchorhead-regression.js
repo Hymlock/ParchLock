@@ -23,6 +23,29 @@ async function interactionAudit() {
             for (let i = 0; i < 12 && !await page.locator('.Input.LineInput').count(); i++) { await page.keyboard.press('Space'); await page.waitForTimeout(300); }
             await page.evaluate(() => Message.Hide());
             await submit('look');
+            const overflowCount = width < 600 ? 8 : 18;
+            await page.evaluate(count => {
+                window._moreReached = false;
+                const commands = Array.from({ length: count }, (_, i) => ({ Label: 'Action ' + i, Score: count - i, Action: () => {} }));
+                commands.push({ Label: 'More', MoreSuggestions: true, Score: 0, Action: () => { window._moreReached = true; } });
+                ParchLockQol.OpenRadial(200, 300, commands, { source: 'object' });
+            }, overflowCount);
+            const reached = new Set();
+            for (let i = 0; i < 5 && !await page.evaluate(() => window._moreReached); i++) {
+                const labels = await page.locator('#radial-menu .radial-command').allTextContents();
+                check(labels.filter(label => /^More(?:\.\.\.)?$/.test(label)).length === 1, 'one More continuation on overflow page ' + i);
+                labels.filter(label => /^Action /.test(label)).forEach(label => reached.add(label));
+                await page.locator('#radial-menu .radial-command').filter({ hasText: /^More(?:\.\.\.)?$/ }).click();
+            }
+            check(await page.evaluate(() => window._moreReached) && reached.size === overflowCount, 'all overflow actions precede the suggestion launcher without truncation');
+            await page.evaluate(count => {
+                ParchLockQol.OpenRadial(200, 300, Array.from({ length: count }, (_, i) => ({ Label: 'Plain ' + i, Score: count - i, Action: () => {} })), { source: 'input' });
+            }, overflowCount);
+            const firstPlain = await page.locator('#radial-menu .radial-command').allTextContents();
+            const plainPages = Math.ceil(overflowCount / ((width < 600 ? 6 : 16) - 1));
+            for (let i = 0; i < plainPages; i++) await page.locator('#radial-menu .radial-command').filter({ hasText: /^More\.\.\.$/ }).click();
+            check(JSON.stringify(await page.locator('#radial-menu .radial-command').allTextContents()) === JSON.stringify(firstPlain), 'radials without suggestion launchers retain cyclic pagination');
+            await page.evaluate(() => ParchLockQol.HideRadialMenu());
             const id = await page.evaluate(() => Actionable.payloadPool().find(o => /real estate.*door/i.test(o.name)).id);
             await page.locator('.pl-act:not(.is-stale)[data-object-id="' + id + '"]').first().click({ force: true });
             await page.waitForTimeout(700);
@@ -34,8 +57,10 @@ async function interactionAudit() {
             }, id);
             check(labels.length > 0 && labels.every(label => label.length < 24 && !/clarify|\(any\)/i.test(label)), 'short wheel labels');
             for (let i = 0; i < 4 && !await page.locator('#radial-menu .radial-command').filter({ hasText: /^More$/ }).count(); i++) {
+                check(await page.locator('#radial-menu .radial-command').filter({ hasText: /^More(?:\.\.\.)?$/ }).count() === 1, 'real object action page has one More');
                 await page.locator('#radial-menu .radial-command').filter({ hasText: /^More\.\.\.$/ }).click();
             }
+            check(await page.locator('#radial-menu .radial-command').filter({ hasText: /^More(?:\.\.\.)?$/ }).count() === 1, 'real object final action page has one More');
             await page.locator('#radial-menu .radial-command').filter({ hasText: /^More$/ }).click();
             check(await page.locator('#radial-menu .radial-command').count() > 0, 'More opens vocabulary suggestions');
             const beforeSuggestion = await page.locator('.Style_input').count();
@@ -198,6 +223,16 @@ async function interactionAudit() {
             assert(observedLabels.some(row => row.label === label), 'RoTA observed inventory label: ' + label + ': ' + JSON.stringify(observedLabels));
         }
         assert(new Set(observedLabels.map(row => row.id)).size === observedLabels.length, 'observed label refinement preserves separate physical item IDs');
+        await labelsPage.setViewportSize({ width: 412, height: 915 });
+        await labelsPage.evaluate(id => Actionable.Open('dagger', 'inventory', 200, 300, Number(id)), observedLabels.find(row => row.label === 'dagger').id);
+        for (let i = 0; i < 8; i++) {
+            assert(await labelsPage.locator('#radial-menu .radial-command').filter({ hasText: /^More(?:\.\.\.)?$/ }).count() === 1, 'RoTA inventory radial has exactly one More on every page');
+            if (await labelsPage.locator('#radial-menu .radial-command').filter({ hasText: /^More$/ }).count()) break;
+            await labelsPage.locator('#radial-menu .radial-command').filter({ hasText: /^More\.\.\.$/ }).click();
+        }
+        assert(await labelsPage.locator('#radial-menu .radial-command').filter({ hasText: /^More$/ }).count() === 1, 'RoTA final action page retains the vocabulary suggestion launcher');
+        await labelsPage.locator('#radial-menu .radial-command').filter({ hasText: /^More$/ }).click();
+        assert(await labelsPage.locator('#radial-menu .radial-command').count() > 0, 'RoTA suggestion submenu remains available');
         console.log('PASS: RoTA live observed inventory labels and physical IDs');
         await labelsContext.close();
     } finally { await browser.close(); }

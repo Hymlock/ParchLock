@@ -1463,7 +1463,7 @@ var Actionable = {
                 AttrCalibrator.allowedVerbsFor(obj.id).forEach(add);
             }
         } catch (e) {}
-        if (suggestions.length) slices.push({ Label: 'More', Score: 0, Action: function () {
+        if (suggestions.length) slices.push({ Label: 'More', MoreSuggestions: true, Score: 0, Action: function () {
             ParchLockQol.OpenRadial(x, y, suggestions, context);
         } });
     },

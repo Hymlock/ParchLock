@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 93 headings; 0 decision rows; 93 registered units.
 **Last registered unit:** `ar-s093`. **Body SHA-256 (LF):**
-`41aae20ab867f7c8b5e660ffd29028da4fcd0114332df194ad49b45a14d24783`
+`8eb6950a5f27f470597d828f9a9d5f4b37aa6f4c3644f82309534676478e191e`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -1963,6 +1963,8 @@ and backed by positive and negative fixtures.
 
 <a id="ar-s055" data-chapter-id="ar-s055"></a><a id="ar-ch44"></a>
 ## 44. Adaptive radial ordering (D110)
+
+**Build 57 More integration:** `Actionable.addMoreActions` explicitly marks its vocabulary/learned launcher with `MoreSuggestions`. `Qol.OpenRadial` separates that launcher from ranked actions only when overflow is needed, pages all actions in the existing usage-first order and uses the launcher instead of a redundant wraparound More on the last action page. Exactly one More continuation exists per object action page. Editable suggestion radials and other unmarked menus retain cyclic paging; no candidates, parser references, usage events or learned commands are removed. Reopening the item returns to the ranked first page. This amends D201's separate-launcher presentation, not its command-provenance contract.
 
 ```mermaid
 flowchart LR

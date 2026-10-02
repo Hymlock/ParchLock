@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 316 headings; 103 decision rows; 419 registered units.
 **Last registered unit:** `pl-s316`. **Body SHA-256 (LF):**
-`356f7f710f1789d2625e0ef62936cd6defe610dd0bb45da54b0e3cd81f01ed48`
+`2ce3ba4c321fed251b307b47cbe184d0cdf0c5a34af07a7f86513ccf33ba335e`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -1906,6 +1906,8 @@ it is case-aware and idempotent.
 
 <a id="pl-s085" data-chapter-id="pl-s085"></a><a id="pl-d110"></a>
 ### D110 deterministic adaptive radial usage
+
+**Build 57 single-More continuation (2026-10-02).** D201's vocabulary/learned suggestion launcher and the existing radial overflow pager both rendered More on the final action page. The producer marks the suggestion launcher as `MoreSuggestions`; the shared renderer reserves it as the continuation after the final action page, replacing that page's redundant wraparound pager. Earlier pages retain one More pager. Every ranked action remains reachable before suggestions, without truncation or mixing editable suggestions into proven-command ranking. Non-overflow radials retain their launcher; radials without a marked launcher retain their existing cyclic paging. Tools/game lists, command targets, Enter flags, learned providers, usage counts and fill are unchanged. Regression must fail on the old second-page duplicate and verify desktop/mobile action coverage, real inventory More, editable suggestions and learned-provider connection.
 
 Adaptive command radials now use one deterministic ordering contract across input,
 object, inventory, direction, target, and topic menus. The sort tuple is uncapped
