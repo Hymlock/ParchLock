@@ -203,7 +203,7 @@ decisions and their later mentions, not only the first matching record.
   plans a shared player/location/display/inventory recovery for compiler-owned objects
   with blank short names. It may extend D184's parser-vocabulary lane, but it may not
   weaken D164's room rejection, override D84/D171, or make status text an identity source.
-- **Yourself hold RPG radial:** [D205](#pl-d205) proposes long-hold dwell on the equipment Yourself drop target to open a dictionary∩curated inventory/RPG verb radial; short release remains `take <noun>`. Confirmed verbs persist via AttrCalibrator, not VerifiedNouns. No invented verbs (D24); RoTA lacks `wield` in-dict.
+- **Yourself hold RPG radial:** [D205](#pl-d205) proposes long-hold dwell on the equipment Yourself drop target for a two-lane (submit-ready vs Enter:false) dictionary∩curated inventory/RPG verb radial; short release remains `take <noun>`. Z-dictionary only; AttrCalibrator persistence needs bounded learner extension (#1015). No invented verbs (D24); RoTA lacks `wield` in-dict.
 - **Original map retained:** [D202](#pl-d202) records withdrawal and removal of the overview/LOD implementation. Scaling retains the original local-room renderer and bounds; independent Center, gesture, path-alignment and interaction fixes remain. Architecture companion: [ARCHITECTURE_UML.md section 66](ARCHITECTURE_UML.md#ar-ch66).
 - Some earlier status banners and diagrams describe old builds. This indexing change
   preserves them as records; it does not claim to reconcile every historical runtime claim.
@@ -211,7 +211,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 317 headings; 103 decision rows; 420 registered units.
 **Last registered unit:** `pl-s317`. **Body SHA-256 (LF):**
-`e9ea1686f2f54e717a8b2f52fa22ffccae03871e4934fee384cc8880af7b6578`
+`231fa80af3f981044161328ef616011a6bdb6c6ee2ff67548383a9e0099ea1fd`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -7494,18 +7494,21 @@ non-Glulx module. Only after parity may packaging/cache/APK and user documentati
 ## D205 Drag-and-hold on Yourself: inventory/RPG action radial — PROPOSED
 
 **Lifecycle:** Proposed. Plan/docs only. No runtime JS implementation is authorized
-until this section and architecture section 69 receive operator adversary acceptance.
-Implementation status and verification remain separate from this draft.
+until this section and architecture section 69 receive operator adversary acceptance
+**after** the Codex #1015 blockers below are folded (this amendment). Implementation
+status and verification remain separate from this draft.
 
 **Stable ID:** `pl-d205` / `pl-s317`. **Companion architecture:** [ARCHITECTURE_UML.md section 69](ARCHITECTURE_UML.md#ar-ch69).
 
 **Scope.** Desktop and mobile equipment-sheet Pointer Events drag (D122/D125/D127).
-Engine/capability boundary: structural Z/Glulx inventory payloads already required for
-the equipment sheet. Dictionary membership uses the existing
-`Actionable.isGameWord` / `ZRamReader.hasDictionaryWord` arbiter (D146). Learning
-reuses `AttrCalibrator` per-module persistence (D73/D85/D86), not ephemeral
-`Actionable.VerifiedNouns`. Platforms: same Pointer Events path for phone and desktop;
-no HTML5 DnD.
+**Dictionary gate is Z-only today:** `Actionable.isGameWord` / `ZRamReader.hasDictionaryWord`
+require `ZRamProvider` (Actionable.js ~323–328). D205 Yourself-hold radial admission
+therefore applies to **dictionary-capable Z modules only**. Glulx inventory sheet play
+continues; Glulx gets **no** Yourself-hold RPG radial and **no** promise of one until a
+separate Glulx dictionary adapter is specified and accepted. No title-specific branches.
+Platforms: same Pointer Events path for phone and desktop; no HTML5 DnD. Learning
+reuses `AttrCalibrator` per-module persistence (D73/D85/D86) **only after** the bounded
+learner extension in Learning below; `VerifiedNouns` stays print/underline only.
 
 **Problem and agreed product behavior.** Today, releasing a dragged inventory row onto
 the Yourself node always submits `take <noun>` (`EquipmentUI.dropCommand` when
@@ -7514,111 +7517,155 @@ inventory/RPG verbs when they **long-hold** the drag over Yourself past a short-
 dwell threshold — so verbs such as wield/equip/wear/remove/eat/apply can surface when
 the loaded module actually supports them, without inventing parser vocabulary (D24).
 
-Agreed contract:
+Agreed contract (Codex #1015 F1–F5 folded):
 
 1. **Short release on Yourself** (dwell under the hold threshold, or release before the
    radial opens) keeps today's `take <noun>` behavior unchanged.
 2. **Long-hold while the drag pointer remains over Yourself** beyond that threshold
    opens a compass-style radial of inventory/RPG actions for the dragged item; it does
-   **not** auto-submit `take`.
-3. **Menu composition** = (curated RPG/inventory verb filter) ∩ (this module's
-   dictionary) ∪ attribute shortcuts that survive the same dictionary gate
-   (e.g. `wearable` → `wear`/`remove` when each word is present). Positional
-   suppression from `ActionSynth.commandsForObject` (held vs worn, nested container)
-   still applies once a candidate verb is admitted.
-4. **Never offer a verb absent from this module's dictionary.** Lexical absence is an
-   honest empty slot, not a prompt to invent synonyms. Fail closed when RAM/dictionary
-   is unavailable: offer no RPG radial verbs (short-drop `take` may still use the
-   existing verified-noun path).
-5. **Confirmed successes persist** through AttrCalibrator-style per-module learning
-   (`allowedVerbsFor` / opcode+behavior confirmation thresholds), so a proven
-   `wield lantern` (or alternate discovered form) survives across turns and reloads of
-   that module. `VerifiedNouns` remains the printed-phrase/underlining aid only; it is
-   not the persistence store for verb legality.
-6. **No vocabulary break:** submitted commands use verified nouns (D64/D107/D150) and
-   dictionary-owned verb heads only. No title-specific branches, no heuristic
-   text-mining of help text to invent verbs (D24).
+   **not** auto-submit `take`. Opening the radial **consumes** the opening gesture's
+   `pointerup` so that event neither takes nor activates a radial entry.
+3. **Menu composition is two lanes, not one auto-submit pool:**
+   - **Submit-ready (Enter:true / Inject):** only (a) existing ActionSynth
+     provider/attribute forms for the object, (b) SemanticActions forms when cutover
+     applies, or (c) AttrCalibrator per-object **confirmed exact command forms** with
+     object provenance — each still passing the curated∩dict∩positional gate where
+     applicable. Wear/remove/take/drop/eat/`switch on`/`switch off` that ActionSynth
+     already synthesizes may auto-submit when admitted.
+   - **Editable suggestion (Enter:false):** curated filter ∩ module dictionary hits that
+     lack a provider/semantic/confirmed exact one-object form. These fill the line via
+     the existing QoL/D201-style suggestion lane (`Enter:false` stems; player edits and
+     submits). Lexical `isGameWord` alone **never** licenses `Input.Inject` auto-submit.
+     Noun-homograph dictionary hits without verb grammar remain suggestions or absent.
+4. **Never invent verbs.** Lexical absence is an honest empty slot. Fail closed when
+   Z RAM/dictionary is unavailable: offer no RPG radial verbs (short-drop `take` may
+   still use the existing verified-noun path). No global `ActionSynth.rules` relaxation
+   and no title adapter to admit wield/equip/apply/use.
+5. **Confirmed successes persist** only through a **bounded AttrCalibrator learner
+   extension** (see Learning). Unchanged HEAD calibrator cannot persist
+   wield/equip/apply/use/drink (`buildVerbRegex` / `_isActionSynthVerb` /
+   `_recordAllowedVerb` reject non-rule verbs even on success:true). Until that
+   extension lands, do not claim cross-reload persistence for those verbs.
+6. **No vocabulary break:** submitted or suggested commands use verified nouns
+   (D64/D107/D150) and dictionary-owned verb heads / exact multiword forms only.
 
 **Curated RPG/inventory verb filter.** Product-owned curated set (extensible only by
 explicit plan amendment, never by runtime title detection). Intersection with the live
-dictionary is mandatory before any radial entry is shown:
+Z dictionary is mandatory before any radial entry is shown:
 
 `wield`, `equip`, `wear`, `remove`, `eat`, `drink`, `apply`, `use`, `take`, `drop`,
-`examine` (or the learned default inspect verb from AttrCalibrator), plus any
-AttrCalibrator-confirmed per-object allowed verbs that also pass the curated-set ∪
-attribute-shortcut policy for this surface.
+`examine` (or the learned default inspect verb from AttrCalibrator), plus
+AttrCalibrator-confirmed per-object allowed verbs admitted by Precedence below.
 
-Attribute shortcuts (examples; still dictionary-gated): `wearable`/clothing/worn state
-→ `wear`/`remove` (mutually suppressed by current worn/held state per D59); `edible` →
-`eat`, with `drink` only if `isGameWord("drink")` (D150); switchable/learned power verbs
-→ existing ActionSynth/AttrCalibrator forms only.
+Attribute shortcuts (examples; still dictionary-gated on the **exact form** offered):
+`wearable`/clothing/worn state → `wear`/`remove` (mutually suppressed by current
+worn/held state per D59); `edible` → `eat`, with `drink` only if `isGameWord("drink")`
+(D150); switchable → exact multiword `switch on`/`switch off` (not bare `switch`;
+`turn on` → `switch on` synonym remains AttrCalibrator normalization only).
+
+**Precedence (F5 — exact).** Evaluate in order; first decisive rule wins:
+
+1. Disabled inspect (AttrCalibrator) → never offer the inspect substitute on this
+   surface.
+2. Nested/worn/held positional suppression (D59 / ActionSynth) → suppress conflicting
+   wear/remove/take forms; ordinary object radials and outside-surface learned commands
+   stay unchanged.
+3. Submit-ready exact one-object forms (provider / semantic / confirmed allowedVerbs
+   with provenance) → show as auto-submit entries even if the verb head is **outside**
+   the curated set (persistence without surface visibility is useless; ordinary radials
+   already merge allowedVerbs).
+4. Curated ∩ dict lexical-only (no provider/confirmed one-object form) → Enter:false
+   suggestion only.
+5. Outside curated + unconfirmed → not shown on Yourself-hold; other surfaces unaffected.
 
 Intentional exclusions for this Yourself-hold radial (fail closed; use other surfaces):
 put-in / put-on / give-to / ask-about target pickers; travel/compass direction verbs;
-spells/instrumental two-object launchers unless the curated filter and dictionary both
-already admit that exact verb head for a one-object form on this surface.
+spells/instrumental two-object launchers unless a submit-ready exact form already exists
+for a one-object command on this surface (instrumental "Use with..." stays other UI).
 
-**Gesture lifecycle (equipment sheet).** Extends D122/D125/D127 Pointer Events; does not
-replace grip-only drag start, edge auto-scroll, or mid-drag render deferral.
+**Gesture lifecycle (equipment sheet) — F3.** Extends D122/D125/D127 Pointer Events;
+does not replace grip-only drag start, edge auto-scroll, or mid-drag render deferral.
+Must achieve **atomic drag→radial ownership** with current `submitDrop` safety parity
+(EquipmentUI ~765–785), not `Message.IsOpen` alone.
 
 ```
 pointerdown on grip → move ≥8px → drag active (unchanged)
   └─ hover non-Yourself target → existing drop legality / short release submits put/take
   └─ hover Yourself:
         release before dwell threshold → take <noun> (unchanged short drop)
-        dwell over Yourself ≥ threshold → open RPG radial; cancel pending take
-        radial item chosen → submit that dictionary-owned command
+        dwell over Yourself ≥ threshold → CANCEL pending take; teardown ghost/RAF/
+          render-deferral; open RPG radial; CONSUME this gesture's pointerup
+        radial item chosen → re-resolve live physical itemId/target/unique reference +
+          generation; apply draft/modal/dialog/probe/sheet/generation guards; then
+          submit-ready Inject OR Enter:false fill
         radial dismissed / cancelled → no take, no invented fallback
 ```
 
-Threshold constants are implementation details to be chosen at coding time so that
-ordinary short drops remain easy and accidental radials are rare; they must be
-documented in the implementing commit and covered by harness timing tests. The existing
-inventory-row long-press (`Actionable.LongPressMs`, opens the ordinary object radial)
-remains a separate gesture on the row body, not on the Yourself drop target. While the
-Yourself-hold radial is open: Message/dialog exclusion rules from D204 inventory
-regression notes still apply (`Message.IsOpen` refuses drop/radial submission).
+**Dwell cancellation (mandatory):** leaving Yourself hover; auto-scroll changing the
+resolved hover target; `pointercancel` / lost pointer capture; equipment sheet close;
+`UndoRestoreSync.generation` or module identity change; modal/dialog open; StatTracker
+probe active / carry-probe hide; nonempty line draft that would block submitDrop.
+No hidden probe command stealing (radial must not Submit while a probe owns the line).
 Ghost/hover styling may indicate "hold for actions" versus "release to take" without
-submitting anything.
+submitting anything. Threshold constants are implementation details chosen at coding
+time, documented in the implementing commit, and covered by harness timing tests. Row
+body long-press (`Actionable.LongPressMs`) remains a separate gesture.
 
-**Learning and persistence.** On a radial-chosen command that AttrCalibrator's
-verbSuccess/verbBehavior analyzers confirm (existing thresholds), persist via
-`AttrCalibrator.persist` keyed by module identity — same path click/typed/inject already
-share after D86's `Input.Inject` hook. Do not treat a single unconfirmed offer as proof.
-Do not write verb legality into `VerifiedNouns`. Restore/New Game/module load follow
-existing AttrCalibrator hydrate/forget contracts; this feature adds no parallel cache.
+**Learning and persistence — F2.** HEAD AttrCalibrator cannot record verbs absent from
+`ActionSynth.rules` (+ take/drop). D205 therefore **requires a bounded learner
+extension** before promising persistence for curated RPG verbs:
+
+- Admit exact command forms with **object provenance** (objectId + exact verb phrase).
+- Preserve existing rejection / ambiguity / threshold / module-isolation gates.
+- Do **not** add generic `wield`/`equip`/`apply`/`use` to `ActionSynth.rules` merely so
+  the learner sees them.
+- Positive persistence round-trip harness must exercise **real newly admitted verbs**,
+  not wear/take controls as stand-ins.
+- Until the extension ships, radial may still offer Enter:false suggestions for
+  dict∩curated lexical hits; cross-reload persistence for those verbs is **out of
+  scope** for the first implementation slice.
+
+Successful submit-ready commands that already pass `_isActionSynthVerb` continue on the
+existing D86 `Input.Inject` → calibrator path. Do not write verb legality into
+`VerifiedNouns`. Restore/New Game/module load follow existing hydrate/forget contracts;
+no parallel cache.
 
 **RoTA / alternate-command discovery (D24 note).** Research against The Reliques of
 Tolti-Aph (RoTA) noted **`wield` is absent from that module's dictionary**. Therefore
 the Yourself-hold radial **must not** show `wield` on RoTA (or any module lacking the
 word). Offering it would be a vocabulary break and a D24 violation. The goal remains:
 when a story **does** ship `wield` (or `equip`, etc.), the verb appears after dictionary ∩
-filter. Alternate discovery is limited to: (a) other curated verbs that **are** in-dict
-for that module; (b) attribute shortcuts that survive the dict gate; (c) AttrCalibrator
-confirmations of commands the player (or an admitted radial entry) actually submitted
-successfully. Help-text scraping, English synonym expansion (`brandish`, `hold up`, …),
-or title-specific verb injection are rejected. Verification gate before implementation
-sign-off: census dictionary membership of the curated set on RoTA, LLR, Anchorhead,
-Zork1, Enchanter, and at least one module that **does** contain `wield`/`equip` if
-present in the catalog; record which verbs appear. Absence on RoTA is expected and is
-not a defect.
+filter as Enter:false until confirmed, or submit-ready once provider/learner admits an
+exact form. Alternate discovery is limited to: (a) other curated verbs that **are**
+in-dict; (b) attribute shortcuts that survive the dict gate as exact forms; (c)
+AttrCalibrator confirmations of commands actually submitted successfully under the
+bounded extension. Help-text scraping, English synonym expansion, or title-specific
+verb injection are rejected. Verification gate before implementation sign-off: census
+dictionary membership of the curated set on RoTA, LLR, Anchorhead, Zork1, Enchanter,
+and at least one module that **does** contain `wield`/`equip` if present in the catalog;
+record which verbs appear. Absence on RoTA is expected and is not a defect.
 
 **Relationships.** Extends D122/D125/D127 equipment drag-and-drop (Yourself short drop
-remains `take`). Extends D59 positional wear/remove suppression; D85/D86/D73 learning;
-D146 dictionary arbiter; D150 drink-beside-eat gate; D24 no-heuristic actionable/radial.
-Does not supersede ordinary object/inventory radials (`Actionable.Open`), input-line
-radial (D26), or directional radial (D117+). Does not authorize GrammarProvider/D34
-resurrection as a per-object verb oracle.
+remains `take`). Extends D59 positional wear/remove suppression; D85/D86/D73 learning
+(with bounded extension); D146 dictionary arbiter (Z-only); D150 drink-beside-eat gate;
+D24 no-heuristic actionable/radial; D201 Enter:false suggestion discipline. Does not
+supersede ordinary object/inventory radials (`Actionable.Open`), input-line radial
+(D26), or directional radial (D117+). Does not authorize GrammarProvider/D34
+resurrection as a per-object verb oracle. Does not authorize Glulx dictionary radial
+without a future adapter decision.
 
 **Implementation sketch (not authorized yet).** Owning surfaces when approved:
-`js/EquipmentUI.js` (dwell detection on Yourself hover during `_drag`), radial
-presentation via existing `ParchLockQol.OpenRadial` / ActionSynth command builders, verb
-admission helper that applies curated filter ∩ `isGameWord` ∩ positional ActionSynth
-rules, AttrCalibrator unchanged except as a consumer of successful submits. Tests:
-extend `harness/equipment-ui.js` for short vs hold-over-Yourself; dictionary-negative
-fixtures; no-wield-on-dict-miss; persistence round-trip via calibrator test hooks. Live
-Playwright on desktop and 412×860 for gesture timing. No APK/package bump until
-implementation is accepted.
+`js/EquipmentUI.js` (dwell + atomic ownership transition on Yourself hover during
+`_drag`), radial via existing `ParchLockQol.OpenRadial` / ActionSynth builders, admission
+helper splitting submit-ready vs Enter:false, `js/AttrCalibrator.js` bounded learner
+extension (exact-form/object provenance). **Required harness additions (Codex #1015):**
+dictionary noun-only positive / verb wrong-arity negatives; editable suggestion vs
+confirmed submit; custom-verb persistence (real added verbs); cancelled dwell;
+scrolling vs stationary pointer; native dialog; active probe; nonempty draft; mid-drag
+redraw; restart/module switch; duplicated noun unresolved; opening pointerup consumed;
+touch/desktop existing short-drop and ordinary radials/More unchanged. Live Playwright
+desktop and 412×860 for gesture timing. No APK/package bump until implementation is
+accepted.
 
 **Open questions for operator.**
 
@@ -7636,3 +7683,6 @@ implementation is accepted.
 documentation-only. Validators and fingerprints updated for the draft itself; no harness
 or browser run is claimed.
 
+**Adversarial amendment log.** 2026-10-02: folded Codex bus #1015 F1–F5 (lexical≠grammar;
+learner extension; atomic gesture/submitDrop parity; Z-only dict scope; precedence
+policy + required tests). Still Proposed; no runtime GO.

@@ -203,7 +203,7 @@ decisions and their later mentions, not only the first matching record.
   [D201](PRODUCTION_PLAN.md#pl-d201) separates structural player/room/item identity
   from status and parser-derived labels. Blank labels are not blank identities, but
   only containment-proven rooms and held items may use the recovery path.
-- **Yourself hold RPG radial:** [section 69](#ar-ch69) / [D205](PRODUCTION_PLAN.md#pl-d205) proposes dictionary-gated inventory/RPG verbs on long-hold over Yourself; short drop remains take. AttrCalibrator persists confirmations; no invented verbs.
+- **Yourself hold RPG radial:** [section 69](#ar-ch69) / [D205](PRODUCTION_PLAN.md#pl-d205) proposes dictionary-gated inventory/RPG verbs on long-hold over Yourself (submit-ready vs Enter:false; Z-only); short drop remains take. Bounded AttrCalibrator extension for non-rules verbs; no invented verbs.
 - **Original map controls:** [section 66](#ar-ch66) / [D202](PRODUCTION_PLAN.md#pl-d202) retains the original local-room renderer. The withdrawn overview/LOD implementation is removed; independent Center, gestures, path alignment and room-click fixes remain.
 - Some earlier status banners and diagrams describe old builds. This indexing change
   preserves them as records; it does not claim to reconcile every historical runtime claim.
@@ -211,7 +211,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 94 headings; 0 decision rows; 94 registered units.
 **Last registered unit:** `ar-s094`. **Body SHA-256 (LF):**
-`ee7956682e9dba833bfcdbf27c5656e2bda8e278d8cc8cf9aa2fbd8838536d03`
+`d21192f2d83a9bc5472a35cbffbc2de1c9f42d5e014c80084fa49ecbef5eb1a7`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -3565,37 +3565,51 @@ threshold, slot, property or death-phrase adapter is allowed.
 
 **Lifecycle:** Proposed. Documentation contract only; no runtime implementation is
 authorized until this section and [PRODUCTION_PLAN.md D205](PRODUCTION_PLAN.md#pl-d205)
-pass operator adversarial review.
+pass operator adversarial review after the #1015 amendments.
 
 **Contract.** Equipment-sheet Pointer Events drag (section 56 / D122) keeps short
 release on the Yourself node as `take <noun>`. A long dwell while the drag pointer
-remains over Yourself opens a compass-style radial whose verb set is:
+remains over Yourself opens a compass-style radial with **two lanes**:
 
-`(curated inventory/RPG filter ∪ attribute shortcuts) ∩ module dictionary`
+1. **Submit-ready:** ActionSynth provider / semantic / AttrCalibrator confirmed exact
+   one-object forms (after curated∩dict∩positional where applicable).
+2. **Enter:false suggestions:** curated ∩ Z-dictionary lexical hits without a
+   confirmed/provider one-object form — fill via existing suggestion lane; never
+   auto-Inject from `isGameWord` alone.
 
-after existing ActionSynth positional suppression. Dictionary membership uses
-`Actionable.isGameWord` / `ZRamReader.hasDictionaryWord` (section 59). Confirmed
-successes persist through `AttrCalibrator` per-module learning, not
-`Actionable.VerifiedNouns`.
+Dictionary membership uses `Actionable.isGameWord` / `ZRamReader.hasDictionaryWord`
+(section 59) and is **Z-only**; Glulx play-only for this radial until an adapter exists.
+Confirmed persistence for non-`ActionSynth.rules` verbs requires the bounded
+AttrCalibrator extension in D205 (exact-form/object provenance); do not widen
+`ActionSynth.rules` generically. `VerifiedNouns` is not the verb store.
 
-**Forbidden.** Offering verbs absent from the loaded module's dictionary; inventing
+**Gesture.** Atomic drag→radial ownership: cancel dwell on leave/scroll-retarget/
+pointercancel/lostcapture/sheet close/generation/module change/modal/probe; teardown
+ghost/RAF/render deferral before open; consume opening `pointerup`; re-resolve live IDs
+at selection; preserve `submitDrop` draft/modal/dialog/probe/generation guards.
+
+**Forbidden.** Offering verbs absent from the loaded Z module's dictionary; inventing
 synonyms when research shows a word is missing (RoTA has no `wield` — that absence
 must remain silent); parallel verb caches; title-specific branches; changing
-non-Yourself drop legality; auto-submitting `take` after the hold radial opens.
+non-Yourself drop legality; auto-submitting `take` after the hold radial opens;
+auto-submitting lexical-only curated hits; promising Glulx radial support without an
+adapter.
 
 ```mermaid
 flowchart TD
   Drag[Grip drag active] --> Over{Pointer over Yourself?}
   Over -->|no| Drop[Existing put/take drop rules]
   Over -->|yes short release| Take["take noun"]
-  Over -->|yes dwell past threshold| Gate[Curated filter AND isGameWord AND ActionSynth position]
+  Over -->|yes dwell past threshold| Own[Cancel take; teardown ghost/RAF; consume pointerup]
+  Own --> Gate[Admit: submit-ready exact forms OR curated AND isGameWord lexical]
   Gate -->|empty| None[Honest empty / dismiss — no invented verbs]
-  Gate -->|candidates| Radial[Compass-style OpenRadial]
-  Radial --> Submit[Input.Inject dictionary-owned command]
-  Submit --> Learn[AttrCalibrator confirm and persist]
+  Gate -->|submit-ready| RadialS[Compass OpenRadial Enter true]
+  Gate -->|lexical only| RadialE[Compass OpenRadial Enter false suggestion]
+  RadialS --> Submit[Input.Inject dictionary-owned confirmed form]
+  RadialE --> Edit[Line fill; player edits and submits]
+  Submit --> Learn[AttrCalibrator confirm via bounded extension]
 ```
 
-**Relationships.** Extends section 56 drag/drop and section 59 dictionary arbiter.
-Composes ActionSynth + AttrCalibrator; does not replace ordinary object radials or
-directional UI. Plan authority: D205.
-
+**Relationships.** Extends section 56 drag/drop and section 59 dictionary arbiter
+(Z-only). Composes ActionSynth + AttrCalibrator; does not replace ordinary object
+radials or directional UI. Plan authority: D205 (#1015 F1–F5 folded).
