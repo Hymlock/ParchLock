@@ -363,6 +363,10 @@ var ParchLockMap = {
         // fixed 12-slot list Build()/CreateRooms uses, not a live DOM scan.
         ["n", "ne", "e", "se", "s", "sw", "w", "nw", "up", "down", "in", "out"].forEach(function (slot) {
             $("#map .room.dir-" + slot).find(".dir").text(slot);
+            // D71 parity: #exits mini-map chips keep a static compass letter at
+            // CreateMiniMap time; reset that too so a borrowed "exit 1" cannot
+            // linger after the slot returns to a real compass exit.
+            $("#exits .exit.dir-" + slot).find(".dir-name").text(slot);
         });
 
         roomName = roomName || ParchLockMap.GetCurrentRoom();
@@ -444,7 +448,7 @@ var ParchLockMap = {
             var meta = (room.ExitMeta || {})[dir];
             var isAmbiguous = !!(meta && meta.ambiguousDiagonal);
             // D49/D48: ambiguous diagonals may list the SAME destination under
-            // both NW and SE until calibration (Anchorhead Outside→Alley).
+            // both NW and SE until calibration (Anchorhead Outsideâ†’Alley).
             // Payload/radial still keep both candidate commands; the map must
             // never draw two boxes for one room id (operator: dual Alley).
             if (Object.prototype.hasOwnProperty.call(shownRoomIds, destId)) continue;
@@ -549,6 +553,9 @@ var ParchLockMap = {
 
         var miniMap = $("#exits .exit.dir-" + dir);
         miniMap.data("room", record).data("exit-label", label || dir);
+        // D71 parity: borrowed-slot chips must show the REAL exit key
+        // (e.g. "exit 2"), not the static compass letter baked at Build.
+        miniMap.find(".dir-name").text(label != null ? label : dir);
         miniMap.find(".dir-name").attr("title", "Go to " + roomName);
         miniMap.find(".room-name").text(roomName).attr("title", "Go to " + roomName);
         miniMap.find(".room-notes").hide();

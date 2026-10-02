@@ -226,7 +226,7 @@ var MapTopology = {
                 }
             } catch (eER) {}
         }
-        // D54: internal/meta short-names are never map rooms — even when a
+        // D54: internal/meta short-names are never map rooms â€” even when a
         // real ObjectId is known. "(Inform Library)", "(darkness object)",
         // and "C_ROOMS_N" must not enter Rooms[] or become CurrentRoom.
         // Identity for real places still keys on ObjectId once a player-
@@ -407,7 +407,7 @@ var MapTopology = {
                 from.ExitMeta[dir].hinted = true;
                 return;
             }
-            // Never create a self-loop edge (Alley → Alley). Confirmed live on
+            // Never create a self-loop edge (Alley â†’ Alley). Confirmed live on
             // Anchorhead when identity briefly disagreed during look-ahead /
             // state-delta; the map then drew two current-room boxes.
             if (String(to.Id) === String(from.Id)) {
@@ -417,22 +417,25 @@ var MapTopology = {
                 }
                 return;
             }
-            // D49/D48: uncalibrated diagonals may try to attach the SAME
-            // destination under both "northwest" and "southeast". Keep both
-            // labels in ExitMeta (radial still offers both candidate words)
-            // but only one pathable Exits[] entry per destination room so
-            // Draw cannot show two Alleys from Outside (operator report).
-            if (meta.ambiguousDiagonal) {
-                var existingSame = null;
-                Object.keys(from.Exits || {}).forEach(function (ed) {
-                    if (String(from.Exits[ed]) === String(to.Id)) existingSame = ed;
-                });
-                if (existingSame != null && existingSame !== dir) {
-                    // Meta retained above for this dir; do not add a second Exits key.
-                    from.ExitMeta[dir].hinted = true;
-                    from.ExitMeta[dir].duplicateDestOf = existingSame;
-                    return;
-                }
+            // D49/D48/D55: only one pathable Exits[] key per destination when
+            // the keys are aliases for the SAME exit (label "exit 2" vs command
+            // "x2"), or uncalibrated dual diagonal candidates. Keep ExitMeta for
+            // alternate labels (radial still offers them); do not mint a second
+            // pathable key that reappears every look-ahead tick after travel.
+            var existingSame = null;
+            Object.keys(from.Exits || {}).forEach(function (ed) {
+                if (String(from.Exits[ed]) !== String(to.Id)) return;
+                if (ed === dir) return;
+                var em = from.ExitMeta[ed] || {};
+                var sameAlias = (ed === command || em.command === command
+                    || em.label === dir || em.command === dir
+                    || ed === (meta && meta.label));
+                if (meta.ambiguousDiagonal || sameAlias) existingSame = ed;
+            });
+            if (existingSame != null) {
+                from.ExitMeta[dir].hinted = true;
+                from.ExitMeta[dir].duplicateDestOf = existingSame;
+                return;
             }
             from.Exits[dir] = to.Id;
         } else {
