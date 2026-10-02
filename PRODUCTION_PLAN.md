@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 316 headings; 103 decision rows; 419 registered units.
 **Last registered unit:** `pl-s316`. **Body SHA-256 (LF):**
-`4ded336bb8b55c92be44f0b37631a7ec4830ebbec01a386d06ad94bfd8bd38b4`
+`356f7f710f1789d2625e0ef62936cd6defe610dd0bb45da54b0e3cd81f01ed48`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -2792,6 +2792,8 @@ lands in Downloads.
 
 <a id="pl-s104" data-chapter-id="pl-s104"></a><a id="pl-d130"></a>
 ## D130 Tutorial: library phase, readiness gate, and the wash-out fix
+
+**Build 56 desktop startup amendment (operator request, 2026-10-01).** Desktop-layout, non-native play.html with no story parameter routes directly via location.replace to the existing index.html library; its D130 first-run tutorial starts through the existing readiness gate. No second chooser or new tutorial implementation. Valid story URLs and explicit missing-module recovery retain their existing paths; compact/mobile and Capacitor-native startup keep recovery/Continue. No save, last-story, tutorial, map, vocabulary or identity keys change. Continue historically reopened the module only; native Restore remains available after selecting that module. Validate desktop cold start, fresh library tutorial, compact recovery, resize stability and direct story startup/menu Save/Restore guards before packaging.
 
 Four operator-reported faults in the D124 live tour.
 

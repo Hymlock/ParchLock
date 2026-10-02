@@ -306,6 +306,14 @@ var ParchLock = {
                 if (ss) ss.hidden = true;
                 return;
             }
+            // Desktop cold start belongs in the existing library, not a
+            // second chooser. Direct story links and native recovery stay put.
+            var nativeApp = window.Capacitor && window.Capacitor.isNativePlatform
+                && window.Capacitor.isNativePlatform();
+            if (!story && !nativeApp && typeof MobileLayout !== "undefined" && !MobileLayout.isCompact()) {
+                location.replace("index.html");
+                return;
+            }
             document.body.classList.add("no-story");
             var el = document.getElementById("start-screen");
             if (!el) return;

@@ -1,4 +1,4 @@
-const BUILD = 55;
+const BUILD = 56;
 const APPNAME = "ParchLock";
 const GA_TRACK = true;
 

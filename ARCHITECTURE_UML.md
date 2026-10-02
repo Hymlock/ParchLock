@@ -210,7 +210,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 93 headings; 0 decision rows; 93 registered units.
 **Last registered unit:** `ar-s093`. **Body SHA-256 (LF):**
-`eb62c19ff0cdba5b510f46e76ad45fea94d420be41e0ac9ef84d796c036cd4dc`
+`41aae20ab867f7c8b5e660ffd29028da4fcd0114332df194ad49b45a14d24783`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -2569,6 +2569,8 @@ view and search.
 
 <a id="ar-s070" data-chapter-id="ar-s070"></a><a id="ar-ch57"></a>
 ## 57. Live tutorial restored (D124)
+
+**Build 56 desktop startup amendment (D119/D130):** Non-native, non-compact play.html launches without a story parameter replace their URL with index.html, entering the existing real module library and its first-run tutorial. Valid story links bypass this routing; explicit missing-module links retain recovery. Compact/mobile and Capacitor-native cold-start/Continue remain unchanged. Saved games, last-story storage, native Restore and tutorial completion keys are not migrated or cleared. Replacement navigation prevents Back from reopening the redundant empty chooser. No interpreter or learning system starts on the library page.
 
 D120 replaced the original live tour with a separate route (`tutorial.html` + a `js/Tutorial.js`
 that rebuilt imitation library/play/map screens and asked the player to perform tasks against those
