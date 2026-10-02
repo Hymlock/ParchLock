@@ -638,6 +638,8 @@ var StatTracker = {
         properties: {},     // key -> confirmed player property number
         carry: {},          // field -> learned individual-property pin
         evidence: [],       // bounded D204 provenance ledger
+        conditions: {},
+        itemMetrics: {},
         deaths: 0,
         wins: 0,
         scoreUnavailable: false,
@@ -736,6 +738,16 @@ var StatTracker = {
     // immediate rather than starting again from nothing.
     forgetReadings: function (m, resetPlaythrough) {
         if (!m) return m;
+        Object.keys(m.conditions || {}).forEach(function (key) { m.conditions[key].state = "unknown"; });
+        Object.keys(m.itemMetrics || {}).forEach(function (key) {
+            Object.keys(m.itemMetrics[key]).forEach(function (field) {
+                var rec = m.itemMetrics[key][field];
+                rec.current = false;
+                rec.lastValue = null;
+                rec.transitions = 0;
+                if (rec.prop == null) rec.candidates = null;
+            });
+        });
         Object.keys(m.stats || {}).forEach(function (k) {
             var s = m.stats[k];
             if (!s) return;
@@ -982,6 +994,7 @@ var StatTracker = {
         Object.keys(observed).forEach(function (k) {
             StatTracker.recordObservation(model, k, observed[k]);
         });
+        StatTracker.observeConditions(statusRaw, { source: "status-grid", locator: "status-grid", authoritative: true });
         StatTracker.seedInterpreterStatus(model, facts, globals);
         StatTracker.promoteTurnCounter(model);
         StatTracker.promoteGlobals(model);
@@ -1560,6 +1573,11 @@ var StatTracker = {
 
     observeText: function (text, turnMarker, command, evidence) {
         var model = StatTracker.model();
+        StatTracker.observeConditions(text, Object.assign({}, evidence || {}, {
+            source: String(command || "").trim().toLowerCase() === "diagnose" ? "diagnose" : evidence && evidence.source || "buffer-output", command: command,
+            locator: evidence && evidence.spanId
+        }));
+        StatTracker.observeItemMetrics(text);
         StatTracker.recordPrintedMetrics(model, text, command);
         var found = StatTracker.bannersIn(text);
         if (/\b(?:you (?:have )?died|you are dead|you were killed|a fatal blow|game over)\b/i.test(String(text || ""))
@@ -1661,10 +1679,13 @@ var StatTracker = {
 
     applyDiagnoseReply: function (text) {
         var model = StatTracker.model();
+        StatTracker.observeConditions(text, { source: "diagnose", command: "diagnose", locator: "diagnose-reply", authoritative: true });
         var parsed = StatTracker.parseDiagnoseReply(text);
         if (!parsed) return model;
         Object.keys(parsed).forEach(function (k) {
             var p = parsed[k];
+            var current = model.stats[k];
+            if (current && current.confirmed && !current.ramStale && /^(status|global|property)/.test(current.source || "") && current.unit !== "ordinal") return;
             model.stats[k] = {
                 key: k, label: k.charAt(0).toUpperCase() + k.slice(1),
                 band: p.band, step: p.step, steps: p.steps,
@@ -1701,6 +1722,139 @@ var StatTracker = {
             out.push({ key: "deaths", label: "Deaths", value: model.deaths,
                        unit: "plain", kind: "counter", confirmed: true, source: "observed" });
         }
+        if (model.wins > 0) {
+            out.push({ key: "wins", label: "Wins", value: model.wins,
+                       unit: "plain", kind: "counter", confirmed: true, source: "observed" });
+        }
+        return out;
+    },
+
+    CONDITION_KEYS: ["poisoned", "cursed", "diseased", "confused", "blinded", "paralyzed"],
+    conditionGeneration: function () {
+        return typeof UndoRestoreSync !== "undefined" ? UndoRestoreSync.generation : 0;
+    },
+    recordCondition: function (key, present, evidence) {
+        if (StatTracker.CONDITION_KEYS.indexOf(key) < 0 || typeof present !== "boolean") return;
+        evidence = evidence || {};
+        var model = StatTracker.model(), conditions = model.conditions || (model.conditions = {});
+        var epoch = evidence.storyEpoch == null ? StatTracker._storyEpoch : evidence.storyEpoch;
+        var generation = evidence.generation == null ? StatTracker.conditionGeneration() : evidence.generation;
+        if (epoch !== StatTracker._storyEpoch || generation !== StatTracker.conditionGeneration()) return;
+        var at = evidence.at == null ? Date.now() : evidence.at;
+        var old = conditions[key];
+        if (old && old.at > at) return;
+        var source = evidence.source || "buffer-output";
+        var authoritative = source === "status-grid" || source === "ram" ||
+            (source === "diagnose" && String(evidence.command || "").trim().toLowerCase() === "diagnose");
+        // Repeated narration is not independent corroboration of a current flag.
+        if (present && !authoritative && old && old.state === "confirmed") return;
+        conditions[key] = { key: key, label: key.charAt(0).toUpperCase() + key.slice(1),
+            state: !present ? "cleared" : authoritative ? "confirmed" : "candidate",
+            source: source, locator: evidence.locator || evidence.spanId || null,
+            command: evidence.command || null, storyEpoch: epoch, generation: generation, at: at };
+    },
+    observeConditions: function (text, evidence) {
+        var raw = String(text || "");
+        StatTracker.CONDITION_KEYS.forEach(function (key) {
+            var flag = new RegExp("\\b" + key + "\\s*[:=]\\s*(true|false|yes|no|1|0)\\b", "ig");
+            var sentence = new RegExp("(?:^|\\n)\\s*you are (not |no longer )?" + key + "[.!]", "ig");
+            var hits = [], m;
+            while ((m = flag.exec(raw))) hits.push({ at: m.index, present: /^(true|yes|1)$/i.test(m[1]) });
+            while ((m = sentence.exec(raw))) hits.push({ at: m.index, present: !m[1] });
+            hits.sort(function (a, b) { return a.at - b.at; }).forEach(function (hit) {
+                StatTracker.recordCondition(key, hit.present, evidence);
+            });
+        });
+    },
+    visibleConditions: function () {
+        var model = StatTracker.model(), epoch = StatTracker._storyEpoch, generation = StatTracker.conditionGeneration();
+        return Object.keys(model.conditions || {}).sort().map(function (key) { return model.conditions[key]; })
+            .filter(function (rec) { return rec.state === "confirmed" && rec.storyEpoch === epoch && rec.generation === generation; });
+    },
+    renderConditions: function (host) {
+        var previous = host.querySelector ? host.querySelector(".pl-conditions") : null;
+        if (previous) previous.remove();
+        var confirmed = StatTracker.visibleConditions();
+        if (!confirmed.length) return;
+        var section = document.createElement("div");
+        section.className = "pl-conditions";
+        var heading = document.createElement("p");
+        heading.className = "pl-stat-label";
+        heading.textContent = "Conditions";
+        section.appendChild(heading);
+        confirmed.forEach(function (rec) {
+            var chip = document.createElement("span");
+            chip.className = "pl-stat";
+            chip.textContent = rec.label;
+            section.appendChild(chip);
+        });
+        host.appendChild(section);
+    },
+    itemPropertyValues: function (mem, objectId) {
+        try { return ZRamReader.parseIndivTable(mem, ZRamReader.readProp(mem, objectId, 3)) || {}; }
+        catch (e) { return {}; }
+    },
+    plainItemQuantity: function (mem, value) {
+        if (!Number.isInteger(value) || value < 0 || value > StatTracker.MAX_ITEM_QUANTITY) return false;
+        // A packed executable/string address must not become a row quantity.
+        try {
+            var h = ZRamReader.header(mem);
+            var scale = h.version <= 3 ? 2 : h.version === 8 ? 8 : 4;
+            if (value && value * scale >= h.himem && value * scale < mem.length) return false;
+        } catch (e) { return false; }
+        return true;
+    },
+    recordItemMetric: function (mem, objectId, field, value, unit, locator) {
+        if (field !== "value" && field !== "weight" || !locator || !StatTracker.plainItemQuantity(mem, value)) return;
+        var model = StatTracker.model(), items = model.itemMetrics || (model.itemMetrics = {});
+        var records = items[String(objectId)] || (items[String(objectId)] = {});
+        var rec = records[field] || (records[field] = { prop: null, candidates: null, transitions: 0, lastValue: null });
+        if (rec.unit != null && rec.unit !== unit) {
+            rec.prop = null; rec.candidates = null; rec.transitions = 0; rec.lastValue = null; rec.current = false;
+        }
+        var values = StatTracker.itemPropertyValues(mem, objectId);
+        var matches = Object.keys(values).filter(function (prop) { return values[prop] === value && StatTracker.plainItemQuantity(mem, values[prop]); }).map(Number);
+        if (rec.prop != null && values[rec.prop] !== value) { rec.prop = null; rec.candidates = null; rec.transitions = 0; rec.current = false; }
+        if (rec.lastValue != null && rec.lastValue !== value) rec.transitions++;
+        rec.candidates = rec.candidates ? rec.candidates.filter(function (prop) { return matches.indexOf(prop) >= 0; }) : matches;
+        if (!rec.candidates.length) { rec.transitions = 0; rec.candidates = matches; rec.prop = null; }
+        if (rec.candidates.length === 1 && rec.transitions >= 2) rec.prop = rec.candidates[0];
+        rec.lastValue = value;
+        rec.unit = unit;
+        rec.locator = locator;
+        rec.current = rec.prop != null;
+        rec.storyEpoch = StatTracker._storyEpoch;
+    },
+    observeItemMetrics: function (text) {
+        try {
+            if (typeof WorldModel === "undefined" || !WorldModel.lastPayload || typeof Actionable === "undefined") return;
+            var mem = ZRamProvider.getMem();
+            if (!mem) return;
+            String(text || "").split(/\r?\n/).forEach(function (line) {
+                var match = /^\s*(.+?):\s*(value|weight)\s*[:=]\s*([$\u00a3\u20ac])?\s*(\d+)\s*(lbs?|kg|gold)?\s*\.?\s*$/i.exec(line);
+                if (!match) return;
+                var byId = {};
+                (WorldModel.lastPayload.inventory || []).forEach(function (obj) {
+                    var ref = Actionable.referenceFor(obj);
+                    if (ref.unique && ref.verified && String(ref.noun).toLowerCase() === match[1].trim().toLowerCase()) byId[String(obj.id)] = obj;
+                });
+                var ids = Object.keys(byId);
+                if (ids.length === 1) StatTracker.recordItemMetric(mem, ids[0], match[2].toLowerCase(), Number(match[4]), match[3] || match[5] || "", line);
+            });
+        } catch (e) {}
+    },
+    itemMetricsFor: function (objectId) {
+        var out = [], records = (StatTracker.model().itemMetrics || {})[String(objectId)] || {};
+        try {
+            var mem = ZRamProvider.getMem();
+            if (!mem) return out;
+            var values = StatTracker.itemPropertyValues(mem, objectId);
+            Object.keys(records).forEach(function (field) {
+                var rec = records[field], value = values[rec.prop];
+                if (rec.prop == null || !StatTracker.plainItemQuantity(mem, value)) return;
+                out.push({ field: field, value: value, unit: rec.unit, source: "item-property:" + rec.prop });
+            });
+        } catch (e) {}
         return out;
     },
 
@@ -2170,6 +2324,7 @@ var StatTracker = {
         var model = StatTracker.model();
 
         // D153: "no empty furniture" must not hide the only way to ask.
+        StatTracker.renderConditions(host);
         // Identify stats lives in this block, so hiding the block whenever
         // nothing has been discovered made the button unreachable in exactly
         // the games that need it -- measured on Anchorhead at phone width,

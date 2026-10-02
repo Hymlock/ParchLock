@@ -30,6 +30,78 @@ var EquipmentUI = {
     _press: null,
     _scrollRaf: null,
     _renderPending: false,
+    YourselfDwellMs: 750,
+    _holdPointerId: null,
+    _holdClickUntil: 0,
+
+    interactionReady: function (generation, moduleKey) {
+        if (!EquipmentUI.IsOpen() || generation !== (typeof UndoRestoreSync !== "undefined" ? UndoRestoreSync.generation : 0) || moduleKey !== EquipmentUI.seqKey()) return false;
+        var input = document.querySelector(".Input.LineInput");
+        return !!input && !input.value && !(typeof Message !== "undefined" && Message.IsOpen) && !document.getElementById("dialog") &&
+            !(typeof StatTracker !== "undefined" && (StatTracker._probeActive || StatTracker._hideCarryProbe));
+    },
+    yourselfCommands: function (obj, model) {
+        if (!obj || obj.examineOnly || typeof AttrCalibrator === "undefined" || typeof ActionSynth === "undefined") return [];
+        var ref = Actionable.referenceFor(obj);
+        if (!ref.unique || !ref.verified) return [];
+        var nested = ActionSynth.heldContainerName(obj, WorldModel.lastPayload);
+        var forms = {}, candidates = [];
+        function allowed(form) {
+            if (!AttrCalibrator.dictionaryForm(form)) return false;
+            if (form === ActionSynth.defaultInspectVerb() && ActionSynth.inspectVerbDisabled()) return false;
+            if (nested) return form === "take" || form.indexOf("take out of ") === 0;
+            if (EquipmentUI.isWorn(obj)) return form === "remove" || form === ActionSynth.defaultInspectVerb();
+            return form !== "remove" && form !== "take";
+        }
+        function add(form, enter) {
+            if (!allowed(form)) return;
+            if (forms[form]) { if (enter) forms[form].Enter = true; return; }
+            var item = { Label: form.charAt(0).toUpperCase() + form.slice(1), Form: form, Enter: enter };
+            forms[form] = item;
+            candidates.push(item);
+        }
+        ActionSynth.commandsForObject(obj, "inventory", nested).forEach(function (command) {
+            // The nested TAKE label is context only; preserve its actual provider command.
+            var suffix = " " + ref.noun;
+            if (command.command && command.command.endsWith(suffix)) add(command.command.slice(0, -suffix.length), true);
+        });
+        AttrCalibrator.exactFormsFor(obj.id).forEach(function (form) { add(form, true); });
+        AttrCalibrator.RPG_VERBS.forEach(function (form) { add(form, false); });
+        return candidates;
+    },
+    selectYourselfAction: function (id, form, enter, generation, moduleKey) {
+        if (!EquipmentUI.interactionReady(generation, moduleKey)) return;
+        var model = EquipmentUI.model(), obj = model.byId[String(id)];
+        if (!obj) return;
+        var candidate = EquipmentUI.yourselfCommands(obj, model).find(function (item) { return item.Form === form; });
+        if (!candidate || (enter && !candidate.Enter)) return;
+        var command = form + " " + Actionable.referenceFor(obj).noun;
+        if (enter) Actionable.Submit(command);
+        else Input.Inject(command, false);
+    },
+    cleanupDrag: function (d) {
+        EquipmentUI._drag = null;
+        EquipmentUI.stopAutoScroll();
+        EquipmentUI.killGhost();
+        if (d && d.el) d.el.classList.remove("equip-dragging");
+        document.body.classList.remove("equip-dragging-active");
+        EquipmentUI.clearHover();
+        if (EquipmentUI._renderPending) { EquipmentUI._renderPending = false; EquipmentUI.Render(); }
+    },
+    openYourselfRadial: function (d) {
+        if (!EquipmentUI.interactionReady(d.generation, d.moduleKey)) return;
+        var model = EquipmentUI.model(), obj = model.byId[d.id];
+        var candidates = EquipmentUI.yourselfCommands(obj, model);
+        EquipmentUI._holdPointerId = d.pointerId;
+        EquipmentUI.cleanupDrag(d);
+        if (!candidates.length) return;
+        candidates.forEach(function (item) {
+            item.Action = function () { EquipmentUI.selectYourselfAction(d.id, item.Form, item.Enter, d.generation, d.moduleKey); };
+            item.Command = item.Form + " " + Actionable.referenceFor(obj).noun;
+            item.Usage = Actionable.usageCount ? Actionable.usageCount(item.Command) : 0;
+        });
+        ParchLockQol.OpenRadial(d.lastX, d.lastY, candidates, { source: "inventory", noun: obj.name, objectId: obj.id });
+    },
 
     // ---- persistence of first-seen order (there are no timestamps in the
     // payload, so "most recent" has to be observed rather than read) --------
@@ -512,6 +584,15 @@ var EquipmentUI = {
             var text = typeof Actionable !== "undefined" ? Actionable.Scope.lastLookText + "\n" + Actionable.Scope.lastInventoryText : "";
             label.textContent = typeof Actionable !== "undefined" && Actionable.displayNameFor ? Actionable.displayNameFor(o, m.items, text) : o.name;
             el.appendChild(label);
+            if (!row.self && !o.demo && typeof StatTracker !== "undefined" && StatTracker.itemMetricsFor) {
+                StatTracker.itemMetricsFor(o.id).forEach(function (metric) {
+                    var quantity = document.createElement("span");
+                    quantity.className = "equip-state";
+                    quantity.title = metric.field;
+                    quantity.textContent = metric.field + ": " + metric.value + (metric.unit ? " " + metric.unit : "");
+                    el.appendChild(quantity);
+                });
+            }
             var siblings = m.items.filter(function (other) { return String(other.name).toLowerCase() === String(o.name).toLowerCase(); });
             if (!row.self && siblings.length > 1) {
                 var badge = document.createElement("small");
@@ -630,7 +711,8 @@ var EquipmentUI = {
             try { handle.setPointerCapture(e.pointerId); } catch (eC) {}
             e.preventDefault();
             e.stopPropagation();
-            EquipmentUI._drag = { id: String(obj.id), obj: obj, x: e.clientX, y: e.clientY, active: false, el: row, model: m };
+            EquipmentUI._drag = { id: String(obj.id), obj: obj, x: e.clientX, y: e.clientY, active: false, el: row, model: m,
+                pointerId: e.pointerId, generation: typeof UndoRestoreSync !== "undefined" ? UndoRestoreSync.generation : 0, moduleKey: EquipmentUI.seqKey() };
         });
     },
 
@@ -650,6 +732,12 @@ var EquipmentUI = {
     updateHover: function (d, x, y) {
         EquipmentUI.clearHover();
         var under = EquipmentUI.rowAt(x, y);
+        var self = under && under._equipObj && under._equipObj.self;
+        if (!self || !EquipmentUI.interactionReady(d.generation, d.moduleKey)) d.dwellStart = null;
+        else {
+            if (d.dwellStart == null) d.dwellStart = Date.now();
+            if (Date.now() - d.dwellStart >= EquipmentUI.YourselfDwellMs) { EquipmentUI.openYourselfRadial(d); return; }
+        }
         if (under && under !== d.el && under._equipObj) {
             var cmd = EquipmentUI.dropCommand(d.model, d.obj, under._equipObj);
             under.classList.add(cmd ? "equip-drop-ok" : "equip-drop-no");
@@ -687,6 +775,9 @@ var EquipmentUI = {
     autoScrollTick: function () {
         var d = EquipmentUI._drag;
         if (!d || !d.active) { EquipmentUI._scrollRaf = null; return; }
+        if (!EquipmentUI.IsOpen() || d.generation !== (typeof UndoRestoreSync !== "undefined" ? UndoRestoreSync.generation : 0) || d.moduleKey !== EquipmentUI.seqKey()) {
+            EquipmentUI.cleanupDrag(d); return;
+        }
         var box = EquipmentUI.scroller();
         if (box) {
             var dy = EquipmentUI.edgeDelta(box.getBoundingClientRect(), d.lastY);
@@ -698,6 +789,8 @@ var EquipmentUI = {
                 if (box.scrollTop !== before) EquipmentUI.updateHover(d, d.lastX, d.lastY);
             }
         }
+        EquipmentUI.updateHover(d, d.lastX, d.lastY);
+        if (EquipmentUI._drag !== d) return;
         EquipmentUI._scrollRaf = requestAnimationFrame(EquipmentUI.autoScrollTick);
     },
 
@@ -712,9 +805,24 @@ var EquipmentUI = {
     },
 
     bindGlobalDrag: function () {
+        document.addEventListener("pointerup", function (e) {
+            if (EquipmentUI._holdPointerId == null || e.pointerId !== EquipmentUI._holdPointerId) return;
+            EquipmentUI._holdPointerId = null;
+            EquipmentUI._holdClickUntil = Date.now() + 150;
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        }, true);
+        document.addEventListener("click", function (e) {
+            if (Date.now() < EquipmentUI._holdClickUntil) { e.preventDefault(); e.stopImmediatePropagation(); }
+        }, true);
+        document.addEventListener("lostpointercapture", function (e) {
+            var d = EquipmentUI._drag;
+            if (d && e.pointerId === d.pointerId) EquipmentUI.cleanupDrag(d);
+        });
         document.addEventListener("pointermove", function (e) {
             var d = EquipmentUI._drag;
             if (!d) return;
+            if (e.pointerId !== d.pointerId) return;
             d.lastX = e.clientX;
             d.lastY = e.clientY;
             if (!d.active) {
@@ -732,6 +840,7 @@ var EquipmentUI = {
 
         var finish = function (e) {
             var d = EquipmentUI._drag;
+            if (d && e.pointerId !== d.pointerId) return;
             var under = d && d.active ? EquipmentUI.rowAt(e.clientX, e.clientY) : null;
             var targetId = under && under !== d.el && under._equipObj ? under._equipObj.id : null;
             EquipmentUI._drag = null;
@@ -750,6 +859,7 @@ var EquipmentUI = {
         };
         document.addEventListener("pointerup", finish);
         document.addEventListener("pointercancel", function () {
+            EquipmentUI._holdPointerId = null;
             var d = EquipmentUI._drag;
             EquipmentUI._drag = null;
             EquipmentUI.stopAutoScroll();

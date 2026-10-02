@@ -203,7 +203,7 @@ decisions and their later mentions, not only the first matching record.
   [D201](PRODUCTION_PLAN.md#pl-d201) separates structural player/room/item identity
   from status and parser-derived labels. Blank labels are not blank identities, but
   only containment-proven rooms and held items may use the recovery path.
-- **Yourself hold RPG radial:** [section 69](#ar-ch69) / [D205](PRODUCTION_PLAN.md#pl-d205) proposes dictionary-gated inventory/RPG verbs on long-hold over Yourself (submit-ready vs Enter:false; Z-only); short drop remains take. Bounded AttrCalibrator extension for non-rules verbs; no invented verbs.
+- **Yourself hold RPG radial:** [section 69](#ar-ch69) / [D205](PRODUCTION_PLAN.md#pl-d205) implements dictionary-gated inventory/RPG verbs on long-hold over Yourself (submit-ready vs Enter:false; Z-only); short drop remains take. Bounded exact-form AttrCalibrator persistence for non-rules verbs; no invented verbs. Independent audit pending.
 - **Original map controls:** [section 66](#ar-ch66) / [D202](PRODUCTION_PLAN.md#pl-d202) retains the original local-room renderer. The withdrawn overview/LOD implementation is removed; independent Center, gestures, path alignment and room-click fixes remain.
 - Some earlier status banners and diagrams describe old builds. This indexing change
   preserves them as records; it does not claim to reconcile every historical runtime claim.
@@ -211,7 +211,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 94 headings; 0 decision rows; 94 registered units.
 **Last registered unit:** `ar-s094`. **Body SHA-256 (LF):**
-`d21192f2d83a9bc5472a35cbffbc2de1c9f42d5e014c80084fa49ecbef5eb1a7`
+`4447eead5366fd3668fdd25c476f6db1f301c41f379273d8b493646eb21b3a83`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -384,7 +384,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s091](#ar-s091) | 66. Original Map Controls (D202) | H2 | Original map retained / overview withdrawn |
 | [ar-s092](#ar-s092) | 67. Mobile side-rail readable-content geometry (D203) — IMPLEMENTED | H2 | Implemented / live-browser verified |
 | [ar-s093](#ar-s093) | 68. Holistic statistics evidence ledger (D204) - IMPLEMENTED | H2 | Implemented / validation pending |
-| [ar-s094](#ar-s094) | 69. Yourself hold radial for inventory/RPG verbs (D205) — PROPOSED | H2 | Proposed |
+| [ar-s094](#ar-s094) | 69. Yourself hold radial for inventory/RPG verbs (D205) | H2 | Implemented; audit pending |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -3561,11 +3561,11 @@ identity and `StatusGridDecoder` translation remain independent hard gates. No t
 threshold, slot, property or death-phrase adapter is allowed.
 
 <a id="ar-s094" data-chapter-id="ar-s094"></a><a id="ar-ch69"></a>
-## 69. Yourself hold radial for inventory/RPG verbs (D205) — PROPOSED
+## 69. Yourself hold radial for inventory/RPG verbs (D205)
 
-**Lifecycle:** Proposed. Documentation contract only; no runtime implementation is
-authorized until this section and [PRODUCTION_PLAN.md D205](PRODUCTION_PLAN.md#pl-d205)
-pass operator adversarial review after the #1015 amendments.
+**Lifecycle:** Implemented in source, 2026-10-02; independent implementation audit pending.
+Operator authorization followed bus consensus #1022-1024. Verification and limitations
+are recorded in [PRODUCTION_PLAN.md D205](PRODUCTION_PLAN.md#pl-d205).
 
 **Contract.** Equipment-sheet Pointer Events drag (section 56 / D122) keeps short
 release on the Yourself node as `take <noun>`. A long dwell while the drag pointer
@@ -3582,6 +3582,7 @@ Dictionary membership uses `Actionable.isGameWord` / `ZRamReader.hasDictionaryWo
 Confirmed persistence for non-`ActionSynth.rules` verbs requires the bounded
 AttrCalibrator extension in D205 (exact-form/object provenance); do not widen
 `ActionSynth.rules` generically. `VerifiedNouns` is not the verb store.
+This learner and real new-verb persistence are required in the same implementation, not deferred. Dictionary lookup is per lexical token (head and required literals), never phrase grammar; exact provider/confirmed emitted strings are preserved. Positional gates filter candidates independently and do not exclude confirmed outside-curated one-object forms.
 
 **Gesture.** Atomic drag→radial ownership: cancel dwell on leave/scroll-retarget/
 pointercancel/lostcapture/sheet close/generation/module change/modal/probe; teardown
@@ -3613,3 +3614,5 @@ flowchart TD
 **Relationships.** Extends section 56 drag/drop and section 59 dictionary arbiter
 (Z-only). Composes ActionSynth + AttrCalibrator; does not replace ordinary object
 radials or directional UI. Plan authority: D205 (#1015 F1–F5 folded).
+
+**Agreed statistics extension (#1022-1024).** StatTracker alone owns condition readings (candidate/confirmed/cleared/unknown), exact provenance and epoch/generation invalidation. Explicit status flags and command-owned DIAGNOSE assertions confirm; narration asserts candidates, explicit negative/cure evidence clears, and stale evidence cannot override fresher facts. No TTL promotion. Render confirmed conditions inside the existing Status strip and Wins from the existing counter. EquipmentUI consumes per-item value/weight only through a StatTracker locator proven by explicit item-owned observations and two distinct value transitions with a unique individual-property match. Aggregate equality is not per-item proof; computed/routine-like, ambiguous or contradicted slots produce no row metric. Restore invalidates readings, retains learned locators and re-reads current RAM. D174 aggregate fallback, D204 required serial fulfillment and StatusGridDecoder ownership are unchanged. Authorization is not product/test acceptance; no APK or Glulx expansion.

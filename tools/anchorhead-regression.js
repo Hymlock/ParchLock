@@ -109,7 +109,7 @@ async function interactionAudit() {
                 return echo && !echo.closest('.pl-stat-probe, .pl-carry-probe');
             }), 'inventory player command is not hidden as status output');
             const ids = await page.evaluate(() => { const m = EquipmentUI.model(); return { item: m.items.find(o => o.name === 'umbrella').id, coat: m.items.find(o => o.name === 'trenchcoat').id, player: m.playerId }; });
-            const drag = async targetId => {
+            const drag = async (targetId, dwell = 0) => {
                 const grip = page.locator('.equip-row[data-object-id="' + ids.item + '"] .equip-grip');
                 const target = page.locator('.equip-row[data-object-id="' + targetId + '"]');
                 await grip.scrollIntoViewIfNeeded();
@@ -121,6 +121,7 @@ async function interactionAudit() {
                     await page.waitForTimeout(250);
                     await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: end.x + end.width / 2, y: end.y + end.height / 2 }] });
                     await page.evaluate(() => EquipmentUI.Render());
+                    if (dwell) await page.waitForTimeout(dwell);
                     await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
                     await cdp.detach();
                     await page.waitForTimeout(1000);
@@ -132,6 +133,7 @@ async function interactionAudit() {
                 await page.waitForTimeout(250);
                 await page.mouse.move(end.x + end.width / 2, end.y + end.height / 2, { steps: 12 });
                 await page.evaluate(() => EquipmentUI.Render());
+                if (dwell) await page.waitForTimeout(dwell);
                 await page.mouse.up();
                 await page.waitForTimeout(1000);
             };
@@ -139,6 +141,14 @@ async function interactionAudit() {
             check(await page.evaluate(({item, coat}) => WorldModel.lastPayload.inventory.find(o => o.id === item)?.parentId === coat, ids), 'real drag into coat');
             await drag(ids.player);
             check(await page.evaluate(({item, player}) => WorldModel.lastPayload.inventory.find(o => o.id === item)?.parentId === player, ids), 'real drag back onto Yourself');
+            const beforeHold = await page.locator('.Style_input').count();
+            await drag(ids.player, 950);
+            check(await page.locator('#radial-menu.show .radial-command').count() > 0, 'Yourself dwell opens radial on real pointer gesture');
+            check(await page.locator('.Style_input').count() === beforeHold, 'opening pointer release neither takes nor selects radial command');
+            check(await page.evaluate(() => !EquipmentUI._drag && !EquipmentUI._scrollRaf && !document.querySelector('.equip-ghost')), 'atomic dwell transfer releases drag ghost and RAF');
+            await page.locator('#radial-menu .radial-command').filter({ hasText: /^Examine$/ }).click();
+            await page.waitForTimeout(700);
+            check(await page.evaluate(() => /^(examine|inspect) umbrella$/.test([...document.querySelectorAll('.Style_input')].pop()?.textContent.trim())), 'confirmed dwell choice submits exact provider command');
             ids.item = await page.evaluate(() => EquipmentUI.model().items.find(o => /wedding ring/.test(o.name)).id);
             await drag(ids.coat);
             check(await page.evaluate(({item, coat}) => WorldModel.lastPayload.inventory.find(o => o.id === item)?.parentId === coat, ids), 'real worn ring drop into trenchcoat');
@@ -201,6 +211,42 @@ async function interactionAudit() {
         const playerOutput = await page.evaluate(() => ({ echoes: [...document.querySelectorAll('.Style_input')].map(e => ({ text: e.textContent.trim(), hidden: !!e.closest('.pl-stat-probe, .pl-carry-probe') })), draft: document.querySelector('.Input.LineInput')?.value, owned: StatTracker._statProbeOwned, active: StatTracker._probeActive }));
         assert(playerOutput.echoes.at(-1)?.text === 'look' && !playerOutput.echoes.at(-1).hidden, 'player output is not claimed by a completed unsupported probe: ' + JSON.stringify(playerOutput));
         console.log('PASS: LLR first-open disclosure, silent SCORE/DIAGNOSE, EXP and player-output isolation');
+        let weapon = null;
+        for (let attempt = 0; attempt < 12 && !weapon; attempt++) {
+            weapon = await page.evaluate(() => {
+                const pool = Actionable.payloadPool();
+                const obj = pool.find(o => o.attrs?.takeable && /\b(sword|axe|dagger)\b/i.test((o.aliases || []).join(' ') + ' ' + o.name));
+                if (!obj) return null;
+                const ref = Actionable.referenceFor(obj);
+                return ref.unique && ref.verified ? {id:obj.id, noun:ref.noun} : null;
+            });
+            if (weapon) break;
+            await page.reload();
+            await page.waitForTimeout(700);
+            await page.evaluate(() => document.querySelector('.parchlock-splash__start')?.click());
+            await page.waitForTimeout(2000);
+            for (let i = 0; i < 12 && !await page.locator('.Input.LineInput').count(); i++) { await page.keyboard.press('Space'); await page.waitForTimeout(200); }
+            await page.evaluate(() => Message.Hide());
+            await page.evaluate(() => { Input.Clear(); Actionable.Submit('look'); });
+            await page.waitForTimeout(800);
+        }
+        assert(weapon, 'bounded randomized LLR starts expose a genuine scoped weapon');
+        for (const command of ['take ' + weapon.noun, 'wield ' + weapon.noun, 'wield ' + weapon.noun]) {
+            assert(await page.evaluate(c => { Input.Clear(); return Actionable.Submit(c); }, command), 'LLR accepts submit ' + command);
+            await page.waitForTimeout(800);
+        }
+        const wield = await page.evaluate(id => {
+            const sword = WorldModel.lastPayload.inventory.find(o => String(o.id) === String(id));
+            return { id: sword?.id, forms: sword ? AttrCalibrator.exactFormsFor(sword.id) : [], trace: window.__PARCHLOCK_ATTR_TRACE__?.slice(-3) };
+        }, weapon.id);
+        assert(wield.forms.includes('wield'), 'real LLR new verb learns exact form: ' + JSON.stringify(wield));
+        await page.reload();
+        await page.waitForTimeout(700);
+        await page.evaluate(() => document.querySelector('.parchlock-splash__start')?.click());
+        await page.waitForTimeout(2000);
+        for (let i = 0; i < 12 && !await page.locator('.Input.LineInput').count(); i++) { await page.keyboard.press('Space'); await page.waitForTimeout(200); }
+        assert(await page.evaluate(id => AttrCalibrator.exactFormsFor(id).includes('wield'), wield.id), 'real LLR wield survives browser/module reload');
+        console.log('PASS: real LLR newly admitted wield learning and reload persistence');
         await context.close();
         const labelsContext = await browser.newContext({ viewport: { width: 1200, height: 915 } });
         const labelsPage = await labelsContext.newPage();
@@ -219,6 +265,10 @@ async function interactionAudit() {
             EquipmentUI.Render();
             return [...document.querySelectorAll('.equip-row:not(.equip-self)')].map(row => ({ id: row.dataset.objectId, label: row.querySelector('.equip-name').textContent }));
         });
+        assert(await labelsPage.evaluate(() => {
+            const m = EquipmentUI.model();
+            return m.items.every(o => !EquipmentUI.yourselfCommands(o, m).some(c => c.Form === 'wield'));
+        }), 'RoTA missing wield remains absent from new surface');
         for (const label of ['leather jerkin', 'dagger', 'blank parchment', 'new-looking journal']) {
             assert(observedLabels.some(row => row.label === label), 'RoTA observed inventory label: ' + label + ': ' + JSON.stringify(observedLabels));
         }

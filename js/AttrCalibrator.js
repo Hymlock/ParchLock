@@ -28,6 +28,39 @@
 var AttrCalibrator = {
     _wrapped: false,
     _verbRegex: null,
+    RPG_VERBS: ["wield", "equip", "wear", "remove", "eat", "drink", "apply", "use", "take", "drop", "examine"],
+    dictionaryForm: function (form) {
+        var tokens = String(form || "").trim().toLowerCase().split(/\s+/);
+        return !!tokens[0] && typeof Actionable !== "undefined" && Actionable.isGameWord &&
+            tokens.every(function (token) { return /^[a-z]+$/.test(token) && Actionable.isGameWord(token); });
+    },
+    exactFormsFor: function (objectId) {
+        try {
+            var mem = typeof AttributeSchema !== "undefined" ? AttributeSchema._getMem() : null;
+            if (!mem) return [];
+            AttrCalibrator.hydrate(mem);
+            var rec = AttrCalibrator.table.objects[String(objectId)];
+            return Object.keys(rec && rec.exactForms || {}).filter(function (form) {
+                var e = rec.exactForms[form];
+                return e.confirmations >= AttrCalibrator.ALLOWED_VERB_THRESHOLD && AttrCalibrator.dictionaryForm(form);
+            });
+        } catch (e) { return []; }
+    },
+    recordExactForm: function (entry) {
+        if (!entry || entry.rejected || entry.ambiguous || !entry.exactForm ||
+            !entry.d198Correlation || String(entry.d198Correlation.objectId) !== String(entry.objectId) ||
+            entry.d198Correlation.referenceVerified === false || !AttrCalibrator.dictionaryForm(entry.exactForm)) return false;
+        if (!entry.success && !entry.behavioralAccept) return false;
+        var rec = AttrCalibrator.table.objects[String(entry.objectId)] || (AttrCalibrator.table.objects[String(entry.objectId)] = {});
+        var forms = rec.exactForms || (rec.exactForms = {});
+        var form = entry.exactForm;
+        var e = forms[form] || (forms[form] = { confirmations: 0, objectId: entry.objectId, form: form });
+        if (e.submissionId === entry.submissionId) return false;
+        e.submissionId = entry.submissionId;
+        e.confirmations++;
+        e.source = entry.success ? "opcode-state" : "behavioral-transcript";
+        return true;
+    },
 
     // D73 Phase C/D: which real AttributeSchema flag a verb's SUCCESS
     // mutates. open/wear/lock/switch each flip exactly one semantic bit on
@@ -304,31 +337,34 @@ var AttrCalibrator = {
         verbSuccess: {
             id: "diag-verbSuccess",
             prepare: function (turn) {
-                if (turn.source === "ambiguous-reference") return null;
+                if (turn.source === "ambiguous-reference" || turn.source === "stat-probe") return null;
                 try {
                     if (!AttrCalibrator._verbRegex) AttrCalibrator._verbRegex = AttrCalibrator.buildVerbRegex();
                     if (!AttrCalibrator._verbRegex) return null;
                     var s = String(turn.command || "").trim();
                     var m = AttrCalibrator._verbRegex.exec(s);
-                    if (!m) return null;
-                    var verb = AttrCalibrator.normalizeVerb(m[1]);
-                    var noun = m[2].replace(/^(the|a|an)\s+/i, "").trim();
+                    var extra = !m ? AttrCalibrator._splitAnyVerbNoun(s) : null;
+                    if (!m && (!extra || AttrCalibrator.RPG_VERBS.indexOf(extra.verb) < 0 || !AttrCalibrator.dictionaryForm(extra.verb))) return null;
+                    var exactForm = m ? m[1].toLowerCase().replace(/\s+/g, " ") : extra.verb;
+                    var verb = AttrCalibrator.normalizeVerb(exactForm);
+                    var noun = m ? m[2].replace(/^(the|a|an)\s+/i, "").trim() : extra.noun;
                     // Learnability: known mutating verbs, take/drop, or any
                     // ActionSynth rule verb (so switch on is always eligible
                     // even when successOps later sees no bit flip).
                     var ops = AttrCalibrator.successOps(verb);
                     var learnable = !!(ops || verb === "take" || verb === "drop"
                         || AttrCalibrator.VERB_FLAG[verb]
-                        || AttrCalibrator._isActionSynthVerb(verb));
+                        || AttrCalibrator._isActionSynthVerb(verb) || extra);
                     if (!learnable) return null;
                     if (typeof AttributeSchema === "undefined" || typeof ZRamReader === "undefined") return null;
                     var mem = AttributeSchema._getMem();
                     if (!mem) return null;
-                    var id = AttributeSchema._findIdByName(mem, noun);
+                    var id = extra ? extra.objectId : AttributeSchema._findIdByName(mem, noun);
                     if (!id) return null;
                     var d198Correlation = AttrCalibrator._d198ScopedCorrelation(noun);
                     if (typeof Actionable !== "undefined" && Actionable.payloadPool && Actionable.payloadPool().length && (!d198Correlation || String(d198Correlation.objectId) !== String(id))) return null;
-                    turn.__diagVerbSuccessCtx = { verb: verb, noun: noun, id: id, ops: ops || [], trace: [], d198Correlation: d198Correlation };
+                    if (extra && (!d198Correlation || d198Correlation.referenceVerified === false)) return null;
+                    turn.__diagVerbSuccessCtx = { verb: verb, exactForm: exactForm, extra: !!extra, noun: noun, id: id, ops: ops || [], trace: [], d198Correlation: d198Correlation };
                     // codex #455/#456: analyze() must never read live DOM --
                     // captureAfter freezes the transcript slice at the SAME
                     // moment endLine itself is frozen (boundary-stamp or
@@ -372,6 +408,7 @@ var AttrCalibrator = {
                     // Parser/game refusal patterns already used by this file
                     // (comparison signal, not phrase-mining of success prose).
                     var failedText = /\b(can'?t|cannot|already|don't|dont|do not|not open|not close|nothing happens|that's not a verb|i don't know|i do not know|you can't|you cannot)\b/i.test(text);
+                    if (ctx.extra && /\?|\b(?:not|unknown|understood|which do you mean|no such|not here|not important|not holding)\b/i.test(text)) failedText = true;
                     // Opcode mutation = structural success. No mutation + no
                     // refusal = accepted behavioral success (Glow Bar turn-on
                     // without I6 switchable bit). Ambiguous only when both
@@ -384,6 +421,8 @@ var AttrCalibrator = {
                         rejected: !!failedText,
                         ambiguous: !!(mutated && failedText),
                         d198Correlation: ctx.d198Correlation,
+                        exactForm: ctx.exactForm,
+                        submissionId: turn.id != null ? turn.id : turn.submissionId,
                         at: Date.now()
                     };
                     // Preserved byte-for-byte (existing diagnostic surface,
@@ -931,6 +970,7 @@ var AttrCalibrator = {
             }
             // Per-object functionable verbs (opcode or accepted-no-reject).
             if (AttrCalibrator._recordAllowedVerb(entry)) changed = true;
+            if (AttrCalibrator.recordExactForm(entry)) changed = true;
             AttrCalibrator._recordD198Provenance(entry);
             if (changed) AttrCalibrator.persist(mem);
         } catch (e) {}

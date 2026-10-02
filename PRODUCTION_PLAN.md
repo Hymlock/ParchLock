@@ -203,7 +203,7 @@ decisions and their later mentions, not only the first matching record.
   plans a shared player/location/display/inventory recovery for compiler-owned objects
   with blank short names. It may extend D184's parser-vocabulary lane, but it may not
   weaken D164's room rejection, override D84/D171, or make status text an identity source.
-- **Yourself hold RPG radial:** [D205](#pl-d205) proposes long-hold dwell on the equipment Yourself drop target for a two-lane (submit-ready vs Enter:false) dictionary∩curated inventory/RPG verb radial; short release remains `take <noun>`. Z-dictionary only; AttrCalibrator persistence needs bounded learner extension (#1015). No invented verbs (D24); RoTA lacks `wield` in-dict.
+- **Yourself hold RPG radial:** [D205](#pl-d205) implements long-hold dwell on the equipment Yourself drop target for a two-lane (submit-ready vs Enter:false) dictionary∩curated inventory/RPG verb radial; short release remains `take <noun>`. Z-dictionary only, with bounded exact-form AttrCalibrator persistence. Independent audit pending. No invented verbs (D24); RoTA lacks `wield` in-dict.
 - **Original map retained:** [D202](#pl-d202) records withdrawal and removal of the overview/LOD implementation. Scaling retains the original local-room renderer and bounds; independent Center, gesture, path-alignment and interaction fixes remain. Architecture companion: [ARCHITECTURE_UML.md section 66](ARCHITECTURE_UML.md#ar-ch66).
 - Some earlier status banners and diagrams describe old builds. This indexing change
   preserves them as records; it does not claim to reconcile every historical runtime claim.
@@ -211,7 +211,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 317 headings; 103 decision rows; 420 registered units.
 **Last registered unit:** `pl-s317`. **Body SHA-256 (LF):**
-`231fa80af3f981044161328ef616011a6bdb6c6ee2ff67548383a9e0099ea1fd`
+`111b4db6087cb0139801477090465b3152c0a88ec0dccff403cc1288ddac0adc`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -710,7 +710,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s314](#pl-s314) | D202 Original Map Controls | H2 | Original map retained / overview withdrawn |
 | [pl-s315](#pl-s315) | D203 Mobile left exit-rail readable-content safety | H2 | Implemented / live-browser verified |
 | [pl-s316](#pl-s316) | D204 Holistic statistics discovery and repeatable event monitoring | H2 | Implemented / validation pending |
-| [pl-s317](#pl-s317) | D205 Drag-and-hold on Yourself inventory/RPG action radial | H2 | Proposed |
+| [pl-s317](#pl-s317) | D205 Drag-and-hold on Yourself inventory/RPG action radial | H2 | Implemented; audit pending |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -7491,12 +7491,11 @@ all D198/D201 isolation controls on desktop/mobile, plus a no-command census of 
 non-Glulx module. Only after parity may packaging/cache/APK and user documentation update.
 
 <a id="pl-s317" data-chapter-id="pl-s317"></a><a id="pl-d205"></a>
-## D205 Drag-and-hold on Yourself: inventory/RPG action radial — PROPOSED
+## D205 Drag-and-hold on Yourself: inventory/RPG action radial
 
-**Lifecycle:** Proposed. Plan/docs only. No runtime JS implementation is authorized
-until this section and architecture section 69 receive operator adversary acceptance
-**after** the Codex #1015 blockers below are folded (this amendment). Implementation
-status and verification remain separate from this draft.
+**Lifecycle:** Implemented in source, 2026-10-02; independent implementation audit pending.
+Operator authorization followed bus consensus #1022-1024. The amended contract below
+is normative; historical pre-authorization statements do not supersede that authorization.
 
 **Stable ID:** `pl-d205` / `pl-s317`. **Companion architecture:** [ARCHITECTURE_UML.md section 69](ARCHITECTURE_UML.md#ar-ch69).
 
@@ -7563,7 +7562,7 @@ worn/held state per D59); `edible` → `eat`, with `drink` only if `isGameWord("
 (D150); switchable → exact multiword `switch on`/`switch off` (not bare `switch`;
 `turn on` → `switch on` synonym remains AttrCalibrator normalization only).
 
-**Precedence (F5 — exact).** Evaluate in order; first decisive rule wins:
+**Precedence (F5 — exact).** Filter each candidate in order; a decisive rejection does not stop collection of unrelated candidates. Dictionary checks apply separately to the verb head and required literal tokens, never to a whole phrase. Preserve the exact provider/confirmed emitted form; synonym normalization is for analysis only.
 
 1. Disabled inspect (AttrCalibrator) → never offer the inspect substitute on this
    surface.
@@ -7621,9 +7620,7 @@ extension** before promising persistence for curated RPG verbs:
   the learner sees them.
 - Positive persistence round-trip harness must exercise **real newly admitted verbs**,
   not wear/take controls as stand-ins.
-- Until the extension ships, radial may still offer Enter:false suggestions for
-  dict∩curated lexical hits; cross-reload persistence for those verbs is **out of
-  scope** for the first implementation slice.
+- The bounded learner and cross-reload persistence for a real newly admitted verb are mandatory completion gates in this same implementation. Lexical hits remain Enter:false until independently confirmed; no persistence slice is deferred.
 
 Successful submit-ready commands that already pass `_isActionSynthVerb` continue on the
 existing D86 `Input.Inject` → calibrator path. Do not write verb legality into
@@ -7654,7 +7651,7 @@ supersede ordinary object/inventory radials (`Actionable.Open`), input-line radi
 resurrection as a per-object verb oracle. Does not authorize Glulx dictionary radial
 without a future adapter decision.
 
-**Implementation sketch (not authorized yet).** Owning surfaces when approved:
+**Implementation ownership.** Owning surfaces:
 `js/EquipmentUI.js` (dwell + atomic ownership transition on Yourself hover during
 `_drag`), radial via existing `ParchLockQol.OpenRadial` / ActionSynth builders, admission
 helper splitting submit-ready vs Enter:false, `js/AttrCalibrator.js` bounded learner
@@ -7679,10 +7676,28 @@ accepted.
    leg (if none ships in-tree, accept dict-negative proof on RoTA plus a synthetic
    dictionary fixture).
 
-**Evidence / verification (when implementing).** Not started. This entry is
-documentation-only. Validators and fingerprints updated for the draft itself; no harness
-or browser run is claimed.
+**Evidence / verification (2026-10-02).** Checkpoint `973593e` precedes implementation.
+Runtime owners are EquipmentUI, AttrCalibrator and StatTracker; existing mapping,
+ordinary radials, vocabulary providers and probe ownership are preserved. Yourself dwell
+is 750 ms, with short drop unchanged, compact exact-form labels and no progress overlay.
+`harness/equipment-ui.js` passed 85 checks; `harness/stat-tracker.js` covers Wins,
+condition provenance/cure/resync and independent per-item proof (179 checks). Calibration phase B,
+C/D, verb disablement, D198 provenance and D31 nested inventory suites passed.
+`PL_INTERACTION_AUDIT=1 node tools/anchorhead-regression.js` passed desktop 1400 and
+touch 412: ordinary More/learning, inventory context actions, real coat/Yourself/ring
+drops, held-pointer radial transfer, map selection/Center/restart and prompt preservation.
+Live LLR confirms newly admitted `wield` learning and reload persistence; RoTA retains
+observed item IDs/labels and dictionary-negative `wield` admission. LLR's randomized
+start is handled by bounded fresh-game discovery of a real weapon, not a fixed ID.
+Actual ZRamReader dictionary census: RoTA and Anchorhead admit wear/remove/eat/drink/
+take/drop/examine; LLR additionally admits wield; Zork1 and Enchanter additionally
+admit apply instead of wield. No equip/use in those five dictionaries. Membership
+is lexical evidence only, never a submit-ready capability claim.
+Physical Android confirmation, exhaustive catalog play and independent review are not
+claimed. No APK/package or service-worker change in this slice.
 
 **Adversarial amendment log.** 2026-10-02: folded Codex bus #1015 F1–F5 (lexical≠grammar;
 learner extension; atomic gesture/submitDrop parity; Z-only dict scope; precedence
 policy + required tests). Still Proposed; no runtime GO.
+
+**Operator-authorized implementation contract (2026-10-02, bus consensus #1022-1024).** D205 C1/C2 above and the existing gesture/learning gates are authorized together. This authorization does not claim completed verification. Wins displays the existing observed playthrough counter without changing event classification. StatTracker owns conditions with candidate/confirmed/cleared/unknown states, exact source/locator/command and epoch/generation provenance. Explicit labelled status flags or command-owned DIAGNOSE assertions can confirm a condition; an unprompted assertion is candidate only, explicit negative/cure evidence clears it, stale evidence cannot overwrite a newer reading, and resync invalidates current readings. No TTL confirms a condition and no dictionary stem creates one. Conditions renders only confirmed entries in the existing status strip. Per-item value/weight requires an explicit item-owned labelled observation and a unique individual-property correlation across two distinct value transitions for that object; aggregate pins never license row display. Ambiguity, computed/routine-like values and contradictory evidence hide that row metric. Current RAM is re-read through the proven locator; readings are not persisted as current facts. Existing D174 aggregate fallback, mandatory D204 fulfillment, unknown numeric labels, original mapping and More behavior remain unchanged. No Glulx expansion or APK is authorized in this slice.
