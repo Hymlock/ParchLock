@@ -23,7 +23,7 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 |---|-------|-------|-------|
 | D204 | Holistic statistics discovery and repeatable event monitoring — PROPOSED |  |  |
 | D203 | Mobile left exit-rail readable-content safety |  |  |
-| D202 | Map zoom LOD / world overview (hub-preserving) |  | Anchorhead |
+| D202 | Original Map Controls; overview implementation withdrawn |  | Anchorhead |
 | D201 | Early Inform unnamed identity and inventory recovery |  | LLR3 |
 | D200 | Inform Z3 declaration reader | js/ZRamReader.js | catseye gussdeath moonglow |
 | D199 | The citation now reproduces the conclusion |  |  |

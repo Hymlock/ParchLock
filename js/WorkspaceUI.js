@@ -443,27 +443,6 @@ var WorkspaceUI = {
                 y: (r.top + r.height / 2 - rootRect.top) / sy
             };
         }
-        if (ParchLockMap.MapMode === "overview") {
-            var seen = {};
-            (ParchLockMap.OverviewEdges || []).forEach(function (edge) {
-                var from = root.querySelector('.overview-room[data-room-id="' + edge.from + '"]');
-                var to = root.querySelector('.overview-room[data-room-id="' + edge.to + '"]');
-                if (!from || !to) return;
-                var key = edge.from + ">" + edge.to + ":" + edge.label;
-                if (seen[key]) return;
-                seen[key] = true;
-                var a = localCenter(from), b = localCenter(to);
-                var line = document.createElementNS(svg.namespaceURI, "line");
-                line.setAttribute("x1", a.x);
-                line.setAttribute("y1", a.y);
-                line.setAttribute("x2", b.x);
-                line.setAttribute("y2", b.y);
-                line.setAttribute("data-label", edge.label);
-                if (edge.tentative) line.classList.add("tentative");
-                svg.appendChild(line);
-            });
-            return;
-        }
         var center = root.querySelector(".dir-here.shown");
         if (!center) return;
         var a = localCenter(center);

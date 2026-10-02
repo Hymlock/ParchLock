@@ -8,14 +8,6 @@ var ParchLockMap = {
     AllowUpdate: true,
     Visible: false,
     Scale: 1,
-    MapMode: "hub",
-    OverviewEnabled: false,
-    OverviewThreshold: 0.82,
-    OverviewHysteresis: 0.05,
-    GraphRevision: 0,
-    OverviewLayoutRevision: -1,
-    OverviewCoords: {},
-    OverviewEdges: [],
     ActivePointers: {},
     PinchState: null,
     PanX: 0,
@@ -43,7 +35,6 @@ var ParchLockMap = {
         ParchLockMap.CreateRooms(["w", "here", "e"]);
         ParchLockMap.CreateRooms(["sw", "s", "se"]);
         ParchLockMap.CreateRooms(["down", "out"]);
-        $("<div>").attr("id", "map-overview").attr("aria-label", "Known world overview").appendTo("#map #rooms");
 
         ParchLockMap.CreateMiniMap("horizontal top", ["nw", "n", "ne"]);
         ParchLockMap.CreateMiniMap("horizontal bottom", ["sw", "s", "se"]);
@@ -85,10 +76,6 @@ var ParchLockMap = {
         ParchLockMap.ApplyNotesAddButtonPref();
         ParchLockMap.RebuildNotesList();
 
-        $(window).off("resize.pmMapOverview").on("resize.pmMapOverview", function () {
-            ParchLockMap.GraphRevision++;
-            if (ParchLockMap.MapMode === "overview") ParchLockMap.DrawOverview(ParchLockMap.DisplayedRoomId);
-        });
 
         ParchLockMap.AutoOpenPending = $(window).width() >= 850;
     },
@@ -393,10 +380,6 @@ var ParchLockMap = {
         ParchLockMap.DisplayedRoom = room.Name;
         ParchLockMap.DisplayedRoomId = room.Id;
 
-        if (ParchLockMap.MapMode === "overview") {
-            ParchLockMap.DrawOverview(room.Id);
-            return;
-        }
 
         ParchLockMap.DrawRoom("here", room);
 
@@ -472,7 +455,7 @@ var ParchLockMap = {
             // Never draw a map box under a hyphenated exit-N system key --
             // the same destination still renders via its real label when
             // present. (Operator: no "EXIT 16" system labels on the map.)
-            // Share MapTopology.isSystemPropExitKey with overview admission/edges:
+            // System property placeholders are not player travel commands:
             // hyphenated exit-N system props stay hidden; numbered travel ("1"/"2"/"exit 1") does not.
             if (typeof MapTopology !== "undefined" && MapTopology.isSystemPropExitKey
                 && MapTopology.isSystemPropExitKey(dir)) continue;
@@ -846,7 +829,6 @@ var ParchLockMap = {
     // out of sync with any of them.
     RefreshMapPanels: () => {
 
-        ParchLockMap.GraphRevision++;
         ParchLockMap.Save();
         ParchLockMap.Draw();
         ParchLockMap.RebuildRoomsList();
@@ -998,95 +980,6 @@ var ParchLockMap = {
         ParchLockMap.Draw(roomName);
     },
 
-    UpdateMapMode: function () {
-        var next = ParchLockMap.MapMode;
-        if (!ParchLockMap.OverviewEnabled) next = "hub";
-        else if (next === "hub" && ParchLockMap.Scale < ParchLockMap.OverviewThreshold) next = "overview";
-        else if (next === "overview" && ParchLockMap.Scale >= ParchLockMap.OverviewThreshold + ParchLockMap.OverviewHysteresis) next = "hub";
-        if (next === ParchLockMap.MapMode) return false;
-        ParchLockMap.MapMode = next;
-        $("#map #rooms").toggleClass("overview-mode", next === "overview");
-        if (next === "overview") ParchLockMap.DrawOverview(ParchLockMap.DisplayedRoomId);
-        else {
-            $("#map #rooms").css({ width: "", height: "" });
-            ParchLockMap.Draw(ParchLockMap.GetRoomById(ParchLockMap.DisplayedRoomId) || ParchLockMap.GetCurrentRoom());
-        }
-        return true;
-    },
-
-    DrawOverview: function (anchorId) {
-        var anchor = ParchLockMap.GetRoomById(anchorId) || ParchLockMap.GetCurrentRoom();
-        if (anchor) {
-            ParchLockMap.DisplayedRoom = anchor.Name;
-            ParchLockMap.DisplayedRoomId = anchor.Id;
-        }
-        var eligible = (ParchLockMap.Rooms || []).filter(function (room) {
-            return typeof MapTopology === "undefined" || !MapTopology.isOverviewEligible
-                || MapTopology.isOverviewEligible(room, anchor);
-        });
-        var host = document.getElementById("map-overview");
-        if (!host || !eligible.length || typeof MapBeautify === "undefined" || !MapBeautify.overviewLayout) return;
-        var coords = MapBeautify.overviewLayout(eligible, anchor && anchor.Id);
-        ParchLockMap.OverviewCoords = coords;
-        ParchLockMap.OverviewEdges = [];
-        host.replaceChildren();
-        var pitchX = 176, pitchY = 100, pad = 70;
-        var values = Object.keys(coords).map(function (id) { return coords[id]; });
-        var minX = Math.min.apply(Math, values.map(function (p) { return p.x; }));
-        var minY = Math.min.apply(Math, values.map(function (p) { return p.y; }));
-        var maxX = Math.max.apply(Math, values.map(function (p) { return p.x; }));
-        var maxY = Math.max.apply(Math, values.map(function (p) { return p.y; }));
-        host.style.width = ((maxX - minX) * pitchX + pad * 2 + 150) + "px";
-        host.style.height = ((maxY - minY) * pitchY + pad * 2 + 64) + "px";
-        $("#map #rooms").css({ width: host.style.width, height: host.style.height });
-        eligible.slice().sort(function (a, b) { return String(a.Id).localeCompare(String(b.Id), undefined, { numeric: true }); }).forEach(function (room) {
-            var p = coords[String(room.Id)], button = document.createElement("button");
-            button.type = "button";
-            button.className = "overview-room";
-            if (ParchLockMap.IsCurrentRoom(room)) button.classList.add("here");
-            if (anchor && String(anchor.Id) === String(room.Id)) button.classList.add("displayed");
-            button.dataset.roomId = room.Id;
-            button.textContent = room.Name;
-            button.title = room.Name;
-            button.setAttribute("aria-label", "Center map on " + room.Name);
-            if (ParchLockMap.IsCurrentRoom(room)) button.setAttribute("aria-current", "location");
-            button.style.left = (pad + (p.x - minX) * pitchX) + "px";
-            button.style.top = (pad + (p.y - minY) * pitchY) + "px";
-            button.addEventListener("click", function (event) {
-                event.stopPropagation();
-                if (ParchLockMap.DragMoved) return;
-                ParchLockMap.DrawOverview(room.Id);
-                requestAnimationFrame(function () { ParchLockMap.CenterOverviewRoom(room.Id); });
-            });
-            host.appendChild(button);
-        });
-        var visible = {};
-        eligible.forEach(function (room) { visible[String(room.Id)] = true; });
-        eligible.forEach(function (room) {
-            Object.keys(room.Exits || {}).sort().forEach(function (label) {
-                // Hub-mirror spoiler control: system exit-N prop keys never label overview
-                // edges. Numbered travel exits ("1"/"2"/"exit 1") stay visible via the
-                // shared isSystemPropExitKey predicate (hyphenated exit-N only).
-                if (typeof MapTopology !== "undefined" && MapTopology.isSystemPropExitKey
-                    && MapTopology.isSystemPropExitKey(label)) return;
-                var toId = String(room.Exits[label]);
-                if (!visible[toId]) return;
-                var meta = (room.ExitMeta || {})[label] || {};
-                ParchLockMap.OverviewEdges.push({ from: String(room.Id), to: toId, label: label, tentative: !!(meta.hinted || meta.ambiguousDiagonal) });
-            });
-        });
-        ParchLockMap.OverviewLayoutRevision = ParchLockMap.GraphRevision;
-        requestAnimationFrame(WorkspaceUI.DrawPaths);
-    },
-
-    CenterOverviewRoom: function (id) {
-        var shell = document.getElementById("rooms-shell"), node = document.querySelector('#map-overview .overview-room[data-room-id="' + String(id).replace(/"/g, "") + '"]');
-        if (!shell || !node) return;
-        var sr = shell.getBoundingClientRect(), nr = node.getBoundingClientRect();
-        ParchLockMap.PanX += sr.left + sr.width / 2 - (nr.left + nr.width / 2);
-        ParchLockMap.PanY += sr.top + sr.height / 2 - (nr.top + nr.height / 2);
-        ParchLockMap.ApplyViewport();
-    },
 
     ApplyViewport: () => {
 
@@ -1098,7 +991,7 @@ var ParchLockMap = {
 
         var oldScale = ParchLockMap.Scale;
         if (!Number.isFinite(targetScale)) return;
-        var nextScale = Math.max(0.45, Math.min(1.8, targetScale));
+        var nextScale = Math.max(0.65, Math.min(1.8, targetScale));
         if (nextScale == oldScale) return;
 
         if (originX !== undefined && originY !== undefined) {
@@ -1114,7 +1007,6 @@ var ParchLockMap = {
 
         ParchLockMap.Scale = nextScale;
         ParchLockMap.ApplyViewport();
-        ParchLockMap.UpdateMapMode();
     },
 
     Zoom: (delta, originX, originY) => {
@@ -1124,11 +1016,9 @@ var ParchLockMap = {
     ResetViewport: () => {
 
         ParchLockMap.Scale = 1;
-        ParchLockMap.MapMode = "hub";
         ParchLockMap.PanX = 0;
         ParchLockMap.PanY = 0;
         ParchLockMap.ClearGesture();
-        $("#map #rooms").removeClass("overview-mode");
         $("#map #rooms").css({ width: "", height: "" });
         ParchLockMap.ApplyViewport();
         ParchLockMap.Draw(ParchLockMap.GetCurrentRoom());
@@ -1145,7 +1035,10 @@ var ParchLockMap = {
         if (ev.button != null && ev.button !== 0) return;
         if ($(e.target).closest("button, input, .icon").length) return;
         ParchLockMap.ActivePointers[ev.pointerId] = { x: ev.clientX, y: ev.clientY, type: ev.pointerType || "mouse" };
-        try { if (e.currentTarget.setPointerCapture) e.currentTarget.setPointerCapture(ev.pointerId); } catch (captureError) {}
+        // Capture on the pressed room, not its parent: mouse click targets are
+        // derived from pointer capture, so parent capture swallowed room clicks.
+        var captureTarget = $(e.target).closest('.room')[0] || e.currentTarget;
+        try { if (captureTarget.setPointerCapture) captureTarget.setPointerCapture(ev.pointerId); } catch (captureError) {}
         var ids = Object.keys(ParchLockMap.ActivePointers);
         if (ids.length >= 2) {
             var a = ParchLockMap.ActivePointers[ids[0]], b = ParchLockMap.ActivePointers[ids[1]];
@@ -1281,16 +1174,10 @@ var ParchLockMap = {
         ParchLockMap.DisplayedRoomId = null;
         ParchLockMap.CurrentRoom = "";
         ParchLockMap.DisplayedRoom = "";
-        ParchLockMap.GraphRevision++;
-        ParchLockMap.OverviewCoords = {};
-        ParchLockMap.OverviewEdges = [];
-        ParchLockMap.OverviewLayoutRevision = -1;
-        $("#map-overview").empty();
         ParchLockMap.Scale = 1;
-        ParchLockMap.MapMode = "hub";
         ParchLockMap.PanX = ParchLockMap.PanY = 0;
         ParchLockMap.ClearGesture();
-        $("#map #rooms").removeClass("overview-mode").css({ width: "", height: "" });
+        $("#map #rooms").css({ width: "", height: "" });
         ParchLockMap.ApplyViewport();
         if (typeof MapTopology !== "undefined") { MapTopology.prevRoomId = null; MapTopology.prevRoomName = ""; }
         // D76: Reset Map used to immediately recreate the current room via

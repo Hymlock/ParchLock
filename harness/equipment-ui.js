@@ -193,5 +193,36 @@ const tutJs = fs.readFileSync(path.resolve(__dirname, "..", "js", "Tutorial.js")
 assert(/SetDemo\(true\)/.test(tutJs) && /SetDemo\(false\)/.test(tutJs), "the tour turns examples on for the equipment steps and off again when it leaves");
 assert(/emptyBody/.test(tutJs) && /mapIsEmpty/.test(tutJs), "steps about an unexplored map use different wording instead of describing a blank panel as though it were full");
 
+// A quiet status turn may temporarily own the prompt at pointer release.
+const oldTimeout = global.setTimeout, oldClear = global.clearTimeout;
+let retry = null;
+global.setTimeout = fn => { retry = fn; return 1; };
+global.clearTimeout = () => { retry = null; };
+global.Message = { IsOpen: false };
+global.UndoRestoreSync = { generation: 1 };
+global.StatTracker = { _probeActive: {} };
+const input = { value: '' };
+document.querySelector = () => input;
+const oldOpen = E.IsOpen;
+E.IsOpen = () => true;
+const sentBefore = submitted.length;
+E.submitDrop(7, 1);
+assert(submitted.length === sentBefore && typeof retry === 'function', 'drop waits for silent status ownership without losing the gesture');
+StatTracker._probeActive = null;
+retry();
+assert(submitted[submitted.length - 1] === 'put flask in trenchcoat', 'pending drop revalidates and submits after the probe');
+StatTracker._probeActive = {};
+E.submitDrop(7, 1);
+UndoRestoreSync.generation++;
+const beforeCancel = submitted.length;
+StatTracker._probeActive = null;
+retry();
+assert(submitted.length === beforeCancel, 'restore generation cancels a pending drop');
+input.value = 'unfinished command';
+E.submitDrop(7, 1);
+assert(submitted.length === beforeCancel && input.value === 'unfinished command', 'drop never overwrites a player draft');
+E.IsOpen = oldOpen;
+global.setTimeout = oldTimeout; global.clearTimeout = oldClear;
+
 console.log("\n" + pass + " PASS / " + fail + " FAIL");
 process.exit(fail ? 1 : 0);

@@ -203,14 +203,14 @@ decisions and their later mentions, not only the first matching record.
   plans a shared player/location/display/inventory recovery for compiler-owned objects
   with blank short names. It may extend D184's parser-vocabulary lane, but it may not
   weaken D164's room rejection, override D84/D171, or make status text an identity source.
-- **Map zoom LOD is hub-preserving and implemented:** [D202](#pl-d202) adds Scale-threshold overview of the OverviewEligible admitted graph without replacing Draw()'s local-neighborhood paint, MapBeautify's mental-map rule, or anti-spoiler admission. Direction *vocabulary* remains module-built; overview eligibility mirrors the hub's visible-edge filtering and 12 physical placement slots so internal `exit-N` look-ahead cannot leak. Architecture companion: [ARCHITECTURE_UML.md §66](ARCHITECTURE_UML.md#ar-ch66).
+- **Original map retained:** [D202](#pl-d202) records withdrawal and removal of the overview/LOD implementation. Scaling retains the original local-room renderer and bounds; independent Center, gesture, path-alignment and interaction fixes remain. Architecture companion: [ARCHITECTURE_UML.md section 66](ARCHITECTURE_UML.md#ar-ch66).
 - Some earlier status banners and diagrams describe old builds. This indexing change
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
 **Local manifest:** 316 headings; 103 decision rows; 419 registered units.
 **Last registered unit:** `pl-s316`. **Body SHA-256 (LF):**
-`dc1a480de6f345e42f63970cb6662a4f802978e45d278281a2ef3a87b4c0f61a`
+`8a322fee5b55ea8fb4953ab452560807e0929b9336c3298988debb907d5abf87`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -706,7 +706,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s311](#pl-s311) | Closing the D186-D197 arc | H3 | Record |
 | [pl-s312](#pl-s312) | D200 Inform Z3 declaration reader | H2 | Implemented |
 | [pl-s313](#pl-s313) | D201 Early Inform unnamed identity and inventory recovery | H2 | Implemented / live-browser verified |
-| [pl-s314](#pl-s314) | D202 Map zoom LOD / world overview (hub-preserving) | H2 | Implemented / validation pending |
+| [pl-s314](#pl-s314) | D202 Original Map Controls | H2 | Original map retained / overview withdrawn |
 | [pl-s315](#pl-s315) | D203 Mobile left exit-rail readable-content safety | H2 | Implemented / live-browser verified |
 | [pl-s316](#pl-s316) | D204 Holistic statistics discovery and repeatable event monitoring | H2 | Implemented / validation pending |
 <!-- LOCAL-REGISTER:END -->
@@ -7077,12 +7077,27 @@ remain unverified, not claimed complete. This amendment is not a release-validat
 **2026-10-01 regression correction (supersedes conflicting gates above).** A custom
 parse_name routine alone is not evidence of ambiguity. `referenceFor.unique` means one
 current-scope vocabulary candidate and retains normal click/drop interaction;
-`referenceFor.verified` additionally excludes unverified custom parsers and is required
-for automatic object-specific calibration. Actual multi-candidate references retain
+`referenceFor.verified` additionally excludes unverified custom parsers; new D198
+object-specific provenance requires verification or an opcode-state witness. Legacy
+verb learning retains unique current-scope correlation. Actual multi-candidate references retain
 native disambiguation and the ambiguous-reference learning exclusion. Radial labels are
 short verbs; full parser commands remain separate. No title-specific interaction patch.
 Native restart clears the map graph, notes, camera and gesture state before world
 recovery; initial interpreter boot and restore-file retain their distinct lifecycle.
+
+**Build 54 follow-up (2026-10-01).** Room pointer capture stays on the pressed room
+so desktop click selection survives pan/pinch integration. Equipment resolves the
+drop target before deferred DOM rebuilding and revalidates source/target IDs from
+the current inventory before submission. A pending drop may wait briefly for a
+silent probe's prompt, but never overwrites a draft, crosses a dialog, survives a
+restore generation or submits after the sheet closes. More is a separate launcher
+on normal, promoted and ambiguous object radials: dictionary/synthesized vocabulary
+and existing per-object learned verbs supply editable suggestions, not new claims
+of accepted capability. Proven semantic/legacy commands remain parallel providers.
+Custom parsers must not disable legacy verb/substitute learning merely by existing;
+new unverified D198 provenance still needs actual opcode-state evidence. Validate
+real desktop room clicks, touch umbrella/ring drops, redraw during drag, More
+selection and learned-provider connection before distribution closeout.
 
 **Temporary draft: descriptor-aware object identity extension (2026-10-01; research history).**
 This extends D201, not a second world model. Chapter check: D47/D54 stable room IDs;
@@ -7181,416 +7196,21 @@ Verified against live js/ZRamReader.inventoryTree, Actionable.promoteUnnamed/hea
 
 
 <a id="pl-s314" data-chapter-id="pl-s314"></a><a id="pl-d202"></a>
-## D202 Map zoom LOD / world overview (hub-preserving)
+## D202 Original Map Controls
 
-**Implementation state (2026-10-01): IMPLEMENTED, pending independent live/package validation.** The shipped source has a latched hub/overview mode, transient deterministic coordinates, ID-based recentering, accessible overview nodes, shared wheel/button/pinch scaling, and Pointer Events pan/pinch. Eligibility is player-known only and now mirrors the hub renderer's duplicate, `exit-N`, and 12-slot admission rules.
+**Decision (operator, 2026-10-01):** The world-overview/LOD zoom plan is withdrawn
+and its implementation removed. Retain the original local-room map; changing scale
+must never replace the room layout or reveal additional rooms.
 
-**Operator-authorized stabilization (2026-10-01; current production contract).**
-Automatic overview transitions are disabled (`OverviewEnabled: false`) for every
-module. The stable local hub is retained at every zoom level; wheel, buttons and
-mobile pinch/spread share continuous bounded transforms without replacing rooms or
-connection geometry. Center resets scale/pan and draws the current room once.
-The overview implementation below is retained as inactive historical design, not
-an enabled production feature. This supersedes the threshold/latch requirements
-and enabled-overview claims elsewhere in this chapter and front summary.
-Live desktop/mobile checks cover primary click, compact wheel labels, real drops
-into/out of a container, input after probes/map return, zoom/Center and native restart.
-Physical-device and exact saved-game fixtures remain operator validation gates.
+Scale/pan controls transform existing rooms and their connection lines together.
+Center returns to the current room at scale 1 and zero pan, drawing once. Preserve
+room selection, actual exit vocabulary, travel, notes, known-room lists, restart
+cleanup, and independent input/gesture/path-alignment fixes. Shared continuous
+scaling and mobile pinch may operate on this original canvas without a second renderer.
 
-**Lifecycle:** **Implemented / validation pending** (2026-10-01). Product code, harnesses, CSS, and SW shipped under the accepted D202 contract; independent live/package validation remains. Codex #949 amendments and operator chrome-vs-vocabulary correction remain authoritative for the implemented behavior.
-
-**Stable ID:** [D202](#pl-d202) / `pl-s314`.
-**Scope:** `play.html` player map canvas only. Additive LOD on top of the existing
-**local-neighborhood hub paint** (D63/D66/MapBeautify). Applies to all catalog
-modules that already accumulate player-facing rooms in `ParchLockMap.Rooms[]`;
-never a title-specific branch (no Alley / Anchorhead / LLR / Wumpus filename hacks).
-Desktop and mobile share one behavior. Glulx/Z-machine differences are irrelevant --
-this is overlay layout over already-admitted map graph data.
-**Contract (required):** Zoom-out may show more of the **OverviewEligible** known graph
-(see predicate below); zoom-in / default scale keeps the local hub (current room +
-one-hop neighbors painted into shared layout chrome). Hub re-center via neighbor click /
-Known Rooms eye remains available. Overview coordinates are transient; click targets
-room Id; MapMode is latched; edges preserve real exit keys and directed semantics.
-On touch-capable mobile map canvases, two-pointer pinch/spread is a required peer of
-the existing zoom buttons and wheel path; it changes the same Scale around the live
-gesture midpoint and enters/exits overview through the same MapMode hysteresis.
-**Contract (forbidden):** Replacing Draw()'s local-hub paint as the sole map product;
-throwing away the hub mental map / D63 borrowed-slot positioning / D71 real exit-key
-corner labels; revealing rooms that fail OverviewEligible merely because Scale is low;
-inventing a parallel "full map product" that masks or disables the hub;
-Alley-style per-title layout exceptions; framing LOD as "expanding past 12 compass
-words"; persisting overview layout into `PL_Map_*` / room schema; deriving overview
-geometry from chrome slot names or exit vocabulary; shipping an ungated empty overview.
-**Implementation (planned owners, not yet touched):** `js/Map.js` (Scale thresholds,
-latched MapMode, Draw/ApplyViewport/Zoom, overview host, click-by-Id),
-`js/MapBeautify.js` (layoutHints as **seed only**; new overview layout pass),
-`js/MapTopology.js` (OverviewEligible helper; admission policy unchanged),
-`js/WorkspaceUI.js` (`DrawPaths` generalization),
-`css/ParchLock.css` / `play.html` zoom chrome only as needed for pooled room nodes.
-Consumers: Known Rooms list, notes icons, directional radial / D63 borrowed slots
-(remain hub-local), MapTopology admission/filter (unchanged policy; overview uses a
-stricter visibility predicate on top).
-**Relationships:** Extends D63/D66/D67/D71 (hub paint still authoritative at close-up),
-D23/D30/D134 (non-compass / multi-vocabulary exits already first-class in the graph),
-D112 (map panel chrome), D54/D80 (anti-spoiler / player-facing names). Does **not**
-supersede the hub architecture or the room-build pipeline.
-Architecture companion: [ARCHITECTURE_UML.md section 66](ARCHITECTURE_UML.md#ar-ch66)
-(**IMPLEMENTED** / validation pending).
-**Evidence:** none yet (plan only). Research baselines:
-`/workspace/tmp/reports/parchmap-map-zoom-visibility-report.md` (2026-09-30; oversimplified
-"fixed 12-slot compass" wording corrected by
-`/workspace/tmp/reports/parchmap-compass-direction-model-correction.md`).
-Adversarial plan audit: bus #949 (Codex); ACCEPT recorded #950; this text amends
-required pre-GO items and requests re-audit.
-
-**Operator correction (2026-09-30) — chrome vs vocabulary.**
-
-The map is **not** "12 directions only." Two layers must stay distinct:
-
-1. **DOM / layout chrome (fixed):** `Map.js` `Build()` / `CreateRooms` instantiates a
-   fixed set of room *boxes* (`here` + twelve `dir-*` layout slots: n/ne/e/se/s/sw/w/nw/
-   up/down/in/out). That is shared canvas positioning chrome for the local hub, reused by
-   mini-map rows and (via D63 borrow) by any exit key that is not one of those slot names.
-   It is **not** a claim about how many direction words a module may have.
-2. **Direction vocabulary / exit keys (dynamic, per module, during room building):**
-   Rooms are admitted by `MapTopology.ensureRoom` with empty `Exits` / `ExitMeta`. Exit
-   keys are attached by the build pipeline — `ZRamReader.lookAheadExits` →
-   `applyPayloadExits` / `link`, and travel via `applyStateDelta` — using whatever labels
-   the module actually has: stock Inform compass profile (props 7–18),
-   `discoverCompassProfile` (parser words on compass children + `door_dir` slots),
-   Wumpus-class numbered `door_dir` exits (e.g. slots 91–95 → label `"exit N"`, command
-   `"xN"`), nautical words (`port` / `starboard` / `fore` / `aft` via ExitCalibrator D134),
-   and any typed travel command that is not on the non-travel stop-list. Different catalog
-   modules therefore present different exit label sets while sharing the same map UI;
-   D63/D71 only map those keys onto layout slots for hub paint.
-
-**LOD relative to room building:** The canvas is limited by how `Draw()` paints a
-**local neighborhood of already-built rooms**, not by how rooms are admitted into the
-graph. `Rooms[]` already accumulates the known player-facing world (Known Rooms proves
-it). CSS zoom alone never changes inclusion; overview LOD is a deliberate second paint
-mode over that same admitted graph — **not** an expansion of compass vocabulary past
-twelve words.
-
-**Goal / non-goals.**
-
-**Goal.** Make zoom-out appropriately useful: when the player scales the map down,
-more of the **OverviewEligible** room graph becomes visible on the canvas; when zoomed
-in near the default range, the familiar local hub remains the primary view (1-hop into
-layout chrome, with real exit-key labels). Pan continues to move the active layout
-inside `#rooms-shell`. Known Rooms / list / stats already reflect full `Rooms[]` —
-canvas LOD closes that gap without discarding hub UX or pretending vocabulary is fixed
-at twelve compass words.
-
-**Non-goals / explicit rejects.**
-
-- Do **not** replace the local hub with a separate whole-world map product.
-- Do **not** throw away `Draw()`'s direction-slot grid as hub chrome, D63 borrowed-slot
-  positioning, D66 reverse/tentative neighbors, D71 real-label overrides, or
-  MapBeautify's "keeps compass mental map" rule (mental map = local hub layout, not
-  "only twelve words exist").
-- Do **not** weaken anti-spoiler: overview may only place rooms that pass
-  **OverviewEligible** (stricter than raw `isPlayerFacingRoom` alone).
-- Do **not** invent hop/LOD that shows named unvisited look-ahead destinations the hub
-  would still hide (see predicate).
-- Do **not** change travel commands, exit submission, or radial/arrow behavior as
-  part of this decision -- map box clicks stay re-center (and existing command paths
-  elsewhere stay theirs).
-- Do **not** treat LOD as "unlocking more compass directions" — exit keys are already
-  unlimited in the graph; hub chrome capacity and 1-hop paint are the separate issues.
-- Do **not** persist overview layout into save/schema or require a map-data migration.
-- play.html only; no experimental Emglken-special UI surface.
-
-**OverviewEligible (required predicate — resolves #949 anti-spoiler contradiction).**
-
-Corroboration: `MapTopology.isPlayerFacingRoom` returns true for any non-internal
-`Name`, including **named unvisited look-ahead stubs**. `RebuildRoomsList` uses that
-filter, so "reuse Known Rooms filter" alone would leak look-ahead rooms into overview
-while the hub still hides them. D202 therefore defines a **single explicit predicate**:
-
-`OverviewEligible(room)` is true iff all of:
-
-1. Room exists in `ParchLockMap.Rooms[]` with a stable numeric/array `Id`.
-2. `MapTopology.isPlayerFacingRoom(room)` is true (D54/D80 internal-name gate still applies).
-3. At least one of:
-   - the room is the current player room, or
-   - the room has been visited for display purposes (`VisitedName` set / equivalent
-     visit marker already used by the hub), or
-   - the room is an **intentionally visible hub neighbor** of the current
-     `DisplayedRoom` — i.e. it would already be painted by hub `Draw` / D66 reverse
-     neighbor rules for that displayed room (not merely present as a look-ahead exit
-     target somewhere else in the graph).
-
-Named unvisited look-ahead stubs that are not currently hub-visible fail (3) and
-**must not** appear in overview. Implementation should expose one testable helper
-(e.g. `MapTopology.isOverviewEligible` or `ParchLockMap.isOverviewEligible`) and reuse
-it for overview placement, edge endpoint filtering, and harness assertions. Known Rooms
-list policy is **not** silently redefined by this predicate; list behavior stays on its
-existing filter unless a later decision explicitly aligns them.
-
-**Feasibility.**
-
-- Graph already lives in `ParchLockMap.Rooms[]` with `Exits` / `ExitMeta` (keys =
-  module vocabulary) and persistence (`PL_Map_*`). Inclusion for overview is
-  OverviewEligible + layout of that set, not a new discovery pipeline and not a new
-  compass word list.
-- `MapBeautify.layoutHints` is only a **seed** for list/floor untangle today: it
-  understands short n/s/e/w/diagonals/u/d, maps every other exit key (full
-  up/down/in/out, numbered, nautical, custom) to `[1,0]`, mutates `LayoutX`/`LayoutY`
-  on room records, anchors `GetCurrentRoom`, has no collision resolution, and skips
-  disconnected components. Overview **must not** treat layoutHints as the reusable
-  overview layout product.
-- IF-scale graphs (tens to low hundreds of admitted rooms for typical play) are
-  within DOM/SVG budget if nodes are pooled and edges drawn once per layout pass.
-- Current `Zoom` is CSS `scale` only (clamp ~0.65-1.8) and never changes the room
-  set -- LOD is therefore a deliberate Draw/layout extension keyed off Scale over
-  already-built rooms, not a bugfix to the clamp alone and not a vocabulary change.
-  Clamp bounds may be revisited in implementation phases (e.g. allow lower min scale
-  once overview exists) without changing the hub-at-close-up rule.
-- `Save` serializes `Rooms[]` wholesale via `JSON.stringify`. Overview layout must
-  therefore stay off the persisted room records (see persistence contract).
-
-**Approach.**
-
-**Two modes, one canvas family, Scale-threshold keyed + latched MapMode:**
-
-1. **Hub mode (default / zoomed-in).** Existing `Build()` layout chrome (`here` + twelve
-   `dir-*` boxes); `Draw(room)` paints current + one-hop from that room's `Exits` /
-   reverse neighbors (D63 assignSlot for non-slot exit keys; D66 tentative reverse;
-   D71 corner label = real exit key). `DrawPaths` spokes hub->shown neighbors. Mental
-   map unchanged. Works for stock compass, numbered, nautical, and mixed vocabularies
-   because paint keys off `Exits` keys, not a closed 12-word dictionary.
-2. **Overview mode (zoom-out past a threshold).** Layout OverviewEligible rooms using a
-   dedicated overview layout pass (layoutHints may seed cardinal steps only).
-   Instantiate pooled room nodes (or a dedicated overview layer) positioned by
-   **transient** overview coordinates × tile pitch; generalize `WorkspaceUI.DrawPaths`
-   to draw edges among visible overview nodes (not only hub spokes). Edge labels remain
-   the real exit keys from `Exits`/`ExitMeta` when shown. Crossing back above the
-   threshold restores hub `Draw(DisplayedRoom)` without losing `Rooms[]` or notes.
-
-**MapMode latch + revision (required).**
-
-- Maintain `ParchLockMap.MapMode` ∈ {`hub`, `overview`} latched with hysteresis
-  (~0.05 around the Scale threshold, plan default hub for `Scale >= ~0.85`).
-- Maintain `GraphRevision` / `OverviewLayoutRevision` (or equivalent). Rebuild overview
-  layout/DOM only when mode enters overview or revision changes — **not** on every
-  pan/wheel tick.
-- `ApplyViewport` continues to apply CSS `translate`+`scale` only. `Zoom` updates Scale,
-  may flip MapMode through the latch, and must **not** recursively invoke a full
-  overview redraw on pure pan or on wheel steps that stay inside the same mode.
-- Low-zoom `Draw` / graph mutations after room/edge/name/note/delete/reset/import/
-  restore/module lifecycle, plus resize/orientation, must bump revision so the next
-  overview paint refreshes. Hub `Draw` at Scale=1 remains authoritative when MapMode
-  is hub.
-
-**Overview layout requirements (required — layoutHints is seed only).**
-
-The overview layout pass MUST:
-
-- Key nodes by **room Id** (never display-name uniqueness; LLR blank labels OK).
-- Normalize direction vectors for short and full forms of n/s/e/w/diagonals/up/down/
-  in/out, and provide a **deterministic** fallback placement for numbered / nautical /
-  custom exit keys (stable hash/order of exit key — not chrome slot letters, not a
-  silent dump onto `[1,0]` for every unknown).
-- Anchor BFS/pack from `DisplayedRoom` when set, else current room; do not hard-wire
-  only `GetCurrentRoom` if the player is viewing another room.
-- Pack **disconnected components** deterministically (stable room-Id order).
-- Resolve coordinate collisions (spacing / deterministic nudge).
-- Use stable ordering so identical graphs produce identical layouts across runs.
-- Write results into a **transient** overview coordinate store (parallel map /
-  overlay structure). Do **not** require mutating persisted `LayoutX`/`LayoutY` for
-  overview; list untangle may keep using layoutHints independently.
-
-**Persistence contract (required).**
-
-Overview coordinates are session/transient view state. No new room-record fields for
-overview layout; no `PL_Map_*` schema version bump; no migration. If implementation
-temporarily writes helper fields, they must be stripped before `Save` or kept outside
-`Rooms[]`. Loading an old save must not depend on overview fields.
-
-**Click / recenter contract (locked now — not Phase-2 pick-one).**
-
-- Overview node activation sets `DisplayedRoom` / `DisplayedRoomId` **by room Id**,
-  preserves current `Scale` and `MapMode=overview`, and recenters the overview
-  viewport on that room.
-- Explicit Center Current / `ResetViewport` may return to hub at Scale=1 (hub paint
-  of current room).
-- Never use display-name identity for click targeting or recenter.
-- Overview is not a command surface: node click does not submit travel commands.
-
-**Edge contract (required).**
-
-- Draw edges only between OverviewEligible endpoints that exist in admitted
-  `Exits`/`ExitMeta` (and D66 tentative reverse when both ends are shown).
-- Dedupe multiple equivalent same-endpoint renderings where appropriate while
-  **preserving** directed / one-way semantics and real command labels.
-- Visually distinguish tentative reverse / ambiguous edges (reuse
-  `.tentative-exit` semantics; clear each rebuild — D67 lesson).
-- Never derive edge geometry or node placement from chrome slot names or from
-  "compass vocabulary" assumptions; exit keys are opaque labels from room building.
-
-**Accessibility / mobile (required).**
-
-- Overview nodes retain readable labels at overview scale (truncate with accessible
-  name if needed; do not rely on unreadably tiny text).
-- Effective touch target at least **44×44 CSS px** per node (padding/hit area OK).
-- Keyboard focus and activation for overview nodes; ARIA current for the displayed /
-  current room; tentative edges exposed accessibly.
-- Pan/drag must not steal node activation (retain existing `DragMoved` / button
-  exclusion patterns; touch-friendly).
-- Mobile pinch/spread uses Pointer Events and active `pointerId` tracking on
-  `#rooms-shell`, with pointer capture where supported. The initial two-pointer distance,
-  midpoint, Scale, and Pan form one gesture baseline; distance ratio drives absolute
-  scale and midpoint movement may pan the same viewport so content stays under the
-  fingers. It must call the shared scale/viewport/mode path rather than writing a second
-  transform or mutating `Scale` behind the latch.
-- The second pointer cancels the one-pointer drag baseline and marks `DragMoved` so a
-  pinch cannot activate a room. When one pointer remains, re-baseline one-finger pan from
-  the current Pan without a jump. `pointerup`, `pointercancel`, lost capture, map close,
-  reset, and module lifecycle clear all gesture state; no stuck drag/pinch is permitted.
-- Prevent browser page zoom/scroll only inside the active map canvas during its gesture
-  (`touch-action`/`preventDefault` as narrowly scoped as browser support requires).
-  Controls, notes/items lists, dialogs, and map-sheet scrolling outside `#rooms-shell`
-  retain their normal touch behavior. Do not bind parallel Touch Events that double-fire
-  beside Pointer Events.
-- Desktop and mobile share one behavior; verify phone portrait and landscape plus
-  desktop.
-
-**Unified zoom primitive (required).** Refactor the current delta-only `Zoom(delta,
-originX, originY)` as needed so buttons, wheel, and pinch all reach one bounded scale
-application primitive. Pinch supplies an absolute target derived from its gesture-start
-scale times the distance ratio; wheel/buttons may continue supplying deltas. Every path
-uses the same clamp, focal-point Pan compensation, `ApplyViewport`, MapMode latch, and
-revision rules. A pinch crossing the threshold once must produce one mode transition,
-not a redraw for every pointermove; ordinary in-mode moves remain CSS transforms only.
-
-**Thresholds (plan defaults -- tunable on GO):** e.g. hub for `Scale >= ~0.85`;
-overview for `Scale < ~0.85`; hysteresis of ~0.05 to avoid flicker at the boundary.
-Reset viewport returns to hub at Scale=1. Exact numbers are implementation knobs;
-the invariant is hub close-up / overview when zoomed out.
-
-**DOM/SVG strategy.** Prefer additive pooled nodes under `#rooms` (or a sibling
-overview host inside `#rooms-shell`) rather than expanding the fixed `dir-*` slot
-set. Hub slots remain for hub mode. Overview nodes carry room Id (and accessible
-name) for re-center clicks. SVG path layer must use the same transform/scale
-accounting `DrawPaths` already applies via `ParchLockMap.Scale`. Avoid WebGL for v1.
-Feature-gate the overview host until a useful overview can be shown (see Phase 1).
-
-**Data reuse.** `MapTopology.ensureRoom` / `link` / travel admission unchanged —
-that pipeline remains the source of rooms and exit keys. Overview reads
-**OverviewEligible**, not raw `RebuildRoomsList` alone. Tentative / reverse edges may
-render with existing `.tentative-exit` semantics if both endpoints are shown -- still
-display-only.
-
-**Phased steps and acceptance criteria.**
-
-**Phase 0 -- Spec lock (docs only, this decision + arch §66).** Reviewer accepts
-goal/non-goals, chrome-vs-vocabulary model, OverviewEligible, layout/persistence/
-click/mode/edge/a11y contracts, mode split, and file touch list.
-**AC:** this section + arch §66 marked reviewed / GO or amended; still no product code.
-
-**Phase 1 -- Mode switch skeleton (feature-gated).** `Zoom`/`ApplyViewport` / latched
-`MapMode` detect hub vs overview; overview host may exist behind a feature flag, but
-an **ungated empty overview must not ship in production**. Prefer landing Phase 1
-atomic with Phase 2's first useful overview, or keep the flag off until then.
-**AC:** crossing threshold toggles latched MapMode without breaking hub Draw at
-Scale=1; pan/wheel do not recursively redraw; no change to Rooms[] / Exits key
-semantics; flag default off OR useful overview present.
-
-**Phase 2 -- Overview layout from OverviewEligible graph.** Place N eligible rooms
-with the required layout pass; show labels; click follows the locked recenter
-contract.
-**AC:** with >=10 eligible rooms, zoom-out shows more than the 1-hop hub set; rooms
-failing OverviewEligible never appear; modules with non-compass exit keys (Wumpus
-numbered, nautical) still appear by room Id/edge; duplicate names / distinct Ids OK.
-
-**Phase 3 -- Edges + pan/pinch.** Generalize DrawPaths for overview edges per edge
-contract; pan moves overview content usefully inside `#rooms-shell` without stealing
-activation. Add the shared absolute-scale primitive and mobile two-pointer pinch/spread
-state machine described above; wheel/buttons remain behaviorally equivalent.
-**AC:** edges match admitted Exits between visible nodes (any exit key vocabulary);
-one-way/parallel/tentative distinguished; pan+wheel/button/pinch zoom do not detach paths
-from nodes. Pinch preserves its midpoint, crosses the LOD latch correctly, never clicks a
-room, and cleanly hands a remaining pointer back to pan.
-
-**Phase 4 -- Polish + regression + a11y.** Clamp/min-scale as needed; mobile touch
-wheel/buttons; 44px targets; keyboard/ARIA; performance smoke on dense graphs
-(100+ rooms); Known Rooms / notes / D112 controls unaffected.
-**AC:** Anchorhead (stock/discovered compass), LLR, Wumpus (numbered), and a
-nautical title (e.g. Planetfall shipboard) all pass focused map checks below;
-hub mode screenshots match pre-change at Scale=1; phone portrait/landscape +
-desktop covered.
-
-**Phase 5 -- Docs sync.** Promote arch §66 lifecycle from PROPOSED → Implemented
-with evidence; harness notes; bump SW only if play assets change.
-**AC:** chapter-check / docs-sync pass; plan Lifecycle -> Implemented with evidence
-paths; regenerate DECISION-INDEX after final plan text.
-
-**Required harness coverage (plan — implement with code).**
-
-Duplicate names with distinct Ids; cycles; coordinate collisions; disconnected /
-imported graphs; one-way and parallel edges; named unvisited look-ahead excluded by
-OverviewEligible; reset/delete/import/restore/module switch invalidation; 100-plus
-rooms smoke; phone portrait/landscape and desktop; MapMode latch/hysteresis; click
-by Id preserves overview mode; Save/Load does not persist overview coordinates. Add
-real-browser two-pointer sequences for pinch-in, spread-out, moving midpoint, threshold
-crossing, one-pointer handoff, pointercancel/lost-capture/map-close cleanup, and proof
-that controls/lists outside `#rooms-shell` still scroll and activate normally.
-
-**Files likely touched (implementation -- not in this edit).**
-
-- `js/Map.js` -- Scale/MapMode/revisions, Draw / overview draw, Zoom/ApplyViewport/ResetViewport, click-by-Id
-- `js/MapBeautify.js` -- layoutHints remains list seed; new overview layout helpers
-- `js/MapTopology.js` -- OverviewEligible helper (admission policy unchanged)
-- `js/WorkspaceUI.js` -- DrawPaths generalization
-- `css/ParchLock.css` -- overview node / layer styling; touch targets; optional lower min-scale chrome
-- `play.html` -- only if zoom control labels/tooltips need mode-aware copy
-- `harness/**` -- focused LOD / OverviewEligible / layout / a11y tests (when coding starts)
-- `ARCHITECTURE_UML.md` -- section 66 companion (**added now as PROPOSED**)
-- `service-worker.js` -- cache generation only if runtime assets change
-
-**Out of touch set for this planning edit:** product/executable files above stay
-unmodified now. This amendment edits PRODUCTION_PLAN.md and ARCHITECTURE_UML.md
-planning/architecture text only.
-
-**Risks / regressions.**
-
-- **Anchorhead:** dense/non-grid geography -- overview layout must collision-resolve
-  without title-specific hacks.
-- **LLR (A Little Like Rogue):** randomized rooms / blank-name recovery (D201) --
-  overview must key by room Id, never display-name uniqueness; blank labels use
-  existing player-facing display rules.
-- **Wumpus:** numbered exits are a **vocabulary** fact from door_dir / look-ahead /
-  travel (D55/D60/D63); D63 borrowed slots are hub *chrome*. Overview must layout by
-  graph edges/Ids, not by compass slot letters, and must not submit fake compass
-  commands on node click.
-- **Nautical / shipboard:** port/starboard/fore/aft are real ExitCalibrator /
-  state-delta keys (D134); overview must treat them as ordinary edges, same as
-  north — never require them to occupy a named `dir-port` DOM box.
-- **Radial / directional UI:** D117-D119 / arrow pad read current-room exits
-  (Exits / ExitMeta); overview must not become a second command surface or fight
-  pan gestures.
-- **D66 tentative exits:** stale-class bugs were hub-specific (D67); overview
-  clear/rebuild must clear tentative styling each pass.
-- **Performance / mobile:** too many DOM nodes on large graphs -- pool and/or
-  viewport-cull in a later phase if needed; v1 targets IF-scale admitted sets.
-- **Mode flicker:** threshold without hysteresis could thrash Draw every wheel
-  step -- require hysteresis / latch.
-- **Gesture collision:** treating two pointer streams as independent drags causes jumps,
-  duplicate transforms, accidental room clicks, or a stuck drag after cancellation --
-  require one pointer registry/state machine, shared zoom primitive, and lifecycle cleanup.
-- **Browser takeover:** broad `touch-action:none` would break map-sheet/list scrolling;
-  scope gesture suppression to `#rooms-shell` while preserving accessible zoom buttons.
-- **Anti-spoiler regression:** using raw `isPlayerFacingRoom` / Known Rooms filter
-  alone would show named unvisited look-ahead — OverviewEligible is mandatory.
-- **Persistence regression:** mutating `LayoutX`/`LayoutY` for overview would leak
-  into `Save` — transient store required.
-- **Framing regression:** docs/comments must not re-collapse "12 layout slots" into
-  "12 directions only" (operator correction 2026-09-30).
-- **Empty overview:** Phase 1 skeleton must stay gated or ship with useful content.
-
-**Status.**
-
-**Implemented / validation pending (2026-10-01).** Codex re-audit ACCEPTED 2026-09-30; operator GO executed; shipped hub/overview LOD under the accepted contract. Compass/vocabulary framing correction and #949 anti-spoiler amendments remain in force. Independent live/package validation still open.
+Validate real mouse room selection and mobile touch interaction, Center, scale
+bounds, path alignment, map return input visibility and native restart. Stable
+anchors are retained solely for existing cross-references; no overview plan remains.
 
 <a id="pl-s315" data-chapter-id="pl-s315"></a><a id="pl-d203"></a>
 ## D203 Mobile left exit-rail readable-content safety
@@ -7774,7 +7394,7 @@ after Codex re-audit ACCEPT and operator authorization.
 
 **Implementation state (2026-10-01): IMPLEMENTED, pending independent live/package validation.** `StatTracker` now consumes stable BufferLine append/replacement spans, records submission/source provenance, correlates confirmed globals and player properties, preserves next-target EXP semantics, recognizes repeatable explicit death/win output, and fulfills command-only status serially at each Equipment open. The `off/shadow/on` valve defaults on; safe-idle gating covers drafts, dialogs, character prompts, and Navigator. Restore invalidates readings while retaining playthrough event fingerprints/counters. Object radial suggestions preserve semantic winners plus every distinct deterministic `ActionSynth` form, including confirmed `AttrCalibrator.allowedVerbsFor` learning, so enabling the cutover cannot silently remove `More...` pages.
 
-**2026-10-01 prompt/viewport repair (D204 + D202).** Probe ownership must never hide a live input's reusable BufferLine. The persistent DOM guard restores input-bearing stat/carry lines even after probe ownership ends, transferring quiet ownership to output children only. Probe scheduling, turn accounting, and status fulfillment remain unchanged. D202 hub explicitly hides the overview against later grid rules; Center draws once, and pinch scale retains continuous precision. Physical-device confirmation remains required.
+**2026-10-01 prompt/viewport repair (D204 + D202).** Probe ownership must never hide a live input's reusable BufferLine. The persistent DOM guard restores input-bearing stat/carry lines even after probe ownership ends, transferring quiet ownership to output children only. Probe scheduling, turn accounting, and status fulfillment remain unchanged. The original map is the sole renderer; Center draws once, and pinch scale retains continuous precision. Physical-device confirmation remains required.
 
 **Lifecycle:** PROPOSED / pre-GO. No runtime implementation is authorized until the
 standalone contract, this section, and architecture section 68 receive adversarial

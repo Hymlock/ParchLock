@@ -6,7 +6,7 @@ async function interactionAudit() {
     const browser = await chromium.launch({ headless: true });
     try {
         for (const width of [1400, 412]) {
-            const context = await browser.newContext({ viewport: { width, height: 915 } });
+            const context = await browser.newContext({ viewport: { width, height: 915 }, isMobile: width < 600, hasTouch: width < 600 });
             const page = await context.newPage();
             const errors = [];
             page.on('pageerror', error => errors.push(error.message));
@@ -30,10 +30,32 @@ async function interactionAudit() {
             const labels = await page.evaluate(id => {
                 Actionable.Open('real estate office door', 'object', 200, 300, id);
                 const labels = [...document.querySelectorAll('#radial-menu .radial-command')].map(el => el.textContent.trim());
-                document.getElementById('radial-menu')?.remove();
                 return labels;
             }, id);
             check(labels.length > 0 && labels.every(label => label.length < 24 && !/clarify|\(any\)/i.test(label)), 'short wheel labels');
+            for (let i = 0; i < 4 && !await page.locator('#radial-menu .radial-command').filter({ hasText: /^More$/ }).count(); i++) {
+                await page.locator('#radial-menu .radial-command').filter({ hasText: /^More\.\.\.$/ }).click();
+            }
+            await page.locator('#radial-menu .radial-command').filter({ hasText: /^More$/ }).click();
+            check(await page.locator('#radial-menu .radial-command').count() > 0, 'More opens vocabulary suggestions');
+            const beforeSuggestion = await page.locator('.Style_input').count();
+            await page.locator('#radial-menu .radial-command').first().click();
+            check(await page.evaluate(() => !!Input.Value()) && await page.locator('.Style_input').count() === beforeSuggestion, 'suggestion fills input without claiming or auto-submitting capability');
+            await page.evaluate(() => Input.Clear());
+            check(await page.evaluate(id => {
+                const original = AttrCalibrator.allowedVerbsFor;
+                const open = ParchLockQol.OpenRadial;
+                let offered = [];
+                try {
+                    AttrCalibrator.allowedVerbsFor = () => ['wave'];
+                    ParchLockQol.OpenRadial = (x, y, commands) => { offered = commands; };
+                    const slices = [];
+                    Actionable.addMoreActions(slices, { noun: 'door', kind: 'object', objectId: id }, 200, 300);
+                    slices.find(s => s.Label === 'More').Action();
+                    return offered.some(c => c.Label === 'Wave' && c.Command === 'wave door' && c.Enter === false);
+                } finally { AttrCalibrator.allowedVerbsFor = original; ParchLockQol.OpenRadial = open; }
+            }, id), 'learned provider remains connected to More');
+            await page.evaluate(() => ParchLockQol.HideRadialMenu());
             await submit('open trenchcoat');
             await page.evaluate(() => EquipmentUI.Show());
             await page.waitForTimeout(700);
@@ -45,9 +67,20 @@ async function interactionAudit() {
                 const target = page.locator('.equip-row[data-object-id="' + targetId + '"]');
                 await grip.scrollIntoViewIfNeeded();
                 const start = await grip.boundingBox(), end = await target.boundingBox();
+                if (width < 600) {
+                    const cdp = await context.newCDPSession(page);
+                    await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: start.x + start.width / 2, y: start.y + start.height / 2 }] });
+                    await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: end.x + end.width / 2, y: end.y + end.height / 2 }] });
+                    await page.evaluate(() => EquipmentUI.Render());
+                    await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+                    await cdp.detach();
+                    await page.waitForTimeout(1000);
+                    return;
+                }
                 await page.mouse.move(start.x + start.width / 2, start.y + start.height / 2);
                 await page.mouse.down();
                 await page.mouse.move(end.x + end.width / 2, end.y + end.height / 2, { steps: 12 });
+                await page.evaluate(() => EquipmentUI.Render());
                 await page.mouse.up();
                 await page.waitForTimeout(1000);
             };
@@ -55,14 +88,21 @@ async function interactionAudit() {
             check(await page.evaluate(({item, coat}) => WorldModel.lastPayload.inventory.find(o => o.id === item)?.parentId === coat, ids), 'real drag into coat');
             await drag(ids.player);
             check(await page.evaluate(({item, player}) => WorldModel.lastPayload.inventory.find(o => o.id === item)?.parentId === player, ids), 'real drag back onto Yourself');
+            ids.item = await page.evaluate(() => EquipmentUI.model().items.find(o => /wedding ring/.test(o.name)).id);
+            await drag(ids.coat);
+            check(await page.evaluate(({item, coat}) => WorldModel.lastPayload.inventory.find(o => o.id === item)?.parentId === coat, ids), 'real worn ring drop into trenchcoat');
             await page.evaluate(() => { EquipmentUI.Hide(); ParchLockMap.Show(); });
             await page.waitForTimeout(350);
+            const neighbor = page.locator('#rooms .room.shown:not(.dir-here)').first();
+            const expectedRoom = await neighbor.evaluate(el => $(el).data('room').Id);
+            await neighbor.click();
+            check(await page.evaluate(id => String(ParchLockMap.DisplayedRoomId) === String(id), expectedRoom), 'real mouse click selects neighboring map room');
             check(await page.evaluate(() => {
                 ParchLockMap.ResetViewport();
                 const nodes = [...document.querySelectorAll('#rooms .room.shown')];
                 for (const scale of [1, .8, .6, .45, .9, 1.4, 1]) {
                     ParchLockMap.SetScale(scale);
-                    if (ParchLockMap.MapMode !== 'hub' || getComputedStyle(document.getElementById('map-overview')).display !== 'none') return false;
+                    if (document.getElementById('map-overview') || ParchLockMap.Scale < .65 || ParchLockMap.Scale > 1.8) return false;
                     if (!nodes.every(el => el.isConnected && el.classList.contains('shown'))) return false;
                 }
                 ParchLockMap.ResetViewport();
@@ -84,7 +124,7 @@ async function interactionAudit() {
             await submit('yes');
             for (let i = 0; i < 12 && !await page.locator('.Input.LineInput').count(); i++) { await page.keyboard.press('Space'); await page.waitForTimeout(250); }
             await page.waitForTimeout(800);
-            check(await page.evaluate(() => ParchLockMap.Scale === 1 && ParchLockMap.MapMode === 'hub' && !ParchLockMap.Rooms.some(r => (r.Notes || []).includes('restart-regression'))), 'native restart resets map and camera');
+            check(await page.evaluate(() => ParchLockMap.Scale === 1 && ParchLockMap.PanX === 0 && ParchLockMap.PanY === 0 && !ParchLockMap.Rooms.some(r => (r.Notes || []).includes('restart-regression'))), 'native restart resets map and camera');
             check(errors.length === 0, 'no browser errors ' + errors.join('; '));
             await context.close();
         }

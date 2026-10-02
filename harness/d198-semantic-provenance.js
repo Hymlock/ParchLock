@@ -41,6 +41,14 @@ c.WorldModel.lastPayload = {
 };
 eq(c.AttrCalibrator._d198ScopedCorrelation("brass lamp"), { objectId: 7, context: "inventory" }, "same id is deduplicated and inventory scope wins");
 
+c.Actionable.referenceFor = o => ({ noun: o.noun, unique: true, verified: false });
+eq(c.AttrCalibrator._d198ScopedCorrelation("brass lamp"), { objectId: 7, context: "inventory", referenceVerified: false }, "custom parser retains legacy learning correlation");
+ok(!c.AttrCalibrator._recordD198Provenance({ verb: "read", objectId: 7, behavioralAccept: true,
+    d198Correlation: { objectId: 7, context: "inventory", referenceVerified: false } }), "custom-parser text alone does not grant new physical-object provenance");
+ok(c.AttrCalibrator._recordD198Provenance({ verb: "take", objectId: 7, success: true,
+    d198Correlation: { objectId: 7, context: "inventory", referenceVerified: false } }), "custom parser can learn from an opcode-state witness");
+delete c.Actionable.referenceFor;
+
 ok(c.AttrCalibrator._recordD198Provenance({
     verb: "take", objectId: 7, success: true, trace: [], at: 1,
     d198Correlation: { objectId: 7, context: "room" }

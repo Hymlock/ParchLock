@@ -203,14 +203,14 @@ decisions and their later mentions, not only the first matching record.
   [D201](PRODUCTION_PLAN.md#pl-d201) separates structural player/room/item identity
   from status and parser-derived labels. Blank labels are not blank identities, but
   only containment-proven rooms and held items may use the recovery path.
-- **Map zoom LOD / world overview:** [section 66](#ar-ch66) / [D202](PRODUCTION_PLAN.md#pl-d202) is implemented pending live/package validation. Hub chrome stays distinct from module direction vocabulary; overview uses OverviewEligible, transient coordinates, latched MapMode, and Id-based recenter.
+- **Original map controls:** [section 66](#ar-ch66) / [D202](PRODUCTION_PLAN.md#pl-d202) retains the original local-room renderer. The withdrawn overview/LOD implementation is removed; independent Center, gestures, path alignment and room-click fixes remain.
 - Some earlier status banners and diagrams describe old builds. This indexing change
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
 **Local manifest:** 93 headings; 0 decision rows; 93 registered units.
 **Last registered unit:** `ar-s093`. **Body SHA-256 (LF):**
-`f9a9f23bb9081e7333888b44e57822b0096407a84f5766dd95d85017373ba412`
+`ae72224ea8f635f965b28e9d1050438a3a714b4e04a00b0d2c9f0debbd2dc036`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -380,7 +380,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s088](#ar-s088) | 63. Inform Z3 declaration layout (D200) | H2 | Implemented |
 | [ar-s089](#ar-s089) | 64. D198 ZIL/Infocom composition architecture | H2 | Implemented / valves default off |
 | [ar-s090](#ar-s090) | 65. Unnamed early-Inform identity composition (D201) | H2 | Implemented / live-browser verified |
-| [ar-s091](#ar-s091) | 66. Map zoom LOD / world overview (D202) — IMPLEMENTED | H2 | Implemented / validation pending |
+| [ar-s091](#ar-s091) | 66. Original Map Controls (D202) | H2 | Original map retained / overview withdrawn |
 | [ar-s092](#ar-s092) | 67. Mobile side-rail readable-content geometry (D203) — IMPLEMENTED | H2 | Implemented / live-browser verified |
 | [ar-s093](#ar-s093) | 68. Holistic statistics evidence ledger (D204) - IMPLEMENTED | H2 | Implemented / validation pending |
 <!-- LOCAL-REGISTER:END -->
@@ -3356,92 +3356,35 @@ PRODUCTION_PLAN.md for verification and unresolved fixture/proof gates.
 
 **2026-10-01 shared interaction correction:** `referenceFor.unique` denotes one
 vocabulary candidate; `verified` additionally excludes unverified custom parsers.
-Click/drop use uniqueness, automatic calibration uses verification. A custom parser
+Click/drop and legacy verb learning use uniqueness; new D198 provenance requires
+verification or an opcode-state witness. A custom parser
 alone must not disable otherwise unique interaction. Ambiguous actions keep their
 learning exclusion but display short verb labels, not full commands. Native restart
 clears graph/notes/camera/gestures before payload recovery, unlike initial boot or
 restore-file. These are shared contracts, not module adapters.
 
+**Build 54 integration correction:** More must also exist for ambiguous/promoted
+objects and include module vocabulary plus retained learned verbs as editable
+suggestions, separate from proven semantic/legacy actions. Map captures pointer
+gestures on the pressed room to preserve mouse click targets. Equipment identifies
+the released target before any deferred render, then re-resolves physical IDs and
+containment against current inventory. Its bounded pending submission waits for
+silent probes only, respects drafts/modals/sheet visibility and restore generation,
+and never invents parser instance names. Real touch drops and desktop room selection
+are required integration coverage, not inferred from mouse-only mobile viewports.
+
 <a id="ar-s091" data-chapter-id="ar-s091"></a><a id="ar-ch66"></a>
-## 66. Map zoom LOD / world overview (D202) — IMPLEMENTED
+## 66. Original Map Controls (D202)
 
-**Lifecycle:** **IMPLEMENTED / validation pending** (2026-10-01). Architecture companion to
-[D202](PRODUCTION_PLAN.md#pl-d202). Shipped hub/overview LOD matches this section's
-required contracts (OverviewEligible, transient coords, latched MapMode, Id recenter,
-pinch/scale peers, real exit-key edges with system exit-N hub-mirror filtering).
+The operator withdrew the overview/LOD design on 2026-10-01. Its renderer,
+layout switch, transient overview coordinates, eligibility helpers and styles
+are removed. There is one original local-room map renderer at every scale.
 
-**Current production override (operator-authorized 2026-10-01):** automatic LOD
-switching is disabled through `OverviewEnabled: false` for all modules. The local
-hub remains active through wheel/button/pinch zoom; scale/pan transform its nodes
-and paths together. Center returns to scale 1/pan 0 and draws once. The overview
-design below remains inactive historical implementation; its enabled-mode claims
-and front summary are superseded. Shared navigation, room admission, notes and
-exit commands are unchanged. See the D202 stabilization amendment for validation.
-
-**Stable ID:** [ar-ch66](#ar-ch66) / `ar-s091`.
-**Scope:** `play.html` map canvas LOD only. Desktop and mobile. All catalog modules
-that already admit rooms into `ParchLockMap.Rooms[]`. No title adapters.
-**Contract (required):**
-
-- Two modes on one canvas family: **hub** (default / zoomed-in local neighborhood into
-  fixed `here`+`dir-*` chrome) and **overview** (zoomed-out layout of
-  OverviewEligible rooms).
-- Chrome ≠ vocabulary: twelve layout slots are positioning chrome; exit keys remain
-  module-built (compass / numbered / nautical / typed travel).
-- `OverviewEligible` is stricter than `isPlayerFacingRoom` alone: visited/current, or
-  intentionally hub-visible neighbor of DisplayedRoom; named unvisited look-ahead
-  stubs stay hidden.
-- Overview coordinates are **transient**; no `PL_Map_*` schema/migration churn.
-- Overview click sets DisplayedRoom by **Id**, preserves Scale/MapMode, recenters
-  overview; Reset/Center Current may return hub. Not a travel command surface.
-- Latched `MapMode` + graph/layout revision; `ApplyViewport`/pan/wheel must not
-  recursively redraw; invalidate on room/edge/name/note/delete/reset/import/restore/
-  module lifecycle and resize/orientation.
-- Mobile pinch/spread is a peer input to the same bounded scale primitive used by wheel
-  and zoom buttons. A two-pointer registry supplies distance ratio and live midpoint;
-  focal-point Pan compensation and MapMode hysteresis remain single-source.
-- Pinch owns the gesture while two pointers are active, sets `DragMoved` to suppress room
-  activation, re-baselines a remaining pointer back to pan without jumping, and clears on
-  pointer cancel/lost capture/map close/reset/module lifecycle. Browser gesture suppression
-  is scoped to `#rooms-shell`; controls and lists outside it keep normal touch behavior.
-- Edges: real exit-key labels, directed/one-way preserved, tentative distinguished,
-  no geometry from chrome vocabulary.
-- A11y/mobile: readable labels, ≥44px touch targets, keyboard focus/activation, ARIA
-  current/tentative; pan must not steal activation.
-- Empty overview must not ship ungated.
-
-**Contract (forbidden):** Replacing hub paint as the sole map product; masking hub;
-Alley/title layout hacks; spoiling look-ahead via raw Known Rooms filter; persisting
-overview layout on room records; deriving placement from `dir-*` slot names.
-
-**Implementation (shipped):** `Map.js` (mode/scale/draw/click), `MapBeautify.js`
-(layoutHints seed + overview layout pass), `MapTopology.js` (OverviewEligible),
-`WorkspaceUI.js` (DrawPaths), `ParchLock.css` / `play.html` chrome as needed.
-**Relationships:** Extends D63/D66/D67/D71/D112/D54/D80/D23/D30/D134; does not
-supersede hub or room-build pipeline. Plan authority: [D202](PRODUCTION_PLAN.md#pl-d202).
-**Evidence:** `harness/d202-map-overview.js`; implementation in `js/Map.js`, `js/MapBeautify.js`, `js/MapTopology.js`, `js/WorkspaceUI.js`, `css/ParchLock.css`. Live/package validation pending.
-
-```mermaid
-flowchart TD
-  Scale[Scale + hysteresis] --> Latch{MapMode latch}
-  Latch -->|hub| Hub[Draw local hub into dir-* chrome]
-  Latch -->|overview| Pred[OverviewEligible filter]
-  Pred --> Lay[Transient overview layout by room Id]
-  Lay --> Nodes[Pooled overview nodes]
-  Lay --> Edges[DrawPaths: real exit keys / directed / tentative]
-  Nodes -->|click by Id| Focus[Set DisplayedRoomId; keep overview; recenter]
-  Reset[ResetViewport / Center Current] --> Hub
-  Graph[Room/edge/name/note/lifecycle/resize] --> Rev[Bump layout revision]
-  Rev --> Lay
-  Gesture[Wheel / buttons / mobile pinch] --> ScalePath[Shared bounded scale + focal point]
-  ScalePath --> Latch
-  Pan[One-finger pan / pinch midpoint in same mode] --> CSS[ApplyViewport CSS only]
-```
-
-Chrome vs vocabulary and hub-vs-overview must be kept distinct in docs and code
-comments. layoutHints remains a list/floor seed, not the overview layout product.
-Pinch must use Pointer Events without a duplicate Touch Events path; two-pointer movement
-must not recursively rebuild overview while the latched mode and graph revision are stable.
+Keep existing Map/MapTopology/MapBeautify identity, exit, floor, note and travel
+owners. CSS scale/pan applies equally to room nodes and transform-independent
+connection geometry. Center resets scale/pan and draws the current room once.
+Preserve independent pointer click, touch, input recovery and restart fixes.
+No scale threshold changes the visible graph. Companion: [D202](PRODUCTION_PLAN.md#pl-d202).
 
 <a id="ar-s092" data-chapter-id="ar-s092"></a><a id="ar-ch67"></a>
 ## 67. Mobile side-rail readable-content geometry (D203) — IMPLEMENTED
@@ -3516,7 +3459,7 @@ clearing offset (cell = live Glk/CharCell advance).
 <a id="ar-s093" data-chapter-id="ar-s093"></a><a id="ar-ch68"></a>
 ## 68. Holistic statistics evidence ledger (D204) - IMPLEMENTED
 
-**2026-10-01 lifecycle invariant (D204/D202):** Quiet stat/carry output owns output nodes, never a live prompt container. A persistent MutationObserver repairs Glk BufferLine reuse after ownership ends while preserving hidden output and narrator exclusions. Viewport modes are mutually exclusive by selector specificity; Center delegates its single draw to ResetViewport, and pinch uses unrounded scale. No new interpreter, navigation, or statistics owner is introduced.
+**2026-10-01 lifecycle invariant (D204/D202):** Quiet stat/carry output owns output nodes, never a live prompt container. A persistent MutationObserver repairs Glk BufferLine reuse after ownership ends while preserving hidden output and narrator exclusions. The original local-room map is the sole renderer; Center delegates its single draw to ResetViewport, and pinch uses unrounded scale. No new interpreter, navigation, or statistics owner is introduced.
 
 **Lifecycle:** PROPOSED / pre-GO. Architecture companion to
 [D204](PRODUCTION_PLAN.md#pl-d204) and

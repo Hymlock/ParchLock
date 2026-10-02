@@ -695,6 +695,8 @@ var EquipmentUI = {
 
         var finish = function (e) {
             var d = EquipmentUI._drag;
+            var under = d && d.active ? EquipmentUI.rowAt(e.clientX, e.clientY) : null;
+            var targetId = under && under !== d.el && under._equipObj ? under._equipObj.id : null;
             EquipmentUI._drag = null;
             EquipmentUI.stopAutoScroll();
             if (!d) return;
@@ -707,12 +709,7 @@ var EquipmentUI = {
                 try { EquipmentUI.Render(); } catch (eR) {}
             }
             if (!d.active) return;                     // was a tap, not a drag
-            var x = (e && e.clientX != null) ? e.clientX : d.lastX;
-            var y = (e && e.clientY != null) ? e.clientY : d.lastY;
-            var under = EquipmentUI.rowAt(x, y);
-            if (!under || under === d.el || !under._equipObj) return;
-            var cmd = EquipmentUI.dropCommand(d.model, d.obj, under._equipObj);
-            if (cmd && typeof Actionable !== "undefined") Actionable.Submit(cmd);
+            if (targetId != null) EquipmentUI.submitDrop(d.id, targetId);
         };
         document.addEventListener("pointerup", finish);
         document.addEventListener("pointercancel", function () {
@@ -727,6 +724,31 @@ var EquipmentUI = {
                 try { EquipmentUI.Render(); } catch (eR) {}
             }
         });
+    },
+
+    submitDrop: function (itemId, targetId) {
+        var generation = typeof UndoRestoreSync !== "undefined" ? UndoRestoreSync.generation : 0;
+        var started = Date.now();
+        clearTimeout(EquipmentUI._dropTimer);
+        var attempt = function () {
+            if (!EquipmentUI.IsOpen() || Date.now() - started > 5000
+                || (typeof UndoRestoreSync !== "undefined" && UndoRestoreSync.generation !== generation)) return;
+            var input = document.querySelector('.Input.LineInput');
+            if (!input || (typeof StatTracker !== "undefined" && (StatTracker._probeActive || StatTracker._hideCarryProbe))) {
+                EquipmentUI._dropTimer = setTimeout(attempt, 100);
+                return;
+            }
+            // Never overwrite a draft or submit through a modal. Resolve the
+            // physical rows again after any probe, not from a stale drag model.
+            if (input.value || Message.IsOpen || document.getElementById('dialog')) return;
+            var m = EquipmentUI.model();
+            var item = m.byId[String(itemId)], target = m.byId[String(targetId)];
+            if (!target && String(m.playerId) === String(targetId)) target = { id: m.playerId, self: true };
+            if (!item || !target) return;
+            var command = EquipmentUI.dropCommand(m, item, target);
+            if (command) Actionable.Submit(command);
+        };
+        attempt();
     },
 
     // D126: a translucent replica of the line you picked up, following the
@@ -801,6 +823,8 @@ var EquipmentUI = {
     },
 
     Hide: function () {
+        clearTimeout(EquipmentUI._dropTimer);
+        EquipmentUI._dropTimer = null;
         document.body.classList.remove("equip-open");
     },
 

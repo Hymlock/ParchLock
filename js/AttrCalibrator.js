@@ -79,7 +79,7 @@ var AttrCalibrator = {
             var byId = {};
             (p.discoveredObjects || []).concat(p.inventory || []).forEach(function (obj) {
                 if (!obj || obj.id == null) return;
-                if (typeof Actionable !== "undefined" && Actionable.referenceFor && !Actionable.referenceFor(obj).verified) return;
+                if (typeof Actionable !== "undefined" && Actionable.referenceFor && !Actionable.referenceFor(obj).unique) return;
                 var rendered = obj.name;
                 try {
                     if (typeof Actionable !== "undefined" && Actionable.referenceFor) rendered = Actionable.referenceFor(obj).noun;
@@ -92,12 +92,19 @@ var AttrCalibrator = {
             if (ids.length !== 1) return null;
             var id = byId[ids[0]];
             var inInventory = (p.inventory || []).some(function (obj) { return obj && String(obj.id) === String(id); });
-            return { objectId: id, context: inInventory ? "inventory" : "room" };
+            var obj = (p.discoveredObjects || []).concat(p.inventory || []).find(function (o) { return String(o.id) === String(id); });
+            var verified = typeof Actionable === "undefined" || !Actionable.referenceFor || Actionable.referenceFor(obj).verified;
+            var correlation = { objectId: id, context: inInventory ? "inventory" : "room" };
+            if (!verified) correlation.referenceVerified = false;
+            return correlation;
         } catch (e) { return null; }
     },
 
     _recordD198Provenance: function (entry) {
         if (!entry || !entry.d198Correlation || entry.ambiguous || entry.rejected) return false;
+        // Legacy learning may still observe custom parsers. New object-specific
+        // provenance requires an opcode-state witness when the reference is unverified.
+        if (entry.d198Correlation.referenceVerified === false && !entry.success) return false;
         if (String(entry.d198Correlation.objectId) !== String(entry.objectId)) return false;
         var verb = AttrCalibrator.normalizeVerb(entry.verb);
         var digest = AttrCalibrator._d198ExecutableDigest();
@@ -708,7 +715,7 @@ var AttrCalibrator = {
                 if (!o) return false;
                 if (typeof Actionable !== "undefined" && Actionable.referenceFor) {
                     var reference = Actionable.referenceFor(o);
-                    if (!reference.verified) return false;
+                    if (!reference.unique) return false;
                     if (String(reference.noun).toLowerCase() === noun) return true;
                 }
                 if (String(o.name).toLowerCase() === noun) return true;

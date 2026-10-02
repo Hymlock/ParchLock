@@ -1430,6 +1430,33 @@ var Actionable = {
         // never disagree about what the player is carrying.
         try { if (typeof EquipmentUI !== "undefined" && EquipmentUI.Render) EquipmentUI.Render(); } catch (e) {}
     },
+    addMoreActions: function (slices, context, x, y) {
+        if (context.kind === "direction") return;
+        var suggestions = [], seen = {};
+        var obj = Actionable.payloadPool().find(function (o) { return String(o.id) === String(context.objectId); });
+        var noun = obj ? Actionable.referenceFor(obj).noun : context.noun;
+        var add = function (verb) {
+            verb = String(verb || '').trim();
+            if (!verb || seen[verb.toLowerCase()]) return;
+            seen[verb.toLowerCase()] = true;
+            var command = verb + ' ' + noun;
+            suggestions.push({ Label: verb.charAt(0).toUpperCase() + verb.slice(1), Command: command, Enter: false, Score: 30 });
+        };
+        // These are vocabulary suggestions, not claims of object capability.
+        // Selection fills the prompt for confirmation; existing proven actions
+        // and learned forms remain in the normal command resolver.
+        try {
+            ParchLockQol.GetRadialCommands().forEach(function (c) {
+                if (c.source === 'dictionary-verb' || c.source === 'ram-synth') add(c.Command.trim());
+            });
+            if (obj && typeof AttrCalibrator !== 'undefined' && AttrCalibrator.allowedVerbsFor) {
+                AttrCalibrator.allowedVerbsFor(obj.id).forEach(add);
+            }
+        } catch (e) {}
+        if (suggestions.length) slices.push({ Label: 'More', Score: 0, Action: function () {
+            ParchLockQol.OpenRadial(x, y, suggestions, context);
+        } });
+    },
     Open: (noun, kind, x, y, objectId) => {
         var object = Actionable.payloadPool().find(function (o) { return String(o.id) === String(objectId); });
         if (!objectId || (object && !Actionable.referenceFor(object).unique)) {
@@ -1451,7 +1478,9 @@ var Actionable = {
                     var inspect = typeof ActionSynth !== "undefined" && !ActionSynth.inspectVerbDisabled() ? ActionSynth.defaultInspectVerb() : "";
                     if (inspect && !ambiguity.length) ambiguity.push({ Label: "Specify...", Action: function () { Input.Clear(); Input.Inject(inspect + " " + noun, false); Input.Focus(); } });
                 }
-                ParchLockQol.OpenRadial(x, y, ambiguity, { source: "text", noun: noun, kind: kind, objectId: null });
+                var ambiguousContext = { source: "text", noun: noun, kind: kind, objectId: null };
+                Actionable.addMoreActions(ambiguity, ambiguousContext, x, y);
+                ParchLockQol.OpenRadial(x, y, ambiguity, ambiguousContext);
                 return;
             }
         }
@@ -1571,6 +1600,7 @@ var Actionable = {
                     return o && String(o.id) === String(objectId);
                 });
                 if (srcObj && srcObj.examineOnly) {
+                    Actionable.addMoreActions(slices, context, x, y);
                     ParchLockQol.OpenRadial(x, y, slices, context);
                     return;
                 }
@@ -1617,6 +1647,7 @@ var Actionable = {
                 }
             } catch (eAsk) {}
         }
+        Actionable.addMoreActions(slices, context, x, y);
         ParchLockQol.OpenRadial(x, y, slices, context);
     }
 };
