@@ -148,13 +148,13 @@ decisions and their later mentions, not only the first matching record.
 | System / search aliases | Architecture starting sections; plan follow-ups | Contract and dependent systems |
 |---|---|---|
 | Engine/provider; RAM, compiler, ZRamReader, WorldModel | Sections [2](#ar-ch2), [3](#ar-ch3), [4](#ar-ch4), [5](#ar-ch5), [15](#ar-ch15), [22](#ar-ch22), [23](#ar-ch23), [24](#ar-ch24), [27](#ar-ch27), [28](#ar-ch28), [29](#ar-ch29), [64](#ar-ch64), [65](#ar-ch65); [D134](PRODUCTION_PLAN.md#pl-d134)/[D151](PRODUCTION_PLAN.md#pl-d151)/[D158](PRODUCTION_PLAN.md#pl-d158)/[D170](PRODUCTION_PLAN.md#pl-d170)-[D171](PRODUCTION_PLAN.md#pl-d171)/[D198](PRODUCTION_PLAN.md#pl-d198)/[D201](PRODUCTION_PLAN.md#pl-d201) | Keep structural identity and capability-selected parallel providers; check commands, mapping and caches. |
-| Commands/actionables; inspect, parser nouns, spells; Actionable, ActionSynth, SemanticActions | Sections [23](#ar-ch23), [28](#ar-ch28), [42](#ar-ch42), [59](#ar-ch59), [64](#ar-ch64), [65](#ar-ch65); [D141](PRODUCTION_PLAN.md#pl-d141)-[D148](PRODUCTION_PLAN.md#pl-d148)/[D184](PRODUCTION_PLAN.md#pl-d184)/[D198](PRODUCTION_PLAN.md#pl-d198)/[D201](PRODUCTION_PLAN.md#pl-d201) | Evidence and scope govern exact parser commands; dictionary words alone are not semantic proof. Check inventory, radials and calibration. |
+| Commands/actionables; inspect, parser nouns, spells; Actionable, ActionSynth, SemanticActions | Sections [23](#ar-ch23), [28](#ar-ch28), [42](#ar-ch42), [59](#ar-ch59), [64](#ar-ch64), [65](#ar-ch65); [D141](PRODUCTION_PLAN.md#pl-d141)-[D148](PRODUCTION_PLAN.md#pl-d148)/[D184](PRODUCTION_PLAN.md#pl-d184)/[D198](PRODUCTION_PLAN.md#pl-d198)/[D201](PRODUCTION_PLAN.md#pl-d201)/[D205](PRODUCTION_PLAN.md#pl-d205) | Evidence and scope govern exact parser commands; dictionary words alone are not semantic proof. Check inventory, radials and calibration. |
 | Mapping/travel; room ID, exits; MapTopology, Navigator, ExitCalibrator | Sections [8](#ar-ch8), [25](#ar-ch25), [26](#ar-ch26), [29](#ar-ch29), [46](#ar-ch46), [64](#ar-ch64), [65](#ar-ch65), [66](#ar-ch66); [D134](PRODUCTION_PLAN.md#pl-d134)/[D138](PRODUCTION_PLAN.md#pl-d138)-[D140](PRODUCTION_PLAN.md#pl-d140)/[D155](PRODUCTION_PLAN.md#pl-d155)/[D161](PRODUCTION_PLAN.md#pl-d161)-[D165](PRODUCTION_PLAN.md#pl-d165)/[D170](PRODUCTION_PLAN.md#pl-d170)-[D171](PRODUCTION_PLAN.md#pl-d171)/[D198](PRODUCTION_PLAN.md#pl-d198)/[D201](PRODUCTION_PLAN.md#pl-d201)/[D202](PRODUCTION_PLAN.md#pl-d202) | Preserve identities, non-compass commands and path transitions. Check providers, notes, restore and directional consumers. |
-| Radials/arrow pad; native HELP, usage; DirectionalRadial, CharKeys, Qol | Sections [40](#ar-ch40), [44](#ar-ch44), [45](#ar-ch45), [51](#ar-ch51), [52](#ar-ch52), [53](#ar-ch53); [D120](PRODUCTION_PLAN.md#pl-d120)/[D161](PRODUCTION_PLAN.md#pl-d161) | Separate travel and character-key modes, preserve lifecycle/exclusion and exactly-once activation. Check input, settings, startup and tutorial. |
+| Radials/arrow pad; native HELP, usage; DirectionalRadial, CharKeys, Qol | Sections [40](#ar-ch40), [44](#ar-ch44), [45](#ar-ch45), [51](#ar-ch51), [52](#ar-ch52), [53](#ar-ch53); [D120](PRODUCTION_PLAN.md#pl-d120)/[D161](PRODUCTION_PLAN.md#pl-d161)/[D205](PRODUCTION_PLAN.md#pl-d205) | Separate travel and character-key modes, preserve lifecycle/exclusion and exactly-once activation. Check input, settings, startup and tutorial. |
 | Input/layout; keyboard, character cell, status banner; MobileLayout, Input | Sections [30](#ar-ch30), [31](#ar-ch31), [32](#ar-ch32), [33](#ar-ch33), [36](#ar-ch36), [37](#ar-ch37), [38](#ar-ch38), [39](#ar-ch39), [40](#ar-ch40), [50](#ar-ch50), [53](#ar-ch53), [55](#ar-ch55), [67](#ar-ch67); [D137](PRODUCTION_PLAN.md#pl-d137)/[D156](PRODUCTION_PLAN.md#pl-d156)/[D166](PRODUCTION_PLAN.md#pl-d166)/[D168](PRODUCTION_PLAN.md#pl-d168)/[D172](PRODUCTION_PLAN.md#pl-d172)/[D203](PRODUCTION_PLAN.md#pl-d203) | Respect VM-owned grid cells and input intent; check sheets, overlays, narrator, side rails and desktop/mobile geometry. |
 | Narrator/mic; speech, TTS; ReadAloud, VoiceInput | Sections [32](#ar-ch32), [39](#ar-ch39), [43](#ar-ch43); [D109](PRODUCTION_PLAN.md#pl-d109)/[D133](PRODUCTION_PLAN.md#pl-d133)/[D159](PRODUCTION_PLAN.md#pl-d159)/[D166](PRODUCTION_PLAN.md#pl-d166)-[D167](PRODUCTION_PLAN.md#pl-d167) | Spoken text and display differ deliberately; preserve complete-turn and voice-mode contracts. Check tutorial, auto-travel and native/web adapters. |
 | Restore/storage; undo, new game; UndoRestoreSync | Sections [31](#ar-ch31), [35](#ar-ch35), [41](#ar-ch41); [D178](PRODUCTION_PLAN.md#pl-d178)/[D180](PRODUCTION_PLAN.md#pl-d180)-[D183](PRODUCTION_PLAN.md#pl-d183) | Restore synchronizes dependent state; cached readings cannot masquerade as current facts. Check map, notes, narration, calibration and tracking. |
-| Notes/equipment; inventory, Known Rooms; Map, EquipmentUI | Sections [5](#ar-ch5), [26](#ar-ch26), [46](#ar-ch46), [56](#ar-ch56), [59](#ar-ch59), [66](#ar-ch66); [D125](PRODUCTION_PLAN.md#pl-d125)-[D128](PRODUCTION_PLAN.md#pl-d128)/[D131](PRODUCTION_PLAN.md#pl-d131)/[D148](PRODUCTION_PLAN.md#pl-d148)/[D168](PRODUCTION_PLAN.md#pl-d168)-[D169](PRODUCTION_PLAN.md#pl-d169)/[D174](PRODUCTION_PLAN.md#pl-d174)/[D184](PRODUCTION_PLAN.md#pl-d184) | Preserve identity-scoped notes and nested inventory; check commands, sheets, stats and saves. |
+| Notes/equipment; inventory, Known Rooms; Map, EquipmentUI | Sections [5](#ar-ch5), [26](#ar-ch26), [46](#ar-ch46), [56](#ar-ch56), [59](#ar-ch59), [66](#ar-ch66); [D125](PRODUCTION_PLAN.md#pl-d125)-[D128](PRODUCTION_PLAN.md#pl-d128)/[D131](PRODUCTION_PLAN.md#pl-d131)/[D148](PRODUCTION_PLAN.md#pl-d148)/[D168](PRODUCTION_PLAN.md#pl-d168)-[D169](PRODUCTION_PLAN.md#pl-d169)/[D174](PRODUCTION_PLAN.md#pl-d174)/[D184](PRODUCTION_PLAN.md#pl-d184)/[D205](PRODUCTION_PLAN.md#pl-d205) | Preserve identity-scoped notes and nested inventory; check commands, sheets, stats and saves. |
 | Tutorial/library; onboarding, favorites; Tutorial, MainMenu, ModuleLibrary | Sections [35](#ar-ch35), [38](#ar-ch38), [54](#ar-ch54), [57](#ar-ch57); [D130](PRODUCTION_PLAN.md#pl-d130)/[D132](PRODUCTION_PLAN.md#pl-d132)/[D136](PRODUCTION_PLAN.md#pl-d136)/[D149](PRODUCTION_PLAN.md#pl-d149)/[D160](PRODUCTION_PLAN.md#pl-d160)/[D166](PRODUCTION_PLAN.md#pl-d166)-[D167](PRODUCTION_PLAN.md#pl-d167) | Sections [57](#ar-ch57) revises section 54's isolated lifecycle. Check readiness, speech, settings, sheets and splash. |
 | Character/status; score, health, level, strength, weight, badge; StatTracker | Sections [60](#ar-ch60), [65](#ar-ch65), [68](#ar-ch68); [D157](PRODUCTION_PLAN.md#pl-d157)/[D167](PRODUCTION_PLAN.md#pl-d167)/[D169](PRODUCTION_PLAN.md#pl-d169)/[D173](PRODUCTION_PLAN.md#pl-d173)-[D176](PRODUCTION_PLAN.md#pl-d176)/[D178](PRODUCTION_PLAN.md#pl-d178)/[D180](PRODUCTION_PLAN.md#pl-d180)-[D183](PRODUCTION_PLAN.md#pl-d183)/[D201](PRODUCTION_PLAN.md#pl-d201)/[D204](PRODUCTION_PLAN.md#pl-d204) | Baseline diagram requires later plan amendments; preserve provenance, fallback and reset rules. Check inventory, VM grid and persistence. |
 | Packaging/navigation/export; APK, Back, PC; Global, ProductInfo, make-dist | Sections [30](#ar-ch30), [34](#ar-ch34), [35](#ar-ch35), [47](#ar-ch47), [48](#ar-ch48), [49](#ar-ch49), [53](#ar-ch53), [55](#ar-ch55), [58](#ar-ch58); [D99](PRODUCTION_PLAN.md#pl-d99)/[D119](PRODUCTION_PLAN.md#pl-d119)/[D121](PRODUCTION_PLAN.md#pl-d121)/[D129](PRODUCTION_PLAN.md#pl-d129) | Respect runtime allowlists, intentional navigation and current native-save contract. Check caches, startup and native integrations. |
@@ -203,14 +203,15 @@ decisions and their later mentions, not only the first matching record.
   [D201](PRODUCTION_PLAN.md#pl-d201) separates structural player/room/item identity
   from status and parser-derived labels. Blank labels are not blank identities, but
   only containment-proven rooms and held items may use the recovery path.
+- **Yourself hold RPG radial:** [section 69](#ar-ch69) / [D205](PRODUCTION_PLAN.md#pl-d205) proposes dictionary-gated inventory/RPG verbs on long-hold over Yourself; short drop remains take. AttrCalibrator persists confirmations; no invented verbs.
 - **Original map controls:** [section 66](#ar-ch66) / [D202](PRODUCTION_PLAN.md#pl-d202) retains the original local-room renderer. The withdrawn overview/LOD implementation is removed; independent Center, gestures, path alignment and room-click fixes remain.
 - Some earlier status banners and diagrams describe old builds. This indexing change
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 93 headings; 0 decision rows; 93 registered units.
-**Last registered unit:** `ar-s093`. **Body SHA-256 (LF):**
-`8eb6950a5f27f470597d828f9a9d5f4b37aa6f4c3644f82309534676478e191e`
+**Local manifest:** 94 headings; 0 decision rows; 94 registered units.
+**Last registered unit:** `ar-s094`. **Body SHA-256 (LF):**
+`ee7956682e9dba833bfcdbf27c5656e2bda8e278d8cc8cf9aa2fbd8838536d03`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -383,6 +384,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s091](#ar-s091) | 66. Original Map Controls (D202) | H2 | Original map retained / overview withdrawn |
 | [ar-s092](#ar-s092) | 67. Mobile side-rail readable-content geometry (D203) — IMPLEMENTED | H2 | Implemented / live-browser verified |
 | [ar-s093](#ar-s093) | 68. Holistic statistics evidence ledger (D204) - IMPLEMENTED | H2 | Implemented / validation pending |
+| [ar-s094](#ar-s094) | 69. Yourself hold radial for inventory/RPG verbs (D205) — PROPOSED | H2 | Proposed |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -3557,3 +3559,43 @@ legacy and ledger paths cannot both publish UI/events. Existing v3 seeding, Wump
 and carry metrics, carry property learning, D198 valves, numbered exits, D201 unnamed-room
 identity and `StatusGridDecoder` translation remain independent hard gates. No title,
 threshold, slot, property or death-phrase adapter is allowed.
+
+<a id="ar-s094" data-chapter-id="ar-s094"></a><a id="ar-ch69"></a>
+## 69. Yourself hold radial for inventory/RPG verbs (D205) — PROPOSED
+
+**Lifecycle:** Proposed. Documentation contract only; no runtime implementation is
+authorized until this section and [PRODUCTION_PLAN.md D205](PRODUCTION_PLAN.md#pl-d205)
+pass operator adversarial review.
+
+**Contract.** Equipment-sheet Pointer Events drag (section 56 / D122) keeps short
+release on the Yourself node as `take <noun>`. A long dwell while the drag pointer
+remains over Yourself opens a compass-style radial whose verb set is:
+
+`(curated inventory/RPG filter ∪ attribute shortcuts) ∩ module dictionary`
+
+after existing ActionSynth positional suppression. Dictionary membership uses
+`Actionable.isGameWord` / `ZRamReader.hasDictionaryWord` (section 59). Confirmed
+successes persist through `AttrCalibrator` per-module learning, not
+`Actionable.VerifiedNouns`.
+
+**Forbidden.** Offering verbs absent from the loaded module's dictionary; inventing
+synonyms when research shows a word is missing (RoTA has no `wield` — that absence
+must remain silent); parallel verb caches; title-specific branches; changing
+non-Yourself drop legality; auto-submitting `take` after the hold radial opens.
+
+```mermaid
+flowchart TD
+  Drag[Grip drag active] --> Over{Pointer over Yourself?}
+  Over -->|no| Drop[Existing put/take drop rules]
+  Over -->|yes short release| Take["take noun"]
+  Over -->|yes dwell past threshold| Gate[Curated filter AND isGameWord AND ActionSynth position]
+  Gate -->|empty| None[Honest empty / dismiss — no invented verbs]
+  Gate -->|candidates| Radial[Compass-style OpenRadial]
+  Radial --> Submit[Input.Inject dictionary-owned command]
+  Submit --> Learn[AttrCalibrator confirm and persist]
+```
+
+**Relationships.** Extends section 56 drag/drop and section 59 dictionary arbiter.
+Composes ActionSynth + AttrCalibrator; does not replace ordinary object radials or
+directional UI. Plan authority: D205.
+

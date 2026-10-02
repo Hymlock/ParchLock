@@ -148,13 +148,13 @@ decisions and their later mentions, not only the first matching record.
 | System / search aliases | Starting decisions | Contract and dependent systems |
 |---|---|---|
 | Engine/provider; RAM, compiler, grammar; ZRamReader, ZRamProvider, WorldModel | [D17](#pl-d17)-[D24](#pl-d24), [D61](#pl-d61), [D73](#pl-d73), [D80](#pl-d80)-[D89](#pl-d89), [D134](#pl-d134), [D151](#pl-d151), [D158](#pl-d158), [D170](#pl-d170)-[D171](#pl-d171), [D198](#pl-d198), [D201](#pl-d201) | Preserve capability-selected parallel providers; names are labels, not identity. Check mapping, object scope, commands, caches and restore. |
-| Commands/actionables; inspect, examine, parser noun, spells; Actionable, ActionSynth, SemanticActions, GrammarProvider | D21, [D34](#pl-d34), [D58](#pl-d58), [D64](#pl-d64), [D70](#pl-d70), [D82](#pl-d82), [D88](#pl-d88), [D107](#pl-d107), [D141](#pl-d141)-[D148](#pl-d148), [D184](#pl-d184), [D198](#pl-d198), [D201](#pl-d201) | Use evidenced parser-owned forms and scoped objects; lexical membership alone does not establish semantic safety. Check inventory, radials, input, calibration and room changes. |
+| Commands/actionables; inspect, examine, parser noun, spells; Actionable, ActionSynth, SemanticActions, GrammarProvider | D21, [D34](#pl-d34), [D58](#pl-d58), [D64](#pl-d64), [D70](#pl-d70), [D82](#pl-d82), [D88](#pl-d88), [D107](#pl-d107), [D141](#pl-d141)-[D148](#pl-d148), [D184](#pl-d184), [D198](#pl-d198), [D201](#pl-d201), [D205](#pl-d205) | Use evidenced parser-owned forms and scoped objects; lexical membership alone does not establish semantic safety. Check inventory, radials, input, calibration and room changes. |
 | Mapping/travel; exits, compass, room ID; Map, MapTopology, Navigator, ExitCalibrator | [D23](#pl-d23), [D30](#pl-d30), [D47](#pl-d47)-[D63](#pl-d63), [D80](#pl-d80), [D84](#pl-d84), [D112](#pl-d112), [D134](#pl-d134), [D138](#pl-d138)-[D140](#pl-d140), [D155](#pl-d155), [D161](#pl-d161)-[D165](#pl-d165), [D170](#pl-d170)-[D171](#pl-d171), [D198](#pl-d198), [D201](#pl-d201), [D202](#pl-d202) | Preserve structural identities and actual travel commands, including non-compass/multiword exits. Check providers, actionables, notes, directional UI and restore. |
-| Radials/directions; arrow pad, native HELP, usage pill; DirectionalRadial, CharKeys, Qol | [D105](#pl-d105), [D110](#pl-d110)-[D111](#pl-d111), [D117](#pl-d117)-[D119](#pl-d119), [D120](#pl-d120), [D161](#pl-d161) | Distinguish travel from native character keys, maintain ownership/exclusion and exactly-once activation. Check input, startup, settings, tutorial, mobile and desktop. |
+| Radials/directions; arrow pad, native HELP, usage pill; DirectionalRadial, CharKeys, Qol | [D105](#pl-d105), [D110](#pl-d110)-[D111](#pl-d111), [D117](#pl-d117)-[D119](#pl-d119), [D120](#pl-d120), [D161](#pl-d161), [D205](#pl-d205) | Distinguish travel from native character keys, maintain ownership/exclusion and exactly-once activation. Check input, startup, settings, tutorial, mobile and desktop. |
 | Input/layout; keyboard, viewport, character cell, status banner; Input, MobileLayout, CharCell | [D93](#pl-d93)-[D96](#pl-d96), [D101](#pl-d101)-[D105](#pl-d105), [D116](#pl-d116), [D119](#pl-d119), [D121](#pl-d121), [D137](#pl-d137), [D156](#pl-d156), [D166](#pl-d166), [D168](#pl-d168), [D172](#pl-d172), [D203](#pl-d203) | Preserve VM grid geometry and keyboard intent; gate overlays and prevent clipping. Check narrator, mic, sheets, side rails, safe area and native menus. |
 | Narrator/voice; TTS, speech, microphone; ReadAloud, VoiceInput | [D95](#pl-d95), [D100](#pl-d100), [D104](#pl-d104), [D108](#pl-d108)-[D109](#pl-d109), [D133](#pl-d133), [D159](#pl-d159), [D166](#pl-d166)-[D167](#pl-d167) | Separate spoken payload from display, preserve complete output and current voice-mode contract. Check turn boundaries, auto-travel, tutorial and Android/desktop adapters. |
 | Restore/storage; undo, restart, new game; UndoRestoreSync, WorkspaceUI | [D94](#pl-d94), [D98](#pl-d98)-[D99](#pl-d99), [D106](#pl-d106), [D178](#pl-d178), [D180](#pl-d180)-[D183](#pl-d183) | Resynchronize all dependent state on genuine lifecycle boundaries; persisted readings are not current facts. Check mapping, notes, speech, calibration, tracking and module identity. |
-| Map notes/equipment; Known Rooms, inventory, held containers; Map, EquipmentUI | [D31](#pl-d31), [D48](#pl-d48), [D59](#pl-d59), [D75](#pl-d75), [D112](#pl-d112), [D122](#pl-d122), [D125](#pl-d125)-[D128](#pl-d128), [D131](#pl-d131), [D148](#pl-d148), [D168](#pl-d168)-[D169](#pl-d169), [D174](#pl-d174), [D184](#pl-d184) | Keep notes tied to room identity and inventory scoped/nested; preserve sheet interaction and visibility rules. Check commands, search, layout, tracking and saves. |
+| Map notes/equipment; Known Rooms, inventory, held containers; Map, EquipmentUI | [D31](#pl-d31), [D48](#pl-d48), [D59](#pl-d59), [D75](#pl-d75), [D112](#pl-d112), [D122](#pl-d122), [D125](#pl-d125)-[D128](#pl-d128), [D131](#pl-d131), [D148](#pl-d148), [D168](#pl-d168)-[D169](#pl-d169), [D174](#pl-d174), [D184](#pl-d184), [D205](#pl-d205) | Keep notes tied to room identity and inventory scoped/nested; preserve sheet interaction and visibility rules. Check commands, search, layout, tracking and saves. |
 | Tutorial/library; onboarding, favorites, Done; Tutorial, MainMenu, ModuleLibrary | [D98](#pl-d98), [D103](#pl-d103), [D120](#pl-d120), [D124](#pl-d124), [D130](#pl-d130), [D132](#pl-d132), [D136](#pl-d136), [D149](#pl-d149), [D160](#pl-d160), [D166](#pl-d166)-[D167](#pl-d167) | Follow live-tour amendments over retired isolated-route behavior; keep readiness and overlay gates. Check splash, speech, equipment, settings and library state. |
 | Character/status; score, weight, health, level, strength, badges; StatTracker | [D137](#pl-d137), [D149](#pl-d149), [D157](#pl-d157), [D167](#pl-d167), [D169](#pl-d169), [D173](#pl-d173)-[D176](#pl-d176), [D178](#pl-d178), [D180](#pl-d180)-[D183](#pl-d183), [D201](#pl-d201) | Distinguish observations from trusted sources; preserve provenance and lifecycle resets. Check inventory, VM windows, events, persistence and narrator/audio. |
 | Packaging/navigation; APK, PC launcher, export, Back; Global, ProductInfo, build-android, make-dist | [D98](#pl-d98)-[D99](#pl-d99), [D113](#pl-d113)-[D115](#pl-d115), [D119](#pl-d119)-[D121](#pl-d121), [D129](#pl-d129) | Preserve intentional app navigation and device export; follow runtime allowlists and exclude internal plans/tests. Check caches, Android plugins, module library and startup. |
@@ -203,14 +203,15 @@ decisions and their later mentions, not only the first matching record.
   plans a shared player/location/display/inventory recovery for compiler-owned objects
   with blank short names. It may extend D184's parser-vocabulary lane, but it may not
   weaken D164's room rejection, override D84/D171, or make status text an identity source.
+- **Yourself hold RPG radial:** [D205](#pl-d205) proposes long-hold dwell on the equipment Yourself drop target to open a dictionary∩curated inventory/RPG verb radial; short release remains `take <noun>`. Confirmed verbs persist via AttrCalibrator, not VerifiedNouns. No invented verbs (D24); RoTA lacks `wield` in-dict.
 - **Original map retained:** [D202](#pl-d202) records withdrawal and removal of the overview/LOD implementation. Scaling retains the original local-room renderer and bounds; independent Center, gesture, path-alignment and interaction fixes remain. Architecture companion: [ARCHITECTURE_UML.md section 66](ARCHITECTURE_UML.md#ar-ch66).
 - Some earlier status banners and diagrams describe old builds. This indexing change
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 316 headings; 103 decision rows; 419 registered units.
-**Last registered unit:** `pl-s316`. **Body SHA-256 (LF):**
-`2ce3ba4c321fed251b307b47cbe184d0cdf0c5a34af07a7f86513ccf33ba335e`
+**Local manifest:** 317 headings; 103 decision rows; 420 registered units.
+**Last registered unit:** `pl-s317`. **Body SHA-256 (LF):**
+`e9ea1686f2f54e717a8b2f52fa22ffccae03871e4934fee384cc8880af7b6578`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -709,6 +710,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s314](#pl-s314) | D202 Original Map Controls | H2 | Original map retained / overview withdrawn |
 | [pl-s315](#pl-s315) | D203 Mobile left exit-rail readable-content safety | H2 | Implemented / live-browser verified |
 | [pl-s316](#pl-s316) | D204 Holistic statistics discovery and repeatable event monitoring | H2 | Implemented / validation pending |
+| [pl-s317](#pl-s317) | D205 Drag-and-hold on Yourself inventory/RPG action radial | H2 | Proposed |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -7487,3 +7489,150 @@ The legacy writer and new analyzer are compare-only during shadow mode. Cutover 
 LLR, RoTA, Zork, Deadline, Planetfall, Anchorhead, Wumpus, Slavers, Enchanter, LDoDoom and
 all D198/D201 isolation controls on desktop/mobile, plus a no-command census of every
 non-Glulx module. Only after parity may packaging/cache/APK and user documentation update.
+
+<a id="pl-s317" data-chapter-id="pl-s317"></a><a id="pl-d205"></a>
+## D205 Drag-and-hold on Yourself: inventory/RPG action radial — PROPOSED
+
+**Lifecycle:** Proposed. Plan/docs only. No runtime JS implementation is authorized
+until this section and architecture section 69 receive operator adversary acceptance.
+Implementation status and verification remain separate from this draft.
+
+**Stable ID:** `pl-d205` / `pl-s317`. **Companion architecture:** [ARCHITECTURE_UML.md section 69](ARCHITECTURE_UML.md#ar-ch69).
+
+**Scope.** Desktop and mobile equipment-sheet Pointer Events drag (D122/D125/D127).
+Engine/capability boundary: structural Z/Glulx inventory payloads already required for
+the equipment sheet. Dictionary membership uses the existing
+`Actionable.isGameWord` / `ZRamReader.hasDictionaryWord` arbiter (D146). Learning
+reuses `AttrCalibrator` per-module persistence (D73/D85/D86), not ephemeral
+`Actionable.VerifiedNouns`. Platforms: same Pointer Events path for phone and desktop;
+no HTML5 DnD.
+
+**Problem and agreed product behavior.** Today, releasing a dragged inventory row onto
+the Yourself node always submits `take <noun>` (`EquipmentUI.dropCommand` when
+`target.self`). That short drop stays. Operators also need a compass-style radial of
+inventory/RPG verbs when they **long-hold** the drag over Yourself past a short-drop
+dwell threshold — so verbs such as wield/equip/wear/remove/eat/apply can surface when
+the loaded module actually supports them, without inventing parser vocabulary (D24).
+
+Agreed contract:
+
+1. **Short release on Yourself** (dwell under the hold threshold, or release before the
+   radial opens) keeps today's `take <noun>` behavior unchanged.
+2. **Long-hold while the drag pointer remains over Yourself** beyond that threshold
+   opens a compass-style radial of inventory/RPG actions for the dragged item; it does
+   **not** auto-submit `take`.
+3. **Menu composition** = (curated RPG/inventory verb filter) ∩ (this module's
+   dictionary) ∪ attribute shortcuts that survive the same dictionary gate
+   (e.g. `wearable` → `wear`/`remove` when each word is present). Positional
+   suppression from `ActionSynth.commandsForObject` (held vs worn, nested container)
+   still applies once a candidate verb is admitted.
+4. **Never offer a verb absent from this module's dictionary.** Lexical absence is an
+   honest empty slot, not a prompt to invent synonyms. Fail closed when RAM/dictionary
+   is unavailable: offer no RPG radial verbs (short-drop `take` may still use the
+   existing verified-noun path).
+5. **Confirmed successes persist** through AttrCalibrator-style per-module learning
+   (`allowedVerbsFor` / opcode+behavior confirmation thresholds), so a proven
+   `wield lantern` (or alternate discovered form) survives across turns and reloads of
+   that module. `VerifiedNouns` remains the printed-phrase/underlining aid only; it is
+   not the persistence store for verb legality.
+6. **No vocabulary break:** submitted commands use verified nouns (D64/D107/D150) and
+   dictionary-owned verb heads only. No title-specific branches, no heuristic
+   text-mining of help text to invent verbs (D24).
+
+**Curated RPG/inventory verb filter.** Product-owned curated set (extensible only by
+explicit plan amendment, never by runtime title detection). Intersection with the live
+dictionary is mandatory before any radial entry is shown:
+
+`wield`, `equip`, `wear`, `remove`, `eat`, `drink`, `apply`, `use`, `take`, `drop`,
+`examine` (or the learned default inspect verb from AttrCalibrator), plus any
+AttrCalibrator-confirmed per-object allowed verbs that also pass the curated-set ∪
+attribute-shortcut policy for this surface.
+
+Attribute shortcuts (examples; still dictionary-gated): `wearable`/clothing/worn state
+→ `wear`/`remove` (mutually suppressed by current worn/held state per D59); `edible` →
+`eat`, with `drink` only if `isGameWord("drink")` (D150); switchable/learned power verbs
+→ existing ActionSynth/AttrCalibrator forms only.
+
+Intentional exclusions for this Yourself-hold radial (fail closed; use other surfaces):
+put-in / put-on / give-to / ask-about target pickers; travel/compass direction verbs;
+spells/instrumental two-object launchers unless the curated filter and dictionary both
+already admit that exact verb head for a one-object form on this surface.
+
+**Gesture lifecycle (equipment sheet).** Extends D122/D125/D127 Pointer Events; does not
+replace grip-only drag start, edge auto-scroll, or mid-drag render deferral.
+
+```
+pointerdown on grip → move ≥8px → drag active (unchanged)
+  └─ hover non-Yourself target → existing drop legality / short release submits put/take
+  └─ hover Yourself:
+        release before dwell threshold → take <noun> (unchanged short drop)
+        dwell over Yourself ≥ threshold → open RPG radial; cancel pending take
+        radial item chosen → submit that dictionary-owned command
+        radial dismissed / cancelled → no take, no invented fallback
+```
+
+Threshold constants are implementation details to be chosen at coding time so that
+ordinary short drops remain easy and accidental radials are rare; they must be
+documented in the implementing commit and covered by harness timing tests. The existing
+inventory-row long-press (`Actionable.LongPressMs`, opens the ordinary object radial)
+remains a separate gesture on the row body, not on the Yourself drop target. While the
+Yourself-hold radial is open: Message/dialog exclusion rules from D204 inventory
+regression notes still apply (`Message.IsOpen` refuses drop/radial submission).
+Ghost/hover styling may indicate "hold for actions" versus "release to take" without
+submitting anything.
+
+**Learning and persistence.** On a radial-chosen command that AttrCalibrator's
+verbSuccess/verbBehavior analyzers confirm (existing thresholds), persist via
+`AttrCalibrator.persist` keyed by module identity — same path click/typed/inject already
+share after D86's `Input.Inject` hook. Do not treat a single unconfirmed offer as proof.
+Do not write verb legality into `VerifiedNouns`. Restore/New Game/module load follow
+existing AttrCalibrator hydrate/forget contracts; this feature adds no parallel cache.
+
+**RoTA / alternate-command discovery (D24 note).** Research against The Reliques of
+Tolti-Aph (RoTA) noted **`wield` is absent from that module's dictionary**. Therefore
+the Yourself-hold radial **must not** show `wield` on RoTA (or any module lacking the
+word). Offering it would be a vocabulary break and a D24 violation. The goal remains:
+when a story **does** ship `wield` (or `equip`, etc.), the verb appears after dictionary ∩
+filter. Alternate discovery is limited to: (a) other curated verbs that **are** in-dict
+for that module; (b) attribute shortcuts that survive the dict gate; (c) AttrCalibrator
+confirmations of commands the player (or an admitted radial entry) actually submitted
+successfully. Help-text scraping, English synonym expansion (`brandish`, `hold up`, …),
+or title-specific verb injection are rejected. Verification gate before implementation
+sign-off: census dictionary membership of the curated set on RoTA, LLR, Anchorhead,
+Zork1, Enchanter, and at least one module that **does** contain `wield`/`equip` if
+present in the catalog; record which verbs appear. Absence on RoTA is expected and is
+not a defect.
+
+**Relationships.** Extends D122/D125/D127 equipment drag-and-drop (Yourself short drop
+remains `take`). Extends D59 positional wear/remove suppression; D85/D86/D73 learning;
+D146 dictionary arbiter; D150 drink-beside-eat gate; D24 no-heuristic actionable/radial.
+Does not supersede ordinary object/inventory radials (`Actionable.Open`), input-line
+radial (D26), or directional radial (D117+). Does not authorize GrammarProvider/D34
+resurrection as a per-object verb oracle.
+
+**Implementation sketch (not authorized yet).** Owning surfaces when approved:
+`js/EquipmentUI.js` (dwell detection on Yourself hover during `_drag`), radial
+presentation via existing `ParchLockQol.OpenRadial` / ActionSynth command builders, verb
+admission helper that applies curated filter ∩ `isGameWord` ∩ positional ActionSynth
+rules, AttrCalibrator unchanged except as a consumer of successful submits. Tests:
+extend `harness/equipment-ui.js` for short vs hold-over-Yourself; dictionary-negative
+fixtures; no-wield-on-dict-miss; persistence round-trip via calibrator test hooks. Live
+Playwright on desktop and 412×860 for gesture timing. No APK/package bump until
+implementation is accepted.
+
+**Open questions for operator.**
+
+1. Exact dwell threshold (ms) and whether a visible progress affordance is required
+   before the radial opens.
+2. Whether `take` itself should appear inside the hold radial (redundant with short
+   drop) or remain short-drop-only.
+3. Whether curated filter may include `read`/`light`/`extinguish`/`attack` or stays
+   strictly inventory/body-centric as listed above.
+4. Preferred catalog title that **does** contain `wield` for the positive verification
+   leg (if none ships in-tree, accept dict-negative proof on RoTA plus a synthetic
+   dictionary fixture).
+
+**Evidence / verification (when implementing).** Not started. This entry is
+documentation-only. Validators and fingerprints updated for the draft itself; no harness
+or browser run is claimed.
+
