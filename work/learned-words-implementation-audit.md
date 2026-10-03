@@ -1,7 +1,11 @@
 # Edit Learned Words — adversarial implementation audit request
 
 Operator authorized full implementation after design consensus #1049/#1051/#1052.
-Status: implementation consensus reached on runtime commit 9bfac37. Grok #1056 ACCEPT WITH NOTES; Codex independently verified current source and reran learned-words 30, learned-words-live 72 and inspect-disablement 22 successfully. Android device behavior and a new APK remain unvalidated. This does not record overall goal completion.
+Status: implementation consensus reached on runtime commit 9bfac37. Grok #1056 ACCEPT WITH NOTES; Codex independently verified current source and reran learned-words 30, learned-words-live 72 and inspect-disablement 22 successfully. Packaging commit 9460c56 includes the stylesheet allow-list correction, build 60 and Android versionCode 33. A new dev APK is built and verified; Android device behavior remains unvalidated. This does not record overall goal completion.
+
+## Packaging evidence (2026-10-03)
+
+`build-android.bat dev` succeeded. APK: C:/Users/hymlo/Downloads/ParchLock-dist/ParchLock-dev.apk, 84,130,469 bytes, SHA256 5BD9A26795586DD0C99F42AB1FEC4F099FFA67182D2B4510E580033889A6D371. apksigner verifies v2 signature; aapt identifies com.parchlock.app versionCode 33 / versionName 2.0.0. All 452 APK web assets match Android/Capacitor/desktop staging (two Cordova-generated files compared to Android staging); 450 match original source. Editor assets and referenced play.html dependencies are present; key source archive files match source. Rebuilt desktop distribution passes a 360px real-Anchorhead editor/tutorial smoke with no browser errors. Packaging contract matrix passes 30 checks. adb lists no connected device, so physical-device Back/keyboard/speech remains a delivery limit. Historical limitations below describe the pre-packaging audit.
 
 ## Audit round 2: Grok #1054 resolved
 
