@@ -216,6 +216,8 @@ var LearnedWords = {
         LearnedWords._open = true;
         LearnedWords._flush = new Map(); LearnedWords._signature = "";
         var root = document.getElementById("learned-words");
+        LearnedWords.initAccordion(root);
+        document.getElementById("message").classList.add("lw-dialog");
         root.querySelector('[data-action="add"]').onclick = LearnedWords.addDraft;
         root.querySelector('[data-action="undo"]').onclick = function () {
             var draft = root.querySelector('[data-draft="true"]');
@@ -229,7 +231,8 @@ var LearnedWords = {
             if (document.getElementById("message").contains(e.target)) {
                 e.stopImmediatePropagation();
                 if (e.key === "Tab") {
-                    var focus = Array.from(document.querySelectorAll('#message button,#message input,#message select,#message summary,#message [tabindex="0"]')).filter(function (n) { return !n.disabled && !n.closest("[inert]") && n.getClientRects().length; });
+                    var selector = LearnedWords._tourStep != null ? '#learned-words .lw-tour button' : '#message button,#message input,#message select,#message summary,#message [tabindex="0"]';
+                    var focus = Array.from(document.querySelectorAll(selector)).filter(function (n) { return !n.disabled && !n.closest("[inert]") && n.getClientRects().length; });
                     var first = focus[0], last = focus[focus.length - 1];
                     if (e.shiftKey && e.target === first) { e.preventDefault(); last.focus(); }
                     else if (!e.shiftKey && e.target === last) { e.preventDefault(); first.focus(); }
@@ -242,13 +245,47 @@ var LearnedWords = {
             if (!document.getElementById("learned-words") || !Message.IsOpen) { LearnedWords.cleanup(); return; }
             if (LearnedWords.identity() !== LearnedWords._scope.key || LearnedWords.generation() !== LearnedWords._scope.generation) { LearnedWords.close(false); return; }
             LearnedWords.render(false);
+            if (LearnedWords._tourStep != null) LearnedWords.placeTour();
         }, 500);
         var seen = false; try { seen = localStorage.getItem(LearnedWords.TUTORIAL_KEY) === "1"; } catch (e) {}
         if (!seen) LearnedWords.startTour();
     },
     feedback: function (text) { var node = document.querySelector("#learned-words .lw-feedback"); if (node) node.textContent = text; },
+    initAccordion: function (root) {
+        var intro = root.querySelector(':scope > p'), feedback = root.querySelector('.lw-feedback');
+        var center = document.createElement('div'); center.className = 'lw-center';
+        var current = document.createElement('div'); current.className = 'lw-current-header';
+        var bottom = document.createElement('div'); bottom.className = 'lw-bottom-headers';
+        LearnedWords._sections = {}; LearnedWords._section = null;
+        root.insertBefore(current, intro); root.insertBefore(center, intro); root.insertBefore(bottom, root.querySelector('.lw-tour'));
+        center.append(intro, feedback);
+        ['learned','actions','names','status'].forEach(function (name) {
+            var section = root.querySelector('section[data-section="'+name+'"]'), outer = section.parentElement;
+            var text = name === 'learned' ? 'Edit Learned Words' : outer.querySelector('summary').textContent;
+            var button = document.createElement('button'); button.type = 'button'; button.className = 'lw-section-header'; button.dataset.section = name; button.textContent = text;
+            button.id = 'lw-header-'+name; button.setAttribute('aria-controls','lw-panel-'+name);
+            var panel = document.createElement('div'); panel.id = 'lw-panel-'+name; panel.className = 'lw-panel'; panel.setAttribute('role','region'); panel.setAttribute('aria-labelledby',button.id);
+            panel.appendChild(section); center.appendChild(panel); if (outer !== root) outer.remove();
+            LearnedWords._sections[name] = { button:button, panel:panel, scroll:0 };
+            button.onclick = function () { LearnedWords.selectSection(name); };
+        });
+        LearnedWords.selectSection('learned');
+    },
+    selectSection: function (name, tour) {
+        var root = document.getElementById('learned-words'), center = root.querySelector('.lw-center'), sections = LearnedWords._sections;
+        if (!sections[name] || (!tour && name !== 'learned' && !sections[name].panel.querySelector('.lw-entry'))) return;
+        if (LearnedWords._section === name) return; // Exactly one open; active header never closes it.
+        if (LearnedWords._section) sections[LearnedWords._section].scroll = center.scrollTop;
+        Object.keys(sections).forEach(function (key) {
+            var s = sections[key], active = key === name;
+            s.panel.hidden = !active; s.button.setAttribute('aria-expanded',String(active));
+            (active ? root.querySelector('.lw-current-header') : root.querySelector('.lw-bottom-headers')).appendChild(s.button);
+        });
+        LearnedWords._section = name; center.scrollTop = sections[name].scroll;
+    },
     render: function (force) {
         if (!LearnedWords._open) return;
+        if (LearnedWords._tourStep != null) return; // Freeze editor nodes during the nonmutating guided tour.
         var records = LearnedWords.records(), signature = JSON.stringify(records);
         if (!force && signature === LearnedWords._signature) return;
         var root = document.getElementById("learned-words"); if (!root) return;
@@ -259,14 +296,17 @@ var LearnedWords = {
             if (old && (!force && (old === focused || old.contains(document.activeElement) || old.dataset.dirty === "true"))) return;
             var expanded = old && old.open;
             var node = LearnedWords.makeRow(r); node.open = !!expanded;
-            if (old) old.replaceWith(node); else root.querySelector('[data-section="' + r.section + '"]').appendChild(node);
+            if (old) old.replaceWith(node); else root.querySelector('section[data-section="' + r.section + '"]').appendChild(node);
         });
         Array.from(root.querySelectorAll(".lw-entry")).forEach(function (n) { if (n.dataset.draft !== "true" && !records.some(function (r) { return r.id === n.dataset.id; }) && n !== focused) { LearnedWords._flush.delete(n.dataset.id); n.remove(); } });
-        var section = root.querySelector('[data-section="learned"]');
+        var section = root.querySelector('section[data-section="learned"]');
         var empty = section.querySelector(".lw-empty"); if (empty) empty.remove();
-        if (!section.children.length) { var p = document.createElement("p"); p.className = "lw-empty"; p.textContent = "No words learned yet. Use commands while playing, or add a suggestion."; section.appendChild(p); }
+        if (!section.querySelector('.lw-entry:not(.lw-demo)')) { var p = document.createElement("p"); p.className = "lw-empty"; p.textContent = "No words learned yet. Use commands while playing, or add a suggestion."; section.appendChild(p); }
         root.querySelector('[data-action="undo"]').disabled = !LearnedWords._undo.length && !root.querySelector('[data-draft="true"]');
         LearnedWords._signature = signature;
+        Object.keys(LearnedWords._sections || {}).forEach(function (key) {
+            var s = LearnedWords._sections[key]; s.button.setAttribute('aria-disabled',String(key !== 'learned' && !s.panel.querySelector('.lw-entry')));
+        });
     },
     makeRow: function (r, draft) {
         var node = document.createElement("details"); node.className = "lw-entry"; node.dataset.id = r.id; if (draft) node.dataset.draft = "true";
@@ -313,7 +353,7 @@ var LearnedWords = {
         LearnedWords._flush.set(r.id, flush); return node;
     },
     addDraft: function () {
-        var root = document.querySelector('#learned-words [data-section="learned"]');
+        var root = document.querySelector('#learned-words section[data-section="learned"]');
         var old = root.querySelector('[data-draft="true"]'); if (old) { old.open = true; old.querySelector("input").focus(); return; }
         var id = "manual:" + Date.now().toString(36) + Math.random().toString(36).slice(2);
         var node = LearnedWords.makeRow({ id: id, type: "manual", trigger: "", label: "", original: "", editable: true, destination: "Radial menu", state: "User suggestion", section: "learned" }, true);
@@ -329,6 +369,9 @@ var LearnedWords = {
     },
     cleanup: function () {
         if (!LearnedWords._open) return;
+        LearnedWords.stopTourSpeech();
+        var dialog = document.getElementById('message'); if (dialog) dialog.classList.remove('lw-dialog');
+        var demo = document.querySelector('#learned-words .lw-demo'); if (demo) demo.remove();
         LearnedWords._open = false; clearInterval(LearnedWords._timer); document.removeEventListener("keydown", LearnedWords._onKey, true);
         if (LearnedWords._input && LearnedWords._input.isConnected && LearnedWords._scope.key === LearnedWords.identity() && LearnedWords._scope.generation === LearnedWords.generation()) LearnedWords._input.value = LearnedWords._draft;
         LearnedWords._flush.clear(); LearnedWords._tourStep = null; LearnedWords._discard = false;
@@ -345,27 +388,79 @@ var LearnedWords = {
     ],
     startTour: function () {
         LearnedWords._tourFocus = document.activeElement;
-        var root = document.getElementById("learned-words"); LearnedWords._tourScroll = root.parentElement.scrollTop;
-        root.classList.add("lw-touring"); root.parentElement.scrollTop = 0;
+        var root = document.getElementById("learned-words"); LearnedWords._tourScroll = root.querySelector('.lw-center').scrollTop;
+        LearnedWords._tourSection = LearnedWords._section;
+        LearnedWords._tourDetails = Array.from(root.querySelectorAll('details')).map(function (node) { return {node:node,open:node.open}; });
+        root.classList.add("lw-touring");
         LearnedWords._tourStep = 0; LearnedWords.renderTour();
     },
     renderTour: function () {
         var root = document.getElementById("learned-words"), tour = root.querySelector(".lw-tour"); tour.hidden = false; tour.replaceChildren();
+        LearnedWords.stopTourSpeech();
         Array.from(root.children).forEach(function (node) { if (node !== tour) node.inert = true; });
         var step = LearnedWords.TOUR[LearnedWords._tourStep], heading = document.createElement("h3"), body = document.createElement("p"), progress = document.createElement("p");
         tour.setAttribute("role", "dialog"); tour.setAttribute("aria-modal", "true"); tour.setAttribute("aria-label", step[0]);
+        body.className = 'lw-tour-body';
         heading.textContent = step[0]; body.textContent = step[1]; progress.textContent = "Step " + (LearnedWords._tourStep + 1) + " of " + LearnedWords.TOUR.length; tour.append(progress, heading, body);
-        function button(text, action) { var b = document.createElement("button"); b.textContent = text; b.onclick = action; tour.appendChild(b); return b; }
+        var controls = document.createElement('div'); controls.className = 'lw-tour-controls'; tour.appendChild(controls);
+        function button(text, action) { var b = document.createElement("button"); b.textContent = text; b.onclick = action; controls.appendChild(b); return b; }
         var back = button("Back", function () { LearnedWords._tourStep--; LearnedWords.renderTour(); }); back.disabled = LearnedWords._tourStep === 0;
         var next = button(LearnedWords._tourStep === LearnedWords.TOUR.length - 1 ? "Finish" : "Next", function () {
             if (LearnedWords._tourStep === LearnedWords.TOUR.length - 1) LearnedWords.finishTour(); else { LearnedWords._tourStep++; LearnedWords.renderTour(); }
         });
         button("Skip", LearnedWords.finishTour); next.focus();
+        LearnedWords.prepareTourTarget(); LearnedWords.placeTour(); LearnedWords.speakTour(step);
+    },
+    stopTourSpeech: function () {
+        try { if (typeof ReadAloud !== 'undefined' && ReadAloud.stop) ReadAloud.stop(); } catch (e) {}
+    },
+    speakTour: function (step) {
+        try { if (typeof ReadAloud !== 'undefined' && ReadAloud.speak) ReadAloud.speak(step[0]+'. '+step[1]); } catch (e) {}
+    },
+    prepareTourTarget: function () {
+        var root = document.getElementById('learned-words'), index = LearnedWords._tourStep;
+        LearnedWords.selectSection('learned',true);
+        var row = root.querySelector('section[data-section="learned"] .lw-entry');
+        if (!row && [1,4,6].indexOf(index) >= 0) {
+            row = root.querySelector('.lw-demo');
+            if (!row) {
+                row = document.createElement('details'); row.className = 'lw-entry lw-demo';
+                row.innerHTML = '<summary>Example only · not a learned record</summary><div class="lw-fields"><label>Trigger<input value="wield" readonly></label><label>Response<input value="Wield" readonly></label></div><label class="lw-ignore"><input type="checkbox" disabled>Ignore this learned entry</label><details class="lw-advanced"><summary>Advanced settings</summary><p>Used in: Radial menu · Original learning is read-only · Check compares locally.</p></details>';
+                root.querySelector('section[data-section="learned"]').appendChild(row);
+            }
+        }
+        if (row) { row.open = [1,4,6].indexOf(index) >= 0; var advanced = row.querySelector('.lw-advanced'); if (advanced) advanced.open = index === 6; }
+        var selectors = ['.lw-current-header', '.lw-fields', '.lw-bottom-headers', '.lw-feedback', '.lw-ignore', '[data-action="add"]', '.lw-advanced', '[data-action="help"]'];
+        var target = [1,4,6].indexOf(index) >= 0 && row ? row.querySelector(selectors[index]) : root.querySelector(selectors[index]);
+        root.querySelectorAll('.lw-target').forEach(function(n){n.classList.remove('lw-target');});
+        LearnedWords._tourTarget = target;
+        if (target) { target.classList.add('lw-target'); target.scrollIntoView({block:'nearest'}); }
+    },
+    placeTour: function () {
+        var root = document.getElementById('learned-words'); if (!root || LearnedWords._tourStep == null) return;
+        var card = root.querySelector('.lw-tour'), target = LearnedWords._tourTarget;
+        var style = getComputedStyle(document.documentElement);
+        var height = parseFloat(style.getPropertyValue('--pl-layout-height')) || document.documentElement.clientHeight;
+        var inset = parseFloat(style.getPropertyValue('--pl-kb-inset')) || 0;
+        var bottom = Math.max(80,height-inset), width = document.documentElement.clientWidth;
+        var rect = target && target.getBoundingClientRect(), above = rect ? Math.max(0,rect.top-16) : 0, below = rect ? Math.max(0,bottom-rect.bottom-16) : bottom-16;
+        var useBelow = below >= above, band = useBelow ? below : above;
+        card.style.width = Math.min(420,width-24)+'px'; card.style.left = Math.max(12,(width-Math.min(420,width-24))/2)+'px';
+        card.style.maxHeight = Math.max(40,band-8)+'px'; card.style.overflowY = 'auto';
+        var natural = card.scrollHeight, h = Math.min(natural,Math.max(40,band-8));
+        card.style.top = (rect ? (useBelow ? Math.min(bottom-h-8,rect.bottom+8) : Math.max(8,rect.top-h-8)) : 8)+'px';
+        card.style.bottom = 'auto';
     },
     finishTour: function () {
+        LearnedWords.stopTourSpeech();
         try { localStorage.setItem(LearnedWords.TUTORIAL_KEY, "1"); } catch (e) { LearnedWords.feedback("Tutorial completion could not be stored."); }
         var root = document.getElementById("learned-words"); root.querySelector(".lw-tour").hidden = true;
-        root.classList.remove("lw-touring"); root.parentElement.scrollTop = LearnedWords._tourScroll || 0;
+        root.classList.remove("lw-touring");
+        root.querySelectorAll('.lw-target').forEach(function(n){n.classList.remove('lw-target');});
+        var demo = root.querySelector('.lw-demo'); if (demo) demo.remove();
+        (LearnedWords._tourDetails || []).forEach(function(r){if(r.node.isConnected)r.node.open=r.open;});
+        LearnedWords.selectSection(LearnedWords._tourSection || 'learned',true);
+        root.querySelector('.lw-center').scrollTop = LearnedWords._tourScroll || 0;
         Array.from(root.children).forEach(function (node) { node.inert = false; }); LearnedWords._tourStep = null;
         if (LearnedWords._tourFocus && LearnedWords._tourFocus.isConnected) LearnedWords._tourFocus.focus();
     }

@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v103"; // Provisional inspect candidates and reversible promotion suppression.
+const CACHE_VERSION = "parchlock-shell-v104"; // Latest-copy underlines, editor accordion and spoken spotlight tour.
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

@@ -207,3 +207,6 @@ Grok #1056 ACCEPT WITH NOTES for runtime commit 9bfac37. Codex checked the cited
 
 ## Edit Learned Words packaged (2026-10-03, codex)
 Packaging commit 9460c56: include LearnedWords.css in distribution allow-list; build 60, Android versionCode 33. build-android.bat dev succeeds. APK C:/Users/hymlo/Downloads/ParchLock-dist/ParchLock-dev.apk (84,130,469 bytes), SHA256 5BD9A26795586DD0C99F42AB1FEC4F099FFA67182D2B4510E580033889A6D371. v2 signature verifies; all 452 web assets match staging and 450 originals; key source archive parity verified. Rebuilt distribution phone-width editor/tutorial smoke and packaging contract 30 pass. No attached adb device, so device behavior remains untested. Runtime consensus Grok #1056/Codex #1057 stands; operator records overall completion.
+
+## Current implementation candidate (2026-10-03)
+Latest identical marks, fixed four-header accordion and independent spoken spotlight tutorial implemented. See work/learned-words-final-implementation-audit.md for evidence and baseline failures. Grok audit pending; no new APK/device claim.

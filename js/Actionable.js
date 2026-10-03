@@ -1053,6 +1053,41 @@ var Actionable = {
         return wrapped;
     },
 
+    relocateExactMarks: function (lines) {
+        // Phrase/ownership selection has already finished. Move those SAME
+        // marks, so latest-copy presentation cannot change the chosen noun.
+        var marks = [];
+        lines.forEach(function (line) { line.querySelectorAll(".pl-act:not(.is-stale)").forEach(function (mark) { if (marks.indexOf(mark) < 0) marks.push(mark); }); });
+        marks.forEach(function (mark) {
+            var phrase = mark.textContent, target = phrase.toLowerCase(), parent = mark.parentNode;
+            if (!parent || !target) return;
+            mark.replaceWith(document.createTextNode(phrase)); parent.normalize();
+            var best = null;
+            lines.forEach(function (line) {
+                if (!line.isConnected) return;
+                var walker = document.createTreeWalker(line, NodeFilter.SHOW_TEXT), node;
+                while ((node = walker.nextNode())) {
+                    if ($(node.parentElement).closest(".Input, .Style_input, .Style_subheader, a, style, script, .pl-act").length) continue;
+                    var source = node.nodeValue || "", lower = source.toLowerCase(), from = 0, index;
+                    while ((index = lower.indexOf(target, from)) >= 0) {
+                        var end = index + phrase.length;
+                        if (!/[A-Za-z0-9]/.test(source.charAt(index - 1)) && !/[A-Za-z0-9]/.test(source.charAt(end))) {
+                            if (!best || (best.node === node && index > best.index) || (best.node.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_FOLLOWING)) best = { node: node, index: index, end: end };
+                        }
+                        from = index + 1;
+                    }
+                }
+            });
+            if (!best) return; // Excluded/disconnected copies are never re-admitted.
+            var source = best.node.nodeValue, fragment = document.createDocumentFragment();
+            fragment.appendChild(document.createTextNode(source.slice(0, best.index)));
+            mark.textContent = source.slice(best.index, best.end);
+            fragment.appendChild(mark);
+            fragment.appendChild(document.createTextNode(source.slice(best.end)));
+            best.node.replaceWith(fragment);
+        });
+    },
+
     Refresh: () => {
         // Force Translator sync before marks ? actionable words must come from WorldModel
         try {
@@ -1358,6 +1393,7 @@ var Actionable = {
                 }
             }
         });
+        Actionable.relocateExactMarks(activeLines);
         Actionable.LiveMarks = $(".pl-act:not(.is-stale)").toArray();
     },
     // D122: inventory now has its own sheet. Every existing entry point --

@@ -281,3 +281,12 @@ Grok #1056 ACCEPT WITH NOTES for runtime commit 9bfac37. Codex checked the cited
 
 ## Edit Learned Words packaged (2026-10-03, codex)
 Packaging commit 9460c56: include LearnedWords.css in distribution allow-list; build 60, Android versionCode 33. build-android.bat dev succeeds. APK C:/Users/hymlo/Downloads/ParchLock-dist/ParchLock-dev.apk (84,130,469 bytes), SHA256 5BD9A26795586DD0C99F42AB1FEC4F099FFA67182D2B4510E580033889A6D371. v2 signature verifies; all 452 web assets match staging and 450 originals; key source archive parity verified. Rebuilt distribution phone-width editor/tutorial smoke and packaging contract 30 pass. No attached adb device, so device behavior remains untested. Runtime consensus Grok #1056/Codex #1057 stands; operator records overall completion.
+
+## Latest underline / editor accordion / spoken spotlight tour proposition (2026-10-03, codex)
+Design consensus: Grok #1061 and Codex acknowledgment accept the single amended proposition. Criteria recorded in work/learned-words-editor-proposal.md: latest identical phrase in DOM order with existing ownership/phrase policy; exactly-one-open fixed-header accordion preserving edits; independent ReadAloud speech and visible inert spotlight targets, isolated tutorial lifecycle. Corrected Tutorial.speak source claim. Existing suites do not prove these unimplemented changes. No implementation GO or product edits.
+
+## Proposition final recording clarification (2026-10-03, codex)
+Grok #1063 accepted design with recording corrections. Incorporated literal speech separator, independent helpers and existing inset geometry, exact phrase policies and optional header labels. Requested final agreement to reuse existing Edit Learned Words title for the required learned-section header, avoiding a newly coined feature name. No product edits or new feature tests.
+
+## Fixed accordion / latest identical marks / spoken tour candidate (2026-10-03)
+Implemented operator-authorized #1065 design. Audit package work/learned-words-final-implementation-audit.md records 114 focused browser checks, 30 contract and 72 live checks, plus relevant regressions. Legacy cutover has two failures reproduced against unchanged HEAD; documented explicitly. Grok independent implementation review pending; prior APK excludes these new changes. Operator retains overall completion authority.
