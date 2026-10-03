@@ -238,7 +238,11 @@ var Tutorial = {
         },
         {
             title: "Move things by dragging",
-            body: "Drag an item onto an open container to put it in, or onto Yourself to take it back out. " +
+            body: "Drag an item onto an open container to put it in, or drop it on Yourself to take it back out. " +
+                  "Hold it on Yourself a moment longer to see any available choices. " +
+                  "If a menu opens, lift your finger, then tap the entry you want. Letting go while the menu is open does not choose one. " +
+                  "A short drop, without that hold, still takes the item. " +
+                  "The menu uses this story's vocabulary. Some entries fill the command line for you to review and edit before sending. " +
                   "Closed containers refuse the drop. Each drag sends the real game command for you, " +
                   "so the story always stays in charge.",
             target: ["#equipment-list", "#equipment"],

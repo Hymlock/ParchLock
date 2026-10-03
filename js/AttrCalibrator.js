@@ -29,6 +29,12 @@ var AttrCalibrator = {
     _wrapped: false,
     _verbRegex: null,
     RPG_VERBS: ["wield", "equip", "wear", "remove", "eat", "drink", "apply", "use", "take", "drop", "examine"],
+    extraVerbRefusal: function (text) {
+        // D205 only: prerequisite/inability wording cannot prove a successful
+        // no-mutation action. Conservatively retain the editable suggestion.
+        // Legacy calibration and incidental embedded mentions stay unchanged.
+        return /(?:^|[.!?]\s+|\n)\s*(?:you (?:must|need to|have to)\b|first[ ,]+you (?:must|need to|have to)\b|you (?:are |were )?unable to\b)/i.test(String(text || ""));
+    },
     dictionaryForm: function (form) {
         var tokens = String(form || "").trim().toLowerCase().split(/\s+/);
         return !!tokens[0] && typeof Actionable !== "undefined" && Actionable.isGameWord &&
@@ -409,6 +415,7 @@ var AttrCalibrator = {
                     // (comparison signal, not phrase-mining of success prose).
                     var failedText = /\b(can'?t|cannot|already|don't|dont|do not|not open|not close|nothing happens|that's not a verb|i don't know|i do not know|you can't|you cannot)\b/i.test(text);
                     if (ctx.extra && /\?|\b(?:not|unknown|understood|which do you mean|no such|not here|not important|not holding)\b/i.test(text)) failedText = true;
+                    if (ctx.extra && AttrCalibrator.extraVerbRefusal(text)) failedText = true;
                     // Opcode mutation = structural success. No mutation + no
                     // refusal = accepted behavioral success (Glow Bar turn-on
                     // without I6 switchable bit). Ambiguous only when both

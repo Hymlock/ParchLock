@@ -60,7 +60,24 @@ var EquipmentUI = {
             forms[form] = item;
             candidates.push(item);
         }
-        ActionSynth.commandsForObject(obj, "inventory", nested).forEach(function (command) {
+        var commands = [];
+        try {
+            if (typeof SemanticActions !== "undefined" && SemanticActions.CutoverFlag && SemanticActions.CutoverFlag.isEnabled()) {
+                commands = (SemanticActions.resolveForPayloadObjectId(obj.id, "inventory") || []).filter(function (command) {
+                    if (!command || command.objectId == null || String(command.objectId) !== String(obj.id)) return false;
+                    var direct = command.verb && command.command === command.verb + " " + ref.noun;
+                    var nestedTake = nested && command.verb === "take out of " + nested && command.command === "take " + ref.noun;
+                    return direct || nestedTake;
+                });
+            }
+        } catch (eSemantic) {}
+        commands = commands.concat(ActionSynth.commandsForObject(obj, "inventory", nested));
+        commands.forEach(function (command) {
+            if (!command || command.Enter === false || command.enter === false ||
+                (command.objectId != null && String(command.objectId) !== String(obj.id)) ||
+                command.targetObjectId != null || command.topicObjectId != null ||
+                (command.arity != null && command.arity !== 1) ||
+                (command.objectIds && (command.objectIds.length !== 1 || String(command.objectIds[0]) !== String(obj.id)))) return;
             // The nested TAKE label is context only; preserve its actual provider command.
             var suffix = " " + ref.noun;
             if (command.command && command.command.endsWith(suffix)) add(command.command.slice(0, -suffix.length), true);

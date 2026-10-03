@@ -265,6 +265,27 @@ const rejected = prepare(3, 'apply lantern');
 rejected.turn.analyzerSnapshots['diag-verbSuccess'] = 'Which do you mean, the lantern or the lamp?';
 AttrCalibrator.analyzers.verbSuccess.analyze(rejected.turn);
 assert(!AttrCalibrator.exactFormsFor(12).includes('apply'), 'ambiguous wrong-arity response cannot train a lexical suggestion');
+dictionary.add('equip');
+[
+    'You must remove your coat first.',
+    'You must remove your coat.',
+    'You need to remove your coat before equipping that.',
+    'First you have to remove your coat.',
+    'You are unable to equip that.'
+].forEach((reply, index) => {
+    delete AttrCalibrator.table.objects['12'].exactForms.equip;
+    for (let hit = 0; hit < 2; hit++) {
+        const attempt = prepare(100 + index * 2 + hit, 'equip lantern');
+        attempt.turn.analyzerSnapshots['diag-verbSuccess'] = reply;
+        AttrCalibrator.analyzers.verbSuccess.analyze(attempt.turn);
+    }
+    assert(!AttrCalibrator.exactFormsFor(12).includes('equip'), 'prerequisite/refusal does not train after two submissions: ' + reply);
+});
+delete AttrCalibrator.table.objects['12'].exactForms.equip;
+dictionary.delete('equip');
+assert(!AttrCalibrator.extraVerbRefusal('With the lantern equipped, you must feel triumphant. This is your first victory.'), 'incidental embedded must and first do not classify successful prose as refusal');
+assert(AttrCalibrator.extraVerbRefusal('You must feel triumphant.'), 'uncertain sentence-owned must prose conservatively cannot train automatic actions');
+assert(!AttrCalibrator.extraVerbRefusal('The inscription says you must remove your coat first.'), 'embedded prerequisite quotation does not match sentence-owned refusal');
 const ordinaryRules = JSON.stringify(ActionSynth.rules);
 assert(!Object.values(ActionSynth.rules).flat().includes('wield'), 'learner does not widen generic ActionSynth rules');
 const model = E.model(), lantern = model.byId['12'];
@@ -277,6 +298,46 @@ const wearable = {id:20,name:'hat',parentId:99,attrs:{wearable:true}};
 assert(!E.yourselfCommands(wearable, model).some(x=>x.Form==='remove'), 'held not worn candidate suppresses remove');
 assert(E.yourselfCommands({...wearable,attrs:{worn:true,wearable:true}},model).every(x=>['remove','examine'].includes(x.Form)), 'worn candidates preserve positional suppression');
 assert(E.yourselfCommands(model.byId['2'],model).every(x=>x.Form==='take'), 'nested item still offers provider take rather than conflicting RPG forms');
+// The real semantic resolver owns the provider seam; inject evidence at that seam.
+eval(fs.readFileSync(path.resolve(__dirname, '..', 'js', 'SemanticActions.js'), 'utf8'));
+global.SemanticActions = SemanticActions;
+const oldSemanticFlag = SemanticActions.CutoverFlag.isEnabled;
+const oldStructural = SemanticActions.structuralCommandsFor;
+const oldConfirmed = SemanticActions.confirmedObjectFormsFor;
+SemanticActions.CutoverFlag.isEnabled = () => true;
+SemanticActions.confirmedObjectFormsFor = () => [];
+SemanticActions.structuralCommandsFor = obj => [{verb:'polish',noun:obj.name,objectId:obj.id,command:'polish '+obj.name}];
+dictionary.add('polish');
+assert(E.yourselfCommands(lantern,model).some(x=>x.Form==='polish'&&x.Enter), 'enabled real semantic resolver contributes submit-ready one-object provider form');
+SemanticActions.CutoverFlag.isEnabled = () => false;
+assert(!E.yourselfCommands(lantern,model).some(x=>x.Form==='polish'), 'cutover off excludes semantic-only form');
+SemanticActions.CutoverFlag.isEnabled = () => true;
+SemanticActions.structuralCommandsFor = obj => [
+    {verb:'polish',objectId:999,command:'polish '+obj.name},
+    {verb:'apply',objectId:obj.id,command:'apply '+obj.name,Enter:false},
+    {verb:'give',objectId:obj.id,targetObjectId:55,command:'give '+obj.name},
+    {verb:'drop',objectId:obj.id,command:'drop '+obj.name}
+];
+const guardedSemantic = E.yourselfCommands(lantern,model);
+assert(!guardedSemantic.some(x=>x.Form==='polish'), 'semantic wrong physical object cannot enter hold radial');
+assert(!guardedSemantic.some(x=>x.Form==='apply'&&x.Enter), 'editable semantic suggestion cannot become submit-ready');
+assert(!guardedSemantic.some(x=>x.Form==='give'), 'semantic second-object descriptor cannot enter one-object radial');
+assert(guardedSemantic.filter(x=>x.Form==='drop').length===1, 'semantic/legacy duplicates share one exact form');
+SemanticActions.structuralCommandsFor = obj => [
+    {verb:'polish',command:'polish '+obj.name},
+    {verb:'use',objectId:obj.id,command:'use oil on '+obj.name}
+];
+['use','oil','on'].forEach(word=>dictionary.add(word));
+const unboundSemantic = E.yourselfCommands(lantern,model);
+assert(!unboundSemantic.some(x=>x.Form==='polish'), 'semantic form without explicit object identity stays absent');
+assert(!unboundSemantic.some(x=>x.Form==='use oil on'), 'semantic hidden second-object command cannot masquerade as one-object form');
+['use','oil'].forEach(word=>dictionary.delete(word));
+SemanticActions.structuralCommandsFor = () => {throw new Error('provider unavailable');};
+assert(E.yourselfCommands(lantern,model).some(x=>x.Form==='drop'&&x.Enter), 'semantic provider failure preserves legacy actions');
+SemanticActions.CutoverFlag.isEnabled = oldSemanticFlag;
+SemanticActions.structuralCommandsFor = oldStructural;
+SemanticActions.confirmedObjectFormsFor = oldConfirmed;
+dictionary.delete('polish');
 const filled=[];global.Input={Inject:(c,enter)=>filled.push([c,enter])};
 input.value='';E.IsOpen=()=>true;
 E.selectYourselfAction(12,'apply',false,UndoRestoreSync.generation,E.seqKey());
