@@ -143,6 +143,12 @@ var LearnedWords = {
                 section: "learned", state: behavior.disabled[verb].confirmed ? "Remembered" : "Not remembered yet", evidence: JSON.stringify(behavior.disabled[verb]) });
         });
         if (behavior.substituteVerb) list.push({ id: "behavior:substitute", type: "behavior", trigger: behavior.substituteVerb, label: "Inspect replacement", destination: "Radial menu", section: "learned", state: "Remembered", evidence: JSON.stringify(behavior.substituteCandidates || {}) });
+        Object.keys(behavior.substituteCandidates || {}).forEach(function (verb) {
+            // Retain an ignored candidate if it promoted while its row was focused.
+            if (verb === behavior.substituteVerb && !LearnedWords.inspectSuppressed("candidate:" + verb)) return;
+            list.push({ id: "behavior:candidate:" + verb, type: "behavior", trigger: verb, label: "Possible inspect replacement", destination: "Radial menu",
+                section: "learned", state: verb === behavior.substituteVerb ? "Promotion suppressed" : "Not remembered yet", evidence: JSON.stringify(behavior.substituteCandidates[verb]) });
+        });
         Object.keys(data.rows).filter(function (id) { return id.indexOf("manual:") === 0; }).forEach(function (id) {
             var r = data.rows[id]; list.push({ id: id, type: "manual", objectId: r.objectId, trigger: r.trigger, original: "", label: r.label,
                 section: "learned", destination: "Radial menu", item: (pool.find(function (o) { return String(o.id) === String(r.objectId); }) || {}).name || "Object " + r.objectId,

@@ -46,4 +46,22 @@ test('unverified reference cannot confirm a manual form',()=>{ const c=L.candida
 test('story change isolates overrides and undo',()=>{ identity='build-b'; assert.deepEqual(Object.keys(L.load().rows),[]); assert.equal(L._undo.length,0); assert.equal(L.commandLabel(7,'wield','Wield'),'Wield'); });
 test('malformed/version mismatch fails closed',()=>{ identity='bad'; store[L.PREFIX+'bad']=JSON.stringify({version:2,gameIdentityKey:'bad',rows:{}}); assert.deepEqual(Object.keys(L.load().rows),[]); identity='bad2'; store[L.PREFIX+'bad2']=JSON.stringify({version:1,gameIdentityKey:'bad2',rows:{'manual:x':{label:2}}}); assert.deepEqual(Object.keys(L.load().rows),[]); });
 test('persistence writes only override namespace',()=>{ assert(Object.keys(store).every(k=>k.startsWith(L.PREFIX))); });
+test('provisional inspect candidates are visible with original replies',()=>{
+ identity='candidate-build'; A.hydrate(mem); A.table.verbBehavior={disabled:{examine:{confirmed:true,responsesByObject:{}}},substituteVerb:null,substituteCandidates:{polish:{responsesByObject:{1:{noun:'axe',text:'First reply'}}}}};
+ const row=L.records().find(r=>r.id==='behavior:candidate:polish');assert(row);assert.equal(row.state,'Not remembered yet');assert(row.evidence.includes('First reply'));assert.equal(row.editable,undefined);
+});
+test('Ignore blocks inspect candidate promotion but preserves new observations',()=>{
+ L.commit({id:'behavior:candidate:polish',type:'behavior',trigger:'polish'},'polish','Possible inspect replacement',true,null);
+ A._correlateVerbBehavior(mem,'polish','second',2,'Second reply');A._correlateVerbBehavior(mem,'polish','third',3,'Third reply');
+ assert.equal(A.table.verbBehavior.substituteVerb,null);assert.equal(Object.keys(A.table.verbBehavior.substituteCandidates.polish.responsesByObject).length,3);
+ assert.equal(JSON.parse(store['PL_AttrCalib_candidate-build']).verbBehavior.substituteVerb,null);
+ assert.equal(A.table.verbBehavior.disabled.examine.confirmed,true);
+});
+test('Undo permits existing distinct candidate evidence to promote normally',()=>{
+ L.undo();A._correlateVerbBehavior(mem,'polish','third',3,'Third reply');assert.equal(A.table.verbBehavior.substituteVerb,'polish');assert.equal(A.defaultInspectVerb(),'polish');
+});
+test('candidate Ignore handles promotion while editor row was focused',()=>{
+ L.commit({id:'behavior:candidate:polish',type:'behavior',trigger:'polish'},'polish','Possible inspect replacement',true,null);
+ assert.equal(A.defaultInspectVerb(),'examine');assert(L.records().some(r=>r.id==='behavior:candidate:polish'&&r.ignored));assert.equal(A.table.verbBehavior.substituteVerb,'polish');
+});
 console.log(checks+' checks passed');

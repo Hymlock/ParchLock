@@ -848,11 +848,12 @@ var AttrCalibrator = {
                 var s = vb.substituteCandidates || (vb.substituteCandidates = {});
                 var c = s[verb] || (s[verb] = { responsesByObject: {} });
                 c.responsesByObject[objKey] = { noun: noun, text: text };
+                changed = true; // Persist provisional observations even while promotion is ignored.
                 var cObjIds = Object.keys(c.responsesByObject);
                 if (cObjIds.length >= AttrCalibrator.VERB_DISABLE_CONFIRM_THRESHOLD) {
                     var cTexts = cObjIds.map(function (k) { return c.responsesByObject[k].text; });
                     var allDistinct = cTexts.every(function (tx, i) { return cTexts.indexOf(tx) === i; });
-                    if (allDistinct) {
+                    if (allDistinct && !(typeof LearnedWords !== "undefined" && LearnedWords.inspectSuppressed("candidate:" + verb))) {
                         vb.substituteVerb = verb;
                         changed = true;
                     }
@@ -871,6 +872,7 @@ var AttrCalibrator = {
         try {
             var vb = AttrCalibrator.table.verbBehavior;
             if (typeof LearnedWords !== "undefined" && LearnedWords.inspectSuppressed("substitute")) return "examine";
+            if (typeof LearnedWords !== "undefined" && vb && vb.substituteVerb && LearnedWords.inspectSuppressed("candidate:" + vb.substituteVerb)) return "examine";
             return (vb && vb.substituteVerb) || "examine";
         } catch (e) { return "examine"; }
     },

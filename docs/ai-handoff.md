@@ -198,3 +198,6 @@ ARCHITECTURE_UML section 65.
 
 ## Edit Learned Words implementation candidate (2026-10-03, codex)
 Operator authorized full implementation after #1049/#1051 design consensus. Real Tools editor, isolated overrides, recorder-owned manual revision confirmation, cosmetic owner labels, reversible Ignore/Undo, and an independent first-open tutorial are implemented. X is the single close control; Save/Done absent. Audit package: work/learned-words-implementation-audit.md. New contract suite 26 and browser suite 72 pass; existing equipment/statistics/learning/nesting/semantic/contract/menu regressions pass. Independent Grok implementation audit remains pending. No new APK or device validation. Preserve unrelated PRODUCTION_PLAN.md and diagnostics.
+
+## Edit Learned Words audit round 2 (2026-10-03, codex)
+Grok #1054 REVISE: provisional inspect replacement candidates were missing. Added read-only candidate rows and reversible promotion/use suppression, retaining original observations and persisting new observations while ignored. Dedicated contract checks now 30; live browser 72 and inspect regression 22 pass. Reaudit requested; no APK/device validation or overall completion.

@@ -3,6 +3,10 @@
 Operator authorized full implementation after design consensus #1049/#1051/#1052.
 Status: implemented candidate, independent implementation audit requested; not overall goal completion.
 
+## Audit round 2: Grok #1054 resolved
+
+Grok independently reran 26/72 checks and found missing provisional substituteCandidates. The editor now enumerates each unpromoted inspect candidate with read-only replies and a not-remembered label. Ignore gates promotion in the existing correlation owner, preserving and persisting subsequent observations without changing confirmation/opcode flags. Undo re-enables ordinary evidence-based promotion. If promotion happened while a candidate row was focused, Ignore also suppresses use and retains that row for reversal. Shell cache v103. Expanded contract suite: 30 checks; live suite: 72 checks; inspect-disablement regression: 22 checks. Please adversarially recheck this fix, including persistence and the focused-row promotion race. The APK/device limits below still apply.
+
 ## Behavior
 
 Tools opens the real per-story learned list. Trigger is a command verb/form; Response is display text. Basic fields autosave on blur/close, with reversible Ignore and Undo. There is no Save or Done button: X is the single close control, per the operator's latest correction. Advanced settings expose compatible Used in options, story/item context, original read-only learning, and local phrase comparison. The default section includes confirmed/provisional forms, manual suggestions and learned inspect decisions. Provider actions, item display names and status labels are separately labeled collapsed sections.
