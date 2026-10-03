@@ -326,7 +326,7 @@ var SemanticActions = {
         if (typeof ActionSynth === "undefined") return [];
         var legacy = ActionSynth.commandsForObject(obj, context, containerName);
         return legacy.map(function (c) {
-            return {
+            var form = {
                 verb: c.verb,
                 noun: c.noun,
                 objectId: c.objectId,
@@ -337,6 +337,9 @@ var SemanticActions = {
                 evidence: [],
                 legacy: c
             };
+            if (c.Enter === false || c.enter === false) { form.Enter = false; form.enter = false; }
+            if (c.learnedWordScope) form.learnedWordScope = c.learnedWordScope;
+            return form;
         });
     },
 

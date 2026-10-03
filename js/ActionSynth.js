@@ -241,7 +241,7 @@ var ActionSynth = {
                 return v !== "drop" && v !== "remove" && v !== "wear";
             });
         }
-        return verbs.map(function (v) {
+        var result = verbs.map(function (v) {
             var cmd = v === "examine" ? ("examine " + name) : (v + " " + name);
             if (v === "talk to") cmd = "talk to " + name;
             if (v === "give to") cmd = "give " + name + " to ";
@@ -254,6 +254,10 @@ var ActionSynth = {
                 confidence: obj.confidence || 0.8
             };
         });
+        if (typeof LearnedWords !== "undefined") LearnedWords.commands(obj).forEach(function (c) {
+            if (!result.some(function (existing) { return existing.command === c.command; })) result.push(c);
+        });
+        return result;
     },
 
     // D201: objects whose printable identity was recovered from just-printed

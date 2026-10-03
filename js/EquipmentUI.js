@@ -83,7 +83,9 @@ var EquipmentUI = {
             if (command.command && command.command.endsWith(suffix)) add(command.command.slice(0, -suffix.length), true);
         });
         AttrCalibrator.exactFormsFor(obj.id).forEach(function (form) { add(form, true); });
+        if (typeof LearnedWords !== "undefined") LearnedWords.candidates(obj.id).forEach(function (c) { add(c.form, c.enter); });
         AttrCalibrator.RPG_VERBS.forEach(function (form) { add(form, false); });
+        if (typeof LearnedWords !== "undefined") candidates.forEach(function (c) { c.Label = LearnedWords.commandLabel(obj.id, c.Form, c.Label); });
         return candidates;
     },
     selectYourselfAction: function (id, form, enter, generation, moduleKey) {
@@ -600,6 +602,7 @@ var EquipmentUI = {
             label.className = "equip-name";
             var text = typeof Actionable !== "undefined" ? Actionable.Scope.lastLookText + "\n" + Actionable.Scope.lastInventoryText : "";
             label.textContent = typeof Actionable !== "undefined" && Actionable.displayNameFor ? Actionable.displayNameFor(o, m.items, text) : o.name;
+            if (typeof LearnedWords !== "undefined" && !row.self) label.textContent = LearnedWords.label("name", o.id, label.textContent);
             el.appendChild(label);
             if (!row.self && !o.demo && typeof StatTracker !== "undefined" && StatTracker.itemMetricsFor) {
                 StatTracker.itemMetricsFor(o.id).forEach(function (metric) {

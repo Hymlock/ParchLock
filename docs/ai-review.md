@@ -269,3 +269,6 @@ visibility, manual dismissal is sticky until a true mode transition, automatic e
 never closes a manually opened line-prompt pad, and the uncovered strip still reaches
 the keyboard proxy. Treat unknown catalog false positives as an open residual because
 ZVM `read_char` provides no allowed-key metadata.
+
+## Edit Learned Words implementation candidate (2026-10-03, codex)
+Operator authorized full implementation after #1049/#1051 design consensus. Real Tools editor, isolated overrides, recorder-owned manual revision confirmation, cosmetic owner labels, reversible Ignore/Undo, and an independent first-open tutorial are implemented. X is the single close control; Save/Done absent. Audit package: work/learned-words-implementation-audit.md. New contract suite 26 and browser suite 72 pass; existing equipment/statistics/learning/nesting/semantic/contract/menu regressions pass. Independent Grok implementation audit remains pending. No new APK or device validation. Preserve unrelated PRODUCTION_PLAN.md and diagnostics.

@@ -1785,7 +1785,7 @@ var StatTracker = {
         confirmed.forEach(function (rec) {
             var chip = document.createElement("span");
             chip.className = "pl-stat";
-            chip.textContent = rec.label;
+            chip.textContent = typeof LearnedWords !== "undefined" ? LearnedWords.label("status", rec.key, rec.label) : rec.label;
             section.appendChild(chip);
         });
         host.appendChild(section);
@@ -2376,7 +2376,7 @@ var StatTracker = {
 
             var label = document.createElement("span");
             label.className = "pl-stat-label";
-            label.textContent = s.label || s.key;
+            label.textContent = typeof LearnedWords !== "undefined" ? LearnedWords.label("status", s.key, s.label || s.key) : s.label || s.key;
             chip.appendChild(label);
 
             var val = document.createElement("span");

@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v101"; // Tutorial speech reads the paragraph the card shows.
+const CACHE_VERSION = "parchlock-shell-v102"; // Learned words editor and independent first-open tutorial.
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [
@@ -31,6 +31,7 @@ const APP_SHELL = [
     "css/ParchLock.css",
     "css/parchment.css",
     "css/Tutorial.css",
+    "css/LearnedWords.css",
     "img/apple-touch-icon-114x114.png",
     "img/apple-touch-icon-120x120.png",
     "img/apple-touch-icon-144x144.png",
@@ -50,6 +51,7 @@ const APP_SHELL = [
     "js/ActionSynth.js",
     "js/Actionable.js",
     "js/AttrCalibrator.js",
+    "js/LearnedWords.js",
     "js/AttributeSchema.js",
     "js/Autocomplete.js",
     "js/BufferTapProvider.js",

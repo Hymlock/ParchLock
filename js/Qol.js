@@ -665,6 +665,12 @@ var ParchLockQol = {
 
     OpenRadial: (clientX, clientY, commands, context, pageIndex) => {
 
+        if (typeof LearnedWords !== "undefined" && context && context.objectId != null) commands = commands.map(function (c) {
+            var form = c.Form;
+            if (!form && c.Command && context.noun && c.Command.endsWith(" " + context.noun)) form = c.Command.slice(0, -(context.noun.length + 1));
+            return form ? Object.assign({}, c, { Label: LearnedWords.commandLabel(context.objectId, form, c.Label) }) : c;
+        });
+
         var menu = $("#radial-menu");
         // Mobile: opening any radial must collapse the soft keyboard so the
         // menu is not buried under the IME (operator: keyboard only when the

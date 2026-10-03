@@ -20,6 +20,7 @@ var Message = {
     },
 
     Show: (title, body, disabledTypeToClose, onClosed) => {
+        if (typeof LearnedWords !== "undefined" && LearnedWords._open) { LearnedWords.beforeHide(); LearnedWords.cleanup(); }
 
         // D154: Message.js is loaded by BOTH index.html and play.html, but
         // ParchLock.js is play-only. Calling it unguarded meant every call to
@@ -55,11 +56,14 @@ var Message = {
 
     Hide: () => {
 
+        if (typeof LearnedWords !== "undefined" && LearnedWords._open) LearnedWords.beforeHide();
+
         Input.Clear();
         Message.IsOpen = false;
         $("body").removeClass("app-dialog-open");
 
         $("#message").removeClass("show");
+        if (typeof LearnedWords !== "undefined" && LearnedWords._open) LearnedWords.cleanup();
         var onClosed = Message._onClosed;
         Message._onClosed = null;
         if (onClosed) setTimeout(onClosed, 0);

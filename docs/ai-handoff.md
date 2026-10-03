@@ -195,3 +195,6 @@ deterministic pre-loader ZVM constructor hook. `harness/d201-unnamed-identity.js
 53/53 over five alternating mobile/desktop randomized LLR starts and live RoTA, Bronze,
 Accuse, Anchorhead and Wumpus controls. Canonical detail: PRODUCTION_PLAN D201 and
 ARCHITECTURE_UML section 65.
+
+## Edit Learned Words implementation candidate (2026-10-03, codex)
+Operator authorized full implementation after #1049/#1051 design consensus. Real Tools editor, isolated overrides, recorder-owned manual revision confirmation, cosmetic owner labels, reversible Ignore/Undo, and an independent first-open tutorial are implemented. X is the single close control; Save/Done absent. Audit package: work/learned-words-implementation-audit.md. New contract suite 26 and browser suite 72 pass; existing equipment/statistics/learning/nesting/semantic/contract/menu regressions pass. Independent Grok implementation audit remains pending. No new APK or device validation. Preserve unrelated PRODUCTION_PLAN.md and diagnostics.

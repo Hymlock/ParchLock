@@ -33,6 +33,7 @@ var WorkspaceUI = {
             ["Save files", ParchLockQol.ShowSaveManager], [mobile ? "Map files" : "Maps", WorkspaceUI.ShowMaps],
             ...(mobile ? [["Modules", ModuleLibrary.openManager]] : []),
             ["Items", Actionable.ShowInventory], ["Transcript", ParchLockQol.ShowTranscript],
+            ["Edit Learned Words", () => LearnedWords.open()],
             ["History", ParchLockQol.ShowHistory], ["Display", ParchLockQol.ShowDisplay],
             ["Commands", ParchLockQol.ShowCommands], ["Help", Message.ShowHelp], ["About", ProductInfo.showAbout],
             ["Theme", Global.ToggleTheme], ["Options", WorkspaceUI.ShowOptions],

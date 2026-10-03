@@ -48,7 +48,8 @@ var AttrCalibrator = {
             var rec = AttrCalibrator.table.objects[String(objectId)];
             return Object.keys(rec && rec.exactForms || {}).filter(function (form) {
                 var e = rec.exactForms[form];
-                return e.confirmations >= AttrCalibrator.ALLOWED_VERB_THRESHOLD && AttrCalibrator.dictionaryForm(form);
+                return e.confirmations >= AttrCalibrator.ALLOWED_VERB_THRESHOLD && AttrCalibrator.dictionaryForm(form) &&
+                    !(typeof LearnedWords !== "undefined" && LearnedWords.suppressed("exact", objectId, form));
             });
         } catch (e) { return []; }
     },
@@ -272,6 +273,7 @@ var AttrCalibrator = {
             Object.keys(rec.allowedVerbs).forEach(function (v) {
                 var e = rec.allowedVerbs[v];
                 if (!e) return;
+                if (typeof LearnedWords !== "undefined" && LearnedWords.suppressed("allowed", objectId, v)) return;
                 if (e.opcodeConfirmed) out.push(v);
                 else if ((e.confirmations || 0) >= thr) out.push(v);
             });
@@ -348,9 +350,14 @@ var AttrCalibrator = {
                     if (!AttrCalibrator._verbRegex) AttrCalibrator._verbRegex = AttrCalibrator.buildVerbRegex();
                     if (!AttrCalibrator._verbRegex) return null;
                     var s = String(turn.command || "").trim();
+                    var manual = typeof LearnedWords !== "undefined" ? LearnedWords.candidateForCommand(s) : null;
                     var m = AttrCalibrator._verbRegex.exec(s);
                     var extra = !m ? AttrCalibrator._splitAnyVerbNoun(s) : null;
-                    if (!m && (!extra || AttrCalibrator.RPG_VERBS.indexOf(extra.verb) < 0 || !AttrCalibrator.dictionaryForm(extra.verb))) return null;
+                    if (manual) {
+                        m = null;
+                        extra = { verb: manual.form, noun: s.slice(manual.form.length).trim(), objectId: manual.objectId };
+                    }
+                    if (!m && (!extra || (!manual && AttrCalibrator.RPG_VERBS.indexOf(extra.verb) < 0) || !AttrCalibrator.dictionaryForm(extra.verb))) return null;
                     var exactForm = m ? m[1].toLowerCase().replace(/\s+/g, " ") : extra.verb;
                     var verb = AttrCalibrator.normalizeVerb(exactForm);
                     var noun = m ? m[2].replace(/^(the|a|an)\s+/i, "").trim() : extra.noun;
@@ -371,6 +378,11 @@ var AttrCalibrator = {
                     if (typeof Actionable !== "undefined" && Actionable.payloadPool && Actionable.payloadPool().length && (!d198Correlation || String(d198Correlation.objectId) !== String(id))) return null;
                     if (extra && (!d198Correlation || d198Correlation.referenceVerified === false)) return null;
                     turn.__diagVerbSuccessCtx = { verb: verb, exactForm: exactForm, extra: !!extra, noun: noun, id: id, ops: ops || [], trace: [], d198Correlation: d198Correlation };
+                    if (manual) {
+                        if (String(manual.objectId) !== String(id)) return null;
+                        turn.__diagVerbSuccessCtx.learnedWordCandidate = manual;
+                        turn.__diagVerbSuccessCtx.extra = true;
+                    }
                     // codex #455/#456: analyze() must never read live DOM --
                     // captureAfter freezes the transcript slice at the SAME
                     // moment endLine itself is frozen (boundary-stamp or
@@ -429,6 +441,7 @@ var AttrCalibrator = {
                         ambiguous: !!(mutated && failedText),
                         d198Correlation: ctx.d198Correlation,
                         exactForm: ctx.exactForm,
+                        learnedWordCandidate: ctx.learnedWordCandidate,
                         submissionId: turn.id != null ? turn.id : turn.submissionId,
                         at: Date.now()
                     };
@@ -857,6 +870,7 @@ var AttrCalibrator = {
     defaultInspectVerb: function () {
         try {
             var vb = AttrCalibrator.table.verbBehavior;
+            if (typeof LearnedWords !== "undefined" && LearnedWords.inspectSuppressed("substitute")) return "examine";
             return (vb && vb.substituteVerb) || "examine";
         } catch (e) { return "examine"; }
     },
@@ -871,6 +885,10 @@ var AttrCalibrator = {
             var vb = AttrCalibrator.table.verbBehavior;
             if (!vb) return false;
             var current = vb.substituteVerb || "examine";
+            if (typeof LearnedWords !== "undefined") {
+                current = AttrCalibrator.defaultInspectVerb();
+                if (LearnedWords.inspectSuppressed("disabled:" + current)) return false;
+            }
             return !!(vb.disabled[current] && vb.disabled[current].confirmed);
         } catch (e) { return false; }
     },
@@ -918,6 +936,10 @@ var AttrCalibrator = {
     // and a genuinely inconsistent signal never settles on a wrong answer.
     record: function (entry) {
         try {
+            if (entry && entry.learnedWordCandidate && typeof LearnedWords !== "undefined") {
+                LearnedWords.recordWitness(entry);
+                return; // Revision evidence is separate; never overwrite original calibration.
+            }
             var mem = AttributeSchema._getMem();
             if (!mem) return;
             AttrCalibrator.hydrate(mem);

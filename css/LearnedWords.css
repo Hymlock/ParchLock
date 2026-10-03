@@ -1,0 +1,24 @@
+#learned-words { --lw-line: #7c968a70; max-width: 900px; position: relative; }
+#learned-words .lw-toolbar { display:flex; flex-wrap:wrap; gap:8px; position:sticky; top:0; background:var(--pl-surface, Canvas); z-index:2; padding:8px 0; }
+#learned-words button { min-height:44px; padding:8px 14px; cursor:pointer; }
+#learned-words p { line-height:1.5; }
+#learned-words .lw-feedback { min-height:1.5em; }
+#learned-words .lw-entry { border-top:1px solid var(--lw-line); padding:14px 0; }
+#learned-words summary { cursor:pointer; min-height:44px; }
+#learned-words .lw-entry > summary { display:flex; justify-content:space-between; gap:24px; align-items:center; }
+#learned-words .lw-summary { display:grid; gap:8px; min-width:0; overflow-wrap:anywhere; }
+#learned-words .lw-summary span:first-child { font-weight:600; }
+#learned-words .lw-meta { text-align:right; font-size:.85em; max-width:35%; }
+#learned-words .lw-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:18px 0; }
+#learned-words label:not(.lw-ignore) { display:grid; gap:6px; }
+#learned-words input:not([type=checkbox]), #learned-words select { box-sizing:border-box; width:100%; min-width:0; min-height:44px; font:inherit; padding:9px; border:1px solid var(--lw-line); border-radius:6px; color:inherit; background:transparent; }
+#learned-words input[readonly] { opacity:.75; }
+#learned-words .lw-ignore { display:flex; align-items:center; gap:10px; min-height:44px; }
+#learned-words .lw-advanced { margin:12px 0; padding:12px; border:1px solid var(--lw-line); border-radius:8px; }
+#learned-words pre { white-space:pre-wrap; overflow-wrap:anywhere; font-size:.8em; max-height:180px; overflow:auto; }
+#learned-words .lw-error { color:#b44936; }
+#learned-words .lw-tour { position:sticky; bottom:0; border:2px solid var(--pl-accent,#47987a); border-radius:12px; padding:20px; background:var(--pl-surface,Canvas); color:var(--pl-text,CanvasText); z-index:3; }
+#learned-words .lw-tour[hidden] { display:none; }
+#learned-words.lw-touring > :not(.lw-tour) { display:none; }
+#learned-words .lw-tour button { margin:4px; }
+@media(max-width:540px) { #learned-words .lw-fields { grid-template-columns:1fr; } #learned-words .lw-entry > summary { gap:12px; } #learned-words .lw-meta { font-size:.75em; } }

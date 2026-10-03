@@ -621,16 +621,18 @@ var Actionable = {
             else {
                 var primary = null;
                 var primaryIntent = null;
+                var primaryEnter = true;
                 try {
                     if (oid) {
                         var cmds = Actionable.resolveObjectCommands(oid, kind);
-                        if (cmds && cmds.length) { primary = cmds[0].command; primaryIntent = cmds[0].intent || null; }
+                        if (cmds && cmds[0] && cmds[0].learnedWordScope && typeof LearnedWords !== "undefined" && !LearnedWords.commandCurrent(cmds[0])) return;
+                        if (cmds && cmds.length) { primary = cmds[0].command; primaryIntent = cmds[0].intent || null; primaryEnter = cmds[0].Enter !== false && cmds[0].enter !== false; }
                     }
                 } catch (err) {}
                 if (!primary) Actionable.Open(noun, kind, e.clientX, e.clientY, oid);
                 if (primary) {
-                    Actionable.Submit(primary);
-                    if (primaryIntent) Actionable.noteIntentUsage(primaryIntent);
+                    if (!primaryEnter) { Input.Clear(); Input.Inject(primary, false); Input.Focus(); }
+                    else { Actionable.Submit(primary); if (primaryIntent) Actionable.noteIntentUsage(primaryIntent); }
                 }
             }
         }).on("contextmenu.pmAct", ".pl-act:not(.is-stale)", function (e) {
@@ -1599,10 +1601,14 @@ var Actionable = {
                 return {
                     Label: verb.charAt(0).toUpperCase() + verb.slice(1),
                     Command: command,
-                    Enter: true,
                     Score: scoreFor(command, base),
                     Usage: usageFor(command),
-                    Action: function () { Actionable.Submit(command); if (c.intent) Actionable.noteIntentUsage(c.intent); }
+                    Enter: c.Enter !== false && c.enter !== false,
+                    Action: function () {
+                        if (c.learnedWordScope && typeof LearnedWords !== "undefined" && !LearnedWords.commandCurrent(c)) return;
+                        if (c.Enter === false || c.enter === false) { Input.Clear(); Input.Inject(command, false); Input.Focus(); }
+                        else { Actionable.Submit(command); if (c.intent) Actionable.noteIntentUsage(c.intent); }
+                    }
                 };
             });
             try {
