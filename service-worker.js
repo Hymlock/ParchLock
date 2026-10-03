@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v100"; // D205 consensus repairs and Yourself-hold tutorial copy.
+const CACHE_VERSION = "parchlock-shell-v101"; // Tutorial speech reads the paragraph the card shows.
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [
