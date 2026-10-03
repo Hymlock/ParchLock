@@ -41,7 +41,7 @@ for %%F in (
 
 rem Runtime directory allow-list. Markdown, source maps and staging notes do
 rem not match these declarations and therefore cannot ship.
-robocopy "%SRC%\css" "%DEST%\css" ParchLock.css CharCell.css parchment.css Tutorial.css RobotoMono-ExtraLight.ttf RobotoMono-OFL.txt /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
+robocopy "%SRC%\css" "%DEST%\css" ParchLock.css CharCell.css parchment.css Tutorial.css LearnedWords.css RobotoMono-ExtraLight.ttf RobotoMono-OFL.txt /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
 if errorlevel 8 goto :fail
 robocopy "%SRC%\img" "%DEST%\img" *.png *.svg *.ico *.css *.js /E /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
 if errorlevel 8 goto :fail
@@ -68,6 +68,7 @@ for %%F in (
   js\ProductInfo.js js\ModuleLibrary.js js\MobileLayout.js js\Input.js
   js\Qol.js js\Actionable.js js\ParchLock.js css\ParchLock.css
   js\StatTracker.js js\StatusGridDecoder.js js\EquipmentUI.js
+  js\LearnedWords.js css\LearnedWords.css
   css\RobotoMono-ExtraLight.ttf lib\main.js
 ) do if not exist "%DEST%\%%F" (
   echo ERROR: Runtime allow-list missed %%F
