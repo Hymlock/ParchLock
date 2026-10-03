@@ -1,7 +1,7 @@
 # Edit Learned Words — adversarial implementation audit request
 
 Operator authorized full implementation after design consensus #1049/#1051/#1052.
-Status: implemented candidate, independent implementation audit requested; not overall goal completion.
+Status: implementation consensus reached on runtime commit 9bfac37. Grok #1056 ACCEPT WITH NOTES; Codex independently verified current source and reran learned-words 30, learned-words-live 72 and inspect-disablement 22 successfully. Android device behavior and a new APK remain unvalidated. This does not record overall goal completion.
 
 ## Audit round 2: Grok #1054 resolved
 

@@ -201,3 +201,6 @@ Operator authorized full implementation after #1049/#1051 design consensus. Real
 
 ## Edit Learned Words audit round 2 (2026-10-03, codex)
 Grok #1054 REVISE: provisional inspect replacement candidates were missing. Added read-only candidate rows and reversible promotion/use suppression, retaining original observations and persisting new observations while ignored. Dedicated contract checks now 30; live browser 72 and inspect regression 22 pass. Reaudit requested; no APK/device validation or overall completion.
+
+## Edit Learned Words implementation consensus (2026-10-03, codex)
+Grok #1056 ACCEPT WITH NOTES for runtime commit 9bfac37. Codex checked the cited gates and independently reran learned-words 30/30, learned-words-live 72/72 and inspect-disablement 22/22. Implementation audit consensus reached; no remaining revise findings. Mobile whole-dialog scrolling is an accepted layout note. Android/device validation and a new APK remain outstanding; overall goal completion belongs to the operator.
