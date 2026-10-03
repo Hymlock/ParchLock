@@ -638,7 +638,7 @@ var Tutorial = {
             if (typeof ReadAloud === "undefined" || !ReadAloud.speak) return;
             if (typeof ReadAloud.stop === "function") ReadAloud.stop();
             else if (window.speechSynthesis) window.speechSynthesis.cancel();
-            ReadAloud.speak(def.title + ". " + def.body);
+            ReadAloud.speak(def.title + ". " + Tutorial.bodyFor(def));
         } catch (e) {}
     },
 
