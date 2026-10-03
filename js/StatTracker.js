@@ -784,9 +784,9 @@ var StatTracker = {
     // stats were the one subsystem it never told, so a restored game kept the
     // abandoned timeline's score and carried totals on screen until something
     // happened to overwrite them. Raised by the grok seat's audit of D178.
-    Resync: function () {
+    Resync: function (reason) {
         try {
-            StatTracker.forgetReadings(StatTracker.model(), false);
+            StatTracker.forgetReadings(StatTracker.model(), reason === "restart" || reason === "new-game");
             StatTracker._samples = [];
             StatTracker._probePending = null;
             StatTracker._probeTurns = 0;
@@ -1685,7 +1685,7 @@ var StatTracker = {
         Object.keys(parsed).forEach(function (k) {
             var p = parsed[k];
             var current = model.stats[k];
-            if (current && current.confirmed && !current.ramStale && /^(status|global|property)/.test(current.source || "") && current.unit !== "ordinal") return;
+            if (current && current.confirmed && !current.ramStale && /^(status|global:|property|player-prop:|indiv:)/.test(current.source || "") && current.unit !== "ordinal") return;
             model.stats[k] = {
                 key: k, label: k.charAt(0).toUpperCase() + k.slice(1),
                 band: p.band, step: p.step, steps: p.steps,

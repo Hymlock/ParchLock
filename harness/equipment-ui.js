@@ -303,6 +303,43 @@ overSelf=false;E.updateHover(drag,0,0);overSelf=true;now=800;E.updateHover(drag,
 assert(!opened,'leaving and retargeting reset dwell');
 now=1550;E.updateHover(drag,0,0);
 assert(opened===1,'continuous Yourself dwell opens at documented750ms threshold');
+E.openYourselfRadial=realOpen;
+const listeners = [];
+const oldAddListener = document.addEventListener;
+document.addEventListener = (type, callback, options) => listeners.push({type, callback, capture: options === true});
+E.bindGlobalDrag();
+document.addEventListener = oldAddListener;
+const oldClearHover = E.clearHover, oldKillGhost = E.killGhost;
+E.clearHover = () => {}; E.killGhost = () => {};
+const oldReference = Actionable.referenceFor;
+const emptyCases = [
+    ['missing dictionary', () => { Actionable.isGameWord = () => false; }, lantern],
+    ['examine-only item', () => {}, {...lantern, examineOnly:true}],
+    ['ambiguous noun', () => { Actionable.referenceFor = obj => ({noun:obj.name, unique:false, verified:true}); }, lantern]
+];
+emptyCases.forEach(([label, setup, obj]) => {
+    Actionable.isGameWord = word => dictionary.has(word);
+    Actionable.referenceFor = oldReference;
+    setup();
+    now = 0;
+    const emptyDrag = {...drag, obj, dwellStart:null, active:true, pointerId:42, el:{classList:{remove(){}}}};
+    // Use the nested towel for the ordinary drop's unique TAKE command.
+    emptyDrag.id = '2';
+    const oldCandidates = E.yourselfCommands;
+    E.yourselfCommands = () => oldCandidates.call(E, obj, model);
+    E._drag = emptyDrag; E._holdPointerId = null;
+    E.updateHover(emptyDrag,0,0); now=750; E.updateHover(emptyDrag,0,0);
+    assert(E._drag === emptyDrag && E._holdPointerId == null, label + ' leaves drop armed after 750ms empty dwell');
+    // The ordinary drop independently validates the live noun on release.
+    Actionable.referenceFor = oldReference;
+    const before = submitted.length;
+    const event = {pointerId:42,clientX:0,clientY:0,preventDefault(){},stopImmediatePropagation(){throw new Error('empty dwell consumed release');}};
+    listeners.filter(l=>l.type==='pointerup').sort((a,b)=>Number(b.capture)-Number(a.capture)).forEach(l=>l.callback(event));
+    assert(submitted.length === before+1 && submitted[before] === 'take towel', label + ' release still submits ordinary TAKE');
+    E.yourselfCommands = oldCandidates;
+});
+Actionable.isGameWord = word => dictionary.has(word); Actionable.referenceFor = oldReference;
+E.clearHover = oldClearHover; E.killGhost = oldKillGhost;
 Date.now=realNow;E.rowAt=realRowAt;E.openYourselfRadial=realOpen;E.IsOpen=oldOpen;
 assert(JSON.stringify(ActionSynth.rules)===ordinaryRules,'all ordinary rule lists remain unchanged');
 

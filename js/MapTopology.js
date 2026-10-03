@@ -786,7 +786,7 @@ var MapTopology = {
             // the previous game's score and carried totals stayed on screen:
             // the exact gap D180 was meant to close and did not.
             try {
-                if (typeof StatTracker !== "undefined" && StatTracker.Resync) StatTracker.Resync();
+                if (typeof StatTracker !== "undefined" && StatTracker.Resync) StatTracker.Resync("new-game");
             } catch (eS) {}
             return;
         }

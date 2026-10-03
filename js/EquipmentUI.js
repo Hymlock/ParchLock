@@ -92,9 +92,9 @@ var EquipmentUI = {
         if (!EquipmentUI.interactionReady(d.generation, d.moduleKey)) return;
         var model = EquipmentUI.model(), obj = model.byId[d.id];
         var candidates = EquipmentUI.yourselfCommands(obj, model);
+        if (!candidates.length) return;
         EquipmentUI._holdPointerId = d.pointerId;
         EquipmentUI.cleanupDrag(d);
-        if (!candidates.length) return;
         candidates.forEach(function (item) {
             item.Action = function () { EquipmentUI.selectYourselfAction(d.id, item.Form, item.Enter, d.generation, d.moduleKey); };
             item.Command = item.Form + " " + Actionable.referenceFor(obj).noun;

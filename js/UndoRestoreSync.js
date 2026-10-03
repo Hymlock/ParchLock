@@ -36,7 +36,7 @@ var UndoRestoreSync = {
             // indistinguishable from the player scoring, so the score-up tone
             // fires on a restore. Order alone is not sufficient (see
             // StatTracker.emitChange), but it is necessary.
-            if (typeof StatTracker !== "undefined" && StatTracker.Resync) StatTracker.Resync();
+            if (typeof StatTracker !== "undefined" && StatTracker.Resync) StatTracker.Resync(reason);
             if (typeof WorldModel !== "undefined" && WorldModel.tick) WorldModel.tick();
             // Reset topology previous room so next location is fresh from RAM cascade
             if (typeof MapTopology !== "undefined") {

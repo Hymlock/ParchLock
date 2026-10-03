@@ -820,6 +820,41 @@ assert(S.parseScoreDelta("Your score has just gone up by twenty-eight points. Yo
     delete global.Message;
 }
 
+// Audit #1026: exercise production lifecycle entry points, not forgetReadings directly.
+const vm = require('vm');
+const lifecycle = { StatTracker: S, setTimeout: () => 1, clearTimeout() {}, localStorage };
+vm.createContext(lifecycle);
+vm.runInContext(fs.readFileSync(path.resolve(__dirname, '..', 'js', 'UndoRestoreSync.js'), 'utf8'), lifecycle);
+vm.runInContext(fs.readFileSync(path.resolve(__dirname, '..', 'js', 'MapTopology.js'), 'utf8'), lifecycle);
+S._model = S.blank();
+S.observeText('*** You have won ***', 1, '', { spanId: 'lifecycle-win' });
+S.model().deaths = 2;
+lifecycle.UndoRestoreSync.resync('restore_file');
+S.observeText('*** You have won ***', 1, '', { spanId: 'lifecycle-win' });
+assert(S.model().wins === 1 && S.model().deaths === 2, 'real restore resync preserves counters and banner dedup');
+lifecycle.UndoRestoreSync.resync('undo');
+assert(S.model().wins === 1 && S.model().deaths === 2, 'real undo resync preserves playthrough counters');
+lifecycle.UndoRestoreSync.resync('restart');
+assert(S.model().wins === 0 && S.model().deaths === 0 && !Object.keys(S.model().seenBanners).length, 'real restart resync clears counters and banner ids');
+S.observeText('*** You have won ***', 1, '', { spanId: 'lifecycle-win' });
+assert(S.model().wins === 1, 'restart permits the same terminal span in the new playthrough');
+S.model().deaths = 2;
+lifecycle.MapTopology._awaitingRestoreAnswer = true;
+lifecycle.MapTopology.handlePossibleNewGameAnswer('no');
+assert(S.model().wins === 0 && S.model().deaths === 0 && !Object.keys(S.model().seenBanners).length, 'real decline-restore new game clears counters and banner ids');
+const diagnosis = 'You are in perfect health. You are wide awake. You are well hydrated and well fed.';
+['player-prop:4', 'indiv:98', 'global:5', 'status-grid'].forEach(source => {
+    ['health', 'hunger', 'thirst', 'sleep'].forEach(key => {
+        const numeric = { key, value: 80, unit: 'percent', confirmed: true, source, ramStale: false };
+        S.model().stats[key] = numeric;
+        S.applyDiagnoseReply(diagnosis);
+        assert(S.model().stats[key] === numeric && numeric.unit === 'percent', source + ' retains fresh numeric ' + key + ' over ordinal diagnosis');
+    });
+});
+S.model().stats.health = { value: 80, unit: 'plain', confirmed: true, source: 'player-prop:4', ramStale: true };
+S.applyDiagnoseReply(diagnosis);
+assert(S.model().stats.health.unit === 'ordinal', 'stale RAM health may be replaced by current diagnosis');
+
 // D205 consensus statistics extensions: observations are not learned readings.
 S._model = S.blank();
 S._events = [];
