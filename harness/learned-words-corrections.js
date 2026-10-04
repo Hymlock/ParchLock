@@ -39,7 +39,7 @@ async function boot(browser,width,height){
  const result=await page.evaluate(mask=>{
  const keys=['learned','actions','names','status'];
  keys.forEach((k,i)=>Global.Prefs['LearnedWordsShow_'+k]=!!(mask&(1<<i)));LearnedWords.applyVisibility();
- const visible=Array.from(document.querySelectorAll('.lw-section-header')).filter(b=>!b.hidden).map(b=>b.dataset.section);
+ const visible=Array.from(document.querySelectorAll('.lw-section-header')).filter(b=>getComputedStyle(b).display!=='none').map(b=>b.dataset.section);
  return {visible,active:LearnedWords._section,center:document.querySelector('.lw-center').hidden,add:document.querySelector('[data-action=add]').disabled};
  },mask);
  const expected=['learned','actions','names','status'].filter((k,i)=>mask&(1<<i));

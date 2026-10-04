@@ -46,3 +46,5 @@
 #learned-words .lw-diagnostic { font-size:.9em; }
 
 #learned-words .lw-meta { overflow-wrap:anywhere; }
+
+#learned-words [hidden] { display:none !important; }

@@ -792,22 +792,9 @@ var Actionable = {
                 });
             } catch (eR) {}
 
-            // A word that also belongs to a NAMED object in scope cannot
-            // identify this one -- the parser would resolve it elsewhere and
-            // the mark would lie about which object it points at.
-            //
-            // Identical siblings are deliberately NOT excluded this way. Both
-            // pellets own every one of their words, because they are two
-            // instances of the same thing printed as one phrase ("two food
-            // pellets"). Requiring a word unique among them would reject the
-            // only noun the room actually prints. They are de-duplicated by
-            // word below instead, so one phrase yields one mark (D146).
-            var owned = {};
-            (payload.discoveredObjects || []).concat(payload.inventory || []).forEach(function (o) {
-                ((o && o.aliases) || []).forEach(function (w) {
-                    owned[String(w || "").toLowerCase()] = 1;
-                });
-            });
+            // Scope and vocabulary establish candidates, not unique ownership.
+            // A named carried copy must not erase an unnamed ground sibling.
+            // referenceFor and the mark candidate set retain parser ambiguity.
 
             var cut = 9;
             try {
@@ -829,7 +816,6 @@ var Actionable = {
                 try { return ZRamReader.attrsFromObject(mem, id) || {}; } catch (eA) { return {}; }
             };
 
-            var takenWords = {};
             cands.forEach(function (c) {
                 if (!c || c.id == null || blocked[String(c.id)]) return;
                 var best = null;
@@ -838,7 +824,7 @@ var Actionable = {
                     if (!t || t.length < 3) return;
                     if (t.length >= cut) return;                    // maybe truncated
                     if (!/^[a-z][a-z'-]*$/.test(t)) return;         // "barrel1" is a compiler tag
-                    if (owned[t]) return;                          // a named object owns this word
+                    // A named sibling may share this vocabulary; keep each scoped RAM identity.
                     if (!new RegExp("(^|[^a-z])" + t + "([^a-z]|$)").test(text)) return;
                     if (!best || t.length > best.length) best = t;
                 });
@@ -1530,7 +1516,7 @@ var Actionable = {
         if (!objectId || (object && !Actionable.referenceFor(object).unique)) {
             if (kind !== "direction") {
                 var choices = Actionable.distinctObjects(Actionable.payloadPool()).filter(function (o) {
-                    return (o.aliases || []).some(function (w) { return Actionable.vocabularyKey(w) === Actionable.vocabularyKey(noun); }) || String(o.name).toLowerCase() === String(noun).toLowerCase();
+                    return String(o.name).toLowerCase() === String(noun).toLowerCase() || String(noun).toLowerCase().split(/\s+/).every(function (word) { return (o.aliases || []).some(function (w) { return Actionable.vocabularyKey(w) === Actionable.vocabularyKey(word); }); });
                 });
                 var ambiguity = choices.filter(function (o) { return Actionable.referenceFor(o).unique; }).map(function (o) {
                     return { Label: o.name, Action: function () { Actionable.Open(o.name, kind, x, y, o.id); } };
