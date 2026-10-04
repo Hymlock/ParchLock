@@ -175,7 +175,7 @@ var Actionable = {
         var noun = Actionable.disambiguatedNoun(obj);
         var tokens = String(noun || "").toLowerCase().split(/[^a-z0-9'-]+/).filter(Boolean);
         var owners = {}, candidates = [];
-        pool.concat(obj || []).forEach(function (o) {
+        Actionable.distinctObjects(pool.concat(obj || [])).forEach(function (o) {
             if (!o || o.id == null || owners[String(o.id)]) return;
             owners[String(o.id)] = true;
             var words = (o.aliases || []).concat(String(o.name || "").toLowerCase().split(/[^a-z0-9'-]+/)).map(Actionable.vocabularyKey);
@@ -205,7 +205,8 @@ var Actionable = {
         var unique = candidates.length === 1 && String(candidates[0]) === String(obj && obj.id);
         return { noun: noun, candidateIds: candidates, unique: unique, verified: unique && !customUnverified, provenance: "scoped-vocabulary" };
     },
-    displayNameFor: function (obj, pool, text) {
+    displayNameFor: function (obj, pool, text) { return Actionable.observedPhraseFor(obj,pool,text,false); },
+    observedPhraseFor: function (obj, pool, text, requireUnique) {
         // Display-only equivalence uses the live interpreter's encoding: a
         // hyphen consumes an alphabet shift and can truncate before character 9.
         var displayKey = function (word) {
@@ -233,7 +234,7 @@ var Actionable = {
                     var mine = (o.aliases || []).map(displayKey);
                     return phrase.every(function (w) { return mine.indexOf(displayKey(w)) >= 0; });
                 });
-                if (owners.length === 1 && String(owners[0].id) === String(obj.id) && phrase.join(" ").length > best.length) best = phrase.join(" ");
+                if ((!requireUnique || owners.length === 1) && owners.some(function (o) { return String(o.id) === String(obj.id); }) && phrase.join(" ").length > best.length) best = phrase.join(" ");
             }
         }
         return best || obj.name;
@@ -843,9 +844,10 @@ var Actionable = {
                 });
                 if (!best) return;
                 // Keep physical siblings; the marker owns a candidate set.
-                var label = Actionable.displayNameFor({ id: c.id, name: best, aliases: c.aliases }, cands, roomText);
+                var display = Actionable.displayNameFor({ id: c.id, name: best, aliases: c.aliases }, cands, roomText);
+                var label = Actionable.observedPhraseFor({ id:c.id,name:best,aliases:c.aliases },cands,roomText,true);
                 out.push({
-                    id: c.id, name: label, parentId: c.parentId,
+                    id: c.id, name: label, displayName:display, parentId: c.parentId,
                     aliases: c.aliases,
                     // D190: the declared attributes, and ONLY when D186 decoded
                     // this module's own attribute-name table. D184 shipped {}
@@ -863,6 +865,20 @@ var Actionable = {
         return out;
     },
 
+    distinctObjects: function (objects) {
+        var positions = {}, out = [], held = {};
+        if (typeof WorldModel !== 'undefined') (((WorldModel.lastPayload || {}).inventory) || []).forEach(function(o){held[String(o.id)]=o;});
+        (objects || []).forEach(function(o){
+            if (!o || o.id == null) return;
+            var id=String(o.id), index=positions[id];
+            if(index==null){positions[id]=out.length;out.push(o);} else {
+                var aliases=Array.from(new Set((out[index].aliases||[]).concat(o.aliases||[])));
+                out[index]=Object.assign({},out[index],o,{aliases:aliases});
+            }
+            if(held[id] && held[id].attrs) out[positions[id]]=Object.assign({},out[positions[id]],{attrs:held[id].attrs,parentId:held[id].parentId});
+        });
+        return out;
+    },
     payloadPool: () => {
         try {
             var p = WorldModel && WorldModel.lastPayload;
@@ -897,8 +913,9 @@ var Actionable = {
                         row = Object.assign({}, o, { customParseName: true, parseNameUnverified: true });
                     }
                 } catch (eP) {}
-                var label = Actionable.displayNameFor(row, base, text);
-                return label === row.name ? row : Object.assign({}, row, { name: label, structuralName: o.name, labelProvenance: "observed-vocabulary" });
+                var display = Actionable.displayNameFor(row,base,text);
+                var label = Actionable.observedPhraseFor(row,base,text,true);
+                return label === row.name ? Object.assign({},row,{displayName:display}) : Object.assign({}, row, { name: label, displayName:display, structuralName: o.name, labelProvenance: "observed-vocabulary" });
             });
         } catch (e) { return []; }
     },
@@ -1028,12 +1045,15 @@ var Actionable = {
                     mark.dataset.noun = matched.toLowerCase();
                     mark.dataset.kind = meta.kind;
                     if (meta.objectId != null && meta.objectId !== "") {
-                        var owners = Actionable.payloadPool().filter(function (o) {
+                        var owners = Actionable.distinctObjects(Actionable.payloadPool()).filter(function (o) {
                             var words = Actionable.nounWordsOf(o);
                             return String(o.name).toLowerCase() === matched.toLowerCase() || matched.toLowerCase().split(/\s+/).every(function (w) { return !!words[w] || (o.aliases || []).some(function (a) { return Actionable.vocabularyKey(a) === Actionable.vocabularyKey(w); }); });
                         });
                         mark.dataset.candidateIds = JSON.stringify(owners.map(function (o) { return o.id; }));
                         if (owners.length === 1 && String(owners[0].id) === String(meta.objectId)) mark.dataset.objectId = String(meta.objectId);
+                        var held = {};
+                        (((WorldModel.lastPayload || {}).inventory) || []).forEach(function (o) { held[String(o.id)] = true; });
+                        if (owners.length) mark.dataset.kind = owners.every(function (o) { return held[String(o.id)]; }) ? 'inventory' : 'object';
                     }
                     if (meta.dictAddr) mark.dataset.dictAddr = String(meta.dictAddr);
                     mark.textContent = matched;
@@ -1509,7 +1529,7 @@ var Actionable = {
         var object = Actionable.payloadPool().find(function (o) { return String(o.id) === String(objectId); });
         if (!objectId || (object && !Actionable.referenceFor(object).unique)) {
             if (kind !== "direction") {
-                var choices = Actionable.payloadPool().filter(function (o) {
+                var choices = Actionable.distinctObjects(Actionable.payloadPool()).filter(function (o) {
                     return (o.aliases || []).some(function (w) { return Actionable.vocabularyKey(w) === Actionable.vocabularyKey(noun); }) || String(o.name).toLowerCase() === String(noun).toLowerCase();
                 });
                 var ambiguity = choices.filter(function (o) { return Actionable.referenceFor(o).unique; }).map(function (o) {

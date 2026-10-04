@@ -62,8 +62,9 @@ var AttrCalibrator = {
         var forms = rec.exactForms || (rec.exactForms = {});
         var form = entry.exactForm;
         var e = forms[form] || (forms[form] = { confirmations: 0, objectId: entry.objectId, form: form });
-        if (e.submissionId === entry.submissionId) return false;
-        e.submissionId = entry.submissionId;
+        var submissionKey = entry.pageEpoch ? entry.pageEpoch + ':' + entry.submissionId : entry.submissionId;
+        if (e.submissionId === submissionKey) return false;
+        e.submissionId = submissionKey;
         e.confirmations++;
         e.source = entry.success ? "opcode-state" : "behavioral-transcript";
         return true;
@@ -443,6 +444,7 @@ var AttrCalibrator = {
                         exactForm: ctx.exactForm,
                         learnedWordCandidate: ctx.learnedWordCandidate,
                         submissionId: turn.id != null ? turn.id : turn.submissionId,
+                        pageEpoch: turn.pageEpoch,
                         at: Date.now()
                     };
                     // Preserved byte-for-byte (existing diagnostic surface,

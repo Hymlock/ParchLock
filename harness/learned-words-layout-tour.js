@@ -64,6 +64,7 @@ async function boot(browser,width,height){
    const center=document.querySelector('.lw-center');
    return {reachable:rects.every(r=>r.top>=0&&r.bottom<=limit+1&&r.left>=0&&r.right<=document.documentElement.clientWidth+1),center:!!center&&center.clientHeight>0,scroll:getComputedStyle(center).overflowY,headers:document.querySelectorAll('.lw-section-header').length,open:document.querySelectorAll('.lw-section-header[aria-expanded=true]').length};
   });}
+  check(await page.evaluate(()=>LearnedWords._section==='status'&&document.querySelector('.lw-toolbar').classList.contains('lw-icons')),'initial Status panel and collapsed accessible toolbar '+width);
   let g=await geometry();check(g.reachable&&g.center&&g.headers===4&&g.open===1,'fixed headers/X and usable center '+width+' '+JSON.stringify(g));
   check(g.scroll==='auto'&&await page.evaluate(()=>getComputedStyle(document.querySelector('#message')).overflowY==='hidden'&&getComputedStyle(document.querySelector('#message > div')).overflowY==='hidden'),'only central editor pane scrolls '+width);
   await page.evaluate(()=>{document.querySelector('.lw-center').scrollTop=300;});const before=await geometry();check(before.reachable,'headers remain reachable after long-list scroll '+width);

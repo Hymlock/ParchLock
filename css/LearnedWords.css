@@ -38,3 +38,11 @@
 #learned-words .lw-tour button { margin:4px; }
 @media(min-width:600px) and (max-height:500px) { #learned-words .lw-current-header, #learned-words .lw-bottom-headers { display:flex; gap:4px; } #learned-words .lw-section-header { flex:1; min-width:0; } }
 @media(max-width:540px) { #learned-words .lw-fields { grid-template-columns:1fr; } #learned-words .lw-entry > summary { gap:12px; } #learned-words .lw-meta { font-size:.75em; } }
+
+#learned-words .lw-icons .lw-button-text { display:none; }
+#learned-words .lw-icons button { min-width:44px; }
+#learned-words .lw-icon { font-size:20px; line-height:1; }
+#learned-words .lw-toolbar:not(.lw-icons) .lw-icon { display:none; }
+#learned-words .lw-diagnostic { font-size:.9em; }
+
+#learned-words .lw-meta { overflow-wrap:anywhere; }

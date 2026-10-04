@@ -27,6 +27,8 @@ function check(value, message) { assert(value,message); console.log('PASS:',mess
    if(width===360)await page.screenshot({path:'work/learned-words-tutorial-mobile.png'});
    await page.locator('.lw-tour button').filter({hasText:/^Skip$/}).click();
    check(await page.evaluate(()=>localStorage.getItem('PL_LearnedWordsTutorialSeen')==='1'&&localStorage.getItem('PL_TutorialSeen')==='1'),'Skip completes sibling key only '+width);
+   check(await page.evaluate(()=>LearnedWords._section==='status'),'Status is the initial restored center panel '+width);
+   await page.locator('.lw-section-header[data-section=learned]').click();
    const row=page.locator('.lw-entry').filter({hasText:'Remembered'}).first(); await row.locator(':scope > summary').click();
    const inputs=row.locator('.lw-fields input'); await inputs.nth(1).fill('Edited action'); await inputs.nth(0).focus();
    check(await row.locator(':scope > summary').innerText().then(t=>t.includes('Response: Edited action')),'blur autosaves with labeled summary '+width);
@@ -86,9 +88,35 @@ function check(value, message) { assert(value,message); console.log('PASS:',mess
    },manual);
    check(gates.legacy===false&&gates.semantic===false,'legacy and semantic suggestions stay review-only '+width);
    check(gates.node&&gates.sent===0&&gates.prompt.toLowerCase().startsWith(gates.verb+' '),'actual radial selection fills without submitting '+width+' '+JSON.stringify(gates));
+   const duplicateCases=await page.evaluate(()=>{
+    const old={pool:Actionable.payloadPool,payload:WorldModel.lastPayload,more:Actionable.addMoreActions,radial:ParchLockQol.OpenRadial,submit:Actionable.Submit,nouns:Actionable.CommandNouns};
+    const results=[];let captured,source;
+    try{
+     Actionable.addMoreActions=()=>{};ParchLockQol.OpenRadial=(x,y,s,c)=>captured={s,c};Actionable.Submit=(cmd,via)=>source=via;Actionable.CommandNouns={};
+     for(const scenario of ['all-ground','mixed','all-held','worn','nested','three'])for(const reverse of [false,true]){
+      const objects=[{id:9001,name:'pellet',aliases:['pellet'],attrs:{takeable:true}},{id:9002,name:'pellet',aliases:['pellet'],attrs:{takeable:true}}];
+      if(scenario==='three')objects.push({...objects[1],id:9003});
+      if(scenario==='worn')objects.forEach(o=>{o.attrs.worn=true;o.attrs.wearable=true;});
+      if(scenario==='nested')objects.forEach(o=>o.parentId=8888);
+      const held=scenario==='all-ground'?[]:scenario==='mixed'||scenario==='three'?[objects[0]]:objects;
+      WorldModel.lastPayload={discoveredObjects:objects,inventory:held,playerId:1};
+      const pool=objects.concat(held,objects);Actionable.payloadPool=()=>reverse?pool.slice().reverse():pool;
+      const host=document.createElement('div');host.className='BufferLine';host.textContent='pellet';document.body.appendChild(host);
+      Actionable.wrapFirstExact([host],'pellet',{objectId:9001,kind:reverse?'object':'inventory'});
+      const mark=host.querySelector('.pl-act');captured=null;source=null;
+      mark.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,clientX:100,clientY:100,button:2}));
+      const commands=captured.s.map(c=>c.Command).filter(Boolean),take=commands.includes('take pellet');
+      if(captured.s[0]&&captured.s[0].Action)captured.s[0].Action();
+      results.push({scenario,reverse,owners:JSON.parse(mark.dataset.candidateIds).length,unbound:!mark.dataset.objectId&&captured.c.objectId===null,kind:mark.dataset.kind,take,source});host.remove();
+     }
+    }finally{Actionable.payloadPool=old.pool;WorldModel.lastPayload=old.payload;Actionable.addMoreActions=old.more;ParchLockQol.OpenRadial=old.radial;Actionable.Submit=old.submit;Actionable.CommandNouns=old.nouns;}
+    return results;
+   });
+   check(duplicateCases.every(c=>c.unbound&&c.owners===(c.scenario==='three'?3:2)&&c.kind===(['all-ground','mixed','three'].includes(c.scenario)?'object':'inventory')&&c.take===['all-ground','mixed','three'].includes(c.scenario)&&c.source==='ambiguous-reference'),'real story contextmenu dispatch preserves mixed/all-held ownership and command source '+width+' '+JSON.stringify(duplicateCases));
    const beforeRestore=await page.evaluate(()=>JSON.stringify(LearnedWords.load()));
    await page.evaluate(()=>LearnedWords.open());
-   const savedRow=page.locator('.lw-entry').first();await savedRow.locator(':scope > summary').click();await savedRow.locator('.lw-fields input').nth(1).fill('Uncommitted restore draft');
+   await page.locator('.lw-section-header[data-section=learned]').click();
+   const savedRow=page.locator('section[data-section=learned] .lw-entry').first();await savedRow.locator(':scope > summary').click();await savedRow.locator('.lw-fields input').nth(1).fill('Uncommitted restore draft');
    await page.evaluate(()=>UndoRestoreSync.generation++);await page.waitForTimeout(650);
    check(await page.evaluate(()=>!Message.IsOpen),'restore generation closes editor '+width);
    check(await page.evaluate(()=>JSON.stringify(LearnedWords.load()))===beforeRestore,'restore discards stale draft without overwriting valid override '+width);

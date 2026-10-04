@@ -7701,3 +7701,39 @@ learner extension; atomic gesture/submitDrop parity; Z-only dict scope; preceden
 policy + required tests). Still Proposed; no runtime GO.
 
 **Operator-authorized implementation contract (2026-10-02, bus consensus #1022-1024).** D205 C1/C2 above and the existing gesture/learning gates are authorized together. This authorization does not claim completed verification. Wins displays the existing observed playthrough counter without changing event classification. StatTracker owns conditions with candidate/confirmed/cleared/unknown states, exact source/locator/command and epoch/generation provenance. Explicit labelled status flags or command-owned DIAGNOSE assertions can confirm a condition; an unprompted assertion is candidate only, explicit negative/cure evidence clears it, stale evidence cannot overwrite a newer reading, and resync invalidates current readings. No TTL confirms a condition and no dictionary stem creates one. Conditions renders only confirmed entries in the existing status strip. Per-item value/weight requires an explicit item-owned labelled observation and a unique individual-property correlation across two distinct value transitions for that object; aggregate pins never license row display. Ambiguity, computed/routine-like values and contradictory evidence hide that row metric. Current RAM is re-read through the proven locator; readings are not persisted as current facts. Existing D174 aggregate fallback, mandatory D204 fulfillment, unknown numeric labels, original mapping and More behavior remain unchanged. No Glulx expansion or APK is authorized in this slice.
+
+
+## Normative Edit Learned Words / shared-name amendment (2026-10-04)
+
+Operator authorized implementation after design consensus Grok #1083 / Codex #1082,
+incorporating #1076-1079 and the narrowed recorder/owner repairs #1081. This supersedes
+only D201's unique-owner requirement for player-facing observed labels. All matching
+copies may show the same contiguous already-observed dictionary-encoder phrase.
+No unobserved expansion, cross-punctuation composition or sibling command attribution.
+Command nouns, parser references and physical IDs retain their separate gates; shared
+labels are displayName projection, not capability or unique target proof. Existing
+EquipmentUI instance ordinals differentiate rows through the same filename-owned sequence.
+
+Story marks count distinct physical IDs and retain structural aliases. Multiple owners
+remain unbound; any non-held candidate uses the existing room command intersection;
+all-held (including worn/nested) uses inventory intersection. directEvidenceOnly and
+ambiguous-reference learning exclusion stay. Inventory callers and ActionSynth Take
+removal are unchanged. Exact-form dedup stores page-load epoch plus numeric submissionId
+inside the existing record, preserving legacy counts and all success/rejection/threshold
+rules; numeric recorder IDs and UndoRestoreSync generations are not renumbered.
+
+The learned view excludes independently provided forms for new observations, frozen
+before the observation. Optional provenance lives on valid neutral rows in the existing
+version-1 LearnedWords override document, grants no command/label override, and survives
+edits/Ignore/Undo/reload. Missing legacy provenance stays conservative. Provisional first
+tries are session-only display; leaving/restore clears display without purging persisted
+counts. Confirmed forms persist by existing compiled identity. Manual and inspect rows
+stay. No parallel evidence store or new reset path.
+
+One initial Status panel, honest empty/unknown diagnostics; all four cumulative ordered
+headers remain. Story actions and Names start closed, rows identify objects with observed
+names and existing ordinals. Add word / Undo / Help keep existing accessible names as
+compact icons. Independent tour reveals controls, speaks visible text, uses inert targets,
+and restores section/details/scroll/focus/presentation; its completion key stays isolated.
+Browser fixtures and unit validation do not replace physical Android Back/IME/speech or
+artifact validation. Independent implementation audit and packaging are separate gates.

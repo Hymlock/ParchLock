@@ -18,7 +18,7 @@ function seed() { A.hydrate(mem); A.table.objects['7']={exactForms:{wield:{confi
 seed();
 const evidence=JSON.stringify(A.table);
 const original={id:L.rowKey('exact',7,'wield'),type:'exact',editable:true,objectId:7,trigger:'wield',original:'wield'};
-test('published and provisional enumeration',()=>{ A.table.objects['7'].exactForms.polish={confirmations:1}; const list=L.records(); assert(list.some(r=>r.trigger==='polish'&&r.state==='Not remembered yet')); });
+test('published and provisional enumeration',()=>{ A.table.objects['7'].exactForms.polish={confirmations:1}; assert(!L.records().some(r=>r.trigger==='polish')); L._projection[L.rowKey('exact',7,'polish')]={objectId:'7',form:'polish',key:identity,generation:0}; const list=L.records(); assert(list.some(r=>r.trigger==='polish'&&r.state==='Not remembered yet')); });
 test('label edit preserves evidence and published form',()=>{ L.commit(original,'wield','Brandish',false,7); assert.equal(L.commandLabel(7,'wield','Wield'),'Brandish'); assert(A.exactFormsFor(7).includes('wield')); });
 test('ignore affects learned contribution only',()=>{ L.commit(original,'wield','Brandish',true,7); assert(!A.exactFormsFor(7).includes('wield')); assert(A.allowedVerbsFor(7).includes('rub')); });
 test('undo restores last valid override',()=>{ L.undo(); assert(A.exactFormsFor(7).includes('wield')); });

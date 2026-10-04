@@ -182,7 +182,7 @@ if (A.referenceFor) {
     assert(A.displayNameFor(vials[0], vials, "green. vial") === "vial", "descriptor evidence never joins across sentence punctuation");
     const dagger = { id: 801, name: "daggers", aliases: ["dagger", "daggers"], labelProvenance: "parser-vocabulary" };
     assert(A.displayNameFor(dagger, [dagger], "a dagger (1d3 attack)") === "dagger", "unnamed item uses an observed singular alias");
-    assert(A.displayNameFor(dagger, [dagger, Object.assign({}, dagger, { id: 802 })], "a dagger") === "daggers", "shared single-word display evidence never chooses a physical sibling");
+    assert(A.displayNameFor(dagger, [dagger, Object.assign({}, dagger, { id: 802 })], "a dagger") === "dagger", "shared observed display spelling is retained without choosing a physical sibling");
     assert(A.displayNameFor({ id: 803, name: "large oak door", aliases: ["oak", "door"] }, [{ id: 803, aliases: ["oak", "door"] }], "oak") === "large oak door", "one-word display recovery never reduces a structural printed name");
     setPool(vials);
     vials[1].parseNameUnverified = true;

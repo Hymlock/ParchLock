@@ -9,6 +9,7 @@ var UndoRestoreSync = {
     },
     resync: function (reason) {
         UndoRestoreSync.generation++;
+        if (typeof LearnedWords !== 'undefined') { LearnedWords.clearProjection(); if (LearnedWords._open) LearnedWords.close(false); }
         UndoRestoreSync.pending = false;
         if (reason === "restart" && typeof ParchLockMap !== "undefined") {
             ParchLockMap.Clear({ seed: false });

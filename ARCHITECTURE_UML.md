@@ -3616,3 +3616,26 @@ flowchart TD
 radials or directional UI. Plan authority: D205 (#1015 F1–F5 folded).
 
 **Agreed statistics extension (#1022-1024).** StatTracker alone owns condition readings (candidate/confirmed/cleared/unknown), exact provenance and epoch/generation invalidation. Explicit status flags and command-owned DIAGNOSE assertions confirm; narration asserts candidates, explicit negative/cure evidence clears, and stale evidence cannot override fresher facts. No TTL promotion. Render confirmed conditions inside the existing Status strip and Wins from the existing counter. EquipmentUI consumes per-item value/weight only through a StatTracker locator proven by explicit item-owned observations and two distinct value transitions with a unique individual-property match. Aggregate equality is not per-item proof; computed/routine-like, ambiguous or contradicted slots produce no row metric. Restore invalidates readings, retains learned locators and re-reads current RAM. D174 aggregate fallback, D204 required serial fulfillment and StatusGridDecoder ownership are unchanged. Authorization is not product/test acceptance; no APK or Glulx expansion.
+
+## 70. Learned words display and shared-copy repairs (2026-10-04)
+
+Operator implementation authorization follows Grok #1083 design agreement. See the
+normative amendment at the end of PRODUCTION_PLAN.md and
+work/learned-words-normative-amendment.md. Display-only shared observed phrases are
+separate from parser labels; Actionable.payloadPool retains original unique-owner parser
+refinement and adds displayName. Marks/Open deduplicate physical IDs, retaining aliases
+and authoritative inventory attributes/context. Ambiguous actions still intersect command
+strings and exclude object-specific learning. Inventory radial synthesis remains unchanged.
+
+TurnRecorder owns a pageEpoch alongside its unchanged numeric counter. AttrCalibrator
+stores their composite dedup key inside exactForms, with unchanged thresholds and old-count
+migration. Before submission, LearnedWords freezes independent provider membership in its
+existing version-1 overrides document; neutral classification rows grant no override or
+command and no user Undo step. Transient attempts never write confirmation evidence.
+Undo preserves frozen membership and later same-revision recorder witnesses. Resync
+clears transient display/closes editor immediately, without deleting persisted evidence.
+
+EquipmentUI.registerInstances is the single existing sequence owner for real editor and
+inventory rows; no second map or empty-filename persistence. Initial Status diagnostics
+use model facts with unknown/stale distinction. Four ordered banners, compact accessible
+controls and standalone tutorial preserve the established one-panel/layout/lifecycle gates.

@@ -154,6 +154,18 @@ var EquipmentUI = {
         } catch (e) {}
     },
 
+    registerInstances: function (items) {
+        EquipmentUI.loadSeq();
+        if (EquipmentUI._seqKey === 'PL_EquipSeq_') return;
+        var dirty = false;
+        (items || []).forEach(function (o) {
+            if (!o || o.id == null || o.demo) return;
+            var id = String(o.id);
+            if (!EquipmentUI._seq[id]) { EquipmentUI._seq[id] = EquipmentUI._seqNext++; dirty = true; }
+        });
+        if (dirty) EquipmentUI.saveSeq();
+    },
+
     // ---- model ----------------------------------------------------------
     isWorn: function (obj) {
         var a = obj && obj.attrs;
@@ -252,16 +264,14 @@ var EquipmentUI = {
             : (payload.probe && payload.probe.playerId));
 
         var byId = {}, byParent = {}, itemIds = {};
-        var dirty = false;
+        EquipmentUI.registerInstances(items);
         items.forEach(function (o) {
             var id = String(o.id);
             itemIds[id] = true;
             byId[id] = o;
-            if (!EquipmentUI._seq[id]) { EquipmentUI._seq[id] = EquipmentUI._seqNext++; dirty = true; }
             var key = String(o.parentId);
             (byParent[key] = byParent[key] || []).push(o);
         });
-        if (dirty) EquipmentUI.saveSeq();
 
         // Top level, matching Actionable.RenderInventory's rule exactly.
         var topLevel = items.filter(function (o) {

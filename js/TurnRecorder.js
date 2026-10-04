@@ -60,6 +60,7 @@ var TurnRecorder = {
     _analyzers: [],
     _submitListeners: {},
     _submissionId: 0,
+    pageEpoch: Date.now().toString(36) + Math.random().toString(36).slice(2),
 
     subscribeAcceptedSubmit: function (id, callback) {
         TurnRecorder._submitListeners[id] = callback;
@@ -99,7 +100,8 @@ var TurnRecorder = {
     // the TRUE final command text.
     onAcceptedSubmit: function (command, source) {
         try {
-            var event = Object.freeze({ submissionId: ++TurnRecorder._submissionId, command: String(command || ""), source: source || "unknown" });
+            var event = Object.freeze({ submissionId: ++TurnRecorder._submissionId, pageEpoch: TurnRecorder.pageEpoch, command: String(command || ""), source: source || "unknown" });
+            try { if (typeof LearnedWords !== 'undefined') LearnedWords.observeSubmit(event); } catch (eLearning) {}
             if (event.source !== "stat-probe") {
                 if (typeof MapTopology !== "undefined") MapTopology.noteCommand(event.command);
                 if (typeof UndoRestoreSync !== "undefined") UndoRestoreSync.noteCommand(event.command);
@@ -116,6 +118,7 @@ var TurnRecorder = {
 
             var turn = {
                 submissionId: event.submissionId,
+                pageEpoch: event.pageEpoch,
                 command: String(command || ""),
                 source: source || "unknown",
                 startLine: lineCountNow,

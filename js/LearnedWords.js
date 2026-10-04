@@ -5,6 +5,7 @@ var LearnedWords = {
     PREFIX: "PL_LearnedWordOverrides_",
     TUTORIAL_KEY: "PL_LearnedWordsTutorialSeen",
     _recorderSession: Date.now().toString(36) + Math.random().toString(36).slice(2),
+    _projection: {},
     _key: null, _data: null, _undo: [], _open: false,
     generation: function () { return typeof UndoRestoreSync !== "undefined" ? UndoRestoreSync.generation : 0; },
     identity: function () {
@@ -13,7 +14,7 @@ var LearnedWords = {
     load: function () {
         var key = LearnedWords.identity();
         if (key === LearnedWords._key && LearnedWords._data) return LearnedWords._data;
-        LearnedWords._key = key; LearnedWords._undo = [];
+        LearnedWords._key = key; LearnedWords._undo = []; LearnedWords.clearProjection();
         var data = { version: 1, gameIdentityKey: key, rows: {} };
         try {
             var parsed = JSON.parse(localStorage.getItem(LearnedWords.PREFIX + key));
@@ -26,7 +27,10 @@ var LearnedWords = {
                         typeof r.revision === "string" && r.revision.length <= 120 &&
                         (!r.witnesses || (Array.isArray(r.witnesses) && r.witnesses.length <= 2 && r.witnesses.every(function (s) { return typeof s === "string"; })));
                 });
-                if (valid) data = parsed;
+                if (valid) {
+                    Object.keys(parsed.rows).forEach(function(id){var r=parsed.rows[id];['knownBefore','inspectForm','classificationOnly'].forEach(function(k){if(r[k]!=null&&typeof r[k]!=='boolean')delete r[k];});});
+                    data = parsed;
+                }
             }
         } catch (e) {}
         LearnedWords._data = data;
@@ -40,7 +44,7 @@ var LearnedWords = {
         LearnedWords._data = next;
     },
     rowKey: function (type, objectId, form) { return type + ":" + String(objectId) + ":" + encodeURIComponent(form); },
-    override: function (id) { return LearnedWords.load().rows[id]; },
+    override: function (id) { var r = LearnedWords.load().rows[id]; return r && !r.classificationOnly ? r : null; },
     suppressed: function (type, objectId, form) {
         var r = LearnedWords.override(LearnedWords.rowKey(type, objectId, form));
         return !!(r && (r.ignored || r.trigger !== form));
@@ -92,7 +96,7 @@ var LearnedWords = {
         var rows = LearnedWords.load().rows, found;
         Object.keys(rows).some(function (id) {
             var r = rows[id];
-            if (/^(exact|allowed|manual|provider):/.test(id) && String(r.objectId) === String(objectId) && r.trigger === form && !r.ignored) { found = r.label; return true; }
+            if (!r.classificationOnly && /^(exact|allowed|manual|provider):/.test(id) && String(r.objectId) === String(objectId) && r.trigger === form && !r.ignored) { found = r.label; return true; }
             return false;
         });
         if (!found) {
@@ -120,22 +124,89 @@ var LearnedWords = {
                 obj && command.command === c.form + " " + Actionable.referenceFor(obj).noun;
         });
     },
+    clearProjection: function () { LearnedWords._projection = {}; },
+    independentForms: function (obj) {
+        var held = ((WorldModel.lastPayload || {}).inventory || []).some(function (o) { return String(o.id) === String(obj.id); });
+        var context = held ? 'inventory' : 'room', attrs = ActionSynth.trustworthyAttrs ? ActionSynth.trustworthyAttrs(obj) : obj.attrs || {}, forms = [];
+        Object.keys(ActionSynth.rules || {}).forEach(function (key) {
+            if (key !== 'default' && attrs[key]) forms = forms.concat(ActionSynth.rules[key]);
+        });
+        // D150's existing dictionary/edible provider augmentation, not learned admission.
+        if (attrs.edible && !obj.examineOnly && Actionable.isGameWord('drink')) forms.push('drink');
+        var nested = held && ActionSynth.heldContainerName && ActionSynth.heldContainerName(obj,WorldModel.lastPayload);
+        if (nested) forms = ['take'];
+        else if (held) {
+            forms = forms.filter(function (v) { return v !== 'take' && v !== 'remove'; });
+            if (ActionSynth.isWorn && ActionSynth.isWorn(obj)) forms = ['remove'];
+            else forms = forms.concat(['drop','give to','put in']);
+        } else forms = forms.filter(function (v) { return v !== 'drop' && v !== 'remove' && v !== 'wear'; });
+        if (typeof SemanticActions !== 'undefined') {
+            ['structuralCommandsFor','confirmedObjectFormsFor'].forEach(function (method) {
+                (typeof SemanticActions[method] === 'function' ? SemanticActions[method](obj,context,null,WorldModel.lastPayload) || [] : []).forEach(function (f) { if (f.verb) forms.push(f.verb); });
+            });
+        }
+        return Array.from(new Set(forms));
+    },
+    observeSubmit: function (event) {
+        if (event.source === 'ambiguous-reference' || event.source === 'stat-probe') return;
+        var data = LearnedWords.load(); if (!data.gameIdentityKey) return;
+        var mem = AttributeSchema._getMem(); AttrCalibrator.hydrate(mem);
+        var split = AttrCalibrator._splitAnyVerbNoun(event.command); if (!split) return;
+        var obj = Actionable.payloadPool().find(function (o) { return String(o.id) === String(split.objectId); });
+        if (!obj) return;
+        var ref = Actionable.referenceFor(obj); if (!ref.unique || !ref.verified) return;
+        var regex = AttrCalibrator.buildVerbRegex(), match = regex && regex.exec(event.command);
+        var form = match ? match[1].toLowerCase().replace(/\s+/g,' ') : split.verb;
+        if (!AttrCalibrator.dictionaryForm(form)) return;
+        var known = LearnedWords.independentForms(obj).indexOf(AttrCalibrator.normalizeVerb(form)) >= 0;
+        var inspect = typeof ActionSynth.defaultInspectVerb === 'function' && form === ActionSynth.defaultInspectVerb();
+        var next = JSON.parse(JSON.stringify(data)), changed = false;
+        ['exact','allowed'].forEach(function (type) {
+            var storedForm = type === 'allowed' ? AttrCalibrator.normalizeVerb(form) : form;
+            var id = LearnedWords.rowKey(type,obj.id,storedForm), row = next.rows[id];
+            var prior = ((AttrCalibrator.table.objects[String(obj.id)] || {})[type === 'exact' ? 'exactForms' : 'allowedVerbs'] || {})[storedForm];
+            // Missing provenance on legacy evidence remains conservative forever.
+            if (!prior && (!row || row.knownBefore == null)) {
+                row = row || {trigger:storedForm,label:storedForm.charAt(0).toUpperCase()+storedForm.slice(1),ignored:false,objectId:String(obj.id),original:storedForm,revision:'classification',witnesses:[],classificationOnly:true};
+                row.knownBefore = known; row.inspectForm = !!inspect; next.rows[id] = row; changed = true;
+            }
+        });
+        if (changed) LearnedWords.write(next,false);
+        var id = LearnedWords.rowKey('exact',obj.id,form);
+        LearnedWords._projection[id] = {id:id,objectId:String(obj.id),form:form,key:data.gameIdentityKey,generation:LearnedWords.generation()};
+    },
+    itemDisplay: function (obj, pool) {
+        if (!obj) return '';
+        var label = LearnedWords.label('name',obj.id,obj.displayName||obj.name), seq = typeof EquipmentUI !== 'undefined' && EquipmentUI._seq[String(obj.id)];
+        return label + (seq ? ' \u00b7 instance ' + seq : '');
+    },
     records: function () {
         var data = LearnedWords.load(), list = [], table = AttrCalibrator.table || {}, pool;
         try { var mem = AttributeSchema._getMem(); if (mem) AttrCalibrator.hydrate(mem); table = AttrCalibrator.table; pool = Actionable.payloadPool(); } catch (e) { pool = []; }
+        if (typeof EquipmentUI !== 'undefined' && EquipmentUI.registerInstances) EquipmentUI.registerInstances(pool);
+        pool = Actionable.distinctObjects ? Actionable.distinctObjects(pool) : pool;
         Object.keys(table.objects || {}).forEach(function (objectId) {
             var obj = pool.find(function (o) { return String(o.id) === objectId; });
             ["exact", "allowed"].forEach(function (type) {
                 var entries = table.objects[objectId][type === "exact" ? "exactForms" : "allowedVerbs"] || {};
                 Object.keys(entries).forEach(function (form) {
-                    var e = entries[form], id = LearnedWords.rowKey(type, objectId, form);
+                    var e = entries[form], id = LearnedWords.rowKey(type, objectId, form), metadata = data.rows[id];
+                    var session = LearnedWords._projection[LearnedWords.rowKey('exact',objectId,form)];
+                    if (metadata && (metadata.knownBefore || metadata.inspectForm)) return;
+                    if (e.confirmations < 2 && !e.opcodeConfirmed && (!session || session.generation !== LearnedWords.generation())) return;
                     list.push({ id: id, type: type, objectId: objectId, trigger: form, original: form,
                         label: form.charAt(0).toUpperCase() + form.slice(1), destination: "Radial menu", section: "learned",
-                        item: obj ? obj.name : "Object " + objectId + " (not in scope)",
+                        item: obj ? LearnedWords.itemDisplay(obj,pool) : "Object " + objectId + " (not in scope)",
                         state: (type === "allowed" && e.opcodeConfirmed) || e.confirmations >= 2 ? "Remembered" : "Not remembered yet",
                         evidence: JSON.stringify(e), editable: true });
                 });
             });
+        });
+        Object.keys(LearnedWords._projection).forEach(function (id) {
+            var p = LearnedWords._projection[id], metadata = data.rows[id];
+            if (p.key !== data.gameIdentityKey || p.generation !== LearnedWords.generation() || (metadata && (metadata.knownBefore || metadata.inspectForm)) || list.some(function (r) { return r.id === id; })) return;
+            var obj = pool.find(function (o) { return String(o.id) === p.objectId; });
+            list.push({id:id,type:'exact',objectId:p.objectId,trigger:p.form,original:p.form,label:p.form.charAt(0).toUpperCase()+p.form.slice(1),destination:'Radial menu',section:'learned',state:'Not remembered yet',item:obj ? LearnedWords.itemDisplay(obj,pool) : 'Object '+p.objectId,evidence:'Submitted this session. No successful learning is implied.',editable:true});
         });
         var behavior = table.verbBehavior || {};
         Object.keys(behavior.disabled || {}).forEach(function (verb) {
@@ -151,27 +222,33 @@ var LearnedWords = {
         });
         Object.keys(data.rows).filter(function (id) { return id.indexOf("manual:") === 0; }).forEach(function (id) {
             var r = data.rows[id]; list.push({ id: id, type: "manual", objectId: r.objectId, trigger: r.trigger, original: "", label: r.label,
-                section: "learned", destination: "Radial menu", item: (pool.find(function (o) { return String(o.id) === String(r.objectId); }) || {}).name || "Object " + r.objectId,
+                section: "learned", destination: "Radial menu", item: LearnedWords.itemDisplay(pool.find(function (o) { return String(o.id) === String(r.objectId); }),pool) || "Object " + r.objectId,
                 state: (r.witnesses || []).length >= 2 ? "Remembered user suggestion" : "User suggestion · not remembered", evidence: "User supplied. Original game evidence is unchanged.", editable: true });
         });
         pool.forEach(function (obj) {
-            list.push({ id: "name:" + obj.id, type: "name", trigger: obj.name, label: obj.name, objectId: obj.id, destination: "Items display", section: "names", evidence: "Item display text only. Parser name/aliases (read-only): " + JSON.stringify(obj.aliases || []) });
-            try { ActionSynth.commandsForObject(obj, "room").forEach(function (c) {
-                if (list.some(function (r) { return r.objectId === String(obj.id) && r.original === c.verb; })) return;
+            list.push({ id: "name:" + obj.id, type: "name", trigger: obj.displayName||obj.name, label: obj.displayName||obj.name, objectId: obj.id, destination: "Items display", section: "names", item:LearnedWords.itemDisplay(obj,pool), evidence: "Item display text only. Parser name/aliases (read-only): " + JSON.stringify(obj.aliases || []) });
+            try { ActionSynth.commandsForObject(obj, "room",null,{allowAmbiguousReference:true,directEvidenceOnly:!!obj.examineOnly}).forEach(function (c) {
+                if (LearnedWords.independentForms(obj).indexOf(c.verb) < 0) return;
                 list.push({ id: LearnedWords.rowKey("provider", obj.id, c.verb), type: "provider", objectId: obj.id, trigger: c.verb,
-                    label: c.verb.charAt(0).toUpperCase() + c.verb.slice(1), destination: "Radial menu", section: "actions", item: obj.name, evidence: "Provided story action; command and eligibility remain owned by the provider." });
+                    label: c.verb.charAt(0).toUpperCase() + c.verb.slice(1), destination: "Radial menu", section: "actions", item: LearnedWords.itemDisplay(obj,pool), evidence: "Provided story action; command and eligibility remain owned by the provider." });
             }); } catch (e) {}
         });
         if (typeof StatTracker !== "undefined") {
             var model = StatTracker.model();
-            var stats = typeof StatTracker.visibleStats === "function" ? StatTracker.visibleStats() : [];
-            (stats || []).forEach(function (s) { list.push({ id: "status:" + s.key, type: "status", trigger: s.key, label: s.label || s.key, section: "status", destination: "Status display", evidence: "Display text only. Values and evidence are not editable." }); });
-            Object.keys(model.conditions || {}).forEach(function (key) { list.push({ id: "status:" + key, type: "status", trigger: key, label: model.conditions[key].label, section: "status", destination: "Status display", evidence: "Current condition observation; display text only." }); });
+            var visible = typeof StatTracker.visibleStats === 'function' ? StatTracker.visibleStats() : [];
+            var stats = Object.assign({},model.stats || {}); visible.forEach(function(s){stats[s.key]=s;});
+            Object.keys(stats).forEach(function(key){var v=stats[key],shown=visible.some(function(s){return s.key===key;});
+                list.push({id:'status:'+key,type:'status',trigger:key,label:v.label||key,section:'status',destination:'Status display',state:shown?'confirmed':'unknown',diagnostic:(v.label||key)+': '+(shown&&v.value!=null ? String(v.value)+(v.unit&&v.unit!=='plain'?' '+v.unit:'') : 'Not shown. No current confirmed value.'),evidence:'Display text only. '+JSON.stringify(v)});
+            });
+            var conditions = typeof StatTracker.visibleConditions === 'function' ? StatTracker.visibleConditions() : [];
+            Object.keys(model.conditions || {}).forEach(function(key){var c=model.conditions[key],current=conditions.some(function(v){return v.key===key;});
+                list.push({id:'status:'+key,type:'status',trigger:key,label:c.label||key,section:'status',destination:'Status display',state:current?'confirmed':c.state==='confirmed'?'unknown':c.state||'unknown',diagnostic:(c.label||key)+': '+(current?'Shown in the status display.':'Not shown in the status display.'),evidence:'Display text only. '+JSON.stringify(c)});
+            });
         }
         var seen = {};
         return list.filter(function (r) { if (seen[r.id]) return false; seen[r.id] = true; return true; }).map(function (r) {
             var o = data.rows[r.id];
-            if (o) { r.trigger = o.trigger; r.label = o.label; r.ignored = o.ignored; if (r.editable && o.trigger !== r.original) r.state = (o.witnesses || []).length >= 2 ? "Remembered replacement" : "Replacement · not remembered"; }
+            if (o && !o.classificationOnly) { r.trigger = o.trigger; r.label = o.label; r.ignored = o.ignored; if (r.editable && o.trigger !== r.original) r.state = (o.witnesses || []).length >= 2 ? "Remembered replacement" : "Replacement · not remembered"; }
             return r;
         });
     },
@@ -189,6 +266,7 @@ var LearnedWords = {
             objectId: objectId == null ? null : String(objectId), original: record.original || record.trigger,
             revision: changed ? Date.now().toString(36) + "-" + Math.random().toString(36).slice(2) : prev.revision,
             witnesses: changed ? [] : (prev.witnesses || []).slice() };
+        if (prev && typeof prev.knownBefore === 'boolean') { next.rows[record.id].knownBefore = prev.knownBefore; next.rows[record.id].inspectForm = prev.inspectForm; }
         if (prev && JSON.stringify(prev) === JSON.stringify(next.rows[record.id])) return;
         LearnedWords.write(next, true);
         LearnedWords.refreshLabels();
@@ -196,6 +274,14 @@ var LearnedWords = {
     undo: function () {
         if (!LearnedWords._undo.length) return;
         var next = JSON.parse(LearnedWords._undo[LearnedWords._undo.length - 1]);
+        var current = LearnedWords.load();
+        Object.keys(current.rows).forEach(function (id) {
+            var r = current.rows[id], old = next.rows[id];
+            if (old && old.revision === r.revision && old.trigger === r.trigger && old.objectId === r.objectId) old.witnesses = Array.from(new Set((old.witnesses||[]).concat(r.witnesses||[]))).slice(0,2);
+            if (typeof r.knownBefore !== 'boolean') return;
+            if (!next.rows[id]) next.rows[id] = {trigger:r.original,label:r.original.charAt(0).toUpperCase()+r.original.slice(1),ignored:false,objectId:r.objectId,original:r.original,revision:'classification',witnesses:[],classificationOnly:true};
+            next.rows[id].knownBefore = r.knownBefore; next.rows[id].inspectForm = r.inspectForm;
+        });
         LearnedWords.write(next, false); LearnedWords._undo.pop();
         LearnedWords.refreshLabels();
     },
@@ -218,6 +304,12 @@ var LearnedWords = {
         var root = document.getElementById("learned-words");
         LearnedWords.initAccordion(root);
         document.getElementById("message").classList.add("lw-dialog");
+        root.querySelector('.lw-toolbar').classList.add('lw-icons');
+        [['add','Add word','+'],['undo','Undo','\u21b6'],['help','Help / Replay tutorial','?']].forEach(function (a) {
+            var b = root.querySelector('[data-action="'+a[0]+'"]'); b.setAttribute('aria-label',a[1]); b.title=a[1];
+            var icon=document.createElement('span'); icon.className='lw-icon'; icon.textContent=a[2]; icon.setAttribute('aria-hidden','true');
+            var text=document.createElement('span'); text.className='lw-button-text'; text.textContent=a[1]; b.replaceChildren(icon,text);
+        });
         root.querySelector('[data-action="add"]').onclick = LearnedWords.addDraft;
         root.querySelector('[data-action="undo"]').onclick = function () {
             var draft = root.querySelector('[data-draft="true"]');
@@ -269,11 +361,11 @@ var LearnedWords = {
             LearnedWords._sections[name] = { button:button, panel:panel, scroll:0 };
             button.onclick = function () { LearnedWords.selectSection(name); };
         });
-        LearnedWords.selectSection('learned');
+        LearnedWords.selectSection('status');
     },
     selectSection: function (name, tour) {
         var root = document.getElementById('learned-words'), center = root.querySelector('.lw-center'), sections = LearnedWords._sections;
-        if (!sections[name] || (!tour && name !== 'learned' && !sections[name].panel.querySelector('.lw-entry'))) return;
+        if (!sections[name] || (!tour && name !== 'learned' && name !== 'status' && !sections[name].panel.querySelector('.lw-entry'))) return;
         if (LearnedWords._section === name) return; // Exactly one open; active header never closes it.
         if (LearnedWords._section) sections[LearnedWords._section].scroll = center.scrollTop;
         var keys = Object.keys(sections), selected = keys.indexOf(name);
@@ -303,10 +395,13 @@ var LearnedWords = {
         var section = root.querySelector('section[data-section="learned"]');
         var empty = section.querySelector(".lw-empty"); if (empty) empty.remove();
         if (!section.querySelector('.lw-entry:not(.lw-demo)')) { var p = document.createElement("p"); p.className = "lw-empty"; p.textContent = "No words learned yet. Use commands while playing, or add a suggestion."; section.appendChild(p); }
+        var status = root.querySelector('section[data-section="status"]');
+        var statusEmpty = status.querySelector('.lw-empty'); if(statusEmpty) statusEmpty.remove();
+        if (!status.querySelector('.lw-entry')) { var p=document.createElement('p');p.className='lw-empty';p.textContent='No status observations are available for this story yet.';status.appendChild(p); }
         root.querySelector('[data-action="undo"]').disabled = !LearnedWords._undo.length && !root.querySelector('[data-draft="true"]');
         LearnedWords._signature = signature;
         Object.keys(LearnedWords._sections || {}).forEach(function (key) {
-            var s = LearnedWords._sections[key]; s.button.setAttribute('aria-disabled',String(key !== 'learned' && !s.panel.querySelector('.lw-entry')));
+            var s = LearnedWords._sections[key]; s.button.setAttribute('aria-disabled',String(key !== 'learned' && key !== 'status' && !s.panel.querySelector('.lw-entry')));
         });
     },
     makeRow: function (r, draft) {
@@ -314,8 +409,9 @@ var LearnedWords = {
         var summary = document.createElement("summary"), left = document.createElement("span"), meta = document.createElement("span");
         left.className = "lw-summary"; meta.className = "lw-meta";
         var title = document.createElement("span"), response = document.createElement("span");
-        function updateSummary(trigger, label, ignored) { title.textContent = "Trigger: " + (trigger || "New word"); response.textContent = "Response: " + (label || "Enter display text"); meta.textContent = r.destination + (ignored ? " · Ignored" : "") + (r.state ? " · " + r.state : ""); }
+        function updateSummary(trigger, label, ignored) { title.textContent = "Trigger: " + (trigger || "New word"); response.textContent = "Response: " + (label || "Enter display text"); var item = r.type === 'name' ? ((String(r.item||'').match(/instance \d+$/)||[])[0]||'') : r.item; meta.textContent = (item ? item + ' \u00b7 ' : '') + r.destination + (ignored ? " · Ignored" : "") + (r.state ? " · " + r.state : ""); }
         updateSummary(r.trigger, r.label, r.ignored); left.append(title, response); summary.append(left, meta); node.appendChild(summary);
+        if (r.diagnostic) { var diagnostic=document.createElement('p');diagnostic.className='lw-diagnostic';diagnostic.textContent=r.diagnostic;node.appendChild(diagnostic); }
         var fields = document.createElement("div"); fields.className = "lw-fields"; node.appendChild(fields);
         function field(label, value, readonly) { var wrap = document.createElement("label"), input = document.createElement("input"); wrap.textContent = label; input.value = value || ""; input.readOnly = !!readonly; input.maxLength = label === "Response" ? 160 : 120; wrap.appendChild(input); fields.appendChild(wrap); return input; }
         var trigger = field("Trigger", r.trigger, !r.editable), label = field("Response", r.label, false);
@@ -357,6 +453,7 @@ var LearnedWords = {
         var root = document.querySelector('#learned-words section[data-section="learned"]');
         var old = root.querySelector('[data-draft="true"]'); if (old) { old.open = true; old.querySelector("input").focus(); return; }
         var id = "manual:" + Date.now().toString(36) + Math.random().toString(36).slice(2);
+        LearnedWords.selectSection('learned',true);
         var node = LearnedWords.makeRow({ id: id, type: "manual", trigger: "", label: "", original: "", editable: true, destination: "Radial menu", state: "User suggestion", section: "learned" }, true);
         node.open = true; root.prepend(node); document.querySelector('#learned-words [data-action="undo"]').disabled = false; node.querySelector("select").focus();
     },
@@ -378,9 +475,9 @@ var LearnedWords = {
         LearnedWords._flush.clear(); LearnedWords._tourStep = null; LearnedWords._discard = false;
     },
     TOUR: [
-        ["Your learned words", "This list reflects this story's actual learning. Remembered commands have evidence; not-remembered entries and user suggestions still need successful gameplay. Story actions, names, and status labels are separate optional sections."],
+        ["Your learned words", "The learned list shows commands the system did not already provide for that item. A first try may appear for this session without proving success. Two successful observations are needed to remember a new command. Leaving hides unconfirmed attempts without deleting their counts. User suggestions and learned inspect decisions remain here."],
         ["Trigger and Response", "Trigger is a command verb or form, such as wield. The item supplies its verified name. Response is the text shown on the menu, such as Wield. You are editing ParchLock's behavior and labels, never the game's written reply. Some triggers are read-only because the story owns them."],
-        ["Where it appears", "The label on the right tells you where an entry is used. Used in lists only compatible destinations. A status label cannot become a command. Names change display text only, never parser aliases or command references."],
+        ["Where it appears", "Status labels open first; choose a banner to see another section. Banners keep their original order. The label on the right tells you where an entry is used. Used in lists only compatible destinations. A status label cannot become a command. Names change display text only, never parser aliases or command references."],
         ["Saving and Undo", "Valid edits save when you leave a field or close this screen. Errors keep the last valid record intact. Undo restores the last valid edit. Incomplete drafts are discarded when you close, go Back, or change stories. Original learning stays read-only."],
         ["Ignore and replacements", "Ignore hides that one learned contribution without deleting its evidence. An independently valid story action may still appear. Ignoring a learned inspect decision reverses that decision only. Changing a command creates a new suggestion; it needs two subsequent successful commands before automatic submission."],
         ["Add a word", "Choose a unique verified item in scope, enter a command form from this story's dictionary, and give it a response label. New entries fill the command prompt for you to review; they do not execute during editing. Ambiguous items and unsupported forms cannot be saved."],
@@ -392,6 +489,8 @@ var LearnedWords = {
         var root = document.getElementById("learned-words"); LearnedWords._tourScroll = root.querySelector('.lw-center').scrollTop;
         LearnedWords._tourSection = LearnedWords._section;
         LearnedWords._tourDetails = Array.from(root.querySelectorAll('details')).map(function (node) { return {node:node,open:node.open}; });
+        LearnedWords._tourIcons = root.querySelector('.lw-toolbar').classList.contains('lw-icons');
+        root.querySelector('.lw-toolbar').classList.remove('lw-icons');
         root.classList.add("lw-touring");
         LearnedWords._tourStep = 0; LearnedWords.renderTour();
     },
@@ -457,6 +556,7 @@ var LearnedWords = {
         try { localStorage.setItem(LearnedWords.TUTORIAL_KEY, "1"); } catch (e) { LearnedWords.feedback("Tutorial completion could not be stored."); }
         var root = document.getElementById("learned-words"); root.querySelector(".lw-tour").hidden = true;
         root.classList.remove("lw-touring");
+        root.querySelector('.lw-toolbar').classList.toggle('lw-icons',!!LearnedWords._tourIcons);
         root.querySelectorAll('.lw-target').forEach(function(n){n.classList.remove('lw-target');});
         var demo = root.querySelector('.lw-demo'); if (demo) demo.remove();
         (LearnedWords._tourDetails || []).forEach(function(r){if(r.node.isConnected)r.node.open=r.open;});

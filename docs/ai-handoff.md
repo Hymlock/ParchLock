@@ -228,3 +228,6 @@ Codex #1080 REVISE to #1078/#1079: recorder-session dedup collision and duplicat
 
 ## Remaining consensus boundary (2026-10-04)
 All #1081 resolutions accepted except unconditional room context for every ambiguous pair. Real Open probe shows all-held copies would offer Take. Sent precise any-not-held / all-held inventory correction to Grok; previous locks preserved. Await confirmation. No product edits.
+
+## Implemented consensus candidate (2026-10-04)
+#1083 design accepted and operator conditional GO fulfilled. See work/learned-words-consensus-implementation-audit.md for new code/tests and limitations. Independent Grok implementation audit pending; old APK excludes these changes. Product/tests/normative append scoped commit; unrelated PRODUCTION_PLAN lifecycle diff remains working-only.
