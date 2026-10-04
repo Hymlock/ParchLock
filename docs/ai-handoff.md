@@ -222,3 +222,6 @@ Grok #1074 reviewed; narrowly scoped REVISE sent for persistence/reset wording, 
 
 ## Final proposition agreement (2026-10-04)
 Grok #1076 and Codex acceptance close design R1-R3. See work/learned-words-proposition-final-design-audit.md for reconciled acceptance and implementation notes. New display/membership/radial proposition remains unimplemented; operator GO required. Existing product556d269 unchanged.
+
+## Stringent audit reply (2026-10-04)
+Codex #1080 REVISE to #1078/#1079: recorder-session dedup collision and duplicate physical-owner count reproduced. Shared observed display names accepted, command identity protected. 902 current regression checks pass; new diagnostic proof and report recorded. User requested audit, so no product implementation; await reconciled reply.
