@@ -213,3 +213,6 @@ Latest identical marks, fixed four-header accordion and independent spoken spotl
 
 ## Ordered banners correction (2026-10-03)
 Operator now requires cumulative header placement in unchanged order. Implemented prefix/center/suffix layout and distinct header chrome; 146 focused, 30 contract and 72 live checks pass. Previous Grok #1068 accepted fbd9d5d with notes; requested notes retransmission and correction audit. Existing APK excludes this correction.
+
+## Mail audit outcome (2026-10-03)
+Grok #1071 accepts556d269 with Android/APK validation notes. #1072 proposes additional display/membership/radial changes, explicitly review-only. Codex #1073 REVISE gives amendments and required validation; do not implement before authorization. See work/learned-words-proposition-adversarial-reply.md.
