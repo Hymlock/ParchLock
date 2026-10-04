@@ -379,6 +379,9 @@ var AttrCalibrator = {
                     if (typeof Actionable !== "undefined" && Actionable.payloadPool && Actionable.payloadPool().length && (!d198Correlation || String(d198Correlation.objectId) !== String(id))) return null;
                     if (extra && (!d198Correlation || d198Correlation.referenceVerified === false)) return null;
                     turn.__diagVerbSuccessCtx = { verb: verb, exactForm: exactForm, extra: !!extra, noun: noun, id: id, ops: ops || [], trace: [], d198Correlation: d198Correlation };
+                    try { var links = ZRamReader.objectLinks(mem,id); if (links) turn.__diagVerbSuccessCtx.beforeParent = links.parent; } catch (eParent) {}
+                    turn.__diagVerbSuccessCtx.beforeRoomId = typeof WorldModel !== 'undefined' && WorldModel.lastPayload && WorldModel.lastPayload.roomId;
+
                     if (manual) {
                         if (String(manual.objectId) !== String(id)) return null;
                         turn.__diagVerbSuccessCtx.learnedWordCandidate = manual;
@@ -403,6 +406,11 @@ var AttrCalibrator = {
                                     text = lines.slice(t.startLine || 0, end).map(function (l) { return l.textContent || ""; }).join(" ");
                                 }
                             } catch (eT) {}
+
+                            try {
+                                var parentMem = AttributeSchema._getMem(), parentLinks = parentMem && ZRamReader.objectLinks(parentMem,id);
+                                if (parentLinks) t.__diagVerbSuccessCtx.afterParent = parentLinks.parent;
+                            } catch (eParent) {}
                             return text;
                         }
                     };
@@ -421,6 +429,11 @@ var AttrCalibrator = {
                     if (!ctx) return;
                     var opsList = ctx.ops || [];
                     var mutated = opsList.length > 0 && ctx.trace.some(function (t) { return opsList.indexOf(t.op) >= 0; });
+
+                    var noTransfer = (ctx.verb === 'take' || ctx.verb === 'drop') &&
+                        ctx.beforeParent != null && ctx.afterParent != null &&
+                        String(ctx.beforeParent) === String(ctx.afterParent);
+                    if (noTransfer) mutated = false;
                     // Frozen at boundary-stamp/natural-close time by
                     // captureAfter above -- never read live here.
                     var text = turn.analyzerSnapshots["diag-verbSuccess"] || "";
@@ -435,9 +448,9 @@ var AttrCalibrator = {
                     // mutation and refusal text appear together.
                     var entry = {
                         verb: ctx.verb, noun: ctx.noun, objectId: ctx.id, command: turn.command,
-                        trace: ctx.trace,
+                        trace: ctx.trace, beforeRoomId:ctx.beforeRoomId, beforeParent:ctx.beforeParent, afterParent:ctx.afterParent,
                         success: !!(mutated && !failedText),
-                        behavioralAccept: !!(!mutated && !failedText && text && String(text).trim().length > 0),
+                        behavioralAccept: !!(!noTransfer && !mutated && !failedText && text && String(text).trim().length > 0),
                         rejected: !!failedText,
                         ambiguous: !!(mutated && failedText),
                         d198Correlation: ctx.d198Correlation,
@@ -992,10 +1005,12 @@ var AttrCalibrator = {
                 // single real observation is strictly better evidence than
                 // any attribute-bit heuristic, so it's recorded once and
                 // reused as the confirmed inventory root from then on.
+                // A room reinsertion is not carrying: never admit a known
+                // room or the turn's frozen original room as that holder.
                 if (entry.success) {
-                    var insertCall = entry.trace.slice().reverse().find(function (t) { return t.op === "insert_obj"; });
+                    var insertCall = entry.trace.slice().reverse().find(function (t) { return t.op === "insert_obj" && t.args && String(t.args[0]) === String(entry.objectId); });
                     var holderId = insertCall && insertCall.args && insertCall.args[1];
-                    if (holderId != null && AttrCalibrator.table.inventoryRootId !== holderId) {
+                    if (holderId != null && String(holderId) !== String(entry.beforeRoomId) && !AttrCalibrator.inventoryRootIsRoom(mem,holderId) && AttrCalibrator.table.inventoryRootId !== holderId) {
                         AttrCalibrator.table.inventoryRootId = holderId;
                         changed = true;
                     }
@@ -1061,10 +1076,21 @@ var AttrCalibrator = {
     // caller's own game gets hydrated first (consistent with every other
     // AttrCalibrator consumer); returns null until at least one real take
     // has been observed and resolved for this game.
+    inventoryRootIsRoom: function (mem, id) {
+        if (id == null) return false;
+        var payload = typeof WorldModel !== 'undefined' && WorldModel.lastPayload;
+        if (payload && String(payload.roomId) === String(id)) return true;
+        try {
+            var index = mem && ZRamReader.compiledRoomIndex && ZRamReader.compiledRoomIndex(mem);
+            if (index && Object.keys(index.table || {}).some(function(k){return String(index.table[k]) === String(id);})) return true;
+        } catch (e) {}
+        return false;
+    },
     confirmedInventoryRootId: function (mem) {
         try {
             if (mem) AttrCalibrator.hydrate(mem);
-            return AttrCalibrator.table.inventoryRootId != null ? AttrCalibrator.table.inventoryRootId : null;
+            var id = AttrCalibrator.table.inventoryRootId;
+            return id != null && !AttrCalibrator.inventoryRootIsRoom(mem,id) ? id : null;
         } catch (e) { return null; }
     },
 

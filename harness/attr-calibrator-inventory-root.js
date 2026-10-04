@@ -128,5 +128,29 @@ function driveVerbSuccess(AttrCalibrator, command, opcodes) {
     assert(sandboxB.AttrCalibrator.confirmedInventoryRootId(fakeMemB) === null, "a different game's identity key never inherits another game's confirmed inventory root");
 }
 
+// A scripted TAKE can reinsert a handled object into its room without carrying it.
+{
+ const {sandbox,fakeMem}=freshSandbox(),A=sandbox.AttrCalibrator;
+ sandbox.WorldModel.lastPayload.roomId=40;
+ driveVerbSuccess(A,'take transmat popper',[{op:'remove_obj',args:[185]},{op:'insert_obj',args:[185,40]}]);
+ assert(A.confirmedInventoryRootId(fakeMem)===null,'room reinsertion can never become the inventory holder');
+ A.table.inventoryRootId=40;
+ assert(A.confirmedInventoryRootId(fakeMem)===null,'already persisted current-room root is ignored');
+ sandbox.ZRamReader.compiledRoomIndex=()=>({table:{1:40}});
+ sandbox.WorldModel.lastPayload.roomId=50;
+ assert(A.confirmedInventoryRootId(fakeMem)===null,'persisted compiled-room root remains excluded after travel');
+ A.table.inventoryRootId=171;
+ assert(A.confirmedInventoryRootId(fakeMem)===171,'valid existing holder survives rejection of room roots');
+}
+
+
+{
+ const {sandbox}=freshSandbox(),A=sandbox.AttrCalibrator;
+ sandbox.ZRamReader.objectLinks=()=>({parent:40});
+ sandbox.WorldModel.lastPayload.roomId=40;
+ const turn=driveVerbSuccess(A,'take transmat popper',[{op:'remove_obj',args:[185]},{op:'insert_obj',args:[185,40]}]);
+ const entries=sandbox.window.__PARCHLOCK_ATTR_TRACE__||[];
+ assert(entries.length===1&&!entries[0].success&&!entries[0].behavioralAccept,'same-parent remove/reinsert is not a successful or behavioral Take');
+}
 console.log("\n" + pass + " PASS / " + fail + " FAIL");
 process.exit(fail ? 1 : 0);

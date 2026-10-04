@@ -1334,6 +1334,22 @@ animate+plural-children structural fallback, D53/D57/D58) because a game's resol
 the other's exclusion logic as a shortcut; each was independently found broken and
 independently restored.
 
+**D75 containment-evidence correction (2026-10-04).** AttrCalibrator remains the
+owner of inventory-root evidence; TurnRecorder freezes the submitted object's
+before/after parent links at the existing turn boundary. A same-parent
+remove/reinsert is not a successful TAKE/DROP and cannot become behavioral
+confirmation. Root learning uses the submitted object's insert destination,
+excluding the frozen original room and structurally known rooms (current resolved
+room / compiler-owned room index). The existing confirmed-root getter ignores
+a previously stored room root, allowing ZRamProvider's established holder
+fallback to recover without deleting other calibration. No map/UI labels,
+printed inventory guesses, title-specific branch, hidden command or new
+equipment filter participates. ZRamProvider still walks held containment,
+WorldModel still publishes the inventory identities, and EquipmentUI still
+renders that inventory. Room-scope candidates and underlines continue through
+their own existing path when descriptions/actions change.
+
+
 <a id="ar-s039" data-chapter-id="ar-s039"></a><a id="ar-ch30"></a>
 ## 30. Mobile: portrait-primary shell, PWA shell, and native Android conversion (D93, supersedes D92's landscape framing)
 
