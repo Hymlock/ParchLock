@@ -3667,3 +3667,12 @@ automatic submission, including target stems. Submenu and instrumental submissio
 ambiguous-reference provenance. More remains editable suggestions. Normal ActionSynth
 vocabulary rendering uses the same scoped observed row as Actionable marks, without
 changing physical membership or calibration. Nested copies use normal container retrieval.
+
+
+## Observed item descriptor precedence - regression correction (2026-10-04)
+
+The shared-name amendment permits identical copies to share observed labels; it does not authorize replacing an already-observed structural descriptor with a generic synonym. Actionable remains the sole observed label selector. Rank contiguous observed matches by: the object's structural printed name (or a uniquely owned descriptor phrase containing that name), then other uniquely owned phrases, then shared fallback phrases. Length breaks ties only within the same rank. Parser-vocabulary fallback names still recover full observed phrases, including shared pellets; single-word encoded spelling recovery and punctuation/word boundaries remain. No hidden alias becomes a descriptor, and no display rank proves unique parser ownership. observedPhraseFor(requireUnique=true), physical IDs, containment, descriptor command qualifiers, native ambiguity, learning and resync retain their existing gates. Equipment continues using this selector, not a separate naming implementation.
+
+Before runtime edits, reviewed D141/D146/D150 and D201 descriptor contract, Build 55 display integration, shared-name amendment and commits a53709c/8983d55/2637df8. The same notes fixture is correct before 2637df8 and wrong from 2637df8 through 1d68f55. Required combined gate: differently described notes sharing generic aliases and identical pellets, source-order independence, unique descriptor expansion, hidden descriptor/punctuation negatives, real inventory rendering and radial/parser-reference identity.
+
+Readable command regression gate: retain 62e9195 dictionary-equivalent head selection and 1d68f55 scoped observed-row synthesis. Verify real scrawled-note Examine output and pellet Put target submenu retain full spelling, alongside existing distinct-target and ambiguous-source tests. Label precedence does not bypass parser ownership or turn/learning gates.

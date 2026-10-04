@@ -196,5 +196,13 @@ if (A.referenceFor) {
 setPool([{id:901,name:"nutritiou",displayName:"food pellets",aliases:["nutritiou","food","pellet","pellets"]},{id:902,name:"nutritiou",displayName:"food pellets",aliases:["nutritiou","food","pellet","pellets"]}]);
 assert(A.referenceFor(POOL[0]).noun === "pellets", "duplicate observed head replaces unreadable dictionary fragment");
 assert(!A.referenceFor(POOL[0]).unique && A.referenceFor(POOL[0]).candidateIds.length === 2, "readable duplicate noun preserves both candidates");
+const notes=[{id:191,name:"scribbled note",aliases:["scribbled","scribbles","note","letter","scrap","of","paper"]},{id:193,name:"scrawled note",aliases:["scrawled","scribbled","scribbles","note","letter","scrap","of","paper"]}];
+for(const text of ["A scrap of paper is here. You are carrying a scribbled note and a scrawled note.","A scrawled note and a scribbled note. A scrap of paper is here."]){
+ assert(A.displayNameFor(notes[0],notes,text)==="scribbled note", "shared synonym never replaces observed scribbled descriptor");
+ assert(A.displayNameFor(notes[1],notes,text)==="scrawled note", "shared synonym never replaces observed scrawled descriptor");
+}
+assert(A.displayNameFor(notes[0],[notes[0]],"scrap of paper. scribbled note") === "scribbled note", "structural descriptor survives even when generic synonym is unique in held scope");
+assert(A.displayNameFor(vials[0],vials,"green vial") === "green vial", "unique observed descriptor can still extend a generic structural head");
+assert(A.displayNameFor({id:901,name:"nutritiou",aliases:["food","pellets","nutritiou"]},[{id:901,aliases:["food","pellets","nutritiou"]},{id:902,aliases:["food","pellets","nutritiou"]}],"two food pellets") === "food pellets", "identical copies retain shared full phrase recovery");
 console.log("\n" + pass + " PASS / " + fail + " FAIL");
 process.exit(fail ? 1 : 0);

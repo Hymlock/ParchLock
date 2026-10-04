@@ -222,7 +222,8 @@ var Actionable = {
         var source = String(text || "").toLowerCase();
         var matches = Array.from(source.matchAll(/[a-z][a-z'-]*/g));
         var words = matches.map(function (match) { return match[0]; });
-        var best = "";
+        var best = "", bestRank = -1;
+        var structural = String(obj.structuralName || obj.name || "").toLowerCase().replace(/\s+/g," ").trim();
         for (var i = 0; i < words.length; i++) {
             var phrase = [];
             for (var j = i; j < Math.min(words.length, i + 6); j++) {
@@ -234,7 +235,15 @@ var Actionable = {
                     var mine = (o.aliases || []).map(displayKey);
                     return phrase.every(function (w) { return mine.indexOf(displayKey(w)) >= 0; });
                 });
-                if ((!requireUnique || owners.length === 1) && owners.some(function (o) { return String(o.id) === String(obj.id); }) && phrase.join(" ").length > best.length) best = phrase.join(" ");
+                if ((!requireUnique || owners.length === 1) && owners.some(function (o) { return String(o.id) === String(obj.id); })) {
+                    var label = phrase.join(" ");
+                    // Shared spelling recovery cannot erase an observed structural
+                    // descriptor. Unique extensions of that name remain preferred.
+                    // Parser ownership selection retains its existing unique gate.
+                    var preservesName = label === structural || (owners.length === 1 && structural && (" " + label + " ").indexOf(" " + structural + " ") >= 0);
+                    var rank = requireUnique ? 0 : preservesName ? 3 : owners.length === 1 ? 2 : 1;
+                    if (rank > bestRank || (rank === bestRank && label.length > best.length)) { best = label; bestRank = rank; }
+                }
             }
         }
         return best || obj.name;

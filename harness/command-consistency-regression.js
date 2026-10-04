@@ -36,13 +36,15 @@ for (const file of ['Actionable', 'ActionSynth', 'Autocomplete']) {
     vm.runInContext(fs.readFileSync(path.join(__dirname, '..', 'js', file + '.js'), 'utf8'), sandbox);
 }
 const { Actionable: A, ActionSynth: S, Autocomplete: C } = sandbox;
-const coin = { id: 1, name: 'display coin', parentId: 99, attrs: {} };
-const box = { id: 2, name: 'display box', attrs: { container: true } };
-const npc = { id: 3, name: 'display guard', attrs: { animate: true } };
+const coin = { id: 1, name: 'display coin', aliases: ['penny'], parentId: 99, attrs: {} };
+const box = { id: 2, name: 'display box', aliases: ['chest'], attrs: { container: true } };
+const npc = { id: 3, name: 'display guard', aliases: ['soldier'], attrs: { animate: true } };
 const ring = { id: 4, name: 'ring', parentId: 99, attrs: { worn: true, takeable: true } };
 const payload = { engineMode: 'structural', playerId: 99, discoveredObjects: [box, npc, ring], inventory: [coin, ring], exits: [{ label: 'exit-91', command: 'x1' }] };
 sandbox.WorldModel.lastPayload = payload;
 A.VerifiedNouns = { 1: 'penny', 2: 'chest', 3: 'soldier' };
+// D150: printed marks are not parser vocabulary. Supply mined aliases above.
+A.CommandNouns = A.commandNounsForPool(A.payloadPool());
 A.Init(); A.Init();
 assert.equal(Object.keys(subscribers).length, 1);
 assert.equal(A.Submit('wait'), true);

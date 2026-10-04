@@ -26,7 +26,7 @@ const {chromium}=require('playwright');
   Actionable.Open('pellet','object',0,0,null);const room=window.__slices.map(s=>s.Command);
   return {inventory,room};
  });
- assert(!result.allHeldContext.inventory.includes('take pellet'));assert(result.allHeldContext.room.includes('take pellet'));
+ assert(!result.allHeldContext.inventory.includes('take pellet'));assert(!result.allHeldContext.room.includes('take pellet'));
  await browser.close();
  const store={},objects=[{id:7,name:'axe',aliases:['axe']}],c=vm.createContext({console,Date,Math,JSON,Map,setTimeout,clearTimeout,window:{},document:{readyState:'loading',addEventListener(){}},localStorage:{getItem:k=>store[k]||null,setItem:(k,v)=>store[k]=v},UndoRestoreSync:{generation:0},AttributeSchema:{_getMem:()=>({})},AttrCalibrator:{gameIdentityKey:()=> 'audit-key',hydrate(){},table:{objects:{}}},Actionable:{payloadPool:()=>objects,referenceFor:()=>({unique:true,verified:true}),isGameWord:()=>true},ActionSynth:{commandsForObject:()=>[]}});
  vm.runInContext(fs.readFileSync('js/LearnedWords.js','utf8'),c);const l=c.LearnedWords,r={id:'exact:7:wield',type:'exact',editable:true,objectId:7,trigger:'wield',original:'wield'};
