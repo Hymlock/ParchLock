@@ -52,4 +52,15 @@ test('distinct physical rows retain aliases and authoritative held attributes',(
  const k=vm.createContext({console,window:{},document:{addEventListener(){}},WorldModel:{lastPayload:{inventory:[{id:7,attrs:{worn:true},parentId:1}]} }});vm.runInContext(fs.readFileSync('js/Actionable.js','utf8'),k);
  const rows=k.Actionable.distinctObjects([{id:7,aliases:['red'],attrs:{worn:false}},{id:7,aliases:['vial'],attrs:{worn:false}}]);assert.equal(rows.length,1);assert.deepEqual(Array.from(rows[0].aliases),['red','vial']);assert(rows[0].attrs.worn);assert.equal(rows[0].parentId,1);
 });
+test('legacy automatic built-in rows hide without deleting evidence',()=>{
+ const forms=A.table.objects['7'].exactForms;forms.take={confirmations:2};forms.examine={confirmations:2};
+ delete L.load().rows['exact:7:take'];const before=JSON.stringify(forms);
+ assert(!L.records().some(r=>r.section==='learned'&&r.type==='exact'&&['take','examine'].includes(r.trigger)));
+ assert.equal(JSON.stringify(forms),before);
+});
+test('banner visibility defaults and explicit preferences',()=>{
+ ['learned','actions','names','status'].forEach(k=>delete c.Global.Prefs['LearnedWordsShow_'+k]);
+ assert(L.sectionEnabled('learned'));assert(L.sectionEnabled('status'));assert(!L.sectionEnabled('actions'));assert(!L.sectionEnabled('names'));
+ c.Global.Prefs.LearnedWordsShow_learned=false;assert(!L.sectionEnabled('learned'));
+});
 console.log(checks+' consensus contract checks passed');

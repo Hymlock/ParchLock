@@ -193,6 +193,10 @@ var LearnedWords = {
                     var e = entries[form], id = LearnedWords.rowKey(type, objectId, form), metadata = data.rows[id];
                     var session = LearnedWords._projection[LearnedWords.rowKey('exact',objectId,form)];
                     if (metadata && (metadata.knownBefore || metadata.inspectForm)) return;
+                    var inspectForm = typeof ActionSynth.defaultInspectVerb === 'function' ? ActionSynth.defaultInspectVerb() : '';
+                    if ((!metadata || metadata.knownBefore == null) && obj &&
+                        (['take','open',inspectForm].indexOf(form) >= 0) &&
+                        (form === inspectForm || LearnedWords.independentForms(obj).indexOf(form) >= 0)) return;
                     if (e.confirmations < 2 && !e.opcodeConfirmed && (!session || session.generation !== LearnedWords.generation())) return;
                     list.push({ id: id, type: type, objectId: objectId, trigger: form, original: form,
                         label: form.charAt(0).toUpperCase() + form.slice(1), destination: "Radial menu", section: "learned",
@@ -343,6 +347,36 @@ var LearnedWords = {
         if (!seen) LearnedWords.startTour();
     },
     feedback: function (text) { var node = document.querySelector("#learned-words .lw-feedback"); if (node) node.textContent = text; },
+    sectionEnabled: function (name) {
+        var value = Global.Prefs['LearnedWordsShow_' + name];
+        return value == null ? name === 'learned' || name === 'status' : value === true;
+    },
+    applyVisibility: function () {
+        var root = document.getElementById('learned-words');
+        if (!root || !LearnedWords._sections) return;
+        var keys = Object.keys(LearnedWords._sections), active = LearnedWords._section;
+        var enabled = keys.filter(LearnedWords.sectionEnabled);
+        keys.forEach(function (key) {
+            var section = LearnedWords._sections[key], on = LearnedWords.sectionEnabled(key);
+            section.button.hidden = !on;
+            if (!on) { section.panel.hidden = true; section.button.setAttribute('aria-expanded','false'); }
+        });
+        root.querySelector('[data-action="add"]').disabled = !LearnedWords.sectionEnabled('learned');
+        if (!enabled.length) {
+            LearnedWords._section = null;
+            root.querySelector('.lw-center').hidden = true;
+            return;
+        }
+        root.querySelector('.lw-center').hidden = false;
+        if (active && LearnedWords._sections[active]) LearnedWords._sections[active].scroll = root.querySelector('.lw-center').scrollTop;
+        var next = active || (enabled.indexOf('status') >= 0 ? 'status' : enabled[0]);
+        if (!LearnedWords.sectionEnabled(next)) {
+            var start = keys.indexOf(active);
+            next = keys.slice(start + 1).concat(keys.slice(0,start + 1)).find(LearnedWords.sectionEnabled) || enabled[0];
+        }
+        LearnedWords._section = null;
+        LearnedWords.selectSection(next || (enabled.indexOf('status') >= 0 ? 'status' : enabled[0]), true);
+    },
     initAccordion: function (root) {
         var intro = root.querySelector(':scope > p'), feedback = root.querySelector('.lw-feedback');
         var center = document.createElement('div'); center.className = 'lw-center';
@@ -361,17 +395,17 @@ var LearnedWords = {
             LearnedWords._sections[name] = { button:button, panel:panel, scroll:0 };
             button.onclick = function () { LearnedWords.selectSection(name); };
         });
-        LearnedWords.selectSection('status');
+        LearnedWords.applyVisibility();
     },
     selectSection: function (name, tour) {
         var root = document.getElementById('learned-words'), center = root.querySelector('.lw-center'), sections = LearnedWords._sections;
-        if (!sections[name] || (!tour && name !== 'learned' && name !== 'status' && !sections[name].panel.querySelector('.lw-entry'))) return;
+        if (!sections[name] || (!tour && !LearnedWords.sectionEnabled(name)) || (!tour && name !== 'learned' && name !== 'status' && !sections[name].panel.querySelector('.lw-entry'))) return;
         if (LearnedWords._section === name) return; // Exactly one open; active header never closes it.
         if (LearnedWords._section) sections[LearnedWords._section].scroll = center.scrollTop;
-        var keys = Object.keys(sections), selected = keys.indexOf(name);
+        var keys = Object.keys(sections).filter(function(key){ return LearnedWords.sectionEnabled(key) || tour && LearnedWords._tourStep != null; }), selected = keys.indexOf(name);
         keys.forEach(function (key, index) {
             var s = sections[key], active = key === name;
-            s.panel.hidden = !active; s.button.setAttribute('aria-expanded',String(active));
+            s.button.hidden = false; s.panel.hidden = !active; s.button.setAttribute('aria-expanded',String(active));
             (index <= selected ? root.querySelector('.lw-current-header') : root.querySelector('.lw-bottom-headers')).appendChild(s.button);
         });
         LearnedWords._section = name; center.scrollTop = sections[name].scroll;
@@ -400,6 +434,7 @@ var LearnedWords = {
         if (!status.querySelector('.lw-entry')) { var p=document.createElement('p');p.className='lw-empty';p.textContent='No status observations are available for this story yet.';status.appendChild(p); }
         root.querySelector('[data-action="undo"]').disabled = !LearnedWords._undo.length && !root.querySelector('[data-draft="true"]');
         LearnedWords._signature = signature;
+        if (LearnedWords._tourStep == null) LearnedWords.applyVisibility();
         Object.keys(LearnedWords._sections || {}).forEach(function (key) {
             var s = LearnedWords._sections[key]; s.button.setAttribute('aria-disabled',String(key !== 'learned' && key !== 'status' && !s.panel.querySelector('.lw-entry')));
         });
@@ -450,6 +485,7 @@ var LearnedWords = {
         LearnedWords._flush.set(r.id, flush); return node;
     },
     addDraft: function () {
+        if (!LearnedWords.sectionEnabled("learned")) return;
         var root = document.querySelector('#learned-words section[data-section="learned"]');
         var old = root.querySelector('[data-draft="true"]'); if (old) { old.open = true; old.querySelector("input").focus(); return; }
         var id = "manual:" + Date.now().toString(36) + Math.random().toString(36).slice(2);
@@ -477,7 +513,7 @@ var LearnedWords = {
     TOUR: [
         ["Your learned words", "The learned list shows commands the system did not already provide for that item. A first try may appear for this session without proving success. Two successful observations are needed to remember a new command. Leaving hides unconfirmed attempts without deleting their counts. User suggestions and learned inspect decisions remain here."],
         ["Trigger and Response", "Trigger is a command verb or form, such as wield. The item supplies its verified name. Response is the text shown on the menu, such as Wield. You are editing ParchLock's behavior and labels, never the game's written reply. Some triggers are read-only because the story owns them."],
-        ["Where it appears", "Status labels open first; choose a banner to see another section. Banners keep their original order. The label on the right tells you where an entry is used. Used in lists only compatible destinations. A status label cannot become a command. Names change display text only, never parser aliases or command references."],
+        ["Where it appears", "Status labels open first when enabled. Game options lets you show or hide each section. Story actions and Names start hidden. Visible banners keep their original order. The label on the right tells you where an entry is used. Used in lists only compatible destinations. A status label cannot become a command. Names change display text only, never parser aliases or command references."],
         ["Saving and Undo", "Valid edits save when you leave a field or close this screen. Errors keep the last valid record intact. Undo restores the last valid edit. Incomplete drafts are discarded when you close, go Back, or change stories. Original learning stays read-only."],
         ["Ignore and replacements", "Ignore hides that one learned contribution without deleting its evidence. An independently valid story action may still appear. Ignoring a learned inspect decision reverses that decision only. Changing a command creates a new suggestion; it needs two subsequent successful commands before automatic submission."],
         ["Add a word", "Choose a unique verified item in scope, enter a command form from this story's dictionary, and give it a response label. New entries fill the command prompt for you to review; they do not execute during editing. Ambiguous items and unsupported forms cannot be saved."],
@@ -492,6 +528,12 @@ var LearnedWords = {
         LearnedWords._tourIcons = root.querySelector('.lw-toolbar').classList.contains('lw-icons');
         root.querySelector('.lw-toolbar').classList.remove('lw-icons');
         root.classList.add("lw-touring");
+        LearnedWords._tourHiddenRows = [];
+        Object.keys(LearnedWords._sections).forEach(function(key) {
+            if (!LearnedWords.sectionEnabled(key)) LearnedWords._sections[key].panel.querySelectorAll('.lw-entry').forEach(function(row) {
+                LearnedWords._tourHiddenRows.push({node:row,hidden:row.hidden}); row.hidden=true;
+            });
+        });
         LearnedWords._tourStep = 0; LearnedWords.renderTour();
     },
     renderTour: function () {
@@ -519,9 +561,10 @@ var LearnedWords = {
     },
     prepareTourTarget: function () {
         var root = document.getElementById('learned-words'), index = LearnedWords._tourStep;
+        root.querySelector('.lw-center').hidden = false;
         LearnedWords.selectSection('learned',true);
         var row = root.querySelector('section[data-section="learned"] .lw-entry');
-        if (!row && [1,4,6].indexOf(index) >= 0) {
+        if ((!row || !LearnedWords.sectionEnabled('learned')) && [1,4,6].indexOf(index) >= 0) {
             row = root.querySelector('.lw-demo');
             if (!row) {
                 row = document.createElement('details'); row.className = 'lw-entry lw-demo';
@@ -559,10 +602,12 @@ var LearnedWords = {
         root.querySelector('.lw-toolbar').classList.toggle('lw-icons',!!LearnedWords._tourIcons);
         root.querySelectorAll('.lw-target').forEach(function(n){n.classList.remove('lw-target');});
         var demo = root.querySelector('.lw-demo'); if (demo) demo.remove();
+        (LearnedWords._tourHiddenRows || []).forEach(function(r){if(r.node.isConnected)r.node.hidden=r.hidden;});
         (LearnedWords._tourDetails || []).forEach(function(r){if(r.node.isConnected)r.node.open=r.open;});
         LearnedWords.selectSection(LearnedWords._tourSection || 'learned',true);
         root.querySelector('.lw-center').scrollTop = LearnedWords._tourScroll || 0;
         Array.from(root.children).forEach(function (node) { node.inert = false; }); LearnedWords._tourStep = null;
+        LearnedWords._section = LearnedWords._tourSection; LearnedWords.applyVisibility();
         if (LearnedWords._tourFocus && LearnedWords._tourFocus.isConnected) LearnedWords._tourFocus.focus();
     }
 };

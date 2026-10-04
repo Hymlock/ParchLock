@@ -808,7 +808,7 @@ var Input = {
 
         if ($(e.target).closest("#message, #dialog").length && e.key !== "Escape") {
             if (Message.IsOpen && e.key === "Tab") {
-                var controls = $("#message").find("button, input, textarea, select, a[href], [tabindex='0']").filter(":visible:not(:disabled)").toArray();
+                var controls = $("#message").find("button, input, textarea, select, summary, a[href], [tabindex='0']").filter(":visible:not(:disabled)").toArray();
                 var index = controls.indexOf(document.activeElement);
                 if (controls.length) { e.preventDefault(); controls[(index + (e.shiftKey ? controls.length - 1 : 1)) % controls.length].focus(); }
             }

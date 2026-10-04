@@ -16,7 +16,7 @@ function check(value, message) { assert(value,message); console.log('PASS:',mess
    // Real story boot/owners; deterministic learned fixtures make every edit reproducible.
    const setup=await page.evaluate(()=>{
     const obj=LearnedWords.objects()[0]; if(!obj)throw Error('No verified scoped object');
-    const verb=['examine','take','look'].find(v=>AttrCalibrator.dictionaryForm(v));
+    const verb=['rub','touch','smell','polish','kiss','wield'].find(v=>AttrCalibrator.dictionaryForm(v)&&!LearnedWords.independentForms(obj).includes(v));
     AttrCalibrator.hydrate(AttributeSchema._getMem());
     AttrCalibrator.table.objects[String(obj.id)]={exactForms:{[verb]:{confirmations:2}}};
     window.__lwTest={id:obj.id,verb,key:LearnedWords.rowKey('exact',obj.id,verb),before:JSON.stringify(AttrCalibrator.table)};
@@ -66,7 +66,7 @@ function check(value, message) { assert(value,message); console.log('PASS:',mess
    const manual=await page.evaluate(()=>{
     const obj=LearnedWords.objects().find(o=>String(o.id)===String(window.__lwTest.id));
     const existing=ActionSynth.commandsForObject(obj,'room').map(c=>c.verb);
-    return {id:obj.id,verb:['rub','touch','smell','polish','kiss','wield'].find(v=>AttrCalibrator.dictionaryForm(v)&&!existing.includes(v))};
+    return {id:obj.id,verb:['rub','touch','smell','polish','kiss','wield'].find(v=>AttrCalibrator.dictionaryForm(v)&&v!==window.__lwTest.verb&&!existing.includes(v))};
    });
    check(!!manual.verb,'dictionary-only manual fixture exists '+width);
    await page.evaluate(()=>LearnedWords.open());await page.locator('[data-action=add]').click();

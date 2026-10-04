@@ -115,17 +115,32 @@ var WorkspaceUI = {
     },
     ShowOptions: () => {
         Message.Show("Game options", "<div id='game-options'></div>", true);
+        var groups = {};
+        function group(label) {
+            var details = $("<details class='pl-options-group'>").appendTo("#game-options");
+            $("<summary>").text(label).on("keydown", function(e) {
+                if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); if (!e.repeat) details[0].open = !details[0].open; }
+            }).appendTo(details);
+            return details;
+        }
+        groups.help = group("Help at startup");
+        groups.map = group("Map animation");
+        groups.mic = group("Hold mic to talk (off = tap to toggle)");
+        groups.scroll = group("Scroll new story text to the top (off = ordinary scrolling)");
+        groups.speech = group("Read aloud new story text");
+        groups.interface = group("Interface & Accessibility");
+        groups.learned = group("Edit Learned Words");
         [
             ["Map animation", "MapAnimation", ParchLock.ToggleMapAnim],
             ["Help at startup", "ShowInfoOnStart", ParchLock.ToggleShowInfo],
             ["Assume return paths", "AssumeTwoWayConnections", ParchLock.ToggleMap2Way]
         ].forEach(option => {
-            var label = $("<label>").appendTo("#game-options");
+            var label = $("<label>").appendTo(option[1] === "ShowInfoOnStart" ? groups.help : groups.map);
             $("<input type='checkbox'>").prop("checked", !!Global.Prefs[option[1]]).on("change", () => option[2](true)).appendTo(label);
             label.append(document.createTextNode(option[0]));
         });
         // Mobile mic mode (operator: default hold-to-talk for noisy rooms).
-        var micLabel = $("<label>").appendTo("#game-options");
+        var micLabel = $("<label>").appendTo(groups.mic);
         $("<input type='checkbox'>")
             .prop("checked", Global.Prefs.MicHoldToTalk !== false)
             .on("change", function () {
@@ -139,7 +154,7 @@ var WorkspaceUI = {
         // D167: holding the mic is itself a deliberate "say this and go", so a
         // hold-release submits by default. Tap mode never submits, whatever
         // this is set to.
-        var micSendLabel = $("<label>").appendTo("#game-options");
+        var micSendLabel = $("<label>").appendTo(groups.mic);
         $("<input type='checkbox'>")
             .prop("checked", Global.Prefs.MicAutoSendOnRelease !== false)
             .on("change", function () {
@@ -150,7 +165,7 @@ var WorkspaceUI = {
         micSendLabel.append(document.createTextNode("Send automatically when the mic is released (hold mode only)"));
 
         // D167: follow new output automatically, starting at its first line.
-        var scrollLabel = $("<label>").appendTo("#game-options");
+        var scrollLabel = $("<label>").appendTo(groups.scroll);
         $("<input type='checkbox'>")
             .prop("checked", Global.Prefs.AutoScrollOnOutput !== false)
             .on("change", function () {
@@ -161,7 +176,7 @@ var WorkspaceUI = {
         scrollLabel.append(document.createTextNode("Scroll new story text to the top (off = ordinary scrolling)"));
 
         // D100 read-aloud (Options only; no chrome button). Default ON = new story text.
-        var raLabel = $("<label>").appendTo("#game-options");
+        var raLabel = $("<label>").appendTo(groups.speech);
         var raCheck = $("<input type='checkbox'>")
             .prop("checked", Global.Prefs.ReadAloud !== false)
             .on("change", function () {
@@ -184,9 +199,9 @@ var WorkspaceUI = {
         if (typeof ReadAloud !== "undefined" && !ReadAloud.isSupported()) {
             $("<div>").css({ fontSize: "12px", opacity: 0.75, margin: "4px 0 8px 22px" })
                 .text("Speech not available on this device.")
-                .appendTo("#game-options");
+                .appendTo(groups.speech);
         }
-        var raStatus = $("<label>").appendTo("#game-options");
+        var raStatus = $("<label>").appendTo(groups.speech);
         $("<input type='checkbox'>")
             .prop("checked", !!Global.Prefs.ReadAloudStatus)
             .on("change", function () {
@@ -195,7 +210,7 @@ var WorkspaceUI = {
             })
             .appendTo(raStatus);
         raStatus.append(document.createTextNode("Also read status line"));
-        var raDlg = $("<label>").appendTo("#game-options");
+        var raDlg = $("<label>").appendTo(groups.speech);
         $("<input type='checkbox'>")
             .prop("checked", !!Global.Prefs.ReadAloudDialogs)
             .on("change", function () {
@@ -204,7 +219,7 @@ var WorkspaceUI = {
             })
             .appendTo(raDlg);
         raDlg.append(document.createTextNode("Also read app dialogs"));
-        var raSkip = $("<label>").appendTo("#game-options");
+        var raSkip = $("<label>").appendTo(groups.speech);
         $("<input type='checkbox'>")
             .prop("checked", !!Global.Prefs.ReadAloudSkipRepeats)
             .on("change", function () {
@@ -213,9 +228,9 @@ var WorkspaceUI = {
             })
             .appendTo(raSkip);
         raSkip.append(document.createTextNode("Skip lines repeated from the previous turn"));
-        var rateRow = $("<div class='qol-display-row'>").css({ marginTop: "8px" }).appendTo("#game-options");
+        var rateRow = $("<div class='qol-display-row'>").css({ marginTop: "8px" }).appendTo(groups.speech);
         $("<span>").text("Speech rate").appendTo(rateRow);
-        $("<button type='button'>").text("âˆ’").on("click", function () {
+        $("<button type='button'>").text("-").on("click", function () {
             var r = Math.round(((parseFloat(Global.Prefs.ReadAloudRate) || 1) - 0.1) * 10) / 10;
             Global.Prefs.ReadAloudRate = Math.max(0.7, r);
             Global.SavePrefs();
@@ -232,15 +247,15 @@ var WorkspaceUI = {
             $("<button type='button' id='pl-readaloud-stop'>").text("Stop speaking").on("click", function () {
                 try { if (typeof ReadAloud !== "undefined") ReadAloud.stop(); } catch (e) {}
             })
-        ).appendTo("#game-options");
+        ).appendTo(groups.speech);
         // D112: general Interface/Accessibility area -- deliberately NOT
         // grouped with the map-specific options above (operator correction
         // to an earlier map-options placement suggestion). This toggle
         // controls ONLY whether the small button beside the Notes header
         // is present; the Notes header/section itself is always visible
         // regardless of this preference, note count, or collapse state.
-        $("<h3>").css({ margin: "8px 0 0" }).text("Interface & Accessibility").appendTo("#game-options");
-        var notesButtonLabel = $("<label>").appendTo("#game-options");
+
+        var notesButtonLabel = $("<label>").appendTo(groups.interface);
         $("<input type='checkbox'>")
             .prop("checked", !!Global.Prefs.ShowNotesAddButton)
             .on("change", function () {
@@ -258,7 +273,7 @@ var WorkspaceUI = {
         // the merged widget's modes -- the exits-mode compass handle AND the
         // arrow-key pad (auto-opened on native menus, or Tools > Arrow keys)
         // -- not just the handle by itself.
-        var dirRadialLabel = $("<label>").appendTo("#game-options");
+        var dirRadialLabel = $("<label>").appendTo(groups.interface);
         $("<input type='checkbox'>")
             .prop("checked", Global.Prefs.DirectionalRadialEnabled !== false)
             .on("change", function () {
@@ -279,7 +294,7 @@ var WorkspaceUI = {
         // pad (auto + Tools > Arrow keys), so a second toggle there would
         // be redundant and confusing.
         if (!(document.body && document.body.classList.contains("pl-mobile"))) {
-            var desktopArrowLabel = $("<label>").appendTo("#game-options");
+            var desktopArrowLabel = $("<label>").appendTo(groups.interface);
             $("<input type='checkbox'>")
                 .prop("checked", Global.Prefs.DesktopArrowPadEnabled === true)
                 .on("change", function () {
@@ -297,7 +312,7 @@ var WorkspaceUI = {
         // separate settings surfaces). A short tap on the handle itself
         // opens the same panel -- this button is the conventional,
         // discoverable second entry point.
-        var dirConfigRow = $("<div>").css({ margin: "4px 0" }).appendTo("#game-options");
+        var dirConfigRow = $("<div>").css({ margin: "4px 0" }).appendTo(groups.interface);
         $("<button type='button'>")
             .text("Configure directions...")
             .on("click", function () {
@@ -309,7 +324,7 @@ var WorkspaceUI = {
         // "Replay mobile tutorial" button now that the D113 tutorial is one
         // shared route (tutorial.html) for mobile and desktop alike -- no
         // more per-platform behavior difference to branch on here.
-        var tutorialRow = $("<div class='pl-tutorial-setting'>").appendTo("#game-options");
+        var tutorialRow = $("<div class='pl-tutorial-setting'>").appendTo(groups.interface);
         $("<button type='button' id='pl-replay-tutorial'>")
             .text("Replay tutorial")
             .on("click", function () {
@@ -336,6 +351,15 @@ var WorkspaceUI = {
             })
             .appendTo(tutorialRow);
         $("<span id='pl-tutorial-status' role='status'>").appendTo(tutorialRow);
+        [['learned','Edit Learned Words'],['actions','Story actions \u00b7 labels only'],['names','Names \u00b7 display labels only'],['status','Status labels \u00b7 display text only']].forEach(function (entry) {
+            var label = $("<label>").appendTo(groups.learned);
+            $("<input type='checkbox'>").prop("checked", LearnedWords.sectionEnabled(entry[0])).on("change", function () {
+                Global.Prefs['LearnedWordsShow_' + entry[0]] = !!this.checked;
+                Global.SavePrefs();
+                if (LearnedWords._open) LearnedWords.applyVisibility();
+            }).appendTo(label);
+            label.append(document.createTextNode(entry[1]));
+        });
     },
     MapKey: () => "PL_MapSlots_" + ParchLock.GameFilename,
     ReadSlots: () => {

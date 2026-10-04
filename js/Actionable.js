@@ -1543,6 +1543,16 @@ var Actionable = {
                             ambiguity.push({ Label: entry.verb.charAt(0).toUpperCase() + entry.verb.slice(1), Command: entry.command, Action: function () { Actionable.Submit(entry.command, "ambiguous-reference"); } });
                         });
                     }
+                    // A held sibling must not suppress a supported ground-copy Take.
+                    if (kind !== "inventory" && typeof ActionSynth !== "undefined") {
+                        var heldIds = ((WorldModel.lastPayload || {}).inventory || []).map(function (o) { return String(o.id); });
+                        choices.filter(function (o) { return heldIds.indexOf(String(o.id)) < 0; }).forEach(function (o) {
+                            ActionSynth.commandsForObject(o, "room", null, {allowAmbiguousReference:true, directEvidenceOnly:!!o.examineOnly}).forEach(function (entry) {
+                                if (entry.verb !== "take" || !entry.command || /\s$/.test(entry.command) || ambiguity.some(function (slice) {return slice.Command === entry.command;})) return;
+                                ambiguity.push({Label:"Take", Command:entry.command, Action:function () {Actionable.Submit(entry.command, "ambiguous-reference");}});
+                            });
+                        });
+                    }
                     var inspect = typeof ActionSynth !== "undefined" && !ActionSynth.inspectVerbDisabled() ? ActionSynth.defaultInspectVerb() : "";
                     if (inspect && !ambiguity.length) ambiguity.push({ Label: "Specify...", Action: function () { Input.Clear(); Input.Inject(inspect + " " + noun, false); Input.Focus(); } });
                 }

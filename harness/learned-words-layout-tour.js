@@ -5,7 +5,7 @@ async function boot(browser,width,height){
  const context=await browser.newContext({viewport:{width,height},isMobile:width<600,hasTouch:width<600}),page=await context.newPage();page.errors=[];page.on('pageerror',e=>page.errors.push(e.message));
  await page.addInitScript(()=>{sessionStorage.setItem('PL_ParchLockSplashSeen','1');localStorage.setItem('PL_TutorialSeen','1');localStorage.setItem('PL_LearnedWordsTutorialSeen','1');});
  await page.goto(pathToFileURL(path.resolve('play.html')).href+'?story=games/anchor.z8.js');await page.waitForTimeout(3500);
- await page.evaluate(()=>{if(Message.IsOpen)Message.Hide();});
+ await page.evaluate(()=>{if(Message.IsOpen)Message.Hide();['learned','actions','names','status'].forEach(k=>Global.Prefs['LearnedWordsShow_'+k]=true);});
  for(let i=0;i<8&&!await page.locator('.Input.LineInput').count();i++){await page.keyboard.press('Space');await page.waitForTimeout(300);}
  await page.waitForFunction(()=>LearnedWords.objects().length);
  return {context,page};
