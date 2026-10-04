@@ -193,5 +193,8 @@ if (A.referenceFor) {
     const zsrc = require("fs").readFileSync(require("path").join(__dirname, "..", "js", "ZRamReader.js"), "utf8");
     assert(/objectHasCustomParseName/.test(zsrc) && /informPropertyNames/.test(zsrc), "ZRamReader exposes non-executing parse_name property-table discovery");
 }
+setPool([{id:901,name:"nutritiou",displayName:"food pellets",aliases:["nutritiou","food","pellet","pellets"]},{id:902,name:"nutritiou",displayName:"food pellets",aliases:["nutritiou","food","pellet","pellets"]}]);
+assert(A.referenceFor(POOL[0]).noun === "pellets", "duplicate observed head replaces unreadable dictionary fragment");
+assert(!A.referenceFor(POOL[0]).unique && A.referenceFor(POOL[0]).candidateIds.length === 2, "readable duplicate noun preserves both candidates");
 console.log("\n" + pass + " PASS / " + fail + " FAIL");
 process.exit(fail ? 1 : 0);

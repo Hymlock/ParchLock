@@ -290,14 +290,9 @@ var Actionable = {
     headNounOf: (obj) => {
         var words = (obj && obj.aliases) || [];
         if (!words.length) return "";
-        var have = {};
-        words.forEach(function (w) {
-            w = String(w || "").toLowerCase().trim();
-            if (w) have[w] = 1;
-        });
-        var tokens = String((obj && obj.name) || "").toLowerCase().split(/[^a-z0-9']+/).filter(Boolean);
+        var tokens = String((obj && (obj.displayName || obj.name)) || "").toLowerCase().split(/[^a-z0-9']+/).filter(Boolean);
         for (var i = tokens.length - 1; i >= 0; i--) {
-            if (have[tokens[i]]) return tokens[i];
+            if (words.some(function (w) { return Actionable.vocabularyKey(w) === Actionable.vocabularyKey(tokens[i]); })) return tokens[i];
         }
         return "";
     },
@@ -418,7 +413,9 @@ var Actionable = {
             // D107: with nothing to distinguish it, keep the real single word.
             // An invented compound phrase is rejected by the parser outright,
             // which is worse than the story asking "Which do you mean?".
-            return fallback;
+            // A shared observed head is real vocabulary too. Keep its readable
+            // spelling; uniqueness is still decided by referenceFor.
+            return Actionable.expandTruncated(noun, obj);
         }
         var inName = usable.filter(function (w) { return nameTokens.indexOf(w) >= 0; });
         var qualifier = inName.length ? inName[0] : usable[0];

@@ -27,7 +27,7 @@ function check(value, message) { assert(value,message); console.log('PASS:',mess
    if(width===360)await page.screenshot({path:'work/learned-words-tutorial-mobile.png'});
    await page.locator('.lw-tour button').filter({hasText:/^Skip$/}).click();
    check(await page.evaluate(()=>localStorage.getItem('PL_LearnedWordsTutorialSeen')==='1'&&localStorage.getItem('PL_TutorialSeen')==='1'),'Skip completes sibling key only '+width);
-   check(await page.evaluate(()=>LearnedWords._section==='status'),'Status is the initial restored center panel '+width);
+   check(await page.evaluate(()=>LearnedWords._section==='learned'),'Edit Learned Words is the initial restored center panel '+width);
    await page.locator('.lw-section-header[data-section=learned]').click();
    const row=page.locator('.lw-entry').filter({hasText:'Remembered'}).first(); await row.locator(':scope > summary').click();
    const inputs=row.locator('.lw-fields input'); await inputs.nth(1).fill('Edited action'); await inputs.nth(0).focus();

@@ -18,6 +18,7 @@ async function boot(browser,width,height){
 for(const width of [1280,360]){
  const {page,context}=await boot(browser,width,850);
  await page.evaluate(()=>LearnedWords.open());
+ check(await page.evaluate(()=>LearnedWords._section)==='learned','fresh launch opens Edit Learned Words '+width);
  check(await page.locator('.lw-section-header:visible').count()===2,'fresh launch renders only two default banners '+width);
  check(await page.locator('.lw-section-header[data-section=actions]').isVisible()===false&&await page.locator('.lw-section-header[data-section=names]').isVisible()===false,'actual CSS hides default-off headers '+width);
  await page.evaluate(()=>{localStorage.removeItem(LearnedWords.TUTORIAL_KEY);LearnedWords.startTour();});
@@ -44,6 +45,17 @@ for(const width of [1280,360]){
  check(await page.locator('.Input.LineInput').inputValue()==='','Take submits rather than leaves a pasted command '+width);
  await page.evaluate(()=>Actionable.Open('food pellets','inventory',100,100,null));
  check(await page.locator('#radial-menu button').filter({hasText:/^Take$/}).count()===0,'all-held radial omits Take '+width);
+ await page.evaluate(()=>{if(typeof RadialMenu!=='undefined'&&RadialMenu.Hide)RadialMenu.Hide();});
+ const refs=await page.evaluate(()=>Actionable.payloadPool().filter(o=>(o.aliases||[]).includes('pellet')).map(o=>Actionable.referenceFor(o)));
+ check(refs.length===2&&refs.every(r=>/pellets?$/.test(r.noun)&&!r.unique),'duplicate command references use readable pellet vocabulary without false uniqueness '+width);
+ await page.evaluate(()=>Actionable.Open('pellets','inventory',100,100,null));
+ await page.locator('#radial-menu button').filter({hasText:/^Eat$/}).click();await page.waitForTimeout(1500);
+ check(await page.locator('#windowport').innerText().then(t=>/eat pellets/.test(t)&&/aren't hungry enough/.test(t)),'actual Eat echo is readable and refusal keeps both pellets '+width);
+ check(await page.evaluate(()=>WorldModel.lastPayload.inventory.filter(o=>(o.aliases||[]).includes('pellet')).length)===2,'refused Eat preserves duplicate held identities '+width);
+ await page.evaluate(()=>Actionable.Open('pellets','inventory',100,100,null));
+ await page.locator('#radial-menu button').filter({hasText:/^Drop$/}).click();await page.waitForTimeout(1500);
+ check(await page.locator('#windowport').innerText().then(t=>/drop pellets/.test(t)),'actual Drop echo uses readable pellet noun '+width);
+ check(await page.evaluate(()=>WorldModel.lastPayload.inventory.filter(o=>(o.aliases||[]).includes('pellet')).length)===1,'actual Drop removes only one duplicate '+width);
  check(page.errors.length===0,'real-game browser has no errors '+width);
  await page.evaluate(()=>{Message.Hide();Global.Prefs.LearnedWordsShow_actions=false;Global.Prefs.LearnedWordsShow_names=false;Global.SavePrefs();});
  await page.reload();await page.waitForTimeout(3500);await page.evaluate(()=>{if(Message.IsOpen)Message.Hide();});

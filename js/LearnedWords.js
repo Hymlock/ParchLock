@@ -369,13 +369,13 @@ var LearnedWords = {
         }
         root.querySelector('.lw-center').hidden = false;
         if (active && LearnedWords._sections[active]) LearnedWords._sections[active].scroll = root.querySelector('.lw-center').scrollTop;
-        var next = active || (enabled.indexOf('status') >= 0 ? 'status' : enabled[0]);
+        var next = active || (enabled.indexOf('learned') >= 0 ? 'learned' : enabled[0]);
         if (!LearnedWords.sectionEnabled(next)) {
             var start = keys.indexOf(active);
             next = keys.slice(start + 1).concat(keys.slice(0,start + 1)).find(LearnedWords.sectionEnabled) || enabled[0];
         }
         LearnedWords._section = null;
-        LearnedWords.selectSection(next || (enabled.indexOf('status') >= 0 ? 'status' : enabled[0]), true);
+        LearnedWords.selectSection(next || (enabled.indexOf('learned') >= 0 ? 'learned' : enabled[0]), true);
     },
     initAccordion: function (root) {
         var intro = root.querySelector(':scope > p'), feedback = root.querySelector('.lw-feedback');
@@ -513,7 +513,7 @@ var LearnedWords = {
     TOUR: [
         ["Your learned words", "The learned list shows commands the system did not already provide for that item. A first try may appear for this session without proving success. Two successful observations are needed to remember a new command. Leaving hides unconfirmed attempts without deleting their counts. User suggestions and learned inspect decisions remain here."],
         ["Trigger and Response", "Trigger is a command verb or form, such as wield. The item supplies its verified name. Response is the text shown on the menu, such as Wield. You are editing ParchLock's behavior and labels, never the game's written reply. Some triggers are read-only because the story owns them."],
-        ["Where it appears", "Status labels open first when enabled. Game options lets you show or hide each section. Story actions and Names start hidden. Visible banners keep their original order. The label on the right tells you where an entry is used. Used in lists only compatible destinations. A status label cannot become a command. Names change display text only, never parser aliases or command references."],
+        ["Where it appears", "Edit Learned Words opens first when enabled. Game options lets you show or hide each section. Story actions and Names start hidden. Visible banners keep their original order. The label on the right tells you where an entry is used. Used in lists only compatible destinations. A status label cannot become a command. Names change display text only, never parser aliases or command references."],
         ["Saving and Undo", "Valid edits save when you leave a field or close this screen. Errors keep the last valid record intact. Undo restores the last valid edit. Incomplete drafts are discarded when you close, go Back, or change stories. Original learning stays read-only."],
         ["Ignore and replacements", "Ignore hides that one learned contribution without deleting its evidence. An independently valid story action may still appear. Ignoring a learned inspect decision reverses that decision only. Changing a command creates a new suggestion; it needs two subsequent successful commands before automatic submission."],
         ["Add a word", "Choose a unique verified item in scope, enter a command form from this story's dictionary, and give it a response label. New entries fill the command prompt for you to review; they do not execute during editing. Ambiguous items and unsupported forms cannot be saved."],
