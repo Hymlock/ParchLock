@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v110"; // Shared observed labels, distinct-owner radials and session learned-word projection.
+const CACHE_VERSION = "parchlock-shell-v111"; // Shared observed labels, distinct-owner radials and session learned-word projection.
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [

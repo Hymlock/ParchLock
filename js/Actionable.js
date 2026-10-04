@@ -465,9 +465,9 @@ var Actionable = {
     // SemanticActions instead of calling ActionSynth directly -- proven
     // byte-parity with the legacy path (harness/d88-semantic-parity.js), so
     // this changes WHERE the array is computed, never its contents.
-    resolveObjectCommands: (objectId, kind) => {
+    resolveObjectCommands: (objectId, kind, options) => {
         var target = Actionable.payloadPool().find(function (o) { return String(o.id) === String(objectId); });
-        if (target && !Actionable.referenceFor(target).unique) return [];
+        if (target && !Actionable.referenceFor(target).unique && !(options && options.allowAmbiguousReference)) return [];
         try {
             var hit = Actionable.payloadPool().find(function (o) {
                 return o && String(o.id) === String(objectId);
@@ -482,7 +482,7 @@ var Actionable = {
                 // dictionary-only guesses. Modules without declarations retain
                 // the historical inspect-only result below.
                 if (typeof ActionSynth !== "undefined" && ActionSynth.commandsForEvidenceObject) {
-                    return ActionSynth.commandsForEvidenceObject(hit, kind === "inventory" ? "inventory" : "room") || [];
+                    return ActionSynth.commandsForEvidenceObject(hit, kind === "inventory" ? "inventory" : "room", options) || [];
                 }
                 var cmds = [];
                 // The inspect verb keeps its policy: disabled means no command
@@ -520,7 +520,7 @@ var Actionable = {
                 // synthesizer. Preserve those parallel forms after the winners;
                 // exact rendered duplicates are removed, never capabilities.
                 var legacy = (typeof ActionSynth !== "undefined" && objectId)
-                    ? (ActionSynth.commandsForPayloadObjectId(objectId, resolvedKind) || []) : [];
+                    ? (ActionSynth.commandsForPayloadObjectId(objectId, resolvedKind, options) || []) : [];
                 var seen = {};
                 return semantic.concat(legacy).filter(function (entry) {
                     var key = String((entry && entry.command) || "").toLowerCase().replace(/\s+/g, " ").trim();
@@ -532,7 +532,7 @@ var Actionable = {
         } catch (e) {}
         try {
             if (typeof ActionSynth !== "undefined" && objectId) {
-                return ActionSynth.commandsForPayloadObjectId(objectId, kind === "inventory" ? "inventory" : "room") || [];
+                return ActionSynth.commandsForPayloadObjectId(objectId, kind === "inventory" ? "inventory" : "room", options) || [];
             }
         } catch (e) {}
         return [];
@@ -1500,15 +1500,37 @@ var Actionable = {
             ParchLockQol.GetRadialCommands().forEach(function (c) {
                 if (c.source === 'dictionary-verb' || c.source === 'ram-synth') add(c.Command.trim());
             });
-            if (obj && typeof AttrCalibrator !== 'undefined' && AttrCalibrator.allowedVerbsFor) {
-                AttrCalibrator.allowedVerbsFor(obj.id).forEach(add);
+            if (typeof AttrCalibrator !== 'undefined' && AttrCalibrator.allowedVerbsFor) {
+                var ids = obj ? [obj.id] : (context.candidateIds || []);
+                ids.forEach(function (id) { AttrCalibrator.allowedVerbsFor(id).forEach(add); });
             }
         } catch (e) {}
         if (suggestions.length) slices.push({ Label: 'More', MoreSuggestions: true, Score: 0, Action: function () {
             ParchLockQol.OpenRadial(x, y, suggestions, context);
         } });
     },
+    sharedObjectCommands: function (choices, kind) {
+        var held = ((WorldModel.lastPayload || {}).inventory || []).map(function (o) { return String(o.id); });
+        var eligible = choices.filter(function (o) { return (held.indexOf(String(o.id)) >= 0) === (kind === "inventory"); });
+        var lists = eligible.map(function (o) { return Actionable.resolveObjectCommands(o.id, kind, {allowAmbiguousReference:true}); });
+        return (lists[0] || []).filter(function (entry) {
+            return lists.every(function (list) { return list.some(function (c) { return c.command === entry.command; }); });
+        }).map(function (entry) {
+            var members = lists.map(function (list) { return list.find(function (c) { return c.command === entry.command; }); });
+            return Object.assign({}, entry, {
+                objectId: null, sharedMembers: members,
+                confidence: Math.min.apply(Math, members.map(function (c) { return typeof c.confidence === "number" ? c.confidence : 0.8; })),
+                Enter: members.every(function (c) { return c.Enter !== false && c.enter !== false; })
+            });
+        });
+    },
+    radialCommandCurrent: function (command) {
+        return (command.sharedMembers || [command]).every(function (c) {
+            return !c.learnedWordScope || typeof LearnedWords === "undefined" || LearnedWords.commandCurrent(c);
+        });
+    },
     Open: (noun, kind, x, y, objectId) => {
+        var sharedCommands = null;
         var object = Actionable.payloadPool().find(function (o) { return String(o.id) === String(objectId); });
         if (!objectId || (object && !Actionable.referenceFor(object).unique)) {
             if (kind !== "direction") {
@@ -1518,34 +1540,19 @@ var Actionable = {
                 var ambiguity = choices.filter(function (o) { return Actionable.referenceFor(o).unique; }).map(function (o) {
                     return { Label: o.name, Action: function () { Actionable.Open(o.name, kind, x, y, o.id); } };
                 });
-                if (!ambiguity.length) {
-                    if (choices.length && typeof ActionSynth !== "undefined") {
-                        var common = choices.map(function (o) { return ActionSynth.commandsForObject(o, kind === "inventory" ? "inventory" : "room", null, { allowAmbiguousReference: true, directEvidenceOnly: !!o.examineOnly }); });
-                        (common[0] || []).forEach(function (entry) {
-                            if (/\s$/.test(entry.command) || !common.every(function (list) { return list.some(function (c) { return c.command === entry.command; }); })) return;
-                            ambiguity.push({ Label: entry.verb.charAt(0).toUpperCase() + entry.verb.slice(1), Command: entry.command, Action: function () { Actionable.Submit(entry.command, "ambiguous-reference"); } });
-                        });
-                    }
-                    // A held sibling must not suppress a supported ground-copy Take.
-                    if (kind !== "inventory" && typeof ActionSynth !== "undefined") {
-                        var heldIds = ((WorldModel.lastPayload || {}).inventory || []).map(function (o) { return String(o.id); });
-                        choices.filter(function (o) { return heldIds.indexOf(String(o.id)) < 0; }).forEach(function (o) {
-                            ActionSynth.commandsForObject(o, "room", null, {allowAmbiguousReference:true, directEvidenceOnly:!!o.examineOnly}).forEach(function (entry) {
-                                if (entry.verb !== "take" || !entry.command || /\s$/.test(entry.command) || ambiguity.some(function (slice) {return slice.Command === entry.command;})) return;
-                                ambiguity.push({Label:"Take", Command:entry.command, Action:function () {Actionable.Submit(entry.command, "ambiguous-reference");}});
-                            });
-                        });
-                    }
-                    var inspect = typeof ActionSynth !== "undefined" && !ActionSynth.inspectVerbDisabled() ? ActionSynth.defaultInspectVerb() : "";
-                    if (inspect && !ambiguity.length) ambiguity.push({ Label: "Specify...", Action: function () { Input.Clear(); Input.Inject(inspect + " " + noun, false); Input.Focus(); } });
+                if (ambiguity.length) {
+                    var selectionContext = { source: "text", noun: noun, kind: kind, objectId: null };
+                    Actionable.addMoreActions(ambiguity, selectionContext, x, y);
+                    ParchLockQol.OpenRadial(x, y, ambiguity, selectionContext);
+                    return;
                 }
-                var ambiguousContext = { source: "text", noun: noun, kind: kind, objectId: null };
-                Actionable.addMoreActions(ambiguity, ambiguousContext, x, y);
-                ParchLockQol.OpenRadial(x, y, ambiguity, ambiguousContext);
-                return;
+                // Shared references use the same slice/target/ranking builder below.
+                // Only command eligibility differs; no physical owner is selected.
+                sharedCommands = Actionable.sharedObjectCommands(choices, kind);
+                objectId = null;
             }
         }
-        var context = { source: "text", noun: noun, kind: kind, objectId: objectId || null };
+        var context = { source: "text", noun: (sharedCommands && sharedCommands[0] && sharedCommands[0].noun) || noun, kind: kind, objectId: objectId || null, candidateIds: sharedCommands ? choices.map(function (o) { return o.id; }) : undefined };
         var slices = [];
         // Score is a static confidence prior. Usage stays separate so the
         // shared D110 ranker can apply the strict usage/prior/order tuple.
@@ -1560,8 +1567,8 @@ var Actionable = {
         if (kind === "direction") {
             var dirCommand = Actionable.resolveExitCommand(noun);
             slices.push({ Label: "Go " + noun, Command: dirCommand, Score: scoreFor(dirCommand, 50), Usage: usageFor(dirCommand), Action: function () { Actionable.Submit(dirCommand); } });
-        } else if (objectId) {
-            var cmds = Actionable.resolveObjectCommands(objectId, kind);
+        } else if (objectId || sharedCommands) {
+            var cmds = sharedCommands || Actionable.resolveObjectCommands(objectId, kind);
             slices = cmds.map(function (c) {
                 var verb = String(c.verb || "examine");
                 var command = String(c.command || "");
@@ -1586,6 +1593,8 @@ var Actionable = {
                         UsageKey: "radial:" + Actionable.usageKey(command),
                         TrackTap: true,
                         Action: function () {
+                            if (!Actionable.radialCommandCurrent(c)) return;
+                            if (c.Enter === false || c.enter === false) { Input.Clear();Input.Inject(command,false);Input.Focus();return; }
                             // D77: a real, live-reported case -- a hardcoded
                             // `.slice(0, 8)` here silently dropped a genuine
                             // container (trenchcoat, `attrs.container:true`)
@@ -1642,7 +1651,7 @@ var Actionable = {
                             }
                             ParchLockQol.OpenRadial(x, y, targets.map(function (t) {
                                 var full = command + Actionable.referenceFor(t).noun;
-                                return { Label: t.name, Command: full, Score: scoreFor(full, base), Usage: usageFor(full), Action: function () { Actionable.Submit(full); if (c.intent) Actionable.noteIntentUsage(c.intent); } };
+                                return { Label: t.name, Command: full, Score: scoreFor(full, base), Usage: usageFor(full), Action: function () { if (!Actionable.radialCommandCurrent(c)) return; Actionable.Submit(full, sharedCommands ? "ambiguous-reference" : undefined); if (c.intent) Actionable.noteIntentUsage(c.intent); } };
                             }), context);
                         }
                     };
@@ -1654,17 +1663,21 @@ var Actionable = {
                     Usage: usageFor(command),
                     Enter: c.Enter !== false && c.enter !== false,
                     Action: function () {
-                        if (c.learnedWordScope && typeof LearnedWords !== "undefined" && !LearnedWords.commandCurrent(c)) return;
+                        if (!Actionable.radialCommandCurrent(c)) return;
                         if (c.Enter === false || c.enter === false) { Input.Clear(); Input.Inject(command, false); Input.Focus(); }
-                        else { Actionable.Submit(command); if (c.intent) Actionable.noteIntentUsage(c.intent); }
+                        else { Actionable.Submit(command, sharedCommands ? "ambiguous-reference" : undefined); if (c.intent) Actionable.noteIntentUsage(c.intent); }
                     }
                 };
             });
+            if (sharedCommands && !cmds.length && typeof ActionSynth !== "undefined" && !ActionSynth.inspectVerbDisabled()) {
+                var inspect = ActionSynth.defaultInspectVerb();
+                if (inspect) slices.push({Label:"Specify...", Action:function () {Input.Clear();Input.Inject(inspect + " " + noun,false);Input.Focus();}});
+            }
             try {
                 var srcObj = Actionable.payloadPool().find(function (o) {
                     return o && String(o.id) === String(objectId);
                 });
-                if (srcObj && srcObj.examineOnly) {
+                if ((srcObj && srcObj.examineOnly) || (sharedCommands && choices.length && choices.some(function (o) { return o.examineOnly; }))) {
                     Actionable.addMoreActions(slices, context, x, y);
                     ParchLockQol.OpenRadial(x, y, slices, context);
                     return;
@@ -1686,8 +1699,9 @@ var Actionable = {
                                 // D141/D147: the disambiguating form on BOTH
                                 // sides -- with three spells held, "cast spell
                                 // at spell" names nothing.
-                                var cmd = inst.build(Actionable.disambiguatedNoun(source), Actionable.disambiguatedNoun(other));
-                                return { Label: other.name, Command: cmd, Score: scoreFor(cmd, 50), Usage: usageFor(cmd), Action: function () { Actionable.Submit(cmd); } };
+                                var sourceNoun = sharedCommands ? ((cmds[0] && cmds[0].noun) || noun) : Actionable.disambiguatedNoun(source);
+                                var cmd = inst.build(sourceNoun, Actionable.disambiguatedNoun(other));
+                                return { Label: other.name, Command: cmd, Score: scoreFor(cmd, 50), Usage: usageFor(cmd), Action: function () { Actionable.Submit(cmd, sharedCommands ? "ambiguous-reference" : undefined); } };
                             }), context);
                         }});
                     });

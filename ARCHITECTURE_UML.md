@@ -3655,3 +3655,15 @@ EquipmentUI.registerInstances is the single existing sequence owner for real edi
 inventory rows; no second map or empty-filename persistence. Initial Status diagnostics
 use model facts with unknown/stale distinction. Four ordered banners, compact accessible
 controls and standalone tutorial preserve the established one-panel/layout/lifecycle gates.
+
+
+**2026-10-04 duplicate radial integration:** Actionable.sharedObjectCommands intersects
+existing resolveObjectCommands outputs for currently eligible ground/held candidates,
+then passes entries to the ordinary Open slice/ranking/target-submenu builder. Optional
+ambiguous-reference synthesis is limited to this eligibility calculation; default unique
+reference gates remain unchanged. Shared UI contexts retain null objectId and candidateIds.
+All supported learned members must remain current and any review-only member prevents
+automatic submission, including target stems. Submenu and instrumental submissions retain
+ambiguous-reference provenance. More remains editable suggestions. Normal ActionSynth
+vocabulary rendering uses the same scoped observed row as Actionable marks, without
+changing physical membership or calibration. Nested copies use normal container retrieval.

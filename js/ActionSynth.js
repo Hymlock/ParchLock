@@ -176,6 +176,11 @@ var ActionSynth = {
 
     commandsForObject: (obj, context, containerName, options) => {
         if (!obj || !obj.name) return [];
+        // Resolve the same observed vocabulary row used by marks and radials.
+        // Raw payload names may still be dictionary fragments for shared copies.
+        if (typeof Actionable !== "undefined" && Actionable.payloadPool && obj.id != null) {
+            obj = Actionable.payloadPool().find(function (o) { return String(o.id) === String(obj.id); }) || obj;
+        }
         if (!(options && options.allowAmbiguousReference) && typeof Actionable !== "undefined" && Actionable.referenceFor && !Actionable.referenceFor(obj).unique) return [];
         // D64: obj.name is the object's structural short-name (a display
         // string, not guaranteed real parser vocabulary). Actionable
@@ -266,13 +271,14 @@ var ActionSynth = {
     // rules for compiler-declared attributes and confirmed per-object learning,
     // while excluding dictionary-only additions (currently DRINK for EDIBLE).
     // Vocabulary proves how to address the object; it never proves a verb.
-    commandsForEvidenceObject: (obj, context) => {
+    commandsForEvidenceObject: (obj, context, options) => {
         return ActionSynth.commandsForObject(obj, context || "room", null, {
-            directEvidenceOnly: true
+            directEvidenceOnly: true,
+            allowAmbiguousReference: !!(options && options.allowAmbiguousReference)
         });
     },
 
-    commandsForPayloadObjectId: (objectId, context) => {
+    commandsForPayloadObjectId: (objectId, context, options) => {
         try {
             var p = WorldModel && WorldModel.lastPayload;
             if (!p) return [];
@@ -283,7 +289,7 @@ var ActionSynth = {
             if (!obj) return [];
             context = (p.inventory || []).some(function (o) { return o && String(o.id) === String(objectId); }) ? "inventory" : "room";
             var containerName = context === "inventory" ? ActionSynth.heldContainerName(obj, p) : null;
-            return ActionSynth.commandsForObject(obj, context, containerName);
+            return ActionSynth.commandsForObject(obj, context, containerName, options);
         } catch (e) { return []; }
     },
     collectFromPayload: (p) => {

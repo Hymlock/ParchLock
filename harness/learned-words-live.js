@@ -112,7 +112,7 @@ function check(value, message) { assert(value,message); console.log('PASS:',mess
     }finally{Actionable.payloadPool=old.pool;WorldModel.lastPayload=old.payload;Actionable.addMoreActions=old.more;ParchLockQol.OpenRadial=old.radial;Actionable.Submit=old.submit;Actionable.CommandNouns=old.nouns;}
     return results;
    });
-   check(duplicateCases.every(c=>c.unbound&&c.owners===(c.scenario==='three'?3:2)&&c.kind===(['all-ground','mixed','three'].includes(c.scenario)?'object':'inventory')&&c.take===['all-ground','mixed','three'].includes(c.scenario)&&c.source==='ambiguous-reference'),'real story contextmenu dispatch preserves mixed/all-held ownership and command source '+width+' '+JSON.stringify(duplicateCases));
+   check(duplicateCases.every(c=>c.unbound&&c.owners===(c.scenario==='three'?3:2)&&c.kind===(['all-ground','mixed','three'].includes(c.scenario)?'object':'inventory')&&c.take===['all-ground','mixed','three','nested'].includes(c.scenario)&&c.source==='ambiguous-reference'),'real story contextmenu dispatch preserves mixed/all-held ownership and command source '+width+' '+JSON.stringify(duplicateCases));
    const beforeRestore=await page.evaluate(()=>JSON.stringify(LearnedWords.load()));
    await page.evaluate(()=>LearnedWords.open());
    await page.locator('.lw-section-header[data-section=learned]').click();
