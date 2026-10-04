@@ -17,6 +17,16 @@ const {chromium}=require('playwright');
  assert.equal(result.names.one,'food pellet');assert.deepEqual(result.names.two,['nutritiou','nutritiou']);
  assert.equal(result.distinctReference,true);assert.equal(result.repeatedId.objectId,null);assert.deepEqual(result.repeatedId.owners,[1,1]);
  assert.equal(result.mixed.kind,'inventory');
+ await page.addScriptTag({content:fs.readFileSync('js/ActionSynth.js','utf8')});
+ result.allHeldContext=await page.evaluate(()=>{
+  const pool=[{id:1,name:'pellet',aliases:['pellet'],attrs:{takeable:true}},{id:2,name:'pellet',aliases:['pellet'],attrs:{takeable:true}}];
+  WorldModel.lastPayload={inventory:pool,discoveredObjects:[]};Actionable.payloadPool=()=>pool;
+  Actionable.addMoreActions=()=>{};window.ParchLockQol={OpenRadial:(x,y,s)=>window.__slices=s};
+  Actionable.Open('pellet','inventory',0,0,null);const inventory=window.__slices.map(s=>s.Command);
+  Actionable.Open('pellet','object',0,0,null);const room=window.__slices.map(s=>s.Command);
+  return {inventory,room};
+ });
+ assert(!result.allHeldContext.inventory.includes('take pellet'));assert(result.allHeldContext.room.includes('take pellet'));
  await browser.close();
  const store={},objects=[{id:7,name:'axe',aliases:['axe']}],c=vm.createContext({console,Date,Math,JSON,Map,setTimeout,clearTimeout,window:{},document:{readyState:'loading',addEventListener(){}},localStorage:{getItem:k=>store[k]||null,setItem:(k,v)=>store[k]=v},UndoRestoreSync:{generation:0},AttributeSchema:{_getMem:()=>({})},AttrCalibrator:{gameIdentityKey:()=> 'audit-key',hydrate(){},table:{objects:{}}},Actionable:{payloadPool:()=>objects,referenceFor:()=>({unique:true,verified:true}),isGameWord:()=>true},ActionSynth:{commandsForObject:()=>[]}});
  vm.runInContext(fs.readFileSync('js/LearnedWords.js','utf8'),c);const l=c.LearnedWords,r={id:'exact:7:wield',type:'exact',editable:true,objectId:7,trigger:'wield',original:'wield'};
@@ -31,6 +41,7 @@ const {chromium}=require('playwright');
  const next=calibratorSession();const acceptedOnNextSession=next.recordExactForm({...entry});
  result.reloadSubmissionCollision={acceptedOnNextSession,confirmations:next.table.objects['7'].exactForms.wield.confirmations};
  assert.equal(acceptedOnNextSession,false);assert.equal(result.reloadSubmissionCollision.confirmations,1);
- console.log(JSON.stringify(result,null,2));console.log('7 adversarial diagnostic cases passed (confirm current risks, not proposed implementation).');
+ console.log(JSON.stringify(result,null,2));console.log('8 adversarial diagnostic cases passed (confirm current risks, not proposed implementation).');
 })().catch(e=>{console.error(e);process.exitCode=1});
+
 

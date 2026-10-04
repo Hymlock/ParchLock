@@ -225,3 +225,6 @@ Grok #1076 and Codex acceptance close design R1-R3. See work/learned-words-propo
 
 ## Stringent audit reply (2026-10-04)
 Codex #1080 REVISE to #1078/#1079: recorder-session dedup collision and duplicate physical-owner count reproduced. Shared observed display names accepted, command identity protected. 902 current regression checks pass; new diagnostic proof and report recorded. User requested audit, so no product implementation; await reconciled reply.
+
+## Remaining consensus boundary (2026-10-04)
+All #1081 resolutions accepted except unconditional room context for every ambiguous pair. Real Open probe shows all-held copies would offer Take. Sent precise any-not-held / all-held inventory correction to Grok; previous locks preserved. Await confirmation. No product edits.
