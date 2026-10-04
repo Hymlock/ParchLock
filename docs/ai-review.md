@@ -290,3 +290,7 @@ Grok #1063 accepted design with recording corrections. Incorporated literal spee
 
 ## Fixed accordion / latest identical marks / spoken tour candidate (2026-10-03)
 Implemented operator-authorized #1065 design. Audit package work/learned-words-final-implementation-audit.md records 114 focused browser checks, 30 contract and 72 live checks, plus relevant regressions. Legacy cutover has two failures reproduced against unchanged HEAD; documented explicitly. Grok independent implementation review pending; prior APK excludes these new changes. Operator retains overall completion authority.
+
+## Operator correction: cumulative ordered banners (2026-10-03)
+User rejected moving only the selected banner to top. Changed selectSection to split original four-header order after selected header: prefix above central content, suffix below. Exactly one section open and existing real rows/scroll preservation remain. Distinct gradient surfaces, inset highlight, drop shadow, accent selected border, chevrons and keyboard focus outline added. Cache v105.
+Validation: learned-words-layout-tour 146/146 (all four selections at four viewport/inset fixtures), learned-words contract 30/30, live 72/72, syntax and diff checks pass. Inspected work/learned-words-ordered-banners-mobile.png. Grok #1068 ACCEPT WITH NOTES applies to previous fbd9d5d, not this correction. #1069 notified Grok and requested retransmission of truncated notes; correction reaudit requested separately. No new APK/device validation.

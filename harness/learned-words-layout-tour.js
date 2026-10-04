@@ -68,7 +68,17 @@ async function boot(browser,width,height){
   check(g.scroll==='auto'&&await page.evaluate(()=>getComputedStyle(document.querySelector('#message')).overflowY==='hidden'&&getComputedStyle(document.querySelector('#message > div')).overflowY==='hidden'),'only central editor pane scrolls '+width);
   await page.evaluate(()=>{document.querySelector('.lw-center').scrollTop=300;});const before=await geometry();check(before.reachable,'headers remain reachable after long-list scroll '+width);
   await page.locator('.lw-section-header[data-section=learned]').click();check(await page.evaluate(()=>LearnedWords._section==='learned'),'active header cannot leave zero open '+width);
-  await page.locator('.lw-section-header[data-section=names]').click();check(await page.evaluate(()=>LearnedWords._section==='names'&&document.querySelector('.lw-current-header button').dataset.section==='names'),'opened header moves to top in real DOM '+width);
+  for(const name of ['actions','names','status','learned']){
+   await page.evaluate(name=>LearnedWords.selectSection(name,true),name);
+   check(await page.evaluate(name=>{
+    const keys=['learned','actions','names','status'],index=keys.indexOf(name);
+    const top=Array.from(document.querySelectorAll('.lw-current-header button')).map(b=>b.dataset.section);
+    const bottom=Array.from(document.querySelectorAll('.lw-bottom-headers button')).map(b=>b.dataset.section);
+    return JSON.stringify(top)===JSON.stringify(keys.slice(0,index+1))&&JSON.stringify(bottom)===JSON.stringify(keys.slice(index+1))&&document.querySelectorAll('.lw-panel:not([hidden])').length===1;
+   },name),'cumulative headers preserve original order '+name+' '+width);
+   const geometryState=await geometry();check(geometryState.reachable&&geometryState.center,'all cumulative headers and center fit '+name+' '+width);
+  }
+  await page.locator('.lw-section-header[data-section=names]').click();check(await page.evaluate(()=>LearnedWords._section==='names'&&document.querySelector('.lw-current-header button:last-child').dataset.section==='names'),'selected header follows preceding banners '+width);
   await page.locator('.lw-section-header[data-section=learned]').click();
   await page.evaluate(()=>{document.querySelector('.lw-center').scrollTop=0;const row=document.querySelector('[data-section=learned] .lw-entry');row.open=true;window.__row=row;window.__field=row.querySelectorAll('.lw-fields input')[1];});
   await page.locator('[data-section=learned] .lw-entry').first().locator('.lw-fields input').nth(1).fill('');
@@ -90,7 +100,7 @@ async function boot(browser,width,height){
   }
   check(await page.evaluate(()=>JSON.stringify(LearnedWords.load()))===baseline,'tour never changes real overrides '+width);
   check(await page.evaluate(()=>localStorage.getItem('PL_TutorialSeen')==='1'&&localStorage.getItem('PL_LearnedWordsTutorialSeen')==='1'),'tour completion/main tutorial isolation '+width);
-  if(width===360)await page.screenshot({path:'work/learned-words-accordion-mobile.png'});
+  if(width===360){await page.locator('.lw-section-header[data-section=names]').click();await page.evaluate(()=>document.querySelector('.lw-center').scrollTop=0);await page.screenshot({path:'work/learned-words-ordered-banners-mobile.png'});}
   if(width===1280){
    await page.locator('.lw-section-header[data-section=names]').click();
    await page.evaluate(()=>{document.querySelector('.lw-center').scrollTop=20;});

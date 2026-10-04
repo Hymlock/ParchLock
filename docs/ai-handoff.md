@@ -210,3 +210,6 @@ Packaging commit 9460c56: include LearnedWords.css in distribution allow-list; b
 
 ## Current implementation candidate (2026-10-03)
 Latest identical marks, fixed four-header accordion and independent spoken spotlight tutorial implemented. See work/learned-words-final-implementation-audit.md for evidence and baseline failures. Grok audit pending; no new APK/device claim.
+
+## Ordered banners correction (2026-10-03)
+Operator now requires cumulative header placement in unchanged order. Implemented prefix/center/suffix layout and distinct header chrome; 146 focused, 30 contract and 72 live checks pass. Previous Grok #1068 accepted fbd9d5d with notes; requested notes retransmission and correction audit. Existing APK excludes this correction.

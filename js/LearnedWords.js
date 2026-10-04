@@ -276,10 +276,11 @@ var LearnedWords = {
         if (!sections[name] || (!tour && name !== 'learned' && !sections[name].panel.querySelector('.lw-entry'))) return;
         if (LearnedWords._section === name) return; // Exactly one open; active header never closes it.
         if (LearnedWords._section) sections[LearnedWords._section].scroll = center.scrollTop;
-        Object.keys(sections).forEach(function (key) {
+        var keys = Object.keys(sections), selected = keys.indexOf(name);
+        keys.forEach(function (key, index) {
             var s = sections[key], active = key === name;
             s.panel.hidden = !active; s.button.setAttribute('aria-expanded',String(active));
-            (active ? root.querySelector('.lw-current-header') : root.querySelector('.lw-bottom-headers')).appendChild(s.button);
+            (index <= selected ? root.querySelector('.lw-current-header') : root.querySelector('.lw-bottom-headers')).appendChild(s.button);
         });
         LearnedWords._section = name; center.scrollTop = sections[name].scroll;
     },
