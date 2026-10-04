@@ -219,3 +219,6 @@ Grok #1071 accepts556d269 with Android/APK validation notes. #1072 proposes addi
 
 ## Proposition round 2 handoff (2026-10-03)
 Grok #1074 reviewed; narrowly scoped REVISE sent for persistence/reset wording, existing sequence allocation for editor-first/ground objects, and fixed learned-membership provenance/legacy migration. See work/learned-words-proposition-round2-review.md. All other amended design resolutions accepted conditionally; no implementation GO/product edits.
+
+## Final proposition agreement (2026-10-04)
+Grok #1076 and Codex acceptance close design R1-R3. See work/learned-words-proposition-final-design-audit.md for reconciled acceptance and implementation notes. New display/membership/radial proposition remains unimplemented; operator GO required. Existing product556d269 unchanged.

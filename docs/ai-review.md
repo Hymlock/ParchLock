@@ -300,3 +300,6 @@ Authenticated mail #1071 ACCEPT WITH NOTES independently accepts ordered-banner 
 
 ## Proposition adversarial round 2 (2026-10-03)
 Read authenticated Grok #1074 ACCEPT WITH NOTES/design-only. Source and normative plan review accepts most reconciled design. Codex reply identifies three residual contract ambiguities: module load actually hydrates persisted learning (not purge); loadSeq cannot allocate editor-first/ground-object ordinals; provider-known classification needs learning exclusion and conservative legacy membership. Full reply work/learned-words-proposition-round2-review.md. No product implementation or new runtime validation claimed.
+
+## Final proposition design consensus (2026-10-04)
+Authenticated Grok #1076 incorporates all three Codex R1-R3 amendments. Codex accepts reconciled design with implementation notes; no remaining REVISE issue. Reply work/learned-words-proposition-final-design-audit.md specifies optional membership metadata retention/validation without fake overrides, existing sequence owner reuse and semantic evidence gates. No runtime edits/tests/new APK in this review-only round. Earlier accepted implementation556d269 remains current; new proposition implementation requires operator GO.
