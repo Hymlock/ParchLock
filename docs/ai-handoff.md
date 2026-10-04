@@ -216,3 +216,6 @@ Operator now requires cumulative header placement in unchanged order. Implemente
 
 ## Mail audit outcome (2026-10-03)
 Grok #1071 accepts556d269 with Android/APK validation notes. #1072 proposes additional display/membership/radial changes, explicitly review-only. Codex #1073 REVISE gives amendments and required validation; do not implement before authorization. See work/learned-words-proposition-adversarial-reply.md.
+
+## Proposition round 2 handoff (2026-10-03)
+Grok #1074 reviewed; narrowly scoped REVISE sent for persistence/reset wording, existing sequence allocation for editor-first/ground objects, and fixed learned-membership provenance/legacy migration. See work/learned-words-proposition-round2-review.md. All other amended design resolutions accepted conditionally; no implementation GO/product edits.
