@@ -209,9 +209,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 99 headings; 0 decision rows; 99 registered units.
-**Last registered unit:** `ar-s099`. **Body SHA-256 (LF):**
-`4ebdea56f05e0212ed47b83c212c2c7be7607fb14979dafa14f777a4df65c0dd`
+**Local manifest:** 100 headings; 0 decision rows; 100 registered units.
+**Last registered unit:** `ar-s100`. **Body SHA-256 (LF):**
+`3f9bc64b1514e99b776ea7c502f29b0fbb6b2a8615733dd1d12ce8c994afb77a`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -390,6 +390,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s097](#ar-s097) | 71. Status probes, time games and the score alias (D207-D209) | H2 | Implemented / audited |
 | [ar-s098](#ar-s098) | 72. Hold selection ownership, voice input lifecycle and speech (D210-D212) | H2 | Implemented / audited |
 | [ar-s099](#ar-s099) | 73. In-room steps and combat actions (D213) | H2 | Part A implemented |
+| [ar-s100](#ar-s100) | 74. Underline lifetime, reply observation and Yourself breadth (D214) | H2 | Agreed; implementation in progress |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -3882,3 +3883,35 @@ flowchart TD
   - StatTracker: current-Tick actor-labelled health, which needs the status-row ownership fix;
   - ActionSynth/AttrCalibrator: a `combat` verb learned through the existing allowed-verb
     thresholds.
+
+<a id="ar-s100" data-chapter-id="ar-s100"></a><a id="ar-ch74"></a>
+## 74. Underline lifetime, reply observation and Yourself breadth (D214)
+
+Contract: [D214](PRODUCTION_PLAN.md#pl-d214).
+
+```mermaid
+flowchart TD
+  NEW[New or changed BufferLines - BufferRevision versions] --> OWN{Mark phrase still has a valid current owner?}
+  OWN -->|no| STALE[Stale that mark only]
+  OWN -->|yes| NEWER{Phrase printed again in newer text?}
+  NEWER -->|yes| MOVE[Move the mark to the newest occurrence]
+  NEWER -->|no| KEEP[Keep the mark where it is]
+  NEW --> POOL[Promotion pool: room, look, inventory + admitted latest reply]
+  POOL --> MATCH[Dictionary-encoding equality; pronoun and possessive triggers suppressed]
+  MATCH --> MARK[Mark the newest occurrence; one mark per object]
+  EPOCH[Restore / restart / new story] --> CLEAR[Invalidate all retained marks]
+```
+
+- Owners: `Actionable.Refresh`/`relocateExactMarks`/`promoteUnnamed` (U1-U4, Codex);
+  `EquipmentUI.yourselfCommands` (U5) and `ActionSynth` literal gating (U6), both Claude.
+- Invariants:
+  - a mark never outlives its owner;
+  - hidden probe output and commands never hold marks;
+  - scope is unchanged by trigger filtering;
+  - nothing is auto-submitted from the widened Yourself lane.
+
+**P1 observed direct possession (D214 amendment).** The Actionable candidate pool may admit a DIRECT
+child of a trusted-animate, in-room actor when this turn's admitted text prints a distinguishing
+alias of that child. That is an explicit D57/D68 exception confined to marks and examine. The
+structural scope walkers, WorldModel scope, inventory and the map are unchanged. Parent and actor
+scope are re-read on every refresh, and the mark follows U1 lifetime and epoch clearing.

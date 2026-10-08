@@ -110,6 +110,11 @@ function writeProps(mem, addr, name, props) {
 
 function buildWorld(bagOpen) {
     const mem = new Uint8Array(4096);
+    // This fixture models an Inform story (worn = attribute 26). Declare it
+    // the way real Inform stories do -- the compiler stamp "6.31" at
+    // 0x3C -- so the worn-bit owner precedence (declared > fact > learned >
+    // Inform default only when Inform-compiled) applies bit 26.
+    mem[0x3C] = 0x36; mem[0x3D] = 0x2E; mem[0x3E] = 0x33; mem[0x3F] = 0x31;
     const OBJ_TABLE = 0x100;
     const DEFAULTS = 63;
     const ENTRY = 14;

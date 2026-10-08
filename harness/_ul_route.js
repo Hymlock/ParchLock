@@ -13,5 +13,6 @@ const { chromium } = require('playwright'); const path = require('path'); const 
         tail: Array.from(document.querySelectorAll('.BufferWindow .BufferLine')).slice(-6).map(l => l.textContent.trim()).filter(Boolean).join(' | ').slice(0, 300) }; });
     console.log(c.padEnd(12), JSON.stringify(r)); };
   await dump('(start)');
-  for (const c of (process.argv[3] || '').split(',').filter(Boolean)) { const li = p.locator('.Input.LineInput'); await li.fill(c); await li.press('Enter'); await p.waitForTimeout(1800); await dump(c); }
+  const ready = async () => { for (let i = 0; i < 20 && !(await p.locator('.Input.LineInput').count()); i++) { if (await p.locator('.Input.CharInput').count()) await p.keyboard.press('Space'); await p.waitForTimeout(300); } };
+  for (const c of (process.argv[3] || '').split(',').filter(Boolean)) { await ready(); const li = p.locator('.Input.LineInput'); await li.fill(c); await li.press('Enter'); await p.waitForTimeout(1800); await dump(c); }
   await b.close(); })();

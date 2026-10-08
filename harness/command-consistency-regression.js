@@ -27,7 +27,10 @@ const sandbox = {
     },
     WorldModel: { lastPayload: null },
     ZRamProvider: { getMem: () => ({}) },
-    ZRamReader: { hasDictionaryWord: (_mem, word) => word === 'use' },
+    // The fixture's story vocabulary: 'use' for the D147 instrumental, plus the
+    // put/in literals its "Put in..." scenario relies on (D214 U6 now gates
+    // two-object forms on the dictionary, as a real story would).
+    ZRamReader: { hasDictionaryWord: (_mem, word) => ['use', 'put', 'in'].indexOf(word) >= 0 },
     ParchLockQol: { OpenRadial(x, y, slices) { menu = slices; } },
     AttrCalibrator: { defaultInspectVerb: () => 'examine', inspectVerbCurrentlyDisabled: () => false }
 };

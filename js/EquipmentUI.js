@@ -87,6 +87,8 @@ var EquipmentUI = {
         AttrCalibrator.exactFormsFor(obj.id).forEach(function (form) { add(form, true); });
         if (typeof LearnedWords !== "undefined") LearnedWords.candidates(obj.id).forEach(function (c) { add(c.form, c.enter); });
         AttrCalibrator.RPG_VERBS.forEach(function (form) { add(form, false); });
+        // D214 U5: wider editable lane, still dictionary-gated by allowed().
+        (AttrCalibrator.ITEM_SUGGESTION_VERBS || []).forEach(function (form) { add(form, false); });
         if (typeof LearnedWords !== "undefined") candidates.forEach(function (c) { c.Label = LearnedWords.commandLabel(obj.id, c.Form, c.Label); });
         return candidates;
     },

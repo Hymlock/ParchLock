@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 97 decisions across
-8255 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 98 decisions across
+8344 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -21,6 +21,7 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 
 | D | claim | files | games |
 |---|-------|-------|-------|
+| D214 | Underlines follow their words; replies are observed; dictionary-equivalent and pronoun-safe triggers; Yourself breadth |  |  |
 | D213 | Enemy interactions and in-room steps need RAM or grammar evidence (Step 5) |  |  |
 | D212 | Pronunciation catalogue gathered from all projects | js/PronunciationCatalog.js js/ReadAloud.js |  |
 | D211 | Voice input lifecycle: settle barrier, bounded waits, backoff, diagnostics |  |  |
@@ -33,7 +34,7 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 | D204 | Holistic statistics discovery and repeatable event monitoring — IMPLEMENTED | harness/command-disambiguation.js js/EquipmentUI.js harness/equipment-ui.js | Zork1 deadline Enchanter |
 | D203 | Mobile left exit-rail readable-content safety |  |  |
 | D202 | Original Map Controls |  |  |
-| D201 | Early Inform unnamed identity and inventory recovery |  | LLR3 |
+| D201 | Early Inform unnamed identity and inventory recovery |  |  |
 | D200 | Inform Z3 declaration reader | js/ZRamReader.js | catseye gussdeath moonglow |
 | D199 | The citation now reproduces the conclusion |  |  |
 | D198 | ZIL/Infocom capability completion through existing systems |  |  |

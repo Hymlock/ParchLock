@@ -29,6 +29,16 @@ var AttrCalibrator = {
     _wrapped: false,
     _verbRegex: null,
     RPG_VERBS: ["wield", "equip", "wear", "remove", "eat", "drink", "apply", "use", "take", "drop", "examine"],
+    // D214 U5: editable-only (Enter:false) Yourself suggestions beyond the RPG
+    // set -- things one commonly does to a held item. Each still passes
+    // dictionaryForm (every token must be this story's own vocabulary). That
+    // licenses an editable SUGGESTION only; it is not proof the game accepts
+    // the command for this object (arity/semantics), which is why these are
+    // never auto-submitted. Not used by D205 learning, which keeps RPG_VERBS.
+    // "polish" is omitted deliberately: in the Inform library it is a synonym
+    // of rub/clean, both already offered, so it would only duplicate them.
+    ITEM_SUGGESTION_VERBS: ["light", "extinguish", "turn on", "turn off", "switch on", "switch off", "hold", "wave",
+        "throw", "read", "open", "close", "search", "look in", "clean", "rub", "shake", "squeeze", "push", "smell", "taste"],
     extraVerbRefusal: function (text) {
         // D205 only: prerequisite/inability wording cannot prove a successful
         // no-mutation action. Conservatively retain the editable suggestion.

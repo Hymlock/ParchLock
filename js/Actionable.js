@@ -3,6 +3,8 @@ var Actionable = {
     Signature: "",
     InventoryRequested: false,
     LiveMarks: [],
+    _markEpoch: null,
+    _lineVersions: new WeakMap(),
     RoomLines: [],
     RoomHeading: null,
     /* Session usage counts for input-line radial ranking (D26/#33/#34).
@@ -214,6 +216,13 @@ var Actionable = {
         return { noun: noun, candidateIds: candidates, unique: unique, verified: unique && !customUnverified, provenance: "scoped-vocabulary" };
     },
     isGrammarParticle: function (word) { return /^(a|an|the|of|and|or|to)$/i.test(String(word || "")); },
+    // Trigger presentation only; these tokens never change scope or command nouns.
+    isReferenceToken: function (word) { return /^(it|its|them|they|him|her|his|your|yours|my|mine|our|ours|their|theirs|hers|you|me|myself|yourself|he|she|us|we|i)$/i.test(String(word || "").trim()); },
+    observedLine: function (line) {
+        return !!(line && line.isConnected && !Actionable.IsInstruction(line)
+            && !$(line).closest('.pl-carry-probe, .pl-stat-probe, [aria-hidden="true"], [hidden]').length
+            && $(line).is(':visible'));
+    },
     displayNameFor: function (obj, pool, text) { return Actionable.observedPhraseFor(obj,pool,text,false); },
     observedPhraseFor: function (obj, pool, text, requireUnique) {
         // Display-only equivalence uses the live interpreter's encoding: a
@@ -900,12 +909,10 @@ var Actionable = {
             // A named carried copy must not erase an unnamed ground sibling.
             // referenceFor and the mark candidate set retain parser ambiguity.
 
-            var cut = 9;
-            try {
-                var mem = ZRamProvider.getMem();
-                var h = mem && ZRamReader.header(mem);
-                if (h && h.version <= 3) cut = 6;
-            } catch (eH) {}
+            // Native encoding handles alphabet shifts as well as dictionary
+            // width: space-ra is already truncated despite having 8 letters.
+            var observedWords = Array.from(text.matchAll(/[a-z][a-z'-]*/g)).map(function (m) { return m[0]; });
+            var observedKeys = observedWords.map(Actionable.vocabularyKey);
 
             // Resolved once per pass: the table is cached per memory instance,
             // but the absence of one should not be re-tested per candidate.
@@ -926,12 +933,13 @@ var Actionable = {
                 ((c.aliases) || []).forEach(function (w) {
                     var t = String(w || "").toLowerCase().trim();
                     if (!t || t.length < 3) return;
-                    if (Actionable.isGrammarParticle(t)) return;
-                    if (t.length >= cut) return;                    // maybe truncated
+                    if (Actionable.isGrammarParticle(t) || Actionable.isReferenceToken(t)) return;
                     if (!/^[a-z][a-z'-]*$/.test(t)) return;         // "barrel1" is a compiler tag
                     // A named sibling may share this vocabulary; keep each scoped RAM identity.
-                    if (!new RegExp("(^|[^a-z])" + t + "([^a-z]|$)").test(text)) return;
-                    if (!best || t.length > best.length) best = t;
+                    var index = observedKeys.indexOf(Actionable.vocabularyKey(t));
+                    if (index < 0) return;
+                    var printed = observedWords[index];
+                    if (!best || printed.length > best.length) best = printed;
                 });
                 if (!best) return;
                 // Keep physical siblings; the marker owns a candidate set.
@@ -983,7 +991,17 @@ var Actionable = {
             try {
                 // Prefer player-observed look + inventory prose (EquipmentUI peer).
                 // RoomLines alone miss inventory-only descriptors.
-                text = [Actionable.Scope.lastLookText || "", Actionable.Scope.lastInventoryText || ""]
+                var admitted = {};
+                base.concat(p.unnamedCandidates || []).forEach(function (o) { admitted[String(o.id)] = true; });
+                var retained = (Actionable.LiveMarks || []).filter(function (m) {
+                    if (!Actionable.observedLine(m.closest('.BufferLine')) || m.classList.contains('is-stale')) return false;
+                    var ids = [];
+                    try { ids = JSON.parse(m.dataset.candidateIds || '[]'); } catch (eIds) {}
+                    if (m.dataset.objectId) ids.push(m.dataset.objectId);
+                    return ids.some(function (id) { return admitted[String(id)]; });
+                }).map(function (m) { return m.textContent; });
+                text = [Actionable.Scope.lastLookText || "", Actionable.Scope.lastInventoryText || "", Actionable.Scope.lastReplyText || ""]
+                    .concat(retained)
                     .concat((Actionable.RoomLines || []).filter(function (l) { return l && l.isConnected; })
                         .map(function (l) { return l.textContent || ""; }))
                     .join("\n");
@@ -1092,9 +1110,9 @@ var Actionable = {
         if (!raw) return [];
         // Deterministic articles only — not a prose stopword list (plan: no
         // text mining). Tokens come from the object's own short-name.
-        var out = [raw];
+        var out = Actionable.isReferenceToken(raw) ? [] : [raw];
         raw.split(" ").forEach(function (t) {
-            if (!t || t.length < 3 || Actionable.isGrammarParticle(t)) return;
+            if (!t || t.length < 3 || Actionable.isGrammarParticle(t) || Actionable.isReferenceToken(t)) return;
             if (out.indexOf(t) < 0) out.push(t);
         });
         return out;
@@ -1152,6 +1170,7 @@ var Actionable = {
                     mark.title = meta.kind === "direction" ? "Go " + mark.dataset.noun : "Examine " + mark.dataset.noun;
                     if (meta.kind !== "direction" && !mark.dataset.objectId) mark.title = "Ambiguous reference: " + mark.dataset.noun;
                     meta.resolvedObjectId = mark.dataset.objectId || null;
+                    meta.markCandidateIds = mark.dataset.candidateIds || '[]';
                     frag.appendChild(mark);
                     frag.appendChild(document.createTextNode(source.slice(afterIdx)));
                     textNode.parentNode.replaceChild(frag, textNode);
@@ -1165,38 +1184,76 @@ var Actionable = {
         return wrapped;
     },
 
-    relocateExactMarks: function (lines) {
+    phraseOwners: function (phrase, pool) {
+        var matched = String(phrase || '').toLowerCase();
+        if (Actionable.isReferenceToken(matched)) return [];
+        return Actionable.distinctObjects(pool).filter(function (o) {
+            var words = Actionable.nounWordsOf(o);
+            return String(o.name).toLowerCase() === matched || matched.split(/\s+/).every(function (w) {
+                return !!words[w] || (o.aliases || []).some(function (a) { return Actionable.vocabularyKey(a) === Actionable.vocabularyKey(w); });
+            });
+        });
+    },
+    retainMarks: function (pool) {
+        var held = {}, exits = Actionable.exitLabels().map(function (s) { return String(s).toLowerCase(); });
+        (((WorldModel.lastPayload || {}).inventory) || []).forEach(function (o) { held[String(o.id)] = true; });
+        Actionable.LiveMarks = Actionable.LiveMarks.filter(function (mark) {
+            var valid = mark.isConnected && !mark.classList.contains('is-stale') && Actionable.observedLine(mark.closest('.BufferLine'));
+            if (valid && mark.dataset.kind === 'direction') valid = exits.indexOf(mark.dataset.noun) >= 0;
+            else if (valid) {
+                var prior = [];
+                try { prior = JSON.parse(mark.dataset.candidateIds || '[]'); } catch (eIds) {}
+                if (mark.dataset.objectId) prior.push(mark.dataset.objectId);
+                var owners = Actionable.phraseOwners(mark.textContent, pool);
+                valid = owners.some(function (o) { return prior.some(function (id) { return String(id) === String(o.id); }); });
+                if (valid) {
+                    mark.dataset.candidateIds = JSON.stringify(owners.map(function (o) { return o.id; }));
+                    if (owners.length === 1) mark.dataset.objectId = String(owners[0].id);
+                    else delete mark.dataset.objectId;
+                    mark.dataset.kind = owners.every(function (o) { return held[String(o.id)]; }) ? 'inventory' : 'object';
+                    mark.title = owners.length === 1 ? 'Examine ' + mark.dataset.noun : 'Ambiguous reference: ' + mark.dataset.noun;
+                }
+            }
+            if (!valid && mark.isConnected) { mark.classList.add('is-stale'); mark.removeAttribute('tabindex'); mark.removeAttribute('role'); }
+            return valid;
+        });
+    },
+    relocateExactMarks: function (lines, suppliedMarks) {
         // Phrase/ownership selection has already finished. Move those SAME
         // marks, so latest-copy presentation cannot change the chosen noun.
-        var marks = [];
-        lines.forEach(function (line) { line.querySelectorAll(".pl-act:not(.is-stale)").forEach(function (mark) { if (marks.indexOf(mark) < 0) marks.push(mark); }); });
+        var marks = suppliedMarks || [];
+        if (!suppliedMarks) lines.forEach(function (line) { line.querySelectorAll(".pl-act:not(.is-stale)").forEach(function (mark) { if (marks.indexOf(mark) < 0) marks.push(mark); }); });
         marks.forEach(function (mark) {
             var phrase = mark.textContent, target = phrase.toLowerCase(), parent = mark.parentNode;
             if (!parent || !target) return;
-            mark.replaceWith(document.createTextNode(phrase)); parent.normalize();
+            var original = document.createTextNode(phrase);
+            mark.replaceWith(original);
             var best = null;
             lines.forEach(function (line) {
-                if (!line.isConnected) return;
+                if (!Actionable.observedLine(line)) return;
                 var walker = document.createTreeWalker(line, NodeFilter.SHOW_TEXT), node;
                 while ((node = walker.nextNode())) {
                     if ($(node.parentElement).closest(".Input, .Style_input, .Style_subheader, a, style, script, .pl-act").length) continue;
                     var source = node.nodeValue || "", lower = source.toLowerCase(), from = 0, index;
                     while ((index = lower.indexOf(target, from)) >= 0) {
                         var end = index + phrase.length;
-                        if (!/[A-Za-z0-9]/.test(source.charAt(index - 1)) && !/[A-Za-z0-9]/.test(source.charAt(end))) {
+                        var forward = node === original || !!(original.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_FOLLOWING);
+                        if (forward && !/[A-Za-z0-9]/.test(source.charAt(index - 1)) && !/[A-Za-z0-9]/.test(source.charAt(end))) {
                             if (!best || (best.node === node && index > best.index) || (best.node.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_FOLLOWING)) best = { node: node, index: index, end: end };
                         }
                         from = index + 1;
                     }
                 }
             });
-            if (!best) return; // Excluded/disconnected copies are never re-admitted.
+            if (!best) { original.replaceWith(mark); parent.normalize(); return; }
             var source = best.node.nodeValue, fragment = document.createDocumentFragment();
             fragment.appendChild(document.createTextNode(source.slice(0, best.index)));
             mark.textContent = source.slice(best.index, best.end);
             fragment.appendChild(mark);
             fragment.appendChild(document.createTextNode(source.slice(best.end)));
             best.node.replaceWith(fragment);
+            parent.normalize();
+            if (mark.parentNode !== parent) mark.parentNode.normalize();
         });
     },
 
@@ -1219,6 +1276,20 @@ var Actionable = {
         if (!$(".Input.LineInput:visible").length) return;
 
         var lines = $("#windowport .BufferWindow .BufferLine").toArray();
+        var epoch = (typeof UndoRestoreSync !== 'undefined' ? UndoRestoreSync.generation : 0) + ':' +
+            (typeof ParchLock !== 'undefined' ? ParchLock.GameFilename : '');
+        var port = document.getElementById('windowport');
+        if (Actionable._markEpoch !== epoch || Actionable._markPort !== port) {
+            Actionable.Stale();
+            Actionable.LiveMarks = [];
+            Actionable.Scope.lastReplyText = '';
+            Actionable._lineVersions = new WeakMap();
+            Actionable._markEpoch = epoch;
+            Actionable._markPort = port;
+            Actionable.Signature = '';
+        }
+        var version = typeof BufferRevision !== 'undefined' ? BufferRevision.versionReader() : null;
+        var changedLines = lines.filter(function (line) { return !version || Actionable._lineVersions.get(line) !== version(line); });
         // Per-line facts are cached until a mutation touches the line
         // (BufferRevision, consensus #1830): this runs every 200 ms, and the
         // old per-line jQuery passes grew with the whole session.
@@ -1334,11 +1405,11 @@ var Actionable = {
             lastBanner = index;
         });
         if (heading <= lastInput && lastBanner > heading) heading = lastBanner;
-        var latest = lines.slice(Math.max(lastInput, heading >= lastInput ? heading : -1) + 1).filter(line => !Actionable.IsInstruction(line));
+        var latest = lines.slice(Math.max(lastInput, heading >= lastInput ? heading : -1) + 1).filter(Actionable.observedLine);
         var text = latest.map(line => line.textContent).join("\n");
         var command = $("#windowport .Style_input").last().text().trim().toLowerCase();
         var payloadKey = structural
-            ? JSON.stringify([payload.roomId, payload.roomName, [payload.discoveredObjects || [], payload.inventory || []].map(function (objects) {
+            ? JSON.stringify([payload.roomId, payload.roomName, [payload.discoveredObjects || [], payload.inventory || [], payload.unnamedCandidates || []].map(function (objects) {
                 return objects.map(function (o) {
                     var attrs = o.attrs || {};
                     var state = Object.keys(attrs).sort().filter(function (key) {
@@ -1349,11 +1420,11 @@ var Actionable = {
             })])
             : "none";
         var signature = room + ":" + lines.length + ":" + lastInput + ":" + text + ":" + payloadKey;
-        if (signature === Actionable.Signature && Actionable.LiveMarks.every(mark => mark.isConnected && !mark.classList.contains("is-stale"))) return;
+        if (signature === Actionable.Signature && !changedLines.length && Actionable.LiveMarks.every(mark => mark.isConnected && !mark.classList.contains("is-stale"))) return;
         Actionable.Signature = signature;
-        Actionable.Stale();
 
         if (!structural) {
+            Actionable.Stale();
             Actionable.LiveMarks = [];
             scope.roomNouns = [];
             scope.inventoryNouns = [];
@@ -1392,11 +1463,9 @@ var Actionable = {
             }
             Actionable.RoomLines = Actionable.RoomLines.filter(line => !$(line).is('.Style_input') && !line.querySelector('.Input, .Style_input'));
         }
-        var activeLines = Array.from(new Set(Actionable.RoomLines.filter(line => line.isConnected).concat(latest)));
-        activeLines.forEach(line => {
-            $(line).find(".pl-act").each(function() { this.replaceWith(document.createTextNode(this.textContent)); });
-            line.normalize();
-        });
+        // New owners start at the newest admitted occurrence. Existing marks
+        // remain attached to their word, not to the last response block.
+        var activeLines = Array.from(new Set(latest.slice().reverse().concat(Actionable.RoomLines.filter(Actionable.observedLine).slice().reverse())));
         var inventory = /^(i|inv|inventory)$/.test(command);
         if (inventory && typeof StatTracker !== "undefined" && StatTracker._hideCarryProbe) {
             // D207: StatTracker owns the carry probe's span from submission and
@@ -1416,7 +1485,11 @@ var Actionable = {
             StatTracker._hideCarryProbe = false;
             StatTracker._carryProbeTurnCheck = true;
         }
+        scope.lastReplyText = latest.filter(Actionable.observedLine).map(function (line) { return line.textContent; }).join('\n');
         var idPool = Actionable.payloadPool();
+        Actionable.retainMarks(idPool);
+        var relocationLines = Array.from(new Set(Actionable.LiveMarks.map(function (mark) { return mark.closest('.BufferLine'); }).concat(changedLines.filter(Actionable.observedLine))));
+        Actionable.relocateExactMarks(relocationLines, Actionable.LiveMarks);
         var invIds = {};
         try {
             ((payload && payload.inventory) || []).forEach(function (inv) {
@@ -1468,7 +1541,7 @@ var Actionable = {
                 var wl = String(word).toLowerCase();
                 if (seenPhrase[wl]) return;
                 // Grammar particles only (not a prose stopword list).
-                if (Actionable.isGrammarParticle(wl)) return;
+                if (Actionable.isGrammarParticle(wl) || Actionable.isReferenceToken(wl)) return;
                 seenPhrase[wl] = true;
                 wrapTargets.push({ phrase: word, kind: kind, objectId: o.id, dictAddr: o.dictAddr, fromName: false });
             });
@@ -1503,6 +1576,14 @@ var Actionable = {
         // makes the LONGEST phrase that actually appears win and stop there --
         // which is exactly what D70's "longest visible match wins" intends.
         var markedIds = {};
+        var markedDirections = {};
+        Actionable.LiveMarks.forEach(function (mark) {
+            if (mark.dataset.kind === 'direction') { markedDirections[mark.dataset.noun] = true; return; }
+            var ids = [];
+            try { ids = JSON.parse(mark.dataset.candidateIds || '[]'); } catch (eIds) {}
+            if (mark.dataset.objectId) ids.push(mark.dataset.objectId);
+            ids.forEach(function (id) { markedIds[String(id)] = true; });
+        });
         // Two passes. The first offers every object its BEST phrase -- full
         // name, then head noun -- so an object is never represented by a
         // stray adjective while its own noun sits unmarked in the same
@@ -1513,7 +1594,9 @@ var Actionable = {
             .concat(wrapTargets.filter(function (t) { return !t.preferred; }));
         ordered.forEach(function (t) {
             if (t.objectId != null && markedIds[String(t.objectId)]) return;
+            if (t.kind === 'direction' && markedDirections[String(t.phrase).toLowerCase()]) return;
             if (Actionable.wrapFirstExact(activeLines, t.phrase, t)) {
+                try { JSON.parse(t.markCandidateIds || '[]').forEach(function (id) { markedIds[String(id)] = true; }); } catch (eIds) {}
                 if (t.objectId != null && String(t.resolvedObjectId) === String(t.objectId)) {
                     markedIds[String(t.objectId)] = true;
                     var key = String(t.objectId);
@@ -1522,10 +1605,15 @@ var Actionable = {
                         Actionable.VerifiedNouns[key] = t.phrase;
                     }
                 }
+                if (t.kind === 'direction') markedDirections[String(t.phrase).toLowerCase()] = true;
             }
         });
         Actionable.relocateExactMarks(activeLines);
         Actionable.LiveMarks = $(".pl-act:not(.is-stale)").toArray();
+        // Drain our own wrapping mutations before remembering tokens, so an
+        // idle tick does not re-scan prose because of its own last render.
+        version = typeof BufferRevision !== 'undefined' ? BufferRevision.versionReader() : null;
+        if (version) lines.forEach(function (line) { Actionable._lineVersions.set(line, version(line)); });
     },
     // D122: inventory now has its own sheet. Every existing entry point --
     // /items (js/Input.js:859), the Tools list (js/WorkspaceUI.js:35), the

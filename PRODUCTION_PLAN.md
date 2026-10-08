@@ -221,14 +221,17 @@ decisions and their later mentions, not only the first matching record.
 - **In-room steps and combat:** [D213](#pl-d213) amends D163: an in-room compass step needs a
   RAM player-parent change plus a multi-word locomotion command. Combat actions on actors come
   only from a decoded elementary grammar form plus status-window or calibrated evidence.
+- **Underline lifetime:** [D214](#pl-d214): marks follow their words to the newest occurrence instead of
+  expiring with every refresh; latest replies are observed; dictionary-equivalent and pronoun-safe
+  triggers; a wider Yourself suggestion lane.
 - **Original map retained:** [D202](#pl-d202) records withdrawal and removal of the overview/LOD implementation. Scaling retains the original local-room renderer and bounds; independent Center, gesture, path-alignment and interaction fixes remain. Architecture companion: [ARCHITECTURE_UML.md section 66](ARCHITECTURE_UML.md#ar-ch66).
 - Some earlier status banners and diagrams describe old builds. This indexing change
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 327 headings; 103 decision rows; 430 registered units.
-**Last registered unit:** `pl-s327`. **Body SHA-256 (LF):**
-`571b45ce0213fdda83a392ab5db209b4a9fc4654396c757a36db716d6a6f384f`
+**Local manifest:** 328 headings; 103 decision rows; 431 registered units.
+**Last registered unit:** `pl-s328`. **Body SHA-256 (LF):**
+`c313dbadb56c7f5b136a093bcc4c4e98e6fb5b1d7625f0a57dc9c386a2edab76`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -738,6 +741,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s325](#pl-s325) | D211 Voice input lifecycle: settle barrier, bounded waits, backoff, diagnostics | H2 | Implemented / audited; root cause unproven |
 | [pl-s326](#pl-s326) | D212 Pronunciation catalogue gathered from all projects | H2 | Implemented / audited |
 | [pl-s327](#pl-s327) | D213 Enemy interactions and in-room steps need RAM or grammar evidence (Step 5) | H2 | Part A implemented and accepted (#1611); Part B cancelled |
+| [pl-s328](#pl-s328) | D214 Underlines follow their words; replies are observed; dictionary-equivalent and pronoun-safe triggers; Yourself breadth | H2 | Agreed (#1925); implementation in progress |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -8275,3 +8279,104 @@ Other parts of the rule:
 - Live Anchorhead (southeast / push can to wall / stand on can / get off can): both steps
   learned.
 - harness/d23-lookahead-labels 88/0; d23-topology-smoke PASS.
+
+<a id="pl-s328" data-chapter-id="pl-s328"></a><a id="pl-d214"></a>
+## D214 Underlines follow their words; replies are observed; dictionary-equivalent and pronoun-safe triggers; Yourself breadth
+
+**Lifecycle:** Operator report 2026-10-08 (Treasures, Hitchhiker's) on underline loss, focus loss,
+"it"/"your" marks, banners and a thin Yourself menu. Both seats ran a blind investigation
+(work/investigations/2026-10-09-claude-underline-blind.md, 2026-10-08-codex-underlining-blind.md).
+Combined proposal work/investigations/2026-10-09-underline-combined-proposal.md; consensus #1925
+with four amendments folded in below. Implementation in progress. Codex owns Actionable.js; Claude
+owns EquipmentUI/AttrCalibrator/ActionSynth; each audits the other.
+
+**Not a regression.** The same mark expiry is measured on the current code, Oct 4, Oct 1 and the
+first commit (Sep 25, Zork I). BufferRevision cache on and off give identical marks. The
+operator's intended model: a mark is tracked by its word until that word appears again in newer
+text, then moves there.
+
+**U1 Mark lifetime follows the word** (Actionable).
+- Today every signature change stales EVERY mark and rebuilds only RoomLines + latest, so
+  intermediate replies lose their marks. That is the HHG GET ALL -> EXAMINE CARPET case.
+- Now a live mark stays while its phrase still has a valid current owner. Validity is checked
+  through candidateIds and the current phrase owners, not one objectId, and held/object kind is
+  recomputed as scope changes.
+- When the phrase appears in NEWER text after the mark, the mark moves to the newest occurrence.
+  The same exclusions apply (commands, Style_input, subheaders, hidden probe lines, links).
+- A newly in-scope object is marked at its newest printed occurrence.
+- Historical prose never resurrects a stale copy.
+- Restore, restart and a new story explicitly invalidate retained marks (today's resync clears
+  only RoomLines and the signature).
+- D146 one-mark-per-object is unchanged.
+- Scans are incremental (BufferRevision versions): no full-transcript walk per tick.
+
+**U2 Ordinary replies are observed.** The admitted latest reply joins the promotion and
+descriptor pool, with lifecycle ownership. Commands, hidden probes and instructions are excluded.
+Treasures' concealed banners (objects 190-193 in the Gravel Pit) are named only in the EXAMINE
+POST reply. That is the game's own reveal, so they become markable exactly then. Their colour
+words are their own aliases; "banners" is not guessed.
+
+**U3 Dictionary-equivalent matching.** A printed word matches an alias when their native
+dictionary encodings are equal. This applies to every alias, not only full-width ones:
+`space-ra` (8 characters) exhausts the Z width through its hyphen. Treasures' flashlight,
+absorbent and robodroid promote. There is never a raw-prefix guess.
+
+**U4 Pronoun-safe triggers.** A separate trigger-token predicate, distinct from grammar
+particles and command nouns, suppresses standalone pronoun and possessive tokens (it, your, ...)
+as mark triggers. Full phrases (your gown) and physical scope are retained: HHG object 14 keeps
+its washbasin vocabulary, and nothing is deleted or re-identified.
+
+**U5 Yourself suggestion breadth** (EquipmentUI/AttrCalibrator).
+- The editable lane (Enter:false) widens from the 11 RPG verbs to curated item verbs
+  intersected with the module dictionary.
+- Submit-ready gates are unchanged.
+- It is Z-only, as D205.
+
+**U6 No invented instrumental verbs** (ActionSynth). Forms that need a mandatory verb literal
+(give/put/instrumental) are dictionary-gated where a dictionary adapter exists. Glulx and
+certified provider forms are not disabled wholesale (D147 extended).
+
+**Out of scope, evidence first:**
+- the NPC-held TWO-HANDED SWORD (D206/D57 forbid actor-inventory recursion without proof);
+- compiler-only aliases such as `castlevis`;
+- DarkScope's history-based dark verdict, which needs current-turn evidence before it gates
+  anything.
+
+**P1 amendment (2026-10-09, consensus #1945/#1946/#1947): an observed direct possession of an in-room
+actor.** This is an explicit, narrow EXCEPTION to D57/D68 for the Actionable UI candidate pool only.
+The structural walkers (`ZRamReader.scopeObjects`, `walkVisibleDescendants`) are unchanged, and
+WorldModel discoveredObjects, inventory and the map are untouched. It does add an Actionable
+candidate-pool overlay, so it is new actionable scope and is named as such.
+
+Treasures object 124 (two-hand/sword) is a direct child of the Lizard Maiden (123), and native
+EXAMINE TWO-HANDED SWORD is accepted. A child C of actor A is admitted only when ALL of these hold:
+- A is animate by a TRUSTED source (declared attributes or calibration, not untrusted ZIL
+  attribute interpretation), is in scope directly in the current room, and is not the player, the
+  confirmed inventory root or a resolved holder.
+- C is a DIRECT child of A: not nested, absent, concealed, worn-hidden or hidden by
+  inventoryHiddenAttribute.
+- A distinguishing alias of C is printed in THIS turn's admitted text. Distinguishing means its
+  dictionary key belongs to no other discovered, inventory or promoted object, nor to any sibling
+  candidate child.
+- U1 retention re-reads the actual parent and actor scope on every refresh.
+
+The radial is examine only, honouring the inspect policy and a uniquely resolved noun. There is no
+take/drop/use/give inference and there are no actor-directed forms in this slice. There are no new
+stores and no attribute overrides. Implementation: Codex (Actionable). Docs and audit: Claude.
+
+**Prior-fix guard for P1 (operator 2026-10-09: "one fix breaks two previous fixes").** The suites
+below must stay green before and after:
+- D57/D68/D82 (actor contents and the player kept out of room scope): d22-post-move,
+  d22-holistic-scope;
+- D53/D75 (inventory root): attr-calibrator-inventory-root;
+- nested inventory: d31-nested-inventory;
+- command nouns: command-consistency-regression;
+- D184/D201 (unnamed promotion and descriptors): unnamed-promotion-live, d201-unnamed-identity,
+  d201-unresolved-actions (D206 no Take on actors);
+- D146 (one mark per object): d150-noun-and-verbs;
+- D214: underline-lifetime;
+- wump2ka banners: d170.
+
+Module controls: Anchorhead (the player's own held and worn items never become NPC possessions) and
+wump2ka (the animate CustomPlayer "Glow Bar", D57/D58, is never marked). The baseline is recorded
+before implementation.

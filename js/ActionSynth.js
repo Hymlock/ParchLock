@@ -38,6 +38,20 @@ var ActionSynth = {
         } catch (e) {}
         return false;
     },
+    // D214 U6: may a form with these mandatory literals be offered? EVERY
+    // literal of the form ("give" and "to", "put" and "in") must be in the
+    // story's dictionary. Only decided where a dictionary adapter exists (Z
+    // RAM); elsewhere (Glulx, no memory yet) existing behaviour is unchanged.
+    literalAvailable: (literals) => {
+        var mem = null;
+        try { mem = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null; } catch (eMem) { mem = null; }
+        if (!mem || typeof ZRamReader === "undefined" || !ZRamReader.hasDictionaryWord) return true;
+        // An adapter exists: an uncertain read must fail CLOSED (#1944), as
+        // Actionable.isGameWord does, never license an invented form.
+        try {
+            return String(literals || "").trim().split(/\s+/).every(function (w) { return !!ZRamReader.hasDictionaryWord(mem, w); });
+        } catch (e) { return false; }
+    },
 
     verbsForAttrs: (attrs, objectId, options) => {
         options = options || {};
@@ -240,8 +254,12 @@ var ActionSynth = {
             // Remove again).
             verbs = verbs.filter(function (v) { return v !== "take" && v !== "remove"; });
             if (verbs.indexOf("drop") < 0) verbs.push("drop");
-            if (verbs.indexOf("give to") < 0) verbs.push("give to");
-            if (verbs.indexOf("put in") < 0) verbs.push("put in");
+            // D214 U6 (D147 extended): the mandatory verb literal must exist in
+            // this story's dictionary when one can be read (Treasures has
+            // neither "give" nor "put"); without a dictionary adapter (Glulx)
+            // the forms stay as before.
+            if (verbs.indexOf("give to") < 0 && ActionSynth.literalAvailable("give to")) verbs.push("give to");
+            if (verbs.indexOf("put in") < 0 && ActionSynth.literalAvailable("put in")) verbs.push("put in");
         } else if (context === "room") {
             // Inform derives takeable from !static && !scenery, which also
             // describes people. Taking an actor requires that object's own
