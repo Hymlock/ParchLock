@@ -211,7 +211,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 100 headings; 0 decision rows; 100 registered units.
 **Last registered unit:** `ar-s100`. **Body SHA-256 (LF):**
-`3f9bc64b1514e99b776ea7c502f29b0fbb6b2a8615733dd1d12ce8c994afb77a`
+`afa2bad34170327cab57c951cc82ff8cc91df7a4e54f19be736e4cf40b3607ff`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -3915,3 +3915,9 @@ child of a trusted-animate, in-room actor when this turn's admitted text prints 
 alias of that child. That is an explicit D57/D68 exception confined to marks and examine. The
 structural scope walkers, WorldModel scope, inventory and the map are unchanged. Parent and actor
 scope are re-read on every refresh, and the mark follows U1 lifetime and epoch clearing.
+
+**Z1-R1 decoded ZIL exit hints (D214 extension).** GrammarProvider reuses the D198 confirmed pre-v6 family and bounded dictionary to derive direction/property linkage. ExitCalibrator re-reads current U/N/F/C/D property forms by version, rejects contradictions and invalid destinations, and combines hints with existing proven travel calibration. MapTopology carries decoder-only hint authority through applyPayloadExits/link: hinted rooms may be visible while their unwalked exits remain absent from the route graph. Existing Inform look-ahead remains unchanged. Compatible state-delta evidence promotes an edge; a destination conflict cannot retain that permission. No arbitrary routine/string is treated as a room, no actor/door object becomes a destination, and no inverse edge is invented.
+
+Z1 decoder-only room admission additionally supports a destination in the same nonzero structural room root as the current containment-proven source, because untrusted ZIL flags can falsely label real rooms as Inform doors. It re-reads the player's source containment chain and current destination/root links, validates object/name bounds and preserves the separate DEXIT door identity. This exception is confined to decoder hints; global room predicates and Inform admission are unchanged. WorldMap consumes hintOnly ExitMeta through a read-only graph merge so dotted hint links never enter routing.
+
+D214 source freeze: U1-U6 independently accepted (a40f7ba), P1 independently accepted1966; generic hyphen/base-word proofs and Z1/E1 final self-adversarial audit authorized1978 because peer reached usage limit. Final evidence in work/investigations/2026-10-08-codex-final-self-audit.md. BUILD63/versionCode36/cache140; APK verification pending.

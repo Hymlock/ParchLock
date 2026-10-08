@@ -2,6 +2,65 @@ var GrammarProvider = {
     name: "grammar-ram",
     D198DecoderVersion: "d198-infocom-pre-v6-v1",
     _d198DecodeCache: (typeof WeakMap !== "undefined") ? new WeakMap() : null,
+    _d214DirectionCache: (typeof WeakMap !== "undefined") ? new WeakMap() : null,
+
+    d214RoomTarget: function (mem, sourceId, destId) {
+        try {
+            var h = ZRamReader.header(mem), count = ZRamReader.objectCount(mem, h);
+            if (!Number.isInteger(destId) || destId < 2 || destId > count) return false;
+            var name = ZRamReader.shortName(mem, destId);
+            if (!name || name.charAt(0) === '(' || /^(class|object|compass|direction|kind|nothing|thedark)$/i.test(name)) return false;
+            if (ZRamReader.isPlausibleMapRoom(mem, destId)) return true;
+            // An Inform bit profile is not evidence against a ZIL room.
+            // Narrow exception: a sibling in the current proven room bucket.
+            if (!GrammarProvider.d214DirectionProperties(mem).length) return false;
+            var p = typeof WorldModel !== 'undefined' && WorldModel.lastPayload;
+            if (!p || String(p.roomId) !== String(sourceId)) return false;
+            var player = p.playerId || (p.probe || {}).playerId, seen = {}, found = false;
+            for (var i = 0, id = player; id && i < 16 && !seen[id]; i++) {
+                if (String(id) === String(sourceId)) { found = true; break; }
+                seen[id] = true; var link = ZRamReader.objectLinks(mem, id); id = link && link.parent;
+            }
+            if (!found) return false;
+            var source = ZRamReader.objectLinks(mem, sourceId), dest = ZRamReader.objectLinks(mem, destId);
+            return !!(source && dest && source.parent > 0 && source.parent === dest.parent && destId !== source.parent && destId !== player);
+        } catch (e) { return false; }
+    },
+
+    // Immutable parser linkage only. Exit values and permission are NEVER cached.
+    d214DirectionProperties: function (mem) {
+        try {
+            var key = mem && (mem.buffer || mem), cache = GrammarProvider._d214DirectionCache;
+            if (cache && key && cache.has(key)) return cache.get(key);
+            var family = GrammarProvider.decodeD198(mem), result = [];
+            if (family.classification !== 'confirmed-zil-family' || family.evidence !== 'validated') return result;
+            var h = ZRamReader.header(mem);
+            if ([3, 4, 5].indexOf(h.version) < 0) return result;
+            var dict = GrammarProvider._d198RawDictionary(mem, h, mem.byteLength || mem.length), byProp = {}, byLabel = {}, rejected = false;
+            if (!dict) return result;
+            var present = {};
+            for (var id = 1, count = ZRamReader.objectCount(mem, h); id <= count; id++) {
+                ZRamReader.listProps(mem, id).forEach(function (p) { present[p.num] = true; });
+            }
+            dict.entries.forEach(function (entry) {
+                if (!(entry.flags & 0x10)) return;
+                var prop = entry.data[(entry.flags & 3) === 3 ? 1 : 2];
+                var label = typeof ExitCalibrator !== 'undefined' && ExitCalibrator.normalizeDir(entry.word) || entry.word;
+                if (!/^[a-z]+$/.test(label) || !Number.isInteger(prop) || prop < 1 || prop > (h.version <= 3 ? 31 : 63) || !present[prop]) { rejected = true; return; }
+                if (byLabel[label] != null && byLabel[label] !== prop) { rejected = true; return; }
+                byLabel[label] = prop;
+                (byProp[prop] = byProp[prop] || []).push({ word: entry.word, label: label });
+            });
+            if (!rejected) Object.keys(byProp).forEach(function (prop) {
+                var aliases = byProp[prop], cardinal = /^(north|south|east|west|northeast|northwest|southeast|southwest|up|down|in|out)$/;
+                var best = aliases.find(function (a) { return cardinal.test(a.label) && a.word === a.label; })
+                    || aliases.find(function (a) { return cardinal.test(a.label); }) || aliases[0];
+                result.push({ prop: Number(prop), label: best.label, aliases: aliases.map(function (a) { return a.word; }) });
+            });
+            if (cache && key) cache.set(key, result);
+            return result;
+        } catch (e) { return []; }
+    },
 
     D198GrammarValve: {
         StorageKey: "PL_D198_GrammarValve_v1",

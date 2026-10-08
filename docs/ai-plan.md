@@ -1263,3 +1263,6 @@ Acceptance (to be agreed):
 - A friendly NPC is never offered combat without evidence.
 - No "assail" compass entry after a fight.
 - Anchorhead's "stand on can" step is still learned.
+
+
+2026-10-08 Codex D214 continuation: U1-U6/P1 peer acceptance a40f7ba/1966; authorized solo final audits1978 completed source slice (report work/investigations/2026-10-08-codex-final-self-audit.md). ZIL static room prediction and nonpathable hints implemented, generic ambiguous-word behavior verified, E1/E2/E3 fixtures repaired. APK63/version36/cache140 checkpoint/build verification next. No physical-phone claim or operator overall goal completion.

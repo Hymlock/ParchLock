@@ -504,6 +504,15 @@ var Actionable = {
     resolveObjectCommands: (objectId, kind, options) => {
         var target = Actionable.payloadPool().find(function (o) { return String(o.id) === String(objectId); });
         if (target && !Actionable.referenceFor(target).unique && !(options && options.allowAmbiguousReference)) return [];
+        // D214 P1 is observed possession, not evidence of a transferable item.
+        if (target && target.possessedBy != null) {
+            if (typeof ActionSynth === "undefined" || ActionSynth.inspectVerbDisabled()) return [];
+            var possessionVerb = ActionSynth.defaultInspectVerb();
+            var possessionReference = Actionable.referenceFor(target);
+            if (!possessionReference.unique) return [];
+            var possessionNoun = possessionReference.noun;
+            return possessionVerb && possessionNoun ? [{ verb: possessionVerb, command: possessionVerb + " " + possessionNoun, confidence: 0.85 }] : [];
+        }
         try {
             var hit = Actionable.payloadPool().find(function (o) {
                 return o && String(o.id) === String(objectId);
@@ -980,6 +989,56 @@ var Actionable = {
         });
         return out;
     },
+    // UI-only direct possessions. Never expand the structural room walker.
+    observedPossessions: function (p, base, text) {
+        var out = [];
+        try {
+            var mem = ZRamProvider.getMem();
+            if (!mem || !p || p.roomId == null) return out;
+            var declared = ZRamReader.informAttributeNames(mem);
+            var trusted = declared && declared.bits && Object.prototype.hasOwnProperty.call(declared.bits, 'animate');
+            if (!trusted && !(typeof AttrCalibrator !== 'undefined' && AttrCalibrator.hasConfirmedFlag(mem, 'animate'))) return out;
+            var blocked = [p.playerId, (p.probe || {}).playerId, (p.probe || {}).inventoryRootId];
+            if (typeof AttrCalibrator !== 'undefined' && AttrCalibrator.confirmedInventoryRootId) blocked.push(AttrCalibrator.confirmedInventoryRootId(mem));
+            var candidates = [], fact = ZRamReader.executableLayoutFacts(mem) || {};
+            var hiddenBit = fact.inventoryHiddenAttribute, header = ZRamReader.header(mem);
+            base.forEach(function (actor) {
+                if (blocked.some(function (id) { return id != null && String(id) === String(actor.id); })) return;
+                var links = ZRamReader.objectLinks(mem, actor.id);
+                if (!links || String(links.parent) !== String(p.roomId) || !ZRamReader.attrsFromObject(mem, actor.id).animate) return;
+                ZRamReader.children(mem, actor.id).forEach(function (id) {
+                    var child = ZRamReader.objectLinks(mem, id);
+                    if (!child || String(child.parent) !== String(actor.id)) return;
+                    var attrs = ZRamReader.attrsFromObject(mem, id) || {};
+                    var hidden = Number.isInteger(hiddenBit) && hiddenBit >= 0 && hiddenBit < (header.version <= 3 ? 32 : 48)
+                        && child.attrBytes && (child.attrBytes[hiddenBit >> 3] & (128 >> (hiddenBit & 7)));
+                    candidates.push({ id: id, parentId: actor.id, possessedBy: actor.id, aliases: ZRamReader.parserWordsAny(mem, id) || [],
+                        name: ZRamReader.shortName(mem, id) || '', excluded: !!(attrs.absent || attrs.concealed || attrs.worn || hidden), attrs: {}, examineOnly: true, labelProvenance: 'parser-vocabulary' });
+                });
+            });
+            var owners = Actionable.distinctObjects(base.concat(candidates));
+            var words = Array.from(String(text || '').matchAll(/[a-z][a-z'-]*/gi)).map(function (m) { return m[0].toLowerCase(); });
+            candidates.forEach(function (child) {
+                if (child.excluded || base.some(function (o) { return String(o.id) === String(child.id); })) return;
+                var retained = (Actionable.LiveMarks || []).filter(function (m) {
+                    return Actionable.observedLine(m.closest('.BufferLine')) && !m.classList.contains('is-stale') && String(m.dataset.objectId) === String(child.id);
+                }).map(function (m) { return m.textContent; }).join(' ');
+                var observed = words.concat(Array.from(retained.matchAll(/[a-z][a-z'-]*/gi)).map(function (m) { return m[0].toLowerCase(); }));
+                var unique = observed.find(function (word) {
+                    if (Actionable.isGrammarParticle(word) || Actionable.isReferenceToken(word)) return false;
+                    var key = Actionable.vocabularyKey(word);
+                    return child.aliases.some(function (w) { return Actionable.vocabularyKey(w) === key; })
+                        && owners.filter(function (o) { return (o.aliases || []).some(function (w) { return Actionable.vocabularyKey(w) === key; }); }).length === 1;
+                });
+                if (!unique) return;
+                child.name = unique;
+                child.name = Actionable.observedPhraseFor(child, owners, String(text || '') + '\n' + retained, true);
+                delete child.excluded;
+                out.push(child);
+            });
+        } catch (e) { return []; }
+        return out;
+    },
     payloadPool: () => {
         try {
             var p = WorldModel && WorldModel.lastPayload;
@@ -1011,6 +1070,8 @@ var Actionable = {
             Actionable.promoteUnnamed(p, text).forEach(function (o) {
                 if (!seen[String(o.id)]) base.push(o);
             });
+            var possessionText = Actionable.Scope.lastReplyText || '';
+            Actionable.observedPossessions(p, base, possessionText).forEach(function (o) { base.push(o); });
             var mem = null;
             try {
                 mem = (typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) ? ZRamProvider.getMem() : null;
@@ -1419,7 +1480,12 @@ var Actionable = {
                 });
             })])
             : "none";
-        var signature = room + ":" + lines.length + ":" + lastInput + ":" + text + ":" + payloadKey;
+        // Re-read possession links before the idle return: an NPC can lose an
+        // item without changing the ordinary room/inventory payload.
+        var possessionState = structural ? Actionable.observedPossessions(payload,
+            (payload.discoveredObjects || []).concat(payload.inventory || []).concat(Actionable.promoteUnnamed(payload, text)), text)
+            .map(function (o) { return [o.id, o.possessedBy, o.name]; }) : [];
+        var signature = room + ":" + lines.length + ":" + lastInput + ":" + text + ":" + payloadKey + ":" + JSON.stringify(possessionState);
         if (signature === Actionable.Signature && !changedLines.length && Actionable.LiveMarks.every(mark => mark.isConnected && !mark.classList.contains("is-stale"))) return;
         Actionable.Signature = signature;
 

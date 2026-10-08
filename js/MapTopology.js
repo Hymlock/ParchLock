@@ -222,7 +222,10 @@ var MapTopology = {
                     var containmentProven = evidence && evidence.probe
                         && evidence.probe.roomSource === "player-containment"
                         && String(evidence.probe.roomId) === String(objectId);
-                    if (_memER && !containmentProven && !ZRamReader.isPlausibleMapRoom(_memER, objectId)) return null;
+                    var decoderRoom = evidence && evidence.hintOnly && evidence.roomHintSourceId != null
+                        && typeof GrammarProvider !== 'undefined' && GrammarProvider.d214RoomTarget
+                        && GrammarProvider.d214RoomTarget(_memER, evidence.roomHintSourceId, Number(objectId));
+                    if (_memER && !containmentProven && !decoderRoom && !ZRamReader.isPlausibleMapRoom(_memER, objectId)) return null;
                 }
             } catch (eER) {}
         }
@@ -397,7 +400,9 @@ var MapTopology = {
                 var destAdmitted = (typeof ParchLockMap !== "undefined" && ParchLockMap.Rooms || []).some(function (r) {
                     return r && r.HasRealId && String(r.ObjectId) === String(meta.toId);
                 });
-                if (_m2 && !destAdmitted && !ZRamReader.isPlausibleMapRoom(_m2, meta.toId)) {
+                var decoderRoom = meta.hintOnly && meta.roomHintSourceId != null && typeof GrammarProvider !== 'undefined'
+                    && GrammarProvider.d214RoomTarget && GrammarProvider.d214RoomTarget(_m2, meta.roomHintSourceId, Number(meta.toId));
+                if (_m2 && !destAdmitted && !decoderRoom && !ZRamReader.isPlausibleMapRoom(_m2, meta.toId)) {
                     toName = null;
                 }
             }
@@ -414,7 +419,7 @@ var MapTopology = {
             return;
         }
         if (toName) {
-            var to = MapTopology.ensureRoom(toName, meta && meta.toId);
+            var to = MapTopology.ensureRoom(toName, meta && meta.toId, meta);
             if (!to) {
                 from.ExitMeta[dir].hinted = true;
                 return;
@@ -447,6 +452,13 @@ var MapTopology = {
             if (existingSame != null) {
                 from.ExitMeta[dir].hinted = true;
                 from.ExitMeta[dir].duplicateDestOf = existingSame;
+                return;
+            }
+            // D214 decoded ZIL links disclose geography, not permission. A
+            // destination visited by another route does not prove THIS edge.
+            if (meta.hintOnly && String(from.ExitMeta[dir].travelledTo || '') !== String(meta.toId)) {
+                from.ExitMeta[dir].hinted = true;
+                if (from.Exits) delete from.Exits[dir];
                 return;
             }
             from.Exits[dir] = to.Id;
@@ -561,7 +573,9 @@ var MapTopology = {
                 source: "ram-lookahead",
                 prop: ex.prop,
                 command: ex.command || ex.label,
-                ambiguousDiagonal: !!ex.ambiguousDiagonal
+                ambiguousDiagonal: !!ex.ambiguousDiagonal,
+                hintOnly: !!ex.hintOnly,
+                roomHintSourceId: ex.roomHintSourceId
             });
         });
     },

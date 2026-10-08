@@ -155,6 +155,45 @@ var ExitCalibrator = {
         return out;
     },
 
+    // D214 Z1: parser-linked destinations are hints, including UEXIT: V-WALK
+    // may dynamically override a direction before reading its property.
+    _d214ZilExitsFor: function (mem, roomId) {
+        try {
+            if (typeof GrammarProvider === 'undefined' || !GrammarProvider.d214DirectionProperties) return [];
+            var mapping = GrammarProvider.d214DirectionProperties(mem);
+            if (!mapping.length) return [];
+            var table = ExitCalibrator.hydrate(mem), conflict = mapping.some(function (entry) {
+                return entry.aliases.concat(entry.label).some(function (alias) {
+                    var d = table && table.dirs && table.dirs[ExitCalibrator.normalizeDir(alias) || alias];
+                    return d && d.confirmed && d.prop !== entry.prop;
+                });
+            });
+            if (conflict) return [];
+            var h = ZRamReader.header(mem), v3 = h.version <= 3, props = ZRamReader.listProps(mem, roomId), out = [];
+            mapping.forEach(function (entry) {
+                if (table && ExitCalibrator.isBlocked(table, roomId, entry.label)) return;
+                var p = props.find(function (p) { return p.num === entry.prop; });
+                if (!p || p.dataAddr < 0 || p.dataAddr + p.sz > (mem.byteLength || mem.length)) return;
+                var kind = (v3 ? { 1: 'U', 2: 'N', 3: 'F', 4: 'C', 5: 'D' } : { 2: 'U', 3: 'N', 4: 'F', 5: 'C', 6: 'D' })[p.sz];
+                if (!kind) return;
+                var dest = null, name = '', door = null;
+                if (kind === 'U' || kind === 'C' || kind === 'D') {
+                    dest = v3 ? ZRamReader.u8(mem, p.dataAddr) : ZRamReader.u16(mem, p.dataAddr);
+                    if (!dest || !GrammarProvider.d214RoomTarget(mem, roomId, dest)) return;
+                    name = ZRamReader.shortName(mem, dest) || '';
+                    if (kind === 'D') {
+                        door = v3 ? ZRamReader.u8(mem, p.dataAddr + 1) : ZRamReader.u16(mem, p.dataAddr + 2);
+                        if (!door || door === dest || door > ZRamReader.objectCount(mem, h)) return;
+                    }
+                }
+                out.push({ label: entry.label, command: entry.label, prop: entry.prop, targetRoomId: dest, targetRoomName: name,
+                    isDoor: kind === 'D', doorObjectId: door, conditional: kind === 'C' || kind === 'D',
+                    hinted: true, hintOnly: true, roomHintSourceId: roomId, confidence: 0.8, source: 'd214-zil-exit-hint', exitForm: kind });
+            });
+            return out;
+        } catch (e) { return []; }
+    },
+
     DIRS: {
         n: "north", north: "north",
         s: "south", south: "south",
@@ -427,7 +466,7 @@ var ExitCalibrator = {
         });
         var mode = ExitCalibrator.D198ExitValve.mode();
         if (mode !== "off") {
-            var hints = ExitCalibrator._d198ExitsFor(mem, roomId);
+            var hints = ExitCalibrator._d198ExitsFor(mem, roomId).concat(ExitCalibrator._d214ZilExitsFor(mem, roomId));
             if (mode === "shadow") {
                 ExitCalibrator._d198ShadowSnapshot = ExitCalibrator._d198Clone({ roomId: roomId, exits: hints });
             } else {

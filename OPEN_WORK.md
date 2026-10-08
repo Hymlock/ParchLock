@@ -27,11 +27,11 @@ This is what is not implemented yet; ruled-out and finished items are not here.
 - [x] October 8 WARNING footer: Claude owns StatTracker; Codex audits. Hide typing-to-close footer, retain X acknowledgement and once-per-install/probe-resume lifecycle (plan accepted bus1780); basic warning8/0 and resume/retry9/0 independently pass.
 - [x] October 8 Treasures: Damage/Hit odds vanish with two swords (quest51, HP29/29, turns354). Claude investigates StatTracker; Codex adversarial review. Do not equate a synthetic two-sword pass with this state or silently present stale combat numbers as current. Actual supplied save(1) reproduces Quest76/HP35/Turns417: native PROWESS adds a parenthesized burden qualifier, rejected by both regexes. Actual save(2) unburdened passes. Bounded native burden-clause grammar implemented after1845 review; independent actual-save1 Damage5to15/82 and save2 Damage4to9/81 both complete, displayed descriptors intact. Source ACCEPT1857; unrelated parentheticals rejected.
 
-- [ ] October 8-9 underlining (Treasures, Hitchhiker's) and Yourself breadth: D214, consensus #1925. Marks follow their words to the newest occurrence instead of expiring with each refresh (U1); latest replies are observed (U2, which also reveals the concealed Gravel Pit banners on EXAMINE POST); dictionary-equivalent matching for truncated and punctuated aliases (U3, Treasures flashlight/space-rag/robodroid); standalone "it"/"your" never trigger a mark (U4). Codex owns Actionable.js (U1-U4), and Claude audits.
+- [x] October 8-9 underlining (Treasures, Hitchhiker's) and Yourself breadth: D214, consensus #1925. Marks follow their words to the newest occurrence instead of expiring with each refresh (U1); latest replies are observed (U2, which also reveals the concealed Gravel Pit banners on EXAMINE POST); dictionary-equivalent matching for truncated and punctuated aliases (U3, Treasures flashlight/space-rag/robodroid); standalone "it"/"your" never trigger a mark (U4). Codex owns Actionable.js (U1-U4), and Claude audits.
   - U5 (wider editable Yourself lane) and U6 (no give/put where the dictionary lacks them) are implemented by Claude under exact claims: harness/d214-yourself-verbs.js 9/0, with Treasures, HHG, Wumpus and Glulx controls; equipment-ui 119/0; command-disambiguation 51/0. Codex's audit is pending.
   - Evidence items, not in this slice: the NPC-held TWO-HANDED SWORD (D206/D57 actor-inventory rule), the compiler-only alias castlevis, and DarkScope's history-based dark verdict.
 - [x] October 8 Infocom room prediction: closed as an explanation by consensus (#1936/#1942); no runtime change. Inform games (Anchorhead) read NAMED direction properties directly, so every exit is known on arrival. ZIL has no property names, so D134 ExitCalibrator learns which property is which direction from real travel. A direction predicts once it has been proven from two DISTINCT source rooms; it then applies to every room, including unvisited destinations (Codex: north,north in Zork1 predicts the unvisited Clearing). It is persisted per executable (PM_ExitCalib_ + game identity). Early sparseness is that cold start. Decoding ZIL byte layouts stays rejected (D61 phantoms).
-- [ ] Treasures NPC-held TWO-HANDED SWORD (an original report, a separate slice after D214). Object 124 is a real direct child of the Lizard Maiden (123), with aliases two-hand/sword, not concealed; native EXAMINE TWO-HANDED SWORD is accepted. A narrow visible-possession path needs a plan amending D57/D206: admitted only when the current turn prints a parser word of the exact direct child of an in-scope actor; no TAKE inference, no hidden descendants, no deeper recursion.
+- [x] Treasures NPC-held TWO-HANDED SWORD (an original report, a separate slice after D214). Object 124 is a real direct child of the Lizard Maiden (123), with aliases two-hand/sword, not concealed; native EXAMINE TWO-HANDED SWORD is accepted. A narrow visible-possession path needs a plan amending D57/D206: admitted only when the current turn prints a parser word of the exact direct child of an in-scope actor; no TAKE inference, no hidden descendants, no deeper recursion.
 
 - **Spell search/empty.** Spell objects are read as containers from their ZIL bits, so they offer search and empty; that is noise, and it is still open because the same gate would also hide search on real ZIL containers. D160, "Still open."
 - **D190.** A promoted object that the player takes still does not show up in the equipment sheet. D190, "Still open."
@@ -47,8 +47,8 @@ This is what is not implemented yet; ruled-out and finished items are not here.
 
 ## Catalog proof
 
-- **d22-holistic-scope.** The broad live catalog walk is still 5 of 7. Phase 2 status; D201.
-- **Wumpus/zblorb.** Those two fixture residuals in that same walk are still not done. The separate current Wumpus control is a different check and does pass. Phase 2 status; D201.
+- **d22-holistic-scope.** Repaired real startup/unnamed/structural-empty oracle: 7/7. See D214 final self-audit.
+- **Wumpus/zblorb.** Historical fixture residuals resolved by D214 E2; native controls and revised sweep pass.
 
 ## Release
 
@@ -196,3 +196,8 @@ October8 cutoff: APK62 / Android versionCode35 / cache139: build succeeded; v2 s
 Post-map sampled-statistics review queue (bus1871; not regressions introduced by today's repairs):
 - [ ] Make It Good: independent native SCORE reply is qualitative/no scoreboard; first Equipment fulfillment can end unavailable with no reason. Reconcile current behavior with old checklist proof before proposing changes.
 - [ ] Planetfall: native labelled Time4491 currently presented as Turns; inspect existing D208 time-game rules before changing shared classification.
+
+
+- [x] D214 Z1: parser-linked ZIL room prediction, hint-only route authority and dotted WorldMap edges; native17, WorldMap52, prior guards green. Solo final self-audit authorized1978; report work/investigations/2026-10-08-codex-final-self-audit.md.
+- [x] D214 E1/E2/E3 fixture failures: unique inanimate observed Take pick, real startup/scope oracle, genuine Inform synthetic stamp. Native d20169, scope7/7, nested60.
+- [ ] APK63 packaging and signature/asset verification after checkpoint.

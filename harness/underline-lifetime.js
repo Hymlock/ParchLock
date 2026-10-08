@@ -53,12 +53,37 @@ function check(value, label) { if (!value) throw new Error(label); passed++; con
     await hhg.close();
 
     const treasure = await boot('TreasuresofaSlaversKingdom.z8.js');
+    await command(treasure, 'seize sword');
+    await command(treasure, 'north');
+    const possession = await treasure.evaluate(() => {
+      const sword = Actionable.payloadPool().find(o => o.possessedBy != null && /two-handed/.test(o.name));
+      return sword && { id: sword.id, parent: sword.possessedBy, commands: Actionable.resolveObjectCommands(sword.id, 'object'),
+        structural: (WorldModel.lastPayload.discoveredObjects || []).some(o => String(o.id) === String(sword.id)) };
+    });
+    check(possession && possession.id === 124 && possession.parent === 123 && !possession.structural, 'native printed NPC sword is a UI-only direct possession');
+    check(possession.commands.length === 1 && /^examine two-hand/.test(possession.commands[0].command), 'NPC-held sword offers only uniquely qualified inspection: ' + JSON.stringify(possession.commands));
+    check(await treasure.evaluate(() => {
+      const host=document.createElement('div');host.className='BufferLine';host.textContent='sword';document.querySelector('#windowport .BufferWindow').appendChild(host);
+      try { Actionable.wrapFirstExact([host],'sword',{kind:'object',objectId:124});const mark=host.querySelector('.pl-act');
+        const ids=mark&&JSON.parse(mark.dataset.candidateIds||'[]');return mark&&!mark.dataset.objectId&&ids.some(id=>String(id)==='124')&&ids.some(id=>String(id)==='56');
+      } finally { host.remove(); }
+    }), 'bare sword presentation mark retains native gladius and NPC sword identities');
+    await command(treasure, 'examine two-handed sword');
+    check(await treasure.evaluate(() => Actionable.payloadPool().some(o => o.id === 124 && o.possessedBy === 123)), 'NPC possession survives an intervening accepted inspection');
+    await command(treasure, 'south');
+    check(await treasure.evaluate(() => !Actionable.payloadPool().some(o => o.id === 124)), 'leaving the actor removes the possession candidate');
     await command(treasure, 'south');
     check(await treasure.evaluate(() => Array.from(document.querySelectorAll('.pl-act:not(.is-stale)')).some(m => /robodroid/i.test(m.textContent))), 'native ground ROBODROID promoted');
     await command(treasure, 'in');
     const cockpit = await treasure.evaluate(() => Array.from(document.querySelectorAll('.pl-act:not(.is-stale)')).map(m => m.textContent.toLowerCase()));
     check(cockpit.includes('flashlight'), 'native ground FLASHLIGHT promoted');
     check(cockpit.some(t => t.includes('space-rag')), 'native ground SPACE-RAG promoted through punctuated encoding');
+    check(await treasure.evaluate(() => {
+      const rag=Actionable.payloadPool().find(o=>/space-rag/.test(o.name));
+      const mark=Actionable.LiveMarks.find(m=>String(m.dataset.objectId)===String(rag&&rag.id));
+      const ref=rag&&Actionable.referenceFor(rag);
+      return !!(mark&&ref&&ref.unique&&ref.noun.split(/\s+/).every(w=>mark.textContent.toLowerCase().split(/\s+/).some(t=>Actionable.vocabularyKey(t)===Actionable.vocabularyKey(w))));
+    }), 'native SPACE-RAG mark contains its dictionary-equivalent command noun');
 
     const negative = await treasure.evaluate(() => {
       const results = [], payload = WorldModel.lastPayload, live = Actionable.LiveMarks;
@@ -93,6 +118,18 @@ function check(value, label) { if (!value) throw new Error(label); passed++; con
         test(Actionable.namePhrases('the Order').includes('the Order'), 'structural proper phrase retained');
         const banned = Actionable.promoteUnnamed({ playerId: 55, roomId: 146, unnamedCandidates: [{ id: 55, aliases: ['flashligh'] }, { id: 146, aliases: ['flashligh'] }] }, 'FLASHLIGHT');
         test(!banned.length, 'promotion preserves player and room exclusions');
+        const roses=[{id:501,name:'long-stemmed rose',aliases:['long-stemmed','rose'],attrs:{}},{id:502,name:'short-stemmed rose',aliases:['short-stemmed','rose'],attrs:{}}];
+        WorldModel.lastPayload={discoveredObjects:roses,inventory:[],exits:[]}; Actionable.LiveMarks=[];
+        const roseLine=line('A rose is here.');
+        Actionable.wrapFirstExact([roseLine],'rose',{kind:'object',objectId:501});
+        const roseMark=roseLine.querySelector('.pl-act');
+        test(roseMark&&!roseMark.dataset.objectId&&JSON.parse(roseMark.dataset.candidateIds).length===2,'generic shared base word retains both hyphenated owners');
+        const open=ParchLockQol.OpenRadial, menus=[];
+        try { ParchLockQol.OpenRadial=(x,y,slices)=>menus.push(slices); Actionable.Open('rose','object',0,0,null);
+          const choices=menus[0]||[]; choices.filter(c=>/^long-stemmed|^short-stemmed/.test(c.Label)).forEach(c=>c.Action());
+          const cmds=menus.slice(1).flat().map(c=>c.Command).filter(Boolean);
+          test(cmds.includes('examine long-stemmed rose')&&cmds.includes('examine short-stemmed rose')&&!cmds.includes('examine rose'),'ambiguous base radial offers both distinguishing commands, never shared bare command');
+        } finally { ParchLockQol.OpenRadial=open; }
       } finally { host.remove(); WorldModel.lastPayload = payload; Actionable.LiveMarks = live; }
       return results;
     });

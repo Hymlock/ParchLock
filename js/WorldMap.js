@@ -122,6 +122,15 @@ var WorldMap = {
                 edges.push({ from: keyOf.get(r), to: keyOf.get(target), dir: dir, evidence: WorldMap.evidence(r, dir),
                     command: (meta && meta.command) || dir });
             });
+            // Decoder geography is a read-only hint graph, never the route
+            // Exits[] graph. Bind by real ObjectId rather than array index.
+            Object.keys(r.ExitMeta || {}).sort().forEach(function (dir) {
+                var meta = r.ExitMeta[dir];
+                if (!meta.hintOnly || meta.toId == null || (r.Exits || {})[dir] != null) return;
+                var target = rooms.find(function (room) { return room.HasRealId && String(room.ObjectId) === String(meta.toId); });
+                if (!target || target === r || !keyOf.has(target)) return;
+                edges.push({ from: keyOf.get(r), to: keyOf.get(target), dir: dir, evidence: 'hinted', command: meta.command || dir });
+            });
         });
         // Stored cells: valid ones only, first room wins a duplicate cell.
         var previous = new Map(), used = {};
@@ -320,6 +329,8 @@ var WorldMap = {
                 el.setAttribute("x1", p.x); el.setAttribute("y1", p.y); el.setAttribute("x2", endS.x); el.setAttribute("y2", endS.y);
             }
             el.setAttribute("class", "world-edge" + (dotted ? " dotted" : "") + (kind === "bent" ? " bent" : ""));
+            el.setAttribute('data-from', e.from);
+            el.setAttribute('data-to', e.to);
             if (!twoWay) el.setAttribute("marker-end", "url(#world-arrow)");
             svg.appendChild(el);
             if (kind === "labelled") {

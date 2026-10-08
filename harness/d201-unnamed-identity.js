@@ -135,15 +135,29 @@ async function submit(page, command) {
     const llrRooms = [];
 
     async function captureTakeCase(live) {
+        // Publish the current observed reply before asking the UI resolver
+        // whether this raw candidate actually has a Take command.
+        await live.page.evaluate(() => { Actionable.Refresh(); });
         const candidate = await live.page.evaluate(() => {
             const mem = ZRamProvider.getMem(), z = ZRamProvider.collect();
-            return (z.unnamedCandidates || []).find(item => {
+            const item = (z.unnamedCandidates || []).find(item => {
                 const attrs = ZRamReader.attrsFromObject(mem, item.id) || {};
-                return attrs.takeable && item.aliases && item.aliases.length;
-            }) || null;
+                const admitted = Actionable.payloadPool().find(o => String(o.id) === String(item.id));
+                const ref = admitted && Actionable.referenceFor(admitted);
+                const marked = Actionable.LiveMarks.some(m => {
+                    let ids = []; try { ids = JSON.parse(m.dataset.candidateIds || '[]'); } catch(e) {}
+                    return !m.classList.contains('is-stale') && (String(m.dataset.objectId) === String(item.id) || ids.some(id => String(id) === String(item.id)));
+                });
+                // Derived takeable also describes NPCs. This scenario tests
+                // loose generated items, never taking an unconfirmed actor.
+                return attrs.takeable && !attrs.animate && item.aliases && item.aliases.length && ref && ref.unique && marked
+                    && Actionable.resolveObjectCommands(item.id, "room").some(action => /^take\s/i.test(action.command));
+            });
+            if (!item) return null;
+            return Object.assign({}, item, { commandNoun: Actionable.referenceFor(Actionable.payloadPool().find(o => String(o.id) === String(item.id))).noun });
         });
         if (!candidate) return null;
-        const noun = candidate.aliases[candidate.aliases.length - 1];
+        const noun = candidate.commandNoun;
         await live.page.evaluate(() => { try { Actionable.Refresh(); } catch (e) {} });
         await live.page.waitForTimeout(300);
         const candidateState = await state(live.page);
@@ -200,10 +214,10 @@ async function submit(page, command) {
     if (takeCase) {
         check(takeCase.marked, "LLR generated object is underlined through D184 parser vocabulary", JSON.stringify(takeCase));
         check(takeCase.radialCommands.some(command => /^take\s+/i.test(command)
-            && takeCase.candidate.aliases.some(alias => command.toLowerCase() === "take " + String(alias).toLowerCase())),
+            && command.toLowerCase() === "take " + takeCase.noun.toLowerCase()),
             "LLR generated object radial includes declaration-proven TAKE", JSON.stringify(takeCase));
         check(takeCase.item && takeCase.item.labelProvenance === "parser-vocabulary"
-            && takeCase.item.aliases.indexOf(takeCase.noun) >= 0,
+            && takeCase.noun.split(/\s+/).every(word => takeCase.item.aliases.some(alias => String(alias).toLowerCase() === word.toLowerCase())),
             "taken LLR object enters inventory with its real ID, aliases and parser label", JSON.stringify(takeCase));
         check(takeCase.dropped, "dropping the generated LLR object removes it from inventory");
     }

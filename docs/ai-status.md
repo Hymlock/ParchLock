@@ -389,3 +389,6 @@ module's score-popup/RAM learner to EXP; unrelated experience prose cannot.
 The ordinary first score popup can establish EXP without a command when
 LVL/STR, dictionary vocabulary, announced delta and zero-to-total RAM evidence
 all agree. "20 experience ... need 30 more" displays 20/50.
+
+
+2026-10-08 Codex D214 continuation: U1-U6/P1 peer acceptance a40f7ba/1966; authorized solo final audits1978 completed source slice (report work/investigations/2026-10-08-codex-final-self-audit.md). ZIL static room prediction and nonpathable hints implemented, generic ambiguous-word behavior verified, E1/E2/E3 fixtures repaired. APK63/version36/cache140 checkpoint/build verification next. No physical-phone claim or operator overall goal completion.

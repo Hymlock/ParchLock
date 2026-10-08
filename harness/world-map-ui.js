@@ -138,7 +138,9 @@ const stubLayout = () => {
       const g = WorldMap._graph, i = g.edges.findIndex(e => { const a = WorldMap._cells.get(e.from), b = WorldMap._cells.get(e.to); return a && b && a.y === b.y && a.level === b.level && a.x !== b.x; });
       if (i < 0) return { none: true };
       const saved = WorldMap._edgeKinds[i]; WorldMap._edgeKinds[i] = 'bent'; WorldMap._paintSig = null; WorldMap.paint();
-      const el = document.querySelector('#world-map polyline.world-edge'), points = el && el.getAttribute('points').trim().split(' ').map(p => p.split(',').map(Number));
+      // New decoded hints can add earlier bent edges. Inspect the edge we
+      // deliberately bent, rather than the first unrelated polyline.
+      const el = Array.from(document.querySelectorAll('#world-map polyline.world-edge')).find(el => el.dataset.from === g.edges[i].from && el.dataset.to === g.edges[i].to), points = el && el.getAttribute('points').trim().split(' ').map(p => p.split(',').map(Number));
       const end = points && points[points.length - 1], prev = points && points[points.length - 2];
       const target = document.querySelector('#world-map .world-room[data-key="' + g.edges[i].to + '"]'), x = parseFloat(target.style.left), y = parseFloat(target.style.top);
       const inside = end && end[0] > x && end[0] < x + target.offsetWidth && end[1] > y && end[1] < y + target.offsetHeight;
@@ -200,14 +202,19 @@ const stubLayout = () => {
     ok(removed.length === cells2.length - 1 && removed.every(c => cells2.some(d => JSON.stringify(d) === JSON.stringify(c))), 'removing a room renumbers Ids but every other room keeps its cell' + W);
 
     // App reload: the per-story map save brings the same cells back.
+    const priorVisited = await p.evaluate(() => ParchLockMap.Rooms.filter(r => r.WorldVisited).map(r => String(r.ObjectId)));
     await p.evaluate(() => WorldMap.Close());
     await boot();
     const reloaded = await p.evaluate(() => { ParchLockMap.Show(); WorldMap.Open(); return ParchLockMap.Rooms.filter(r => r.WorldX != null).map(r => [r.Name, r.WorldX, r.WorldY, r.WorldLevel]); });
-    ok(JSON.stringify(reloaded) === JSON.stringify(removed), 'after an app reload the map save restores the same cells' + W);
+    ok(removed.every(c => reloaded.some(d => JSON.stringify(d) === JSON.stringify(c))), 'after an app reload the map save restores every prior cell (new decoded hints may be rediscovered)' + W);
     const vis = await p.evaluate(() => ({ rooms: ParchLockMap.Rooms.map(r => [r.Name, !!r.WorldVisited]),
       dotted: Array.from(document.querySelectorAll('#world-map .world-edge.dotted')).length,
+      visitedIds: ParchLockMap.Rooms.filter(r => r.WorldVisited).map(r => String(r.ObjectId)),
+      edges: WorldMap.buildGraph().edges.map(e => ({ evidence: e.evidence })),
       stored: (JSON.parse(localStorage.getItem('PL_Map_' + ParchLock.GameFilename)) || []).map(r => [r.Name, !!r.WorldVisited]) }));
-    ok(vis.rooms.every(r => r[1]) && vis.dotted === 0, 'visited rooms stay visited after a reload, so their travelled links stay solid' + W + ' ' + JSON.stringify(vis));
+    ok(priorVisited.every(id => vis.visitedIds.includes(id)) && vis.edges.some(e => e.evidence === 'travelled')
+      && (vis.edges.every(e => e.evidence === 'travelled') ? vis.dotted === 0 : vis.dotted > 0),
+      'prior visited rooms and travelled proof survive reload; new hints retain dotted links' + W + ' ' + JSON.stringify(vis));
 
     // Explicit travel: closes World, then the existing route runs.
     const before = await p.evaluate(() => ParchLockMap.CurrentRoom);

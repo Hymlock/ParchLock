@@ -21,7 +21,7 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 
 | D | claim | files | games |
 |---|-------|-------|-------|
-| D214 | Underlines follow their words; replies are observed; dictionary-equivalent and pronoun-safe triggers; Yourself breadth |  |  |
+| D214 | Underlines and generic ambiguous words; Yourself/NPC possession; ZIL room predictions with hint-only routing; guard repairs |  |  |
 | D213 | Enemy interactions and in-room steps need RAM or grammar evidence (Step 5) |  |  |
 | D212 | Pronunciation catalogue gathered from all projects | js/PronunciationCatalog.js js/ReadAloud.js |  |
 | D211 | Voice input lifecycle: settle barrier, bounded waits, backoff, diagnostics |  |  |
