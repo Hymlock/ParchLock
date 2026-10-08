@@ -361,3 +361,6 @@ Planning/architecture record updated before runtime edits. Preserve unrelated pr
 
 
 2026-10-08 Codex D214 continuation: U1-U6/P1 peer acceptance a40f7ba/1966; authorized solo final audits1978 completed source slice (report work/investigations/2026-10-08-codex-final-self-audit.md). ZIL static room prediction and nonpathable hints implemented, generic ambiguous-word behavior verified, E1/E2/E3 fixtures repaired. APK63/version36/cache140 checkpoint/build verification next. No physical-phone claim or operator overall goal completion.
+
+
+APK63 complete: source checkpoint0e9a9faffaee3632a6f7c8b74fc294bf5cadb571; Android versionCode36/versionName2.0.0, cache140. Gradle assembleDebug succeeded17s; v2 signature verified;457 bundled asset/source byte matches. ParchLock-build63.apk 84252953 bytes, SHA256 B58A519EE590CD40D2DE55235B660F2BAFF028628AC97956DF16D82F263F2FB8. Corresponding source archive SHA256 F3A9256268CA28409B4CB45168015EB3C4AB5468743866DD42A7375CB3BF1409. APK62 preserved in Downloads/ParchLock-APK-archive. Physical Android validation remains operator-owned; no overall goal completion recorded.

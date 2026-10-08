@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 328 headings; 103 decision rows; 431 registered units.
 **Last registered unit:** `pl-s328`. **Body SHA-256 (LF):**
-`2e159fc5d4bbca184b4cd3a46c87a1340506f3a13913985acd42c775a3109683`
+`9857d736899b7ca2c3494aff0822dc24b61df852641c9a1f07fd31d7abaf9dc3`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -8388,3 +8388,6 @@ before implementation.
 **Z1 structural-admission/rendering amendment (native counterexample, bus1968/1974; solo continuation handoff1976).** Planetfall rooms share structural parent253 with current Deck Nine, while actual doors belong to parent254; the generic Inform-flag room predicate incorrectly marks those rooms as doors. Do not weaken that predicate system-wide. Decoder-only room admission may instead use current player's bounded real containment chain to prove the source location and a shared nonzero room-root parent for the destination, with valid object/name bounds and DEXIT destination distinct from its actual door. This narrow evidence is rechecked at map admission and is never permission to travel. WorldMap merges validated hintOnly ExitMeta destinations into its read-only layout graph, drawing dotted edges without adding route Exits. Persistence tests must retain every prior cell/visited proof while allowing newly rediscovered hinted rooms; they must not assert all discovered rooms were visited. Claude reached usage limit and handed implementation/final verification to Codex; remaining checks are self-verification, not fabricated peer acceptance.
 
 D214 source freeze: U1-U6 independently accepted (a40f7ba), P1 independently accepted1966; generic hyphen/base-word proofs and Z1/E1 final self-adversarial audit authorized1978 because peer reached usage limit. Final evidence in work/investigations/2026-10-08-codex-final-self-audit.md. BUILD63/versionCode36/cache140; APK verification pending.
+
+
+APK63 complete: source checkpoint0e9a9faffaee3632a6f7c8b74fc294bf5cadb571; Android versionCode36/versionName2.0.0, cache140. Gradle assembleDebug succeeded17s; v2 signature verified;457 bundled asset/source byte matches. ParchLock-build63.apk 84252953 bytes, SHA256 B58A519EE590CD40D2DE55235B660F2BAFF028628AC97956DF16D82F263F2FB8. Corresponding source archive SHA256 F3A9256268CA28409B4CB45168015EB3C4AB5468743866DD42A7375CB3BF1409. APK62 preserved in Downloads/ParchLock-APK-archive. Physical Android validation remains operator-owned; no overall goal completion recorded.

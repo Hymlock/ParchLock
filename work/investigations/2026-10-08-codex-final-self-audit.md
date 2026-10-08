@@ -22,3 +22,6 @@ Additional native Zork dark-to-lit route: room72 / map8 stays one record before 
 Initial failures are retained in temp logs and bus: missing guessed harness paths were corrected, not counted as passes; first ZIL test used an incorrect Zork filename; Planetfall failed until structural admission; WorldMap48/4 then50/2 failed until consumer/oracle repair. No phone is attached, so physical Android performance/behavior remains device validation.
 
 Packaging: BUILD63, Android versionCode36, cache140. Checkpoint commit and APK asset/signature verification follow after this source freeze. Only the operator may record overall goal completion.
+
+
+APK63 complete: source checkpoint0e9a9faffaee3632a6f7c8b74fc294bf5cadb571; Android versionCode36/versionName2.0.0, cache140. Gradle assembleDebug succeeded17s; v2 signature verified;457 bundled asset/source byte matches. ParchLock-build63.apk 84252953 bytes, SHA256 B58A519EE590CD40D2DE55235B660F2BAFF028628AC97956DF16D82F263F2FB8. Corresponding source archive SHA256 F3A9256268CA28409B4CB45168015EB3C4AB5468743866DD42A7375CB3BF1409. APK62 preserved in Downloads/ParchLock-APK-archive. Physical Android validation remains operator-owned; no overall goal completion recorded.

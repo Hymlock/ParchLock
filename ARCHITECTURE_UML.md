@@ -211,7 +211,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 100 headings; 0 decision rows; 100 registered units.
 **Last registered unit:** `ar-s100`. **Body SHA-256 (LF):**
-`afa2bad34170327cab57c951cc82ff8cc91df7a4e54f19be736e4cf40b3607ff`
+`ccf82c861cabd4de0ddb305e0b81e9792d041bcbe5522b680030b73e0bf2d948`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -3921,3 +3921,6 @@ scope are re-read on every refresh, and the mark follows U1 lifetime and epoch c
 Z1 decoder-only room admission additionally supports a destination in the same nonzero structural room root as the current containment-proven source, because untrusted ZIL flags can falsely label real rooms as Inform doors. It re-reads the player's source containment chain and current destination/root links, validates object/name bounds and preserves the separate DEXIT door identity. This exception is confined to decoder hints; global room predicates and Inform admission are unchanged. WorldMap consumes hintOnly ExitMeta through a read-only graph merge so dotted hint links never enter routing.
 
 D214 source freeze: U1-U6 independently accepted (a40f7ba), P1 independently accepted1966; generic hyphen/base-word proofs and Z1/E1 final self-adversarial audit authorized1978 because peer reached usage limit. Final evidence in work/investigations/2026-10-08-codex-final-self-audit.md. BUILD63/versionCode36/cache140; APK verification pending.
+
+
+APK63 complete: source checkpoint0e9a9faffaee3632a6f7c8b74fc294bf5cadb571; Android versionCode36/versionName2.0.0, cache140. Gradle assembleDebug succeeded17s; v2 signature verified;457 bundled asset/source byte matches. ParchLock-build63.apk 84252953 bytes, SHA256 B58A519EE590CD40D2DE55235B660F2BAFF028628AC97956DF16D82F263F2FB8. Corresponding source archive SHA256 F3A9256268CA28409B4CB45168015EB3C4AB5468743866DD42A7375CB3BF1409. APK62 preserved in Downloads/ParchLock-APK-archive. Physical Android validation remains operator-owned; no overall goal completion recorded.
