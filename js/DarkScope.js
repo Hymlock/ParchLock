@@ -4,6 +4,10 @@ var DarkScope = {
 
     noteText: (text) => {
         var t = String(text || "");
+        // Same text, same verdict (the cues only depend on t): skip the
+        // whole-transcript regex when nothing was printed since last time.
+        if (t === DarkScope.lastText && DarkScope._noted) return;
+        DarkScope._noted = true;
         DarkScope.lastText = t;
         var low = t.toLowerCase().replace(/\s+/g, " ");
         var darkCue = /it is pitch dark|too dark to see|darkness|cannot see a thing|can't see a thing|you are in the dark|in the dark/.test(low);
@@ -17,7 +21,7 @@ var DarkScope = {
 
     collect: () => {
         try {
-            if (typeof $ !== "undefined") DarkScope.noteText($("#windowport").text());
+            if (typeof $ !== "undefined") DarkScope.noteText(typeof BufferRevision !== "undefined" ? BufferRevision.text("#windowport") : $("#windowport").text());
         } catch (e) {}
         return {
             sources: [{ name: "dark-scope", confidence: 0.5 }],

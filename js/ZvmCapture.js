@@ -92,6 +92,8 @@ var ZvmCapture = {
             Proto[opName] = function () {
                 var result = ZvmCapture[origKey].apply(this, arguments);
                 try {
+                    // E4: hook the shared native Dialog as early as the VM runs, so a first SAVE is seen.
+                    if (!ZvmCapture._dialogHooked && this.options && this.options.Dialog && typeof Transcript !== "undefined") { ZvmCapture._dialogHooked = true; Transcript.hookDialog(this.options.Dialog); }
                     if (typeof AttrCalibrator !== "undefined" && AttrCalibrator.onOpcode) {
                         AttrCalibrator.onOpcode(opName, this, Array.prototype.slice.call(arguments), result);
                     }
@@ -113,7 +115,13 @@ var ZvmCapture = {
             var original = Proto[name];
             if (typeof original !== "function") return;
             Proto[name] = function () {
+                try { if (typeof Transcript !== "undefined" && this.options) Transcript.hookDialog(this.options.Dialog); } catch (eDlg) {}
                 var result = original.apply(this, arguments);
+                try {
+                    if (typeof Transcript !== "undefined" && Transcript.onVmEvent) {
+                        Transcript.onVmEvent(name, !!result || name === "restart", name === "restore_file" && arguments[1] === 1);
+                    }
+                } catch (eTx) {}
                 if (name === "restart" || result) {
                     if (name === "restore_file" && result) {
                         // Clear through Glk itself, not just the rendered DOM.

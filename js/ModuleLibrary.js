@@ -378,16 +378,16 @@ var ModuleLibrary = (function () {
         return btoa(pieces.join(""));
     }
 
-    function isZcodeStoryRequest(value) {
-        return /\.(?:z3|z4|z5|z8|zblorb)(?:\.js)?$/i.test(normalizePath(value));
+    function isExecutableStoryRequest(value) {
+        return /\.(?:z3|z4|z5|z8|zblorb|ulx|gblorb)(?:\.js)?$/i.test(normalizePath(value));
     }
 
     // Product-owned story-response seam. lib/main.js receives the returned
     // base64 only after this promise resolves, then decodes the same response
-    // and calls ZVM.prepare. This records a digest of the executable ZCOD
+    // and starts the selected VM. This records a digest of the executable ZCOD/GLUL
     // slice without patching the minified loader or racing a second fetch.
     function captureExecutableIdentity(base64, rawUrl) {
-        if (!isZcodeStoryRequest(rawUrl) || typeof base64 !== "string") return Promise.resolve(base64);
+        if (!isExecutableStoryRequest(rawUrl) || typeof base64 !== "string") return Promise.resolve(base64);
         var sourcePath = normalizePath(rawUrl);
         var sourceName = sourcePath.replace(/\.js$/i, "");
         var sequence = ++executableIdentitySequence;
@@ -401,7 +401,7 @@ var ModuleLibrary = (function () {
             executableIdentityPromise = Promise.resolve(null);
             return Promise.resolve(base64);
         }
-        if (!/^z(?:3|4|5|8|blorb)$/.test(inspected.format)) return Promise.resolve(base64);
+        if (!/^(?:z(?:3|4|5|8|blorb)|ulx|gblorb)$/.test(inspected.format)) return Promise.resolve(base64);
         var executable = inspected.executableBytes.slice();
         delete executableIdentityByPath[sourcePath];
         if (sequence === executableIdentitySequence) executableIdentity = null;
@@ -409,12 +409,20 @@ var ModuleLibrary = (function () {
         try { pending = hash(executable); }
         catch (eHash) { pending = Promise.reject(eHash); }
         var safe = Promise.resolve(pending).then(function (digest) {
+            var summary = Object.freeze({
+                digest: digest,
+                format: inspected.format,
+                byteLength: executable.length,
+                sourcePath: sourcePath,
+                header: Object.freeze(Array.from(executable.subarray(0, 64)))
+            });
             var identity = Object.freeze({
                 digest: digest,
                 format: inspected.format,
                 byteLength: executable.length,
                 sourcePath: sourcePath,
-                bytes: executable
+                bytes: executable,
+                summary: summary
             });
             executableIdentityByPath[sourcePath] = identity;
             if (sequence === executableIdentitySequence) executableIdentity = identity;
@@ -441,16 +449,20 @@ var ModuleLibrary = (function () {
         return sourcePath ? (executableIdentityByPath[sourcePath] || null) : executableIdentity;
     }
 
+    function currentExecutableDigest(value) {
+        var identity = identityForPath(value);
+        return identity ? identity.digest : null;
+    }
+
     function currentExecutableIdentity(value) {
         var identity = identityForPath(value);
-        if (!identity) return null;
-        return {
-            digest: identity.digest,
-            format: identity.format,
-            byteLength: identity.byteLength,
-            sourcePath: identity.sourcePath,
-            bytes: identity.bytes.slice()
-        };
+        return identity ? identity.summary : null;
+    }
+
+    // Explicit opt-in for cold-path callers that truly need the whole file.
+    function currentExecutableBytes(value) {
+        var identity = identityForPath(value);
+        return identity ? identity.bytes.slice() : null;
     }
 
     function whenExecutableIdentityReady(value) {
@@ -471,7 +483,7 @@ var ModuleLibrary = (function () {
             var normalized = normalizePath(rawUrl);
             if (normalized.indexOf("local/") !== 0) {
                 var requestResult = original.apply(this, args);
-                if (!isZcodeStoryRequest(rawUrl)) return requestResult;
+                if (!isExecutableStoryRequest(rawUrl)) return requestResult;
                 var wrapped = requestResult.then(function (data) {
                     return captureExecutableIdentity(data, rawUrl);
                 });
@@ -504,6 +516,41 @@ var ModuleLibrary = (function () {
         });
         var last = localStorage.getItem(LEGACY.lastStory);
         if (last === path || last === filename) localStorage.removeItem(LEGACY.lastStory);
+        // E3: uninstalling (remove, hide, remove-all) re-arms the module's
+        // one-time inventory warning for a later reinstall.
+        try { localStorage.removeItem(inventoryWarningKey(path)); } catch (eW) {}
+        // E4: uninstalling removes the module's whole transcript.
+        removeTranscript(path);
+    }
+
+    function transcriptDigestKey(value) {
+        return "PL_TranscriptDigest_" + normalizePath(value);
+    }
+    function removeTranscript(path) {
+        try {
+            var key = transcriptDigestKey(path), digest = localStorage.getItem(key);
+            if (!digest) return;
+            localStorage.removeItem(key);
+            localStorage.removeItem("PL_Transcript_" + digest);
+            if (typeof indexedDB === "undefined") return;
+            var req = indexedDB.open("ParchLockTranscripts", 1);
+            req.onupgradeneeded = function () {
+                var store = req.result.createObjectStore("lines", { keyPath: ["digest", "seq"] });
+                store.createIndex("digest", "digest");
+            };
+            req.onsuccess = function () {
+                try {
+                    var tx = req.result.transaction("lines", "readwrite");
+                    var cur = tx.objectStore("lines").index("digest").openCursor(IDBKeyRange.only(digest));
+                    cur.onsuccess = function () { var c = cur.result; if (c) { c.delete(); c.continue(); } };
+                } catch (eT) {}
+            };
+        } catch (e) {}
+    }
+
+    // E3: one seen-once flag per installed module (tutorial-style).
+    function inventoryWarningKey(value) {
+        return "PL_InvWarnSeen_" + normalizePath(value);
     }
 
     function removeLocal(path) {
@@ -582,17 +629,29 @@ var ModuleLibrary = (function () {
     function renderManagerList() {
         var list = $("#pl-module-list").empty();
         var modules = all();
-        if (!modules.length) list.append($("<p>").addClass("pl-module-empty").text("No modules installed."));
+        var query = String($("#pl-module-search").val() || "").trim().toLowerCase();
+        var total = modules.length;
+        modules = modules.filter(function (item) {
+            return !query || ((item.Title || "") + " " + (item.Author || "")).toLowerCase().indexOf(query) >= 0;
+        });
+        $("#pl-module-count").text(query ? modules.length + " of " + total : total + (total === 1 ? " story" : " stories"));
+        if (!modules.length) list.append($("<p>").addClass("pl-module-empty").text(query ? "No stories match your search." : "Your library is ready for its first story."));
         modules.forEach(function (item) {
             var row = $("<div>").addClass("pl-module-row").appendTo(list);
             var info = $("<div>").addClass("pl-module-info").appendTo(row);
             $("<strong>").text(item.Title || "Untitled story").appendTo(info);
-            $("<span>").text((item.Author ? item.Author + " | " : "") + (item.Format || "built-in") + (item.Compat ? " | " + item.Compat : "") + (item.Size ? " | " + formatSize(item.Size) : "")).appendTo(info);
+            $("<span>").addClass("pl-module-author").text(item.Author || "Author not listed").appendTo(info);
+            var meta = $("<div>").addClass("pl-module-meta").appendTo(info);
+            $("<span>").addClass("pl-module-badge").text(item.Local ? "Imported" : "Included").appendTo(meta);
+            if (item.Format && item.Format !== "built-in") $("<span>").text(item.Format.toUpperCase()).appendTo(meta);
+            if (item.Compat && item.Compat !== "built-in") $("<span>").text(item.Compat).appendTo(meta);
+            if (item.Size) $("<span>").text(formatSize(item.Size)).appendTo(meta);
+            var actions = $("<div>").addClass("pl-module-row-actions").appendTo(row);
             $("<button>").attr("type", "button").addClass("pl-module-remove").text(item.Local ? "Remove" : "Hide").on("click", function () {
                 if (!confirm((item.Local ? "Remove " : "Hide ") + (item.Title || "this module") + "? Saves are kept.")) return;
                 var result = item.Local ? removeLocal(item.Path) : Promise.resolve(hideBuiltIn(item.Path));
                 Promise.resolve(result).then(renderManagerList);
-            }).appendTo(row);
+            }).appendTo(actions);
             if (item.Local) {
                 $("<button>").attr("type", "button").addClass("pl-module-edit").text("Rename").on("click", function () {
                     var next = prompt("Module name", item.Title || "");
@@ -600,7 +659,7 @@ var ModuleLibrary = (function () {
                     renameLocal(item.Path, next).then(renderManagerList).catch(function (error) {
                         $("#pl-module-progress").text(error.message || String(error));
                     });
-                }).appendTo(row);
+                }).appendTo(actions);
             }
         });
     }
@@ -625,17 +684,21 @@ var ModuleLibrary = (function () {
     }
 
     function openManager() {
+        var uploadIcon = "<svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12 16V4m-4 4 4-4 4 4M4 15v5h16v-5'/></svg>";
+        var folderIcon = "<svg viewBox='0 0 24 24' aria-hidden='true'><path d='M3 7V5h7l2 3h9v12H3V7Z'/></svg>";
         var body = "<div class='pl-module-manager'>" +
-            "<p>Only add files you have the right to use. ParchLock checks technical compatibility, not ownership or permission. Z-machine modules receive full mapping, actions and radials; Glulx modules are play-only.</p>" +
-            "<div class='pl-module-actions'><label class='large-button'>Add module(s)<input id='pl-module-files' type='file' multiple accept='.z3,.z4,.z5,.z8,.zblorb,.gblorb,.ulx,.js'></label>" +
-            "<label class='large-button'>Add folder<input id='pl-module-folder' type='file' multiple webkitdirectory></label>" +
-            "<button id='pl-module-remove-all' type='button' class='large-button'>Remove all</button>" +
-            "<button id='pl-module-restore' type='button' class='large-button'>Restore built-ins</button></div>" +
-            "<p id='pl-module-progress' aria-live='polite'></p><ul id='pl-module-results'></ul><div id='pl-module-list'></div>" +
-            "<p class='pl-module-storage-note'>Modules are stored on this device. Clearing browser or app storage removes imported modules and local state.</p></div>";
+            "<p class='pl-module-intro'>Bring your next story along.</p>" +
+            "<div class='pl-module-actions'><label class='pl-module-import-card pl-module-primary'><span class='pl-module-import-icon'>" + uploadIcon + "</span><span class='pl-module-action-title'>Choose files</span><span class='pl-module-action-detail'>Add one story or a few</span><input id='pl-module-files' aria-label='Add module files' type='file' multiple accept='.z3,.z4,.z5,.z8,.zblorb,.gblorb,.ulx,.js'></label>" +
+            "<label class='pl-module-import-card'><span class='pl-module-import-icon'>" + folderIcon + "</span><span class='pl-module-action-title'>Choose folder</span><span class='pl-module-action-detail'>Bring a collection</span><input id='pl-module-folder' aria-label='Add module folder' type='file' multiple webkitdirectory></label></div>" +
+            "<p id='pl-module-progress' aria-live='polite'></p><ul id='pl-module-results'></ul>" +
+            "<section class='pl-module-collection' aria-label='Installed stories'><div class='pl-module-list-heading'><h3>Your stories</h3><span id='pl-module-count'></span></div><input id='pl-module-search' type='search' placeholder='Find a story or author' aria-label='Search installed stories'><div id='pl-module-list'></div></section>" +
+            "<details class='pl-module-library-options'><summary>Library options</summary><div class='pl-module-maintenance'><button id='pl-module-restore' type='button'>Restore built-ins</button><button id='pl-module-remove-all' type='button'>Remove all</button></div></details>" +
+            "<p class='pl-module-permission'>Only add stories you have permission to use.</p><details class='pl-module-format-note'><summary>Supported formats &amp; storage</summary><p>Z-machine: .z3, .z4, .z5, .z8 and .zblorb. Glulx: .ulx and .gblorb. Compatible .js files are also accepted. ParchLock checks compatibility, not ownership or permission.</p><p>Z-machine modules support mapping, actions and radials. Glulx modules are play-only.</p><p class='pl-module-storage-note'>Imported stories stay on this device. Clearing browser or app storage removes imported modules and local state.</p></details></div>";
         Message.Show("Modules", body, true);
+        $("#message #close").text("\u2715").attr("aria-label", "Close");
         bindPicker("#pl-module-files");
         bindPicker("#pl-module-folder");
+        $("#pl-module-search").on("input", renderManagerList);
         $("#pl-module-remove-all").on("click", function () {
             if (confirm("Remove all imported modules and hide all built-ins? Saves are kept.")) removeAll().then(renderManagerList);
         });
@@ -664,9 +727,11 @@ var ModuleLibrary = (function () {
 
     return {
         init: init, all: all, find: find, getBytes: getBytes, addFile: addFile, addFiles: addFiles,
-        removeLocal: removeLocal, hideBuiltIn: hideBuiltIn, removeAll: removeAll,
+        removeLocal: removeLocal, hideBuiltIn: hideBuiltIn, removeAll: removeAll, inventoryWarningKey: inventoryWarningKey, transcriptDigestKey: transcriptDigestKey,
         restoreBuiltIns: restoreBuiltIns, renameLocal: renameLocal, openManager: openManager, onChanged: onChanged,
         reconcile: reconcile, inspect: inspect, hash: hash, sha256Fallback: sha256Fallback,
+        currentExecutableDigest: currentExecutableDigest,
+        currentExecutableBytes: currentExecutableBytes,
         currentExecutableIdentity: currentExecutableIdentity, whenExecutableIdentityReady: whenExecutableIdentityReady,
         normalizePath: normalizePath, canonicalLocalPath: canonicalLocalPath, localPathPattern: LOCAL_RE, legacy: LEGACY
     };

@@ -29,12 +29,12 @@ var ProductInfo = Object.freeze({
             "<p>Imported modules remain on this device. Add only files you have the right to use. Technical compatibility checks do not establish ownership or permission.</p>" +
             "<p>Licensed under GNU GPL version 3. This distribution includes modification, credit, privacy, third-party notice, and source-build documents. Corresponding source is provided in <code>" + ProductInfo.sourceArchive + "</code>.</p>" +
             "<p>" +
-            "<a href='#' class='pl-doc-link' data-doc='CREDITS.md' data-title='Credits'>Credits</a> | " +
-            "<a href='#' class='pl-doc-link' data-doc='PRIVACY.md' data-title='Privacy'>Privacy</a> | " +
-            "<a href='#' class='pl-doc-link' data-doc='THIRD_PARTY_NOTICES.md' data-title='Third-party notices'>Third-party notices</a> | " +
+            "<a href='#' class='pl-doc-link' data-doc='CREDITS.md' data-title='Credits'>Credits</a> " +
+            "<a href='#' class='pl-doc-link' data-doc='PRIVACY.md' data-title='Privacy'>Privacy</a> " +
+            "<a href='#' class='pl-doc-link' data-doc='THIRD_PARTY_NOTICES.md' data-title='Third-party notices'>Third-party notices</a> " +
             "<a href='#' class='pl-doc-link' data-doc='SOURCE_BUILD.md' data-title='Source and build'>Source and build</a>" +
             "</p>";
-        Message.Show("About " + ProductInfo.displayName, body, true);
+        Message.Show("About " + ProductInfo.displayName, "<div class='pl-tool-content pl-about-content'>" + body + "</div>", true);
         ProductInfo.bindDocLinks();
     },
 
@@ -66,14 +66,14 @@ var ProductInfo = Object.freeze({
     },
 
     showDoc: function (title, filename) {
-        Message.Show(title, "<p>Loading…</p>", true);
+        Message.Show(title, "<div class='pl-tool-content'><p>Loading…</p></div>", true);
         ProductInfo.bindDocLinks();
         var escape = (typeof ParchLockQol !== "undefined" && ParchLockQol.EscapeHtml) ? ParchLockQol.EscapeHtml : function (s) { return String(s); };
         fetch(filename).then(function (r) {
             if (!r.ok) throw new Error("HTTP " + r.status);
             return r.text();
         }).then(function (text) {
-            Message.Show(title, "<p><a href='#' class='pl-doc-back'>&larr; Back to About</a></p><pre class='pl-doc-text'>" + escape(text) + "</pre>", true);
+            Message.Show(title, "<div class='pl-tool-content'><p><a href='#' class='pl-doc-back'>&larr; Back to About</a></p><pre class='pl-doc-text'>" + escape(text) + "</pre></div>", true);
             ProductInfo.bindDocLinks();
         }).catch(function (error) {
             Message.Show(title, "<p><a href='#' class='pl-doc-back'>&larr; Back to About</a></p><p>Could not load this document" + (error && error.message ? " (" + escape(error.message) + ")" : "") + ". It ships as <code>" + escape(filename) + "</code> alongside the app.</p>", true);

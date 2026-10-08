@@ -31,6 +31,7 @@ var ParchLock = {
         ModuleLibrary.init();
         ParchLock.SetTitle();
         ParchLock.GameId = localStorage.getItem("PL_GameId_" + ParchLock.GameFilename) || "";
+        ParchLock.ResolveSaveIdentity();
         Message.Init();
         Input.BindKeyboard();
         Input.BindInputRow();
@@ -47,7 +48,7 @@ var ParchLock = {
             ParchLock.SetupUI();
             if (typeof WorldModel !== "undefined") WorldModel.tick();
 		if (typeof TranslatorUI !== "undefined") TranslatorUI.tick();
-		if (typeof DarkScope !== "undefined" && typeof $ !== "undefined") { try { DarkScope.noteText($("#windowport").text()); } catch (e) {} }
+		if (typeof DarkScope !== "undefined" && typeof $ !== "undefined") { try { DarkScope.noteText(ParchLock.BufferText("#windowport")); } catch (e) {} }
 		if (typeof GraphicsDock !== "undefined") { try { GraphicsDock.detect(); } catch (e) {} }
 		if (typeof MapBeautify !== "undefined") { try { MapBeautify.tick(); } catch (e) {} } // init-payload
             if (Global.GetUrlParameter("story")) {
@@ -83,11 +84,39 @@ var ParchLock = {
         */
     },
 
+    // Match the bundled interpreters' save namespaces from the immutable
+    // executable image, before any native save dialog has been opened.
+    ResolveSaveIdentity: () => {
+        if (!ParchLock.StoryPath || typeof ModuleLibrary === "undefined") return;
+        var path = ParchLock.StoryPath;
+        function apply(identity) {
+            if (ParchLock.StoryPath !== path || !identity || !identity.header) return;
+            var h = identity.header, length = 0;
+            if (h[0] >= 1 && h[0] <= 8) length = 30; // ZVM origram[0..29]
+            else if (h[0] === 71 && h[1] === 108 && h[2] === 117 && h[3] === 108) length = 64; // Quixe image[0..63]
+            if (!length || h.length < length) return;
+            var id = h.slice(0, length).map(function (byte) { return byte.toString(16).padStart(2, "0"); }).join("");
+            ParchLock.GameId = id;
+            ParchLock._saveIdentityPath = path;
+            try { localStorage.setItem("PL_GameId_" + ParchLock.GameFilename, id); } catch (e) {}
+        }
+        if (ModuleLibrary.currentExecutableIdentity) apply(ModuleLibrary.currentExecutableIdentity(path));
+        if (ModuleLibrary.whenExecutableIdentityReady) {
+            ModuleLibrary.whenExecutableIdentityReady(path).then(apply).catch(function () {});
+        }
+    },
+
+    // Cached by BufferRevision; falls back to a direct read if it is absent.
+    BufferText: (key) => typeof BufferRevision !== "undefined" ? BufferRevision.text(key) : $(key).text(),
+
     Loop: () => {
+        // Init can precede the engine's AJAX request; retry until the image
+        // actually exists, including when an old persisted ID was present.
+        if (ParchLock._saveIdentityPath !== ParchLock.StoryPath) ParchLock.ResolveSaveIdentity();
 
         clearTimeout(ParchLock.LoopReference);
 
-        if (!ParchLock.ScrollInit && $("#windowport .BufferWindow").text().length > 0) {
+        if (!ParchLock.ScrollInit && ParchLock.BufferText("#windowport .BufferWindow").length > 0) {
 
             ParchLock.ScrollInit = true;
             
@@ -111,12 +140,16 @@ var ParchLock = {
             }
         } catch (eFocus) {}
         try { ParchLock.CheckStoryEnded(lineReady, charReady); } catch (eEnded) {}
-        if (lineReady && ParchLockMap.AutoOpenPending && !Message.IsOpen) { ParchLockMap.AutoOpenPending = false; ParchLockMap.Show(); }
+        // Opening the map resizes the story window. Wait until any startup
+        // question is answered: a resize there can make a game withdraw its
+        // prompt for good (CosmoServe's opening Y/N question does).
+        var startupQuestion = typeof StatTracker !== "undefined" && StatTracker.hasQuestionPrompt && StatTracker.hasQuestionPrompt();
+        if (lineReady && ParchLockMap.AutoOpenPending && !Message.IsOpen && !startupQuestion) { ParchLockMap.AutoOpenPending = false; ParchLockMap.Show(); }
         ParchLock.ScrollToBottom();
 
         // if (Global.Prefs.MapAnimation) ParchLockMap.Draw(ParchLockMap.DisplayedRoom);
 
-        var contentLength = $("#windowport .BufferWindow").text().length;
+        var contentLength = ParchLock.BufferText("#windowport .BufferWindow").length;
         if (contentLength != ParchLock.ContentLength) {
 
             ParchLock.ContentLength = contentLength;
@@ -151,6 +184,13 @@ var ParchLock = {
             // "ended" once specialinput dialogs are ruled out below -- do not treat
             // lineReady/charReady (which count disabled fields) as still playing.
             if (!ParchLock._everHadGlkInput || ParchLock._storyEndedOffered) return;
+            // Only a real Glk exit ends the story. A game can withdraw its
+            // input without exiting (CosmoServe cancels its opening Y/N
+            // request when the window is resized); that is not an ending.
+            if (typeof RemGlkTapProvider !== "undefined" && RemGlkTapProvider.installed && !RemGlkTapProvider.exited) {
+                ParchLock._noInputStreak = 0;
+                return;
+            }
             if (typeof Message !== "undefined" && Message.IsOpen) {
                 ParchLock._noInputStreak = 0;
                 return;

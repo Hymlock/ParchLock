@@ -19,6 +19,9 @@ var RemGlkTapProvider = {
     lastText: "",
     lastStatus: "",
     updates: 0,
+    // True once the interpreter has really exited (glk_exit marks its final
+    // update `disable: true`). Withdrawing input alone is not an exit.
+    exited: false,
     specialCommands: [],
 
     flattenContent: (node) => {
@@ -38,6 +41,8 @@ var RemGlkTapProvider = {
         if (!msg || msg.type !== "update") return;
         RemGlkTapProvider.updates += 1;
         RemGlkTapProvider.lastGen = msg.gen;
+        if (msg.disable) RemGlkTapProvider.exited = true;
+        else if (msg.input && msg.input.length) RemGlkTapProvider.exited = false;
         var chunks = [];
         var status = "";
         (msg.content || []).forEach(function (win) {

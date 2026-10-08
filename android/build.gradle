@@ -27,3 +27,16 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+// D211: npm ci restores the upstream source. Always verify/repair it BEFORE
+// JavaCompile; unknown versions or source hashes fail the manual APK build.
+def repairTts = tasks.register('repairParchLockTtsCancellation', Exec) {
+    workingDir rootProject.projectDir.parentFile
+    commandLine 'node', 'tools/patch-android-tts.cjs'
+    outputs.upToDateWhen { false }
+}
+gradle.projectsEvaluated {
+    project(':capacitor-community-text-to-speech').tasks.withType(JavaCompile).configureEach {
+        dependsOn repairTts
+    }
+}

@@ -681,6 +681,9 @@ assert(S.parseScoreDelta("Your score has just gone up by twenty-eight points. Yo
     const rows = {
         innerHTML: "",
         appendChild(node) { children.push(node); this.innerHTML += (node.textContent || "") + "\n"; },
+        // P3: Render builds off-document and moves the children across.
+        get firstChild() { return children[0] || null; },
+        removeChild(node) { const i = children.indexOf(node); if (i >= 0) children.splice(i, 1); this.innerHTML = children.map(n => (n.textContent || "") + "\n").join(""); },
         hidden: false
     };
     const host = { hidden: false };
@@ -704,9 +707,13 @@ assert(S.parseScoreDelta("Your score has just gone up by twenty-eight points. Yo
             return null;
         },
         createElement() {
+            const kids = [];
             return {
-                className: "", textContent: "", style: {},
-                setAttribute() {}, appendChild() {},
+                className: "", textContent: "", style: {}, innerHTML: "",
+                setAttribute() {},
+                appendChild(node) { kids.push(node); this.innerHTML += (node.textContent || "") + "\n"; },
+                removeChild(node) { const i = kids.indexOf(node); if (i >= 0) kids.splice(i, 1); },
+                get firstChild() { return kids[0] || null; },
                 classList: { add() {}, contains() { return false; } }
             };
         }
@@ -912,6 +919,38 @@ S.recordItemMetric(itemMem, 7, 'weight', 10, 'kg', 'contradiction');
 assert(!S.itemMetricsFor(7).length, 'contradiction demotes row pin');
 assert(!S.plainItemQuantity(itemMem, 2000), 'small packed routine address is rejected too');
 delete global.ZRamReader; delete global.ZRamProvider;
+
+// Treasures mid-combat (measured live): the player's row comes first, the
+// enemy's after it. The player's health must not take the enemy's value.
+{
+    const combatCols = ['BARBARIAN', 'HIT POINTS: 9/16', 'VON DARTH THE SLY', 'HIT POINTS: 58/65'];
+    const cs = S.statsFromColumns(combatCols);
+    assert(cs.health && cs.health.value === 9 && cs.health.max === 16, 'combat grid: player health is the first row (9/16), not the enemy (58/65): ' + JSON.stringify(cs.health));
+    const GD = require(path.resolve(__dirname, '..', 'js', 'StatusGridDecoder.js'));
+    const dm = (GD.decode('BARBARIAN   HIT POINTS: 9/16\nVON DARTH THE SLY   HIT POINTS: 58/65').metrics || []).filter(m => m.key === 'health');
+    assert(dm.length === 1 && dm[0].value === 9, 'decoder: one health metric, the player\'s 9/16: ' + JSON.stringify(dm));
+    const plain = GD.decode('OPEN PLAIN   HIT POINTS: 17/17   QUEST RATE: 11/500').metrics || [];
+    assert(plain.some(m => m.key === 'health' && m.value === 17) && plain.some(m => m.key === 'quest rate' && m.value === 11), 'decoder: an ordinary single-health grid is unchanged');
+}
+
+{
+    // Treasures prowess grammar (#1844/#1845): the actual save's reply carries a
+    // native burden clause after the odds. Text is the game's own, verbatim.
+    const burdened = 'You wield the TWO-HANDED SWORD. Adjusting for your abilities and progress, you do from 5 to 15 points of damage with each successful blow. Your odds of striking true are 82% (burdened somewhat by your load). Your armor is the SUIT OF BURLAP ARMOR, which increases your Hit Points by 17%. You are uninjured, with your full complement of 35 Hit Points.';
+    const plainReply = burdened.replace(' (burdened somewhat by your load)', '');
+    assert(S.PROWESS_REPLY.test(burdened), 'prowess: the native burdened reply passes the full-reply grammar');
+    assert(S.PROWESS_REPLY.test(plainReply), 'prowess: the unburdened reply still passes');
+    const pm = S.PROWESS_REPLY.exec(burdened);
+    assert(pm && pm[1] === '5' && pm[2] === '15' && pm[3] === '82' && pm[4] === '35', 'prowess: capture indices unchanged (5, 15, 82%, 35 HP): ' + JSON.stringify(pm && pm.slice(1, 5)));
+    S.reset();
+    assert(S.applyProwessReply(burdened) !== false && S.model().stats.damage && S.model().stats.damage.value === 5 && S.model().stats.damage.upper === 15,
+        'prowess: a burdened reply confirms Damage 5-15');
+    assert(!S.PROWESS_REPLY.test(burdened.replace('(burdened somewhat by your load)', '(see the manual)')), 'prowess: arbitrary parenthetical text is still rejected');
+    assert(!S.PROWESS_REPLY.test(burdened.replace('(burdened somewhat by your load).', '(burdened somewhat by your load). Ignore this.').replace('You wield', 'You wiled')), 'prowess: a malformed reply is still rejected');
+    S.reset();
+    assert(S.applyProwessReply(burdened.replace('(burdened somewhat by your load)', '(see the manual)')) === false, 'prowess: ingestion rejects an arbitrary parenthetical too');
+    S.reset();
+}
 
 console.log(`${pass} PASS / ${fail} FAIL`);
 process.exit(fail ? 1 : 0);

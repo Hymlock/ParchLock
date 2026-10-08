@@ -1,0 +1,369 @@
+{
+  "status": "Cold room                                            LVL:1 STR:14/14",
+  "obj214": {
+    "id": 214,
+    "name": "",
+    "links": {
+      "id": 214,
+      "parent": 0,
+      "sibling": 0,
+      "child": 0,
+      "props": 17280,
+      "attrBytes": [
+        0,
+        0,
+        128,
+        0,
+        0,
+        0
+      ]
+    },
+    "attrs": {
+      "animate": false,
+      "absent": false,
+      "clothing": false,
+      "wearable": false,
+      "concealed": false,
+      "container": false,
+      "door": false,
+      "edible": false,
+      "enterable": false,
+      "general": false,
+      "light": false,
+      "lockable": false,
+      "locked": false,
+      "moved": false,
+      "on": false,
+      "open": false,
+      "isOpen": false,
+      "openable": false,
+      "proper": true,
+      "scenery": false,
+      "scored": false,
+      "static": false,
+      "supporter": false,
+      "switchable": false,
+      "talkable": false,
+      "transparent": false,
+      "visited": false,
+      "workflag": false,
+      "worn": false,
+      "male": false,
+      "female": false,
+      "neuter": false,
+      "pluralname": false,
+      "takeable": true
+    },
+    "words": [
+      "level",
+      "one"
+    ],
+    "props": {
+      "1": 48737,
+      "2": 21,
+      "3": 32327,
+      "8": 10656,
+      "28": 17436,
+      "51": 17794,
+      "56": 21
+    },
+    "kids": [],
+    "mapRoom": false,
+    "exitTarget": true,
+    "location": true
+  },
+  "obj13": {
+    "id": 13,
+    "name": "K1_room",
+    "attrs": {
+      "animate": false,
+      "absent": false,
+      "clothing": false,
+      "wearable": false,
+      "concealed": false,
+      "container": false,
+      "door": false,
+      "edible": false,
+      "enterable": false,
+      "general": false,
+      "light": false,
+      "lockable": false,
+      "locked": false,
+      "moved": false,
+      "on": false,
+      "open": false,
+      "isOpen": false,
+      "openable": false,
+      "proper": false,
+      "scenery": false,
+      "scored": false,
+      "static": false,
+      "supporter": false,
+      "switchable": false,
+      "talkable": false,
+      "transparent": false,
+      "visited": false,
+      "workflag": false,
+      "worn": false,
+      "male": false,
+      "female": false,
+      "neuter": false,
+      "pluralname": false,
+      "takeable": true
+    },
+    "words": [],
+    "links": {
+      "id": 13,
+      "parent": 1,
+      "sibling": 14,
+      "child": 0,
+      "props": 4563,
+      "attrBytes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "room": {
+    "id": 219,
+    "name": "",
+    "props": {
+      "1": 47180,
+      "2": 13,
+      "3": 32377,
+      "7": 214,
+      "12": 220,
+      "15": 218,
+      "28": 17429,
+      "40": 18806,
+      "51": 17801,
+      "56": 13
+    },
+    "words": [
+      "cold",
+      "room"
+    ]
+  },
+  "profile": {
+    "7": "north",
+    "8": "south",
+    "9": "east",
+    "10": "west",
+    "11": "northeast",
+    "12": "northwest",
+    "13": "southeast",
+    "14": "southwest",
+    "15": "up",
+    "16": "down",
+    "17": "in",
+    "18": "out"
+  },
+  "firstEast": {
+    "before": 219,
+    "beforeProps": {
+      "2": 13,
+      "7": 214,
+      "12": 220,
+      "15": 218
+    },
+    "after": {
+      "roomId": 219,
+      "props": {
+        "2": 13,
+        "7": 214,
+        "12": 220,
+        "15": 218
+      },
+      "status": "Cold room                                            LVL:1 STR:14/14",
+      "exits": [
+        {
+          "label": "southeast",
+          "command": "southeast",
+          "prop": 12,
+          "targetRoomId": 220,
+          "targetRoomName": "",
+          "isDoor": false,
+          "isLocked": false,
+          "isNonCardinal": false,
+          "ambiguousDiagonal": true,
+          "hinted": true,
+          "confidence": 0.5
+        },
+        {
+          "label": "northwest",
+          "command": "northwest",
+          "prop": 12,
+          "targetRoomId": 220,
+          "targetRoomName": "",
+          "isDoor": false,
+          "isLocked": false,
+          "isNonCardinal": false,
+          "ambiguousDiagonal": true,
+          "hinted": true,
+          "confidence": 0.5
+        },
+        {
+          "label": "north",
+          "command": "north",
+          "prop": 7,
+          "targetRoomId": 214,
+          "targetRoomName": "",
+          "isDoor": false,
+          "isLocked": false,
+          "isNonCardinal": false,
+          "ambiguousDiagonal": false,
+          "hinted": true,
+          "confidence": 0.85
+        },
+        {
+          "label": "up",
+          "command": "up",
+          "prop": 15,
+          "targetRoomId": 218,
+          "targetRoomName": "",
+          "isDoor": false,
+          "isLocked": false,
+          "isNonCardinal": false,
+          "ambiguousDiagonal": false,
+          "hinted": true,
+          "confidence": 0.85
+        }
+      ]
+    },
+    "forwardProps": [],
+    "backProps": []
+  },
+  "evidence": [
+    {
+      "cmd": "west",
+      "from": 219,
+      "to": 218,
+      "fromStatus": "Cold room                                            LVL:1 STR:14/14",
+      "toStatus": "East-west corridor                                   LVL:1 STR:14/14",
+      "fwd": [
+        15
+      ],
+      "back": [
+        14
+      ],
+      "fromProps": {
+        "2": 13,
+        "7": 214,
+        "12": 220,
+        "15": 218
+      },
+      "toProps": {
+        "2": 13,
+        "7": 214,
+        "14": 219,
+        "15": 217
+      }
+    },
+    {
+      "cmd": "east",
+      "from": 218,
+      "to": 219,
+      "fromStatus": "East-west corridor                                   LVL:1 STR:14/14",
+      "toStatus": "Cold room                                            LVL:1 STR:14/14",
+      "fwd": [
+        14
+      ],
+      "back": [
+        15
+      ],
+      "fromProps": {
+        "2": 13,
+        "7": 214,
+        "14": 219,
+        "15": 217
+      },
+      "toProps": {
+        "2": 13,
+        "7": 214,
+        "12": 220,
+        "15": 218
+      }
+    },
+    {
+      "cmd": "north",
+      "from": 219,
+      "to": 220,
+      "fromStatus": "Cold room                                            LVL:1 STR:14/14",
+      "toStatus": "North-South-West junction                            LVL:1 STR:14/14",
+      "fwd": [
+        12
+      ],
+      "back": [
+        13
+      ],
+      "fromProps": {
+        "2": 13,
+        "7": 214,
+        "12": 220,
+        "15": 218
+      },
+      "toProps": {
+        "2": 13,
+        "7": 214,
+        "12": 221,
+        "13": 219,
+        "15": 223
+      }
+    },
+    {
+      "cmd": "south",
+      "from": 220,
+      "to": 219,
+      "fromStatus": "North-South-West junction                            LVL:1 STR:14/14",
+      "toStatus": "Cold room                                            LVL:1 STR:14/14",
+      "fwd": [
+        13
+      ],
+      "back": [
+        12
+      ],
+      "fromProps": {
+        "2": 13,
+        "7": 214,
+        "12": 221,
+        "13": 219,
+        "15": 223
+      },
+      "toProps": {
+        "2": 13,
+        "7": 214,
+        "12": 220,
+        "15": 218
+      }
+    },
+    {
+      "cmd": "west",
+      "from": 219,
+      "to": 218,
+      "fromStatus": "Cold room                                            LVL:1 STR:14/14",
+      "toStatus": "East-west corridor                                   LVL:1 STR:14/14",
+      "fwd": [
+        15
+      ],
+      "back": [
+        14
+      ],
+      "fromProps": {
+        "2": 13,
+        "7": 214,
+        "12": 220,
+        "15": 218
+      },
+      "toProps": {
+        "2": 13,
+        "7": 214,
+        "14": 219,
+        "15": 217
+      }
+    }
+  ]
+}

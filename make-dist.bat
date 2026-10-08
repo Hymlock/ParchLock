@@ -91,6 +91,11 @@ for %%D in (css img js lib licenses) do (
 )
 robocopy "%SRC%\native-hooks" "%SOURCE_STAGE%\native-hooks" *.* %ROBO% /XD build /XF *.log >nul
 if errorlevel 8 goto :sourcefail
+mkdir "%SOURCE_STAGE%\tools" 2>nul
+for %%F in (patch-android-tts.cjs test-android-tts.cjs) do (
+  if not exist "%SRC%\tools\%%F" goto :sourcefail
+  copy /y "%SRC%\tools\%%F" "%SOURCE_STAGE%\tools\%%F" >nul || goto :sourcefail
+)
 robocopy "%SRC%\pc-launcher" "%SOURCE_STAGE%\pc-launcher" *.cs /NFL /NDL /NJH /NJS /NC /NS /NP /R:1 /W:1 >nul
 if errorlevel 8 goto :sourcefail
 mkdir "%SOURCE_STAGE%\vendor\emglken-stage" 2>nul
@@ -98,13 +103,13 @@ for %%F in (package.json package-lock.json README.md smoke.mjs smoke.cjs) do if 
 robocopy "%SRC%\android" "%SOURCE_STAGE%\android" *.* %ROBO% /XD .gradle build "%SRC%\android\app\build" "%SRC%\android\app\src\main\assets" /XF *.apk *.jks *.keystore local.properties >nul
 if errorlevel 8 goto :sourcefail
 powershell -NoProfile -Command "Compress-Archive -Path '%SOURCE_STAGE%\*' -DestinationPath '%SOURCE_ZIP%' -Force" || goto :sourcefail
-rmdir /s /q "%SOURCE_STAGE%"
+powershell -NoProfile -Command "$target=[IO.Path]::GetFullPath('%SOURCE_STAGE%'); $prefix=Join-Path ([IO.Path]::GetFullPath($env:TEMP)) 'ParchLock-source-'; if(-not $target.StartsWith($prefix,[StringComparison]::OrdinalIgnoreCase)){throw 'Unsafe source staging path'}; if((Get-Item -LiteralPath $target).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Unexpected staging link'}; if(@(Get-ChildItem -LiteralPath $target -Recurse -Force -Attributes ReparsePoint -ErrorAction Stop).Count){throw 'Unexpected link inside staging tree'}; Remove-Item -LiteralPath $target -Recurse -Force" || exit /b 1
 
 echo Runtime and ParchLock-source.zip created successfully.
 exit /b 0
 
 :sourcefail
-if exist "%SOURCE_STAGE%" rmdir /s /q "%SOURCE_STAGE%"
+if exist "%SOURCE_STAGE%" powershell -NoProfile -Command "$target=[IO.Path]::GetFullPath('%SOURCE_STAGE%'); $prefix=Join-Path ([IO.Path]::GetFullPath($env:TEMP)) 'ParchLock-source-'; if(-not $target.StartsWith($prefix,[StringComparison]::OrdinalIgnoreCase)){throw 'Unsafe source staging path'}; if((Get-Item -LiteralPath $target).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Unexpected staging link'}; if(@(Get-ChildItem -LiteralPath $target -Recurse -Force -Attributes ReparsePoint -ErrorAction Stop).Count){throw 'Unexpected link inside staging tree'}; Remove-Item -LiteralPath $target -Recurse -Force"
 :fail
 echo ERROR: ParchLock distribution build failed.
 exit /b 1

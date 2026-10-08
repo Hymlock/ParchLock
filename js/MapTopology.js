@@ -338,11 +338,23 @@ var MapTopology = {
         if (MapTopology.isSystemPropExitKey(dir) && command && !MapTopology.isSystemPropExitKey(command)) {
             dir = MapTopology.normalizeLabel(command) || command;
         }
+        var priorProof = from.ExitMeta[dir] && from.ExitMeta[dir].travelledTo;
         from.ExitMeta[dir] = Object.assign({}, from.ExitMeta[dir] || {}, meta, {
             isNonCardinal: !MapTopology.isCardinal(dir),
             label: dir,
             command: command
         });
+        // World map (bus #1884/#1886): `source` is the LATEST observation, so a
+        // later look-ahead overwrote the proof that this exit was walked. Keep
+        // that proof separately, bound to the destination it reached: a real
+        // move records it; any later observation naming a DIFFERENT
+        // destination id (a moved exit, a door, a changed world) clears it.
+        // Without a destination id an observation cannot contradict a bound
+        // proof; an unbound "?" proof ends as soon as ANY destination id is
+        // observed for this exit (#1897: never an unbound proof).
+        var incomingTarget = meta.toId != null ? String(meta.toId) : null;
+        if (meta.source === "state-delta") from.ExitMeta[dir].travelledTo = incomingTarget || "?";
+        else if (priorProof && incomingTarget && (priorProof === "?" || priorProof !== incomingTarget)) delete from.ExitMeta[dir].travelledTo;
         // D54: look-ahead may resolve a real destination ObjectId whose only
         // known short-name is still the internal compiler label. Keep the
         // structural toId on ExitMeta for later identity match, but do NOT
@@ -553,6 +565,55 @@ var MapTopology = {
             });
         });
     },
+    // D213: the RAM parent of the (corrected) player, or null when unknown.
+    playerParentId: function (payload) {
+        try {
+            if (!payload || payload.playerId == null || typeof ZRamReader === "undefined"
+                || typeof ZRamProvider === "undefined" || !ZRamProvider.getMem) return null;
+            var mem = ZRamProvider.getMem();
+            if (!mem) return null;
+            var links = ZRamReader.objectLinks(mem, payload.playerId);
+            var parent = links && links.parent;
+            if (!parent || parent === payload.playerId) return null;
+            // A corrupt chain must not stamp containment: the bounded
+            // ancestor walk from the player has to reach the room (#1607).
+            if (payload.roomId != null) {
+                var seen = {}, id = parent, steps = 0, reached = false;
+                while (id && steps++ < 32 && !seen[id]) {
+                    if (String(id) === String(payload.roomId)) { reached = true; break; }
+                    seen[id] = true;
+                    var up = ZRamReader.objectLinks(mem, id);
+                    if (!up) return null;
+                    id = up.parent;
+                }
+                if (!reached) return null;
+            } else if (!ZRamReader.objectLinks(mem, parent)) return null;
+            return parent;
+        } catch (e) { return null; }
+    },
+    // D213: in-room steps learned before containment evidence was required
+    // may be false (a combat verb recorded because the status banner
+    // changed). They are moved, unchanged, out of the active ExitMeta into
+    // the room's UnprovenSubSteps -- never deleted. A later containment-
+    // proven step for the same command clears its quarantine record.
+    quarantineUnprovenSubSteps: function (rooms) {
+        (rooms || []).forEach(function (r) {
+            var meta = r && r.ExitMeta;
+            if (!meta) return;
+            Object.keys(meta).forEach(function (k) {
+                // Operator ruling (2026-10-06): resetting old unproven steps is
+                // acceptable. Every step learned before containment evidence
+                // existed is set aside uniformly (data preserved) and returns on
+                // its next proven use -- no word-list guess about which were real.
+                if (meta[k] && meta[k].subLocation && meta[k].evidence !== "containment") {
+                    r.UnprovenSubSteps = r.UnprovenSubSteps || {};
+                    r.UnprovenSubSteps[k] = meta[k];
+                    delete meta[k];
+                }
+            });
+        });
+        return rooms;
+    },
     applyStateDelta: function (payload) {
         if (!payload || !payload.roomName) return;
         if (typeof UndoRestoreSync !== "undefined" && UndoRestoreSync.pending) {
@@ -594,9 +655,21 @@ var MapTopology = {
         // room. No room is minted and no pathable edge is created -- there is
         // no destination to point at -- so this only ever adds a direction the
         // player can pick, which is exactly what was lost.
+        //
+        // D213: the printed name alone is not movement. Treasures' combat
+        // status grid replaces the room banner ("BARBARIAN"), so a bare
+        // "assail" was recorded as a compass step. Movement within a room
+        // must be shown by RAM: the player's own parent changed (room ->
+        // can, can -> room) while the room stayed the same, and the command
+        // passes the original D163 command gate.
+        var currParent = MapTopology.playerParentId(payload);
+        var prevParent = MapTopology.prevPlayerParent && MapTopology.prevPlayerParent.roomId != null
+            && String(MapTopology.prevPlayerParent.roomId) === String(MapTopology.prevRoomId)
+            ? MapTopology.prevPlayerParent.parent : null;
         if (prevName && currName && !changed && currId != null
             && String(currId) === String(MapTopology.prevRoomId)
-            && prevName.toLowerCase() !== currName.toLowerCase()) {
+            && prevParent != null && currParent != null && prevParent !== currParent
+            && (String(prevParent) !== String(currId) || String(currParent) !== String(currId))) {
             try {
                 var subCmd = MapTopology.readLastTypedCommand() || "";
                 if (subCmd && !MapTopology.isNonTravelCommand(subCmd)) {
@@ -604,15 +677,17 @@ var MapTopology = {
                     if (here) {
                         var subKey = MapTopology.normalizeLabel(subCmd);
                         here.ExitMeta = here.ExitMeta || {};
-                        if (!here.ExitMeta[subKey]) {
+                        if (!here.ExitMeta[subKey] || here.ExitMeta[subKey].subLocation) {
                             here.ExitMeta[subKey] = {
-                                label: subKey, command: subCmd, hinted: true, subLocation: true
+                                label: subKey, command: subCmd, hinted: true, subLocation: true, evidence: "containment"
                             };
                         }
+                        if (here.UnprovenSubSteps && here.UnprovenSubSteps[subKey]) delete here.UnprovenSubSteps[subKey];
                     }
                 }
             } catch (eSub) {}
         }
+        MapTopology.prevPlayerParent = { roomId: currId, parent: currParent };
         if (prevName && currName && changed) {
             var rawTyped = MapTopology.readLastTypedCommand() || "move";
             // D140 (found sweeping wump2ka): the room the player is standing in
@@ -747,7 +822,7 @@ var MapTopology = {
     noteRestorePrompt: function () {
         try {
             if (typeof $ === "undefined") return;
-            var t = String($("#windowport").text() || "");
+            var t = String((typeof BufferRevision !== "undefined" ? BufferRevision.text("#windowport") : $("#windowport").text()) || "");
             if (/would you like to restore a saved game/i.test(t)) {
                 MapTopology._awaitingRestoreAnswer = true;
             }

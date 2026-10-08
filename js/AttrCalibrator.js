@@ -1034,6 +1034,32 @@ var AttrCalibrator = {
     // confirmed observation returns false, so the verb stays suppressed until
     // the game's own opcodes prove the bit -- at which point it comes back
     // automatically, with no per-title branching.
+    // Worn fallback (operator 2026-10-07; Codex #1666): a ZIL story's worn
+    // attribute learned from ITS OWN inventory routine. On a player-issued
+    // INVENTORY turn, the routine test_attr's each listed object; a bit is
+    // the worn bit only if, for every listed held object, it tested true
+    // exactly on the objects the reply marks "(being worn)"/"(worn)".
+    // Exactly one such bit is recorded; zero or several record nothing
+    // (a wearable bit can match when everything wearable is worn).
+    learnedWornBit: function (mem) {
+        try {
+            if (mem) AttrCalibrator.hydrate(mem);
+            var w = AttrCalibrator.table && AttrCalibrator.table.wornBit;
+            return w && Number.isInteger(w.bit) ? w.bit : null;
+        } catch (e) { return null; }
+    },
+    wornCandidate: function (held, tests, wornIds) {
+        // held: [{id}], tests: {bit: {objId: bool}}, wornIds: {objId: true}
+        if (!held.length || !Object.keys(wornIds).length || Object.keys(wornIds).length === held.length) return null;
+        var found = Object.keys(tests).filter(function (b) {
+            return held.every(function (o) {
+                var r = tests[b][String(o.id)];
+                return typeof r === "boolean" && r === !!wornIds[String(o.id)];
+            });
+        });
+        return found.length === 1 ? parseInt(found[0], 10) : null;
+    },
+
     hasConfirmedFlag: function (mem, flag) {
         try {
             if (mem) AttrCalibrator.hydrate(mem);
@@ -1151,6 +1177,151 @@ var AttrCalibrator = {
     // path. The two real entry points are now: a genuine native keypress
     // (installKeypressCapture below) and Input.Inject's own in-place hook
     // (js/Input.js), which covers every other real submission path uniformly.
+    // D75 extension (operator 2026-10-07, Suspect): the inventory holder
+    // learned from the game's OWN inventory routine. During an INVENTORY
+    // turn the routine test_attr's each object it lists; the objects it
+    // tested whose names the reply prints are the held items, and their
+    // shared parent is the real holder. Feeds the same table.inventoryRootId
+    // a confirmed take already writes (resolveInventoryRootId step 1).
+    // Requires 2+ listed objects under one non-room parent that clearly
+    // outnumbers any other parent; otherwise nothing is learned.
+    inventoryRootAnalyzer: {
+        id: "inventory-root",
+        prepare: function (turn) {
+            try {
+                if (turn.source === "ambiguous-reference") return null;
+                if (!/^(?:i|inv|inventory|take inventory)$/i.test(String(turn.command || "").trim())) return null;
+                if (typeof AttributeSchema === "undefined" || typeof ZRamReader === "undefined") return null;
+                var mem = AttributeSchema._getMem();
+                if (!mem || AttrCalibrator.confirmedInventoryRootId(mem) != null) return null;
+                turn.__invRootCtx = { tested: {}, mem: mem };
+                return {
+                    wantsOpcodes: true,
+                    hasWitness: function () { return true; },
+                    captureAfter: function (t) {
+                        var out = { lines: [], objs: [] };
+                        try {
+                            if (typeof $ !== "undefined") {
+                                var lines = $("#windowport .BufferWindow .BufferLine").toArray();
+                                var end = (t.endLine != null) ? t.endLine : lines.length;
+                                out.lines = lines.slice(t.startLine || 0, end).map(function (l) { return String(l.textContent || "").toLowerCase(); });
+                            }
+                            Object.keys(t.__invRootCtx.tested).forEach(function (id) {
+                                var links = ZRamReader.objectLinks(mem, +id);
+                                var nm = String(ZRamReader.shortName(mem, +id) || "").toLowerCase();
+                                if (links && nm && nm.charAt(0) !== "(") out.objs.push({ id: +id, parent: links.parent, name: nm });
+                            });
+                            out.rooms = {};
+                            out.objs.forEach(function (o) { out.rooms[o.parent] = AttrCalibrator.inventoryRootIsRoom(mem, o.parent); });
+                        } catch (e) {}
+                        return out;
+                    }
+                };
+            } catch (e) { return null; }
+        },
+        observeOpcode: function (turn, op, vmInstance, args) {
+            var ctx = turn.__invRootCtx;
+            if (ctx && op === "test_attr" && args && args[0] > 0) ctx.tested[args[0]] = true;
+        },
+        analyze: function (turn) {
+            try {
+                var ctx = turn.__invRootCtx;
+                var snap = turn.analyzerSnapshots && turn.analyzerSnapshots["inventory-root"];
+                if (!ctx || !snap || !snap.objs) return;
+                var text = snap.lines.join("\n");
+                var listed = snap.objs.filter(function (o) {
+                    return new RegExp("(^|[^a-z])" + o.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "([^a-z]|$)").test(text);
+                });
+                var listedIds = {}; listed.forEach(function (o) { listedIds[o.id] = true; });
+                var counts = {};
+                listed.forEach(function (o) { if (o.parent && !listedIds[o.parent]) counts[o.parent] = (counts[o.parent] || 0) + 1; });
+                var keys = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; });
+                if (!keys.length) return;
+                var top = keys[0], n = counts[top], next = keys[1] ? counts[keys[1]] : 0;
+                if (n < 2 || n <= next * 2 || snap.rooms[top]) return;
+                AttrCalibrator.hydrate(ctx.mem);
+                AttrCalibrator.table.inventoryRootId = +top;
+                AttrCalibrator.persist(ctx.mem);
+            } catch (e) {}
+        }
+    },
+
+    // Worn learner. Works from what the game ITSELF did on the INVENTORY
+    // turn, never from the app's current inventory guess (which may be wrong
+    // until the holder is learned, as in Suspect): the objects its inventory
+    // routine test_attr'd whose names it printed are the listed items.
+    wornInventoryAnalyzer: {
+        id: "worn-inventory",
+        prepare: function (turn) {
+            try {
+                if (turn.source === "ambiguous-reference") return null;
+                if (!/^(?:i|inv|inventory|take inventory)$/i.test(String(turn.command || "").trim())) return null;
+                if (typeof AttributeSchema === "undefined" || typeof ZRamReader === "undefined") return null;
+                var mem = AttributeSchema._getMem();
+                // Fallback only: never when a stronger worn source exists.
+                if (!mem || AttributeSchema.wornOwnedAboveCalibration(mem) || AttrCalibrator.learnedWornBit(mem) != null) return null;
+                turn.__wornCtx = { tests: {}, mem: mem };
+                return {
+                    wantsOpcodes: true,
+                    hasWitness: function () { return true; },
+                    captureAfter: function (t) {
+                        var out = { lines: [], names: {} };
+                        try {
+                            if (typeof $ !== "undefined") {
+                                var lines = $("#windowport .BufferWindow .BufferLine").toArray();
+                                var end = (t.endLine != null) ? t.endLine : lines.length;
+                                out.lines = lines.slice(t.startLine || 0, end).map(function (l) { return String(l.textContent || "").toLowerCase(); });
+                            }
+                            var ids = {};
+                            Object.keys(t.__wornCtx.tests).forEach(function (b) { Object.keys(t.__wornCtx.tests[b]).forEach(function (id) { ids[id] = true; }); });
+                            Object.keys(ids).forEach(function (id) {
+                                var nm = String(ZRamReader.shortName(mem, +id) || "").toLowerCase();
+                                if (nm && nm.charAt(0) !== "(") out.names[id] = nm;
+                            });
+                        } catch (e) {}
+                        return out;
+                    }
+                };
+            } catch (e) { return null; }
+        },
+        observeOpcode: function (turn, op, vmInstance, args, result) {
+            var ctx = turn.__wornCtx;
+            if (!ctx || op !== "test_attr" || !args || !(args[0] > 0)) return;
+            var id = String(args[0]), bit = args[1];
+            var row = ctx.tests[bit] || (ctx.tests[bit] = {});
+            if (!(id in row)) row[id] = !!result;
+        },
+        analyze: function (turn) {
+            try {
+                var ctx = turn.__wornCtx;
+                var snap = turn.analyzerSnapshots && turn.analyzerSnapshots["worn-inventory"];
+                if (!ctx || !snap) return;
+                var names = snap.names || {};
+                var esc = function (s) { return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); };
+                // Each reply line must name EXACTLY one tested object
+                // (Codex #1676: several names on one line aborts).
+                var listed = {}, worn = {}, ambiguous = false;
+                snap.lines.forEach(function (line) {
+                    var hits = Object.keys(names).filter(function (id) {
+                        return new RegExp("(^|[^a-z])" + esc(names[id]) + "([^a-z]|$)").test(line);
+                    });
+                    if (hits.length > 1) { ambiguous = true; return; }
+                    if (hits.length !== 1) return;
+                    listed[hits[0]] = true;
+                    if (/\((?:being )?worn\)/.test(line)) worn[hits[0]] = true;
+                });
+                if (ambiguous) return;
+                var held = Object.keys(listed).map(function (id) { return { id: id }; });
+                if (held.length < 2) return;
+                var bit = AttrCalibrator.wornCandidate(held, ctx.tests, worn);
+                if (bit == null) return;
+                AttrCalibrator.hydrate(ctx.mem);
+                AttrCalibrator.table.wornBit = { bit: bit, source: "inventory-opcode", at: Date.now() };
+                AttrCalibrator.persist(ctx.mem);
+            } catch (e) {}
+        }
+    },
+
     installHooks: function () {
         try { AttrCalibrator.installKeypressCapture(); } catch (e1) {}
         // D86 migration, stage 2: register the diagnostic-mode analyzer
@@ -1161,6 +1332,8 @@ var AttrCalibrator = {
                 TurnRecorder.registerAnalyzer(AttrCalibrator.analyzers.verbSuccess);
                 TurnRecorder.registerAnalyzer(AttrCalibrator.analyzers.locationGlobal);
                 TurnRecorder.registerAnalyzer(AttrCalibrator.analyzers.verbBehavior);
+                TurnRecorder.registerAnalyzer(AttrCalibrator.inventoryRootAnalyzer);
+                TurnRecorder.registerAnalyzer(AttrCalibrator.wornInventoryAnalyzer);
             }
         } catch (e2) {}
     }

@@ -4,7 +4,7 @@ const assert = require("assert");
 
 const source = fs.readFileSync("js/ModuleLibrary.js", "utf8");
 
-function makeContext() {
+function makeContext(ajax) {
     const storage = new Map();
     const context = {
         console,
@@ -27,6 +27,7 @@ function makeContext() {
         atob: value => Buffer.from(value, "base64").toString("binary"),
         btoa: value => Buffer.from(value, "binary").toString("base64")
     };
+    if(ajax)context.jQuery={ajax};
     context.window = context;
     vm.createContext(context);
     vm.runInContext(source, context);
@@ -56,5 +57,13 @@ function makeContext() {
     assert.strictEqual(ml.canonicalLocalPath(local), local);
     assert.strictEqual(ml.canonicalLocalPath(local + "?cache=1"), null);
     assert.strictEqual(ml.canonicalLocalPath(local + "#fragment"), null);
-    console.log("d98 ModuleLibrary core: PASS");
+    const glul=Buffer.alloc(36);glul.write('Glul');glul.writeUInt32BE(0x00030103,4);
+    const blorb=Buffer.alloc(80);blorb.write('FORM');blorb.writeUInt32BE(72,4);blorb.write('IFRS',8);blorb.write('RIdx',12);blorb.writeUInt32BE(16,16);blorb.writeUInt32BE(1,20);blorb.write('Exec',24);blorb.writeUInt32BE(36,32);blorb.write('GLUL',36);blorb.writeUInt32BE(36,40);glul.copy(blorb,44);
+    let response='',fetches=0;const seam=makeContext(()=>{fetches++;return Promise.resolve(response);});
+    for(const [file,bytes,format]of [['games/seam.ulx.js',glul,'ulx'],['games/seam.gblorb.js',blorb,'gblorb']]){
+        response=bytes.toString('base64');const returned=await seam.jQuery.ajax({url:file});const identity=seam.ModuleLibrary.currentExecutableIdentity(file);
+        assert.strictEqual(returned,response,'loader receives exact original response');assert(identity,'identity exists before loader continuation');assert.strictEqual(identity.format,format);assert.strictEqual(identity.digest,require('crypto').createHash('sha256').update(glul).digest('hex'),'hash executable GLUL, not container');assert.strictEqual(identity.byteLength,36);assert(Object.isFrozen(identity) && Object.isFrozen(identity.header), 'identity summary and header are immutable');assert.strictEqual(identity.header[0],0x47);assert.strictEqual(seam.ModuleLibrary.currentExecutableIdentity(file),identity,'identity summary is memoized');assert(!('bytes' in identity),'full bytes stay off hot path');const copy=seam.ModuleLibrary.currentExecutableBytes(file);copy[0]=0;assert.strictEqual(seam.ModuleLibrary.currentExecutableBytes(file)[0],0x47,'explicit full bytes are defensive copies');
+    }
+    assert.strictEqual(fetches,2,'one story request per loader response, no second fetch');
+    console.log("d98 ModuleLibrary core and GLUL response identity: PASS");
 })().catch(error => { console.error(error); process.exitCode = 1; });

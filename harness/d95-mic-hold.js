@@ -104,7 +104,9 @@ const isHeld = s => /pl-mic-(held|active)/.test(s.cls) || s.pressed === 'true';
     try {
         // ---- A. HOLD mode: visible immediately, continuous across a pause, commits on release. ----
         {
-            const h = await open(browser, true);
+            // D167 made hold-release auto-send the default; this case asserts the
+            // dictated text lands in the line, so it runs with auto-send OFF.
+            const h = await open(browser, true, () => { try { localStorage.setItem('PL_Prefs', JSON.stringify({ MicHoldToTalk: true, MicAutoSendOnRelease: false })); } catch (e) {} });
             await h.page.evaluate(() => { __mic.speech = [{ at: 500, text: 'open' }, { at: 3600, text: 'the mailbox' }]; });
             await h.page.evaluate(() => { __mic.t0 = performance.now(); });
             await down(h);
@@ -226,7 +228,8 @@ const isHeld = s => /pl-mic-(held|active)/.test(s.cls) || s.pressed === 'true';
         {
             const ctx = await browser.newContext({ viewport: { width: 412, height: 911 }, deviceScaleFactor: 1, isMobile: true, hasTouch: true });
             const page = await ctx.newPage();
-            await page.addInitScript(() => { try { sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); localStorage.setItem('PL_MobileTutorialSeen', '1'); } catch (e) {} });
+            // D167: insertion is asserted below, so hold-release auto-send is OFF here.
+            await page.addInitScript(() => { try { sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); localStorage.setItem('PL_MobileTutorialSeen', '1'); localStorage.setItem('PL_Prefs', JSON.stringify({ MicAutoSendOnRelease: false })); } catch (e) {} });
             await page.addInitScript(() => {
                 window.__web = { started: 0, stopped: 0, live: 0 };
                 window.SpeechRecognition = class {

@@ -203,6 +203,12 @@ var SemanticActions = {
 
     payloadPoolFor: function (p) {
         if (!p) return [];
+        // Current-world consumers share D184's recovered scoped identities.
+        // Explicit snapshots must never borrow objects from a later world.
+        if (typeof WorldModel !== "undefined" && p === WorldModel.lastPayload
+            && typeof Actionable !== "undefined" && Actionable.payloadPool) {
+            return Actionable.payloadPool();
+        }
         return (p.discoveredObjects || []).concat(p.inventory || []).filter(function (o) {
             return o && o.id != null && o.id !== "" && o.name;
         });

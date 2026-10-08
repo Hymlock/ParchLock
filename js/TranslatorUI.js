@@ -257,7 +257,17 @@ var TranslatorUI = {
             Object.keys(room.ExitMeta).forEach(function (dir) {
                 var short = TranslatorUI.canonicalDir(dir);
                 var key = short || dir;
-                meta[key] = room.ExitMeta[dir];
+                var prev = meta[key], cur = room.ExitMeta[dir];
+                // "n" and "north" fold into one record and the later one wins.
+                // Carry MapTopology's walked proof across the fold unless the
+                // surviving record names a different destination (World map,
+                // bus #1886): a fresh look-ahead under the long key must not
+                // erase that the player actually walked this exit.
+                if (prev && prev.travelledTo != null && cur && cur.travelledTo == null) {
+                    var curTarget = cur.toId != null ? String(cur.toId) : null;
+                    if (curTarget ? prev.travelledTo === curTarget : true) cur = Object.assign({}, cur, { travelledTo: prev.travelledTo });
+                }
+                meta[key] = cur;
             });
             room.ExitMeta = meta;
         }

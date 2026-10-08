@@ -330,6 +330,8 @@ var MobileLayout = {
                         Message.Hide();
                     } else if ($ && $("#dialog_cancel").length) {
                         $("#dialog_cancel").trigger("click");
+                    } else if (typeof WorldMap !== "undefined" && WorldMap.IsOpen()) {
+                        WorldMap.Close();
                     } else if (document.body.classList.contains("map-open") && typeof ParchLockMap !== "undefined") {
                         ParchLockMap.Toggle();
                     } else if (confirm("Exit ParchLock?")) {

@@ -18,7 +18,7 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v112"; // Shared observed labels, distinct-owner radials and session learned-word projection.
+const CACHE_VERSION = "parchlock-shell-v139"; // APK62: BufferRevision cache + StatTracker render/version skips; Treasures burdened prowess; inventory hidden/worn facts, Yourself, state labels; TTS callback repair; Close ✕ glyph everywhere; native dialog Edit row; Export naming repairs + Tools beautification + legacy restore label; Export naming: readable unique download names (#1746); E4 rev: save-concrete transcript; E3 warning before guards; E5b prowess family; E3 install-owned inventory WARNING; E4 save-attached running transcript; Worn learner uses the game's own inventory listing; Inventory holder learned from the game's own INVENTORY routine (Suspect); Worn: one owner per story (declared > measured fact > learned from inventory opcodes > Inform default); D152/D153: interpreter-only slot2 seeding and turn-counter ambiguity repair.
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [
@@ -49,6 +49,7 @@ const APP_SHELL = [
     "img/parchlock-splash-forest-path.png",
     "img/parchlock-splash-living-map.png",
     "js/ActionSynth.js",
+    "js/BufferRevision.js",
     "js/Actionable.js",
     "js/AttrCalibrator.js",
     "js/LearnedWords.js",
@@ -71,6 +72,8 @@ const APP_SHELL = [
     "js/Map.js",
     "js/MapBeautify.js",
     "js/EquipmentUI.js",
+    "js/ModuleStatFacts.js",
+    "js/ModuleStatFactsClaude.js",
     "js/StatTracker.js",
     "js/StatusGridDecoder.js",
     "js/MapIdentity.js",
@@ -83,7 +86,9 @@ const APP_SHELL = [
     "js/ParchLock.js",
     "js/ProductInfo.js",
     "js/Qol.js",
+    "js/PronunciationCatalog.js",
     "js/ReadAloud.js",
+    "js/Transcript.js",
     "js/RemGlkTapProvider.js",
     "js/SemanticActions.js",
     "js/TextGate.js",
@@ -93,6 +98,8 @@ const APP_SHELL = [
     "js/UndoRestoreSync.js",
     "js/VmProbeLoader.js",
     "js/WorkspaceUI.js",
+    "js/WorldMap.js",
+    "js/WorldMapLayout.js",
     "js/WorldModel.js",
     "js/ZRamProvider.js",
     "js/ZRamReader.js",

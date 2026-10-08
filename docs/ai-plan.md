@@ -1,5 +1,284 @@
 # AI Plan
 
+## Active Plan: Actor detection and unnamed-candidate trigger words (2026-10-05)
+
+State: REVISION 2 ACCEPTED by Codex (#1383). Step 1 DONE: Claude audit ACCEPT #1388 (d201 14/0; live particle audit 1280+360 PASS). Step 2 DONE: Claude audit ACCEPT (live mark + accepted examine/talk; negatives wump2ka x3, 905, LostPig, Anchorhead PASS). Step 2b DONE: Claude audit ACCEPT (parity24, focused21; single caller). Step 3 DONE: Claude audit ACCEPT #1411. Steps 4-6 open; see tracker T3-T8.
+Writer of this section: Claude. Reviewer: Codex.
+
+### Operator defect tracker (every report is kept here until verified closed)
+
+| # | Report | Status | Owner / step |
+|---|--------|--------|--------------|
+| T1 | NPCs/enemies get no underline or actions (Von Darth) | Fixed in steps 2, 2b, 3; audited | Codex writer, Claude audit |
+| T2 | "the" triggers the GLADIUS SWORD (`examine the`) | Fixed in step 1; audited | Codex writer, Claude audit |
+| T3 | Enemies need real actions (combat) | CLOSED by operator 2026-10-06: enemy actions were already fixed (T1: Von Darth marked, Examine/Talk to). D213 Part B NOT built | Both; evidence-first |
+| T4 | Gravel Pit compass shows "assail" (D163 recorded a combat verb as an in-room step) | FIXED (D213 Part A): an in-room step also needs a RAM player-parent change; original command gate kept; Codex accepted #1611 | Both |
+| T5 | Status prompts not headless (printed and read aloud); every status-screen command must be headless in every module | Implemented; Codex ACCEPTED 6a. Claude 69 rows: 129 pass, 0 leaks. Suspect released-event speech defect fixed (ReadAloud no longer consumes hidden lines) and verified at 1280 and 360. Remaining: Codex re-audit of that fix, plus startup-route gaps (adverbum, BeingSteve, bookvol, largemac@1280, Codex 122 blocked) | Step 6; Claude writer proposed, Codex audit |
+| T6 | Mid-combat save package for Treasures (step 5 fixture) | Waiting: operator to place file in tmp/ | Operator |
+| T7 | Docs: D-entry, ARCH §5 line 592 reconciliation, index regen | D206 + D207 written in PRODUCTION_PLAN, ARCH §5 notes, index regenerated; awaiting Codex audit | Claude writer, Codex audit |
+| T8 | Cache bump for changed runtime assets | DONE: CACHE_VERSION v121 | Codex, per #1410 |
+| T9 | Item actions on the status screen (use on Yourself, drag/drop) | Operator ruled: visible normal actions; no change | Closed |
+| T10 | Quick repeat of last command | IMPLEMENTED; operator found radial-sent commands missing, FIXED: every command is recorded at send time (Input.Inject choke point plus a capture-phase Enter listener; mobile Enter arrives on the page), status probes excluded; empty Send repeats; hold = history radial. t10 24/0 desktop, 22/0 mobile; d105 58/0; radial 28/0. Codex audit pending | Claude + Codex audit |
+| T11 | Radial commands must RUN, never paste into the line | IMPLEMENTED: a verb stem opens a target radial of scoped objects and choosing one submits; a complete Enter:false command runs (slash commands via Input.Process); paste only when no target exists. Covered in t10-history-radial. Codex audit pending | Claude |
+| T12 | No Read option on readable objects | Investigated: Inform 6/7 have NO readable attribute (read = examine unless authored); ZIL has READBIT (needs D145/D73 calibration). Options for Codex review: (1) ZIL READBIT once calibrated; (2) learn Read per object after an observed successful read (AttrCalibrator allowedVerbs); (3) dictionary-verified Read on held items. No text mining (D24) | Claude draft, Codex review |
+| T13 | Perilous Magic score 17/3 (status row prints clock hours in its score slot) | FIXED generally (D208): a status Score contradicted by the story SCORE reply at the same moment, or above the reply maximum, is rejected for that story; a stale status-sourced score (column gone) is re-asked on Equipment open; announced deltas count whenever the row is not currently showing a trusted score (also fixes narrow/phone rows). stat-tracker 201, equipment 112, stat-tracker-live 12 | Claude; Codex audit |
+| T14 | Treasures Score and Quest Rate duplicate (I1) | October7 regression reproduced with actual restored43 save: dynamic evidence resets and needs two distinct values. Fixed with executable-authenticated semantic relationship, retaining current confirmation/value/max/SCORE-max guards and unknown-game dynamic learning. One Quest Rate row plus rank on first restored Equipment/reopen at360/1280, DOM and tracker verified | Codex writer; independent delegated blind investigation, adversarial plan and implementation ACCEPT; Claude notified bus1629/1630. Alias33/0, statistics204/0, equipment112/0. D209 amended; shellv126; APK rebuilt October7, signature and64 packaged-runtime hashes verified. |
+| T15 | Long-press radial triggers native text selection (I2) | CONSENSUS #1537: root cause Actionable.js:690 (suppression removed when the timer fires); keep suppression through a successful hold on underline/Map note-hold/Send/input-line; target-bound selection clear; D105 LineInput copy/paste kept; plain text selectable | Codex writes, Claude audits -- **SOURCE DONE**: implemented (Codex), audited and accepted (#1562); Input predicates by Claude. PHYSICAL ANDROID CHECK pending (operator). D210. |
+| T16 | Mic voice-to-text slow until phone reboot, NEW (I3) | CONSENSUS #1537 on hardening (settle barrier, never await native.stop, timeout abandon, bounded TTS stop, backoff) plus a metadata diagnostics ring. OPERATOR NOTE: long-standing code cannot be the NEW cause; speech code is unchanged in git since the first commit, so the investigation must target what changed (recent uncommitted ReadAloud/Input work) | Claude writes after P2 releases Input.js; Codex audits -- **INPUT + READALOUD SOURCE ACCEPTED** (Input accepted by Codex #1575/#1579; ReadAloud accepted by Claude #1578, verdict accepted #1579). p3-mic-lifecycle 21/0, d100 33/0, d95 31/0. Root cause UNPROVEN: operator to run /micdiag after a slow episode (session/build/release-to-settle). D211. |
+| T17 | Newly started Anchorhead shows Turns622 | D152/D153 repair: slot2 seeding restricted to v3; divergent behavioral counter totals stay ambiguous; v4+ retained turn pins rederive on story load. Real RAM622 is File Room location while turn globals4/10 are6 on measured early route. Exact operator path/persisted pin not captured | Codex writer, delegated independent blind investigation/adversarial plan accepted; regression12/0, stats204/0, equipment112/0, D20933/0. Claude independent implementation ACCEPT #1638. Shellv127; operator builds APK manually. |
+
+### Reported defects (operator, Treasures of a Slaver's Kingdom, mobile)
+
+1. VON DARTH THE SLY is printed twice in the Gravel Pit but gets no underline or actions.
+2. The GLADIUS SWORD is triggered by the word "the": on Abandoned Quarry and Winding Trail
+   "of the" / "the" / "view of the" are marked and the radial submits `examine the`, which
+   the game answers with "(the GLADIUS SWORD)". Any printed "the" becomes a sword mark.
+
+### Root causes (current code, verified)
+
+- **Defect 2:** `Actionable.promoteUnnamed` (js/Actionable.js:828-836) labels a D184
+  unnamed candidate with the longest of its own parser words printed this turn. The
+  gladius's parser words include "the". When the sword is held, "sword"/"gladius" are not
+  printed in the room text, so the only match is "the". `observedPhraseFor` then builds
+  multi-word labels such as "view of the" from adjacent vocabulary. Named objects already
+  reject these grammar particles (`namePhrases` js/Actionable.js:994, alias loop :1352).
+  The unnamed path was never given the same rule.
+- **Defect 1:** Codex live proof (#1377). Actor 196 Von Darth has parent 186, which is the
+  player's room. He has an empty short name, `animate`/`proper` set, parser words
+  von/darth/the/sly/man/person, and no children. `ZRamReader.scopeObjects`
+  (js/ZRamReader.js:1819) returns for an unnamed *animate* child **before** recording the
+  D184 candidate (:1834-1836), so the actor never reaches `promoteUnnamed`. The non-animate
+  unnamed GLADIUS passes the same path and is marked. The MACHETE has no RAM object at the
+  encounter (actor child 0), so it is prose only and out of scope (D24).
+- **Latent, exposed by fixing defect 1:** `takeable` is derived as `!static && !scenery`
+  (js/AttributeSchema.js:134), so an Inform person reads takeable and
+  `commandsForEvidenceObject` would offer TAKE on an actor.
+
+### Cross-check: plan and architecture
+
+- D24: no prose-mined objects. Every step uses only RAM-scoped objects and their own parser
+  vocabulary. The printed text only confirms which in-scope word is visible (D64/D184).
+- D57 and ARCHITECTURE_UML.md:1297: an unnamed animate wrapper is **not recursed**. This
+  plan preserves that. Only the wrapper's own vocabulary is recorded, never its contents.
+- ARCHITECTURE_UML.md:592 (§5, "animate -> Recurse held/worn") is older than D57/D68 and
+  is not implemented. This plan does **not** implement it, because no held item is proven
+  in RAM. The docs step reconciles line 592 to the D57 rule, so the matrix stops promising
+  behaviour the code deliberately lacks.
+- D82: the player is blocked in `promoteUnnamed` (:793). D201 (ARCHITECTURE_UML.md §D201,
+  line 3242) owns the player-candidate evidence: declared animate plus parser self alias.
+- D145/D190/D201: promoted candidates carry declared attributes only when the module's
+  attribute-name table decodes. Otherwise the radial stays inspect-only. A ZIL or undecoded
+  game therefore gains a mark and Examine for an actor, never invented talk/attack verbs.
+- D31: an animate in-scope object already receives "Ask about..." (js/Actionable.js:576)
+  and a recipient-first ring for give/show/ask/tell (:1637-1648). No new action code.
+
+### Serial steps (each: writer implements, reviewer audits the current checkout, then next)
+
+**Step 1 — grammar particles never trigger an unnamed candidate.**
+Writer: Codex. Reviewer: Claude.
+Paths: js/Actionable.js (`promoteUnnamed`, and the promoted-candidate call into
+`observedPhraseFor`), and a focused regression fixture of Codex's choosing.
+Rule: apply the existing seven-particle set (a/an/the/of/and/or/to, the same set as
+:994/:1352, shared rather than copied a third time) to **promoted unnamed candidates only**.
+Such a candidate's trigger word may not be a particle. Its observed label may not start or
+end with a particle, and may not consist only of particles. Named objects and their
+structural proper names are unchanged: "the Order" keeps its label, and
+`observedPhraseFor`'s behaviour for named objects is not changed globally. No new stopword
+list.
+Acceptance:
+- Treasures: Winding Trail and Abandoned Quarry with the sword held show no mark on
+  "the"/"of the"/"view of the". This is checked across **every** promoted candidate, not
+  only the sword. Codex's encounter evidence shows object 240 (view of mountains) also
+  marks "the".
+- A room printing GLADIUS SWORD still marks it, and the radial submits `examine gladius`
+  or `examine sword`.
+- wump2ka food pellets (the D184 origin case) are still marked.
+
+**Step 2 — record unnamed animate actors as candidates, without recursion.**
+Writer: Codex. Reviewer: Claude.
+Paths: js/ZRamReader.js:1817-1840, js/Actionable.js (`promoteUnnamed` blocker), and the
+regression fixture.
+Rule: when an unnamed child is animate, push `{id, parentId, aliases}` to `candidates`,
+then return **without** `walk()`. The `scopeObjects` return array is unchanged.
+`promoteUnnamed` additionally blocks the D75 confirmed inventory root
+(`AttrCalibrator.confirmedInventoryRootId(mem)`, js/AttrCalibrator.js:1089) when it differs from
+`playerId`.
+Acceptance:
+- Treasures Gravel Pit: VON DARTH is marked on desktop and at 360 px. The radial offers
+  Examine, and the game accepts it.
+- No PC promotion on wump2ka across 3 runs, and none on 905.
+- Anchorhead, LostPig and 905 discoveredObjects are unchanged (the D184 revert set).
+- Heist and SpiritWrak mark sets are unchanged.
+
+**Step 2b — promoted actors visible to the D88 Ask-about consumer.**
+Writer: Codex. Reviewer: Claude. Added after the Step 2 audit (Claude #1395 E4, Codex #1396).
+Cause: the SemanticActions cutover is on by default (js/SemanticActions.js:107), and
+`payloadPoolFor` (:204-208) reads only `discoveredObjects` and `inventory`. Promoted
+unnamed rows exist only in `Actionable.payloadPool`, so `resolveAskAboutFormsForObject`
+never finds a promoted actor and returns no topics.
+Paths: js/SemanticActions.js, plus a focused fixture.
+Rule: only when the supplied payload **is** `WorldModel.lastPayload` and
+`Actionable.payloadPool` exists, use that current recovered pool. An explicit older or test
+snapshot keeps its own payload path, so it never borrows current-world actor ids.
+Acceptance:
+
+- harness/d88-semantic-parity.js stays green (24).
+- An old-snapshot negative test passes.
+- A promoted-actor topics unit test passes.
+- Treasures is **not** an acceptance case, because its grammar rejects ASK ("This computeth
+  not."). Whether Ask is offered without grammar evidence is a Step 5 question, for both the
+  legacy and semantic paths.
+
+**Step 3 — no TAKE on animate objects in room context.**
+Writer: Codex. Reviewer: Claude.
+Paths: js/ActionSynth.js `commandsForObject` room branch (:244), which covers both the
+named path and `commandsForEvidenceObject`.
+Rule: in room context, `attrs.animate` (after `trustworthyAttrs`) removes `take`, **unless**
+`AttrCalibrator.allowedVerbsFor(id)` has learned `take` for that object from an observed
+successful take. A genuinely takeable small animal keeps its proven capability. Codex
+measured actor 196 as reading animate=true and takeable=true, so the gate is required, not
+hypothetical.
+Acceptance:
+- Von Darth's radial has no Take.
+- The Heist mourners have no Take.
+- An ordinary takeable item still offers Take.
+- An animate object with learned `take` still offers Take (fixture).
+- Equipment112 and the focused action fixtures pass.
+
+**Step 4 — documentation.** Writer: Claude. Reviewer: Codex.
+Paths: PRODUCTION_PLAN.md (new D-entry covering steps 1-3), ARCHITECTURE_UML.md
+(§5 line 592 reconciled to D57; note at :1297 that an unnamed animate is a vocabulary
+candidate but never a recursion root; D184 particle rule), and docs/DECISION-INDEX.md
+regenerated with `node tools/decision-index.js`.
+
+**Step 5 — enemy interactions: evidence-driven decision (planning and audit first).**
+Writers: Codex (discovery evidence) and Claude (decision draft), each auditing the other.
+The operator asked for actions on enemies, and steps 1-3 deliver discovery plus
+Examine/Ask/Talk only, so the goal is **not** complete at step 4.
+This step determines which interactions the module's own compiled grammar and per-object
+evidence actually support (for example, attack/hit/kill grammar lines whose noun token
+accepts animate objects, or AttrCalibrator-observed accepted forms). It implements only
+licensed forms, serially and with audit. Hostility or Attack is never inferred from
+dictionary membership or prose (D24, D147 dictionary-verified verb rule). If no evidence
+licenses a form, the honest result is no combat verb, and that is recorded.
+
+**Step 6: every status-screen command is headless, in every module (T5).**
+Writers: Codex and Claude, splitting the catalog. Each audits the other's half.
+Operator rule: a status prompt bypasses the transcript **and** read-aloud. Only a command
+the player actually types or explicitly chooses as a game action goes through the normal
+channel. "No command from the status screen is ever supposed to be live."
+Prior decisions: D188 (an injected command is not headless), D204 probe ownership
+(`beginProbeOwnership`, `pl-stat-probe`, StatTracker.js:3353-3356, 3457-3610), the
+inventory `pl-carry-probe` path (Actionable.js:1306), and the ReadAloud skip (ReadAloud.js:240-241).
+Claude first evidence (Treasures, 1280 and 360, desktop browser): first open, Refresh and
+reopen all submit `inventory`/`score`/`prowess` as `stat-probe`. Every added line is clipped
+or hidden, the transcript screenshot is clean, and nothing reaches read-aloud. So the leak
+the operator sees is **not** reproduced on that path yet.
+Still to cover:
+
+- Every module with a ModuleStatFacts entry, plus ordinary SCORE/DIAGNOSE games: Equipment
+  open, Refresh, reopen, and Identify stats.
+- Read-aloud measured through the real speech queue, not only DOM classes.
+- States: a mid-turn event during the probe (combat, NPC action, timed text), a probe
+  costing a turn, a question prompt pending, and a mobile long-press opening.
+- The status-screen item actions (EquipmentUI.js:98 `selectYourselfAction`, :942 drag/drop
+  submit): the operator rule must decide whether a deliberate item action is "live".
+
+Acceptance: zero visible probe echo or reply lines and zero spoken probe text across the
+catalog sweep. Each failure is fixed at the shared ownership layer, never per title.
+
+**Step 6 root cause (Claude #1419, verified by Codex #1421).** `claimProbeNode`
+(StatTracker.js:3512-3607) hides a measured probe's line only if it matches that family's
+reply regex ("fail visible", :3513). `PROWESS_REPLY` (:441) encodes only the unarmed,
+uninjured state. The operator's screenshot reply ("You wield the GLADIUS SWORD ... Hit Points
+are 9 (out of 16).") is not owned, so it is printed and spoken. Every family regex has the
+same single-observed-state limit.
+
+**Step 6 serial order (amended per Codex #1421/#1423).**
+
+*6a: origin-span ownership.*
+Writer: Claude. Reviewer: Codex.
+Paths:
+- js/StatTracker.js (`claimProbeNode`, `ensureProbeDomGuard`, `beginProbeOwnership`, `endProbeOwnership`)
+- js/ReadAloud.js (`collectNewLines`)
+- new harness/status-probe-headless.js (unit and live)
+
+**Operator rule, final (2026-10-05).** The operator's example: mid-battle you open your
+inventory and the enemy attacks. You hear the attack while in the inventory, and see it
+printed when you back out, but you never see or hear anything that came from the status
+commands. This supersedes the interim "hide the whole turn" reading (#1435).
+
+Implemented (#1455/#1458):
+
+- Every line of a probe span is hidden at insertion, so nothing flashes.
+- When the span ends, the probe's echo and reply stay hidden. The reply is the first
+  paragraph, plus a paragraph introduced by a line ending in ":", plus known reply forms.
+- A **META** probe (Inform 6 dictionary flag 0x02) keeps its whole span hidden, because it
+  never runs the turn sequence.
+- Otherwise the later paragraphs are the turn's events. They are revealed and spoken.
+- Lines that existed before the probe was submitted are never touched.
+
+**Operator ruling on the residual (2026-10-05): "Show the attack".** This applies to a
+non-META or flagless (Inform 7) probe that takes a turn. An unrecognised later paragraph is
+**shown and spoken**, because hiding it would hide real attacks, such as Treasures' "VON
+DARTH THE SLY attacks!". The accepted cost: an unfamiliar extra status paragraph may
+occasionally show. When one is spotted, it is added to `isKnownProbeReplyLine` (a shared
+form, never per title). META probes and colon-continued replies stay wholly hidden.
+
+Rules:
+
+1. Display and speech ownership derive from the **stat-probe origin and its bounded response
+   span** (from the probe Submit to the VM's next prompt), never from a metric regex. The
+   regexes and parsers keep deciding only what is *learned*, plus the reply and event
+   separation described above.
+2. Text or span nodes appended into an **existing** BufferLine during the span resolve to
+   their closest BufferLine and are owned. Today plain-text addedNodes and ordinary
+   `Style_normal` spans are ignored.
+3. Reused prompt line: speech excludes only the owned descendant text and keeps any new
+   visible narration in the same line. It never skips the whole line because one child
+   is owned.
+4. Lifetime guards. Nothing is owned after the next prompt, cancellation, timeout,
+   restore, new game or undo, or without an active probe Submit. The live input node is
+   preserved. Ownership never leaks across story generations. CharInput, terminal
+   prompts and the RETURN continuation are explicit boundaries.
+
+Acceptance:
+
+- Unit: appended text/span, mixed reused line, each lifetime boundary, and no owner leaking
+  past the next prompt.
+- Live: Treasures prowess in a non-starting state, with zero visible and zero spoken probe
+  text.
+- Speech measured with `window.__PL_TEST_SPEECH = true` and a stubbed engine, plus a
+  **positive LOOK control** proving that ordinary narration is still spoken. Both the
+  browser path and the native-plugin text path are covered via the existing boundary mock.
+- Existing suites stay green: StatTracker, Equipment112, d201, parity24, and the D188
+  no-auto-probe assertion.
+
+*6b: catalog sweep.*
+**Operator scope (2026-10-05, corrected):** FULL sweep for EVERY manifest module and probe row, with no slimming. Each row: Equipment open, Refresh, reopen and Identify stats, at both 1280 and 360, asserting 0 visible and 0 spoken probe text and, where a turn passes, that real events are shown and spoken. Failures are fixed only in the shared rule. (An earlier slimmed scope was recorded in error; the operator did not agree to it.)
+Writers: Codex derives the exact executable+command manifest from the **effective
+measured facts**: core StatTracker overlays (prowess etc.), ModuleStatFacts (22),
+ModuleStatFactsClaude (56), plus ordinary SCORE/DIAGNOSE, deduped. Each seat then sweeps
+its own registry's rows; core overlays and ordinary rows go to Codex. Each audits the
+other's failures.
+Paths: the harness from 6a, run per row (open, Refresh, reopen, Identify; 1280 and 360).
+
+*6c: fixes from the sweep, at the shared layer only.* Writer: whoever owns the failing
+layer; the other audits.
+
+Not in Step 6 (separate decisions, recorded so they are not re-derived):
+
+- **Turn-costing auto-probes.** Existing inventory probes already advance combat and hide
+  the attack text in games where a probe costs a turn. Changing when probes run needs its
+  own agreed rule, facts and API, and an operator decision.
+- **Deliberate item actions on the status screen** (EquipmentUI.js:98 and :942): awaiting
+  the operator's ruling on whether they are "live".
+
+Out of scope for steps 1-4 (recorded so it is not re-derived):
+- Actor-held items: no RAM evidence yet.
+- Marking an actor's secondary aliases once its name is marked: D146, one mark per object.
+- Combat or attack verbs. These are deferred to step 5, not dropped.
+
 ## Stored Plan: D113 Non-Live Adaptive Tutorial
 
 State: FULLY PLANNED; READY FOR LATER IMPLEMENTATION AFTER THE CURRENT ACTIVE WORK.
@@ -874,3 +1153,113 @@ the buffer's computed `padding-top` and the mask's height in the same frame.
 
 Each gets its regression coverage in the same pass, and `CACHE_VERSION` bumps once at
 the end.
+
+## Active Plan: T10 quick repeat and command-history radial (2026-10-05)
+
+State: DRAFT FOR CODEX REVIEW. Writer: Claude. Reviewer: Codex. Runs in parallel with the
+Step 6b sweep and touches no Step 6 file.
+
+Operator requirements (verbatim intent):
+
+1. Tapping Submit with an **empty** bar repeats the last command.
+2. **Holding** Submit opens a dedicated radial of the recently submitted commands, newest
+   first, in the order they were typed. It does not open the general suggestions radial. That
+   radial stays on the input-line hold (Input.js:298) and desktop right-click, so nothing is
+   lost: Submit's hold (:380) duplicates it today.
+3. Selecting a history item **submits** it at once. It never merely fills the bar.
+   The history contains ONLY text the player actually submitted (typed, radial-tapped or
+   spoken), never an automatic status probe (operator).
+4. Long commands are truncated readably in the radial: cut at a word boundary with an
+   ellipsis, keeping the leading verb. The full command is what gets submitted.
+5. The tutorial teaches both gestures.
+
+Design (existing systems reused, nothing new built):
+
+- History source: `ParchLockQol.GetHistory()` (Qol.js:251), which reads `.Style_input` echoes
+  newest first, deduplicated, up to 30. **Required fix:** skip echoes inside
+  `.pl-stat-probe` / `.pl-carry-probe`, so a hidden status probe ("score", "prowess") is never
+  repeated or listed. This also applies to the existing /history screen and arrow-key recall.
+- Tap: `Input.SubmitPrompt` (Input.js:136). When a LineInput is visible and its value is empty
+  after trim, submit `GetHistory()[0]` through the normal path (`Input.Inject(cmd, true)`). The
+  transcript echo shows what was repeated. An empty history keeps today's behaviour. A
+  CharInput keeps today's behaviour.
+- Hold: `BindInputRadialTouch` (Input.js:376) opens
+  `ParchLockQol.OpenRadial(..., historyItems, { source: "history" })`. Items are
+  `{ Label: truncated, Command: full, Enter: true, Action: submit }`. The radial's existing
+  paging ("More...") shows the rest. Desktop gets the same through a contextmenu or long-press
+  on the Submit button. If there is no history yet, the hold shows a single disabled
+  "No commands yet" or does nothing.
+- Truncation helper: one shared `ParchLockQol.HistoryLabel(cmd, max)`.
+- Tutorial: the "Send and speak" step (Tutorial.js ~126) body adds "Tap Send on an empty line
+  to repeat your last command; hold it to pick from your recent commands." The mobile and
+  desktop variants follow the step's existing pattern.
+
+Acceptance:
+
+- d105-input-contract stays green.
+- New focused cases:
+  - empty-tap repeats the last command;
+  - non-empty tap submits the bar as today;
+  - the hold lists newest first and excludes probe echoes;
+  - selecting an item submits it (an echo appears; the bar is not left filled);
+  - a long label is truncated at a word boundary with the verb kept;
+  - CharInput is unchanged.
+- shared-radial-integration and tutorial-live stay green.
+- One live mobile (360) proof on a real module.
+
+T10 amendments (Codex #1476, accepted by Claude):
+
+1. Provenance: history excludes an echo whose line or any ancestor is probe-owned
+   (`closest('.pl-stat-probe, .pl-carry-probe')`), never by verb string. A player-typed
+   "score" or "inventory" stays in the history.
+2. Guards: act only with exactly one eligible visible LineInput, behind the existing modal and
+   CanInject guards. CharInput is unchanged. The RETURN continuation and multi-window ambiguity
+   are verified.
+3. Hold, then touchend: the existing suppress-click state is set before the history radial
+   opens. Selecting an item produces exactly ONE Submit, with no trailing synthetic tap.
+4. Desktop: contextmenu or pointer hold on Submit opens the history radial. The input-line
+   general radial is untouched. A history Action goes through the normal Inject path and its
+   source, so map, learning and timestamps still record.
+5. Only the label truncates; Command is always the full text. A single overlong word is
+   hard-cut with an ellipsis.
+
+Sequencing: NO runtime edit (Input/Qol/Tutorial) until both Step 6b sweeps finish, because
+those files are part of the source under test. Focused tests (including real touch
+suppression and keyboard cases) are written first, as a new harness file.
+
+## Draft Plan: Step 5 enemy interactions and the D163 "assail" compass entry (2026-10-05)
+
+State: DRAFT by Claude for Codex adversarial review (Codex rate-limited). No runtime edits.
+
+**Evidence (Treasures, Gravel Pit, Von Darth = unnamed animate obj 196, D206):** every one of
+`attack sly`, `kill sly`, `hit sly`, `fight sly` and `assail sly` is ACCEPTED as a real combat
+round, with damage dealt and taken (one `fight` round ended in the player's defeat). Bare
+`assail` is also accepted (Codex #1434). Treasures rejects ASK ("This computeth not.").
+
+**T4 defect explained (for the operator).** D163 (MapTopology.js:597-615) records a typed
+command as an in-room "sub-location" step whenever the room id stays the same but the printed
+room name changes (built for Anchorhead's "stand on can"). Typing `assail` started the fight
+and changed the printed location heading without leaving room 186, so D163 saved "assail" as a
+compass entry in the Gravel Pit. It is a false map entry: a combat action mistaken for
+movement.
+
+Options for review:
+
+- **Combat verbs.** Option A (Codex #1434): an executable-owned capability fact (zero-argument
+  `assail` while the combat context persists). Option B: offer `attack <actor>` on an animate,
+  in-scope actor only when the story's own dictionary carries the verb flag for it (D147
+  dictionary-verified verbs). It would be tested per game for acceptance, never assumed
+  hostility. The evidence above shows B is accepted in Treasures. Codex's earlier objection
+  ("no Attack from lexical membership alone") must be resolved with catalogue evidence before
+  choosing.
+- **D163.** Option 1: do not record a sub-location step when the command's verb is one the
+  story uses for combat (needs the same evidence as above). Option 2: require the changed name
+  to persist on a following LOOK before recording the step. Option 2 is general and needs no
+  verb list.
+
+Acceptance (to be agreed):
+
+- The Treasures enemy radial offers an accepted attack form.
+- A friendly NPC is never offered combat without evidence.
+- No "assail" compass entry after a fight.
+- Anchorhead's "stand on can" step is still learned.

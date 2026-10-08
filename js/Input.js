@@ -59,6 +59,10 @@ var Input = {
                appends to whatever the box already held. */
             // D100: new player turn — clear ReadAloud fingerprints (Claude #650).
             try { if (source !== "stat-probe" && typeof ReadAloud !== "undefined" && ReadAloud.onPlayerTurn) ReadAloud.onPlayerTurn(); } catch (eRA) {}
+            // T10 (operator): every command the player sends -- radial, map,
+            // menu, repeat or the Send button -- joins the recent-command
+            // history. Automatic status probes never do.
+            try { if (source !== "stat-probe" && typeof ParchLockQol !== "undefined" && ParchLockQol.RecordSent) ParchLockQol.RecordSent($(".Input.LineInput").val()); } catch (eRS) {}
             try {
                 var finalValue = $(".Input.LineInput").val();
                 if (typeof AttrCalibrator !== "undefined") {
@@ -152,7 +156,23 @@ var Input = {
             if (Input._kbIntent !== "char") Input.DismissKeyboard();
             return true;
         }
-        if ($(".Input.LineInput:visible").length) {
+        var $line = $(".Input.LineInput:visible");
+        // Exactly one eligible line prompt or fail closed (D105 rule, as for
+        // char prompts): with several, neither a repeat nor a send is safe.
+        if ($line.length > 1) return true;
+        // T10 (operator): Send on an EMPTY line repeats the last command the
+        // player submitted. Exactly one eligible line prompt; anything typed
+        // is submitted as before; no history keeps the old behaviour.
+        if ($line.length === 1 && !String($line.val() || "").trim()) {
+            var last = null;
+            try { last = ParchLockQol.GetHistory()[0] || null; } catch (eH) {}
+            if (last && typeof Actionable !== "undefined" && Actionable.Submit) {
+                Actionable.Submit(last);
+                if (Input.ManagesMobileIme()) Input.DismissKeyboard();
+                return true;
+            }
+        }
+        if ($line.length) {
             Input.Inject("", true);
             // D105: the keyboard retracts after a submitted command so it never covers the reply.
             if (Input.ManagesMobileIme()) Input.DismissKeyboard();
@@ -207,7 +227,29 @@ var Input = {
 
     BindInputRow: () => {
 
+        // T10: a command typed and sent with Enter joins the recent-command
+        // history. Capture phase on the document, so no handler that stops
+        // propagation (mobile line handling) can hide it. Synthetic sends go
+        // through Input.Inject, which records them itself.
+        if (!Input._sentCaptureBound) {
+            Input._sentCaptureBound = true;
+            document.addEventListener("keydown", function (e) {
+                try {
+                    if (!(e.key === "Enter" || e.keyCode === 13) || !e.isTrusted) return;
+                    if (e.target && $(e.target).closest("#message, #dialog, #pl-key-proxy").length) return;
+                    // Mobile keeps the line field unfocused, so Enter arrives on the
+                    // page while the one line prompt holds the text being sent.
+                    var $l = $(e.target).is(".Input.LineInput") ? $(e.target) : $(".Input.LineInput");
+                    if ($l.length === 1 && String($l.val() || "").trim()
+                        && typeof ParchLockQol !== "undefined" && ParchLockQol.RecordSent) ParchLockQol.RecordSent($l.val());
+                } catch (eRS) {}
+            }, true);
+        }
+
         $("#pl-input-submit").off("click.pmInputRow").on("click.pmInputRow", () => {
+            // T10: the click trailing a hold that opened the history radial is
+            // not a tap -- with the empty-line repeat it would resend a command.
+            if (Date.now() - (Input._submitHoldAt || 0) < 800) return;
             Input.SubmitPrompt();
         });
 
@@ -275,6 +317,7 @@ var Input = {
         // Line field touch: short tap = open keyboard; long-press = radial
         // (does not open keyboard). Accidental brushes while scrolling the
         // story must not set pmUserFocus.
+        Actionable.endHoldSelection(Input._lineTouch);
         $(document).off("touchstart.pmLineTap touchmove.pmLineTap touchend.pmLineTap touchcancel.pmLineTap");
         $(document).on("touchstart.pmLineTap", ".Input.LineInput", function (e) {
             if (!Input.ManagesMobileIme()) return;
@@ -290,17 +333,20 @@ var Input = {
             e.preventDefault();
             var state = {
                 el: el,
+                touchId: touch.identifier,
                 startX: touch.clientX,
                 startY: touch.clientY,
                 long: false,
                 moved: false
             };
             Input._lineTouch = state;
+            Actionable.beginHoldSelection(state);
             var cancelPx = typeof Actionable !== "undefined" ? Actionable.LongPressMoveCancelPx : 20;
             var longMs = typeof Actionable !== "undefined" ? Actionable.LongPressMs : 500;
             state.timer = setTimeout(function () {
                 if (Input._lineTouch !== state) return;
                 state.long = true;
+                Actionable.fireHoldSelection(state);
                 // Long-press: input radial, no keyboard.
                 try {
                     var commands = ParchLockQol.GetRadialCommands();
@@ -314,18 +360,25 @@ var Input = {
                 var t = ts && ts[0];
                 if (!t) return;
                 var dx = t.clientX - state.startX, dy = t.clientY - state.startY;
-                if ((dx * dx + dy * dy) > (cancelPx * cancelPx)) {
+                // Movement cancels only a PENDING hold; once the radial is open
+                // the finger may travel to the ring and keeps suppression (P2).
+                if (!state.long && (dx * dx + dy * dy) > (cancelPx * cancelPx)) {
                     state.moved = true;
+                    Actionable.endHoldSelection(state);
                     clearTimeout(state.timer);
                     Input._lineTouch = null;
                 }
             };
             $(document).on("touchmove.pmLineTap", state.moveHandler);
+            // Whatever ends this hold (including off-target capture cleanup)
+            // also removes the dynamic document touchmove callback.
+            state.selectionCleanup = function () { $(document).off("touchmove.pmLineTap", state.moveHandler); };
         }).on("touchend.pmLineTap", ".Input.LineInput", function (e) {
             if (!Input.ManagesMobileIme()) return;
             var state = Input._lineTouch;
             if (!state || state.el !== this) return;
             clearTimeout(state.timer);
+            Actionable.endHoldSelection(state);
             $(document).off("touchmove.pmLineTap", state.moveHandler);
             Input._lineTouch = null;
             if (state.long || state.moved) {
@@ -342,6 +395,7 @@ var Input = {
             var state = Input._lineTouch;
             if (!state || state.el !== this) return;
             clearTimeout(state.timer);
+            Actionable.endHoldSelection(state);
             $(document).off("touchmove.pmLineTap", state.moveHandler);
             Input._lineTouch = null;
         });
@@ -376,20 +430,27 @@ var Input = {
     BindInputRadialTouch: () => {
 
         var $submit = $("#pl-input-submit");
+        Actionable.endHoldSelection(Input._submitTouch);
         $submit.off("touchstart.pmInputRadial touchmove.pmInputRadial touchend.pmInputRadial touchcancel.pmInputRadial");
         $submit.on("touchstart.pmInputRadial", function (e) {
             var touches = e.originalEvent && e.originalEvent.touches;
             var touch = touches && touches[0];
             if (!touch) return;
             var el = this;
-            Input._submitTouch = { el: el, startX: touch.clientX, startY: touch.clientY, fired: false };
+            Input._submitTouch = { el: el, startX: touch.clientX, startY: touch.clientY, fired: false, touchId: touch.identifier };
             var state = Input._submitTouch;
+            Actionable.beginHoldSelection(state);
             state.timer = setTimeout(function () {
                 if (Input._submitTouch !== state) return;
                 state.fired = true;
-                var commands = ParchLockQol.GetRadialCommands();
+                Actionable.fireHoldSelection(state);
+                Input._submitHoldAt = Date.now();
+                // T10 (operator): holding Send opens the player's recent
+                // commands. The general radial stays on the input-line hold
+                // and right-click, so nothing is lost.
+                var commands = ParchLockQol.GetHistoryRadialCommands();
                 var r = el.getBoundingClientRect();
-                ParchLockQol.OpenRadial(r.left + r.width / 2, r.top + r.height / 2, commands, { source: "input" });
+                ParchLockQol.OpenRadial(r.left + r.width / 2, r.top + r.height / 2, commands, { source: "history" });
             }, typeof Actionable !== "undefined" ? Actionable.LongPressMs : 500);
         }).on("touchmove.pmInputRadial", function (e) {
             var state = Input._submitTouch;
@@ -399,25 +460,31 @@ var Input = {
             if (!touch) return;
             var dx = touch.clientX - state.startX, dy = touch.clientY - state.startY;
             var cancelPx = typeof Actionable !== "undefined" ? Actionable.LongPressMoveCancelPx : 20;
-            if ((dx * dx + dy * dy) > (cancelPx * cancelPx)) {
+            // Only a pending hold is cancelled by movement (P2); a fired one
+            // keeps suppression while the finger moves to the history ring.
+            if (!state.fired && (dx * dx + dy * dy) > (cancelPx * cancelPx)) {
                 clearTimeout(state.timer);
+                Actionable.endHoldSelection(state);
                 Input._submitTouch = null;
             }
         }).on("touchend.pmInputRadial", function (e) {
             var state = Input._submitTouch;
             if (!state || state.el !== this) return;
             clearTimeout(state.timer);
+            Actionable.endHoldSelection(state);
             if (state.fired) {
                 // Duplicate-submission prevention: the long-press already
                 // opened the radial -- stop this touch's own trailing
                 // synthetic click from ALSO submitting the line.
                 e.preventDefault();
+                Input._submitHoldAt = Date.now();   // T10: also guard a late click
             }
             Input._submitTouch = null;
         }).on("touchcancel.pmInputRadial", function () {
             var state = Input._submitTouch;
             if (!state || state.el !== this) return;
             clearTimeout(state.timer);
+            Actionable.endHoldSelection(state);
             Input._submitTouch = null;
         });
     },
@@ -611,15 +678,92 @@ var Input = {
             }).catch((err) => ({ ok: false, message: "Voice input failed" + (err && err.message ? " (" + err.message + ")" : "") }));
         },
         // One recognizer session. Resolves {text} or {err} -- never rejects.
+        // ---- I3/P3 lifecycle + diagnostics (metadata only, never recognised text) ----
+        // The recognizer's real end is its START promise settling (onResults /
+        // onError). The installed plugin's stop() call is never resolved, so it
+        // is fired and never awaited. `live` is the most recent segment, across
+        // gestures, so a new press can wait for it to end.
+        live: null,
+        diag: {
+            ring: [],
+            // A JS session id and boot time tell a slow episode in a demonstrably
+            // fresh runtime apart from a resumed one (closing the app need not
+            // destroy the WebView). The build is read once, asynchronously.
+            session: { id: Math.random().toString(36).slice(2, 10), bootAt: Date.now() },
+            // App and shell results are stored separately and composed at export,
+            // so neither async completion order can lose the other.
+            build: null,
+            buildApp: "",
+            buildShell: "",
+            readBuild: () => {
+                var d = Input.Mic.diag;
+                if (d.build !== null) return;
+                d.build = "";
+                try {
+                    var app = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App;
+                    if (app && app.getInfo) app.getInfo().then((i) => { d.buildApp = (i && (i.version + "/" + i.build)) || ""; }, () => {});
+                } catch (e) {}
+                try {
+                    if (window.caches && caches.keys) caches.keys().then((ks) => {
+                        d.buildShell = ks.filter((x) => /^parchlock-shell/.test(x)).pop() || "";
+                    }, () => {});
+                } catch (e) {}
+            },
+            buildText: () => { var d = Input.Mic.diag; return [d.buildApp, d.buildShell].filter(Boolean).join(" "); },
+            add: (type, data) => {
+                Input.Mic.diag.readBuild();
+                var r = Input.Mic.diag.ring, tts = (typeof ReadAloud !== "undefined" && ReadAloud.ttsCounts) || {};
+                r.push(Object.assign({ t: Date.now(), type: type, ttsSpeak: tts.speak || 0, ttsStop: tts.stop || 0, ttsStopFail: tts.stopFail || 0 }, data || {}));
+                if (r.length > 50) r.splice(0, r.length - 50);
+            },
+            export: () => JSON.stringify({ at: new Date().toISOString(), ua: (typeof navigator !== "undefined" && navigator.userAgent) || "",
+                session: Input.Mic.diag.session.id, sessionBootAt: new Date(Input.Mic.diag.session.bootAt).toISOString(),
+                uptimeMs: Date.now() - Input.Mic.diag.session.bootAt, build: Input.Mic.diag.buildText(),
+                backend: Input.NativeMicPlugin() ? "native" : "web", events: Input.Mic.diag.ring }, null, 1)
+        },
+        // Calls `then` once the previous segment has settled. After a bounded wait
+        // it is abandoned (its gesture epoch is already stale, so its text can
+        // never commit):
+        //   native -- the plugin destroys and recreates its recognizer per start;
+        //   web    -- the old SpeechRecognition is aborted, and a new one starts
+        //             only once that abort has actually ended it. A web session
+        //             that will not end fails closed (`fail`): never two at once.
+        whenIdle: (then, fail) => {
+            var M = Input.Mic, prev = M.live;
+            if (!prev || prev.settled) return then();
+            M.diag.add("wait-prev", { backend: prev.backend, ageMs: Date.now() - prev.startedAt });
+            var done = false, finish = (how) => {
+                if (done) return; done = true;
+                if (how === "settled") return then();
+                if (how === "abandon") {
+                    prev.abandoned = true;
+                    M.diag.add("abandon-prev", { backend: prev.backend, ageMs: Date.now() - prev.startedAt });
+                    if (M.live === prev) M.live = null;
+                    return then();
+                }
+                M.diag.add("prev-unresettable", { backend: prev.backend, ageMs: Date.now() - prev.startedAt });
+                if (fail) fail();
+            };
+            prev.promise.then(() => finish("settled"), () => finish("settled"));
+            setTimeout(() => {
+                if (done) return;
+                if (prev.backend !== "web") return finish("abandon");
+                prev.abandoned = true;
+                M.diag.add("abort-prev", { backend: "web", ageMs: Date.now() - prev.startedAt });
+                if (prev.abort) prev.abort();
+                setTimeout(() => finish("fail"), 1000);   // the abort's onend settles it -> "settled" first
+            }, 2500);
+        },
         segment: (continuous) => {
-            var native = Input.NativeMicPlugin();
+            var native = Input.NativeMicPlugin(), M = Input.Mic, s;
             if (native) {
-                return {
+                s = {
                     promise: native.start({ partialResults: false }).then(
                         (r) => ({ text: (r && r.matches && r.matches[0]) || "" }),
                         (err) => ({ err: err })),
                     stop: () => { try { native.stop().catch(() => {}); } catch (e) {} }
                 };
+                return M.track(s, "native");
             }
             var R = window.SpeechRecognition || window.webkitSpeechRecognition, rec = new R(), text = "";
             rec.continuous = !!continuous;
@@ -634,18 +778,37 @@ var Input = {
                 rec.onend = () => resolve({ text: text });
                 try { rec.start(); } catch (e) { resolve({ err: e, text: text }); }
             });
-            return { promise: promise, stop: () => { try { rec.stop(); } catch (e) {} } };
+            return M.track({ promise: promise, stop: () => { try { rec.stop(); } catch (e) {} },
+                abort: () => { try { rec.abort(); } catch (e) {} } }, "web");
+        },
+        // Stamps a segment's start/settle for the barrier and the diagnostics.
+        track: (s, backend) => {
+            var M = Input.Mic;
+            s.startedAt = Date.now(); s.settled = false; s.backend = backend;
+            M.live = s;
+            M.diag.add("start", { backend: backend });
+            s.promise = s.promise.then((r) => {
+                s.settled = true;
+                var code = r && r.err ? String((r.err && (r.err.error || r.err.code || r.err.message)) || r.err).slice(0, 40) : null;
+                M.diag.add("settle", { backend: backend, ms: Date.now() - s.startedAt, hasText: !!(r && r.text), err: code, abandoned: !!s.abandoned });
+                if (M.live === s) M.live = null;
+                return r;
+            });
+            return s;
         },
 
         // ---- gesture ----
         press: () => {
-            var M = Input.Mic;
-            try { if (typeof ReadAloud !== "undefined" && ReadAloud.stop) ReadAloud.stop(); } catch (e) {}
+            var M = Input.Mic, ttsStopped = Promise.resolve();
+            // Ignored presses and the tap-mode stop tap must not cancel narration
+            // deferred during recording (it resumes after commit) -- only a NEW
+            // recording silences read-aloud.
             if (M.finalizing) return;
             if (M.active) {                       // tap mode: second tap stops
                 if (!M.hold) M.release();
                 return;
             }
+            try { if (typeof ReadAloud !== "undefined" && ReadAloud.stop) ttsStopped = Promise.resolve(ReadAloud.stop()).catch(() => {}); } catch (e) {}
             M.hold = !(typeof Global !== "undefined" && Global.Prefs && Global.Prefs.MicHoldToTalk === false);
             M.epoch++; M.active = true; M.held = true; M.parts = []; M.seg = null;
             try { Input.DismissKeyboard(); } catch (e) {}
@@ -655,13 +818,24 @@ var Input = {
             // Watchdog: if the release event is ever lost (element hidden mid-press, OS
             // interruption) the mic must not stay lit and recording forever.
             if (M.hold) setTimeout(() => { if (M.epoch === e0 && M.held) M.release(); }, 60000);
-            M.run(M.epoch);
+            M.diag.add("press", { hold: M.hold });
+            // I3/P3: never start recognition over narration still releasing the
+            // audio (bounded: a hung TTS stop cannot block the mic), nor over a
+            // previous recognizer session that has not ended.
+            var ttsAt = Date.now();
+            Promise.race([ttsStopped.then(() => "settled"), new Promise((r) => setTimeout(() => r("timeout"), 600))]).then((how) => {
+                M.diag.add("tts-wait", { result: how, ms: Date.now() - ttsAt });
+                if (M.epoch !== e0) return;
+                M.whenIdle(() => { if (M.epoch === e0) M.run(e0); },
+                    () => { if (M.epoch === e0) M.commit(e0, false, "Voice input busy - try again"); });
+            });
         },
         release: () => {
             var M = Input.Mic;
             if (!M.active || M.finalizing) return;
             M.held = false;
             M.finalizing = true;
+            M.diag.add("release", { segPending: !!M.seg });
             M.ui("finishing");
             M.buzz(8);
             if (M.seg) M.seg.stop();
@@ -669,27 +843,40 @@ var Input = {
             setTimeout(() => { if (M.epoch === e && M.active) M.commit(e, true); }, 4000);
         },
         run: (e) => {
-            var M = Input.Mic, retries = 0;
+            var M = Input.Mic, retries = 0, empties = 0;
             var step = () => {
                 if (M.epoch !== e) return;
                 if (M.hold && !M.held) return M.commit(e);        // released before/between segments
                 var s = M.segment(M.hold);
                 M.seg = s;
                 s.promise.then((r) => {
-                    if (M.epoch !== e) return;
+                    if (M.epoch !== e) return;                    // abandoned or superseded: never commits
                     M.seg = null;
-                    if (r.text) M.parts.push(r.text);
+                    if (r.text) { M.parts.push(r.text); empties = 0; }
                     var c = r.err ? M.classify(r.err) : null;
                     if (c && !c.quiet) {
                         if (c.retry && retries++ < 2 && M.held) return setTimeout(step, 300);
                         if (c.perm) M.ready = false;
                         return M.commit(e, false, c.message);
                     }
-                    if (M.hold && M.held) return setTimeout(step, 150);   // recognizer ended by itself mid-hold: keep going
+                    if (M.hold && M.held) {
+                        // Recognizer ended by itself mid-hold: keep going. Only a segment
+                        // that ends EMPTY almost at once (< 1s -- the busy/error loop that
+                        // hammers the speech service) counts toward backoff; an ordinary
+                        // silence timeout during a pause resets it, so a held button keeps
+                        // listening through pauses and long dictation (I3/P3).
+                        var quick = !r.text && (Date.now() - s.startedAt) < 1000;
+                        if (!quick) empties = 0;
+                        else if (++empties >= 3) { M.diag.add("backoff-stop", { empties: empties }); return M.commit(e); }
+                        return setTimeout(step, quick ? Math.min(2000, 150 * Math.pow(2, empties)) : 150);
+                    }
                     M.commit(e);
                 });
             };
+            var ensureAt = Date.now();
+            M.diag.add("ensure-begin", { cached: !!M.ready });
             M.ensure().then((res) => {
+                M.diag.add("ensure-end", { ok: !!res.ok, ms: Date.now() - ensureAt });
                 if (M.epoch !== e) return;
                 if (!res.ok) return M.commit(e, false, res.message);
                 if (M.hold && !M.held) {
@@ -706,10 +893,16 @@ var Input = {
             M.epoch++;                             // any late engine callbacks are now stale
             if (M.seg && forced) M.seg.stop();
             var text = M.parts.join(" ").replace(/\s+/g, " ").trim();
+            M.diag.add("commit", { forced: !!forced, err: errMsg ? String(errMsg).slice(0, 40) : null, hasText: !!text, segments: M.parts.length });
             M.active = false; M.held = false; M.finalizing = false; M.seg = null; M.parts = [];
-            if (errMsg) { M.ui("error", errMsg); return; }
-            M.ui("idle");
-            if (text) Input.Mic.insert(text, M.hold);
+            if (errMsg) M.ui("error", errMsg);
+            else {
+                M.ui("idle");
+                if (text) Input.Mic.insert(text, M.hold);
+            }
+            // Narration deferred while recording resumes on every outcome. After
+            // insert, so a submitted command's own reply supersedes a stale UI line.
+            try { if (typeof ReadAloud !== "undefined" && ReadAloud.resumeAfterMic) ReadAloud.resumeAfterMic(); } catch (e2) {}
         },
         // `fromHold` is true only for a press-and-hold gesture, never for tap.
         insert: (text, fromHold) => {
@@ -886,6 +1079,10 @@ var Input = {
 
                         $("#dialog_cancel").trigger("click");
                     }
+                    else if (typeof WorldMap !== "undefined" && WorldMap.IsOpen()) {
+
+                        WorldMap.Close();
+                    }
                     else {
 
                         Input.Clear();
@@ -964,7 +1161,7 @@ var Input = {
 
     GetAllSpecialCommands: () => {
 
-        return [ "/commands", "/display", "/export-map", "/help", "/history", "/items", "/map", "/note", "/clear", "/goto", "/notes", "/room-notes", "/quit", "/see", "/theme", "/tools", "/transcript" ].sort();
+        return [ "/commands", "/display", "/export-map", "/help", "/history", "/items", "/map", "/micdiag", "/note", "/clear", "/goto", "/notes", "/room-notes", "/quit", "/see", "/theme", "/tools", "/transcript" ].sort();
     },
 
     Process: () => {
@@ -997,6 +1194,15 @@ var Input = {
 
                 Input.SpecialCommandDetected(text);
                 ParchLockQol.ShowDisplay();
+            }
+            else if (text.toLowerCase() == "/micdiag") {
+
+                // I3/P3: voice-input timing diagnostics (metadata only: timings,
+                // error codes, TTS counts -- never recognised text), for the
+                // player to copy after a slow episode.
+                Input.SpecialCommandDetected(text);
+                var json = Input.Mic.diag.export().replace(/&/g, "&amp;").replace(/</g, "&lt;");
+                Message.Show("Voice diagnostics", "<p>Copy this after voice input becomes slow.</p><textarea readonly style='width:100%;height:55vh;font-size:12px'>" + json + "</textarea>", true);
             }
             else if (text.toLowerCase() == "/history") {
 

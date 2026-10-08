@@ -216,8 +216,8 @@ var DirectionalRadial = {
             clearTimeout(DirectionalRadial._press.timer);
             DirectionalRadial.releaseCapture(DirectionalRadial._press);
         }
-        DirectionalRadial._press = null;
         DirectionalRadial.cleanupListeners();
+        DirectionalRadial._press = null;
         // codex audit (bus #786, high 5): arrows mode is CharKeys' pad, and
         // CharKeys owns its own auto-eligibility lifecycle
         // (_autoPadOwned/_autoEligible/_autoExitTimer) layered on top of
@@ -272,7 +272,7 @@ var DirectionalRadial = {
         if (document.body.classList.contains("no-story")) return false;
         try {
             if (typeof $ === "undefined") return false;
-            return $("#windowport .BufferWindow").text().length > 0 || $("#windowport .GridWindow").length > 0;
+            return (typeof BufferRevision !== "undefined" ? BufferRevision.text("#windowport .BufferWindow") : $("#windowport .BufferWindow").text()).length > 0 || $("#windowport .GridWindow").length > 0;
         } catch (e) { return false; } // fail closed -- never show the handle over an unknown/unproven state
     },
 
@@ -539,8 +539,9 @@ var DirectionalRadial = {
         // Ignore a second concurrent pointer entirely -- only one gesture
         // may be tracked at a time (D117 audit fix, codex #782 blocker 6).
         if (DirectionalRadial._press) return;
-        var state = { startX: e.clientX, startY: e.clientY, fired: false, pointerId: e.pointerId };
+        var state = { el: DirectionalRadial.handle, startX: e.clientX, startY: e.clientY, fired: false, pointerId: e.pointerId };
         DirectionalRadial._press = state;
+        Actionable.beginHoldSelection(state);
 
         // D117 audit fix (codex #782, blocker 6): capture the pointer
         // immediately, not deferred until the hold timer fires. The
@@ -558,10 +559,11 @@ var DirectionalRadial = {
 
         state.timer = setTimeout(function () {
             if (DirectionalRadial._press !== state) return;
-            if (!DirectionalRadial.CanOpen()) { DirectionalRadial._press = null; DirectionalRadial.releaseCapture(state); return; } // an overlay opened mid-hold
+            if (!DirectionalRadial.CanOpen()) { Actionable.endHoldSelection(state); DirectionalRadial._press = null; DirectionalRadial.releaseCapture(state); return; } // an overlay opened mid-hold
             var slices = DirectionalRadial.GetSlices();
-            if (!slices.length) { DirectionalRadial._press = null; DirectionalRadial.releaseCapture(state); return; } // nothing to show -- no-op
+            if (!slices.length) { Actionable.endHoldSelection(state); DirectionalRadial._press = null; DirectionalRadial.releaseCapture(state); return; } // nothing to show -- no-op
             state.fired = true;
+            Actionable.fireHoldSelection(state);
             DirectionalRadial.handle.classList.add("pl-press-pending");
             DirectionalRadial.expand(state.startX, state.startY, slices);
         }, DirectionalRadial.LongPressMs);
@@ -583,8 +585,8 @@ var DirectionalRadial = {
             var dx = e.clientX - state.startX, dy = e.clientY - state.startY;
             if ((dx * dx + dy * dy) > (DirectionalRadial.MoveCancelPx * DirectionalRadial.MoveCancelPx)) {
                 clearTimeout(state.timer);
-                DirectionalRadial._press = null;
                 DirectionalRadial.cleanupListeners();
+                DirectionalRadial._press = null;
             }
             return;
         }
@@ -628,6 +630,7 @@ var DirectionalRadial = {
     },
 
     cleanupListeners: function () {
+        Actionable.endHoldSelection(DirectionalRadial._press);
         DirectionalRadial.handle.classList.remove("pl-press-pending");
         DirectionalRadial.handle.removeEventListener("pointermove", DirectionalRadial.onPointerMove);
         DirectionalRadial.handle.removeEventListener("pointerup", DirectionalRadial.onPointerUp);
@@ -1044,13 +1047,14 @@ var DirectionalRadial = {
 
     ShowSettings: function () {
         var body = "<div class='pl-dirpad-settings'>" +
-            "<p>Custom slices for <strong>this module only</strong>. Real exits (compass directions, Up/Down/In/Out, and any module-specific numbered exits) always appear automatically and are not listed here. Ring 0 and 1 are used by real exits -- pick ring 2 or higher to avoid colliding with them.</p>" +
+            "<p>Add your own command shortcuts for <strong>this module</strong>. Story exits appear automatically.</p>" +
             "<div id='pl-dirpad-settings-list'></div>" +
             "<div class='pl-dirpad-settings-add'>" +
-            "<input id='pl-dirpad-add-label' aria-label='Label' placeholder='Label' maxlength='10'>" +
-            "<input id='pl-dirpad-add-command' aria-label='Command' placeholder='Command (e.g. wait)' maxlength='80'>" +
-            "<input id='pl-dirpad-add-angle' aria-label='Angle' type='number' placeholder='Angle 0-359' min='0' max='359' value='0'>" +
-            "<input id='pl-dirpad-add-ring' aria-label='Ring' type='number' placeholder='Ring (2+)' min='0' value='2'>" +
+            "<label>Label<input id='pl-dirpad-add-label' aria-label='Label' placeholder='e.g. Wait' maxlength='10'></label>" +
+            "<label>Game command<input id='pl-dirpad-add-command' aria-label='Command' placeholder='e.g. wait' maxlength='80'></label>" +
+            "<label>Angle (degrees)<input id='pl-dirpad-add-angle' aria-label='Angle' type='number' placeholder='0-359' min='0' max='359' value='0'></label>" +
+            "<label>Ring<input id='pl-dirpad-add-ring' aria-label='Ring' type='number' placeholder='2 or higher' min='0' value='2'></label>" +
+            "<p class='pl-dirpad-position-help'>Use ring 2 or higher for an outer ring. Rings 0 and 1 share space with story exits.</p>" +
             "<button id='pl-dirpad-add-btn' type='button'>Add slice</button>" +
             "<p id='pl-dirpad-add-error' role='alert'></p>" +
             "</div></div>";

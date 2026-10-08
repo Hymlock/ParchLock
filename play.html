@@ -51,11 +51,13 @@
 		
 		<script src="js/ProductInfo.js"></script>
 		<script src="js/Global.js"></script>
+		<script src="js/PronunciationCatalog.js"></script>
 		<script src="js/ReadAloud.js"></script>
 		<script src="js/Consts.js"></script>
 
 		<script src="lib/jquery.min.js"></script>
 		<script src="js/ModuleLibrary.js"></script>
+		<script src="js/Transcript.js"></script>
 		<script src="js/ZvmCapture.js"></script>
 		<script src="lib/main.js"></script>
 		<script src="lib/ie.js" nomodule></script>
@@ -68,8 +70,11 @@
 		<script src="js/Directions.js"></script>
 		<script src="js/Message.js"></script>
 		<script src="js/Navigator.js"></script>
+		<script src="js/WorldMapLayout.js"></script>
+		<script src="js/WorldMap.js"></script>
 		<script src="js/Autocomplete.js"></script>
 		<script src="js/Qol.js"></script>
+		<script src="js/BufferRevision.js"></script>
 		<script src="js/Actionable.js"></script>
 		<script src="js/WorkspaceUI.js"></script>
 		<script src="js/TextGate.js"></script>
@@ -98,6 +103,8 @@
 		<script src="js/MapTopology.js"></script>
 		<script src="js/UndoRestoreSync.js"></script>
 		<script src="js/MapBeautify.js"></script>
+		<script src="js/ModuleStatFacts.js"></script>
+		<script src="js/ModuleStatFactsClaude.js"></script>
 		<script src="js/StatTracker.js"></script>
 		<script src="js/StatusGridDecoder.js"></script>
 		<script src="js/EquipmentUI.js"></script>
@@ -212,7 +219,7 @@
 
 			<div></div>
 
-			<span id="close" title="Close message">x</span>
+			<span id="close" title="Close message" aria-label="Close" role="button">&#x2715;</span>
 
 			<footer>Type any letter to close this message.</footer>
 
@@ -290,6 +297,9 @@
 
 		<button id="tools-toggle" title="Toggle tools">Tools</button>
 		<button id="game-menu" title="Game menu" aria-label="Game menu">Menu</button>
+		<!-- World map tab (operator 2026-10-07): globe, ABOVE the Map tab; shown only while
+		     the map, equipment or world view is open (css/ParchLock.css). -->
+		<button id="pl-world-tab" type="button" title="World map" aria-label="World map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg></button>
 		<button id="pl-map-tab" type="button" title="Map" aria-label="Map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg></button>
 		<!-- D122: equipment tab. Sits directly beneath #pl-map-tab and is only
 		     reachable while a sheet is open (see the body.map-open /
@@ -379,11 +389,6 @@
 				Import\Export
 			</button>
 
-			<button id="toggle-map-anim" class="toggle-button on hide-first" title="Toggle the map's cartoony drawing effect">
-				<div class="button-state"></div>
-				Map Animations
-			</button>
-
 			<button id="toggle-show-info" class="toggle-button on hide-first" title="Toggle whether the help screen comes up when starting a new game">
 				<div class="button-state"></div>
 				Show help at start
@@ -417,4 +422,3 @@
 	</body>
 
 </html>
-

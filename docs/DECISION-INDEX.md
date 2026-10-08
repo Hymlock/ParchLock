@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 88 decisions across
-7715 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 97 decisions across
+8255 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -21,9 +21,18 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 
 | D | claim | files | games |
 |---|-------|-------|-------|
-| D204 | Holistic statistics discovery and repeatable event monitoring — PROPOSED |  |  |
+| D213 | Enemy interactions and in-room steps need RAM or grammar evidence (Step 5) |  |  |
+| D212 | Pronunciation catalogue gathered from all projects | js/PronunciationCatalog.js js/ReadAloud.js |  |
+| D211 | Voice input lifecycle: settle barrier, bounded waits, backoff, diagnostics |  |  |
+| D210 | Hold that opens a radial never starts native text selection |  |  |
+| D209 | One row when a status metric IS the score (Treasures "Quest Rate") |  |  |
+| D208 | Time-game score: header time flag, clock detection, stale status score | js/StatTracker.js |  |
+| D207 | Status probes are headless: span ownership, released turn events, META provenance |  |  |
+| D206 | Actors are discoverable: unnamed animate candidates, particle-free triggers, no Take on people | js/ZRamReader.js js/Actionable.js |  |
+| D205 | Drag-and-hold on Yourself: inventory/RPG action radial |  |  |
+| D204 | Holistic statistics discovery and repeatable event monitoring — IMPLEMENTED | harness/command-disambiguation.js js/EquipmentUI.js harness/equipment-ui.js | Zork1 deadline Enchanter |
 | D203 | Mobile left exit-rail readable-content safety |  |  |
-| D202 | Original Map Controls; overview implementation withdrawn |  | Anchorhead |
+| D202 | Original Map Controls |  |  |
 | D201 | Early Inform unnamed identity and inventory recovery |  | LLR3 |
 | D200 | Inform Z3 declaration reader | js/ZRamReader.js | catseye gussdeath moonglow |
 | D199 | The citation now reproduces the conclusion |  |  |
@@ -58,7 +67,7 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 | D166 | Four operator-reported UI and probe defects |  |  |
 | D165 | The status row is a fallback, not the preferred source |  | wump2ka Anchorhead |
 | D164 | The duplicate room, and the corrupted room name |  |  |
-| D163 | A step that moves you WITHIN a room |  | Anchorhead |
+| D163 | A step that moves you WITHIN a room |  |  |
 | D162 | Multi-word commands can be travel again |  | wump2ka Anchorhead |
 | D161 | Restoring what the v27 build did, verified against the real APK | harness/d162-travel-commands.js | Anchorhead |
 | D160 | Follow-ups: what closed, and what the remaining items really are |  |  |
@@ -86,11 +95,11 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 | D132 | follow-up: splash verified cold on the library screen too |  |  |
 | D131 | Equipment grab handle floats instead of interrupting the name |  |  |
 | D130 | Tutorial: library phase, readiness gate, and the wash-out fix |  |  |
-| D129 | Save to device (Storage Access Framework) | harness/qol-download-text.js |  |
+| D129 | Save to device (Storage Access Framework) |  |  |
 | D126 | Drag ghost, auto-scroll, tutorial example items |  |  |
 | D125 | Equipment grab handle, scrollable sheet, sheets never stack |  |  |
 | D124 | Live tutorial restored | js/Tutorial.js css/Tutorial.css js/MainMenu.js |  |
-| D122 | Equipment sheet | js/EquipmentUI.js |  |
+| D122 | Equipment sheet |  | Anchorhead |
 | D121 | Android file export + top reflow band | js/Qol.js harness/qol-download-text.js |  |
 | D120 | follow-up: persona-based tutorial review + live-reported real-app directional-handle bugs | js/Tutorial.js css/Tutorial.css lib/jquery.min.js js/ProductInfo.js |  |
 | D119 | codex D117/D118 audit fixes (bus #786) + settings-merge follow-up + desktop arrow overlay |  |  |

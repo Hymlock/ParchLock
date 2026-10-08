@@ -124,8 +124,9 @@ var Tutorial = {
         },
         {
             title: "Send and speak",
-            body: "Send submits your command. The microphone lets you speak it instead — useful when your " +
-                  "hands are busy, and it can be set to hold to talk or tap to toggle in Options.",
+            body: "Send submits your command. Tap Send on an empty line to repeat your last command; hold it " +
+                  "to pick from your recent commands. The microphone lets you speak a command instead — useful " +
+                  "when your hands are busy, and it can be set to hold to talk or tap to toggle in Options.",
             target: ["#pl-input-mic", "#pl-input-submit"]
         },
         {

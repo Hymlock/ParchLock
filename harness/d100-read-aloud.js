@@ -54,6 +54,42 @@ ok(RA.isNoise && RA.isNoise("#window102 span.Style_emphasized {font-size: 1em}")
 ok(/onPlayerTurn/.test(src) && /Inject/.test(inputSrc) && /ReadAloud\.onPlayerTurn/.test(inputSrc), "Inject calls onPlayerTurn");
 
 (async () => {
+    // P3 timing tests use the real source and timers, with a native adapter.
+    const audio = { console, setTimeout, clearTimeout, window: {}, navigator: { webdriver: false },
+        document: { readyState: "loading", addEventListener() {}, getElementById() { return null; }, body: { classList: { contains() { return false; } } } },
+        Input: { Mic: { active: false, finalizing: false } } };
+    vm.createContext(audio); vm.runInContext(src + "\nthis.RA = ReadAloud;", audio);
+    const A = audio.RA, sent = [];
+    const plugin = { stop: () => Promise.resolve(), speak: payload => { sent.push(payload.text); return Promise.resolve(); } };
+    A.nativePlugin = () => plugin; A.prefsOn = () => true; A.rate = () => 1;
+    const delay = ms => new Promise(r => setTimeout(r, ms));
+    A.speak("Narration queued before recording."); await delay(5); A.stop(); audio.Input.Mic.active = true;
+    await delay(65);
+    ok(sent.length === 0, "P3: delayed native speak is invalidated by mic stop");
+    ok(A.ttsCounts.speak === 0, "P3: speak diagnostics count engine calls, not cancelled requests");
+    audio.Input.Mic.active = false;
+    A.speak("First obsolete utterance."); A.speak("Latest utterance."); await delay(65);
+    ok(sent.length === 1 && /Latest/.test(sent[0]), "P3: only the latest native generation reaches the engine");
+    ok(A.ttsCounts.stop >= 3, "P3: diagnostics include stop-before-speak engine churn");
+    sent.length = 0; audio.Input.Mic.active = true;
+    A.speak("Tutorial instruction."); await delay(65);
+    ok(sent.length === 0 && /Tutorial/.test(A._micDeferredSpeech), "P3: explicit tour narration waits while recording");
+    audio.Input.Mic.active = false; A.resumeAfterMic(); await delay(65);
+    ok(sent.length === 1 && /Tutorial/.test(sent[0]), "P3: deferred tour narration resumes after recording");
+    clearTimeout(A.debounceTimer); sent.length = 0;
+    let collects = 0, unread = true;
+    A.collectNewLines = () => { collects++; if (!unread) return []; unread = false; return ["Unconsumed story narration."]; };
+    audio.Input.Mic.finalizing = true; A.flush();
+    ok(collects === 0 && unread, "P3: pending flush never consumes narration while mic finalizes");
+    audio.Input.Mic.finalizing = false; A.resumeAfterMic(); await delay(420);
+    ok(!unread && sent.length === 1 && /Unconsumed/.test(sent[0]), "P3: deferred automatic narration is read once after recording");
+    plugin.stop = () => Promise.reject(new Error("native stop failed"));
+    const failures = A.ttsCounts.stopFail; await A.stop();
+    ok(A.ttsCounts.stopFail === failures + 1, "P3: native stop rejection is caught and counted");
+    plugin.stop = () => new Promise(() => {});
+    const pending = A.stop();
+    ok(pending && typeof pending.then === "function", "P3: pending native stop returns a promise for the caller timeout race");
+
     const browser = await chromium.launch({ headless: true });
     const page = await browser.newPage();
     const spoken = [];

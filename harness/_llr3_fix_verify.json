@@ -1,0 +1,217 @@
+{
+  "llr": {
+    "disc": {
+      "doorProp": 26,
+      "labeled": 12,
+      "profile": {
+        "12": "north",
+        "13": "south",
+        "14": "east",
+        "15": "west",
+        "16": "northeast",
+        "17": "northwest",
+        "18": "southeast",
+        "19": "southwest",
+        "20": "up",
+        "21": "down",
+        "22": "in",
+        "23": "out"
+      },
+      "roomId": 220,
+      "status": "North-South-West junction LVL:1 STR:11/11",
+      "exits": [
+        {
+          "label": "north",
+          "prop": 12,
+          "dest": 221,
+          "name": "",
+          "amb": false
+        },
+        {
+          "label": "south",
+          "prop": 13,
+          "dest": 219,
+          "name": "",
+          "amb": false
+        },
+        {
+          "label": "west",
+          "prop": 15,
+          "dest": 223,
+          "name": "",
+          "amb": false
+        }
+      ]
+    },
+    "afterEast": {
+      "roomId": 220,
+      "status": "North-South-West junction LVL:1 STR:11/11",
+      "exits": [
+        {
+          "label": "north",
+          "prop": 12,
+          "dest": 221
+        },
+        {
+          "label": "south",
+          "prop": 13,
+          "dest": 219
+        },
+        {
+          "label": "west",
+          "prop": 15,
+          "dest": 223
+        }
+      ],
+      "stats": "1 rooms / 3 exits / 0 notes",
+      "rooms": [
+        {
+          "Name": "North-South-West junction",
+          "Exits": {},
+          "ExitMeta": [
+            "n",
+            "s",
+            "w"
+          ]
+        }
+      ],
+      "falseUp": false,
+      "hasWest": true,
+      "hasNorth214": false
+    },
+    "upMoved": false,
+    "westBack": {
+      "roomId": 223,
+      "status": "Round room LVL:1 STR:11/11"
+    },
+    "stats": {
+      "model": {
+        "stats": {
+          "level": {
+            "key": "level",
+            "label": "LVL",
+            "value": 1,
+            "max": null,
+            "unit": "plain",
+            "kind": "counter",
+            "seen": 86,
+            "source": "status",
+            "confirmed": true,
+            "lastChange": null,
+            "badgeUntil": 0,
+            "badgeDelta": 0
+          },
+          "strength": {
+            "key": "strength",
+            "label": "STR",
+            "value": 11,
+            "max": 11,
+            "unit": "fraction",
+            "kind": "gauge",
+            "seen": 86,
+            "source": "status",
+            "confirmed": true,
+            "lastChange": null,
+            "badgeUntil": 0,
+            "badgeDelta": 0
+          },
+          "turns": {
+            "key": "turns",
+            "label": "Turns",
+            "unit": "plain",
+            "kind": "counter",
+            "seen": 2,
+            "source": "global:2",
+            "confirmed": true,
+            "value": 5,
+            "max": null,
+            "lastChange": null
+          }
+        },
+        "globals": {
+          "turns": 2
+        },
+        "carry": {},
+        "deaths": 0,
+        "wins": 0,
+        "scoreUnavailable": false,
+        "rank": null,
+        "probed": false,
+        "seenBanners": {},
+        "seenDeltas": {},
+        "preferInventoryText": false
+      },
+      "hud": [
+        {
+          "key": "level",
+          "label": "LVL",
+          "value": 1,
+          "max": null,
+          "unit": "plain",
+          "source": "status-grid"
+        },
+        {
+          "key": "strength",
+          "label": "STR",
+          "value": 11,
+          "max": 11,
+          "unit": "fraction",
+          "source": "status-grid"
+        }
+      ],
+      "status": "Round room LVL:1 STR:11/11"
+    }
+  },
+  "anchor": {
+    "doorProp": 21,
+    "labeled": 12,
+    "profile": {
+      "7": "north",
+      "8": "south",
+      "9": "east",
+      "10": "west",
+      "11": "northeast",
+      "12": "southeast",
+      "13": "northwest",
+      "14": "southwest",
+      "15": "up",
+      "16": "down",
+      "17": "in",
+      "18": "out"
+    },
+    "status": "Outside the Real Estate Office",
+    "exits": [
+      {
+        "label": "southeast",
+        "prop": 12,
+        "dest": 107,
+        "name": "Alley",
+        "amb": false
+      },
+      {
+        "label": "east",
+        "prop": 9,
+        "dest": 106,
+        "name": "real estate office door",
+        "amb": false
+      },
+      {
+        "label": "west",
+        "prop": 10,
+        "dest": 118,
+        "name": "Narrow Street",
+        "amb": false
+      },
+      {
+        "label": "in",
+        "prop": 17,
+        "dest": 106,
+        "name": "real estate office door",
+        "amb": false
+      }
+    ],
+    "hasEast": true,
+    "hasWest": true,
+    "hasAmbiguousAlley": false
+  }
+}

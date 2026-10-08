@@ -77,6 +77,7 @@ var ActionSynth = {
                 });
             }
         } catch (eL) {}
+        if (a.nativeUseVerb === "use" && verbs.indexOf("use") < 0) verbs.push("use");
         return verbs;
     },
 
@@ -242,9 +243,23 @@ var ActionSynth = {
             if (verbs.indexOf("give to") < 0) verbs.push("give to");
             if (verbs.indexOf("put in") < 0) verbs.push("put in");
         } else if (context === "room") {
+            // Inform derives takeable from !static && !scenery, which also
+            // describes people. Taking an actor requires that object's own
+            // confirmed capability (e.g. a genuinely collectible creature).
+            var actorTakeConfirmed = false;
+            try {
+                actorTakeConfirmed = !!(attrs.animate && typeof AttrCalibrator !== "undefined"
+                    && AttrCalibrator.allowedVerbsFor && AttrCalibrator.allowedVerbsFor(obj.id).indexOf("take") >= 0);
+            } catch (eActorTake) {}
             verbs = verbs.filter(function (v) {
-                return v !== "drop" && v !== "remove" && v !== "wear";
+                return v !== "drop" && v !== "remove" && v !== "wear"
+                    && (v !== "take" || !attrs.animate || actorTakeConfirmed);
             });
+        }
+        // Some authenticated custom equipment uses one native toggle action.
+        if (attrs.equipmentToggleVerb === "use") {
+            verbs = verbs.map(function (v) { return v === "wear" || v === "remove" ? "use" : v; })
+                .filter(function (v, i, all) { return all.indexOf(v) === i; });
         }
         var result = verbs.map(function (v) {
             var cmd = v === "examine" ? ("examine " + name) : (v + " " + name);

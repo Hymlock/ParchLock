@@ -80,7 +80,7 @@ function assert(cond, msg) {
 
 // --- GetSlices: dynamic per room, compass-word + D63 borrowed-slot support ---
 global.ParchLockMap = { GetCurrentRoom: function () { return { Exits: { n: 1, e: 2, up: 3, "exit 1": 4 } }; } };
-global.Actionable = { commandForExitLabel: function (dir) { return dir; } };
+global.Actionable = { commandForExitLabel: function (dir) { return dir; }, beginHoldSelection: function () {}, fireHoldSelection: function () {}, endHoldSelection: function () {} };
 var slices = DirectionalRadial.GetSlices();
 var dirs = slices.map(function (s) { return s.dir; }).sort();
 assert(dirs.length === 4 && dirs.indexOf("n") !== -1 && dirs.indexOf("e") !== -1 && dirs.indexOf("up") !== -1 && dirs.indexOf("exit 1") !== -1, "GetSlices returns the room's real exits (n, e, up) PLUS a D63 numbered-exit key (exit 1), not silently dropped");
@@ -313,7 +313,7 @@ global.localStorage.setItem(DirectionalRadial.StorageKey(), JSON.stringify({ cus
 var normalized = DirectionalRadial.GetCustomSlices();
 assert(normalized.length === 1 && normalized[0].label === "OK", "GetCustomSlices discards every invalid record (null, empty label, non-finite/negative angle-ring, a bare string) and keeps only the one genuinely valid slice, instead of crashing");
 global.ParchLockMap = { GetCurrentRoom: function () { return { Exits: { n: 1 } }; } };
-global.Actionable = { commandForExitLabel: function (dir) { return dir; } };
+global.Actionable = { commandForExitLabel: function (dir) { return dir; }, beginHoldSelection: function () {}, fireHoldSelection: function () {}, endHoldSelection: function () {} };
 assert(DirectionalRadial.GetSlices().length === 2, "GetSlices() itself does not crash or choke on the corrupted record either -- real exit (n) plus the one valid custom slice");
 global.localStorage.removeItem(DirectionalRadial.StorageKey());
 global.ParchLock = { GameFilename: "testgame.z5.js" };
@@ -377,7 +377,7 @@ assert(DirectionalRadial.IsArrowModeOpen() === false, "IsArrowModeOpen() is fals
 // A room's real exits still populate normally afterward -- arrow mode and
 // exits mode share the shell but never share slice data.
 global.ParchLockMap = { GetCurrentRoom: function () { return { Exits: { n: 1 } }; } };
-global.Actionable = { commandForExitLabel: function (dir) { return dir; } };
+global.Actionable = { commandForExitLabel: function (dir) { return dir; }, beginHoldSelection: function () {}, fireHoldSelection: function () {}, endHoldSelection: function () {} };
 DirectionalRadial.expand(100, 100, DirectionalRadial.GetSlices(), "exits");
 assert(DirectionalRadial._mode === "exits" && DirectionalRadial.IsArrowModeOpen() === false, "the shell correctly returns to exits mode afterward -- the two modes never bleed into each other's slice data");
 DirectionalRadial.collapse();

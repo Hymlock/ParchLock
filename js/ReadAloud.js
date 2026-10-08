@@ -128,11 +128,16 @@ var ReadAloud = {
     },
 
     // Plain-text pronunciation hints must work identically in Android TTS and
-    // Web Speech. Limit this to the English "anchor" stem: "anchovy", "ranch",
-    // and other genuine CH sounds are intentionally untouched.
-    applyPronunciations: (text) => String(text || "").replace(/\banchor/gi, function (stem) {
-        return stem.charAt(0) === "A" ? "Anker" : "anker";
-    }),
+    // Web Speech. Every respelling lives in ONE place: js/PronunciationCatalog.js
+    // (compiled from the operator's projects; each entry carries its source and
+    // tested examples). The anchor rule is kept here only as a fallback should
+    // the catalog script fail to load.
+    applyPronunciations: (text) => {
+        if (typeof PronunciationCatalog !== "undefined" && PronunciationCatalog.apply) return PronunciationCatalog.apply(text);
+        return String(text || "").replace(/\banchor/gi, function (stem) {
+            return stem.charAt(0) === "A" ? "Anker" : "anker";
+        });
+    },
 
     joinForSpeech: (segments) => {
         var out = "";
@@ -225,18 +230,42 @@ var ReadAloud = {
 
     // Consume only growth in each BufferLine. Underline wrapping preserves
     // textContent length; GlkOte append:true contributes only its new suffix.
+    // D207: a reused prompt line can hold owned status-probe children beside
+    // real narration. Only the unowned text of a line is speakable.
+    speakableText: (el) => {
+        var parts = [];
+        (function walk(n) {
+            Array.prototype.forEach.call(n.childNodes || [], function (c) {
+                if (c.nodeType === 3) { parts.push(c.nodeValue || ""); return; }
+                if (c.nodeType !== 1) return;
+                if (c.classList && (c.classList.contains("pl-stat-probe") || c.classList.contains("pl-carry-probe") || c.classList.contains("Style_input"))) return;
+                if (c.getAttribute && c.getAttribute("aria-hidden") === "true") return;
+                walk(c);
+            });
+        })(el);
+        return parts.join("");
+    },
+
     collectNewLines: () => {
         var out = [];
         ReadAloud.bufferRoots().forEach(function (root) {
             Array.prototype.forEach.call(root.querySelectorAll(".BufferLine"), function (el) {
                 if (el.parentElement && el.parentElement.classList && el.parentElement.classList.contains("BufferLine")) return;
-                var raw = String(el.textContent || "");
+                // D207: a line hidden as status-probe output is not consumed.
+                // Recording its length here would make a turn event that is
+                // released later read as already spoken (Suspect: the fairy
+                // queen's spilled drink was shown but never read).
+                if (el.closest && el.closest(".pl-carry-probe, .pl-stat-probe")) return;
+                var raw = String(ReadAloud.speakableText(el) || "");
                 var previousLength = 0;
                 if (ReadAloud.spokenLengths) {
                     try { previousLength = ReadAloud.spokenLengths.get(el) || 0; } catch (eLen) {}
                     try { ReadAloud.spokenLengths.set(el, raw.length); } catch (eSet) {}
                 }
-                if (el.querySelector && el.querySelector(".Style_input, .Input, .InvisibleCursor, .LineInput, .CharInput")) return;
+                // D207: only a LIVE prompt suspends a line. A historical echo
+                // (Style_input) is dropped by speakableText, so narration that
+                // follows it on a reused line is still read.
+                if (el.querySelector && el.querySelector(".Input, .InvisibleCursor, .LineInput, .CharInput")) return;
                 if (el.classList && (el.classList.contains("pl-carry-probe") || el.classList.contains("pl-stat-probe"))) return;
                 if (el.closest && el.closest("[aria-hidden='true'], style, script, .pl-carry-probe, .pl-stat-probe")) return;
                 if (raw.length <= previousLength) return;
@@ -286,14 +315,41 @@ var ReadAloud = {
         } catch (e) {}
     },
 
+    // I3/P3: speak/stop counts feed the mic diagnostics (metadata only).
+    ttsCounts: { speak: 0, stop: 0, stopFail: 0, nativePending: 0, nativePendingMax: 0, nativeCompleted: 0, nativeFailed: 0 },
+    _speechGeneration: 0,
+    _micDeferredSpeech: "",
+    micBusy: () => {
+        return typeof Input !== "undefined" && Input.Mic && (Input.Mic.active || Input.Mic.finalizing);
+    },
+    // Explicit UI narration follows the latest requested instruction (tours
+    // already Stop before advancing). Buffer narration remains unconsumed.
+    resumeAfterMic: () => {
+        if (ReadAloud.micBusy()) return;
+        var text = ReadAloud._micDeferredSpeech;
+        ReadAloud._micDeferredSpeech = "";
+        if (text) ReadAloud.speak(text);
+        ReadAloud.schedule();
+    },
+
+    // Returns a promise that settles when the engine reports the stop -- or
+    // never rejects and is bounded by callers (the native plugin's stop may
+    // never resolve). Existing synchronous callers ignore the return value.
     stop: () => {
+        ReadAloud._speechGeneration++;
+        ReadAloud._micDeferredSpeech = "";
+        ReadAloud.ttsCounts.stop++;
+        var done = Promise.resolve();
         try {
             var native = ReadAloud.nativePlugin();
-            if (native && typeof native.stop === "function") native.stop();
-        } catch (e) {}
+            if (native && typeof native.stop === "function") {
+                done = Promise.resolve(native.stop()).catch(function () { ReadAloud.ttsCounts.stopFail++; });
+            }
+        } catch (e) { ReadAloud.ttsCounts.stopFail++; }
         try {
             if (window.speechSynthesis) window.speechSynthesis.cancel();
         } catch (e2) {}
+        return done;
     },
 
     // Automated browsers (Playwright/WebDriver) must never make the developer's PC talk: the real OS speech engine would read
@@ -307,12 +363,19 @@ var ReadAloud = {
         var t = ReadAloud.scrubForSpeech(text);
         if (!t || t.length < 2 || !ReadAloud.meaningful(t)) return false;
         if (t.length > 4000) t = t.slice(0, 4000);
+        if (ReadAloud.micBusy()) {
+            ReadAloud._micDeferredSpeech = t;
+            return true;
+        }
+        var generation = ++ReadAloud._speechGeneration;
 
         try {
             if (typeof window !== "undefined") {
                 window.__readAloudLast = t;
                 window.__readAloudLog = window.__readAloudLog || [];
                 window.__readAloudLog.push({ t: Date.now(), text: t });
+                // Bounded: a long session must not accumulate every utterance.
+                if (window.__readAloudLog.length > 200) window.__readAloudLog.splice(0, window.__readAloudLog.length - 200);
             }
         } catch (logErr) {}
 
@@ -323,28 +386,44 @@ var ReadAloud = {
             try {
                 var payload = { text: t, rate: rate, pitch: 1.0, category: "ambient" };
                 var run = function () {
+                    if (generation !== ReadAloud._speechGeneration || ReadAloud.micBusy()) return;
                     try {
-                        Promise.resolve(native.speak(payload)).catch(function () {});
-                    } catch (eN) {}
+                        ReadAloud.ttsCounts.speak++;
+                        ReadAloud.ttsCounts.nativePending++;
+                        ReadAloud.ttsCounts.nativePendingMax = Math.max(ReadAloud.ttsCounts.nativePendingMax, ReadAloud.ttsCounts.nativePending);
+                        Promise.resolve(native.speak(payload)).then(function () {
+                            ReadAloud.ttsCounts.nativePending--;
+                            ReadAloud.ttsCounts.nativeCompleted++;
+                        }, function () {
+                            ReadAloud.ttsCounts.nativePending--;
+                            ReadAloud.ttsCounts.nativeFailed++;
+                        });
+                    } catch (eN) {
+                        ReadAloud.ttsCounts.nativePending--;
+                        ReadAloud.ttsCounts.nativeFailed++;
+                    }
                 };
                 try {
                     if (typeof native.stop === "function") {
+                        ReadAloud.ttsCounts.stop++;
                         Promise.resolve(native.stop()).then(function () {
                             setTimeout(run, 40);
-                        }).catch(function () { setTimeout(run, 40); });
+                        }).catch(function () { ReadAloud.ttsCounts.stopFail++; setTimeout(run, 40); });
                     } else {
                         run();
                     }
-                } catch (eS) { run(); }
+                } catch (eS) { ReadAloud.ttsCounts.stopFail++; run(); }
                 return true;
             } catch (e) {}
         }
         if (typeof window !== "undefined" && window.speechSynthesis) {
             try {
                 ReadAloud.warm();
+                ReadAloud.ttsCounts.stop++;
                 try { window.speechSynthesis.cancel(); } catch (eC) {}
                 var u = new SpeechSynthesisUtterance(t);
                 u.rate = rate;
+                ReadAloud.ttsCounts.speak++;
                 window.speechSynthesis.speak(u);
                 return true;
             } catch (e2) {}
@@ -379,6 +458,9 @@ var ReadAloud = {
     },
 
     flush: () => {
+        // Check BEFORE collecting: the mic must neither compete for audio
+        // focus nor mark deferred game narration as already read.
+        if (ReadAloud.micBusy()) return;
         if (document.getElementById("parchlock-splash") || document.body.classList.contains("parchlock-splash-active")) return;
         if (!ReadAloud.prefsOn()) return;
         var lines = ReadAloud.collectNewLines();

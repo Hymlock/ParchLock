@@ -91,6 +91,7 @@ var ParchLockMap = {
     BindNotesGestures: () => {
         var container = $("#rooms-list #container");
         container.off(".pmNotes");
+        Actionable.endHoldSelection(ParchLockMap._notesTouch);
         ParchLockMap._notesTouch = null;
 
         container.on("contextmenu.pmNotes", "> div", function (e) {
@@ -113,12 +114,13 @@ var ParchLockMap = {
             if (!touch) return;
             var el = this;
             el.classList.add("pl-press-pending");
-            var state = { el: el, startX: touch.clientX, startY: touch.clientY, fired: false };
+            var state = { el: el, startX: touch.clientX, startY: touch.clientY, fired: false, touchId: touch.identifier };
             ParchLockMap._notesTouch = state;
+            Actionable.beginHoldSelection(state);
             state.timer = setTimeout(function () {
                 if (ParchLockMap._notesTouch !== state) return;
                 state.fired = true;
-                el.classList.remove("pl-press-pending");
+                Actionable.fireHoldSelection(state);
                 ParchLockMap.PromptAddNote($(el).data("room"));
             }, Actionable.LongPressMs);
         }).on("touchmove.pmNotes", "> div", function (e) {
@@ -128,8 +130,9 @@ var ParchLockMap = {
             var touch = touches && touches[0];
             if (!touch) return;
             var dx = touch.clientX - state.startX, dy = touch.clientY - state.startY;
-            if ((dx * dx + dy * dy) > (Actionable.LongPressMoveCancelPx * Actionable.LongPressMoveCancelPx)) {
+            if (!state.fired && (dx * dx + dy * dy) > (Actionable.LongPressMoveCancelPx * Actionable.LongPressMoveCancelPx)) {
                 clearTimeout(state.timer);
+                Actionable.endHoldSelection(state);
                 state.el.classList.remove("pl-press-pending");
                 ParchLockMap._notesTouch = null;
             }
@@ -137,6 +140,7 @@ var ParchLockMap = {
             var state = ParchLockMap._notesTouch;
             if (!state || state.el !== this) return;
             clearTimeout(state.timer);
+            Actionable.endHoldSelection(state);
             state.el.classList.remove("pl-press-pending");
             if (state.fired) e.preventDefault(); // suppress the trailing synthetic click (go-to-room)
             ParchLockMap._notesTouch = null;
@@ -144,6 +148,7 @@ var ParchLockMap = {
             var state = ParchLockMap._notesTouch;
             if (!state || state.el !== this) return;
             clearTimeout(state.timer);
+            Actionable.endHoldSelection(state);
             state.el.classList.remove("pl-press-pending");
             ParchLockMap._notesTouch = null;
         });
@@ -247,6 +252,9 @@ var ParchLockMap = {
         if (!room) return;
         ParchLockMap.CurrentRoom = room.Name;
         ParchLockMap.CurrentRoomId = room.HasRealId ? String(room.ObjectId) : null;
+        // World map: the player has actually stood here (the only place this
+        // is set; look-ahead and ensureRoom never call SetCurrentRoom).
+        room.WorldVisited = true;
     },
 
     GotoRoom: (e, roomName) => {
@@ -836,6 +844,9 @@ var ParchLockMap = {
     // out of sync with any of them.
     RefreshMapPanels: () => {
 
+        // World map: only while it is open, and before Save so newly placed
+        // cells ride on this same save.
+        if (typeof WorldMap !== "undefined" && WorldMap.IsOpen()) { try { WorldMap.Refresh(); } catch (eWorld) {} }
         ParchLockMap.Save();
         ParchLockMap.Draw();
         ParchLockMap.RebuildRoomsList();
@@ -1165,6 +1176,7 @@ var ParchLockMap = {
                     });
                     rooms.forEach(function (r, i) { r.Id = i; });
                 }
+                if (typeof MapTopology !== "undefined" && MapTopology.quarantineUnprovenSubSteps) MapTopology.quarantineUnprovenSubSteps(rooms);
                 ParchLockMap.Rooms = rooms;
             }
         } catch (error) {
@@ -1265,6 +1277,6 @@ var ParchLockMap = {
             lines.push("");
         });
 
-        ParchLockQol.DownloadText(ParchLockQol.GetSafeFilename("map") + ".txt", lines.join("\n"));
+        ParchLockQol.DownloadText(ParchLockQol.ExportFilename("Map (text)", undefined, "txt"),lines.join("\n"));
     }
 }

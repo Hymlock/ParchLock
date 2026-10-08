@@ -176,8 +176,9 @@ var CharKeys = {
 
     // ---- short tap on the char strip = "I want the keyboard" ---------------------------------------
     bind: () => {
+        Actionable.endHoldSelection(CharKeys._tap);
         $(document).off("touchstart.pmCharTap touchmove.pmCharTap touchend.pmCharTap touchcancel.pmCharTap contextmenu.pmCharTap");
-        var cancel = function () { var s = CharKeys._tap; if (s) clearTimeout(s.timer); CharKeys._tap = null; };
+        var cancel = function () { var s = CharKeys._tap; if (s) { clearTimeout(s.timer); Actionable.endHoldSelection(s); } CharKeys._tap = null; };
         // Same gesture split as the line field: short tap = keyboard; hold = the existing input radial (no keyboard).
         $(document).on("touchstart.pmCharTap", ".Input.CharInput", function (e) {
             if (!CharKeys.managesIme()) return;
@@ -185,11 +186,13 @@ var CharKeys = {
             if (!t) return;
             cancel();
             var el = this;
-            var s = { el: el, x: t.clientX, y: t.clientY, at: Date.now(), moved: false, fired: false };
+            var s = { el: el, x: t.clientX, y: t.clientY, at: Date.now(), moved: false, fired: false, touchId: t.identifier };
+            Actionable.beginHoldSelection(s);
             var longMs = typeof Actionable !== "undefined" ? Actionable.LongPressMs : 500;
             s.timer = setTimeout(function () {
                 if (CharKeys._tap !== s) return;
                 s.fired = true;
+                Actionable.fireHoldSelection(s);
                 try {
                     Input.DismissKeyboard();
                     var r = el.getBoundingClientRect();
@@ -202,12 +205,13 @@ var CharKeys = {
             var t = e.originalEvent && e.originalEvent.touches && e.originalEvent.touches[0];
             if (!s || !t) return;
             var px = typeof Actionable !== "undefined" ? Actionable.LongPressMoveCancelPx : 20;
-            if ((t.clientX - s.x) * (t.clientX - s.x) + (t.clientY - s.y) * (t.clientY - s.y) > px * px) { s.moved = true; clearTimeout(s.timer); }
+            if (!s.fired && (t.clientX - s.x) * (t.clientX - s.x) + (t.clientY - s.y) * (t.clientY - s.y) > px * px) { s.moved = true; clearTimeout(s.timer); Actionable.endHoldSelection(s); }
         }).on("touchend.pmCharTap", ".Input.CharInput", function (e) {
             var s = CharKeys._tap;
             CharKeys._tap = null;
             if (!s) return;
             clearTimeout(s.timer);
+            Actionable.endHoldSelection(s);
             if (!CharKeys.managesIme() || s.el !== this) return;
             // A fired hold (or a moved touch) must not also act as a tap: suppress the trailing synthetic click.
             if (s.fired || s.moved) { e.preventDefault(); return; }

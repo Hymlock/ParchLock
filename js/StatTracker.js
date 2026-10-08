@@ -54,6 +54,578 @@ var StatTracker = {
     // optimisation. 240 u16 reads per sample is negligible next to a turn.
     MAX_GLOBALS: 240,
 
+    // Measured executable facts, not current readings or title dispatch.
+    // Guss's Death: isolated live SCORE returns to LineInput with an explicit
+    // maximum; build bytes authenticated via ModuleLibrary's existing owner.
+    // The numeric sample is audit evidence only and is never seeded here.
+    MeasuredProbeFacts: typeof ModuleStatFacts !== "undefined" ? ModuleStatFacts
+        : (typeof module !== "undefined" && module.exports ? require("./ModuleStatFacts.js") : {}),
+
+    // Separate writer lane for reserved modules. These are command/layout
+    // capabilities, never current readings; executable identity is mandatory.
+    SupplementalProbeFacts: {
+        "7af1234102d31ab7e197b05b9e176423ef5c2749bc0f1f68a60cfd4d92a11b34":{ownedReplyLines:["[To see a more elaborate score report, type FULL SCORE.]","[To see what you are carrying, type INVENTORY.]"]},
+        "d7bbec1bcc3ba7a2f3110017691c1e6ba647c8d6177a22cac0dbb35569be290e":{command:"score",fields:["chapter","regions","first choice"],replyFamily:"chapter-regions",outcome:"line",format:"glulx",validatedForm:true,evidence:"Current isolated SCORE prints chapter and explored regions with totals and first choice."},
+        "367dfd432fc4489bdf1212030a9962b8dca9a2a8e1a18c03c2ae57cfda949c55":{command:"score",fields:["achievements"],replyFamily:"achievement-list",outcome:"line",format:"glulx",validatedForm:true,evidence:"Current isolated SCORE prints complete named achievement states."},
+        "285622705ee8181fb7c01ef4a349eb826f758afeb98617cb1fa7b2e18bc606de":{command:"score",fields:[],replyFamily:"no-score",outcome:"line",format:"glulx",validatedForm:true,rejectedForms:["diagnose"],evidence:"Current normal-prompt isolated SCORE explicitly reports no score; DIAGNOSE rejected; inventory has no totals."},
+        "c2f28a4ddd9367c260946926a33c73a4b0cc38b1f327646cc1202182a28a10ff": {command:"score",fields:["score.max","progress"],replyFamily:"mystery-progress-score",outcome:"line",evidence:"Current isolated SCORE reported by Claude: numeric score plus score-dependent mystery milestone; current live verification required."},
+        "26dcdab275054e5899c9454a879816a1ced530e9172bd8d8cf101fb7acc27cb4": {
+            "command": "score",
+            "fields": [
+                "score.max"
+            ],
+            "replyFamily": "return-score",
+            "outcome": "line",
+            "continuation": "return",
+            "rejectedForms": [
+                "inventory",
+                "diagnose"
+            ],
+            "evidence": "Actual SCORE asks exact peril-sensitive-sunglasses RETURN prompt; empty Enter yields numerical score/maximum. INVENTORY rejected, use player I manually. DIAGNOSE produces no health."
+        },
+        "b42d5a7db4df78ed2e29341e86a149fbd7a0038d5d74c48b4444a7bb73506ef8": {
+            "command": "score",
+            "fields": [],
+            "replyFamily": "no-score",
+            "outcome": "line",
+            "additionalProbes": [
+                {
+                    "command": "diagnose",
+                    "fields": [
+                        "health"
+                    ],
+                    "replyFamily": "goal-readiness",
+                    "outcome": "line"
+                }
+            ],
+            "evidence": "Current chapter1 isolated SCORE explicitly says no score; actual status exposes complete HH:mm clock."
+        },
+        "c0a9b42a4d4a9b23521e6d491546969a64225b99871230c85d0e79ac06589c4d": {
+            "command": "score",
+            "fields": [
+                "score.max",
+                "rank"
+            ],
+            "replyFamily": "bracket-total-score",
+            "outcome": "line",
+            "statusPair": [
+                "Score",
+                "Moves"
+            ],
+            "evidence": "Current isolated SCORE prints bracketed total bound and separate rank line; TIME is narrative without numerical clock."
+        },
+        "4dd5c00c04ffb94f092fbd0d02a808b69e1f6f9753dc9d87691779f38fe629cf": {
+            "command": "score",
+            "fields": [
+                "score.max",
+                "locations.max"
+            ],
+            "replyFamily": "visited-locations-score",
+            "outcome": "line",
+            "statusPair": [
+                "Score",
+                "Moves"
+            ],
+            "rejectedForms": [
+                "diagnose"
+            ],
+            "evidence": "Current isolated SCORE prints score maximum and visited locations/total; DIAGNOSE rejected as verb."
+        },
+        "430d8955b7ee55ba8b7f764a1ea98470b8625305c185fd4c094003d19a1ce482": {
+            "command": "score",
+            "fields": [
+                "progress",
+                "rank"
+            ],
+            "replyFamily": "rivals-progress",
+            "outcome": "line",
+            "evidence": "Current isolated SCORE states rivals eliminated and minister rank; authored status reports Tone."
+        },
+        "c889cedc652aebf87139f07cd1ce508ee9151e7249e42b241612d948bb711f92": {
+            "command": "score",
+            "fields": [
+                "quarry",
+                "health"
+            ],
+            "replyFamily": "hunt-status",
+            "outcome": "line",
+            "evidence": "Current isolated SCORE prints creature/player alive qualitative states and Score it yourself; inventory bolts are item quantity, not a separate scalar gauge."
+        },
+        "e18fd6b6ebe311cc3831dbd0de51b4ae4c5cf20824f32e2b0fcbdbe01595c5b7": {
+            "command": "score",
+            "fields": [
+                "keys seen",
+                "keys turned",
+                "shutdown elements"
+            ],
+            "replyFamily": "shutdown-progress",
+            "outcome": "line",
+            "evidence": "Current isolated SCORE prints separate key discovery, key-turn and shutdown-element progress plus moves."
+        },
+        "f77c8f218f0b6f11940e342f82c8c9f91d0933d366f45a5a3587ca341d5bfdf6": {
+            "command": "score",
+            "fields": [
+                "task"
+            ],
+            "replyFamily": "divine-task",
+            "outcome": "line",
+            "additionalProbes": [
+                {
+                    "command": "diagnose",
+                    "fields": [
+                        "health"
+                    ],
+                    "replyFamily": "best-health",
+                    "outcome": "line"
+                }
+            ],
+            "evidence": "Isolated SCORE states divine task completed; DIAGNOSE states best health, qualitative only."
+        },
+        "0e9066037c3b13ce767bda6512dfed38a0e9abc9b190b2d0228b0f2498762d2c": {
+            "command": "score",
+            "fields": [
+                "temptations.max"
+            ],
+            "replyFamily": "named-counter-score",
+            "outcome": "line",
+            "evidence": "Isolated SCORE prints current temptations and possible bound; no numeric Score."
+        },
+        "e4cadbffba2ccf39a90e60eff4cada926867309b8a411f940d6a1c5ac3361db8": {
+            "command": "score",
+            "fields": [
+                "score.max"
+            ],
+            "replyFamily": "inform-score",
+            "outcome": "line",
+            "statusPair": [
+                "Score",
+                "Moves"
+            ],
+            "additionalProbes": [
+                {
+                    "command": "diagnose",
+                    "fields": [
+                        "diagnosis"
+                    ],
+                    "replyFamily": "physical-readiness",
+                    "outcome": "line"
+                }
+            ],
+            "evidence": "Current isolated SCORE maximum and DIAGNOSE physical report return usable LineInput."
+        },
+        "1ff9cbc61afe49dcf958163c4c556b8895943457d52cd728ddc06ba175b2529e": {
+            "command": "score",
+            "fields": [
+                "score.max"
+            ],
+            "replyFamily": "estimated-score",
+            "outcome": "line",
+            "evidence": "Current isolated SCORE explicitly prints possible maximum with oh-let's-say wording and returns LineInput."
+        },
+        "eb643fc02303d51032ac5646176eeedd91e588e41883458451af87c8800295e9": {
+            "command": "score",
+            "fields": [
+                "score.max"
+            ],
+            "replyFamily": "colloquial-score",
+            "outcome": "line",
+            "evidence": "Current SCORE prints points/current maximum; FULL SCORE repeats total with no additional initial fields."
+        },
+        "ec1d545f32842e29c69f6b586be88b2773a0f2d24e36c3e84bb7fef80d1c842a": {
+            "command": "score",
+            "fields": [
+                "tasks.max"
+            ],
+            "replyFamily": "assigned-tasks",
+            "outcome": "line",
+            "rejectedForms": [
+                "diagnose"
+            ],
+            "evidence": "Current isolated SCORE prints completed/assigned tasks and returns LineInput; FULL SCORE historically identical."
+        },
+        "5fe1406def45c0df5edb65362ec9fa2b840f3f30ab34169d92750b654ef5b114": {
+            "command": "score",
+            "fields": [
+                "score.max"
+            ],
+            "replyFamily": "short-of-full-score",
+            "outcome": "line",
+            "evidence": "Isolated SCORE returns bracketed remaining-points relationship and usable LineInput after intro."
+        },
+        "db3d6ec5262f8be84b697349068af922c0fb3750f281c89735969ffbce168ea9": {
+            "command": "score",
+            "fields": [
+                "score.max"
+            ],
+            "replyFamily": "inform-score",
+            "outcome": "line",
+            "evidence": "Current first Equipment and reopen verified Score 0/100 from isolated SCORE; SCORING describes rules only."
+        },
+        "abf145d22371f825f13388587d92632bcde90582698f774b896b123a90e1fb1e": {
+            "command": "score",
+            "fields": [
+                "score.max",
+                "rank"
+            ],
+            "replyFamily": "extended-score",
+            "outcome": "line",
+            "evidence": "Historical isolated SCORE establishes reported fields; current missing-field verification required before checklist completion."
+        },
+        "dce7e6f757fb8379dea9da9c13cdda5412ba03fa9b70d79fb6b8c7faf5970692": {
+            "command": "score",
+            "fields": [
+                "score.max"
+            ],
+            "replyFamily": "potential-score",
+            "outcome": "line",
+            "evidence": "Historical isolated SCORE establishes reported fields; current missing-field verification required before checklist completion."
+        },
+        "7847ff3387dc401c511f67349d2847691ba97990f28e9c9d8b1182f3d4bc0dc0": {
+            "command": "score",
+            "fields": [
+                "score.max"
+            ],
+            "replyFamily": "extended-score",
+            "outcome": "line",
+            "evidence": "Historical isolated SCORE establishes reported fields; current missing-field verification required before checklist completion."
+        },
+        "3c5656897dd2503610945e80a0b42fc5d25614d967a010ace8e9cafd12f978a3": {
+            "statusTurnsMetric": "galactic-time",
+            "command": "score",
+            "fields": [
+                "score.max",
+                "rank",
+                "day",
+                "time"
+            ],
+            "replyFamily": "extended-score",
+            "outcome": "line",
+            "evidence": "Historical isolated SCORE establishes reported fields; current missing-field verification required before checklist completion."
+        },
+        "1d9a69257349060823893f4cfa616f1040a3b41cbf38a6717199f206cd8f678c": {
+            "command": "score",
+            "fields": [
+                "score.max",
+                "rank"
+            ],
+            "replyFamily": "extended-score",
+            "outcome": "line",
+            "evidence": "Historical isolated SCORE establishes reported fields; current missing-field verification required before checklist completion."
+        },
+        "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
+            "command": "score",
+            "fields": [
+                "score.max",
+                "rank"
+            ],
+            "replyFamily": "extended-score",
+            "outcome": "line",
+            "evidence": "Historical isolated SCORE establishes reported fields; current missing-field verification required before checklist completion."
+        },
+        "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e": {
+            "command": "score",
+            "fields": [
+                "score.max",
+                "health"
+            ],
+            "replyFamily": "extended-score",
+            "outcome": "line",
+            "evidence": "Historical isolated SCORE establishes reported fields; current missing-field verification required before checklist completion."
+        },
+        "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180": {
+            "command": "score",
+            "fields": [
+                "score.max",
+                "rank"
+            ],
+            "replyFamily": "extended-score",
+            "outcome": "line",
+            "evidence": "Historical isolated SCORE establishes reported fields; current missing-field verification required before checklist completion."
+        },
+        "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e": {
+            "command": "score",
+            "fields": [
+                "score.max",
+                "locations.max",
+                "treasures",
+                "rank"
+            ],
+            "replyFamily": "extended-score",
+            "outcome": "line",
+            "evidence": "Historical isolated SCORE establishes reported fields; current missing-field verification required before checklist completion.",
+            "statusPair": [
+                "Score",
+                "Moves"
+            ]
+        },
+        "0cdbf89e4714a102d6b0a487235546903a1f8f3880cc081bef83d87b123b49f5": {
+            "command": "score",
+            "fields": [
+                "score.max",
+                "locations.max"
+            ],
+            "replyFamily": "extended-score",
+            "outcome": "line",
+            "evidence": "Historical isolated SCORE establishes reported fields; current missing-field verification required before checklist completion.",
+            "statusPair": [
+                "Score",
+                "Moves"
+            ]
+        },
+        "4b2bcd860fa1a2be066e433e273166b6c4bfc44838fa873e6aa66e2c52ba39de": {
+            "command": "score",
+            "fields": [
+                "score.max",
+                "locations.max"
+            ],
+            "replyFamily": "extended-score",
+            "outcome": "line",
+            "evidence": "Historical isolated SCORE establishes reported fields; current missing-field verification required before checklist completion.",
+            "statusPair": [
+                "Score",
+                "Moves"
+            ]
+        }
+    },
+
+    probeFactsForIdentity: function (identity) {
+        if (!identity) return null;
+        var collaboration = typeof ModuleStatFactsClaude !== "undefined" ? ModuleStatFactsClaude
+            : (typeof module !== "undefined" && module.exports ? require("./ModuleStatFactsClaude.js") : {});
+        var base = StatTracker.MeasuredProbeFacts[identity.digest], extra = collaboration[identity.digest], local = StatTracker.SupplementalProbeFacts[identity.digest];
+        return base || extra || local ? Object.assign({}, base || {}, extra || {}, local || {}) : null;
+    },
+
+    measuredProbe: function (command) {
+        try {
+            if (typeof ModuleLibrary === "undefined" || !ModuleLibrary.currentExecutableIdentity) return null;
+            var identity = ModuleLibrary.currentExecutableIdentity();
+            var fact = StatTracker.probeFactsForIdentity(identity);
+            if (fact && fact.command !== command) fact = (fact.additionalProbes || []).filter(function (p) { return p.command === command; })[0];
+            if (!fact || fact.command !== command || fact.outcome !== "line") return null;
+            var executableHeader = identity.header || identity.bytes;
+            var provenGlulx=/^(?:gblorb|ulx)$/.test(identity.format||'')
+                && fact.format==='glulx' && fact.validatedForm===true
+                && typeof fact.replyFamily==='string' && fact.replyFamily.length>0
+                && executableHeader && executableHeader.length>=4
+                && executableHeader[0]===0x47 && executableHeader[1]===0x6c
+                && executableHeader[2]===0x75 && executableHeader[3]===0x6c;
+            if(provenGlulx)return fact;
+            // An authenticated isolated reply is the exact-form proof. The
+            // loaded provider must additionally verify the lexical token;
+            // absent providers fail closed rather than canAsk's old fallback.
+            if (typeof Actionable === "undefined" || !Actionable.isGameWord
+                || !Actionable.isGameWord(fact.command)) return null;
+            return fact;
+        } catch (e) { return null; }
+    },
+
+    measuredScoreProbe: function () { return StatTracker.measuredProbe("score"); },
+
+    rejectedProbeForm: function (command) {
+        try {
+            var owner = StatTracker.probeFactsForIdentity(ModuleLibrary.currentExecutableIdentity());
+            return !!(owner && owner.rejectedForms && owner.rejectedForms.indexOf(command) >= 0);
+        } catch (e) { return false; }
+    },
+
+    measuredStatusPair: function () {
+        try {
+            var identity = ModuleLibrary.currentExecutableIdentity();
+            var fact = StatTracker.probeFactsForIdentity(identity);
+            return fact && fact.statusPair || null;
+        } catch (e) { return null; }
+    },
+
+    // Command-owned combat relationships. Bounds are an interval, never a
+    // current/maximum gauge; no numeric sample is stored in capability facts.
+    // E5b: one reply family, with or without a weapon, armor or injury:
+    // "You wield only your FISTS" / "You wield the TWO-HANDED SWORD"; the health
+    // sentence in its full-complement or its "Hit Points" form.
+    // Actual Treasures save (#1844/#1845): a carried load adds a native
+    // qualifier after the odds -- "82% (burdened somewhat by your load)." --
+    // which the strict grammar rejected, so Damage/Hit odds went unavailable.
+    // Only that bounded burden clause is accepted, not arbitrary parentheses.
+    PROWESS_REPLY: /^(?:prowess\s*)?You wield (?:only your|the|your|an?) [^.!?\n]+\. Adjusting for your abilities and progress, you do from (\d+) to (\d+) points of damage with each successful blow\. Your odds of striking true are (\d+)%(?: \((?:[a-z]+ )?burdened(?: [a-z]+){0,4} by your load\))?\. Your armor is (?:only your|the|your|an?) [^.!?\n]+\. (?:You are uninjured, with your full complement of (\d+) Hit Points\.|[^.!?\n]*\bHit Points\b[^.!?\n]*\.)(?: [^\n]*)?\s*$/i,
+
+    applyProwessReply: function (text) {
+        var match = /Adjusting for your abilities and progress, you do from (\d+) to (\d+) points of damage with each successful blow\. Your odds of striking true are (\d+)%(?: \((?:[a-z]+ )?burdened(?: [a-z]+){0,4} by your load\))?\./i.exec(String(text || ""));
+        if (!match || +match[1] > +match[2] || +match[3] > 100) return false;
+        var model = StatTracker.model();
+        model.stats.damage = { key: "damage", label: "Damage", value: +match[1], upper: +match[2],
+            unit: "range", kind: "counter", confirmed: true, seen: StatTracker.CONFIRM_SAMPLES, source: "prowess-command" };
+        model.stats["hit odds"] = { key: "hit odds", label: "Hit odds", value: +match[3],
+            unit: "percent", kind: "gauge", confirmed: true, seen: StatTracker.CONFIRM_SAMPLES, source: "prowess-command" };
+        if (StatTracker._key) StatTracker.save(StatTracker._key, model);
+        return true;
+    },
+
+    applyProgressReply: function (text) {
+        // Keep the measured qualitative report; never invent a percentage.
+        var match = /^You have barely gotten started\.$/im.exec(String(text || "").replace(/\u00a0/g, " ").trim());
+        if (!match) return false;
+        StatTracker.model().stats.progress = { key: "progress", label: "Progress", value: match[0],
+            max: null, unit: "text", kind: "counter", confirmed: true,
+            seen: StatTracker.CONFIRM_SAMPLES, source: "status-command" };
+        if (StatTracker._key) StatTracker.save(StatTracker._key, StatTracker.model());
+        return true;
+    },
+
+    MEASURED_METRIC_REPLIES: {
+        "assigned-tasks": /^You have so far completed (\d+) of the (\d+) tasks assigned you\.$/i,
+        "named-counter-score": /^You have achieved (-?\d+) out of a possible (\d+) ([A-Za-z][A-Za-z ]{0,24})(?:, in (\d+) turns?)?\.$/i,
+        "labelled-holiness": /^Your current ([A-Za-z]+) is (-?\d+) out of a possible \1 of (\d+), in (\d+) moves?\.$/i,
+        "possessive-magic": /^([A-Za-z][A-Za-z '-]*)'s magic is currently at (-?\d+)\.$/i
+    },
+
+    measuredMetricProbes: function () {
+        try {
+            var identity = ModuleLibrary.currentExecutableIdentity();
+            var owner = StatTracker.probeFactsForIdentity(identity);
+            return owner ? [owner].concat(owner.additionalProbes || []).filter(function (fact) {
+                return fact.command !== "score" && StatTracker.MEASURED_METRIC_REPLIES[fact.replyFamily] && StatTracker.measuredProbe(fact.command);
+            }) : [];
+        } catch (e) { return []; }
+    },
+
+    applyMeasuredMetricReply: function (fact, text) {
+        var family=fact&&fact.replyFamily, custom=String(text||"").replace(/\u00a0/g," "), values={}, match;
+        if(family==='chapter-regions') {
+            match=/^You've made it to chapter ([a-z -]+|\d+) \(out of ([a-z -]+|\d+)\), exploring ([a-z -]+|\d+) regions? \(out of ([a-z -]+|\d+)\)\. And never forget that at first you chose ([^.\n]+)\.$/im.exec(custom);
+            if(match){let nums=match.slice(1,5).map(x=>/^\d+$/.test(x)?+x:StatTracker.parseCardinal(x));if(nums.every(x=>x!=null)){values.chapter={label:'Chapter',value:nums[0],max:nums[1]};values.regions={label:'Regions explored',value:nums[2],max:nums[3]};values['first choice']={label:'First choice',value:match[5],unit:'text'};}}
+        } else if(family==='achievement-list') {
+            if(/^Achievements for [^:\n]+:$/im.test(custom)){
+                let entries=custom.split(/\r?\n/).map(x=>x.trim()).filter(x=>/^[A-Za-z][^\n]+\s+\( [^()\n]+ \)$/.test(x));
+                if(entries.length)values.achievements={label:'Achievements',value:entries.join('; '),unit:'text'};
+            }
+        } else if(family==='completed-adventure') {
+            match=/^You have completed (\d+)% of this adventure in (\d+) moves?\.$/im.exec(custom);
+            if(match&&+match[1]<=100){
+                values.complete={label:'Complete',value:+match[1],unit:'percent'};values.turns={label:'Turns',value:+match[2]};
+                var spent=/^You spent (\d+) turns? in the ([^.\n]+)\. This accounts for (\d+)% of your time\.$/img, entry, summary=[];
+                while((entry=spent.exec(custom))){
+                    if(+entry[3]>100)continue;
+                    summary.push(entry[2]+': '+entry[1]+' turns ('+entry[3]+'%)');
+                }
+                if(summary.length)values['time spent']={label:'Time spent',value:summary.join('; '),unit:'text'};
+            }
+        } else if(family==='metaphysical-quota') {
+            match=/^You have amassed a metaphysical quota of (-?\d+) out of a possible (\d+), in (\d+) turns?\.$/im.exec(custom);
+            if(match){values.quota={label:'Metaphysical quota',value:+match[1],max:+match[2]};values.turns={label:'Turns',value:+match[3]};}
+        } else if(family==='adventurers-killed') {
+            match=/^You have so far killed (\d+) adventurers in (\d+) turns?\.$/im.exec(custom);
+            if(match){values.adventurers={label:'Adventurers killed',value:+match[1]};values.turns={label:'Turns',value:+match[2]};}
+        } else if(family==='perfect-score') {
+            match=/^You are a perfect (-?\d+)\.$/im.exec(custom);
+            if(match)values.score={label:'Score',value:+match[1]};
+        } else if(family==='casualty-cycles') {
+            match=/^There have been (\d[\d,]*) casualties \(original population: (\d[\d,]*)\) in (\d+) cycles?\.$/im.exec(custom);
+            if(match){values.casualties={label:'Casualties',value:+match[1].replace(/,/g,'')};values.population={label:'Original population',value:+match[2].replace(/,/g,'')};values.cycles={label:'Cycles',value:+match[3]};}
+        } else if(family==='mule-report') {
+            if(!/^Status report: MULE$/im.test(custom))return false;
+            const date=/^Date:\s*(\d{1,2}\/\d{1,2}\/\d{4})$/im.exec(custom), time=/^Time:\s*(\d{1,2}:\d{2}\s*[ap]m)$/im.exec(custom), location=/^Location:\s*([^\n]+)$/im.exec(custom), value=/^According to my estimation, the objects I have collected have a total value of approximately (\d+) hundred dollars American\.$/im.exec(custom);
+            if(date)values.date={label:'Date',value:date[1],unit:'text'};
+            if(time)values.time={label:'Time',value:time[1],unit:'text'};
+            if(location)values.location={label:'Robot location',value:location[1].trim(),unit:'text'};
+            if(value)values.value={label:'Value (hundred dollars American)',value:+value[1]};
+        }
+        if(Object.keys(values).length){
+            var customModel=StatTracker.model();
+            Object.keys(values).forEach(function(key){var v=values[key];customModel.stats[key]={key:key,label:v.label,value:v.value,max:v.max==null?null:v.max,unit:v.unit||(v.max==null?'plain':'fraction'),kind:'counter',confirmed:true,seen:StatTracker.CONFIRM_SAMPLES,source:'module-command',boundSource:v.max==null?undefined:'module-command',readAt:Date.now()};});
+            if(family==='casualty-cycles'){delete customModel.stats.score;delete customModel.stats.turns;delete customModel.globals.score;delete customModel.globals.turns;customModel.scoreUnavailable=true;}
+            if(StatTracker._key)StatTracker.save(StatTracker._key,customModel);
+            return (fact.fields||[]).every(function(k){k=k.replace(/\.max$/,'');return values[k]||customModel.stats[k]&&customModel.stats[k].readAt>=StatTracker._fulfillmentStartedAt;});
+        }
+
+        if (fact && fact.replyFamily === "shutdown-progress") {
+            var m = StatTracker.model(), input = String(text||"").replace(/\u00a0/g," "), wrote=false;
+            var families=[[/^You have seen (none|[a-z -]+|\d+) of the keys that fit in the desk\.$/im,"keys seen","Keys seen"],[/^You have turned (none|[a-z -]+|\d+) of these keys\.$/im,"keys turned","Keys turned"],[/^As far as preparing yourself for shutdown, you have (none|[a-z -]+|\d+) of the ([a-z -]+|\d+) necessary elements\.$/im,"shutdown elements","Shutdown elements"]];
+            families.forEach(function(family){ var match=family[0].exec(input); if(!match)return; var value=match[1]==="none"?0:StatTracker.parseCardinal(match[1]), max=match[2]?StatTracker.parseCardinal(match[2]):null; if(value==null)return; m.stats[family[1]]={key:family[1],label:family[2],value:value,max:max,unit:max==null?"plain":"fraction",kind:"counter",confirmed:true,seen:StatTracker.CONFIRM_SAMPLES,source:"module-command",boundSource:max==null?undefined:"module-command",readAt:Date.now()};wrote=true; });
+            if(wrote && StatTracker._key)StatTracker.save(StatTracker._key,m);
+            return wrote && fact.fields.every(function(key){return m.stats[key]&&m.stats[key].readAt>=StatTracker._fulfillmentStartedAt;});
+        }
+        var special = fact && /^(?:paired-counter-score|ribbon-progress-score|turns-only-score|percent-progress-score|no-score-turns|hunt-status|rivals-progress)$/.test(fact.replyFamily);
+        if (special) {
+            var model = StatTracker.model(), input = String(text || "").replace(/\u00a0/g, " "), values = {}, match;
+            if (fact.replyFamily === "rivals-progress") {
+                match=/^Thus far, you have eliminated (none|[a-z -]+|\d+) of your rivals\. This gives you the rank of ([^.\n]+?)(?:, still)?\.$/im.exec(input);
+                if(match){var count=match[1]==="none"?0:StatTracker.parseCardinal(match[1]);if(count==null)return false;values.progress={label:"Rivals eliminated",value:count};model.rank=match[2];}
+            } else if (fact.replyFamily === "hunt-status") {
+                match = /^The (?:creature|beast|animal) is (still alive)\. You're (still alive) also\. Score it yourself\.$/im.exec(input);
+                if(match){values.quarry={label:"Quarry",value:match[1],unit:"text"};values.health={label:"Health",value:match[2],unit:"text"};}
+            } else if (fact.replyFamily === "paired-counter-score") {
+                match = /^The score is: \(([A-Za-z]+) (-?\d+)\/([A-Za-z]+) (-?\d+)\)$/im.exec(input);
+                if (match) { values[match[1].toLowerCase()] = {label:match[1],value:+match[2]}; values[match[3].toLowerCase()] = {label:match[3],value:+match[4]}; }
+            } else if (fact.replyFamily === "ribbon-progress-score") {
+                match = /^You have experienced approximately (\d+) percent of this entry, earning you the coveted "([^"\n]+)" [A-Za-z]+ ribbon\.$/im.exec(input);
+                if (match && +match[1] <= 100) { values.progress = {label:"Progress",value:+match[1],unit:"percent"}; model.rank = match[2]; }
+            } else if (fact.replyFamily === "percent-progress-score") {
+                match = /^You have so far scored (\d+)% in (\d+) turns?\.$/im.exec(input);
+                if (match && +match[1] <= 100) { values.progress={label:"Progress",value:+match[1],unit:"percent"}; values.turns={label:"Turns",value:+match[2]}; }
+            } else if (fact.replyFamily === "no-score-turns") {
+                match = /^No score 0 at all, but 0, you have this many turns(\d+)\s*\.Hmm\.\.$/im.exec(input);
+                if (match) { values.turns={label:"Turns",value:+match[1]}; model.scoreUnavailable=true; delete model.stats.score; }
+            } else {
+                match = /^After (\d+) turns?, you still haven't found the truth about yourself\.$/im.exec(input);
+                if (match) { values.turns = {label:"Turns",value:+match[1]}; values.progress = {label:"Progress",value:"you still haven't found the truth about yourself",unit:"text"}; model.scoreUnavailable = true; delete model.stats.score; }
+            }
+            if (!match || !Object.keys(values).length) return false;
+            Object.keys(values).forEach(function(key) { var value=values[key]; model.stats[key] = {key:key,label:value.label,value:value.value,max:null,unit:value.unit||"plain",kind:"counter",confirmed:true,seen:StatTracker.CONFIRM_SAMPLES,source:"module-command",readAt:Date.now()}; });
+            if (StatTracker._key) StatTracker.save(StatTracker._key,model);
+            return true;
+        }
+        var pattern = fact && StatTracker.MEASURED_METRIC_REPLIES[fact.replyFamily];
+        if (!pattern) return false;
+        var match = String(text || "").split(/\r?\n/).map(function (line) { return pattern.exec(line.trim()); }).filter(Boolean)[0];
+        if (!match) return false;
+        var namedCounter = fact.replyFamily === "named-counter-score";
+        var assignedTasks = fact.replyFamily === "assigned-tasks";
+        var key = assignedTasks ? "tasks" : fact.replyFamily === "possessive-magic" ? "magic" : StatTracker.canonKey(namedCounter ? match[3] : match[1]);
+        if (!(fact.fields || []).some(function (field) { return field === key || field === key + ".max"; })) return false;
+        var maximum = namedCounter || assignedTasks ? +match[2] : fact.replyFamily === "labelled-holiness" ? +match[3] : null;
+        var model = StatTracker.model(), previous = model.stats[key];
+        model.stats[key] = { key: key, label: assignedTasks ? "Tasks" : namedCounter ? match[3] : maximum != null ? match[1] : match[1] + "'s magic", value: +(namedCounter || assignedTasks ? match[1] : match[2]),
+            max: maximum, unit: maximum != null ? "fraction" : "plain", kind: maximum != null ? "gauge" : "counter",
+            confirmed: true, seen: StatTracker.CONFIRM_SAMPLES, source: previous && /^(?:status|global:)/.test(previous.source) ? previous.source : "module-command",
+            boundSource: maximum != null ? "module-command" : undefined, readAt: Date.now() };
+        if (StatTracker._key) StatTracker.save(StatTracker._key, model);
+        return true;
+    },
+
+    needsMeasuredMetricProbe: function (fact) {
+        return (fact.fields || []).some(function (field) {
+            var bound = /^(.*)\.max$/.exec(field), key = bound ? bound[1] : field;
+            var reading = StatTracker.model().stats[key];
+            if (!reading || !reading.confirmed) return true;
+            if (reading.readAt >= StatTracker._fulfillmentStartedAt) return false;
+            return bound ? reading.max == null || reading.boundSource === "module-command" : !StatTracker.hasPassiveMetric(key);
+        });
+    },
+
+    needsScoreProbe: function () {
+        if (StatTracker.model().scoreUnavailable && !(StatTracker.measuredScoreProbe() && StatTracker.measuredScoreProbe().replyFamily === "casualty-cycles")) return false;
+        try {
+            var identity = ModuleLibrary.currentExecutableIdentity();
+            var owner = StatTracker.probeFactsForIdentity(identity);
+            if (owner && owner.rejectedForms && owner.rejectedForms.indexOf("score") >= 0) return false;
+        } catch (e) {}
+        if (!StatTracker.hasPassiveMetric(StatTracker.scoreMetricKey(StatTracker.model()))) return true;
+        // D208: a status-sourced score whose column is no longer shown (narrow
+        // row, or rejected) is a stale reading -- ask the story again.
+        var sk = StatTracker.model().stats[StatTracker.scoreMetricKey(StatTracker.model())];
+        if (sk && sk.source === "status" && !StatTracker.statusShowsScore(StatTracker.model())) return true;
+        var fact = StatTracker.measuredScoreProbe();
+        // A current grid/RAM score does not prove a command-only denominator.
+        // Re-read that relationship on opening; a real grid denominator wins.
+        return !!(fact && fact.fields.some(function (field) {
+            if (field === "rank") return true; // command-owned rank refreshes on opening
+            var bound = /^(.*)\.max$/.exec(field);
+            var s = StatTracker.model().stats[bound ? bound[1] : field];
+            return bound ? (!s || s.max == null || /^(?:score|module)-command$/.test(s.boundSource || ""))
+                : (!StatTracker.hasPassiveMetric(field) || s.source === "score-command");
+        }));
+    },
+
     _samples: [],
     _events: [],
     _key: null,
@@ -94,10 +666,24 @@ var StatTracker = {
     statsFromColumns: (cols) => {
         var out = {};
         (cols || []).forEach(function (col) {
+            var authoredText = /^(Time|Season|Date|Tone|Memory)\s*[:=]\s*(.+)$/i.exec(String(col).trim());
+            if (authoredText && !/^-?\d+(?:\s*\/\s*\d+|%)?$/.test(authoredText[2])) {
+                var textKey = StatTracker.canonKey(authoredText[1]);
+                out[textKey] = { key: textKey, label: authoredText[1], value: authoredText[2].trim(), max: null, unit: "text" };
+                return;
+            }
+            var time = /^Time\s*[:=]\s*(\d{1,2}:\d{2}(?:\s*[ap]m)?|\d+\s+(?:seconds?|minutes?|hours?|days?)|Unstarted)$/i.exec(String(col).trim());
+            if (time) {
+                out.time = { key: "time", label: "Time", value: time[1], max: null, unit: "text" };
+                return;
+            }
             var m = StatTracker.COLUMN_STAT.exec(String(col).trim());
             if (!m) return;
             var key = StatTracker.canonKey(m[1]);
             if (!key) return;
+            // Same rule as StatusGridDecoder.add: the first health column is
+            // the player's (Treasures lists enemies after the player).
+            if (key === "health" && out.health) return;
             out[key] = {
                 key: key,
                 label: String(m[1]).trim(),
@@ -114,9 +700,22 @@ var StatTracker = {
     // information-first so a reply carrying a maximum is never matched by the
     // barer pattern that would drop it.
     SCORE_PATTERNS: [
+        /score would be (-?\d+)\s*\(total of (\d+) points\)(?:, in (\d+) moves?)?/i,
+        /score is (-?\d+)\s+out of a possible (\d+)(?:, in (\d+) moves?)?/i,
+        /score is (-?\d+)\s+points out of (\d+)(?:, in (\d+) moves?)?/i,
+        /score is (-?\d+)\s*\(of (\d+) points\)/i,
+        /(?:You've|You have) scored (-?\d+) points out of a (?:maximum|possible) total of (\d+)/i,
+        /achieved a score of (-?\d+) points out of a possible (\d+)/i,
+        /score would be (-?\d+)\s*\[total of (\d+) points\](?:, in (\d+) moves?)?/i,
+        /score is (-?\d+)\s*\(out of (\d+) possible\)/i,
+        /scored (-?\d+) out of a possible, oh, let's say, (\d+), and in (\d+) turns? no less\./i,
+        /You have like (-?\d+) points out of (\d+)(?:, in (\d+) turns?)?/i,
+        /^Grunk have (-?\d+) out of (\d+) so far\.?$/im,
         // Inform: "You have so far scored 36 out of a possible 350, in 1 turn,
         // earning you the rank of Adventurer."
         /scored\s+(\d+)\s+out of a possible\s+(\d+)\s*(?:points)?[,;]?\s*(?:in\s+(\d+)\s+turns?)?/i,
+        // Measured Inform variant: "You have scored 0 out of 60 points."
+        /scored\s+(\d+)\s+out of\s+(\d+)\s*(?:points)?[,;]?\s*(?:in\s+(\d+)\s+turns?)?/i,
         // Sherlock: "[You have 0 out of 100 points, which earns you a ranking of ...]"
         /You have\s+(\d+)\s+out of\s+(\d+)\s+points/i,
         // ZIL: "Your score is 0 (total of 350 points), in 1 move."
@@ -129,18 +728,36 @@ var StatTracker = {
         /scored\s+(\d+)\s+points?\s+in\s+(\d+)\s+turns?/i
     ],
     RANK_PATTERNS: [
-        /rank of\s+"?([^".\n]+?)"?\s*[.\n]/i,
+        /rank of\s*:?\s*"?([^".\n]+?)"?\s*[.\n]/i,
         /class of\s+([^.\n]+?)\s*[.\n]/i,
         /ranking of\s+([^.\n]+?)\s*[.\n]/i,
-        /giving you the rank of\s+([^.\n]+?)\s*[.\n]/i
+        /giving you the rank of\s+([^.\n]+?)\s*[.\n]/i,
+        /earning you the status of\s+([^.\n]+?)\s*(?:[.\n]|$)/i,
+        /making you (?:an? )?([A-Za-z][^.\n]+?)\s*(?:[.\n]|$)/i,
+        /(?:This|which) makes you (?:an? )?([A-Za-z][^.\n]+?)\s*(?:[.\n]|$)/i,
+        /earning you the same level of respect as ([^.\n]+?)\./i,
+        /which makes you -- ([^.\n]+?)\./i,
+        /the kind of score one would expect of the ([^.\n]+?)\./i,
+        /meaning you (failed the admission criteria)\./i,
+        /in \d+ turns?,\s*\n([A-Z][A-Za-z '-]+)\./i
     ],
     // LDoDoom answers this outright. A positive finding, not a failure.
-    NO_SCORE: /there is no scoring in this game|this game (?:has no|does not have a) score/i,
+    NO_SCORE: /there is no scoring in this game|(?:there is|there's) no score in this (?:story|game)|there is no numerical score|score is not kept|no score obtains|this game (?:has no|does not have a) score/i,
 
     parseScoreReply: (text) => {
-        var t = String(text || "");
+        var t = String(text || "").replace(/\u00a0/g, " ");
         if (!t) return null;
+        if (/^There is no score\./im.test(t)) return {scored:false,unavailable:true};
+        if (/^You have yet to truly score, and that's why you're here\.$/im.test(t)) return {scored:false,unavailable:true};
+        if (/^"You don't get scores in the Secret Service - there is only success and failure\." \(SPSS Spy's Manual, page 12\)$/im.test(t)) return {scored:false,unavailable:true};
         if (StatTracker.NO_SCORE.test(t)) return { scored: false, unavailable: true };
+        var potential = /Your potential is (-?\d+) of a possible (\d+)(?:, in (\d+) moves?)?/i.exec(t);
+        if (potential) return {scored:true,score:+potential[1],max:+potential[2],turns:potential[3]==null?null:+potential[3],rank:null,label:"Potential"};
+        var short = /You're ([a-z][a-z -]*?|\d+) points? short of the full (\d+)\./i.exec(t);
+        if (short) {
+            var remaining = StatTracker.parseCardinal(short[1]);
+            if (remaining != null) return { scored: true, score: +short[2] - remaining, max: +short[2], turns: null, rank: null };
+        }
         for (var i = 0; i < StatTracker.SCORE_PATTERNS.length; i++) {
             var m = StatTracker.SCORE_PATTERNS[i].exec(t);
             if (!m) continue;
@@ -194,10 +811,17 @@ var StatTracker = {
         var reLabelMax = /(experience|xp|exp)\s*[:=]\s*(-?\d+)\s*\/\s*(\d+)/ig;
         var m;
         while ((m = reLabelMax.exec(t))) take(m[1], m[2], m[3]);
-        var reLabel = /(experience|xp|exp)\s*[:=]\s*(-?\d+)(?!\s*\/)/ig;
+        var reLabel = /(experience|xp|exp)\s*[:=]\s*(-?\d+)(?!\d|\s*\/)/ig;
         while ((m = reLabel.exec(t))) take(m[1], m[2], null);
+        // Remove the whole fraction before the bare-number matcher can read
+        // its denominator as current EXP (Building's measured SCORE form).
+        var words = t.replace(/(-?\d+)\s+out of\s+(\d+)\s+experience\s+points?\b/ig, function (whole, current, maximum) {
+            take("experience", current, maximum);
+            out.experience.boundSemantics = "maximum";
+            return " ";
+        });
         var reWords = /(-?\d+)\s+experience\s+points?\b/ig;
-        while ((m = reWords.exec(t))) take("experience", m[1], null);
+        while ((m = reWords.exec(words))) take("experience", m[1], null);
         var reAbbrMax = /(?:^|[^A-Za-z0-9])(-?\d+)\s*\/\s*(\d+)\s+(xp|exp)\b/ig;
         while ((m = reAbbrMax.exec(t))) take(m[3], m[1], m[2]);
         var reAbbr = /(?:^|[^A-Za-z0-9])(-?\d+)\s+(xp|exp)\b/ig;
@@ -222,12 +846,38 @@ var StatTracker = {
     },
 
     scoreMetricKey: function (model) {
-        return model && model.scoreMetricKey === "experience" ? "experience" : "score";
+        return model && /^(?:experience|quota|adventurers)$/.test(model.scoreMetricKey || "") ? model.scoreMetricKey : "score";
     },
 
     recordPrintedMetrics: function (model, text, command) {
-        var printed = StatTracker.parsePrintedMetrics(text);
-        if (!printed || !model) return false;
+        var printed = StatTracker.parsePrintedMetrics(text) || {};
+        if (!model) return false;
+        var scoreCommand = /^score\s*$/i.test(String(command || "").trim());
+        if (scoreCommand) {
+            var locations = /^You have visited (\d+) locations \(out of (\d+) in the game\)\.$/im.exec(String(text||"").replace(/\u00a0/g," "));
+            locations = locations || /(?:You have|You've) visited (\d+) (?:out of (\d+) locations|locations out of a maximum (\d+)(?: locations)?)/i.exec(String(text||"").replace(/\u00a0/g," "));
+            locations = locations || /visited (\d+) locations out of a maximum (\d+)/i.exec(String(text||"").replace(/\u00a0/g," "));
+            if(locations) printed.locations={key:"locations",label:"Locations visited",value:+locations[1],max:+(locations[2]||locations[3]),unit:"fraction"};
+            var treasures=/dropped (\d+) treasures in the wellhouse/i.exec(String(text||""));
+            if(treasures)printed.treasures={key:"treasures",label:"Treasures deposited",value:+treasures[1],max:null,unit:"plain"};
+            var galactic = StatTracker.measuredScoreProbe();
+            if(galactic && (galactic.fields||[]).indexOf("day")>=0){
+                var day=/\bIt is Day (\d+) of your adventure\./i.exec(String(text||""));
+                if(day)printed.day={key:"day",label:"Day",value:+day[1],max:null,unit:"plain"};
+                var clock=/Current Galactic Standard Time(?: \([^)]*\))? is (\d+)\./i.exec(String(text||""));
+                if(clock)printed.time={key:"time",label:"Galactic Standard Time",value:+clock[1],max:null,unit:"plain"};
+            }
+            var progressFact=StatTracker.measuredScoreProbe();
+            if(progressFact&&progressFact.replyFamily==='mystery-progress-score'){
+                var milestone=/^You have so far scored -?\d+ out of a possible \d+ points; you are ([^.\n]+)\.$/im.exec(String(text||''));
+                if(milestone)printed.progress={key:'progress',label:'Progress',value:milestone[1],max:null,unit:'text'};
+            }
+            var certainty = /\bYour certainty is ([A-Za-z][A-Za-z '-]*)\./i.exec(String(text || ""));
+            if (certainty) printed.certainty = { key: "certainty", label: "Certainty", value: certainty[1], max: null, unit: "text" };
+            var task = /^You have (completed) your divine Task\.$/im.exec(String(text || ""));
+            if (task) printed.task = { key: "task", label: "Task", value: task[1], max: null, unit: "text" };
+        }
+        if (!Object.keys(printed).length) return false;
         // A SCORE response that explicitly names experience proves how this
         // module classifies its own score notifications. Persist the semantic
         // relationship, not a title/serial exception. From this point the
@@ -255,7 +905,8 @@ var StatTracker = {
                     key: k, label: rec.label, value: rec.value,
                     max: rec.max != null ? rec.max : null,
                     unit: unit, kind: kind, boundSemantics: rec.boundSemantics || "unknown",
-                    seen: StatTracker.CONFIRM_SAMPLES, source: "printed",
+                    seen: StatTracker.CONFIRM_SAMPLES, source: scoreCommand ? "score-command" : "printed",
+                    boundSource: rec.max != null && scoreCommand ? "score-command" : undefined,
                     confirmed: true, lastChange: null
                 };
                 wrote = true;
@@ -266,13 +917,14 @@ var StatTracker = {
             prev.seen = Math.max(prev.seen || 0, StatTracker.CONFIRM_SAMPLES);
             prev.confirmed = true;
             prev.boundSemantics = rec.boundSemantics || prev.boundSemantics || "unknown";
-            if (prev.source !== "status" && prev.source !== "global") prev.source = prev.source || "printed";
+            if (prev.source !== "status" && !/^global:/.test(String(prev.source || ""))) prev.source = scoreCommand ? "score-command" : prev.source || "printed";
             // Denominator is re-read when the story states it again (same rule
             // as n/m gauges elsewhere): never invent, never latch forever.
             if (rec.max != null) {
                 prev.max = rec.max;
                 prev.unit = "fraction";
                 prev.kind = "gauge";
+                if (scoreCommand) prev.boundSource = "score-command";
             } else if (prev.boundSemantics === "next-target" && prev.max != null && rec.value >= prev.max) {
                 prev.max = null;
                 prev.unit = "plain";
@@ -281,7 +933,7 @@ var StatTracker = {
             if (rec.value !== prev.value) {
                 var delta = rec.value - prev.value;
                 prev.value = rec.value;
-                if (had) StatTracker.emitChange(model, k, delta);
+                if (had && isFinite(delta) && typeof rec.value === "number") StatTracker.emitChange(model, k, delta);
             }
             wrote = true;
         });
@@ -317,13 +969,17 @@ var StatTracker = {
             [/exhausted|can barely stay awake/i, "exhausted"]
         ] }
     ],
+    PHYSICAL_READINESS_REPLY: /^Well, you have a stomach full of [A-Za-z][A-Za-z '-]*, but you're ready to [A-Za-z][A-Za-z '-]*\.$/i,
     parseDiagnoseReply: (text) => {
         var t = String(text || "");
         if (!t || /not a verb|don't know the word/i.test(t)) return null;
         var out = {};
+        var direct = t.split(/\r?\n/).filter(function (line) {
+            return /^(?:You (?:are|feel|seem|have)|You're)\b/i.test(line.trim()) && !/["\u201c\u201d]/.test(line);
+        }).join("\n");
         StatTracker.DIAGNOSE_SCALES.forEach(function (scale) {
             for (var i = 0; i < scale.steps.length; i++) {
-                if (scale.steps[i][0].test(t)) {
+                if (scale.steps[i][0].test(direct)) {
                     out[scale.key] = { key: scale.key, band: scale.steps[i][1],
                                        step: i, steps: scale.steps.length, unit: "ordinal" };
                     // D166: the FIRST match wins. An earlier draft kept scanning
@@ -337,7 +993,46 @@ var StatTracker = {
                 }
             }
         });
+        // These measured replies state qualitative facts, without defining an
+        // ordered scale. Preserve their words rather than inventing a band.
+        if (!out.health) {
+            var health = /^You feel (fine|just dandy)(?:[.,]|$)/im.exec(t)
+                || /^You are (?:a )?(healthy)(?: human being| and sober)?[.,]/im.exec(t)
+                || /^You're (still alive|feeling just dandy|in good health)(?:[.,]|$)/im.exec(t)
+                || /^Hang on a moment\.\.\. yes, you're (still breathing)\./im.exec(t);
+            if (/^Your virtual body's integrity appears to be normal\.$/im.test(t)) health = [null,"normal"];
+            if (/^Feeling quite well, thanks\.$/im.test(t)) health = [null,"quite well"];
+            if (/^You are in good health(?:[.,]|$)/im.test(t)) health = [null,"good"];
+            if (/^You feel great, somehow as if you'd just been taught new tricks\.$/im.test(t)) health = [null,"great"];
+            if (/^You're in peak physical condition; as peak as can be expected for a Classics student\.$/im.test(t)) health = [null,"peak physical condition"];
+            if (/^You are wide awake, and are in good health\.$/im.test(t) || /^In all other respects, you are in good health\.$/im.test(t)) health = [null,"good"];
+            if (/^You're in good enough shape to accomplish your goal\.$/im.test(t)) health = [null,"good enough shape"];
+            if (/^You feel well-rested, and you are well-fed\. In all other respects, you are in good health\.$/im.test(t)) health = [null,"good"];
+            if (/^Your health is good, but you feel a bit worried about your family\.$/im.test(t)) health = [null, "good"];
+            if (health) out.health = { key: "health", value: health[1], unit: "text" };
+            if (/^Never have you been in better health\.$/im.test(t)) out.health = { key: "health", value: "Never have you been in better health.", unit: "text" };
+        }
+        var memory = /^You feel fine, and your memory is (unimpaired)\./im.exec(t);
+        if (/^On the verge of swooning from hunger\.$/im.test(t)) out.hunger = { key: "hunger", value: "On the verge of swooning from hunger.", unit: "text" };
+        if (memory) out.memory = { key: "memory", value: memory[1], unit: "text" };
+        if (/^You are healthy and sober\./im.test(t)) out.sobriety = { key: "sobriety", value: "sober", unit: "text" };
+        var physical = t.split(/\r?\n/).map(function (line) { return StatTracker.PHYSICAL_READINESS_REPLY.exec(line.trim()); }).filter(Boolean)[0];
+        if (physical) out.diagnosis = { key: "diagnosis", value: physical[0], unit: "text" };
         return Object.keys(out).length ? out : null;
+    },
+
+    isOwnedStandardScoreLine: function (text) {
+        var t=String(text||"").trim();
+        if (/^In a total of \d+ turns?, you have achieved a score of -?\d+ points out of a possible \d+\.$/i.test(t))return true;
+        if (/^You have scored -?\d+ out of \d+, in this many turns: \d+ \.{2,}$/i.test(t))return true;
+        if (/^You have so far scored -?\d+ out of a possible \d+, in \d+ turns?, which tells me you're still in the cell, aren't you\? Go on, admit it\.$/i.test(t))return true;
+        if (/^(?:This (?:score )?gives you (?:a |the )rank of|Graded on the curve, you are in the class of|This makes you) [A-Za-z][^.!?\n]*\.$/i.test(t)) return true;
+        var base=/^(?:You have(?: so far)? scored -?\d+ out of (?:a possible )?\d+(?: points)?(?:,? in \d+ turns?)?|Your score (?:would be|is) -?\d+(?: \((?:total of|out of|of) \d+ points\)| (?:out of|of) a possible \d+)(?:, in \d+ (?:moves?|turns?))?)/i.exec(t);
+        if(!base)return false;
+        var tail=t.slice(base[0].length);
+        return /^(?:\.|,)?$/.test(tail)
+            || /^, (?:(?:earning you the (?:rank|status) of|giving you the rank of|which gives you the rank of|making you (?:an? )?|which makes you -- |the kind of score one would expect of the |meaning you )[^.!?\n]+)\.$/i.test(tail)
+            || /^\. (?:This (?:score )?gives you (?:a |the )rank of|This makes you|Graded on the curve, you are in the class of) [^.!?\n]+\.$/i.test(tail);
     },
 
     // ---- score-change notifications --------------------------------------
@@ -403,6 +1098,16 @@ var StatTracker = {
 
     // D173: count an announced change against the total the game itself last
     // confirmed. Every guard here answers a specific hazard raised in review.
+    // D208: is the status row showing a score this story's own SCORE reply
+    // has not contradicted, right now?
+    statusShowsScore: function (model) {
+        try {
+            if (model && model.statusScoreRejected) return false;
+            var now = StatTracker.statsFromColumns(StatTracker.splitColumns(StatTracker.statusText()));
+            return !!(now.score && typeof now.score.value === "number");
+        } catch (e) { return false; }
+    },
+
     applyScoreDeltaToDisplay: function (model, delta, scoreBefore) {
         if (!delta) return;
         var metricKey = StatTracker.scoreMetricKey(model);
@@ -419,7 +1124,12 @@ var StatTracker = {
         // The status row moves the score by itself (Zork 1 has a real Score
         // column and recordObservation already emits from it), so adding the
         // delta as well would count the same points twice.
-        if (s.source === "status") return;
+        // D208: but only while the row is ACTUALLY showing a trusted score.
+        // A narrow row drops the column (D137), and a row the game's own SCORE
+        // reply contradicted is no longer read -- then nothing else will move
+        // the figure, and skipping froze it (Perilous Magic held 0 after
+        // "[Your score has just gone up by one point.]").
+        if (s.source === "status" && StatTracker.statusShowsScore(model)) return;
 
         // Already moved this tick -- by a pinned global reading RAM, or by a
         // status sample. RAM is ground truth; do not add on top of it. This is
@@ -458,6 +1168,10 @@ var StatTracker = {
         s.value = next;
         s.confirmed = true;
         s.lastChange = delta;
+        // D209: only a delta applied to the SCORE itself is a fresh score
+        // reading; where the delta drives experience/quota/adventurers the
+        // score row did not move (Codex #1552).
+        if (metricKey === "score") StatTracker._scoreFreshTick = StatTracker._turn;
         // The cue and the badge are driven from here, which is why this one
         // write restores all three reported symptoms at once.
         StatTracker.emitChange(model, metricKey, delta);
@@ -738,6 +1452,9 @@ var StatTracker = {
     // immediate rather than starting again from nothing.
     forgetReadings: function (m, resetPlaythrough) {
         if (!m) return m;
+        m.scoreUnavailable = false;
+        m.scoreLabel = null;
+        m.rank = null;
         Object.keys(m.conditions || {}).forEach(function (key) { m.conditions[key].state = "unknown"; });
         Object.keys(m.itemMetrics || {}).forEach(function (key) {
             Object.keys(m.itemMetrics[key]).forEach(function (field) {
@@ -751,12 +1468,19 @@ var StatTracker = {
         Object.keys(m.stats || {}).forEach(function (k) {
             var s = m.stats[k];
             if (!s) return;
+            if (/^(?:score|module)-command$/.test(s.boundSource || "")) {
+                s.max = null;
+                s.unit = "plain";
+                delete s.boundSource;
+            }
             s.confirmed = false;
             s.lastChange = null;
             s.badgeUntil = 0;
             s.badgeDelta = 0;
         });
         delete m.scorePinKnown;
+        m.unavailableReason = null;
+        try { StatTracker.cancelFulfillmentRetry(); } catch (eR) {}
         delete m.lastDeltaStamp;
         delete m.scoreCandidates;
         delete m.scoreDeltaEvents;
@@ -786,6 +1510,7 @@ var StatTracker = {
     // happened to overwrite them. Raised by the grok seat's audit of D178.
     Resync: function (reason) {
         try {
+            StatTracker._aliasEv = null;               // D209: evidence is per timeline
             StatTracker.forgetReadings(StatTracker.model(), reason === "restart" || reason === "new-game");
             StatTracker._samples = [];
             StatTracker._probePending = null;
@@ -810,6 +1535,7 @@ var StatTracker = {
     },
 
     reset: () => {
+        StatTracker._aliasEv = null;                   // D209
         clearTimeout(StatTracker._diagnoseTimer);
         StatTracker._diagnoseTimer = null;
         StatTracker._pendingDelta = null;
@@ -830,6 +1556,7 @@ var StatTracker = {
         StatTracker._probeTimer = null;
         StatTracker.endProbeOwnership();
         StatTracker._lastSubmission = null;
+        StatTracker._metaVerbCache = null;      // D207: never across stories
         StatTracker.clearCarryProbe();          // D191
     },
 
@@ -845,6 +1572,23 @@ var StatTracker = {
             out.version = h.version;
             out.interpreterStatus = h.version <= 3;
             if (h.version <= 3) out.clockGame = !!(ZRamReader.u8(mem, 1) & 0x02);
+            // D208: the compiler sets the same Flags1 bit for a time status line
+            // in v4+ too (measured: 14 catalogue stories, e.g. Perilous Magic,
+            // 905, I-0, Gumshoe, Jigsaw). There the GAME draws the row, so the
+            // bit does not decide the row's labels -- it marks a story whose
+            // "Score/Moves" slots may carry hours/minutes.
+            // In v4+ the interpreter rewrites Flags1 with its own capability
+            // bits at load, so the compiler's bit is read from the story file.
+            else {
+                var original = null;
+                try {
+                    var ident = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableIdentity
+                        ? ModuleLibrary.currentExecutableIdentity() : null;
+                    var fileHeader = ident && (ident.header || ident.bytes);
+                    if (fileHeader && fileHeader[0] === h.version) original = fileHeader[1];
+                } catch (eId) {}
+                out.timeFlag = original != null && !!(original & 0x02);
+            }
         } catch (e) {}
         return out;
     },
@@ -925,13 +1669,85 @@ var StatTracker = {
             StatTracker._storyFile = story;
             StatTracker._samples = [];
             StatTracker._model = StatTracker.load(key);
+            // V4+ has no interpreter-defined turns slot. Legacy behavioral
+            // pins can be room ids or offset counters; rederive this session.
+            if (facts && facts.version > 3) delete StatTracker._model.globals.turns;
             StatTracker._storyEpoch++;
             StatTracker._probeDisclosureEpoch = -1;
         }
         var model = StatTracker.model();
-        if (facts.clockGame) model.scoreUnavailable = true;
+        if (facts.clockGame) {
+            var scoreFact = StatTracker.measuredScoreProbe();
+            if (scoreFact && (scoreFact.fields||[]).indexOf("score.max")>=0) model.scoreUnavailable = false;
+            else model.scoreUnavailable = true;
+        }
 
         var observed = StatTracker.statsFromColumns(StatTracker.splitColumns(statusRaw));
+        // D208: a status field the game's own SCORE reply contradicted is not
+        // read; and a v4+ story whose header carries the time-status bit is
+        // checked for the same hours/minutes-in-score-slots layout.
+        if (model.statusScoreRejected || facts.timeFlag) {
+            // Inform's time games put hours/minutes in the same two slots as
+            // score/moves ("Score: 17  Moves: 4" wide, "17/4" narrow). Once the
+            // story's own reply has disproved the score reading, a pair that
+            // also MOVES like a clock -- minutes step while the hour holds, or
+            // roll over into the next hour -- is shown as the time it is.
+            var clockPair = null;
+            if (observed.score && observed.turns) clockPair = [observed.score.value, observed.turns.value];
+            else StatTracker.splitColumns(statusRaw).some(function (c) {
+                var bare = /^(\d{1,2})\s*\/\s*(\d{1,2})$/.exec(c);
+                if (bare) clockPair = [parseInt(bare[1], 10), parseInt(bare[2], 10)];
+                return !!bare;
+            });
+            if (clockPair && clockPair[0] >= 0 && clockPair[0] <= 23 && clockPair[1] >= 0 && clockPair[1] <= 59) {
+                // The compiler's own time-status bit plus a clock-shaped pair in
+                // those slots is structural evidence on its own.
+                if (facts.timeFlag && !model.statusIsClock) { model.statusIsClock = true; model.statusTurnsRejected = true; }
+                var prevClock = model.clockPrev;
+                if (prevClock && (prevClock[0] !== clockPair[0] || prevClock[1] !== clockPair[1])) {
+                    var mins = function (p) { return p[0] * 60 + p[1]; };
+                    var step = (mins(clockPair) - mins(prevClock) + 1440) % 1440;
+                    if (step > 0 && step <= 120) { model.statusIsClock = true; model.statusTurnsRejected = true; }
+                }
+                model.clockPrev = clockPair;
+                if (model.statusIsClock) {
+                    // Those slots never held a score: drop any reading taken from them.
+                    if (model.stats.score && model.stats.score.source === "status") delete model.stats.score;
+                    var h12 = clockPair[0] % 12 === 0 ? 12 : clockPair[0] % 12;
+                    observed.time = { key: "time", label: "Time", unit: "text",
+                        value: h12 + ":" + (clockPair[1] < 10 ? "0" : "") + clockPair[1] + (clockPair[0] < 12 ? " am" : " pm") };
+                }
+            }
+            // Only a proven layout loses its score column; a time-flagged story
+            // whose row carries a genuine (non-clock) score keeps it.
+            if (model.statusScoreRejected || model.statusIsClock) delete observed.score;
+        }
+        if (model.statusTurnsRejected) {
+            delete observed.turns;
+            // A turns figure read from that column was never a turn count.
+            if (model.stats.turns && model.stats.turns.source === "status") delete model.stats.turns;
+        }
+        var measuredLayout = StatTracker.measuredScoreProbe();
+        if(measuredLayout && /^(?:metaphysical-quota|adventurers-killed)$/.test(measuredLayout.replyFamily)){
+            var customMetric=measuredLayout.replyFamily==='metaphysical-quota'?'quota':'adventurers';
+            if(observed.score){observed[customMetric]=Object.assign({},observed.score,{label:customMetric==='quota'?'Metaphysical quota':'Adventurers killed'});delete observed.score;}
+            model.scoreMetricKey=customMetric;delete model.stats.score;
+            if(model.globals.score!=null){model.globals[customMetric]=model.globals.score;delete model.globals.score;}
+        }
+        if (measuredLayout && measuredLayout.replyFamily === "casualty-cycles") {
+            delete observed.score;
+            if(observed.turns){observed.cycles={label:"Cycles",value:observed.turns.value,unit:"plain"};delete observed.turns;}
+            delete model.stats.score;delete model.stats.turns;delete model.globals.score;delete model.globals.turns;
+            model.scoreUnavailable=true;
+        }
+        if (measuredLayout && measuredLayout.statusTurnsMetric === "galactic-time") {
+            if (observed.turns) {
+                observed.time = { label: "Galactic Standard Time", value: observed.turns.value, unit: "plain" };
+                delete observed.turns;
+            }
+            delete model.stats.turns;
+            delete model.globals.turns;
+        }
         var globals = mem ? StatTracker.readGlobals(mem) : [];
         var playerProps = mem ? StatTracker.readPlayerProperties(mem) : {};
 
@@ -991,6 +1807,8 @@ var StatTracker = {
             if (StatTracker._samples.length > StatTracker.MAX_SAMPLES) StatTracker._samples.shift();
         }
 
+        // D209: this tick's final status sightings, for the score-alias pairing.
+        StatTracker._observedTick = { turn: StatTracker._turn, observed: observed };
         Object.keys(observed).forEach(function (k) {
             StatTracker.recordObservation(model, k, observed[k]);
         });
@@ -1057,17 +1875,22 @@ var StatTracker = {
         // made (measured: a "-650" on a restore).
         var hadReading = prev.confirmed === true;
         prev.seen = (prev.seen || 1) + 1;
-        prev.label = rec.label;
+        prev.label = k === "score" && model.scoreLabel ? model.scoreLabel : rec.label;
         // The denominator of an n/m gauge is re-read every turn rather than
         // latched: TreasuresofaSlaversKingdom was only ever observed at full
         // health, so there is no evidence its maximum is fixed.
-        prev.max = rec.max;
-        prev.unit = rec.unit;
+        // A grid often prints only the numerator. Absence of its denominator
+        // must not erase a separate, current SCORE-owned relationship.
+        if (rec.max != null || !/^(?:score|module)-command$/.test(prev.boundSource || "")) {
+            prev.max = rec.max;
+            prev.unit = rec.unit;
+            if (rec.max != null) prev.boundSource = "status";
+        }
         if (prev.seen >= StatTracker.CONFIRM_SAMPLES) prev.confirmed = true;
         if (rec.value !== prev.value) {
             var delta = rec.value - prev.value;
             prev.value = rec.value;
-            if (hadReading) {
+            if (hadReading && isFinite(delta) && typeof rec.value === "number") {
                 prev.lastChange = delta;
                 StatTracker.emitChange(model, k, delta);
             }
@@ -1100,7 +1923,7 @@ var StatTracker = {
 
     emitChange: function (model, k, delta) {
         if (StatTracker.firstReadingAfterForget(model, k)) return;
-        var scoreFamily = k === "score" || (k === "experience" && model.scoreMetricKey === "experience");
+        var scoreFamily = k === "score" || (k === StatTracker.scoreMetricKey(model) && model.scoreMetricKey != null);
         if (scoreFamily && delta > 0) {
             StatTracker._events.push({ type: "score-up", key: k, delta: delta });
         } else if (scoreFamily) {
@@ -1127,7 +1950,7 @@ var StatTracker = {
     // climbs 40 a turn (it is the Galactic Standard Time clock its own SCORE
     // reply names), so it fails the test, nothing is registered, and no wrong
     // number is shown. Measured: Zork 1 rises by 1 a turn and passes.
-    // D152: the same behavioural test, run for EVERY version rather than v3
+    // Historical D152: the same behavioural test ran for EVERY version rather than v3
     // only. Measured on a 412px-wide phone: the status window is a fixed-width
     // character grid, so 905's status reads "Bedroom   Score: 9   Moves: 8" at
     // 672px and just "Bedroom" at 396px -- the score columns do not fit and
@@ -1141,10 +1964,14 @@ var StatTracker = {
     // confirming one licenses the other. For v4+ there is no such clause, so
     // the turn counter is registered on its own and the score waits for real
     // corroboration -- a SCORE reply or a status line wide enough to read.
+    // October 7 correction: v4+ slot 2 can be location, not turns. This
+    // interpreter-slot initializer now runs ONLY for interpreterStatus (v3).
+    // V4+ uses promoteTurnCounter across all globals, with ambiguity retained
+    // when candidate absolute sequences differ; old turn pins rederive on load.
     V3_MAX_STEP: 8,
     _v3: null,
     seedInterpreterStatus: function (model, facts, globals) {
-        if (!facts) return;
+        if (!facts || !facts.interpreterStatus) return;
         if (!globals || globals.length < 3) return;
         var st = StatTracker._v3 || (StatTracker._v3 = { hits: 0, last: null });
         var slot1 = globals[1], slot2 = globals[2];
@@ -1156,6 +1983,13 @@ var StatTracker = {
         st.last = slot2;
         if (st.hits < StatTracker.CONFIRM_SAMPLES) return;
 
+        var measuredLayout = StatTracker.measuredScoreProbe();
+        if (measuredLayout && measuredLayout.replyFamily === "casualty-cycles") return;
+        if (measuredLayout && measuredLayout.statusTurnsMetric === "galactic-time") {
+            StatTracker.setSeeded(model, "time", "Galactic Standard Time", slot2, "counter", "global:2");
+            model.globals.time = 2;
+            return;
+        }
         if (facts.clockGame) {
             // Slot 1 is hours and slot 2 minutes. Confirmed live on Deadline:
             // 8:04 with G1=8/G2=4, then 8:07 with G2=7.
@@ -1198,6 +2032,8 @@ var StatTracker = {
     // happened to tick once from qualifying.
     TURN_CONFIRM_STEPS: 3,
     promoteTurnCounter: function (model) {
+        var measured = StatTracker.measuredScoreProbe();
+        if (measured && measured.replyFamily === "casualty-cycles") return;
         if (model.globals.turns != null) return;                 // already known
         var samples = StatTracker._samples.filter(function (s) { return s.globals && s.globals.length; });
         if (samples.length < StatTracker.TURN_CONFIRM_STEPS + 1) return;
@@ -1218,10 +2054,26 @@ var StatTracker = {
             if (ok && ups >= StatTracker.TURN_CONFIRM_STEPS) hits.push(i);
         }
         if (!hits.length) return;
-        // Several globals can advance together (Anchorhead's 4 and 10 both do).
-        // They are all counting the same turns, so the lowest is as good as any.
+        // A labelled status/SCORE observation identifies the absolute counter
+        // even when another timer advances with the same offset increments.
+        hits = hits.filter(function (i) {
+            return samples.every(function (s) {
+                var printed = s.observed && s.observed.turns;
+                return !printed || s.globals[i] === printed.value;
+            });
+        });
+        if (!hits.length) return;
+        // Equal increments alone do not establish equal absolute turns.
+        // Copied counters may agree, but an offset timer must remain ambiguous.
+        if (hits.some(function (i) {
+            return samples.some(function (s) { return s.globals[i] !== s.globals[hits[0]]; });
+        })) return;
         var idx = hits[0];
         model.globals.turns = idx;
+        if (model.stats.turns && model.stats.turns.source === "status" &&
+            !(samples[samples.length - 1].observed || {}).turns) {
+            model.stats.turns.source = "global:" + idx;
+        }
         StatTracker.setSeeded(model, "turns", "Turns",
             samples[samples.length - 1].globals[idx], "counter", "global:" + idx);
     },
@@ -1283,10 +2135,16 @@ var StatTracker = {
             var stat = model.stats[k];
             if (!stat || idx == null || globals[idx] == null) return;
             var v = globals[idx];
-            if (stat.source === "status" && stat.value !== v) {
+            var hasCurrentTick = StatTracker._observedTick && StatTracker._observedTick.turn === StatTracker._turn;
+            var current = hasCurrentTick && StatTracker._observedTick.observed[k];
+            var statusValue = hasCurrentTick ? (current ? current.value : null) : stat.value;
+            if (stat.source === "status" && statusValue != null && statusValue !== v) {
                 delete model.globals[k];                    // contradicted: demote
                 return;
             }
+            // A disappeared label is not a current contradiction. Keep the
+            // proven RAM counter moving instead of freezing its old reading.
+            if (stat.source === "status" && hasCurrentTick && !current) stat.source = "global:" + idx;
             if (v !== stat.value) {
                 var delta = v - stat.value;
                 stat.value = v;
@@ -1296,8 +2154,78 @@ var StatTracker = {
                 }
             }
             stat.confirmed = true;
-            if (k === "score") model.scorePinKnown = v;
+            if (k === "score") { model.scorePinKnown = v; StatTracker._scoreFreshTick = StatTracker._turn; }   // D209 fresh reading
         });
+    },
+
+    // ---- D209 display alias: a labelled status metric that IS the score ----
+    // Treasures prints its score as "QUEST RATE: n/500" while SCORE (with rank)
+    // fills the Score row, so the sheet showed the same number twice. Equal
+    // numbers at one moment prove nothing, so a pairing counts only when, in
+    // the SAME tick, the metric was freshly sighted AND the score had a fresh
+    // reading (SCORE reply, counted delta, pinned global). The alias needs the
+    // metric's max to equal the SCORE-reply max and two DISTINCT matched values,
+    // is display-only (both readings are kept; score learning is untouched),
+    // splits on any fresh contradiction, stays split when ambiguous, and lives
+    // only for the current story epoch (Resync/reset clear it).
+    _aliasEv: null,
+    _scoreFreshTick: -1,
+    _observedTick: null,
+    updateScoreAlias: function (model) {
+        var ev = StatTracker._aliasEv;
+        if (!ev || ev.epoch !== StatTracker._storyEpoch) ev = StatTracker._aliasEv = { epoch: StatTracker._storyEpoch, keys: {}, key: null };
+        var obs = StatTracker._observedTick;
+        if (StatTracker._scoreFreshTick !== StatTracker._turn || !obs || obs.turn !== StatTracker._turn) return;
+        var sc = model.stats.score;
+        if (!sc || typeof sc.value !== "number" || typeof sc.max !== "number" || sc.boundSource !== "score-command") return;
+        Object.keys(obs.observed).forEach(function (k) {
+            var o = obs.observed[k];
+            // Only a CUSTOM authored label (Quest Rate) can be the score under
+            // another name; canonical stats keep their own meaning (Codex #1545).
+            if (StatTracker.isCanonicalStatKey(k) || !o || typeof o.value !== "number") { delete ev.keys[k]; return; }
+            // A fresh max that no longer matches the SCORE-reply max invalidates
+            // any evidence already gathered (Codex #1544).
+            if (o.max !== sc.max) { delete ev.keys[k]; return; }
+            var e = ev.keys[k] || (ev.keys[k] = { values: [] });
+            if (o.value === sc.value) { if (e.values.indexOf(o.value) < 0) e.values.push(o.value); }
+            else e.values = [];          // fresh contradiction: split, start over
+        });
+        var qualified = Object.keys(ev.keys).filter(function (k) { return ev.keys[k].values.length >= 2; });
+        ev.key = qualified.length === 1 ? qualified[0] : null;   // two candidates: ambiguous, stay split
+    },
+    scoreAliasKey: function () {
+        var ev = StatTracker._aliasEv;
+        return ev && ev.epoch === StatTracker._storyEpoch ? ev.key : null;
+    },
+    // Canonical stat keys (the CANON authority plus the tracker's own derived
+    // rows) are never aliased; an unknown authored label may be.
+    isCanonicalStatKey: function (k) {
+        var canon = {};
+        Object.keys(StatTracker.CANON || {}).forEach(function (label) { canon[StatTracker.CANON[label]] = 1; });
+        ["value", "weight", "capacity", "quota", "adventurers", "casualties", "population", "cycles", "progress", "damage", "hit odds", "complete"].forEach(function (x) { canon[x] = 1; });
+        return !!canon[k];
+    },
+    // The merged row is drawn only while, RIGHT NOW, the metric and the score
+    // agree in value and max under a SCORE-reply max. Otherwise both rows
+    // render and the evidence is kept for a later fresh revalidation.
+    displayScoreAlias: function (model) {
+        var k = StatTracker.scoreAliasKey();
+        // Measured semantic relationships survive restore; numeric readings
+        // and dynamic qualification do not. Never dispatch by story title.
+        try {
+            var identity = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableIdentity
+                ? ModuleLibrary.currentExecutableIdentity() : null;
+            var facts = StatTracker.probeFactsForIdentity(identity);
+            if (facts && Object.prototype.hasOwnProperty.call(facts, "scoreAliasField")) {
+                k = facts.scoreAliasField;
+                if (typeof k !== "string" || !k.trim() || StatTracker.isCanonicalStatKey(k)) return null;
+            }
+        } catch (eIdentity) { return null; }
+        var sc = model.stats.score, m = k && model.stats[k];
+        if (!k || !m || !m.confirmed || !sc || !sc.confirmed || model.scoreUnavailable) return null;
+        if (sc.boundSource !== "score-command" || typeof sc.max !== "number") return null;
+        if (m.value !== sc.value || m.max !== sc.max) return null;
+        return k;
     },
 
     // ---- deaths ----------------------------------------------------------
@@ -1507,7 +2435,8 @@ var StatTracker = {
         var w = StatTracker.CARRY.weight.exec(text);
         var c = StatTracker.CARRY.capacity.exec(text);
         var v = StatTracker.CARRY.value.exec(text);
-        if (!w && !c && !v) return false;
+        var pocket = /^You have ([$\u00a3\u20ac])(\d+) in your pocket\.$/im.exec(String(text||"").replace(/\u00a0/g," "));
+        if (!w && !c && !v && !pocket) return false;
 
         var set = function (key, label, value, unit, notation) {
             if (typeof value !== "number" || isNaN(value)) return;
@@ -1549,6 +2478,7 @@ var StatTracker = {
             s.ramStale = false;
         };
 
+        if (pocket) set("money","Pocket money",+pocket[2],"money",{symbol:pocket[1]});
         if (mem) {
             if (v) StatTracker.pinCarryProp(model, mem, "value", parseInt(v[2], 10));
             if (w) StatTracker.pinCarryProp(model, mem, "weight", parseInt(w[1], 10));
@@ -1578,7 +2508,17 @@ var StatTracker = {
             locator: evidence && evidence.spanId
         }));
         StatTracker.observeItemMetrics(text);
+        if (/^score\s*$/i.test(String(command || "").trim())) StatTracker.applyScoreReply(text);
+        if (/^score\s*$/i.test(String(command || "").trim())) StatTracker.applyMeasuredMetricReply(StatTracker.measuredScoreProbe(), text);
+        if (/^diagnose\s*$/i.test(String(command || "").trim())) StatTracker.applyDiagnoseReply(text);
+        if (/^prowess\s*$/i.test(String(command || "").trim()) && StatTracker.measuredProbe("prowess")) StatTracker.applyProwessReply(text);
         StatTracker.recordPrintedMetrics(model, text, command);
+        StatTracker.measuredMetricProbes().forEach(function (fact) {
+            if (String(command || "").trim().toLowerCase() === fact.command ||
+                (/^(?:inventory|i)$/i.test(String(command || "").trim()) && fact.replyFamily === "possessive-magic")) {
+                StatTracker.applyMeasuredMetricReply(fact, text);
+            }
+        });
         var found = StatTracker.bannersIn(text);
         if (/\b(?:you (?:have )?died|you are dead|you were killed|a fatal blow|game over)\b/i.test(String(text || ""))
             && !found.some(function (b) { return b.kind === "death"; })) {
@@ -1613,6 +2553,8 @@ var StatTracker = {
     applyScoreReply: function (text) {
         var model = StatTracker.model();
         var parsed = StatTracker.parseScoreReply(text);
+        var progressFact = StatTracker.measuredScoreProbe();
+        if(progressFact && progressFact.replyFamily === 'mystery-progress-score')StatTracker.recordPrintedMetrics(model,text,'score');
         model.probed = true;
         if (!parsed) return model;
         if (parsed.unavailable) {
@@ -1623,14 +2565,49 @@ var StatTracker = {
         }
         var s = model.stats.score || { key: "score", label: "Score", unit: "plain",
                                        kind: "score", seen: 0, source: "score-command" };
+        // D208: what the status row claimed before this reply replaces it.
+        var statusPrior = s.source === "status" ? { source: s.source, value: s.value } : null;
         s.value = parsed.score;
+        if(parsed.label){model.scoreLabel=parsed.label;s.label=parsed.label;}
         // D175: the game stated this outright, so it is a valid pin baseline.
         model.scorePinKnown = parsed.score;
-        if (parsed.max != null) { s.max = parsed.max; s.unit = "fraction"; }
+        model.scoreUnavailable = false;
+        if (parsed.max != null) { s.max = parsed.max; s.unit = "fraction"; s.boundSource = "score-command"; }
         s.seen = Math.max(s.seen || 0, StatTracker.CONFIRM_SAMPLES);
         s.confirmed = true;
         model.stats.score = s;
+        StatTracker._scoreFreshTick = StatTracker._turn;   // D209 fresh reading
         if (parsed.rank) model.rank = parsed.rank;
+        // D208: the game's own SCORE reply outranks its status line. Perilous
+        // Magic is a timed game whose status row prints the clock in the score
+        // slots ("Score: 17  Moves: 0" at 5:00 pm; "17/3" when narrow) while
+        // SCORE says "0 out of a possible 3". When the two disagree at the same
+        // moment, that status field is wrong for this story: stop reading it,
+        // and drop any RAM slot that was learned from it.
+        try {
+            var statusNow = StatTracker.statsFromColumns(StatTracker.splitColumns(StatTracker.statusText()));
+            var sNow = statusNow.score;
+            // Same moment, different number -- or a status "score" above the
+            // maximum the story itself states, which no real score can be.
+            var priorStatus = (statusPrior && statusPrior.source === "status" && typeof statusPrior.value === "number") ? statusPrior.value : null;
+            var impossible = parsed.max != null && priorStatus != null && priorStatus > parsed.max;
+            if ((sNow && typeof sNow.value === "number" && sNow.value !== parsed.score) || impossible) {
+                model.statusScoreRejected = true;
+                var memR = (typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) ? ZRamProvider.getMem() : null;
+                var gR = memR ? StatTracker.readGlobals(memR) : [];
+                if (model.globals && model.globals.score != null && gR[model.globals.score] !== parsed.score) {
+                    delete model.globals.score;
+                    s.source = "score-command";
+                }
+            }
+            var tNow = statusNow.turns;
+            if (parsed.turns != null && tNow && typeof tNow.value === "number" && Math.abs(tNow.value - parsed.turns) > 1) {
+                model.statusTurnsRejected = true;
+            }
+        } catch (eRej) {}
+        // The figure now rests on the game's stated total, not on a status
+        // column that is absent or rejected.
+        if (s.source === "status" && !StatTracker.statusShowsScore(model)) s.source = "score-command";
         // D152: a SCORE reply is an independent reading of the same number, so
         // it can stand in for the status text the promoter normally verifies
         // against. Recording it as a sample means one press of Identify stats
@@ -1689,7 +2666,7 @@ var StatTracker = {
             model.stats[k] = {
                 key: k, label: k.charAt(0).toUpperCase() + k.slice(1),
                 band: p.band, step: p.step, steps: p.steps,
-                unit: "ordinal", kind: "gauge", seen: StatTracker.CONFIRM_SAMPLES,
+                value: p.value, unit: p.unit || "ordinal", kind: p.unit === "text" ? "counter" : "gauge", seen: StatTracker.CONFIRM_SAMPLES,
                 confirmed: true, source: "diagnose"
             };
         });
@@ -1703,10 +2680,15 @@ var StatTracker = {
     visibleStats: function () {
         var model = StatTracker.model();
         var out = [];
+        // D209: one row when a labelled metric is proven to be the score -- the
+        // story's own label, the score's value/max and rank.
+        var alias = StatTracker.displayScoreAlias(model);
         Object.keys(model.stats).forEach(function (k) {
             var s = model.stats[k];
             if (!s || !s.confirmed) return;
             if (k === "score" && model.scoreUnavailable) return;
+            if (alias && k === alias) return;
+            if (alias && k === "score") s = Object.assign({}, s, { label: model.stats[alias].label, aliasOf: alias });
             out.push(s);
         });
         // D169: value sits next to score because in wump2ka it IS part of the
@@ -1773,9 +2755,8 @@ var StatTracker = {
     },
     renderConditions: function (host) {
         var previous = host.querySelector ? host.querySelector(".pl-conditions") : null;
-        if (previous) previous.remove();
         var confirmed = StatTracker.visibleConditions();
-        if (!confirmed.length) return;
+        if (!confirmed.length) { if (previous) previous.remove(); return; }
         var section = document.createElement("div");
         section.className = "pl-conditions";
         var heading = document.createElement("p");
@@ -1788,6 +2769,10 @@ var StatTracker = {
             chip.textContent = typeof LearnedWords !== "undefined" ? LearnedWords.label("status", rec.key, rec.label) : rec.label;
             section.appendChild(chip);
         });
+        // P3: keep the live section when it is identical and still last;
+        // replacing it every tick dirtied layout like the stat rows did.
+        if (previous && previous === host.lastElementChild && previous.outerHTML === section.outerHTML) return;
+        if (previous) previous.remove();
         host.appendChild(section);
     },
     itemPropertyValues: function (mem, objectId) {
@@ -1884,9 +2869,10 @@ var StatTracker = {
         StatTracker._lineIds = new WeakMap();
         StatTracker._nextLineId = 1;
         var lines = document.querySelectorAll(".BufferWindow .BufferLine");
+        var version = typeof BufferRevision !== "undefined" ? BufferRevision.versionReader() : null;
         for (var i = 0; i < lines.length; i++) {
             var text = StatTracker.lineText(lines[i]);
-            StatTracker._lineCursor.set(lines[i], { text: text, generation: 0 });
+            StatTracker._lineCursor.set(lines[i], { text: text, generation: 0, ver: version ? version(lines[i]) : null });
             StatTracker._lineIds.set(lines[i], StatTracker._nextLineId++);
         }
     },
@@ -1900,20 +2886,27 @@ var StatTracker = {
         if (!StatTracker._lineCursor) StatTracker._lineCursor = new WeakMap();
         if (!StatTracker._lineIds) StatTracker._lineIds = new WeakMap();
         var lines = document.querySelectorAll(".BufferWindow .BufferLine");
+        // A line no mutation has touched since its text was recorded cannot
+        // have new output; skip re-reading it (innerText forces layout, and
+        // this runs every tick over the whole session -- consensus #1830).
+        var version = typeof BufferRevision !== "undefined" ? BufferRevision.versionReader() : null;
         for (var i = 0; i < lines.length; i++) {
-            var line = lines[i], text = StatTracker.lineText(line);
+            var line = lines[i];
             var state = StatTracker._lineCursor.get(line);
+            var ver = version ? version(line) : null;
+            if (ver !== null && state && state.ver === ver) continue;
+            var text = StatTracker.lineText(line);
             var id = StatTracker._lineIds.get(line);
             if (!id) { id = StatTracker._nextLineId++; StatTracker._lineIds.set(line, id); }
             if (!state) {
                 state = { text: "", generation: 0 };
             }
-            if (text === state.text) { StatTracker._lineCursor.set(line, state); continue; }
+            if (text === state.text) { state.ver = ver; StatTracker._lineCursor.set(line, state); continue; }
             var start = 0;
             if (text.indexOf(state.text) === 0) start = state.text.length;
             else state.generation++;
             var fresh = text.slice(start);
-            StatTracker._lineCursor.set(line, { text: text, generation: state.generation });
+            StatTracker._lineCursor.set(line, { text: text, generation: state.generation, ver: ver });
             if (fresh.trim()) out.push({
                 text: fresh,
                 spanId: "line:" + id + ":" + state.generation + ":" + start + ":" + text.length
@@ -1976,7 +2969,9 @@ var StatTracker = {
                         && typeof after.value === "number" && after.value > before) {
                         StatTracker._carryTurnWarned = true;
                         try {
-                            if (StatTracker._probeDisclosureEpoch !== StatTracker._storyEpoch
+                            // E3: the install-owned WARNING already covers this;
+                            // never a second per-session popup once it was seen.
+                            if (!StatTracker.inventoryWarningSeen()
                                 && typeof Message !== "undefined" && Message.Show) {
                                 Message.Show("Inventory check",
                                     "Each time you open Equipment, the story checks your pack. In this game that uses a turn.");
@@ -1994,6 +2989,9 @@ var StatTracker = {
         // promoteGlobals identifies the score's global by watching RAM change
         // across turns, and readConfirmedGlobals then reads it every turn with
         // no command and no text. Identify stats remains the explicit opt-in.
+        // D209: pair this tick's FINAL readings (after observe, replies and
+        // deltas), never one source mid-update against another.
+        try { StatTracker.updateScoreAlias(StatTracker.model()); } catch (eAlias) {}
         StatTracker.Render();
         StatTracker.playCues(StatTracker.takeEvents());
         StatTracker.runProbeQueue();
@@ -2091,15 +3089,20 @@ var StatTracker = {
         StatTracker._carryTurnWarned = false;
         StatTracker._carryProbeUseless = false;
         StatTracker._carryProbeSubmitting = false;
+        StatTracker._carrySpanOwned = false;    // D207
+        if (!StatTracker._probeActive) StatTracker.endProbeOwnership();
         setTimeout(function () { StatTracker.runProbeQueue(); }, 0);
     },
 
     _carryProbeTimer: null,
+    _carrySpanOwned: false,         // D207: carry probe owns its response span
     _carryProbeSentAt: 0,           // D195: bounds the in-flight guard
     _carryProbeSubmitting: false,
 
     requestCarryBootstrap: function () {
+        if (StatTracker.hasQuestionPrompt()) return;
         try {
+            if (StatTracker.rejectedProbeForm("inventory")) return;
             var now = Date.now();
             if (StatTracker._carryProbeUseless) return;
             // D195 (codex): ONE probe transaction at a time. The 800ms throttle
@@ -2180,7 +3183,7 @@ var StatTracker = {
             StatTracker._carryProbeTimer = setTimeout(function () {
                 StatTracker._carryProbeTimer = null;
                 try {
-                    if (StatTracker.lineInputHasDraft()) {
+                    if (StatTracker.lineInputHasDraft() || StatTracker.hasQuestionPrompt()) {
                         // Stand down rather than overwrite what they typed.
                         StatTracker._hideCarryProbe = false;
                         undoProbeMutation();            // D194
@@ -2192,9 +3195,19 @@ var StatTracker = {
                     // "any injection may proceed while the input is hidden",
                     // which is what the two gates were reading it as.
                     StatTracker._carryProbeSubmitting = true;
+                    // D207: own the whole response span from submission, the
+                    // same way a queued stat probe does, so no reply line is
+                    // ever painted or spoken.
+                    StatTracker._carrySpanOwned = true;
+                    StatTracker._carryVerb = verb;
+                    StatTracker.beginProbeOwnership();
                     var sent = false;
                     try { sent = Actionable.Submit(verb, "stat-probe"); }
                     finally { StatTracker._carryProbeSubmitting = false; }
+                    if (!sent) {
+                        StatTracker._carrySpanOwned = false;
+                        if (!StatTracker._probeActive) StatTracker.endProbeOwnership();
+                    }
                     // D195: a sent probe is in flight until its reply is
                     // consumed. Stamp it so the entry guard can bound the wait,
                     // and drop the rollback -- from here the ordinary reply path
@@ -2318,8 +3331,14 @@ var StatTracker = {
     Render: function () {
         if (typeof document === "undefined") return;
         var host = document.getElementById("pl-stats");
-        var rows = document.getElementById("pl-stats-rows");
-        if (!host || !rows) return;
+        var liveRows = document.getElementById("pl-stats-rows");
+        if (!host || !liveRows) return;
+        // Render runs on every tick. Build off-document and touch the live
+        // strip only when the markup actually changed: rebuilding identical
+        // rows dirtied layout, and the next status read then re-laid-out the
+        // whole story (P3, consensus #1843). State side effects below
+        // (badgeUntil/lastChange) still run on every call.
+        var rows = document.createElement("div");
         var stats = StatTracker.visibleStats();
         var model = StatTracker.model();
 
@@ -2339,8 +3358,7 @@ var StatTracker = {
         // The strip is therefore always present, and says plainly what it is
         // and what it is waiting for.
         if (!stats.length) {
-            rows.innerHTML = "";
-            host.hidden = false;
+            if (host.hidden) host.hidden = false;
             var hint = document.createElement("p");
             hint.className = "pl-stat-hint";
             hint.textContent = model.fulfillment === "checking"
@@ -2351,12 +3369,12 @@ var StatTracker = {
                 ? "This story does not report any character stats."
                 : "No stats in this story's status bar yet. Ask it directly — costs one turn.";
             rows.appendChild(hint);
+            StatTracker.applyRows(liveRows, rows);
             var b0 = document.getElementById("pl-stats-identify");
-            if (b0) b0.hidden = !!model.probed;
+            if (b0 && b0.hidden !== !!model.probed) b0.hidden = !!model.probed;
             return;
         }
-        host.hidden = false;
-        rows.innerHTML = "";
+        if (host.hidden) host.hidden = false;
 
         // Fulfillment state remains visible even when passive stats already
         // occupy the strip; otherwise an on-open command check looked idle.
@@ -2366,6 +3384,7 @@ var StatTracker = {
             stateHint.textContent = model.fulfillment === "checking"
                 ? "Checking this story for current status..."
                 : "Some current status is unavailable at this prompt.";
+            if (model.fulfillment === "unavailable" && model.unavailableReason) stateHint.title = StatTracker.UNAVAILABLE_TEXT[model.unavailableReason] || "Waiting for the game";
             rows.appendChild(stateHint);
         }
 
@@ -2383,6 +3402,8 @@ var StatTracker = {
             val.className = "pl-stat-value";
             if (s.unit === "ordinal") {
                 val.textContent = s.band || "";
+            } else if (s.unit === "range") {
+                val.textContent = s.value + " to " + s.upper;
             } else if (s.unit === "percent") {
                 val.textContent = s.value + "%";
             } else if (s.unit === "money") {
@@ -2428,7 +3449,7 @@ var StatTracker = {
                 chip.appendChild(bar2);
             }
 
-            if (s.key === "score" && model.rank) {
+            if (model.rank && (s.key === "score" || (s.key === "progress" && !stats.some(function(stat){return stat.key==="score";})))) {
                 var rank = document.createElement("span");
                 rank.className = "pl-stat-rank";
                 rank.textContent = model.rank;
@@ -2447,7 +3468,12 @@ var StatTracker = {
             // the next one, which is why nothing was ever visible. Instead the
             // change is given a deadline and every render inside that window
             // draws it, so it survives the rebuilds and then simply stops.
-            if (s.lastChange) {
+            // P4: the badge lifecycle lives on the MODEL record. D209 shows the
+            // score under its alias as a presentation copy; clearing lastChange
+            // on that copy left the real record set, so the badge restarted on
+            // every render until the next change.
+            var rec = model.stats[s.key] || s;
+            if (rec.lastChange) {
                 // A turn counter and a clock advance every single turn, so a
                 // badge on those is not an event -- it is permanent clutter.
                 // Only a change the player would want pointed out is marked.
@@ -2457,23 +3483,32 @@ var StatTracker = {
                 var worthMarking = (s.key !== "turns" && s.key !== "time"
                                     && s.key !== "weight" && s.key !== "capacity");
                 if (worthMarking) {
-                    s.badgeDelta = s.lastChange;
-                    s.badgeUntil = Date.now() + 1500;
+                    rec.badgeDelta = rec.lastChange;
+                    rec.badgeUntil = Date.now() + 1500;
                 }
-                s.lastChange = null;
+                rec.lastChange = null;
             }
-            if (s.badgeUntil && Date.now() < s.badgeUntil && s.badgeDelta) {
+            if (rec.badgeUntil && Date.now() < rec.badgeUntil && rec.badgeDelta) {
                 var badge = document.createElement("span");
-                badge.className = "pl-stat-badge " + (s.badgeDelta > 0 ? "up" : "down");
-                badge.textContent = (s.badgeDelta > 0 ? "+" : "") + s.badgeDelta;
+                badge.className = "pl-stat-badge " + (rec.badgeDelta > 0 ? "up" : "down");
+                badge.textContent = (rec.badgeDelta > 0 ? "+" : "") + rec.badgeDelta;
                 chip.appendChild(badge);
-                chip.classList.add(s.badgeDelta > 0 ? "pl-stat-up" : "pl-stat-down");
+                chip.classList.add(rec.badgeDelta > 0 ? "pl-stat-up" : "pl-stat-down");
             }
             rows.appendChild(chip);
         });
+        StatTracker.applyRows(liveRows, rows);
 
         var btn = document.getElementById("pl-stats-identify");
-        if (btn) btn.hidden = !!model.probed;
+        if (btn && btn.hidden !== !!model.probed) btn.hidden = !!model.probed;
+    },
+
+    // Replace the live strip's children with the freshly built ones only when
+    // the markup differs (an expiring badge or new value does differ).
+    applyRows: function (live, built) {
+        if (live.innerHTML === built.innerHTML) return;
+        while (live.firstChild) live.removeChild(live.firstChild);
+        while (built.firstChild) { var node = built.firstChild; built.removeChild(node); live.appendChild(node); }
     },
 
     // ---- D204 deterministic on-demand fulfillment -------------------------
@@ -2502,6 +3537,7 @@ var StatTracker = {
 
     canAsk: function (verb) {
         try {
+            if (StatTracker.measuredProbe(verb)) return true;
             if (typeof Actionable === "undefined" || !Actionable.isGameWord) return true;
             return Actionable.isGameWord(verb);
         } catch (e) { return false; }
@@ -2512,70 +3548,219 @@ var StatTracker = {
         return !!(stat && /^(?:status|global:|player-prop:|interpreter)/.test(String(stat.source || "")));
     },
 
-    probeSafeNow: function () {
-        try {
-            if (typeof document === "undefined" || StatTracker.lineInputHasDraft()) return false;
-            if (typeof Navigator !== "undefined" && (Navigator.Running || Navigator.Awaiting)) return false;
-            if (!document.querySelector(".Input.LineInput")) return false;
-            if (document.querySelector(".Input.CharInput")) return false;
-            if (document.querySelector("#dialog, #dialog_frame, #dialog_screen")) return false;
-            if (typeof Message !== "undefined" && Message.IsOpen) return false;
-            return true;
-        } catch (e) { return false; }
+    isQuestionPromptText: function (text) {
+        var t=String(text||'').replace(/\u00a0/g,' ').trim().replace(/\s*>+\s*$/,'');
+        return /^[^"\n]{1,200}\?\s*(?:\((?:y\/n|yes\/no|yes or no)\)|y\/n)$/i.test(t)
+            || /^Please answer yes or no\.?$/i.test(t)
+            || /(?:remember if you are (?:man or woman|woman or man)|your waking self holds in his arms|Do you make art, or make love\?)\.?$/i.test(t)
+            || /^Before anything, you must remember: is the one you embrace a man or a woman\?$/i.test(t)
+            || /^Would you like to restore a saved session\?$/i.test(t)
+            || /^Have you played interactive fiction before\?$/i.test(t)
+            || /^Would you like to start a NEW game, RESTORE a saved game, start a SCRIPT, or QUIT\?$/i.test(t)
+            || /Are you a BOY or a GIRL\?["']?$/i.test(t)
+            // Measured startup questions (2026-10-05): Cragne Manor, The Path
+            // to Fortune, Doom stories' recap offer, Scroll Thief's name/title.
+            || /\?\s*\(Please type yes or no\.?\)$/i.test(t)
+            || /\(Y\/N\)\?$/i.test(t)
+            || /^Would you like the story so far\?$/i.test(t)
+            || /^What do you want to write\?$/i.test(t)
+            || /\(Mr, Ms, Mx\?\)$/i.test(t)
+            || /^["']?And what's your name,[^?\n]+\?["']?$/i.test(t);
     },
 
-    queueProbe: function (kind, verb) {
+    hasQuestionPrompt: function () {
+        try {
+            if(typeof document==='undefined')return false;
+            var input=document.querySelector('.Input.LineInput');
+            var line=input&&input.closest&&input.closest('.BufferLine');
+            for(var count=0;line&&count<4;count++,line=line.previousElementSibling){
+                var text=String(line.textContent||'').replace(/\u00a0/g,' ').trim();
+                if(!text||/^(?:>|=>|>>)$/.test(text))continue;
+                return StatTracker.isQuestionPromptText(text);
+            }
+        }catch(e){}
+        return false;
+    },
+
+    // Which guard (if any) currently blocks a quiet status probe. The name is
+    // recorded when a fulfillment ends "unavailable", so the cause of a
+    // missing stat (e.g. Treasures Damage) is known, not guessed.
+    probeBlockReason: function () {
+        try {
+            if (typeof document === "undefined") return "noDocument";
+            if (StatTracker.lineInputHasDraft()) return "draft";
+            if (StatTracker.hasQuestionPrompt()) return "question";
+            if (typeof Navigator !== "undefined" && (Navigator.Running || Navigator.Awaiting)) return "navigator";
+            if (!document.querySelector(".Input.LineInput")) return "noLineInput";
+            if (document.querySelector(".Input.CharInput")) return "charInput";
+            if (document.querySelector("#dialog, #dialog_frame, #dialog_screen")) return "dialog";
+            if (typeof Message !== "undefined" && Message.IsOpen) return "message";
+            return null;
+        } catch (e) { return "error"; }
+    },
+    probeSafeNow: function () {
+        return StatTracker.probeBlockReason() === null;
+    },
+
+    // One retry of the player's own Equipment request after it ended
+    // "unavailable": only while Equipment stays open, in the same story,
+    // with no player command in between, and only once the prompt is safe.
+    // Never consumes a "press a key" prompt; never shows stale readings.
+    _fulfillRetry: null,
+    _fulfillTxn: 0,
+    _retryTxn: -1,
+    UNAVAILABLE_TEXT: {
+        draft: "Waiting: there is text in the command line",
+        question: "Waiting: the game is asking a question",
+        navigator: "Waiting: auto-travel is in progress",
+        noLineInput: "Waiting for the command prompt",
+        charInput: "Waiting for a keypress",
+        dialog: "Waiting: a file dialog is open",
+        message: "Waiting: a message window is open"
+    },
+    _fulfillDiag: [],
+    noteUnavailable: function (reason) {
+        var model = StatTracker.model();
+        model.unavailableReason = reason || "unknown";
+        StatTracker._fulfillDiag.push({ t: Date.now(), reason: model.unavailableReason });
+        if (StatTracker._fulfillDiag.length > 20) StatTracker._fulfillDiag.shift();
+        // Once per request: the retry's own transaction (and anything it
+        // queued, however late it fails) never arms another retry.
+        if (StatTracker._retryTxn === StatTracker._fulfillTxn) return;
+        StatTracker.cancelFulfillmentRetry();
+        var retry = StatTracker._fulfillRetry = { epoch: StatTracker._storyEpoch, at: Date.now(), txn: StatTracker._fulfillTxn };
+        try {
+            if (typeof TurnRecorder !== "undefined" && TurnRecorder.subscribeAcceptedSubmit) {
+                retry.unsubscribe = TurnRecorder.subscribeAcceptedSubmit("stat-fulfill-retry", function (event) {
+                    if (event && event.source !== "stat-probe") StatTracker.cancelFulfillmentRetry();
+                });
+            }
+        } catch (eS) {}
+        retry.timer = setInterval(function () {
+            if (StatTracker._fulfillRetry !== retry) return;
+            var open = typeof EquipmentUI !== "undefined" && EquipmentUI.IsOpen && EquipmentUI.IsOpen();
+            // A newer request (reopen/refresh) supersedes this one.
+            if (!open || StatTracker._storyEpoch !== retry.epoch || StatTracker._fulfillTxn !== retry.txn
+                || Date.now() - retry.at > 60000) { StatTracker.cancelFulfillmentRetry(); return; }
+            if (!StatTracker.probeSafeNow() || StatTracker._probeActive || StatTracker._probeQueue.length) return;
+            StatTracker.cancelFulfillmentRetry();
+            StatTracker._retryNext = true;
+            StatTracker.requestStatusFulfillment(false);
+        }, 500);
+    },
+    cancelFulfillmentRetry: function () {
+        var r = StatTracker._fulfillRetry;
+        StatTracker._fulfillRetry = null;
+        if (!r) return;
+        clearInterval(r.timer);
+        try { if (r.unsubscribe) r.unsubscribe(); } catch (e) {}
+    },
+
+    queueProbe: function (kind, verb, measuredFact) {
         if (!StatTracker.canAsk(verb)) return false;
-        if (StatTracker._probeActive && StatTracker._probeActive.kind === kind) return true;
-        if (StatTracker._probeQueue.some(function (p) { return p.kind === kind; })) return true;
-        StatTracker._probeQueue.push({ kind: kind, verb: verb, attempts: 0 });
+        if (StatTracker._probeActive && StatTracker._probeActive.kind === kind && (kind !== "measured" || StatTracker._probeActive.verb === verb)) return true;
+        if (StatTracker._probeQueue.some(function (p) { return p.kind === kind && (kind !== "measured" || p.verb === verb); })) return true;
+        StatTracker._probeQueue.push({ kind: kind, verb: verb, attempts: 0, measuredFact: measuredFact || null });
         return true;
+    },
+
+    // E3: one-time inventory warning per installed module (operator wording).
+    INVENTORY_WARNING_TITLE: '<span class="pl-warning-title">&#9888; WARNING</span>',
+    INVENTORY_WARNING_BODY: "<p><strong>Opening your inventory is like rummaging through your bags.</strong></p>" +
+        "<p>While ParchLock checks what you're carrying, some stories count it as a turn &mdash; " +
+        "time passes in the game world while you're elbow-deep in your pack.</p>" +
+        "<p>So maybe don't do it in the middle of a fight. Enemies find it terribly rude to be ignored, " +
+        "and they get irate &mdash; and they <em>will</em> attack while you're not looking.</p>" +
+        "<p>You'll only see this warning once for this story.</p>",
+    _inventoryWarningKey: function () {
+        try {
+            var path = (typeof ParchLock !== "undefined" && (ParchLock.StoryPath || ParchLock.GameFilename)) || "";
+            if (!path) return null;
+            return (typeof ModuleLibrary !== "undefined" && ModuleLibrary.inventoryWarningKey)
+                ? ModuleLibrary.inventoryWarningKey(path) : "PL_InvWarnSeen_" + path;
+        } catch (e) { return null; }
+    },
+    inventoryWarningSeen: function () {
+        var key = StatTracker._inventoryWarningKey();
+        if (!key) return true;   // no module identity: never block probes on a warning
+        try { return localStorage.getItem(key) === "1"; } catch (e) { return true; }
+    },
+    markInventoryWarningSeen: function () {
+        var key = StatTracker._inventoryWarningKey();
+        try { if (key) localStorage.setItem(key, "1"); } catch (e) {}
     },
 
     requestStatusFulfillment: function (explicit) {
         var model = StatTracker.model();
         var mode = StatTracker.D204Valve.mode();
-        if (mode === "off" && !explicit) return;
-        model.probed = true;
-        model.fulfillment = "checking";
-        // A draft blocks the whole transaction, not merely INVENTORY. SCORE or
-        // DIAGNOSE must never overtake a skipped first command.
-        if (StatTracker.lineInputHasDraft()) {
-            model.fulfillment = "unavailable";
-            StatTracker.Render();
-            return;
-        }
-        // Disclose before starting any probe. Otherwise the inventory timer
-        // submits behind this modal, is refused, and never collects its reply.
-        var needsNotice = (!StatTracker.hasPassiveMetric("score") && StatTracker.canAsk("score"))
-            || (!StatTracker.hasPassiveMetric("health") && StatTracker.canAsk("diagnose"));
-        if (mode === "on" && !explicit && needsNotice
-            && StatTracker._probeDisclosureEpoch !== StatTracker._storyEpoch) {
-            StatTracker._probeDisclosureEpoch = StatTracker._storyEpoch;
-            var epoch = StatTracker._storyEpoch;
-            Message.Show("Status check", "ParchLock may quietly ask this story for status when you open Equipment. Some stories count that check as a turn.", false, function () {
-                if (!Message.IsOpen && StatTracker._storyEpoch === epoch && typeof EquipmentUI !== "undefined" && EquipmentUI.IsOpen()) {
+        // E3 (operator): a one-time WARNING per installed module, on the first
+        // Equipment open -- opening the inventory is itself the turn-costing
+        // act. Shown before every probe guard (valve, draft, question), which
+        // still apply after it closes. The module key is captured now, so the
+        // acknowledgement can never land on a different module. Re-armed only
+        // by uninstalling/reinstalling (ModuleLibrary.removeFlags).
+        if (!explicit && !StatTracker.inventoryWarningSeen()) {
+            var epoch = StatTracker._storyEpoch, warnKey = StatTracker._inventoryWarningKey();
+            // No "type any letter" footer (operator): the phone keyboard does
+            // not open on a popup, and the ✕ already closes it.
+            Message.Show(StatTracker.INVENTORY_WARNING_TITLE, StatTracker.INVENTORY_WARNING_BODY, true, function () {
+                try { if (warnKey) localStorage.setItem(warnKey, "1"); } catch (eW) {}
+                if (!Message.IsOpen && StatTracker._storyEpoch === epoch && warnKey === StatTracker._inventoryWarningKey()
+                    && typeof EquipmentUI !== "undefined" && EquipmentUI.IsOpen()) {
                     StatTracker.requestStatusFulfillment(false);
                 }
             });
             StatTracker.Render();
             return;
         }
+        if (mode === "off" && !explicit) return;
+        // Each request is a transaction. A player request supersedes any
+        // pending retry; the retry marks its own transaction as consumed.
+        StatTracker._fulfillTxn = (StatTracker._fulfillTxn || 0) + 1;
+        if (StatTracker._retryNext) { StatTracker._retryNext = false; StatTracker._retryTxn = StatTracker._fulfillTxn; }
+        else StatTracker.cancelFulfillmentRetry();
+        model.probed = true;
+        model.fulfillment = "checking";
+        model.unavailableReason = null;
+        // A draft blocks the whole transaction, not merely INVENTORY. SCORE or
+        // DIAGNOSE must never overtake a skipped first command.
+        if (StatTracker.lineInputHasDraft() || StatTracker.hasQuestionPrompt()) {
+            model.fulfillment = "unavailable";
+            StatTracker.noteUnavailable(StatTracker.probeBlockReason());
+            StatTracker.Render();
+            return;
+        }
+        // Disclose before starting any probe. Otherwise the inventory timer
+        // submits behind this modal, is refused, and never collects its reply.
+        var prowessFact = StatTracker.measuredProbe("prowess");
+        var needsProwess = prowessFact && prowessFact.fields.some(function (key) { return !StatTracker.hasPassiveMetric(key); });
+        var progressFact = StatTracker.measuredProbe("status");
+        var needsProgress = progressFact && progressFact.replyFamily === "progress-status";
+        StatTracker._fulfillmentStartedAt = Date.now();
+        var metricProbes = StatTracker.measuredMetricProbes().filter(StatTracker.needsMeasuredMetricProbe);
+        var needsNotice = metricProbes.length || needsProgress || needsProwess || (StatTracker.needsScoreProbe() && StatTracker.canAsk("score"))
+            || (!StatTracker.rejectedProbeForm("diagnose") && !StatTracker.hasPassiveMetric("health") && StatTracker.canAsk("diagnose"));
         // Inventory keeps its narrowly proven span ownership (pl-carry-probe).
         // SCORE/DIAGNOSE use the same headless contract via beginProbeOwnership:
         // BufferLines created during the probe turn are marked pl-stat-probe
         // synchronously at DOM insertion (before paint) so they never appear in
         // #windowport narration, while textContent remains available for parsing.
         StatTracker._carryBootstrapAt = 0;
-        StatTracker.requestCarryBootstrap();
+        if (!(progressFact && progressFact.inventoryReplyFamily === "progress-status")) StatTracker.requestCarryBootstrap();
         var queued = false;
-        if (!StatTracker.hasPassiveMetric("score")) queued = StatTracker.queueProbe("score", "score") || queued;
+        if (StatTracker.needsScoreProbe()) queued = StatTracker.queueProbe("score", "score", StatTracker.measuredScoreProbe()) || queued;
+        if (needsProwess) queued = StatTracker.queueProbe("prowess", "prowess", prowessFact) || queued;
+        if (needsProgress) {
+            if (model.stats.progress) model.stats.progress.confirmed = false;
+            queued = StatTracker.queueProbe("progress", "status", progressFact) || queued;
+        }
+        metricProbes.forEach(function (fact) { queued = StatTracker.queueProbe("measured", fact.command, fact) || queued; });
         var diagnoseKnown = ["health", "stamina", "hunger", "thirst", "sleep"].some(function (key) {
             var s = model.stats[key];
             return s && s.source === "diagnose";
         });
-        if (diagnoseKnown || !StatTracker.hasPassiveMetric("health")) {
-            queued = StatTracker.queueProbe("diagnose", "diagnose") || queued;
+        if (!StatTracker.rejectedProbeForm("diagnose") && (diagnoseKnown || !StatTracker.hasPassiveMetric("health"))) {
+            queued = StatTracker.queueProbe("diagnose", "diagnose", StatTracker.measuredProbe("diagnose")) || queued;
         }
         if (mode === "shadow") {
             StatTracker.recordEvidence({ key: "probe-plan", value: StatTracker._probeQueue.map(function (p) { return p.verb; }), valueShape: "list", source: "d204-shadow" });
@@ -2601,7 +3786,17 @@ var StatTracker = {
     },
 
     runProbeQueue: function () {
-        if (StatTracker._probeActive || !StatTracker._probeQueue.length) return;
+        if (StatTracker._probeActive) return;
+        if (!StatTracker._probeQueue.length) {
+            // A carry-only fulfillment also ends when its existing owner
+            // releases the transaction; no SCORE is needed after no-score.
+            if (!StatTracker._hideCarryProbe && !StatTracker._carryProbeTimer
+                && StatTracker.model().fulfillment === "checking") {
+                StatTracker.model().fulfillment = "complete";
+                StatTracker.Render();
+            }
+            return;
+        }
         // The inventory transaction must finish before another line command.
         if (StatTracker._hideCarryProbe || StatTracker._carryProbeTimer) {
             if (!StatTracker._carryProbeTimer && StatTracker._hideCarryProbe
@@ -2611,10 +3806,16 @@ var StatTracker = {
             return;
         }
         var next = StatTracker._probeQueue[0];
+        if (next.kind === "measured" && !StatTracker.needsMeasuredMetricProbe(next.measuredFact)) {
+            StatTracker._probeQueue.shift();
+            StatTracker.runProbeQueue();
+            return;
+        }
         if (!StatTracker.probeSafeNow()) {
             if (++next.attempts > 24) {
                 StatTracker._probeQueue.shift();
                 StatTracker.model().fulfillment = "unavailable";
+                StatTracker.noteUnavailable(StatTracker.probeBlockReason());
                 StatTracker.runProbeQueue();
                 StatTracker.Render();
                 return;
@@ -2632,7 +3833,17 @@ var StatTracker = {
         var sent = false;
         try { sent = Actionable.Submit(next.verb, "stat-probe"); } catch (e) {}
         if (!sent) { StatTracker.finishProbe("unavailable"); return; }
-        StatTracker._probeTimer = setTimeout(function () { StatTracker.finishProbe("unavailable"); }, 5000);
+        var deadline = Date.now() + 5000;
+        function scanPendingReply() {
+            if (StatTracker._probeActive !== next) return;
+            // A reused Glk input may emit no scan wake. Read printed output
+            // promptly; this submits nothing and keeps the original deadline.
+            StatTracker.Tick();
+            if (StatTracker._probeActive !== next) return;
+            if (Date.now() >= deadline) { StatTracker.finishProbe("unavailable"); return; }
+            StatTracker._probeTimer = setTimeout(scanPendingReply, 250);
+        }
+        StatTracker._probeTimer = setTimeout(scanPendingReply, 250);
     },
 
     // ---- D204 quiet probe ownership (source/span before paint) ------------
@@ -2668,14 +3879,35 @@ var StatTracker = {
         });
     },
 
+    // D207 (operator): "you do not see anything that came from the status
+    // commands" -- but a real event in that turn (the enemy attacks while you
+    // dig in your bag) is still heard and seen. Every line of the probe's span
+    // is hidden at insertion, so nothing flashes; when the span ends, the
+    // probe's own reply stays hidden and the turn's events are released.
+    _spanLines: [],
+
     claimProbeNode: function (node) {
+        if (!node) return;
+        if (node.nodeType === 3) node = node.parentElement;
         if (!node || node.nodeType !== 1) return;
+        // The VM's next prompt is the span's end, not part of it (carry-probe rule).
+        if (node.matches && node.matches(".Input, .LineInput, .CharInput, input, textarea")) return;
+        var base = StatTracker._probeBaseline;
+        var fresh = function (el) { return !(base && base.has(el)); };
         var lines = [];
         try {
-            if (node.classList && node.classList.contains("BufferLine")) lines.push(node);
+            // Lines that existed at submission are never the probe's: their
+            // mutations are underline re-wraps, not output. GlkOte starts the
+            // reply on a new line; the probe's own echo is handled below.
+            if (node.classList && node.classList.contains("BufferLine")) {
+                if (fresh(node)) lines.push(node);
+            } else if (node.closest && !(node.classList && node.classList.contains("Style_input"))) {
+                var host = node.closest(".BufferLine");
+                if (host && fresh(host)) lines.push(host);
+            }
             if (node.querySelectorAll) {
                 Array.prototype.forEach.call(node.querySelectorAll(".BufferLine"), function (el) {
-                    lines.push(el);
+                    if (fresh(el)) lines.push(el);
                 });
             }
             if (node.classList && node.classList.contains("Style_input")) {
@@ -2689,10 +3921,114 @@ var StatTracker = {
             }
         } catch (eClaim) {}
         lines.forEach(function (line) {
-            if (!line || !line.classList || line.classList.contains("pl-stat-probe")) return;
+            if (!line || !line.classList) return;
+            if (StatTracker._spanLines.indexOf(line) < 0) StatTracker._spanLines.push(line);
+            // A line re-owned by a later probe (its reused prompt) is no longer a released event.
+            try { line.removeAttribute("data-pl-probe-event"); } catch (eR) {}
+            if (line.classList.contains("pl-stat-probe")) return;
             line.classList.add("pl-stat-probe");
             try { line.setAttribute("aria-hidden", "true"); } catch (eA) {}
         });
+    },
+
+    // Reply forms that legitimately continue past the reply's first paragraph.
+    // Single-paragraph replies need no entry: the first paragraph is always
+    // the reply, whatever state it describes.
+    isKnownProbeReplyLine: function (text, fact) {
+        var t = String(text || "").replace(/\u00a0/g, " ").trim();
+        if (!t) return true;
+        try {
+            if (StatTracker.isOwnedStandardScoreLine(t)) return true;
+            if (StatTracker.PROWESS_REPLY.test(t) || StatTracker.PHYSICAL_READINESS_REPLY.test(t)) return true;
+            if (/^(?:This score gives you a rank of|This gives you the rank of|giving you the rank of|earning you the rank of:?|You have reached the rank of) [A-Za-z"'][^\n]*$/i.test(t)) return true;
+            // Inventory continuation headings ("In addition, you are wearing:").
+            if (/^(?:In addition,?\s+)?(?:you(?:'re| are)|you have)\s+(?:also\s+)?(?:carrying|wearing|holding|got)\b[^.!?\n]*:\s*$/i.test(t)) return true;
+            if (/^(?:You've|You have) visited \d+ (?:out of \d+ locations|locations \(out of \d+ in the game\)|locations out of a maximum \d+(?: locations)?)\.?$/i.test(t)) return true;
+            if (/^(?:Some additional Statistics:|You spent \d+ turns? in the [^.\n]+\. This accounts for \d+% of your time\.)$/i.test(t)) return true;
+            if (/^(?:Achievements for [^:\n]+:|[A-Za-z][^\n]+\s+\( [^()\n]+ \))$/i.test(t) && fact && fact.replyFamily === "achievement-list") return true;
+            if (/^(?:Status report: MULE|Date:\s*\d{1,2}\/\d{1,2}\/\d{4}|Time:\s*\d{1,2}:\d{2}\s*[ap]m|Location: [^.!?\n]+|All systems functioning normally\.|According to my estimation, the objects I have collected have a total value of approximately \d+ hundred dollars American\.)$/i.test(t)) return true;
+            if (fact) {
+                if (Array.isArray(fact.ownedReplyLines) && fact.ownedReplyLines.indexOf(t) >= 0) return true;
+                if (fact.rankReplyPattern && new RegExp(fact.rankReplyPattern).test(t)) return true;
+                var fam = StatTracker.MEASURED_METRIC_REPLIES && StatTracker.MEASURED_METRIC_REPLIES[fact.replyFamily];
+                if (fam && fam.test(t)) return true;
+            }
+        } catch (eK) {}
+        return false;
+    },
+
+    // Inform 6 marks out-of-world verbs META in the dictionary flag byte
+    // (#dict_par1 bit 0x02). A META command never runs the turn sequence, so
+    // nothing but its own reply can be printed in its span. Cached per game.
+    _metaVerbCache: null,
+    probeVerbIsMeta: function (verb) {
+        try {
+            var mem = (typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) ? ZRamProvider.getMem() : null;
+            if (!mem || typeof ZRamReader === "undefined") return false;
+            // Bound to this exact memory backing store AND its identity key: an
+            // unresolved (null) key must never let one story's flags answer for
+            // another's (Codex #1461).
+            var backing = mem.buffer || mem;
+            var key = ZRamReader.gameIdentityKey ? ZRamReader.gameIdentityKey(mem) : null;
+            var c = StatTracker._metaVerbCache;
+            if (!c || c.backing !== backing || c.key !== key || key == null) {
+                var d = ZRamReader.parseDictionary(mem), flags = {};
+                if (d.informVerbFlags) d.entries.forEach(function (e) { flags[e.word] = e.flags; });
+                c = StatTracker._metaVerbCache = { backing: backing, key: key, flags: flags };
+            }
+            var w = String(verb || "").toLowerCase().trim().split(/\s+/)[0];
+            var f = c.flags[w];
+            if (f == null && w.length > 9) f = c.flags[w.slice(0, 9)];
+            return f != null && (f & 0x01) && (f & 0x02) ? true : false;
+        } catch (e) { return false; }
+    },
+
+    releaseProbeEvents: function () {
+        var lines = StatTracker._spanLines || [];
+        StatTracker._spanLines = [];
+        if (!lines.length) return;
+        // The span's own origin, captured at submission: finishProbe clears
+        // _probeActive before ownership ends (Codex #1459/#1467).
+        var origin = StatTracker._spanOrigin || {};
+        var fact = origin.fact || null;
+        // A META probe cannot have shared its turn with any event: all of it
+        // is the status command's output and stays hidden.
+        var verb = origin.verb;
+        if (verb && StatTracker.probeVerbIsMeta(verb)) return;
+        var unhide = function (el) {
+            el.classList.remove("pl-stat-probe");
+            el.removeAttribute("aria-hidden");
+            Array.prototype.forEach.call(el.querySelectorAll(".pl-stat-probe"), function (c) {
+                c.classList.remove("pl-stat-probe");
+                c.removeAttribute("aria-hidden");
+            });
+        };
+        var seenReply = false, afterGap = false, gap = null, revealed = false, continues = false;
+        lines.forEach(function (line) {
+            if (!line || !line.isConnected) return;
+            if (line.querySelector && line.querySelector(".Style_input")) return;   // the probe's echo
+            var text = String(line.textContent || "").replace(/\u00a0/g, " ").trim();
+            if (!text) { if (seenReply && !continues) { afterGap = true; gap = line; } return; }
+            // A reply line ending in a colon introduces more of the same reply
+            // ("Current statistics:"), so the next paragraph is still the reply.
+            if (!afterGap) { seenReply = true; continues = /:\s*$/.test(text); return; }   // the reply itself
+            // The VM's own prompt is restored, but it is not an event -- a bare
+            // ">" or any line holding the live input ("Combat>" in LLR3).
+            if (/^>\s*$/.test(text) || (line.querySelector && line.querySelector(".Input, .LineInput, .CharInput"))) { unhide(line); return; }
+            if (StatTracker.isKnownProbeReplyLine(text, fact)) {
+                // A known reply heading that ends in a colon ("In addition, you
+                // are wearing:") owns the paragraph it introduces (Codex #1517).
+                if (/:\s*$/.test(text)) { afterGap = false; seenReply = true; continues = true; }
+                return;
+            }
+            // A real event of that turn: shown and spoken like any other output.
+            if (gap) { unhide(gap); gap = null; }
+            unhide(line);
+            // Provenance for audits: this line was released as a turn event.
+            try { line.setAttribute("data-pl-probe-event", "1"); } catch (eM) {}
+            revealed = true;
+        });
+        if (revealed) { try { if (typeof ReadAloud !== "undefined" && ReadAloud.schedule) ReadAloud.schedule(); } catch (eR) {} }
     },
 
     ensureProbeDomGuard: function () {
@@ -2702,7 +4038,9 @@ var StatTracker = {
         if (!root) return;
         StatTracker._probeDomGuard = new MutationObserver(function (mutations) {
             StatTracker.protectProbeInputs(root);
-            if (!StatTracker._statProbeOwned) return;
+            // D207: only a live, submitted probe owns output -- a queued stat
+            // probe, or the inventory carry probe.
+            if (!StatTracker._statProbeOwned || !(StatTracker._probeActive || StatTracker._carrySpanOwned)) return;
             for (var i = 0; i < mutations.length; i++) {
                 var m = mutations[i];
                 for (var j = 0; j < m.addedNodes.length; j++) {
@@ -2710,20 +4048,42 @@ var StatTracker = {
                 }
                 if (m.type === "characterData" && m.target) {
                     var el = m.target.nodeType === 3 ? m.target.parentElement : m.target;
-                    if (el && el.closest) StatTracker.claimProbeNode(el.closest(".BufferLine") || el);
+                    var hostLine = el && el.closest ? el.closest(".BufferLine") : null;
+                    // D207: pre-submit lines are not the probe's (underline re-wraps).
+                    if (hostLine && StatTracker._probeBaseline && StatTracker._probeBaseline.has(hostLine)) continue;
+                    if (el && el.closest) StatTracker.claimProbeNode(hostLine || el);
                 }
             }
             StatTracker.protectProbeInputs(root);
             // Claim the reply first, then release ownership at the VM's next
             // prompt even if that reply contained no recognizable metric.
             var nextInput = root.querySelector(".Input.LineInput, .Input.CharInput");
-            if (StatTracker._probeActive && nextInput && nextInput !== StatTracker._probeInput) {
-                var completed = StatTracker._probeActive;
+            // D207: the carry probe's span ends at the VM's next prompt too,
+            // whether that is a line prompt or "(press a key)".
+            var freshInput = Array.prototype.find.call(root.querySelectorAll(".Input.LineInput, .Input.CharInput"), function (n) {
+                return n !== StatTracker._probeInput;
+            });
+            if (!StatTracker._probeActive && StatTracker._carrySpanOwned && freshInput) {
+                StatTracker._carrySpanOwned = false;
                 StatTracker.endProbeOwnership();
+            }
+            if (StatTracker._probeActive && nextInput) {
+                var completed = StatTracker._probeActive;
+                var replacedInput = nextInput !== StatTracker._probeInput;
+                if (completed.measuredFact && nextInput.classList.contains("CharInput")) StatTracker._probeQueue = [];
+                if (replacedInput) StatTracker.endProbeOwnership();
                 setTimeout(function () {
                     if (StatTracker._probeActive !== completed) return;
                     StatTracker.Tick();
-                    if (StatTracker._probeActive === completed) StatTracker.finishProbe("unavailable");
+                    var fact = completed.measuredFact;
+                    var continuationText = String(nextInput.closest(".BufferLine") && nextInput.closest(".BufferLine").textContent || "").replace(/\u00a0/g," ").trim();
+                    if (fact && fact.continuation === "return" && !completed.continued && nextInput.classList.contains("LineInput") && !nextInput.value
+                        && /^We are about to give you your score\. Put on your peril-sensitive sunglasses now\. \(Hit RETURN or ENTER when ready\.\)\s*>?$/.test(continuationText)) {
+                        completed.continued = true;
+                        StatTracker.beginProbeOwnership();
+                        if (Input.Inject("",true,"stat-probe")) return;
+                    }
+                    if (replacedInput && StatTracker._probeActive === completed) StatTracker.finishProbe("unavailable");
                 }, 0);
             }
         });
@@ -2734,11 +4094,34 @@ var StatTracker = {
 
     beginProbeOwnership: function () {
         StatTracker._probeInput = document.querySelector(".Input.LineInput, .Input.CharInput");
+        // D207: lines that already exist at submission are not the probe's.
+        try {
+            StatTracker._probeBaseline = typeof WeakSet !== "undefined" ? new WeakSet() : null;
+            if (StatTracker._probeBaseline) {
+                Array.prototype.forEach.call(document.querySelectorAll("#windowport .BufferLine"), function (l) {
+                    StatTracker._probeBaseline.add(l);
+                });
+                // The line holding the prompt the probe is typed into belongs
+                // to the span: under load GlkOte writes the echo -- and even the
+                // reply -- into it (deephome/Lurking "diagnose" leak, rev3).
+                var own = StatTracker._probeInput && StatTracker._probeInput.closest
+                    ? StatTracker._probeInput.closest(".BufferLine") : null;
+                if (own) StatTracker._probeBaseline.delete(own);
+            }
+        } catch (eB) { StatTracker._probeBaseline = null; }
+        StatTracker._spanLines = [];
+        // D207: remember which command this span answers, for release.
+        var active = StatTracker._probeActive;
+        StatTracker._spanOrigin = active
+            ? { verb: active.verb, fact: active.measuredFact || null }
+            : (StatTracker._carrySpanOwned ? { verb: StatTracker._carryVerb, fact: null } : null);
         StatTracker._statProbeOwned = true;
         StatTracker.ensureProbeDomGuard();
     },
 
     endProbeOwnership: function () {
+        if (StatTracker._statProbeOwned) StatTracker.releaseProbeEvents();
+        StatTracker._spanOrigin = null;
         StatTracker._statProbeOwned = false;
     },
 
@@ -2755,10 +4138,11 @@ var StatTracker = {
         if (pending.score) {
             var sc = StatTracker.parseScoreReply(text);
             if (sc) { StatTracker.applyScoreReply(text); pending.score = false; }
+            else if (StatTracker.applyMeasuredMetricReply(StatTracker.measuredScoreProbe(), text)) pending.score = false;
             else {
                 // W&W family SCORE replies name experience, not "Your score is".
                 var printed = StatTracker.parsePrintedMetrics(text);
-                if (printed && printed.experience) {
+                if ((printed && printed.experience) || /^You have completed your divine Task\.$/im.test(String(text || ""))) {
                     StatTracker.recordPrintedMetrics(StatTracker.model(), text, "score");
                     pending.score = false;
                 }
@@ -2768,7 +4152,10 @@ var StatTracker = {
             var dg = StatTracker.parseDiagnoseReply(text);
             if (dg) { StatTracker.applyDiagnoseReply(text); pending.diagnose = false; }
         }
-        if (!pending.score && !pending.diagnose) { StatTracker.finishProbe("complete"); return; }
+        if (pending.prowess && StatTracker.applyProwessReply(text)) pending.prowess = false;
+        if (pending.progress && StatTracker.applyProgressReply(text)) pending.progress = false;
+        if (pending.measured && StatTracker.applyMeasuredMetricReply(StatTracker._probeActive && StatTracker._probeActive.measuredFact, text)) pending.measured = false;
+        if (!pending.score && !pending.diagnose && !pending.prowess && !pending.progress && !pending.measured) { StatTracker.finishProbe("complete"); return; }
         // Give up after a few turns rather than misreading ordinary play as a
         // probe reply.
         if (++StatTracker._probeTurns > 6) StatTracker.finishProbe("unavailable");

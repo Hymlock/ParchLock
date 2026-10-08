@@ -46,6 +46,10 @@ var ZRamProvider = {
                 if (kids.length >= 2) return o.id;
             }
         } catch (e3) {}
+        // The unnamed-holder recovery below depends on Inform compiler shape.
+        // ZIL uses unnamed groupings for offstage/global objects as well; those
+        // are not inventories. Native confirmed holders above remain first.
+        if (!ZRamReader.isInformCompiled(mem)) return playerId;
         // D75: wump2ka (and similar) parent the real held tree under an
         // unnamed room child ("(CustomPlayer)") whose animate bit may be
         // clear this session. probe playerId is often an empty-handed
@@ -232,7 +236,7 @@ var ZRamProvider = {
             // alone, so without this a room whose only real RAM child is the
             // player itself would offer nonsensical affordances like
             // "examine player."
-            var scoped = ZRamReader.scopeObjects(mem, loc, { depth: 2 });
+            var scoped = ZRamReader.scopeObjects(mem, loc, { depth: 2, playerId: snap.playerId });
             // D184: objects the compiler left unnamed but which own real parser
             // vocabulary. Carried as CANDIDATES only -- js/Actionable.js decides
             // whether any of them is a thing the player can actually see, by
@@ -303,6 +307,7 @@ var ZRamProvider = {
             probe: {
                 status: "z-ram-live",
                 playerId: snap.playerId || 0,
+                inventoryRootId: invRoot || 0,
                 playerSource: snap.playerSource || "",
                 roomId: snap.roomId || 0,
                 roomSource: snap.roomSource || "",

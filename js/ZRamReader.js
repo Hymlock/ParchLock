@@ -113,7 +113,12 @@ var ZRamReader = {
             obj = ZRamReader.objectLinks(mem, id);
             // Inform attribute positions are not the Infocom/ZIL ABI.
             // Preserve native containment unless this decoder's profile applies.
-            if (!ZRamReader.isInformCompiled(mem)) return id;
+            if (!ZRamReader.isInformCompiled(mem)) {
+                // ZIL pseudo-player objects can live in unnamed global/offstage
+                // groupings. Their parent alone does not establish a room.
+                // Leave recovery to the existing named/global location lanes.
+                return ZRamReader.shortName(mem, id) ? id : 0;
+            }
             var attrs = ZRamReader.attrsFromObject(mem, id);
             if (!attrs.enterable || (!attrs.container && !attrs.supporter)) return id;
         }
@@ -1303,7 +1308,7 @@ var ZRamReader = {
             if (attrs.door) return false;
 
             var obj = ZRamReader.objectLinks(mem, id);
-            if (obj && obj.parent > 0 && attrs.takeable && !attrs.light) {
+            if (ZRamReader.isInformCompiled(mem) && obj && obj.parent > 0 && attrs.takeable && !attrs.light) {
                 return false;
             }
             // Structural containment test, compiler-agnostic. `attrs.takeable`
@@ -1651,10 +1656,43 @@ var ZRamReader = {
         return bestScore >= 20 ? best : 0;
     },
 
+    executableLayoutFacts: (mem) => {
+        try {
+            var identity = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableIdentity
+                ? ModuleLibrary.currentExecutableIdentity() : null;
+            var fact = identity && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[identity.digest];
+            var stableHeader = [0, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27];
+            return fact && identity.header && stableHeader.every(function (at) {
+                return identity.header[at] === ZRamReader.u8(mem, at);
+            }) ? fact : null;
+        } catch (e) { return null; }
+    },
+
     resolvePlayer: (mem, dict) => {
         var h = ZRamReader.header(mem);
         if (!h) return { id: 0, source: "none", ambiguous: false, candidates: [] };
         var count = ZRamReader.objectCount(mem, h);
+        // Executable-owned actor layout, when measured, outranks name guesses.
+        // Some ZIL games use a parser-only "yourself" object and a different
+        // actor. Re-read the slot so chapter changes and restores follow RAM.
+        try {
+            var fact = ZRamReader.executableLayoutFacts(mem);
+            if (fact && Number.isInteger(fact.playerGlobal)) {
+                var slot = fact.playerGlobal, measuredId = 0, links = null;
+                if (slot >= 0 && slot < 240 && h.globals + slot * 2 + 2 <= h.staticMem) {
+                    measuredId = ZRamReader.u16(mem, h.globals + slot * 2);
+                    if (measuredId >= 2 && measuredId <= count) links = ZRamReader.objectLinks(mem, measuredId);
+                }
+                var valid = links && [links.parent, links.sibling, links.child].every(function (v) {
+                    return Number.isInteger(v) && v >= 0 && v <= count;
+                });
+                var ownName = valid ? ZRamReader.shortName(mem, measuredId) : "";
+                var parentName = valid && links.parent ? ZRamReader.shortName(mem, links.parent) : "";
+                if (/^(class|object|compass|kind|routine|string)$/i.test(ownName || "")
+                    || /^\(?class\)?$/i.test(parentName || "")) valid = false;
+                return { id: valid ? measuredId : 0, source: valid ? "measured-player-global" : "fact-uninitialized", ambiguous: false, candidates: [] };
+            }
+        } catch (eFact) {}
         var inform = false;
         try { inform = ZRamReader.isInformCompiled(mem); } catch (eInform) {}
         function isSelfObjectName(nm) {
@@ -1808,15 +1846,21 @@ var ZRamReader = {
         var depth = typeof opts.depth === "number" ? opts.depth : 2;
         var out = [];
         var candidates = [];
+        var playerId = opts.playerId || 0;
+        if (!playerId) {
+            try { playerId = (ZRamReader.resolvePlayer(mem) || {}).id || 0; } catch (ePlayer) {}
+        }
         var seen = {};
         function walk(id, d, viaUnnamedBypass) {
             if (!id || seen[id] || d < 0) return;
             seen[id] = 1;
             ZRamReader.children(mem, id).forEach(function (cid) {
+                // Actor vocabulary can identify an NPC, but the structural
+                // player is never a loose room candidate or a transparent wrapper.
+                if (playerId && String(cid) === String(playerId)) return;
                 var name = ZRamReader.shortName(mem, cid);
                 if (!name || name.charAt(0) === "(") {
                     var wrapperAttrs = ZRamReader.attrsFromObject(mem, cid);
-                    if (wrapperAttrs.animate) return; // D57: an unnamed animate being's own contents are not this room's scope
                     // D184: an object the compiler gave no printable name can
                     // still own real parser vocabulary -- wump2ka's food
                     // pellets are objects "(bar1)"/"(bar2)" carrying
@@ -1835,6 +1879,10 @@ var ZRamReader = {
                         var vocab = ZRamReader.parserWordsAny(mem, cid) || [];
                         if (vocab.length) candidates.push({ id: cid, parentId: id, aliases: vocab });
                     } catch (eV) {}
+                    // D57 excludes the actor's possessions, not its own scoped
+                    // parser identity. D184 confirms that identity downstream
+                    // against observed vocabulary; never tunnel into actors.
+                    if (wrapperAttrs.animate) return;
                     walk(cid, d - 1, true);
                     return;
                 }
@@ -2147,10 +2195,26 @@ var ZRamReader = {
         // a normal recoverable reply, whereas the status quo hides real held
         // objects from the player permanently.
         var insideTrusted = ZRamReader.attrInsideTrusted(mem);
+        var fact = ZRamReader.executableLayoutFacts(mem);
+        var hiddenBit = fact && fact.inventoryHiddenAttribute;
+        var header = ZRamReader.header(mem);
+        var hasHiddenBit = Number.isInteger(hiddenBit) && hiddenBit >= 0
+            && hiddenBit < (header && header.version <= 3 ? 32 : 48);
         function walk(id, d, viaUnnamedBypass) {
             if (!id || seen[id] || d < 0) return;
             seen[id] = 1;
             ZRamReader.children(mem, id).forEach(function (cid) {
+                // Native inventory omission is executable-owned, never a
+                // universal ZIL flag. Native omission wins by default; only an
+                // executable-owned wardrobe exception preserves worn gear.
+                // Re-read RAM on every walk; do not change
+                // attrs or room/action discovery. Native omission skips children.
+                if (hasHiddenBit) {
+                    var hiddenLinks = ZRamReader.objectLinks(mem, cid);
+                    var hidden = hiddenLinks && (hiddenLinks.attrBytes[hiddenBit >> 3] & (128 >> (hiddenBit & 7)));
+                    if (hidden && !(fact.inventoryHiddenPreservesWorn === true
+                        && ZRamReader.attrsFromObject(mem, cid).worn)) return;
+                }
                 var name = ZRamReader.shortName(mem, cid);
                 if (!name || name.charAt(0) === "(") {
                     var wrapperAttrs = ZRamReader.attrsFromObject(mem, cid);
@@ -2270,7 +2334,7 @@ var ZRamReader = {
             roomName = "";
             if (!indexedRoom) roomId = 0;
         }
-        var scope = roomId ? ZRamReader.scopeObjects(mem, roomId, { depth: 2 }) : [];
+        var scope = roomId ? ZRamReader.scopeObjects(mem, roomId, { depth: 2, playerId: playerId }) : [];
         // D184: carried out of the walk before the meta-name filter discards
         // the wrappers they came from. Candidates only -- js/Actionable.js
         // decides whether any is a thing the player can actually see.

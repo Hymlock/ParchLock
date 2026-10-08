@@ -1,3 +1,4 @@
+if (!process.argv.includes('--live')) {
 // D141 adjective+noun disambiguation.
 //
 // Phase 4 planned this and it was never built: "adjective+noun unambiguous
@@ -206,3 +207,45 @@ assert(A.displayNameFor(vials[0],vials,"green vial") === "green vial", "unique o
 assert(A.displayNameFor({id:901,name:"nutritiou",aliases:["food","pellets","nutritiou"]},[{id:901,aliases:["food","pellets","nutritiou"]},{id:902,aliases:["food","pellets","nutritiou"]}],"two food pellets") === "food pellets", "identical copies retain shared full phrase recovery");
 console.log("\n" + pass + " PASS / " + fail + " FAIL");
 process.exit(fail ? 1 : 0);
+
+} else {
+
+// --live: real Enchanter spell book, UI filtering and accepted Cast command.
+(async()=>{
+ const {chromium}=require('playwright'),{pathToFileURL}=require('url'),path=require('path'),verify=require('assert');
+ let checks=0;const check=(ok,label)=>{verify(ok,label);checks++;console.log('PASS:',label);};
+ const browser=await chromium.launch({headless:true});
+ try{for(const width of process.argv.includes("--mobile")?[360]:[1280,360]){
+  const context=await browser.newContext({viewport:{width,height:850},isMobile:width<600,hasTouch:width<600});const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.addInitScript(()=>{sessionStorage.setItem('PL_ParchLockSplashSeen','1');localStorage.setItem('PL_TutorialSeen','1');localStorage.setItem('PL_LearnedWordsTutorialSeen','1');localStorage.setItem('PL_MobileTutorialSeen','1');});
+  await page.goto(pathToFileURL(path.resolve('play.html')).href+'?story=games/Enchanter.z3.js');await page.waitForTimeout(3500);
+  const items=await page.evaluate(()=>WorldModel.lastPayload.inventory.map(o=>({id:o.id,name:o.name,parent:o.parentId,noun:Actionable.disambiguatedNoun(o),spell:EquipmentUI.isSpell(o)})));
+  const book=items.find(o=>o.name==='spell book'),spells=items.filter(o=>/^(blorb|nitfol|frotz|gnusto) spell$/.test(o.name));
+  check(book&&spells.length===4&&spells.every(o=>o.parent===book.id&&o.spell),'real RAM book has four distinct nested spells '+width);
+  check(new Set(spells.map(o=>o.noun)).size===4&&spells.every(o=>o.noun===o.name),'spell command names remain distinct '+width);
+  await page.locator('.Input.LineInput').fill('read book');await page.locator('.Input.LineInput').press('Enter');await page.waitForTimeout(1100);
+  const prose=await page.locator('#windowport').innerText();check(spells.every(o=>prose.includes('The '+o.name+' (')),'real READ book confirms all spell names '+width);
+  await page.evaluate(()=>EquipmentUI.Show());await page.waitForTimeout(400);if(await page.evaluate(()=>Message.IsOpen))await page.locator('#message #close').click();await page.waitForTimeout(6500);
+  await page.evaluate(()=>EquipmentUI.Show());await page.waitForTimeout(900);
+  check(await page.locator('#equipment').isVisible()&&await page.evaluate(()=>EquipmentUI.IsOpen()),'Equipment is visibly open '+width);
+  const rows=await page.locator('#equipment-list .equip-row').evaluateAll(xs=>xs.map(x=>({id:+x.dataset.objectId,depth:+x.style.getPropertyValue('--equip-depth'),name:x.querySelector('.equip-name').textContent,tags:x.querySelector('.equip-tags')?.textContent||''})));
+  check(rows.length===5&&spells.every(o=>rows.some(r=>r.id===o.id&&r.depth===1&&r.name===o.name)),'spell book hierarchy and full names rendered '+width);
+  check(spells.every(o=>!rows.find(r=>r.id===o.id).tags.match(/closed|open|surface/)),'untrusted compiler bits do not label spells closed '+width);
+  await page.locator('#equipment-options summary').click();check(await page.locator('#equipment-cat-spells-label').isVisible(),'Spells category available '+width);
+  await page.locator('#equipment-cat-spells').uncheck();check(await page.locator('#equipment-list .equip-row').count()===0,'Spells filter removes spell group '+width);
+  await page.locator('#equipment-cat-spells').check();check(await page.locator('#equipment-list .equip-row').count()===5,'Spells filter restores all items '+width);
+  await page.locator('#equipment-container-view').uncheck();check(await page.locator('#equipment-list .equip-row').evaluateAll(xs=>xs.every(x=>+x.style.getPropertyValue('--equip-depth')===0)),'flat mode preserves every spell '+width);await page.locator('#equipment-container-view').check();
+  await page.locator('#equipment-filter').fill('frotz');check(await page.locator('#equipment-list .equip-row').count()===2,'spell text filter preserves book path '+width);await page.locator('#equipment-filter').fill('');await page.locator('#equipment-options summary').click();
+  const blorb=spells.find(o=>o.name==='blorb spell'),row=page.locator('#equipment-list [data-object-id="'+blorb.id+'"]');await row.scrollIntoViewIfNeeded();
+  if(width<600){const box=await row.locator(".equip-name").boundingBox(),cdp=await context.newCDPSession(page);const point={x:box.x+Math.min(20,box.width/4),y:box.y+box.height/2};await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]});await page.waitForTimeout(650);await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await cdp.detach();}else await row.click({button:'right'});
+  const cast=page.locator('#radial-menu .radial-command').filter({hasText:/^Cast at\.\.\.$/});if(!await cast.isVisible())console.log('GESTURE DEBUG',await page.evaluate(()=>({radial:document.querySelector('#radial-menu').innerText,open:EquipmentUI.IsOpen(),press:!!EquipmentUI._press,modal:Message.IsOpen,classes:document.body.className})));check(await cast.isVisible(),'real item gesture offers Cast at '+width);check(!await page.locator('#radial-menu .radial-command').filter({hasText:/^Use with/}).count(),'unsupported Use command absent '+width);await cast.click();
+  const target=page.locator('#radial-menu .radial-command').filter({hasText:/^spell book$/});check(await target.isVisible(),'Cast target picker contains real book '+width);await target.click();await page.waitForTimeout(1500);
+  const result=await page.locator('#windowport').innerText();check(result.includes('cast blorb spell at book')&&result.includes('A glowing strong box forms out of the air'),'UI submits unambiguous spell and game accepts cast '+width);
+  check(await page.evaluate(()=>WorldModel.lastPayload.inventory.length===0),'cast moves book and spells out of carried inventory '+width);
+  check(await page.evaluate(bookId=>ZRamReader.objectLinks(ZRamProvider.getMem(),bookId).parent!==WorldModel.lastPayload.playerId,book.id),'real RAM containment changed after cast '+width);
+  check(errors.length===0,'no browser errors '+width);await context.close();
+ }}finally{await browser.close();}
+ console.log(checks+' Enchanter live spell/UI checks PASS');
+})().catch(e=>{console.error(e);process.exitCode=1;});
+
+}

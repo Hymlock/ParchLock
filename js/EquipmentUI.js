@@ -43,14 +43,16 @@ var EquipmentUI = {
     yourselfCommands: function (obj, model) {
         if (!obj || obj.examineOnly || typeof AttrCalibrator === "undefined" || typeof ActionSynth === "undefined") return [];
         var ref = Actionable.referenceFor(obj);
-        if (!ref.unique || !ref.verified) return [];
+        // Ordinary interaction uses a unique scoped reference. Custom
+        // parse_name alone is not ambiguity; learning owns its stricter gate.
+        if (!ref.unique) return [];
         var nested = ActionSynth.heldContainerName(obj, WorldModel.lastPayload);
         var forms = {}, candidates = [];
         function allowed(form) {
             if (!AttrCalibrator.dictionaryForm(form)) return false;
             if (form === ActionSynth.defaultInspectVerb() && ActionSynth.inspectVerbDisabled()) return false;
             if (nested) return form === "take" || form.indexOf("take out of ") === 0;
-            if (EquipmentUI.isWorn(obj)) return form === "remove" || form === ActionSynth.defaultInspectVerb();
+            if (EquipmentUI.isWorn(obj)) return form === ((obj.attrs || {}).equipmentToggleVerb || "remove") || form === ActionSynth.defaultInspectVerb();
             return form !== "remove" && form !== "take";
         }
         function add(form, enter) {
@@ -178,6 +180,39 @@ var EquipmentUI = {
         return true;
     },
 
+    // State labels need the same compiler/calibration authority as the RAM walk.
+    // Raw Inform bits on another compiler cannot prove a spell is "closed".
+    containerStateKnown: function (obj) {
+        if (obj && obj.demo) return true;
+        try {
+            if (typeof ZRamReader === 'undefined' || !ZRamReader.attrInsideTrusted) return false;
+            return !!ZRamReader.attrInsideTrusted(ZRamProvider.getMem());
+        } catch (e) { return false; }
+    },
+    containerStateTags: function (obj) {
+        var a = obj && obj.attrs || {}, tags = [];
+        var containerKnown = EquipmentUI.containerStateKnown(obj);
+        if (((a.container && containerKnown) || (a.openable && EquipmentUI.flagStateKnown(obj, 'openable')))
+            && EquipmentUI.flagStateKnown(obj, 'open')) tags.push(a.open ? 'open' : 'closed');
+        if (a.supporter && containerKnown) tags.push('surface');
+        return tags;
+    },
+
+    flagStateKnown: function (obj, flag) {
+        if (obj && obj.demo) return true;
+        try {
+            var mem = ZRamProvider.getMem();
+            if (!mem) return false;
+            if (ZRamReader.isInformCompiled(mem)) return AttributeSchema.bitFor(flag, mem) !== null;
+            return typeof AttrCalibrator !== 'undefined' && AttrCalibrator.hasConfirmedFlag(mem, flag);
+        } catch (e) { return false; }
+    },
+    activationStateTags: function (obj) {
+        var a = obj && obj.attrs || {};
+        return a.switchable && EquipmentUI.flagStateKnown(obj, 'switchable')
+            && EquipmentUI.flagStateKnown(obj, 'on') ? [a.on ? 'active' : 'inactive'] : [];
+    },
+
     isContainer: function (obj) {
         var a = (obj && obj.attrs) || {};
         return !!(a.container || a.supporter);
@@ -262,6 +297,9 @@ var EquipmentUI = {
         var playerId = payload && (payload.playerId != null && payload.playerId !== ""
             ? payload.playerId
             : (payload.probe && payload.probe.playerId));
+        // The inventory walker owns its holder, which can differ from a
+        // parser-only pseudo-player. Use that same structural authority.
+        if (payload && payload.probe && payload.probe.inventoryRootId > 0) playerId = payload.probe.inventoryRootId;
 
         var byId = {}, byParent = {}, itemIds = {};
         EquipmentUI.registerInstances(items);
@@ -427,7 +465,9 @@ var EquipmentUI = {
         var worn = m.topLevel.filter(EquipmentUI.isWorn).filter(function (o) { return EquipmentUI.subtreeMatches(m, o); }).slice().sort(cmp);
         var carried = m.topLevel.filter(function (o) { return !EquipmentUI.isWorn(o); }).filter(function (o) { return EquipmentUI.subtreeMatches(m, o); }).slice().sort(cmp);
 
-        if (worn.length) {
+        // Yourself is the character container, not a wearable-item category.
+        // Keep the prior worn-row fallback when identity is unavailable.
+        if ((m.playerId != null && m.playerId !== '' && String(m.playerId) !== '0') || worn.length) {
             var selfNode = { id: m.playerId != null ? m.playerId : "__self__", name: "Yourself", self: true, attrs: {} };
             out.push({ obj: selfNode, depth: 0, self: true });
             worn.forEach(function (o) { walk(o, 1); });
@@ -599,20 +639,25 @@ var EquipmentUI = {
             host.appendChild(note);
         }
 
+        var displayText = typeof Actionable !== "undefined" ? Actionable.Scope.lastLookText + "\n" + Actionable.Scope.lastInventoryText : "";
+        var displayLabels = {};
+        m.items.forEach(function (item) {
+            var name = typeof Actionable !== "undefined" && Actionable.displayNameFor ? Actionable.displayNameFor(item, m.items, displayText) : item.name;
+            if (typeof LearnedWords !== "undefined") name = LearnedWords.label("name", item.id, name);
+            displayLabels[String(item.id)] = name;
+        });
         rows.forEach(function (row) {
             var o = row.obj;
             var el = document.createElement("div");
             el.className = "equip-row" + (row.self ? " equip-self" : "");
             el.setAttribute("data-object-id", String(o.id));
             el.style.setProperty("--equip-depth", String(row.depth));
-            if (EquipmentUI.isContainer(o) || row.self) el.classList.add("equip-container");
+            if ((EquipmentUI.isContainer(o) && EquipmentUI.containerStateKnown(o)) || EquipmentUI.childrenOf(m,o).length || row.self) el.classList.add("equip-container");
             if (EquipmentUI.isWorn(o)) el.classList.add("equip-worn");
 
             var label = document.createElement("span");
             label.className = "equip-name";
-            var text = typeof Actionable !== "undefined" ? Actionable.Scope.lastLookText + "\n" + Actionable.Scope.lastInventoryText : "";
-            label.textContent = typeof Actionable !== "undefined" && Actionable.displayNameFor ? Actionable.displayNameFor(o, m.items, text) : o.name;
-            if (typeof LearnedWords !== "undefined" && !row.self) label.textContent = LearnedWords.label("name", o.id, label.textContent);
+            label.textContent = row.self ? o.name : displayLabels[String(o.id)];
             el.appendChild(label);
             if (!row.self && !o.demo && typeof StatTracker !== "undefined" && StatTracker.itemMetricsFor) {
                 StatTracker.itemMetricsFor(o.id).forEach(function (metric) {
@@ -623,7 +668,7 @@ var EquipmentUI = {
                     el.appendChild(quantity);
                 });
             }
-            var siblings = m.items.filter(function (other) { return String(other.name).toLowerCase() === String(o.name).toLowerCase(); });
+            var siblings = m.items.filter(function (other) { return String(displayLabels[String(other.id)]).toLowerCase() === String(displayLabels[String(o.id)]).toLowerCase(); });
             if (!row.self && siblings.length > 1) {
                 var badge = document.createElement("small");
                 badge.className = "equip-instance";
@@ -637,8 +682,8 @@ var EquipmentUI = {
             else {
                 if (EquipmentUI.isWorn(o)) tags.push("worn");
                 var a = o.attrs || {};
-                if (a.container) tags.push(a.open ? "open" : "closed");
-                if (a.supporter) tags.push("surface");
+                tags = tags.concat(EquipmentUI.containerStateTags(o));
+                tags = tags.concat(EquipmentUI.activationStateTags(o));
                 var kidCount = EquipmentUI.childrenOf(m, o).length;
                 if (kidCount) tags.push(kidCount + " inside");
             }
@@ -697,6 +742,7 @@ var EquipmentUI = {
             var press = EquipmentUI._press;
             if (!press || press.row !== row) return;
             clearTimeout(press.timer);
+            Actionable.endHoldSelection(press);
             EquipmentUI._press = null;
             if (press.fired && e && e.cancelable) e.preventDefault();
             if (EquipmentUI._renderPending && !EquipmentUI._drag) EquipmentUI.Render();
@@ -705,12 +751,14 @@ var EquipmentUI = {
             if (e.target.closest('.equip-grip') || e.touches.length !== 1) return;
             cancel();
             var t = e.touches[0];
-            var press = { row: row, x: t.clientX, y: t.clientY, fired: false };
+            var press = { el: row, row: row, x: t.clientX, y: t.clientY, fired: false, touchId: t.identifier };
             EquipmentUI._press = press;
+            Actionable.beginHoldSelection(press);
             press.timer = setTimeout(function () {
                 if (EquipmentUI._press !== press || !row.isConnected || !EquipmentUI.IsOpen()
                     || Message.IsOpen || document.getElementById('dialog')) return;
                 press.fired = true;
+                Actionable.fireHoldSelection(press);
                 row._holdContextUntil = Date.now() + 1000;
                 Actionable.Open(String(obj.name).toLowerCase(), 'inventory', press.x, press.y, obj.id);
             }, Actionable.LongPressMs);
@@ -719,7 +767,7 @@ var EquipmentUI = {
             var press = EquipmentUI._press, t = e.touches[0];
             if (!press || press.row !== row || !t) return;
             var dx = t.clientX - press.x, dy = t.clientY - press.y;
-            if (dx * dx + dy * dy > Actionable.LongPressMoveCancelPx * Actionable.LongPressMoveCancelPx) cancel(e);
+            if (!press.fired && dx * dx + dy * dy > Actionable.LongPressMoveCancelPx * Actionable.LongPressMoveCancelPx) cancel(e);
         }, { passive: false });
         row.addEventListener('touchend', cancel, { passive: false });
         row.addEventListener('touchcancel', cancel, { passive: false });
@@ -991,6 +1039,14 @@ var EquipmentUI = {
     Show: function () {
         document.body.classList.remove("map-open");
         document.body.classList.add("equip-open");
+        // Read current structure on every open, including in-place vocabulary
+        // changes. This refresh submits no game command.
+        try {
+            if (typeof Actionable !== "undefined" && Actionable.Refresh) {
+                Actionable.Signature = "";
+                Actionable.Refresh();
+            } else if (typeof WorldModel !== "undefined" && WorldModel.tick) WorldModel.tick();
+        } catch (eRefresh) {}
         EquipmentUI.Render();
         try {
             if (typeof StatTracker !== "undefined" && StatTracker.requestStatusFulfillment) {
@@ -1000,11 +1056,14 @@ var EquipmentUI = {
     },
 
     Hide: function () {
+        Actionable.endHoldSelection(EquipmentUI._press);
         if (EquipmentUI._press) clearTimeout(EquipmentUI._press.timer);
         EquipmentUI._press = null;
         clearTimeout(EquipmentUI._dropTimer);
         EquipmentUI._dropTimer = null;
         document.body.classList.remove("equip-open");
+        // A pending stat-check retry belongs to this open sheet; drop it now.
+        try { if (window.StatTracker && StatTracker.cancelFulfillmentRetry) StatTracker.cancelFulfillmentRetry(); } catch (eRetry) {}
     },
 
     // The operator's navigation contract: the equipment tab is only reachable

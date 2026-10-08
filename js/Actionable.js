@@ -160,6 +160,14 @@ var Actionable = {
     // unambiguous object keeps the exact short command it has today.
     vocabularyKey: function (word) {
         var w = String(word || "").toLowerCase();
+        // Punctuation consumes Z-characters: a hyphenated dictionary entry
+        // can truncate before character nine. Compare its actual encoding.
+        try {
+            var vm = window.__PARCHLOCK_ZVM__;
+            if (/^[a-z][a-z'-]*$/.test(w) && /['-]/.test(w) && vm && vm.encode) {
+                return "z:" + vm.encode(Array.from(w, function (c) { return c.charCodeAt(0); })).join(",");
+            }
+        } catch (eEncoding) {}
         try {
             var mem = ZRamProvider.getMem();
             ZRamReader.hasDictionaryWord(mem, w);
@@ -205,6 +213,7 @@ var Actionable = {
         var unique = candidates.length === 1 && String(candidates[0]) === String(obj && obj.id);
         return { noun: noun, candidateIds: candidates, unique: unique, verified: unique && !customUnverified, provenance: "scoped-vocabulary" };
     },
+    isGrammarParticle: function (word) { return /^(a|an|the|of|and|or|to)$/i.test(String(word || "")); },
     displayNameFor: function (obj, pool, text) { return Actionable.observedPhraseFor(obj,pool,text,false); },
     observedPhraseFor: function (obj, pool, text, requireUnique) {
         // Display-only equivalence uses the live interpreter's encoding: a
@@ -230,6 +239,11 @@ var Actionable = {
                 if (j > i && !/^\s+$/.test(source.slice(matches[j - 1].index + words[j - 1].length, matches[j].index))) break;
                 if (aliases.indexOf(displayKey(words[j])) < 0) break;
                 phrase.push(words[j]);
+                // D184 recovered labels need a real vocabulary word at both
+                // edges. Interior articles remain valid; named objects retain
+                // their structural labels (including "the Order").
+                if (obj.labelProvenance === "parser-vocabulary"
+                    && (Actionable.isGrammarParticle(phrase[0]) || Actionable.isGrammarParticle(words[j]))) continue;
                 if (phrase.length < 2 && obj.labelProvenance !== "parser-vocabulary") continue;
                 var owners = (pool || []).filter(function (o) {
                     var mine = (o.aliases || []).map(displayKey);
@@ -255,7 +269,7 @@ var Actionable = {
                 w = String(w || "").toLowerCase().trim();
                 if (w) out[w] = 1;
             });
-            String((obj && obj.name) || "").toLowerCase().split(/[^a-z0-9]+/).forEach(function (w) {
+            String((obj && obj.name) || "").toLowerCase().split(/[^a-z0-9'-]+/).forEach(function (w) {
                 if (w) out[w] = 1;
             });
         } catch (e) {}
@@ -285,10 +299,14 @@ var Actionable = {
     // into something the parser has not got.
     expandTruncated: (word, obj) => {
         var w = String(word || "").toLowerCase().trim();
-        if (!w || (w.length !== 6 && w.length !== 9)) return word;
-        var tokens = String((obj && obj.name) || "").toLowerCase().split(/[^a-z0-9']+/).filter(Boolean);
+        if (!w) return word;
+        var tokens = String((obj && obj.name) || "").toLowerCase().split(/[^a-z0-9'-]+/).filter(Boolean);
         for (var i = 0; i < tokens.length; i++) {
-            if (tokens[i].length > w.length && tokens[i].indexOf(w) === 0) return tokens[i];
+            if (tokens[i].length <= w.length || tokens[i].indexOf(w) !== 0) continue;
+            if (/['-]/.test(w) || /['-]/.test(tokens[i])) {
+                // Only the interpreter's encoding can prove this spelling.
+                if (Actionable.vocabularyKey(w).indexOf("z:") === 0 && Actionable.vocabularyKey(w) === Actionable.vocabularyKey(tokens[i])) return tokens[i];
+            } else if (w.length === 6 || w.length === 9) return tokens[i];
         }
         return word;
     },
@@ -299,7 +317,7 @@ var Actionable = {
     headNounOf: (obj) => {
         var words = (obj && obj.aliases) || [];
         if (!words.length) return "";
-        var tokens = String((obj && (obj.displayName || obj.name)) || "").toLowerCase().split(/[^a-z0-9']+/).filter(Boolean);
+        var tokens = String((obj && (obj.displayName || obj.name)) || "").toLowerCase().split(/[^a-z0-9'-]+/).filter(Boolean);
         for (var i = tokens.length - 1; i >= 0; i--) {
             if (words.some(function (w) { return Actionable.vocabularyKey(w) === Actionable.vocabularyKey(tokens[i]); })) return tokens[i];
         }
@@ -387,7 +405,7 @@ var Actionable = {
         // Prefer a qualifier that actually appears in this object's own printed
         // name, so the phrase reads the way the story writes it ("green blob"),
         // then any other unshared dictionary word.
-        var nameTokens = String((obj && obj.name) || "").toLowerCase().split(/[^a-z0-9']+/).filter(Boolean);
+        var nameTokens = String((obj && obj.name) || "").toLowerCase().split(/[^a-z0-9'-]+/).filter(Boolean);
         var mine = ((obj && obj.aliases) || []).map(function (w) { return String(w || "").toLowerCase().trim(); });
         var usable = mine.filter(function (w) {
             return w && w.length > 1 && w !== noun && !taken[w];
@@ -396,7 +414,7 @@ var Actionable = {
         // words -- two objects both called "... spell" are not separated by
         // "spell" no matter which list the word came from.
         rivals.forEach(function (r) {
-            String((r && r.name) || "").toLowerCase().split(/[^a-z0-9']+/).filter(Boolean)
+            String((r && r.name) || "").toLowerCase().split(/[^a-z0-9'-]+/).filter(Boolean)
                 .forEach(function (w) { taken[w] = 1; });
         });
         usable = usable.filter(function (w) { return !taken[w]; });
@@ -663,6 +681,7 @@ var Actionable = {
         // synthetic click/contextmenu so it cannot ALSO submit a second,
         // duplicate command.
         $(document).off("touchstart.pmAct touchmove.pmAct touchend.pmAct touchcancel.pmAct");
+        Actionable.endHoldSelection(Actionable._touch);
         Actionable._touch = null;
         $(document).on("touchstart.pmAct", ".pl-act:not(.is-stale)", function (e) {
             var touches = e.originalEvent && e.originalEvent.touches;
@@ -670,18 +689,19 @@ var Actionable = {
             if (!touch) return;
             var el = this;
             // D93 (G22): suppress native text selection only WHILE a
-            // long-press is pending on this element, not permanently --
+            // long-press gesture is active on this element, not permanently --
             // a permanent user-select:none on every .pl-act would silently
             // stop the player from ever copying noun-bearing story text,
             // a real regression in its own right. Removed again in every
-            // exit path below (fired/cancelled/touchend/touchcancel).
+            // exit path below (cancelled/touchend/touchcancel), after firing too.
             el.classList.add("pl-press-pending");
-            Actionable._touch = { el: el, startX: touch.clientX, startY: touch.clientY, fired: false };
+            Actionable._touch = { el: el, startX: touch.clientX, startY: touch.clientY, fired: false, touchId: touch.identifier };
             var state = Actionable._touch;
+            Actionable.beginHoldSelection(state);
             state.timer = setTimeout(function () {
                 if (Actionable._touch !== state) return; // cancelled (moved/lifted) before firing
                 state.fired = true;
-                el.classList.remove("pl-press-pending");
+                Actionable.fireHoldSelection(state);
                 Actionable.Open(el.dataset.noun, el.dataset.kind || "object", state.startX, state.startY, el.dataset.objectId || null);
             }, Actionable.LongPressMs);
         }).on("touchmove.pmAct", ".pl-act:not(.is-stale)", function (e) {
@@ -693,8 +713,9 @@ var Actionable = {
             var dx = touch.clientX - state.startX, dy = touch.clientY - state.startY;
             // Cancellation: real finger movement past a small threshold is a
             // scroll/drag, not a hold -- never fire a radial out from under it.
-            if ((dx * dx + dy * dy) > (Actionable.LongPressMoveCancelPx * Actionable.LongPressMoveCancelPx)) {
+            if (!state.fired && (dx * dx + dy * dy) > (Actionable.LongPressMoveCancelPx * Actionable.LongPressMoveCancelPx)) {
                 clearTimeout(state.timer);
+                Actionable.endHoldSelection(state);
                 state.el.classList.remove("pl-press-pending");
                 Actionable._touch = null;
             }
@@ -702,6 +723,7 @@ var Actionable = {
             var state = Actionable._touch;
             if (!state || state.el !== this) return;
             clearTimeout(state.timer);
+            Actionable.endHoldSelection(state);
             state.el.classList.remove("pl-press-pending");
             if (state.fired) {
                 // Duplicate-submission prevention: the long-press already
@@ -714,9 +736,78 @@ var Actionable = {
             var state = Actionable._touch;
             if (!state || state.el !== this) return;
             clearTimeout(state.timer);
+            Actionable.endHoldSelection(state);
             state.el.classList.remove("pl-press-pending");
             Actionable._touch = null;
         });
+    },
+    // Selection belongs to the hold target, never to the whole transcript.
+    _selectionHolds: [],
+    beginHoldSelection: function (state) {
+        if (!state || !state.el) return;
+        Actionable._selectionHolds.slice().forEach(function (old) {
+            if (old.el === state.el) Actionable.endHoldSelection(old);
+        });
+        state.el.classList.add("pl-hold-active");
+        Actionable._selectionHolds.push(state);
+        if (!Actionable._holdSelectionBound && document.addEventListener) {
+            Actionable._holdSelectionBound = true;
+            document.addEventListener("selectstart", Actionable.guardHoldSelection, true);
+            document.addEventListener("contextmenu", Actionable.guardHoldSelection, true);
+            // Capture also receives an end outside the original element. Leave
+            // fired/long flags intact for the owner's trailing-click guard.
+            ["touchend", "touchcancel"].forEach(function (name) {
+                document.addEventListener(name, function (event) {
+                    Actionable._selectionHolds.slice().forEach(function (s) {
+                        if (s.pointerId == null && (s.touchId == null || Array.prototype.some.call(event.changedTouches || [], function (t) { return t.identifier === s.touchId; }))) Actionable.endHoldSelection(s);
+                    });
+                }, true);
+            });
+        }
+        if (!Actionable._holdSelectionObserver && typeof MutationObserver !== "undefined" && document.documentElement) {
+            Actionable._holdSelectionObserver = new MutationObserver(function () {
+                Actionable._selectionHolds.slice().forEach(function (s) {
+                    if (!s.el.isConnected) Actionable.endHoldSelection(s);
+                });
+            });
+            Actionable._holdSelectionObserver.observe(document.documentElement, { childList: true, subtree: true });
+        }
+    },
+    guardHoldSelection: function (event) {
+        if (Actionable._selectionHolds.some(function (s) {
+            return s.el === event.target || (s.el.contains && s.el.contains(event.target));
+        })) {
+            event.preventDefault();
+            if (event.type === "contextmenu") event.stopPropagation();
+        }
+    },
+    fireHoldSelection: function (state) {
+        if (!state || !state.el) return;
+        var el = state.el;
+        try {
+            var selection = window.getSelection && window.getSelection();
+            if (selection) {
+                // Remove only ranges touching this target. Other selected text
+                // remains copyable even when a different control opens a ring.
+                for (var i = selection.rangeCount - 1; i >= 0; i--) {
+                    var range = selection.getRangeAt(i);
+                    if (range.intersectsNode(el)) selection.removeRange(range);
+                }
+            }
+            if (typeof el.selectionStart === "number") el.setSelectionRange(el.selectionEnd, el.selectionEnd);
+        } catch (e) {}
+    },
+    endHoldSelection: function (state) {
+        if (!state || !state.el) return;
+        clearTimeout(state.timer);
+        state.el.classList.remove("pl-hold-active");
+        state.el.classList.remove("pl-press-pending");
+        if (state.selectionCleanup) state.selectionCleanup();
+        Actionable._selectionHolds = Actionable._selectionHolds.filter(function (s) { return s !== state; });
+        if (!Actionable._selectionHolds.length && Actionable._holdSelectionObserver) {
+            Actionable._holdSelectionObserver.disconnect();
+            Actionable._holdSelectionObserver = null;
+        }
     },
     LongPressMs: 500,
     // D93 (plan §3.6c): raised from 10 to 20 -- 10px is smaller than
@@ -793,6 +884,13 @@ var Actionable = {
             if (payload.playerId != null) blocked[String(payload.playerId)] = 1;   // D82
             if (payload.roomId != null) blocked[String(payload.roomId)] = 1;
             try {
+                if (typeof AttrCalibrator !== "undefined" && AttrCalibrator.confirmedInventoryRootId) {
+                    var rootMem = ZRamProvider.getMem();
+                    var heldRoot = rootMem && AttrCalibrator.confirmedInventoryRootId(rootMem);
+                    if (heldRoot != null) blocked[String(heldRoot)] = 1;
+                }
+            } catch (eRoot) {}
+            try {
                 (ParchLockMap.Rooms || []).forEach(function (r) {
                     if (r && r.ObjectId != null) blocked[String(r.ObjectId)] = 1;   // never a room
                 });
@@ -828,6 +926,7 @@ var Actionable = {
                 ((c.aliases) || []).forEach(function (w) {
                     var t = String(w || "").toLowerCase().trim();
                     if (!t || t.length < 3) return;
+                    if (Actionable.isGrammarParticle(t)) return;
                     if (t.length >= cut) return;                    // maybe truncated
                     if (!/^[a-z][a-z'-]*$/.test(t)) return;         // "barrel1" is a compiler tag
                     // A named sibling may share this vocabulary; keep each scoped RAM identity.
@@ -836,10 +935,12 @@ var Actionable = {
                 });
                 if (!best) return;
                 // Keep physical siblings; the marker owns a candidate set.
-                var display = Actionable.displayNameFor({ id: c.id, name: best, aliases: c.aliases }, cands, roomText);
-                var label = Actionable.observedPhraseFor({ id:c.id,name:best,aliases:c.aliases },cands,roomText,true);
+                var recovered = { id: c.id, name: best, aliases: c.aliases, labelProvenance: "parser-vocabulary" };
+                var display = Actionable.displayNameFor(recovered, cands, roomText);
+                var label = Actionable.observedPhraseFor(recovered,cands,roomText,true);
                 out.push({
                     id: c.id, name: label, displayName:display, parentId: c.parentId,
+                    labelProvenance: "parser-vocabulary",
                     aliases: c.aliases,
                     // D190: the declared attributes, and ONLY when D186 decoded
                     // this module's own attribute-name table. D184 shipped {}
@@ -907,7 +1008,7 @@ var Actionable = {
                 } catch (eP) {}
                 var display = Actionable.displayNameFor(row,base,text);
                 var label = Actionable.observedPhraseFor(row,base,text,true);
-                return label === row.name ? Object.assign({},row,{displayName:display}) : Object.assign({}, row, { name: label, displayName:display, structuralName: o.name, labelProvenance: "observed-vocabulary" });
+                return label === row.name ? Object.assign({},row,{displayName:display}) : Object.assign({}, row, { name: label, displayName:display, structuralName: o.name, labelProvenance: row.labelProvenance === "parser-vocabulary" ? "parser-vocabulary" : "observed-vocabulary" });
             });
         } catch (e) { return []; }
     },
@@ -991,10 +1092,9 @@ var Actionable = {
         if (!raw) return [];
         // Deterministic articles only — not a prose stopword list (plan: no
         // text mining). Tokens come from the object's own short-name.
-        var skip = { a: 1, an: 1, the: 1, of: 1, and: 1, or: 1, to: 1 };
         var out = [raw];
         raw.split(" ").forEach(function (t) {
-            if (!t || t.length < 3 || skip[t.toLowerCase()]) return;
+            if (!t || t.length < 3 || Actionable.isGrammarParticle(t)) return;
             if (out.indexOf(t) < 0) out.push(t);
         });
         return out;
@@ -1119,8 +1219,16 @@ var Actionable = {
         if (!$(".Input.LineInput:visible").length) return;
 
         var lines = $("#windowport .BufferWindow .BufferLine").toArray();
+        // Per-line facts are cached until a mutation touches the line
+        // (BufferRevision, consensus #1830): this runs every 200 ms, and the
+        // old per-line jQuery passes grew with the whole session.
+        var facts = lines.map(line => typeof BufferRevision !== "undefined" ? BufferRevision.lineFacts(line) : {
+            input: !!line.querySelector(".Style_input"),
+            subheaders: $(line).find('.Style_subheader').addBack('.Style_subheader').toArray().map(el => el.textContent),
+            stars: /\*\*\*/.test(String(line.textContent || ""))
+        });
         var lastInput = -1;
-        lines.forEach((line, index) => { if (line.querySelector(".Style_input")) lastInput = index; });
+        facts.forEach((f, index) => { if (f.input) lastInput = index; });
         var scope = Actionable.Scope, room = ParchLockMap.CurrentRoom;
         // D170: match the banner against the payload's room name BEFORE the
         // map's. `ParchLockMap.CurrentRoom` is a stored label, and D62 already
@@ -1161,9 +1269,8 @@ var Actionable = {
         };
 
         var heading = -1;
-        lines.forEach((line, index) => {
-            var headers = $(line).find('.Style_subheader').addBack('.Style_subheader');
-            if (headers.toArray().some(el => nameMatches(el.textContent))) heading = index;
+        facts.forEach((f, index) => {
+            if (f.subheaders.some(text => nameMatches(text))) heading = index;
         });
 
         // D170 (operator: "this instance of Wumpus does not want to underline
@@ -1221,10 +1328,9 @@ var Actionable = {
         //    see StatTracker's death/win detection), so they are excluded as
         //    anchors rather than being allowed to define a room's text.
         var lastBanner = -1;
-        lines.forEach((line, index) => {
-            var hs = $(line).find('.Style_subheader').addBack('.Style_subheader');
-            if (!hs.length) return;
-            if (/\*\*\*/.test(String(line.textContent || ""))) return;
+        facts.forEach((f, index) => {
+            if (!f.subheaders.length) return;
+            if (f.stars) return;
             lastBanner = index;
         });
         if (heading <= lastInput && lastBanner > heading) heading = lastBanner;
@@ -1232,7 +1338,15 @@ var Actionable = {
         var text = latest.map(line => line.textContent).join("\n");
         var command = $("#windowport .Style_input").last().text().trim().toLowerCase();
         var payloadKey = structural
-            ? [payload.roomId, payload.roomName, (payload.discoveredObjects || []).map(function (o) { return o.id; }).join(","), (payload.inventory || []).map(function (o) { return o.id; }).join(",")].join(":")
+            ? JSON.stringify([payload.roomId, payload.roomName, [payload.discoveredObjects || [], payload.inventory || []].map(function (objects) {
+                return objects.map(function (o) {
+                    var attrs = o.attrs || {};
+                    var state = Object.keys(attrs).sort().filter(function (key) {
+                        return attrs[key] == null || /^(boolean|string|number)$/.test(typeof attrs[key]);
+                    }).map(function (key) { return [key, attrs[key]]; });
+                    return [o.id, o.name, o.parentId, o.aliases || [], state];
+                });
+            })])
             : "none";
         var signature = room + ":" + lines.length + ":" + lastInput + ":" + text + ":" + payloadKey;
         if (signature === Actionable.Signature && Actionable.LiveMarks.every(mark => mark.isConnected && !mark.classList.contains("is-stale"))) return;
@@ -1285,7 +1399,12 @@ var Actionable = {
         });
         var inventory = /^(i|inv|inventory)$/.test(command);
         if (inventory && typeof StatTracker !== "undefined" && StatTracker._hideCarryProbe) {
-            lines.slice(Math.max(0, lastInput)).forEach(function (line) {
+            // D207: StatTracker owns the carry probe's span from submission and
+            // has already hidden its reply while releasing the turn's real
+            // events (an enemy's attack). Hiding every line from lastInput here
+            // would re-hide those events, so only a span StatTracker never
+            // owned falls back to the old blanket rule.
+            if (!StatTracker._probeBaseline) lines.slice(Math.max(0, lastInput)).forEach(function (line) {
                 if (!line || !line.classList) return;
                 if (line.querySelector && line.querySelector(".Input, .LineInput, .CharInput")) return;
                 line.classList.add("pl-carry-probe");
@@ -1349,7 +1468,7 @@ var Actionable = {
                 var wl = String(word).toLowerCase();
                 if (seenPhrase[wl]) return;
                 // Grammar particles only (not a prose stopword list).
-                if (/^(a|an|the|of|and|or|to)$/i.test(wl)) return;
+                if (Actionable.isGrammarParticle(wl)) return;
                 seenPhrase[wl] = true;
                 wrapTargets.push({ phrase: word, kind: kind, objectId: o.id, dictAddr: o.dictAddr, fromName: false });
             });

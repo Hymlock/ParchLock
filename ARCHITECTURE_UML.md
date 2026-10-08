@@ -209,9 +209,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 94 headings; 0 decision rows; 94 registered units.
-**Last registered unit:** `ar-s094`. **Body SHA-256 (LF):**
-`4447eead5366fd3668fdd25c476f6db1f301c41f379273d8b493646eb21b3a83`
+**Local manifest:** 99 headings; 0 decision rows; 99 registered units.
+**Last registered unit:** `ar-s099`. **Body SHA-256 (LF):**
+`4ebdea56f05e0212ed47b83c212c2c7be7607fb14979dafa14f777a4df65c0dd`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -385,6 +385,11 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s092](#ar-s092) | 67. Mobile side-rail readable-content geometry (D203) — IMPLEMENTED | H2 | Implemented / live-browser verified |
 | [ar-s093](#ar-s093) | 68. Holistic statistics evidence ledger (D204) - IMPLEMENTED | H2 | Implemented / validation pending |
 | [ar-s094](#ar-s094) | 69. Yourself hold radial for inventory/RPG verbs (D205) | H2 | Implemented; audit pending |
+| [ar-s095](#ar-s095) | 70. Learned words display and shared-copy repairs (2026-10-04) | H2 | Implemented |
+| [ar-s096](#ar-s096) | Observed item descriptor precedence - regression correction (2026-10-04) | H2 | Record |
+| [ar-s097](#ar-s097) | 71. Status probes, time games and the score alias (D207-D209) | H2 | Implemented / audited |
+| [ar-s098](#ar-s098) | 72. Hold selection ownership, voice input lifecycle and speech (D210-D212) | H2 | Implemented / audited |
+| [ar-s099](#ar-s099) | 73. In-room steps and combat actions (D213) | H2 | Part A implemented |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -587,9 +592,15 @@ flowchart TB
   ATTR -->|supporter| REC2[Recurse]
   ATTR -->|closed opaque| HIDE[Do not recurse]
   ATTR -->|enterable| VEH[Recurse + ancestor room]
-  ATTR -->|animate| NPC[Recurse held/worn]
+  ATTR -->|animate| NPC[Actor itself in scope - possessions NOT recursed D57/D206]
   ATTR -->|worn clothing container| PKT[Recurse unless closed]
 ```
+
+**D206 reconciliation.** This matrix once read "animate -> Recurse held/worn". That predated
+D57/D68 and was never implemented. An actor is itself in scope: a named actor is a room
+child, and an unnamed actor is a D184 vocabulary candidate. Its possessions are not walked
+into room scope, and its held items never gain a room Take. Exposing actor-held items would
+need RAM evidence of a held parser object and a separate decision.
 
 Full Inform light/scope (`OffersLight`, `thedark`) is Phase 8 - this is containment only.
 
@@ -1292,7 +1303,7 @@ flowchart TD
   LIKELY --> SCOPE[scopeObjects - room children]
   SCOPE --> ATTRS[attrsFromObject -> AttributeSchema.applyTo]
   SCOPE --> WRAP{unnamed child?}
-  WRAP -->|animate D57| SKIP[not recursed - contents stay hidden]
+  WRAP -->|animate D57/D206| SKIP[own vocabulary recorded as D184 candidate; contents not recursed]
   WRAP -->|not animate| RECURSE[transparent recurse]
   RECURSE --> WORN{worn bit D68?}
   WORN -->|yes, via bypass| DROP[excluded - stays with wearer]
@@ -1695,6 +1706,10 @@ Rules carried by the plan (each is an acceptance criterion, not an implementatio
 
 <a id="ar-s045" data-chapter-id="ar-s045"></a><a id="ar-ch35"></a>
 ## 35. Module library (D98 -- implemented)
+
+**October 7 module-screen presentation refresh (Codex).** The existing Modules dialog now uses visible file/folder import cards, scoped system typography, responsive spacing and theme-aware surfaces. Installed stories have separate author metadata and Included/Imported badges; duplicate built-in labels are removed. An in-memory title/author search filters only the displayed collection and reports matching/total counts; no stored module or story state changes. Library-wide Remove all and Restore built-ins remain available in Library options with their existing handlers and confirmations. Compatibility, permission and device-storage information remains in a compact expandable note; permission reminder remains visible. File/folder input ids, import validation, stored bytes, duplicate handling and native picker behavior are retained. No new export implementation or APK build.
+
+Before/after screenshots captured with the library tutorial bypassed: work/investigations/modules-before-390.png and modules-before-1280.png; modules-after-390.png, modules-after-1280.png, modules-after-390-light.png, modules-after-320.png and modules-imported-320.png. Basic modules-ui-check passes narrow320 dark, phone390 light and desktop1280 dark: no horizontal overflow, title/author filtering, empty search and actual file-card picker import with local Rename/Remove controls. Existing d98 ModuleLibrary core/GLUL response checks pass after updating their stale full-bytes assertion to the previously accepted frozen summary plus explicit bytes accessor. Runtime ModuleLibrary/ParchLock.css; shellv129; Claude accepted behavior and all four final visual corrections in bus #1664.
 
 Status: IMPLEMENTED AND LOCALLY VERIFIED; READY FOR FINAL ADVERSARIAL REVIEW (2026-09-20); canonical text PRODUCTION_PLAN.md section 13. Compared before design against the current code: `lib/main.js` `launch()` (engine
 chosen by the story URL extension, story bytes fetched by jQuery JSONP into `processBase64Zcode`),
@@ -2526,6 +2541,20 @@ RESTORE file-dialog cycle; the structural suite is 36/36, with D94 54/54 and D10
 <a id="ar-s069" data-chapter-id="ar-s069"></a><a id="ar-ch56"></a>
 ## 56. Equipment sheet (D122)
 
+**October 7 stale-status and offset-counter correction.** Curses at desktop1280 initially prints labelled Turns2, then redraws bare3/4/5. The old status-sourced2 was wrongly treated as a fresh contradiction and demoted the agreeing globals3/8. Global reading now compares against the current tick observation; a missing current label lets the proven RAM reading advance, while an actual current contradiction still demotes. Without a current tick snapshot, the prior conservative contradiction rule remains. Behavioral candidate promotion also requires agreement with every available labelled status/SCORE absolute turn sample, identifying true copied counters even beside a different offset timer.
+
+Heroine global237 was independently identified from live compiled game routines91521/91581: it loads object property41, increments or decrements the scratch value and writes it back. It is a compiler temporary for location/event timer updates, not another persistent player stat. Printed Moves and SCORE identify globals2/8; no fabricated label or secondary statistic is added. Evidence: work/investigations/offset-counter-identification.md. Unknown candidates still require authoritative identification rather than a guessed meaning. Focused stale/offset7, retained Anchorhead12 and statistics204 pass; actual Curses labelled-to-unlabelled transition advances correctly and SCORE confirms5. No catalogue sweep or APK build. Claude audit requested.
+
+**Identity hot-path correction (October 7).** ModuleLibrary constructs one frozen identity summary per authenticated executable input, containing digest/format/size/path and a frozen 64-byte header array. currentExecutableIdentity returns that same summary; currentExecutableDigest returns only the digest. Full executable bytes remain private and are available only through explicit currentExecutableBytes, which returns a defensive copy on demand. StatTracker header checks use the summary header. This avoids roughly126 whole-file copies per ordinary turn observed in the audit. Basic live check:1000 calls reuse one immutable summary in0.60ms, no full bytes exposed. No decoder memoization that could retain a stale story identity.
+
+**October 7 Treasures equipment correction.** The standard compiler-declared worn bit is correctly decoded but unused for this game's armor. Native USE ARMOR toggles declared individual property p80_girded (73) between 1 and 0; native inventory changes between being worn and currently un-used. An exact executable SHA256-owned equipmentState declaration now reads that boolean directly from RAM, marks the object wearable, and maps equip/remove actions to the verified native USE toggle. Missing/invalid declarations, absent properties, values outside 0/1 and unknown executables retain ordinary attribute behavior. No item-name or prose inference. The same measured-facts overlay declares the HELP-documented one-object USE command; ActionSynth exposes it for this executable's objects, including carried non-equipment. EquipmentUI requires a unique scoped reference for ordinary Yourself interactions; custom parse_name does not by itself block interaction. Automatic learning retains its stricter verified/opcode evidence gates (D198).
+
+October 7 E1/E2/E5 follow-up: ParchLock resolves the native save namespace from the immutable executable header (Z-code first 30 bytes; Glulx first 64), retries on identity readiness, and applies only to the same story path. Existing cross-story import validation stays authoritative. Actionable preserves hyphens/apostrophes as vocabulary tokens and uses actual ZVM dictionary encoding for punctuated truncation equivalence. Existing scoped references, observed descriptors and duplicate ambiguity gates remain; EquipmentUI groups instance badges by its existing displayed labels. Refresh signatures include live name, aliases, parent and primitive attributes, and each Equipment open forces fresh structural collection/rendering without adding a command. Targeted live fixtures prove both Treasures sword USE forms, same-ID vocabulary refresh, full cloth labels on the existing quiet INVENTORY display path and Anchorhead distinct column references. Fixtures are controlled RAM setup, not natural story progression. Claude accepted E1/E2 in bus1708; Claude final E5 acceptance is recorded in bus1736.
+
+October 7 E3 and Options: first Equipment open after installation presents a large WARNING about rummaging, consumed turns and irate enemies. The acknowledgement is keyed to the captured installed module, before draft/question/valve guards; only uninstall/reinstall resets it, not tutorial replay or reload. Codex accepted the revised warning with six focused live checks in bus1713. Options uses scoped expandable cards with concise descriptions, readable controls and keyboard focus states. All seven expanded sections were inspected at phone width; existing preference and speech-rate handlers remain. The operator removed the inactive legacy Map animation checkbox and hidden toolbar button. No dormant animation code was enabled. Transcript lifecycle E4 was independently accepted by Claude in bus1736. Claude implemented save-owned IndexedDB ranges and unsaved in-memory capture; Codex corrected the observed lifecycle gaps: shared Dialog at Quixe prepare, successful vm_restore rather than file-read availability, observed Glk auto-resume, immutable saved line prefixes with later unsaved suffixes, and hidden ancestry in detached subtrees. Existing basic transcript suite passes 15 checks; focused actual Quixe rejection/capture checks pass. The linked Directions settings form now has visible field labels; existing Add/Edit handlers remain. D206 room candidate collection excludes the structurally resolved player, including unnamed actors, while retaining unnamed NPC parser candidates and never walking their possessions. Existing snapshot/provider callers pass their resolved player id to avoid duplicate resolution; live LLR player exclusion and Treasures Von Darth candidate preservation pass. No title/name-based exclusion was added. Claude accepted all current-slice fixes on the frozen checkout in bus1736; Codex confirmed consensus in bus1737. The random D201 TAKE fixture and three legacy button fonts remain non-blocking follow-ups in OPEN_WORK.md.
+
+The THESKIAN DUFFEL BAG is object51, a scenery/static prop floated into the current room through found_in. It has no container flag or children; the actual six held objects belong directly to player55. Its narrative carrying role does not license an invented container hierarchy. Basic evidence: treasures-equipment-regression 9 checks PASS; actual supplied save at phone width verifies equipped -> USE removal -> USE re-equipping, Yourself model/DOM and Use on all six items. No APK built; Claude implementation audit pending. Runtime: AttributeSchema, ModuleStatFactsClaude, ActionSynth, EquipmentUI; shellv128.
+
 Inventory was a flat chip list inside the map sheet that encoded containment as a **text suffix**
 (`towel (in trenchcoat)`, `key to the house (in keyring)`). The structure was never missing — it
 was being computed and then discarded: `payload.inventory` is a flat array of
@@ -2643,6 +2672,12 @@ the module reloaded fresh.
 
 <a id="ar-s071" data-chapter-id="ar-s071"></a><a id="ar-ch58"></a>
 ## 58. Save to device via the Storage Access Framework (D129)
+
+October 7 Tools visual pass (operator authorized): responsive themed utility launcher and submenu cards; Save files, named/current Maps, Transcript, History, Commands, Display, Help, About and linked documents, and Learned Words are inspected together. Preserve command callbacks/IDs, native save prompts, stored/export naming and specialized Equipment/Arrow/Module/Options interactions. Implemented by Codex after exact-path handoffs and independently accepted by Claude bus1759. Tools uses themed grouped cards on desktop/mobile; utility screens have consistent controls, native prompts retain ownership, Help has eight expandable sections, and existing Learned Words section behavior remains. Focused thirteen-screen phone/desktop visual checks and Display/History/map-save/native-SAVE/cancel checks pass. Screenshots are recorded in OPEN_WORK.md; both cosmetic notes were subsequently fixed and verified before APK build61.
+
+
+October 7 export naming planning consensus (Claude bus1745, Codex confirmation): all external artifacts use a Qol-owned readable name: Story title - Kind - optional actual save/map label - local YYYY-MM-DD HH-MM-SS-mmm, with an app-generated (n) only for a same-session collision. Preserve player text wherever filesystem-safe; bound Unicode components without splitting surrogate pairs. Capture payload/module/label before asynchronous work and reuse one suggested filename across browser, Android picker and share fallbacks. Include current/named map JSON, map text, transcript, whole save package, individual native-file package and Save Package As. The native Dialog generic data link also requires a non-minified existing-owner UI hook before all-download completion. Stored save keys/names, autosave identities, package bytes/schema, renamed-file imports and cross-story validation remain unchanged. Implemented by Claude and independently accepted by Codex bus1763 after source/adversarial repairs and filename18/0 checks. Native link kind is taken from Quetzal bytes, and each click receives a fresh name; actual save/map labels are retained. Native transport and picker mocks pass. Operator superseded backward-compatibility planning: this is a development build with no migration requirement. Tools cosmetics were corrected by Claude1766 and verified by Codex. Gradle build61/versionCode34/cache138 succeeded; signed APK and matching corresponding-source archive are delivered in ParchLock-dist, with nine audited assets matching checkout byte-for-byte.
+
 
 Operator-reported: "Download" opened the **share** sheet, not a file picker, so there was no way to
 put a file into the phone's own Downloads folder the way a desktop browser does.
@@ -2821,6 +2856,15 @@ v3 game here renders the room name alone (D137), leaving no text to verify again
 from behaviour instead: slot 2 is a turn counter only once it has risen by 1..8 on consecutive turns and
 never fallen. Confirming that confirms the pairing too, since the same clause places the score in slot 1.
 Planetfall fails this and registers nothing, which is the correct outcome.
+
+October 7 D152/D153 correction: this initializer is restricted to interpreterStatus
+(version<=3); v4+ slot2 has no standard turn meaning. In Anchorhead it is location,
+including File Room id622. V4+ uses all-global behavioral discovery. Several candidates
+are interchangeable only when their complete sampled absolute sequences agree; differing
+offsets remain ambiguous. On v4+ story load retained turn pins are discarded before
+readConfirmedGlobals, with old readings already unconfirmed; other locators and v3
+semantics remain intact. This prevents legacy room/offset bindings from returning as
+current Turns. A sole unrelated +1 counter remains a behavioral-discovery limitation.
 
 <a id="ar-s082" data-chapter-id="ar-s082"></a>
 ### Deaths
@@ -3227,6 +3271,16 @@ cannot authorize an earlier failed valve.
 <a id="ar-s090" data-chapter-id="ar-s090"></a><a id="ar-ch65"></a>
 ## 65. Unnamed early-Inform identity composition (D201)
 
+October 8 compiler-boundary repair plan (companion to D201, bus1782/1785): the existing provider's unnamed-holder recovery is an Inform lane, not proof that an unnamed ZIL offstage grouping belongs to the player. Confirmed native TAKE/INVENTORY holder learning remains first. An unnamed non-Inform enclosing parent cannot establish a room, and the Inform takeable/light profile cannot veto a ZIL room. Existing structural/name/actor/door exclusions and Inform unnamed identity remain. No parallel provider, inventory-name filter or descriptor changes. Codex owns reader/provider, Claude independently audits; warning acknowledgement and status fulfillment remain StatTracker-owned.
+
+Implemented and independently accepted1841: executable-owned hidden flags apply only to inventory subtree walking; hidden wins by default, with explicit Suspect worn preservation. Border playerGlobal186 follows native chapter selection and SAVE/RESTORE without cached actor identity. Yourself follows resolved inventory holder, independent of wearability. Per-flag confirmed state labels preserve unknown silence and update through native umbrella/lamp commands. All28 Infocom plus matching-compiler DejaVu census, equipment119/0 and native lifecycle proofs are recorded in work/status-audit/z/infocom-inventory-results.json.
+
+Actual operator Treasures saves reproduce the remaining combat-stat defect: the native hit-odds sentence adds a burden qualifier, which the earlier armed/unarmed template correction omitted. Both full-reply authority and ingestion now accept only a bounded native burden/load clause through non-capturing groups; arbitrary parentheticals remain rejected. Actual restored save(1), Quest76/HP35/Turns417, shows Damage5to15 and HitOdds82; save(2), Quest44/HP26/Turns320, shows4to9/81. Independent actual-save verification and readable Equipment descriptor checks pass; review1857. No duplicate-object or naming workaround was needed for this parser defect.
+
+
+
+All-Infocom verification uses fresh native inventory, then investigates exceptions. The existing digest-owned layout facts can optionally identify the live player global: its value is re-read, immutable header-checked against the current memory and object/link validated before use. An uninitialized declared global reports no actor instead of falling back to a parser-only self object. Border Zone native inventory/chapter evidence owns global186; Hitchhiker native WEAR/REMOVE owns wornAttribute24 through the existing attribute fact precedence. No additional identity registry or inventory-name filter.
+
 **Lifecycle:** Implemented and live-browser verified on 2026-09-29. This section is
 the architecture companion to [D201](PRODUCTION_PLAN.md#pl-d201). It applies to Z-machine
 builds whose compiler leaves the live player, room, or carried item without a printable
@@ -3408,6 +3462,10 @@ connection geometry. Center resets scale/pan and draws the current room once.
 Preserve independent pointer click, touch, input recovery and restart fixes.
 No scale threshold changes the visible graph. Companion: [D202](PRODUCTION_PLAN.md#pl-d202).
 
+**October 8 separate World view: implemented and independently accepted (planning1878/1879; implementation1895/1906/1908).** The October 1 removal concerned a zoom-dependent local/overview switch. WorldMap is a separate overlay alongside the unchanged default local renderer. WorldMapLayout is pure placement over existing admitted nodes and original directed exits; it cannot change semantic graph, commands or persistence. WorldMap owns identity-keyed caches and validated WorldX/WorldY/WorldLevel annotations on Rooms, retained by existing map save/export/package paths. Array replacement invalidates tokens and signatures; restart/reset discards cells with Rooms. SetCurrentRoom alone records WorldVisited; unvisited nodes are faded and their edges dotted. Relative visual levels do not modify local Floor. The overlay retains its origin sheet without invoking its Show/Toggle/probe owners; Back/Escape close it after higher-priority dialogs without clearing input. Explicit Travel delegates to Navigator. Signatures and rendering run only while open. Codex implemented layout/fixture and final renderer boundary corrections; Claude implemented and mutually audited view/integration. APK62 predates this implementation.
+
+MapTopology owns destination-bound travelledTo evidence; TranslatorUI carries matching proof through compass-alias folding. Changed real target identities clear proof, and WorldMap validates it against the actual Exits destination. Unknown question-mark metadata is inert and never grants travelled styling, including id-less room families; latest actual state-delta and existing text-travel records retain their semantics. Non-compass/differing-evidence edges retain individual labels/direction, and arrow clipping preserves the terminal direction. Native taps are not captured before a drag starts. Browse uses room records rather than ambiguous names. Focused proof: Codex native route48/0 plus actual-source identity/arrow boundary gates; Claude final UI52/0 at360/1280 and layout PASS. No post-map APK or physical-device proof is implied.
+
 <a id="ar-s092" data-chapter-id="ar-s092"></a><a id="ar-ch67"></a>
 ## 67. Mobile side-rail readable-content geometry (D203) — IMPLEMENTED
 
@@ -3480,6 +3538,34 @@ clearing offset (cell = live Glk/CharCell advance).
 
 <a id="ar-s093" data-chapter-id="ar-s093"></a><a id="ar-ch68"></a>
 ## 68. Holistic statistics evidence ledger (D204) - IMPLEMENTED
+
+**Module implementation/verification pass (2026-10-04):** Operator authorized catalog-order validation and fixes using `work/status-module-checklist.md`; inspection notes are not completion evidence. Verify the existing deterministic path before editing runtime. Compiler/interpreter/status-grid/confirmed RAM evidence precedes safe exact-command text collection; do not replace working owners or add per-title runtime branches. Checkmarks require module-specific live evidence and disclose gaps. Historical seed samples never fill live readings. First verified control: Counterfeit Monkey uses existing `StatusGridDecoder` → `StatTracker.observe/Render` → Equipment; Score 0→1→4 and Goals 1→3, desktop/mobile, open/reopen and undo/grid parity pass in `harness/status-module-live.js` (240 checks). No runtime change or automatic command needed for these fields. Executable identity is recorded in the checklist; physical Android/full-game completion is not claimed. Subsequent modules remain unchecked until individually verified; Grok's review and overall operator completion are separate gates.
+
+**Spell and spell-like inventory verification (2026-10-05).** Real Enchanter (ZIL v3) exposes a held spell book with four distinct child objects: blorb, nitfol, frotz and gnusto spells. READ book confirms their printed identities. Desktop1280 and mobile360 live checks exercise full names and command qualifiers, actual book hierarchy, Spells filtering off/on, flat/container view, text-filter parent preservation and actual right-click/mobile name long-press -> Cast at -> spell book. The resulting `cast blorb spell at book` is accepted and creates the strong box; real RAM containment changes and the carried book/spells disappear from inventory. Existing command and inventory recovery paths work. A demonstrated UI defect labelled spells closed from untrusted Inform container bits on ZIL. EquipmentUI now shows container open/closed/surface tags and bit-derived container styling only when the existing ZRamReader.attrInsideTrusted compiler/calibration gate confirms those meanings; observed child hierarchy and inside counts remain structural. No spell-name/title rules, attribute remapping, visibility/command/drop changes or guessed spell powers. Four new presentation regressions retain confirmed Inform open/closed states. Evidence: `node harness/command-disambiguation.js --live` 36 checks PASS at desktop1280/mobile360; command contract51, Equipment112 and nested inventory60 PASS. Runtime js/EquipmentUI.js; harness/command-disambiguation.js and harness/equipment-ui.js; shell cache119. Source only, no APK or physical-device claim.
+
+**Glulx implementation closeout (2026-10-05).** All eleven Glulx checklist rows now have verification evidence. Operator prioritized finishing Glulx over the newly requested checked-list audit. Codex completed remaining read-only live proofs using its own harness and Claude measured facts: CragneManor7, RobinAndOrchid6, PataNoir7, ScrollThief4, Grooverland5 checks, real first Equipment/reopen, normal prompts and complete fulfillment. Unsupported DIAGNOSE is not submitted; no-score is asked once; Cragne Turns and Pata bare Moves remain authored-grid readings. Scroll Thief score/max, act, problems, clock and turns come from its three-row grid; rank comes from the exact authenticated SCORE. The two bracketed report hints are quietly owned only by exact measured strings. No story asset, Claude registry or Claude harness was edited. Existing CounterfeitMonkey proof reused. Focused138, stats201, Equipment108, same-response GLUL identity test, syntax/diff and both embedded document validators PASS. Cache v118. Source only, no APK/full-playthrough claim. Further checked-list completeness review remains separate from this finished Glulx batch.
+
+**Final Glulx continuation (2026-10-04).** All 298 Z modules and known extras are verified. Root final five are checked: Rover preserves decimal Memory and PB unit as authored text; CosmoServe retains percent chance and clock without commands; Blue Lacuna preserves chapter/regions maxima and first choice and authored Night time; Andromeda preserves all printed achievement names/states without invented points; Alabaster explicitly has no score. Real first/reopen gates passed 4/4/6/5/5 checks respectively. Claude owns the separate remaining five. ModuleLibrary captures executable GLUL bytes from the same story loader response before VM boot; validated exact forms require matching executable digest, gblorb/ulx format and GLUL magic, with no Z dictionary bypass for any other form. Existing draft, question, CharInput and modal guards remain. Scroll Thief now decodes authored N/M points, Act N and open-problem count across its three-row status grid; its two exact bracketed SCORE hints have executable-owned quiet reply ownership, while mixed story events remain visible. PataNoir uses an authenticated bare move column. No Glulx RAM/object decoder or Stats Mode toggle. Cache v118; focused138, statistics201, Equipment108 and ModuleLibrary core PASS; document integrity PASS.
+
+**Historical joint implementation follow-up (2026-10-04; superseded by continuation above).** Separate actual-file lanes are acknowledged in bus1171/1174 and recorded in work/status-audit/bus-schedule.md: Grok owns ModuleStatFacts, Codex owns StatTracker/StatusGridDecoder and shared documentation. Metadata and live values remain separate. Shell cache v115 distributes the current parsers/data wiring. Grok completed anchor/Aug4/building/bunny and Cheeseshop; known remaining Balances/DDIV fields must be verified before treating their marks as final. Codex checked Facility measured progress, Forms Season/Time/no-score, CSBB Holiness bound and owner-labelled Magic, and Dangerous Curves full weekday/clock. Devours missing seconds clock and no-score passed two Equipment readings but checklist write awaits serialized access; Curses Date/qualitative health pass, automatic bound/rank remains pending.
+
+Shared parsing retains complete labelled text, standalone clocks (including seconds), explicit calendar dates, and authenticated compact single/pair metrics. EXP fraction ownership prevents denominator-as-current mistakes; certainty stays qualitative. Command bounds survive numerator-only grids and clear on restore. Measured custom readings refresh serially, while fresh inventory-owned magic avoids duplicate MAGIC. Exact matching conceals only proven spans; mixed events remain visible. Qualitative diagnosis preserves health/memory words without inventing ordinal bands. Added exact SCORE variants retain status-of and making-you classifications. Latest focused contract54 and shared stats201 pass. Per-module proofs and executable hashes remain in the checklist. The live runner now rejects malformed ModuleStatFacts before browser launch; a detected Curses-addition comma error was sent to its owning seat for repair, with dependent tests deferred.
+
+Current operator efficiency requirement supersedes earlier blanket live-retest wording: reuse baseline proof, inspect every known extra, change only demonstrated gaps, and use one/two positive checks for changed fields. Checklist writes require successful exact claim/release and preserve titles/history. No overall completion, full-game coverage, new APK or Glulx decoder is claimed.
+
+
+Parallel implementation: js/ModuleStatFacts.js holds executable-authenticated command/layout relationships, loaded before StatTracker and precached by cache v114; current numeric readings remain live. Extraction passes contract23 and stats201. Facility STATUS refreshes measured qualitative progress on Equipment reopening and avoids unsupported SCORE/duplicate inventory progress; desktop first-open/reopen4 passed. Unknown progress wording remains visible/unavailable rather than stale.
+
+Operator-directed checked-list audit (bus1162-1167): Codex rows1-155; Grok requested rows156-309. Reuse proven baselines. Rank, maximum, conditions, clocks/dates, currency and custom metrics count as special stats under standard commands. Thirty-eight recorded first-half gaps reopened with original evidence preserved. Changed behavior needs focused validation; checklist edits use serialized exact claims. Overall completion remains operator-owned.
+
+
+Clock/absence and compact-grid follow-up: StatusGridDecoder preserves full labelled clocks (2:26 pm), durations (1 minute) and Unstarted before numeric parsing; StatTracker retains these as text without numeric RAM promotion or NaN delta events. Explicit command-owned numerical-no-score and No score obtains replies confirm absence. Accuse first Equipment/reopen passes6 at1280/360, preserving Time and avoiding repeat SCORE. Advent and Adventureland recover missing maxima through authenticated measured SCORE forms without manual prefill; first-open/reopen live6 each pass. Adventureland compact score/moves layout is decoded only with an executable-authenticated measured pair relationship, never an inferred fraction maximum; actual WAIT redraw now immediately updates Moves2 to3. Runtime owners StatTracker and StatusGridDecoder, shared runner, cachev113. Focused relationship/ownership23 and stats201 pass. Grok owns immediate completion checkboxes after each validated module; independent review is recorded separately.
+
+De Baron follow-up: explicit command-owned no-score confirms absence, suppresses repeated SCORE only while current, and clears on restore/load. A carry-only fulfillment finishes when its existing owner releases the transaction. Two Equipment checkpoints at desktop/mobile pass6; shared relationship/ownership contract17 and stats201 pass. No other runtime owners changed.
+
+**2026-10-04 continuation (Codex/Claude).** Operator replaces Grok with Claude. Separate exact source reservations prevent overlapping module work; each worker checks its own verified checklist rows immediately under a brief checklist claim. Claude owns ModuleStatFactsClaude.js, Codex owns shared runtime/runner/docs. Executable-hash capability overlays merge without seeding current readings. Authenticated rejected DIAGNOSE forms skip automatic requests while manual output remains available. Direct unquoted player diagnosis excludes NPC speech; qualitative fields retain authored text. Cabal, Book and Volume, Child's Play and Gourmet now pass first Equipment/reopen and are checked; earlier Curses, Dead Reckoning, Geb and Devours proofs are complete. Tasks, paired counters and percent progress remain distinct from Score. Latest focused109, shared201 and Equipment108 checks pass; Codex finished and checked all15 assigned Z modules. Claude original batch is complete after transferred Solitary desktop16 proof; further extras review remains. Source-only cachev117; module-specific validation remains each owner's responsibility. Glulx last; no overall completion or new APK claim. Additional checked-list audit reopened 18 demonstrated extras: Codex owns eleven and Claude seven; Codex eleven now verified and checked. Claude continues separate prior-Grok rows. Shared fixes cover exact rank clauses, qualitative diagnoses, bracketed no-score replies, carry-only fulfillment with an open notice, and consuming already printed replies before timeout. Stationfall maps its misleading interpreter Turns label to the SCORE-proven Galactic Standard Time; this mapping is executable-owned and contains no current value. Focused109, statistics201 and Equipment108 pass; Solitary desktop first-open/reopen passed16 assertions and is checked. Each owner marks its own rows immediately after proof. Eight further historical rows (Ralph, Sherbet, Risorg, Zork1, Lurking Horror, Inhumane, Time and SpAdventure) now have focused max/rank/health proofs recorded. Pending replies are scanned at 250ms with the same five-second deadline and no extra submission. Lurking Horror required a longer test wait because existing Actionable/WorldModel action graph computation blocks the event loop; that code was left unchanged. Custom forms cover completion, quota, killed adventurers, MULE report and casualty/cycle metrics; Claude owns facts and remaining live proofs. Relative chronology stays authored text, never an invented year.
+
+Verified Z controls: Moonglow and Cat's Eye need no runtime changes. Guss's Death and Deja Vu recover missing SCORE maximum/rank through executable-authenticated, lexical-owner-checked forms; command bound provenance survives numerator-only grid refresh and is cleared on restore/load. Treasures retains deterministic HP/quest and adds measured SCORE plus PROWESS for damage interval and hit odds; intervals render as lower to upper, never as current/maximum. Reopen refreshes command-owned fields; exact reply ownership preserves mixed story events by leaving unproven spans visible. Runtime owner js/StatTracker.js; cache v113; shared stats201 and focused relationship/ownership14 pass. Module-specific hashes/live results remain in the checklist. Parallel batches, claims, mailbox receipts and serialized checklist handoff follow work/status-audit/bus-schedule.md (bus1112/1113). Remaining Glulx modules are deferred until last per operator instruction.
 
 **Build 55 display integration (D201/Grok #1003):** Inventory labels remain a view over structural identity. Uniquely matched observed single-word aliases can replace parser-vocabulary fallback names, never a structural printed name. The live ZVM dictionary encoder supplies display-only encoded-word equivalence for alphabet shifts and truncation; fallback engines retain existing equivalence. Observed contiguous phrase ownership is required; shared aliases do not bind one sibling. No command reference, object ID, learning gate or room identity changes. First-open silent inventory collection is part of the live Tolti-Aph label test.
 
@@ -3633,6 +3719,7 @@ radials or directional UI. Plan authority: D205 (#1015 F1–F5 folded).
 
 **Agreed statistics extension (#1022-1024).** StatTracker alone owns condition readings (candidate/confirmed/cleared/unknown), exact provenance and epoch/generation invalidation. Explicit status flags and command-owned DIAGNOSE assertions confirm; narration asserts candidates, explicit negative/cure evidence clears, and stale evidence cannot override fresher facts. No TTL promotion. Render confirmed conditions inside the existing Status strip and Wins from the existing counter. EquipmentUI consumes per-item value/weight only through a StatTracker locator proven by explicit item-owned observations and two distinct value transitions with a unique individual-property match. Aggregate equality is not per-item proof; computed/routine-like, ambiguous or contradicted slots produce no row metric. Restore invalidates readings, retains learned locators and re-reads current RAM. D174 aggregate fallback, D204 required serial fulfillment and StatusGridDecoder ownership are unchanged. Authorization is not product/test acceptance; no APK or Glulx expansion.
 
+<a id="ar-s095" data-chapter-id="ar-s095"></a><a id="ar-ch70"></a>
 ## 70. Learned words display and shared-copy repairs (2026-10-04)
 
 Operator implementation authorization follows Grok #1083 design agreement. See the
@@ -3669,6 +3756,7 @@ vocabulary rendering uses the same scoped observed row as Actionable marks, with
 changing physical membership or calibration. Nested copies use normal container retrieval.
 
 
+<a id="ar-s096" data-chapter-id="ar-s096"></a>
 ## Observed item descriptor precedence - regression correction (2026-10-04)
 
 The shared-name amendment permits identical copies to share observed labels; it does not authorize replacing an already-observed structural descriptor with a generic synonym. Actionable remains the sole observed label selector. Rank contiguous observed matches by: the object's structural printed name (or a uniquely owned descriptor phrase containing that name), then other uniquely owned phrases, then shared fallback phrases. Length breaks ties only within the same rank. Parser-vocabulary fallback names still recover full observed phrases, including shared pellets; single-word encoded spelling recovery and punctuation/word boundaries remain. No hidden alias becomes a descriptor, and no display rank proves unique parser ownership. observedPhraseFor(requireUnique=true), physical IDs, containment, descriptor command qualifiers, native ambiguity, learning and resync retain their existing gates. Equipment continues using this selector, not a separate naming implementation.
@@ -3676,3 +3764,121 @@ The shared-name amendment permits identical copies to share observed labels; it 
 Before runtime edits, reviewed D141/D146/D150 and D201 descriptor contract, Build 55 display integration, shared-name amendment and commits a53709c/8983d55/2637df8. The same notes fixture is correct before 2637df8 and wrong from 2637df8 through 1d68f55. Required combined gate: differently described notes sharing generic aliases and identical pellets, source-order independence, unique descriptor expansion, hidden descriptor/punctuation negatives, real inventory rendering and radial/parser-reference identity.
 
 Readable command regression gate: retain 62e9195 dictionary-equivalent head selection and 1d68f55 scoped observed-row synthesis. Verify real scrawled-note Examine output and pellet Put target submenu retain full spelling, alongside existing distinct-target and ambiguous-source tests. Label precedence does not bypass parser ownership or turn/learning gates.
+
+<a id="ar-s097" data-chapter-id="ar-s097"></a><a id="ar-ch71"></a>
+## 71. Status probes, time games and the score alias (D207-D209)
+
+Owner: js/StatTracker.js. Contracts: [D207](PRODUCTION_PLAN.md#pl-d207),
+[D208](PRODUCTION_PLAN.md#pl-d208), [D209](PRODUCTION_PLAN.md#pl-d209).
+
+```mermaid
+flowchart TD
+  SUB[probe Submit] --> OWN[beginProbeOwnership origin verb/fact]
+  OWN --> HIDE[every inserted line hidden pl-stat-probe aria-hidden]
+  HIDE --> END[endProbeOwnership at next prompt / finishProbe / Resync]
+  END --> REL{releaseProbeEvents}
+  REL -->|echo + reply / META| KEEP[stay hidden]
+  REL -->|other paragraph| EVT[revealed data-pl-probe-event and read aloud]
+  HDR[header flags1 bit1 time flag] --> CLK[status pair is a clock: observed.time]
+  CLK --> NOS[statusScoreRejected -> needsScoreProbe]
+  SR[applyScoreReply / confirmed globals / score delta] --> FRESH[_scoreFreshTick]
+  OBS[_observedTick status metrics] --> UA[updateScoreAlias end of Tick]
+  FRESH --> UA
+  UA -->|2 distinct fresh matches, max = SCORE-reply max, single non-canonical| EV[_aliasEv]
+  EV --> DA{displayScoreAlias per render: values and max equal now}
+  MF[Executable-authenticated scoreAliasField, no numeric readings] --> DA
+  DA -->|yes| ONE[one row: key score, story label, rank]
+  DA -->|no| TWO[both rows]
+```
+
+- Reply regexes decide only what is LEARNED, never what is shown (D207).
+- `_aliasEv` is cleared by a fresh contradiction, a max mismatch, Resync and reset. An
+  experience delta (scoreMetricKey) never stamps score freshness (D209).
+- October 7 restored-state correction: an authenticated measured semantic relationship
+  may merge the first confirmed current pair. It survives restore as executable metadata;
+  readings remain invalidated. Noncanonical string field, confirmation, SCORE-reply max
+  provenance, current value/max agreement and rank preservation are still required.
+  Invalid declarations/disagreements stay split. Unknown executables retain two-distinct
+  discovery. No extra commands, title dispatch or numeric persistence is introduced.
+
+<a id="ar-s098" data-chapter-id="ar-s098"></a><a id="ar-ch72"></a>
+## 72. Hold selection ownership, voice input lifecycle and speech (D210-D212)
+
+Contracts: [D210](PRODUCTION_PLAN.md#pl-d210), [D211](PRODUCTION_PLAN.md#pl-d211),
+[D212](PRODUCTION_PLAN.md#pl-d212).
+
+**Hold selection (D210).** Each owner (Actionable underline, Map note-hold, DirectionalRadial,
+EquipmentUI, CharKeys, Input line field and Send) drives one press state through
+`Actionable.beginHoldSelection` -> `fireHoldSelection` -> `endHoldSelection`:
+
+- `pl-hold-active` and the `selectstart`/`contextmenu` capture guard apply to the held target
+  only;
+- the fire removes only selection ranges touching the target;
+- suppression lasts until release or cancel, a pre-fire move, or the target leaving the DOM.
+
+A focused, keyboard-open line field is never held (D105).
+
+**Voice input (D211).**
+
+October 8 continuation implementation is independently accepted1841/1864. Existing D211 mic gates and D104/D108 narration semantics stay authoritative. DOM memoization belongs to one revision owner, tracks class/aria-hidden and same-task mutations, and invalidates on window replacement; line facts are recomputed from current elements, never inferred from unchanged lengths. All existing resync/tick order remains. Native TTS cancellation must retire each outstanding PluginCall exactly once rather than clearing callbacks, so both Java and Capacitor bridge retention are bounded. Claude owns DOM changes; Codex owns native TTS and diagnostics. These measured code defects do not prove the operator's phone-service slowdown cause. Native callback repair is implemented and independently accepted1841: exact plugin8.0.2/source-hash guard, ConcurrentHashMap terminal remove, onStop and queue-flush/error/null retirement, durable Gradle pre-compile hook. Focused extracted Java/actual JS cancellation tests pass and affected full Java compilation succeeds. Pending/max/complete/cancel-or-failed counts are exposed in existing diagnostics. DOM C1/C2/S1/S2 independent18/0 check passes; current text, hidden/style releases, out-of-root text and same-length rewrites remain live. P3/P4 final independent render10/0 passes: unchanged rows/conditions/Identify stay untouched, native changed values and hints render, aliased score badges expire from model-owned state. Actual burdened Treasures saves independently pass1857. Corresponding-source allowlist includes the durable native repair tools; unknown source fails the Android build. APK62/versionCode35 is the operator-requested cutoff before new World Map implementation; physical-phone causal confirmation remains a separate device check.
+
+APK62 / Android versionCode35 / cache139: build succeeded; v2 signature verified;455 asset/source byte matches. ParchLock-build62.apk is84230463 bytes, SHA256479b5e438bc8fce678106c53168979f5f05d4de553d15ca956e24e1d031892d7. Source archive SHA2567809ac1c9fe3b1f33cf26757b681da33efc343ff62b7365af333b94491e22333 includes durable native TTS repair tools. Delivered before any new World Map implementation; consensus/freeze1841/1857/1864/1866, verification1869.
+
+
+```mermaid
+sequenceDiagram
+  participant U as Player
+  participant M as Input.Mic
+  participant R as ReadAloud
+  participant P as Recognizer (native plugin / Web Speech)
+  U->>M: press (ignored while active/finalizing; tap-mode second tap = release)
+  M->>R: stop() (new recording only) -- race 600ms
+  M->>M: whenIdle(prev): settle <=2500ms; native abandon / web abort then fail-closed +1000ms
+  M->>M: ensure() permission (cached)
+  loop hold
+    M->>P: start() -> track(): startedAt, live
+    P-->>M: start promise settles (real end; stop() never awaited)
+    M->>M: quick empty (<1s) x3 -> backoff-stop
+  end
+  U->>M: release -> stop fired, 4s forced commit
+  M->>M: commit: epoch++, insert or Actionable.Submit (D167)
+  M->>R: resumeAfterMic (every outcome)
+```
+
+- ReadAloud: `speak` defers to `_micDeferredSpeech` while the mic is busy. A delayed native
+  speak is dropped if its generation is stale or the mic is busy. `flush` returns before
+  collecting while the mic is busy.
+- Diagnostics: the `Mic.diag` ring of 50 holds metadata only (session, build,
+  press/tts-wait/ensure/start/settle/release/commit) and is exported with `/micdiag`.
+
+**Pronunciation (D212).** `ReadAloud.applyPronunciations` delegates to
+`PronunciationCatalog.apply`. Plain-text respellings work for both Android TTS and Web Speech.
+The anchor fallback applies only if the catalogue failed to load.
+
+<a id="ar-s099" data-chapter-id="ar-s099"></a><a id="ar-ch73"></a>
+## 73. In-room steps and combat actions (D213)
+
+Contract: [D213](PRODUCTION_PLAN.md#pl-d213), which amends D163.
+
+```mermaid
+flowchart TD
+  TICK[MapTopology.tick -> applyStateDelta] --> SAME{room id unchanged?}
+  SAME -->|no| EDGE[normal state-delta edge D140/D162]
+  SAME -->|yes| PAR{playerParentId changed, both known, one side not the room?}
+  PAR -->|no| NONE[record nothing: banner/status change is not movement]
+  PAR -->|yes| FORM{original D163 command gate: isNonTravelCommand}
+  FORM -->|no| NONE
+  FORM -->|yes| SUB[ExitMeta subLocation hinted, evidence containment]
+  LOAD[ParchLockMap.Load / WorkspaceUI.LoadMap / ImportPackageData] --> Q[quarantineUnprovenSubSteps: ExitMeta -> UnprovenSubSteps]
+  SUB --> CLR[clear matching UnprovenSubSteps record]
+```
+
+- `playerParentId` reads `ZRamReader.objectLinks` for the corrected player through
+  `ZRamProvider.getMem`. A bounded ancestor walk must reach the room; anything else is null,
+  which fails closed.
+- `prevPlayerParent` is stored with its room id, so the existing `prevRoomId` resets cover it.
+- Combat (Part B, agreed, not yet built) has three owners:
+  - GrammarProvider: a validated GV1/GV2 decoder giving `elementaryObjectForm('attack')`;
+  - StatTracker: current-Tick actor-labelled health, which needs the status-row ownership fix;
+  - ActionSynth/AttrCalibrator: a `combat` verb learned through the existing allowed-verb
+    thresholds.

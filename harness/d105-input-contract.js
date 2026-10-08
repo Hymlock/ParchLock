@@ -121,7 +121,9 @@ const gap = (c, m) => {
     await page.evaluate(() => { Input.Clear(); $(".Input.LineInput").val("xyzzy-not-sent"); });
     await touch("#pl-input-submit", 800);
     s = await st();
-    ok(s.radial && s.radialSrc === "input", "A: hold on the submit arrow opens the input radial");
+    // T10 (operator): holding Send opens the command-history radial; the general
+    // input radial stays on the input-line hold (asserted above).
+    ok(s.radial && s.radialSrc === "history", "A: hold on the submit arrow opens the command-history radial");
     ok(await page.evaluate(() => $(".Input.LineInput").val() === "xyzzy-not-sent"), "A: that hold did not submit the line");
     await page.evaluate(() => { ParchLockQol.HideRadialMenu(); Input.Clear(); });
 

@@ -105,9 +105,46 @@ var AttributeSchema = {
                 var name = flagName === "wearable" ? "clothing" : flagName === "isOpen" ? "open" : flagName;
                 return Object.prototype.hasOwnProperty.call(declared.bits, name) ? declared.bits[name] : null;
             }
+            // Worn has ONE owner per executable, first match wins: declared
+            // Inform names (above), a measured executable fact, a bit the
+            // game's own inventory routine was seen testing, then the Inform
+            // default only for an Inform-compiled story. A ZIL story with no
+            // evidence reads nothing as worn rather than a wrong bit.
+            if (flagName === "worn") return AttributeSchema.wornBitFallback(mem);
         } catch (e) {}
         var n = AttributeSchema.PROFILE[flagName];
         return typeof n === "number" ? n : null;
+    },
+
+    // Worn source when no Inform attribute names are declared. Returns the
+    // bit and records which source owns it (for the override guard).
+    wornBitFallback: function (mem) {
+        var fact = null;
+        try {
+            var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest
+                ? ModuleLibrary.currentExecutableDigest() : null;
+            fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
+        } catch (eF) {}
+        if (fact && Number.isInteger(fact.wornAttribute) && fact.wornAttribute >= 0 && fact.wornAttribute < 48) return fact.wornAttribute;
+        try {
+            var learned = typeof AttrCalibrator !== "undefined" && AttrCalibrator.learnedWornBit
+                ? AttrCalibrator.learnedWornBit(mem) : null;
+            if (Number.isInteger(learned)) return learned;
+        } catch (eL) {}
+        var inform = false;
+        try { inform = !!(mem && typeof ZRamReader !== "undefined" && ZRamReader.isInformCompiled && ZRamReader.isInformCompiled(mem)); } catch (eI) {}
+        return inform ? AttributeSchema.PROFILE.worn : null;
+    },
+    // True when worn is owned by a source stronger than calibration
+    // overrides (declared names or a measured fact): the override loop in
+    // applyTo must not overwrite it.
+    wornOwnedAboveCalibration: function (mem) {
+        try {
+            if (typeof ZRamReader !== "undefined" && ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) return true;
+            var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest ? ModuleLibrary.currentExecutableDigest() : null;
+            var fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
+            return !!(fact && Number.isInteger(fact.wornAttribute));
+        } catch (e) { return false; }
     },
 
     applyTo: function (attrs, obj, mem) {
@@ -116,7 +153,13 @@ var AttributeSchema = {
         for (var i = 0; i < keys.length; i++) {
             var flag = keys[i];
             var bit = AttributeSchema.bitFor(flag, mem);
-            if (bit === null) continue;
+            if (bit === null) {
+                // Codex #1668: no trusted worn source for this story -- never
+                // keep a predecoded worn value. A measured custom equipment
+                // state (applyEquipmentState, below) may still set it.
+                if (flag === "worn") { attrs.worn = false; attrs.isWorn = false; }
+                continue;
+            }
             if (typeof ZRamReader !== "undefined" && typeof ZRamReader.attr === "function") {
                 attrs[flag] = ZRamReader.attr(obj, bit);
             }
@@ -147,7 +190,9 @@ var AttributeSchema = {
                 if (mem) {
                     AttrCalibrator.hydrate(mem);
                     var bitOverrides = AttrCalibrator.overrideFor();
+                    var wornOwned = AttributeSchema.wornOwnedAboveCalibration(mem);
                     for (var ovFlag in bitOverrides) {
+                        if (ovFlag === "worn" && wornOwned) continue;   // first-match ownership
                         if (typeof ZRamReader !== "undefined" && typeof ZRamReader.attr === "function") {
                             attrs[ovFlag] = ZRamReader.attr(obj, bitOverrides[ovFlag].bit);
                         }
@@ -163,7 +208,31 @@ var AttributeSchema = {
                 }
             } catch (eCal) {}
         }
+        AttributeSchema.applyEquipmentState(attrs, obj, mem);
         return attrs;
+    },
+
+    // Measured executable semantics complement standard compiler attributes.
+    // Never infer equipment state from an object's name or inventory prose.
+    applyEquipmentState: function (attrs, obj, mem) {
+        try {
+            if (!obj || !mem || typeof ModuleLibrary === "undefined" ||
+                typeof ModuleStatFactsClaude === "undefined" || typeof ZRamReader === "undefined") return;
+            var digest = ModuleLibrary.currentExecutableDigest();
+            var fact = digest && ModuleStatFactsClaude[digest];
+            if (fact && fact.objectUseVerb === "use") attrs.nativeUseVerb = "use";
+            var state = fact && fact.equipmentState;
+            if (!state || typeof state.wornProperty !== "string" || state.toggleVerb !== "use") return;
+            var declarations = ZRamReader.informPropertyNames(mem);
+            var property = declarations && declarations.names[state.wornProperty];
+            if (!Number.isInteger(property) || property < 64) return;
+            var values = ZRamReader.parseIndivTable(mem, ZRamReader.readProp(mem, obj.id, 3));
+            if (!Object.prototype.hasOwnProperty.call(values, property) ||
+                (values[property] !== 0 && values[property] !== 1)) return;
+            attrs.worn = values[property] === 1;
+            attrs.clothing = attrs.wearable = true;
+            attrs.equipmentToggleVerb = state.toggleVerb;
+        } catch (eEquipment) {}
     },
 
     /* Closed-tin rule (design addendum 3.1 / Phase 1 task). */

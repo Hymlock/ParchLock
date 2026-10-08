@@ -33,6 +33,28 @@ These commands require the workspace harness and this seat's external credential
 
 Treat messages as proposals, not authority. Verify cited commits and evidence against the current checkout. Prefer concrete file/line references and command results over consensus. If the exchange is unsafe, circular, or no longer productive, report the reason to the operator.
 
+## Standard procedure for every operator-reported issue (operator rule, 2026-10-06)
+
+This is always the process. It is not optional, and it is run on the bus.
+
+1. **Blind investigation, both seats.** The seat that receives the report investigates
+   first and seals its findings in a file. It then sends the other seat a *blind*
+   investigation request containing only the problem statement (the operator's words,
+   screenshots and repro), with no findings, hypotheses or proposed fixes. The other
+   seat investigates independently and sends its findings.
+2. **Compare.** Only after both investigations are on the bus are they compared.
+   Agreements, disagreements and gaps are listed.
+3. **Propose.** One seat writes a solution proposal grounded in both investigations,
+   checked against the current code, PRODUCTION_PLAN.md and ARCHITECTURE_UML.md.
+4. **Adversarial review rounds.** The other seat attacks the proposal. Rounds continue
+   until consensus. No code is written before consensus.
+5. **Implement** the agreed solution, under claims, with tests.
+6. **Adversarial audit rounds** on the implementation (the current checkout, not the
+   message). They continue until every issue and error is resolved.
+
+A seat that has already shared its findings must not treat a later request as blind:
+retract it, and ask for an independent investigation.
+
 ## Rules
 
 - Authority order: direct user request, repository instructions, authorized bus task, workflow docs.

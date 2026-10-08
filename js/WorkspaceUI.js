@@ -15,9 +15,9 @@ var WorkspaceUI = {
             ["Mapping", "Scroll over the map to zoom and drag to pan. Path lines connect the displayed room to known exits; these indicate discovered connections, not physical distances. Center returns to your current room and resets zoom. Search filters known rooms. Click a room to inspect its local connections; use its travel control to navigate. /map toggles the map. /goto room; travels, /see room; centers a room, and /see me; returns to your location. Dialogs retract the map temporarily and restore its previous state when closed."],
             ["Map files", "Maps opens named map saves for this story. Save map stores a named snapshot in this browser; Load restores one, and Delete removes it. Download map exports reloadable JSON; Load file imports that JSON or the map from a compatible save package. Text export and /export-map produce a readable map report. Map saves contain rooms, paths and notes, not the game's current position. The working map also saves automatically in this browser."],
             ["Game saves and exit", "Save and Restore run the game's native save commands. Save files opens browser saves and portable packages containing saves plus the map. Download Package exports JSON; Save Package As offers a file-location picker where supported, otherwise a browser download. Import File or Paste Import restores a package for this story. Browser saves can be lost when browser data is cleared; downloads provide a separate backup. Preview Data in the native save editor displays file contents, not a disk path. Menu > Exit game and /quit warn about unsaved progress and offer Save game first; after saving, choose Exit again. When a story stops on its own (for example after in-game QUIT), ParchLock offers Return to library, Restart story, or Keep viewing the transcript."],
-            ["Notes, display and options", "/note text; adds a note to the current room. /notes shows its notes; /room-notes room; shows another room's notes. /clear notes clears current-room notes, and /clear map resets the working map. /display adjusts font size and spacing; /theme switches color theme. Options controls map animation, startup help, assumed return paths, speech, and tutorial replay. /history opens command history; /commands opens the command palette; /transcript opens a readable transcript with copy/download. /help opens this reference."]
+            ["Notes, display and options", "/note text; adds a note to the current room. /notes shows its notes; /room-notes room; shows another room's notes. /clear notes clears current-room notes, and /clear map resets the working map. /display adjusts font size and spacing; /theme switches color theme. Options controls startup help, assumed return paths, speech, and tutorial replay. /history opens command history; /commands opens the command palette; /transcript opens a readable transcript with copy/download. /help opens this reference."]
         ];
-        Message.Show("ParchLock Help", sections.map(section => "<h3>" + section[0] + "</h3><p>" + section[1] + "</p>").join(""), true);
+        Message.Show("ParchLock Help", "<div class='pl-tool-content'>" + sections.map(section => "<details class='pl-help-section'><summary>" + section[0] + "</summary><p>" + section[1] + "</p></details>").join("") + "</div>", true);
     },
     OpenTools: () => {
         var mobile = !!(document.body && document.body.classList.contains("pl-mobile"));
@@ -115,23 +115,25 @@ var WorkspaceUI = {
     },
     ShowOptions: () => {
         Message.Show("Game options", "<div id='game-options'></div>", true);
+        $("<p class='pl-options-intro'>").text("Make yourself at home. Your choices are saved automatically.").appendTo("#game-options");
         var groups = {};
-        function group(label) {
+        function group(label, description) {
             var details = $("<details class='pl-options-group'>").appendTo("#game-options");
-            $("<summary>").text(label).on("keydown", function(e) {
+            var summary = $("<summary>").on("keydown", function(e) {
                 if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); if (!e.repeat) details[0].open = !details[0].open; }
             }).appendTo(details);
+            $("<span class='pl-options-heading'>").text(label).appendTo(summary);
+            $("<span class='pl-options-description'>").text(description).appendTo(summary);
             return details;
         }
-        groups.help = group("Help at startup");
-        groups.map = group("Map animation");
-        groups.mic = group("Hold mic to talk (off = tap to toggle)");
-        groups.scroll = group("Scroll new story text to the top (off = ordinary scrolling)");
-        groups.speech = group("Read aloud new story text");
-        groups.interface = group("Interface & Accessibility");
-        groups.learned = group("Edit Learned Words");
+        groups.help = group("Getting started", "Help when a story begins");
+        groups.map = group("Mapping", "Assumed return paths between rooms");
+        groups.mic = group("Voice input", "Hold to talk and automatic sending");
+        groups.scroll = group("Story scrolling", "Keep new passages in view");
+        groups.speech = group("Read aloud", "Narration, speech rate and repeats");
+        groups.interface = group("Accessibility & controls", "Notes, directions and tutorials");
+        groups.learned = group("Learned words", "Choose the labels shown in your editor");
         [
-            ["Map animation", "MapAnimation", ParchLock.ToggleMapAnim],
             ["Help at startup", "ShowInfoOnStart", ParchLock.ToggleShowInfo],
             ["Assume return paths", "AssumeTwoWayConnections", ParchLock.ToggleMap2Way]
         ].forEach(option => {
@@ -379,6 +381,8 @@ var WorkspaceUI = {
             WorkspaceUI.ValidateMap(data);
             previous = localStorage.getItem(key);
             ParchLockMap.Rooms = JSON.parse(JSON.stringify(data.Map));
+            // D213: unproven in-room steps move to UnprovenSubSteps (never deleted).
+            if (typeof MapTopology !== "undefined" && MapTopology.quarantineUnprovenSubSteps) MapTopology.quarantineUnprovenSubSteps(ParchLockMap.Rooms);
             // D112: the previous Rooms array (and any room record
             // NotesScopeRoomKey pointed at) is gone -- a stale scope would
             // resolve against nothing. Reset to the unscoped all-rooms view.
@@ -403,7 +407,7 @@ var WorkspaceUI = {
         }
     },
     ShowMaps: () => {
-        Message.Show("Maps", "<div class='qol-window-actions'><input id='map-slot-name' aria-label='Map name' placeholder='Map name' maxlength='100'><button id='save-map-slot'>Save map</button><button id='download-map-json'>Download map</button><button id='load-map-file'>Load file</button><button id='download-map-text'>Text export</button></div><input id='map-file' type='file' accept='.json,application/json' hidden><div id='map-slots'></div><p id='map-storage-status' role='status'></p>", true);
+        Message.Show("Maps", "<div class='qol-window-actions'><label class='pl-map-name-field'>Map name<input id='map-slot-name' aria-label='Map name' placeholder='Name this map' maxlength='100'></label><button id='save-map-slot'>Save map</button><button id='download-map-json'>Download map</button><button id='load-map-file'>Load file</button><button id='download-map-text'>Text export</button></div><input id='map-file' type='file' accept='.json,application/json' hidden><div id='map-slots'></div><p id='map-storage-status' role='status'></p>", true);
         var slots = WorkspaceUI.ReadSlots();
         if (!slots.length) $("#map-slots").text("No named maps saved for this story.");
         slots.forEach((slot, index) => {
@@ -411,7 +415,7 @@ var WorkspaceUI = {
             $("<strong>").text(slot.Name).appendTo(row);
             $("<span>").text(new Date(slot.Date).toLocaleString()).appendTo(row);
             $("<button>").text("Load").appendTo(row).click(() => WorkspaceUI.LoadMap(slot.Data));
-            $("<button>").text("Download").appendTo(row).click(() => ParchLockQol.DownloadText(ParchLockQol.GetSafeFilename("map") + ".json", JSON.stringify(slot.Data, null, 2)));
+            $("<button>").text("Download").appendTo(row).click(() => ParchLockQol.DownloadText(ParchLockQol.ExportFilename("Map", slot.Name, "json"), JSON.stringify(slot.Data, null, 2)));
             $("<button>").text("Delete").appendTo(row).click(() => {
                 if (!confirm("Delete saved map \"" + slot.Name + "\"?")) return;
                 slots.splice(index, 1); localStorage.setItem(WorkspaceUI.MapKey(), JSON.stringify(slots)); WorkspaceUI.ShowMaps();
@@ -427,7 +431,7 @@ var WorkspaceUI = {
             try { localStorage.setItem(WorkspaceUI.MapKey(), JSON.stringify(slots)); WorkspaceUI.ShowMaps(); $("#map-storage-status").text("Map saved."); }
             catch (error) { $("#map-storage-status").text(error.message); }
         });
-        $("#download-map-json").click(() => ParchLockQol.DownloadText(ParchLockQol.GetSafeFilename("map") + ".json", JSON.stringify(WorkspaceUI.MapData(), null, 2)));
+        $("#download-map-json").click(() => ParchLockQol.DownloadText(ParchLockQol.ExportFilename("Map", undefined, "json"), JSON.stringify(WorkspaceUI.MapData(), null, 2)));
         $("#download-map-text").click(ParchLockMap.ExportMap);
         $("#load-map-file").click(() => $("#map-file").click());
         $("#map-file").change(async function() {

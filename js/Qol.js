@@ -20,6 +20,8 @@ var ParchLockQol = {
         $("#save-manager").click(ParchLockQol.ShowSaveManager);
         $("<button>").text("Items").attr("title", "Inventory actions").appendTo("#control-panel").click(Actionable.ShowInventory);
         $(document).on("contextmenu", ".Input.LineInput", ParchLockQol.ShowRadialMenu);
+        // T10: desktop right-click on Send opens the command history.
+        $(document).on("contextmenu", "#pl-input-submit", ParchLockQol.ShowHistoryRadial);
         $(document).on("mousedown keydown scroll", ParchLockQol.HideRadialMenu);
         $("#radial-menu").on("mousedown", function(e) { e.stopPropagation(); });
         ParchLockQol.UpdateIndicators();
@@ -193,8 +195,8 @@ var ParchLockQol = {
     },
 
     SavePackageAs: async () => {
-        var filename = ParchLockQol.GetSafeFilename("save-package") + ".json";
-        var data = ParchLock.GetSaveData();
+        var filename = ParchLockQol.ExportFilename("Save package", undefined, "json");
+        var data = await ParchLockQol.PackageWithTranscripts(ParchLock.GetSaveData());
         if (!window.showSaveFilePicker) { ParchLockQol.DownloadText(filename, data); return; }
         try {
             var handle = await window.showSaveFilePicker({ suggestedName: filename, types: [{ description: "ParchLock save package", accept: { "application/json": [".json"] } }] });
@@ -204,6 +206,17 @@ var ParchLockQol = {
         } catch (error) {
             if (error.name !== "AbortError") Message.Show("Save failed", ParchLockQol.EscapeHtml(error.message), true);
         }
+    },
+
+    // E4: a package carries the transcript token and lines of each save in it.
+    // Packages without transcripts (and older packages) are unchanged.
+    PackageWithTranscripts: (json) => {
+        try {
+            if (typeof Transcript === "undefined" || !Transcript.exportFor) return Promise.resolve(json);
+            var data = JSON.parse(json);
+            var names = (data.Save || []).map(s => String(s && s.Key || "")).filter(k => /^dirent:save:/.test(k)).map(k => k.split(":").slice(3).join(":"));
+            return Transcript.exportFor(names).then(t => { if (t) data.Transcripts = t; return JSON.stringify(data); }, () => json);
+        } catch (e) { return Promise.resolve(json); }
     },
 
     CopyText: (text, successMessage) => {
@@ -224,13 +237,18 @@ var ParchLockQol = {
 
     ShowCopyFallback: (text) => {
 
-        Message.Show("Copy", "<textarea id='copy-box' readonly></textarea>", true);
+        Message.Show("Copy", "<div class='pl-tool-content'><textarea id='copy-box' aria-label='Text to copy' readonly></textarea></div>", true);
         $("#copy-box").val(text).focus().select();
     },
 
+    // E4: the running transcript for this line of play (js/Transcript.js),
+    // falling back to the on-screen text only when nothing is stored yet.
     ShowTranscript: () => {
-
-        var text = ParchLockQol.GetTranscriptText();
+        var stored = (typeof Transcript !== "undefined" && Transcript.getText) ? Transcript.getText() : Promise.resolve(null);
+        stored.then(function (text) { ParchLockQol.ShowTranscriptText(text || ParchLockQol.GetTranscriptText()); },
+            function () { ParchLockQol.ShowTranscriptText(ParchLockQol.GetTranscriptText()); });
+    },
+    ShowTranscriptText: (text) => {
         var body = "";
         var lineCount = text.split("\n").length;
 
@@ -239,22 +257,43 @@ var ParchLockQol = {
         body += "<button id='copy-transcript'>Copy</button>";
         body += "<button id='download-transcript'>Download</button>";
         body += "</div>";
-        body += "<textarea id='transcript-box' class='qol-large-text' readonly></textarea>";
+        body += "<textarea id='transcript-box' aria-label='Story transcript' class='qol-large-text' readonly></textarea>";
 
-        Message.Show("Transcript", body, true);
+        Message.Show("Transcript", "<div class='pl-tool-content'>" + body + "</div>", true);
 
         $("#transcript-box").val(text);
         $("#copy-transcript").click(() => ParchLockQol.CopyText(text, "Transcript copied to clipboard."));
-        $("#download-transcript").click(() => ParchLockQol.DownloadText(ParchLockQol.GetSafeFilename("transcript") + ".txt", text));
+        $("#download-transcript").click(() => ParchLockQol.DownloadText(ParchLockQol.ExportFilename("Transcript", (typeof Transcript !== "undefined" && Transcript.currentSaveLabel) || undefined, "txt"), text));
+    },
+
+    // T10 (operator): every command the player SENDS, however it was sent
+    // (typed, radial, map, menu, voice, repeat), newest first. Recorded at the
+    // submission choke points (Input.Inject, Enter); status probes excluded there.
+    _sent: [],
+    RecordSent: (command) => {
+        var c = ParchLockQol.NormalizeText(String(command || ""));
+        if (!c) return;
+        var key = c.toLowerCase();
+        ParchLockQol._sent = [c].concat(ParchLockQol._sent.filter(function (x) { return x.toLowerCase() !== key; })).slice(0, 30);
     },
 
     GetHistory: () => {
 
         var seen = {};
         var history = [];
+        // Commands sent this session come first, in the order sent.
+        ParchLockQol._sent.forEach(function (c) {
+            if (seen[c.toLowerCase()]) return;
+            seen[c.toLowerCase()] = true;
+            history.push(c);
+        });
 
         $($(".Style_input").get().reverse()).each(function() {
 
+            // T10/D207: only what the player actually submitted. A hidden
+            // status probe's echo is excluded by its ownership, never by its
+            // verb, so a typed "score" still counts.
+            if (this.closest && this.closest(".pl-stat-probe, .pl-carry-probe")) return;
             var command = ParchLockQol.NormalizeText($(this).text());
             if (!command || seen[command.toLowerCase()]) return;
 
@@ -263,6 +302,37 @@ var ParchLockQol = {
         });
 
         return history.slice(0, 30);
+    },
+
+    // T10: a readable radial label. Keeps the start (the verb), cuts at a word
+    // boundary and marks the cut; a single overlong word is hard-cut. Only the
+    // label is shortened -- the full command is what gets submitted.
+    HistoryLabel: (command, max) => {
+        var text = String(command || "").replace(/\s+/g, " ").trim();
+        max = max || 22;
+        if (text.length <= max) return text;
+        var room = text.slice(0, max - 1);
+        var space = room.lastIndexOf(" ");
+        var cut = space > 0 ? room.slice(0, space) : room;
+        return cut.replace(/[\s,.;:]+$/, "") + "…";
+    },
+
+    // T10: the Submit button's hold radial -- the player's own recent
+    // commands, newest first. Choosing one submits it (Enter: true routes
+    // through Actionable.Submit, the single submission path).
+    GetHistoryRadialCommands: () => {
+        // Every remembered command; the radial pages the rest behind "More...".
+        var items = ParchLockQol.GetHistory().map(function (command) {
+            return { Label: ParchLockQol.HistoryLabel(command, 22), Command: command, Enter: true, source: "history" };
+        });
+        if (!items.length) items.push({ Label: "No commands yet", Action: function () {} });
+        return items;
+    },
+
+    ShowHistoryRadial: (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        ParchLockQol.OpenRadial(e.clientX, e.clientY, ParchLockQol.GetHistoryRadialCommands(), { source: "history" });
     },
 
     ShowHistory: () => {
@@ -283,7 +353,7 @@ var ParchLockQol = {
             body += "</div>";
         }
 
-        Message.Show("Command History", body, true);
+        Message.Show("Command History", "<div class='pl-tool-content'>" + body + "</div>", true);
         $(".qol-command").click(function() {
             Message.Hide();
             Input.Clear();
@@ -305,7 +375,7 @@ var ParchLockQol = {
         body += "<h3>Map</h3>";
         body += ParchLockQol.BuildMapCommandButtons();
 
-        Message.Show("Commands", body, true);
+        Message.Show("Commands", "<div class='pl-tool-content'>" + body + "</div>", true);
         $(".qol-command").click(function() {
             var command = $(this).data("command");
             var hitEnter = $(this).data("enter") === true || $(this).data("enter") === "true";
@@ -346,11 +416,11 @@ var ParchLockQol = {
 
         var body = "";
 
-        body += "<div class='qol-display-row'><span>Text size</span><button id='font-smaller'>-</button><strong id='font-size-value'></strong><button id='font-larger'>+</button></div>";
-        body += "<div class='qol-display-row'><span>Line spacing</span><button id='line-tighter'>-</button><strong id='line-height-value'></strong><button id='line-looser'>+</button></div>";
+        body += "<div class='qol-display-row'><span>Text size</span><button id='font-smaller' aria-label='Decrease text size'>-</button><strong id='font-size-value'></strong><button id='font-larger' aria-label='Increase text size'>+</button></div>";
+        body += "<div class='qol-display-row'><span>Line spacing</span><button id='line-tighter' aria-label='Decrease line spacing'>-</button><strong id='line-height-value'></strong><button id='line-looser' aria-label='Increase line spacing'>+</button></div>";
         body += "<p><button id='display-reset'>Reset Display</button></p>";
 
-        Message.Show("Display", body, true);
+        Message.Show("Display", "<div class='pl-tool-content'>" + body + "</div>", true);
 
         var refresh = () => {
             $("#font-size-value").text(Global.Prefs.FontSize + "px");
@@ -407,13 +477,13 @@ var ParchLockQol = {
 
         body += "</div>";
 
-        Message.Show("Save / Restore", body, true);
+        Message.Show("Save / Restore", "<div class='pl-tool-content'>" + body + "</div>", true);
 
         $("#native-save").click(() => { Message.Hide(); Input.Clear(); Input.Inject("save", true); });
         $("#native-restore").click(() => { Message.Hide(); Input.Clear(); Input.Inject("restore", true); });
-        $("#download-package").click(() => ParchLockQol.DownloadText(ParchLockQol.GetSafeFilename("save-package") + ".json", ParchLock.GetSaveData()));
+        $("#download-package").click(() => { var name = ParchLockQol.ExportFilename("Save package", undefined, "json"); ParchLockQol.PackageWithTranscripts(ParchLock.GetSaveData()).then(data => ParchLockQol.DownloadText(name, data)); });
         $("#save-package-as").click(ParchLockQol.SavePackageAs);
-        $("#copy-package").click(() => ParchLockQol.CopyText(ParchLock.GetSaveData(), "Save package copied to clipboard."));
+        $("#copy-package").click(() => ParchLockQol.PackageWithTranscripts(ParchLock.GetSaveData()).then(data => ParchLockQol.CopyText(data, "Save package copied to clipboard.")));
         $("#import-package-file").click(() => $("#save-package-file").trigger("click"));
         $("#import-package-text").click(ParchLockQol.ShowImportPackageText);
         $("#save-package-file").change(ParchLockQol.ImportPackageFile);
@@ -422,13 +492,17 @@ var ParchLockQol = {
             var key = $(this).data("key");
             var metadataKey = key.replace(/^content:/, "dirent:");
             var data = { Story: ParchLock.GameFilename, Map: ParchLockMap.Rooms, Save: [metadataKey, key].map(k => ({ Key: k, Data: localStorage.getItem(k) })) };
-            ParchLockQol.DownloadText(ParchLockQol.GetSafeFilename("browser-save") + ".json", JSON.stringify(data));
+            // The player's own save name labels the file.
+            var name = ParchLockQol.ExportFilename("Save", String(key).split(":").slice(3).join(":"), "json");
+            ParchLockQol.PackageWithTranscripts(JSON.stringify(data)).then(text => ParchLockQol.DownloadText(name, text));
         });
         $(".delete-save-file").click(function() {
 
             if (!window.confirm("Delete this browser save?")) return;
             localStorage.removeItem($(this).data("dirent"));
             localStorage.removeItem($(this).data("content"));
+            // E4: a deleted save takes its own transcript with it.
+            try { if (typeof Transcript !== "undefined" && Transcript.reconcileSaves) Transcript.reconcileSaves(); } catch (eTx) {}
             ParchLockQol.ShowSaveManager();
         });
     },
@@ -473,10 +547,10 @@ var ParchLockQol = {
     ShowImportPackageText: () => {
 
         var body = "";
-        body += "<textarea id='import-package-box' class='qol-large-text'></textarea>";
+        body += "<textarea id='import-package-box' aria-label='Save package JSON' placeholder='Paste your save package here' class='qol-large-text'></textarea>";
         body += "<p><button id='import-package-submit'>Import Package</button></p>";
 
-        Message.Show("Import Save Package", body, true);
+        Message.Show("Import Save Package", "<div class='pl-tool-content'>" + body + "</div>", true);
         $("#import-package-submit").click(() => ParchLockQol.ImportPackageData($("#import-package-box").val()));
     },
 
@@ -491,6 +565,8 @@ var ParchLockQol = {
             if (!data || !Array.isArray(data.Map) || !Array.isArray(data.Save)) throw new Error("Invalid package");
             if (data.Story && data.Story !== ParchLock.GameFilename) throw new Error("This package belongs to another story");
             WorkspaceUI.ValidateMap(data);
+            // E4: transcript records are validated before anything is changed.
+            if (typeof Transcript !== "undefined" && Transcript.validImport && !Transcript.validImport(data.Transcripts)) throw new Error("Invalid transcript records in this package");
             if (data.Map.some((room, index) => room.Id !== index || Object.values(room.Exits).some(id => !Number.isInteger(id) || id < 0 || id >= data.Map.length))) throw new Error("Invalid room connections");
             if (data.Save.some(entry => !entry || typeof entry.Key !== "string" || typeof entry.Data !== "string" || !/^(dirent|content):(save|data|transcript|command):[^:]+:.+/.test(entry.Key))) throw new Error("Invalid save entries");
             if (data.Save.length && !ParchLock.GameId) throw new Error("Wait for the story identity before importing saves");
@@ -501,7 +577,7 @@ var ParchLockQol = {
 
             // D112: a new Rooms array invalidates any active Notes scope
             // (the previously-scoped room record no longer exists in it).
-            if (data.Map) { ParchLockMap.Rooms = data.Map; ParchLockMap.NotesScopeRoomKey = null; }
+            if (data.Map) { if (typeof MapTopology !== "undefined" && MapTopology.quarantineUnprovenSubSteps) MapTopology.quarantineUnprovenSubSteps(data.Map); ParchLockMap.Rooms = data.Map; ParchLockMap.NotesScopeRoomKey = null; }
             if (data.Save) {
 
                 data.Save.forEach(k => {
@@ -516,6 +592,7 @@ var ParchLockQol = {
             ParchLockMap.ApplyNotesAddButtonPref();
             ParchLockMap.PersistenceBlocked = false;
             ParchLockMap.Save();
+            try { if (typeof Transcript !== "undefined" && Transcript.importRecords && data.Transcripts) Transcript.importRecords(data.Transcripts); } catch (eTx) {}
             Message.Show("Import Complete", "The save package and map data were imported.");
         }
         catch(e) {
@@ -706,30 +783,49 @@ var ParchLockQol = {
         // D110 ranking is not applied to this branch.
         // Tools list only (not Game Menu radial). Close X + hide when .show
         // is removed. Does not alter Game Menu behavior.
-        if (context.source === "tools" && document.body.classList.contains("pl-mobile")) {
+        if (context.source === "tools") {
             menu.empty().addClass("show").attr("aria-hidden", "false").addClass("pl-tools-list");
             $("body").addClass("radial-open");
+            var header = $("<div>").addClass("pl-tools-header").appendTo(menu);
+            $("<h3>").addClass("pl-tools-heading").text("Tools").appendTo(header);
             $("<button>")
                 .addClass("pl-tools-close")
                 .attr({ type: "button", title: "Close", "aria-label": "Close tools" })
                 .text("✕")
-                .appendTo(menu)
+                .appendTo(header)
                 .on("click", function (ev) {
                     ev.preventDefault();
                     ev.stopPropagation();
                     ParchLockQol.HideRadialMenu();
                 });
-            commands.forEach((item) => {
+            var groups = [
+                ["Game & files", ["Save", "Restore", "Save files", "Maps", "Map files", "Modules", "Choose story", "Exit game"]],
+                ["Play & navigation", ["Open map", "Arrow keys", "Items", "Commands"]],
+                ["Your workspace", ["Transcript", "History", "Edit Learned Words"]],
+                ["Preferences", ["Display", "Theme", "Options"]],
+                ["Information", ["Help", "About"]]
+            ];
+            var details = { "Save": "Save in the game", "Restore": "Return to a game save", "Save files": "Back up and import progress", "Maps": "Save and export maps", "Map files": "Save and export maps", "Modules": "Manage your game library", "Items": "Inventory and status", "Transcript": "Read or export your story", "History": "Reuse a recent command", "Edit Learned Words": "Review words and labels", "Display": "Text size and spacing", "Commands": "Browse command shortcuts", "Help": "Controls and guidance", "About": "Credits and documents", "Theme": "Switch light and dark", "Options": "Game and app preferences", "Open map": "Show your discovered rooms", "Arrow keys": "On-screen game controls", "Exit game": "Leave this story", "Choose story": "Open the game library" };
+            var groupedLabels = groups.flatMap(group => group[1]);
+            var otherLabels = commands.filter(item => !groupedLabels.includes(item.Label)).map(item => item.Label);
+            if (otherLabels.length) groups.push(["More tools", otherLabels]);
+            groups.forEach(function (group) {
+                var members = commands.filter(item => group[1].includes(item.Label));
+                if (!members.length) return;
+                $("<div>").addClass("pl-tools-section").text(group[0]).appendTo(menu);
+                members.forEach((item) => {
                 $("<button>")
                     .addClass("radial-command")
-                    .text(item.Label)
+                    .append($("<span>").text(item.Label))
+                    .append($("<span>").addClass("pl-tool-detail").text(details[item.Label] || ""))
                     .attr("title", item.Command)
                     .data("command", item.Command)
                     .data("enter", item.Enter)
                     .data("action", item.Action)
                     .appendTo(menu);
+                });
             });
-            $(".radial-command").off("click.pmToolsList").on("click.pmToolsList", function () {
+            menu.find(".radial-command").off("click.pmToolsList").on("click.pmToolsList", function () {
                 var command = $(this).data("command");
                 var hitEnter = $(this).data("enter") === true || $(this).data("enter") === "true";
                 ParchLockQol.HideRadialMenu();
@@ -754,7 +850,8 @@ var ParchLockQol = {
         /* Every adaptive command radial shares one usage-first order. Fixed
            Tools and game-menu lists retain their authored order. Ranking is
            recomputed before pagination so a new tap can change the next open. */
-        if (context.source !== "tools" && context.source !== "game") {
+        // T10: history keeps the order the player typed it in.
+        if (context.source !== "tools" && context.source !== "game" && context.source !== "history") {
             commands = ParchLockQol.RankRadialCommands(commands);
         }
         var capacity = window.innerWidth < 600 || window.innerHeight < 600 ? 6 : 16;
@@ -892,7 +989,36 @@ var ParchLockQol = {
                yet, so it stays a plain Inject with no usage note. */
             if (hitEnter) {
                 Actionable.Submit(command);
-            } else {
+                return;
+            }
+            // T11 (operator): choosing a radial command runs it -- never just
+            // pastes text that then needs Send.
+            var text = String(command || "");
+            if (/\s$/.test(text) && typeof Actionable !== "undefined" && Actionable.payloadPool && Actionable.referenceFor) {
+                // A verb stem ("take ") needs its object: offer the scoped
+                // objects, and choosing one submits the whole command.
+                var targets = Actionable.payloadPool().filter(function (o) {
+                    return o && o.id != null && o.name && Actionable.referenceFor(o).unique;
+                });
+                if (targets.length) {
+                    ParchLockQol.OpenRadial(clientX, clientY, targets.map(function (t) {
+                        return { Label: t.displayName || t.name, Command: text + Actionable.referenceFor(t).noun, Enter: true };
+                    }), { source: "target" });
+                    return;
+                }
+            } else if (text.trim()) {
+                // A complete command runs at once. App commands (/map, /history,
+                // /transcript ...) are handled by Input.Process from the line;
+                // anything else goes to the story through the normal path.
+                Input.Clear();
+                if (/^\//.test(text.trim())) { Input.Inject(text.trim(), false); Input.Process(); }
+                else Actionable.Submit(text.trim());
+                if (document.body.classList.contains("pl-mobile") && Input.DismissKeyboard) Input.DismissKeyboard();
+                return;
+            }
+            {
+                // Only a stem with nothing in scope to act on is left in the
+                // line for the player to finish.
                 Input.Clear();
                 Input.Inject(command, false);
                 if (document.body.classList.contains("pl-mobile") && typeof Input !== "undefined" && Input.DismissKeyboard) {
@@ -917,6 +1043,60 @@ var ParchLockQol = {
         $("body").removeClass("radial-open");
     },
 
+    // Export naming (operator, consensus #1746): every download says what it
+    // is. "<Story title> - <Kind>[ - <label>] - YYYY-MM-DD HH-MM-SS-mmm[ (n)].<ext>"
+    // The label is the player's own save/map name, kept verbatim except for
+    // characters file systems forbid. The name is built once, at the click,
+    // and never changes payloads, stored save keys or import identity.
+    _exportNames: {},
+    ExportComponent: (text, max) => {
+        var raw = String(text == null ? "" : text);
+        if (raw.normalize) raw = raw.normalize("NFC");
+        var forbidden = /[\\/:*?"<>|\u0000-\u001f\u007f]/g;
+        // Nothing the player typed is usable (only forbidden characters or
+        // blanks): the caller falls back ("unnamed save").
+        if (!raw.replace(forbidden, "").trim()) return "";
+        // Otherwise keep it as typed (spacing and punctuation included); only
+        // forbidden characters are replaced, and trailing dots/spaces trimmed.
+        var s = raw.replace(forbidden, "-").trim().replace(/[. ]+$/, "");
+        var chars = Array.from(s);                       // never split a surrogate pair
+        if (chars.length > max) s = chars.slice(0, max).join("").replace(/[. ]+$/, "");
+        if (!s) return "";
+        if (/^(con|prn|aux|nul|com[1-9]|lpt[1-9])(\..*)?$/i.test(s)) s = "_" + s;
+        return s;
+    },
+    ExportTitle: () => {
+        var title = "", digest = "";
+        try {
+            var item = typeof ModuleLibrary !== "undefined" && ModuleLibrary.find && ModuleLibrary.find(ParchLock.StoryPath || ParchLock.GameFilename);
+            title = (item && item.Title) || "";
+            // Two installed modules with the same title: add a short digest.
+            if (title && ModuleLibrary.all) {
+                var same = ModuleLibrary.all().filter(g => g && g.Title === title).length;
+                if (same > 1 && ModuleLibrary.currentExecutableDigest) digest = String(ModuleLibrary.currentExecutableDigest() || "").slice(0, 8);
+            }
+        } catch (e) {}
+        if (!title) title = String(ParchLock.GameFilename || "story").replace(/^.*[\\/]/, "").replace(/(\.(js|z[1-8]|zblorb|gblorb|ulx|blb|blorb))+$/gi, "");
+        title = ParchLockQol.ExportComponent(title, 60) || "Story";
+        return digest ? title + " [" + digest + "]" : title;
+    },
+    ExportFilename: (kind, label, ext) => {
+        var d = new Date(), p = (n, w) => String(n).padStart(w || 2, "0");
+        var stamp = d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()) + " "
+            + p(d.getHours()) + "-" + p(d.getMinutes()) + "-" + p(d.getSeconds()) + "-" + p(d.getMilliseconds(), 3);
+        var parts = [ParchLockQol.ExportTitle(), ParchLockQol.ExportComponent(kind, 30) || "Export"];
+        if (label !== undefined && label !== null) parts.push(ParchLockQol.ExportComponent(label, 60) || "unnamed save");
+        // The stamp, counter and extension are never cut: only the head
+        // (title - kind - label, label first) is shortened to fit 150.
+        var dot = "." + String(ext || "txt").replace(/^\./, "");
+        var head = parts.join(" - "), budget = 150 - Array.from(" - " + stamp + " (99)" + dot).length;
+        if (Array.from(head).length > budget) head = Array.from(head).slice(0, budget).join("").replace(/[ .\-]+$/, "");
+        var base = head + " - " + stamp;
+        var n = (ParchLockQol._exportNames[base] || 0) + 1;      // same name twice this session
+        ParchLockQol._exportNames[base] = n;
+        return base + (n > 1 ? " (" + n + ")" : "") + dot;
+    },
+
     GetSafeFilename: (suffix) => {
 
         var base = ParchLock.GameFilename || "story";
@@ -933,4 +1113,28 @@ var ParchLockQol = {
 
         return ParchLockQol.EscapeHtml(text).replace(/"/g, "&quot;").replace(/'/g, "&#39;");
     }
+}
+
+// Export naming (#1746): the native file dialog's Display link downloads a
+// stored game file under the generic name "data". Rename it at the click,
+// from the file name the dialog itself shows on the link; the bytes, the
+// stored file and lib/main.js are untouched.
+if (typeof document !== "undefined" && document.addEventListener) {
+    document.addEventListener("click", function (e) {
+        try {
+            // Every click gets a fresh name, including a repeat click.
+            var a = e.target && e.target.closest && e.target.closest('a[download="data"], a[data-pl-native-export]');
+            if (!a || !a.closest("#dialog, #dialog_frame, #dialog_screen")) return;
+            a.setAttribute("data-pl-native-export", "1");
+            // Save vs data from the file's own bytes, never the dialog prose:
+            // a Quetzal save (ZVM and Glulx alike) is an IFF "FORM....IFZS".
+            var isSave = false;
+            try {
+                var b64 = String(a.getAttribute("href") || "").replace(/^data:[^,]*,/, "");
+                var bytes = atob(b64.slice(0, 16));
+                isSave = bytes.slice(0, 4) === "FORM" && bytes.slice(8, 12) === "IFZS";
+            } catch (eB) {}
+            a.download = ParchLockQol.ExportFilename(isSave ? "Save file" : "Data file", String(a.textContent || "").trim(), isSave ? "glksave" : "glkdata");
+        } catch (eN) {}
+    }, true);
 }
