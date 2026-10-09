@@ -229,9 +229,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 328 headings; 103 decision rows; 431 registered units.
-**Last registered unit:** `pl-s328`. **Body SHA-256 (LF):**
-`1c703b13dfb083c3d1cfddbd550fcb0e7aa72b10cbc00fbc0a475c8470c2b13f`
+**Local manifest:** 329 headings; 103 decision rows; 432 registered units.
+**Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
+`609530a9c55b9933752ebaea5bb697d725dafbae4353284d668be744a86a9bf6`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -742,6 +742,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s326](#pl-s326) | D212 Pronunciation catalogue gathered from all projects | H2 | Implemented / audited |
 | [pl-s327](#pl-s327) | D213 Enemy interactions and in-room steps need RAM or grammar evidence (Step 5) | H2 | Part A implemented and accepted (#1611); Part B cancelled |
 | [pl-s328](#pl-s328) | D214 Underlines follow their words; replies are observed; dictionary-equivalent and pronoun-safe triggers; Yourself breadth | H2 | Agreed (#1925); implementation in progress |
+| [pl-s329](#pl-s329) | D215 Full-app beautification sweep, surface by surface, preserving functional reserves | H2 | Surfaces 1-3 and start screen implemented/audited; Back/Go, Directions close, radial check open |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -8400,3 +8401,215 @@ D214 follow-up Take amendment (peer proposal1989): confirmed fixed-family pre-v6
 D214 root-evidence amendment (native HHG): TAKE ANALGESIC consumes the tablet and inserts it into offstage bucket37; transfer alone is not carried-inventory evidence. D75 must reject a new learned root when actual bounded containment cannot reach the current/frozen room or already proven player/holder; preserve the prior valid holder. Revalidate persisted root in live containment before use. No flag or name guess, no NPC inventory recursion, no inventory filtering by descriptor. Actual unparented offstage bucket must not leak dozens of objects. Existing unsupported readers retain prior behavior when no containment evidence is available. Prior Wumpus/905 and root fixtures require controls.
 
 D214 follow-up final acceptance: peer1998 A/B,2000 C and2003 current-descriptor-first refinement; Codex concurs after native22/0, root13/0 and targeted prior guards. Current source shell141; APK63 remains pre-follow-up. Inventory-full-label/radial/Take/word-trigger/offstage-root checklist closed for this slice. No overall project completion recorded. Full report: work/investigations/2026-10-08-codex-hhg-followup-audit.md.
+
+<a id="pl-s329" data-chapter-id="pl-s329"></a><a id="pl-d215"></a>
+## D215 Full-app beautification sweep, surface by surface, preserving functional reserves
+
+**Lifecycle:** The operator ordered this on 2026-10-09: beautification loops first, then the death counter. Each surface follows the standard procedure: blind dual review, compare, propose, adversarial review, implement, audit. Surface 1 (Equipment and its Options) was agreed in #2011, #2012, #2014 and #2034, and is being implemented by codex with a claude audit. Sealed reviews: `work/investigations/2026-10-09-claude-equipment-visual-blind.md` and `work/investigations/2026-10-08-codex-equipment-visual-blind.md`.
+
+**Scope and order (operator: full app; codex/claude #2010, #2011):**
+1. Equipment and its Options;
+2. the story buffer, the input bar and the floating controls;
+3. the Map panel and the World Map;
+4. the tab rail and mobile layout;
+5. menus, Options and settings dialogs, including submenus;
+6. the Module Library and the start screen;
+7. the radial, tooltips, toasts and messages.
+Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces already swept keep their successful styling; only residual defects change, with no cosmetic churn.
+
+**Standing rules (operator, 2026-10-09):**
+- Functional reserves are not decoration. These stay by default:
+  - the exit banners around the screen edge and the space they need;
+  - the adjustable label protection at the top (the `#exits` band with its own backing, D121);
+  - the bottom protector behind the input line (`#windowport::after`, 88px + handle + safe-bottom);
+  - the input line itself and the direction-pad handle.
+  A change that moves or shrinks any of them must prove the function still works.
+- The Equipment grab handle stays centred and absolutely positioned at 30/38px (D125, D131). The operator overrode the trailing-slot proposal (#2019).
+- Stat values can be long text (Anchorhead's Progress line is one example). Text-valued stats span the full width of the status grid. The rule is generic, applied by value type at render time (`data-value-type`), never by stat name.
+
+**Surface 1 contents (CSS and markup only; no Equipment business logic changed):**
+- An explicit Options disclosure: a 44px summary with a chevron, and a bordered card.
+- Grouped controls: Sort on its own row, Container view, search at full width, a labelled "Show" category group, and Refresh moved out of the categories. All IDs and events are kept.
+- `#equipment [hidden]` is honoured. A Spells category with no spells was rendering because `.equip-check` set a display value; per D149 it shows only where casting exists (Enchanter visible; Anchorhead and Treasure hidden).
+- App-accent checkboxes and focus rings.
+- Readable tags (12px, full text colour).
+- A quieter hint with unchanged wording.
+- Score, Day and Turns share a row where width allows (two columns at 320, for numeric legibility); text stats span the full width.
+- On mobile the sheet ends at the bottom protector instead of running under the fixed controls. The reserve is derived from the protector height, never a separate constant. The keyboard inset is counted once, through the height (D93).
+
+**Deferred to their own surfaces:**
+- the rail gutter at 320 (surface 4);
+- the direction-pad dot's global placement (surface 2);
+- the operator report that the phone input line "doesn't stand all the way to the left and moves around" (surface 2). Codex measured x=40, stable, from the D203 rail reserve; claude's blind review is pending.
+
+**Prior-fix guard:**
+- D122, D125, D131 and D168: `harness/equipment-ui.js`.
+- D214 Yourself: `harness/d214-yourself-verbs.js`.
+- The status card: `harness/stat-render-diff.js` and `harness/prowess-retry.js`.
+- Inventory context: `harness/command-consistency-regression.js`.
+- D149 spells: a native Enchanter, Anchorhead and Treasure check.
+- Visual proof: 12 captures (three widths, two themes, Options open and closed), with no horizontal overflow and no truncated name.
+
+**Surface 1 implemented and audited (claude #2043 and C1 #2046):**
+- Files changed: `css/ParchLock.css` (a scoped block), `play.html` (control grouping), `js/StatTracker.js` (render-only `data-value-type`) and `js/EquipmentUI.js` (each state tag in its own nowrap `.equip-state` span, so no separator can dangle).
+- The shared variable `--pl-input-protect-height` (88px + handle + safe-bottom) now drives both the bottom protector and the Equipment reserve. The sheet bottom equals the protector top (756 at 390; 552 at 320).
+- Guards, all exit 0: equipment-ui 119/0, stat-render-diff 10/0, prowess-retry 9/0, d214-yourself-verbs 10/0, command-consistency PASS, command-disambiguation 51/0.
+- Native text-stat proof: Anchorhead Progress and Degeneracy Health.
+
+**Surface 2 findings:**
+- Sealed reviews: `work/investigations/2026-10-09-claude-surface2-visual-blind.md` and `work/investigations/2026-10-08-codex-surface2-visual-blind.md`.
+- T2 (operator report: "the exits banner at the bottom of the screen is missing its protective space"):
+  - On phones, the bottom exit row (`Map.js:40`, sw/s/se) sat at y=824-844 under the input and mic (z25 over #exits z24).
+  - The position is the same with the CSS of 27d2fbe, b747e42 and HEAD, so surface 1 did not cause it.
+  - There was no bottom-row reserve and no assertion for one.
+- T1 (operator rule: the text window bottom must be above the handle): the text bottom was at 740, while the handle touch box starts at 736 (390). That is 4px of overlap; the visible dot cleared it by 8px.
+- T3 is authored behaviour. Anchorhead centres "day one" at column (width-7)/2 and prints it after the room name, so it overwrites any longer name at about 50 columns. The native GridLine already holds the overwritten text.
+  - At 1280 the header width is honest: 70 columns with the map open (the day is omitted by the game), and 143 with it closed (the day shows on the far right).
+  - Decision: no masking and no change to the column count (D94).
+
+**Surface 2 plan (agreed, codex #2049):**
+- The bottom row becomes auto-height on phones; cells that are not shown use display:none.
+- It sits fixed at bottom = `--pl-input-protect-height` + 28px + kb-inset. That is 8px above the handle touch box, whose top is 20px above the protector.
+- The measured row height is published as `--pl-bottom-band-h`, through the existing top-band observer; there is no new timer.
+- `--pl-bottom-exit-reserve` = band > 0 ? 28 + band + 8 : 0.
+- Story padding-bottom = protector + max(28px, reserve) + 8px + kb-inset, so text clears the handle touch box even when the room has no bottom exits.
+- Equipment reserve = protector + reserve.
+- Unchanged: no new painted layer; handle, input and mic positions; the D203 left geometry; the top band (D121); the labels-only pointer contract.
+- New `harness/exits-safe-area.js` assertion: the bottom labels never intersect the input, mic, Send, the handle box or the last text line, at 320, 390 and 412.
+- Still open: the input left gutter waits for evidence on long west labels.
+
+**Surface 2 implemented and audited (claude R1 #2060, codex #2059-#2064):**
+- The bottom row is a three-column grid with explicit thirds: `.dir-sw` in column 1, `.dir-s` in column 2, `.dir-se` in column 3. Each label keeps its compass position: a lone SE stays in the right third (x=292-358 at 390). Cells that are not shown use display:none, and an empty row measures 0.
+- Measured on phones (320, 390 and 412, at 844 high):
+
+| Element | Position |
+|---|---|
+| Bottom labels | 712-728 |
+| Handle touch box | 736-780 (unchanged) |
+| Input | 790-834 (unchanged) |
+| Story content bottom | 688 at 390 |
+| Story padding | 148px, with a band present |
+
+- Taps on the labels travel. Sheets hide #exits, so with a sheet open the band is 0 and the sheet keeps the protector top.
+- Guards, all exit 0: exits-safe-area --live 60 PASS (including the sector and wrapping fixtures), equipment-ui 119/0 and tools/layout-regression PASS. The layout-regression fixture now acknowledges the first-install inventory warning; HEAD failed the same way, so this is test drift, not product.
+- Side and top reserves were re-measured after the change, with a glyph-level probe at 320, 390 and 412:
+  - No story glyph enters the left rail (x 8-40; the text starts at 40) or the right rail (it starts 2px past the text edge).
+  - The top band pushes the text window border down dynamically; scrolled text passes under its opaque backing, as designed (D121).
+
+**Surface 3 plan (map and World Map; agreed in #2056, #2057, #2061 and #2072; surface 2 committed as 80c046a):**
+- P1: Map controls and Notes get the D215 disclosure cue (44px summary, chevron, focus). The D112 add-note button stays outside the summary. All IDs are kept.
+- P2, amended after codex's measurement. The current-room badge overlaps the name at every width, and the nodes have a fixed height (51px at 320 and 390, 56px at 1280, in five fixed rows). Inline padding would narrow the names and push more of them out of the box.
+  - Decision: the badge becomes a corner pip that straddles the node's top-right corner, outside the text box (absolutely positioned at half its size beyond the corner).
+  - The name width, node size, direction slots, graph and path endpoints are all unchanged.
+  - Long names already spill about 10px below the node at 320 (four lines in 51px). That is recorded and deferred: growing nodes would change the renderer's geometry (D202).
+- P3: on mobile the map sheet uses the D215 reserve. Sheets hide #exits, so the bottom band is 0. Notes and the footer must scroll above the unchanged handle.
+- P4: the World toolbar, the level tabs and the selected-room actions get 44px targets, with theme and focus. At 320 the header has two clean rows, with the levels in one horizontal group.
+- P5: the current-room chip uses the accent in both themes. The trash icon is unchanged.
+- P6: dropped. The light map buttons measured about 11:1 contrast.
+- Guards: world-map-ui, panel-reflow-live and screenshots. The map engine is untouched.
+
+**Start screen plan (`index.html`; operator request #2065; sealed reviews `2026-10-09-claude-remaining-surfaces-blind.md` and `2026-10-09-codex-remaining-surfaces-blind.md`; codex #2066, claude A1-A7 #2071, accepted in #2073):**
+- Replace the outdated prose ("awesome program") with current, code-verified capabilities. Z-machine games are enhanced; Glulx games are play-only.
+- Keep a concise "Typed commands" section for the commands that exist: /note, /notes, /goto, /see, /clear map, /clear notes.
+- The build and credits come from `ProductInfo` only.
+- Text is left-aligned and never justified, and nothing is underlined unless it is a link.
+- Toolbar:
+  - The fav, done-off, done-on and theme filter controls become real buttons, with role, tabindex, keyboard support and aria-pressed.
+  - Visible short labels from 390 wide; icons with aria-labels at 320.
+  - The story count sits on its own line.
+  - The bar uses the theme surface in both themes.
+- Each row's done box gets a visible "Done" label or header.
+- The catalog is left-aligned with full wrapping: the star leads and the done box trails.
+- On mobile, a masthead (the ParchLock name and a tagline) sits above the library, and the features come after it.
+- Unchanged: the filter, favourite, done, import, theme persistence and story-opening behaviour, and every ID.
+- Guards: startup-menu-regression and the module and library checks.
+- Order: surface 3, then the start screen, then the Directions settings close control (scoped) and a measured Menu-radial spacing check (no redesign).
+
+**Surface 3 implemented and audited (codex #2077 and #2079, claude R1 #2078):**
+- CSS only: P1 disclosures (specificity raised to `#map #map-controls-tab` and `#map #notes-tab`, with 12px insets), the P2 10px pip, the P3 map sheet reserve, the P4 World toolbar and two-row header, and P5 accent chips.
+- Guards, all exit 0: world-map-ui 52/0, panel-reflow-live 29/0, equipment-ui 119/0, exits-safe-area --live 60.
+- The summaries compute to 8px 12px padding with no clipping, at 1280 and 390.
+- Open finding (codex measurement): on a browsed node, the interactive Back/Go icons (`Map.js:206-207`) cover the first line of a long name at 320, 390 and 1280. A bounded proposal follows.
+
+**Start screen implemented and audited (codex #2079 and #2083; claude early audit #2081 and final acceptance):**
+- Files changed: `index.html`, `js/MainMenu.js` and scoped CSS.
+- All six toolbar controls are real `<button>`s at 44px height, with aria-labels. The filters carry aria-pressed. The theme toggle keeps the constant label "Light theme" with aria-pressed (St1).
+- Mobile library: scroll containment, with a 520px minimum library at compact widths (St2).
+- Control fonts are the system UI family (St3). The location note is plain muted text, not a pill (St4).
+- Feature copy is verified against the code; the identity, credits and build come from `ProductInfo`. The typed commands sit in a "Prefer typing? Useful commands" details section.
+- Guards, all exit 0: startup-menu-regression PASS, d98-module-library PASS, and codex's focused proof (keyboard, filters, search, Show all, flag and theme persistence on reload, six layouts).
+- Open: Back/Go over long names on browsed map nodes. G1 (a strip below the node, or padding) was rejected by codex's measurement: the strip overlaps neighbours by 22px in 6px gaps, and the padding leaves 37px at 320. Codex is investigating placement in the existing map toolbar while browsing.
+
+**Agreed remaining beautification items:**
+- **Directions settings close** (sealed in both remaining-surface reports; codex proposal, claude #2087).
+  - Restyle only the existing `#message #close` inside `#message:has(.pl-dirpad-settings)`, the same scoping as `ParchLock.css:2417`.
+  - It gets a 44px target that matches the Tools dialog close in both themes, a title right reserve of at least 56px, and a visible focus ring.
+  - Unchanged: the same element, its handler, Escape and back closing, the ring and command settings, their validation, and the radials.
+  - Proof: 320, 390 and 1280 in both themes, with the close rect not intersecting the title.
+- **Desktop Menu radial spacing** (codex measurement #2093). At 1280, Modules overlaps Options by 1.23px horizontally and 8.17px vertically. The cause: nine game entries over eight per ring (`Qol.js:903-914`, `firstRadius` 95, `ringGap` 86), so "Exit game" sits alone on ring 1.
+  - Fix: only for the desktop game-menu source with capacity other than 6, `firstRadius` becomes 110 (labels clear by 9.36px). The ring-1 radius stays within `maxRadius` (196).
+  - Unchanged: order, More, handlers, the object, input and tool radials, and mobile (the six-entry paged menu has 0 overlaps).
+  - No redesign (the operator corrected an earlier radial review).
+- **Icons** (operator, 2026-10-09). Codex generates two or three candidates for a new no-text launcher icon. The motif is a map and story (parchment, a route or a compass) in the app accent (#74d4b3 / #0b7e63) on dark.
+  - Deliverables: the Android adaptive set (a 108dp foreground with the motif inside the 66dp safe zone, a background, a monochrome layer if possible), legacy and round mipmaps from mdpi to xxxhdpi, web 192 and 512 plus a separate maskable 512 (replacing the manifest's "any maskable" 180px apple icon), favicon.ico (16/32/48) plus a 32px PNG, and a 256px desktop PNG.
+  - No new Apple icons: the operator says the system is not used on Apple. Existing apple-touch assets stay untouched.
+  - The candidates go on a contact sheet under `work/investigations/icons/`. No shipped asset changes until the operator chooses.
+- **APK** (operator, 2026-10-09): codex builds it after every loop closes, including the death loop and the icon choice, with source checkpoints committed first.
+- **Death loop scope** includes how deaths are presented: the Deaths tile, when it appears (D149), persistence across save, restore and restart, and its label. Research so far: `work/investigations/2026-10-09-claude-death-research-r1.md`.
+- **Queued after the current loops and the APK** (operator, 2026-10-09, relayed in codex #2097): a full accuracy sweep of text and documents, in code and out of it. It covers updates, thoroughness and permissions, and all in-app and documentation text. It adds a brief credit to the AI systems used (including generated images such as the new icon) and to Hymlock Groves where needed. Third-party story content is never rewritten casually. It does not widen the scope of the current APK.
+- **Radial clarification (#2098):** the desktop game menu uses `firstRadius` 110 with `ringGap` 71, so ring 1 stays at 181 and "Exit game" does not move. Every other context keeps 95 and 86, and mobile keeps size*.33 and 86.
+- **Directions close and Menu radial implemented and audited (codex #2100; claude audit):**
+  - The CSS is scoped to `#message:has(.pl-dirpad-settings)`: a 44x44 border-box close, a 72px title reserve and a focus ring. `Qol.js` gates on `context.source === "game"`, and `context` defaults to `{}` (Qol.js:772).
+  - Guards, all exit 0: startup-menu-regression, tools/layout-regression, shared-radial-integration 28, t10-history-radial 26/0 and directional-radial 112/0.
+  - Claude's capture of the 1280 game menu shows no label overlap.
+  - Claude did not capture the Directions dialog; that rests on codex's 320, 390 and 1280 both-theme proof plus the scoped diff review.
+- **Operator decisions (2026-10-09):**
+  - Back/Go on browsed map nodes: "fade until touched". The icons stay on the node with unchanged handlers and targets. They are semi-transparent at rest and fully opaque on hover, focus or first touch. On touch, the first tap reveals them and must never travel. The G2 toolbar move was not chosen.
+  - Icon: candidate B (storybook map). The left page shows a reduced copy of one of the 4 opening splash scenes and the right page the map, giving 4 icon variants.
+    - On Android the icon rotates each time the app closes, using activity-alias switching with `setComponentEnabledSetting` on close and never in the foreground. Launcher caveats are to be verified.
+    - On PC (browser or PWA) the installed icon is fixed by the manifest and cannot rotate; the tab favicon can rotate per launch.
+    - Candidates go to a contact sheet before any shipped asset changes.
+- **G3 contract (codex #2117, claude amendment):**
+  - Browsed non-current nodes get a browsed-controls class. Back/Go sit at opacity 0.30 at rest, and go fully opaque on hover (fine pointers), focus-visible or focus-within, or a revealed class.
+  - The existing icons gain role=button, tabindex and Enter/Space activation. Geometry and the Draw/GotoRoom handlers are unchanged.
+  - A capture-phase gate intercepts only the first touch tap whose target is an unrevealed icon. It reveals the icons and makes zero navigation calls.
+  - Taps on the name or body keep today's RoomClicked behaviour immediately and also reveal the icons.
+  - Pan, pinch, cancel and multi-touch never reveal or travel.
+  - The reveal resets on Draw, identity change, map close and any touch outside the node. No timer.
+- **Icon rotation on PC (correction):**
+  - The PC build is the native `ParchLock.exe` launcher (`pc-launcher/ParchLockLauncher.cs`, built by `build-pc-launcher.bat` with `/win32icon:img\favicon.ico`). It waits for the browser to exit (ParchLockLauncher.cs:55-57).
+  - So on close the launcher can rewrite the IconLocation of its own desktop and Start Menu `.lnk` to the next of the 4 shipped `.ico` variants, then refresh the shell icon cache.
+  - Limits: the exe's embedded icon is fixed at compile time; taskbar pins are cached by Windows; only shortcuts the launcher owns are changed; a shortcut is created on first run only with consent.
+- **PC desktop shortcut (operator decision, 2026-10-09):**
+  - On first run the launcher asks once whether to add a ParchLock shortcut to the desktop. The answer is remembered, and "No" is respected.
+  - On Yes it creates `Desktop\ParchLock.lnk`. On every close it rotates that shortcut's icon to the next splash variant and refreshes the shell.
+  - It never touches other shortcuts and never recreates a shortcut the user deleted.
+  - It handles a moved exe folder.
+  - Optionally the variant is matched to the next launch's splash, subject to operator confirmation.
+  - Proven on Windows before the dist build.
+- **Icon rotation timing and matching (operator, 2026-10-09):**
+  - Android rotates when the user leaves the app: onStop with `!isChangingConfigurations()`, suppressed while an in-app picker or share intent is outstanding, never in the foreground, and enabling the next alias before disabling the old one.
+  - The next launch's splash matches the icon only if that is simple (a stored variant index read by `ParchLockSplash.js`); otherwise the two stay independent.
+- **Death counter contract, agreed (P-DEATH R2+R3; codex #2116, #2126; `work/investigations/2026-10-09-claude-death-proposal.md`):**
+  - No universal deterministic death field exists. The outcome is authored text, bounded by deterministic framing: a real ordinary player submission, the next real Glk input-request generation, and input-echo and quote exclusion.
+  - A terminal prompt needs a structured choice line in the last 3 non-empty lines of the submission output.
+  - The outcome comes from complete bounded phrases: death is "you have died", "you are dead", "you have been killed" or "better luck next life"; a win is "you have won" or "you are victorious". Conflicting phrases give unknown. Everything else is unknown.
+  - Inform `deadflag` is dropped as authority until structurally proven. AfterLife resurrection is unsupported.
+  - Meta submissions and replayed output never count. One count per episode, with a replay latch.
+  - D204 lifecycle and presentation: "Deaths this playthrough" is a numeric tile shown when above 0.
+  - Remove the free-prose regex and "game over" as death, and correct the banner comment. The read site is stored as corroboration only.
+  - Supersedes R1.
+- **G3 implemented and audited (codex #2128 and #2135; claude R1 #2132):**
+  - `js/Map.js` `BindBrowseControls`: the icon-target-only capture gate, plus pointer-state reset on a primary pointerdown, `ClearBrowseControls`, window blur and document hidden (H1).
+  - After any touch RoomClicked Draw, the resulting displayed browsed node is revealed (H2).
+  - Guards, all exit 0: map-browse-controls-live 45, world-map-ui 52/0, panel-reflow-live 29/0, map-pathing-regression PASS.
+- **Death implementation split:** claude implements P-DEATH (StatTracker plus `harness/death-terminal.js`); codex audits. Codex packs the 4 approved storybook icon assets. Claude owns the native rotation code, after review of the rotation proposal R1 (Android: a pinned shortcut updated in place; alias switching withdrawn because it can remove home-screen icons).
+- **P-DEATH amendments from the live proof (codex #2153, #2157 and #2161):**
+  - **A1.** A complete death phrase inside a `***` banner counts without an end menu (Zork I resurrects the player). A banner plus a complete win phrase gives unknown.
+  - **A2.** Fresh interpreter output after an accepted native RESTORE, RESTART, UNDO or LOAD counts only if the cue passed through the engine's own Glk output calls during that submission.
+    - `StatTracker.tapEngine` wraps the ZVM `glk_put_*` calls per engine instance (stream variants read argument 1) and captures only while a restore-like submission is active.
+    - Glulx cannot be tapped, so it stays excluded.
+    - Evidence: on the HHG save the engine emits "Better luck next life." after RESTORE. The package's stored transcript lacks it. Quetzal saves hold memory only, and Transcript manages only the export record.
+    - Bounds: startup autorestore and retained output outside an active fresh submission never count. Submission identity alone is not treated as replay proof.
+  - **A3.** An episode carries across a pause only when the story authored that pause (a char request, or "hit/press/strike RETURN/ENTER/any key/a key/space", "[MORE]" or "(MORE)" in the last 2 lines) after a complete phrase, at most 3 times.
+  - **Results:** `harness/death-terminal.js` 32/0 and stat-tracker 211/0. Live: HHG save 1, Zork grue 1, Zork controls 0.

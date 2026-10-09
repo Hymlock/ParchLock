@@ -1319,19 +1319,176 @@ var StatTracker = {
     },
 
     // ---- end-of-game banners --------------------------------------------
-    // Every ending in both libraries prints a "*** ... ***" banner, so the
-    // banner is classified rather than one sentence being matched. Anything
-    // that is not a win and not a voluntary quit is an involuntary ending and
-    // counts as a death -- which is what makes this work on the ~217 modules
-    // nobody has probed.
+    // Many endings print a "*** ... ***" banner, but not all: Hitchhiker's
+    // prints "Better luck next life." with no stars. Banner classification is
+    // descriptive only; counting is done by settleEnding() below (D215).
     BANNER: /\*{3,}\s*([^*\n]{1,90}?)\s*\*{3,}/g,
     classifyBanner: (inner) => {
         var t = String(inner || "").toLowerCase();
         if (!t) return null;
         if (/\b(won|win|victorio|triumph|congratulat)/.test(t)) return "win";
         if (/\b(quit|session|have left|end of session)/.test(t)) return "quit";
-        if (/\b(died|dead|death|killed|slain|fatal|eaten|devoured|lost your life|game over)\b/.test(t)) return "death";
+        if (/\b(died|dead|death|killed|slain|fatal|eaten|devoured|lost your life)\b/.test(t)) return "death";
         return "candidate";
+    },
+
+    // ---- D215 P-DEATH: endings at a settled terminal prompt ----------------
+    // No universal death field exists (HHG's death turn changes no globals),
+    // so the outcome is the game's own words, bounded by deterministic framing:
+    // one player submission (never the app's own probes), its output without
+    // the input echo, and the next new input request. A terminal prompt needs a
+    // choice line among the last three output lines; the outcome needs a
+    // complete phrase, never a keyword. "Death of a Salesman" is a heading.
+    // RESTORE output can count: HHG's clock kills the player in the very turn
+    // a save is restored. Replayed transcript is never a submission at all.
+    // Each phrase must END the sentence or banner ("You are dead." / "****
+    // You have died ****"), so "you are dead tired" is not a death.
+    DEATH_PHRASE: /\b(?:you have died|you are dead|you have been killed(?: by [^.!?*\n]{1,60})?|better luck next life)\s*(?:[.!*]|$)/im,
+    WIN_PHRASE: /\b(?:you have won|you are victorious)\s*(?:[.!*]|$)/im,
+    unquoted: (text) => String(text || "").replace(/"[^"\n]*"|“[^”\n]*”/g, " "),
+    // Quoted dialogue (a quote holding a space) is removed before a line can be
+    // a menu; a single quoted option label such as "RESTART" stays.
+    undialogued: (text) => String(text || "").replace(/"[^"\n]*\s[^"\n]*"|“[^”\n]*\s[^”\n]*”/g, " "),
+    isTerminalMenuLine: (line) => {
+        var t = StatTracker.undialogued(line);
+        if (!/\b(?:restart|restore)\b/i.test(t)) return false;
+        var options = {};
+        (t.match(/\b(?:restart|restore|quit|undo|hints?|amusing)\b/gi) || []).forEach(function (o) {
+            options[o.toLowerCase().replace(/s$/, "")] = 1;
+        });
+        if (Object.keys(options).length < 2) return false;
+        return /\b(?:would you like|do you (?:want|wish))\b/i.test(t) || /\(\s*type\b[^)]*\bor\b/i.test(t);
+    },
+    // A death banner holding a complete phrase ("**** You have died ****") is
+    // itself the authored transition even when the story resurrects the
+    // player without an end menu, as Zork I does on its first deaths.
+    classifyEnding: (lines) => {
+        var kept = (lines || []).map(function (s) { return String(s || ""); })
+            .filter(function (s) { return s.trim() && !/^[\s>:]*$/.test(s); });
+        if (!kept.length) return null;
+        var body = StatTracker.unquoted(kept.join("\n"));
+        var bannerDeath = (body.match(new RegExp(StatTracker.BANNER.source, "g")) || [])
+            .some(function (b) { return StatTracker.DEATH_PHRASE.test(b); });
+        var win = StatTracker.WIN_PHRASE.test(body);
+        if (!kept.slice(-3).some(StatTracker.isTerminalMenuLine)) return bannerDeath ? (win ? "unknown" : "death") : null;
+        var death = bannerDeath || StatTracker.DEATH_PHRASE.test(body);
+        return death && win ? "unknown" : death ? "death" : win ? "win" : "unknown";
+    },
+    // A restore, restart or undo can print a real ending (HHG's clock kills the
+    // player in the restored turn), but its DOM output could in principle hold
+    // replayed text. Such endings count only if the cue passed through the
+    // engine's own Glk output calls during that submission. Where the engine
+    // cannot be tapped (Glulx), they stay excluded.
+    RESTORE_LIKE: /^\s*(?:restore|restart|undo|load)\s*$/i,
+    PAUSE_WORDING: /\b(?:hit|press|strike) (?:return|enter|any key|a key|space)\b|\[\s*more\s*\]|\(\s*more\s*\)/i,
+    _engineOut: "",
+    _engineCapture: false,   // true only during a restore-like submission
+    tapEngine: function () {
+        if (typeof window === "undefined") return;
+        var z = window.__PARCHLOCK_ZVM__, G = z && z.Glk;
+        if (!G || G.__plEngineTap) return;   // tapped once per engine instance
+        G.__plEngineTap = true;
+        Object.keys(G).filter(function (k) { return /^glk_put_(?:char|string|buffer|jstring)/.test(k); }).forEach(function (k) {
+            var original = G[k];
+            if (typeof original !== "function") return;
+            var payload = /_stream/.test(k) ? 1 : 0;   // stream variants: (stream, payload)
+            G[k] = function () {
+                if (!StatTracker._engineCapture) return original.apply(this, arguments);
+                try {
+                    var a = arguments[payload];
+                    var text = typeof a === "number" ? String.fromCharCode(a)
+                        : typeof a === "string" ? a
+                        : (a && a.length != null ? Array.prototype.map.call(a, function (c) { return String.fromCharCode(c); }).join("") : "");
+                    var out = StatTracker._engineOut + text;
+                    StatTracker._engineOut = out.length > 8000 ? out.slice(-8000) : out;
+                } catch (eTap) {}
+                return original.apply(this, arguments);
+            };
+        });
+    },
+    _ending: null,
+    _promptSeen: typeof WeakSet !== "undefined" ? new WeakSet() : null,
+    collectEnding: function (spans) {
+        var sub = StatTracker._lastSubmission;
+        if (!sub || !sub.submissionId) return;
+        var epoch = sub.pageEpoch || "";
+        var e = StatTracker._ending;
+        if (!e || e.subId !== sub.submissionId || e.pageEpoch !== epoch) {
+            // An answer to a pause inside an ending continues that ending, not
+            // a new episode: a bare RETURN, or any text typed at a pause that
+            // followed a death or win phrase (HHG: "Put on your peril-sensitive
+            // sunglasses... Hit RETURN" ignores whatever is typed). Bounded.
+            var carry = e && e.pageEpoch === epoch && e.eligible && !e.settled && sub.source !== "stat-probe"
+                && e.pausedWithCue && (e.carries || 0) < 3;
+            if (carry) {
+                e.subId = sub.submissionId;
+                e.carries = (e.carries || 0) + 1;
+                e.pausedWithCue = false;
+                e.enginePrev = e.engineOut || "";
+            } else {
+                e = StatTracker._ending = {
+                    episodeId: sub.submissionId, subId: sub.submissionId, pageEpoch: epoch, lines: [],
+                    settled: false, eligible: sub.source !== "stat-probe",
+                    restoreLike: StatTracker.RESTORE_LIKE.test(String(sub.command || ""))
+                };
+            }
+        }
+        if (!e.eligible || e.settled) return;
+        e.engineOut = (e.enginePrev || "") + (StatTracker._engineOut || "");
+        (spans || []).forEach(function (s) { if (!s.input) e.lines.push(s.text); });
+        if (e.lines.length > 400) e.lines.splice(0, e.lines.length - 400);
+    },
+    // Each Glk input request renders a fresh .Input element, so an element not
+    // seen before is a new request generation. A request that shows neither an
+    // end menu nor a death banner (a key-press or RETURN pause inside an
+    // ending) leaves the episode open; the next request decides.
+    // `injected` ({ request, line }) lets a fixture stand in for the DOM.
+    settleEnding: function (injected) {
+        var e = StatTracker._ending;
+        if (!e || !e.eligible || e.settled || !StatTracker._promptSeen) return;
+        if (!injected && typeof document === "undefined") return;
+        var line = injected ? !!injected.line : document.querySelector(".Input.LineInput");
+        var request = injected ? injected.request : (line || document.querySelector(".Input.CharInput"));
+        if (!request || StatTracker._promptSeen.has(request)) return;
+        StatTracker._promptSeen.add(request);
+        if (!e.lines.length) return;
+        var outcome = StatTracker.classifyEnding(e.lines);
+        if (!outcome) {
+            // Carry only across a pause the story itself announced (a key
+            // request, or "Hit RETURN" / "[MORE]" wording) after a complete
+            // death or win phrase; never across an ordinary prompt.
+            var said = StatTracker.unquoted(e.lines.join("\n"));
+            var kept = e.lines.filter(function (s) { return String(s || "").trim() && !/^[\s>:]*$/.test(s); });
+            var authoredPause = !line || StatTracker.PAUSE_WORDING.test(kept.slice(-2).join(" "));
+            e.pausedWithCue = authoredPause && (StatTracker.DEATH_PHRASE.test(said) || StatTracker.WIN_PHRASE.test(said));
+            return;
+        }
+        if (e.restoreLike && (outcome === "death" || outcome === "win")) {
+            var engine = StatTracker.unquoted(e.engineOut || "");
+            var cue = outcome === "death" ? StatTracker.DEATH_PHRASE : StatTracker.WIN_PHRASE;
+            if (!cue.test(engine)) outcome = "unknown";
+        }
+        e.settled = true;
+        if (outcome === "death" || outcome === "win") StatTracker.countEnding(outcome, e);
+    },
+    countEnding: function (outcome, e) {
+        var model = StatTracker.model();
+        var id = "ending|" + e.pageEpoch + "|" + e.episodeId;
+        if (model.seenBanners[id]) return;
+        model.seenBanners[id] = 1;
+        var readSite = null;   // corroboration only: where the story asked for input
+        try {
+            var z = typeof window !== "undefined" ? window.__PARCHLOCK_ZVM__ : null;
+            if (z && typeof z.pc === "number") readSite = z.pc + "/" + (z.frames ? z.frames.length : "?");
+        } catch (eZ) {}
+        if (outcome === "death") {
+            model.deaths = (model.deaths || 0) + 1;
+            StatTracker._events.push({ type: "death", text: "game ending", count: model.deaths, readSite: readSite });
+        } else {
+            model.wins = (model.wins || 0) + 1;
+            StatTracker._events.push({ type: "win", text: "game ending", readSite: readSite });
+        }
+        if (StatTracker._key) StatTracker.save(StatTracker._key, model);
     },
     // Returns every banner in a chunk of text, classified.
     bannersIn: (text) => {
@@ -1521,6 +1678,7 @@ var StatTracker = {
             StatTracker._probeTimer = null;
             StatTracker.endProbeOwnership();
             StatTracker._events = [];
+            StatTracker._ending = null;                // D215: an ending belongs to its timeline
             StatTracker._pendingDelta = null;
             StatTracker._pendingDeltaText = null;
             clearTimeout(StatTracker._diagnoseTimer);
@@ -1556,6 +1714,9 @@ var StatTracker = {
         StatTracker._probeTimer = null;
         StatTracker.endProbeOwnership();
         StatTracker._lastSubmission = null;
+        StatTracker._ending = null;             // D215
+        StatTracker._engineOut = "";
+        StatTracker._engineCapture = false;
         StatTracker._metaVerbCache = null;      // D207: never across stories
         StatTracker.clearCarryProbe();          // D191
     },
@@ -2519,25 +2680,9 @@ var StatTracker = {
                 StatTracker.applyMeasuredMetricReply(fact, text);
             }
         });
-        var found = StatTracker.bannersIn(text);
-        if (/\b(?:you (?:have )?died|you are dead|you were killed|a fatal blow|game over)\b/i.test(String(text || ""))
-            && !found.some(function (b) { return b.kind === "death"; })) {
-            found.push({ kind: "death", text: "game-authored death transition" });
-        }
-        found.forEach(function (b) {
-            if (b.kind === "candidate" || b.kind === "quit") return;
-            var id = (evidence && evidence.spanId) || (b.kind + "|" + b.text + "|" + (turnMarker == null ? "" : turnMarker));
-            id = b.kind + "|" + id;
-            if (model.seenBanners[id]) return;
-            model.seenBanners[id] = 1;
-            if (b.kind === "death") {
-                model.deaths = (model.deaths || 0) + 1;
-                StatTracker._events.push({ type: "death", text: b.text, count: model.deaths });
-            } else if (b.kind === "win") {
-                model.wins = (model.wins || 0) + 1;
-                StatTracker._events.push({ type: "win", text: b.text });
-            }
-        });
+        // D215 P-DEATH: deaths and wins are no longer counted from loose output.
+        // They are decided once per player submission, at the next settled
+        // input request, by settleEnding().
         StatTracker.recordEvidence({
             key: "output", value: String(text || ""), valueShape: "text",
             source: (evidence && evidence.source) || "buffer-output",
@@ -2701,11 +2846,11 @@ var StatTracker = {
             return d || String(a.key).localeCompare(String(b.key));
         });
         if (model.deaths > 0) {
-            out.push({ key: "deaths", label: "Deaths", value: model.deaths,
+            out.push({ key: "deaths", label: "Deaths this playthrough", value: model.deaths,
                        unit: "plain", kind: "counter", confirmed: true, source: "observed" });
         }
         if (model.wins > 0) {
-            out.push({ key: "wins", label: "Wins", value: model.wins,
+            out.push({ key: "wins", label: "Wins this playthrough", value: model.wins,
                        unit: "plain", kind: "counter", confirmed: true, source: "observed" });
         }
         return out;
@@ -2909,7 +3054,8 @@ var StatTracker = {
             StatTracker._lineCursor.set(line, { text: text, generation: state.generation, ver: ver });
             if (fresh.trim()) out.push({
                 text: fresh,
-                spanId: "line:" + id + ":" + state.generation + ":" + start + ":" + text.length
+                spanId: "line:" + id + ":" + state.generation + ":" + start + ":" + text.length,
+                input: !!(line.querySelector && line.querySelector(".Style_input"))
             });
         }
         return out;
@@ -2932,6 +3078,9 @@ var StatTracker = {
         } catch (e) {}
         var spans = StatTracker.freshOutputSpans();
         var fresh = spans.map(function (span) { return span.text; }).join("\n");
+        // D215: collect before anything else can throw, or the spans this tick
+        // consumed would be lost to the ending.
+        try { StatTracker.tapEngine(); StatTracker.collectEnding(spans); } catch (eCollect) {}
 
         // D167: read the score notification BEFORE observing, because pinning
         // the slot compares this turn's globals against the previous sample --
@@ -2940,6 +3089,8 @@ var StatTracker = {
 
         StatTracker.observe(mem, StatTracker.statusText());
         StatTracker._pendingDelta = null;
+
+        try { StatTracker.settleEnding(); } catch (eEnding) {}
 
         if (fresh) {
             try {
@@ -4175,6 +4326,8 @@ var StatTracker = {
                 if (!StatTracker._submitUnsubscribe && TurnRecorder.subscribeAcceptedSubmit) {
                     StatTracker._submitUnsubscribe = TurnRecorder.subscribeAcceptedSubmit("d204-stat-ledger", function (event) {
                         StatTracker._lastSubmission = event;
+                        StatTracker._engineOut = "";   // D215: engine output belongs to one submission
+                        StatTracker._engineCapture = event.source !== "stat-probe" && StatTracker.RESTORE_LIKE.test(String(event.command || ""));
                     });
                 }
                 if (!StatTracker._analyzerBound && TurnRecorder.registerAnalyzer) {

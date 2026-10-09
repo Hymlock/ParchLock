@@ -21,6 +21,15 @@ global.localStorage = {
 
 const S = require(path.resolve(__dirname, "..", "js", "StatTracker.js"));
 
+// D215 P-DEATH: endings are decided once per player submission at the next
+// input request, from the submission's output. This stands in for the DOM.
+const END_MENU = "Would you like to RESTART, RESTORE a saved game, give the FULL score for that game or QUIT?";
+function ending(text, submissionId, command) {
+    S._lastSubmission = { submissionId: submissionId, pageEpoch: "stat-tracker", command: command || "north", source: "typed" };
+    S.collectEnding([{ text: text }, { text: END_MENU }]);
+    S.settleEnding({ request: {}, line: true });
+}
+
 // ---- status columns ------------------------------------------------------
 // wump2ka, measured: "Room #2   Score: 1   A large, textured cavern   Health: 81%"
 let cols = S.splitColumns("Room #2   Score: 1   A large, textured cavern   Health: 81%");
@@ -154,13 +163,13 @@ assert(S.bannersIn("*** You have been eaten by a dragon ***")[0].kind === "death
 
 // ---- death counting ---------------------------------------------------
 S.reset();
-S.observeText("*** You have died ***", 1);
+ending("*** You have died ***", 1);
 assert(S.model().deaths === 1, "a death is counted");
-S.observeText("*** You have died ***", 1);
+ending("*** You have died ***", 1);
 assert(S.model().deaths === 1, "the SAME banner re-rendered on the same turn is not a second death");
-S.observeText("*** You have died ***", 2);
+ending("*** You have died ***", 2);
 assert(S.model().deaths === 2, "dying again on a later turn does count");
-S.observeText("*** You have won ***", 3);
+ending("*** You have won ***", 3);
 assert(S.model().deaths === 2 && S.model().wins === 1, "winning does not increment deaths");
 
 // ---- the score cue must not fire on a decrease -----------------------
@@ -214,7 +223,7 @@ assert(S.visibleStats().length === 0,
 // ---- deaths appear only once they exist ------------------------------
 S.reset();
 assert(!S.visibleStats().some(s => s.key === "deaths"), "a fresh module shows no death row");
-S.observeText("*** You have died ***", 1);
+ending("*** You have died ***", 1);
 assert(S.visibleStats().some(s => s.key === "deaths" && s.value === 1),
     "the death row appears with the first death");
 
@@ -664,11 +673,11 @@ assert(S.parseScoreDelta("Your score has just gone up by twenty-eight points. Yo
     "D204 combines every score delta in one settled output batch");
 {
     S.reset();
-    S.observeText("*** You have died ***", 1, "north", { spanId: "line:1:0:0:21", submissionId: 1 });
+    ending("*** You have died ***", 1);
     const deaths = S.model().deaths;
     S.Resync();
     assert(S.model().deaths === deaths, "D204 restore invalidates readings without erasing playthrough deaths");
-    S.observeText("*** You have died ***", 2, "north", { spanId: "line:2:0:0:21", submissionId: 2 });
+    ending("*** You have died ***", 2);
     assert(S.model().deaths === deaths + 1, "D204 counts a later repeated death from a distinct output span");
 }
 
@@ -834,16 +843,16 @@ vm.createContext(lifecycle);
 vm.runInContext(fs.readFileSync(path.resolve(__dirname, '..', 'js', 'UndoRestoreSync.js'), 'utf8'), lifecycle);
 vm.runInContext(fs.readFileSync(path.resolve(__dirname, '..', 'js', 'MapTopology.js'), 'utf8'), lifecycle);
 S._model = S.blank();
-S.observeText('*** You have won ***', 1, '', { spanId: 'lifecycle-win' });
+ending('*** You have won ***', 901);
 S.model().deaths = 2;
 lifecycle.UndoRestoreSync.resync('restore_file');
-S.observeText('*** You have won ***', 1, '', { spanId: 'lifecycle-win' });
+ending('*** You have won ***', 901);
 assert(S.model().wins === 1 && S.model().deaths === 2, 'real restore resync preserves counters and banner dedup');
 lifecycle.UndoRestoreSync.resync('undo');
 assert(S.model().wins === 1 && S.model().deaths === 2, 'real undo resync preserves playthrough counters');
 lifecycle.UndoRestoreSync.resync('restart');
 assert(S.model().wins === 0 && S.model().deaths === 0 && !Object.keys(S.model().seenBanners).length, 'real restart resync clears counters and banner ids');
-S.observeText('*** You have won ***', 1, '', { spanId: 'lifecycle-win' });
+ending('*** You have won ***', 901);
 assert(S.model().wins === 1, 'restart permits the same terminal span in the new playthrough');
 S.model().deaths = 2;
 lifecycle.MapTopology._awaitingRestoreAnswer = true;
@@ -865,11 +874,11 @@ assert(S.model().stats.health.unit === 'ordinal', 'stale RAM health may be repla
 // D205 consensus statistics extensions: observations are not learned readings.
 S._model = S.blank();
 S._events = [];
-S.observeText('*** You have won ***', 1, '', { spanId: 'terminal-win' });
-S.observeText('*** You have won ***', 1, '', { spanId: 'terminal-win' });
+ending('*** You have won ***', 902);
+ending('*** You have won ***', 902);
 assert(S.model().wins === 1 && S.visibleStats().some(s => s.key === 'wins' && s.value === 1), 'wins surface once from the existing terminal event classifier');
 S.forgetReadings(S.model(), false);
-S.observeText('*** You have won ***', 1, '', { spanId: 'terminal-win' });
+ending('*** You have won ***', 902);
 assert(S.model().wins === 1, 'restore readings preserve playthrough event dedup');
 S.save('wins-fixture', S.model());
 assert(S.load('wins-fixture').wins === 0, 'wins are not rehydrated as learned facts');

@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 98 decisions across
-8344 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 99 decisions across
+8559 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -21,7 +21,8 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 
 | D | claim | files | games |
 |---|-------|-------|-------|
-| D214 | Underlines and generic ambiguous words; Yourself/NPC possession; ZIL room predictions with hint-only routing; guard repairs |  |  |
+| D215 | Full-app beautification sweep, surface by surface, preserving functional reserves |  |  |
+| D214 | Underlines follow their words; replies are observed; dictionary-equivalent and pronoun-safe triggers; Yourself breadth |  |  |
 | D213 | Enemy interactions and in-room steps need RAM or grammar evidence (Step 5) |  |  |
 | D212 | Pronunciation catalogue gathered from all projects | js/PronunciationCatalog.js js/ReadAloud.js |  |
 | D211 | Voice input lifecycle: settle barrier, bounded waits, backoff, diagnostics |  |  |

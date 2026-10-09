@@ -98,3 +98,74 @@ Every value matches the real game, with no phantoms.
   destinations; a conflicting calibrator vote falls back.
 - **Controls:** Anchorhead (Inform) and wump2ka unchanged; harness
   exit-calibrator, d23 and d48 green.
+
+## Revision Z1-R1 (answering codex #1948/#1949; measured with harness/_zil_z1_probe.js)
+
+**Reuse D198, with no second classifier.**
+`GrammarProvider._d198RawDictionary` (version-aware text width: 4 bytes in
+v3, 6 bytes in v4+) plus `decodeD198().classification === "confirmed-zil-family"`
+are the gates. Direction entries are decoded with the SAME first-POS
+selector D198 already uses for verbs (Infocom parser WT?, per the primary
+source codex cited):
+- PS?DIRECTION is flag 0x10;
+- the value is at data[1] when (flags & 3) === 3 (P1?DIRECTION), else data[2].
+
+Measured:
+
+| Game | Version | Directions decoded | Notes |
+|---|---|---|---|
+| Zork I | 3 | 13 direction properties with every alias: n/north 31, ... out 20, land 19 | 0 conflicts; same values the calibrator learned |
+| Hitchhiker's | 5 | 12 properties | Nautical aliases: port=w 57, starboard=e 61, fore=n 63, aft=s 59; 0 conflicts |
+| Planetfall | 3 | 12 properties | ccw/cw/port/starboard/fore/aft included |
+
+**Exit forms by version** (codex's Trinity constants):
+- v3: UEXIT 1, NEXIT 2, FEXIT 3, CEXIT 4, DEXIT 5. The room is a byte.
+- v4+: UEXIT 2, NEXIT 3, FEXIT 4, CEXIT 5, DEXIT 6. The room is a word, CEXIT's
+  flag is byte 4, and DEXIT's door object is word 1.
+
+Measured:
+- Zork I, West of House: as in the first table.
+- Planetfall, Deck Nine: DEXIT exits east to the Reactor Lobby (door 230),
+  west and in to the Escape Pod (door 231), up to the Gangway (door 229).
+- HHG, Bedroom: south, down and out are all FEXIT (routine-decided), so
+  correctly no static destination.
+
+Supported: pre-v6 ZIL family only, the same bound as D198. Anything else (v6,
+Inform, Glulx, an unclassified family) is absent, and the calibrator path is
+unchanged.
+
+**Validation and rejection, per build:**
+1. A direction word whose two readings conflict rejects the whole mapping.
+2. Every decoded property must be unique per word, below the property-defaults
+   count, and present in at least one room.
+3. A property length not in the version's table is unknown: no emission.
+4. Destinations must be valid object ids that pass `isPlausibleMapRoom`.
+   String and routine pointers are never dereferenced as rooms.
+5. If ExitCalibrator holds a PROVEN direction that disagrees with the decoded
+   mapping, the decoder is disabled for that story and the calibrator alone
+   is used.
+
+**Authority (codex's dynamic-override point, Trinity V-WALK FLIP/SHADOWY).**
+A decoded exit is a VISIBLE HINT only: it shows the faded or dotted room and
+direction on the map and World Map, and adds the direction to the radial. It
+is NOT a pathable travelled edge, and auto-travel never routes through it,
+until a real walk (state-delta) or current permission evidence corroborates
+it. Specifically:
+- UEXIT: a hinted destination;
+- CEXIT and DEXIT: hinted with a conditional or door marker;
+- NEXIT and FEXIT: a direction with no destination.
+A real move always wins.
+
+**Prior-fix guard:**
+
+| Decision | What must hold | Proof |
+|---|---|---|
+| D61 | Inform look-ahead unchanged | d23-lookahead-labels, d46-room-identity |
+| D134 | the calibrator still owns confirmation | exit-calibrator |
+| D155 | doors are never destinations of travel edges | DEXIT stays a hint |
+| D35/D55 | wump2ka door_dir/xN untouched (Inform) | d170 |
+| D48 | a single room per destination | d48 |
+| D202/World Map | hinted rooms faded, links dotted | world-map-ui |
+
+Module controls: Anchorhead and wump2ka unchanged; Zork I, Planetfall and
+HHG decode as measured.
