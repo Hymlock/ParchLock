@@ -1283,3 +1283,6 @@ Start-screen overhaul accepted2086 after St1-St4 repairs: updated information, r
 Directions close and desktop Menu spacing accepted2102: native24 width/theme positives, startup and focused radial guards pass; exact outer radius181, mobile/input/object contexts retained. Shell146/source only. Browsed-map controls, death and icon selection remain before requested APK.
 
 G3 browsed-room controls accepted2138: fade in place, first icon touch reveals without travel; name/body browsing immediate. Interrupted pointer state reset and keyboard behavior verified. Focused45, d48 3, map pathing and peer WorldMap52 pass. Shell147/source only; death and native icon rotation loops continue before APK.
+
+
+D215 death and approved icons closed: death implementation af89695 independently accepted2169 (focused35, render10, native HHG death1); icon assets13b101f independently accepted2168 (166 packing checks). Full artwork selection is approved. Shell148 precaches the three manifest icon files and refreshes the changed StatTracker. Native rotation R3 consensus2171 is implementing before the requested APK; no new APK yet.

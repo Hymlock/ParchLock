@@ -18,7 +18,8 @@
  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
  * up the new files instead of serving a stale cached shell forever.
  */
-const CACHE_VERSION = "parchlock-shell-v147"; // Post-APK63 HHG noun-safe links, full inventory labels, ephemeral radial pool and Take/root evidence; APK63: D214 underlining/possession, generic ambiguous base words, ZIL room hints and World Map; APK62: BufferRevision cache + StatTracker render/version skips; Treasures burdened prowess; inventory hidden/worn facts, Yourself, state labels; TTS callback repair; Close ✕ glyph everywhere; native dialog Edit row; Export naming repairs + Tools beautification + legacy restore label; Export naming: readable unique download names (#1746); E4 rev: save-concrete transcript; E3 warning before guards; E5b prowess family; E3 install-owned inventory WARNING; E4 save-attached running transcript; Worn learner uses the game's own inventory listing; Inventory holder learned from the game's own INVENTORY routine (Suspect); Worn: one owner per story (declared > measured fact > learned from inventory opcodes > Inform default); D152/D153: interpreter-only slot2 seeding and turn-counter ambiguity repair.
+const CACHE_VERSION = "parchlock-shell-v148"; // Post-APK63 HHG noun-safe links, full inventory labels, ephemeral radial pool and Take/root evidence; APK63: D214 underlining/possession, generic ambiguous base words, ZIL room hints and World Map; APK62: BufferRevision cache + StatTracker render/version skips; Treasures burdened prowess; inventory hidden/worn facts, Yourself, state labels; TTS callback repair; Close ✕ glyph everywhere; native dialog Edit row; Export naming repairs + Tools beautification + legacy restore label; Export naming: readable unique download names (#1746); E4 rev: save-concrete transcript; E3 warning before guards; E5b prowess family; E3 install-owned inventory WARNING; E4 save-attached running transcript; Worn learner uses the game's own inventory listing; Inventory holder learned from the game's own INVENTORY routine (Suspect); Worn: one owner per story (declared > measured fact > learned from inventory opcodes > Inform default); D152/D153: interpreter-only slot2 seeding and turn-counter ambiguity repair.
+// D215: approved storybook icons and bounded authored-ending death counter.
 const RUNTIME_CACHE = "parchlock-runtime-v1";
 
 const APP_SHELL = [
@@ -42,6 +43,9 @@ const APP_SHELL = [
     "img/apple-touch-icon-76x76.png",
     "img/apple-touch-icon.png",
     "img/favicon.ico",
+    "img/icons/archive-192.png",
+    "img/icons/archive-512.png",
+    "img/icons/archive-maskable-512.png",
     "img/ParchLockSplash.css",
     "img/ParchLockSplash.js",
     "img/parchlock-splash-archive-door.png",
