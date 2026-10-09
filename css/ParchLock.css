@@ -4866,3 +4866,24 @@ body.pl-mobile #equipment-controls { box-sizing: border-box; max-height: max(132
 
 #equipment .equip-tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 6px; }
 #equipment .equip-state { white-space: nowrap; padding: 2px 5px; border: 1px solid var(--pl-border); border-radius: 5px; line-height: 1.35; }
+
+/* D215 surface2: measured bottom exits clear the unchanged handle/input. */
+:root { --pl-bottom-band-h: 0px; --pl-bottom-exit-reserve: 0px; }
+body.pl-mobile #exits .row.horizontal.bottom {
+ bottom: calc(var(--pl-input-protect-height) + 28px + var(--pl-kb-inset));
+ height: auto; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); align-items: end;
+}
+body.pl-mobile #exits .row.horizontal.bottom > .exit {
+ height: auto; min-width: 0; flex: 1 1 0; width: auto;
+}
+body.pl-mobile #exits .row.horizontal.bottom > .exit:not(.shown) { display: none; }
+body.pl-mobile #exits .row.horizontal.bottom > .dir-sw { grid-column: 1; grid-row: 1; }
+body.pl-mobile #exits .row.horizontal.bottom > .dir-s { grid-column: 2; grid-row: 1; }
+body.pl-mobile #exits .row.horizontal.bottom > .dir-se { grid-column: 3; grid-row: 1; }
+body.pl-mobile #exits .row.horizontal.bottom .room-name {
+ max-width: 100%; overflow-wrap: anywhere; white-space: normal;
+}
+body.pl-mobile #windowport .BufferWindow {
+ padding-bottom: calc(var(--pl-input-protect-height) + max(28px,var(--pl-bottom-exit-reserve)) + 8px + var(--pl-kb-inset)) !important;
+}
+body.pl-mobile #equipment { --pl-float-reserve: calc(var(--pl-input-protect-height) + var(--pl-bottom-exit-reserve)); }

@@ -60,6 +60,12 @@ const fs = require('node:fs');
             'ShowInventory opens the equipment sheet');
         assert(await page.locator('#equipment-list .equip-row').count() > 0,
             'and the equipment sheet lists what the player is carrying');
+        // The first inventory open intentionally presents the install-owned
+        // warning. Acknowledge that dialog before testing other UI surfaces.
+        if (await page.locator('#message').isVisible()) {
+            assert.match(await page.locator('#message').innerText(), /WARNING/);
+            await page.evaluate(() => Message.Hide());
+        }
         // The sheets swap, so hand the map back before the map-toolbar steps.
         await page.evaluate(() => {
             if (typeof EquipmentUI !== 'undefined' && EquipmentUI.Hide) EquipmentUI.Hide();

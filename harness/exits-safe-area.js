@@ -107,4 +107,7 @@ assert(/data-pl-sig/.test(mb), "nonCardinalSpokes no-ops when its content is unc
 assert(!/setAttribute\("style"/.test(mb), "the spoke wrapper no longer carries an inline style attribute (it is a styled band member now)");
 
 console.log("\n" + pass + " PASS / " + fail + " FAIL");
-process.exit(fail ? 1 : 0);
+if (fail) process.exit(1);
+if (process.argv.includes("--live")) {
+    require("./exits-bottom-live")().catch(error => { console.error(error); process.exitCode = 1; });
+}

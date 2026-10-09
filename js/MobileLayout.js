@@ -225,8 +225,26 @@ var MobileLayout = {
             if (!el) return;
             MobileLayout._bandBound = true;
             var lastH = -1;
+            var lastBottomH = -1;
+            var observedBottom = null;
+            var bottomObserver = new ResizeObserver(function () { publish(); });
             var measure = function () {
                 try {
+                    // D215: the lower labels reflow independently of the top
+                    // band. Publish their real height; no exits reserve nothing.
+                    var bottom = el.querySelector(".row.horizontal.bottom");
+                    if (bottom !== observedBottom) {
+                        bottomObserver.disconnect();
+                        observedBottom = bottom;
+                        if (bottom) bottomObserver.observe(bottom);
+                    }
+                    var bh = document.body.classList.contains("pl-mobile") && bottom && bottom.getClientRects().length
+                        ? Math.ceil(bottom.getBoundingClientRect().height) : 0;
+                    if (bh !== lastBottomH) {
+                        lastBottomH = bh;
+                        document.documentElement.style.setProperty("--pl-bottom-band-h", bh + "px");
+                        document.documentElement.style.setProperty("--pl-bottom-exit-reserve", (bh > 0 ? 28 + bh + 8 : 0) + "px");
+                    }
                     // NOT offsetParent: the band is position:fixed, and
                     // offsetParent is null for fixed elements in every
                     // browser, so the usual --pl-statusbar-h-style guard
