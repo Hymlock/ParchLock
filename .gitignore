@@ -76,3 +76,16 @@ Thumbs.db
 .DS_Store
 .vscode/
 .idea/
+
+# ---- local scratch and runtime data (D215 cleanup, claude/codex consensus) ----
+# Kept on disk, never versioned: scratch from both seats, status-audit dumps,
+# Glulx runtime data written beside the launcher, and native hook build output.
+/tmp/
+/work/status-audit/
+/shot.png
+/*.glkdata
+/native-hooks/build/
+# Future scratch probes stay local; tracked probes cited as evidence are unaffected.
+harness/_*.js
+harness/_*.json
+harness/_*.txt
