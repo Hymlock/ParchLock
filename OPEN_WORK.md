@@ -214,12 +214,26 @@ APK63 complete: source checkpoint0e9a9faffaee3632a6f7c8b74fc294bf5cadb571; Andro
 
 ## Queued after the current goals and APK (operator, 2026-10-09)
 
-- [ ] Begin a separate comprehensive in-code and out-of-code text/document sweep for accuracy, current information, thoroughness, permissions and attribution. Cover app interfaces, help, documentation, exported text and authored game text. Check ownership and permissions before proposing changes to third-party story text; preserve original authors' credits and licensed notices.
-- [ ] Add brief, accurate credits to Hymlock Groves and the AI systems actually used, including generated picture artwork, wherever relevant. Verify contribution and image provenance rather than inventing credits.
-- [ ] Coordinate the sweep with Claude through blind investigation, proposal review and implementation audit; keep planning and architectural records current. This work starts after the current fixes and APK, not during their completion.
+- [x] Begin a separate comprehensive in-code and out-of-code text/document sweep for accuracy, current information, thoroughness, permissions and attribution. Cover app interfaces, help, documentation, exported text and authored game text. Check ownership and permissions before proposing changes to third-party story text; preserve original authors' credits and licensed notices.
+- [x] Add brief, accurate credits to Hymlock Groves and the AI systems actually used, including generated picture artwork, wherever relevant. Verify contribution and image provenance rather than inventing credits.
+- [x] Coordinate the sweep with Claude through blind investigation, proposal review and implementation audit; keep planning and architectural records current. This work starts after the current fixes and APK, not during their completion.
 
 
 APK64 verified: checkpoint85c8fee88f179b1d61510a9f9abbea20e5e775ea; BUILD64/versionCode37/versionName2.0.0/cache149. Native rotation a1e5035 independently accepted2181 after final Java compile, six real desktop shortcut checks and native-warning browser verification. Gradle assembleDebug succeeded7s; v2 signature verified;494 bundled source-byte matches and350 source-archive byte matches. Artifact C:/Users/hymlo/Downloads/ParchLock-dist/ParchLock-build64.apk:87770763 bytes, SHA256515a78786841be53ce02e3722c7a27e7309fdb8a48a93d34b672bbbf2afb460b. Source archive SHA256caf7c0fd67eba341bd20d495ac88ae401e578d4556ec920f99583cd473462805. Prior APK63 and generated directories preserved in the operator-named archive. Experimental base-icon rotation remains off by default; physical launcher checks belong to the operator after delivery. Independent final package confirmation requested from Claude2185. No operator overall completion recorded. The separate adversarial text/credits/permissions review is next.
 
 
 Post-APK continuation: Claude independently confirmed APK64 in2186 and canonical closeout53ea9c8. Cleanup R2 implementation27d60e7 independently accepted2194: exact191 removals,14 cited retained probes,15 ignore controls, player data preserved and no runtime changes; focused death35/0. Both post-APK text investigations are sealed and compared (Codex8d18947/7cbbb77, Claude2195). Text proposal R1 split2196 plus dependency-notice2197/cache2198 amendments awaits peer adversarial verdict; no product text changed. APK64 remains the accepted pre-text deliverable. Unknown splash provenance and public-release rights remain recorded, not assumed. My background watcher was stopped after authenticated bus500 EMFILE; active-turn reads restored communication, shared harness untouched.
+
+
+## Post-APK text and save-state loop closeout (2026-10-09)
+
+Text implementation accepted2210/2211: owned app prose/documents/exports and attribution reviewed; census108 owned text/source files and636 candidate text sites. Third-party story bytes and original notices preserved; no claim that every dynamic story phrase was manually read or that development-catalogue inclusion grants shipping rights.
+
+- [ ] Operator release decisions: confirm generated-art release rights and ParchLock name clearance (recorded, not inferred).
+- [x] Individual native saves retain their own map and observed display labels; imported snapshots validate exact executable digest and participate in rollback. Missing snapshots give clean state.
+- [x] Fresh new games reset the working map after recoverable flagged Maps archival; genuine engine autorestore retains the current state. Save A/B native Zork restores match their own maps.
+- [x] Zork boot retains current actionable links without a diagnostic LOOK; actual VM hooks own successful restore/restart, with coalesced fallback for other engines.
+- [x] Treasures restores all six observed full carried names from a newly created native save without another INVENTORY turn. Current descriptors and command ownership remain authoritative.
+- [x] Witnessed Treasure custom death counts once and displays a nonblocking notice; isolated phrase, quote, replay and app-probe exclusions retained.
+
+Commits8291b5f/a8364a7/36d64f6; mutual audit2235/2236. Focused SaveState34/0, native transcript15/0, command-disambiguation51/0, death40/0, label ownership and restore ordering PASS. Native Treasure save/restore and actual cliff death PASS; phone notice geometry/screenshot checked. Source shell151; APK64 is still the previously delivered shell149 binary. No new APK or operator overall completion recorded.

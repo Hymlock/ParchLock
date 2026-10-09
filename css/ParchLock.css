@@ -5032,11 +5032,11 @@ body.main-menu #toolbar button, body.main-menu #toolbar button span { font-famil
 /* Authored endings: visible outside Equipment, without intercepting input. */
 #pl-ending-notice {
     position: fixed;
-    top: max(12px, env(safe-area-inset-top));
+    bottom: calc(max(108px, var(--pl-input-protect-height, 0px)) + var(--pl-bottom-exit-reserve, 0px) + var(--pl-kb-inset, 0px) + 12px);
     left: 50%;
     transform: translateX(-50%);
     z-index: 1500;
-    max-width: min(90vw, 32rem);
+    width: min(calc(100vw - 40px), 32rem);
     box-sizing: border-box;
     padding: 12px 18px;
     border: 1px solid var(--pl-accent, #70ceb0);
