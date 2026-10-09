@@ -112,19 +112,21 @@ their structure is proved.
 
 ## Equipment And Status
 
-**Equipment** lists what you carry and wear, grouped under **Yourself** and any
-open containers, with tags such as *worn* and *open* where the story reports
-them. Drag an item onto an open container to put it in, or onto Yourself to
-take it out; right-click or touch and hold an item for its actions. **Options**
-holds sorting, search, the container view, category filters and **Refresh**.
-How much a story reveals varies: some stories expose little, and in some,
-asking for inventory or status uses a game turn (ParchLock warns you when that
-happens).
+**Equipment** lists what you carry and wear, grouped under **Yourself** and the
+containers that hold things, with tags such as *worn* and *open* where the story
+reports them. Drag an item onto an open container to put it in, or onto Yourself
+to take it out; right-click or touch and hold an item for its actions.
+**Options** holds sorting, search, the container view, category filters and
+**Refresh**. How much a story reveals varies, and some stories expose little. In
+some stories, checking inventory or status uses a game turn; for each installed
+module ParchLock warns you once, before its first Equipment check.
 
 The status card above the list shows what the story tracks, such as score,
-turns or a progress line. When a story ends in a death or a win, ParchLock
-counts it as **Deaths this playthrough** or **Wins this playthrough**; these
-appear once they are above zero and reset with a new game or RESTART.
+turns or a progress line. When ParchLock recognises the story's own ending as a
+death or a win (for example "You have died"), it counts it as **Deaths this
+playthrough** or **Wins this playthrough**. Endings a story describes in its own
+way may not be recognised. The counts appear once they are above zero and reset
+with a new game or RESTART.
 
 ## Saves And Local Data
 
@@ -142,17 +144,18 @@ and browser saves. Android backup is disabled; reinstalling starts empty.
 ParchLock's icon is a storybook with one of the four opening scenes on its left
 page.
 
-- **Android:** once, ParchLock offers to add a home-screen icon of its own;
-  Android then asks you to confirm. That icon changes to the next scene each
-  time you leave ParchLock (not while you are using it, its file pickers or share
-  screens), and it stays where you put it. The app-drawer icon does not change.
-  **Options** -> **App icon** can add the icon later, and offers an
-  **experimental** setting to change the app icon too; it warns first, because
-  some phones may remove or move a home-screen icon when the app icon changes.
+- **Android:** by default, on phones whose launcher supports it, ParchLock offers
+  once to add a home-screen icon of its own; Android then asks you to confirm.
+  That icon is updated in place to the next scene each time you leave ParchLock
+  (not while you are using it, its file pickers or share screens). By default
+  the app-drawer icon does not change. **Options** -> **App icon** can add the
+  icon later, and offers an **experimental** setting that changes the app icon
+  too; it warns first, because some phones may remove or move a home-screen icon
+  when the app icon changes. How each launcher shows these icons can vary.
 - **PC:** the first time you run `ParchLock.exe` it asks whether to add a desktop
   shortcut. If you agree, that shortcut's picture changes each time you close
-  ParchLock. It never touches other shortcuts and never recreates one you
-  delete. Run `ParchLock.exe --desktop-shortcut` to be asked again.
+  ParchLock. It never touches other shortcuts, and it never recreates a deleted
+  shortcut by itself; run `ParchLock.exe --desktop-shortcut` to be asked again.
 
 Opening ParchLock from one of these icons starts on the same scene.
 
