@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 329 headings; 103 decision rows; 432 registered units.
 **Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
-`8cafbe8657a4e1478217fca1f160a2f2139fd668bc33488f6126ddcf89004027`
+`ccd5394dcb0cada67f66e2f60ea90bbd53afd03ada2d837f0509ae4d68c2a468`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -8686,3 +8686,16 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
   - **I3 (codex).** `ZvmCapture` passes the VM instance, and the first restart of each VM instance (a WeakSet) skips the resync.
   - **I4 (codex).** The exact native Treasures ending "*** YOUR BODY IS NEVER FOUND ***" is added to DEATH_PHRASE (evidence #2220), plus a non-blocking notice when a death or win is counted.
   - **Ownership.** Claude owns SaveState, the Transcript hooks, packaging and the canonical records. Codex owns Actionable, UndoRestoreSync, ZvmCapture, StatTracker, the CSS and the fixtures.
+- **Save-tied state implemented and closed by mutual acceptance:**
+  - **Commits.** Claude 8291b5f: SaveState plus the Transcript hooks, packages and uninstall. Codex a8364a7: the label API, the boot-link retention, the Treasures ending and the notice. Codex 36d64f6 (R3): successful VM hooks own restore, undo and restart; the generic fallback is coalesced for other engines.
+  - **Live proofs:**
+    - Zork boot marks survive (in, west, door, small mailbox).
+    - Save A and save B, RESTART (hint rooms only, plus archives), then restore A and restore B both MATCH.
+    - The Treasures save-and-restore restores all 6 full labels with no INVENTORY.
+    - The Treasures cliff death "*** YOUR BODY IS NEVER FOUND ***" counts 1 and shows "You died. Deaths this playthrough: 1".
+  - **Guards, all exit 0:**
+    - save-state 34/0, save-labels and save-labels-live;
+    - audit-restore-sync (boot identity, late attachment, ownership);
+    - death-terminal 40/0, command-disambiguation 51/0, stat-tracker 211/0;
+    - e4-transcript 15/0.
+  - **Not in APK 64.** It ships in the next build, when the operator asks.
