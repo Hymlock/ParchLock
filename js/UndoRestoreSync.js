@@ -1,13 +1,24 @@
 var UndoRestoreSync = {
     generation: 0,
     pending: false,
+    _commandTimer: null,
     noteCommand: function (cmd) {
         var s = String(cmd || "").trim().toLowerCase();
         if (/^(undo|restore|restart|load)\b/.test(s)) {
+            // An attempted command is not a successful timeline change.
+            if (/^(undo|restore|restart)\b/.test(s) && typeof ZvmCapture !== "undefined" && ZvmCapture.patched
+                && typeof window !== "undefined" && window.__PARCHLOCK_ZVM__) {
+                clearTimeout(UndoRestoreSync._commandTimer);
+                UndoRestoreSync._commandTimer = null;
+                UndoRestoreSync.pending = false;
+                return;
+            }
             UndoRestoreSync.pending = true;
         }
     },
     resync: function (reason) {
+        clearTimeout(UndoRestoreSync._commandTimer);
+        UndoRestoreSync._commandTimer = null;
         UndoRestoreSync.generation++;
         if (typeof LearnedWords !== 'undefined') { LearnedWords.clearProjection(); if (LearnedWords._open) LearnedWords.close(false); }
         UndoRestoreSync.pending = false;
@@ -93,9 +104,12 @@ var UndoRestoreSync = {
         } catch (e) {}
     },
     tick: function () {
-        if (!UndoRestoreSync.pending) return;
-        // Allow terp to apply undo/restore first
-        setTimeout(function () { UndoRestoreSync.resync(); }, 250);
+        if (!UndoRestoreSync.pending || UndoRestoreSync._commandTimer) return;
+        // Coalesced fallback for engines without authoritative ZVM hooks.
+        UndoRestoreSync._commandTimer = setTimeout(function () {
+            UndoRestoreSync._commandTimer = null;
+            if (UndoRestoreSync.pending) UndoRestoreSync.resync();
+        }, 250);
     },
     // D94: opcode-level entry point. js/ZvmCapture.js wraps the VM's
     // restore_undo / restore_file / restart and calls this after a successful
@@ -175,6 +189,9 @@ var UndoRestoreSync = {
             if (!seen && typeof Transcript !== "undefined" && Transcript._booting === true)return;
             UndoRestoreSync._restoreReason = "restart";
         }
+        clearTimeout(UndoRestoreSync._commandTimer);
+        UndoRestoreSync._commandTimer = null;
+        UndoRestoreSync.pending = false;
         if (reason === "restart") {
             var gameKey = typeof ParchLock !== "undefined" ? ParchLock.GameFilename : "";
             if (UndoRestoreSync._startedGameKey === gameKey) UndoRestoreSync._restoreReason = "restart";

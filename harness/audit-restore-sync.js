@@ -140,3 +140,18 @@ console.log('PASS: successful file restore clears stale text then emits one LOOK
     assert.equal(real.sync.generation,2,'late attached VM first real restart is not mistaken for boot');
 }
 console.log('PASS: boot VM identity, late attachment and save-state apply ordering');
+
+{
+    let timerId=0;const timers=new Map();
+    const real={setTimeout(fn){timers.set(++timerId,fn);return timerId;},clearTimeout(id){timers.delete(id);},
+        window:{__PARCHLOCK_ZVM__:{}},ZvmCapture:{patched:true}};
+    vm.createContext(real);vm.runInContext(fs.readFileSync(path.join(__dirname,'../js/UndoRestoreSync.js'),'utf8')+'\nthis.sync=UndoRestoreSync;',real);
+    for(const cmd of ['restore','undo','restart']) {real.sync.noteCommand(cmd);real.sync.tick();}
+    assert.equal(timers.size,0,'native restore attempts never schedule generic resync (cancel/failure keep state)');
+    real.sync.noteCommand('load');real.sync.tick();real.sync.tick();
+    assert.equal(timers.size,1,'custom LOAD fallback is coalesced');
+    real.sync.onStateRestored('restore_file');
+    assert.equal(timers.size,1,'actual successful hook cancels fallback, leaving one authoritative settle');
+    assert.equal(real.sync.pending,false);
+}
+console.log('PASS: successful VM hook owns native timelines; cancelled attempts keep state; fallback coalesced');
