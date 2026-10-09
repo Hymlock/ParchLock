@@ -3392,6 +3392,8 @@ var StatTracker = {
             var chip = document.createElement("div");
             chip.className = "pl-stat pl-stat-" + s.key.replace(/[^a-z0-9]+/gi, "-");
             chip.setAttribute("data-kind", s.kind || "counter");
+            // Presentation only: authored text and ordinal bands need a full-width tile.
+            chip.setAttribute("data-value-type", s.unit === "text" || s.unit === "ordinal" || typeof s.value === "string" ? "text" : "numeric");
 
             var label = document.createElement("span");
             label.className = "pl-stat-label";

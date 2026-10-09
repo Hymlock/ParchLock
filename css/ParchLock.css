@@ -4825,3 +4825,44 @@ body.light #world-map .world-room { background: #fffdf6; }
 }
 #world-map .world-panel[hidden] { display: none; }
 #world-map .world-panel-title { flex: 1 1 100%; font-weight: bold; }
+
+/* Equipment visual follow-up: native controls, full names and existing gestures. */
+#equipment [hidden] { display: none !important; }
+#equipment-options { padding: 0; border: 1px solid var(--pl-border); border-radius: 10px; margin: 0 0 12px; }
+#equipment-options > summary { box-sizing: border-box; min-height: 44px; padding: 8px 12px; list-style: none; font-size: 14px; font-weight: 600; border-radius: 10px; }
+#equipment-options > summary::-webkit-details-marker { display: none; }
+#equipment-options > summary::after { content: ""; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin-left: auto; margin-right: 3px; }
+#equipment-options[open] > summary::after { transform: rotate(225deg); }
+#equipment-options[open] > summary { border-bottom: 1px solid var(--pl-border); border-radius: 10px 10px 0 0; }
+#equipment-options > summary:hover { background: color-mix(in srgb, var(--pl-accent) 10%, transparent); }
+#equipment-controls { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; padding: 12px; margin: 0; }
+#equipment-controls .equip-sort { grid-column: 1/-1; justify-content: space-between; }
+#equipment-controls .equip-sort select { flex: 1; min-width: 0; margin-left: 8px; }
+#equipment-controls input[type="search"] { grid-column: 1/-1; width: 100%; min-width: 0; }
+#equipment-controls select, #equipment-controls input[type="search"], #equipment-refresh { box-sizing: border-box; min-height: 44px; border-radius: 8px; }
+#equipment-controls .equip-check { min-height: 44px; font-size: 12px; }
+#equipment-controls > .equip-check { grid-column: 1/-1; }
+#equipment-controls input[type="checkbox"] { accent-color: var(--pl-accent); width: 16px; height: 16px; flex-shrink: 0; }
+#equipment-controls select { accent-color: var(--pl-accent); }
+#equipment-controls .equip-cats { display: flex; gap: 0 12px; grid-column: 1/-1; width: auto; border-top: 1px solid var(--pl-border); padding-top: 6px; }
+.equip-cats-title { width: 100%; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; opacity: .8; padding: 2px 0; }
+#equipment-refresh { grid-column: 1/-1; background: color-mix(in srgb, var(--pl-accent) 12%, var(--pl-bg)); }
+#equipment :is(summary,select,input,button):focus-visible { outline: 2px solid var(--pl-accent); outline-offset: 2px; }
+#equipment .equip-row { border-radius: 10px; padding: 6px 10px; gap: 8px; }
+#equipment .equip-tags { opacity: 1; color: var(--pl-text); font-size: 12px; font-weight: 400; white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; max-width: 35%; }
+#equipment .equip-hint { opacity: .85; line-height: 1.6; border-top: 1px solid var(--pl-border); padding-top: 12px; }
+#equipment #pl-stats-rows { display: grid; grid-template-columns: repeat(auto-fit,minmax(90px,1fr)); grid-auto-flow: dense; align-items: stretch; }
+#equipment .pl-stat { min-width: 0; border-radius: 8px; }
+#equipment .pl-stat[data-value-type="text"], #equipment .pl-stat-hint { grid-column: 1/-1; }
+body.light #equipment .equip-tags { color: #1e1e1e; }
+/* Reserve the shared fixed controls outside the sheet without moving either handle. */
+body.pl-mobile #equipment { --pl-float-reserve: var(--pl-input-protect-height); height: calc(var(--pl-layout-height) - 8px - var(--pl-safe-top) - var(--pl-kb-inset) - var(--pl-float-reserve)); padding-bottom: calc(28px + var(--pl-safe-bottom)); }
+@media (max-height: 600px) { body.pl-mobile #equipment-options { position: static; } }
+@media (min-width: 1000px) { #equipment-controls { grid-template-columns: repeat(2,minmax(0,1fr)); } #equipment-controls .equip-sort, #equipment-controls > .equip-check { grid-column: auto; } }
+
+body.pl-mobile { --pl-input-protect-height: calc(88px + var(--pl-handle-h,0px) + var(--pl-safe-bottom)); }
+body.pl-mobile.has-line-input #windowport::after, body.pl-mobile.has-char-input #windowport::after { height: calc(var(--pl-input-protect-height) + var(--pl-kb-inset)) !important; }
+body.pl-mobile #equipment-controls { box-sizing: border-box; max-height: max(132px,calc(var(--pl-layout-height) - var(--pl-kb-inset) - var(--pl-float-reserve) - 104px)); overflow-y: auto; overscroll-behavior: contain; }
+
+#equipment .equip-tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 6px; }
+#equipment .equip-state { white-space: nowrap; padding: 2px 5px; border: 1px solid var(--pl-border); border-radius: 5px; line-height: 1.35; }

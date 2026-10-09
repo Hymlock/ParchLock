@@ -692,7 +692,12 @@ var EquipmentUI = {
             if (tags.length) {
                 var tag = document.createElement("span");
                 tag.className = "equip-tags";
-                tag.textContent = tags.join(" · ");
+                tags.forEach(function (state) {
+                    var label = document.createElement("span");
+                    label.className = "equip-state";
+                    label.textContent = state;
+                    tag.appendChild(label);
+                });
                 el.appendChild(tag);
             }
 

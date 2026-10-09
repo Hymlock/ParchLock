@@ -333,7 +333,7 @@
 			<details id="equipment-options">
 				<summary><span id="equipment-options-label">Options</span></summary>
 			<div id="equipment-controls">
-				<label class="equip-ctl" for="equipment-sort">Sort
+				<label class="equip-ctl equip-sort" for="equipment-sort">Sort
 					<select id="equipment-sort">
 						<option value="alpha">Alphabetical (A-Z)</option>
 						<option value="za">Alphabetical (Z-A)</option>
@@ -345,14 +345,15 @@
 				</label>
 				<label class="equip-ctl equip-check"><input type="checkbox" id="equipment-container-view" checked> Container view</label>
 				<input type="search" id="equipment-filter" placeholder="Search items" title="Search equipment by name" aria-label="Search equipment">
-				<div class="equip-cats">
+				<div class="equip-cats" role="group" aria-label="Show item categories">
+					<span class="equip-cats-title">Show</span>
 					<label class="equip-check"><input type="checkbox" id="equipment-cat-worn" checked> Worn</label>
 					<label class="equip-check"><input type="checkbox" id="equipment-cat-carried" checked> Carried</label>
 					<label class="equip-check"><input type="checkbox" id="equipment-cat-containers" checked> Containers</label>
 					<!-- D149: shown only in a module that can actually cast. -->
 					<label class="equip-check" id="equipment-cat-spells-label" hidden><input type="checkbox" id="equipment-cat-spells" checked> Spells</label>
-					<button id="equipment-refresh" type="button" title="Request inventory from the game">Refresh</button>
 				</div>
+				<button id="equipment-refresh" type="button" title="Request inventory from the game">Refresh</button>
 			</div>
 			</details>
 
