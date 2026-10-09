@@ -215,6 +215,8 @@ var ParchLockQol = {
             if (typeof Transcript === "undefined" || !Transcript.exportFor) return Promise.resolve(json);
             var data = JSON.parse(json);
             var names = (data.Save || []).map(s => String(s && s.Key || "")).filter(k => /^dirent:save:/.test(k)).map(k => k.split(":").slice(3).join(":"));
+            // D215: each save's own map and item labels travel with it.
+            try { var states = typeof SaveState !== "undefined" ? SaveState.exportFor(names) : null; if (states) { data.SaveStates = states; json = JSON.stringify(data); } } catch (eStates) {}
             return Transcript.exportFor(names).then(t => { if (t) data.Transcripts = t; return JSON.stringify(data); }, () => json);
         } catch (e) { return Promise.resolve(json); }
     },
@@ -567,6 +569,7 @@ var ParchLockQol = {
             WorkspaceUI.ValidateMap(data);
             // E4: transcript records are validated before anything is changed.
             if (typeof Transcript !== "undefined" && Transcript.validImport && !Transcript.validImport(data.Transcripts)) throw new Error("Invalid transcript records in this package");
+            if (typeof SaveState !== "undefined" && !SaveState.validImport(data.SaveStates)) throw new Error("Invalid save map records in this package");
             if (data.Map.some((room, index) => room.Id !== index || Object.values(room.Exits).some(id => !Number.isInteger(id) || id < 0 || id >= data.Map.length))) throw new Error("Invalid room connections");
             if (data.Save.some(entry => !entry || typeof entry.Key !== "string" || typeof entry.Data !== "string" || !/^(dirent|content):(save|data|transcript|command):[^:]+:.+/.test(entry.Key))) throw new Error("Invalid save entries");
             if (data.Save.length && !ParchLock.GameId) throw new Error("Wait for the story identity before importing saves");
@@ -586,6 +589,16 @@ var ParchLockQol = {
                 });
             }
 
+            // D215: each imported game save gets exactly its packaged map and
+            // labels (or loses an old one), inside this import's rollback.
+            if (typeof SaveState !== "undefined") {
+                var importedNames = data.Save.map(entry => entry.Key).filter(k => /^dirent:save:/.test(k)).map(k => k.split(":").slice(3).join(":"));
+                SaveState.importWrites(data.SaveStates, importedNames).forEach(w => {
+                    previous.push({ Key: w.Key, Data: localStorage.getItem(w.Key) });
+                    if (w.Data === null) localStorage.removeItem(w.Key); else localStorage.setItem(w.Key, w.Data);
+                });
+            }
+
             ParchLockMap.Draw();
             ParchLockMap.RebuildRoomsList();
             ParchLockMap.RebuildNotesList();
@@ -593,6 +606,7 @@ var ParchLockQol = {
             ParchLockMap.PersistenceBlocked = false;
             ParchLockMap.Save();
             try { if (typeof Transcript !== "undefined" && Transcript.importRecords && data.Transcripts) Transcript.importRecords(data.Transcripts); } catch (eTx) {}
+
             Message.Show("Import Complete", "The save package and map data were imported.");
         }
         catch(e) {

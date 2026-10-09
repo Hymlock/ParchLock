@@ -519,6 +519,9 @@ var ModuleLibrary = (function () {
         // E3: uninstalling (remove, hide, remove-all) re-arms the module's
         // one-time inventory warning for a later reinstall.
         try { localStorage.removeItem(inventoryWarningKey(path)); } catch (eW) {}
+        // D215: the map and label snapshots of its saves, keyed by the same
+        // executable digest -- read before removeTranscript deletes that key.
+        try { if (typeof SaveState !== "undefined") SaveState.removeStory(localStorage.getItem(transcriptDigestKey(path))); } catch (eSs) {}
         // E4: uninstalling removes the module's whole transcript.
         removeTranscript(path);
     }

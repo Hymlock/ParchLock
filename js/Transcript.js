@@ -159,6 +159,8 @@ var Transcript = {
                 if (Transcript._booting) return;   // the VM restarts once while booting
                 Transcript.collect();
                 Transcript.resetView([]);
+                // D215: the map and labels follow the game to a new start.
+                if (typeof SaveState !== "undefined") SaveState.onLifecycle("restart");
             } else if (name === "restore_file" && success) {
                 if (isAutorestore) { Transcript._autorestored = true; return; }
                 Transcript.commitRestore();
@@ -173,7 +175,11 @@ var Transcript = {
         Transcript.resetView(token || []);
         // The loaded save names the transcript export even when it predates
         // transcripts (no token): the restore itself succeeded with that file.
-        if (c && c.usage === "restore" && c.name && Date.now() - c.at < 120000) Transcript.currentSaveLabel = c.name;
+        var restoredName = c && c.usage === "restore" && c.name && Date.now() - c.at < 120000 ? c.name : "";
+        if (restoredName) Transcript.currentSaveLabel = restoredName;
+        // D215: stage that save's map and labels; resync applies them. A
+        // successful restore whose save is unknown restores a clean state.
+        if (typeof SaveState !== "undefined") SaveState.onLifecycle("restore", { name: restoredName });
         Transcript.append("[Restored" + (c && c.name ? " “" + c.name + "”" : "") + "]");
     },
     commitSave: function (name) {
@@ -182,6 +188,8 @@ var Transcript = {
         Transcript.meta.saves[name] = Transcript.closeView();   // the invisible token
         Transcript.saveMeta();
         Transcript.writeLines(toWrite);
+        // D215: the map and item labels are saved with the game as well.
+        if (typeof SaveState !== "undefined") SaveState.onLifecycle("save", { name: name });
     },
 
     // ---- native Dialog (shared by ZVM and Quixe) -----------------------
@@ -308,7 +316,11 @@ var Transcript = {
                 Transcript._booting = false;
                 Transcript.reconcileSaves();
                 // Same line of play only after an OBSERVED engine autorestore.
-                if (!(Transcript._autorestored && Transcript.meta.view.length)) Transcript.resetView([]);
+                if (!(Transcript._autorestored && Transcript.meta.view.length)) {
+                    Transcript.resetView([]);
+                    // D215: a fresh start is a new game for the map too.
+                    if (typeof SaveState !== "undefined") SaveState.onLifecycle("boot");
+                }
             }
             Array.prototype.forEach.call(lines, function (el) { Transcript.recordLine(el, false); });
         } catch (e) {}
@@ -387,6 +399,7 @@ var Transcript = {
     forgetSaves: function (names) {
         if (!Transcript.meta) return Promise.resolve();
         (names || []).forEach(function (n) { delete Transcript.meta.saves[n]; });
+        if (typeof SaveState !== "undefined") SaveState.onLifecycle("forget", { names: names || [] });
         Transcript.saveMeta();
         return Transcript.collectGarbage();
     },
