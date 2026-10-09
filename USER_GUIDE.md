@@ -35,20 +35,23 @@ can still reject a structurally plausible action.
 The interface adapts to portrait and landscape. Touch and hold the command line
 or submit arrow for about half a second. When the radial appears, choose
 **Tools** for the complete game and app menu. A quick tap on the command line
-opens the keyboard normally. Tap the faint right-edge tab to open or close the
-map. The submit button handles line and single-key prompts. The microphone defaults to
+opens the keyboard normally. The tabs on the right edge open the **World** map
+(globe), the local **Map** and **Equipment**; tap a tab again to close it. The
+submit button handles line and single-key prompts. The microphone defaults to
 hold-to-talk; Options can switch it to tap-to-toggle. Speech recognition is
 provided by the operating system or browser and may use its provider's network.
 
-A short interactive tutorial appears once, the first time you open ParchLock,
-on both mobile and desktop. It walks through choosing a story, playing one
-(commands, actionables, the game radial and Tools, your directions handle,
-voice input, nearby-room banners, and menus that wait for one key), your full
-map, and finishes at the real module library -- it never starts, preselects,
-or resumes an actual story along the way. Skip works the same way as
-finishing it. Use **Options** -> **Replay tutorial** to see it again (it warns
-before leaving a story you're playing), or **Reset tutorial** to have it show
-again automatically the next time you open the module library.
+A short tutorial appears once, the first time you open ParchLock, on both
+mobile and desktop. It is a series of information cards drawn over the real
+app, each read aloud; while it runs, the screen underneath is shown but cannot
+be operated. It begins at the module library, then continues on the play screen
+after you choose a story, explaining commands, highlighted words, the game
+radial and Tools, the directions handle, voice input, nearby-room banners, menus
+that wait for one key, the map and Equipment. When it ends the story restarts so
+your play begins fresh. **Skip** ends it the same way. Use **Options** ->
+**Replay tutorial** to see it again (it warns before leaving a story you're
+playing), or **Reset tutorial** to have it show again automatically the next time
+you open the module library.
 
 On a phone-size screen turned sideways, a brief prompt asks you to rotate
 back to portrait -- tablets are unaffected and keep rotating freely. Nothing
@@ -89,8 +92,16 @@ reappears after different output is read again.
 
 ## Mapping, Notes, And Navigation
 
-The map records discovered rooms and connections; it is not a walkthrough and
-does not know unexplored destinations. Drag to pan and scroll to zoom. Use
+The map records the rooms and connections you discover; it is not a walkthrough.
+Where a story's own data names a nearby room you have not visited yet (for
+example in many Infocom-style stories), that room is shown faded with a dotted
+link. Such hints are never used for automatic travel until you have walked that
+way yourself. The **World** map shows every explored room of the story at once;
+the local **Map** shows the room you are in and its neighbours. Drag to pan and
+scroll to zoom. **Map controls** and **Notes** open and close with their
+headings. When you browse to another room, its Back and Go buttons appear faded
+on its box; on a touch screen the first tap on them only reveals them, and a
+second tap acts. Use
 `/goto room;`, `/see room;`, and `/see me;` for navigation and centering.
 Use `/note text;`, `/notes`, and `/clear notes` for room notes.
 
@@ -99,12 +110,51 @@ modules. Glulx currently plays through Quixe without those Z-specific layers.
 Unusual engines and nonstandard room models can expose less information until
 their structure is proved.
 
+## Equipment And Status
+
+**Equipment** lists what you carry and wear, grouped under **Yourself** and any
+open containers, with tags such as *worn* and *open* where the story reports
+them. Drag an item onto an open container to put it in, or onto Yourself to
+take it out; right-click or touch and hold an item for its actions. **Options**
+holds sorting, search, the container view, category filters and **Refresh**.
+How much a story reveals varies: some stories expose little, and in some,
+asking for inventory or status uses a game turn (ParchLock warns you when that
+happens).
+
+The status card above the list shows what the story tracks, such as score,
+turns or a progress line. When a story ends in a death or a win, ParchLock
+counts it as **Deaths this playthrough** or **Wins this playthrough**; these
+appear once they are above zero and reset with a new game or RESTART.
+
 ## Saves And Local Data
 
 Save and Restore invoke the story's own commands. Save files manages browser
 saves and portable save packages. Maps can be named, downloaded, and loaded
-separately. Clearing site/app data removes local imports, maps and browser
-saves. Android backup is disabled; reinstalling starts empty.
+separately. A running transcript is kept for each story: lines become permanent
+when you save, and loading a save shows the transcript as it was at that save.
+Deleting a save deletes the lines only it used, and removing the module deletes
+its transcripts. If storage fails the transcript is marked incomplete; play is
+not affected. Clearing site/app data removes local imports, maps, transcripts
+and browser saves. Android backup is disabled; reinstalling starts empty.
+
+## App Icon And Desktop Shortcut
+
+ParchLock's icon is a storybook with one of the four opening scenes on its left
+page.
+
+- **Android:** once, ParchLock offers to add a home-screen icon of its own;
+  Android then asks you to confirm. That icon changes to the next scene each
+  time you leave ParchLock (not while you are using it, its file pickers or share
+  screens), and it stays where you put it. The app-drawer icon does not change.
+  **Options** -> **App icon** can add the icon later, and offers an
+  **experimental** setting to change the app icon too; it warns first, because
+  some phones may remove or move a home-screen icon when the app icon changes.
+- **PC:** the first time you run `ParchLock.exe` it asks whether to add a desktop
+  shortcut. If you agree, that shortcut's picture changes each time you close
+  ParchLock. It never touches other shortcuts and never recreates one you
+  delete. Run `ParchLock.exe --desktop-shortcut` to be asked again.
+
+Opening ParchLock from one of these icons starts on the same scene.
 
 ## Useful Slash Commands
 

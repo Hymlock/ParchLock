@@ -8,7 +8,7 @@ The ParchLock application is licensed under the GNU GPL version 3 (see `LICENSE`
 - Attribution: each entry below names the author, the licence and, where the licence requires it, a link to the licence text.
 - To remove a game, delete its file from `games/` and its entry from `js/GameList.js`.
 
-80 games are included. Information compiled 2026-10-05 from each game's own embedded licence or copyright text, the Interactive Fiction Database (IFDB), and the authors' official source pages. Each entry gives the game's IFID, which identifies the exact release included.
+80 games are included in the release. (Development builds may still carry a larger working catalogue; the 80 listed here are the release set, and anything else is removed before a public release.) Information compiled 2026-10-05 from each game's own embedded licence or copyright text, the Interactive Fiction Database (IFDB), and the authors' official source pages. Each entry gives the game's IFID, which identifies the exact release included.
 
 ## What the licences require
 

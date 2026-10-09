@@ -1,5 +1,41 @@
 # ParchLock Release Notes
 
+## Build 64 - 2026-10-09
+
+- **Equipment screen.** A dedicated sheet for what you carry and wear, grouped
+  under Yourself and open containers, with drag-to-container, item actions, and
+  Options for sorting, search, container view and filters. Filters that do not
+  apply to the story are hidden.
+- **Status card.** Shows what the story tracks; long text such as a progress line
+  gets a full-width row. New **Deaths this playthrough** and **Wins this
+  playthrough** counters, decided from the story's own ending (for example
+  Hitchhiker's "Better luck next life" and Zork's "You have died"), reset by a new
+  game or RESTART.
+- **World map** of every explored room, alongside the local map.
+- **Room hints** for many Infocom-style stories: nearby rooms named by the story's
+  own data appear faded with dotted links, and are never used for automatic
+  travel until walked.
+- **Underlines follow their words** as the story scrolls; the latest reply is
+  recognised; ambiguous base words offer a choice.
+- **Mobile layout:** exits along the bottom now have their own space above the
+  input bar and keep their compass position; story text stays clear of the
+  directions handle.
+- **Map:** Map controls and Notes open and close with clear headings; the current
+  room is marked with a small dot; browsed rooms' Back and Go buttons are faded
+  until revealed, and a first touch never travels.
+- **Start screen** rebuilt: labelled filter buttons, a Done column, a readable
+  story list and an up-to-date feature overview.
+- **Menus:** the Directions settings close button and the desktop Menu radial
+  spacing were tidied.
+- **New storybook icon** with four scenes from the opening splash. Android can
+  add a home-screen icon that changes scene each time you leave the app (an
+  experimental option can change the app icon too, with a warning); on PC the
+  launcher can add a desktop shortcut that changes each time you close
+  ParchLock. The splash opens on the icon's scene.
+
+Device behaviour of the rotating icons depends on the phone's launcher and is
+being checked on real devices.
+
 ## 1.0 - 2026-09-20
 
 - Complete ParchLock product identity and Android package conversion.

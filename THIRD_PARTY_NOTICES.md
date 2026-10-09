@@ -18,6 +18,9 @@ build. License conclusions should receive qualified review before release.
 | Capacitor core/android/cli | 8.5.2 | MIT | installed package metadata |
 | Capacitor App | 8.1.1 | MIT | installed package metadata |
 | Capacitor Community Speech Recognition | 7.0.1 | MIT | installed package metadata |
+| Capacitor Filesystem | 8.1.3 | MIT | installed package metadata and `LICENSE` |
+| Capacitor Share | 8.0.2 | MIT | installed package metadata and `LICENSE` |
+| Capacitor Community Text-to-Speech | 8.0.2 | MIT | installed package metadata and `LICENSE` |
 | Playwright (development only) | 1.63.0 | Apache-2.0 | installed package metadata |
 
 ## Emglken 0.7.2 Metadata Discrepancy
