@@ -30,7 +30,7 @@ rem Explicit runtime root allow-list.
 for %%F in (
   index.html play.html tutorial.html manifest.json service-worker.js
   LICENSE NOTICE README.md USER_GUIDE.md RELEASE_NOTES.md PRIVACY.md
-  CREDITS.md THIRD_PARTY_NOTICES.md SOURCE_BUILD.md
+  CREDITS.md THIRD_PARTY_NOTICES.md SOURCE_BUILD.md GAMES_INCLUDED.md
 ) do (
   if not exist "%SRC%\%%F" (
     echo ERROR: Required runtime file missing: %%F
@@ -83,7 +83,7 @@ for %%F in (
   index.html play.html manifest.json service-worker.js
   make-dist.bat build-android.bat build-pc-launcher.bat package.json package-lock.json capacitor.config.json
   LICENSE NOTICE README.md USER_GUIDE.md RELEASE_NOTES.md PRIVACY.md
-  CREDITS.md THIRD_PARTY_NOTICES.md SOURCE_BUILD.md
+  CREDITS.md THIRD_PARTY_NOTICES.md SOURCE_BUILD.md GAMES_INCLUDED.md
 ) do copy /y "%SRC%\%%F" "%SOURCE_STAGE%\%%F" >nul || goto :sourcefail
 for %%D in (css img js lib licenses) do (
   robocopy "%SRC%\%%D" "%SOURCE_STAGE%\%%D" *.* %ROBO% /XF *.map README.md >nul

@@ -527,7 +527,7 @@ var ParchLockMap = {
             var meta = (room.ExitMeta || {})[dir];
             var isAmbiguous = !!(meta && meta.ambiguousDiagonal);
             // D49/D48: ambiguous diagonals may list the SAME destination under
-            // both NW and SE until calibration (Anchorhead Outsideâ†’Alley).
+            // both NW and SE until calibration (Anchorhead Outside -> Alley).
             // Payload/radial still keep both candidate commands; the map must
             // never draw two boxes for one room id (operator: dual Alley).
             if (Object.prototype.hasOwnProperty.call(shownRoomIds, destId)) continue;

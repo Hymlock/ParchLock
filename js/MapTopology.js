@@ -229,7 +229,7 @@ var MapTopology = {
                 }
             } catch (eER) {}
         }
-        // D54: internal/meta short-names are never map rooms â€” even when a
+        // D54: internal/meta short-names are never map rooms -- even when a
         // real ObjectId is known. "(Inform Library)", "(darkness object)",
         // and "C_ROOMS_N" must not enter Rooms[] or become CurrentRoom.
         // Identity for real places still keys on ObjectId once a player-
@@ -424,7 +424,7 @@ var MapTopology = {
                 from.ExitMeta[dir].hinted = true;
                 return;
             }
-            // Never create a self-loop edge (Alley â†’ Alley). Confirmed live on
+            // Never create a self-loop edge (Alley  ->  Alley). Confirmed live on
             // Anchorhead when identity briefly disagreed during look-ahead /
             // state-delta; the map then drew two current-room boxes.
             if (String(to.Id) === String(from.Id)) {

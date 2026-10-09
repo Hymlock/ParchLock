@@ -48,15 +48,13 @@ var Tutorial = {
         {
             title: "Welcome to ParchLock",
             body: "ParchLock gives text based interactive fiction a real graphical interface. " +
-                  "Instead of nothing but a blank prompt, you get a live automatic map, tappable objects, " +
+                  "Supported stories gain an automatic map, tappable objects, " +
                   "an equipment screen, notes, voice input and narration — wrapped around the original " +
                   "story, unchanged. First, this is where you choose what to play."
         },
         {
             title: "Your module library",
-            body: "Every story available to you is listed here. Pick one and it starts immediately — " +
-                  "your place, your map and your notes are kept separately for each one, so you can move " +
-                  "between stories without losing anything.",
+            body: "Choose a story from this library to start playing. Maps, notes and other local tools are kept separately for each story. Save your game before switching stories so you can return to your progress.",
             target: ["#games-list", "#windowport"]
         },
         {
@@ -73,8 +71,7 @@ var Tutorial = {
         },
         {
             title: "Adding your own",
-            body: "Manage modules lets you bring in story files of your own. ParchLock plays Z-machine stories, " +
-                  "and anything you add is stored on this device alongside the built-in list.",
+            body: "Modules lets you add compatible Z-machine and Glulx story files. Imported files stay on this device. Z-machine stories support the enhanced maps and object actions; Glulx stories currently play without those layers. Add only stories you have permission to use.",
             target: ["#modules", "#toolbar"]
         },
         {
@@ -88,15 +85,14 @@ var Tutorial = {
         {
             title: "Welcome to ParchLock",
             body: "ParchLock gives text based interactive fiction a real graphical interface. " +
-                  "Instead of nothing but a blank prompt, you get a live automatic map, tappable objects, " +
+                  "Supported stories gain an automatic map, tappable objects, " +
                   "an equipment screen, notes, voice input and narration — wrapped around the original story, " +
                   "unchanged. This short tour points at the real screen and explains each part. " +
-                  "Nothing you see is a demonstration: it is your actual game."
+                  "Some panels show guide examples when the story has not provided data yet."
         },
         {
             title: "The story window",
-            body: "This is the story itself, exactly as the module wrote it. Everything else on screen is " +
-                  "ParchLock reading along with you and showing you what it understands.",
+            body: "This is the story as the module wrote it. ParchLock adds tools around it without rewriting the author's story text. The available enhancements depend on the story and its format.",
             target: "#windowport .BufferWindow"
         },
         {
@@ -131,23 +127,17 @@ var Tutorial = {
         },
         {
             title: "Exits, above the story",
-            body: "Every way out of your current room is shown for you. Compass directions sit in the band " +
-                  "under the status line, and the rest run down the left and right edges of the screen — each " +
-                  "labelled with the room it leads to once you have been there. Tap any of them to travel. " +
-                  "The band grows and pushes the story down when there is more to show, so it never covers " +
-                  "your text.",
+            body: "Known exits appear around the story: compass directions above the text, and other ways along the edges. Some destinations are hints you have not visited yet. Selecting an exit sends the real game command, so the story can still block it. The exits band makes room for its labels above the text.",
             target: ["#exits .row.horizontal.top", "#windowport .GridWindow.reverse", "#windowport .BufferWindow"]
         },
         {
             title: "The map tab",
-            body: "This tab opens the map. ParchLock draws it automatically as you explore — you never have " +
-                  "to record anything by hand.",
+            body: "The Map tab opens your local room view. The globe above it opens the wider World map of discovered rooms. Supported stories build these maps as you explore; some also reveal faded destination hints before you visit them.",
             target: "#pl-map-tab"
         },
         {
             title: "Your automatic map",
-            body: "Rooms you have visited, how they connect, and where you are standing right now. " +
-                  "Tap a room to travel back to it.",
+            body: "The map keeps explored rooms and their known connections. A faded room or dotted link can be an unvisited hint, not a route for automatic travel. Tap a room in the local map to browse it; use Go for a known route. A faded Back or Go button takes one touch to reveal and another to act.",
             target: ["#rooms-shell", "#map"],
             sheet: "map",
             isEmpty: function () { return Tutorial.mapIsEmpty(); },
@@ -183,14 +173,8 @@ var Tutorial = {
             // nothing, so this step must not describe a panel that is not there
             // -- same reason the map steps carry an emptyBody.
             title: "Your character at a glance",
-            body: "Across the top of your equipment is what this story actually keeps track of. Score, and " +
-                  "how many points are possible, sit here with a bar as they climb — you will hear a small " +
-                  "chime when they do. Health, hunger, rest and anything else the story counts appear beside " +
-                  "them, and how many times you have died is kept for you even though the story never counts it.",
-            emptyBody: "Across the top of your equipment, whatever this story actually keeps track of appears — " +
-                  "score, health, hunger, rest, deaths. This story has not shown any of it yet, so the strip " +
-                  "stays out of your way rather than sitting there empty. Press Identify stats to ask the story " +
-                  "outright; it costs a turn, which is why ParchLock never does it behind your back.",
+            body: "The status card shows current information this story reveals: perhaps score, health, turns or a progress description. Fields vary by story, and unavailable readings stay hidden. Recognizable death and win endings are counted for this playthrough, with tiles appearing above zero. Starting a new game or restarting resets those counts; restoring a save keeps them.",
+            emptyBody: "This story has not supplied current status information yet. Identify stats can ask the story for more where supported. Inventory and status requests may use turns, including automatic checks when you open Equipment. ParchLock shows a one-time warning for each installed module.",
             isEmpty: function () {
                 try {
                     return !(typeof StatTracker !== "undefined" && StatTracker.visibleStats
@@ -202,17 +186,13 @@ var Tutorial = {
         },
         {
             title: "What you are carrying",
-            body: "Your belongings as a real tree. Containers hold items, containers inside containers nest " +
-                  "again as deep as the story goes, and everything you are wearing sits under Yourself. " +
-                  "No more guessing what is inside what.",
+            body: "Your belongings follow the story's known container hierarchy. Yourself represents the character carrying them when that holder is identified, whether or not there is wearable equipment. Worn items sit beneath Yourself; known open, closed, active or inactive states appear beside their items.",
             target: ["#equipment-list", "#equipment"],
             sheet: "equipment"
         },
         {
             title: "Actions on anything you carry",
-            body: "Press and hold any item line — or right click it — for that object's own actions, the "
-                  + "same ring you get on an underlined word in the story. Examine it, wear it, open it, drop it, "
-                  + "without typing a word.",
+            body: "Touch and hold an item line, or right-click it, for its available actions. These use the same story-derived choices as underlined words. The game still decides whether the command succeeds.",
             target: ["#equipment-list", "#equipment"],
             sheet: "equipment"
         },
@@ -230,10 +210,7 @@ var Tutorial = {
             // this step is written to be true either way rather than promising
             // a control that will not be there.
             title: "Only what this story has",
-            body: "Every filter and every action here is built from what this particular story really " +
-                  "understands. A game with spells shows a Spells group and offers Cast on them; a game with " +
-                  "none never mentions either. Nothing is carried in from a game you are not playing, so a " +
-                  "command ParchLock offers you is one the story can actually answer.",
+            body: "Filters and actions follow information supported by this story. Spell-related controls appear where the story supports them. Some commands or states remain unknown, and a plausible command can still be rejected by the game's rules. You can always type a command yourself.",
             target: ["#equipment-controls", "#equipment"],
             sheet: "equipment"
         },
@@ -251,20 +228,16 @@ var Tutorial = {
         },
         {
             title: "The directional pad",
-            body: "That small handle near the bottom of the screen is a compass you can drive with one thumb. "
-                  + "Hold it and a ring of directions opens; slide onto the one you want and release to travel. "
-                  + "It only offers ways that actually lead somewhere, and you can switch it off in Options.",
+            body: "The handle near the bottom opens a ring of available directions. Hold it, slide onto a direction and release to send the game command. The story can still block travel. You can configure or switch the control off in Options.",
             target: ["#pl-dirpad-handle", "#pl-dirpad-ring", "#pl-input-submit"]
         },
         {
             title: "Narration and text size",
-            body: "ParchLock can read the story aloud as it arrives — that is what you are hearing now. " +
-                  "Text size, line spacing, narration and voice input are all in Options, under Display."
+            body: "Read aloud can speak new story text through your device or browser's voice service. Tools > Display changes text size and spacing. Tools > Options contains narration and voice-input settings."
         },
         {
             title: "Saving and taking your game with you",
-            body: "Save inside the story as usual, and use Tools to export a transcript, your map, or a full " +
-                  "save package as real files you can keep, move or share."
+            body: "Save inside the story as usual. Tools can export a transcript, your map or a save package as files you can keep, move or share. Transcript portions become permanent when saved and follow the save you restore; export important files before removing a module or clearing app data."
         },
         {
             title: "That is everything",

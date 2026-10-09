@@ -5,7 +5,6 @@ var ProductInfo = Object.freeze({
     adapter: "Hymlock Groves",
     upstreamName: "Parchmap",
     upstreamAuthor: "Roy Lazarovich",
-    releaseDate: "2026-09-20",
     sourceArchive: "ParchLock-source.zip",
 
     buildLabel: function () {
@@ -25,7 +24,7 @@ var ProductInfo = Object.freeze({
 
     showAbout: function () {
         var body = "<p><strong>" + ProductInfo.creditLine + "</strong></p>" +
-            "<p>Interactive fiction player with adaptive desktop and mobile controls, automatic mapping, module-derived actions, saves, notes, navigation, and a local Module Manager.</p>" +
+            "<p>Interactive fiction player with adaptive desktop and mobile controls, local and World maps, Equipment and story status, module-derived actions, saves and transcripts, notes, navigation, read aloud, and an on-device module library. Features vary by story and format.</p>" +
             "<p>Imported modules remain on this device. Add only files you have the right to use. Technical compatibility checks do not establish ownership or permission.</p>" +
             "<p>Licensed under GNU GPL version 3. This distribution includes modification, credit, privacy, third-party notice, and source-build documents. Corresponding source is provided in <code>" + ProductInfo.sourceArchive + "</code>.</p>" +
             "<p>" +
