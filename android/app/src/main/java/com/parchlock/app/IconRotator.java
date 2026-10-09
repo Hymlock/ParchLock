@@ -26,13 +26,8 @@ import java.util.Collections;
  * shortcut's picture in place each time the app is opened, so it is never
  * removed or moved.
  *
- * Experimental (opt-in, warned): the launcher entry itself is switched between
- * four activity-aliases. Some launchers remove or move home-screen copies when
- * that happens, which is why it is off by default.
- *
  * Timing (issue 1, APK 64 closed on focus loss): nothing runs when the app is
- * merely left. The pinned icon advances at launch (IconPolicy); the alias
- * switch, which can end a running task, runs only on a real finishing exit.
+ * merely left. Only the owned pinned icon advances at launch (IconPolicy).
  */
 final class IconRotator {
 
@@ -55,30 +50,12 @@ final class IconRotator {
         return i >= 0 && i < SCENES.length ? i : 0;
     }
 
-    static String aliasFor(String id) {
-        return "com.parchlock.app.Icon" + Character.toUpperCase(id.charAt(0)) + id.substring(1);
-    }
-
     /** The scene a launch came from, or null when it carries none (base icon, recents). */
     static String sceneOfLaunch(Intent intent) {
         if (intent == null) return null;
-        ComponentName comp = intent.getComponent();
-        String cls = comp != null ? comp.getClassName() : "";
-        for (String id : SCENES) if (aliasFor(id).equals(cls)) return id;
         String extra = intent.getStringExtra("scene");
         for (String id : SCENES) if (id.equals(extra)) return id;
         return null;
-    }
-
-    static boolean experimental(Context c) {
-        SharedPreferences p = prefs(c);
-        String pending = p.getString("experimentalPending", null);
-        return pending != null ? "on".equals(pending) : p.getBoolean("experimental", false);
-    }
-
-    /** Recorded now, applied at the next real exit (component changes never in a live task). */
-    static void requestExperimental(Context c, boolean on) {
-        prefs(c).edit().putString("experimentalPending", on ? "on" : "off").apply();
     }
 
     static boolean canPin(Context c) {
@@ -134,31 +111,6 @@ final class IconRotator {
         }
     }
 
-    /** A real exit (Back): apply a pending experimental change, then the alias switch. */
-    static void onRealExit(Context c) {
-        try {
-            SharedPreferences p = prefs(c);
-            // A requested switch is recorded as applied only after the component
-            // change succeeded; on failure the request stays pending for next time.
-            String pending = p.getString("experimentalPending", null);
-            boolean exp = pending != null ? "on".equals(pending) : p.getBoolean("experimental", false);
-            if (pending != null && !exp) {
-                restoreBase(c);   // throws before the commit below if it fails
-                p.edit().putBoolean("experimental", false).remove("experimentalPending").apply();
-                return;
-            }
-            int stored = sceneIndex(c);
-            int target = IconPolicy.exitAliasScene(exp, pinnedExists(c), stored);
-            if (target < 0) return;
-            switchAlias(c, SCENES[target]);   // throws before the commit if it fails
-            SharedPreferences.Editor done = p.edit().putInt("scene", target);
-            if (pending != null) done.putBoolean("experimental", true).remove("experimentalPending");
-            done.apply();
-        } catch (Exception e) {
-            Log.w(TAG, "exit icon switch skipped", e);
-        }
-    }
-
     private static boolean updatePinned(Context c, String id) {
         if (Build.VERSION.SDK_INT < 26) return false;
         ShortcutManager sm = c.getSystemService(ShortcutManager.class);
@@ -190,23 +142,14 @@ final class IconRotator {
         return Icon.createWithAdaptiveBitmap(out);
     }
 
-    private static void setEnabled(PackageManager pm, Context c, String cls, boolean on) {
-        pm.setComponentEnabledSetting(new ComponentName(c, cls),
-            on ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED : PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-            PackageManager.DONT_KILL_APP);
-    }
-
-    // Enable the next entry BEFORE disabling the others, so a launcher entry always exists.
-    private static void switchAlias(Context c, String id) {
+    /** Repair the retained launcher entry after removing experimental aliases. */
+    static void ensureBaseLauncher(Context c) {
         PackageManager pm = c.getPackageManager();
-        setEnabled(pm, c, aliasFor(id), true);
-        setEnabled(pm, c, BASE_ALIAS, false);
-        for (String other : SCENES) if (!other.equals(id)) setEnabled(pm, c, aliasFor(other), false);
-    }
-
-    private static void restoreBase(Context c) {
-        PackageManager pm = c.getPackageManager();
-        setEnabled(pm, c, BASE_ALIAS, true);
-        for (String id : SCENES) setEnabled(pm, c, aliasFor(id), false);
+        ComponentName base = new ComponentName(c, BASE_ALIAS);
+        if (pm.getComponentEnabledSetting(base) == PackageManager.COMPONENT_ENABLED_STATE_DISABLED) {
+            pm.setComponentEnabledSetting(base, PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                PackageManager.DONT_KILL_APP);
+        }
+        prefs(c).edit().remove("experimental").remove("experimentalPending").apply();
     }
 }

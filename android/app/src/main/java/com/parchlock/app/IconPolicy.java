@@ -7,8 +7,7 @@ package com.parchlock.app;
  *
  * Contract agreed with codex (#2257): no icon work on any non-finishing stop;
  * one launch per new Activity; the pinned icon advances at launch and the
- * stored scene moves only after the update succeeded; the experimental launcher
- * switch only on a real (finishing) exit.
+ * stored scene moves only after the update succeeded. Launcher aliases never rotate.
  */
 final class IconPolicy {
 
@@ -29,22 +28,6 @@ final class IconPolicy {
     static int next(int stored) {
         int s = stored >= 0 && stored < SCENE_COUNT ? stored : 0;
         return (s + 1) % SCENE_COUNT;
-    }
-
-    /** Home, lock, app switch and our own pickers never do icon work. */
-    static boolean iconWorkOnStop(boolean finishing, boolean changingConfigurations) {
-        return finishing && !changingConfigurations;
-    }
-
-    /**
-     * The launcher alias to show after a real exit, or -1 for none. With a
-     * pinned icon it matches the pinned picture (already advanced at launch);
-     * without one it advances itself.
-     */
-    static int exitAliasScene(boolean experimental, boolean pinned, int stored) {
-        if (!experimental) return -1;
-        int s = stored >= 0 && stored < SCENE_COUNT ? stored : 0;
-        return pinned ? s : next(s);
     }
 
     /** The true result of "Add icon" for Options and the first-launch question. */

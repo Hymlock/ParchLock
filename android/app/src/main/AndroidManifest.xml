@@ -35,63 +35,14 @@
             </intent-filter>
         </activity-alias>
 
-        <!-- D215 experimental (Options, off by default, warned): one alias per
-             approved storybook scene, switched only after the player leaves. -->
-        <activity-alias
-            android:name=".IconArchive"
-            android:targetActivity=".ParchLockActivity"
-            android:label="@string/title_activity_main"
-            android:icon="@mipmap/ic_launcher_archive"
-            android:roundIcon="@mipmap/ic_launcher_archive"
-            android:enabled="false"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity-alias>
+        <activity android:name=".IconConsentActivity" android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity-alias
-            android:name=".IconMap"
-            android:targetActivity=".ParchLockActivity"
-            android:label="@string/title_activity_main"
-            android:icon="@mipmap/ic_launcher_map"
-            android:roundIcon="@mipmap/ic_launcher_map"
-            android:enabled="false"
-            android:exported="true">
+        <receiver android:name=".LauncherRecoveryReceiver" android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
-        </activity-alias>
-
-        <activity-alias
-            android:name=".IconDungeon"
-            android:targetActivity=".ParchLockActivity"
-            android:label="@string/title_activity_main"
-            android:icon="@mipmap/ic_launcher_dungeon"
-            android:roundIcon="@mipmap/ic_launcher_dungeon"
-            android:enabled="false"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity-alias>
-
-        <activity-alias
-            android:name=".IconForest"
-            android:targetActivity=".ParchLockActivity"
-            android:label="@string/title_activity_main"
-            android:icon="@mipmap/ic_launcher_forest"
-            android:roundIcon="@mipmap/ic_launcher_forest"
-            android:enabled="false"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity-alias>
+        </receiver>
 
         <provider
             android:name="androidx.core.content.FileProvider"

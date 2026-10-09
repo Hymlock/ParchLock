@@ -22,11 +22,10 @@ packaged app does not request Android's Internet permission.
 
 Icons and shortcuts:
 
-- On Android, ParchLock remembers which storybook icon scene comes next, and
-  whether you turned on the experimental app-icon setting, in its own app
-  settings. It adds a home-screen icon only after you agree and Android shows its
-  own confirmation, and by default it changes only that icon. If you turn on the
-  experimental setting, it also switches the app's own launcher icon.
+- On Android, ParchLock stores the next storybook icon scene and whether the
+  first-launch icon question has been answered in its own app settings. It adds
+  a home-screen shortcut only after you agree and Android confirms placement.
+  Only that shortcut rotates; the app's launcher entry stays fixed.
 - On a PC, `ParchLock.exe` stores its choices (whether to add a desktop shortcut,
   the current icon scene, and the shortcut it created) in
   `%LOCALAPPDATA%\ParchLock\launcher.ini`. It creates a desktop shortcut only if

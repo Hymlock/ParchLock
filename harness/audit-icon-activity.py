@@ -12,7 +12,7 @@ root = Path(__file__).resolve().parents[1]
 scratch = root / "tmp/codex-icon-activity"
 scratch.mkdir(parents=True, exist_ok=True)
 sources = {
-"android/content/Intent.java": '''package android.content; public class Intent {}''',
+"android/content/Intent.java": '''package android.content; public class Intent { public Intent(){} public Intent(Object c,Class<?> k){} public String scene; public Intent putExtra(String k,String v){scene=v;return this;} public String getStringExtra(String k){return scene;} }''',
 "android/os/Bundle.java": '''package android.os; public class Bundle extends java.util.HashMap<String,Object> {
  public String getString(String k){return (String)get(k);} public void putString(String k,String v){put(k,v);}
  public boolean getBoolean(String k){return Boolean.TRUE.equals(get(k));}
@@ -40,6 +40,13 @@ sources = {
   public Builder setOnCancelListener(java.util.function.Consumer<AlertDialog> l){d.cancel=l;return this;}
   public AlertDialog create(){return d;}
  } }''',
+"androidx/appcompat/app/AppCompatActivity.java": """package androidx.appcompat.app; public class AppCompatActivity {
+ public boolean finishing,destroyed; public int redirected; public android.content.Intent next;
+ public void onCreate(android.os.Bundle b){} public void onDestroy(){destroyed=true;}
+ public boolean isFinishing(){return finishing;} public boolean isDestroyed(){return destroyed;}
+ public void finish(){finishing=true;} public void startActivity(android.content.Intent i){redirected++;next=i;}
+ public android.content.Intent getIntent(){return new android.content.Intent().putExtra("scene","forest");}
+ }""",
 "com/getcapacitor/Bridge.java": '''package com.getcapacitor; public class Bridge {
  public int starts,resumes;public final App app=new App();
  public void onStart(){starts++;} public void onResume(){resumes++;} public App getApp(){return app;}
@@ -49,10 +56,11 @@ sources = {
  protected Bridge bridge; protected int activityDepth; private android.content.Intent intent=new android.content.Intent();
  public boolean finishing,destroyed,changing;private final android.view.Window window=new android.view.Window();
  public void registerPlugin(Class<?> c){} public void onCreate(android.os.Bundle b){load();}
- protected void load(){bridge=new Bridge();onNewIntent(intent);}
+ protected boolean lifecycleStarted; public int redirected; public void startActivity(android.content.Intent i){redirected++;} public void finish(){finishing=true;}
+ protected void load(){if(lifecycleStarted)throw new IllegalStateException("registration after STARTED");bridge=new Bridge();onNewIntent(intent);}
  protected void onNewIntent(android.content.Intent i){} public android.content.Intent getIntent(){return intent;}
  public void setIntent(android.content.Intent i){intent=i;} public void onSaveInstanceState(android.os.Bundle b){}
- public void onStart(){activityDepth++;if(bridge!=null)bridge.onStart();}
+ public void onStart(){lifecycleStarted=true;activityDepth++;if(bridge!=null)bridge.onStart();}
  public void onResume(){if(bridge!=null){bridge.getApp().fireStatusChange(true);bridge.onResume();}}
  public void onPause(){} public void onStop(){if(bridge!=null)activityDepth=Math.max(0,activityDepth-1);}
  public void onDestroy(){destroyed=true;} public boolean isFinishing(){return finishing;}
@@ -78,32 +86,26 @@ sources = {
   void drain(){getWindow().getDecorView().drain();} }
  public static void main(String[] args){
   reset(false);A a=new A();a.onCreate(null);
-  check(a.observed()==null&&AlertDialog.last!=null,"native question before Bridge initialization");
-  a.onStart();a.onResume();AlertDialog.last.choose(false);a.drain();
-  check(a.observed().starts==1&&a.observed().resumes==1&&a.observed().app.active==1&&a.depth()==1,"deferred bridge gets current lifecycle exactly once");
-  check(IconRotator.rotations==1&&IconRotator.pref.asked,"answer loads and advances once");
-  a.onPause();a.onStop();check(IconRotator.exits==0,"ordinary stop performs no alias work");
-  a.onStart();a.onResume();a.drain();check(IconRotator.rotations==1,"mere return does not advance again");
-
+  check(a.observed()==null&&a.redirected==1&&a.finishing,"first consent redirects without constructing Bridge");
+  reset(true);A ready=new A();ready.onCreate(null);ready.onStart();ready.onResume();ready.drain();
+  check(ready.observed().starts==1&&ready.observed().resumes==1,"Bridge registers before STARTED and gets lifecycle once");
   reset(true);A home=new A();home.onCreate(null);home.onStart();home.onResume();home.onPause();home.onStop();home.drain();
   check(IconRotator.rotations==0,"queued launch does not update while backgrounded");
   home.onStart();home.onResume();home.drain();check(IconRotator.rotations==1,"pending launch advances once when foreground returns");
   home.onPause();home.onStop();home.onStart();home.onResume();home.drain();check(IconRotator.rotations==1,"pending launch is consumed exactly once");
-  home.finishing=true;home.onPause();home.onStop();check(IconRotator.exits==1,"real finishing exit owns alias work");
+  home.finishing=true;home.onPause();home.onStop();check(IconRotator.exits==0,"real finishing exit performs no icon work");
 
   reset(true);A dead=new A();dead.onCreate(null);dead.onStart();dead.onResume();dead.onDestroy();dead.drain();
   check(IconRotator.rotations==0,"destroyed Activity cannot run queued rotation");
   reset(true);Bundle saved=new Bundle();saved.putString("parchlock.launchScene","forest");A restored=new A();restored.onCreate(saved);restored.onStart();restored.onResume();restored.drain();
   check(IconRotator.rotations==0&&"forest".equals(restored.launchScene()),"saved-state recreation preserves tapped scene without advance");
 
-  reset(false);A cancelled=new A();cancelled.onCreate(null);cancelled.onStart();cancelled.onResume();AlertDialog.last.cancel();cancelled.drain();
-  check(cancelled.observed()!=null&&IconRotator.pref.asked,"Back dismissal is remembered as Not now");
-  reset(false);A stale=new A();stale.onCreate(null);AlertDialog old=AlertDialog.last;stale.onDestroy();old.cancel();stale.drain();
-  check(stale.observed()==null&&!IconRotator.pref.asked&&IconRotator.rotations==0,"destroyed dialog never initializes or records an answer");
-  reset(false);A away=new A();away.onCreate(null);away.onStart();away.onResume();away.onPause();away.onStop();
-  check(away.observed()==null&&!IconRotator.pref.asked&&away.depth()==0,"Home during question neither loads nor records consent");
-  away.onStart();away.onResume();AlertDialog.last.choose(true);away.drain();
-  check(away.observed().starts==1&&away.observed().resumes==1&&away.depth()==1,"answer after Home forwards balanced current lifecycle");
+  reset(false);IconConsentActivity gate=new IconConsentActivity();gate.onCreate(null);AlertDialog.last.choose(true);
+  check(IconRotator.pref.asked&&gate.redirected==1&&gate.finishing&&"forest".equals(gate.next.scene),"Add records consent and forwards scene to a new game Activity");
+  reset(false);IconConsentActivity no=new IconConsentActivity();no.onCreate(null);AlertDialog.last.cancel();
+  check(IconRotator.pref.asked&&no.redirected==1,"Back means Not now and proceeds once");
+  reset(false);IconConsentActivity gone=new IconConsentActivity();gone.onCreate(null);AlertDialog stale=AlertDialog.last;gone.onDestroy();stale.choose(true);
+  check(!IconRotator.pref.asked&&gone.redirected==0,"destroyed consent cannot record answer or launch game");
   System.out.println(pass+" Activity integration checks PASS (isolated doubles; not device proof)");
  } }''',
 }
@@ -115,6 +117,6 @@ jdk = Path(os.environ["JAVA_HOME"]) / "bin"
 native = root / "android/app/src/main/java/com/parchlock/app"
 command = [str(jdk / "javac.exe"), "-d", str(scratch / "classes")]
 command += [str(scratch / p) for p in sources]
-command += [str(native / name) for name in ["ParchLockActivity.java", "IconPolicy.java"]]
+command += [str(native / name) for name in ["ParchLockActivity.java", "IconConsentActivity.java", "IconPolicy.java"]]
 subprocess.run(command, check=True)
 subprocess.run([str(jdk / "java.exe"), "-cp", str(scratch / "classes"), "com.parchlock.app.ActivityAudit"], check=True)

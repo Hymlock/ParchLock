@@ -2,9 +2,7 @@ package com.parchlock.app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 
 import com.getcapacitor.BridgeActivity;
 
@@ -17,8 +15,8 @@ import com.getcapacitor.BridgeActivity;
  *
  * Issue 1 (APK 64 closed when it lost focus): no icon work happens when the
  * app is merely left. The home-screen question is asked natively before the
- * WebView is built; the pinned icon advances once per launch; the experimental
- * launcher switch runs only on a real exit (IconPolicy).
+ * WebView is built; the pinned icon advances once per launch; the base
+ * launcher entry stays fixed.
  */
 public class ParchLockActivity extends BridgeActivity {
 
@@ -28,9 +26,7 @@ public class ParchLockActivity extends BridgeActivity {
     // so the splash never falls back to the already advanced preference.
     private String launchScene;
     private boolean countsAsLaunch;
-    private boolean started;
     private boolean resumed;
-    private AlertDialog prompt;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,50 +44,17 @@ public class ParchLockActivity extends BridgeActivity {
         return launchScene;
     }
 
-    // BridgeActivity.onCreate calls this to build the Bridge and the WebView.
-    // On first launch the home-screen question comes first, before anything else.
+    // Plugins register ActivityResult callbacks while onCreate is still below
+    // STARTED. Never construct a Bridge from a later dialog callback.
     @Override
     protected void load() {
         boolean asked = IconRotator.prefs(this).getBoolean("promptAsked", false);
-        if (IconPolicy.promptDue(asked, IconRotator.canPin(this))) showPrompt();
-        else finishLoad();
-    }
-
-    private void showPrompt() {
-        prompt = new AlertDialog.Builder(this)
-            .setTitle("A home-screen icon that changes")
-            .setMessage("Add a ParchLock icon to your home screen? Its picture changes to a different story scene each time you open ParchLock.\n\nIf you already have a ParchLock icon on your home screen, you can remove the old one.")
-            .setPositiveButton("Add icon", (d, w) -> answer(true))
-            .setNegativeButton("Not now", (d, w) -> answer(false))
-            .setOnCancelListener(d -> answer(false))
-            .create();
-        prompt.setCanceledOnTouchOutside(false);
-        prompt.show();
-    }
-
-    private void answer(boolean add) {
-        prompt = null;
-        if (isFinishing() || isDestroyed() || bridge != null) return;
-        IconRotator.prefs(this).edit().putBoolean("promptAsked", true).apply();
-        if (add) {
-            String outcome = IconRotator.pinOrUpdate(this);
-            if ("updated".equals(outcome)) Toast.makeText(this, "Home-screen icon updated.", Toast.LENGTH_SHORT).show();
-            else if ("refused".equals(outcome)) Toast.makeText(this, "Android didn't allow the icon right now. You can add it later in Options.", Toast.LENGTH_LONG).show();
+        if (IconPolicy.promptDue(asked, IconRotator.canPin(this))) {
+            startActivity(new Intent(this, IconConsentActivity.class).putExtra("scene", launchScene));
+            finish();
+            return;
         }
-        finishLoad();
-    }
-
-    private void finishLoad() {
         super.load();
-        if (bridge == null) return;
-        // Loaded late (after the question): hand the bridge the lifecycle it
-        // missed, exactly once. activityDepth was already counted by onStart.
-        if (started) bridge.onStart();
-        if (resumed) {
-            bridge.getApp().fireStatusChange(true);
-            bridge.onResume();
-        }
-        queueLaunchUpdate();
     }
 
     // The launch's pinned-icon update runs only while this Activity is live and
@@ -122,12 +85,6 @@ public class ParchLockActivity extends BridgeActivity {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        started = true;
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         resumed = true;
@@ -140,23 +97,4 @@ public class ParchLockActivity extends BridgeActivity {
         super.onPause();
     }
 
-    @Override
-    public void onStop() {
-        // BridgeActivity counts every onStart but only uncounts a stop once the
-        // bridge exists; balance a stop during the question here.
-        if (bridge == null) activityDepth = Math.max(0, activityDepth - 1);
-        super.onStop();
-        started = false;
-        if (IconPolicy.iconWorkOnStop(isFinishing(), isChangingConfigurations())) IconRotator.onRealExit(this);
-    }
-
-    @Override
-    public void onDestroy() {
-        // Dismissing is not an answer: a recreated Activity asks again.
-        if (prompt != null) {
-            prompt.dismiss();
-            prompt = null;
-        }
-        super.onDestroy();
-    }
 }

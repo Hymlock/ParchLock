@@ -124,7 +124,6 @@ public class SaveFilePlugin extends Plugin {
         r.put("scene", scene);
         r.put("canPin", IconRotator.canPin(getContext()));
         r.put("pinned", IconRotator.pinnedExists(getContext()));
-        r.put("experimental", IconRotator.experimental(getContext()));
         call.resolve(r);
     }
 
@@ -139,13 +138,4 @@ public class SaveFilePlugin extends Plugin {
         call.resolve(r);
     }
 
-    /** Experimental launcher-icon rotation; applied at the next real exit (Back). */
-    @PluginMethod
-    public void setExperimentalIcon(PluginCall call) {
-        Boolean on = call.getBoolean("enabled", false);
-        IconRotator.requestExperimental(getContext(), on != null && on);
-        JSObject r = new JSObject();
-        r.put("experimental", IconRotator.experimental(getContext()));
-        call.resolve(r);
-    }
 }

@@ -28,10 +28,10 @@
 - **Menus:** the Directions settings close button and the desktop Menu radial
   spacing were tidied.
 - **New storybook icon** with four scenes from the opening splash. Android can
-  add a home-screen icon that changes scene each time you leave the app (an
-  experimental option can change the app icon too, with a warning); on PC the
-  launcher can add a desktop shortcut that changes each time you close
-  ParchLock. The splash opens on the icon's scene.
+  add a home-screen shortcut that changes at each new app launch; the app-drawer
+  icon stays fixed. On PC the owned desktop shortcut changes at launcher start.
+  The splash opens on the tapped icon's scene. Native consent is separate from
+  game startup so plugin activity-result registration precedes Android STARTED.
 
 Device behaviour of the rotating icons depends on the phone's launcher and is
 being checked on real devices.

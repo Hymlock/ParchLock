@@ -3991,12 +3991,12 @@ sequenceDiagram
 
 **Rotating storybook icon.**
 
-- **Android.** `ParchLockActivity` is the single real activity and is never toggled. `com.parchlock.app.MainActivity` is preserved as the default launcher alias, so existing home-screen icons resolve. Four `.IconX` aliases exist for the experimental option.
+- **Android.** `ParchLockActivity` is the single real activity and is never toggled. `com.parchlock.app.MainActivity` is preserved as the default launcher alias, so existing home-screen icons resolve. Experimental `.IconX` aliases and their Options/plugin controls are removed. `LauncherRecoveryReceiver` restores a disabled base entry on MY_PACKAGE_REPLACED.
   - The default path updates ParchLock's own pinned shortcut (`parchlock-rotating`) in place.
   - `SaveFilePlugin.iconScene` lets the splash open on the tapped icon's scene.
   - APK 64 ran the rotation from `onStop`; the operator reported that the app closed when it lost focus. Since issue 1 (D215, codex audit #2264) **no icon work runs on a non-finishing stop**; the pure timing rules are in `IconPolicy`.
   - **Launch transaction:** one per new Activity (`savedInstanceState == null`). `launchScene` is captured once and survives recreation. The pinned update runs only while the Activity is resumed, stays pending across Home, runs at most once, and commits the scene only after `updateShortcuts` succeeded.
-  - **First-launch question:** `ParchLockActivity.load()` shows a native dialog before `super.load()` builds the Bridge and WebView. A deferred load replays the missed `onStart`/`onResume` (with `fireStatusChange(true)`) to the bridge exactly once, and a stop while the bridge is null balances `activityDepth`.
+  - **First-launch question:** `ParchLockActivity.load()` redirects to native-only `IconConsentActivity` and finishes without creating the Bridge when consent is due. The answer stores `promptAsked`, optionally pins the shortcut, and opens a new game Activity with the captured scene. Bridge construction always occurs synchronously during that new Activity's `onCreate`, before STARTED. This replaces the invalid deferred dialog-callback construction, which registered plugin ActivityResult callbacks after STARTED. Native lifecycle fixtures pass; the operator's crash stack is not yet available.
   - **Add icon** updates the owned pin in place or asks Android to pin one, and reports updated, requested, refused or unsupported truthfully.
-  - **Experimental aliases** switch only on a real exit (`isFinishing()`, reached through ParchLock's Back → `exitApp()` → `finish()`).
+
 - **PC.** The `ParchLock.exe` launcher (`DesktopIcon`) offers a desktop shortcut once and rotates only the shortcut it owns, at start (never on close), under strict ownership with atomic `launcher.ini` writes. On Yes it takes over an existing top-level Desktop shortcut whose target is this exe instead of adding a second. `play.html?splash=<scene>` matches the splash.

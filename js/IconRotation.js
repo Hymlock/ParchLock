@@ -4,8 +4,7 @@
  * ParchLock pins one home-screen icon of its own, and the native side
  * (IconRotator.java) updates that icon's picture in place each time the app is
  * opened. The first-launch question is native (ParchLockActivity), asked before
- * the page loads. Changing the launcher icon too is an experimental opt-in with
- * a warning, applied when the player exits with Back. On the web and on PC this
+ * the page loads. The base launcher icon stays fixed. On the web and on PC this
  * file does nothing; the PC launcher rotates its own desktop shortcut.
  */
 var IconRotation = {
@@ -50,29 +49,6 @@ var IconRotation = {
                     }).catch(function () { result.text(IconRotation.Outcomes.refused); });
                 });
             }
-            var label = $("<label>").appendTo(box);
-            var check = $("<input type='checkbox'>").prop("checked", !!s.experimental).appendTo(label);
-            label.append(document.createTextNode("Change the app icon too (experimental)"));
-            $("<div class='pl-options-note'>").text("Experimental: the app icon changes when you exit ParchLock with Back. Some phones may remove or move your home-screen icon.").appendTo(box);
-            check.on("change", function () {
-                var p = IconRotation.plugin();
-                if (!p) return;
-                box.find(".pl-icon-warning").remove();
-                if (!this.checked) { p.setExperimentalIcon({ enabled: false }).catch(function () {}); return; }
-                // Only a confirmed warning turns it on; Cancel is the default.
-                this.checked = false;
-                var warn = $("<div class='pl-icon-warning' role='alertdialog'>").appendTo(box);
-                $("<p>").text("Experimental: the app icon changes when you exit ParchLock with Back. Some phones may remove or move your home-screen icon. Turn it on anyway?").appendTo(warn);
-                var actions = $("<div class='qol-window-actions'>").appendTo(warn);
-                var cancel = $("<button type='button'>").text("Cancel").appendTo(actions);
-                $("<button type='button'>").text("Turn on").appendTo(actions).on("click", function () {
-                    check.prop("checked", true);
-                    warn.remove();
-                    p.setExperimentalIcon({ enabled: true }).catch(function () {});
-                });
-                cancel.on("click", function () { warn.remove(); check.trigger("focus"); });
-                cancel.trigger("focus");
-            });
         });
     }
 };
