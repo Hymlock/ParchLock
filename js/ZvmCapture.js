@@ -139,7 +139,7 @@ var ZvmCapture = {
                     // flow -- restart runs during VM boot, so an escaping
                     // exception here aborted the whole game start.
                     try {
-                        if (typeof UndoRestoreSync !== "undefined" && UndoRestoreSync.onStateRestored) UndoRestoreSync.onStateRestored(name);
+                        if (typeof UndoRestoreSync !== "undefined" && UndoRestoreSync.onStateRestored) UndoRestoreSync.onStateRestored(name, this);
                     } catch (eSync) {}
                 }
                 return result;

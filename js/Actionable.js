@@ -255,8 +255,57 @@ var Actionable = {
         // fallback. Current prose remains first and command ownership is untouched.
         var current=Actionable.observedPhraseFor(seed,pool,text,false);
         // New observed state/descriptor always outranks an old spelling.
-        if(current !== seed.name || !known)return current;
-        return Actionable.observedPhraseFor(seed,pool,known,false);
+        if(current !== seed.name)return current;
+        if(known) {
+            var observed = Actionable.observedPhraseFor(seed,pool,known,false);
+            if(observed !== seed.name)return observed;
+        }
+        if(seed !== obj)return current; // a fresh full RAM label outranks saved presentation
+        var restored = Actionable._restoredLabels && Actionable._restoredLabels[String(obj.id)];
+        if(restored) {
+            try {
+                if(JSON.stringify(restored.words) === JSON.stringify(Actionable.labelWords(ZRamProvider.getMem(),Number(obj.id))))return restored.phrase;
+                delete Actionable._restoredLabels[String(obj.id)];
+            } catch(eLabel) {}
+        }
+        return current;
+    },
+    // Save-owned presentation only. Never feeds command nouns or capabilities.
+    _restoredLabels: Object.create(null),
+    clearLabelSnapshot: function () { Actionable._restoredLabels = Object.create(null); },
+    labelWords: function (mem, id) {
+        return Array.from(new Set((ZRamReader.parserWordsAny(mem,id) || [])
+            .map(function(w){return String(w).toLowerCase();}))).sort();
+    },
+    labelSnapshot: function () {
+        var labels = Object.create(null);
+        try {
+            var mem = ZRamProvider.getMem(), pool = Actionable.payloadPool();
+            var text = [Actionable.Scope.lastLookText,Actionable.Scope.lastInventoryText,Actionable.Scope.lastReplyText].join('\n');
+            pool.forEach(function(o){
+                var id = Number(o.id), phrase = Actionable.displayNameFor(o,pool,text), words = Actionable.labelWords(mem,id);
+                if(Number.isInteger(id) && id > 0 && id < 65536 && typeof phrase === 'string' && phrase.length && phrase.length <= 1024
+                    && words.length && words.length <= 128 && words.every(function(w){return w.length > 0 && w.length <= 64;}))
+                    labels[String(id)] = {phrase:phrase,words:words};
+            });
+        } catch(e) {}
+        return {schema:1,labels:labels};
+    },
+    applyLabelSnapshot: function (snap) {
+        Actionable.clearLabelSnapshot();
+        if(!snap || snap.schema !== 1 || !snap.labels || typeof snap.labels !== 'object' || Array.isArray(snap.labels))return;
+        try {
+            var mem = ZRamProvider.getMem(), count = ZRamReader.objectCount(mem);
+            Object.keys(snap.labels).slice(0,4096).forEach(function(k){
+                if(!/^[1-9][0-9]{0,4}$/.test(k) || Number(k) > count || Number(k) >= 65536)return;
+                var v = snap.labels[k];
+                if(!v || typeof v.phrase !== 'string' || !v.phrase.trim() || v.phrase.length > 1024
+                    || !Array.isArray(v.words) || !v.words.length || v.words.length > 128
+                    || !v.words.every(function(w){return typeof w === 'string' && w.length > 0 && w.length <= 64;}))return;
+                if(JSON.stringify(v.words) !== JSON.stringify(Actionable.labelWords(mem,Number(k))))return;
+                Actionable._restoredLabels[k] = {phrase:v.phrase,words:v.words.slice()};
+            });
+        } catch(e) {}
     },
     observedPhraseFor: function (obj, pool, text, requireUnique) {
         // Display-only equivalence uses the live interpreter's encoding: a

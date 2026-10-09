@@ -11,17 +11,23 @@ var UndoRestoreSync = {
         UndoRestoreSync.generation++;
         if (typeof LearnedWords !== 'undefined') { LearnedWords.clearProjection(); if (LearnedWords._open) LearnedWords.close(false); }
         UndoRestoreSync.pending = false;
-        if (reason === "restart" && typeof ParchLockMap !== "undefined") {
-            ParchLockMap.Clear({ seed: false });
-            ParchLockMap.Save();
-        }
         if (typeof Actionable !== "undefined") {
+            if (Actionable.clearLabelSnapshot) Actionable.clearLabelSnapshot();
             Actionable.VerifiedNouns = {};
             Actionable.CommandNouns = {};
             Actionable.Scope.lastLookText = "";
             Actionable.Scope.lastInventoryText = "";
             Actionable.RoomLines = [];
             Actionable.Signature = "";
+        }
+        var mapHandled = false;
+        try {
+            if (typeof SaveState !== "undefined" && SaveState.applyPending)
+                mapHandled = SaveState.applyPending(reason, UndoRestoreSync.generation) === true;
+        } catch(eState) {}
+        if (!mapHandled && reason === "restart" && typeof ParchLockMap !== "undefined") {
+            ParchLockMap.Clear({ seed: false });
+            ParchLockMap.Save();
         }
         try {
             if (typeof ZvmCapture !== "undefined" && ZvmCapture.tick) ZvmCapture.tick();
@@ -159,7 +165,16 @@ var UndoRestoreSync = {
         // rebuild: Glk can paint the saved transcript back after we clear it.
         setTimeout(trySubmit, 750);
     },
-    onStateRestored: function (reason) {
+    _restartVms: typeof WeakSet !== "undefined" ? new WeakSet() : null,
+    onStateRestored: function (reason, vm) {
+        if (reason === "restart" && vm && UndoRestoreSync._restartVms) {
+            var seen = UndoRestoreSync._restartVms.has(vm);
+            UndoRestoreSync._restartVms.add(vm);
+            // Boot is not a timeline change. A late-attached VM must still
+            // process its first observed real restart once boot has finished.
+            if (!seen && typeof Transcript !== "undefined" && Transcript._booting === true)return;
+            UndoRestoreSync._restoreReason = "restart";
+        }
         if (reason === "restart") {
             var gameKey = typeof ParchLock !== "undefined" ? ParchLock.GameFilename : "";
             if (UndoRestoreSync._startedGameKey === gameKey) UndoRestoreSync._restoreReason = "restart";

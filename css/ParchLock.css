@@ -5028,3 +5028,24 @@ body.main-menu #toolbar button, body.main-menu #toolbar button span { font-famil
     #map .room.browsed-controls:hover > .back-to-room,
     #map .room.browsed-controls:hover > .go-to-room { opacity: 1; }
 }
+
+/* Authored endings: visible outside Equipment, without intercepting input. */
+#pl-ending-notice {
+    position: fixed;
+    top: max(12px, env(safe-area-inset-top));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1500;
+    max-width: min(90vw, 32rem);
+    box-sizing: border-box;
+    padding: 12px 18px;
+    border: 1px solid var(--pl-accent, #70ceb0);
+    border-radius: 12px;
+    background: var(--pl-surface, #1c2521);
+    color: var(--pl-text, #eee);
+    font: inherit;
+    text-align: center;
+    overflow-wrap: anywhere;
+    box-shadow: 0 4px 20px #0005;
+    pointer-events: none;
+}

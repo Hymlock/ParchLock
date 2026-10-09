@@ -115,3 +115,28 @@ console.log('PASS: D94 real-module wiring: onStateRestored exists, boot restart 
     assert.deepEqual(submitted, ['clear', 'look'], 'restart does not clear or inject LOOK');
 }
 console.log('PASS: successful file restore clears stale text then emits one LOOK; undo/restart paths remain passive');
+
+// Boot retirement and save presentation ordering (post-APK report).
+{
+    const timers=[], calls=[];
+    const real={setTimeout(fn){timers.push(fn);return timers.length;},clearTimeout(){},
+        Transcript:{_booting:true},Actionable:{clearLabelSnapshot(){calls.push('clear-labels');},Scope:{},Refresh(){}},
+        ParchLockMap:{Clear(){calls.push('legacy-map-clear');},Save(){}},
+        SaveState:{applyPending(){calls.push('saved-state');return true;}},
+        StatTracker:{Resync(){calls.push('stats');}},WorldModel:{tick(){calls.push('world');}}};
+    vm.createContext(real);
+    vm.runInContext(fs.readFileSync(path.join(__dirname,'../js/UndoRestoreSync.js'),'utf8')+'\nthis.sync=UndoRestoreSync;',real);
+    const machine={};
+    real.sync.onStateRestored('restart',machine);
+    assert.equal(timers.length,0,'first actual VM boot restart does not retire marks');
+    assert.equal(real.sync.generation,0);
+    real.Transcript._booting=false;
+    real.sync.onStateRestored('restart',machine);
+    timers.shift()();
+    assert.deepEqual(calls,['clear-labels','saved-state','stats','world'],'save presentation applies after clear, before any fresh model render; handled map bypasses legacy clear');
+    calls.length=0;
+    real.sync.onStateRestored('restart',{});
+    timers.pop()();
+    assert.equal(real.sync.generation,2,'late attached VM first real restart is not mistaken for boot');
+}
+console.log('PASS: boot VM identity, late attachment and save-state apply ordering');

@@ -162,5 +162,21 @@ assert(!S.visibleStats().some(s => s.key === "deaths"), "the tile is hidden whil
     delete global.window;
 }
 
+// Real Treasures ending: supplied save -> s,s,s,w -> south at cliff.
+const TREASURES = ["The curiosity of an upland barbarian knoweth NO BOUNDARIES!",
+    "*** YOUR BODY IS NEVER FOUND ***",
+    "In that game you scored 44 out of a possible 500, in 324 turns.",
+    "Would you like to RESTART, RESTORE a saved game or QUIT?"];
+fresh(); turn(TREASURES);
+assert(S.model().deaths === 1, "native Treasures custom death banner counts once");
+S.settleEnding({request:{},line:true});
+assert(S.model().deaths === 1, "re-rendering that death never counts twice");
+fresh(); turn(['Your body is never found.', '>']);
+assert(S.model().deaths === 0, "unframed body prose is not a death");
+fresh(); turn(['A narrator says \"your body is never found.\"', TREASURES[3]]);
+assert(S.model().deaths === 0, "quoted custom death phrase is not an ending");
+fresh(); turn(TREASURES,{source:"stat-probe"});
+assert(S.model().deaths === 0, "an app probe cannot count a custom ending");
+
 console.log(pass + " PASS / " + fail + " FAIL");
 process.exit(fail ? 1 : 0);

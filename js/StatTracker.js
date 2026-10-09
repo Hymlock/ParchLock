@@ -1343,7 +1343,7 @@ var StatTracker = {
     // a save is restored. Replayed transcript is never a submission at all.
     // Each phrase must END the sentence or banner ("You are dead." / "****
     // You have died ****"), so "you are dead tired" is not a death.
-    DEATH_PHRASE: /\b(?:you have died|you are dead|you have been killed(?: by [^.!?*\n]{1,60})?|better luck next life)\s*(?:[.!*]|$)/im,
+    DEATH_PHRASE: /\b(?:you have died|you are dead|your body is never found|you have been killed(?: by [^.!?*\n]{1,60})?|better luck next life)\s*(?:[.!*]|$)/im,
     WIN_PHRASE: /\b(?:you have won|you are victorious)\s*(?:[.!*]|$)/im,
     unquoted: (text) => String(text || "").replace(/"[^"\n]*"|“[^”\n]*”/g, " "),
     // Quoted dialogue (a quote holding a space) is removed before a line can be
@@ -1489,6 +1489,24 @@ var StatTracker = {
             StatTracker._events.push({ type: "win", text: "game ending", readSite: readSite });
         }
         if (StatTracker._key) StatTracker.save(StatTracker._key, model);
+        StatTracker.showEndingNotice(outcome, outcome === "death" ? model.deaths : model.wins);
+    },
+    clearEndingNotice: function () {
+        clearTimeout(StatTracker._endingNoticeTimer);
+        StatTracker._endingNoticeTimer = null;
+        try { var node = document.getElementById("pl-ending-notice"); if(node)node.remove(); } catch(e) {}
+    },
+    showEndingNotice: function (outcome, count) {
+        if(typeof document === "undefined" || !document.body || !document.createElement)return;
+        StatTracker.clearEndingNotice();
+        var node = document.createElement("div");
+        node.id = "pl-ending-notice";
+        node.setAttribute("role", "status");
+        node.setAttribute("aria-live", "polite");
+        node.setAttribute("aria-atomic", "true");
+        node.textContent = (outcome === "death" ? "You died. Deaths" : "You won. Wins") + " this playthrough: " + count;
+        document.body.appendChild(node);
+        StatTracker._endingNoticeTimer = setTimeout(StatTracker.clearEndingNotice, 8000);
     },
     // Returns every banner in a chunk of text, classified.
     bannersIn: (text) => {
@@ -1666,6 +1684,7 @@ var StatTracker = {
     // abandoned timeline's score and carried totals on screen until something
     // happened to overwrite them. Raised by the grok seat's audit of D178.
     Resync: function (reason) {
+        StatTracker.clearEndingNotice();
         try {
             StatTracker._aliasEv = null;               // D209: evidence is per timeline
             StatTracker.forgetReadings(StatTracker.model(), reason === "restart" || reason === "new-game");
@@ -1693,6 +1712,7 @@ var StatTracker = {
     },
 
     reset: () => {
+        StatTracker.clearEndingNotice();
         StatTracker._aliasEv = null;                   // D209
         clearTimeout(StatTracker._diagnoseTimer);
         StatTracker._diagnoseTimer = null;
