@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 329 headings; 103 decision rows; 432 registered units.
 **Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
-`ccd5394dcb0cada67f66e2f60ea90bbd53afd03ada2d837f0509ae4d68c2a468`
+`a1d30b4d1348bdb3f40f0c2a5d7e2544f919e23fd385b678aa8c01266c1ad9bc`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -8683,7 +8683,7 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
   - **New game.** A new game archives a non-empty working map to a `PL_MapSlots` slot flagged `autoArchive: true` ("Before new game <date>"). Pruning to 3 touches only flagged slots. If the archive fails, nothing is cleared and the error is reported.
   - **Validation.** Saves with no snapshot get a clean state, with no compatibility scaffolding. Imports must match the signature, pass ValidateMap, D54 and quarantine, and fit bounded labels (positive integer ids; phrase up to 1024 characters; up to 128 words of up to 64 characters; null-prototype records).
   - **Labels (codex).** `Actionable.labelSnapshot`, `applyLabelSnapshot` and `clearLabelSnapshot` form a separate display-only fallback validated against current RAM parser words. They never touch VerifiedNouns or CommandNouns, and current prose is first.
-  - **I3 (codex).** `ZvmCapture` passes the VM instance, and the first restart of each VM instance (a WeakSet) skips the resync.
+  - **I3 (codex).** `ZvmCapture` passes the VM instance, and the first restart of each VM instance (a WeakSet) skips the resync only while `Transcript._booting` is true; a first-seen VM after boot is a real restart.
   - **I4 (codex).** The exact native Treasures ending "*** YOUR BODY IS NEVER FOUND ***" is added to DEATH_PHRASE (evidence #2220), plus a non-blocking notice when a death or win is counted.
   - **Ownership.** Claude owns SaveState, the Transcript hooks, packaging and the canonical records. Codex owns Actionable, UndoRestoreSync, ZvmCapture, StatTracker, the CSS and the fixtures.
 - **Save-tied state implemented and closed by mutual acceptance:**

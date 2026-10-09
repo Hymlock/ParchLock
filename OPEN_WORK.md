@@ -237,3 +237,26 @@ Text implementation accepted2210/2211: owned app prose/documents/exports and att
 - [x] Witnessed Treasure custom death counts once and displays a nonblocking notice; isolated phrase, quote, replay and app-probe exclusions retained.
 
 Commits8291b5f/a8364a7/36d64f6; mutual audit2235/2236. Focused SaveState34/0, native transcript15/0, command-disambiguation51/0, death40/0, label ownership and restore ordering PASS. Native Treasure save/restore and actual cliff death PASS; phone notice geometry/screenshot checked. Source shell151; APK64 is still the previously delivered shell149 binary. No new APK or operator overall completion recorded.
+
+## Operator APK 64 issue list (2026-10-09, Wumpus and others): one at a time, standard procedure
+
+Screenshots: `work/investigations/operator-2026-10-09b/`. The list was taken on APK 64; recheck each item against current source before fixing.
+
+- [ ] **1. The app closes when it loses focus (Android).** IN PROGRESS: blind round started (bus #2245; claude `2026-10-09-claude-app-closure-blind.md`, codex `2026-10-09-codex-icon-start-blind.md`).
+  - Likely cause: the experimental alias switch in `onStop`.
+  - Operator decisions:
+    - move the rotation to app start;
+    - ask the home-screen-icon question first on first launch, before anything else;
+    - if a shortcut already exists and the user chooses Yes, replace it;
+    - the experimental setting stays off until the user turns it on, and is not moved.
+- [ ] **2. Status and inventory probe output is visible in the story** ("You are carrying 13 lbs of stuff…" printed twice). Equipment's first status check is not headless.
+- [ ] **3. Commands take up to 6 seconds**, even after a phone restart. Possibly linked to item 2 (background probes queued behind commands).
+- [ ] **4. Duplicate items lose their names** ("nutritiou" twice, with instance badges, instead of "food pellet"). The plural prose "two food pellets" cannot be mapped to each instance, so the name falls back to the 9-character dictionary word. A regression.
+- [ ] **5. Story text is visible below the bottom protected border**, left of the input. The input position moves (x 97 on one screen, 170 on another), and the protector starts at the input.
+- [ ] **6. Underlining is inconsistent and its order looks wrong:** "Exit 1" and "Exit 3" are underlined, "Exit 2" and "Exit 4" are not, and "exit 4" is unmarked everywhere. Part is the newest-occurrence rule (D214 U1), part is unexplained.
+- [ ] **7. "light" is underlined although it is not an item** (fungus description). It is probably a dictionary synonym of a real object.
+- [ ] **8. The World Map room bar truncates long names** ("A fair-sized, polished, watery ca"). It should wrap or scroll.
+- [ ] **9. Wording:** status and inventory checks use a turn in "many" stories, not "some" (Help, Tutorial, USER_GUIDE).
+- [ ] **10. Item names after loading:** fixed in source by save-tied labels (8291b5f and a8364a7, not in APK 64). Recheck on the next APK; any remainder is item 4.
+
+Order agreed with the operator: 1, then 2 and 3, then 4 to 7, then 8 and 9.

@@ -209,9 +209,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 100 headings; 0 decision rows; 100 registered units.
-**Last registered unit:** `ar-s100`. **Body SHA-256 (LF):**
-`a6fbf4c47156a6ec48ceae697a3939cd97bd496489d636763745e2bba99f252a`
+**Local manifest:** 101 headings; 0 decision rows; 101 registered units.
+**Last registered unit:** `ar-s101`. **Body SHA-256 (LF):**
+`b7989330c67ca904e0aa472715bfa629806ed1fdc50ea318706663b0015ba981`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -391,6 +391,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s098](#ar-s098) | 72. Hold selection ownership, voice input lifecycle and speech (D210-D212) | H2 | Implemented / audited |
 | [ar-s099](#ar-s099) | 73. In-room steps and combat actions (D213) | H2 | Part A implemented |
 | [ar-s100](#ar-s100) | 74. Underline lifetime, reply observation and Yourself breadth (D214) | H2 | Agreed; implementation in progress |
+| [ar-s101](#ar-s101) | 75. Save-tied state, authored endings and the rotating icon (D215) | H2 | Implemented / audited (icon lifecycle under review) |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -3933,3 +3934,65 @@ D214 follow-up Take amendment (peer proposal1989): confirmed fixed-family pre-v6
 D214 root-evidence amendment (native HHG): TAKE ANALGESIC consumes the tablet and inserts it into offstage bucket37; transfer alone is not carried-inventory evidence. D75 must reject a new learned root when actual bounded containment cannot reach the current/frozen room or already proven player/holder; preserve the prior valid holder. Revalidate persisted root in live containment before use. No flag or name guess, no NPC inventory recursion, no inventory filtering by descriptor. Actual unparented offstage bucket must not leak dozens of objects. Existing unsupported readers retain prior behavior when no containment evidence is available. Prior Wumpus/905 and root fixtures require controls.
 
 D214 follow-up final acceptance: peer1998 A/B,2000 C and2003 current-descriptor-first refinement; Codex concurs after native22/0, root13/0 and targeted prior guards. Current source shell141; APK63 remains pre-follow-up. Inventory-full-label/radial/Take/word-trigger/offstage-root checklist closed for this slice. No overall project completion recorded. Full report: work/investigations/2026-10-08-codex-hhg-followup-audit.md.
+
+<a id="ar-s101" data-chapter-id="ar-s101"></a><a id="ar-ch75"></a>
+## 75. Save-tied state, authored endings and the rotating icon (D215)
+
+This chapter is the companion of [D215](PRODUCTION_PLAN.md#pl-d215). It covers the beautification sweep's runtime additions, recorded only where they change structure.
+
+**Save-tied state (`js/SaveState.js`).**
+
+**Ownership and storage.**
+- The transcript (E4) already observes the authoritative save events. `SaveState` owns synchronous localStorage sidecars `PL_SaveState_<executable SHA digest>_<native save name>`, each holding the working map and **display-only** item labels.
+- The key is the exact executable digest (`Transcript.digest`, falling back to `ModuleLibrary.currentExecutableDigest`), never the short native game id.
+
+**Lifecycle sources (`js/Transcript.js` → `SaveState.onLifecycle`):**
+
+| Event | Source | SaveState action |
+|---|---|---|
+| save | `commitSave`, only after `file_write` succeeded for the chosen save | write a snapshot (a write failure removes the older sidecar and reports it) |
+| restore | `commitRestore`, after a successful `restore_file` | **stage** the selected snapshot; an unknown save name stages a clean state |
+| restart | `onVmEvent("restart")` while not booting | archive the working map, then stage a new game |
+| boot | first lines with no observed engine autorestore | archive, clear, then one topology re-render |
+| forget / uninstall | `forgetSaves`; `ModuleLibrary` (digest read before `removeTranscript`) | remove the matching sidecars |
+
+**Apply order (`js/UndoRestoreSync.js`).** `resync` clears the prior scope, labels and observations first. It then calls `SaveState.applyPending(reason, generation)`, which consumes a restore only for `restore_file` and a new game only for `restart`. This happens before legacy map handling and before the fresh StatTracker, WorldModel, MapTopology and Actionable ticks. A handled result suppresses the legacy restart clear. Successful patched-ZVM hooks own restore, undo and restart; a coalesced command fallback remains for other engines and custom LOAD.
+
+```mermaid
+sequenceDiagram
+    participant VM
+    participant Transcript
+    participant SaveState
+    participant Sync as UndoRestoreSync
+    participant UI as WorldModel / MapTopology / Actionable
+    VM->>Transcript: successful native restore_file
+    Transcript->>SaveState: stage selected save snapshot
+    VM->>Sync: successful state hook
+    Sync->>Sync: clear prior scope, labels and observations
+    Sync->>SaveState: applyPending(restore_file, generation)
+    SaveState-->>Sync: validated map and display labels, or clean state
+    Sync->>UI: rebuild from current VM state
+```
+
+**Invariants:**
+- A save without a snapshot restores a clean map and no labels. Newer state is never carried into an older save.
+- A new game archives a non-empty map as a Maps slot flagged `autoArchive: true`. Pruning to three touches only flagged slots. If the archive fails, nothing is cleared and the failure is reported.
+- **Labels** (`Actionable.labelSnapshot`, `applyLabelSnapshot` and `clearLabelSnapshot`) are a presentation fallback revalidated against the live RAM parser words. Current prose and a fresh full RAM name outrank them. They never feed `VerifiedNouns`, `CommandNouns`, capabilities or scope.
+- **Packages** carry the snapshots of the exported saves only. Import validates the digest, `ValidateMap`, D54, quarantine, bounded labels (ids up to 65535, phrases up to 1024 characters, up to 128 words of up to 64 characters) and null-prototype records. The writes and deletions run inside the importer's existing rollback, and an imported save without a snapshot loses any old one.
+- **Boot.** The first restart of a VM instance skips the resync **only while `Transcript._booting` is true**. A first-seen VM after boot is a real restart.
+
+**Authored endings (`js/StatTracker.js`).**
+
+- An ending is decided once per player submission, at the next new input request (a fresh `.Input` element). The decision uses the submission's output without the echo, and quotes are excluded. A terminal prompt needs a structured choice line among the last three lines.
+- The outcome comes from complete phrases (including the witnessed Treasures "YOUR BODY IS NEVER FOUND") or a death phrase inside a `***` banner (Zork resurrection). Conflicting phrases give unknown.
+- RESTORE-like submissions count only if the cue passed through the engine's own Glk output (the per-VM tap captures only while active).
+- Authored pauses carry the episode.
+- A counted outcome increments "Deaths/Wins this playthrough" (D204 lifecycle) and shows an eight-second, polite, non-blocking notice placed above the protected input, exit and keyboard reserves.
+
+**Rotating storybook icon.**
+
+- **Android.** `ParchLockActivity` is the single real activity and is never toggled. `com.parchlock.app.MainActivity` is preserved as the default launcher alias, so existing home-screen icons resolve. Four `.IconX` aliases exist for the experimental option.
+  - The default path updates ParchLock's own pinned shortcut (`parchlock-rotating`) in place.
+  - `SaveFilePlugin.iconScene` lets the splash open on the tapped icon's scene.
+  - APK 64 ran the rotation from `onStop`. A post-APK operator report ("closes when it loses focus") is under review: rotation moves to app start, and the experimental alias switch must not disable the running task's launcher alias.
+- **PC.** The `ParchLock.exe` launcher (`DesktopIcon`) offers a desktop shortcut once and rotates only the shortcut it owns, under strict ownership with atomic `launcher.ini` writes. `play.html?splash=<scene>` matches the splash.
