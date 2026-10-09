@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 329 headings; 103 decision rows; 432 registered units.
 **Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
-`92831d40a76e0610ba22d3da4a24a40f5d8fb9344a3acb47f98df119f034b95a`
+`7999f1b743463a7488be87d1ae91803adc49099a1399d9633ccf9f29032c526d`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -8643,3 +8643,9 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
   - The PC exe embeds the new archive icon (extracted and confirmed); Explorer had shown a cached icon.
   - **Operator post-APK checks:** the pinned icon updates in place, leaving and locking rotate it, pickers do not, the splash matches the icon, and the optional experimental toggle.
   - **Next:** the adversarial repo cleanup (operator), then the queued text, credits and permissions sweep.
+- **Repo cleanup closed (operator; sealed inventories `2026-10-09-claude-cleanup-blind.md` and `2026-10-09-codex-cleanup-blind.md`; R1 codex, R2 claude; consensus #2191; implemented 27d60e7; codex audit ACCEPT #2194):**
+  - Removed 191 tracked scratch probes that are unreferenced and unloaded. The list is `work/investigations/2026-10-09-cleanup-unreferenced-probes.txt`, and git history keeps them.
+  - Kept 33 referenced probes, and committed 14 cited ones.
+  - Local data is ignored, not deleted: tmp, status-audit, shot.png, *.glkdata, native-hooks/build, and future harness scratch.
+  - Guards green.
+  - Next: the text, credits and permissions sweep.
