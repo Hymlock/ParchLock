@@ -42,11 +42,11 @@ internal static class DesktopIconTest
             Check(File.Exists(lnk) && IconOf(lnk).IndexOf("parchlock-archive.ico", StringComparison.OrdinalIgnoreCase) >= 0,
                 "a created shortcut starts on the archive scene");
             d.Rotate();
-            Check(IconOf(lnk).IndexOf("parchlock-map.ico", StringComparison.OrdinalIgnoreCase) >= 0, "closing rotates it to the map scene");
+            Check(IconOf(lnk).IndexOf("parchlock-map.ico", StringComparison.OrdinalIgnoreCase) >= 0, "a start rotates it to the map scene");
             DesktopIcon again = DesktopIcon.LoadFrom(root, ini);
             Check(again.Scene == 1 && again.Consent == "yes", "the scene and consent persist in launcher.ini");
             again.Rotate(); again.Rotate(); again.Rotate();
-            Check(IconOf(lnk).IndexOf("parchlock-archive.ico", StringComparison.OrdinalIgnoreCase) >= 0, "four closes cycle back to archive");
+            Check(IconOf(lnk).IndexOf("parchlock-archive.ico", StringComparison.OrdinalIgnoreCase) >= 0, "four starts cycle back to archive");
 
             File.Delete(lnk);
             again.Rotate();
@@ -56,6 +56,33 @@ internal static class DesktopIconTest
             WriteForeign(lnk, foreignTarget);
             again.Rotate();
             Check(IconOf(lnk).IndexOf("notepad.exe", StringComparison.OrdinalIgnoreCase) >= 0, "a shortcut that points elsewhere is not ours and is left unchanged");
+
+            // Issue 1: "Yes" takes over a desktop shortcut the player already made to this exe.
+            string desk = Path.Combine(scratch, "desk1");
+            Directory.CreateDirectory(desk);
+            string mine = Path.Combine(desk, "My ParchLock.lnk");
+            string other = Path.Combine(desk, "Notepad.lnk");
+            WriteForeign(mine, Path.Combine(root, "ParchLock.exe"));
+            WriteForeign(other, foreignTarget);
+            string ini2 = Path.Combine(scratch, "launcher2.ini");
+            DesktopIcon fresh = DesktopIcon.LoadFrom(root, ini2);
+            fresh.Accept(desk, false);
+            Check(!File.Exists(Path.Combine(desk, "ParchLock.lnk")), "an existing shortcut to this exe is taken over; no second shortcut is added");
+            Check(IconOf(mine).IndexOf("parchlock-", StringComparison.OrdinalIgnoreCase) >= 0, "the taken-over shortcut gets the scene picture");
+            Check(IconOf(other).IndexOf("notepad.exe", StringComparison.OrdinalIgnoreCase) >= 0, "a shortcut to another program is never touched");
+            DesktopIcon owned = DesktopIcon.LoadFrom(root, ini2);
+            string before = IconOf(mine);
+            owned.Rotate();
+            Check(owned.Consent == "yes" && IconOf(mine) != before, "the taken-over shortcut is owned and rotates at the next start");
+
+            // No shortcut to this exe: Yes creates ParchLock.lnk and leaves others alone.
+            string desk2 = Path.Combine(scratch, "desk2");
+            Directory.CreateDirectory(desk2);
+            string other2 = Path.Combine(desk2, "Notepad.lnk");
+            WriteForeign(other2, foreignTarget);
+            DesktopIcon.LoadFrom(root, Path.Combine(scratch, "launcher3.ini")).Accept(desk2, false);
+            Check(File.Exists(Path.Combine(desk2, "ParchLock.lnk")) && IconOf(other2).IndexOf("notepad.exe", StringComparison.OrdinalIgnoreCase) >= 0,
+                "without one, Yes creates ParchLock.lnk and leaves other shortcuts unchanged");
         }
         finally
         {

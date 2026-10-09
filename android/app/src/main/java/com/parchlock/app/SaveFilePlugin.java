@@ -119,7 +119,8 @@ public class SaveFilePlugin extends Plugin {
     @PluginMethod
     public void iconScene(PluginCall call) {
         JSObject r = new JSObject();
-        String scene = IconRotator.sceneOfLaunch(getActivity() != null ? getActivity().getIntent() : null);
+        // Fixed for the life of the Activity (issue 1): the tapped icon, not a later intent.
+        String scene = getActivity() instanceof ParchLockActivity ? ((ParchLockActivity) getActivity()).launchScene() : null;
         r.put("scene", scene);
         r.put("canPin", IconRotator.canPin(getContext()));
         r.put("pinned", IconRotator.pinnedExists(getContext()));
@@ -127,16 +128,18 @@ public class SaveFilePlugin extends Plugin {
         call.resolve(r);
     }
 
-    /** Asks Android to pin the rotating home-screen icon; the system shows its own confirmation. */
+    /**
+     * "Add icon": updates ParchLock's own pinned icon in place, or asks Android
+     * to pin one. Resolves the true outcome: updated, requested, refused or unsupported.
+     */
     @PluginMethod
     public void pinRotatingShortcut(PluginCall call) {
         JSObject r = new JSObject();
-        boolean shown = getActivity() instanceof ParchLockActivity && IconRotator.requestPin((ParchLockActivity) getActivity());
-        r.put("requested", shown);
+        r.put("action", IconRotator.pinOrUpdate(getContext()));
         call.resolve(r);
     }
 
-    /** Experimental launcher-icon rotation; applied the next time the player leaves the app. */
+    /** Experimental launcher-icon rotation; applied at the next real exit (Back). */
     @PluginMethod
     public void setExperimentalIcon(PluginCall call) {
         Boolean on = call.getBoolean("enabled", false);

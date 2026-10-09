@@ -242,13 +242,8 @@ Commits8291b5f/a8364a7/36d64f6; mutual audit2235/2236. Focused SaveState34/0, na
 
 Screenshots: `work/investigations/operator-2026-10-09b/`. The list was taken on APK 64; recheck each item against current source before fixing.
 
-- [ ] **1. The app closes when it loses focus (Android).** IN PROGRESS: blind round started (bus #2245; claude `2026-10-09-claude-app-closure-blind.md`, codex `2026-10-09-codex-icon-start-blind.md`).
-  - Likely cause: the experimental alias switch in `onStop`.
-  - Operator decisions:
-    - move the rotation to app start;
-    - ask the home-screen-icon question first on first launch, before anything else;
-    - if a shortcut already exists and the user chooses Yes, replace it;
-    - the experimental setting stays off until the user turns it on, and is not moved.
+- [x] **1. The app closes when it loses focus (Android).** Fixed in source (D215 issue 1; consensus codex #2257, audit ACCEPT #2264). No icon work runs when the app is merely left. The pinned icon rotates at app start. The home-screen question is native and comes first on first launch. Add replaces ParchLock's own existing pin. The experimental launcher icon stays off and in Options, and switches only on a Back exit. On PC, rotation happens at start and Yes takes over an existing Desktop shortcut to this exe.
+  - **Operator test on the next APK:** no closing on minimize or lock; the question appears first on a fresh install; the icon changes at each open.
 - [ ] **2. Status and inventory probe output is visible in the story** ("You are carrying 13 lbs of stuff…" printed twice). Equipment's first status check is not headless.
 - [ ] **3. Commands take up to 6 seconds**, even after a phone restart. Possibly linked to item 2 (background probes queued behind commands).
 - [ ] **4. Duplicate items lose their names** ("nutritiou" twice, with instance badges, instead of "food pellet"). The plural prose "two food pellets" cannot be mapped to each instance, so the name falls back to the 9-character dictionary word. A regression.

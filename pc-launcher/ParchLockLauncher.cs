@@ -50,8 +50,11 @@ internal static class ParchLockLauncher
             worker.Start();
             Thread.Sleep(150);
 
-            // The splash opens on the scene the desktop icon currently shows.
+            // The splash opens on the scene the desktop icon showed when it was
+            // clicked; the icon then moves on to the next scene now, at start
+            // (issue 1), so nothing runs when ParchLock closes.
             string url = "http://127.0.0.1:" + port + "/play.html?splash=" + DesktopIcon.Scenes[icon.Scene];
+            icon.Rotate();
             Process browser = StartFullscreen(url);
             if (browser == null)
             {
@@ -69,7 +72,6 @@ internal static class ParchLockLauncher
             {
                 RunUntilQuit();
             }
-            icon.Rotate();
             return 0;
         }
         catch (Exception ex)
@@ -190,9 +192,10 @@ internal static class ParchLockLauncher
 
 /// <summary>
 /// D215: the desktop shortcut ParchLock creates with the player's consent. Its
-/// picture moves to the next storybook scene each time ParchLock closes. Only
-/// the shortcut this launcher created is ever touched: a file of the same name
-/// that is not ours is left alone, and a deleted shortcut is never recreated.
+/// picture moves to the next storybook scene each time ParchLock starts. Only
+/// a shortcut that runs this ParchLock.exe is ever touched: on Yes an existing
+/// desktop shortcut to this exe is taken over instead of adding a second one,
+/// a file that is not ours is left alone, and a deleted shortcut is never recreated.
 /// </summary>
 internal sealed class DesktopIcon
 {
@@ -278,14 +281,39 @@ internal sealed class DesktopIcon
     internal void Ask()
     {
         DialogResult answer = MessageBox.Show(
-            "Add a ParchLock shortcut to your desktop?\n\nIts picture changes to a different story scene each time you close ParchLock.",
+            "Add a ParchLock shortcut to your desktop?\n\nIts picture changes to a different story scene each time you open ParchLock. If you already have a ParchLock shortcut on your desktop, it is replaced.",
             "ParchLock", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         if (answer != DialogResult.Yes) { Consent = "no"; Save(); return; }
+        Accept(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), true);
+    }
+
+    // "Yes": take over a desktop shortcut that already runs this exe (operator,
+    // issue 1: replace it rather than add a second), otherwise create
+    // ParchLock.lnk. Only the given desktop folder is searched, never subfolders.
+    internal void Accept(string desktop, bool interactive)
+    {
         Consent = "yes";
-        string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "ParchLock.lnk");
+        string existing = FindShortcutToExe(desktop);
+        if (existing != null)
+        {
+            try
+            {
+                WriteShortcut(existing);
+                shortcutPath = existing;
+                shortcutTarget = Exe;
+            }
+            catch (Exception ex)
+            {
+                if (interactive) MessageBox.Show("ParchLock could not update the desktop shortcut: " + ex.Message, "ParchLock",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            Save();
+            return;
+        }
+        string path = Path.Combine(desktop, "ParchLock.lnk");
         if (File.Exists(path) && !(string.Equals(path, shortcutPath, StringComparison.OrdinalIgnoreCase) && IsOurs(path)))
         {
-            MessageBox.Show("A file named ParchLock.lnk is already on your desktop, so ParchLock left it unchanged.",
+            if (interactive) MessageBox.Show("A file named ParchLock.lnk is already on your desktop, so ParchLock left it unchanged.",
                 "ParchLock", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Save();
             return;
@@ -298,7 +326,7 @@ internal sealed class DesktopIcon
         }
         catch (Exception ex)
         {
-            MessageBox.Show("ParchLock could not create the desktop shortcut: " + ex.Message, "ParchLock",
+            if (interactive) MessageBox.Show("ParchLock could not create the desktop shortcut: " + ex.Message, "ParchLock",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         Save();
@@ -317,6 +345,26 @@ internal sealed class DesktopIcon
         }
         catch { }
         Save();
+    }
+
+    private string FindShortcutToExe(string desktop)
+    {
+        try
+        {
+            if (!Directory.Exists(desktop)) return null;
+            foreach (string lnk in Directory.GetFiles(desktop, "*.lnk", SearchOption.TopDirectoryOnly))
+            {
+                try
+                {
+                    object o = Invoke(Shell(), "CreateShortcut", lnk);
+                    string target = Convert.ToString(Get(o, "TargetPath"));
+                    if (target.Length > 0 && string.Equals(Path.GetFullPath(target), Path.GetFullPath(Exe), StringComparison.OrdinalIgnoreCase)) return lnk;
+                }
+                catch { }
+            }
+        }
+        catch { }
+        return null;
     }
 
     // Ours: it points at this exe, or at the exe we recorded, which no longer

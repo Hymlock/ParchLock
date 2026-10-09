@@ -1,15 +1,14 @@
-/* D215: rotating storybook icon (Android) - first-run offer and Options.
+/* D215: rotating storybook icon (Android) - the Options "App icon" group.
  *
  * The launcher icon itself never changes by default. With the player's consent
  * ParchLock pins one home-screen icon of its own, and the native side
- * (IconRotator.java) updates that icon's picture in place each time the player
- * leaves. Changing the launcher icon too is an experimental opt-in with a
- * warning. On the web and on PC this file does nothing; the PC launcher rotates
- * its own desktop shortcut.
+ * (IconRotator.java) updates that icon's picture in place each time the app is
+ * opened. The first-launch question is native (ParchLockActivity), asked before
+ * the page loads. Changing the launcher icon too is an experimental opt-in with
+ * a warning, applied when the player exits with Back. On the web and on PC this
+ * file does nothing; the PC launcher rotates its own desktop shortcut.
  */
 var IconRotation = {
-    OfferKey: "PL_IconPinOffered",
-
     plugin: function () {
         try {
             var Cap = window.Capacitor;
@@ -25,29 +24,12 @@ var IconRotation = {
         return p.iconScene().catch(function () { return null; });
     },
 
-    // Asked once. "No" (or dismissing) is remembered; Options can offer it again.
-    offerOnce: function () {
-        var seen = null;
-        try { seen = localStorage.getItem(IconRotation.OfferKey); } catch (e) {}
-        if (seen) return;
-        IconRotation.state().then(function (s) {
-            if (!s || !s.canPin || s.pinned) return;
-            if (typeof Message === "undefined" || Message.IsOpen) return;   // never over another window
-            try { localStorage.setItem(IconRotation.OfferKey, "1"); } catch (e) {}
-            IconRotation.askPin();
-        });
-    },
-
-    askPin: function () {
-        Message.Show("A home-screen icon that changes",
-            "<p>Add a ParchLock icon to your home screen? Its picture changes to a different story scene each time you leave ParchLock. It stays where you put it.</p>" +
-            "<div class='qol-window-actions'><button id='pl-icon-pin-yes' type='button'>Add icon</button><button id='pl-icon-pin-no' type='button'>Not now</button></div>", true);
-        $("#pl-icon-pin-yes").on("click", function () {
-            Message.Hide();
-            var p = IconRotation.plugin();
-            if (p) p.pinRotatingShortcut().catch(function () {});
-        });
-        $("#pl-icon-pin-no").on("click", Message.Hide);
+    // The true outcome of "Add icon" (native pinRotatingShortcut).
+    Outcomes: {
+        updated: "Home-screen icon updated.",
+        requested: "Android will ask you to place the icon.",
+        refused: "Android didn't allow that right now. Please try again later.",
+        unsupported: "This launcher doesn't support app-placed icons."
     },
 
     // Called by WorkspaceUI.ShowOptions with its group() helper.
@@ -58,16 +40,20 @@ var IconRotation = {
             if (!s) return;
             if (s.canPin) {
                 var pin = $("<button type='button' class='pl-options-action'>").appendTo(box);
-                pin.text(s.pinned ? "Rotating home-screen icon added" : "Add a rotating home-screen icon").prop("disabled", !!s.pinned);
+                pin.text(s.pinned ? "Update home-screen icon" : "Add a rotating home-screen icon");
+                var result = $("<div class='pl-options-note' role='status'>").appendTo(box);
                 pin.on("click", function () {
                     var p = IconRotation.plugin();
-                    if (p) p.pinRotatingShortcut().catch(function () {});
+                    if (!p) return;
+                    p.pinRotatingShortcut().then(function (r) {
+                        result.text(IconRotation.Outcomes[r && r.action] || IconRotation.Outcomes.refused);
+                    }).catch(function () { result.text(IconRotation.Outcomes.refused); });
                 });
             }
             var label = $("<label>").appendTo(box);
             var check = $("<input type='checkbox'>").prop("checked", !!s.experimental).appendTo(label);
             label.append(document.createTextNode("Change the app icon too (experimental)"));
-            $("<div class='pl-options-note'>").text("Experimental: changing the app icon can make some phones remove or move your ParchLock home-screen icon. Takes effect when you next leave ParchLock.").appendTo(box);
+            $("<div class='pl-options-note'>").text("Experimental: the app icon changes when you exit ParchLock with Back. Some phones may remove or move your home-screen icon.").appendTo(box);
             check.on("change", function () {
                 var p = IconRotation.plugin();
                 if (!p) return;
@@ -76,7 +62,7 @@ var IconRotation = {
                 // Only a confirmed warning turns it on; Cancel is the default.
                 this.checked = false;
                 var warn = $("<div class='pl-icon-warning' role='alertdialog'>").appendTo(box);
-                $("<p>").text("Experimental: changing the app icon can make some phones remove or move your ParchLock home-screen icon. Turn it on anyway?").appendTo(warn);
+                $("<p>").text("Experimental: the app icon changes when you exit ParchLock with Back. Some phones may remove or move your home-screen icon. Turn it on anyway?").appendTo(warn);
                 var actions = $("<div class='qol-window-actions'>").appendTo(warn);
                 var cancel = $("<button type='button'>").text("Cancel").appendTo(actions);
                 $("<button type='button'>").text("Turn on").appendTo(actions).on("click", function () {
@@ -91,11 +77,4 @@ var IconRotation = {
     }
 };
 
-try {
-    if (typeof document !== "undefined") {
-        document.addEventListener("DOMContentLoaded", function () {
-            // Let the splash, tutorials and any startup window settle first.
-            setTimeout(IconRotation.offerOnce, 4000);
-        });
-    }
-} catch (e) {}
+try { if (typeof module !== "undefined" && module.exports) module.exports = IconRotation; } catch (e) {}

@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 329 headings; 103 decision rows; 432 registered units.
 **Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
-`a1d30b4d1348bdb3f40f0c2a5d7e2544f919e23fd385b678aa8c01266c1ad9bc`
+`bec277f7d964b2cd63ea4577d038326cd7192d3e5fa6a4206d3e317b3e83f9f9`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -8407,6 +8407,8 @@ D214 follow-up final acceptance: peer1998 A/B,2000 C and2003 current-descriptor-
 
 **Lifecycle:** The operator ordered this on 2026-10-09: beautification loops first, then the death counter. Each surface follows the standard procedure: blind dual review, compare, propose, adversarial review, implement, audit. Surface 1 (Equipment and its Options) was agreed in #2011, #2012, #2014 and #2034, and is being implemented by codex with a claude audit. Sealed reviews: `work/investigations/2026-10-09-claude-equipment-visual-blind.md` and `work/investigations/2026-10-08-codex-equipment-visual-blind.md`.
 
+**Key files:** js/SaveState.js, js/StatTracker.js, js/IconRotation.js, harness/death-terminal.js; native `ParchLockActivity.java`, `IconRotator.java`, `IconPolicy.java`; `pc-launcher/ParchLockLauncher.cs`.
+
 **Scope and order (operator: full app; codex/claude #2010, #2011):**
 1. Equipment and its Options;
 2. the story buffer, the input bar and the floating controls;
@@ -8615,7 +8617,7 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
   - **Results:** `harness/death-terminal.js` 32/0 and stat-tracker 211/0. Live: HHG save 1, Zork grue 1, Zork controls 0.
 - **Icon rotation implemented (R3, consensus codex #2171; awaiting audit):**
   - **Android:**
-    - `ParchLockActivity` (renamed from MainActivity, D129 registration kept) is never toggled. It records app-launched UI through `startActivityForResult`/`startActivity` overrides, cleared in onResume. `onNewIntent` calls `setIntent`. `onStop` (not on a configuration change, not during app UI) calls `IconRotator.onLeave`.
+    - `ParchLockActivity` (renamed from MainActivity, D129 registration kept) is never toggled. It records app-launched UI through `startActivityForResult`/`startActivity` overrides, cleared in onResume. `onNewIntent` calls `setIntent`. `onStop` (not on a configuration change, not during app UI) calls `IconRotator.onLeave`. **Superseded after APK 64 by the issue-1 timing below; nothing runs on a non-finishing stop any more.**
     - The manifest keeps `.MainActivity` as the default launcher **alias** and adds four disabled `.IconX` aliases.
     - `IconRotator`:
       - a pinned shortcut `parchlock-rotating` (API 26+, ownership read from `getPinnedShortcuts`, never re-pinned), updated in place with a foreground composed over the dark ground;
@@ -8643,6 +8645,23 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
   - The PC exe embeds the new archive icon (extracted and confirmed); Explorer had shown a cached icon.
   - **Operator post-APK checks:** the pinned icon updates in place, leaving and locking rotate it, pickers do not, the splash matches the icon, and the optional experimental toggle.
   - **Next:** the adversarial repo cleanup (operator), then the queued text, credits and permissions sweep.
+- **Issue 1, APK 64 "the app closes when it loses focus" (operator 2026-10-09; blind #2245, R1-R3 consensus codex #2257, implementation audit ACCEPT #2264):**
+  - **Cause (credible, not device-proven; no logcat):** APK 64 did icon work in `onStop` on every focus loss. The opted-in experimental alias switch disables the running task's launcher alias; PackageManager documents unpredictable behaviour despite `DONT_KILL_APP`. Pinned updates from the background were also at the wrong moment (rate limits).
+  - **Operator decisions:** rotation moves to app start; the home-screen question comes first on first launch, before anything else; on Yes an existing ParchLock shortcut is replaced; the experimental setting is not moved and stays off until the user turns it on.
+  - **Timing contract:** no icon work of any kind on a non-finishing stop (Home, lock, app switch, pickers). `IconPolicy` holds the pure rules.
+  - **Android:**
+    - one launch per new Activity (`savedInstanceState == null`); recreation and `onNewIntent` never advance;
+    - `launchScene` is captured once (intent, or saved state on recreation) and is what `iconScene` reports, so the splash matches the tapped icon;
+    - `ParchLockActivity.load()` is overridden: on first launch where pinning is supported, a native AlertDialog ("Add icon" / "Not now", Back = Not now) is shown before `super.load()` builds the Bridge and WebView; the answer is stored (`promptAsked`); a dismissal by destroy is not an answer;
+    - after a deferred load the bridge receives the missed lifecycle exactly once (`onStart`, `fireStatusChange(true)` + `onResume`); a stop while the bridge is null balances `activityDepth`;
+    - the launch update (`rotateAtLaunch`) runs only while the Activity is live and resumed, stays pending across Home, and runs at most once; the scene is committed only after `updateShortcuts` succeeded;
+    - "Add icon" (`pinOrUpdate`) updates the owned `parchlock-rotating` pin in place, otherwise asks Android to pin; results are truthful: updated, requested, refused or unsupported. A launcher-owned copy of the base app icon cannot be detected or removed by any app API, so the question says the old one can be removed by hand;
+    - experimental: only on a real exit (`isFinishing()`; ParchLock's Back calls `CapApp.exitApp()`, which finishes the Activity). With a pin it matches the pin's picture, otherwise it advances;
+    - `appUiPending`, `noteAppUi`, the `startActivity*` overrides, `onLeave` and the JS 4-second offer are removed.
+  - **Options:** the App icon button is always enabled ("Update home-screen icon" when pinned) and a status line shows the true outcome; the warning reads "the app icon changes when you exit ParchLock with Back". Service worker v152.
+  - **PC:** `Rotate()` runs at start, after `?splash=<scene>` is built; nothing on close. Yes takes over the first top-level Desktop `.lnk` whose full target is this `ParchLock.exe`, otherwise creates `ParchLock.lnk`; other shortcuts are never touched.
+  - **Proofs (exit codes):** `harness/icon-policy-test.java` 18/0; codex's `harness/audit-icon-activity.py` (actual Activity against Bridge-order doubles) 15/0, after it first reproduced the backgrounded queued-rotation race (#2260, fixed); `harness/pc-desktop-icon-test.cs` 11/0; Gradle `compileDebugJavaWithJavac` and `lintVitalRelease` exit 0; splash matching; startup-menu-regression PASS; Options outcome browser check 4/4.
+  - **Operator post-APK checks:** no closing on minimize or lock; the question appears first on a fresh install; Add replaces an existing ParchLock pin; the icon changes at each open; the experimental option only on Back.
 - **Repo cleanup closed (operator; sealed inventories `2026-10-09-claude-cleanup-blind.md` and `2026-10-09-codex-cleanup-blind.md`; R1 codex, R2 claude; consensus #2191; implemented 27d60e7; codex audit ACCEPT #2194):**
   - Removed 191 tracked scratch probes that are unreferenced and unloaded. The list is `work/investigations/2026-10-09-cleanup-unreferenced-probes.txt`, and git history keeps them.
   - Kept 33 referenced probes, and committed 14 cited ones.

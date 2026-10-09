@@ -23,14 +23,16 @@ import java.util.Collections;
  *
  * Default (safe): the launcher icon never changes. With the player's consent
  * ParchLock pins ONE home-screen shortcut of its own and updates that
- * shortcut's picture in place each time the player leaves, so it is never
+ * shortcut's picture in place each time the app is opened, so it is never
  * removed or moved.
  *
  * Experimental (opt-in, warned): the launcher entry itself is switched between
  * four activity-aliases. Some launchers remove or move home-screen copies when
  * that happens, which is why it is off by default.
  *
- * Every change happens from onStop, never while the app is in the foreground.
+ * Timing (issue 1, APK 64 closed on focus loss): nothing runs when the app is
+ * merely left. The pinned icon advances at launch (IconPolicy); the alias
+ * switch, which can end a running task, runs only on a real finishing exit.
  */
 final class IconRotator {
 
@@ -74,7 +76,7 @@ final class IconRotator {
         return pending != null ? "on".equals(pending) : p.getBoolean("experimental", false);
     }
 
-    /** Recorded now, applied at the next onStop (component changes never in the foreground). */
+    /** Recorded now, applied at the next real exit (component changes never in a live task). */
     static void requestExperimental(Context c, boolean on) {
         prefs(c).edit().putString("experimentalPending", on ? "on" : "off").apply();
     }
@@ -96,20 +98,44 @@ final class IconRotator {
         return false;
     }
 
-    /** Shows Android's own "add to home screen" confirmation; true only if it was shown. */
-    static boolean requestPin(ParchLockActivity activity) {
-        if (!canPin(activity)) return false;
+    /**
+     * "Add icon": replaces ParchLock's own pinned icon in place when one exists,
+     * otherwise shows Android's "add to home screen" confirmation. Returns the
+     * true outcome (IconPolicy.pinOutcome).
+     */
+    static String pinOrUpdate(Context c) {
+        boolean can = canPin(c);
+        boolean pinned = can && pinnedExists(c);
+        boolean ok = false;
+        if (can && Build.VERSION.SDK_INT >= 26) {
+            try {
+                ShortcutManager sm = c.getSystemService(ShortcutManager.class);
+                String scene = SCENES[sceneIndex(c)];
+                ok = pinned ? updatePinned(c, scene) : sm.requestPinShortcut(build(c, scene), null);
+            } catch (Exception e) {
+                Log.w(TAG, "pin request failed", e);
+            }
+        }
+        return IconPolicy.pinOutcome(can, pinned, ok);
+    }
+
+    /**
+     * Once per launch: advance the pinned icon to the next scene. The stored
+     * scene moves only after Android accepted the update, so a refusal is
+     * retried on the next launch. No pinned icon: nothing advances.
+     */
+    static void rotateAtLaunch(Context c) {
         try {
-            ShortcutManager sm = activity.getSystemService(ShortcutManager.class);
-            activity.noteAppUi();
-            return Build.VERSION.SDK_INT >= 26 && sm.requestPinShortcut(build(activity, SCENES[sceneIndex(activity)]), null);
+            if (!pinnedExists(c)) return;
+            int next = IconPolicy.next(sceneIndex(c));
+            if (updatePinned(c, SCENES[next])) prefs(c).edit().putInt("scene", next).apply();
         } catch (Exception e) {
-            Log.w(TAG, "pin request failed", e);
-            return false;
+            Log.w(TAG, "launch rotation skipped", e);
         }
     }
 
-    static void onLeave(Context c) {
+    /** A real exit (Back): apply a pending experimental change, then the alias switch. */
+    static void onRealExit(Context c) {
         try {
             SharedPreferences p = prefs(c);
             // A requested switch is recorded as applied only after the component
@@ -119,23 +145,22 @@ final class IconRotator {
             if (pending != null && !exp) {
                 restoreBase(c);   // throws before the commit below if it fails
                 p.edit().putBoolean("experimental", false).remove("experimentalPending").apply();
+                return;
             }
-            boolean pinned = pinnedExists(c);
-            if (!pinned && !exp) return;
-            int next = (sceneIndex(c) + 1) % SCENES.length;
-            // A refused update (rate limit) keeps the current scene everywhere.
-            if (pinned && Build.VERSION.SDK_INT >= 26 && !updatePinned(c, SCENES[next])) return;
-            if (exp) switchAlias(c, SCENES[next]);   // throws before the commit if it fails
-            SharedPreferences.Editor done = p.edit().putInt("scene", next);
-            if (exp && pending != null) done.putBoolean("experimental", true).remove("experimentalPending");
+            int stored = sceneIndex(c);
+            int target = IconPolicy.exitAliasScene(exp, pinnedExists(c), stored);
+            if (target < 0) return;
+            switchAlias(c, SCENES[target]);   // throws before the commit if it fails
+            SharedPreferences.Editor done = p.edit().putInt("scene", target);
+            if (pending != null) done.putBoolean("experimental", true).remove("experimentalPending");
             done.apply();
         } catch (Exception e) {
-            Log.w(TAG, "rotation skipped", e);
+            Log.w(TAG, "exit icon switch skipped", e);
         }
     }
 
-    @RequiresApi(26)
     private static boolean updatePinned(Context c, String id) {
+        if (Build.VERSION.SDK_INT < 26) return false;
         ShortcutManager sm = c.getSystemService(ShortcutManager.class);
         return sm != null && sm.updateShortcuts(Collections.singletonList(build(c, id)));
     }

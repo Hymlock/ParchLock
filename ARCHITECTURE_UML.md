@@ -211,7 +211,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 101 headings; 0 decision rows; 101 registered units.
 **Last registered unit:** `ar-s101`. **Body SHA-256 (LF):**
-`b7989330c67ca904e0aa472715bfa629806ed1fdc50ea318706663b0015ba981`
+`4b5455f41b361c6de957d25dcb2bdb65edca02bc7a44457b35566247cd70b9d9`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -391,7 +391,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s098](#ar-s098) | 72. Hold selection ownership, voice input lifecycle and speech (D210-D212) | H2 | Implemented / audited |
 | [ar-s099](#ar-s099) | 73. In-room steps and combat actions (D213) | H2 | Part A implemented |
 | [ar-s100](#ar-s100) | 74. Underline lifetime, reply observation and Yourself breadth (D214) | H2 | Agreed; implementation in progress |
-| [ar-s101](#ar-s101) | 75. Save-tied state, authored endings and the rotating icon (D215) | H2 | Implemented / audited (icon lifecycle under review) |
+| [ar-s101](#ar-s101) | 75. Save-tied state, authored endings and the rotating icon (D215) | H2 | Implemented / audited (icon start timing: issue 1) |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -3994,5 +3994,9 @@ sequenceDiagram
 - **Android.** `ParchLockActivity` is the single real activity and is never toggled. `com.parchlock.app.MainActivity` is preserved as the default launcher alias, so existing home-screen icons resolve. Four `.IconX` aliases exist for the experimental option.
   - The default path updates ParchLock's own pinned shortcut (`parchlock-rotating`) in place.
   - `SaveFilePlugin.iconScene` lets the splash open on the tapped icon's scene.
-  - APK 64 ran the rotation from `onStop`. A post-APK operator report ("closes when it loses focus") is under review: rotation moves to app start, and the experimental alias switch must not disable the running task's launcher alias.
-- **PC.** The `ParchLock.exe` launcher (`DesktopIcon`) offers a desktop shortcut once and rotates only the shortcut it owns, under strict ownership with atomic `launcher.ini` writes. `play.html?splash=<scene>` matches the splash.
+  - APK 64 ran the rotation from `onStop`; the operator reported that the app closed when it lost focus. Since issue 1 (D215, codex audit #2264) **no icon work runs on a non-finishing stop**; the pure timing rules are in `IconPolicy`.
+  - **Launch transaction:** one per new Activity (`savedInstanceState == null`). `launchScene` is captured once and survives recreation. The pinned update runs only while the Activity is resumed, stays pending across Home, runs at most once, and commits the scene only after `updateShortcuts` succeeded.
+  - **First-launch question:** `ParchLockActivity.load()` shows a native dialog before `super.load()` builds the Bridge and WebView. A deferred load replays the missed `onStart`/`onResume` (with `fireStatusChange(true)`) to the bridge exactly once, and a stop while the bridge is null balances `activityDepth`.
+  - **Add icon** updates the owned pin in place or asks Android to pin one, and reports updated, requested, refused or unsupported truthfully.
+  - **Experimental aliases** switch only on a real exit (`isFinishing()`, reached through ParchLock's Back → `exitApp()` → `finish()`).
+- **PC.** The `ParchLock.exe` launcher (`DesktopIcon`) offers a desktop shortcut once and rotates only the shortcut it owns, at start (never on close), under strict ownership with atomic `launcher.ini` writes. On Yes it takes over an existing top-level Desktop shortcut whose target is this exe instead of adding a second. `play.html?splash=<scene>` matches the splash.

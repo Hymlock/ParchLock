@@ -4,7 +4,7 @@ One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
 This exists because the plan itself is not greppable: 99 decisions across
-8702 lines, with single lines over 20,000 characters, so one grep match
+8721 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -21,7 +21,7 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 
 | D | claim | files | games |
 |---|-------|-------|-------|
-| D215 | Full-app beautification sweep, surface by surface, preserving functional reserves |  |  |
+| D215 | Full-app beautification sweep, surface by surface, preserving functional reserves | js/SaveState.js js/StatTracker.js js/IconRotation.js harness/death-terminal.js |  |
 | D214 | Underlines follow their words; replies are observed; dictionary-equivalent and pronoun-safe triggers; Yourself breadth |  |  |
 | D213 | Enemy interactions and in-room steps need RAM or grammar evidence (Step 5) |  |  |
 | D212 | Pronunciation catalogue gathered from all projects | js/PronunciationCatalog.js js/ReadAloud.js |  |
