@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 329 headings; 103 decision rows; 432 registered units.
 **Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
-`bd242a8f3661d62f5910a592a80f97c7b7073c9c9ce0acc1416e073dda000925`
+`92831d40a76e0610ba22d3da4a24a40f5d8fb9344a3acb47f98df119f034b95a`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -742,7 +742,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s326](#pl-s326) | D212 Pronunciation catalogue gathered from all projects | H2 | Implemented / audited |
 | [pl-s327](#pl-s327) | D213 Enemy interactions and in-room steps need RAM or grammar evidence (Step 5) | H2 | Part A implemented and accepted (#1611); Part B cancelled |
 | [pl-s328](#pl-s328) | D214 Underlines follow their words; replies are observed; dictionary-equivalent and pronoun-safe triggers; Yourself breadth | H2 | Agreed (#1925); implementation in progress |
-| [pl-s329](#pl-s329) | D215 Full-app beautification sweep, surface by surface, preserving functional reserves | H2 | Surfaces 1-3 and start screen implemented/audited; Back/Go, Directions close, radial check open |
+| [pl-s329](#pl-s329) | D215 Full-app beautification sweep, surface by surface, preserving functional reserves | H2 | Implemented/audited; APK 64 delivered |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -8632,3 +8632,14 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
     - rotation on close plus SHChangeNotify;
     - `play.html?splash=<scene>`.
   - **Proofs:** `harness/pc-desktop-icon-test.cs` 6/0 (scratch folder, not the real desktop); the launcher compiles; splash matching for dungeon, forest, bogus (random) and none (random); startup-menu-regression and layout-regression PASS.
+- **APK 64 delivered:**
+  - Built by codex at 85c8fee: BUILD 64, versionCode 37, shell v149, including the native slice a1e5035. Artifact `ParchLock-dist/ParchLock-build64.apk`, 87,770,763 bytes, SHA-256 515a7878…b460b, signature v2 verified.
+  - Claude's independent check:
+    - the SHA-256 matches;
+    - the bundled `js/IconRotation.js`, `js/StatTracker.js` and `img/ParchLockSplash.js` are byte-identical to the source;
+    - the service worker is `parchlock-shell-v149`;
+    - the dex holds `ParchLockActivity`, `IconRotator` and `parchlock-rotating`;
+    - the compiled manifest holds the `com.parchlock.app.MainActivity` alias and `.IconArchive`, `.IconMap`, `.IconDungeon` and `.IconForest`.
+  - The PC exe embeds the new archive icon (extracted and confirmed); Explorer had shown a cached icon.
+  - **Operator post-APK checks:** the pinned icon updates in place, leaving and locking rotate it, pickers do not, the splash matches the icon, and the optional experimental toggle.
+  - **Next:** the adversarial repo cleanup (operator), then the queued text, credits and permissions sweep.
