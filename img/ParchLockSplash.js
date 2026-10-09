@@ -64,17 +64,44 @@
       return;
     }
 
-    var scene = scenes[randomIndex(scenes.length)];
     var picture = splash.querySelector(".parchlock-splash__picture");
     var eyebrow = splash.querySelector(".parchlock-splash__eyebrow");
     var start = splash.querySelector(".parchlock-splash__start");
 
-    splash.dataset.scene = scene.id;
-    picture.src = scene.image;
-    picture.alt = scene.alt;
-    eyebrow.textContent = scene.eyebrow;
-    document.documentElement.classList.remove("parchlock-splash-pending");
-    document.documentElement.classList.add("parchlock-splash-active");
+    var shown = false;
+    function show(id) {
+      if (shown) return;
+      shown = true;
+      var scene = null;
+      for (var i = 0; i < scenes.length; i++) if (scenes[i].id === id) scene = scenes[i];
+      if (!scene) scene = scenes[randomIndex(scenes.length)];
+      splash.dataset.scene = scene.id;
+      picture.src = scene.image;
+      picture.alt = scene.alt;
+      eyebrow.textContent = scene.eyebrow;
+      document.documentElement.classList.remove("parchlock-splash-pending");
+      document.documentElement.classList.add("parchlock-splash-active");
+    }
+    // D215: open on the scene shown by the icon the player tapped -- the PC
+    // launcher passes ?splash=<id>, Android reports the launching icon. An
+    // unknown or missing scene, or no answer within 150ms, stays random.
+    var requested = null;
+    try { requested = new URLSearchParams(window.location.search).get("splash"); } catch (e) {}
+    if (requested) {
+      show(requested);
+    } else {
+      var plugin = null;
+      try {
+        var Cap = window.Capacitor;
+        if (Cap && typeof Cap.isNativePlatform === "function" && Cap.isNativePlatform() && Cap.Plugins && Cap.Plugins.SaveFile && Cap.Plugins.SaveFile.iconScene) plugin = Cap.Plugins.SaveFile;
+      } catch (e) {}
+      if (plugin) {
+        window.setTimeout(function () { show(null); }, 150);
+        plugin.iconScene().then(function (r) { show(r && r.scene); }, function () { show(null); });
+      } else {
+        show(null);
+      }
+    }
 
     start.addEventListener("click", function () {
       if (splash.classList.contains("is-leaving")) return;

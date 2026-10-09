@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 329 headings; 103 decision rows; 432 registered units.
 **Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
-`609530a9c55b9933752ebaea5bb697d725dafbae4353284d668be744a86a9bf6`
+`bd242a8f3661d62f5910a592a80f97c7b7073c9c9ce0acc1416e073dda000925`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -8613,3 +8613,22 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
     - Bounds: startup autorestore and retained output outside an active fresh submission never count. Submission identity alone is not treated as replay proof.
   - **A3.** An episode carries across a pause only when the story authored that pause (a char request, or "hit/press/strike RETURN/ENTER/any key/a key/space", "[MORE]" or "(MORE)" in the last 2 lines) after a complete phrase, at most 3 times.
   - **Results:** `harness/death-terminal.js` 32/0 and stat-tracker 211/0. Live: HHG save 1, Zork grue 1, Zork controls 0.
+- **Icon rotation implemented (R3, consensus codex #2171; awaiting audit):**
+  - **Android:**
+    - `ParchLockActivity` (renamed from MainActivity, D129 registration kept) is never toggled. It records app-launched UI through `startActivityForResult`/`startActivity` overrides, cleared in onResume. `onNewIntent` calls `setIntent`. `onStop` (not on a configuration change, not during app UI) calls `IconRotator.onLeave`.
+    - The manifest keeps `.MainActivity` as the default launcher **alias** and adds four disabled `.IconX` aliases.
+    - `IconRotator`:
+      - a pinned shortcut `parchlock-rotating` (API 26+, ownership read from `getPinnedShortcuts`, never re-pinned), updated in place with a foreground composed over the dark ground;
+      - a refused update keeps the scene;
+      - the experimental switch is recorded in the foreground and applied at onStop, enabling the next alias before disabling the others;
+      - turning it off restores the base alias.
+    - `SaveFilePlugin` gains `iconScene`, `pinRotatingShortcut` and `setExperimentalIcon`.
+    - Adaptive XML per scene; the background colour is #101916.
+  - **Web:** `js/IconRotation.js` makes the one-time pin offer and adds the Options "App icon" group, whose experimental toggle needs an inline warning with Cancel focused. `ParchLockSplash.js` opens on `?splash=<id>` or the launching icon's scene (within 150ms), and otherwise stays random.
+  - **PC:** `ParchLockLauncher.cs` `DesktopIcon`:
+    - a one-time consent, with `--desktop-shortcut` to re-offer;
+    - an atomic `launcher.ini`;
+    - a desktop file that is not ours is never overwritten, a deleted shortcut is never recreated, and a moved folder is repointed;
+    - rotation on close plus SHChangeNotify;
+    - `play.html?splash=<scene>`.
+  - **Proofs:** `harness/pc-desktop-icon-test.cs` 6/0 (scratch folder, not the real desktop); the launcher compiles; splash matching for dungeon, forest, bogus (random) and none (random); startup-menu-regression and layout-regression PASS.

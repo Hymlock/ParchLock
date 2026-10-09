@@ -133,6 +133,8 @@ var WorkspaceUI = {
         groups.speech = group("Read aloud", "Narration, speech rate and repeats");
         groups.interface = group("Accessibility & controls", "Notes, directions and tutorials");
         groups.learned = group("Learned words", "Choose the labels shown in your editor");
+        // D215: Android only - the rotating storybook icon and its experimental launcher option.
+        try { if (typeof IconRotation !== "undefined") IconRotation.addOptions(group); } catch (eIcon) {}
         [
             ["Help at startup", "ShowInfoOnStart", ParchLock.ToggleShowInfo],
             ["Assume return paths", "AssumeTwoWayConnections", ParchLock.ToggleMap2Way]

@@ -112,4 +112,37 @@ public class SaveFilePlugin extends Plugin {
             try { if (out != null) out.close(); } catch (Exception ignored) {}
         }
     }
+
+    // ---- D215 icon rotation (IconRotator) -----------------------------------
+
+    /** The scene of the icon that launched the app, plus what this device supports. */
+    @PluginMethod
+    public void iconScene(PluginCall call) {
+        JSObject r = new JSObject();
+        String scene = IconRotator.sceneOfLaunch(getActivity() != null ? getActivity().getIntent() : null);
+        r.put("scene", scene);
+        r.put("canPin", IconRotator.canPin(getContext()));
+        r.put("pinned", IconRotator.pinnedExists(getContext()));
+        r.put("experimental", IconRotator.experimental(getContext()));
+        call.resolve(r);
+    }
+
+    /** Asks Android to pin the rotating home-screen icon; the system shows its own confirmation. */
+    @PluginMethod
+    public void pinRotatingShortcut(PluginCall call) {
+        JSObject r = new JSObject();
+        boolean shown = getActivity() instanceof ParchLockActivity && IconRotator.requestPin((ParchLockActivity) getActivity());
+        r.put("requested", shown);
+        call.resolve(r);
+    }
+
+    /** Experimental launcher-icon rotation; applied the next time the player leaves the app. */
+    @PluginMethod
+    public void setExperimentalIcon(PluginCall call) {
+        Boolean on = call.getBoolean("enabled", false);
+        IconRotator.requestExperimental(getContext(), on != null && on);
+        JSObject r = new JSObject();
+        r.put("experimental", IconRotator.experimental(getContext()));
+        call.resolve(r);
+    }
 }

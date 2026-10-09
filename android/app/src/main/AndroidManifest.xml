@@ -9,21 +9,89 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!-- D215: the real activity. It carries no launcher filter and is never
+             enabled or disabled, so every intent and the rotating home-screen
+             shortcut can always reach it. -->
         <activity
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|navigation|density"
-            android:name=".MainActivity"
+            android:name=".ParchLockActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBarLaunch"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize"
-            android:exported="true">
+            android:exported="true" />
 
+        <!-- D215: the launcher entry keeps its original public name, so home-screen
+             icons placed by earlier versions still resolve ("preserve your
+             launchers"). Enabled by default. -->
+        <activity-alias
+            android:name=".MainActivity"
+            android:targetActivity=".ParchLockActivity"
+            android:label="@string/title_activity_main"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity-alias>
 
-        </activity>
+        <!-- D215 experimental (Options, off by default, warned): one alias per
+             approved storybook scene, switched only after the player leaves. -->
+        <activity-alias
+            android:name=".IconArchive"
+            android:targetActivity=".ParchLockActivity"
+            android:label="@string/title_activity_main"
+            android:icon="@mipmap/ic_launcher_archive"
+            android:roundIcon="@mipmap/ic_launcher_archive"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconMap"
+            android:targetActivity=".ParchLockActivity"
+            android:label="@string/title_activity_main"
+            android:icon="@mipmap/ic_launcher_map"
+            android:roundIcon="@mipmap/ic_launcher_map"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconDungeon"
+            android:targetActivity=".ParchLockActivity"
+            android:label="@string/title_activity_main"
+            android:icon="@mipmap/ic_launcher_dungeon"
+            android:roundIcon="@mipmap/ic_launcher_dungeon"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".IconForest"
+            android:targetActivity=".ParchLockActivity"
+            android:label="@string/title_activity_main"
+            android:icon="@mipmap/ic_launcher_forest"
+            android:roundIcon="@mipmap/ic_launcher_forest"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
 
         <provider
             android:name="androidx.core.content.FileProvider"
