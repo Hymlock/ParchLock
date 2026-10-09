@@ -1,0 +1,16 @@
+# Codex independent post-APK text findings
+
+Sealed before reading peer text findings. APK64 confirmed2186. No product edits. Source census companion lists text sites and hashes; it does not claim every dynamic or story-authored phrase was manually read.
+
+1. USER_GUIDE describes the rejected imitation interactive tutorial that finishes at library and never starts a story. Tutorial.js actually runs inert information cards on real library then play after selecting a module. Correct the guide, preserve controls.
+2. WorkspaceUI Help describes Items between map and known rooms. Current EquipmentUI is a dedicated sheet. Document actual Yourself resolved-holder interactions, inventory/status turn warning and confirmed open/closed and active/inactive tags, without claiming every engine supports them.
+3. Guide says mapping does not know unexplored destinations, conflicting validated Inform lookahead and ZIL hint-only prediction. Explain local versus World Map, persisted explored cells, dark-room identity and faded/dotted untraveled hints. Hints never grant safe automatic travel.
+4. README says distributed without modules, conflicting actual development builder copying games/. GAMES_INCLUDED describes80 while development catalogue contains309. Separate development contents from intended operator-curated release. Never prune games or infer rights from catalogue membership.
+5. RELEASE_NOTES only1.0/September20; ProductInfo releaseDate/NOTICE old. Retain true history and append actual2.0.0/build64 checkpoint/features; no phone-test claims.
+6. CREDITS has Hymlock/upstream and OpenAI image generation, Codex packing/Claude integration; broader AI-assisted research/code/audits should credit Codex, Claude and Grok supported by history, without unknown model versions/copyright inventions. Splash rights remain unverified public-release prerequisite.
+7. Save guide lacks Transcript.js per-save view/ranges, save-only persistence, deletion and uninstall effects. ModuleLibrary removes transcripts on uninstall. Explain failure/incomplete limits rather than claiming unlimited durability.
+8. Document optional Android pinned shortcut, experimental opt-in warning and PC owned-shortcut consent; no all-launcher guarantee.
+9. SOURCE_BUILD excludes story source consistently. New icon-asset-pack and approved originals absent source allowlist; investigate deliberate standalone provenance/source asset inclusion, never add internal work directory wholesale.
+10. Privacy browser TTS locality is overbroad: app does not upload to ParchLock, but provider engine locality requires evidence. Distinguish Android native system voice from web provider. Preserve microphone recognition disclosure.
+
+Boundaries: preserve third-party story bytes/license texts verbatim; audit authored attribution/rights through existing per-executable records and keep uncertainty. Operator controls80 permission list and final removal. Historical canonical records remain history; append current references instead of mass rewriting evidence. Do not infer file corruption from PowerShell rendering; census checks actual UTF8. Proposed finite review lanes: runtime/help/tutorial versus docs/credits/build/rights, with reviewed-path manifest and unresolved provenance recorded. No backwards compatibility work, runtime mechanisms or handle positions changed.
