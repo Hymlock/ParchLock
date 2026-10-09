@@ -206,5 +206,12 @@ APK63 complete: source checkpoint0e9a9faffaee3632a6f7c8b74fc294bf5cadb571; Andro
 
 - [x] HHG follow-up: noun-safe marks, nested held names, fixed-ZIL Take capability, radial latency, full inventory labels and offstage-root poisoning; peer1998/2000/2003 accepted; native22/root13; source only, shell141.
 
-- [ ] Full-app beautification sweep (preserve prior successful sweeps): Equipment surface1 implemented and mutually accepted2051; grip unchanged. Surface2 bottom-exit/handle clearance implemented (46 static/60 native, layout and equipment pass), mutually accepted2068; Surface3 implemented/accepted2080; start-screen full overhaul implemented/accepted2086. Remaining buffer/input, maps, rail/mobile, menus/settings/submenus, library/start, radials/messages.
+- [ ] Full-app beautification sweep (preserve prior successful sweeps): Equipment surface1 accepted2051; centered grip unchanged. Bottom-exit clearance accepted2068; map presentation accepted2080; start-screen overhaul accepted2086; Directions close and desktop Menu spacing accepted2102. Remaining surfaces and About/document views inspected at phone/desktop widths without further changes (bus2107). Browsed-map Back/Go overlap awaits operator choice through Claude (2104/2105); no relocation implemented.
 - [ ] Death-signal loop after beautification, deterministic first and verified text only when needed; operator relay2004.
+- [ ] New icon selection, final asset packing and independent audit, then new APK containing all accepted current fixes. Codex is the sole builder (operator relay2089); icon candidates remain review-only until selected.
+
+## Queued after the current goals and APK (operator, 2026-10-09)
+
+- [ ] Begin a separate comprehensive in-code and out-of-code text/document sweep for accuracy, current information, thoroughness, permissions and attribution. Cover app interfaces, help, documentation, exported text and authored game text. Check ownership and permissions before proposing changes to third-party story text; preserve original authors' credits and licensed notices.
+- [ ] Add brief, accurate credits to Hymlock Groves and the AI systems actually used, including generated picture artwork, wherever relevant. Verify contribution and image provenance rather than inventing credits.
+- [ ] Coordinate the sweep with Claude through blind investigation, proposal review and implementation audit; keep planning and architectural records current. This work starts after the current fixes and APK, not during their completion.
