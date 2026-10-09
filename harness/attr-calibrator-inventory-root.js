@@ -128,6 +128,21 @@ function driveVerbSuccess(AttrCalibrator, command, opcodes) {
     assert(sandboxB.AttrCalibrator.confirmedInventoryRootId(fakeMemB) === null, "a different game's identity key never inherits another game's confirmed inventory root");
 }
 
+// Custom TAKE may consume an item by inserting it into a detached bucket.
+{
+ const {sandbox,fakeMem}=freshSandbox(),A=sandbox.AttrCalibrator;
+ sandbox.WorldModel.lastPayload.roomId=40;
+ sandbox.ZRamReader.objectLinks=(m,id)=>id===171?{parent:40}:id===37?{parent:0}:null;
+ A.hydrate(fakeMem);
+ A.table.inventoryRootId=171;
+ driveVerbSuccess(A,'take transmat popper',[{op:'remove_obj',args:[185]},{op:'insert_obj',args:[185,37]}]);
+ assert(A.table.inventoryRootId===171,'offstage consumption preserves the real prior holder');
+ A.table.inventoryRootId=37;
+ assert(A.confirmedInventoryRootId(fakeMem)===null,'detached persisted bucket cannot become inventory');
+ A.table.inventoryRootId=171;
+ assert(A.confirmedInventoryRootId(fakeMem)===171,'in-room real holder remains admitted');
+}
+
 // A scripted TAKE can reinsert a handled object into its room without carrying it.
 {
  const {sandbox,fakeMem}=freshSandbox(),A=sandbox.AttrCalibrator;

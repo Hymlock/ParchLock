@@ -1003,8 +1003,8 @@ var AttrCalibrator = {
 
                 // D75: a successful take's `insert_obj(itemId, holderId)`
                 // call names the REAL object the item just became a child
-                // of -- 100% observed ground truth for "who is actually
-                // holding things in this game," not a guess. Found live:
+                // of. A transfer is not sufficient carrying evidence: custom TAKE
+                // can consume the object into a detached bucket. Found live:
                 // wump2ka.z5.js's `resolveInventoryRootId` (ZRamProvider.js)
                 // gates its fallback candidate on the `animate` bit, which
                 // this exact game randomizes per session (D58) -- when that
@@ -1020,7 +1020,7 @@ var AttrCalibrator = {
                 if (entry.success) {
                     var insertCall = entry.trace.slice().reverse().find(function (t) { return t.op === "insert_obj" && t.args && String(t.args[0]) === String(entry.objectId); });
                     var holderId = insertCall && insertCall.args && insertCall.args[1];
-                    if (holderId != null && String(holderId) !== String(entry.beforeRoomId) && !AttrCalibrator.inventoryRootIsRoom(mem,holderId) && AttrCalibrator.table.inventoryRootId !== holderId) {
+                    if (holderId != null && String(holderId) !== String(entry.beforeRoomId) && !AttrCalibrator.inventoryRootIsRoom(mem,holderId) && AttrCalibrator.inventoryHolderInWorld(mem,holderId,entry.beforeRoomId) && AttrCalibrator.table.inventoryRootId !== holderId) {
                         AttrCalibrator.table.inventoryRootId = holderId;
                         changed = true;
                     }
@@ -1112,6 +1112,28 @@ var AttrCalibrator = {
     // caller's own game gets hydrated first (consistent with every other
     // AttrCalibrator consumer); returns null until at least one real take
     // has been observed and resolved for this game.
+    inventoryHolderInWorld: function (mem, id, frozenRoom) {
+        try {
+            var payload = typeof WorldModel !== 'undefined' && WorldModel.lastPayload;
+            var rooms = {};
+            if(frozenRoom != null)rooms[String(frozenRoom)]=true;
+            if(payload && payload.roomId != null)rooms[String(payload.roomId)]=true;
+            if(typeof ParchLockMap !== 'undefined') (ParchLockMap.Rooms || []).forEach(function(r){if(r && r.HasRealId && r.ObjectId != null)rooms[String(r.ObjectId)]=true;});
+            // Unsupported readers with no containment evidence keep their
+            // original behavior. A real detached node is decisive negative evidence.
+            if(!Object.keys(rooms).length || !mem || !ZRamReader.objectLinks)return true;
+            var first=ZRamReader.objectLinks(mem,id);
+            if(!first)return true;
+            var seen={}, node=first;
+            for(var i=0;i<32 && node && !seen[id];i++) {
+                seen[id]=true;
+                if(rooms[String(node.parent)])return true;
+                if(!node.parent)return false;
+                id=node.parent; node=ZRamReader.objectLinks(mem,id);
+            }
+            return false;
+        } catch(e) { return false; }
+    },
     inventoryRootIsRoom: function (mem, id) {
         if (id == null) return false;
         var payload = typeof WorldModel !== 'undefined' && WorldModel.lastPayload;
@@ -1126,7 +1148,7 @@ var AttrCalibrator = {
         try {
             if (mem) AttrCalibrator.hydrate(mem);
             var id = AttrCalibrator.table.inventoryRootId;
-            return id != null && !AttrCalibrator.inventoryRootIsRoom(mem,id) ? id : null;
+            return id != null && !AttrCalibrator.inventoryRootIsRoom(mem,id) && AttrCalibrator.inventoryHolderInWorld(mem,id) ? id : null;
         } catch (e) { return null; }
     },
 

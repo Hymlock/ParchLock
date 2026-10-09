@@ -217,13 +217,47 @@ var Actionable = {
     },
     isGrammarParticle: function (word) { return /^(a|an|the|of|and|or|to)$/i.test(String(word || "")); },
     // Trigger presentation only; these tokens never change scope or command nouns.
-    isReferenceToken: function (word) { return /^(it|its|them|they|him|her|his|your|yours|my|mine|our|ours|their|theirs|hers|you|me|myself|yourself|he|she|us|we|i)$/i.test(String(word || "").trim()); },
+    isReferenceToken: function (word) { return /^(it|its|them|they|him|her|his|your|yours|my|mine|our|ours|their|theirs|hers|you|me|myself|yourself|he|she|us|we|i|which|what|who|whom|whose)$/i.test(String(word || "").trim()); },
     observedLine: function (line) {
         return !!(line && line.isConnected && !Actionable.IsInstruction(line)
             && !$(line).closest('.pl-carry-probe, .pl-stat-probe, [aria-hidden="true"], [hidden]').length
             && $(line).is(':visible'));
     },
-    displayNameFor: function (obj, pool, text) { return Actionable.observedPhraseFor(obj,pool,text,false); },
+    _triggerDictCache: new WeakMap(),
+    nounTrigger: function (phrase) {
+        if (Actionable.isReferenceToken(phrase)) return false;
+        try {
+            var mem = ZRamProvider.getMem(), key = mem && (mem.buffer || mem);
+            var dict = Actionable._triggerDictCache.get(key);
+            if (dict === undefined) {
+                var family = GrammarProvider.decodeD198(mem), h = ZRamReader.header(mem);
+                dict = family.classification === 'confirmed-zil-family' && family.evidence === 'validated'
+                    ? GrammarProvider._d198RawDictionary(mem,h,mem.byteLength || mem.length) : null;
+                if (dict) { var byKey = {}; dict.entries.forEach(function(e){byKey[Actionable.vocabularyKey(e.word)] = e.flags;}); dict = byKey; }
+                Actionable._triggerDictCache.set(key,dict);
+            }
+            if (dict) return String(phrase).split(/\s+/).some(function(w){
+                return !!(dict[Actionable.vocabularyKey(w)] & 128);
+            });
+        } catch (e) {}
+        return true;
+    },
+    displayNameFor: function (obj, pool, text) {
+        var seed = obj;
+        try {
+            var mem = ZRamProvider.getMem(), full = ZRamReader.shortName(mem,obj.id);
+            if (full && full.charAt(0) !== '(' && !Actionable.isReferenceToken(full)
+                && (obj.labelProvenance === 'parser-vocabulary' || (obj.aliases || []).indexOf(obj.name) >= 0)
+                && full.length > String(obj.name).length) seed = Object.assign({},obj,{name:full,structuralName:full});
+        } catch(e) {}
+        var known = Actionable.VerifiedNouns[String(obj.id)] || '';
+        // Existing epoch-cleared, object-owned observed spelling is a display
+        // fallback. Current prose remains first and command ownership is untouched.
+        var current=Actionable.observedPhraseFor(seed,pool,text,false);
+        // New observed state/descriptor always outranks an old spelling.
+        if(current !== seed.name || !known)return current;
+        return Actionable.observedPhraseFor(seed,pool,known,false);
+    },
     observedPhraseFor: function (obj, pool, text, requireUnique) {
         // Display-only equivalence uses the live interpreter's encoding: a
         // hyphen consumes an alphabet shift and can truncate before character 9.
@@ -502,6 +536,15 @@ var Actionable = {
     // byte-parity with the legacy path (harness/d88-semantic-parity.js), so
     // this changes WHERE the array is computed, never its contents.
     resolveObjectCommands: (objectId, kind, options) => {
+        // A single synchronous resolution shares its immutable presentation pool.
+        // Never retain this snapshot across input, refresh, restore or a later tap.
+        var prior = Actionable._resolutionPool;
+        try {
+            if (!prior) Actionable._resolutionPool = Actionable.payloadPool();
+            return Actionable._resolveObjectCommands(objectId,kind,options);
+        } finally { Actionable._resolutionPool = prior; }
+    },
+    _resolveObjectCommands: (objectId, kind, options) => {
         var target = Actionable.payloadPool().find(function (o) { return String(o.id) === String(objectId); });
         if (target && !Actionable.referenceFor(target).unique && !(options && options.allowAmbiguousReference)) return [];
         // D214 P1 is observed possession, not evidence of a transferable item.
@@ -1040,6 +1083,7 @@ var Actionable = {
         return out;
     },
     payloadPool: () => {
+        if (Actionable._resolutionPool) return Actionable._resolutionPool;
         try {
             var p = WorldModel && WorldModel.lastPayload;
             if (!p) return [];
@@ -1247,7 +1291,7 @@ var Actionable = {
 
     phraseOwners: function (phrase, pool) {
         var matched = String(phrase || '').toLowerCase();
-        if (Actionable.isReferenceToken(matched)) return [];
+        if (!Actionable.nounTrigger(matched)) return [];
         return Actionable.distinctObjects(pool).filter(function (o) {
             var words = Actionable.nounWordsOf(o);
             return String(o.name).toLowerCase() === matched || matched.split(/\s+/).every(function (w) {
@@ -1596,6 +1640,7 @@ var Actionable = {
             var fullName = String(o.name || "").trim().toLowerCase();
             Actionable.namePhrases(o.name).forEach(function (phrase) {
                 var pl = String(phrase).toLowerCase();
+                if (!Actionable.nounTrigger(pl)) return;
                 seenPhrase[pl] = true;
                 wrapTargets.push({
                     phrase: phrase, kind: kind, objectId: o.id, dictAddr: o.dictAddr, fromName: true,
@@ -1607,7 +1652,7 @@ var Actionable = {
                 var wl = String(word).toLowerCase();
                 if (seenPhrase[wl]) return;
                 // Grammar particles only (not a prose stopword list).
-                if (Actionable.isGrammarParticle(wl) || Actionable.isReferenceToken(wl)) return;
+                if (Actionable.isGrammarParticle(wl) || !Actionable.nounTrigger(wl)) return;
                 seenPhrase[wl] = true;
                 wrapTargets.push({ phrase: word, kind: kind, objectId: o.id, dictAddr: o.dictAddr, fromName: false });
             });
@@ -1659,6 +1704,19 @@ var Actionable = {
         var ordered = wrapTargets.filter(function (t) { return t.preferred; })
             .concat(wrapTargets.filter(function (t) { return !t.preferred; }));
         ordered.forEach(function (t) {
+            if (t.preferred && String(t.phrase).indexOf(' ') >= 0 && markedIds[String(t.objectId)]
+                && activeLines.some(function(l){return l.textContent.toLowerCase().indexOf(String(t.phrase).toLowerCase()) >= 0;})) {
+                Actionable.LiveMarks = Actionable.LiveMarks.filter(function(mark){
+                    var ids = []; try {ids=JSON.parse(mark.dataset.candidateIds || '[]');} catch(e) {}
+                    if (mark.dataset.objectId) ids.push(mark.dataset.objectId);
+                    if (!ids.some(function(id){return String(id) === String(t.objectId);})
+                        || mark.textContent.toLowerCase() === String(t.phrase).toLowerCase()
+                        || String(t.phrase).toLowerCase().indexOf(mark.textContent.toLowerCase()) < 0) return true;
+                    ids.forEach(function(id){delete markedIds[String(id)];});
+                    var parent=mark.parentNode; mark.replaceWith(document.createTextNode(mark.textContent)); if(parent)parent.normalize();
+                    return false;
+                });
+            }
             if (t.objectId != null && markedIds[String(t.objectId)]) return;
             if (t.kind === 'direction' && markedDirections[String(t.phrase).toLowerCase()]) return;
             if (Actionable.wrapFirstExact(activeLines, t.phrase, t)) {
@@ -1812,6 +1870,13 @@ var Actionable = {
         });
     },
     Open: (noun, kind, x, y, objectId) => {
+        var prior = Actionable._resolutionPool;
+        try {
+            if (!prior) Actionable._resolutionPool = Actionable.payloadPool();
+            return Actionable._open(noun,kind,x,y,objectId);
+        } finally { Actionable._resolutionPool = prior; }
+    },
+    _open: (noun, kind, x, y, objectId) => {
         var sharedCommands = null;
         var object = Actionable.payloadPool().find(function (o) { return String(o.id) === String(objectId); });
         if (!objectId || (object && !Actionable.referenceFor(object).unique)) {

@@ -177,6 +177,14 @@ var AttributeSchema = {
             attrs.takeable = !attrs.static && !attrs.scenery;
         }
 
+        // Proven fixed ZIL grammar owns TAKE's FIND capability, rather than
+        // interpreting this compiler's bits as Inform scenery/static flags.
+        try {
+            var takeBit = typeof GrammarProvider !== 'undefined' && GrammarProvider.d214TakeAttribute
+                ? GrammarProvider.d214TakeAttribute(mem) : null;
+            if (Number.isInteger(takeBit) && obj) attrs.takeable = !!ZRamReader.attr(obj,takeBit);
+        } catch(eTake) {}
+
         // D73 Phase D: consult AttrCalibrator's live-opcode-observed,
         // per-game calibration -- evidence-only, additive, never a guess.
         // A game/flag with no confirmed observation yet is byte-for-byte

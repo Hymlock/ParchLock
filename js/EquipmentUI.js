@@ -641,7 +641,7 @@ var EquipmentUI = {
             host.appendChild(note);
         }
 
-        var displayText = typeof Actionable !== "undefined" ? Actionable.Scope.lastLookText + "\n" + Actionable.Scope.lastInventoryText : "";
+        var displayText = typeof Actionable !== "undefined" ? Actionable.Scope.lastLookText + "\n" + Actionable.Scope.lastInventoryText + "\n" + (Actionable.Scope.lastReplyText || "") : "";
         var displayLabels = {};
         m.items.forEach(function (item) {
             var name = typeof Actionable !== "undefined" && Actionable.displayNameFor ? Actionable.displayNameFor(item, m.items, displayText) : item.name;

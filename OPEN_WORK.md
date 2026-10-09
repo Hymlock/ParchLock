@@ -203,3 +203,8 @@ Post-map sampled-statistics review queue (bus1871; not regressions introduced by
 - [x] APK63 packaging and signature/asset verification after checkpoint.
 
 APK63 complete: source checkpoint0e9a9faffaee3632a6f7c8b74fc294bf5cadb571; Android versionCode36/versionName2.0.0, cache140. Gradle assembleDebug succeeded17s; v2 signature verified;457 bundled asset/source byte matches. ParchLock-build63.apk 84252953 bytes, SHA256 B58A519EE590CD40D2DE55235B660F2BAFF028628AC97956DF16D82F263F2FB8. Corresponding source archive SHA256 F3A9256268CA28409B4CB45168015EB3C4AB5468743866DD42A7375CB3BF1409. APK62 preserved in Downloads/ParchLock-APK-archive. Physical Android validation remains operator-owned; no overall goal completion recorded.
+
+- [x] HHG follow-up: noun-safe marks, nested held names, fixed-ZIL Take capability, radial latency, full inventory labels and offstage-root poisoning; peer1998/2000/2003 accepted; native22/root13; source only, shell141.
+
+- [ ] Equipment visual pass: independent blind reviews, agreed bounded plan, implementation/adversarial audit.
+- [ ] Death-signal loop after beautification, deterministic first and verified text only when needed; operator relay2004.

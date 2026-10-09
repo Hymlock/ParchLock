@@ -4,6 +4,25 @@ var GrammarProvider = {
     _d198DecodeCache: (typeof WeakMap !== "undefined") ? new WeakMap() : null,
     _d214DirectionCache: (typeof WeakMap !== "undefined") ? new WeakMap() : null,
 
+    _d214TakeCache: new WeakMap(),
+    d214TakeAttribute: function (mem) {
+        try {
+            var key=mem && (mem.buffer || mem), cache=GrammarProvider._d214TakeCache;
+            if (key && cache.has(key)) return cache.get(key);
+            var decoded = GrammarProvider.decodeD198(mem);
+            if (decoded.classification !== 'confirmed-zil-family' || decoded.evidence !== 'validated'
+                || decoded.family !== 'infocom-pre-v6-fixed') { if(key && decoded.evidence === 'validated')cache.set(key,null); return null; }
+            var lines = decoded.templates.filter(function(t){return t.verb === 'take' && t.objectCount === 1 && !t.prepositions.length;});
+            if (lines.length !== 1 || !lines[0].findAttributes) return null;
+            var bit=lines[0].findAttributes[0], h=ZRamReader.header(mem);
+            if (!Number.isInteger(bit) || bit <= 0 || bit >= (h.version <= 3 ? 32 : 48)) return null;
+            // Conflicting bare forms or parser actions do not establish a capability.
+            var action=lines[0].actionId;
+            if (!decoded.templates.some(function(t){return t.verb === 'take' && t.actionId === action && t.objectCount === 2;})) return null;
+            if(key)cache.set(key,bit);
+            return bit;
+        } catch(e) { return null; }
+    },
     d214RoomTarget: function (mem, sourceId, destId) {
         try {
             var h = ZRamReader.header(mem), count = ZRamReader.objectCount(mem, h);
@@ -268,7 +287,7 @@ var GrammarProvider = {
                     var prep2 = ZRamReader.u8(mem, pos + 2);
                     if ((prep1 && prep1 < 0x80) || (prep2 && prep2 < 0x80)) return null;
                     var fixedAction = ZRamReader.u8(mem, pos + 7);
-                    lines.push({ objectCount: objects, prepIndices: [prep1, prep2].filter(function (value) { return !!value; }), action: fixedAction });
+                    lines.push({ objectCount: objects, prepIndices: [prep1, prep2].filter(function (value) { return !!value; }), action: fixedAction, findAttributes: [ZRamReader.u8(mem,pos+3),ZRamReader.u8(mem,pos+4)] });
                     if (fixedAction > maxAction) maxAction = fixedAction;
                     pos += 8;
                 } else {
@@ -352,6 +371,7 @@ var GrammarProvider = {
                     verbIndex: verb.verbIndex,
                     objectCount: line.objectCount,
                     prepositions: words,
+                    findAttributes: line.findAttributes || null,
                     actionId: "infocom-pre-v6:" + line.action
                 });
             });

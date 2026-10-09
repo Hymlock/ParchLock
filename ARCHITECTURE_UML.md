@@ -211,7 +211,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 100 headings; 0 decision rows; 100 registered units.
 **Last registered unit:** `ar-s100`. **Body SHA-256 (LF):**
-`ccf82c861cabd4de0ddb305e0b81e9792d041bcbe5522b680030b73e0bf2d948`
+`a6fbf4c47156a6ec48ceae697a3939cd97bd496489d636763745e2bba99f252a`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -3924,3 +3924,12 @@ D214 source freeze: U1-U6 independently accepted (a40f7ba), P1 independently acc
 
 
 APK63 complete: source checkpoint0e9a9faffaee3632a6f7c8b74fc294bf5cadb571; Android versionCode36/versionName2.0.0, cache140. Gradle assembleDebug succeeded17s; v2 signature verified;457 bundled asset/source byte matches. ParchLock-build63.apk 84252953 bytes, SHA256 B58A519EE590CD40D2DE55235B660F2BAFF028628AC97956DF16D82F263F2FB8. Corresponding source archive SHA256 F3A9256268CA28409B4CB45168015EB3C4AB5468743866DD42A7375CB3BF1409. APK62 preserved in Downloads/ParchLock-APK-archive. Physical Android validation remains operator-owned; no overall goal completion recorded.
+
+
+D214 follow-up (2026-10-08): native HHG Take gown reproduces adjective large bound to nested analgesic and relative which bound to the long-name thing. These weak marks then occupy the one-mark-per-object slot after OPEN POCKET prints the real labels. Repair presentation triggers using validated ZIL noun roles (preserve full phrases and command vocabulary), prevent relative pronoun triggers, and replace weak fallback marks when a preferred observed label becomes available. Inventory names must preserve full structural/observed labels and wrap rather than ellipsize. Bound payload reuse to one synchronous command-resolution call only; no cross-turn cache. Take evidence investigation remains open: current AttributeSchema applies unconfirmed Inform scenery bits to HHG. Do not infer takeability from an adjective or guessed flags. Native supplied save is at turn19 immediately before demolition; inspect it without consuming diagnostic turns, and reproduce earlier behavior through real new-game commands.
+
+D214 follow-up Take amendment (peer proposal1989): confirmed fixed-family pre-v6 ZIL bare TAKE grammar exposes its first-object FIND attribute. Read only a unique one-object/no-preposition TAKE template with nonzero bounded attribute and consistent action; leave variable/unknown families untouched. Use this executable-owned takeable capability after legacy-profile derivation, before stronger successful per-object calibration. It describes capability, not immediate success during hangover or another temporary prerequisite. Native HHG bit41 and Zork bit17 need independent verification; no numeric/title dispatch, and no untrusted Inform scenery veto for this specific proven Take capability.
+
+D214 root-evidence amendment (native HHG): TAKE ANALGESIC consumes the tablet and inserts it into offstage bucket37; transfer alone is not carried-inventory evidence. D75 must reject a new learned root when actual bounded containment cannot reach the current/frozen room or already proven player/holder; preserve the prior valid holder. Revalidate persisted root in live containment before use. No flag or name guess, no NPC inventory recursion, no inventory filtering by descriptor. Actual unparented offstage bucket must not leak dozens of objects. Existing unsupported readers retain prior behavior when no containment evidence is available. Prior Wumpus/905 and root fixtures require controls.
+
+D214 follow-up final acceptance: peer1998 A/B,2000 C and2003 current-descriptor-first refinement; Codex concurs after native22/0, root13/0 and targeted prior guards. Current source shell141; APK63 remains pre-follow-up. Inventory-full-label/radial/Take/word-trigger/offstage-root checklist closed for this slice. No overall project completion recorded. Full report: work/investigations/2026-10-08-codex-hhg-followup-audit.md.

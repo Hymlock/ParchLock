@@ -4115,7 +4115,7 @@ body.pl-mobile .equip-grip { width: 38px; height: 38px; opacity: 0.3; }
 .equip-row:not([style*="--equip-depth: 0"]) { border-left: 3px solid var(--pl-accent, #2a9); }
 
 /* Gets the whole bar: the floating handle costs it no width. */
-.equip-name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.equip-name { flex: 1 1 auto; min-width: 0; white-space: normal; overflow-wrap: anywhere; }
 /* Tags yield before the name does -- they are secondary information. */
 .equip-tags { flex: 0 1 auto; min-width: 0; font-size: 11px; opacity: 0.65; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
