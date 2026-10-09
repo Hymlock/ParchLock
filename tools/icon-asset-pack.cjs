@@ -1,0 +1,30 @@
+// Reproducible format/size packing of the operator-approved artwork.
+// Creative/background extraction uses image generation; this tool only scales,
+// composes platform backgrounds and renders purpose-drawn tiny vector icons.
+const fs=require('fs'),path=require('path'),crypto=require('crypto');
+const {chromium}=require('playwright'),{pathToFileURL}=require('url');
+const root=path.resolve(__dirname,'..'),out=path.join(root,'img/icons');
+const scenes=[['archive','archive-door'],['dungeon','dungeon-door'],['forest','forest-path'],['map','living-map']];
+function tiny(scene){
+ const colors={archive:'#375477',dungeon:'#875120',forest:'#426b3d',map:'#b18a49'};
+ const motifs={archive:'<path d="M9 11a3 3 0 1 0-6 0l1 1v6h4v-6z" fill="#f4d799"/>',dungeon:'<path d="M4 20V11a3 3 0 0 1 6 0v9z" fill="#f3bd57"/><path d="M5 12v7h3v-7z" fill="#5b371c"/>',forest:'<path d="m3 15 3-7 3 7H7v5H5v-5z" fill="#c3d391"/><path d="m9 20 2-5-1-4" fill="none" stroke="#e7c582" stroke-width="1.5"/>',map:'<path d="m6 10 2 3-2 3-2-3z" fill="#213e32"/><path d="M3 19q6-5 7 0" fill="none" stroke="#d9dfb9" stroke-width="1.3"/>'};
+ return '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect width="32" height="32" fill="#101916"/><path d="M2 6q7-2 14 2 7-4 14-2v21q-7-2-14 1-7-3-14-1z" fill="#3b8069"/><path d="M3 5q7-1 13 3 6-4 13-3v20q-6-2-13 2-7-4-13-2z" fill="#f3edd8"/><path d="M4 7q6 0 10 3v12q-4-2-10-1z" fill="'+colors[scene]+'"/>'+motifs[scene]+'<path d="M16 9v17" stroke="#c9c3a9"/><path d="M19 21q6-2 3-6t4-4" fill="none" stroke="#52ae8e" stroke-width="2"/><circle cx="19" cy="21" r="1.5" fill="#52ae8e"/><path d="m25 6 2 2-2 2-2-2z" fill="#295d49"/></svg>';
+}
+function ico(parts){const h=Buffer.alloc(6+16*parts.length);h.writeUInt16LE(1,2);h.writeUInt16LE(parts.length,4);let offset=h.length;parts.forEach(({n,data},i)=>{const at=6+16*i;h[at]=h[at+1]=n===256?0:n;h.writeUInt16LE(1,at+4);h.writeUInt16LE(32,at+6);h.writeUInt32LE(data.length,at+8);h.writeUInt32LE(offset,at+12);offset+=data.length});return Buffer.concat([h,...parts.map(p=>p.data)])}
+(async()=>{fs.mkdirSync(out,{recursive:true});const browser=await chromium.launch();const audit=[];try{
+ const page=await browser.newPage();await page.goto(pathToFileURL(path.join(root,'play.html')).href);
+ async function png(source,n,fit=.82,background=true,crop=true){return page.evaluate(async({source,n,fit,background,crop})=>{const im=new Image();im.src=source;await im.decode();const scratch=document.createElement('canvas');scratch.width=im.width;scratch.height=im.height;const sc=scratch.getContext('2d');sc.drawImage(im,0,0);let box={x:0,y:0,w:im.width,h:im.height};if(crop){const px=sc.getImageData(0,0,im.width,im.height).data;let x0=im.width,y0=im.height,x1=-1,y1=-1;for(let y=0;y<im.height;y++)for(let x=0;x<im.width;x++)if(px[(y*im.width+x)*4+3]>8){x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y)}if(x1<0)throw Error('Empty foreground');box={x:x0,y:y0,w:x1-x0+1,h:y1-y0+1};if(box.w===im.width&&box.h===im.height)throw Error('Foreground is not a transparent cutout')}
+ const c=document.createElement('canvas');c.width=c.height=n;const ctx=c.getContext('2d');if(background){ctx.fillStyle='#101916';ctx.fillRect(0,0,n,n)}let scale=n*fit/Math.max(box.w,box.h),safeRadius=null;if(crop&&fit===66/108){const px=sc.getImageData(0,0,im.width,im.height).data,cx=box.x+box.w/2,cy=box.y+box.h/2;let radius=0;for(let y=box.y;y<box.y+box.h;y++)for(let x=box.x;x<box.x+box.w;x++)if(px[(y*im.width+x)*4+3]>0)radius=Math.max(radius,Math.hypot(x+.5-cx,y+.5-cy));safeRadius=n*33/108;scale=Math.min(scale,(safeRadius-1.25)/radius)}const w=box.w*scale,h=box.h*scale;ctx.drawImage(im,box.x,box.y,box.w,box.h,(n-w)/2,(n-h)/2,w,h);return {base64:c.toDataURL('image/png').split(',')[1],width:n,height:n,motif:{width:w,height:h},safeRadius,sourceBox:box}}, {source,n,fit,background,crop})}
+ async function save(relative,source,n,fit,background,crop=true){const r=await png(source,n,fit,background,crop);const data=Buffer.from(r.base64,'base64'),target=path.join(root,relative);fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,data);delete r.base64;audit.push({file:relative,...r,sha256:crypto.createHash('sha256').update(data).digest('hex')});return data}
+ for(const [id,scene] of scenes){const source='data:image/png;base64,'+fs.readFileSync(path.join(root,'work/investigations/icons/foreground-'+scene+'.png')).toString('base64'),svg=tiny(id),tinySource='data:image/svg+xml;base64,'+Buffer.from(svg).toString('base64');fs.writeFileSync(path.join(out,'tiny-'+id+'.svg'),svg);
+  const parts=[];for(const n of [16,32])parts.push({n,data:await save('img/icons/'+id+'-'+n+'.png',tinySource,n,1,true,false)});
+  for(const n of [48,192,256,512]){const data=await save('img/icons/'+id+'-'+n+'.png',source,n,.82,true);if([48,256].includes(n))parts.push({n,data})}
+  await save('img/icons/'+id+'-maskable-512.png',source,512,66/108,true);fs.writeFileSync(path.join(out,'parchlock-'+id+'.ico'),ico(parts));
+  for(const [density,legacy,foreground] of [['mdpi',48,108],['hdpi',72,162],['xhdpi',96,216],['xxhdpi',144,324],['xxxhdpi',192,432]]){
+   const dir='android/app/src/main/res/mipmap-'+density+'/';await save(dir+'ic_launcher_'+id+'.png',source,legacy,.82,true);await save(dir+'ic_launcher_'+id+'_foreground.png',source,foreground,66/108,false);
+   if(id==='archive'){await save(dir+'ic_launcher.png',source,legacy,.82,true);await save(dir+'ic_launcher_round.png',source,legacy,66/108,true);await save(dir+'ic_launcher_foreground.png',source,foreground,66/108,false)}
+  }
+ }
+ fs.copyFileSync(path.join(out,'parchlock-archive.ico'),path.join(root,'img/favicon.ico'));fs.copyFileSync(path.join(out,'archive-32.png'),path.join(root,'img/favicon.png'));
+ fs.writeFileSync(path.join(root,'work/investigations/icons/asset-pack-audit.json'),JSON.stringify(audit,null,2));console.log(audit.length+' icon PNGs packed; safe foreground bounds recorded');
+}finally{await browser.close()}})().catch(e=>{console.error(e);process.exit(1)});
