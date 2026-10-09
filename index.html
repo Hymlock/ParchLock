@@ -6,7 +6,7 @@
         <title>ParchLock - Interactive Fiction</title>
 
         <meta charset="utf-8">
-        <meta name="description" content="ParchLock is a free program that allows you to play interactive fiction stories, also known as text adventure games, and offers some quality of life improvements such as automatic mapping, note taking, quick navigation, and auto complete.">
+        <meta name="description" content="Play interactive fiction with explored-world maps, contextual actions, equipment, notes, read aloud and local story management.">
         <meta name="keywords" content="interactive, fiction, parchmap, parchment, zork, play, free, map, automap, navigation, autocomplete, notes, easy">
         <meta name="viewport" content="width=device-width,user-scalable=no">
 		<script>
@@ -21,7 +21,7 @@
 			})();
 		</script>
 
-        <meta property="og:description" content="ParchLock is a free program that allows you to play interactive fiction stories, also known as text adventure games, and offers some quality of life improvements such as automatic mapping, note taking, quick navigation, and auto complete.">
+        <meta property="og:description" content="Play interactive fiction with explored-world maps, contextual actions, equipment, notes, read aloud and local story management.">
         <meta property="og:title" content="ParchLock - interactive fiction">
         <meta property="og:type" content="website">
 
@@ -99,19 +99,20 @@
         <!-- https://iplayif.com/tools/zcode2js.html -->
         <!-- &vm=zvm -->
 
+        <header class="library-masthead"><div><p class="library-eyebrow">Interactive fiction, thoughtfully equipped</p><h1 data-product-name>ParchLock!</h1><p>Text adventures, with a map beside you.</p></div><span class="library-local">Your stories. On this device.</span></header>
         <div id="windowport" class="oldschool" data-simplebar>
 
             <div class="status TextGrid">
 
                 <div id="toolbar">
                     <div id="filter-options">
-                        <div class="icon icon-fav-on" data-filter="fav" title="Show only starred"></div>
-                        <div class="icon icon-done-off" data-filter="done-off" title="Show only unfinished"></div>
-                        <div class="icon icon-done-on" data-filter="done-on" title="Show only finished"></div>
+                        <button type="button" class="icon icon-fav-on" data-filter="fav" title="Show only starred" aria-label="Show only starred" aria-pressed="false"><span>Starred</span></button>
+                        <button type="button" class="icon icon-done-off" data-filter="done-off" title="Show only unfinished" aria-label="Show only unfinished" aria-pressed="false"><span>Unfinished</span></button>
+                        <button type="button" class="icon icon-done-on" data-filter="done-on" title="Show only finished" aria-label="Show only finished" aria-pressed="false"><span>Finished</span></button>
                     </div>
-                    <div id="modules" class="icon icon-import" title="Manage modules" role="button" tabindex="0" aria-label="Manage modules"></div>
-                    <div id="about" class="icon icon-about" title="About ParchLock" role="button" tabindex="0" aria-label="About ParchLock">i</div>
-                    <div id="toggle-theme" class="icon icon-theme" title="Toggle dark\light theme"></div>
+                    <button type="button" id="modules" class="icon icon-import" title="Manage modules" aria-label="Manage modules"><span>Modules</span></button>
+                    <button type="button" id="about" class="icon icon-about" title="About ParchLock" aria-label="About ParchLock"><span>About</span></button>
+                    <button type="button" id="toggle-theme" class="icon icon-theme" title="Change theme" aria-label="Light theme" aria-pressed="false"><span>Theme</span></button>
                 </div>
                 
                 <tt class="zvm-fg-2" id="listing-stories">
@@ -119,75 +120,44 @@
                 </tt>
 
                 <div>
-                    <input type="text" id="filter" placeholder="Title or Author">
+                    <input type="search" id="filter" placeholder="Search title or author" aria-label="Search stories by title or author">
                 </div>
 
             </div>
 
-            <br>
+            <div class="library-columns"><span>Your library</span><span>Done</span></div>
 
             <div id="games-list">
 
             </div>
 
-            <div id="show-all" data-filter="all">
+            <button type="button" id="show-all" data-filter="all">Show all stories</button>
 
-                The story list has been filtered, <u>show all stories</u>
+        </div>
 
+        <section id="map" class="library-guide" aria-labelledby="library-guide-title">
+            <p class="library-eyebrow">More room for the adventure</p>
+            <h2 id="library-guide-title">Follow the story.<br>Keep your bearings.</h2>
+            <p class="library-lead">Choose a story from your library, or open Modules to add a compatible file. ParchLock brings useful tools alongside the Parchment interpreter, so you can focus on what happens next.</p>
+            <div class="library-features">
+                <article><span class="feature-number">01</span><h3>See where you've been</h3><p>Local and World maps keep explored rooms in view. Discovered exit hints stay separate from routes you have travelled.</p></article>
+                <article><span class="feature-number">02</span><h3>Keep your gear close</h3><p>Equipment, contextual action menus and status use information from the game where supported. Available actions and statistics vary by story.</p></article>
+                <article><span class="feature-number">03</span><h3>Leave yourself a clue</h3><p>Add room notes, search known places and navigate along a known route. Word suggestions help with typing.</p></article>
+                <article><span class="feature-number">04</span><h3>Make it comfortable</h3><p>Adjust text and display settings, switch themes or listen with read aloud. Touch and desktop controls share the same adventure.</p></article>
+                <article><span class="feature-number">05</span><h3>Take your progress with you</h3><p>Use Tools for game saves, map packages and transcripts. Export files to your device and import them when you need them.</p></article>
+                <article><span class="feature-number">06</span><h3>Build your own library</h3><p>Manage compatible modules stored on this device. Imported stories remain local; you choose what to install and play.</p></article>
             </div>
-
-        </div>
-
-        <div id="map" data-simplebar>
-
-            <h1>ParchLock</h1>
-            <h2 data-product-credit>Adapted by Hymlock Groves. Based on Parchmap by Roy Lazarovich.</h2>
-
-            <p>
-                ParchLock is an awesome program built around the <i>Parchment</i> interactive fiction interpreter that offers some quality of life improvements such as automatic mapping, note taking, quick navigation to known rooms, and auto complete.
-            </p>
-
-            <u>
-                Key features
-            </u>
-
-            <ul>
-                <li>
-                    <strong>Auto mapping</strong> - ParchLock automatically builds a map of the game world as you explore it.
-
-                    <br><br>
-                    Type <span class="code">/clear map</span> to erase the map and start a new one starting from the room you're in.
-                </li>
-                <li>
-                    <strong>Note taking</strong> - ParchLock allows you to easily add notes to remind you of tasks and interesting things in the room, these notes will appear on the map.
-
-                    <br><br>
-                    Type <span class="code">/note locked door, look for a key;</span> to add this note to the current room.
-                    <br><br>
-                    Type <span class="code">/clear notes</span> to erase all the notes in the current room.
-                </li>
-                <li>
-                    <strong>Auto navigation</strong> - ParchLock will even calculate a route from the room you're in to a target room (if it can) based on the current state of the map.
-
-                    <br><br>
-                    Type <span class="code">/goto kitchen;</span> to have Parchment calculate a route from the room you're in to the kitchen and inject the instructions into the input line.
-                </li>
-                <li>
-                    <strong>Auto complete</strong> - ParchLock keeps a list of words that it find in the story and will help you type less, it will even suggest room names when you use special commands that accept room names as parameters such as <span class="code">/goto</span> and <span class="code">/room-notes</span>.
-                </li>
-            </ul>
-            
-            <p>
-                Choose an available module to play, or open Modules to add compatible files stored on this device.
-            </p>
-
-            <p>
-                Z-machine modules receive full mapping, module-derived actions, items, and radials. Glulx modules are currently play-only.
-            </p>
-
-            <footer></footer>
-
-        </div>
+            <aside class="library-compatibility"><h3>A note on story support</h3><p>Z-machine stories support the enhanced maps, items and action menus. Glulx stories are currently play-only. Game rules still apply: some inventory or status requests can use a turn.</p></aside>
+            <details class="library-command-guide"><summary>Prefer typing? Useful commands</summary><dl>
+                <dt><code>/note locked door, find a key;</code></dt><dd>Add a note to the current room.</dd>
+                <dt><code>/notes</code></dt><dd>Show notes for the current room.</dd>
+                <dt><code>/goto kitchen;</code></dt><dd>Prepare a route to a known room.</dd>
+                <dt><code>/see kitchen;</code></dt><dd>Browse a known room on the map.</dd>
+                <dt><code>/clear notes</code></dt><dd>Remove notes from the current room.</dd>
+                <dt><code>/clear map</code></dt><dd>Erase the map and start again from your current room.</dd>
+            </dl></details>
+            <footer><p data-product-credit></p><span class="library-build"></span></footer>
+        </section>
 
         <div id="message" class="crt">
 

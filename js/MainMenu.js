@@ -59,18 +59,14 @@ var MainMenu = {
     SetupUI: () => {
 
         MainMenu.UpdateUI();
-        $("footer").text(ProductInfo.buildLabel(BUILD));
+        $(".library-build").text(ProductInfo.buildLabel());
+        ProductInfo.applyDocumentIdentity();
+        MainMenu.UpdateThemeButton();
         $("#filter").on("input", MainMenu.FilterGameList);
-        $("#filter-options div, #show-all").click(MainMenu.FilterOptionClicked);
+        $("#filter-options [data-filter], #show-all").click(MainMenu.FilterOptionClicked);
         $("#toggle-theme").click(MainMenu.ToggleTheme);
         $("#modules, #import").click(MainMenu.Import);
         $("#about").click(ProductInfo.showAbout);
-        $("#modules").on("keydown", function (event) {
-            if (event.key === "Enter" || event.key === " ") { event.preventDefault(); MainMenu.Import(); }
-        });
-        $("#about").on("keydown", function (event) {
-            if (event.key === "Enter" || event.key === " ") { event.preventDefault(); ProductInfo.showAbout(); }
-        });
     },
 
     ToggleTheme: () => {
@@ -79,11 +75,17 @@ var MainMenu = {
 
         Global.Prefs.LightMode = $("body").hasClass("light");
         Global.SavePrefs();
+        MainMenu.UpdateThemeButton();
+    },
+
+    UpdateThemeButton: () => {
+        var light = $("body").hasClass("light");
+        $("#toggle-theme").attr("aria-pressed", String(light)).attr("aria-label", "Light theme");
     },
 
     UpdateUI: () => {
 
-        $(".TextGrid.status").attr('style', 'width: ' + ($("#games-list").width() - 2) + 'px !important');
+        $(".TextGrid.status").css("width", "");
     },
 
     LoadGameList: () => {
@@ -117,13 +119,14 @@ var MainMenu = {
         // var g = $("<div>").addClass("game").data("game", game).click(() => MainMenu.LoadGame(game)).appendTo("#parchment #games-list");
         var g = $("<div>").addClass("game").data("game", game).appendTo("#windowport #games-list");
 
-        var s = $("<div>").addClass("icon fav").attr("title", "Star\\Unstar " + game.Title).appendTo(g);
+        var s = $("<button>").attr("type", "button").addClass("icon fav").attr("title", "Star\\Unstar " + game.Title).attr("aria-label", "Star " + game.Title).appendTo(g);
         s.on("click", function (e) {
             e.preventDefault();
             e.stopPropagation();
             MainMenu.StarStory.call(this);
         });
         if (starred && starred.includes(game.Path)) s.addClass("on");
+        s.attr("aria-pressed", String(s.hasClass("on")));
         
         var c = $("<a>").attr("href", "play.html?story=" + encodeURIComponent(game.Path)).appendTo(g);
         // Remember selection so APK/play cold-start can offer Continue.
@@ -145,13 +148,14 @@ var MainMenu = {
         if (game.Subtitle) $("<div>").text(game.Subtitle).addClass("subtitle").appendTo(c);
         if (game.Author) $("<div>").text("By " + game.Author).addClass("author").appendTo(c);
 
-        var d = $("<div>").addClass("icon done").attr("title", "Mark\\Unmark " + game.Title + " as done").appendTo(g);
+        var d = $("<button>").attr("type", "button").addClass("icon done").attr("title", "Mark\\Unmark " + game.Title + " as done").attr("aria-label", "Mark " + game.Title + " as finished").appendTo(g);
         d.on("click", function (e) {
             e.preventDefault();
             e.stopPropagation();
             MainMenu.DoneStory.call(this);
         });
         if (done && done.includes(game.Path)) d.addClass("on");
+        d.attr("aria-pressed", String(d.hasClass("on")));
     },
 
     UpdateTitle: () => {
@@ -162,17 +166,20 @@ var MainMenu = {
         var title = (listing == all) ? "Listing " + all + " stories" : "Listing " + listing + " of " + all + " stories";
 
         $(".status tt").text(title);
+        $("#filter-options [data-filter]").each(function () { $(this).attr("aria-pressed", String($(this).data("filter") === MainMenu.CurrentFilterOptions)); });
     },
 
     StarStory: function() {
 
         $(this).toggleClass("on");
+        $(this).attr("aria-pressed", String($(this).hasClass("on")));
         MainMenu.SaveGameFlags();
     },
 
     DoneStory: function() {
 
         $(this).toggleClass("on");
+        $(this).attr("aria-pressed", String($(this).hasClass("on")));
         MainMenu.SaveGameFlags();
     },
 

@@ -206,5 +206,5 @@ APK63 complete: source checkpoint0e9a9faffaee3632a6f7c8b74fc294bf5cadb571; Andro
 
 - [x] HHG follow-up: noun-safe marks, nested held names, fixed-ZIL Take capability, radial latency, full inventory labels and offstage-root poisoning; peer1998/2000/2003 accepted; native22/root13; source only, shell141.
 
-- [ ] Full-app beautification sweep (preserve prior successful sweeps): Equipment surface1 implemented and mutually accepted2051; grip unchanged. Surface2 bottom-exit/handle clearance implemented (46 static/60 native, layout and equipment pass), mutually accepted2068; Surface3 plan accepted2061. Start-screen full overhaul added by operator2065, plan2066 pending. Remaining buffer/input, maps, rail/mobile, menus/settings/submenus, library/start, radials/messages.
+- [ ] Full-app beautification sweep (preserve prior successful sweeps): Equipment surface1 implemented and mutually accepted2051; grip unchanged. Surface2 bottom-exit/handle clearance implemented (46 static/60 native, layout and equipment pass), mutually accepted2068; Surface3 implemented/accepted2080; start-screen full overhaul implemented/accepted2086. Remaining buffer/input, maps, rail/mobile, menus/settings/submenus, library/start, radials/messages.
 - [ ] Death-signal loop after beautification, deterministic first and verified text only when needed; operator relay2004.

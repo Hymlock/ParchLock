@@ -403,3 +403,5 @@ APK63 complete: source checkpoint0e9a9faffaee3632a6f7c8b74fc294bf5cadb571; Andro
 Bottom exit clearance accepted2068: measured mobile band, preserved SW/S/SE sectors, unchanged handles/input/rails. Native60/static46/equipment119/layout pass; warning fixture drift repaired after HEAD reproduction. Shell143/no APK. Surface3 accepted plan2057/2061 implementation next; full start-screen overhaul2065/2066 added.
 
 Map visual surface3 accepted2080 after B1 specificity repair: native12 width/theme captures, centered/browsed pip geometry, World52/panel29 pass. Node geometry/handlers/handles retained; separate browsed-icon overlap queued. Shell144/source only. Start-screen overhaul implementation in progress under separate audit2083.
+
+Start-screen overhaul accepted2086 after St1-St4 repairs: updated information, responsive library/cards and accessible native controls. Focused real keyboard/filter/persistence six-layout proof and independent startup/module guards pass. Shell145/source only; Directions close and measured radial review next.
