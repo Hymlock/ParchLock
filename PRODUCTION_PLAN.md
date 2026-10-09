@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 329 headings; 103 decision rows; 432 registered units.
 **Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
-`bec277f7d964b2cd63ea4577d038326cd7192d3e5fa6a4206d3e317b3e83f9f9`
+`8344bb4000c16f71ec241ddc749dc7602c629d201c81a0fcd416109fd7060821`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -8662,6 +8662,12 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
   - **PC:** `Rotate()` runs at start, after `?splash=<scene>` is built; nothing on close. Yes takes over the first top-level Desktop `.lnk` whose full target is this `ParchLock.exe`, otherwise creates `ParchLock.lnk`; other shortcuts are never touched.
   - **Proofs (exit codes):** `harness/icon-policy-test.java` 18/0; codex's `harness/audit-icon-activity.py` (actual Activity against Bridge-order doubles) 15/0, after it first reproduced the backgrounded queued-rotation race (#2260, fixed); `harness/pc-desktop-icon-test.cs` 11/0; Gradle `compileDebugJavaWithJavac` and `lintVitalRelease` exit 0; splash matching; startup-menu-regression PASS; Options outcome browser check 4/4.
   - **Operator post-APK checks:** no closing on minimize or lock; the question appears first on a fresh install; Add replaces an existing ParchLock pin; the icon changes at each open; the experimental option only on Back.
+  - **Superseded after APK 65 (codex solo takeover #2268-#2271, operator-authorised; record `work/investigations/2026-10-09-codex-icon-consent-self-audit.md`; code 22899da, proof 0779c41):**
+    - **Crash cause (device stack, Android DropBox):** `IllegalStateException` registering an ActivityResult at RESUMED: `BridgeActivity.load` → `BridgeWebChromeClient` → `Bridge.registerForActivityResult`, reached from claude's deferred `finishLoad` after the dialog. AndroidX requires registration before STARTED, so **the Bridge must never be built after the Activity has started**; R3's deferred-load design was wrong.
+    - **Repair:** a native-only `IconConsentActivity` asks the question first and then starts a fresh `ParchLockActivity`, whose Bridge is built in a normal `onCreate`. The splash gets the original scene; Back means Not now; a destroyed screen cannot answer.
+    - **Operator decision:** the experimental launcher-icon feature is removed (the Options toggle, the plugin setter, the real-exit alias switch and the four `.IconX` aliases). Only the owned pinned shortcut and the PC desktop shortcut rotate. The `.MainActivity` alias stays, and a package-replaced receiver re-enables a previously disabled base entry.
+    - **Corner picture:** the source artwork is a single book. The small corner book is the launcher's app badge on shortcuts (AOSP `IconCache.getShortcutIcon`). A live plain-versus-adaptive bitmap A/B kept the badge, so no app-side artwork change removes it. The operator chooses between a badge-free rotating 1x1 widget and a fixed app icon (pending).
+    - **Proof:** lifecycle doubles 11/0; APK 66 (v39) installed in place on the operator's phone: Add → app → splash, then Home and return kept the same PID, with no crash record.
 - **Repo cleanup closed (operator; sealed inventories `2026-10-09-claude-cleanup-blind.md` and `2026-10-09-codex-cleanup-blind.md`; R1 codex, R2 claude; consensus #2191; implemented 27d60e7; codex audit ACCEPT #2194):**
   - Removed 191 tracked scratch probes that are unreferenced and unloaded. The list is `work/investigations/2026-10-09-cleanup-unreferenced-probes.txt`, and git history keeps them.
   - Kept 33 referenced probes, and committed 14 cited ones.
