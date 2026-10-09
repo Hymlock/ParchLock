@@ -206,7 +206,7 @@ APK63 complete: source checkpoint0e9a9faffaee3632a6f7c8b74fc294bf5cadb571; Andro
 
 - [x] HHG follow-up: noun-safe marks, nested held names, fixed-ZIL Take capability, radial latency, full inventory labels and offstage-root poisoning; peer1998/2000/2003 accepted; native22/root13; source only, shell141.
 
-- [ ] Full-app beautification sweep (preserve prior successful sweeps): Equipment surface1 accepted2051; centered grip unchanged. Bottom-exit clearance accepted2068; map presentation accepted2080; start-screen overhaul accepted2086; Directions close and desktop Menu spacing accepted2102. Remaining surfaces and About/document views inspected at phone/desktop widths without further changes (bus2107). Browsed-map Back/Go overlap awaits operator choice through Claude (2104/2105); no relocation implemented.
+- [x] Full-app beautification sweep (preserve prior successful sweeps): Equipment surface1 accepted2051; centered grip unchanged. Bottom-exit clearance accepted2068; map presentation accepted2080; start-screen overhaul accepted2086; Directions close and desktop Menu spacing accepted2102. Remaining surfaces and About/document views inspected at phone/desktop widths without further changes (bus2107). Operator chose G3 fade-in-place; implementation accepted2138 after interrupted-touch repair, focused45/0 and independent WorldMap52/0. Handles, node geometry and route authority retained.
 - [ ] Death-signal loop after beautification, deterministic first and verified text only when needed; operator relay2004.
 - [ ] New icon selection, final asset packing and independent audit, then new APK containing all accepted current fixes. Codex is the sole builder (operator relay2089); icon candidates remain review-only until selected.
 

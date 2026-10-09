@@ -35,6 +35,7 @@ var ParchLockMap = {
         ParchLockMap.CreateRooms(["w", "here", "e"]);
         ParchLockMap.CreateRooms(["sw", "s", "se"]);
         ParchLockMap.CreateRooms(["down", "out"]);
+        ParchLockMap.BindBrowseControls();
 
         ParchLockMap.CreateMiniMap("horizontal top", ["nw", "n", "ne"]);
         ParchLockMap.CreateMiniMap("horizontal bottom", ["sw", "s", "se"]);
@@ -168,7 +169,10 @@ var ParchLockMap = {
             return;
         }
         $("body").toggleClass("map-open");
-        if (!document.body.classList.contains("map-open")) ParchLockMap.ClearGesture();
+        if (!document.body.classList.contains("map-open")) {
+            ParchLockMap.ClearGesture();
+            ParchLockMap.ClearBrowseControls();
+        }
     },
 
     Show: () => {
@@ -182,6 +186,7 @@ var ParchLockMap = {
     Hide: () => {
 
         $("body").removeClass("map-open");
+        ParchLockMap.ClearBrowseControls();
         ParchLockMap.ClearGesture();
     },
 
@@ -203,8 +208,8 @@ var ParchLockMap = {
 
             $("<div>").addClass("name").appendTo(room);
             $("<div>").addClass("icon here").attr("title", "You are here").appendTo(room);
-            $("<div>").addClass("icon back-to-room").attr("title", "Center map back on the room you're in").click(() => ParchLockMap.Draw()).appendTo(room);
-            $("<div>").addClass("icon go-to-room").attr("title", "Go to this room").click(ParchLockMap.GotoRoom).appendTo(room);
+            $("<div>").addClass("icon back-to-room").attr({ title: "Center map back on the room you're in", "aria-label": "Back to current room", role: "button", tabindex: 0 }).click(() => ParchLockMap.Draw()).appendTo(room);
+            $("<div>").addClass("icon go-to-room").attr({ title: "Go to this room", "aria-label": "Go to this room", role: "button", tabindex: 0 }).click(ParchLockMap.GotoRoom).appendTo(room);
             $("<div>").addClass("note").appendTo(room);
             $("<div>").addClass("icon all-notes").click(ParchLockMap.ShowNotes).appendTo(room).hide();
 
@@ -328,6 +333,68 @@ var ParchLockMap = {
         ParchLockMap.RefreshMapPanels();
     },
 
+    ClearBrowseControls: () => {
+        $("#map .room").removeClass("controls-revealed");
+        if (ParchLockMap._resetBrowsePointers) ParchLockMap._resetBrowsePointers();
+    },
+
+    // The first touch on a faded icon reveals it without activating it.
+    // Capture precedes the existing icon/room click handlers; mouse and keyboard
+    // keep their ordinary one-click behavior. No gesture or periodic timer is added.
+    BindBrowseControls: () => {
+        var root = document.querySelector("#map #rooms");
+        if (!root || root._plBrowseControlsBound) return;
+        root._plBrowseControlsBound = true;
+        var active = new Set(), touch = null;
+        ParchLockMap._resetBrowsePointers = function () { active.clear(); touch = null; };
+        window.addEventListener("blur", ParchLockMap.ClearBrowseControls);
+        document.addEventListener("visibilitychange", function () {
+            if (document.hidden) ParchLockMap.ClearBrowseControls();
+        });
+        document.addEventListener("pointerdown", function (e) {
+            if (e.pointerType !== "touch") return;
+            // A new primary pointer also recovers an interrupted WebView touch
+            // whose up/cancel was consumed by native UI or backgrounding.
+            if (e.isPrimary) ParchLockMap._resetBrowsePointers();
+            active.add(e.pointerId);
+            var node = e.target.closest && e.target.closest("#map .room.browsed-controls");
+            if (!node) ParchLockMap.ClearBrowseControls();
+            if (active.size > 1) { if (touch) touch.invalid = true; return; }
+            touch = node ? { id: e.pointerId, node: node, x: e.clientX, y: e.clientY, invalid: false, ended: false } : null;
+        }, true);
+        document.addEventListener("pointermove", function (e) {
+            if (touch && touch.id === e.pointerId && Math.abs(e.clientX - touch.x) + Math.abs(e.clientY - touch.y) > 4) touch.invalid = true;
+        }, true);
+        function end(e) {
+            active.delete(e.pointerId);
+            if (touch && touch.id === e.pointerId) {
+                touch.ended = true;
+                if (e.type === "pointercancel") touch.invalid = true;
+            }
+        }
+        document.addEventListener("pointerup", end, true);
+        document.addEventListener("pointercancel", end, true);
+        root.addEventListener("click", function (e) {
+            var node = e.target.closest && e.target.closest(".room.browsed-controls");
+            var fromTouch = e.pointerType === "touch" || !!(e.sourceCapabilities && e.sourceCapabilities.firesTouchEvents);
+            if (!node || !fromTouch) return;
+            var icon = e.target.closest(".back-to-room, .go-to-room");
+            if (!touch || touch.node !== node || !touch.ended || touch.invalid || active.size) {
+                if (icon) { e.preventDefault(); e.stopImmediatePropagation(); }
+                return;
+            }
+            var wasRevealed = node.classList.contains("controls-revealed");
+            node.classList.add("controls-revealed");
+            if (icon && !wasRevealed) { e.preventDefault(); e.stopImmediatePropagation(); }
+        }, true);
+        $(root).on("keydown.plBrowseControls", ".back-to-room, .go-to-room", function (e) {
+            if (e.key !== "Enter" && e.key !== " ") return;
+            e.preventDefault();
+            e.stopPropagation();
+            if (!e.repeat) this.click();
+        });
+    },
+
     RoomClicked: (e) => {
 
         if (ParchLockMap.DragMoved) return;
@@ -338,6 +405,10 @@ var ParchLockMap = {
         var roomName = room.data("room") || room.find(".name").text();
 
         ParchLockMap.Draw(roomName);
+        var nativeEvent = e.originalEvent || e;
+        if (nativeEvent.pointerType === "touch" || (nativeEvent.sourceCapabilities && nativeEvent.sourceCapabilities.firesTouchEvents)) {
+            $("#map .room.browsed-controls").addClass("controls-revealed");
+        }
     },
 
     Draw: (roomName) => {
@@ -557,7 +628,7 @@ var ParchLockMap = {
         room.addClass("shown");
 
         room.find(".back-to-room, .go-to-room").hide();
-        room.removeClass("here");
+        room.removeClass("here browsed-controls controls-revealed");
 
         var miniMap = $("#exits .exit.dir-" + dir);
         miniMap.data("room", record).data("exit-label", label || dir);
@@ -576,6 +647,7 @@ var ParchLockMap = {
         else if (!ParchLockMap.IsDisplayingCurrentRoom() && ParchLockMap.DisplayedRoomId === record.Id) {
 
             room.find(".back-to-room, .go-to-room").show();
+            room.addClass("browsed-controls");
         }
 
         // D112: the room box never renders note TEXT inline (that was the

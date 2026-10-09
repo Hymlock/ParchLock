@@ -5013,3 +5013,18 @@ body.main-menu #toolbar button, body.main-menu #toolbar button span { font-famil
  border: 1px solid var(--pl-border); border-radius: 12px; background: var(--pl-surface-2); font: 24px/1 system-ui; color: var(--pl-muted);
 }
 #message:has(.pl-dirpad-settings) #close:focus-visible { outline: 2px solid var(--pl-accent); outline-offset: 3px; }
+/* D215 G3: keep browsed-room controls in place, reveal without touch travel. */
+#map .room.browsed-controls > .back-to-room,
+#map .room.browsed-controls > .go-to-room { opacity: .30; }
+#map .room.browsed-controls.controls-revealed > .back-to-room,
+#map .room.browsed-controls.controls-revealed > .go-to-room,
+#map .room.browsed-controls:focus-within > .back-to-room,
+#map .room.browsed-controls:focus-within > .go-to-room { opacity: 1; }
+#map .room.browsed-controls > .icon:focus-visible {
+    outline: 2px solid var(--pl-accent);
+    outline-offset: 2px;
+}
+@media (hover: hover) and (pointer: fine) {
+    #map .room.browsed-controls:hover > .back-to-room,
+    #map .room.browsed-controls:hover > .go-to-room { opacity: 1; }
+}
