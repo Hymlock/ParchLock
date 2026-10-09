@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 329 headings; 103 decision rows; 432 registered units.
 **Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
-`4f19b89688fa054efa33365906d8bea49fe6f6cc02a31eb8445f29691090e23f`
+`8cafbe8657a4e1478217fca1f160a2f2139fd668bc33488f6126ddcf89004027`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -8677,3 +8677,12 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
   - **Runtime lane (codex):** be74a8b, accepted by claude in #2211. Help, Tutorial and About prose now match the code; `releaseDate` is removed; three comment-punctuation fixes; `GAMES_INCLUDED.md` is added to both make-dist lists; shell v150.
   - **Open operator items, recorded and not resolved:** release rights for the generated art, and the ParchLock name clearance.
 - **New operator report after APK 64:** the map is not tied to the game state, item names after loading, Zork underlines lost at boot, and deaths and wins not visible. A blind dual investigation is under way (#2209; claude sealed `2026-10-09-claude-save-state-blind.md`).
+- **Save-tied state (consensus: R1, R2 and codex #2217 and #2221; `work/investigations/2026-10-09-save-state-proposal-r1.md`):**
+  - **Lifecycle and storage.** The existing Transcript events drive a new `SaveState.js`: save (after a successful `file_write`), restore (on a successful `restore_file`, through `_choice`), a non-boot restart, a fresh boot with no observed autorestore, forget and uninstall. Records are synchronous localStorage `PL_SaveState_<signature>_<save>` holding `{map, labels}`.
+  - **Restore order.** A restore is staged, then `UndoRestoreSync.resync` calls `SaveState.applyPending(reason, generation)` after its scope and label clear and BEFORE its map handling. `applyPending` returns true when it owns the map handling, applies or clears the map and labels synchronously, and then the resync ticks. With no pending state, the legacy restart clear remains.
+  - **New game.** A new game archives a non-empty working map to a `PL_MapSlots` slot flagged `autoArchive: true` ("Before new game <date>"). Pruning to 3 touches only flagged slots. If the archive fails, nothing is cleared and the error is reported.
+  - **Validation.** Saves with no snapshot get a clean state, with no compatibility scaffolding. Imports must match the signature, pass ValidateMap, D54 and quarantine, and fit bounded labels (positive integer ids; phrase up to 1024 characters; up to 128 words of up to 64 characters; null-prototype records).
+  - **Labels (codex).** `Actionable.labelSnapshot`, `applyLabelSnapshot` and `clearLabelSnapshot` form a separate display-only fallback validated against current RAM parser words. They never touch VerifiedNouns or CommandNouns, and current prose is first.
+  - **I3 (codex).** `ZvmCapture` passes the VM instance, and the first restart of each VM instance (a WeakSet) skips the resync.
+  - **I4 (codex).** The exact native Treasures ending "*** YOUR BODY IS NEVER FOUND ***" is added to DEATH_PHRASE (evidence #2220), plus a non-blocking notice when a death or win is counted.
+  - **Ownership.** Claude owns SaveState, the Transcript hooks, packaging and the canonical records. Codex owns Actionable, UndoRestoreSync, ZvmCapture, StatTracker, the CSS and the fixtures.
