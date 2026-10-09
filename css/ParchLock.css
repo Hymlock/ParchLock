@@ -4826,6 +4826,33 @@ body.light #world-map .world-room { background: #fffdf6; }
 #world-map .world-panel[hidden] { display: none; }
 #world-map .world-panel-title { flex: 1 1 100%; font-weight: bold; }
 
+/* D215: map disclosures and toolbar; preserve room geometry and gestures. */
+#map-controls-tab, #notes-tab { border: 1px solid var(--pl-border); border-radius: 10px; margin-bottom: 10px; }
+#map #map-controls-tab > summary, #map #notes-tab > summary { display: flex; align-items: center; min-height: 44px; box-sizing: border-box; padding: 8px 12px; list-style: none; font-weight: 600; }
+#map #notes-tab > summary { padding-right: 64px; }
+#map #map-controls-tab #map-toolbar, #map #notes-container { padding-left: 12px; padding-right: 12px; }
+#map-controls-tab > summary::-webkit-details-marker, #notes-tab > summary::-webkit-details-marker { display: none; }
+#map-controls-tab > summary::after, #notes-tab > summary::after { content: ""; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin-left: auto; }
+#map-controls-tab[open] > summary::after, #notes-tab[open] > summary::after { transform: rotate(225deg); }
+#map-controls-tab > summary:focus-visible, #notes-tab > summary:focus-visible { outline: 2px solid var(--pl-accent); outline-offset: 2px; }
+#map #rooms .room.here > .icon.here { width: 10px; height: 10px; top: -5px; right: -5px; box-sizing: border-box; border: 2px solid var(--pl-bg); border-radius: 50%; background: var(--pl-accent, #74d4b3); }
+#map #rooms .room.here > .icon.here svg { display: none; }
+#map #rooms-list #container > div.here { background: var(--pl-accent, #74d4b3); color: #07100d; }
+body.light #map #rooms-list #container > div.here { background: #0b7e63; color: #fff; }
+body.pl-mobile #map { bottom: auto !important; height: calc(var(--pl-vv-height) - var(--pl-input-protect-height) - var(--pl-bottom-exit-reserve)) !important; max-height: calc(var(--pl-vv-height) - var(--pl-input-protect-height) - var(--pl-bottom-exit-reserve)) !important; padding-bottom: calc(28px + var(--pl-safe-bottom)); }
+#world-map .world-bar button, #world-map .world-panel button { min-height: 44px; padding: 8px 12px; border: 1px solid var(--pl-border); border-radius: 9px; background: var(--pl-bg); color: inherit; font: 600 13px system-ui, sans-serif; }
+#world-map .world-bar button:focus-visible, #world-map .world-panel button:focus-visible { outline: 2px solid var(--pl-accent); outline-offset: 2px; }
+#world-map .world-level.active { background: var(--pl-accent, #74d4b3); color: #07100d; }
+body.light #world-map .world-level.active { background: #0b7e63; color: #fff; }
+@media (max-width: 520px) {
+  #world-map .world-bar { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "title close" "levels centre"; }
+  #world-map .world-title { grid-area: title; }
+  #world-map .world-close { grid-area: close; }
+  #world-map .world-centre { grid-area: centre; }
+  #world-map .world-levels { grid-area: levels; flex-wrap: nowrap; overflow-x: auto; min-width: 0; }
+  #world-map .world-level { flex: 0 0 auto; }
+}
+
 /* Equipment visual follow-up: native controls, full names and existing gestures. */
 #equipment [hidden] { display: none !important; }
 #equipment-options { padding: 0; border: 1px solid var(--pl-border); border-radius: 10px; margin: 0 0 12px; }

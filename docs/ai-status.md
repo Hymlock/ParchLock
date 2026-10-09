@@ -401,3 +401,5 @@ APK63 complete: source checkpoint0e9a9faffaee3632a6f7c8b74fc294bf5cadb571; Andro
 2026-10-09 Equipment surface1 accepted2051: scoped Options/control/state/text-stat presentation; centered grip unchanged; existing protector reused. Focused guards and native width/theme/keyboard-model proofs pass. Shell142, no APK. Full-app sweep continues with planned surface2 bottom-exit clearance; canonical D215 owned by Claude.
 
 Bottom exit clearance accepted2068: measured mobile band, preserved SW/S/SE sectors, unchanged handles/input/rails. Native60/static46/equipment119/layout pass; warning fixture drift repaired after HEAD reproduction. Shell143/no APK. Surface3 accepted plan2057/2061 implementation next; full start-screen overhaul2065/2066 added.
+
+Map visual surface3 accepted2080 after B1 specificity repair: native12 width/theme captures, centered/browsed pip geometry, World52/panel29 pass. Node geometry/handlers/handles retained; separate browsed-icon overlap queued. Shell144/source only. Start-screen overhaul implementation in progress under separate audit2083.
