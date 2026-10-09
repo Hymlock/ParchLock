@@ -900,8 +900,10 @@ var ParchLockQol = {
         menu.empty().addClass("show").attr("aria-hidden", "false");
 
         var menuSize = menu.outerWidth();
-        var firstRadius = capacity === 6 ? menuSize * 0.33 : 95;
-        var ringGap = 86;
+        // D215: give the desktop game-menu labels room; keep its outer ring.
+        var spaciousGameMenu = capacity !== 6 && context.source === "game";
+        var firstRadius = capacity === 6 ? menuSize * 0.33 : spaciousGameMenu ? 110 : 95;
+        var ringGap = spaciousGameMenu ? 71 : 86;
         var maxRadius = (menuSize / 2) - 34;
 
         commands.forEach((item, index) => {

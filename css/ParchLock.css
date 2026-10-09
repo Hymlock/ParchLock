@@ -5006,3 +5006,10 @@ body.main-menu #toolbar button, body.main-menu #toolbar button span { font-famil
  body.main-menu #windowport #toolbar { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
  body.main-menu #windowport #toolbar .icon { width: 100%; }
 }
+/* D215: Directions settings uses the existing close paths and target. */
+#message:has(.pl-dirpad-settings) > h2 { margin-right: 72px; }
+#message:has(.pl-dirpad-settings) #close {
+ top: 15px; right: 15px; width: 44px; height: 44px; box-sizing: border-box; padding: 0; display: grid; place-items: center;
+ border: 1px solid var(--pl-border); border-radius: 12px; background: var(--pl-surface-2); font: 24px/1 system-ui; color: var(--pl-muted);
+}
+#message:has(.pl-dirpad-settings) #close:focus-visible { outline: 2px solid var(--pl-accent); outline-offset: 3px; }

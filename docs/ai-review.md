@@ -374,3 +374,5 @@ Bottom exit clearance accepted2068: measured mobile band, preserved SW/S/SE sect
 Map visual surface3 accepted2080 after B1 specificity repair: native12 width/theme captures, centered/browsed pip geometry, World52/panel29 pass. Node geometry/handlers/handles retained; separate browsed-icon overlap queued. Shell144/source only. Start-screen overhaul implementation in progress under separate audit2083.
 
 Start-screen overhaul accepted2086 after St1-St4 repairs: updated information, responsive library/cards and accessible native controls. Focused real keyboard/filter/persistence six-layout proof and independent startup/module guards pass. Shell145/source only; Directions close and measured radial review next.
+
+Directions close and desktop Menu spacing accepted2102: native24 width/theme positives, startup and focused radial guards pass; exact outer radius181, mobile/input/object contexts retained. Shell146/source only. Browsed-map controls, death and icon selection remain before requested APK.
