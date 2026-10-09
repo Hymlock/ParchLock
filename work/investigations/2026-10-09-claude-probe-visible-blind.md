@@ -9,4 +9,10 @@ Status: early static findings only; no live reproduction yet.
   1. Equipment's first open issues the inventory or carry probe before `_statProbeOwned` or the observer is armed, so its lines are inserted unclaimed (js/StatTracker.js 4216: the observer returns unless `_statProbeOwned` and a probe or span is active).
   2. Two probes are queued back to back (the line appears twice); the second runs after `_carrySpanOwned` was cleared by the first prompt (4239-4240), so its reply is unowned.
   3. The `pl-*-probe` class is stripped by the cleanup at 4031-4049 or 4172-4175 (probe released as visible) when the turn ends at an unexpected prompt.
-- Next step: a live wump2ka run that opens Equipment first thing after start and after a restore, recording which BufferLines carry the probe classes.
+- Next step: a matrix run across several modules (wump2ka, Treasures, Anchorhead, Zork, HHG), opening Equipment and Status at start, after a restore and mid-game, recording every BufferLine inserted during a probe and whether it carries `pl-stat-probe` or `pl-carry-probe`.
+
+## Operator clarification (2026-10-09, after sealing)
+
+"This is a direct result of the status requests which are supposed to be blind being transmitted instead visibly. This is happening in multiple modules at multiple times. They should all be headless and invisible."
+
+Scope is therefore general: every status, score and inventory probe in every module and at every point (startup, Equipment open, after restore and mid-game), not the wump2ka carry path alone. Any fix must be one general rule; nothing may be fixed per title.
