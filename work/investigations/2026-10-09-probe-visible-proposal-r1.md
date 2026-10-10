@@ -123,3 +123,30 @@ R2's per-family sweep is withdrawn. R3 is one deterministic mechanism with no re
 **Tests:**
 - unit: tap-order attribution with a turns change mid-span (reply hidden, event shown); no change (all hidden); no global (fallback);
 - live: wump2ka carry summary hidden with no list entry for it; an attack after the boundary shown; Treasures; Anchorhead; HHG; one ZIL sample; `death-terminal.js`; stat-tracker.
+
+## R5 (codex #2305: the default-library order is confirmed in Inform 6.12.2 parser.h 4757-4764/4922 and PunyInform puny.h 2409-2429)
+
+1. **Library-order qualification.**
+   - The boundary rule is the **default Inform/PunyInform turn order**, recorded as such and not claimed to be universal.
+   - **Residual A:** an authored before, after or react hook that prints during the probe's own action is classed as reply and hidden. It exists only because the probe ran, so hiding it keeps the probe invisible.
+   - **Residual B:** a game that replaces its end-of-turn sequence so that events print before turns advance would have those events hidden.
+   - Both residuals are documented in D207/D215; neither gets a per-title fix.
+2. **Streams.**
+   - The tap attributes only output whose target is the **main story buffer window's stream**: the current stream when it is that window's stream, or an explicit stream argument equal to it.
+   - Status-window, transcript, memory and file streams are ignored.
+   - `glk_put_jstring_stream` and the other `_stream` variants are tested on the stream argument.
+3. **Mixed lines.**
+   - Attribution is per character range, not per line. Each tap chunk carries its phase (reply or event) and text.
+   - When a BufferLine contains both, release wraps the reply characters in a `pl-stat-probe` span (hidden, aria-hidden) and leaves the event characters visible. It never reveals the whole line. This is done by walking the line's text nodes in order against the chunk sequence.
+4. **Unknown and unmapped:**
+   - a line or range whose text cannot be matched to tap chunks (order-preserving text match fails) **stays hidden** when the span had a confirmed boundary;
+   - the whole span uses the D207 fallback only when no boundary information exists (no confirmed turns global, or the engine is untapped);
+   - unmapped never means visible.
+5. **Pause and abort bounds:**
+   - Phase tracking starts at probe submit and ends at `endProbeOwnership`.
+   - A turn that ends at "(press a key)" keeps its phases across the pause within the same span (the existing `_carrySpanOwned` continuation); a char-input answer by the player ends it.
+   - Restore, restart, undo, `clearCarryProbe` and a new player submission clear the chunk log.
+   - The chunk log is capped (4096 chunks or 256 KB). On overflow the rest of the span is treated as "boundary unknown", and point 4 keeps it hidden.
+6. **ZIL:**
+   - Applied only after the codex review confirms that the move counter advances before the CLOCKER interrupt output.
+   - Until then, ZIL keeps the current D207 release plus the continuation fix.
