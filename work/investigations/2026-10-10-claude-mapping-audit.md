@@ -238,3 +238,11 @@ The "first line prompt" gate is withdrawn: it would block all mapping in Being S
 **Planned fix:** when the parser-self candidate has no self words and sits away from the printed location, prefer the object held by the game's player global that is animate and placed in a plausible room. Cross-check with the M05b moved-object rule on the first successful move.
 - **Controls:** games with a normal (self object) player; vehicles (Golden Horse later in play); Facility.
 - **Effect on M09:** the announced-heading rule then compares against the RIGHT location (Jetty), so Heroine supports the rule once the player is fixed. The heading-versus-name comparison should be a prefix/containment match on the structural room or its outermost plausible container, not strict equality.
+
+## Primrose (codex #2376/#2377): M05b class, plus an epigraph phantom room
+
+**Evidence** (SPACE, LOOK, SOUTH, SOUTH, NORTH, INVENTORY):
+- The payload player is 0 / source none throughout. The parent diff on the first SOUTH: **65 moves 64 -> 63**, out of the bed (64, parent 63) into 63 (top-level), the printed "Bedroom". So the player is 65, the same class as Facility M05b. The later S/N do not move (authored).
+- The map's current room is named **"Learn to obey before you command."**: the game's opening epigraph, recorded as a room with NO structural id behind it.
+
+**Refinement to the M09 rule (and to any heading-based admission):** a room is admitted only with BOTH a structural location id (from the corrected player's containment) AND an announcement (heading or status name matching that location by prefix/containment). Text alone (an epigraph, title or quote) never mints a room. Codex #2376 is right that prefix matching cannot prove admission alone; it only confirms a structurally identified room.
