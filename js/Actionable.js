@@ -1426,6 +1426,17 @@ var Actionable = {
             return valid;
         });
     },
+    // The reply a node belongs to: the nearest command echo line above it
+    // (null before the first command). Several paragraphs printed for one
+    // command are one reply; typing LOOK starts a new one.
+    replyOf: function (node) {
+        var line = node && (node.nodeType === 1 ? node : node.parentElement);
+        line = line && line.closest ? line.closest(".BufferLine") : null;
+        for (var l = line; l; l = l.previousElementSibling) {
+            if (l.classList && l.classList.contains("BufferLine") && (l.querySelector(".Style_input") || $(l).is(".Style_input"))) return l;
+        }
+        return null;
+    },
     relocateExactMarks: function (lines, suppliedMarks) {
         // Phrase/ownership selection has already finished. Move those SAME
         // marks, so latest-copy presentation cannot change the chosen noun.
@@ -1436,7 +1447,7 @@ var Actionable = {
             if (!parent || !target) return;
             var original = document.createTextNode(phrase);
             mark.replaceWith(original);
-            var best = null;
+            var found = [];
             lines.forEach(function (line) {
                 if (!Actionable.observedLine(line)) return;
                 var walker = document.createTreeWalker(line, NodeFilter.SHOW_TEXT), node;
@@ -1447,12 +1458,24 @@ var Actionable = {
                         var end = index + phrase.length;
                         var forward = node === original || !!(original.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_FOLLOWING);
                         if (forward && !/[A-Za-z0-9]/.test(source.charAt(index - 1)) && !/[A-Za-z0-9]/.test(source.charAt(end))) {
-                            if (!best || (best.node === node && index > best.index) || (best.node.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_FOLLOWING)) best = { node: node, index: index, end: end };
+                            found.push({ node: node, index: index, end: end });
                         }
                         from = index + 1;
                     }
                 }
             });
+            // Item 6: repeats inside the mark's own reply never move it. Only a
+            // later reply does, and then to that reply's FIRST occurrence.
+            found.sort(function (a, b) {
+                if (a.node === b.node) return a.index - b.index;
+                return (a.node.compareDocumentPosition(b.node) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1;
+            });
+            var ownReply = Actionable.replyOf(original), best = null;
+            var later = found.filter(function (f) { return Actionable.replyOf(f.node) !== ownReply; });
+            if (later.length) {
+                var newest = Actionable.replyOf(later[later.length - 1].node);
+                best = later.filter(function (f) { return Actionable.replyOf(f.node) === newest; })[0];
+            }
             if (!best) { original.replaceWith(mark); parent.normalize(); return; }
             var source = best.node.nodeValue, fragment = document.createDocumentFragment();
             fragment.appendChild(document.createTextNode(source.slice(0, best.index)));
@@ -1613,7 +1636,10 @@ var Actionable = {
             lastBanner = index;
         });
         if (heading <= lastInput && lastBanner > heading) heading = lastBanner;
-        var latest = lines.slice(Math.max(lastInput, heading >= lastInput ? heading : -1) + 1).filter(Actionable.observedLine);
+        // Item 6: the latest reply is everything printed since the last
+        // command, including any narration before the room heading, so its
+        // FIRST mention of an item is the one that gets underlined.
+        var latest = lines.slice(Math.max(lastInput, -1) + 1).filter(Actionable.observedLine);
         var text = latest.map(line => line.textContent).join("\n");
         var command = $("#windowport .Style_input").last().text().trim().toLowerCase();
         var payloadKey = structural
@@ -1676,9 +1702,12 @@ var Actionable = {
             }
             Actionable.RoomLines = Actionable.RoomLines.filter(line => !$(line).is('.Style_input') && !line.querySelector('.Input, .Style_input'));
         }
-        // New owners start at the newest admitted occurrence. Existing marks
-        // remain attached to their word, not to the last response block.
-        var activeLines = Array.from(new Set(latest.slice().reverse().concat(Actionable.RoomLines.filter(Actionable.observedLine).slice().reverse())));
+        // Item 6 (operator rule, amends D214 U1): within ONE reply an item is
+        // marked at its FIRST mention; only a newer reply moves the mark. So
+        // new owners start at the first occurrence of the newest reply (the
+        // latest block in reading order, then the room text), and existing
+        // marks stay attached to their word until a later reply names it.
+        var activeLines = Array.from(new Set(latest.concat(Actionable.RoomLines.filter(Actionable.observedLine))));
         var inventory = /^(i|inv|inventory)$/.test(command);
         if (inventory && typeof StatTracker !== "undefined" && StatTracker._hideCarryProbe) {
             // D207: StatTracker owns the carry probe's span from submission and
