@@ -33,3 +33,21 @@ Baseline checkout cf7125f or later. Each class is reproduced independently again
 - Genuine multiple directions to the same room (Advent's in/east -> building) are unaffected, because the rule only overwrites the SAME direction when the walk contradicts it.
 - The fix belongs in MapTopology's state-delta link path, which must win over an earlier ram-lookahead `Exits` entry for the same key.
 - Touches D23/D24, Z1-R1 ("a destination conflict cannot retain that permission").
+
+## M03: no pre-travel exits in some Inform 6 games (CONFIRMED, same class as M01)
+
+**Reproduction** (Deja Vu, "Compiled by Inform v634", v3):
+- Compass 1; the direction walls carry prop8 (1 byte): n = 9, s = 10, e = 11, w = 12, ne = 13, se = 14, nw = 15, sw = 16, u = 17, d = 18.
+- Y2 Rock Room (13): prop12 = 25 Broken Passage, prop10 = 40 Reservoir. By the compass that is west -> Broken Passage and south -> Reservoir. The real `south` -> 40 Reservoir confirms it; the real `north` does not move (no prop9).
+- The current look-ahead is EMPTY because the stock 6.12.2 profile does not fit this library.
+
+**Fix:** the same compass mapping as M01. 1-byte values (v3) must be read too. **Merge M01 and M03** into one class: "Inform direction properties from the game's own compass".
+
+## M03: no pre-travel exits in some Inform 6 games (CONFIRMED, same class as M01)
+
+**Reproduction** (Deja Vu, "Compiled by Inform v634", v3):
+- Compass 1; the direction walls carry prop8 (1 byte): n = 9, s = 10, e = 11, w = 12, ne = 13, se = 14, nw = 15, sw = 16, u = 17, d = 18.
+- Y2 Rock Room (13): prop12 = 25 Broken Passage, prop10 = 40 Reservoir. By the compass that is west -> Broken Passage and south -> Reservoir. The real `south` -> 40 Reservoir confirms it; the real `north` does not move (no prop9).
+- The current look-ahead is EMPTY because the stock 6.12.2 profile does not fit this library.
+
+**Fix:** the same compass mapping as M01. 1-byte values (v3) must be read too. **Merge M01 and M03** into one class: "Inform direction properties from the game's own compass".
