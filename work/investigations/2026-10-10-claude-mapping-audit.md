@@ -282,3 +282,18 @@ Exclusions use Tier A only; Tier B/C stay provisional and are labelled as such. 
 **Next research task (claude):** scan Primrose's code for get_prop with constant 39 inside an object loop that ends in insert_obj to the player location, as a Tier-A proof of found_in.
 
 **Tier-A attempt (Primrose prop39), INCONCLUSIVE:** a raw byte scan of high memory for long-form get_prop/get_prop_addr with a constant property, followed within 40 bytes by insert_obj, does not discriminate: prop39 has 19 sites (5 near insert_obj), prop48 73 (48), prop26 54 (25), prop45 12 (5), prop21 12 (1). A byte scan cannot separate instructions from data. Tier-A needs a real routine disassembler: decode routines, find the object loop that reads the property and insert_obj's into the player location. Until then, the Primrose floating-object exclusion stays Tier B (provisional).
+
+## M10 (codex #2389): timed travel recorded as a typed direction, answered with D73 live opcode observation
+
+**Problem:** an awakening scene moves the player Chapel 20 -> Quarters 22 on whichever turn it fires. The map records that turn's typed direction (n in one run, w in another) as a confirmed exit (state-delta, confidence 0.98). Coincidence is not causation.
+
+**Existing capability (D73):** `lib/zvm.js` runs the game's opcodes as live, patchable methods. `js/ZvmCapture.js` already patches `get_prop` / `insert_obj` / `test_attr` and others; `AttrCalibrator` uses them. So we can observe what the game's code actually executes each turn. That is compiler-executed evidence, not a byte scan.
+
+**Planned rule (Tier A, causal):**
+- record an exit (R, D -> X) only when, in the same turn, the game read the current room's direction property for D (get_prop / get_prop_addr on R with D's property, compass mapping M01) and that read produced X (or a door leading to X), followed by insert_obj(player, X);
+- a player insert_obj with no such read (daemon, timed scene, scripted transport) moves the map's current room but records NO directional exit (it can be shown as an unlabelled "event" link);
+- custom travel commands (M06) are recorded under their own command label.
+
+**Floating objects, Tier A via the same hooks:** on a room change, MoveFloatingObjects reads one property on each object immediately before insert_obj(obj, newRoom). The property read immediately before those co-mover insert_obj calls IS found_in, observed live. This upgrades the Primrose prop39 exclusion from Tier B to Tier A once observed.
+
+**Checks:** whether ZvmCapture's hooks see get_prop calls made from compiled routines (D73 says yes), plus the performance cost (hooks only around the submitted turn).
