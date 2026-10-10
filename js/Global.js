@@ -5,7 +5,6 @@ var Global = {
         CRT: true,
         MapAnimation: true,
         ShowInfoOnStart: true,
-        AssumeTwoWayConnections: true,
         LightMode: false,
         // D123 (operator): 20px read too small on a phone. Story-window text
         // only -- this drives --pl-play-font-size, which is scoped to
@@ -128,7 +127,6 @@ var Global = {
         /*
         if (!ParchLock.Prefs.MapAnimation) ParchLock.ToggleMapAnim();
         if (!ParchLock.Prefs.ShowInfoOnStart) ParchLock.ToggleShowInfo();
-        if (!ParchLock.Prefs.AssumeTwoWayConnections) ParchLock.ToggleMap2Way();
         */
     },
 

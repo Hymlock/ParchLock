@@ -258,7 +258,6 @@ var ParchLock = {
         $("#toggle-crt").click(ParchLock.ToggleCRT);
         $("#toggle-map-anim").click(ParchLock.ToggleMapAnim);
         $("#toggle-show-info").click(ParchLock.ToggleShowInfo);
-        $("#toggle-map-2way").click(ParchLock.ToggleMap2Way);
         $("#control-panel .inject").click(ParchLock.InjectButtonClicked);
         $("#import-export").click(ParchLockQol.ShowSaveManager);
         $("#start-modules").off("click.plModules").on("click.plModules", ModuleLibrary.openManager);
@@ -291,18 +290,6 @@ var ParchLock = {
             $("#toggle-show-info").addClass("on");
         else
             $("#toggle-show-info").removeClass("on");
-
-        Global.SavePrefs();
-    },
-
-    ToggleMap2Way: (e) => {
-
-        if (e) Global.Prefs.AssumeTwoWayConnections = !Global.Prefs.AssumeTwoWayConnections;
-
-        if (Global.Prefs.AssumeTwoWayConnections) 
-            $("#toggle-map-2way").addClass("on");
-        else
-            $("#toggle-map-2way").removeClass("on");
 
         Global.SavePrefs();
     },

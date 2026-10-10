@@ -282,11 +282,9 @@ var TranslatorUI = {
         if (String(prevName).toLowerCase() === String(currName).toLowerCase()) return;
         if (typeof MapTopology === "undefined" || !MapTopology.link) return;
         MapTopology.link(prevName, dir, currName, { source: "state-delta-short", confidence: 0.98 });
-        var opposite = (typeof Directions !== "undefined" && Directions[dir] && Directions[dir].Opposite);
-        var twoWay = typeof Global !== "undefined" && Global.Prefs && Global.Prefs.AssumeTwoWayConnections;
-        if (twoWay && opposite && opposite.Dir) {
-            MapTopology.link(currName, opposite.Dir, prevName, { source: "state-delta-reverse", confidence: 0.98 });
-        }
+        // No assumed reverse link is recorded: maps are not symmetric (Zork's
+        // West of House). The return path is shown automatically and dotted by
+        // Map.js until it is actually walked.
         (ParchLockMap.Rooms || []).forEach(TranslatorUI.remapRoomExitKeys);
     },
 

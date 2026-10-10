@@ -909,11 +909,11 @@ var ParchLockMap = {
             if (prevRoom && ParchLockMap.AllowUpdate) {
                 
                 prevRoom.Exits[fromDirection.Dir] = enteredRoom.Id;
-
-                if (Global.Prefs.AssumeTwoWayConnections && fromDirection.Opposite) {
-
-                    enteredRoom.Exits[fromDirection.Opposite.Dir] = prevRoom.Id;
-                }
+                // Return paths are no longer written as real exits (operator,
+                // 2026-10-09). The map shows an assumed return automatically and
+                // dotted, only where the room's own decoded exits do not
+                // contradict it, and never travels it until it is walked (the
+                // reverse display in Draw).
             }
         }
 

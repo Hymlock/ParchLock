@@ -128,7 +128,6 @@ var WorkspaceUI = {
             return details;
         }
         groups.help = group("Getting started", "Help when a story begins");
-        groups.map = group("Mapping", "Assumed return paths between rooms");
         groups.mic = group("Voice input", "Hold to talk and automatic sending");
         groups.scroll = group("Story scrolling", "Keep new passages in view");
         groups.speech = group("Read aloud", "Narration, speech rate and repeats");
@@ -137,10 +136,9 @@ var WorkspaceUI = {
         // D215: Android only - the rotating storybook icon and its experimental launcher option.
         try { if (typeof IconRotation !== "undefined") IconRotation.addOptions(group); } catch (eIcon) {}
         [
-            ["Help at startup", "ShowInfoOnStart", ParchLock.ToggleShowInfo],
-            ["Assume return paths", "AssumeTwoWayConnections", ParchLock.ToggleMap2Way]
+            ["Help at startup", "ShowInfoOnStart", ParchLock.ToggleShowInfo]
         ].forEach(option => {
-            var label = $("<label>").appendTo(option[1] === "ShowInfoOnStart" ? groups.help : groups.map);
+            var label = $("<label>").appendTo(groups.help);
             $("<input type='checkbox'>").prop("checked", !!Global.Prefs[option[1]]).on("change", () => option[2](true)).appendTo(label);
             label.append(document.createTextNode(option[0]));
         });
