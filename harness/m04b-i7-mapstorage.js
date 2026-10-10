@@ -63,6 +63,12 @@ const labels = p => p.evaluate(() => (WorldModel.lastPayload.exits || []).filter
         MapTopology.link(r.Name, 'north', null, { fromId: '51', toId: 56, source: 'i7-mapstorage', hintOnly: true });
         out.bareKept = r.Exits.n === 999 && !(r.ExitMeta.north && r.ExitMeta.north.source === 'i7-mapstorage');
         r.Exits = saveE; r.ExitMeta = saveM;
+        // (1b) another source's metadata under the SHORT key blocks the lane.
+        const sE = Object.assign({}, r.Exits), sM = Object.assign({}, r.ExitMeta);
+        delete r.Exits.n; delete r.ExitMeta.north; r.ExitMeta.n = { source: 'ram-lookahead', toId: 77 };
+        MapTopology.link(r.Name, 'north', null, { fromId: '51', toId: 56, source: 'i7-mapstorage', hintOnly: true });
+        out.shortMetaKept = r.ExitMeta.n && r.ExitMeta.n.source === 'ram-lookahead' && !r.ExitMeta.north;
+        r.Exits = sE; r.ExitMeta = sM;
         // (2) a stale/foreign lane state (wrong generation) never reconciles.
         const realState = ZRamReader._i7LaneState;
         ZRamReader._i7LaneState = { roomId: 51, active: true, valid: false, exits: [], gen: -1, memKey: null };
@@ -72,6 +78,7 @@ const labels = p => p.evaluate(() => (WorldModel.lastPayload.exits || []).filter
         ZRamReader._i7LaneState = realState;
         return out; });
     check(contracts.bareKept, 'contract: a bare Exits entry without i7 ownership is not overwritten');
+    check(contracts.shortMetaKept, 'contract: short-key metadata from another source blocks the lane (no long-key write)');
     check(contracts.staleIgnored, 'contract: a lane state from another generation/memory does not reconcile');
     await p.close();
     // Facility native route.

@@ -345,14 +345,18 @@ var MapTopology = {
         // D223: the Map_Storage lane never overwrites another source's entry
         // or a walked proof, and never clears travelledTo (Codex #2778).
         if (meta.source === "i7-mapstorage") {
-            var priorMeta = from.ExitMeta[dir];
-            if (priorProof || (priorMeta && priorMeta.source && priorMeta.source !== "i7-mapstorage")) return;
-            // A bare Exits entry with no i7 ownership (imported, text, or
-            // older data without metadata) is never overwritten (Codex #2800).
+            // Check EVERY alias of this direction (full, D69 short, canonical)
+            // for another source's metadata, a walked proof, or a bare edge;
+            // any hit means this lane does not write (Codex #2800/#2802).
             var shortKey = null;
             try { shortKey = typeof TranslatorUI !== "undefined" && TranslatorUI.canonicalDir ? TranslatorUI.canonicalDir(dir) : null; } catch (eSk) {}
-            var bare = function (k) { return k && from.Exits && Object.prototype.hasOwnProperty.call(from.Exits, k) && !(from.ExitMeta[k] && from.ExitMeta[k].source === "i7-mapstorage"); };
-            if (bare(dir) || bare(shortKey) || bare(MapTopology.normalizeLabel(dir))) return;
+            var aliases = [dir, shortKey, MapTopology.normalizeLabel(dir)].filter(function (k, i, a) { return k && a.indexOf(k) === i; });
+            var blocked = aliases.some(function (k) {
+                var m = from.ExitMeta[k];
+                if (m && (m.travelledTo || (m.source && m.source !== "i7-mapstorage"))) return true;
+                return from.Exits && Object.prototype.hasOwnProperty.call(from.Exits, k) && !(m && m.source === "i7-mapstorage");
+            });
+            if (blocked) return;
         }
         from.ExitMeta[dir] = Object.assign({}, from.ExitMeta[dir] || {}, meta, {
             isNonCardinal: !MapTopology.isCardinal(dir),
