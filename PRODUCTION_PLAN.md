@@ -229,9 +229,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 329 headings; 103 decision rows; 432 registered units.
-**Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
-`48d734fab4b187c42326175b3a7f96e8cf3b2e6777be436b73a8305a3e6c1e2a`
+**Local manifest:** 330 headings; 103 decision rows; 433 registered units.
+**Last registered unit:** `pl-s330`. **Body SHA-256 (LF):**
+`30bab69aa4a03fbb932ffc62be5545084c6a10048bbc492b24421925f3872fe0`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -743,6 +743,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s327](#pl-s327) | D213 Enemy interactions and in-room steps need RAM or grammar evidence (Step 5) | H2 | Part A implemented and accepted (#1611); Part B cancelled |
 | [pl-s328](#pl-s328) | D214 Underlines follow their words; replies are observed; dictionary-equivalent and pronoun-safe triggers; Yourself breadth | H2 | Agreed (#1925); implementation in progress |
 | [pl-s329](#pl-s329) | D215 Full-app beautification sweep, surface by surface, preserving functional reserves | H2 | Implemented/audited; APK 64 delivered |
+| [pl-s330](#pl-s330) | D216 Mapping research fixes: internal-named rooms, positional heading suffix, Degeneracy player fact | H2 | Implemented / audited (Codex #2495, #2503, #2507) |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -8776,3 +8777,45 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
     - death-terminal 40/0, command-disambiguation 51/0, stat-tracker 211/0;
     - e4-transcript 15/0.
   - **Not in APK 64.** It ships in the next build, when the operator asks.
+
+<a id="pl-s330" data-chapter-id="pl-s330"></a><a id="pl-d216"></a>
+## D216 Mapping research fixes: internal-named rooms, positional heading suffix, Degeneracy player fact
+
+**Lifecycle:** The operator authorised implementation of agreed mapping-research fixes on 2026-10-10, after the 309-module research loop (work/investigations/2026-10-10-claude-mapping-audit.md; Codex's record is work/mapping-research/2026-10-10-adversarial-audit.md). Each part went through blind investigation or consensus, adversarial review and an independent audit. The scope is narrow by design. No full-309 certification is claimed, and the overall mapping loop is not closed.
+
+**Key files:** js/ZRamReader.js, js/Actionable.js, js/ModuleStatFactsClaude.js.
+
+**Part 1, M05: internal-named Inform rooms (commit eae9dd2).**
+- In Make It Good, the player sits in "(Car)" inside the top-level "(MainStreet)". `isLocationObject` rejects every "(" name, so `enclosingRoom` dead-ended and the map stayed in the glove compartment.
+- New `ZRamReader.isInternalNamedLocation` is `isLocationObject` with ONLY the internal-name test waived. Bounds, the Class parent and library/meta names (darkness, self, class, object, thedark, Inform, library) stay rejected.
+- `enclosingRoom` uses it only on the player's own containment chain (D201 contract: an unnamed or internal room only when the resolved player's chain proves it). It still applies the furniture/vehicle guard: an enterable container/supporter keeps climbing, a nested non-vehicle holder is climbed past, and a top-level object is the room.
+- `isLocationObject` is unchanged, so off-chain holders such as (TopTreeObj), (cast) and (MaidsWork) are never rooms.
+- **Evidence:**
+  - Census of 309 games at boot plus LOOK (work/investigations/2026-10-10-claude-M05-census-309.txt): 4 admissions, all genuine headed rooms (dewdrops ONSTAGE, Make It Good MainStreet, selection desk_area, vespers your_bedroom). Limitation: some early games ran under round 1 (round 2 is strictly narrower), and only boot plus LOOK was covered.
+  - Guards: d46 27/0, d201 69/0, d23 88/0, exit-calibrator 26/0, d214-zil-exits 17/0.
+- **Still open:** M05b/M05c (actor qualification; status object versus semantic room) and M07 (virtual street addresses on one object).
+
+**Part 2, M13: a positional heading suffix no longer freezes into the room name (commit b44d47c).**
+- **Root cause:** the item-8 full-heading upgrade (cf7125f) took any longer heading starting with the stored name. KoA's "In Your Cabin" became "In Your Cabin (on the bunk)", and Make It Good kept "(in the black chevy)" after GET OUT.
+- New `Actionable.isPositionalSuffix` skips that upgrade only when all of these hold:
+  - the build is Inform;
+  - the extra text is exactly "(on|in|inside|under [the] X)";
+  - X matches the short name, or all of X's words match the parser words, of an object on the player's containment chain;
+  - that chain actually reaches the room.
+- Authored parentheticals ("Hall (East)", "Stage (A German Forest)") still upgrade. "at", direct room children and non-Inform builds never qualify.
+- **Evidence:**
+  - Native: KoA "In Your Cabin", Make It Good "Broken Top Boulevard, Outside No. 15", Bear "Bedroom". Codex's six isolated controls passed.
+  - Guards: d46 27/0, d23 88/0, underline-first 8/0, display-key-cache 7/0.
+- **Scope:** this prevents future freezes. It does not repair labels already saved, and it does not strip parentheses in general.
+
+**Part 3, Degeneracy measured player fact (commit 0126b14, D204 lane).**
+- The PC is 157 "(StandardPlayer)". `resolvePlayer` rejected it as a "(" meta name and chose the parentless "(self object)" 20. No room resolved, and the map fell back to furniture ("long Table").
+- Executable SHA256 f77c8f218f0b6f11940e342f82c8c9f91d0933d366f45a5a3587ca341d5bfdf6, header-authenticated: `playerGlobal: 18`.
+- **Evidence:** native INVENTORY at Reception, Wait and Dining lists exactly 157's children; g18 = g53 = 157 at every measured prompt. Bear and dewdrops hold the PC only in slot 18 (supporting, not universal ABI proof). No directed-NPC role test was available, and that limitation is recorded.
+- **Result:** LOOK/E/N/S/W gives 34 Reception Chamber, 37 Wait Chamber, 38 Dining Hall, 37, 34.
+- **Rejected alternative:** a generic ">= 2 globals + animate + parent equals location" promotion is Tier B only, since companions can share globals and move with the player. No generic actor-scoring change.
+
+**Recorded dependencies (not implemented):**
+- M12: suppressing decoder date labels alone can leave blank compiled rooms (WiR1/2) unlabelled. A separate, qualified current-reply heading owner (same actor and room identity) is required, with M09 readiness caveats (Codex #2508).
+- M11 (light) and M09 (readiness) stay tri-state with unknown preserved. Proposals: #2462.
+- Night's floor levels follow from the M01 compass labelling; fix M01 before any geometry change (plan 7321-7327, D214 at 8161).

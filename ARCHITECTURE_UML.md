@@ -209,9 +209,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 101 headings; 0 decision rows; 101 registered units.
-**Last registered unit:** `ar-s101`. **Body SHA-256 (LF):**
-`5735aa71eefd338d693674e101f2c754237a553e0444061914eb41a6c5c693a9`
+**Local manifest:** 102 headings; 0 decision rows; 102 registered units.
+**Last registered unit:** `ar-s102`. **Body SHA-256 (LF):**
+`47bb9f38f79a8fae52997632d76c46347fcaaa1716c6293ae2498c2036e86fdf`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -392,6 +392,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s099](#ar-s099) | 73. In-room steps and combat actions (D213) | H2 | Part A implemented |
 | [ar-s100](#ar-s100) | 74. Underline lifetime, reply observation and Yourself breadth (D214) | H2 | Agreed; implementation in progress |
 | [ar-s101](#ar-s101) | 75. Save-tied state, authored endings and the rotating icon (D215) | H2 | Implemented / audited (icon start timing: issue 1) |
+| [ar-s102](#ar-s102) | 76. Internal-named rooms, positional suffixes and measured player facts (D216) | H2 | Implemented / audited |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -4007,3 +4008,26 @@ sequenceDiagram
 **Map exits (2026-10-09).**
 - A calibrated `ExitCalibrator` decoding is valid only for the property sizes it was proven on. A ZIL message, routine, conditional or door form is never read as a room number.
 - Return paths are never written as exits. `Map.js` draws an assumed return (dotted, `tentative-exit`) only where the room's own decoded `ExitMeta` does not contradict it, and it is never travelled until walked. There is no user option for it.
+
+<a id="ar-s102" data-chapter-id="ar-s102"></a><a id="ar-ch76"></a>
+## 76. Internal-named rooms, positional suffixes and measured player facts (D216)
+
+Contract: [D216](PRODUCTION_PLAN.md#pl-d216).
+
+```mermaid
+flowchart TD
+  P[resolvePlayer] -->|D204 measured playerGlobal first| ID[player id]
+  ID --> ENC[enclosingRoom walk]
+  ENC -->|isLocationObject| PLAIN[plain-name level: furniture guard]
+  ENC -->|fails only on a parenthesis name| INT[isInternalNamedLocation]
+  INT -->|enterable container or supporter| ENC
+  INT -->|nested holder| ENC
+  INT -->|top-level| ROOM[room id]
+  ROOM --> HEAD[Actionable heading upgrade]
+  HEAD -->|isPositionalSuffix: Inform and an object on the chain| KEEP[keep stored name]
+  HEAD -->|truncated or authored text| FULL[take printed heading]
+```
+
+- The internal-name allowance exists only inside `enclosingRoom`, on the resolved player's chain. `isLocationObject` and every other caller (AttrCalibrator, isPlausibleMapRoom) keep rejecting "(" names.
+- The positional-suffix veto belongs to the item-8 upgrade in `Actionable` only. Room identity, D62's freeze and MapTopology are untouched.
+- Per-executable player identity goes through `ModuleStatFactsClaude` and `executableLayoutFacts` (digest plus stable header), re-read on every call so restores and body changes follow RAM. Generic actor scoring is unchanged.
