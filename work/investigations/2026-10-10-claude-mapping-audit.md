@@ -326,3 +326,9 @@ A blocked attempt that reads the compass fails (2), because its property is 0 or
 | next N | get_prop(2,10)=7 | Quarters.p7 = 25 | 25 Hallway | YES |
 
 My probe briefly mis-picked get_prop(20,26), a non-compass read, which confirms that reads must be restricted to compass objects. Outside proven I6-compass stories (I7, ZIL, routine exits) the evidence is unknown, never "no exit".
+
+**M10 research consensus (codex #2397):**
+- The rule is validated for Spirit and the direct-I6 compass lane; broader compiled causality stays open.
+- Accepted edge case: a legitimately-but-temporarily blocked neighbour can also be a scripted relocation destination, in which case R.prop[P] == X holds without causation.
+- Coincidence-based results stay "provisional / causal-unconfirmed", never certified as timed or no-exit.
+- No product-fix consensus is needed in the current research scope.
