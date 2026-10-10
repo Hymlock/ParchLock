@@ -1,5 +1,17 @@
 # ParchLock Release Notes
 
+## Build 70 - 2026-10-10
+
+- Map directions: games built with older Inform libraries (Curses, Night, Moonglow, Cat's Eye, Theatre and about a dozen others) now label exits from the game's own compass instead of a standard table, so "north" really leads north. Inevita, Gostak and Deja Vu still use the old labels.
+- Map rooms: Make It Good (and three other games) now follow you into rooms that have internal names, instead of staying stuck in the first room.
+- Room names no longer keep a stale "(on the bunk)" / "(in the black chevy)" after you get up or get out (KoA, Make It Good, Bear).
+- Degeneracy now finds the player, so its map and Equipment work.
+- Inform 7 games no longer show a phantom "exit-31" (Warbler's Nest).
+- Return paths are drawn dotted and are never saved as real exits; the old Mapping option is gone.
+- Underlining: the first mention in each reply is underlined; a word shared by several objects is underlined only when it is one object's main noun.
+- Long room names wrap to two lines in the top exit band, and rooms take their full printed name when the status line truncated it.
+- Opening Inventory from the Map no longer streams the map past the input.
+
 ## Build 69 - 2026-10-09
 
 - Map: no more phantom exits in older Infocom-style games (for example a "punctured boat" east of Zork's West of House). Exits that only print a message, such as a boarded door, are no longer read as rooms, and the map no longer guesses a return path that the story itself contradicts.
