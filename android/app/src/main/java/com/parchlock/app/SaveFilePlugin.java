@@ -123,7 +123,7 @@ public class SaveFilePlugin extends Plugin {
         String scene = getActivity() instanceof ParchLockActivity ? ((ParchLockActivity) getActivity()).launchScene() : null;
         r.put("scene", scene);
         r.put("canPin", IconRotator.canPin(getContext()));
-        r.put("pinned", IconRotator.pinnedExists(getContext()));
+        r.put("pinned", RotatingIconWidget.exists(getContext()));
         call.resolve(r);
     }
 

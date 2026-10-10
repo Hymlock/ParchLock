@@ -7,28 +7,13 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ShortcutInfo;
 import android.content.pm.ShortcutManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.util.Log;
 
-import androidx.annotation.RequiresApi;
 
 import java.util.Collections;
 
-/**
- * D215: rotates the ParchLock icon through the four approved storybook scenes.
- *
- * Default (safe): the launcher icon never changes. With the player's consent
- * ParchLock pins ONE home-screen shortcut of its own and updates that
- * shortcut's picture in place each time the app is opened, so it is never
- * removed or moved.
- *
- * Timing (issue 1, APK 64 closed on focus loss): nothing runs when the app is
- * merely left. Only the owned pinned icon advances at launch (IconPolicy).
- */
+/** Rotates installed home-screen widgets once per genuine new app launch. */
 final class IconRotator {
 
     // "archive" is the default artwork of the base launcher icon (icon pack).
@@ -59,9 +44,7 @@ final class IconRotator {
     }
 
     static boolean canPin(Context c) {
-        if (Build.VERSION.SDK_INT < 26) return false;
-        ShortcutManager sm = c.getSystemService(ShortcutManager.class);
-        return sm != null && sm.isRequestPinShortcutSupported();
+        return RotatingIconWidget.canPin(c);
     }
 
     /** Ownership comes from the system's own list of this app's pinned shortcuts. */
@@ -75,71 +58,31 @@ final class IconRotator {
         return false;
     }
 
-    /**
-     * "Add icon": replaces ParchLock's own pinned icon in place when one exists,
-     * otherwise shows Android's "add to home screen" confirmation. Returns the
-     * true outcome (IconPolicy.pinOutcome).
-     */
     static String pinOrUpdate(Context c) {
-        boolean can = canPin(c);
-        boolean pinned = can && pinnedExists(c);
-        boolean ok = false;
-        if (can && Build.VERSION.SDK_INT >= 26) {
-            try {
-                ShortcutManager sm = c.getSystemService(ShortcutManager.class);
-                String scene = SCENES[sceneIndex(c)];
-                ok = pinned ? updatePinned(c, scene) : sm.requestPinShortcut(build(c, scene), null);
-            } catch (Exception e) {
-                Log.w(TAG, "pin request failed", e);
-            }
-        }
-        return IconPolicy.pinOutcome(can, pinned, ok);
+        try { return RotatingIconWidget.pinOrUpdate(c); }
+        catch (Exception e) { Log.w(TAG, "widget request failed", e); return "refused"; }
     }
 
-    /**
-     * Once per launch: advance the pinned icon to the next scene. The stored
-     * scene moves only after Android accepted the update, so a refusal is
-     * retried on the next launch. No pinned icon: nothing advances.
-     */
+    /** Commit scene only after every installed widget has received its update. */
     static void rotateAtLaunch(Context c) {
         try {
-            if (!pinnedExists(c)) return;
+            int[] widgets = RotatingIconWidget.ids(c);
+            if (widgets.length == 0) return;
             int next = IconPolicy.next(sceneIndex(c));
-            if (updatePinned(c, SCENES[next])) prefs(c).edit().putInt("scene", next).apply();
+            RotatingIconWidget.render(c, widgets, next);
+            prefs(c).edit().putInt("scene", next).apply();
         } catch (Exception e) {
             Log.w(TAG, "launch rotation skipped", e);
         }
     }
 
-    private static boolean updatePinned(Context c, String id) {
-        if (Build.VERSION.SDK_INT < 26) return false;
+    static void retireOwnedPin(Context c) {
+        if (Build.VERSION.SDK_INT < 26) return;
         ShortcutManager sm = c.getSystemService(ShortcutManager.class);
-        return sm != null && sm.updateShortcuts(Collections.singletonList(build(c, id)));
-    }
-
-    @RequiresApi(26)
-    private static ShortcutInfo build(Context c, String id) {
-        Intent intent = new Intent(Intent.ACTION_MAIN)
-            .setClassName(c.getPackageName(), TARGET)
-            .putExtra("scene", id);
-        return new ShortcutInfo.Builder(c, SHORTCUT_ID)
-            .setShortLabel("ParchLock")
-            .setIcon(adaptiveIcon(c, id))
-            .setIntent(intent)
-            .build();
-    }
-
-    // The foreground layer keeps the artwork inside the adaptive safe zone;
-    // composed over the dark ground it is a full adaptive bitmap.
-    @RequiresApi(26)
-    private static Icon adaptiveIcon(Context c, String id) {
-        int res = c.getResources().getIdentifier("ic_launcher_" + id + "_foreground", "mipmap", c.getPackageName());
-        Bitmap fg = BitmapFactory.decodeResource(c.getResources(), res);
-        Bitmap out = Bitmap.createBitmap(fg.getWidth(), fg.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(out);
-        canvas.drawColor(c.getColor(R.color.ic_launcher_background));
-        canvas.drawBitmap(fg, 0, 0, null);
-        return Icon.createWithAdaptiveBitmap(out);
+        if (sm != null && pinnedExists(c)) {
+            sm.disableShortcuts(Collections.singletonList(SHORTCUT_ID), "Replaced by the ParchLock widget");
+            sm.removeDynamicShortcuts(Collections.singletonList(SHORTCUT_ID));
+        }
     }
 
     /** Repair the retained launcher entry after removing experimental aliases. */

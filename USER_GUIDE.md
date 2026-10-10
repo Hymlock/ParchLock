@@ -144,11 +144,15 @@ and browser saves. Android backup is disabled; reinstalling starts empty.
 ParchLock's icon is a storybook with one of the four opening scenes on its left
 page.
 
-- **Android:** on supported launchers, ParchLock asks once whether to add a
-  rotating home-screen shortcut. Android confirms placement. Its picture changes
-  at each new app launch; the app-drawer icon stays fixed. **Options** -> **App
-  icon** can add or update the shortcut later. Android may display a small app
-  badge on the shortcut; its appearance depends on the launcher.
+- **Android:** ParchLock offers a rotating home-screen widget. It starts at
+  **2 ? 2**. Touch and hold it, then drag the resize handles to choose a size
+  from **1 ? 1 to 4 ? 4**, subject to your launcher's grid. Tap the book to open
+  ParchLock. Its picture changes once per fresh app launch; Home/return leaves
+  it unchanged. **Options ? App icon** can add or update it later. If automatic
+  placement is unsupported, add ParchLock from your launcher's widget list.
+  Once a widget exists, ParchLock disables its old rotating shortcut. Android
+  does not let the app remove that shortcut or your ordinary app icon; remove
+  them manually if your launcher keeps them.
 - **PC:** the first time you run `ParchLock.exe` it asks whether to add a desktop
   shortcut. If you agree, that shortcut's picture changes each time you open
   ParchLock. It never touches other shortcuts, and it never recreates a deleted

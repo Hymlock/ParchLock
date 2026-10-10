@@ -25,21 +25,22 @@ var IconRotation = {
 
     // The true outcome of "Add icon" (native pinRotatingShortcut).
     Outcomes: {
-        updated: "Home-screen icon updated.",
-        requested: "Android will ask you to place the icon.",
+        updated: "Home-screen widget updated.",
+        requested: "Android will ask you to place the widget.",
         refused: "Android didn't allow that right now. Please try again later.",
-        unsupported: "This launcher doesn't support app-placed icons."
+        unsupported: "Add ParchLock from your launcher's widget list."
     },
 
     // Called by WorkspaceUI.ShowOptions with its group() helper.
     addOptions: function (group) {
         if (!IconRotation.plugin()) return;
-        var box = group("App icon", "A home-screen icon that changes scene");
+        var box = group("App icon", "A rotating storybook widget ? starts at 2 ? 2");
+        $("<div class='pl-options-note'>").text("To resize: touch and hold the widget, then drag its handles. Sizes range from 1 ? 1 to 4 ? 4, depending on your launcher.").appendTo(box);
         IconRotation.state().then(function (s) {
             if (!s) return;
-            if (s.canPin) {
+            if (s.canPin || s.pinned) {
                 var pin = $("<button type='button' class='pl-options-action'>").appendTo(box);
-                pin.text(s.pinned ? "Update home-screen icon" : "Add a rotating home-screen icon");
+                pin.text(s.pinned ? "Update home-screen widget" : "Add a rotating home-screen widget");
                 var result = $("<div class='pl-options-note' role='status'>").appendTo(box);
                 pin.on("click", function () {
                     var p = IconRotation.plugin();
@@ -48,7 +49,7 @@ var IconRotation = {
                         result.text(IconRotation.Outcomes[r && r.action] || IconRotation.Outcomes.refused);
                     }).catch(function () { result.text(IconRotation.Outcomes.refused); });
                 });
-            }
+            } else { $("<div class='pl-options-note'>").text(IconRotation.Outcomes.unsupported).appendTo(box); }
         });
     }
 };

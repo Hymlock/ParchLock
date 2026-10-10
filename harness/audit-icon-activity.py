@@ -69,9 +69,9 @@ sources = {
  }''',
 "com/parchlock/app/SaveFilePlugin.java": '''package com.parchlock.app; public class SaveFilePlugin {}''',
 "com/parchlock/app/IconRotator.java": '''package com.parchlock.app; class IconRotator {
- static int rotations,exits;static boolean can=true;static final Prefs pref=new Prefs();
+ static int rotations,exits;static boolean can=true;static String outcome="updated";static final Prefs pref=new Prefs();
  static Prefs prefs(Object c){return pref;} static boolean canPin(Object c){return can;}
- static String sceneOfLaunch(android.content.Intent i){return "archive";} static String pinOrUpdate(Object c){return "updated";}
+ static String sceneOfLaunch(android.content.Intent i){return "archive";} static String pinOrUpdate(Object c){return outcome;}
  static void rotateAtLaunch(Object c){rotations++;} static void onRealExit(Object c){exits++;}
  static class Prefs {boolean asked;boolean getBoolean(String k,boolean d){return asked;}
   Prefs edit(){return this;} Prefs putBoolean(String k,boolean b){asked=b;return this;}void apply(){} }
@@ -102,6 +102,8 @@ sources = {
 
   reset(false);IconConsentActivity gate=new IconConsentActivity();gate.onCreate(null);AlertDialog.last.choose(true);
   check(IconRotator.pref.asked&&gate.redirected==1&&gate.finishing&&"forest".equals(gate.next.scene),"Add records consent and forwards scene to a new game Activity");
+  reset(false);IconRotator.outcome="requested";IconConsentActivity requested=new IconConsentActivity();requested.onCreate(null);AlertDialog.last.choose(true);
+  check(IconRotator.pref.asked&&requested.redirected==0&&requested.finishing,"placement request closes consent without opening game early");IconRotator.outcome="updated";
   reset(false);IconConsentActivity no=new IconConsentActivity();no.onCreate(null);AlertDialog.last.cancel();
   check(IconRotator.pref.asked&&no.redirected==1,"Back means Not now and proceeds once");
   reset(false);IconConsentActivity gone=new IconConsentActivity();gone.onCreate(null);AlertDialog stale=AlertDialog.last;gone.onDestroy();stale.choose(true);

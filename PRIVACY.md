@@ -24,8 +24,9 @@ Icons and shortcuts:
 
 - On Android, ParchLock stores the next storybook icon scene and whether the
   first-launch icon question has been answered in its own app settings. It adds
-  a home-screen shortcut only after you agree and Android confirms placement.
-  Only that shortcut rotates; the app's launcher entry stays fixed.
+  a home-screen widget only after you agree and Android confirms placement.
+  Only installed widgets rotate; the app's launcher entry stays fixed. Once a
+  widget exists, the app disables only its own old rotating shortcut.
 - On a PC, `ParchLock.exe` stores its choices (whether to add a desktop shortcut,
   the current icon scene, and the shortcut it created) in
   `%LOCALAPPDATA%\ParchLock\launcher.ini`. It creates a desktop shortcut only if
