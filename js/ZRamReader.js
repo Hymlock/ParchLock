@@ -293,6 +293,7 @@ var ZRamReader = {
     // direct form. A value that does not decode to a terminated Z-string in
     // high memory yields "". Presentation only: never room identity.
     _storyNameCache: (typeof WeakMap !== "undefined") ? new WeakMap() : null,
+    _storyYourselfCache: (typeof WeakMap !== "undefined") ? new WeakMap() : null,
     storyShortName: (mem, id) => {
         try {
             var h = ZRamReader.header(mem), t = ZRamReader.informPropertyNames(mem);
@@ -1933,6 +1934,26 @@ var ZRamReader = {
             if (gv >= 2 && gv <= count) globalRefs[gv] = (globalRefs[gv] || 0) + 1;
         }
         var candidates = [], candidateOrder = 0;
+        // D220 / M05b: an I7 player whose compiled short name is blank prints
+        // "yourself" through the story's short_name (D219 storyShortName).
+        // D201: exact "yourself" is the strongest unnamed-I7 token. Counted
+        // only when exactly ONE blank-named object in the story carries it.
+        var storyYourself = 0;
+        var syGen = (typeof ZRamProvider !== "undefined" && ZRamProvider.collectGeneration) || 0;
+        var syKey = (mem && mem.buffer) || mem, syHit = null;
+        try { syHit = ZRamReader._storyYourselfCache && ZRamReader._storyYourselfCache.get(syKey); } catch (eSc) {}
+        if (syHit && syHit.gen === syGen) storyYourself = syHit.id;
+        else if (inform && ZRamReader.storyShortName) {
+            try {
+                for (var sy = 1; sy <= count; sy++) {
+                    if (String(ZRamReader.shortName(mem, sy) || "").trim()) continue;
+                    if (ZRamReader.storyShortName(mem, sy) !== "yourself") continue;
+                    if (storyYourself) { storyYourself = -1; break; }
+                    storyYourself = sy;
+                }
+            } catch (eSy) { storyYourself = 0; }
+            try { if (ZRamReader._storyYourselfCache) ZRamReader._storyYourselfCache.set(syKey, { gen: syGen, id: storyYourself }); } catch (eSs) {}
+        }
         function consider(id, bonus) {
             if (id < 2 || id > count) return;
             var nm = ZRamReader.shortName(mem, id) || "";
@@ -1947,7 +1968,7 @@ var ZRamReader = {
             var exactSelfAlias = aliases.indexOf("yourself") >= 0;
             var attrs = {};
             try { attrs = ZRamReader.attrsFromObject(mem, id) || {}; } catch (eAttrs) {}
-            var parserSelf = !!(inform && exactSelfAlias && attrs.animate);
+            var parserSelf = !!(inform && (exactSelfAlias || id === storyYourself) && attrs.animate);
             var namedSelf = isSelfObjectName(nm) || /^(yourself|cretin|grunk|body)$/i.test(nm);
             var namedPlayer = /yourself|cretin|grunk|adventurer|player/i.test(nm);
             if (!parserSelf && (isMetaName(nm) || (!namedSelf && !namedPlayer))) return;
