@@ -12,6 +12,7 @@ const mem = fs.readFileSync(process.argv[2]);
 const target = Number(process.argv[3]);
 const u8 = a => mem[a], u16 = a => (mem[a] << 8) | mem[a + 1];
 const version = u8(0), himem = u16(4), scale = version === 8 ? 8 : 4;
+if (version !== 5 && version !== 8) { console.log('unsupported version', version); process.exit(2); }
 const OP2 = { 1: 'je b', 2: 'jl b', 3: 'jg b', 4: 'dec_chk b', 5: 'inc_chk b', 6: 'jin b', 7: 'test b', 8: 'or s', 9: 'and s', 10: 'test_attr b', 11: 'set_attr', 12: 'clear_attr', 13: 'store', 14: 'insert_obj', 15: 'loadw s', 16: 'loadb s', 17: 'get_prop s', 18: 'get_prop_addr s', 19: 'get_next_prop s', 20: 'add s', 21: 'sub s', 22: 'mul s', 23: 'div s', 24: 'mod s', 25: 'call_2s s', 26: 'call_2n', 27: 'set_colour', 28: 'throw' };
 const OP1 = { 0: 'jz b', 1: 'get_sibling sb', 2: 'get_child sb', 3: 'get_parent s', 4: 'get_prop_len s', 5: 'inc', 6: 'dec', 7: 'print_addr', 8: 'call_1s s', 9: 'remove_obj', 10: 'print_obj', 11: 'ret T', 12: 'jump J', 13: 'print_paddr', 14: 'load s', 15: 'call_1n' };
 const OP0 = { 0: 'rtrue T', 1: 'rfalse T', 2: 'print X', 3: 'print_ret XT', 4: 'nop', 7: 'restart T', 8: 'ret_popped T', 9: 'catch s', 10: 'quit T', 11: 'new_line', 12: 'show_status', 13: 'verify b', 15: 'piracy b' };
@@ -30,9 +31,10 @@ function decode(pc) {
     const flags = name.split(' ')[1] || ''; const op = name.split(' ')[0];
     let store = null, branch = null, text = false, term = /T/.test(flags), jumpTarget = null;
     if (/s/.test(flags)) store = u8(pc++);
-    if (/b/.test(flags)) { const b1 = u8(pc++); let off; if (b1 & 0x40) off = b1 & 0x3F; else { off = ((b1 & 0x3F) << 8) | u8(pc++); if (off & 0x2000) off -= 0x4000; } branch = { onTrue: !!(b1 & 0x80), off, target: off > 1 ? null : null }; branch.endPc = pc; if (off > 1) branch.target = pc + off - 2; }
+    if (/b/.test(flags)) { const b1 = u8(pc++); let off; if (b1 & 0x40) off = b1 & 0x3F; else { off = ((b1 & 0x3F) << 8) | u8(pc++); if (off & 0x2000) off -= 0x4000; } branch = { onTrue: !!(b1 & 0x80), off, target: null }; branch.endPc = pc; if (off !== 0 && off !== 1) branch.target = pc + off - 2; }
     if (/X/.test(flags)) { text = true; while (pc + 1 < mem.length) { const w = u16(pc); pc += 2; if (w & 0x8000) break; } }
-    if (/J/.test(flags)) { let o = ops[0].v; if (ops[0].k === 'L' && o & 0x8000) o -= 0x10000; jumpTarget = pc + o - 2; }
+    if (/J/.test(flags)) { if (ops[0].k === 'V') jumpTarget = null; else { let o = ops[0].v; if (ops[0].k === 'L' && o & 0x8000) o -= 0x10000; jumpTarget = pc + o - 2; } }
+    if (pc > mem.length) return null; // truncated instruction
     return { start, end: pc, op, ops, store, branch, text, term, jumpTarget };
 }
 function fmt(ins) {
@@ -64,3 +66,16 @@ console.log('version', version, 'himem', himem, 'routines decoded', routines.len
 const hits = routines.filter(r => r.instrs.some(i => (i.op === 'loadw' || i.op === 'storew') && i.ops[0] && i.ops[0].k === 'L' && i.ops[0].v === target));
 console.log('routines using #' + target + ':', hits.map(r => r.start + ' (packed ' + (r.start / scale) + ')').join(', '));
 for (const r of hits) { console.log('\n=== routine ' + r.start + ' locals ' + r.locals); r.instrs.forEach(i => console.log('  ' + fmt(i))); }
+
+// Call-site and callee checks (Codex #2750).
+if (process.argv[4]) {
+    const callee = Number(process.argv[4]);
+    const callers = [];
+    routines.forEach(r => r.instrs.forEach(i => { if (/^call/.test(i.op) && i.ops[0] && i.ops[0].k === 'L' && i.ops[0].v * scale === callee) callers.push(r.start + '@' + i.start + ' ' + i.op); }));
+    console.log('callers of routine ' + callee + ' (packed ' + (callee / scale) + '):', callers.join(', ') || 'none');
+}
+if (process.argv[5]) {
+    const r = routines.find(x => x.start === Number(process.argv[5]));
+    console.log('=== routine ' + process.argv[5] + (r ? ' locals ' + r.locals : ' NOT at a decoded routine boundary'));
+    if (r) r.instrs.forEach(i => console.log('  ' + fmt(i)));
+}

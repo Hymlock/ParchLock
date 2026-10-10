@@ -202,3 +202,24 @@ routines using #17062: 144480 (packed 18060), 168528 (packed 21066), 168656 (pac
   168960: je sp L1 ?rtrue
   168964: jump #65517 ->168946
   168967: rfalse 
+callers of routine 144480 (packed 18060): 144240@144467 call_vs2
+=== routine 239432 locals 3
+  239433: call_vs #30029 L0 L1 -> L2
+  239440: jz L2 ?~239485
+  239443: jl L1 #1 ?239476
+  239447: jl L1 #64 ?~239476
+  239451: get_prop_addr L0 L1 -> G239
+  239455: jz G239 ?239461
+  239458: get_prop_len G239 -> G239
+  239461: push G239
+  239464: jg sp #2 ?239476
+  239468: get_prop L0 L1 -> G239
+  239472: push G239
+  239475: ret_popped 
+  239476: call_vn #30124 #39103 L0 L1
+  239484: rtrue 
+  239485: call_vs #30067 L0 L1 -> sp
+  239492: jg sp #2 ?~239506
+  239496: call_vn2 #30124 #39104 L0 L1 #2
+  239506: loadw L2 #0 -> sp
+  239510: ret_popped 
