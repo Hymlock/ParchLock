@@ -34,8 +34,8 @@ var IconRotation = {
     // Called by WorkspaceUI.ShowOptions with its group() helper.
     addOptions: function (group) {
         if (!IconRotation.plugin()) return;
-        var box = group("App icon", "A rotating storybook widget ? starts at 2 ? 2");
-        $("<div class='pl-options-note'>").text("To resize: touch and hold the widget, then drag its handles. Sizes range from 1 ? 1 to 4 ? 4, depending on your launcher.").appendTo(box);
+        var box = group("App icon", "A rotating storybook widget");
+        $("<div class='pl-options-note'>").text("To resize: touch and hold the widget, then drag its handles. You may remove your old shortcut if you already placed one.").appendTo(box);
         IconRotation.state().then(function (s) {
             if (!s) return;
             if (s.canPin || s.pinned) {

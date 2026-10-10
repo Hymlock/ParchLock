@@ -15,7 +15,7 @@ public class IconConsentActivity extends AppCompatActivity {
         super.onCreate(state);
         prompt = new AlertDialog.Builder(this)
             .setTitle("A rotating home-screen widget")
-            .setMessage("Add a larger ParchLock storybook widget? Its picture changes each time you start ParchLock. Android will ask where to place it. Then tap the widget to start. It starts at 2 ? 2.\n\nTo resize it, touch and hold the widget, then drag the white handles. You can shrink it to 1 ? 1.\n\nOnce placed, our old rotating shortcut is disabled. Your launcher may keep it greyed out; you can remove it.")
+            .setMessage("Add a ParchLock storybook widget? Its picture changes each time you start ParchLock. Android will ask where to place it, then tap the widget to start.\n\nTo resize it, touch and hold the widget and drag its handles.\n\nYou may remove your old shortcut if you already placed one.")
             .setPositiveButton("Add widget", (d, w) -> answer(true))
             .setNegativeButton("Not now", (d, w) -> answer(false))
             .setOnCancelListener(d -> answer(false)).create();
