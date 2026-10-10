@@ -23,7 +23,10 @@ var UndoRestoreSync = {
         if (typeof LearnedWords !== 'undefined') { LearnedWords.clearProjection(); if (LearnedWords._open) LearnedWords.close(false); }
         UndoRestoreSync.pending = false;
         if (typeof Actionable !== "undefined") {
-            if (Actionable.clearLabelSnapshot) Actionable.clearLabelSnapshot();
+            // Item 4: verified display names survive an undo (each is revalidated
+            // against the object's live parser words); only a new game drops
+            // them, and a save restore replaces them with that save's own.
+            if (reason === "restart" && Actionable.clearLabelSnapshot) Actionable.clearLabelSnapshot();
             Actionable.VerifiedNouns = {};
             Actionable.CommandNouns = {};
             Actionable.Scope.lastLookText = "";

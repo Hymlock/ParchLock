@@ -255,7 +255,20 @@ var Actionable = {
         // fallback. Current prose remains first and command ownership is untouched.
         var current=Actionable.observedPhraseFor(seed,pool,text,false);
         // New observed state/descriptor always outranks an old spelling.
-        if(current !== seed.name)return current;
+        if(current !== seed.name){
+            // Item 4 (operator): a name the game's own text confirmed is verified
+            // and must not fall back to the truncated parser word ("nutritiou")
+            // when that text is gone. Kept in the display-only label store,
+            // revalidated against the object's live parser words on use.
+            try {
+                var id = String(obj.id), had = Actionable._restoredLabels[id];
+                if (!had || had.phrase !== current) {
+                    var words = Actionable.labelWords(ZRamProvider.getMem(), Number(obj.id));
+                    if (words.length) Actionable._restoredLabels[id] = {phrase: current, words: words};
+                }
+            } catch (eKeep) {}
+            return current;
+        }
         if(known) {
             var observed = Actionable.observedPhraseFor(seed,pool,known,false);
             if(observed !== seed.name)return observed;
