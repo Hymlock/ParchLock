@@ -342,6 +342,12 @@ var MapTopology = {
             dir = MapTopology.normalizeLabel(command) || command;
         }
         var priorProof = from.ExitMeta[dir] && from.ExitMeta[dir].travelledTo;
+        // D223: the Map_Storage lane never overwrites another source's entry
+        // or a walked proof, and never clears travelledTo (Codex #2778).
+        if (meta.source === "i7-mapstorage") {
+            var priorMeta = from.ExitMeta[dir];
+            if (priorProof || (priorMeta && priorMeta.source && priorMeta.source !== "i7-mapstorage")) return;
+        }
         from.ExitMeta[dir] = Object.assign({}, from.ExitMeta[dir] || {}, meta, {
             isNonCardinal: !MapTopology.isCardinal(dir),
             label: dir,
@@ -570,7 +576,7 @@ var MapTopology = {
                 isDoor: !!ex.isDoor,
                 isLocked: !!ex.isLocked,
                 confidence: ex.confidence,
-                source: "ram-lookahead",
+                source: raw && raw.source === "i7-mapstorage" ? "i7-mapstorage" : "ram-lookahead",
                 prop: ex.prop,
                 command: ex.command || ex.label,
                 ambiguousDiagonal: !!ex.ambiguousDiagonal,
@@ -578,6 +584,30 @@ var MapTopology = {
                 roomHintSourceId: ex.roomHintSourceId
             });
         });
+    },
+    // D223: source-owned reconciliation for Map_Storage hints, current room
+    // only, run BEFORE mergeConfirmedExits. Unwalked i7-mapstorage entries
+    // whose cell is gone/changed (or whose decoder is invalid) are removed with
+    // their own target metadata; walked or other-source entries are untouched.
+    reconcileI7MapStorage: function (payload) {
+        try {
+            if (!payload || payload.roomId == null || typeof ParchLockMap === "undefined" || !ParchLockMap.Rooms) return;
+            var st = (typeof ZRamReader !== "undefined" && ZRamReader._i7LaneState) || null;
+            if (!st || !st.active || String(st.roomId) !== String(payload.roomId)) return;
+            var room = ParchLockMap.Rooms.find(function (r) { return r && r.HasRealId && String(r.ObjectId) === String(payload.roomId); });
+            if (!room || !room.ExitMeta) return;
+            var want = {};
+            if (st.valid) (st.exits || []).forEach(function (e) { if (e.targetRoomId != null) want[MapTopology.normalizeLabel(e.label) || e.label] = String(e.targetRoomId); });
+            Object.keys(room.ExitMeta).forEach(function (dir) {
+                var em = room.ExitMeta[dir];
+                if (!em || em.source !== "i7-mapstorage" || em.travelledTo) return;
+                // Stored keys may be short (D69 "n"); labels are full ("north").
+                var canon = MapTopology.normalizeLabel(dir) || dir;
+                if (want[canon] != null && String(em.toId) === want[canon]) return;
+                if (room.Exits) delete room.Exits[dir];
+                delete room.ExitMeta[dir];
+            });
+        } catch (e) {}
     },
     // D213: the RAM parent of the (corrected) player, or null when unknown.
     playerParentId: function (payload) {

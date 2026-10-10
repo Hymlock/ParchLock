@@ -14,6 +14,26 @@ var ModuleStatFactsClaude = {
     "502e5c8e4cb82726ab61683f4d92afbb31f90fcb98b9b3dc3dbd4f97841c5582": {
         "inventoryHiddenAttribute": 17
     },
+    // D223 / M04-B: I7 Map_Storage, measured offline (work/investigations/
+    // m04b-*-mapstorage-disasm.txt): the story's own MapConnection code does
+    // get_prop room #25 (ik1_count), mul #nd, add direction ik3_count,
+    // loadw #base. rooms = the COMPLETE 2-byte room-id:counter list; dirs =
+    // direction-id:counter list; skipDirs = custom directions not labelled.
+    // Validated against RAM every collection generation (Codex #2781).
+    // The Warbler's Nest.
+    "9f3a27369091e16a23eab33038e6416823c8f39f34a9eec803120bd88cb0e5f0": {
+        "mapStorage": { "base": 17062, "nd": 13, "rowProp": 25, "colProp": 77,
+            "rooms": "51:0,53:1,56:2,61:3,101:4",
+            "dirs": "36:0,37:1,38:2,39:3,40:4,41:5,42:6,43:7,44:8,45:9,46:10,47:11,94:12",
+            "skipDirs": [94] }
+    },
+    // Facility (object 210 holds prop 25 as a 1-byte value and is not a room).
+    "ef6530a73b3a3b868f0c872a28944bba407d0e209bf73892af0f38a9ef6a3a48": {
+        "mapStorage": { "base": 30128, "nd": 12, "rowProp": 25, "colProp": 112,
+            "rooms": "45:0,48:1,50:2,52:3,53:4,54:5,55:6,56:7,57:8,58:9,59:10,60:11,61:12,62:13,64:14,65:15,67:16,68:17,69:18,71:19,72:20,73:21,75:22,76:23,77:24,78:25,80:26,82:27,83:28,84:29,85:30,87:31,88:32,89:33,90:34,91:35,92:36,93:37,94:38,95:39,96:40,97:41,98:42,100:43,101:44,102:45,104:46,105:47,106:48,107:49,108:50,110:51,112:52,113:53,114:54,115:55,116:56,117:57,118:58,119:59,120:60,121:61,122:62,123:63,125:64,126:65,128:66,129:67,130:68,131:69,132:70,133:71,134:72,136:73,137:74,138:75,139:76,140:77,141:78,143:79,144:80,145:81,146:82,147:83,150:84,152:85,153:86,156:87,157:88,158:89,159:90,160:91,161:92,162:93,163:94,164:95,165:96,166:97,167:98,169:99,170:100,171:101,174:102,175:103,176:104,177:105,178:106,179:107,180:108,181:109,184:110,185:111,186:112,187:113,188:114,190:115,192:116,193:117,195:118,196:119,197:120,198:121,199:122,200:123,201:124,202:125,203:126,205:127,206:128,207:129",
+            "dirs": "33:0,34:1,35:2,36:3,37:4,38:5,39:6,40:7,41:8,42:9,43:10,44:11",
+            "skipDirs": [] }
+    },
     // Degeneracy: the PC is 157 "(StandardPlayer)" (the "(self object)" 20 is
     // parentless and unused). Native INVENTORY at Reception/Wait/Dining lists
     // exactly 157's children (blade, holy symbol, Chain-Mail, sheath,

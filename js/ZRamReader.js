@@ -350,6 +350,85 @@ var ZRamReader = {
             return zs(val * scale);
         } catch (e) { return ""; }
     },
+    // D223 / M04-B (Codex #2761/#2764/#2778/#2781 consensus): Inform 7
+    // exits read from Map_Storage for executables with a measured, digest-
+    // bound fact (ModuleStatFactsClaude mapStorage: base, nd, rowProp,
+    // colProp, the COMPLETE room-id:counter list, the direction-id:counter
+    // list, directions to skip). Never disassembles at runtime. Every
+    // generation re-validates the fact against RAM: each listed room holds
+    // its 2-byte counter and no other object holds a 2-byte rowProp; each
+    // listed direction holds its counter; the table extent lies in dynamic
+    // memory. Any mismatch -> { valid:false } (no decoded exits). Cells:
+    // 0 none; a listed room -> exit hint; an object with door_to -> door
+    // stub (never executed); anything else skipped. Labels: the direction's
+    // canonical word only; skipped/custom directions are not labelled.
+    _i7LaneCache: (typeof WeakMap !== "undefined") ? new WeakMap() : null,
+    i7MapStorageLane: (mem) => {
+        var fact = null;
+        try { fact = ZRamReader.executableLayoutFacts(mem); } catch (eF) {}
+        var ms = fact && fact.mapStorage;
+        if (!ms) return { active: false, valid: false };
+        var gen = (typeof ZRamProvider !== "undefined" && ZRamProvider.collectGeneration) || 0;
+        var key = (mem && mem.buffer) || mem, cache = ZRamReader._i7LaneCache;
+        try { var hit = cache && cache.get(key); if (hit && hit.gen === gen && hit.ms === ms) return hit.lane; } catch (eC) {}
+        var lane = { active: true, valid: false };
+        try {
+            var h = ZRamReader.header(mem);
+            if (!h || (h.version !== 5 && h.version !== 8)) throw 0;
+            var rowOf = {}, rows = 0;
+            String(ms.rooms).split(",").forEach(function (pair) { var p = pair.split(":"); rowOf[Number(p[0])] = Number(p[1]); rows++; });
+            var n = ZRamReader.objectCount(mem, h), holders = 0;
+            for (var id = 1; id <= n; id++) {
+                var x = (ZRamReader.listProps(mem, id) || []).filter(function (q) { return q.num === ms.rowProp && q.sz === 2; })[0];
+                if (!x) continue;
+                holders++;
+                if (rowOf[id] == null || ZRamReader.u16(mem, x.dataAddr) !== rowOf[id]) throw 0;
+            }
+            if (holders !== rows) throw 0;
+            var dirOf = {}, dirs = 0;
+            String(ms.dirs).split(",").forEach(function (pair) {
+                var p = pair.split(":"), did = Number(p[0]), c = Number(p[1]);
+                var t = ZRamReader.parseIndivTable(mem, ZRamReader.readProp(mem, did, 3)) || {};
+                var v = ms.colProp < 64 ? ZRamReader.readProp(mem, did, ms.colProp) : t[ms.colProp];
+                if (v !== c || dirOf[c] != null) throw 0;
+                dirOf[c] = did; dirs++;
+            });
+            if (dirs !== ms.nd) throw 0;
+            var end = ms.base + 2 * rows * ms.nd;
+            if (!(ms.base > 0) || !isFinite(end) || end > h.staticMem) throw 0;
+            lane = { active: true, valid: true, ms: ms, rowOf: rowOf, dirOf: dirOf };
+        } catch (eV) { lane = { active: true, valid: false }; }
+        try { if (cache) cache.set(key, { gen: gen, ms: ms, lane: lane }); } catch (eS) {}
+        return lane;
+    },
+    i7MapStorageExits: (mem, roomId) => {
+        var lane = ZRamReader.i7MapStorageLane(mem);
+        if (!lane.active) return { active: false, valid: false, exits: [] };
+        if (!lane.valid) return { active: true, valid: false, exits: [] };
+        var k = lane.rowOf[Number(roomId)];
+        if (k == null) return { active: true, valid: false, exits: [] }; // current room outside the measured domain
+        var ms = lane.ms, skip = {}, out = [];
+        (ms.skipDirs || []).forEach(function (d) { skip[d] = 1; });
+        var doorTo = null;
+        try { var t = ZRamReader.informPropertyNames(mem); doorTo = t && t.names && t.names.door_to; } catch (eD) {}
+        for (var c = 0; c < ms.nd; c++) {
+            var did = lane.dirOf[c];
+            if (did == null || skip[did]) continue;
+            var label = ZRamReader.directionLabelFromWords(ZRamReader.parserWordsAny(mem, did) || [], ZRamReader.shortName(mem, did) || "");
+            if (!label) continue;
+            var val = ZRamReader.u16(mem, ms.base + 2 * (k * ms.nd + c));
+            if (!val) continue;
+            var isDoor = doorTo != null && (ZRamReader.listProps(mem, val) || []).some(function (q) { return q.num === doorTo; });
+            if (isDoor) {
+                out.push({ label: label, command: label, prop: null, targetRoomId: null, targetRoomName: "", isDoor: true, isLocked: false,
+                    hinted: true, hintOnly: true, source: "i7-mapstorage", confidence: 0.6, stub: true });
+            } else if (lane.rowOf[val] != null) {
+                out.push({ label: label, command: label, prop: null, targetRoomId: val, targetRoomName: ZRamReader.shortName(mem, val) || "",
+                    isDoor: false, isLocked: false, hinted: true, hintOnly: true, source: "i7-mapstorage", confidence: 0.8 });
+            }
+        }
+        return { active: true, valid: true, exits: out };
+    },
     // D218 / M04: true only for Inform 7 compiler bookkeeping properties
     // (ikN_link, ikN_count, kd_count) named by a decoded property table that
     // also carries the I7 markers ik1_count and ik1_link. If any other
@@ -2208,6 +2287,12 @@ var ZRamReader = {
         var h = ZRamReader.header(mem);
         var count = ZRamReader.objectCount(mem, h);
         var seen = {};
+        // D223 / M04-B: digest-bound I7 Map_Storage exits (look-ahead hints).
+        try {
+            var lane = ZRamReader.i7MapStorageExits(mem, roomId);
+            ZRamReader._i7LaneState = { roomId: roomId, valid: !!lane.valid, active: !!lane.active, exits: lane.exits || [] };
+            if (lane.valid) (lane.exits || []).forEach(function (ex) { exits.push(ex); seen[ex.label + "->" + (ex.targetRoomId != null ? ex.targetRoomId : "stub")] = 1; });
+        } catch (eLane) { ZRamReader._i7LaneState = { roomId: roomId, valid: false, active: false, exits: [] }; }
         function pushExit(label, prop, val, opts) {
             try {
                 if (ZRamReader.isPlausibleExitTarget && !ZRamReader.isPlausibleExitTarget(mem, val)) return;

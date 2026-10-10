@@ -361,6 +361,9 @@ var WorldModel = {
             Object.keys(curRoom.Exits).forEach(function (dir) {
                 var canon = canonOf(dir) || dir;
                 if (haveLabel[dir] || haveLabel[canon]) return;
+                // D223: an unwalked Map_Storage hint is never "confirmed".
+                var em = curRoom.ExitMeta && curRoom.ExitMeta[dir];
+                if (em && em.source === "i7-mapstorage" && !em.travelledTo) return;
                 exits.push({ label: canon, command: canon, confidence: 0.99, confirmed: true });
                 haveLabel[dir] = true;
                 haveLabel[canon] = true;
@@ -515,6 +518,8 @@ var WorldModel = {
                     }
                 }
             } catch (eMeta) {}
+            // D223: reconcile Map_Storage-owned hints BEFORE the confirmed merge.
+            try { if (typeof MapTopology !== "undefined" && MapTopology.reconcileI7MapStorage) MapTopology.reconcileI7MapStorage(payload); } catch (eRec) {}
             payload.exits = WorldModel.mergeConfirmedExits(payload);
             if (!payload.engineMode || payload.engineMode === "heuristic") payload.engineMode = "structural";
         }
