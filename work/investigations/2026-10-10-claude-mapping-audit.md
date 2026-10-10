@@ -461,3 +461,5 @@ Game time is CORROBORATION only, never a universal gate. Clock games, scripted r
 - **Mask:** prop21 standard N7, but only 11 labelled children ("sky/up" omitted), a partial-label risk that needs per-child semantic words; unlabelled children fall to the neutral slot.
 
 Running total for the compass-mapping class: Moonglow, Cat's Eye, Deja Vu, Curses, Godot, b2demo, Building, Gostak and the 10 above, about 18 titles.
+
+**Night (codex #2442):** Hall 36's prop12 hint is labelled SE/NW (the current uncalibrated-diagonal "ambiguousDiagonal" offer), while real travel is SW 36 -> 16; the Stairwell 38 NORTH hint -> 36 is really EAST. Same M01 class: the compass children's own door_dir values give the exact diagonal mapping, replacing the ambiguous pair. Codex is capturing raw compasses for Night, Frozen, Reverb, RBD, MHPQuest and SpaceStation (not duplicated here).
