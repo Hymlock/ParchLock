@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 337 headings; 103 decision rows; 440 registered units.
 **Last registered unit:** `pl-s337`. **Body SHA-256 (LF):**
-`b76ef5451cae901c47a9eef1b7acce270acb12a1a73a6d5e1e1d27f7e13bb2c8`
+`fde4ec495e237d6d6ededbf1a39cb0670c1064e0aa0e349ebb2405aff6404f05`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -8981,7 +8981,7 @@ Guards: d46 27/0, d201 69/0, d23 88/0, m12 14/0.
 **Status: PARKED, UNACCEPTED (Codex #2713, #2724).**
 - The rule is ACTIVE for every Inform build. It is not title-gated, but it is tested only on the census seeds above. Outside them it is unproven.
 - Provenance is pending:
-  - the I7 path via the room-kind marker ik1_count (rooms-only in Warbler 5/5 and Facility 131/131) is the accepted research direction;
+  - the I7 path via the room-kind marker ik1_count (2-byte holders are rooms-only in Warbler 5/5 and Facility 130/130; Facility object 210 holds prop 25 as a 1-byte value and is not a room (D223)) is the accepted research direction;
   - an I6 path would need a D84 location-global contract with contradiction expiry, because a learned global only correlates with movement.
 - No "unknown" lane is introduced.
 
