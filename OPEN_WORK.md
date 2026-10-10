@@ -243,14 +243,23 @@ Commits8291b5f/a8364a7/36d64f6; mutual audit2235/2236. Focused SaveState34/0, na
 Goal: narrow down the mapping problems (and status/inventory issues found on the way) and resolve them for every type of game, with per-module fixes allowed where no general rule exists.
 - **Live catalog sweep (codex owns):** [work/mapping-research/COVERAGE.md](work/mapping-research/COVERAGE.md) and the failure classes in [work/mapping-research/OPEN_FINDINGS.md](work/mapping-research/OPEN_FINDINGS.md).
 - **Independent verification and planned fixes (claude owns):** [work/investigations/2026-10-10-claude-mapping-audit.md](work/investigations/2026-10-10-claude-mapping-audit.md); prepared patches in `work/investigations/patches/`.
-- **Class status:**
-  - M01 and M03 confirmed (compass door_dir mapping);
-  - M02 confirmed;
-  - M04 confirmed phantom;
-  - M05 confirmed (patch prepared);
-  - M05b, M06, M07, M08 and M09 planned;
-  - item 2 and inventory planned.
-  Nothing is implemented until the operator chooses.
+- **Class status** (research only; nothing implemented; codex owns live routes, claude owns verification and plans):
+  - **M01 (+M03), Inform direction properties from the game's own compass:** confirmed. Codex census: 17 Inform titles with a compass but a null runtime profile; separate claude probes add Curses, Godot, b2demo, Building and Gostak. Structural rule (shared door_dir, distinct values, holder named "compass"); geometry only from standard words, otherwise a neutral slot.
+  - **M02:** a real walk must overwrite a contradicted decoded exit. Confirmed.
+  - **M04:** I7 "exit-N" is a kind-chain link, not an exit; I7 exits live in map storage. Research gap.
+  - **M05:** internal-named top-level rooms (patch prepared, not applied).
+  - **M05b:** I7 player found by the object that moves; provisional evidence tiers.
+  - **M05c:** v3 location = global0 (spec 8.2). Boot census 27/27 global0 = status room; the payload is wrong in 9 at boot, plus gameplay mismatches. Identity separate from presentation.
+  - **M06:** command-labelled dotted edges (planned).
+  - **M07:** virtual rooms. Open.
+  - **M08:** furniture minted as a room (planned climb; the v3 lane fixes ZIL cases).
+  - **M09:** boot/intro rooms. Readiness is an OPERATOR DECISION (provisional display versus persisted map).
+  - **M10:** timed travel recorded as a typed direction. Validated rule for Spirit / direct-I6 (compass read + room property = destination + player move). Provisional elsewhere.
+  - **M11:** stuck "dark (heuristic)". Known residual (plan 8367) reproduced; open controls.
+  - **M12:** a date status adopted as a room name. Legacy fallback bug; smallest candidate agreed.
+  - **M13:** stale "(on the X)" qualifier, confirmed in KoA and Bear; a container-tied strip is planned. The 19 display differences are candidates only.
+  - **Item 2 and inventory:** Ghost Train refusal-reply leak; Facility Equipment empty (from M05b).
+  - **Operator decision pending:** whether intro-only locations stay off the saved map (M09).
 
 ## Operator APK 64 issue list (2026-10-09, Wumpus and others): one at a time, standard procedure
 
