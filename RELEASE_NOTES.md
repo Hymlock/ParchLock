@@ -1,5 +1,9 @@
 # ParchLock Release Notes
 
+## Build 69 - 2026-10-09
+
+- Map: no more phantom exits in older Infocom-style games (for example a "punctured boat" east of Zork's West of House). Exits that only print a message, such as a boarded door, are no longer read as rooms, and the map no longer guesses a return path that the story itself contradicts.
+
 ## Build 68 - 2026-10-09
 
 - Commands respond immediately again. Underlined-name processing no longer repeats work for every word and item after each reply (LOOK and INVENTORY were taking several seconds).
