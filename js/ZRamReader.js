@@ -889,9 +889,12 @@ var ZRamReader = {
             digest = (ident && ident.digest) || "";
         } catch (eI) {}
         var cacheKey = (mem && mem.buffer) || mem, cache = ZRamReader._libraryCompassCache;
+        // Object contents are mutable VM state, so a cache hit is re-validated:
+        // the same single holder must still have the same children with the
+        // same door_dir values (cheap), else the profile is recomputed.
         try {
             var hit = cache && cache.get(cacheKey);
-            if (hit && hit.digest === digest) return hit.result;
+            if (hit && hit.digest === digest && hit.sig === ZRamReader._libraryCompassSignature(mem, hit.result)) return hit.result;
         } catch (eC) {}
         var result = null;
         try {
@@ -899,7 +902,7 @@ var ZRamReader = {
             if (!h || !ZRamReader.isInformCompiled(mem)) throw 0;
             var maxProp = h.version <= 3 ? 31 : 63;
             var count = ZRamReader.objectCount(mem, h), holders = [];
-            for (var id = 1; id <= Math.min(count, 400); id++) {
+            for (var id = 1; id <= count; id++) {
                 if (/^compass$/i.test(ZRamReader.shortName(mem, id) || "")) holders.push(id);
             }
             if (holders.length !== 1) throw 0;
@@ -949,8 +952,13 @@ var ZRamReader = {
             result = { profile: profile, labeled: kids.length, compassId: holders[0], doorProp: slots[0].p, lane: "library-compass",
                 domain: Object.keys(profile).map(Number), tableSource: !!tableGeo };
         } catch (e) { result = null; }
-        try { if (cache) cache.set(cacheKey, { digest: digest, result: result }); } catch (eS) {}
+        try { if (cache) cache.set(cacheKey, { digest: digest, result: result, sig: ZRamReader._libraryCompassSignature(mem, result) }); } catch (eS) {}
         return result;
+    },
+    _libraryCompassSignature: (mem, result) => {
+        if (!result) return "none";
+        var kids = ZRamReader.children(mem, result.compassId) || [];
+        return result.compassId + ":" + kids.map(function (k) { return k + "=" + ZRamReader.readProp(mem, k, result.doorProp); }).join(",");
     },
     // Label profile: the prop2 discovery first (Advent class), else the
     // library-compass lane, else null (stock PROFILE). Never used by
