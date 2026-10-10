@@ -297,3 +297,10 @@ Exclusions use Tier A only; Tier B/C stay provisional and are labelled as such. 
 **Floating objects, Tier A via the same hooks:** on a room change, MoveFloatingObjects reads one property on each object immediately before insert_obj(obj, newRoom). The property read immediately before those co-mover insert_obj calls IS found_in, observed live. This upgrades the Primrose prop39 exclusion from Tier B to Tier A once observed.
 
 **Checks:** whether ZvmCapture's hooks see get_prop calls made from compiled routines (D73 says yes), plus the performance cost (hooks only around the submitted turn).
+
+**Live opcode prototype (read-only probe; ZVM prototype get_prop/get_prop_addr/insert_obj hooked on the test page):**
+- **Moonglow `south`:** `get_prop(14,4) get_prop(8,4) get_prop(8,9)=7 insert_obj(13,17) ...`. The game reads the SOUTH compass object 8's door_dir (prop9) = 7, then moves player 13 to Barn House 17. This is the M01 mapping (south = prop7) observed from executed code, i.e. Tier A.
+- The room's own prop7 read does not appear (the JIT inlines it), but the compass door_dir read is the causal marker of a directional Go.
+- **Primrose room change:** insert_obj of 65 and of floating 68/77/84/107/108/109/110/117 into 78. The prop read before each co-mover insert was not captured by the method hooks either (inlined), so found_in Tier A needs the same compass-style trick or a hook on the JIT's inline path.
+
+**M10 rule, refined:** a directional exit is recorded only when, in the turn, the game read a compass object's door_dir (giving the direction) and then insert_obj'd the player. No compass read means a timed or scripted move: no directional exit.
