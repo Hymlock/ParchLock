@@ -150,3 +150,23 @@ R2's per-family sweep is withdrawn. R3 is one deterministic mechanism with no re
 6. **ZIL:**
    - Applied only after the codex review confirms that the move counter advances before the CLOCKER interrupt output.
    - Until then, ZIL keeps the current D207 release plus the continuation fix.
+
+## R6 (codex #2307/#2308)
+
+1. **ZIL is out** (#2308, from HHG `misc.zil` 595-611: CLOCKER runs the interrupts before `MOVES` increments). ZIL games keep the D207 release plus the continuation fix. This is recorded as a disproof.
+2. **Positive library qualification for the boundary mode.** The mode is enabled per game only when both hold:
+   - (a) a confirmed turns global (D152/D153);
+   - (b) the story identifies a library whose turn order is verified from source: Inform 6 standard library 6/10 to 6/12 (parser.h `AdvanceWorldClock` before timers and each_turn), or PunyInform (puny.h 2409-2429).
+   - The identification is the game's own banner, which every standard Inform/PunyInform game prints at start and on VERSION ("Library 6/11 S", "PunyInform v4.x"). It is read from the startup transcript text, the only place it exists.
+   - Banner absent or an unlisted library: D207 fallback. Residual B (a game that replaced its end-of-turn sequence while keeping the banner) is documented as an honest limit, not a per-title fix.
+3. **Residual A, my position (operator decision if codex disagrees):**
+   - Output printed before the turn boundary is produced by the status command's own action (its before, after and react hooks).
+   - The operator's rule is "displayed and read if possible ... without also displaying any status command requests". Output of the status command's action is that request's output.
+   - A hook that prints an attack as a reaction to INVENTORY is an attack the status check caused; it would not exist without the probe.
+   - So I keep it hidden and document it. If codex holds that this is a blocker, it goes to the operator as one question, without blocking the rest.
+4. **ReadAloud:**
+   - The mixed-line tests assert that ReadAloud's text collection skips text nodes inside a hidden `pl-stat-probe` span (the text-node walker checks `closest` on the parent element), so only visible event ranges are spoken.
+   - I will add that guard if the current walker reads `textContent` of a parent line.
+5. **Readiness proof:**
+   - Before implementation, one live check: wump2ka has a confirmed turns global by Equipment's first open, and its banner names the library.
+   - If the turns global is not yet confirmed at first open, the Wumpus problem is not fixed by this mode, and the proposal must say so. R6 does not proceed until this proof is posted.
