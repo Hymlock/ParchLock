@@ -229,9 +229,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 332 headings; 103 decision rows; 435 registered units.
-**Last registered unit:** `pl-s332`. **Body SHA-256 (LF):**
-`f189f70f1befcb7b7acb958a3f2fa5f9e7f63d366b23f8981a5ae6a3ac5d2c2d`
+**Local manifest:** 333 headings; 103 decision rows; 436 registered units.
+**Last registered unit:** `pl-s333`. **Body SHA-256 (LF):**
+`36f609465420677ed82a3d29d86cdf124b9d5f54116de3896b822e45caa5a913`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -746,6 +746,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s330](#pl-s330) | D216 Mapping research fixes: internal-named rooms, positional heading suffix, Degeneracy player fact | H2 | Implemented / audited (Codex #2495, #2503, #2507) |
 | [pl-s331](#pl-s331) | D217 Library-compass lane: exit labels from the game's own compass (M01/M03) | H2 | Implemented / audited (Codex #2558) |
 | [pl-s332](#pl-s332) | D218 Inform 7 compiler bookkeeping properties are never exits (M04 part A) | H2 | Implemented / audited (Codex #2575) |
+| [pl-s333](#pl-s333) | D219 Rooms with a blank compiled name take the story's own short_name (M12) | H2 | Implemented; adversarial audit pending |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -8873,3 +8874,29 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
 - In both Warbler and Facility, Map_Storage rows equal each room's compiler-named ik1_count (Warbler 51=0 ... 101=4; Facility 45=0, 48=1).
 - Before it can be decoded, the columns (direction ik2_count), the base address and door cells need provenance.
 - room_index (65535) and vector (0) are scratch values at boot, not indices.
+
+<a id="pl-s333" data-chapter-id="pl-s333"></a><a id="pl-d219"></a>
+## D219 Rooms with a blank compiled name take the story's own short_name (M12)
+
+**Lifecycle:** M12 was found by the mapping research: WiR1/WiR2 rooms were named after the status line's date. A first attempt, 5609286, only suppressed the date; it made blank-named rooms vanish from the map and was reverted (119251b). The name source was found by research from claude (a70854e) and grok (#2607, #2611; the Kilo session, after correcting its seat identity). Implemented in a513ca5. Grok re-ran the harness 12/0 (#2614); its adversarial census and the real Codex review (out of credits at the time) are pending.
+
+**Key files:** js/ZRamReader.js (storyShortName), js/WorldModel.js (refineRoomDisplayName), harness/m12-room-short-name.js.
+
+**Contract:**
+- The real room title lives in the property that the decoded table names short_name.
+- That value is either a packed Z-string (WiR prop46, Warbler prop21) or a pointer to a two-word text value [header, packed string] (Facility, header 35).
+- The form is decided once per story from all blank-named holders. The block form applies only when one header value other than 0 or 65535 covers at least 90% of them; otherwise the direct form applies.
+- Only a terminated Z-string in high memory is accepted.
+- refineRoomDisplayName uses the story name for a structurally resolved room with a blank compiled name, before any status column.
+- Stories without that source keep the status path unchanged, so no room loses its name or disappears.
+- Presentation only: never room identity.
+
+**Evidence:**
+- harness/m12-room-short-name.js 12/0: WiR1 58 "Central Park Underpass" in payload and map, and no date; WiR2 64 "Grim Hallway", 76 "Office on Floor Fifty-One"; Facility Lobby, Visitor Gallery, Information Center, Gift Shop; Warbler direct form and map; Anchorhead and wump2ka unchanged.
+- Guards: d46 27/0, d201 69/0, d23 88/0, m01 40/0, d218 15/0.
+- Research table: work/investigations/claude-m12/short-name-forms.txt.
+
+**Limits:**
+- Rooms already saved under a date name keep it (D62 freeze); a repair path is under review.
+- Facility's player resolution (M05b) is separate, so its room names apply only once a room resolves.
+- Date suppression on its own (Part 1) stays withdrawn.
