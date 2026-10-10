@@ -252,9 +252,9 @@ Goal: narrow down the mapping problems (and status/inventory issues found on the
   - **M05c:** v3 location = global0 (spec 8.2). Caution: global0 is the STATUS/display object, not proof of the semantic room (intro titles, furniture). Boot census 27/27 global0 = status room; the payload is wrong in 9 at boot, plus gameplay mismatches. Identity separate from presentation.
   - **M06:** command-labelled dotted edges (planned).
   - **M07:** virtual rooms. Open.
-  - **M08:** furniture minted as a room (planned climb; the v3 lane fixes ZIL cases).
+  - **M08:** furniture minted as a room. IMPLEMENTED (D222, b51ce91): in Inform builds, furniture or a vehicle inside a top-level room climbs to the room (bedlam, break-in, Photograph, punkpnts, SoFar, vindaloo, Inevita). Real Codex review is queued.
   - **NEXT STEPS (claude, 2026-10-10 ~13:40, near session limit):**
-    - M08: bedlam (bed 23 in Your Bedroom 22) and break-in (chair 34 in room 33) become map rooms because their attribute tables misdecode (bed reads edible/scenery/supporter, not enterable). Planned rule: in enclosingRoom for Inform builds, a location object whose parent is a top-level location object is not the room; climb to the top-level one. Needs a 309-game before/after census (work/investigations/2026-10-10-claude-boot-map-census-baseline.txt is the boot+LOOK baseline).
+    - (done: D222) M08: bedlam (bed 23 in Your Bedroom 22) and break-in (chair 34 in room 33) become map rooms because their attribute tables misdecode (bed reads edible/scenery/supporter, not enterable). Planned rule: in enclosingRoom for Inform builds, a location object whose parent is a top-level location object is not the room; climb to the top-level one. Needs a 309-game before/after census (work/investigations/2026-10-10-claude-boot-map-census-baseline.txt is the boot+LOOK baseline).
     - D222 (do not admit a fallback room while the resolved player is unparented: Vespers boot menu "Vespers: Hints and Info") was TRIED and NOT committed. The census did not show Vespers changing at boot+LOOK, and showed title-like rooms appearing in bunny and Tokyo2 (cause unproven: D222 or timing noise). Vespers' MENU/HELP command also mints the menu room (grok #2641), which D222 would not cover.
     - Real Codex review of D219-D221 is pending.
   - **M09:** boot/intro rooms. OPERATOR DECISION 2026-10-10: every room after the first shows and saves as today (no gating; late rooms are jarring). Only the FIRST/boot location needs proof of a real player move, and only in games with no other deterministic source. Design under review on the bus.
@@ -265,6 +265,7 @@ Goal: narrow down the mapping problems (and status/inventory issues found on the
   - **Degeneracy:** no map (wrong player). IMPLEMENTED/AUDITED via a measured playerGlobal 18 fact (0126b14, D216; Codex #2507). No generic actor change.
   - **NEXT ROUND (operator 2026-10-10): full items audit of all 309 games**, after maps, directions and room detection are finished: Equipment vs native INVENTORY, leaked probe text, internal/odd item names; root-cause fixes only. Until then, item issues seen in passing are recorded here.
   - **Item issues seen so far:** Degeneracy Equipment empty -> FIXED by the D216 player fact (five items match native INVENTORY); Facility player now resolved (D220), Equipment to recheck in the items round; Ghost Train refusal-reply leak; Make It Good inventory not yet re-checked after M05.
+  - **OPERATOR ORDER (2026-10-10 evening, all three seats):** finish room detection / map display first, then a full items/inventory round including multi-descriptor base-item manipulation/display. Split is in claude #2657/#2658; claude keeps the documents.
   - **Item 2 and inventory:** Ghost Train refusal-reply leak; Facility Equipment empty (from M05b).
 
 ## Operator APK 64 issue list (2026-10-09, Wumpus and others): one at a time, standard procedure

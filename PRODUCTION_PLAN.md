@@ -229,9 +229,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 335 headings; 103 decision rows; 438 registered units.
-**Last registered unit:** `pl-s335`. **Body SHA-256 (LF):**
-`04bd8ab53459f2c852d59f253b2fbdcc893fec204e6f47202e48281582a6eee0`
+**Local manifest:** 336 headings; 103 decision rows; 439 registered units.
+**Last registered unit:** `pl-s336`. **Body SHA-256 (LF):**
+`db0b66fab9727ce683e041d124275dc1034c18b43855367e79d01923ade829a7`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -749,6 +749,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s333](#pl-s333) | D219 Rooms with a blank compiled name take the story's own short_name (M12) | H2 | Implemented; adversarial audit pending |
 | [pl-s334](#pl-s334) | D220 The unique story-named "yourself" object is the I7 player (M05b); date-named saved rooms repair | H2 | Implemented; real Codex review pending |
 | [pl-s335](#pl-s335) | D221 DarkScope judges only the latest reply (M11) | H2 | Implemented; grok audited, real Codex review pending |
+| [pl-s336](#pl-s336) | D222 Furniture and vehicles inside a top-level Inform room are not the room (M08) | H2 | Implemented; real Codex review queued |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -8942,3 +8943,29 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
 - The old code fails both HHG clearing checks. exits-safe-area 46/0.
 
 **Open:** a deterministic darkness source (Inform location global holding the library darkness object; ZIL lit state) is still research.
+
+<a id="pl-s336" data-chapter-id="pl-s336"></a><a id="pl-d222"></a>
+## D222 Furniture and vehicles inside a top-level Inform room are not the room (M08)
+
+**Lifecycle:** Grok found M08 in its census (bedlam bed, break-in chair; #2635, #2640) and verified the rule (#2651). Implemented and committed in b51ce91 after a 309-game boot+LOOK census against a committed baseline. The real Codex review is queued (#2656). An earlier "unplaced player" fallback guard for the Vespers menu room was tried under this number and rejected: its census added title rooms in bunny and Tokyo2, and grok #2648 showed it does not cover the menu room. It was never committed.
+
+**Key files:** js/ZRamReader.js (enclosingRoom).
+
+**Cause.** Inform rooms are top-level objects. enclosingRoom stopped at the first location object whose DECODED attributes were not an enterable container or supporter. Several builds misdecode attributes (bedlam's bed reads edible/scenery/supporter), so furniture became the map room.
+
+**Contract.** When such an object's parent is a top-level location object (isLocationObject or the internal-named lane), the walk climbs to that parent. Non-Inform builds are unchanged.
+
+**Evidence:** the census diff (work/investigations/2026-10-10-claude-boot-map-census-baseline.txt vs -m08.txt):
+- bedlam: bed -> Your Bedroom
+- break-in: chair -> Your Office
+- Photograph: armchair -> Living Room
+- punkpnts: bed -> Your Room
+- SoFar: bench -> Lower Theater
+- vindaloo: "Bedroom (in the bed)" -> Bedroom
+- Inevita: vehicle ALT/EF-32 -> Rocky Terrace (the game prints "Rocky Terrace (in the ALT/EF-32)")
+- orevore: same story name, neutral; LLR3: random
+- no other game changed.
+
+Guards: d46 27/0, d201 69/0, d23 88/0, m12 14/0.
+
+**Open:** movement while seated or in a vehicle, and look-ahead from the climbed room (grok, #2653). The Vespers MENU/HELP menu room (M09) is separate.
