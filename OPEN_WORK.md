@@ -244,7 +244,8 @@ Screenshots: `work/investigations/operator-2026-10-09b/`. The list was taken on 
 
 - [x] **1. The app closes when it loses focus (Android).** Fixed in source (D215 issue 1; consensus codex #2257, audit ACCEPT #2264). No icon work runs when the app is merely left. The pinned icon rotates at app start. The home-screen question is native and comes first on first launch. Add replaces ParchLock's own existing pin. The experimental launcher icon stays off and in Options, and switches only on a Back exit. On PC, rotation happens at start and Yes takes over an existing Desktop shortcut to this exe.
   - **Operator test on the next APK:** no closing on minimize or lock; the question appears first on a fresh install; the icon changes at each open.
-- [x] **2. Status and inventory probe output is visible in the story, in multiple modules at multiple times (operator: every status request must be headless and invisible)** ("You are carrying 13 lbs of stuff…" printed twice). Equipment's first status check is not headless.
+- [ ] **2. Status and inventory probe output is visible in the story, in multiple modules at multiple times (operator: every status request must be headless and invisible)** ("You are carrying 13 lbs of stuff…" printed twice). Equipment's first status check is not headless.
+  - **Partly fixed (4d6d0c0):** only the inventory load-summary grammar ("You are carrying N lbs ... It's all worth ...") is now hidden. **Still open:** the operator's "first status check not headless ... many not some!" (screenshot `operator-2026-10-09b/item2-many-not-some.jpg`) means MANY modules leak on the first status check. It is not solved by per-grammar recognisers; it needs a general deterministic fix (see the R1-R7 proposal file for the rejected routes).
 - [x] **3. Commands take up to 6 seconds**, even after a phone restart. Possibly linked to item 2 (background probes queued behind commands).
 - [ ] **4. Duplicate items lose their names** ("nutritiou" twice, with instance badges, instead of "food pellet"). The plural prose "two food pellets" cannot be mapped to each instance, so the name falls back to the 9-character dictionary word. A regression.
 - [ ] **5. Story text is visible below the bottom protected border**, left of the input. The input position moves (x 97 on one screen, 170 on another), and the protector starts at the input.
@@ -252,7 +253,7 @@ Screenshots: `work/investigations/operator-2026-10-09b/`. The list was taken on 
   - **Operator rule (2026-10-09), this is the spec:** within ONE reply (the output of one command), an item is underlined only at its FIRST mention; later mentions in the same reply are ignored. Only a NEW reply that mentions the item again moves the underline forward, to the first mention in that new reply. Current bug: the newest-occurrence rule (D214 U1) moves the underline forward inside the same reply, so it jumps within one paragraph.
 - [ ] **7. "light" is underlined although it is not an item** (fungus description). It is probably a dictionary synonym of a real object.
 - [ ] **8. The World Map room bar truncates long names** ("A fair-sized, polished, watery ca"). It should wrap or scroll.
-- [ ] **9. Wording:** status and inventory checks use a turn in "many" stories, not "some" (Help, Tutorial, USER_GUIDE).
+- [x] **9. (Withdrawn: misread.)** "Many not some!" meant that many modules have the item-2 leak, not a wording change. Merged into item 2.
 - [ ] **10. Item names after loading:** fixed in source by save-tied labels (8291b5f and a8364a7, not in APK 64). Recheck on the next APK; any remainder is item 4.
 
 Order agreed with the operator: 1, then 2 and 3, then 4 to 7, then 8 and 9.
