@@ -38,3 +38,9 @@ DarkScope judges current-turn evidence only.
 - No whole-transcript scan.
 
 The geometry fixes (filter -> opacity, ARCHITECTURE 2528/2534) stay untouched. Guards: an HHG dark -> lit -> outdoors route, a Zork dark-room negative control (grue darkness must still show dark), plus exits-safe-area / layout-regression.
+
+**Codex #2431/#2432 accepted; recorded as open controls, no detector replacement agreed:**
+- M11 is a reproduction of the known residual (plan 8367) plus map-HUD evidence.
+- A real room does not mean lit (Advent lamp OFF keeps object 59). Dark only when the location slot holds the library DARKNESS object, which requires decoding that exact slot; otherwise UNKNOWN, not lit.
+- ZIL lit state needs the compiler's own schema, and portable lamps light unlit rooms.
+- A latest reply without a dark cue is not light evidence (talk/eat/blocked replies). Clear only on a printed current-room description, else keep unknown.
