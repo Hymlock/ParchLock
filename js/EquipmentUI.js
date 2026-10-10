@@ -1044,6 +1044,15 @@ var EquipmentUI = {
     },
 
     Show: function () {
+        // Operator-reported (Treasures, phone): switching from the Map sheet
+        // straight to Equipment played the Map's 0.28s slide-out, and the
+        // whole map (rooms, controls, game info) visibly streamed past through
+        // the input strip below the Equipment sheet. A sheet that is being
+        // REPLACED closes instantly; an ordinary Map close keeps its slide.
+        if (document.body.classList.contains("map-open")) {
+            document.body.classList.add("pl-sheet-swap");
+            requestAnimationFrame(function () { requestAnimationFrame(function () { document.body.classList.remove("pl-sheet-swap"); }); });
+        }
         document.body.classList.remove("map-open");
         document.body.classList.add("equip-open");
         // Read current structure on every open, including in-place vocabulary

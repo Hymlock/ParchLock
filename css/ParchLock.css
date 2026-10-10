@@ -5151,3 +5151,7 @@ body.pl-mobile #exits .row.horizontal.bottom > .exit.shown {
 body.pl-mobile #exits .row.horizontal.bottom .room-name {
 	white-space: nowrap !important; overflow: hidden; text-overflow: ellipsis; min-width: 0;
 }
+
+/* A sheet replaced by another closes instantly (EquipmentUI.Show): its
+ * slide-out would otherwise stream through the input strip. */
+body.pl-sheet-swap #map { transition: none !important; }

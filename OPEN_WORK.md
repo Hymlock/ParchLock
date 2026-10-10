@@ -283,4 +283,11 @@ Screenshots: `work/investigations/operator-2026-10-09b/`. The list was taken on 
 - [x] **9. (Withdrawn: misread.)** "Many not some!" meant that many modules have the item-2 leak, not a wording change. Merged into item 2.
 - [ ] **10. Item names after loading:** fixed in source by save-tied labels (8291b5f and a8364a7, not in APK 64). Recheck on the next APK; any remainder is item 4.
 
+- [x] **(New, 2026-10-09) Text flying past the input when opening Inventory (Treasures, phone).**
+  - **Investigated on the operator's phone:** live WebView recorder plus `adb screenrecord`.
+  - **Not the status checks:** their lines were hidden from insertion on the device.
+  - **Cause:** the Map sheet's 0.28 s slide-out played when Equipment replaced it, and the map's rooms, controls and game info streamed through the strip below the Equipment sheet.
+  - **Fix:** `EquipmentUI.Show` closes a replaced Map instantly (`pl-sheet-swap`); a normal Map close keeps its slide. Extending the sheet behind the input was tried and rejected (operator: the input row must stay usable in Inventory; the input lives in #windowport's own stacking layer).
+  - **Verified live on the phone:** frames before and after are `operator-2026-10-09b/inv-flash-*-phone.png`.
+
 Order agreed with the operator: 1, then 2 and 3, then 4 to 7, then 8 and 9.
