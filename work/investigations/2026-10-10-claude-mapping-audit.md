@@ -370,3 +370,9 @@ My probe briefly mis-picked get_prop(20,26), a non-compass read, which confirms 
 - **Timing:** sample only at a real turn's input request after the game is ready (consistent with the M09 announced-room rule), not during startup questions.
 - **Furniture/vehicles:** if a v3 story ever puts a non-room in global0, that is the game's own statement of location; check Starcross and Infidel (furniture starts) to see whether global0 is the room or the furniture before finalising.
 - **Lanes kept:** Wumpus (custom indexed rooms, D171) and virtual rooms (M07) keep their own lanes. The v3 lane applies to v3 headers only.
+
+**Furniture starts (v3):**
+- Infidel: global0 = 71 Your Tent (status "Your Tent"); the payload = 51 army cot via containment cretin -> army cot -> Your Tent.
+- Starcross: global0 = 10 Living Quarters (status agrees); the payload = 123 bunk via cretin -> bunk -> Living Quarters.
+
+global0 holds the ROOM, not the furniture. The current containment path stops at the furniture (the M08 class in ZIL form). The v3 global0 identity lane fixes these M08 instances as well. (The ZIL player "cretin" is correctly identified; only the room choice is wrong.)
