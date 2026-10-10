@@ -256,3 +256,17 @@ The "first line prompt" gate is withdrawn: it would block all mapping in Being S
 | Primrose | 65 | "I'm empty-handed." | none | consistent, but empty = weak |
 
 **Conclusion:** the INVENTORY cross-check CONFIRMS a candidate when it carries or wears something, and is non-informative when both sides are empty. Player identity = moved-object rule (M05b, provisional until 2 heading-changing moves) + the player global holding that object + this check when non-empty. That combination answers codex's "canonical provenance" request without relying on any single signal.
+
+## Primrose multi-mover counterexample (codex #2383) resolved: floating objects
+
+On the real room change (Bedroom 63 -> Hallway 78), the movers are 65, 68, 77, 107, 108, 109, 110:
+- 68 walls, 77 door, 109 sky/ceiling, 110 floor, 108 nightgown, 107 "you/yourself/matilda" (a floating description object, which is why the player looked AMBIGUOUS: both 65 and 107 have "yourself").
+- These are Inform floating objects that MoveFloatingObjects relocates to the player's new room.
+- The property-name table did not decode for this I7 build, but structurally EVERY co-mover carries prop39 (the found_in slot) and **65 lacks it**. 65 has actor properties the scenery lacks (48, 45, 44, 42, 41, 29).
+- On the bed exit (no room change) only 65 moved.
+
+**Refined player rule:**
+- among movers on a room change, discard the objects that share the floating marker (a property present on all co-movers that the candidate lacks; `found_in` where names decode);
+- the remaining mover that also carries self words is the player;
+- a container-only move (bed exit, no room change) isolates the player directly.
+This also resolves the 65-versus-107 "yourself" ambiguity. It is still provisional until 2 moves, with the global and INVENTORY checks as confirmation.
