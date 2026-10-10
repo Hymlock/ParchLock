@@ -348,3 +348,13 @@ My probe briefly mis-picked get_prop(20,26), a non-compass read, which confirms 
 - No player detection or per-title rule is needed.
 - **Check:** v3 games that temporarily put a non-room in global 0 (vehicles?), and the existing-resolver path that produces 153 (why the kitchen?), to be read before the patch.
 - Separate lane from the Inform player selection, as codex asked.
+
+**Why The Witness picks the kitchen (codex #2401 request):**
+- `snapshot` -> `findLikelyLocation`: the D84 learned location global is null, there is no compiled room index (D171), and playerId = 0 (so no enclosingRoom). The resolver falls through to heuristic fallbacks, which select a global holding a plausible room.
+- **Global 105 permanently holds 153 "kitchen"** (a story variable, probably the crime scene), not the player location.
+- **Lurking Horror** (codex #2402/#2403) is the same family: payload 5 elevator shaft from a stationary off-stage named "yourself" 29, while global0 = 176 Terminal Room -> 137 Second Floor -> 33 Kitchen.
+
+**Planned fix:**
+- for v3 stories, read global 0 (spec section 8.2) BEFORE the heuristic fallbacks, and before D84 when D84 is unlearned;
+- accept it when it is a plausible room and the status-line room text agrees (text confirmation);
+- seed D84's learned slot with 0 for that story.
