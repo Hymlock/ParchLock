@@ -877,7 +877,7 @@ var ZRamReader = {
     // Accepted lanes make the stock PROFILE inert for that game. The lane is
     // label-only: directionDoorDirs never consumes it (I7 door_dir lane).
     // Object contents are mutable VM state, so the result is cached only for
-    // one ZRamProvider collection generation (one turn) of one executable
+    // one ZRamProvider collection generation (one collection pass, several per command) of one executable
     // and recomputed on the next; no immutability is assumed.
     _libraryCompassCache: (typeof WeakMap !== "undefined") ? new WeakMap() : null,
     CANONICAL_TO: { n_to: "north", s_to: "south", e_to: "east", w_to: "west", ne_to: "northeast", nw_to: "northwest",

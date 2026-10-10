@@ -183,7 +183,8 @@ var ZRamProvider = {
             return bestSc >= 8 ? best : 0;
         } catch (e) { return 0; }
     },
-    // Incremented once per collection pass (each turn). Caches over mutable
+    // Incremented once per collection pass (several per command, also during
+    // boot; never a promise of one per native turn). Caches over mutable
     // VM state (D217 library compass) are valid only within one generation.
     collectGeneration: 0,
     collect: function () {
