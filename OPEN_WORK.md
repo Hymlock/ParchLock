@@ -276,7 +276,7 @@ Screenshots: `work/investigations/operator-2026-10-09b/`. The list was taken on 
       - Assumed returns are no longer written as real exits (`Map.js EnteredRoom`, `TranslatorUI` state-delta-reverse).
       - The map shows them dotted, via the guarded reverse display, only where the room's decoded exits do not contradict them, and never travels them until they are walked.
       - The Options "Mapping" section, the legacy `#toggle-map-2way` button, `ToggleMap2Way` and the `AssumeTwoWayConnections` pref are removed.
-- [ ] **6. Underlining is inconsistent and its order looks wrong:** "Exit 1" and "Exit 3" are underlined, "Exit 2" and "Exit 4" are not, and "exit 4" is unmarked everywhere. Part is the newest-occurrence rule (D214 U1), part is unexplained.
+- [x] **6. Underlining is inconsistent and its order looks wrong:** "Exit 1" and "Exit 3" are underlined, "Exit 2" and "Exit 4" are not, and "exit 4" is unmarked everywhere. Part is the newest-occurrence rule (D214 U1), part is unexplained.
   - **Operator rule (2026-10-09), this is the spec:** within ONE reply (the output of one command), an item is underlined only at its FIRST mention; later mentions in the same reply are ignored. Only a NEW reply that mentions the item again moves the underline forward, to the first mention in that new reply. Current bug: the newest-occurrence rule (D214 U1) moves the underline forward inside the same reply, so it jumps within one paragraph.
 - [ ] **7. "light" is underlined although it is not an item** (fungus description). It is probably a dictionary synonym of a real object.
 - [ ] **8. The World Map room bar truncates long names** ("A fair-sized, polished, watery ca"). It should wrap or scroll.

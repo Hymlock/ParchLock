@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 329 headings; 103 decision rows; 432 registered units.
 **Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
-`7443167fefee4bd9a483436ccde9384c26a9732176ef2e4c139bff035b98c90d`
+`1bca7f54744164054be02a6d318265ffaabc44a2d79cfb4cf5e39767875cee62`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -8324,6 +8324,12 @@ text, then moves there.
   only RoomLines and the signature).
 - D146 one-mark-per-object is unchanged.
 - Scans are incremental (BufferRevision versions): no full-transcript walk per tick.
+
+**U1 amendment, item 6 (operator 2026-10-09, APK 64 report: underlines jump forward within a paragraph):** "It should underline in the first paragraph only once the first time it's encountered. If it's encountered again in that same paragraph it ignores it. If a new reply has that same underlining word then it moves it forward." A reply is one printing, the output of one command, however many paragraphs ("I could type look and it will print a new one").
+- **Implementation (claude, codex unavailable):**
+  - new marks scan the latest reply in reading order (it was reversed), and that reply now includes narration before the room heading;
+  - `relocateExactMarks` keeps a mark when its phrase repeats only inside its own reply (`Actionable.replyOf` = the nearest command echo above), and otherwise moves it to the FIRST occurrence of the newest later reply.
+- **Proof:** `harness/underline-first-per-reply.js`: wump2ka 0/8 before, 8/0 after; Zork I 9/0. Guards: d214-yourself-verbs 10/0, display-key-cache 7/0. learned-words-corrections fails identically on the baseline; underline-lifetime could not run because the operator's HHG save file is no longer in Downloads.
 
 **U2 Ordinary replies are observed.** The admitted latest reply joins the promotion and
 descriptor pool, with lifecycle ownership. Commands, hidden probes and instructions are excluded.

@@ -211,7 +211,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 101 headings; 0 decision rows; 101 registered units.
 **Last registered unit:** `ar-s101`. **Body SHA-256 (LF):**
-`e82d8eb29716f7c633a0b134074b9a66fb5bc5d58b67d8a5e49df5ca221b3dcb`
+`5735aa71eefd338d693674e101f2c754237a553e0444061914eb41a6c5c693a9`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -3890,18 +3890,18 @@ flowchart TD
 <a id="ar-s100" data-chapter-id="ar-s100"></a><a id="ar-ch74"></a>
 ## 74. Underline lifetime, reply observation and Yourself breadth (D214)
 
-Contract: [D214](PRODUCTION_PLAN.md#pl-d214).
+Contract: [D214](PRODUCTION_PLAN.md#pl-d214). Item 6 amendment (2026-10-09, operator): a reply is everything printed for one command, however many paragraphs, including narration before a room heading. Within it a mark sits at the FIRST mention; repeats in the same reply never move it.
 
 ```mermaid
 flowchart TD
   NEW[New or changed BufferLines - BufferRevision versions] --> OWN{Mark phrase still has a valid current owner?}
   OWN -->|no| STALE[Stale that mark only]
-  OWN -->|yes| NEWER{Phrase printed again in newer text?}
-  NEWER -->|yes| MOVE[Move the mark to the newest occurrence]
+  OWN -->|yes| NEWER{Phrase printed again in a LATER reply?}
+  NEWER -->|yes| MOVE[Move the mark to that reply's first occurrence]
   NEWER -->|no| KEEP[Keep the mark where it is]
   NEW --> POOL[Promotion pool: room, look, inventory + admitted latest reply]
   POOL --> MATCH[Dictionary-encoding equality; pronoun and possessive triggers suppressed]
-  MATCH --> MARK[Mark the newest occurrence; one mark per object]
+  MATCH --> MARK[Mark the first occurrence of the newest reply; one mark per object]
   EPOCH[Restore / restart / new story] --> CLEAR[Invalidate all retained marks]
 ```
 
