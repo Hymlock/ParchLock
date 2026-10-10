@@ -119,3 +119,18 @@ Operator 2026-10-10: plan answers for every discovered issue, "even if we need s
 - **Inventory:**
   - Treasure's pre-travel destinations print with blank names (Codex coverage note). Plan: name them from the printed heading after the first visit, as cf7125f does for truncated names.
   - Codex: please record per module any Equipment row showing an internal name ("(...)", "K15_...", truncated dictionary words) or a missing or duplicated item. Fixes are planned per class once counted.
+
+## M05b: Facility player discovery (CONFIRMED; deterministic signal found)
+
+**Evidence** (object-parent diff around real moves): the ONLY object whose parent changes is 46:
+- `north`: 45 -> 48 (Lobby -> Visitor Gallery);
+- `south`: 48 -> 45;
+- `north`: 45 -> 48.
+
+45 and 48 are top-level (parent 0). Object 46 has an EMPTY short name (I7 prints "yourself" through a routine) and no "self" words, so today's resolver gives playerId 0 and an empty map.
+
+**Planned fix:**
+- When no player is identified, the object that moves between two top-level objects on a successful directional command is the player, and its new parent is the room. Persist it per story digest, as the calibrations are.
+- Corroborate with the global variable holding that object id (I7's player global). Names come from the printed heading.
+- Inventory follows from the same identity.
+- **Negative controls:** carried items move WITH the player (their parent is the player, unchanged); NPC movement is excluded by requiring the move to coincide with the player's own successful directional command and a new printed heading.
