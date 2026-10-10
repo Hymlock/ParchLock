@@ -14,6 +14,16 @@ var ModuleStatFactsClaude = {
     "502e5c8e4cb82726ab61683f4d92afbb31f90fcb98b9b3dc3dbd4f97841c5582": {
         "inventoryHiddenAttribute": 17
     },
+    // Degeneracy: the PC is 157 "(StandardPlayer)" (the "(self object)" 20 is
+    // parentless and unused). Native INVENTORY at Reception/Wait/Dining lists
+    // exactly 157's children (blade, holy symbol, Chain-Mail, sheath,
+    // Scroll-Case); 157's parent tracks every printed heading. g18 = g53 = 157
+    // at every measured prompt; 18 is the stable player slot of this library
+    // family (bear/dewdrops hold the PC only in 18). Scope: native prompt
+    // measurement; no directed-NPC role test was available (Codex #2503).
+    "f77c8f218f0b6f11940e342f82c8c9f91d0933d366f45a5a3587ca341d5bfdf6": {
+        "playerGlobal": 18
+    },
     // Border Zone: native inventory in all three chapters identifies the
     // actor referenced by global186; it is zero before chapter selection.
     // Its actual parent tracks Compartment / Railroad Tracks / Ostnitz Square.
