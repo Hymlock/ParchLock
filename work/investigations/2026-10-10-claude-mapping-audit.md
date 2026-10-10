@@ -134,3 +134,21 @@ Operator 2026-10-10: plan answers for every discovered issue, "even if we need s
 - Corroborate with the global variable holding that object id (I7's player global). Names come from the printed heading.
 - Inventory follows from the same identity.
 - **Negative controls:** carried items move WITH the player (their parent is the player, unchanged); NPC movement is excluded by requiring the move to coincide with the player's own successful directional command and a new printed heading.
+
+## Target 2: qualifying internal-named rooms (M05 safety)
+
+**Census of top-level "(...)" objects:**
+- **Real rooms:** Advent (Alike_Maze_1..13, Dead_End_1..12); Anchorhead (hall1, cell1-3, maze1-5, m_maze1-6, M_South/M_Middle/M_North); Make It Good (MainStreet).
+- **NOT rooms, yet top-level and holding children:** Make It Good (TopTreeObj) 93 kids, (MainGameDaemon) 7, (MaidsWork) 8, (cast); Anchorhead (crowd), (gang), (orderly); every game's (darkness object), (Inform Parser), (Inform Library), (LibraryMessages); Facility (ValuePropertyHolder_n).
+
+**Conclusion:** top-level + internal name alone is NOT safe. The M05 rule is safe only with all of these together:
+- (a) top-level;
+- (b) DIRECTLY encloses the player (or via an internal-named container, as with the car);
+- (c) a room heading is printed in that same turn;
+- (d) not a library/meta holder (darkness, self, parser, library, messages, class, object).
+
+Condition (c) protects against cutscenes that park the player in an off-stage holder. The M05 patch must add (c) before it is applied.
+
+## M05b follow-up (codex #2355: globals 44 and 50 both = 46)
+
+The canonical slot is not needed for identity. The player OBJECT is what the map needs, and both globals agree on it (I6 `player`/`actor`, equal outside NPC actions). With several movers (followers), the player is the mover whose new parent is the room whose heading was just printed AND which equals a global stable across turns; followers fail one of those tests.
