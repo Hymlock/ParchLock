@@ -103,14 +103,49 @@ var ZRamReader = {
         return true;
     },
 
+    // isLocationObject with only the internal-name test waived: an object
+    // whose sole failure is a "(...)" compiled name. Library/meta holders
+    // stay rejected. Used only on the player's own containment chain.
+    isInternalNamedLocation: (mem, id, playerId) => {
+        if (!Number.isInteger(id) || id < 1 || id === playerId) return false;
+        var obj = ZRamReader.objectLinks(mem, id);
+        if (!obj) return false;
+        var count = ZRamReader.objectCount(mem);
+        if (id > count) return false;
+        if ([obj.parent, obj.child, obj.sibling].some(function (v) { return v < 0 || v > count; })) return false;
+        var name = String(ZRamReader.shortName(mem, id) || "");
+        if (name.charAt(0) !== "(") return false;
+        if (/^\((darkness|self|class|object|thedark|inform|library|librarymessages)\b/i.test(name)) return false;
+        if (obj.parent && /^class$/i.test(ZRamReader.shortName(mem, obj.parent))) return false;
+        return true;
+    },
+
     enclosingRoom: (mem, playerId) => {
         var obj = ZRamReader.objectLinks(mem, playerId), seen = {};
         seen[playerId] = true;
         for (var depth = 0; obj && obj.parent && depth < 64; depth++) {
             var id = obj.parent;
-            if (seen[id] || !ZRamReader.isLocationObject(mem, id, playerId)) return 0;
+            if (seen[id]) return 0;
+            var internalNamed = false;
+            if (!ZRamReader.isLocationObject(mem, id, playerId)) {
+                // M05 (Make It Good: self -> "(Car)" -> "(MainStreet)"): on the
+                // player's own containment chain an internal "(...)" name
+                // waives ONLY the name test (D201 contract, plan 6973-6976).
+                // Bounds/Class checks and the furniture/nesting guard below
+                // still apply; isLocationObject itself is unchanged.
+                if (!ZRamReader.isInformCompiled(mem) || !ZRamReader.isInternalNamedLocation(mem, id, playerId)) return 0;
+                internalNamed = true;
+            }
             seen[id] = true;
             obj = ZRamReader.objectLinks(mem, id);
+            if (internalNamed) {
+                var ia = ZRamReader.attrsFromObject(mem, id);
+                if (ia.enterable && (ia.container || ia.supporter)) continue;
+                // A nested internal object without vehicle attributes is an
+                // organisational holder (e.g. "(Car)"): climb past it.
+                if (obj && obj.parent) continue;
+                return id;
+            }
             // Inform attribute positions are not the Infocom/ZIL ABI.
             // Preserve native containment unless this decoder's profile applies.
             if (!ZRamReader.isInformCompiled(mem)) {
