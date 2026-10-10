@@ -280,10 +280,28 @@ var WorldModel = {
             columns = columns.map(stripGluedMetric).filter(function (col) { return !!col; });
             if (!columns.length) return payload.roomName || "";
 
+            // M12 / D219: the shared decoder is authoritative per column. A
+            // column it classifies on its own as a date, time or metric
+            // (WiR1/2 "Friday, May 21, 1954") is never adopted as a room
+            // name. decode(column) runs with its default context only: no
+            // measured pair and no whole-grid width (a chopped column is not
+            // a complete grid line). Decoder unavailable -> previous rule.
+            var decoderRejects = function (col) {
+                try {
+                    if (typeof StatusGridDecoder === "undefined" || !StatusGridDecoder.decode) return false;
+                    // Rejected only when the decoder actually classified a
+                    // metric in it ("Room #N" yields no metric and is kept).
+                    var d = StatusGridDecoder.decode(col);
+                    return d.roomLabel === "" && (d.metrics || []).length > 0;
+                } catch (eDec) { return false; }
+            };
             var banner = columns.find(function (col) {
-                return !genericRoomNumber.test(col) && !statusMetric.test(col);
+                return !genericRoomNumber.test(col) && !statusMetric.test(col) && !decoderRejects(col);
             });
-            return banner || columns[0];
+            if (banner) return banner;
+            // Wumpus-style "Room #N" single columns keep their previous
+            // fallback; a decoder-rejected column never becomes the name.
+            return decoderRejects(columns[0]) ? (payload.roomName || "") : columns[0];
         } catch (e) { return payload.roomName || ""; }
     },
 
