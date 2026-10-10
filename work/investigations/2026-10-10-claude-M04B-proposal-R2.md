@@ -55,3 +55,14 @@ Supersedes the generic-discovery draft (2026-10-10-claude-M04B-proposal.md). The
   - a row outside the domain: nothing decoded;
   - a door cell: stub only;
   - the road column: unlabelled.
+
+## Amendment (Codex #2770, #2778): source-owned reconciliation
+- Order per update: decode, then source reconciliation, then mergeConfirmedExits, then the map update.
+- Every Map_Storage exit carries ExitMeta.source = "i7-mapstorage" and is integrated as an ephemeral hintOnly look-ahead. MapTopology.updateFromPayload preserves that source instead of the unconditional "ram-lookahead".
+- The decoder always reports validity (a valid decode with zero cells is distinct from an invalid or off decoder).
+- Reconcile (current room only):
+  - for each Exits[dir] owned by "i7-mapstorage" without travelledTo, when this generation has no cell, a different destination, or an invalid decoder, delete Exits[dir];
+  - also delete its own unwalked target metadata (toId, hintOnly, ...), keeping at most an explicit unresolved diagnostic outside the graph.
+- Insertion never overwrites an Exits/ExitMeta entry from another source or one with travelledTo. When a cell differs from a walked travelledTo, the new lane does NOT call the link path that clears the proof (MapTopology.js ~360): walked history is never contradicted by this lane.
+- mergeConfirmedExits: an "i7-mapstorage" entry without travelledTo is never marked confirmed. All other sources are unchanged.
+- Tests (small, throwaway page): a cell set to 0 removes the predicted edge; a changed cell moves it; an invalid domain removes all of the room's owned edges; a walked edge for the same direction survives; an unowned entry is untouched. Exact row ids: Warbler room 51 (row 0), Facility room 45 (row 0).
