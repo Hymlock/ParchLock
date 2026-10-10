@@ -1,74 +1,95 @@
 var DarkScope = {
     dark: false,
-    lastText: "",
+    lastKey: "",
 
-    // M11 (D221): judge ONLY the latest reply (the lines printed after the
-    // last command echo), never the whole transcript. The old whole-history
-    // scan made the flag sticky by construction: once HHG's opening darkness
-    // was printed, "darkness" matched forever (plan 8367 residual).
-    //   - a dark cue in the latest reply sets dark;
-    //   - a room heading printed in the latest reply with no dark cue clears
-    //     it (a current-room description is light evidence);
-    //   - any other reply (talk, eat, blocked move) leaves the state as is:
-    //     no evidence is not light evidence (codex #2431/#2432).
-    // Callers may still pass text; it is used only when the DOM is absent.
-    latestReply: () => {
+    // D221 / M11 (codex #2694 consensus). Heuristic light/dark presentation,
+    // NOT a deterministic darkness proof and NOT a same-reply guarantee.
+    // Called ONCE per WorldModel.tick on the FINALIZED payload (after room
+    // refinement), so the room/actor are this tick's, never a stale tick's.
+    //   - a dark cue in the latest reply (lines after the last command echo)
+    //     sets dark;
+    //   - a line whose FULL text is the current room's name, or that name plus
+    //     a positional suffix ", in|on the X" / " (in|on the X)" where X is an
+    //     object on the player's containment chain strictly below the room,
+    //     clears dark (HHG "Bedroom, in the bed");
+    //   - anything else (help/inventory headings, prose starting with the room
+    //     name, another room's heading, no structural room) leaves it as is.
+    // A defensive guard keeps dark when payload.darkness is true from another
+    // source; payload.darkness false is not light evidence.
+    latestReplyLines: () => {
         try {
             var lines = Array.prototype.slice.call(document.querySelectorAll("#windowport .BufferWindow .BufferLine"));
             var last = -1;
             for (var i = lines.length - 1; i >= 0; i--) {
                 if (lines[i].querySelector(".Style_input") || (lines[i].classList && lines[i].classList.contains("Style_input"))) { last = i; break; }
             }
-            var after = lines.slice(last + 1);
-            // A current-room description: a styled subheader, or (games that
-            // print the heading as plain text, e.g. HHG "Bedroom, in the bed")
-            // a line that starts with the structurally resolved room's name.
-            var roomName = "";
-            try { roomName = String((typeof WorldModel !== "undefined" && WorldModel.lastPayload && WorldModel.lastPayload.roomName) || "").trim().toLowerCase(); } catch (eRn) {}
-            var heading = after.some(function (line) {
-                var sub = line.querySelector(".Style_subheader");
-                if (sub && sub.textContent.trim() && !/\*\s*\*/.test(sub.textContent)) return true;
-                var lt = String(line.textContent || "").trim().toLowerCase();
-                // The heading line itself: exactly the room name, or the name
-                // followed by "," / "(" (HHG "Bedroom, in the bed"). Prose
-                // that merely begins with a short name ("Hall door is shut")
-                // is not a heading (grok #2631).
-                if (roomName.length < 3 || lt.indexOf(roomName) !== 0) return false;
-                var rest = lt.slice(roomName.length);
-                return rest === "" || /^\s*[,(]/.test(rest);
+            return lines.slice(last + 1).map(function (line) { return String(line.textContent || "").replace(/\s+/g, " ").trim(); }).filter(Boolean);
+        } catch (e) { return []; }
+    },
+
+    // The player's containment chain strictly below the room, with the words
+    // that name each level (short name, story name, parser words).
+    chainBelowRoom: (playerId, roomId) => {
+        var out = [];
+        try {
+            if (!playerId || roomId == null || typeof ZRamReader === "undefined" || typeof ZRamProvider === "undefined") return out;
+            var mem = ZRamProvider.getMem(); if (!mem) return out;
+            var id = ZRamReader.objectLinks(mem, Number(playerId)).parent;
+            for (var d = 0; id && d < 16; d++) {
+                if (String(id) === String(roomId)) return out;
+                var names = [String(ZRamReader.shortName(mem, id) || "")];
+                try { if (ZRamReader.storyShortName) names.push(String(ZRamReader.storyShortName(mem, id) || "")); } catch (eS) {}
+                var words = (ZRamReader.parserWordsAny(mem, id) || []).map(function (w) { return String(w).toLowerCase(); });
+                out.push({ id: id, names: names.map(function (n) { return n.toLowerCase().replace(/^(the|a|an)\s+/, "").trim(); }).filter(Boolean), words: words });
+                id = ZRamReader.objectLinks(mem, id).parent;
+            }
+            return []; // chain never reached the room: no proof
+        } catch (e) { return []; }
+    },
+
+    isHeadingLine: (line, roomName, chain, inform) => {
+        var lt = String(line || "").toLowerCase(), name = String(roomName || "").toLowerCase().trim();
+        if (name.length < 3 || lt.indexOf(name) !== 0) return false;
+        var rest = lt.slice(name.length);
+        if (rest === "") return true;
+        var m = /^\s*(?:,\s*(?:in|on)\s+((?:the|a|an)\s+)?([^,()]+?)|\s*\(\s*(?:in|on)\s+((?:the|a|an)\s+)?([^()]+?)\s*\))\s*\.?$/.exec(rest);
+        if (!m) return false;
+        if (m[4] != null && !inform) return false; // parenthesised form is Inform's
+        var want = String(m[2] || m[4] || "").trim();
+        var wantWords = want.split(/\s+/);
+        return chain.some(function (level) {
+            if (level.names.indexOf(want) >= 0) return true;
+            return level.words.length && wantWords.every(function (w) {
+                return level.words.some(function (x) { return x === w || (x.length >= 6 && w.indexOf(x) === 0); });
             });
-            return { text: after.map(function (line) { return line.textContent; }).join("\n"), heading: heading };
-        } catch (e) { return null; }
+        });
     },
 
-    noteText: (text) => {
-        var reply = DarkScope.latestReply();
-        var t = reply ? reply.text : String(text || "");
-        var heading = reply ? reply.heading : false;
-        var key = t + "|" + heading;
-        // Same reply, same verdict.
-        if (key === DarkScope.lastText && DarkScope._noted) return;
-        DarkScope._noted = true;
-        DarkScope.lastText = key;
-        var low = t.toLowerCase().replace(/\s+/g, " ");
-        var darkCue = /it is pitch dark|it is pitch black|too dark to see|darkness|cannot see a thing|can't see a thing|you are in the dark|in the dark/.test(low);
-        if (darkCue) DarkScope.dark = true;
-        else if (heading) DarkScope.dark = false;
-        try {
-            document.documentElement.classList.toggle("pl-dark-scope", !!DarkScope.dark);
-        } catch (e) {}
+    noteFromPayload: (payload) => {
+        if (!payload) return;
+        var lines = DarkScope.latestReplyLines();
+        var roomName = payload.roomId != null ? String(payload.roomName || "").trim() : "";
+        var chain = roomName ? DarkScope.chainBelowRoom(payload.playerId, payload.roomId) : [];
+        var key = [payload.playerId, payload.roomId, roomName, chain.map(function (c) { return c.id; }).join(">"), lines.join("\n")].join("|");
+        if (key !== DarkScope.lastKey) {
+            DarkScope.lastKey = key;
+            var low = lines.join(" ").toLowerCase();
+            var darkCue = /it is pitch dark|it is pitch black|too dark to see|darkness|cannot see a thing|can't see a thing|you are in the dark|in the dark/.test(low);
+            var inform = false;
+            try { inform = !!(typeof ZRamReader !== "undefined" && ZRamReader.isInformCompiled(ZRamProvider.getMem())); } catch (eI) {}
+            if (darkCue) DarkScope.dark = true;
+            else if (roomName && lines.some(function (l) { return DarkScope.isHeadingLine(l, roomName, chain, inform); })) DarkScope.dark = false;
+        }
+        if (payload.darkness === true) DarkScope.dark = true;
+        // Own HUD entry only; other scope entries are preserved.
+        payload.hudMetrics = (payload.hudMetrics || []).filter(function (h) { return !(h && h.source === "dark-scope"); });
+        if (DarkScope.dark) payload.hudMetrics.push({ key: "scope", value: "dark (heuristic)", confidence: 0.5, source: "dark-scope" });
+        try { document.documentElement.classList.toggle("pl-dark-scope", !!DarkScope.dark); } catch (e) {}
     },
 
-    collect: () => {
-        try {
-            DarkScope.noteText("");
-        } catch (e) {}
-        return {
-            sources: [{ name: "dark-scope", confidence: 0.5 }],
-            darkness: DarkScope.dark,
-            hudMetrics: DarkScope.dark ? [{ key: "scope", value: "dark (heuristic)", confidence: 0.5 }] : []
-        };
-    }
+    // Provider: diagnostics only. The verdict is made once per tick on the
+    // finalized payload (WorldModel.tick -> noteFromPayload).
+    collect: () => ({ sources: [{ name: "dark-scope", confidence: 0.5 }] })
 };
 
 try {

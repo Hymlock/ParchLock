@@ -48,7 +48,6 @@ var ParchLock = {
             ParchLock.SetupUI();
             if (typeof WorldModel !== "undefined") WorldModel.tick();
 		if (typeof TranslatorUI !== "undefined") TranslatorUI.tick();
-		if (typeof DarkScope !== "undefined" && typeof $ !== "undefined") { try { DarkScope.noteText(ParchLock.BufferText("#windowport")); } catch (e) {} }
 		if (typeof GraphicsDock !== "undefined") { try { GraphicsDock.detect(); } catch (e) {} }
 		if (typeof MapBeautify !== "undefined") { try { MapBeautify.tick(); } catch (e) {} } // init-payload
             if (Global.GetUrlParameter("story")) {

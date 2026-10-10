@@ -519,6 +519,8 @@ var WorldModel = {
             if (!payload.engineMode || payload.engineMode === "heuristic") payload.engineMode = "structural";
         }
         WorldModel.lastPayload = payload;
+        // D221: one heuristic darkness verdict per tick, on the finalized payload.
+        try { if (typeof DarkScope !== "undefined" && DarkScope.noteFromPayload) DarkScope.noteFromPayload(payload); } catch (eDark) {}
         try { window.__PARCHLOCK_WORLD__ = payload; } catch (e) {}
         // D149: one observation per applied payload, which is one per turn.
         // Wrapped in its own try so a tracker fault can never cost the player
