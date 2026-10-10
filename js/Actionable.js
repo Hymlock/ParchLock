@@ -286,6 +286,34 @@ var Actionable = {
     // Save-owned presentation only. Never feeds command nouns or capabilities.
     _restoredLabels: Object.create(null),
     clearLabelSnapshot: function () { Actionable._restoredLabels = Object.create(null); },
+    // M13: is `extra` (heading text beyond the stored room name) only an
+    // Inform positional suffix "(on|in the X)" whose X is a real object on the
+    // player's containment chain below the room `roomId` (where the player
+    // actually is, never merely an object in the room)?
+    isPositionalSuffix: function (extra, roomId) {
+        var m = /^\s+\((?:on|in|inside|under)\s+(?:the\s+|a\s+|an\s+)?([^()]+)\)\s*$/i.exec(String(extra || ""));
+        if (!m || typeof ZRamReader === "undefined" || typeof ZRamProvider === "undefined" || !ZRamProvider.getMem) return false;
+        try {
+            var mem = ZRamProvider.getMem(); if (!mem) return false;
+            // The "(on|in the X)" suffix is Inform library output; other
+            // compilers keep their authored suffixes upgradable.
+            if (!ZRamReader.isInformCompiled(mem)) return false;
+            var want = m[1].toLowerCase().trim(), wantWords = want.split(/\s+/), ids = [];
+            var pid = ZRamReader.findPlayerId(mem), id = pid ? ZRamReader.objectLinks(mem, pid).parent : 0;
+            for (var d = 0; id && d < 16 && String(id) !== String(roomId); d++) { ids.push(id); id = ZRamReader.objectLinks(mem, id).parent; }
+            // The chain must actually reach this room; otherwise its levels
+            // are not "between the player and the room".
+            if (String(id) !== String(roomId)) return false;
+            for (var i = 0; i < ids.length; i++) {
+                var sn = String(ZRamReader.shortName(mem, ids[i]) || "").toLowerCase().replace(/^(the|a|an)\s+/, "").trim();
+                if (sn && sn === want) return true;
+                var words = (ZRamReader.parserWordsAny(mem, ids[i]) || []).map(function (w) { return String(w).toLowerCase(); });
+                // v3-v5 dictionaries truncate words; compare on the stored prefix.
+                if (words.length && wantWords.every(function (w) { return words.some(function (x) { return x === w || (x.length >= 6 && w.indexOf(x) === 0); }); })) return true;
+            }
+        } catch (e) {}
+        return false;
+    },
     labelWords: function (mem, id) {
         return Array.from(new Set((ZRamReader.parserWordsAny(mem,id) || [])
             .map(function(w){return String(w).toLowerCase();}))).sort();
@@ -1721,8 +1749,19 @@ var Actionable = {
                 try {
                     var printed = String(lines[heading].textContent || "").replace(/\s+/g, " ").trim();
                     var current = typeof ParchLockMap !== "undefined" && ParchLockMap.GetCurrentRoom ? ParchLockMap.GetCurrentRoom() : null;
+                    // M13: a heading that is the stored name plus a separate
+                    // " (on the bunk)" / " (in the black chevy)" suffix is not a
+                    // truncation repair -- Inform appends the player's current
+                    // furniture/vehicle, so taking it froze a stale position
+                    // into the room's name (KoA, Make It Good).
+                    // Only a qualified positional suffix is skipped: "(on|in the X)"
+                    // where X is an object on the player's chain or directly in
+                    // the room. Authored parentheses ("Hall (East)", "Stage (A
+                    // German Forest)") still upgrade.
+                    var extra = printed.slice(String(current && current.Name || "").length);
                     if (current && printed && current.Name && printed.length > current.Name.length && printed.length <= 120
-                        && printed.toLowerCase().indexOf(String(current.Name).toLowerCase()) === 0) {
+                        && printed.toLowerCase().indexOf(String(current.Name).toLowerCase()) === 0
+                        && !Actionable.isPositionalSuffix(extra, current.ObjectId)) {
                         current.Name = printed;
                         if (ParchLockMap.Save) ParchLockMap.Save();
                         if (typeof WorldMap !== "undefined" && WorldMap.Refresh) WorldMap.Refresh(true);
