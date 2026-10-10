@@ -26,7 +26,7 @@ var IconRotation = {
     // The true outcome of "Add icon" (native pinRotatingShortcut).
     Outcomes: {
         updated: "Home-screen widget updated.",
-        requested: "Android will ask you to place the widget.",
+        requested: "Android will ask you to place the widget. Then tap it to start.",
         refused: "Android didn't allow that right now. Please try again later.",
         unsupported: "Add ParchLock from your launcher's widget list."
     },

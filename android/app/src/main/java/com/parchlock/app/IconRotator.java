@@ -78,10 +78,15 @@ final class IconRotator {
 
     static void retireOwnedPin(Context c) {
         if (Build.VERSION.SDK_INT < 26) return;
-        ShortcutManager sm = c.getSystemService(ShortcutManager.class);
-        if (sm != null && pinnedExists(c)) {
-            sm.disableShortcuts(Collections.singletonList(SHORTCUT_ID), "Replaced by the ParchLock widget");
-            sm.removeDynamicShortcuts(Collections.singletonList(SHORTCUT_ID));
+        try {
+            ShortcutManager sm = c.getSystemService(ShortcutManager.class);
+            if (sm != null && pinnedExists(c)) {
+                sm.disableShortcuts(Collections.singletonList(SHORTCUT_ID), "Replaced by the ParchLock widget");
+                sm.removeDynamicShortcuts(Collections.singletonList(SHORTCUT_ID));
+            }
+        } catch (Exception e) {
+            // Shortcut retirement must never invalidate an already-rendered scene.
+            Log.w(TAG, "old shortcut retirement skipped", e);
         }
     }
 
