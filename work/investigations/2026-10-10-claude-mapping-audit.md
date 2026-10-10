@@ -304,3 +304,11 @@ Exclusions use Tier A only; Tier B/C stay provisional and are labelled as such. 
 - **Primrose room change:** insert_obj of 65 and of floating 68/77/84/107/108/109/110/117 into 78. The prop read before each co-mover insert was not captured by the method hooks either (inlined), so found_in Tier A needs the same compass-style trick or a hook on the JIT's inline path.
 
 **M10 rule, refined:** a directional exit is recorded only when, in the turn, the game read a compass object's door_dir (giving the direction) and then insert_obj'd the player. No compass read means a timed or scripted move: no directional exit.
+
+**M10 revised (codex #2392 accepted: I7 map storage, raw reads, routine/door_to exits, non-causal coincidences; absence = unknown):**
+- Built as a `TurnRecorder` analyzer (it already receives each turn's opcodes via onOpcode and registerAnalyzer), not new global hooks.
+- **Per-compiler evidence lanes:**
+  - I6 compass lane (door_dir compass proven for this story): a compass door_dir read then the player insert_obj confirms the directional exit (Tier A). Only in a story where this lane is PROVEN does a player move with no compass read get flagged as a probable timed or scripted move.
+  - I7 lane: map-storage reads (needs a loadw/array-read observation) are a research gap.
+  - Computed exits (routine-valued, door_to): need call/result provenance, also a research gap.
+- **No observed evidence = unknown:** the exit is kept as today but marked "causal-unconfirmed", never deleted.
