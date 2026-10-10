@@ -229,9 +229,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 330 headings; 103 decision rows; 433 registered units.
-**Last registered unit:** `pl-s330`. **Body SHA-256 (LF):**
-`5b1059c1dfd73d91f6b11c5d8385875859a5878d90ae736706cb18b84790e102`
+**Local manifest:** 331 headings; 103 decision rows; 434 registered units.
+**Last registered unit:** `pl-s331`. **Body SHA-256 (LF):**
+`ce45820e79c9e602cab71e7cf210a486d005a93a7799a920ed269310bbff78c4`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -744,6 +744,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s328](#pl-s328) | D214 Underlines follow their words; replies are observed; dictionary-equivalent and pronoun-safe triggers; Yourself breadth | H2 | Agreed (#1925); implementation in progress |
 | [pl-s329](#pl-s329) | D215 Full-app beautification sweep, surface by surface, preserving functional reserves | H2 | Implemented/audited; APK 64 delivered |
 | [pl-s330](#pl-s330) | D216 Mapping research fixes: internal-named rooms, positional heading suffix, Degeneracy player fact | H2 | Implemented / audited (Codex #2495, #2503, #2507) |
+| [pl-s331](#pl-s331) | D217 Library-compass lane: exit labels from the game's own compass (M01/M03) | H2 | Implemented / audited (Codex #2558) |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -8819,3 +8820,33 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
 - M12: suppressing decoder date labels alone can leave blank compiled rooms (WiR1/2) unlabelled. A separate, qualified current-reply heading owner (same actor and room identity) is required, with M09 readiness caveats (Codex #2508).
 - M11 (light) and M09 (readiness) stay tri-state with unknown preserved. Proposals: #2462.
 - Night's floor levels follow from the M01 compass labelling; fix M01 before any geometry change (plan 7321-7327, D214 at 8161).
+
+<a id="pl-s331" data-chapter-id="pl-s331"></a><a id="pl-d217"></a>
+## D217 Library-compass lane: exit labels from the game's own compass (M01/M03)
+
+**Lifecycle:** The mapping research found M01/M03: Inform games whose compass discovery returned nothing, so the stock 6.12.2 profile mislabelled their exits. The fix was proposed, attacked and narrowed over #2528-#2553 (the full proposal was resent as #2553 because the root Codex seat had not received #2542). The root Codex review accepted the implementation at 0dc04cb (#2558), with independent native and isolated-function checks. Later commits: 5cfbf67 (each child's property table is read once; awaiting audit) and the comment correction (per collection pass, not per turn).
+
+**Key files:** js/ZRamReader.js (discoverLibraryCompassProfile, labelCompassProfile, directionLabelForProp, effectiveDirectionProfile, lookAheadExits, calibrateDiagonalFromTravel), js/ZRamProvider.js (collectGeneration), harness/m01-library-compass.js.
+
+**Cause.** `discoverCompassProfile` required compass children to share common prop 2, at least 8 children and at least 8 labels. Older libraries (Library 5/12, 6/1x, v3 microform) fail those gates: Curses, Night, Frozen, theatre, the 12-child v5 family, Moonglow and Cat's Eye. The stock profile then mislabelled exits: Curses "north" was really east, Cat's Eye north showed as "exit-6", and Night northeast showed as "east".
+
+**Contract (new lane, after the unchanged prop-2 path):**
+- exactly one object named "compass" in the whole object table, with at least 4 children;
+- exactly one property present on every child as a 1/2-byte scalar, with pairwise-distinct values inside the version's common-property range (1..31 for v3, 1..63 otherwise); a tie is broken only by the compiled table naming it `door_dir`;
+- geometry comes from the compiled property table (canonical `*_to` names, used only when no two canonical names share a number) and/or each child's single canonical direction word. Both present must agree;
+- any child without a runnable canonical word, any disagreement, or any duplicate fails the whole lane closed, so the game keeps its previous behaviour;
+- in a lane game, the stock profile is inert: props outside the lane's domain are `exit-N`, 12/13 are never dual-pushed as diagonals, and diagonal calibration is inert;
+- `directionDoorDirs` never consumes the lane (the I7 door_dir / wump2ka numbered-exit lane is unchanged);
+- the cache is valid only for one executable digest and one ZRamProvider collection generation (one collection pass, several per command). No immutability of VM state is assumed.
+
+**Evidence:**
+- Native ground truth (player RAM parent; work/mapping-research/claude-m01/SUMMARY.md): Cat's Eye N/S/E, Night NE, Curses N/S/E/down, Moonglow S, plus the Advent control.
+- Codex independently checked Moonglow S/N and Night NE/SW, and ran isolated checks of a duplicate holder, a duplicate enum, generation invalidation and failed-result recovery.
+- Tests: m01-library-compass 40/0, d23 88/0, d214-zil-exits 17/0, exit-calibrator 26/0, d46 27/0, d201 69/0, pellets-inventory-live OK.
+- Cost (desktop sample, not a phone certification): a full scan takes 0.1-0.5 ms (2 ms max); a cached call takes 0.005 ms; Curses' total collect was 9.1 ms.
+
+**Unresolved (fail closed, no masking):**
+- Inevita (e_to answers "northwest");
+- Gostak (invented direction words: needs a native-word command lane);
+- Deja Vu (not detected as Inform).
+- The wider mapping work also remains open: M09 intro rooms (no deterministic placeholder discriminator), room detection and actor qualification (M05b/M05c, Suspended focus), M04 I7 exits, M06/M07, M10 causality and the M12 heading owner.

@@ -209,9 +209,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 102 headings; 0 decision rows; 102 registered units.
-**Last registered unit:** `ar-s102`. **Body SHA-256 (LF):**
-`47bb9f38f79a8fae52997632d76c46347fcaaa1716c6293ae2498c2036e86fdf`
+**Local manifest:** 103 headings; 0 decision rows; 103 registered units.
+**Last registered unit:** `ar-s103`. **Body SHA-256 (LF):**
+`11ba17f8205074c433582381b440f43cbd559f9e8a1b45e874d45144215c6d3f`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -393,6 +393,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s100](#ar-s100) | 74. Underline lifetime, reply observation and Yourself breadth (D214) | H2 | Agreed; implementation in progress |
 | [ar-s101](#ar-s101) | 75. Save-tied state, authored endings and the rotating icon (D215) | H2 | Implemented / audited (icon start timing: issue 1) |
 | [ar-s102](#ar-s102) | 76. Internal-named rooms, positional suffixes and measured player facts (D216) | H2 | Implemented / audited |
+| [ar-s103](#ar-s103) | 77. Library-compass lane for exit labels (D217) | H2 | Implemented / audited |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -4031,3 +4032,23 @@ flowchart TD
 - The internal-name allowance exists only inside `enclosingRoom`, on the resolved player's chain. `isLocationObject` and every other caller (AttrCalibrator, isPlausibleMapRoom) keep rejecting "(" names.
 - The positional-suffix veto belongs to the item-8 upgrade in `Actionable` only. Room identity, D62's freeze and MapTopology are untouched.
 - Per-executable player identity goes through `ModuleStatFactsClaude` and `executableLayoutFacts` (digest plus stable header), re-read on every call so restores and body changes follow RAM. Generic actor scoring is unchanged.
+
+<a id="ar-s103" data-chapter-id="ar-s103"></a><a id="ar-ch77"></a>
+## 77. Library-compass lane for exit labels (D217)
+
+Contract: [D217](PRODUCTION_PLAN.md#pl-d217).
+
+```mermaid
+flowchart TD
+  L[label callers: directionLabelForProp, effectiveDirectionProfile, lookAheadExits] --> LP[labelCompassProfile]
+  LP -->|prop2 compass found| P2[discoverCompassProfile: unchanged]
+  LP -->|else| LC[discoverLibraryCompassProfile]
+  LC -->|one holder, one door_dir slot, table and words agree| LANE[lane profile: stock PROFILE inert]
+  LC -->|any conflict| STOCK[previous behaviour]
+  DD[directionDoorDirs: I7 door_dir and numbered exits] -.never reads.-> LC
+  GEN[ZRamProvider.collect: collectGeneration++] --> LC
+```
+
+- Label callers see one profile: the prop-2 discovery first, then the library-compass lane, then the stock profile.
+- `directionDoorDirs` keeps its own sources, so the lane can never route a game into the I7 `exit N` / `xN` command lane.
+- The cache is bounded to a provider collection generation; the compass is re-read on the next collection pass.
