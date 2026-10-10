@@ -20,3 +20,16 @@ Baseline checkout cf7125f or later. Each class is reproduced independently again
 - **To check:** PunyInform and I7 compass layouts. Moonglow has no diagonals, so its compass only names what it has.
 
 **Touches:** D23, D24, D61, D134 and Z1-R1 (ZIL keeps its own dictionary path). ZRamReader.directionProps PROFILE (~438) becomes the fallback.
+
+## M02: contradicting decoded hints survive real travel (CONFIRMED, two parts)
+
+**Reproduction** (Moonglow; route south, south, north, north). Barn House `Exits` / `ExitMeta`:
+- Arrive: `n -> Inside Barn House` from prop7 (ram-lookahead). Prop7 is really south (M01).
+- After the real `north` from Barn House reaches Edge of Field (14): `ExitMeta.n` = state-delta to 14, but `Exits.n` STILL = Inside Barn House. Both maps show the false edge.
+
+**Part 1 (follows from M01):** with the compass mapping, prop7 = south and prop6 = north -> Edge of Field, so this route's false edge vanishes.
+
+**Part 2 (independent, general):** real travel evidence (from R, direction D, arrived at X) must replace any decoded `Exits[D]` that names a different destination; ExitMeta already holds the state-delta.
+- Genuine multiple directions to the same room (Advent's in/east -> building) are unaffected, because the rule only overwrites the SAME direction when the walk contradicts it.
+- The fix belongs in MapTopology's state-delta link path, which must win over an earlier ram-lookahead `Exits` entry for the same key.
+- Touches D23/D24, Z1-R1 ("a destination conflict cannot retain that permission").
