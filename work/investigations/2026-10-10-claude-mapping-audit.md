@@ -63,3 +63,23 @@ Baseline checkout cf7125f or later. Each class is reproduced independently again
 - (a) **Exclusion:** a property whose values chain through objects of one kind, terminating in 0, is a list link and is never an exit candidate.
 - (b) **Positive:** decode I7's map storage, an array indexed room x direction in compass-child order. That gives exact I7 exits pre-travel. The array must be located from compiled structure, not per title.
 - **NEEDS-MORE:** confirm that 51/53/56/61/101 are the room objects (payload roomIds in the trace), and locate the map storage array generically.
+
+## M05: player location misidentified (CONFIRMED; fix planned, patch prepared, not applied)
+
+**Reproduction** (Make It Good):
+- The player chain is 20 (self) -> 397 "(Car)" -> 391 "(MainStreet)" (391 is top-level), and later 20 -> 391.
+- Payload room = 398 "glove compartment", room source "none", for the WHOLE route. The map never left the glove compartment, while the game printed "Broken Top Boulevard, Outside No. 15 / No. 17".
+
+**Cause:** `ZRamReader.isLocationObject` rejects every name starting "(", so enclosingRoom dead-ends at "(Car)" / "(MainStreet)" and a fallback picks a wrong object.
+
+**Planned fix** (`work/investigations/patches/M05-internal-named-rooms.patch`):
+- (1) an internal-named object counts as a location only when it is TOP-LEVEL (parent 0) and encloses the player, with meta holders ("(darkness...", "(self...", "(class...", "(object...") still rejected;
+- (2) enclosingRoom climbs past an internal-named intermediate container instead of stopping.
+
+**Measured with the patch:** the map follows to 391 named from the printed heading, in the car and on the street. Guards: d46 27/0, d201 22/0 and 24/0, d23 88/0, exit-calibrator 26/0, d214-zil-exits 17/0, pellets-inventory-live PASS (one Wumpus-random failure, then two passes).
+
+**Follow-ups:**
+- strip a trailing sublocation suffix "(in the blue car)" / "(on ...)" from heading-derived room names;
+- the virtual addresses (No. 15 vs No. 17 on one object) are M07.
+
+**Facility (second M05 variant):** not yet re-traced; planned next.
