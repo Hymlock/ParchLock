@@ -213,3 +213,17 @@ Census over 14 games (structural rule only):
 - Labels are always the game's own token.
 - The cardinal layout slot only when that child's own words include a standard direction word; otherwise the exit goes to a neutral numbered slot (as D63 does for wump2ka), so Gostak's kh shows as "kh" without a guessed north-west position.
 - The full value -> token mapping is stored (an enum), never an offset.
+
+## M09 boundary revised (codex #2369/#2372: Being Steve plays through CharInput)
+
+The "first line prompt" gate is withdrawn: it would block all mapping in Being Steve, whose whole gameplay uses character reads.
+
+**Revised rule (independent of input type):** a room is admitted to the map only when the game has ANNOUNCED it at that moment, i.e. its name appears as the printed room heading in the story or as the room name in the status line.
+- Boot cases (Curses Tiny Balcony, Ghost Train carriage no:7., Jigsaw Office, Mullmurd Mulldoon) are the player's hidden intro position, never printed as a heading, so they are not admitted. The first announced room (Attic, Century Park, Outside Museum) is admitted normally.
+- Being Steve: admitted whenever its headings print, whatever the input widget.
+- **Edge cases to test:**
+  - games without headings or status lines: fall back to today's behaviour, with a printed-room provenance flag recorded;
+  - dark rooms (the heading says "Darkness"): admit the structural room id, named later;
+  - restores: the saved map is restored as-is.
+
+**Accepted from #2372:** the compass rule is research-qualified, not global approval. Keep the unknown-holder fallback and the ZIL/Wumpus exclusions.
