@@ -428,3 +428,8 @@ The intro title/warning objects never see game time advance, so they are exclude
 - LGOP WARNING! and the Plundered title are replaced at turn 0 without time or travel, so they are never persisted (at most a transient "here"). A real turn-0 start room displays at once and persists on the first turn or departure.
 
 Game time is CORROBORATION only, never a universal gate. Clock games, scripted relocation and counter-less stories stay qualified. There is no unqualified cross-engine consensus, as codex states.
+
+**Codex #2421 accepted:**
+- Provisional/persist is a PRODUCT behaviour change needing operator design intent. It is kept separate from the proven v3 global0 extraction.
+- The visible behaviour would be unchanged (the start room still appears at once); only the SAVED map differs for locations seen exclusively before any real turn. That is the operator decision to ask before implementing.
+- **Instrumentation is not neutral:** in my session WAIT moved LGOP turns 0 -> 2 and Zork read T3 at its first sample, while codex's LGOP is T0 -> T1 on the first cardinal move. ParchLock's own background status probes likely consumed turns in these games. That is an item-2 concern in itself (probes costing turns) and is to be measured separately. Measured values are kept as observed, not as an operator-independent baseline.
