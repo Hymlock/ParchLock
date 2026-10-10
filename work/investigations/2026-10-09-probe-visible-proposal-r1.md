@@ -73,3 +73,27 @@
 - the full matrix before and after, with the leak list going to zero except released genuine events.
 
 **Prior-fix guard:** D207, D188, D169, D204, `death-terminal.js`, e3-inventory-warning.
+
+## R3 (operator 2026-10-09: "I don't want us to have to go through every freaking game and adjust it for every tiny little difference")
+
+R2's per-family sweep is withdrawn. R3 is one deterministic mechanism with no reply lists:
+
+1. **Make the probe out-of-world.**
+   - In Inform games, the parser decides whether time passes from the verb word's dictionary flag (`#dict_par1` bit 0x02, META). `probeVerbIsMeta` already reads it.
+   - Immediately before a status probe is submitted, set bit 0x02 on that verb's dictionary entry in the interpreter's memory. Restore the original byte when the probe's span ends: `endProbeOwnership`, and every abort, restore, restart and undo path that clears the probe (`clearCarryProbe` and friends).
+   - Result: no turn passes, no daemons, timers or NPCs run, so **the whole span is the reply and stays hidden** (the existing META rule in `releaseProbeEvents`).
+   - Real events happen on the player's next real turn and are shown and spoken normally. The operator's "show the attack" is satisfied by construction.
+   - Side benefit: probes stop costing a turn (the D194 and E3 "uses a turn" warnings stop applying where this works).
+2. **Safety:**
+   - The dictionary lives in static memory, which Quetzal saves never contain, and the byte is restored before the next player input, so saves, undo and the transcript never see it.
+   - It is applied only when the dictionary has Inform verb flags (`informVerbFlags`) and the verb entry is found.
+   - Proof per game is not needed: if the game ignores the flag, the span still advances a turn and falls back to item 3.
+3. **Fallback (ZIL/Infocom and anything without Inform flags):** the current D207 release plus the continuation fix (codex). No new per-family lists.
+4. **Tests:**
+   - unit: the flag is set during the probe and restored on end, abort, restore, restart and undo; the original byte is preserved when it was already META;
+   - live: wump2ka probe with no turn advance and no leak, and an attack on the next real turn visible;
+   - samples: Treasures and Anchorhead;
+   - one ZIL game: unchanged behaviour;
+   - the matrix sample, `death-terminal.js` and stat-tracker.
+
+**Prior-fix guard:** D207, D188, D169, D194/E3 (turn-cost warning), D173 and D152/D153, plus `UndoRestoreSync` (the byte must be restored before any resync).
