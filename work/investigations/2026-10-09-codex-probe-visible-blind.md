@@ -27,3 +27,15 @@ A generic fix needs safe reply continuation ownership while retaining authored r
 ## Limits
 
 This proves the reported leak and shared cause in one module, not a full cross-module sweep. No read-aloud hook was captured in this run, so do not claim spoken leakage proven. Earlier un-focused @space runner did not reach a command prompt and was inconclusive. No implementation or peer consensus claimed here.
+
+## R7 proposal after independent comparison (bus2312/2313)
+
+R3-R6 are withdrawn/unaccepted: memory META mutation changes authored hooks; counter boundaries are not general (HHG CLOCKER increments after interrupts), and Wumpus has neither confirmed turns nor startup library banner at first Equipment open.
+
+Use a shared inventory-origin whole-paragraph recognizer for the existing D169 weight/capacity/value semantic grammar. Anchor all clauses and reject any leftover narration; never classify by a substring. Match complete carry-weight sentences and optional capacity/value clauses, or standalone total-value sentences. Do not insert title names or exact module prose. Preserve original D207 behavior for unknown paragraphs and ordinary typed INVENTORY/SCORE. Explicit limitation: unknown authored reply forms can still leak; no claim of universal suppression.
+
+Colon continuation must own at most its immediately introduced paragraph, including a leading blank before its first item. A blank after actual item text ends continuation. Never keep a sticky heading flag across all later blanks. This prevents swallowing attacks.
+
+Focused validation: Wumpus first Equipment open and reopen hide carry summary; typed LOOK remains visible and speakable. Unit negatives: carry-summary plus appended attack in same paragraph, unrelated inventory-origin event, repeated attack, non-inventory origin, typed inventory; heading/blank/two items/blank/attack remains correctly separated. Reuse ReadAloud.speakableText existing hidden-child exclusion. No full-title matrix or VM writes. Current PRODUCTION_PLAN D207 and architecture71 reviewed: real events remain visible/spoken; their claim that regexes never control display contradicts the current isKnownProbeReplyLine release and should be corrected by canonical owner.
+
+Claude attacks the proposal, then implements under product claims only after consensus; Codex independently audits current checkout. No implementation yet.
