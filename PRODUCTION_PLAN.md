@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 330 headings; 103 decision rows; 433 registered units.
 **Last registered unit:** `pl-s330`. **Body SHA-256 (LF):**
-`30bab69aa4a03fbb932ffc62be5545084c6a10048bbc492b24421925f3872fe0`
+`5b1059c1dfd73d91f6b11c5d8385875859a5878d90ae736706cb18b84790e102`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -8791,7 +8791,7 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
 - `enclosingRoom` uses it only on the player's own containment chain (D201 contract: an unnamed or internal room only when the resolved player's chain proves it). It still applies the furniture/vehicle guard: an enterable container/supporter keeps climbing, a nested non-vehicle holder is climbed past, and a top-level object is the room.
 - `isLocationObject` is unchanged, so off-chain holders such as (TopTreeObj), (cast) and (MaidsWork) are never rooms.
 - **Evidence:**
-  - Census of 309 games at boot plus LOOK (work/investigations/2026-10-10-claude-M05-census-309.txt): 4 admissions, all genuine headed rooms (dewdrops ONSTAGE, Make It Good MainStreet, selection desk_area, vespers your_bedroom). Limitation: some early games ran under round 1 (round 2 is strictly narrower), and only boot plus LOOK was covered.
+  - Census of 309 games at boot plus LOOK (work/investigations/2026-10-10-claude-M05-census-309.txt): 4 admissions, all genuine headed rooms (dewdrops ONSTAGE, Make It Good MainStreet, selection desk_area, vespers your_bedroom). Limitation: the census ran under mixed source versions (early games under round 1, later ones under round 2; round 2 is not strictly narrower, because its word-boundary meta-name test can admit prefix names round 1 rejected), and only boot plus LOOK was covered. No rerun was requested.
   - Guards: d46 27/0, d201 69/0, d23 88/0, exit-calibrator 26/0, d214-zil-exits 17/0.
 - **Still open:** M05b/M05c (actor qualification; status object versus semantic room) and M07 (virtual street addresses on one object).
 
