@@ -463,3 +463,13 @@ Game time is CORROBORATION only, never a universal gate. Clock games, scripted r
 Running total for the compass-mapping class: Moonglow, Cat's Eye, Deja Vu, Curses, Godot, b2demo, Building, Gostak and the 10 above, about 18 titles.
 
 **Night (codex #2442):** Hall 36's prop12 hint is labelled SE/NW (the current uncalibrated-diagonal "ambiguousDiagonal" offer), while real travel is SW 36 -> 16; the Stairwell 38 NORTH hint -> 36 is really EAST. Same M01 class: the compass children's own door_dir values give the exact diagonal mapping, replacing the ambiguous pair. Codex is capturing raw compasses for Night, Frozen, Reverb, RBD, MHPQuest and SpaceStation (not duplicated here).
+
+**M01 exact counts (from codex `work/mapping-research/compass-census-combined.json`, 24 rows):**
+- **17** Inform titles have a compass but a NULL runtime profile: Moonglow, Cat's Eye, Deja Vu, Heist, Jigsaw, Library, Nine Points, Paper Chase, Slacker X, Theatre, TK1, Tube, Weather, Night, Frozen, MHPQuest, SpaceStation.
+- **2** I7 nulls (Warbler's Nest, Facility) belong to M04, not M01.
+- **5** have a selected profile: Advent p21, Treasures p23, Mask p21, Reverb p22 (+1), RBD p21.
+- **Separate claude probe evidence (not in that artifact):** Curses, Godot, b2demo (p8/N5), Building (p22/N8), Gostak (p21, invented words).
+
+**SpaceStation (codex #2445):** replacement direction objects 167..172 lack the shared kind prop2, so the current shared-kind gate rejects a legitimate custom direction family. The proposed structural rule (shared door_dir property + pairwise-distinct values + holder named "compass") does NOT use the kind property, so it accepts SpaceStation and still rejects Inevita's room group (constant values).
+
+**Mask sky 119:** UP may be an authored removal; classify as an unknown slot, not a missing-UP bug.
