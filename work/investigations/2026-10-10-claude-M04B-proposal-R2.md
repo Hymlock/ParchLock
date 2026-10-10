@@ -66,3 +66,7 @@ Supersedes the generic-discovery draft (2026-10-10-claude-M04B-proposal.md). The
 - Insertion never overwrites an Exits/ExitMeta entry from another source or one with travelledTo. When a cell differs from a walked travelledTo, the new lane does NOT call the link path that clears the proof (MapTopology.js ~360): walked history is never contradicted by this lane.
 - mergeConfirmedExits: an "i7-mapstorage" entry without travelledTo is never marked confirmed. All other sources are unchanged.
 - Tests (small, throwaway page): a cell set to 0 removes the predicted edge; a changed cell moves it; an invalid domain removes all of the room's owned edges; a walked edge for the same direction survives; an unowned entry is untouched. Exact row ids: Warbler room 51 (row 0), Facility room 45 (row 0).
+
+## Clarification accepted into the plan (Codex #2781)
+- The measured row domain is the COMPLETE list of room-id:counter pairs (2-byte prop 25). It is stored in the fact and validated every generation, so swapped counters or an extra holder fail. Warbler: 51:0,53:1,56:2,61:3,101:4. Facility: 130 pairs, from 45:0 to the last (stored verbatim in the fact).
+- Canonical direction qualification, road skipped, generation and memory invalidation, and the dynamic-memory extent all remain. There is no generic scanner.
