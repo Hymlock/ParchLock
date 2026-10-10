@@ -22,3 +22,19 @@ Written before reading codex's work/mapping-research/M11-dark-hud-sealed.md.
 - (3) Never scan the whole transcript.
 
 **Prior decisions to check before proposing:** item 5's opacity change (only the dimming mechanism, not the flag) and any D-entry on DarkScope (none in DECISION-INDEX under "dark").
+
+## Comparison with codex's sealed findings (read after sealing)
+
+- **Agree:** the root cause (whole-transcript cues in DarkScope.js 13-16, sticky by construction), HHG reproduced, room identity and map records correct.
+- **Codex adds:** `payload.darkness` stays FALSE; only the HUD metric "dark (heuristic)" (merged at WorldModel.js 408-409), the `pl-dark-scope` class and the dimming are stuck. This is a display/telemetry defect.
+- **Prior record (missed in my seal):** PRODUCTION_PLAN 8367 already lists "DarkScope's history-based dark verdict, which needs current-turn evidence before it gates anything" as a known out-of-scope residual. M11 is a reproduction of that residual, not a new mechanism.
+- **No disagreement.**
+
+## Proposal (planning only)
+
+DarkScope judges current-turn evidence only.
+- (1) Deterministic first, where available: an Inform location global holding "(darkness object)" = dark.
+- (2) Otherwise, text from the LATEST reply only (since the last command echo): a dark cue sets dark; a printed room heading/description without a dark cue clears it.
+- No whole-transcript scan.
+
+The geometry fixes (filter -> opacity, ARCHITECTURE 2528/2534) stay untouched. Guards: an HHG dark -> lit -> outdoors route, a Zork dark-room negative control (grue darkness must still show dark), plus exits-safe-area / layout-regression.
