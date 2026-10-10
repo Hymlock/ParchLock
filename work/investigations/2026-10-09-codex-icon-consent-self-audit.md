@@ -29,3 +29,18 @@ Source ZIP: ParchLock-source.zip,27079408 bytes; SHA25637bf1dd1284bd340339cdf71b
 Named copies preserved in operator ParchLock-APK-archive. Build65 and generated outputs preserved before build66.
 
 Architecture, user guide, privacy and release notes updated. PRODUCTION_PLAN still held by Claude; authenticated claim refused409, so left untouched. This report is the exact plan handoff: replace D215 issue1's deferred Bridge construction and experimental controls with the contract above and add the actual v38 stack/v39 live proof. Remaining queue2-10 unchanged. No overall project completion.
+
+## Follow-up: tiny corner icon, live A/B
+
+Operator reports all functions now work except the small picture. Active launcher resolves to com.zte.mifavor.launcher/com.android.launcher3.uioverrides.QuickstepLauncher. Android's shortcut service lists one owned parchlock-rotating pin. Source foreground bitmap is single-book artwork. A controlled temporary native-only build changed Icon.createWithAdaptiveBitmap(out) to Icon.createWithBitmap(out); the live shortcut flags changed from adaptive PinIc-fIc-aStr to plain PinIc-fStr, and the corner book remained. The large map scene and the fixed archive badge differed. Thus changing bitmap format does not remove this launcher's app badge. Plain-bitmap experiment reverted in source; original signed APK66 reinstalled with -r successfully, preserving app data. The test build was not delivered or archived as a release.
+
+Official AOSP Launcher3 IconCache.getShortcutIcon unconditionally attaches getShortcutInfoBadge; getShortcutInfoBadge reads the associated activity's app icon: https://android.googlesource.com/platform/packages/apps/Launcher3/+/3f442007d0/src/com/android/launcher3/icons/IconCache.java . This corroborates the device observation; vendor source itself is not publicly verified.
+
+Operator preference requested asynchronously: badge-free rotating 1x1 app widget or fixed normal app icon. No widget implementation started without the answer. Also requested clarify native consent copy: existing owned pin updates in place; ordinary launcher-created app icon cannot be automatically replaced through ShortcutManager. That wording refinement remains pending while the preferred surface is chosen.
+
+
+## Widget follow-up / build67 closeout (2026-10-09)
+
+Widget99d17c0 corrected by8a12b95 independently accepted Claude2291. Operator-approved final default2?2 is measured from actual widget bounds40,179..608,833, cell284?327. Resize1?1..4?4 works live, artwork badge-free/full book. Consent requested path waits for system placement rather than launching game over sheet; then-tap instructions avoid promising an Android background callback. Legacy owned-pin retirement isolates exceptions. Activity12/0, compile/lint, node syntax pass. Home return scene0 samePID27479; fresh launch advances1. Approved2?2 visible screenshot widget-operator-size.png;4?4 proof widget-resized.png.
+
+Build67/version40/cache154 compiled and signedv2. APK all501 bundledpublic files exactly match generated assets; source365 currentfile matches. APK87819118bytes SHA256a653585f1130b0f22abd17f00f08e34f1cbd3a440048cbe2e675da70d7da4ee3. Source SHA256d9834244ecead06073424922528d728266cee20b6012426f30ae01662c7b275d. Dist ParchLock-build67.apk and ParchLock-source.zip; operator archive has build67APK and named source. Installed in place successfully, no data clear/uninstall. Source archive refreshed for plan/workflow acceptance560f8f2; historic packaged checkpoint precedes independent item2 investigation/proposal. Widget completed only; extended items2-10 remain active per2293/2294. No overall goal completion.
