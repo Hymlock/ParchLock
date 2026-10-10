@@ -391,3 +391,20 @@ global0 holds the ROOM, not the furniture. The current containment path stops at
 - Leather Goddesses, Plundered Hearts, Stationfall: "it".
 
 **Readiness counterexample (codex warned):** Leather Goddesses' global0 = 4 "WARNING!" and Plundered Hearts' global0 = 195 "Plundered Hearts" are title/warning objects used as the location during the intro, and the status line ANNOUNCES them. The announced-room rule alone would admit them, so they need intro-readiness qualification. Candidate signals to test: the game has not yet accepted a normal command turn; the object has no exits and is never re-entered. This is an open item, not decided.
+
+## Readiness (codex #2415 objections accepted: no-exits / never-reentered is not proof)
+
+**Proposal: game-time readiness.**
+- A location becomes a persisted map room once the game's own turn counter or clock ADVANCES while it is the current location, or on the turn the player arrives there.
+- Before that it is held as a provisional, non-persistent observation (codex's suggestion).
+- **Signals:** in v3 the status-line score/turns (or hours/minutes) are spec-fixed globals 1 and 2. In other versions, the confirmed turns global (D152/D153) or the status-line metric.
+
+**Why it meets the objections:**
+- Intro title/warning locations (LGOP "WARNING!", Plundered Hearts title) sit at Turns 0, because the intro consumes no game turns.
+- Death rooms, one-way areas and first visits are reached by a turn-consuming move, so they qualify on arrival.
+- Line input during an intro does not matter: only game time does.
+
+**To test:**
+- stories with no turn counter at all (some I7 titles); there, fall back to provisional-until-the-next-ready-turn;
+- time-based games where the clock advances during the intro (Moonmist 7:00 PM?);
+- META commands (they do not advance turns, correctly).
