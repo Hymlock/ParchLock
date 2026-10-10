@@ -446,3 +446,18 @@ Game time is CORROBORATION only, never a universal gate. Clock games, scripted r
 - **Planned (deterministic, structure-tied):** Inform appends "(on the X)" / "(in the X)" naming the object the player is in or on. When deriving a room name from a heading, strip that trailing qualifier ONLY when X matches the short name of the player's container at that moment (the player's parent chain below the room). It is tied to the object structure, not a text pattern alone.
 - Saved names carrying such a qualifier are corrected on the next heading for the same room id.
 - This also covers the M05 note "(in the blue car)" in Make It Good. Controls: rooms whose real names contain parentheses (rare; the container match prevents stripping those) and D62's freeze (only the qualifier is removed, never a re-randomised Wumpus name).
+
+**M13 constraints (codex #2439) accepted:**
+- strip only with a QUALIFIED actor (never the guessed/offstage M05c player, never Inform attrs on ZIL);
+- confirm the suffix object is a non-room containment level below the real room (vehicles can be multi-level, with blank names);
+- never alter room identity or legitimate compiled name text;
+- update saved presentation only on an actual current-room heading event, preserving aliases, notes and the Wumpus D62 distinction.
+- M12's smallest candidate is a scoped research agreement; heading readiness remains an open implementation design.
+
+**M01 breadth (codex #2440, opaque-compass census):**
+- Heist, Jigsaw, Library, Nine Points, Paper Chase, Slacker X, TK1, Tube and Weather: compass 1, prop8, N5 S6 E7 W8 NE9 SE10 NW11 SW12 U13 D14 In15 Out16.
+- **Theatre:** compass 1, **prop16, N13 ... Out24** (another enum).
+- Runtime profile null for all of them today, so their exits get no compass labels.
+- **Mask:** prop21 standard N7, but only 11 labelled children ("sky/up" omitted), a partial-label risk that needs per-child semantic words; unlabelled children fall to the neutral slot.
+
+Running total for the compass-mapping class: Moonglow, Cat's Eye, Deja Vu, Curses, Godot, b2demo, Building, Gostak and the 10 above, about 18 titles.
