@@ -211,7 +211,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 105 headings; 0 decision rows; 105 registered units.
 **Last registered unit:** `ar-s105`. **Body SHA-256 (LF):**
-`7e12ee15cbcf21ca07020759af298d30dab265cf45448274e2037542abe1ec00`
+`941a520508a9e16ead9ec5f956ca639b0ee1c2ad66dce8c34ca4351795134b2d`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -4084,5 +4084,5 @@ flowchart TD
 
 - The verdict reads only the lines after the last command echo, and only the finalized payload of the same tick (room, name, player id). No second resolver runs.
 - A positional suffix counts only when its object is on the player's containment chain strictly below the room (structural short name or parser words). The D219 story name is not used.
-- payload.darkness true from any other source wins. Other HUD entries are preserved.
+- A payload.darkness true from another source would win (defensive guard only; no provider transports a native darkness value today). Other HUD entries are preserved.
 - This is heuristic light evidence, not deterministic darkness proof. Open residual: the HHG bed (an unnamed, parentless container) cannot prove "Bedroom, in the bed".

@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 336 headings; 103 decision rows; 439 registered units.
 **Last registered unit:** `pl-s336`. **Body SHA-256 (LF):**
-`de6a7f122dad18248c38ca6fc6eb29589f2c4a12f227cf268b80238e0e792dd6`
+`2e0a4cc8ac7797243ed6c5391cb33fb276cd5cb6241b528d449a996997923611`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -8939,7 +8939,7 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
 - A line clears dark when its FULL text is the payload's room name. The name followed by ", in|on the X" or " (in|on the X)" also clears it (the paren form only in Inform builds), but only when X is proven on the player's containment chain strictly below the room, by structural short name or parser words; the D219 story name is not used.
 - Clearing requires WorldModel.isStructuralFact(payload). Anything else keeps the state.
 - The cache key holds actor, room, name, the full chain signature and the reply.
-- Only DarkScope's own HUD entry (source dark-scope) is replaced. payload.darkness true from another source wins.
+- Only DarkScope's own HUD entry (source dark-scope) is replaced. A payload.darkness true from another source would win, but that guard is defensive only: no current provider transports a native darkness value (WorldModel does not merge the field today).
 - The provider is diagnostics only.
 - This is heuristic light evidence, not deterministic darkness proof and not a same-reply guarantee.
 
