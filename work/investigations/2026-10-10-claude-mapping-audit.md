@@ -473,3 +473,7 @@ Running total for the compass-mapping class: Moonglow, Cat's Eye, Deja Vu, Curse
 **SpaceStation (codex #2445):** replacement direction objects 167..172 lack the shared kind prop2, so the current shared-kind gate rejects a legitimate custom direction family. The proposed structural rule (shared door_dir property + pairwise-distinct values + holder named "compass") does NOT use the kind property, so it accepts SpaceStation and still rejects Inevita's room group (constant values).
 
 **Mask sky 119:** UP may be an authored removal; classify as an unknown slot, not a missing-UP bug.
+
+**M13 extended (codex #2447/#2448):**
+- **Bear:** the stored name stays "Bedroom (on the big bed)" after GET OFF BED, NW, SE, WEST, EAST (the payload says Bedroom). This is the second confirmed instance after KoA, and the container-tied strip covers it.
+- **Display-disagreement census:** 19 candidate differences across 309 titles (mostly furniture suffixes, some still legitimately seated; plus Glass topic/status, Wallpaper punctuation and Appallatron M07). They are candidates only, not counted as bugs, with no blanket refresh.
