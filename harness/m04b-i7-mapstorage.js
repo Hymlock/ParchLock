@@ -54,6 +54,25 @@ const labels = p => p.evaluate(() => (WorldModel.lastPayload.exits || []).filter
     // Unowned entry untouched.
     const unowned = await p.evaluate(() => { const r = ParchLockMap.Rooms.find(x => String(x.ObjectId) === '51'); r.Exits.u = r.Exits.s; r.ExitMeta.u = { source: 'state-delta', toId: 53 }; ZRamProvider.collectGeneration++; WorldModel.tick(); const keep = r.Exits.u != null && r.ExitMeta.u && r.ExitMeta.u.source === 'state-delta'; delete r.Exits.u; delete r.ExitMeta.u; return keep; });
     check(unowned, 'an entry owned by another source is untouched');
+    // Codex #2800 contracts on the real functions.
+    const contracts = await p.evaluate(() => {
+        const out = {}; const r = ParchLockMap.Rooms.find(x => String(x.ObjectId) === '51');
+        // (1) a bare Exits entry with no ExitMeta is never overwritten by an i7 hint.
+        const saveE = Object.assign({}, r.Exits), saveM = Object.assign({}, r.ExitMeta);
+        delete r.ExitMeta.n; r.Exits.n = 999;
+        MapTopology.link(r.Name, 'north', null, { fromId: '51', toId: 56, source: 'i7-mapstorage', hintOnly: true });
+        out.bareKept = r.Exits.n === 999 && !(r.ExitMeta.north && r.ExitMeta.north.source === 'i7-mapstorage');
+        r.Exits = saveE; r.ExitMeta = saveM;
+        // (2) a stale/foreign lane state (wrong generation) never reconciles.
+        const realState = ZRamReader._i7LaneState;
+        ZRamReader._i7LaneState = { roomId: 51, active: true, valid: false, exits: [], gen: -1, memKey: null };
+        const before = JSON.stringify(r.ExitMeta);
+        MapTopology.reconcileI7MapStorage({ roomId: 51 });
+        out.staleIgnored = JSON.stringify(r.ExitMeta) === before;
+        ZRamReader._i7LaneState = realState;
+        return out; });
+    check(contracts.bareKept, 'contract: a bare Exits entry without i7 ownership is not overwritten');
+    check(contracts.staleIgnored, 'contract: a lane state from another generation/memory does not reconcile');
     await p.close();
     // Facility native route.
     p = await open(b, 'Facility.z8.js');

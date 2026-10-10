@@ -2290,7 +2290,8 @@ var ZRamReader = {
         // D223 / M04-B: digest-bound I7 Map_Storage exits (look-ahead hints).
         try {
             var lane = ZRamReader.i7MapStorageExits(mem, roomId);
-            ZRamReader._i7LaneState = { roomId: roomId, valid: !!lane.valid, active: !!lane.active, exits: lane.exits || [] };
+            ZRamReader._i7LaneState = { roomId: roomId, valid: !!lane.valid, active: !!lane.active, exits: lane.exits || [],
+                gen: (typeof ZRamProvider !== "undefined" && ZRamProvider.collectGeneration) || 0, memKey: (mem && mem.buffer) || mem };
             if (lane.valid) (lane.exits || []).forEach(function (ex) { exits.push(ex); seen[ex.label + "->" + (ex.targetRoomId != null ? ex.targetRoomId : "stub")] = 1; });
         } catch (eLane) { ZRamReader._i7LaneState = { roomId: roomId, valid: false, active: false, exits: [] }; }
         function pushExit(label, prop, val, opts) {

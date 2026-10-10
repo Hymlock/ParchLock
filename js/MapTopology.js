@@ -347,6 +347,12 @@ var MapTopology = {
         if (meta.source === "i7-mapstorage") {
             var priorMeta = from.ExitMeta[dir];
             if (priorProof || (priorMeta && priorMeta.source && priorMeta.source !== "i7-mapstorage")) return;
+            // A bare Exits entry with no i7 ownership (imported, text, or
+            // older data without metadata) is never overwritten (Codex #2800).
+            var shortKey = null;
+            try { shortKey = typeof TranslatorUI !== "undefined" && TranslatorUI.canonicalDir ? TranslatorUI.canonicalDir(dir) : null; } catch (eSk) {}
+            var bare = function (k) { return k && from.Exits && Object.prototype.hasOwnProperty.call(from.Exits, k) && !(from.ExitMeta[k] && from.ExitMeta[k].source === "i7-mapstorage"); };
+            if (bare(dir) || bare(shortKey) || bare(MapTopology.normalizeLabel(dir))) return;
         }
         from.ExitMeta[dir] = Object.assign({}, from.ExitMeta[dir] || {}, meta, {
             isNonCardinal: !MapTopology.isCardinal(dir),
@@ -594,6 +600,11 @@ var MapTopology = {
             if (!payload || payload.roomId == null || typeof ParchLockMap === "undefined" || !ParchLockMap.Rooms) return;
             var st = (typeof ZRamReader !== "undefined" && ZRamReader._i7LaneState) || null;
             if (!st || !st.active || String(st.roomId) !== String(payload.roomId)) return;
+            // The lane state must belong to THIS collection generation and
+            // this interpreter memory (Codex #2800), never a stale or foreign one.
+            var gen = (typeof ZRamProvider !== "undefined" && ZRamProvider.collectGeneration) || 0;
+            var mem = (typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) ? ZRamProvider.getMem() : null;
+            if (st.gen !== gen || !mem || st.memKey !== ((mem && mem.buffer) || mem)) return;
             var room = ParchLockMap.Rooms.find(function (r) { return r && r.HasRealId && String(r.ObjectId) === String(payload.roomId); });
             if (!room || !room.ExitMeta) return;
             var want = {};
