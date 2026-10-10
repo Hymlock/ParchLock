@@ -253,7 +253,17 @@ var Actionable = {
         var known = Actionable.VerifiedNouns[String(obj.id)] || '';
         // Existing epoch-cleared, object-owned observed spelling is a display
         // fallback. Current prose remains first and command ownership is untouched.
-        var current=Actionable.observedPhraseFor(seed,pool,text,false);
+        // Prefer inventory text for observation/casing when the caller passed a
+        // combined look+inventory blob (follow-up 1 / Claude #2943).
+        var invText = "";
+        try { invText = String(Actionable.Scope.lastInventoryText || ""); } catch (eInv) {}
+        var lookText = "";
+        try { lookText = String(Actionable.Scope.lastLookText || ""); } catch (eLook) {}
+        var observeText = text;
+        if (invText && String(text || "").indexOf(invText) >= 0 && invText.length > 0) {
+            observeText = invText + "\n" + String(text || "");
+        }
+        var current=Actionable.observedPhraseFor(seed,pool,observeText,false);
         // ar-s096 / 543b0be: observed may replace the name only when it preserves
         // the structural printed name, is uniquely owned, recovers a longer form
         // of a truncated dictionary head (D144 / Item 4 pellets), or the seed is
@@ -263,8 +273,28 @@ var Actionable = {
         var curL = String(current || "").toLowerCase().replace(/\s+/g, " ").trim();
         var aliasKeys = (seed.aliases || obj.aliases || []).map(function (w) { return String(w || "").toLowerCase(); });
         var isUnnamed = !!(seed.name && seed.name.charAt(0) === '(') || seed.labelProvenance === "parser-vocabulary" && !structuralDisp;
+        // Cased structural slice from the same occurrence that printed it
+        // (inventory first, then full text, then seed.name).
+        var casedStructural = function () {
+            var sources = [invText, lookText, String(text || ""), String(seed.name || "")];
+            var i, src, idx;
+            for (i = 0; i < sources.length; i++) {
+                src = sources[i];
+                if (!src || !structuralDisp) continue;
+                idx = src.toLowerCase().indexOf(structuralDisp);
+                if (idx >= 0) return src.slice(idx, idx + structuralDisp.length);
+            }
+            return seed.name || structuralDisp;
+        };
+        // Follow-up 2: structural name printed verbatim that contains the observed
+        // phrase wins (dejavu featureless white cube; Cyclops wineskin with red wine).
+        if (structuralDisp && structuralDisp.indexOf(" ") >= 0 && curL && curL !== structuralDisp
+            && (" " + structuralDisp + " ").indexOf(" " + curL + " ") >= 0) {
+            var blob = (invText + "\n" + lookText + "\n" + String(text || "")).toLowerCase();
+            if (blob.indexOf(structuralDisp) >= 0) return casedStructural();
+        }
         var preserves = curL === structuralDisp || (structuralDisp && (" " + curL + " ").indexOf(" " + structuralDisp + " ") >= 0);
-        var uniqueObs = Actionable.observedPhraseFor(seed, pool, text, true);
+        var uniqueObs = Actionable.observedPhraseFor(seed, pool, observeText, true);
         var longerRecovery = false;
         if (current && curL && curL !== nameL && curL.length > nameL.length) {
             longerRecovery = curL.split(/\s+/).every(function (w) {
@@ -294,7 +324,7 @@ var Actionable = {
             if (observed && observed !== seed.name && obsPreserves) return observed;
         }
         // Fresh full RAM structural label outranks weak shared observations.
-        if (seed !== obj && seed.name) return seed.name;
+        if (seed !== obj && seed.name) return casedStructural();
         var restored = Actionable._restoredLabels && Actionable._restoredLabels[String(obj.id)];
         if (restored) {
             try {
@@ -314,7 +344,7 @@ var Actionable = {
             } catch (eLabel) {}
         }
         if (current && current === seed.name) return current;
-        return seed.name || current;
+        return casedStructural() || seed.name || current;
     },
     // Save-owned presentation only. Never feeds command nouns or capabilities.
     _restoredLabels: Object.create(null),

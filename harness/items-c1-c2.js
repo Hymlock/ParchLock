@@ -13,6 +13,9 @@ const ctx = {
       if (id === 2) return "scrawled note";
       if (id === 3) return "white party ticket";
       if (id === 4) return "ID card";
+      if (id === 5) return "featureless white cube";
+      if (id === 6) return "wineskin with red wine";
+      if (id === 7) return "small golden talisman";
       return "";
     },
     parserWordsAny: function () { return []; },
@@ -62,4 +65,45 @@ check(A.displayNameFor(note1, pool, "A scrap of paper lies here.") === "scribble
 check(A.displayNameFor(note1, pool, "You are carrying:\na scribbled note\na scrawled note").toLowerCase() === "scribbled note", "D: inventory scribbled");
 check(A.displayNameFor(note2, pool, "You are carrying:\na scribbled note\na scrawled note").toLowerCase() === "scrawled note", "D: inventory scrawled");
 
-console.log(n + " C1/C2/D checks passed");
+// Follow-up 2: structural printed in text contains observed sub-phrase
+const cube = {
+  id: 5,
+  name: "white cube",
+  structuralName: "featureless white cube",
+  aliases: ["featureless", "white", "cube"]
+};
+A.Scope = A.Scope || {};
+A.Scope.lastInventoryText = "You are carrying:\na featureless white cube";
+A.Scope.lastLookText = "A white cube is here.";
+check(
+  A.displayNameFor(cube, [cube], A.Scope.lastLookText + "\n" + A.Scope.lastInventoryText).toLowerCase() === "featureless white cube",
+  "FU2: structural wins when printed and contains observed"
+);
+const wine = {
+  id: 6,
+  name: "red wine",
+  structuralName: "wineskin with red wine",
+  aliases: ["wineskin", "with", "red", "wine"]
+};
+A.Scope.lastInventoryText = "a wineskin with red wine";
+A.Scope.lastLookText = "";
+check(
+  A.displayNameFor(wine, [wine], "red wine\n" + A.Scope.lastInventoryText).toLowerCase() === "wineskin with red wine",
+  "FU2: wineskin with red wine"
+);
+
+// Follow-up 1: casing from inventory occurrence
+const talisman = {
+  id: 7,
+  name: "small golden talisman",
+  structuralName: "small golden talisman",
+  aliases: ["small", "golden", "talisman"]
+};
+A.Scope.lastInventoryText = "a small golden talisman";
+A.Scope.lastLookText = "The Small Golden Talisman gleams on the altar.";
+check(
+  A.displayNameFor(talisman, [talisman], A.Scope.lastLookText + "\n" + A.Scope.lastInventoryText) === "small golden talisman",
+  "FU1: casing prefers inventory occurrence"
+);
+
+console.log(n + " C1/C2/D/FU checks passed");
