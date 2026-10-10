@@ -46,3 +46,30 @@
 - Live matrix: `status-probe-matrix.js --only=wump2ka.z5.js` PASS; sampled LLR3 (Combat prompt), Treasures (prowess), Anchorhead and HHG, with the LOOK positive control.
 
 **Prior-fix guard:** D207 (headless spans, released events, META provenance), D188, D169 (carry probe), D173 and D152/D153 (turn global), and D204 (superseded rule). Harnesses: stat-tracker, `death-terminal.js` (ending capture shares the span), status-probe-matrix samples and e3-inventory-warning.
+
+## R2 (codex #2298/#2299 accepted; operator answer 2026-10-09)
+
+**Operator:** "obviously it should be displayed and read if possible to do that without also displaying any status command requests." So the D207 rules stand: real events are shown and spoken, and no status-check output is ever shown.
+
+**R1 withdrawn:**
+- recurrence learning would also learn repeated attacks;
+- typed output can contain attacks;
+- the cached turn counter cannot prove that no turn passed;
+- defaulting to hidden suppresses events.
+
+**R2:**
+1. **Continuation fix (codex):** a colon heading's continuation persists through its item lines until the next blank paragraph.
+2. **Generic inventory summary recognition (codex):** inside an inventory-origin span, a later paragraph is reply when the **whole paragraph** validates against the existing D169 carry parsers (the weight, capacity and value forms that `observeCarryText` already decodes). It must start with the subject ("You are carrying ..." / "It's all worth ..."); a substring match is never enough. No per-title strings.
+3. **Coverage of "all modules" (operator: it is in others as well):**
+   - Run `harness/status-probe-matrix.js` on **every** manifest row, both owners, at 360 width, before and after.
+   - Every leaked line (`data-pl-probe-event` on a probe-family reply) is classified into a reply family. Each family gets one generic whole-paragraph recogniser built from the existing metric parsers where they exist (`MEASURED_METRIC_REPLIES`, rank and prowess forms), scoped to the probe's origin verb.
+   - A genuine event found in the sweep (an attack, NPC action or timer) stays released; it is a negative control and is listed.
+   - Lines that no generic family covers are listed for the operator, not hidden by guesswork.
+4. **Negative controls:** a real attack in the same turn is shown and spoken; a repeated attack is shown again; META output stays hidden; typed INVENTORY and SCORE are unaffected; the LOOK positive control holds.
+
+**Tests:**
+- unit (DOM doubles): continuation; whole-paragraph carry validation versus a substring decoy; attack released; repeated attack released;
+- the existing stat-tracker unit suite;
+- the full matrix before and after, with the leak list going to zero except released genuine events.
+
+**Prior-fix guard:** D207, D188, D169, D204, `death-terminal.js`, e3-inventory-warning.
