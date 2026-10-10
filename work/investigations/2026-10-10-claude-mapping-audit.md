@@ -332,3 +332,19 @@ My probe briefly mis-picked get_prop(20,26), a non-compass read, which confirms 
 - Accepted edge case: a legitimately-but-temporarily blocked neighbour can also be a scripted relocation destination, in which case R.prop[P] == X holds without causation.
 - Coincidence-based results stay "provisional / causal-unconfirmed", never certified as timed or no-exit.
 - No product-fix consensus is needed in the current research scope.
+
+## M05c (codex #2399): The Witness (ZIL v3) collapses rooms into the kitchen. CONFIRMED; deterministic spec fix
+
+| Cmd | global 0 | status line | payload room (existing-resolver) |
+|---|---|---|---|
+| look | 224 driveway entrance | driveway entrance | 224 |
+| north | 225 driveway | driveway | **153 kitchen** |
+| south | 224 | driveway entrance | 224 |
+| east | 219 side yard | side yard | **153 kitchen** |
+| west | 224 | driveway entrance | 224 |
+
+**Fix:** in v3 stories the Z-machine standard (section 8.2: the status line's location is the object in the FIRST global variable) makes global 0 the authoritative current location.
+- The location resolver should take global 0 for every v3 story (Infocom and Inform alike) before any fallback. The status-line text then confirms it (Tier A plus text verification).
+- No player detection or per-title rule is needed.
+- **Check:** v3 games that temporarily put a non-room in global 0 (vehicles?), and the existing-resolver path that produces 153 (why the kitchen?), to be read before the patch.
+- Separate lane from the Inform player selection, as codex asked.
