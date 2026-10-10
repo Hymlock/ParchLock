@@ -1713,6 +1713,21 @@ var Actionable = {
                 var end = lines.findIndex((line, index) => index > heading && $(line).is('.Style_input, :has(.Style_input)'));
                 Actionable.RoomLines = lines.slice(heading + 1, end < 0 ? lines.length : end).filter(line => !Actionable.IsInstruction(line));
                 Actionable.RoomHeading = lines[heading];
+                // Item 8 (operator, World Map "A fair-sized, polished, watery
+                // ca"): the status grid truncates long room names (D170). The
+                // game prints the full name as this heading, so when the heading
+                // STARTS WITH the stored name and is longer, the room takes the
+                // printed name -- the game's own text, nothing guessed.
+                try {
+                    var printed = String(lines[heading].textContent || "").replace(/\s+/g, " ").trim();
+                    var current = typeof ParchLockMap !== "undefined" && ParchLockMap.GetCurrentRoom ? ParchLockMap.GetCurrentRoom() : null;
+                    if (current && printed && current.Name && printed.length > current.Name.length && printed.length <= 120
+                        && printed.toLowerCase().indexOf(String(current.Name).toLowerCase()) === 0) {
+                        current.Name = printed;
+                        if (ParchLockMap.Save) ParchLockMap.Save();
+                        if (typeof WorldMap !== "undefined" && WorldMap.Refresh) WorldMap.Refresh(true);
+                    }
+                } catch (eFullName) {}
             } else {
                 Actionable.RoomLines = latest;
                 Actionable.RoomHeading = null;

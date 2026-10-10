@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 329 headings; 103 decision rows; 432 registered units.
 **Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
-`5c7c8483f5beb539600e8f7bb875919e88f1bd870a13770b6e9bd2a71b09c2b8`
+`48d734fab4b187c42326175b3a7f96e8cf3b2e6777be436b73a8305a3e6c1e2a`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -8330,6 +8330,8 @@ text, then moves there.
   - new marks scan the latest reply in reading order (it was reversed), and that reply now includes narration before the room heading;
   - `relocateExactMarks` keeps a mark when its phrase repeats only inside its own reply (`Actionable.replyOf` = the nearest command echo above), and otherwise moves it to the FIRST occurrence of the newest later reply.
 - **Proof:** `harness/underline-first-per-reply.js`: wump2ka 0/8 before, 8/0 after; Zork I 9/0. Guards: d214-yourself-verbs 10/0, display-key-cache 7/0. learned-words-corrections fails identically on the baseline; underline-lifetime could not run because the operator's HHG save file is no longer in Downloads.
+
+**D170 amendment, item 8 (2026-10-09):** long Wumpus room names were stored truncated from the fixed-width status grid ("A fair-sized, polished, watery ca" in the World Map panel). When the game's printed room heading starts with the stored name and is longer, `Actionable.Refresh` now upgrades the room's name to the printed one. This is the game's own text, so no letters are guessed. Top-band exit labels and pills also wrap to two lines.
 
 **Shared-word amendment, item 7 (2026-10-09):** wump2ka underlined "light" in "the cave's main source of light" as an ambiguous fog/Glow Bar reference, because "light" is a secondary word of both objects. A single word shared by several objects is now underlined only when it is the MAIN noun (`headNounOf`/`headTokenOf`) of at least one of them. Full names and multi-word phrases are unaffected. Guards: command-disambiguation 51/0, underline-first-per-reply 8/0, hhg-links-live 22/0.
 

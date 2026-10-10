@@ -283,7 +283,9 @@ Screenshots: `work/investigations/operator-2026-10-09b/`. The list was taken on 
   - Now a single word shared by several objects is underlined only when it is the main noun of at least one of them (as "pellets" and "door" are).
   - Guards: underline-first-per-reply 8/0, command-disambiguation 51/0, d214-yourself-verbs 10/0, d201 22/0 and 24/0, hhg-links-live 22/0.
 - [x] **8. The World Map room bar truncates long names** ("A fair-sized, polished, watery ca"). FIXED.
-  - The cut text was the top exit band, not the World Map boxes (those already wrap to two lines with "..."), and selecting a room already shows the full name.
+  - **Correction (operator screenshot `item8-panel-truncated.jpg`):** the truncation was in the World Map's selected-room panel, and the cause is the stored NAME itself. Wumpus room names come from the fixed-width status grid (about 31 columns on a phone, D170), which cuts long names ("...watery ca").
+  - **Fix:** when the room heading the game prints in the story starts with the stored name and is longer, the room takes the printed full name (the game's own text; no letters guessed, so D170's concern is met). Verified: "A vast, polished, watery dead" became "A vast, polished, watery dead-end" on the next LOOK. Guards: d46 27/0, d23 88/0, exit-calibrator 26/0, underline-first-per-reply 8/0.
+  - **Also done (secondary):** the top exit band's labels and pills wrap to two lines.
   - Operator choice: wrap to two lines, then end with an ellipsis (no auto-scroll or drag).
   - Top-band room names keep their 40vw cap but use two lines, and numbered-exit pills wrap to two lines.
   - Screenshot: `operator-2026-10-09b/item8-after-top.png`. Guards: exits-safe-area 46/0, layout-regression PASS; world-map-ui 46/6 pre-existing.
