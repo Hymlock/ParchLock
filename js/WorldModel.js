@@ -240,6 +240,17 @@ var WorldModel = {
                     return payload.roomName;
                 }
             } catch (eInt) {}
+            // D219 / M12: a structurally resolved room whose compiled short
+            // name is blank takes the story's own name (I7 short_name) before
+            // any status-line column. WiR's status line is only a date. A
+            // story without that source keeps the status path below.
+            try {
+                if (payload.roomId != null && !payload.roomName && typeof ZRamReader !== "undefined"
+                    && ZRamReader.storyShortName && typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) {
+                    var storyName = ZRamReader.storyShortName(ZRamProvider.getMem(), Number(payload.roomId));
+                    if (storyName) return storyName;
+                }
+            } catch (eStory) {}
             // D201: this owner also accepts an honestly blank compiled label,
             // but only after the provider has supplied a structural roomId.
             // The decoder returns presentation and metrics, never identity.

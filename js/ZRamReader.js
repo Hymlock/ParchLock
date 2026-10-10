@@ -283,6 +283,59 @@ var ZRamReader = {
     // non-default parse_name on an object is detectable without CALLing it
     // (Z-machine omits properties that equal the default). Absence of the
     // table is an honest undetectable, not a proof of library parse_name.
+    // D219 / M12: the story's own name for an object whose compiled short
+    // name is blank (I7 prints room names through short_name). The value of
+    // the property the decoded table names "short_name" is either a packed
+    // Z-string (WiR, Warbler) or a pointer to a two-word text value
+    // [header, packed string] (Facility, header 35). The form is decided
+    // once per story from ALL blank-named holders: block form only when one
+    // header value other than 0/65535 covers >= 90% of them; otherwise the
+    // direct form. A value that does not decode to a terminated Z-string in
+    // high memory yields "". Presentation only: never room identity.
+    _storyNameCache: (typeof WeakMap !== "undefined") ? new WeakMap() : null,
+    storyShortName: (mem, id) => {
+        try {
+            var h = ZRamReader.header(mem), t = ZRamReader.informPropertyNames(mem);
+            var sn = t && t.names && t.names.short_name;
+            if (!h || sn == null) return "";
+            var scale = h.version <= 3 ? 2 : h.version === 8 ? 8 : 4;
+            var zs = function (a) {
+                if (!(a >= h.himem) || a >= (mem.byteLength || 0)) return "";
+                for (var w = 1, s = a; w <= 60 && s + 2 <= mem.byteLength; w++, s += 2) {
+                    if (ZRamReader.u8(mem, s) & 128) return String(ZRamReader.decodeZsc(mem, a, w) || "").trim();
+                }
+                return "";
+            };
+            var valueOf = function (obj) {
+                var x = (ZRamReader.listProps(mem, obj) || []).filter(function (q) { return q.num === sn && q.sz === 2; })[0];
+                return x ? ZRamReader.u16(mem, x.dataAddr) : null;
+            };
+            var key = (mem && mem.buffer) || mem, cache = ZRamReader._storyNameCache, form = null;
+            try { form = cache && cache.get(key); } catch (eC) {}
+            if (!form) {
+                var counts = {}, total = 0, n = ZRamReader.objectCount(mem, h);
+                for (var o = 1; o <= n; o++) {
+                    if (String(ZRamReader.shortName(mem, o) || "").trim()) continue;
+                    var v = valueOf(o);
+                    if (v == null || v + 4 > mem.byteLength) continue;
+                    var w0 = ZRamReader.u16(mem, v);
+                    counts[w0] = (counts[w0] || 0) + 1;
+                    total++;
+                }
+                var top = Object.keys(counts).map(Number).sort(function (a, b) { return counts[b] - counts[a]; })[0];
+                form = (total && top !== 0 && top !== 65535 && counts[top] >= 0.9 * total)
+                    ? { block: true, header: top } : { block: false };
+                try { if (cache) cache.set(key, form); } catch (eS) {}
+            }
+            var val = valueOf(id);
+            if (val == null) return "";
+            if (form.block) {
+                if (val + 4 > mem.byteLength || ZRamReader.u16(mem, val) !== form.header) return "";
+                return zs(ZRamReader.u16(mem, val + 2) * scale);
+            }
+            return zs(val * scale);
+        } catch (e) { return ""; }
+    },
     // D218 / M04: true only for Inform 7 compiler bookkeeping properties
     // (ikN_link, ikN_count, kd_count) named by a decoded property table that
     // also carries the I7 markers ik1_count and ik1_link. If any other
