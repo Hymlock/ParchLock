@@ -565,10 +565,13 @@ var ZRamReader = {
 
     directionLabelForProp: (propNum, mem) => {
         var dp = ZRamReader.directionProps || {};
-        var discovered = mem ? ZRamReader.discoverCompassProfile(mem) : null;
+        var discovered = mem ? ZRamReader.labelCompassProfile(mem) : null;
         if (discovered && discovered.profile && discovered.profile[propNum]) {
             return discovered.profile[propNum];
         }
+        // D217: an accepted library-compass lane makes the stock PROFILE
+        // inert; a prop outside its domain is not a compass exit.
+        if (discovered && discovered.lane) return "exit-" + propNum;
         // Stock PROFILE diagonal neutrality only when discovery did not
         // supply labels (D49). A discovered map already resolved nw/se.
         if (!discovered && (propNum === 12 || propNum === 13) && !dp.diagonalCalibrated) {
@@ -594,6 +597,13 @@ var ZRamReader = {
     // persists the result keyed to this exact game file.
     calibrateDiagonalFromTravel: (propNum, typedDirectionLabel, destRoomId, hintedDestRoomId) => {
         if (propNum !== 12 && propNum !== 13) return false;
+        // D217: a library-compass lane game has exact labels; never calibrate.
+        try {
+            if (typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) {
+                var laneMem = ZRamProvider.getMem();
+                if (laneMem && !ZRamReader.discoverCompassProfile(laneMem) && ZRamReader.discoverLibraryCompassProfile(laneMem)) return false;
+            }
+        } catch (eLane) {}
         if (destRoomId == null || hintedDestRoomId == null || String(destRoomId) !== String(hintedDestRoomId)) return false;
         var isDiagonalWord = typedDirectionLabel === "northwest" || typedDirectionLabel === "southeast";
         if (!isDiagonalWord) return false;
@@ -850,12 +860,113 @@ var ZRamReader = {
         } catch (eS) {}
         return result;
     },
+    // D217 / M01 library-compass lane. Older Inform libraries (5/12, 6/1x,
+    // microform v3) give compass children no common prop 2, and v3 builds
+    // have only six children, so discoverCompassProfile rejects them and the
+    // stock 6.12.2 PROFILE mislabels every exit (Curses "north" was east).
+    // Contract (codex/claude #2542, #2544, #2546):
+    //  - exactly one object named "compass" with >= 4 children;
+    //  - exactly one property present on EVERY child as a 1/2-byte scalar
+    //    with pairwise-distinct values inside the version's common-property
+    //    range (the door_dir slot);
+    //  - geometry from the compiled property table (canonical *_to names,
+    //    one-to-one) and/or the child's single canonical direction word;
+    //    both present must agree. Any child without a runnable canonical
+    //    word, any disagreement or duplicate fails the WHOLE lane closed
+    //    (Inevita e_to answers "northwest"; Gostak uses invented words).
+    // Accepted lanes make the stock PROFILE inert for that game. The lane is
+    // label-only: directionDoorDirs never consumes it (I7 door_dir lane).
+    // Compass objects and door_dir values are authored static data, so the
+    // result is invariant per executable; cached by buffer + digest.
+    _libraryCompassCache: (typeof WeakMap !== "undefined") ? new WeakMap() : null,
+    CANONICAL_TO: { n_to: "north", s_to: "south", e_to: "east", w_to: "west", ne_to: "northeast", nw_to: "northwest",
+        se_to: "southeast", sw_to: "southwest", u_to: "up", d_to: "down", in_to: "in", out_to: "out" },
+    discoverLibraryCompassProfile: (mem) => {
+        if (!mem) return null;
+        var digest = "";
+        try {
+            var ident = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableIdentity ? ModuleLibrary.currentExecutableIdentity() : null;
+            digest = (ident && ident.digest) || "";
+        } catch (eI) {}
+        var cacheKey = (mem && mem.buffer) || mem, cache = ZRamReader._libraryCompassCache;
+        try {
+            var hit = cache && cache.get(cacheKey);
+            if (hit && hit.digest === digest) return hit.result;
+        } catch (eC) {}
+        var result = null;
+        try {
+            var h = ZRamReader.header(mem);
+            if (!h || !ZRamReader.isInformCompiled(mem)) throw 0;
+            var maxProp = h.version <= 3 ? 31 : 63;
+            var count = ZRamReader.objectCount(mem, h), holders = [];
+            for (var id = 1; id <= Math.min(count, 400); id++) {
+                if (/^compass$/i.test(ZRamReader.shortName(mem, id) || "")) holders.push(id);
+            }
+            if (holders.length !== 1) throw 0;
+            var kids = ZRamReader.children(mem, holders[0]);
+            if (kids.length < 4) throw 0;
+            var scalar = function (obj, p) {
+                var hit2 = (ZRamReader.listProps(mem, obj) || []).filter(function (x) { return x.num === p; })[0];
+                if (!hit2 || (hit2.sz !== 1 && hit2.sz !== 2)) return 0;
+                return hit2.sz === 1 ? ZRamReader.u8(mem, hit2.dataAddr) : ZRamReader.u16(mem, hit2.dataAddr);
+            };
+            var slots = [];
+            for (var p = 1; p <= maxProp; p++) {
+                var vals = kids.map(function (k) { return scalar(k, p); });
+                var distinct = {};
+                if (vals.every(function (v) { return v >= 1 && v <= maxProp && !distinct[v] && (distinct[v] = 1); })) slots.push({ p: p, vals: vals });
+            }
+            var table = null;
+            try { table = ZRamReader.informPropertyNames(mem); } catch (eT) {}
+            var names = (table && table.names) || null;
+            if (slots.length > 1 && names) slots = slots.filter(function (s) { return names.door_dir === s.p; });
+            if (slots.length !== 1) throw 0;
+            // Table geometry only when the canonical *_to names are one-to-one.
+            var tableGeo = null;
+            if (names) {
+                var byNum = {}, ok = true;
+                Object.keys(ZRamReader.CANONICAL_TO).forEach(function (n) {
+                    var num = names[n];
+                    if (num == null) return;
+                    if (byNum[num]) ok = false;
+                    byNum[num] = ZRamReader.CANONICAL_TO[n];
+                });
+                if (ok) tableGeo = byNum;
+            }
+            var profile = {}, used = {};
+            for (var k = 0; k < kids.length; k++) {
+                var dd = slots[0].vals[k];
+                var words = [];
+                try { words = ZRamReader.parserWordsAny(mem, kids[k]) || []; } catch (eW) {}
+                var word = ZRamReader.directionLabelFromWords(words, ZRamReader.shortName(mem, kids[k]) || "");
+                var geo = tableGeo ? tableGeo[dd] : "";
+                if (!word) throw 0;                 // no runnable canonical command
+                if (geo && geo !== word) throw 0;   // table vs vocabulary conflict
+                if (used[word]) throw 0;            // duplicate geometry
+                used[word] = 1;
+                profile[dd] = word;
+            }
+            result = { profile: profile, labeled: kids.length, compassId: holders[0], doorProp: slots[0].p, lane: "library-compass",
+                domain: Object.keys(profile).map(Number), tableSource: !!tableGeo };
+        } catch (e) { result = null; }
+        try { if (cache) cache.set(cacheKey, { digest: digest, result: result }); } catch (eS) {}
+        return result;
+    },
+    // Label profile: the prop2 discovery first (Advent class), else the
+    // library-compass lane, else null (stock PROFILE). Never used by
+    // directionDoorDirs.
+    labelCompassProfile: (mem) => {
+        if (!mem) return null;
+        return ZRamReader.discoverCompassProfile(mem) || ZRamReader.discoverLibraryCompassProfile(mem);
+    },
     // Effective direction-prop profile: discovered compass map when present,
     // else the stock i6-lib PROFILE. Discovery is structural (parser words /
     // short names on compass children + door_dir slot), never a title branch.
     effectiveDirectionProfile: (mem) => {
         var discovered = mem ? ZRamReader.discoverCompassProfile(mem) : null;
         if (discovered && discovered.profile && discovered.labeled >= 8) return discovered.profile;
+        var lane = mem ? ZRamReader.discoverLibraryCompassProfile(mem) : null;
+        if (lane) return lane.profile;
         return (ZRamReader.directionProps && ZRamReader.directionProps.PROFILE) || {};
     },
 
@@ -2069,14 +2180,19 @@ var ZRamReader = {
         // resolves to its own single real, swap-aware word via
         // directionLabelForProp, no ambiguity flag.
         var dp = ZRamReader.directionProps || {};
-        var discoveredProfile = ZRamReader.discoverCompassProfile(mem);
+        var discoveredProfile = ZRamReader.labelCompassProfile(mem);
         var val12 = ZRamReader.readProp(mem, roomId, 12);
         var val13 = ZRamReader.readProp(mem, roomId, 13);
         var has12 = val12 >= 1 && val12 <= count;
         var has13 = val13 >= 1 && val13 <= count;
         // When compass discovery already labeled props 12/13 (LLR-class
         // shifted n/s), assert those labels -- do not dual-push nw/se.
-        if (discoveredProfile && discoveredProfile.profile &&
+        if (discoveredProfile && discoveredProfile.lane) {
+            // D217: lane games never dual-push stock diagonals; 12/13 are
+            // compass exits only inside the lane's own domain.
+            if (has12 && discoveredProfile.profile[12]) pushExit(discoveredProfile.profile[12], 12, val12, {});
+            if (has13 && discoveredProfile.profile[13]) pushExit(discoveredProfile.profile[13], 13, val13, {});
+        } else if (discoveredProfile && discoveredProfile.profile &&
             (discoveredProfile.profile[12] || discoveredProfile.profile[13])) {
             if (has12) pushExit(ZRamReader.directionLabelForProp(12, mem), 12, val12, {});
             if (has13) pushExit(ZRamReader.directionLabelForProp(13, mem), 13, val13, {});
@@ -2132,6 +2248,8 @@ var ZRamReader = {
             // PROFILE labels for props discovery did not name (false
             // north→meta slots on shifted libraries).
             cand = cand.filter(function (p) {
+                // D217: in a lane game only domain props are compass exits.
+                if (discoveredProfile.lane) return !!discoveredProfile.profile[p];
                 return !!discoveredProfile.profile[p] || !(ZRamReader.directionProps.PROFILE || {})[p];
             });
         }
