@@ -376,3 +376,18 @@ My probe briefly mis-picked get_prop(20,26), a non-compass read, which confirms 
 - Starcross: global0 = 10 Living Quarters (status agrees); the payload = 123 bunk via cretin -> bunk -> Living Quarters.
 
 global0 holds the ROOM, not the furniture. The current containment path stops at the furniture (the M08 class in ZIL form). The v3 global0 identity lane fixes these M08 instances as well. (The ZIL player "cretin" is correctly identified; only the room choice is wrong.)
+
+## v3 catalog census at boot (claude; complementary to codex routes; script work/investigations/v3-global0-census.cjs)
+
+**All 27 .z3 titles: global0's short name == the status-line room text (27/27 AGREE).** No v3 counterexample to the spec location lane.
+
+**Payload wrong at boot in 9:**
+- Cutthroats: bed (should be Your Room);
+- Infidel: army cot (Your Tent);
+- Moonmist: sports car (driveway);
+- Starcross: bunk (Living Quarters);
+- Suspect: Office (Near Bar);
+- Lurking Horror: elevator shaft (Terminal Room);
+- Leather Goddesses, Plundered Hearts, Stationfall: "it".
+
+**Readiness counterexample (codex warned):** Leather Goddesses' global0 = 4 "WARNING!" and Plundered Hearts' global0 = 195 "Plundered Hearts" are title/warning objects used as the location during the intro, and the status line ANNOUNCES them. The announced-room rule alone would admit them, so they need intro-readiness qualification. Candidate signals to test: the game has not yet accepted a normal command turn; the object has no exits and is never re-entered. This is an open item, not decided.
