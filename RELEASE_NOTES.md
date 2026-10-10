@@ -1,8 +1,16 @@
 # ParchLock Release Notes
 
+## Build 68 - 2026-10-09
+
+- Commands respond immediately again. Underlined-name processing no longer repeats work for every word and item after each reply (LOOK and INVENTORY were taking several seconds).
+- The inventory weight and value summary ("You are carrying ... It's all worth ...") from status checks no longer appears in the story; real events in the same turn still do.
+- Item names confirmed by the story (for example "food pellets") are kept after UNDO instead of falling back to a shortened word.
+- Mobile layout: equal borders on the left, right and bottom; exits along the bottom now sit at the screen edge under the input; story text no longer shows beside or below the input; the input no longer shifts in dark rooms.
+- Widget setup text is plain and shorter.
+
 ## Build 67 - 2026-10-09
 
-- Larger, badge-free rotating storybook widget, starting at 2?2 and resizable from 1?1 to 4?4 on supported launchers. Installation explains the resize handles. Placement no longer opens the game over Android's confirmation sheet. Home/return does not rotate the picture.
+- Larger, badge-free rotating storybook widget, resizable on supported launchers. Installation explains the resize handles. Placement no longer opens the game over Android's confirmation sheet. Home/return does not rotate the picture.
 
 
 ## Build 64 - 2026-10-09
