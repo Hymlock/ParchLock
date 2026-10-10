@@ -408,3 +408,10 @@ global0 holds the ROOM, not the furniture. The current containment path stops at
 - stories with no turn counter at all (some I7 titles); there, fall back to provisional-until-the-next-ready-turn;
 - time-based games where the clock advances during the intro (Moonmist 7:00 PM?);
 - META commands (they do not advance turns, correctly).
+
+**Game-time readiness measured (typed commands; injected commands did not register in that probe):**
+- LGOP: boot loc 4 WARNING! Turns 0; Enter -> 61 Joe's Bar Turns 0 (provisional); WAIT -> Turns 2 (admit); WAIT -> 3; SOUTH -> 4.
+- Zork I: WAIT -> 180 West of House Turns 3 (admit); NORTH -> 81 North of House Turns 4 (admit on arrival).
+- Plundered Hearts: boot loc 195 title Turns 0 -> Enter -> 80 Cabin Turns 0 (provisional until the first turn).
+
+The intro title/warning objects never see game time advance, so they are excluded. Real rooms are admitted on the first advance or arrival turn.
