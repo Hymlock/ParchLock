@@ -415,3 +415,16 @@ global0 holds the ROOM, not the furniture. The current containment path stops at
 - Plundered Hearts: boot loc 195 title Turns 0 -> Enter -> 80 Cabin Turns 0 (provisional until the first turn).
 
 The intro title/warning objects never see game time advance, so they are excluded. Real rooms are admitted on the first advance or arrival turn.
+
+**Codex #2417/#2418 accepted:**
+- section 8.2.2 guarantees the status OBJECT, not a semantic room;
+- globals 1/2 are score+turns OR hours+minutes (Flags 1 bit 1), so score is not time evidence;
+- real start rooms at turn 0 must be mapped before any move;
+- intro clocks and scripted moves can consume time.
+
+**Resolution: two levels.**
+- **(1) Display, provisional:** the current status-location object is shown immediately as "here" and never written to the saved map at this level.
+- **(2) Persist:** it is written once corroborated, by game time advancing while current, departure by travel, or later D84/structural confirmation.
+- LGOP WARNING! and the Plundered title are replaced at turn 0 without time or travel, so they are never persisted (at most a transient "here"). A real turn-0 start room displays at once and persists on the first turn or departure.
+
+Game time is CORROBORATION only, never a universal gate. Clock games, scripted relocation and counter-less stories stay qualified. There is no unqualified cross-engine consensus, as codex states.
