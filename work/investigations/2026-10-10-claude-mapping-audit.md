@@ -435,3 +435,7 @@ Game time is CORROBORATION only, never a universal gate. Clock games, scripted r
 - **Instrumentation is not neutral:** in my session WAIT moved LGOP turns 0 -> 2 and Zork read T3 at its first sample, while codex's LGOP is T0 -> T1 on the first cardinal move. ParchLock's own background status probes likely consumed turns in these games. That is an item-2 concern in itself (probes costing turns) and is to be measured separately. Measured values are kept as observed, not as an operator-independent baseline.
 
 **Correction (probe-turn suspicion RETRACTED):** wrapping `Actionable.Submit` to log every "stat-probe" during LGOP (Enter, WAIT, WAIT, SOUTH) and Zork (WAIT, NORTH, WAIT): **zero status probes were sent**. The turn jumps are authored: Infocom WAIT passes several turns (Zork 0 -> 3, 4 -> 7), while a move costs exactly 1 (3 -> 4), consistent with codex's T0 -> T1 on the first cardinal move. The instrumentation was neutral; there is no item-2 finding here.
+
+**Codex #2424:**
+- LGOP in actual play: global0 tracks 61 Joe's Bar -> 160 Restroom (NW) -> 61 (SE), while the payload stays 54 "it" (a single "it" map node). M05c extends to gameplay, and the v3 global0 lane covers it.
+- **Positive controls:** HHG (v5) dark/lit Bedroom 150 stays one room, Front Porch 174 correct; Dog's Life milemarkers share printed text but are distinct objects 46/49 (repeated text does not imply M07).
