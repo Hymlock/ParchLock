@@ -358,3 +358,15 @@ My probe briefly mis-picked get_prop(20,26), a non-compass read, which confirms 
 - for v3 stories, read global 0 (spec section 8.2) BEFORE the heuristic fallbacks, and before D84 when D84 is unlearned;
 - accept it when it is a plausible room and the status-line room text agrees (text confirmation);
 - seed D84's learned slot with 0 for that story.
+
+## v3 location lane (codex #2405 census, #2406 objections accepted)
+
+**Census:** the payload room differs from global0 in 12 v3 titles (Witness, Lurking Horror, Suspect, Stationfall, Starcross, Sorcerer W, Plundered Hearts, Moonmist, Leather Goddesses, Infidel, Cutthroats, Ballyhoo E). Hollywood Hijinx, Enchanter and Planetfall agree on the captured moves.
+
+**Revised design: identity is separate from presentation.**
+- **Identity:** for v3 stories, room identity = global0 (spec section 8.2, the status-line location). No name equality and no Inform-attribute plausibility gate, because ZIL attributes are not Inform's; that gate wrongly rejects ZIL rooms.
+- **Presentation:** the status-line room text or heading gives the DISPLAY name only. A dark label ("Darkness") is a display state of the same identity, never a new room.
+- **Actor containment** (player object, inventory root) is a separate lane, used for Equipment, not for which room.
+- **Timing:** sample only at a real turn's input request after the game is ready (consistent with the M09 announced-room rule), not during startup questions.
+- **Furniture/vehicles:** if a v3 story ever puts a non-room in global0, that is the game's own statement of location; check Starcross and Infidel (furniture starts) to see whether global0 is the room or the furniture before finalising.
+- **Lanes kept:** Wumpus (custom indexed rooms, D171) and virtual rooms (M07) keep their own lanes. The v3 lane applies to v3 headers only.
