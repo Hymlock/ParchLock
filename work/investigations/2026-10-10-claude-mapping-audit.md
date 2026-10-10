@@ -227,3 +227,14 @@ The "first line prompt" gate is withdrawn: it would block all mapping in Being S
   - restores: the saved map is restored as-is.
 
 **Accepted from #2372:** the compass rule is research-qualified, not global approval. Keep the unknown-holder fallback and the ZIL/Wumpus exclusions.
+
+## Heroine (codex #2374): player misidentified, an M05-class case, NOT an M09 counterexample
+
+**Evidence:**
+- The payload player is 114 "Rex" (playerSource "parser-self") inside 112 "Golden Horse". Rex's words are golden/horse/ship/rex/computer: it is the ship's COMPUTER.
+- The real player is **24 "Lisa Flint"** (the heroine): 24 is inside 28 "ocean", inside 27 "Jetty". That matches the printed text ("drowning ... planks of a wooden jetty").
+- The game switches the player character (Inform ChangePlayer), and the parser-self guess picked the wrong object. No global holds 114 or 20; the player global must hold 24.
+
+**Planned fix:** when the parser-self candidate has no self words and sits away from the printed location, prefer the object held by the game's player global that is animate and placed in a plausible room. Cross-check with the M05b moved-object rule on the first successful move.
+- **Controls:** games with a normal (self object) player; vehicles (Golden Horse later in play); Facility.
+- **Effect on M09:** the announced-heading rule then compares against the RIGHT location (Jetty), so Heroine supports the rule once the player is fixed. The heading-versus-name comparison should be a prefix/containment match on the structural room or its outermost plausible container, not strict equality.
