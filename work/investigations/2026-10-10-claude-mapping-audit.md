@@ -439,3 +439,10 @@ Game time is CORROBORATION only, never a universal gate. Clock games, scripted r
 **Codex #2424:**
 - LGOP in actual play: global0 tracks 61 Joe's Bar -> 160 Restroom (NW) -> 61 (SE), while the payload stays 54 "it" (a single "it" map node). M05c extends to gameplay, and the v3 global0 lane covers it.
 - **Positive controls:** HHG (v5) dark/lit Bedroom 150 stays one room, Front Porch 174 correct; Dog's Life milemarkers share printed text but are distinct objects 46/49 (repeated text does not imply M07).
+
+## M13 (codex #2433): KoA stale "(on the bunk)" qualifier in a stored room name
+
+- Identity is correct (object 40, the player's parent 40 after GET OFF BUNK). The stored map name stays "In Your Cabin (on the bunk)" because of the D62 name freeze.
+- **Planned (deterministic, structure-tied):** Inform appends "(on the X)" / "(in the X)" naming the object the player is in or on. When deriving a room name from a heading, strip that trailing qualifier ONLY when X matches the short name of the player's container at that moment (the player's parent chain below the room). It is tied to the object structure, not a text pattern alone.
+- Saved names carrying such a qualifier are corrected on the next heading for the same room id.
+- This also covers the M05 note "(in the blue car)" in Make It Good. Controls: rooms whose real names contain parentheses (rare; the container match prevents stripping those) and D62's freeze (only the qualifier is removed, never a re-randomised Wumpus name).

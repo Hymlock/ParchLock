@@ -35,3 +35,10 @@ Written before reading codex's work/mapping-research/M12-date-label-sealed.md.
 - **(2) Constancy guard (mine, a belt-and-braces general rule):** a status label identical across two different structural room ids is not a room label for that story.
 - **(3) Name precedence for empty compiled names:** the printed room heading for that structural room, then a status label that varies with the room, then unnamed.
 - **Controls:** Wumpus status display (D171 "Room #N" handling), dark-name adaptation, the D54 internal-name rules, and cf7125f prefix upgrades.
+
+**Codex #2436/#2437:**
+- Decoder authority CONFIRMED by a live probe (roomLabel empty, metrics Date+Time, yet the payload is the date via the legacy fallback). My "decoder.roomLabel becomes the date" was inaccurate and is corrected.
+- **Constancy guard REJECTED and withdrawn:** distinct rooms legitimately share names (Advent forests 46/47, Beneath sidewalks 50/58, Dog's Life roads 46/49), and a varying status is no room proof either.
+- **Agreed smallest candidate:**
+  - (1) decoder-classified metric columns are never adopted by the fallback;
+  - (2) for blank compiled names, a heading names the room only when tied to that room id's actual current-room event (arrival or LOOK), not any Style_subheader (intro/chapter/menu titles, M09), preserving darkness aliases.
