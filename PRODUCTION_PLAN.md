@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 329 headings; 103 decision rows; 432 registered units.
 **Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
-`1c0fb85dc5008ed023e129221ef003b96f0735db05f207a87f4008aa1a71056a`
+`fb4ba17cd9fca97d9f9380e5c2b441ce4339fb92635f25be720b495b9a16fdc8`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -7991,6 +7991,13 @@ the reply states someone had observed. Treasures' `PROWESS_REPLY` matched only t
 uninjured reply, so "You wield the GLADIUS SWORD ... Hit Points are 9 (out of 16)." was
 printed and spoken. Wumpus never leaked because the inventory carry probe hid its whole span,
 which is the precedent this decision restores.
+
+**Item 3 (APK 64: "commands sometimes take up to 6 seconds"; blind claude 33beb17 and codex; R1 plus codex guards #2323/#2324/#2327/#2329; audit ACCEPT codex f808132):**
+- **Cause:** after output, `Actionable.observedPhraseFor` ran the Z-character encoder (`vm.encode`) for every word of the whole text, for every object, on every call, uncached. At 6x CPU throttle that was LOOK 10.7 s, INVENTORY 8.5 s, and 4-6 s of main-thread blocking after moves. The WebView JS is single-threaded, so phone hardware does not hide it.
+- **Fix:** `Actionable.displayKeyContext` keeps word → encoded-key pairs per encoder signature (VM, encode function identity, version3 and the three alphabets, which a restart rebuilds on the same VM). The cache is bounded at 4096 entries, holds only successful encoder results, and text tokens are computed once per text. A text that needed the vocabulary fallback is never reused. No phrase, owner or match result is cached.
+- **Result:** LOOK 0.16 s (first run 2.0 s), INVENTORY 0.18 s, moves about 0.3 s, all at 6x.
+- **Proof:** `harness/display-key-cache.js` 7/0 against the verbatim pre-change function; underline-lifetime 28/0; d214-yourself-verbs 10/0.
+- **Widget copy (operator):** plain ASCII, no size claims, last line "You may remove your old shortcut if you already placed one." (codex 18cea57, claude audit #2331).
 
 **Item 2 amendment (APK 64 operator report, 2026-10-09; blind claude b45f31b and codex; R1-R6 rejected, R7 consensus codex #2312/#2318):** wump2ka's inventory load summary ("You are carrying 4 lbs of stuff (10% of your current capacity). It's all worth about $35.") followed the item list after a blank line, was not on the known-reply list, and was released as a turn event: shown and spoken. Fix: `StatTracker.isCarrySummaryLine`, used in an inventory-origin span, treats a later paragraph as reply only when **every** sentence is a metric-only carry sentence (`CARRY_SENTENCES`, from the D169 CARRY forms; nothing but measured words after the number). Real events, repeated events and mixed paragraphs are still released (operator: "displayed and read if possible ... without also displaying any status command requests"). Rejected along the way:
 - learned recurrence (it would learn repeated attacks);

@@ -307,29 +307,70 @@ var Actionable = {
             });
         } catch(e) {}
     },
+    // Item 3 (APK 64 latency): encoding every word of the text for every
+    // object on every call cost 4-9 s per command on a phone. Keys are cached
+    // per encoder signature (version3 + the three alphabets, which a restart
+    // rebuilds on the same VM), bounded, and only exact word -> key pairs are
+    // kept; no phrase, owner or match result is ever cached (codex #2323/#2324).
+    _displayKeyCache: { vm: null, encode: null, sig: null, keys: new Map(), text: null, words: null, matches: null, wordKeys: null },
+    DISPLAY_KEY_CACHE_MAX: 4096,
+    displayKeyContext: function () {
+        var c = Actionable._displayKeyCache, vm = window.__PARCHLOCK_ZVM__;
+        var sig = "";
+        if (vm && vm.encode) {
+            try { sig = (vm.version3 ? "3" : "5") + "|" + (vm.alphabets || []).map(function (a) { return Array.prototype.join.call(a, ","); }).join("|"); }
+            catch (e) { sig = null; }
+        }
+        var encode = vm && vm.encode;
+        if (c.vm !== vm || c.encode !== encode || c.sig !== sig || sig === null) {
+            c.vm = vm; c.encode = encode; c.sig = sig; c.keys = new Map(); c.text = null; c.words = c.matches = c.wordKeys = null;
+        }
+        return c;
+    },
     observedPhraseFor: function (obj, pool, text, requireUnique) {
         // Display-only equivalence uses the live interpreter's encoding: a
         // hyphen consumes an alphabet shift and can truncate before character 9.
+        var ctx = Actionable.displayKeyContext();
         var displayKey = function (word) {
             var w = String(word || "").toLowerCase();
-            var vm = window.__PARCHLOCK_ZVM__;
+            var hit = ctx.sig ? ctx.keys.get(w) : undefined;
+            if (hit !== undefined) return hit;
+            var vm = ctx.vm;
             if (vm && vm.encode && /^[a-z][a-z'-]*$/.test(w)) {
-                try { return "z:" + vm.encode(Array.from(w, function (c) { return c.charCodeAt(0); })).join(","); } catch (e) {}
+                try {
+                    var key = "z:" + vm.encode(Array.from(w, function (c) { return c.charCodeAt(0); })).join(",");
+                    // Only successful encoder results are cached (codex #2327);
+                    // the vocabulary fallback may depend on game state.
+                    if (ctx.sig) {
+                        if (ctx.keys.size >= Actionable.DISPLAY_KEY_CACHE_MAX) ctx.keys.clear();
+                        ctx.keys.set(w, key);
+                    }
+                    return key;
+                } catch (e) {}
             }
             return Actionable.vocabularyKey(w);
         };
         var aliases = (obj.aliases || []).map(displayKey);
         if (!aliases.length) return obj.name;
         var source = String(text || "").toLowerCase();
-        var matches = Array.from(source.matchAll(/[a-z][a-z'-]*/g));
-        var words = matches.map(function (match) { return match[0]; });
+        // The text's tokens and keys are computed once per text and encoder.
+        if (!ctx.sig || ctx.text !== source || !ctx.matches) {
+            ctx.text = source;
+            ctx.matches = Array.from(source.matchAll(/[a-z][a-z'-]*/g));
+            ctx.words = ctx.matches.map(function (match) { return match[0]; });
+            ctx.wordKeys = ctx.words.map(displayKey);
+            // A text whose keys needed the vocabulary fallback is never reused
+            // (codex #2329): the encoder may recover or the dictionary change.
+            if (ctx.wordKeys.some(function (k) { return k.slice(0, 2) !== "z:"; })) ctx.text = null;
+        }
+        var matches = ctx.matches, words = ctx.words, wordKeys = ctx.wordKeys;
         var best = "", bestRank = -1;
         var structural = String(obj.structuralName || obj.name || "").toLowerCase().replace(/\s+/g," ").trim();
         for (var i = 0; i < words.length; i++) {
             var phrase = [];
             for (var j = i; j < Math.min(words.length, i + 6); j++) {
                 if (j > i && !/^\s+$/.test(source.slice(matches[j - 1].index + words[j - 1].length, matches[j].index))) break;
-                if (aliases.indexOf(displayKey(words[j])) < 0) break;
+                if (aliases.indexOf(wordKeys[j]) < 0) break;
                 phrase.push(words[j]);
                 // D184 recovered labels need a real vocabulary word at both
                 // edges. Interior articles remain valid; named objects retain
