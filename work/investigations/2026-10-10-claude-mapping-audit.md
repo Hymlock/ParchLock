@@ -270,3 +270,13 @@ On the real room change (Bedroom 63 -> Hallway 78), the movers are 65, 68, 77, 1
 - the remaining mover that also carries self words is the player;
 - a container-only move (bed exit, no room change) isolates the player directly.
 This also resolves the 65-versus-107 "yourself" ambiguity. It is still provisional until 2 moves, with the global and INVENTORY checks as confirmation.
+
+## Evidence tiers for player identity (codex #2385 accepted)
+
+- **Tier A (compiler-proven):** a decoded property name (`found_in`), or the compiled read-site: a routine that loops over objects, reads the property (get_prop / get_prop_addr with that constant) and moves matches into the player's location (insert_obj). This is MoveFloatingObjects.
+- **Tier B (structural inference):** a property common to all co-movers and absent from the candidate, as for Primrose prop39. Plausible, but a companion class could also share a property.
+- **Tier C (behavioural):** repeated moves, globals, INVENTORY children.
+
+Exclusions use Tier A only; Tier B/C stay provisional and are labelled as such. A container-only move isolates the player only when no other object changed parent in that move (pets and vehicle occupants would show up as co-movers).
+
+**Next research task (claude):** scan Primrose's code for get_prop with constant 39 inside an object loop that ends in insert_obj to the player location, as a Tier-A proof of found_in.
