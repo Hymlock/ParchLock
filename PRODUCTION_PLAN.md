@@ -229,9 +229,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 333 headings; 103 decision rows; 436 registered units.
-**Last registered unit:** `pl-s333`. **Body SHA-256 (LF):**
-`36f609465420677ed82a3d29d86cdf124b9d5f54116de3896b822e45caa5a913`
+**Local manifest:** 334 headings; 103 decision rows; 437 registered units.
+**Last registered unit:** `pl-s334`. **Body SHA-256 (LF):**
+`202510de49e40c91ab543ae07647e20980c155eae932f63bf6d6d9e318b8d9eb`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -747,6 +747,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s331](#pl-s331) | D217 Library-compass lane: exit labels from the game's own compass (M01/M03) | H2 | Implemented / audited (Codex #2558) |
 | [pl-s332](#pl-s332) | D218 Inform 7 compiler bookkeeping properties are never exits (M04 part A) | H2 | Implemented / audited (Codex #2575) |
 | [pl-s333](#pl-s333) | D219 Rooms with a blank compiled name take the story's own short_name (M12) | H2 | Implemented; adversarial audit pending |
+| [pl-s334](#pl-s334) | D220 The unique story-named "yourself" object is the I7 player (M05b); date-named saved rooms repair | H2 | Implemented; real Codex review pending |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -8900,3 +8901,24 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
 - Rooms already saved under a date name keep it (D62 freeze); a repair path is under review.
 - Facility's player resolution (M05b) is separate, so its room names apply only once a room resolves.
 - Date suppression on its own (Part 1) stays withdrawn.
+
+<a id="pl-s334" data-chapter-id="pl-s334"></a><a id="pl-d220"></a>
+## D220 The unique story-named "yourself" object is the I7 player (M05b); date-named saved rooms repair (D219)
+
+**Lifecycle:** Implemented in a03b6c0 (player) and b3fc5bc (repair) during the Codex outage. Grok, as the grok seat, audited the player rule (#2619): no counterexample in 8 titles. The real Codex review is pending.
+
+**Key files:** js/ZRamReader.js (resolvePlayer), js/MapTopology.js (ensureRoom), harness/m12-room-short-name.js.
+
+**Player (M05b).**
+- Facility's player 46 has a blank compiled short name and no self vocabulary, so resolvePlayer returned 0 and the map stayed empty.
+- Its story short_name (D219) is exactly "yourself". D201 treats exact "yourself" as the strongest unnamed-I7 token.
+- An animate object counts as parser-self when it is the ONLY blank-named object whose story name is "yourself" (cached per collection generation).
+- Result: Facility look/north/south maps 45 Lobby > 48 Visitor Gallery > 45 Lobby. WiR1 59, WiR2 65 and Warbler 48 are unchanged.
+- Residual: games where the player switches bodies are untested.
+
+**Repair (D219).**
+- Maps saved before D219 kept WiR rooms frozen under the date (D62 lets only internal labels upgrade).
+- A stored name that the status decoder classifies as a metric, and not as a room label, now upgrades once like an internal label.
+- Non-metric names such as Wumpus "Room #N" stay frozen.
+
+**Tests:** m12-room-short-name 14/0, d46 27/0, d201 69/0, d23 88/0, m01 40/0, d218 15/0, pellets-inventory-live OK.

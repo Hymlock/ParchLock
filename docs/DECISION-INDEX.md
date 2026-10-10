@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 103 decisions across
-8903 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 104 decisions across
+8925 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -21,6 +21,7 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 
 | D | claim | files | games |
 |---|-------|-------|-------|
+| D220 | The unique story-named "yourself" object is the I7 player (M05b); date-named saved rooms repair (D219) | js/ZRamReader.js js/MapTopology.js harness/m12-room-short-name.js |  |
 | D219 | Rooms with a blank compiled name take the story's own shortname (M12) | js/ZRamReader.js js/WorldModel.js harness/m12-room-short-name.js |  |
 | D218 | Inform 7 compiler bookkeeping properties are never exits (M04 part A) | js/ZRamReader.js harness/d218-i7-metadata.js |  |
 | D217 | Library-compass lane: exit labels from the game's own compass (M01/M03) | js/ZRamReader.js js/ZRamProvider.js harness/m01-library-compass.js |  |
