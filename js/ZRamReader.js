@@ -323,7 +323,9 @@ var ZRamReader = {
                 return x ? ZRamReader.u16(mem, x.dataAddr) : null;
             };
             var key = (mem && mem.buffer) || mem, cache = ZRamReader._storyNameCache, form = null;
-            try { form = cache && cache.get(key); } catch (eC) {}
+            // Valid for one collection generation only (VM heap is mutable).
+            var formGen = (typeof ZRamProvider !== "undefined" && ZRamProvider.collectGeneration) || 0;
+            try { form = cache && cache.get(key); if (form && form.gen !== formGen) form = null; } catch (eC) {}
             if (!form) {
                 var counts = {}, total = 0, n = ZRamReader.objectCount(mem, h);
                 for (var o = 1; o <= n; o++) {
@@ -336,7 +338,7 @@ var ZRamReader = {
                 }
                 var top = Object.keys(counts).map(Number).sort(function (a, b) { return counts[b] - counts[a]; })[0];
                 form = (total && top !== 0 && top !== 65535 && counts[top] >= 0.9 * total)
-                    ? { block: true, header: top } : { block: false };
+                    ? { block: true, header: top, gen: formGen } : { block: false, gen: formGen };
                 try { if (cache) cache.set(key, form); } catch (eS) {}
             }
             var val = valueOf(id);

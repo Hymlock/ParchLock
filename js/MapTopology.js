@@ -319,8 +319,17 @@ var MapTopology = {
                     try {
                         var storedDecode = StatusGridDecoder.decode(String(room.Name));
                         var incomingDecode = StatusGridDecoder.decode(String(name));
+                        // Only the story's own name for THIS object may replace it
+                        // (codex #2666): an authored date-shaped room keeps its name,
+                        // because its story name equals the stored one.
+                        var storyOwn = "";
+                        try {
+                            if (oid && typeof ZRamReader !== "undefined" && ZRamReader.storyShortName && typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) {
+                                storyOwn = ZRamReader.storyShortName(ZRamProvider.getMem(), Number(oid));
+                            }
+                        } catch (eOwn) {}
                         if (storedDecode.roomLabel === "" && (storedDecode.metrics || []).length
-                            && incomingDecode.roomLabel !== "") currentInternal = true;
+                            && incomingDecode.roomLabel !== "" && storyOwn && name === storyOwn && storyOwn !== room.Name) currentInternal = true;
                     } catch (eMetricName) {}
                 }
                 if (!hadRealIdAlready) {
