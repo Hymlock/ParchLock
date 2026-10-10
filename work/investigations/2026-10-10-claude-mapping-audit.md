@@ -312,3 +312,17 @@ Exclusions use Tier A only; Tier B/C stay provisional and are labelled as such. 
   - I7 lane: map-storage reads (needs a loadw/array-read observation) are a research gap.
   - Computed exits (routine-valued, door_to): need call/result provenance, also a research gap.
 - **No observed evidence = unknown:** the exit is kept as today but marked "causal-unconfirmed", never deleted.
+
+**M10 final rule, verified on Spirit (codex #2393 counterexample handled):** a directional exit (R, D -> X) is recorded only when ALL of the following hold:
+- (1) the game read the door_dir of a COMPASS object (the M01-detected compass children only) this turn, giving property P;
+- (2) the static value of R's property P (RAM read, as the decoder does) is X, or a door leading to X;
+- (3) the player was insert_obj'd into X.
+
+A blocked attempt that reads the compass fails (2), because its property is 0 or a refusal routine, never the timer's destination.
+
+| Spirit turn | Compass read | R.prop[P] | Player -> | Exit |
+|---|---|---|---|---|
+| 4th N (awakening) | none on a compass object | n/a | 22 Your Quarters | NO (timed) |
+| next N | get_prop(2,10)=7 | Quarters.p7 = 25 | 25 Hallway | YES |
+
+My probe briefly mis-picked get_prop(20,26), a non-compass read, which confirms that reads must be restricted to compass objects. Outside proven I6-compass stories (I7, ZIL, routine exits) the evidence is unknown, never "no exit".
