@@ -229,9 +229,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 334 headings; 103 decision rows; 437 registered units.
-**Last registered unit:** `pl-s334`. **Body SHA-256 (LF):**
-`202510de49e40c91ab543ae07647e20980c155eae932f63bf6d6d9e318b8d9eb`
+**Local manifest:** 335 headings; 103 decision rows; 438 registered units.
+**Last registered unit:** `pl-s335`. **Body SHA-256 (LF):**
+`04bd8ab53459f2c852d59f253b2fbdcc893fec204e6f47202e48281582a6eee0`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -748,6 +748,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s332](#pl-s332) | D218 Inform 7 compiler bookkeeping properties are never exits (M04 part A) | H2 | Implemented / audited (Codex #2575) |
 | [pl-s333](#pl-s333) | D219 Rooms with a blank compiled name take the story's own short_name (M12) | H2 | Implemented; adversarial audit pending |
 | [pl-s334](#pl-s334) | D220 The unique story-named "yourself" object is the I7 player (M05b); date-named saved rooms repair | H2 | Implemented; real Codex review pending |
+| [pl-s335](#pl-s335) | D221 DarkScope judges only the latest reply (M11) | H2 | Implemented; grok audited, real Codex review pending |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -8922,3 +8923,22 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
 - Non-metric names such as Wumpus "Room #N" stay frozen.
 
 **Tests:** m12-room-short-name 14/0, d46 27/0, d201 69/0, d23 88/0, m01 40/0, d218 15/0, pellets-inventory-live OK.
+
+<a id="pl-s335" data-chapter-id="pl-s335"></a><a id="pl-d221"></a>
+## D221 DarkScope judges only the latest reply (M11)
+
+**Lifecycle:** M11 reproduced the plan 8367 residual: DarkScope's whole-history dark verdict. The direction was agreed in research (#2431/#2432: no evidence is not light evidence; clear only on a printed current-room description). Implemented in 04dac9a. Grok audited it (#2624) and raised three residuals: (1) a false clear from a line starting with the room name, now on its queue; (2) echo detection, verified on HHG and Zork; (3) TURN ON LIGHT without LOOK, verified: HHG's reply prints "Bedroom, in the bed" and clears. The real Codex review is pending.
+
+**Key files:** js/DarkScope.js, harness/m11-dark-scope.js.
+
+**Contract:** DarkScope reads only the lines after the last command echo.
+- A dark cue sets dark. "it is pitch black" was added; HHG and Zork use it.
+- A current-room description with no dark cue clears dark. That is a styled subheader, or a line starting with the structurally resolved room's name (HHG prints "Bedroom, in the bed" as plain text).
+- Any other reply leaves the state unchanged.
+- The whole transcript is never scanned. payload.darkness stays as before; the HUD chip, pl-dark-scope and the dimming now follow the current turn.
+
+**Evidence:**
+- m11-dark-scope 4/0: HHG is dark at the start, cleared after TURN ON LIGHT/LOOK, and not re-darkened by INVENTORY; the Zork cellar without the lamp is dark.
+- The old code fails both HHG clearing checks. exits-safe-area 46/0.
+
+**Open:** a deterministic darkness source (Inform location global holding the library darkness object; ZIL lit state) is still research.
