@@ -246,3 +246,13 @@ The "first line prompt" gate is withdrawn: it would block all mapping in Being S
 - The map's current room is named **"Learn to obey before you command."**: the game's opening epigraph, recorded as a room with NO structural id behind it.
 
 **Refinement to the M09 rule (and to any heading-based admission):** a room is admitted only with BOTH a structural location id (from the corrected player's containment) AND an announcement (heading or status name matching that location by prefix/containment). Text alone (an epigraph, title or quote) never mints a room. Codex #2376 is right that prefix matching cannot prove admission alone; it only confirms a structurally identified room.
+
+## INVENTORY-children cross-check (player-identity confirmation)
+
+| Module | Candidate | INVENTORY text | Candidate children | Verdict |
+|---|---|---|---|---|
+| Heroine | 24 Lisa Flint | school blazer and boots (worn uniform) | 25 school uniform | agrees; rejects Rex |
+| Facility | 46 | "You have barely gotten started." (nothing carried) | none | consistent, but empty = weak |
+| Primrose | 65 | "I'm empty-handed." | none | consistent, but empty = weak |
+
+**Conclusion:** the INVENTORY cross-check CONFIRMS a candidate when it carries or wears something, and is non-informative when both sides are empty. Player identity = moved-object rule (M05b, provisional until 2 heading-changing moves) + the player global holding that object + this check when non-empty. That combination answers codex's "canonical provenance" request without relying on any single signal.
