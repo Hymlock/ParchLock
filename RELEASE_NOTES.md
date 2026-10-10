@@ -1,6 +1,6 @@
 # ParchLock Release Notes
 
-## Pending widget build
+## Build 67 - 2026-10-09
 
 - Larger, badge-free rotating storybook widget, starting at 2?2 and resizable from 1?1 to 4?4 on supported launchers. Installation explains the resize handles. Placement no longer opens the game over Android's confirmation sheet. Home/return does not rotate the picture.
 
