@@ -2632,7 +2632,14 @@ body.has-line-input.map-open #windowport::after { width: calc(52vw - 56px); }
 .pl-inv-nested { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; margin: 2px 0; }
 .pl-inv-verb { font-size: 11px; opacity: 0.9; }
 /* BUILD 44 ? dark scope + graphics dock (play.html chrome) */
-html.pl-dark-scope #windowport { filter: brightness(0.92); }
+/* Item 5 (APK 64): dim with opacity, not filter. A CSS filter makes #windowport
+ * the containing block for its position:fixed children (the input, its buttons
+ * and the bottom protector), so in dark rooms their viewport coordinates were
+ * rebased by the panel's own offset: the input shifted right and moved between
+ * rooms, and the protector band left a gap at the left where story text showed
+ * (the same trap ARCHITECTURE ch. 55 records for the top protector, 2026-09-29).
+ * Opacity does not create a containing block. */
+html.pl-dark-scope #windowport { opacity: 0.92; }
 html.pl-dark-scope #map { box-shadow: inset 0 0 40px rgba(0,0,0,0.45); }
 html.pl-dark-scope #map::after {
   content: "dark (heuristic)";
@@ -5048,4 +5055,99 @@ body.main-menu #toolbar button, body.main-menu #toolbar button span { font-famil
     overflow-wrap: anywhere;
     box-shadow: 0 4px 20px #0005;
     pointer-events: none;
+}
+
+/* Item 5 (operator): the story text must end at the top of the bottom
+ * protective area, which includes the direction handle (10 + 44 + 10 + 44px
+ * above the bottom, as positioned in #pl-dirpad-handle) plus a 4px gap. */
+body.pl-mobile.has-line-input #windowport::after,
+body.pl-mobile.has-char-input #windowport::after {
+	height: calc(112px + var(--pl-handle-h, 0px) + var(--pl-kb-inset) + var(--pl-safe-bottom)) !important;
+}
+
+/* Item 5 (operator, screenshot operator-2026-10-09b/item5-bottom-exit-placement):
+ * from the bottom up: the bottom exit banner at the screen edge (above the
+ * gesture bar) with its own protective backing, then the input row, then the
+ * direction handle, then the story text. --pl-bottom-dock is the measured
+ * banner height plus 8px (0 when a room has no bottom exits, so those rooms
+ * are unchanged). */
+:root { --pl-bottom-dock: 0px; }
+body.pl-mobile { --pl-bottom-dock: var(--pl-edge-border); }
+body.pl-mobile #exits .row.horizontal.bottom {
+	bottom: calc(var(--pl-mobile-edge-gutter) + var(--pl-safe-bottom) + var(--pl-kb-inset)) !important;
+	left: var(--pl-mobile-shell-left);
+	width: var(--pl-mobile-shell-width);
+	background: var(--pl-bg, #0c1412);
+	box-shadow: 0 -4px 0 var(--pl-bg, #0c1412);
+}
+body.pl-mobile #windowport .BufferWindow .Input.LineInput,
+body.pl-mobile.map-open #windowport .BufferWindow .Input.LineInput,
+body.pl-mobile #windowport .Input.CharInput,
+body.pl-mobile.map-open #windowport .Input.CharInput,
+body.pl-mobile #pl-input-mic,
+body.pl-mobile #pl-input-submit {
+	bottom: calc(10px + var(--pl-handle-h, 0px) + var(--pl-kb-inset) + var(--pl-safe-bottom) + var(--pl-bottom-dock)) !important;
+}
+body.pl-mobile #pl-dirpad-handle {
+	bottom: calc(10px + 44px + 10px + var(--pl-handle-h, 0px) + var(--pl-kb-inset) + var(--pl-safe-bottom) + var(--pl-bottom-dock)) !important;
+}
+body.pl-mobile.has-line-input #windowport::after,
+body.pl-mobile.has-char-input #windowport::after {
+	height: calc(112px + var(--pl-handle-h, 0px) + var(--pl-kb-inset) + var(--pl-safe-bottom) + var(--pl-bottom-dock)) !important;
+}
+body.pl-mobile #windowport .BufferWindow {
+	padding-bottom: calc(112px + 12px + var(--pl-handle-h, 0px) + var(--pl-kb-inset) + var(--pl-safe-bottom) + var(--pl-bottom-dock)) !important;
+}
+
+/* Item 5 (operator, 2026-10-09): left, right and bottom get the SAME fixed
+ * border, the 8px edge gutter plus one exit label's thickness; only the top
+ * band stays dynamic. Before, D203 gave only the left a 32px lane (x=30) while
+ * the right had none (8px, labels over the text). */
+body.pl-mobile {
+	--pl-edge-border: 26px;
+	--pl-mobile-shell-left: calc(var(--pl-safe-left) + var(--pl-edge-border));
+	--pl-mobile-shell-right: calc(var(--pl-safe-right) + var(--pl-edge-border));
+}
+body.pl-mobile #exits .row.vertical.left { left: calc(var(--pl-mobile-edge-gutter) + var(--pl-safe-left, 0px)); }
+body.pl-mobile #exits .row.vertical.right { right: calc(var(--pl-mobile-edge-gutter) + var(--pl-safe-right, 0px)); }
+/* The label is one line thick; its tap area still reaches 32px through an
+ * invisible extension (local block axis = on-screen thickness after rotation). */
+body.pl-mobile #exits .row.vertical .exit.shown .dir-name,
+body.pl-mobile #exits .row.vertical .exit.shown .room-name {
+	min-height: 18px !important;
+	position: relative;
+}
+body.pl-mobile #exits .row.vertical .exit.shown .dir-name::after,
+body.pl-mobile #exits .row.vertical .exit.shown .room-name::after {
+	content: ""; position: absolute; left: 0; right: 0; top: -7px; bottom: -7px;
+}
+body.pl-mobile {
+	--pl-mobile-shell-width: calc(100vw - var(--pl-mobile-shell-left) - var(--pl-mobile-shell-right));
+	--pl-mobile-readable-left: calc(var(--pl-mobile-shell-left) + var(--pl-mobile-cell-padding));
+	--pl-mobile-readable-right: calc(var(--pl-mobile-shell-right) + var(--pl-mobile-cell-padding));
+}
+/* The input row mirrors its left inset on the right: mic, then submit, then the field. */
+body.pl-mobile #pl-input-mic { right: var(--pl-mobile-readable-right) !important; }
+body.pl-mobile #pl-input-submit { right: calc(var(--pl-mobile-readable-right) + 44px + 6px) !important; }
+body.pl-mobile #windowport .BufferWindow .Input.LineInput,
+body.pl-mobile.map-open #windowport .BufferWindow .Input.LineInput { right: calc(var(--pl-mobile-readable-right) + 44px + 6px + 44px + 6px) !important; }
+body.pl-mobile #windowport .Input.CharInput,
+body.pl-mobile.map-open #windowport .Input.CharInput { right: calc(var(--pl-mobile-readable-right) + 44px + 6px) !important; }
+/* The bottom border is fixed, so its labels stay on one line (long names end
+ * in an ellipsis) instead of wrapping into the input row. Shown exits share
+ * the row; hidden directions take no column. */
+body.pl-mobile #exits .row.horizontal.bottom {
+	display: flex !important;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+	height: calc(var(--pl-edge-border) - var(--pl-mobile-edge-gutter)) !important;
+	overflow: hidden;
+}
+body.pl-mobile #exits .row.horizontal.bottom > .exit.shown {
+	flex: 0 1 auto; min-width: 0; max-width: 100%;
+	display: inline-flex; align-items: center; white-space: nowrap;
+}
+body.pl-mobile #exits .row.horizontal.bottom .room-name {
+	white-space: nowrap !important; overflow: hidden; text-overflow: ellipsis; min-width: 0;
 }

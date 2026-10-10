@@ -248,7 +248,7 @@ Screenshots: `work/investigations/operator-2026-10-09b/`. The list was taken on 
   - **Partly fixed (4d6d0c0):** only the inventory load-summary grammar ("You are carrying N lbs ... It's all worth ...") is now hidden. **Still open:** the operator's "first status check not headless ... many not some!" (screenshot `operator-2026-10-09b/item2-many-not-some.jpg`) means MANY modules leak on the first status check. It is not solved by per-grammar recognisers; it needs a general deterministic fix (see the R1-R7 proposal file for the rejected routes).
 - [x] **3. Commands take up to 6 seconds**, even after a phone restart. Possibly linked to item 2 (background probes queued behind commands).
 - [ ] **4. Duplicate items lose their names** ("nutritiou" twice, with instance badges, instead of "food pellet"). The plural prose "two food pellets" cannot be mapped to each instance, so the name falls back to the 9-character dictionary word. A regression.
-- [ ] **5. Story text is visible below the bottom protected border**, left of the input. The input position moves (x 97 on one screen, 170 on another), and the protector starts at the input.
+- [x] **5. Story text is visible below the bottom protected border**, left of the input. The input position moves (x 97 on one screen, 170 on another), and the protector starts at the input.
   - **Fix candidate (claude, uncommitted, awaiting codex audit):** root cause is DarkScope's `filter: brightness(0.92)` on `#windowport`, which made the panel the containing block for its fixed children (the input, its buttons, the bottom protector), rebasing them by the panel offset: the input sat at x=70 instead of 40 and shifted between rooms, and the band started 30 px in, leaving a text gap. This is the same trap ARCHITECTURE ch. 55 records for the top protector. Fix: dim with `opacity: 0.92`, and the band reaches the top of the direction handle (112 px plus insets).
   - **Operator follow-up (separate, not yet done; screenshot `operator-2026-10-09b/item5-bottom-exit-placement.png`):** from the bottom up:
     1. the bottom exit banner at the screen's bottom edge (above the gesture bar) with its own protective spacing, mirroring the other edge banners;
@@ -256,6 +256,14 @@ Screenshots: `work/investigations/operator-2026-10-09b/`. The list was taken on 
     3. the direction handle;
     4. the story text, which ends at the handle's top.
     When a room has bottom exits, the input, buttons, handle and protector shift up by the measured banner height (`--pl-bottom-band-h`); rooms without bottom exits are unchanged. Today the banner sits above the handle, inside the reading area.
+  - **Implemented (claude, operator-directed; codex audit pending, codex was unavailable):**
+    - dark rooms dim with opacity instead of a filter, so the input, buttons and protector are no longer rebased;
+    - left, right and bottom borders are a fixed 26 px each, and only the top band is dynamic (operator);
+    - the bottom exits sit at the screen edge under the input, on one line with an ellipsis;
+    - the input row mirrors its left inset on the right;
+    - the protector reaches the top of the handle.
+    Screenshots: `operator-2026-10-09b/item5-after-zork.png` and `item5-after-rails.png`. exits-safe-area is 46/0 and layout-regression passes; the d96 timeout and the d105 "Arrow keys" failure were pre-existing.
+  - **Found while testing (new, not fixed):** at Zork I West of House the east rail reads "punctured boat", although east there is only the boarded door. This is wrong map exit data.
 - [ ] **6. Underlining is inconsistent and its order looks wrong:** "Exit 1" and "Exit 3" are underlined, "Exit 2" and "Exit 4" are not, and "exit 4" is unmarked everywhere. Part is the newest-occurrence rule (D214 U1), part is unexplained.
   - **Operator rule (2026-10-09), this is the spec:** within ONE reply (the output of one command), an item is underlined only at its FIRST mention; later mentions in the same reply are ignored. Only a NEW reply that mentions the item again moves the underline forward, to the first mention in that new reply. Current bug: the newest-occurrence rule (D214 U1) moves the underline forward inside the same reply, so it jumps within one paragraph.
 - [ ] **7. "light" is underlined although it is not an item** (fungus description). It is probably a dictionary synonym of a real object.

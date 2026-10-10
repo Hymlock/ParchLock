@@ -69,7 +69,10 @@ assert(!!notes && /z-index:\s*24/.test(notes[1]), "the notation icon is lifted t
 // --- the reserve: this is what "pushes the text display window down" ---
 assert(/body\.pl-mobile\s+#windowport\s+\.BufferWindow\s*\{[^}]*padding-top:\s*calc\(var\(--pl-band-h/.test(css), "the story buffer reserves the band's real measured height as padding-top -- the text is pushed down rather than overlapped");
 assert(/body\.pl-mobile\s+#windowport::before\s*\{\s*content:\s*none/.test(css), "the old windowport-fixed protector is retired so dark-room filters cannot rebase it into story text");
-assert(/html\.pl-dark-scope\s+#windowport\s*\{\s*filter:/.test(css), "the dark-room filter that creates the fixed-position containing block remains present, so the regression condition is explicitly covered");
+// Item 5 (APK 64): the hazard itself is removed. Dark rooms dim #windowport with
+// opacity, which (unlike filter/transform) creates no containing block for the
+// fixed input, its buttons and the bottom protector, so none of them is rebased.
+assert(/html\.pl-dark-scope\s+#windowport\s*\{\s*opacity:/.test(css) && !/html\.pl-dark-scope\s+#windowport\s*\{[^}]*(?:filter|transform|perspective|contain|will-change)\s*:/.test(css), "dark rooms dim the story panel with opacity and never with filter/transform, so fixed children (input, buttons, bottom protector) are not rebased");
 assert(/--pl-band-h:\s*0px/.test(css), "--pl-band-h defaults to 0px, so desktop and any engine without ResizeObserver reserve nothing");
 
 // --- overlay ownership and left-edge reachability ---------------------
