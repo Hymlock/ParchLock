@@ -4107,6 +4107,29 @@ var StatTracker = {
     // Reply forms that legitimately continue past the reply's first paragraph.
     // Single-paragraph replies need no entry: the first paragraph is always
     // the reply, whatever state it describes.
+    // Item 2 (APK 64, codex R7 #2312): the inventory's own carried-load summary
+    // ("You are carrying 4 lbs of stuff (10% of your current capacity). It's
+    // all worth about $35.") is reply, in any game using that grammar. The
+    // WHOLE paragraph must consist of carry sentences built from the D169 CARRY
+    // forms; one other sentence (an attack) and it is not reply, so D207 still
+    // shows real events.
+    CARRY_SENTENCES: [
+        // Metric words only after the number (codex #2316): "of stuff" and the
+        // capacity clause, never free prose such as "and the wumpus bites you".
+        /^you(?:'re| are) (?:currently )?carrying \d+ ?(?:lbs?|pounds?|kg|kilos?)(?: of stuff)?(?: \(\d+ ?% of your current capacity\))?\.$/i,
+        /^it(?:'s| is) all worth (?:about )?(?:[$£€] ?\d+|\d+ (?:dollars?|gold|zorkmids?))\.$/i
+    ],
+    isCarrySummaryLine: function (text, verb) {
+        if (!/^(?:i|inv|inventory|take inventory)$/i.test(String(verb || "").trim())) return false;
+        var t = String(text || "").replace(/ /g, " ").replace(/\s+/g, " ").trim();
+        if (!t) return false;
+        var sentences = t.match(/[^.!?]+(?:[.!?]+|$)/g) || [];
+        return sentences.length > 0 && sentences.every(function (s) {
+            s = s.trim();
+            return StatTracker.CARRY_SENTENCES.some(function (re) { return re.test(s); });
+        });
+    },
+
     isKnownProbeReplyLine: function (text, fact) {
         var t = String(text || "").replace(/\u00a0/g, " ").trim();
         if (!t) return true;
@@ -4188,6 +4211,7 @@ var StatTracker = {
             // The VM's own prompt is restored, but it is not an event -- a bare
             // ">" or any line holding the live input ("Combat>" in LLR3).
             if (/^>\s*$/.test(text) || (line.querySelector && line.querySelector(".Input, .LineInput, .CharInput"))) { unhide(line); return; }
+            if (StatTracker.isCarrySummaryLine(text, verb)) return;   // item 2: the inventory's load summary
             if (StatTracker.isKnownProbeReplyLine(text, fact)) {
                 // A known reply heading that ends in a colon ("In addition, you
                 // are wearing:") owns the paragraph it introduces (Codex #1517).

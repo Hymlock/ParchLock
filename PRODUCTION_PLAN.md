@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 329 headings; 103 decision rows; 432 registered units.
 **Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
-`d5184d24583d4dbae80bb32f619cec87ecf266f7b20c290bba21651f32978716`
+`1c0fb85dc5008ed023e129221ef003b96f0735db05f207a87f4008aa1a71056a`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -7991,6 +7991,13 @@ the reply states someone had observed. Treasures' `PROWESS_REPLY` matched only t
 uninjured reply, so "You wield the GLADIUS SWORD ... Hit Points are 9 (out of 16)." was
 printed and spoken. Wumpus never leaked because the inventory carry probe hid its whole span,
 which is the precedent this decision restores.
+
+**Item 2 amendment (APK 64 operator report, 2026-10-09; blind claude b45f31b and codex; R1-R6 rejected, R7 consensus codex #2312/#2318):** wump2ka's inventory load summary ("You are carrying 4 lbs of stuff (10% of your current capacity). It's all worth about $35.") followed the item list after a blank line, was not on the known-reply list, and was released as a turn event: shown and spoken. Fix: `StatTracker.isCarrySummaryLine`, used in an inventory-origin span, treats a later paragraph as reply only when **every** sentence is a metric-only carry sentence (`CARRY_SENTENCES`, from the D169 CARRY forms; nothing but measured words after the number). Real events, repeated events and mixed paragraphs are still released (operator: "displayed and read if possible ... without also displaying any status command requests"). Rejected along the way:
+- learned recurrence (it would learn repeated attacks);
+- META flagging of the probe verb (it skips authored before-hooks);
+- the turns-global boundary (no confirmed slot or banner at first open, live; ZIL CLOCKER interrupts precede MOVES).
+
+Residual: other unknown reply forms keep D207 behaviour. Operator: no per-game adjusting (309 modules). Proof: `harness/probe-release.js` 16/0, status-probe-matrix wump2ka at 360 and 1280 PASS, stat-tracker 211/0, death-terminal 40/0, e3 8/0, status-probe-headless 26/0 (codex).
 
 **Contract** (js/StatTracker.js):
 
