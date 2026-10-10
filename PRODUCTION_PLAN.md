@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 329 headings; 103 decision rows; 432 registered units.
 **Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
-`575552b45c16bc4c78653264cf36a7be46f64cb2f92238fbc0adad5fc86f4117`
+`d5184d24583d4dbae80bb32f619cec87ecf266f7b20c290bba21651f32978716`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -8675,7 +8675,7 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
     - Size (operator, measured): 2x2 by default, resizable from 1x1 to 4x4; the consent screen and Options explain how to resize.
     - **The old shortcut (operator: "It should remove any old shortcut"):** apps cannot unpin. Once a real widget id exists, the owned `parchlock-rotating` pin is disabled with "Replaced by the ParchLock widget", and no new pins are ever created.
     - **Proof (codex, operator's phone):** placement gate, badge-free art, resize 1x1 to 4x4 unclipped, tap launches, Home and return keep the scene and PID, a new Activity advances exactly once; actual-Activity doubles 12/0; compile and lint PASS.
-    - **Audit blocker (claude #2289):** `retireOwnedPin` inside `render` must not be able to abort the commit; pending the fix.
+    - **Audit (claude #2289):** one blocker, that `retireOwnedPin` inside `render` could abort the scene commit. It was fixed in 8a12b95 (retirement catches its own exceptions), and the consent and Options text now say "then tap the widget to start". **Consensus: ACCEPTED (claude #2291).**
 - **Repo cleanup closed (operator; sealed inventories `2026-10-09-claude-cleanup-blind.md` and `2026-10-09-codex-cleanup-blind.md`; R1 codex, R2 claude; consensus #2191; implemented 27d60e7; codex audit ACCEPT #2194):**
   - Removed 191 tracked scratch probes that are unreferenced and unloaded. The list is `work/investigations/2026-10-09-cleanup-unreferenced-probes.txt`, and git history keeps them.
   - Kept 33 referenced probes, and committed 14 cited ones.
