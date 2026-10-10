@@ -229,9 +229,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 336 headings; 103 decision rows; 439 registered units.
-**Last registered unit:** `pl-s336`. **Body SHA-256 (LF):**
-`10da9c6c5ad63138617607caec06f82af70c8583ab028c70db201f85eb3cdfea`
+**Local manifest:** 337 headings; 103 decision rows; 440 registered units.
+**Last registered unit:** `pl-s337`. **Body SHA-256 (LF):**
+`b76ef5451cae901c47a9eef1b7acce270acb12a1a73a6d5e1e1d27f7e13bb2c8`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -750,6 +750,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s334](#pl-s334) | D220 The unique story-named "yourself" object is the I7 player (M05b); date-named saved rooms repair | H2 | Implemented; real Codex review pending |
 | [pl-s335](#pl-s335) | D221 DarkScope judges only the latest reply (M11) | H2 | Scoped-accepted (Codex #2702); HHG in-bed residual open |
 | [pl-s336](#pl-s336) | D222 Furniture and vehicles inside a top-level Inform room are not the room (M08) | H2 | Implemented, active broadly, tested on seeds; provenance unaccepted (parked) |
+| [pl-s337](#pl-s337) | D223 Inform 7 exits from Map_Storage for measured titles (M04-B) | H2 | Scoped-accepted (Codex #2804) |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -8985,3 +8986,31 @@ Guards: d46 27/0, d201 69/0, d23 88/0, m12 14/0.
 - No "unknown" lane is introduced.
 
 **Open:** movement while seated or in a vehicle, and look-ahead from the climbed room (grok #2669: seed beyond-boot pass). The Vespers MENU/HELP menu room (M09) is separate.
+
+<a id="pl-s337" data-chapter-id="pl-s337"></a><a id="pl-d223"></a>
+## D223 Inform 7 exits from Map_Storage for measured titles (M04-B)
+
+**Lifecycle:** M04 part B. The research measured the matrix (claude), then the column property ik3_count (Codex #2716), then a forward disassembly of the story's own MapConnection code (claude zdis, Codex #2736/#2750). A generic runtime discovery was rejected (#2761), in favour of digest-bound measured facts (#2764), source-owned reconciliation (#2770/#2778) and the full room-pair domain (#2781). Implemented a160b04, feb624b and 809e02e; root Codex scoped-ACCEPTED it in #2804.
+
+**Key files:** js/ZRamReader.js (i7MapStorageLane, i7MapStorageExits, lookAheadExits hook), js/ModuleStatFactsClaude.js (mapStorage facts), js/MapTopology.js (link guard, reconcileI7MapStorage, source preserved in updateFromPayload), js/WorldModel.js (reconcile before mergeConfirmedExits; no confirming of unwalked own hints), harness/m04b-i7-mapstorage.js. Research: work/investigations/zdis.cjs, m04b-*-mapstorage-disasm.txt, 2026-10-10-claude-M04B-proposal-R2.md.
+
+**Evidence (combined native / counter / disassembly measurement, not a universal ABI):**
+- Warbler routine 144480 (called from 144240): RV__Pr(dir, #77), get_prop room #25, mul #13, add, loadw #17062.
+- Facility: get_prop #25, mul #12, add, loadw #30128.
+- Room domains: Warbler 5 pairs; Facility 130 pairs. Object 210 holds prop 25 as a 1-byte value and is excluded, so prop 25 presence alone is not room proof.
+
+**Contract:**
+- Facts are bound to the executable digest and stable header; the runtime never disassembles.
+- Every collection generation re-validates the complete room-id:counter list, the direction counters and the table extent in dynamic memory; any mismatch means nothing is decoded.
+- Cells: 0 none; a listed room becomes an exit hint; a door_to object becomes a door stub (never executed); anything else is skipped. The custom road direction is not labelled.
+- Hints carry source i7-mapstorage and hintOnly. They are reconciled before mergeConfirmedExits: unwalked own hints whose cell is gone or changed, or whose decoder is invalid, are removed along with their metadata.
+- The lane never writes over any alias (full, short D69, canonical) holding another source's metadata, a walked proof or a bare edge, and never clears travelledTo.
+- Lane state is bound to the collection generation and the interpreter memory.
+
+**Tests:** m04b-i7-mapstorage 15/0 (root 12/0): native Warbler south and Facility north; zero, change, invalid and restore cells; walked and unowned survive; bare, short-key and foreign-state contracts; Advent inactive. Guards: d23 88, d218 15, m01 40, d46 27, exit-calibrator 26, d214-zil 17.
+
+**Scope and residuals:**
+- Two titles only; any other I7 title is unchanged.
+- The road (custom direction) is unlabelled.
+- Door cells are stubs.
+- No generic scanner. Extending to more titles needs per-title measured facts.

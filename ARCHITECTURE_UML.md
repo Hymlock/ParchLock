@@ -209,9 +209,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 105 headings; 0 decision rows; 105 registered units.
-**Last registered unit:** `ar-s105`. **Body SHA-256 (LF):**
-`941a520508a9e16ead9ec5f956ca639b0ee1c2ad66dce8c34ca4351795134b2d`
+**Local manifest:** 106 headings; 0 decision rows; 106 registered units.
+**Last registered unit:** `ar-s106`. **Body SHA-256 (LF):**
+`01086e828bc60085b01f264b7f6df7e81bfa228d3cb5ca6fcf8a455cf37e1ecf`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -396,6 +396,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s103](#ar-s103) | 77. Library-compass lane for exit labels (D217) | H2 | Implemented / audited |
 | [ar-s104](#ar-s104) | 78. Inform 7 bookkeeping properties are not exits (D218) | H2 | Implemented / audited |
 | [ar-s105](#ar-s105) | 79. DarkScope: one heuristic darkness verdict per tick (D221) | H2 | Scoped-accepted (Codex #2702) |
+| [ar-s106](#ar-s106) | 80. Inform 7 Map_Storage look-ahead lane (D223) | H2 | Scoped-accepted (Codex #2804) |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -4086,3 +4087,22 @@ flowchart TD
 - A positional suffix counts only when its object is on the player's containment chain strictly below the room (structural short name or parser words). The D219 story name is not used.
 - A payload.darkness true from another source would win (defensive guard only; no provider transports a native darkness value today). Other HUD entries are preserved.
 - This is heuristic light evidence, not deterministic darkness proof. Open residual: the HHG bed (an unnamed, parentless container) cannot prove "Bedroom, in the bed".
+
+<a id="ar-s106" data-chapter-id="ar-s106"></a><a id="ar-ch80"></a>
+## 80. Inform 7 Map_Storage look-ahead lane (D223)
+
+Contract: [D223](PRODUCTION_PLAN.md#pl-d223).
+
+```mermaid
+flowchart TD
+  F[ModuleStatFactsClaude mapStorage fact: digest + header] --> V[i7MapStorageLane: re-validate pairs, counters, extent each generation]
+  V -->|valid| X[i7MapStorageExits: cells -> hints source i7-mapstorage]
+  V -->|invalid| N[no decoded exits]
+  X --> L[lookAheadExits -> payload.exits]
+  L --> R[reconcileI7MapStorage: drop unwalked own hints whose cell changed]
+  R --> M[mergeConfirmedExits: never confirms unwalked own hints]
+  M --> U[updateFromPayload -> link: source kept; never overwrites other source, walked proof or bare edge on any alias]
+```
+
+- The runtime never disassembles: offline research (work/investigations/zdis.cjs) produced the measured facts.
+- Lane state is bound to the collection generation and the memory buffer. Titles without a fact are unaffected.
