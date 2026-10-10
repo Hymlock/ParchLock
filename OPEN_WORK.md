@@ -254,7 +254,7 @@ Goal: narrow down the mapping problems (and status/inventory issues found on the
   - **M07:** virtual rooms. Open.
   - **M08:** furniture minted as a room (planned climb; the v3 lane fixes ZIL cases).
   - **M09:** boot/intro rooms. OPERATOR DECISION 2026-10-10: every room after the first shows and saves as today (no gating; late rooms are jarring). Only the FIRST/boot location needs proof of a real player move, and only in games with no other deterministic source. Design under review on the bus.
-  - **M10:** timed travel recorded as a typed direction. Validated rule for Spirit / direct-I6 (compass read + room property = destination + player move). Provisional elsewhere. Caution: the rule is causal evidence for one move only, not a general exit decoder.
+  - **M10:** timed travel recorded as a typed direction. Observed Spirit direct-I6 contrast (compass read + room property = destination + player move, in the actual traced pc/routine sequence); the candidate causality rule remains provisional. The pattern alone is not sufficient causal proof even for one event (an incidental compass read can coincide with a timed insertion), and it is not a general exit decoder.
   - **M11:** stuck "dark (heuristic)". Known residual (plan 8367) reproduced; open controls.
   - **M12:** a date status adopted as a room name. Legacy fallback bug; smallest candidate agreed.
   - **M13:** stale "(on the X)" qualifier. IMPLEMENTED/AUDITED (b44d47c, D216; Codex #2495), scoped: prevents FUTURE freezes on Inform when X is on the player's chain; does not repair saved labels. The 19 display differences are candidates only.
