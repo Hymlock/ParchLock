@@ -238,6 +238,20 @@ Text implementation accepted2210/2211: owned app prose/documents/exports and att
 
 Commits8291b5f/a8364a7/36d64f6; mutual audit2235/2236. Focused SaveState34/0, native transcript15/0, command-disambiguation51/0, death40/0, label ownership and restore ordering PASS. Native Treasure save/restore and actual cliff death PASS; phone notice geometry/screenshot checked. Source shell151; APK64 is still the previously delivered shell149 binary. No new APK or operator overall completion recorded.
 
+## Mapping research: all 309 modules (operator 2026-10-10, research and planning only)
+
+Goal: narrow down the mapping problems (and status/inventory issues found on the way) and resolve them for every type of game, with per-module fixes allowed where no general rule exists.
+- **Live catalog sweep (codex owns):** [work/mapping-research/COVERAGE.md](work/mapping-research/COVERAGE.md) and the failure classes in [work/mapping-research/OPEN_FINDINGS.md](work/mapping-research/OPEN_FINDINGS.md).
+- **Independent verification and planned fixes (claude owns):** [work/investigations/2026-10-10-claude-mapping-audit.md](work/investigations/2026-10-10-claude-mapping-audit.md); prepared patches in `work/investigations/patches/`.
+- **Class status:**
+  - M01 and M03 confirmed (compass door_dir mapping);
+  - M02 confirmed;
+  - M04 confirmed phantom;
+  - M05 confirmed (patch prepared);
+  - M05b, M06, M07, M08 and M09 planned;
+  - item 2 and inventory planned.
+  Nothing is implemented until the operator chooses.
+
 ## Operator APK 64 issue list (2026-10-09, Wumpus and others): one at a time, standard procedure
 
 Screenshots: `work/investigations/operator-2026-10-09b/`. The list was taken on APK 64; recheck each item against current source before fixing.
