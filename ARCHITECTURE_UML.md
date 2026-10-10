@@ -211,7 +211,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 101 headings; 0 decision rows; 101 registered units.
 **Last registered unit:** `ar-s101`. **Body SHA-256 (LF):**
-`4b5455f41b361c6de957d25dcb2bdb65edca02bc7a44457b35566247cd70b9d9`
+`e82d8eb29716f7c633a0b134074b9a66fb5bc5d58b67d8a5e49df5ca221b3dcb`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -2531,6 +2531,8 @@ rooms even while every measured height remained correct. `#exits` now paints its
 background plus 4px lower edge, making protector geometry identical to the auto-height band by
 construction. `--pl-band-h` still controls only story reflow and is published with `Math.ceil`.
 
+**2026-10-09 bottom correction (D215 item 5).** The same trap held for the bottom: the input, its buttons and the `#windowport::after` protector are fixed children of `#windowport`, so DarkScope's `filter` rebased them, leaving a gap at the left where story text showed, and an input that shifted between rooms. DarkScope now dims with `opacity`, which creates no containing block. On mobile, left, right and bottom share one fixed border (`--pl-edge-border`, 26 px) and only the top band is dynamic. Bottom exits sit at the screen edge under the input, and the protector reaches the top of the direction handle.
+
 Native Glk dialogs are created inside `#windowport` (stacking context 3), whereas `#exits` is its
 sibling at 24; `#dialog_frame`'s internal z-index cannot escape the lower parent. Native/app dialog
 ownership therefore hides `#exits` and `#current-room-notes` for the whole overlay lifecycle, with
@@ -3968,7 +3970,7 @@ sequenceDiagram
     VM->>Transcript: successful native restore_file
     Transcript->>SaveState: stage selected save snapshot
     VM->>Sync: successful state hook
-    Sync->>Sync: clear prior scope, labels and observations
+    Sync->>Sync: clear prior scope and observations (labels only on restart)
     Sync->>SaveState: applyPending(restore_file, generation)
     SaveState-->>Sync: validated map and display labels, or clean state
     Sync->>UI: rebuild from current VM state
@@ -3977,7 +3979,7 @@ sequenceDiagram
 **Invariants:**
 - A save without a snapshot restores a clean map and no labels. Newer state is never carried into an older save.
 - A new game archives a non-empty map as a Maps slot flagged `autoArchive: true`. Pruning to three touches only flagged slots. If the archive fails, nothing is cleared and the failure is reported.
-- **Labels** (`Actionable.labelSnapshot`, `applyLabelSnapshot` and `clearLabelSnapshot`) are a presentation fallback revalidated against the live RAM parser words. Current prose and a fresh full RAM name outrank them. They never feed `VerifiedNouns`, `CommandNouns`, capabilities or scope.
+- **Labels** (`Actionable.labelSnapshot`, `applyLabelSnapshot` and `clearLabelSnapshot`) are a presentation fallback revalidated against the live RAM parser words. Current prose and a fresh full RAM name outrank them. They never feed `VerifiedNouns`, `CommandNouns`, capabilities or scope. Since item 4 (2026-10-09), `displayNameFor` also stores a text-confirmed phrase there, so a verified name survives UNDO. Resync clears labels only on restart, and a save restore replaces them with that save's own.
 - **Packages** carry the snapshots of the exported saves only. Import validates the digest, `ValidateMap`, D54, quarantine, bounded labels (ids up to 65535, phrases up to 1024 characters, up to 128 words of up to 64 characters) and null-prototype records. The writes and deletions run inside the importer's existing rollback, and an imported save without a snapshot loses any old one.
 - **Boot.** The first restart of a VM instance skips the resync **only while `Transcript._booting` is true**. A first-seen VM after boot is a real restart.
 
@@ -4001,3 +4003,7 @@ sequenceDiagram
   - **Add widget** updates installed widgets in place or requests system placement; requested is not installed. Outcomes are updated, requested, refused or unsupported. Unsupported launchers show manual widget-list guidance. Installation and Options explain resizing.
 
 - **PC.** The `ParchLock.exe` launcher (`DesktopIcon`) offers a desktop shortcut once and rotates only the shortcut it owns, at start (never on close), under strict ownership with atomic `launcher.ini` writes. On Yes it takes over an existing top-level Desktop shortcut whose target is this exe instead of adding a second. `play.html?splash=<scene>` matches the splash.
+
+**Map exits (2026-10-09).**
+- A calibrated `ExitCalibrator` decoding is valid only for the property sizes it was proven on. A ZIL message, routine, conditional or door form is never read as a room number.
+- Return paths are never written as exits. `Map.js` draws an assumed return (dotted, `tentative-exit`) only where the room's own decoded `ExitMeta` does not contradict it, and it is never travelled until walked. There is no user option for it.

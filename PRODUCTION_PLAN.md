@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 329 headings; 103 decision rows; 432 registered units.
 **Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
-`fb4ba17cd9fca97d9f9380e5c2b441ce4339fb92635f25be720b495b9a16fdc8`
+`7443167fefee4bd9a483436ccde9384c26a9732176ef2e4c139bff035b98c90d`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -8690,6 +8690,26 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
     - **The old shortcut (operator: "It should remove any old shortcut"):** apps cannot unpin. Once a real widget id exists, the owned `parchlock-rotating` pin is disabled with "Replaced by the ParchLock widget", and no new pins are ever created.
     - **Proof (codex, operator's phone):** placement gate, badge-free art, resize 1x1 to 4x4 unclipped, tap launches, Home and return keep the scene and PID, a new Activity advances exactly once; actual-Activity doubles 12/0; compile and lint PASS.
     - **Audit (claude #2289):** one blocker, that `retireOwnedPin` inside `render` could abort the scene commit. It was fixed in 8a12b95 (retirement catches its own exceptions), and the consent and Options text now say "then tap the widget to start". **Consensus: ACCEPTED (claude #2291).**
+- **APK 64 list, items 4 and 5 and map fixes (2026-10-09; codex unavailable, so these were implemented by claude at the operator's direction, with codex audit pending #2334/#2336; operator builds the APK):**
+  - **Item 4, "nutritiou" after UNDO (8c2f205).** Reproduced on wump2ka: the food pellets (unnamed objects 198/199, D184) showed "food pellet(s)" until UNDO, then fell back to the truncated parser word, because `UndoRestoreSync.resync` cleared the remembered text and the label store.
+    - Operator: "Shouldn't an inventory and text verification be considered verified?"
+    - Fix: `displayNameFor` keeps a text-confirmed phrase in the existing display-only `_restoredLabels` store, revalidated against live parser words. Resync clears it only on restart; restore stays owned by `SaveState.applyPending`.
+    - Items 4 and 10 are one failure.
+  - **Item 5, story text beside or under the input, the moving input, and uneven borders (e5432a5).**
+    - **Root cause:** DarkScope's `filter` on `#windowport` made the panel the containing block for its fixed children (the input, its buttons, the bottom protector), so they were rebased by the panel offset. This is the same trap as the 2026-09-29 top-protector correction. Fix: dim with `opacity`.
+    - **Operator layout:** left, right and bottom share one fixed 26 px border (`--pl-edge-border`) and only the top band is dynamic. D203's left-only 32 px lane is superseded; the rail labels keep a 32 px tap area through an invisible extension.
+    - **Bottom exits** sit at the screen edge under the input, on one line with an ellipsis.
+    - **The input row** mirrors its left inset on the right.
+    - **The protector** reaches the top of the direction handle (operator: "the text display box ... should end at the top of the protective box for the handle").
+  - **Item 9 withdrawn:** "many not some!" meant that many modules leak on the first status check. It is merged into item 2, which is reopened beyond the carry grammar.
+  - **"Punctured boat" phantom exit (0747486).** Two causes:
+    - (a) `ExitCalibrator.destFor` decoded a calibrated property's first byte whatever its size, so Zork's 2-byte NEXIT at West of House east became object 142. Calibrations now record the proven property sizes (fallback: b0 = 1 byte, w0 = 2 bytes).
+    - (b) `Map.js`'s reverse display drew "e North of House" from North of House's west exit. It now skips any guess that the room's own decoded ExitMeta contradicts.
+  - **Automatic return paths (8d6feca, operator decision).** "Assume return paths" wrote the opposite direction as a REAL exit on every move (`Map.js EnteredRoom`, `TranslatorUI` state-delta-reverse at 0.98).
+    - Return paths are now never written. They are shown automatically and dotted (the guarded reverse display), only where decoded exits do not contradict them, and never travelled until walked.
+    - The Options "Mapping" section, the legacy `#toggle-map-2way` button and the `AssumeTwoWayConnections` pref are removed.
+  - **ZIL conditional and door exits (operator question, not built):** prior consensus (Z1-R1) keeps CEXIT and DEXIT as hints because games override movement. Reading the flag or open bit for a live open/closed marker is allowed only once proven against real travel. Routine (FEXIT) dry-running has never been attempted.
+  - **Guards:** exit-calibrator 26/0, d214-zil-exits 17/0, d23-lookahead-labels 88/0, d46 27/0, exits-safe-area 46/0, layout-regression PASS, save-state 34/0, underline-lifetime 28/0. Pre-existing failures (same on baseline): world-map-ui 46/6, the d96 timeout, and the d105 "Arrow keys" entry.
 - **Repo cleanup closed (operator; sealed inventories `2026-10-09-claude-cleanup-blind.md` and `2026-10-09-codex-cleanup-blind.md`; R1 codex, R2 claude; consensus #2191; implemented 27d60e7; codex audit ACCEPT #2194):**
   - Removed 191 tracked scratch probes that are unreferenced and unloaded. The list is `work/investigations/2026-10-09-cleanup-unreferenced-probes.txt`, and git history keeps them.
   - Kept 33 referenced probes, and committed 14 cited ones.
