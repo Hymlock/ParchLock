@@ -309,6 +309,20 @@ var MapTopology = {
             if (name) {
                 var incomingInternal = MapTopology.isInternalRoomName(name);
                 var currentInternal = MapTopology.isInternalRoomName(room.Name);
+                // D219 repair: maps saved before D219 froze WiR rooms under
+                // the status line's date ("Friday, May 21, 1954"). A stored
+                // name the status decoder classifies as a metric (date, time,
+                // score) is not a room title, so it may upgrade once to a
+                // real incoming name, exactly like an internal label. Wumpus
+                // per-visit labels are not metrics, so D62 still holds there.
+                if (!currentInternal && room.Name && typeof StatusGridDecoder !== "undefined" && StatusGridDecoder.decode) {
+                    try {
+                        var storedDecode = StatusGridDecoder.decode(String(room.Name));
+                        var incomingDecode = StatusGridDecoder.decode(String(name));
+                        if (storedDecode.roomLabel === "" && (storedDecode.metrics || []).length
+                            && incomingDecode.roomLabel !== "") currentInternal = true;
+                    } catch (eMetricName) {}
+                }
                 if (!hadRealIdAlready) {
                     if (!incomingInternal || !room.Name) room.Name = name;
                 } else if (currentInternal && !incomingInternal) {
