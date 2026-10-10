@@ -282,7 +282,11 @@ Screenshots: `work/investigations/operator-2026-10-09b/`. The list was taken on 
   - "light" was a secondary dictionary word of both the fog (354: "light fog") and the Glow Bar (284), and the main noun of neither. The shared-word rule underlined it in "the cave's main source of light", and tapping it opened the which-object chooser.
   - Now a single word shared by several objects is underlined only when it is the main noun of at least one of them (as "pellets" and "door" are).
   - Guards: underline-first-per-reply 8/0, command-disambiguation 51/0, d214-yourself-verbs 10/0, d201 22/0 and 24/0, hhg-links-live 22/0.
-- [ ] **8. The World Map room bar truncates long names** ("A fair-sized, polished, watery ca"). It should wrap or scroll.
+- [x] **8. The World Map room bar truncates long names** ("A fair-sized, polished, watery ca"). FIXED.
+  - The cut text was the top exit band, not the World Map boxes (those already wrap to two lines with "..."), and selecting a room already shows the full name.
+  - Operator choice: wrap to two lines, then end with an ellipsis (no auto-scroll or drag).
+  - Top-band room names keep their 40vw cap but use two lines, and numbered-exit pills wrap to two lines.
+  - Screenshot: `operator-2026-10-09b/item8-after-top.png`. Guards: exits-safe-area 46/0, layout-regression PASS; world-map-ui 46/6 pre-existing.
 - [x] **9. (Withdrawn: misread.)** "Many not some!" meant that many modules have the item-2 leak, not a wording change. Merged into item 2.
 - [ ] **10. Item names after loading:** fixed in source by save-tied labels (8291b5f and a8364a7, not in APK 64). Recheck on the next APK; any remainder is item 4.
 

@@ -5155,3 +5155,30 @@ body.pl-mobile #exits .row.horizontal.bottom .room-name {
 /* A sheet replaced by another closes instantly (EquipmentUI.Show): its
  * slide-out would otherwise stream through the input strip. */
 body.pl-sheet-swap #map { transition: none !important; }
+
+/* Item 8 (APK 64: "A fair-sized, polished, watery ca"): a numbered-exit pill
+ * in the top band wraps to two lines before ending in an ellipsis, instead of
+ * cutting one line. The top band is dynamic, so it grows to fit. */
+#exits .pl-exit-noncardinal {
+	white-space: normal;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	overflow-wrap: anywhere;
+	text-align: center;
+	line-height: 1.25;
+	border-radius: 12px;
+}
+/* Item 8: top-band room names keep the 40vw cap (one verbose name must not
+ * monopolise the band) but use two lines inside it before the ellipsis. */
+body.pl-mobile #exits .row.horizontal.top .room-name {
+	display: -webkit-inline-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	white-space: normal;
+	overflow-wrap: anywhere;
+	line-height: 1.2;
+	vertical-align: middle;
+}
