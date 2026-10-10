@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 336 headings; 103 decision rows; 439 registered units.
 **Last registered unit:** `pl-s336`. **Body SHA-256 (LF):**
-`2e0a4cc8ac7797243ed6c5391cb33fb276cd5cb6241b528d449a996997923611`
+`10da9c6c5ad63138617607caec06f82af70c8583ab028c70db201f85eb3cdfea`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -749,7 +749,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s333](#pl-s333) | D219 Rooms with a blank compiled name take the story's own short_name (M12) | H2 | Implemented; adversarial audit pending |
 | [pl-s334](#pl-s334) | D220 The unique story-named "yourself" object is the I7 player (M05b); date-named saved rooms repair | H2 | Implemented; real Codex review pending |
 | [pl-s335](#pl-s335) | D221 DarkScope judges only the latest reply (M11) | H2 | Scoped-accepted (Codex #2702); HHG in-bed residual open |
-| [pl-s336](#pl-s336) | D222 Furniture and vehicles inside a top-level Inform room are not the room (M08) | H2 | Implemented; real Codex review queued |
+| [pl-s336](#pl-s336) | D222 Furniture and vehicles inside a top-level Inform room are not the room (M08) | H2 | Implemented, active broadly, tested on seeds; provenance unaccepted (parked) |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -8977,4 +8977,11 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
 
 Guards: d46 27/0, d201 69/0, d23 88/0, m12 14/0.
 
-**Open:** movement while seated or in a vehicle, and look-ahead from the climbed room (grok, #2653). The Vespers MENU/HELP menu room (M09) is separate.
+**Status: PARKED, UNACCEPTED (Codex #2713, #2724).**
+- The rule is ACTIVE for every Inform build. It is not title-gated, but it is tested only on the census seeds above. Outside them it is unproven.
+- Provenance is pending:
+  - the I7 path via the room-kind marker ik1_count (rooms-only in Warbler 5/5 and Facility 131/131) is the accepted research direction;
+  - an I6 path would need a D84 location-global contract with contradiction expiry, because a learned global only correlates with movement.
+- No "unknown" lane is introduced.
+
+**Open:** movement while seated or in a vehicle, and look-ahead from the climbed room (grok #2669: seed beyond-boot pass). The Vespers MENU/HELP menu room (M09) is separate.
