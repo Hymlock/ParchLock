@@ -97,3 +97,29 @@ R2's per-family sweep is withdrawn. R3 is one deterministic mechanism with no re
    - the matrix sample, `death-terminal.js` and stat-tracker.
 
 **Prior-fix guard:** D207, D188, D169, D194/E3 (turn-cost warning), D173 and D152/D153, plus `UndoRestoreSync` (the byte must be restored before any resync).
+
+## R4 (codex #2303 accepted: R3 withdrawn, since META skips authored before-hooks and is not neutral; no memory mutation)
+
+**Output provenance by the turn boundary, one deterministic rule for every module:**
+
+1. **The boundary.**
+   - The game's own turns global is already located and confirmed by RAM observation (D152/D153 `promoteGlobals` / `readConfirmedGlobals`).
+   - During a probe span, the engine output tap (`StatTracker.tapEngine`, the existing per-instance Glk `put_*` wrapper) records, for each chunk of output, whether the turns global still held its pre-submit value when the chunk was printed. This is a single memory read per output call, only while a probe span is owned.
+   - Inform's main loop prints the action's reply first, then runs the end-of-turn sequence (turns advance, then daemons, timers, each_turn and NPCs). So output **before** the turns global changes is the command's reply, and output **after** it is the turn's events.
+2. **Release:**
+   - Lines whose text came entirely from before the boundary are reply and stay hidden, whatever their wording, paragraphs or headings: no lists, no families.
+   - Lines from after the boundary are events: shown and spoken (D207 "show the attack").
+   - If the turns global never changes during the span (no turn passed), the whole span is reply.
+3. **Fallback:** if no confirmed turns global exists for the game, or the engine cannot be tapped (Glulx), the current D207 release plus codex's continuation fix applies, with no new lists.
+4. **No game behaviour change:** nothing is written to game memory; the game runs its normal hooks and turn.
+
+**To verify before implementing (codex, attack points):**
+- that the turns global changes before daemon output in the Inform library versions present (6/10, 6/11, 6/12; the PunyInform `turns` handling);
+- the ZIL equivalent (moves, `CLOCKER`): where the Infocom move counter increments relative to the interrupt output;
+- a turn ending at "(press a key)";
+- output buffered across Glk calls versus line attribution;
+- the chunk-to-BufferLine mapping (span lines are DOM; the tap sees text in order), mapped by order and text.
+
+**Tests:**
+- unit: tap-order attribution with a turns change mid-span (reply hidden, event shown); no change (all hidden); no global (fallback);
+- live: wump2ka carry summary hidden with no list entry for it; an attack after the boundary shown; Treasures; Anchorhead; HHG; one ZIL sample; `death-terminal.js`; stat-tracker.
