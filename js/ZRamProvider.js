@@ -112,6 +112,54 @@ var ZRamProvider = {
                     }
                 }
                 if (best && bestN > 0) return best;
+
+                // Q0 / D75 extension (operator save 2026-10-10): after travel the
+                // true holder can be an unnamed "(CustomPlayer)" still parented
+                // under a *previous* room while the empty-handed probe "(self
+                // object)" has parent 0 and the current room has no such child.
+                // D75's room-local search then returns the empty player and the
+                // sheet stays blank even though native INVENTORY lists held
+                // items. When the player is empty-handed, pick the unnamed
+                // non-room holder with the clearest inventory-shaped child set
+                // (most printable children, strictly more than any rival).
+                // Bits/structure only — no name/title dispatch. Inform only.
+                var nObj = ZRamReader.objectCount(mem, ZRamReader.header(mem));
+                var gBest = 0, gBestN = 0, gSecond = 0;
+                for (var gid2 = 1; gid2 <= nObj; gid2++) {
+                    if (playerId && String(gid2) === String(playerId)) continue;
+                    var gnm2 = ZRamReader.shortName(mem, gid2) || "";
+                    if (!gnm2 || gnm2.charAt(0) !== "(") continue;
+                    // Never treat a location/map-room as an inventory holder
+                    // (Advent "(Dead_End_14)" has children but is a room).
+                    try {
+                        if (ZRamReader.isLocationObject && ZRamReader.isLocationObject(mem, gid2)) continue;
+                        if (ZRamReader.isPlausibleMapRoom && ZRamReader.isPlausibleMapRoom(mem, gid2)) continue;
+                        if (typeof AttrCalibrator !== "undefined" && AttrCalibrator.inventoryRootIsRoom
+                            && AttrCalibrator.inventoryRootIsRoom(mem, gid2)) continue;
+                    } catch (eLoc) {}
+                    // Top-level unnamed nodes with children are room-like
+                    // (Advent "(Dead_End_14)"); true holders like wump
+                    // "(CustomPlayer)" are parented under a room.
+                    var gpar2 = (ZRamReader.objectLinks(mem, gid2) || {}).parent;
+                    if (!gpar2) continue;
+                    var gheld2 = ZRamReader.children(mem, gid2);
+                    if (gheld2.length < 2) continue;
+                    var gprint2 = 0;
+                    for (var q2 = 0; q2 < gheld2.length; q2++) {
+                        var qn2 = ZRamReader.shortName(mem, gheld2[q2]) || "";
+                        if (qn2 && qn2.charAt(0) !== "(") gprint2++;
+                    }
+                    if (gprint2 > gBestN) {
+                        gSecond = gBestN;
+                        gBestN = gprint2;
+                        gBest = gid2;
+                    } else if (gprint2 > gSecond) {
+                        gSecond = gprint2;
+                    }
+                }
+                // Require a clear winner so an NPC pocket with 2 items cannot
+                // beat an empty player when CustomPlayer holds 5+ printables.
+                if (gBest && gBestN >= 2 && gBestN > gSecond) return gBest;
             }
         } catch (e4) {}
         return playerId;
