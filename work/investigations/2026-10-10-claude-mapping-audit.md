@@ -83,3 +83,39 @@ Baseline checkout cf7125f or later. Each class is reproduced independently again
 - the virtual addresses (No. 15 vs No. 17 on one object) are M07.
 
 **Facility (second M05 variant):** not yet re-traced; planned next.
+
+## Planned fixes for the remaining classes (planning only; nothing applied)
+
+Operator 2026-10-10: plan answers for every discovered issue, "even if we need specific fixes per module when necessary". Each item names its deterministic source; per-module fallbacks are marked as such.
+
+**M05b, Facility (I7, empty/internal object names): player not found (playerId 0, empty map).** NEEDS-MORE.
+- Plan: identify the player deterministically as the object whose parent changes on a successful move, with the new parent as the room. Corroborate with I7's player global, once its slot is identified by that same move. Use the printed heading for the name.
+- My probe did not trigger the move (runner timing). Codex to verify with its trace.
+
+**M06, non-compass travel (Heliopause WEIGH ANCHOR / HOIST SAILS): rooms with no connecting edge.**
+- Plan: record a successful room change caused by a typed non-compass command as an edge labelled with that exact command (source "state-delta-command"), drawn dotted.
+- Offer it as a clickable command, but never auto-path through it until it has repeated the same transition at least once (one-shot events are excluded).
+- Reuses the D138-D140 command labels.
+
+**M07, virtual rooms on one object (Appallatron Room #1..#4 = object 26; Make It Good No. 15/No. 17 = object 391).**
+- General signal: one object prints DIFFERENT headings that are stable on revisits AND co-vary with a global (Appallatron globals 134/135 step 0,1,2,3,2,1,0). Room identity = object id + that global's value; the heading is the name.
+- Must NOT apply to wump2ka, which re-randomises names on the same object (D62). There the heading changes with no co-varying global, so the rule excludes it by construction.
+- Per-module fallback if the global test proves unreliable: an explicit list of virtual-room modules keyed by heading.
+
+**M08, furniture minted as a room (Bedlam's bed 23; Break-In's chair 34).**
+- Cause: `enclosingRoom` (ZRamReader ~123) returns the first parent that is not an enterable container/supporter. The bed is a supporter with enterable = false.
+- Plan: never stop at a supporter or container that `isPlausibleMapRoom` rejects when an outer ancestor is a plausible room; climb to that room.
+- Controls that must keep working: Bear, For a Change, Book and Volume (correct rooms while on furniture) and genuine enterable vehicles.
+
+**M09, a room minted before the game starts (Curses "Tiny Balcony" before SPACE).**
+- Plan: no room is admitted to the map before the story's first line-input prompt of a session (after load or restart), unless a saved map is being restored.
+- Mid-game character prompts are unaffected. Treasure and Anchorhead already behave this way (controls).
+
+**Name cleanup (from M05):** strip a trailing sublocation suffix ("(in the blue car)", "(on the bed)") from heading-derived room names.
+
+**Non-mapping items:**
+- **Item 2, the first status check leaking in many modules.** Per-module fixes are now allowed, so: keep the general D207 release rule, and add a per-module table of known status-reply shapes (the leaked lines, recorded per game during the sweep), so each game's own reply paragraphs stay hidden.
+  - Codex: please record any visible status-probe text per module in the sweep (the first Equipment open plus Refresh).
+- **Inventory:**
+  - Treasure's pre-travel destinations print with blank names (Codex coverage note). Plan: name them from the printed heading after the first visit, as cf7125f does for truncated names.
+  - Codex: please record per module any Equipment row showing an internal name ("(...)", "K15_...", truncated dictionary words) or a missing or duplicated item. Fixes are planned per class once counted.
