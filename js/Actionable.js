@@ -254,12 +254,30 @@ var Actionable = {
         // Existing epoch-cleared, object-owned observed spelling is a display
         // fallback. Current prose remains first and command ownership is untouched.
         var current=Actionable.observedPhraseFor(seed,pool,text,false);
-        // New observed state/descriptor always outranks an old spelling.
-        if(current !== seed.name){
-            // Item 4 (operator): a name the game's own text confirmed is verified
-            // and must not fall back to the truncated parser word ("nutritiou")
-            // when that text is gone. Kept in the display-only label store,
-            // revalidated against the object's live parser words on use.
+        // ar-s096 / 543b0be: observed may replace the name only when it preserves
+        // the structural printed name, is uniquely owned, recovers a longer form
+        // of a truncated dictionary head (D144 / Item 4 pellets), or the seed is
+        // an unnamed D184 parenthetical. Shared rank-1 synonyms must not win.
+        var structuralDisp = String(seed.structuralName || seed.name || "").toLowerCase().replace(/\s+/g, " ").trim();
+        var nameL = String(seed.name || "").toLowerCase().replace(/\s+/g, " ").trim();
+        var curL = String(current || "").toLowerCase().replace(/\s+/g, " ").trim();
+        var aliasKeys = (seed.aliases || obj.aliases || []).map(function (w) { return String(w || "").toLowerCase(); });
+        var isUnnamed = !!(seed.name && seed.name.charAt(0) === '(') || seed.labelProvenance === "parser-vocabulary" && !structuralDisp;
+        var preserves = curL === structuralDisp || (structuralDisp && (" " + curL + " ").indexOf(" " + structuralDisp + " ") >= 0);
+        var uniqueObs = Actionable.observedPhraseFor(seed, pool, text, true);
+        var longerRecovery = false;
+        if (current && curL && curL !== nameL && curL.length > nameL.length) {
+            longerRecovery = curL.split(/\s+/).every(function (w) {
+                return aliasKeys.indexOf(w) >= 0 || nameL.indexOf(w) >= 0
+                    || (w.length >= 6 && aliasKeys.some(function (a) { return a.indexOf(w) === 0 || w.indexOf(a) === 0; }));
+            });
+        }
+        var aliasForm = false;
+        if (current && curL && curL !== nameL && (seed.labelProvenance === "parser-vocabulary" || obj.labelProvenance === "parser-vocabulary")) {
+            aliasForm = aliasKeys.indexOf(curL) >= 0 || curL.split(/\s+/).every(function (w) { return aliasKeys.indexOf(w) >= 0; });
+        }
+        var acceptObserved = current && current !== seed.name && (preserves || isUnnamed || (uniqueObs && uniqueObs === current) || longerRecovery || aliasForm);
+        if (acceptObserved) {
             try {
                 var id = String(obj.id), had = Actionable._restoredLabels[id];
                 if (!had || had.phrase !== current) {
@@ -271,17 +289,32 @@ var Actionable = {
         }
         if(known) {
             var observed = Actionable.observedPhraseFor(seed,pool,known,false);
-            if(observed !== seed.name)return observed;
+            var obsL = String(observed || "").toLowerCase().replace(/\s+/g, " ").trim();
+            var obsPreserves = obsL === structuralDisp || (structuralDisp && (" " + obsL + " ").indexOf(" " + structuralDisp + " ") >= 0);
+            if (observed && observed !== seed.name && obsPreserves) return observed;
         }
-        if(seed !== obj)return current; // a fresh full RAM label outranks saved presentation
+        // Fresh full RAM structural label outranks weak shared observations.
+        if (seed !== obj && seed.name) return seed.name;
         var restored = Actionable._restoredLabels && Actionable._restoredLabels[String(obj.id)];
-        if(restored) {
+        if (restored) {
             try {
-                if(JSON.stringify(restored.words) === JSON.stringify(Actionable.labelWords(ZRamProvider.getMem(),Number(obj.id))))return restored.phrase;
-                delete Actionable._restoredLabels[String(obj.id)];
-            } catch(eLabel) {}
+                var liveWords = Actionable.labelWords(ZRamProvider.getMem(), Number(obj.id));
+                if (JSON.stringify(restored.words) !== JSON.stringify(liveWords)) {
+                    delete Actionable._restoredLabels[String(obj.id)];
+                } else {
+                    var restL = String(restored.phrase || "").toLowerCase().replace(/\s+/g, " ").trim();
+                    var restPreserves = restL === structuralDisp || (structuralDisp && (" " + restL + " ").indexOf(" " + structuralDisp + " ") >= 0);
+                    var restLonger = restL.length > nameL.length && restL.split(/\s+/).every(function (w) {
+                        return aliasKeys.indexOf(w) >= 0 || nameL.indexOf(w) >= 0
+                            || (w.length >= 6 && aliasKeys.some(function (a) { return a.indexOf(w) === 0 || w.indexOf(a) === 0; }));
+                    });
+                    if (restPreserves || restLonger || isUnnamed) return restored.phrase;
+                    delete Actionable._restoredLabels[String(obj.id)];
+                }
+            } catch (eLabel) {}
         }
-        return current;
+        if (current && current === seed.name) return current;
+        return seed.name || current;
     },
     // Save-owned presentation only. Never feeds command nouns or capabilities.
     _restoredLabels: Object.create(null),
@@ -364,7 +397,7 @@ var Actionable = {
         }
         var encode = vm && vm.encode;
         if (c.vm !== vm || c.encode !== encode || c.sig !== sig || sig === null) {
-            c.vm = vm; c.encode = encode; c.sig = sig; c.keys = new Map(); c.text = null; c.words = c.matches = c.wordKeys = null;
+            c.vm = vm; c.encode = encode; c.sig = sig; c.keys = new Map(); c.text = null; c.words = c.rawWords = c.matches = c.wordKeys = null;
         }
         return c;
     },
@@ -393,26 +426,40 @@ var Actionable = {
         };
         var aliases = (obj.aliases || []).map(displayKey);
         if (!aliases.length) return obj.name;
-        var source = String(text || "").toLowerCase();
+        // C2: compare on lowercase; emit original-case slices from sourceRaw.
+        // All ownership/rank comparisons stay on lowercased keys.
+        var sourceRaw = String(text || "");
+        var source = sourceRaw.toLowerCase();
         // The text's tokens and keys are computed once per text and encoder.
         if (!ctx.sig || ctx.text !== source || !ctx.matches) {
             ctx.text = source;
-            ctx.matches = Array.from(source.matchAll(/[a-z][a-z'-]*/g));
-            ctx.words = ctx.matches.map(function (match) { return match[0]; });
+            ctx.matches = Array.from(sourceRaw.matchAll(/[a-z][a-z'-]*/gi));
+            ctx.words = ctx.matches.map(function (match) { return match[0].toLowerCase(); });
+            ctx.rawWords = ctx.matches.map(function (match) {
+                return sourceRaw.slice(match.index, match.index + match[0].length);
+            });
             ctx.wordKeys = ctx.words.map(displayKey);
             // A text whose keys needed the vocabulary fallback is never reused
             // (codex #2329): the encoder may recover or the dictionary change.
             if (ctx.wordKeys.some(function (k) { return k.slice(0, 2) !== "z:"; })) ctx.text = null;
         }
         var matches = ctx.matches, words = ctx.words, wordKeys = ctx.wordKeys;
+        var rawWords = ctx.rawWords || words;
         var best = "", bestRank = -1;
         var structural = String(obj.structuralName || obj.name || "").toLowerCase().replace(/\s+/g," ").trim();
         for (var i = 0; i < words.length; i++) {
             var phrase = [];
+            var rawPhrase = [];
             for (var j = i; j < Math.min(words.length, i + 6); j++) {
-                if (j > i && !/^\s+$/.test(source.slice(matches[j - 1].index + words[j - 1].length, matches[j].index))) break;
+                // C1: only same-line horizontal whitespace joins phrase words.
+                // Newlines must not glue "party" + "ticket" across a break.
+                if (j > i) {
+                    var gap = sourceRaw.slice(matches[j - 1].index + matches[j - 1][0].length, matches[j].index);
+                    if (!/^[ \t]+$/.test(gap)) break;
+                }
                 if (aliases.indexOf(wordKeys[j]) < 0) break;
                 phrase.push(words[j]);
+                rawPhrase.push(rawWords[j]);
                 // D184 recovered labels need a real vocabulary word at both
                 // edges. Interior articles remain valid; named objects retain
                 // their structural labels (including "the Order").
@@ -424,11 +471,12 @@ var Actionable = {
                     return phrase.every(function (w) { return mine.indexOf(displayKey(w)) >= 0; });
                 });
                 if ((!requireUnique || owners.length === 1) && owners.some(function (o) { return String(o.id) === String(obj.id); })) {
-                    var label = phrase.join(" ");
+                    var labelL = phrase.join(" ");
+                    var label = rawPhrase.join(" ");
                     // Shared spelling recovery cannot erase an observed structural
                     // descriptor. Unique extensions of that name remain preferred.
                     // Parser ownership selection retains its existing unique gate.
-                    var preservesName = label === structural || (owners.length === 1 && structural && (" " + label + " ").indexOf(" " + structural + " ") >= 0);
+                    var preservesName = labelL === structural || (owners.length === 1 && structural && (" " + labelL + " ").indexOf(" " + structural + " ") >= 0);
                     var rank = requireUnique ? 0 : preservesName ? 3 : owners.length === 1 ? 2 : 1;
                     if (rank > bestRank || (rank === bestRank && label.length > best.length)) { best = label; bestRank = rank; }
                 }
