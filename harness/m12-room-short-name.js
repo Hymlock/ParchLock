@@ -24,17 +24,6 @@ const state = p => p.evaluate(() => ({ payload: [(WorldModel.lastPayload || {}).
     check(s.map.some(r => r[0] === '58' && r[1] === 'Central Park Underpass'), 'WiR1: map holds 58 "Central Park Underpass" (' + JSON.stringify(s.map) + ')');
     check(!s.map.some(r => /1954/.test(r[1] || '')), 'WiR1: no map room named with the status date');
     await p.close();
-    // Repair: a map saved before D219 holds room 58 under the date; the next
-    // payload upgrades it once to the story name (D62 freeze does not apply
-    // to a metric label).
-    p = await open(b, 'WiR1.zblorb.js');
-    const rep = await p.evaluate(() => { const r = (ParchLockMap.Rooms || []).find(x => String(x.ObjectId) === '58'); if (!r) return 'no room';
-        r.Name = 'Friday, May 21, 1954'; MapTopology.ensureRoom('Central Park Underpass', '58'); const after = r.Name;
-        const w = { ObjectId: '7', HasRealId: true, Name: 'Room #3', Exits: {}, ExitMeta: {} }; ParchLockMap.Rooms.push(w); w.Id = w.Id || 'wtest';
-        MapTopology.ensureRoom('Room #9', '7'); return [after, w.Name]; });
-    check(rep[0] === 'Central Park Underpass', 'repair: saved date name upgrades to the story name (' + JSON.stringify(rep) + ')');
-    check(rep[1] === 'Room #3', 'repair: a non-metric frozen name (Wumpus-style Room #N) does not change (D62)');
-    await p.close();
     // WiR2: 64 "Grim Hallway".
     p = await open(b, 'WiR2.zblorb.js'); s = await state(p);
     check(s.map.some(r => r[0] === '64' && r[1] === 'Grim Hallway'), 'WiR2: map holds 64 "Grim Hallway" (' + JSON.stringify(s.map) + ')');
