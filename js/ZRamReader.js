@@ -283,6 +283,18 @@ var ZRamReader = {
     // non-default parse_name on an object is detectable without CALLing it
     // (Z-machine omits properties that equal the default). Absence of the
     // table is an honest undetectable, not a proof of library parse_name.
+    // D218 / M04: true only for Inform 7 compiler bookkeeping properties
+    // (ikN_link, ikN_count, kd_count) named by a decoded property table that
+    // also carries the I7 markers ik1_count and ik1_link. If any other
+    // compiled name shares the number, behaviour stays as before.
+    i7MetadataProp: (mem, p) => {
+        try {
+            var t = ZRamReader.informPropertyNames(mem), names = t && t.names;
+            if (!names || names.ik1_count == null || names.ik1_link == null) return false;
+            var aliases = Object.keys(names).filter(function (k) { return names[k] === p; });
+            return aliases.length > 0 && aliases.every(function (k) { return /^ik\d+_(link|count)$/.test(k) || k === "kd_count"; });
+        } catch (e) { return false; }
+    },
     _propertyNamesCache: (typeof WeakMap !== "undefined") ? new WeakMap() : null,
     informPropertyNames: (mem) => {
         if (!mem || typeof mem !== "object") return null;
@@ -2192,6 +2204,13 @@ var ZRamReader = {
         var val13 = ZRamReader.readProp(mem, roomId, 13);
         var has12 = val12 >= 1 && val12 <= count;
         var has13 = val13 >= 1 && val13 <= count;
+        // D218: I7 compiler bookkeeping (ikN_link/ikN_count/kd_count) is never
+        // an exit, unless an independently proven direction domain claims it.
+        var i7Meta = function (p) {
+            return ZRamReader.i7MetadataProp(mem, p) && !(discoveredProfile && discoveredProfile.profile && discoveredProfile.profile[p]);
+        };
+        if (has12 && i7Meta(12)) has12 = false;
+        if (has13 && i7Meta(13)) has13 = false;
         // When compass discovery already labeled props 12/13 (LLR-class
         // shifted n/s), assert those labels -- do not dual-push nw/se.
         if (discoveredProfile && discoveredProfile.lane) {
@@ -2261,6 +2280,7 @@ var ZRamReader = {
             });
         }
         cand.forEach(function (propNum) {
+            if (i7Meta(propNum)) return;
             var val = ZRamReader.readProp(mem, roomId, propNum);
             if (!(val >= 1 && val <= count)) return;
             var mappedLabel = ZRamReader.directionLabelForProp(propNum, mem);
@@ -2275,7 +2295,7 @@ var ZRamReader = {
             Object.keys(discoveredProfile.profile).forEach(function (p) { claimed[p] = 1; });
         }
         for (var p = 1; p <= 48; p++) {
-            if (claimed[p]) continue;
+            if (claimed[p] || i7Meta(p)) continue;
             var v = ZRamReader.readProp(mem, roomId, p);
             if (!(v >= 2 && v <= count)) continue;
             var o2 = ZRamReader.objectLinks(mem, v);
