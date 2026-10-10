@@ -259,6 +259,8 @@ Goal: narrow down the mapping problems (and status/inventory issues found on the
   - **M12:** a date status adopted as a room name. Legacy fallback bug; smallest candidate agreed.
   - **M13:** stale "(on the X)" qualifier. IMPLEMENTED/AUDITED (b44d47c, D216; Codex #2495), scoped: prevents FUTURE freezes on Inform when X is on the player's chain; does not repair saved labels. The 19 display differences are candidates only.
   - **Degeneracy:** no map (wrong player). IMPLEMENTED/AUDITED via a measured playerGlobal 18 fact (0126b14, D216; Codex #2507). No generic actor change.
+  - **NEXT ROUND (operator 2026-10-10): full items audit of all 309 games**, after maps, directions and room detection are finished: Equipment vs native INVENTORY, leaked probe text, internal/odd item names; root-cause fixes only. Until then, item issues seen in passing are recorded here.
+  - **Item issues seen so far:** Degeneracy Equipment empty -> FIXED by the D216 player fact (five items match native INVENTORY); Facility Equipment empty (M05b player); Ghost Train refusal-reply leak; Make It Good inventory not yet re-checked after M05.
   - **Item 2 and inventory:** Ghost Train refusal-reply leak; Facility Equipment empty (from M05b).
 
 ## Operator APK 64 issue list (2026-10-09, Wumpus and others): one at a time, standard procedure
