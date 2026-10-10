@@ -157,3 +157,20 @@ The canonical slot is not needed for identity. The player OBJECT is what the map
 
 - **Curses: CONFIRMED.** After boot plus LOOK, the map records 100 "Tiny Balcony", 35 Attic and 42 Servant's Room. The route never visits Tiny Balcony; Servant's Room is a look-ahead hint.
 - **Galatea: NOT reproduced as a recorded room.** The map holds only 29 "The Gallery's End" by the first line prompt. Codex's boot 135 was a transient payload reading that was never admitted. It stays a watch item, not an M09 case.
+
+## Opaque exit properties (codex #2360) explained by the compass; M01 family is broad
+
+| Module | Compass mapping (property -> direction) | Opaque props |
+|---|---|---|
+| Curses, Godot, b2demo | 5 = n, 6 = s, 7 = e, 8 = w, 9 = ne, 10 = se, 11 = nw, 12 = sw, 13 = u, 14 = d | 5, 6 = north, south |
+| Cat's Eye, Moonglow | 6 = n, 7 = s, 8 = e, 9 = w, 10 = u, 11 = d | 6 = north |
+| Deja Vu | 9 = n, 10 = s, 11 = e, 12 = w, 13 = ne, 14 = se, 15 = nw, 16 = sw, 17 = u, 18 = d | (none; the look-ahead is empty) |
+| Gostak | no compass group found by direction WORDS (it uses invented vocabulary) | 13 unexplained |
+
+**Implications:**
+- In Curses, Godot and b2demo every stock label is shifted by two (the stock "north" = prop7 is really EAST). The older ne/se/nw/sw order applies.
+- The compass mapping fixes the whole older-library family.
+
+**Refinement:** detect the compass STRUCTURALLY (an object with at least 4 children that share one property with distinct small values, terminating the direction table) without requiring English direction words. Use the words only for labels, with the game's own words or a per-module label list (allowed now) for Gostak.
+
+**M05b (codex #2357 objection accepted):** the moved-object player identity is PROVISIONAL. It is persisted per digest only after the same object is the mover on at least 2 distinct moves that each print a new heading, with both candidate globals agreeing; any contradicting mover discards it. Degeneracy (offstage default self), vehicles, teleports and followers are listed as controls.
