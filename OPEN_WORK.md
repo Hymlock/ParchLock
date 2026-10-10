@@ -268,7 +268,11 @@ Screenshots: `work/investigations/operator-2026-10-09b/`. The list was taken on 
     - the input row mirrors its left inset on the right;
     - the protector reaches the top of the handle.
     Screenshots: `operator-2026-10-09b/item5-after-zork.png` and `item5-after-rails.png`. exits-safe-area is 46/0 and layout-regression passes; the d96 timeout and the d105 "Arrow keys" failure were pre-existing.
-  - **Found while testing (new, not fixed):** at Zork I West of House the east rail reads "punctured boat", although east there is only the boarded door. This is wrong map exit data.
+  - **"Punctured boat" (found while testing): FIXED.** At Zork I West of House the east rail read "punctured boat".
+    - **Cause 1, `ExitCalibrator.destFor`:** it decoded a calibrated direction property's first byte whatever the property's size, so v3's 2-byte message exit (the boarded door's text address) became room 142. Calibrations now record the property sizes they were proven on, and decode only those (fallback: b0 = 1 byte, w0 = 2 bytes).
+    - **Cause 2, `Map.js` reverse display:** it drew "e North of House" from North of House's west exit. It now skips a guess that the room's own decoded exits contradict.
+    - **Guards:** exit-calibrator 26/0, d214-zil-exits 17/0, d23-lookahead-labels 88/0, d46 27/0; the world-map-ui 46/6 failures were pre-existing (same on baseline).
+    - **Open operator question:** whether to turn the legacy "Assume return paths" option off by default (not the cause here).
 - [ ] **6. Underlining is inconsistent and its order looks wrong:** "Exit 1" and "Exit 3" are underlined, "Exit 2" and "Exit 4" are not, and "exit 4" is unmarked everywhere. Part is the newest-occurrence rule (D214 U1), part is unexplained.
   - **Operator rule (2026-10-09), this is the spec:** within ONE reply (the output of one command), an item is underlined only at its FIRST mention; later mentions in the same reply are ignored. Only a NEW reply that mentions the item again moves the underline forward, to the first mention in that new reply. Current bug: the newest-occurrence rule (D214 U1) moves the underline forward inside the same reply, so it jumps within one paragraph.
 - [ ] **7. "light" is underlined although it is not an item** (fungus description). It is probably a dictionary synonym of a real object.

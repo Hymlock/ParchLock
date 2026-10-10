@@ -590,6 +590,19 @@ var ParchLockMap = {
                 }
                 var opp = OPPOSITE[odir];
                 if (!opp || claimedSlots[opp]) continue;
+                // Operator-reported ("punctured boat" / "North of House" shown east
+                // of Zork's West of House): maps are not symmetric. When THIS
+                // room's own decoded exits already say where `opp` leads (or that
+                // it leads nowhere), or already place the other room in another
+                // direction, the opposite-direction guess is contradicted and is
+                // not drawn.
+                var ownMeta = room.ExitMeta || {}, otherObj = String(otherRoom.ObjectId);
+                if (ownMeta[opp] && String(ownMeta[opp].toId) !== otherObj) continue;
+                var elsewhere = false;
+                for (var md in ownMeta) {
+                    if (md !== opp && ownMeta[md] && String(ownMeta[md].toId) === otherObj) { elsewhere = true; break; }
+                }
+                if (elsewhere) continue;
                 if (Object.prototype.hasOwnProperty.call(shownRoomIds, otherRoom.Id)) continue;
                 claimedSlots[opp] = true;
                 ParchLockMap.DrawRoom(opp, otherRoom);

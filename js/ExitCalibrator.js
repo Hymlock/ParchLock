@@ -320,11 +320,24 @@ var ExitCalibrator = {
         return out;
     },
 
-    destFor: function (mem, roomId, propNum, mode) {
+    // A calibrated decoding is only valid for the property size it was proven
+    // on (operator-reported "punctured boat" east of Zork's West of House: a
+    // 2-byte message exit -- the boarded door's text address -- was read as a
+    // 1-byte room number). `sizes` is the proven set; calibrations saved before
+    // sizes were recorded fall back to the form's own width (b0 = 1 byte,
+    // w0 = 2 bytes).
+    sizeAllowed: function (sz, mode, sizes) {
+        if (Array.isArray(sizes) && sizes.length) return sizes.indexOf(sz) >= 0;
+        if (mode === "b0") return sz === 1;
+        if (mode === "w0") return sz === 2;
+        return true;
+    },
+    destFor: function (mem, roomId, propNum, mode, sizes) {
         try {
             var props = ZRamReader.listProps(mem, roomId) || [];
             for (var i = 0; i < props.length; i++) {
                 if (props[i].num !== propNum) continue;
+                if (!ExitCalibrator.sizeAllowed(props[i].sz, mode, sizes)) return null;
                 if (mode === "b0") return ZRamReader.u8(mem, props[i].dataAddr);
                 if (mode === "w0") return ZRamReader.u16(mem, props[i].dataAddr);
                 if (mode === "b1") return (props[i].sz >= 2) ? ZRamReader.u8(mem, props[i].dataAddr + 1) : null;
@@ -360,7 +373,7 @@ var ExitCalibrator = {
         // Already confirmed? Check it still holds, and stop.
         var known = t.dirs[dir];
         if (known && known.confirmed) {
-            var predicted = ExitCalibrator.destFor(mem, from, known.prop, known.mode);
+            var predicted = ExitCalibrator.destFor(mem, from, known.prop, known.mode, known.sizes);
             if (String(predicted) === String(to)) {
                 if (known.contra) { known.contra = 0; dirty = true; }
             } else {
@@ -389,10 +402,12 @@ var ExitCalibrator = {
             for (var j = 0; j < cands.length; j++) {
                 if (String(cands[j].dest) !== String(to)) continue;
                 var k = props[i].num + ":" + cands[j].mode;
-                var e = bucket[k] = bucket[k] || { prop: props[i].num, mode: cands[j].mode, rooms: [] };
+                var e = bucket[k] = bucket[k] || { prop: props[i].num, mode: cands[j].mode, rooms: [], sizes: [] };
                 if (e.rooms.indexOf(from) === -1) { e.rooms.push(from); dirty = true; }
+                e.sizes = e.sizes || [];
+                if (e.sizes.indexOf(props[i].sz) === -1) { e.sizes.push(props[i].sz); dirty = true; }
                 if (e.rooms.length >= ExitCalibrator.CONFIRM_ROOMS && !t.dirs[dir]) {
-                    t.dirs[dir] = { prop: e.prop, mode: e.mode, confirmed: true, contra: 0, rooms: e.rooms.slice(0, 8) };
+                    t.dirs[dir] = { prop: e.prop, mode: e.mode, sizes: e.sizes.slice(0, 4), confirmed: true, contra: 0, rooms: e.rooms.slice(0, 8) };
                     dirty = true;
                 }
             }
@@ -427,7 +442,7 @@ var ExitCalibrator = {
             if (!d || !d.confirmed) return;
             // Proven not to lead anywhere from THIS room.
             if (ExitCalibrator.isBlocked(t, roomId, dir)) return;
-            var dest = ExitCalibrator.destFor(mem, roomId, d.prop, d.mode);
+            var dest = ExitCalibrator.destFor(mem, roomId, d.prop, d.mode, d.sizes);
             if (dest == null || !(Number(dest) > 0)) return;
             // The destination must be something that can actually be a place.
             try {
