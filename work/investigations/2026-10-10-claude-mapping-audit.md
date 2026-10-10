@@ -152,3 +152,8 @@ Condition (c) protects against cutscenes that park the player in an off-stage ho
 ## M05b follow-up (codex #2355: globals 44 and 50 both = 46)
 
 The canonical slot is not needed for identity. The player OBJECT is what the map needs, and both globals agree on it (I6 `player`/`actor`, equal outside NPC actions). With several movers (followers), the player is the mover whose new parent is the room whose heading was just printed AND which equals a global stable across turns; followers fail one of those tests.
+
+## M09 cases checked
+
+- **Curses: CONFIRMED.** After boot plus LOOK, the map records 100 "Tiny Balcony", 35 Attic and 42 Servant's Room. The route never visits Tiny Balcony; Servant's Room is a look-ahead hint.
+- **Galatea: NOT reproduced as a recorded room.** The map holds only 29 "The Gallery's End" by the first line prompt. Codex's boot 135 was a transient payload reading that was never admitted. It stays a watch item, not an M09 case.
