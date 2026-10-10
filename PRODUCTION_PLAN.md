@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 329 headings; 103 decision rows; 432 registered units.
 **Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
-`8344bb4000c16f71ec241ddc749dc7602c629d201c81a0fcd416109fd7060821`
+`575552b45c16bc4c78653264cf36a7be46f64cb2f92238fbc0adad5fc86f4117`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -8668,6 +8668,14 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
     - **Operator decision:** the experimental launcher-icon feature is removed (the Options toggle, the plugin setter, the real-exit alias switch and the four `.IconX` aliases). Only the owned pinned shortcut and the PC desktop shortcut rotate. The `.MainActivity` alias stays, and a package-replaced receiver re-enables a previously disabled base entry.
     - **Corner picture:** the source artwork is a single book. The small corner book is the launcher's app badge on shortcuts (AOSP `IconCache.getShortcutIcon`). A live plain-versus-adaptive bitmap A/B kept the badge, so no app-side artwork change removes it. The operator chooses between a badge-free rotating 1x1 widget and a fixed app icon (pending).
     - **Proof:** lifecycle doubles 11/0; APK 66 (v39) installed in place on the operator's phone: Add → app → splash, then Home and return kept the same PID, with no crash record.
+  - **Badge-free rotating widget (operator choice after APK 66; proposal codex #2273, review claude #2275 accepted #2277, code 99d17c0, audit claude #2289):**
+    - `RotatingIconWidget` (AppWidgetProvider) uses RemoteViews with `setImageViewResource` and per-scene drawables `widget_<scene>`. There is no bitmap IPC and no update period, alarm or timer.
+    - Each widget id has a unique immutable tap PendingIntent carrying the rendered scene, so the splash matches the picture tapped. `onUpdate` renders the stored scene; only the launch transaction (one per new Activity, resumed) advances it, and it commits after rendering.
+    - Placement goes through `requestPinAppWidget` when supported, otherwise the user is directed to the launcher's widget list. The native consent screen does not start the game on "requested" (operator: the app must not show until the widget is placed). After placing it the user taps the widget, because a launcher-sent success callback may be blocked by Android 14+ background-launch rules.
+    - Size (operator, measured): 2x2 by default, resizable from 1x1 to 4x4; the consent screen and Options explain how to resize.
+    - **The old shortcut (operator: "It should remove any old shortcut"):** apps cannot unpin. Once a real widget id exists, the owned `parchlock-rotating` pin is disabled with "Replaced by the ParchLock widget", and no new pins are ever created.
+    - **Proof (codex, operator's phone):** placement gate, badge-free art, resize 1x1 to 4x4 unclipped, tap launches, Home and return keep the scene and PID, a new Activity advances exactly once; actual-Activity doubles 12/0; compile and lint PASS.
+    - **Audit blocker (claude #2289):** `retireOwnedPin` inside `render` must not be able to abort the commit; pending the fix.
 - **Repo cleanup closed (operator; sealed inventories `2026-10-09-claude-cleanup-blind.md` and `2026-10-09-codex-cleanup-blind.md`; R1 codex, R2 claude; consensus #2191; implemented 27d60e7; codex audit ACCEPT #2194):**
   - Removed 191 tracked scratch probes that are unreferenced and unloaded. The list is `work/investigations/2026-10-09-cleanup-unreferenced-probes.txt`, and git history keeps them.
   - Kept 33 referenced probes, and committed 14 cited ones.
