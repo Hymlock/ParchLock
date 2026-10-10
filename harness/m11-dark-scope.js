@@ -25,6 +25,17 @@ const open = async (b, g) => {
     await p.send('get up');
     const d2 = await p.send('inventory');
     check(d2 === false, 'HHG: an inventory reply (no room description) keeps lit, no sticky history');
+    // Heading-line contract (grok #2631): exact name or name + ","/"(";
+    // prose that only begins with the room name does not clear dark.
+    const hl = await p.evaluate(() => { const room = (WorldModel.lastPayload || {}).roomName; DarkScope.dark = true; DarkScope._noted = false;
+        const buf = document.querySelector('#windowport .BufferWindow');
+        const add = t => { const d = document.createElement('div'); d.className = 'BufferLine'; d.textContent = t; buf.appendChild(d); return d; };
+        const echo = add('>x'); const s = document.createElement('span'); s.className = 'Style_input'; echo.appendChild(s);
+        const prose = add(room + ' door is shut.'); DarkScope.noteText(''); const afterProse = DarkScope.dark;
+        DarkScope._noted = false; const head = add(room); DarkScope.noteText(''); const afterHeading = DarkScope.dark;
+        [echo, prose, head].forEach(n => n.remove()); return { room, afterProse, afterHeading }; });
+    check(hl.afterProse === true, 'HHG: a line that only begins with the room name does not clear dark (' + JSON.stringify(hl) + ')');
+    check(hl.afterHeading === false, 'HHG: the bare room-name heading line clears dark');
     await p.close();
     p = await open(b, 'Zork1-TheGreatUndergroundEmpire.z3.js');
     for (const c of ['north', 'east', 'open window', 'enter window', 'west', 'move rug', 'open trap door']) await p.send(c);

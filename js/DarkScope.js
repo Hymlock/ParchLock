@@ -29,7 +29,13 @@ var DarkScope = {
                 var sub = line.querySelector(".Style_subheader");
                 if (sub && sub.textContent.trim() && !/\*\s*\*/.test(sub.textContent)) return true;
                 var lt = String(line.textContent || "").trim().toLowerCase();
-                return roomName.length >= 3 && lt.indexOf(roomName) === 0;
+                // The heading line itself: exactly the room name, or the name
+                // followed by "," / "(" (HHG "Bedroom, in the bed"). Prose
+                // that merely begins with a short name ("Hall door is shut")
+                // is not a heading (grok #2631).
+                if (roomName.length < 3 || lt.indexOf(roomName) !== 0) return false;
+                var rest = lt.slice(roomName.length);
+                return rest === "" || /^\s*[,(]/.test(rest);
             });
             return { text: after.map(function (line) { return line.textContent; }).join("\n"), heading: heading };
         } catch (e) { return null; }
