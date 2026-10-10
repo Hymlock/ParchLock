@@ -306,22 +306,6 @@ var Actionable = {
         if (current && curL && curL !== nameL && (seed.labelProvenance === "parser-vocabulary" || obj.labelProvenance === "parser-vocabulary")) {
             aliasForm = aliasKeys.indexOf(curL) >= 0 || curL.split(/\s+/).every(function (w) { return aliasKeys.indexOf(w) >= 0; });
         }
-        // Prefer a unique multi-word phrase that includes the head noun
-        // ("office key") over a bare shared head ("keys") or unique adjective
-        // ("office") — C4 curves keys.
-        var headTok = (structuralDisp.split(/\s+/).filter(Boolean).pop() || nameL.split(/\s+/).filter(Boolean).pop() || "");
-        if (uniqueObs && String(uniqueObs).toLowerCase() !== curL) {
-            var uL = String(uniqueObs).toLowerCase().replace(/\s+/g, " ").trim();
-            var uWords = uL.split(/\s+/);
-            var uHasHead = headTok && uWords.some(function (w) {
-                return w === headTok || w + "s" === headTok || headTok + "s" === w || w === headTok.replace(/s$/, "");
-            });
-            if (uHasHead && uWords.length > 1) {
-                current = uniqueObs;
-                curL = uL;
-                preserves = curL === structuralDisp || (structuralDisp && (" " + curL + " ").indexOf(" " + structuralDisp + " ") >= 0);
-            }
-        }
         var acceptObserved = current && current !== seed.name && (preserves || isUnnamed || (uniqueObs && uniqueObs === current) || longerRecovery || aliasForm);
         if (acceptObserved) {
             try {
@@ -354,11 +338,7 @@ var Actionable = {
                         return aliasKeys.indexOf(w) >= 0 || nameL.indexOf(w) >= 0
                             || (w.length >= 6 && aliasKeys.some(function (a) { return a.indexOf(w) === 0 || w.indexOf(a) === 0; }));
                     });
-                    // Do not replay a unique adjective-only restored label (C4).
-                    var restWords = restL.split(/\s+/).filter(Boolean);
-                    var restAdjOnly = restWords.length === 1 && headTok && restWords[0] !== headTok
-                        && restWords[0] + "s" !== headTok && headTok + "s" !== restWords[0];
-                    if ((restPreserves || restLonger || isUnnamed) && !restAdjOnly) return restored.phrase;
+                    if (restPreserves || restLonger || isUnnamed) return restored.phrase;
                     delete Actionable._restoredLabels[String(obj.id)];
                 }
             } catch (eLabel) {}
@@ -474,8 +454,7 @@ var Actionable = {
             }
             return Actionable.vocabularyKey(w);
         };
-        var rawAliases = (obj.aliases || []).map(function (w) { return String(w || "").toLowerCase(); });
-        var aliases = rawAliases.map(displayKey);
+        var aliases = (obj.aliases || []).map(displayKey);
         if (!aliases.length) return obj.name;
         // C2: compare on lowercase; emit original-case slices from sourceRaw.
         // All ownership/rank comparisons stay on lowercased keys.
@@ -508,20 +487,7 @@ var Actionable = {
                     var gap = sourceRaw.slice(matches[j - 1].index + matches[j - 1][0].length, matches[j].index);
                     if (!/^[ \t]+$/.test(gap)) break;
                 }
-                // Alias hit, or singular/plural head soft-match (key↔keys) for
-                // parser-vocabulary objects so "office key" can form from aliases.
-                var wk = wordKeys[j];
-                var wj = words[j];
-                var aliasHit = aliases.indexOf(wk) >= 0;
-                if (!aliasHit && obj.labelProvenance === "parser-vocabulary") {
-                    // Soft singular/plural on raw alias strings (key↔keys), not z: keys.
-                    aliasHit = rawAliases.indexOf(wj) >= 0
-                        || rawAliases.indexOf(wj + "s") >= 0
-                        || rawAliases.indexOf(String(wj).replace(/s$/, "")) >= 0
-                        || aliases.indexOf(displayKey(wj + "s")) >= 0
-                        || aliases.indexOf(displayKey(String(wj).replace(/s$/, ""))) >= 0;
-                }
-                if (!aliasHit) break;
+                if (aliases.indexOf(wordKeys[j]) < 0) break;
                 phrase.push(words[j]);
                 rawPhrase.push(rawWords[j]);
                 // D184 recovered labels need a real vocabulary word at both
@@ -532,11 +498,7 @@ var Actionable = {
                 if (phrase.length < 2 && obj.labelProvenance !== "parser-vocabulary") continue;
                 var owners = (pool || []).filter(function (o) {
                     var mine = (o.aliases || []).map(displayKey);
-                    return phrase.every(function (w) {
-                        if (mine.indexOf(displayKey(w)) >= 0) return true;
-                        if (o.labelProvenance !== "parser-vocabulary") return false;
-                        return mine.indexOf(displayKey(w + "s")) >= 0 || mine.indexOf(displayKey(String(w).replace(/s$/, ""))) >= 0;
-                    });
+                    return phrase.every(function (w) { return mine.indexOf(displayKey(w)) >= 0; });
                 });
                 if ((!requireUnique || owners.length === 1) && owners.some(function (o) { return String(o.id) === String(obj.id); })) {
                     var labelL = phrase.join(" ");
@@ -545,22 +507,7 @@ var Actionable = {
                     // descriptor. Unique extensions of that name remain preferred.
                     // Parser ownership selection retains its existing unique gate.
                     var preservesName = labelL === structural || (owners.length === 1 && structural && (" " + labelL + " ").indexOf(" " + structural + " ") >= 0);
-                    // C4: unique adjective-only hits (office, automobile) must not
-                    // outrank the shared head noun (keys) or multi-word "office key".
-                    var head = (structural.split(/\s+/).filter(Boolean).pop() || "");
-                    var includesHead = !head || labelL === head || (" " + labelL + " ").indexOf(" " + head + " ") >= 0
-                        || labelL + "s" === head || head + "s" === labelL
-                        || (head.length > 1 && (labelL.indexOf(head.replace(/s$/, "")) >= 0 || head.indexOf(labelL.replace(/s$/, "")) >= 0));
-                    var rank;
-                    if (requireUnique) {
-                        // Prefer unique multi-word phrases that include the head
-                        // noun ("car key") over unique adjectives ("automobile").
-                        rank = includesHead ? (phrase.length > 1 ? 2 : 1) : 0;
-                    } else if (preservesName) rank = 3;
-                    else if (owners.length === 1 && includesHead) rank = 2;
-                    else if (owners.length === 1) rank = 0;
-                    else if (includesHead) rank = 1;
-                    else rank = 0;
+                    var rank = requireUnique ? 0 : preservesName ? 3 : owners.length === 1 ? 2 : 1;
                     if (rank > bestRank || (rank === bestRank && label.length > best.length)) { best = label; bestRank = rank; }
                 }
             }
