@@ -280,3 +280,5 @@ This also resolves the 65-versus-107 "yourself" ambiguity. It is still provision
 Exclusions use Tier A only; Tier B/C stay provisional and are labelled as such. A container-only move isolates the player only when no other object changed parent in that move (pets and vehicle occupants would show up as co-movers).
 
 **Next research task (claude):** scan Primrose's code for get_prop with constant 39 inside an object loop that ends in insert_obj to the player location, as a Tier-A proof of found_in.
+
+**Tier-A attempt (Primrose prop39), INCONCLUSIVE:** a raw byte scan of high memory for long-form get_prop/get_prop_addr with a constant property, followed within 40 bytes by insert_obj, does not discriminate: prop39 has 19 sites (5 near insert_obj), prop48 73 (48), prop26 54 (25), prop45 12 (5), prop21 12 (1). A byte scan cannot separate instructions from data. Tier-A needs a real routine disassembler: decode routines, find the object loop that reads the property and insert_obj's into the player location. Until then, the Primrose floating-object exclusion stays Tier B (provisional).
