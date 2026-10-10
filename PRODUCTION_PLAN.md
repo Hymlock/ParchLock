@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 336 headings; 103 decision rows; 439 registered units.
 **Last registered unit:** `pl-s336`. **Body SHA-256 (LF):**
-`db0b66fab9727ce683e041d124275dc1034c18b43855367e79d01923ade829a7`
+`de6a7f122dad18248c38ca6fc6eb29589f2c4a12f227cf268b80238e0e792dd6`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -748,7 +748,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s332](#pl-s332) | D218 Inform 7 compiler bookkeeping properties are never exits (M04 part A) | H2 | Implemented / audited (Codex #2575) |
 | [pl-s333](#pl-s333) | D219 Rooms with a blank compiled name take the story's own short_name (M12) | H2 | Implemented; adversarial audit pending |
 | [pl-s334](#pl-s334) | D220 The unique story-named "yourself" object is the I7 player (M05b); date-named saved rooms repair | H2 | Implemented; real Codex review pending |
-| [pl-s335](#pl-s335) | D221 DarkScope judges only the latest reply (M11) | H2 | Implemented; grok audited, real Codex review pending |
+| [pl-s335](#pl-s335) | D221 DarkScope judges only the latest reply (M11) | H2 | Scoped-accepted (Codex #2702); HHG in-bed residual open |
 | [pl-s336](#pl-s336) | D222 Furniture and vehicles inside a top-level Inform room are not the room (M08) | H2 | Implemented; real Codex review queued |
 <!-- LOCAL-REGISTER:END -->
 
@@ -8928,21 +8928,30 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
 <a id="pl-s335" data-chapter-id="pl-s335"></a><a id="pl-d221"></a>
 ## D221 DarkScope judges only the latest reply (M11)
 
-**Lifecycle:** M11 reproduced the plan 8367 residual: DarkScope's whole-history dark verdict. The direction was agreed in research (#2431/#2432: no evidence is not light evidence; clear only on a printed current-room description). Implemented in 04dac9a. Grok audited it (#2624) and raised three residuals: (1) a false clear from a line starting with the room name, now on its queue; (2) echo detection, verified on HHG and Zork; (3) TURN ON LIGHT without LOOK, verified: HHG's reply prints "Bedroom, in the bed" and clears. The real Codex review is pending.
+**Lifecycle:** M11 reproduced the plan 8367 residual (DarkScope's whole-history dark verdict). A first version (04dac9a, e0f4d0c) was attacked by the real Codex (#2667/#2668: any styled heading, or prose starting with the room name, cleared dark). It was replaced by the agreed contract (#2689, #2694, #2698), implemented in e7a3ea9 and 3739c2c, and root Codex scoped-ACCEPTED it in #2702. M11 is NOT fully resolved: see the open residual.
 
-**Key files:** js/DarkScope.js, harness/m11-dark-scope.js.
+**Key files:** js/DarkScope.js, js/WorldModel.js (callsite), js/ParchLock.js (init call removed), harness/m11-dark-scope.js.
 
-**Contract:** DarkScope reads only the lines after the last command echo.
-- A dark cue sets dark. "it is pitch black" was added; HHG and Zork use it.
-- A current-room description with no dark cue clears dark. That is a styled subheader, or a line starting with the structurally resolved room's name (HHG prints "Bedroom, in the bed" as plain text).
-- Any other reply leaves the state unchanged.
-- The whole transcript is never scanned. payload.darkness stays as before; the HUD chip, pl-dark-scope and the dimming now follow the current turn.
+**Contract:**
+- DarkScope.noteFromPayload runs ONCE per WorldModel.tick, on the finalized payload, right after lastPayload is assigned. No second player/room resolver runs.
+- It reads only the latest reply (lines after the last command echo).
+- A dark cue sets dark ("it is pitch black" was added).
+- A line clears dark when its FULL text is the payload's room name. The name followed by ", in|on the X" or " (in|on the X)" also clears it (the paren form only in Inform builds), but only when X is proven on the player's containment chain strictly below the room, by structural short name or parser words; the D219 story name is not used.
+- Clearing requires WorldModel.isStructuralFact(payload). Anything else keeps the state.
+- The cache key holds actor, room, name, the full chain signature and the reply.
+- Only DarkScope's own HUD entry (source dark-scope) is replaced. payload.darkness true from another source wins.
+- The provider is diagnostics only.
+- This is heuristic light evidence, not deterministic darkness proof and not a same-reply guarantee.
 
-**Evidence:**
-- m11-dark-scope 4/0: HHG is dark at the start, cleared after TURN ON LIGHT/LOOK, and not re-darkened by INVENTORY; the Zork cellar without the lamp is dark.
-- The old code fails both HHG clearing checks. exits-safe-area 46/0.
+**Evidence:** m11-dark-scope 14/0.
+- Negatives: styled Help, styled Inventory, "<room>, the door is shut.", another room's heading, the previous room's heading after relocation, no structural room, a heuristic-only payload.
+- Positives: the exact room-name line; HHG GET UP + LOOK (bare "Bedroom").
+- The Zork cellar stays dark.
+- Root Codex's isolated contract checks 8/0.
 
-**Open:** a deterministic darkness source (Inform location global holding the library darkness object; ZIL lit state) is still research.
+**OPEN residual:**
+- HHG after TURN ON LIGHT while still in bed stays dark. "Bedroom, in the bed" is unprovable because player 19 sits in object 58, which is unnamed, parentless and without vocabulary, and the room (150) comes from another lane. It clears on the bare "Bedroom" heading after GET UP.
+- It needs a future native room/light provenance, not a parser-self promotion of 58.
 
 <a id="pl-s336" data-chapter-id="pl-s336"></a><a id="pl-d222"></a>
 ## D222 Furniture and vehicles inside a top-level Inform room are not the room (M08)

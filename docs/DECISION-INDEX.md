@@ -4,7 +4,7 @@ One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
 This exists because the plan itself is not greppable: 106 decisions across
-8972 lines, with single lines over 20,000 characters, so one grep match
+8981 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -22,7 +22,7 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 | D | claim | files | games |
 |---|-------|-------|-------|
 | D222 | Furniture and vehicles inside a top-level Inform room are not the room (M08) | js/ZRamReader.js |  |
-| D221 | DarkScope judges only the latest reply (M11) | js/DarkScope.js harness/m11-dark-scope.js |  |
+| D221 | DarkScope judges only the latest reply (M11) | js/DarkScope.js js/WorldModel.js js/ParchLock.js harness/m11-dark-scope.js |  |
 | D220 | The unique story-named "yourself" object is the I7 player (M05b); date-named saved rooms repair (D219) | js/ZRamReader.js js/MapTopology.js harness/m12-room-short-name.js |  |
 | D219 | Rooms with a blank compiled name take the story's own shortname (M12) | js/ZRamReader.js js/WorldModel.js harness/m12-room-short-name.js |  |
 | D218 | Inform 7 compiler bookkeeping properties are never exits (M04 part A) | js/ZRamReader.js harness/d218-i7-metadata.js |  |

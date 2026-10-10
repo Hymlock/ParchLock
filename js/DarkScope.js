@@ -11,7 +11,9 @@ var DarkScope = {
     //   - a line whose FULL text is the current room's name, or that name plus
     //     a positional suffix ", in|on the X" / " (in|on the X)" where X is an
     //     object on the player's containment chain strictly below the room,
-    //     clears dark (HHG "Bedroom, in the bed");
+    //     clears dark (only when X is proven on the chain; HHG's "Bedroom,
+    //     in the bed" is NOT provable: its container 58 is unnamed and
+    //     parentless, so HHG clears on the bare "Bedroom" heading instead);
     //   - anything else (help/inventory headings, prose starting with the room
     //     name, another room's heading, no structural room) leaves it as is.
     // A defensive guard keeps dark when payload.darkness is true from another
