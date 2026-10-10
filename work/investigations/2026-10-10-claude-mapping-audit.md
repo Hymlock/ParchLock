@@ -191,3 +191,25 @@ Structural rule: an object with at least 4 children that all carry one property 
 - **Advent:** holder 6, prop21: 7 = n ... 18 = out (standard; positive control).
 
 **Labels:** use the child's own dictionary word ("kh"), which is what the player types in that game. The direction's MEANING (for map layout) comes from the child's position in the standard order, or from a standard word when one exists. Per codex #2365, store the full value -> direction mapping (an enum with the diagonal permutation), never a scalar offset.
+
+## Structural compass uniqueness (codex #2368 objection tested)
+
+Census over 14 games (structural rule only):
+- **One correct hit each:**
+  - Moonglow and Cat's Eye: 6/compass, p9, north = 6;
+  - Godot: 1/compass, p8, north = 5;
+  - Anchorhead: 6/compass, p21, standard;
+  - Make It Good: 6/compass, p21, standard;
+  - **Building: 6/compass, p22, north = 8, a NEW variant shifted +1.**
+- **False hits:**
+  - b2demo: 2 hits, the compass plus 54 "puzzles" p9 (distinct values 5..15);
+  - Warbler's Nest (I7): 4 hits on unnamed rooms whose contents share p26/p32. I7 has no direction-property compass.
+- **No hits, correctly:** wump2ka (custom door_dir exits, D35/D55), Zork I (ZIL, own decoder), Facility (I7).
+- **Probe errors (to retry):** Deja Vu, Bedlam, Balances. Deja Vu's compass was found earlier by the word-based probe.
+
+**Revised rule:** the structural pattern AND a holder whose short name is "compass" (the library object, present in every true hit including Gostak). This rejects the b2demo "puzzles" and all Warbler false hits.
+
+**Geometry (codex #2368 accepted):**
+- Labels are always the game's own token.
+- The cardinal layout slot only when that child's own words include a standard direction word; otherwise the exit goes to a neutral numbered slot (as D63 does for wump2ka), so Gostak's kh shows as "kh" without a guessed north-west position.
+- The full value -> token mapping is stored (an enum), never an offset.
