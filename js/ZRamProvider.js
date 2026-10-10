@@ -183,7 +183,11 @@ var ZRamProvider = {
             return bestSc >= 8 ? best : 0;
         } catch (e) { return 0; }
     },
+    // Incremented once per collection pass (each turn). Caches over mutable
+    // VM state (D217 library compass) are valid only within one generation.
+    collectGeneration: 0,
     collect: function () {
+        ZRamProvider.collectGeneration++;
         var mem = ZRamProvider.getMem();
         if (!mem || typeof ZRamReader === "undefined") {
             return {

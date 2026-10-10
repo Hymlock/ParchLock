@@ -36,6 +36,25 @@ const CASES = [
         for (const [label, dest] of Object.entries(c.labels || {})) check(r.exits.some(e => e[0] === label && e[1] === dest), c.g + ': "' + label + '" leads to ' + dest + ' (got ' + JSON.stringify(r.exits) + ')');
         for (const label of c.absent || []) check(!r.exits.some(e => e[0] === label), c.g + ': no stock-mislabelled "' + label + '" exit');
         if (c.doorDirs != null) check(r.doorDirs === c.doorDirs, c.g + ': directionDoorDirs unchanged (' + r.doorDirs + ')');
+        if (c.g === 'catseye.z3.js') {
+            // Cache contract (#2554): valid only within one collection
+            // generation. Mutate a door_dir in this throwaway page: same
+            // generation keeps the cached result; the next generation sees the
+            // duplicate and fails closed; restoring it re-accepts (a failed
+            // result is never cached across generations).
+            const g = await p.evaluate(() => { const m = ZRamProvider.getMem(), R = ZRamReader; const a = R.discoverLibraryCompassProfile(m); if (!a) return null;
+                const kids = R.children(m, a.compassId); const prop = (R.listProps(m, kids[1]) || []).find(x => x.num === a.doorProp); const first = (R.listProps(m, kids[0]) || []).find(x => x.num === a.doorProp);
+                const write = (x, v) => { if (x.sz === 1) m.setUint8(x.dataAddr, v); else m.setUint16(x.dataAddr, v); };
+                const orig = x => x.sz === 1 ? R.u8(m, x.dataAddr) : R.u16(m, x.dataAddr);
+                const o = orig(prop); write(prop, orig(first));
+                const sameGen = !!R.discoverLibraryCompassProfile(m);
+                ZRamProvider.collectGeneration++; const nextGen = !!R.discoverLibraryCompassProfile(m);
+                write(prop, o); ZRamProvider.collectGeneration++; const restored = !!R.discoverLibraryCompassProfile(m);
+                return { sameGen, nextGen, restored }; });
+            check(g && g.sameGen === true, 'cache: same generation returns the cached lane');
+            check(g && g.nextGen === false, 'cache: next generation sees a duplicate door_dir and fails closed');
+            check(g && g.restored === true, 'cache: a failed result is recomputed once the state is valid again');
+        }
         await p.close();
     }
     await b.close();

@@ -876,8 +876,9 @@ var ZRamReader = {
     //    (Inevita e_to answers "northwest"; Gostak uses invented words).
     // Accepted lanes make the stock PROFILE inert for that game. The lane is
     // label-only: directionDoorDirs never consumes it (I7 door_dir lane).
-    // Compass objects and door_dir values are authored static data, so the
-    // result is invariant per executable; cached by buffer + digest.
+    // Object contents are mutable VM state, so the result is cached only for
+    // one ZRamProvider collection generation (one turn) of one executable
+    // and recomputed on the next; no immutability is assumed.
     _libraryCompassCache: (typeof WeakMap !== "undefined") ? new WeakMap() : null,
     CANONICAL_TO: { n_to: "north", s_to: "south", e_to: "east", w_to: "west", ne_to: "northeast", nw_to: "northwest",
         se_to: "southeast", sw_to: "southwest", u_to: "up", d_to: "down", in_to: "in", out_to: "out" },
@@ -889,12 +890,10 @@ var ZRamReader = {
             digest = (ident && ident.digest) || "";
         } catch (eI) {}
         var cacheKey = (mem && mem.buffer) || mem, cache = ZRamReader._libraryCompassCache;
-        // Object contents are mutable VM state, so a cache hit is re-validated:
-        // the same single holder must still have the same children with the
-        // same door_dir values (cheap), else the profile is recomputed.
+        var gen = (typeof ZRamProvider !== "undefined" && ZRamProvider.collectGeneration) || 0;
         try {
             var hit = cache && cache.get(cacheKey);
-            if (hit && hit.digest === digest && hit.sig === ZRamReader._libraryCompassSignature(mem, hit.result)) return hit.result;
+            if (hit && hit.digest === digest && hit.gen === gen) return hit.result;
         } catch (eC) {}
         var result = null;
         try {
@@ -952,13 +951,8 @@ var ZRamReader = {
             result = { profile: profile, labeled: kids.length, compassId: holders[0], doorProp: slots[0].p, lane: "library-compass",
                 domain: Object.keys(profile).map(Number), tableSource: !!tableGeo };
         } catch (e) { result = null; }
-        try { if (cache) cache.set(cacheKey, { digest: digest, result: result, sig: ZRamReader._libraryCompassSignature(mem, result) }); } catch (eS) {}
+        try { if (cache) cache.set(cacheKey, { digest: digest, gen: gen, result: result }); } catch (eS) {}
         return result;
-    },
-    _libraryCompassSignature: (mem, result) => {
-        if (!result) return "none";
-        var kids = ZRamReader.children(mem, result.compassId) || [];
-        return result.compassId + ":" + kids.map(function (k) { return k + "=" + ZRamReader.readProp(mem, k, result.doorProp); }).join(",");
     },
     // Label profile: the prop2 discovery first (Advent class), else the
     // library-compass lane, else null (stock PROFILE). Never used by
