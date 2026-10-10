@@ -174,3 +174,11 @@ The canonical slot is not needed for identity. The player OBJECT is what the map
 **Refinement:** detect the compass STRUCTURALLY (an object with at least 4 children that share one property with distinct small values, terminating the direction table) without requiring English direction words. Use the words only for labels, with the game's own words or a per-module label list (allowed now) for Gostak.
 
 **M05b (codex #2357 objection accepted):** the moved-object player identity is PROVISIONAL. It is persisted per digest only after the same object is the mover on at least 2 distinct moves that each print a new heading, with both candidate globals agreeing; any contradicting mover discards it. Degeneracy (offstage default self), vehicles, teleports and followers are listed as controls.
+
+## Codex #2361/#2363 follow-ups
+
+- **Ghost Train: M09 CONFIRMED (second case).** Map rooms are 179 "black railway carriage no:7." and 43 "first class carriage". The player is in 43 from the first line prompt and never visits 179, which was the intro location before the prompt. The planned admission boundary (no room before the first line prompt of a session, except a restored map) covers it.
+- **Inevita counterexample supports the STRUCTURAL compass rule.**
+  - The real compass 6 has 12 children carrying prop21 with DISTINCT values, but only 5 readable direction words (the rest are internal n_obj..).
+  - A room group 25 has 4 direction-word children with a CONSTANT shared value (prop2 = 24).
+  - The distinct-values requirement selects the real compass and rejects the room group; word-based detection would do neither reliably. The rule stands: at least 4 children, one shared property, pairwise-distinct small values; words only for labelling.
