@@ -209,9 +209,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 103 headings; 0 decision rows; 103 registered units.
-**Last registered unit:** `ar-s103`. **Body SHA-256 (LF):**
-`11ba17f8205074c433582381b440f43cbd559f9e8a1b45e874d45144215c6d3f`
+**Local manifest:** 104 headings; 0 decision rows; 104 registered units.
+**Last registered unit:** `ar-s104`. **Body SHA-256 (LF):**
+`7af58fa53d0ede346124315a914ad2b70cf05e0070df2d4abc336db8be161dcc`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -394,6 +394,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s101](#ar-s101) | 75. Save-tied state, authored endings and the rotating icon (D215) | H2 | Implemented / audited (icon start timing: issue 1) |
 | [ar-s102](#ar-s102) | 76. Internal-named rooms, positional suffixes and measured player facts (D216) | H2 | Implemented / audited |
 | [ar-s103](#ar-s103) | 77. Library-compass lane for exit labels (D217) | H2 | Implemented / audited |
+| [ar-s104](#ar-s104) | 78. Inform 7 bookkeeping properties are not exits (D218) | H2 | Implemented / audited |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -4052,3 +4053,13 @@ flowchart TD
 - Label callers see one profile: the prop-2 discovery first, then the library-compass lane, then the stock profile.
 - `directionDoorDirs` keeps its own sources, so the lane can never route a game into the I7 `exit N` / `xN` command lane.
 - The cache is bounded to a provider collection generation; the compass is re-read on the next collection pass.
+
+<a id="ar-s104" data-chapter-id="ar-s104"></a><a id="ar-ch78"></a>
+## 78. Inform 7 bookkeeping properties are not exits (D218)
+
+Contract: [D218](PRODUCTION_PLAN.md#pl-d218).
+
+- ZRamReader.i7MetadataProp(mem, p) is true only when the decoded property table carries the I7 markers ik1_count and ik1_link and every compiled name for p is ikN_link, ikN_count or kd_count; any other alias keeps today's behaviour.
+- lookAheadExits consults it at all three admission points (the 12/13 diagonal block, the candidate pass, the unclaimed scan). A slot in an independently proven direction domain (labelCompassProfile) always wins.
+- Unchanged: directionDoorDirs and the D35 numbered lane, the D217 library-compass lane, and learned map edges from real travel.
+- Research only: Map_Storage-shaped matrices measured in Warbler's Nest and Facility (rows = ik1_count). They are candidates until the base address, the direction columns and the door cells have compiler or runtime provenance.

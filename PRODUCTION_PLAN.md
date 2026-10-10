@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 332 headings; 103 decision rows; 435 registered units.
 **Last registered unit:** `pl-s332`. **Body SHA-256 (LF):**
-`2ed72341f6fa3b9a7da3e6f7b9ee7b10d80eef25c71bd626b4adf8ba3e2321cd`
+`f189f70f1befcb7b7acb958a3f2fa5f9e7f63d366b23f8981a5ae6a3ac5d2c2d`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -745,7 +745,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s329](#pl-s329) | D215 Full-app beautification sweep, surface by surface, preserving functional reserves | H2 | Implemented/audited; APK 64 delivered |
 | [pl-s330](#pl-s330) | D216 Mapping research fixes: internal-named rooms, positional heading suffix, Degeneracy player fact | H2 | Implemented / audited (Codex #2495, #2503, #2507) |
 | [pl-s331](#pl-s331) | D217 Library-compass lane: exit labels from the game's own compass (M01/M03) | H2 | Implemented / audited (Codex #2558) |
-| [pl-s332](#pl-s332) | D218 Inform 7 compiler bookkeeping properties are never exits (M04 part A) | H2 | Implemented; audit requested |
+| [pl-s332](#pl-s332) | D218 Inform 7 compiler bookkeeping properties are never exits (M04 part A) | H2 | Implemented / audited (Codex #2575) |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -8825,7 +8825,7 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
 <a id="pl-s331" data-chapter-id="pl-s331"></a><a id="pl-d217"></a>
 ## D217 Library-compass lane: exit labels from the game's own compass (M01/M03)
 
-**Lifecycle:** The mapping research found M01/M03: Inform games whose compass discovery returned nothing, so the stock 6.12.2 profile mislabelled their exits. The fix was proposed, attacked and narrowed over #2528-#2553 (the full proposal was resent as #2553 because the root Codex seat had not received #2542). The root Codex review accepted the implementation at 0dc04cb (#2558), with independent native and isolated-function checks. Later commits: 5cfbf67 (each child's property table is read once; awaiting audit) and the comment correction (per collection pass, not per turn).
+**Lifecycle:** The mapping research found M01/M03: Inform games whose compass discovery returned nothing, so the stock 6.12.2 profile mislabelled their exits. The fix was proposed, attacked and narrowed over #2528-#2553 (the full proposal was resent as #2553 because the root Codex seat had not received #2542). The root Codex review accepted the implementation at 0dc04cb (#2558), with independent native and isolated-function checks. Later commits: 5cfbf67 (each child's property table is read once; accepted #2561/#2563) and the comment correction (per collection pass, not per turn).
 
 **Key files:** js/ZRamReader.js (discoverLibraryCompassProfile, labelCompassProfile, directionLabelForProp, effectiveDirectionProfile, lookAheadExits, calibrateDiagonalFromTravel), js/ZRamProvider.js (collectGeneration), harness/m01-library-compass.js.
 
@@ -8855,7 +8855,7 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
 <a id="pl-s332" data-chapter-id="pl-s332"></a><a id="pl-d218"></a>
 ## D218 Inform 7 compiler bookkeeping properties are never exits (M04 part A)
 
-**Lifecycle:** M04 research found that I7 exits live in Map_Storage, not in room properties (work/investigations/2026-10-10-claude-M04-i7-map-storage.md). Proposal A, the narrow metadata guard, was attacked and accepted for implementation (#2570, #2571, #2572). Root Codex audit was requested after commit 0888c38. Part B, a Map_Storage decoder, remains research.
+**Lifecycle:** M04 research measured Map_Storage-shaped exit matrices in the two current I7 titles, Warbler's Nest and Facility (candidates, not a universal engine fact; the D35 I7 numbered-exit lane also exists; base, column and door provenance are still pending; work/investigations/2026-10-10-claude-M04-i7-map-storage.md). Proposal A, the narrow metadata guard, was attacked and accepted for implementation (#2570, #2571, #2572). Root Codex independently accepted the implementation at 0888c38 (#2575). Part B, a Map_Storage decoder, remains research.
 
 **Key files:** js/ZRamReader.js (i7MetadataProp, lookAheadExits), harness/d218-i7-metadata.js.
 
