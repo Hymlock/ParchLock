@@ -209,9 +209,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 104 headings; 0 decision rows; 104 registered units.
-**Last registered unit:** `ar-s104`. **Body SHA-256 (LF):**
-`7af58fa53d0ede346124315a914ad2b70cf05e0070df2d4abc336db8be161dcc`
+**Local manifest:** 105 headings; 0 decision rows; 105 registered units.
+**Last registered unit:** `ar-s105`. **Body SHA-256 (LF):**
+`7e12ee15cbcf21ca07020759af298d30dab265cf45448274e2037542abe1ec00`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -395,6 +395,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s102](#ar-s102) | 76. Internal-named rooms, positional suffixes and measured player facts (D216) | H2 | Implemented / audited |
 | [ar-s103](#ar-s103) | 77. Library-compass lane for exit labels (D217) | H2 | Implemented / audited |
 | [ar-s104](#ar-s104) | 78. Inform 7 bookkeeping properties are not exits (D218) | H2 | Implemented / audited |
+| [ar-s105](#ar-s105) | 79. DarkScope: one heuristic darkness verdict per tick (D221) | H2 | Scoped-accepted (Codex #2702) |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -4063,3 +4064,25 @@ Contract: [D218](PRODUCTION_PLAN.md#pl-d218).
 - lookAheadExits consults it at all three admission points (the 12/13 diagonal block, the candidate pass, the unclaimed scan). A slot in an independently proven direction domain (labelCompassProfile) always wins.
 - Unchanged: directionDoorDirs and the D35 numbered lane, the D217 library-compass lane, and learned map edges from real travel.
 - Research only: Map_Storage-shaped matrices measured in Warbler's Nest and Facility (rows = ik1_count). They are candidates until the base address, the direction columns and the door cells have compiler or runtime provenance.
+
+<a id="ar-s105" data-chapter-id="ar-s105"></a><a id="ar-ch79"></a>
+## 79. DarkScope: one heuristic darkness verdict per tick (D221)
+
+Contract: [D221](PRODUCTION_PLAN.md#pl-d221).
+
+```mermaid
+flowchart TD
+  T[WorldModel.tick] --> C[collectProviders: dark-scope provider is diagnostics only]
+  C --> R[refineRoomDisplayName, meta checks, mergeConfirmedExits]
+  R --> L[lastPayload = payload]
+  L --> D[DarkScope.noteFromPayload payload, once]
+  D -->|dark cue in latest reply| DK[dark]
+  D -->|full-line room name, or chain-proven positional suffix, on a structural payload| LT[lit]
+  D -->|otherwise| K[keep state]
+  D --> H[own HUD entry source dark-scope; html.pl-dark-scope]
+```
+
+- The verdict reads only the lines after the last command echo, and only the finalized payload of the same tick (room, name, player id). No second resolver runs.
+- A positional suffix counts only when its object is on the player's containment chain strictly below the room (structural short name or parser words). The D219 story name is not used.
+- payload.darkness true from any other source wins. Other HUD entries are preserved.
+- This is heuristic light evidence, not deterministic darkness proof. Open residual: the HHG bed (an unnamed, parentless container) cannot prove "Bedroom, in the bed".
