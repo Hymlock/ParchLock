@@ -37,8 +37,9 @@ var DarkScope = {
             var id = ZRamReader.objectLinks(mem, Number(playerId)).parent;
             for (var d = 0; id && d < 16; d++) {
                 if (String(id) === String(roomId)) return out;
+                // Structural short name and parser words only (the D219 story
+                // name is not accepted as a binding name: codex #2698).
                 var names = [String(ZRamReader.shortName(mem, id) || "")];
-                try { if (ZRamReader.storyShortName) names.push(String(ZRamReader.storyShortName(mem, id) || "")); } catch (eS) {}
                 var words = (ZRamReader.parserWordsAny(mem, id) || []).map(function (w) { return String(w).toLowerCase(); });
                 out.push({ id: id, names: names.map(function (n) { return n.toLowerCase().replace(/^(the|a|an)\s+/, "").trim(); }).filter(Boolean), words: words });
                 id = ZRamReader.objectLinks(mem, id).parent;
@@ -68,9 +69,12 @@ var DarkScope = {
     noteFromPayload: (payload) => {
         if (!payload) return;
         var lines = DarkScope.latestReplyLines();
-        var roomName = payload.roomId != null ? String(payload.roomName || "").trim() : "";
+        // Heading evidence needs a structural payload (not a bare id).
+        var structural = false;
+        try { structural = !!(typeof WorldModel !== "undefined" && WorldModel.isStructuralFact && WorldModel.isStructuralFact(payload)); } catch (eSt) {}
+        var roomName = structural && payload.roomId != null ? String(payload.roomName || "").trim() : "";
         var chain = roomName ? DarkScope.chainBelowRoom(payload.playerId, payload.roomId) : [];
-        var key = [payload.playerId, payload.roomId, roomName, chain.map(function (c) { return c.id; }).join(">"), lines.join("\n")].join("|");
+        var key = [payload.playerId, payload.roomId, roomName, JSON.stringify(chain), lines.join("\n")].join("|");
         if (key !== DarkScope.lastKey) {
             DarkScope.lastKey = key;
             var low = lines.join(" ").toLowerCase();

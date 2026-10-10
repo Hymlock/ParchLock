@@ -50,6 +50,7 @@ const open = async (b, g) => {
             otherRoom: run([['Kitchen', true]]),
             stale: run([[room, true]], { roomId: 99999, roomName: 'Somewhere Else' }),
             noRoom: run([[room, true]], { roomId: null, roomName: '' }),
+            heuristicOnly: run([[room, true]], { engineMode: 'heuristic', probe: null, sources: [{ name: 'heuristic', confidence: 0.2 }] }),
             exact: run([[room, false]])
         }; });
     check(neg.help === true, 'negative: styled "Help" heading does not clear dark');
@@ -58,6 +59,7 @@ const open = async (b, g) => {
     check(neg.otherRoom === true, 'negative: another room\'s heading does not clear dark');
     check(neg.stale === true, 'negative: heading of the previous room after relocation does not clear dark');
     check(neg.noRoom === true, 'negative: no structural room -> no clear');
+    check(neg.heuristicOnly === true, 'negative: a non-structural (heuristic-only) payload grants no heading clear');
     check(neg.exact === false, 'positive: the exact current-room name line clears dark');
     await p.close();
     p = await open(b, 'Zork1-TheGreatUndergroundEmpire.z3.js');
