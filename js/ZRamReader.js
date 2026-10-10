@@ -907,11 +907,16 @@ var ZRamReader = {
             if (holders.length !== 1) throw 0;
             var kids = ZRamReader.children(mem, holders[0]);
             if (kids.length < 4) throw 0;
-            var scalar = function (obj, p) {
-                var hit2 = (ZRamReader.listProps(mem, obj) || []).filter(function (x) { return x.num === p; })[0];
-                if (!hit2 || (hit2.sz !== 1 && hit2.sz !== 2)) return 0;
-                return hit2.sz === 1 ? ZRamReader.u8(mem, hit2.dataAddr) : ZRamReader.u16(mem, hit2.dataAddr);
-            };
+            // Each child's property table is walked once, not once per candidate.
+            var propMaps = kids.map(function (obj) {
+                var map = {};
+                (ZRamReader.listProps(mem, obj) || []).forEach(function (x) {
+                    if (x.sz === 1) map[x.num] = ZRamReader.u8(mem, x.dataAddr);
+                    else if (x.sz === 2) map[x.num] = ZRamReader.u16(mem, x.dataAddr);
+                });
+                return map;
+            });
+            var scalar = function (obj, p) { return propMaps[kids.indexOf(obj)][p] || 0; };
             var slots = [];
             for (var p = 1; p <= maxProp; p++) {
                 var vals = kids.map(function (k) { return scalar(k, p); });
