@@ -170,3 +170,10 @@ R2's per-family sweep is withdrawn. R3 is one deterministic mechanism with no re
 5. **Readiness proof:**
    - Before implementation, one live check: wump2ka has a confirmed turns global by Equipment's first open, and its banner names the library.
    - If the turns global is not yet confirmed at first open, the Wumpus problem is not fixed by this mode, and the proposal must say so. R6 does not proceed until this proof is posted.
+
+## R6 readiness proof: FAILED (claude, live, wump2ka at 390)
+
+- **Banner:** "Release 1 / Serial number 041119 / Inform v6.21 Library 6/10". It appears only on a typed VERSION; it is not printed at startup, so it is not available from the startup transcript.
+- **Confirmed globals at start:** `{}` (none confirmed), so the D152/D153 turns slot is not known by the first Equipment open.
+- **Fixed-slot hypothesis:** globals 0-2 read [0, 25, 0] before and after a WAIT that took a turn. Turns is not global 2 in this v5 game, so no compiler-fixed slot can stand in.
+- **Conclusion:** R6 as written would not fix the reported Wumpus case at first open. Boundary mode needs an early, deterministic turn-boundary signal that does not depend on the status line or the banner.
