@@ -155,7 +155,18 @@ var ZRamReader = {
                 return ZRamReader.shortName(mem, id) ? id : 0;
             }
             var attrs = ZRamReader.attrsFromObject(mem, id);
-            if (!attrs.enterable || (!attrs.container && !attrs.supporter)) return id;
+            if (!attrs.enterable || (!attrs.container && !attrs.supporter)) {
+                // D222 / M08: Inform rooms are top-level objects. A location
+                // object that itself sits inside a top-level location object is
+                // furniture or a vehicle the player is in, whatever its decoded
+                // attributes say (bedlam's bed decodes edible/scenery/supporter,
+                // break-in's chair as neither): climb to the top-level one.
+                var up = obj && obj.parent ? ZRamReader.objectLinks(mem, obj.parent) : null;
+                if (up && up.parent === 0 && !seen[obj.parent]
+                    && (ZRamReader.isLocationObject(mem, obj.parent, playerId)
+                        || ZRamReader.isInternalNamedLocation(mem, obj.parent, playerId))) continue;
+                return id;
+            }
         }
         return 0;
     },
