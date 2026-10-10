@@ -51,3 +51,15 @@ Baseline checkout cf7125f or later. Each class is reproduced independently again
 - The current look-ahead is EMPTY because the stock 6.12.2 profile does not fit this library.
 
 **Fix:** the same compass mapping as M01. 1-byte values (v3) must be read too. **Merge M01 and M03** into one class: "Inform direction properties from the game's own compass".
+
+## M04: opaque exit-N in Inform 7 rooms (CONFIRMED as a phantom; deterministic source identified, decoder still to be written)
+
+**Evidence** (The Warbler's Nest, I7 on Z):
+- Compass 5 has 12 direction children (n, ne, nw, s, se, sw, e, w, u, d, in, out) with NO direction-property values. I7 does not store exits in room properties.
+- Prop31 exists on exactly 5 unnamed objects and forms a single chain 51 -> 53 -> 56 -> 61 -> 101 -> 0. That is an I7 kind-instance link (each room's "next of this kind"), not a direction. I7 room names print through routines, so the short names are empty.
+- Today the generic exit-candidate scan (props 5..31) admits it as "exit-31".
+
+**Fix candidates:**
+- (a) **Exclusion:** a property whose values chain through objects of one kind, terminating in 0, is a list link and is never an exit candidate.
+- (b) **Positive:** decode I7's map storage, an array indexed room x direction in compass-child order. That gives exact I7 exits pre-travel. The array must be located from compiled structure, not per title.
+- **NEEDS-MORE:** confirm that 51/53/56/61/101 are the room objects (payload roomIds in the trace), and locate the map storage array generically.
