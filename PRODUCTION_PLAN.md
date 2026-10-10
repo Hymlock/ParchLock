@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 329 headings; 103 decision rows; 432 registered units.
 **Last registered unit:** `pl-s329`. **Body SHA-256 (LF):**
-`1bca7f54744164054be02a6d318265ffaabc44a2d79cfb4cf5e39767875cee62`
+`5c7c8483f5beb539600e8f7bb875919e88f1bd870a13770b6e9bd2a71b09c2b8`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -8330,6 +8330,8 @@ text, then moves there.
   - new marks scan the latest reply in reading order (it was reversed), and that reply now includes narration before the room heading;
   - `relocateExactMarks` keeps a mark when its phrase repeats only inside its own reply (`Actionable.replyOf` = the nearest command echo above), and otherwise moves it to the FIRST occurrence of the newest later reply.
 - **Proof:** `harness/underline-first-per-reply.js`: wump2ka 0/8 before, 8/0 after; Zork I 9/0. Guards: d214-yourself-verbs 10/0, display-key-cache 7/0. learned-words-corrections fails identically on the baseline; underline-lifetime could not run because the operator's HHG save file is no longer in Downloads.
+
+**Shared-word amendment, item 7 (2026-10-09):** wump2ka underlined "light" in "the cave's main source of light" as an ambiguous fog/Glow Bar reference, because "light" is a secondary word of both objects. A single word shared by several objects is now underlined only when it is the MAIN noun (`headNounOf`/`headTokenOf`) of at least one of them. Full names and multi-word phrases are unaffected. Guards: command-disambiguation 51/0, underline-first-per-reply 8/0, hhg-links-live 22/0.
 
 **U2 Ordinary replies are observed.** The admitted latest reply joins the promotion and
 descriptor pool, with lifecycle ownership. Commands, hidden probes and instructions are excluded.

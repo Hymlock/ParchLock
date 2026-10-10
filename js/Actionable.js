@@ -1356,6 +1356,23 @@ var Actionable = {
                         continue;
                     }
                     var matched = source.slice(idx, afterIdx);
+                    // Item 7 (APK 64, wump2ka "main source of light"): a single
+                    // word shared by several objects is underlined only when it
+                    // is the MAIN noun of at least one of them ("pellets",
+                    // "door"). A secondary word of each ("light": the fog's
+                    // adjective, a Glow Bar synonym) is not, since the prose is
+                    // usually using it in its ordinary sense.
+                    if (meta.kind !== "direction" && !/\s/.test(matched.trim())) {
+                        var sharers = Actionable.distinctObjects(Actionable.payloadPool()).filter(function (o) {
+                            var ml = matched.toLowerCase();
+                            return String(o.name).toLowerCase() === ml || !!Actionable.nounWordsOf(o)[ml]
+                                || (o.aliases || []).some(function (a) { return Actionable.vocabularyKey(a) === Actionable.vocabularyKey(ml); });
+                        });
+                        if (sharers.length > 1 && !sharers.some(function (o) {
+                            var head = String(Actionable.headNounOf(o) || Actionable.headTokenOf(o) || "").toLowerCase();
+                            return head && Actionable.vocabularyKey(head) === Actionable.vocabularyKey(matched.toLowerCase());
+                        })) { from = idx + 1; continue; }
+                    }
                     var frag = document.createDocumentFragment();
                     frag.appendChild(document.createTextNode(source.slice(0, idx)));
                     var mark = document.createElement("span");

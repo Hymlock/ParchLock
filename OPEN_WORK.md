@@ -278,7 +278,10 @@ Screenshots: `work/investigations/operator-2026-10-09b/`. The list was taken on 
       - The Options "Mapping" section, the legacy `#toggle-map-2way` button, `ToggleMap2Way` and the `AssumeTwoWayConnections` pref are removed.
 - [x] **6. Underlining is inconsistent and its order looks wrong:** "Exit 1" and "Exit 3" are underlined, "Exit 2" and "Exit 4" are not, and "exit 4" is unmarked everywhere. Part is the newest-occurrence rule (D214 U1), part is unexplained.
   - **Operator rule (2026-10-09), this is the spec:** within ONE reply (the output of one command), an item is underlined only at its FIRST mention; later mentions in the same reply are ignored. Only a NEW reply that mentions the item again moves the underline forward, to the first mention in that new reply. Current bug: the newest-occurrence rule (D214 U1) moves the underline forward inside the same reply, so it jumps within one paragraph.
-- [ ] **7. "light" is underlined although it is not an item** (fungus description). It is probably a dictionary synonym of a real object.
+- [x] **7. "light" is underlined although it is not an item** (fungus description). FIXED.
+  - "light" was a secondary dictionary word of both the fog (354: "light fog") and the Glow Bar (284), and the main noun of neither. The shared-word rule underlined it in "the cave's main source of light", and tapping it opened the which-object chooser.
+  - Now a single word shared by several objects is underlined only when it is the main noun of at least one of them (as "pellets" and "door" are).
+  - Guards: underline-first-per-reply 8/0, command-disambiguation 51/0, d214-yourself-verbs 10/0, d201 22/0 and 24/0, hhg-links-live 22/0.
 - [ ] **8. The World Map room bar truncates long names** ("A fair-sized, polished, watery ca"). It should wrap or scroll.
 - [x] **9. (Withdrawn: misread.)** "Many not some!" meant that many modules have the item-2 leak, not a wording change. Merged into item 2.
 - [ ] **10. Item names after loading:** fixed in source by save-tied labels (8291b5f and a8364a7, not in APK 64). Recheck on the next APK; any remainder is item 4.
