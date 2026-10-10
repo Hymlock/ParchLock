@@ -229,9 +229,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 331 headings; 103 decision rows; 434 registered units.
-**Last registered unit:** `pl-s331`. **Body SHA-256 (LF):**
-`ce45820e79c9e602cab71e7cf210a486d005a93a7799a920ed269310bbff78c4`
+**Local manifest:** 332 headings; 103 decision rows; 435 registered units.
+**Last registered unit:** `pl-s332`. **Body SHA-256 (LF):**
+`2ed72341f6fa3b9a7da3e6f7b9ee7b10d80eef25c71bd626b4adf8ba3e2321cd`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -745,6 +745,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s329](#pl-s329) | D215 Full-app beautification sweep, surface by surface, preserving functional reserves | H2 | Implemented/audited; APK 64 delivered |
 | [pl-s330](#pl-s330) | D216 Mapping research fixes: internal-named rooms, positional heading suffix, Degeneracy player fact | H2 | Implemented / audited (Codex #2495, #2503, #2507) |
 | [pl-s331](#pl-s331) | D217 Library-compass lane: exit labels from the game's own compass (M01/M03) | H2 | Implemented / audited (Codex #2558) |
+| [pl-s332](#pl-s332) | D218 Inform 7 compiler bookkeeping properties are never exits (M04 part A) | H2 | Implemented; audit requested |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -8850,3 +8851,25 @@ Each surface is checked at 1280, 390 and 320, in dark and light. Surfaces alread
 - Gostak (invented direction words: needs a native-word command lane);
 - Deja Vu (not detected as Inform).
 - The wider mapping work also remains open: M09 intro rooms (no deterministic placeholder discriminator), room detection and actor qualification (M05b/M05c, Suspended focus), M04 I7 exits, M06/M07, M10 causality and the M12 heading owner.
+
+<a id="pl-s332" data-chapter-id="pl-s332"></a><a id="pl-d218"></a>
+## D218 Inform 7 compiler bookkeeping properties are never exits (M04 part A)
+
+**Lifecycle:** M04 research found that I7 exits live in Map_Storage, not in room properties (work/investigations/2026-10-10-claude-M04-i7-map-storage.md). Proposal A, the narrow metadata guard, was attacked and accepted for implementation (#2570, #2571, #2572). Root Codex audit was requested after commit 0888c38. Part B, a Map_Storage decoder, remains research.
+
+**Key files:** js/ZRamReader.js (i7MetadataProp, lookAheadExits), harness/d218-i7-metadata.js.
+
+**Cause.** Warbler's Nest showed a phantom "exit-31". The decoded property table names prop31 ik1_link: I7's room instance chain (51 > 53 > 56 > 61 > 101), which is also Map_Storage's row order, not a direction.
+
+**Contract:**
+- i7MetadataProp(mem, p) is true only when the decoded table carries the I7 markers ik1_count and ik1_link, and every compiled name for p is ikN_link, ikN_count or kd_count. Any other alias keeps today's behaviour.
+- lookAheadExits skips such properties at all three admission points (the 12/13 diagonal block, the candidate pass and the unclaimed scan).
+- A slot in an independently proven direction domain always wins.
+- No table, I6 builds, unknown names, learned map edges, D35 and D217 are unchanged.
+
+**Evidence:** harness/d218-i7-metadata.js 15/0. It covers Warbler rooms 51/53 with no phantom exit, native SOUTH/NORTH 51 > 53 > 51 mapped, isolated checks (no table, no I7 marker, unknown name, alias conflict, plain, proven-direction collision on the real prop31 = 53), and Advent and Curses unchanged. Also m01 40/0, d23 88/0, d214-zil-exits 17/0.
+
+**Research (Part B, not implemented):**
+- In both Warbler and Facility, Map_Storage rows equal each room's compiler-named ik1_count (Warbler 51=0 ... 101=4; Facility 45=0, 48=1).
+- Before it can be decoded, the columns (direction ik2_count), the base address and door cells need provenance.
+- room_index (65535) and vector (0) are scratch values at boot, not indices.
