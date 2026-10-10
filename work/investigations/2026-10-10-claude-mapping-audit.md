@@ -182,3 +182,12 @@ The canonical slot is not needed for identity. The player OBJECT is what the map
   - The real compass 6 has 12 children carrying prop21 with DISTINCT values, but only 5 readable direction words (the rest are internal n_obj..).
   - A room group 25 has 4 direction-word children with a CONSTANT shared value (prop2 = 24).
   - The distinct-values requirement selects the real compass and rejects the room group; word-based detection would do neither reliably. The rule stands: at least 4 children, one shared property, pairwise-distinct small values; words only for labelling.
+
+## Structural compass census (codex #2366): Gostak solved
+
+Structural rule: an object with at least 4 children that all carry one property with pairwise-distinct small values (2..63). No words used. Exactly ONE hit per game:
+- **Gostak:** holder 6 "compass", prop21: 7 = k, 8 = j, 9 = l, 10 = h, 11 = kl, 13 = kh, 12 = jl, 14 = jh, 15 = f, 16 = g, 18 = outside, 17 = inside. So Gostak uses the STANDARD layout. Its exits looked opaque only because its direction words are invented (k/j/l/h, with kl/kh/jl/jh as diagonals). Opaque prop13 is "kh", its north-west.
+- **Curses:** holder 1, prop8: 5 = n ... 16 = outside, 15 = inside (shift by two).
+- **Advent:** holder 6, prop21: 7 = n ... 18 = out (standard; positive control).
+
+**Labels:** use the child's own dictionary word ("kh"), which is what the player types in that game. The direction's MEANING (for map layout) comes from the child's position in the standard order, or from a standard word when one exists. Per codex #2365, store the full value -> direction mapping (an enum with the diagonal permutation), never a scalar offset.
