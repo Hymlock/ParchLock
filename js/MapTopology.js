@@ -193,6 +193,8 @@ var MapTopology = {
     // Matching on ObjectId first gets both cases right; falling back to
     // name only applies when no real id exists yet (an untraveled/hinted
     // stub with nothing else to key on).
+    // Room record -> the finalized payload that first gave it a real id.
+    _admittedBy: new WeakMap(),
     ensureRoom: function (name, objectId, evidence) {
         if (typeof ParchLockMap === "undefined" || !name) return null;
         var oid = objectId ? String(objectId) : null;
@@ -272,6 +274,7 @@ var MapTopology = {
                 ExitMeta: {}
             };
             ParchLockMap.Rooms.push(room);
+            var createdNow = true;
         }
 
         room.ExitMeta = room.ExitMeta || {};
@@ -309,9 +312,17 @@ var MapTopology = {
             if (name) {
                 var incomingInternal = MapTopology.isInternalRoomName(name);
                 var currentInternal = MapTopology.isInternalRoomName(room.Name);
-                // Wump dark P1 (Codex #3039): evidence only from the SAME
-                // finalized payload for THIS real id; anything else abstains.
-                var darkEv = evidence && evidence.darkEvidence && String(evidence.roomId) === oid ? evidence.darkEvidence : "unknown";
+                // Wump dark P1 (Codex #3039/#3131): evidence only from the
+                // current finalized payload (identity, not a copy) for THIS
+                // real id; anything else abstains.
+                var current = typeof WorldModel !== "undefined" ? WorldModel.lastPayload : null;
+                var darkEv = evidence && current && evidence === current && evidence.darkEvidence
+                    && String(evidence.roomId) === oid ? evidence.darkEvidence : "unknown";
+                // The admitting payload: the stamp is allowed only on the same
+                // payload that first gave this room its real id.
+                // A room created in this call is created WITH its real id, so
+                // "first admission" is creation or a stub's first real id.
+                if ((createdNow || !hadRealIdAlready) && current) MapTopology._admittedBy.set(room, current);
                 if (!hadRealIdAlready) {
                     if (!incomingInternal || !room.Name) room.Name = name;
                 } else if (currentInternal && !incomingInternal) {
@@ -322,9 +333,9 @@ var MapTopology = {
                     room.Name = name;
                     delete room.NameProvenance;
                 }
-                // Stamp only while the frozen name IS this dark tick's name; a
-                // room already named from a lit heading never matches it.
-                if (darkEv === "dark" && room.Name === name) room.NameProvenance = "dark";
+                // First admission only: stamp when this dark payload is the one
+                // that admitted the room and the frozen name is its name.
+                if (darkEv === "dark" && room.Name === name && MapTopology._admittedBy.get(room) === evidence) room.NameProvenance = "dark";
             }
         }
         if (typeof MapIdentity !== "undefined") MapIdentity.ensureRoomIdentity(room);

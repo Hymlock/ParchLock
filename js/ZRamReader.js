@@ -2653,15 +2653,23 @@ var ZRamReader = {
             var h = ml && ZRamReader.header(mem);
             if (!h) return null;
             var count = ZRamReader.objectCount(mem, h);
-            var slotOk = function (g) { return g >= 0 && g < 240 && h.globals + 2 * g + 1 < mem.byteLength; };
+            var isInt = function (n) { return typeof n === "number" && Math.floor(n) === n; };
+            var slotOk = function (g) { return isInt(g) && g >= 0 && g < 240 && h.globals + 2 * g + 1 < mem.byteLength; };
             if (!slotOk(ml.realLocationGlobal) || !slotOk(ml.locationGlobal)) return null;
             var real = ZRamReader.u16(mem, h.globals + 2 * ml.realLocationGlobal);
             var loc = ZRamReader.u16(mem, h.globals + 2 * ml.locationGlobal);
-            if (!(real >= 1 && real <= count)) return null;
-            // The real room must be an indexed compiled room object with real links.
-            if (!ZRamReader.ROOM_INDEX_NAME.test(ZRamReader.shortName(mem, real) || "")) return null;
+            var inTable = function (id) { return isInt(id) && id >= 1 && id <= count; };
+            // Every link of an object must be 0 or a real object in the table.
+            var linksOk = function (id) { var l = ZRamReader.objectLinks(mem, id); return [l.parent, l.sibling, l.child].every(function (x) { return x === 0 || inTable(x); }); };
+            if (!inTable(real) || !linksOk(real)) return null;
+            // The real room must be a member of the story's compiled room index
+            // (the D171 n -> objectId table), not merely a name match.
+            var idx = ZRamReader.compiledRoomIndex(mem);
+            var member = false;
+            if (idx && idx.table) for (var k in idx.table) { if (idx.table[k] === real) { member = true; break; } }
+            if (!member) return null;
             var dobj = ml.darknessObject;
-            if (!(dobj >= 1 && dobj <= count)) return null;
+            if (!inTable(dobj) || !linksOk(dobj)) return null;
             // Darkness object invariant: parentless, childless, internal name.
             var dl = ZRamReader.objectLinks(mem, dobj);
             if (dl.parent !== 0 || dl.child !== 0 || String(ZRamReader.shortName(mem, dobj) || "").charAt(0) !== "(") return null;
@@ -2744,6 +2752,8 @@ var ZRamReader = {
             roomId: roomId,
             roomName: roomName,
             roomSource: roomSource,
+            // R4: the SAME validated measured result, transported (not re-read).
+            measuredDark: measured && measured.roomId === roomId ? !!measured.dark : null,
             discoveredObjects: scope,
             unnamedCandidates: unnamedCandidates,
             inventory: inventory,

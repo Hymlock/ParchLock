@@ -41,6 +41,45 @@ const pkg = fs.readFileSync('work/investigations/operator-2026-10-10-wumpus-dark
     // Whole-fact abstain on a tampered real_location.
     const t = await p.evaluate(() => { const m = ZRamProvider.getMem(), g = m.getUint16(0x0c) + 2 * 37, orig = m.getUint16(g); m.setUint16(g, 20); const r = ZRamReader.measuredLocation(m); m.setUint16(g, orig); return { tampered: r, restored: ZRamReader.measuredLocation(m) }; });
     check(t.tampered === null && t.restored && t.restored.roomId === 50, 'a tampered real_location (non-room) abstains as a whole fact (' + JSON.stringify(t) + ')');
+    // Operator: survive game save/restore AND map save/reload. While the
+    // section is dark-stamped: save the game, save the map, reload the page,
+    // restore, then light it: the stamp must persist and upgrade once.
+    await send('switch off bar');
+    await p.evaluate(() => { ParchLockMap.Clear(); }); await p.waitForTimeout(500);
+    s = await state(); check(s.prov === 'dark', 'stamped before the round trip (' + JSON.stringify([s.roomId, s.name, s.prov]) + ')');
+    const li = p.locator('.Input.LineInput').first();
+    await li.fill('save'); await li.press('Enter'); await p.waitForSelector('#dialog_infield', { timeout: 15000 }); await p.fill('#dialog_infield', 'darkrt'); await p.locator('#dialog_accept').click(); await p.waitForTimeout(1500); await settle();
+    await p.evaluate(() => ParchLockMap.Save()); await p.waitForTimeout(300);
+    await p.reload(); await p.waitForTimeout(2500); await settle();
+    await send('y'); await p.waitForSelector('#dialog_select'); await p.locator('#dialog_select').selectOption({ label: /darkrt/ }).catch(async () => { const opts = await p.locator('#dialog_select option').allTextContents(); const i = opts.findIndex(o => /darkrt/.test(o)); await p.locator('#dialog_select').selectOption({ index: Math.max(0, i) }); }); await p.locator('#dialog_accept').click(); await p.waitForTimeout(3500); await settle();
+    s = await state(); check(s.roomId === 50 && s.source === 'measured-fact' && s.ev === 'dark', 'game restore resumes in the dark measured section (' + JSON.stringify([s.roomId, s.source, s.ev]) + ')');
+    const saved = await p.evaluate(() => { const r = ParchLockMap.Rooms.find(x => String(x.ObjectId) === '50'); return r && { name: r.Name, prov: r.NameProvenance || null }; });
+    check(saved && saved.name === 'Darkness' && saved.prov === 'dark', 'reloaded map keeps the dark stamp before lighting (' + JSON.stringify(saved) + ')');
+    await send('switch on bar');
+    s = await state(); check(s.roomId === 50 && s.name === 'A vast, jagged icebox' && !s.prov, 'after the round trip the lit name upgrades once (' + JSON.stringify([s.name, s.prov]) + ')');
+    // Codex #3131 negatives on the actual functions.
+    const neg = await p.evaluate(() => {
+        const out = {}, m = ZRamProvider.getMem();
+        // (1) a real_location object whose child link points past the object table.
+        const tbl = m.getUint16(0x0a) + 126, entry = id => tbl + (id - 1) * 14;
+        const childAt = entry(50) + 10, orig = m.getUint16(childAt);
+        m.setUint16(childAt, 9000); out.outOfTable = ZRamReader.measuredLocation(m); m.setUint16(childAt, orig);
+        // (2) lit admit, later dark under the same name, later lit with another name: frozen.
+        const real = WorldModel.lastPayload, id = 99999, mk = (name, ev, rid) => ({ roomId: rid || id, roomName: name, darkEvidence: ev, probe: { roomSource: 'player-containment', roomId: rid || id } });
+        const p1 = mk('Original Room', 'lit'); WorldModel.lastPayload = p1; MapTopology.ensureRoom('Original Room', id, p1);
+        const p2 = mk('Original Room', 'dark'); WorldModel.lastPayload = p2; MapTopology.ensureRoom('Original Room', id, p2);
+        const p3 = mk('Different Room', 'lit'); WorldModel.lastPayload = p3; MapTopology.ensureRoom('Different Room', id, p3);
+        const r = ParchLockMap.Rooms.find(x => String(x.ObjectId) === String(id)); out.relit = r && { name: r.Name, prov: r.NameProvenance || null };
+        // (3) forged evidence (not the current payload) never stamps.
+        const id2 = 99998, cur = mk('X', 'lit'); WorldModel.lastPayload = cur;
+        const forged = mk('Darkness', 'dark', id2); MapTopology.ensureRoom('Darkness', id2, forged);
+        const r2 = ParchLockMap.Rooms.find(x => String(x.ObjectId) === String(id2)); out.forged = r2 && (r2.NameProvenance || null);
+        ParchLockMap.Rooms = ParchLockMap.Rooms.filter(x => x !== r && x !== r2); WorldModel.lastPayload = real;
+        return out;
+    });
+    check(neg.outOfTable === null, 'real_location with a link outside the object table abstains (' + JSON.stringify(neg.outOfTable) + ')');
+    check(neg.relit && neg.relit.name === 'Original Room' && !neg.relit.prov, 'lit-admitted room later dark then relit keeps its first name (' + JSON.stringify(neg.relit) + ')');
+    check(neg.forged === null, 'forged (non-current) dark evidence never stamps (' + JSON.stringify(neg.forged) + ')');
     await b.close();
     console.log(pass + ' PASS / ' + fail + ' FAIL'); process.exit(fail ? 1 : 0);
 })();

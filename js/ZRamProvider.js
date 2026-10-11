@@ -316,6 +316,7 @@ var ZRamProvider = {
                 playerSource: snap.playerSource || "",
                 roomId: snap.roomId || 0,
                 roomSource: snap.roomSource || "",
+                measuredDark: snap.measuredDark == null ? null : !!snap.measuredDark,
                 scopeCount: objs.length
             },
             confidence: conf
