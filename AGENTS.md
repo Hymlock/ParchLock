@@ -63,3 +63,8 @@ retract it, and ask for an independent investigation.
 - Do not declare completion from a message alone; run the stated validation.
 - Only the operator may record overall goal completion.
 - When done, report files changed, tests run, results, and relevant bus evidence.
+
+## Required regression guard (operator, 2026-10-11)
+
+Before every commit that touches js/, run `node harness/operator-regressions.js` (Zork I mailbox container/Open/Close, leaflet and kitchen-table underlines; Wumpus one compass label per exit; second food pellet stays underlined). It must report 0 FAIL, alongside the ZIL + Inform Z + Glulx three-type check (work/investigations/regression-gate.cjs).
+
