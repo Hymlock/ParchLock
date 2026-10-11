@@ -10,6 +10,7 @@
 - C. 0ed5cdb pellet: D214 U1 (a40f7ba) adapted (release retained mark on same-head-noun reprint). Bisect b747e42 good / a40f7ba bad.
 - Grok seat OUT OF CREDITS 00:30 ET: claims released, items assigned to grok2 (bus #3284). Self-review replaces Grok review.
 - Grok findings to keep: #3272 universal cold ZIL ABI = locked limit; #3278 operator 'worked' = AttrCalibrator.allowedVerbs after OPEN; #3283 Zork open=11, groups methodology (work/investigations/2026-10-10-grok-zil-full-flag-methodology.md).
+- 8661da0 regression gate seeded: deterministic (Planetfall noise gone). Older baselines in tmp/*.jsonl were unseeded; regenerate them before diffing.
 
 ## In progress / next
 - D (part 2). Waiting on Grok #3269/#3270 (cold ZIL decode, prior-attempt doc check).
