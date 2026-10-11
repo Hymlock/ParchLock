@@ -427,7 +427,7 @@ var Actionable = {
         }
         var encode = vm && vm.encode;
         if (c.vm !== vm || c.encode !== encode || c.sig !== sig || sig === null) {
-            c.vm = vm; c.encode = encode; c.sig = sig; c.keys = new Map(); c.text = null; c.words = c.rawWords = c.matches = c.wordKeys = null;
+            c.vm = vm; c.encode = encode; c.sig = sig; c.keys = new Map(); c.text = null; c.sourceRaw = null; c.words = c.rawWords = c.matches = c.wordKeys = null;
         }
         return c;
     },
@@ -460,8 +460,11 @@ var Actionable = {
         // All ownership/rank comparisons stay on lowercased keys.
         var sourceRaw = String(text || "");
         var source = sourceRaw.toLowerCase();
-        // The text's tokens and keys are computed once per text and encoder.
-        if (!ctx.sig || ctx.text !== source || !ctx.matches) {
+        // C2 (Codex #3048): cache key is the exact sourceRaw string, not only
+        // its lowercase form, so case-only changes rebuild rawWords while
+        // encoded word keys / lowercase ranking stay valid for the new text.
+        if (!ctx.sig || ctx.sourceRaw !== sourceRaw || !ctx.matches) {
+            ctx.sourceRaw = sourceRaw;
             ctx.text = source;
             ctx.matches = Array.from(sourceRaw.matchAll(/[a-z][a-z'-]*/gi));
             ctx.words = ctx.matches.map(function (match) { return match[0].toLowerCase(); });
@@ -471,7 +474,10 @@ var Actionable = {
             ctx.wordKeys = ctx.words.map(displayKey);
             // A text whose keys needed the vocabulary fallback is never reused
             // (codex #2329): the encoder may recover or the dictionary change.
-            if (ctx.wordKeys.some(function (k) { return k.slice(0, 2) !== "z:"; })) ctx.text = null;
+            if (ctx.wordKeys.some(function (k) { return k.slice(0, 2) !== "z:"; })) {
+                ctx.text = null;
+                ctx.sourceRaw = null;
+            }
         }
         var matches = ctx.matches, words = ctx.words, wordKeys = ctx.wordKeys;
         var rawWords = ctx.rawWords || words;

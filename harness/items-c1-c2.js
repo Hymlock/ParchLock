@@ -1,4 +1,4 @@
-const assert = require("assert");
+﻿const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
@@ -106,4 +106,12 @@ check(
   "FU1: casing prefers inventory occurrence"
 );
 
+
+// C2 stable-encoder case-only cache (Codex #3048)
+const c2obj = { id: 10, name: "white party ticket", structuralName: "white party ticket", aliases: ["white", "party", "ticket"] };
+const first = A.observedPhraseFor(c2obj, [c2obj], "you carry a white party ticket.");
+const second = A.observedPhraseFor(c2obj, [c2obj], "you carry a White Party Ticket.");
+check(first.toLowerCase() === "white party ticket", "C2 first lower ok");
+check(second === "White Party Ticket", "C2 case-only second returns new casing not stale: " + second);
 console.log(n + " C1/C2/D/FU checks passed");
+
