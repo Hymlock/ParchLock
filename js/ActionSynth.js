@@ -190,7 +190,13 @@ var ActionSynth = {
                         && AttrCalibrator.hasConfirmedFlag
                         && AttrCalibrator.hasConfirmedFlag(mem, flag));
                 } catch (e) {}
-                if (!learned) copy[flag] = false;
+                var measured = false;
+                if (!learned && copy[flag]) try {
+                    measured = !!(typeof AttributeSchema !== 'undefined'
+                        && AttributeSchema.measuredFlagOwner
+                        && AttributeSchema.measuredFlagOwner(mem, flag));
+                } catch (eOwner) {}
+                if (!learned && !measured) copy[flag] = false;
             });
             return copy;
         } catch (e) { return attrs; }

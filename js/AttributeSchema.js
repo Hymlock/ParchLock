@@ -107,6 +107,21 @@ var AttributeSchema = {
             return cap && Array.isArray(cap.all) && Array.isArray(cap.none) ? cap : null;
         } catch (e) { return null; }
     },
+    // Reuse digest/stable-header ownership; decode the family only for a mapped flag.
+    measuredFlagOwner: function (mem, flag) {
+        try {
+            if (!mem || typeof ZRamReader === 'undefined' || !ZRamReader.executableLayoutFacts) return false;
+            var fact = ZRamReader.executableLayoutFacts(mem), map = fact && fact.attributeMap;
+            if (!map || !Object.prototype.hasOwnProperty.call(map, flag)) return false;
+            var bit = map[flag], h = ZRamReader.header(mem);
+            if (!Number.isInteger(bit) || !h || h.version < 3 || h.version > 5
+                || bit < 0 || bit >= (h.version <= 3 ? 32 : 48)) return false;
+            if (typeof GrammarProvider === 'undefined' || !GrammarProvider.decodeD198) return false;
+            var family = GrammarProvider.decodeD198(mem);
+            return !!(family && family.classification === 'confirmed-zil-family'
+                && family.evidence === 'validated' && AttributeSchema.bitFor(flag, mem) === bit);
+        } catch (e) { return false; }
+    },
     bitFor: function (flagName, mem) {
         if (!flagName || !Object.prototype.hasOwnProperty.call(AttributeSchema.PROFILE, flagName)) return null;
         try {
