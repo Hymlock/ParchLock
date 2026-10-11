@@ -1,8 +1,10 @@
-const { chromium } = require('playwright'), assert = require('assert'), path = require('path'), {pathToFileURL} = require('url');
+﻿const { chromium } = require('playwright'), assert = require('assert'), path = require('path'), {pathToFileURL} = require('url');
 let checks=0;
 function check(value,text){assert(value,text);checks++;console.log('PASS:',text.split(' {')[0]);}
 async function boot(browser,width,height){
  const context=await browser.newContext({viewport:{width,height},isMobile:width<600,hasTouch:width<600}),page=await context.newPage();page.errors=[];page.on('pageerror',e=>page.errors.push(e.message));
+ // Deterministic labyrinth (2026-10-11): wump2ka randomizes its map from Math.random; unseeded runs sometimes routed through a swim-only exit and never reached the barrel (flaked on HEAD and pre-0ed5cdb alike).
+ await page.addInitScript(()=>{let s=12345;Math.random=()=>{s=(s*1103515245+12345)&0x7fffffff;return s/0x80000000;};});
  await page.addInitScript(()=>{sessionStorage.setItem('PL_ParchLockSplashSeen','1');localStorage.setItem('PL_TutorialSeen','1');localStorage.setItem('PL_LearnedWordsTutorialSeen','1');});
  await page.goto(pathToFileURL(path.resolve('play.html')).href+'?story=games/wump2ka.z5.js');await page.waitForTimeout(3500);
  await page.evaluate(()=>{if(Message.IsOpen)Message.Hide();});
