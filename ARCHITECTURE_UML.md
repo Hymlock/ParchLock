@@ -397,7 +397,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s104](#ar-s104) | 78. Inform 7 bookkeeping properties are not exits (D218) | H2 | Implemented / audited |
 | [ar-s105](#ar-s105) | 79. DarkScope: one heuristic darkness verdict per tick (D221) | H2 | Scoped-accepted (Codex #2702) |
 | [ar-s106](#ar-s106) | 80. Inform 7 Map_Storage look-ahead lane (D223) | H2 | Scoped-accepted (Codex #2804) |
-| [ar-s107](#ar-s107) | 81. Measured location fact and dark-admitted naming (D224) | H2 | Accepted (Codex #3175) |
+| [ar-s107](#ar-s107) | 81. Measured location fact and dark-admitted naming (D224) | H2 | Scoped-accepted (Codex #3175); gate closeout pending |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->

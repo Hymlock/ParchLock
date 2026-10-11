@@ -231,7 +231,7 @@ decisions and their later mentions, not only the first matching record.
 
 **Local manifest:** 338 headings; 103 decision rows; 441 registered units.
 **Last registered unit:** `pl-s338`. **Body SHA-256 (LF):**
-`59ba87c2895e0436fea79891aa223f71a9f4c1208dc2199dc19094f51af124fb`
+`71c9accbad0523227efd582a6861b58d7d4ddd61d635f129f18efe1193f8d247`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -751,7 +751,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s335](#pl-s335) | D221 DarkScope judges only the latest reply (M11) | H2 | Scoped-accepted (Codex #2702); HHG in-bed residual open |
 | [pl-s336](#pl-s336) | D222 Furniture and vehicles inside a top-level Inform room are not the room (M08) | H2 | Implemented, active broadly, tested on seeds; provenance unaccepted (parked) |
 | [pl-s337](#pl-s337) | D223 Inform 7 exits from Map_Storage for measured titles (M04-B) | H2 | Scoped-accepted (Codex #2804) |
-| [pl-s338](#pl-s338) | D224 Wumpus multi-section rooms: measured real_location fact; a dark-admitted name upgrades once | H2 | Accepted (Codex #3175); gate closeout pending |
+| [pl-s338](#pl-s338) | D224 Wumpus multi-section rooms: measured real_location fact; a dark-admitted name upgrades once | H2 | Scoped-accepted (Codex #3175); gate closeout pending |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -9023,10 +9023,10 @@ Guards: d46 27/0, d201 69/0, d23 88/0, m12 14/0.
 
 **Key files:** js/ModuleStatFactsClaude.js (measuredLocation fact), js/ZRamReader.js (measuredLocation, snapshot roomSource measured-fact, measuredDark), js/ZRamProvider.js (probe.measuredDark), js/DarkScope.js (darkEvidence, measured HUD label), js/MapTopology.js (first-admission dark stamp, one-shot upgrade), js/Map.js (Reset Map passes the payload), harness/wump-dark-rename.js. Research: work/investigations/2026-10-10-wump-identity-proposal.md, 2026-10-10-wump-dark-COMPARE-PROPOSAL.md, wump-actor-witness.cjs, wump-dark-travel.cjs, wump-d171-probe.cjs.
 
-**Root cause:** wump2ka rooms are multi-section. The game prints "a section of room #25", and one printed number covers several C_ROOMS_<n> objects, each with its own heading, exits and contents. D171 selected the object by the printed number, so in a multi-section room the app sat on an empty sibling section (operator save: 49 C_ROOMS_25, while the actor CustomPlayer 171 was in 50 C_ROOMS_26). Name, exits and scope all attached to the wrong object. The D62 "renumbering" is the same phenomenon seen from the other side.
+**Root cause:** wump2ka rooms are multi-section. The game prints "a section of room #25", and one printed number covers several C_ROOMS_<n> objects, each with its own heading, exits and contents. D171 selected the object by the printed number, so in a multi-section room the app sat on an empty sibling section (operator save: 49 C_ROOMS_25, while the native inventory holder 171 and the real_location G37 were both on section 50 C_ROOMS_26; the mapping actor 20 remains unresolved and separate). Name, exits and scope all attached to the wrong object. The D62 "renumbering" is the same phenomenon seen from the other side.
 
 **Measurement:**
-- On a native route and on dark travel, G37 follows the actor's section on every move, including while dark: this is real_location.
+- On a native route and on dark travel, G37 follows the inventory holder's section on every move, including while dark: this is real_location.
 - G16 is that room, or the darkness object 19 while dark: this is location.
 - G38 becomes 19 after a dark move, so it is excluded. G70 is lastlocation.
 - Executable SHA a18e057b..., header-checked by the stable fields (byte 1 changes at run time).
