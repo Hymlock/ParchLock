@@ -1,4 +1,4 @@
-﻿/* AttrCalibrator (D73, Phase B)
+/* AttrCalibrator (D73, Phase B)
  *
  * D34/D58 both accepted "attribute-approximation is a ceiling" for verb
  * prediction, reasoning the only alternative -- watching a compiled game's
@@ -89,7 +89,7 @@ var AttrCalibrator = {
     // just the one that happened to be tested.
     VERB_FLAG: { open: "open", close: "open", wear: "worn", remove: "worn", "switch on": "on", "switch off": "on", lock: "locked", unlock: "locked" },
 
-    // Fixed multiword synonyms â†’ canonical ActionSynth verb forms.
+    // Fixed multiword synonyms → canonical ActionSynth verb forms.
     // Deterministic grammar aliases (same class as n/north), not story text.
     VERB_SYNONYMS: {
         "turn on": "switch on",
@@ -209,7 +209,7 @@ var AttrCalibrator = {
     // Built once from ActionSynth.rules' own verb list (generic -- not a
     // second hardcoded verb table) plus "drop"/"remove", which ActionSynth
     // synthesizes ad-hoc for inventory context rather than declaring in
-    // `rules`, plus fixed multiword synonyms (turn on â†’ switch on).
+    // `rules`, plus fixed multiword synonyms (turn on → switch on).
     // Longest phrases first so "switch on"/"turn on" match before a
     // shorter accidental prefix would.
     buildVerbRegex: function () {
@@ -1119,13 +1119,6 @@ var AttrCalibrator = {
             if(frozenRoom != null)rooms[String(frozenRoom)]=true;
             if(payload && payload.roomId != null)rooms[String(payload.roomId)]=true;
             if(typeof ParchLockMap !== 'undefined') (ParchLockMap.Rooms || []).forEach(function(r){if(r && r.HasRealId && r.ObjectId != null)rooms[String(r.ObjectId)]=true;});
-            // Rooms witnessed when an INV-turn learner elected a holder under them
-            // (same-game table; not a name regex). Lets CustomPlayer under an
-            // unmapped section room stay in-world without C_ROOMS string match.
-            try {
-                var wr = (AttrCalibrator.table && AttrCalibrator.table.witnessedRoomIds) || {};
-                Object.keys(wr).forEach(function (rid) { if (wr[rid]) rooms[String(rid)] = true; });
-            } catch (eW) {}
             // Unsupported readers with no containment evidence keep their
             // original behavior. A real detached node is decisive negative evidence.
             if(!Object.keys(rooms).length || !mem || !ZRamReader.objectLinks)return true;
@@ -1135,7 +1128,16 @@ var AttrCalibrator = {
             for(var i=0;i<32 && node && !seen[id];i++) {
                 seen[id]=true;
                 if(rooms[String(node.parent)])return true;
-                                if(!node.parent)return false;
+                // D80: C_ROOMS_N is a compiled room id even before map admission
+                // (Q0: CustomPlayer under prior section room). Not a generic
+                // location broaden — name pattern is the Inform room table.
+                try {
+                    if (node.parent) {
+                        var psn = String(ZRamReader.shortName(mem, node.parent) || "");
+                        if (/^c_rooms_\d+$/i.test(psn)) return true;
+                    }
+                } catch (eCR) {}
+                if(!node.parent)return false;
                 id=node.parent; node=ZRamReader.objectLinks(mem,id);
             }
             return false;
@@ -1272,14 +1274,10 @@ var AttrCalibrator = {
                 var itemLines = [];
                 var inList = false;
                 (snap.lines || []).forEach(function (ln) {
-                    var raw = String(ln || "");
-                    if (/you are (carrying|holding|wearing)/i.test(raw)) { inList = true; return; }
+                    if (/you are (carrying|holding|wearing)/i.test(ln)) { inList = true; return; }
                     if (!inList) return;
-                    if (!raw.trim() || /^>/.test(raw.trim())) { inList = false; return; }
-                    // Strict item lines: indented under the carrying header only
-                    // (excludes capacity/value prose that follows).
-                    if (!/^\s+/.test(raw)) { inList = false; return; }
-                    itemLines.push(raw.trim());
+                    if (!String(ln).trim() || /^>/.test(String(ln).trim())) { inList = false; return; }
+                    itemLines.push(String(ln).trim());
                 });
                 if (!itemLines.length) return;
                 function phraseOf(line) {
@@ -1316,15 +1314,6 @@ var AttrCalibrator = {
                 if (n < 2 || n <= next * 2 || snap.rooms[top]) return;
                 AttrCalibrator.hydrate(ctx.mem);
                 AttrCalibrator.table.inventoryRootId = +top;
-                // Witness the holder's parent room id so inventoryHolderInWorld
-                // can validate without name-based C_ROOMS matching.
-                try {
-                    var topLinks = ZRamReader.objectLinks(ctx.mem, +top);
-                    if (topLinks && topLinks.parent) {
-                        AttrCalibrator.table.witnessedRoomIds = AttrCalibrator.table.witnessedRoomIds || {};
-                        AttrCalibrator.table.witnessedRoomIds[String(topLinks.parent)] = true;
-                    }
-                } catch (eW2) {}
                 AttrCalibrator.persist(ctx.mem);
             } catch (e) {}
         }
@@ -1431,4 +1420,3 @@ if (typeof setTimeout === "function") {
     setTimeout(function () { AttrCalibrator.installHooks(); }, 0);
     setTimeout(function () { AttrCalibrator.installHooks(); }, 50);
 }
-
