@@ -15,8 +15,25 @@ const settle = async p => { for (let i = 0; i < 14 && !await p.locator('.Input.L
         return p.evaluate(({ n0, cont, ob }) => { const lines = [...document.querySelectorAll('.BufferLine')]; const m = ZRamProvider.getMem(); let id = null, bit = null;
           for (let i = 1; i < 1000; i++) { let L; try { L = ZRamReader.objectLinks(m, i); } catch (e) { break; } if (!L || !L.attrBytes) break; if (id == null && new RegExp('\\b' + cont + '\\b', 'i').test(ZRamReader.shortName(m, i) || '')) { id = i; bit = ob == null ? null : !!(L.attrBytes[ob >> 3] & (128 >> (ob & 7))); } }
           return { text: lines.slice(n0).map(l => l.textContent).join(' ').replace(/\s+/g, ' ').toLowerCase(), marks: [...document.querySelectorAll('.pl-act:not(.is-stale)')].filter(x => lines.indexOf(x.closest('.BufferLine')) >= n0).map(x => x.textContent.toLowerCase()), contId: id, openBit: bit }; }, { n0, cont: r.container, ob }); };
-      if (r.carousel) throw Error('Zork II carousel route needs native dragon/glacier checkpoint; not run in this pass');
       for (const c of r.setup || []) rec.steps.push({ setup: c, ...(await cmd(c)), room: await room() });
+      const step = async c => { let x = await cmd(c); for (let k = 0; k < 8 && /frozen solid|move a muscle|can't do anything else/.test(x.text); k++) { rec.steps.push({ setup: c + ' (blocked by authored wizard spell)', ...x, room: await room() }); x = await cmd('wait'); if (!/frozen|muscle/.test(x.text)) x = await cmd(c); } return x; };
+      if (r.carousel) { const C = r.carousel; if (r.setupExpectedRoom && (await room()) !== r.setupExpectedRoom) throw Error('setup ended in ' + await room());
+        let got = false; for (let i = 0; i < C.maxAttempts && !got; i++) { for (const c of C.attempt) rec.steps.push({ setup: c, ...(await cmd(c)), room: await room() });
+          const now = await room(); if (now === C.untilRoom) { got = true; break; } const back = C.returnCommandsByActualRoom[now]; if (!back) throw Error('carousel: unplanned room ' + now);
+          for (const c of back) rec.steps.push({ setup: c, ...(await cmd(c)), room: await room() }); if ((await room()) !== r.setupExpectedRoom) throw Error('carousel return failed: ' + await room()); }
+        if (!got) throw Error('carousel: Cool Room not reached');
+        // Adaptive dragon lure (2dungeon/2actions DRAGON-FCN): from the actual room, attack then step toward Ice Room
+        // (Dragon Room -S-> Stone Bridge -S-> Cool Room -W-> Ice Room); branch only on native room identity, stop on melt.
+        const toIce = { 'Cool Room': 'north', 'Stone Bridge': 'north' }; const lure = { 'Dragon Room': 'south', 'Stone Bridge': 'south', 'Cool Room': 'west' };
+        let melted = false, met = false;
+        for (let i = 0; i < 30 && !melted; i++) { const now = await room(); if (/^You have died|\*\*\*/.test('')) break;
+          if (!met && toIce[now]) { const x = await step(toIce[now]); rec.steps.push({ setup: toIce[now], ...x, room: await room() }); if ((await room()) === 'Dragon Room') met = true; continue; }
+          if (now === 'Dragon Room') met = true;
+          const x1 = await step('attack dragon with sword'); rec.steps.push({ setup: 'attack dragon with sword', ...x1, room: await room() });
+          const r2 = await room(); const mv = lure[r2]; if (!mv) { if (/melt|glacier/.test(x1.text)) { melted = true; break; } throw Error('lure: unplanned room ' + r2); }
+          const x2 = await step(mv); rec.steps.push({ setup: mv, ...x2, room: await room() }); if (/melt|glacier/.test(x1.text + x2.text)) melted = true; }
+        if (!melted) throw Error('checkpoint missed: ' + rec.steps.slice(-4).map(x => x.text).join(' ').slice(-200));
+        for (const c of r.afterIceMelts || []) rec.steps.push({ setup: c, ...(await step(c)), room: await room() }); }
       rec.room = await room(); if (r.expectedRoom && !/verify/.test(r.expectedRoom) && rec.room.toLowerCase() !== r.expectedRoom.toLowerCase()) throw Error('unexpected room ' + rec.room);
       const heads = r.originalChildren.map(x => x.toLowerCase().split(/\s+/).pop());
       for (const c of r.probe) { const s = await cmd(c); s.cmd = c; s.childText = heads.filter(h => s.text.includes(h)); s.childMarked = heads.filter(h => s.marks.some(m => m.includes(h))); rec.steps.push(s); }

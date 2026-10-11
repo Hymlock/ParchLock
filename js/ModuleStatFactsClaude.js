@@ -3,6 +3,10 @@
 // field/reply-family and measured equipment-state capabilities only.
 // No stored numeric readings or title dispatch.
 var ModuleStatFactsClaude = {
+    "abf145d22371f825f13388587d92632bcde90582698f774b896b123a90e1fb1e": {
+        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11 },
+        "openCapability": { "all": ["container"], "none": ["supporter"] }
+    },
     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
         "attributeMap": { "container": 21, "supporter": 14 },
         "openCapability": { "all": ["container"], "none": ["supporter"] }
