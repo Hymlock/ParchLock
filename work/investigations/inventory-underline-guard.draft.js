@@ -20,8 +20,13 @@ async function open(b, story, seed) {
 async function wumpSpear(b, control) {
   const p = await open(b, 'wump2ka.z5.js', 4);
   await p.cmd('take pellets'); await p.cmd('take pellets');
-  const route = await p.evaluate(() => { const mem = ZRamProvider.getMem(); const q = [{ id: WorldModel.lastPayload.roomId, path: [] }], seen = new Set(); while (q.length) { const a = q.shift(); if (seen.has(a.id)) continue; seen.add(a.id); if (a.path.length >= 5) return a.path; ZRamReader.lookAheadExits(mem, a.id).forEach(e => { if (e.targetRoomId && !seen.has(e.targetRoomId)) q.push({ id: e.targetRoomId, path: a.path.concat(e.label) }); }); } return []; });
-  for (const l of route) await p.cmd(await p.evaluate(l => Actionable.resolveExitCommand(l), l));
+  // Targeted route (2026-10-11): BFS to the room that holds object 290 (the formation/spear) by RAM parent chain; the old blind 5-step BFS depended on exit order.
+  // Adaptive walk (2026-10-11): re-plan by BFS to the room holding object 290 after every step and ban any edge whose
+  // real result disagrees with the lookahead (known Wumpus 'exit 3' lookahead mismatch, ITEMS-QUEUE).
+  const banned = [];
+  for (let step = 0; step < 40; step++) { const plan = await p.evaluate(banned => { const mem = ZRamProvider.getMem(); const anc = new Set(); let o = 290; for (let k = 0; k < 8 && o; k++) { o = (ZRamReader.objectLinks(mem, o) || {}).parent; if (o) anc.add(o); } const start = WorldModel.lastPayload.roomId; if (anc.has(start)) return { done: true }; const q = [{ id: start, first: null }], seen = new Set(); while (q.length) { const a = q.shift(); if (seen.has(a.id)) continue; seen.add(a.id); if (anc.has(a.id)) return a.first; (ZRamReader.lookAheadExits(mem, a.id) || []).forEach(e => { if (!e.targetRoomId || seen.has(e.targetRoomId) || banned.includes(a.id + '/' + e.label)) return; q.push({ id: e.targetRoomId, first: a.first || { from: start, label: e.label, to: e.targetRoomId } }); }); } return null; }, banned);
+    if (!plan || plan.done) break; await p.cmd(await p.evaluate(l => Actionable.resolveExitCommand(l), plan.label)); const now = await p.evaluate(() => WorldModel.lastPayload.roomId); if (now !== plan.to) banned.push(plan.from + '/' + plan.label); }
+
   await p.cmd('take all');
   if (control) await p.evaluate(() => Actionable.LiveMarks.filter(m => m.textContent === 'formation').forEach(m => { m.dataset.candidateIds = '[290,345]'; m.removeAttribute('data-object-id'); }));
   await p.cmd('i'); const r = await p.inv(); r.formationLive = await p.evaluate(() => Actionable.LiveMarks.filter(m => m.textContent === 'formation').length); await p.context().close(); return r;

@@ -23,5 +23,18 @@ let pass = 0, fail = 0; const check = (n, ok, info) => { ok ? pass++ : fail++; c
   check('prior story i never confirms after switch', !!(s.conf && s.conf.id === r.conf.id), s);
   await cmd('i'); const n = await st();
   check('new i under the new story epoch qualifies', !!(n.conf && n.sub && n.sub.ok && n.conf.id === n.sub.id && n.conf.id > r.conf.id), n);
+  // Codex #3354 control: a retained shared alias that is NOT the object's head noun (e.g. Glow Bar 'light')
+  // re-printed as 'lights' gets no headVariantProof and stays unmarked.
+  const sa = await p.evaluate(() => { WorldModel.tick(); const pool = Actionable.distinctObjects(Actionable.payloadPool());
+    const o = pool.find(x => { const h = String(Actionable.headNounOf(x) || '').toLowerCase(); return (x.aliases || []).some(a => /^[a-z]{4,}$/.test(a) && a !== h && !h.startsWith(a) && !a.startsWith(h)); }); if (!o) return { none: true };
+    const head = String(Actionable.headNounOf(o) || '').toLowerCase(); const alias = o.aliases.find(a => /^[a-z]{4,}$/.test(a) && a !== head && !head.startsWith(a) && !a.startsWith(head));
+    const win = document.querySelector('#windowport .BufferWindow'); const old = document.createElement('div'); old.className = 'BufferLine'; const mk = document.createElement('span'); mk.className = 'pl-act'; mk.textContent = alias; mk.dataset.kind = 'object'; mk.dataset.objectId = String(o.id); mk.dataset.candidateIds = JSON.stringify([o.id]); old.appendChild(mk); win.appendChild(old);
+    const nl = document.createElement('div'); nl.className = 'BufferLine'; nl.textContent = 'You notice some ' + alias + 's here.'; win.appendChild(nl);
+    const live = Actionable.LiveMarks; Actionable.LiveMarks = [mk];
+    const picked = Actionable.rebindCandidates({ phrase: alias + 's', objectId: o.id, preferred: false, fromName: false }, [nl], [o], false);
+    const r = { obj: o.name, head, alias, picked: picked.length, proof: !!picked.headVariantProof, marked: !!nl.querySelector('.pl-act') };
+    Actionable.LiveMarks = live; old.remove(); nl.remove(); return r; });
+  check('shared non-head alias (' + (sa.alias || '-') + ' -> ' + (sa.alias || '-') + 's): no headVariantProof, stays unmarked', !sa.none && !sa.proof && !sa.marked, sa);
   await b.close(); console.log(`RESULT ${pass} PASS / ${fail} FAIL`); process.exit(fail ? 1 : 0); })();
+
 
