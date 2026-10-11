@@ -1,3 +1,35 @@
+# R2 (2026-10-11 11:50 ET): Codex #3292 NO-GO findings applied. R2 overrides R1 below wherever they conflict.
+
+R2.1 Exits (finding 1). R1's "no static exit decode" was stale. **Z1-R1 decoded ZIL exit hints exist and are accepted** (ARCHITECTURE_UML "Z1-R1 decoded ZIL exit hints (D214 extension)"; PRODUCTION_PLAN Z1-R1 amendment; ExitCalibrator.js ~95-191). They are hints only: they may make rooms visible, but unwalked exits stay out of the route graph until state-delta evidence. This plan preserves that path unchanged. Locked: invented route authority, inverse edges, and actor/door objects as destinations. Exits are not re-decoded here.
+
+R2.2 Classification (finding 2). The ZIL set is NOT "isInformCompiled = false". It is the existing D198 classification: `confirmed-zil-family` + `validated` per executable. **dejavu.z3.js is excluded** (isInform=false, but decodeD198 = confirmed-inform/validated, reason inform-compass-dictionary-layout); it is recorded as a classification exception, and no ZIL facts are applied to it. Moonglow is confirmed-inform (excluded). The fixed list is the GameList titles whose D198 result is confirmed-zil-family/validated, in GameList order; every other title is listed with its classification and reason.
+
+R2.3 Proof must be native, not first-match (finding 3). Analyzer requirements before ANY fact:
+ a. exact action-table linkage, proven (action count from D198, preaction table boundary checked);
+ b. PRSO/PRSI globals PROVEN, not guessed (the global written by the parser for the direct and indirect object, cross-checked live: after `open X`, the global holds X's object number);
+ c. instruction boundaries and branch paths followed by control flow (no linear sweep over unreachable bytes), with branch polarity retained per test;
+ d. a native before/after transition live (bit flips on the real object under the real verb), or a native static consumer semantic for keys that never flip.
+ The tree check (most-common-parent is NOT proof of ROOMS) is corroboration only.
+
+R2.4 Container != openable (finding 4). Bits describe state, not capability. Planetfall uniform and Enchanter book are container/open but natively refuse OPEN/CLOSE; Infidel trunk shows open=true while the padlock holds it shut. The plan does NOT promise operative Open/Close on every container. `openable`/`lockable` are mapped only with native transition evidence; special objects stay whatever their native behavior proves. The D73 allowedVerbs learner remains the source of offered verbs after use.
+
+R2.5 Precedence (finding 5), stated per key and preserved:
+ - worn/isWorn: declared I6 names > fact `wornAttribute` > AttrCalibrator.learnedWornBit > (Inform only) PROFILE; `wornOwnedAboveCalibration` stops calibration overwriting it. attributeMap does NOT carry worn.
+ - takeable: owned by D214 `GrammarProvider.d214TakeAttribute` (the TAKE syntax FIND bit) on ZIL; NOT mapped.
+ - all other PROFILE keys: declared names > attributeMap fact > ZIL fail-closed null (1e54a58) > Inform-only PROFILE; then D73 calibrator object overrides apply in applyTo as they do today.
+ - equipment: applyEquipmentState (measured) unchanged.
+
+R2.6 Exhaustive matrix (finding 6). The coverage table has one row for every PROFILE key (33), every payload key (playerId, roomId/roomName, inventory, discoveredObjects, unnamedCandidates, darkness/darkEvidence, exits, probe), every fact key, and every stat field present in facts. Each row records: consumer(s), owning existing system, ZIL source or "derived" or "unsupported", and a value per title or unknown + reason. Derived keys (takeable, talkable from animate, aliases/vocabulary) say derived and never get a bit. Also listed as existing consumers: object vocabulary / command references (D145), and nested closed-container visibility (D148, d31-nested-inventory).
+
+R2.7 Isolation (finding 7, operator: new systems must not break other games). Every new fact is gated by executable digest AND D198 confirmed-zil-family/validated. Bit numbers are bounded by version (v3 < 32, v4+ < 48). Globals and mutable data are validated per UndoRestoreSync generation and after restore. Unknown never clears a value proven by Inform/Glulx/custom providers. The seeded gate's Inform Z and Glulx controls must show 0 differences.
+
+R2.8 Status (finding 8). Status keeps source and units (e.g. Planetfall's clock is not turns; the v3 header time flag decides). Hidden probe lifecycle and continuations are preserved. Numeric facts need a same-generation RAM proof with a negative sample and a change sample (value changes when the game changes it), never a one-off coincidence.
+
+R2.9 Efficiency (finding 9). Tests are risk-targeted. The full seeded gate and operator-regressions run once per batch commit, not per draft.
+
+R2.10 Status of the 10-title draft. Codex found native support for Zork I (OPEN set 11 / CLOSE clear 11 / PUT IN test 19 / PUT ON test 10; container 19 over mailbox-only 13). The other nine titles' polarity is not established. The draft stays uncommitted input until it meets R2.3.
+
+R2.11 Tooling note. Codex reported that new-path claims fail with claim_path_missing (400) (#3287). New files are proposed inline or in Codex's claimed audit file until that is fixed.
 # Doc check: full ZIL decode (everything the app decodes for Inform/Glulx), 2026-10-11
 
 Author: Parchmap-main Repo (Grok Bot), orchestrator on grok2 (not Claude). Status: PLAN ONLY. Nothing below is committed product work.
