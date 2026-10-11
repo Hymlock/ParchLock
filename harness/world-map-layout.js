@@ -45,4 +45,41 @@ assert.throws(() => layout.place([{ key: 'duplicate' }, { key: 'duplicate' }], [
 assert.equal(layout.place([], [], new Map()).cells.size, 0);
 const unusual = layout.place([{ key: '__proto__' }, { key: 'constructor' }], [{ from: '__proto__', to: 'constructor', dir: 'toString' }], new Map());
 assert.equal(unusual.cells.size, 2); assert.equal(unusual.edgeKinds[0], 'labelled');
-console.log('PASS: World Map layout identity, collision, cycles, levels, numbered/incoming edges, stability, persistence, invalid cells and purity.');
+// R4 section-group: unitLabelled keeps world default unchanged and stacks labelled exits.
+const worldDefault = layout.place(
+  [{ key: 'a', anchor: true }, { key: 'b' }],
+  [{ from: 'a', to: 'b', dir: 'exit 2' }],
+  new Map()
+);
+const groupMode = layout.place(
+  [{ key: 'a', anchor: true }, { key: 'b' }],
+  [{ from: 'a', to: 'b', dir: 'exit 2' }],
+  new Map(),
+  { unitLabelled: true }
+);
+const dWorld = Math.abs(worldDefault.cells.get('b').x - worldDefault.cells.get('a').x)
+  + Math.abs(worldDefault.cells.get('b').y - worldDefault.cells.get('a').y);
+const dGroup = Math.abs(groupMode.cells.get('b').x - groupMode.cells.get('a').x)
+  + Math.abs(groupMode.cells.get('b').y - groupMode.cells.get('a').y);
+assert.equal(dGroup, 1, 'group unitLabelled places labelled exit as orthogonal neighbour');
+assert.ok(dWorld >= 2, 'world default labelled exit still uses radius-2 ring');
+assert.deepStrictEqual(
+  plain(layout.place(nodes, edges, new Map()).cells),
+  plain(a.cells),
+  'omitted options keeps world place() identical'
+);
+const gPrev = layout.place(
+  [{ key: 's1', anchor: true }, { key: 's2' }],
+  [{ from: 's1', to: 's2', dir: 'x1' }],
+  new Map(),
+  { unitLabelled: true }
+);
+const gNext = layout.place(
+  [{ key: 's1', anchor: true }, { key: 's2' }, { key: 's3' }],
+  [{ from: 's1', to: 's2', dir: 'x1' }, { from: 's2', to: 's3', dir: 'x2' }],
+  gPrev.cells,
+  { unitLabelled: true }
+);
+sameCell(gNext.cells.get('s1'), gPrev.cells.get('s1'));
+sameCell(gNext.cells.get('s2'), gPrev.cells.get('s2'));
+console.log('PASS: World Map layout identity, collision, cycles, levels, numbered/incoming edges, stability, persistence, invalid cells, purity, R4 unitLabelled group mode.');

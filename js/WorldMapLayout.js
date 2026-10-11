@@ -10,7 +10,10 @@ var WorldMapLayout = {
         });
     },
 
-    vector: function (direction) {
+    // options.unitLabelled (R4 section-group only): labelled exits use a unit
+    // orthogonal step so sections stack adjacent. World-level callers omit it
+    // and keep the radius-2 hashed ring (D202 unchanged).
+    vector: function (direction, options) {
         var label = String(direction || "").trim().toLowerCase();
         var compass = {
             n: [0, -1, 0], north: [0, -1, 0], s: [0, 1, 0], south: [0, 1, 0],
@@ -25,14 +28,20 @@ var WorldMapLayout = {
         // A repeatable visual offset, never a suggested parser direction.
         var hash = 2166136261;
         for (var i = 0; i < label.length; i++) { hash ^= label.charCodeAt(i); hash = Math.imul(hash, 16777619); }
+        if (options && options.unitLabelled) {
+            var unit = [[1, 0], [0, 1], [-1, 0], [0, -1]];
+            var u = unit[(hash >>> 0) % unit.length];
+            return { delta: [u[0], u[1], 0], kind: "labelled" };
+        }
         var ring = [[2, 0], [2, 1], [1, 2], [0, 2], [-1, 2], [-2, 1],
             [-2, 0], [-2, -1], [-1, -2], [0, -2], [1, -2], [2, -1]];
         var offset = ring[(hash >>> 0) % ring.length];
         return { delta: [offset[0], offset[1], 0], kind: "labelled" };
     },
 
-    place: function (nodes, edges, previous) {
+    place: function (nodes, edges, previous, options) {
         if (!Array.isArray(nodes) || !Array.isArray(edges)) throw new TypeError("World Map nodes and edges must be arrays");
+        options = options || null;
         var cells = new Map(), byKey = new Map(), neighbors = new Map(), occupied = new Set();
         nodes.forEach(function (node, index) {
             if (!node || typeof node.key !== "string" || !node.key || byKey.has(node.key)) {
@@ -55,7 +64,7 @@ var WorldMapLayout = {
         });
         edges.forEach(function (edge) {
             if (!edge || !byKey.has(edge.from) || !byKey.has(edge.to)) return;
-            var vector = WorldMapLayout.vector(edge.dir).delta;
+            var vector = WorldMapLayout.vector(edge.dir, options).delta;
             neighbors.get(edge.from).push({ key: edge.to, delta: vector, label: String(edge.dir || "") });
             // Incoming adjacency is used for placement only. The result
             // still contains exactly the caller's original directed edges.
@@ -109,7 +118,7 @@ var WorldMapLayout = {
         });
         var edgeKinds = edges.map(function (edge) {
             if (!edge || !cells.has(edge.from) || !cells.has(edge.to)) return "hidden";
-            var a = cells.get(edge.from), b = cells.get(edge.to), vector = WorldMapLayout.vector(edge.dir);
+            var a = cells.get(edge.from), b = cells.get(edge.to), vector = WorldMapLayout.vector(edge.dir, options);
             if (vector.kind === "labelled") return "labelled";
             return b.x - a.x === vector.delta[0] && b.y - a.y === vector.delta[1] && b.level - a.level === vector.delta[2]
                 ? vector.kind : "bent";
