@@ -1,4 +1,4 @@
-﻿# Doc check: full ZIL decode (everything the app decodes for Inform/Glulx), 2026-10-11
+# Doc check: full ZIL decode (everything the app decodes for Inform/Glulx), 2026-10-11
 
 Author: Parchmap-main Repo (Grok Bot), orchestrator on grok2 (not Claude). Status: PLAN ONLY. Nothing below is committed product work.
 The uncommitted 10-title open/container attributeMap draft (js/ModuleStatFactsClaude.js working tree, `zil-attr-*.js`, `2026-10-11-zil-attr-drafts.json`) is INPUT to this plan, not the plan.
@@ -45,7 +45,7 @@ C. Status (StatTracker + fact keys): v3 status line score / moves or time (heade
 | #3272 (Grok) | universal cold ZIL ABI = locked known limit; allowed: per-title attributeMap facts, fail-closed, offline drafts | this plan is per-title facts only |
 | 1e54a58 | no I6 PROFILE bits on ZIL for container/open family | keep; extend fail-closed to every key a map does not prove |
 | c33f396 / 5ec4c95 | Zork I map (container 13, open 11, supporter 10) | under review: evidence says container = 19 (CONTBIT); 13 is mailbox-only |
-git log -S was run for attributeMap, bitFor, CONTBIT, test_attr, set_attr, playerGlobal, wornAttribute. No removed or overwritten ZIL system was found (agrees with Grok #3266 and #3278).
+git log -S (js/) results: attributeMap -> c33f396, 1e54a58; CONTBIT -> c33f396, 5ec4c95; set_attr -> initial commit only; playerGlobal -> b747e42, 0126b14 (Degeneracy G18), c06d56d (Facility G44); wornAttribute -> b747e42; test_attr -> Q0 inventory-root attempts 311ad4a (reverted by d037132) and 1da03c2 'v5c same-turn unique full-phrase inventory root' (reverted by 4035a95). **Inventory root is a prior attempt that was reverted twice:** item B inventory must read the D148/D214/inventoryHiddenAttribute path and must not re-introduce a test_attr-based inventory-root guess. Read those two reverts before touching inventory. No removed or overwritten ZIL attribute system was found (agrees with Grok #3266 and #3278).
 
 ## 4. Allowed vs locked
 Allowed: per-digest facts (attributeMap, playerGlobal, wornAttribute, inventoryHiddenAttribute, measuredLocation, status facts) with per-bit evidence; offline analyzer tools under work/investigations; fail closed (unknown stays null).
