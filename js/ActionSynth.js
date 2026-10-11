@@ -58,10 +58,17 @@ var ActionSynth = {
         var defaultVerb = ActionSynth.defaultInspectVerb();
         var verbs = ActionSynth.inspectVerbDisabled() ? [] : [defaultVerb];
         var a = attrs || {};
+        // Surface-aware Open/Close (2026-10-11): when the story records an openCapability
+        // predicate, the CONTAINER rule's open/close need it (Zork I: container and not
+        // supporter; the kitchen table refuses CLOSE). Only this attribute-derived path;
+        // the openable rule and learned AttrCalibrator verbs below are unchanged.
+        var cap = typeof AttributeSchema !== "undefined" && AttributeSchema.openCapability ? AttributeSchema.openCapability() : null;
+        var capOk = !cap || (cap.all.every(function (k) { return !!a[k]; }) && cap.none.every(function (k) { return !a[k]; }));
         Object.keys(ActionSynth.rules).forEach(function (key) {
             if (key === "default") return;
             if (a[key]) {
                 ActionSynth.rules[key].forEach(function (v) {
+                    if (key === "container" && !capOk && (v === "open" || v === "close")) return;
                     if (verbs.indexOf(v) < 0) verbs.push(v);
                 });
             }

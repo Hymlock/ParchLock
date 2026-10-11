@@ -96,6 +96,17 @@ var AttributeSchema = {
     _wrapped: false,
     MISS_THRESHOLD: 3,
 
+    // Surface-aware container Open/Close (2026-10-11): an evidence-owned per-executable
+    // predicate from the digest row (ModuleStatFactsClaude openCapability). null = none
+    // recorded: callers keep existing behavior (Inform/Glulx and unrecorded titles untouched).
+    openCapability: function () {
+        try {
+            var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest ? ModuleLibrary.currentExecutableDigest() : null;
+            var fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
+            var cap = fact && fact.openCapability;
+            return cap && Array.isArray(cap.all) && Array.isArray(cap.none) ? cap : null;
+        } catch (e) { return null; }
+    },
     bitFor: function (flagName, mem) {
         if (!flagName || !Object.prototype.hasOwnProperty.call(AttributeSchema.PROFILE, flagName)) return null;
         try {

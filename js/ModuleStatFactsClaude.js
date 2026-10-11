@@ -323,11 +323,14 @@ var ModuleStatFactsClaude = {
     },
     // Zork I (Infocom v3)
     "0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd": {
-        // ZIL mailbox: CONTBIT=13 always; OPENBIT=11 after OPEN (measured attrBytes
-        // closed [13,19] open [3,11,13,19]). Inform PROFILE open=14 is wrong here.
-        // CONTBIT=13 mailbox; OPENBIT=11 after OPEN; SURFACEBIT=10 kitchen table
-        // (table bits [10,11,14,19]; door [14,23] has no 10 — avoids false supporter).
-        "attributeMap": { "container": 13, "open": 11, "isOpen": 11, "supporter": 10 },
+        // Native OPEN/CLOSE dispatch (Codex 2026-10-11, owned proof JSON): mailbox 160, sack 224 and
+        // bottle 236 test CONTBIT 19, OPEN sets and CLOSE clears OPENBIT 11; OPEN leaflet 161 tests 19
+        // false. Initial sack/bottle/table lack 13 but have 19; 13 is mailbox-only, not CONTBIT.
+        // SURFACEBIT 10 kitchen table preserved. Surface-aware Open/Close (Codex #3371/#3377):
+        // CLOSE TABLE 204 (19 and 10) answers cannot-close, so container-derived Open/Close needs
+        // container AND NOT supporter here. Facts stay truthful.
+        "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10 },
+        "openCapability": { "all": ["container"], "none": ["supporter"] },
         "command": "score", "fields": ["score.max", "rank"], "replyFamily": "inform-score", "outcome": "line",
         "evidence": "2026-10-05 live SCORE: Your score is 0 (total of 350 points), in 0 moves. / This gives you the rank of Beginner."
     },
