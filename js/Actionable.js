@@ -295,20 +295,11 @@ var Actionable = {
         }
         var preserves = curL === structuralDisp || (structuralDisp && (" " + curL + " ").indexOf(" " + structuralDisp + " ") >= 0);
         var uniqueObs = Actionable.observedPhraseFor(seed, pool, observeText, true);
-        // D144 / 62e9195 / 8c2f205: a longer observed phrase is a recovery of a
-        // truncated dictionary head when every token is an alias, a plural of
-        // an alias, or a printed extension of a truncated alias (tennisb→tennis).
         var longerRecovery = false;
         if (current && curL && curL !== nameL && curL.length > nameL.length) {
             longerRecovery = curL.split(/\s+/).every(function (w) {
-                if (aliasKeys.indexOf(w) >= 0 || nameL.indexOf(w) >= 0) return true;
-                if (aliasKeys.indexOf(w + "s") >= 0 || aliasKeys.indexOf(String(w).replace(/s$/, "")) >= 0) return true;
-                return aliasKeys.some(function (a) {
-                    if (!a || a.length < 4 || w.length < 4) return false;
-                    if (a.indexOf(w) === 0 && a.length > w.length) return true;
-                    if (w.indexOf(a) === 0 && (a.length === 6 || a.length === 9) && w.length > a.length) return true;
-                    return false;
-                });
+                return aliasKeys.indexOf(w) >= 0 || nameL.indexOf(w) >= 0
+                    || (w.length >= 6 && aliasKeys.some(function (a) { return a.indexOf(w) === 0 || w.indexOf(a) === 0; }));
             });
         }
         var aliasForm = false;
@@ -463,29 +454,8 @@ var Actionable = {
             }
             return Actionable.vocabularyKey(w);
         };
-        var rawAliases = (obj.aliases || []).map(function (w) { return String(w || "").toLowerCase(); });
-        var aliases = rawAliases.map(displayKey);
+        var aliases = (obj.aliases || []).map(displayKey);
         if (!aliases.length) return obj.name;
-        // D144: a truncated dictionary form (often 6/9 chars, sometimes a
-        // compound stump like "tennisb") may be a prefix of a longer printed
-        // word, or the printed word may be a prefix of the stump. Also allow
-        // simple singular/plural (ball/balls). Used only for display phrase
-        // recovery — not for inventing command words.
-        var aliasHitsWord = function (rawList, word, wordKey) {
-            if (rawList.indexOf(word) >= 0) return true;
-            if (wordKey && arguments.length >= 3) {
-                /* wordKey checked by caller against encoded aliases */
-            }
-            var wi;
-            for (wi = 0; wi < rawList.length; wi++) {
-                var a = rawList[wi];
-                if (!a || a.length < 4 || word.length < 4) continue;
-                if (a.indexOf(word) === 0 && a.length > word.length) return true;
-                if (word.indexOf(a) === 0 && (a.length === 6 || a.length === 9) && word.length > a.length) return true;
-            }
-            if (rawList.indexOf(word + "s") >= 0 || rawList.indexOf(String(word).replace(/s$/, "")) >= 0) return true;
-            return false;
-        };
         // C2: compare on lowercase; emit original-case slices from sourceRaw.
         // All ownership/rank comparisons stay on lowercased keys.
         var sourceRaw = String(text || "");
@@ -517,8 +487,7 @@ var Actionable = {
                     var gap = sourceRaw.slice(matches[j - 1].index + matches[j - 1][0].length, matches[j].index);
                     if (!/^[ \t]+$/.test(gap)) break;
                 }
-                var wk = wordKeys[j], wj = words[j];
-                if (aliases.indexOf(wk) < 0 && !aliasHitsWord(rawAliases, wj, wk)) break;
+                if (aliases.indexOf(wordKeys[j]) < 0) break;
                 phrase.push(words[j]);
                 rawPhrase.push(rawWords[j]);
                 // D184 recovered labels need a real vocabulary word at both
@@ -528,13 +497,8 @@ var Actionable = {
                     && (Actionable.isGrammarParticle(phrase[0]) || Actionable.isGrammarParticle(words[j]))) continue;
                 if (phrase.length < 2 && obj.labelProvenance !== "parser-vocabulary") continue;
                 var owners = (pool || []).filter(function (o) {
-                    var mineRaw = (o.aliases || []).map(function (w) { return String(w || "").toLowerCase(); });
-                    var mine = mineRaw.map(displayKey);
-                    return phrase.every(function (w) {
-                        var dk = displayKey(w);
-                        if (mine.indexOf(dk) >= 0) return true;
-                        return aliasHitsWord(mineRaw, w, dk);
-                    });
+                    var mine = (o.aliases || []).map(displayKey);
+                    return phrase.every(function (w) { return mine.indexOf(displayKey(w)) >= 0; });
                 });
                 if ((!requireUnique || owners.length === 1) && owners.some(function (o) { return String(o.id) === String(obj.id); })) {
                     var labelL = phrase.join(" ");

@@ -1,4 +1,4 @@
-﻿const assert = require("assert");
+const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
@@ -106,12 +106,4 @@ check(
   "FU1: casing prefers inventory occurrence"
 );
 
-// D144 truncated alias: tennisb + ball cover "tennis balls"
-const ball = { id: 8, name: "tennisb", structuralName: "tennisb", aliases: ["ball", "tennisb"] };
-const balls = [ball, Object.assign({}, ball, { id: 9 })];
-check(A.observedPhraseFor(ball, balls, "You are carrying:\n  twenty-one tennis balls\n", false).toLowerCase() === "tennis balls", "D144: tennis balls from truncated tennisb");
-check(/tennis balls?/.test(A.displayNameFor(ball, balls, "You are carrying:\n  twenty-one tennis balls\n").toLowerCase()), "D144 display tennis ball(s)");
-
 console.log(n + " C1/C2/D/FU checks passed");
-
-
