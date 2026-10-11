@@ -65,6 +65,14 @@ var ModuleStatFactsClaude = {
         "inventoryHiddenAttribute": 29,
         "wornAttribute": 39
     },
+    // Stationfall (ZIL): untouched native routes (Codex #3393-#3400). DROP chronometer inserts it into room 198,
+    // TAKE into holder 218; global 183 is the only global equal to that holder, still so after STARBOARD moves
+    // holder 218 to room 54 (second DROP/TAKE 54/218). ZRamReader.resolvePlayer re-reads and link-validates it.
+    // Native REMOVE uniform/chronometer clears bit 21, WEAR sets it; native i labels both as being worn.
+    "3c5656897dd2503610945e80a0b42fc5d25614d967a010ace8e9cafd12f978a3": {
+        "playerGlobal": 183,
+        "wornAttribute": 21
+    },
     // Hitchhiker: native WEAR GOWN changes [0,0,0,64,32,193] to
     // [0,0,0,192,32,193]; REMOVE GOWN reverses exactly bit24. Native
     // inventory labels it "being worn". Executable-owned fact, not I6's bit26.
