@@ -267,7 +267,7 @@ Goal: narrow down the mapping problems (and status/inventory issues found on the
     - Remaining:
       - the full regression-gate closeout;
       - the section map display grouped under a "Room #N" frame (operator request);
-      - the census for other games with the same structure.
+      - DONE: the census for other games with the same structure. Of 298 non-Glulx titles, only wump2ka has a compiled room index (121); a few titles have stray numbered object names (enter 10, kirby 7) but no index. No other title needs the fact (work/investigations/2026-10-10-section-feature-census.txt).
   - **M13:** stale "(on the X)" qualifier. IMPLEMENTED/AUDITED (b44d47c, D216; Codex #2495), scoped: prevents FUTURE freezes on Inform when X is on the player's chain; does not repair saved labels. The 19 display differences are candidates only.
   - **Degeneracy:** no map (wrong player). IMPLEMENTED/AUDITED via a measured playerGlobal 18 fact (0126b14, D216; Codex #2507). No generic actor change.
   - **NEXT ROUND (operator 2026-10-10): full items audit of all 309 games**, after maps, directions and room detection are finished: Equipment vs native INVENTORY, leaked probe text, internal/odd item names; root-cause fixes only. Until then, item issues seen in passing are recorded here.
