@@ -76,7 +76,26 @@ var ModuleStatFactsClaude = {
     // uniform; fresh inventory reports the uniform and chronometer
     // "(being worn)", both of which carry bit 12.
     "b73c750df3a3d6781072eb7f9f562d5c60bfc6dc8203f4952ebff50f04f412cf": {
-        "wornAttribute": 12
+        "wornAttribute": 12,
+        // WEARBIT 22: native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match). Container/open stay unproven (fail closed).
+        "attributeMap": { "wearable": 22 }
+    },
+    // Hollywood Hijinx (ZIL): WEARBIT 22 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).
+    "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e": {
+        "attributeMap": { "wearable": 22 }
+    },
+    // Moonmist (ZIL): WEARBIT 29 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).
+    "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0": {
+        "attributeMap": { "wearable": 29 }
+    },
+    // Deadline (ZIL): OPENBIT 28 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match). CONTBIT 21 is also proven but is NOT applied
+    // until SURFACEBIT/supporter is proven, so surfaces never gain container Open/Close (Zork I table lesson, a89704b).
+    "9c6eadbb30bbe1610230508865ec40969a7c54917fc40591a189c9f3835dffc4": {
+        "attributeMap": { "open": 28, "isOpen": 28 }
+    },
+    // The Witness (ZIL): OPENBIT 8 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match). CONTBIT 9 proven but held until supporter is proven (as Deadline).
+    "2290bb3440ac66e14d54d41dbde575066ebdbdc42138ec899496e359bc484824": {
+        "attributeMap": { "open": 8, "isOpen": 8 }
     },
     // Treasures: measured SCORE and QUEST RATE agree at 0, 3 and restored43.
     // Semantic relationship only; base SCORE/PROWESS capabilities stay intact.
@@ -329,7 +348,8 @@ var ModuleStatFactsClaude = {
         // SURFACEBIT 10 kitchen table preserved. Surface-aware Open/Close (Codex #3371/#3377):
         // CLOSE TABLE 204 (19 and 10) answers cannot-close, so container-derived Open/Close needs
         // container AND NOT supporter here. Facts stay truthful.
-        "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10 },
+        // LIGHTBIT 31: native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).
+            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "light": 31 },
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         "command": "score", "fields": ["score.max", "rank"], "replyFamily": "inform-score", "outcome": "line",
         "evidence": "2026-10-05 live SCORE: Your score is 0 (total of 350 points), in 0 moves. / This gives you the rank of Beginner."
