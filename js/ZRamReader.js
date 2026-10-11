@@ -2641,6 +2641,35 @@ var ZRamReader = {
         return out;
     },
 
+    // Wump2ka identity R4 (Codex GO #3103): a digest-bound measured
+    // real_location/location pair. Validated every call as a whole fact;
+    // any failure returns null and the caller keeps today's resolver.
+    // Returns { roomId, dark } where dark means location holds the measured
+    // darkness object while real_location holds the real room.
+    measuredLocation: (mem) => {
+        try {
+            var fact = ZRamReader.executableLayoutFacts(mem);
+            var ml = fact && fact.measuredLocation;
+            var h = ml && ZRamReader.header(mem);
+            if (!h) return null;
+            var count = ZRamReader.objectCount(mem, h);
+            var slotOk = function (g) { return g >= 0 && g < 240 && h.globals + 2 * g + 1 < mem.byteLength; };
+            if (!slotOk(ml.realLocationGlobal) || !slotOk(ml.locationGlobal)) return null;
+            var real = ZRamReader.u16(mem, h.globals + 2 * ml.realLocationGlobal);
+            var loc = ZRamReader.u16(mem, h.globals + 2 * ml.locationGlobal);
+            if (!(real >= 1 && real <= count)) return null;
+            // The real room must be an indexed compiled room object with real links.
+            if (!ZRamReader.ROOM_INDEX_NAME.test(ZRamReader.shortName(mem, real) || "")) return null;
+            var dobj = ml.darknessObject;
+            if (!(dobj >= 1 && dobj <= count)) return null;
+            // Darkness object invariant: parentless, childless, internal name.
+            var dl = ZRamReader.objectLinks(mem, dobj);
+            if (dl.parent !== 0 || dl.child !== 0 || String(ZRamReader.shortName(mem, dobj) || "").charAt(0) !== "(") return null;
+            if (loc !== real && loc !== dobj) return null;
+            return { roomId: real, dark: loc === dobj };
+        } catch (e) { return null; }
+    },
+
     snapshot: (mem) => {
         var h = ZRamReader.header(mem);
         if (!h) return { ok: false, error: "bad-header" };
@@ -2651,11 +2680,14 @@ var ZRamReader = {
         try { containedRoom = playerId ? ZRamReader.enclosingRoom(mem, playerId) : 0; } catch (eContained) {}
         var roomId = 0;
         var roomName = "";
-        if (typeof ZRamReader.findLikelyLocation === "function") {
+        // R4: a valid measured fact outranks D84/D171 for its digest only.
+        var measured = ZRamReader.measuredLocation(mem);
+        if (measured) roomId = measured.roomId;
+        else if (typeof ZRamReader.findLikelyLocation === "function") {
             roomId = ZRamReader.findLikelyLocation(mem, playerId, "");
         }
-        var roomSource = roomId && containedRoom && roomId === containedRoom
-            ? "player-containment" : (roomId ? "existing-resolver" : "none");
+        var roomSource = measured ? "measured-fact" : (roomId && containedRoom && roomId === containedRoom
+            ? "player-containment" : (roomId ? "existing-resolver" : "none"));
         // D171: a compiled C_ROOMS_<n> name is the compiler's own evidence that
         // this object IS a room, so the attribute-based plausibility gate must
         // not veto it -- that gate reads bits this story randomises per session

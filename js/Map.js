@@ -1322,7 +1322,9 @@ var ParchLockMap = {
             // D54/D76: never re-seed Reset Map from an internal/meta roomName.
             if (!(options && options.seed === false) && p && p.roomName && typeof MapTopology !== "undefined" && MapTopology.ensureRoom
                 && !MapTopology.isInternalRoomName(p.roomName)) {
-                var room = MapTopology.ensureRoom(p.roomName, p.roomId);
+                // Wump dark P1 (Codex #3039): the same finalized payload is the
+                // evidence, so a reset re-admission is stamped like any other.
+                var room = MapTopology.ensureRoom(p.roomName, p.roomId, p);
                 if (room) ParchLockMap.SetCurrentRoom(room);
             }
         } catch (e) {}

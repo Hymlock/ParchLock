@@ -3,6 +3,15 @@
 // field/reply-family and measured equipment-state capabilities only.
 // No stored numeric readings or title dispatch.
 var ModuleStatFactsClaude = {
+    // Wumpus 2000 (wump2ka): measured location roles (Codex GO #3103;
+    // work/investigations/2026-10-10-wump-identity-proposal.md). Rooms are
+    // multi-section ("a section of room #25"), so the printed number cannot
+    // select the section. Native route + dark travel: G37 follows the actor's
+    // section every move, also while dark (real_location); G16 is that room
+    // or the darkness object 19 (location). Validated per tick, whole fact.
+    "a18e057bd832ec381830cb7a6891fca39657eed6ad80e13446317d8766bf6bc7": {
+        "measuredLocation": { "realLocationGlobal": 37, "locationGlobal": 16, "darknessObject": 19 }
+    },
     // Native i tests bit19 and omits the absent lariat; the worn outfit also
     // has this bit, so inventory traversal preserves confirmed worn gear.
     "d02fd95bae5398f9b87fe0f537f288b45e93967008948970f1982a65b888eddb": {

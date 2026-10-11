@@ -87,6 +87,20 @@ var DarkScope = {
             else if (roomName && lines.some(function (l) { return DarkScope.isHeadingLine(l, roomName, chain, inform); })) DarkScope.dark = false;
         }
         if (payload.darkness === true) DarkScope.dark = true;
+        // Wump2ka identity R4 (Codex GO #3103): a digest-measured location fact
+        // is structural darkness evidence. Read on this same tick and only when
+        // this payload's room came from that fact and still matches it;
+        // otherwise there is no naming evidence ("unknown").
+        payload.darkEvidence = "unknown";
+        try {
+            if (payload.probe && payload.probe.roomSource === "measured-fact" && typeof ZRamReader !== "undefined") {
+                var ml = ZRamReader.measuredLocation(ZRamProvider.getMem());
+                if (ml && String(ml.roomId) === String(payload.roomId)) {
+                    payload.darkEvidence = ml.dark ? "dark" : "lit";
+                    DarkScope.dark = !!ml.dark;
+                }
+            }
+        } catch (eMl) {}
         // Own HUD entry only; other scope entries are preserved.
         payload.hudMetrics = (payload.hudMetrics || []).filter(function (h) { return !(h && h.source === "dark-scope"); });
         if (DarkScope.dark) payload.hudMetrics.push({ key: "scope", value: "dark (heuristic)", confidence: 0.5, source: "dark-scope" });

@@ -309,11 +309,22 @@ var MapTopology = {
             if (name) {
                 var incomingInternal = MapTopology.isInternalRoomName(name);
                 var currentInternal = MapTopology.isInternalRoomName(room.Name);
+                // Wump dark P1 (Codex #3039): evidence only from the SAME
+                // finalized payload for THIS real id; anything else abstains.
+                var darkEv = evidence && evidence.darkEvidence && String(evidence.roomId) === oid ? evidence.darkEvidence : "unknown";
                 if (!hadRealIdAlready) {
                     if (!incomingInternal || !room.Name) room.Name = name;
                 } else if (currentInternal && !incomingInternal) {
                     room.Name = name;
+                } else if (room.NameProvenance === "dark" && darkEv === "lit" && !incomingInternal && name !== room.Name) {
+                    // One-shot: a name frozen under measured dark evidence upgrades
+                    // to the lit name; D62 holds for every other case.
+                    room.Name = name;
+                    delete room.NameProvenance;
                 }
+                // Stamp only while the frozen name IS this dark tick's name; a
+                // room already named from a lit heading never matches it.
+                if (darkEv === "dark" && room.Name === name) room.NameProvenance = "dark";
             }
         }
         if (typeof MapIdentity !== "undefined") MapIdentity.ensureRoomIdentity(room);
