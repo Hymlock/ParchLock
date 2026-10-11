@@ -1,4 +1,4 @@
-/* AttrCalibrator (D73, Phase B)
+﻿/* AttrCalibrator (D73, Phase B)
  *
  * D34/D58 both accepted "attribute-approximation is a ceiling" for verb
  * prediction, reasoning the only alternative -- watching a compiled game's
