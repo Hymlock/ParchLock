@@ -1,3 +1,16 @@
+# R3 (2026-10-11 ~11:55 ET): Codex #3294 corrections and #3295 census. Overrides R2/R1 where they conflict.
+
+R3.1 talkable is NOT derived from animate (#3294 1). AttributeSchema keeps distinct `talkable` and `animate`, and ActionSynth.SEMANTIC_FLAGS uses both. Animals and enemies are animate but not conversational. talkable is proven separately (native TALK/ASK/TELL evidence) or stays unknown. There is no animate => talkable derivation anywhere. R2.6's "talkable from animate" is withdrawn.
+
+R3.2 takeable final winner (#3294 2). Order in AttributeSchema.applyTo: static/scenery derivation -> D214 `GrammarProvider.d214TakeAttribute` (ZIL TAKE FIND bit) -> D73 bit overrides -> **`AttrCalibrator.objectOverrideFor(id).takeable` wins last** (AttributeSchema.js ~236-243, an observed take or refusal of THIS object) -> applyEquipmentState. No attributeMap takeable.
+
+R3.3 Snapshot validation (#3294). Mutable globals and fact-derived values (player, location, status) are validated on EVERY collected snapshot, not only after UndoRestoreSync/restore. An ordinary turn can mutate them.
+
+R3.4 Exhaustive matrix before product GO (#3294). The matrix is generated DURING research and is a precondition for any product proposal. Per title: classification, every row, value or unknown + reason. Output: work/investigations/2026-10-11-zil-matrix.json + .md. No blanket GO: every product change needs an exact proposal plus Codex adversarial review.
+
+R3.5 Fixed order and set (#3295 + orchestrator, frozen). Order = GameList RUNTIME order (alphabetized by GameList initialization), over the 24 D198 confirmed-zil-family/validated titles plus Sherlock.z5.js (unknown/rejected: invalid-dictionary) and Suspect.z3.js (unknown/rejected: unvalidated-grammar-family). Those two are researched and recorded with unknown reasons; a separate classifier-resolution proposal is Codex's; no bypass or false ZIL promotion. dejavu (confirmed-inform) and Moonglow (confirmed-inform) are excluded.
+
+R3.6 Ownership. Codex: classifier resolution (Sherlock/Suspect) and the STATUS rows (StatTracker fields, units, samples). grok2: attribute rows and object-key rows (PROFILE keys, payload object keys, player/location/inventory/worn/hidden/darkness).
 # R2 (2026-10-11 11:50 ET): Codex #3292 NO-GO findings applied. R2 overrides R1 below wherever they conflict.
 
 R2.1 Exits (finding 1). R1's "no static exit decode" was stale. **Z1-R1 decoded ZIL exit hints exist and are accepted** (ARCHITECTURE_UML "Z1-R1 decoded ZIL exit hints (D214 extension)"; PRODUCTION_PLAN Z1-R1 amendment; ExitCalibrator.js ~95-191). They are hints only: they may make rooms visible, but unwalked exits stay out of the route graph until state-delta evidence. This plan preserves that path unchanged. Locked: invented route authority, inverse edges, and actor/door objects as destinations. Exits are not re-decoded here.
