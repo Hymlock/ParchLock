@@ -1128,13 +1128,6 @@ var AttrCalibrator = {
             for(var i=0;i<32 && node && !seen[id];i++) {
                 seen[id]=true;
                 if(rooms[String(node.parent)])return true;
-                // Q0: holder may sit under a real RAM room not yet on the map
-                // (CustomPlayer under C_ROOMS_N after travel). Treat location
-                // parents as in-world without requiring a map node first.
-                try {
-                    if (node.parent && ZRamReader.isLocationObject && ZRamReader.isLocationObject(mem, node.parent)) return true;
-                    if (node.parent && ZRamReader.isPlausibleMapRoom && ZRamReader.isPlausibleMapRoom(mem, node.parent)) return true;
-                } catch (eLoc) {}
                 if(!node.parent)return false;
                 id=node.parent; node=ZRamReader.objectLinks(mem,id);
             }
@@ -1247,21 +1240,8 @@ var AttrCalibrator = {
                             }
                             Object.keys(t.__invRootCtx.tested).forEach(function (id) {
                                 var links = ZRamReader.objectLinks(mem, +id);
-                                if (!links) return;
                                 var nm = String(ZRamReader.shortName(mem, +id) || "").toLowerCase();
-                                var words = [];
-                                try {
-                                    words = (ZRamReader.parserWordsAny ? ZRamReader.parserWordsAny(mem, +id) : [])
-                                        .map(function (w) { return String(w || "").toLowerCase(); })
-                                        .filter(function (w) { return w.length >= 4; });
-                                } catch (eW) {}
-                                // Q0: include parenthetical shortNames when they own parser words
-                                // (wump pellets "(bar1)" with food/pellet words). Same-turn only.
-                                if (nm && nm.charAt(0) !== "(") {
-                                    out.objs.push({ id: +id, parent: links.parent, name: nm, words: words });
-                                } else if (words.length) {
-                                    out.objs.push({ id: +id, parent: links.parent, name: nm || "", words: words });
-                                }
+                                if (links && nm && nm.charAt(0) !== "(") out.objs.push({ id: +id, parent: links.parent, name: nm });
                             });
                             out.rooms = {};
                             out.objs.forEach(function (o) { out.rooms[o.parent] = AttrCalibrator.inventoryRootIsRoom(mem, o.parent); });
@@ -1280,26 +1260,9 @@ var AttrCalibrator = {
                 var ctx = turn.__invRootCtx;
                 var snap = turn.analyzerSnapshots && turn.analyzerSnapshots["inventory-root"];
                 if (!ctx || !snap || !snap.objs) return;
-                // Prefer carrying-list lines so incidental prose ("It seems") is weaker.
-                var carryLines = snap.lines.filter(function (ln) {
-                    return /carrying|holding|you have:|you are wearing/i.test(ln) || /^\s+/.test(ln);
-                });
-                var text = (carryLines.length ? carryLines : snap.lines).join("\n");
+                var text = snap.lines.join("\n");
                 var listed = snap.objs.filter(function (o) {
-                    if (o.name && o.name.charAt(0) !== "(") {
-                        try {
-                            if (new RegExp("(^|[^a-z0-9])" + o.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "([^a-z0-9]|$)", "i").test(text))
-                                return true;
-                        } catch (eN) {}
-                    }
-                    var ws = o.words || [];
-                    for (var wi = 0; wi < ws.length; wi++) {
-                        try {
-                            if (new RegExp("(^|[^a-z0-9])" + String(ws[wi]).replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "([^a-z0-9]|$)", "i").test(text))
-                                return true;
-                        } catch (eW2) {}
-                    }
-                    return false;
+                    return new RegExp("(^|[^a-z])" + o.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "([^a-z]|$)").test(text);
                 });
                 var listedIds = {}; listed.forEach(function (o) { listedIds[o.id] = true; });
                 var counts = {};
