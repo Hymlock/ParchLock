@@ -2004,7 +2004,50 @@ var Actionable = {
                     return false;
                 });
             }
-            if (t.objectId != null && markedIds[String(t.objectId)]) return;
+            // D214 U1 adaptation (Wumpus second pellet, a40f7ba): a retained mark
+            // keeps its object only while the new output does not reprint that
+            // object under a different phrase. After TAKE PELLET + LOOK the room
+            // prints "a food pellet"; the retained "food pellets" mark on the old
+            // line is no longer the object's current description, so it is
+            // released (text kept) and the newly printed phrase is marked. A
+            // retained phrase still printed in the active lines is untouched.
+            if (t.objectId != null && markedIds[String(t.objectId)]) {
+                var lowPhrase = String(t.phrase).toLowerCase();
+                var activeText = activeLines.map(function (l) { return l.textContent.toLowerCase(); }).join("\n");
+                // Whole-phrase matches only (Grok #3281): "food" inside "food pellet" is not a reprint.
+                var printed = function (ph) {
+                    var e = String(ph || "").toLowerCase().trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+                    return !!e && new RegExp("(^|[^a-z0-9])" + e + "([^a-z0-9]|$)").test(activeText);
+                };
+                if (printed(lowPhrase)) {
+                    var released = false;
+                    Actionable.LiveMarks = Actionable.LiveMarks.filter(function (mark) {
+                        if (mark.dataset.kind === 'direction') return true;
+                        var ids = []; try { ids = JSON.parse(mark.dataset.candidateIds || '[]'); } catch (e) {}
+                        if (mark.dataset.objectId) ids.push(mark.dataset.objectId);
+                        if (!ids.some(function (id) { return String(id) === String(t.objectId); })) return true;
+                        var line = mark.closest('.BufferLine');
+                        if (activeLines.indexOf(line) >= 0) return true;
+                        if (printed(mark.textContent)) return true;
+                        // Same words by dictionary key, different printed form only
+                        // ("food pellets" -> "food pellet"); any other phrase keeps U1.
+                        var a = String(mark.textContent).toLowerCase().split(/\s+/).filter(Boolean), b = lowPhrase.split(/\s+/).filter(Boolean);
+                        var wordEq = function (w, v) {
+                            if (Actionable.vocabularyKey(w) === Actionable.vocabularyKey(v)) return true;
+                            var lo = w.length <= v.length ? w : v, hi = lo === w ? v : w;
+                            return lo.length >= 3 && hi.indexOf(lo) === 0 && hi.length - lo.length <= 2;
+                        };
+                        var shortP = a.length <= b.length ? a : b, longP = shortP === a ? b : a;
+                        var sameWords = shortP.length > 0 && wordEq(a[a.length - 1], b[b.length - 1]) && shortP.every(function (w) { return longP.some(function (v) { return wordEq(w, v); }); });
+                        if (!sameWords) return true;
+                        ids.forEach(function (id) { delete markedIds[String(id)]; });
+                        var parent = mark.parentNode; mark.replaceWith(document.createTextNode(mark.textContent)); if (parent) parent.normalize();
+                        released = true;
+                        return false;
+                    });
+                    if (!released) return;
+                } else return;
+            }
             if (t.kind === 'direction' && markedDirections[String(t.phrase).toLowerCase()]) return;
             if (Actionable.wrapFirstExact(activeLines, t.phrase, t)) {
                 try { JSON.parse(t.markCandidateIds || '[]').forEach(function (id) { markedIds[String(id)] = true; }); } catch (eIds) {}
