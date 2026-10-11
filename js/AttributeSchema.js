@@ -121,6 +121,21 @@ var AttributeSchema = {
                 && Number.isInteger(map[flagName]) && map[flagName] >= 0 && map[flagName] < 48) {
                 return map[flagName];
             }
+            // ZIL fail-closed (operator 2026-10-11): never apply I6 PROFILE bit
+            // numbers to non-Inform stories for containment/open family. Wrong
+            // PROFILE made Zork mailbox look non-container and leaked false
+            // open/close on body parts (LGOP). D73 calibrator may still own a
+            // confirmed bit; worn already fail-closed above.
+            // ZIL structural flags without attributeMap: null (fail closed).
+            // AttrCalibrator object overrides still apply later in applyTo.
+            var zilStructural = {
+                container: 1, openable: 1, open: 1, isOpen: 1, supporter: 1,
+                lockable: 1, locked: 1, door: 1, transparent: 1, enterable: 1
+            };
+            if (zilStructural[flagName] && mem && typeof ZRamReader !== "undefined"
+                && ZRamReader.isInformCompiled && !ZRamReader.isInformCompiled(mem)) {
+                return null;
+            }
         } catch (e) {}
         var n = AttributeSchema.PROFILE[flagName];
         return typeof n === "number" ? n : null;
