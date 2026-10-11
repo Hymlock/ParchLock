@@ -141,3 +141,13 @@ Per-(title, category) rules entries are added to 2026-10-11-zil-matrix.md before
 - Per-object takeable overrides (objectOverrideFor) and the container vs openable distinction are preserved.
 - Accepted Z1-R1 exit hints stay authoritative within their qualified scope; earlier "no static exits" wording is superseded where it conflicts.
 - Implementation GO is per proposal (exact patch + per-item rules entry + gate evidence), never blanket.
+
+## R6 doc check: ZIL non-structural keys still read Inform PROFILE bits (found 2026-10-11 by zil-sweep.js)
+
+**Finding.** AttributeSchema.bitFor fails closed on non-Inform stories only for the structural family (container, openable, open, isOpen, supporter, lockable, locked, door, transparent, enterable; Grok proposal 2026-10-10, 1e54a58) and for worn (wornBitFallback). Every other PROFILE key (animate 0, on 13, light 9, switchable 21, scenery 17, static 19, edible 6, concealed 3, wearable/clothing 2, talkable 22, ...) still returns the I6 number on ZIL. Measured: Zork I app animate = 0 vs source ACTORBIT 30; app on = 13 while native TURN ON LAMP sets ONBIT 20.
+
+**Existing system / prior attempts.** Owner: AttributeSchema.bitFor + applyTo (PROFILE loop), facts registry ModuleStatFactsClaude.attributeMap (no second registry). Grok's proposal limited fail-closed to containment because that was the bug in scope; it gives no reason to keep I6 bits for other keys. D73 AttrCalibrator overrides still apply after. D214 owns the ZIL TAKE capability via fixed grammar (AttributeSchema ~l.216).
+
+**Hazard (why not a quick commit).** applyTo derives takeable from static (19) + scenery (17). Failing those closed on ZIL drops the derived takeable unless a proven ZIL TAKEBIT (or the D214 grammar path) supplies it. Any widening must keep Take, Wear, Eat, Turn on/off offered where the game supports them.
+
+**Plan (needs Codex adversarial review before code).** (1) Prove per title on-device: on (ONBIT), light (LIGHTBIT), animate (ACTORBIT), wearable (WEARBIT), edible (FOODBIT), takeable (TAKEBIT) with zil-flags-native.js and the Infocom source. (2) Add proven bits to attributeMap. (3) Widen fail-closed to every PROFILE key on non-Inform stories, deriving ZIL takeable from attributeMap.takeable when present, else the existing D214 path; no I6 fallback. (4) Gate: sample + all 26 ZIL titles + operator-regressions + three-type. Isolation: Inform/Glulx untouched (isInformCompiled true path unchanged).

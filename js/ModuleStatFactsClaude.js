@@ -348,8 +348,7 @@ var ModuleStatFactsClaude = {
         // SURFACEBIT 10 kitchen table preserved. Surface-aware Open/Close (Codex #3371/#3377):
         // CLOSE TABLE 204 (19 and 10) answers cannot-close, so container-derived Open/Close needs
         // container AND NOT supporter here. Facts stay truthful.
-        // LIGHTBIT 31: native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).
-            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "light": 31 },
+            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10 },
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         "command": "score", "fields": ["score.max", "rank"], "replyFamily": "inform-score", "outcome": "line",
         "evidence": "2026-10-05 live SCORE: Your score is 0 (total of 350 points), in 0 moves. / This gives you the rank of Beginner."
