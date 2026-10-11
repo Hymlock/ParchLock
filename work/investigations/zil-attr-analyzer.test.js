@@ -18,5 +18,16 @@ r = decodeAt(new Uint8Array(4), 3, 9); t('pc beyond end fails closed', !!r.bad, 
 let m = mem([[20, [0x00, 0x4b, 0x10, 0x05, 0xa0, 0x10, 0x3f, 0xfb, 0xb0]]]); // set_attr g0 5 ; jz g0 ?(-5)->21 (body start) ; rtrue
 let out = []; disasm(m, 3, 20, 0, new Set(), out); t('backward branch inside routine not flagged, set_attr found', out.some(x => x.op === 'set' && x.attr === 5) && !out.malformed, out);
 m = mem([[20, [0x00, 0xa0, 0x10, 0x3f, 0x80]]]); out = []; disasm(m, 3, 20, 0, new Set(), out); t('branch before routine start marked malformed', !!out.malformed, out);
+// Codex 3310 counterexamples
+r = decodeAt(new Uint8Array([178, 0, 0]), 3, 0); t('v3 unterminated inline PRINT fails closed', !!r.bad, r);
+r = decodeAt(mem([[10, [0x00, 1, 1]]]), 3, 10); t('reserved 2OP 0 fails closed', !!r.bad, r);
+for (const op of [5, 6, 7, 8]) { r = decodeAt(mem([[10, [0xbe, op, 0xff]]]), 5, 10); t('v5 EXT ' + op + ' (v6-only) fails closed', !!r.bad, r); }
+r = decodeAt(mem([[10, [0xe0 | 0x0c, 0xff, 0]]]), 3, 10); t('v3 VAR 0x0C (call_vs2, v4+) fails closed', !!r.bad, r);
+r = decodeAt(mem([[10, [0x88, 0, 1, 0]]]), 3, 10); t('v3 1OP call_1s (v4+) fails closed', !!r.bad, r);
+r = decodeAt(mem([[10, [0xb2, 0x80, 0x00]]]), 3, 10); t('terminated inline PRINT accepted', !r.bad && r.next === 13, r);
+// branch into the middle of an instruction: jz g0 ?(+3 -> lands inside following 3-byte set_attr)
+m = mem([[20, [0x00, 0xa0, 0x10, 0x44, 0x4b, 0x10, 0x05, 0xb0]]]); out = []; disasm(m, 3, 20, 0, new Set(), out); t('branch into operand bytes marked malformed', !!out.malformed && out.malformed.some(x => /inside instruction/.test(x)), out);
+// guard exhaustion: endless distinct nops never terminate within guard
+m = new Uint8Array(20000); m[100] = 0; for (let i = 101; i < 19990; i++) m[i] = 0xb4; out = []; disasm(m, 3, 100, 0, new Set(), out); t('guard exhaustion marked malformed', !!out.malformed && out.malformed.some(x => /guard/.test(x)), out.malformed);
 console.log(`${pass} PASS / ${fail} FAIL`); process.exit(fail ? 1 : 0);
 

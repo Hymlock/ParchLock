@@ -21,6 +21,15 @@ function actionTable(mem, d) {
 }
 function unpack(v, a) { return v <= 3 ? a * 2 : v <= 5 ? a * 4 : a * 8; }
 // R2.3: control-flow worklist (no linear sweep over unreachable bytes); branch polarity kept.
+// Codex 3310: versioned opcode whitelist; anything else fails closed.
+function validOp(kind, op, v) {
+  if (kind === '2OP') return op >= 1 && op <= (v >= 5 ? 0x1c : v === 4 ? 0x19 : 0x18);
+  if (kind === '1OP') return !(op === 8 && v < 4);
+  if (kind === '0OP') { if (op === 0x0e) return false; if (op === 0x0f) return v >= 5; if (op === 0x0c) return v === 3; return true; }
+  if (kind === 'VAR') { if (v >= 5) return true; if (v === 4) return op <= 0x19; return op <= 0x0b || (op >= 0x13 && op <= 0x15); }
+  if (kind === 'EXT') return v >= 5 && (op <= 4 || (op >= 9 && op <= 0x0c));
+  return false;
+}
 function decodeAt(mem, v, pc) {
   const at = pc; if (pc < 0 || pc >= mem.length) return { at, bad: 'out of bounds' }; const b = mem[pc++]; let kind, op, types = [];
   if (b === 0xBE && v >= 5) { op = mem[pc++]; kind = 'EXT'; const t = mem[pc++]; for (let i = 6; i >= 0; i -= 2) types.push((t >> i) & 3); }
@@ -28,17 +37,18 @@ function decodeAt(mem, v, pc) {
   else if (b < 0xC0) { const t = (b >> 4) & 3; op = b & 0x0f; if (t === 3) kind = '0OP'; else { kind = '1OP'; types = [t]; } }
   else { kind = b < 0xE0 ? '2OP' : 'VAR'; op = b & 0x1f; const t = mem[pc++]; for (let i = 6; i >= 0; i -= 2) types.push((t >> i) & 3);
     if (kind === 'VAR' && (op === 0x0C || op === 0x1A)) { const t2 = mem[pc++]; for (let i = 6; i >= 0; i -= 2) types.push((t2 >> i) & 3); } }
+  if (!validOp(kind, op, v)) return { at, bad: 'reserved/unsupported ' + kind + ' op ' + op + ' for v' + v };
   const ops = []; for (const t of types) { if (t === 3) break; if (t === 0) { ops.push({ t, v: u16(mem, pc) }); pc += 2; } else ops.push({ t, v: mem[pc++] }); }
   let store = false, branch = false, text = false, term = false, call = null, jump = null;
   if (kind === '2OP') { if ([8, 9, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24].includes(op) || (op === 25 && v >= 4)) store = true; if ([1, 2, 3, 4, 5, 6, 7, 10].includes(op)) branch = true; if (op === 25 || (op === 26 && v >= 5)) call = ops[0]; }
   else if (kind === '1OP') { if ([1, 2, 3, 4, 8, 14].includes(op) || (op === 15 && v <= 4)) store = true; if ([0, 1, 2].includes(op)) branch = true; if (op === 11) term = true; if (op === 12) { jump = ops[0]; term = true; } if (op === 8 || (op === 15 && v >= 5)) call = ops[0]; }
   else if (kind === '0OP') { if ([0, 1, 3, 7, 8, 10].includes(op)) term = true; if (op === 2 || op === 3) text = true; if ((op === 5 || op === 6) && v <= 3) branch = true; if ((op === 5 || op === 6) && v === 4) store = true; if (op === 9 && v >= 5) store = true; if (op === 13 || op === 15) branch = true; }
   else if (kind === 'VAR') { if ([0, 7, 0x0C, 0x16, 0x17, 0x18].includes(op) || (op === 4 && v >= 5) || (op === 9 && v === 6)) store = true; if ([0x17, 0x1F].includes(op)) branch = true; if ([0, 0x0C, 0x19, 0x1A].includes(op)) call = ops[0]; }
-  else if (kind === 'EXT') { if (op > 0x0c) return { at, bad: 'unknown EXT op ' + op }; if ([0, 1, 2, 3, 4, 9, 10, 0x0c].includes(op)) store = true; }
+  else if (kind === 'EXT') {  if ([0, 1, 2, 3, 4, 9, 10, 0x0c].includes(op)) store = true; }
   if (store) pc++;
   let target = null, onTrue = null;
   if (branch) { const b1 = mem[pc++]; onTrue = !!(b1 & 0x80); let off; if (b1 & 0x40) off = b1 & 0x3f; else { off = ((b1 & 0x3f) << 8) | mem[pc++]; if (off & 0x2000) off -= 0x4000; } if (off !== 0 && off !== 1) target = pc + off - 2; }
-  if (text) { while (pc < mem.length) { const w = u16(mem, pc); pc += 2; if (w & 0x8000) break; } }
+  if (text) { let ok = false; while (pc + 1 < mem.length) { const w = u16(mem, pc); pc += 2; if (w & 0x8000) { ok = true; break; } } if (!ok) return { at, bad: 'unterminated inline string' }; }
   if (jump) { if (jump.t === 0) { let off = jump.v; if (off & 0x8000) off -= 0x10000; target = pc + off - 2; } else if (jump.t === 1) target = pc + jump.v - 2; else return { at, bad: 'variable jump' }; }
   if (pc > mem.length) return { at, bad: 'truncated' };
   return { at, next: pc, kind, op, ops, term, call, target, onTrue, isJump: !!jump };
@@ -61,6 +71,9 @@ function disasm(mem, v, addr, depth, seen, out) {
       p = ins.next;
     }
   }
+  if (guard >= 6000) out.malformed = (out.malformed || []).concat(addr + ':guard exhausted');
+  const starts = [...visited].sort((a, b) => a - b);
+  for (let i = 1; i < starts.length; i++) { const prev = decodeAt(mem, v, starts[i - 1]); if (!prev.bad && prev.next > starts[i]) { out.malformed = (out.malformed || []).concat(starts[i] + ':target inside instruction at ' + starts[i - 1]); break; } }
   out.sort((x, y) => x.depth - y.depth || x.at - y.at);
 }function analyze(name) {
   const mem = story(name), v = mem[0], d = sb.GrammarProvider.decodeD198(mem);

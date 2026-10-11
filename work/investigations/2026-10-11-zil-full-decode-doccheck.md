@@ -111,3 +111,25 @@ Groups (Zork I-III; Enchanter trilogy; Planetfall/Stationfall; mysteries) are sh
 
 ## 6. Proof method (every commit)
 analyzer evidence per bit + tree check + live probe per title (Open/Close offered, contents underlined, no false open/close on non-containers, actors animate) + StatTracker RAM check + seeded three-type gate (work/investigations/regression-gate.cjs; ZIL + Inform Z + Glulx/tmp/glulx-smoke.js) + harness/operator-regressions.js 0 FAIL + d198-grammar-decoder, d31-nested-inventory, command-consistency-regression, d214-yourself-verbs, status-probe-matrix. Codex adversarial review per commit. One commit per title or proven group.
+
+## R5 scope addition (operator 2026-10-11 12:36): full ZIL item sweep
+
+Order: this runs per title only AFTER that title's flags are proven (R4 gate). It covers no new registry and no per-game patches. Gaps are fixed only in the shared item system's ZIL routing, and every item gets its own rules entry first. The all-games gate and the three-type gate run before every commit.
+
+Existing systems (git grep js/ docs work/investigations, DECISION-INDEX):
+- **Printed text vs short dictionary word:** Actionable.vocabularyKey / dictionary-key equality (D214 U3), promoteUnnamed (D184), namePhrases/headNounOf (D146), D64 phrase order. Prior attempts: ITEMS-QUEUE Q2 (casing), Q4 (descriptor dropped vs structural name), Q5 (another object's text adopted), Q10 (WiR "undershir" truncation). ZIL: v3 dictionary words are 6 characters and v5 words are 9; short names are prose ("small mailbox") while vocab is "mailbo". Allowed: dictionary-key comparison only, no prose mining (D25/D64).
+- **Same base word, different descriptors:** D146 head-noun preference; ITEMS-QUEUE Q3/Q4; notes-pellets-descriptors-live. Locked: D70 visible-phrase ordering.
+- **Exactly identical names:** ITEMS-QUEUE Q6 (acorncourt "ball", WiR "pair"); 0ed5cdb (pellets/pellet release, adapts D214 U1); the pending spear fix (alias mark vs renamed object). Harnesses: pellets-inventory-live, operator-regressions.
+- **Switchable on/off:** AttributeSchema on/light (matrix rows), DarkScope, M11 fail-closed (804af63). Only proven rows (native transition) may route.
+- **Worn:** wornAttribute fact path (R2.5), D59 radial, equipment worn state, inventoryHiddenPreservesWorn (Suspect).
+- **Consumed items:** payload inventory reconciliation (Q0/D224, b45d4a8); the EAT reply + object leaving its parent. No new consumption registry.
+- **Nested contents:** D148 held containers (Enchanter), d31-nested-inventory, ITEMS-QUEUE Q9 (heist). Depends on a proven container/open row.
+- **Yourself / inventory root (Q8):** D204/D205/D220, AttrCalibrator.confirmedInventoryRootId, playerGlobal facts (Borderzone 186), Grok #3268 (Witness G1=20 is a wire, not the player; Suspended has several bodies). Q8 titles: LurkingHorror, Sorcerer, Stationfall, PlunderedHearts, LGOP, Sherlock.
+
+Isolation: every routing change is gated on D198 confirmed-zil-family/validated (plus the digest where a fact is used). Inform Z, Glulx and custom paths must stay byte-identical in the gate.
+
+Proof per (title, item category): a live seeded run on a fresh game showing the underline/Equipment/inventory state against the game's own text, plus negative controls (an alias-only mark, a different object with the same word).
+
+Regression controls: seeded all-games gate (0 unintended diffs); the three-type set; operator-regressions; pellets-inventory-live; notes-pellets-descriptors-live; d31-nested-inventory; d214-yourself-verbs; command-consistency-regression; wump-dark-rename; games=309.
+
+Per-(title, category) rules entries are added to 2026-10-11-zil-matrix.md before each title's sweep starts. Codex GO is required before implementing.
