@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 107 decisions across
-9017 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 108 decisions across
+9062 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -21,6 +21,7 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 
 | D | claim | files | games |
 |---|-------|-------|-------|
+| D224 | Wumpus multi-section rooms: measured reallocation fact; a dark-admitted name upgrades once | js/ModuleStatFactsClaude.js js/ZRamReader.js js/ZRamProvider.js js/DarkScope.js | wump2ka |
 | D223 | Inform 7 exits from MapStorage for measured titles (M04-B) | js/ZRamReader.js js/ModuleStatFactsClaude.js js/MapTopology.js js/WorldModel.js |  |
 | D222 | Furniture and vehicles inside a top-level Inform room are not the room (M08) | js/ZRamReader.js |  |
 | D221 | DarkScope judges only the latest reply (M11) | js/DarkScope.js js/WorldModel.js js/ParchLock.js harness/m11-dark-scope.js |  |

@@ -229,9 +229,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 337 headings; 103 decision rows; 440 registered units.
-**Last registered unit:** `pl-s337`. **Body SHA-256 (LF):**
-`fde4ec495e237d6d6ededbf1a39cb0670c1064e0aa0e349ebb2405aff6404f05`
+**Local manifest:** 338 headings; 103 decision rows; 441 registered units.
+**Last registered unit:** `pl-s338`. **Body SHA-256 (LF):**
+`59ba87c2895e0436fea79891aa223f71a9f4c1208dc2199dc19094f51af124fb`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -751,6 +751,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [pl-s335](#pl-s335) | D221 DarkScope judges only the latest reply (M11) | H2 | Scoped-accepted (Codex #2702); HHG in-bed residual open |
 | [pl-s336](#pl-s336) | D222 Furniture and vehicles inside a top-level Inform room are not the room (M08) | H2 | Implemented, active broadly, tested on seeds; provenance unaccepted (parked) |
 | [pl-s337](#pl-s337) | D223 Inform 7 exits from Map_Storage for measured titles (M04-B) | H2 | Scoped-accepted (Codex #2804) |
+| [pl-s338](#pl-s338) | D224 Wumpus multi-section rooms: measured real_location fact; a dark-admitted name upgrades once | H2 | Accepted (Codex #3175); gate closeout pending |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -9014,3 +9015,47 @@ Guards: d46 27/0, d201 69/0, d23 88/0, m12 14/0.
 - The road (custom direction) is unlabelled.
 - Door cells are stubs.
 - No generic scanner. Extending to more titles needs per-title measured facts.
+
+<a id="pl-s338" data-chapter-id="pl-s338"></a><a id="pl-d224"></a>
+## D224 Wumpus multi-section rooms: measured real_location fact; a dark-admitted name upgrades once
+
+**Lifecycle:** Operator report 2026-10-10 (wump2ka: after SWITCH ON BAR the room stayed "Darkness", exit 3 and the brown grubling were not picked up). Blind investigations by all three seats, a three-way compare, proposals R1-R4 under adversarial review (Codex #3009/#3028/#3039/#3061/#3072/#3077/#3085/#3094), runtime GO #3103. Implemented c53337d, 185c8b3 and 7b73932; Codex focused ACCEPT #3175. Full regression-gate closeout pending.
+
+**Key files:** js/ModuleStatFactsClaude.js (measuredLocation fact), js/ZRamReader.js (measuredLocation, snapshot roomSource measured-fact, measuredDark), js/ZRamProvider.js (probe.measuredDark), js/DarkScope.js (darkEvidence, measured HUD label), js/MapTopology.js (first-admission dark stamp, one-shot upgrade), js/Map.js (Reset Map passes the payload), harness/wump-dark-rename.js. Research: work/investigations/2026-10-10-wump-identity-proposal.md, 2026-10-10-wump-dark-COMPARE-PROPOSAL.md, wump-actor-witness.cjs, wump-dark-travel.cjs, wump-d171-probe.cjs.
+
+**Root cause:** wump2ka rooms are multi-section. The game prints "a section of room #25", and one printed number covers several C_ROOMS_<n> objects, each with its own heading, exits and contents. D171 selected the object by the printed number, so in a multi-section room the app sat on an empty sibling section (operator save: 49 C_ROOMS_25, while the actor CustomPlayer 171 was in 50 C_ROOMS_26). Name, exits and scope all attached to the wrong object. The D62 "renumbering" is the same phenomenon seen from the other side.
+
+**Measurement:**
+- On a native route and on dark travel, G37 follows the actor's section on every move, including while dark: this is real_location.
+- G16 is that room, or the darkness object 19 while dark: this is location.
+- G38 becomes 19 after a dark move, so it is excluded. G70 is lastlocation.
+- Executable SHA a18e057b..., header-checked by the stable fields (byte 1 changes at run time).
+
+**Contract:**
+- A digest-bound fact `{realLocationGlobal:37, locationGlobal:16, darknessObject:19}`, validated every snapshot as a whole fact:
+  - integer slots that end below staticMem;
+  - the real room and darkness object within the object table, with in-table links;
+  - the real room a member of the compiled room index;
+  - the darkness object parentless, childless and internally named;
+  - location exactly the real room or the darkness object.
+- Any failure: the whole fact abstains, and the existing D84/D171 resolver runs.
+- A valid fact outranks D84/D171 for this digest only. roomSource is "measured-fact". No actor promotion: the mapping actor stays separate.
+- The validated darkness verdict travels snapshot -> probe.measuredDark -> DarkScope (one read) as darkEvidence dark/lit. The HUD labels it "dark (measured)". The text heuristic is unchanged for every other game.
+- **Map naming:** a room created (or a stub given its first real id) by the CURRENT finalized payload while that payload's evidence is dark is stamped NameProvenance "dark". A later lit verdict on the same id upgrades its name once and clears the stamp. D62 holds for every other case: a lit-admitted room is never stamped, and forged or non-current evidence abstains. Reset Map re-admits through the same path. The stamp persists with the map.
+
+**Tests:**
+- wump-dark-rename 20/0:
+  - the measured section; objects; Exit 1-3 marked;
+  - the dark stamp via reset; the lit upgrade; D62 on return; dark travel;
+  - tamper, out-of-table link and staticMem negatives;
+  - lit -> dark -> relit stays frozen; forged evidence;
+  - game save + map save + reload + restore round trip; the HUD label.
+- Guards: d46 27, m11 14, d170 11, pellets 48, d31 60, command-disambiguation 51, m04b 15, notes-pellets 35.
+- D171-style probe: 6 sessions x 25 turns, with 0 rooms with exit text and no marks, 0 non-fact turns, 0 empty scopes.
+- _wump_exit_n_live fails identically before the change (it expects the retired exit-N stub design).
+
+**Scope and residuals:**
+- wump2ka only. A cross-catalog census for other section/indexed-room games is running; any found gets its own measured fact.
+- The R3 text tri-state darkness evidence is parked (work/investigations/2026-10-10-claude-wump-dark-R3-PARKED.patch). Text darkness in other games keeps the D221 heuristic.
+- The map display of sections grouped under a "Room #N" frame (operator request) is a separate later step.
+- Old saved maps carry no provenance (no backwards compatibility in development).

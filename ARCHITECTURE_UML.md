@@ -209,9 +209,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 106 headings; 0 decision rows; 106 registered units.
-**Last registered unit:** `ar-s106`. **Body SHA-256 (LF):**
-`01086e828bc60085b01f264b7f6df7e81bfa228d3cb5ca6fcf8a455cf37e1ecf`
+**Local manifest:** 107 headings; 0 decision rows; 107 registered units.
+**Last registered unit:** `ar-s107`. **Body SHA-256 (LF):**
+`ed94bb010bb3a03278a952faf4113f334a4cd006915ae555938f28fc1cbe3a27`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -397,6 +397,7 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s104](#ar-s104) | 78. Inform 7 bookkeeping properties are not exits (D218) | H2 | Implemented / audited |
 | [ar-s105](#ar-s105) | 79. DarkScope: one heuristic darkness verdict per tick (D221) | H2 | Scoped-accepted (Codex #2702) |
 | [ar-s106](#ar-s106) | 80. Inform 7 Map_Storage look-ahead lane (D223) | H2 | Scoped-accepted (Codex #2804) |
+| [ar-s107](#ar-s107) | 81. Measured location fact and dark-admitted naming (D224) | H2 | Accepted (Codex #3175) |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -4106,3 +4107,22 @@ flowchart TD
 
 - The runtime never disassembles: offline research (work/investigations/zdis.cjs) produced the measured facts.
 - Lane state is bound to the collection generation and the memory buffer. Titles without a fact are unaffected.
+
+<a id="ar-s107" data-chapter-id="ar-s107"></a><a id="ar-ch81"></a>
+## 81. Measured location fact and dark-admitted naming (D224)
+
+Contract: [D224](PRODUCTION_PLAN.md#pl-d224).
+
+```mermaid
+flowchart TD
+  F[ModuleStatFactsClaude measuredLocation: digest + stable header] --> V[ZRamReader.measuredLocation: whole-fact validation each snapshot]
+  V -->|valid| R[snapshot: roomId = real_location G37, roomSource measured-fact, measuredDark]
+  V -->|invalid| O[existing D84 / D171 resolver]
+  R --> P[ZRamProvider probe.measuredDark]
+  P --> D[DarkScope: darkEvidence dark/lit, HUD dark measured]
+  D --> M[MapTopology.ensureRoom: stamp only on first admission by the current payload; one-shot upgrade when lit]
+  M --> K[D62 freeze for every other case; Reset Map re-admits via the same path]
+```
+
+- Identity is the section object (real_location). The printed "Room #N" stays display-only (D54).
+- No generic Inform ABI claim: other games need their own measured facts.
