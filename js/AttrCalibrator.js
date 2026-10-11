@@ -1128,15 +1128,6 @@ var AttrCalibrator = {
             for(var i=0;i<32 && node && !seen[id];i++) {
                 seen[id]=true;
                 if(rooms[String(node.parent)])return true;
-                // D80: C_ROOMS_N is a compiled room id even before map admission
-                // (Q0: CustomPlayer under prior section room). Not a generic
-                // location broaden — name pattern is the Inform room table.
-                try {
-                    if (node.parent) {
-                        var psn = String(ZRamReader.shortName(mem, node.parent) || "");
-                        if (/^c_rooms_\d+$/i.test(psn)) return true;
-                    }
-                } catch (eCR) {}
                 if(!node.parent)return false;
                 id=node.parent; node=ZRamReader.objectLinks(mem,id);
             }
@@ -1269,45 +1260,13 @@ var AttrCalibrator = {
                 var ctx = turn.__invRootCtx;
                 var snap = turn.analyzerSnapshots && turn.analyzerSnapshots["inventory-root"];
                 if (!ctx || !snap || !snap.objs) return;
-                // A-only (Codex #3088): same-turn carrying item lines; exact full
-                // structural shortName ownership; unique; one vote per object.
-                var itemLines = [];
-                var inList = false;
-                (snap.lines || []).forEach(function (ln) {
-                    if (/you are (carrying|holding|wearing)/i.test(ln)) { inList = true; return; }
-                    if (!inList) return;
-                    if (!String(ln).trim() || /^>/.test(String(ln).trim())) { inList = false; return; }
-                    itemLines.push(String(ln).trim());
+                var text = snap.lines.join("\n");
+                var listed = snap.objs.filter(function (o) {
+                    return new RegExp("(^|[^a-z])" + o.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "([^a-z]|$)").test(text);
                 });
-                if (!itemLines.length) return;
-                function phraseOf(line) {
-                    return String(line || "").toLowerCase()
-                        .replace(/^\s*(a|an|the|your|my|two|three|four|five|\d+)\s+/i, "")
-                        .replace(/[.\s]+$/g, "")
-                        .trim();
-                }
-                var phraseOwners = {};
-                itemLines.forEach(function (line) {
-                    var phrase = phraseOf(line);
-                    if (!phrase || phrase.length < 3) return;
-                    var owners = snap.objs.filter(function (o) {
-                        return o.name && o.name.charAt(0) !== "(" && o.name === phrase;
-                    });
-                    if (owners.length === 1) phraseOwners[phrase] = owners[0];
-                });
-                var voted = {}, counts = {};
-                Object.keys(phraseOwners).forEach(function (ph) {
-                    var o = phraseOwners[ph];
-                    if (voted[o.id]) return;
-                    voted[o.id] = true;
-                    if (!o.parent) return;
-                    // Parent that is itself a uniquely owned carried item cannot be root.
-                    var parentOwned = Object.keys(phraseOwners).some(function (p2) {
-                        return phraseOwners[p2].id === o.parent;
-                    });
-                    if (parentOwned) return;
-                    counts[o.parent] = (counts[o.parent] || 0) + 1;
-                });
+                var listedIds = {}; listed.forEach(function (o) { listedIds[o.id] = true; });
+                var counts = {};
+                listed.forEach(function (o) { if (o.parent && !listedIds[o.parent]) counts[o.parent] = (counts[o.parent] || 0) + 1; });
                 var keys = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; });
                 if (!keys.length) return;
                 var top = keys[0], n = counts[top], next = keys[1] ? counts[keys[1]] : 0;
