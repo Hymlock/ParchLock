@@ -1,0 +1,755 @@
+{
+ "Ballyhoo.z3.js": {
+  "prso": {
+   "var": "var122",
+   "status": "not dispatched",
+   "distinct": 0,
+   "negDispatched": false,
+   "ex": []
+  },
+  "prsi": {
+   "var": "var214",
+   "status": "not tested",
+   "put": null
+  },
+  "errs": []
+ },
+ "Borderzo.z5.js": {
+  "prso": {
+   "var": "var118",
+   "status": "PRSO PROVEN at dispatch",
+   "distinct": 3,
+   "negDispatched": false,
+   "ex": [
+    {
+     "o": {
+      "id": 38,
+      "name": "luggage rack",
+      "word": "rack"
+     },
+     "verb": "read",
+     "routine": "read",
+     "dispatched": true,
+     "prso": 38,
+     "match": true,
+     "reply": ">read rack | You cannot read a luggage rack. |   | > "
+    },
+    {
+     "o": {
+      "id": 43,
+      "name": "blood stain",
+      "word": "blood"
+     },
+     "verb": "examine",
+     "routine": "examine",
+     "dispatched": true,
+     "prso": 43,
+     "match": true,
+     "reply": ">examine blood | It's a pretty typical blood stain. |   | > "
+    },
+    {
+     "o": {
+      "id": 96,
+      "name": "briefcase",
+      "word": "case"
+     },
+     "verb": "examine",
+     "routine": "examine",
+     "dispatched": true,
+     "prso": 96,
+     "match": true,
+     "reply": ">examine case | It's closed. |   | > "
+    }
+   ]
+  },
+  "prsi": {
+   "var": "var222",
+   "status": "PRSI PROVEN at dispatch",
+   "put": {
+    "a": 330,
+    "c": 38,
+    "dispatched": true,
+    "prso": 330,
+    "prsi": 38,
+    "reply": ">put paper in rack | Done. |   | > "
+   }
+  },
+  "errs": []
+ },
+ "Cutthroats.z3.js": {
+  "prso": {
+   "var": "var184",
+   "status": "single-target only",
+   "distinct": 1,
+   "negDispatched": false,
+   "ex": [
+    {
+     "o": {
+      "id": 6,
+      "name": "wrist watch",
+      "word": "watch"
+     },
+     "verb": "open",
+     "routine": "open",
+     "dispatched": true,
+     "prso": 6,
+     "match": true,
+     "reply": ">open watch | You must tell me how to do that to the wrist watch. |   | > "
+    }
+   ]
+  },
+  "prsi": {
+   "var": "var185",
+   "status": "not tested",
+   "put": null
+  },
+  "errs": []
+ },
+ "Deadline.z3.js": {
+  "prso": {
+   "var": "var191",
+   "status": "not dispatched",
+   "distinct": 0,
+   "negDispatched": false,
+   "ex": []
+  },
+  "prsi": {
+   "var": "var192",
+   "status": "not tested",
+   "put": null
+  },
+  "errs": []
+ },
+ "Enchanter.z3.js": {
+  "prso": {
+   "var": "var117",
+   "status": "PRSO PROVEN at dispatch",
+   "distinct": 3,
+   "negDispatched": false,
+   "ex": [
+    {
+     "o": {
+      "id": 144,
+      "name": "spell book",
+      "word": "book"
+     },
+     "verb": "drop",
+     "routine": "drop",
+     "dispatched": true,
+     "prso": 144,
+     "match": true,
+     "reply": ">drop book | Dropped. |   | > "
+    },
+    {
+     "o": {
+      "id": 193,
+      "name": "blorb spell",
+      "word": "blorb"
+     },
+     "verb": "examine",
+     "routine": "examine",
+     "dispatched": true,
+     "prso": 193,
+     "match": true,
+     "reply": ">examine blorb | safely protect a small object as though in a strong box |   | > "
+    },
+    {
+     "o": {
+      "id": 84,
+      "name": "nitfol spell",
+      "word": "nitfol"
+     },
+     "verb": "examine",
+     "routine": "examine",
+     "dispatched": true,
+     "prso": 84,
+     "match": true,
+     "reply": ">examine nitfol | converse with the beasts in their own tongue |   | > "
+    }
+   ]
+  },
+  "prsi": {
+   "var": "var218",
+   "status": "PRSI PROVEN at dispatch",
+   "put": {
+    "a": 144,
+    "c": 193,
+    "dispatched": true,
+    "prso": 144,
+    "prsi": 193,
+    "reply": "I can't do that. | The sun has now risen above the hills. |   | > "
+   }
+  },
+  "errs": []
+ },
+ "HollywoodHijinx.z3.js": {
+  "prso": {
+   "var": "var85",
+   "status": "PRSO PROVEN at dispatch",
+   "distinct": 3,
+   "negDispatched": false,
+   "ex": [
+    {
+     "o": {
+      "id": 114,
+      "name": "bazooka",
+      "word": "bazook"
+     },
+     "verb": "read",
+     "routine": "read",
+     "dispatched": true,
+     "prso": 114,
+     "match": true,
+     "reply": ">read bazook | You can't read a bazooka! |   | > "
+    },
+    {
+     "o": {
+      "id": 123,
+      "name": "flashlight",
+      "word": "flashl"
+     },
+     "verb": "read",
+     "routine": "read",
+     "dispatched": true,
+     "prso": 123,
+     "match": true,
+     "reply": ">read flashl | You can't read a flashlight! |   | > "
+    },
+    {
+     "o": {
+      "id": 67,
+      "name": "photo of Uncle Buddy",
+      "word": "photo"
+     },
+     "verb": "open",
+     "routine": "open",
+     "dispatched": true,
+     "prso": 67,
+     "match": true,
+     "reply": ">open photo | How can you do that to a photo of Uncle Buddy? |   | > "
+    }
+   ]
+  },
+  "prsi": {
+   "var": "var164",
+   "status": "PRSI PROVEN at dispatch",
+   "put": {
+    "a": 123,
+    "c": 114,
+    "dispatched": true,
+    "prso": 123,
+    "prsi": 114,
+    "reply": ">put flashl in bazook | You can't possibly do that! |   | > "
+   }
+  },
+  "errs": []
+ },
+ "Infidel.z3.js": {
+  "prso": {
+   "var": "var135",
+   "status": "not dispatched",
+   "distinct": 0,
+   "negDispatched": false,
+   "ex": []
+  },
+  "prsi": {
+   "var": "var136",
+   "status": "not tested",
+   "put": null
+  },
+  "errs": []
+ },
+ "LeatherGoddessesofPhobos.z3.js": {
+  "prso": {
+   "var": "var128",
+   "status": "PRSO PROVEN at dispatch",
+   "distinct": 3,
+   "negDispatched": false,
+   "ex": [
+    {
+     "o": {
+      "id": 2,
+      "name": "exit",
+      "word": "exit"
+     },
+     "verb": "examine",
+     "routine": "examine",
+     "dispatched": true,
+     "prso": 2,
+     "match": true,
+     "reply": ">examine exit | It looks like every other exit you've ever seen. |   | > "
+    },
+    {
+     "o": {
+      "id": 5,
+      "name": "your hand",
+      "word": "hands"
+     },
+     "verb": "examine",
+     "routine": "examine",
+     "dispatched": true,
+     "prso": 5,
+     "match": true,
+     "reply": "It looks just like your hand. |    You trace the urge to the region of your bladder. |   | > "
+    },
+    {
+     "o": {
+      "id": 18,
+      "name": "pocket",
+      "word": "pocket"
+     },
+     "verb": "examine",
+     "routine": "examine",
+     "dispatched": true,
+     "prso": 18,
+     "match": true,
+     "reply": "   Though operating at far below normal speed, your mind begins to conclude that it would be best at this point to find a bathroom. |   | > "
+    }
+   ]
+  },
+  "prsi": {
+   "var": "var226",
+   "status": "PUT IN not dispatched (could not take any visible object)",
+   "put": {
+    "dispatched": false,
+    "reply": "could not take any visible object"
+   }
+  },
+  "errs": []
+ },
+ "Moonmist.z3.js": {
+  "status": "no EXAMINE action or no inferred PRSO"
+ },
+ "Planetfall.z3.js": {
+  "prso": {
+   "var": "var198",
+   "status": "PRSO PROVEN at dispatch",
+   "distinct": 3,
+   "negDispatched": false,
+   "ex": [
+    {
+     "o": {
+      "id": 227,
+      "name": "Patrol-issue self-contained multi-purpose scrub brush",
+      "word": "brush"
+     },
+     "verb": "examine",
+     "routine": "examine",
+     "dispatched": true,
+     "prso": 227,
+     "match": true,
+     "reply": "osition for an Ensign Ninth Class in the toilet-scrubbing division, you know. Thirty demerits.\" He glares at you, his arms crossed. |   | > "
+    },
+    {
+     "o": {
+      "id": 224,
+      "name": "Patrol uniform",
+      "word": "unifor"
+     },
+     "verb": "read",
+     "routine": "read",
+     "dispatched": true,
+     "prso": 224,
+     "match": true,
+     "reply": ">read unifor | How can I read a Patrol uniform? |   | > "
+    },
+    {
+     "o": {
+      "id": 225,
+      "name": "ID card",
+      "word": "card"
+     },
+     "verb": "examine",
+     "routine": "examine",
+     "dispatched": true,
+     "prso": 225,
+     "match": true,
+     "reply": "Special Assignment Task Force | ID Number:  6172-531-541\" |   | > "
+    }
+   ]
+  },
+  "prsi": {
+   "var": "var199",
+   "status": "PRSI PROVEN at dispatch",
+   "put": {
+    "a": 227,
+    "c": 224,
+    "dispatched": true,
+    "prso": 227,
+    "prsi": 224,
+    "reply": "  | Blather, adding fifty more demerits for good measure, moves off in search of more young ensigns to terrorize. |   | > "
+   }
+  },
+  "errs": []
+ },
+ "PlunderedHearts.z3.js": {
+  "status": "no EXAMINE action or no inferred PRSO"
+ },
+ "Seastalker.z3.js": {
+  "status": "no EXAMINE action or no inferred PRSO"
+ },
+ "Sherlock.z5.js": {
+  "status": "skipped: classification unknown/rejected"
+ },
+ "Sorcerer.z3.js": {
+  "prso": {
+   "var": "var104",
+   "status": "not dispatched",
+   "distinct": 0,
+   "negDispatched": false,
+   "ex": []
+  },
+  "prsi": {
+   "var": "var194",
+   "status": "not tested",
+   "put": null
+  },
+  "errs": []
+ },
+ "Spellbreaker.z3.js": {
+  "prso": {
+   "var": "var118",
+   "status": "PRSO PROVEN at dispatch",
+   "distinct": 3,
+   "negDispatched": false,
+   "ex": [
+    {
+     "o": {
+      "id": 1,
+      "name": "Sneffle",
+      "word": "sneffl"
+     },
+     "verb": "read",
+     "routine": "read",
+     "dispatched": true,
+     "prso": 1,
+     "match": true,
+     "reply": "g to let the sorcerers loose rat-ants on us, and worse?\" He sits, glaring significantly at the now-angry clump of mages around you. |   | > "
+    },
+    {
+     "o": {
+      "id": 19,
+      "name": "Orkan of Thriff",
+      "word": "orkan"
+     },
+     "verb": "read",
+     "routine": "read",
+     "dispatched": true,
+     "prso": 19,
+     "match": true,
+     "reply": ">read orkan | How do you do that with Orkan of Thriff? |   | > "
+    },
+    {
+     "o": {
+      "id": 21,
+      "name": "sorcerer",
+      "word": "sorcer"
+     },
+     "verb": "read",
+     "routine": "read",
+     "dispatched": true,
+     "prso": 21,
+     "match": true,
+     "reply": ">read sorcer | How do you do that with the sorcerer? |   | > "
+    }
+   ]
+  },
+  "prsi": {
+   "var": null,
+   "status": "not tested",
+   "put": null
+  },
+  "errs": []
+ },
+ "Starcross.z3.js": {
+  "prso": {
+   "var": "var101",
+   "status": "not dispatched",
+   "distinct": 0,
+   "negDispatched": false,
+   "ex": []
+  },
+  "prsi": {
+   "var": "var35",
+   "status": "not tested",
+   "put": null
+  },
+  "errs": []
+ },
+ "Stationfall.z3.js": {
+  "prso": {
+   "var": "var119",
+   "status": "PRSO PROVEN at dispatch",
+   "distinct": 3,
+   "negDispatched": false,
+   "ex": [
+    {
+     "o": {
+      "id": 2,
+      "name": "air",
+      "word": "air"
+     },
+     "verb": "examine",
+     "routine": "examine",
+     "dispatched": true,
+     "prso": 2,
+     "match": true,
+     "reply": ">examine air | It looks just like air. |   | > "
+    },
+    {
+     "o": {
+      "id": 3,
+      "name": "game",
+      "word": "game"
+     },
+     "verb": "examine",
+     "routine": "examine",
+     "dispatched": true,
+     "prso": 3,
+     "match": true,
+     "reply": ">examine game | There's nothing eye-catching about the game. |   | > "
+    },
+    {
+     "o": {
+      "id": 8,
+      "name": "your hand",
+      "word": "hands"
+     },
+     "verb": "examine",
+     "routine": "examine",
+     "dispatched": true,
+     "prso": 8,
+     "match": true,
+     "reply": ">examine hands | It looks just like your hand. |   | > "
+    }
+   ]
+  },
+  "prsi": {
+   "var": "var216",
+   "status": "PUT IN not dispatched (could not take any visible object)",
+   "put": {
+    "dispatched": false,
+    "reply": "could not take any visible object"
+   }
+  },
+  "errs": []
+ },
+ "Suspect.z3.js": {
+  "status": "skipped: classification unknown/rejected"
+ },
+ "Suspended.z3.js": {
+  "prso": {
+   "var": "var143",
+   "status": "not dispatched",
+   "distinct": 0,
+   "negDispatched": false,
+   "ex": []
+  },
+  "prsi": {
+   "var": "var144",
+   "status": "not tested",
+   "put": null
+  },
+  "errs": []
+ },
+ "Hitchhik.z5.js": {
+  "prso": {
+   "var": "var90",
+   "status": "not dispatched",
+   "distinct": 0,
+   "negDispatched": false,
+   "ex": []
+  },
+  "prsi": {
+   "var": "var174",
+   "status": "PUT IN not dispatched (could not take any visible object)",
+   "put": {
+    "dispatched": false,
+    "reply": "could not take any visible object"
+   }
+  },
+  "errs": []
+ },
+ "TheLurkingHorror.z3.js": {
+  "prso": {
+   "var": "var115",
+   "status": "not dispatched",
+   "distinct": 0,
+   "negDispatched": false,
+   "ex": []
+  },
+  "prsi": {
+   "var": null,
+   "status": "not tested",
+   "put": null
+  },
+  "errs": []
+ },
+ "TheWitness.z3.js": {
+  "prso": {
+   "var": "var135",
+   "status": "single-target only",
+   "distinct": 1,
+   "negDispatched": false,
+   "ex": [
+    {
+     "o": {
+      "id": 79,
+      "name": "detective",
+      "word": "myself"
+     },
+     "verb": "examine",
+     "routine": "examine",
+     "dispatched": true,
+     "prso": 79,
+     "match": true,
+     "reply": "There's nothing special about the detective. |   | What next? | > "
+    }
+   ]
+  },
+  "prsi": {
+   "var": "var136",
+   "status": "not tested",
+   "put": null
+  },
+  "errs": []
+ },
+ "Wishbringer.z3.js": {
+  "prso": {
+   "var": "const187",
+   "status": "not dispatched",
+   "distinct": 0,
+   "negDispatched": false,
+   "ex": []
+  },
+  "prsi": {
+   "var": null,
+   "status": "not tested",
+   "put": null
+  },
+  "errs": []
+ },
+ "Zork1-TheGreatUndergroundEmpire.z3.js": {
+  "prso": {
+   "var": "var134",
+   "status": "PRSO PROVEN at dispatch",
+   "distinct": 2,
+   "negDispatched": false,
+   "ex": [
+    {
+     "o": {
+      "id": 160,
+      "name": "small mailbox",
+      "word": "mailbo"
+     },
+     "verb": "examine",
+     "routine": "examine",
+     "dispatched": true,
+     "prso": 160,
+     "match": true,
+     "reply": ">examine mailbo | The small mailbox is closed. |   | > "
+    },
+    {
+     "o": {
+      "id": 181,
+      "name": "door",
+      "word": "door"
+     },
+     "verb": "examine",
+     "routine": "examine",
+     "dispatched": true,
+     "prso": 181,
+     "match": true,
+     "reply": ">examine door | The door is closed. |   | > "
+    }
+   ]
+  },
+  "prsi": {
+   "var": "var135",
+   "status": "PUT IN not dispatched (could not take any visible object)",
+   "put": {
+    "dispatched": false,
+    "reply": "could not take any visible object"
+   }
+  },
+  "errs": []
+ },
+ "Zork2-TheWizardofFrobozz.z3.js": {
+  "prso": {
+   "var": "var159",
+   "status": "PRSO PROVEN at dispatch",
+   "distinct": 2,
+   "negDispatched": false,
+   "ex": [
+    {
+     "o": {
+      "id": 23,
+      "name": "sword",
+      "word": "sword"
+     },
+     "verb": "examine",
+     "routine": "examine",
+     "dispatched": true,
+     "prso": 23,
+     "match": true,
+     "reply": ">examine sword | There's nothing special about the sword. |   | > "
+    },
+    {
+     "o": {
+      "id": 76,
+      "name": "lamp",
+      "word": "lamp"
+     },
+     "verb": "read",
+     "routine": "read",
+     "dispatched": true,
+     "prso": 76,
+     "match": true,
+     "reply": "(Taken) | How does one read a lamp? |   | > "
+    }
+   ]
+  },
+  "prsi": {
+   "var": "var160",
+   "status": "PRSI PROVEN at dispatch",
+   "put": {
+    "a": 76,
+    "c": 23,
+    "dispatched": true,
+    "prso": 76,
+    "prsi": 23,
+    "reply": ">put lamp in sword | You can't do that. |   | > "
+   }
+  },
+  "errs": []
+ },
+ "Zork3-TheDungeonMaster.z3.js": {
+  "prso": {
+   "var": "var186",
+   "status": "single-target only",
+   "distinct": 1,
+   "negDispatched": false,
+   "ex": [
+    {
+     "o": {
+      "id": 198,
+      "name": "lamp",
+      "word": "lamp"
+     },
+     "verb": "read",
+     "routine": "read",
+     "dispatched": true,
+     "prso": 198,
+     "match": true,
+     "reply": ">read lamp | How can I read a lamp? |   | > "
+    }
+   ]
+  },
+  "prsi": {
+   "var": "var187",
+   "status": "not tested",
+   "put": null
+  },
+  "errs": []
+ }
+}
