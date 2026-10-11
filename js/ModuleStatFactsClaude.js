@@ -4,7 +4,7 @@
 // No stored numeric readings or title dispatch.
 var ModuleStatFactsClaude = {
     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
-        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12 },
+        "attributeMap": { "container": 21, "supporter": 14 },
         "openCapability": { "all": ["container"], "none": ["supporter"] }
     },
     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
