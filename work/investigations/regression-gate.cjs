@@ -28,7 +28,10 @@ const out = fs.createWriteStream(process.env.OUT || 'gate.jsonl');
     const b = await chromium.launch();
     for (const g of games) {
         const p = await b.newPage({ viewport: { width: 1280, height: 900 } });
-        await p.addInitScript(() => { sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); for (const k of ['PL_TutorialSeen', 'PL_MobileTutorialSeen', 'PL_LearnedWordsTutorialSeen']) localStorage.setItem(k, '1'); });
+        // Deterministic runs (2026-10-11): the story's random opcode draws on Math.random; seed it so
+    // base and candidate see the same game events (Planetfall's ambassador was flipping run to run).
+    await p.addInitScript(() => { let s = 12345; Math.random = () => { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x80000000; }; });
+    await p.addInitScript(() => { sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); for (const k of ['PL_TutorialSeen', 'PL_MobileTutorialSeen', 'PL_LearnedWordsTutorialSeen']) localStorage.setItem(k, '1'); });
         const row = { game: g };
         try {
             await p.goto(pathToFileURL(path.resolve(ROOT, 'play.html')).href + '?story=games/' + g); await p.waitForTimeout(2000);
