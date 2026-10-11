@@ -22,12 +22,14 @@ const open = async (b, g) => {
     let p = await open(b, 'Hitchhik.z5.js');
     const d0 = await p.evaluate(() => { WorldModel.tick(); return DarkScope.dark; });
     check(d0 === true, 'HHG: dark at the opening (pitch black bedroom)');
-    // M11: unnamed bed 58 + "Bedroom, in the bed" + "(outside the bed)" clears.
+    // Limit (fail closed, orchestrator 2026-10-10): bed 58 is unnamed (no shortName,
+    // no parser words), so "Bedroom, in the bed" has no structural proof; prose such as
+    // "outside the bed" is not used. State is kept until the bare heading.
     const d1 = await p.send('turn on light');
-    check(d1 === false, 'HHG: TURN ON LIGHT prints "Bedroom, in the bed" + outside-the-bed -> clears dark');
+    check(d1 === true, 'HHG: "Bedroom, in the bed" with unnamed bed is unproven -> state kept (documented limit, no prose)');
     await p.send('get up');
     const d1b = await p.send('look');
-    check(d1b === false, 'HHG: after GET UP, LOOK bare Bedroom stays lit');
+    check(d1b === false, 'HHG: after GET UP, LOOK prints the bare "Bedroom" heading -> clears dark');
     const hud = await p.evaluate(() => (WorldModel.lastPayload.hudMetrics || []).filter(h => h.source === 'dark-scope').length);
     check(hud === 0, 'HHG: no dark-scope HUD entry once lit');
     const d2 = await p.send('inventory');

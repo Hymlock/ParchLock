@@ -69,15 +69,6 @@ var DarkScope = {
                 return level.words.some(function (x) { return x === w || (x.length >= 6 && w.indexOf(x) === 0); });
             });
         })) return true;
-        // M11 HHG: unnamed direct parent (bed 58) has no shortName/words, but
-        // the same reply prints "(outside the bed)" for free objects. Accept
-        // when chain is depth-1 only, empty names/words, and the reply itself
-        // names that container as outside-the-X (story-printed, not a list).
-        if (chain.length === 1 && !(chain[0].names && chain[0].names.length)
-            && !(chain[0].words && chain[0].words.length) && want) {
-            var blob = String(replyBlob || "").toLowerCase();
-            if (blob.indexOf("outside the " + want) >= 0 || blob.indexOf("outside " + want) >= 0) return true;
-        }
         return false;
     },
 
