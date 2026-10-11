@@ -323,6 +323,9 @@ var ModuleStatFactsClaude = {
     },
     // Zork I (Infocom v3)
     "0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd": {
+        // ZIL mailbox: CONTBIT=13 always; OPENBIT=11 after OPEN (measured attrBytes
+        // closed [13,19] open [3,11,13,19]). Inform PROFILE open=14 is wrong here.
+        "attributeMap": { "container": 13, "open": 11, "isOpen": 11 },
         "command": "score", "fields": ["score.max", "rank"], "replyFamily": "inform-score", "outcome": "line",
         "evidence": "2026-10-05 live SCORE: Your score is 0 (total of 350 points), in 0 moves. / This gives you the rank of Beginner."
     },

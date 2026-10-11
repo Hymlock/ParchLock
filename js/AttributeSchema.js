@@ -111,6 +111,16 @@ var AttributeSchema = {
             // default only for an Inform-compiled story. A ZIL story with no
             // evidence reads nothing as worn rather than a wrong bit.
             if (flagName === "worn") return AttributeSchema.wornBitFallback(mem);
+            // Measured per-executable ZIL/custom attribute numbers (e.g. Zork I
+            // mailbox OPENBIT/CONTBIT). Prefer over Inform PROFILE defaults.
+            var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest
+                ? ModuleLibrary.currentExecutableDigest() : null;
+            var fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
+            var map = fact && fact.attributeMap;
+            if (map && Object.prototype.hasOwnProperty.call(map, flagName)
+                && Number.isInteger(map[flagName]) && map[flagName] >= 0 && map[flagName] < 48) {
+                return map[flagName];
+            }
         } catch (e) {}
         var n = AttributeSchema.PROFILE[flagName];
         return typeof n === "number" ? n : null;
