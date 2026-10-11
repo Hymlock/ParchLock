@@ -3,6 +3,11 @@
 // field/reply-family and measured equipment-state capabilities only.
 // No stored numeric readings or title dispatch.
 var ModuleStatFactsClaude = {
+    // Sorcerer (ZIL): stable PLAYER global 38 (Codex #3412/#3413, verified grok2 #3425): misc.zil WINNER=PROTAGONIST, PLAYER=WINNER;
+    // binary 23591 store G38<-G163 at start, TELL stores only G163 (42801). Native TAKE book inserts into body 223 = G38. Ships with the v3 nested-room fix.
+    "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e": {
+        "playerGlobal": 38
+    },
     // Wumpus 2000 (wump2ka): measured location roles (Codex GO #3103;
     // work/investigations/2026-10-10-wump-identity-proposal.md). Rooms are
     // multi-section ("a section of room #25"), so the printed number cannot

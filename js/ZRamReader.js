@@ -121,6 +121,36 @@ var ZRamReader = {
     },
 
     enclosingRoom: (mem, playerId) => {
+        // Research proposal: validated ZIL v3 status location must also be
+        // on the current player's containment chain. Never climb to its root.
+        try {
+            var h = ZRamReader.header(mem);
+            if (h && h.version === 3 && !ZRamReader.isInformCompiled(mem)
+                && h.globals > 0 && h.globals + 2 <= h.staticMem
+                && h.globals + 2 <= mem.byteLength
+                && typeof GrammarProvider !== 'undefined' && GrammarProvider.decodeD198) {
+                var family = GrammarProvider.decodeD198(mem);
+                if (family && family.classification === 'confirmed-zil-family'
+                    && family.evidence === 'validated'
+                    && family.family === 'infocom-pre-v6-fixed') {
+                    var statusRoom = ZRamReader.u16(mem, h.globals);
+                    if (ZRamReader.isLocationObject(mem, statusRoom, playerId)) {
+                        var cursor = ZRamReader.objectLinks(mem, playerId), chain = {};
+                        chain[playerId] = true;
+                        var found = false, cycle = false;
+                        for (var n = 0; cursor && cursor.parent && n < 64; n++) {
+                            var parent = cursor.parent;
+                            if (chain[parent]) { cycle = true; break; }
+                            chain[parent] = true;
+                            if (parent === statusRoom) found = true;
+                            cursor = ZRamReader.objectLinks(mem, parent);
+                        }
+                        // A truncated chain is not a validated ancestry either.
+                        if (found && !cycle && cursor && !cursor.parent) return statusRoom;
+                    }
+                }
+            }
+        } catch (eStatusRoom) {}
         var obj = ZRamReader.objectLinks(mem, playerId), seen = {};
         seen[playerId] = true;
         for (var depth = 0; obj && obj.parent && depth < 64; depth++) {
