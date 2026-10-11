@@ -796,82 +796,271 @@
   "repo": "zork3",
   "source": "https://github.com/historicalsource/zork3",
   "files": 21,
-  "sourceObjects": 436,
-  "matched": 11,
+  "sourceObjects": 228,
+  "matched": 142,
   "ramObjects": 255,
   "flags": {
    "ACTORBIT": {
     "bit": 21,
-    "positives": 2,
-    "negatives": 9,
-    "tp": 2,
+    "positives": 5,
+    "negatives": 137,
+    "tp": 5,
     "fp": 0,
     "fn": 0,
     "exact": true,
     "examples": [
-     "200:you",
-     "202:cretin"
+     "67:hooded figure",
+     "182:Guardians of Zork",
+     "116:old man"
+    ]
+   },
+   "BURNBIT": {
+    "bit": 13,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "187:warning note"
     ]
    },
    "CLIMBBIT": {
     "bit": 24,
-    "positives": 1,
-    "negatives": 10,
-    "tp": 1,
-    "fp": 0,
-    "fn": 0,
-    "exact": true,
-    "examples": [
-     "216:stairs"
-    ]
-   },
-   "INVISIBLE": {
-    "bit": 28,
-    "positives": 1,
-    "negatives": 10,
-    "tp": 1,
-    "fp": 0,
-    "fn": 0,
-    "exact": true,
-    "examples": [
-     "202:cretin"
-    ]
-   },
-   "NDESCBIT": {
-    "bit": 25,
-    "positives": 6,
-    "negatives": 5,
-    "tp": 6,
-    "fp": 0,
-    "fn": 0,
-    "exact": true,
-    "examples": [
-     "218:random object",
-     "217:blessings",
-     "216:stairs"
-    ]
-   },
-   "SACREDBIT": {
-    "bit": 28,
-    "positives": 1,
-    "negatives": 10,
-    "tp": 1,
-    "fp": 0,
-    "fn": 0,
-    "exact": true,
-    "examples": [
-     "202:cretin"
-    ]
-   },
-   "TOOLBIT": {
-    "bit": 23,
     "positives": 2,
-    "negatives": 9,
+    "negatives": 140,
     "tp": 2,
     "fp": 0,
     "fn": 0,
     "exact": true,
     "examples": [
+     "23:wooden ladder",
+     "216:stairs"
+    ]
+   },
+   "CONTBIT": {
+    "bit": 10,
+    "positives": 12,
+    "negatives": 130,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "91:gold machine",
+     "107:iron door",
+     "104:stone door"
+    ]
+   },
+   "DOORBIT": {
+    "bit": 9,
+    "positives": 5,
+    "negatives": 137,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "106:cleft",
+     "107:iron door",
+     "104:stone door"
+    ]
+   },
+   "DRINKBIT": {
+    "bit": 22,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "203:water"
+    ]
+   },
+   "FLAMEBIT": {
+    "bit": 6,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "41:torch"
+    ]
+   },
+   "FOODBIT": {
+    "bit": 5,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "34:piece of waybread"
+    ]
+   },
+   "INVISIBLE": {
+    "bit": 28,
+    "positives": 5,
+    "negatives": 137,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "106:cleft",
+     "5:Viking Ship",
+     "146:bronze door"
+    ]
+   },
+   "LIGHTBIT": {
+    "bit": 6,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "41:torch"
+    ]
+   },
+   "NDESCBIT": {
+    "bit": 25,
+    "positives": 59,
+    "negatives": 83,
+    "tp": 59,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "114:voices",
+     "111:rock structure",
+     "109:Royal Seal of Dimwit Flathead"
+    ]
+   },
+   "NONLANDBIT": {
+    "bit": 0,
+    "positives": 2,
+    "negatives": 140,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "exact": false,
+    "examples": [
+     "48:On the Lake",
+     "46:Underwater"
+    ]
+   },
+   "ONBIT": {
+    "bit": 15,
+    "positives": 27,
+    "negatives": 115,
+    "tp": 27,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "112:Crystal Grotto",
+     "64:Endless Stair",
+     "60:Cliff Base"
+    ]
+   },
+   "OPENBIT": {
+    "bit": 12,
+    "positives": 8,
+    "negatives": 134,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "106:cleft",
+     "91:gold machine",
+     "84:pedestal"
+    ]
+   },
+   "READBIT": {
+    "bit": 14,
+    "positives": 8,
+    "negatives": 134,
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "109:Royal Seal of Dimwit Flathead",
+     "80:plaque",
+     "79:bronze plaque"
+    ]
+   },
+   "RLANDBIT": {
+    "bit": 16,
+    "positives": 42,
+    "negatives": 100,
+    "tp": 42,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "113:Tight Squeeze",
+     "112:Crystal Grotto",
+     "110:Royal Hall"
+    ]
+   },
+   "SACREDBIT": {
+    "bit": 0,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "exact": false,
+    "examples": [
+     "202:cretin"
+    ]
+   },
+   "SURFACEBIT": {
+    "bit": 26,
+    "positives": 2,
+    "negatives": 140,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "84:pedestal",
+     "81:steel cage"
+    ]
+   },
+   "TAKEBIT": {
+    "bit": 20,
+    "positives": 20,
+    "negatives": 122,
+    "tp": 20,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "85:sceptre",
+     "83:jewelled knife",
+     "82:golden ring"
+    ]
+   },
+   "TOOLBIT": {
+    "bit": 23,
+    "positives": 3,
+    "negatives": 139,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "183:direction",
      "184:number",
      "208:pair of hands"
     ]
@@ -879,13 +1068,90 @@
    "TOUCHBIT": {
     "bit": 0,
     "positives": 1,
-    "negatives": 10,
+    "negatives": 141,
     "tp": 0,
     "fp": 0,
     "fn": 1,
     "exact": false,
     "examples": [
      "218:random object"
+    ]
+   },
+   "TRANSBIT": {
+    "bit": 30,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "67:hooded figure"
+    ]
+   },
+   "TRYTAKEBIT": {
+    "bit": 17,
+    "positives": 7,
+    "negatives": 135,
+    "tp": 4,
+    "fp": 0,
+    "fn": 3,
+    "exact": false,
+    "examples": [
+     "85:sceptre",
+     "83:jewelled knife",
+     "82:golden ring"
+    ]
+   },
+   "TURNBIT": {
+    "bit": 8,
+    "positives": 2,
+    "negatives": 140,
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "86:dial",
+     "120:sundial"
+    ]
+   },
+   "VEHBIT": {
+    "bit": 7,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "91:gold machine"
+    ]
+   },
+   "WEAPONBIT": {
+    "bit": 18,
+    "positives": 1,
+    "negatives": 141,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "197:sword"
+    ]
+   },
+   "WEARBIT": {
+    "bit": 4,
+    "positives": 4,
+    "negatives": 138,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "exact": true,
+    "examples": [
+     "82:golden ring",
+     "66:hood",
+     "65:cloak"
     ]
    }
   }
