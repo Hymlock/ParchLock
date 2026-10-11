@@ -9059,3 +9059,10 @@ Guards: d46 27/0, d201 69/0, d23 88/0, m12 14/0.
 - The R3 text tri-state darkness evidence is parked (work/investigations/2026-10-10-claude-wump-dark-R3-PARKED.patch). Text darkness in other games keeps the D221 heuristic.
 - The map display of sections grouped under a "Room #N" frame (operator request) is a separate later step.
 - Old saved maps carry no provenance (no backwards compatibility in development).
+
+## Backlog (low priority, research only): Glulx cold decoding
+
+Queued 2026-10-11 by operator instruction, AFTER everything else (ZIL full decode, ZIL item sweep, the item sweeps and the map sweep). No work on it now.
+
+- Glulx cold decoding (object table, attributes, properties, dictionary, status variables), proven from each game's own code/RAM, unknowns fail closed.
+- Step one: a doc check of existing Glulx support and prior attempts (DECISION-INDEX, investigations, git log -S), related to ITEMS-QUEUE Q11 (Glulx 11-title items census), before any design or code.
