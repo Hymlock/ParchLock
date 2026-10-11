@@ -1,5 +1,13 @@
 # ParchLock Release Notes
 
+## Build 72 - 2026-10-10
+
+- Wumpus: sections of one big room are grouped. The World Map draws a frame around them, and the local map shows the room number and section count.
+- First room: Curses, Ghost and Vespers no longer put an opening quote, an intro scene or a hints menu on the map as the first room. Infocom-style games (Zork, Hitchhiker's Guide) are unchanged.
+- Facility: the player is found through a measured game value.
+- Hitchhiker's Guide: 'Bedroom, in the bed' still keeps the dark marker until you get up (documented limit).
+- Not in this build: D219 room-name type check (under review).
+
 ## Build 71 - 2026-10-10
 
 - Wumpus: big rooms are made of sections ("a section of room #25"). The map now follows the section you are actually in, so its exits (including Exit 3), items and creatures are picked up again, and Equipment shows what you carry.
