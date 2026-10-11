@@ -361,15 +361,6 @@ var WorldModel = {
             Object.keys(curRoom.Exits).forEach(function (dir) {
                 var canon = canonOf(dir) || dir;
                 if (haveLabel[dir] || haveLabel[canon]) return;
-                // D55/D48 alias: a walked command key ("x1") whose destination
-                // is the same object a decoded exit already targets ("exit 1")
-                // is the SAME exit, not a second one (Wumpus E1+X1 double label).
-                // Proven by destination identity only; unmatched keys still merge.
-                var dest = ParchLockMap.Rooms[curRoom.Exits[dir]];
-                var destObj = dest && dest.HasRealId ? String(dest.ObjectId) : null;
-                if (destObj != null && exits.some(function (e) {
-                    return e && e.targetRoomId != null && String(e.targetRoomId) === destObj;
-                })) return;
                 // D223: an unwalked Map_Storage hint is never "confirmed".
                 var em = curRoom.ExitMeta && curRoom.ExitMeta[dir];
                 if (em && em.source === "i7-mapstorage" && !em.travelledTo) return;

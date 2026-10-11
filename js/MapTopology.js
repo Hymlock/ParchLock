@@ -872,6 +872,27 @@ var MapTopology = {
                 if (MapTopology.isCardinal(rest)) label = MapTopology.normalizeLabel(rest);
             }
 
+            // D55 label/command split (Wumpus E1+X1): when the departure room
+            // already holds exactly one exit whose recorded COMMAND is what was
+            // just submitted (label "exit 1", command "x1") and whose
+            // destination agrees, the walk confirms THAT exit -- key the edge by
+            // its label, not by the command, so one exit keeps one key/label.
+            try {
+                var typedLower = String(rawTyped).toLowerCase().trim();
+                // Grok #3262: lookup only (never mint a room), non-cardinal labels only.
+                var departRoom = (typeof ParchLockMap !== "undefined" && MapTopology.prevRoomId != null)
+                    ? (ParchLockMap.Rooms || []).filter(function (r) {
+                        return r && r.HasRealId && String(r.ObjectId) === String(MapTopology.prevRoomId);
+                    })[0] : null;
+                if (departRoom && departRoom.ExitMeta && !departRoom.ExitMeta[label] && !MapTopology.isCardinal(label)) {
+                    var aliasKeys = Object.keys(departRoom.ExitMeta).filter(function (k) {
+                        var em = departRoom.ExitMeta[k];
+                        return k !== label && em && String(em.command || "").toLowerCase().trim() === typedLower
+                            && (currId == null ? true : (em.toId != null && String(em.toId) === String(currId)));
+                    });
+                    if (aliasKeys.length === 1) label = aliasKeys[0];
+                }
+            } catch (eAlias) {}
             // Real-evidence resolution (D40/D49): the room just left may
             // already carry a direction key pointing at this exact
             // destination -- either a compass guess from the pre-travel
