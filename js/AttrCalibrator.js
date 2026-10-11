@@ -1128,6 +1128,14 @@ var AttrCalibrator = {
             for(var i=0;i<32 && node && !seen[id];i++) {
                 seen[id]=true;
                 if(rooms[String(node.parent)])return true;
+                // D80: compiled room ids may be C_ROOMS_N before map admission.
+                // A holder parented under such a room is still in-world (Q0).
+                try {
+                    if (node.parent) {
+                        var psn = String(ZRamReader.shortName(mem, node.parent) || "");
+                        if (/^c_rooms_/i.test(psn)) return true;
+                    }
+                } catch (eCR) {}
                 if(!node.parent)return false;
                 id=node.parent; node=ZRamReader.objectLinks(mem,id);
             }
@@ -1231,17 +1239,38 @@ var AttrCalibrator = {
                     wantsOpcodes: true,
                     hasWitness: function () { return true; },
                     captureAfter: function (t) {
-                        var out = { lines: [], objs: [] };
+                        var out = { lines: [], rawLines: [], objs: [] };
                         try {
                             if (typeof $ !== "undefined") {
                                 var lines = $("#windowport .BufferWindow .BufferLine").toArray();
                                 var end = (t.endLine != null) ? t.endLine : lines.length;
-                                out.lines = lines.slice(t.startLine || 0, end).map(function (l) { return String(l.textContent || "").toLowerCase(); });
+                                var slice = lines.slice(t.startLine || 0, end);
+                                out.rawLines = slice.map(function (l) { return String(l.textContent || ""); });
+                                out.lines = out.rawLines.map(function (s) { return s.toLowerCase(); });
                             }
                             Object.keys(t.__invRootCtx.tested).forEach(function (id) {
                                 var links = ZRamReader.objectLinks(mem, +id);
-                                var nm = String(ZRamReader.shortName(mem, +id) || "").toLowerCase();
-                                if (links && nm && nm.charAt(0) !== "(") out.objs.push({ id: +id, parent: links.parent, name: nm });
+                                if (!links) return;
+                                var nm = String(ZRamReader.shortName(mem, +id) || "");
+                                var words = [];
+                                try {
+                                    words = (ZRamReader.parserWordsAny ? ZRamReader.parserWordsAny(mem, +id) : [])
+                                        .map(function (w) { return String(w || "").toLowerCase(); })
+                                        .filter(Boolean);
+                                } catch (eW) {}
+                                var head = "";
+                                try {
+                                    if (typeof Actionable !== "undefined" && Actionable.headNounOf)
+                                        head = String(Actionable.headNounOf({ name: nm, aliases: words }) || "").toLowerCase();
+                                } catch (eH) {}
+                                out.objs.push({
+                                    id: +id,
+                                    parent: links.parent,
+                                    name: nm,
+                                    nameL: nm.toLowerCase(),
+                                    words: words,
+                                    head: head
+                                });
                             });
                             out.rooms = {};
                             out.objs.forEach(function (o) { out.rooms[o.parent] = AttrCalibrator.inventoryRootIsRoom(mem, o.parent); });
@@ -1260,17 +1289,84 @@ var AttrCalibrator = {
                 var ctx = turn.__invRootCtx;
                 var snap = turn.analyzerSnapshots && turn.analyzerSnapshots["inventory-root"];
                 if (!ctx || !snap || !snap.objs) return;
-                var text = snap.lines.join("\n");
-                var listed = snap.objs.filter(function (o) {
-                    return new RegExp("(^|[^a-z])" + o.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "([^a-z]|$)").test(text);
+                // Q0 v5c: only carrying/holding/wearing item lines from THIS turn.
+                var itemLines = [];
+                var inList = false;
+                (snap.lines || []).forEach(function (ln) {
+                    if (/you are (carrying|holding|wearing)/i.test(ln)) { inList = true; return; }
+                    if (inList) {
+                        if (!ln.trim() || /^>/.test(ln.trim())) { inList = false; return; }
+                        itemLines.push(ln.trim());
+                    }
                 });
-                var listedIds = {}; listed.forEach(function (o) { listedIds[o.id] = true; });
+                if (!itemLines.length) return;
+
+                function vocabEq(a, b) {
+                    a = String(a || "").toLowerCase(); b = String(b || "").toLowerCase();
+                    if (!a || !b) return false;
+                    if (a === b) return true;
+                    try {
+                        if (typeof Actionable !== "undefined" && Actionable.vocabularyKey)
+                            return Actionable.vocabularyKey(a) === Actionable.vocabularyKey(b);
+                    } catch (eV) {}
+                    return false;
+                }
+                function tokensOf(line) {
+                    return String(line || "").toLowerCase().match(/[a-z][a-z'-]*/g) || [];
+                }
+                // Strip leading articles/counts for full phrase compare.
+                function phraseOf(line) {
+                    return String(line || "").toLowerCase()
+                        .replace(/^\s*(a|an|the|your|my|two|three|four|five|\d+)\s+/i, "")
+                        .replace(/[.\s]+$/g, "")
+                        .trim();
+                }
+                function ownsFullPhrase(o, phrase) {
+                    if (!phrase) return false;
+                    var ptoks = tokensOf(phrase);
+                    if (!ptoks.length) return false;
+                    // (A) exact complete structural shortName
+                    if (o.name && o.name.charAt(0) !== "(" && o.nameL === phrase) return true;
+                    // (B) every token binds parser word + proven head present in phrase
+                    if (!o.head) return false;
+                    var headOk = ptoks.some(function (t) { return vocabEq(t, o.head); });
+                    if (!headOk) return false;
+                    return ptoks.every(function (t) {
+                        return (o.words || []).some(function (w) { return vocabEq(t, w); });
+                    });
+                }
+                // Unique ownership of each full item phrase.
+                var phraseOwners = {};
+                itemLines.forEach(function (line) {
+                    var phrase = phraseOf(line);
+                    if (!phrase || phrase.length < 3) return;
+                    var owners = snap.objs.filter(function (o) { return ownsFullPhrase(o, phrase); });
+                    if (owners.length === 1) phraseOwners[phrase] = owners[0];
+                });
+                // One vote per uniquely owned object toward its parent.
+                // Parent may appear in test_attr set (CustomPlayer probed) without
+                // being a carried item — still allow votes to that parent.
+                var voted = {};
                 var counts = {};
-                listed.forEach(function (o) { if (o.parent && !listedIds[o.parent]) counts[o.parent] = (counts[o.parent] || 0) + 1; });
+                Object.keys(phraseOwners).forEach(function (ph) {
+                    var o = phraseOwners[ph];
+                    if (voted[o.id]) return;
+                    voted[o.id] = true;
+                    if (!o.parent) return;
+                    // Do not let a carried object vote for itself as root.
+                    if (phraseOwners && Object.keys(phraseOwners).some(function (p2) {
+                        return phraseOwners[p2] && phraseOwners[p2].id === o.parent;
+                    })) return;
+                    counts[o.parent] = (counts[o.parent] || 0) + 1;
+                });
                 var keys = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; });
                 if (!keys.length) return;
                 var top = keys[0], n = counts[top], next = keys[1] ? counts[keys[1]] : 0;
                 if (n < 2 || n <= next * 2 || snap.rooms[top]) return;
+                try {
+                    if (ZRamReader.isLocationObject && ZRamReader.isLocationObject(ctx.mem, +top)) return;
+                    if (ZRamReader.isPlausibleMapRoom && ZRamReader.isPlausibleMapRoom(ctx.mem, +top)) return;
+                } catch (eR) {}
                 AttrCalibrator.hydrate(ctx.mem);
                 AttrCalibrator.table.inventoryRootId = +top;
                 AttrCalibrator.persist(ctx.mem);
