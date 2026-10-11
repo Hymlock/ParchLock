@@ -14,8 +14,12 @@ const pkg = fs.readFileSync('work/investigations/operator-2026-10-10-wumpus-dark
   const log = []; let s0 = await st(); log.push(['start', s0]);
   check(!!s0.ml, 'measuredLocation fact resolves on the operator save', s0);
   for (let i = 0; i < 6; i++) { const ex = await p.evaluate(() => { const m = ZRamProvider.getMem(); const id = ZRamReader.measuredLocation(m).roomId; const seen = window.__seen = window.__seen || {}; seen[id] = 1; const xs = ZRamReader.lookAheadExits(m, id).filter(e => e.targetRoomId); return (xs.find(e => !seen[e.targetRoomId]) || xs[0] || {}).label; }); if (!ex) break; const c = await p.evaluate(l => Actionable.resolveExitCommand(l), ex); await cmd(c); log.push([c, await st()]); }
-  const r50 = await p.evaluate(() => { const m = ZRamProvider.getMem(); const q = [{ id: ZRamReader.measuredLocation(m).roomId, path: [] }], seen = new Set(); while (q.length) { const a = q.shift(); if (a.id === 50) return a.path; if (seen.has(a.id)) continue; seen.add(a.id); ZRamReader.lookAheadExits(m, a.id).forEach(e => { if (e.targetRoomId && !seen.has(e.targetRoomId)) q.push({ id: e.targetRoomId, path: a.path.concat(e.label) }); }); } return null; }); console.log('route to 50', JSON.stringify(r50));
-  for (const l of r50 || []) { await cmd(await p.evaluate(l => Actionable.resolveExitCommand(l), l)); log.push(['to50', await st()]); }
+  // Adaptive walk to room 50 (MAP-L1 root cause 2026-10-11): re-plan from the measured room every step, verify arrival, ban edges the game refuses (underwater/swim), never replay a precomputed route.
+  const banned50 = []; let r50 = 'adaptive';
+  for (let s = 0; s < 30; s++) { const plan = await p.evaluate(banned => { const m = ZRamProvider.getMem(); const start = ZRamReader.measuredLocation(m).roomId; if (start === 50) return { done: true }; const q = [{ id: start, first: null }], seen = new Set(); while (q.length) { const a = q.shift(); if (seen.has(a.id)) continue; seen.add(a.id); if (a.id === 50) return a.first; ZRamReader.lookAheadExits(m, a.id).forEach(e => { if (e.targetRoomId && !seen.has(e.targetRoomId) && !banned.includes(a.id + '/' + e.label)) q.push({ id: e.targetRoomId, first: a.first || { from: start, label: e.label, to: e.targetRoomId } }); }); } return null; }, banned50);
+    if (!plan) { r50 = 'no route'; break; } if (plan.done) break; await cmd(await p.evaluate(l => Actionable.resolveExitCommand(l), plan.label)); const st50 = await st(); log.push(['to50', st50]); if (!st50.ml || st50.ml.roomId !== plan.to) { banned50.push(plan.from + '/' + plan.label); console.log('REFUSED', JSON.stringify(plan), 'now', st50.ml && st50.ml.roomId, '|', st50.reply); } }
+  console.log('route to 50', r50, 'banned', JSON.stringify(banned50));
+
   await cmd('switch on bar'); log.push(['pre switch on', await st()]); await cmd('switch off bar'); const d1 = await st(); log.push(['switch off bar', d1]);
   const ex = await p.evaluate(() => { const m = ZRamProvider.getMem(); return (ZRamReader.lookAheadExits(m, ZRamReader.measuredLocation(m).roomId).find(e => e.targetRoomId) || {}).label; });
   if (ex) { await cmd(await p.evaluate(l => Actionable.resolveExitCommand(l), ex)); log.push(['dark move', await st()]); }
@@ -34,6 +38,7 @@ const pkg = fs.readFileSync('work/investigations/operator-2026-10-10-wumpus-dark
   check(inv.items.length > 0 && inv.items.every(x => x.m), 'every `i` listing line underlined', inv.items.filter(x => !x.m));
   check(errs.length === 0, 'no page errors', errs);
   console.log(pass + ' PASS / ' + fail + ' FAIL'); await b.close(); process.exit(fail ? 1 : 0); })().catch(e => { console.error(e); process.exit(2); });
+
 
 
 
