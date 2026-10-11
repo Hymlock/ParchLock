@@ -2654,7 +2654,10 @@ var ZRamReader = {
             if (!h) return null;
             var count = ZRamReader.objectCount(mem, h);
             var isInt = function (n) { return typeof n === "number" && Math.floor(n) === n; };
-            var slotOk = function (g) { return isInt(g) && g >= 0 && g < 240 && h.globals + 2 * g + 1 < mem.byteLength; };
+            // Globals live in dynamic memory: the header offsets must be sane
+            // and every slot must end below staticMem and inside the buffer.
+            if (!isInt(h.globals) || !isInt(h.staticMem) || h.globals < 64 || h.staticMem > mem.byteLength || h.globals >= h.staticMem) return null;
+            var slotOk = function (g) { return isInt(g) && g >= 0 && g < 240 && h.globals + 2 * g + 1 < h.staticMem && h.globals + 2 * g + 1 < mem.byteLength; };
             if (!slotOk(ml.realLocationGlobal) || !slotOk(ml.locationGlobal)) return null;
             var real = ZRamReader.u16(mem, h.globals + 2 * ml.realLocationGlobal);
             var loc = ZRamReader.u16(mem, h.globals + 2 * ml.locationGlobal);

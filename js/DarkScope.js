@@ -91,15 +91,19 @@ var DarkScope = {
         // location result travels with this payload from the snapshot (one
         // read, same tick). Only a measured room carries naming evidence.
         payload.darkEvidence = "unknown";
-        var pr = payload.probe;
+        var pr = payload.probe, measured = false;
         if (pr && pr.roomSource === "measured-fact" && typeof pr.measuredDark === "boolean"
             && String(pr.roomId) === String(payload.roomId)) {
             payload.darkEvidence = pr.measuredDark ? "dark" : "lit";
             DarkScope.dark = pr.measuredDark;
+            measured = true;
         }
         // Own HUD entry only; other scope entries are preserved.
         payload.hudMetrics = (payload.hudMetrics || []).filter(function (h) { return !(h && h.source === "dark-scope"); });
-        if (DarkScope.dark) payload.hudMetrics.push({ key: "scope", value: "dark (heuristic)", confidence: 0.5, source: "dark-scope" });
+        // A measured verdict is labelled as measured; the text heuristic keeps its label.
+        if (DarkScope.dark) payload.hudMetrics.push(measured
+            ? { key: "scope", value: "dark (measured)", confidence: 0.95, source: "measured-fact" }
+            : { key: "scope", value: "dark (heuristic)", confidence: 0.5, source: "dark-scope" });
         try { document.documentElement.classList.toggle("pl-dark-scope", !!DarkScope.dark); } catch (e) {}
     },
 

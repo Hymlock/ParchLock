@@ -25,6 +25,8 @@ const pkg = fs.readFileSync('work/investigations/operator-2026-10-10-wumpus-dark
     check(s.marks.includes('Exit 1') && s.marks.includes('Exit 2') && s.marks.includes('Exit 3'), 'Exit 1, 2 and 3 are underlined (' + s.marks.filter(m => /exit/i.test(m)).join(',') + ')');
     await send('switch off bar');
     s = await state(); check(s.ev === 'dark', 'measured darkness evidence after SWITCH OFF (' + s.ev + ')');
+    const hud = await p.evaluate(() => ((WorldModel.lastPayload || {}).hudMetrics || []).filter(h => h.key === 'scope').map(h => h.value + '/' + h.source));
+    check(hud.length === 1 && hud[0] === 'dark (measured)/measured-fact', 'HUD labels the measured verdict honestly (' + JSON.stringify(hud) + ')');
     await p.evaluate(() => { ParchLockMap.Clear(); }); await p.waitForTimeout(500);
     s = await state(); check(s.name === 'Darkness' && s.prov === 'dark', 'reset admits the section while dark, stamped (' + JSON.stringify([s.name, s.prov]) + ')');
     await send('switch on bar');
@@ -64,6 +66,8 @@ const pkg = fs.readFileSync('work/investigations/operator-2026-10-10-wumpus-dark
         const tbl = m.getUint16(0x0a) + 126, entry = id => tbl + (id - 1) * 14;
         const childAt = entry(50) + 10, orig = m.getUint16(childAt);
         m.setUint16(childAt, 9000); out.outOfTable = ZRamReader.measuredLocation(m); m.setUint16(childAt, orig);
+        // (1b) global slots beyond dynamic memory (staticMem below the slots).
+        const sm = m.getUint16(14), gb = m.getUint16(12); m.setUint16(14, gb + 20); out.beyondStatic = ZRamReader.measuredLocation(m); m.setUint16(14, sm);
         // (2) lit admit, later dark under the same name, later lit with another name: frozen.
         const real = WorldModel.lastPayload, id = 99999, mk = (name, ev, rid) => ({ roomId: rid || id, roomName: name, darkEvidence: ev, probe: { roomSource: 'player-containment', roomId: rid || id } });
         const p1 = mk('Original Room', 'lit'); WorldModel.lastPayload = p1; MapTopology.ensureRoom('Original Room', id, p1);
@@ -77,6 +81,7 @@ const pkg = fs.readFileSync('work/investigations/operator-2026-10-10-wumpus-dark
         ParchLockMap.Rooms = ParchLockMap.Rooms.filter(x => x !== r && x !== r2); WorldModel.lastPayload = real;
         return out;
     });
+    check(neg.beyondStatic === null, 'global slots beyond staticMem abstain (' + JSON.stringify(neg.beyondStatic) + ')');
     check(neg.outOfTable === null, 'real_location with a link outside the object table abstains (' + JSON.stringify(neg.outOfTable) + ')');
     check(neg.relit && neg.relit.name === 'Original Room' && !neg.relit.prov, 'lit-admitted room later dark then relit keeps its first name (' + JSON.stringify(neg.relit) + ')');
     check(neg.forged === null, 'forged (non-current) dark evidence never stamps (' + JSON.stringify(neg.forged) + ')');
