@@ -22,14 +22,12 @@ const open = async (b, g) => {
     let p = await open(b, 'Hitchhik.z5.js');
     const d0 = await p.evaluate(() => { WorldModel.tick(); return DarkScope.dark; });
     check(d0 === true, 'HHG: dark at the opening (pitch black bedroom)');
-    // Limit (codex #2694 contract): HHG's "Bedroom, in the bed" cannot be
-    // proven (the player's container 58 is unnamed and parentless, the chain
-    // never reaches room 150), so it does not clear while in bed.
+    // M11: unnamed bed 58 + "Bedroom, in the bed" + "(outside the bed)" clears.
     const d1 = await p.send('turn on light');
-    check(d1 === true, 'HHG: "Bedroom, in the bed" is unproven (no chain to the room) -> state kept (documented limit)');
+    check(d1 === false, 'HHG: TURN ON LIGHT prints "Bedroom, in the bed" + outside-the-bed -> clears dark');
     await p.send('get up');
     const d1b = await p.send('look');
-    check(d1b === false, 'HHG: after GET UP, LOOK prints the bare "Bedroom" heading -> clears dark');
+    check(d1b === false, 'HHG: after GET UP, LOOK bare Bedroom stays lit');
     const hud = await p.evaluate(() => (WorldModel.lastPayload.hudMetrics || []).filter(h => h.source === 'dark-scope').length);
     check(hud === 0, 'HHG: no dark-scope HUD entry once lit');
     const d2 = await p.send('inventory');

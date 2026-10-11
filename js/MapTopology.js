@@ -36,6 +36,62 @@ var MapTopology = {
         if (room.Name && !MapTopology.isInternalRoomName(room.Name)) return true;
         return false;
     },
+    // M09: does the status/heading announce this room name right now?
+    isRoomAnnounced: function (name) {
+        var n = String(name || "").toLowerCase().replace(/\s+/g, " ").trim();
+        if (!n || n.length < 2) return false;
+        try {
+            var el = (typeof document !== "undefined") && (
+                document.querySelector(".GridWindow.reverse") || document.querySelector(".GridWindow")
+            );
+            var heading = el ? String(el.innerText || el.textContent || "").toLowerCase().replace(/\s+/g, " ") : "";
+            if (heading.indexOf(n) >= 0) return true;
+            if (typeof StatusGridDecoder !== "undefined" && StatusGridDecoder.decode) {
+                var d = StatusGridDecoder.decode(document);
+                if (d && d.roomLabel && String(d.roomLabel).toLowerCase().indexOf(n) >= 0) return true;
+            }
+        } catch (eA) {}
+        return false;
+    },
+    // M09: map still empty of real-id rooms (first admission / after Reset).
+    mapIsEmptyOfRealRooms: function () {
+        try {
+            var rooms = (typeof ParchLockMap !== "undefined" && ParchLockMap.Rooms) || [];
+            return !rooms.some(function (r) {
+                return r && r.HasRealId && r.Name && !MapTopology.isInternalRoomName(r.Name);
+            });
+        } catch (eE) { return true; }
+    },
+    // M09 first-room gate: empty map admits current only with deterministic
+    // source (containment/measured-fact) AND announcement, or after travel.
+    // existing-resolver alone under epigraph is refused (Curses/Vespers).
+    // Ghost intro is containment under epigraph — announcement still required.
+    mayAdmitFirstCurrentRoom: function (payload) {
+        if (!payload || !payload.roomName) return false;
+        if (!MapTopology.mapIsEmptyOfRealRooms()) return true;
+        if (MapTopology.prevRoomId != null && payload.roomId != null
+            && String(MapTopology.prevRoomId) !== String(payload.roomId)) return true;
+        var src = payload.probe && payload.probe.roomSource;
+        var det = src === "player-containment" || src === "measured-fact";
+        if (!det) return false;
+        return MapTopology.isRoomAnnounced(payload.roomName);
+    },
+    // R4: stamp display-only SectionGroup from status "Room #N" when D224
+    // measured-fact is valid for this room (wump2ka multi-section).
+    stampSectionGroup: function (room, payload) {
+        if (!room || !payload || !payload.probe) return;
+        if (payload.probe.roomSource !== "measured-fact") return;
+        if (payload.roomId == null || String(payload.roomId) !== String(room.ObjectId)) return;
+        try {
+            var el = document.querySelector(".GridWindow.reverse") || document.querySelector(".GridWindow");
+            var t = el ? String(el.innerText || el.textContent || "") : "";
+            var m = /\bRoom\s*#\s*(\d+)\b/i.exec(t);
+            if (m) {
+                var n = parseInt(m[1], 10);
+                if (n > 0 && room.SectionGroup !== n) room.SectionGroup = n;
+            }
+        } catch (eS) {}
+    },
     normalizeLabel: function (label) {
         var k = String(label || "").toLowerCase().trim();
         var aliases = { n: "north", s: "south", e: "east", w: "west", u: "up", d: "down", ne: "northeast", nw: "northwest", se: "southeast", sw: "southwest" };
@@ -517,6 +573,12 @@ var MapTopology = {
             if (MapTopology.isInternalRoomName(payload.roomName)) {
                 return (typeof ParchLockMap !== "undefined" && ParchLockMap.CurrentRoom) || "";
             }
+            // M09: do not mint the first current room under epigraph/boot
+            // when the map is still empty (Curses Tiny Balcony, Ghost 179,
+            // Vespers menu obj34).
+            if (!MapTopology.mayAdmitFirstCurrentRoom(payload)) {
+                return (typeof ParchLockMap !== "undefined" && ParchLockMap.CurrentRoom) || "";
+            }
             // Defense: never promote an animate/meta ObjectId into the room
             // graph (Anchorhead "Michael"; Inform thedark / Library).
             try {
@@ -543,6 +605,7 @@ var MapTopology = {
                     room.Name = payload.roomName;
                     room.VisitedName = true;
                 }
+                MapTopology.stampSectionGroup(room, payload);
             }
             if (room && ParchLockMap.SetCurrentRoom) ParchLockMap.SetCurrentRoom(room);
             if (room && room.Name && !MapTopology.isInternalRoomName(room.Name)) return room.Name;
@@ -562,6 +625,9 @@ var MapTopology = {
                 : "";
         }
         if (!roomName) return;
+        // M09: empty map must not seed exits from an unannounced boot room.
+        if (!MapTopology.mayAdmitFirstCurrentRoom(payload)
+            && MapTopology.mapIsEmptyOfRealRooms()) return;
         // Same animate/clothing/meta guard as resolveCurrentRoomName.
         try {
             if (payload.roomId != null && typeof ZRamReader !== "undefined"
@@ -576,6 +642,7 @@ var MapTopology = {
         } catch (ePay) {}
         if (MapTopology.isInternalRoomName(roomName)) return;
         var room = MapTopology.ensureRoom(roomName, payload.roomId, payload);
+        if (room) MapTopology.stampSectionGroup(room, payload);
         // D74: use the room's own FROZEN identity name (D62) from here on,
         // not the raw `payload.roomName` string just read this tick. Some
         // games (confirmed live: wump2ka.z5.js) re-randomize their printed

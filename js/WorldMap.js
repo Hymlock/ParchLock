@@ -144,6 +144,119 @@ var WorldMap = {
         return { rooms: rooms, keyOf: keyOf, byKey: byKey, nodes: nodes, edges: edges, previous: previous };
     },
 
+    // R4: multi-section rooms (D224 SectionGroup) place internal cells with
+    // unitLabelled, then place each group as one world node.
+    layoutWithSections: function (g) {
+        var groups = {}, ungrouped = [];
+        g.rooms.forEach(function (r) {
+            var sg = r.SectionGroup;
+            if (sg != null && sg !== "" && !isNaN(+sg)) {
+                var k = "sg:" + String(sg);
+                (groups[k] = groups[k] || []).push(r);
+            } else ungrouped.push(r);
+        });
+        Object.keys(groups).forEach(function (k) {
+            if (groups[k].length < 2) {
+                ungrouped.push(groups[k][0]);
+                delete groups[k];
+            }
+        });
+        if (!Object.keys(groups).length) {
+            return WorldMapLayout.place(g.nodes, g.edges, g.previous);
+        }
+        var sectionCells = new Map();
+        Object.keys(groups).sort().forEach(function (gk) {
+            var members = groups[gk];
+            var snodes = members.map(function (r, i) {
+                return { key: g.keyOf.get(r), anchor: i === 0 };
+            });
+            var sedges = g.edges.filter(function (e) {
+                return snodes.some(function (n) { return n.key === e.from; })
+                    && snodes.some(function (n) { return n.key === e.to; });
+            });
+            var sprev = new Map();
+            members.forEach(function (r) {
+                if (r.SectionX != null && r.SectionY != null) {
+                    var sk = g.keyOf.get(r);
+                    if (WorldMapLayout.validCell({ x: r.SectionX, y: r.SectionY, level: r.SectionLevel || 0 })) {
+                        sprev.set(sk, { x: r.SectionX, y: r.SectionY, level: r.SectionLevel || 0 });
+                    }
+                }
+            });
+            var sout = WorldMapLayout.place(snodes, sedges, sprev, { unitLabelled: true });
+            members.forEach(function (r) {
+                var sk = g.keyOf.get(r), c = sout.cells.get(sk);
+                if (!c) return;
+                r.SectionX = c.x; r.SectionY = c.y; r.SectionLevel = c.level;
+                sectionCells.set(sk, c);
+            });
+        });
+        // Meta graph: ungrouped rooms + one node per multi section group.
+        var metaNodes = [], metaPrev = new Map(), metaKeyOf = new Map(), groupMeta = {};
+        ungrouped.forEach(function (r, i) {
+            var k = g.keyOf.get(r);
+            metaNodes.push(i === 0 && !Object.keys(groups).length ? { key: k, anchor: true } : { key: k });
+            metaKeyOf.set(k, k);
+            if (g.previous.has(k)) metaPrev.set(k, g.previous.get(k));
+        });
+        Object.keys(groups).sort().forEach(function (gk, gi) {
+            metaNodes.push({ key: gk, anchor: gi === 0 && !ungrouped.length });
+            groupMeta[gk] = groups[gk];
+            groups[gk].forEach(function (r) { metaKeyOf.set(g.keyOf.get(r), gk); });
+            // Prior group anchor from first member world cell if present.
+            var first = groups[gk][0], fk = g.keyOf.get(first);
+            if (WorldMap.validCell(first)) metaPrev.set(gk, { x: first.WorldX, y: first.WorldY, level: first.WorldLevel });
+            else if (g.previous.has(fk)) metaPrev.set(gk, g.previous.get(fk));
+        });
+        if (!metaNodes.length) return WorldMapLayout.place(g.nodes, g.edges, g.previous);
+        if (!metaNodes.some(function (n) { return n.anchor; })) metaNodes[0].anchor = true;
+        var metaEdges = [];
+        g.edges.forEach(function (e) {
+            var mf = metaKeyOf.get(e.from), mt = metaKeyOf.get(e.to);
+            if (!mf || !mt || mf === mt) return;
+            metaEdges.push({ from: mf, to: mt, dir: e.dir, evidence: e.evidence, command: e.command });
+        });
+        var mout = WorldMapLayout.place(metaNodes, metaEdges, metaPrev);
+        var cells = new Map(), edgeKinds = [];
+        // Expand group meta cells into section world cells.
+        Object.keys(groupMeta).forEach(function (gk) {
+            var origin = mout.cells.get(gk);
+            if (!origin) return;
+            var members = groupMeta[gk];
+            var minX = Infinity, minY = Infinity;
+            members.forEach(function (r) {
+                var sc = sectionCells.get(g.keyOf.get(r));
+                if (!sc) return;
+                minX = Math.min(minX, sc.x); minY = Math.min(minY, sc.y);
+            });
+            if (!isFinite(minX)) minX = 0;
+            if (!isFinite(minY)) minY = 0;
+            members.forEach(function (r) {
+                var sk = g.keyOf.get(r), sc = sectionCells.get(sk);
+                if (!sc) return;
+                cells.set(sk, {
+                    x: origin.x + (sc.x - minX),
+                    y: origin.y + (sc.y - minY),
+                    level: origin.level + (sc.level || 0)
+                });
+            });
+        });
+        ungrouped.forEach(function (r) {
+            var k = g.keyOf.get(r), c = mout.cells.get(k);
+            if (c) cells.set(k, c);
+        });
+        // Edge kinds for original edges from geometry.
+        edgeKinds = g.edges.map(function (e) {
+            var a = cells.get(e.from), b = cells.get(e.to);
+            if (!a || !b) return "hidden";
+            var v = WorldMapLayout.vector(e.dir);
+            if (v.kind === "labelled") return "labelled";
+            return b.x - a.x === v.delta[0] && b.y - a.y === v.delta[1] && b.level - a.level === v.delta[2]
+                ? v.kind : "bent";
+        });
+        return { cells: cells, edgeKinds: edgeKinds };
+    },
+
     layoutSignature: function (g) {
         return JSON.stringify([g.nodes.map(function (n) { return n.key; }),
             g.edges.map(function (e) { return [e.from, e.to, e.dir, e.evidence, e.command]; }),
@@ -171,7 +284,7 @@ var WorldMap = {
                 WorldMap._cells = new Map(); WorldMap._edgeKinds = [];
             } else {
                 try {
-                    var out = WorldMapLayout.place(g.nodes, g.edges, g.previous);
+                    var out = WorldMap.layoutWithSections(g);
                     WorldMap._cells = out.cells; WorldMap._edgeKinds = out.edgeKinds || [];
                     WorldMap.storeCells(g);
                 } catch (eLayout) {
@@ -197,7 +310,7 @@ var WorldMap = {
                 r.WorldX = c.x; r.WorldY = c.y; r.WorldLevel = c.level; changed = true;
             }
         });
-        // The cells ride on the existing per-story map save.
+        // The cells ride on the existing per-story map save (incl. Section*).
         if (changed) { try { ParchLockMap.Save(); } catch (e) {} }
     },
 
@@ -343,13 +456,45 @@ var WorldMap = {
                 svg.appendChild(t);
             }
         });
+        // R4: solid outer hull per SectionGroup (distinct from dotted hinted edges).
+        var byGroup = {};
+        onLevel.forEach(function (r) {
+            if (r.SectionGroup == null || r.SectionGroup === "") return;
+            var gk = String(r.SectionGroup);
+            (byGroup[gk] = byGroup[gk] || []).push(r);
+        });
+        Object.keys(byGroup).forEach(function (gk) {
+            var members = byGroup[gk];
+            if (members.length < 2) return;
+            var minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+            members.forEach(function (r) {
+                var p = WorldMap.pixel(cells.get(g.keyOf.get(r)), bounds);
+                minX = Math.min(minX, p.x); minY = Math.min(minY, p.y);
+                maxX = Math.max(maxX, p.x + WorldMap.NODE_W); maxY = Math.max(maxY, p.y + WorldMap.NODE_H);
+            });
+            var pad = 8;
+            var hull = document.createElement("div");
+            hull.className = "world-section-hull";
+            hull.style.left = (minX - pad) + "px";
+            hull.style.top = (minY - pad - 14) + "px";
+            hull.style.width = (maxX - minX + pad * 2) + "px";
+            hull.style.height = (maxY - minY + pad * 2 + 14) + "px";
+            hull.setAttribute("data-section-group", gk);
+            var cap = document.createElement("span");
+            cap.className = "world-section-caption";
+            cap.textContent = "Room #" + gk;
+            hull.appendChild(cap);
+            nodesEl.appendChild(hull);
+        });
         onLevel.forEach(function (r) {
             var key = g.keyOf.get(r), c = cells.get(key), p = WorldMap.pixel(c, bounds);
             var b = document.createElement("button");
             b.type = "button";
-            b.className = "world-room" + (WorldMap.isVisited(r, current) ? "" : " unvisited") + (r === current ? " current" : "") + (key === WorldMap._selected ? " selected" : "");
+            b.className = "world-room" + (WorldMap.isVisited(r, current) ? "" : " unvisited") + (r === current ? " current" : "") + (key === WorldMap._selected ? " selected" : "")
+                + (r.SectionGroup != null ? " sectioned" : "");
             b.style.left = p.x + "px"; b.style.top = p.y + "px";
             b.setAttribute("data-key", key);
+            if (r.SectionGroup != null) b.setAttribute("data-section-group", String(r.SectionGroup));
             var name = document.createElement("span"); name.className = "world-room-name"; name.textContent = r.Name; b.appendChild(name);
             var ups = g.edges.filter(function (e) { var o = cells.get(e.to); return e.from === key && o && o.level !== level; });
             if (ups.length) { var v = document.createElement("span"); v.className = "world-room-vertical"; v.textContent = ups.some(function (e) { return cells.get(e.to).level > level; }) ? "↑" : "↓"; b.appendChild(v); }

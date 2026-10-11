@@ -11,9 +11,8 @@ var DarkScope = {
     //   - a line whose FULL text is the current room's name, or that name plus
     //     a positional suffix ", in|on the X" / " (in|on the X)" where X is an
     //     object on the player's containment chain strictly below the room,
-    //     clears dark (only when X is proven on the chain; HHG's "Bedroom,
-    //     in the bed" is NOT provable: its container 58 is unnamed and
-    //     parentless, so HHG clears on the bare "Bedroom" heading instead);
+    //     clears dark when X is on the chain, or M11: unnamed depth-1 parent
+    //     with the same reply printing "outside the X" (HHG bed);
     //   - anything else (help/inventory headings, prose starting with the room
     //     name, another room's heading, no structural room) leaves it as is.
     // A defensive guard keeps dark when payload.darkness is true from another
@@ -46,11 +45,15 @@ var DarkScope = {
                 out.push({ id: id, names: names.map(function (n) { return n.toLowerCase().replace(/^(the|a|an)\s+/, "").trim(); }).filter(Boolean), words: words });
                 id = ZRamReader.objectLinks(mem, id).parent;
             }
-            return []; // chain never reached the room: no proof
+            // M11 HHG: bed/container may be parentless (parent 0) so the chain
+            // never reaches the room. Keep ONLY the direct parent (depth 1) so
+            // ", in the bed" can still clear dark when X matches that object.
+            if (out.length) return [out[0]];
+            return [];
         } catch (e) { return []; }
     },
 
-    isHeadingLine: (line, roomName, chain, inform) => {
+    isHeadingLine: (line, roomName, chain, inform, replyBlob) => {
         var lt = String(line || "").toLowerCase(), name = String(roomName || "").toLowerCase().trim();
         if (name.length < 3 || lt.indexOf(name) !== 0) return false;
         var rest = lt.slice(name.length);
@@ -60,12 +63,22 @@ var DarkScope = {
         if (m[4] != null && !inform) return false; // parenthesised form is Inform's
         var want = String(m[2] || m[4] || "").trim();
         var wantWords = want.split(/\s+/);
-        return chain.some(function (level) {
+        if (chain.some(function (level) {
             if (level.names.indexOf(want) >= 0) return true;
             return level.words.length && wantWords.every(function (w) {
                 return level.words.some(function (x) { return x === w || (x.length >= 6 && w.indexOf(x) === 0); });
             });
-        });
+        })) return true;
+        // M11 HHG: unnamed direct parent (bed 58) has no shortName/words, but
+        // the same reply prints "(outside the bed)" for free objects. Accept
+        // when chain is depth-1 only, empty names/words, and the reply itself
+        // names that container as outside-the-X (story-printed, not a list).
+        if (chain.length === 1 && !(chain[0].names && chain[0].names.length)
+            && !(chain[0].words && chain[0].words.length) && want) {
+            var blob = String(replyBlob || "").toLowerCase();
+            if (blob.indexOf("outside the " + want) >= 0 || blob.indexOf("outside " + want) >= 0) return true;
+        }
+        return false;
     },
 
     noteFromPayload: (payload) => {
@@ -84,7 +97,9 @@ var DarkScope = {
             var inform = false;
             try { inform = !!(typeof ZRamReader !== "undefined" && ZRamReader.isInformCompiled(ZRamProvider.getMem())); } catch (eI) {}
             if (darkCue) DarkScope.dark = true;
-            else if (roomName && lines.some(function (l) { return DarkScope.isHeadingLine(l, roomName, chain, inform); })) DarkScope.dark = false;
+            else if (roomName && lines.some(function (l) {
+                return DarkScope.isHeadingLine(l, roomName, chain, inform, lines.join("\n"));
+            })) DarkScope.dark = false;
         }
         if (payload.darkness === true) DarkScope.dark = true;
         // Wump2ka identity R4 (Codex #3103/#3131): the validated measured

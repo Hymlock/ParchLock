@@ -662,6 +662,20 @@ var ParchLockMap = {
             room.find(".back-to-room, .go-to-room").show();
             room.addClass("browsed-controls");
         }
+        // R4 local map: section group caption on current/sectioned rooms only.
+        room.find(".section-group-cap").remove();
+        if (record.SectionGroup != null && record.SectionGroup !== "") {
+            var sibs = (ParchLockMap.Rooms || []).filter(function (r) {
+                return r && r.SectionGroup != null && String(r.SectionGroup) === String(record.SectionGroup);
+            });
+            if (sibs.length >= 2) {
+                room.addClass("sectioned");
+                $("<div>").addClass("section-group-cap").text("Room #" + record.SectionGroup
+                    + " · " + sibs.length + " sections").prependTo(room);
+            }
+        } else {
+            room.removeClass("sectioned");
+        }
 
         // D112: the room box never renders note TEXT inline (that was the
         // reported bug) -- only the icon, whenever there is at least one
