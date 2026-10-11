@@ -29,5 +29,8 @@ r = decodeAt(mem([[10, [0xb2, 0x80, 0x00]]]), 3, 10); t('terminated inline PRINT
 m = mem([[20, [0x00, 0xa0, 0x10, 0x44, 0x4b, 0x10, 0x05, 0xb0]]]); out = []; disasm(m, 3, 20, 0, new Set(), out); t('branch into operand bytes marked malformed', !!out.malformed && out.malformed.some(x => /inside instruction/.test(x)), out);
 // guard exhaustion: endless distinct nops never terminate within guard
 m = new Uint8Array(20000); m[100] = 0; for (let i = 101; i < 19990; i++) m[i] = 0xb4; out = []; disasm(m, 3, 100, 0, new Set(), out); t('guard exhaustion marked malformed', !!out.malformed && out.malformed.some(x => /guard/.test(x)), out.malformed);
+r = decodeAt(Uint8Array.from([202, 127, 1, 192]), 3, 0); t('VAR-form test_attr with one operand fails closed (Codex 3318)', !!r.bad, r);
+r = decodeAt(Uint8Array.from([193, 255, 192]), 3, 0); t('VAR-form je with zero operands fails closed (Codex 3318)', !!r.bad, r);
+r = decodeAt(Uint8Array.from([193, 0x57, 1, 2, 3, 0xc0]), 3, 0); t('VAR-form je with three operands accepted', !r.bad, r);
 console.log(`${pass} PASS / ${fail} FAIL`); process.exit(fail ? 1 : 0);
 

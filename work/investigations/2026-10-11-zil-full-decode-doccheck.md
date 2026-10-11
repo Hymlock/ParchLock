@@ -133,3 +133,11 @@ Proof per (title, item category): a live seeded run on a fresh game showing the 
 Regression controls: seeded all-games gate (0 unintended diffs); the three-type set; operator-regressions; pellets-inventory-live; notes-pellets-descriptors-live; d31-nested-inventory; d214-yourself-verbs; command-consistency-regression; wump-dark-rename; games=309.
 
 Per-(title, category) rules entries are added to 2026-10-11-zil-matrix.md before each title's sweep starts. Codex GO is required before implementing.
+
+### R5.1 corrections (Codex #3316: research GO only, implementation per proposal)
+- namePhrases returns single tokens as well as full phrases. Token membership never proves that a retained mark shows a current display name; any rule that relies on it may only become more conservative.
+- Dictionary-key matching is for comparison only. Truncated vocabulary ("mailbo", "nutritiou", "undershir") never becomes a display label; labels are always printed text.
+- Yourself / inventory root follows proven character/inventory-root containment, never the existence of wearable items.
+- Per-object takeable overrides (objectOverrideFor) and the container vs openable distinction are preserved.
+- Accepted Z1-R1 exit hints stay authoritative within their qualified scope; earlier "no static exits" wording is superseded where it conflicts.
+- Implementation GO is per proposal (exact patch + per-item rules entry + gate evidence), never blanket.

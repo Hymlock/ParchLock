@@ -1,0 +1,34 @@
+diff --git a/tmp/Actionable.HEAD.js b/tmp/Actionable.spear-cand.js
+index f4bb71f..6a99910 100644
+--- a/tmp/Actionable.HEAD.js
++++ b/tmp/Actionable.spear-cand.js
+@@ -2039,7 +2039,28 @@ var Actionable = {
+                         };
+                         var shortP = a.length <= b.length ? a : b, longP = shortP === a ? b : a;
+                         var sameWords = shortP.length > 0 && wordEq(a[a.length - 1], b[b.length - 1]) && shortP.every(function (w) { return longP.some(function (v) { return wordEq(w, v); }); });
+-                        if (!sameWords) return true;
++                        // Renamed object (wump2ka formation -> stone spear, a40f7ba): the
++                        // retained mark shows only an alias, while the new output prints the
++                        // object's own current name or head noun. The current name wins;
++                        // a retained mark that still shows a current name phrase keeps U1.
++                        var renamed = false;
++                        if (!sameWords && t.preferred && t.fromName) {
++                            var cur = null; (idPool || []).some(function (o) { if (String(o.id) === String(t.objectId)) { cur = o; return true; } return false; });
++                            var curPhrases = cur ? Actionable.namePhrases(cur.name).map(function (x) { return String(x).toLowerCase(); }) : [];
++                            // Codex 3319: only a retained mark resolved to THIS object alone
++                            // (an alias shared with another object keeps that object's trigger),
++                            // and only when the preferred phrase has a free, unmarked occurrence
++                            // in the active lines, so the old trigger is never retired for nothing.
++                            var unique = ids.length > 0 && ids.every(function (id) { return String(id) === String(t.objectId); });
++                            var esc = lowPhrase.replace(/[.*+?^${}()|[\]\\]/g, "\\                            renamed = curPhrases.length > 0 && curPhrases.indexOf(String(mark.textContent).toLowerCase().trim()) < 0;"), re = new RegExp("(^|[^a-z0-9])" + esc + "([^a-z0-9]|$)");
++                            var free = activeLines.some(function (l) {
++                                var w = document.createTreeWalker(l, NodeFilter.SHOW_TEXT), n;
++                                while ((n = w.nextNode())) { if (n.parentElement && n.parentElement.closest('.pl-act, .Input, .Style_input')) continue; if (re.test(String(n.nodeValue).toLowerCase())) return true; }
++                                return false;
++                            });
++                            renamed = unique && free && curPhrases.length > 0 && curPhrases.indexOf(String(mark.textContent).toLowerCase().trim()) < 0;
++                        }
++                        if (!sameWords && !renamed) return true;
+                         ids.forEach(function (id) { delete markedIds[String(id)]; });
+                         var parent = mark.parentNode; mark.replaceWith(document.createTextNode(mark.textContent)); if (parent) parent.normalize();
+                         released = true;

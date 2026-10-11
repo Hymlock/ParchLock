@@ -39,6 +39,8 @@ function decodeAt(mem, v, pc) {
     if (kind === 'VAR' && (op === 0x0C || op === 0x1A)) { const t2 = mem[pc++]; for (let i = 6; i >= 0; i -= 2) types.push((t2 >> i) & 3); } }
   if (!validOp(kind, op, v)) return { at, bad: 'reserved/unsupported ' + kind + ' op ' + op + ' for v' + v };
   const ops = []; for (const t of types) { if (t === 3) break; if (t === 0) { ops.push({ t, v: u16(mem, pc) }); pc += 2; } else ops.push({ t, v: mem[pc++] }); }
+  if (kind === '2OP' && (ops.length < 2 || (op !== 1 && ops.length > 2) || ops.length > 4)) return { at, bad: '2OP arity ' + ops.length };
+  if (kind === 'VAR' && [0, 0x0c, 0x19, 0x1a].includes(op) && ops.length < 1) return { at, bad: 'call without routine' };
   let store = false, branch = false, text = false, term = false, call = null, jump = null;
   if (kind === '2OP') { if ([8, 9, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24].includes(op) || (op === 25 && v >= 4)) store = true; if ([1, 2, 3, 4, 5, 6, 7, 10].includes(op)) branch = true; if (op === 25 || (op === 26 && v >= 5)) call = ops[0]; }
   else if (kind === '1OP') { if ([1, 2, 3, 4, 8, 14].includes(op) || (op === 15 && v <= 4)) store = true; if ([0, 1, 2].includes(op)) branch = true; if (op === 11) term = true; if (op === 12) { jump = ops[0]; term = true; } if (op === 8 || (op === 15 && v >= 5)) call = ops[0]; }
