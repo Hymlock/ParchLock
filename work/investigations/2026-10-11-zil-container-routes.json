@@ -1,0 +1,183 @@
+{
+  "schema": 1,
+  "status": "Source-grounded route proposals, not live certification; Grok runs the original-scene gate",
+  "rules": [
+    "Fresh original game per route",
+    "No insert_obj, forced flags or RAM relocation",
+    "Capture command, dispatch, PRSO, RAM bit and child visibility at each boundary",
+    "Stop on unexpected room, death, disambiguation or intervening authored scene"
+  ],
+  "routes": {
+    "Enchanter.z3.js": {
+      "container": "oven",
+      "originalChildren": [
+        "loaf of bread"
+      ],
+      "setup": [
+        "ne",
+        "in"
+      ],
+      "expectedRoom": "Inside Shack",
+      "probe": [
+        "look in oven",
+        "open oven",
+        "look in oven",
+        "close oven",
+        "look in oven",
+        "open oven",
+        "look in oven"
+      ],
+      "source": "https://github.com/historicalsource/enchanter/blob/472c3b938010e0beb54189284e35ab9ac1bba25e/outside.zil#L252",
+      "sourceRoute": "Same pinned file: Fork NE to Outside of Shack, IN to Inside Shack. Oven lacks OPENBIT; bread is originally IN SHACK-OVEN.",
+      "supplementaryRoute": "https://www.abandonwaredos.com/docawd.php?idg=1187&sf=Enchanter_solution.txt&sg=Enchanter&st=walkthrough",
+      "grokNote": "northeast is not in Enchanter vocabulary (native: I don't know the word); ne used"
+    },
+    "Infidel.z3.js": {
+      "container": "knapsack",
+      "originalChildren": [
+        "rope",
+        "canteen"
+      ],
+      "setup": [
+        "get out of cot",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "expectedRoom": "Work Tent",
+      "probe": [
+        "look in knapsack",
+        "open knapsack",
+        "look in knapsack",
+        "close knapsack",
+        "look in knapsack",
+        "open knapsack",
+        "look in knapsack"
+      ],
+      "source": "https://github.com/historicalsource/infidel/blob/dca8235af85e3d69bd49119cade8fff5ac8eb271/camp.zil#L1929",
+      "sourceRoute": "Pinned camp.zil: TENT south P2, south FIRE, south P7, south TENT2. Knapsack starts in TENT2 without OPENBIT; rope and canteen start inside it.",
+      "supplementaryRoute": "https://gamefaqs.gamespot.com/pc/564456-infidel/faqs/1608"
+    },
+    "Borderzo.z5.js": {
+      "scenario": 1,
+      "boot": "Select chapter 1 at the actual chapter prompt; advance intro to a real line prompt. Do not type chapter selection into gameplay.",
+      "container": "briefcase",
+      "originalChildren": [
+        "toilet kit",
+        "passport",
+        "train ticket",
+        "tourist guide and phrase book"
+      ],
+      "setup": [],
+      "expectedRoom": "Your Compartment (verify native initial scene)",
+      "probe": [
+        "look in briefcase",
+        "open briefcase",
+        "look in briefcase",
+        "close briefcase",
+        "look in briefcase",
+        "open briefcase",
+        "look in briefcase"
+      ],
+      "nestedProbe": [
+        "look in toilet kit",
+        "open toilet kit",
+        "look in toilet kit",
+        "close toilet kit",
+        "look in toilet kit",
+        "open toilet kit",
+        "look in toilet kit"
+      ],
+      "nestedChildren": [
+        "toothbrush",
+        "pair of tweezers"
+      ],
+      "source": "https://github.com/historicalsource/borderzone/blob/5c80126798adc8c683ff7e03468b284cacb7f5ea/bystander.zil#L986",
+      "sourceRoute": "Briefcase starts at COMP-5 closed; toilet kit is originally inside briefcase, also closed. Toothbrush/tweezers are inside toilet kit. Run promptly: this title has real-time authored events.",
+      "supplementaryRoute": "https://gamefaqs.gamespot.com/pc/564477-border-zone/faqs/78616"
+    },
+    "Zork2-TheWizardofFrobozz.z3.js": {
+      "container": "chest",
+      "originalChildren": [
+        "golden dragon statuette"
+      ],
+      "setup": [
+        "take lamp",
+        "take sword",
+        "turn on lamp",
+        "south",
+        "south",
+        "south",
+        "southwest",
+        "south",
+        "southwest",
+        "southwest"
+      ],
+      "setupExpectedRoom": "Carousel Room",
+      "carousel": {
+        "attempt": [
+          "northwest"
+        ],
+        "untilRoom": "Cool Room",
+        "maxAttempts": 20,
+        "returnCommandsByActualRoom": {
+          "Marble Hall": [
+            "south"
+          ],
+          "Path Near Stream": [
+            "southwest"
+          ],
+          "Topiary": [
+            "west"
+          ],
+          "Riddle Room": [
+            "northwest"
+          ],
+          "Menhir Room": [
+            "north"
+          ],
+          "Cobwebby Corridor": [
+            "northeast"
+          ],
+          "Room 8": [
+            "east"
+          ]
+        },
+        "rule": "Carousel randomizes direction; branch only on native room identity. Stop rather than fabricate a fixed successful path. Wizard spells can invalidate a run."
+      },
+      "afterCoolRoom": [
+        "north",
+        "north",
+        "attack dragon with sword",
+        "south",
+        "attack dragon with sword",
+        "south",
+        "attack dragon with sword",
+        "west"
+      ],
+      "requiredCheckpoint": "Ice Room; native dragon enters and melts glacier. If that does not occur, stop.",
+      "afterIceMelts": [
+        "east",
+        "north",
+        "north",
+        "north"
+      ],
+      "expectedRoom": "Dragon's Lair",
+      "probe": [
+        "look in chest",
+        "open chest",
+        "open chest",
+        "look in chest",
+        "close chest",
+        "look in chest",
+        "open chest",
+        "look in chest"
+      ],
+      "source": "https://github.com/historicalsource/zork2/blob/3da9661098809788a99cef00f00c865c6c204f96/2dungeon.zil#L464",
+      "sourceActions": "https://github.com/historicalsource/zork2/blob/3da9661098809788a99cef00f00c865c6c204f96/2actions.zil",
+      "sourceRoute": "Chest/statuette original containment is explicit. DRAGON-LAIR requires ICE-MELTED. CAROUSEL-ROOM-FCN randomizes direction; DRAGON-FCN/I-DRAGON support lure to glacier. CHEST-FCN can refuse first OPEN then clears its action, so second OPEN is deliberate.",
+      "supplementaryRoute": "https://www.justadventure.com/walkthrough/zork-2/"
+    }
+  }
+}

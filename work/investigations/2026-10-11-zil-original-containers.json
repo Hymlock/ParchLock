@@ -1,0 +1,456 @@
+{
+ "Enchanter.z3.js": {
+  "container": "oven",
+  "openBit": 12,
+  "steps": [
+   {
+    "setup": "ne",
+    "text": "outside of shack you are south of an old wooden shack, apparently deserted. the trail extends from northeast to southwest here, circling the lonely mountain, which lies to the southeast. the sun is rising over the lands to the east. > ",
+    "marks": [
+     "northeast",
+     "southwest",
+     "east"
+    ],
+    "contId": 85,
+    "openBit": false,
+    "room": "Outside of Shack"
+   },
+   {
+    "setup": "in",
+    "text": "inside shack the inside of the shack is a shambles. an overturned table and bench, and a few broken windows remain. an oven is the only fixture that's even recognizable. the door is to the south. the sun is rising over the lands to the east. the top of a battered lantern is partially visible behind the overturned table. an empty jug lies in a corner of the room, against the overturned table. > ",
+    "marks": [
+     "oven",
+     "south",
+     "battered lantern",
+     "jug"
+    ],
+    "contId": 85,
+    "openBit": false,
+    "room": "Inside Shack"
+   },
+   {
+    "text": "the oven is closed. > ",
+    "marks": [
+     "oven"
+    ],
+    "contId": 85,
+    "openBit": false,
+    "cmd": "look in oven",
+    "childText": [],
+    "childMarked": []
+   },
+   {
+    "text": "opening the oven reveals a loaf of bread. > ",
+    "marks": [
+     "oven",
+     "loaf of bread"
+    ],
+    "contId": 85,
+    "openBit": true,
+    "cmd": "open oven",
+    "childText": [
+     "bread"
+    ],
+    "childMarked": [
+     "bread"
+    ]
+   },
+   {
+    "text": "the oven contains: a loaf of bread > ",
+    "marks": [
+     "oven",
+     "loaf of bread"
+    ],
+    "contId": 85,
+    "openBit": true,
+    "cmd": "look in oven",
+    "childText": [
+     "bread"
+    ],
+    "childMarked": [
+     "bread"
+    ]
+   },
+   {
+    "text": "closed. > ",
+    "marks": [],
+    "contId": 85,
+    "openBit": false,
+    "cmd": "close oven",
+    "childText": [],
+    "childMarked": []
+   },
+   {
+    "text": "the oven is closed. > ",
+    "marks": [
+     "oven"
+    ],
+    "contId": 85,
+    "openBit": false,
+    "cmd": "look in oven",
+    "childText": [],
+    "childMarked": []
+   },
+   {
+    "text": "opening the oven reveals a loaf of bread. > ",
+    "marks": [
+     "oven",
+     "loaf of bread"
+    ],
+    "contId": 85,
+    "openBit": true,
+    "cmd": "open oven",
+    "childText": [
+     "bread"
+    ],
+    "childMarked": [
+     "bread"
+    ]
+   },
+   {
+    "text": "the oven contains: a loaf of bread > ",
+    "marks": [
+     "oven",
+     "loaf of bread"
+    ],
+    "contId": 85,
+    "openBit": true,
+    "cmd": "look in oven",
+    "childText": [
+     "bread"
+    ],
+    "childMarked": [
+     "bread"
+    ]
+   }
+  ],
+  "room": "Inside Shack",
+  "ok": true
+ },
+ "Infidel.z3.js": {
+  "container": "knapsack",
+  "openBit": 25,
+  "steps": [
+   {
+    "setup": "get out of cot",
+    "text": "you push yourself up and manage to get out of the cot. your legs are a little wobbly, though, and your head swims. you hear a plane flying high overhead, outside the tent. > ",
+    "marks": [
+     "out"
+    ],
+    "contId": 31,
+    "openBit": false,
+    "room": "Your Tent"
+   },
+   {
+    "setup": "south",
+    "text": "outside your tent you are on an east/west path on the north side of the encampment. to the south you can see a firepit and to the north is the entrance to your tent. everything is oddly quiet, unsettling, creating a feeling of floating anxiety. the stillness seems to enhance the eerie quality of the desert, the feeling of being truly alone. there's an enlarged hole in the sand, a remnant of your excavation attempts. you crane your neck and see a plane, high overhead, circling the encampment. > ",
+    "marks": [
+     "east",
+     "west",
+     "north",
+     "south",
+     "in"
+    ],
+    "contId": 31,
+    "openBit": false,
+    "room": "Outside Your Tent"
+   },
+   {
+    "setup": "south",
+    "text": "fire pit you are in the center of the encampment, standing before a charred pit, a hole dug in the sand surrounded by blackened rocks. the night breezes have already started the reclamation work of the desert, covering most of the pit's bottom. you can see your tent to the north, the work tent to the south, and the supply tent to the west. far off to the east, through the heat waves rising off the shifting sands, you can see gentle, rolling dunes. there's an enlarged hole in the sand, a remnant of your excavation attempts. half covered with sand is a bright piece of foil which catches your eye. sitting by a rock is what looks like a matchbook. you crane your neck and see a plane, high overhead, circling the encampment. > ",
+    "marks": [
+     "pit",
+     "blackened rocks",
+     "north",
+     "south",
+     "west",
+     "east",
+     "foil",
+     "rock",
+     "matchbook"
+    ],
+    "contId": 31,
+    "openBit": false,
+    "room": "Fire Pit"
+   },
+   {
+    "setup": "south",
+    "text": "outside work tent you are on an east/west path, directly to the north of the work tent. to the north you can see the firepit and, beyond that, your tent. the work tent borders an endless vista of fine, burning sand stretching out to the south. there's an enlarged hole in the sand, a remnant of your excavation attempts. the plane seems to be circling right overhead. > ",
+    "marks": [
+     "east",
+     "west",
+     "north",
+     "south",
+     "in"
+    ],
+    "contId": 31,
+    "openBit": false,
+    "room": "Outside Work Tent"
+   },
+   {
+    "setup": "south",
+    "text": "work tent you are in a tent which used to house the workers and their personal effects. looking around, taking in the stripped and bare surroundings, you feel surprised that they even left the canvas walls. you quickly realize that they took what they needed -- taking everything would have been more trouble than it was worth. from the looks of things they cleared out quickly but quietly. tacked up to the inside of one of the tent flaps is a note. sitting in the sand, bulging a little, is a beaten-up knapsack. it sounds as if the plane is circling. > ",
+    "marks": [
+     "out",
+     "note",
+     "knapsack"
+    ],
+    "contId": 31,
+    "openBit": false,
+    "room": "Work Tent"
+   },
+   {
+    "text": "the knapsack is closed. it sounds as if the plane is flying off. > ",
+    "marks": [
+     "knapsack"
+    ],
+    "contId": 31,
+    "openBit": false,
+    "cmd": "look in knapsack",
+    "childText": [],
+    "childMarked": []
+   },
+   {
+    "text": "opening the knapsack reveals a rope, and a canteen. you can barely hear the plane. > ",
+    "marks": [
+     "knapsack",
+     "rope",
+     "canteen"
+    ],
+    "contId": 31,
+    "openBit": true,
+    "cmd": "open knapsack",
+    "childText": [
+     "rope",
+     "canteen"
+    ],
+    "childMarked": [
+     "rope",
+     "canteen"
+    ]
+   },
+   {
+    "text": "the knapsack contains: a rope a canteen the sound of something heavy landing comes from nearby. > ",
+    "marks": [
+     "knapsack",
+     "rope",
+     "canteen"
+    ],
+    "contId": 31,
+    "openBit": true,
+    "cmd": "look in knapsack",
+    "childText": [
+     "rope",
+     "canteen"
+    ],
+    "childMarked": [
+     "rope",
+     "canteen"
+    ]
+   },
+   {
+    "text": "closed. > ",
+    "marks": [],
+    "contId": 31,
+    "openBit": false,
+    "cmd": "close knapsack",
+    "childText": [],
+    "childMarked": []
+   },
+   {
+    "text": "the knapsack is closed. > ",
+    "marks": [
+     "knapsack"
+    ],
+    "contId": 31,
+    "openBit": false,
+    "cmd": "look in knapsack",
+    "childText": [],
+    "childMarked": []
+   },
+   {
+    "text": "opening the knapsack reveals a rope, and a canteen. > ",
+    "marks": [
+     "knapsack",
+     "rope",
+     "canteen"
+    ],
+    "contId": 31,
+    "openBit": true,
+    "cmd": "open knapsack",
+    "childText": [
+     "rope",
+     "canteen"
+    ],
+    "childMarked": [
+     "rope",
+     "canteen"
+    ]
+   },
+   {
+    "text": "the knapsack contains: a rope a canteen > ",
+    "marks": [
+     "knapsack",
+     "rope",
+     "canteen"
+    ],
+    "contId": 31,
+    "openBit": true,
+    "cmd": "look in knapsack",
+    "childText": [
+     "rope",
+     "canteen"
+    ],
+    "childMarked": [
+     "rope",
+     "canteen"
+    ]
+   }
+  ],
+  "room": "Work Tent",
+  "ok": true
+ },
+ "Borderzo.z5.js": {
+  "container": "briefcase",
+  "openBit": 34,
+  "steps": [
+   {
+    "text": "but the briefcase is closed. > ",
+    "marks": [
+     "briefcase"
+    ],
+    "contId": 96,
+    "openBit": false,
+    "cmd": "look in briefcase",
+    "childText": [],
+    "childMarked": []
+   },
+   {
+    "text": "opening the briefcase reveals a train ticket, a passport, a tourist guide and phrase book and a toilet kit. > ",
+    "marks": [
+     "briefcase",
+     "train ticket",
+     "passport",
+     "tourist guide",
+     "toilet kit"
+    ],
+    "contId": 96,
+    "openBit": true,
+    "cmd": "open briefcase",
+    "childText": [
+     "kit",
+     "passport",
+     "ticket",
+     "book"
+    ],
+    "childMarked": [
+     "kit",
+     "passport",
+     "ticket"
+    ]
+   },
+   {
+    "text": "the briefcase contains a train ticket, a passport, a tourist guide and phrase book and a toilet kit. > ",
+    "marks": [
+     "briefcase",
+     "train ticket",
+     "passport",
+     "tourist guide",
+     "toilet kit"
+    ],
+    "contId": 96,
+    "openBit": true,
+    "cmd": "look in briefcase",
+    "childText": [
+     "kit",
+     "passport",
+     "ticket",
+     "book"
+    ],
+    "childMarked": [
+     "kit",
+     "passport",
+     "ticket"
+    ]
+   },
+   {
+    "text": "okay, the briefcase is now closed. > ",
+    "marks": [
+     "briefcase"
+    ],
+    "contId": 96,
+    "openBit": false,
+    "cmd": "close briefcase",
+    "childText": [],
+    "childMarked": []
+   },
+   {
+    "text": "but the briefcase is closed. > ",
+    "marks": [
+     "briefcase"
+    ],
+    "contId": 96,
+    "openBit": false,
+    "cmd": "look in briefcase",
+    "childText": [],
+    "childMarked": []
+   },
+   {
+    "text": "opening the briefcase reveals a train ticket, a passport, a tourist guide and phrase book and a toilet kit. > ",
+    "marks": [
+     "briefcase",
+     "train ticket",
+     "passport",
+     "tourist guide",
+     "toilet kit"
+    ],
+    "contId": 96,
+    "openBit": true,
+    "cmd": "open briefcase",
+    "childText": [
+     "kit",
+     "passport",
+     "ticket",
+     "book"
+    ],
+    "childMarked": [
+     "kit",
+     "passport",
+     "ticket"
+    ]
+   },
+   {
+    "text": "the briefcase contains a train ticket, a passport, a tourist guide and phrase book and a toilet kit. > ",
+    "marks": [
+     "briefcase",
+     "train ticket",
+     "passport",
+     "tourist guide",
+     "toilet kit"
+    ],
+    "contId": 96,
+    "openBit": true,
+    "cmd": "look in briefcase",
+    "childText": [
+     "kit",
+     "passport",
+     "ticket",
+     "book"
+    ],
+    "childMarked": [
+     "kit",
+     "passport",
+     "ticket"
+    ]
+   }
+  ],
+  "room": "Your Compartment",
+  "ok": false
+ },
+ "Zork2-TheWizardofFrobozz.z3.js": {
+  "container": "chest",
+  "openBit": 11,
+  "steps": [],
+  "err": "Zork II carousel route needs native dragon/glacier checkpoint; not run in this pass"
+ }
+}

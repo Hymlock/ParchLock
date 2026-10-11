@@ -3,6 +3,14 @@
 // field/reply-family and measured equipment-state capabilities only.
 // No stored numeric readings or title dispatch.
 var ModuleStatFactsClaude = {
+    "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
+        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12 },
+        "openCapability": { "all": ["container"], "none": ["supporter"] }
+    },
+    "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
+        "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25 },
+        "openCapability": { "all": ["container"], "none": ["supporter"] }
+    },
     // Sorcerer (ZIL): stable PLAYER global 38 (Codex #3412/#3413, verified grok2 #3425): misc.zil WINNER=PROTAGONIST, PLAYER=WINNER;
     // binary 23591 store G38<-G163 at start, TELL stores only G163 (42801). Native TAKE book inserts into body 223 = G38. Ships with the v3 nested-room fix.
     "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e": {
@@ -68,7 +76,9 @@ var ModuleStatFactsClaude = {
         // Native i tests29 to omit body parts and39 to print clothes/watch
         // as worn. REMOVE WATCH is refused; WEAR confirms already worn.
         "inventoryHiddenAttribute": 29,
-        "wornAttribute": 39
+        "wornAttribute": 39,
+        "attributeMap": { "container": 43, "supporter": 36, "open": 34, "isOpen": 34 },
+        "openCapability": { "all": ["container"], "none": ["supporter"] }
     },
     // Stationfall (ZIL): untouched native routes (Codex #3393-#3400). DROP chronometer inserts it into room 198,
     // TAKE into holder 218; global 183 is the only global equal to that holder, still so after STARBOARD moves
