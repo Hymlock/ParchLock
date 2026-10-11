@@ -1,5 +1,15 @@
 # ParchLock Release Notes
 
+## Build 71 - 2026-10-10
+
+- Wumpus: big rooms are made of sections ("a section of room #25"). The map now follows the section you are actually in, so its exits (including Exit 3), items and creatures are picked up again, and Equipment shows what you carry.
+- Wumpus dark rooms: a section first seen in the dark is named "Darkness" until you light it, then takes its real name once. Moving in the dark still follows the right section. Survives save/restore and map save/reload.
+- Item names: names no longer pick up a word from the next inventory line, keep the game's own capitals ("ID card", "GLADIUS SWORD"), and show the full printed descriptor ("featureless white cube", "private investigator's license").
+- Inform 7 (The Warbler's Nest, Facility): exits are shown before you travel them.
+- Dark rooms: the dark marker now judges only the latest reply.
+- Testing notes (not yet fully accepted by review): rooms with a blank compiled name take the game's own short name (Facility, Work in Retrograde) and can occasionally show a wrong name; furniture/vehicles are mapped as their room (bedlam, break-in); Facility's player detection.
+- Not in this build: grouped Wumpus section boxes on the map, the endless-loop exit arrow, the remaining item fixes.
+
 ## Build 70 - 2026-10-10
 
 - Map directions: games built with older Inform libraries (Curses, Night, Moonglow, Cat's Eye, Theatre and about a dozen others) now label exits from the game's own compass instead of a standard table, so "north" really leads north. Inevita, Gostak and Deja Vu still use the old labels.
