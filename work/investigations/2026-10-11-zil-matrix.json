@@ -5,7 +5,6 @@
   "Cutthroats.z3.js",
   "Deadline.z3.js",
   "Enchanter.z3.js",
-  "Hitchhik.z5.js",
   "HollywoodHijinx.z3.js",
   "Infidel.z3.js",
   "LeatherGoddessesofPhobos.z3.js",
@@ -20,12 +19,41 @@
   "Stationfall.z3.js",
   "Suspect.z3.js",
   "Suspended.z3.js",
+  "Hitchhik.z5.js",
   "TheLurkingHorror.z3.js",
   "TheWitness.z3.js",
   "Wishbringer.z3.js",
   "Zork1-TheGreatUndergroundEmpire.z3.js",
   "Zork2-TheWizardofFrobozz.z3.js",
   "Zork3-TheDungeonMaster.z3.js"
+ ],
+ "titles": [
+  "Ballyhoo",
+  "Border Zone",
+  "Cutthroats",
+  "Deadline",
+  "Enchanter",
+  "Hollywood Hijinx",
+  "Infidel",
+  "Leather Goddesses of Phobos",
+  "Moonmist",
+  "Planetfall",
+  "Plundered Hearts",
+  "Seastalker",
+  "Sherlock",
+  "Sorcerer",
+  "Spellbreaker",
+  "Starcross",
+  "Stationfall",
+  "Suspect",
+  "Suspended",
+  "The Hitchhiker's Guide to the Galaxy",
+  "The Lurking Horror",
+  "The Witness",
+  "Wishbringer",
+  "Zork 1",
+  "Zork 2",
+  "Zork 3"
  ],
  "profileKeys": [
   "animate",
@@ -83,7 +111,7 @@
     },
     "container": {
      "value": 17,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
      "evidence": "open/1:t17o- t31o- t10?- t23o- t15o- s15o s18o t13o- t27o+ t10o+ t15o+ s15o | put in/2:t15i+ t27i+ t23i+ t17i+ t30i+ t31i- t22o+ t15i+ t17i+ t30i- t17o- s18o | candidates 17,31,23,27",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -95,7 +123,7 @@
     },
     "transparent": {
      "value": 13,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t17o- t31o- t10?- t23o- t15o- s15o s18o t13o- t27o+ t10o+ t15o+ s15o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -107,14 +135,14 @@
     },
     "animate": {
      "value": 31,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in ATTACK",
      "evidence": "attack/1:t12?+ t31o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "talkable": {
      "value": 31,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in TALK TO/TELL/ASK (separate from animate, R3.1)",
      "evidence": "talk to/1:t31o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -137,11 +165,11 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": 30,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first non-door PRSO test in BOARD/GET IN/ENTER/GET ON",
      "evidence": "board/1:t12?+ t30o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -180,7 +208,7 @@
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -190,81 +218,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var122",
-   "prsi": "var214"
+   "prsi": "var214",
+   "malformed": []
   },
   "Borderzo.z5.js": {
    "classification": "confirmed-zil-family/validated",
@@ -285,7 +314,7 @@
     },
     "container": {
      "value": 36,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
      "evidence": "open/1:t36o+ t47o- t34o- t45o- s34o s37o t43o- s34o s37o t32o- | put in/2:t34i+ t45i+ t43i+ t36i+ t42o+ t34i+ t36i+ t45i- t36i- s37o | candidates 36,45,43",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -297,7 +326,7 @@
     },
     "transparent": {
      "value": 43,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t36o+ t47o- t34o- t45o- s34o s37o t43o- s34o s37o t32o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -335,7 +364,7 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": null,
@@ -358,14 +387,14 @@
     },
     "clothing": {
      "value": 41,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t39o- t41o- s39o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "wearable": {
      "value": 41,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t39o- t41o- s39o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -373,12 +402,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -388,81 +417,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var118",
-   "prsi": "var222"
+   "prsi": "var222",
+   "malformed": []
   },
   "Cutthroats.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -483,7 +513,7 @@
     },
     "container": {
      "value": 11,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
      "evidence": "open/1:t11o+ t21o- s21o t25o- t21o- s21o | put in/2:t21i+ t25i+ t11i+ t9i- t21i+ s29o c13o | candidates 11,25",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -495,7 +525,7 @@
     },
     "transparent": {
      "value": 25,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t11o+ t21o- s21o t25o- t21o- s21o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -512,14 +542,14 @@
     },
     "talkable": {
      "value": 23,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in TALK TO/TELL/ASK (separate from animate, R3.1)",
      "evidence": "talk to/1:t23o- t26o+ t26o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "edible": {
      "value": 23,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in EAT",
      "evidence": "eat/1:t23o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -531,7 +561,7 @@
     },
     "light": {
      "value": 26,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in LIGHT/TURN ON that LIGHT does not set (light-source precondition)",
      "evidence": "light/1:t26o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -539,7 +569,7 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": null,
@@ -558,14 +588,14 @@
     },
     "clothing": {
      "value": 18,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t18o+ t13o- s13o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "wearable": {
      "value": 18,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t18o+ t13o- s13o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -573,12 +603,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -588,81 +618,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var184",
-   "prsi": "var185"
+   "prsi": "var185",
+   "malformed": []
   },
   "Deadline.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -683,7 +714,7 @@
     },
     "container": {
      "value": 21,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
      "evidence": "open/1:t21o+ t22o+ t28o- s28o t22o- t27o- | put in/2:t28i+ t22i+ t21i+ t12i- t28i+ s30o | candidates 21,22",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -695,7 +726,7 @@
     },
     "transparent": {
      "value": 22,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t21o+ t22o+ t28o- s28o t22o- t27o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -712,14 +743,14 @@
     },
     "talkable": {
      "value": 20,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in TALK TO/TELL/ASK (separate from animate, R3.1)",
      "evidence": "talk to/1:t20o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "edible": {
      "value": 5,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in EAT",
      "evidence": "eat/1:t5o+ t6o+ t28?-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -731,7 +762,7 @@
     },
     "light": {
      "value": 20,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in LIGHT/TURN ON that LIGHT does not set (light-source precondition)",
      "evidence": "light/1:t20o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -739,11 +770,11 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": 19,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first non-door PRSO test in BOARD/GET IN/ENTER/GET ON",
      "evidence": "enter/1:t19o+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -771,12 +802,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -786,81 +817,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var191",
-   "prsi": "var192"
+   "prsi": "var192",
+   "malformed": []
   },
   "Enchanter.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -881,28 +913,28 @@
     },
     "container": {
      "value": 21,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
      "evidence": "open/1:t21o+ t12o- s12o t10o- t24o- t12o- s12o | put in/2:t12i+ t24i+ t21i+ t29i- t12i+ s15o | candidates 21,24",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "supporter": {
      "value": 14,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "only PRSI test in PUT ON (not container)",
      "evidence": "put on/2:t14i-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "transparent": {
      "value": 10,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t21o+ t12o- s12o t10o- t24o- t12o- s12o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "door": {
      "value": 24,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "PRSO test common to OPEN and CLOSE, not container/open/transparent/supporter",
      "evidence": "open/1:t21o+ t12o- s12o t10o- t24o- t12o- s12o | close/1:t21o+ t14o+ t12o- c12o t24o- t12o- c12o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -931,7 +963,7 @@
     },
     "light": {
      "value": 22,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in LIGHT/TURN ON that LIGHT does not set (light-source precondition)",
      "evidence": "light/1:t22o- t8o- s8o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -939,7 +971,7 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": null,
@@ -969,12 +1001,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -984,285 +1016,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var117",
-   "prsi": "var218"
-  },
-  "Hitchhik.z5.js": {
-   "classification": "confirmed-zil-family/validated",
-   "keys": {
-    "isOpen": {
-     "value": 39,
-     "status": "static-draft",
-     "rule": "set in OPEN and cleared in CLOSE on PRSO",
-     "evidence": "open/1:t23o- t42o- t40o- t39o- s39o s20o t33o- t43o- t39o- s39o | close/1:t23o- t42o- t43o+ t40o- t39o- c39o",
-     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
-    },
-    "open": {
-     "value": 39,
-     "status": "static-draft",
-     "rule": "set in OPEN and cleared in CLOSE on PRSO",
-     "evidence": "open/1:t23o- t42o- t40o- t39o- s39o s20o t33o- t43o- t39o- s39o | close/1:t23o- t42o- t43o+ t40o- t39o- c39o",
-     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
-    },
-    "container": {
-     "value": 23,
-     "status": "static-draft",
-     "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
-     "evidence": "open/1:t23o- t42o- t40o- t39o- s39o s20o t33o- t43o- t39o- s39o | put in/2:t39i+ t43i+ t40i+ t23i+ t28i+ t41o- t39i+ t23i+ t28i- s20o | candidates 23,40,43",
-     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
-    },
-    "supporter": {
-     "value": null,
-     "status": "unknown",
-     "reason": "PUT ON reuses container test or none"
-    },
-    "transparent": {
-     "value": 33,
-     "status": "static-draft",
-     "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
-     "evidence": "open/1:t23o- t42o- t40o- t39o- s39o s20o t33o- t43o- t39o- s39o",
-     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
-    },
-    "door": {
-     "value": null,
-     "status": "unknown",
-     "reason": "ambiguous 42,40,43"
-    },
-    "animate": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no ATTACK PRSO test"
-    },
-    "talkable": {
-     "value": 42,
-     "status": "static-draft",
-     "rule": "first PRSO test in TALK TO/TELL/ASK (separate from animate, R3.1)",
-     "evidence": "talk to/1:t42o-",
-     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
-    },
-    "edible": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no EAT PRSO test"
-    },
-    "on": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no bit set by LIGHT and cleared by OFF"
-    },
-    "light": {
-     "value": 35,
-     "status": "static-draft",
-     "rule": "first PRSO test in LIGHT/TURN ON that LIGHT does not set (light-source precondition)",
-     "evidence": "light/1:t35o- t45o-",
-     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
-    },
-    "switchable": {
-     "value": null,
-     "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
-    },
-    "enterable": {
-     "value": 28,
-     "status": "static-draft",
-     "rule": "first non-door PRSO test in BOARD/GET IN/ENTER/GET ON",
-     "evidence": "board/1:t28o-",
-     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
-    },
-    "isWorn": {
-     "value": 24,
-     "status": "static-draft",
-     "rule": "set in WEAR and cleared in TAKE OFF/REMOVE (precedence R2.5: wornAttribute fact path, not attributeMap)",
-     "evidence": "wear/1:t25o+ t24o- s24o | take off/1:t24o- c24o",
-     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
-    },
-    "worn": {
-     "value": 24,
-     "status": "static-draft",
-     "rule": "set in WEAR and cleared in TAKE OFF/REMOVE (precedence R2.5: wornAttribute fact path, not attributeMap)",
-     "evidence": "wear/1:t25o+ t24o- s24o | take off/1:t24o- c24o",
-     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
-    },
-    "clothing": {
-     "value": 25,
-     "status": "static-draft",
-     "rule": "first PRSO test in WEAR",
-     "evidence": "wear/1:t25o+ t24o- s24o",
-     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
-    },
-    "wearable": {
-     "value": 25,
-     "status": "static-draft",
-     "rule": "first PRSO test in WEAR",
-     "evidence": "wear/1:t25o+ t24o- s24o",
-     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
-    },
-    "locked": {
-     "value": null,
-     "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
-    },
-    "lockable": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
-    },
-    "takeable": {
-     "value": null,
-     "status": "derived",
-     "reason": "owned by D214 d214TakeAttribute (FIND bit 41) then objectOverrideFor wins (R3.2); not mapped"
-    },
-    "absent": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
-    },
-    "concealed": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
-    },
-    "general": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
-    },
-    "moved": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
-    },
-    "openable": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
-    },
-    "proper": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
-    },
-    "scenery": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
-    },
-    "scored": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
-    },
-    "static": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
-    },
-    "visited": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
-    },
-    "workflag": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
-    },
-    "male": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
-    },
-    "female": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
-    },
-    "neuter": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
-    },
-    "pluralname": {
-     "value": null,
-     "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
-    }
-   },
-   "prso": "var90",
-   "prsi": "var174"
+   "prsi": "var218",
+   "malformed": []
   },
   "HollywoodHijinx.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -1283,7 +1112,7 @@
     },
     "container": {
      "value": 27,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
      "evidence": "open/1:t18o- t27o+ t8o- t4o+ t10o+ t25o- t15o- t4o- s25o s28o t23o- s25o | put in/2:t25i+ t10i+ t4i+ t27i+ t25i+ t27i+ t27i- t2i- t9o- s28o | candidates 27,4,10",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -1295,7 +1124,7 @@
     },
     "transparent": {
      "value": 23,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t18o- t27o+ t8o- t4o+ t10o+ t25o- t15o- t4o- s25o s28o t23o- s25o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -1307,14 +1136,14 @@
     },
     "animate": {
      "value": 18,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in ATTACK",
      "evidence": "attack/1:t18o+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "talkable": {
      "value": 18,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in TALK TO/TELL/ASK (separate from animate, R3.1)",
      "evidence": "tell/1:t18o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -1333,7 +1162,7 @@
     },
     "light": {
      "value": 3,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in LIGHT/TURN ON that LIGHT does not set (light-source precondition)",
      "evidence": "light/1:t3o- t20o- s20o t2o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -1341,11 +1170,11 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": 8,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first non-door PRSO test in BOARD/GET IN/ENTER/GET ON",
      "evidence": "board/1:t8o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -1366,14 +1195,14 @@
     },
     "clothing": {
      "value": 22,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t14o- t22o+ s14o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "wearable": {
      "value": 22,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t14o- t22o+ s14o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -1388,7 +1217,7 @@
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -1398,81 +1227,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var85",
-   "prsi": "var164"
+   "prsi": "var164",
+   "malformed": []
   },
   "Infidel.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -1493,21 +1323,21 @@
     },
     "container": {
      "value": 20,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
      "evidence": "open/1:t20o+ t25o- s25o t9o- t25o- s25o | put in/2:t25i+ t9i+ t20i+ t14i- t25i+ s29o t18o- c18o | candidates 20,9",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "supporter": {
      "value": 28,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "only PRSI test in PUT ON (not container)",
      "evidence": "put on/2:t28i-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "transparent": {
      "value": 9,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t20o+ t25o- s25o t9o- t25o- s25o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -1524,14 +1354,14 @@
     },
     "talkable": {
      "value": 6,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in TALK TO/TELL/ASK (separate from animate, R3.1)",
      "evidence": "talk to/1:t6o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "edible": {
      "value": 7,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in EAT",
      "evidence": "eat/1:t7o+ t8o+ t25?-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -1543,7 +1373,7 @@
     },
     "light": {
      "value": 11,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in LIGHT/TURN ON that LIGHT does not set (light-source precondition)",
      "evidence": "light/1:t11o- s29?",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -1551,7 +1381,7 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": null,
@@ -1570,14 +1400,14 @@
     },
     "clothing": {
      "value": 22,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t22o+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "wearable": {
      "value": 22,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t22o+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -1585,12 +1415,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -1600,81 +1430,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var135",
-   "prsi": "var136"
+   "prsi": "var136",
+   "malformed": []
   },
   "LeatherGoddessesofPhobos.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -1695,7 +1526,7 @@
     },
     "container": {
      "value": 17,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
      "evidence": "open/1:t17o+ t31o+ t29o- t15o- t26o- t9o- s15o s18o t24o- s15o s18o t13o- | put in/2:t15i+ t24i+ t17i+ t29i+ t23o+ t26i- t15i+ t17i+ t31i+ t17i- t30?- s18o | candidates 17,31,29,26,24",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -1707,7 +1538,7 @@
     },
     "transparent": {
      "value": 24,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t17o+ t31o+ t29o- t15o- t26o- t9o- s15o s18o t24o- s15o s18o t13o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -1724,14 +1555,14 @@
     },
     "talkable": {
      "value": 31,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in TALK TO/TELL/ASK (separate from animate, R3.1)",
      "evidence": "talk to/1:t31o+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "edible": {
      "value": 31,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in EAT",
      "evidence": "eat/1:t31o- t3o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -1745,7 +1576,7 @@
     },
     "light": {
      "value": 31,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in LIGHT/TURN ON that LIGHT does not set (light-source precondition)",
      "evidence": "light/1:t31o- t25o- t30o- s30o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -1753,11 +1584,11 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": 29,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first non-door PRSO test in BOARD/GET IN/ENTER/GET ON",
      "evidence": "board/1:t29o- t17?- t2o- t2o- t18?+ s18o t31o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -1778,14 +1609,14 @@
     },
     "clothing": {
      "value": 20,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t20o+ t21o- s21o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "wearable": {
      "value": 20,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t20o+ t21o- s21o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -1793,12 +1624,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -1808,81 +1639,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var128",
-   "prsi": "var226"
+   "prsi": "var226",
+   "malformed": []
   },
   "Moonmist.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -1945,7 +1777,7 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": null,
@@ -1975,12 +1807,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -1990,81 +1822,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": null,
-   "prsi": null
+   "prsi": null,
+   "malformed": []
   },
   "Planetfall.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -2085,7 +1918,7 @@
     },
     "container": {
      "value": 24,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
      "evidence": "open/1:t24o+ t26o+ t26o+ t11o- s11o t26o- t9o- | put in/2:t11i+ t26i+ t24i+ t30i- t11i+ s18o | candidates 24,26",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -2097,7 +1930,7 @@
     },
     "transparent": {
      "value": 26,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t24o+ t26o+ t26o+ t11o- s11o t26o- t9o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -2109,7 +1942,7 @@
     },
     "animate": {
      "value": 31,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in ATTACK",
      "evidence": "attack/1:t31o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -2133,7 +1966,7 @@
     },
     "light": {
      "value": 21,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in LIGHT/TURN ON that LIGHT does not set (light-source precondition)",
      "evidence": "turn on/1:t21o- t5o- s5o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -2141,7 +1974,7 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": null,
@@ -2164,14 +1997,14 @@
     },
     "clothing": {
      "value": 22,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t22o- s12o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "wearable": {
      "value": 22,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t22o- s12o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -2179,12 +2012,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -2194,81 +2027,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var198",
-   "prsi": "var199"
+   "prsi": "var199",
+   "malformed": []
   },
   "PlunderedHearts.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -2331,7 +2165,7 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": null,
@@ -2361,12 +2195,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -2376,81 +2210,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": null,
-   "prsi": null
+   "prsi": null,
+   "malformed": []
   },
   "Seastalker.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -2513,7 +2348,7 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": null,
@@ -2543,12 +2378,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -2558,81 +2393,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": null,
-   "prsi": null
+   "prsi": null,
+   "malformed": []
   },
   "Sherlock.z5.js": {
    "classification": "unknown/rejected",
@@ -2828,28 +2664,28 @@
     },
     "container": {
      "value": 24,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
      "evidence": "open/1:t5o- t4o- t24o- t15o- s15o t27o- t15o- s15o s18o t13o- | put in/2:t15i+ t24i+ t27i+ t17i+ t29i+ t15i+ t17i+ s18o | candidates 24,27",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "supporter": {
      "value": 17,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "only PRSI test in PUT ON (not container)",
      "evidence": "put on/2:t17i-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "transparent": {
      "value": 27,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t5o- t4o- t24o- t15o- s15o t27o- t15o- s15o s18o t13o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "door": {
      "value": 5,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "PRSO test common to OPEN and CLOSE, not container/open/transparent/supporter",
      "evidence": "open/1:t5o- t4o- t24o- t15o- s15o t27o- t15o- s15o s18o t13o- | close/1:t5o- t31o- t17o- t24o- t15o- c15o t27o+ t15o- c15o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -2861,7 +2697,7 @@
     },
     "talkable": {
      "value": 31,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in TALK TO/TELL/ASK (separate from animate, R3.1)",
      "evidence": "talk to/1:t31o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -2880,7 +2716,7 @@
     },
     "light": {
      "value": 25,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in LIGHT/TURN ON that LIGHT does not set (light-source precondition)",
      "evidence": "light/1:t25o- t11o- s11o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -2888,7 +2724,7 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": null,
@@ -2907,14 +2743,14 @@
     },
     "clothing": {
      "value": 21,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t21o+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "wearable": {
      "value": 21,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t21o+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -2922,12 +2758,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -2937,81 +2773,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var104",
-   "prsi": "var194"
+   "prsi": "var194",
+   "malformed": []
   },
   "Spellbreaker.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -3042,7 +2879,7 @@
     },
     "transparent": {
      "value": 15,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t27o+ t25o- t16o+ t3o- t21o- s21o s22o t15o- t21o- t11o- s21o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -3059,7 +2896,7 @@
     },
     "talkable": {
      "value": 31,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in TALK TO/TELL/ASK (separate from animate, R3.1)",
      "evidence": "talk to/1:t31o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -3082,7 +2919,7 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": null,
@@ -3112,12 +2949,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -3127,81 +2964,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var118",
-   "prsi": null
+   "prsi": null,
+   "malformed": []
   },
   "Starcross.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -3222,7 +3060,7 @@
     },
     "container": {
      "value": 8,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
      "evidence": "open/1:t8o+ t12o+ t9o- s9o t12o- t25o- | put in/2:t9i+ t12i+ t8i+ t15i- t9i+ s29o | candidates 8,12",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -3234,7 +3072,7 @@
     },
     "transparent": {
      "value": 12,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t8o+ t12o+ t9o- s9o t12o- t25o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -3251,7 +3089,7 @@
     },
     "talkable": {
      "value": 11,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in TALK TO/TELL/ASK (separate from animate, R3.1)",
      "evidence": "talk to/1:t11o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -3270,7 +3108,7 @@
     },
     "light": {
      "value": 2,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in LIGHT/TURN ON that LIGHT does not set (light-source precondition)",
      "evidence": "turn on/1:t2o- t18o- s18o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -3278,7 +3116,7 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": null,
@@ -3308,12 +3146,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -3323,81 +3161,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var101",
-   "prsi": "var35"
+   "prsi": "var35",
+   "malformed": []
   },
   "Stationfall.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -3418,21 +3257,21 @@
     },
     "container": {
      "value": 17,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
      "evidence": "open/1:t17o+ t31o+ t29o- t15o- t27o+ t25o+ t11o- t27o- s15o s15o s18o t13o- | put in/2:t15i+ t25i+ t17i+ t29i+ t23o+ t27i- t15i+ t17i+ t31i- t17i- | candidates 17,31,29,27,25",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "supporter": {
      "value": 29,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "only PRSI test in PUT ON (not container)",
      "evidence": "put on/2:t17i+ t29i-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "transparent": {
      "value": 13,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t17o+ t31o+ t29o- t15o- t27o+ t25o+ t11o- t27o- s15o s15o s18o t13o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -3444,14 +3283,14 @@
     },
     "animate": {
      "value": 31,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in ATTACK",
      "evidence": "attack/1:t31o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "talkable": {
      "value": 31,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in TALK TO/TELL/ASK (separate from animate, R3.1)",
      "evidence": "talk to/1:t31o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -3470,7 +3309,7 @@
     },
     "light": {
      "value": 24,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in LIGHT/TURN ON that LIGHT does not set (light-source precondition)",
      "evidence": "light/1:t24o- t26o- s26o s30o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -3478,11 +3317,11 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": 27,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first non-door PRSO test in BOARD/GET IN/ENTER/GET ON",
      "evidence": "board/1:t27o- t29o- t17?- t8o- t23o+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -3503,14 +3342,14 @@
     },
     "clothing": {
      "value": 20,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t20o+ t21o- s21o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "wearable": {
      "value": 20,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t20o+ t21o- s21o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -3518,12 +3357,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -3533,81 +3372,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var119",
-   "prsi": "var216"
+   "prsi": "var216",
+   "malformed": []
   },
   "Suspect.z3.js": {
    "classification": "unknown/rejected",
@@ -3803,7 +3643,7 @@
     },
     "container": {
      "value": 28,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
      "evidence": "open/1:t28o- t19o+ t11o- t25o+ t8o- s8o t6o- | put in/2:t8i+ t25i+ t19i+ t28i- t8i+ s12o | candidates 28,19,25",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -3815,7 +3655,7 @@
     },
     "transparent": {
      "value": 6,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t28o- t19o+ t11o- t25o+ t8o- s8o t6o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -3855,7 +3695,7 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": null,
@@ -3878,14 +3718,14 @@
     },
     "clothing": {
      "value": 31,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t31o+ s15o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "wearable": {
      "value": 31,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t31o+ s15o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -3893,12 +3733,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -3908,81 +3748,287 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var143",
-   "prsi": "var144"
+   "prsi": "var144",
+   "malformed": []
+  },
+  "Hitchhik.z5.js": {
+   "classification": "confirmed-zil-family/validated",
+   "keys": {
+    "isOpen": {
+     "value": 39,
+     "status": "static-draft",
+     "rule": "set in OPEN and cleared in CLOSE on PRSO",
+     "evidence": "open/1:t23o- t42o- t40o- t39o- s39o s20o t33o- t43o- t39o- s39o | close/1:t23o- t42o- t43o+ t40o- t39o- c39o",
+     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
+    },
+    "open": {
+     "value": 39,
+     "status": "static-draft",
+     "rule": "set in OPEN and cleared in CLOSE on PRSO",
+     "evidence": "open/1:t23o- t42o- t40o- t39o- s39o s20o t33o- t43o- t39o- s39o | close/1:t23o- t42o- t43o+ t40o- t39o- c39o",
+     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
+    },
+    "container": {
+     "value": 23,
+     "status": "hypothesis",
+     "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
+     "evidence": "open/1:t23o- t42o- t40o- t39o- s39o s20o t33o- t43o- t39o- s39o | put in/2:t39i+ t43i+ t40i+ t23i+ t28i+ t41o- t39i+ t23i+ t28i- s20o | candidates 23,40,43",
+     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
+    },
+    "supporter": {
+     "value": null,
+     "status": "unknown",
+     "reason": "PUT ON reuses container test or none"
+    },
+    "transparent": {
+     "value": 33,
+     "status": "hypothesis",
+     "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
+     "evidence": "open/1:t23o- t42o- t40o- t39o- s39o s20o t33o- t43o- t39o- s39o",
+     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
+    },
+    "door": {
+     "value": null,
+     "status": "unknown",
+     "reason": "ambiguous 42,40,43"
+    },
+    "animate": {
+     "value": null,
+     "status": "unknown",
+     "reason": "no ATTACK PRSO test"
+    },
+    "talkable": {
+     "value": 42,
+     "status": "hypothesis",
+     "rule": "first PRSO test in TALK TO/TELL/ASK (separate from animate, R3.1)",
+     "evidence": "talk to/1:t42o-",
+     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
+    },
+    "edible": {
+     "value": null,
+     "status": "unknown",
+     "reason": "no EAT PRSO test"
+    },
+    "on": {
+     "value": null,
+     "status": "unknown",
+     "reason": "no bit set by LIGHT and cleared by OFF"
+    },
+    "light": {
+     "value": 35,
+     "status": "hypothesis",
+     "rule": "first PRSO test in LIGHT/TURN ON that LIGHT does not set (light-source precondition)",
+     "evidence": "light/1:t35o- t45o-",
+     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
+    },
+    "switchable": {
+     "value": null,
+     "status": "unknown",
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
+    },
+    "enterable": {
+     "value": 28,
+     "status": "hypothesis",
+     "rule": "first non-door PRSO test in BOARD/GET IN/ENTER/GET ON",
+     "evidence": "board/1:t28o-",
+     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
+    },
+    "isWorn": {
+     "value": 24,
+     "status": "static-draft",
+     "rule": "set in WEAR and cleared in TAKE OFF/REMOVE (precedence R2.5: wornAttribute fact path, not attributeMap)",
+     "evidence": "wear/1:t25o+ t24o- s24o | take off/1:t24o- c24o",
+     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
+    },
+    "worn": {
+     "value": 24,
+     "status": "static-draft",
+     "rule": "set in WEAR and cleared in TAKE OFF/REMOVE (precedence R2.5: wornAttribute fact path, not attributeMap)",
+     "evidence": "wear/1:t25o+ t24o- s24o | take off/1:t24o- c24o",
+     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
+    },
+    "clothing": {
+     "value": 25,
+     "status": "hypothesis",
+     "rule": "first PRSO test in WEAR",
+     "evidence": "wear/1:t25o+ t24o- s24o",
+     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
+    },
+    "wearable": {
+     "value": 25,
+     "status": "hypothesis",
+     "rule": "first PRSO test in WEAR",
+     "evidence": "wear/1:t25o+ t24o- s24o",
+     "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
+    },
+    "locked": {
+     "value": null,
+     "status": "unknown",
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
+    },
+    "lockable": {
+     "value": null,
+     "status": "unknown",
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
+    },
+    "takeable": {
+     "value": null,
+     "status": "derived",
+     "reason": "owned by D214 d214TakeAttribute (FIND bit 41) then objectOverrideFor wins (R3.2); not mapped"
+    },
+    "absent": {
+     "value": null,
+     "status": "unknown",
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
+    },
+    "concealed": {
+     "value": null,
+     "status": "unknown",
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
+    },
+    "general": {
+     "value": null,
+     "status": "unknown",
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
+    },
+    "moved": {
+     "value": null,
+     "status": "unknown",
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
+    },
+    "openable": {
+     "value": null,
+     "status": "unknown",
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
+    },
+    "proper": {
+     "value": null,
+     "status": "unknown",
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
+    },
+    "scenery": {
+     "value": null,
+     "status": "unknown",
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
+    },
+    "scored": {
+     "value": null,
+     "status": "unknown",
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
+    },
+    "static": {
+     "value": null,
+     "status": "unknown",
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
+    },
+    "visited": {
+     "value": null,
+     "status": "unknown",
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
+    },
+    "workflag": {
+     "value": null,
+     "status": "unknown",
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
+    },
+    "male": {
+     "value": null,
+     "status": "unknown",
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
+    },
+    "female": {
+     "value": null,
+     "status": "unknown",
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
+    },
+    "neuter": {
+     "value": null,
+     "status": "unknown",
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
+    },
+    "pluralname": {
+     "value": null,
+     "status": "unknown",
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
+    }
+   },
+   "prso": "var90",
+   "prsi": "var174",
+   "malformed": []
   },
   "TheLurkingHorror.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -4013,7 +4059,7 @@
     },
     "transparent": {
      "value": 5,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t13o- t2o- t27o+ t25o- t8o- t13o+ s13o s6o t5o- t13o- t19o- s13o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -4030,14 +4076,14 @@
     },
     "talkable": {
      "value": 31,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in TALK TO/TELL/ASK (separate from animate, R3.1)",
      "evidence": "talk to/1:t31o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "edible": {
      "value": 1,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in EAT",
      "evidence": "eat/1:t1o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -4055,7 +4101,7 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": null,
@@ -4074,14 +4120,14 @@
     },
     "clothing": {
      "value": 3,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t3o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "wearable": {
      "value": 3,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t3o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -4089,12 +4135,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -4104,81 +4150,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var115",
-   "prsi": null
+   "prsi": null,
+   "malformed": []
   },
   "TheWitness.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -4199,7 +4246,7 @@
     },
     "container": {
      "value": 9,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
      "evidence": "open/1:t9o+ t28o+ t18o+ t28o+ t18o+ t8o- t17o- t24o- s8o t28o+ t18o- t6o- | put in/2:t8i+ t28i+ t9i+ t29i- t8i+ s4o | candidates 9,28",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -4211,7 +4258,7 @@
     },
     "transparent": {
      "value": 28,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t9o+ t28o+ t18o+ t28o+ t18o+ t8o- t17o- t24o- s8o t28o+ t18o- t6o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -4228,14 +4275,14 @@
     },
     "talkable": {
      "value": 31,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in TALK TO/TELL/ASK (separate from animate, R3.1)",
      "evidence": "talk to/1:t31o+ s4o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "edible": {
      "value": 26,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in EAT",
      "evidence": "eat/1:t26o+ t27o+ t8?-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -4247,7 +4294,7 @@
     },
     "light": {
      "value": 31,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in LIGHT/TURN ON that LIGHT does not set (light-source precondition)",
      "evidence": "light/1:t31o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -4255,11 +4302,11 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": 28,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first non-door PRSO test in BOARD/GET IN/ENTER/GET ON",
      "evidence": "get in/1:t28o- t8o- t22o+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -4294,7 +4341,7 @@
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -4304,81 +4351,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var135",
-   "prsi": "var136"
+   "prsi": "var136",
+   "malformed": []
   },
   "Wishbringer.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -4445,7 +4493,7 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": null,
@@ -4475,12 +4523,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -4490,81 +4538,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "const187",
-   "prsi": null
+   "prsi": null,
+   "malformed": []
   },
   "Zork1-TheGreatUndergroundEmpire.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -4585,49 +4634,49 @@
     },
     "container": {
      "value": 19,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
      "evidence": "open/1:t19o- t11o- s11o s3o t12o- t3?+ t23o- t11o- s11o | put in/2:t11i+ t23i+ t19i+ t27i- t11i+ t13o- s3o | candidates 19,23",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "supporter": {
      "value": 10,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "only PRSI test in PUT ON (not container)",
      "evidence": "put on/2:t10i-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "transparent": {
      "value": 12,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t19o- t11o- s11o s3o t12o- t3?+ t23o- t11o- s11o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "door": {
      "value": 23,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "PRSO test common to OPEN and CLOSE, not container/open/transparent/supporter",
      "evidence": "open/1:t19o- t11o- s11o s3o t12o- t3?+ t23o- t11o- s11o | close/1:t19o+ t23o+ t10o+ t11o- c11o t23o- t11o- c11o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "animate": {
      "value": 30,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in ATTACK",
      "evidence": "attack with/2:t30o+ t29i+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "talkable": {
      "value": 30,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in TALK TO/TELL/ASK (separate from animate, R3.1)",
      "evidence": "talk to/1:t30o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "edible": {
      "value": 21,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in EAT",
      "evidence": "eat/1:t21o+ t22o- t11?+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -4641,7 +4690,7 @@
     },
     "light": {
      "value": 31,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in LIGHT/TURN ON that LIGHT does not set (light-source precondition)",
      "evidence": "light/1:t31o- t20o- s20o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -4649,7 +4698,7 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": null,
@@ -4668,14 +4717,14 @@
     },
     "clothing": {
      "value": 0,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t0o+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "wearable": {
      "value": 0,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t0o+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -4683,12 +4732,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -4698,81 +4747,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var134",
-   "prsi": "var135"
+   "prsi": "var135",
+   "malformed": []
   },
   "Zork2-TheWizardofFrobozz.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -4793,49 +4843,49 @@
     },
     "container": {
      "value": 18,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
      "evidence": "open/1:t18o- t11o- s11o s2o t7o- t2?+ t22o- t11o- s11o | put in/2:t11i+ t22i+ t18i+ t27i- t11i+ t13o- s2o | candidates 18,22",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "supporter": {
      "value": 8,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "only PRSI test in PUT ON (not container)",
      "evidence": "put on/2:t8i-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "transparent": {
      "value": 7,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t18o- t11o- s11o s2o t7o- t2?+ t22o- t11o- s11o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "door": {
      "value": 22,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "PRSO test common to OPEN and CLOSE, not container/open/transparent/supporter",
      "evidence": "open/1:t18o- t11o- s11o s2o t7o- t2?+ t22o- t11o- s11o | close/1:t18o+ t22o+ t8o+ t11o- c11o t22o- t11o- c11o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "animate": {
      "value": 30,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in ATTACK",
      "evidence": "attack/1:t30o+ t29i+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "talkable": {
      "value": 30,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in TALK TO/TELL/ASK (separate from animate, R3.1)",
      "evidence": "talk to/1:t30o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "edible": {
      "value": 20,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in EAT",
      "evidence": "eat/1:t20o+ t21o- t11?+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -4849,7 +4899,7 @@
     },
     "light": {
      "value": 31,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in LIGHT/TURN ON that LIGHT does not set (light-source precondition)",
      "evidence": "light/1:t31o- t19o- s19o t26o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -4857,7 +4907,7 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": null,
@@ -4876,14 +4926,14 @@
     },
     "clothing": {
      "value": 3,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t3o+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "wearable": {
      "value": 3,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t3o+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -4891,12 +4941,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -4906,81 +4956,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var159",
-   "prsi": "var160"
+   "prsi": "var160",
+   "malformed": []
   },
   "Zork3-TheDungeonMaster.z3.js": {
    "classification": "confirmed-zil-family/validated",
@@ -5001,28 +5052,28 @@
     },
     "container": {
      "value": 10,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in OPEN also tested on PRSI in PUT IN",
      "evidence": "open/1:t10o+ t12o- s12o t30o- t9o- t12o- s12o | put in/2:t12i+ t9i+ t10i+ t7i- t12i+ s27o | candidates 10,9",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "supporter": {
      "value": 26,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "only PRSI test in PUT ON (not container)",
      "evidence": "put on/2:t26i-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "transparent": {
      "value": 30,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test after OPEN sets open (contents-visible check), also tested in LOOK IN",
      "evidence": "open/1:t10o+ t12o- s12o t30o- t9o- t12o- s12o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "door": {
      "value": 9,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "PRSO test common to OPEN and CLOSE, not container/open/transparent/supporter",
      "evidence": "open/1:t10o+ t12o- s12o t30o- t9o- t12o- s12o | close/1:t10o+ t26o+ t12o- c12o t9o- t12o- c12o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -5034,14 +5085,14 @@
     },
     "talkable": {
      "value": 11,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in TALK TO/TELL/ASK (separate from animate, R3.1)",
      "evidence": "talk to/1:t11o-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "edible": {
      "value": 5,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in EAT",
      "evidence": "eat/1:t5o+ t22o+ t12?-",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -5055,7 +5106,7 @@
     },
     "light": {
      "value": 19,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in LIGHT/TURN ON that LIGHT does not set (light-source precondition)",
      "evidence": "light/1:t19o- t15o- s15o",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -5063,7 +5114,7 @@
     "switchable": {
      "value": null,
      "status": "unknown",
-     "reason": "ZIL has no separate switchable flag in native routines (light/on cover it)"
+     "reason": "analyzer has not proved a separate switchable capability (no absence claim)"
     },
     "enterable": {
      "value": null,
@@ -5082,14 +5133,14 @@
     },
     "clothing": {
      "value": 4,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t4o+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
     },
     "wearable": {
      "value": 4,
-     "status": "static-draft",
+     "status": "hypothesis",
      "rule": "first PRSO test in WEAR",
      "evidence": "wear/1:t4o+",
      "needs": "native before/after transition or static consumer semantic (R2.3d); PRSO/PRSI live proof (R2.3b)"
@@ -5097,12 +5148,12 @@
     "locked": {
      "value": null,
      "status": "unknown",
-     "reason": "LOCK/UNLOCK handled per object (no generic set/clear)"
+     "reason": "analyzer found no generic set-by-LOCK/clear-by-UNLOCK pair (no absence claim)"
     },
     "lockable": {
      "value": null,
      "status": "unknown",
-     "reason": "no generic native lockable test (per-object routines)"
+     "reason": "analyzer has not proved a generic lockable test (no absence claim)"
     },
     "takeable": {
      "value": null,
@@ -5112,81 +5163,82 @@
     "absent": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "concealed": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "general": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "moved": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "openable": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "proper": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scenery": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "scored": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "static": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "visited": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "workflag": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "male": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "female": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "neuter": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     },
     "pluralname": {
      "value": null,
      "status": "unknown",
-     "reason": "no native verb routine tests/sets it generically; nothing to prove from bytecode"
+     "reason": "not derived by any analyzer rule yet (no absence claim)"
     }
    },
    "prso": "var186",
-   "prsi": "var187"
+   "prsi": "var187",
+   "malformed": []
   }
  }
 }
