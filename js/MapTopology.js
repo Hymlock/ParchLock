@@ -71,6 +71,15 @@ var MapTopology = {
         if (!MapTopology.mapIsEmptyOfRealRooms()) return true;
         if (MapTopology.prevRoomId != null && payload.roomId != null
             && String(MapTopology.prevRoomId) !== String(payload.roomId)) return true;
+        // M09 scope (orchestrator 2026-10-10): the epigraph/menu boot problem is
+        // Inform-only (Curses, Ghost, Vespers). ZIL stories keep the pre-M09
+        // admission so a room the player starts in while dark (HHG Bedroom 150,
+        // status line 'Darkness') is still admitted. Structural test, no prose.
+        try {
+            if (typeof ZRamReader !== "undefined" && typeof ZRamProvider !== "undefined"
+                && ZRamProvider.getMem && ZRamProvider.getMem()
+                && !ZRamReader.isInformCompiled(ZRamProvider.getMem())) return true;
+        } catch (eZ) {}
         var src = payload.probe && payload.probe.roomSource;
         var det = src === "player-containment" || src === "measured-fact";
         if (!det) return false;
