@@ -1,6 +1,6 @@
 {
  "Zork1-TheGreatUndergroundEmpire.z3.js": {
-  "file": "2026-10-11-zil-walk-r1.json",
+  "file": "2026-10-11-zil-walk-m1.json",
   "bits": {
    "CB": 19,
    "OB": 11,
@@ -8,17 +8,20 @@
    "NB": 20,
    "AB": 30
   },
-  "steps": 35,
+  "steps": 101,
   "completion": "incomplete",
-  "end": "quite fix you up completely, but you can't have everything. Forest This is a forest, with trees in a",
-  "rooms": "1/10",
+  "end": "here! Abandon every hope all ye who enter here! The gate is open; through it you can see a desolatio",
+  "rooms": "1/21",
   "players": [
    4
   ],
   "container": {
    "pos": {
     "89": "bird's nest <get egg>",
+    "106": "pedestal <get torch>",
     "202": "table <get knife>",
+    "208": "gold coffin <open coffin>",
+    "213": "altar <get book>",
     "224": "brown sack <open sack>"
    },
    "neg": {},
@@ -44,12 +47,13 @@
     227,
     236
    ],
-   "verdict": "insufficient (3+0, census 20)"
+   "verdict": "insufficient (6+0, census 20)"
   },
   "open": {
    "pos": {
     "183": "trap door <open trapdoor> set",
     "204": "kitchen table <open sack> already-open",
+    "208": "gold coffin <open coffin> set",
     "224": "brown sack <open sack> set",
     "235": "kitchen window <open window> set"
    },
@@ -57,9 +61,11 @@
     "87": "jewel-encrusted egg <open window> tested-closed",
     "183": "trap door <open trapdoor> tested-closed",
     "194": "trophy case <open trapdoor> tested-closed",
+    "208": "gold coffin <open coffin> tested-closed",
     "224": "brown sack <open sack> tested-closed",
     "235": "kitchen window <open window> tested-closed",
-    "236": "glass bottle <open sack> tested-closed"
+    "236": "glass bottle <open sack> tested-closed",
+    "249": "#249 <open case> tested-closed"
    },
    "census": null,
    "verdict": "MEETS 2+1"
@@ -70,12 +76,22 @@
    },
    "neg": {
     "87": "jewel-encrusted egg <drop egg>",
+    "97": "wall with engravings <e>",
+    "106": "pedestal <e>",
     "111": "wooden door <get sword>",
+    "129": "rope <tie rope to railing>",
+    "134": "wooden railing <se>",
+    "135": "prayer <d>",
+    "139": "platinum bar <e>",
+    "147": "pair of candles <d>",
     "183": "trap door <get sword>",
     "192": "carpet <get sword>",
     "194": "trophy case <get sword>",
     "204": "kitchen table <get sword>",
+    "208": "gold coffin <d>",
+    "213": "altar <d>",
     "218": "bloody axe <kill troll with sword>",
+    "221": "brass bell <d>",
     "224": "brown sack <e>",
     "236": "glass bottle <w>"
    },
@@ -87,7 +103,7 @@
     223,
     233
    ],
-   "verdict": "insufficient (1+9, census 6)"
+   "verdict": "insufficient (1+19, census 6)"
   },
   "on": {
    "pos": {
@@ -111,7 +127,7 @@
   }
  },
  "Cutthroats.z3.js": {
-  "file": "2026-10-11-zil-walk-r1.json",
+  "file": "2026-10-11-zil-walk-m1.json",
   "bits": {
    "CB": 11,
    "OB": 21,
@@ -122,9 +138,10 @@
   "steps": 336,
   "completion": "attempted",
   "end": "",
-  "rooms": "1/35",
+  "rooms": "1/40",
   "players": [
-   184
+   184,
+   181
   ],
   "container": {
    "pos": {
@@ -137,9 +154,13 @@
     "151": "back window <open window>",
     "164": "front door <withdraw $603>",
     "168": "#168 <open window>",
+    "172": "railing <show envelope to johnny>",
+    "173": "ladder bottom <drink water>",
+    "174": "ladder top <get out of bunk>",
     "175": "stairs <close door>",
     "176": "ocean <wait for johnny>",
     "177": "bedroom door <look out window>",
+    "178": "window <examine glass case>",
     "179": "window <look out window>",
     "192": "carpeting <look out window>",
     "193": "wallpaper <look out window>",
@@ -183,6 +204,7 @@
     "140": "closet <open dresser> already-open",
     "145": "dresser <open dresser> set",
     "151": "back window <open window> set",
+    "176": "ocean <open shark repellent> already-open",
     "177": "bedroom door <open door> set"
    },
    "neg": {
@@ -191,19 +213,43 @@
     "145": "dresser <open dresser> tested-closed",
     "151": "back window <open window> tested-closed",
     "168": "#168 <open window> tested-closed",
+    "172": "railing <open tube> tested-closed",
+    "173": "ladder bottom <open door> tested-closed",
+    "174": "ladder top <open shark repellent> tested-closed",
     "175": "stairs <open door> tested-closed",
     "177": "bedroom door <open door> tested-closed",
+    "178": "window <open tube> tested-closed",
     "179": "window <open door> tested-closed",
     "192": "carpeting <open door> tested-closed",
     "193": "wallpaper <open door> tested-closed",
-    "197": "abandoned field <open window> tested-closed"
+    "197": "abandoned field <open window> tested-closed",
+    "200": "Mary Margaret <open shark repellent> tested-closed",
+    "201": "Night Wind <open shark repellent> tested-closed",
+    "213": "deck <open shark repellent> tested-closed",
+    "222": "#222 <open shark repellent> tested-closed"
    },
    "census": null,
    "verdict": "MEETS 2+1"
+  },
+  "worn": {
+   "pos": {
+    "6": "wrist watch <wear watch>"
+   },
+   "neg": {},
+   "census": [
+    6,
+    81,
+    136,
+    137,
+    138,
+    139,
+    223
+   ],
+   "verdict": "insufficient (1+0, census 7)"
   }
  },
  "HollywoodHijinx.z3.js": {
-  "file": "2026-10-11-zil-walk-r1.json",
+  "file": "2026-10-11-zil-walk-m1.json",
   "bits": {
    "CB": 4,
    "OB": 25,
@@ -326,7 +372,7 @@
   }
  },
  "Seastalker.z3.js": {
-  "file": "2026-10-11-zil-walk-r1.json",
+  "file": "2026-10-11-zil-walk-m1.json",
   "bits": {
    "CB": 26,
    "OB": 18,
@@ -424,7 +470,7 @@
   }
  },
  "Zork2-TheWizardofFrobozz.z3.js": {
-  "file": "2026-10-11-zil-walk-r2.json",
+  "file": "2026-10-11-zil-walk-m2.json",
   "bits": {
    "CB": 18,
    "OB": 11,
@@ -435,7 +481,7 @@
   "steps": 296,
   "completion": "attempted",
   "end": "",
-  "rooms": "1/11",
+  "rooms": "1/14",
   "players": [
    4
   ],
@@ -452,12 +498,14 @@
    "verdict": "insufficient (1+1, census 1)"
   },
   "open": {
-   "pos": {},
+   "pos": {
+    "223": "unicorn <open door> already-open"
+   },
    "neg": {
     "249": "#249 <open lid> tested-closed"
    },
    "census": null,
-   "verdict": "insufficient (0+1)"
+   "verdict": "insufficient (1+1)"
   },
   "container": {
    "pos": {
@@ -507,7 +555,8 @@
   "animate": {
    "pos": {},
    "neg": {
-    "76": "lamp <say \"float\">"
+    "52": "black string <w>",
+    "83": "steel box <s>"
    },
    "census": [
     5,
@@ -524,11 +573,11 @@
     223,
     224
    ],
-   "verdict": "insufficient (0+1, census 13)"
+   "verdict": "insufficient (0+2, census 13)"
   }
  },
  "Infidel.z3.js": {
-  "file": "2026-10-11-zil-walk-r2.json",
+  "file": "2026-10-11-zil-walk-m2.json",
   "bits": {
    "CB": 20,
    "OB": 25,
@@ -662,7 +711,7 @@
   }
  },
  "PlunderedHearts.z3.js": {
-  "file": "2026-10-11-zil-walk-r2.json",
+  "file": "2026-10-11-zil-walk-m2.json",
   "bits": {
    "CB": 24,
    "OB": 16,
@@ -965,7 +1014,7 @@
   }
  },
  "Wishbringer.z3.js": {
-  "file": "2026-10-11-zil-walk-r2.json",
+  "file": "2026-10-11-zil-walk-m2.json",
   "bits": {
    "CB": 4,
    "OB": 25,
@@ -973,9 +1022,9 @@
    "NB": 20,
    "AB": 18
   },
-  "steps": 174,
+  "steps": 173,
   "completion": "terminal",
-  "end": "no input",
+  "end": "GAME OVER: Grave Outside Cottage Outside Cottage Rotary South Rotary South Park Park Rotary West Rot",
   "rooms": "1/40",
   "players": [
    219
@@ -1110,7 +1159,7 @@
   }
  },
  "Enchanter.z3.js": {
-  "file": "2026-10-11-zil-walk-r3.json",
+  "file": "2026-10-11-zil-walk-m3.json",
   "bits": {
    "CB": 21,
    "OB": 12,
@@ -1120,7 +1169,7 @@
   },
   "steps": 265,
   "completion": "terminal",
-  "end": "",
+  "end": "GAME OVER:  (Type RESTART, RESTORE, or QUIT): > > More Score255 Turns385 down down west west warlock",
   "rooms": "1/49",
   "players": [
    55
@@ -1209,7 +1258,7 @@
   }
  },
  "Sorcerer.z3.js": {
-  "file": "2026-10-11-zil-walk-r3.json",
+  "file": "2026-10-11-zil-walk-m3.json",
   "bits": {
    "CB": 27,
    "OB": 15,
@@ -1310,7 +1359,7 @@
   }
  },
  "Ballyhoo.z3.js": {
-  "file": "2026-10-11-zil-walk-r3.json",
+  "file": "2026-10-11-zil-walk-m3.json",
   "bits": {
    "CB": 23,
    "OB": 15,
@@ -1318,28 +1367,24 @@
    "NB": 24,
    "AB": 31
   },
-  "steps": 416,
-  "completion": "terminal",
-  "end": "",
-  "rooms": "1/35",
+  "steps": 213,
+  "completion": "incomplete",
+  "end": "st Half of Fat Lady West Half of Fat Lady East Half of Fat Lady East Half of Fat Lady Standing Room ",
+  "rooms": "1/28",
   "players": [
-   29
+   211,
+   78
   ],
   "container": {
    "pos": {
     "65": "bucket <throw meat in passage>",
-    "103": "cherry-hardwood desk <search desk>",
-    "106": "dress-suit combination <take veil>",
     "109": "lower bunk <take ash tray>",
     "213": "compartment <take whip>",
     "214": "ash tray <take scrap>"
    },
    "neg": {
-    "68": "cage door <open cage>",
     "149": "cage door <open cage>",
-    "164": "cage door <open door>",
-    "212": "secret panel <open secret panel>",
-    "239": "trailer door <open door>"
+    "164": "cage door <open door>"
    },
    "census": [
     2,
@@ -1353,7 +1398,6 @@
     54,
     65,
     76,
-    78,
     96,
     98,
     103,
@@ -1385,43 +1429,25 @@
   },
   "animate": {
    "pos": {
-    "2": "Rimshaw the Incomparable <rimshaw, hypnotise me>",
-    "98": "roustabout <roustabout, get net>",
-    "113": "Chuckles <show spreadsheet>"
+    "2": "Rimshaw the Incomparable <rimshaw, hypnotise me>"
    },
    "neg": {
-    "18": "radio dial <show spreadsheet>",
-    "27": "scrap of newsprint <show spreadsheet>",
     "44": "trailer door <close door>",
-    "46": "#46 <show spreadsheet>",
-    "48": "transistor radio <show spreadsheet>",
-    "68": "cage door <open cage>",
-    "85": "ribbon <show spreadsheet>",
-    "104": "shawl-jacket combo <show spreadsheet>",
-    "106": "dress-suit combination <show spreadsheet>",
-    "129": "fiberglass pole <show spreadsheet>",
-    "143": "sign <show spreadsheet>",
     "149": "cage door <open cage>",
-    "158": "ransom note <show spreadsheet>",
     "164": "cage door <open door>",
-    "176": "spreadsheet <show spreadsheet>",
-    "184": "trade card <show spreadsheet>",
-    "212": "secret panel <open secret panel>",
-    "213": "compartment <open compartment>",
-    "221": "dirty rag <show spreadsheet>",
-    "239": "trailer door <open door>"
+    "213": "compartment <open compartment>"
    },
    "census": [
     2,
     5,
     7,
     9,
+    29,
     31,
     42,
     66,
     73,
     76,
-    78,
     84,
     98,
     113,
@@ -1446,34 +1472,21 @@
     219,
     224
    ],
-   "verdict": "MEETS 2+1"
+   "verdict": "insufficient (1+4, census 33)"
   },
   "open": {
    "pos": {
-    "9": "Mahler <open trap door> already-open",
-    "44": "trailer door <open door with crowbar> set",
-    "48": "transistor radio <open cage> already-open",
     "65": "bucket <open compartment> already-open",
-    "68": "cage door <open cage> set",
     "122": "your ticket <open door> already-open",
     "149": "cage door <open cage> set",
     "164": "cage door <open door> set",
-    "212": "secret panel <open secret panel> set",
-    "213": "compartment <open compartment> set",
-    "219": "Comrade Thumb <open secret panel> already-open",
-    "233": "trap door <open trap door> set",
-    "239": "trailer door <open door> set"
+    "213": "compartment <open compartment> set"
    },
    "neg": {
     "44": "trailer door <close door> cleared",
-    "68": "cage door <open cage> tested-closed",
     "149": "cage door <open cage> tested-closed",
     "164": "cage door <open door> tested-closed",
-    "211": "it <open door> tested-closed",
-    "212": "secret panel <open secret panel> tested-closed",
-    "213": "compartment <open compartment> tested-closed",
-    "233": "trap door <open trap door> tested-closed",
-    "239": "trailer door <close door> cleared"
+    "213": "compartment <open compartment> tested-closed"
    },
    "census": null,
    "verdict": "MEETS 2+1"
@@ -1496,7 +1509,7 @@
   }
  },
  "TheLurkingHorror.z3.js": {
-  "file": "2026-10-11-zil-walk-r3.json",
+  "file": "2026-10-11-zil-walk-m3.json",
   "bits": {
    "CB": 27,
    "OB": 13,
@@ -1504,9 +1517,9 @@
    "NB": 15,
    "AB": null
   },
-  "steps": 294,
-  "completion": "attempted",
-  "end": "",
+  "steps": 167,
+  "completion": "incomplete",
+  "end": "n Your score is 25 of a possible 100, in 175 moves. Graded on the curve, you are in the class of Jun",
   "rooms": "1/28",
   "players": [
    56
@@ -1522,7 +1535,7 @@
     "88": "emergency cabinet <e>",
     "89": "elevator doors <d>",
     "92": "tub of dirt <u>",
-    "100": "urchin <d>",
+    "100": "urchin <u>",
     "105": "refrigerator <w>",
     "115": "elevator doors <s>",
     "120": "access panel <s>",
@@ -1661,7 +1674,7 @@
   }
  },
  "Planetfall.z3.js": {
-  "file": "2026-10-11-zil-walk-r4.json",
+  "file": "2026-10-11-zil-walk-m4.json",
   "bits": {
    "CB": 24,
    "OB": 11,
@@ -1669,9 +1682,9 @@
    "NB": 5,
    "AB": null
   },
-  "steps": 403,
-  "completion": "attempted",
-  "end": "",
+  "steps": 155,
+  "completion": "incomplete",
+  "end": "bed. \"About time you woke up, you lazy bones! Let's explore around some more!\" Floyd bounces impatie",
   "rooms": "1/31",
   "players": [
    236
@@ -1731,7 +1744,7 @@
   }
  },
  "Zork3-TheDungeonMaster.z3.js": {
-  "file": "2026-10-11-zil-walk-r4.json",
+  "file": "2026-10-11-zil-walk-m4.json",
   "bits": {
    "CB": 10,
    "OB": 12,
@@ -1739,10 +1752,10 @@
    "NB": 15,
    "AB": 21
   },
-  "steps": 273,
-  "completion": "attempted",
-  "end": "",
-  "rooms": "1/45",
+  "steps": 103,
+  "completion": "incomplete",
+  "end": "sive prison cell, hangs from his belt. He is dressed simply in a hood and cloak, wearing a few simpl",
+  "rooms": "1/26",
   "players": [
    202
   ],
@@ -1761,12 +1774,7 @@
    "verdict": "insufficient (1+3, census 1)"
   },
   "container": {
-   "pos": {
-    "67": "hooded figure <remove hood>",
-    "81": "steel cage <get all>",
-    "84": "pedestal <get ring>",
-    "103": "wooden door <open wooden door>"
-   },
+   "pos": {},
    "neg": {
     "221": "#221 <grab rope>"
    },
@@ -1789,70 +1797,11 @@
     156,
     196
    ],
-   "verdict": "MEETS 2+1"
-  },
-  "open": {
-   "pos": {
-    "84": "pedestal <open door> already-open",
-    "91": "gold machine <open stone door> already-open",
-    "103": "wooden door <open wooden door> set",
-    "104": "stone door <open stone door> set",
-    "156": "secret door <open door> set"
-   },
-   "neg": {
-    "103": "wooden door <open wooden door> tested-closed",
-    "104": "stone door <open stone door> tested-closed",
-    "156": "secret door <open door> tested-closed",
-    "221": "#221 <open vial> tested-closed"
-   },
-   "census": null,
-   "verdict": "MEETS 2+1"
-  },
-  "animate": {
-   "pos": {
-    "67": "hooded figure <w>"
-   },
-   "neg": {
-    "29": "chest <n>",
-    "80": "plaque <w>",
-    "81": "steel cage <get all>",
-    "89": "black machine <w>",
-    "90": "grey machine <w>",
-    "91": "gold machine <w>",
-    "109": "Royal Seal of Dimwit Flathead <w>",
-    "111": "rock structure <n>",
-    "115": "hole <w>",
-    "117": "wooden bar <n>",
-    "118": "white panel <n>",
-    "119": "yellow panel <n>",
-    "121": "short pole <n>",
-    "122": "red panel <n>",
-    "123": "red button <ne>",
-    "124": "red beam of light <n>",
-    "125": "pine panel <n>",
-    "126": "mahogany panel <n>",
-    "127": "long pole <n>",
-    "129": "compass arrow <n>",
-    "130": "black panel <n>",
-    "131": "T-bar <n>",
-    "132": "runes <e>",
-    "185": "very ancient book <press south wall>",
-    "187": "warning note <w>",
-    "196": "great rock <w>"
-   },
-   "census": [
-    27,
-    67,
-    116,
-    179,
-    182,
-    200
-   ],
-   "verdict": "insufficient (1+26, census 6)"
+   "verdict": "insufficient (0+1, census 17)"
   }
  },
  "Spellbreaker.z3.js": {
-  "file": "2026-10-11-zil-walk-r4.json",
+  "file": "2026-10-11-zil-walk-m4.json",
   "bits": {
    "CB": 27,
    "OB": 21,
@@ -1860,10 +1809,10 @@
    "NB": 8,
    "AB": null
   },
-  "steps": 412,
-  "completion": "attempted",
-  "end": "",
-  "rooms": "1/14",
+  "steps": 135,
+  "completion": "incomplete",
+  "end": "est exit leads into darkness, but the doorway to the north opens onto a seemingly normal street scen",
+  "rooms": "1/8",
   "players": [
    22
   ],
@@ -1883,9 +1832,7 @@
    "pos": {
     "73": "#73 <take 1>"
    },
-   "neg": {
-    "248": "mouth <look in mouth>"
-   },
+   "neg": {},
    "census": [
     4,
     13,
@@ -1923,11 +1870,11 @@
     214,
     232
    ],
-   "verdict": "insufficient (1+1, census 35)"
+   "verdict": "insufficient (1+0, census 35)"
   }
  },
  "Hitchhik.z5.js": {
-  "file": "2026-10-11-zil-walk-r4.json",
+  "file": "2026-10-11-zil-walk-m4.json",
   "bits": {
    "CB": 40,
    "OB": 39,
@@ -1935,9 +1882,9 @@
    "NB": 45,
    "AB": 42
   },
-  "steps": 361,
-  "completion": "attempted",
-  "end": "",
+  "steps": 71,
+  "completion": "incomplete",
+  "end": "tory recorded. 0 items Yourselfyou glass case glass case Guards Guards door door switch switch keybo",
   "rooms": "1/9",
   "players": [
    19,

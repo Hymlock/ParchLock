@@ -187,8 +187,10 @@ var EquipmentUI = {
     containerStateKnown: function (obj) {
         if (obj && obj.demo) return true;
         try {
-            if (typeof ZRamReader === 'undefined' || !ZRamReader.attrInsideTrusted) return false;
-            return !!ZRamReader.attrInsideTrusted(ZRamProvider.getMem());
+            var mem = ZRamProvider.getMem();
+            if (typeof ZRamReader !== 'undefined' && ZRamReader.attrInsideTrusted && ZRamReader.attrInsideTrusted(mem)) return true;
+            // Codex #3466 / grok2 #3463: a verified ZIL digest fact owns the container bit (2e1455e path).
+            return EquipmentUI.measuredOwner(mem, 'container');
         } catch (e) { return false; }
     },
     containerStateTags: function (obj) {
@@ -200,13 +202,23 @@ var EquipmentUI = {
         return tags;
     },
 
+    measuredOwner: function (mem, flag) {
+        try {
+            return !!(mem && typeof AttributeSchema !== 'undefined' && AttributeSchema.measuredFlagOwner
+                && AttributeSchema.measuredFlagOwner(mem, flag));
+        } catch (e) { return false; }
+    },
+
     flagStateKnown: function (obj, flag) {
         if (obj && obj.demo) return true;
         try {
             var mem = ZRamProvider.getMem();
             if (!mem) return false;
             if (ZRamReader.isInformCompiled(mem)) return AttributeSchema.bitFor(flag, mem) !== null;
-            return typeof AttrCalibrator !== 'undefined' && AttrCalibrator.hasConfirmedFlag(mem, flag);
+            if (typeof AttrCalibrator !== 'undefined' && AttrCalibrator.hasConfirmedFlag(mem, flag)) return true;
+            // Non-Inform: also accept the bounded digest ownership path (verified ZIL facts). Capability and state stay
+            // separate checks, so 'on' alone never implies 'switchable' (Codex #3466, #3380).
+            return EquipmentUI.measuredOwner(mem, flag);
         } catch (e) { return false; }
     },
     activationStateTags: function (obj) {

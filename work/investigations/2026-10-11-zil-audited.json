@@ -1,1 +1,28 @@
-{"TheLurkingHorror.z3.js":{"open":"Codex AUDIT PASS #3457/#3458"},"Cutthroats.z3.js":{"open":"Codex AUDIT PASS #3457/#3458"},"PlunderedHearts.z3.js":{"worn":"Codex AUDIT PASS #3457/#3458 (wornAttribute 22 only)"},"Sorcerer.z3.js":{"playerRoot":"Codex AUDIT PASS #3459 (playerGlobal 38 + nested-room fix 8e294b5)"}}
+{
+ "TheLurkingHorror.z3.js": {
+  "open": "Codex AUDIT PASS #3457/#3458"
+ },
+ "Cutthroats.z3.js": {
+  "open": "Codex AUDIT PASS #3457/#3458"
+ },
+ "PlunderedHearts.z3.js": {
+  "worn": "Codex AUDIT PASS #3457/#3458 (wornAttribute 22 only)",
+  "open": "Codex AUDIT PASS #3467 (state only; not capability)"
+ },
+ "Sorcerer.z3.js": {
+  "playerRoot": "Codex AUDIT PASS #3459 (playerGlobal 38 + nested-room fix 8e294b5)",
+  "open": "Codex AUDIT PASS #3467 (state only; not capability)"
+ },
+ "Wishbringer.z3.js": {
+  "open": "Codex AUDIT PASS #3467 (state only; not capability)"
+ },
+ "Zork3-TheDungeonMaster.z3.js": {
+  "open": "Codex AUDIT PASS #3467 (state only; not capability)"
+ },
+ "Ballyhoo.z3.js": {
+  "open": "Codex AUDIT PASS #3467 (state only; not capability)"
+ },
+ "Planetfall.z3.js": {
+  "open": "Codex AUDIT PASS #3467 (state only; not capability)"
+ }
+}
