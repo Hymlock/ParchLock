@@ -337,3 +337,7 @@ Screenshots: `work/investigations/operator-2026-10-09b/`. The list was taken on 
   - **Verified live on the phone:** frames before and after are `operator-2026-10-09b/inv-flash-*-phone.png`.
 
 Order agreed with the operator: 1, then 2 and 3, then 4 to 7, then 8 and 9.
+
+### ZIL semantic-flag ownership (2e1455e scoped closure; Codex #3442, carried by grok2 2026-10-11)
+ActionSynth keeps a semantic flag (container, open, supporter, worn, ...) only when (a) it was learned by existing AttrCalibrator calibration, OR (b) the flag is owned by a bounded digest/stable-header authenticated attributeMap fact (ModuleStatFactsClaude) AND the story decodes as a confirmed, validated ZIL family (GrammarProvider.decodeD198) AND AttributeSchema.bitFor(flag) equals the mapped bit (AttributeSchema.measuredFlagOwner). False or unmapped flags never trigger a decode; Inform stories and stories with no Z-memory are unchanged. No status-lane changes. Evidence: Codex audit #3439 (8/0) and the grok2 18-title + Glulx gate. Still open: actor/NPC gaps; batch-2 container facts that are X-only (controlled insertion) evidence.
+ZIL facts after 2e1455e are added per title from native evidence (original-scene explorer, Jericho walkthrough runs, player-root check) with >=2 distinct on-device positives + >=1 negative, or the operator single-object + source rule; each carries a "Codex post-hoc review pending" label until Codex reviews it.
