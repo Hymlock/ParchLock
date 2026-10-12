@@ -3,7 +3,9 @@
 // + >=1 negative. Prints candidate facts; a human/Codex decides.
 const fs = require('fs'), path = require('path'); const SRC = require('./2026-10-11-zil-source-flags.json');
 const bitOf = (s, F) => { const f = s.flags && s.flags[F]; return f && (f.exact || (f.fp === 0 && f.tp >= 2)) ? f.bit : null; };
-const runs = {}; const merge = (g, r) => { if (!runs[g] || (r.steps || []).length > (runs[g].steps || []).length) runs[g] = r; }; for (const f of fs.readdirSync(__dirname).filter(f => /^2026-10-11-zil-walk-(\d+|s\w+)\.json$/.test(f))) { const j = JSON.parse(fs.readFileSync(path.join(__dirname, f), 'utf8')); for (const g in j) merge(g, j[g]); }
+// Prefer a completed walkthrough, then a run with the fixed boot census (c* files, object-table-bounded), then the longer run.
+const runs = {}; const rank = (r, f) => [!r.end && !r.err ? 1 : 0, /zil-walk-c\d/.test(f) ? 1 : 0, (r.steps || []).length]; const better = (x, y) => { for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return x[i] > y[i]; return true; };
+const rk = {}; for (const f of fs.readdirSync(__dirname).filter(f => /^2026-10-11-zil-walk-(\d+|[sc]\w+)\.json$/.test(f))) { const j = JSON.parse(fs.readFileSync(path.join(__dirname, f), 'utf8')); for (const g in j) { const k = rank(j[g], f); if (!runs[g] || better(k, rk[g])) { runs[g] = j[g]; rk[g] = k; } } }
 const { story } = require('./zil-attr-analyzer.js');
 // Rooms and the player are not evidence objects: rooms = children of the object with the most children (ROOMS); player names excluded.
 const roomsOf = g => { const m = Buffer.from(story(g)), v = m[0], ot = m.readUInt16BE(0x0a), b0 = ot + (v <= 3 ? 62 : 126), sz = v <= 3 ? 9 : 14, par = []; for (let i = 1; i < 1000; i++) { const e = b0 + (i - 1) * sz; if (e + sz > m.readUInt16BE(0x0e)) break; const pa = v <= 3 ? m[e + 4] : m.readUInt16BE(e + 6); const pr = v <= 3 ? m.readUInt16BE(e + 7) : m.readUInt16BE(e + 12); if (pr < e + sz) break; par[i] = pa; } const cnt = {}; par.forEach(p => { cnt[p] = (cnt[p] || 0) + 1; }); const RP = +Object.keys(cnt).filter(k => k > 0).sort((a, b) => cnt[b] - cnt[a])[0]; return new Set(par.map((p, i) => p === RP ? i : -1).filter(i => i > 0)); };
