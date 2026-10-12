@@ -11,11 +11,12 @@ var ModuleStatFactsClaude = {
     // Cutthroats (ZIL): OPENBIT 21 (original-scene native explorer, zil-native-explore4.json, no relocation): hotel-room dresser RAM bit 21
     // 0 closed -> 1 after OPEN (reveals book/key/passbook) -> 0 after CLOSE (contents hidden); OPEN on the bed tests 21 TRUE ("already open"). Container 11 unknown.
     "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180": {
+        // RE-ADDED from target-scoped PROBE walk p2 (original scene, command names the object): CONTBIT 11 tested TRUE on bar, table, tube of putty, closet, bed; FALSE on Weasel knife, Pete the Rat, Johnny Red, cigar. supporter 28 already proven, so surface-aware Open/Close applies. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): container, wearable - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
         // SURFACEBIT 28: TRUE on stove 76, chair 108, table 109, bed 146; FALSE on dinner plate 1, wrist watch 6, knife 8. WEARBIT 18: TRUE on wrist watch 6, air tank 136, diving mask 137, flippers 138, wet suit 139; FALSE on envelope 133, room key 143, passbook 144. Observer-captured walk m1 (object ids, analyzer2). Surface-aware Open/Close as Zork I. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         // CONTBIT 11: tested TRUE on dresser, closet, portable drill; FALSE on bedroom door, wallpaper. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
-        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28 }
+        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11 }
     },
     // Plundered Hearts (ZIL): OPENBIT 16: OPEN sets 16 on large cupboard, coffer, canvas hatch, iron door; CLOSE clears (cupboard, coffer). WORNBIT 22: WEAR sets 22 on breeches, shirt, ball gown; REMOVE clears (frock, shirt). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     "b53a2588c7926892f8f5e9b201c1855a01892e972d938bf919b4f36e1b8bd7db": {
@@ -39,11 +40,12 @@ var ModuleStatFactsClaude = {
     },
     // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
+        // RE-ADDED from PROBE walk p1: ACTORBIT 31 TRUE on guard and Comrade Thumb (look in <actor>); FALSE on button, sunglasses, cheese morsel. Ballyhoo container 23 held: positives pass but SURFACEBIT 17 is unproven, so tables would be offered Open/Close. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): container, animate - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
         // CONTBIT 23: tested TRUE on bucket 65, desk 103, lower bunk 109, compartment 213, ash tray 214; FALSE on cage doors 68/149/164, secret panel 212, trailer door 239. ACTORBIT 31: TRUE on Rimshaw 2, roustabout 98, Chuckles 113; FALSE on radio dial 18, newsprint 27, trailer door 44. Repaired walk r3 (terminal ending, object-id keyed, analyzer2). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         // Q8 player root: G47 = PLAYER (Codex #3461: historicalsource/ballyhoo 9f779e8 misc.zil inits PLAYER/WINNER to PROTAG; binary at 22675/22678 stores 211 into G175 and G47; TELL routine rewrites only G175 = WINNER). The app read 29 with an empty inventory; walkthrough TAKEs land in 211.
         "playerGlobal": 47,
-        "attributeMap": { "open": 15, "isOpen": 15 }
+        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31 }
     },
     // Leather Goddesses of Phobos (ZIL): Q8 player root = constant PROTAGONIST object 200 (historicalsource/leathergoddesses 17cbbc1
     // globals.zil 908 OBJECT PROTAGONIST DESC "it" ACTORBIT). No PLAYER global exists; WINNER G189 is mutable (mars.zil sets MITRE/SULTAN/
@@ -85,6 +87,8 @@ var ModuleStatFactsClaude = {
     // Native i tests bit17 and skips arm111 (including gash110) and badge184;
     // the held Logbook195 has this bit clear and is printed.
     "502e5c8e4cb82726ab61683f4d92afbb31f90fcb98b9b3dc3dbd4f97841c5582": {
+        // RE-ADDED from PROBE walk p2: SURFACEBIT 6 TRUE on mechanical/electronic/chemical supply shelves; FALSE on Snark, gangplank, supply bunches. Source exact (9 objects). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
+        "attributeMap": { "supporter": 6 },
         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): supporter - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
         // SURFACEBIT 6: TRUE on workbench 64, mechanical/electronic/chemical supply shelves 67/70/72, work counter 189; FALSE on microphone 62, file drawer 78, electrolyte relay 115. Walk m1; source exact (9 objects). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         "inventoryHiddenAttribute": 17
@@ -156,13 +160,14 @@ var ModuleStatFactsClaude = {
     // uniform; fresh inventory reports the uniform and chronometer
     // "(being worn)", both of which carry bit 12.
     "b73c750df3a3d6781072eb7f9f562d5c60bfc6dc8203f4952ebff50f04f412cf": {
+        // RE-ADDED from PROBE walk p4: CONTBIT 24 TRUE on glass flask, large desk, small desk, canteen, dispenser unit; FALSE on old battery, laser setting dial, chemical fluid, funnel-shaped hole. Source has no SURFACEBIT object. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): container - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
         // CONTBIT 24: walk m1-m4 TRUE on large desk 145, small desk 149, canteen 163, survival kit 213; native dispatch TRUE on microfilm reader 55, medicine bottle 80, glass flask 125, cardboard box 137 and FALSE on four creatures 1-4 (zil-flags-neg-Planetfall). Planetfall source has NO SURFACEBIT object, so no table can be offered Open/Close. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         // OPENBIT 11: OPEN sets 11 on escape pod bulkhead, door, small desk, large desk; tested FALSE first (survival kit, desks). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         "wornAttribute": 12,
         // WEARBIT 22: native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match). Container/open stay unproven (fail closed).
-        "attributeMap": { "wearable": 22, "open": 11, "isOpen": 11 }
+        "attributeMap": { "wearable": 22, "open": 11, "isOpen": 11, "container": 24 }
     },
     // Hollywood Hijinx (ZIL): WEARBIT 22 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).
     "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e": {
