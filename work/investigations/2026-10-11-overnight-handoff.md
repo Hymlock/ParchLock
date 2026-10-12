@@ -19,3 +19,16 @@
 
 ## Bus
 - #3267 grok2 -> grok: no-migration rule, ZIL plan, E-family checks assigned.
+
+## Codex post-hoc review queue (Codex out of credits 18:52)
+- 2e1455e wearable owner R2 (Codex scoped GO #3439 already).
+- 8e294b5 nested v3 room + Sorcerer playerGlobal 38: self-audited. Gate tmp/gate-s11-diff.txt (16 diffs, all intended: furniture/vehicle rooms -> status room; Sorcerer base rooms Shaft Top/Dial Room/Shaft Bottom came from pseudo-player 29, dropped). Note: a leaked ONLY env made the in-gate operator-regressions report 0/0; rerun directly 7/0.
+- f192204 batch-2 container/supporter/open facts (Enchanter, Infidel, Border Zone): self-audited against #3389/#3431 original-scene rule; Enchanter open bit rests on single object + exact source (rule 2:14 PM). Zork II stays held. Gap: BZ 'tourist guide and phrase book' (name with 'and') not underlined.
+- 59030bc Enchanter open 12 reverted to unknown (operator rule check 19:16). Next candidate route: castle KITCHEN oven / BED / RAT-HOLE.
+- 146bc9e Zork II container/supporter/open: chest native transitions + teapot native already-open test. Correction: Border Zone 'tourist guide and phrase book' IS underlined, as 'tourist guide' (span stops at 'and'); my runner keyed on the last word. Partial-span note only.
+
+## Codex post-hoc audit queue (Codex offline from 23:53, grok2 self-review)
+- a099ea0 Spellbreaker playerObject 52 (source globals.zil 324; native TAKE parent 52; gate 3 games 1 intended diff).
+- 7118711 playerObject contract docs; LGOP audit record.
+- f360053 completion counter (playerObject); audit records copied from codex-zil-title-sweep.md; 18 UD cells (wear/worn not applicable, source-pinned greps). Surface probes pq1-4: Ballyhoo/Hollywood container MEET but supporter still short (RAM has CONT+SURF overlap, so containers stay held); Cutthroats/PH no new facts (already present). NOTE: q1-q4 walk files were overwritten by a failed run (untracked, unrecoverable).
+
