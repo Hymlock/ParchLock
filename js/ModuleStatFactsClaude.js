@@ -10,20 +10,27 @@ var ModuleStatFactsClaude = {
     // Cutthroats (ZIL): OPENBIT 21 (original-scene native explorer, zil-native-explore4.json, no relocation): hotel-room dresser RAM bit 21
     // 0 closed -> 1 after OPEN (reveals book/key/passbook) -> 0 after CLOSE (contents hidden); OPEN on the bed tests 21 TRUE ("already open"). Container 11 unknown.
     "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180": {
-        "attributeMap": { "open": 21, "isOpen": 21 }
+        // CONTBIT 11: tested TRUE on dresser, closet, portable drill; FALSE on bedroom door, wallpaper. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
+        "attributeMap": { "open": 21, "isOpen": 21, "container": 11 }
     },
     // Plundered Hearts (ZIL): OPENBIT 16: OPEN sets 16 on large cupboard, coffer, canvas hatch, iron door; CLOSE clears (cupboard, coffer). WORNBIT 22: WEAR sets 22 on breeches, shirt, ball gown; REMOVE clears (frock, shirt). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     "b53a2588c7926892f8f5e9b201c1855a01892e972d938bf919b4f36e1b8bd7db": {
-        "attributeMap": { "open": 16, "isOpen": 16 },
+        // CONTBIT 24: TRUE on coffer, bed, cupboard; FALSE on Davis, pile of clothes. ACTORBIT 31: TRUE on Crulley, Cookie, Lucy, butler; FALSE on coffer, bed. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
+        "attributeMap": { "open": 16, "isOpen": 16, "container": 24, "animate": 31 },
         "wornAttribute": 22
     },
     // Wishbringer (ZIL): OPENBIT 25: OPEN sets 25 on shoppe door, metal can, toll gate, refrigerator; CLOSE clears. CONTBIT 4: OPEN tests 4 TRUE on refrigerator, little mailbox, FALSE on shoppe door. zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     "7847ff3387dc401c511f67349d2847691ba97990f28e9c9d8b1182f3d4bc0dc0": {
-        "attributeMap": { "container": 4, "open": 25, "isOpen": 25 }
+        // ACTORBIT 18: TRUE on poodle, Miss Voss, old woman, King Anatinus; FALSE on old bone, fountain. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
+        "attributeMap": { "container": 4, "open": 25, "isOpen": 25, "animate": 18 }
     },
     // Zork III (ZIL): OPENBIT 12: OPEN sets 12 on secret door, stone door, wooden door; CLOSE clears (wooden door). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     "dce7e6f757fb8379dea9da9c13cdda5412ba03fa9b70d79fb6b8c7faf5970692": {
         "attributeMap": { "open": 12, "isOpen": 12 }
+    },
+    // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
+    "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
+        "attributeMap": { "open": 15, "isOpen": 15 }
     },
     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
         "attributeMap": { "container": 21, "supporter": 14 },
@@ -129,7 +136,8 @@ var ModuleStatFactsClaude = {
     },
     // Hollywood Hijinx (ZIL): WEARBIT 22 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).
     "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e": {
-        "attributeMap": { "wearable": 22 }
+        // CONTBIT 4: TRUE on mailbox, small compartment, cannon, pile of cannon balls; FALSE on doorbell, Status Line. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
+        "attributeMap": { "wearable": 22, "container": 4 }
     },
     // Moonmist (ZIL): WEARBIT 29 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).
     "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0": {
@@ -393,13 +401,14 @@ var ModuleStatFactsClaude = {
     },
     // Zork I (Infocom v3)
     "0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd": {
+        // ONBIT 20: LIGHT sets 20 on brass lantern, matchbook, pair of candles; tested FALSE on the lantern before lighting (TURN OFF clears). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         // Native OPEN/CLOSE dispatch (Codex 2026-10-11, owned proof JSON): mailbox 160, sack 224 and
         // bottle 236 test CONTBIT 19, OPEN sets and CLOSE clears OPENBIT 11; OPEN leaflet 161 tests 19
         // false. Initial sack/bottle/table lack 13 but have 19; 13 is mailbox-only, not CONTBIT.
         // SURFACEBIT 10 kitchen table preserved. Surface-aware Open/Close (Codex #3371/#3377):
         // CLOSE TABLE 204 (19 and 10) answers cannot-close, so container-derived Open/Close needs
         // container AND NOT supporter here. Facts stay truthful.
-            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10 },
+            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20 },
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         "command": "score", "fields": ["score.max", "rank"], "replyFamily": "inform-score", "outcome": "line",
         "evidence": "2026-10-05 live SCORE: Your score is 0 (total of 350 points), in 0 moves. / This gives you the rank of Beginner."
