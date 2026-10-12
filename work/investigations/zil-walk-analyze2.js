@@ -11,7 +11,7 @@ const runs = {}; for (const f of fs.readdirSync(__dirname).filter(f => /^2026-10
 const parents = g => { const m = Buffer.from(story(g)), v = m[0], ot = m.readUInt16BE(0x0a), b0 = ot + (v <= 3 ? 62 : 126), sz = v <= 3 ? 9 : 14, par = []; let minP = 1e9; for (let i = 1; i < 2000; i++) { const e = b0 + (i - 1) * sz; if (e + sz > minP) break; minP = Math.min(minP, m.readUInt16BE(e + sz - 2)); par[i] = v <= 3 ? m[e + 4] : m.readUInt16BE(e + 6); } return par; };
 const res = {};
 // Game-over cut (Codex #3451/#3453): steps after the game's own RESTART/RESTORE/QUIT prompt are not play; a game over before the list ends is a death/ending, not completion.
-for (const [g, r] of Object.entries(runs)) { const go = r.steps.findIndex(x => /restart, restore,? or quit/i.test(x.t)); if (go >= 0) { r.steps = r.steps.slice(0, go + 1); r.gameOverAt = go; if (!r.terminalWin) { r.exhausted = false; r.died = true; } } const s = SRC[g] || {}; const B = { CB: bitOf(s, 'CONTBIT'), OB: bitOf(s, 'OPENBIT'), WB: bitOf(s, 'WORNBIT'), NB: bitOf(s, 'ONBIT'), AB: bitOf(s, 'ACTORBIT') };
+for (const [g, r] of Object.entries(runs)) { const go = r.steps.findIndex(x => /restart, restore,? or quit/i.test(x.t)); if (go >= 0) { r.steps = r.steps.slice(0, go + 1); r.gameOverAt = go; if (!r.terminalWin) { r.exhausted = false; r.died = true; } } const s = SRC[g] || {}; const B = { CB: bitOf(s, 'CONTBIT'), OB: bitOf(s, 'OPENBIT'), WB: bitOf(s, 'WORNBIT'), NB: bitOf(s, 'ONBIT'), AB: bitOf(s, 'ACTORBIT'), SB: bitOf(s, 'SURFACEBIT'), FB: bitOf(s, 'FOODBIT'), TB: bitOf(s, 'TAKEBIT'), EB: bitOf(s, 'WEARBIT'), LB: bitOf(s, 'LIGHTBIT') };
   const par = parents(g); const RPS = new Set(r.steps.map(x => x.rp).filter(x => x > 0)); const LOCS = new Set(r.steps.map(x => x.loc).filter(x => x > 0)); const PLS = new Set(r.steps.map(x => x.pl).filter(x => x > 0));
   const isRoom = id => LOCS.has(id) || RPS.has(par[id]); const isPlayer = id => PLS.has(id);
   // Codex #3453: completion = the game's own end-of-game checkpoint without a death; list exhaustion is only 'attempted'.
@@ -24,14 +24,16 @@ for (const [g, r] of Object.entries(runs)) { const go = r.steps.findIndex(x => /
       if (b === B.OB && op === 'c' && /^close\b/.test(c)) add('open', 'neg', o, nm(o), c, 'cleared');
       if (b === B.CB && op === 't') add('container', x ? 'pos' : 'neg', o, nm(o), c);
       if (b === B.AB && op === 't') add('animate', x ? 'pos' : 'neg', o, nm(o), c);
+      // Capability keys (operator 23:06 all-cells): the bit as the game's own routine tests it, any verb.
+      for (const [k, bb] of [['supporter', B.SB], ['edible', B.FB], ['takeable', B.TB], ['wearable', B.EB], ['lightSource', B.LB]]) if (bb != null && b === bb && op === 't') add(k, x ? 'pos' : 'neg', o, nm(o), c);
       if (b === B.WB && op === 's' && /^(wear|put on)\b/.test(c)) add('worn', 'pos', o, nm(o), c);
       if (b === B.WB && op === 'c' && /^(remove|take off)\b/.test(c)) add('worn', 'neg', o, nm(o), c);
       if (b === B.NB && op === 's' && /^(turn on|light|switch on|activate|turn \S+ on)\b/.test(c)) add('on', 'pos', o, nm(o), c);
       if (b === B.NB && op === 'c' && /^(turn off|extinguish|blow out|switch off|turn \S+ off)\b/.test(c)) add('on', 'neg', o, nm(o), c, 'cleared');
       if (b === B.NB && op === 't' && x === 0 && /^(turn on|light|switch on|activate|turn \S+ on)\b/.test(c)) add('on', 'neg', o, nm(o), c, 'tested-off'); } }
-  const CEN = { container: 'CONTBIT', worn: 'WEARBIT', on: 'LIGHTBIT', animate: 'ACTORBIT' };
-  for (const k of ['open', 'container', 'worn', 'on', 'animate']) { const e = E[k]; if (!e) continue; const P = Object.keys(e.pos), N = Object.keys(e.neg); const cen = CEN[k] && r.census && r.census[CEN[k]] ? r.census[CEN[k]].map(x => +String(x).split(':')[0]).filter(id => !isRoom(id) && !isPlayer(id)) : null; e.census = cen;
+  const CEN = { container: 'CONTBIT', worn: 'WEARBIT', on: 'LIGHTBIT', animate: 'ACTORBIT', supporter: 'SURFACEBIT', edible: 'FOODBIT', takeable: 'TAKEBIT', wearable: 'WEARBIT', lightSource: 'LIGHTBIT' };
+  for (const k of ['open', 'container', 'worn', 'on', 'animate', 'supporter', 'edible', 'takeable', 'wearable', 'lightSource']) { const e = E[k]; if (!e) continue; const P = Object.keys(e.pos), N = Object.keys(e.neg); const cen = CEN[k] && r.census && r.census[CEN[k]] ? r.census[CEN[k]].map(x => +String(x).split(':')[0]).filter(id => !isRoom(id) && !isPlayer(id)) : null; e.census = cen;
     const single = (completion === 'terminal' || completion === 'won') && cen && cen.length === 1 && P.length === 1 && +P[0] === cen[0] && N.some(n => +n !== cen[0] || /tested-off|cleared/.test(e.neg[n]));
     e.verdict = P.length >= 2 && N.length >= 1 ? 'MEETS 2+1' : single ? 'single-object + source' : 'insufficient (' + P.length + '+' + N.length + (cen ? ', census ' + cen.length : '') + ')'; } }
 fs.writeFileSync(path.join(__dirname, '2026-10-11-zil-walk-analysis2.json'), JSON.stringify(res, null, 1));
-for (const [g, E] of Object.entries(res)) console.log(g.padEnd(38), E.completion.padEnd(10), 'rooms', E.rooms, 'pl', E.players.join('/'), ['open', 'container', 'worn', 'on', 'animate'].map(k => E[k] ? k + '=' + E[k].verdict.replace('insufficient ', '') : '').filter(Boolean).join(' '));
+for (const [g, E] of Object.entries(res)) console.log(g.padEnd(38), E.completion.padEnd(10), 'rooms', E.rooms, 'pl', E.players.join('/'), ['open', 'container', 'worn', 'on', 'animate', 'supporter', 'edible', 'takeable', 'wearable', 'lightSource'].map(k => E[k] ? k + '=' + E[k].verdict.replace('insufficient ', '') : '').filter(Boolean).join(' '));

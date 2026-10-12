@@ -6,7 +6,12 @@
    "OB": 11,
    "WB": null,
    "NB": 20,
-   "AB": 30
+   "AB": 30,
+   "SB": 10,
+   "FB": 21,
+   "TB": 17,
+   "EB": null,
+   "LB": 31
   },
   "steps": 396,
   "completion": "attempted",
@@ -15,6 +20,72 @@
   "players": [
    4
   ],
+  "supporter": {
+   "pos": {
+    "106": "pedestal <d>",
+    "202": "table <u>",
+    "204": "kitchen table <open sack>",
+    "213": "altar <drop sword>"
+   },
+   "neg": {
+    "87": "jewel-encrusted egg <u>",
+    "89": "bird's nest <get egg>",
+    "91": "wrench <get wrench>",
+    "101": "trunk of jewels <take trunk>",
+    "104": "torch <get torch>",
+    "108": "tan label <get label>",
+    "110": "sword <d>",
+    "113": "stiletto <u>",
+    "114": "thief <u>",
+    "115": "large bag <u>",
+    "116": "beautiful jeweled scarab <get scarab>",
+    "119": "small pile of coal <get coal>",
+    "121": "shovel <get shovel>",
+    "123": "screwdriver <get screwdriver>",
+    "125": "sapphire-encrusted bracelet <get bracelet>",
+    "128": "rusty knife <get knife>",
+    "129": "rope <get rope>",
+    "139": "platinum bar <get bar>",
+    "141": "pile of plastic <n>",
+    "147": "pair of candles <e>",
+    "149": "painting <w>",
+    "155": "matchbook <s>",
+    "156": "magic boat <inflate pile>",
+    "158": "machine <put coal in machine>",
+    "162": "red buoy <get buoy>",
+    "163": "large emerald <open buoy>",
+    "164": "brass lantern <u>",
+    "165": "leather bag of coins <get bag>",
+    "169": "nasty knife <get knife>",
+    "170": "jade figurine <get figurine>",
+    "171": "huge diamond <open lid>",
+    "173": "hand-held air pump <get pump>",
+    "188": "crystal trident <get trident>",
+    "189": "clove of garlic <get garlic>",
+    "191": "chalice <get chalice>",
+    "194": "trophy case <get lamp>",
+    "208": "gold coffin <open coffin>",
+    "209": "sceptre <get sceptre>",
+    "211": "black book <e>",
+    "217": "troll <n>",
+    "218": "bloody axe <n>",
+    "221": "brass bell <e>",
+    "224": "brown sack <get garlic>",
+    "225": "lunch <get garlic>",
+    "227": "basket <put torch in basket>",
+    "231": "crystal skull <u>",
+    "236": "glass bottle <w>",
+    "237": "quantity of water <open sack>"
+   },
+   "census": [
+    106,
+    202,
+    204,
+    213,
+    247
+   ],
+   "verdict": "MEETS 2+1"
+  },
   "container": {
    "pos": {
     "89": "bird's nest <get egg>",
@@ -118,6 +189,18 @@
    ],
    "verdict": "MEETS 2+1"
   },
+  "lightSource": {
+   "pos": {
+    "164": "brass lantern <light lamp>"
+   },
+   "neg": {},
+   "census": [
+    104,
+    147,
+    164
+   ],
+   "verdict": "insufficient (1+0, census 3)"
+  },
   "on": {
    "pos": {
     "147": "pair of candles <light candles with match>",
@@ -151,7 +234,12 @@
    "OB": 21,
    "WB": 13,
    "NB": 17,
-   "AB": null
+   "AB": null,
+   "SB": 28,
+   "FB": 8,
+   "TB": 7,
+   "EB": 18,
+   "LB": null
   },
   "steps": 336,
   "completion": "attempted",
@@ -161,6 +249,84 @@
    184,
    181
   ],
+  "supporter": {
+   "pos": {
+    "76": "stove <drink water>",
+    "108": "chair <sit>",
+    "109": "table <order drink>",
+    "146": "bed <look out window>",
+    "191": "#191 <get envelope>"
+   },
+   "neg": {
+    "1": "dinner plate <examine plate>",
+    "6": "wrist watch <wait for johnny>",
+    "8": "Weasel's knife <eat food>",
+    "9": "the Weasel <eat food>",
+    "10": "Pete's eyepatch <sit>",
+    "11": "Pete the Rat <sit>",
+    "12": "Johnny Red <examine plate>",
+    "13": "cigar <wait for johnny>",
+    "14": "McGinty <wait for johnny>",
+    "23": "sword <examine glass case>",
+    "24": "scabbard <examine glass case>",
+    "33": "collection of rare stamps <examine glass case>",
+    "34": "glass case <examine glass case>",
+    "64": "portable drill <close panel>",
+    "78": "under the bunk <examine compressor>",
+    "85": "small machine <wait for johnny>",
+    "88": "airhose <wait for johnny>",
+    "89": "large air compressor <wait for johnny>",
+    "110": "small eyepatch <sit>",
+    "111": "parrot <sit>",
+    "121": "glob of putty <wait for johnny>",
+    "122": "tube of putty <wait for johnny>",
+    "133": "envelope <examine compressor>",
+    "136": "air tank <look out window>",
+    "137": "diving mask <look out window>",
+    "138": "pair of flippers <look out window>",
+    "139": "wet suit <look out window>",
+    "140": "closet <look out window>",
+    "141": "book of shipwrecks <get passbook and room key>",
+    "143": "room key <get passbook and room key>",
+    "144": "Mariners' Trust passbook <get passbook and room key>",
+    "145": "dresser <get passbook and room key>",
+    "151": "back window <open window>",
+    "164": "front door <withdraw $603>",
+    "168": "#168 <open window>",
+    "172": "railing <show envelope to johnny>",
+    "173": "ladder bottom <drink water>",
+    "174": "ladder top <get out of bunk>",
+    "175": "stairs <close door>",
+    "176": "ocean <wait for johnny>",
+    "177": "bedroom door <look out window>",
+    "178": "window <examine glass case>",
+    "179": "window <look out window>",
+    "192": "carpeting <look out window>",
+    "193": "wallpaper <look out window>",
+    "196": "rocky coastline <wait for johnny>",
+    "197": "abandoned field <open window>",
+    "200": "Mary Margaret <give $56>",
+    "201": "Night Wind <give $56>",
+    "203": "lighthouse <wait for johnny>",
+    "213": "deck <get c battery>"
+   },
+   "census": [
+    21,
+    30,
+    40,
+    74,
+    76,
+    79,
+    94,
+    107,
+    108,
+    109,
+    146,
+    191,
+    223
+   ],
+   "verdict": "MEETS 2+1"
+  },
   "container": {
    "pos": {
     "64": "portable drill <open panel>",
@@ -249,6 +415,30 @@
    "census": null,
    "verdict": "MEETS 2+1"
   },
+  "wearable": {
+   "pos": {
+    "6": "wrist watch <get passbook and room key>",
+    "136": "air tank <get all from closet>",
+    "137": "diving mask <get all from closet>",
+    "138": "pair of flippers <get drill>",
+    "139": "wet suit <get all from closet>"
+   },
+   "neg": {
+    "133": "envelope <get all from closet>",
+    "143": "room key <get envelope>",
+    "144": "Mariners' Trust passbook <get passbook and room key>"
+   },
+   "census": [
+    6,
+    81,
+    136,
+    137,
+    138,
+    139,
+    223
+   ],
+   "verdict": "MEETS 2+1"
+  },
   "worn": {
    "pos": {
     "6": "wrist watch <wear watch>"
@@ -273,7 +463,12 @@
    "OB": 25,
    "WB": null,
    "NB": 20,
-   "AB": 18
+   "AB": 18,
+   "SB": 27,
+   "FB": null,
+   "TB": 17,
+   "EB": 22,
+   "LB": 3
   },
   "steps": 397,
   "completion": "attempted",
@@ -360,6 +555,33 @@
    ],
    "verdict": "insufficient (0+7, census 3)"
   },
+  "supporter": {
+   "pos": {
+    "207": "pile of cannon balls <get orange card>"
+   },
+   "neg": {
+    "54": "#54 <examine model>",
+    "63": "business card <drop all but flashlight>",
+    "67": "photo of Uncle Buddy <drop all but flashlight>",
+    "113": "yellowed piece of paper <drop all but flashlight>",
+    "117": "oak door <open door>",
+    "123": "flashlight <drop all but flashlight>",
+    "138": "small compartment <get orange card>",
+    "225": "Buck Palace-endorsed, regulation mailbox <open mailbox>",
+    "235": "Aunt Hildegarde's letter <drop all but flashlight>"
+   },
+   "census": [
+    9,
+    69,
+    82,
+    128,
+    184,
+    194,
+    207,
+    211
+   ],
+   "verdict": "insufficient (1+9, census 8)"
+  },
   "open": {
    "pos": {
     "225": "Buck Palace-endorsed, regulation mailbox <open mailbox> set"
@@ -371,6 +593,23 @@
    },
    "census": null,
    "verdict": "insufficient (1+3)"
+  },
+  "lightSource": {
+   "pos": {
+    "123": "flashlight <turn on flashlight>"
+   },
+   "neg": {
+    "63": "business card <turn it on>",
+    "179": "ground <light it>"
+   },
+   "census": [
+    69,
+    103,
+    123,
+    133,
+    191
+   ],
+   "verdict": "insufficient (1+2, census 5)"
   },
   "on": {
    "pos": {
@@ -396,7 +635,12 @@
    "OB": 18,
    "WB": null,
    "NB": 19,
-   "AB": null
+   "AB": null,
+   "SB": 6,
+   "FB": null,
+   "TB": 23,
+   "EB": null,
+   "LB": null
   },
   "steps": 204,
   "completion": "attempted",
@@ -405,6 +649,48 @@
   "players": [
    194
   ],
+  "supporter": {
+   "pos": {
+    "64": "workbench <get bazooka>",
+    "67": "mechanical supply shelf <ask tip about grid>",
+    "70": "electronic supply shelf <put bazooka on claw>",
+    "72": "chemical supply shelf <put bazooka on claw>",
+    "138": "Aquadome sonar equipment <ask tip about grid>",
+    "189": "work counter <ask tip about grid>"
+   },
+   "neg": {
+    "62": "microphone <yes>",
+    "78": "file drawer <ask tip about grid>",
+    "111": "your arm <open air supply system with tool>",
+    "114": "empty space <ask tip about grid>",
+    "115": "electrolyte relay <ask tip about grid>",
+    "121": "Air Supply System <ask tip about grid>",
+    "125": "Emergency Survival Unit <ask tip about grid>",
+    "153": "diary <ask tip about grid>",
+    "155": "Horvak's locker <ask tip about grid>",
+    "180": "Universal Tool <get bazooka>",
+    "181": "Sharon Kemp <ask tip about grid>",
+    "182": "Sharon's badge <ask tip about grid>",
+    "183": "Tip's badge <get bazooka>",
+    "192": "Tip <get bazooka>",
+    "193": "magazine <get bazooka>"
+   },
+   "census": [
+    64,
+    67,
+    70,
+    72,
+    76,
+    85,
+    119,
+    138,
+    157,
+    159,
+    189,
+    207
+   ],
+   "verdict": "MEETS 2+1"
+  },
   "container": {
    "pos": {
     "227": "reactor <s>"
@@ -494,7 +780,12 @@
    "OB": 11,
    "WB": null,
    "NB": 19,
-   "AB": 30
+   "AB": 30,
+   "SB": 8,
+   "FB": 20,
+   "TB": 17,
+   "EB": 3,
+   "LB": 31
   },
   "steps": 296,
   "completion": "attempted",
@@ -503,6 +794,28 @@
   "players": [
    4
   ],
+  "wearable": {
+   "pos": {},
+   "neg": {
+    "23": "sword <get lamp and sword>",
+    "76": "lamp <get lamp and sword>"
+   },
+   "census": [
+    86,
+    243
+   ],
+   "verdict": "insufficient (0+2, census 2)"
+  },
+  "lightSource": {
+   "pos": {
+    "76": "lamp <light lamp>"
+   },
+   "neg": {},
+   "census": [
+    76
+   ],
+   "verdict": "insufficient (1+0, census 1)"
+  },
   "on": {
    "pos": {
     "76": "lamp <light lamp>"
@@ -524,6 +837,31 @@
    },
    "census": null,
    "verdict": "insufficient (1+1)"
+  },
+  "supporter": {
+   "pos": {},
+   "neg": {
+    "24": "Wizard's magic wand <go through curtain>",
+    "25": "Wizard of Frobozz <go through curtain>",
+    "28": "ribbon <drop matchbook>",
+    "29": "delicate gold key <drop matchbook>",
+    "76": "lamp <s>",
+    "223": "unicorn <drop matchbook>"
+   },
+   "census": [
+    33,
+    41,
+    74,
+    104,
+    146,
+    158,
+    159,
+    160,
+    161,
+    162,
+    243
+   ],
+   "verdict": "insufficient (0+6, census 11)"
   },
   "container": {
    "pos": {
@@ -601,7 +939,12 @@
    "OB": 25,
    "WB": null,
    "NB": 21,
-   "AB": 17
+   "AB": 17,
+   "SB": 28,
+   "FB": 7,
+   "TB": 15,
+   "EB": null,
+   "LB": null
   },
   "steps": 250,
   "completion": "attempted",
@@ -610,6 +953,91 @@
   "players": [
    223
   ],
+  "supporter": {
+   "pos": {
+    "6": "granite table <s>",
+    "9": "granite table <s>",
+    "39": "trunk <open trunk>",
+    "51": "army cot <get out of cot>",
+    "104": "wooden beam <examine slot>",
+    "151": "larger recess <w>",
+    "152": "smaller recess <turn neith>",
+    "153": "quartz cover <n>",
+    "169": "middle disc <e>",
+    "170": "right disc <e>",
+    "171": "left disc <e>",
+    "180": "slab <w>"
+   },
+   "neg": {
+    "2": "jeweled ring <n>",
+    "3": "calcified hand <n>",
+    "4": "skeleton <n>",
+    "7": "silver chalice <get scarab>",
+    "8": "golden chalice <remove shim>",
+    "27": "inspection sticker <get beef>",
+    "28": "canteen <close canteen>",
+    "29": "quantity of water <close canteen>",
+    "31": "knapsack <get canteen>",
+    "33": "shovel <drop all>",
+    "34": "piece of dried beef <get beef>",
+    "35": "ancient map <get beef>",
+    "36": "stone cube <insert cube in opening>",
+    "37": "pick axe <drop all>",
+    "39": "trunk <get beef>",
+    "48": "few matches <get match>",
+    "49": "matchbook <get match>",
+    "84": "second brick <e>",
+    "85": "third brick <e>",
+    "86": "fourth brick <e>",
+    "87": "fifth brick <e>",
+    "88": "sixth brick <e>",
+    "89": "seventh brick <e>",
+    "90": "eighth brick <e>",
+    "91": "ninth brick <e>",
+    "92": "first brick <e>",
+    "93": "recessed panel <e>",
+    "103": "papyrus scroll <drop all>",
+    "105": "shim <drop all>",
+    "106": "slot <examine slot>",
+    "132": "broken head <drop all>",
+    "136": "opal cluster <open slab>",
+    "138": "emerald cluster <insert opal cluster in fourth hole>",
+    "140": "ruby cluster <insert emerald cluster in third hole>",
+    "143": "diamond cluster <drop knapsack>",
+    "146": "small spatula <get book>",
+    "149": "ancient book <get book>",
+    "172": "granite table <e>",
+    "175": "first hole <drop knapsack>",
+    "176": "second hole <insert emerald cluster in third hole>",
+    "177": "third hole <insert opal cluster in fourth hole>",
+    "178": "fourth hole <open slab>",
+    "180": "slab <get book>",
+    "196": "liquid <get torch>",
+    "197": "pink jar <get torch>",
+    "198": "bronze torch <drop all>"
+   },
+   "census": [
+    6,
+    9,
+    22,
+    23,
+    39,
+    51,
+    104,
+    151,
+    152,
+    153,
+    169,
+    170,
+    171,
+    180,
+    184,
+    199,
+    242,
+    249
+   ],
+   "verdict": "MEETS 2+1"
+  },
   "open": {
    "pos": {
     "28": "canteen <open canteen> set",
@@ -735,7 +1163,12 @@
    "OB": 16,
    "WB": 22,
    "NB": 29,
-   "AB": 31
+   "AB": 31,
+   "SB": 18,
+   "FB": null,
+   "TB": 23,
+   "EB": 21,
+   "LB": 25
   },
   "steps": 189,
   "completion": "terminal",
@@ -972,6 +1405,66 @@
    ],
    "verdict": "MEETS 2+1"
   },
+  "supporter": {
+   "pos": {
+    "75": "table <n>",
+    "82": "cot <e>",
+    "198": "silver tray <put laudanum in blue goblet>"
+   },
+   "neg": {
+    "4": "well <put laudanum in blue goblet>",
+    "6": "whip <get rapier>",
+    "8": "Crulley <get rapier>",
+    "13": "your kid slippers <blow spices at lafond>",
+    "14": "powder horn <get key>",
+    "17": "linen chemise <blow spices at lafond>",
+    "27": "ledge <climb rope>",
+    "45": "large cupboard <open cupboard>",
+    "52": "skiff <get out of cask>",
+    "66": "Lafond <drink wine>",
+    "69": "coffer <open coffer>",
+    "79": "butler <give blue goblet to butler>",
+    "90": "blue goblet <blow spices at lafond>",
+    "93": "cask <sit in cask>",
+    "95": "water barrel <examine barrels>",
+    "98": "pinch of spices <blow spices at lafond>",
+    "104": "iron door <open it>",
+    "111": "fence <throw rag at fire>",
+    "115": "large key <blow spices at lafond>",
+    "121": "leather bottle <get bottle>",
+    "128": "pair of manacles <get rapier>",
+    "129": "trapdoor <wake falcon with salts>",
+    "130": "shirt <blow spices at lafond>",
+    "141": "green goblet <drink wine>",
+    "177": "Lucy <get garter>",
+    "190": "Captain Jamison <read missive>",
+    "194": "breeches <blow spices at lafond>",
+    "199": "flagon <drink wine>",
+    "200": "beautiful ball gown <blow spices at lafond>",
+    "201": "bookcase <examine bookcase>",
+    "209": "gold ring <drink wine>",
+    "210": "rum barrel <examine barrels>",
+    "221": "ornate door <open door>",
+    "223": "your reticule <get coffer>"
+   },
+   "census": [
+    40,
+    60,
+    75,
+    81,
+    82,
+    131,
+    152,
+    154,
+    174,
+    198,
+    203,
+    213,
+    214,
+    218
+   ],
+   "verdict": "MEETS 2+1"
+  },
   "open": {
    "pos": {
     "14": "powder horn <open it> already-open",
@@ -1029,6 +1522,32 @@
     223
    ],
    "verdict": "MEETS 2+1"
+  },
+  "wearable": {
+   "pos": {
+    "130": "shirt <wear shirt>",
+    "194": "breeches <wear breeches>",
+    "200": "beautiful ball gown <wear it>"
+   },
+   "neg": {
+    "74": "line <cut line with dagger>"
+   },
+   "census": [
+    13,
+    17,
+    60,
+    84,
+    88,
+    108,
+    125,
+    128,
+    130,
+    133,
+    194,
+    200,
+    223
+   ],
+   "verdict": "MEETS 2+1"
   }
  },
  "Wishbringer.z3.js": {
@@ -1038,7 +1557,12 @@
    "OB": 25,
    "WB": null,
    "NB": 20,
-   "AB": 18
+   "AB": 18,
+   "SB": 27,
+   "FB": null,
+   "TB": 17,
+   "EB": 22,
+   "LB": null
   },
   "steps": 173,
   "completion": "terminal",
@@ -1047,6 +1571,60 @@
   "players": [
    219
   ],
+  "supporter": {
+   "pos": {
+    "18": "service counter <get envelope>",
+    "28": "bunk <get blanket>",
+    "216": "little beast <put blanket on grue>",
+    "230": "gnarled tree trunk <break branch>"
+   },
+   "neg": {
+    "4": "little mailbox <get envelope>",
+    "14": "violet note <get note>",
+    "35": "piranha <look in fountain>",
+    "38": "#38 <get it>",
+    "59": "King Anatinus <get hat>",
+    "60": "dead branch <get branch>",
+    "61": "fountain <look in fountain>",
+    "81": "naughty jokes <give envelope to woman>",
+    "82": "refrigerator <e>",
+    "105": "ticket <buy ticket>",
+    "115": "leaflet <put worm in fountain>",
+    "117": "old bone <d>",
+    "123": "earthworm <open fridge>",
+    "126": "old woman <get can>",
+    "130": "bottle <open fridge>",
+    "150": "wizard's hat <get hat>",
+    "158": "small stone <drop all>",
+    "167": "brass token <look in fountain>",
+    "170": "platypus <look in pit>",
+    "181": "false bottom <get can>",
+    "184": "Miss Voss's things <get note>",
+    "193": "Miss Voss <get note>",
+    "202": "goldfish <look in fountain>",
+    "217": "pit <look in pit>",
+    "229": "metal can <get can>",
+    "235": "glass case <give envelope to woman>",
+    "250": "gold coin <look in fountain>"
+   },
+   "census": [
+    18,
+    28,
+    50,
+    72,
+    73,
+    79,
+    131,
+    159,
+    174,
+    175,
+    188,
+    216,
+    225,
+    230
+   ],
+   "verdict": "MEETS 2+1"
+  },
   "container": {
    "pos": {
     "4": "little mailbox <get envelope>",
@@ -1174,6 +1752,21 @@
    },
    "census": null,
    "verdict": "MEETS 2+1"
+  },
+  "wearable": {
+   "pos": {
+    "89": "pair of 3D glasses <wear glasses>"
+   },
+   "neg": {},
+   "census": [
+    50,
+    89,
+    147,
+    150,
+    175,
+    201
+   ],
+   "verdict": "insufficient (1+0, census 6)"
   }
  },
  "Enchanter.z3.js": {
@@ -1183,7 +1776,12 @@
    "OB": 12,
    "WB": null,
    "NB": 8,
-   "AB": null
+   "AB": null,
+   "SB": 14,
+   "FB": null,
+   "TB": 19,
+   "EB": null,
+   "LB": 22
   },
   "steps": 265,
   "completion": "terminal",
@@ -1192,6 +1790,105 @@
   "players": [
    55
   ],
+  "supporter": {
+   "pos": {
+    "118": "lily pad <learn nitfol>",
+    "133": "fourposter feather bed <examine post>"
+   },
+   "neg": {
+    "3": "bedpost <get gold leaf scroll>",
+    "19": "jug <read scroll>",
+    "20": "dusty book <s>",
+    "24": "ornate scroll <kulcad stairs>",
+    "25": "scribbled scroll <read scroll>",
+    "26": "banquet candles <n>",
+    "30": "tangle of rope <n>",
+    "36": "stained scroll <e>",
+    "40": "kulcad spell <turtle, se and get scroll then nw>",
+    "41": "loaf of bread <get bread>",
+    "53": "cleesh spell <learn nitfol>",
+    "59": "frotz spell <enter shack>",
+    "71": "brittle scroll <turtle, se and get scroll then nw>",
+    "73": "Legend of the Great Implementers <s>",
+    "78": "izyuk spell <kulcad stairs>",
+    "80": "gnusto spell <enter shack>",
+    "81": "gondar spell <reach into hole>",
+    "84": "nitfol spell <enter shack>",
+    "85": "oven <get bread>",
+    "94": "battered lantern <n>",
+    "112": "beautiful, ornamented egg <get egg>",
+    "114": "niche <get black scroll>",
+    "117": "black scroll <get black scroll>",
+    "134": "gold leaf scroll <get gold leaf scroll>",
+    "136": "golden crank <get egg>",
+    "139": "diamond-studded button <get egg>",
+    "141": "exex spell <e>",
+    "144": "spell book <enter shack>",
+    "148": "lapis handle <get egg>",
+    "149": "emerald knob <get egg>",
+    "150": "Legend of the Unseen Terror <s>",
+    "151": "silver slide <get egg>",
+    "153": "festive decorations <n>",
+    "154": "frayed scroll <examine tracks>",
+    "155": "melbor spell <get vellum scroll>",
+    "158": "zifmia spell <read faded scroll>",
+    "169": "sacrificial dagger <s>",
+    "177": "golden cutlery <n>",
+    "182": "quantity of water <read scroll>",
+    "193": "blorb spell <enter shack>",
+    "197": "ozmoo spell <get black scroll>",
+    "204": "black candle <w>",
+    "206": "slightly crumpled scroll <get crumpled scroll>",
+    "210": "rat hole <examine tracks>",
+    "215": "vaxum spell <get gold leaf scroll>",
+    "221": "jewelled box <n>",
+    "223": "luscious food <n>",
+    "224": "tables <n>",
+    "226": "vellum scroll <open box>",
+    "234": "shredded scroll <get egg>",
+    "235": "damp scroll <learn nitfol>",
+    "238": "rezrov spell <read scroll>",
+    "241": "krebf spell <get crumpled scroll>",
+    "245": "faded scroll <read faded scroll>"
+   },
+   "census": [
+    76,
+    88,
+    118,
+    133
+   ],
+   "verdict": "MEETS 2+1"
+  },
+  "lightSource": {
+   "pos": {
+    "94": "battered lantern <turn off lantern>"
+   },
+   "neg": {
+    "16": "rainbow turtle <se>",
+    "19": "jug <enter shack>",
+    "20": "dusty book <s>",
+    "36": "stained scroll <e>",
+    "41": "loaf of bread <s>",
+    "50": "warlock Krill <e>",
+    "71": "brittle scroll <s>",
+    "94": "battered lantern <enter shack>",
+    "107": "worn silver spoon <e>",
+    "112": "beautiful, ornamented egg <u>",
+    "133": "fourposter feather bed <u>",
+    "144": "spell book <s>",
+    "169": "sacrificial dagger <n>",
+    "170": "lighted portrait <e>",
+    "182": "quantity of water <s>",
+    "188": "dragon <e>",
+    "206": "slightly crumpled scroll <n>",
+    "221": "jewelled box <n>"
+   },
+   "census": [
+    175,
+    204
+   ],
+   "verdict": "insufficient (1+18, census 2)"
+  },
   "open": {
    "pos": {
     "19": "jug <open door> already-open",
@@ -1282,7 +1979,12 @@
    "OB": 15,
    "WB": null,
    "NB": 11,
-   "AB": 31
+   "AB": 31,
+   "SB": 17,
+   "FB": null,
+   "TB": 23,
+   "EB": 21,
+   "LB": 25
   },
   "steps": 254,
   "completion": "attempted",
@@ -1291,6 +1993,96 @@
   "players": [
    223
   ],
+  "supporter": {
+   "pos": {
+    "70": "#70 <get all>",
+    "128": "bed <wait>"
+   },
+   "neg": {
+    "4": "troglodyte <aimfiz belboz>",
+    "6": "parchment scroll <aimfiz belboz>",
+    "10": "small key <get key>",
+    "12": "desk drawer <open desk>",
+    "16": "combination dial <aimfiz belboz>",
+    "20": "fweep spell <aimfiz belboz>",
+    "22": "rezrov spell <wait>",
+    "23": "shiny scroll <w>",
+    "24": "ordinary scroll <aimfiz belboz>",
+    "26": "your older self <aimfiz belboz>",
+    "27": "vezza spell <wait>",
+    "35": "soiled scroll <aimfiz belboz>",
+    "37": "glittering scroll <aimfiz belboz>",
+    "53": "ferocious dorn beast <aimfiz belboz>",
+    "55": "#55 <get all>",
+    "61": "calendar <get vial, calendar and matchbook>",
+    "71": "depleted matchbook <get vial, calendar and matchbook>",
+    "73": "gnome <aimfiz belboz>",
+    "74": "hawker <aimfiz belboz>",
+    "78": "aqua vial <aimfiz belboz>",
+    "81": "splattered body <aimfiz belboz>",
+    "88": "moldy scroll <aimfiz belboz>",
+    "93": "golmac spell <aimfiz belboz>",
+    "96": "aimfiz spell <aimfiz belboz>",
+    "100": "you <aimfiz belboz>",
+    "102": "tiny box <aimfiz belboz>",
+    "122": "shimmering scroll <aimfiz belboz>",
+    "127": "Frobar <aimfiz belboz>",
+    "138": "indigo vial <aimfiz belboz>",
+    "139": "spell book <wait>",
+    "140": "izyuk spell <wait>",
+    "143": "dusty scroll <e>",
+    "145": "wooden crate <aimfiz belboz>",
+    "146": "smelly scroll <aimfiz belboz>",
+    "147": "frotz spell <wait>",
+    "150": "Helistar <aimfiz belboz>",
+    "162": "pulver spell <wait>",
+    "165": "vardik spell <aimfiz belboz>",
+    "171": "swanzo spell <aimfiz belboz>",
+    "179": "gaspar spell <w>",
+    "183": "yomin spell <wait>",
+    "184": "cannon <aimfiz belboz>",
+    "205": "orange vial <aimfiz belboz>",
+    "211": "ochre vial <open vial>",
+    "214": "gnusto spell <wait>",
+    "217": "ochre potion <aimfiz belboz>",
+    "221": "author <aimfiz belboz>",
+    "225": "journal <get box and journal>",
+    "232": "sturdy trunk <aimfiz belboz>",
+    "233": "meef spell <e>",
+    "235": "receptacle <get orange vial>",
+    "241": "amber vial <aimfiz belboz>"
+   },
+   "census": [
+    70,
+    128,
+    144,
+    188
+   ],
+   "verdict": "MEETS 2+1"
+  },
+  "wearable": {
+   "pos": {},
+   "neg": {
+    "10": "small key <get key>",
+    "11": "scribbled note <e>",
+    "23": "shiny scroll <get scroll>",
+    "61": "calendar <w>",
+    "71": "depleted matchbook <w>",
+    "102": "tiny box <get box and journal>",
+    "139": "spell book <read note>",
+    "143": "dusty scroll <get scroll>",
+    "205": "orange vial <get orange vial>",
+    "210": "issue of Popular Enchanting <s>",
+    "211": "ochre vial <get vial, calendar and matchbook>",
+    "225": "journal <get box and journal>"
+   },
+   "census": [
+    60,
+    70,
+    95
+   ],
+   "verdict": "insufficient (0+12, census 3)"
+  },
   "open": {
    "pos": {
     "12": "desk drawer <open desk> set",
@@ -1383,7 +2175,12 @@
    "OB": 15,
    "WB": null,
    "NB": 24,
-   "AB": 31
+   "AB": 31,
+   "SB": 17,
+   "FB": null,
+   "TB": null,
+   "EB": 21,
+   "LB": 26
   },
   "steps": 213,
   "completion": "incomplete",
@@ -1393,6 +2190,70 @@
    211,
    78
   ],
+  "supporter": {
+   "pos": {
+    "109": "lower bunk <take ash tray>"
+   },
+   "neg": {
+    "2": "Rimshaw the Incomparable <give ticket to rimshaw>",
+    "5": "Jenny <show case to jenny>",
+    "7": "Andrew Jenny <give case to jenny>",
+    "14": "skeleton key <drop all except radio>",
+    "16": "rawhide bullwhip <take whip>",
+    "18": "radio dial <take radio>",
+    "27": "scrap of newsprint <drop all except radio>",
+    "44": "trailer door <close door>",
+    "48": "transistor radio <take stool>",
+    "65": "bucket <n>",
+    "71": "blue dot <take ticket>",
+    "122": "your ticket <take ticket>",
+    "129": "fiberglass pole <drop all except radio>",
+    "133": "stool <drop all except radio>",
+    "134": "helium <take balloon>",
+    "149": "cage door <open cage>",
+    "153": "detective <listen to conversation>",
+    "164": "cage door <open door>",
+    "165": "balloon <take balloon>",
+    "200": "Andrew <show case to jenny>",
+    "205": "fat lady <take stool>",
+    "207": "guard <untie balloon>",
+    "213": "compartment <open compartment>",
+    "214": "ash tray <take ash tray>",
+    "219": "Comrade Thumb <help midget>",
+    "224": "Billy Monday <ask pitchman about dr nostrum>",
+    "227": "keister <ask pitchman about dr nostrum>",
+    "231": "pink dot <take ticket>"
+   },
+   "census": [
+    3,
+    20,
+    54,
+    76,
+    96,
+    103,
+    109,
+    154,
+    185
+   ],
+   "verdict": "insufficient (1+28, census 9)"
+  },
+  "wearable": {
+   "pos": {
+    "93": "clown mask <wear clown mask>"
+   },
+   "neg": {},
+   "census": [
+    36,
+    76,
+    85,
+    93,
+    104,
+    106,
+    208,
+    222
+   ],
+   "verdict": "insufficient (1+0, census 8)"
+  },
   "container": {
    "pos": {
     "65": "bucket <throw meat in passage>",
@@ -1533,7 +2394,12 @@
    "OB": 13,
    "WB": null,
    "NB": 15,
-   "AB": null
+   "AB": null,
+   "SB": 8,
+   "FB": 1,
+   "TB": 24,
+   "EB": null,
+   "LB": 22
   },
   "steps": 167,
   "completion": "incomplete",
@@ -1644,6 +2510,63 @@
    ],
    "verdict": "MEETS 2+1"
   },
+  "supporter": {
+   "pos": {
+    "2": "keyring <give carton to hacker>",
+    "62": "chair <click on edit>",
+    "160": "kitchen counter <w>",
+    "191": "pc <give carton to hacker>",
+    "235": "floor waxer <smash cabinet>"
+   },
+   "neg": {
+    "8": "plastic container <get container>",
+    "10": "cylindrical hole <drop plug>",
+    "13": "program <click on edit>",
+    "43": "outlet <click on edit>",
+    "53": "metal flask <u>",
+    "54": "power cord <throw axe at cord>",
+    "58": "cardboard carton <get coke and carton>",
+    "59": "#59 <press 4>",
+    "74": "elevator <press down button>",
+    "84": "door <open door>",
+    "86": "microwave oven <close oven>",
+    "88": "emergency cabinet <smash cabinet>",
+    "92": "tub of dirt <get hand>",
+    "102": "office <throw axe at cord>",
+    "103": "ladder <throw stone at creature>",
+    "105": "refrigerator <open fridge>",
+    "120": "access panel <open panel>",
+    "126": "maintenance man <climb rope>",
+    "129": "hacker <give carton to hacker>",
+    "147": "dome <open door>",
+    "163": "roof door <unlock door with key>",
+    "169": "up-arrow <press down button>",
+    "189": "human hand <get hand>",
+    "209": "down-arrow <press down button>",
+    "236": "ropy strand <climb rope>",
+    "245": "outside door <throw axe at cord>"
+   },
+   "census": [
+    2,
+    62,
+    75,
+    77,
+    80,
+    82,
+    119,
+    143,
+    154,
+    160,
+    188,
+    191,
+    194,
+    197,
+    212,
+    235,
+    251
+   ],
+   "verdict": "MEETS 2+1"
+  },
   "open": {
    "pos": {
     "8": "plastic container <open container> set",
@@ -1672,6 +2595,16 @@
    "census": null,
    "verdict": "MEETS 2+1"
   },
+  "lightSource": {
+   "pos": {
+    "132": "flashlight <light flashlight>"
+   },
+   "neg": {},
+   "census": [
+    132
+   ],
+   "verdict": "insufficient (1+0, census 1)"
+  },
   "on": {
    "pos": {
     "132": "flashlight <light flashlight>"
@@ -1698,7 +2631,12 @@
    "OB": 11,
    "WB": 12,
    "NB": 5,
-   "AB": null
+   "AB": null,
+   "SB": null,
+   "FB": 27,
+   "TB": 25,
+   "EB": 22,
+   "LB": 21
   },
   "steps": 160,
   "completion": "incomplete",
@@ -1768,7 +2706,12 @@
    "OB": 12,
    "WB": null,
    "NB": 15,
-   "AB": 21
+   "AB": 21,
+   "SB": 26,
+   "FB": 5,
+   "TB": 20,
+   "EB": 4,
+   "LB": 6
   },
   "steps": 103,
   "completion": "incomplete",
@@ -1777,6 +2720,46 @@
   "players": [
    202
   ],
+  "wearable": {
+   "pos": {
+    "39": "golden amulet <get amulet>"
+   },
+   "neg": {
+    "7": "strange key <get key>",
+    "17": "Frobozz Magic Grue Repellent <get can>",
+    "29": "chest <get chest>",
+    "31": "wooden staff <get chest>",
+    "34": "piece of waybread <get bread>",
+    "41": "torch <get torch>",
+    "198": "lamp <get lamp>"
+   },
+   "census": [
+    39,
+    65,
+    66,
+    82
+   ],
+   "verdict": "insufficient (1+7, census 4)"
+  },
+  "supporter": {
+   "pos": {},
+   "neg": {
+    "27": "man <get chest>",
+    "28": "pile of assorted valuables <get chest>",
+    "65": "cloak <kill figure with sword>",
+    "66": "hood <kill figure with sword>",
+    "67": "hooded figure <kill figure with sword>",
+    "196": "great rock <s>",
+    "197": "sword <s>"
+   },
+   "census": [
+    81,
+    84,
+    87,
+    222
+   ],
+   "verdict": "insufficient (0+7, census 4)"
+  },
   "on": {
    "pos": {
     "198": "lamp <light lamp>"
@@ -1819,21 +2802,60 @@
   }
  },
  "Spellbreaker.z3.js": {
-  "file": "2026-10-11-zil-walk-m4.json",
+  "file": "2026-10-11-zil-walk-ms5.json",
   "bits": {
    "CB": 27,
    "OB": 21,
    "WB": null,
    "NB": 8,
-   "AB": null
+   "AB": null,
+   "SB": 3,
+   "FB": null,
+   "TB": 24,
+   "EB": null,
+   "LB": null
   },
-  "steps": 135,
+  "steps": 214,
   "completion": "incomplete",
-  "end": "est exit leads into darkness, but the doorway to the north opens onto a seemingly normal street scen",
-  "rooms": "1/8",
+  "end": " a deep well of darkness, as the figure recedes into infinite distances. Boneyard Boneyard This is a",
+  "rooms": "1/11",
   "players": [
    22
   ],
+  "supporter": {
+   "pos": {},
+   "neg": {
+    "14": "rezrov spell <take bread>",
+    "31": "dirty scroll <pull weed>",
+    "35": "lesoch spell <take bread>",
+    "43": "chunk of rye bread <blorple 2>",
+    "52": "it <blorple 2>",
+    "57": "blorple spell <take bread>",
+    "68": "throck spell <pull weed>",
+    "144": "spell book <take bread>",
+    "149": "magic burin <blorple 2>",
+    "150": "frotz spell <take bread>",
+    "170": "knife <blorple 2>",
+    "178": "yomin spell <take bread>",
+    "204": "gnusto spell <take bread>",
+    "229": "malyon spell <take bread>",
+    "238": "cube <e>",
+    "240": "jindak spell <take bread>",
+    "248": "mouth <look in mouth>"
+   },
+   "census": [
+    42,
+    50,
+    73,
+    78,
+    95,
+    139,
+    183,
+    212,
+    213
+   ],
+   "verdict": "insufficient (0+17, census 9)"
+  },
   "open": {
    "pos": {
     "144": "spell book <open zipper> already-open"
@@ -1850,7 +2872,9 @@
    "pos": {
     "73": "#73 <take 1>"
    },
-   "neg": {},
+   "neg": {
+    "248": "mouth <look in mouth>"
+   },
    "census": [
     4,
     13,
@@ -1888,7 +2912,7 @@
     214,
     232
    ],
-   "verdict": "insufficient (1+0, census 35)"
+   "verdict": "insufficient (1+1, census 35)"
   }
  },
  "Hitchhik.z5.js": {
@@ -1898,7 +2922,12 @@
    "OB": 39,
    "WB": null,
    "NB": 45,
-   "AB": 42
+   "AB": 42,
+   "SB": 23,
+   "FB": null,
+   "TB": 41,
+   "EB": 25,
+   "LB": 35
   },
   "steps": 71,
   "completion": "incomplete",
@@ -1940,6 +2969,64 @@
     219,
     230,
     231
+   ],
+   "verdict": "MEETS 2+1"
+  },
+  "wearable": {
+   "pos": {
+    "206": "your gown <wear gown>"
+   },
+   "neg": {},
+   "census": [
+    58,
+    206
+   ],
+   "verdict": "insufficient (1+0, census 2)"
+  },
+  "supporter": {
+   "pos": {
+    "121": "towel <put towel over drain>",
+    "164": "poetry appreciation chair <enjoy poetry>"
+   },
+   "neg": {
+    "7": "atomic vector plotter <follow ford>",
+    "9": "Trillian <follow ford>",
+    "18": "guarantee <follow ford>",
+    "31": "toothbrush <follow ford>",
+    "32": "small receptacle <follow ford>",
+    "73": "circuit board <follow ford>",
+    "79": "tea <follow ford>",
+    "80": "satchel <follow ford>",
+    "96": "generator switch <follow ford>",
+    "105": "flathead screwdriver <follow ford>",
+    "118": "spare Improbability Drive <follow ford>",
+    "121": "towel <get towel>",
+    "126": "tool box <follow ford>",
+    "128": "green button <follow ford>",
+    "141": "small plug <follow ford>",
+    "143": "dipswitch <follow ford>",
+    "155": "Mr. Prosser <lie down in front of bulldozer>",
+    "158": "handbag <follow ford>",
+    "159": "digital watch <lie down in front of bulldozer>",
+    "182": "Nutrimat <follow ford>",
+    "183": "shipping carton <follow ford>",
+    "195": "large plug <follow ford>",
+    "197": "red button <follow ford>",
+    "198": "loose pile of junk mail <follow ford>",
+    "202": "it <follow ford>",
+    "206": "your gown <look in pocket>",
+    "211": "electronic Sub-Etha signaling device <follow ford>",
+    "214": "touch-sensitive pad <follow ford>",
+    "217": "glass case <follow ford>",
+    "222": "Advanced Tea Substitute <follow ford>",
+    "224": "long, dangly bit <follow ford>"
+   },
+   "census": [
+    49,
+    58,
+    114,
+    164,
+    185
    ],
    "verdict": "MEETS 2+1"
   },
