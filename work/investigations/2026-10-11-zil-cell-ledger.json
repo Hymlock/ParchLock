@@ -1,0 +1,152 @@
+{
+ "Zork1-TheGreatUndergroundEmpire.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 17 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "Zork2-TheWizardofFrobozz.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 17 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "Zork3-TheDungeonMaster.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 20 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "Enchanter.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 19 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "Hitchhik.z5.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 41 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed); walk witness MEETS 2+1 (2026-10-11-zil-walk-n4.json)"
+  }
+ },
+ "Ballyhoo.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 22 = source TAKEBIT (tp 38/fp 1); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "Cutthroats.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 7 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed); walk witness MEETS 2+1 (2026-10-11-zil-walk-n1.json)"
+  }
+ },
+ "Deadline.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 19 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "Infidel.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 15 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "HollywoodHijinx.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 17 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "LeatherGoddessesofPhobos.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 23 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "Moonmist.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 26 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "PlunderedHearts.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 23 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "Borderzo.z5.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 42 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "TheLurkingHorror.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 24 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed); walk witness MEETS 2+1 (2026-10-11-zil-walk-n3.json)"
+  }
+ },
+ "Planetfall.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 25 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "Seastalker.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 23 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "Sorcerer.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 23 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed); walk witness MEETS 2+1 (2026-10-11-zil-walk-n3.json)"
+  }
+ },
+ "Spellbreaker.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 24 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "Starcross.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 16 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "Stationfall.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 23 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "Suspect.z3.js": {
+  "takeable": {
+   "s": "UD",
+   "r": "D214 returns null (not confirmed ZIL family per D198); so no measured take bit is applied; unknown until Suspect's family routing (D198) is settled (Codex lane A)"
+  }
+ },
+ "Suspended.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 18 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "Wishbringer.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 17 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "TheWitness.z3.js": {
+  "takeable": {
+   "s": "S",
+   "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 22 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ }
+}

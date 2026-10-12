@@ -228,7 +228,7 @@
   }
  },
  "Cutthroats.z3.js": {
-  "file": "2026-10-11-zil-walk-m1.json",
+  "file": "2026-10-11-zil-walk-n1.json",
   "bits": {
    "CB": 11,
    "OB": 21,
@@ -255,13 +255,14 @@
     "108": "chair <sit>",
     "109": "table <order drink>",
     "146": "bed <look out window>",
-    "191": "#191 <get envelope>"
+    "191": "#191 <give $56>"
    },
    "neg": {
     "1": "dinner plate <examine plate>",
+    "4": "#4 <give $56>",
     "6": "wrist watch <wait for johnny>",
-    "8": "Weasel's knife <eat food>",
-    "9": "the Weasel <eat food>",
+    "8": "Weasel's knife <sit>",
+    "9": "the Weasel <sit>",
     "10": "Pete's eyepatch <sit>",
     "11": "Pete the Rat <sit>",
     "12": "Johnny Red <examine plate>",
@@ -278,8 +279,24 @@
     "89": "large air compressor <wait for johnny>",
     "110": "small eyepatch <sit>",
     "111": "parrot <sit>",
+    "113": "diving cage <give $56>",
+    "114": "set of nautical charts <give $56>",
+    "115": "shark repellent canister <give $56>",
+    "116": "flashlight <give $56>",
+    "117": "portable electromagnet <give $56>",
+    "118": "diving book <give $56>",
+    "119": "location box <give $56>",
+    "120": "small air compressor <give $56>",
     "121": "glob of putty <wait for johnny>",
     "122": "tube of putty <wait for johnny>",
+    "123": "anchor <give $56>",
+    "124": "C battery <give $56>",
+    "125": "net <give $56>",
+    "126": "dry cell <give $56>",
+    "127": "winch <give $56>",
+    "128": "compass <give $56>",
+    "129": "spear gun <give $56>",
+    "130": "price list <give $56>",
     "133": "envelope <examine compressor>",
     "136": "air tank <look out window>",
     "137": "diving mask <look out window>",
@@ -305,8 +322,8 @@
     "193": "wallpaper <look out window>",
     "196": "rocky coastline <wait for johnny>",
     "197": "abandoned field <open window>",
-    "200": "Mary Margaret <give $56>",
-    "201": "Night Wind <give $56>",
+    "200": "Mary Margaret <get out of bunk>",
+    "201": "Night Wind <get c battery>",
     "203": "lighthouse <wait for johnny>",
     "213": "deck <get c battery>"
    },
@@ -350,8 +367,8 @@
     "193": "wallpaper <look out window>",
     "196": "rocky coastline <wait for johnny>",
     "197": "abandoned field <open window>",
-    "200": "Mary Margaret <give $56>",
-    "201": "Night Wind <give $56>",
+    "200": "Mary Margaret <get out of bunk>",
+    "201": "Night Wind <get c battery>",
     "203": "lighthouse <wait for johnny>",
     "213": "deck <get c battery>"
    },
@@ -415,6 +432,46 @@
    "census": null,
    "verdict": "MEETS 2+1"
   },
+  "takeable": {
+   "pos": {
+    "6": "wrist watch <get watch>",
+    "64": "portable drill <get drill>",
+    "133": "envelope <get envelope>",
+    "136": "air tank <get all from closet>",
+    "137": "diving mask <get all from closet>",
+    "138": "pair of flippers <get all from closet>",
+    "139": "wet suit <get all from closet>",
+    "143": "room key <get passbook and room key>",
+    "144": "Mariners' Trust passbook <get passbook and room key>"
+   },
+   "neg": {
+    "170": "such thing <turn on flashlight>"
+   },
+   "census": [
+    6,
+    7,
+    20,
+    23,
+    28,
+    34,
+    42,
+    64,
+    81,
+    85,
+    121,
+    130,
+    133,
+    136,
+    137,
+    138,
+    139,
+    141,
+    142,
+    143,
+    144
+   ],
+   "verdict": "MEETS 2+1"
+  },
   "wearable": {
    "pos": {
     "6": "wrist watch <get passbook and room key>",
@@ -438,6 +495,16 @@
     223
    ],
    "verdict": "MEETS 2+1"
+  },
+  "edible": {
+   "pos": {
+    "105": "meal <eat food>"
+   },
+   "neg": {},
+   "census": [
+    105
+   ],
+   "verdict": "insufficient (1+0, census 1)"
   },
   "worn": {
    "pos": {
@@ -933,7 +1000,7 @@
   }
  },
  "Infidel.z3.js": {
-  "file": "2026-10-11-zil-walk-m2.json",
+  "file": "2026-10-11-zil-walk-n2.json",
   "bits": {
    "CB": 20,
    "OB": 25,
@@ -1037,6 +1104,100 @@
     249
    ],
    "verdict": "MEETS 2+1"
+  },
+  "takeable": {
+   "pos": {
+    "7": "silver chalice <get silver chalice>",
+    "8": "golden chalice <get golden chalice>",
+    "28": "canteen <get canteen>",
+    "31": "knapsack <get knapsack>",
+    "32": "rope <get rope>",
+    "33": "shovel <get shovel>",
+    "34": "piece of dried beef <get beef>",
+    "35": "ancient map <get map>",
+    "36": "stone cube <insert cube in opening>",
+    "37": "pick axe <get pickaxe>",
+    "40": "broken lock <remove padlock>",
+    "49": "matchbook <get matchbook>",
+    "85": "third brick <remove third brick>",
+    "87": "fifth brick <remove fifth brick>",
+    "92": "first brick <remove first brick>",
+    "103": "papyrus scroll <get scroll>",
+    "104": "wooden beam <get beam>",
+    "105": "shim <remove shim>",
+    "132": "broken head <get head>",
+    "133": "large statue <roll statue sw>",
+    "136": "opal cluster <get opal cluster>",
+    "138": "emerald cluster <get emerald cluster>",
+    "140": "ruby cluster <get ruby cluster>",
+    "142": "golden cluster <get golden cluster>",
+    "143": "diamond cluster <get diamond cluster>",
+    "149": "ancient book <get book>",
+    "150": "scarab <get scarab>",
+    "197": "pink jar <put jar in knapsack>",
+    "198": "bronze torch <get torch>"
+   },
+   "neg": {},
+   "census": [
+    2,
+    4,
+    7,
+    8,
+    22,
+    23,
+    27,
+    28,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    40,
+    41,
+    42,
+    44,
+    45,
+    47,
+    48,
+    49,
+    50,
+    51,
+    77,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    103,
+    104,
+    105,
+    132,
+    133,
+    136,
+    138,
+    140,
+    142,
+    143,
+    146,
+    147,
+    149,
+    150,
+    161,
+    163,
+    182,
+    183,
+    197,
+    198,
+    215
+   ],
+   "verdict": "insufficient (29+0, census 57)"
   },
   "open": {
    "pos": {
@@ -1146,6 +1307,18 @@
     242
    ],
    "verdict": "insufficient (13+0, census 52)"
+  },
+  "edible": {
+   "pos": {
+    "34": "piece of dried beef <eat beef>"
+   },
+   "neg": {
+    "74": "quantity of water <drink water>"
+   },
+   "census": [
+    34
+   ],
+   "verdict": "insufficient (1+1, census 1)"
   },
   "on": {
    "pos": {
@@ -1973,7 +2146,7 @@
   }
  },
  "Sorcerer.z3.js": {
-  "file": "2026-10-11-zil-walk-m3.json",
+  "file": "2026-10-11-zil-walk-n3.json",
   "bits": {
    "CB": 27,
    "OB": 15,
@@ -2057,6 +2230,79 @@
     128,
     144,
     188
+   ],
+   "verdict": "MEETS 2+1"
+  },
+  "takeable": {
+   "pos": {
+    "10": "small key <get key>",
+    "11": "scribbled note <read note>",
+    "23": "shiny scroll <get scroll>",
+    "61": "calendar <get vial, calendar and matchbook>",
+    "71": "depleted matchbook <get vial, calendar and matchbook>",
+    "102": "tiny box <get box and journal>",
+    "139": "spell book <frotz book>",
+    "143": "dusty scroll <get scroll>",
+    "205": "orange vial <get orange vial>",
+    "211": "ochre vial <get vial, calendar and matchbook>",
+    "225": "journal <get box and journal>"
+   },
+   "neg": {
+    "7": "your hand <get all>",
+    "15": "passage <get all>",
+    "29": "yourself <read it>",
+    "30": "black button <read it>",
+    "32": "cave <read it>",
+    "55": "#55 <get all>",
+    "62": "sleep <get all>",
+    "68": "sky <get all>",
+    "75": "wall <get all>",
+    "76": "yourself <get all>",
+    "130": "room <get all>",
+    "134": "dust and debris <get all>",
+    "174": "lurking grue <get all>",
+    "196": "ground <get all>",
+    "200": "something <read scroll>",
+    "204": "number <get all>",
+    "213": "ceiling <get all>"
+   },
+   "census": [
+    6,
+    10,
+    11,
+    23,
+    24,
+    35,
+    37,
+    41,
+    60,
+    61,
+    64,
+    65,
+    71,
+    77,
+    78,
+    83,
+    87,
+    88,
+    95,
+    102,
+    118,
+    122,
+    138,
+    139,
+    143,
+    145,
+    146,
+    167,
+    178,
+    192,
+    205,
+    207,
+    210,
+    211,
+    225,
+    241
    ],
    "verdict": "MEETS 2+1"
   },
@@ -2169,7 +2415,7 @@
   }
  },
  "Ballyhoo.z3.js": {
-  "file": "2026-10-11-zil-walk-m3.json",
+  "file": "2026-10-11-zil-walk-n3.json",
   "bits": {
    "CB": 23,
    "OB": 15,
@@ -2388,7 +2634,7 @@
   }
  },
  "TheLurkingHorror.z3.js": {
-  "file": "2026-10-11-zil-walk-m3.json",
+  "file": "2026-10-11-zil-walk-n3.json",
   "bits": {
    "CB": 27,
    "OB": 13,
@@ -2403,7 +2649,7 @@
   },
   "steps": 167,
   "completion": "incomplete",
-  "end": "n Your score is 25 of a possible 100, in 175 moves. Graded on the curve, you are in the class of Jun",
+  "end": "urns175 in in Your score is 25 of a possible 100, in 175 moves. Graded on the curve, you are in the ",
   "rooms": "1/28",
   "players": [
    56
@@ -2595,6 +2841,75 @@
    "census": null,
    "verdict": "MEETS 2+1"
   },
+  "takeable": {
+   "pos": {
+    "8": "plastic container <get container>",
+    "41": "fire axe <get axe>",
+    "53": "metal flask <get flask>",
+    "58": "cardboard carton <get coke and carton>",
+    "61": "two liter bottle of Classic Coke <get coke and carton>",
+    "104": "pair of rubber boots <get boots>",
+    "132": "flashlight <get flashlight>",
+    "156": "crowbar <get gloves and crowbar>",
+    "167": "piece of paper <get paper>",
+    "189": "human hand <get hand>",
+    "203": "pair of electrician's gloves <get gloves and crowbar>",
+    "242": "bronze plug <remove plug>"
+   },
+   "neg": {
+    "89": "elevator doors <d>",
+    "100": "urchin <press 4>",
+    "197": "forklift <get carton>"
+   },
+   "census": [
+    2,
+    3,
+    7,
+    8,
+    12,
+    14,
+    18,
+    23,
+    40,
+    41,
+    45,
+    48,
+    53,
+    58,
+    61,
+    62,
+    75,
+    77,
+    80,
+    82,
+    90,
+    95,
+    96,
+    97,
+    104,
+    132,
+    133,
+    135,
+    156,
+    159,
+    166,
+    167,
+    175,
+    183,
+    186,
+    188,
+    189,
+    191,
+    203,
+    217,
+    242,
+    243,
+    244,
+    246,
+    252
+   ],
+   "verdict": "MEETS 2+1"
+  },
   "lightSource": {
    "pos": {
     "132": "flashlight <light flashlight>"
@@ -2625,7 +2940,7 @@
   }
  },
  "Planetfall.z3.js": {
-  "file": "2026-10-11-zil-walk-m5.json",
+  "file": "2026-10-11-zil-walk-n4.json",
   "bits": {
    "CB": 24,
    "OB": 11,
@@ -2645,6 +2960,68 @@
   "players": [
    236
   ],
+  "takeable": {
+   "pos": {
+    "124": "curved metal bar <get bar>",
+    "125": "glass flask <get flask>",
+    "144": "lower elevator access card <get all>",
+    "146": "shuttle access card <get shuttle card>",
+    "147": "upper elevator access card <get kitchen card and upper card>",
+    "148": "kitchen access card <get kitchen card and upper card>",
+    "163": "canteen <get canteen>",
+    "169": "ladder <get ladder>",
+    "172": "padlock <remove padlock>",
+    "213": "survival kit <get kit>"
+   },
+   "neg": {},
+   "census": [
+    6,
+    7,
+    9,
+    21,
+    22,
+    25,
+    26,
+    35,
+    36,
+    37,
+    43,
+    45,
+    59,
+    61,
+    64,
+    65,
+    80,
+    81,
+    82,
+    123,
+    124,
+    125,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    144,
+    146,
+    147,
+    148,
+    158,
+    163,
+    169,
+    170,
+    172,
+    213,
+    214,
+    217,
+    224,
+    225,
+    226,
+    227
+   ],
+   "verdict": "insufficient (10+0, census 44)"
+  },
   "open": {
    "pos": {
     "125": "glass flask <open floyd> already-open",
@@ -2916,7 +3293,7 @@
   }
  },
  "Hitchhik.z5.js": {
-  "file": "2026-10-11-zil-walk-m4.json",
+  "file": "2026-10-11-zil-walk-n4.json",
   "bits": {
    "CB": 40,
    "OB": 39,
@@ -2929,26 +3306,57 @@
    "EB": 25,
    "LB": 35
   },
-  "steps": 71,
-  "completion": "incomplete",
-  "end": "tory recorded. 0 items Yourselfyou glass case glass case Guards Guards door door switch switch keybo",
-  "rooms": "1/9",
+  "steps": 361,
+  "completion": "attempted",
+  "end": "",
+  "rooms": "1/17",
   "players": [
    19,
    20
   ],
   "animate": {
    "pos": {
+    "33": "Marvin <starboard>",
+    "52": "Eddie (the shipboard computer) <show warranty>",
     "139": "Vogon Captain <z>",
+    "182": "Nutrimat <open panel>",
     "230": "barman <enter pub>"
    },
    "neg": {
+    "7": "atomic vector plotter <show warranty>",
+    "18": "guarantee <show warranty>",
     "31": "toothbrush <turn on light>",
+    "32": "small receptacle <show warranty>",
+    "61": "name <show warranty>",
+    "73": "circuit board <show warranty>",
+    "75": "pocket fluff <show warranty>",
+    "80": "satchel <show warranty>",
+    "83": "sauna <show warranty>",
+    "85": "ionic diffusion rasp <look>",
+    "96": "generator switch <show warranty>",
     "105": "flathead screwdriver <turn on light>",
+    "107": "pair of hypersonic pliers <look>",
+    "118": "spare Improbability Drive <up>",
+    "121": "towel <show warranty>",
+    "128": "green button <show warranty>",
+    "141": "small plug <show warranty>",
+    "143": "dipswitch <show warranty>",
     "151": "shelf of items <enter pub>",
+    "153": "pair of tweezers <show warranty>",
+    "158": "handbag <up>",
+    "181": "babel fish <show warranty>",
+    "183": "shipping carton <port>",
     "186": "babel fish dispenser <examine shadow>",
+    "197": "red button <show warranty>",
+    "201": "The Hitchhiker's Guide <show warranty>",
     "206": "your gown <look in pocket>",
-    "217": "glass case <examine shadow>"
+    "211": "electronic Sub-Etha signaling device <show warranty>",
+    "216": "thing your aunt gave you which you don't know what it is <show warranty>",
+    "217": "glass case <examine shadow>",
+    "222": "Advanced Tea Substitute <show warranty>",
+    "224": "long, dangly bit <show warranty>",
+    "235": "sales brochure <aft>",
+    "236": "molecular hyperwave pincer <read brochure>"
    },
    "census": [
     4,
@@ -2976,12 +3384,14 @@
    "pos": {
     "206": "your gown <wear gown>"
    },
-   "neg": {},
+   "neg": {
+    "224": "long, dangly bit <remove bit>"
+   },
    "census": [
     58,
     206
    ],
-   "verdict": "insufficient (1+0, census 2)"
+   "verdict": "insufficient (1+1, census 2)"
   },
   "supporter": {
    "pos": {
@@ -2995,6 +3405,7 @@
     "31": "toothbrush <follow ford>",
     "32": "small receptacle <follow ford>",
     "73": "circuit board <follow ford>",
+    "75": "pocket fluff <put all in thing>",
     "79": "tea <follow ford>",
     "80": "satchel <follow ford>",
     "96": "generator switch <follow ford>",
@@ -3005,21 +3416,27 @@
     "128": "green button <follow ford>",
     "141": "small plug <follow ford>",
     "143": "dipswitch <follow ford>",
+    "144": "slot <get cup>",
+    "153": "pair of tweezers <put all in thing>",
     "155": "Mr. Prosser <lie down in front of bulldozer>",
     "158": "handbag <follow ford>",
     "159": "digital watch <lie down in front of bulldozer>",
+    "181": "babel fish <put all into thing>",
     "182": "Nutrimat <follow ford>",
     "183": "shipping carton <follow ford>",
     "195": "large plug <follow ford>",
     "197": "red button <follow ford>",
     "198": "loose pile of junk mail <follow ford>",
+    "201": "The Hitchhiker's Guide <put all into thing>",
     "202": "it <follow ford>",
     "206": "your gown <look in pocket>",
     "211": "electronic Sub-Etha signaling device <follow ford>",
     "214": "touch-sensitive pad <follow ford>",
+    "216": "thing your aunt gave you which you don't know what it is <touch pad>",
     "217": "glass case <follow ford>",
     "222": "Advanced Tea Substitute <follow ford>",
-    "224": "long, dangly bit <follow ford>"
+    "224": "long, dangly bit <follow ford>",
+    "235": "sales brochure <put all into thing>"
    },
    "census": [
     49,
@@ -3032,9 +3449,18 @@
   },
   "container": {
    "pos": {
-    "206": "your gown <look in pocket>"
+    "7": "atomic vector plotter <remove bit>",
+    "144": "slot <get cup>",
+    "158": "handbag <open bag>",
+    "182": "Nutrimat <open panel>",
+    "206": "your gown <look in pocket>",
+    "216": "thing your aunt gave you which you don't know what it is <drop plotter>",
+    "217": "glass case <get plotter>"
    },
-   "neg": {},
+   "neg": {
+    "58": "#58 <get tea>",
+    "202": "it <get fluff>"
+   },
    "census": [
     7,
     9,
@@ -3059,7 +3485,121 @@
     216,
     217
    ],
-   "verdict": "insufficient (1+0, census 22)"
+   "verdict": "MEETS 2+1"
+  },
+  "takeable": {
+   "pos": {
+    "7": "atomic vector plotter <get plotter>",
+    "31": "toothbrush <get all>",
+    "73": "circuit board <take circuit>",
+    "75": "pocket fluff <put all into thing>",
+    "80": "satchel <get satchel>",
+    "85": "ionic diffusion rasp <get rasp>",
+    "105": "flathead screwdriver <get all>",
+    "107": "pair of hypersonic pliers <get pliers>",
+    "116": "buffered analgesic <take analgesic>",
+    "118": "spare Improbability Drive <get improbability drive>",
+    "121": "towel <get towel>",
+    "153": "pair of tweezers <get tweezers>",
+    "190": "telephone <get all>",
+    "201": "The Hitchhiker's Guide <put all into thing>",
+    "206": "your gown <get gown>",
+    "211": "electronic Sub-Etha signaling device <get device>",
+    "222": "Advanced Tea Substitute <get cup>",
+    "235": "sales brochure <read brochure>",
+    "236": "molecular hyperwave pincer <take pincer>"
+   },
+   "neg": {
+    "3": "small hole <get all>",
+    "14": "it <get all>",
+    "22": "metal hook <get all>",
+    "30": "#30 <stand up>",
+    "43": "keyboard <get all>",
+    "61": "name <get all>",
+    "63": "your curtains <get all>",
+    "64": "drain <get all>",
+    "84": "tiny robot panel <get all>",
+    "102": "it <get all>",
+    "114": "bed <get all>",
+    "117": "dispenser button <get all>",
+    "134": "switch <get all>",
+    "186": "babel fish dispenser <get all>",
+    "193": "bedroom <get all>",
+    "200": "corridor door <get all>",
+    "217": "glass case <get all>",
+    "224": "long, dangly bit <remove bit>"
+   },
+   "census": [
+    7,
+    8,
+    17,
+    27,
+    31,
+    55,
+    73,
+    75,
+    76,
+    78,
+    79,
+    80,
+    81,
+    85,
+    86,
+    90,
+    105,
+    107,
+    116,
+    118,
+    121,
+    122,
+    126,
+    136,
+    147,
+    153,
+    158,
+    176,
+    181,
+    183,
+    187,
+    190,
+    196,
+    198,
+    201,
+    204,
+    206,
+    208,
+    211,
+    216,
+    222,
+    223,
+    232,
+    235,
+    236
+   ],
+   "verdict": "MEETS 2+1"
+  },
+  "open": {
+   "pos": {
+    "158": "handbag <open bag> set",
+    "182": "Nutrimat <open panel> set",
+    "206": "your gown <open panel> already-open",
+    "211": "electronic Sub-Etha signaling device <open panel> already-open",
+    "216": "thing your aunt gave you which you don't know what it is <open panel> already-open"
+   },
+   "neg": {
+    "7": "atomic vector plotter <open bag> tested-closed",
+    "73": "circuit board <open bag> tested-closed",
+    "80": "satchel <open bag> tested-closed",
+    "118": "spare Improbability Drive <open bag> tested-closed",
+    "158": "handbag <open bag> tested-closed",
+    "180": "screening door <open panel> tested-closed",
+    "182": "Nutrimat <open panel> tested-closed",
+    "183": "shipping carton <open panel> tested-closed",
+    "202": "it <open panel> tested-closed",
+    "214": "touch-sensitive pad <open panel> tested-closed"
+   },
+   "census": null,
+   "verdict": "MEETS 2+1"
   }
  }
 }
