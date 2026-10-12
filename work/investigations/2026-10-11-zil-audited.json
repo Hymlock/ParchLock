@@ -28,5 +28,8 @@
  "Borderzo.z5.js": {
   "container": "Codex AUDIT PASS #3486 (original-scene + pinned V-OPEN)",
   "open": "Codex AUDIT PASS #3486"
+ },
+ "LeatherGoddessesofPhobos.z3.js": {
+  "playerRoot": "Codex AUDIT PASS #3504 (playerObject 200; 5 source controls + native Cell route)"
  }
 }
