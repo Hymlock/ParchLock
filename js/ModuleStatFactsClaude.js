@@ -45,6 +45,13 @@ var ModuleStatFactsClaude = {
         "playerGlobal": 47,
         "attributeMap": { "open": 15, "isOpen": 15 }
     },
+    // Leather Goddesses of Phobos (ZIL): Q8 player root = constant PROTAGONIST object 200 (historicalsource/leathergoddesses 17cbbc1
+    // globals.zil 908 OBJECT PROTAGONIST DESC "it" ACTORBIT). No PLAYER global exists; WINNER G189 is mutable (mars.zil sets MITRE/SULTAN/
+    // SULTANS-WIFE), so playerGlobal would be wrong after an order. Binary has 19 store G189<-200 = 19 SETG WINNER ,PROTAGONIST in source;
+    // object 200 ("it") holds the flashlight at boot. App previously read player 16 with an empty inventory (Codex #3492).
+    "103324c3b7332528cc36cc15ce15ae593af5a33ac2b75fae0f04eecc1ffec8f8": {
+        "playerObject": 200
+    },
     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
         "attributeMap": { "container": 21, "supporter": 14 },
         "openCapability": { "all": ["container"], "none": ["supporter"] }

@@ -2018,6 +2018,16 @@ var ZRamReader = {
         // actor. Re-read the slot so chapter changes and restores follow RAM.
         try {
             var fact = ZRamReader.executableLayoutFacts(mem);
+            // Digest-pinned constant actor (ZIL titles with no PLAYER global, e.g. LGOP PROTAGONIST):
+            // the object number is a compile-time constant, so it never follows a mutable WINNER.
+            if (fact && Number.isInteger(fact.playerObject)) {
+                var pid = fact.playerObject, pl = null;
+                if (pid >= 2 && pid <= count) pl = ZRamReader.objectLinks(mem, pid);
+                var pok = pl && [pl.parent, pl.sibling, pl.child].every(function (v) {
+                    return Number.isInteger(v) && v >= 0 && v <= count;
+                }) && pl.parent > 0;
+                return { id: pok ? pid : 0, source: pok ? "measured-player-object" : "fact-uninitialized", ambiguous: false, candidates: [] };
+            }
             if (fact && Number.isInteger(fact.playerGlobal)) {
                 var slot = fact.playerGlobal, measuredId = 0, links = null;
                 if (slot >= 0 && slot < 240 && h.globals + slot * 2 + 2 <= h.staticMem) {
