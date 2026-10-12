@@ -24,5 +24,9 @@
  },
  "Planetfall.z3.js": {
   "open": "Codex AUDIT PASS #3467 (state only; not capability)"
+ },
+ "Borderzo.z5.js": {
+  "container": "Codex AUDIT PASS #3486 (original-scene + pinned V-OPEN)",
+  "open": "Codex AUDIT PASS #3486"
  }
 }
