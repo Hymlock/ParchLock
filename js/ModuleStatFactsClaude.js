@@ -16,6 +16,8 @@ var ModuleStatFactsClaude = {
     },
     // Plundered Hearts (ZIL): OPENBIT 16: OPEN sets 16 on large cupboard, coffer, canvas hatch, iron door; CLOSE clears (cupboard, coffer). WORNBIT 22: WEAR sets 22 on breeches, shirt, ball gown; REMOVE clears (frock, shirt). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     "b53a2588c7926892f8f5e9b201c1855a01892e972d938bf919b4f36e1b8bd7db": {
+        // Q8 player root: G185 is the only global holding object 192, and every successful TAKE in the walkthrough (4 items) moves the item into 192; the app read player 15 and showed an empty inventory (zil-player-root.json, tmp pglob).
+        "playerGlobal": 185,
         // CONTBIT 24: TRUE on coffer, bed, cupboard; FALSE on Davis, pile of clothes. ACTORBIT 31: TRUE on Crulley, Cookie, Lucy, butler; FALSE on coffer, bed. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         "attributeMap": { "open": 16, "isOpen": 16, "container": 24, "animate": 31 },
         "wornAttribute": 22
@@ -396,11 +398,13 @@ var ModuleStatFactsClaude = {
     },
     // The Lurking Horror (Infocom v3)
     "1862ef7ce4c25abd32d442392fe7eaba9c1595ed5411df75e99b06f43af6f5af": {
+        // CONTBIT 27: tested TRUE on refrigerator, cardboard carton, access panel; FALSE on Funny Bones package, microwave controls, display (zil-walk). Q8 player root: G188 is the only global holding object 56; walkthrough TAKEs (4) move items into 56; app read 29 with an empty inventory. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
+        "playerGlobal": 188,
         // ONBIT 15 (single-object + source): completed walkthrough; LIGHT FLASHLIGHT sets 15, tested FALSE first on flashlight, gloves, crowbar, master key; the flashlight is the only non-room LIGHTBIT object. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         // OPENBIT 13 (original-scene native explorer, zil-native-explore2-c.json): refrigerator OPEN tests 13 false, sets it,
         // reveals carton + Coke; CLOSE tests true, clears. OPEN on chair, pc, kitchen counter, forklift tests 13 TRUE natively.
         // Container 27 / supporter 8 not yet proven (one native container positive, no negative).
-        "attributeMap": { "open": 13, "isOpen": 13, "on": 15 },
+        "attributeMap": { "open": 13, "isOpen": 13, "on": 15, "container": 27 },
         "command": "score", "fields": ["score.max", "rank"], "replyFamily": "inform-score", "outcome": "line",
         "evidence": "2026-10-05 live SCORE: Your score is 0 of a possible 100, in 0 moves. Graded on the curve, you are in the class of Freshman. DIAGNOSE: You are wide awake, and are in good health."
     },

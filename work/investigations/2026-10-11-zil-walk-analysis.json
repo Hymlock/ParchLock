@@ -1492,7 +1492,6 @@
   "end": "",
   "open": {
    "pos": {
-    "spell book [test]": "open oven (already open)",
     "oven": "open oven",
     "beautiful, ornamented egg [test]": "open door (already open)",
     "jug [test]": "open door (already open)",
@@ -1585,7 +1584,6 @@
   "end": "",
   "open": {
    "pos": {
-    "spell book [test]": "open desk (already open)",
     "desk drawer": "open desk",
     "desk drawer [test]": "open desk (already open)",
     "journal": "open journal",
@@ -1679,13 +1677,11 @@
   "steps": 412,
   "end": "",
   "open": {
-   "pos": {
-    "spell book [test]": "open zipper (already open)"
-   },
+   "pos": {},
    "neg": {
     "dirty scroll": "open box"
    },
-   "verdict": "insufficient (1+1)"
+   "verdict": "insufficient (0+1)"
   },
   "container": {
    "pos": {},
@@ -1751,26 +1747,7 @@
     "cherry-hardwood desk": "search desk",
     "dress-suit combination": "take veil"
    },
-   "neg": {
-    "Beside the Big Top": "take mask",
-    "Near White Wagon": "take pole",
-    "Platform": "take balloon",
-    "Performance Ring": "take all",
-    "Under the Bleachers": "take ticket",
-    "Menagerie Nook": "take keys with pole",
-    "Inside Cage": "take bucket",
-    "East Half of Fat Lady": "take stool",
-    "West Half of Fat Lady": "take radio",
-    "Inside Mahler's Cage": "take ribbon",
-    "Inside Prop Tent": "take mousetrap",
-    "Blue Room": "take ticket",
-    "On the Tent": "take shaft",
-    "Midway Entrance": "take note and card",
-    "Wardrobe Closet": "take all",
-    "Inside Trailer": "take crowbar",
-    "Clown Alley": "take thumb",
-    "Lions' Den": "take stand"
-   },
+   "neg": {},
    "census": [
     "2:Rimshaw the Incomparable",
     "3:safety net",
@@ -1811,7 +1788,7 @@
     "224:Billy Monday",
     "227:keister"
    ],
-   "verdict": "MEETS 2+1"
+   "verdict": "insufficient (6+0, census 38)"
   },
   "open": {
    "pos": {
@@ -2128,24 +2105,6 @@
   },
   "steps": 361,
   "end": "",
-  "on": {
-   "pos": {
-    "Bedroom": "turn on light"
-   },
-   "neg": {
-    "Bedroom": "turn on light (tested off before on)"
-   },
-   "census": [
-    "46:light",
-    "52:Eddie (the shipboard computer)",
-    "65:autopilot button",
-    "98:jukebox",
-    "118:spare Improbability Drive",
-    "182:Nutrimat",
-    "234:main Improbability Drive"
-   ],
-   "verdict": "insufficient (1+1, census 7)"
-  },
   "animate": {
    "pos": {
     "barman": "enter pub",
@@ -2220,16 +2179,7 @@
     "handbag": "open bag",
     "atomic vector plotter": "remove bit"
    },
-   "neg": {
-    "Bedroom": "get gown",
-    "Front Porch": "get mail",
-    "Country Lane": "get device",
-    "Vogon Hold": "get satchel",
-    "Bridge": "take pincer",
-    "Engine Room": "get rasp",
-    "Beast's Outer Lair": "get sharp stone",
-    "Inner Lair": "get interface"
-   },
+   "neg": {},
    "census": [
     "7:atomic vector plotter",
     "9:Trillian",
@@ -2255,7 +2205,7 @@
     "216:thing your aunt gave you which you don't know what it is",
     "217:glass case"
    ],
-   "verdict": "MEETS 2+1"
+   "verdict": "insufficient (7+0, census 23)"
   },
   "open": {
    "pos": {
@@ -2288,18 +2238,15 @@
   "steps": 273,
   "end": "",
   "on": {
-   "pos": {
-    "lamp": "light lamp"
-   },
+   "pos": {},
    "neg": {
-    "lamp": "light lamp (tested off before on)",
     "great rock": "light lamp (tested off before on)",
     "sword": "light lamp (tested off before on)"
    },
    "census": [
     "41:torch"
    ],
-   "verdict": "single-object + source"
+   "verdict": "insufficient (0+2, census 1)"
   },
   "container": {
    "pos": {
