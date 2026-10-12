@@ -3,6 +3,10 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 17 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 4 = the RAM parent of the first walkthrough TAKE; app inventory lists jewel-encrusted egg (zil-player-root.js, 2026-10-11 23:3x run)"
   }
  },
  "Zork2-TheWizardofFrobozz.z3.js": {
@@ -15,12 +19,20 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 20 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 202 = the RAM parent of the first walkthrough TAKE; app inventory lists lamp (zil-player-root.js, 2026-10-11 23:3x run)"
   }
  },
  "Enchanter.z3.js": {
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 19 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 55 = the RAM parent of the first walkthrough TAKE; app inventory lists loaf of bread, spell book (zil-player-root.js, 2026-10-11 23:3x run)"
   }
  },
  "Hitchhik.z5.js": {
@@ -221,6 +233,10 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 17 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 219 = the RAM parent of the first walkthrough TAKE; app inventory lists mysterious envelope (zil-player-root.js, 2026-10-11 23:3x run)"
   }
  },
  "TheWitness.z3.js": {

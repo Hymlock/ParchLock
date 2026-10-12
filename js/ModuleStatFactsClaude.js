@@ -54,6 +54,12 @@ var ModuleStatFactsClaude = {
     "103324c3b7332528cc36cc15ce15ae593af5a33ac2b75fae0f04eecc1ffec8f8": {
         "playerObject": 200
     },
+    // Spellbreaker (ZIL): Q8 player root = constant PLAYER object 52 (historicalsource/spellbreaker 6f83ba4 globals.zil 324 OBJECT PLAYER
+    // DESC "it"). No PLAYER global; WINNER G197 is mutable (globals.zil 923/928 BELBOZ, verbs.zil 334/359 PRSO). Native TAKE puts the
+    // item in 52 (zil-player-root); app previously read 22 with an empty inventory.
+    "2d097ac9e4081b68658d0331345176946253cb349ed66eeff88533826cae29d0": {
+        "playerObject": 52
+    },
     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
         "attributeMap": { "container": 21, "supporter": 14 },
         "openCapability": { "all": ["container"], "none": ["supporter"] }
