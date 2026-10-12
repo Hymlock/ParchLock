@@ -157,6 +157,13 @@ var ModuleStatFactsClaude = {
     // [0,0,0,192,32,193]; REMOVE GOWN reverses exactly bit24. Native
     // inventory labels it "being worn". Executable-owned fact, not I6's bit26.
     "26dcdab275054e5899c9454a879816a1ced530e9172bd8d8cf101fb7acc27cb4": {
+        // Q8 player root: constant PROTAGONIST object 202 (historicalsource/hitchhikersguide 1288855 globals.zil 459 OBJECT PROTAGONIST DESC "it";
+        // identity changes use IDENTITY-FLAG, the body stays PROTAGONIST - earth.zil MOVE X ,PROTAGONIST throughout; WINNER is mutable: PROSSER/FORD/BARMAN).
+        // Binary: 46 stores G142<-202. Native "get towel" puts towel 121 into 202; app read 19 with an empty inventory (zil-player-root.json).
+        // Room: locationGlobal 116 = source HERE (globals.zil 10): 125 je-compares of G116 against room constants in code, G41 none;
+        // live replay 60 steps / 8 rooms: G116 always the top room of 202's chain, = Bedroom 150 at boot while 202 is in bed 114 (zil-here-global.js).
+        "locationGlobal": 116,
+        "playerObject": 202,
         // OPENBIT 39: OPEN sets 39 on Nutrimat panel, handbag; tested TRUE on Sub-Etha device, the thing your aunt gave you; FALSE on shipping carton, touch pad. ACTORBIT 42: TRUE on barman, Vogon Captain, Marvin, Eddie; FALSE on screwdriver, toothbrush. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         "attributeMap": { "open": 39, "isOpen": 39, "animate": 42 },
         "wornAttribute": 24

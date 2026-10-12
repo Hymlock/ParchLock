@@ -125,15 +125,22 @@ var ZRamReader = {
         // on the current player's containment chain. Never climb to its root.
         try {
             var h = ZRamReader.header(mem);
-            if (h && h.version === 3 && !ZRamReader.isInformCompiled(mem)
-                && h.globals > 0 && h.globals + 2 <= h.staticMem
-                && h.globals + 2 <= mem.byteLength
+            // v3 ZIL: the status-line global G0 is HERE. v4/v5 ZIL has no interpreter status global, so a
+            // digest-pinned locationGlobal fact (source HERE, measured) supplies the slot; absent fact = old path.
+            var locFact = null, slot = 0;
+            try { locFact = ZRamReader.executableLayoutFacts ? ZRamReader.executableLayoutFacts(mem) : null; } catch (eLoc) { locFact = null; }
+            if (h && h.version >= 4 && h.version <= 5 && locFact && Number.isInteger(locFact.locationGlobal)
+                && locFact.locationGlobal >= 0 && locFact.locationGlobal < 240) slot = locFact.locationGlobal;
+            else if (h && h.version !== 3) h = null;
+            if (h && !ZRamReader.isInformCompiled(mem)
+                && h.globals > 0 && h.globals + 2 * slot + 2 <= h.staticMem
+                && h.globals + 2 * slot + 2 <= mem.byteLength
                 && typeof GrammarProvider !== 'undefined' && GrammarProvider.decodeD198) {
                 var family = GrammarProvider.decodeD198(mem);
                 if (family && family.classification === 'confirmed-zil-family'
                     && family.evidence === 'validated'
-                    && family.family === 'infocom-pre-v6-fixed') {
-                    var statusRoom = ZRamReader.u16(mem, h.globals);
+                    && (h.version === 3 ? family.family === 'infocom-pre-v6-fixed' : slot > 0)) {
+                    var statusRoom = ZRamReader.u16(mem, h.globals + 2 * slot);
                     if (ZRamReader.isLocationObject(mem, statusRoom, playerId)) {
                         var cursor = ZRamReader.objectLinks(mem, playerId), chain = {};
                         chain[playerId] = true;
