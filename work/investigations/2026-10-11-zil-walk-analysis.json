@@ -1,0 +1,476 @@
+{
+ "Zork1-TheGreatUndergroundEmpire.z3.js": {
+  "bits": {
+   "CB": 19,
+   "OB": 11,
+   "WB": null,
+   "NB": 20
+  },
+  "steps": 33,
+  "end": "The troll fends you off with a menacing gesture. The troll's axe stroke cleaves ",
+  "open": {
+   "pos": {
+    "kitchen window": "open window",
+    "brown sack": "open sack",
+    "trap door": "open trapdoor"
+   },
+   "neg": {
+    "brown sack": "open sack"
+   },
+   "verdict": "MEETS 2+1"
+  },
+  "container": {
+   "pos": {
+    "brown sack": "open sack"
+   },
+   "neg": {},
+   "verdict": "insufficient (1+0)"
+  },
+  "on": {
+   "pos": {
+    "brass lantern": "light lamp"
+   },
+   "neg": {},
+   "verdict": "insufficient (1+0)"
+  }
+ },
+ "Cutthroats.z3.js": {
+  "bits": {
+   "CB": 11,
+   "OB": 21,
+   "WB": 13,
+   "NB": 17
+  },
+  "steps": 336,
+  "end": "",
+  "open": {
+   "pos": {
+    "dresser": "open dresser",
+    "bedroom door": "open door",
+    "back window": "open window",
+    "portable drill": "open panel"
+   },
+   "neg": {
+    "bedroom door": "close door",
+    "portable drill": "open panel"
+   },
+   "verdict": "MEETS 2+1"
+  },
+  "worn": {
+   "pos": {},
+   "neg": {
+    "Mariners' Trust passbook": "drop passbook",
+    "room key": "drop room key"
+   },
+   "verdict": "insufficient (0+2)"
+  },
+  "container": {
+   "pos": {
+    "portable drill": "open panel"
+   },
+   "neg": {},
+   "verdict": "insufficient (1+0)"
+  }
+ },
+ "HollywoodHijinx.z3.js": {
+  "bits": {
+   "CB": 4,
+   "OB": 25,
+   "WB": null,
+   "NB": 20
+  },
+  "steps": 397,
+  "end": "",
+  "container": {
+   "pos": {
+    "Buck Palace-endorsed, regulation mailbox": "open mailbox"
+   },
+   "neg": {
+    "copy of The Status Line": "open mailbox",
+    "yellowed piece of paper": "open mailbox",
+    "business card": "open mailbox",
+    "oak door": "open door"
+   },
+   "verdict": "insufficient (1+4)"
+  },
+  "open": {
+   "pos": {
+    "Buck Palace-endorsed, regulation mailbox": "open mailbox"
+   },
+   "neg": {
+    "Buck Palace-endorsed, regulation mailbox": "open mailbox",
+    "oak door": "open door"
+   },
+   "verdict": "insufficient (1+2)"
+  },
+  "on": {
+   "pos": {
+    "flashlight": "turn on flashlight"
+   },
+   "neg": {},
+   "verdict": "insufficient (1+0)"
+  }
+ },
+ "Seastalker.z3.js": {
+  "bits": {
+   "CB": 26,
+   "OB": 18,
+   "WB": null,
+   "NB": 19
+  },
+  "steps": 204,
+  "end": "",
+  "container": {
+   "pos": {},
+   "neg": {
+    "entry hatch": "close hatch"
+   },
+   "verdict": "insufficient (0+1)"
+  },
+  "open": {
+   "pos": {},
+   "neg": {
+    "entry hatch": "close hatch"
+   },
+   "verdict": "insufficient (0+1)"
+  }
+ },
+ "Zork2-TheWizardofFrobozz.z3.js": {
+  "bits": {
+   "CB": 18,
+   "OB": 11,
+   "WB": null,
+   "NB": 19
+  },
+  "steps": 296,
+  "end": "",
+  "on": {
+   "pos": {
+    "lamp": "light lamp"
+   },
+   "neg": {
+    "lamp": "turn off lamp"
+   },
+   "verdict": "insufficient (1+1)"
+  }
+ },
+ "Infidel.z3.js": {
+  "bits": {
+   "CB": 20,
+   "OB": 25,
+   "WB": null,
+   "NB": 21
+  },
+  "steps": 250,
+  "end": "",
+  "container": {
+   "pos": {
+    "canteen": "open canteen",
+    "ancient map": "open map",
+    "pink jar": "close jar",
+    "matchbook": "open matchbook"
+   },
+   "neg": {},
+   "verdict": "insufficient (4+0)"
+  },
+  "open": {
+   "pos": {
+    "canteen": "open canteen",
+    "ancient map": "open map",
+    "pink jar": "open jar",
+    "matchbook": "open matchbook",
+    "inner door": "open door",
+    "annex door": "open door",
+    "burial door": "open door"
+   },
+   "neg": {
+    "canteen": "open canteen",
+    "ancient map": "open map",
+    "pink jar": "close jar",
+    "matchbook": "open matchbook"
+   },
+   "verdict": "MEETS 2+1"
+  },
+  "on": {
+   "pos": {
+    "bronze torch": "light torch"
+   },
+   "neg": {},
+   "verdict": "insufficient (1+0)"
+  }
+ },
+ "PlunderedHearts.z3.js": {
+  "bits": {
+   "CB": 24,
+   "OB": 16,
+   "WB": 22,
+   "NB": 29
+  },
+  "steps": 189,
+  "end": "",
+  "open": {
+   "pos": {
+    "large cupboard": "open cupboard",
+    "coffer": "open coffer",
+    "canvas hatch": "open hatch",
+    "iron door": "open it",
+    "ornate door": "open door",
+    "portrait": "open portrait"
+   },
+   "neg": {
+    "large cupboard": "open cupboard",
+    "coffer": "open coffer",
+    "iron door": "open it",
+    "ornate door": "open door"
+   },
+   "verdict": "MEETS 2+1"
+  },
+  "worn": {
+   "pos": {
+    "breeches": "wear breeches",
+    "shirt": "wear shirt",
+    "beautiful ball gown": "wear it"
+   },
+   "neg": {
+    "cotton frock": "remove frock",
+    "shirt": "remove clothes",
+    "breeches": "remove clothes",
+    "your kid slippers": "remove clothes",
+    "linen chemise": "remove clothes"
+   },
+   "verdict": "MEETS 2+1"
+  },
+  "container": {
+   "pos": {
+    "coffer": "open coffer"
+   },
+   "neg": {
+    "invitation": "open coffer"
+   },
+   "verdict": "insufficient (1+1)"
+  }
+ },
+ "Wishbringer.z3.js": {
+  "bits": {
+   "CB": 4,
+   "OB": 25,
+   "WB": null,
+   "NB": 20
+  },
+  "steps": 174,
+  "end": "no input",
+  "container": {
+   "pos": {
+    "refrigerator": "open fridge",
+    "little mailbox": "open mailbox"
+   },
+   "neg": {
+    "Magick Shoppe door": "open door"
+   },
+   "verdict": "MEETS 2+1"
+  },
+  "open": {
+   "pos": {
+    "Magick Shoppe door": "open door",
+    "metal can": "open can",
+    "toll gate": "open gate",
+    "refrigerator": "open fridge",
+    "stump": "open stump",
+    "little mailbox": "open mailbox"
+   },
+   "neg": {
+    "Magick Shoppe door": "open door",
+    "refrigerator": "open fridge",
+    "little mailbox": "open mailbox"
+   },
+   "verdict": "MEETS 2+1"
+  }
+ },
+ "Enchanter.z3.js": {
+  "bits": {
+   "CB": 21,
+   "OB": 12,
+   "WB": null,
+   "NB": 8
+  },
+  "steps": 265,
+  "end": "",
+  "container": {
+   "pos": {
+    "oven": "open oven"
+   },
+   "neg": {},
+   "verdict": "insufficient (1+0)"
+  },
+  "open": {
+   "pos": {
+    "oven": "open oven"
+   },
+   "neg": {
+    "oven": "open oven"
+   },
+   "verdict": "insufficient (1+1)"
+  }
+ },
+ "Sorcerer.z3.js": {
+  "bits": {
+   "CB": 27,
+   "OB": 15,
+   "WB": null,
+   "NB": 11
+  },
+  "steps": 254,
+  "end": "",
+  "container": {
+   "pos": {
+    "desk drawer": "open desk",
+    "receptacle": "open receptacle",
+    "ochre vial": "open vial"
+   },
+   "neg": {},
+   "verdict": "insufficient (3+0)"
+  },
+  "open": {
+   "pos": {
+    "desk drawer": "open desk",
+    "journal": "open journal",
+    "receptacle": "open receptacle",
+    "ochre vial": "open vial"
+   },
+   "neg": {
+    "desk drawer": "open desk",
+    "receptacle": "open receptacle",
+    "ochre vial": "open vial"
+   },
+   "verdict": "MEETS 2+1"
+  }
+ },
+ "Spellbreaker.z3.js": {
+  "bits": {
+   "CB": 27,
+   "OB": 21,
+   "WB": null,
+   "NB": 8
+  },
+  "steps": 412,
+  "end": ""
+ },
+ "TheLurkingHorror.z3.js": {
+  "bits": {
+   "CB": 27,
+   "OB": 13,
+   "WB": null,
+   "NB": 15
+  },
+  "steps": 294,
+  "end": "",
+  "open": {
+   "pos": {
+    "refrigerator": "open fridge",
+    "cardboard carton": "open carton",
+    "microwave oven": "open oven",
+    "access panel": "open panel",
+    "elevator doors": "open door",
+    "door": "open door",
+    "plastic container": "open container",
+    "roof door": "open door"
+   },
+   "neg": {
+    "refrigerator": "open fridge",
+    "cardboard carton": "open carton",
+    "microwave oven": "close oven",
+    "access panel": "open panel"
+   },
+   "verdict": "MEETS 2+1"
+  },
+  "container": {
+   "pos": {
+    "refrigerator": "open fridge",
+    "cardboard carton": "open carton",
+    "access panel": "open panel"
+   },
+   "neg": {},
+   "verdict": "insufficient (3+0)"
+  },
+  "on": {
+   "pos": {
+    "flashlight": "light flashlight"
+   },
+   "neg": {
+    "flashlight": "turn off flashlight"
+   },
+   "verdict": "insufficient (1+1)"
+  }
+ },
+ "Planetfall.z3.js": {
+  "bits": {
+   "CB": 24,
+   "OB": 11,
+   "WB": 12,
+   "NB": 5
+  },
+  "steps": 14,
+  "end": "Time passes... An enormous explosion tears the walls of the ship apart. If only "
+ },
+ "Hitchhik.z5.js": {
+  "bits": {
+   "CB": 40,
+   "OB": 39,
+   "WB": null,
+   "NB": 45
+  },
+  "steps": 361,
+  "end": "",
+  "on": {
+   "pos": {
+    "Bedroom": "turn on light"
+   },
+   "neg": {},
+   "verdict": "insufficient (1+0)"
+  },
+  "container": {
+   "pos": {
+    "your gown": "look in pocket"
+   },
+   "neg": {},
+   "verdict": "insufficient (1+0)"
+  }
+ },
+ "Zork3-TheDungeonMaster.z3.js": {
+  "bits": {
+   "CB": 10,
+   "OB": 12,
+   "WB": null,
+   "NB": 15
+  },
+  "steps": 273,
+  "end": "",
+  "on": {
+   "pos": {
+    "lamp": "light lamp"
+   },
+   "neg": {
+    "lamp": "turn off lamp"
+   },
+   "verdict": "insufficient (1+1)"
+  },
+  "open": {
+   "pos": {
+    "secret door": "open door",
+    "stone door": "open stone door",
+    "wooden door": "open wooden door"
+   },
+   "neg": {
+    "wooden door": "open wooden door"
+   },
+   "verdict": "MEETS 2+1"
+  },
+  "container": {
+   "pos": {
+    "wooden door": "open wooden door"
+   },
+   "neg": {},
+   "verdict": "insufficient (1+0)"
+  }
+ }
+}

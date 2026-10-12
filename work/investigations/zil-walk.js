@@ -1,0 +1,28 @@
+// Walkthrough-driven native run (grok2, research only). Plays the Jericho walkthrough (github.com/microsoft/jericho
+// jericho/game_info.py) natively, no insert_obj / forced bits, and logs EVERY set_attr/clear_attr with the command that
+// caused it, plus test_attr results inside the OPEN/CLOSE verb routines. Also records per command the player's
+// parent chain and the RAM attribute bytes of the touched objects. Analysis (zil-walk-analyze.js) maps bits to keys.
+const { chromium } = require('playwright'); const fs = require('fs'), path = require('path'); const { pathToFileURL } = require('url');
+const root = path.resolve(__dirname, '../..'); const W = require('./2026-10-11-jericho-walkthroughs.json'); const { analyze } = require('./zil-attr-analyzer.js');
+const MAP = { zork1: 'Zork1-TheGreatUndergroundEmpire.z3.js', zork2: 'Zork2-TheWizardofFrobozz.z3.js', zork3: 'Zork3-TheDungeonMaster.z3.js', enchanter: 'Enchanter.z3.js', hhgg: 'Hitchhik.z5.js', ballyhoo: 'Ballyhoo.z3.js', cutthroat: 'Cutthroats.z3.js', infidel: 'Infidel.z3.js', hollywood: 'HollywoodHijinx.z3.js', plundered: 'PlunderedHearts.z3.js', lurking: 'TheLurkingHorror.z3.js', planetfall: 'Planetfall.z3.js', seastalker: 'Seastalker.z3.js', sorcerer: 'Sorcerer.z3.js', spellbrkr: 'Spellbreaker.z3.js', wishbringer: 'Wishbringer.z3.js' };
+const only = process.env.ONLY ? process.env.ONLY.split(',') : Object.keys(MAP); const OUT = path.join(__dirname, process.env.OUTF || '2026-10-11-zil-walk.json');
+const settle = async p => { for (let i = 0; i < 14 && !await p.locator('.Input.LineInput').count(); i++) { const c = p.locator('.Input.CharInput'); if (await c.count()) { await c.first().focus(); await p.keyboard.press(i % 3 === 2 ? '1' : i % 3 === 1 ? 'Enter' : 'Space'); } await p.waitForTimeout(300); } };
+(async () => { const b = await chromium.launch({ headless: true }); const out = {};
+  try { for (const k of only) { const game = MAP[k]; if (!game || !W[k]) continue; const rec = out[game] = { walk: k, steps: [] };
+    let a; try { a = analyze(game); } catch (e) {} const ra = v => a && a.byVerb[v] != null ? a.routineAddr(a.byVerb[v]) : null; const ro = ra('open/1'), rc = ra('close/1');
+    const p = await b.newPage();
+    try { await p.addInitScript((S) => { let seed = S; Math.random = () => { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x80000000; }; sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); for (const x of ['PL_TutorialSeen', 'PL_MobileTutorialSeen', 'PL_LearnedWordsTutorialSeen']) localStorage.setItem(x, '1'); }, +(process.env.SEED || 12345));
+      await p.goto(pathToFileURL(path.join(root, 'play.html')).href + '?story=games/' + game); await p.waitForTimeout(3500); await settle(p);
+      await p.evaluate(({ ro, rc }) => { const M = window.__PARCHLOCK_ZVM__; window.__ops = []; window.__fr = []; const oc = M.call, oret = M.ret;
+        M.call = function (x) { const ad = x * this.addr_multipler, r = oc.apply(this, arguments); if (ad === ro || ad === rc) window.__fr.push(this.frames.length); return r; };
+        M.ret = function () { const r = oret.apply(this, arguments); while (window.__fr.length && window.__fr[window.__fr.length - 1] > this.frames.length) window.__fr.pop(); return r; };
+        for (const op of ['test_attr', 'set_attr', 'clear_attr']) { const n = M[op]; M[op] = function () { const g = Array.from(arguments), r = n.apply(this, g); if (op !== 'test_attr' || window.__fr.length) window.__ops.push([op[0], g[0], g[1], op === 'test_attr' ? (r ? 1 : 0) : (window.__fr.length ? 'V' : '')]); return r; }; } }, { ro, rc });
+      for (const c of W[k]) { const n0 = await p.evaluate(() => { window.__ops = []; return document.querySelectorAll('.BufferLine').length; }); if (!await p.locator('.Input.LineInput').count()) await settle(p); if (!await p.locator('.Input.LineInput').count()) { rec.end = 'no input'; break; }
+        await p.locator('.Input.LineInput').fill(c); await p.keyboard.press('Enter'); await p.waitForTimeout(450); await settle(p);
+        const st = await p.evaluate(n0 => { const m = ZRamProvider.getMem(); const lines = [...document.querySelectorAll('.BufferLine')]; const nm = id => { try { return ZRamReader.shortName(m, id) || ''; } catch (e) { return ''; } };
+          const ops = window.__ops.slice(0, 400); const ids = [...new Set(ops.map(o => o[1]))]; const objs = {}; for (const id of ids) { try { const L = ZRamReader.objectLinks(m, id); objs[id] = { n: nm(id), p: L.parent, a: Array.from(L.attrBytes) }; } catch (e) {} }
+          return { t: lines.slice(n0).map(l => l.textContent).join(' ').replace(/\s+/g, ' ').slice(0, 200), ops, objs, marks: [...document.querySelectorAll('.pl-act:not(.is-stale)')].filter(x => lines.indexOf(x.closest('.BufferLine')) >= n0).map(x => x.textContent) }; }, n0);
+        rec.steps.push({ c, ...st }); if (/you have died|\*\*\*\* you|you have won/i.test(st.t)) { rec.end = st.t.slice(0, 80); break; } }
+    } catch (e) { rec.err = String(e.message || e).slice(0, 160); } finally { await p.close(); }
+    fs.writeFileSync(OUT, JSON.stringify(out)); console.log(game.padEnd(36), 'steps', rec.steps.length, '/', W[k].length, rec.end || rec.err || ''); }
+  } finally { await b.close(); console.log('EXIT'); } })();
