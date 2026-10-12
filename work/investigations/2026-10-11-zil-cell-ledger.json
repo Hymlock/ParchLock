@@ -128,7 +128,87 @@
  "Suspect.z3.js": {
   "takeable": {
    "s": "UD",
-   "r": "D214 returns null (not confirmed ZIL family per D198); so no measured take bit is applied; unknown until Suspect's family routing (D198) is settled (Codex lane A)"
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "container": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "open": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "supporter": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "lightSource": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "on": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "wearable": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "animate": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "edible": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "playerRoot": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "status": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "rooms": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "actors": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "underlineVsDict": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "descriptors": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "identical": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "onoff": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "consumed": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "nested": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
   }
  },
  "Suspended.z3.js": {
@@ -147,6 +227,92 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 22 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  }
+ },
+ "Sherlock.z5.js": {
+  "container": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "open": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "supporter": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "lightSource": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "on": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "wearable": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "animate": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "edible": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "takeable": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "playerRoot": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "status": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "rooms": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "actors": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "underlineVsDict": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "descriptors": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "identical": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "onoff": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "consumed": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "nested": {
+   "s": "UD",
+   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
   }
  }
 }

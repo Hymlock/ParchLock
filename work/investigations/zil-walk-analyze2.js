@@ -22,10 +22,11 @@ for (const [g, r] of Object.entries(runs)) { const go = r.steps.findIndex(x => /
     for (const [op, o, b, x] of st.ops) {
       if (b === B.OB && /^open\b/.test(c)) { if (op === 's') add('open', 'pos', o, nm(o), c, 'set'); else if (op === 't' && x === 1) add('open', 'pos', o, nm(o), c, 'already-open'); else if (op === 't' && x === 0) add('open', 'neg', o, nm(o), c, 'tested-closed'); }
       if (b === B.OB && op === 'c' && /^close\b/.test(c)) add('open', 'neg', o, nm(o), c, 'cleared');
-      if (b === B.CB && op === 't') add('container', x ? 'pos' : 'neg', o, nm(o), c);
-      if (b === B.AB && op === 't') add('animate', x ? 'pos' : 'neg', o, nm(o), c);
+      const named = (() => { const n = (nm(o) || '').toLowerCase().split(/[^a-z]+/).filter(w => w.length >= 3); const cw = c.split(/[^a-z]+/); return n.some(w => cw.some(x => x.length >= 3 && (w.startsWith(x) || x.startsWith(w)))); })();
+      if (b === B.CB && op === 't' && named) add('container', x ? 'pos' : 'neg', o, nm(o), c);
+      if (b === B.AB && op === 't' && named) add('animate', x ? 'pos' : 'neg', o, nm(o), c);
       // Capability keys (operator 23:06 all-cells): the bit as the game's own routine tests it, any verb.
-      for (const [k, bb] of [['supporter', B.SB], ['edible', B.FB], ['takeable', B.TB], ['wearable', B.EB], ['lightSource', B.LB]]) if (bb != null && b === bb && op === 't') add(k, x ? 'pos' : 'neg', o, nm(o), c);
+      for (const [k, bb] of [['supporter', B.SB], ['edible', B.FB], ['takeable', B.TB], ['wearable', B.EB], ['lightSource', B.LB]]) if (bb != null && b === bb && op === 't' && named) add(k, x ? 'pos' : 'neg', o, nm(o), c);
       if (b === B.WB && op === 's' && /^(wear|put on)\b/.test(c)) add('worn', 'pos', o, nm(o), c);
       if (b === B.WB && op === 'c' && /^(remove|take off)\b/.test(c)) add('worn', 'neg', o, nm(o), c);
       if (b === B.NB && op === 's' && /^(turn on|light|switch on|activate|turn \S+ on)\b/.test(c)) add('on', 'pos', o, nm(o), c);
