@@ -27,8 +27,10 @@ const settle = async p => { for (let i = 0; i < 14 && !await p.locator('.Input.L
         await p.locator('.Input.LineInput').fill(c); await p.keyboard.press('Enter'); await p.waitForTimeout(450); await settle(p);
         const st = await p.evaluate(n0 => { const m = ZRamProvider.getMem(); const lines = [...document.querySelectorAll('.BufferLine')]; const nm = id => { try { return ZRamReader.shortName(m, id) || ''; } catch (e) { return ''; } };
           const ops = [...new Map(window.__ops.map(o => [o.join(','), o])).values()].slice(0, 600); const ids = [...new Set(ops.map(o => o[1]))]; const objs = {}; for (const id of ids) { try { const L = ZRamReader.objectLinks(m, id); objs[id] = { n: nm(id), p: L.parent, a: Array.from(L.attrBytes) }; } catch (e) {} }
-          return { t: lines.slice(n0).map(l => l.textContent).join(' ').replace(/\s+/g, ' ').slice(0, 200), ops, objs, marks: [...document.querySelectorAll('.pl-act:not(.is-stale)')].filter(x => lines.indexOf(x.closest('.BufferLine')) >= n0).map(x => x.textContent) }; }, n0);
-        rec.steps.push({ c, ...st }); if (/you have died|\*\*\*\* you|you have won/i.test(st.t)) { rec.end = st.t.slice(0, 80); break; } }
+          WorldModel.tick(); const P = WorldModel.lastPayload || {}; const h = ZRamReader.header(m); const loc = h.version <= 3 ? m.getUint16(h.globals) : P.roomId; let rp = null; try { rp = loc ? ZRamReader.objectLinks(m, loc).parent : null; } catch (e) {}
+          return { t: lines.slice(n0).map(l => l.textContent).join(' ').replace(/\s+/g, ' ').slice(0, 1200), loc, rp, pl: P.playerId, ops, objs, marks: [...document.querySelectorAll('.pl-act:not(.is-stale)')].filter(x => lines.indexOf(x.closest('.BufferLine')) >= n0).map(x => x.textContent) }; }, n0);
+        rec.steps.push({ c, ...st }); if (/\*\*\*\*\s*you have won|you have won/i.test(st.t)) { rec.won = true; rec.end = 'WON: ' + st.t.slice(-120); break; } if (/you have died|\*\*\*\* you/i.test(st.t)) { rec.died = true; rec.end = st.t.slice(-160); break; } }
+      rec.exhausted = !rec.end && !rec.err && rec.steps.length >= W[k].length;
     } catch (e) { rec.err = String(e.message || e).slice(0, 160); } finally { await p.close(); }
     fs.writeFileSync(OUT, JSON.stringify(out)); console.log(game.padEnd(36), 'steps', rec.steps.length, '/', W[k].length, rec.end || rec.err || ''); }
   } finally { await b.close(); console.log('EXIT'); } })();

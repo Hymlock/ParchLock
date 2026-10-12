@@ -4,8 +4,8 @@
 // No stored numeric readings or title dispatch.
 var ModuleStatFactsClaude = {
     "abf145d22371f825f13388587d92632bcde90582698f774b896b123a90e1fb1e": {
-        // ONBIT 19 (single-object + source, operator rule 8:31 PM): completed walkthrough; LIGHT LAMP sets 19 on the lamp, tested FALSE first; the lamp is the only non-room LIGHTBIT object (boot census + Infocom source). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
-        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "on": 19 },
+        // on 19 WITHDRAWN (Codex #3451/#3453): single-object + source needs an authored terminal checkpoint, not list exhaustion; stays unknown.
+        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11 },
         "openCapability": { "all": ["container"], "none": ["supporter"] }
     },
     // Cutthroats (ZIL): OPENBIT 21 (original-scene native explorer, zil-native-explore4.json, no relocation): hotel-room dresser RAM bit 21
@@ -398,13 +398,13 @@ var ModuleStatFactsClaude = {
     },
     // The Lurking Horror (Infocom v3)
     "1862ef7ce4c25abd32d442392fe7eaba9c1595ed5411df75e99b06f43af6f5af": {
+        // on 15 WITHDRAWN (Codex #3451-#3453): LH walk had a 128-step empty tail; completion unproven; stays unknown.
         // CONTBIT 27: tested TRUE on refrigerator, cardboard carton, access panel; FALSE on Funny Bones package, microwave controls, display (zil-walk). Q8 player root: G188 is the only global holding object 56; walkthrough TAKEs (4) move items into 56; app read 29 with an empty inventory. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         "playerGlobal": 188,
-        // ONBIT 15 (single-object + source): completed walkthrough; LIGHT FLASHLIGHT sets 15, tested FALSE first on flashlight, gloves, crowbar, master key; the flashlight is the only non-room LIGHTBIT object. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         // OPENBIT 13 (original-scene native explorer, zil-native-explore2-c.json): refrigerator OPEN tests 13 false, sets it,
         // reveals carton + Coke; CLOSE tests true, clears. OPEN on chair, pc, kitchen counter, forklift tests 13 TRUE natively.
         // Container 27 / supporter 8 not yet proven (one native container positive, no negative).
-        "attributeMap": { "open": 13, "isOpen": 13, "on": 15, "container": 27 },
+        "attributeMap": { "open": 13, "isOpen": 13, "container": 27 },
         "command": "score", "fields": ["score.max", "rank"], "replyFamily": "inform-score", "outcome": "line",
         "evidence": "2026-10-05 live SCORE: Your score is 0 of a possible 100, in 0 moves. Graded on the curve, you are in the class of Freshman. DIAGNOSE: You are wide awake, and are in good health."
     },
