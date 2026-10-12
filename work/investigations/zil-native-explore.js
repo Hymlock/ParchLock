@@ -1,4 +1,4 @@
-﻿// Native explorer (original scene, no insert_obj/forced bits): walk real exits from the start (bounded DFS with native
+// Native explorer (original scene, no insert_obj/forced bits): walk real exits from the start (bounded DFS with native
 // reverse moves), and in each newly reached room look for a source-CONTBIT object that is CLOSED with ORIGINAL children
 // and in the current room. Run the hide/show probe on it natively. Also log already-open source-CONTBIT objects in reach
 // (OPEN on them must test the OPENBIT TRUE = "already open" positive). Research only.
@@ -8,7 +8,7 @@ const OUT = path.join(__dirname, process.env.OUTF || '2026-10-11-zil-native-expl
 const only = process.env.ONLY ? new Set(process.env.ONLY.split(',')) : null; const MAXMOVES = +(process.env.MOVES || 60);
 const bitOf = (s, F) => { const f = s.flags && s.flags[F]; return f && (f.exact || (f.fp === 0 && f.tp >= 2)) ? f.bit : null; };
 // Authored starting positions (native commands only): leave bed/car/bunk before walking.
-const PRE = { 'PlunderedHearts.z3.js': ['stand up'], 'Cutthroats.z3.js': ['stand up', 'get up'], 'Moonmist.z3.js': ['get out'], 'Starcross.z3.js': ['stand up', 'get up'], 'Seastalker.z3.js': ['look'], 'Sorcerer.z3.js': ['frotz me', 'stand up'] };
+const PRE = { 'PlunderedHearts.z3.js': ['get out of bed', 'stand up'], 'Cutthroats.z3.js': ['stand up', 'get up'], 'Moonmist.z3.js': ['get out'], 'Starcross.z3.js': ['stand up', 'get up'], 'Seastalker.z3.js': ['look'], 'Sorcerer.z3.js': ['frotz me', 'stand up'] };
 const DIRS = ['north', 'south', 'east', 'west', 'northeast', 'northwest', 'southeast', 'southwest', 'up', 'down', 'in', 'out'];
 const REV = { north: 'south', south: 'north', east: 'west', west: 'east', northeast: 'southwest', southwest: 'northeast', northwest: 'southeast', southeast: 'northwest', up: 'down', down: 'up', in: 'out', out: 'in' };
 const settle = async p => { for (let i = 0; i < 14 && !await p.locator('.Input.LineInput').count(); i++) { const c = p.locator('.Input.CharInput'); if (await c.count()) { await c.first().focus(); await p.keyboard.press(i % 3 === 2 ? '1' : i % 3 === 1 ? 'Enter' : 'Space'); } await p.waitForTimeout(400); } };
@@ -35,9 +35,10 @@ const settle = async p => { for (let i = 0; i < 14 && !await p.locator('.Input.L
       const visit = async () => { const sc = await scan(); if (seen.has(sc.here)) return; seen.add(sc.here);
         for (const o of sc.open) { if (tested.has(o.id) || rec.alreadyOpen.length >= 6) continue; tested.add(o.id); const r = await cmd('open ' + o.word); const t = r.ops.filter(x => x.o === o.id && x.b === OB); rec.alreadyOpen.push({ room: sc.here, ...o, ops: t, ok: t.some(x => x.op === 'test_attr' && x.r === true) && !t.some(x => x.op !== 'test_attr'), reply: r.text.slice(0, 100) }); }
         for (const o of sc.closedWithKids) { if (tested.has(o.id) || rec.probes.length >= 4) continue; tested.add(o.id); const heads = o.kids.map(k => String(k).toLowerCase().split(/\s+/).pop()).filter(h => h.length >= 3); const steps = [];
-          for (const c of ['look in ' + o.word, 'open ' + o.word, 'look in ' + o.word, 'close ' + o.word, 'look in ' + o.word]) { const r = await cmd(c); const t = r.ops.filter(x => x.o === o.id && x.b === OB); steps.push({ c, ops: t, cops: r.ops.filter(x => x.o === o.id && x.b === CB), text: r.text.slice(0, 140), childText: heads.filter(h => r.text.includes(h)), childMarked: heads.filter(h => r.marks.some(m => m.includes(h))) }); }
+          for (const c of ['look in ' + o.word, 'open ' + o.word, 'look in ' + o.word, 'close ' + o.word, 'look in ' + o.word]) { const r = await cmd(c); const ramOpen = await p.evaluate(({ id, OB }) => { const L = ZRamReader.objectLinks(ZRamProvider.getMem(), id); return !!(L.attrBytes[OB >> 3] & (128 >> (OB & 7))); }, { id: o.id, OB }); const t = r.ops.filter(x => x.o === o.id && x.b === OB); steps.push({ c, ramOpen, ops: t, cops: r.ops.filter(x => x.o === o.id && x.b === CB), text: r.text.slice(0, 140), childText: heads.filter(h => r.text.includes(h)), childMarked: heads.filter(h => r.marks.some(m => m.includes(h))) }); }
           const [l1, op, l2, cl, l3] = steps; const okBit = op.ops.some(x => x.op === 'test_attr' && x.r === false) && op.ops.some(x => x.op === 'set_attr') && cl.ops.some(x => x.op === 'clear_attr');
-          rec.probes.push({ room: sc.here, ...o, steps, okBit, hideShow: !l1.childText.length && (op.childText.length || l2.childText.length) && !l3.childText.length, underline: (op.childMarked.length + l2.childMarked.length) > 0 }); }
+          const okRam = l1.ramOpen === false && op.ramOpen === true && l2.ramOpen === true && cl.ramOpen === false && l3.ramOpen === false;
+          rec.probes.push({ room: sc.here, ...o, steps, okRam, okBit, hideShow: !l1.childText.length && (op.childText.length || l2.childText.length) && !l3.childText.length, underline: (op.childMarked.length + l2.childMarked.length) > 0 }); }
         fs.writeFileSync(OUT, JSON.stringify(out, null, 1)); };
       for (const c of PRE[game] || []) { const x = await cmd(c); (rec.pre = rec.pre || []).push(c + ' -> ' + x.text.slice(0, 80)); }
       await visit();
@@ -51,5 +52,5 @@ const settle = async p => { for (let i = 0; i < 14 && !await p.locator('.Input.L
       await dfs(0); rec.rooms = seen.size;
     } catch (e) { rec.err = String(e.message || e).slice(0, 160); } finally { await p.close(); }
     fs.writeFileSync(OUT, JSON.stringify(out, null, 1));
-    console.log(game.padEnd(36), 'rooms', rec.rooms, 'probes', rec.probes.map(x => x.name + (x.okBit ? '+bit' : '') + (x.hideShow ? '+hs' : '')).join(','), 'open+', rec.alreadyOpen.filter(x => x.ok).map(x => x.name).join(','), rec.err || rec.lost || ''); }
+    console.log(game.padEnd(36), 'rooms', rec.rooms, 'probes', rec.probes.map(x => x.name + (x.okBit ? '+bit' : '') + (x.okRam ? '+ram' : '') + (x.hideShow ? '+hs' : '')).join(','), 'open+', rec.alreadyOpen.filter(x => x.ok).map(x => x.name).join(','), rec.err || rec.lost || ''); }
   } finally { await b.close(); console.log('EXIT'); } })();

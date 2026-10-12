@@ -1,0 +1,264 @@
+{
+ "Cutthroats.z3.js": {
+  "CB": 11,
+  "OB": 21,
+  "probes": [
+   {
+    "room": 183,
+    "id": 145,
+    "name": "dresser",
+    "word": "bureau",
+    "kids": [
+     "book of shipwrecks",
+     "room key",
+     "Mariners' Trust passbook"
+    ],
+    "steps": [
+     {
+      "c": "look in bureau",
+      "ramOpen": false,
+      "ops": [],
+      "cops": [],
+      "text": "the dresser is closed. > ",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "open bureau",
+      "ramOpen": true,
+      "ops": [],
+      "cops": [],
+      "text": "opening the dresser reveals a mariners' trust passbook, a book of shipwrecks, and a room key, as well as your clothes. > ",
+      "childText": [
+       "shipwrecks",
+       "key",
+       "passbook"
+      ],
+      "childMarked": []
+     },
+     {
+      "c": "look in bureau",
+      "ramOpen": true,
+      "ops": [],
+      "cops": [],
+      "text": "the dresser contains a mariners' trust passbook, a book of shipwrecks, and a room key, as well as your clothes. > ",
+      "childText": [
+       "shipwrecks",
+       "key",
+       "passbook"
+      ],
+      "childMarked": []
+     },
+     {
+      "c": "close bureau",
+      "ramOpen": false,
+      "ops": [],
+      "cops": [],
+      "text": "closed. > ",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "look in bureau",
+      "ramOpen": false,
+      "ops": [],
+      "cops": [],
+      "text": "the dresser is closed. > ",
+      "childText": [],
+      "childMarked": []
+     }
+    ],
+    "okRam": true,
+    "okBit": false,
+    "hideShow": true,
+    "underline": false
+   }
+  ],
+  "alreadyOpen": [
+   {
+    "room": 183,
+    "id": 140,
+    "name": "closet",
+    "word": "closet",
+    "ops": [],
+    "ok": false,
+    "reply": "the closet has no door. > "
+   },
+   {
+    "room": 183,
+    "id": 146,
+    "name": "bed",
+    "word": "cot",
+    "ops": [
+     {
+      "op": "test_attr",
+      "o": 146,
+      "b": 21,
+      "r": true
+     }
+    ],
+    "ok": true,
+    "reply": "it's already open. > "
+   }
+  ],
+  "moves": 12,
+  "pre": [
+   "stand up -> you get out of bed. > ",
+   "get up -> you are already standing, i think. > "
+  ],
+  "rooms": 1
+ },
+ "Deadline.z3.js": {
+  "CB": 21,
+  "OB": 28,
+  "probes": [],
+  "alreadyOpen": [],
+  "moves": 182,
+  "lost": 27,
+  "rooms": 13
+ },
+ "PlunderedHearts.z3.js": {
+  "CB": 24,
+  "OB": 16,
+  "probes": [
+   {
+    "room": 80,
+    "id": 69,
+    "name": "coffer",
+    "word": "coffer",
+    "kids": [
+     "invitation",
+     ""
+    ],
+    "steps": [
+     {
+      "c": "look in coffer",
+      "ramOpen": false,
+      "ops": [],
+      "cops": [],
+      "text": "you can't reach the coffer from the bed. > ",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "open coffer",
+      "ramOpen": false,
+      "ops": [],
+      "cops": [],
+      "text": "you can't reach the coffer from the bed. you recognize a voice from far away, \"don't take that! look in the cabin at the stern -- you'll fin",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "look in coffer",
+      "ramOpen": false,
+      "ops": [],
+      "cops": [],
+      "text": "you can't reach the coffer from the bed. > ",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "close coffer",
+      "ramOpen": false,
+      "ops": [],
+      "cops": [],
+      "text": "you can't reach the coffer from the bed. \"cap'n jamison! we've got 'em!\" cries a rough voice. > ",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "look in coffer",
+      "ramOpen": false,
+      "ops": [],
+      "cops": [],
+      "text": "you can't reach the coffer from the bed. suddenly, the ship lurches to one side, throwing you out of the bed. a coffer slides from under the",
+      "childText": [],
+      "childMarked": []
+     }
+    ],
+    "okRam": false,
+    "okBit": false,
+    "hideShow": 0,
+    "underline": false
+   },
+   {
+    "room": 169,
+    "id": 45,
+    "name": "large cupboard",
+    "word": "cupboa",
+    "kids": [
+     "pile of clothes"
+    ],
+    "steps": [
+     {
+      "c": "look in cupboa",
+      "ramOpen": false,
+      "ops": [],
+      "cops": [],
+      "text": "you can see only the back of the large cupboard. you might be able to squeeze past it. \"we have anchored off st. sinistra,\" says captain jam",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "open cupboa",
+      "ramOpen": false,
+      "ops": [],
+      "cops": [],
+      "text": "you can't reach the large cupboard from the bed. \"i am sorry you have been confined down here, but i don't trust my lonely crew with such be",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "look in cupboa",
+      "ramOpen": false,
+      "ops": [],
+      "cops": [],
+      "text": "you can see only the back of the large cupboard. you might be able to squeeze past it. his look darkens. \"you should know why i hate lafond:",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "close cupboa",
+      "ramOpen": false,
+      "ops": [],
+      "cops": [],
+      "text": "you can't reach the large cupboard from the bed. > ",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "look in cupboa",
+      "ramOpen": false,
+      "ops": [],
+      "cops": [],
+      "text": "you can see only the back of the large cupboard. you might be able to squeeze past it. > ",
+      "childText": [],
+      "childMarked": []
+     }
+    ],
+    "okRam": false,
+    "okBit": false,
+    "hideShow": 0,
+    "underline": false
+   }
+  ],
+  "alreadyOpen": [
+   {
+    "room": 169,
+    "id": 27,
+    "name": "ledge",
+    "word": "ledge",
+    "ops": [],
+    "ok": false,
+    "reply": "you can't reach the ledge from the bed. > "
+   }
+  ],
+  "moves": 38,
+  "pre": [
+   "stand up ->  plundered hearts infocom interactive fiction copyright (c) 1987 by infocom, inc"
+  ],
+  "lost": 2,
+  "rooms": 3
+ }
+}

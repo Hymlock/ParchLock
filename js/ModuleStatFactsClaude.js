@@ -7,6 +7,11 @@ var ModuleStatFactsClaude = {
         "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11 },
         "openCapability": { "all": ["container"], "none": ["supporter"] }
     },
+    // Cutthroats (ZIL): OPENBIT 21 (original-scene native explorer, zil-native-explore4.json, no relocation): hotel-room dresser RAM bit 21
+    // 0 closed -> 1 after OPEN (reveals book/key/passbook) -> 0 after CLOSE (contents hidden); OPEN on the bed tests 21 TRUE ("already open"). Container 11 unknown.
+    "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180": {
+        "attributeMap": { "open": 21, "isOpen": 21 }
+    },
     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
         "attributeMap": { "container": 21, "supporter": 14 },
         "openCapability": { "all": ["container"], "none": ["supporter"] }
