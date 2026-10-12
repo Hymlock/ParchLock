@@ -364,6 +364,10 @@ var ModuleStatFactsClaude = {
     },
     // The Lurking Horror (Infocom v3)
     "1862ef7ce4c25abd32d442392fe7eaba9c1595ed5411df75e99b06f43af6f5af": {
+        // OPENBIT 13 (original-scene native explorer, zil-native-explore2-c.json): refrigerator OPEN tests 13 false, sets it,
+        // reveals carton + Coke; CLOSE tests true, clears. OPEN on chair, pc, kitchen counter, forklift tests 13 TRUE natively.
+        // Container 27 / supporter 8 not yet proven (one native container positive, no negative).
+        "attributeMap": { "open": 13, "isOpen": 13 },
         "command": "score", "fields": ["score.max", "rank"], "replyFamily": "inform-score", "outcome": "line",
         "evidence": "2026-10-05 live SCORE: Your score is 0 of a possible 100, in 0 moves. Graded on the curve, you are in the class of Freshman. DIAGNOSE: You are wide awake, and are in good health."
     },

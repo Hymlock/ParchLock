@@ -1,0 +1,336 @@
+{
+ "TheLurkingHorror.z3.js": {
+  "CB": 27,
+  "OB": 13,
+  "probes": [
+   {
+    "room": 176,
+    "id": 56,
+    "name": "it",
+    "word": "protag",
+    "kids": [
+     "assignment"
+    ],
+    "steps": [
+     {
+      "c": "look in protag",
+      "ops": [],
+      "cops": [],
+      "text": "you can't see any protag here. > ",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "open protag",
+      "ops": [],
+      "cops": [],
+      "text": "you can't see any protag here. > ",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "look in protag",
+      "ops": [],
+      "cops": [],
+      "text": "you can't see any protag here. > ",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "close protag",
+      "ops": [],
+      "cops": [],
+      "text": "you can't see any protag here. > ",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "look in protag",
+      "ops": [],
+      "cops": [],
+      "text": "you can't see any protag here. > ",
+      "childText": [],
+      "childMarked": []
+     }
+    ],
+    "okBit": false,
+    "hideShow": 0,
+    "underline": false
+   },
+   {
+    "room": 33,
+    "id": 105,
+    "name": "refrigerator",
+    "word": "refrig",
+    "kids": [
+     "cardboard carton",
+     "two liter bottle of Classic Coke"
+    ],
+    "steps": [
+     {
+      "c": "look in refrig",
+      "ops": [],
+      "cops": [],
+      "text": "you'll have to open it to look in it. > ",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "open refrig",
+      "ops": [
+       {
+        "op": "test_attr",
+        "o": 105,
+        "b": 13,
+        "r": false
+       },
+       {
+        "op": "test_attr",
+        "o": 105,
+        "b": 13,
+        "r": false
+       },
+       {
+        "op": "set_attr",
+        "o": 105,
+        "b": 13,
+        "r": null
+       },
+       {
+        "op": "test_attr",
+        "o": 105,
+        "b": 13,
+        "r": true
+       }
+      ],
+      "cops": [
+       {
+        "op": "test_attr",
+        "o": 105,
+        "b": 27,
+        "r": true
+       },
+       {
+        "op": "test_attr",
+        "o": 105,
+        "b": 27,
+        "r": true
+       }
+      ],
+      "text": "opening the refrigerator reveals a two liter bottle of classic coke and a cardboard carton. > ",
+      "childText": [
+       "carton",
+       "coke"
+      ],
+      "childMarked": []
+     },
+     {
+      "c": "look in refrig",
+      "ops": [],
+      "cops": [],
+      "text": "the interior of the refrigerator is appalling. there are soggy lunch bags, ancient sandwiches and other less identifiable items. more appeti",
+      "childText": [
+       "carton",
+       "coke"
+      ],
+      "childMarked": []
+     },
+     {
+      "c": "close refrig",
+      "ops": [
+       {
+        "op": "test_attr",
+        "o": 105,
+        "b": 13,
+        "r": true
+       },
+       {
+        "op": "test_attr",
+        "o": 105,
+        "b": 13,
+        "r": true
+       },
+       {
+        "op": "clear_attr",
+        "o": 105,
+        "b": 13,
+        "r": null
+       }
+      ],
+      "cops": [
+       {
+        "op": "test_attr",
+        "o": 105,
+        "b": 27,
+        "r": true
+       }
+      ],
+      "text": "closed. > ",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "look in refrig",
+      "ops": [],
+      "cops": [],
+      "text": "you'll have to open it to look in it. > ",
+      "childText": [],
+      "childMarked": []
+     }
+    ],
+    "okBit": true,
+    "hideShow": true,
+    "underline": false
+   },
+   {
+    "room": 140,
+    "id": 53,
+    "name": "metal flask",
+    "word": "flask",
+    "kids": [
+     "cold liquid"
+    ],
+    "steps": [
+     {
+      "c": "look in flask",
+      "ops": [],
+      "cops": [],
+      "text": "",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "open flask",
+      "ops": [],
+      "cops": [],
+      "text": "",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "look in flask",
+      "ops": [],
+      "cops": [],
+      "text": "",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "close flask",
+      "ops": [],
+      "cops": [],
+      "text": "",
+      "childText": [],
+      "childMarked": []
+     },
+     {
+      "c": "look in flask",
+      "ops": [],
+      "cops": [],
+      "text": "",
+      "childText": [],
+      "childMarked": []
+     }
+    ],
+    "okBit": false,
+    "hideShow": 0,
+    "underline": false
+   }
+  ],
+  "alreadyOpen": [
+   {
+    "room": 176,
+    "id": 62,
+    "name": "chair",
+    "word": "chair",
+    "ops": [
+     {
+      "op": "test_attr",
+      "o": 62,
+      "b": 13,
+      "r": true
+     }
+    ],
+    "ok": true,
+    "reply": "how do you do that with a chair? > "
+   },
+   {
+    "room": 176,
+    "id": 129,
+    "name": "hacker",
+    "word": "hacker",
+    "ops": [],
+    "ok": false,
+    "reply": "what a grisly idea. > "
+   },
+   {
+    "room": 176,
+    "id": 191,
+    "name": "pc",
+    "word": "termin",
+    "ops": [
+     {
+      "op": "test_attr",
+      "o": 191,
+      "b": 13,
+      "r": true
+     }
+    ],
+    "ok": true,
+    "reply": "how do you do that with a pc? > "
+   },
+   {
+    "room": 33,
+    "id": 160,
+    "name": "kitchen counter",
+    "word": "counte",
+    "ops": [
+     {
+      "op": "test_attr",
+      "o": 160,
+      "b": 13,
+      "r": true
+     }
+    ],
+    "ok": true,
+    "reply": "how do you do that with a kitchen counter? > "
+   },
+   {
+    "room": 158,
+    "id": 197,
+    "name": "forklift",
+    "word": "forkli",
+    "ops": [
+     {
+      "op": "test_attr",
+      "o": 197,
+      "b": 13,
+      "r": true
+     }
+    ],
+    "ok": true,
+    "reply": ""
+   }
+  ],
+  "moves": 127,
+  "rooms": 14
+ },
+ "Planetfall.z3.js": {
+  "CB": 24,
+  "OB": 11,
+  "probes": [],
+  "alreadyOpen": [],
+  "moves": 26,
+  "lost": 2,
+  "rooms": 3
+ },
+ "Stationfall.z3.js": {
+  "CB": 25,
+  "OB": 15,
+  "probes": [],
+  "alreadyOpen": [],
+  "moves": 69,
+  "lost": 1,
+  "rooms": 5
+ }
+}
