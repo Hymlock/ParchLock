@@ -7,12 +7,28 @@
   "playerRoot": {
    "s": "S",
    "r": "existing ZRamReader.resolvePlayer (no fact) returns 4 = the RAM parent of the first walkthrough TAKE; app inventory lists jewel-encrusted egg (zil-player-root.js, 2026-10-11 23:3x run)"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "no worn state exists: historicalsource/zork1@97b7b3d V-WEAR = <PERFORM ,V?TAKE> when WEARBIT, no WORNBIT, no object <VERB? WEAR/TAKE-OFF> handler; a worn item is indistinguishable from a carried one in RAM"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "no worn state exists: historicalsource/zork1@97b7b3d V-WEAR = <PERFORM ,V?TAKE> when WEARBIT, no WORNBIT, no object <VERB? WEAR/TAKE-OFF> handler; a worn item is indistinguishable from a carried one in RAM"
   }
  },
  "Zork2-TheWizardofFrobozz.z3.js": {
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 17 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "no worn state exists: historicalsource/zork2@3da9661 V-WEAR = <PERFORM ,V?TAKE> when WEARBIT, no WORNBIT, no object <VERB? WEAR/TAKE-OFF> handler; a worn item is indistinguishable from a carried one in RAM"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "no worn state exists: historicalsource/zork2@3da9661 V-WEAR = <PERFORM ,V?TAKE> when WEARBIT, no WORNBIT, no object <VERB? WEAR/TAKE-OFF> handler; a worn item is indistinguishable from a carried one in RAM"
   }
  },
  "Zork3-TheDungeonMaster.z3.js": {
@@ -23,6 +39,14 @@
   "playerRoot": {
    "s": "S",
    "r": "existing ZRamReader.resolvePlayer (no fact) returns 202 = the RAM parent of the first walkthrough TAKE; app inventory lists lamp (zil-player-root.js, 2026-10-11 23:3x run)"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "no worn state exists: historicalsource/zork3@3ec9ed4 V-WEAR = <PERFORM ,V?TAKE> when WEARBIT, no WORNBIT, no object <VERB? WEAR/TAKE-OFF> handler; a worn item is indistinguishable from a carried one in RAM"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "no worn state exists: historicalsource/zork3@3ec9ed4 V-WEAR = <PERFORM ,V?TAKE> when WEARBIT, no WORNBIT, no object <VERB? WEAR/TAKE-OFF> handler; a worn item is indistinguishable from a carried one in RAM"
   }
  },
  "Enchanter.z3.js": {
@@ -57,6 +81,18 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 19 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "wearable": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/deadline@2602bd5 has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12)"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/deadline@2602bd5 has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12)"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/deadline@2602bd5 has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12)"
   }
  },
  "Infidel.z3.js": {
@@ -111,6 +147,18 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 23 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "wearable": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/seastalker@258f825 has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12)"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/seastalker@258f825 has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12)"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/seastalker@258f825 has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12)"
   }
  },
  "Sorcerer.z3.js": {
@@ -123,6 +171,18 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 24 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "wearable": {
+   "s": "UD",
+   "r": "not applicable: historicalsource/spellbreaker@6f83ba4 verbs.zil V-WEAR is unconditional <YOU-CANT-X-PRSO \"wear\">, no WEARBIT/WORNBIT anywhere, no object <VERB? WEAR/TAKE-OFF> handler"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "not applicable: historicalsource/spellbreaker@6f83ba4 verbs.zil V-WEAR is unconditional <YOU-CANT-X-PRSO \"wear\">, no WEARBIT/WORNBIT anywhere, no object <VERB? WEAR/TAKE-OFF> handler"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "not applicable: historicalsource/spellbreaker@6f83ba4 verbs.zil V-WEAR is unconditional <YOU-CANT-X-PRSO \"wear\">, no WEARBIT/WORNBIT anywhere, no object <VERB? WEAR/TAKE-OFF> handler"
   }
  },
  "Starcross.z3.js": {
@@ -243,6 +303,18 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 22 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "wearable": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/witness@8fe092a has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12); story dictionary (715 words) has no \"wear\"/\"don\""
+  },
+  "worn": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/witness@8fe092a has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12); story dictionary (715 words) has no \"wear\"/\"don\""
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "not applicable: source historicalsource/witness@8fe092a has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12); story dictionary (715 words) has no \"wear\"/\"don\""
   }
  },
  "Sherlock.z5.js": {

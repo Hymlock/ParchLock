@@ -148,7 +148,7 @@ var ModuleStatFactsClaude = {
     // holder 218 to room 54 (second DROP/TAKE 54/218). ZRamReader.resolvePlayer re-reads and link-validates it.
     // Native REMOVE uniform/chronometer clears bit 21, WEAR sets it; native i labels both as being worn.
     "3c5656897dd2503610945e80a0b42fc5d25614d967a010ace8e9cafd12f978a3": {
-        // Codex #3491 (original-scene native, source pin historicalsource/stationfall 5d05d5e verbs 2473 WEARBIT/WORNBIT, 1962 TELL ACTORBIT): WEAR tests 20 TRUE on uniform 229 and chronometer 1, FALSE on form 98 (refused); TELL tests 31 TRUE on Helen 135 and Floyd 26 with actor replies, FALSE on form 98. No container 17 (ID card OPEN/CLOSE impossible). grok2 gated. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
+        // Codex #3491 (original-scene native, source pin historicalsource/stationfall 5d05d5e verbs 2473 WEARBIT/WORNBIT, 1962 TELL ACTORBIT): WEAR tests 20 TRUE on uniform 229 and chronometer 1, FALSE on form 98 (refused); TELL tests 31 TRUE on Helen 135 and Floyd 26 with actor replies, FALSE on form 98. No container 17 (ID card OPEN/CLOSE impossible). grok2 gated. Evidence is Codex original scripted routes (2026-10-11-codex-zil-flags-proof.json), not a Jericho walkthrough.
         "attributeMap": { "wearable": 20, "animate": 31, "talkable": 31 },
         "playerGlobal": 183,
         "wornAttribute": 21
