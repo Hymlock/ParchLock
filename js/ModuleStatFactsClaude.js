@@ -413,6 +413,7 @@ var ModuleStatFactsClaude = {
     },
     // Zork I (Infocom v3)
     "0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd": {
+        // ACTORBIT 30: tested TRUE on thief 114 (kill thief) and troll 217; FALSE on egg 87, engravings 97, pedestal 106, wooden door 111, rope 129, railing 134. Observer-captured walk mz3 (seed 3, full 396 steps, no death), object-id keyed, analyzer2. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         // ONBIT 20: LIGHT sets 20 on brass lantern, matchbook, pair of candles; tested FALSE on the lantern before lighting (TURN OFF clears). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         // Native OPEN/CLOSE dispatch (Codex 2026-10-11, owned proof JSON): mailbox 160, sack 224 and
         // bottle 236 test CONTBIT 19, OPEN sets and CLOSE clears OPENBIT 11; OPEN leaflet 161 tests 19
@@ -420,7 +421,7 @@ var ModuleStatFactsClaude = {
         // SURFACEBIT 10 kitchen table preserved. Surface-aware Open/Close (Codex #3371/#3377):
         // CLOSE TABLE 204 (19 and 10) answers cannot-close, so container-derived Open/Close needs
         // container AND NOT supporter here. Facts stay truthful.
-            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20 },
+            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30 },
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         "command": "score", "fields": ["score.max", "rank"], "replyFamily": "inform-score", "outcome": "line",
         "evidence": "2026-10-05 live SCORE: Your score is 0 (total of 350 points), in 0 moves. / This gives you the rank of Beginner."

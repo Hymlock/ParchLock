@@ -50,17 +50,17 @@ Source: zil-walk-r*.json (per-step location/ROOMS parent/app player, whole-delta
 - positives: 24 gravedigger <show ticket to gravedigger>; 35 piranha <put worm in fountain>; 59 King Anatinus <get hat>; 113 pelican <give hat to pelican>; 126 old woman <give envelope to woman>; 148 poodle <give bone to poodle>; 193 Miss Voss <get note>
 - negatives: 4 little mailbox <open mailbox>; 14 violet note <d>; 38 #38 <get it>; 61 fountain <look in fountain>; 82 refrigerator <open fridge>; 117 old bone <d>; 150 wizard's hat <d>; 158 small stone <d>
 
-## 9b72c38 Zork1-TheGreatUndergroundEmpire.z3.js on (bit {"CB":19,"OB":11,"WB":null,"NB":20,"AB":30}; run 2026-10-11-zil-walk-m1.json, incomplete)
-- verdict: insufficient (1+7, census 3)
-- positives: 164 brass lantern <light lamp>
-- negatives: 87 jewel-encrusted egg <light lamp> tested-off; 110 sword <light lamp> tested-off; 129 rope <light lamp> tested-off; 164 brass lantern <light lamp> tested-off; 169 nasty knife <light lamp> tested-off; 189 clove of garlic <light lamp> tested-off; 202 table <light lamp> tested-off
+## 9b72c38 Zork1-TheGreatUndergroundEmpire.z3.js on (bit {"CB":19,"OB":11,"WB":null,"NB":20,"AB":30}; run 2026-10-11-zil-walk-mz3.json, attempted)
+- verdict: MEETS 2+1
+- positives: 147 pair of candles <light candles with match>; 155 matchbook <light match>; 164 brass lantern <light lamp>
+- negatives: 87 jewel-encrusted egg <light lamp> tested-off; 110 sword <light lamp> tested-off; 123 screwdriver <light lamp> tested-off; 129 rope <light lamp> tested-off; 147 pair of candles <light match> tested-off; 164 brass lantern <light lamp> tested-off; 169 nasty knife <light lamp> tested-off; 189 clove of garlic <light lamp> tested-off
 
 ## 9b72c38 Ballyhoo.z3.js open (bit {"CB":23,"OB":15,"WB":null,"NB":24,"AB":31}; run 2026-10-11-zil-walk-m3.json, incomplete)
 - verdict: MEETS 2+1
 - positives: 65 bucket <open compartment> already-open; 122 your ticket <open door> already-open; 149 cage door <open cage> set; 164 cage door <open door> set; 213 compartment <open compartment> set
 - negatives: 44 trailer door <close door> cleared; 149 cage door <open cage> tested-closed; 164 cage door <open door> tested-closed; 213 compartment <open compartment> tested-closed
 
-## ca4d0a5 Planetfall.z3.js open (bit {"CB":24,"OB":11,"WB":12,"NB":5,"AB":null}; run 2026-10-11-zil-walk-m4.json, incomplete)
+## ca4d0a5 Planetfall.z3.js open (bit {"CB":24,"OB":11,"WB":12,"NB":5,"AB":null}; run 2026-10-11-zil-walk-m5.json, incomplete)
 - verdict: MEETS 2+1
 - positives: 125 glass flask <open floyd> already-open; 145 large desk <open desk> set; 149 small desk <open desk> set; 163 canteen <open canteen> set; 173 door <open door> set; 213 survival kit <open it> set; 224 Patrol uniform <open door> already-open; 231 escape pod bulkhead <open door> set
 - negatives: 145 large desk <open desk> tested-closed; 149 small desk <open desk> tested-closed; 163 canteen <open canteen> tested-closed; 173 door <open door> tested-closed; 213 survival kit <open door> tested-closed; 231 escape pod bulkhead <open door> tested-closed; 254 #254 <open it> tested-closed

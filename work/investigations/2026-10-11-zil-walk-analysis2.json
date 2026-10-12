@@ -1,6 +1,6 @@
 {
  "Zork1-TheGreatUndergroundEmpire.z3.js": {
-  "file": "2026-10-11-zil-walk-m1.json",
+  "file": "2026-10-11-zil-walk-mz3.json",
   "bits": {
    "CB": 19,
    "OB": 11,
@@ -8,10 +8,10 @@
    "NB": 20,
    "AB": 30
   },
-  "steps": 101,
-  "completion": "incomplete",
-  "end": "here! Abandon every hope all ye who enter here! The gate is open; through it you can see a desolatio",
-  "rooms": "1/21",
+  "steps": 396,
+  "completion": "attempted",
+  "end": "",
+  "rooms": "1/85",
   "players": [
    4
   ],
@@ -19,12 +19,18 @@
    "pos": {
     "89": "bird's nest <get egg>",
     "106": "pedestal <get torch>",
+    "158": "machine <get diamond>",
+    "162": "red buoy <open buoy>",
+    "194": "trophy case <open case>",
     "202": "table <get knife>",
     "208": "gold coffin <open coffin>",
     "213": "altar <get book>",
-    "224": "brown sack <open sack>"
+    "224": "brown sack <open sack>",
+    "227": "basket <get all from basket>"
    },
-   "neg": {},
+   "neg": {
+    "156": "magic boat <get label>"
+   },
    "census": [
     86,
     87,
@@ -47,11 +53,14 @@
     227,
     236
    ],
-   "verdict": "insufficient (6+0, census 20)"
+   "verdict": "MEETS 2+1"
   },
   "open": {
    "pos": {
+    "158": "machine <open lid> set",
+    "162": "red buoy <open buoy> set",
     "183": "trap door <open trapdoor> set",
+    "194": "trophy case <open case> set",
     "204": "kitchen table <open sack> already-open",
     "208": "gold coffin <open coffin> set",
     "224": "brown sack <open sack> set",
@@ -59,19 +68,21 @@
    },
    "neg": {
     "87": "jewel-encrusted egg <open window> tested-closed",
+    "158": "machine <open lid> tested-closed",
+    "162": "red buoy <open buoy> tested-closed",
     "183": "trap door <open trapdoor> tested-closed",
     "194": "trophy case <open trapdoor> tested-closed",
     "208": "gold coffin <open coffin> tested-closed",
     "224": "brown sack <open sack> tested-closed",
     "235": "kitchen window <open window> tested-closed",
-    "236": "glass bottle <open sack> tested-closed",
-    "249": "#249 <open case> tested-closed"
+    "236": "glass bottle <open sack> tested-closed"
    },
    "census": null,
    "verdict": "MEETS 2+1"
   },
   "animate": {
    "pos": {
+    "114": "thief <kill thief with nasty knife>",
     "217": "troll <d>"
    },
    "neg": {
@@ -84,6 +95,7 @@
     "135": "prayer <d>",
     "139": "platinum bar <e>",
     "147": "pair of candles <d>",
+    "156": "magic boat <launch>",
     "183": "trap door <get sword>",
     "192": "carpet <get sword>",
     "194": "trophy case <get sword>",
@@ -93,6 +105,7 @@
     "218": "bloody axe <kill troll with sword>",
     "221": "brass bell <d>",
     "224": "brown sack <e>",
+    "227": "basket <s>",
     "236": "glass bottle <w>"
    },
    "census": [
@@ -103,27 +116,32 @@
     223,
     233
    ],
-   "verdict": "insufficient (1+19, census 6)"
+   "verdict": "MEETS 2+1"
   },
   "on": {
    "pos": {
+    "147": "pair of candles <light candles with match>",
+    "155": "matchbook <light match>",
     "164": "brass lantern <light lamp>"
    },
    "neg": {
     "87": "jewel-encrusted egg <light lamp> tested-off",
     "110": "sword <light lamp> tested-off",
+    "123": "screwdriver <light lamp> tested-off",
     "129": "rope <light lamp> tested-off",
+    "147": "pair of candles <light match> tested-off",
     "164": "brass lantern <light lamp> tested-off",
     "169": "nasty knife <light lamp> tested-off",
     "189": "clove of garlic <light lamp> tested-off",
-    "202": "table <light lamp> tested-off"
+    "202": "table <light lamp> tested-off",
+    "227": "basket <light lamp> tested-off"
    },
    "census": [
     104,
     147,
     164
    ],
-   "verdict": "insufficient (1+7, census 3)"
+   "verdict": "MEETS 2+1"
   }
  },
  "Cutthroats.z3.js": {
@@ -1674,7 +1692,7 @@
   }
  },
  "Planetfall.z3.js": {
-  "file": "2026-10-11-zil-walk-m4.json",
+  "file": "2026-10-11-zil-walk-m5.json",
   "bits": {
    "CB": 24,
    "OB": 11,
@@ -1682,9 +1700,9 @@
    "NB": 5,
    "AB": null
   },
-  "steps": 155,
+  "steps": 160,
   "completion": "incomplete",
-  "end": "bed. \"About time you woke up, you lazy bones! Let's explore around some more!\" Floyd bounces impatie",
+  "end": "nteen glass flask glass flask lower elevator access card lower elevator access card upper elevator a",
   "rooms": "1/31",
   "players": [
    236
