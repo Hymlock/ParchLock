@@ -9116,6 +9116,10 @@ attr-calibrator-inventory-root 13/0; phase2-heuristic-cutover 147/2 (2 pre-exist
 - a9d3ee0 (D225 addendum): no observed phrase ends in a grammar particle (beneath "front of" -> the book; spring "pair of"
   -> shorts); a leading article stays allowed for named objects (D184).
 
+- 288b104 (D225 addendum): an inventory listing row that prints exactly the structural name beats a phrase observed
+  elsewhere (Lurking pc no longer "computer terminals"; Ralph "Blamant the Teddy"; Hollywood "photo of Uncle Buddy").
+- bd9ef47: Lurking Horror inventoryHiddenAttribute 18 (pc mouse / HELP key).
+
 **Open:** heist/phlegm library attribute order (container 3 / door 4 census, no target-scoped positive yet); Sherlock
 nested container/open facts (no source pin).
 
