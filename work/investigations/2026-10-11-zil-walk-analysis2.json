@@ -171,7 +171,7 @@
   }
  },
  "Cutthroats.z3.js": {
-  "file": "2026-10-11-zil-walk-n1.json",
+  "file": "2026-10-11-zil-walk-pq4.json",
   "bits": {
    "CB": 11,
    "OB": 21,
@@ -184,23 +184,54 @@
    "EB": 18,
    "LB": null
   },
-  "steps": 336,
+  "steps": 486,
   "completion": "attempted",
   "end": "",
-  "rooms": "1/40",
+  "rooms": "1/19",
   "players": [
    184,
    181
   ],
   "container": {
    "pos": {
-    "140": "closet <look in closet>"
+    "76": "stove <look on stove>",
+    "79": "bunk <look in bunk>",
+    "107": "bar <look in bar>",
+    "109": "table <look in table>",
+    "122": "tube of putty <look in tube>",
+    "140": "closet <look in closet>",
+    "146": "bed <look in bed>"
    },
    "neg": {
-    "151": "back window <open window>",
-    "176": "ocean <dive in ocean>",
+    "8": "Weasel's knife <look in knife>",
+    "9": "the Weasel <look in weasel>",
+    "11": "Pete the Rat <look on rat>",
+    "12": "Johnny Red <look in johnny>",
+    "13": "cigar <look on cigar>",
+    "14": "McGinty <look in mcgint>",
+    "94": "chair <look in chair>",
+    "103": "drink <look in drink>",
+    "108": "chair <look in chair>",
+    "113": "diving cage <look in cage>",
+    "114": "set of nautical charts <look in charts>",
+    "115": "shark repellent canister <look in repell>",
+    "116": "flashlight <look on flashl>",
+    "117": "portable electromagnet <look in electr>",
+    "118": "diving book <look in book>",
+    "119": "location box <look in box>",
+    "120": "small air compressor <look in compre>",
+    "123": "anchor <look in anchor>",
+    "125": "net <look in net>",
+    "130": "price list <look in list>",
+    "136": "air tank <look in tank>",
+    "137": "diving mask <look in mask>",
+    "138": "pair of flippers <look in flippe>",
+    "139": "wet suit <look in suit>",
+    "142": "note <look in note>",
     "177": "bedroom door <open door>",
-    "179": "window <look out window>"
+    "178": "window <look through window>",
+    "179": "window <look out window>",
+    "201": "Night Wind <look through window>"
    },
    "census": [
     24,
@@ -227,27 +258,38 @@
     195,
     215
    ],
-   "verdict": "insufficient (1+4, census 23)"
+   "verdict": "MEETS 2+1"
   },
   "supporter": {
    "pos": {
-    "108": "chair <get out of chair>",
+    "76": "stove <look on stove>",
+    "79": "bunk <look in bunk>",
+    "107": "bar <look in bar>",
+    "109": "table <look in table>",
     "146": "bed <get out of bed>"
    },
    "neg": {
-    "1": "dinner plate <examine plate>",
-    "12": "Johnny Red <wait for johnny>",
+    "8": "Weasel's knife <look in knife>",
+    "9": "the Weasel <look in weasel>",
+    "11": "Pete the Rat <look in rat>",
+    "13": "cigar <look in cigar>",
+    "14": "McGinty <look in mcgint>",
     "33": "collection of rare stamps <examine stamps>",
     "34": "glass case <examine glass case>",
-    "78": "under the bunk <look under bunk>",
+    "88": "airhose <examine air tank>",
     "89": "large air compressor <examine compressor>",
+    "111": "parrot <look in parrot>",
+    "136": "air tank <look in tank>",
+    "137": "diving mask <look in mask>",
+    "138": "pair of flippers <look in flippe>",
+    "139": "wet suit <look in suit>",
     "140": "closet <look in closet>",
     "143": "room key <get passbook and room key>",
     "144": "Mariners' Trust passbook <get passbook and room key>",
-    "151": "back window <open window>",
-    "176": "ocean <dive in ocean>",
     "177": "bedroom door <open door>",
-    "179": "window <look out window>"
+    "178": "window <look through window>",
+    "179": "window <look out window>",
+    "201": "Night Wind <look through window>"
    },
    "census": [
     21,
@@ -268,33 +310,27 @@
   },
   "open": {
    "pos": {
-    "64": "portable drill <open panel> set",
     "140": "closet <open dresser> already-open",
     "145": "dresser <open dresser> set",
-    "151": "back window <open window> set",
-    "176": "ocean <open shark repellent> already-open",
+    "176": "ocean <open window> already-open",
     "177": "bedroom door <open door> set"
    },
    "neg": {
-    "64": "portable drill <open panel> tested-closed",
-    "133": "envelope <open door> tested-closed",
     "145": "dresser <open dresser> tested-closed",
-    "151": "back window <open window> tested-closed",
-    "168": "#168 <open window> tested-closed",
-    "172": "railing <open tube> tested-closed",
-    "173": "ladder bottom <open door> tested-closed",
-    "174": "ladder top <open shark repellent> tested-closed",
-    "175": "stairs <open door> tested-closed",
+    "164": "front door <open window> tested-closed",
+    "172": "railing <open window> tested-closed",
+    "173": "ladder bottom <open shark repellent> tested-closed",
+    "174": "ladder top <open door> tested-closed",
     "177": "bedroom door <open door> tested-closed",
-    "178": "window <open tube> tested-closed",
+    "178": "window <open window> tested-closed",
     "179": "window <open door> tested-closed",
     "192": "carpeting <open door> tested-closed",
     "193": "wallpaper <open door> tested-closed",
-    "197": "abandoned field <open window> tested-closed",
-    "200": "Mary Margaret <open shark repellent> tested-closed",
-    "201": "Night Wind <open shark repellent> tested-closed",
-    "213": "deck <open shark repellent> tested-closed",
-    "222": "#222 <open shark repellent> tested-closed"
+    "200": "Mary Margaret <open tube> tested-closed",
+    "201": "Night Wind <open window> tested-closed",
+    "203": "lighthouse <open window> tested-closed",
+    "213": "deck <open window> tested-closed",
+    "222": "#222 <open window> tested-closed"
    },
    "census": null,
    "verdict": "MEETS 2+1"
@@ -302,13 +338,12 @@
   "takeable": {
    "pos": {
     "6": "wrist watch <get watch>",
-    "64": "portable drill <get drill>",
-    "133": "envelope <get envelope>",
-    "136": "air tank <get air tank>",
     "143": "room key <get passbook and room key>",
     "144": "Mariners' Trust passbook <get passbook and room key>"
    },
-   "neg": {},
+   "neg": {
+    "178": "window <enter window>"
+   },
    "census": [
     6,
     7,
@@ -332,7 +367,7 @@
     143,
     144
    ],
-   "verdict": "insufficient (6+0, census 21)"
+   "verdict": "MEETS 2+1"
   },
   "wearable": {
    "pos": {
@@ -370,7 +405,7 @@
   }
  },
  "HollywoodHijinx.z3.js": {
-  "file": "2026-10-11-zil-walk-p3.json",
+  "file": "2026-10-11-zil-walk-pq2.json",
   "bits": {
    "CB": 4,
    "OB": 25,
@@ -383,7 +418,7 @@
    "EB": 22,
    "LB": 3
   },
-  "steps": 437,
+  "steps": 457,
   "completion": "attempted",
   "end": "",
   "rooms": "1/13",
@@ -393,14 +428,23 @@
   ],
   "supporter": {
    "pos": {
-    "207": "pile of cannon balls <look in cannon>"
+    "207": "pile of cannon balls <look in balls>"
    },
    "neg": {
+    "14": "small pond <look on pond>",
+    "67": "photo of Uncle Buddy <look on photo>",
+    "96": "ladder <look on ladder>",
+    "104": "orchids <look on orchid>",
     "113": "yellowed piece of paper <put it on yellowed paper>",
+    "114": "bazooka <look on bazook>",
     "117": "oak door <open door>",
     "123": "flashlight <drop all but flashlight>",
     "138": "small compartment <look in compar>",
-    "225": "Buck Palace-endorsed, regulation mailbox <open mailbox>"
+    "172": "cannon <look on cannon>",
+    "208": "fuse <look on fuse>",
+    "225": "Buck Palace-endorsed, regulation mailbox <open mailbox>",
+    "235": "Aunt Hildegarde's letter <look on letter>",
+    "243": "statue of Buck Palace, the fighting letter carrier <look on buck>"
    },
    "census": [
     9,
@@ -412,7 +456,7 @@
     207,
     211
    ],
-   "verdict": "insufficient (1+5, census 8)"
+   "verdict": "insufficient (1+14, census 8)"
   },
   "container": {
    "pos": {
@@ -423,7 +467,6 @@
     "225": "Buck Palace-endorsed, regulation mailbox <open mailbox>"
    },
    "neg": {
-    "63": "business card <look in card>",
     "67": "photo of Uncle Buddy <look in photo>",
     "96": "ladder <look in ladder>",
     "104": "orchids <look in orchid>",
@@ -484,7 +527,6 @@
    "pos": {},
    "neg": {
     "14": "small pond <look in pond>",
-    "63": "business card <look in card>",
     "67": "photo of Uncle Buddy <look in photo>",
     "96": "ladder <look in ladder>",
     "104": "orchids <look in orchid>",
@@ -504,7 +546,7 @@
     126,
     163
    ],
-   "verdict": "insufficient (0+15, census 3)"
+   "verdict": "insufficient (0+14, census 3)"
   },
   "takeable": {
    "pos": {
@@ -1449,7 +1491,7 @@
   }
  },
  "Wishbringer.z3.js": {
-  "file": "2026-10-11-zil-walk-n2.json",
+  "file": "2026-10-11-zil-walk-pj4.json",
   "bits": {
    "CB": 4,
    "OB": 25,
@@ -1462,21 +1504,25 @@
    "EB": 22,
    "LB": null
   },
-  "steps": 173,
+  "steps": 184,
   "completion": "terminal",
-  "end": "GAME OVER: ry West Rotary East Rotary East Rotary North Rotary North South of Bridge South of Bridge",
-  "rooms": "1/40",
+  "end": "",
+  "rooms": "1/47",
   "players": [
    219
   ],
   "takeable": {
    "pos": {
+    "7": "rusty key <get key>",
     "14": "violet note <get note>",
     "43": "mysterious envelope <get envelope>",
     "58": "silver whistle <get whistle>",
     "60": "dead branch <put branch in pit>",
+    "76": "broom <get broom>",
     "89": "pair of 3D glasses <get glasses>",
+    "92": "steel key <get steel key>",
     "117": "old bone <get bone>",
+    "147": "white lab coat <get coat>",
     "150": "wizard's hat <get hat>",
     "167": "brass token <get token>",
     "175": "thick blanket <get blanket>",
@@ -1522,18 +1568,22 @@
     248,
     250
    ],
-   "verdict": "insufficient (11+0, census 36)"
+   "verdict": "insufficient (15+0, census 36)"
   },
   "animate": {
    "pos": {
     "24": "gravedigger <show ticket to gravedigger>",
+    "98": "Alexis <alexis, heel>",
+    "104": "Mr. Crisp <give note to mr crisp>",
     "113": "pelican <give hat to pelican>",
     "126": "old woman <give envelope to woman>",
     "148": "poodle <give bone to poodle>"
    },
    "neg": {
     "4": "little mailbox <open mailbox>",
+    "9": "cottage door <open door>",
     "61": "fountain <look in fountain>",
+    "147": "white lab coat <look in coat>",
     "234": "Magick Shoppe door <open door>"
    },
    "census": [
@@ -1566,15 +1616,20 @@
    "verdict": "MEETS 2+1"
   },
   "supporter": {
-   "pos": {},
+   "pos": {
+    "72": "sculpture <examine sculpture>"
+   },
    "neg": {
     "4": "little mailbox <open mailbox>",
+    "7": "rusty key <get key>",
     "14": "violet note <get note>",
     "60": "dead branch <get branch>",
     "61": "fountain <look in fountain>",
     "105": "ticket <buy ticket>",
+    "147": "white lab coat <get coat>",
     "150": "wizard's hat <get hat>",
     "167": "brass token <get token>",
+    "209": "display case <smash case with broom>",
     "217": "pit <look in pit>",
     "229": "metal can <get can>",
     "250": "gold coin <get coin>"
@@ -1595,16 +1650,19 @@
     225,
     230
    ],
-   "verdict": "insufficient (0+10, census 14)"
+   "verdict": "insufficient (1+13, census 14)"
   },
   "container": {
    "pos": {
     "4": "little mailbox <open mailbox>",
     "61": "fountain <look in fountain>",
+    "147": "white lab coat <get coat>",
+    "209": "display case <smash case with broom>",
     "217": "pit <look in pit>",
     "229": "metal can <open can>"
    },
    "neg": {
+    "9": "cottage door <open door>",
     "234": "Magick Shoppe door <open door>"
    },
    "census": [
@@ -1643,16 +1701,20 @@
   "open": {
    "pos": {
     "4": "little mailbox <open mailbox> set",
+    "9": "cottage door <open door> set",
     "19": "stump <open stump> set",
     "82": "refrigerator <open fridge> set",
+    "157": "hatch <open hatch> set",
     "190": "toll gate <open gate> set",
     "229": "metal can <open can> set",
     "234": "Magick Shoppe door <open door> set"
    },
    "neg": {
     "4": "little mailbox <open mailbox> tested-closed",
+    "9": "cottage door <open door> tested-closed",
     "19": "stump <open stump> tested-closed",
     "82": "refrigerator <open fridge> tested-closed",
+    "157": "hatch <open hatch> tested-closed",
     "190": "toll gate <open gate> tested-closed",
     "229": "metal can <open can> tested-closed",
     "234": "Magick Shoppe door <open door> tested-closed",
@@ -2038,7 +2100,7 @@
   }
  },
  "Ballyhoo.z3.js": {
-  "file": "2026-10-11-zil-walk-p1.json",
+  "file": "2026-10-11-zil-walk-pzballyhoo.json",
   "bits": {
    "CB": 23,
    "OB": 15,
@@ -2051,36 +2113,38 @@
    "EB": 21,
    "LB": 26
   },
-  "steps": 486,
-  "completion": "attempted",
-  "end": "",
-  "rooms": "1/14",
+  "steps": 228,
+  "completion": "incomplete",
+  "end": "of Fat Lady West Half of Fat Lady East Half of Fat Lady East Half of Fat Lady Standing Room Only Sta",
+  "rooms": "1/28",
   "players": [
-   211
+   211,
+   78
   ],
   "supporter": {
-   "pos": {},
+   "pos": {
+    "20": "leather sofa <look in sofa>",
+    "109": "lower bunk <look in bunk>"
+   },
    "neg": {
-    "22": "button <look in button>",
-    "32": "pair of sunglasses <look in pair>",
-    "39": "cheese morsel <look in cheese>",
+    "2": "Rimshaw the Incomparable <give ticket to rimshaw>",
+    "5": "Jenny <show case to jenny>",
+    "7": "Andrew Jenny <give case to jenny>",
+    "18": "radio dial <take radio>",
     "44": "trailer door <close door>",
-    "49": "barred passage <look in passag>",
-    "90": "drinking fountain <look in founta>",
-    "93": "clown mask <look in mask>",
-    "115": "uniform <look in unifor>",
-    "118": "ignition switch <look in switch>",
-    "122": "your ticket <look in ticket>",
-    "129": "fiberglass pole <look in pole>",
-    "134": "helium <look in helium>",
-    "143": "sign <look in sign>",
-    "165": "balloon <look in balloo>",
-    "180": "flower <look in flower>",
-    "207": "guard <look in guard>",
-    "213": "compartment <look in compar>",
-    "214": "ash tray <look in tray>",
-    "219": "Comrade Thumb <look in thumb>",
-    "239": "trailer door <open door>"
+    "48": "transistor radio <take radio>",
+    "65": "bucket <take bucket>",
+    "71": "blue dot <punch out blue dot>",
+    "122": "your ticket <take ticket>",
+    "134": "helium <inhale helium>",
+    "142": "concession stand <look in stand>",
+    "149": "cage door <open cage>",
+    "164": "cage door <open door>",
+    "165": "balloon <take balloon>",
+    "207": "guard <guard, hello>",
+    "213": "compartment <open compartment>",
+    "214": "ash tray <take ash tray>",
+    "231": "pink dot <punch out blue dot>"
    },
    "census": [
     3,
@@ -2093,36 +2157,36 @@
     154,
     185
    ],
-   "verdict": "insufficient (0+20, census 9)"
+   "verdict": "MEETS 2+1"
+  },
+  "wearable": {
+   "pos": {
+    "93": "clown mask <wear clown mask>"
+   },
+   "neg": {},
+   "census": [
+    36,
+    76,
+    85,
+    93,
+    104,
+    106,
+    208,
+    222
+   ],
+   "verdict": "insufficient (1+0, census 8)"
   },
   "animate": {
    "pos": {
-    "207": "guard <look in guard>",
-    "219": "Comrade Thumb <look in thumb>"
+    "2": "Rimshaw the Incomparable <rimshaw, hypnotise me>"
    },
    "neg": {
-    "22": "button <look in button>",
-    "32": "pair of sunglasses <look in pair>",
-    "39": "cheese morsel <look in cheese>",
+    "20": "leather sofa <look in sofa>",
     "44": "trailer door <close door>",
-    "49": "barred passage <look in passag>",
-    "90": "drinking fountain <look in founta>",
-    "93": "clown mask <look in mask>",
-    "115": "uniform <look in unifor>",
-    "118": "ignition switch <look in switch>",
-    "122": "your ticket <ticket, hello>",
-    "129": "fiberglass pole <look in pole>",
-    "134": "helium <look in helium>",
-    "143": "sign <look in sign>",
-    "165": "balloon <look in balloo>",
-    "173": "midget car <car, hello>",
-    "180": "flower <look in flower>",
-    "195": "garbage <garbag, hello>",
-    "198": "burned cage <cage, hello>",
-    "208": "gorilla suit <suit, hello>",
-    "213": "compartment <look in compar>",
-    "214": "ash tray <look in tray>",
-    "239": "trailer door <open door>"
+    "142": "concession stand <look in stand>",
+    "149": "cage door <open cage>",
+    "164": "cage door <open door>",
+    "213": "compartment <open compartment>"
    },
    "census": [
     2,
@@ -2135,7 +2199,6 @@
     66,
     73,
     76,
-    78,
     84,
     98,
     113,
@@ -2160,28 +2223,31 @@
     219,
     224
    ],
+   "verdict": "insufficient (1+6, census 33)"
+  },
+  "open": {
+   "pos": {
+    "65": "bucket <open compartment> already-open",
+    "122": "your ticket <open door> already-open",
+    "149": "cage door <open cage> set",
+    "164": "cage door <open door> set",
+    "213": "compartment <open compartment> set"
+   },
+   "neg": {
+    "44": "trailer door <close door> cleared",
+    "149": "cage door <open cage> tested-closed",
+    "164": "cage door <open door> tested-closed",
+    "213": "compartment <open compartment> tested-closed"
+   },
+   "census": null,
    "verdict": "MEETS 2+1"
   },
   "container": {
-   "pos": {
-    "49": "barred passage <look in passag>",
-    "165": "balloon <look in balloo>",
-    "213": "compartment <look in compar>",
-    "214": "ash tray <look in tray>"
-   },
+   "pos": {},
    "neg": {
-    "22": "button <look in button>",
-    "32": "pair of sunglasses <look in pair>",
-    "39": "cheese morsel <look in cheese>",
-    "90": "drinking fountain <look in founta>",
-    "93": "clown mask <look in mask>",
-    "115": "uniform <look in unifor>",
-    "118": "ignition switch <look in switch>",
-    "129": "fiberglass pole <look in pole>",
-    "134": "helium <look in helium>",
-    "143": "sign <look in sign>",
-    "180": "flower <look in flower>",
-    "239": "trailer door <open door>"
+    "142": "concession stand <look in stand>",
+    "149": "cage door <open cage>",
+    "164": "cage door <open door>"
    },
    "census": [
     2,
@@ -2195,7 +2261,6 @@
     54,
     65,
     76,
-    78,
     96,
     98,
     103,
@@ -2223,36 +2288,23 @@
     224,
     227
    ],
-   "verdict": "MEETS 2+1"
+   "verdict": "insufficient (0+3, census 37)"
   },
-  "wearable": {
+  "on": {
    "pos": {
-    "93": "clown mask <wear clown mask>"
-   },
-   "neg": {},
-   "census": [
-    36,
-    76,
-    85,
-    93,
-    104,
-    106,
-    208,
-    222
-   ],
-   "verdict": "insufficient (1+0, census 8)"
-  },
-  "open": {
-   "pos": {
-    "122": "your ticket <open cage> already-open",
-    "154": "#154 <open door> already-open"
+    "48": "transistor radio <turn radio on>"
    },
    "neg": {
-    "50": "#50 <open cage> tested-closed",
-    "213": "compartment <open door> tested-closed"
+    "48": "transistor radio <turn radio off> cleared"
    },
-   "census": null,
-   "verdict": "MEETS 2+1"
+   "census": [
+    36,
+    48,
+    58,
+    74,
+    76
+   ],
+   "verdict": "insufficient (1+1, census 5)"
   }
  },
  "TheLurkingHorror.z3.js": {
@@ -3151,6 +3203,111 @@
     217
    ],
    "verdict": "insufficient (1+0, census 22)"
+  }
+ },
+ "Moonmist.z3.js": {
+  "file": "2026-10-11-zil-walk-pzmoonmist.json",
+  "bits": {
+   "CB": 27,
+   "OB": 14,
+   "WB": 21,
+   "NB": 10,
+   "AB": null,
+   "SB": 23,
+   "FB": null,
+   "TB": 26,
+   "EB": 29,
+   "LB": 24
+  },
+  "steps": 39,
+  "completion": "attempted",
+  "end": "",
+  "rooms": "1/1",
+  "players": [
+   42
+  ],
+  "supporter": {
+   "pos": {},
+   "neg": {
+    "21": "horn <look in horn>",
+    "171": "sports car <look in car>",
+    "187": "dragon's eye <look on eye>",
+    "190": "dragon <look on dragon>"
+   },
+   "census": [
+    3,
+    10,
+    19,
+    45,
+    49,
+    53,
+    57,
+    66,
+    76,
+    83,
+    87,
+    92,
+    95,
+    99,
+    134,
+    149,
+    165,
+    185,
+    188,
+    195,
+    202,
+    213,
+    215,
+    219,
+    227,
+    240,
+    242,
+    244,
+    251
+   ],
+   "verdict": "insufficient (0+4, census 29)"
+  },
+  "container": {
+   "pos": {
+    "171": "sports car <look in car>"
+   },
+   "neg": {
+    "21": "horn <look in horn>"
+   },
+   "census": [
+    5,
+    16,
+    18,
+    22,
+    26,
+    41,
+    59,
+    66,
+    81,
+    86,
+    99,
+    102,
+    109,
+    116,
+    142,
+    147,
+    160,
+    166,
+    169,
+    171,
+    172,
+    176,
+    191,
+    206,
+    207,
+    210,
+    218,
+    221,
+    223,
+    233,
+    245
+   ],
+   "verdict": "insufficient (1+1, census 31)"
   }
  }
 }

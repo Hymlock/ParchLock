@@ -61,6 +61,14 @@
   "playerRoot": {
    "s": "S",
    "r": "existing ZRamReader.resolvePlayer (no fact) returns 55 = the RAM parent of the first walkthrough TAKE; app inventory lists loaf of bread, spell book (zil-player-root.js, 2026-10-11 23:3x run)"
+  },
+  "open": {
+   "s": "X",
+   "r": "evidence MEETS 2+1 (terminal walk m3: OPEN sets 12 on oven 85, cell door 202, jewelled box 221 after tested-closed). Commit BLOCKED (2026-10-15 trial gate): open 12 lists the spells in the spell book and the \"Book\" underline moves to \"spell\" (shared word now owned by a spell rival). Needs an underline-ownership fix first; also unblocks the jug water nested display."
+  },
+  "nested": {
+   "s": "X",
+   "r": "FINDING (zil-inv-check step 90): native \"The jug contains: A quantity of water\"; app omits the water because container 21 is proven but open is unknown (fail closed). Resolves with the open fact above."
   }
  },
  "Hitchhik.z5.js": {

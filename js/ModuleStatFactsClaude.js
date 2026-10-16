@@ -51,7 +51,13 @@ var ModuleStatFactsClaude = {
         // CONTBIT 23: tested TRUE on bucket 65, desk 103, lower bunk 109, compartment 213, ash tray 214; FALSE on cage doors 68/149/164, secret panel 212, trailer door 239. ACTORBIT 31: TRUE on Rimshaw 2, roustabout 98, Chuckles 113; FALSE on radio dial 18, newsprint 27, trailer door 44. Repaired walk r3 (terminal ending, object-id keyed, analyzer2). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         // Q8 player root: G47 = PLAYER (Codex #3461: historicalsource/ballyhoo 9f779e8 misc.zil inits PLAYER/WINNER to PROTAG; binary at 22675/22678 stores 211 into G175 and G47; TELL routine rewrites only G175 = WINNER). The app read 29 with an empty inventory; walkthrough TAKEs land in 211.
         "playerGlobal": 47,
-        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31 }
+        // ADDED 2026-10-15 (claude, target-scoped original scene): CONTBIT 23 'look in X' TRUE on barred passage 49,
+        // balloon 165, compartment 213, ash tray 214; FALSE on button 22, sunglasses 32, cheese morsel 39, clown
+        // mask 93 ... (probe walks pq1/p1). SURFACEBIT 17 TRUE on leather sofa 20 ('look in sofa') and lower bunk 109
+        // ('look in bunk'), FALSE on bucket 65 ('take bucket'), trailer door 44 ('close door') ... (probe walk
+        // pzballyhoo, surfaces targeted). Source CONTBIT 23 / SURFACEBIT 17 exact. Together, so surfaces get no Open/Close.
+        "openCapability": { "all": ["container"], "none": ["supporter"] },
+        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17 }
     },
     // Leather Goddesses of Phobos (ZIL): Q8 player root = constant PROTAGONIST object 200 (historicalsource/leathergoddesses 17cbbc1
     // globals.zil 908 OBJECT PROTAGONIST DESC "it" ACTORBIT). No PLAYER global exists; WINNER G189 is mutable (mars.zil sets MITRE/SULTAN/
