@@ -88,3 +88,8 @@ bolts"). Cosmetic: TCOTY "Shark Head" -> "shark head" (casing). Noise: Inevita/M
 Guards: operator-regressions 7/0, d31 60/0, command-disambiguation 51/0, m12-room-short-name 12/0.
 Confirming full gate on the committed 8ea2f66 state: 20 differences, all in the classified set above; gamlet marks once (two reruns match the baseline: noise). 0 regression.
 - 288b104: inventory-row name rule (Lurking pc, Ralph teddy, Hollywood photo); gate 5 diffs, 0 regression.
+- heist (raw op counts, zil-route-ops-raw.cjs): TAKE FRAME, PUT FRAME IN BAG adds target tests of bit 3 TRUE on the bag 19;
+  PUT FRAME IN PRIEST / CROWD tests bit 3 FALSE on 18 and the library replies "That can't contain things." - so bit 3 is
+  this library's container bit. One target-scoped positive object so far (grave is routine-handled, the photo is not
+  reachable); the 2+1 rule needs a second container (box/coffin later in the game). Open.
+- 1d7c009 Sherlock container 9 / open 5 (raw counts: PUT IN bag/pocket TRUE, whistle FALSE; OPEN sets 5).
