@@ -62,6 +62,8 @@ This is what is not implemented yet; ruled-out and finished items are not here.
 - **Phase 5 (D32).** Click-to-rewind is not built: clicking an already-visited room should issue the computed number of UNDO commands and land on that room. Phase 5.
 - **Phase 6.** Map beautify is still open: cluster layout, crossings, floor tabs and phantom layers, docking the map when the story has its own graphics window, and collapsing panels on a very narrow viewport. The withdrawn overview/zoom is not part of this. Phase 6.
 
+- [ ] **Pre-existing failing harnesses (found 2026-10-15, not regressions of recent work):** harness/world-map-ui.js fails "map save restores every prior cell / visited proof survives reload" and "Travel here" (6 failures on the pre-map-sweep snapshot 02d4d57, fewer on HEAD); harness/learned-words-corrections.js asserts "seven disclosures 1280" (UI count). Each needs its own blind investigation.
+
 ## Save and scope
 
 - **Phase 8.** What remains after the restore/undo opcode work was superseded is still open: OffersLight and dark-room scope, Inform 7 / PunyInform / Inform 6 schema fingerprints, and the optional debug-file path. Phase 8; "Not done," which says the other Phase 8 leftovers stay open.
