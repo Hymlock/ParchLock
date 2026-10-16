@@ -559,8 +559,8 @@
  },
  "Sherlock.z5.js": {
   "container": {
-   "s": "UD",
-   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+   "s": "U",
+   "r": "2026-10-16 native ops (route ops open/close/look in bag, look in hat): a background scope pass tests bits 16/9/5/2/47/40 on every held object each command; bit 9 TRUE on bag/coat/pocket/hat (containers), bit 5 TRUE on coat/pocket only. Suggestive (9 container, 5 open?) but no source pin and no target-scoped test yet: not mapped."
   },
   "open": {
    "s": "UD",
@@ -599,16 +599,16 @@
    "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
   },
   "playerRoot": {
-   "s": "UD",
-   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+   "s": "S",
+   "r": "855616c: measured constant PC object 232 (native i lists exactly its children; G201=232 and its parent follows the status-line room across KNOCK ON DOOR). SOLO/SELF-AUDIT; no source pin."
   },
   "status": {
    "s": "UD",
    "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
   },
   "rooms": {
-   "s": "UD",
-   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+   "s": "O",
+   "r": "855616c: payload room = parent(232) = 221-B Baker Street 38 / Entry Hall 111, matching the status line (was the black bag 172)."
   },
   "actors": {
    "s": "UD",
