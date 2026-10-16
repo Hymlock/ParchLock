@@ -585,6 +585,10 @@ var Actionable = {
                 // their structural labels (including "the Order").
                 if (obj.labelProvenance === "parser-vocabulary"
                     && (Actionable.isGrammarParticle(phrase[0]) || Actionable.isGrammarParticle(words[j]))) continue;
+                // No observed name ENDS in a grammar particle, whatever the provenance: beneath's book (aliases include
+                // "front" and "of") was labelled "front of" from "standing in front of a large brick building". A
+                // leading article stays allowed for named objects ("the Order", D184).
+                if (Actionable.isGrammarParticle(words[j])) continue;
                 if (phrase.length < 2 && obj.labelProvenance !== "parser-vocabulary") continue;
                 var owners = (pool || []).filter(function (o) {
                     var mine = (o.aliases || []).map(displayKey);
