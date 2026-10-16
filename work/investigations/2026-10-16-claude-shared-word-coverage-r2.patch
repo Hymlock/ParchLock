@@ -1,0 +1,84 @@
+--- a/js/Actionable.js
++++ b/js/Actionable.js
+@@ -1535,6 +1535,7 @@
+                             return String(o.name).toLowerCase() === matched.toLowerCase() || matched.toLowerCase().split(/\s+/).every(function (w) { return !!words[w] || (o.aliases || []).some(function (a) { return Actionable.vocabularyKey(a) === Actionable.vocabularyKey(w); }); });
+                         });
+                         mark.dataset.candidateIds = JSON.stringify(owners.map(function (o) { return o.id; }));
++                        mark.dataset.coverIds = JSON.stringify(Actionable.coverageOf(matched, owners.map(function (o) { return o.id; }), owners));
+                         if (owners.length === 1 && String(owners[0].id) === String(meta.objectId)) mark.dataset.objectId = String(meta.objectId);
+                         var held = {};
+                         (((WorldModel.lastPayload || {}).inventory) || []).forEach(function (o) { held[String(o.id)] = true; });
+@@ -1546,6 +1547,7 @@
+                     if (meta.kind !== "direction" && !mark.dataset.objectId) mark.title = "Ambiguous reference: " + mark.dataset.noun;
+                     meta.resolvedObjectId = mark.dataset.objectId || null;
+                     meta.markCandidateIds = mark.dataset.candidateIds || '[]';
++                    meta.markCoverIds = mark.dataset.coverIds || meta.markCandidateIds;
+                     frag.appendChild(mark);
+                     frag.appendChild(document.createTextNode(source.slice(afterIdx)));
+                     textNode.parentNode.replaceChild(frag, textNode);
+@@ -1559,6 +1561,27 @@
+         return wrapped;
+     },
+ 
++    // D146 + D214 item 7: which candidates a mark REPRESENTS (coverage), as distinct from its parser candidates.
++    // A single-word mark shared by several objects covers only those whose MAIN noun it is (Enchanter "a short
++    // spell" covers the spells, not the spell book, whose own mark is "Book"). Fallback: all candidates.
++    coverageOf: function (phrase, ids, pool) {
++        var w = String(phrase || '').toLowerCase().trim(); ids = (ids || []).map(String);
++        if (ids.length < 2 || /s/.test(w)) return ids;
++        var heads = ids.filter(function (id) {
++            var o = (pool || []).filter(function (x) { return String(x.id) === id; })[0];
++            if (!o) return true;
++            var h = String(Actionable.headNounOf(o) || Actionable.headTokenOf(o) || '').toLowerCase();
++            return !!h && Actionable.vocabularyKey(h) === Actionable.vocabularyKey(w);
++        });
++        return heads.length ? heads : ids;
++    },
++    // Coverage ids of a live mark: recorded coverIds, else (older marks) candidates + objectId.
++    markCoverIds: function (m) {
++        var ids = [];
++        try { ids = JSON.parse(m.dataset.coverIds || m.dataset.candidateIds || '[]'); } catch (e) {}
++        if (m.dataset.objectId) ids.push(m.dataset.objectId);
++        return ids.map(String);
++    },
+     phraseOwners: function (phrase, pool) {
+         var matched = String(phrase || '').toLowerCase();
+         if (!Actionable.nounTrigger(matched)) return [];
+@@ -1583,6 +1606,7 @@
+                 valid = owners.some(function (o) { return prior.some(function (id) { return String(id) === String(o.id); }); });
+                 if (valid) {
+                     mark.dataset.candidateIds = JSON.stringify(owners.map(function (o) { return o.id; }));
++                    mark.dataset.coverIds = JSON.stringify(Actionable.coverageOf(mark.textContent, owners.map(function (o) { return o.id; }), owners));
+                     if (owners.length === 1) mark.dataset.objectId = String(owners[0].id);
+                     else delete mark.dataset.objectId;
+                     mark.dataset.kind = owners.every(function (o) { return held[String(o.id)]; }) ? 'inventory' : 'object';
+@@ -1672,7 +1696,7 @@
+         Actionable.LiveMarks = (Actionable.LiveMarks || []).filter(function (m) { return marks.indexOf(m) < 0; });
+         // Codex #3334: recompute coverage for the retired marks' ids from surviving
+         // marks only, so other ids of a retired group are not falsely blocked.
+-        var idsOf = function (m) { var ids = []; try { ids = JSON.parse(m.dataset.candidateIds || "[]"); } catch (e) {} if (m.dataset.objectId) ids.push(m.dataset.objectId); return ids.map(String); };
++        var idsOf = Actionable.markCoverIds;
+         marks.forEach(function (m) { idsOf(m).forEach(function (id) {
+             if (!(Actionable.LiveMarks || []).some(function (x) { return x.isConnected && idsOf(x).indexOf(id) >= 0; })) delete markedIds[id];
+         }); });
+@@ -2094,10 +2118,7 @@
+         var markedDirections = {};
+         Actionable.LiveMarks.forEach(function (mark) {
+             if (mark.dataset.kind === 'direction') { markedDirections[mark.dataset.noun] = true; return; }
+-            var ids = [];
+-            try { ids = JSON.parse(mark.dataset.candidateIds || '[]'); } catch (eIds) {}
+-            if (mark.dataset.objectId) ids.push(mark.dataset.objectId);
+-            ids.forEach(function (id) { markedIds[String(id)] = true; });
++            Actionable.markCoverIds(mark).forEach(function (id) { markedIds[String(id)] = true; });
+         });
+         // Two passes. The first offers every object its BEST phrase -- full
+         // name, then head noun -- so an object is never represented by a
+@@ -2145,7 +2166,7 @@
+             var wrappedNow; try { wrappedNow = Actionable.wrapFirstExact(activeLines, t.phrase, t); } finally { t.headVariantProof = false; }
+             if (wrappedNow) {
+                 if (pendingRetire) Actionable.retireMarks(pendingRetire, markedIds, t);
+-                try { JSON.parse(t.markCandidateIds || '[]').forEach(function (id) { markedIds[String(id)] = true; }); } catch (eIds) {}
++                try { JSON.parse(t.markCoverIds || t.markCandidateIds || '[]').forEach(function (id) { markedIds[String(id)] = true; }); } catch (eIds) {}
+                 if (t.objectId != null && String(t.resolvedObjectId) === String(t.objectId)) {
+                     markedIds[String(t.objectId)] = true;
+                     var key = String(t.objectId);

@@ -1,0 +1,27 @@
+--- a/js/Actionable.js
++++ b/js/Actionable.js
+@@ -2145,7 +2145,12 @@
+             var wrappedNow; try { wrappedNow = Actionable.wrapFirstExact(activeLines, t.phrase, t); } finally { t.headVariantProof = false; }
+             if (wrappedNow) {
+                 if (pendingRetire) Actionable.retireMarks(pendingRetire, markedIds, t);
+-                try { JSON.parse(t.markCandidateIds || '[]').forEach(function (id) { markedIds[String(id)] = true; }); } catch (eIds) {}
++                // D146 + item 7: an ambiguous single-word mark represents only the candidates whose MAIN noun it is.
++                // Enchanter "a short spell" (spells' head) must not count as the spell book's mark, or "Book" stays unmarked.
++                try { var cids = JSON.parse(t.markCandidateIds || '[]'), mw = String(t.phrase || '').toLowerCase();
++                    var heads = cids.length > 1 && !/\s/.test(mw.trim()) ? cids.filter(function (id) { var o = idPool.filter(function (x) { return String(x.id) === String(id); })[0];
++                        var h = o && String(Actionable.headNounOf(o) || Actionable.headTokenOf(o) || '').toLowerCase(); return !o || (h && Actionable.vocabularyKey(h) === Actionable.vocabularyKey(mw)); }) : cids;
++                    (heads.length ? heads : cids).forEach(function (id) { markedIds[String(id)] = true; }); } catch (eIds) {}
+                 if (t.objectId != null && String(t.resolvedObjectId) === String(t.objectId)) {
+                     markedIds[String(t.objectId)] = true;
+                     var key = String(t.objectId);
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -79,7 +79,7 @@
+         "playerObject": 52
+     },
+     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
+-        "attributeMap": { "container": 21, "supporter": 14 },
++        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12 },
+         "openCapability": { "all": ["container"], "none": ["supporter"] }
+     },
+     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
