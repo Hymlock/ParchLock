@@ -1261,16 +1261,30 @@ var AttrCalibrator = {
                 var snap = turn.analyzerSnapshots && turn.analyzerSnapshots["inventory-root"];
                 if (!ctx || !snap || !snap.objs) return;
                 var text = snap.lines.join("\n");
+                // Animate objects named in the reply are holders or bystanders, not listed items: cabal's PC is literally
+                // named "you" (matched by "You are carrying") and the vagrant is mentioned in the same reply. Counting
+                // them hid the PalmPilot (its parent looked "listed") and let a room parent compete.
                 var listed = snap.objs.filter(function (o) {
+                    try { if (ZRamReader.attrsFromObject(ctx.mem, o.id).animate) return false; } catch (eAn) {}
                     return new RegExp("(^|[^a-z])" + o.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "([^a-z]|$)").test(text);
                 });
                 var listedIds = {}; listed.forEach(function (o) { listedIds[o.id] = true; });
                 var counts = {};
-                listed.forEach(function (o) { if (o.parent && !listedIds[o.parent]) counts[o.parent] = (counts[o.parent] || 0) + 1; });
+                // Only holders placed in the world compete (medusa prints "your costume"; an offstage "(medus_t)" also
+                // holds an object named costume).
+                listed.forEach(function (o) {
+                    if (!o.parent || listedIds[o.parent] || snap.rooms[o.parent]) return;
+                    try { if (!AttrCalibrator.inventoryHolderInWorld(ctx.mem, o.parent)) return; } catch (eW) {}
+                    counts[o.parent] = (counts[o.parent] || 0) + 1;
+                });
                 var keys = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; });
                 if (!keys.length) return;
                 var top = keys[0], n = counts[top], next = keys[1] ? counts[keys[1]] : 0;
-                if (n < 2 || n <= next * 2 || snap.rooms[top]) return;
+                // One listed item is enough when nothing competes and its parent is an animate, non-room actor: the
+                // game's own inventory routine tested and printed it (cabal "your PalmPilot" held by "you" 221;
+                // medusa "your costume" held by the unnamed PC 65), while the probe player is an unplaced self object.
+                var single = n === 1 && next === 0 && !snap.rooms[top] && (function () { try { return !!ZRamReader.attrsFromObject(ctx.mem, +top).animate; } catch (eA) { return false; } })();
+                if (!single && (n < 2 || n <= next * 2 || snap.rooms[top])) return;
                 AttrCalibrator.hydrate(ctx.mem);
                 AttrCalibrator.table.inventoryRootId = +top;
                 AttrCalibrator.persist(ctx.mem);

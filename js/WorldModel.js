@@ -123,8 +123,13 @@ var WorldModel = {
         var objs = (payload && payload.discoveredObjects) || [];
         // D58/D68: only structurally truly-worn objects identify inventory root.
         // scenery+worn (Glow Bar) must not promote a CustomPlayer wrapper.
+        // A room is never an inventory holder: worn-flagged scenery lying in the room itself (BibleRetold's beard,
+        // sandals, robe in the Large Grassy Field) must not promote the room to holder and list the room as inventory.
+        var roomIds = {};
+        [payload && payload.roomId, payload && payload.probe && payload.probe.roomId].forEach(function (r) { if (r != null && r !== "" && r !== 0) roomIds[String(r)] = true; });
         var worn = objs.filter(function (o) {
             if (!o || o.parentId == null || !o.attrs) return false;
+            if (roomIds[String(o.parentId)]) return false;
             if (typeof AttributeSchema !== "undefined" && AttributeSchema.isTrulyWorn) {
                 return AttributeSchema.isTrulyWorn(o.attrs);
             }

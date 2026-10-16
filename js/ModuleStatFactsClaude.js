@@ -414,7 +414,11 @@ var ModuleStatFactsClaude = {
         "fields": ["jack", "life"],
         "replyFamily": "paired-counter-score",
         "outcome": "line",
-        "evidence": "2026-10-05 live SCORE twice: The score is: (Jack 1/Life 0)"
+        "evidence": "2026-10-05 live SCORE twice: The score is: (Jack 1/Life 0)",
+        // Native i (after take all; 2026-10-16-hidden-bit-finder.json) tests bit17 (scenery here) TRUE on your coat 89 and
+        // your head/legs/arms 64/62/63 and omits them; FALSE on the printed picture-frame 67 ("You are carrying the
+        // picture-frame."). SOLO/SELF-AUDIT.
+        "inventoryHiddenAttribute": 17
     },
     // Ribbons: percent experienced plus ribbon title; colour varies per ask.
     "4db8fcfaeed2f3f8459f5e65d03c0bca3c67eac6730d4cb6f2549f56147f1cc2": {

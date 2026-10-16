@@ -34,7 +34,18 @@ var ZRamProvider = {
         try {
             if (playerId && ZRamReader.children(mem, playerId).length) return playerId;
         } catch (e2) {}
+        // A resolved player that is really IN the current room (its parent chain reaches roomId) and holds nothing is
+        // genuinely empty-handed: no other animate object may be promoted to holder. Galatea's statue (35) holds her
+        // knees/ears/face and was listed as the player's inventory. The animate fallback stays for players that are not
+        // placed in the world (e.g. a class object rather than the instance).
+        var playerPlaced = false;
         try {
+            if (playerId && roomId) {
+                var up = ZRamReader.objectLinks(mem, playerId), hop = 0;
+                while (up && up.parent && hop++ < 6) { if (String(up.parent) === String(roomId)) { playerPlaced = true; break; } up = ZRamReader.objectLinks(mem, up.parent); }
+            }
+        } catch (ePl) {}
+        if (!playerPlaced) try {
             var pool = Array.isArray(discovered) ? discovered
                 : ((typeof WorldModel !== "undefined" && WorldModel.lastPayload && WorldModel.lastPayload.discoveredObjects) || []);
             for (var i = 0; i < pool.length; i++) {
