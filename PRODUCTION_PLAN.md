@@ -9106,8 +9106,18 @@ work/investigations/2026-10-16-all-inv-sweep-triage.md.
 **Tests:** gate 309 30 differences, 0 regression; operator-regressions 7/0; d31-nested-inventory 60/0;
 attr-calibrator-inventory-root 13/0; phase2-heuristic-cutover 147/2 (2 pre-existing, unrelated).
 
-**Open:** Sherlock holder/room (no source pin); heist/phlegm library attribute order (container 3 / door 4 census, no
-target-scoped positive yet); labels printed through short_name routines (Debate, beneath).
+**Follow-ups (same day, each gated 309 with 0 regression, SOLO/SELF-AUDIT):**
+- 855616c: a validated digest-pinned player (playerObject / playerGlobal) outranks learned and structural inventory roots;
+  Sherlock measured constant PC 232 (room was the black bag, inventory empty).
+- c40a440 (D225 addendum): an object's own synonym counts as a noun trigger even when the ZIL part-of-speech byte lacks the
+  noun bit (Planetfall "brush" is also a verb, flags 98), so the scrub brush is underlined.
+- 8ea2f66: a blank-named item uses the story's own short_name when every content word is one of the object's parser words
+  (Debate "debate file", WiR1 "pair of socks"); junk decoded from short_name routines is rejected.
+- a9d3ee0 (D225 addendum): no observed phrase ends in a grammar particle (beneath "front of" -> the book; spring "pair of"
+  -> shorts); a leading article stays allowed for named objects (D184).
+
+**Open:** heist/phlegm library attribute order (container 3 / door 4 census, no target-scoped positive yet); Sherlock
+nested container/open facts (no source pin).
 
 ## Backlog (low priority, research only): Glulx cold decoding
 
