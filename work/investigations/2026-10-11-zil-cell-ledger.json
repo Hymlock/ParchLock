@@ -15,6 +15,10 @@
   "wornItems": {
    "s": "UD",
    "r": "no worn state exists: historicalsource/zork1@97b7b3d V-WEAR = <PERFORM ,V?TAKE> when WEARBIT, no WORNBIT, no object <VERB? WEAR/TAKE-OFF> handler; a worn item is indistinguishable from a carried one in RAM"
+  },
+  "lightSource": {
+   "s": "O",
+   "r": "SOLO/SELF-AUDIT 2026-10-16: LIGHTBIT 31 original scene target-scoped (2026-10-16-zil-inv-hidden-ops.json): Light lamp TRUE on brass lantern 164, light torch (already on) TRUE on torch 104; light egg / light garlic FALSE (You cannot turn that on); source exact 3/3. NO FACT: no runtime consumer reads lightSource, and LIGHTBIT=switchable is not an accepted equivalence (Codex #3533)."
   }
  },
  "Zork2-TheWizardofFrobozz.z3.js": {
