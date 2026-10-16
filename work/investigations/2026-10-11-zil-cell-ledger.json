@@ -129,6 +129,14 @@
   "rooms": {
    "s": "O",
    "r": "13/13 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "container": {
+   "s": "S",
+   "r": " Deadline fact (ModuleStatFactsClaude 9c6eadbb): original scene pzdeadline, target-scoped; source exact. CONTBIT 21: living room table, marble-top table, front door positive; cabinets, portraits, wood pile, fireplace, lamp, book negative. Gate 0 diffs."
+  },
+  "supporter": {
+   "s": "S",
+   "r": " Deadline fact (ModuleStatFactsClaude 9c6eadbb): original scene pzdeadline, target-scoped; source exact. SURFACEBIT 29: living room table, marble-top table positive; same negatives. Applied with openCapability (surfaces get no Open/Close)."
   }
  },
  "Infidel.z3.js": {
@@ -439,6 +447,10 @@
   "rooms": {
    "s": "O",
    "r": "6/6 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "container": {
+   "s": "X",
+   "r": "CONTBIT 9 native-insertion only. Original-scene route pzwitness (porch, drive, hall) reached no container (0+1, census 31); needs a deeper Linder-house route. Source exact."
   }
  },
  "Sherlock.z5.js": {
