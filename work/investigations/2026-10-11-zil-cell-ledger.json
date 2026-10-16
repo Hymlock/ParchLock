@@ -33,6 +33,10 @@
   "playerRoot": {
    "s": "S",
    "r": "existing ZRamReader.resolvePlayer (no fact) returns 4 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"GET LAMP AND SWORD\"; the game's own i names each (sword, lamp); zil-root-check.cjs 2026-10-15"
+  },
+  "animate": {
+   "s": "S",
+   "r": "SOLO/SELF-AUDIT: ACTORBIT 30 robot 58 / demon 26 TRUE when addressed; teapot 32 / mat 33 FALSE (cannot talk to); source exact 9/9. Gate 0 diffs."
   }
  },
  "Zork3-TheDungeonMaster.z3.js": {

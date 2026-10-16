@@ -5,7 +5,10 @@
 var ModuleStatFactsClaude = {
     "abf145d22371f825f13388587d92632bcde90582698f774b896b123a90e1fb1e": {
         // on 19 WITHDRAWN (Codex #3451/#3453): single-object + source needs an authored terminal checkpoint, not list exhaustion; stays unknown.
-        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11 },
+        // ACTORBIT 30 original scene, target-scoped (SOLO/SELF-AUDIT 2026-10-16, 2026-10-16-zil-inv-hidden-ops.json command
+        // records): 'ROBOT, EAST AND SOUTH' tests 30 TRUE on robot 58, 'DEMON, GIVE ME WAND' TRUE on demon 26; 'TEAPOT, HELLO' /
+        // 'MAT, HELLO' FALSE on china teapot 32 / place mat 33 ("You can't talk to ..."). Source exact 9/9.
+        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30 },
         "openCapability": { "all": ["container"], "none": ["supporter"] }
     },
     // Cutthroats (ZIL): OPENBIT 21 (original-scene native explorer, zil-native-explore4.json, no relocation): hotel-room dresser RAM bit 21
