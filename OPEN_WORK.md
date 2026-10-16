@@ -50,8 +50,11 @@ This is what is not implemented yet; ruled-out and finished items are not here.
 - [ ] October 16 all-309 native inventory sweep (work/investigations/2026-10-16-all-inv-sweep-triage.md). f304f60 fixed
   wrong inventory holders (room via worn scenery, NPC with body parts, PC named "you", offstage holder) and Photograph's
   hidden bit; gate 309: 30 differences, 0 regression. Harness note: an open Message blocks the typed-turn learners in
-  headless runs. Open: Sherlock holder/room (no source pin), heist container numbering (no attribute-name table), labels
-  printed through short_name routines (Debate "debate file", beneath "front of"), phlegm held animal, startup-menu games.
+  headless runs. Follow-ups, each gated 309 with 0 regression: 855616c Sherlock measured PC (room and inventory fixed);
+  c40a440 own-synonym noun trigger (Planetfall scrub brush underlined); 8ea2f66 story short names for blank-named items
+  (Debate "debate file", WiR "pair of socks"); a9d3ee0 no observed phrase ends in a particle (beneath "front of");
+  bd9ef47 Lurking hidden bit 18. Second sweep: no new hidden bits in the Infocom titles. Open: heist/phlegm library
+  attribute order, Sherlock nested container facts, Lurking "pc" labelled "computer terminals", startup-menu games.
 - **Spell search/empty.** Spell objects are read as containers from their ZIL bits, so they offer search and empty; that is noise, and it is still open because the same gate would also hide search on real ZIL containers. D160, "Still open."
 - **D190.** A promoted object that the player takes still does not show up in the equipment sheet. D190, "Still open."
 - **D192.** Full-reply hiding and inventory room-reset suppression (finding 5) are still deliberately untested, and the carry-equip live harness still asserts nothing. D192, "F6"; "Closing the D186-D197 arc."
