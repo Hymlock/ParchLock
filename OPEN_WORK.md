@@ -33,6 +33,20 @@ This is what is not implemented yet; ruled-out and finished items are not here.
 - [x] October 8 Infocom room prediction: reopened from explanation to implementation by operator; D214 Z1 now decodes actual parser-linked directions/current exit forms and presents predicted rooms before travel. Decoded edges remain hint-only until actual travel; existing D134 fallback is preserved. Native17, WorldMap52 and prior guards pass; delivered APK63.
 - [x] Treasures NPC-held TWO-HANDED SWORD: trusted direct actor possession overlay implemented in Actionable, independently accepted1966. Requires distinguishing observed native vocabulary, current direct containment and hidden-state exclusions; only uniquely qualified enabled Examine. Generic hyphen/base-word proofs28/15 preserve ambiguous per-object choices.
 
+- [ ] October 15-16 ZIL items round (all flags, Infocom first). Completion table 186/546 cells finished
+  (work/investigations/2026-10-11-zil-matrix.md); full 34-key + executable-key ledger
+  work/investigations/2026-10-16-zil-profile-ledger.md (N? cells are proposals, not verdicts). Committed this round,
+  each with gate + operator-regressions: Moonmist, Deadline, Witness, Sorcerer, Lurking, Seastalker, HHGG, Zork II/III,
+  Wishbringer container/supporter/open/wearable/animate facts; Ballyhoo/HHGG/PH native inventory omission bits; 56a170f
+  shared-word underline coverage + genuine-row inventory labels + Enchanter open 12 (309 gate, 0 regression). Codex audited
+  through #3539; later work is operator-authorized SOLO/SELF-AUDIT (#3542).
+  - Operator decision pending: Zork I transparent 12 (native lists the water in the closed glass bottle; app hides it;
+    evidence work/investigations/2026-10-16-zork1-transparent-evidence.md).
+  - Operator decision pending: Enchanter egg parts (NDESCBIT 7 also marks every spell; a blanket hidden bit would remove
+    the D148 spells).
+  - Blocked: Hollywood open/supporter (all evidence indoors; the release desyncs from the Jericho walkthrough at OPEN
+    DOOR); Spellbreaker walkthrough desync at the timed fall; Zork III animate (orders do not test ACTORBIT natively);
+    Starcross/Stationfall/LGOP/Suspended need real walkthroughs.
 - **Spell search/empty.** Spell objects are read as containers from their ZIL bits, so they offer search and empty; that is noise, and it is still open because the same gate would also hide search on real ZIL containers. D160, "Still open."
 - **D190.** A promoted object that the player takes still does not show up in the equipment sheet. D190, "Still open."
 - **D192.** Full-reply hiding and inventory room-reset suppression (finding 5) are still deliberately untested, and the carry-equip live harness still asserts nothing. D192, "F6"; "Closing the D186-D197 arc."
