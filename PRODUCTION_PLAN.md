@@ -9060,6 +9060,55 @@ Guards: d46 27/0, d201 69/0, d23 88/0, m12 14/0.
 - The map display of sections grouped under a "Room #N" frame (operator request) is a separate later step.
 - Old saved maps carry no provenance (no backwards compatibility in development).
 
+## D225 Shared-word marks cover only their head-noun owners; inventory labels come only from genuine listing rows
+
+**Lifecycle:** ZIL items round 2026-10-15/16. Enchanter open 12 (Codex ACCEPT #3517) was blocked because listing the
+spells made "a short spell" an ambiguous mark that suppressed the spell book's own "Book" mark. Coverage design GO Codex
+#3529; label admission R3 GO Codex #3544 (helper level). Later revisions operator-authorized SOLO/SELF-AUDIT (#3542).
+Commit 56a170f. Record: work/investigations/2026-10-16-claude-combined-candidate-selfaudit.md.
+
+**Key files:** js/Actionable.js (coverageOf, markCoverIds, listingRows, inventoryLineLabel); js/ModuleStatFactsClaude.js.
+
+**Contract:**
+- Coverage is distinct from parser candidates. A single-word mark shared by several objects covers only the objects whose
+  main noun (headNounOf/headTokenOf) it is; fallback all candidates. One authority (markCoverIds) feeds analyze init,
+  fresh wrap, retainMarks, retireMarks and the longer-phrase replacement (which recomputes from surviving marks, #3334).
+- An object never takes its mark from a shared word that is only its secondary word, and an object that is only a non-head
+  candidate of a live ambiguous mark may be marked only by its full name or head noun (preferred pass), never a stray token.
+- D146 one mark per object still holds per object; an ambiguous candidate is not necessarily a covered owner.
+- inventoryLineLabel admits only genuine listing rows: blocks after a colon-ended header built around a player inventory
+  phrase (tested on the line's last sentence) or "<known pool object> contains:", indentation fixed by the first row;
+  sentence lists in the player forms or "<known pool object> contains ..."; items must start like an item entry; " and "
+  splits only after another pool object's name; a leftover "and", a label not longer than a possessive structural name,
+  and uncertain formats all fall back to the structural name. No verb blacklist.
+
+**Tests:** label-admission-controls.cjs 25/0; command-disambiguation 51/0, underline-first-per-reply 8/0, hhg-links-live
+22/0, d150-noun-and-verbs 10/0, operator-regressions 7/0; gate 309 (ZIL + Inform Z + Glulx) 31 differences, 0 regression.
+
+## D226 Rooms and NPCs are never the inventory holder
+
+**Lifecycle:** all-309 native inventory sweep 2026-10-16 (SOLO/SELF-AUDIT, #3542). Commit f304f60. Record:
+work/investigations/2026-10-16-all-inv-sweep-triage.md.
+
+**Key files:** js/WorldModel.js (recoverInventory), js/ZRamProvider.js (resolveInventoryRootId), js/AttrCalibrator.js
+(inventoryRootAnalyzer), js/ModuleStatFactsClaude.js (Photograph inventoryHiddenAttribute 17).
+
+**Contract:**
+- recoverInventory: a worn-flagged object lying in the current room never promotes the room to holder (BibleRetold).
+- resolveInventoryRootId: a resolved player placed in the current room that holds nothing is genuinely empty-handed; the
+  animate-holder fallback then does not run (Galatea, loose, djinni listed an NPC's parts). It stays for unplaced players.
+- Native-i holder learner: animate objects named in the reply are holders or bystanders, not listed items; room and
+  offstage parents never compete; one listed item suffices when its parent is an animate in-world holder (cabal's PC is
+  named "you"; medusa's costume vs an offstage costume).
+- Headless harness note: an open Message makes the typed-turn capture ignore commands, so learners only run once the
+  message is closed (sweeps now close it).
+
+**Tests:** gate 309 30 differences, 0 regression; operator-regressions 7/0; d31-nested-inventory 60/0;
+attr-calibrator-inventory-root 13/0; phase2-heuristic-cutover 147/2 (2 pre-existing, unrelated).
+
+**Open:** Sherlock holder/room (no source pin); heist/phlegm library attribute order (container 3 / door 4 census, no
+target-scoped positive yet); labels printed through short_name routines (Debate, beneath).
+
 ## Backlog (low priority, research only): Glulx cold decoding
 
 Queued 2026-10-11 by operator instruction, AFTER everything else (ZIL full decode, ZIL item sweep, the item sweeps and the map sweep). No work on it now.
