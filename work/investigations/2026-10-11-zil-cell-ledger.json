@@ -83,6 +83,18 @@
   "rooms": {
    "s": "O",
    "r": "41/50 walkthrough turns: app room = status-line location; the 9 others differ only by status decoration (\"Darkness\" while dark, \", lying down\" posture), app room correct; zil-rooms-check.cjs 2026-10-15"
+  },
+  "container": {
+   "s": "S",
+   "r": "HHGG fact (ModuleStatFactsClaude 26dcdab2): CONTBIT 40 original scene pzhhgg target-scoped: gown, bed TRUE; curtains FALSE; source exact 22/22. With openCapability. Gate 0 diffs."
+  },
+  "supporter": {
+   "s": "S",
+   "r": "HHGG fact (ModuleStatFactsClaude 26dcdab2): SURFACEBIT 23 pzhhgg2 (walkthrough + spliced look on bed/bar): bed, bar TRUE; Ford, towel FALSE; source exact 3/3."
+  },
+  "nested": {
+   "s": "S",
+   "r": "HHGG fact (ModuleStatFactsClaude 26dcdab2): inventoryHiddenAttribute 44 (native i tests NDESCBIT 44 TRUE on guarantee/green/red button inside the Sub-Etha device and omits them; FALSE on every printed item). zil-inv-check steps 10/60/90: app list and nesting equal native (gown>fluff,thing; thing>8 items)."
   }
  },
  "Ballyhoo.z3.js": {

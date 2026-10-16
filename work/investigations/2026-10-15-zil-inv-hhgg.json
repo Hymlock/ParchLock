@@ -1,20 +1,15 @@
 {
  "Hitchhik.z5.js": {
-  "ts": "2026-10-16T02:23:03.601Z",
+  "ts": "2026-10-16T03:50:29.311Z",
   "checks": [
    {
-    "step": 30,
-    "text": "You have:\n  no tea\n  a towel\n  a loose pile of junk mail\n  a toothbrush\n  a flathead screwdriver\n  your gown (being worn)\n  It looks like your gown contains:\n    pocket fluff\n    a thing your aunt gave you which you don't know what it is\n \n> ",
+    "step": 10,
+    "text": "You have:\n  no tea\n  a loose pile of junk mail\n  a toothbrush\n  a flathead screwdriver\n  your gown (being worn)\n  It looks like your gown contains:\n    pocket fluff\n    a thing your aunt gave you which you don't know what it is\n \nThe bulldozer rumbles slowly toward your home.\n \n> ",
     "items": [
      {
       "text": "no tea",
       "indent": 2,
       "marked": false
-     },
-     {
-      "text": "a towel",
-      "indent": 2,
-      "marked": true
      },
      {
       "text": "a loose pile of junk mail",
@@ -50,14 +45,14 @@
       "text": "a thing your aunt gave you which you don't know what it is",
       "indent": 4,
       "marked": true
+     },
+     {
+      "text": "The bulldozer rumbles slowly toward your home.",
+      "indent": 0,
+      "marked": true
      }
     ],
     "shown": [
-     {
-      "id": 121,
-      "name": "towel",
-      "parent": 202
-     },
      {
       "id": 198,
       "name": "loose pile of junk mail",
@@ -168,18 +163,8 @@
      },
      {
       "id": 80,
-      "name": "satchel",
+      "name": "battered leather satchel",
       "parent": 202
-     },
-     {
-      "id": 208,
-      "name": "Santraginean Mineral Water",
-      "parent": 80
-     },
-     {
-      "id": 86,
-      "name": "satchel fluff",
-      "parent": 80
      },
      {
       "id": 206,
@@ -210,21 +195,6 @@
       "id": 211,
       "name": "electronic Sub-Etha signaling device",
       "parent": 202
-     },
-     {
-      "id": 18,
-      "name": "guarantee",
-      "parent": 211
-     },
-     {
-      "id": 128,
-      "name": "green button",
-      "parent": 211
-     },
-     {
-      "id": 197,
-      "name": "red button",
-      "parent": 211
      },
      {
       "id": 31,
@@ -345,21 +315,6 @@
       "parent": 216
      },
      {
-      "id": 18,
-      "name": "guarantee",
-      "parent": 211
-     },
-     {
-      "id": 128,
-      "name": "green button",
-      "parent": 211
-     },
-     {
-      "id": 197,
-      "name": "red button",
-      "parent": 211
-     },
-     {
       "id": 201,
       "name": "The Hitchhiker's Guide",
       "parent": 216
@@ -383,208 +338,38 @@
       "id": 236,
       "name": "molecular hyperwave pincer",
       "parent": 216
-     }
-    ]
-   },
-   {
-    "step": 120,
-    "text": "You have:\n  no tea\n  your gown (being worn)\n  a babel fish (in your ear)\n \n> ",
-    "items": [
-     {
-      "text": "no tea",
-      "indent": 2,
-      "marked": true
-     },
-     {
-      "text": "your gown (being worn)",
-      "indent": 2,
-      "marked": true
-     },
-     {
-      "text": "a babel fish (in your ear)",
-      "indent": 2,
-      "marked": true
-     }
-    ],
-    "shown": [
-     {
-      "id": 206,
-      "name": "tatty dressing gown",
-      "parent": 202
-     },
-     {
-      "id": 181,
-      "name": "babel fish",
-      "parent": 202
-     }
-    ]
-   },
-   {
-    "step": 180,
-    "text": "Fiddling with yourself accomplishes nothing.\n \nMarvin wanders off.\n \n> ",
-    "items": [
-     {
-      "text": "Fiddling with yourself accomplishes nothing.",
-      "indent": 0,
-      "marked": false
-     },
-     {
-      "text": "Marvin wanders off.",
-      "indent": 0,
-      "marked": false
-     }
-    ],
-    "shown": [
-     {
-      "id": 216,
-      "name": "thing your aunt gave you which you don't know what it is",
-      "parent": 202
-     },
-     {
-      "id": 107,
-      "name": "pair of hypersonic pliers",
-      "parent": 216
-     },
-     {
-      "id": 85,
-      "name": "ionic diffusion rasp",
-      "parent": 216
-     },
-     {
-      "id": 105,
-      "name": "flathead screwdriver",
-      "parent": 216
-     },
-     {
-      "id": 31,
-      "name": "toothbrush",
-      "parent": 216
-     },
-     {
-      "id": 211,
-      "name": "electronic Sub-Etha signaling device",
-      "parent": 216
-     },
-     {
-      "id": 18,
-      "name": "guarantee",
-      "parent": 211
-     },
-     {
-      "id": 128,
-      "name": "green button",
-      "parent": 211
-     },
-     {
-      "id": 197,
-      "name": "red button",
-      "parent": 211
-     },
-     {
-      "id": 201,
-      "name": "The Hitchhiker's Guide",
-      "parent": 216
-     },
-     {
-      "id": 75,
-      "name": "pocket fluff",
-      "parent": 216
-     },
-     {
-      "id": 235,
-      "name": "sales brochure",
-      "parent": 216
-     },
-     {
-      "id": 236,
-      "name": "molecular hyperwave pincer",
-      "parent": 216
-     },
-     {
-      "id": 73,
-      "name": "circuit board",
-      "parent": 202
-     },
-     {
-      "id": 143,
-      "name": "dipswitch",
-      "parent": 73
-     },
-     {
-      "id": 121,
-      "name": "towel",
-      "parent": 202
-     },
-     {
-      "id": 206,
-      "name": "tatty dressing gown",
-      "parent": 202
-     },
-     {
-      "id": 181,
-      "name": "babel fish",
-      "parent": 202
      }
     ]
    }
   ],
   "cls": {
-   "descriptorExact": 23,
+   "descriptorExact": 20,
    "descriptorShortened": [],
    "missing": [
-    "30:no tea",
-    "30:gown",
-    "30:it looks like your gown contains",
+    "10:no tea",
+    "10:gown",
+    "10:it looks like your gown contains",
+    "10:bulldozer rumbles slowly toward your home",
     "60:no tea",
+    "60:satchel",
     "60:gown",
     "60:it looks like your gown contains",
     "60:\"oh freddled gruntbuggly, thy nacturations are to me!\"",
     "90:no tea",
-    "90:gown",
-    "120:no tea",
-    "120:gown",
-    "180:fiddling with yourself accomplishes nothing",
-    "180:marvin wanders off"
+    "90:gown"
    ],
    "extra": [
-    "30:thing your aunt gave you which you don't know what it is",
-    "60:santraginean mineral water",
+    "10:thing your aunt gave you which you don't know what it is",
     "60:thing your aunt gave you which you don't know what it is",
-    "60:guarantee",
-    "60:green button",
-    "60:red button",
-    "90:thing your aunt gave you which you don't know what it is",
-    "90:guarantee",
-    "90:green button",
-    "90:red button",
-    "180:thing your aunt gave you which you don't know what it is",
-    "180:pair of hypersonic pliers",
-    "180:ionic diffusion rasp",
-    "180:flathead screwdriver",
-    "180:toothbrush",
-    "180:electronic sub-etha signaling device",
-    "180:guarantee",
-    "180:green button",
-    "180:red button",
-    "180:hitchhiker's guide",
-    "180:pocket fluff",
-    "180:sales brochure",
-    "180:molecular hyperwave pincer",
-    "180:circuit board",
-    "180:dipswitch",
-    "180:towel",
-    "180:tatty dressing gown",
-    "180:babel fish"
+    "90:thing your aunt gave you which you don't know what it is"
    ],
    "unmarked": [
-    "30:no tea",
-    "30:it looks like your gown contains",
+    "10:no tea",
+    "10:it looks like your gown contains",
     "60:no tea",
     "60:it looks like your gown contains",
     "60:\"oh freddled gruntbuggly, thy nacturations are to me!\"",
-    "90:no tea",
-    "180:fiddling with yourself accomplishes nothing",
-    "180:marvin wanders off"
+    "90:no tea"
    ]
   }
  },

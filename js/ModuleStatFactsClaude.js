@@ -187,8 +187,15 @@ var ModuleStatFactsClaude = {
         "locationGlobal": 116,
         "playerObject": 202,
         // OPENBIT 39: OPEN sets 39 on Nutrimat panel, handbag; tested TRUE on Sub-Etha device, the thing your aunt gave you; FALSE on shipping carton, touch pad. ACTORBIT 42: TRUE on barman, Vogon Captain, Marvin, Eddie; FALSE on screwdriver, toothbrush. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
-        "attributeMap": { "open": 39, "isOpen": 39, "animate": 42 },
-        "wornAttribute": 24
+        // CONTBIT 40 / SURFACEBIT 23 original scene, target-scoped: 'look in gown' / 'look on bed' TRUE on 40, curtains FALSE
+        // (2026-10-11-zil-walk-pzhhgg.json); 'look on bed' / 'look on bar' TRUE on 23, Ford and towel FALSE
+        // (pzhhgg2, walkthrough + spliced probes). Source exact 22/22, 3/3. Applied together with openCapability.
+        "openCapability": { "all": ["container"], "none": ["supporter"] },
+        "attributeMap": { "open": 39, "isOpen": 39, "animate": 42, "container": 40, "supporter": 23 },
+        "wornAttribute": 24,
+        // Native i (walkthrough step 60) tests bit44 TRUE on guarantee 18, green 128 / red 197 button inside the Sub-Etha
+        // device 211 and omits them; FALSE on satchel, gown, fluff, thing, device, all printed. Source NDESCBIT 44 exact (77/77).
+        "inventoryHiddenAttribute": 44
     },
     // Planetfall (ZIL): the worn attribute is 12, not Inform's 26. Measured
     // (Codex #1663): native REMOVE UNIFORM clears exactly bit 12 on the
