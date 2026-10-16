@@ -4658,5 +4658,365 @@
     ]
    }
   ]
+ },
+ "Zork3-TheDungeonMaster.z3.js @OLD MAN, HELLO": {
+  "step": 14,
+  "ts": "2026-10-16T13:30:12.841Z",
+  "nativeI": "He nods at you without seeming to have understood.\n \n> ",
+  "ops": [
+   [
+    116,
+    28,
+    0
+   ],
+   [
+    202,
+    28,
+    1
+   ],
+   [
+    202,
+    12,
+    0
+   ],
+   [
+    202,
+    30,
+    0
+   ],
+   [
+    132,
+    28,
+    0
+   ],
+   [
+    34,
+    28,
+    0
+   ],
+   [
+    198,
+    28,
+    0
+   ],
+   [
+    154,
+    7,
+    0
+   ]
+  ],
+  "objs": [
+   {
+    "id": 116,
+    "name": "old man",
+    "parent": 154,
+    "bits": [
+     11,
+     21
+    ]
+   },
+   {
+    "id": 202,
+    "name": "cretin",
+    "parent": 154,
+    "bits": [
+     21,
+     25,
+     28
+    ]
+   },
+   {
+    "id": 132,
+    "name": "runes",
+    "parent": 154,
+    "bits": [
+     14,
+     25
+    ]
+   },
+   {
+    "id": 34,
+    "name": "piece of waybread",
+    "parent": 202,
+    "bits": [
+     5,
+     20,
+     27
+    ]
+   },
+   {
+    "id": 198,
+    "name": "lamp",
+    "parent": 202,
+    "bits": [
+     15,
+     19,
+     20,
+     27
+    ]
+   },
+   {
+    "id": 154,
+    "name": "Engravings Room",
+    "parent": 220,
+    "bits": [
+     16,
+     27
+    ]
+   }
+  ]
+ },
+ "Zork3-TheDungeonMaster.z3.js @DUNGEON MASTER, WAIT": {
+  "step": 265,
+  "ts": "2026-10-16T13:35:27.864Z",
+  "nativeI": "The dungeon master answers, \"I will stay.\"\n \n> ",
+  "ops": [
+   [
+    179,
+    28,
+    0
+   ],
+   [
+    202,
+    28,
+    1
+   ],
+   [
+    202,
+    12,
+    0
+   ],
+   [
+    202,
+    30,
+    0
+   ],
+   [
+    128,
+    28,
+    0
+   ],
+   [
+    120,
+    28,
+    0
+   ],
+   [
+    185,
+    28,
+    0
+   ],
+   [
+    65,
+    28,
+    0
+   ],
+   [
+    66,
+    28,
+    0
+   ],
+   [
+    3,
+    28,
+    0
+   ],
+   [
+    31,
+    28,
+    0
+   ],
+   [
+    41,
+    28,
+    0
+   ],
+   [
+    7,
+    28,
+    0
+   ],
+   [
+    17,
+    28,
+    0
+   ],
+   [
+    39,
+    28,
+    0
+   ],
+   [
+    82,
+    28,
+    0
+   ],
+   [
+    179,
+    11,
+    1
+   ],
+   [
+    139,
+    7,
+    0
+   ],
+   [
+    139,
+    7,
+    0
+   ]
+  ],
+  "objs": [
+   {
+    "id": 179,
+    "name": "dungeon master",
+    "parent": 139,
+    "bits": [
+     11,
+     21
+    ]
+   },
+   {
+    "id": 202,
+    "name": "cretin",
+    "parent": 139,
+    "bits": [
+     21,
+     25,
+     28
+    ]
+   },
+   {
+    "id": 128,
+    "name": "large button",
+    "parent": 139,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 120,
+    "name": "sundial",
+    "parent": 139,
+    "bits": [
+     8,
+     25
+    ]
+   },
+   {
+    "id": 185,
+    "name": "very ancient book",
+    "parent": 202,
+    "bits": [
+     14,
+     20,
+     27
+    ]
+   },
+   {
+    "id": 65,
+    "name": "cloak",
+    "parent": 202,
+    "bits": [
+     4,
+     17,
+     20,
+     27
+    ]
+   },
+   {
+    "id": 66,
+    "name": "hood",
+    "parent": 202,
+    "bits": [
+     4,
+     17,
+     20,
+     27
+    ]
+   },
+   {
+    "id": 3,
+    "name": "vial",
+    "parent": 202,
+    "bits": [
+     10,
+     12,
+     20,
+     27
+    ]
+   },
+   {
+    "id": 31,
+    "name": "wooden staff",
+    "parent": 202,
+    "bits": [
+     20,
+     27
+    ]
+   },
+   {
+    "id": 41,
+    "name": "torch",
+    "parent": 202,
+    "bits": [
+     6,
+     15,
+     19,
+     20,
+     27
+    ]
+   },
+   {
+    "id": 7,
+    "name": "strange key",
+    "parent": 202,
+    "bits": [
+     20,
+     27
+    ]
+   },
+   {
+    "id": 17,
+    "name": "Frobozz Magic Grue Repellent",
+    "parent": 202,
+    "bits": [
+     14,
+     20,
+     27
+    ]
+   },
+   {
+    "id": 39,
+    "name": "golden amulet",
+    "parent": 202,
+    "bits": [
+     4,
+     20,
+     27
+    ]
+   },
+   {
+    "id": 82,
+    "name": "golden ring",
+    "parent": 202,
+    "bits": [
+     4,
+     20,
+     27
+    ]
+   },
+   {
+    "id": 139,
+    "name": "Parapet",
+    "parent": 220,
+    "bits": [
+     15,
+     16,
+     27
+    ]
+   }
+  ]
  }
 }

@@ -67,6 +67,10 @@
   "container": {
    "s": "S",
    "r": "SOLO/SELF-AUDIT: CONTBIT 10 look in machine / look in cage TRUE, look in staff / lamp FALSE (pgapz3e/pgapz3c); hooded figure excluded (not target-scoped); source exact. With openCapability. Gate 0 diffs."
+  },
+  "animate": {
+   "s": "X",
+   "r": "SOLO/SELF-AUDIT 2026-10-16: addressed orders do not test ACTORBIT 21 natively (DUNGEON MASTER, WAIT tests bit 11 on the master; OLD MAN, HELLO tests nothing), so the addressed-actor method gives no evidence for this title. Needs a verb whose routine tests 21 (GIVE/ATTACK) at a step with two distinct actors."
   }
  },
  "Enchanter.z3.js": {
@@ -195,6 +199,10 @@
   "container_gap": {
    "s": "SELF",
    "r": "SOLO/SELF-AUDIT (operator #3542; no Codex sign-off): Codex #3539 gap closed: target-scoped original-scene negatives look in pickaxe 37 / look in shovel 33 test CONTBIT 20 FALSE (2026-10-11-zil-walk-pgapinfidel.json); positives retained n2."
+  },
+  "animate_method": {
+   "s": "NOTE",
+   "r": "2026-10-16: walkthrough has no actor-addressed orders; animate evidence needs GIVE/ASK/ATTACK steps (pending)."
   }
  },
  "HollywoodHijinx.z3.js": {
@@ -209,6 +217,10 @@
   "container": {
    "s": "O",
    "r": "CONTBIT 4 original scene target-scoped MEETS 2+1 (pond, compartment, cannon, mailbox; neg orchids, bazooka, statue, doors; pzhollywood2/3). NOT applied: OPENBIT 25 only 1+3 (mailbox) - every other openable is indoors; front door \"can't unlock it from this side\", patio door locked; this release desyncs from the Jericho walkthrough at OPEN DOOR. SURFACEBIT 27 native-proven exact."
+  },
+  "animate_method": {
+   "s": "NOTE",
+   "r": "2026-10-16: walkthrough has no actor-addressed orders; animate evidence needs GIVE/ASK/ATTACK steps (pending)."
   }
  },
  "LeatherGoddessesofPhobos.z3.js": {
@@ -297,6 +309,10 @@
   "supporter": {
    "s": "UD",
    "r": "No SURFACEBIT in the Planetfall source (historicalsource; 2026-10-11-zil-source-flags.json has no SURFACEBIT entry): no surface capability to decode."
+  },
+  "animate_method": {
+   "s": "NOTE",
+   "r": "2026-10-16: walkthrough has no actor-addressed orders; animate evidence needs GIVE/ASK/ATTACK steps (pending)."
   }
  },
  "Seastalker.z3.js": {
