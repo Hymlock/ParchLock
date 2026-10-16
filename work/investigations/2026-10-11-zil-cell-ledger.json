@@ -175,12 +175,24 @@
    "r": "existing ZRamReader.resolvePlayer (no fact) returns 42 = the RAM holder of every directly held app inventory object after the original-scene take \"take all\"; the game's own i names each directly held object; zil-root-check.cjs 2026-10-15"
   },
   "nested": {
-   "s": "X",
-   "r": "FINDING: app lists luggage contents (217:dinner outfit@59, 198:exercise outfit@59, 4:nightshirt@59, 220:tourist brochure@59) that the native i omits (D148 relaxation shows children of an undecoded ZIL container; Moonmist container bit unproven). Needs the container/open facts, not a display filter."
+   "s": "S",
+   "r": "FIXED: Moonmist fact (ModuleStatFactsClaude bcf65075): CONTBIT 27 + SURFACEBIT 23 (original scene, pzmoonmist5, target-scoped, source-exact) + OPENBIT 14 (native dispatch). Closed luggage now hides dinner outfit/exercise outfit/nightshirt/brochure; open luggage shows exactly what OPEN printed. Gate: 1 INTENDED diff."
   },
   "rooms": {
    "s": "O",
    "r": "4/4 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "container": {
+   "s": "S",
+   "r": " Moonmist fact (ModuleStatFactsClaude bcf65075): CONTBIT 27: chest of drawers, sports car, wardrobe positive; horn, wing chair, bed, lamp, figurine negative (pzmoonmist5); source exact 25/25"
+  },
+  "supporter": {
+   "s": "S",
+   "r": " Moonmist fact (ModuleStatFactsClaude bcf65075): SURFACEBIT 23: wing chair, bed, night table, bench positive; chest, wardrobe, box negative (pzmoonmist4); source exact 19/19"
+  },
+  "open": {
+   "s": "S",
+   "r": " Moonmist fact (ModuleStatFactsClaude bcf65075): OPENBIT 14 native verb dispatch (OPEN sets 14 on luggage); source exact 57/57. In-game open/close mostly refused (\"won't help solve this case\")"
   }
  },
  "PlunderedHearts.z3.js": {
