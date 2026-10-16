@@ -51,3 +51,8 @@ Guards: operator-regressions 7/0, d31-nested-inventory 60/0, attr-calibrator-inv
 - beneath: the closed book shows as "front of" - label column.
 - phlegm: held animate "Leo (dozing away)" not shown - check D57 animate rules before changing.
 - largemac: harness timeout before input; RobinAndOrchid, Grooverland: Glulx (D38 parked).
+- phlegm: Leo (37) is inside the worn overcoat 39, which decodes concealed/open/transparent/worn with no container bit;
+  native i lists Leo. Same pattern as heist (bit 3 + open on objects that behave as containers): likely a library whose
+  attribute numbering differs from the I6 default, with no attribute-name table to decode it. Not fixed by guessing a
+  mapping: needs target-scoped native evidence per game, or a library-version detector. (Note: canSeeInside takes an
+  attrs object; an earlier mem/id call in this triage was invalid and is not evidence.)
