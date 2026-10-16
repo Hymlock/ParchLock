@@ -37,4 +37,9 @@ for (const g of titles) { const fb = factBlock(g), src = (SRC[g] || {}).flags ||
     tally[v] = (tally[v] || 0) + 1; cells.push(v); }
   md += '| ' + g.replace(/\.z\d\.js$/, '') + ' | ' + cells.join(' | ') + ' |\n'; }
 md += '\n**Cells: ' + Object.entries(tally).map(([k, v]) => k + ' ' + v).join(', ') + ' of ' + titles.length * keys.length + '.** U = mapped flag present in source, undecided. N? = PROPOSED not-applicable (no mapped ZIL flag, or source lacks it): NOT a verdict; source absence alone is not NA and the mapping equivalences (e.g. static=TRYTAKEBIT, scenery=NDESCBIT, switchable=LIGHTBIT) are unaccepted until semantically checked (Codex #3533). B = blocked: no source pin for this title. This ledger is a proposal, not certification.\n';
+// Consumer inventory: review priority follows actual app readers (Codex #3531). No consumer -> no visible defect
+// possible, but the cell stays a proposal (N?/U), never certified.
+const jsDir = path.join(D, '../../js'), jsFiles = fs.readdirSync(jsDir).filter(f => f.endsWith('.js')).map(f => [f, fs.readFileSync(path.join(jsDir, f), 'utf8')]);
+md += '\n## Consumer inventory (generated from js/)\n\n| key | files reading it |\n|---|---|\n';
+for (const k of M.profileKeys) { const re = new RegExp('(attrs|a|o)\\.' + k + '\\b'); md += '| ' + k + ' | ' + (jsFiles.filter(([, s]) => re.test(s)).map(([f]) => f).join(' ') || 'none') + ' |\n'; }
 fs.writeFileSync(path.join(D, '2026-10-16-zil-profile-ledger.md'), md); console.log(titles.length, 'titles x', keys.length, 'keys', JSON.stringify(tally));
