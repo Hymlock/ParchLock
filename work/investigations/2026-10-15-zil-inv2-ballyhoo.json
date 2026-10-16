@@ -1,0 +1,618 @@
+{
+ "Ballyhoo.z3.js": {
+  "ts": "2026-10-16T02:51:58.825Z",
+  "checks": [
+   {
+    "step": 30,
+    "text": "You have a balloon, a fiberglass pole and $12.81 to your name.\n \n> ",
+    "items": [
+     {
+      "text": "a balloon",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a fiberglass pole",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "$12",
+      "indent": 0,
+      "marked": false
+     }
+    ],
+    "shown": [
+     {
+      "id": 165,
+      "name": "balloon",
+      "parent": 211
+     },
+     {
+      "id": 134,
+      "name": "helium",
+      "parent": 165
+     },
+     {
+      "id": 129,
+      "name": "fiberglass pole",
+      "parent": 211
+     }
+    ]
+   },
+   {
+    "step": 60,
+    "text": "You have your ticket, a scrap of newsprint, a fiberglass pole and $12.81 to your name.\n \n> ",
+    "items": [
+     {
+      "text": "your ticket",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a scrap of newsprint",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a fiberglass pole",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "$12",
+      "indent": 0,
+      "marked": false
+     }
+    ],
+    "shown": [
+     {
+      "id": 122,
+      "name": "your ticket",
+      "parent": 211
+     },
+     {
+      "id": 231,
+      "name": "pink dot",
+      "parent": 122
+     },
+     {
+      "id": 71,
+      "name": "blue dot",
+      "parent": 122
+     },
+     {
+      "id": 27,
+      "name": "scrap of newsprint",
+      "parent": 211
+     },
+     {
+      "id": 129,
+      "name": "fiberglass pole",
+      "parent": 211
+     }
+    ]
+   },
+   {
+    "step": 90,
+    "text": "You have a rawhide bullwhip, a bucket, a skeleton key, your ticket, a scrap of newsprint, a fiberglass pole and $12.81 to your name.\n \nInside the bucket you see a corpuscular lump of meat.\n \n> ",
+    "items": [
+     {
+      "text": "Inside the bucket you see a corpuscular lump of meat.",
+      "indent": 0,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 65,
+      "name": "bucket",
+      "parent": 211
+     },
+     {
+      "id": 102,
+      "name": "corpuscular lump of meat",
+      "parent": 65
+     },
+     {
+      "id": 16,
+      "name": "rawhide bullwhip",
+      "parent": 211
+     },
+     {
+      "id": 14,
+      "name": "skeleton key",
+      "parent": 211
+     },
+     {
+      "id": 122,
+      "name": "your ticket",
+      "parent": 211
+     },
+     {
+      "id": 231,
+      "name": "pink dot",
+      "parent": 122
+     },
+     {
+      "id": 71,
+      "name": "blue dot",
+      "parent": 122
+     },
+     {
+      "id": 27,
+      "name": "scrap of newsprint",
+      "parent": 211
+     },
+     {
+      "id": 129,
+      "name": "fiberglass pole",
+      "parent": 211
+     }
+    ]
+   },
+   {
+    "step": 120,
+    "text": "You have a cigarette case, a stool, a bucket, a rawhide bullwhip, a skeleton key, your ticket, a scrap of newsprint, a fiberglass pole and $12.81 to your name.\n \n> ",
+    "items": [
+     {
+      "text": "a cigarette case",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a stool",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a bucket",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a rawhide bullwhip",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a skeleton key",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "your ticket",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a scrap of newsprint",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a fiberglass pole",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "$12",
+      "indent": 0,
+      "marked": false
+     }
+    ],
+    "shown": [
+     {
+      "id": 216,
+      "name": "cigarette case",
+      "parent": 211
+     },
+     {
+      "id": 133,
+      "name": "stool",
+      "parent": 211
+     },
+     {
+      "id": 65,
+      "name": "bucket",
+      "parent": 211
+     },
+     {
+      "id": 16,
+      "name": "rawhide bullwhip",
+      "parent": 211
+     },
+     {
+      "id": 14,
+      "name": "skeleton key",
+      "parent": 211
+     },
+     {
+      "id": 122,
+      "name": "your ticket",
+      "parent": 211
+     },
+     {
+      "id": 231,
+      "name": "pink dot",
+      "parent": 122
+     },
+     {
+      "id": 71,
+      "name": "blue dot",
+      "parent": 122
+     },
+     {
+      "id": 27,
+      "name": "scrap of newsprint",
+      "parent": 211
+     },
+     {
+      "id": 129,
+      "name": "fiberglass pole",
+      "parent": 211
+     }
+    ]
+   },
+   {
+    "step": 180,
+    "text": "You have an one-dollar-and-85-cent granola bar, a stool, a bucket, a rawhide bullwhip, a skeleton key, your ticket, a scrap of newsprint, a fiberglass pole and $12.81 to your name.\n \n> ",
+    "items": [
+     {
+      "text": "an one-dollar-and-85-cent granola bar",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a stool",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a bucket",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a rawhide bullwhip",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a skeleton key",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "your ticket",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a scrap of newsprint",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a fiberglass pole",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "$12",
+      "indent": 0,
+      "marked": false
+     }
+    ],
+    "shown": [
+     {
+      "id": 163,
+      "name": "one-dollar-and-85-cent granola bar",
+      "parent": 211
+     },
+     {
+      "id": 133,
+      "name": "stool",
+      "parent": 211
+     },
+     {
+      "id": 65,
+      "name": "bucket",
+      "parent": 211
+     },
+     {
+      "id": 16,
+      "name": "rawhide bullwhip",
+      "parent": 211
+     },
+     {
+      "id": 14,
+      "name": "skeleton key",
+      "parent": 211
+     },
+     {
+      "id": 122,
+      "name": "your ticket",
+      "parent": 211
+     },
+     {
+      "id": 231,
+      "name": "pink dot",
+      "parent": 122
+     },
+     {
+      "id": 71,
+      "name": "blue dot",
+      "parent": 122
+     },
+     {
+      "id": 27,
+      "name": "scrap of newsprint",
+      "parent": 211
+     },
+     {
+      "id": 129,
+      "name": "fiberglass pole",
+      "parent": 211
+     }
+    ]
+   }
+  ],
+  "cls": {
+   "descriptorExact": 21,
+   "descriptorShortened": [],
+   "missing": [
+    "30:$12",
+    "60:$12",
+    "120:$12",
+    "180:$12"
+   ],
+   "extra": [
+    "30:helium",
+    "60:pink dot",
+    "60:blue dot",
+    "90:bucket",
+    "90:corpuscular lump of meat",
+    "90:rawhide bullwhip",
+    "90:skeleton key",
+    "90:ticket",
+    "90:pink dot",
+    "90:blue dot",
+    "90:scrap of newsprint",
+    "90:fiberglass pole",
+    "120:pink dot",
+    "120:blue dot",
+    "180:pink dot",
+    "180:blue dot"
+   ],
+   "unmarked": [
+    "30:$12",
+    "60:$12",
+    "120:$12",
+    "180:$12"
+   ]
+  }
+ },
+ "HollywoodHijinx.z3.js": {
+  "ts": "2026-10-16T02:53:47.911Z",
+  "checks": [
+   {
+    "step": 30,
+    "text": "You have a business card, a yellowed piece of paper, a flashlight (providing light), a photo of Uncle Buddy and Aunt Hildegarde's letter.\n \nYou can hear dogs howling in the distance.\n \n> ",
+    "items": [
+     {
+      "text": "You can hear dogs howling in the distance.",
+      "indent": 0,
+      "marked": false
+     }
+    ],
+    "shown": [
+     {
+      "id": 63,
+      "name": "business card",
+      "parent": 52
+     },
+     {
+      "id": 113,
+      "name": "yellowed piece of paper",
+      "parent": 52
+     },
+     {
+      "id": 123,
+      "name": "flashlight",
+      "parent": 52
+     },
+     {
+      "id": 67,
+      "name": "Uncle Buddy's",
+      "parent": 52
+     },
+     {
+      "id": 235,
+      "name": "Aunt Hildegarde's letter",
+      "parent": 52
+     }
+    ]
+   },
+   {
+    "step": 60,
+    "text": "You have a business card, a yellowed piece of paper, a flashlight (providing light), a photo of Uncle Buddy and Aunt Hildegarde's letter.\n \n> ",
+    "items": [
+     {
+      "text": "a business card",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a yellowed piece of paper",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a flashlight (providing light)",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a photo of Uncle Buddy",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "Aunt Hildegarde's letter",
+      "indent": 0,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 63,
+      "name": "business card",
+      "parent": 52
+     },
+     {
+      "id": 113,
+      "name": "yellowed piece of paper",
+      "parent": 52
+     },
+     {
+      "id": 123,
+      "name": "flashlight",
+      "parent": 52
+     },
+     {
+      "id": 67,
+      "name": "photo of Uncle Buddy",
+      "parent": 52
+     },
+     {
+      "id": 235,
+      "name": "Aunt Hildegarde's letter",
+      "parent": 52
+     }
+    ]
+   },
+   {
+    "step": 90,
+    "text": "You have a business card, a yellowed piece of paper, a flashlight (providing light), a photo of Uncle Buddy and Aunt Hildegarde's letter.\n \n> ",
+    "items": [
+     {
+      "text": "a business card",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a yellowed piece of paper",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a flashlight (providing light)",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a photo of Uncle Buddy",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "Aunt Hildegarde's letter",
+      "indent": 0,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 63,
+      "name": "business card",
+      "parent": 52
+     },
+     {
+      "id": 113,
+      "name": "yellowed piece of paper",
+      "parent": 52
+     },
+     {
+      "id": 123,
+      "name": "flashlight",
+      "parent": 52
+     },
+     {
+      "id": 67,
+      "name": "photo of Uncle Buddy",
+      "parent": 52
+     },
+     {
+      "id": 235,
+      "name": "Aunt Hildegarde's letter",
+      "parent": 52
+     }
+    ]
+   },
+   {
+    "step": 120,
+    "text": "You have a flashlight (providing light).\n \n> ",
+    "items": [
+     {
+      "text": "a flashlight (providing light)",
+      "indent": 0,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 123,
+      "name": "flashlight",
+      "parent": 52
+     }
+    ]
+   },
+   {
+    "step": 180,
+    "text": "You have a yellowed piece of paper and a flashlight (providing light).\n \n> ",
+    "items": [
+     {
+      "text": "a yellowed piece of paper",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a flashlight (providing light)",
+      "indent": 0,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 113,
+      "name": "yellowed piece of paper",
+      "parent": 52
+     },
+     {
+      "id": 123,
+      "name": "flashlight",
+      "parent": 52
+     }
+    ]
+   }
+  ],
+  "cls": {
+   "descriptorExact": 13,
+   "descriptorShortened": [],
+   "missing": [
+    "30:you can hear dogs howling in the distance"
+   ],
+   "extra": [
+    "30:business card",
+    "30:yellowed piece of paper",
+    "30:flashlight",
+    "30:uncle buddy's",
+    "30:aunt hildegarde's letter"
+   ],
+   "unmarked": [
+    "30:you can hear dogs howling in the distance"
+   ]
+  }
+ }
+}

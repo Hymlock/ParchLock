@@ -1,0 +1,212 @@
+{
+ "PlunderedHearts.z3.js": {
+  "ts": "2026-10-16T02:57:10.576Z",
+  "checks": [
+   {
+    "step": 30,
+    "text": "You have a coffer, a jewelled brooch, a rag, a missive, your reticule (hanging from your wrist) and a cotton frock. It seems that your reticule contains smelling salts and a banknote. You are wearing a shirt, breeches, your kid slippers and a linen chemise.\n   \"I gotta let Lafond know 'e's comin'.\" Crulley stands on deck above, talking to himself, his voice floating down through a grate in the ceiling. \"First, I do in the mates aboard-ship, with this and t'other mischief,\" he grunts, and you hear a snapping noise, like a taut rope being cut. \"Now to warn the boss and collect me pay. Off I go, ",
+    "items": [
+     {
+      "text": "\"I gotta let Lafond know 'e's comin'.\" Crulley stands on deck above, talking to himself, his voice floating down through a grate in the ceiling. \"First, I do in the mates aboard-ship, with this and t'other mischief,\" he grunts, and you hear a snapping noise, like a taut rope being cut. \"Now to warn the boss and collect me pay. Off I go, har.\" He dives into the sea.",
+      "indent": 3,
+      "marked": false
+     }
+    ],
+    "shown": [
+     {
+      "id": 69,
+      "name": "coffer",
+      "parent": 192
+     },
+     {
+      "id": 108,
+      "name": "jewelled brooch",
+      "parent": 192
+     },
+     {
+      "id": 130,
+      "name": "shirt",
+      "parent": 192
+     },
+     {
+      "id": 194,
+      "name": "breeches",
+      "parent": 192
+     },
+     {
+      "id": 202,
+      "name": "rag",
+      "parent": 192
+     },
+     {
+      "id": 206,
+      "name": "missive",
+      "parent": 192
+     },
+     {
+      "id": 223,
+      "name": "your reticule",
+      "parent": 192
+     },
+     {
+      "id": 11,
+      "name": "smelling salts",
+      "parent": 223
+     },
+     {
+      "id": 186,
+      "name": "banknote",
+      "parent": 223
+     },
+     {
+      "id": 13,
+      "name": "your kid slippers",
+      "parent": 192
+     },
+     {
+      "id": 17,
+      "name": "linen chemise",
+      "parent": 192
+     },
+     {
+      "id": 84,
+      "name": "cotton frock",
+      "parent": 192
+     }
+    ]
+   },
+   {
+    "step": 90,
+    "text": "You have your reticule (hanging from your wrist), a garter, a slab of pork, a shirt and breeches. It seems that your reticule contains a cotton frock, a missive, a jewelled brooch, a leather bottle, smelling salts and a banknote. You are wearing a beautiful ball gown, your kid slippers and a linen chemise.\n \n> ",
+    "items": [
+     {
+      "text": "your reticule (hanging from your wrist)",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a garter",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a slab of pork",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "a shirt",
+      "indent": 0,
+      "marked": true
+     },
+     {
+      "text": "breeches",
+      "indent": 0,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 200,
+      "name": "beautiful ball gown",
+      "parent": 192
+     },
+     {
+      "id": 223,
+      "name": "your reticule",
+      "parent": 192
+     },
+     {
+      "id": 84,
+      "name": "cotton frock",
+      "parent": 223
+     },
+     {
+      "id": 206,
+      "name": "missive",
+      "parent": 223
+     },
+     {
+      "id": 108,
+      "name": "jewelled brooch",
+      "parent": 223
+     },
+     {
+      "id": 121,
+      "name": "leather bottle",
+      "parent": 223
+     },
+     {
+      "id": 11,
+      "name": "smelling salts",
+      "parent": 223
+     },
+     {
+      "id": 186,
+      "name": "banknote",
+      "parent": 223
+     },
+     {
+      "id": 88,
+      "name": "garter",
+      "parent": 192
+     },
+     {
+      "id": 100,
+      "name": "slab of pork",
+      "parent": 192
+     },
+     {
+      "id": 130,
+      "name": "shirt",
+      "parent": 192
+     },
+     {
+      "id": 194,
+      "name": "breeches",
+      "parent": 192
+     },
+     {
+      "id": 13,
+      "name": "your kid slippers",
+      "parent": 192
+     },
+     {
+      "id": 17,
+      "name": "linen chemise",
+      "parent": 192
+     }
+    ]
+   }
+  ],
+  "cls": {
+   "descriptorExact": 5,
+   "descriptorShortened": [],
+   "missing": [],
+   "extra": [
+    "30:coffer",
+    "30:jewelled brooch",
+    "30:shirt",
+    "30:breeches",
+    "30:rag",
+    "30:missive",
+    "30:reticule",
+    "30:smelling salts",
+    "30:banknote",
+    "30:kid slippers",
+    "30:linen chemise",
+    "30:cotton frock",
+    "90:beautiful ball gown",
+    "90:cotton frock",
+    "90:missive",
+    "90:jewelled brooch",
+    "90:leather bottle",
+    "90:smelling salts",
+    "90:banknote",
+    "90:kid slippers",
+    "90:linen chemise"
+   ],
+   "unmarked": []
+  }
+ }
+}

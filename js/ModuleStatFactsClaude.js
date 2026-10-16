@@ -26,7 +26,13 @@ var ModuleStatFactsClaude = {
         // Q8 player root: G185 is the only global holding object 192, and every successful TAKE in the walkthrough (4 items) moves the item into 192; the app read player 15 and showed an empty inventory (zil-player-root.json, tmp pglob).
         "playerGlobal": 185,
         // CONTBIT 24: TRUE on coffer, bed, cupboard; FALSE on Davis, pile of clothes. ACTORBIT 31: TRUE on Crulley, Cookie, Lucy, butler; FALSE on coffer, bed. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
-        "attributeMap": { "open": 16, "isOpen": 16, "animate": 31, "wearable": 21 },
+        // RE-ADDED 2026-10-15 (claude, target-scoped original scene, Codex #3474 rule): CONTBIT 24 'look in X'
+        // TRUE on ledge 27, skiff 52, coffer 69 and FALSE on dagger 42, shirt 130, breeches 194, oars 161 ... (walk
+        // p1); SURFACEBIT 18 TRUE on silver tray 198 ('get tray', walk n2, terminal) and bed 213 ('look in bed', p1),
+        // FALSE on ledge 27, skiff 52, coffer 69 (p1). Source pin (zil-source-flags.json): CONTBIT 24 and
+        // SURFACEBIT 18 exact (tp 35/9, fp 0). Both together, so surfaces are never offered Open/Close
+        // (openCapability above). Closes the coffer/invitation leak (app listed the invitation inside the closed coffer).
+        "attributeMap": { "open": 16, "isOpen": 16, "animate": 31, "wearable": 21, "container": 24, "supporter": 18 },
         "wornAttribute": 22
     },
     // Wishbringer (ZIL): OPENBIT 25: OPEN sets 25 on shoppe door, metal can, toll gate, refrigerator; CLOSE clears. CONTBIT 4: OPEN tests 4 TRUE on refrigerator, little mailbox, FALSE on shoppe door. zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
