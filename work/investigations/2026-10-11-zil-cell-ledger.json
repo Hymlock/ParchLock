@@ -51,6 +51,10 @@
   "wornItems": {
    "s": "UD",
    "r": "no worn state exists: historicalsource/zork3@3ec9ed4 V-WEAR = <PERFORM ,V?TAKE> when WEARBIT, no WORNBIT, no object <VERB? WEAR/TAKE-OFF> handler; a worn item is indistinguishable from a carried one in RAM"
+  },
+  "wearable": {
+   "s": "S",
+   "r": "Zork III fact (ModuleStatFactsClaude dce7e6f7): WEARBIT 4 original scene walk n4: get amulet / get ring test 4 TRUE; key, chest, torch, book, lamp FALSE; source exact 4/4. Gate 0 diffs."
   }
  },
  "Enchanter.z3.js": {

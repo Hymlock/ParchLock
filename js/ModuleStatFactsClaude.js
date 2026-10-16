@@ -41,8 +41,10 @@ var ModuleStatFactsClaude = {
         "attributeMap": { "container": 4, "open": 25, "isOpen": 25, "animate": 18 }
     },
     // Zork III (ZIL): OPENBIT 12: OPEN sets 12 on secret door, stone door, wooden door; CLOSE clears (wooden door). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
+    // WEARBIT 4 original scene (2026-10-11-zil-walk-n4.json): TAKE tests 4 TRUE on golden amulet 39, golden ring 82; FALSE on
+    // strange key, chest, torch, ancient book, lamp. Source exact 4/4 (amulet, ring, cloak, hood).
     "dce7e6f757fb8379dea9da9c13cdda5412ba03fa9b70d79fb6b8c7faf5970692": {
-        "attributeMap": { "open": 12, "isOpen": 12 }
+        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4 }
     },
     // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
