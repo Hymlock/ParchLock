@@ -55,6 +55,10 @@
   "wearable": {
    "s": "S",
    "r": "Zork III fact (ModuleStatFactsClaude dce7e6f7): WEARBIT 4 original scene walk n4: get amulet / get ring test 4 TRUE; key, chest, torch, book, lamp FALSE; source exact 4/4. Gate 0 diffs."
+  },
+  "supporter": {
+   "s": "S",
+   "r": "SOLO/SELF-AUDIT: SURFACEBIT 26 put staff on pedestal/cage TRUE, put staff on machine FALSE (pgapz3); source exact 2/2. Gate 0 diffs."
   }
  },
  "Enchanter.z3.js": {
@@ -281,6 +285,10 @@
   "playerRoot": {
    "s": "S",
    "r": "existing ZRamReader.resolvePlayer (no fact) returns 236 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"GET KIT\"; the game's own i names each (survival kit, patrol-issue self-contained multi-purpose scrub brush, patrol uniform, id card, chronometer); zil-root-check.cjs 2026-10-15"
+  },
+  "supporter": {
+   "s": "UD",
+   "r": "No SURFACEBIT in the Planetfall source (historicalsource; 2026-10-11-zil-source-flags.json has no SURFACEBIT entry): no surface capability to decode."
   }
  },
  "Seastalker.z3.js": {
