@@ -2115,9 +2115,14 @@ var Actionable = {
             // qualifier belonging to the same object.
             var headNoun = String(Actionable.headNounOf(o) || Actionable.headTokenOf(o) || "").toLowerCase();
             var fullName = String(o.name || "").trim().toLowerCase();
+            // A word in the object's OWN synonym list names this object even when the dictionary's part-of-speech byte
+            // lacks the noun bit (Planetfall "brush" is also a verb: flags 98), so the scrub brush keeps a mark.
+            var ownNouns = {};
+            (o.aliases || []).forEach(function (a) { if (a) ownNouns[Actionable.vocabularyKey(String(a).toLowerCase())] = true; });
+            var ownNoun = function (pl) { return String(pl).split(/\s+/).some(function (w) { return !!ownNouns[Actionable.vocabularyKey(w)]; }); };
             Actionable.namePhrases(o.name).forEach(function (phrase) {
                 var pl = String(phrase).toLowerCase();
-                if (!Actionable.nounTrigger(pl)) return;
+                if (!Actionable.nounTrigger(pl) && !(ownNoun(pl) && !Actionable.isReferenceToken(pl))) return;
                 seenPhrase[pl] = true;
                 wrapTargets.push({
                     phrase: phrase, kind: kind, objectId: o.id, dictAddr: o.dictAddr, fromName: true,
