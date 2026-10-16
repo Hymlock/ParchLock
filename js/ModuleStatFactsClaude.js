@@ -112,7 +112,12 @@ var ModuleStatFactsClaude = {
     // the held Logbook195 has this bit clear and is printed.
     "502e5c8e4cb82726ab61683f4d92afbb31f90fcb98b9b3dc3dbd4f97841c5582": {
         // RE-ADDED from PROBE walk p2: SURFACEBIT 6 TRUE on mechanical/electronic/chemical supply shelves; FALSE on Snark, gangplank, supply bunches. Source exact (9 objects). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
-        "attributeMap": { "supporter": 6 },
+        // 2026-10-15 original scene, target-scoped, source-exact (16/16 each): OPENBIT 18 - OPEN sets it on access panel 250 and
+        // test tank gate 21, finds it set on lab door 88; CLOSE clears it on hatch, reactor, circuit breaker
+        // (2026-10-11-zil-walk-pzseastalker3.json). CONTBIT 26 - 'look in' TRUE on mechanical supply shelf, reactor; FALSE on
+        // Snark, gangplank, supply bunches, scanner, Computestor (pzseastalker). With openCapability.
+        "openCapability": { "all": ["container"], "none": ["supporter"] },
+        "attributeMap": { "supporter": 6, "open": 18, "isOpen": 18, "container": 26 },
         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): supporter - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
         // SURFACEBIT 6: TRUE on workbench 64, mechanical/electronic/chemical supply shelves 67/70/72, work counter 189; FALSE on microphone 62, file drawer 78, electrolyte relay 115. Walk m1; source exact (9 objects). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         "inventoryHiddenAttribute": 17

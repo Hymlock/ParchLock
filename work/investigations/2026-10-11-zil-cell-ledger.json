@@ -287,6 +287,14 @@
   "rooms": {
    "s": "O",
    "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "open": {
+   "s": "S",
+   "r": "Seastalker fact (ModuleStatFactsClaude 502e5c8e): original scene, target-scoped, source exact 16/16. OPENBIT 18 pzseastalker3: open access panel / open gate set; lab door already-open; close hatch/reactor/circuit breaker clear. Gate 0 diffs."
+  },
+  "container": {
+   "s": "S",
+   "r": "Seastalker fact (ModuleStatFactsClaude 502e5c8e): original scene, target-scoped, source exact 16/16. CONTBIT 26 pzseastalker: look in shelf, reactor TRUE; Snark, gangplank, supply bunches, scanner FALSE. With openCapability."
   }
  },
  "Sorcerer.z3.js": {
