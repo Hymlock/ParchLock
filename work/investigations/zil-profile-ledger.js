@@ -2,7 +2,7 @@
 // covers ALL 34 AttributeSchema profile keys plus the executable special keys, per title. Reporting only: no tests.
 // Verdict per cell: F/C = committed fact (audited / not yet), L:<s> = manual ledger entry, U = the mapped ZIL flag
 // exists in this title's Infocom source but no fact/evidence yet, NA = no ZIL flag maps to this key, or the title's
-// source lacks it (reason in the mapping column). The mapping itself is a review target.
+// source lacks it - shown as N? (PROPOSED, unaccepted). The mapping itself is a review target.
 //   node work/investigations/zil-profile-ledger.js   -> work/investigations/2026-10-16-zil-profile-ledger.md
 const fs = require('fs'), path = require('path'); const D = __dirname;
 const M = require('./2026-10-11-zil-matrix.json'), SRC = require('./2026-10-11-zil-source-flags.json');
@@ -17,7 +17,7 @@ const MAP = { animate: ['ACTORBIT', 'PERSONBIT'], absent: null, clothing: ['WEAR
   female: ['FEMALE', 'FEMALEBIT'], neuter: null, pluralname: ['PLURALBIT'], takeable: ['TAKEBIT'] };
 const SPECIAL = ['lightSource', 'inventoryHiddenAttribute', 'wornAttribute', 'openCapability'];
 const keys = [...M.profileKeys, ...SPECIAL];
-const titles = Object.keys(SRC);
+const titles = [...Object.keys(SRC), 'Sherlock.z5.js']; // Sherlock: no historicalsource entry -> blocked row, never dropped (Codex #3533)
 const { story } = require('./zil-attr-analyzer.js'); const crypto = require('crypto');
 function factBlock(g) { // the digest-keyed block for this story (same lookup as zil-completion.js factFor)
   let dg; try { dg = crypto.createHash('sha256').update(Buffer.from(story(g))).digest('hex'); } catch (e) { return ''; }
@@ -30,10 +30,11 @@ for (const g of titles) { const fb = factBlock(g), src = (SRC[g] || {}).flags ||
     const inFact = new RegExp('"' + k + '"\\s*:').test(fb);
     if (inFact) v = aud[k] || (k === 'isOpen' && aud.open) ? 'F' : 'C';
     else if (led[k]) v = 'L:' + led[k].s;
+    else if (!SRC[g]) v = 'B';
     else if (SPECIAL.includes(k)) v = 'U';
-    else if (!MAP[k]) v = 'NA';
-    else v = MAP[k].some(f => src[f]) ? 'U' : 'NA';
+    else if (!MAP[k]) v = 'N?';
+    else v = MAP[k].some(f => src[f]) ? 'U' : 'N?';
     tally[v] = (tally[v] || 0) + 1; cells.push(v); }
   md += '| ' + g.replace(/\.z\d\.js$/, '') + ' | ' + cells.join(' | ') + ' |\n'; }
-md += '\n**Cells: ' + Object.entries(tally).map(([k, v]) => k + ' ' + v).join(', ') + ' of ' + titles.length * keys.length + '.** U = reviewable and not yet decided; NA must be checked against the mapping above.\n';
+md += '\n**Cells: ' + Object.entries(tally).map(([k, v]) => k + ' ' + v).join(', ') + ' of ' + titles.length * keys.length + '.** U = mapped flag present in source, undecided. N? = PROPOSED not-applicable (no mapped ZIL flag, or source lacks it): NOT a verdict; source absence alone is not NA and the mapping equivalences (e.g. static=TRYTAKEBIT, scenery=NDESCBIT, switchable=LIGHTBIT) are unaccepted until semantically checked (Codex #3533). B = blocked: no source pin for this title. This ledger is a proposal, not certification.\n';
 fs.writeFileSync(path.join(D, '2026-10-16-zil-profile-ledger.md'), md); console.log(titles.length, 'titles x', keys.length, 'keys', JSON.stringify(tally));
