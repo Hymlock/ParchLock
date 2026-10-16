@@ -77,6 +77,10 @@
   "supporter_gap": {
    "s": "SELF",
    "r": "SOLO/SELF-AUDIT (operator #3542; no Codex sign-off): Codex #3539 gap closed: put lantern on bed tests SURFACEBIT 14 TRUE on fourposter bed 133 (There is no room = capacity), put lantern on post FALSE (no good surface) (pgapench2); plus lily pad 118."
+  },
+  "nested_eggparts": {
+   "s": "OPEN",
+   "r": "OPERATOR DECISION PENDING (2026-10-16): native i tests NDESCBIT 7 TRUE on the egg parts (button 139, crank 136, slide 151, knob 149, handle 148) AND on every spell, omitting all; FALSE on every printed item (2026-10-16-zil-inv-hidden-ops.json @59). A blanket inventoryHiddenAttribute 7 would also hide the spells, contradicting D148 (spells usable from inventory). Options: hide egg parts only (executable-owned exemption for the spell book), or keep both listed."
   }
  },
  "Hitchhik.z5.js": {
