@@ -67,6 +67,10 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 41 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed); walk witness MEETS 2+1 (2026-10-11-zil-walk-n4.json)"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "41/50 walkthrough turns: app room = status-line location; the 9 others differ only by status decoration (\"Darkness\" while dark, \", lying down\" posture), app room correct; zil-rooms-check.cjs 2026-10-15"
   }
  },
  "Ballyhoo.z3.js": {
@@ -83,6 +87,10 @@
   "playerRoot": {
    "s": "S",
    "r": "existing ZRamReader.resolvePlayer (no fact) returns 184 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"get passbook and room key\"; the game's own i names each (room key, mariners' trust passbook, wrist watch); zil-root-check.cjs 2026-10-15"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
   }
  },
  "Deadline.z3.js": {
@@ -105,6 +113,10 @@
   "playerRoot": {
    "s": "S",
    "r": "existing ZRamReader.resolvePlayer (no fact) returns 160 = the RAM holder of every directly held app inventory object after the original-scene take \"take all\"; the game's own i names each directly held object; zil-root-check.cjs 2026-10-15"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "13/13 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
   }
  },
  "Infidel.z3.js": {
@@ -115,6 +127,10 @@
   "playerRoot": {
    "s": "S",
    "r": "existing ZRamReader.resolvePlayer (no fact) returns 223 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"get pickaxe\"; the game's own i names each (pick axe); zil-root-check.cjs 2026-10-15"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
   }
  },
  "HollywoodHijinx.z3.js": {
@@ -131,6 +147,10 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 23 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "6/6 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
   }
  },
  "Moonmist.z3.js": {
@@ -145,12 +165,20 @@
   "nested": {
    "s": "X",
    "r": "FINDING: app lists luggage contents (217:dinner outfit@59, 198:exercise outfit@59, 4:nightshirt@59, 220:tourist brochure@59) that the native i omits (D148 relaxation shows children of an undecoded ZIL container; Moonmist container bit unproven). Needs the container/open facts, not a display filter."
+  },
+  "rooms": {
+   "s": "O",
+   "r": "4/4 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
   }
  },
  "PlunderedHearts.z3.js": {
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 23 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
   }
  },
  "Borderzo.z5.js": {
@@ -163,6 +191,10 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 24 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed); walk witness MEETS 2+1 (2026-10-11-zil-walk-n3.json)"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
   }
  },
  "Planetfall.z3.js": {
@@ -195,12 +227,20 @@
   "playerRoot": {
    "s": "S",
    "r": "existing ZRamReader.resolvePlayer (no fact) returns 194 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"get microphone\"; the game's own i names each (microphone, logbook); zil-root-check.cjs 2026-10-15"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
   }
  },
  "Sorcerer.z3.js": {
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 23 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed); walk witness MEETS 2+1 (2026-10-11-zil-walk-n3.json)"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
   }
  },
  "Spellbreaker.z3.js": {
@@ -229,12 +269,20 @@
   "playerRoot": {
    "s": "S",
    "r": "existing ZRamReader.resolvePlayer (no fact) returns 239 = the RAM holder of every directly held app inventory object after the original-scene take \"take all\"; the game's own i names each directly held object; zil-root-check.cjs 2026-10-15"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "2/2 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
   }
  },
  "Stationfall.z3.js": {
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 23 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "4/4 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
   }
  },
  "Suspect.z3.js": {
@@ -327,6 +375,10 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 18 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "rooms": {
+   "s": "O",
+   "r": "1/1 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
   }
  },
  "Wishbringer.z3.js": {
@@ -355,6 +407,10 @@
   "wornItems": {
    "s": "UD",
    "r": "not applicable: source historicalsource/witness@8fe092a has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12); story dictionary (715 words) has no \"wear\"/\"don\""
+  },
+  "rooms": {
+   "s": "O",
+   "r": "6/6 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
   }
  },
  "Sherlock.z5.js": {
