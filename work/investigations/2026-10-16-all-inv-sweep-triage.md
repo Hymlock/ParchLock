@@ -56,3 +56,10 @@ Guards: operator-regressions 7/0, d31-nested-inventory 60/0, attr-calibrator-inv
   attribute numbering differs from the I6 default, with no attribute-name table to decode it. Not fixed by guessing a
   mapping: needs target-scoped native evidence per game, or a library-version detector. (Note: canSeeInside takes an
   attrs object; an earlier mem/id call in this triage was invalid and is not evidence.)
+- Census (all objects, 2026-10-16): heist bit 3 = grave, black canvas bag, plain wooden box, black coffin, deep hole,
+  small compartment (containers); bit 4 = jewellers store, fire exit, solid looking door, secret doorway, cabin door, cave
+  entrance (doors); bits 14/15 still fit open/openable. phlegm bit 3 = overcoat, cannon, cart, feed bags, bowl,
+  depression. Advent (standard I6) bit 4 = small bottle, wicker cage. So these libraries number container 3 / door 4
+  (I6 default concealed 3 / container 4 / door 5) while later attributes match. A per-digest attributeMap
+  {container: 3, door: 4} is the fix shape, but a name census is not acceptable evidence: needs target-scoped native
+  tests (e.g. LOOK IN / OPEN on a single named container that tests 3, and on a door that tests 4).
