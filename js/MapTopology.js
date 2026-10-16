@@ -46,6 +46,17 @@ var MapTopology = {
             );
             var heading = el ? String(el.innerText || el.textContent || "").toLowerCase().replace(/\s+/g, " ") : "";
             if (heading.indexOf(n) >= 0) return true;
+            // A status line can carry something else entirely (WiR shows a
+            // date), so the game's own room heading in the latest reply also
+            // announces the room: a FULL line equal to the name, optionally
+            // with a positional suffix "(on|in the X)" / ", on|in the X".
+            if (typeof DarkScope !== "undefined" && DarkScope.latestReplyLines) {
+                var lines = DarkScope.latestReplyLines() || [];
+                for (var i = 0; i < lines.length; i++) {
+                    var l = String(lines[i] || "").toLowerCase().replace(/\s+/g, " ").trim();
+                    if (l === n || (l.indexOf(n) === 0 && /^\s*(\((in|on) [^()]+\)|, (in|on) [^,()]+)\s*$/.test(l.slice(n.length)))) return true;
+                }
+            }
             if (typeof StatusGridDecoder !== "undefined" && StatusGridDecoder.decode) {
                 var d = StatusGridDecoder.decode(document);
                 if (d && d.roomLabel && String(d.roomLabel).toLowerCase().indexOf(n) >= 0) return true;

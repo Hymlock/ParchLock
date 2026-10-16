@@ -21,7 +21,8 @@ if (process.argv[2] === '--diff') {
 }
 const { chromium } = require(process.cwd() + '/node_modules/playwright'); const { pathToFileURL } = require('url');
 const ROOT = process.env.ROOT || '.';
-const games = fs.readdirSync('games').filter(f => f.endsWith('.js') && !/\.(ulx|gblorb)\.js$/i.test(f)).sort()
+// GLULX=1 includes Glulx titles (the three-type check: ZIL + Inform Z + Glulx).
+const games = fs.readdirSync('games').filter(f => f.endsWith('.js') && (process.env.GLULX || !/\.(ulx|gblorb)\.js$/i.test(f))).sort()
     .filter(f => !process.env.GAMES || process.env.GAMES.split(',').includes(f));
 const out = fs.createWriteStream(process.env.OUT || 'gate.jsonl');
 (async () => {

@@ -382,7 +382,14 @@ var ZRamReader = {
             if (val == null) return "";
             if (form.block) {
                 if (val + 4 > mem.byteLength || ZRamReader.u16(mem, val) !== form.header) return "";
-                return zs(ZRamReader.u16(mem, val + 2) * scale);
+                var payload = ZRamReader.u16(mem, val + 2);
+                // D219 R2: a measured per-digest domain types the payload; a
+                // routine-domain or out-of-domain payload is never decoded as text.
+                var dom = null;
+                try { var lf = ZRamReader.executableLayoutFacts(mem); dom = lf && lf.shortNameDomains; } catch (eDom) {}
+                if (dom && (payload >= dom.routineMin && payload <= dom.routineMax
+                    || !(payload >= dom.stringMin && payload <= dom.stringMax))) return "";
+                return zs(payload * scale);
             }
             return zs(val * scale);
         } catch (e) { return ""; }
