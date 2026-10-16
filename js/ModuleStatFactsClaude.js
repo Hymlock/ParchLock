@@ -283,8 +283,15 @@ var ModuleStatFactsClaude = {
     // room on travel (221-B Baker Street 38 -> KNOCK ON DOOR -> Entry Hall 111), measured 2026-10-16 (zil-route-ops). The
     // resolver otherwise picked the parser "yourself" 168 (parent 177, offstage) and the room fell back to the black bag.
     // Constant object, not the global, because orders to Holmes may reassign a WINNER-style global. SOLO/SELF-AUDIT.
+    // Container 9 / open 5, measured with raw (ordered, undeduplicated) VM ops beyond the per-turn background scope pass:
+    // PUT WHISTLE IN BAG adds target tests of bit 9 TRUE on the black bag 172, PUT WHISTLE IN COAT (redirected) on the
+    // pocket 287; PUT BAG IN WHISTLE tests 9 FALSE on the whistle 173. OPEN BAG turns the bag's bit 5 from 0 to 1 (CLOSE
+    // then finds it set); the open pocket and coat carry 5. Census: bit 9 = containers, boats, cabs; bit 5 also on doors.
+    // No source pin. Closed bag no longer spills its bottles/pills. SOLO/SELF-AUDIT.
     "ba9c2c81d6b55eb9fc7de43a2e439fc65304231cbb834c208005cd9460f44ff0": {
-        "playerObject": 232
+        "playerObject": 232,
+        "attributeMap": { "container": 9, "open": 5, "isOpen": 5 },
+        "openCapability": { "all": ["container"] }
     },
     // Treasures: measured SCORE and QUEST RATE agree at 0, 3 and restored43.
     // Semantic relationship only; base SCORE/PROWESS capabilities stay intact.

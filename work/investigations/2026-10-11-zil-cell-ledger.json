@@ -563,12 +563,12 @@
  },
  "Sherlock.z5.js": {
   "container": {
-   "s": "U",
-   "r": "2026-10-16 native ops (route ops open/close/look in bag, look in hat): a background scope pass tests bits 16/9/5/2/47/40 on every held object each command; bit 9 TRUE on bag/coat/pocket/hat (containers), bit 5 TRUE on coat/pocket only. Suggestive (9 container, 5 open?) but no source pin and no target-scoped test yet: not mapped."
+   "s": "S",
+   "r": "SOLO/SELF-AUDIT: container 9 from raw target-scoped PUT IN tests (bag, pocket TRUE beyond background; whistle FALSE); census containers/vehicles. No source pin. Gate: closed bag/hat contents hidden as native."
   },
   "open": {
-   "s": "UD",
-   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+   "s": "S",
+   "r": "SOLO/SELF-AUDIT: open 5 (OPEN BAG sets it, CLOSE finds it set; open pocket/coat carry it; doors carry it)."
   },
   "supporter": {
    "s": "UD",
