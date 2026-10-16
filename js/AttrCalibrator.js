@@ -1226,6 +1226,9 @@ var AttrCalibrator = {
                 if (typeof AttributeSchema === "undefined" || typeof ZRamReader === "undefined") return null;
                 var mem = AttributeSchema._getMem();
                 if (!mem || AttrCalibrator.confirmedInventoryRootId(mem) != null) return null;
+                // A digest-pinned measured player (playerObject / playerGlobal) already owns the holder (D226): do not
+                // learn and persist a competing root (Sherlock stored its coat pocket).
+                try { var lfp = ZRamReader.executableLayoutFacts(mem); if (lfp && (Number.isInteger(lfp.playerObject) || Number.isInteger(lfp.playerGlobal))) return null; } catch (eLf) {}
                 turn.__invRootCtx = { tested: {}, mem: mem };
                 return {
                     wantsOpcodes: true,
