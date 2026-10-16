@@ -294,6 +294,18 @@ var Actionable = {
             if (blob.indexOf(structuralDisp) >= 0) return casedStructural();
         }
         var preserves = curL === structuralDisp || (structuralDisp && (" " + curL + " ").indexOf(" " + structuralDisp + " ") >= 0);
+        // When a genuine inventory listing row prints exactly the structural name, the game has named the item: a phrase
+        // observed elsewhere must not replace it (Lurking's held "pc" became "computer terminals" from the opening text,
+        // its aliases being the truncated "comput"/"termin"). A longer observed phrase that CONTAINS the name still wins.
+        if (curL && !preserves && structuralDisp && invText) {
+            try {
+                var rowNamed = Actionable.listingRows(invText, pool).some(function (r) {
+                    return String(r).toLowerCase().replace(/\s*\([^()]*\)\s*$/, "").replace(/[.,;:!]+$/, "")
+                        .replace(/^(a|an|the|some|your|my)\s+/, "").replace(/\s+/g, " ").trim() === structuralDisp;
+                });
+                if (rowNamed) return casedStructural();
+            } catch (eRow) {}
+        }
         var uniqueObs = Actionable.observedPhraseFor(seed, pool, observeText, true);
         var longerRecovery = false;
         if (current && curL && curL !== nameL && curL.length > nameL.length) {
