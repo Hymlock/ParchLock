@@ -484,8 +484,11 @@ var ModuleStatFactsClaude = {
         "playerGlobal": 188,
         // OPENBIT 13 (original-scene native explorer, zil-native-explore2-c.json): refrigerator OPEN tests 13 false, sets it,
         // reveals carton + Coke; CLOSE tests true, clears. OPEN on chair, pc, kitchen counter, forklift tests 13 TRUE natively.
-        // Container 27 / supporter 8 not yet proven (one native container positive, no negative).
-        "attributeMap": { "open": 13, "isOpen": 13, "container": 27 },
+        // SURFACEBIT 8 original scene (2026-10-11-zil-walk-pzlurking.json, target-scoped): chair, kitchen counter, forklift,
+        // floor waxer TRUE; catwalk, ladder, flask, refrigerator, microwave oven, flashlight, crowbar FALSE. Source exact 10/10.
+        // Applied with openCapability so surfaces get no Open/Close.
+        "openCapability": { "all": ["container"], "none": ["supporter"] },
+        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8 },
         "command": "score", "fields": ["score.max", "rank"], "replyFamily": "inform-score", "outcome": "line",
         "evidence": "2026-10-05 live SCORE: Your score is 0 of a possible 100, in 0 moves. Graded on the curve, you are in the class of Freshman. DIAGNOSE: You are wide awake, and are in good health."
     },

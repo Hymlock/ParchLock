@@ -231,6 +231,10 @@
   "rooms": {
    "s": "O",
    "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "supporter": {
+   "s": "S",
+   "r": "Lurking fact (ModuleStatFactsClaude 1862ef7c): SURFACEBIT 8 original scene pzlurking target-scoped: chair, kitchen counter, forklift, floor waxer TRUE; catwalk, ladder, flask, refrigerator, oven, flashlight, crowbar FALSE; source exact 10/10. With openCapability. Gate 0 diffs."
   }
  },
  "Planetfall.z3.js": {
