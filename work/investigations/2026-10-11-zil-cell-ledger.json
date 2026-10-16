@@ -67,12 +67,12 @@
    "r": "existing ZRamReader.resolvePlayer (no fact) returns 55 = the RAM parent of the first walkthrough TAKE; app inventory lists loaf of bread, spell book (zil-player-root.js, 2026-10-11 23:3x run)"
   },
   "open": {
-   "s": "X",
-   "r": "evidence MEETS 2+1 (terminal walk m3: OPEN sets 12 on oven 85, cell door 202, jewelled box 221 after tested-closed). Commit BLOCKED (2026-10-15 trial gate): open 12 lists the spells in the spell book and the \"Book\" underline moves to \"spell\" (shared word now owned by a spell rival). Needs an underline-ownership fix first; also unblocks the jug water nested display."
+   "s": "S",
+   "r": "56a170f: OPENBIT 12 (Codex ACCEPT #3517; walk m3 oven/cell door/jewelled box SET after tested-closed; source exact). With the coverage split the Book underline stays; jug water now shown as native i."
   },
   "nested": {
-   "s": "X",
-   "r": "FINDING (zil-inv-check step 90): native \"The jug contains: A quantity of water\"; app omits the water because container 21 is proven but open is unknown (fail closed). Resolves with the open fact above."
+   "s": "S",
+   "r": "56a170f: jug contents (quantity of water) shown as native i prints them; spells under the book (D148)."
   },
   "supporter_gap": {
    "s": "SELF",
@@ -243,6 +243,10 @@
   "rooms": {
    "s": "O",
    "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "nested": {
+   "s": "S",
+   "r": "56a170f: inventoryHiddenAttribute 9 (native i tests NDESCBIT 9 TRUE on gunpowder in open horn and laudanum in transparent bottle, omits both; FALSE on 15 printed). Codex GO #3525."
   }
  },
  "Borderzo.z5.js": {
