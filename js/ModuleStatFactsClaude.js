@@ -227,8 +227,12 @@ var ModuleStatFactsClaude = {
     // IN DRIVEWAY-GATE DESC "detective"). No PLAYER global; WINNER (G112 in this binary, 19 stores G112<-79) is
     // reassigned (SETG WINNER ,PLAYER x15 in people.zil), so playerGlobal is not used. Native i at boot lists the
     // telegram, handcuffs, Colt and match book, all children of 79; the app previously resolved no player (2026-10-15).
+    // CONTBIT 9 / SURFACEBIT 16 original scene (2026-10-11-zil-walk-pzwitness2.json, target-scoped, source-exact 27/27,
+    // 17/17): file cabinet, liquor cabinet, lounge / lounge, carved chair, desk; negatives cat, Monica, Linder, newspaper,
+    // putty, door bell. Applied together with openCapability so surfaces get no Open/Close.
     "2290bb3440ac66e14d54d41dbde575066ebdbdc42138ec899496e359bc484824": {
-        "attributeMap": { "open": 8, "isOpen": 8 },
+        "openCapability": { "all": ["container"], "none": ["supporter"] },
+        "attributeMap": { "open": 8, "isOpen": 8, "container": 9, "supporter": 16 },
         "playerObject": 79
     },
     // Treasures: measured SCORE and QUEST RATE agree at 0, 3 and restored43.

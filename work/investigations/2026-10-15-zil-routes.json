@@ -91,22 +91,21 @@
   "look"
  ],
  "witness": [
-  "look",
-  "n",
-  "look",
-  "e",
-  "look",
-  "w",
-  "s",
   "n",
   "n",
+  "NP:ring door bell",
   "look",
-  "w",
+  "NP:open closet",
+  "NP:look in closet",
+  "NP:close closet",
+  "NP:look in closet",
+  "wait",
+  "wait",
   "look",
-  "e",
-  "e",
-  "look",
-  "w",
-  "s"
+  "NP:look on desk",
+  "NP:look in desk",
+  "NP:sit in chair",
+  "NP:stand up",
+  "look"
  ]
 }

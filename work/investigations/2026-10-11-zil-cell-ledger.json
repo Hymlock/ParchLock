@@ -449,8 +449,12 @@
    "r": "6/6 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
   },
   "container": {
-   "s": "X",
-   "r": "CONTBIT 9 native-insertion only. Original-scene route pzwitness (porch, drive, hall) reached no container (0+1, census 31); needs a deeper Linder-house route. Source exact."
+   "s": "S",
+   "r": " Witness fact (ModuleStatFactsClaude 2290bb34): original scene pzwitness2 (ring door bell, entry, office), target-scoped, source exact. CONTBIT 9: file cabinet, liquor cabinet, lounge positive; cat, Monica, Linder, newspaper, putty, door bell negative. Gate 0 diffs."
+  },
+  "supporter": {
+   "s": "S",
+   "r": " Witness fact (ModuleStatFactsClaude 2290bb34): original scene pzwitness2 (ring door bell, entry, office), target-scoped, source exact. SURFACEBIT 16: lounge, carved chair, desk positive; same negatives. With openCapability."
   }
  },
  "Sherlock.z5.js": {
