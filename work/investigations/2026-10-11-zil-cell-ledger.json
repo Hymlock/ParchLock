@@ -481,6 +481,10 @@
   "playerRoot": {
    "s": "S",
    "r": "existing ZRamReader.resolvePlayer (no fact) returns 219 = the RAM parent of the first walkthrough TAKE; app inventory lists mysterious envelope (zil-player-root.js, 2026-10-11 23:3x run)"
+  },
+  "supporter": {
+   "s": "S",
+   "r": "SOLO/SELF-AUDIT: SURFACEBIT 27 put envelope on counter TRUE (counter 18), look in trunk TRUE (trunk 230), 19 negatives; source exact. With openCapability. Gate 0 diffs."
   }
  },
  "TheWitness.z3.js": {

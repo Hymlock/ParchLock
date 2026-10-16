@@ -42,7 +42,11 @@ var ModuleStatFactsClaude = {
     // Wishbringer (ZIL): OPENBIT 25: OPEN sets 25 on shoppe door, metal can, toll gate, refrigerator; CLOSE clears. CONTBIT 4: OPEN tests 4 TRUE on refrigerator, little mailbox, FALSE on shoppe door. zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     "7847ff3387dc401c511f67349d2847691ba97990f28e9c9d8b1182f3d4bc0dc0": {
         // ACTORBIT 18: TRUE on poodle, Miss Voss, old woman, King Anatinus; FALSE on old bone, fountain. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
-        "attributeMap": { "container": 4, "open": 25, "isOpen": 25, "animate": 18 }
+        // SURFACEBIT 27 original scene, target-scoped (SOLO/SELF-AUDIT 2026-10-16): 'put envelope on counter' tests 27 TRUE on
+        // service counter 18 (zil-route-ops.cjs), 'look in trunk' TRUE on gnarled tree trunk 230 (pzwish); 19 negatives in the
+        // same walks. Source exact 10/10. Applied with openCapability so surfaces get no Open/Close.
+        "openCapability": { "all": ["container"], "none": ["supporter"] },
+        "attributeMap": { "container": 4, "open": 25, "isOpen": 25, "animate": 18, "supporter": 27 }
     },
     // Zork III (ZIL): OPENBIT 12: OPEN sets 12 on secret door, stone door, wooden door; CLOSE clears (wooden door). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     // WEARBIT 4 original scene (2026-10-11-zil-walk-n4.json): TAKE tests 4 TRUE on golden amulet 39, golden ring 82; FALSE on
