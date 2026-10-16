@@ -73,6 +73,10 @@
   "nested": {
    "s": "X",
    "r": "FINDING (zil-inv-check step 90): native \"The jug contains: A quantity of water\"; app omits the water because container 21 is proven but open is unknown (fail closed). Resolves with the open fact above."
+  },
+  "supporter_gap": {
+   "s": "SELF",
+   "r": "SOLO/SELF-AUDIT (operator #3542; no Codex sign-off): Codex #3539 gap closed: put lantern on bed tests SURFACEBIT 14 TRUE on fourposter bed 133 (There is no room = capacity), put lantern on post FALSE (no good surface) (pgapench2); plus lily pad 118."
   }
  },
  "Hitchhik.z5.js": {
@@ -105,6 +109,10 @@
   "nested": {
    "s": "S",
    "r": "FIXED: Ballyhoo inventoryHiddenAttribute 6 (native i tests bit6 TRUE on pink/blue dot inside the open ticket and omits them; FALSE on printed bucket/meat/whip/ticket). Source NDESCBIT 6 exact. zil-inv-check steps 30-120: dots no longer shown; helium hidden in closed balloon; bucket contents shown as native. Gate 0 diffs."
+  },
+  "supporter_gap": {
+   "s": "SELF",
+   "r": "SOLO/SELF-AUDIT (operator #3542; no Codex sign-off): Codex #3539 gap: put pole on stand tests SURFACEBIT 17 TRUE on lion stand 96 (pgapbally2); with leather sofa 20 (pzballyhoo) = 2 distinct positives; bunk109 excluded. look on stand does not test the bit in this game."
   }
  },
  "Cutthroats.z3.js": {
@@ -167,6 +175,10 @@
   "rooms": {
    "s": "O",
    "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "container_gap": {
+   "s": "SELF",
+   "r": "SOLO/SELF-AUDIT (operator #3542; no Codex sign-off): Codex #3539 gap closed: target-scoped original-scene negatives look in pickaxe 37 / look in shovel 33 test CONTBIT 20 FALSE (2026-10-11-zil-walk-pgapinfidel.json); positives retained n2."
   }
  },
  "HollywoodHijinx.z3.js": {
