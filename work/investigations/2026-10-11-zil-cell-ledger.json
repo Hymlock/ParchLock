@@ -101,6 +101,10 @@
   "wornItems": {
    "s": "UD",
    "r": "not applicable: source historicalsource/deadline@2602bd5 has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 160 = the RAM holder of every directly held app inventory object after the original-scene take \"take all\"; the game's own i names each directly held object; zil-root-check.cjs 2026-10-15"
   }
  },
  "Infidel.z3.js": {
@@ -133,6 +137,14 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 26 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 42 = the RAM holder of every directly held app inventory object after the original-scene take \"take all\"; the game's own i names each directly held object; zil-root-check.cjs 2026-10-15"
+  },
+  "nested": {
+   "s": "X",
+   "r": "FINDING: app lists luggage contents (217:dinner outfit@59, 198:exercise outfit@59, 4:nightshirt@59, 220:tourist brochure@59) that the native i omits (D148 relaxation shows children of an undecoded ZIL container; Moonmist container bit unproven). Needs the container/open facts, not a display filter."
   }
  },
  "PlunderedHearts.z3.js": {
@@ -213,6 +225,10 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 16 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 239 = the RAM holder of every directly held app inventory object after the original-scene take \"take all\"; the game's own i names each directly held object; zil-root-check.cjs 2026-10-15"
   }
  },
  "Stationfall.z3.js": {

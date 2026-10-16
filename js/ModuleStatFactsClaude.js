@@ -202,8 +202,13 @@ var ModuleStatFactsClaude = {
         "attributeMap": { "open": 28, "isOpen": 28 }
     },
     // The Witness (ZIL): OPENBIT 8 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match). CONTBIT 9 proven but held until supporter is proven (as Deadline).
+    // The Witness (ZIL): constant PLAYER object 79 (historicalsource/witness 8fe092a people.zil 73 OBJECT PLAYER
+    // IN DRIVEWAY-GATE DESC "detective"). No PLAYER global; WINNER (G112 in this binary, 19 stores G112<-79) is
+    // reassigned (SETG WINNER ,PLAYER x15 in people.zil), so playerGlobal is not used. Native i at boot lists the
+    // telegram, handcuffs, Colt and match book, all children of 79; the app previously resolved no player (2026-10-15).
     "2290bb3440ac66e14d54d41dbde575066ebdbdc42138ec899496e359bc484824": {
-        "attributeMap": { "open": 8, "isOpen": 8 }
+        "attributeMap": { "open": 8, "isOpen": 8 },
+        "playerObject": 79
     },
     // Treasures: measured SCORE and QUEST RATE agree at 0, 3 and restored43.
     // Semantic relationship only; base SCORE/PROWESS capabilities stay intact.
