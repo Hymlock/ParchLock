@@ -66,3 +66,12 @@ Guards: operator-regressions 7/0, d31-nested-inventory 60/0, attr-calibrator-inv
 - heist native tests (route ops): a background per-turn routine tests bits 3 and 14 on the bag 19 and frame 124 on every
   command, so those are not target-scoped. Target-scoped: "look in photo" tests 3 FALSE on photo 126 (negative). "look in
   grave" / "look in frame" are handled by object routines that never test 3. No clean positive yet; left open.
+
+## Sherlock (follow-up commit)
+Measured constant PC object 232 (digest fact playerObject) and a resolveInventoryRootId rule: a validated digest-pinned
+player (playerObject / playerGlobal) outranks learned and structural roots (the native-i learner had settled on the coat
+pocket 287, because the ZIL "you" object does not decode animate). Gate 309 vs the f304f60 pass: 6 differences, 0
+regression - Sherlock rooms (black bag 172 -> 221-B Baker Street 38), inv1/inv2 (empty -> the held tree), marks "coat"
+(INTENDED); Mullmurd / School marks are NOISE (three identical reruns, and School identical under HEAD ZRamProvider).
+Remaining Sherlock extras are nested (lapel, stethoscope, the closed bag's bottles/pills): no container/open facts yet
+(D148 relaxation), needs measured facts.

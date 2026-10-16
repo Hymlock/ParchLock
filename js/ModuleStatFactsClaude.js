@@ -278,6 +278,14 @@ var ModuleStatFactsClaude = {
         "attributeMap": { "open": 8, "isOpen": 8, "container": 9, "supporter": 16 },
         "playerObject": 79
     },
+    // Sherlock (Infocom, z5; no historicalsource pin): constant PC object 232 "you" (Watson). Native i lists exactly
+    // 232's children (black bag 172, whistle 173, hat 188, coat 302); G201 holds 232 and its parent follows the status-line
+    // room on travel (221-B Baker Street 38 -> KNOCK ON DOOR -> Entry Hall 111), measured 2026-10-16 (zil-route-ops). The
+    // resolver otherwise picked the parser "yourself" 168 (parent 177, offstage) and the room fell back to the black bag.
+    // Constant object, not the global, because orders to Holmes may reassign a WINNER-style global. SOLO/SELF-AUDIT.
+    "ba9c2c81d6b55eb9fc7de43a2e439fc65304231cbb834c208005cd9460f44ff0": {
+        "playerObject": 232
+    },
     // Treasures: measured SCORE and QUEST RATE agree at 0, 3 and restored43.
     // Semantic relationship only; base SCORE/PROWESS capabilities stay intact.
     "257edae1fea429656e638fa539a65c0f4e4daeb4f9669a2a5be368e6a9aca756": {

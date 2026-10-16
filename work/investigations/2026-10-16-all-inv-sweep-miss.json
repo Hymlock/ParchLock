@@ -118,13 +118,161 @@
   "checks": [
    {
     "text": "You are wearing:\n  your hat.\n  your coat.\n  a whistle.\nYour pocket contains:\n  a pound note.\nYou are holding:\n  a black bag.\n \n> ",
-    "shown": [],
-    "extra": []
+    "shown": [
+     {
+      "id": 173,
+      "name": "whistle",
+      "parent": 232
+     },
+     {
+      "id": 302,
+      "name": "coat",
+      "parent": 232
+     },
+     {
+      "id": 287,
+      "name": "pocket",
+      "parent": 302
+     },
+     {
+      "id": 150,
+      "name": "pound note",
+      "parent": 287
+     },
+     {
+      "id": 174,
+      "name": "lapel",
+      "parent": 302
+     },
+     {
+      "id": 188,
+      "name": "hat",
+      "parent": 232
+     },
+     {
+      "id": 262,
+      "name": "stethoscope",
+      "parent": 188
+     },
+     {
+      "id": 172,
+      "name": "black bag",
+      "parent": 232
+     },
+     {
+      "id": 135,
+      "name": "brown bottle",
+      "parent": 172
+     },
+     {
+      "id": 237,
+      "name": "yellow pill",
+      "parent": 135
+     },
+     {
+      "id": 204,
+      "name": "blue bottle",
+      "parent": 172
+     },
+     {
+      "id": 229,
+      "name": "orange pill",
+      "parent": 204
+     },
+     {
+      "id": 314,
+      "name": "cotton balls",
+      "parent": 204
+     }
+    ],
+    "extra": [
+     "174:lapel",
+     "262:stethoscope",
+     "135:brown bottle",
+     "237:yellow pill",
+     "204:blue bottle",
+     "229:orange pill",
+     "314:cotton balls"
+    ]
    },
    {
     "text": "You are wearing:\n  your hat.\n  your coat.\n  a whistle.\nYour pocket contains:\n  a pound note.\nYou are holding:\n  a black bag.\n \n> ",
-    "shown": [],
-    "extra": []
+    "shown": [
+     {
+      "id": 173,
+      "name": "whistle",
+      "parent": 232
+     },
+     {
+      "id": 302,
+      "name": "coat",
+      "parent": 232
+     },
+     {
+      "id": 287,
+      "name": "pocket",
+      "parent": 302
+     },
+     {
+      "id": 150,
+      "name": "pound note",
+      "parent": 287
+     },
+     {
+      "id": 174,
+      "name": "lapel",
+      "parent": 302
+     },
+     {
+      "id": 188,
+      "name": "hat",
+      "parent": 232
+     },
+     {
+      "id": 262,
+      "name": "stethoscope",
+      "parent": 188
+     },
+     {
+      "id": 172,
+      "name": "black bag",
+      "parent": 232
+     },
+     {
+      "id": 135,
+      "name": "brown bottle",
+      "parent": 172
+     },
+     {
+      "id": 237,
+      "name": "yellow pill",
+      "parent": 135
+     },
+     {
+      "id": 204,
+      "name": "blue bottle",
+      "parent": 172
+     },
+     {
+      "id": 229,
+      "name": "orange pill",
+      "parent": 204
+     },
+     {
+      "id": 314,
+      "name": "cotton balls",
+      "parent": 204
+     }
+    ],
+    "extra": [
+     "174:lapel",
+     "262:stethoscope",
+     "135:brown bottle",
+     "237:yellow pill",
+     "204:blue bottle",
+     "229:orange pill",
+     "314:cotton balls"
+    ]
    }
   ]
  },
@@ -269,6 +417,238 @@
     "text": "You are carrying:\n  a mighty sword\n \nThe dragon emits a terrifying roar.\n \n> ",
     "shown": [],
     "extra": []
+   }
+  ]
+ },
+ "TheWitness.z3.js": {
+  "checks": [
+   {
+    "text": "You are carrying:\n  a telegram\n  a pair of handcuffs\n  a snub-nosed Colt\n  a match book\n \nWhat next?\n> ",
+    "shown": [
+     {
+      "id": 54,
+      "name": "telegram",
+      "parent": 79
+     },
+     {
+      "id": 51,
+      "name": "pair of handcuffs",
+      "parent": 79
+     },
+     {
+      "id": 52,
+      "name": "snub-nosed Colt",
+      "parent": 79
+     },
+     {
+      "id": 53,
+      "name": "match book",
+      "parent": 79
+     }
+    ],
+    "extra": []
+   },
+   {
+    "text": "You are carrying:\n  a telegram\n  a pair of handcuffs\n  a snub-nosed Colt\n  a match book\n \nWhat next?\n> ",
+    "shown": [
+     {
+      "id": 54,
+      "name": "telegram",
+      "parent": 79
+     },
+     {
+      "id": 51,
+      "name": "pair of handcuffs",
+      "parent": 79
+     },
+     {
+      "id": 52,
+      "name": "snub-nosed Colt",
+      "parent": 79
+     },
+     {
+      "id": 53,
+      "name": "match book",
+      "parent": 79
+     }
+    ],
+    "extra": []
+   }
+  ]
+ },
+ "Hitchhik.z5.js": {
+  "checks": [
+   {
+    "text": "You have:\n  a splitting headache\n  no tea\n \n> ",
+    "shown": [],
+    "extra": []
+   },
+   {
+    "text": "You have:\n  a splitting headache\n  no tea\n \n> ",
+    "shown": [],
+    "extra": []
+   }
+  ]
+ },
+ "LeatherGoddessesofPhobos.z3.js": {
+  "checks": [
+   {
+    "text": " \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nThe place: Upper Sandusky, Ohio. The time: 1936. The beer: at a nickel a mug, you don't ask for brand names. All you know is that your fifth one tasted as bad as the first.\n \nLEATHER GODDESSES OF PHOBOS\nInfocom interactive fiction -- a racy space-age spoof\nCopyright (c) 1986 by Infocom, Inc. All rights reserved.\nLEATHER GODDESSES OF PHOBOS is a trademark of Infocom, Inc.\nRelease 59 / Serial number 860730\n \nJoe's Bar\n   An undistinguished bar, yet the social center of Upper Sandusky. The front door is almost lost amidst the hazy maze of neon that shrouds the grimy glass of the south wall. Doors marked \"Ladies\" and \"Gents\" lead, respectively, northeast and northwest.\n   You feel an urge.\n \n> ",
+    "shown": [
+     {
+      "id": 110,
+      "name": "flashlight",
+      "parent": 200
+     },
+     {
+      "id": 131,
+      "name": "rules",
+      "parent": 200
+     },
+     {
+      "id": 134,
+      "name": "bikini",
+      "parent": 200
+     }
+    ],
+    "extra": [
+     "110:flashlight",
+     "131:rules",
+     "134:bikini"
+    ]
+   },
+   {
+    "text": "You have a flashlight, a comic book (stuck in your back pocket) and your overalls (being worn). It's not clear why you've carried a flashlight into Joe's Bar, except that the lighting in the bathrooms isn't too reliable.\n   You trace the urge to the region of your bladder.\n \n> ",
+    "shown": [
+     {
+      "id": 110,
+      "name": "flashlight",
+      "parent": 200
+     },
+     {
+      "id": 131,
+      "name": "book",
+      "parent": 200
+     },
+     {
+      "id": 134,
+      "name": "overalls",
+      "parent": 200
+     }
+    ],
+    "extra": []
+   }
+  ]
+ },
+ "Sorcerer.z3.js": {
+  "checks": [
+   {
+    "text": "You are empty-handed.\n \nThe hellhound reaches you and tears you apart with its powerful teeth.\n \n...and a moment later you wake up in a cold sweat and realize you've been dreaming.\n \nSORCERER\nInfocom interactive fiction - a fantasy story\nCopyright (c) 1984 by Infocom, Inc. All rights reserved.\nSORCERER is a trademark of Infocom, Inc.\nRelease 15 / Serial number 851108\n \nYour frotz spell seems to have worn off during the night, and it is now pitch black.\n \n> ",
+    "shown": [
+     {
+      "id": 139,
+      "name": "spell book",
+      "parent": 223
+     },
+     {
+      "id": 214,
+      "name": "gnusto spell",
+      "parent": 139
+     },
+     {
+      "id": 27,
+      "name": "vezza spell",
+      "parent": 139
+     },
+     {
+      "id": 162,
+      "name": "pulver spell",
+      "parent": 139
+     },
+     {
+      "id": 140,
+      "name": "izyuk spell",
+      "parent": 139
+     },
+     {
+      "id": 183,
+      "name": "yomin spell",
+      "parent": 139
+     },
+     {
+      "id": 22,
+      "name": "rezrov spell",
+      "parent": 139
+     },
+     {
+      "id": 147,
+      "name": "frotz spell",
+      "parent": 139
+     }
+    ],
+    "extra": [
+     "139:spell book",
+     "214:gnusto spell",
+     "27:vezza spell",
+     "162:pulver spell",
+     "140:izyuk spell",
+     "183:yomin spell",
+     "22:rezrov spell"
+    ]
+   },
+   {
+    "text": "You are carrying:\n  a spell book\n \n> ",
+    "shown": [
+     {
+      "id": 139,
+      "name": "spell book",
+      "parent": 223
+     },
+     {
+      "id": 214,
+      "name": "gnusto spell",
+      "parent": 139
+     },
+     {
+      "id": 27,
+      "name": "vezza spell",
+      "parent": 139
+     },
+     {
+      "id": 162,
+      "name": "pulver spell",
+      "parent": 139
+     },
+     {
+      "id": 140,
+      "name": "izyuk spell",
+      "parent": 139
+     },
+     {
+      "id": 183,
+      "name": "yomin spell",
+      "parent": 139
+     },
+     {
+      "id": 22,
+      "name": "rezrov spell",
+      "parent": 139
+     },
+     {
+      "id": 147,
+      "name": "frotz spell",
+      "parent": 139
+     }
+    ],
+    "extra": [
+     "214:gnusto spell",
+     "27:vezza spell",
+     "162:pulver spell",
+     "140:izyuk spell",
+     "183:yomin spell",
+     "22:rezrov spell",
+     "147:frotz spell"
+    ]
    }
   ]
  }

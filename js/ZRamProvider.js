@@ -25,6 +25,12 @@ var ZRamProvider = {
     //      set of children -- real RAM structure, never a name/text guess.
     //   4. Otherwise the original playerId (honest: nothing better found).
     resolveInventoryRootId: function (mem, playerId, discovered, roomId) {
+        // A digest-pinned, validated player (playerObject / playerGlobal fact) is executable-owned evidence and outranks
+        // every learned or structural guess: Sherlock's learner otherwise settled on the coat pocket.
+        try {
+            var lf = ZRamReader.executableLayoutFacts && ZRamReader.executableLayoutFacts(mem);
+            if (playerId && lf && (Number.isInteger(lf.playerObject) || Number.isInteger(lf.playerGlobal))) return playerId;
+        } catch (eFact) {}
         try {
             if (typeof AttrCalibrator !== "undefined" && AttrCalibrator.confirmedInventoryRootId) {
                 var confirmed = AttrCalibrator.confirmedInventoryRootId(mem);
