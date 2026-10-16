@@ -205,7 +205,8 @@ var ModuleStatFactsClaude = {
         "attributeMap": { "wearable": 22 }
     },
     // Moonmist (ZIL): WEARBIT 29 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).
-    // OPENBIT 14 proven by native verb dispatch (OPEN sets 14 on the luggage). CONTBIT 27 / SURFACEBIT 23 from the original scene
+    // OPENBIT 14 original scene (pzmoonmist6): "open luggage" sets 14, "open gate" finds it set on the front gate and
+    // "close gate" clears it; source-exact 57/57. CONTBIT 27 / SURFACEBIT 23 from the original scene
     // (2026-10-11-zil-walk-pzmoonmist5.json, target-scoped probes: chest of drawers, sports car, wardrobe / wing chair, bed, night
     // table, bench) and source-exact. Together, so surfaces get no Open/Close. Closes the luggage-contents leak (ledger FINDING).
     "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0": {

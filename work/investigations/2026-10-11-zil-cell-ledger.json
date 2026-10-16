@@ -153,6 +153,10 @@
   "playerRoot": {
    "s": "S",
    "r": "existing ZRamReader.resolvePlayer (no fact) returns 52 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"GET PIECE OF PAPER AND BUSINESS CARD\"; the game's own i names each (business card, yellowed piece of paper, flashlight, photo of uncle buddy, aunt hildegarde's letter); zil-root-check.cjs 2026-10-15"
+  },
+  "container": {
+   "s": "O",
+   "r": "CONTBIT 4 original scene target-scoped MEETS 2+1 (pond, compartment, cannon, mailbox; neg orchids, bazooka, statue, doors; pzhollywood2/3). NOT applied: OPENBIT 25 only 1+3 (mailbox) - every other openable is indoors; front door \"can't unlock it from this side\", patio door locked; this release desyncs from the Jericho walkthrough at OPEN DOOR. SURFACEBIT 27 native-proven exact."
   }
  },
  "LeatherGoddessesofPhobos.z3.js": {
@@ -192,7 +196,7 @@
   },
   "open": {
    "s": "S",
-   "r": " Moonmist fact (ModuleStatFactsClaude bcf65075): OPENBIT 14 native verb dispatch (OPEN sets 14 on luggage); source exact 57/57. In-game open/close mostly refused (\"won't help solve this case\")"
+   "r": " Moonmist fact (ModuleStatFactsClaude bcf65075): OPENBIT 14 original scene target-scoped (pzmoonmist6): open luggage sets 14 (59), open gate finds it set on front gate (52), close gate clears it; source exact 57/57. (Native dispatch is controlled insertion and is NOT cited.)"
   }
  },
  "PlunderedHearts.z3.js": {
