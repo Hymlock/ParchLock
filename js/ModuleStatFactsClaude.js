@@ -112,7 +112,10 @@ var ModuleStatFactsClaude = {
         // ('put key on desk'), FALSE on tapestry ("no good surface") (pzsorcerer3). The spell book has 27+15, so its spells stay
         // listed (D148 intent). With openCapability.
         "openCapability": { "all": ["container"], "none": ["supporter"] },
-        "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17 },
+        // ACTORBIT 31 original scene, target-scoped (SOLO/SELF-AUDIT 2026-10-16, 2026-10-16-zil-inv-hidden-ops.json):
+        // 'GNOME, HELLO' tests 31 TRUE on gnome 245, 'TWIN, HELLO' TRUE on your older self 26, 'BOOK, HELLO' FALSE on spell
+        // book 139 ("You can't talk to a spell book!"). Source exact 9/9.
+        "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31 },
         "playerGlobal": 38
     },
     // Wumpus 2000 (wump2ka): measured location roles (Codex GO #3103;

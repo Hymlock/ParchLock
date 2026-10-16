@@ -365,6 +365,10 @@
   "supporter": {
    "s": "S",
    "r": "Sorcerer fact (ModuleStatFactsClaude 3bf24a3d): original scene, target-scoped, source exact. SURFACEBIT 17 pzsorcerer3: look on bed, put key on desk TRUE; tapestry FALSE (no good surface). With openCapability."
+  },
+  "animate": {
+   "s": "S",
+   "r": "SOLO/SELF-AUDIT: ACTORBIT 31 gnome 245 / older self 26 TRUE when addressed, spell book 139 FALSE; source exact 9/9. Gate 0 diffs."
   }
  },
  "Spellbreaker.z3.js": {
