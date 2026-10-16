@@ -1,0 +1,275 @@
+{
+ "beneath.z5.js": {
+  "checks": [
+   {
+    "text": "You are carrying:\n  a small paper bag (which is closed)\n  a book (which is closed)\n \n> ",
+    "shown": [
+     {
+      "id": 173,
+      "name": "small paper bag",
+      "parent": 20
+     },
+     {
+      "id": 179,
+      "name": "front of",
+      "parent": 20
+     }
+    ],
+    "extra": [
+     "179:front of"
+    ]
+   },
+   {
+    "text": "You are carrying:\n  a small paper bag (which is closed)\n  a book (which is closed)\n \n> ",
+    "shown": [
+     {
+      "id": 173,
+      "name": "small paper bag",
+      "parent": 20
+     },
+     {
+      "id": 179,
+      "name": "front of",
+      "parent": 20
+     }
+    ],
+    "extra": [
+     "179:front of"
+    ]
+   }
+  ]
+ },
+ "Debate.z5.js": {
+  "checks": [
+   {
+    "text": "You are carrying:\n  a debate file\n \n> ",
+    "shown": [
+     {
+      "id": 44,
+      "name": "evidence",
+      "parent": 43
+     }
+    ],
+    "extra": [
+     "44:evidence"
+    ]
+   },
+   {
+    "text": "You are carrying:\n  a spilled gatorade bottle\n  a debate file\n \n> ",
+    "shown": [
+     {
+      "id": 47,
+      "name": "gatorade bottle",
+      "parent": 43
+     },
+     {
+      "id": 44,
+      "name": "evidence",
+      "parent": 43
+     }
+    ],
+    "extra": [
+     "44:evidence"
+    ]
+   }
+  ]
+ },
+ "heist.z8.js": {
+  "checks": [
+   {
+    "text": "You are carrying:\n  a black canvas bag (which is open)\n    a silver picture frame\n      a student's photo\n \nThe priest pauses for a moment before continuing with his speech.\n \n\"There are those of us who are misguided in life, those who seek to inflict pain on others in order to further their own desires. Henry Lambert was one such person.\"\n \n> ",
+    "shown": [
+     {
+      "id": 19,
+      "name": "black canvas bag",
+      "parent": 15
+     }
+    ],
+    "extra": []
+   },
+   {
+    "text": "You are carrying:\n  a black canvas bag (which is open)\n    a silver picture frame\n      a student's photo\n \nYou can sense a feeling of pity in the priest's eyes as he looks straight at you, as if he is fully aware of the pain you have suffered over the past few years.\n \n\"Ashes to ashes, dust to dust. Earth to earth.\"\n \n> ",
+    "shown": [
+     {
+      "id": 19,
+      "name": "black canvas bag",
+      "parent": 15
+     }
+    ],
+    "extra": []
+   }
+  ]
+ },
+ "largemac.z5.js": {
+  "checks": [
+   {
+    "text": "You are carrying:\n  a lab coat (being worn)\n    a peach\n    a plum\n \n[But forget about the yolk.]\n \n> ",
+    "shown": [],
+    "extra": []
+   },
+   {
+    "text": "You are carrying:\n  a lab coat (being worn)\n    a peach\n    a plum\n \n> ",
+    "shown": [],
+    "extra": []
+   }
+  ]
+ },
+ "Sherlock.z5.js": {
+  "checks": [
+   {
+    "text": "You are wearing:\n  your hat.\n  your coat.\n  a whistle.\nYour pocket contains:\n  a pound note.\nYou are holding:\n  a black bag.\n \n> ",
+    "shown": [],
+    "extra": []
+   },
+   {
+    "text": "You are wearing:\n  your hat.\n  your coat.\n  a whistle.\nYour pocket contains:\n  a pound note.\nYou are holding:\n  a black bag.\n \n> ",
+    "shown": [],
+    "extra": []
+   }
+  ]
+ },
+ "Suspect.z3.js": {
+  "checks": [
+   {
+    "text": "You are carrying:\n  a costume receipt\n  a western mask (being worn)\n  a notebook\n  a pen\n  a gunbelt (being worn)\n \nThe sheik, seeing your reluctance to join them, shrugs his shoulders and rejoins the conversation, a proprietary hand on the fairy's shoulder.\n \n> ",
+    "shown": [
+     {
+      "id": 97,
+      "name": "western outfit",
+      "parent": 99
+     },
+     {
+      "id": 12,
+      "name": "costume receipt",
+      "parent": 99
+     },
+     {
+      "id": 38,
+      "name": "western mask",
+      "parent": 99
+     },
+     {
+      "id": 94,
+      "name": "notebook",
+      "parent": 99
+     },
+     {
+      "id": 95,
+      "name": "pen",
+      "parent": 99
+     },
+     {
+      "id": 96,
+      "name": "gunbelt",
+      "parent": 99
+     }
+    ],
+    "extra": [
+     "97:western outfit"
+    ]
+   },
+   {
+    "text": "You are carrying:\n  a costume receipt\n  a western mask (being worn)\n  a notebook\n  a pen\n  a gunbelt (being worn)\nThe fairy queen is now near the south entrance.\n \n> ",
+    "shown": [
+     {
+      "id": 97,
+      "name": "western outfit",
+      "parent": 99
+     },
+     {
+      "id": 12,
+      "name": "costume receipt",
+      "parent": 99
+     },
+     {
+      "id": 38,
+      "name": "western mask",
+      "parent": 99
+     },
+     {
+      "id": 94,
+      "name": "notebook",
+      "parent": 99
+     },
+     {
+      "id": 95,
+      "name": "pen",
+      "parent": 99
+     },
+     {
+      "id": 96,
+      "name": "gunbelt",
+      "parent": 99
+     }
+    ],
+    "extra": [
+     "97:western outfit"
+    ]
+   }
+  ]
+ },
+ "phlegm.z5.js": {
+  "checks": [
+   {
+    "text": "You are carrying:\n  a blue overcoat (being worn)\n    Leo (dozing away)\n  a treasure map\n \n> ",
+    "shown": [
+     {
+      "id": 39,
+      "name": "blue overcoat",
+      "parent": 20
+     },
+     {
+      "id": 38,
+      "name": "treasure map",
+      "parent": 20
+     }
+    ],
+    "extra": []
+   },
+   {
+    "text": "You are carrying:\n  a blue overcoat (being worn)\n    Leo (dozing away)\n  a treasure map\n \n> ",
+    "shown": [
+     {
+      "id": 39,
+      "name": "blue overcoat",
+      "parent": 20
+     },
+     {
+      "id": 38,
+      "name": "treasure map",
+      "parent": 20
+     }
+    ],
+    "extra": []
+   }
+  ]
+ },
+ "RobinAndOrchid.gblorb.js": {
+  "checks": [
+   {
+    "text": "You are carrying:\n  Casey's notes\n  a Polaroid camera (being worn)\n \nOrchid notices your notebook. \"What's all that?\" she asks.\n \n\"Oh, Casey gave it to me. It's just some notes about things in the church.\"\n \n\"Is there anything about me in there?\"\n \n\"I don't think so,\" you lie, and Orchid loses interest.\n \n> ",
+    "shown": [],
+    "extra": []
+   },
+   {
+    "text": "You are carrying:\n  Casey's notes\n  a Polaroid camera (being worn)\n \n\"Oh, and,\" Orchid adds, \"don't turn the lights on while you're looking around unless you have to. Some ghosts won't appear unless it's dark, and we've only got tonight to gather all our evidence.\"\n \n> ",
+    "shown": [],
+    "extra": []
+   }
+  ]
+ },
+ "Grooverland.gblorb.js": {
+  "checks": [
+   {
+    "text": "You are carrying:\n  a mighty sword\n \nThe dragon pushes closer, biting at the air by your head.\n \n> ",
+    "shown": [],
+    "extra": []
+   },
+   {
+    "text": "You are carrying:\n  a mighty sword\n \nThe dragon emits a terrifying roar.\n \n> ",
+    "shown": [],
+    "extra": []
+   }
+  ]
+ }
+}

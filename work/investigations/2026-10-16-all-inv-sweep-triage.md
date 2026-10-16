@@ -38,3 +38,16 @@ closes an open message before each command, as a player would. Not a product def
 - Noise (flip in HEAD-vs-HEAD reruns): Biscuit inv1/inv2, cycles rooms/inv2.
 Guards: operator-regressions 7/0, d31-nested-inventory 60/0, attr-calibrator-inventory-root 13/0, phase2-heuristic-cutover
 147/2 (the same 2 pre-existing FAILs as HEAD, unrelated Open/Use checks).
+
+## Missing native rows (post-f304f60 recheck, 2026-10-16-all-inv-sweep-miss.json)
+- Sherlock (Infocom z5, no source pin): real holder is object 232 "you" (holds black bag, whistle); the resolver picks
+  168 "yourself"; payload room resolves to 172 (the black bag's id) - room detection is broken too. Needs a measured
+  playerObject + room fact; deeper investigation, not guessed.
+- heist: open canvas bag contents (picture frame, photo) not walked. No attribute-name table; the bag carries bits
+  3/12/14/15 and native "look in bag" tests 3 and 14 TRUE on bag and frame (both containers), so this library numbering
+  likely differs from the I6 default (container 4). D73 AttrCalibrator learns the container bit from play; verify on a
+  live session (learners were blocked headless by the open Message) before any fact.
+- Debate: the held object named "evidence" prints as "a debate file" (short_name routine) - descriptor/label column.
+- beneath: the closed book shows as "front of" - label column.
+- phlegm: held animate "Leo (dozing away)" not shown - check D57 animate rules before changing.
+- largemac: harness timeout before input; RobinAndOrchid, Grooverland: Glulx (D38 parked).
