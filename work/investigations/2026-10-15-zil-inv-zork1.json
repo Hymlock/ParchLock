@@ -1,0 +1,1112 @@
+{
+ "Zork1-TheGreatUndergroundEmpire.z3.js": {
+  "ts": "2026-10-16T02:23:03.534Z",
+  "checks": [
+   {
+    "step": 30,
+    "text": "You are carrying:\n  A sword\n  A nasty knife\n  A rope\n  A brass lantern (providing light)\n  A clove of garlic\n \n> ",
+    "items": [
+     {
+      "text": "A sword",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A nasty knife",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A rope",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A brass lantern (providing light)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A clove of garlic",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 110,
+      "name": "sword",
+      "parent": 4
+     },
+     {
+      "id": 169,
+      "name": "nasty knife",
+      "parent": 4
+     },
+     {
+      "id": 129,
+      "name": "rope",
+      "parent": 4
+     },
+     {
+      "id": 164,
+      "name": "brass lantern",
+      "parent": 4
+     },
+     {
+      "id": 189,
+      "name": "clove of garlic",
+      "parent": 4
+     }
+    ]
+   },
+   {
+    "step": 60,
+    "text": "You are carrying:\n  A brass lantern\n  A torch (providing light)\n \n> ",
+    "items": [
+     {
+      "text": "A brass lantern",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A torch (providing light)",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 164,
+      "name": "brass lantern",
+      "parent": 4
+     },
+     {
+      "id": 104,
+      "name": "torch",
+      "parent": 4
+     }
+    ]
+   },
+   {
+    "step": 90,
+    "text": "You are carrying:\n  A painting\n  A pair of candles\n  A brass bell\n  A black book\n  A brass lantern\n  A torch (providing light)\n \n> ",
+    "items": [
+     {
+      "text": "A painting",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A pair of candles",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A brass bell",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A black book",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A brass lantern",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A torch (providing light)",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 149,
+      "name": "painting",
+      "parent": 4
+     },
+     {
+      "id": 147,
+      "name": "pair of candles",
+      "parent": 4
+     },
+     {
+      "id": 221,
+      "name": "brass bell",
+      "parent": 4
+     },
+     {
+      "id": 211,
+      "name": "black book",
+      "parent": 4
+     },
+     {
+      "id": 164,
+      "name": "brass lantern",
+      "parent": 4
+     },
+     {
+      "id": 104,
+      "name": "torch",
+      "parent": 4
+     }
+    ]
+   },
+   {
+    "step": 120,
+    "text": "You are carrying:\n  A crystal skull\n  A platinum bar\n  A brass lantern\n  A torch (providing light)\n \n> ",
+    "items": [
+     {
+      "text": "A crystal skull",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A platinum bar",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A brass lantern",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A torch (providing light)",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 231,
+      "name": "crystal skull",
+      "parent": 4
+     },
+     {
+      "id": 139,
+      "name": "platinum bar",
+      "parent": 4
+     },
+     {
+      "id": 164,
+      "name": "brass lantern",
+      "parent": 4
+     },
+     {
+      "id": 104,
+      "name": "torch",
+      "parent": 4
+     }
+    ]
+   },
+   {
+    "step": 180,
+    "text": "You are carrying:\n  A brass lantern\n  A torch (providing light)\n \n> ",
+    "items": [
+     {
+      "text": "A brass lantern",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A torch (providing light)",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 164,
+      "name": "brass lantern",
+      "parent": 4
+     },
+     {
+      "id": 104,
+      "name": "torch",
+      "parent": 4
+     }
+    ]
+   }
+  ],
+  "cls": {
+   "descriptorExact": 19,
+   "descriptorShortened": [],
+   "missing": [],
+   "extra": [],
+   "unmarked": []
+  }
+ },
+ "Zork2-TheWizardofFrobozz.z3.js": {
+  "ts": "2026-10-16T02:24:56.561Z",
+  "checks": [
+   {
+    "step": 30,
+    "text": "You are carrying:\n  A rusty iron key\n  A newspaper\n  A matchbook\n  A china teapot\n  The china teapot contains:\n    A quantity of water\n  A sword\n  A lamp (providing light)\n \n> ",
+    "items": [
+     {
+      "text": "A rusty iron key",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A newspaper",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A matchbook",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A china teapot",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "The china teapot contains:",
+      "indent": 2,
+      "marked": false
+     },
+     {
+      "text": "A quantity of water",
+      "indent": 4,
+      "marked": true
+     },
+     {
+      "text": "A sword",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A lamp (providing light)",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 36,
+      "name": "rusty iron key",
+      "parent": 4
+     },
+     {
+      "id": 34,
+      "name": "newspaper",
+      "parent": 4
+     },
+     {
+      "id": 105,
+      "name": "matchbook",
+      "parent": 4
+     },
+     {
+      "id": 32,
+      "name": "china teapot",
+      "parent": 4
+     },
+     {
+      "id": 31,
+      "name": "quantity of water",
+      "parent": 32
+     },
+     {
+      "id": 23,
+      "name": "sword",
+      "parent": 4
+     },
+     {
+      "id": 76,
+      "name": "lamp",
+      "parent": 4
+     }
+    ]
+   },
+   {
+    "step": 60,
+    "text": "You are carrying:\n  A golden dragon statuette\n  A blue crystal sphere\n  A newspaper\n  A matchbook\n  A china teapot\n  The china teapot contains:\n    A quantity of water\n  A lamp (providing light)\n \n> ",
+    "items": [
+     {
+      "text": "A golden dragon statuette",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A blue crystal sphere",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A newspaper",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A matchbook",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A china teapot",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "The china teapot contains:",
+      "indent": 2,
+      "marked": false
+     },
+     {
+      "text": "A quantity of water",
+      "indent": 4,
+      "marked": true
+     },
+     {
+      "text": "A lamp (providing light)",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 208,
+      "name": "golden dragon statuette",
+      "parent": 4
+     },
+     {
+      "id": 35,
+      "name": "blue crystal sphere",
+      "parent": 4
+     },
+     {
+      "id": 34,
+      "name": "newspaper",
+      "parent": 4
+     },
+     {
+      "id": 105,
+      "name": "matchbook",
+      "parent": 4
+     },
+     {
+      "id": 32,
+      "name": "china teapot",
+      "parent": 4
+     },
+     {
+      "id": 31,
+      "name": "quantity of water",
+      "parent": 32
+     },
+     {
+      "id": 76,
+      "name": "lamp",
+      "parent": 4
+     }
+    ]
+   },
+   {
+    "step": 90,
+    "text": "You are carrying:\n  A cake frosted with blue letters\n  A cake frosted with red letters\n  A delicate gold key\n  A perfect rose\n  A blue crystal sphere\n  A matchbook\n  A lamp (providing light)\n \n> ",
+    "items": [
+     {
+      "text": "A cake frosted with blue letters",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A cake frosted with red letters",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A delicate gold key",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A perfect rose",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A blue crystal sphere",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A matchbook",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A lamp (providing light)",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 70,
+      "name": "cake frosted with blue letters",
+      "parent": 4
+     },
+     {
+      "id": 68,
+      "name": "cake frosted with red letters",
+      "parent": 4
+     },
+     {
+      "id": 29,
+      "name": "delicate gold key",
+      "parent": 4
+     },
+     {
+      "id": 27,
+      "name": "perfect rose",
+      "parent": 4
+     },
+     {
+      "id": 35,
+      "name": "blue crystal sphere",
+      "parent": 4
+     },
+     {
+      "id": 105,
+      "name": "matchbook",
+      "parent": 4
+     },
+     {
+      "id": 76,
+      "name": "lamp",
+      "parent": 4
+     }
+    ]
+   },
+   {
+    "step": 120,
+    "text": "You are carrying:\n  A red crystal sphere\n  A package of candy\n  A delicate gold key\n  A perfect rose\n  A blue crystal sphere\n  A matchbook\n  A lamp (providing light)\n \n> ",
+    "items": [
+     {
+      "text": "A red crystal sphere",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A package of candy",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A delicate gold key",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A perfect rose",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A blue crystal sphere",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A matchbook",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A lamp (providing light)",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 85,
+      "name": "red crystal sphere",
+      "parent": 4
+     },
+     {
+      "id": 55,
+      "name": "package of candy",
+      "parent": 4
+     },
+     {
+      "id": 29,
+      "name": "delicate gold key",
+      "parent": 4
+     },
+     {
+      "id": 27,
+      "name": "perfect rose",
+      "parent": 4
+     },
+     {
+      "id": 35,
+      "name": "blue crystal sphere",
+      "parent": 4
+     },
+     {
+      "id": 105,
+      "name": "matchbook",
+      "parent": 4
+     },
+     {
+      "id": 76,
+      "name": "lamp",
+      "parent": 4
+     }
+    ]
+   },
+   {
+    "step": 180,
+    "text": "You are carrying:\n  A red crystal sphere\n  A package of candy\n  A delicate gold key\n  A perfect rose\n  A blue crystal sphere\n  A matchbook\n  A lamp (providing light)\nThe lamp appears a bit dimmer.\n \n> ",
+    "items": [
+     {
+      "text": "A red crystal sphere",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A package of candy",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A delicate gold key",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A perfect rose",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A blue crystal sphere",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A matchbook",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A lamp (providing light)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "The lamp appears a bit dimmer.",
+      "indent": 0,
+      "marked": false
+     }
+    ],
+    "shown": [
+     {
+      "id": 85,
+      "name": "red crystal sphere",
+      "parent": 4
+     },
+     {
+      "id": 55,
+      "name": "package of candy",
+      "parent": 4
+     },
+     {
+      "id": 29,
+      "name": "delicate gold key",
+      "parent": 4
+     },
+     {
+      "id": 27,
+      "name": "perfect rose",
+      "parent": 4
+     },
+     {
+      "id": 35,
+      "name": "blue crystal sphere",
+      "parent": 4
+     },
+     {
+      "id": 105,
+      "name": "matchbook",
+      "parent": 4
+     },
+     {
+      "id": 76,
+      "name": "lamp",
+      "parent": 4
+     }
+    ]
+   }
+  ],
+  "cls": {
+   "descriptorExact": 35,
+   "descriptorShortened": [
+    "30:china teapot contains <- china teapot",
+    "60:china teapot contains <- china teapot",
+    "180:lamp appears a bit dimmer <- lamp"
+   ],
+   "missing": [],
+   "extra": [],
+   "unmarked": [
+    "30:china teapot contains",
+    "60:china teapot contains",
+    "180:lamp appears a bit dimmer"
+   ]
+  }
+ },
+ "Zork3-TheDungeonMaster.z3.js": {
+  "ts": "2026-10-16T02:26:46.814Z",
+  "checks": [
+   {
+    "step": 30,
+    "text": "You are carrying:\n  A torch\n  A golden amulet (being worn)\n \n> ",
+    "items": [
+     {
+      "text": "A torch",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A golden amulet (being worn)",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 41,
+      "name": "torch",
+      "parent": 202
+     },
+     {
+      "id": 39,
+      "name": "golden amulet",
+      "parent": 202
+     }
+    ]
+   },
+   {
+    "step": 60,
+    "text": "You are empty handed.\n \n> ",
+    "items": [],
+    "shown": []
+   }
+  ],
+  "err": "locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.Input.LineInput')\u001b[22m\n"
+ },
+ "Enchanter.z3.js": {
+  "ts": "2026-10-16T02:28:15.274Z",
+  "checks": [
+   {
+    "step": 30,
+    "text": "You are carrying:\n  A beautiful, ornamented egg\n  A battered lantern (providing light)\n  A jug\n  The jug contains:\n    A quantity of water\n  A loaf of bread\n  A spell book\n \n> ",
+    "items": [
+     {
+      "text": "A beautiful, ornamented egg",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A battered lantern (providing light)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A jug",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "The jug contains:",
+      "indent": 2,
+      "marked": false
+     },
+     {
+      "text": "A quantity of water",
+      "indent": 4,
+      "marked": false
+     },
+     {
+      "text": "A loaf of bread",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A spell book",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 112,
+      "name": "beautiful, ornamented egg",
+      "parent": 55
+     },
+     {
+      "id": 94,
+      "name": "battered lantern",
+      "parent": 55
+     },
+     {
+      "id": 19,
+      "name": "jug",
+      "parent": 55
+     },
+     {
+      "id": 41,
+      "name": "loaf of bread",
+      "parent": 55
+     },
+     {
+      "id": 144,
+      "name": "spell book",
+      "parent": 55
+     }
+    ]
+   },
+   {
+    "step": 60,
+    "text": "You are carrying:\n  A beautiful, ornamented egg\n  A battered lantern (providing light)\n  A jug\n  The jug contains:\n    A quantity of water\n  A loaf of bread\n  A spell book\nThe sounds of frogs and other swamp dwellers fill the air. The frogs are discussing the politics of lily pad assignment.\n \n> ",
+    "items": [
+     {
+      "text": "A beautiful, ornamented egg",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A battered lantern (providing light)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A jug",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "The jug contains:",
+      "indent": 2,
+      "marked": false
+     },
+     {
+      "text": "A quantity of water",
+      "indent": 4,
+      "marked": false
+     },
+     {
+      "text": "A loaf of bread",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A spell book",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "The sounds of frogs and other swamp dwellers fill the air. The frogs are discussing the politics of lily pad assignment.",
+      "indent": 0,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 112,
+      "name": "beautiful, ornamented egg",
+      "parent": 55
+     },
+     {
+      "id": 94,
+      "name": "battered lantern",
+      "parent": 55
+     },
+     {
+      "id": 19,
+      "name": "jug",
+      "parent": 55
+     },
+     {
+      "id": 41,
+      "name": "loaf of bread",
+      "parent": 55
+     },
+     {
+      "id": 144,
+      "name": "spell book",
+      "parent": 55
+     }
+    ]
+   },
+   {
+    "step": 90,
+    "text": "You are carrying:\n  A gold leaf scroll\n  A beautiful, ornamented egg\n  A battered lantern (providing light)\n  A jug\n  The jug contains:\n    A quantity of water\n  A partially eaten loaf of bread\n  A spell book\n \n> ",
+    "items": [
+     {
+      "text": "A gold leaf scroll",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A beautiful, ornamented egg",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A battered lantern (providing light)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A jug",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "The jug contains:",
+      "indent": 2,
+      "marked": false
+     },
+     {
+      "text": "A quantity of water",
+      "indent": 4,
+      "marked": false
+     },
+     {
+      "text": "A partially eaten loaf of bread",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A spell book",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 134,
+      "name": "gold leaf scroll",
+      "parent": 55
+     },
+     {
+      "id": 112,
+      "name": "beautiful, ornamented egg",
+      "parent": 55
+     },
+     {
+      "id": 94,
+      "name": "battered lantern",
+      "parent": 55
+     },
+     {
+      "id": 19,
+      "name": "jug",
+      "parent": 55
+     },
+     {
+      "id": 41,
+      "name": "loaf of bread",
+      "parent": 55
+     },
+     {
+      "id": 144,
+      "name": "spell book",
+      "parent": 55
+     }
+    ]
+   },
+   {
+    "step": 120,
+    "text": "You are carrying:\n  A beautiful, ornamented egg\n  A battered lantern (providing light)\n  A jug\n  The jug contains:\n    A small quantity of water\n  A partially eaten loaf of bread\n  A spell book\n \n> ",
+    "items": [
+     {
+      "text": "A beautiful, ornamented egg",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A battered lantern (providing light)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A jug",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "The jug contains:",
+      "indent": 2,
+      "marked": false
+     },
+     {
+      "text": "A small quantity of water",
+      "indent": 4,
+      "marked": false
+     },
+     {
+      "text": "A partially eaten loaf of bread",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A spell book",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 112,
+      "name": "beautiful, ornamented egg",
+      "parent": 55
+     },
+     {
+      "id": 94,
+      "name": "battered lantern",
+      "parent": 55
+     },
+     {
+      "id": 19,
+      "name": "jug",
+      "parent": 55
+     },
+     {
+      "id": 41,
+      "name": "loaf of bread",
+      "parent": 55
+     },
+     {
+      "id": 144,
+      "name": "spell book",
+      "parent": 55
+     }
+    ]
+   },
+   {
+    "step": 180,
+    "text": "You are carrying:\n  A brittle scroll\n  A beautiful, ornamented egg\n  A battered lantern (providing light)\n  A jug\n  The jug contains:\n    A small quantity of water\n  A partially eaten loaf of bread\n  A spell book\n \n> ",
+    "items": [
+     {
+      "text": "A brittle scroll",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A beautiful, ornamented egg",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A battered lantern (providing light)",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A jug",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "The jug contains:",
+      "indent": 2,
+      "marked": false
+     },
+     {
+      "text": "A small quantity of water",
+      "indent": 4,
+      "marked": false
+     },
+     {
+      "text": "A partially eaten loaf of bread",
+      "indent": 2,
+      "marked": true
+     },
+     {
+      "text": "A spell book",
+      "indent": 2,
+      "marked": true
+     }
+    ],
+    "shown": [
+     {
+      "id": 71,
+      "name": "brittle scroll",
+      "parent": 55
+     },
+     {
+      "id": 112,
+      "name": "beautiful, ornamented egg",
+      "parent": 55
+     },
+     {
+      "id": 94,
+      "name": "battered lantern",
+      "parent": 55
+     },
+     {
+      "id": 19,
+      "name": "jug",
+      "parent": 55
+     },
+     {
+      "id": 41,
+      "name": "loaf of bread",
+      "parent": 55
+     },
+     {
+      "id": 144,
+      "name": "spell book",
+      "parent": 55
+     }
+    ]
+   }
+  ],
+  "cls": {
+   "descriptorExact": 24,
+   "descriptorShortened": [
+    "30:jug contains <- jug",
+    "60:jug contains <- jug",
+    "90:jug contains <- jug",
+    "90:partially eaten loaf of bread <- loaf of bread",
+    "120:jug contains <- jug",
+    "120:partially eaten loaf of bread <- loaf of bread",
+    "180:jug contains <- jug",
+    "180:partially eaten loaf of bread <- loaf of bread"
+   ],
+   "missing": [
+    "30:quantity of water",
+    "60:quantity of water",
+    "90:quantity of water",
+    "120:small quantity of water",
+    "180:small quantity of water"
+   ],
+   "extra": [],
+   "unmarked": [
+    "30:jug contains",
+    "30:quantity of water",
+    "60:jug contains",
+    "60:quantity of water",
+    "90:jug contains",
+    "90:quantity of water",
+    "120:jug contains",
+    "120:small quantity of water",
+    "180:jug contains",
+    "180:small quantity of water"
+   ]
+  }
+ }
+}

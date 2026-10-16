@@ -317,6 +317,14 @@ var Actionable = {
             } catch (eKeep) {}
             return current;
         }
+        // Inventory-line label (claude 2026-10-15, work/investigations/2026-10-15-claude-
+        // inventory-line-label-proposal.md): the game's own INVENTORY line carries a runtime
+        // label or state the parser vocabulary cannot ("the \"1\" cube", "partially eaten
+        // loaf of bread"). Only when the line is unambiguous: one pool object with this
+        // structural name, one listing line ending with it, 1-4 extra leading words, none of
+        // them another pool object's parser word. Display only; never across lines.
+        var invLine = Actionable.inventoryLineLabel(seed, pool, invText, structuralDisp);
+        if (invLine) return invLine;
         if(known) {
             var observed = Actionable.observedPhraseFor(seed,pool,known,false);
             var obsL = String(observed || "").toLowerCase().replace(/\s+/g, " ").trim();
@@ -345,6 +353,33 @@ var Actionable = {
         }
         if (current && current === seed.name) return current;
         return casedStructural() || seed.name || current;
+    },
+    inventoryLineLabel: function (seed, pool, invText, structuralDisp) {
+        try {
+            if (!invText || !structuralDisp || structuralDisp.charAt(0) === "(") return "";
+            var same = (pool || []).filter(function (o) {
+                return String((o && (o.structuralName || o.name)) || "").toLowerCase().replace(/\s+/g, " ").trim() === structuralDisp;
+            });
+            if (same.length !== 1) return "";
+            var esc = structuralDisp.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            var tail = new RegExp("(^|\\s)" + esc + "$", "i");
+            var hits = [];
+            String(invText).split(/\n/).forEach(function (raw) {
+                var line = String(raw || "").replace(/\s*\([^()]*\)\s*$/, "").replace(/[.,;:!]+\s*$/, "").trim();
+                if (!line || /:\s*$/.test(raw) || !tail.test(line)) return;
+                // Articles and the narrator's possessive are not descriptors.
+                line = line.replace(/^(a|an|the|some|your|my|his|her|their|our)\s+/i, "");
+                hits.push(line);
+            });
+            if (hits.length !== 1) return "";
+            var label = hits[0], extra = label.slice(0, label.length - structuralDisp.length).trim();
+            var words = extra.split(/\s+/).filter(Boolean);
+            if (!words.length || words.length > 4) return "";
+            var others = {};
+            (pool || []).forEach(function (o) { if (o && String(o.id) !== String(seed.id)) (o.aliases || []).forEach(function (w) { others[String(w).toLowerCase()] = 1; }); });
+            var clash = words.some(function (w) { return others[w.toLowerCase().replace(/^["']+|["']+$/g, "")]; });
+            return clash ? "" : label;
+        } catch (e) { return ""; }
     },
     // Save-owned presentation only. Never feeds command nouns or capabilities.
     _restoredLabels: Object.create(null),
