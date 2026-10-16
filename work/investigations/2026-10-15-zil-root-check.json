@@ -1,0 +1,176 @@
+{
+ "Zork2-TheWizardofFrobozz.z3.js": {
+  "ts": "2026-10-16T01:53:15.377Z",
+  "take": "GET LAMP AND SWORD",
+  "player": 4,
+  "items": [
+   {
+    "id": 23,
+    "name": "sword",
+    "parent": 4,
+    "named": true
+   },
+   {
+    "id": 76,
+    "name": "lamp",
+    "parent": 4,
+    "named": true
+   }
+  ],
+  "iReply": "You are carrying: A sword A lamp > ",
+  "parentsOk": true,
+  "namedOk": true,
+  "verdict": "S"
+ },
+ "Cutthroats.z3.js": {
+  "ts": "2026-10-16T01:53:20.211Z",
+  "take": "get passbook and room key",
+  "player": 184,
+  "items": [
+   {
+    "id": 143,
+    "name": "room key",
+    "parent": 184,
+    "named": true
+   },
+   {
+    "id": 144,
+    "name": "mariners' trust passbook",
+    "parent": 184,
+    "named": true
+   },
+   {
+    "id": 6,
+    "name": "wrist watch",
+    "parent": 184,
+    "named": true
+   }
+  ],
+  "iReply": "You are carrying: A room key A Mariners' Trust passbook A wrist watch (being worn) You have $20 in your pocket. > ",
+  "parentsOk": true,
+  "namedOk": true,
+  "verdict": "S"
+ },
+ "HollywoodHijinx.z3.js": {
+  "ts": "2026-10-16T01:53:27.721Z",
+  "take": "GET PIECE OF PAPER AND BUSINESS CARD",
+  "player": 52,
+  "items": [
+   {
+    "id": 63,
+    "name": "business card",
+    "parent": 52,
+    "named": true
+   },
+   {
+    "id": 113,
+    "name": "yellowed piece of paper",
+    "parent": 52,
+    "named": true
+   },
+   {
+    "id": 123,
+    "name": "flashlight",
+    "parent": 52,
+    "named": true
+   },
+   {
+    "id": 67,
+    "name": "photo of uncle buddy",
+    "parent": 52,
+    "named": true
+   },
+   {
+    "id": 235,
+    "name": "aunt hildegarde's letter",
+    "parent": 52,
+    "named": true
+   }
+  ],
+  "iReply": "You have a business card, a yellowed piece of paper, a flashlight, a photo of Uncle Buddy and Aunt Hildegarde's letter. > ",
+  "parentsOk": true,
+  "namedOk": true,
+  "verdict": "S"
+ },
+ "Planetfall.z3.js": {
+  "ts": "2026-10-16T01:58:07.825Z",
+  "take": "GET KIT",
+  "player": 236,
+  "items": [
+   {
+    "id": 213,
+    "name": "survival kit",
+    "parent": 236,
+    "named": true
+   },
+   {
+    "id": 227,
+    "name": "patrol-issue self-contained multi-purpose scrub brush",
+    "parent": 236,
+    "named": true
+   },
+   {
+    "id": 224,
+    "name": "patrol uniform",
+    "parent": 236,
+    "named": true
+   },
+   {
+    "id": 225,
+    "name": "id card",
+    "parent": 224,
+    "named": true
+   },
+   {
+    "id": 226,
+    "name": "chronometer",
+    "parent": 236,
+    "named": true
+   }
+  ],
+  "iReply": "You are carrying: A survival kit A Patrol-issue self-contained multi-purpose scrub brush A Patrol uniform (being worn) The Patrol uniform contains: An ID card A chronometer (being worn) The pod is now completely submerged, and you feel it s",
+  "parentsOk": true,
+  "namedOk": true,
+  "verdict": "S"
+ },
+ "Seastalker.z3.js": {
+  "ts": "2026-10-16T02:02:40.830Z",
+  "take": "get microphone",
+  "player": 194,
+  "items": [
+   {
+    "id": 62,
+    "name": "microphone",
+    "parent": 194,
+    "named": true
+   },
+   {
+    "id": 195,
+    "name": "logbook",
+    "parent": 194,
+    "named": true
+   }
+  ],
+  "iReply": "You're holding: a microphone a Logbook What next? > ",
+  "parentsOk": true,
+  "namedOk": true,
+  "verdict": "S"
+ },
+ "Infidel.z3.js": {
+  "ts": "2026-10-16T01:57:12.696Z",
+  "take": "get pickaxe",
+  "player": 223,
+  "items": [
+   {
+    "id": 37,
+    "name": "pick axe",
+    "parent": 223,
+    "named": true
+   }
+  ],
+  "iReply": "You are carrying: A pick axe It sounds as if the plane is flying off. > ",
+  "parentsOk": true,
+  "namedOk": true,
+  "verdict": "S"
+ }
+}

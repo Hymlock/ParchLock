@@ -29,6 +29,10 @@
   "wornItems": {
    "s": "UD",
    "r": "no worn state exists: historicalsource/zork2@3da9661 V-WEAR = <PERFORM ,V?TAKE> when WEARBIT, no WORNBIT, no object <VERB? WEAR/TAKE-OFF> handler; a worn item is indistinguishable from a carried one in RAM"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 4 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"GET LAMP AND SWORD\"; the game's own i names each (sword, lamp); zil-root-check.cjs 2026-10-15"
   }
  },
  "Zork3-TheDungeonMaster.z3.js": {
@@ -75,6 +79,10 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 7 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed); walk witness MEETS 2+1 (2026-10-11-zil-walk-n1.json)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 184 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"get passbook and room key\"; the game's own i names each (room key, mariners' trust passbook, wrist watch); zil-root-check.cjs 2026-10-15"
   }
  },
  "Deadline.z3.js": {
@@ -99,12 +107,20 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 15 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 223 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"get pickaxe\"; the game's own i names each (pick axe); zil-root-check.cjs 2026-10-15"
   }
  },
  "HollywoodHijinx.z3.js": {
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 17 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 52 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"GET PIECE OF PAPER AND BUSINESS CARD\"; the game's own i names each (business card, yellowed piece of paper, flashlight, photo of uncle buddy, aunt hildegarde's letter); zil-root-check.cjs 2026-10-15"
   }
  },
  "LeatherGoddessesofPhobos.z3.js": {
@@ -141,6 +157,10 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 25 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 236 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"GET KIT\"; the game's own i names each (survival kit, patrol-issue self-contained multi-purpose scrub brush, patrol uniform, id card, chronometer); zil-root-check.cjs 2026-10-15"
   }
  },
  "Seastalker.z3.js": {
@@ -159,6 +179,10 @@
   "wornItems": {
    "s": "UD",
    "r": "not applicable: source historicalsource/seastalker@258f825 has no WEARBIT/WORNBIT, no V-WEAR routine, no WEAR syntax and no object <VERB? WEAR/TAKE-OFF> handler (grep of all .zil, grok2 2026-10-12)"
+  },
+  "playerRoot": {
+   "s": "S",
+   "r": "existing ZRamReader.resolvePlayer (no fact) returns 194 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"get microphone\"; the game's own i names each (microphone, logbook); zil-root-check.cjs 2026-10-15"
   }
  },
  "Sorcerer.z3.js": {
