@@ -59,6 +59,10 @@
   "supporter": {
    "s": "S",
    "r": "SOLO/SELF-AUDIT: SURFACEBIT 26 put staff on pedestal/cage TRUE, put staff on machine FALSE (pgapz3); source exact 2/2. Gate 0 diffs."
+  },
+  "container": {
+   "s": "S",
+   "r": "SOLO/SELF-AUDIT: CONTBIT 10 look in machine / look in cage TRUE, look in staff / lamp FALSE (pgapz3e/pgapz3c); hooded figure excluded (not target-scoped); source exact. With openCapability. Gate 0 diffs."
   }
  },
  "Enchanter.z3.js": {

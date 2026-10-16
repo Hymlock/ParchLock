@@ -905,6 +905,9 @@
   "get staff",
   "put staff on machine",
   "get staff",
+  "look in machine",
+  "look in cage",
+  "look in staff",
   "GET IN MACHINE",
   "SET DIAL TO 776"
  ]

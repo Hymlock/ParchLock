@@ -53,9 +53,12 @@ var ModuleStatFactsClaude = {
     // strange key, chest, torch, ancient book, lamp. Source exact 4/4 (amulet, ring, cloak, hood).
     // SURFACEBIT 26 original scene, target-scoped (SOLO/SELF-AUDIT 2026-10-16, 2026-10-11-zil-walk-pgapz3.json): 'put staff on
     // pedestal' / 'put staff on cage' test 26 TRUE (pedestal 84, steel cage 81); 'put staff on machine' FALSE ("no good surface",
-    // gold machine 91). Source exact 2/2. Container 10 still unproven, so no openCapability is needed yet.
+    // gold machine 91). Source exact 2/2. CONTBIT 10 (pgapz3e): 'look in machine' TRUE on gold machine 91 ("is empty"), 'look
+    // in cage' TRUE on steel cage 81, 'look in staff' FALSE (wooden staff 31), lamp 198 FALSE (pgapz3c); source exact 12/12.
+    // Hooded figure 67 ('remove hood') excluded: not target-scoped. Applied together with openCapability.
     "dce7e6f757fb8379dea9da9c13cdda5412ba03fa9b70d79fb6b8c7faf5970692": {
-        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "supporter": 26 }
+        "openCapability": { "all": ["container"], "none": ["supporter"] },
+        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "supporter": 26, "container": 10 }
     },
     // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
