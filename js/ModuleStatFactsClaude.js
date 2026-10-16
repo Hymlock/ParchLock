@@ -33,7 +33,11 @@ var ModuleStatFactsClaude = {
         // SURFACEBIT 18 exact (tp 35/9, fp 0). Both together, so surfaces are never offered Open/Close
         // (openCapability above). Closes the coffer/invitation leak (app listed the invitation inside the closed coffer).
         "attributeMap": { "open": 16, "isOpen": 16, "animate": 31, "wearable": 21, "container": 24, "supporter": 18 },
-        "wornAttribute": 22
+        "wornAttribute": 22,
+        // Native i (walkthrough step 119, 2026-10-16-zil-inv-hidden-ops.json) tests bit9 TRUE on gunpowder 144 in the open
+        // powder horn and laudanum 102 in the transparent bottle, omitting both; FALSE on 15 printed held items. Source
+        // NDESCBIT 9. Codex GO #3525.
+        "inventoryHiddenAttribute": 9
     },
     // Wishbringer (ZIL): OPENBIT 25: OPEN sets 25 on shoppe door, metal can, toll gate, refrigerator; CLOSE clears. CONTBIT 4: OPEN tests 4 TRUE on refrigerator, little mailbox, FALSE on shoppe door. zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     "7847ff3387dc401c511f67349d2847691ba97990f28e9c9d8b1182f3d4bc0dc0": {
@@ -79,7 +83,7 @@ var ModuleStatFactsClaude = {
         "playerObject": 52
     },
     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
-        "attributeMap": { "container": 21, "supporter": 14 },
+        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12 },
         "openCapability": { "all": ["container"], "none": ["supporter"] }
     },
     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {

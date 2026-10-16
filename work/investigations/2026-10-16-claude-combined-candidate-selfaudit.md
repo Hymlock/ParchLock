@@ -45,5 +45,15 @@ INTENDED (kept): Enchanter spells listed, "spell" ambiguous mark, "Book" kept (o
 same-object marks removed (Tangle, shade, acorncourt; D146); own marks gained by objects previously hidden under another
 object's ambiguous mark (identity window 69, ghost dark woods 59).
 
-## Final pass
-(pending: all-cand-final vs all-base)
+## Final pass (all-cand-final vs all-base, 309 games incl. ZIL + Inform Z + Glulx): 31 differences, 0 REGRESSION
+- NOISE (flip in HEAD-vs-HEAD reruns): Biscuit inv1, WiR2 inv2, jet marks.
+- INTENDED, as classified in round 1: Enchanter marks/inv1/inv2; I-0, Mask, huntdark descriptors; Photograph, Lurking,
+  dreamhold, Wishbringer prose labels removed; Tangle, shade, acorncourt duplicate same-object marks removed; ghost, identity
+  own marks gained.
+- INTENDED, new in this pass: NightBeforeChristmas loses the ambiguous "bed" mark (candidates 45/50/51) while Mamma's bed 51
+  and the small beds keep their own marks; gostak loses "Glauds" beside "glauds" and gourmet loses "oven" beside "large oven"
+  (same-object duplicates, D146); oad / risorg "clothes" -> "your clothes" (matches the native row and the neighbouring
+  "your talisman").
+- Round-1 regressions all gone (no building/devdoit/Cove duplicates, suvehnux "under", AllRoads/curves/PH/Moonmist labels).
+Guards on this exact version: command-disambiguation 51/0, underline-first-per-reply 8/0, hhg-links-live 22/0,
+d150-noun-and-verbs 10/0, operator-regressions 7/0, label controls 25/0.
