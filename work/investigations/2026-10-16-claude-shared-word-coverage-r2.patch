@@ -25,7 +25,7 @@
 +    // spell" covers the spells, not the spell book, whose own mark is "Book"). Fallback: all candidates.
 +    coverageOf: function (phrase, ids, pool) {
 +        var w = String(phrase || '').toLowerCase().trim(); ids = (ids || []).map(String);
-+        if (ids.length < 2 || /s/.test(w)) return ids;
++        if (ids.length < 2 || /\s/.test(w)) return ids;
 +        var heads = ids.filter(function (id) {
 +            var o = (pool || []).filter(function (x) { return String(x.id) === id; })[0];
 +            if (!o) return true;
