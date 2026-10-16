@@ -87,8 +87,8 @@
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 22 = source TAKEBIT (tp 38/fp 1); consumed by AttributeSchema takeable (no attributeMap fact needed)"
   },
   "nested": {
-   "s": "X",
-   "r": "FINDING (zil-inv-check step 90): after container 23 + supporter 17 the balloon helium is hidden (closed); bucket contents shown as native; the ticket's pink/blue dots (parts) are still shown although native i omits them - open follow-up."
+   "s": "S",
+   "r": "FIXED: Ballyhoo inventoryHiddenAttribute 6 (native i tests bit6 TRUE on pink/blue dot inside the open ticket and omits them; FALSE on printed bucket/meat/whip/ticket). Source NDESCBIT 6 exact. zil-inv-check steps 30-120: dots no longer shown; helium hidden in closed balloon; bucket contents shown as native. Gate 0 diffs."
   }
  },
  "Cutthroats.z3.js": {

@@ -57,7 +57,11 @@ var ModuleStatFactsClaude = {
         // ('look in bunk'), FALSE on bucket 65 ('take bucket'), trailer door 44 ('close door') ... (probe walk
         // pzballyhoo, surfaces targeted). Source CONTBIT 23 / SURFACEBIT 17 exact. Together, so surfaces get no Open/Close.
         "openCapability": { "all": ["container"], "none": ["supporter"] },
-        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17 }
+        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17 },
+        // Native i (walkthrough step 90) tests bit6 TRUE on pink dot 231 / blue dot 71 inside the open ticket 122 and
+        // omits them; tests it FALSE on bucket 65, meat 102, bullwhip 16, ticket 122 and prints them. Source NDESCBIT 6
+        // exact (114/114).
+        "inventoryHiddenAttribute": 6
     },
     // Leather Goddesses of Phobos (ZIL): Q8 player root = constant PROTAGONIST object 200 (historicalsource/leathergoddesses 17cbbc1
     // globals.zil 908 OBJECT PROTAGONIST DESC "it" ACTORBIT). No PLAYER global exists; WINNER G189 is mutable (mars.zil sets MITRE/SULTAN/
