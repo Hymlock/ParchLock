@@ -9063,8 +9063,8 @@ Guards: d46 27/0, d201 69/0, d23 88/0, m12 14/0.
 ## D225 Shared-word marks cover only their head-noun owners; inventory labels come only from genuine listing rows
 
 **Lifecycle:** ZIL items round 2026-10-15/16. Enchanter open 12 (Codex ACCEPT #3517) was blocked because listing the
-spells made "a short spell" an ambiguous mark that suppressed the spell book's own "Book" mark. Coverage design GO Codex
-#3529; label admission R3 GO Codex #3544 (helper level). Later revisions operator-authorized SOLO/SELF-AUDIT (#3542).
+spells made "a short spell" an ambiguous mark that suppressed the spell book's own "Book" mark. Coverage design GO
+Codex #3529; label admission R3 GO Codex #3544 (helper level). Later revisions operator-authorized SOLO/SELF-AUDIT (#3542).
 Commit 56a170f. Record: work/investigations/2026-10-16-claude-combined-candidate-selfaudit.md.
 
 **Key files:** js/Actionable.js (coverageOf, markCoverIds, listingRows, inventoryLineLabel); js/ModuleStatFactsClaude.js.
@@ -9077,8 +9077,8 @@ Commit 56a170f. Record: work/investigations/2026-10-16-claude-combined-candidate
   candidate of a live ambiguous mark may be marked only by its full name or head noun (preferred pass), never a stray token.
 - D146 one mark per object still holds per object; an ambiguous candidate is not necessarily a covered owner.
 - inventoryLineLabel admits only genuine listing rows: blocks after a colon-ended header built around a player inventory
-  phrase (tested on the line's last sentence) or "<known pool object> contains:", indentation fixed by the first row;
-  sentence lists in the player forms or "<known pool object> contains ..."; items must start like an item entry; " and "
+  phrase (tested on the line's last sentence) or "`<known pool object>` contains:", indentation fixed by the first row;
+  sentence lists in the player forms or "`<known pool object>` contains ..."; items must start like an item entry; " and "
   splits only after another pool object's name; a leftover "and", a label not longer than a possessive structural name,
   and uncertain formats all fall back to the structural name. No verb blacklist.
 
