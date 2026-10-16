@@ -540,6 +540,9 @@ var ModuleStatFactsClaude = {
         // Applied with openCapability so surfaces get no Open/Close.
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8 },
+        // Native i (take all, i; 2026-10-16-hidden-bit-finder.json) tests bit18 TRUE on the pc's mouse 199 and HELP key 107
+        // and omits them; FALSE on the printed chair 62, pc 191, assignment 97. Source NDESCBIT 18 exact (72/72). SOLO/SELF-AUDIT.
+        "inventoryHiddenAttribute": 18,
         "command": "score", "fields": ["score.max", "rank"], "replyFamily": "inform-score", "outcome": "line",
         "evidence": "2026-10-05 live SCORE: Your score is 0 of a possible 100, in 0 moves. Graded on the curve, you are in the class of Freshman. DIAGNOSE: You are wide awake, and are in good health."
     },

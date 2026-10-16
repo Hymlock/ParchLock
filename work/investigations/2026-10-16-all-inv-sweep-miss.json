@@ -46,31 +46,27 @@
     "shown": [
      {
       "id": 44,
-      "name": "evidence",
+      "name": "debate file",
       "parent": 43
      }
     ],
-    "extra": [
-     "44:evidence"
-    ]
+    "extra": []
    },
    {
     "text": "You are carrying:\n  a spilled gatorade bottle\n  a debate file\n \n> ",
     "shown": [
      {
       "id": 47,
-      "name": "gatorade bottle",
+      "name": "spilled gatorade bottle",
       "parent": 43
      },
      {
       "id": 44,
-      "name": "evidence",
+      "name": "debate file",
       "parent": 43
      }
     ],
-    "extra": [
-     "44:evidence"
-    ]
+    "extra": []
    }
   ]
  },
@@ -648,6 +644,72 @@
      "183:yomin spell",
      "22:rezrov spell",
      "147:frotz spell"
+    ]
+   }
+  ]
+ },
+ "Advent.z5.js": {
+  "checks": [
+   {
+    "text": "You are carrying nothing.\n \n> ",
+    "shown": [],
+    "extra": []
+   },
+   {
+    "text": "You are carrying nothing.\n \n> ",
+    "shown": [],
+    "extra": []
+   }
+  ]
+ },
+ "wump2ka.z5.js": {
+  "checks": [
+   {
+    "text": "Please answer yes or no.>  ",
+    "shown": [],
+    "extra": []
+   },
+   {
+    "text": "Please answer yes or no.>  ",
+    "shown": [],
+    "extra": []
+   }
+  ]
+ },
+ "TheLurkingHorror.z3.js": {
+  "checks": [
+   {
+    "text": "You are carrying an assignment.\n \n> ",
+    "shown": [
+     {
+      "id": 97,
+      "name": "assignment",
+      "parent": 56
+     }
+    ],
+    "extra": []
+   },
+   {
+    "text": "You are carrying a chair, a pc and an assignment.\n \n> ",
+    "shown": [
+     {
+      "id": 62,
+      "name": "chair",
+      "parent": 56
+     },
+     {
+      "id": 191,
+      "name": "computer terminals",
+      "parent": 56
+     },
+     {
+      "id": 97,
+      "name": "assignment",
+      "parent": 56
+     }
+    ],
+    "extra": [
+     "191:computer terminals"
     ]
    }
   ]

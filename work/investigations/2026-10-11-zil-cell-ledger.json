@@ -299,6 +299,10 @@
   "supporter": {
    "s": "S",
    "r": "Lurking fact (ModuleStatFactsClaude 1862ef7c): SURFACEBIT 8 original scene pzlurking target-scoped: chair, kitchen counter, forklift, floor waxer TRUE; catwalk, ladder, flask, refrigerator, oven, flashlight, crowbar FALSE; source exact 10/10. With openCapability. Gate 0 diffs."
+  },
+  "nested": {
+   "s": "S",
+   "r": "SOLO/SELF-AUDIT 2026-10-16: inventoryHiddenAttribute 18 (native i tests NDESCBIT 18 TRUE on the pc mouse/HELP key and omits them; FALSE on printed chair/pc/assignment; source exact 72/72). Gate 0 diffs. Open: pc labelled computer terminals vs native pc."
   }
  },
  "Planetfall.z3.js": {
