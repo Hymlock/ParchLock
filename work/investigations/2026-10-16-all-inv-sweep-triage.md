@@ -86,3 +86,4 @@ native text: Cove "purse", TCOTY "rifle", Inevita "uniform", Mask "pair of stock
 sgate "unlit torch", escape "your travelling case", Debate "file" mark, huntdark "bolt" per bolt object (native groups "five
 bolts"). Cosmetic: TCOTY "Shark Head" -> "shark head" (casing). Noise: Inevita/Mask/jet/largemac marks.
 Guards: operator-regressions 7/0, d31 60/0, command-disambiguation 51/0, m12-room-short-name 12/0.
+Confirming full gate on the committed 8ea2f66 state: 20 differences, all in the classified set above; gamlet marks once (two reruns match the baseline: noise). 0 regression.
