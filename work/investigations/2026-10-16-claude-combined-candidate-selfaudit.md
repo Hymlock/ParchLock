@@ -24,5 +24,26 @@ Operator-authorized solo continuation (#3542). Codex sign-off exists only where 
 - Full gate: HEAD baseline all-base.jsonl (309 games, sha f2854789) vs this candidate — pending; every difference is
   classified INTENDED or REGRESSION below before commit.
 
-## Gate classification
-(pending)
+## Gate round 1 (first combined candidate) -> fixes found by the gate
+HEAD-vs-HEAD rerun of the differing games measured run-to-run NOISE: Biscuit inv1, Inevita marks, Mask marks, WiR2 inv2,
+cycles rooms/inv2, jet marks, medusa marks (they flip between identical runs). Not attributable to the candidate.
+
+REGRESSIONS found and fixed before the final pass:
+- Duplicate marks of one shared word (building x3, devdoit children x2, Cove sea x2): an object took its mark from a shared
+  word that is only its secondary word. Such targets are now skipped (coverage symmetry).
+- suvehnux "under": an object uncovered by the split took a stray second-pass token. Only its full name or head noun may
+  mark it (preferred pass); otherwise it stays under the shared mark as before.
+- Label losses: AllRoads "pair of manacles" (header "All that you know you have is:" -> the header test now runs on the
+  line's last sentence and accepts any colon-ended line built around a player inventory phrase); curves "key ring" (Inform
+  top-level rows are unindented -> the first row fixes the block indentation); Plundered Hearts / Moonmist "your reticule" /
+  "your luggage" truncated to "reticule" / "luggage" (a label shorter than a possessive structural name now falls back);
+  a leftover "and" in a descriptor now abstains. Controls 25/0.
+
+INTENDED (kept): Enchanter spells listed, "spell" ambiguous mark, "Book" kept (open 12, D148); prose labels removed
+(Lurking "You are carrying an assignment", dreamhold, Photograph, Wishbringer "You're holding ..."); native descriptors gained
+(I-0 "pair of cut-offs", Mask "pair of shoes", huntdark "brightly-glowing lamplens" / "empty thighband"); duplicate
+same-object marks removed (Tangle, shade, acorncourt; D146); own marks gained by objects previously hidden under another
+object's ambiguous mark (identity window 69, ghost dark woods 59).
+
+## Final pass
+(pending: all-cand-final vs all-base)
