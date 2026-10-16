@@ -90,7 +90,12 @@ var ModuleStatFactsClaude = {
     // binary 23591 store G38<-G163 at start, TELL stores only G163 (42801). Native TAKE book inserts into body 223 = G38. Ships with the v3 nested-room fix.
     "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e": {
         // OPENBIT 15: OPEN sets 15 on desk drawer, journal, receptacle, ochre vial; CLOSE clears (drawer, receptacle). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
-        "attributeMap": { "open": 15, "isOpen": 15 },
+        // 2026-10-15 original scene, target-scoped, source-exact: CONTBIT 27 TRUE on desk drawer, tiny box, ochre vial, sturdy
+        // trunk, receptacle (2026-10-11-zil-walk-pzsorcerer.json); SURFACEBIT 17 TRUE on bed ('look on bed') and darkwood desk
+        // ('put key on desk'), FALSE on tapestry ("no good surface") (pzsorcerer3). The spell book has 27+15, so its spells stay
+        // listed (D148 intent). With openCapability.
+        "openCapability": { "all": ["container"], "none": ["supporter"] },
+        "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17 },
         "playerGlobal": 38
     },
     // Wumpus 2000 (wump2ka): measured location roles (Codex GO #3103;

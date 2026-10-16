@@ -305,6 +305,14 @@
   "rooms": {
    "s": "O",
    "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "container": {
+   "s": "S",
+   "r": "Sorcerer fact (ModuleStatFactsClaude 3bf24a3d): original scene, target-scoped, source exact. CONTBIT 27 pzsorcerer: desk drawer, tiny box, ochre vial, sturdy trunk, receptacle TRUE; 6 negatives. Gate 0 diffs; inventory steps 10/30/60 equal native (spells under the book, D148)."
+  },
+  "supporter": {
+   "s": "S",
+   "r": "Sorcerer fact (ModuleStatFactsClaude 3bf24a3d): original scene, target-scoped, source exact. SURFACEBIT 17 pzsorcerer3: look on bed, put key on desk TRUE; tapestry FALSE (no good surface). With openCapability."
   }
  },
  "Spellbreaker.z3.js": {
