@@ -63,3 +63,6 @@ Guards: operator-regressions 7/0, d31-nested-inventory 60/0, attr-calibrator-inv
   (I6 default concealed 3 / container 4 / door 5) while later attributes match. A per-digest attributeMap
   {container: 3, door: 4} is the fix shape, but a name census is not acceptable evidence: needs target-scoped native
   tests (e.g. LOOK IN / OPEN on a single named container that tests 3, and on a door that tests 4).
+- heist native tests (route ops): a background per-turn routine tests bits 3 and 14 on the bag 19 and frame 124 on every
+  command, so those are not target-scoped. Target-scoped: "look in photo" tests 3 FALSE on photo 126 (negative). "look in
+  grave" / "look in frame" are handled by object routines that never test 3. No clean positive yet; left open.
