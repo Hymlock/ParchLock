@@ -75,3 +75,14 @@ regression - Sherlock rooms (black bag 172 -> 221-B Baker Street 38), inv1/inv2 
 (INTENDED); Mullmurd / School marks are NOISE (three identical reruns, and School identical under HEAD ZRamProvider).
 Remaining Sherlock extras are nested (lapel, stethoscope, the closed bag's bottles/pills): no container/open facts yet
 (D148 relaxation), needs measured facts.
+
+## Blank-named items: the story's own short_name (follow-up commit)
+ZRamReader's inventory walk labels a blank-named item with its last parser word ("evidence" for Debate's debate file). It now
+prefers ZRamReader.storyShortName when every content word of that decoded name is one of the object's own parser words
+(junk from short_name routines - MakeItGood "that yss", dewdrops "ecsuo e" - is rejected and the parser word kept).
+Gate 309 (unverified version) 26 differences; after verification the junk two are gone and every remaining change matches the
+native text: Cove "purse", TCOTY "rifle", Inevita "uniform", Mask "pair of stockings", WiR1/WiR2 "pair of socks"/"undershirt"
+(was "sockses"/"undershir"), gardening "gold fish in a plastic bag"/"tomato seeds" (was "small"), acorncourt "tennis ball",
+sgate "unlit torch", escape "your travelling case", Debate "file" mark, huntdark "bolt" per bolt object (native groups "five
+bolts"). Cosmetic: TCOTY "Shark Head" -> "shark head" (casing). Noise: Inevita/Mask/jet/largemac marks.
+Guards: operator-regressions 7/0, d31 60/0, command-disambiguation 51/0, m12-room-short-name 12/0.

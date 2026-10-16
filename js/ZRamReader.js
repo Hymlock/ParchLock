@@ -2639,6 +2639,19 @@ var ZRamReader = {
                             return !/^(a|an|the|some|of|called|named)$/i.test(String(word || ""));
                         });
                         var parserLabel = String(useful[useful.length - 1] || aliases[aliases.length - 1] || "").trim();
+                        // D219/D220: the story's own short_name string is the name the game prints ("a debate file" in
+                        // Debate, whose parser words end in "evidence"); prefer it over the last parser word when it decodes.
+                        var storyLabel = "";
+                        try { storyLabel = String((ZRamReader.storyShortName && ZRamReader.storyShortName(mem, cid)) || "").trim(); } catch (eStory) {}
+                        // Accept it only when every content word is one of the object's own parser words: a short_name
+                        // property that holds a routine decodes to junk ("that yss" in MakeItGood, "ecsuo e" in dewdrops).
+                        var vk = function (w) { return String(w || "").toLowerCase().replace(/[^a-z0-9'-]/g, "").slice(0, 9); };
+                        var own = {}; aliases.forEach(function (a) { own[vk(a)] = true; });
+                        var content = storyLabel.toLowerCase().split(/\s+/).filter(function (w) { return w && !/^(a|an|the|some|of|in|on|with|and|for|to)$/.test(w); });
+                        var verified = content.length > 0 && content.every(function (w) {
+                            var k = vk(w); return own[k] || Object.keys(own).some(function (o) { return o.length >= 6 && k.indexOf(o) === 0; });
+                        });
+                        if (storyLabel && !/^yourself$/i.test(storyLabel) && verified) parserLabel = storyLabel;
                         if (parserLabel) {
                             out.push({
                                 id: cid,
@@ -2646,7 +2659,7 @@ var ZRamReader = {
                                 parentId: id,
                                 attrs: wrapperAttrs,
                                 aliases: aliases,
-                                labelProvenance: "parser-vocabulary",
+                                labelProvenance: storyLabel && parserLabel === storyLabel ? "story-short-name" : "parser-vocabulary",
                                 confidence: confidence,
                                 discovered: true
                             });
