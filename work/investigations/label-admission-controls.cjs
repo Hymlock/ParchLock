@@ -21,6 +21,10 @@ const C=o(1,'cube'),T=[
  ['other-alias clash',C,[C,o(7,'box',['red'])],'You are carrying:\n  a red cube','cube',''],
  ['known container sentence',o(8,'frock'),[o(8,'frock'),o(9,'reticule')],'It seems that your reticule contains a cotton frock, a missive and a banknote.','frock','cotton frock'],
  ['known container header',o(10,'water'),[o(10,'water'),o(11,'jug')],'You are carrying:\n  A jug\n  The jug contains:\n    A quantity of water','water','quantity of water'],
+  ["X5 have dropped",C,[C],"You have dropped a cube.","cube",""],
+  ["X6 have lost",C,[C],"You have lost a cube.","cube",""],
+  ["PH one-line multi-sentence",o(8,"frock"),[o(8,"frock"),o(9,"reticule"),o(12,"bottle")],"You have a leather bottle, a powder horn and your reticule. It seems that your reticule contains a cotton frock, a missive and a banknote. You are wearing a beautiful ball gown.","frock","cotton frock"],
+  ["PH wearing sentence",o(13,"ball gown"),[o(13,"ball gown")],"You have a leather bottle. You are wearing a beautiful ball gown.","ball gown","beautiful ball gown"],
 ];
 let f=0;for(const [n,seed,pool,txt,sd,exp] of T){const got=Actionable.inventoryLineLabel(seed,pool,txt,sd);const ok=got===exp;if(!ok)f++;console.log(ok?'PASS':'FAIL',n,JSON.stringify(got),'expect',JSON.stringify(exp));}
 console.log(T.length-f,'PASS /',f,'FAIL');

@@ -1,6 +1,6 @@
 --- a/js/Actionable.js
 +++ b/js/Actionable.js
-@@ -354,6 +354,37 @@
+@@ -354,6 +354,43 @@
          if (current && current === seed.name) return current;
          return casedStructural() || seed.name || current;
      },
@@ -19,18 +19,24 @@
 +        var sentRe = new RegExp("^(?:" + player + "|(?:it (?:looks like|seems that) )?" + known + " contains?)\\s+(.+)$", "i");
 +        var endsKnown = function (s) { s = s.toLowerCase().trim(); return names.some(function (n) { return s === n || s.slice(-n.length - 1) === " " + n; }); };
 +        var rows = [], inBlock = false;
++        var pushItem = function (x) { if (/^(?:a|an|the|some|your|my|his|her|their|our|two|three|four|five|six|seven|eight|nine|ten|\d+)\s|^["']/i.test(x)) rows.push(x); };
 +        String(invText || "").split(/\n/).forEach(function (raw) {
 +            var line = String(raw || ""), t = line.trim();
 +            if (!t) { inBlock = false; return; }
 +            if (headRe.test(t)) { inBlock = true; return; }
 +            if (inBlock && /^\s/.test(line)) { rows.push(t); return; }
 +            inBlock = false;
-+            var m = sentRe.exec(t); if (!m) return;
-+            m[1].split(/\.(?:\s|$)/)[0].split(/,\s*/).forEach(function (seg) {
-+                seg = seg.replace(/^and\s+/i, "").trim(); if (!seg) return;
-+                var parts = seg.split(/\s+and\s+/), cur = parts[0];
-+                for (var i = 1; i < parts.length; i++) { if (endsKnown(cur)) { rows.push(cur); cur = parts[i]; } else cur += " and " + parts[i]; }
-+                rows.push(cur);
++            // Each sentence of the line separately (Plundered Hearts prints "You have ... . It seems that your
++            // reticule contains ... . You are wearing ..." on one line). An item must START like an item entry
++            // (article, possessive, numeral or quoted label), so "You have dropped a cube." admits nothing.
++            t.split(/\.(?:\s+|$)/).forEach(function (sentence) {
++                var m = sentRe.exec(sentence.trim()); if (!m) return;
++                m[1].split(/,\s*/).forEach(function (seg) {
++                    seg = seg.replace(/^and\s+/i, "").trim(); if (!seg) return;
++                    var parts = seg.split(/\s+and\s+/), cur = parts[0];
++                    for (var i = 1; i < parts.length; i++) { if (endsKnown(cur)) { pushItem(cur); cur = parts[i]; } else cur += " and " + parts[i]; }
++                    pushItem(cur);
++                });
 +            });
 +        });
 +        return rows;
@@ -38,7 +44,7 @@
      inventoryLineLabel: function (seed, pool, invText, structuralDisp) {
          try {
              if (!invText || !structuralDisp || structuralDisp.charAt(0) === "(") return "";
-@@ -364,9 +395,9 @@
+@@ -364,9 +401,9 @@
              var esc = structuralDisp.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
              var tail = new RegExp("(^|\\s)" + esc + "$", "i");
              var hits = [];
