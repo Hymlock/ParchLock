@@ -85,6 +85,10 @@
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 22 = source TAKEBIT (tp 38/fp 1); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "nested": {
+   "s": "X",
+   "r": "FINDING (zil-inv-check step 90): after container 23 + supporter 17 the balloon helium is hidden (closed); bucket contents shown as native; the ticket's pink/blue dots (parts) are still shown although native i omits them - open follow-up."
   }
  },
  "Cutthroats.z3.js": {
