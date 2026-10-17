@@ -120,13 +120,49 @@ var ZRamReader = {
         return true;
     },
 
-    // Dictionary equivalence key of a typed word for THIS story (Codex #3565): the live VM's own encoder (v3: 4 bytes,
-    // v4+: 6 bytes), only when the VM's memory is the supplied mem and its version agrees with the header. Otherwise the
-    // exact normalized word ("w:" prefix). Unsupported token forms (anything but letters, internal ' or -) return "".
+    // Pure dictionary-word packing from mem alone (Z-spec §3.7; grok #3593 P1-P4).
+    // Letters-only A0 path is complete offline. Non-letter tokens (digits, ' -) need A2/shifts —
+    // those still use the optional VM cross-check when available; otherwise exact "w:" equality.
+    // Custom alphabet tables (hdr 0x34 nonzero) fail closed → "" so we never invent encodings.
+    encodeDictWord: (mem, word) => {
+        try {
+            var h = ZRamReader.header(mem);
+            if (!h || h.version < 1 || h.version > 8) return null;
+            var w = String(word || "").toLowerCase().trim();
+            if (!/^[a-z]+$/.test(w)) return null;
+            // Custom alphabet table only for v5+ (Codex #3719); do not read 0x34 on v3/v4.
+            if (h.version >= 5) {
+                var alphAddr = 0;
+                try { alphAddr = ZRamReader.u16(mem, 0x34); } catch (eA) { alphAddr = 0; }
+                if (alphAddr) return null;
+            }
+            var cut = h.version <= 3 ? 6 : 9;
+            var z = [];
+            for (var i = 0; i < w.length && z.length < cut; i++) {
+                var ix = ZRamReader._a0.indexOf(w.charAt(i));
+                if (ix < 0) return null;
+                z.push(ix + 6);
+            }
+            while (z.length < cut) z.push(5);
+            var bytes = [], words = cut / 3;
+            for (var wi = 0; wi < words; wi++) {
+                var a = z[wi * 3], b = z[wi * 3 + 1], c = z[wi * 3 + 2];
+                var packed = ((a & 0x1f) << 10) | ((b & 0x1f) << 5) | (c & 0x1f);
+                if (wi === words - 1) packed |= 0x8000;
+                bytes.push((packed >> 8) & 0xff, packed & 0xff);
+            }
+            return bytes;
+        } catch (e) { return null; }
+    },
+
+    // Dictionary equivalence key (Codex #3565 / grok #3593): pure encodeDictWord first (offline-safe),
+    // then optional VM encode as cross-check when buffers match. Fallback exact "w:" word.
     dictionaryWordKey: (mem, word) => {
         var w = String(word || "").toLowerCase().trim();
         if (!/^[a-z0-9]+(?:['-][a-z0-9]+)*$/.test(w)) return "";
         try {
+            var pure = ZRamReader.encodeDictWord(mem, w);
+            if (pure && pure.length) return "z:" + pure.join(",");
             var vm = typeof window !== "undefined" && window.__PARCHLOCK_ZVM__;
             var h = ZRamReader.header(mem);
             var buf = mem && mem.buffer, off = (mem && mem.byteOffset) || 0;
