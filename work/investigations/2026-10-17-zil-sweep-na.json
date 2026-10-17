@@ -1,0 +1,650 @@
+[
+ {
+  "title": "Zork1-TheGreatUndergroundEmpire",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Zork1-TheGreatUndergroundEmpire",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Zork1-TheGreatUndergroundEmpire",
+  "key": "wornItems",
+  "reason": "no exact WEARBIT in source (title has no wearables or source differs)",
+  "verdict": "CARRIERS:1"
+ },
+ {
+  "title": "Zork2-TheWizardofFrobozz",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Zork2-TheWizardofFrobozz",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Zork2-TheWizardofFrobozz",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (0 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Zork2-TheWizardofFrobozz",
+  "key": "consumed",
+  "reason": "no source food consumed natively (0 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Zork3-TheDungeonMaster",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Zork3-TheDungeonMaster",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (0 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Zork3-TheDungeonMaster",
+  "key": "wornItems",
+  "reason": "no wearable put on natively (0 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Enchanter",
+  "key": "actors",
+  "reason": "no exact ACTORBIT/PERSONBIT in source",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "Enchanter",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Enchanter",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Enchanter",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (0 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Enchanter",
+  "key": "wornItems",
+  "reason": "no exact WEARBIT in source (title has no wearables or source differs)",
+  "verdict": "CARRIERS:1"
+ },
+ {
+  "title": "Enchanter",
+  "key": "consumed",
+  "reason": "no exact FOODBIT in source",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "Hitchhik",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Hitchhik",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Hitchhik",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (2 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Hitchhik",
+  "key": "wornItems",
+  "reason": "no wearable put on natively (0 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Hitchhik",
+  "key": "consumed",
+  "reason": "no exact FOODBIT in source",
+  "verdict": "CARRIERS:6"
+ },
+ {
+  "title": "Ballyhoo",
+  "key": "nested",
+  "reason": "no source container/child/OPENBIT",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Ballyhoo",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Ballyhoo",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Ballyhoo",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (3 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Ballyhoo",
+  "key": "consumed",
+  "reason": "no exact FOODBIT in source",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "Cutthroats",
+  "key": "actors",
+  "reason": "no exact ACTORBIT/PERSONBIT in source",
+  "verdict": "CARRIERS:7"
+ },
+ {
+  "title": "Cutthroats",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Cutthroats",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Cutthroats",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (0 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Cutthroats",
+  "key": "consumed",
+  "reason": "no source food consumed natively (0 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Deadline",
+  "key": "actors",
+  "reason": "no exact ACTORBIT/PERSONBIT in source",
+  "verdict": "CARRIERS:15"
+ },
+ {
+  "title": "Deadline",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Deadline",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Deadline",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (0 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Deadline",
+  "key": "wornItems",
+  "reason": "no exact WEARBIT in source (title has no wearables or source differs)",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "Deadline",
+  "key": "consumed",
+  "reason": "no exact FOODBIT in source",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "Infidel",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Infidel",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (0 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Infidel",
+  "key": "wornItems",
+  "reason": "no exact WEARBIT in source (title has no wearables or source differs)",
+  "verdict": "CARRIERS:1"
+ },
+ {
+  "title": "HollywoodHijinx",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "HollywoodHijinx",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "HollywoodHijinx",
+  "key": "consumed",
+  "reason": "no exact FOODBIT in source",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "LeatherGoddessesofPhobos",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "LeatherGoddessesofPhobos",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (2 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "LeatherGoddessesofPhobos",
+  "key": "consumed",
+  "reason": "no exact FOODBIT in source",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "Moonmist",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Moonmist",
+  "key": "consumed",
+  "reason": "no exact FOODBIT in source",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "PlunderedHearts",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "PlunderedHearts",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "PlunderedHearts",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (2 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "PlunderedHearts",
+  "key": "consumed",
+  "reason": "no exact FOODBIT in source",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "Planetfall",
+  "key": "actors",
+  "reason": "no exact ACTORBIT/PERSONBIT in source",
+  "verdict": "CARRIERS:7"
+ },
+ {
+  "title": "Planetfall",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Planetfall",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Planetfall",
+  "key": "consumed",
+  "reason": "no source food consumed natively (4 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Spellbreaker",
+  "key": "actors",
+  "reason": "no exact ACTORBIT/PERSONBIT in source",
+  "verdict": "CARRIERS:22"
+ },
+ {
+  "title": "Spellbreaker",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Spellbreaker",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (0 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Spellbreaker",
+  "key": "wornItems",
+  "reason": "no exact WEARBIT in source (title has no wearables or source differs)",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "Spellbreaker",
+  "key": "consumed",
+  "reason": "no exact FOODBIT in source",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "Suspect",
+  "key": "actors",
+  "reason": "no exact ACTORBIT/PERSONBIT in source",
+  "verdict": "CARRIERS:36"
+ },
+ {
+  "title": "Suspect",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Suspect",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Suspect",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (0 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Suspect",
+  "key": "consumed",
+  "reason": "no source food consumed natively (0 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "TheWitness",
+  "key": "actors",
+  "reason": "no exact ACTORBIT/PERSONBIT in source",
+  "verdict": "CARRIERS:9"
+ },
+ {
+  "title": "TheWitness",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "TheWitness",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "TheWitness",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (1 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "TheWitness",
+  "key": "wornItems",
+  "reason": "no exact WEARBIT in source (title has no wearables or source differs)",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "TheWitness",
+  "key": "consumed",
+  "reason": "no exact FOODBIT in source",
+  "verdict": "CARRIERS:2"
+ },
+ {
+  "title": "Borderzo",
+  "key": "actors",
+  "reason": "no exact ACTORBIT/PERSONBIT in source",
+  "verdict": "CARRIERS:17"
+ },
+ {
+  "title": "Borderzo",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Borderzo",
+  "key": "onoff",
+  "reason": "no exact ONBIT in source",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "Borderzo",
+  "key": "consumed",
+  "reason": "no exact FOODBIT in source",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "TheLurkingHorror",
+  "key": "actors",
+  "reason": "no exact ACTORBIT/PERSONBIT in source",
+  "verdict": "CARRIERS:14"
+ },
+ {
+  "title": "TheLurkingHorror",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "TheLurkingHorror",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (1 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "TheLurkingHorror",
+  "key": "wornItems",
+  "reason": "no exact WEARBIT in source (title has no wearables or source differs)",
+  "verdict": "CARRIERS:1"
+ },
+ {
+  "title": "TheLurkingHorror",
+  "key": "consumed",
+  "reason": "no source food consumed natively (4 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Seastalker",
+  "key": "actors",
+  "reason": "no exact ACTORBIT/PERSONBIT in source",
+  "verdict": "CARRIERS:21"
+ },
+ {
+  "title": "Seastalker",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Seastalker",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (0 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Seastalker",
+  "key": "wornItems",
+  "reason": "no exact WEARBIT in source (title has no wearables or source differs)",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "Seastalker",
+  "key": "consumed",
+  "reason": "no exact FOODBIT in source",
+  "verdict": "CARRIERS:2"
+ },
+ {
+  "title": "Sorcerer",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Sorcerer",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Sorcerer",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (1 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Sorcerer",
+  "key": "consumed",
+  "reason": "no exact FOODBIT in source",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "Starcross",
+  "key": "actors",
+  "reason": "no exact ACTORBIT/PERSONBIT in source",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "Starcross",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Starcross",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Starcross",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (0 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Starcross",
+  "key": "wornItems",
+  "reason": "no exact WEARBIT in source (title has no wearables or source differs)",
+  "verdict": "CARRIERS:1"
+ },
+ {
+  "title": "Starcross",
+  "key": "consumed",
+  "reason": "no exact FOODBIT in source",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "Stationfall",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Stationfall",
+  "key": "identical",
+  "reason": "no two takeable objects with identical names in this title (whole object table searched)",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Stationfall",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (6 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Stationfall",
+  "key": "consumed",
+  "reason": "no exact FOODBIT in source",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "Suspended",
+  "key": "actors",
+  "reason": "no exact ACTORBIT/PERSONBIT in source",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "Suspended",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Suspended",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (0 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Suspended",
+  "key": "wornItems",
+  "reason": "no exact WEARBIT in source (title has no wearables or source differs)",
+  "verdict": "CARRIERS:1"
+ },
+ {
+  "title": "Suspended",
+  "key": "consumed",
+  "reason": "no exact FOODBIT in source",
+  "verdict": "ABSENT"
+ },
+ {
+  "title": "Wishbringer",
+  "key": "descriptors",
+  "reason": "no two source-takeable objects share a head noun with different names",
+  "verdict": "SOLID"
+ },
+ {
+  "title": "Wishbringer",
+  "key": "onoff",
+  "reason": "no source light object turned on natively (0 candidates)",
+  "verdict": "WEAK"
+ },
+ {
+  "title": "Wishbringer",
+  "key": "consumed",
+  "reason": "no exact FOODBIT in source",
+  "verdict": "ABSENT"
+ }
+]
