@@ -219,7 +219,8 @@
    "WORNBIT"
   ],
   "hits": {},
-  "verdict": "ABSENT"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3924: WEARBIT FSET as worn state (camp.zil:1957 KNAPSACK)"
  },
  {
   "title": "LeatherGoddessesofPhobos",
@@ -311,7 +312,8 @@
    "WORNBIT"
   ],
   "hits": {},
-  "verdict": "ABSENT"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3924: WEARBIT FSET as worn state (verbs.zil:911)"
  },
  {
   "title": "Sorcerer",
@@ -364,7 +366,8 @@
    "WORNBIT"
   ],
   "hits": {},
-  "verdict": "ABSENT"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3924: WEARBIT FSET as worn state (actions.zil:1942/1986; runtime suit 144)"
  },
  {
   "title": "Starcross",
@@ -377,7 +380,8 @@
    "PERSONBIT"
   ],
   "hits": {},
-  "verdict": "ABSENT"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3924: actor flag is VILLAIN"
  },
  {
   "title": "Starcross",
@@ -439,7 +443,8 @@
    "WORNBIT"
   ],
   "hits": {},
-  "verdict": "ABSENT"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3924: WEARBIT FSET as worn state (main.zil:88 SURGERY-HAND)"
  },
  {
   "title": "Suspended",
@@ -452,7 +457,8 @@
    "PERSONBIT"
   ],
   "hits": {},
-  "verdict": "ABSENT"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3924: actor flag is VILLAIN"
  },
  {
   "title": "Suspended",
@@ -503,7 +509,8 @@
    "WORNBIT"
   ],
   "hits": {},
-  "verdict": "ABSENT"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3924: WEARBIT FSET as worn state (cs.zil:3754 GLOVES)"
  },
  {
   "title": "TheWitness",

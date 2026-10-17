@@ -63,7 +63,8 @@
   "title": "Enchanter",
   "key": "actors",
   "reason": "no exact ACTORBIT/PERSONBIT in source",
-  "verdict": "ABSENT"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3924: actor flag is VILLAIN (bit 31 runtime)"
  },
  {
   "title": "Enchanter",
@@ -447,7 +448,8 @@
   "title": "Borderzo",
   "key": "onoff",
   "reason": "no exact ONBIT in source",
-  "verdict": "ABSENT"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3924: ONBIT present (desc.zil)"
  },
  {
   "title": "Borderzo",
@@ -543,7 +545,8 @@
   "title": "Starcross",
   "key": "actors",
   "reason": "no exact ACTORBIT/PERSONBIT in source",
-  "verdict": "ABSENT"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3924: actor flag is VILLAIN"
  },
  {
   "title": "Starcross",
@@ -603,7 +606,8 @@
   "title": "Suspended",
   "key": "actors",
   "reason": "no exact ACTORBIT/PERSONBIT in source",
-  "verdict": "ABSENT"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3924: actor flag is VILLAIN"
  },
  {
   "title": "Suspended",
