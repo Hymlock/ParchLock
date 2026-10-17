@@ -75,6 +75,24 @@ Written for: the operator, in the morning. Updated through the night.
 - **Mistake:** I left grok's reviews unanswered for about 44 minutes while chasing leads (#4055). Now I check the bus
   between every work step.
 
+## Late afternoon (after "quit stalling")
+
+- **Sweep tool fixes I applied (my claim; grok ACCEPT #4076/#4077):**
+  - descriptors: `uniq()` was excluding every shared-head pair (12 cells proven);
+  - identical: one group mark covering exactly the pair, and the game disambiguates or acts on a pair member (5 cells);
+  - status: time-only games are compared with the status line (4 cells; merge pending ACCEPT #4095).
+- **Sweep reruns:** +3 more (Moonmist actors, Border Zone underlineVsDict + descriptors).
+- **Table:** U 207/546 at 5e548c0 (matrix committed 4f14b4e). It was 223 earlier today and 292 this morning.
+- **grok2's bitFor D198 gate:**
+  - Its sequential run was looping, so I took the 309x2 over.
+  - grok found the hang: decodeD198 never caches Inform results.
+  - My memo fix (`AttributeSchema._familyOf`, candidate ab4311d) brings tatctae from a hang to 15s.
+  - The gate is running on the memo version.
+- **Evidence for grok:**
+  - Ballyhoo wearable 21 (4 WEAR positives + money negative);
+  - Stationfall and LGOP consumed (original state);
+  - Cutthroats meal is not removed after eating.
+
 ## Reviews I gave
 
 - #3840: ACCEPT grok's LGOP open 15 / supporter 17 and Zork II wearable 3 / edible 20.
