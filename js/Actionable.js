@@ -268,6 +268,35 @@ var Actionable = {
         } catch (eHeadProperty) {}
         return out;
     },
+    // True when a multi-word structural name owned by exactly one pool object is printed verbatim in one of the texts
+    // (word boundaries; "-" is not a boundary, so "glass bottle-shaped" does not count). Every word must be in the
+    // game's dictionary, so the name is a phrase the parser accepts (grok #3828 R2); without memory it fails closed.
+    // Callers pass the current text plus the latest LOOK and INVENTORY texts, which may be older than this turn; that
+    // is safe only because the result can switch a label to the object's own parser-legal name (grok #3828 R3).
+    structuralNamePrinted: function (structural, pool, texts) {
+        var name = String(structural || "").toLowerCase().replace(/\s+/g, " ").trim();
+        if (!/\s/.test(name)) return false;
+        var mem = null;
+        try { mem = ZRamProvider.getMem(); } catch (eMem) {}
+        if (!mem || !name.split(" ").every(function (w) { return ZRamReader.hasDictionaryWord(mem, w); })) return false;
+        // The defect is ZIL's 6-character dictionary truncation; Inform titles keep their observed labels (gate 2026-10-17:
+        // 12 Inform diffs incl. spring and theatre). Canonical family gate D198, fail closed (#3780 point 3).
+        try {
+            var fam = GrammarProvider.decodeD198(mem);
+            if (!fam || fam.classification !== 'confirmed-zil-family' || fam.evidence !== 'validated') return false;
+        } catch (eFam) { return false; }
+        var owners = (pool || []).filter(function (o) {
+            return String(o.structuralName || o.name || "").toLowerCase().replace(/\s+/g, " ").trim() === name;
+        }).length;
+        if (owners !== 1) return false;
+        return (texts || []).some(function (src) {
+            var low = String(src || "").toLowerCase().replace(/\s+/g, " ");
+            for (var at = low.indexOf(name); at >= 0; at = low.indexOf(name, at + 1)) {
+                if (!/[a-z0-9-]/.test(low.charAt(at - 1)) && !/[a-z0-9-]/.test(low.charAt(at + name.length))) return true;
+            }
+            return false;
+        });
+    },
     displayNameFor: function (obj, pool, text) {
         var seed = obj;
         try {
@@ -333,6 +362,13 @@ var Actionable = {
                 if (rowNamed) return casedStructural();
             } catch (eRow) {}
         }
+        // Generalises the row rule (grok #3819): a multi-word structural name printed verbatim in the text this turn
+        // observed or in the latest LOOK / INVENTORY text (of any age; safe because the name must be parser-legal) names the item, so a phrase that does not contain it cannot replace it.
+        // Zork I: "The glass bottle contains:" must not become "bottle contains" through the truncated synonym "contai".
+        // Word boundaries exclude "-" ("glass bottle-shaped"), and the name must belong to exactly one object in the pool.
+        // Parser-vocabulary recovered labels keep their own path (grok #3828 R1).
+        if (curL && !preserves && seed.labelProvenance !== "parser-vocabulary" && obj.labelProvenance !== "parser-vocabulary"
+            && Actionable.structuralNamePrinted(structuralDisp, pool, [invText, lookText, String(text || "")])) return casedStructural();
         var uniqueObs = Actionable.observedPhraseFor(seed, pool, observeText, true);
         var longerRecovery = false;
         if (current && curL && curL !== nameL && curL.length > nameL.length) {
@@ -1498,6 +1534,11 @@ var Actionable = {
                 } catch (eP) {}
                 var display = Actionable.displayNameFor(row,base,text);
                 var label = Actionable.observedPhraseFor(row,base,text,true);
+                // Same rule as displayNameFor (grok #3819): a printed structural name is the label unless the observed
+                // phrase contains it.
+                var rowName = String(row.name || "").toLowerCase().replace(/\s+/g, " ").trim();
+                if (label && label !== row.name && row.labelProvenance !== "parser-vocabulary" && (" " + String(label).toLowerCase() + " ").indexOf(" " + rowName + " ") < 0
+                    && Actionable.structuralNamePrinted(rowName, base, [text, Actionable.Scope.lastLookText, Actionable.Scope.lastInventoryText])) label = row.name;
                 return label === row.name ? Object.assign({},row,{displayName:display}) : Object.assign({}, row, { name: label, displayName:display, structuralName: o.name, labelProvenance: row.labelProvenance === "parser-vocabulary" ? "parser-vocabulary" : "observed-vocabulary" });
             });
         } catch (e) { return []; }
