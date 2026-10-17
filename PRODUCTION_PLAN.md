@@ -9142,9 +9142,41 @@ attr-calibrator-inventory-root 13/0; phase2-heuristic-cutover 147/2 (2 pre-exist
     `classification === 'confirmed-zil-family' && evidence === 'validated'` (as GrammarProvider/ExitCalibrator/
     AttributeSchema already use). Unknown family = no ZIL path. Guard: an Inform title (curses, Bronze) is unchanged when
     the ZIL logic is toggled.
+- 09e367f (D225 addendum, directive #3780; ACCEPT grok2 #3849, grok #3819/#3843; codex audit #3959). Mark coverage is
+  exclusive: reconcileMarkCoverage; T3 applies the head policy to unreserved candidates.
+  - Suvehnux: wrapFirstExact skips an occurrence inside another object's printed multi-word full name, so a bare "cage"
+    inside "the brass cage" is no longer the bars-of-the-cage mention.
+  - Jigsaw: exit labels that are prepositions (in/out/on/...) are not wrapped in prose; compass and radial keep them.
+  - Full 309x2: 31 stable diffs, all intended; 24 unstable titles listed, none waived.
+- Bottle (pending, after 09e367f): Zork I 236 "bottle contains" (the printed verb matched the 6-char v3 synonym "contai").
+  - Rule: a printed multi-word structural name with exactly one owner, all words in the dictionary, beats an observed
+    phrase that does not contain it.
+  - Gated on D198 because the first ungated 309x2 changed 12 Inform titles.
+  - Gated 309x2: 1 intended diff (Hollywood "photo of Uncle Buddy").
+- openCapability ZIL family default (ruling #3934 on grok #3880): on D198-confirmed ZIL the default is
+  none:[supporter, animate].
+  - An explicit digest-row none entry still fails closed (#3668/#3682).
+  - A family-default entry whose bit is unmapped is skipped, not failed closed (lack of proof is not a leak).
+  - P3 (7969f6c): none += animate in Zork I/II, PH, Ballyhoo, Sorcerer, H2G2; guard harness/zil-actor-open.js.
+    Lurking Horror (R) is in review #4003.
+  - Enchanter waits on a room-safe animate rule (rooms carry VILLAIN; proposal #3918).
+- Ledger rules learned overnight (operator, via #3932/#3965):
+  - UD (not applicable) needs source absence AND device confirmation AND no alternative mechanism. Examples of
+    alternatives: an identity-based V-EAT, FROTZ light, object-level EAT handlers, WEARBIT used as the worn state,
+    VILLAIN as the actor flag.
+  - Claims from the compiled boot object table are bounded to initial static names (codex #3937).
+  - Operator ruling: a compiled-object-table read of the actual story file counts as game data for static properties
+    (for example name sharing), with one in-app spot check per title type before commit. Scans are bounded to valid
+    object IDs, ending at the first property address (codex #3925).
+- light/on keys (proposal #3904): their only consumers are ZRamReader's item-likeness tests (1679, 1749 Inform-only, 2718);
+  no verb or lit display reads them. This answers #3380's compatibility question for a capability mapping of LIGHTBIT.
 
 **Open:** heist/phlegm library attribute order (container 3 / door 4 census, no target-scoped positive yet); Sherlock
-nested container/open facts (no source pin).
+nested container/open facts (no source pin); Planetfall brochure 217 guard: the game's PROB 15 gift makes the old
+assertion nondeterministic. The codex candidate (#3973, sha256 C1494C7184A8), ACCEPTed by claude #3977/#3978, ran 13/0
+against the exact P3 in an isolated tree (#3996, CONFIRM #4001). Landing it in main harness/operator-regressions.js waits
+on grok2 (claim holder, asked in #3998). Seat identity is
+not enforced by the harness (#3917 was sent by claude under grok2's name in error; disclosed #3919-#3921).
 
 ## Backlog (low priority, research only): Glulx cold decoding
 
