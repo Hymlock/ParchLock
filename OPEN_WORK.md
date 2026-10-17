@@ -58,8 +58,9 @@ This is what is not implemented yet; ruled-out and finished items are not here.
   owned lanes - codex Actionable/AttrCalibrator, grok2 ZRamReader/ZRamProvider/AttributeSchema, grok ModuleStatFactsClaude,
   claude WorldModel/docs/commits. Open: heist/phlegm library
   attribute order, Sherlock nested container facts, Lurking "pc" labelled "computer terminals", startup-menu games.
-  Update 2026-10-17. The table at HEAD 9e78e8b reads finished 226/546, U 223 (grok #4046); it was 214 / U 240 at
-  0619470, before the facts commits below, and U 292 that morning.
+  Update 2026-10-17. Committed-only table at ee48083: finished 223/546 (grok #4062). The 226 first quoted (#4046)
+  read 5 uncommitted, unreviewed working-copy UD rows (Enchanter wearable/worn/wornItems, Border Zone lightSource,
+  Starcross wearable). It was 214 at 0619470, before the facts commits below; U was 292 that morning.
   - Landed:
     - 09e367f: suvehnux cage, Jigsaw preposition exits, exclusive coverage.
     - 285697b: Zork I "glass bottle", D198-gated.
