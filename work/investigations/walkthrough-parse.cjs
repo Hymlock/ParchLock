@@ -10,12 +10,16 @@ const expand = cmds => { const out = []; for (let c of cmds) { c = c.trim().toLo
   if ((c.length > 60 && !/until@/.test(c)) || /^(save|restore|restart)/.test(c)) continue; out.push(c); } return out.filter(Boolean); };
 // "again [until it reads: '...']" -> repeat the previous command until that text appears (zil-walk DOUNTIL).
 const untilRx = s => s.replace(/\.\.\.,?/g, ' ').trim().split(/[.!?](\s|$)/)[0] /* first sentence: releases differ after it */.replace(/[.*+?^${}()|[\]\\!]/g, '').replace(/\s+/g, '\\s+');
-const untils = t => t.replace(/again\s*\[until it reads:\s*'([\s\S]*?)'\]/gi, (m, x) => 'again UNTIL@' + Buffer.from(untilRx(x)).toString('hex') + ' ');
+// "{eat when necessary: open kit: eat orange goo}" is an instruction, not a comment: keep the commands after the colon.
+const untils = t => t.replace(/\{[^}:]*when necessary:\s*([^}]*)\}/gi, '$1').replace(/again\s*\[until it reads:\s*'([\s\S]*?)'\]/gi, (m, x) => 'again UNTIL@' + Buffer.from(untilRx(x)).toString('hex') + ' ');
 const resolveUntil = cmds => cmds.map((c, i) => { const m = /^again until@([0-9a-f]+)$/.exec(c); return m ? 'DOUNTIL:' + cmds[i - 1] + '|' + Buffer.from(m[1], 'hex').toString() : c; });
 const body = (f, startRe) => { const t = untils(fs.readFileSync(path.join(D, f), 'utf8')); const i = startRe ? t.search(startRe) : 0; return clean(t.slice(i < 0 ? 0 : i)); };
 const routes = {};
 // Stationfall: ':' separated after the header.
-routes.stationfall = expand(body('stationfall.step', /\n\s*[a-z][a-z ]*:/i).split(':'));
+// "type xxx {course for the watch time}" -> zil-walk SFCOURSE (computed from the game's own SPACETRUCK-TYPE formula).
+routes.stationfall = expand(body('stationfall.step', /\n\s*[a-z][a-z ]*:/i).split(':')).map(c => c === 'type xxx' ? 'SFCOURSE' : c);
+// "wait {until you're docked}": wait until the ship.zil docking text appears.
+{ const i = routes.stationfall.indexOf('SFCOURSE'); if (i >= 0 && routes.stationfall[i + 1] === 'wait') routes.stationfall[i + 1] = 'WAITUNTIL:Stationfall\\.|no space station'; }
 // LGOP: '-' separated; drop the header prose before the first command run.
 // 'look' absorbs the intro More prompt; each scratch 'n' sniff "smell" waits for RETURN, answered by an empty NP: line.
 routes.lgop = ['look'].concat(...resolveUntil(expand(body('lgop.step1', /\[male version\]/i).split('-'))).map(c => /^smell\b/.test(c) ? [c, 'NP:'] : [c]));
