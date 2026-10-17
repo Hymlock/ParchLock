@@ -61,9 +61,13 @@ var ModuleStatFactsClaude = {
     // Hooded figure 67 ('remove hood') excluded: not target-scoped. Applied together with openCapability.
     "dce7e6f757fb8379dea9da9c13cdda5412ba03fa9b70d79fb6b8c7faf5970692": {
         "openCapability": { "all": ["container"], "none": ["supporter"] },
-        // supporter 26 WITHDRAWN (Codex REVISE #3556): the pedestal test was ambient (identical bit-26 vector across commands)
-        // and the pedestal is unreachable through the cage; one reachable target positive (cage 81) only. Fail closed.
-        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10 }
+        // supporter 26 RESTORED 2026-10-16 (grok1 #3615/#3640, operator rule 5 module-exhaustion exception). Codex #3556 is right
+        // that the old pedestal test was ambient. Re-probe (grok1 g1-z3ring/z3ringneg): past-scene "put ring on pedestal" (step 145)
+        // is refused by the cage routine, and its only 84:26 tests are the scope passes. Module searched: source SURFACEBIT is exactly
+        // 2/2 (cage 81, pedestal 84; historicalsource zork3). Target positive: cage 81 ("put staff on cage"). Target negative: gold
+        // machine 91 ("There's no good surface"). The second surface is source-cited and RAM bit 26 is set, but no command can reach
+        // it. Without 26, containers 81/84 (bit 10 too) were offered Open/Close (252e145 REJECT #3632/#3637).
+        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10, "supporter": 26 }
     },
     // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
@@ -77,6 +81,8 @@ var ModuleStatFactsClaude = {
         // mask 93 ... (probe walks pq1/p1). SURFACEBIT 17 TRUE on leather sofa 20 ('look in sofa') and lower bunk 109
         // ('look in bunk'), FALSE on bucket 65 ('take bucket'), trailer door 44 ('close door') ... (probe walk
         // pzballyhoo, surfaces targeted). Source CONTBIT 23 / SURFACEBIT 17 exact. Together, so surfaces get no Open/Close.
+        // Corroborated 2026-10-16 (grok1 g1-bhput/bhputst/bhputneg): target-dispatched SURFACEBIT 17 TRUE on desk 103 ('put spreadsheet on desk',
+        // step 264, 'Done.') and lion stand 96 ('put radio on stand', step 377, 'Done.'); FALSE on telephone 203 ('no good surface').
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17 },
         // Native i (walkthrough step 90) tests bit6 TRUE on pink dot 231 / blue dot 71 inside the open ticket 122 and
