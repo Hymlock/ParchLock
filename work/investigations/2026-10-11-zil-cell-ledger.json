@@ -117,6 +117,18 @@
   "identical": {
    "s": "UD",
    "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 33 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "wearable": {
+   "s": "UD",
+   "r": "not applicable: historicalsource/enchanter@472c3b9 has no live WEARBIT (every use is commented out: globals.zil:16 ;WEARBIT, verbs.zil:596/618/802/1531) and no WORNBIT anywhere (27 .zil files grepped); V-WEAR (verbs.zil:1530) is unconditional \"You can't wear the X.\" and the only object WEAR handler is BED-F (castle.zil:166/174, WEAR = get into bed), so no wear capability or worn state exists (grok1 2026-10-17); in-app device check (grok1 g1-udE.json and claude #4064, untouched boot): 'wear book' -> \"You can't wear the spell book.\" (target-named refusal). No alternative mechanism. Review: claude #4064"
+  },
+  "worn": {
+   "s": "UD",
+   "r": "not applicable: historicalsource/enchanter@472c3b9 has no live WEARBIT (every use is commented out: globals.zil:16 ;WEARBIT, verbs.zil:596/618/802/1531) and no WORNBIT anywhere (27 .zil files grepped); V-WEAR (verbs.zil:1530) is unconditional \"You can't wear the X.\" and the only object WEAR handler is BED-F (castle.zil:166/174, WEAR = get into bed), so no wear capability or worn state exists (grok1 2026-10-17); in-app device check (grok1 g1-udE.json and claude #4064, untouched boot): 'wear book' -> \"You can't wear the spell book.\" (target-named refusal). No alternative mechanism. Review: claude #4064"
+  },
+  "wornItems": {
+   "s": "UD",
+   "r": "not applicable: historicalsource/enchanter@472c3b9 has no live WEARBIT (every use is commented out: globals.zil:16 ;WEARBIT, verbs.zil:596/618/802/1531) and no WORNBIT anywhere (27 .zil files grepped); V-WEAR (verbs.zil:1530) is unconditional \"You can't wear the X.\" and the only object WEAR handler is BED-F (castle.zil:166/174, WEAR = get into bed), so no wear capability or worn state exists (grok1 2026-10-17); in-app device check (grok1 g1-udE.json and claude #4064, untouched boot): 'wear book' -> \"You can't wear the spell book.\" (target-named refusal). No alternative mechanism. Review: claude #4064"
   }
  },
  "Hitchhik.z5.js": {
@@ -337,6 +349,10 @@
   "identical": {
    "s": "UD",
    "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 42 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "lightSource": {
+   "s": "UD",
+   "r": "not applicable: historicalsource/borderzone@5c80126 has no LIGHTBIT anywhere (15 .zil files grepped); TURN ON / LIGHT (syntax.zil:618/317) have no FIND, V-ON (verbs.zil:851) is <CANT-TURN>, and LIT? is commented out (parser.zil:11, every room lit), so no light-source capability bit exists (grok1 2026-10-17); in-app device check (grok1 g1-udB.json and claude #4065, chapter 3 untouched boot): 'turn on revolver' -> \"You can't turn that on.\" (V-ON = CANT-TURN, verbs.zil:851), and 'light match' is a scripted refusal. No alternative mechanism (no light-source object). Review: claude #4064/#4065"
   }
  },
  "TheLurkingHorror.z3.js": {
