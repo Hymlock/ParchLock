@@ -7,13 +7,18 @@ const clean = s => s.replace(/\{[^}]*\}/g, ' ').replace(/\[[^\]]*\]/g, ' ').repl
 const expand = cmds => { const out = []; for (let c of cmds) { c = c.trim().toLowerCase(); if (!c) continue; const m = /^\((\d+)x\)$/.exec(c) || /^(.*?)\s*\((\d+)x\)$/.exec(c);
   if (m && m.length === 2) { for (let i = 1; i < +m[1]; i++) out.push(out[out.length - 1]); continue; }
   if (m && m.length === 3) { for (let i = 0; i < +m[2]; i++) out.push(m[1]); continue; }
-  if (c.length > 60 || /^(save|restore|restart)/.test(c)) continue; out.push(c); } return out.filter(Boolean); };
-const body = (f, startRe) => { const t = fs.readFileSync(path.join(D, f), 'utf8'); const i = startRe ? t.search(startRe) : 0; return clean(t.slice(i < 0 ? 0 : i)); };
+  if ((c.length > 60 && !/until@/.test(c)) || /^(save|restore|restart)/.test(c)) continue; out.push(c); } return out.filter(Boolean); };
+// "again [until it reads: '...']" -> repeat the previous command until that text appears (zil-walk DOUNTIL).
+const untilRx = s => s.replace(/\.\.\.,?/g, ' ').trim().split(/[.!?](\s|$)/)[0] /* first sentence: releases differ after it */.replace(/[.*+?^${}()|[\]\\!]/g, '').replace(/\s+/g, '\\s+');
+const untils = t => t.replace(/again\s*\[until it reads:\s*'([\s\S]*?)'\]/gi, (m, x) => 'again UNTIL@' + Buffer.from(untilRx(x)).toString('hex') + ' ');
+const resolveUntil = cmds => cmds.map((c, i) => { const m = /^again until@([0-9a-f]+)$/.exec(c); return m ? 'DOUNTIL:' + cmds[i - 1] + '|' + Buffer.from(m[1], 'hex').toString() : c; });
+const body = (f, startRe) => { const t = untils(fs.readFileSync(path.join(D, f), 'utf8')); const i = startRe ? t.search(startRe) : 0; return clean(t.slice(i < 0 ? 0 : i)); };
 const routes = {};
 // Stationfall: ':' separated after the header.
 routes.stationfall = expand(body('stationfall.step', /\n\s*[a-z][a-z ]*:/i).split(':'));
 // LGOP: '-' separated; drop the header prose before the first command run.
-routes.lgop = expand(body('lgop.step1', /\[male version\]/i).split('-'));
+// 'look' absorbs the intro More prompt; each scratch 'n' sniff "smell" waits for RETURN, answered by an empty NP: line.
+routes.lgop = ['look'].concat(...resolveUntil(expand(body('lgop.step1', /\[male version\]/i).split('-'))).map(c => /^smell\b/.test(c) ? [c, 'NP:'] : [c]));
 // Suspended: '#N COMMAND' items.
 routes.suspended = expand((body('suspended.txt').match(/#\d+\s+[^#]+/g) || []).map(s => s.replace(/^#\d+\s+/, '')));
 // Starcross: '.' separated lines after the dashed rule; the UM coordinates line needs the manual's table -> stop there.

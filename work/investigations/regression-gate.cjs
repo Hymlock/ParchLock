@@ -38,7 +38,7 @@ const out = fs.createWriteStream(process.env.OUT || 'gate.jsonl');
     await p.addInitScript(() => { sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); for (const k of ['PL_TutorialSeen', 'PL_MobileTutorialSeen', 'PL_LearnedWordsTutorialSeen']) localStorage.setItem(k, '1'); });
         const row = { game: g };
         try {
-            await p.goto(pathToFileURL(path.resolve(ROOT, 'play.html')).href + '?story=games/' + g); await p.waitForTimeout(2000);
+            await p.goto(pathToFileURL(path.resolve(ROOT, process.env.HTML || 'play.html')).href + '?story=games/' + g); await p.waitForTimeout(2000);
             const settle = async () => { for (let i = 0; i < 25; i++) { await p.evaluate(() => { document.querySelector('.parchlock-splash__start')?.click(); try { Message.Hide(); } catch (e) {} }); if (await p.locator('.Input.LineInput').count()) return true; const c = p.locator('.Input.CharInput'); if (await c.count()) await c.first().focus(); await p.keyboard.press('Space'); await p.waitForTimeout(120); } return false; };
             const cmd = async c => { await p.evaluate(c => { Input.Clear(); Input.Inject(c, true); }, c); await p.waitForTimeout(1300); await settle(); };
             const inv = () => p.evaluate(() => { try { const all = EquipmentUI.model().items, S = Actionable.Scope, dt = S.lastLookText + "\n" + S.lastInventoryText + "\n" + (S.lastReplyText || ""); return all.map(o => { let s = Actionable.displayNameFor(o, all, dt); if (typeof LearnedWords !== "undefined") s = LearnedWords.label("name", o.id, s); return o.id + ':' + s; }); } catch (e) { return 'ERR'; } });
