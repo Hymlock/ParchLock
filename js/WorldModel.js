@@ -120,6 +120,9 @@ var WorldModel = {
     recoverInventory: (payload) => {
         var inv = WorldModel.idBacked(payload && payload.inventory);
         if (inv.length) return inv;
+        // A digest-pinned player that is not yet initialized means "no holder": never recover one from worn bits
+        // (Codex #3566).
+        if (payload && payload.probe && payload.probe.playerSource === "fact-uninitialized") return inv;
         var objs = (payload && payload.discoveredObjects) || [];
         // D58/D68: only structurally truly-worn objects identify inventory root.
         // scenery+worn (Glow Bar) must not promote a CustomPlayer wrapper.

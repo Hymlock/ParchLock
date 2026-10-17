@@ -1267,9 +1267,19 @@ var AttrCalibrator = {
                 // Animate objects named in the reply are holders or bystanders, not listed items: cabal's PC is literally
                 // named "you" (matched by "You are carrying") and the vagrant is mentioned in the same reply. Counting
                 // them hid the PalmPilot (its parent looked "listed") and let a room parent compete.
+                // Occurrence provenance (Codex #3552/#3566): an object is listed only when its name occurs in a genuine
+                // listing row of this reply (Actionable.listingRows), never in the header ("You are carrying:" naming a PC
+                // called "you") or in prose (the vagrant). A carried animal in a row stays listed, so its own children
+                // do not vote for it as the holder.
+                var rowsText = text;
+                try {
+                    if (typeof Actionable !== "undefined" && Actionable.listingRows) {
+                        var rws = Actionable.listingRows(text, snap.objs.map(function (o) { return { name: o.name }; }));
+                        rowsText = rws.length ? rws.join("\n").toLowerCase() : "";
+                    }
+                } catch (eRows) {}
                 var listed = snap.objs.filter(function (o) {
-                    try { if (ZRamReader.attrsFromObject(ctx.mem, o.id).animate) return false; } catch (eAn) {}
-                    return new RegExp("(^|[^a-z])" + o.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "([^a-z]|$)").test(text);
+                    return new RegExp("(^|[^a-z])" + o.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "([^a-z]|$)").test(rowsText);
                 });
                 var listedIds = {}; listed.forEach(function (o) { listedIds[o.id] = true; });
                 var counts = {};

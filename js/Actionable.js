@@ -296,7 +296,8 @@ var Actionable = {
         var preserves = curL === structuralDisp || (structuralDisp && (" " + curL + " ").indexOf(" " + structuralDisp + " ") >= 0);
         // When a genuine inventory listing row prints exactly the structural name, the game has named the item: a phrase
         // observed elsewhere must not replace it (Lurking's held "pc" became "computer terminals" from the opening text,
-        // its aliases being the truncated "comput"/"termin"). A longer observed phrase that CONTAINS the name still wins.
+        // its aliases being the truncated "comput"/"termin"). This deliberately outranks longerRecovery (which is TRUE for
+        // that same alias-built phrase); an observed phrase that CONTAINS the name is already accepted as `preserves`.
         if (curL && !preserves && structuralDisp && invText) {
             try {
                 var rowNamed = Actionable.listingRows(invText, pool).some(function (r) {
@@ -379,7 +380,9 @@ var Actionable = {
         var player = "you(?: are|'re) (?:carrying|holding|wearing)|you have";
         // Header: a colon-ended line built around a player inventory phrase ("You are carrying:", AllRoads "All that you
         // know you have is:") or "<known object> contains:". A bare "Warning:" is not a header.
-        var headRe = new RegExp("^(?:.{0,40}\\b(?:" + player + ")\\b.{0,20}|(?:it (?:looks like|seems that) )?" + known + " contains?)\\s*:$", "i");
+        // Exact player-inventory grammar (Codex #3553): "You have lost:" is not a header. AllRoads' "All that you know you
+        // have is:" is the one measured variant.
+        var headRe = new RegExp("^(?:(?:all that you know )?(?:you(?: are|'re) (?:carrying|holding|wearing)|you have)(?: is)?|(?:it (?:looks like|seems that) )?" + known + " contains?)\\s*:$", "i");
         var sentRe = new RegExp("^(?:" + player + "|(?:it (?:looks like|seems that) )?" + known + " contains?)\\s+(.+)$", "i");
         var endsKnown = function (s) { s = s.toLowerCase().trim(); return names.some(function (n) { return s === n || s.slice(-n.length - 1) === " " + n; }); };
         var rows = [], inBlock = false, blockInd = -1;
@@ -392,7 +395,10 @@ var Actionable = {
             if (headRe.test(t.split(/[.!?]\s+/).pop())) { inBlock = true; blockInd = -1; return; }
             // Block rows: the first row fixes the indentation level (Inform lists top-level rows unindented, Infocom
             // indents them); rows at that level or deeper continue, a shallower line ends the block.
-            if (inBlock && (blockInd < 0 || ind >= blockInd)) { if (blockInd < 0) blockInd = ind; rows.push(t); return; }
+            // An unindented line that ends a sentence is prose, not a row (Codex #3553: "A troll drops a red cube." after
+            // a zero-indent list); Inform's unindented rows carry no sentence punctuation.
+            var prose = ind === 0 && /[.!?]["']?$/.test(t.replace(/\s*\([^()]*\)\s*$/, ""));
+            if (inBlock && !prose && (blockInd < 0 || ind >= blockInd)) { if (blockInd < 0) blockInd = ind; rows.push(t); return; }
             inBlock = false;
             // Each sentence of the line separately (Plundered Hearts prints "You have ... . It seems that your
             // reticule contains ... . You are wearing ..." on one line). An item must START like an item entry
@@ -1774,8 +1780,12 @@ var Actionable = {
     relocateExactMarks: function (lines, suppliedMarks) {
         // Phrase/ownership selection has already finished. Move those SAME
         // marks, so latest-copy presentation cannot change the chosen noun.
-        var marks = suppliedMarks || [];
+        var marks = (suppliedMarks || []).slice();
         if (!suppliedMarks) lines.forEach(function (line) { line.querySelectorAll(".pl-act:not(.is-stale)").forEach(function (mark) { if (marks.indexOf(mark) < 0) marks.push(mark); }); });
+        // Codex #3561/#3562: a LOCAL worklist, longest text first (stable ties), so a full name ("spell book") reserves the
+        // first occurrence ("My Spell Book") before a shorter shared token ("spell") can occupy it. The global LiveMarks
+        // order and the parser/candidate/coverage identities are untouched.
+        marks.sort(function (a, b) { return String(b.textContent || "").length - String(a.textContent || "").length; });
         marks.forEach(function (mark) {
             var phrase = mark.textContent, target = phrase.toLowerCase(), parent = mark.parentNode;
             if (!parent || !target) return;

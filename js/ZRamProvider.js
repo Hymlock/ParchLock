@@ -29,7 +29,9 @@ var ZRamProvider = {
         // every learned or structural guess: Sherlock's learner otherwise settled on the coat pocket.
         try {
             var lf = ZRamReader.executableLayoutFacts && ZRamReader.executableLayoutFacts(mem);
-            if (playerId && lf && (Number.isInteger(lf.playerObject) || Number.isInteger(lf.playerGlobal))) return playerId;
+            // A pinned fact that resolves to 0 (fact-uninitialized) means "no holder yet", never a learned or guessed root
+            // (Codex #3552/#3566).
+            if (lf && (Number.isInteger(lf.playerObject) || Number.isInteger(lf.playerGlobal))) return playerId || 0;
         } catch (eFact) {}
         try {
             if (typeof AttrCalibrator !== "undefined" && AttrCalibrator.confirmedInventoryRootId) {
@@ -67,6 +69,8 @@ var ZRamProvider = {
         // ZIL uses unnamed groupings for offstage/global objects as well; those
         // are not inventories. Native confirmed holders above remain first.
         if (!ZRamReader.isInformCompiled(mem)) return playerId;
+        // The placed, empty-handed player guard covers the unnamed-wrapper family too (Codex #3566).
+        if (playerPlaced) return playerId;
         // D75: wump2ka (and similar) parent the real held tree under an
         // unnamed room child ("(CustomPlayer)") whose animate bit may be
         // clear this session. probe playerId is often an empty-handed

@@ -23,7 +23,10 @@ const { chromium } = require(process.cwd() + '/node_modules/playwright'); const 
 const ROOT = process.env.ROOT || '.';
 // GLULX=1 includes Glulx titles (the three-type check: ZIL + Inform Z + Glulx).
 const games = fs.readdirSync('games').filter(f => f.endsWith('.js') && (process.env.GLULX || !/\.(ulx|gblorb)\.js$/i.test(f))).sort()
-    .filter(f => !process.env.GAMES || process.env.GAMES.split(',').includes(f));
+    .filter(f => !process.env.GAMES || process.env.GAMES.split(',').includes(f))
+    // SHARD=i/N (bottleneck fix 2026-10-17): this process runs every N-th game starting at i; run N shards in parallel and
+    // concatenate their OUT files. The --diff mode is unchanged (keyed by game).
+    .filter((f, idx) => { const m = /^(\d+)\/(\d+)$/.exec(process.env.SHARD || ''); return !m || idx % +m[2] === +m[1]; });
 const out = fs.createWriteStream(process.env.OUT || 'gate.jsonl');
 (async () => {
     const b = await chromium.launch();

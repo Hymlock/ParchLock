@@ -120,6 +120,25 @@ var ZRamReader = {
         return true;
     },
 
+    // Dictionary equivalence key of a typed word for THIS story (Codex #3565): the live VM's own encoder (v3: 4 bytes,
+    // v4+: 6 bytes), only when the VM's memory is the supplied mem and its version agrees with the header. Otherwise the
+    // exact normalized word ("w:" prefix). Unsupported token forms (anything but letters, internal ' or -) return "".
+    dictionaryWordKey: (mem, word) => {
+        var w = String(word || "").toLowerCase().trim();
+        if (!/^[a-z0-9]+(?:['-][a-z0-9]+)*$/.test(w)) return "";
+        try {
+            var vm = typeof window !== "undefined" && window.__PARCHLOCK_ZVM__;
+            var h = ZRamReader.header(mem);
+            var buf = mem && mem.buffer, off = (mem && mem.byteOffset) || 0;
+            if (vm && vm.encode && vm.m && h && vm.m.buffer === buf && (vm.m.byteOffset || 0) === off
+                && (!!vm.version3) === (h.version <= 3)) {
+                var enc = vm.encode(Array.from(w, function (c) { return c.charCodeAt(0); }));
+                if (enc && enc.length) return "z:" + Array.prototype.join.call(enc, ",");
+            }
+        } catch (eEnc) {}
+        return "w:" + w;
+    },
+
     enclosingRoom: (mem, playerId) => {
         // Research proposal: validated ZIL v3 status location must also be
         // on the current player's containment chain. Never climb to its root.
@@ -154,6 +173,21 @@ var ZRamReader = {
                         }
                         // A truncated chain is not a validated ancestry either.
                         if (found && !cycle && cursor && !cursor.parent) return statusRoom;
+                        // The game's own HERE is a validated location but the player's chain holds no location at all
+                        // (Planetfall's sleep: player in bed 196 inside limbo containers 254 > 255): the game moved the
+                        // player out of the room tree, so HERE is the room. A real room on the chain still wins above.
+                        // ZIL rooms are the children of the ROOMS object (HERE's own parent); isLocationObject alone cannot
+                        // tell a bed from a room, so "outside the room tree" = no chain member shares HERE's parent.
+                        // Fail closed (grok #3577): only for a real placed player whose full chain was walked to the root.
+                        if (!found && !cycle && playerId > 0 && cursor && !cursor.parent && Object.keys(chain).length > 1) {
+                            var roomsRoot = (ZRamReader.objectLinks(mem, statusRoom) || {}).parent;
+                            var anyRoom = !roomsRoot;
+                            Object.keys(chain).forEach(function (cid) {
+                                var pl = ZRamReader.objectLinks(mem, +cid);
+                                if (+cid === roomsRoot || (pl && pl.parent === roomsRoot)) anyRoom = true;
+                            });
+                            if (!anyRoom) return statusRoom;
+                        }
                     }
                 }
             }
@@ -2645,12 +2679,13 @@ var ZRamReader = {
                         try { storyLabel = String((ZRamReader.storyShortName && ZRamReader.storyShortName(mem, cid)) || "").trim(); } catch (eStory) {}
                         // Accept it only when every content word is one of the object's own parser words: a short_name
                         // property that holds a routine decodes to junk ("that yss" in MakeItGood, "ecsuo e" in dewdrops).
-                        var vk = function (w) { return String(w || "").toLowerCase().replace(/[^a-z0-9'-]/g, "").slice(0, 9); };
-                        var own = {}; aliases.forEach(function (a) { own[vk(a)] = true; });
+                        // Ownership = the game's own dictionary encoding (Codex #3551/#3565): the live VM encoder, used only
+                        // when its memory is this mem and its version agrees; otherwise exact own-word equality. v5 "ticket"
+                        // does not own "ticketing"; v3 truncation and v5 "undershir"/"undershirt" stay equal.
+                        var vk = function (w) { return ZRamReader.dictionaryWordKey(mem, w); };
+                        var own = {}; aliases.forEach(function (a) { var k = vk(a); if (k) own[k] = true; });
                         var content = storyLabel.toLowerCase().split(/\s+/).filter(function (w) { return w && !/^(a|an|the|some|of|in|on|with|and|for|to)$/.test(w); });
-                        var verified = content.length > 0 && content.every(function (w) {
-                            var k = vk(w); return own[k] || Object.keys(own).some(function (o) { return o.length >= 6 && k.indexOf(o) === 0; });
-                        });
+                        var verified = content.length > 0 && content.every(function (w) { var k = vk(w); return !!k && !!own[k]; });
                         if (storyLabel && !/^yourself$/i.test(storyLabel) && verified) parserLabel = storyLabel;
                         if (parserLabel) {
                             out.push({

@@ -61,7 +61,9 @@ var ModuleStatFactsClaude = {
     // Hooded figure 67 ('remove hood') excluded: not target-scoped. Applied together with openCapability.
     "dce7e6f757fb8379dea9da9c13cdda5412ba03fa9b70d79fb6b8c7faf5970692": {
         "openCapability": { "all": ["container"], "none": ["supporter"] },
-        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "supporter": 26, "container": 10 }
+        // supporter 26 WITHDRAWN (Codex REVISE #3556): the pedestal test was ambient (identical bit-26 vector across commands)
+        // and the pedestal is unreachable through the cage; one reachable target positive (cage 81) only. Fail closed.
+        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10 }
     },
     // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
@@ -290,8 +292,8 @@ var ModuleStatFactsClaude = {
     // No source pin. Closed bag no longer spills its bottles/pills. SOLO/SELF-AUDIT.
     "ba9c2c81d6b55eb9fc7de43a2e439fc65304231cbb834c208005cd9460f44ff0": {
         "playerObject": 232,
-        "attributeMap": { "container": 9, "open": 5, "isOpen": 5 },
-        "openCapability": { "all": ["container"], "none": [] }
+        // No openCapability (grok2 REVISE #3576: "all containers" offered Open on the lapel, hat and bottles).
+        "attributeMap": { "container": 9, "open": 5, "isOpen": 5 }
     },
     // phlegm (Inform, no attribute-name table): this library numbers container 3 (I6 default: concealed 3, container 4).
     // Raw target-scoped PUT IN tests (zil-route-ops-raw.cjs): PUT MAP IN COAT tests 3 TRUE on the blue overcoat 39, PUT MAP
