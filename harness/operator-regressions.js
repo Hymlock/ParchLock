@@ -50,5 +50,20 @@ async function open(b, story, seeded) {
     check('wumpus remaining pellet underlined after taking one', m1.some(x => /pellet/.test(x)), m1);
     await p.close();
   } catch (e) { check('wumpus pellet run', false, e.message); }
+  if (!process.env.ONLY || process.env.ONLY==='weather') try { // ---- weather id24 picnickers: mark must be players OR cook-out (operator #3782) ----
+    const p = await open(b, 'weather.z5.js');
+    await p.cmd('look');
+    const info = await p.evaluate(() => {
+      const marks = [...document.querySelectorAll('.pl-act:not(.is-stale)')].map(m => ({
+        t: m.textContent.toLowerCase().trim(),
+        id: m.getAttribute('data-object-id')
+      }));
+      const o24 = (Actionable.payloadPool() || []).find(o => String(o.id) === '24');
+      return { marks, aliases: (o24 && o24.aliases) || [] };
+    });
+    const hit = info.marks.some(m => String(m.id) === '24' && /^(players|cook-out|cookout)$/.test(m.t));
+    check('weather id24 marked as players or cook-out', hit, info);
+    await p.close();
+  } catch (e) { check('weather id24 run', false, e.message); }
   await b.close(); console.log(pass + ' PASS / ' + fail + ' FAIL'); process.exit(fail ? 1 : 0);
 })();
