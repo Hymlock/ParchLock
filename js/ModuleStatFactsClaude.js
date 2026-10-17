@@ -38,7 +38,13 @@ var ModuleStatFactsClaude = {
         // WEARBIT 18 (grok1 2026-10-17, same replay): 'wear wet suit' @280 tests 139:18 TRUE, 'wear flippers' @284 tests 138:18 TRUE
         // ("You are now wearing ..."); 'wear flashlight' @291 tests flashlight 116:18 FALSE ("You can't wear the flashlight."). RAM 18 =
         // watch 6, diving suit 81, air tank 136, mask 137, flippers 138, wet suit 139 = source WEARBIT exact 6/6.
-        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18 }
+        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18 },
+        // WORNBIT 13 (grok1 2026-10-17, g1-ctA/B Jericho replay, test_attr recorded only during the named command): 'remove watch' @287 tests
+        // wrist watch 6:13 TRUE x3 ("You are now holding the wrist watch.") and the RAM scan after it drops 6 from the owners (UNWEAR FCLEARs);
+        // 'remove wet suit' @287 tests 139:13 TRUE; 'wear flippers' @284 tests 138:13 FALSE before and TRUE after; 'remove flashlight' @291
+        // tests flashlight 116:13 FALSE. Codex cold WEAR WATCH (items-codex/2026-10-17-cutthroats-wear-watch.json) 6:13 TRUE. Source V-WEAR
+        // (verbs:2742) checks WEARBIT 18 then FSETs WORNBIT 13; UNWEAR (2756) FCLEARs it.
+        "wornAttribute": 13
     },
     // Plundered Hearts (ZIL): OPENBIT 16: OPEN sets 16 on large cupboard, coffer, canvas hatch, iron door; CLOSE clears (cupboard, coffer). WORNBIT 22: WEAR sets 22 on breeches, shirt, ball gown; REMOVE clears (frock, shirt). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     "b53a2588c7926892f8f5e9b201c1855a01892e972d938bf919b4f36e1b8bd7db": {
