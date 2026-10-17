@@ -80,3 +80,13 @@ can exist (documented as untestable-by-rule).
 - Planetfall 21: microfilm reader 55, terminal 56, robot 110.
 - Ballyhoo 26: headphones 36, radio 48, light 58, chandelier 74, pseudo 76.
 - Witness 25: cigarette 43, pseudo 249.
+
+## More titles (afternoon)
+
+- Ballyhoo 26: UNTESTABLE BY RULE 7. V-LAMP-ON (way.zil) is an unconditional "You can't turn that on."; RADIO-F and
+  HEADPHONES-F handle their own verbs. LIGHTBIT is read only by the parser FIND scan, which the #4028 ruling excludes.
+- Plundered Hearts 25: V-ON tests LIGHTBIT on PRSO. The torch 9 and chandelier 59 are LOCAL-GLOBALS, visible from
+  STAIRWELL, BALLROOM, STAIRTOP and GALLERY. No walk reaches the mansion (longest: pq3, 303 steps, on the ship), so a
+  mansion route is needed.
+- Planetfall 21: V-LAMP-ON tests LIGHTBIT on PRSO. Carriers: microfilm reader 55 (Library 57) and terminal 56 (Library
+  Lobby 60). No walk reaches the library (c4, 403 steps). Floyd's TURN ON is handled by his own routine (no LB test).
