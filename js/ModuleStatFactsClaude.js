@@ -240,7 +240,10 @@ var ModuleStatFactsClaude = {
         // (2026-10-11-zil-walk-pzhhgg.json); 'look on bed' / 'look on bar' TRUE on 23, Ford and towel FALSE
         // (pzhhgg2, walkthrough + spliced probes). Source exact 22/22, 3/3. Applied together with openCapability.
         "openCapability": { "all": ["container"], "none": ["supporter"] },
-        "attributeMap": { "open": 39, "isOpen": 39, "animate": 42, "container": 40, "supporter": 23 },
+        // WEARBIT 25 (grok1 2026-10-17, zil-inv-hidden-ops @c3f1254 seed 4): 'wear gown' (step 3) tests 206:25 TRUE ("You are now wearing
+        // your gown."); 'wear toothbrush' (7) 31:25 FALSE and 'wear screwdriver' (7) 105:25 FALSE ("You can't wear the ..."). Whole module scanned
+        // (all 236 objects): the gown is the only 25 owner, so the rule-5 exception applies: source WEARBIT 25 exact 1/1 confirms.
+        "attributeMap": { "open": 39, "isOpen": 39, "animate": 42, "container": 40, "supporter": 23, "wearable": 25 },
         "wornAttribute": 24,
         // Native i (walkthrough step 60) tests bit44 TRUE on guarantee 18, green 128 / red 197 button inside the Sub-Etha
         // device 211 and omits them; FALSE on satchel, gown, fluff, thing, device, all printed. Source NDESCBIT 44 exact (77/77).
