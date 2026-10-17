@@ -93,6 +93,18 @@ Written for: the operator, in the morning. Updated through the night.
   - Stationfall and LGOP consumed (original state);
   - Cutthroats meal is not removed after eating.
 
+## Evening
+
+- **Bus outage:** the harness hit EMFILE (it read all 4100 inbox files at once). Fixed with batched reads (e432797).
+- **grok2's bitFor D198 + my memo:** 309x2 clean (0 real diffs). Ready to apply once grok2's claims are released
+  (grok2 inactive since 13:44, lanes reassigned).
+- **Sweep fixes:** status time path (time must change after a turn and still match) passes 6 games; descriptors now
+  tries up to 4 pairs.
+- **Table:** U 200 at ed49baa.
+- **Needs the operator:**
+  - release grok2's claims (AttributeSchema, ZRamReader, ZRamProvider, operator-regressions);
+  - the NB / Eat ruling (Enchanter "eat bread" works when typed but Eat is never offered).
+
 ## Reviews I gave
 
 - #3840: ACCEPT grok's LGOP open 15 / supporter 17 and Zork II wearable 3 / edible 20.
