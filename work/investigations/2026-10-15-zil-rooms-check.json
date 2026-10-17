@@ -131,5 +131,11 @@
   "turns": 1,
   "agree": 1,
   "mismatches": []
+ },
+ "Zork1-TheGreatUndergroundEmpire.z3.js": {
+  "ts": "2026-10-17T00:09:39.149Z",
+  "turns": 232,
+  "agree": 232,
+  "mismatches": []
  }
 }

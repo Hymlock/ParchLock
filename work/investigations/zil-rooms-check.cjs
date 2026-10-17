@@ -13,6 +13,8 @@ const norm = s => String(s || '').toLowerCase().replace(/^(the|a|an) /, '').repl
   for (const k of (process.env.ONLY || Object.keys(MAP).join(',')).split(',')) { const g = MAP[k]; const p = await b.newPage(); const rec = out[g] = { ts: new Date().toISOString(), turns: 0, agree: 0, mismatches: [] };
     try {
       await p.addInitScript(() => { let seed = 12345; Math.random = () => { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x80000000; }; sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); for (const x of ['PL_TutorialSeen', 'PL_MobileTutorialSeen', 'PL_LearnedWordsTutorialSeen']) localStorage.setItem(x, '1'); });
+      const JS = { zork1: 12, hhgg: 4, cutthroat: 10 }[k] || 0; /* Frotz z_random parity, as zil-inv-check */
+      await p.addInitScript((J) => { let A = J >>> 0, iv = 0, ct = 0; const fr = function (t) { t = t << 16 >> 16; if (t <= 0) { const v = -t; if (v === 0) { A = J >>> 0; iv = 0; } else if (v < 1000) { ct = 0; iv = v; } else { A = v >>> 0; iv = 0; } return 0; } let r; if (iv) { r = ct++; if (ct === iv) ct = 0; } else { A = (Math.imul(0x015a4e35, A) + 1) >>> 0; r = (A >>> 16) & 0x7fff; } return r % t + 1; }; let cur; Object.defineProperty(window, "__PARCHLOCK_ZVM__", { configurable: true, get() { return cur; }, set(v) { cur = v; if (v && !v.__jr) { v.__jr = 1; v.random = fr; } } }); }, JS);
       await p.goto(pathToFileURL(path.resolve('play.html')).href + '?story=games/' + g); await p.waitForTimeout(3500);
       const settle = async () => { for (let i = 0; i < 20 && !await p.locator('.Input.LineInput').count(); i++) { const c = p.locator('.Input.CharInput'); if (await c.count()) { await c.first().focus(); await p.keyboard.press('Space'); } await p.evaluate(() => { try { Message.Hide(); } catch (e) {} }); await p.waitForTimeout(200); } };
       const cmd = async c => { const n0 = await p.evaluate(() => document.querySelectorAll('.BufferLine').length); await p.locator('.Input.LineInput').fill(c); await p.keyboard.press('Enter'); await p.waitForTimeout(500); await settle(); return p.evaluate(n0 => [...document.querySelectorAll('.BufferLine')].slice(n0).map(l => l.textContent), n0); };
@@ -20,7 +22,7 @@ const norm = s => String(s || '').toLowerCase().replace(/^(the|a|an) /, '').repl
       if (!W[k]) { for (let q = 0; q < 6; q++) { const scr = (await p.evaluate(() => document.querySelector('#windowport').innerText.slice(-400))).toLowerCase(); if (/yes or no/.test(scr)) await cmd('yes'); else if (/type your (first |last )?name|what is your name/.test(scr)) await cmd('Codex'); else break; } }
       const seq = (W[k] || ROUTES[k] || []).slice(0, +(process.env.STEPS || 60));
       for (const c of seq) {
-        if (/^WAITUNTIL:/.test(c)) { await cmd('wait'); continue; }
+        if (/^WAITUNTIL:/.test(c)) { const re = new RegExp(c.slice(10), 'i'); for (let w = 0; w < 40; w++) { const out = await cmd('wait'); if (re.test(out.join(' '))) break; } continue; }
         await cmd(c);
         const r = await p.evaluate(() => { WorldModel.tick(); const P = WorldModel.lastPayload || {}; const st = document.querySelector('.GridWindow.reverse') || document.querySelector('.GridWindow'); const status = st ? st.innerText.split('\n')[0] : '';
           return { app: P.roomName, appId: P.roomId, status: status.replace(/\s{2,}.*$/, '').trim() }; });
