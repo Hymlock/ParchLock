@@ -29,7 +29,8 @@
    "DRINKBIT"
   ],
   "hits": {},
-  "verdict": "ABSENT"
+  "verdict": "EXCLUDED",
+  "excludedBy": "codex #3963: Ballyhoo uses EATBIT 25 (5 FLAGS carriers: refreshment, meat, granola ...); my grep searched FOODBIT/DRINKBIT only"
  },
  {
   "title": "Borderzo",
