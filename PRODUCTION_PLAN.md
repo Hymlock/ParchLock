@@ -9125,7 +9125,23 @@ attr-calibrator-inventory-root 13/0; phase2-heuristic-cutover 147/2 (2 pre-exist
   recovery; R3 exact header grammar, prose ends unindented blocks, longest-first relocation worklist; R4 Zork III supporter26
   withdrawn; R5 Sherlock openCapability removed; R6 enclosingRoom trusts HERE only for a placed player with a full chain.
 - Process (operator 2026-10-17): parallel gate (gate-parallel.sh, ~6 min for 309) and owned implementation lanes per seat;
-  Claude integrates and commits.
+  Claude integrates and commits. Superseded (operator, 2026-10-17): each seat self-commits its own lane under the #3670
+  standard (doc check, rules 1-13, gate, operator-regressions 0 FAIL, one peer ACCEPT msg#).
+- 0cb2801 (grok): Zork III supporter26 restored under the rule-5 exception (module exhausted, source 2/2); Ballyhoo s17
+  corroborated. 4cb01d2 (grok): Spellbreaker animate/talkable 31.
+- Rule 11 amended (operator directive #3780, 2026-10-17):
+  - Shared code (Actionable, ActionSynth, AttributeSchema, ZRamReader/ZRamProvider, harness/underline-*, label-admission)
+    needs the full 309-game gate (GLULX=1), run twice on base and twice on cand. A diff counts only if it appears in both
+    cand runs and neither base run. Titles that flip are reported as UNSTABLE with their marks, never waived. Every diff is
+    explained in the commit message with one cause line; an unexplained diff blocks the commit.
+  - The stratified sample (>=4 ZIL incl. Zork I, >=4 Inform Z, >=2 Glulx, plus reachable titles and wump2ka) applies only
+    to per-title facts entries (ModuleStatFacts digests).
+  - Inform/Glulx regressions come first: Jigsaw particle mark "in" and the suvehnux bare "cage" coverage are root-caused
+    and fixed, each with a permanent guard in harness/operator-regressions.js, before any further shared-code commit.
+  - ZIL-only logic is gated on the canonical family detection, D198 `GrammarProvider.decodeD198(mem)` with
+    `classification === 'confirmed-zil-family' && evidence === 'validated'` (as GrammarProvider/ExitCalibrator/
+    AttributeSchema already use). Unknown family = no ZIL path. Guard: an Inform title (curses, Bronze) is unchanged when
+    the ZIL logic is toggled.
 
 **Open:** heist/phlegm library attribute order (container 3 / door 4 census, no target-scoped positive yet); Sherlock
 nested container/open facts (no source pin).
