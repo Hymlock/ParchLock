@@ -107,6 +107,25 @@ var AttributeSchema = {
             return cap && Array.isArray(cap.all) && Array.isArray(cap.none) ? cap : null;
         } catch (e) { return null; }
     },
+    // True when container-derived Open/Close may be offered. none:[X] with no measured bit for X is UNKNOWN and
+    // fails closed (no Open) — Zork III container:10 with unmapped supporter must not open pedestals/cages (#3642).
+    openCapabilityAllows: function (attrs, mem) {
+        var cap = AttributeSchema.openCapability();
+        if (!cap) return true;
+        var a = attrs || {};
+        if (!cap.all.every(function (k) { return !!a[k]; })) return false;
+        for (var i = 0; i < cap.none.length; i++) {
+            var flag = cap.none[i];
+            var bit = null;
+            try { bit = AttributeSchema.bitFor(flag, mem); } catch (eB) { bit = null; }
+            // Unmapped none-flag or attrs omitting the key = UNKNOWN → fail closed (Codex #3668/#3682).
+            // Real decoder yields boolean; require a[flag] === false for explicit negative.
+            if (bit == null) return false;
+            if (!Object.prototype.hasOwnProperty.call(a, flag)) return false;
+            if (a[flag] !== false) return false;
+        }
+        return true;
+    },
     // Reuse digest/stable-header ownership; decode the family only for a mapped flag.
     measuredFlagOwner: function (mem, flag) {
         try {
@@ -157,8 +176,9 @@ var AttributeSchema = {
             // confirmed bit; worn already fail-closed above.
             // ZIL structural flags without attributeMap: null (fail closed).
             // AttrCalibrator object overrides still apply later in applyTo.
+            // animate included: I6 PROFILE bit 0 is not Infocom ACTORBIT (grok1 #3590).
             var zilStructural = {
-                container: 1, openable: 1, open: 1, isOpen: 1, supporter: 1,
+                animate: 1, container: 1, openable: 1, open: 1, isOpen: 1, supporter: 1,
                 lockable: 1, locked: 1, door: 1, transparent: 1, enterable: 1
             };
             if (zilStructural[flagName] && mem && typeof ZRamReader !== "undefined"

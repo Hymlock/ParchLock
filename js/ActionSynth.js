@@ -62,8 +62,8 @@ var ActionSynth = {
         // predicate, the CONTAINER rule's open/close need it (Zork I: container and not
         // supporter; the kitchen table refuses CLOSE). Only this attribute-derived path;
         // the openable rule and learned AttrCalibrator verbs below are unchanged.
-        var cap = typeof AttributeSchema !== "undefined" && AttributeSchema.openCapability ? AttributeSchema.openCapability() : null;
-        var capOk = !cap || (cap.all.every(function (k) { return !!a[k]; }) && cap.none.every(function (k) { return !a[k]; }));
+        var capOk = typeof AttributeSchema === "undefined" || !AttributeSchema.openCapabilityAllows
+            || AttributeSchema.openCapabilityAllows(a, typeof AttributeSchema._getMem === "function" ? AttributeSchema._getMem() : null);
         Object.keys(ActionSynth.rules).forEach(function (key) {
             if (key === "default") return;
             if (a[key]) {

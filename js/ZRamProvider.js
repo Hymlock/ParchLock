@@ -28,10 +28,20 @@ var ZRamProvider = {
         // A digest-pinned, validated player (playerObject / playerGlobal fact) is executable-owned evidence and outranks
         // every learned or structural guess: Sherlock's learner otherwise settled on the coat pocket.
         try {
-            var lf = ZRamReader.executableLayoutFacts && ZRamReader.executableLayoutFacts(mem);
-            // A pinned fact that resolves to 0 (fact-uninitialized) means "no holder yet", never a learned or guessed root
-            // (Codex #3552/#3566).
-            if (lf && (Number.isInteger(lf.playerObject) || Number.isInteger(lf.playerGlobal))) return playerId || 0;
+            // Digest-pinned player via ZRamReader.resolvePlayer (links/range validated; fact-uninitialized → 0).
+            // Cheap fact declaration guard first (Codex #3682): skip costly resolve when no pin exists.
+            // Never return the caller's playerId here (Codex #3668 / grok #3589).
+            try {
+                var lfQuick = ZRamReader.executableLayoutFacts && ZRamReader.executableLayoutFacts(mem);
+                if (lfQuick && (Number.isInteger(lfQuick.playerObject) || Number.isInteger(lfQuick.playerGlobal))
+                    && typeof ZRamReader.resolvePlayer === "function") {
+                    var pinned = ZRamReader.resolvePlayer(mem);
+                    if (pinned && (pinned.source === "measured-player-object" || pinned.source === "measured-player-global"
+                        || pinned.source === "fact-uninitialized")) {
+                        return pinned.id || 0;
+                    }
+                }
+            } catch (ePin) {}
         } catch (eFact) {}
         try {
             if (typeof AttrCalibrator !== "undefined" && AttrCalibrator.confirmedInventoryRootId) {
