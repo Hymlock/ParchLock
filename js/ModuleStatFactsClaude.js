@@ -16,7 +16,9 @@ var ModuleStatFactsClaude = {
         // that?"); 'eat lamp' (89) 76:20 FALSE ("I don't think that the lamp would agree with you."). RAM 20 = red/orange/blue/
         // green cakes 68-71 + package of candy 55 = source FOODBIT exact 5/5.
         "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30, "wearable": 3, "edible": 20 },
-        "openCapability": { "all": ["container"], "none": ["supporter"] }
+        // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
+        // (source: ROBOT, CERBERUS, UNICORN (2dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
+        "openCapability": { "all": ["container"], "none": ["supporter", "animate"] }
     },
     // Cutthroats (ZIL): OPENBIT 21 (original-scene native explorer, zil-native-explore4.json, no relocation): hotel-room dresser RAM bit 21
     // 0 closed -> 1 after OPEN (reveals book/key/passbook) -> 0 after CLOSE (contents hidden); OPEN on the bed tests 21 TRUE ("already open"). Container 11 unknown.
@@ -42,7 +44,9 @@ var ModuleStatFactsClaude = {
     "b53a2588c7926892f8f5e9b201c1855a01892e972d938bf919b4f36e1b8bd7db": {
         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): container, supporter - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
         // SURFACEBIT 18: TRUE on table 75, cot 82, silver tray 198; FALSE on well 4, whip 6, powder horn 14. WEARBIT 21: TRUE on shirt 130, breeches 194, ball gown 200; FALSE on line 74. Walk m2 (terminal ending). Surface-aware Open/Close as Zork I. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
-        "openCapability": { "all": ["container"], "none": ["supporter"] },
+        // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
+        // (source: LUCY, DAD, LAFOND, CRULLEY, COOKIE (extras.zil), HERO (hero.zil), CROC (island.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
+        "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
         // Q8 player root: G185 is the only global holding object 192, and every successful TAKE in the walkthrough (4 items) moves the item into 192; the app read player 15 and showed an empty inventory (zil-player-root.json, tmp pglob).
         "playerGlobal": 185,
         // CONTBIT 24: TRUE on coffer, bed, cupboard; FALSE on Davis, pile of clothes. ACTORBIT 31: TRUE on Crulley, Cookie, Lucy, butler; FALSE on coffer, bed. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
@@ -100,7 +104,9 @@ var ModuleStatFactsClaude = {
         // pzballyhoo, surfaces targeted). Source CONTBIT 23 / SURFACEBIT 17 exact. Together, so surfaces get no Open/Close.
         // Corroborated 2026-10-16 (grok1 g1-bhput/bhputst/bhputneg): target-dispatched SURFACEBIT 17 TRUE on desk 103 ('put spreadsheet on desk',
         // step 264, 'Done.') and lion stand 96 ('put radio on stand', step 377, 'Done.'); FALSE on telephone 203 ('no good surface').
-        "openCapability": { "all": ["container"], "none": ["supporter"] },
+        // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
+        // (source: APE, MUNRAB, GUARD, JOEY, CON, THUMB, FAT, DEALER, HAWKER, JENNY, HYP, DICK, JIM, ANDREW (way.zil, outside.zil, bigtop.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
+        "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
         "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17 },
         // Native i (walkthrough step 90) tests bit6 TRUE on pink dot 231 / blue dot 71 inside the open ticket 122 and
         // omits them; tests it FALSE on bucket 65, meat 102, bullwhip 16, ticket 122 and prints them. Source NDESCBIT 6
@@ -155,7 +161,9 @@ var ModuleStatFactsClaude = {
         // trunk, receptacle (2026-10-11-zil-walk-pzsorcerer.json); SURFACEBIT 17 TRUE on bed ('look on bed') and darkwood desk
         // ('put key on desk'), FALSE on tapestry ("no good surface") (pzsorcerer3). The spell book has 27+15, so its spells stay
         // listed (D148 intent). With openCapability.
-        "openCapability": { "all": ["container"], "none": ["supporter"] },
+        // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
+        // (source: HAWKER (park.zil), OLDER-SELF (coal.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
+        "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
         // ACTORBIT 31 original scene, target-scoped (SOLO/SELF-AUDIT 2026-10-16, 2026-10-16-zil-inv-hidden-ops.json):
         // 'GNOME, HELLO' tests 31 TRUE on gnome 245, 'TWIN, HELLO' TRUE on your older self 26, 'BOOK, HELLO' FALSE on spell
         // book 139 ("You can't talk to a spell book!"). Source exact 9/9.
@@ -264,7 +272,9 @@ var ModuleStatFactsClaude = {
         // CONTBIT 40 / SURFACEBIT 23 original scene, target-scoped: 'look in gown' / 'look on bed' TRUE on 40, curtains FALSE
         // (2026-10-11-zil-walk-pzhhgg.json); 'look on bed' / 'look on bar' TRUE on 23, Ford and towel FALSE
         // (pzhhgg2, walkthrough + spliced probes). Source exact 22/22, 3/3. Applied together with openCapability.
-        "openCapability": { "all": ["container"], "none": ["supporter"] },
+        // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
+        // (source: FORD, PROSSER (earth.zil), TRILLIAN, NUTRIMAT (heart.zil), ENGINEER, GUARDS (globals.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
+        "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
         // WEARBIT 25 (grok1 2026-10-17, zil-inv-hidden-ops @c3f1254 seed 4): 'wear gown' (step 3) tests 206:25 TRUE ("You are now wearing
         // your gown."); 'wear toothbrush' (7) 31:25 FALSE and 'wear screwdriver' (7) 105:25 FALSE ("You can't wear the ..."). Whole module scanned
         // (all 236 objects): the gown is the only 25 owner, so the rule-5 exception applies: source WEARBIT 25 exact 1/1 confirms.
@@ -621,7 +631,9 @@ var ModuleStatFactsClaude = {
         // the spot."); 'drink garlic' 189:21 TRUE ("How can you drink that?"; EAT GARLIC is intercepted by its own handler); 'eat sack'
         // 224:21 FALSE ("I don't think that the brown sack would agree with you."). Full RAM scan (247 objects): only 189 and 225 carry 21. Source FOODBIT 21 exact 2/2.
             "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "edible": 21 },
-        "openCapability": { "all": ["container"], "none": ["supporter"] },
+        // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
+        // (source: THIEF (1dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
+        "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
         "command": "score", "fields": ["score.max", "rank"], "replyFamily": "inform-score", "outcome": "line",
         "evidence": "2026-10-05 live SCORE: Your score is 0 (total of 350 points), in 0 moves. / This gives you the rank of Beginner."
     },
