@@ -9120,6 +9120,13 @@ attr-calibrator-inventory-root 13/0; phase2-heuristic-cutover 147/2 (2 pre-exist
   elsewhere (Lurking pc no longer "computer terminals"; Ralph "Blamant the Teddy"; Hollywood "photo of Uncle Buddy").
 - bd9ef47: Lurking Horror inventoryHiddenAttribute 18 (pc mouse / HELP key).
 
+- 252e145 audit repairs (Codex #3551-#3566, grok #3576/#3577): R1 dictionary-encoding ownership for story short names; R2
+  learner listed = names in genuine listing rows, pinned-uninitialized = no holder, placed-empty guard before unnamed-wrapper
+  recovery; R3 exact header grammar, prose ends unindented blocks, longest-first relocation worklist; R4 Zork III supporter26
+  withdrawn; R5 Sherlock openCapability removed; R6 enclosingRoom trusts HERE only for a placed player with a full chain.
+- Process (operator 2026-10-17): parallel gate (gate-parallel.sh, ~6 min for 309) and owned implementation lanes per seat;
+  Claude integrates and commits.
+
 **Open:** heist/phlegm library attribute order (container 3 / door 4 census, no target-scoped positive yet); Sherlock
 nested container/open facts (no source pin).
 
