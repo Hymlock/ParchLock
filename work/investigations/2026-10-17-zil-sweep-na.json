@@ -3,13 +3,15 @@
   "title": "Zork1-TheGreatUndergroundEmpire",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Zork1-TheGreatUndergroundEmpire",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "SOLID",
+  "scope": "bounded (codex #3937): no duplicate/shared-head INITIAL takeable short names in the compiled boot object table; not a live all-state N/A"
  },
  {
   "title": "Zork1-TheGreatUndergroundEmpire",
@@ -21,13 +23,15 @@
   "title": "Zork2-TheWizardofFrobozz",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Zork2-TheWizardofFrobozz",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "SOLID",
+  "scope": "bounded (codex #3937): no duplicate/shared-head INITIAL takeable short names in the compiled boot object table; not a live all-state N/A"
  },
  {
   "title": "Zork2-TheWizardofFrobozz",
@@ -45,7 +49,8 @@
   "title": "Zork3-TheDungeonMaster",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Zork3-TheDungeonMaster",
@@ -70,13 +75,15 @@
   "title": "Enchanter",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Enchanter",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "SOLID",
+  "scope": "bounded (codex #3937): no duplicate/shared-head INITIAL takeable short names in the compiled boot object table; not a live all-state N/A"
  },
  {
   "title": "Enchanter",
@@ -100,13 +107,15 @@
   "title": "Hitchhik",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Hitchhik",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "SOLID",
+  "scope": "bounded (codex #3937): no duplicate/shared-head INITIAL takeable short names in the compiled boot object table; not a live all-state N/A"
  },
  {
   "title": "Hitchhik",
@@ -130,19 +139,22 @@
   "title": "Ballyhoo",
   "key": "nested",
   "reason": "no source container/child/OPENBIT",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Ballyhoo",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Ballyhoo",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Ballyhoo",
@@ -166,13 +178,15 @@
   "title": "Cutthroats",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Cutthroats",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "SOLID",
+  "scope": "bounded (codex #3937): no duplicate/shared-head INITIAL takeable short names in the compiled boot object table; not a live all-state N/A"
  },
  {
   "title": "Cutthroats",
@@ -196,13 +210,15 @@
   "title": "Deadline",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Deadline",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "SOLID",
+  "scope": "bounded (codex #3937): no duplicate/shared-head INITIAL takeable short names in the compiled boot object table; not a live all-state N/A"
  },
  {
   "title": "Deadline",
@@ -226,7 +242,8 @@
   "title": "Infidel",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Infidel",
@@ -244,13 +261,15 @@
   "title": "HollywoodHijinx",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "HollywoodHijinx",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "SOLID",
+  "scope": "bounded (codex #3937): no duplicate/shared-head INITIAL takeable short names in the compiled boot object table; not a live all-state N/A"
  },
  {
   "title": "HollywoodHijinx",
@@ -262,7 +281,8 @@
   "title": "LeatherGoddessesofPhobos",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "SOLID",
+  "scope": "bounded (codex #3937): no duplicate/shared-head INITIAL takeable short names in the compiled boot object table; not a live all-state N/A"
  },
  {
   "title": "LeatherGoddessesofPhobos",
@@ -280,7 +300,8 @@
   "title": "Moonmist",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "SOLID",
+  "scope": "bounded (codex #3937): no duplicate/shared-head INITIAL takeable short names in the compiled boot object table; not a live all-state N/A"
  },
  {
   "title": "Moonmist",
@@ -292,13 +313,15 @@
   "title": "PlunderedHearts",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "PlunderedHearts",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "SOLID",
+  "scope": "bounded (codex #3937): no duplicate/shared-head INITIAL takeable short names in the compiled boot object table; not a live all-state N/A"
  },
  {
   "title": "PlunderedHearts",
@@ -322,13 +345,15 @@
   "title": "Planetfall",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Planetfall",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "SOLID",
+  "scope": "bounded (codex #3937): no duplicate/shared-head INITIAL takeable short names in the compiled boot object table; not a live all-state N/A"
  },
  {
   "title": "Planetfall",
@@ -346,7 +371,8 @@
   "title": "Spellbreaker",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Spellbreaker",
@@ -376,13 +402,15 @@
   "title": "Suspect",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Suspect",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Suspect",
@@ -406,13 +434,15 @@
   "title": "TheWitness",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "TheWitness",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "SOLID",
+  "scope": "bounded (codex #3937): no duplicate/shared-head INITIAL takeable short names in the compiled boot object table; not a live all-state N/A"
  },
  {
   "title": "TheWitness",
@@ -442,7 +472,8 @@
   "title": "Borderzo",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "SOLID",
+  "scope": "bounded (codex #3937): no duplicate/shared-head INITIAL takeable short names in the compiled boot object table; not a live all-state N/A"
  },
  {
   "title": "Borderzo",
@@ -467,7 +498,8 @@
   "title": "TheLurkingHorror",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "TheLurkingHorror",
@@ -497,7 +529,8 @@
   "title": "Seastalker",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "SOLID",
+  "scope": "bounded (codex #3937): no duplicate/shared-head INITIAL takeable short names in the compiled boot object table; not a live all-state N/A"
  },
  {
   "title": "Seastalker",
@@ -521,13 +554,15 @@
   "title": "Sorcerer",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Sorcerer",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "SOLID",
+  "scope": "bounded (codex #3937): no duplicate/shared-head INITIAL takeable short names in the compiled boot object table; not a live all-state N/A"
  },
  {
   "title": "Sorcerer",
@@ -552,13 +587,15 @@
   "title": "Starcross",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Starcross",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "SOLID",
+  "scope": "bounded (codex #3937): no duplicate/shared-head INITIAL takeable short names in the compiled boot object table; not a live all-state N/A"
  },
  {
   "title": "Starcross",
@@ -582,13 +619,15 @@
   "title": "Stationfall",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Stationfall",
   "key": "identical",
   "reason": "no two takeable objects with identical names in this title (whole object table searched)",
-  "verdict": "SOLID"
+  "verdict": "SOLID",
+  "scope": "bounded (codex #3937): no duplicate/shared-head INITIAL takeable short names in the compiled boot object table; not a live all-state N/A"
  },
  {
   "title": "Stationfall",
@@ -613,7 +652,8 @@
   "title": "Suspended",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Suspended",
@@ -637,7 +677,8 @@
   "title": "Wishbringer",
   "key": "descriptors",
   "reason": "no two source-takeable objects share a head noun with different names",
-  "verdict": "SOLID"
+  "verdict": "EXCLUDED",
+  "excludedBy": "grok #3932: compiled object table (g1-objtab) shows shared head nouns / duplicate names or no exact TAKEBIT; the old sweep reason was wrong"
  },
  {
   "title": "Wishbringer",
