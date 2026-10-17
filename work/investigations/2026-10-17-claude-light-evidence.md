@@ -51,3 +51,18 @@ Bounded scan with `zil-objtab-carriers.cjs`, valid IDs up to the first property 
 
 A parser GWIM/FIND scan does not satisfy rule 7. Lurking light 22 therefore stays U, because only a FIND-scan negative
 can exist (documented as untestable-by-rule).
+
+## Stationfall lightSource 24: rule 5 complete
+
+- Walk positives, target-named: `turn reader off` 29:24 TRUE; `turn lamp on` 141:24 TRUE.
+- Cold device negatives: `turn on uniform` 229:24 FALSE; `turn on chronometer` 1:24 FALSE; `turn off card` 81:24 FALSE
+  ("You can't turn that on/off.").
+- Census (bounded): 11 objects. Source LIGHTBIT: 12 FLAGS carriers.
+
+## Other titles: census vs walk tests on the LB bit
+
+- Hollywood 3: positive flashlight 123 ("TURN ON FLASHLIGHT"). The negatives 63 and 179 came from "TURN IT ON" /
+  "LIGHT IT", which name the object only through a pronoun.
+- LGOP 25: positive flashlight 110 only.
+- Enchanter 22: positive lantern 94 only.
+- No LB test in any walk: Ballyhoo, Moonmist, Planetfall, PH, H2G2, Witness, Zork III, Sorcerer.
