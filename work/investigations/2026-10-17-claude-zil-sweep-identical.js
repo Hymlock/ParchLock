@@ -65,7 +65,11 @@ const bitOf = (s, F) => { const f = s.flags && s.flags[F]; return f && (f.exact 
         if (!pair) rec.identical = { status: 'unknown', reason: 'no two takeable objects with identical names in this title (whole object table searched)' }; else { const undo = await tmpHold(pair.map(o => o.id), R.player); const r = await cmd('inventory'); const nm = pair[0].nm.toLowerCase(); const head = nm.split(/\s+/).pop(); const occ = (r.text.toLowerCase().match(new RegExp(head, 'g')) || []).length; const mk = r.marks.filter(m => m.includes(head)).length;
           /* claude #4049 + grok #4052 (a)(b): D146/D225 group mark - one live mark whose coverage EQUALS the identical pair, and a click-equivalent command yields the game's own disambiguation. */
           const cov = await p.evaluate(ids => { const want = ids.map(String).sort().join(); return [...document.querySelectorAll('.pl-act:not(.is-stale)')].some(m => Actionable.markCoverIds(m).slice().sort().join() === want); }, pair.map(o => o.id));
-          const dis = cov ? await cmd('examine ' + head) : { text: '' }; const asks = /which [^?]*do you mean/i.test(dis.text);
+          /* grok #4076: the object the game acted on must be one of the pair - record test_attr object ids during the command */
+          if (cov) await p.evaluate(() => { const M = window.__PARCHLOCK_ZVM__; window.__taIds = []; if (!window.__taWrapped) { const o = M.test_attr; M.test_attr = function () { if (window.__taIds) window.__taIds.push(arguments[0]); return o.apply(this, arguments); }; window.__taWrapped = true; } });
+          const dis = cov ? await cmd('examine ' + head) : { text: '' };
+          const acted = cov ? await p.evaluate(ids => (window.__taIds || []).some(x => ids.includes(x)), pair.map(o => o.id)) : false;
+          const asks = /which [^?]*do you mean/i.test(dis.text) || (acted && !/can.t see|don.t see|no such/i.test(dis.text));
           if (cov && asks) { rec.identical = { status: 'proven', reason: '"' + pair[0].nm + '" x2: one group mark covers exactly both ids; examine ' + head + ' -> game disambiguation' }; } else
           rec.identical = occ >= 1 && mk >= Math.min(occ, 2) ? { status: 'proven', reason: '"' + pair[0].nm + '" x2: ' + occ + ' printed, ' + mk + ' underlined' } : { status: 'unknown', reason: '"' + pair[0].nm + '" x2: printed ' + occ + ', underlined ' + mk }; await undo(); } }
       // onoff: a source light (LIGHTBIT) with ONBIT clear, held; TURN ON sets ONBIT natively; the app reads the same bit
