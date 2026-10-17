@@ -219,7 +219,11 @@ var ModuleStatFactsClaude = {
         // (2026-10-11-zil-walk-pzseastalker3.json). CONTBIT 26 - 'look in' TRUE on mechanical supply shelf, reactor; FALSE on
         // Snark, gangplank, supply bunches, scanner, Computestor (pzseastalker). With openCapability.
         "openCapability": { "all": ["container"], "none": ["supporter"] },
-        "attributeMap": { "supporter": 6, "open": 18, "isOpen": 18, "container": 26 },
+        // ONBIT 19 = on (claude a7c17d3 work/investigations/2026-10-17-zil-on-walk-evidence.json + grok1 g1-ssO, 2026-10-17; test_attr recorded
+        // only during the named command): TURN ON sets 19 on microphone 62, Computestor 91, videophone 141 and reactor 227 (each tests FALSE
+        // before / TRUE after); cold 'turn on logbook' tests logbook 195:19 FALSE ("You can't turn on the Logbook now."). Source ONBIT exact;
+        // bounded scan: 38 carriers, mostly lit rooms; attrs.on is read only by ZRamReader 2718 (inventory item-likeness), not room admission.
+        "attributeMap": { "supporter": 6, "open": 18, "isOpen": 18, "container": 26, "on": 19 },
         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): supporter - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
         // SURFACEBIT 6: TRUE on workbench 64, mechanical/electronic/chemical supply shelves 67/70/72, work counter 189; FALSE on microphone 62, file drawer 78, electrolyte relay 115. Walk m1; source exact (9 objects). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         "inventoryHiddenAttribute": 17
@@ -661,7 +665,12 @@ var ModuleStatFactsClaude = {
         // FOODBIT 21 (grok1 2026-10-16, zil-inv-hidden-ops @c3f1254 seed 12, step 11): 'eat lunch' tests 225:21 TRUE ("It really hit
         // the spot."); 'drink garlic' 189:21 TRUE ("How can you drink that?"; EAT GARLIC is intercepted by its own handler); 'eat sack'
         // 224:21 FALSE ("I don't think that the brown sack would agree with you."). Full RAM scan (247 objects): only 189 and 225 carry 21. Source FOODBIT 21 exact 2/2.
-            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "edible": 21 },
+        // LIGHTBIT 31 = light (claude 7f9c74d + grok1 g1-z1T, 2026-10-17; test_attr recorded only during the named command): lamp/'douse lamp'
+        // walk tests brass lantern 164:31 TRUE x5; 'turn on torch' @37 tests torch 104:31 TRUE ("It is already on.": TORCH-OBJECT, 1actions.zil:944-952,
+        // does not handle LAMP-ON, so V-LAMP-ON gverbs.zil:786-789 tests FSET? PRSO LIGHTBIT); cold 'turn on' negatives mailbox 160:31 and leaflet
+        // 161:31 FALSE ("You can't turn that on."). Source LIGHTBIT = torch, candles, lamp; bounded compiled-table scan (250 objects, ends at
+        // first property 3000): bit-31 carriers = {104, 147, 164} = source 3/3. Consumers (#3904 audit, which answers the #3380 capability concern): no map-room effect (1679 blank names only).
+            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "edible": 21, "light": 31 },
         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
         // (source: THIEF (1dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
