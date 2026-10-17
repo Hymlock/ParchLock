@@ -101,7 +101,15 @@ var ModuleStatFactsClaude = {
     // DESC "it"). No PLAYER global; WINNER G197 is mutable (globals.zil 923/928 BELBOZ, verbs.zil 334/359 PRSO). Native TAKE puts the
     // item in 52 (zil-player-root); app previously read 22 with an empty inventory.
     "2d097ac9e4081b68658d0331345176946253cb349ed66eeff88533826cae29d0": {
-        "playerObject": 52
+        "playerObject": 52,
+        // SURFACEBIT 3 (grok1 2026-10-16, Jericho walk + Frotz seed 1 per c3f1254, target-dispatched occurrence counted beyond
+        // a same-step control): 'put spell book on carpet' (step 209) "Done." 95:3 TRUE; 'put burin on idol' (148) "There's
+        // no room." 78:3 TRUE; 'put burin on green rock' (286) "Done." 42:3 TRUE; 'put spell book on zipper' (209) "There's no
+        // good surface on the zipper." 198:3 FALSE. Source SURFACEBIT 3 exact. OPENBIT 21 / CONTBIT 27 are also proven natively
+        // (OPEN sets 21 on zipper/box/bottle, CLOSE clears zipper; LOOK IN tests 27 TRUE box, FALSE knife 170), but HELD (rule 4):
+        // RAM CONTBIT+OPENBIT is set on actors (Belboz 13, merchant 203, ogre 232) and CONTBIT on scrolls/piles/spell book, so a
+        // container/open fact would offer Open/Close on them. That needs an animate/openability disposition first.
+        "attributeMap": { "supporter": 3 }
     },
     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
         "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12 },
