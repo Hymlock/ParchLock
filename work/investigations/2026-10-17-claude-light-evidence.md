@@ -91,3 +91,4 @@ can exist (documented as untestable-by-rule).
 - Planetfall 21: V-LAMP-ON tests LIGHTBIT on PRSO. Carriers: microfilm reader 55 (Library 57) and terminal 56 (Library
   Lobby 60). No walk reaches the library (c4, 403 steps). Floyd's TURN ON is handled by his own routine (no LB test).
 - Witness 25: UNTESTABLE BY RULE 7. V-LAMP-ON handles SINK/GLOBAL-WATER, PERSON and a refusal; LIGHTBIT (cigarette 43, in GLOBAL-OBJECTS) is read only by the SYNTAX LIGHT (FIND LIGHTBIT) scan.
+- Hollywood 3 second positive: the unseeded zil-walk desynced (turn 71 at route step 136, computer not in scope); needs a Frotz-parity seed for the hollywood route (unknown). Parked.
