@@ -399,6 +399,16 @@ var ModuleStatFactsClaude = {
         "attributeMap": { "open": 8, "isOpen": 8, "container": 9, "supporter": 16, "animate": 31 },
         "playerObject": 79
     },
+    // Starcross (Infocom v3): animate 11 = VICBIT (grok1 2026-10-17; route agent-tools/g1-routes.json 'scs' = zil-routes starcross with
+    // the 'SCUM' placeholder replaced by the course for the seed-0 mass UM08, R150 theta210 phi17, dungeon.zil MASS-LOCS; test_attr only
+    // during the named command, objects present): Spherical Ship @56 'look in spider' tests 196:11 TRUE and Village Center @132 'look in
+    // chief' tests 169:11 TRUE ("There is nothing special to be seen.", V-LOOK-INSIDE VICBIT branch verbs.zil:982); 'give library to suit'
+    // tests space suit 144:11 FALSE and 'give library to red rod' tests 45:11 FALSE ("You can't give a tape library to a ...", V-GIVE
+    // verbs.zil:671). Bounded table: 6 carriers = weasel chieftain x2, rat-ant, giant spider, weasel-like alien, ship computer 24
+    // (addressed by 'computer, ...'); no rooms. VILLAIN 20 is NOT animate (palisade, laser beam, nest). No container is mapped.
+    "1d9a69257349060823893f4cfa616f1040a3b41cbf38a6717199f206cd8f678c": {
+        "attributeMap": { "animate": 11 }
+    },
     // Sherlock (Infocom, z5; no historicalsource pin): constant PC object 232 "you" (Watson). Native i lists exactly
     // 232's children (black bag 172, whistle 173, hat 188, coat 302); G201 holds 232 and its parent follows the status-line
     // room on travel (221-B Baker Street 38 -> KNOCK ON DOOR -> Entry Hall 111), measured 2026-10-16 (zil-route-ops). The
