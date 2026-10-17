@@ -519,8 +519,8 @@
    "reason": "nightshirt inside open punchbowl: listed natively and underlined"
   },
   "actors": {
-   "status": "unknown",
-   "reason": "GAP: app animate bit null != source ACTORBIT 31 (needs native proof + attributeMap animate)"
+   "status": "proven",
+   "reason": "app animate bit = source ACTORBIT 31"
   },
   "status": {
    "status": "unknown",
@@ -787,8 +787,8 @@
    "reason": "player 305: spawned can of household oil, tourist guide and phrase book listed by native i; toothbrush (not held) absent"
   },
   "underlineVsDict": {
-   "status": "unknown",
-   "reason": "inventory underlined 1/2: marks=[\"tourist guide\",\"household oil\",\"document\",\"your clothes\",\"wristwatch\",\"rumpled names=can of household oil/oil,tourist guide and phrase book/guide"
+   "status": "proven",
+   "reason": "inventory underlines can of household oil[dict oil], tourist guide and phrase book[dict guide]"
   },
   "nested": {
    "status": "proven",
@@ -803,8 +803,8 @@
    "reason": "SCORE reply numbers [] vs StatTracker [{\"k\":\"time\",\"v\":\"17:26\",\"max\":null}]"
   },
   "descriptors": {
-   "status": "unknown",
-   "reason": "pair of work shoes / pair of everyday black shoes: 0/2 full-name underlines; marks [\"work shoes\",\"document\",\"everyday black shoes\",\"your clothes\",\"wristwatch\",\"rum"
+   "status": "proven",
+   "reason": "pair of work shoes / pair of everyday black shoes both underlined by full name"
   },
   "identical": {
    "status": "unknown",
