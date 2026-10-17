@@ -109,7 +109,10 @@ var ModuleStatFactsClaude = {
         // (OPEN sets 21 on zipper/box/bottle, CLOSE clears zipper; LOOK IN tests 27 TRUE box, FALSE knife 170), but HELD (rule 4):
         // RAM CONTBIT+OPENBIT is set on actors (Belboz 13, merchant 203, ogre 232) and CONTBIT on scrolls/piles/spell book, so a
         // container/open fact would offer Open/Close on them. That needs an animate/openability disposition first.
-        "attributeMap": { "supporter": 3 }
+        // PERSON 31 (grok1 2026-10-16, same tool/seed): 'ask belboz about me' (step 335) tests 13:31 TRUE ("Belboz looks at you
+        // suspiciously..."); 'ask ogre about me' (71) 232:31 TRUE ("The ogre grunts nastily at you."); 'ask zipper about me' (71)
+        // 198:31 FALSE ("You can't talk to the zipper."). Source PERSON 31 exact 21/21. Fixes the #3590 bit-0 animate fallback here.
+        "attributeMap": { "supporter": 3, "animate": 31, "talkable": 31 }
     },
     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
         "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12 },
