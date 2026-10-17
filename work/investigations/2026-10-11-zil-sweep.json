@@ -17,8 +17,8 @@
    "reason": "beautiful brass bauble inside open bird's nest: listed natively and underlined"
   },
   "actors": {
-   "status": "unknown",
-   "reason": "GAP: app animate bit 0 != source ACTORBIT 30 (needs native proof + attributeMap animate)"
+   "status": "proven",
+   "reason": "app animate bit = source ACTORBIT 30"
   },
   "status": {
    "status": "proven",
@@ -33,8 +33,8 @@
    "reason": "no two takeable objects with identical names in this title (whole object table searched)"
   },
   "onoff": {
-   "status": "unknown",
-   "reason": "GAP: native TURN ON brass lantern set ONBIT 20 but app on bit = 13 (needs attributeMap on)"
+   "status": "proven",
+   "reason": "brass lantern: native TURN ON set ONBIT 20; app on bit = 20"
   },
   "wornItems": {
    "status": "unknown",
@@ -59,12 +59,12 @@
    "reason": "inventory underlines Frobozz Magic Grue Repellent[dict repell], sword[dict orcris]"
   },
   "nested": {
-   "status": "unknown",
-   "reason": "china teapot>Frobozz Magic Grue Repellent listed true underlined false reply \"A spray can is in the corner. In large type is the legend \"F\""
+   "status": "proven",
+   "reason": "Frobozz Magic Grue Repellent inside open china teapot: listed natively and underlined"
   },
   "actors": {
-   "status": "unknown",
-   "reason": "GAP: app animate bit 0 != source ACTORBIT 30 (needs native proof + attributeMap animate)"
+   "status": "proven",
+   "reason": "app animate bit = source ACTORBIT 30"
   },
   "status": {
    "status": "proven",
@@ -105,12 +105,12 @@
    "reason": "inventory underlines strange key[dict key], Frobozz Magic Grue Repellent[dict repell]"
   },
   "nested": {
-   "status": "unknown",
-   "reason": "chest>strange key listed true underlined false reply \"The light from above seems to be focused in the center of th\""
+   "status": "proven",
+   "reason": "strange key inside open chest: listed natively and underlined"
   },
   "actors": {
    "status": "unknown",
-   "reason": "GAP: app animate bit 0 != source ACTORBIT 21 (needs native proof + attributeMap animate)"
+   "reason": "GAP: app animate bit null != source ACTORBIT 21 (needs native proof + attributeMap animate)"
   },
   "status": {
    "status": "proven",
@@ -151,8 +151,8 @@
    "reason": "inventory underlines badly worn pencil[dict pencil], loaf of bread[dict loaf]"
   },
   "nested": {
-   "status": "unknown",
-   "reason": "map>badly worn pencil listed true underlined false reply \"The map consists of a drawing with nine points, each represe\""
+   "status": "proven",
+   "reason": "badly worn pencil inside open map: listed natively and underlined"
   },
   "actors": {
    "status": "unknown",
@@ -201,8 +201,8 @@
    "reason": "atomic vector plotter>small key listed false underlined false reply \"It's too dark to see!   > \""
   },
   "actors": {
-   "status": "unknown",
-   "reason": "GAP: app animate bit 0 != source ACTORBIT 42 (needs native proof + attributeMap animate)"
+   "status": "proven",
+   "reason": "app animate bit = source ACTORBIT 42"
   },
   "status": {
    "status": "unknown",
@@ -243,8 +243,8 @@
    "reason": "no source container/child/OPENBIT"
   },
   "actors": {
-   "status": "unknown",
-   "reason": "GAP: app animate bit 0 != source ACTORBIT 31 (needs native proof + attributeMap animate)"
+   "status": "proven",
+   "reason": "app animate bit = source ACTORBIT 31"
   },
   "status": {
    "status": "proven",
@@ -260,11 +260,11 @@
   },
   "onoff": {
    "status": "unknown",
-   "reason": "no source light object turned on natively (3 candidates)"
+   "reason": "GAP: native TURN ON transistor radio set ONBIT 24 but app on bit = 13 (needs attributeMap on)"
   },
   "wornItems": {
-   "status": "unknown",
-   "reason": "not underlined in i; "
+   "status": "proven",
+   "reason": "pair of headphones worn natively, underlined in i; app worn bit null"
   },
   "consumed": {
    "status": "unknown",
@@ -273,8 +273,8 @@
  },
  "Cutthroats.z3.js": {
   "rooms": {
-   "status": "unknown",
-   "reason": "LOOK \"Your Room, on the bed\" vs RAM \"bed\" vs payload \"bed\""
+   "status": "proven",
+   "reason": "LOOK heading \"Your Room, on the bed\" = RAM room 183 = payload roomName"
   },
   "playerRoot": {
    "status": "proven",
@@ -285,8 +285,8 @@
    "reason": "inventory underlines wrist watch[dict watch], Merchant Seaman's card[dict card]"
   },
   "nested": {
-   "status": "unknown",
-   "reason": "scabbard>wrist watch listed true underlined false reply \"The scabbard contains:   A wrist watch   A sword   > \""
+   "status": "proven",
+   "reason": "wrist watch inside open scabbard: listed natively and underlined"
   },
   "actors": {
    "status": "unknown",
@@ -331,8 +331,8 @@
    "reason": "inventory underlines ticket stub[dict ticket], pencil[dict pencil]"
   },
   "nested": {
-   "status": "unknown",
-   "reason": "bottle of cough medicine>ticket stub listed true underlined false reply \"The bottle of cough medicine contains:   A ticket stub   A q\""
+   "status": "proven",
+   "reason": "ticket stub inside open bottle of cough medicine: listed natively and underlined"
   },
   "actors": {
    "status": "unknown",
@@ -365,8 +365,8 @@
  },
  "Infidel.z3.js": {
   "rooms": {
-   "status": "unknown",
-   "reason": "LOOK \"Your Tent\" vs RAM \"army cot\" vs payload \"army cot\""
+   "status": "proven",
+   "reason": "LOOK heading \"Your Tent\" = RAM room 71 = payload roomName"
   },
   "playerRoot": {
    "status": "proven",
@@ -382,7 +382,7 @@
   },
   "actors": {
    "status": "unknown",
-   "reason": "GAP: app animate bit 0 != source ACTORBIT 17 (needs native proof + attributeMap animate)"
+   "reason": "GAP: app animate bit null != source ACTORBIT 17 (needs native proof + attributeMap animate)"
   },
   "status": {
    "status": "proven",
@@ -428,7 +428,7 @@
   },
   "actors": {
    "status": "unknown",
-   "reason": "GAP: app animate bit 0 != source ACTORBIT 18 (needs native proof + attributeMap animate)"
+   "reason": "GAP: app animate bit null != source ACTORBIT 18 (needs native proof + attributeMap animate)"
   },
   "status": {
    "status": "proven",
@@ -458,15 +458,15 @@
  "LeatherGoddessesofPhobos.z3.js": {
   "rooms": {
    "status": "unknown",
-   "reason": "LOOK \"The place: Upper Sandusky, Ohio. The tim\" vs RAM \"it\" vs payload \"it\""
+   "reason": "LOOK \"The place: Upper Sandusky, Ohio. The tim\" vs RAM \"Joe's Bar\" vs payload \"Joe's Bar\""
   },
   "playerRoot": {
-   "status": "unknown",
-   "reason": "listed 0/2, negative true"
+   "status": "proven",
+   "reason": "player 200: spawned secret map, clothes pin listed by native i; matchbook (not held) absent"
   },
   "underlineVsDict": {
-   "status": "unknown",
-   "reason": "inventory underlined 0/2: marks=[\"pocket\"] names=secret map/map,clothes pin/pin"
+   "status": "proven",
+   "reason": "inventory underlines secret map[dict map], clothes pin[dict pin]"
   },
   "nested": {
    "status": "unknown",
@@ -474,7 +474,7 @@
   },
   "actors": {
    "status": "unknown",
-   "reason": "GAP: app animate bit 0 != source ACTORBIT 31 (needs native proof + attributeMap animate)"
+   "reason": "GAP: app animate bit null != source ACTORBIT 31 (needs native proof + attributeMap animate)"
   },
   "status": {
    "status": "unknown",
@@ -486,11 +486,11 @@
   },
   "identical": {
    "status": "unknown",
-   "reason": "\"coin\" x2: printed 0, underlined 0"
+   "reason": "\"coin\" x2: printed 2, underlined 1"
   },
   "onoff": {
    "status": "unknown",
-   "reason": "no source light object turned on natively (2 candidates)"
+   "reason": "GAP: native TURN ON flashlight set ONBIT 30 but app on bit = 13 (needs attributeMap on)"
   },
   "wornItems": {
    "status": "unknown",
@@ -504,7 +504,7 @@
  "Moonmist.z3.js": {
   "rooms": {
    "status": "unknown",
-   "reason": "LOOK \"(You are now in the driveway.)\" vs RAM \"sports car\" vs payload \"sports car\""
+   "reason": "LOOK \"(You are now in the driveway.)\" vs RAM \"driveway\" vs payload \"driveway\""
   },
   "playerRoot": {
    "status": "unknown",
@@ -515,12 +515,12 @@
    "reason": "inventory underlines nightshirt[dict nights], blowgun[dict gun]"
   },
   "nested": {
-   "status": "unknown",
-   "reason": "punchbowl>nightshirt listed true underlined false reply \"You can see the nightshirt inside a punchbowl.   [You won't \""
+   "status": "proven",
+   "reason": "nightshirt inside open punchbowl: listed natively and underlined"
   },
   "actors": {
    "status": "unknown",
-   "reason": "GAP: app animate bit 0 != source ACTORBIT 31 (needs native proof + attributeMap animate)"
+   "reason": "GAP: app animate bit null != source ACTORBIT 31 (needs native proof + attributeMap animate)"
   },
   "status": {
    "status": "unknown",
@@ -550,23 +550,23 @@
  "PlunderedHearts.z3.js": {
   "rooms": {
    "status": "unknown",
-   "reason": "LOOK \"PLUNDERED HEARTS\" vs RAM \"it\" vs payload \"it\""
+   "reason": "LOOK \"PLUNDERED HEARTS\" vs RAM \"Cabin\" vs payload \"Cabin\""
   },
   "playerRoot": {
    "status": "unknown",
-   "reason": "listed 0/2, negative false"
+   "reason": "listed 2/2, negative false"
   },
   "underlineVsDict": {
-   "status": "unknown",
-   "reason": "inventory underlined 0/2: marks=[] names=smelling salts/salts,rapier/sword"
+   "status": "proven",
+   "reason": "inventory underlines smelling salts[dict salts], rapier[dict sword]"
   },
   "nested": {
    "status": "unknown",
    "reason": "powder horn>smelling salts listed false underlined false reply \"Almost triangular, with a little spout on top, the powder ho\""
   },
   "actors": {
-   "status": "unknown",
-   "reason": "GAP: app animate bit 0 != source ACTORBIT 31 (needs native proof + attributeMap animate)"
+   "status": "proven",
+   "reason": "app animate bit = source ACTORBIT 31"
   },
   "status": {
    "status": "proven",
@@ -585,8 +585,8 @@
    "reason": "no source light object turned on natively (2 candidates)"
   },
   "wornItems": {
-   "status": "unknown",
-   "reason": "not underlined in i; GAP: app worn bit null != WORNBIT 22"
+   "status": "proven",
+   "reason": "your kid slippers worn natively (WORNBIT 22 set), underlined in i; app worn bit 22"
   },
   "consumed": {
    "status": "unknown",
@@ -607,8 +607,8 @@
    "reason": "inventory underlines memo[dict memo], gas mask[dict mask]"
   },
   "nested": {
-   "status": "unknown",
-   "reason": "laser>memo listed true underlined false reply \"The laser contains:   A memo   An old battery   Ensign First\""
+   "status": "proven",
+   "reason": "memo inside open laser: listed natively and underlined"
   },
   "actors": {
    "status": "unknown",
@@ -645,12 +645,12 @@
    "reason": "LOOK heading \"Council Chamber\" = RAM room 76 = payload roomName"
   },
   "playerRoot": {
-   "status": "unknown",
-   "reason": "listed 0/2, negative true"
+   "status": "proven",
+   "reason": "player 52: spawned compass rose, pair of pruning shears listed by native i; pile of junk (not held) absent"
   },
   "underlineVsDict": {
-   "status": "unknown",
-   "reason": "inventory underlined 0/2: marks=[\"hoobly\",\"out\"] names=compass rose/rose,pair of pruning shears/shears"
+   "status": "proven",
+   "reason": "inventory underlines compass rose[dict rose], pair of pruning shears[dict shears]"
   },
   "nested": {
    "status": "unknown",
@@ -670,7 +670,7 @@
   },
   "identical": {
    "status": "unknown",
-   "reason": "\"cube\" x2: printed 0, underlined 0"
+   "reason": "\"cube\" x2: printed 2, underlined 1"
   },
   "onoff": {
    "status": "unknown",
@@ -737,16 +737,16 @@
    "reason": "LOOK \"You are now in the driveway entrance.\" vs RAM \"driveway entrance\" vs payload \"driveway entrance\""
   },
   "playerRoot": {
-   "status": "unknown",
-   "reason": "listed 0/2, negative true"
+   "status": "proven",
+   "reason": "player 79: spawned ticket stub, broom listed by native i; drink (not held) absent"
   },
   "underlineVsDict": {
-   "status": "unknown",
-   "reason": "inventory underlined 0/2: marks=[] names=ticket stub/stub,broom/broom"
+   "status": "proven",
+   "reason": "inventory underlines ticket stub[dict stub], broom[dict broom]"
   },
   "nested": {
-   "status": "unknown",
-   "reason": "bottle of Bourbon>ticket stub listed true underlined false reply \"Lying on the ground is what appears to be a ticket stub.   W\""
+   "status": "proven",
+   "reason": "ticket stub inside open bottle of Bourbon: listed natively and underlined"
   },
   "actors": {
    "status": "unknown",
@@ -791,8 +791,8 @@
    "reason": "inventory underlined 1/2: marks=[\"tourist guide\",\"household oil\",\"document\",\"your clothes\",\"wristwatch\",\"rumpled names=can of household oil/oil,tourist guide and phrase book/guide"
   },
   "nested": {
-   "status": "unknown",
-   "reason": "briefcase>can of household oil listed true underlined false reply \"The briefcase contains a can of household oil, a tourist gui\""
+   "status": "proven",
+   "reason": "can of household oil inside open briefcase: listed natively and underlined"
   },
   "actors": {
    "status": "unknown",
@@ -825,20 +825,20 @@
  },
  "TheLurkingHorror.z3.js": {
   "rooms": {
-   "status": "unknown",
-   "reason": "LOOK \"Terminal Room\" vs RAM \"elevator shaft\" vs payload \"elevator shaft\""
+   "status": "proven",
+   "reason": "LOOK heading \"Terminal Room\" = RAM room 176 = payload roomName"
   },
   "playerRoot": {
-   "status": "unknown",
-   "reason": "listed 0/2, negative true"
+   "status": "proven",
+   "reason": "player 56: spawned metal cover, package of Funny Bones listed by native i; fire axe (not held) absent"
   },
   "underlineVsDict": {
-   "status": "unknown",
-   "reason": "inventory underlined 0/2: marks=[] names=metal cover/screws,package of Funny Bones/packag"
+   "status": "proven",
+   "reason": "inventory underlines metal cover[dict screws], package of Funny Bones[dict packag]"
   },
   "nested": {
-   "status": "unknown",
-   "reason": "smooth stone>metal cover listed false underlined false reply \"You can't see any stone here.   > \""
+   "status": "proven",
+   "reason": "metal cover inside open smooth stone: listed natively and underlined"
   },
   "actors": {
    "status": "unknown",
@@ -849,8 +849,8 @@
    "reason": "SCORE reply \"Your score is 0 of a possible 100, in 3 moves. Graded on the curve, yo\" agrees with StatTracker score=0,turns=3"
   },
   "descriptors": {
-   "status": "unknown",
-   "reason": "cold liquid / tarry liquid: 0/2 full-name underlines; marks []"
+   "status": "proven",
+   "reason": "cold liquid / tarry liquid both underlined by full name"
   },
   "identical": {
    "status": "unknown",
@@ -858,7 +858,7 @@
   },
   "onoff": {
    "status": "unknown",
-   "reason": "no source light object turned on natively (1 candidates)"
+   "reason": "GAP: native TURN ON flashlight set ONBIT 15 but app on bit = 13 (needs attributeMap on)"
   },
   "wornItems": {
    "status": "unknown",
@@ -921,20 +921,20 @@
    "reason": "LOOK \"Twisted Forest\" vs RAM \"Your Quarters\" vs payload \"Your Quarters\""
   },
   "playerRoot": {
-   "status": "unknown",
-   "reason": "listed 0/2, negative true"
+   "status": "proven",
+   "reason": "player 223: spawned small key, scribbled note listed by native i; beam of wood (not held) absent"
   },
   "underlineVsDict": {
-   "status": "unknown",
-   "reason": "inventory underlined 0/2: marks=[] names=small key/key,scribbled note/note"
+   "status": "proven",
+   "reason": "inventory underlines small key[dict key], scribbled note[dict note]"
   },
   "nested": {
    "status": "unknown",
    "reason": "tiny box>small key listed false underlined false reply \"It's too dark to see!   > \""
   },
   "actors": {
-   "status": "unknown",
-   "reason": "GAP: app animate bit 0 != source ACTORBIT 31 (needs native proof + attributeMap animate)"
+   "status": "proven",
+   "reason": "app animate bit = source ACTORBIT 31"
   },
   "status": {
    "status": "proven",
@@ -950,11 +950,11 @@
   },
   "onoff": {
    "status": "unknown",
-   "reason": "no source light object turned on natively (1 candidates)"
+   "reason": "GAP: native TURN ON brass lantern set ONBIT 11 but app on bit = 13 (needs attributeMap on)"
   },
   "wornItems": {
-   "status": "unknown",
-   "reason": "not underlined in i; "
+   "status": "proven",
+   "reason": "magic amulet worn natively, underlined in i; app worn bit null"
   },
   "consumed": {
    "status": "unknown",
@@ -963,8 +963,8 @@
  },
  "Starcross.z3.js": {
   "rooms": {
-   "status": "unknown",
-   "reason": "LOOK \"Living Quarters\" vs RAM \"bunk\" vs payload \"bunk\""
+   "status": "proven",
+   "reason": "LOOK heading \"Living Quarters\" = RAM room 10 = payload roomName"
   },
   "playerRoot": {
    "status": "proven",
@@ -976,7 +976,7 @@
   },
   "nested": {
    "status": "unknown",
-   "reason": "ray gun>tape library listed false underlined false reply \"You can't see any gun here.   > \""
+   "reason": "ray gun>tape library listed true underlined false reply \"In the barrel is a tape library! The alarm bell on the mass \""
   },
   "actors": {
    "status": "unknown",
@@ -984,7 +984,7 @@
   },
   "status": {
    "status": "proven",
-   "reason": "SCORE reply \"Your score would be 0 (total of 400 points), in 2 moves. This score gi\" agrees with StatTracker score=0"
+   "reason": "SCORE reply \"Your score would be 0 (total of 400 points), in 3 moves. This score gi\" agrees with StatTracker score=0"
   },
   "descriptors": {
    "status": "unknown",
@@ -1009,24 +1009,24 @@
  },
  "Stationfall.z3.js": {
   "rooms": {
-   "status": "unknown",
-   "reason": "LOOK \"Deck Twelve\" vs RAM \"it\" vs payload \"it\""
+   "status": "proven",
+   "reason": "LOOK heading \"Deck Twelve\" = RAM room 198 = payload roomName"
   },
   "playerRoot": {
-   "status": "unknown",
-   "reason": "listed 0/2, negative true"
+   "status": "proven",
+   "reason": "player 218: spawned chronometer, timer listed by native i; key (not held) absent"
   },
   "underlineVsDict": {
-   "status": "unknown",
-   "reason": "inventory underlined 0/2: marks=[] names=chronometer/chrono,timer/timer"
+   "status": "proven",
+   "reason": "inventory underlines chronometer[dict chrono], timer[dict timer]"
   },
   "nested": {
    "status": "unknown",
    "reason": "cage>chronometer listed true underlined false reply \"You can see a chronometer and an Arcturian balloon creature.\""
   },
   "actors": {
-   "status": "unknown",
-   "reason": "GAP: app animate bit 0 != source ACTORBIT 31 (needs native proof + attributeMap animate)"
+   "status": "proven",
+   "reason": "app animate bit = source ACTORBIT 31"
   },
   "status": {
    "status": "proven",
@@ -1045,8 +1045,8 @@
    "reason": "no source light object turned on natively (6 candidates)"
   },
   "wornItems": {
-   "status": "unknown",
-   "reason": "not underlined in i; GAP: app worn bit null != WORNBIT 21"
+   "status": "proven",
+   "reason": "chronometer worn natively (WORNBIT 21 set), underlined in i; app worn bit 21"
   },
   "consumed": {
    "status": "unknown",
@@ -1117,8 +1117,8 @@
    "reason": "bottle>violet note listed false underlined false reply \"There's a bit of grue milk in the bottle.   Somebody inside \""
   },
   "actors": {
-   "status": "unknown",
-   "reason": "GAP: app animate bit 0 != source ACTORBIT 18 (needs native proof + attributeMap animate)"
+   "status": "proven",
+   "reason": "app animate bit = source ACTORBIT 18"
   },
   "status": {
    "status": "unknown",
