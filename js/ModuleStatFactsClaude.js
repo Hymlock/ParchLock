@@ -8,7 +8,14 @@ var ModuleStatFactsClaude = {
         // ACTORBIT 30 original scene, target-scoped (SOLO/SELF-AUDIT 2026-10-16, 2026-10-16-zil-inv-hidden-ops.json command
         // records): 'ROBOT, EAST AND SOUTH' tests 30 TRUE on robot 58, 'DEMON, GIVE ME WAND' TRUE on demon 26; 'TEAPOT, HELLO' /
         // 'MAT, HELLO' FALSE on china teapot 32 / place mat 33 ("You can't talk to ..."). Source exact 9/9.
-        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30 },
+        // WEARBIT 3 / FOODBIT 20 (grok1 2026-10-17, g1-ops2 = Jericho walkthrough replay, target-scoped): 'wear crown' (180, after
+        // GET CROWN) tests gaudy crown 86:3 TRUE x2; 'wear lamp' (180) tests lamp 76:3 FALSE ("You can't wear the lamp."). Full RAM
+        // scan (g1-scan2, ids 1-255): crown 86 is the ONLY object carrying 3, source WEARBIT exact 1/1, so the whole-module
+        // single-owner exception (rule 5) applies. EAT on a cake is intercepted by its handler (no bit test), so DRINK reaches
+        // the FOODBIT check: 'drink green cake' (89) 71:20 TRUE x2, 'drink red cake' (89) 68:20 TRUE x2 ("How can you drink
+        // that?"); 'eat lamp' (89) 76:20 FALSE ("I don't think that the lamp would agree with you."). RAM 20 = red/orange/blue/
+        // green cakes 68-71 + package of candy 55 = source FOODBIT exact 5/5.
+        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30, "wearable": 3, "edible": 20 },
         "openCapability": { "all": ["container"], "none": ["supporter"] }
     },
     // Cutthroats (ZIL): OPENBIT 21 (original-scene native explorer, zil-native-explore4.json, no relocation): hotel-room dresser RAM bit 21
