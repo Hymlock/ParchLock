@@ -218,12 +218,18 @@ var ModuleStatFactsClaude = {
         // test tank gate 21, finds it set on lab door 88; CLOSE clears it on hatch, reactor, circuit breaker
         // (2026-10-11-zil-walk-pzseastalker3.json). CONTBIT 26 - 'look in' TRUE on mechanical supply shelf, reactor; FALSE on
         // Snark, gangplank, supply bunches, scanner, Computestor (pzseastalker). With openCapability.
-        "openCapability": { "all": ["container"], "none": ["supporter"] },
+        "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
         // ONBIT 19 = on (claude a7c17d3 work/investigations/2026-10-17-zil-on-walk-evidence.json + grok1 g1-ssO, 2026-10-17; test_attr recorded
         // only during the named command): TURN ON sets 19 on microphone 62, Computestor 91, videophone 141 and reactor 227 (each tests FALSE
         // before / TRUE after); cold 'turn on logbook' tests logbook 195:19 FALSE ("You can't turn on the Logbook now."). Source ONBIT exact;
         // bounded scan: 38 carriers, mostly lit rooms; attrs.on is read only by ZRamReader 2718 (inventory item-likeness), not room admission.
-        "attributeMap": { "supporter": 6, "open": 18, "isOpen": 18, "container": 26, "on": 19 },
+        // PERSON 30 = animate (grok1 2026-10-17, g1-ssA.json via g1-scan9.cjs, one walk with each command recorded separately; test_attr recorded only
+        // during the named command, cited by its targeted block after the common parser prefix): @0 'analyze tip' tests Tip 192:30 TRUE ("How?",
+        // V-ANALYZE verbs.zil:823); @7 'analyze bly' tests Commander Bly 106:30 TRUE; 'analyze microphone' tests 62:30 FALSE ("the microphone is off"),
+        // 'analyze videophone' tests 141:30 FALSE ("It looks normal."). Source PERSON on the people.zil FLAGS (the matcher pinned only 2 because most
+        // persons are compiled twice); bounded compiled table (255 objects, ends at first property 3041): 20 carriers, all persons + yourself 194; none
+        // are rooms. FAIL-CLOSED (defensive, container 26 mapped): animate joins the openCapability none list (P3/R pattern).
+        "attributeMap": { "supporter": 6, "open": 18, "isOpen": 18, "container": 26, "on": 19, "animate": 30 },
         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): supporter - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
         // SURFACEBIT 6: TRUE on workbench 64, mechanical/electronic/chemical supply shelves 67/70/72, work counter 189; FALSE on microphone 62, file drawer 78, electrolyte relay 115. Walk m1; source exact (9 objects). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         "inventoryHiddenAttribute": 17
