@@ -25,8 +25,8 @@
    "reason": "SCORE reply \"Your score is 0 (total of 350 points), in 3 moves. This gives you the \" agrees with StatTracker score=0,turns=3"
   },
   "descriptors": {
-   "status": "unknown",
-   "reason": "no two source-takeable objects share a head noun with different names"
+   "status": "proven",
+   "reason": "broken clockwork canary / golden clockwork canary both underlined by full name"
   },
   "identical": {
    "status": "unknown",
@@ -71,8 +71,8 @@
    "reason": "SCORE reply \"Your score would be 0 (total of 400 points), in 3 moves. This score gi\" agrees with StatTracker score=0,turns=3"
   },
   "descriptors": {
-   "status": "unknown",
-   "reason": "no two source-takeable objects share a head noun with different names"
+   "status": "proven",
+   "reason": "quantity of salty water / quantity of water both underlined by full name"
   },
   "identical": {
    "status": "unknown",
@@ -117,12 +117,12 @@
    "reason": "SCORE reply \"Your potential is 0 of a possible 7, in 3 moves.   >\" agrees with StatTracker score=0,turns=3"
   },
   "descriptors": {
-   "status": "unknown",
-   "reason": "no two source-takeable objects share a head noun with different names"
+   "status": "proven",
+   "reason": "broken staff / wooden staff both underlined by full name"
   },
   "identical": {
-   "status": "unknown",
-   "reason": "\"lamp\" x2: printed 2, underlined 1"
+   "status": "proven",
+   "reason": "\"lamp\" x2: one group mark covers exactly both ids; examine lamp -> game disambiguation"
   },
   "onoff": {
    "status": "unknown",
@@ -163,8 +163,8 @@
    "reason": "SCORE reply \"Your score is 0 of a possible 400, in 3 moves. This puts you in the cl\" agrees with StatTracker score=0,turns=3"
   },
   "descriptors": {
-   "status": "unknown",
-   "reason": "no two source-takeable objects share a head noun with different names"
+   "status": "proven",
+   "reason": "battered lantern / brass lantern both underlined by full name"
   },
   "identical": {
    "status": "unknown",
@@ -343,8 +343,8 @@
    "reason": "SCORE reply numbers [] vs StatTracker [{\"k\":\"time\",\"v\":\"8:04 AM\",\"max\":null}]"
   },
   "descriptors": {
-   "status": "unknown",
-   "reason": "no two source-takeable objects share a head noun with different names"
+   "status": "proven",
+   "reason": "bunch of Allergone tablets / handful of Sneezo tablets both underlined by full name"
   },
   "identical": {
    "status": "unknown",
@@ -389,12 +389,12 @@
    "reason": "SCORE reply \"Your score is 0 out of a possible 400, in 3 moves. This score gives yo\" agrees with StatTracker score=0"
   },
   "descriptors": {
-   "status": "unknown",
-   "reason": "no two source-takeable objects share a head noun with different names"
+   "status": "proven",
+   "reason": "opal cluster / emerald cluster both underlined by full name"
   },
   "identical": {
-   "status": "unknown",
-   "reason": "\"matchbook\" x2: printed 2, underlined 1"
+   "status": "proven",
+   "reason": "\"matchbook\" x2: one group mark covers exactly both ids; examine matchbook -> game disambiguation"
   },
   "onoff": {
    "status": "unknown",
@@ -435,8 +435,8 @@
    "reason": "SCORE reply \"Your score is 0 points out of 150, in 3 moves.   >\" agrees with StatTracker score=0,turns=3"
   },
   "descriptors": {
-   "status": "unknown",
-   "reason": "no two source-takeable objects share a head noun with different names"
+   "status": "proven",
+   "reason": "pair of red wax feet / pair of white wax feet both underlined by full name"
   },
   "identical": {
    "status": "unknown",
@@ -485,8 +485,8 @@
    "reason": "no two source-takeable objects share a head noun with different names"
   },
   "identical": {
-   "status": "unknown",
-   "reason": "\"coin\" x2: printed 2, underlined 1"
+   "status": "proven",
+   "reason": "\"coin\" x2: one group mark covers exactly both ids; examine coin -> game disambiguation"
   },
   "onoff": {
    "status": "unknown",
@@ -619,8 +619,8 @@
    "reason": "SCORE reply \"Your score would be 0 (out of 80 points). It is Day 1 of your adventur\" agrees with StatTracker score=0,turns=4607"
   },
   "descriptors": {
-   "status": "unknown",
-   "reason": "no two source-takeable objects share a head noun with different names"
+   "status": "proven",
+   "reason": "new battery / old battery both underlined by full name"
   },
   "identical": {
    "status": "unknown",
@@ -669,8 +669,8 @@
    "reason": "no two source-takeable objects share a head noun with different names"
   },
   "identical": {
-   "status": "unknown",
-   "reason": "\"cube\" x2: printed 2, underlined 1"
+   "status": "proven",
+   "reason": "\"cube\" x2: one group mark covers exactly both ids; examine cube -> game disambiguation"
   },
   "onoff": {
    "status": "unknown",
@@ -757,8 +757,8 @@
    "reason": "SCORE reply numbers [] vs StatTracker [{\"k\":\"time\",\"v\":\"8:03 PM\",\"max\":null}]"
   },
   "descriptors": {
-   "status": "unknown",
-   "reason": "no two source-takeable objects share a head noun with different names"
+   "status": "proven",
+   "reason": "back-yard cast / side-yard cast both underlined by full name"
   },
   "identical": {
    "status": "unknown",
@@ -987,8 +987,8 @@
    "reason": "SCORE reply \"Your score would be 0 (total of 400 points), in 3 moves. This score gi\" agrees with StatTracker score=0"
   },
   "descriptors": {
-   "status": "unknown",
-   "reason": "no two source-takeable objects share a head noun with different names"
+   "status": "proven",
+   "reason": "green rod / black rod both underlined by full name"
   },
   "identical": {
    "status": "unknown",
@@ -1033,8 +1033,8 @@
    "reason": "SCORE reply \"You're currently getting brief descriptions. It is Day 1 of your adven\" agrees with StatTracker score=0,time=5293"
   },
   "descriptors": {
-   "status": "unknown",
-   "reason": "no two source-takeable objects share a head noun with different names"
+   "status": "proven",
+   "reason": "mauve nanofilm spool / puce nanofilm spool both underlined by full name"
   },
   "identical": {
    "status": "unknown",
@@ -1125,12 +1125,12 @@
    "reason": "SCORE reply numbers [0,100,3] vs StatTracker [{\"k\":\"time\",\"v\":\"3:03 PM\",\"max\":null},{\"k\":\"turns\",\"v\":3,\"max\":null}]"
   },
   "descriptors": {
-   "status": "unknown",
-   "reason": "no two source-takeable objects share a head noun with different names"
+   "status": "proven",
+   "reason": "dead seahorse / seahorse both underlined by full name"
   },
   "identical": {
-   "status": "unknown",
-   "reason": "\"mysterious envelope\" x2: printed 2, underlined 1"
+   "status": "proven",
+   "reason": "\"mysterious envelope\" x2: one group mark covers exactly both ids; examine envelope -> game disambiguation"
   },
   "onoff": {
    "status": "unknown",
