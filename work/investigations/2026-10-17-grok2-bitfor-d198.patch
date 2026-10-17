@@ -1,0 +1,31 @@
+diff --git a/js/AttributeSchema.js b/js/AttributeSchema.js
+index b0cda2f..d989621 100644
+--- a/js/AttributeSchema.js
++++ b/js/AttributeSchema.js
+@@ -181,9 +181,23 @@ var AttributeSchema = {
+                 animate: 1, container: 1, openable: 1, open: 1, isOpen: 1, supporter: 1,
+                 lockable: 1, locked: 1, door: 1, transparent: 1, enterable: 1
+             };
+-            if (zilStructural[flagName] && mem && typeof ZRamReader !== "undefined"
+-                && ZRamReader.isInformCompiled && !ZRamReader.isInformCompiled(mem)) {
+-                return null;
++            // Operator #3782/#3790: ZIL PROFILE skip only for confirmed-zil-family (D198),
++            // not every !isInformCompiled title. Unknown family still fail-closed (null).
++            if (zilStructural[flagName] && mem) {
++                var famZ = null;
++                try {
++                    if (typeof GrammarProvider !== "undefined" && GrammarProvider.decodeD198)
++                        famZ = GrammarProvider.decodeD198(mem);
++                } catch (eF) { famZ = null; }
++                if (famZ && famZ.classification === "confirmed-inform") {
++                    // Inform without name table: fall through to PROFILE below.
++                } else if (famZ && famZ.classification === "confirmed-zil-family") {
++                    return null;
++                } else if (!famZ || famZ.classification !== "confirmed-inform") {
++                    // Unknown / non-Inform non-ZIL: no I6 PROFILE.
++                    if (!(typeof ZRamReader !== "undefined" && ZRamReader.isInformCompiled
++                        && ZRamReader.isInformCompiled(mem))) return null;
++                }
+             }
+         } catch (e) {}
+         var n = AttributeSchema.PROFILE[flagName];
