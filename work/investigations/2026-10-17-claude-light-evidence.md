@@ -66,3 +66,17 @@ can exist (documented as untestable-by-rule).
 - LGOP 25: positive flashlight 110 only.
 - Enchanter 22: positive lantern 94 only.
 - No LB test in any walk: Ballyhoo, Moonmist, Planetfall, PH, H2G2, Witness, Zork III, Sorcerer.
+
+## Single-positive titles: carrier names and status (2026-10-17 afternoon)
+
+- Hollywood 3: carriers computer 103, flashlight 123, slide projector 133, film projector 191, plus pseudo 69.
+  V-LAMP-ON tests LIGHTBIT on PRSO, and COMPUTER-F handles only EXAMINE/PUT, so `turn on computer` should give a second
+  target-named positive. Walk running (`_hw-light.json`).
+- LGOP 25: carriers flashlight 110 and blender 186, plus pseudo 10/54. V-ON tests LIGHTBIT on PRSO. The blender
+  appears after the old route desync at step 240; the route is fixed (comma-list drops split) and rerunning.
+- Moonmist 24: carriers brass lantern 153 and "your lamp" 164, plus pseudo 66. Cold negative: `turn on outfit`
+  78:24 FALSE. The positives need a castle route; there is no Moonmist walkthrough route yet.
+- PH 25: torch 9, chandelier 59, pseudo 60.
+- Planetfall 21: microfilm reader 55, terminal 56, robot 110.
+- Ballyhoo 26: headphones 36, radio 48, light 58, chandelier 74, pseudo 76.
+- Witness 25: cigarette 43, pseudo 249.

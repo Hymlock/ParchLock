@@ -22,7 +22,9 @@ routes.stationfall = expand(body('stationfall.step', /\n\s*[a-z][a-z ]*:/i).spli
 { const i = routes.stationfall.indexOf('SFCOURSE'); if (i >= 0 && routes.stationfall[i + 1] === 'wait') routes.stationfall[i + 1] = 'WAITUNTIL:Stationfall\\.|no space station'; }
 // LGOP: '-' separated; drop the header prose before the first command run.
 // 'look' absorbs the intro More prompt; each scratch 'n' sniff "smell" waits for RETURN, answered by an empty NP: line.
-routes.lgop = ['look'].concat(...resolveUntil(expand(body('lgop.step1', /\[male version\]/i).split('-'))).map(c => /^smell\b/.test(c) ? [c, 'NP:'] : [c]));
+// "drop sack,rake,trellis" fails whole if one item is not held ("You're not holding all those things!"); split it.
+const splitList = c => { const m = /^(drop|take|get)\s+(.+,.+)$/.exec(c); return m ? m[2].split(/\s*,\s*/).map(x => m[1] + ' ' + x) : [c]; };
+routes.lgop = ['look'].concat(...[].concat(...resolveUntil(expand(body('lgop.step1', /\[male version\]/i).split('-'))).map(splitList)).map(c => /^smell\b/.test(c) ? [c, 'NP:'] : [c]));
 // Suspended: '#N COMMAND' items.
 routes.suspended = expand((body('suspended.txt').match(/#\d+\s+[^#]+/g) || []).map(s => s.replace(/^#\d+\s+/, '')));
 // Starcross: '.' separated lines after the dashed rule. The "[RANGE] [THETA] [PHI]" line (manual table) becomes zil-walk
