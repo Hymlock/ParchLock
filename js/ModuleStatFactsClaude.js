@@ -589,7 +589,10 @@ var ModuleStatFactsClaude = {
         // SURFACEBIT 10 kitchen table preserved. Surface-aware Open/Close (Codex #3371/#3377):
         // CLOSE TABLE 204 (19 and 10) answers cannot-close, so container-derived Open/Close needs
         // container AND NOT supporter here. Facts stay truthful.
-            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30 },
+        // FOODBIT 21 (grok1 2026-10-16, zil-inv-hidden-ops @c3f1254 seed 12, step 11): 'eat lunch' tests 225:21 TRUE ("It really hit
+        // the spot."); 'drink garlic' 189:21 TRUE ("How can you drink that?"; EAT GARLIC is intercepted by its own handler); 'eat sack'
+        // 224:21 FALSE ("I don't think that the brown sack would agree with you."). Full RAM scan (247 objects): only 189 and 225 carry 21. Source FOODBIT 21 exact 2/2.
+            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "edible": 21 },
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         "command": "score", "fields": ["score.max", "rank"], "replyFamily": "inform-score", "outcome": "line",
         "evidence": "2026-10-05 live SCORE: Your score is 0 (total of 350 points), in 0 moves. / This gives you the rank of Beginner."
