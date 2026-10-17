@@ -19,6 +19,10 @@
   "lightSource": {
    "s": "O",
    "r": "SOLO/SELF-AUDIT 2026-10-16: LIGHTBIT 31 original scene target-scoped (2026-10-16-zil-inv-hidden-ops.json): Light lamp TRUE on brass lantern 164, light torch (already on) TRUE on torch 104; light egg / light garlic FALSE (You cannot turn that on); source exact 3/3. NO FACT: no runtime consumer reads lightSource, and LIGHTBIT=switchable is not an accepted equivalence (Codex #3533)."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 60 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   }
  },
  "Zork2-TheWizardofFrobozz.z3.js": {
@@ -41,6 +45,10 @@
   "animate": {
    "s": "S",
    "r": "SOLO/SELF-AUDIT: ACTORBIT 30 robot 58 / demon 26 TRUE when addressed; teapot 32 / mat 33 FALSE (cannot talk to); source exact 9/9. Gate 0 diffs."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 50 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   }
  },
  "Zork3-TheDungeonMaster.z3.js": {
@@ -101,6 +109,10 @@
   "nested_eggparts": {
    "s": "OPEN",
    "r": "OPERATOR DECISION PENDING (2026-10-16): native i tests NDESCBIT 7 TRUE on the egg parts (button 139, crank 136, slide 151, knob 149, handle 148) AND on every spell, omitting all; FALSE on every printed item (2026-10-16-zil-inv-hidden-ops.json @59). A blanket inventoryHiddenAttribute 7 would also hide the spells, contradicting D148 (spells usable from inventory). Options: hide egg parts only (executable-owned exemption for the spell book), or keep both listed."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 33 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   }
  },
  "Hitchhik.z5.js": {
@@ -123,6 +135,10 @@
   "nested": {
    "s": "S",
    "r": "HHGG fact (ModuleStatFactsClaude 26dcdab2): inventoryHiddenAttribute 44 (native i tests NDESCBIT 44 TRUE on guarantee/green/red button inside the Sub-Etha device and omits them; FALSE on every printed item). zil-inv-check steps 10/60/90: app list and nesting equal native (gown>fluff,thing; thing>8 items)."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 45 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   }
  },
  "Ballyhoo.z3.js": {
@@ -151,6 +167,10 @@
   "rooms": {
    "s": "O",
    "r": "50/50 original-scene turns (walkthrough): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 21 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   }
  },
  "Deadline.z3.js": {
@@ -185,6 +205,10 @@
   "supporter": {
    "s": "S",
    "r": " Deadline fact (ModuleStatFactsClaude 9c6eadbb): original scene pzdeadline, target-scoped; source exact. SURFACEBIT 29: living room table, marble-top table positive; same negatives. Applied with openCapability (surfaces get no Open/Close)."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 37 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   }
  },
  "Infidel.z3.js": {
@@ -225,6 +249,10 @@
   "animate_method": {
    "s": "NOTE",
    "r": "2026-10-16: walkthrough has no actor-addressed orders; animate evidence needs GIVE/ASK/ATTACK steps (pending)."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 57 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   }
  },
  "LeatherGoddessesofPhobos.z3.js": {
@@ -235,6 +263,10 @@
   "rooms": {
    "s": "O",
    "r": "6/6 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "descriptors": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share a head noun. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (no shared head noun in 31 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   }
  },
  "Moonmist.z3.js": {
@@ -265,6 +297,10 @@
   "open": {
    "s": "S",
    "r": " Moonmist fact (ModuleStatFactsClaude bcf65075): OPENBIT 14 original scene target-scoped (pzmoonmist6): open luggage sets 14 (59), open gate finds it set on front gate (52), close gate clears it; source exact 57/57. (Native dispatch is controlled insertion and is NOT cited.)"
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 27 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   }
  },
  "PlunderedHearts.z3.js": {
@@ -279,12 +315,20 @@
   "nested": {
    "s": "S",
    "r": "56a170f: inventoryHiddenAttribute 9 (native i tests NDESCBIT 9 TRUE on gunpowder in open horn and laudanum in transparent bottle, omits both; FALSE on 15 printed). Codex GO #3525."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 28 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   }
  },
  "Borderzo.z5.js": {
   "takeable": {
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 42 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 42 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   }
  },
  "TheLurkingHorror.z3.js": {
@@ -321,6 +365,10 @@
   "animate_method": {
    "s": "NOTE",
    "r": "2026-10-16: walkthrough has no actor-addressed orders; animate evidence needs GIVE/ASK/ATTACK steps (pending)."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 44 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   }
  },
  "Seastalker.z3.js": {
@@ -355,6 +403,10 @@
   "container": {
    "s": "S",
    "r": "Seastalker fact (ModuleStatFactsClaude 502e5c8e): original scene, target-scoped, source exact 16/16. CONTBIT 26 pzseastalker: look in shelf, reactor TRUE; Snark, gangplank, supply bunches, scanner FALSE. With openCapability."
+  },
+  "descriptors": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share a head noun. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (no shared head noun in 15 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   }
  },
  "Sorcerer.z3.js": {
@@ -377,6 +429,10 @@
   "animate": {
    "s": "S",
    "r": "SOLO/SELF-AUDIT: ACTORBIT 31 gnome 245 / older self 26 TRUE when addressed, spell book 139 FALSE; source exact 9/9. Gate 0 diffs."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 36 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   }
  },
  "Spellbreaker.z3.js": {
@@ -417,6 +473,10 @@
   "rooms": {
    "s": "O",
    "r": "2/2 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 25 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   }
  },
  "Stationfall.z3.js": {
@@ -427,6 +487,10 @@
   "rooms": {
    "s": "O",
    "r": "4/4 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 53 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   }
  },
  "Suspect.z3.js": {
@@ -567,6 +631,10 @@
   "supporter": {
    "s": "S",
    "r": " Witness fact (ModuleStatFactsClaude 2290bb34): original scene pzwitness2 (ring door bell, entry, office), target-scoped, source exact. SURFACEBIT 16: lounge, carved chair, desk positive; same negatives. With openCapability."
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 22 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   }
  },
  "Sherlock.z5.js": {
