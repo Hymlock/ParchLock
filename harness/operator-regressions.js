@@ -65,5 +65,37 @@ async function open(b, story, seeded) {
     check('weather id24 marked as players or cook-out', hit, info);
     await p.close();
   } catch (e) { check('weather id24 run', false, e.message); }
+  if (!process.env.ONLY || process.env.ONLY==='suvehnux') try { // ---- suvehnux cage (operator #3780): no double-covered id; bare "cage" never marked inside "brass cage" ----
+    const p = await open(b, 'suvehnux.z5.js');
+    await p.cmd('look');
+    const info = await p.evaluate(() => {
+      const ms = [...document.querySelectorAll('.pl-act:not(.is-stale)')].filter(m => m.dataset.kind !== 'direction');
+      const cov = ms.flatMap(m => Actionable.markCoverIds(m)); const dup = cov.filter((id, i) => cov.indexOf(id) !== i);
+      const inside = ms.filter(m => m.textContent.toLowerCase() === 'cage' && /brass\s*$/i.test((m.previousSibling && m.previousSibling.nodeValue) || ''));
+      const brass = ms.filter(m => m.textContent.toLowerCase() === 'brass cage').map(m => Actionable.markCoverIds(m));
+      return { dup, inside: inside.length, brass };
+    });
+    check('suvehnux no object has duplicate display coverage', info.dup.length === 0, info);
+    check('suvehnux bare "cage" never marked inside "brass cage"', info.inside === 0, info);
+    check('suvehnux brass cage mark covers 55', info.brass.some(c => c.includes('55')), info);
+    await p.close();
+  } catch (e) { check('suvehnux run', false, e.message); }
+  if (!process.env.ONLY || process.env.ONLY==='jigsaw') try { // ---- Jigsaw (operator #3780): no mark whose text is a preposition/particle ----
+    const p = await open(b, 'Jigsaw.z8.js');
+    const bad = await p.evaluate(() => [...document.querySelectorAll('.pl-act:not(.is-stale)')].map(m => m.textContent.toLowerCase().trim()).filter(t => /^(in|out|on|off|into|onto|under|over|through|across)$/.test(t)));
+    check('jigsaw no preposition/particle mark (intro)', bad.length === 0, bad);
+    await p.close();
+  } catch (e) { check('jigsaw run', false, e.message); }
+  if (!process.env.ONLY || process.env.ONLY==='planetfall') try { // ---- Planetfall: cold inventory must not list off-tree brochure 217 (#3859/#3860) ----
+    const p = await open(b, 'Planetfall.z3.js');
+    await p.cmd('i');
+    const info = await p.evaluate(() => {
+      const inv = ((WorldModel.lastPayload || {}).inventory || []).map(o => o.id);
+      const text = String((Actionable.Scope && Actionable.Scope.lastInventoryText) || '');
+      return { inv, has217: inv.indexOf(217) >= 0, textHasBrochure: /brochure/i.test(text) };
+    });
+    check('planetfall cold inventory has no brochure 217', !info.has217 && !info.textHasBrochure, info);
+    await p.close();
+  } catch (e) { check('planetfall brochure run', false, e.message); }
   await b.close(); console.log(pass + ' PASS / ' + fail + ' FAIL'); process.exit(fail ? 1 : 0);
 })();
