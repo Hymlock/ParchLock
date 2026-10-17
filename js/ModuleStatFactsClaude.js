@@ -15,7 +15,12 @@ var ModuleStatFactsClaude = {
         // the FOODBIT check: 'drink green cake' (89) 71:20 TRUE x2, 'drink red cake' (89) 68:20 TRUE x2 ("How can you drink
         // that?"); 'eat lamp' (89) 76:20 FALSE ("I don't think that the lamp would agree with you."). RAM 20 = red/orange/blue/
         // green cakes 68-71 + package of candy 55 = source FOODBIT exact 5/5.
-        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30, "wearable": 3, "edible": 20 },
+        // LIGHTBIT 31 = light (claude 2c72ef2 evidence, independently reproduced by grok1 2026-10-17, g1-z2L.json, cold start, test_attr recorded
+        // only during the named command): 'light lamp' tests lamp 76:31 TRUE ("The lamp is now on."); 'turn on sword' tests sword 23:31 FALSE
+        // ("You can't turn that on."). Source LIGHTBIT carried only by LAMP; bounded compiled-table scan (250 objects, ends at first property
+        // 2992): bit-31 carriers = {76} -> rule-5 single-owner exception. Consumers (#3904): ZRamReader 1679 applies only to blank-named
+        // objects (the lamp is named), 1749 is Inform-only, 2718 is inventory item-likeness; no map-room effect.
+        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30, "wearable": 3, "edible": 20, "light": 31 },
         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
         // (source: ROBOT, CERBERUS, UNICORN (2dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] }
