@@ -26,7 +26,17 @@ var ModuleStatFactsClaude = {
         // SURFACEBIT 28: TRUE on stove 76, chair 108, table 109, bed 146; FALSE on dinner plate 1, wrist watch 6, knife 8. WEARBIT 18: TRUE on wrist watch 6, air tank 136, diving mask 137, flippers 138, wet suit 139; FALSE on envelope 133, room key 143, passbook 144. Observer-captured walk m1 (object ids, analyzer2). Surface-aware Open/Close as Zork I. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         // CONTBIT 11: tested TRUE on dresser, closet, portable drill; FALSE on bedroom door, wallpaper. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
-        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11 }
+        // PERSON 23 / FOODBIT 8 (grok1 2026-10-17, g1-scan2 = Jericho walkthrough replay seed 10, test_attr recorded only during the
+        // named command): 'eat weasel' @23 tests Weasel 9:23 TRUE, 'eat pete' @23 tests Pete the Rat 11:23 TRUE (V-EAT PERSON branch,
+        // "Cannibalism isn't a good idea."); 'eat watch' @23 tests wrist watch 6:23 FALSE x2 ("...would agree with you"). RAM 23 =
+        // Weasel 9, Pete 11, Johnny Red 12, McGinty 14, you 182, cretin 184 = source PERSON exact 6/6. FOODBIT: 'eat food' @23 tests
+        // meal 105:8 TRUE ("Not bad! It really hit the spot."); 'eat watch' 6:8 FALSE x2, 'eat weasel' 9:8 FALSE x2. Whole RAM scan:
+        // meal 105 is the ONLY real object carrying 8 = source FOODBIT exact 1/1 (MEAL, island.zil, SYNONYM FOOD MEAL STEW), so the
+        // rule-5 single-owner exception applies (SYNTAX EAT OBJECT (FIND FOODBIT); V-EAT's own FOODBIT clause is commented out).
+        // WEARBIT 18 (grok1 2026-10-17, same replay): 'wear wet suit' @280 tests 139:18 TRUE, 'wear flippers' @284 tests 138:18 TRUE
+        // ("You are now wearing ..."); 'wear flashlight' @291 tests flashlight 116:18 FALSE ("You can't wear the flashlight."). RAM 18 =
+        // watch 6, diving suit 81, air tank 136, mask 137, flippers 138, wet suit 139 = source WEARBIT exact 6/6.
+        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18 }
     },
     // Plundered Hearts (ZIL): OPENBIT 16: OPEN sets 16 on large cupboard, coffer, canvas hatch, iron door; CLOSE clears (cupboard, coffer). WORNBIT 22: WEAR sets 22 on breeches, shirt, ball gown; REMOVE clears (frock, shirt). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     "b53a2588c7926892f8f5e9b201c1855a01892e972d938bf919b4f36e1b8bd7db": {

@@ -395,6 +395,14 @@
   "wornItems": {
    "s": "UD",
    "r": "not applicable: historicalsource/spellbreaker@6f83ba4 verbs.zil V-WEAR is unconditional <YOU-CANT-X-PRSO \"wear\">, no WEARBIT/WORNBIT anywhere, no object <VERB? WEAR/TAKE-OFF> handler"
+  },
+  "edible": {
+   "s": "UD",
+   "r": "not applicable: historicalsource/spellbreaker@6f83ba4 has no FOODBIT anywhere (16 .zil files grepped); verbs.zil V-EAT is identity-only (<EQUAL? ,PRSO ,FISH ,BREAD>), so no attribute bit marks edibility and no attributeMap fact is possible (grok1 2026-10-17)"
+  },
+  "lightSource": {
+   "s": "UD",
+   "r": "not applicable: historicalsource/spellbreaker@6f83ba4 has no LIGHTBIT anywhere; light comes only from the FROTZ spell (actions.zil V-FROTZ FSETs ONBIT 8 on any TAKEBIT/PERSON object) and V-LAMP-ON is <HOW-DO-YOU>, so no light-source capability bit exists (grok1 2026-10-17)"
   }
  },
  "Starcross.z3.js": {
