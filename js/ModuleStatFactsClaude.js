@@ -95,7 +95,15 @@ var ModuleStatFactsClaude = {
     // SULTANS-WIFE), so playerGlobal would be wrong after an order. Binary has 19 store G189<-200 = 19 SETG WINNER ,PROTAGONIST in source;
     // object 200 ("it") holds the flashlight at boot. App previously read player 16 with an empty inventory (Codex #3492).
     "103324c3b7332528cc36cc15ce15ae593af5a33ac2b75fae0f04eecc1ffec8f8": {
-        "playerObject": 200
+        "playerObject": 200,
+        // OPENBIT 15 / SURFACEBIT 17 (grok1 2026-10-17, g1-ops3 = zil-inv-hidden-ops replaying 2026-10-15-zil-routes lgop, target-scoped):
+        // 'open door' (12) tests wide cell door 202:15 FALSE then 202 carries 15 ("swings open"); 'close door' (13) 202:15 TRUE, 15 cleared
+        // ("now closed"); 'open south door' (15) narrow cell door 176:15 FALSE then set; 'open painting' (13) 78:15 FALSE ("You can't open a
+        // painting!"). 'stand on stool' (28) 114:17 TRUE ("You are now on the stool."); 'look on second slab' (107) 154:17 TRUE x2, control
+        // 'wait' 0 ("You can see nothing on the second slab."); 'put tray on flashlight' (28) 110:17 FALSE beyond control ("There's no good
+        // surface on the flashlight."). Source OPENBIT 15 exact 18/18, SURFACEBIT 17 exact 7/7. CONTBIT 24 HELD (rule 4): RAM CONTBIT is
+        // on gorillas, stallion, salesman, your body, bed, toilet, divan, barge and stoop, so a container fact would offer Open/Close on them.
+        "attributeMap": { "open": 15, "isOpen": 15, "supporter": 17 }
     },
     // Spellbreaker (ZIL): Q8 player root = constant PLAYER object 52 (historicalsource/spellbreaker 6f83ba4 globals.zil 324 OBJECT PLAYER
     // DESC "it"). No PLAYER global; WINNER G197 is mutable (globals.zil 923/928 BELBOZ, verbs.zil 334/359 PRSO). Native TAKE puts the
