@@ -1,4 +1,4 @@
-// Guard (grok1 2026-10-17, A1 of claude #3855): ZIL actors carrying CONTBIT+OPENBIT (Zork II robot, H2G2 Prosser) must never
+// Guard (grok1 2026-10-17, A1 of claude #3855): ZIL actors carrying CONTBIT+OPENBIT (Zork II robot, H2G2 Prosser, Lurking Horror hacker) must never
 // be offered container Open/Close; real containers in the same scene keep them. Replays the Jericho walkthrough (JSEED parity,
 // no relocation/forcing) to a step where the actor is in scope, then reads Actionable's own Open/Close commands.
 //   ROOT=<tree> node harness/zil-actor-open.js
@@ -10,7 +10,9 @@ let pass = 0, fail = 0; const check = (n, ok, info) => { ok ? pass++ : fail++; c
 // Add { story: 'Enchanter.z3.js', walk: 'enchanter', seed: 0, step: 111, actor: 'rainbow turtle', keep: 'jug' } once that is solved.
 const CASES = [
   { story: 'Zork2-TheWizardofFrobozz.z3.js', walk: 'zork2', seed: 0, step: 96, actor: 'robot', keep: null },
-  { story: 'Hitchhik.z5.js', walk: 'hhgg', seed: 4, step: 18, actor: 'Mr. Prosser', keep: 'your gown' } ];
+  { story: 'Hitchhik.z5.js', walk: 'hhgg', seed: 4, step: 18, actor: 'Mr. Prosser', keep: 'your gown' },
+  // Lurking Horror HACKER (hacker.zil:9: SEARCHBIT PERSON OPENBIT CONTBIT), in scope in the computer center after 'N' @21.
+  { story: 'TheLurkingHorror.z3.js', walk: 'lurking', seed: 0, step: 22, actor: 'hacker', keep: null } ];
 (async () => { const b = await chromium.launch();
   for (const C of CASES) { const p = await b.newPage();
   await p.addInitScript((J) => { let A = J >>> 0, iv = 0, ct = 0; const fr = function (t) { t = t << 16 >> 16; if (t <= 0) { const v = -t; if (v === 0) { A = J >>> 0; iv = 0; } else if (v < 1000) { ct = 0; iv = v; } else { A = v >>> 0; iv = 0; } return 0; } let r; if (iv) { r = ct++; if (ct === iv) ct = 0; } else { A = (Math.imul(0x015a4e35, A) + 1) >>> 0; r = (A >>> 16) & 0x7fff; } return r % t + 1; }; let cur; Object.defineProperty(window, '__PARCHLOCK_ZVM__', { configurable: true, get() { return cur; }, set(v) { cur = v; if (v && !v.__jr) { v.__jr = 1; v.random = fr; } } }); sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); for (const x of ['PL_TutorialSeen', 'PL_MobileTutorialSeen', 'PL_LearnedWordsTutorialSeen']) localStorage.setItem(x, '1'); }, C.seed);

@@ -609,8 +609,14 @@ var ModuleStatFactsClaude = {
         // SURFACEBIT 8 original scene (2026-10-11-zil-walk-pzlurking.json, target-scoped): chair, kitchen counter, forklift,
         // floor waxer TRUE; catwalk, ladder, flask, refrigerator, microwave oven, flashlight, crowbar FALSE. Source exact 10/10.
         // Applied with openCapability so surfaces get no Open/Close.
-        "openCapability": { "all": ["container"], "none": ["supporter"] },
-        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8 },
+        // FAIL-CLOSED (grok1 2026-10-17): actors carrying CONTBIT + OPENBIT + PERSON (source: HACKER (hacker.zil:9), URCHIN (frob.zil:201),
+        // PROFESSOR (cs.zil:5279)) must never get container Open/Close, so the proven animate bit joins the none list.
+        "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
+        // PERSON 31 = animate (grok1 2026-10-17, g1-scan2 = Jericho walkthrough replay, test_attr recorded only during the named command):
+        // 'tell hacker' @22 tests hacker 129:31 TRUE; 'tell maintenance man' @68 and 'maintenance man, hello' @69 test maintenance man
+        // 20:31 TRUE; 'tell carton' @22 tests carton 58:31 FALSE. Source PERSON = bit 31 exact. Room-safe: the only runtime FSET is on
+        // HAND (cs.zil:5582), no room carries PERSON, so ZRamReader.isPlausibleMapRoom is unaffected.
+        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31 },
         // Native i (take all, i; 2026-10-16-hidden-bit-finder.json) tests bit18 TRUE on the pc's mouse 199 and HELP key 107
         // and omits them; FALSE on the printed chair 62, pc 191, assignment 97. Source NDESCBIT 18 exact (72/72). SOLO/SELF-AUDIT.
         "inventoryHiddenAttribute": 18,
@@ -712,6 +718,12 @@ var ModuleStatFactsClaude = {
     },
     // Suspended (Infocom v3)
     "6011284a57a6200c4deebfbeae92b3bac2f98a570ddbbc8cfc8bcc382d5b524f": {
+        // WEARABLEBIT 31 (grok1 2026-10-17; custom route agent-tools/g1-routes.json suspW: Waldo goes to the Middle Supply Room, takes the
+        // container and grasper; test_attr recorded only during the named command): 'waldo,install grasper' tests 63:31 TRUE ("It's now
+        // being worn.", V-WEAR verbs.zil:1740-1745); 'waldo,install container' tests basket 76:31 FALSE ("An interesting but highly unlikely
+        // thought."). Source: WEARABLEBIT is carried ONLY by SURGERY-HAND (objects.zil:393, IN SUPPLIES-MID); bounded compiled object-table
+        // scan (191 objects, ends at first property 2527): bit 31 carriers = {63} -> rule-5 single-owner exception + source 1/1.
+        "attributeMap": { "wearable": 31 },
         "command": "score", "fields": ["casualties", "population", "cycles"], "replyFamily": "casualty-cycles", "outcome": "line",
         "evidence": "2026-10-05 live SCORE: There have been 3,000 casualties (original population: 30,172,000) in 0 cycles."
     },
