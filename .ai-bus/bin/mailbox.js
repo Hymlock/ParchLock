@@ -1594,7 +1594,12 @@ class MailboxStore {
         const names = (await fs.readdir(this.paths.inboxDir))
             .filter((name) => name.endsWith('.json'))
             .sort();
-        const messages = await Promise.all(names.map((name) => this.readJson(path.join(this.paths.inboxDir, name))));
+        // Bounded concurrency: with ~4100 inbox files an unbounded Promise.all hit EMFILE on Windows (2026-10-17).
+        const messages = [];
+        for (let i = 0; i < names.length; i += 64) {
+            const batch = await Promise.all(names.slice(i, i + 64).map((name) => this.readJson(path.join(this.paths.inboxDir, name))));
+            messages.push(...batch);
+        }
         return messages.sort((left, right) => left.seq - right.seq);
     }
     async maxMessageSequenceUnsafe() {
