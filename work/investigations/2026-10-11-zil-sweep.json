@@ -309,8 +309,8 @@
    "reason": "no source light object turned on natively (0 candidates)"
   },
   "wornItems": {
-   "status": "unknown",
-   "reason": "GAP: app worn bit null != WORNBIT 13"
+   "status": "proven",
+   "reason": "wrist watch worn natively (WORNBIT 13 set), underlined in i; app worn bit 13"
   },
   "consumed": {
    "status": "unknown",
@@ -473,8 +473,8 @@
    "reason": "royal barge>secret map listed true underlined false reply \"You can see a secret map.    You trace the urge to the regio\""
   },
   "actors": {
-   "status": "unknown",
-   "reason": "GAP: app animate bit null != source ACTORBIT 31 (needs native proof + attributeMap animate)"
+   "status": "proven",
+   "reason": "app animate bit = source ACTORBIT 31"
   },
   "status": {
    "status": "unknown",
