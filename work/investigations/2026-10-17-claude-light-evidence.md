@@ -36,3 +36,18 @@ Bounded scan with `zil-objtab-carriers.cjs`, valid IDs up to the first property 
   carried assignment 97). This is a device negative, but NOT target-named (rule 7), so it needs a ruling.
 - Runtime `FCLEAR ,FLASHLIGHT ,LIGHTBIT` at `cs.zil:1413`: the bit is the flashlight's working state, not just
   capability.
+
+## Zork I lightSource 31: one testable positive + source match (needs a rule-5 exception ruling)
+
+- Census {104 torch, 147 candles, 164 lamp}; source LIGHTBIT carriers 3/3 exact.
+- Target-named positive: walk mz3 steps 15/19/25/35/307 (`Light lamp` / `Douse lamp`), 164:31 TRUE each time.
+- Cold device negatives: `turn on mailbox` 160:31 FALSE; `turn on leaflet` 161:31 FALSE ("You can't turn that on.").
+- Torch 104 and candles 147 are never tested on bit 31 by any command. The torch is always lit, and the candles'
+  own routine handles LIGHT and DOUSE without V-LAMP-ON. So no second target-named positive exists in the module.
+- Withdrawal history: Zork I light 31 was withdrawn in 894c923 (#3380) over capability vs emission. The #3904
+  consumer audit answers that.
+
+## Rule-7 ruling (leader, #4028)
+
+A parser GWIM/FIND scan does not satisfy rule 7. Lurking light 22 therefore stays U, because only a FIND-scan negative
+can exist (documented as untestable-by-rule).
