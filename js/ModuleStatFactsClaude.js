@@ -132,7 +132,16 @@ var ModuleStatFactsClaude = {
         // 'wait' 0 ("You can see nothing on the second slab."); 'put tray on flashlight' (28) 110:17 FALSE beyond control ("There's no good
         // surface on the flashlight."). Source OPENBIT 15 exact 18/18, SURFACEBIT 17 exact 7/7. CONTBIT 24 HELD (rule 4): RAM CONTBIT is
         // on gorillas, stallion, salesman, your body, bed, toilet, divan, barge and stoop, so a container fact would offer Open/Close on them.
-        "attributeMap": { "open": 15, "isOpen": 15, "supporter": 17 }
+        // ACTORBIT 31 (grok1 2026-10-17, g1-scan3 = 2026-10-15-zil-routes lgop replay, test_attr recorded only during the named
+        // command; source verbs.zil V-ENTER tests DOORBIT, VEHBIT, then ACTORBIT): 'enter female gorilla' @95 tests 122:31 TRUE x2;
+        // 'enter male gorilla' @95 tests 85:31 TRUE; 'enter basket' @30 tests wicker basket 167:31 FALSE; 'enter barge' @127 tests
+        // royal barge 116:31 FALSE. Source ACTORBIT 31 exact 10/10. Container 24 stays HELD (verbs.zil:3126 FCLEARs THETA ACTORBIT
+        // while she keeps CONTBIT/OPENBIT, so none=[animate] would not cover her).
+        // VEHBIT 29 (grok1 2026-10-17, same replay): 'enter barge' @127 tests royal barge 116:29 TRUE x3 ("You are now in the royal
+        // barge."); 'enter bed' @209 tests bed 113:29 TRUE x3 ("You are now on the bed."); 'enter basket' @30 tests 167:29 FALSE;
+        // 'enter female gorilla' @95 tests 122:29 FALSE x2. RAM 29 = cage, tree hole, both slabs, stallion, bed, stool, barge, divan,
+        // toilet (+ one runtime object) = source VEHBIT exact 10/10; each is boardable in source (V-BOARD on VEHBIT).
+        "attributeMap": { "open": 15, "isOpen": 15, "supporter": 17, "animate": 31, "enterable": 29 }
     },
     // Spellbreaker (ZIL): Q8 player root = constant PLAYER object 52 (historicalsource/spellbreaker 6f83ba4 globals.zil 324 OBJECT PLAYER
     // DESC "it"). No PLAYER global; WINNER G197 is mutable (globals.zil 923/928 BELBOZ, verbs.zil 334/359 PRSO). Native TAKE puts the
@@ -149,7 +158,12 @@ var ModuleStatFactsClaude = {
         // PERSON 31 (grok1 2026-10-16, same tool/seed): 'ask belboz about me' (step 335) tests 13:31 TRUE ("Belboz looks at you
         // suspiciously..."); 'ask ogre about me' (71) 232:31 TRUE ("The ogre grunts nastily at you."); 'ask zipper about me' (71)
         // 198:31 FALSE ("You can't talk to the zipper."). Source PERSON 31 exact 21/21. Fixes the #3590 bit-0 animate fallback here.
-        "attributeMap": { "supporter": 3, "animate": 31, "talkable": 31 }
+        // ONBIT 8 = magical glow state (grok1 2026-10-17, g1-scan2 Jericho replay seed 1, test_attr recorded only during the named
+        // command): 'turn off burin' @14 (after FROTZ BURIN) tests magic burin 149:8 TRUE ("The magical glow fades, leaving you in the
+        // dark."); 'turn off bottle' @119 (after FROTZ BOTTLE) tests bottle 145:8 TRUE ("The magical glow fades."); 'turn off spell book'
+        // @14 tests spell book 144:8 FALSE ("How do you do that with a spell book?"). Source historicalsource/spellbreaker@6f83ba4:
+        // V-FROTZ FSETs ONBIT on the target, V-LAMP-OFF tests/FCLEARs it; ONBIT 8 source exact 28/28 (lit rooms plus frotzed objects).
+        "attributeMap": { "supporter": 3, "animate": 31, "talkable": 31, "on": 8 }
     },
     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
         "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12 },
@@ -730,6 +744,11 @@ var ModuleStatFactsClaude = {
         // thought."). Source: WEARABLEBIT is carried ONLY by SURGERY-HAND (objects.zil:393, IN SUPPLIES-MID); bounded compiled object-table
         // scan (191 objects, ends at first property 2527): bit 31 carriers = {63} -> rule-5 single-owner exception + source 1/1.
         "attributeMap": { "wearable": 31 },
+        // WEARBIT 15 = worn (grok1 2026-10-17, route suspW): grasper 63:15 FALSE before 'waldo,install grasper', TRUE after; 'waldo,detach grasper'
+        // tests 63:15 TRUE x3 ("It's been removed."); 'waldo,remove container' tests basket 76:15 FALSE (agent-tools/g1-suE.json). Single owner:
+        // the only runtime FSET is V-WEAR (verbs.zil:1745), gated on WEARABLEBIT = SURGERY-HAND only; the bounded boot scan carrier {191} is
+        // GLOBAL-OBJECTS (globals.zil:14-16, the flag-list pseudo object, never in inventory).
+        "wornAttribute": 15,
         "command": "score", "fields": ["casualties", "population", "cycles"], "replyFamily": "casualty-cycles", "outcome": "line",
         "evidence": "2026-10-05 live SCORE: There have been 3,000 casualties (original population: 30,172,000) in 0 cycles."
     },
