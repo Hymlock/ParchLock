@@ -147,6 +147,9 @@ var AttributeSchema = {
                 && Number.isInteger(map[flagName]) && map[flagName] >= 0 && map[flagName] < 48) {
                 return map[flagName];
             }
+            // An explicit null in a measured map means this executable has no such bit: its library numbers another
+            // attribute there (phlegm/heist: bit 3 is container, not the I6 default concealed).
+            if (map && Object.prototype.hasOwnProperty.call(map, flagName) && map[flagName] === null) return null;
             // ZIL fail-closed (operator 2026-10-11): never apply I6 PROFILE bit
             // numbers to non-Inform stories for containment/open family. Wrong
             // PROFILE made Zork mailbox look non-container and leaked false

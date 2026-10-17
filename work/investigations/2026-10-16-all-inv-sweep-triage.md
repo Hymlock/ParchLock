@@ -93,3 +93,4 @@ Confirming full gate on the committed 8ea2f66 state: 20 differences, all in the 
   this library's container bit. One target-scoped positive object so far (grave is routine-handled, the photo is not
   reachable); the 2+1 rule needs a second container (box/coffin later in the game). Open.
 - 1d7c009 Sherlock container 9 / open 5 (raw counts: PUT IN bag/pocket TRUE, whistle FALSE; OPEN sets 5).
+- phlegm container 3 (+ concealed null; AttributeSchema honours explicit null = no bit): Leo listed in the worn overcoat as native. Gate 309: 8 diffs, 0 regression (Sherlock/phlegm intended; Inevita, Mullmurd, medusa, schooldays noise).

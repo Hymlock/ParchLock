@@ -291,7 +291,14 @@ var ModuleStatFactsClaude = {
     "ba9c2c81d6b55eb9fc7de43a2e439fc65304231cbb834c208005cd9460f44ff0": {
         "playerObject": 232,
         "attributeMap": { "container": 9, "open": 5, "isOpen": 5 },
-        "openCapability": { "all": ["container"] }
+        "openCapability": { "all": ["container"], "none": [] }
+    },
+    // phlegm (Inform, no attribute-name table): this library numbers container 3 (I6 default: concealed 3, container 4).
+    // Raw target-scoped PUT IN tests (zil-route-ops-raw.cjs): PUT MAP IN COAT tests 3 TRUE on the blue overcoat 39, PUT MAP
+    // IN CANNON TRUE on the cannon 43 (with open 14); PUT COAT IN MAP FALSE on the map 38, PUT MAP IN TREE FALSE on the tree 41.
+    // Leo (37) sits in the worn overcoat and native i lists him. concealed has no bit here (null). SOLO/SELF-AUDIT.
+    "7bb622d1c5c65954361c49bf2522621cfd27af7ddf4a7f1041c286f1b0f57756": {
+        "attributeMap": { "container": 3, "concealed": null }
     },
     // Treasures: measured SCORE and QUEST RATE agree at 0, 3 and restored43.
     // Semantic relationship only; base SCORE/PROWESS capabilities stay intact.
