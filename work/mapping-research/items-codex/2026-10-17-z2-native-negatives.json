@@ -1,0 +1,183 @@
+{
+ "Zork2-TheWizardofFrobozz.z3.js @wear lamp": {
+  "step": 0,
+  "ts": "2026-10-17T15:40:43.273Z",
+  "nativeI": "You can't wear the lamp.\n \n> ",
+  "ops": [
+   [
+    4,
+    9,
+    1
+   ],
+   [
+    76,
+    9,
+    0
+   ],
+   [
+    23,
+    9,
+    0
+   ],
+   [
+    76,
+    3,
+    0
+   ],
+   [
+    231,
+    27,
+    0
+   ],
+   [
+    231,
+    19,
+    1
+   ]
+  ],
+  "objs": [
+   {
+    "id": 4,
+    "name": "cretin",
+    "parent": 231,
+    "bits": [
+     0,
+     7,
+     9,
+     14,
+     30
+    ]
+   },
+   {
+    "id": 76,
+    "name": "lamp",
+    "parent": 231,
+    "bits": [
+     17,
+     31
+    ]
+   },
+   {
+    "id": 23,
+    "name": "sword",
+    "parent": 231,
+    "bits": [
+     13,
+     17,
+     29
+    ]
+   },
+   {
+    "id": 231,
+    "name": "Inside the Barrow",
+    "parent": 230,
+    "bits": [
+     2,
+     12,
+     19
+    ]
+   }
+  ]
+ },
+ "Zork2-TheWizardofFrobozz.z3.js @eat lamp": {
+  "step": 0,
+  "ts": "2026-10-17T15:40:52.371Z",
+  "nativeI": "(Taken)\nI don't think that the lamp would agree with you.\n \n> ",
+  "ops": [
+   [
+    4,
+    9,
+    1
+   ],
+   [
+    76,
+    9,
+    0
+   ],
+   [
+    23,
+    9,
+    0
+   ],
+   [
+    76,
+    13,
+    0
+   ],
+   [
+    76,
+    17,
+    1
+   ],
+   [
+    231,
+    18,
+    0
+   ],
+   [
+    76,
+    20,
+    0
+   ],
+   [
+    76,
+    21,
+    0
+   ],
+   [
+    231,
+    27,
+    0
+   ],
+   [
+    231,
+    19,
+    1
+   ]
+  ],
+  "objs": [
+   {
+    "id": 4,
+    "name": "cretin",
+    "parent": 231,
+    "bits": [
+     0,
+     7,
+     9,
+     14,
+     30
+    ]
+   },
+   {
+    "id": 76,
+    "name": "lamp",
+    "parent": 4,
+    "bits": [
+     2,
+     17,
+     31
+    ]
+   },
+   {
+    "id": 23,
+    "name": "sword",
+    "parent": 231,
+    "bits": [
+     13,
+     17,
+     29
+    ]
+   },
+   {
+    "id": 231,
+    "name": "Inside the Barrow",
+    "parent": 230,
+    "bits": [
+     2,
+     12,
+     19
+    ]
+   }
+  ]
+ }
+}
