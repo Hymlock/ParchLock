@@ -70,7 +70,7 @@ async function open(b, story, seeded) {
     await p.cmd('look');
     const info = await p.evaluate(() => {
       const ms = [...document.querySelectorAll('.pl-act:not(.is-stale)')].filter(m => m.dataset.kind !== 'direction');
-      const cov = ms.flatMap(m => Actionable.markCoverIds(m)); const dup = cov.filter((id, i) => cov.indexOf(id) !== i);
+      const cov = ms.flatMap(m => [...new Set(Actionable.markCoverIds(m))]); const dup = cov.filter((id, i) => cov.indexOf(id) !== i);
       const inside = ms.filter(m => m.textContent.toLowerCase() === 'cage' && /brass\s*$/i.test((m.previousSibling && m.previousSibling.nodeValue) || ''));
       const brass = ms.filter(m => m.textContent.toLowerCase() === 'brass cage').map(m => Actionable.markCoverIds(m));
       return { dup, inside: inside.length, brass };
@@ -86,15 +86,18 @@ async function open(b, story, seeded) {
     check('jigsaw no preposition/particle mark (intro)', bad.length === 0, bad);
     await p.close();
   } catch (e) { check('jigsaw run', false, e.message); }
-  if (!process.env.ONLY || process.env.ONLY==='planetfall') try { // ---- Planetfall: cold inventory must not list off-tree brochure 217 (#3859/#3860) ----
+  if (!process.env.ONLY || process.env.ONLY==='planetfall') try { // ---- Planetfall brochure custody (codex C1494C7184A8 / #3979) ----
     const p = await open(b, 'Planetfall.z3.js');
     await p.cmd('i');
     const info = await p.evaluate(() => {
       const inv = ((WorldModel.lastPayload || {}).inventory || []).map(o => o.id);
       const text = String((Actionable.Scope && Actionable.Scope.lastInventoryText) || '');
-      return { inv, has217: inv.indexOf(217) >= 0, textHasBrochure: /brochure/i.test(text) };
+      const mem = ZRamProvider.getMem(), links = ZRamReader.objectLinks(mem, 217);
+      const root = ((WorldModel.lastPayload || {}).probe || {}).inventoryRootId;
+      return { inv, has217: inv.indexOf(217) >= 0, textHasBrochure: /brochure/i.test(text), root, brochureParent: links && links.parent };
     });
-    check('planetfall cold inventory has no brochure 217', !info.has217 && !info.textHasBrochure, info);
+    // PROB15 may hand over the brochure; native RAM custody (not ambient text) decides.
+    check('planetfall brochure inventory matches native custody', info.root === 236 && info.has217 === (info.brochureParent === 236), info);
     await p.close();
   } catch (e) { check('planetfall brochure run', false, e.message); }
   await b.close(); console.log(pass + ' PASS / ' + fail + ' FAIL'); process.exit(fail ? 1 : 0);
