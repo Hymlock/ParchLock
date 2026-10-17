@@ -58,6 +58,24 @@ This is what is not implemented yet; ruled-out and finished items are not here.
   owned lanes - codex Actionable/AttrCalibrator, grok2 ZRamReader/ZRamProvider/AttributeSchema, grok ModuleStatFactsClaude,
   claude WorldModel/docs/commits. Open: heist/phlegm library
   attribute order, Sherlock nested container facts, Lurking "pc" labelled "computer terminals", startup-menu games.
+  Update 2026-10-17. The table at HEAD 9e78e8b reads finished 226/546, U 223 (grok #4046); it was 214 / U 240 at
+  0619470, before the facts commits below, and U 292 that morning.
+  - Landed:
+    - 09e367f: suvehnux cage, Jigsaw preposition exits, exclusive coverage.
+    - 285697b: Zork I "glass bottle", D198-gated.
+    - P3 7969f6c and R 1aac107: actor Open/Close fail-closed in 7 titles.
+    - 206682d: Zork II light 31. 4fbc0e3: Zork I light 31 + Seastalker on 19.
+    - fd6edad: Cutthroats worn 13.
+    - 88b8ce5: LGOP animate 31 + enterable 29, Spellbreaker on 8, Suspended worn 15.
+    - 9e78e8b: Planetfall brochure custody guard (codex C1494C7184A8; ACCEPT claude #3979, grok #4044; 13/0).
+  - Open, claude:
+    - AttributeSchema ZIL family-default candidate (work/investigations/2026-10-17-claude-attrschema-familydefault.js,
+      309x2 running);
+    - room-safe animate candidate for Enchanter (2026-10-17-claude-zramreader-roomsafe.js);
+    - light evidence (2026-10-17-claude-light-evidence.md): Hollywood, LGOP, PH, Planetfall and Moonmist need a second
+      positive or a route; Lurking, Ballyhoo and Witness light are untestable by rule 7.
+  - Rulings: UD needs source + device + no alternative mechanism; rule 7 excludes parser FIND/GWIM scans; a target-named
+    FSET write with a confirming reply counts as a positive.
 - **Spell search/empty.** Spell objects are read as containers from their ZIL bits, so they offer search and empty; that is noise, and it is still open because the same gate would also hide search on real ZIL containers. D160, "Still open."
 - **D190.** A promoted object that the player takes still does not show up in the equipment sheet. D190, "Still open."
 - **D192.** Full-reply hiding and inventory room-reset suppression (finding 5) are still deliberately untested, and the carry-equip live harness still asserts nothing. D192, "F6"; "Closing the D186-D197 arc."
