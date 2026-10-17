@@ -1353,24 +1353,37 @@ var ZRamReader = {
     // address, a room number, a flag word -- fails that test almost immediately.
     // Nothing is assumed about which property number holds vocabulary; the data
     // proves it or it is ignored (D24/D61).
-    parserWordsStructural: (mem, id) => {
+    // Per-property vocabulary scan (Codex #3703): same validation as the former
+    // structural flatten — even length ≥2, every 2-byte slot is an exact dictionary
+    // entry start — but keeps propId and addresses for Actionable unique-head selection.
+    parserWordProperties: (mem, id) => {
         try {
             var rev = ZRamReader.reverseDictionary(mem);
             if (!rev) return [];
             var props = ZRamReader.listProps(mem, id) || [];
-            var seen = {}, out = [];
+            var out = [];
             props.forEach(function (pr) {
-                // Word lists are arrays of 2-byte entries. An odd length, or a
-                // single byte, cannot be one.
                 if (!pr || pr.sz < 2 || (pr.sz % 2) !== 0) return;
-                var got = [];
+                var entries = [];
                 for (var k = 0; k < pr.sz; k += 2) {
                     var addr = ZRamReader.u16(mem, pr.dataAddr + k);
                     var w = rev[addr];
-                    if (!w) return;                 // one bad slot disqualifies the whole property
-                    got.push(String(w).toLowerCase());
+                    if (!w) return;
+                    entries.push({ address: addr, word: String(w).toLowerCase() });
                 }
-                got.forEach(function (w) {
+                if (entries.length) out.push({ propId: pr.num, entries: entries });
+            });
+            return out;
+        } catch (e) { return []; }
+    },
+
+    parserWordsStructural: (mem, id) => {
+        try {
+            var groups = ZRamReader.parserWordProperties(mem, id) || [];
+            var seen = {}, out = [];
+            groups.forEach(function (g) {
+                (g.entries || []).forEach(function (e) {
+                    var w = e && e.word;
                     if (w && !seen[w]) { seen[w] = 1; out.push(w); }
                 });
             });
