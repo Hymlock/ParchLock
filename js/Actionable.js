@@ -242,6 +242,32 @@ var Actionable = {
         } catch (e) {}
         return true;
     },
+    // D225: parser aliases also contain adjective properties. The noun-trigger
+    // exception may use only one validated property containing the structural
+    // head, never the flattened alias union. Qualifiers remain in obj.aliases.
+    headPropertyWords: function (obj, mem) {
+        var out = {};
+        try {
+            if (arguments.length < 2) mem = ZRamProvider.getMem();
+            if (!mem) return out;
+            var family = GrammarProvider.decodeD198(mem);
+            if (!mem || !family || family.classification !== 'confirmed-zil-family' || family.evidence !== 'validated') return out;
+            if (!ZRamReader.parserWordProperties) return out;
+            var name = String(ZRamReader.shortName(mem, obj.id) || '');
+            if (!name || name.charAt(0) === '(') return out;
+            var head = Actionable.headTokenOf({ name: name });
+            if (!head || Actionable.isReferenceToken(head) || Actionable.isGrammarParticle(head)) return out;
+            var key = Actionable.vocabularyKey(head);
+            var groups = ZRamReader.parserWordProperties(mem, obj.id).filter(function (group) {
+                return group.entries.some(function (entry) { return Actionable.vocabularyKey(entry.word) === key; });
+            });
+            // An accidental byte-list/dictionary-address collision must not
+            // turn two possible head properties into one synonym vocabulary.
+            if (groups.length !== 1) return out;
+            groups[0].entries.forEach(function (entry) { out[Actionable.vocabularyKey(entry.word)] = true; });
+        } catch (eHeadProperty) {}
+        return out;
+    },
     displayNameFor: function (obj, pool, text) {
         var seed = obj;
         try {
@@ -369,8 +395,9 @@ var Actionable = {
     },
     // Positive admission (Codex #3509/#3527): only genuine listing entries of the native inventory reply, never its
     // incidental prose ("A troll drops a cube."). Headers are only the player's inventory headers ("You are carrying:",
-    // "You have:", ...) or "<known pool object> contains:"; block rows must be INDENTED and end at the first unindented
-    // line. Sentence lists are only "You are/You're carrying|holding|wearing ...", "You have ..." or "<known pool object>
+    // "You have:", ...) or "<known pool object> contains:"; indented block rows keep their indentation boundary.
+    // Unindented rows need positive item-name evidence. Sentence lists are only
+    // "You are/You're carrying|holding|wearing ...", "You have ..." or "<known pool object>
     // contains ...". Commas separate items; " and " separates only when its left side ends with another pool object's
     // name (compounds such as "tourist guide and phrase book" stay whole). Uncertain formats yield no row.
     listingRows: function (invText, pool) {
@@ -387,6 +414,25 @@ var Actionable = {
         var endsKnown = function (s) { s = s.toLowerCase().trim(); return names.some(function (n) { return s === n || s.slice(-n.length - 1) === " " + n; }); };
         var rows = [], inBlock = false, blockInd = -1;
         var pushItem = function (x) { if (/^(?:a|an|the|some|your|my|his|her|their|our|two|three|four|five|six|seven|eight|nine|ten|\d+)\s|^["']/i.test(x)) rows.push(x); };
+        // D225: absence of sentence punctuation is not item evidence. Prefer an
+        // entire known name, including compound/long names, before stripping one
+        // listing prefix. Curves also prints "your wallet" / "your key ring": a
+        // partial pool may omit wallet, while ring has one printed modifier.
+        var unindentedItem = function (text) {
+            var value = text.replace(/\s*\([^()]*\)\s*$/, "").replace(/[.,;:!?]+\s*$/, "").trim().toLowerCase();
+            if (names.indexOf(value) >= 0) return true;
+            var bare = value.replace(/^(?:a|an|the|some|your|my|his|her|their|our|two|three|four|five|six|seven|eight|nine|ten|\d+)\s+/i, "");
+            if (names.indexOf(bare) >= 0) return true;
+            var possessive = /^(?:your|my)\s+(.+)$/.exec(value);
+            if (!possessive) return false;
+            if (/^[a-z0-9]+(?:['-][a-z0-9]+)*$/.test(possessive[1])) return true;
+            return names.some(function (name) {
+                var suffix = " " + name;
+                if (possessive[1].slice(-suffix.length) !== suffix) return false;
+                var modifier = possessive[1].slice(0, -suffix.length);
+                return /^[a-z0-9]+(?:['-][a-z0-9]+)*$/.test(modifier);
+            });
+        };
         String(invText || "").split(/\n/).forEach(function (raw) {
             var line = String(raw || ""), t = line.trim();
             var ind = (line.match(/^\s*/) || [""])[0].length;
@@ -395,10 +441,10 @@ var Actionable = {
             if (headRe.test(t.split(/[.!?]\s+/).pop())) { inBlock = true; blockInd = -1; return; }
             // Block rows: the first row fixes the indentation level (Inform lists top-level rows unindented, Infocom
             // indents them); rows at that level or deeper continue, a shallower line ends the block.
-            // An unindented line that ends a sentence is prose, not a row (Codex #3553: "A troll drops a red cube." after
-            // a zero-indent list); Inform's unindented rows carry no sentence punctuation.
-            var prose = ind === 0 && /[.!?]["']?$/.test(t.replace(/\s*\([^()]*\)\s*$/, ""));
-            if (inBlock && !prose && (blockInd < 0 || ind >= blockInd)) { if (blockInd < 0) blockInd = ind; rows.push(t); return; }
+            // Unknown zero-indent prose closes the block even without a final
+            // period; it must never become a descriptor or a holder witness.
+            var itemRow = ind > 0 || unindentedItem(t);
+            if (inBlock && itemRow && (blockInd < 0 || ind >= blockInd)) { if (blockInd < 0) blockInd = ind; rows.push(t); return; }
             inBlock = false;
             // Each sentence of the line separately (Plundered Hearts prints "You have ... . It seems that your
             // reticule contains ... . You are wearing ..." on one line). An item must START like an item entry
@@ -1544,6 +1590,35 @@ var Actionable = {
         return out;
     },
 
+    wrappingExcluded: function (element) {
+        return !!$(element).closest('.Input, .Style_input, .Style_subheader, a, style, script').length;
+    },
+    // True when source[idx,end) lies inside a printed multi-word full name of an object other than meta.objectId.
+    insideOtherFullName: function (source, idx, end, meta) {
+        var self = meta && meta.objectId != null ? String(meta.objectId) : null;
+        return Actionable.fullNameSpans(source).some(function (sp) {
+            return sp.id !== self && sp.end - sp.start > end - idx && sp.start <= idx && sp.end >= end;
+        });
+    },
+    // Printed multi-word full names in a text, as [start,end,id] spans. Computed once per text per markup pass
+    // (grok #3799 A2): Actionable._fullNameSpans is set when a pass starts and cleared when it ends.
+    fullNameSpans: function (source) {
+        var cache = Actionable._fullNameSpans, key = String(source || "");
+        if (cache && cache.bySource.has(key)) return cache.bySource.get(key);
+        var names = cache ? cache.names : Actionable.multiWordNames(), lower = key.toLowerCase(), spans = [];
+        names.forEach(function (n) {
+            for (var at = lower.indexOf(n.name); at >= 0; at = lower.indexOf(n.name, at + 1)) {
+                var stop = at + n.name.length;
+                if (!/[a-z0-9]/.test(lower.charAt(at - 1)) && !/[a-z0-9]/.test(lower.charAt(stop))) spans.push({ start: at, end: stop, id: n.id });
+            }
+        });
+        if (cache) cache.bySource.set(key, spans);
+        return spans;
+    },
+    multiWordNames: function () {
+        return Actionable.distinctObjects(Actionable.payloadPool()).map(function (o) { return { id: String(o.id), name: String(o.name || "").toLowerCase().trim() }; })
+            .filter(function (n) { return /\s/.test(n.name); });
+    },
     wrapFirstExact: (lines, phrase, meta) => {
         var target = String(phrase || "");
         if (!target || !lines || !lines.length) return false;
@@ -1555,7 +1630,7 @@ var Actionable = {
             var nodes = [];
             var node;
             while ((node = walker.nextNode())) {
-                if (!$(node.parentElement).closest(".Input, .Style_input, .Style_subheader, a, style, script, .pl-act").length) nodes.push(node);
+                if (!Actionable.wrappingExcluded(node.parentElement) && !$(node.parentElement).closest('.pl-act').length) nodes.push(node);
             }
             nodes.some(function (textNode) {
                 if (wrapped) return true;
@@ -1574,6 +1649,9 @@ var Actionable = {
                         continue;
                     }
                     var matched = source.slice(idx, afterIdx);
+                    // D70 / directive #3780 (suvehnux): an occurrence inside another object's printed full name names THAT
+                    // object ("the brass cage" is not a mention of "bars of the cage"), so a shorter phrase never takes it.
+                    if (meta.kind !== "direction" && Actionable.insideOtherFullName(source, idx, afterIdx, meta)) { from = idx + 1; continue; }
                     // Item 7 (APK 64, wump2ka "main source of light"): a single
                     // word shared by several objects is underlined only when it
                     // is the MAIN noun of at least one of them ("pellets",
@@ -1650,8 +1728,40 @@ var Actionable = {
     markCoverIds: function (m) {
         var ids = [];
         try { ids = JSON.parse(m.dataset.coverIds || m.dataset.candidateIds || '[]'); } catch (e) {}
-        if (m.dataset.objectId) ids.push(m.dataset.objectId);
+        if (m.dataset.coverIds === undefined && m.dataset.objectId) ids.push(m.dataset.objectId);
         return ids.map(String);
+    },
+    // D146/D225: parser candidates remain clickable, but display ownership is
+    // exclusive. Rebuild from current scope every pass; [] is authoritative.
+    reconcileMarkCoverage: function (pool) {
+        var scoped = {}, reserved = {}, marks = (Actionable.LiveMarks || []).filter(function (m) {
+            return m.isConnected && !m.classList.contains('is-stale') && m.dataset.kind !== 'direction';
+        });
+        (pool || []).forEach(function (o) { scoped[String(o.id)] = o; });
+        marks.sort(function (a, b) { return a === b ? 0 : (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1; });
+        marks.filter(function (m) { return !!m.dataset.objectId; }).forEach(function (m) {
+            var id = String(m.dataset.objectId), own = !!scoped[id] && !reserved[id];
+            m.dataset.coverIds = JSON.stringify(own ? [id] : []);
+            if (own) reserved[id] = true;
+        });
+        // T3 (grok #3788): the D146 head policy applies to the UNRESERVED candidates, so a group whose head owners are
+        // all represented elsewhere still covers its remaining candidates ("cage" -> cage door) instead of nothing.
+        var freeCover = function (m, ids) {
+            var free = ids.filter(function (id) { return !reserved[id]; });
+            return Actionable.coverageOf(m.textContent, free, free.map(function (id) { return scoped[id]; })).map(String);
+        };
+        var groups = marks.filter(function (m) { return !m.dataset.objectId; }).map(function (m, order) {
+            var ids = []; try { ids = JSON.parse(m.dataset.candidateIds || '[]').map(String); } catch (e) {}
+            ids = ids.filter(function (id, i) { return scoped[id] && ids.indexOf(id) === i; });
+            return { mark: m, ids: ids, cover: freeCover(m, ids), order: order };
+        });
+        // More specific remaining groups win; document order breaks ties.
+        groups.sort(function (a, b) { return a.cover.length - b.cover.length || a.order - b.order; });
+        groups.forEach(function (g) {
+            var ids = freeCover(g.mark, g.ids);
+            g.mark.dataset.coverIds = JSON.stringify(ids);
+            ids.forEach(function (id) { reserved[id] = true; });
+        });
     },
     phraseOwners: function (phrase, pool) {
         var matched = String(phrase || '').toLowerCase();
@@ -1771,6 +1881,85 @@ var Actionable = {
         marks.forEach(function (m) { idsOf(m).forEach(function (id) {
             if (!(Actionable.LiveMarks || []).some(function (x) { return x.isConnected && idsOf(x).indexOf(id) >= 0; })) delete markedIds[id];
         }); });
+    },
+    // D225 E2: a longer preferred phrase may replace ONLY marks physically
+    // inside its first exact occurrence and actually covering this object.
+    // Candidate membership elsewhere is not permission to erase an underline.
+    replaceMarkedPhrase: function (lines, meta, markedIds) {
+        var phrase = String(meta.phrase || ""), target = phrase.toLowerCase();
+        if (!target || meta.objectId == null || meta.kind === "direction") return false;
+        for (var li = 0; li < lines.length; li++) {
+            var line = lines[li], text = String(line.textContent || ""), lower = text.toLowerCase(), at = -1, from = 0;
+            while ((at = lower.indexOf(target, from)) >= 0) {
+                var walker = document.createTreeWalker(line, NodeFilter.SHOW_TEXT), node, pos = 0, excluded = false;
+                while ((node = walker.nextNode())) {
+                    var next = pos + node.nodeValue.length;
+                    if (next > at && pos < at + target.length && Actionable.wrappingExcluded(node.parentElement)) excluded = true;
+                    pos = next;
+                }
+                if (!excluded && !/[a-z0-9]/i.test(text.charAt(at - 1)) && !/[a-z0-9]/i.test(text.charAt(at + target.length))) break;
+                from = at + 1;
+            }
+            if (at < 0) continue;
+            var end = at + target.length, overlap = [], unsafe = false;
+            Array.from(line.querySelectorAll('.pl-act')).forEach(function (mark) {
+                var prefix = document.createRange(); prefix.setStart(line, 0); prefix.setEndBefore(mark);
+                var start = prefix.toString().length, finish = start + mark.textContent.length;
+                if (finish <= at || start >= end) return;
+                if (start < at || finish > end || mark.textContent.toLowerCase() === target
+                    || mark.classList.contains('is-stale') || mark.dataset.kind === 'direction'
+                    || Actionable.markCoverIds(mark).indexOf(String(meta.objectId)) < 0) { unsafe = true; return; }
+                overlap.push(mark);
+            });
+            if (unsafe || !overlap.length) return false;
+            var parent = overlap[0].parentNode;
+            if (!parent || overlap.some(function (m) { return m.parentNode !== parent; })
+                || Actionable.wrappingExcluded(parent)) return false;
+            var beforeParent = document.createRange(); beforeParent.setStart(line, 0); beforeParent.setEnd(parent, 0);
+            var startInParent = at - beforeParent.toString().length, endInParent = startInParent + target.length;
+            var children = Array.from(parent.childNodes), pos = 0, points = {};
+            children.forEach(function (child, index) {
+                var next = pos + child.textContent.length;
+                [startInParent, endInParent].forEach(function (offset) {
+                    if (points[offset]) return;
+                    if (offset === pos) points[offset] = [parent, index];
+                    else if (offset === next) points[offset] = [parent, index + 1];
+                    else if (offset > pos && offset < next && child.nodeType === 3) points[offset] = [child, offset - pos];
+                });
+                if (next > startInParent && pos < endInParent && child.nodeType !== 3 && overlap.indexOf(child) < 0) unsafe = true;
+                pos = next;
+            });
+            if (unsafe || !points[startInParent] || !points[endInParent]) return false;
+            // Keep ORIGINAL child/mark nodes and text values, not clones. A
+            // rejected/throwing wrap restores both DOM and listener identity.
+            var values = children.map(function (n) { return n.nodeType === 3 ? n.nodeValue : null; });
+            var fields = ['resolvedObjectId', 'markCandidateIds', 'markCoverIds'];
+            var prior = fields.map(function (key) { return { own: Object.prototype.hasOwnProperty.call(meta, key), value: meta[key] }; });
+            var range = document.createRange();
+            range.setStart(points[startInParent][0], points[startInParent][1]);
+            range.setEnd(points[endInParent][0], points[endInParent][1]);
+            var wrapped = false;
+            try {
+                range.extractContents();
+                range.insertNode(document.createTextNode(text.slice(at, end)));
+                wrapped = Actionable.wrapFirstExact([parent], phrase, meta);
+                if (wrapped) wrapped = Array.from(parent.querySelectorAll('.pl-act')).some(function (mark) {
+                    if (mark.textContent.toLowerCase() !== target || Actionable.markCoverIds(mark).indexOf(String(meta.objectId)) < 0) return false;
+                    var prefix = document.createRange(); prefix.setStart(parent, 0); prefix.setEndBefore(mark);
+                    return prefix.toString().length === startInParent;
+                });
+            } catch (eWrap) {}
+            if (!wrapped) {
+                children.forEach(function (n, i) { if (n.nodeType === 3) n.nodeValue = values[i]; });
+                parent.replaceChildren.apply(parent, children);
+                fields.forEach(function (key, i) { if (prior[i].own) meta[key] = prior[i].value; else delete meta[key]; });
+                return false;
+            }
+            Actionable.retireMarks(overlap, markedIds);
+            try { JSON.parse(meta.markCoverIds || meta.markCandidateIds || '[]').forEach(function (id) { markedIds[String(id)] = true; }); } catch (eIds) {}
+            return true;
+        }
+        return false;
     },
     phrasePrintedIn: function (lines, phrase) {
         var e = String(phrase || "").toLowerCase().trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -2101,6 +2290,7 @@ var Actionable = {
         scope.lastReplyText = latest.filter(Actionable.observedLine).map(function (line) { return line.textContent; }).join('\n');
         var idPool = Actionable.payloadPool();
         Actionable.retainMarks(idPool);
+        Actionable.reconcileMarkCoverage(idPool);
         var relocationLines = Array.from(new Set(Actionable.LiveMarks.map(function (mark) { return mark.closest('.BufferLine'); }).concat(changedLines.filter(Actionable.observedLine))));
         Actionable.relocateExactMarks(relocationLines, Actionable.LiveMarks);
         var invIds = {};
@@ -2128,7 +2318,7 @@ var Actionable = {
         // D64 (PRODUCTION_PLAN): short-name phrases first, then property-1
         // parserWords aliases. Longest match first. Only mark when the exact
         // phrase appears in room lines — no prose mining.
-        var wrapTargets = [];
+        var wrapTargets = [], nounFallbackMem;
         idPool.forEach(function (o) {
             var kind = invIds[String(o.id)] ? "inventory" : "object";
             var seenPhrase = {};
@@ -2141,11 +2331,22 @@ var Actionable = {
             // qualifier belonging to the same object.
             var headNoun = String(Actionable.headNounOf(o) || Actionable.headTokenOf(o) || "").toLowerCase();
             var fullName = String(o.name || "").trim().toLowerCase();
-            // A word in the object's OWN synonym list names this object even when the dictionary's part-of-speech byte
-            // lacks the noun bit (Planetfall "brush" is also a verb: flags 98), so the scrub brush keeps a mark.
-            var ownNouns = {};
-            (o.aliases || []).forEach(function (a) { if (a) ownNouns[Actionable.vocabularyKey(String(a).toLowerCase())] = true; });
-            var ownNoun = function (pl) { return String(pl).split(/\s+/).some(function (w) { return !!ownNouns[Actionable.vocabularyKey(w)]; }); };
+            // Planetfall "brush" lacks the generic noun bit. Only a proven
+            // head-property word may bypass that gate; ADJECTIVE words such
+            // as HHG "small" / "monkey" must not get the same exception.
+            var ownNouns = null;
+            var ownNoun = function (pl) {
+                if (ownNouns === null) {
+                    // One live view per synchronous pass lets the reader's
+                    // dictionary cache serve every object. Never retain it
+                    // across a later refresh, command or story load.
+                    if (nounFallbackMem === undefined) {
+                        try { nounFallbackMem = ZRamProvider.getMem(); } catch (eFallbackMem) { nounFallbackMem = null; }
+                    }
+                    ownNouns = Actionable.headPropertyWords(o, nounFallbackMem);
+                }
+                return String(pl).split(/\s+/).some(function (w) { return !!ownNouns[Actionable.vocabularyKey(w)]; });
+            };
             Actionable.namePhrases(o.name).forEach(function (phrase) {
                 var pl = String(phrase).toLowerCase();
                 if (!Actionable.nounTrigger(pl) && !(ownNoun(pl) && !Actionable.isReferenceToken(pl))) return;
@@ -2165,7 +2366,10 @@ var Actionable = {
                 wrapTargets.push({ phrase: word, kind: kind, objectId: o.id, dictAddr: o.dictAddr, fromName: false });
             });
         });
+        // Directive #3780 (Jigsaw "in"): a direction label that is also a preposition is not underlined in prose,
+        // where it is almost always the ordinary word ("in the park"). The exit stays on the compass and radial.
         Actionable.exitLabels().forEach(function (label) {
+            if (/^(in|out|on|off|into|onto|under|over|through|across)$/i.test(String(label).trim())) return;
             wrapTargets.push({ phrase: label, kind: "direction", objectId: null, fromName: true });
         });
         // Prefer longer phrases; prefer short-name hits over alias hits at
@@ -2217,25 +2421,18 @@ var Actionable = {
             && replyLines.length > 0 && replyLines.length === latest.length
             && String(sub.command).trim().toLowerCase() === command && (typeof StatTracker === "undefined" || !StatTracker._probeBaseline)
             && replyLines.some(function (l) { return /\S/.test(l.textContent) && !/\?\s*$/.test(l.textContent.trim()); }));
-        ordered.forEach(function (t) {
+        Actionable._fullNameSpans = { names: Actionable.multiWordNames(), bySource: new Map() };
+        try { ordered.forEach(function (t) {
             if (t.preferred && String(t.phrase).indexOf(' ') >= 0 && markedIds[String(t.objectId)]
-                && activeLines.some(function(l){return l.textContent.toLowerCase().indexOf(String(t.phrase).toLowerCase()) >= 0;})) {
-                // Codex #3334 (as retireMarks): coverage of a removed mark's ids is recomputed from the SURVIVING marks,
-                // so removing an ambiguous "spell" mark cannot uncover the spell book still marked as "spell book".
-                var droppedIds = [];
-                Actionable.LiveMarks = Actionable.LiveMarks.filter(function(mark){
-                    var ids = []; try {ids=JSON.parse(mark.dataset.candidateIds || '[]');} catch(e) {}
-                    if (mark.dataset.objectId) ids.push(mark.dataset.objectId);
-                    if (!ids.some(function(id){return String(id) === String(t.objectId);})
-                        || mark.textContent.toLowerCase() === String(t.phrase).toLowerCase()
-                        || String(t.phrase).toLowerCase().indexOf(mark.textContent.toLowerCase()) < 0) return true;
-                    Actionable.markCoverIds(mark).forEach(function(id){ droppedIds.push(String(id)); });
-                    var parent=mark.parentNode; mark.replaceWith(document.createTextNode(mark.textContent)); if(parent)parent.normalize();
-                    return false;
-                });
-                droppedIds.forEach(function (id) {
-                    if (!Actionable.LiveMarks.some(function (x) { return x.isConnected && Actionable.markCoverIds(x).indexOf(id) >= 0; })) delete markedIds[id];
-                });
+                && Actionable.replaceMarkedPhrase(activeLines, t, markedIds)) return;
+            // A group cannot suppress an observed uniquely owned full label.
+            // Its parser candidates stay intact; reconciliation will reserve
+            // the unique label and leave other group owners represented.
+            var uniqueFullTarget = false;
+            if (t.preferred && /\s/.test(String(t.phrase)) && t.objectId != null) {
+                var owners = Actionable.phraseOwners(t.phrase, idPool);
+                if (owners.length === 1 && String(owners[0].id) === String(t.objectId)
+                    && !Actionable.LiveMarks.some(function (m) { return m.isConnected && !m.classList.contains('is-stale') && String(m.dataset.objectId) === String(t.objectId); })) uniqueFullTarget = true;
             }
             // D214 U1 + inventory confirmation (2026-10-11, Codex #3319/#3326/#3329): one
             // shared transactional rebind. A retained mark for this object on an older
@@ -2257,7 +2454,7 @@ var Actionable = {
                 var c = []; try { c = JSON.parse(m.dataset.candidateIds || '[]').map(String); } catch (eC) {}
                 return c.indexOf(String(t.objectId)) >= 0 && Actionable.markCoverIds(m).indexOf(String(t.objectId)) < 0;
             })) return;
-            if (t.objectId != null && markedIds[String(t.objectId)]) {
+            if (t.objectId != null && markedIds[String(t.objectId)] && !uniqueFullTarget) {
                 var invTarget = invQualified && !!invIds[String(t.objectId)] && Actionable.phrasePrintedIn(replyLines, t.phrase);
                 pendingRetire = Actionable.rebindCandidates(t, activeLines, idPool, invTarget);
                 if (!pendingRetire.length) return;
@@ -2278,9 +2475,10 @@ var Actionable = {
                 }
                 if (t.kind === 'direction') markedDirections[String(t.phrase).toLowerCase()] = true;
             }
-        });
+        }); } finally { Actionable._fullNameSpans = null; }
         Actionable.relocateExactMarks(activeLines);
         Actionable.LiveMarks = $(".pl-act:not(.is-stale)").toArray();
+        Actionable.reconcileMarkCoverage(idPool);
         if (invQualified) {
             // Diagnostic only (Codex #3326): unconfirmed means not printed or not resolvable,
             // never a fault and never an inventory-root signal.
