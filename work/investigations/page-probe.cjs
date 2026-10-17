@@ -8,6 +8,7 @@ const { chromium } = require('playwright'); const fs = require('fs'), path = req
   await p.goto(pathToFileURL(path.resolve(process.env.HTML || 'play.html')).href + '?story=' + process.env.STORY); await p.waitForTimeout(2000);
   const toLine = async () => { for (let i = 0; i < 35; i++) { await p.evaluate(() => { document.querySelector('.parchlock-splash__start')?.click(); try { Message.Hide(); } catch (e) {} }); if (await p.locator('.Input.LineInput').count()) return; await p.keyboard.press('Space'); await p.waitForTimeout(150); } };
   await toLine();
+  if (process.env.PRE) await p.evaluate(new Function(fs.readFileSync(process.env.PRE, 'utf8'))); // PRE=file: runs before the commands
   for (const c of String(process.env.CMDS || '').split('|').filter(Boolean)) { await p.locator('.Input.LineInput').fill(c); await p.keyboard.press('Enter'); await p.waitForTimeout(1300); await toLine(); }
   const body = fs.readFileSync(process.argv[2], 'utf8');
   console.log(JSON.stringify(await p.evaluate(new Function(body)), null, 1)); await b.close();

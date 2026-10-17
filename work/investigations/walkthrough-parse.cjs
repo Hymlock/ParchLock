@@ -25,10 +25,12 @@ routes.stationfall = expand(body('stationfall.step', /\n\s*[a-z][a-z ]*:/i).spli
 routes.lgop = ['look'].concat(...resolveUntil(expand(body('lgop.step1', /\[male version\]/i).split('-'))).map(c => /^smell\b/.test(c) ? [c, 'NP:'] : [c]));
 // Suspended: '#N COMMAND' items.
 routes.suspended = expand((body('suspended.txt').match(/#\d+\s+[^#]+/g) || []).map(s => s.replace(/^#\d+\s+/, '')));
-// Starcross: '.' separated lines after the dashed rule; the UM coordinates line needs the manual's table -> stop there.
+// Starcross: '.' separated lines after the dashed rule. The "[RANGE] [THETA] [PHI]" line (manual table) becomes zil-walk
+// SCUM, which reads the UM code on screen and types its coordinates from the game's own MASS-LOCS table.
 const sc = fs.readFileSync(path.join(D, 'starcross.step1'), 'utf8'); const scBody = sc.slice(sc.indexOf('-----', sc.indexOf('Version')) + 1);
-const scCmds = []; for (const line of scBody.split('\n')) { if (/\[RANGE\]/.test(line)) break; scCmds.push(...clean(line).split('.')); }
-const gi = scCmds.findIndex(c => /^\s*get up\s*$/i.test(c)); routes.starcross = expand(gi >= 0 ? scCmds.slice(gi) : scCmds);
+const scCmds = []; for (const line of scBody.split('\n')) { if (/Emacs Local/.test(line)) break; if (/\[RANGE\]/.test(line)) { scCmds.push('scum', ...clean(line.slice(line.indexOf('[PHI]') + 5)).split('.')); continue; } scCmds.push(...clean(line).split('.')); }
+const gi = scCmds.findIndex(c => /^\s*get up\s*$/i.test(c)); routes.starcross = expand(gi >= 0 ? scCmds.slice(gi) : scCmds).map(c => c === 'scum' ? 'SCUM' : c)
+  .map((c, i, a) => c === 'confirm' && a[i - 1] === 'SCUM' ? 'computer, confirm' : c); // V-YES is the computer's (actions.zil)
 const f = path.join(__dirname, '2026-10-15-zil-routes.json'); const j = JSON.parse(fs.readFileSync(f, 'utf8'));
 for (const k in routes) { j[k] = routes[k]; console.log(k, routes[k].length, JSON.stringify(routes[k].slice(0, 8))); }
 fs.writeFileSync(f, JSON.stringify(j, null, 1));
