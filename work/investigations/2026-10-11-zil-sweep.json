@@ -707,8 +707,8 @@
    "reason": "no exact ACTORBIT/PERSONBIT in source"
   },
   "status": {
-   "status": "unknown",
-   "reason": "SCORE reply numbers [] vs StatTracker [{\"k\":\"time\",\"v\":\"9:03 PM\",\"max\":null}]"
+   "status": "proven",
+   "reason": "time game: StatTracker time 9:03 PM then 9:04 PM (after wait) both equal the status line"
   },
   "descriptors": {
    "status": "unknown",
@@ -1121,8 +1121,8 @@
    "reason": "app animate bit = source ACTORBIT 18"
   },
   "status": {
-   "status": "unknown",
-   "reason": "SCORE reply numbers [0,100,3] vs StatTracker [{\"k\":\"time\",\"v\":\"3:03 PM\",\"max\":null},{\"k\":\"turns\",\"v\":3,\"max\":null}]"
+   "status": "proven",
+   "reason": "time game: StatTracker time 3:03 PM then 3:04 PM (after wait) both equal the status line"
   },
   "descriptors": {
    "status": "proven",
