@@ -28,6 +28,8 @@ const C=o(1,'cube'),T=[
   ["AllRoads header",o(40,"manacles"),[o(40,"manacles"),o(41,"noose")],"You cannot look in your pockets. All that you know you have is:\n  a pair of manacles (binding your wrists together behind your back)\n  a rope around your neck","manacles","pair of manacles"],
   ["curves unindented rows",o(661,"ring"),[o(661,"ring"),o(662,"keys")],"You are carrying:\nyour wallet (which is closed)\nyour key ring (which is closed)\n  three keys:\n    your apartment key\n","ring","key ring"],
   ["PH possessive structural",o(223,"your reticule"),[o(223,"your reticule")],"You have a leather bottle and your reticule (hanging from your wrist).","your reticule",""],
+  ["C3553 zero-indent prose",C,[C,o(30,"lamp")],"You are carrying:\na lamp\nA troll drops a red cube.","cube",""],
+  ["C3553 have lost header",C,[C],"You have lost:\n  a red cube","cube",""],
 ];
 let f=0;for(const [n,seed,pool,txt,sd,exp] of T){const got=Actionable.inventoryLineLabel(seed,pool,txt,sd);const ok=got===exp;if(!ok)f++;console.log(ok?'PASS':'FAIL',n,JSON.stringify(got),'expect',JSON.stringify(exp));}
 console.log(T.length-f,'PASS /',f,'FAIL');
