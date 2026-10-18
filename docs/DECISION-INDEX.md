@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 110 decisions across
-9196 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 111 decisions across
+9217 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -21,6 +21,7 @@ Regenerate after adding decisions: `node tools/decision-index.js`
 
 | D | claim | files | games |
 |---|-------|-------|-------|
+| D227 | One payload pool per read-only pass; the static dictionary is decoded once per story |  |  |
 | D226 | Rooms and NPCs are never the inventory holder | js/WorldModel.js js/ZRamProvider.js js/AttrCalibrator.js js/ModuleStatFactsClaude.js |  |
 | D225 | Shared-word marks cover only their head-noun owners; inventory labels come only from genuine listing rows | js/Actionable.js js/ModuleStatFactsClaude.js | Enchanter |
 | D224 | Wumpus multi-section rooms: measured reallocation fact; a dark-admitted name upgrades once | js/ModuleStatFactsClaude.js js/ZRamReader.js js/ZRamProvider.js js/DarkScope.js | wump2ka |

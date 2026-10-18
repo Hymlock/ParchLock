@@ -9178,6 +9178,27 @@ against the exact P3 in an isolated tree (#3996, CONFIRM #4001). Landing it in m
 on grok2 (claim holder, asked in #3998). Seat identity is
 not enforced by the harness (#3917 was sent by claude under grok2's name in error; disclosed #3919-#3921).
 
+## D227 One payload pool per read-only pass; the static dictionary is decoded once per story
+
+Operator report 2026-10-18 (Identity on phone): wheel and underline actions got cumulatively slower, up to ~10 s; typed input fine.
+Phone CPU profile: 7.9 s freezes. Cause (claude + grok2 blind, agreed): Actionable.payloadPool() was rebuilt per object inside
+per-object loops (O(objects^2)) on the post-submit learning path (TurnRecorder.onAcceptedSubmit -> LearnedWords.observeSubmit,
+AttrCalibrator analyzers / _splitAnyVerbNoun / _d198ScopedCorrelation) and the wheel list (Qol.GetRadialCommands ->
+ActionSynth.collectFromPayload); ZRamReader.parseDictionary re-decoded the dictionary several times per 200 ms tick
+(snapshot, GrammarProvider.readVerbWords, reverseDictionary).
+
+**Rule:** a synchronous read-only pass that calls payloadPool()/referenceFor per object runs inside
+Actionable.withResolutionPool (lazy: built on first use, dropped at scope exit, never kept across input or turns; the same
+discipline as resolveObjectCommands/Open). Code that may mutate pool inputs (submit listeners, MapTopology, Navigator) stays outside.
+parseDictionary is memoized per memory buffer + gameIdentityKey only when dict >= staticMem (fail closed otherwise); the
+result is frozen and every caller must treat it as read-only. Do not add new per-object payloadPool() rebuilds; measure with
+harness/radial-latency.js.
+
+**Evidence:** f76d29f; work/investigations/2026-10-18-claude-radial-slowdown-proposal.md (compare, R1 amendment, result).
+Gate note: the Sherlock boot-intro 'coat' mark is a gate timing race (first marking Refresh ~2.25 s vs gate LOOK ~2.0-2.4 s),
+not a regression. **Open:** phone re-profile on the next APK; grok2 H2 (Open -> addMoreActions builds the full wheel list)
+and H3 (200 ms Loop) only if still slow.
+
 ## Backlog (low priority, research only): Glulx cold decoding
 
 Queued 2026-10-11 by operator instruction, AFTER everything else (ZIL full decode, ZIL item sweep, the item sweeps and the map sweep). No work on it now.
