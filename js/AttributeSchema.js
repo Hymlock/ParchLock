@@ -99,6 +99,21 @@ var AttributeSchema = {
     // Surface-aware container Open/Close (2026-10-11): an evidence-owned per-executable
     // predicate from the digest row (ModuleStatFactsClaude openCapability). null = none
     // recorded: callers keep existing behavior (Inform/Glulx and unrecorded titles untouched).
+    // D198 family per story memory, memoized (grok #4088 / claude #4090): GrammarProvider.decodeD198 caches only
+    // ZIL results, so on Inform titles every call re-parsed the dictionary and bitFor (per object x flag) hung.
+    // The classification depends only on the story bytes, so one decode per memory buffer is exact.
+    _familyOf: function (mem) {
+        var key = mem && mem.buffer ? mem.buffer : mem;
+        if (!key || typeof GrammarProvider === "undefined" || !GrammarProvider.decodeD198) return null;
+        var c = AttributeSchema._famCache || (AttributeSchema._famCache = new WeakMap());
+        var ident = typeof ZRamReader !== "undefined" && ZRamReader.gameIdentityKey ? ZRamReader.gameIdentityKey(mem) : null;
+        var hit = c.get(key);
+        if (hit && hit.ident === ident) return hit.fam;
+        var fam = null;
+        try { fam = GrammarProvider.decodeD198(mem); } catch (e) { fam = null; }
+        c.set(key, { ident: ident, fam: fam });
+        return fam;
+    },
     openCapability: function () {
         try {
             var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest ? ModuleLibrary.currentExecutableDigest() : null;
@@ -181,9 +196,23 @@ var AttributeSchema = {
                 animate: 1, container: 1, openable: 1, open: 1, isOpen: 1, supporter: 1,
                 lockable: 1, locked: 1, door: 1, transparent: 1, enterable: 1
             };
-            if (zilStructural[flagName] && mem && typeof ZRamReader !== "undefined"
-                && ZRamReader.isInformCompiled && !ZRamReader.isInformCompiled(mem)) {
-                return null;
+            // Operator #3782/#3790: ZIL PROFILE skip only for confirmed-zil-family (D198),
+            // not every !isInformCompiled title. Unknown family still fail-closed (null).
+            if (zilStructural[flagName] && mem) {
+                var famZ = null;
+                try {
+                    if (typeof GrammarProvider !== "undefined" && GrammarProvider.decodeD198)
+                        famZ = AttributeSchema._familyOf(mem);
+                } catch (eF) { famZ = null; }
+                if (famZ && famZ.classification === "confirmed-inform") {
+                    // Inform without name table: fall through to PROFILE below.
+                } else if (famZ && famZ.classification === "confirmed-zil-family") {
+                    return null;
+                } else if (!famZ || famZ.classification !== "confirmed-inform") {
+                    // Unknown / non-Inform non-ZIL: no I6 PROFILE.
+                    if (!(typeof ZRamReader !== "undefined" && ZRamReader.isInformCompiled
+                        && ZRamReader.isInformCompiled(mem))) return null;
+                }
             }
         } catch (e) {}
         var n = AttributeSchema.PROFILE[flagName];
