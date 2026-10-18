@@ -101,7 +101,9 @@ var TurnRecorder = {
     onAcceptedSubmit: function (command, source) {
         try {
             var event = Object.freeze({ submissionId: ++TurnRecorder._submissionId, pageEpoch: TurnRecorder.pageEpoch, command: String(command || ""), source: source || "unknown" });
-            try { if (typeof LearnedWords !== 'undefined') LearnedWords.observeSubmit(event); } catch (eLearning) {}
+            // Read-only learning pass shares one pool (radial slowdown 2026-10-18); listeners stay outside.
+            var pooled = function (fn) { return (typeof Actionable !== "undefined" && Actionable.withResolutionPool) ? Actionable.withResolutionPool(fn) : fn(); };
+            try { if (typeof LearnedWords !== 'undefined') pooled(function () { LearnedWords.observeSubmit(event); }); } catch (eLearning) {}
             if (event.source !== "stat-probe") {
                 if (typeof MapTopology !== "undefined") MapTopology.noteCommand(event.command);
                 if (typeof UndoRestoreSync !== "undefined") UndoRestoreSync.noteCommand(event.command);
@@ -130,7 +132,7 @@ var TurnRecorder = {
                 _interests: []
             };
 
-            TurnRecorder._analyzers.forEach(function (a) {
+            pooled(function () { TurnRecorder._analyzers.forEach(function (a) {
                 try {
                     if (turn.source === "stat-probe" && a.id !== "d204-stat-ledger") return;
                     var interest = a.prepare ? a.prepare(turn) : null;
@@ -138,7 +140,7 @@ var TurnRecorder = {
                     turn._interests.push({ analyzer: a, interest: interest });
                     if (interest.wantsStatusBefore) turn.statusBefore = TurnRecorder._currentStatusText();
                 } catch (e) {}
-            });
+            }); });
 
             TurnRecorder._activeTurn = turn;
             setTimeout(function () { TurnRecorder._settle(turn); }, 450);

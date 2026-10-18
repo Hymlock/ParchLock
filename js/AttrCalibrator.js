@@ -760,6 +760,9 @@ var AttrCalibrator = {
     // payload's own discoveredObjects/inventory -- never guessed, never a
     // second hardcoded verb list.
     _splitAnyVerbNoun: function (command) {
+        if (typeof Actionable !== "undefined" && Actionable.withResolutionPool && !Actionable._resolutionPool && !Actionable._lazyPoolScope) {
+            return Actionable.withResolutionPool(function () { return AttrCalibrator._splitAnyVerbNoun(command); });
+        }
         try {
             var s = String(command || "").trim();
             if (!s) return null;

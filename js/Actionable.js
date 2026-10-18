@@ -1485,8 +1485,25 @@ var Actionable = {
         } catch (e) { return []; }
         return out;
     },
+    // One synchronous read-only pass shares one presentation pool (the resolveObjectCommands/Open
+    // rule): loops that call referenceFor/payloadPool per object otherwise rebuild the whole pool
+    // per object (radial slowdown 2026-10-18). Restored in finally; never kept across input or turns.
+    // Lazy: the pool is built on the first payloadPool() call inside the scope, so a pass that
+    // never needs it (most typed submits) pays nothing.
+    _lazyPoolScope: false,
+    withResolutionPool: function (fn) {
+        if (Actionable._resolutionPool || Actionable._lazyPoolScope) return fn();
+        Actionable._lazyPoolScope = true;
+        try { return fn(); }
+        finally { Actionable._lazyPoolScope = false; Actionable._resolutionPool = null; }
+    },
     payloadPool: () => {
         if (Actionable._resolutionPool) return Actionable._resolutionPool;
+        var built = Actionable._buildPayloadPool();
+        if (Actionable._lazyPoolScope) Actionable._resolutionPool = built;
+        return built;
+    },
+    _buildPayloadPool: () => {
         try {
             var p = WorldModel && WorldModel.lastPayload;
             if (!p) return [];

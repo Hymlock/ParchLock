@@ -622,6 +622,9 @@ var ParchLockQol = {
     },
 
     GetRadialCommands: () => {
+        if (typeof Actionable !== "undefined" && Actionable.withResolutionPool && !Actionable._resolutionPool && !Actionable._lazyPoolScope) {
+            return Actionable.withResolutionPool(function () { return ParchLockQol.GetRadialCommands(); });
+        }
         /* D26/#8: app chrome is local; look/inventory/wait are Inform-family
            universals (not story guesses); remaining game-content is RAM. */
         var chrome = [

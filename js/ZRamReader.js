@@ -1503,9 +1503,27 @@ var ZRamReader = {
     // (entryLen === 9). Bit 0 of the first data byte is the generic
     // verb flag. Infocom layouts use those extra bytes differently, so
     // isVerb is only set when that Inform gate holds (D34 follow-up).
+    // The dictionary lives in static memory (Z-spec 1.1), so one decode per story serves every
+    // caller; callers only read it (frozen). A dictionary below staticMem is never cached.
+    _dictCache: new WeakMap(),
     parseDictionary: (mem) => {
         var h = ZRamReader.header(mem);
         if (!h || !h.dict) return { words: {}, entryLen: 0, count: 0, entries: [], informVerbFlags: false };
+        var cacheKey = (mem && mem.buffer) || mem;
+        var cacheable = cacheKey && typeof cacheKey === "object" && typeof h.staticMem === "number" && h.staticMem > 0 && h.dict >= h.staticMem;
+        var ident = cacheable ? ZRamReader.gameIdentityKey(mem) : null;
+        if (cacheable) {
+            var hit = ZRamReader._dictCache.get(cacheKey);
+            if (hit && hit.ident === ident && hit.dict === h.dict) return hit.value;
+        }
+        var value = ZRamReader._parseDictionaryUncached(mem, h);
+        if (cacheable) {
+            Object.freeze(value.words); Object.freeze(value.entries); value.entries.forEach(Object.freeze); Object.freeze(value);
+            ZRamReader._dictCache.set(cacheKey, { ident: ident, dict: h.dict, value: value });
+        }
+        return value;
+    },
+    _parseDictionaryUncached: (mem, h) => {
         var addr = h.dict;
         var nsep = ZRamReader.u8(mem, addr);
         addr += 1 + nsep;

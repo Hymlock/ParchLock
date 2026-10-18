@@ -339,6 +339,9 @@ var ActionSynth = {
         } catch (e) { return []; }
     },
     collectFromPayload: (p) => {
+        if (typeof Actionable !== "undefined" && Actionable.withResolutionPool && !Actionable._resolutionPool && !Actionable._lazyPoolScope) {
+            return Actionable.withResolutionPool(function () { return ActionSynth.collectFromPayload(p); });
+        }
         var cmds = [];
         if (!p) return cmds;
         var seen = {};
