@@ -155,3 +155,70 @@ BSET/BCLEAR (the only FSET/FCLEAR-forwarding macros, via MULTIBITS): call sites 
   6058			       <RTRUE>)>)
   6059		       (<RARG? <>>
   6060			<COND (<VERB? EXAMINE>
+
+## R3 (codex #4345): tokenizing scan supersedes the regex flagscan.js section above
+tool: work/investigations/zil-titles/source-search/zilscan.js (strings skipped, ';' drops the next whole object, any nesting depth, unbalanced brackets reported)
+command: node zilscan.js <rev 51d8060 dir> ONBIT
+flag-operation forms (FSET/FCLEAR/FSET?/BSET/BCLEAR/BSET?) parsed: 632 ; filter ONBIT + all non-literal
+cs.zil:1372 FSET? ,FLASHLIGHT ,ONBIT
+cs.zil:1379 FSET? ,FLASHLIGHT ,ONBIT
+cs.zil:1383 FSET ,FLASHLIGHT ,ONBIT
+cs.zil:1393 FSET? ,FLASHLIGHT ,ONBIT
+cs.zil:1397 FCLEAR ,FLASHLIGHT ,ONBIT
+cs.zil:1412 FCLEAR ,FLASHLIGHT ,ONBIT
+cs.zil:2608 FSET ,TUNNEL ,ONBIT
+cs.zil:2609 FSET ,TUNNEL-EAST ,ONBIT
+cs.zil:2610 FSET ,TUNNEL-WEST ,ONBIT
+cs.zil:2627 FCLEAR ,TUNNEL ,ONBIT
+cs.zil:2628 FCLEAR ,TUNNEL-EAST ,ONBIT
+cs.zil:2629 FCLEAR ,TUNNEL-WEST ,ONBIT
+cs.zil:4476 FSET? ,ALCHEMY-DEPT ,ONBIT
+cs.zil:4484 FSET? ,ALCHEMY-DEPT ,ONBIT
+cs.zil:4718 FSET ,ALCHEMY-LAB ,ONBIT
+cs.zil:4856 FCLEAR ,ALCHEMY-LAB ,ONBIT
+desc.zil:221 FSET? .OBJ ,ONBIT
+desc.zil:250 FSET? .OBJ <form>   [NON-LITERAL FLAG OPERAND]
+misc.zil:261 FSET? .OBJ ,.A   [NON-LITERAL FLAG OPERAND]
+parser.zil:1732 FSET? .RM ,ONBIT
+parser.zil:1740 FSET? ,ALCHEMY-LAB ,ONBIT
+parser.zil:1742 FSET? ,WINNER ,ONBIT
+UNBALANCED syntax.zil: 1
+verbs.zil:376 FSET? .W .WHAT   [NON-LITERAL FLAG OPERAND]
+Reading: every ONBIT SETTER (FSET/FCLEAR) is FLASHLIGHT or a ROOM (TUNNEL x3, ALCHEMY-LAB). Non-literal flag operands: 3, all FSET? tests (desc.zil:250, misc.zil:261 inside DEFINE MULTIBITS, verbs.zil:376). No BSET/BCLEAR/BSET? form exists anywhere (0 parsed). syntax.zil has 1 unbalanced bracket (grammar table file; no flag operation is affected, reported for completeness).
+
+## CORRECTION: the excerpt at 6040-6060 above is FLOOR-WAXER-F, NOT the global object's handler. The real one:
+5984:<OBJECT GLOBAL-FLOOR-WAXER
+5985-	(IN LOCAL-GLOBALS)
+5986-	(DESC "floor waxer")
+5987-	(SYNONYM WAXER POLISHER MACHINE)
+5988-	(ADJECTIVE FLOOR LARGE NOISY)
+5989-	(FLAGS NDESCBIT VEHBIT SURFACEBIT ONBIT OPENBIT CONTBIT SEARCHBIT)
+5990-	(GENERIC GENERIC-FLOOR-WAXER-F)
+5991-	(ACTION GLOBAL-FLOOR-WAXER-F)>
+5992-
+5993-<ROUTINE GENERIC-FLOOR-WAXER-F ()
+  5997	<ROUTINE GLOBAL-FLOOR-WAXER-F ()
+  5998		 <COND (<VERB? WALK-TO>
+  5999			<COND (<HERE? ,INF-1>
+  6000			       <DO-WALK ,P?EAST>)
+  6001			      (<HERE? ,INF-2>
+  6002			       <COND (<IN? ,FLOOR-WAXER ,INF-1>
+  6003				      <DO-WALK ,P?WEST>)
+  6004				     (ELSE <DO-WALK ,P?EAST>)>)
+  6005			      (<HERE? ,INF-3>
+  6006			       <COND (<OR <IN? ,FLOOR-WAXER ,INF-1>
+  6007					  <IN? ,FLOOR-WAXER ,INF-2>>
+  6008				      <DO-WALK ,P?WEST>)
+  6009				     (ELSE <DO-WALK ,P?EAST>)>)
+  6010			      (<HERE? ,INF-4>
+  6011			       <COND (<IN? ,FLOOR-WAXER ,INF-5>
+  6012				      <DO-WALK ,P?EAST>)
+  6013				     (ELSE <DO-WALK ,P?WEST>)>)
+  6014			      (ELSE
+  6015			       <DO-WALK ,P?WEST>)>)
+  6016		       (<HOSTILE-VERB?>
+  6017			<TELL "It" ,IS-DOWN-THE-HALL>)
+  6018		       (ELSE
+  6019			<FLOOR-WAXER-F>)>>
+  6020	
+GLOBAL-FLOOR-WAXER-F contains no FSET/FCLEAR of ONBIT (see the tokenized list: no setter on GLOBAL-FLOOR-WAXER).
