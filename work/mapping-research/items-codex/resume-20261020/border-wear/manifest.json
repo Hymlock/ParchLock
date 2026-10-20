@@ -1,0 +1,18 @@
+[
+  {
+    "file": "g1-bzU.json",
+    "sha256": "7fe2a58b6baf743d42cfe766ce5410f7b7593ebc477ff13d8a60f38194550f84"
+  },
+  {
+    "file": "g1-bzX.json",
+    "sha256": "ddd00dd6bc9c33ac4d83bb000fc965266331e874e1cc4faa8b05cbbf4b9ef133"
+  },
+  {
+    "file": "g1-scan9.cjs",
+    "sha256": "721fb8766c0919378679a3c7b2763e7b8f634832caa035b5d5628efec1b95752"
+  },
+  {
+    "file": "g1-routes.json",
+    "sha256": "7c87b7d09a8611c82d4ac19d291baaa18897206c67ecb7aa377aaaf0d2052286"
+  }
+]

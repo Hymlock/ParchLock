@@ -292,7 +292,8 @@ var ModuleStatFactsClaude = {
         // building 127:47 FALSE ("You find nothing unusual."). Source PERSON: 12 carriers, exact (2026-10-11-zil-source-flags.json); bounded compiled
         // table (351 objects, ends at first property 6214): 17 carriers = 12 persons + yourself 30, GloObj 79, protagonist "it" 305 and 2 more; none
         // are rooms. FAIL-CLOSED: TOPAZ carries CONTBIT + SURFACEBIT + PERSON (bad.zil:3249), so animate joins the openCapability none list.
-        "attributeMap": { "container": 43, "supporter": 36, "open": 34, "isOpen": 34, "animate": 47 },
+        // Grok4128: native WEAR chronograph81 and parka244 test41 true; oil can4 false/refused.
+        "attributeMap": { "container": 43, "supporter": 36, "open": 34, "isOpen": 34, "animate": 47, "wearable": 41 },
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] }
     },
     // Stationfall (ZIL): untouched native routes (Codex #3393-#3400). DROP chronometer inserts it into room 198,

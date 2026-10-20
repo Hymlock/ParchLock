@@ -1,0 +1,7 @@
+# Independent review of Grok4128
+
+ACCEPT exact digest-bound Border Zone wearable41 proposal for scoped integration. Recovered native captures prove chronograph81 and white down parka244 TRUE under WEAR with success replies; in-scope oilcan4 FALSE with semantic refusal. Earlier out-of-scope parka refusals excluded. Current executable digest matches fact key. Independently bounded table351objects, first1300/property6214. Bit41 owners are items plus GloObj79; no rooms. Existing worn39 distinct and unchanged. Original recorder raw400object census is not a domain proof. Current native original chapter2 routes replayed before integration. D198 and accepted R3.1 apply; no shared algorithm changes. Current-source gates and post-integration consumer checks pending.
+
+Current consumer: native chapter2 WEAR/i confirms chronograph81 and parka244 worn, Equipment wearable=true/worn=true with Remove. Exact semantic delta1field. Operator13 PASS/0 FAIL. Initial generic gate missed Border Zone chapter menu (no-prompt on both); explicitly NOT accepted as title coverage. Chapter2-selecting same-base/candidate gate running, engine controls already recorded.
+
+Current-source ACCEPT: chapter2-selecting base/candidate both completed with identical rooms/exits/marks/inventory. LostPig and Alabaster controls identical. Operator13/0. Exact VM delta1 wearable41 only, no runtime algorithm edits. Current native Equipment chronograph/parka wearable+worn+Remove agrees with native i. No pending processes or checks for this slice.

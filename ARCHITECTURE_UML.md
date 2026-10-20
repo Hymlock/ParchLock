@@ -4146,6 +4146,8 @@ Infidel likewise gains wornAttribute22 only after independent native knapsack31/
 
 Recovered Grok4114/4115/4117 wear data uses the same registry/precedence: Ballyhoo wearable21/wornAttribute20; Wishbringer wearable22/wornAttribute10; Sorcerer wearable21. Independent named native evidence plus bounded current domains exclude room owners. Current native Equipment mask/coat wear+Remove/removal agree; operator13/0 and five-title three-engine parity0diff. Sorcerer worn display remains an alternative-mechanism gap (native being-worn != a dedicated worn flag); no shared derived rule is added. Starcross single-owner state claim remains unqualified because the tattered-suit handler is a second source owner. Evidence: continuation recovered-wear directory.
 
+Border Zone wearable41 independently accepted from Grok4128: native chronograph81 and parka244 WEAR successes, oilcan4 bit41 false/refused, current bounded351-object domain with no room owners. Current native Equipment reports both wearable/worn with Remove, agreeing with native i; existing worn39 unchanged. Operator13/0; chapter2-selecting base/candidate map/inventory/underline parity0diff, plus LostPig InformZ and Alabaster Glulx controls. Generic Borderzo no-prompt rows excluded and replaced with chapter2 replay. Exact semantic delta1field, no shared algorithm. Evidence: work/mapping-research/items-codex/resume-20261020/border-wear/. Whole-title completion is not claimed.
+
 
 <a id="ar-s109" data-chapter-id="ar-s109"></a>
 ## ZIL constant-actor player root: playerObject (2026-10-11, grok2; Codex AUDIT PASS #3504)

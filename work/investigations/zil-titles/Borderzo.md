@@ -24,3 +24,6 @@ Boot: chapter menu needs a character key (zil-walkdiff.cjs STARTKEY=1|2|3).
 | edible | NO-DEDICATED-BIT + PROVEN-ALTERNATIVE (FOOD-F vendor food/soda) | source; native EAT/DRINK of vendor food still to capture (hand route to the vendor) |
 
 Edible native capture needs story state: vendor food/soda are takeable only after CART-TOPPLED? (VENDOR-STUFF-F bad.zil:1987-2000; alley rooms ~1640-1682 off Town Square, chapter 3). Needs a hand route that topples the cart; edible stays OPEN (source-only PROVEN-ALTERNATIVE candidate) until captured.
+
+## Wearable41 independent native audit
+Border Zone wearable41 independently accepted from Grok4128: native chronograph81 and parka244 WEAR successes, oilcan4 bit41 false/refused, current bounded351-object domain with no room owners. Current native Equipment reports both wearable/worn with Remove, agreeing with native i; existing worn39 unchanged. Operator13/0; chapter2-selecting base/candidate map/inventory/underline parity0diff, plus LostPig InformZ and Alabaster Glulx controls. Generic Borderzo no-prompt rows excluded and replaced with chapter2 replay. Exact semantic delta1field, no shared algorithm. Evidence: work/mapping-research/items-codex/resume-20261020/border-wear/. Whole-title completion is not claimed.

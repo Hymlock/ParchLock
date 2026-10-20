@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-20T23:03:10.506Z",
-  "factsSha256": "aba7b388be25f6b86e4bbc00570bdf803f4a667b87bb8f52d5899a0f7ec1e777",
+  "generatedAt": "2026-10-20T23:21:11.792Z",
+  "factsSha256": "b1399e820b94979538b848641f6adde5efcba4c9c0167f8dbbb5b3b5b74d19a4",
   "scope": "Reconciliation report only, not a second registry/ledger and not a completion percentage",
   "titleCount": 26,
   "keysPerTitle": 93,
@@ -1174,7 +1174,10 @@
         {
           "area": "attribute",
           "key": "wearable",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "attributeMap.wearable",
+          "value": 41,
+          "auditPointer": "Codex independent current-source AUDIT PASS: Border Zone wearable41 independently accepted from Grok4128: native chronograph81 and parka244 WEAR successes, oilcan4 bit41 false/refused, current bounded351-object domain with no room owners. Current native Equipment reports both wearable/worn with Remove, agreeing with native i; existing worn39 unchanged. Operator13/0; chapter2-selecting base/candidate map/inventory/underline parity0diff, plus LostPig InformZ and Alabaster Glulx controls. Generic Borderzo no-prompt rows excluded and replaced with chapter2 replay. Exact semantic delta1field, no shared algorithm. Evidence: work/mapping-research/items-codex/resume-20261020/border-wear/. Whole-title completion is not claimed.",
           "historicDraft": {
             "value": 41,
             "status": "hypothesis",

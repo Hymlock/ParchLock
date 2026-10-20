@@ -1,0 +1,190 @@
+[
+  {
+    "phase": "before",
+    "key": "Borderzo.z5.js @2:wear chronograph",
+    "nativeReply": "You are now wearing the chronograph.\n \n> ",
+    "ui": [
+      {
+        "id": 81,
+        "name": "chronograph",
+        "worn": true,
+        "wearable": false,
+        "commands": [
+          "examine chronograph",
+          "take chronograph",
+          "remove chronograph"
+        ]
+      }
+    ]
+  },
+  {
+    "phase": "before",
+    "key": "Borderzo.z5.js @2:i",
+    "nativeReply": "You are carrying a pen. You are wearing a chronograph and your everyday clothes.\n \n> ",
+    "ui": [
+      {
+        "id": 81,
+        "name": "chronograph",
+        "worn": true,
+        "wearable": false,
+        "commands": [
+          "examine chronograph",
+          "take chronograph",
+          "remove chronograph"
+        ]
+      }
+    ]
+  },
+  {
+    "phase": "before",
+    "key": "Borderzo.z5.js @21:wear parka",
+    "nativeReply": "You are now wearing the white down parka.\n \n> ",
+    "ui": [
+      {
+        "id": 244,
+        "name": "white down parka",
+        "worn": true,
+        "wearable": false,
+        "commands": [
+          "examine parka",
+          "take parka",
+          "remove parka"
+        ]
+      },
+      {
+        "id": 81,
+        "name": "chronograph",
+        "worn": true,
+        "wearable": false,
+        "commands": [
+          "examine chronograph",
+          "take chronograph",
+          "remove chronograph"
+        ]
+      }
+    ]
+  },
+  {
+    "phase": "before",
+    "key": "Borderzo.z5.js @21:i",
+    "nativeReply": "You are carrying a knapsack and a pen. You are wearing a white down parka, your everyday clothes, a chronograph and a pair of everyday black shoes.\n \n> ",
+    "ui": [
+      {
+        "id": 244,
+        "name": "white down parka",
+        "worn": true,
+        "wearable": false,
+        "commands": [
+          "examine parka",
+          "take parka",
+          "remove parka"
+        ]
+      },
+      {
+        "id": 81,
+        "name": "chronograph",
+        "worn": true,
+        "wearable": false,
+        "commands": [
+          "examine chronograph",
+          "take chronograph",
+          "remove chronograph"
+        ]
+      }
+    ]
+  },
+  {
+    "phase": "after",
+    "key": "Borderzo.z5.js @2:wear chronograph",
+    "nativeReply": "You are now wearing the chronograph.\n \n> ",
+    "ui": [
+      {
+        "id": 81,
+        "name": "chronograph",
+        "worn": true,
+        "wearable": true,
+        "commands": [
+          "examine chronograph",
+          "take chronograph",
+          "remove chronograph"
+        ]
+      }
+    ]
+  },
+  {
+    "phase": "after",
+    "key": "Borderzo.z5.js @2:i",
+    "nativeReply": "You are carrying a pen. You are wearing a chronograph and your everyday clothes.\n \n> ",
+    "ui": [
+      {
+        "id": 81,
+        "name": "chronograph",
+        "worn": true,
+        "wearable": true,
+        "commands": [
+          "examine chronograph",
+          "take chronograph",
+          "remove chronograph"
+        ]
+      }
+    ]
+  },
+  {
+    "phase": "after",
+    "key": "Borderzo.z5.js @21:wear parka",
+    "nativeReply": "You are now wearing the white down parka.\n \n> ",
+    "ui": [
+      {
+        "id": 244,
+        "name": "white down parka",
+        "worn": true,
+        "wearable": true,
+        "commands": [
+          "examine parka",
+          "take parka",
+          "remove parka"
+        ]
+      },
+      {
+        "id": 81,
+        "name": "chronograph",
+        "worn": true,
+        "wearable": true,
+        "commands": [
+          "examine chronograph",
+          "take chronograph",
+          "remove chronograph"
+        ]
+      }
+    ]
+  },
+  {
+    "phase": "after",
+    "key": "Borderzo.z5.js @21:i",
+    "nativeReply": "You are carrying a knapsack and a pen. You are wearing a white down parka, your everyday clothes, a chronograph and a pair of everyday black shoes.\n \n> ",
+    "ui": [
+      {
+        "id": 244,
+        "name": "white down parka",
+        "worn": true,
+        "wearable": true,
+        "commands": [
+          "examine parka",
+          "take parka",
+          "remove parka"
+        ]
+      },
+      {
+        "id": 81,
+        "name": "chronograph",
+        "worn": true,
+        "wearable": true,
+        "commands": [
+          "examine chronograph",
+          "take chronograph",
+          "remove chronograph"
+        ]
+      }
+    ]
+  }
+]
