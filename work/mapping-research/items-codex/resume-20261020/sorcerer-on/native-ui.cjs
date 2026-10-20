@@ -25,5 +25,3 @@ const OUT = (process.env.G1OUT); const out = fs.existsSync(OUT) ? JSON.parse(fs.
       let ui=[];try{WorldModel.tick();ui=EquipmentUI.model().items.map(o=>({id:o.id,name:o.name,worn:EquipmentUI.isWorn(o),wearable:!!(o.attrs||o.attributes||{}).wearable,on:!!(o.attrs||{}).on,light:!!(o.attrs||{}).light,switchable:!!(o.attrs||{}).switchable,tags:EquipmentUI.activationStateTags(o),commands:Actionable.resolveObjectCommands(o.id,'object').map(x=>x.command)}));}catch(e){ui=[{error:e.message}];}return { ui, step, ts: new Date().toISOString(), nativeI: L.slice(last + 1).map(l => l.textContent).join('\n'), ops, objs }; }, { step: +N });
      fs.writeFileSync(OUT, JSON.stringify(out, null, 1)); console.log(g, rc1, 'ops', out[g + ' @' + N + ':' + rc1].ops.length); } await p.close(); }
   await b.close(); })();
-
-
