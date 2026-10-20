@@ -39,3 +39,10 @@ us in the dark." (a room lamp, not your lamp). Next: let the introduction finish
   => worn = WORNBIT 21 (source-predicted), 1 object clear+set. Earlier: undress refused at the gate (location rule) and
   while Tamara is present ("I wish you wouldn't change clothes while I'm here!") - state rules, not incapability.
 Second distinct objects still needed: on (drawing-room lamp / brass lantern 153), worn (dinner outfit).
+
+## Native evidence: worn second object (same route, then in your bedroom)
+"open luggage" -> dinner outfit, exercise outfit, nightshirt, tourist brochure; "take dinner outfit"; "take off tweed
+outfit" -> tweed 78 -21; "wear dinner outfit" -> "Ahhh! Nothing like a new outfit to change your whole outlook!" dinner
+outfit 217 +21 (+5); "take off dinner outfit" -> 217 -21.
+Proposed: worn = NATIVE-PROVEN bit 21 (WORNBIT): 2 distinct objects (tweed 78, dinner 217), each set and cleared natively.
+Negative still to add explicitly: wear a held non-garment (e.g. tourist brochure) -> refusal, no bit 21.
