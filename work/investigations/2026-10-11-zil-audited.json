@@ -26,13 +26,17 @@
     "open": "Codex AUDIT PASS #3467 (state only; not capability)",
     "container": "Codex AUDIT PASS #3510 (container27, e343a6c)",
     "supporter": "Codex AUDIT PASS #3510 (supporter17, e343a6c)",
-    "animate": "Codex AUDIT PASS #3555/#3556 (animate31 only; targeted gnome/twin vs book)"
+    "animate": "Codex AUDIT PASS #3555/#3556 (animate31 only; targeted gnome/twin vs book)",
+    "wearable": "Codex independent AUDIT PASS October20 of Grok4114/4115/4117: two named native positives plus held refusal in recovered raw, bounded current domain/no rooms, native UI capability verified. wearable21 only. resume-20261020/recovered-wear/review.md, manifest and qualified-native-evidence.json."
   },
   "Wishbringer.z3.js": {
     "open": "Codex AUDIT PASS #3467 (state only; not capability)",
     "animate": "Codex AUDIT PASS (title-sweep md, animate18)",
     "supporter": "Codex AUDIT PASS #3556 (supporter27; counter/trunk vs willow)",
-    "container": "Codex independent native AUDIT PASS 2026-10-20: current committed container4, command-scoped OPEN FRIDGE refrigerator82 bit4 TRUE and OPEN MAILBOX little mailbox4 bit4 TRUE; OPEN COIN goldcoin250 bit4 FALSE with native refusal. Original walkthrough105, no relocation/state forcing. Raw items-codex/resume-20261020/wish-container-native.txt; replaces unscoped-recorder gap4320. Container semantic only, not generic Open capability or whole title."
+    "container": "Codex independent native AUDIT PASS 2026-10-20: current committed container4, command-scoped OPEN FRIDGE refrigerator82 bit4 TRUE and OPEN MAILBOX little mailbox4 bit4 TRUE; OPEN COIN goldcoin250 bit4 FALSE with native refusal. Original walkthrough105, no relocation/state forcing. Raw items-codex/resume-20261020/wish-container-native.txt; replaces unscoped-recorder gap4320. Container semantic only, not generic Open capability or whole title.",
+    "wearable": "Codex independent AUDIT PASS October20 of Grok4114/4115/4117: two named native positives plus held refusal in recovered raw, bounded current domain/no rooms, native UI capability verified. wearable22 only. resume-20261020/recovered-wear/review.md, manifest and qualified-native-evidence.json.",
+    "worn": "Codex independent AUDIT PASS October20: worn10 native two-owner state/replies and before-state negative; current native Equipment wore/Remove then removed/unworn agrees. operator13/0; five-title gate0diff. Same recovered-wear packet.",
+    "wornAttribute": "See worn audit: state10 only."
   },
   "Zork3-TheDungeonMaster.z3.js": {
     "open": "Codex AUDIT PASS #3467 (state only; not capability)",
@@ -46,7 +50,10 @@
     "container": "Codex AUDIT PASS #3539 (container23)",
     "inventoryHiddenAttribute": "Codex AUDIT PASS #3525 (hidden6; same accepted key previously filed as nested)",
     "supporter": "Codex AUDIT PASS #3992 (supporter17; raw named PUT desk103 and stand96 positives vs telephone203, ambient controls; source6/6)",
-    "playerRoot": "Claude AUDIT PASS 2026-10-20 (playerGlobal47 -> 211 measured-player-global; parent 81 In the Wings = location global G0 81 at boot; map populated (2 rooms); source/binary init codex #3461 misc.zil PROTAG -> G175 + G47)"
+    "playerRoot": "Claude AUDIT PASS 2026-10-20 (playerGlobal47 -> 211 measured-player-global; parent 81 In the Wings = location global G0 81 at boot; map populated (2 rooms); source/binary init codex #3461 misc.zil PROTAG -> G175 + G47)",
+    "wearable": "Codex independent AUDIT PASS October20 of Grok4114/4115/4117: two named native positives plus held refusal in recovered raw, bounded current domain/no rooms, native UI capability verified. wearable21 only. resume-20261020/recovered-wear/review.md, manifest and qualified-native-evidence.json.",
+    "worn": "Codex independent AUDIT PASS October20: worn20 native two-owner state/replies and before-state negative; current native Equipment wore/Remove then removed/unworn agrees. operator13/0; five-title gate0diff. Same recovered-wear packet.",
+    "wornAttribute": "See worn audit: state20 only."
   },
   "Planetfall.z3.js": {
     "open": "Codex AUDIT PASS #3467 (state only; not capability)",

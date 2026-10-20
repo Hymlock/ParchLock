@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-20T22:56:24.067Z",
-  "factsSha256": "9f2d1f7a22fc5caf1f5298e952f86119e68419aa8272c875a3a6d18c3083dd44",
+  "generatedAt": "2026-10-20T23:03:10.506Z",
+  "factsSha256": "aba7b388be25f6b86e4bbc00570bdf803f4a667b87bb8f52d5899a0f7ec1e777",
   "scope": "Reconciliation report only, not a second registry/ledger and not a completion percentage",
   "titleCount": 26,
   "keysPerTitle": 93,
@@ -393,6 +393,7 @@
       "historicClassification": "confirmed-zil-family/validated",
       "classificationNote": "Current source-bound decoder result is distinct from historical matrix",
       "factKeys": [
+        "wornAttribute",
         "playerGlobal",
         "openCapability",
         "attributeMap",
@@ -436,7 +437,10 @@
         {
           "area": "attribute",
           "key": "wearable",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "attributeMap.wearable",
+          "value": 21,
+          "auditPointer": "Codex independent AUDIT PASS October20 of Grok4114/4115/4117: two named native positives plus held refusal in recovered raw, bounded current domain/no rooms, native UI capability verified. wearable21 only. resume-20261020/recovered-wear/review.md, manifest and qualified-native-evidence.json.",
           "historicDraft": {
             "value": null,
             "status": "unknown",
@@ -712,7 +716,10 @@
         {
           "area": "attribute",
           "key": "worn",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 20,
+          "auditPointer": "Codex independent AUDIT PASS October20: worn20 native two-owner state/replies and before-state negative; current native Equipment wore/Remove then removed/unworn agrees. operator13/0; five-title gate0diff. Same recovered-wear packet.",
           "historicDraft": {
             "value": 20,
             "status": "static-draft",
@@ -778,7 +785,10 @@
         {
           "area": "attribute",
           "key": "isWorn",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 20,
+          "auditPointer": "Codex independent AUDIT PASS October20: worn20 native two-owner state/replies and before-state negative; current native Equipment wore/Remove then removed/unworn agrees. operator13/0; five-title gate0diff. Same recovered-wear packet.",
           "historicDraft": {
             "value": 20,
             "status": "static-draft",
@@ -910,7 +920,10 @@
         {
           "area": "fact",
           "key": "wornAttribute",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 20,
+          "auditPointer": "See worn audit: state20 only."
         },
         {
           "area": "fact",
@@ -9790,7 +9803,10 @@
         {
           "area": "attribute",
           "key": "wearable",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "attributeMap.wearable",
+          "value": 21,
+          "auditPointer": "Codex independent AUDIT PASS October20 of Grok4114/4115/4117: two named native positives plus held refusal in recovered raw, bounded current domain/no rooms, native UI capability verified. wearable21 only. resume-20261020/recovered-wear/review.md, manifest and qualified-native-evidence.json.",
           "historicDraft": {
             "value": 21,
             "status": "hypothesis",
@@ -16216,6 +16232,7 @@
       "historicClassification": "confirmed-zil-family/validated",
       "classificationNote": "Current source-bound decoder result is distinct from historical matrix",
       "factKeys": [
+        "wornAttribute",
         "openCapability",
         "attributeMap"
       ],
@@ -16256,7 +16273,10 @@
         {
           "area": "attribute",
           "key": "wearable",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "attributeMap.wearable",
+          "value": 22,
+          "auditPointer": "Codex independent AUDIT PASS October20 of Grok4114/4115/4117: two named native positives plus held refusal in recovered raw, bounded current domain/no rooms, native UI capability verified. wearable22 only. resume-20261020/recovered-wear/review.md, manifest and qualified-native-evidence.json.",
           "historicDraft": {
             "value": null,
             "status": "unknown",
@@ -16526,7 +16546,10 @@
         {
           "area": "attribute",
           "key": "worn",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 10,
+          "auditPointer": "Codex independent AUDIT PASS October20: worn10 native two-owner state/replies and before-state negative; current native Equipment wore/Remove then removed/unworn agrees. operator13/0; five-title gate0diff. Same recovered-wear packet.",
           "historicDraft": {
             "value": null,
             "status": "unknown",
@@ -16590,7 +16613,10 @@
         {
           "area": "attribute",
           "key": "isWorn",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 10,
+          "auditPointer": "Codex independent AUDIT PASS October20: worn10 native two-owner state/replies and before-state negative; current native Equipment wore/Remove then removed/unworn agrees. operator13/0; five-title gate0diff. Same recovered-wear packet.",
           "historicDraft": {
             "value": null,
             "status": "unknown",
@@ -16710,7 +16736,10 @@
         {
           "area": "fact",
           "key": "wornAttribute",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 10,
+          "auditPointer": "See worn audit: state10 only."
         },
         {
           "area": "fact",

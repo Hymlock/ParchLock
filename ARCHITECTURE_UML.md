@@ -4144,6 +4144,8 @@ Hollywood Hijinx follows the same existing path: wearable22 remains capability; 
 
 Infidel likewise gains wornAttribute22 only after independent native knapsack31/ring2 state evidence and shovel33 negative (Grok4127 proposal). The existing Equipment path shows worn+Remove and respects native removal/drop; no separate wearable bit is inferred. Bounded249-object boot census excludes room owners; operator13/0 and affected-title/InformZ/Glulx parity0diff. Existing container20 audit remains open rather than equating custom-handler success to a generic flag witness.
 
+Recovered Grok4114/4115/4117 wear data uses the same registry/precedence: Ballyhoo wearable21/wornAttribute20; Wishbringer wearable22/wornAttribute10; Sorcerer wearable21. Independent named native evidence plus bounded current domains exclude room owners. Current native Equipment mask/coat wear+Remove/removal agree; operator13/0 and five-title three-engine parity0diff. Sorcerer worn display remains an alternative-mechanism gap (native being-worn != a dedicated worn flag); no shared derived rule is added. Starcross single-owner state claim remains unqualified because the tattered-suit handler is a second source owner. Evidence: continuation recovered-wear directory.
+
 
 <a id="ar-s109" data-chapter-id="ar-s109"></a>
 ## ZIL constant-actor player root: playerObject (2026-10-11, grok2; Codex AUDIT PASS #3504)

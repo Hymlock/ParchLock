@@ -76,12 +76,14 @@ var ModuleStatFactsClaude = {
     },
     // Wishbringer (ZIL): OPENBIT 25: OPEN sets 25 on shoppe door, metal can, toll gate, refrigerator; CLOSE clears. CONTBIT 4: OPEN tests 4 TRUE on refrigerator, little mailbox, FALSE on shoppe door. zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     "7847ff3387dc401c511f67349d2847691ba97990f28e9c9d8b1182f3d4bc0dc0": {
+        // Worn state 10: Grok4114/4115 proposal, independently native-qualified by Codex October20; see recovered-wear review.
+        "wornAttribute": 10,
         // ACTORBIT 18: TRUE on poodle, Miss Voss, old woman, King Anatinus; FALSE on old bone, fountain. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         // SURFACEBIT 27 original scene, target-scoped (SOLO/SELF-AUDIT 2026-10-16): 'put envelope on counter' tests 27 TRUE on
         // service counter 18 (zil-route-ops.cjs), 'look in trunk' TRUE on gnarled tree trunk 230 (pzwish); 19 negatives in the
         // same walks. Source exact 10/10. Applied with openCapability so surfaces get no Open/Close.
         "openCapability": { "all": ["container"], "none": ["supporter"] },
-        "attributeMap": { "container": 4, "open": 25, "isOpen": 25, "animate": 18, "supporter": 27 }
+        "attributeMap": { "container": 4, "open": 25, "isOpen": 25, "animate": 18, "supporter": 27, "wearable": 22 }
     },
     // Zork III (ZIL): OPENBIT 12: OPEN sets 12 on secret door, stone door, wooden door; CLOSE clears (wooden door). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     // WEARBIT 4 original scene (2026-10-11-zil-walk-n4.json): TAKE tests 4 TRUE on golden amulet 39, golden ring 82; FALSE on
@@ -103,6 +105,8 @@ var ModuleStatFactsClaude = {
     },
     // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
+        // Worn state 20: Grok4114/4115 proposal, independently native-qualified by Codex October20; see recovered-wear review.
+        "wornAttribute": 20,
         // RE-ADDED from PROBE walk p1: ACTORBIT 31 TRUE on guard and Comrade Thumb (look in <actor>); FALSE on button, sunglasses, cheese morsel. Ballyhoo container 23 held: positives pass but SURFACEBIT 17 is unproven, so tables would be offered Open/Close. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): container, animate - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
         // CONTBIT 23: tested TRUE on bucket 65, desk 103, lower bunk 109, compartment 213, ash tray 214; FALSE on cage doors 68/149/164, secret panel 212, trailer door 239. ACTORBIT 31: TRUE on Rimshaw 2, roustabout 98, Chuckles 113; FALSE on radio dial 18, newsprint 27, trailer door 44. Repaired walk r3 (terminal ending, object-id keyed, analyzer2). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
@@ -118,7 +122,7 @@ var ModuleStatFactsClaude = {
         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
         // (source: APE, MUNRAB, GUARD, JOEY, CON, THUMB, FAT, DEALER, HAWKER, JENNY, HYP, DICK, JIM, ANDREW (way.zil, outside.zil, bigtop.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
-        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17 },
+        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21 },
         // Native i (walkthrough step 90) tests bit6 TRUE on pink dot 231 / blue dot 71 inside the open ticket 122 and
         // omits them; tests it FALSE on bucket 65, meat 102, bullwhip 16, ticket 122 and prints them. Source NDESCBIT 6
         // exact (114/114).
@@ -195,7 +199,7 @@ var ModuleStatFactsClaude = {
         // ACTORBIT 31 original scene, target-scoped (SOLO/SELF-AUDIT 2026-10-16, 2026-10-16-zil-inv-hidden-ops.json):
         // 'GNOME, HELLO' tests 31 TRUE on gnome 245, 'TWIN, HELLO' TRUE on your older self 26, 'BOOK, HELLO' FALSE on spell
         // book 139 ("You can't talk to a spell book!"). Source exact 9/9.
-        "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31 },
+        "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31, "wearable": 21 },
         "playerGlobal": 38
     },
     // Wumpus 2000 (wump2ka): measured location roles (Codex GO #3103;
