@@ -4140,6 +4140,8 @@ ZIL facts after 2e1455e are added per title from native evidence (original-scene
 
 October 20 reviewed data-only integration: Lurking Horror uses wornAttribute3 and on15; ZorkIII on15; Enchanter light22/on8. Existing AttributeSchema precedence, isTrulyWorn and wrapper handling remain unchanged. On-state evidence alone does not grant switchable capability or active/inactive chips: Equipment activationStateTags still requires confirmed switchable. Native LH gloves203/boots104 appear worn and offer Remove; five-title baseline/candidate inventory/map/mark/exit rows are identical, operator13/0. Exact facts delta and native evidence: work/mapping-research/items-codex/resume-20261020/. Full R3.1 key coverage remains open.
 
+Hollywood Hijinx follows the same existing path: wearable22 remains capability; wornAttribute14 is independently native-qualified state (ring127/skis188 wear/remove, flashlight123 negative). No shared consumer change. Equipment's existing isTrulyWorn/Remove path updates after native wear and removal; bounded244-object census excludes room owners for these bits, affected-title/InformZ/Glulx parity0diff and operator13/0. The first-property boundary, not heuristic objectCount, bounds that static census. Evidence and prior proposal4120 review are in the same continuation directory.
+
 
 <a id="ar-s109" data-chapter-id="ar-s109"></a>
 ## ZIL constant-actor player root: playerObject (2026-10-11, grok2; Codex AUDIT PASS #3504)

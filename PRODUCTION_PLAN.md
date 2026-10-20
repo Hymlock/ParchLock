@@ -9205,6 +9205,8 @@ and H3 (200 ms Loop) only if still slow.
 
 Reviewed batch1 adds only Lurking Horror wornAttribute3/on15, ZorkIII on15 and Enchanter light22/on8 to existing digest facts. Design4351 and patch review4355 are followed by current-source semantic delta exactly five fields, operator13/0, five-title base/candidate gate with zero differences (three affected ZIL, LostPig InformZ, Alabaster Glulx), and original-route LH Equipment proof for gloves203 and boots104, both worn with Remove. These are state/light mappings, not new switchable capability or whole-title closure. Evidence: `work/mapping-research/items-codex/resume-20261020/`.
 
+Hollywood Hijinx follow-on: independent native ring127/skis188 positives and held flashlight123 refusal qualify existing wearable22 and Grok4120's worn-state proposal14. The old route omitted the statue-unlock precondition; corrected native entry succeeds without RNG changes or relocation. Add wornAttribute14 only, preserving capability22. Native Equipment marks skis worn with Remove, clears worn on removal; operator13/0 and Hollywood/InformZ/Glulx base/candidate gate0diff. Bounded244-object census finds no room owner for14/22. Wishbringer's existing container4 also gains target-scoped native refrigerator82/mailbox4 positives and goldcoin250 negative; no runtime change for that audit. No whole-title closure. Details in the same continuation evidence directory.
+
 Queued 2026-10-11 by operator instruction, AFTER everything else (ZIL full decode, ZIL item sweep, the item sweeps and the map sweep). No work on it now.
 
 - Glulx cold decoding (object table, attributes, properties, dictionary, status variables), proven from each game's own code/RAM, unknowns fail closed.

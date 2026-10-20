@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-20T22:43:40.753Z",
-  "factsSha256": "fd361c03b7f1a288e023304724b8e5273e2e7bb10b9d5861e21e075b8ff61608",
+  "generatedAt": "2026-10-20T22:49:38.848Z",
+  "factsSha256": "ee1d12588db17b549af049fe20560c277defb9941835bb9f8fbd657bf3d181f4",
   "scope": "Reconciliation report only, not a second registry/ledger and not a completion percentage",
   "titleCount": 26,
   "keysPerTitle": 93,
@@ -4014,7 +4014,8 @@
       "historicClassification": "confirmed-zil-family/validated",
       "classificationNote": "Current source-bound decoder result is distinct from historical matrix",
       "factKeys": [
-        "attributeMap"
+        "attributeMap",
+        "wornAttribute"
       ],
       "cells": [
         {
@@ -4057,6 +4058,7 @@
           "state": "FACT_PRESENT_REVIEW_SCOPE",
           "owner": "attributeMap.wearable",
           "value": 22,
+          "auditPointer": "Codex independent AUDIT PASS October20: native ring127 and skis188 WEAR tests22 TRUE; held flashlight123 tests22 FALSE with refusal. Corrected native statue-unlock prefix; no relocation. resume-20261020/hollywood-wear-audit.md, ring/skis raw.",
           "historicDraft": {
             "value": 22,
             "status": "hypothesis",
@@ -4330,7 +4332,10 @@
         {
           "area": "attribute",
           "key": "worn",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 14,
+          "auditPointer": "Codex independent AUDIT PASS October20 of Grok4120 worn14 proposal: ring127/skis188 test14 FALSE before successful WEAR and TRUE under successful REMOVE; flashlight123 negative. Bounded244-object census no room owners. Native candidate Equipment skis worn=true+Remove, removed=false. Operator13/0 and affected+InformZ+Glulx gate0diff.",
           "historicDraft": {
             "value": 14,
             "status": "static-draft",
@@ -4396,7 +4401,10 @@
         {
           "area": "attribute",
           "key": "isWorn",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 14,
+          "auditPointer": "Codex independent AUDIT PASS October20 of Grok4120 worn14 proposal: ring127/skis188 test14 FALSE before successful WEAR and TRUE under successful REMOVE; flashlight123 negative. Bounded244-object census no room owners. Native candidate Equipment skis worn=true+Remove, removed=false. Operator13/0 and affected+InformZ+Glulx gate0diff.",
           "historicDraft": {
             "value": 14,
             "status": "static-draft",
@@ -4522,7 +4530,10 @@
         {
           "area": "fact",
           "key": "wornAttribute",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 14,
+          "auditPointer": "See worn audit: state14, not capability22."
         },
         {
           "area": "fact",

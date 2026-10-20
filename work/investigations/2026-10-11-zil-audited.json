@@ -143,5 +143,10 @@
   },
   "Starcross.z3.js": {
     "animate": "Claude AUDIT PASS 2026-10-20 (animate11 VICBIT: native route scs, agent-tools g1-scB look in spider 196:11 TRUE @56 + look in chief 169:11 TRUE @132; g1-scC give library to suit 144:11 FALSE + red rod 45:11 FALSE; source VICBIT on creatures dungeon.zil, V-LOOK-INSIDE branch verbs.zil:982)"
+  },
+  "HollywoodHijinx.z3.js": {
+    "wearable": "Codex independent AUDIT PASS October20: native ring127 and skis188 WEAR tests22 TRUE; held flashlight123 tests22 FALSE with refusal. Corrected native statue-unlock prefix; no relocation. resume-20261020/hollywood-wear-audit.md, ring/skis raw.",
+    "worn": "Codex independent AUDIT PASS October20 of Grok4120 worn14 proposal: ring127/skis188 test14 FALSE before successful WEAR and TRUE under successful REMOVE; flashlight123 negative. Bounded244-object census no room owners. Native candidate Equipment skis worn=true+Remove, removed=false. Operator13/0 and affected+InformZ+Glulx gate0diff.",
+    "wornAttribute": "See worn audit: state14, not capability22."
   }
 }

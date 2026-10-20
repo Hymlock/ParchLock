@@ -4,7 +4,7 @@ One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
 This exists because the plan itself is not greppable: 111 decisions across
-9217 lines, with single lines over 20,000 characters, so one grep match
+9223 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -263,8 +263,8 @@ cites. Search here for a subsystem; the line number opens the chapter.
 | §80 | 4099 | 80. Inform 7 Map_Storage look-ahead lane (D223) | D223 |
 | §81 | 4118 | 81. Measured location fact and dark-admitted naming (D224) | D224 |
 | line 4137 | 4137 | ZIL semantic-flag ownership (2e1455e scoped closure; Codex #3442, carried by grok2 2026-10-11) |  |
-| line 4143 | 4143 | ZIL constant-actor player root: playerObject (2026-10-11, grok2; Codex AUDIT PASS #3504) |  |
-| line 4149 | 4149 | ZIL v4/v5 room: locationGlobal (2026-10-12, grok2, 5348c0f; Codex post-hoc audit pending) |  |
-| §82 | 4154 | 82. Mark coverage and inventory label admission (D225) | D225 |
-| §83 | 4166 | 83. Inventory holder authority and recovery (D226) | D226 |
-| §84 | 4184 | 84. Read-only pass pool and static dictionary cache (D227) | D227 |
+| line 4147 | 4147 | ZIL constant-actor player root: playerObject (2026-10-11, grok2; Codex AUDIT PASS #3504) |  |
+| line 4153 | 4153 | ZIL v4/v5 room: locationGlobal (2026-10-12, grok2, 5348c0f; Codex post-hoc audit pending) |  |
+| §82 | 4158 | 82. Mark coverage and inventory label admission (D225) | D225 |
+| §83 | 4170 | 83. Inventory holder authority and recovery (D226) | D226 |
+| §84 | 4188 | 84. Read-only pass pool and static dictionary cache (D227) | D227 |
