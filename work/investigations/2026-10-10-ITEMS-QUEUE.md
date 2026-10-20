@@ -18,7 +18,8 @@ Queue, in order:
   - room root (BibleRetold);
   - NPC parts (Galatea, loose);
   - the break-in vial.
-- **Q8.** Codex's 6 Infocom wrong-yourself roots (LurkingHorror, Sorcerer, Stationfall, PlunderedHearts, LGOP, Sherlock).
+- **CLOSED 2026-10-20 (grok2 ACCEPT #4284 of codex reconciliation #4251; residuals Q8-R1/Q8-R2 stay open).** **Q8.** Codex's 6 Infocom wrong-yourself roots (LurkingHorror, Sorcerer, Stationfall, PlunderedHearts, LGOP, Sherlock).
+  - 2026-10-20: all 6 root facts already in code; codex reconciliation work/mapping-research/items-codex/2026-10-19-q8-root-reconciliation.md (fresh native checks LH/PH/SF/Sherlock; Sorcerer #3459, LGOP #3504 reused). Closes on grok2 audit. Residuals queued separately: **Q8-R1** Sherlock lapel 174 shown under coat but not in native i; **Q8-R2** Plundered Hearts pre-ready startup gap.
 - **Q9. C7:** heist nested contents are missing.
 - **Q10. C8:** WiR "undershir".
 - **Q11.** Glulx: 11-title items census (last).
@@ -104,7 +105,7 @@ These are Codex's open map items. Finish them before new work:
 
 - **SPEAR-1 (OPEN, unproven).** Operator: 'a stone spear' (wump2ka 290) not underlined in `i` after the formation rename. Root cause found at 12:4x: D214 retention (a40f7ba) kept the old phrase's mark. The rebind mechanism (commit below) adds a rename branch (unique id, own-name phrase, no head-noun bypass), but NO native spear pass has been captured: seeds 1-30 put 290 already named 'stone spear', either in objectbag or held by quickpaw2/rooms with lethal or long routes. Needs a native fixture (operator save carrying the spear, or a found seed) before it can be closed. Do not claim it fixed.
 
-- **NAME-B1. Zork I bottle shows as 'bottle contains'.** Payload/display name for object 236 is 'bottle contains' (seen in Codex's command probe 2026-10-11: commands would read 'open contains'). Likely the name is picked up from printed room text ('A bottle ... contains:') or an unnamed promotion, not the ZIL short name ('glass bottle'). Pre-existing; surfaced by the container work (#3367). Doc check first (promoteUnnamed, D64/D70 VerifiedNouns, CommandNouns); fix in the shared naming path, no per-game patch.
+- **CLOSED 2026-10-20 (fixed by 285697b; verified live on c24ae52: name/mark "glass bottle", commands examine/take/search/empty/open/close bottle).** **NAME-B1. Zork I bottle shows as 'bottle contains'.** Payload/display name for object 236 is 'bottle contains' (seen in Codex's command probe 2026-10-11: commands would read 'open contains'). Likely the name is picked up from printed room text ('A bottle ... contains:') or an unnamed promotion, not the ZIL short name ('glass bottle'). Pre-existing; surfaced by the container work (#3367). Doc check first (promoteUnnamed, D64/D70 VerifiedNouns, CommandNouns); fix in the shared naming path, no per-game patch.
 
 ## Standing step: published source evidence
 
