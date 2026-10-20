@@ -209,9 +209,9 @@ decisions and their later mentions, not only the first matching record.
   preserves them as records; it does not claim to reconcile every historical runtime claim.
   Unlisted conflicts discovered during chapter checks must be recorded explicitly.
 
-**Local manifest:** 107 headings; 0 decision rows; 107 registered units.
-**Last registered unit:** `ar-s107`. **Body SHA-256 (LF):**
-`ed94bb010bb3a03278a952faf4113f334a4cd006915ae555938f28fc1cbe3a27`
+**Local manifest:** 113 headings; 0 decision rows; 113 registered units.
+**Last registered unit:** `ar-s113`. **Body SHA-256 (LF):**
+`a9016bba4af05032a3242ece65208b27b01a894851aebdf88bcd12a659ada024`
 
 Register status is deliberately **Record** until a scoped technical review establishes lifecycle.
 This manifest covers the entire preserved body, including unheaded prose and later addenda.
@@ -398,6 +398,12 @@ decision-table row appears here; headings inside code fences are examples and ar
 | [ar-s105](#ar-s105) | 79. DarkScope: one heuristic darkness verdict per tick (D221) | H2 | Scoped-accepted (Codex #2702) |
 | [ar-s106](#ar-s106) | 80. Inform 7 Map_Storage look-ahead lane (D223) | H2 | Scoped-accepted (Codex #2804) |
 | [ar-s107](#ar-s107) | 81. Measured location fact and dark-admitted naming (D224) | H2 | Scoped-accepted (Codex #3175); gate closeout pending |
+| [ar-s108](#ar-s108) | ZIL semantic-flag ownership (2e1455e scoped closure; Codex #3442, carried by grok2 2026-10-11) | H3 | Audit pending / record |
+| [ar-s109](#ar-s109) | ZIL constant-actor player root: playerObject (2026-10-11, grok2; Codex AUDIT PASS #3504) | H2 | Audit pending / record |
+| [ar-s110](#ar-s110) | ZIL v4/v5 room: locationGlobal (2026-10-12, grok2, 5348c0f; Codex post-hoc audit pending) | H2 | Audit pending / record |
+| [ar-s111](#ar-s111) | 82. Mark coverage and inventory label admission (D225) | H2 | Audit pending / record |
+| [ar-s112](#ar-s112) | 83. Inventory holder authority and recovery (D226) | H2 | Audit pending / record |
+| [ar-s113](#ar-s113) | 84. Read-only pass pool and static dictionary cache (D227) | H2 | Implemented (f76d29f) |
 <!-- LOCAL-REGISTER:END -->
 
 <!-- CHAPTER-BODY:START -->
@@ -4127,16 +4133,73 @@ flowchart TD
 - Identity is the section object (real_location). The printed "Room #N" stays display-only (D54).
 - No generic Inform ABI claim: other games need their own measured facts.
 
+<a id="ar-s108" data-chapter-id="ar-s108"></a>
 ### ZIL semantic-flag ownership (2e1455e scoped closure; Codex #3442, carried by grok2 2026-10-11)
 ActionSynth keeps a semantic flag (container, open, supporter, worn, ...) only when (a) it was learned by existing AttrCalibrator calibration, OR (b) the flag is owned by a bounded digest/stable-header authenticated attributeMap fact (ModuleStatFactsClaude) AND the story decodes as a confirmed, validated ZIL family (GrammarProvider.decodeD198) AND AttributeSchema.bitFor(flag) equals the mapped bit (AttributeSchema.measuredFlagOwner). False or unmapped flags never trigger a decode; Inform stories and stories with no Z-memory are unchanged. No status-lane changes. Evidence: Codex audit #3439 (8/0) and the grok2 18-title + Glulx gate. Still open: actor/NPC gaps; batch-2 container facts that are X-only (controlled insertion) evidence.
 ZIL facts after 2e1455e are added per title from native evidence (original-scene explorer, Jericho walkthrough runs, player-root check) with >=2 distinct on-device positives + >=1 negative, or the operator single-object + source rule; each carries a "Codex post-hoc review pending" label until Codex reviews it.
 
 
+<a id="ar-s109" data-chapter-id="ar-s109"></a>
 ## ZIL constant-actor player root: playerObject (2026-10-11, grok2; Codex AUDIT PASS #3504)
 
 Digest fact key `playerObject` (ModuleStatFactsClaude, same executableLayoutFacts registry) names a compile-time constant actor object for ZIL titles that have NO PLAYER global and whose WINNER global is mutable (orders to NPCs, chapter actors). `ZRamReader.resolvePlayer` checks it before `playerGlobal`; the object must be in range with valid parent/sibling/child links and a non-zero parent, else the result is `fact-uninitialized` (id 0, fail closed). It never reads WINNER. Malformed or absent fact: no change to the existing measured-player-global or name-based paths. Current users: Leather Goddesses (200, pinned historicalsource/leathergoddesses 17cbbc1 globals.zil 908; 19 binary stores G189<-200 = 19 source SETG WINNER ,PROTAGONIST), Spellbreaker (52, pinned historicalsource/spellbreaker 6f83ba4 globals.zil 324). Not for focus-switching titles (Suspended: per-robot focus, Codex #3505). Known follow-up: LGOP dynamic item names (payload rules/bikini vs native rulebook/brass loincloth, same object 134 transformed) - descriptors cell stays open.
 
 
+<a id="ar-s110" data-chapter-id="ar-s110"></a>
 ## ZIL v4/v5 room: locationGlobal (2026-10-12, grok2, 5348c0f; Codex post-hoc audit pending)
 
 Digest fact key `locationGlobal` (ModuleStatFactsClaude, executableLayoutFacts registry) names the slot of the game's source HERE global for v4/v5 ZIL, where no interpreter status-line global exists. `ZRamReader.enclosingRoom` uses it in the same status-room branch as v3 G0: the story must be a validated confirmed-zil-family (D198), not Inform-compiled, the slot must be in globals bounds, and the value must be a location object on the player's cycle-free, untruncated parent chain; otherwise the existing chain walk runs unchanged. v3 keeps G0 and the infocom-pre-v6-fixed family check; v4/v5 without the fact take the old path. Needed whenever a fixed player object starts inside furniture (Hitchhiker's: player 202 starts in bed 114). Users: Hitchhiker's locationGlobal 116 (source HERE, globals.zil 10; 125 compares in code; 60-step live replay, zil-here-global.js).
+
+<a id="ar-ch82"></a><a id="ar-s111" data-chapter-id="ar-s111"></a>
+## 82. Mark coverage and inventory label admission (D225)
+
+Companion: PRODUCTION_PLAN.md, D225. Runtime: Actionable.js. This records implemented source 56a170f and the independent audit resumed at 50b3db0; it does not certify the unresolved repairs.
+
+- A mark keeps parser candidateIds for object choice separately from coverIds for display coverage. Single-word shared marks cover their head-noun owners; multiword/unique references retain the established ownership rules. One coverage authority feeds creation, retention, refresh and survivor-aware retirement.
+- Longer labels, descriptor identity and command nouns have separate owners. Display-only inventoryLineLabel never changes object IDs, parser commands, capabilities, saved-label ownership or the D148 spell path.
+- Native inventory replies can include ambient events. listingRows attempts to admit item entries through inventory headers, block indentation or bounded possession/container sentences; uncertain formats retain structural/observed fallback. A source word or an entire reply is not automatically a genuine item row.
+- D214 first mention remains required: each object is marked at its first eligible occurrence within one reply; a later reply may move its existing mark. One mark per object alone does not prove correct placement.
+
+**Independent audit remains open (bus3551/3553/3554).** Zero-indentation blocks and broadened colon headers currently admit narration. A shorter shared spell mark can prevent the full spell-book mark moving forward. Native Enchanter READ BOOK marks the final spell-book mention instead of the earlier My Spell Book title. The focused reproductions and accepted scoped facts are in work/investigations/2026-10-09-codex-equipment-audit.md. Claude owns runtime repair; source must be checked again before final acceptance.
+
+<a id="ar-ch83"></a><a id="ar-s112" data-chapter-id="ar-s112"></a>
+## 83. Inventory holder authority and recovery (D226)
+
+Companion: PRODUCTION_PLAN.md, D226. Runtime: ZRamProvider.resolveInventoryRootId, WorldModel.recoverInventory, AttrCalibrator.inventoryRootAnalyzer and the existing digest-owned ModuleStatFactsClaude registry.
+
+- An authenticated initialized playerObject/playerGlobal identifies the player before learned or structural inventory roots. The reader reports fact-uninitialized when an authenticated actor is not initialized; downstream recovery must respect that authority rather than select a different actor.
+- A genuinely empty-handed player placed in the current room must retain that identity. Other animate objects, rooms, bystanders and offstage holders are not substitute players. Existing valid non-room wrappers and furniture/vehicle nesting still need their supported recovery paths.
+- Native-i evidence must distinguish a named inventory item, its nested possessions, a bystander and the narrator word you. A carried animate item may itself own possessions; excluding it from item ancestry can falsely promote it to player.
+- Worn scenery lying in the room cannot promote the room to an inventory holder. This restriction is separate from valid carried/worn containment recovery.
+- Hidden-inventory facts filter only the inventory walk, under executable digest and immutable-header identity. Suspect has an explicit worn-preservation exception; D148 spells and other engines retain their separate paths. No generic ZIL attribute number is inferred from a matching label.
+- storyShortName is a label source for blank items, subject to parser-word ownership verification. Verification must use the actual dictionary encoding; a six-character prefix is not v5 word equivalence. Word ownership corroborates a label but does not establish String-versus-Routine type. The existing generic type-authority uncertainty remains research.
+
+**Independent audit remains open (bus3551/3552).** The f304f60 learner can promote a carried actor after dropping that actor from listed ancestors; actual-function baseline PC10 becomes cat20. The later unnamed-wrapper fallback can bypass empty-player protection, and fact-uninitialized currently falls through to a learned root. The last two are recorded contract gaps, not demonstrated new regressions. The blank-name verifier also accepts v5 ticketing for alias ticket. Positive controls preserve furniture nesting, normal learned roots, initialized pinned identity and room-worn exclusion.
+
+**Scoped facts accepted independently (bus3554-3556):** Enchanter open/isOpen12, Plundered Hearts hidden9, Photograph hidden17, Lurking Horror hidden18, ZorkII animate30, Sorcerer animate31, Wishbringer supporter27 and ZorkIII container10. Other flags and whole titles are not certified by these rulings. The full-profile ledger must account for all34 profile keys plus special consumers, without treating sampled-source absence or a proposed semantic equivalence as proof of inapplicability.
+
+**Validation boundary:** reuse recorded native evidence and source-bound focused controls; run required operator and ZIL/InformZ/Glulx guards before a runtime commit. Solo309 sweeps are retained evidence with their stated scope, not a replacement for independent review of these concrete defects. This documentation update changes no status commands, speech behavior, map logic, inventory handles or runtime code.
+
+<a id="ar-ch84"></a><a id="ar-s113" data-chapter-id="ar-s113"></a>
+## 84. Read-only pass pool and static dictionary cache (D227)
+
+**Problem (operator, Identity on phone, 2026-10-18).** Wheel and underline actions froze the main thread for up to
+7.9 s. Loops that resolve per object (post-submit learning, the wheel command list) called `Actionable.payloadPool()`
+once per object, and every call rebuilt the whole pool (mark scan, prose, display names): O(objects^2) per action.
+`ZRamReader.parseDictionary` re-decoded the full dictionary several times per 200 ms tick.
+
+**Contract.**
+- `Actionable.withResolutionPool(fn)` opens a lazy, synchronous, read-only scope: the first `payloadPool()` call
+  inside it builds the pool, later calls reuse it, and the scope drops it on exit (finally). Nested scopes and the
+  existing eager scopes in `resolveObjectCommands` / `Open` compose; nothing is kept across input, refresh, restore
+  or turns.
+- Scoped callers: `AttrCalibrator._splitAnyVerbNoun`, `ActionSynth.collectFromPayload`,
+  `ParchLockQol.GetRadialCommands`, and in `TurnRecorder.onAcceptedSubmit` only `LearnedWords.observeSubmit` and the
+  analyzer `prepare` loop. Submit listeners, `MapTopology.noteCommand`, `UndoRestoreSync` and `Navigator` stay
+  outside, because they may change pool inputs.
+- `ZRamReader.parseDictionary` memoizes per memory buffer + `gameIdentityKey`, only when the dictionary lies in static
+  memory (`dict >= staticMem`, else no cache). The result is frozen; every caller must treat it as read-only.
+- Rule for new code: a loop that needs the pool per object runs inside one scope; never add a per-object
+  `payloadPool()` rebuild. Measure with `harness/radial-latency.js`.
+
+**Evidence:** f76d29f, c24ae52 (D198 family memo, same idiom); work/investigations/2026-10-18-claude-radial-slowdown-proposal.md.

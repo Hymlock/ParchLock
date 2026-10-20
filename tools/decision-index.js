@@ -63,6 +63,39 @@ lines.forEach((line, i) => {
     }
 });
 
+// ARCHITECTURE_UML.md chapters, linked to decisions by the D-numbers their own
+// headings carry ("## 56. Equipment sheet (D122)", "(D207-D209)", "(D146-D148)").
+// A decision line then says where the architecture describes it, and the
+// chapter list makes the architecture greppable by subsystem the same way.
+const ARCH = path.resolve(__dirname, '..', 'ARCHITECTURE_UML.md');
+const archLines = fs.existsSync(ARCH) ? fs.readFileSync(ARCH, 'utf8').split(/\r?\n/) : [];
+const archChapters = [];
+const archByDecision = new Map();
+let inFence = false;
+archLines.forEach((line, i) => {
+    if (/^\s*```/.test(line)) { inFence = !inFence; return; }
+    if (inFence) return;
+    const h = /^(#{2,3})\s+(.+?)\s*$/.exec(line);
+    if (!h) return;
+    const title = h[2];
+    const num = /^(\d+(?:\.\d+)?)\.\s/.exec(title);
+    const ref = num ? '§' + num[1] : 'line ' + (i + 1);
+    const ds = new Set();
+    // Ranges first (D17-D20), then single numbers.
+    title.replace(/D(\d+)\s*[-–]\s*D(\d+)/g, (_, a, b) => {
+        if (+b < +a || +b - +a > 60) throw new Error('ARCHITECTURE_UML.md line ' + (i + 1) + ': unexpected decision range D' + a + '-D' + b);
+        for (let n = +a; n <= +b; n++) ds.add(n);
+        return '';
+    }).replace(/D(\d+)/g, (_, a) => { ds.add(+a); return ''; });
+    const chapter = { ref, line: i + 1, level: h[1].length, title, decisions: [...ds].sort((a, b) => a - b) };
+    archChapters.push(chapter);
+    chapter.decisions.forEach(n => {
+        if (!archByDecision.has(n)) archByDecision.set(n, []);
+        const list = archByDecision.get(n);
+        if (!list.includes(ref)) list.push(ref);
+    });
+});
+
 const FILE_RE = /\b(?:js|css|harness|tools|lib)\/[A-Za-z0-9_.-]+\.(?:js|css)\b/g;
 
 function clean(s) {
@@ -86,7 +119,7 @@ const rows = [...entries.values()].sort((a, b) => b.n - a.n).map(e => {
     // subsystem words, pulled from the entry's own text rather than invented.
     const games = [...new Set((e.body.match(/\b[A-Za-z0-9]+\.z[35678]\b|\bwump2ka\b|\bAnchorhead\b|\bZork ?[123]\b|\bEnchanter\b|\bPlanetfall\b|\bDeadline\b|\bLostPig\b/gi) || [])
         .map(s => s.replace(/\.z[35678]$/i, '')))].slice(0, 3);
-    return { n: e.n, claim: shorten(e.claim, 150), files, games };
+    return { n: e.n, claim: shorten(e.claim, 150), files, games, arch: archByDecision.get(e.n) || [] };
 });
 
 let out = `# Decision index
@@ -108,17 +141,38 @@ prior answers get missed and re-derived.
 Then open the full entry in PRODUCTION_PLAN.md for the one or two D-numbers that
 match, e.g. \`grep -n "^| D79 \\|^### D79" PRODUCTION_PLAN.md\`.
 
-Regenerate after adding decisions: \`node tools/decision-index.js\`
+The **arch** column names the ARCHITECTURE_UML.md chapter(s) whose heading cites
+the decision (§56 = "## 56. ..."); open it with \`grep -n "^## 56\\." ARCHITECTURE_UML.md\`.
+An empty arch cell means no chapter HEADING cites the decision; search the architecture
+body before concluding it is undocumented. The chapter list
+after the table indexes the architecture itself.
 
-| D | claim | files | games |
-|---|-------|-------|-------|
+Regenerate after adding decisions or chapters: \`node tools/decision-index.js\`
+
+| D | claim | files | games | arch |
+|---|-------|-------|-------|------|
 `;
 
 rows.forEach(r => {
-    out += `| D${r.n} | ${r.claim.replace(/\|/g, '\\|')} | ${r.files.join(' ')} | ${r.games.join(' ')} |\n`;
+    out += `| D${r.n} | ${r.claim.replace(/\|/g, '\\|')} | ${r.files.join(' ')} | ${r.games.join(' ')} | ${r.arch.join(' ')} |\n`;
+});
+
+out += `
+## Architecture chapters (ARCHITECTURE_UML.md)
+
+One line per chapter heading, in document order, with the decisions its heading
+cites. Search here for a subsystem; the line number opens the chapter.
+
+| chapter | line | title | decisions |
+|---------|------|-------|-----------|
+`;
+archChapters.forEach(c => {
+    out += `| ${c.ref} | ${c.line} | ${c.title.replace(/\|/g, '\\|')} | ${c.decisions.map(n => 'D' + n).join(' ')} |\n`;
 });
 
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, out, 'utf8');
+const linked = rows.filter(r => r.arch.length).length;
+console.log(`architecture: ${archChapters.length} chapters, ${linked}/${rows.length} decisions linked to a chapter`);
 console.log(`wrote ${OUT}: ${rows.length} decisions, ${out.length} bytes ` +
     `(plan is ${src.length} bytes, ${(src.length / out.length).toFixed(0)}x larger)`);
