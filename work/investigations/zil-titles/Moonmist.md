@@ -22,3 +22,11 @@ meaning (rooms as carriers suggests a different use) and of EAT handling.
   -> "You take a bite and find it delicious." (castle.zil ~1631, dinner scene only); ink (colors.zil:429) DRINK/EAT kills
   the player (FINISH); wine bottle (tower.zil:212) refuses; MOON EAT -> smell ocean.
   => edible = NO-DEDICATED-BIT + PROVEN-ALTERNATIVE candidate (dinner handler); native capture needs the dinner scene.
+
+## Opening route (native, 2026-10-20; zil-walkdiff.cjs EXTRA)
+look | out (leave the sports car) | push eye (wyvern on the gate) | Ms. Ann Smith | yes | red (favourite colour) | yes ->
+"The red eye turns green, and the front gate creaks open." | s | s | s ... -> scripted introduction: Tamara greets you in
+the courtyard, Lord Jack, Bolitho, Vivien, Hyde, Ian, Iris (cutscene moves through foyer/drawing room/new great hall).
+During the introduction "turn on lamp" -> "(The light is already on!)" and "turn off lamp" -> Tamara: "Please don't leave
+us in the dark." (a room lamp, not your lamp). Next: let the introduction finish (wait), then great hall -> up -> gallery
+-> east = your bedroom (castle.zil:1799-1814, 1981) for your lamp on/off and undressing.
