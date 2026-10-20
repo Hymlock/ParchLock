@@ -26,3 +26,6 @@ lit rooms); LIGHTBIT none, FOODBIT/EATBIT/DRINKBIT none (static scan only - see 
 Open next: container 27 (static capability: needs a test-scoped recorder, e.g. zil-route-ops.cjs REC='look in zipper'),
 edible (source search for EAT handling: bread is in the walkthrough), wearable/worn UD (spot-audit), playerRoot C
 (constant PLAYER 52, ModuleStatFactsClaude.js).
+
+## R1 (codex #4331): consumer hold retained
+The bit evidence above proves OPENBIT 21 / CONTBIT 27 semantics only. Runtime Open/Close activation for this title stays HELD as recorded in ModuleStatFactsClaude.js (Spellbreaker comment ~153-164): actors Belboz 13, merchant 203, ogre 232 carry 21/27, so offering Open from the bit would put Open on people. Activation needs a separate disposition (e.g. animate exclusion) with its own consensus.
