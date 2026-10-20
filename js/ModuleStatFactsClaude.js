@@ -199,7 +199,8 @@ var ModuleStatFactsClaude = {
         // ACTORBIT 31 original scene, target-scoped (SOLO/SELF-AUDIT 2026-10-16, 2026-10-16-zil-inv-hidden-ops.json):
         // 'GNOME, HELLO' tests 31 TRUE on gnome 245, 'TWIN, HELLO' TRUE on your older self 26, 'BOOK, HELLO' FALSE on spell
         // book 139 ("You can't talk to a spell book!"). Source exact 9/9.
-        "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31, "wearable": 21 },
+        // Grok4119 independently audited: FROTZ box102/book139 test11 true; desk144 false. Illumination state, not switchability.
+        "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31, "wearable": 21, "on": 11 },
         "playerGlobal": 38
     },
     // Wumpus 2000 (wump2ka): measured location roles (Codex GO #3103;

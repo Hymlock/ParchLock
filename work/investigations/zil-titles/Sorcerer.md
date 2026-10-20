@@ -32,3 +32,6 @@ October20 Codex independent audit of Grok4117: wearable21 ACCEPTED/integrated fr
 1. Audit C→F
 2. Native prove CONT/OPEN/SURFACE/ON/LIGHT/WEAR from source bits
 3. FEATURE-ABSENT only after full FSET grep
+
+## On11 independent native audit
+Sorcerer on11 independently accepted from Grok4119: FROTZ tinybox102 and spellbook139 native TRUE/already-lit, desk144 FALSE/no effect; box FALSE before successful lighting. Current original route9 reproduces semantics and native i lists both providing light. Bounded255-object domain; boot owners include38 lit rooms, calendar61, lamp182 and global70. Existing item-likeness consumer reads on; activation tags require separate switchable capability. Current Equipment has on=true, switchable=false, no activation tags or turn-on/off commands. Lighting display remains OPEN (light=false while native i reports providing light); no useful illumination consumer closure claimed. Operator13/0 and affected-title/InformZ/Glulx three-row parity0diff; semantic delta1field. Evidence: work/mapping-research/items-codex/resume-20261020/sorcerer-on/.

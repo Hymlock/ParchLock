@@ -1,6 +1,6 @@
 # Full-scope evidence reconciliation snapshot
 
-Generated 2026-10-20T23:21:11.792Z. 26 titles × 93 listed scope slots. This is an evidence inventory, NOT a finished-cell denominator or closure tally. No-dedicated-bit alternatives, derived fields and title-specific status fields still require qualified evidence. Read the JSON for every slot.
+Generated 2026-10-20T23:23:40.319Z. 26 titles × 93 listed scope slots. This is an evidence inventory, NOT a finished-cell denominator or closure tally. No-dedicated-bit alternatives, derived fields and title-specific status fields still require qualified evidence. Read the JSON for every slot.
 
 | Title | Digest prefix | Direct attribute/special fact slots | Slots requiring evidence reconciliation | Current classification |
 |---|---|---:|---:|---|
@@ -17,7 +17,7 @@ Generated 2026-10-20T23:21:11.792Z. 26 titles × 93 listed scope slots. This is 
 | PlunderedHearts.z3.js | b53a2588c792 | 12 | 81 | confirmed-zil-family/validated |
 | Seastalker.z3.js | 502e5c8e4cb8 | 8 | 85 | confirmed-zil-family/validated |
 | Sherlock.z5.js | ba9c2c81d6b5 | 4 | 89 | unknown/rejected |
-| Sorcerer.z3.js | 3bf24a3d2df3 | 8 | 85 | confirmed-zil-family/validated |
+| Sorcerer.z3.js | 3bf24a3d2df3 | 9 | 84 | confirmed-zil-family/validated |
 | Spellbreaker.z3.js | 2d097ac9e408 | 5 | 88 | confirmed-zil-family/validated |
 | Starcross.z3.js | 1d9a69257349 | 1 | 92 | confirmed-zil-family/validated |
 | Stationfall.z3.js | 3c5656897dd2 | 8 | 85 | confirmed-zil-family/validated |

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-20T23:21:11.792Z",
-  "factsSha256": "b1399e820b94979538b848641f6adde5efcba4c9c0167f8dbbb5b3b5b74d19a4",
+  "generatedAt": "2026-10-20T23:23:40.319Z",
+  "factsSha256": "b0baccd7dd42279c57cb1db53324893b3e167154f9209658a36ed6eb87e3261f",
   "scope": "Reconciliation report only, not a second registry/ledger and not a completion percentage",
   "titleCount": 26,
   "keysPerTitle": 93,
@@ -9934,7 +9934,10 @@
         {
           "area": "attribute",
           "key": "on",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "attributeMap.on",
+          "value": 11,
+          "auditPointer": "Codex independent current-source AUDIT PASS: Sorcerer on11 independently accepted from Grok4119: FROTZ tinybox102 and spellbook139 native TRUE/already-lit, desk144 FALSE/no effect; box FALSE before successful lighting. Current original route9 reproduces semantics and native i lists both providing light. Bounded255-object domain; boot owners include38 lit rooms, calendar61, lamp182 and global70. Existing item-likeness consumer reads on; activation tags require separate switchable capability. Current Equipment has on=true, switchable=false, no activation tags or turn-on/off commands. Lighting display remains OPEN (light=false while native i reports providing light); no useful illumination consumer closure claimed. Operator13/0 and affected-title/InformZ/Glulx three-row parity0diff; semantic delta1field. Evidence: work/mapping-research/items-codex/resume-20261020/sorcerer-on/.",
           "historicDraft": {
             "value": 11,
             "status": "static-draft",
