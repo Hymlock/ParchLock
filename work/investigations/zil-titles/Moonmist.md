@@ -30,3 +30,12 @@ the courtyard, Lord Jack, Bolitho, Vivien, Hyde, Ian, Iris (cutscene moves throu
 During the introduction "turn on lamp" -> "(The light is already on!)" and "turn off lamp" -> Tamara: "Please don't leave
 us in the dark." (a room lamp, not your lamp). Next: let the introduction finish (wait), then great hall -> up -> gallery
 -> east = your bedroom (castle.zil:1799-1814, 1981) for your lamp on/off and undressing.
+
+## Native evidence: your bedroom (route above + wait x5 | u | e | ... | e | wait x3; reached "Your room is decorated in
+## shades of red ... a night table with a lamp on it")
+- "turn on lamp" -> "(Your lamp is already on!)"; "turn off lamp" -> "Okay, it is now off." your lamp 164 -10;
+  "turn on lamp" -> "Okay, it is now on." 164 +10  => on = ONBIT 10 (source-predicted), 1 object set+clear.
+- "take off outfit" -> "Okay... My, what a fine figure of a woman!" tweed outfit 78 -21; "wear outfit" -> "Okay." +21
+  => worn = WORNBIT 21 (source-predicted), 1 object clear+set. Earlier: undress refused at the gate (location rule) and
+  while Tamara is present ("I wish you wouldn't change clothes while I'm here!") - state rules, not incapability.
+Second distinct objects still needed: on (drawing-room lamp / brass lantern 153), worn (dinner outfit).
