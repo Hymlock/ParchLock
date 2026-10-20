@@ -1,7 +1,7 @@
-diff --git a/js/ModuleStatFactsClaude.js "b/C:\\Users\\hymlo\\AppData\\Local\\Temp/msf.js"
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
 index a2d3c91..62f3412 100644
 --- a/js/ModuleStatFactsClaude.js
-+++ "b/C:\\Users\\hymlo\\AppData\\Local\\Temp/msf.js"
++++ b/js/ModuleStatFactsClaude.js
 @@ -99,7 +99,7 @@ var ModuleStatFactsClaude = {
          // 2/2 (cage 81, pedestal 84; historicalsource zork3). Target positive: cage 81 ("put staff on cage"). Target negative: gold
          // machine 91 ("There's no good surface"). The second surface is source-cited and RAM bit 26 is set, but no command can reach
