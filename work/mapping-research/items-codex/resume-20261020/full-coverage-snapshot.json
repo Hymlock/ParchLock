@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-20T23:35:04.079Z",
-  "factsSha256": "65a25c85cda5940d9cfcb5070713707578d45e2524fb702afbd294f70c5992d1",
+  "generatedAt": "2026-10-20T23:40:49.895Z",
+  "factsSha256": "7b86fe526acd849bb6ff559618508d224085791e923fbafd804dc013b0811231",
   "scope": "Reconciliation report only, not a second registry/ledger and not a completion percentage",
   "titleCount": 26,
   "keysPerTitle": 93,
@@ -4037,7 +4037,10 @@
         {
           "area": "attribute",
           "key": "animate",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "attributeMap.animate",
+          "value": 18,
+          "auditPointer": "Codex independent current-source AUDIT PASS: Hollywood Hijinx animate18 independently accepted from Grok4112: recovered and fresh original route410 SEARCH Herman163/Aunt126 tests18 TRUE with person replies, buzzsaw152 FALSE with actual search reply; earlier out-of-scope failures excluded. Passive recorder inspected; no forced relocation/attribute writes. Independently bounded244objects has only two NPCs, two yourself aliases and global69 as bit18 owners, no rooms. Current decoded actor attrs agree; no talkable inference, new container or Open/Close rule. Operator13/0 and complete3engine3row parity0diff. Exact semantic delta1field; native wheel commands recorded as observed, not whole-title/actor-consumer completion. Evidence: work/mapping-research/items-codex/resume-20261020/hollywood-animate/.",
           "historicDraft": {
             "value": 18,
             "status": "hypothesis",

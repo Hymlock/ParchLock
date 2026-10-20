@@ -61,3 +61,6 @@ Matches claude #4295 note (replay desyncs before step 26). **BLOCKED** on walkth
 1. Resolve walk seed OR hand-route to GET RING / TAKE TOUPEE / GET SKIS / GET MASK then WEAR + refusal
 2. lightSource bit 3 natives on projector/computer (may be easier original-scene)
 3. worn cell bit 14 (WORNBIT) separate from wearable 22
+
+## Independent animate18 native audit
+Hollywood Hijinx animate18 independently accepted from Grok4112: recovered and fresh original route410 SEARCH Herman163/Aunt126 tests18 TRUE with person replies, buzzsaw152 FALSE with actual search reply; earlier out-of-scope failures excluded. Passive recorder inspected; no forced relocation/attribute writes. Independently bounded244objects has only two NPCs, two yourself aliases and global69 as bit18 owners, no rooms. Current decoded actor attrs agree; no talkable inference, new container or Open/Close rule. Operator13/0 and complete3engine3row parity0diff. Exact semantic delta1field; native wheel commands recorded as observed, not whole-title/actor-consumer completion. Evidence: work/mapping-research/items-codex/resume-20261020/hollywood-animate/.

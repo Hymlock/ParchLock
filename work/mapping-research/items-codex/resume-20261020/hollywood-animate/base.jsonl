@@ -1,0 +1,3 @@
+{"game":"Alabaster.gblorb.js","exits":[],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"HollywoodHijinx.z3.js","exits":["east>null","north>null","south>null","west>null"],"marks":["photo of Uncle Buddy","letter","flashlight","South","east","west","north","Buck Palace","bazooka"],"inv1":["123:flashlight","67:photo of Uncle Buddy","235:Aunt Hildegarde's letter"],"inv2":["123:flashlight","67:photo of Uncle Buddy","235:Aunt Hildegarde's letter"],"rooms":["2:South Junction","31:Southwest Junction","60:Patio","93:Northwest Junction"]}
+{"game":"LostPig.z8.js","exits":[],"marks":["Boss","moon","forest","strange animal","big field","stone wall","Farm"],"inv1":["92:torch","91:pants"],"inv2":["92:torch","91:pants"],"rooms":["93:Outside"]}

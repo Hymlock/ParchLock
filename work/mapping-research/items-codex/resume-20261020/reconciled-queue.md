@@ -48,3 +48,5 @@ Regular Inform work: T1 fallback43 classification using repaired tool61dee15 and
 - Moonmist4129 on10 audit in progress under moonmist-on/: recovered lamp+lantern evidence, current bounded253objects, fresh route40/50 replay pending. No new Moonmist runtime fact yet.
 
 Moonmist on10 native audit and integration now complete (see latest commit/checkpoint and moonmist-on/review.md); prior in-progress line superseded. State only; switchability/lightSource and worn21 room-safe consumer work remain OPEN.
+
+- 6b19a84 Suspended on2 state independently proven/integrated from4125, excluding stackedanimate24. Native switch states false/true decoded, operator13/0 and3engine parity0diff. Boot Iris map/root and remote switch UI command consumer stay OPEN.

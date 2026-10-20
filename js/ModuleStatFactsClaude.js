@@ -365,7 +365,8 @@ var ModuleStatFactsClaude = {
     "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e": {
         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): container - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
         // CONTBIT 4: TRUE on mailbox, small compartment, cannon, pile of cannon balls; FALSE on doorbell, Status Line. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
-        "attributeMap": { "wearable": 22 },
+        // Grok4112 independently audited: native SEARCH Herman163/Aunt126 tests18 true; buzz saw152 false. No room owners.
+        "attributeMap": { "wearable": 22, "animate": 18 },
         // WORNBIT state14: independent native ring127/skis188 wear+remove, flashlight123 refused; Grok4120 proposal, Codex October20 audit.
         "wornAttribute": 14
     },

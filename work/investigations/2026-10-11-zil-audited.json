@@ -160,6 +160,7 @@
   "HollywoodHijinx.z3.js": {
     "wearable": "Codex independent AUDIT PASS October20: native ring127 and skis188 WEAR tests22 TRUE; held flashlight123 tests22 FALSE with refusal. Corrected native statue-unlock prefix; no relocation. resume-20261020/hollywood-wear-audit.md, ring/skis raw.",
     "worn": "Codex independent AUDIT PASS October20 of Grok4120 worn14 proposal: ring127/skis188 test14 FALSE before successful WEAR and TRUE under successful REMOVE; flashlight123 negative. Bounded244-object census no room owners. Native candidate Equipment skis worn=true+Remove, removed=false. Operator13/0 and affected+InformZ+Glulx gate0diff.",
-    "wornAttribute": "See worn audit: state14, not capability22."
+    "wornAttribute": "See worn audit: state14, not capability22.",
+    "animate": "Codex independent current-source AUDIT PASS: Hollywood Hijinx animate18 independently accepted from Grok4112: recovered and fresh original route410 SEARCH Herman163/Aunt126 tests18 TRUE with person replies, buzzsaw152 FALSE with actual search reply; earlier out-of-scope failures excluded. Passive recorder inspected; no forced relocation/attribute writes. Independently bounded244objects has only two NPCs, two yourself aliases and global69 as bit18 owners, no rooms. Current decoded actor attrs agree; no talkable inference, new container or Open/Close rule. Operator13/0 and complete3engine3row parity0diff. Exact semantic delta1field; native wheel commands recorded as observed, not whole-title/actor-consumer completion. Evidence: work/mapping-research/items-codex/resume-20261020/hollywood-animate/."
   }
 }
