@@ -18,3 +18,5 @@ drink 103, liquor 102).
 | edible | NATIVE-PROVEN bit 8, single owner (meal 105) | whole-source single FOODBIT carrier (exact 1/1) + native eat; flashlight refusal |
 | on | bit 17: 1 distinct object so far (flashlight set+clear) | 2nd distinct: compressor or Red's lamp on the boat (later walkthrough steps) |
 | lightSource | NO-DEDICATED-BIT + PROVEN-ALTERNATIVE (light = ONBIT 17 on the flashlight) | no LIGHTBIT in source; native dark-room light effect still to capture (underwater) |
+
+On negative (native): after step 114 "rent compressor" (small air compressor 120, not the boat MM-COMPRESSOR): "turn on compressor" -> "You can't turn that on."; "turn off compressor" -> "You can't turn that off." (no bit). Second positive candidates later in the walkthrough: boat MM-COMPRESSOR / REDS-LAMP (boat.zil:345-355, 955-959), step 307 "turn on magnet".
