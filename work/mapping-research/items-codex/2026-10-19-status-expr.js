@@ -1,0 +1,1 @@
+return {before:window.__codexStatusBaseline,after:{grid:[...document.querySelectorAll('.GridWindow')].map(x=>x.textContent).join(' '),model:StatTracker.model()},nativeTail:[...document.querySelectorAll('#windowport .BufferWindow .BufferLine')].slice(-7).map(x=>x.textContent).join('\n')};
