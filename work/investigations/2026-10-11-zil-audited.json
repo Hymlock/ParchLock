@@ -117,7 +117,9 @@
   },
   "Enchanter.z3.js": {
     "container": "Codex AUDIT PASS #3539 (container21)",
-    "open": "Codex AUDIT PASS #3554 (open12/isOpen12 state only; D225 marks remain under review)"
+    "open": "Codex AUDIT PASS #3554 (open12/isOpen12 state only; D225 marks remain under review)",
+    "lightSource": "Codex AUDIT PASS #4349 (lightSource22 state: lantern 94 FROTZ +22 x2 then absent; candle 204 already 22 with glow reply; bread 41/jug 19 negatives; brass 175 RAM corroboration only; source V-FROTZ magic.zil:806-809, ETERNAL-FLAME; raw zil-titles/raw/enchanter-0-140.txt)",
+    "on": "Codex AUDIT PASS #4349 (on8 state, same evidence; not a switchable-capability inference)"
   },
   "Photograph.zblorb.js": {
     "inventoryHiddenAttribute": "Codex AUDIT PASS #3554 (hidden17; original native i four omitted positives, printed frame negative)"
