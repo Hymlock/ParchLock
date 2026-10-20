@@ -22,3 +22,5 @@ Boot: chapter menu needs a character key (zil-walkdiff.cjs STARTKEY=1|2|3).
 | on | FEATURE-ABSENT | whole-source: no live ONBIT/LIGHTBIT code, universal V-ON refusal, both object ON handlers refuse; native refusals on both owners (matchbook, cigarette) |
 | lightSource | FEATURE-ABSENT (was UD; same evidence) | as above |
 | edible | NO-DEDICATED-BIT + PROVEN-ALTERNATIVE (FOOD-F vendor food/soda) | source; native EAT/DRINK of vendor food still to capture (hand route to the vendor) |
+
+Edible native capture needs story state: vendor food/soda are takeable only after CART-TOPPLED? (VENDOR-STUFF-F bad.zil:1987-2000; alley rooms ~1640-1682 off Town Square, chapter 3). Needs a hand route that topples the cart; edible stays OPEN (source-only PROVEN-ALTERNATIVE candidate) until captured.
