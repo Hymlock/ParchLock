@@ -41,7 +41,8 @@
     "nested": "Codex AUDIT PASS #3525 (inventoryHiddenAttribute 6)",
     "container": "Codex AUDIT PASS #3539 (container23)",
     "inventoryHiddenAttribute": "Codex AUDIT PASS #3525 (hidden6; same accepted key previously filed as nested)",
-    "supporter": "Codex AUDIT PASS #3992 (supporter17; raw named PUT desk103 and stand96 positives vs telephone203, ambient controls; source6/6)"
+    "supporter": "Codex AUDIT PASS #3992 (supporter17; raw named PUT desk103 and stand96 positives vs telephone203, ambient controls; source6/6)",
+    "playerRoot": "Claude AUDIT PASS 2026-10-20 (playerGlobal47 -> 211 measured-player-global; parent 81 In the Wings = location global G0 81 at boot; map populated (2 rooms); source/binary init codex #3461 misc.zil PROTAG -> G175 + G47)"
   },
   "Planetfall.z3.js": {
     "open": "Codex AUDIT PASS #3467 (state only; not capability)",
