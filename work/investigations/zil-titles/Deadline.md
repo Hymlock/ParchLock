@@ -32,3 +32,12 @@ Bit 20 (PERSON) is set on every character object: 53/54 Coates, 127 Robner, 148/
 - RAM: bit 20 on every suspect object (dump above), not on Sergeant Duffy.
 Proposed: animate = NATIVE-PROVEN bit 20 (PERSON): 2 distinct persons via the PERSON-branching verb routine + 2 negatives.
 Stereo not found yet (not in the living room); on/edible native captures still pending.
+
+## Native evidence 2 (route n | knock on door | n | e | u | u | w | w | w | open door | s = George's Bedroom)
+- "turn on stereo" -> "The stereo is now on."; "turn off stereo" -> "The stereo is now off." (STEREO-F, global, no bit)
+- "turn on george" -> PERSON reply (third distinct person for animate).
+- "open cabinet" -> Scotch + Bourbon; "drink scotch" -> "You take a small swig of the golden fluid, which burns as it goes
+  down." (LIQUOR-F success); "drink bourbon" next -> "...resist the temptation to indulge too often." (DRUNK-FLAG state
+  refusal, not incapability); "drink liquor" (generic word) -> "The liquor wouldn't agree with you."
+Status: on = PROVEN-ALTERNATIVE (stereo on/off native + table/sofa refusals); edible needs a 2nd success (cough syrup in
+Ms. Dunbar's cabinet, Corridor-1 south; or sugar powder on the tray) before closing.
