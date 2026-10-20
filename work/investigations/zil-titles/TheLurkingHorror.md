@@ -60,3 +60,17 @@ hot, spicy, and hot..."; "eat carton" -> "You might find the contents more agree
 | on | NATIVE-PROVEN bit 15 (ONBIT) | flashlight set (light) + clear (turn off); negative: light crowbar refused, no bit; source exact 34/0/0 |
 | lightSource | NATIVE-PROVEN bit 22 (LIGHTBIT), single owner flashlight 132 | whole-source single owner (source-flags exact 1/0/0); lit flashlight makes the dark Temporary Lab describable |
 | edible | NATIVE-PROVEN bit 1 (FOODBIT) WITH OWNER EXCEPTION | Coke (drink) + Chinese food (eat) positive; crowbar negative. Carton 58 carries FOODBIT but its eat reply refuses ("contents more agreeable"): FOODBIT marks food AND food containers here. Consumer rule needed: do not offer Eat from FOODBIT alone on a FOODBIT container (CONTBIT) - otherwise a wrong action. |
+
+## R1 corrections after codex REVISE #4331 (2026-10-20)
+- CORRECTION: "the ONLY wearable is the gloves" was wrong. IWEAR (frob.zil:1667) is called by GLOVES-F (cs.zil:6932),
+  RING-F (cs.zil:5270) and BOOTS-F (frob.zil:1663). Wearable owner domain = gloves, ring, boots (handler-based,
+  NO-DEDICATED-BIT + PROVEN-ALTERNATIVE).
+- worn bit 3: second distinct object captured natively - step 98 GET BOOTS, step 99 "WEAR THEM" -> "Snug, but okay."
+  boots 104 +3. With gloves 203 (+3/-3/+3) = 2 distinct native positives; crowbar refusal = negative. Raw record:
+  work/investigations/zil-titles/raw/lurking-0-100.txt.
+- on bit 15: the flashlight is one object, so not ">=2 distinct". Proposed basis instead: single dynamic item owner +
+  whole-source search: the only item FSET/FCLEAR ONBIT is FLASHLIGHT (cs.zil:1383/1397/1412); every other runtime
+  ONBIT change is a ROOM lit-state (TUNNEL x3 cs.zil:2608-2629, ALCHEMY-LAB 4718/4856). Static carriers are rooms (lit).
+  If the reviewer rejects room/item separation, on stays OPEN.
+- edible: the carton exception is identity-scoped (carton 58 only), NOT a ban on edible containers: Coke 61 is itself a
+  bottle and is natively drinkable.
