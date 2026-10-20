@@ -24,3 +24,9 @@ Expected visible change: Equipment shows active/inactive for the flashlight (LH)
 Gate (R3 s2: data-only, digest-keyed): operator-regressions 0 FAIL + three-engine check + the 3 titles on isolated
 base/candidate trees (regression-gate rows) + a native recheck that the Equipment chip/worn mark matches the game.
 Full 309x2 not required (no shared code moves) unless the reviewer asks.
+
+## R1 after codex ACCEPT #4351 (with corrections)
+- Expected visible change corrected: the Equipment active/inactive chip needs attrs.switchable AND confirmed switchable (activationStateTags), so the on facts alone will NOT add chips; switchable is NOT to be added to make that appear.
+- worn 3 goes through isTrulyWorn: the check must show real gloves/boots marked worn with Remove in LH.
+- light/on feed wrapper item-likeness (ZRamReader ~2736): add anonymous-wrapper inventory parity on the 3 titles to the A/B.
+- BLOCKER: js/ModuleStatFactsClaude.js is under a live claim by seat grok (2026-10-17T02:31Z). Release needs grok or the operator. Prepared patch (not applied): work/investigations/2026-10-20-zil-facts-batch1.patch (5 facts, syntax-checked on a scratch copy).
