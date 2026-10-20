@@ -4,7 +4,7 @@
     "supporter": "Codex AUDIT PASS #3518 (supporter8)",
     "inventoryHiddenAttribute": "Codex AUDIT PASS #3554 (hidden18; native mouse/HELP omitted, chair/pc/assignment printed)",
     "worn": "Codex AUDIT PASS #4341 (worn3 state: gloves 203 +3/-3/+3 and boots 104 +3 native; crowbar refusal; items-codex/2026-10-20-lh-worn-negative.txt + claude raw/lurking-0-100.txt)",
-    "on": "Codex AUDIT PASS #4345 (narrow: on15 state mapping on flashlight 132 set/clear native; room lit-state preserved; NOT a switchable-capability inference; single-item-owner exception not certified)"
+    "on": "Codex AUDIT PASS #4345 + #4347 (on15 state: flashlight 132 native set/clear + refusal; source qualification R3 accepted: flashlight is the single player-switchable item owner, rooms = lighting state, GLOBAL-FLOOR-WAXER always-on scenery; zilscan.js tokenized search, syntax.zil imbalance disclosed; NOT switchable capability or full-title closure)"
   },
   "Cutthroats.z3.js": {
     "open": "Codex AUDIT PASS #3457/#3458",
