@@ -114,7 +114,9 @@
   },
   "Infidel.z3.js": {
     "supporter": "Codex AUDIT PASS #3539 (supporter28)",
-    "open": "Codex AUDIT PASS #3539 (open25/isOpen25)"
+    "open": "Codex AUDIT PASS #3539 (open25/isOpen25)",
+    "worn": "Codex independent AUDIT PASS October20 of Grok4127: knapsack31 native TAKE OFF tests22 TRUE; ring2 EXAMINE FINGER22 FALSE before WEAR and TRUE after, TAKE RING TRUE and native i worn; shovel33 WEAR22 FALSE refusal. Bounded249-object boot census no room owners. Native Equipment31 worn+Remove then absent on take-off; operator13/0; Infidel/InformZ/Glulx gate0diff. resume-20261020/infidel-worn-audit.md.",
+    "wornAttribute": "See worn audit: state22 only; no dedicated wearable capability implied."
   },
   "Enchanter.z3.js": {
     "container": "Codex AUDIT PASS #3539 (container21)",

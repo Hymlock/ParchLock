@@ -177,7 +177,9 @@ var ModuleStatFactsClaude = {
     },
     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
         "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25 },
-        "openCapability": { "all": ["container"], "none": ["supporter"] }
+        "openCapability": { "all": ["container"], "none": ["supporter"] },
+        // WEARBIT state22: native knapsack31/ring2 worn positives, shovel33 refusal; Grok4127 proposal independently replayed by Codex October20.
+        "wornAttribute": 22
     },
     // Sorcerer (ZIL): stable PLAYER global 38 (Codex #3412/#3413, verified grok2 #3425): misc.zil WINNER=PROTAGONIST, PLAYER=WINNER;
     // binary 23591 store G38<-G163 at start, TELL stores only G163 (42801). Native TAKE book inserts into body 223 = G38. Ships with the v3 nested-room fix.

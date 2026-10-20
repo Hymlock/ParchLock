@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-20T22:49:38.848Z",
-  "factsSha256": "ee1d12588db17b549af049fe20560c277defb9941835bb9f8fbd657bf3d181f4",
+  "generatedAt": "2026-10-20T22:56:24.067Z",
+  "factsSha256": "9f2d1f7a22fc5caf1f5298e952f86119e68419aa8272c875a3a6d18c3083dd44",
   "scope": "Reconciliation report only, not a second registry/ledger and not a completion percentage",
   "titleCount": 26,
   "keysPerTitle": 93,
@@ -4727,7 +4727,8 @@
       "classificationNote": "Current source-bound decoder result is distinct from historical matrix",
       "factKeys": [
         "attributeMap",
-        "openCapability"
+        "openCapability",
+        "wornAttribute"
       ],
       "cells": [
         {
@@ -5044,7 +5045,10 @@
         {
           "area": "attribute",
           "key": "worn",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 22,
+          "auditPointer": "Codex independent AUDIT PASS October20 of Grok4127: knapsack31 native TAKE OFF tests22 TRUE; ring2 EXAMINE FINGER22 FALSE before WEAR and TRUE after, TAKE RING TRUE and native i worn; shovel33 WEAR22 FALSE refusal. Bounded249-object boot census no room owners. Native Equipment31 worn+Remove then absent on take-off; operator13/0; Infidel/InformZ/Glulx gate0diff. resume-20261020/infidel-worn-audit.md.",
           "historicDraft": {
             "value": null,
             "status": "unknown",
@@ -5108,7 +5112,10 @@
         {
           "area": "attribute",
           "key": "isWorn",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 22,
+          "auditPointer": "Codex independent AUDIT PASS October20 of Grok4127: knapsack31 native TAKE OFF tests22 TRUE; ring2 EXAMINE FINGER22 FALSE before WEAR and TRUE after, TAKE RING TRUE and native i worn; shovel33 WEAR22 FALSE refusal. Bounded249-object boot census no room owners. Native Equipment31 worn+Remove then absent on take-off; operator13/0; Infidel/InformZ/Glulx gate0diff. resume-20261020/infidel-worn-audit.md.",
           "historicDraft": {
             "value": null,
             "status": "unknown",
@@ -5228,7 +5235,10 @@
         {
           "area": "fact",
           "key": "wornAttribute",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 22,
+          "auditPointer": "See worn audit: state22 only; no dedicated wearable capability implied."
         },
         {
           "area": "fact",

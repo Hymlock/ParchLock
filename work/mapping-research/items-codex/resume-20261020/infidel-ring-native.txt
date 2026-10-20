@@ -1,0 +1,85 @@
+>get out of cot ::  legs are a little wobbly, though, and your head swims. You hear a plane flying high overhead, outside the tent. > 
+>s ::  Outside Your Tent You are on an east/west path on the north side of the encampment. To the south you can see a firepit and to the north is the entrance to your tent. Everything is oddly quiet, unsettling, creating a feeling of floating anxiety. The stillness seems to enhance the eerie quality of the desert, the feeling of being truly alone. There's a small hole in the sand, a remnant of your exca
+>sw :: w Outside Supply Tent You're on a north/south path on the west edge of the encampment. Directly to the west is the supply tent, its flaps open, still in the hot, quiet air. To the east you can see the central firepit, a reminder of your being alone. A row of thickets, impossible to make any progress through even with a machete, grows along the western edge of the camp directly to the north and sou
+>w ::  Supply Tent You are in a tent, very much like your own -- a tent which had originally contained the supplies for your expedition. You notice, however, that most of the items which were here just yesterday have vanished with your workers. The tent looks as if it's been cleaned out and, as your stomach growls, the empty tent ironically reminds you of a turkey carcass picked clean after a huge Thank
+>get pickaxe :: et pickaxe Taken. It sounds as if the plane is circling. > 
+>get shovel :: et shovel Taken. It sounds as if the plane is flying off. > 
+>e ::  Outside Supply Tent A small speck descending from the plane overhead gets larger until you see a crate, dangling from a parachute. > 
+>se :: e Outside Work Tent You are on an east/west path, directly to the north of the work tent. To the north you can see the firepit and, beyond that, your tent. The work tent borders an endless vista of fine, burning sand stretching out to the south. There's a small hole in the sand, a remnant of your excavation attempts. At last, your luck seems to be changing. A large crate lands right before you, it
+>s ::  Work Tent You are in a tent which used to house the workers and their personal effects. Looking around, taking in the stripped and bare surroundings, you feel surprised that they even left the canvas walls. You quickly realize that they took what they needed -- taking everything would have been more trouble than it was worth. From the looks of things they cleared out quickly but quietly. Tacked u
+>read note :: ead note The note reads: Fi aman Allah! Hereafter you shall pursue your fool dream of the hidden pyramid and its riches alone. May the jackals feed well on your bones. We have left you what you need to get back, though we hope you do not. We put several things you treasure above life itself inside your trunk, locked with your precious padlock, but we could not bear to part with the key. Especially
+>get knapsack :: et knapsack (wearing it) You swing the knapsack over your shoulders and it settles on your back as its cover flap closes. > 
+>n ::  Outside Work Tent Lying in the sand is a wooden packing crate. > 
+>n ::  Fire Pit You are in the center of the encampment, standing before a charred pit, a hole dug in the sand surrounded by blackened rocks. The night breezes have already started the reclamation work of the desert, covering most of the pit's bottom. You can see your tent to the north, the work tent to the south, and the supply tent to the west. Far off to the east, through the heat waves rising off th
+>get matchbook :: et matchbook Taken. > 
+>n ::  Outside Your Tent > 
+>n ::  Your Tent There is an army cot here. At the foot of the cot is a large, unwieldy trunk. The trunk is closed and locked with a padlock. > 
+>smash padlock with pickaxe :: mash padlock with pickaxe The padlock breaks open. > 
+TARGET remove padlock {"ops":["223:30=1","223:25=0","51:30=0","39:30=0","40:30=0","49:30=0","49:25=0","31:30=0","31:25=0","33:30=0","37:30=0","71:20=0","40:15=1","49:22=0","31:22=1","33:22=0","37:22=0","49:22=0","31:22=1","33:22=0","37:22=0","40:22=0","71:14=0"],"reply":"u can see gentle, rolling dunes. There's a small hole in the sand, a remnant of your excavation attempts.\nHalf covered with sand is a bright piece of foil which catches your eye.\nSitting by a rock is what looks like a matchbook.\n \n>get matchbook\nTaken.\n \n>n\nOutside Your Tent\n \n>n\nYour Tent\nThere is an army cot here.\nAt the foot of the cot is a large, unwieldy trunk. The trunk is closed and locked with a padlock.\n \n>smash padlock with pickaxe\nThe padlock breaks open.\n \n>remove padlock\nTaken.\n \n> "}
+>remove padlock :: emove padlock Taken. > 
+>drop padlock :: rop padlock Dropped. > 
+>open trunk :: pen trunk Opened. Opening the trunk reveals an inspection sticker, a piece of dried beef, and an ancient map. > 
+>get beef :: et beef Taken. > 
+>get map :: et map Taken. It feels fairly heavy, though, as though it were folded around something solid. > 
+>eat beef :: at beef That really hit the spot. It did make you a little thirstier, though. > 
+>s ::  Outside Your Tent > 
+>w ::  Near the Nile You are on an east/west path on the north side of the encampment. A path to the south starts here, and you can see the riverbank clearly to the west. A warm, light breeze reaches your face, drying your sweat into a thin mask of salt. You glance to the north and are greeted by a disheartening sight: an endless stretch of searing desert. There's a small hole in the sand, a remnant of 
+>w ::  River Bank You are on the bank of the river Nile. The shoreline is sandy and cool, and reeds wave in a light but warm breeze. Directly to the north and the south thickets make strolling along the bank impossible. You're hot, and the cool rippling water to the west looks inviting, but you're not alone in that thought -- crocodiles bask on the west bank, eyeing you hungrily, just waiting for you to
+>drink water :: rink water You kneel down and drink deeply from the Nile and feel refreshed. > 
+>drop knapsack :: rop knapsack You take the knapsack off and place it down. As it settles, the cover flaps open. > 
+>get canteen :: et canteen Taken. > 
+>open canteen :: pen canteen Opened. > 
+>fill canteen :: ill canteen Okay, you have filled the canteen. > 
+>close canteen :: lose canteen Closed. > 
+>put canteen in knapsack :: ut canteen in knapsack Done. > 
+>get knapsack :: et knapsack (wearing it) You swing the knapsack over your shoulders and it settles on your back as its cover flap closes. > 
+>e ::  Near the Nile > 
+>e ::  Outside Your Tent > 
+>e ::  Northern Path You are on an east/west path on the northern side of the encampment. To the east you can see the sites of previous excavations your workers had begun before they deserted you. Low, gentle sand dunes roll out of sight to the north, but your camp's eastern border has a path, heading off to the south, which starts here. There's an enlarged hole in the sand, a remnant of your excavation
+>se :: e Desert You are in the desert, still within sight of the encampment, just a tiny oasis to the west. The tents, shimmering behind the heat waves rising from the sand, seem to be calling you back, beckoning, offering safety and refuge. There's a small hole in the sand, a remnant of your excavation attempts. > 
+>se :: e Desert You are in the desert, out of sight of the encampment. You are thankful there's no wind, even though a cooling breeze would be welcomed, since the fine sand particles would sting your face and hands. All around is the desert, a sweeping expanse of disheartening sand. There's a small hole in the sand, a remnant of your excavation attempts. A cool pool of water seems to dance in the heat wa
+>dig in sand :: ig in sand (with the shovel) You've enlarged the hole a little, taking out two shovelsfull for every one that collapses back in from the walls. > 
+>dig in sand :: ig in sand (with the shovel) You've made the hole quite sizable, though it's not very deep. The deeper you dig, the more the walls collapse and so you widen the base of the hole. > 
+>dig in sand :: ig in sand (with the shovel) You're knee-deep in the hole, digging away, taking out more and more sand. You silently curse those workers for having deserted you. > 
+>dig in sand :: ig in sand (with the shovel) You've dug yourself into a deep hole. You're actually several feet below the surrounding sand. The walls look very unstable. > 
+>dig in sand :: ig in sand (with the shovel) You've uncovered what could only be the top of a pyramid. After clearing it away with your hands, you notice a square opening in the top of it. > 
+>open map :: pen map Unfolding the ancient map reveals a stone cube. > 
+>insert cube in opening :: 
+>d :: e south, a wide one to the east, and a narrow one to the west. In the center of the room is a large red sandstone altar mounted solidly in the floor. Lying on the floor, partially covered with dust, is a small pink alabaster jar. Leaning against the altar is a bronze torch. > 
+>drop map :: 
+>open jar :: 
+>get torch :: 
+>dip torch in liquid ::  the liquid. > 
+>close jar :: 
+>drop knapsack :: r flaps open. > 
+>put jar in knapsack :: 
+>open matchbook :: 
+>get match :: 
+>close matchbook :: 
+>strike match :: 
+>light torch :: 
+>s :: n the middle of a set of stairs. The staircase goes down to the south and up to the north. The walls here are undistinguished, formed by the stones of which the pyramid was built. Your match went out. And it burned your fingers, too! You drop it. The match falls into a crack in the stone floor. > 
+>s :: 
+>ne :: 
+>nw :: nd the barge to the east and west, while a doorway to the southeast leads into a darkened corridor. > 
+>w :: 
+>n :: rthwest corner of the Barge Chamber. You can see by your light that there's room enough to continue around the back of the barge by going to the east, while you can bypass the bow of the boat by going south. > 
+>e :: 
+>n :: p, it looks as if you should have firm enough footing to travel safely. From the angle, it appears as though the passage is actually leaving the pyramid, cutting down through the sand high overhead to an adjoining building. > 
+>n :: th/south passageway which seems to lead out of the pyramid to the north. The walls of stone are polished and as smooth as glass, glistening in your light, lighting the passage far to the north and the south. > 
+>n :: 
+>n :: and fall from the high walls, making their top boundaries undefined as they melt into inky darkness, flickering into the unknown reaches high overhead. There is a huge doorway carved out of the south wall, the arch at its top barely discernible in your light. To the north is a similar doorway, slightly scaled down, with pillars on either side of it, their shadows playing strange tricks on the wall
+>n :: mple's inner chamber. The ceiling here is lower, low enough for your light to reach it. There are openings in the east and west walls, and a large, arched doorway to the south. The walls are covered with paintings, most of which depict the Queen in different stages of preparation for her trip on the royal barge. One in particular, larger than any of the others, shows the Queen and all of her atten
+>get ring :: 
+TARGET examine finger {"ops":["223:30=1","223:25=0","4:30=0","4:25=1","4:28=0","4:24=1","3:30=0","2:30=0","2:25=1","2:28=0","2:24=1","1:30=0","198:30=0","49:30=0","49:25=0","33:30=0","37:30=0","214:30=0","213:30=0","220:30=0","46:30=0","248:30=0","248:25=0","5:30=0","43:30=0","208:30=0","215:30=0","216:30=0","217:30=0","221:30=0","224:30=0","225:30=0","226:30=0","227:30=0","230:30=0","231:30=0","234:30=0","235:30=0","236:30=0","237:30=0","239:30=0","240:30=0","241:30=0","242:30=0","243:30=0","244:30=0","245:30=0","246:30=0","2:22=0","16:14=0"],"reply":"than any of the others, shows the Queen and all of her attendants aboard the barge, floating through the air on their way to the netherworld. There are some detailed hieroglyphs on one of the walls.\nLying before you in tortured repose are the bony remains of a former adventurer, someone who tried looting the pyramid long, long ago. As you bend over to pay your respects, something glitters, catching your eye as you move your head.\n \n>get ring\nTaken.\n \n>examine finger\nIt's part of your hands.\n \n> "}
+>examine finger :: 
+TARGET wear ring {"ops":["223:30=1","223:25=0","4:30=0","4:25=1","4:28=0","4:24=1","3:30=0","2:30=0","2:25=1","2:28=0","2:24=1","1:30=0","198:30=0","49:30=0","49:25=0","33:30=0","37:30=0","16:14=0"],"reply":", floating through the air on their way to the netherworld. There are some detailed hieroglyphs on one of the walls.\nLying before you in tortured repose are the bony remains of a former adventurer, someone who tried looting the pyramid long, long ago. As you bend over to pay your respects, something glitters, catching your eye as you move your head.\n \n>get ring\nTaken.\n \n>examine finger\nIt's part of your hands.\n \n>wear ring\nOuch! It seems you've pricked your finger while putting on the ring.\n \n> "}
+>wear ring ::  finger while putting on the ring. > 
+TARGET examine finger {"ops":["223:30=1","223:25=0","4:30=0","4:25=1","4:28=0","4:24=1","3:30=0","2:30=0","2:25=1","2:28=0","2:24=1","1:30=0","198:30=0","49:30=0","49:25=0","33:30=0","37:30=0","214:30=0","213:30=0","220:30=0","46:30=0","248:30=0","248:25=0","5:30=0","43:30=0","208:30=0","215:30=0","216:30=0","217:30=0","221:30=0","224:30=0","225:30=0","226:30=0","227:30=0","230:30=0","231:30=0","234:30=0","235:30=0","236:30=0","237:30=0","239:30=0","240:30=0","241:30=0","242:30=0","243:30=0","244:30=0","245:30=0","246:30=0","2:22=1","16:14=0"],"reply":"rworld. There are some detailed hieroglyphs on one of the walls.\nLying before you in tortured repose are the bony remains of a former adventurer, someone who tried looting the pyramid long, long ago. As you bend over to pay your respects, something glitters, catching your eye as you move your head.\n \n>get ring\nTaken.\n \n>examine finger\nIt's part of your hands.\n \n>wear ring\nOuch! It seems you've pricked your finger while putting on the ring.\n \n>examine finger\nSitting on your finger is a ring.\n \n> "}
+>examine finger :: n your finger is a ring. > 
+TARGET take ring {"ops":["223:30=1","223:25=0","4:30=0","4:25=1","4:28=0","4:24=1","3:30=0","2:30=0","2:25=1","2:28=0","2:24=1","1:30=0","198:30=0","49:30=0","49:25=0","33:30=0","37:30=0","2:22=1","16:14=0"],"reply":"d long, long ago. As you bend over to pay your respects, something glitters, catching your eye as you move your head.\n \n>get ring\nTaken.\n \n>examine finger\nIt's part of your hands.\n \n>wear ring\nOuch! It seems you've pricked your finger while putting on the ring.\n \n>examine finger\nSitting on your finger is a ring.\n \n>take ring\nYou are already wearing it.\nYou're starting to feel a little woozy. You blink your eyes, but can't seem to focus correctly. You think you see Craige standing by a wall.\n \n> "}
+>take ring :: orrectly. You think you see Craige standing by a wall. > 
+TARGET i {"ops":["16:14=0","2:30=0","2:18=0","2:26=0","2:22=1","2:10=0","2:30=0","2:25=1","16:14=0","1:30=0","1:18=1","198:30=0","198:18=0","198:26=0","198:22=0","198:10=1","198:30=0","198:25=0","49:30=0","49:18=0","49:26=0","49:22=0","49:10=0","49:30=0","49:25=0","33:30=0","33:18=0","33:26=0","33:22=0","33:10=0","33:30=0","33:25=0","37:30=0","37:18=0","37:26=0","37:22=0","37:10=0","37:30=0","37:25=0","16:14=0"],"reply":"ing\nTaken.\n \n>examine finger\nIt's part of your hands.\n \n>wear ring\nOuch! It seems you've pricked your finger while putting on the ring.\n \n>examine finger\nSitting on your finger is a ring.\n \n>take ring\nYou are already wearing it.\nYou're starting to feel a little woozy. You blink your eyes, but can't seem to focus correctly. You think you see Craige standing by a wall.\n \n>i\nYou are carrying:\n  A jeweled ring (being worn)\n  A bronze torch (lit and burning)\n  A matchbook\n  A shovel\n  A pick axe\n \n> "}
+>i :: 
+OPS ["16:14=0","2:30=0","2:18=0","2:26=0","2:22=1","2:10=0","2:25=1","1:30=0","1:18=1","198:30=0","198:18=0","198:26=0","198:22=0","198:10=1","198:25=0","49:30=0","49:18=0","49:26=0","49:22=0","49:10=0","49:25=0","33:30=0","33:18=0","33:26=0","33:22=0","33:10=0","33:25=0","37:30=0","37:18=0","37:26=0","37:22=0","37:10=0","37:25=0"]
+EQ ["2:jeweled ring@223","1:tiny needle@2","198:bronze torch@223","49:matchbook@223","33:shovel@223","37:pick axe@223"]
