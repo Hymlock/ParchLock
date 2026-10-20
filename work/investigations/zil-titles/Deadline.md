@@ -41,3 +41,5 @@ Stereo not found yet (not in the living room); on/edible native captures still p
   refusal, not incapability); "drink liquor" (generic word) -> "The liquor wouldn't agree with you."
 Status: on = PROVEN-ALTERNATIVE (stereo on/off native + table/sofa refusals); edible needs a 2nd success (cough syrup in
 Ms. Dunbar's cabinet, Corridor-1 south; or sugar powder on the tray) before closing.
+
+Route note: DUNBAR-CABINET (cough medicine DUM-KOF / syrup) is IN DUNBAR-BATH, reached SOUTH from hall SHALL-11 via DUNBAR-BATH-DOOR (dungeon.zil:760, 873), not from Dunbar's Bedroom. Second edible positive still to capture there (or sugar powder on TRAY). Edible stays OPEN with 1 native positive (Scotch).
