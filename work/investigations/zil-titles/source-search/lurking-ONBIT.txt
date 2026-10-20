@@ -107,3 +107,51 @@ Dynamic FSET/FCLEAR ONBIT: FLASHLIGHT (cs.zil:1383/1397/1412) - the only item; T
 above all set other flags (OPENBIT, NDESCBIT, LOCKED, SLIMEBIT, RMUNGBIT, PERSON, TOUCHBIT); none touches ONBIT.
 Conclusion: the only player-switchable ONBIT item is the flashlight; one static non-room carrier (global waxer) is
 always-on scenery.
+
+## Two-operand scan (codex #4343): whole files, newlines collapsed, comments stripped; tool = node flagscan (below)
+two-operand FSET/FSET?/FCLEAR forms scanned: 643
+forms whose FLAG operand is not a literal ,FLAG constant: 3
+  desc.zil: <FSET? .OBJ <- ,D-BIT>>
+  misc.zil: <FSET? .OBJ ,.A>
+  verbs.zil: <FSET? .W .WHAT>
+DEFMAC macros containing FSET/FCLEAR: 3
+  misc.zil: DEFMAC BSET
+  misc.zil: DEFMAC BCLEAR
+  misc.zil: DEFMAC BSET
+All non-literal flag operands above are FSET? TESTS (read-only), not setters.
+BSET/BCLEAR (the only FSET/FCLEAR-forwarding macros, via MULTIBITS): call sites = 0
+
+## GLOBAL-FLOOR-WAXER excerpts (inline, rev 51d8060)
+5984:<OBJECT GLOBAL-FLOOR-WAXER
+5985-	(IN LOCAL-GLOBALS)
+5986-	(DESC "floor waxer")
+5987-	(SYNONYM WAXER POLISHER MACHINE)
+5988-	(ADJECTIVE FLOOR LARGE NOISY)
+5989-	(FLAGS NDESCBIT VEHBIT SURFACEBIT ONBIT OPENBIT CONTBIT SEARCHBIT)
+5990-	(GENERIC GENERIC-FLOOR-WAXER-F)
+5991-	(ACTION GLOBAL-FLOOR-WAXER-F)>
+5992-
+5993-<ROUTINE GENERIC-FLOOR-WAXER-F ()
+5994-	 <COND (<IN? ,FLOOR-WAXER ,HERE> ,FLOOR-WAXER)
+...
+  6040			      (ELSE
+  6041			       <TELL
+  6042	"A disabled " 'FLOOR-WAXER " looms nearby.">)>
+  6043			<RFATAL>)>>
+  6044	
+  6045	<ROUTINE FLOOR-WAXER-F ("OPT" (RARG <>))
+  6046		 <COND (<RARG? BEG>
+  6047			<COND (<AND <VERB? WALK>
+  6048				    <EQUAL? ,P-WALK-DIR ,P?DOWN>>
+  6049			       <PERFORM ,V?DISEMBARK>
+  6050			       <RTRUE>)
+  6051			      (<VERB? WALK LAMP-OFF LAMP-ON STOP>
+  6052			       <TELL
+  6053	CTHE ,POWER-CORD " is severed. It's not going anywhere." CR>)>)
+  6054		       (<RARG? CONTAINER>
+  6055			<COND (<AND <VERB? TAKE>
+  6056				    <NOT <IN? ,WINNER ,FLOOR-WAXER>>>
+  6057			       <CANT-REACH-THAT>
+  6058			       <RTRUE>)>)
+  6059		       (<RARG? <>>
+  6060			<COND (<VERB? EXAMINE>
