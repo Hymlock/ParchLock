@@ -22,3 +22,13 @@ Static flags: ONBIT 23 (41 carriers, rooms = lit), PERSON 20 (Mr. Robner 127 onl
 
 ## Animate check (2026-10-20, boot RAM dump)
 Bit 20 (PERSON) is set on every character object: 53/54 Coates, 127 Robner, 148/149 Rourke, 150/151 Mrs. Robner, 152/153 George, 154/155 Dunbar, 156/157 Baxter, 158/159 McNabb (the source-flags.json "pos=1" undercounts). Sergeant Duffy 61 has no PERSON. Native target-scoped witness available cheaply: V-LAMP-ON branches on PERSON (verbs.zil:637) - "turn on george" -> "Ahem! ... flirt with the suspects" (positive) vs "turn on <item>" -> "You can't turn that on." (negative). Needs a route to 2 suspects.
+
+## Native evidence: animate (zil-walkdiff.cjs, fresh boot, no relocation; route n | knock on door | n | w ...)
+- Living Room (Ms. Dunbar on the sofa): "turn on dunbar" -> "Ahem! ... flirt with the suspects" (V-LAMP-ON PERSON branch);
+  "turn off dunbar" -> "Your uncouth manner is certain to turn anyone off." (V-LAMP-OFF PERSON branch)
+- Kitchen (route ... n | n | n; "Mrs. Rourke is here, cleaning the kitchen"): "turn on mrs robner" -> PERSON reply; the only
+  person present is Mrs. Rourke, so the parser resolved "mrs" to her = second distinct person.
+- Negatives: "turn on table" (Foyer) and "turn on sofa" (Living Room) -> "You can't turn that on." (non-PERSON branch)
+- RAM: bit 20 on every suspect object (dump above), not on Sergeant Duffy.
+Proposed: animate = NATIVE-PROVEN bit 20 (PERSON): 2 distinct persons via the PERSON-branching verb routine + 2 negatives.
+Stereo not found yet (not in the living room); on/edible native captures still pending.
