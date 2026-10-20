@@ -1,0 +1,46 @@
+diff --git a/js/ActionSynth.js b/js/ActionSynth.js
+index 7a856db..e953836 100644
+--- a/js/ActionSynth.js
++++ b/js/ActionSynth.js
+@@ -241,13 +241,23 @@ var ActionSynth = {
+             // stays (it's genuinely useful UI context -- where the item
+             // currently sits), but the command that gets submitted is now
+             // the verified-working plain "take X".
+-            return [{
++            // Knapsack (2026-10-20): the inspect verb comes FIRST so a short
++            // tap (which runs the first action) looks at the item instead of
++            // taking it out; taking stays an explicit choice. A disabled
++            // inspect verb is not resurrected.
++            var nested = [];
++            if (!ActionSynth.inspectVerbDisabled()) {
++                var inspect = ActionSynth.defaultInspectVerb();
++                nested.push({ verb: inspect, noun: name, objectId: obj.id || null, command: inspect + " " + name, confidence: obj.confidence || 0.8 });
++            }
++            nested.push({
+                 verb: "take out of " + containerName,
+                 noun: name,
+                 objectId: obj.id || null,
+                 command: "take " + name,
+                 confidence: obj.confidence || 0.8
+-            }];
++            });
++            return nested;
+         }
+         var verbs = ActionSynth.verbsForAttrs(attrs, obj.id, options);
+         // Inventory: drop is "you are holding this", independent of takeable.
+@@ -255,7 +265,14 @@ var ActionSynth = {
+         // shared one flag. Take stays gated on attrs.takeable and is removed
+         // here because the object is already held.
+         if (context === "inventory" && ActionSynth.isWorn(obj)) {
+-            verbs = ActionSynth.inspectVerbDisabled() ? ["remove"] : [ActionSynth.defaultInspectVerb(), "remove"];
++            // Knapsack (2026-10-20): a worn CONTAINER keeps the container
++            // verbs its own attributes already produced above (open/close,
++            // search, empty -- still subject to the openCapability gate);
++            // a worn non-container garment is unchanged.
++            var containerVerbs = attrs.container ? verbs.filter(function (v) {
++                return v === "open" || v === "close" || v === "search" || v === "empty";
++            }) : [];
++            verbs = (ActionSynth.inspectVerbDisabled() ? ["remove"] : [ActionSynth.defaultInspectVerb(), "remove"]).concat(containerVerbs);
+         } else if (context === "inventory") {
+             // "wearable" maps to the pair ["wear","remove"] since either
+             // could apply depending on current worn state -- but "remove"
