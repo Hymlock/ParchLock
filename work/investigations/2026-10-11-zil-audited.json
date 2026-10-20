@@ -71,7 +71,9 @@
   },
   "Stationfall.z3.js": {
     "wearable": "Codex AUDIT PASS (title-sweep md, d00d748)",
-    "animate": "Codex AUDIT PASS (title-sweep md, d00d748)"
+    "animate": "Codex AUDIT PASS (title-sweep md, d00d748)",
+    "worn": "Claude AUDIT PASS 2026-10-20 (worn21: native opening scene via zil-walkdiff.cjs, no relocation: REMOVE/WEAR uniform 229 -21/+21, REMOVE/WEAR chronometer 1 -21/+21 with native replies; WEAR activation form leaves bit 21 unset, refusal recorded by codex #3491; source pin stationfall 5d05d5e verbs 2473)",
+    "playerRoot": "Claude AUDIT PASS 2026-10-20 (playerGlobal183 -> 218 measured-player-global in Deck Twelve 198; native inventory lists uniform+chronometer worn and 3 forms carried = app inventory parent 218; codex items-codex/2026-10-19-q8-stationfall-native.json, grok2 ACCEPT #4284)"
   },
   "Moonmist.z3.js": {
     "container": "Codex AUDIT PASS #3518 (container27)",
