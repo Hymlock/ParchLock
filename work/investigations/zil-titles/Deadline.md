@@ -66,3 +66,6 @@ Raw: zil-titles/raw/deadline-scotch.txt, deadline-person.txt, deadline-syrup*.tx
    Player-visible: one exploratory "turn on <suspect>" puts Switch on/off on that suspect's wheel.
 3. Animate consumer: the app offers no talk/ask action for Ms. Dunbar (only examine) despite PERSON 20 - check how Deadline
    talking works (ASK/TELL grammar) before calling it a gap.
+
+## Current independent PERSON20 audit (supersedes Rourke inference)
+Deadline animate20 and openCapability actor exclusion independently accepted from Grok4099 design + semantic review4366. Fresh original native Dunbar155/George153 each test20 TRUE with PERSON joke; sofa200 FALSE/refused. Rourke parser inference withdrawn. Bounded255 objects15 PERSON owners, no rooms. Exact semantic delta: animate20 plus none+=animate, no shared algorithm. Current scoped resolver offers Talk to each present NPC, no Open/Close or Switch on/off; conversation success unverified. Historic learned-switch suggestions are not reproduced by this fresh direct-resolver path on either base or candidate, so their separate report is not declared fixed. Operator13/0; complete affected-title/InformZ/Glulx3row parity0diff. Evidence: work/mapping-research/items-codex/resume-20261020/deadline-animate/.

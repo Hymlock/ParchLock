@@ -391,9 +391,10 @@ var ModuleStatFactsClaude = {
     // 2026-10-15: both now from the original scene (2026-10-11-zil-walk-pzdeadline.json, target-scoped probes): CONTBIT 21 on
     // living room table, marble-top table, front door; SURFACEBIT 29 on both tables; negatives cabinets, portraits, fireplace,
     // lamp, book, wood pile. Source-exact (24/24, 10/10). Applied together with openCapability.
+    // Grok4099 design, independent native audit: PERSON20 Dunbar155/George153 true, sofa200 false; no talkability/switchability inference.
     "9c6eadbb30bbe1610230508865ec40969a7c54917fc40591a189c9f3835dffc4": {
-        "openCapability": { "all": ["container"], "none": ["supporter"] },
-        "attributeMap": { "open": 28, "isOpen": 28, "container": 21, "supporter": 29 }
+        "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
+        "attributeMap": { "open": 28, "isOpen": 28, "container": 21, "supporter": 29, "animate": 20 }
     },
     // The Witness (ZIL): OPENBIT 8 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match). CONTBIT 9 proven but held until supporter is proven (as Deadline).
     // The Witness (ZIL): constant PLAYER object 79 (historicalsource/witness 8fe092a people.zil 73 OBJECT PLAYER
