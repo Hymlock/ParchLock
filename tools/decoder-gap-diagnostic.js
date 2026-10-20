@@ -95,6 +95,18 @@ function instrumentedSource() {
     // Normalised so multi-line anchors match regardless of the checkout's
     // line endings (git converts this tree to CRLF).
     let src = fs.readFileSync(path.join(root, "js", "ZRamReader.js"), "utf8").replace(/\r\n/g, "\n");
+    // Sibling declaration readers share rejection text. Instrument only this
+    // member, retaining exactly-once assertions within its bounded source.
+    const start = "informAttributeNames: (mem) => {";
+    const end = "_storyNameCache: (typeof WeakMap";
+    for (const boundary of [start, end]) {
+        const n = src.split(boundary).length - 1;
+        if (n !== 1) throw new Error("instrumentation boundary appears " + n + " times, expected 1: " + boundary);
+    }
+    const from = src.indexOf(start), to = src.indexOf(end);
+    if (to <= from) throw new Error("instrumentation boundaries out of order -- reader drifted");
+    const prefix = src.slice(0, from), suffix = src.slice(to);
+    src = src.slice(from, to);
     const applied = [];
     const subs = GATES.filter(g => g[1]).concat([NAME_ANCHOR, REQUIRED_ANCHOR]);
     for (const [anchor, replacement] of subs) {
@@ -106,7 +118,7 @@ function instrumentedSource() {
     // The gate recorder itself, plus a shim so a recorded gate is not cached.
     src = src.replace("informAttributeNames: (mem) => {",
         "informAttributeNames: (mem) => {\n        var __g = function (gate, detail) { __GATE.gate = gate; __GATE.detail = detail; return null; };");
-    return { src, applied };
+    return { src: prefix + src + suffix, applied };
 }
 
 function loadMem(file) {
