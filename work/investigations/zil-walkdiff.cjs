@@ -14,6 +14,9 @@ const W = require(path.resolve('work/investigations/2026-10-11-jericho-walkthrou
   await p.goto(pathToFileURL(path.resolve('play.html')).href + '?story=games/' + story); await p.waitForTimeout(3000);
   const ready = async () => { for (let i = 0; i < 40; i++) { await p.evaluate(() => { document.querySelector('.parchlock-splash__start')?.click(); try { if (Message.IsOpen) Message.Hide(); } catch (e) {} }); if (await p.locator('.Input.LineInput').count()) return true; const c = p.locator('.Input.CharInput'); if (await c.count()) { await c.first().focus(); await p.keyboard.press('Space'); } await p.waitForTimeout(150); } return false; };
   const snap = () => p.evaluate(() => { const m = ZRamProvider.getMem(), R = ZRamReader, out = {}; for (let id = 1; id < 260; id++) { let L; try { L = R.objectLinks(m, id); } catch (e) { break; } if (!L || !L.attrBytes) break; const bits = []; for (let b = 0; b < 32; b++) if (L.attrBytes[b >> 3] & (0x80 >> (b & 7))) bits.push(b); out[id] = { n: R.shortName(m, id) || '', bits, parent: L.parent }; } return out; });
+  // STARTKEY: a single key for a boot menu that wants a character, e.g. Border Zone's chapter prompt ("2").
+  if (process.env.STARTKEY) { for (let i = 0; i < 20 && !(await p.locator('.Input.CharInput').count()); i++) await p.waitForTimeout(200);
+    const c = p.locator('.Input.CharInput'); if (await c.count()) { await c.first().focus(); await p.keyboard.press(process.env.STARTKEY); await p.waitForTimeout(1500); } }
   await ready();
   const extra = (process.env.EXTRA || '').split('|').filter(Boolean);
   extra.forEach((c, j) => { steps[+last + 1 + j] = c; D.add(+last + 1 + j); });
