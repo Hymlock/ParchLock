@@ -46,3 +46,6 @@ outfit" -> tweed 78 -21; "wear dinner outfit" -> "Ahhh! Nothing like a new outfi
 outfit 217 +21 (+5); "take off dinner outfit" -> 217 -21.
 Proposed: worn = NATIVE-PROVEN bit 21 (WORNBIT): 2 distinct objects (tweed 78, dinner 217), each set and cleared natively.
 Negative still to add explicitly: wear a held non-garment (e.g. tourist brochure) -> refusal, no bit 21.
+
+## Brass lantern attempt (raw work/investigations/zil-titles/raw/moonmist-lantern.txt)
+Target read (DUMP): brass lantern 153 = LAMP (castle.zil ~1748, IN KITCHEN, FLAGS TAKEBIT LIGHTBIT) carries [24,26] - LIGHTBIT 24 set, ONBIT 10 clear (light source, currently off). Route kitchen = great hall -> N dining room -> W back stairs -> D kitchen (castle.zil 1316, 1706-1708). This run diverged: the scripted scene moved me into your bathroom and Bolitho blocks the bedroom exit with a question ("Am I right in assuming you are the detective?") - answer it (yes) before moving. Second "on" object still to capture natively.
