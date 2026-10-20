@@ -53,3 +53,16 @@ loblo wouldn't agree with you."
 Proposed: edible/drink = NO-DEDICATED-BIT + PROVEN-ALTERNATIVE: 2 distinct native successes via handlers (Scotch
 LIQUOR-F, cough syrup DUM-KOF) + refusals (bottle, LoBlo); source: no FOODBIT/DRINKBIT carrier, V-EAT/V-DRINK never
 succeed generically.
+
+## R1 after codex #4357 - raw records + APP consumer check (walkdiff APPCMD = the app's own resolveObjectCommands)
+Raw: zil-titles/raw/deadline-scotch.txt, deadline-person.txt, deadline-syrup*.txt.
+1. CONSUMER GAP (drink): in George's bedroom the app offers "examine scotch | take scotch" and "examine bourbon | take
+   bourbon" - NO Drink - although "drink scotch" natively succeeds ("You take a small swig..."). So edible/drink cannot
+   close as PROVEN-ALTERNATIVE under R3.1 (no existing app consumer). This is a T3 consumer gap: handler-based drink/eat
+   has no way into the wheel. Stays OPEN; candidate T3 item.
+2. DEFECT (wrong action learned): before the test the app offers only "examine dunbar" for Ms. Dunbar 155. After a typed
+   "turn on dunbar" (game reply = the PERSON flirt joke, a refusal), the app offers "examine dunbar | switch on dunbar |
+   switch off dunbar". The verb learner treated the joke as a successful switch and learned a wrong action on a person.
+   Player-visible: one exploratory "turn on <suspect>" puts Switch on/off on that suspect's wheel.
+3. Animate consumer: the app offers no talk/ask action for Ms. Dunbar (only examine) despite PERSON 20 - check how Deadline
+   talking works (ASK/TELL grammar) before calling it a gap.

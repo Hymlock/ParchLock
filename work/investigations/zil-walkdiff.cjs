@@ -28,6 +28,10 @@ const W = require(path.resolve('work/investigations/2026-10-11-jericho-walkthrou
       const ch = []; for (const id of Object.keys(after)) { const a = new Set(before[id] ? before[id].bits : []), z = new Set(after[id].bits);
         const set = [...z].filter(x => !a.has(x)), clr = [...a].filter(x => !z.has(x)); if (set.length || clr.length) ch.push(id + ':' + after[id].n + ' +' + set + ' -' + clr); }
       console.log('STEP ' + i + ' "' + steps[i] + '" -> ' + reply.slice(0, 200) + '\n   changed: ' + ch.join(' ; '));
+      // APPCMD='scotch,syrup': the commands the APP offers for matching scope objects (its own pool + resolver), so a
+      // consumer claim is checked against the app, not only a typed command.
+      if (process.env.APPCMD) console.log('   app: ' + JSON.stringify(await p.evaluate((names) => { WorldModel.tick(); const re = new RegExp(names.split(',').join('|'), 'i');
+        return (Actionable.payloadPool() || []).filter(o => re.test(o.name || '')).map(o => { let c = []; try { c = Actionable.resolveObjectCommands(o.id, 'object').map(x => x.command); } catch (e) { c = ['ERR ' + e.message]; } return o.id + ':' + o.name + ' -> ' + c.join(' | '); }); }, process.env.APPCMD)));
       // DUMP='candle,lantern': full bit list of every object whose name matches, read after this step (target-scoped).
       if (process.env.DUMP) { const re = new RegExp(process.env.DUMP.split(',').join('|'), 'i');
         console.log('   dump: ' + Object.keys(after).filter(id => re.test(after[id].n)).map(id => id + ':' + after[id].n + ' [' + after[id].bits + '] parent ' + after[id].parent).join(' ; ')); }
