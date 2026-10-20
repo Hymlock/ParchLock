@@ -43,3 +43,13 @@ Status: on = PROVEN-ALTERNATIVE (stereo on/off native + table/sofa refusals); ed
 Ms. Dunbar's cabinet, Corridor-1 south; or sugar powder on the tray) before closing.
 
 Route note: DUNBAR-CABINET (cough medicine DUM-KOF / syrup) is IN DUNBAR-BATH, reached SOUTH from hall SHALL-11 via DUNBAR-BATH-DOOR (dungeon.zil:760, 873), not from Dunbar's Bedroom. Second edible positive still to capture there (or sugar powder on TRAY). Edible stays OPEN with 1 native positive (Scotch).
+
+## Edible second witness (route n | knock on door | n | e | u | u | s [South Upstairs Hall] | s [Dunbar's Bathroom];
+## raw zil-titles/raw/deadline-syrup*.txt)
+"open cabinet" -> LoBlo, cough medicine, aspirin; "take medicine"; "open medicine" -> "...reveals a quantity of cough
+syrup."; "drink syrup" -> "You drink the remaining cough syrup. Yuk! That was awful!" (DUM-KOF handler, actions.zil ~3307,
+consumes it). Refusals: "drink medicine" (the bottle) -> "The medicine wouldn't agree with you."; "eat loblo" -> "The
+loblo wouldn't agree with you."
+Proposed: edible/drink = NO-DEDICATED-BIT + PROVEN-ALTERNATIVE: 2 distinct native successes via handlers (Scotch
+LIQUOR-F, cough syrup DUM-KOF) + refusals (bottle, LoBlo); source: no FOODBIT/DRINKBIT carrier, V-EAT/V-DRINK never
+succeed generically.
