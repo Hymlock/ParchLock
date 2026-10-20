@@ -18,3 +18,5 @@ teach you to eat that in survival school?", verbs.zil:1019).
 | lightSource | NATIVE-PROVEN bit 22 (set dynamically by FROTZ) | lantern +22 (x2 transitions); 2nd distinct object: candle (pending bit check) |
 | on | NATIVE-PROVEN bit 8 | lantern +8 with FROTZ; 2nd object pending (candle) |
 | edible | NO-DEDICATED-BIT + PROVEN-ALTERNATIVE (bread/water handlers) | native eat bread + drink water; lantern refusal; source has no food flag, V-EAT refuses |
+
+Candle resolved: "black candle" = ETERNAL-FLAME (gallery.zil:205-210, FLAGS TAKEBIT LIGHTBIT ONBIT) - already lit statically, so FROTZ changes no bit. V-FROTZ (magic.zil:806-809) FSETs LIGHTBIT + ONBIT on its target, matching lantern +22/+8. Two distinct light objects: lantern (dynamic, 2 FROTZ transitions) + black candle (static carrier, glow reply). Proposed: lightSource = NATIVE-PROVEN bit 22, on = NATIVE-PROVEN bit 8 (state set by FROTZ; no TURN OFF path observed). Negative: eat lantern refusal; a non-frotzed object (e.g. bread) never carries 22.
