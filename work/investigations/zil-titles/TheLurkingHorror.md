@@ -74,3 +74,6 @@ hot, spicy, and hot..."; "eat carton" -> "You might find the contents more agree
   If the reviewer rejects room/item separation, on stays OPEN.
 - edible: the carton exception is identity-scoped (carton 58 only), NOT a ban on edible containers: Coke 61 is itself a
   bottle and is natively drinkable.
+- CORRECTION to the R1 note: "static carriers are rooms" was incomplete - 43 rooms + GLOBAL-FLOOR-WAXER (always-on
+  global scenery, never toggled). Full search artifact with file hashes:
+  work/investigations/zil-titles/source-search/lurking-ONBIT.txt (rev 51d8060).
