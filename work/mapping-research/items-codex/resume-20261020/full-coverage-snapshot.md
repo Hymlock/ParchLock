@@ -1,6 +1,6 @@
 # Full-scope evidence reconciliation snapshot
 
-Generated 2026-10-20T23:26:31.356Z. 26 titles × 93 listed scope slots. This is an evidence inventory, NOT a finished-cell denominator or closure tally. No-dedicated-bit alternatives, derived fields and title-specific status fields still require qualified evidence. Read the JSON for every slot.
+Generated 2026-10-20T23:35:04.079Z. 26 titles × 93 listed scope slots. This is an evidence inventory, NOT a finished-cell denominator or closure tally. No-dedicated-bit alternatives, derived fields and title-specific status fields still require qualified evidence. Read the JSON for every slot.
 
 | Title | Digest prefix | Direct attribute/special fact slots | Slots requiring evidence reconciliation | Current classification |
 |---|---|---:|---:|---|
@@ -22,7 +22,7 @@ Generated 2026-10-20T23:26:31.356Z. 26 titles × 93 listed scope slots. This is 
 | Starcross.z3.js | 1d9a69257349 | 1 | 92 | confirmed-zil-family/validated |
 | Stationfall.z3.js | 3c5656897dd2 | 8 | 85 | confirmed-zil-family/validated |
 | Suspect.z3.js | d02fd95bae53 | 1 | 92 | unknown/rejected |
-| Suspended.z3.js | 6011284a57a6 | 5 | 88 | confirmed-zil-family/validated |
+| Suspended.z3.js | 6011284a57a6 | 6 | 87 | confirmed-zil-family/validated |
 | Hitchhik.z5.js | 26dcdab27505 | 13 | 80 | confirmed-zil-family/validated |
 | TheLurkingHorror.z3.js | 1862ef7ce4c2 | 13 | 80 | confirmed-zil-family/validated |
 | TheWitness.z3.js | 2290bb3440ac | 7 | 86 | confirmed-zil-family/validated |

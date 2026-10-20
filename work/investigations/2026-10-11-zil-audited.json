@@ -151,7 +151,8 @@
   },
   "Suspended.z3.js": {
     "wearable": "Claude AUDIT PASS 2026-10-20 (wearable31: agent-tools g1-suC/g1-suD install grasper 63:31 TRUE x2 \"now being worn\", g1-suC install container 76:31 FALSE; source WEARABLEBIT only SURGERY-HAND objects.zil:393, V-WEAR verbs.zil:1741)",
-    "worn": "Claude AUDIT PASS 2026-10-20 (worn15: 63:15 FALSE before install, TRUE at detach x2 + remove x1 g1-suC/g1-suD; container 76:15 FALSE g1-suE; only FSET WEARBIT is V-WEAR verbs.zil:1745)"
+    "worn": "Claude AUDIT PASS 2026-10-20 (worn15: 63:15 FALSE before install, TRUE at detach x2 + remove x1 g1-suC/g1-suD; container 76:15 FALSE g1-suE; only FSET WEARBIT is V-WEAR verbs.zil:1745)",
+    "on": "Codex independent current-source AUDIT PASS: Suspended on2 independently accepted from Grok4125 state portion only: original native first33/second31 TRUE/already-on, third32 FALSE/not-on after native off; current decoded third32.on changes true->false->true under native OFF/ON, other switches remain true. Current bounded191-object census66 owners=63room children+3switches. Exact delta1field; no animate24, player-root or room rule. Operator13/0, complete3engine base/candidate parity0diff; known boot Iris158 room result unchanged and remains unresolved, never accepted as a valid room. Native route reaches control area94; does not prove general multi-robot root/map semantics or switch commands in Equipment. State semantic proof only; capability/useful consumer gaps stay OPEN. Evidence: work/mapping-research/items-codex/resume-20261020/suspended-on/."
   },
   "Starcross.z3.js": {
     "animate": "Claude AUDIT PASS 2026-10-20 (animate11 VICBIT: native route scs, agent-tools g1-scB look in spider 196:11 TRUE @56 + look in chief 169:11 TRUE @132; g1-scC give library to suit 144:11 FALSE + red rod 45:11 FALSE; source VICBIT on creatures dungeon.zil, V-LOOK-INSIDE branch verbs.zil:982)"

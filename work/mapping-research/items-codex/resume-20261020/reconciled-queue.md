@@ -46,3 +46,5 @@ Regular Inform work: T1 fallback43 classification using repaired tool61dee15 and
 - d214402 Border Zone wearable41: two native owners and refusal, bounded351objects/no room owners, native Equipment agrees, operator13/0 and chapter2 parity0diff. Existing worn39 separate.
 - 51333ea Sorcerer on11: two native FROTZ owners plus desk negative and before-state; native current replay and3engine parity0diff/operator13/0. UI on=true but light=false while native i says providing light: illumination consumer stays OPEN. No switchability inferred.
 - Moonmist4129 on10 audit in progress under moonmist-on/: recovered lamp+lantern evidence, current bounded253objects, fresh route40/50 replay pending. No new Moonmist runtime fact yet.
+
+Moonmist on10 native audit and integration now complete (see latest commit/checkpoint and moonmist-on/review.md); prior in-progress line superseded. State only; switchability/lightSource and worn21 room-safe consumer work remain OPEN.

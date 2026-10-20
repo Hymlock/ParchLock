@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-20T23:26:31.356Z",
-  "factsSha256": "1a89a45fb226683e9b4f85fa1ef5eeef06f4947098b4bcc1dd378e2db492a5da",
+  "generatedAt": "2026-10-20T23:35:04.079Z",
+  "factsSha256": "65a25c85cda5940d9cfcb5070713707578d45e2524fb702afbd294f70c5992d1",
   "scope": "Reconciliation report only, not a second registry/ledger and not a completion percentage",
   "titleCount": 26,
   "keysPerTitle": 93,
@@ -13473,7 +13473,10 @@
         {
           "area": "attribute",
           "key": "on",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "attributeMap.on",
+          "value": 2,
+          "auditPointer": "Codex independent current-source AUDIT PASS: Suspended on2 independently accepted from Grok4125 state portion only: original native first33/second31 TRUE/already-on, third32 FALSE/not-on after native off; current decoded third32.on changes true->false->true under native OFF/ON, other switches remain true. Current bounded191-object census66 owners=63room children+3switches. Exact delta1field; no animate24, player-root or room rule. Operator13/0, complete3engine base/candidate parity0diff; known boot Iris158 room result unchanged and remains unresolved, never accepted as a valid room. Native route reaches control area94; does not prove general multi-robot root/map semantics or switch commands in Equipment. State semantic proof only; capability/useful consumer gaps stay OPEN. Evidence: work/mapping-research/items-codex/resume-20261020/suspended-on/.",
           "historicDraft": {
             "value": 2,
             "status": "static-draft",
