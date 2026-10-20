@@ -52,3 +52,6 @@ Moonmist on10 native audit and integration now complete (see latest commit/check
 - 6b19a84 Suspended on2 state independently proven/integrated from4125, excluding stackedanimate24. Native switch states false/true decoded, operator13/0 and3engine parity0diff. Boot Iris map/root and remote switch UI command consumer stay OPEN.
 
 - bb57729 Hollywood animate18: recovered and fresh native route410 two NPCs vs saw, bounded244objects no room owners, current actor attrs and offered commands recorded, operator13/0 and3engine parity0diff. Talk suggestion is not validated conversation; talkable consumer remains independent.
+
+- 0d1bf83 Deadline animate20 + actor exclusion accepted; fresh Dunbar/George vssofa, parity0diff/operator13/0. Current resolver Talk observed; conversation unverified. Old learned Switch pathway not freshly reproduced, unresolved.
+- Moonmist worn4130 REVISE: original attributeMap.worn is ineffective at current source; wornAttribute21 marks rooms too. Baseline room predicates already false, so new map regression NOT established. See moonmist-worn-safety audit; native travel and reviewed design still needed.
