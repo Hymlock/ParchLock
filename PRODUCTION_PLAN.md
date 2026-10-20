@@ -9201,6 +9201,10 @@ and H3 (200 ms Loop) only if still slow.
 
 ## Backlog (low priority, research only): Glulx cold decoding
 
+**October 20 continuation:** the operator reaffirmed full ZIL flag decoding before regular Inform and Glulx work, and authorized Codex to recover all seats' work and integrate held files. R3.1 (`work/investigations/2026-10-20-plan-r3-zil-first.md`) governs: the 21-column completion table is only a subtotal, not the full key universe. The full-profile ledger's N? and UD entries are not absence verdicts. Retain player/world/status, command consumers, classifier gaps and per-title native checks from the full-decode doccheck. Current takeover checkpoint: `work/mapping-research/items-codex/resume-20261020/checkpoint.md`.
+
+Reviewed batch1 adds only Lurking Horror wornAttribute3/on15, ZorkIII on15 and Enchanter light22/on8 to existing digest facts. Design4351 and patch review4355 are followed by current-source semantic delta exactly five fields, operator13/0, five-title base/candidate gate with zero differences (three affected ZIL, LostPig InformZ, Alabaster Glulx), and original-route LH Equipment proof for gloves203 and boots104, both worn with Remove. These are state/light mappings, not new switchable capability or whole-title closure. Evidence: `work/mapping-research/items-codex/resume-20261020/`.
+
 Queued 2026-10-11 by operator instruction, AFTER everything else (ZIL full decode, ZIL item sweep, the item sweeps and the map sweep). No work on it now.
 
 - Glulx cold decoding (object table, attributes, properties, dictionary, status variables), proven from each game's own code/RAM, unknowns fail closed.

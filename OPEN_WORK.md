@@ -4,6 +4,8 @@
 
 This is what is not implemented yet; ruled-out and finished items are not here.
 
+October 20 current priority: finish the full ZIL flag-decoding scope under accepted R3.1 before Inform Z and Glulx. Older counts and the 21-column table are partial views. Full-profile N?/UD/S rows require semantic/source/native/consumer qualification, with Sherlock/Suspect classification gaps explicit. Current checkpoint and reconciled queue live in work/mapping-research/items-codex/resume-20261020/. Batch1's five reviewed state/light mappings are integrated with operator13/0, five-title zero-diff gate and native worn-equipment proof; this does not close a whole title or the project. Q8 ready-state roots are closed; Sherlock lapel174 and pre-ready Plundered Hearts remain separate residuals.
+
 ## Glulx
 
 - **D38.** An Inform-Glulx structural reader is still parked: the story window runs, but the map stays empty and items stay at zero until the object model is proven and a Glulx RAM provider exists. Decision log, D38; chapter check, "Glulx work remains parked."
