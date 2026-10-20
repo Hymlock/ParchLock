@@ -171,3 +171,16 @@ you finish your mission." CR>)
 -- syntax: LIGHT / TURN ON -> V-ON
 317:<SYNTAX LIGHT OBJECT (HELD CARRIED ON-GROUND IN-ROOM) = V-ON>
 618:<SYNTAX TURN ON OBJECT = V-ON>
+
+## Tokenized scan (zilscan.js, supersedes the regex flagscan section): ONBIT and LIGHTBIT
+command: node zilscan.js <rev 5c80126> ONBIT
+flag-operation forms (FSET/FCLEAR/FSET?/BSET/BCLEAR/BSET?) parsed: 397 ; filter ONBIT + all non-literal
+desc.zil:238 FSET? .OBJ <form>   [NON-LITERAL FLAG OPERAND]
+UNBALANCED syntax.zil: 1
+verbs.zil:1807 FSET? .OBJ .FLAG-IN-QUESTION   [NON-LITERAL FLAG OPERAND]
+command: node zilscan.js <rev 5c80126> LIGHTBIT
+flag-operation forms (FSET/FCLEAR/FSET?/BSET/BCLEAR/BSET?) parsed: 397 ; filter LIGHTBIT + all non-literal
+desc.zil:238 FSET? .OBJ <form>   [NON-LITERAL FLAG OPERAND]
+UNBALANCED syntax.zil: 1
+verbs.zil:1807 FSET? .OBJ .FLAG-IN-QUESTION   [NON-LITERAL FLAG OPERAND]
+Reading: ZERO live flag operations on ONBIT or LIGHTBIT anywhere (the only ONBIT text, desc.zil:217, is inside the ';'-commented DESCRIBE-SPECIAL routine and is dropped by the tokenizer). Non-literal operands = 2, both FSET? tests. syntax.zil 1 unbalanced bracket (grammar file), disclosed.
