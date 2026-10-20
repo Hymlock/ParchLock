@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-20T23:23:40.319Z",
-  "factsSha256": "b0baccd7dd42279c57cb1db53324893b3e167154f9209658a36ed6eb87e3261f",
+  "generatedAt": "2026-10-20T23:26:31.356Z",
+  "factsSha256": "1a89a45fb226683e9b4f85fa1ef5eeef06f4947098b4bcc1dd378e2db492a5da",
   "scope": "Reconciliation report only, not a second registry/ledger and not a completion percentage",
   "titleCount": 26,
   "keysPerTitle": 93,
@@ -6324,7 +6324,10 @@
         {
           "area": "attribute",
           "key": "on",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "attributeMap.on",
+          "value": 10,
+          "auditPointer": "Codex independent current-source AUDIT PASS: Moonmist on10 independently accepted from Grok4129: current native lamp164 and lantern153 positive ON/OFF replies, bed134 and chair76 false/refused; recovered lantern off->on corroborates. Current bounded253-object domain matches executable digest; bit10 also marks29 lit rooms and peepholes/global/ghostcostume, so no identity/capability claim inferred. Current Equipment lantern on state follows native off/on; no switchable or lightSource mapping added, no activation tag promised. Operator13/0 and complete affected-title/InformZ/Glulx3row parity0diff. Exact semantic delta1field. Packet: work/mapping-research/items-codex/resume-20261020/moonmist-on/. Whole-title on/off capability and lighting consumer work remains separate.",
           "historicDraft": {
             "value": null,
             "status": "unknown",

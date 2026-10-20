@@ -1,6 +1,6 @@
 # Full-scope evidence reconciliation snapshot
 
-Generated 2026-10-20T23:23:40.319Z. 26 titles × 93 listed scope slots. This is an evidence inventory, NOT a finished-cell denominator or closure tally. No-dedicated-bit alternatives, derived fields and title-specific status fields still require qualified evidence. Read the JSON for every slot.
+Generated 2026-10-20T23:26:31.356Z. 26 titles × 93 listed scope slots. This is an evidence inventory, NOT a finished-cell denominator or closure tally. No-dedicated-bit alternatives, derived fields and title-specific status fields still require qualified evidence. Read the JSON for every slot.
 
 | Title | Digest prefix | Direct attribute/special fact slots | Slots requiring evidence reconciliation | Current classification |
 |---|---|---:|---:|---|
@@ -12,7 +12,7 @@ Generated 2026-10-20T23:23:40.319Z. 26 titles × 93 listed scope slots. This is 
 | HollywoodHijinx.z3.js | e3341f28a0cc | 4 | 89 | confirmed-zil-family/validated |
 | Infidel.z3.js | 91f78d4bbb6b | 8 | 85 | confirmed-zil-family/validated |
 | LeatherGoddessesofPhobos.z3.js | 103324c3b733 | 6 | 87 | confirmed-zil-family/validated |
-| Moonmist.z3.js | bcf65075f234 | 7 | 86 | confirmed-zil-family/validated |
+| Moonmist.z3.js | bcf65075f234 | 8 | 85 | confirmed-zil-family/validated |
 | Planetfall.z3.js | b73c750df3a3 | 9 | 84 | confirmed-zil-family/validated |
 | PlunderedHearts.z3.js | b53a2588c792 | 12 | 81 | confirmed-zil-family/validated |
 | Seastalker.z3.js | 502e5c8e4cb8 | 8 | 85 | confirmed-zil-family/validated |
