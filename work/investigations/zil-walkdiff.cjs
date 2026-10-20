@@ -28,6 +28,9 @@ const W = require(path.resolve('work/investigations/2026-10-11-jericho-walkthrou
       const ch = []; for (const id of Object.keys(after)) { const a = new Set(before[id] ? before[id].bits : []), z = new Set(after[id].bits);
         const set = [...z].filter(x => !a.has(x)), clr = [...a].filter(x => !z.has(x)); if (set.length || clr.length) ch.push(id + ':' + after[id].n + ' +' + set + ' -' + clr); }
       console.log('STEP ' + i + ' "' + steps[i] + '" -> ' + reply.slice(0, 200) + '\n   changed: ' + ch.join(' ; '));
+      // DUMP='candle,lantern': full bit list of every object whose name matches, read after this step (target-scoped).
+      if (process.env.DUMP) { const re = new RegExp(process.env.DUMP.split(',').join('|'), 'i');
+        console.log('   dump: ' + Object.keys(after).filter(id => re.test(after[id].n)).map(id => id + ':' + after[id].n + ' [' + after[id].bits + '] parent ' + after[id].parent).join(' ; ')); }
     }
   }
   await b.close();
