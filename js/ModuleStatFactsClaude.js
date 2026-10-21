@@ -345,6 +345,15 @@ var ModuleStatFactsClaude = {
     // uniform; fresh inventory reports the uniform and chronometer
     // "(being worn)", both of which carry bit 12.
     "b73c750df3a3d6781072eb7f9f562d5c60bfc6dc8203f4952ebff50f04f412cf": {
+        // Native SCORE names G2 as Galactic Standard Time (+40 per WAIT), not turns.
+        // Reuse D204's existing authenticated clock relationship; no current readings seeded.
+        // Evidence: resume-20261020/clock-native-transitions.json; independent design review4376.
+        "command": "score",
+        "fields": ["score.max", "rank", "day", "time"],
+        "replyFamily": "extended-score",
+        "outcome": "line",
+        "statusTurnsMetric": "galactic-time",
+        "evidence": "Original Planetfall native SCORE labels Galactic Standard Time, Day, score maximum and rank; WAIT advances the clock by 40. October21 independent investigations agree.",
         // RE-ADDED from PROBE walk p4: CONTBIT 24 TRUE on glass flask, large desk, small desk, canteen, dispenser unit; FALSE on old battery, laser setting dial, chemical fluid, funnel-shaped hole. Source has no SURFACEBIT object. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): container - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
         // CONTBIT 24: walk m1-m4 TRUE on large desk 145, small desk 149, canteen 163, survival kit 213; native dispatch TRUE on microfilm reader 55, medicine bottle 80, glass flask 125, cardboard box 137 and FALSE on four creatures 1-4 (zil-flags-neg-Planetfall). Planetfall source has NO SURFACEBIT object, so no table can be offered Open/Close. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).

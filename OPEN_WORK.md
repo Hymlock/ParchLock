@@ -249,7 +249,7 @@ October8 cutoff: APK62 / Android versionCode35 / cache139: build succeeded; v2 s
 
 Post-map sampled-statistics review queue (bus1871; not regressions introduced by today's repairs):
 - [ ] Make It Good: independent native SCORE reply is qualitative/no scoreboard; first Equipment fulfillment can end unavailable with no reason. Reconcile current behavior with old checklist proof before proposing changes.
-- [ ] Planetfall: native labelled Time4491 currently presented as Turns; inspect existing D208 time-game rules before changing shared classification.
+- [x] Planetfall clock-label defect: native Galactic Standard Time now uses the existing authenticated D204 clock relationship; score/max/rank/day remain separate. Operator13/0, three-engine parity0diff and independently audited native desktop fulfillment/WAIT/SCORE. Sampled mobile clock agrees; learned global214 Turns semantics, restore/day rollover and full title coverage remain separate. Evidence: work/mapping-research/items-codex/resume-20261020/planetfall-clock/.
 
 
 - [x] D214 Z1: parser-linked ZIL room prediction, hint-only route authority and dotted WorldMap edges; native17, WorldMap52, prior guards green. Solo final self-audit authorized1978; report work/investigations/2026-10-08-codex-final-self-audit.md.

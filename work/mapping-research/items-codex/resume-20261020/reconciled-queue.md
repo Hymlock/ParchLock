@@ -72,3 +72,7 @@ Direct human queued message recovered at 2026-10-16T11:08:34.161Z, attachment d5
 - Planetfall existing status issue bus1871 freshly confirmed with same-generation native clock evidence; Deadline header-clock control passes. Blind comparison requested4373; no shared/status mapping change before review. Cutthroats on17 second-owner work must use actual MM large compressor route; do not repeat commented-out reading-lamp pursuit (see cutthroats-on-route-reconciliation.md).
 
 - Cutthroats missing second on-owner route is resolved: native large compressor89 ON/OFF17 reached from originalroute19+5moves. Full on-cell/consumer still open pending negative qualification and review; do not repeat trawler/captain-cabin routes.
+
+- Border Zone chapter3 food native route resolved: soda200 and pretzel205 actually consumed; heldcigarette refusal. Existing menu lacks Eat/Drink, so native-alternative proof and useful consumer closure remain separate. Planetfall exact data-only clock proposal awaiting independent adversarial design review; no code before consensus.
+
+- Planetfall existing G2clock label fixed by exact6metadata existingD204 mechanism, independent subagent current-source ACCEPT, operator13/0,3engine0diff, native desktop/412firstEquipment+clock. Separateglobal214 learnedTurns remains unqualified. Fullstatus/title not closed; restore/dayrollover/physicalAndroid not certified.

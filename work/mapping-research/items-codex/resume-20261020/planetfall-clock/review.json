@@ -1,0 +1,17 @@
+{
+  "sourceSha256": "0e116c2bc668b1e4a019d78487d66b17307f4be1239489a7cdbfb77af56f98f0",
+  "reviewer": "Independent non-author subagent /root/planetfall_status_independent; not Grok/Claude bus-seat acceptance",
+  "design": "ACCEPT after blind investigations compared4375; design review recorded4376",
+  "implementation": "ACCEPT after initial REVISE on unacknowledged first-Equipment warning; corrected original-UI acknowledgment proof accepted",
+  "semanticDelta": "Six metadata fields on Planetfall digest; all existing facts preserved",
+  "operator": "13 PASS / 0 FAIL",
+  "threeEngine": "3 completed rows, byte-identical baseline/candidate, no errors",
+  "native": "Desktop and412px original firstEquipment complete, score0/80 rankBeginner day1 time matchesG2 after nativeWAIT/SCORE; no status/G2-derivedTurns",
+  "limits": [
+    "412px is browser, not physical Android",
+    "Mobile additionally learned unqualified Turns3 from global214, separate from G2clock; no suppression",
+    "Restore/dayrollover not tested",
+    "No APK or whole title/project completion"
+  ],
+  "failedEvidence": "native-first-equipment.json preserved; unacknowledged warning prevented fulfillment"
+}
