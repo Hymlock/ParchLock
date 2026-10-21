@@ -7,3 +7,5 @@ Strong provenance: archived m4-release.zip release97/serial851218 matches EVERY 
 Every-byte current-payload set/clear24 enumeration gives8 candidate decodings, including5 non-radio candidates. This overapproximation includes data/strings/operands and is NOT an instruction-boundary, reachability or single-owner proof. Do not claim those five are real alternate owners, nor dismiss them without proof. Source-provenance.json records exact candidates.
 
 No Ballyhoo runtime edit or new ACCEPT. Next: qualify current-module writers/owner domain or obtain independent source-exception adjudication before adopting old radio-only state proposal. Existing native radio on/off evidence still valid; state does not imply switchability. This research is separate from completed Starcross729af51.
+
+Grammar-action/direct-call depth2 boundary audit completed (180 roots); none of the8 candidate byte positions was covered by that restricted traversal. It therefore does not resolve any candidate and is NOT a whole-module writer proof. candidate-boundaries.json and ballyhoo-boundaries.cjs retain scope explicitly. Do not rerun this unchanged traversal to infer progress.

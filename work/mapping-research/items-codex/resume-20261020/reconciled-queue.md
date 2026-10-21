@@ -57,3 +57,5 @@ Moonmist on10 native audit and integration now complete (see latest commit/check
 - Moonmist worn4130 REVISE: original attributeMap.worn is ineffective at current source; wornAttribute21 marks rooms too. Baseline room predicates already false, so new map regression NOT established. See moonmist-worn-safety audit; native travel and reviewed design still needed.
 
 - 729af51 Starcross worn24 state integrated after new native tattered suit176 trade/wear/remove proof plus normal144 and held library/basket negatives. Old single-owner claim withdrawn. Current Equipment normal worn+Remove then unworn; Wear capability/alternative handler consumer still OPEN.
+
+- ZorkIII edible5 semantic/native evidence is separate from consumer readiness. New controlled candidate shows Drink waybread offered but natively rejected; Eat succeeds. Production mapping stays held; blind investigation4370 pending. See OPEN_WORK and zork3-food/ consumer evidence; sealed findings must remain unread by blind reviewer until compare.

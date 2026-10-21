@@ -1,0 +1,12 @@
+flag-operation forms (FSET/FCLEAR/FSET?/BSET/BCLEAR/BSET?) parsed: 458 ; filter FOODBIT + all non-literal
+UNBALANCED gsyntax.zil: 1
+gverbs.zil:503 FSET? ,PRSO ,FOODBIT
+gverbs.zil:2101 FSET? .RM .AV   [NON-LITERAL FLAG OPERAND]
+gverbs.zil:2108 FSET? .RM .AV   [NON-LITERAL FLAG OPERAND]
+gverbs.zil:2210 FSET? .W .WHAT   [NON-LITERAL FLAG OPERAND]
+UNBALANCED syntax.zil: 1
+verbs.zil:820 FSET? .RM .AV   [NON-LITERAL FLAG OPERAND]
+verbs.zil:825 FSET? .RM .AV   [NON-LITERAL FLAG OPERAND]
+verbs.zil:912 FSET? ,PRSO ,FOODBIT
+verbs.zil:1448 FSET? .W .WHAT   [NON-LITERAL FLAG OPERAND]
+UNBALANCED zork3.zil: 3

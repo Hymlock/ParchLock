@@ -6,6 +6,8 @@ This is what is not implemented yet; ruled-out and finished items are not here.
 
 October 20 current priority: finish the full ZIL flag-decoding scope under accepted R3.1 before Inform Z and Glulx. Older counts and the 21-column table are partial views. Full-profile N?/UD/S rows require semantic/source/native/consumer qualification, with Sherlock/Suspect classification gaps explicit. Current checkpoint and reconciled queue live in work/mapping-research/items-codex/resume-20261020/. Batch1's five reviewed state/light mappings are integrated with operator13/0, five-title zero-diff gate and native worn-equipment proof; this does not close a whole title or the project. Q8 ready-state roots are closed; Sherlock lapel174 and pre-ready Plundered Hearts remain separate residuals.
 
+October 21 ZIL food consumer audit OPEN: in an isolated candidate with the pending Zork III edible5 mapping, held waybread offers both Eat and Drink. Native EAT succeeds; native DRINK refuses "How can I drink that?" and leaves the bread held. No production mapping or shared-code change applied. Independent blind investigation requested from grok2 in bus4370 before proposal/implementation. Repro: GET LAMP, S, LIGHT LAMP, W, W, GET BREAD, then the held waybread menu. Evidence under work/mapping-research/items-codex/resume-20261020/zork3-food/; the Codex investigation is sealed until blind comparison. This is a consumer blocker, not a whole-title closure.
+
 ## Glulx
 
 - **D38.** An Inform-Glulx structural reader is still parked: the story window runs, but the map stays empty and items stay at zero until the object model is proven and a Glulx RAM provider exists. Decision log, D38; chapter check, "Glulx work remains parked."
