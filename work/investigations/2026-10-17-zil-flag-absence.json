@@ -314,7 +314,8 @@
   ],
   "hits": {},
   "verdict": "EXCLUDED",
-  "excludedBy": "grok #3924: WEARBIT FSET as worn state (verbs.zil:911)"
+  "excludedBy": "Superseding October21 source/native qualification: no dedicated WORNBIT; verbs.zil911 is FSET? test, not FSET mutation. Native worn is WEARBIT plus direct player containment; alternative consumer candidate pending full regression/review. See resume-20261020/sorcerer-worn-compared-proposal.md.",
+  "historicalExcludedBy": "grok #3924: WEARBIT FSET as worn state (verbs.zil:911)"
  },
  {
   "title": "Sorcerer",

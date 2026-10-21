@@ -1,0 +1,40 @@
+{
+  "source": {
+    "AttributeSchema": "ea20901a9ebbd063c600f6882ddaa033bfacfacaab78b3b253d741bcc03bfc3f",
+    "facts": "d5e25b69c7c176bc47017ee6c33c04eb2b363fdbe93b8defcce942243a67e88c"
+  },
+  "finalCaptureSha256": "f6c1e0d6ef57981a2ec12756821c1b9ba799531f5aae6f5f1ccc13f15fe059d0",
+  "suitBaselineCaptureSha256": "0b05fe17b9b31dbe8dabe96cf3baf3081a73b9eab788da815230fffc7d00fe07",
+  "positive": {
+    "id": 60,
+    "name": "magic amulet",
+    "worn": true,
+    "on": false,
+    "switchable": true,
+    "light": false,
+    "tags": [],
+    "wearable": true,
+    "commands": [
+      "examine amulet",
+      "take amulet",
+      "remove amulet"
+    ]
+  },
+  "nestedNegative": {
+    "id": 60,
+    "name": "magic amulet",
+    "worn": false,
+    "on": false,
+    "switchable": true,
+    "light": false,
+    "tags": [],
+    "wearable": true,
+    "commands": [
+      "examine amulet",
+      "take amulet"
+    ]
+  },
+  "removalReply": "Dropped.\n \n\"Squawk! Where did I leave my spectacles? Squawk!\"\n \n> ",
+  "assertions": "PASS direct-held worn+Remove/noWear; native REMOVE drops; nested false/noRemove; journal refusal",
+  "limits": "Native parser commands; menus inspected but no physical Android or restore route. Finalcandidate suit consumer not separately rerun; existing original-memory predicate test and twoowner native semantics retained."
+}

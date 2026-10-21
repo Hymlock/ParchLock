@@ -1,0 +1,12 @@
+{
+  "delta": [
+    {
+      "path": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e.equipmentState",
+      "after": {
+        "wornWhen": "wearable-direct-player"
+      }
+    }
+  ],
+  "scope": "Only existing Sorcerer equipmentState added; no other facts or wearable/player mappings changed",
+  "sourceSha256": "d5e25b69c7c176bc47017ee6c33c04eb2b363fdbe93b8defcce942243a67e88c"
+}

@@ -1,0 +1,311 @@
+{
+  "timestamp": "2026-10-21T15:17:26.293Z",
+  "assetSha256": "d8a878364d0331ab789c859f7e4a3b6a1d0b3b3f3f0415ff566a702f543195b8",
+  "decodedStorySha256": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+  "captureSha256": "90b71267de8b4b904d3e2abf92c64ce662c6603c6db57fe56c9819ce3b0ed8c1",
+  "routeSha256": "b8658bf2334198e6ab020528d4f781c14236648f743cc8868ff79846b25262e4",
+  "proof": "Native parser only, seed0 observer, no relocation or bit forcing. Amulet direct-held vs room vs carried-box states; journal refuses. Second current owner not freshly replayed.",
+  "rows": [
+    {
+      "key": "Sorcerer.z3.js @9:open box",
+      "reply": "Opening the tiny box reveals a magic amulet.\n \n> ",
+      "amulet": {
+        "id": 60,
+        "name": "magic amulet",
+        "parent": 102,
+        "bits": [
+          21,
+          23
+        ]
+      },
+      "ui": {
+        "id": 60,
+        "name": "magic amulet",
+        "worn": false,
+        "on": false,
+        "switchable": true,
+        "light": false,
+        "tags": [],
+        "wearable": true,
+        "commands": [
+          "examine amulet",
+          "take amulet"
+        ]
+      },
+      "journal": {
+        "id": 225,
+        "name": "journal",
+        "parent": 223,
+        "bits": [
+          18,
+          22,
+          23
+        ]
+      }
+    },
+    {
+      "key": "Sorcerer.z3.js @9:take amulet",
+      "reply": "You are now wearing the magic amulet.\n \n\"Squawk! This tea is cold! Get me another cup. Squawk!\"\n \n> ",
+      "amulet": {
+        "id": 60,
+        "name": "magic amulet",
+        "parent": 223,
+        "bits": [
+          18,
+          21,
+          23
+        ]
+      },
+      "ui": {
+        "id": 60,
+        "name": "magic amulet",
+        "worn": false,
+        "on": false,
+        "switchable": true,
+        "light": false,
+        "tags": [],
+        "wearable": true,
+        "commands": [
+          "examine amulet",
+          "take amulet",
+          "wear amulet",
+          "drop amulet",
+          "give amulet to ",
+          "put amulet in "
+        ]
+      },
+      "journal": {
+        "id": 225,
+        "name": "journal",
+        "parent": 223,
+        "bits": [
+          18,
+          22,
+          23
+        ]
+      }
+    },
+    {
+      "key": "Sorcerer.z3.js @9:inventory",
+      "reply": "You are carrying:\n  a magic amulet (being worn)\n  a journal\n  a tiny box\n  a spell book (providing light)\n \n\"Squawk! Where did I leave my spectacles? Squawk!\"\n \n> ",
+      "amulet": {
+        "id": 60,
+        "name": "magic amulet",
+        "parent": 223,
+        "bits": [
+          18,
+          21,
+          23
+        ]
+      },
+      "ui": {
+        "id": 60,
+        "name": "magic amulet",
+        "worn": false,
+        "on": false,
+        "switchable": true,
+        "light": false,
+        "tags": [],
+        "wearable": true,
+        "commands": [
+          "examine amulet",
+          "take amulet",
+          "wear amulet",
+          "drop amulet",
+          "give amulet to ",
+          "put amulet in "
+        ]
+      },
+      "journal": {
+        "id": 225,
+        "name": "journal",
+        "parent": 223,
+        "bits": [
+          18,
+          22,
+          23
+        ]
+      }
+    },
+    {
+      "key": "Sorcerer.z3.js @9:take off amulet",
+      "reply": "Dropped.\n \n\"Squawk! Where did I leave my spectacles? Squawk!\"\n \n> ",
+      "amulet": {
+        "id": 60,
+        "name": "magic amulet",
+        "parent": 115,
+        "bits": [
+          18,
+          21,
+          23
+        ]
+      },
+      "journal": {
+        "id": 225,
+        "name": "journal",
+        "parent": 223,
+        "bits": [
+          18,
+          22,
+          23
+        ]
+      }
+    },
+    {
+      "key": "Sorcerer.z3.js @9:wear amulet",
+      "reply": "You are now wearing the magic amulet.\n \n> ",
+      "amulet": {
+        "id": 60,
+        "name": "magic amulet",
+        "parent": 223,
+        "bits": [
+          18,
+          21,
+          23
+        ]
+      },
+      "ui": {
+        "id": 60,
+        "name": "magic amulet",
+        "worn": false,
+        "on": false,
+        "switchable": true,
+        "light": false,
+        "tags": [],
+        "wearable": true,
+        "commands": [
+          "examine amulet",
+          "take amulet",
+          "wear amulet",
+          "drop amulet",
+          "give amulet to ",
+          "put amulet in "
+        ]
+      },
+      "journal": {
+        "id": 225,
+        "name": "journal",
+        "parent": 223,
+        "bits": [
+          18,
+          22,
+          23
+        ]
+      }
+    },
+    {
+      "key": "Sorcerer.z3.js @9:put amulet in box",
+      "reply": "Done.\n \n> ",
+      "amulet": {
+        "id": 60,
+        "name": "magic amulet",
+        "parent": 102,
+        "bits": [
+          18,
+          21,
+          23
+        ]
+      },
+      "ui": {
+        "id": 60,
+        "name": "magic amulet",
+        "worn": false,
+        "on": false,
+        "switchable": true,
+        "light": false,
+        "tags": [],
+        "wearable": true,
+        "commands": [
+          "examine amulet",
+          "take amulet"
+        ]
+      },
+      "journal": {
+        "id": 225,
+        "name": "journal",
+        "parent": 223,
+        "bits": [
+          18,
+          22,
+          23
+        ]
+      }
+    },
+    {
+      "key": "Sorcerer.z3.js @9:i",
+      "reply": "You are carrying:\n  a journal\n  a tiny box\n  The tiny box contains:\n    a magic amulet\n  a spell book (providing light)\n \n> ",
+      "amulet": {
+        "id": 60,
+        "name": "magic amulet",
+        "parent": 102,
+        "bits": [
+          18,
+          21,
+          23
+        ]
+      },
+      "ui": {
+        "id": 60,
+        "name": "magic amulet",
+        "worn": false,
+        "on": false,
+        "switchable": true,
+        "light": false,
+        "tags": [],
+        "wearable": true,
+        "commands": [
+          "examine amulet",
+          "take amulet"
+        ]
+      },
+      "journal": {
+        "id": 225,
+        "name": "journal",
+        "parent": 223,
+        "bits": [
+          18,
+          22,
+          23
+        ]
+      }
+    },
+    {
+      "key": "Sorcerer.z3.js @9:wear journal",
+      "reply": "You can't wear the journal.\n \n> ",
+      "amulet": {
+        "id": 60,
+        "name": "magic amulet",
+        "parent": 102,
+        "bits": [
+          18,
+          21,
+          23
+        ]
+      },
+      "ui": {
+        "id": 60,
+        "name": "magic amulet",
+        "worn": false,
+        "on": false,
+        "switchable": true,
+        "light": false,
+        "tags": [],
+        "wearable": true,
+        "commands": [
+          "examine amulet",
+          "take amulet"
+        ]
+      },
+      "journal": {
+        "id": 225,
+        "name": "journal",
+        "parent": 223,
+        "bits": [
+          18,
+          22,
+          23
+        ]
+      }
+    }
+  ]
+}

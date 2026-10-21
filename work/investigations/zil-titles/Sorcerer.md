@@ -7,7 +7,7 @@ October20 Codex independent audit of Grok4117: wearable21 ACCEPTED/integrated fr
 ## C cells needing claude audit
 - (none in table; check facts file)
 
-## Source exact bits
+## Historical source predicted bits (native qualification recorded separately)
 `CONTBIT27 OPENBIT15 SURFACEBIT17 ONBIT11 LIGHTBIT25 WEARBIT21 ACTORBIT31 TAKEBIT23`
 
 ## Not-F cells (16)
@@ -35,3 +35,7 @@ October20 Codex independent audit of Grok4117: wearable21 ACCEPTED/integrated fr
 
 ## On11 independent native audit
 Sorcerer on11 independently accepted from Grok4119: FROTZ tinybox102 and spellbook139 native TRUE/already-lit, desk144 FALSE/no effect; box FALSE before successful lighting. Current original route9 reproduces semantics and native i lists both providing light. Bounded255-object domain; boot owners include38 lit rooms, calendar61, lamp182 and global70. Existing item-likeness consumer reads on; activation tags require separate switchable capability. Current Equipment has on=true, switchable=false, no activation tags or turn-on/off commands. Lighting display remains OPEN (light=false while native i reports providing light); no useful illumination consumer closure claimed. Operator13/0 and affected-title/InformZ/Glulx three-row parity0diff; semantic delta1field. Evidence: work/mapping-research/items-codex/resume-20261020/sorcerer-on/.
+
+## October21 accepted measured-worn consumer
+
+Native originalroute9 directly held amulet60 is worn; removal drops it, reacquisition restores worn, and placement inside carriedbox102 is not worn in native inventory. Current originalroute244 grue suit95 provides second native worn owner. Independently accepted shared implementation uses explicit executable-owned direct-player relationship in existing AttributeSchema equipmentState, preserving raw wearable21 and stronger worn sources. Candidate Remove succeeds; nested amulet has no worn/Remove. Focused20/operator13/0 pass, full309x2 comparison completed3paired-provenFLAKY/0unresolved with7matchingno-prompt coveragegaps; independent current-source ACCEPT; do not mark title complete. Historical verbs.zil911 mutation rationale corrected to FSET? test.

@@ -208,6 +208,9 @@ var ModuleStatFactsClaude = {
         // book 139 ("You can't talk to a spell book!"). Source exact 9/9.
         // Grok4119 independently audited: FROTZ box102/book139 test11 true; desk144 false. Illumination state, not switchability.
         "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31, "wearable": 21, "on": 11 },
+        // Native amulet/suit inventory marks direct-held WEARBIT gear worn;
+        // amulet dropped or nested in the carried box is not worn (no state bit).
+        "equipmentState": { "wornWhen": "wearable-direct-player" },
         "playerGlobal": 38
     },
     // Wumpus 2000 (wump2ka): measured location roles (Codex GO #3103;
