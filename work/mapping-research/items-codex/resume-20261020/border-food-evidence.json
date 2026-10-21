@@ -1,0 +1,304 @@
+{
+  "method": "Native chapter3 via menu key3; SE,W,EXAMINE CART,PUSH CART,TAKE SODA,TAKE PRETZEL,I,DRINK SODA,EAT PRETZEL,EAT CIGARETTE; no forced state",
+  "rawSha256": "83331924e69072723d8d821ec6a7dc5c23b85e44c0fd4113eec413a66fd06544",
+  "source": {
+    "path": "C:/Users/hymlo/AppData/Local/Temp/hs-src/borderzone/historicalsource-borderzone-5c80126/bad.zil",
+    "sha256": "4af17c9ce99b25f55c8e12709e80a4f53cb91c1aa818429a97b1794aba4082dd",
+    "versionQualification": "Cached5c80126 corroborates handler, exact compiled-build equivalence not established"
+  },
+  "samples": {
+    "push cart": {
+      "nativeReply": "With a hefty push, you manage to topple the entire cart, sending hundreds of cans of soda and dozens of pretzels flying. In the confusion, a few people are knocked to the ground, causing a sort of chain reaction in which dozens fall or are knocked down. You manage to sidestep this impending melee and move off into the safety of the alley.\n \nYou're running down the alley now, just a few steps beyond the vendor's cart. The scene is somewhat comical, with dozens of people trying to regain their footing on a carpet of soda cans, which are acting like ball bearings.\n \n> ",
+      "foodUI": [],
+      "objects": [
+        {
+          "id": 101,
+          "name": "cigarette",
+          "parent": 305,
+          "bits": [
+            42
+          ]
+        },
+        {
+          "id": 200,
+          "name": "can of soda",
+          "parent": 83,
+          "bits": [
+            42
+          ]
+        },
+        {
+          "id": 205,
+          "name": "pretzel",
+          "parent": 83,
+          "bits": [
+            42
+          ]
+        }
+      ]
+    },
+    "take soda": {
+      "nativeReply": "You take the can of soda. The vendor, in his confusion, will never be the wiser.\n \n> ",
+      "foodUI": [
+        {
+          "id": 200,
+          "name": "can of soda",
+          "worn": false,
+          "wearable": false,
+          "commands": [
+            "examine soda",
+            "take soda",
+            "drop soda",
+            "give soda to ",
+            "put soda in "
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "id": 101,
+          "name": "cigarette",
+          "parent": 305,
+          "bits": [
+            42
+          ]
+        },
+        {
+          "id": 200,
+          "name": "can of soda",
+          "parent": 305,
+          "bits": [
+            42
+          ]
+        },
+        {
+          "id": 205,
+          "name": "pretzel",
+          "parent": 83,
+          "bits": [
+            42
+          ]
+        }
+      ]
+    },
+    "take pretzel": {
+      "nativeReply": "You take the pretzel. The vendor, in his confusion, will never be the wiser.\n \n> ",
+      "foodUI": [
+        {
+          "id": 205,
+          "name": "pretzel",
+          "worn": false,
+          "wearable": false,
+          "commands": [
+            "examine pretzel",
+            "take pretzel",
+            "drop pretzel",
+            "give pretzel to ",
+            "put pretzel in "
+          ]
+        },
+        {
+          "id": 200,
+          "name": "can of soda",
+          "worn": false,
+          "wearable": false,
+          "commands": [
+            "examine soda",
+            "take soda",
+            "drop soda",
+            "give soda to ",
+            "put soda in "
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "id": 101,
+          "name": "cigarette",
+          "parent": 305,
+          "bits": [
+            42
+          ]
+        },
+        {
+          "id": 200,
+          "name": "can of soda",
+          "parent": 305,
+          "bits": [
+            42
+          ]
+        },
+        {
+          "id": 205,
+          "name": "pretzel",
+          "parent": 305,
+          "bits": [
+            42
+          ]
+        }
+      ]
+    },
+    "i": {
+      "nativeReply": "You are carrying a pretzel, a can of soda, a matchbook, a cigarette, a Gurthark Mark VI revolver and a business card. You are wearing your clothes and a wristwatch.\n \n> ",
+      "foodUI": [
+        {
+          "id": 205,
+          "name": "pretzel",
+          "worn": false,
+          "wearable": false,
+          "commands": [
+            "examine pretzel",
+            "take pretzel",
+            "drop pretzel",
+            "give pretzel to ",
+            "put pretzel in "
+          ]
+        },
+        {
+          "id": 200,
+          "name": "can of soda",
+          "worn": false,
+          "wearable": false,
+          "commands": [
+            "examine soda",
+            "take soda",
+            "drop soda",
+            "give soda to ",
+            "put soda in "
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "id": 101,
+          "name": "cigarette",
+          "parent": 305,
+          "bits": [
+            42
+          ]
+        },
+        {
+          "id": 200,
+          "name": "can of soda",
+          "parent": 305,
+          "bits": [
+            42
+          ]
+        },
+        {
+          "id": 205,
+          "name": "pretzel",
+          "parent": 305,
+          "bits": [
+            42
+          ]
+        }
+      ]
+    },
+    "drink soda": {
+      "nativeReply": "You take a moment to finish the can of soda, and you throw the can away.\n \n> ",
+      "foodUI": [
+        {
+          "id": 205,
+          "name": "pretzel",
+          "worn": false,
+          "wearable": false,
+          "commands": [
+            "examine pretzel",
+            "take pretzel",
+            "drop pretzel",
+            "give pretzel to ",
+            "put pretzel in "
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "id": 101,
+          "name": "cigarette",
+          "parent": 305,
+          "bits": [
+            42
+          ]
+        },
+        {
+          "id": 200,
+          "name": "can of soda",
+          "parent": 83,
+          "bits": [
+            42
+          ]
+        },
+        {
+          "id": 205,
+          "name": "pretzel",
+          "parent": 305,
+          "bits": [
+            42
+          ]
+        }
+      ]
+    },
+    "eat pretzel": {
+      "nativeReply": "You take a moment to finish the pretzel.\n \n> ",
+      "foodUI": [],
+      "objects": [
+        {
+          "id": 101,
+          "name": "cigarette",
+          "parent": 305,
+          "bits": [
+            42
+          ]
+        },
+        {
+          "id": 200,
+          "name": "can of soda",
+          "parent": 83,
+          "bits": [
+            42
+          ]
+        },
+        {
+          "id": 205,
+          "name": "pretzel",
+          "parent": 83,
+          "bits": [
+            42
+          ]
+        }
+      ]
+    },
+    "eat cigarette": {
+      "nativeReply": "Your incipient ulcer would not be helped by eating a cigarette.\n \n> ",
+      "foodUI": [],
+      "objects": [
+        {
+          "id": 101,
+          "name": "cigarette",
+          "parent": 305,
+          "bits": [
+            42
+          ]
+        },
+        {
+          "id": 200,
+          "name": "can of soda",
+          "parent": 83,
+          "bits": [
+            42
+          ]
+        },
+        {
+          "id": 205,
+          "name": "pretzel",
+          "parent": 83,
+          "bits": [
+            42
+          ]
+        }
+      ]
+    }
+  },
+  "verdict": "Native handler alternative proven on two distinct consumables plus held cigarette refusal. Existing menu lacks Eat/Drink before consumption; useful consumer remains OPEN, no edible-bit mapping or whole-title closure."
+}

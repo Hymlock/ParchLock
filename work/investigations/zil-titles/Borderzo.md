@@ -27,3 +27,10 @@ Edible native capture needs story state: vendor food/soda are takeable only afte
 
 ## Wearable41 independent native audit
 Border Zone wearable41 independently accepted from Grok4128: native chronograph81 and parka244 WEAR successes, oilcan4 bit41 false/refused, current bounded351-object domain with no room owners. Current native Equipment reports both wearable/worn with Remove, agreeing with native i; existing worn39 unchanged. Operator13/0; chapter2-selecting base/candidate map/inventory/underline parity0diff, plus LostPig InformZ and Alabaster Glulx controls. Generic Borderzo no-prompt rows excluded and replaced with chapter2 replay. Exact semantic delta1field, no shared algorithm. Evidence: work/mapping-research/items-codex/resume-20261020/border-wear/. Whole-title completion is not claimed.
+
+
+## October21 native food-handler route closes prior routing gap
+
+Original chapter3: SE, W, EXAMINE CART, PUSH CART, TAKE SODA, TAKE PRETZEL, I, DRINK SODA, EAT PRETZEL, EAT CIGARETTE. Cart topples and story itself moves the player into the alley. Both soda200 and pretzel205 are held in native inventory; DRINK/EAT each prints finish response and removes that owner from current Equipment. Held cigarette refuses eating. Six research assertions pass. No relocation, attribute forcing or manufactured possession.
+
+Cached FOOD-F source corroborates action-handler alternative without adding an edible flag. The prior native-capture routing gap is resolved, but CURRENT menu before consumption has examine/take/drop/give/put only on each consumable, no Eat/Drink. Useful app action consumer remains OPEN; do not mark whole edible/consumed/title complete. Evidence and source qualification in work/mapping-research/items-codex/resume-20261020/border-food-evidence.json; raw capture alongside.
