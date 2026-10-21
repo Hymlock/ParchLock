@@ -61,3 +61,8 @@ Moonmist on10 native audit and integration now complete (see latest commit/check
 - ZorkIII edible5 semantic/native evidence is separate from consumer readiness. New controlled candidate shows Drink waybread offered but natively rejected; Eat succeeds. Production mapping stays held; blind investigation4370 pending. See OPEN_WORK and zork3-food/ consumer evidence; sealed findings must remain unread by blind reviewer until compare.
 
 - ZorkI transparent12: current native2+1 and bounded250object ownership confirmed; controlled mapping exposes closed-bottle water237. Existing policy hold preserved (OPEN_WORK pending vs laterbus4075 approval report unresolved). Canonical Oct16 evidence updated. No production change; no whole-cell consumer closure.
+
+
+## Superseding history reconciliation, October21
+
+Direct human queued message recovered at 2026-10-16T11:08:34.161Z, attachment d5c95808-178f-4294-8b83-1e62bfb199b4, humanTurn=true/origin=human: "As far as the app hiding the water when it's closed, for the bottle, that's fantastic." This settles the existing closed-bottle behavior. The earlier pending-decision wording is stale; do not ask again or repeat native proof. transparent12 remains semantically proven but absent from the production mapping because the current consumer would expose the water. A reviewed separation that preserves the accepted policy remains unfinished; this is not overall title closure. See history-reconciliation.md and operator-ruling.json in the current transparency packet.

@@ -1,0 +1,223 @@
+{
+  "scope": "Read-only history/fact reconciliation, not a new status matrix or certification",
+  "historicalFields": [
+    "achievements",
+    "adventurers",
+    "casualties",
+    "certainty",
+    "chapter",
+    "complete",
+    "cycles",
+    "date",
+    "day",
+    "deaths",
+    "experience",
+    "experience.max",
+    "first choice",
+    "health",
+    "holiness",
+    "holiness.max",
+    "hunger",
+    "jack",
+    "keys seen",
+    "keys turned",
+    "life",
+    "location",
+    "locations.max",
+    "moves",
+    "population",
+    "progress",
+    "quarry",
+    "quota.max",
+    "rank",
+    "regions",
+    "score",
+    "score.max",
+    "shutdown elements",
+    "sleep",
+    "task",
+    "tasks.max",
+    "temptations.max",
+    "thirst",
+    "time",
+    "time spent",
+    "treasures",
+    "turns",
+    "value",
+    "wins"
+  ],
+  "rows": [
+    {
+      "game": "Ballyhoo.z3.js",
+      "digest": "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Borderzo.z5.js",
+      "digest": "b42d5a7db4df78ed2e29341e86a149fbd7a0038d5d74c48b4444a7bb73506ef8",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Cutthroats.z3.js",
+      "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Deadline.z3.js",
+      "digest": "9c6eadbb30bbe1610230508865ec40969a7c54917fc40591a189c9f3835dffc4",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Enchanter.z3.js",
+      "digest": "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "HollywoodHijinx.z3.js",
+      "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Infidel.z3.js",
+      "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "LeatherGoddessesofPhobos.z3.js",
+      "digest": "103324c3b7332528cc36cc15ce15ae593af5a33ac2b75fae0f04eecc1ffec8f8",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Moonmist.z3.js",
+      "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Planetfall.z3.js",
+      "digest": "b73c750df3a3d6781072eb7f9f562d5c60bfc6dc8203f4952ebff50f04f412cf",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "PlunderedHearts.z3.js",
+      "digest": "b53a2588c7926892f8f5e9b201c1855a01892e972d938bf919b4f36e1b8bd7db",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Seastalker.z3.js",
+      "digest": "502e5c8e4cb82726ab61683f4d92afbb31f90fcb98b9b3dc3dbd4f97841c5582",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Sherlock.z5.js",
+      "digest": "ba9c2c81d6b55eb9fc7de43a2e439fc65304231cbb834c208005cd9460f44ff0",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Sorcerer.z3.js",
+      "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Spellbreaker.z3.js",
+      "digest": "2d097ac9e4081b68658d0331345176946253cb349ed66eeff88533826cae29d0",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Starcross.z3.js",
+      "digest": "1d9a69257349060823893f4cfa616f1040a3b41cbf38a6717199f206cd8f678c",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Stationfall.z3.js",
+      "digest": "3c5656897dd2503610945e80a0b42fc5d25614d967a010ace8e9cafd12f978a3",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Suspect.z3.js",
+      "digest": "d02fd95bae5398f9b87fe0f537f288b45e93967008948970f1982a65b888eddb",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Suspended.z3.js",
+      "digest": "6011284a57a6200c4deebfbeae92b3bac2f98a570ddbbc8cfc8bcc382d5b524f",
+      "declaredStatusFacts": {
+        "fields": [
+          "casualties",
+          "population",
+          "cycles"
+        ]
+      },
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Hitchhik.z5.js",
+      "digest": "26dcdab275054e5899c9454a879816a1ced530e9172bd8d8cf101fb7acc27cb4",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "TheLurkingHorror.z3.js",
+      "digest": "1862ef7ce4c25abd32d442392fe7eaba9c1595ed5411df75e99b06f43af6f5af",
+      "declaredStatusFacts": {
+        "fields": [
+          "score.max",
+          "rank"
+        ]
+      },
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "TheWitness.z3.js",
+      "digest": "2290bb3440ac66e14d54d41dbde575066ebdbdc42138ec899496e359bc484824",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Wishbringer.z3.js",
+      "digest": "7847ff3387dc401c511f67349d2847691ba97990f28e9c9d8b1182f3d4bc0dc0",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Zork1-TheGreatUndergroundEmpire.z3.js",
+      "digest": "0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd",
+      "declaredStatusFacts": {
+        "fields": [
+          "score.max",
+          "rank"
+        ]
+      },
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Zork2-TheWizardofFrobozz.z3.js",
+      "digest": "abf145d22371f825f13388587d92632bcde90582698f774b896b123a90e1fb1e",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    },
+    {
+      "game": "Zork3-TheDungeonMaster.z3.js",
+      "digest": "dce7e6f757fb8379dea9da9c13cdda5412ba03fa9b70d79fb6b8c7faf5970692",
+      "declaredStatusFacts": {},
+      "nativeMutableProof": "Reuse existing per-field artifacts first; no inferred closure from fact presence"
+    }
+  ]
+}

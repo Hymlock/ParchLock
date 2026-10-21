@@ -44,12 +44,12 @@ October 21 ZIL food consumer audit OPEN: in an isolated candidate with the pendi
   Wishbringer container/supporter/open/wearable/animate facts; Ballyhoo/HHGG/PH native inventory omission bits; 56a170f
   shared-word underline coverage + genuine-row inventory labels + Enchanter open 12 (309 gate, 0 regression). Codex audited
   through #3539; later work is operator-authorized SOLO/SELF-AUDIT (#3542).
-  - Operator decision pending: Zork I transparent 12 (native lists the water in the closed glass bottle; app hides it;
-    evidence work/investigations/2026-10-16-zork1-transparent-evidence.md).
-    Current-source audit October21 repeats named bottle236/case194 positives and closed sack224 negative. A controlled
-    in-memory mapping exposes water237 in Equipment while bottle stays closed. Bus4075 later reports operator approval
-    of keeping it hidden, but the direct human ruling was not recovered; preserve current behavior until the records
-    are reconciled. Proof/candidate comparison: items-codex/resume-20261020/zork1-transparent/ (under work/mapping-research).
+  - Zork I transparent12 integration must preserve the SETTLED closed-bottle policy; no operator decision is pending.
+    Direct human ruling recovered October21, dated October16 11:08:34.161Z: "As far as the app hiding the water when
+    it's closed, for the bottle, that's fantastic." Native semantics are proven, but adding transparent12 directly
+    exposes water237 in Equipment and violates that ruling. Remaining work is a reviewed semantic/consumer separation,
+    not another bottle-proof run or approval request. Provenance and commit history:
+    work/mapping-research/items-codex/resume-20261020/zork1-transparent/history-reconciliation.md.
   - Operator decision pending: Enchanter egg parts (NDESCBIT 7 also marks every spell; a blanket hidden bit would remove
     the D148 spells).
   - Blocked: Hollywood open/supporter (all evidence indoors; the release desyncs from the Jericho walkthrough at OPEN
