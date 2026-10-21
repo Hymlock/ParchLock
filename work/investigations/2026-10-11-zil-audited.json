@@ -43,7 +43,8 @@
     "open": "Codex AUDIT PASS #3467 (state only; not capability)",
     "wearable": "Codex AUDIT PASS #3518 (wearable4)",
     "container": "Codex AUDIT PASS #3556 (container10; machine/cage vs staff; supporter26 remains unaudited)",
-    "on": "Codex AUDIT PASS #4333 (on15 state: lamp 198 +15/-15, torch 41 -15 extinguish, independent replay items-codex/2026-10-20-zork3-independent-native.txt; table refusal is scope, not capability negative)"
+    "on": "Codex AUDIT PASS #4333 (on15 state: lamp 198 +15/-15, torch 41 -15 extinguish, independent replay items-codex/2026-10-20-zork3-independent-native.txt; table refusal is scope, not capability negative)",
+    "edible": "Native FOODBIT5 single-owner exception: bounded222table waybread34; original named EAT34:5TRUE consumes, heldlamp198:5FALSE refuses. Complete pinnedsource3ec9ed4 corroborates; archive25 vs current17 explicitly not exactbuild. Shared policy4f2123f; fresh production Eatwaybread offered/succeeds/removes, Drink absent/refused. Independent non-author subagent current-source ACCEPT; operator13/0,3engine3row0diff. Evidence items-codex/resume-20261020/zork3-edible/."
   },
   "Ballyhoo.z3.js": {
     "open": "Codex AUDIT PASS #3467 (state only; not capability)",

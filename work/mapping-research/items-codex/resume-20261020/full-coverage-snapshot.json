@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-21T09:41:46.632Z",
-  "factsSha256": "fc9b847f3618cd39e1bde8dec3509c7f8137de93cb5ab01598b0968aaeadeab8",
+  "generatedAt": "2026-10-21T14:54:09.804Z",
+  "factsSha256": "8ca91faa75c63295856f613dcf8904653089bfb213cd727a10107b3ec1886b0b",
   "scope": "Reconciliation report only, not a second registry/ledger and not a completion percentage",
   "titleCount": 26,
   "keysPerTitle": 93,
@@ -6886,6 +6886,12 @@
       "historicClassification": "confirmed-zil-family/validated",
       "classificationNote": "Current source-bound decoder result is distinct from historical matrix",
       "factKeys": [
+        "command",
+        "fields",
+        "replyFamily",
+        "outcome",
+        "statusTurnsMetric",
+        "evidence",
         "openCapability",
         "wornAttribute",
         "attributeMap"
@@ -7586,7 +7592,9 @@
         {
           "area": "status",
           "key": "statusTurnsMetric",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "statusTurnsMetric",
+          "value": "galactic-time"
         },
         {
           "area": "status",
@@ -7596,7 +7604,14 @@
         {
           "area": "status",
           "key": "fields",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "fields",
+          "value": [
+            "score.max",
+            "rank",
+            "day",
+            "time"
+          ]
         }
       ]
     },
@@ -18559,7 +18574,10 @@
         {
           "area": "attribute",
           "key": "edible",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "attributeMap.edible",
+          "value": 5,
+          "auditPointer": "Native FOODBIT5 single-owner exception: bounded222table waybread34; original named EAT34:5TRUE consumes, heldlamp198:5FALSE refuses. Complete pinnedsource3ec9ed4 corroborates; archive25 vs current17 explicitly not exactbuild. Shared policy4f2123f; fresh production Eatwaybread offered/succeeds/removes, Drink absent/refused. Independent non-author subagent current-source ACCEPT; operator13/0,3engine3row0diff. Evidence items-codex/resume-20261020/zork3-edible/.",
           "historicDraft": {
             "value": 5,
             "status": "hypothesis",

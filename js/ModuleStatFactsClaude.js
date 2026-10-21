@@ -101,7 +101,11 @@ var ModuleStatFactsClaude = {
         // 2/2 (cage 81, pedestal 84; historicalsource zork3). Target positive: cage 81 ("put staff on cage"). Target negative: gold
         // machine 91 ("There's no good surface"). The second surface is source-cited and RAM bit 26 is set, but no command can reach
         // it. Without 26, containers 81/84 (bit 10 too) were offered Open/Close (252e145 REJECT #3632/#3637).
-        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10, "supporter": 26, "on": 15 } // on 15 (codex #4333: lamp 198 +/-15, torch 41 -15 native)
+        // FOODBIT5: sole current bounded-table owner waybread34; native EAT tests TRUE and consumes it,
+        // held lamp198 tests FALSE/refuses. Complete pinned source corroborates one active FOODBIT owner;
+        // archived release25 differs from this release17, so no exact-build source claim. Shared food
+        // policy4f2123f keeps Eat without inferring Drink. Evidence: resume-20261020/zork3-food/.
+        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10, "supporter": 26, "on": 15, "edible": 5 } // on 15 (codex #4333: lamp 198 +/-15, torch 41 -15 native)
     },
     // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {

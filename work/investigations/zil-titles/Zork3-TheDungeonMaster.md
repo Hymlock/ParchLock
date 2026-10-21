@@ -2,7 +2,7 @@
 
 Census row: supporter C, lightSource O, on U, worn UD, animate X, edible U, takeable S, playerRoot S, status Os, rooms O,
 actors U, underlineVsDict X, descriptors X, identical X, onoff U, wornItems UD, consumed X, nested X.
-Source (exact): ONBIT 15 (27 incl. lit rooms), LIGHTBIT 6 (torch 41 only), FOODBIT 5 (waybread 34 only), DRINKBIT 22
+Historical source flag prediction (not exact-build provenance): ONBIT 15 (27 incl. lit rooms), LIGHTBIT 6 (torch 41 only), FOODBIT 5 (waybread 34 only), DRINKBIT 22
 (water 203 only), ACTORBIT 21 (5 carriers).
 
 ## Native evidence (zil-walkdiff.cjs, walkthrough 'zork3', fresh boot, no relocation; replies verbatim)
@@ -19,3 +19,10 @@ Source (exact): ONBIT 15 (27 incl. lit rooms), LIGHTBIT 6 (torch 41 only), FOODB
 | on | NATIVE-PROVEN bit 15 | 2 distinct objects (lamp set/clear x2, torch clear); table refusal no bit; source exact 27 |
 | edible | NATIVE-PROVEN bit 5 single owner (waybread 34) | whole-source single FOODBIT carrier (exact 1/1) + native eat success; torch refusal |
 Open next: animate 21 (X; native TELL/ASK route), actors, onoff, drink (DRINKBIT 22 water: step 253 DRINK LIQUID).
+
+
+## October21 separate FOODBIT5 integration
+
+Current222-object bounded table has sole owner waybread34. Original native EAT tests34:5TRUE, succeeds and removes34; heldlamp198:5FALSE refuses. Complete pinnedsource3ec9ed4 scan corroborates WAYBREAD FOODBIT in active3actions and inactive shadow variant; rootincludes3ACTIONS/GVERBS and recorded variableflag operations are reads. Sourcearchive25/860811 differs from currentstory17/840727: no exactbuild claim.
+
+Only production attributeMap.edible5 is added after shared policy4f2123f. Fresh production route6 (no factinjection/forcedRAM) shows Eatwaybread in menu/provider, no inferredDrink; exactnativeEat succeeds/removes, nativeDrink refuses/staysheld. Operator13/0 and completedZorkIII/LostPig/Alabaster3row0diff. No DRINKBIT mapping, otherflag/consumptiontracking/title closure. Evidence and current-source peer verdict: work/mapping-research/items-codex/resume-20261020/zork3-edible/.

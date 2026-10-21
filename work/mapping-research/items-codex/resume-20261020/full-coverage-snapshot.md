@@ -1,6 +1,6 @@
 # Full-scope evidence reconciliation snapshot
 
-Generated 2026-10-21T09:41:46.632Z. 26 titles × 93 listed scope slots. This is an evidence inventory, NOT a finished-cell denominator or closure tally. No-dedicated-bit alternatives, derived fields and title-specific status fields still require qualified evidence. Read the JSON for every slot.
+Generated 2026-10-21T14:54:09.804Z. 26 titles × 93 listed scope slots. This is an evidence inventory, NOT a finished-cell denominator or closure tally. No-dedicated-bit alternatives, derived fields and title-specific status fields still require qualified evidence. Read the JSON for every slot.
 
 | Title | Digest prefix | Direct attribute/special fact slots | Slots requiring evidence reconciliation | Current classification |
 |---|---|---:|---:|---|
@@ -13,7 +13,7 @@ Generated 2026-10-21T09:41:46.632Z. 26 titles × 93 listed scope slots. This is 
 | Infidel.z3.js | 91f78d4bbb6b | 8 | 85 | confirmed-zil-family/validated |
 | LeatherGoddessesofPhobos.z3.js | 103324c3b733 | 6 | 87 | confirmed-zil-family/validated |
 | Moonmist.z3.js | bcf65075f234 | 8 | 85 | confirmed-zil-family/validated |
-| Planetfall.z3.js | b73c750df3a3 | 9 | 84 | confirmed-zil-family/validated |
+| Planetfall.z3.js | b73c750df3a3 | 11 | 82 | confirmed-zil-family/validated |
 | PlunderedHearts.z3.js | b53a2588c792 | 12 | 81 | confirmed-zil-family/validated |
 | Seastalker.z3.js | 502e5c8e4cb8 | 8 | 85 | confirmed-zil-family/validated |
 | Sherlock.z5.js | ba9c2c81d6b5 | 4 | 89 | unknown/rejected |
@@ -29,6 +29,6 @@ Generated 2026-10-21T09:41:46.632Z. 26 titles × 93 listed scope slots. This is 
 | Wishbringer.z3.js | 7847ff3387dc | 10 | 83 | confirmed-zil-family/validated |
 | Zork1-TheGreatUndergroundEmpire.z3.js | 0ae5ac229e79 | 10 | 83 | confirmed-zil-family/validated |
 | Zork2-TheWizardofFrobozz.z3.js | abf145d22371 | 9 | 84 | confirmed-zil-family/validated |
-| Zork3-TheDungeonMaster.z3.js | dce7e6f757fb | 7 | 86 | confirmed-zil-family/validated |
+| Zork3-TheDungeonMaster.z3.js | dce7e6f757fb | 8 | 85 | confirmed-zil-family/validated |
 
 Fact presence is not semantic/action success; missing fact is not feature absence. Light and lightSource are kept distinct, as are animate/talkable and worn/wearable. The existing registry, audit records and cell ledger retain authority. This report intentionally invents zero CLOSED/F/N/A verdicts. Current classifying runs and per-title evidence can refine it.
