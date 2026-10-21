@@ -70,3 +70,5 @@ Direct human queued message recovered at 2026-10-16T11:08:34.161Z, attachment d5
 - Status audit uses effective StatTracker fact merger, including existing SupplementalProbeFacts. Stationfall Galactic Standard Time is already implemented and current consumer verified3checks; source/negative/change correlation remains separately qualified. No duplicate tracker or speculative status mapping. See status-history-reuse.md and stationfall-status-confirmation.json.
 
 - Planetfall existing status issue bus1871 freshly confirmed with same-generation native clock evidence; Deadline header-clock control passes. Blind comparison requested4373; no shared/status mapping change before review. Cutthroats on17 second-owner work must use actual MM large compressor route; do not repeat commented-out reading-lamp pursuit (see cutthroats-on-route-reconciliation.md).
+
+- Cutthroats missing second on-owner route is resolved: native large compressor89 ON/OFF17 reached from originalroute19+5moves. Full on-cell/consumer still open pending negative qualification and review; do not repeat trawler/captain-cabin routes.

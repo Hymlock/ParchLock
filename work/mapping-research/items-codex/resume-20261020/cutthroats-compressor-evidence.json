@@ -1,0 +1,399 @@
+{
+  "method": "Native original route19 then w,w,n,e,s, named examine/on/off; no relocation/forced flags",
+  "rawSha256": "7c29d16ac6d2ae0029d67e71b3d2620bd498af37b1650c2bf444ba6d3df88e32",
+  "recordingLimitation": "Recorder keys by command so repeated examine overwrites earlier examinations; ON and OFF snapshots/replies remain independently preserved.",
+  "samples": {
+    "Cutthroats.z3.js @19:examine large compressor": {
+      "nativeReply": "The large, gasoline-powered air compressor is off. You can quickly see it started with fuel for an hour and a half's operation. A retractable airhose is built in.\n \n> ",
+      "compressor": {
+        "id": 89,
+        "name": "large air compressor",
+        "parent": 91,
+        "bits": [
+          11,
+          12,
+          21
+        ]
+      },
+      "airhose": {
+        "id": 88,
+        "name": "airhose",
+        "parent": 89,
+        "bits": [
+          12,
+          22,
+          27
+        ]
+      },
+      "namedCompressorTests": [
+        [
+          89,
+          30,
+          0
+        ],
+        [
+          89,
+          21,
+          1
+        ],
+        [
+          89,
+          28,
+          0
+        ],
+        [
+          89,
+          20,
+          0
+        ],
+        [
+          89,
+          30,
+          0
+        ],
+        [
+          89,
+          17,
+          0
+        ]
+      ],
+      "ui": [
+        {
+          "id": 143,
+          "name": "room key",
+          "worn": false,
+          "wearable": false,
+          "commands": [
+            "examine key",
+            "take key",
+            "drop key",
+            "give key to ",
+            "put key in "
+          ]
+        },
+        {
+          "id": 144,
+          "name": "Mariners' Trust passbook",
+          "worn": false,
+          "wearable": false,
+          "commands": [
+            "examine passbook",
+            "take passbook",
+            "drop passbook",
+            "give passbook to ",
+            "put passbook in "
+          ]
+        },
+        {
+          "id": 6,
+          "name": "wrist watch",
+          "worn": true,
+          "wearable": true,
+          "commands": [
+            "examine watch",
+            "take watch",
+            "remove watch"
+          ]
+        }
+      ]
+    },
+    "Cutthroats.z3.js @19:turn on large compressor": {
+      "nativeReply": "Okay. The compressor is on.\n \n> ",
+      "compressor": {
+        "id": 89,
+        "name": "large air compressor",
+        "parent": 91,
+        "bits": [
+          11,
+          12,
+          17,
+          21
+        ]
+      },
+      "airhose": {
+        "id": 88,
+        "name": "airhose",
+        "parent": 89,
+        "bits": [
+          12,
+          22,
+          27
+        ]
+      },
+      "namedCompressorTests": [
+        [
+          89,
+          30,
+          0
+        ],
+        [
+          89,
+          21,
+          1
+        ],
+        [
+          89,
+          28,
+          0
+        ],
+        [
+          89,
+          20,
+          0
+        ],
+        [
+          89,
+          27,
+          0
+        ],
+        [
+          89,
+          7,
+          0
+        ],
+        [
+          89,
+          30,
+          0
+        ],
+        [
+          89,
+          17,
+          0
+        ]
+      ],
+      "ui": [
+        {
+          "id": 143,
+          "name": "room key",
+          "worn": false,
+          "wearable": false,
+          "commands": [
+            "examine key",
+            "take key",
+            "drop key",
+            "give key to ",
+            "put key in "
+          ]
+        },
+        {
+          "id": 144,
+          "name": "Mariners' Trust passbook",
+          "worn": false,
+          "wearable": false,
+          "commands": [
+            "examine passbook",
+            "take passbook",
+            "drop passbook",
+            "give passbook to ",
+            "put passbook in "
+          ]
+        },
+        {
+          "id": 6,
+          "name": "wrist watch",
+          "worn": true,
+          "wearable": true,
+          "commands": [
+            "examine watch",
+            "take watch",
+            "remove watch"
+          ]
+        }
+      ]
+    },
+    "Cutthroats.z3.js @19:turn off large compressor": {
+      "nativeReply": "The large air compressor is now off.\n \n> ",
+      "compressor": {
+        "id": 89,
+        "name": "large air compressor",
+        "parent": 91,
+        "bits": [
+          11,
+          12,
+          21
+        ]
+      },
+      "airhose": {
+        "id": 88,
+        "name": "airhose",
+        "parent": 89,
+        "bits": [
+          12,
+          22,
+          27
+        ]
+      },
+      "namedCompressorTests": [
+        [
+          89,
+          30,
+          0
+        ],
+        [
+          89,
+          21,
+          1
+        ],
+        [
+          89,
+          28,
+          0
+        ],
+        [
+          89,
+          20,
+          0
+        ],
+        [
+          89,
+          27,
+          0
+        ],
+        [
+          89,
+          7,
+          0
+        ],
+        [
+          89,
+          30,
+          0
+        ],
+        [
+          89,
+          17,
+          1
+        ]
+      ],
+      "ui": [
+        {
+          "id": 143,
+          "name": "room key",
+          "worn": false,
+          "wearable": false,
+          "commands": [
+            "examine key",
+            "take key",
+            "drop key",
+            "give key to ",
+            "put key in "
+          ]
+        },
+        {
+          "id": 144,
+          "name": "Mariners' Trust passbook",
+          "worn": false,
+          "wearable": false,
+          "commands": [
+            "examine passbook",
+            "take passbook",
+            "drop passbook",
+            "give passbook to ",
+            "put passbook in "
+          ]
+        },
+        {
+          "id": 6,
+          "name": "wrist watch",
+          "worn": true,
+          "wearable": true,
+          "commands": [
+            "examine watch",
+            "take watch",
+            "remove watch"
+          ]
+        }
+      ]
+    },
+    "Cutthroats.z3.js @19:turn on airhose": {
+      "nativeReply": "You can't turn that on.\n \n> ",
+      "compressor": {
+        "id": 89,
+        "name": "large air compressor",
+        "parent": 91,
+        "bits": [
+          11,
+          12,
+          21
+        ]
+      },
+      "airhose": {
+        "id": 88,
+        "name": "airhose",
+        "parent": 89,
+        "bits": [
+          12,
+          22,
+          27
+        ]
+      },
+      "namedCompressorTests": [
+        [
+          89,
+          30,
+          0
+        ],
+        [
+          89,
+          21,
+          1
+        ],
+        [
+          89,
+          28,
+          0
+        ],
+        [
+          89,
+          20,
+          0
+        ],
+        [
+          89,
+          30,
+          0
+        ]
+      ],
+      "ui": [
+        {
+          "id": 143,
+          "name": "room key",
+          "worn": false,
+          "wearable": false,
+          "commands": [
+            "examine key",
+            "take key",
+            "drop key",
+            "give key to ",
+            "put key in "
+          ]
+        },
+        {
+          "id": 144,
+          "name": "Mariners' Trust passbook",
+          "worn": false,
+          "wearable": false,
+          "commands": [
+            "examine passbook",
+            "take passbook",
+            "drop passbook",
+            "give passbook to ",
+            "put passbook in "
+          ]
+        },
+        {
+          "id": 6,
+          "name": "wrist watch",
+          "worn": true,
+          "wearable": true,
+          "commands": [
+            "examine watch",
+            "take watch",
+            "remove watch"
+          ]
+        }
+      ]
+    }
+  }
+}

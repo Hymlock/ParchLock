@@ -1,0 +1,269 @@
+{
+  "digest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+  "first": 760,
+  "firstProperty": 2767,
+  "count": 223,
+  "bit": 17,
+  "owners": [
+    {
+      "id": 57,
+      "name": "Engine Room",
+      "parent": 221
+    },
+    {
+      "id": 58,
+      "name": "Captain's Cabin",
+      "parent": 221
+    },
+    {
+      "id": 59,
+      "name": "Lounge",
+      "parent": 221
+    },
+    {
+      "id": 60,
+      "name": "Galley",
+      "parent": 221
+    },
+    {
+      "id": 61,
+      "name": "Crew's Quarters",
+      "parent": 221
+    },
+    {
+      "id": 65,
+      "name": "Storage Locker",
+      "parent": 221
+    },
+    {
+      "id": 66,
+      "name": "Wheelhouse",
+      "parent": 221
+    },
+    {
+      "id": 67,
+      "name": "Aft Deck",
+      "parent": 221
+    },
+    {
+      "id": 68,
+      "name": "Port Deck",
+      "parent": 221
+    },
+    {
+      "id": 69,
+      "name": "Starboard Deck",
+      "parent": 221
+    },
+    {
+      "id": 70,
+      "name": "Fore Deck",
+      "parent": 221
+    },
+    {
+      "id": 71,
+      "name": "Engine Room",
+      "parent": 221
+    },
+    {
+      "id": 73,
+      "name": "Captain's Cabin",
+      "parent": 221
+    },
+    {
+      "id": 75,
+      "name": "Lounge",
+      "parent": 221
+    },
+    {
+      "id": 77,
+      "name": "Galley",
+      "parent": 221
+    },
+    {
+      "id": 80,
+      "name": "Crew's Quarters",
+      "parent": 221
+    },
+    {
+      "id": 86,
+      "name": "Storage Locker",
+      "parent": 221
+    },
+    {
+      "id": 87,
+      "name": "Wheelhouse",
+      "parent": 221
+    },
+    {
+      "id": 91,
+      "name": "Aft Deck",
+      "parent": 221
+    },
+    {
+      "id": 92,
+      "name": "Port Deck",
+      "parent": 221
+    },
+    {
+      "id": 93,
+      "name": "Starboard Deck",
+      "parent": 221
+    },
+    {
+      "id": 95,
+      "name": "Fore Deck",
+      "parent": 221
+    },
+    {
+      "id": 97,
+      "name": "Wharf",
+      "parent": 221
+    },
+    {
+      "id": 98,
+      "name": "Ferry Landing",
+      "parent": 221
+    },
+    {
+      "id": 99,
+      "name": "Point Lookout",
+      "parent": 221
+    },
+    {
+      "id": 101,
+      "name": "Mariners' Trust",
+      "parent": 221
+    },
+    {
+      "id": 112,
+      "name": "The Shanty",
+      "parent": 221
+    },
+    {
+      "id": 131,
+      "name": "Outfitters Int'l",
+      "parent": 221
+    },
+    {
+      "id": 132,
+      "name": "Vacant Lot",
+      "parent": 221
+    },
+    {
+      "id": 135,
+      "name": "McGinty Salvage",
+      "parent": 221
+    },
+    {
+      "id": 147,
+      "name": "Upstairs Hallway",
+      "parent": 221
+    },
+    {
+      "id": 148,
+      "name": "Back Alley",
+      "parent": 221
+    },
+    {
+      "id": 149,
+      "name": "Back Alley",
+      "parent": 221
+    },
+    {
+      "id": 150,
+      "name": "Back Alley",
+      "parent": 221
+    },
+    {
+      "id": 152,
+      "name": "Back Alley",
+      "parent": 221
+    },
+    {
+      "id": 153,
+      "name": "Back Alley",
+      "parent": 221
+    },
+    {
+      "id": 154,
+      "name": "Shore Road",
+      "parent": 221
+    },
+    {
+      "id": 156,
+      "name": "Shore Road",
+      "parent": 221
+    },
+    {
+      "id": 157,
+      "name": "Ocean Road",
+      "parent": 221
+    },
+    {
+      "id": 158,
+      "name": "Ocean Road",
+      "parent": 221
+    },
+    {
+      "id": 159,
+      "name": "Ocean Road",
+      "parent": 221
+    },
+    {
+      "id": 160,
+      "name": "Wharf Road",
+      "parent": 221
+    },
+    {
+      "id": 161,
+      "name": "Wharf Road",
+      "parent": 221
+    },
+    {
+      "id": 162,
+      "name": "Wharf Road",
+      "parent": 221
+    },
+    {
+      "id": 163,
+      "name": "Wharf Road",
+      "parent": 221
+    },
+    {
+      "id": 165,
+      "name": "Wharf Road",
+      "parent": 221
+    },
+    {
+      "id": 166,
+      "name": "Winding Road",
+      "parent": 221
+    },
+    {
+      "id": 167,
+      "name": "Winding Road",
+      "parent": 221
+    },
+    {
+      "id": 169,
+      "name": "Winding Road",
+      "parent": 221
+    },
+    {
+      "id": 183,
+      "name": "Your Room",
+      "parent": 221
+    },
+    {
+      "id": 190,
+      "name": "Red Boar Inn",
+      "parent": 221
+    },
+    {
+      "id": 223,
+      "name": "",
+      "parent": 0
+    }
+  ]
+}
