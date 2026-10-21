@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-20T23:50:48.646Z",
-  "factsSha256": "93b9ca1be2969296bbd92e7433c1704e3cac64ad5b60e36c3b497ae397221150",
+  "generatedAt": "2026-10-21T09:41:46.632Z",
+  "factsSha256": "fc9b847f3618cd39e1bde8dec3509c7f8137de93cb5ab01598b0968aaeadeab8",
   "scope": "Reconciliation report only, not a second registry/ledger and not a completion percentage",
   "titleCount": 26,
   "keysPerTitle": 93,
@@ -11198,7 +11198,8 @@
       "historicClassification": "confirmed-zil-family/validated",
       "classificationNote": "Current source-bound decoder result is distinct from historical matrix",
       "factKeys": [
-        "attributeMap"
+        "attributeMap",
+        "wornAttribute"
       ],
       "cells": [
         {
@@ -11501,7 +11502,10 @@
         {
           "area": "attribute",
           "key": "worn",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 24,
+          "auditPointer": "Codex independent current-source AUDIT PASS: Starcross wornAttribute24 independently accepted from Grok4124 exact author design with NEW two-owner native proof. Normal suit144 and tattered suit176 each test24 TRUE under native REMOVE with matching replies; actual trade at route133 releases tattered suit, WEAR sets it, REMOVE clears it. Held library71/basket40 test24 FALSE. The old single-owner rationale is withdrawn; no source exception invoked. Bounded239-object census has only global11 bit24 at boot, no rooms. Current native Equipment normal suit worn+Remove then unworn agrees. No wearable capability inferred; handler-based Wear consumer remains separate. Operator13/0, complete affected-title/InformZ/Glulx3row parity0diff, semantic delta1field. Packet: work/mapping-research/items-codex/resume-20261020/starcross-worn/.",
           "historicDraft": {
             "value": null,
             "status": "unknown",
@@ -11565,7 +11569,10 @@
         {
           "area": "attribute",
           "key": "isWorn",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 24,
+          "auditPointer": "Codex independent current-source AUDIT PASS: Starcross wornAttribute24 independently accepted from Grok4124 exact author design with NEW two-owner native proof. Normal suit144 and tattered suit176 each test24 TRUE under native REMOVE with matching replies; actual trade at route133 releases tattered suit, WEAR sets it, REMOVE clears it. Held library71/basket40 test24 FALSE. The old single-owner rationale is withdrawn; no source exception invoked. Bounded239-object census has only global11 bit24 at boot, no rooms. Current native Equipment normal suit worn+Remove then unworn agrees. No wearable capability inferred; handler-based Wear consumer remains separate. Operator13/0, complete affected-title/InformZ/Glulx3row parity0diff, semantic delta1field. Packet: work/mapping-research/items-codex/resume-20261020/starcross-worn/.",
           "historicDraft": {
             "value": null,
             "status": "unknown",
@@ -11689,7 +11696,10 @@
         {
           "area": "fact",
           "key": "wornAttribute",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 24,
+          "auditPointer": "See worn: native state24 only."
         },
         {
           "area": "fact",
