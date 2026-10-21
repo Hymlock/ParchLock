@@ -8,10 +8,10 @@ October20 Codex independent audit of Grok4114: wearable21/worn20 ACCEPTED and in
 - animate
 - playerRoot
 
-## Source exact bits
+## Historical source-predicted bits (not exact-build provenance)
 `CONTBIT23 OPENBIT15 SURFACEBIT17 ONBIT24 LIGHTBIT26 WEARBIT21 ACTORBIT31 TAKEBIT22`
 
-## Not-F cells (18)
+## Historical Not-F view (superseded by dated audits)
 - lightSource: U
 - on: U
 - wearable: U
@@ -35,3 +35,6 @@ October20 Codex independent audit of Grok4114: wearable21/worn20 ACCEPTED and in
 1. Audit C→F
 2. Native prove CONT/OPEN/SURFACE/ON/LIGHT/WEAR from source bits
 3. FEATURE-ABSENT only after full FSET grep
+
+
+October21 Ballyhoo ONBIT24 state integration: existing Grok4119 proposal independently accepted under standing cited-source single-native-positive exception. Whole-source scan supports RADIO as sole mutable non-room owner; source warnings and adjacent-release qualification remain explicit, no exact-build or universal current-byte writer proof. Current bounded239 table boot37owners/radiooff; original186on37/off36 totals are not room counts. Fresh originalbhj186 radio48 ON/OFF tests/bit changes agree with decoded model.on; repeatedOFF key overwrites firstOFF, retained snapshots/timestamps described accurately. switchablefalse/lightfalse/tags[] and no activation commands: useful activation consumer stays OPEN. Exactonefield on24, allotherfacts unchanged; independent non-author subagent current-source ACCEPT, operator13/0, complete affectedZIL/InformZ/Glulx3row0diff. Evidence: work/mapping-research/items-codex/resume-20261020/ballyhoo-state/, qualified cited source in ballyhoo-on/. No whole-title/project closure or APK.

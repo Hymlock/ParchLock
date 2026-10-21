@@ -1,0 +1,111 @@
+{
+  "method": "Production fact only; originalbhj186 repaired route from external g1-routes; no fact injection/forced storyRAM",
+  "routeSource": "C:/Users/hymlo/agent-tools/g1-routes.json",
+  "routeSha256": "7c87b7d09a8611c82d4ac19d291baaa18897206c67ecb7aa377aaaf0d2052286",
+  "rawSha256": "30293c4d313a2315ca5e43f303b3b87ead566083b74cf5b524bea2132e98ad99",
+  "recordingLimit": "Repeated TURN OFF key overwrites first OFF with final OFF. Retained ON and final OFF timestamps/ops/model suffice for captured transition; no four-snapshot claim.",
+  "samples": {
+    "Ballyhoo.z3.js @186:i": {
+      "timestamp": "2026-10-21T15:00:52.796Z",
+      "nativeReply": "You have a transistor radio, a stool, a rawhide bullwhip, a bucket, a skeleton key, your ticket, a scrap of newsprint, a fiberglass pole and $12.81 to your name.\n \nDrifting out from the radio is a jumble of static.\n \n> ",
+      "radio": {
+        "id": 48,
+        "name": "transistor radio",
+        "worn": false,
+        "on": true,
+        "switchable": false,
+        "light": false,
+        "tags": [],
+        "wearable": false,
+        "commands": [
+          "examine radio",
+          "take radio",
+          "search radio",
+          "empty radio",
+          "open radio",
+          "close radio",
+          "drop radio",
+          "give radio to ",
+          "put radio in "
+        ]
+      },
+      "target24Tests": [
+        [
+          48,
+          24,
+          1
+        ]
+      ]
+    },
+    "Ballyhoo.z3.js @186:turn off radio": {
+      "timestamp": "2026-10-21T15:00:54.610Z",
+      "nativeReply": "The radio dial flickers and grows dark.\n \n> ",
+      "radio": {
+        "id": 48,
+        "name": "transistor radio",
+        "worn": false,
+        "on": false,
+        "switchable": false,
+        "light": false,
+        "tags": [],
+        "wearable": false,
+        "commands": [
+          "examine radio",
+          "take radio",
+          "search radio",
+          "empty radio",
+          "open radio",
+          "close radio",
+          "drop radio",
+          "give radio to ",
+          "put radio in "
+        ]
+      },
+      "target24Tests": [
+        [
+          48,
+          24,
+          1
+        ]
+      ]
+    },
+    "Ballyhoo.z3.js @186:turn on radio": {
+      "timestamp": "2026-10-21T15:00:54.009Z",
+      "nativeReply": "The radio dial bursts forth in a circle of light.\n \nDrifting out from the radio is a jumble of static.\n \n> ",
+      "radio": {
+        "id": 48,
+        "name": "transistor radio",
+        "worn": false,
+        "on": true,
+        "switchable": false,
+        "light": false,
+        "tags": [],
+        "wearable": false,
+        "commands": [
+          "examine radio",
+          "take radio",
+          "search radio",
+          "empty radio",
+          "open radio",
+          "close radio",
+          "drop radio",
+          "give radio to ",
+          "put radio in "
+        ]
+      },
+      "target24Tests": [
+        [
+          48,
+          24,
+          0
+        ],
+        [
+          48,
+          24,
+          1
+        ]
+      ]
+    }
+  },
+  "scope": "On-state decoding/model only; switchability, lightSource, activation tags/commands and whole title remain unproven/open"
+}

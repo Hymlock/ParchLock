@@ -1,4 +1,8 @@
-# Ballyhoo Grok4119 source qualification: pending
+# Ballyhoo Grok4119 source qualification
+
+Current superseding review: cited-source single-owner exception ACCEPTED by independent subagent. Standing exception requires one native positive plus cited complete-source search without second positive; it does not add an independent negative requirement. Current production on24 integration/model checks are under ../ballyhoo-state/. Exact source-build equivalence and universal current-byte writer proof remain unclaimed.
+
+## Earlier research constraints (historical, superseded for exception readiness)
 
 Located original cached historicalsource-ballyhoo-9f779e8. All11 ZIL files hashed and whole-module tokenized ONBIT operation scan retained. Literal source writes set/clear only RADIO; room ONBIT is read in parser. The sole nonliteral flag operation reported is FIND-IN read-only FSET? .W .WHAT. Generic V-LAMP-ON/OFF refuse. Scanner reports bracket imbalances in m4.zil and syntax.zil; manual raw search finds no set/clear operations in either, syntax only FIND ONBIT. These limitations are disclosed, not silently treated as a perfect parse.
 

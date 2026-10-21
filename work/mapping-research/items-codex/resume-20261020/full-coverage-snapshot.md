@@ -1,10 +1,10 @@
 # Full-scope evidence reconciliation snapshot
 
-Generated 2026-10-21T14:54:09.804Z. 26 titles × 93 listed scope slots. This is an evidence inventory, NOT a finished-cell denominator or closure tally. No-dedicated-bit alternatives, derived fields and title-specific status fields still require qualified evidence. Read the JSON for every slot.
+Generated 2026-10-21T15:05:00.004Z. 26 titles × 93 listed scope slots. This is an evidence inventory, NOT a finished-cell denominator or closure tally. No-dedicated-bit alternatives, derived fields and title-specific status fields still require qualified evidence. Read the JSON for every slot.
 
 | Title | Digest prefix | Direct attribute/special fact slots | Slots requiring evidence reconciliation | Current classification |
 |---|---|---:|---:|---|
-| Ballyhoo.z3.js | 8db665f95c64 | 12 | 81 | confirmed-zil-family/validated |
+| Ballyhoo.z3.js | 8db665f95c64 | 13 | 80 | confirmed-zil-family/validated |
 | Borderzo.z5.js | b42d5a7db4df | 12 | 81 | confirmed-zil-family/validated |
 | Cutthroats.z3.js | 860073025794 | 11 | 82 | confirmed-zil-family/validated |
 | Deadline.z3.js | 9c6eadbb30bb | 6 | 87 | confirmed-zil-family/validated |

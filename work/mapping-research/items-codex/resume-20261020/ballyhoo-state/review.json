@@ -1,0 +1,13 @@
+{
+  "reviewer": "Independent non-author subagent /root/zil_food_independent; not old bus-seat acceptance",
+  "verdict": "ACCEPT state semantics only",
+  "sourceSha256": "3a396b91fc592a94745ac3f2c1c0383589de2af1e48ad2e46b29003ebc91e06f",
+  "delta": "Only existing Ballyhoo digest attributeMap.on absent->24",
+  "exception": "Standing cited-source exception: single native positive plus complete-source search with no second positive; no extra exception-negative requirement",
+  "sourceQualification": "RADIO sole mutable non-room owner in cited source; parser warnings/adjacent-build qualification retained; no universal current-byte writer proof",
+  "native": "Original production radio48 on/off model matches actual replies/bit tests; no injection/forcedRAM; repeated OFF key overwrites first OFF",
+  "domain": "Current239-object bound,37bootbit24 owners with radiooff; original186on37/off36 totals not room counts",
+  "gate": "Ballyhoo/LostPig/Alabaster3completed rows,0differences",
+  "operator": "13 PASS / 0 FAIL",
+  "consumerLimits": "switchablefalse/lightfalse/tags[]/no activation commands; activation consumer remains OPEN; no whole-title/project completion"
+}

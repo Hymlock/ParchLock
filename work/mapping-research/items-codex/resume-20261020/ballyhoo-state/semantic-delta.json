@@ -1,0 +1,8 @@
+{
+  "digest": "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588",
+  "path": "attributeMap.on",
+  "before": "absent",
+  "after": 24,
+  "otherSemanticChanges": 0,
+  "sourceSha256": "3a396b91fc592a94745ac3f2c1c0383589de2af1e48ad2e46b29003ebc91e06f"
+}

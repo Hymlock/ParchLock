@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-21T14:54:09.804Z",
-  "factsSha256": "8ca91faa75c63295856f613dcf8904653089bfb213cd727a10107b3ec1886b0b",
+  "generatedAt": "2026-10-21T15:05:00.004Z",
+  "factsSha256": "3a396b91fc592a94745ac3f2c1c0383589de2af1e48ad2e46b29003ebc91e06f",
   "scope": "Reconciliation report only, not a second registry/ledger and not a completion percentage",
   "titleCount": 26,
   "keysPerTitle": 93,
@@ -559,7 +559,10 @@
         {
           "area": "attribute",
           "key": "on",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "attributeMap.on",
+          "value": 24,
+          "auditPointer": "Native radio48 ON/OFF24 plus cited whole-source single-native-positive exception (no second mutable nonroomowner). Qualified source not exactbuild; arbitrary-byte candidates not writer proof. Production model on agrees false/true with native, switchability/light/tags/activation remain OPEN. Independent non-author subagent current-source ACCEPT; operator13/0,3engine3row0diff. items-codex/resume-20261020/ballyhoo-state/.",
           "historicDraft": {
             "value": null,
             "status": "unknown",

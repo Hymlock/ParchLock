@@ -126,7 +126,10 @@ var ModuleStatFactsClaude = {
         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
         // (source: APE, MUNRAB, GUARD, JOEY, CON, THUMB, FAT, DEALER, HAWKER, JENNY, HYP, DICK, JIM, ANDREW (way.zil, outside.zil, bigtop.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
-        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21 },
+        // ONBIT24: native radio48 on/off tests and bit transitions; cited whole-source scan finds
+        // RADIO the sole mutable non-room owner (single-owner exception). Adjacent source is not
+        // asserted exact-build; room/global owners do not imply switchability. See ballyhoo-on/.
+        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21, "on": 24 },
         // Native i (walkthrough step 90) tests bit6 TRUE on pink dot 231 / blue dot 71 inside the open ticket 122 and
         // omits them; tests it FALSE on bucket 65, meat 102, bullwhip 16, ticket 122 and prints them. Source NDESCBIT 6
         // exact (114/114).
