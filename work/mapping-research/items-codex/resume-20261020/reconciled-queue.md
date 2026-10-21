@@ -55,3 +55,5 @@ Moonmist on10 native audit and integration now complete (see latest commit/check
 
 - 0d1bf83 Deadline animate20 + actor exclusion accepted; fresh Dunbar/George vssofa, parity0diff/operator13/0. Current resolver Talk observed; conversation unverified. Old learned Switch pathway not freshly reproduced, unresolved.
 - Moonmist worn4130 REVISE: original attributeMap.worn is ineffective at current source; wornAttribute21 marks rooms too. Baseline room predicates already false, so new map regression NOT established. See moonmist-worn-safety audit; native travel and reviewed design still needed.
+
+- 729af51 Starcross worn24 state integrated after new native tattered suit176 trade/wear/remove proof plus normal144 and held library/basket negatives. Old single-owner claim withdrawn. Current Equipment normal worn+Remove then unworn; Wear capability/alternative handler consumer still OPEN.

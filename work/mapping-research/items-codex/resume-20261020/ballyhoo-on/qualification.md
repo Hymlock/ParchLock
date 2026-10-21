@@ -1,0 +1,9 @@
+# Ballyhoo Grok4119 source qualification: pending
+
+Located original cached historicalsource-ballyhoo-9f779e8. All11 ZIL files hashed and whole-module tokenized ONBIT operation scan retained. Literal source writes set/clear only RADIO; room ONBIT is read in parser. The sole nonliteral flag operation reported is FIND-IN read-only FSET? .W .WHAT. Generic V-LAMP-ON/OFF refuse. Scanner reports bracket imbalances in m4.zil and syntax.zil; manual raw search finds no set/clear operations in either, syntax only FIND ONBIT. These limitations are disclosed, not silently treated as a perfect parse.
+
+Strong provenance: archived m4-release.zip release97/serial851218 matches EVERY byte of the current story declared payload128556bytes (current asset153600bytes includes a nonzero trailer). Archived m4.zip is release99/serial861014. This ties archived release binary to current executable payload; it does not establish that all adjacent source text compiled that release. README explicitly warns source snapshot need not be exact production arrangement. The older source-flags object-set match covers31 static ONBIT rooms; earlier current native/domain work reported36 lit rooms, so exact source-build equivalence is not claimed.
+
+Every-byte current-payload set/clear24 enumeration gives8 candidate decodings, including5 non-radio candidates. This overapproximation includes data/strings/operands and is NOT an instruction-boundary, reachability or single-owner proof. Do not claim those five are real alternate owners, nor dismiss them without proof. Source-provenance.json records exact candidates.
+
+No Ballyhoo runtime edit or new ACCEPT. Next: qualify current-module writers/owner domain or obtain independent source-exception adjudication before adopting old radio-only state proposal. Existing native radio on/off evidence still valid; state does not imply switchability. This research is separate from completed Starcross729af51.
