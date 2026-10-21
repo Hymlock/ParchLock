@@ -1,0 +1,451 @@
+{
+  "method": "Unmodified story, native WAIT/SCORE; same-evaluation RAM/header/grid/model; no forced state, no probes requested",
+  "sourceHashes": {
+    "js/StatTracker.js": "c339a1930d24e7d281ea5b26e3da138f4079247153d53c25ebdc60f72311c069",
+    "js/ModuleStatFacts.js": "5df94a7e23fec8b6b1380054506ae4e358f89357ce83f8debd0bbb6c050399d3",
+    "js/ModuleStatFactsClaude.js": "fc9b847f3618cd39e1bde8dec3509c7f8137de93cb5ab01598b0968aaeadeab8"
+  },
+  "results": [
+    {
+      "game": "Planetfall.z3.js",
+      "samples": [
+        {
+          "command": null,
+          "digest": "b73c750df3a3d6781072eb7f9f562d5c60bfc6dc8203f4952ebff50f04f412cf",
+          "header": {
+            "version": 3,
+            "clockGame": false,
+            "interpreterStatus": true
+          },
+          "firstGlobals": [
+            235,
+            0,
+            4600,
+            22108,
+            0,
+            0,
+            22100,
+            22090
+          ],
+          "status": " Deck Nine                                                                                                                              Score: 0  Turns: 4600 ",
+          "stats": [
+            {
+              "key": "score",
+              "label": "Score",
+              "value": 0,
+              "max": null,
+              "unit": "plain",
+              "kind": "score",
+              "seen": 55,
+              "source": "status",
+              "confirmed": true,
+              "lastChange": null
+            },
+            {
+              "key": "turns",
+              "label": "Turns",
+              "value": 4600,
+              "max": null,
+              "unit": "plain",
+              "kind": "counter",
+              "seen": 55,
+              "source": "status",
+              "confirmed": true,
+              "lastChange": null
+            }
+          ],
+          "promotedGlobals": {},
+          "scoreUnavailable": false,
+          "nativeReply": null
+        },
+        {
+          "command": "wait",
+          "digest": "b73c750df3a3d6781072eb7f9f562d5c60bfc6dc8203f4952ebff50f04f412cf",
+          "header": {
+            "version": 3,
+            "clockGame": false,
+            "interpreterStatus": true
+          },
+          "firstGlobals": [
+            235,
+            0,
+            4640,
+            22108,
+            0,
+            0,
+            22100,
+            22090
+          ],
+          "status": " Deck Nine                                                                   ",
+          "stats": [
+            {
+              "key": "score",
+              "label": "Score",
+              "value": 0,
+              "max": null,
+              "unit": "plain",
+              "kind": "score",
+              "seen": 67,
+              "source": "status",
+              "confirmed": true,
+              "lastChange": null
+            },
+            {
+              "key": "turns",
+              "label": "Turns",
+              "value": 4640,
+              "max": null,
+              "unit": "plain",
+              "kind": "counter",
+              "seen": 67,
+              "source": "status",
+              "confirmed": true,
+              "lastChange": null
+            }
+          ],
+          "promotedGlobals": {},
+          "scoreUnavailable": false,
+          "nativeReply": "Time passes...\n \n> "
+        },
+        {
+          "command": "wait",
+          "digest": "b73c750df3a3d6781072eb7f9f562d5c60bfc6dc8203f4952ebff50f04f412cf",
+          "header": {
+            "version": 3,
+            "clockGame": false,
+            "interpreterStatus": true
+          },
+          "firstGlobals": [
+            235,
+            0,
+            4680,
+            22108,
+            0,
+            0,
+            22100,
+            22090
+          ],
+          "status": " Deck Nine                                             Score: 0  Turns: 4680 ",
+          "stats": [
+            {
+              "key": "score",
+              "label": "Score",
+              "value": 0,
+              "max": null,
+              "unit": "plain",
+              "kind": "score",
+              "seen": 79,
+              "source": "status",
+              "confirmed": true,
+              "lastChange": null
+            },
+            {
+              "key": "turns",
+              "label": "Turns",
+              "value": 4680,
+              "max": null,
+              "unit": "plain",
+              "kind": "counter",
+              "seen": 79,
+              "source": "status",
+              "confirmed": true,
+              "lastChange": null
+            }
+          ],
+          "promotedGlobals": {},
+          "scoreUnavailable": false,
+          "nativeReply": "Time passes...\n \n> "
+        },
+        {
+          "command": "wait",
+          "digest": "b73c750df3a3d6781072eb7f9f562d5c60bfc6dc8203f4952ebff50f04f412cf",
+          "header": {
+            "version": 3,
+            "clockGame": false,
+            "interpreterStatus": true
+          },
+          "firstGlobals": [
+            235,
+            0,
+            4720,
+            22108,
+            0,
+            0,
+            22100,
+            22090
+          ],
+          "status": " Deck Nine                                             Score: 0  Turns: 4720 ",
+          "stats": [
+            {
+              "key": "score",
+              "label": "Score",
+              "value": 0,
+              "max": null,
+              "unit": "plain",
+              "kind": "score",
+              "seen": 91,
+              "source": "status",
+              "confirmed": true,
+              "lastChange": null
+            },
+            {
+              "key": "turns",
+              "label": "Turns",
+              "value": 4720,
+              "max": null,
+              "unit": "plain",
+              "kind": "counter",
+              "seen": 91,
+              "source": "status",
+              "confirmed": true,
+              "lastChange": null
+            }
+          ],
+          "promotedGlobals": {},
+          "scoreUnavailable": false,
+          "nativeReply": "Time passes...\n \n> "
+        },
+        {
+          "command": "score",
+          "digest": "b73c750df3a3d6781072eb7f9f562d5c60bfc6dc8203f4952ebff50f04f412cf",
+          "header": {
+            "version": 3,
+            "clockGame": false,
+            "interpreterStatus": true
+          },
+          "firstGlobals": [
+            235,
+            0,
+            4720,
+            22108,
+            0,
+            0,
+            22100,
+            22090
+          ],
+          "status": " Deck Nine                                             Score: 0  Turns: 4720 ",
+          "stats": [
+            {
+              "key": "score",
+              "label": "Score",
+              "value": 0,
+              "max": 80,
+              "unit": "fraction",
+              "kind": "score",
+              "seen": 106,
+              "source": "status",
+              "confirmed": true,
+              "lastChange": null,
+              "boundSource": "score-command"
+            },
+            {
+              "key": "turns",
+              "label": "Turns",
+              "value": 4720,
+              "max": null,
+              "unit": "plain",
+              "kind": "counter",
+              "seen": 106,
+              "source": "status",
+              "confirmed": true,
+              "lastChange": null
+            }
+          ],
+          "promotedGlobals": {},
+          "scoreUnavailable": false,
+          "nativeReply": "Your score would be 0 (out of 80 points). It is Day 1 of your adventure. Current Galactic Standard Time (adjusted to your local day-cycle) is 4720.\nThis score gives you the rank of Beginner.\n \n> "
+        }
+      ]
+    },
+    {
+      "game": "Deadline.z3.js",
+      "samples": [
+        {
+          "command": null,
+          "digest": "9c6eadbb30bbe1610230508865ec40969a7c54917fc40591a189c9f3835dffc4",
+          "header": {
+            "version": 3,
+            "clockGame": true,
+            "interpreterStatus": true
+          },
+          "firstGlobals": [
+            249,
+            8,
+            0,
+            12139,
+            11997,
+            11777,
+            11761,
+            11745
+          ],
+          "status": " South Lawn                                                                                                                                     Time: 8:00 AM ",
+          "stats": [
+            {
+              "key": "time",
+              "label": "Time",
+              "value": "8:00 AM",
+              "max": null,
+              "unit": "text",
+              "kind": "clock",
+              "seen": 55,
+              "source": "status",
+              "confirmed": true,
+              "lastChange": null
+            }
+          ],
+          "promotedGlobals": {},
+          "scoreUnavailable": true,
+          "nativeReply": null
+        },
+        {
+          "command": "wait",
+          "digest": "9c6eadbb30bbe1610230508865ec40969a7c54917fc40591a189c9f3835dffc4",
+          "header": {
+            "version": 3,
+            "clockGame": true,
+            "interpreterStatus": true
+          },
+          "firstGlobals": [
+            249,
+            8,
+            3,
+            12139,
+            11997,
+            11777,
+            11761,
+            11745
+          ],
+          "status": " South Lawn                                                                  ",
+          "stats": [
+            {
+              "key": "time",
+              "label": "Time",
+              "value": "8:03 AM",
+              "max": null,
+              "unit": "text",
+              "kind": "clock",
+              "seen": 67,
+              "source": "status",
+              "confirmed": true,
+              "lastChange": null
+            }
+          ],
+          "promotedGlobals": {},
+          "scoreUnavailable": true,
+          "nativeReply": "Time passes...\nIt is now 8:03 am.\n \n> "
+        },
+        {
+          "command": "wait",
+          "digest": "9c6eadbb30bbe1610230508865ec40969a7c54917fc40591a189c9f3835dffc4",
+          "header": {
+            "version": 3,
+            "clockGame": true,
+            "interpreterStatus": true
+          },
+          "firstGlobals": [
+            249,
+            8,
+            6,
+            12139,
+            11997,
+            11777,
+            11761,
+            11745
+          ],
+          "status": " South Lawn                                                    Time: 8:06 AM ",
+          "stats": [
+            {
+              "key": "time",
+              "label": "Time",
+              "value": "8:06 AM",
+              "max": null,
+              "unit": "text",
+              "kind": "clock",
+              "seen": 82,
+              "source": "status",
+              "confirmed": true,
+              "lastChange": null
+            }
+          ],
+          "promotedGlobals": {},
+          "scoreUnavailable": true,
+          "nativeReply": "Time passes...\nIt is now 8:06 am.\n \n> "
+        },
+        {
+          "command": "wait",
+          "digest": "9c6eadbb30bbe1610230508865ec40969a7c54917fc40591a189c9f3835dffc4",
+          "header": {
+            "version": 3,
+            "clockGame": true,
+            "interpreterStatus": true
+          },
+          "firstGlobals": [
+            249,
+            8,
+            9,
+            12139,
+            11997,
+            11777,
+            11761,
+            11745
+          ],
+          "status": " South Lawn                                                    Time: 8:09 AM ",
+          "stats": [
+            {
+              "key": "time",
+              "label": "Time",
+              "value": "8:09 AM",
+              "max": null,
+              "unit": "text",
+              "kind": "clock",
+              "seen": 94,
+              "source": "status",
+              "confirmed": true,
+              "lastChange": null
+            }
+          ],
+          "promotedGlobals": {},
+          "scoreUnavailable": true,
+          "nativeReply": "Time passes...\nIt is now 8:09 am.\n \n> "
+        },
+        {
+          "command": "score",
+          "digest": "9c6eadbb30bbe1610230508865ec40969a7c54917fc40591a189c9f3835dffc4",
+          "header": {
+            "version": 3,
+            "clockGame": true,
+            "interpreterStatus": true
+          },
+          "firstGlobals": [
+            249,
+            8,
+            10,
+            12139,
+            11997,
+            11777,
+            11761,
+            11745
+          ],
+          "status": " South Lawn                                                    Time: 8:10 AM ",
+          "stats": [
+            {
+              "key": "time",
+              "label": "Time",
+              "value": "8:10 AM",
+              "max": null,
+              "unit": "text",
+              "kind": "clock",
+              "seen": 109,
+              "source": "status",
+              "confirmed": true,
+              "lastChange": null
+            }
+          ],
+          "promotedGlobals": {},
+          "scoreUnavailable": true,
+          "nativeReply": "You are an amateur inspector, at best.\n \n> "
+        }
+      ]
+    }
+  ]
+}
