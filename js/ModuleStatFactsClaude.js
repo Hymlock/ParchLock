@@ -163,6 +163,9 @@ var ModuleStatFactsClaude = {
     // DESC "it"). No PLAYER global; WINNER G197 is mutable (globals.zil 923/928 BELBOZ, verbs.zil 334/359 PRSO). Native TAKE puts the
     // item in 52 (zil-player-root); app previously read 22 with an empty inventory.
     "2d097ac9e4081b68658d0331345176946253cb349ed66eeff88533826cae29d0": {
+        // Native EAT accepts these identities (held or in the room), not a
+        // FOODBIT. Both foods are consumed; knife/Drink bread refuse.
+        "attributeObjects": { "edible": [43, 123] },
         "playerObject": 52,
         // SURFACEBIT 3 (grok1 2026-10-16, Jericho walk + Frotz seed 1 per c3f1254, target-dispatched occurrence counted beyond
         // a same-step control): 'put spell book on carpet' (step 209) "Done." 95:3 TRUE; 'put burin on idol' (148) "There's

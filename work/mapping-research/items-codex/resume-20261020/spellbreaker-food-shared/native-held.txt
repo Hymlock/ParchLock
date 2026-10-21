@@ -1,0 +1,8 @@
+Spellbreaker.z3.js take bread ops 46
+Spellbreaker.z3.js take smoked fish ops 46
+Spellbreaker.z3.js inventory ops 84
+Spellbreaker.z3.js eat knife ops 39
+Spellbreaker.z3.js drink bread ops 39
+Spellbreaker.z3.js eat bread ops 40
+Spellbreaker.z3.js eat smoked fish ops 39
+Spellbreaker.z3.js i ops 62

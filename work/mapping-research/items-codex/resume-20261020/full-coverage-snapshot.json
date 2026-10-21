@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-21T15:41:03.668Z",
-  "factsSha256": "b668270679487a48a402ec8e750e46e02b69d65f2768aecbffbe3016e0e3b8de",
+  "generatedAt": "2026-10-21T20:20:19.240Z",
+  "factsSha256": "ef060f2b5e9c96d0ba1cc33462fbb005d792d7368f3b1ab90320f3a621e82634",
   "scope": "Reconciliation report only, not a second registry/ledger and not a completion percentage",
   "titleCount": 26,
-  "keysPerTitle": 93,
+  "keysPerTitle": 94,
   "universe": [
     {
       "area": "attribute",
@@ -248,6 +248,10 @@
     {
       "area": "fact",
       "key": "equipmentState"
+    },
+    {
+      "area": "fact",
+      "key": "attributeObjects"
     },
     {
       "area": "fact",
@@ -955,6 +959,11 @@
         {
           "area": "fact",
           "key": "equipmentState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "attributeObjects",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -1689,6 +1698,11 @@
         },
         {
           "area": "fact",
+          "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -2408,6 +2422,11 @@
         {
           "area": "fact",
           "key": "equipmentState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "attributeObjects",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -3133,6 +3152,11 @@
         {
           "area": "fact",
           "key": "equipmentState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "attributeObjects",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -3863,6 +3887,11 @@
         },
         {
           "area": "fact",
+          "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -4578,6 +4607,11 @@
         },
         {
           "area": "fact",
+          "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -4842,6 +4876,7 @@
           "state": "FACT_PRESENT_REVIEW_SCOPE",
           "owner": "attributeMap.edible",
           "value": 7,
+          "auditPointer": "Independent non-author subagent current-source ACCEPT October21: exactedible7, sole249domainbeef34, nativeEAT7TRUE success/removal, shovel337FALSE refusal, DRINKbeef refusal. Whole20sourcefiles qualified; adjacentbinarycurrentdeclaredpayloadmatch, textcompilationunproven. Production menu/provider Eat/noDrink; operator13/0,3engine0diff. infidel-edible/native-verification.json. No consumedstatebit or whole-title closure.",
           "historicDraft": {
             "value": 7,
             "status": "hypothesis",
@@ -5291,6 +5326,11 @@
         {
           "area": "fact",
           "key": "equipmentState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "attributeObjects",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -6005,6 +6045,11 @@
         },
         {
           "area": "fact",
+          "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -6714,6 +6759,11 @@
         {
           "area": "fact",
           "key": "equipmentState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "attributeObjects",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -7452,6 +7502,11 @@
         },
         {
           "area": "fact",
+          "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -8175,6 +8230,11 @@
         },
         {
           "area": "fact",
+          "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -8886,6 +8946,11 @@
         {
           "area": "fact",
           "key": "equipmentState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "attributeObjects",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -9612,6 +9677,11 @@
         },
         {
           "area": "fact",
+          "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -10134,7 +10204,11 @@
         {
           "area": "attribute",
           "key": "worn",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "equipmentState.wornWhen",
+          "value": {
+            "predicate": "wearable-direct-player"
+          },
           "auditPointer": "Measured alternative, no worn bit: authenticated equipmentState.wornWhen wearable-direct-player, direct player containment plus rawwearable21. Currentnative amulet60 held/dropped/nested controls and suit95 nativeworn; finalcandidate Remove/nativeDrop/nestedfalse PASS. Focused20/operator13/0; immutable309x2 completed3paired-provenFLAKY/0observedregressions,7matchingno-prompt coveragegaps. Independent non-author subagent /root/sorcerer_worn_blind current-source ACCEPT. resume-20261020/sorcerer-worn-shared/.",
           "historicDraft": {
             "value": null,
@@ -10199,7 +10273,11 @@
         {
           "area": "attribute",
           "key": "isWorn",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "equipmentState.wornWhen",
+          "value": {
+            "predicate": "wearable-direct-player"
+          },
           "auditPointer": "Measured alternative, no worn bit: authenticated equipmentState.wornWhen wearable-direct-player, direct player containment plus rawwearable21. Currentnative amulet60 held/dropped/nested controls and suit95 nativeworn; finalcandidate Remove/nativeDrop/nestedfalse PASS. Focused20/operator13/0; immutable309x2 completed3paired-provenFLAKY/0observedregressions,7matchingno-prompt coveragegaps. Independent non-author subagent /root/sorcerer_worn_blind current-source ACCEPT. resume-20261020/sorcerer-worn-shared/.",
           "historicDraft": {
             "value": null,
@@ -10356,6 +10434,11 @@
           "value": {
             "wornWhen": "wearable-direct-player"
           }
+        },
+        {
+          "area": "fact",
+          "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
           "area": "fact",
@@ -10533,6 +10616,7 @@
       "historicClassification": "confirmed-zil-family/validated",
       "classificationNote": "Current source-bound decoder result is distinct from historical matrix",
       "factKeys": [
+        "attributeObjects",
         "playerObject",
         "attributeMap"
       ],
@@ -10617,7 +10701,14 @@
         {
           "area": "attribute",
           "key": "edible",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "attributeObjects.edible",
+          "value": {
+            "objects": [
+              43,
+              123
+            ]
+          },
           "historicDraft": {
             "value": null,
             "status": "unknown",
@@ -11049,6 +11140,18 @@
           "area": "fact",
           "key": "equipmentState",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "attributeObjects",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "attributeObjects",
+          "value": {
+            "edible": [
+              43,
+              123
+            ]
+          }
         },
         {
           "area": "fact",
@@ -11742,6 +11845,11 @@
         {
           "area": "fact",
           "key": "equipmentState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "attributeObjects",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -12463,6 +12571,11 @@
         },
         {
           "area": "fact",
+          "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -13179,6 +13292,11 @@
         },
         {
           "area": "fact",
+          "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -13880,6 +13998,11 @@
         {
           "area": "fact",
           "key": "equipmentState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "attributeObjects",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -14640,6 +14763,11 @@
         },
         {
           "area": "fact",
+          "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -15373,6 +15501,11 @@
         {
           "area": "fact",
           "key": "equipmentState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "attributeObjects",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -16115,6 +16248,11 @@
         },
         {
           "area": "fact",
+          "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -16820,6 +16958,11 @@
         {
           "area": "fact",
           "key": "equipmentState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "attributeObjects",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -17559,6 +17702,11 @@
         {
           "area": "fact",
           "key": "equipmentState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "attributeObjects",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -18310,6 +18458,11 @@
         },
         {
           "area": "fact",
+          "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -19047,6 +19200,11 @@
         {
           "area": "fact",
           "key": "equipmentState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "attributeObjects",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {

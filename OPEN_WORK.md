@@ -409,3 +409,5 @@ Digest fact key `locationGlobal` (ModuleStatFactsClaude, executableLayoutFacts r
 - Sorcerer derived worn consumer: reviewed candidate now matches native directheld/dropped/nested states; full immutable catalog classified3paired-provenFLAKY/0unresolved with7matchingcoveragegaps; independent current-source ACCEPT for this bounded consumer. Other Sorcerer flag/illumination and broader full26 cells stay open. Existing wearable21 remains accepted, no fake worn bit. See resume-20261020/sorcerer-worn-compared-proposal.md.
 
 - Infidel edible7 production consumer independently ACCEPTED: Eat/noDrink and actual food removal, scoped gates pass. Consumption behavior is separate from a consumed-state flag and full-title completion.
+
+- Spellbreaker identity-based Eat consumer: native held+ground bread/fish semantics and menu/provider/removal verified; shared309x2 classification complete with0unresolved,7paired-proven variable fields and7matching no-prompt coverage gaps. Final independent verdict retained in the packet; broader title remains open. Existing on8 is already mapped; magical illumination display and other title cells remain open.

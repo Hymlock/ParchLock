@@ -194,7 +194,7 @@ var ActionSynth = {
                 if (!learned && copy[flag]) try {
                     measured = !!(typeof AttributeSchema !== 'undefined'
                         && AttributeSchema.measuredFlagOwner
-                        && AttributeSchema.measuredFlagOwner(mem, flag));
+                        && AttributeSchema.measuredFlagOwner(mem, flag, obj.id));
                 } catch (eOwner) {}
                 if (!learned && !measured) copy[flag] = false;
             });

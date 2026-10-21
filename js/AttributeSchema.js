@@ -142,11 +142,14 @@ var AttributeSchema = {
         return true;
     },
     // Reuse digest/stable-header ownership; decode the family only for a mapped flag.
-    measuredFlagOwner: function (mem, flag) {
+    measuredFlagOwner: function (mem, flag, objectId) {
         try {
             if (!mem || typeof ZRamReader === 'undefined' || !ZRamReader.executableLayoutFacts) return false;
             var fact = ZRamReader.executableLayoutFacts(mem), map = fact && fact.attributeMap;
-            if (!map || !Object.prototype.hasOwnProperty.call(map, flag)) return false;
+            if (!map || !Object.prototype.hasOwnProperty.call(map, flag)) {
+                var ids = AttributeSchema.objectCapabilityIds(mem, flag);
+                return !!(ids && Number.isInteger(objectId) && ids.indexOf(objectId) >= 0);
+            }
             var bit = map[flag], h = ZRamReader.header(mem);
             if (!Number.isInteger(bit) || !h || h.version < 3 || h.version > 5
                 || bit < 0 || bit >= (h.version <= 3 ? 32 : 48)) return false;
@@ -155,6 +158,32 @@ var AttributeSchema = {
             return !!(family && family.classification === 'confirmed-zil-family'
                 && family.evidence === 'validated' && AttributeSchema.bitFor(flag, mem) === bit);
         } catch (e) { return false; }
+    },
+    // Some source handlers define a capability by object identity, not a bit.
+    // Initially only edible is qualified. Never use names/shared raw flags.
+    objectCapabilityIds: function (mem, flag) {
+        try {
+            if (flag !== "edible" || !mem || typeof ZRamReader === "undefined" ||
+                !ZRamReader.executableLayoutFacts) return null;
+            var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest
+                ? ModuleLibrary.currentExecutableDigest() : null;
+            var fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
+            if (!fact || !fact.attributeObjects || !Object.prototype.hasOwnProperty.call(fact.attributeObjects, flag) ||
+                ZRamReader.executableLayoutFacts(mem) !== fact ||
+                (ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) ||
+                (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, flag))) return null;
+            var ids = fact.attributeObjects && fact.attributeObjects[flag], h = ZRamReader.header(mem);
+            if (!Array.isArray(ids) || !ids.length || !h || h.version < 3 || h.version > 5) return null;
+            var family = AttributeSchema._familyOf(mem);
+            if (!family || family.classification !== "confirmed-zil-family" || family.evidence !== "validated") return null;
+            var count = ZRamReader.objectCount(mem, h), seen = {};
+            if (!ids.every(function (id) {
+                if (!Number.isInteger(id) || id < 2 || id > count || seen[id]) return false;
+                seen[id] = true;
+                return true;
+            })) return null;
+            return ids;
+        } catch (eObjectCapability) { return null; }
     },
     bitFor: function (flagName, mem) {
         if (!flagName || !Object.prototype.hasOwnProperty.call(AttributeSchema.PROFILE, flagName)) return null;
@@ -184,6 +213,10 @@ var AttributeSchema = {
             // An explicit null in a measured map means this executable has no such bit: its library numbers another
             // attribute there (phlegm/heist: bit 3 is container, not the I6 default concealed).
             if (map && Object.prototype.hasOwnProperty.call(map, flagName) && map[flagName] === null) return null;
+            // Identity-owned capability has no numeric attribute. A malformed
+            // declaration must not silently borrow an Inform fallback bit.
+            if (flagName === "edible" && fact && fact.attributeObjects &&
+                Object.prototype.hasOwnProperty.call(fact.attributeObjects, flagName)) return null;
             // ZIL fail-closed (operator 2026-10-11): never apply I6 PROFILE bit
             // numbers to non-Inform stories for containment/open family. Wrong
             // PROFILE made Zork mailbox look non-container and leaked false
@@ -319,8 +352,25 @@ var AttributeSchema = {
                 }
             } catch (eCal) {}
         }
+        AttributeSchema.applyObjectCapabilities(attrs, obj, mem);
         AttributeSchema.applyEquipmentState(attrs, obj, mem);
         return attrs;
+    },
+
+    applyObjectCapabilities: function (attrs, obj, mem) {
+        var owns = false;
+        try {
+            var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest
+                ? ModuleLibrary.currentExecutableDigest() : null;
+            var fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
+            if (!fact || !fact.attributeObjects || !Object.prototype.hasOwnProperty.call(fact.attributeObjects, "edible") ||
+                (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, "edible"))) return;
+            owns = true;
+            if (ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) return;
+            attrs.edible = false;
+            var ids = AttributeSchema.objectCapabilityIds(mem, "edible");
+            attrs.edible = !!(obj && ids && Number.isInteger(obj.id) && ids.indexOf(obj.id) >= 0);
+        } catch (eObjectCapability) { if (owns) attrs.edible = false; }
     },
 
     // Only an authenticated measured actor layout may own this relationship.

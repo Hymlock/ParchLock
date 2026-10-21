@@ -153,7 +153,8 @@
   "Spellbreaker.z3.js": {
     "supporter": "Codex AUDIT PASS #3736 (e5befe6 supporter3; raw carpet/idol vs zipper; source7/7)",
     "animate": "Codex AUDIT PASS #3769 (4cb01d2 animate31; raw Belboz/ogre vs zipper; source PERSON31)",
-    "talkable": "Codex AUDIT PASS #3769 (4cb01d2 paired PERSON31 talkable; raw ASK replies vs zipper)"
+    "talkable": "Codex AUDIT PASS #3769 (4cb01d2 paired PERSON31 talkable; raw ASK replies vs zipper)",
+    "edible": "Codex integration independently ACCEPTED by non-author subagent sorcerer_worn_blind (not historical bus-seat acceptance): digest2d097ac9 identity-defined attributeObjects.edible[43,123], no FOODBIT. Native held+ground bread/fish consume; knife refusal/Drink refusal. Same-memory validated-ZIL bounded membership owner, strong declarations retained. Focused27/operator13/0, immutable309x2 seven paired-proven variable fields,0unresolved;7coveragegaps and existingD31eightfail retained. Packet items-codex/resume-20261020/spellbreaker-food-shared. No title closure."
   },
   "Suspended.z3.js": {
     "wearable": "Claude AUDIT PASS 2026-10-20 (wearable31: agent-tools g1-suC/g1-suD install grasper 63:31 TRUE x2 \"now being worn\", g1-suC install container 76:31 FALSE; source WEARABLEBIT only SURGERY-HAND objects.zil:393, V-WEAR verbs.zil:1741)",

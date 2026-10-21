@@ -1,0 +1,28 @@
+{
+  "storySha256": "2d097ac9e4081b68658d0331345176946253cb349ed66eeff88533826cae29d0",
+  "assetSha256": "5ad1dc88e8c928bb1a25ec2f256183387c52fed428595137a8a625ec00e14251",
+  "captureSha256": "2a8d780c3828f73466f6835830f74aed43b8c51d5b92b0cf625053959716a2f7",
+  "routeSha256": "0b27ad8982cadae13c34b40a92fce440cd44887942ff537913a792cb95bb600c",
+  "positiveOwners": [
+    43,
+    123
+  ],
+  "negative": 170,
+  "proof": "Native held bread/fish each eat successfully and move parent0; knife refuses; Drinkbreadrefuses. Currentmenu/provider lacksEat on both foods.",
+  "source": "Historicalsource6f83ba4 verbs.zil565 identity compares FISH/BREAD thenREMOVE; no FOODBIT invented. Native current evidence, not source exact-build claim.",
+  "scope": "Native alternative mechanism semantics and missingconsumer only; no production fact/consumer change or whole-title closure",
+  "groundProof": {
+    "captureSha256": "1905d1a491aa52e9f10965432bec6e6fc273423c885ee3bf27b6123a42f926ec",
+    "scope": "Both room45 foods eaten directly without TAKE, each native success and parent0; same originalroute5"
+  },
+  "sourceArchive": {
+    "revisionPrefix": "6f83ba4",
+    "release": 87,
+    "serial": "860904",
+    "declaredBytes": 128916,
+    "adjacentRawImage": "COMPILED/z6.z3",
+    "sha256": "e274e4ea6da1224eeb1ad2050bf55c3998426b4de49daa2d04f0fccbd9f987ae",
+    "declaredPayloadEqualsCurrent": true,
+    "textSourceRecompilationNotProven": true
+  }
+}
