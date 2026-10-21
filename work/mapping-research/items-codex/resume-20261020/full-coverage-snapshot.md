@@ -1,6 +1,6 @@
 # Full-scope evidence reconciliation snapshot
 
-Generated 2026-10-21T15:05:00.004Z. 26 titles × 93 listed scope slots. This is an evidence inventory, NOT a finished-cell denominator or closure tally. No-dedicated-bit alternatives, derived fields and title-specific status fields still require qualified evidence. Read the JSON for every slot.
+Generated 2026-10-21T15:41:03.668Z. 26 titles × 93 listed scope slots. This is an evidence inventory, NOT a finished-cell denominator or closure tally. No-dedicated-bit alternatives, derived fields and title-specific status fields still require qualified evidence. Read the JSON for every slot.
 
 | Title | Digest prefix | Direct attribute/special fact slots | Slots requiring evidence reconciliation | Current classification |
 |---|---|---:|---:|---|
@@ -10,14 +10,14 @@ Generated 2026-10-21T15:05:00.004Z. 26 titles × 93 listed scope slots. This is 
 | Deadline.z3.js | 9c6eadbb30bb | 6 | 87 | confirmed-zil-family/validated |
 | Enchanter.z3.js | 431678a618ba | 7 | 86 | confirmed-zil-family/validated |
 | HollywoodHijinx.z3.js | e3341f28a0cc | 5 | 88 | confirmed-zil-family/validated |
-| Infidel.z3.js | 91f78d4bbb6b | 8 | 85 | confirmed-zil-family/validated |
+| Infidel.z3.js | 91f78d4bbb6b | 9 | 84 | confirmed-zil-family/validated |
 | LeatherGoddessesofPhobos.z3.js | 103324c3b733 | 6 | 87 | confirmed-zil-family/validated |
 | Moonmist.z3.js | bcf65075f234 | 8 | 85 | confirmed-zil-family/validated |
 | Planetfall.z3.js | b73c750df3a3 | 11 | 82 | confirmed-zil-family/validated |
 | PlunderedHearts.z3.js | b53a2588c792 | 12 | 81 | confirmed-zil-family/validated |
 | Seastalker.z3.js | 502e5c8e4cb8 | 8 | 85 | confirmed-zil-family/validated |
 | Sherlock.z5.js | ba9c2c81d6b5 | 4 | 89 | unknown/rejected |
-| Sorcerer.z3.js | 3bf24a3d2df3 | 9 | 84 | confirmed-zil-family/validated |
+| Sorcerer.z3.js | 3bf24a3d2df3 | 10 | 83 | confirmed-zil-family/validated |
 | Spellbreaker.z3.js | 2d097ac9e408 | 5 | 88 | confirmed-zil-family/validated |
 | Starcross.z3.js | 1d9a69257349 | 4 | 89 | confirmed-zil-family/validated |
 | Stationfall.z3.js | 3c5656897dd2 | 8 | 85 | confirmed-zil-family/validated |

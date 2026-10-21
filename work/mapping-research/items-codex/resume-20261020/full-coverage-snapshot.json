@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-21T15:05:00.004Z",
-  "factsSha256": "3a396b91fc592a94745ac3f2c1c0383589de2af1e48ad2e46b29003ebc91e06f",
+  "generatedAt": "2026-10-21T15:41:03.668Z",
+  "factsSha256": "b668270679487a48a402ec8e750e46e02b69d65f2768aecbffbe3016e0e3b8de",
   "scope": "Reconciliation report only, not a second registry/ledger and not a completion percentage",
   "titleCount": 26,
   "keysPerTitle": 93,
@@ -4817,6 +4817,7 @@
           "state": "FACT_PRESENT_REVIEW_SCOPE",
           "owner": "attributeMap.container",
           "value": 20,
+          "auditPointer": "Codex takeover independent non-author subagent audit ACCEPT October21. Existing container20 mapping unchanged. Current digest-bound native matchbook49 OPEN/CLOSE20TRUE; retained native canteen28 OPEN20TRUE; heldshovel33 OPEN20FALSE refusal. Native matchbook Open/Close consumer works. Historical old map/matchbook/jar witnesses recovered but oldcapture exact-build unqualified. Evidence work/mapping-research/items-codex/resume-20261020/infidel-container-evidence.json; no universal openability/title closure.",
           "historicDraft": {
             "value": 20,
             "status": "hypothesis",
@@ -4838,7 +4839,9 @@
         {
           "area": "attribute",
           "key": "edible",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "attributeMap.edible",
+          "value": 7,
           "historicDraft": {
             "value": 7,
             "status": "hypothesis",
@@ -9789,6 +9792,7 @@
       "factKeys": [
         "openCapability",
         "attributeMap",
+        "equipmentState",
         "playerGlobal"
       ],
       "cells": [
@@ -10131,6 +10135,7 @@
           "area": "attribute",
           "key": "worn",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "auditPointer": "Measured alternative, no worn bit: authenticated equipmentState.wornWhen wearable-direct-player, direct player containment plus rawwearable21. Currentnative amulet60 held/dropped/nested controls and suit95 nativeworn; finalcandidate Remove/nativeDrop/nestedfalse PASS. Focused20/operator13/0; immutable309x2 completed3paired-provenFLAKY/0observedregressions,7matchingno-prompt coveragegaps. Independent non-author subagent /root/sorcerer_worn_blind current-source ACCEPT. resume-20261020/sorcerer-worn-shared/.",
           "historicDraft": {
             "value": null,
             "status": "unknown",
@@ -10195,6 +10200,7 @@
           "area": "attribute",
           "key": "isWorn",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "auditPointer": "Measured alternative, no worn bit: authenticated equipmentState.wornWhen wearable-direct-player, direct player containment plus rawwearable21. Currentnative amulet60 held/dropped/nested controls and suit95 nativeworn; finalcandidate Remove/nativeDrop/nestedfalse PASS. Focused20/operator13/0; immutable309x2 completed3paired-provenFLAKY/0observedregressions,7matchingno-prompt coveragegaps. Independent non-author subagent /root/sorcerer_worn_blind current-source ACCEPT. resume-20261020/sorcerer-worn-shared/.",
           "historicDraft": {
             "value": null,
             "status": "unknown",
@@ -10345,7 +10351,11 @@
         {
           "area": "fact",
           "key": "equipmentState",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "equipmentState",
+          "value": {
+            "wornWhen": "wearable-direct-player"
+          }
         },
         {
           "area": "fact",

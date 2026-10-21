@@ -60,3 +60,7 @@ Note: player nested in cot (supporter/enterable posture) — rooms O OK. Contain
 2. Native prove CONT/OPEN/SURFACE/ON from source bits (openCapability none supporter)
 3. FEATURE-ABSENT light/wear only after full FSET grep
 4. edible FOODBIT 7 single carrier — native eat
+
+## October21 FOODBIT7 production verification
+
+Sole bounded249object bit7 owner beef34; whole20file source corroborates. Native EAT succeeds/removes, heldshovel bit7FALSE refuses, DRINKbeef refuses. Exactedible7 fact adds Eat/noDrink to actual menu and LearnedWords; native consume removes Equipment row. Operator13/0,3engine0diff, independent non-author current-source ACCEPT. Adjacent raw22/830916 binary payload matches current declared93556bytes; no source recompilation claim. No consumedbit or whole-title closure. Packet infidel-food-evidence.json and infidel-edible/.

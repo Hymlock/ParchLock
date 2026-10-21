@@ -187,7 +187,9 @@ var ModuleStatFactsClaude = {
         "openCapability": { "all": ["container"], "none": ["supporter"] }
     },
     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
-        "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25 },
+        // FOODBIT7: sole bounded owner beef34, native EAT succeeds/removes;
+        // shovel33 false/refuses; DRINK beef refuses (not a consumed bit).
+        "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25, "edible": 7 },
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         // WEARBIT state22: native knapsack31/ring2 worn positives, shovel33 refusal; Grok4127 proposal independently replayed by Codex October20.
         "wornAttribute": 22
