@@ -1,0 +1,450 @@
+{
+  "rowsPerTree": 309,
+  "completedShards": 12,
+  "differences": [
+    {
+      "game": "Delusns.z5.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "initial": {
+        "base": [
+          "Self",
+          "east",
+          "west"
+        ],
+        "candidate": [
+          "east",
+          "west"
+        ]
+      },
+      "pairedRecheck": {
+        "base": [
+          "Self",
+          "east",
+          "west"
+        ],
+        "candidate": [
+          "Self",
+          "east",
+          "west"
+        ]
+      }
+    },
+    {
+      "game": "Mask.z5.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "initial": {
+        "base": [
+          "Men",
+          "Mr.",
+          "Mr.",
+          "Sean",
+          "floor",
+          "Dark stained oak paneling",
+          "well-polished brass knobs",
+          "plush red sofa",
+          "painting",
+          "oak door",
+          "glass door",
+          "main room",
+          "hat",
+          "coat",
+          "Simon"
+        ],
+        "candidate": [
+          "Men",
+          "Mr.",
+          "Mr.",
+          "Sean",
+          "floor",
+          "Dark stained oak paneling",
+          "well-polished brass knobs",
+          "plush red sofa",
+          "painting",
+          "oak door",
+          "door",
+          "main room",
+          "hat",
+          "coat",
+          "Simon"
+        ]
+      },
+      "pairedRecheck": {
+        "base": [
+          "Men",
+          "Mr.",
+          "Mr.",
+          "Sean",
+          "floor",
+          "Dark stained oak paneling",
+          "well-polished brass knobs",
+          "plush red sofa",
+          "painting",
+          "oak door",
+          "glass door",
+          "main room",
+          "hat",
+          "coat",
+          "Simon"
+        ],
+        "candidate": [
+          "Men",
+          "Mr.",
+          "Mr.",
+          "Sean",
+          "floor",
+          "Dark stained oak paneling",
+          "well-polished brass knobs",
+          "plush red sofa",
+          "painting",
+          "oak door",
+          "glass door",
+          "main room",
+          "hat",
+          "coat",
+          "Simon"
+        ]
+      }
+    },
+    {
+      "game": "School.z5.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "initial": {
+        "base": [
+          "trees",
+          "campus",
+          "administration building",
+          "east",
+          "path",
+          "gate"
+        ],
+        "candidate": [
+          "admission letter",
+          "trees",
+          "campus",
+          "administration building",
+          "east",
+          "path",
+          "gate"
+        ]
+      },
+      "pairedRecheck": {
+        "base": [
+          "admission letter",
+          "trees",
+          "campus",
+          "administration building",
+          "east",
+          "path",
+          "gate"
+        ],
+        "candidate": [
+          "trees",
+          "campus",
+          "administration building",
+          "east",
+          "path",
+          "gate"
+        ]
+      }
+    },
+    {
+      "game": "suvehnux.z5.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "initial": {
+        "base": [
+          "vault",
+          "golden key",
+          "black",
+          "dark",
+          "sliver of light",
+          "door",
+          "shelf",
+          "walls",
+          "brass cage",
+          "scroll"
+        ],
+        "candidate": [
+          "sliver of light",
+          "under",
+          "door",
+          "darkness",
+          "shelf",
+          "walls",
+          "brass cage",
+          "scroll"
+        ]
+      },
+      "pairedRecheck": {
+        "base": [
+          "vault",
+          "golden key",
+          "black",
+          "dark",
+          "sliver of light",
+          "door",
+          "shelf",
+          "walls",
+          "brass cage",
+          "scroll"
+        ],
+        "candidate": [
+          "vault",
+          "golden key",
+          "black",
+          "dark",
+          "sliver of light",
+          "door",
+          "shelf",
+          "walls",
+          "brass cage",
+          "scroll"
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "game": "BeingSteve.zblorb.js",
+      "error": "no-prompt",
+      "classification": "MATCHING_COVERAGE_GAP_NOT_FUNCTIONAL_PASS"
+    },
+    {
+      "game": "BlueLacuna.gblorb.js",
+      "error": "no-prompt",
+      "classification": "MATCHING_COVERAGE_GAP_NOT_FUNCTIONAL_PASS"
+    },
+    {
+      "game": "bookvol.z5.js",
+      "error": "no-prompt",
+      "classification": "MATCHING_COVERAGE_GAP_NOT_FUNCTIONAL_PASS"
+    },
+    {
+      "game": "Borderzo.z5.js",
+      "error": "no-prompt",
+      "classification": "MATCHING_COVERAGE_GAP_NOT_FUNCTIONAL_PASS"
+    },
+    {
+      "game": "chico.z5.js",
+      "error": "no-prompt",
+      "classification": "MATCHING_COVERAGE_GAP_NOT_FUNCTIONAL_PASS"
+    },
+    {
+      "game": "stiffmst.z5.js",
+      "error": "no-prompt",
+      "classification": "MATCHING_COVERAGE_GAP_NOT_FUNCTIONAL_PASS"
+    },
+    {
+      "game": "vgame.z8.js",
+      "error": "no-prompt",
+      "classification": "MATCHING_COVERAGE_GAP_NOT_FUNCTIONAL_PASS"
+    }
+  ],
+  "regressionsObserved": 0,
+  "frozenSourceHashesVerified": true,
+  "rootSharedFilesByteIdentical": true,
+  "unchangedCommonSourceLineEndings": [
+    {
+      "file": "js/Autocomplete.js",
+      "currentRawSha256": "20cf17d709ddaf40c1c016d19d135fd1325cba4d25146df6e2bd0178ce69b4d6",
+      "frozenRawSha256": "e4b293af38fcd68448b3ad3dd8f65de78e721906bdd2dfe8ad14cd0ec2400c83",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/BufferRevision.js",
+      "currentRawSha256": "5786f00bf1b39e5548c766813d71b2a2e264f7e4cc1c2f190ea66bcf80b85f8f",
+      "frozenRawSha256": "e2bd1c438b0c38c4f92670895768b611a8f1c5d4ed6eafa18f369a445a8945ce",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/BufferTapProvider.js",
+      "currentRawSha256": "acfe7f92deb97decdbe6c9f2d99594c92c09ef9909e2ede4aee6d33c7ed0e178",
+      "frozenRawSha256": "c3e453ebcc2484b20ae1b7038cf0b5d3c339bce467ab05100b22af556091fd33",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/CharKeys.js",
+      "currentRawSha256": "6d9fc8201a88f4e9655cae941a08c2c8d478e051e076f43095f086886b9ea685",
+      "frozenRawSha256": "783f9c960e8a8c9e03d5f6ca22ebd9b8e1cbf9cbc8c007165b60fdf1f8e851d5",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/Consts.js",
+      "currentRawSha256": "c946aeb99318c90f473e00ffd4f0e40cc3323571a8db415c0edf533234cf1aea",
+      "frozenRawSha256": "0d48930fa361e450d52ce022abf690dee633cb2a9112a15e0adc9eba94a59194",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/DirectionalRadial.js",
+      "currentRawSha256": "85b6ec831ad62175436cc82e6760f1390fa411e3ad2cc67b30db8e62dccdc1c2",
+      "frozenRawSha256": "58e250cd9dd4ef6f01eea48c18b39b227bd1db8867dd0a5aa185d023d7c5e0ac",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/Directions.js",
+      "currentRawSha256": "0fd8408571cfcf72bed1b4ed4c385fb8308beadbbe831b6aa794b86945372d18",
+      "frozenRawSha256": "a3df946e0235cabe92a5cc3d7cc1564433bd7027c43832e285221453d717df90",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/EmglkenHost.js",
+      "currentRawSha256": "04a215b7f8bc2207f6983ad970baec99b5f5d1a7e535f2c38174ed4cd0332615",
+      "frozenRawSha256": "30aef40616ea18f0260453b60659d79c8d5e179b6a9ce54d259b9942e9287f86",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/EmglkenProvider.js",
+      "currentRawSha256": "dd29f6578aaad99d69c5e42652815f32e24a21920a609e6ce4d55779d5b79c79",
+      "frozenRawSha256": "30d5e51b046472f0a15716566dd51ce052f452d6ac26364389a532d5dbc1ff4e",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/GameList.js",
+      "currentRawSha256": "1638121054e486571eb11d5d2997fffb40383692bc5c0bc9ff1d55ec644e3bd4",
+      "frozenRawSha256": "6f68e444731e948228f1463934b9eccabd569fa6db79e083c5b9774fad6b42b6",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/GlkTapProvider.js",
+      "currentRawSha256": "9b08add9e5e9fb3a52d527700fc1e26f0e12eab38b9d318dca0d14f98f702391",
+      "frozenRawSha256": "0e4fb31a4b8194159589504600ae2421d65acda0b0489f9dbdd3f911536dc273",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/Global.js",
+      "currentRawSha256": "a562bc3266c3238cb240281af905a08d6574dbd3e63d219355f0736337aede82",
+      "frozenRawSha256": "19cd7e731ba98f09607156ada04cb7f64be1708253294c6245d74fd07534932d",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/GrammarProvider.js",
+      "currentRawSha256": "5f41584422c424ac503e289c287fb34bdf91636b115f6c421f53dd4fdfa32fb0",
+      "frozenRawSha256": "e905241f68c296439b217e2560b3e5357ce569e7292d87f44400e6f028e2f372",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/GraphicsDock.js",
+      "currentRawSha256": "aa14da92da3a699aa7b2d08ea2f7b8d5f6afb7902d7bc549b1ae11ab553269dd",
+      "frozenRawSha256": "c0c183eb6a4eb779ce7b0ba4e7ec14dafc1c8ac2532e222cb1919c0203b59f9c",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/HostEmglkenBridge.js",
+      "currentRawSha256": "0eac2f9f1db6ed6a03363cae62ef78871d262708f9c8ee37dda8b0b8dc45a8b8",
+      "frozenRawSha256": "63e6b8f4bf9cf9153d81426e44e0a5627aa665e111c891cb94a2005b9d29cf07",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/IconRotation.js",
+      "currentRawSha256": "82be3ccc016926092595149196206777318e7b1f19d8c55d31f70c6e58e32c87",
+      "frozenRawSha256": "5a6084e898fd57852174d261db64cbb0fd03ac7c58d11874bdb836795d6e3a0a",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/LiveHeapProvider.js",
+      "currentRawSha256": "30816c32a55a52721405132fb02987d80f7fc467f83f90b6eea7035f12465b22",
+      "frozenRawSha256": "bf170f4c45fa5c434a049c7b01af0a464560d32b3564d73d8a41d8a5c08aa59d",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/MainMenu.js",
+      "currentRawSha256": "76f36899fccda9e86d972c3e04c993070475b4f8327afd7be7ef5774cc6b34c6",
+      "frozenRawSha256": "6881269dc8e15a4dee3a69fcf2fe0a31ebba8048e4d5887a7f5a4e3b33c83541",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/MapBeautify.js",
+      "currentRawSha256": "3dbd4ab68ac1447ba2f11021647fadd26b315bfee3390affe9307dfeeb06426a",
+      "frozenRawSha256": "17772927f8068c31c6ddd1b37f31fbe63f7df939125be2e55b765985966c4514",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/MapIdentity.js",
+      "currentRawSha256": "f505e7f43f3cec9557fc7a342c4e87382c4e366d67e6f048a631522d46a53261",
+      "frozenRawSha256": "8c8081bb08a44a7e5d40f4bf6e91f7196851363ede8f0d951b61da0f63964dd0",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/MapTopology.js",
+      "currentRawSha256": "522f82d7e41bb0049a22414f88a8cc3b9e0b0d3c3c870e271ef982af9cc78ac8",
+      "frozenRawSha256": "040c03a9383e2f0db5ac24a96784b8e1e441d206571a8e6683bfd4219094a91e",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/Message.js",
+      "currentRawSha256": "4ba168368364c068983021cc53ec6277b825cef1f63840bc89373133dfb66d19",
+      "frozenRawSha256": "a718a237abebbab24dfd689d20b7f1246c574f92f9f0daadddabe3be12e9e799",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/ModuleStatFacts.js",
+      "currentRawSha256": "5df94a7e23fec8b6b1380054506ae4e358f89357ce83f8debd0bbb6c050399d3",
+      "frozenRawSha256": "60262729d81c8d951355b36ab416484b760e1a9224c88592fadaeaab2615e94b",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/ModuleStatFactsClaude.js",
+      "currentRawSha256": "0e116c2bc668b1e4a019d78487d66b17307f4be1239489a7cdbfb77af56f98f0",
+      "frozenRawSha256": "a84cec19899ff93f7a50b0af5a97036c692f1eafae3cfcbe919911c3d5526a34",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/PronunciationCatalog.js",
+      "currentRawSha256": "7e5458d4d7c489f03270893eb292de1459d1f2cb4f742e165f2460f3ca409ef4",
+      "frozenRawSha256": "74a470e7bbb87f829b0f13c957dbdc422a869210ae782dca150120b16f0730ad",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/ReadAloud.js",
+      "currentRawSha256": "5a71ab0d620ffd827022d7286f1f3d6e9e0d0e84e1a2546c50744f0b18e30ee7",
+      "frozenRawSha256": "e514d732e60005d1ac848e2de056210058554c33ce8dacea27bde13909ee291a",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/RemGlkTapProvider.js",
+      "currentRawSha256": "58a8d751b98d7b572f4622465f92e9a26ad5de00fcb4cbe82d7a2bb23432fc77",
+      "frozenRawSha256": "8c03ad6f868dd7dfffdfb8392d8d92062139b371204fe193ffa1a7210a497000",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/SemanticActions.js",
+      "currentRawSha256": "0d2723bf9caef03a1fc7787684cd677e0f832b683f9682719bcec7193a8947d1",
+      "frozenRawSha256": "899ca60f3e66560944fa6ca244bb5b614a56cbac4efcd9d88200683b8642f73f",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/TextGate.js",
+      "currentRawSha256": "b71a7eb6cdca2234cac182b248e57dcbc8985063619901c0032adc9f75e97a6b",
+      "frozenRawSha256": "d62d3e49aa1b818700a13486e4d1c4d9ec97e0b8e96a2767c71d9c5ec291cd56",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/VmProbeLoader.js",
+      "currentRawSha256": "39394dbfa280aeeaca03f5ba732fe690b1f4ba35b66f0790bdba437dc61d7fee",
+      "frozenRawSha256": "9d64ccd89783f73138095914a4c30b4664262de7e1a78eeb2d6d2faceb1c7c7c",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/WorldMap.js",
+      "currentRawSha256": "4239860d51f4b202a914eca7f983642ac93713c8557d5757c79ce1bba64c0be1",
+      "frozenRawSha256": "fb23c125541b6cf9950c8cf647ac54d58dd7aae227cfef4eff6aacc4a480da01",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "js/WorldMapLayout.js",
+      "currentRawSha256": "42a05712e33c110182148f7e066bdf6f660bca497114d6ea2c67082b48664f11",
+      "frozenRawSha256": "208197d5d383e67b60d4ac538c8716dfc7ef5f3d52a91f6962cdf24057820fec",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    },
+    {
+      "file": "play.html",
+      "currentRawSha256": "a4023f140d9ea5fd9364004be3a589545243087fc0f5e1f9c5bd3077bcb9433e",
+      "frozenRawSha256": "a0b6dd039e5697402783ec14a78dfc59c725484967d6ceca1dad07e5aa69106a",
+      "onlyDifference": "Existing CRLF/LF line endings; normalized text exactly equal"
+    }
+  ],
+  "pendingEdible5InGate": false
+}

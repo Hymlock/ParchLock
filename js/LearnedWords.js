@@ -131,8 +131,8 @@ var LearnedWords = {
         Object.keys(ActionSynth.rules || {}).forEach(function (key) {
             if (key !== 'default' && attrs[key]) forms = forms.concat(ActionSynth.rules[key]);
         });
-        // D150's existing dictionary/edible provider augmentation, not learned admission.
-        if (attrs.edible && !obj.examineOnly && Actionable.isGameWord('drink')) forms.push('drink');
+        // Use the same compiler/evidence policy as menu synthesis, not learned admission.
+        if (ActionSynth.edibleDrinkAllowed(attrs, { directEvidenceOnly: !!obj.examineOnly })) forms.push('drink');
         var nested = held && ActionSynth.heldContainerName && ActionSynth.heldContainerName(obj,WorldModel.lastPayload);
         if (nested) forms = ['take'];
         else if (held) {

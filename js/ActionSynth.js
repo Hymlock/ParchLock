@@ -53,6 +53,18 @@ var ActionSynth = {
         } catch (e) { return false; }
     },
 
+    // D150's edible-to-Drink inference belongs to Inform, not ZIL FOODBIT.
+    // Keep the existing non-Z path; provider/classifier failures are not that path.
+    edibleDrinkAllowed: (attrs, options) => {
+        try {
+            if (!attrs || !attrs.edible || (options && options.directEvidenceOnly)) return false;
+            if (typeof Actionable === "undefined" || !Actionable.isGameWord || !Actionable.isGameWord("drink")) return false;
+            var mem = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null;
+            if (!mem) return true;
+            return !!(typeof ZRamReader !== "undefined" && ZRamReader.isInformCompiled && ZRamReader.isInformCompiled(mem));
+        } catch (e) { return false; }
+    },
+
     verbsForAttrs: (attrs, objectId, options) => {
         options = options || {};
         var defaultVerb = ActionSynth.defaultInspectVerb();
@@ -73,21 +85,9 @@ var ActionSynth = {
                 });
             }
         });
-        // D150: an `edible` object is not necessarily something you EAT. The
-        // Inform library gives one attribute to both eating and drinking, so a
-        // liquid carries `edible` too -- measured on Anchorhead, whose `rain`
-        // has it set, and whose own reply to the command the radial offered was
-        // "You don't eat rain, you drink it." DRINK is therefore offered
-        // alongside EAT whenever this story's dictionary actually has the verb,
-        // which is the same dictionary-verified gate D147 uses. EAT is kept: the
-        // game's own attribute licenses it, food exists, and for a liquid the
-        // story refuses it gracefully in one line rather than failing to parse.
-        try {
-            if (!options.directEvidenceOnly && a.edible && typeof Actionable !== "undefined" && Actionable.isGameWord
-                && Actionable.isGameWord("drink") && verbs.indexOf("drink") < 0) {
-                verbs.push("drink");
-            }
-        } catch (eD) {}
+        // Preserve D150's Inform rain behavior and D147's vocabulary gate.
+        // A ZIL edible fact alone does not prove the distinct Drink capability.
+        if (ActionSynth.edibleDrinkAllowed(a, options) && verbs.indexOf("drink") < 0) verbs.push("drink");
         // Learned per-object functionable verbs (AttrCalibrator allowedVerbs):
         // e.g. Glow Bar accepts switch on without I6 switchable bit after
         // confirmed successful turn-on. Additive; never removes attr verbs.

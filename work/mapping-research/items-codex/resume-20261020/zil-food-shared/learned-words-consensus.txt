@@ -1,0 +1,25 @@
+PASS: unknown first submitted try visible without success or evidence
+PASS: classification write grants no override/suppression/command and no Undo
+PASS: accepted first hit persists once
+PASS: reload hides one-confirmation row but retains count
+PASS: actual fresh recorder epoch reuses numeric1 and advances stored count
+PASS: same event delivered twice after generation change still counts once
+PASS: confirmed unknown stays visible after projection clear and provider later gains it
+PASS: independently provided verb hidden from learned but appears in Story actions
+PASS: classification survives ordinary edits, Ignore, Undo and document reload
+PASS: Undo keeps a later independent classification without making a label override
+PASS: legacy missing-provenance confirmed row remains visible
+PASS: legacy bare submission number advances from count1 with qualified actual recorder key
+PASS: restore clears only provisional display; calibration persists
+PASS: module switch isolates records and return restores confirmed forms
+PASS: ordinal owner registers ground objects once, reuses them for equipment and reload
+PASS: empty filename and demo/projection ids never persist ordinals
+PASS: unconfirmed/current-stale status diagnostics cannot claim active condition
+PASS: readable shared reference preserves command noun mining and candidate ownership against accepted baseline
+PASS: later same-revision recorder witness survives cosmetic Undo
+PASS: invalid optional membership metadata never discards existing valid overrides
+PASS: existing nested take and ordinary edible drink count as independent provider forms
+PASS: distinct physical rows retain aliases and authoritative held attributes
+PASS: legacy automatic built-in rows hide without deleting evidence
+PASS: banner visibility defaults and explicit preferences
+24 consensus contract checks passed

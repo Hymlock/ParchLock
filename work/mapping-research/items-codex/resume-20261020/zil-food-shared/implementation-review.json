@@ -1,0 +1,15 @@
+{
+  "reviewer": "Independent non-author subagent /root/zil_food_independent; not Grok/Claude historical bus-seat acceptance",
+  "verdict": "ACCEPT",
+  "runtimeHashes": {
+    "js/ActionSynth.js": "0711defc3599006df196438b17073303864f190e486612bcaf4ae44e3ff89817",
+    "js/LearnedWords.js": "d9cdc28085942d02e37aecf30a1dc7c0f32c2aaf2f0a706628a8e85c236dbcee"
+  },
+  "newRegression": "15 passing actual-reader/original-Anchorhead-and-ZorkIII-memory checks; baseline red",
+  "focused": "D15010; learned24; D19831; actor7 pass",
+  "operator": "13 PASS / 0 FAIL",
+  "catalog": "309x2;4FLAKY marks differences demonstrated on paired frozen-tree rechecks;0observedregressions;7matchingno-prompt coverage gaps",
+  "existingFailure": "D201 printed-sword label same assertion on immutable baseline and candidate; unresolved",
+  "native": "Pendingedible5 isolated browser: Eatwaybread only in menu/provider; exact nativeEat succeeds/removes, Drink refuses/staysheld",
+  "scope": "Shared inference only, production edible5 remains separate; no APK or title/project closure"
+}
