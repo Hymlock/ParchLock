@@ -59,3 +59,5 @@ Moonmist on10 native audit and integration now complete (see latest commit/check
 - 729af51 Starcross worn24 state integrated after new native tattered suit176 trade/wear/remove proof plus normal144 and held library/basket negatives. Old single-owner claim withdrawn. Current Equipment normal worn+Remove then unworn; Wear capability/alternative handler consumer still OPEN.
 
 - ZorkIII edible5 semantic/native evidence is separate from consumer readiness. New controlled candidate shows Drink waybread offered but natively rejected; Eat succeeds. Production mapping stays held; blind investigation4370 pending. See OPEN_WORK and zork3-food/ consumer evidence; sealed findings must remain unread by blind reviewer until compare.
+
+- ZorkI transparent12: current native2+1 and bounded250object ownership confirmed; controlled mapping exposes closed-bottle water237. Existing policy hold preserved (OPEN_WORK pending vs laterbus4075 approval report unresolved). Canonical Oct16 evidence updated. No production change; no whole-cell consumer closure.

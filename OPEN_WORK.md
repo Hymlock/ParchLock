@@ -46,6 +46,10 @@ October 21 ZIL food consumer audit OPEN: in an isolated candidate with the pendi
   through #3539; later work is operator-authorized SOLO/SELF-AUDIT (#3542).
   - Operator decision pending: Zork I transparent 12 (native lists the water in the closed glass bottle; app hides it;
     evidence work/investigations/2026-10-16-zork1-transparent-evidence.md).
+    Current-source audit October21 repeats named bottle236/case194 positives and closed sack224 negative. A controlled
+    in-memory mapping exposes water237 in Equipment while bottle stays closed. Bus4075 later reports operator approval
+    of keeping it hidden, but the direct human ruling was not recovered; preserve current behavior until the records
+    are reconciled. Proof/candidate comparison: items-codex/resume-20261020/zork1-transparent/ (under work/mapping-research).
   - Operator decision pending: Enchanter egg parts (NDESCBIT 7 also marks every spell; a blanket hidden bit would remove
     the D148 spells).
   - Blocked: Hollywood open/supporter (all evidence indoors; the release desyncs from the Jericho walkthrough at OPEN
