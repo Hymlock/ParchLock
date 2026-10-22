@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-22T19:05:55.422Z",
-  "factsSha256": "96217a4e8165d170e16aef47fce762a907710007eafc44e1463290e3154e2061",
+  "generatedAt": "2026-10-22T19:30:03.993Z",
+  "factsSha256": "d46d2af517d1ec7b1ac6a3fc04cf418baeed37d2392a8e8051cc576cfc6c8b95",
   "scope": "Reconciliation report only, not a second registry/ledger and not a completion percentage",
   "titleCount": 26,
-  "keysPerTitle": 94,
+  "keysPerTitle": 96,
   "universe": [
     {
       "area": "attribute",
@@ -255,6 +255,14 @@
     },
     {
       "area": "fact",
+      "key": "capabilityForms"
+    },
+    {
+      "area": "fact",
+      "key": "activationState"
+    },
+    {
+      "area": "fact",
       "key": "objectUseVerb"
     },
     {
@@ -397,6 +405,9 @@
       "historicClassification": "confirmed-zil-family/validated",
       "classificationNote": "Current source-bound decoder result is distinct from historical matrix",
       "factKeys": [
+        "attributeObjects",
+        "capabilityForms",
+        "activationState",
         "wornAttribute",
         "playerGlobal",
         "openCapability",
@@ -669,7 +680,14 @@
         {
           "area": "attribute",
           "key": "switchable",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "attributeObjects.switchable",
+          "value": {
+            "objects": [
+              36,
+              48
+            ]
+          },
           "historicDraft": {
             "value": null,
             "status": "unknown",
@@ -964,7 +982,37 @@
         {
           "area": "fact",
           "key": "attributeObjects",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "attributeObjects",
+          "value": {
+            "switchable": [
+              36,
+              48
+            ]
+          }
+        },
+        {
+          "area": "fact",
+          "key": "capabilityForms",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "capabilityForms",
+          "value": {
+            "switchable": [
+              "turn on",
+              "turn off"
+            ]
+          }
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "activationState",
+          "value": {
+            "onObjects": [
+              48
+            ]
+          }
         },
         {
           "area": "fact",
@@ -1703,6 +1751,16 @@
         },
         {
           "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -2427,6 +2485,16 @@
         {
           "area": "fact",
           "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -3157,6 +3225,16 @@
         {
           "area": "fact",
           "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -3892,6 +3970,16 @@
         },
         {
           "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -4608,6 +4696,16 @@
         {
           "area": "fact",
           "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -5335,6 +5433,16 @@
         },
         {
           "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -6046,6 +6154,16 @@
         {
           "area": "fact",
           "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -6778,6 +6896,16 @@
         {
           "area": "fact",
           "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -7521,6 +7649,16 @@
         },
         {
           "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -8249,6 +8387,16 @@
         },
         {
           "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -8965,6 +9113,16 @@
         {
           "area": "fact",
           "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -9692,6 +9850,16 @@
         {
           "area": "fact",
           "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -10456,6 +10624,16 @@
         },
         {
           "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -11170,6 +11348,16 @@
         },
         {
           "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -11865,6 +12053,16 @@
         {
           "area": "fact",
           "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -12591,6 +12789,16 @@
         },
         {
           "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -13312,6 +13520,16 @@
         },
         {
           "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -14018,6 +14236,16 @@
         {
           "area": "fact",
           "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -14783,6 +15011,16 @@
         },
         {
           "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -15521,6 +15759,16 @@
         {
           "area": "fact",
           "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -16268,6 +16516,16 @@
         },
         {
           "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -16978,6 +17236,16 @@
         {
           "area": "fact",
           "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -17722,6 +17990,16 @@
         {
           "area": "fact",
           "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {
@@ -18478,6 +18756,16 @@
         },
         {
           "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
           "key": "objectUseVerb",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
@@ -19220,6 +19508,16 @@
         {
           "area": "fact",
           "key": "attributeObjects",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "capabilityForms",
+          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+        },
+        {
+          "area": "fact",
+          "key": "activationState",
           "state": "EVIDENCE_RECONCILIATION_REQUIRED"
         },
         {

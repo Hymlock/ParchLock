@@ -202,10 +202,10 @@ var EquipmentUI = {
         return tags;
     },
 
-    measuredOwner: function (mem, flag) {
+    measuredOwner: function (mem, flag, objectId) {
         try {
             return !!(mem && typeof AttributeSchema !== 'undefined' && AttributeSchema.measuredFlagOwner
-                && AttributeSchema.measuredFlagOwner(mem, flag));
+                && AttributeSchema.measuredFlagOwner(mem, flag, objectId));
         } catch (e) { return false; }
     },
 
@@ -218,11 +218,15 @@ var EquipmentUI = {
             if (typeof AttrCalibrator !== 'undefined' && AttrCalibrator.hasConfirmedFlag(mem, flag)) return true;
             // Non-Inform: also accept the bounded digest ownership path (verified ZIL facts). Capability and state stay
             // separate checks, so 'on' alone never implies 'switchable' (Codex #3466, #3380).
-            return EquipmentUI.measuredOwner(mem, flag);
+            return EquipmentUI.measuredOwner(mem, flag, obj && obj.id);
         } catch (e) { return false; }
     },
     activationStateTags: function (obj) {
         var a = obj && obj.attrs || {};
+        try {
+            if (!(obj && obj.demo) && typeof AttributeSchema !== 'undefined' && AttributeSchema.activationStateAllows &&
+                !AttributeSchema.activationStateAllows(AttributeSchema._getMem(), obj && obj.id)) return [];
+        } catch (eActivationState) { return []; }
         return a.switchable && EquipmentUI.flagStateKnown(obj, 'switchable')
             && EquipmentUI.flagStateKnown(obj, 'on') ? [a.on ? 'active' : 'inactive'] : [];
     },

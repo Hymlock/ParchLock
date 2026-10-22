@@ -160,10 +160,10 @@ var AttributeSchema = {
         } catch (e) { return false; }
     },
     // Some source handlers define a capability by object identity, not a bit.
-    // Initially only edible is qualified. Never use names/shared raw flags.
+    // Only qualified capabilities are supported. Never use names/shared raw flags.
     objectCapabilityIds: function (mem, flag) {
         try {
-            if (flag !== "edible" || !mem || typeof ZRamReader === "undefined" ||
+            if (["edible", "switchable"].indexOf(flag) < 0 || !mem || typeof ZRamReader === "undefined" ||
                 !ZRamReader.executableLayoutFacts) return null;
             var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest
                 ? ModuleLibrary.currentExecutableDigest() : null;
@@ -215,7 +215,7 @@ var AttributeSchema = {
             if (map && Object.prototype.hasOwnProperty.call(map, flagName) && map[flagName] === null) return null;
             // Identity-owned capability has no numeric attribute. A malformed
             // declaration must not silently borrow an Inform fallback bit.
-            if (flagName === "edible" && fact && fact.attributeObjects &&
+            if (["edible", "switchable"].indexOf(flagName) >= 0 && fact && fact.attributeObjects &&
                 Object.prototype.hasOwnProperty.call(fact.attributeObjects, flagName)) return null;
             // ZIL fail-closed (operator 2026-10-11): never apply I6 PROFILE bit
             // numbers to non-Inform stories for containment/open family. Wrong
@@ -358,19 +358,74 @@ var AttributeSchema = {
     },
 
     applyObjectCapabilities: function (attrs, obj, mem) {
-        var owns = false;
+        ["edible", "switchable"].forEach(function (flag) {
+            var owns = false;
+            try {
+                var fact = flag === "switchable" && ZRamReader.executableLayoutFacts && ZRamReader.executableLayoutFacts(mem);
+                if (!fact) {
+                    var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest
+                        ? ModuleLibrary.currentExecutableDigest() : null;
+                    fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
+                }
+                if (!fact || !fact.attributeObjects || !Object.prototype.hasOwnProperty.call(fact.attributeObjects, flag) ||
+                    (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, flag))) return;
+                owns = true;
+                if (ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) return;
+                attrs[flag] = false;
+                var ids = AttributeSchema.objectCapabilityIds(mem, flag);
+                attrs[flag] = !!(obj && ids && Number.isInteger(obj.id) && ids.indexOf(obj.id) >= 0);
+            } catch (eObjectCapability) { if (owns) attrs[flag] = false; }
+            });
+    },
+
+    // null means no authored spelling policy; [] means a claimed owner was rejected.
+    activationForms: function (mem, objectId, context) {
+        var owned = false;
         try {
-            var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest
-                ? ModuleLibrary.currentExecutableDigest() : null;
-            var fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
-            if (!fact || !fact.attributeObjects || !Object.prototype.hasOwnProperty.call(fact.attributeObjects, "edible") ||
-                (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, "edible"))) return;
-            owns = true;
-            if (ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) return;
-            attrs.edible = false;
-            var ids = AttributeSchema.objectCapabilityIds(mem, "edible");
-            attrs.edible = !!(obj && ids && Number.isInteger(obj.id) && ids.indexOf(obj.id) >= 0);
-        } catch (eObjectCapability) { if (owns) attrs.edible = false; }
+            var fact = ZRamReader.executableLayoutFacts(mem);
+            if (!fact) {
+                var digest = ModuleLibrary.currentExecutableDigest();
+                fact = digest && ModuleStatFactsClaude[digest];
+            }
+            if (!fact || !((fact.attributeObjects && Object.prototype.hasOwnProperty.call(fact.attributeObjects, "switchable")) ||
+                (fact.capabilityForms && Object.prototype.hasOwnProperty.call(fact.capabilityForms, "switchable")))) return null;
+            owned = true;
+            if ((ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) ||
+                (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, "switchable"))) return null;
+            var ids = AttributeSchema.objectCapabilityIds(mem, "switchable");
+            var forms = fact.capabilityForms && fact.capabilityForms.switchable;
+            if (context !== "inventory" || !ids || !Number.isInteger(objectId) || ids.indexOf(objectId) < 0 ||
+                !Array.isArray(forms) || forms.length !== 2 || forms[0] !== "turn on" || forms[1] !== "turn off") return [];
+            var family = AttributeSchema._familyOf(mem);
+            if (!family || !Array.isArray(family.templates) || !forms.every(function (form) {
+                var prep = form.split(" ")[1];
+                return family.templates.some(function (t) { return t.verb === "turn" && t.objectCount === 1 &&
+                    t.prepositions.length === 1 && t.prepositions[0] === prep; });
+            })) return [];
+            return forms.slice();
+        } catch (eActivationForms) { return owned ? [] : null; }
+    },
+
+    // Additional restriction on activation badges, never a source of on-state authority.
+    activationStateAllows: function (mem, objectId) {
+        var owned = false;
+        try {
+            var fact = ZRamReader.executableLayoutFacts(mem);
+            if (!fact) {
+                var digest = ModuleLibrary.currentExecutableDigest();
+                fact = digest && ModuleStatFactsClaude[digest];
+            }
+            if (!fact || !(Object.prototype.hasOwnProperty.call(fact, "activationState") ||
+                (fact.attributeObjects && Object.prototype.hasOwnProperty.call(fact.attributeObjects, "switchable")))) return true;
+            owned = true;
+            if ((ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) ||
+                (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, "switchable"))) return true;
+            var ids = AttributeSchema.objectCapabilityIds(mem, "switchable");
+            var stateIds = fact.activationState && fact.activationState.onObjects;
+            if (!ids || !Array.isArray(stateIds) || !stateIds.length ||
+                !stateIds.every(function (id, i) { return Number.isInteger(id) && ids.indexOf(id) >= 0 && stateIds.indexOf(id) === i; })) return false;
+            return Number.isInteger(objectId) && stateIds.indexOf(objectId) >= 0;
+        } catch (eActivationState) { return !owned; }
     },
 
     // Only an authenticated measured actor layout may own this relationship.

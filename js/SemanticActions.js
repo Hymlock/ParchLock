@@ -62,6 +62,8 @@ var SemanticActions = {
         "exit": "EXIT",
         "switch on": "SWITCH_ON",
         "switch off": "SWITCH_OFF",
+        "turn on": "SWITCH_ON",
+        "turn off": "SWITCH_OFF",
         "eat": "EAT",
         "wear": "WEAR",
         "remove": "REMOVE",
@@ -426,6 +428,8 @@ var SemanticActions = {
         { arity: 1, prefix: "talk to ", intent: "TALK_TO" },
         { arity: 1, prefix: "switch on ", intent: "SWITCH_ON" },
         { arity: 1, prefix: "switch off ", intent: "SWITCH_OFF" },
+        { arity: 1, prefix: "turn on ", intent: "SWITCH_ON" },
+        { arity: 1, prefix: "turn off ", intent: "SWITCH_OFF" },
         { arity: 2, prefix: "give ", connector: " to ", intent: "GIVE_TO" },
         { arity: 2, prefix: "put ", connector: " in ", intent: "PUT_IN" },
         { arity: 2, prefix: "ask ", connector: " about ", intent: "ASK_ABOUT" }

@@ -129,7 +129,8 @@ var LearnedWords = {
         var held = ((WorldModel.lastPayload || {}).inventory || []).some(function (o) { return String(o.id) === String(obj.id); });
         var context = held ? 'inventory' : 'room', attrs = ActionSynth.trustworthyAttrs ? ActionSynth.trustworthyAttrs(obj) : obj.attrs || {}, forms = [];
         Object.keys(ActionSynth.rules || {}).forEach(function (key) {
-            if (key !== 'default' && attrs[key]) forms = forms.concat(ActionSynth.rules[key]);
+            if (key !== 'default' && attrs[key]) forms = forms.concat(ActionSynth.formsForAttribute
+                ? ActionSynth.formsForAttribute(key, obj.id, context) : ActionSynth.rules[key]);
         });
         // Use the same compiler/evidence policy as menu synthesis, not learned admission.
         if (ActionSynth.edibleDrinkAllowed(attrs, { directEvidenceOnly: !!obj.examineOnly })) forms.push('drink');
@@ -158,7 +159,7 @@ var LearnedWords = {
         var regex = AttrCalibrator.buildVerbRegex(), match = regex && regex.exec(event.command);
         var form = match ? match[1].toLowerCase().replace(/\s+/g,' ') : split.verb;
         if (!AttrCalibrator.dictionaryForm(form)) return;
-        var known = LearnedWords.independentForms(obj).indexOf(AttrCalibrator.normalizeVerb(form)) >= 0;
+        var known = LearnedWords.independentForms(obj).map(AttrCalibrator.normalizeVerb).indexOf(AttrCalibrator.normalizeVerb(form)) >= 0;
         var inspect = typeof ActionSynth.defaultInspectVerb === 'function' && form === ActionSynth.defaultInspectVerb();
         var next = JSON.parse(JSON.stringify(data)), changed = false;
         ['exact','allowed'].forEach(function (type) {

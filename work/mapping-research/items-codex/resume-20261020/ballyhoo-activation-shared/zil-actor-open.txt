@@ -1,0 +1,8 @@
+PASS zork2 @96: robot in scope
+PASS zork2 @96: robot (actor, CONTBIT+OPENBIT) offers no open/close
+PASS hhgg @18: Mr. Prosser in scope
+PASS hhgg @18: Mr. Prosser (actor, CONTBIT+OPENBIT) offers no open/close
+PASS hhgg @18: your gown (real container) still offers open and close
+PASS lurking @22: hacker in scope
+PASS lurking @22: hacker (actor, CONTBIT+OPENBIT) offers no open/close
+7 PASS / 0 FAIL

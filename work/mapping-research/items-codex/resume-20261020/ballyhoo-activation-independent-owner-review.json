@@ -1,0 +1,22 @@
+{
+  "reviewer": "Independent subagent zil_food_independent, not authenticated historical bus seat",
+  "verdict": "PREFREEZE ACCEPT",
+  "sourceHashes": {
+    "js/ActionSynth.js": "6e0beeaff803e072bb1e458a506b95d97521c6fe0b8a4c7c5e4cc938d30e18b9",
+    "js/AttributeSchema.js": "2b1a5190c735a6b8efdc47e7e46fc5ef9fea98b7923918d814e9728eb6d659ce",
+    "js/EquipmentUI.js": "de1a7418af8413429745e97e33f055f71cf506b6b1b7bf4935cc5e2ffc263766",
+    "js/LearnedWords.js": "f1b47b768c269a4a38e6ef8cc0694f2402b70d0fa362ce588e92204d6d57ec02",
+    "js/ModuleStatFactsClaude.js": "d46d2af517d1ec7b1ac6a3fc04cf418baeed37d2392a8e8051cc576cfc6c8b95",
+    "js/SemanticActions.js": "3bbbcc4389dedf1548875cee5e9e0f803650ccce8f068a5d32e2f7dd07379576"
+  },
+  "checks": "Executed current ballyhoo-activation-controls.cjs:37 PASS",
+  "review": "Prior declared-owner suppression reproduced and corrected. Declared capability names and explicit numeric/null maps supersede identity form and state restriction. Claimed identity owner with missing/malformed forms or state fails closed. Unrelated/no-memory default forms preserve prior behavior. Actual object IDs remain required; raw on24 does not imply capability or headphone state. Canonical generated forms project narrowly; manual/exact learning remains separate.",
+  "limits": "Final acceptance pending focused/native tests and fresh immutable full shared comparison. Constructed declared/NPC/nested/error controls prove consumers, not native scenes. Full loss of identity sources cannot identify otherwise unknown ownership. No whole-title or global activation proof.",
+  "incrementalReview": {
+    "sourceAndNativeMismatch": [],
+    "sourceFiles": 62,
+    "nativeEvidence": "Original generated TURN commands succeed on radio and headphones; radio tags follow native ON/OFF; headphones gets no badge despite playing. No forced RAM/facts. Actuallearning14controls are X-only actual-code owner evidence, not nativeopcode acceptance.",
+    "baselineFailures": "D88 nested sanity identical on baseline/candidate; D31 prior failures retained, not passes.",
+    "finalAcceptance": "Pending completed classified full shared gate"
+  }
+}

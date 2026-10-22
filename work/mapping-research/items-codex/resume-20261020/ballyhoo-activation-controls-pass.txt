@@ -1,0 +1,38 @@
+PASS actual family and authored TURN templates validate
+PASS radio feeds held menu and independent provider
+PASS headphones feed held menu and independent provider
+PASS named nondevice gains neither activation form
+PASS capability has no invented bit
+PASS canonical learned verbs project to one proven pair
+PASS headphones raw false state never creates inactive badge
+PASS radio retains independently known inactive state
+PASS radio retains independently known active state
+PASS new capability does not emit room-context activation forms
+PASS malformed capability list rejects null
+PASS malformed capability list rejects []
+PASS malformed capability list rejects [48,48]
+PASS malformed capability list rejects [48,999999]
+PASS malformed capability list rejects [48,"36"]
+PASS malformed form policy cannot resurrect learned SWITCH null
+PASS malformed form policy cannot resurrect learned SWITCH []
+PASS malformed form policy cannot resurrect learned SWITCH ["switch on","switch off"]
+PASS malformed form policy cannot resurrect learned SWITCH ["turn on"]
+PASS malformed state restriction never falls back null
+PASS malformed state restriction never falls back {}
+PASS malformed state restriction never falls back {"onObjects":[]}
+PASS malformed state restriction never falls back {"onObjects":[48,48]}
+PASS malformed state restriction never falls back {"onObjects":[48,29]}
+PASS missing actual ID grants no state badge
+PASS TURN intent alias only recognizes spelling
+PASS wrong supplied header rejects forms and badges despite calibration
+PASS throwing digest preserves authenticated rejection without calibration leakage
+PASS unknown family rejects generated forms and state
+PASS missing grammar preposition rejects the whole authored pair
+PASS nested held device preserves current inspect/take and gets no activation
+PASS unrelated no-memory default spelling remains unchanged
+PASS strong declared capability supersedes identity form and state restrictions
+PASS explicit numeric capability map supersedes identity policy
+PASS explicit null map blocks identity capability without rewriting learned forms
+PASS missing capabilityForms cannot restore generated defaults
+PASS missing activationState cannot restore generated defaults
+37 authored activation controls passed

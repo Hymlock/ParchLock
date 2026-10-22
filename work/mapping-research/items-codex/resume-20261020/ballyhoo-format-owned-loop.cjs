@@ -1,0 +1,1 @@
+const fs=require('fs');const file='js/AttributeSchema.js';let s=fs.readFileSync(file,'utf8');const start=s.indexOf('        var owns = false;',s.indexOf('    applyObjectCapabilities:')),end=s.indexOf('        });',start);s=s.slice(0,start)+s.slice(start,end).split(/\n/).map(l=>'    '+l).join('\n')+s.slice(end);fs.writeFileSync(file,s);

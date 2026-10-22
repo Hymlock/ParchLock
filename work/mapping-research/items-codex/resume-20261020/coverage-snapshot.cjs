@@ -10,7 +10,7 @@ const allFacts = JSON.parse(JSON.stringify(context.ModuleStatFactsClaude));
 const current = JSON.parse(fs.readFileSync(path.join(__dirname,'current-classifications.json'),'utf8'));
 const attributes = [...new Set([...matrix.profileKeys, 'isWorn', 'hidden'])];
 const world = ['playerId','roomId','roomName','inventory','discoveredObjects','unnamedCandidates','darkness','darkEvidence','exits','actors','vocabulary','commandReferences','descriptors','identical','nested','underlineVsDict'];
-const special = ['playerGlobal','playerObject','measuredLocation','locationGlobal','inventoryHiddenAttribute','wornAttribute','openCapability','lightSource','equipmentState','attributeObjects','objectUseVerb','mapStorage'];
+const special = ['playerGlobal','playerObject','measuredLocation','locationGlobal','inventoryHiddenAttribute','wornAttribute','openCapability','lightSource','equipmentState','attributeObjects','capabilityForms','activationState','objectUseVerb','mapStorage'];
 const status = ['status','score','score.max','rank','turns','time','date/day','health','damage','experience','experience.max','magic','life','progress','value','treasures','tasks.max','quota.max','holiness','holiness.max','temptations.max','locations.max','odds','certainty','keysSeen','keysTurned','statusPair','statusTurnsMetric','scoreAliasField','fields'];
 const universe = [...attributes.map(key=>({area:'attribute',key})), ...world.map(key=>({area:'world',key})), ...special.map(key=>({area:'fact',key})), ...status.map(key=>({area:'status',key}))];
 const rows = matrix.order.map(game => {

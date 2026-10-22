@@ -65,6 +65,27 @@ var ActionSynth = {
         } catch (e) { return false; }
     },
 
+    formsForAttribute: (key, objectId, context) => {
+        if (key === "switchable") {
+            var policy = ActionSynth.activationFormPolicy(objectId, context);
+            if (policy !== null) return policy;
+        }
+        return ActionSynth.rules[key] || [];
+    },
+    activationFormPolicy: (objectId, context) => {
+        if (typeof AttributeSchema === "undefined" || !AttributeSchema.activationForms) return null;
+        var forms = AttributeSchema.activationForms(AttributeSchema._getMem(), objectId, context);
+        return forms && forms.every(ActionSynth.literalAvailable) ? forms : forms === null ? null : [];
+    },
+    projectGeneratedActivation: (verb, objectId, context) => {
+        var match = /^(?:switch|turn) (on|off)$/.exec(verb);
+        if (!match) return verb;
+        var policy = ActionSynth.activationFormPolicy(objectId, context);
+        if (policy === null) return verb;
+        var form = "turn " + match[1];
+        return policy.indexOf(form) >= 0 ? form : null;
+    },
+
     verbsForAttrs: (attrs, objectId, options) => {
         options = options || {};
         var defaultVerb = ActionSynth.defaultInspectVerb();
@@ -79,7 +100,7 @@ var ActionSynth = {
         Object.keys(ActionSynth.rules).forEach(function (key) {
             if (key === "default") return;
             if (a[key]) {
-                ActionSynth.rules[key].forEach(function (v) {
+                ActionSynth.formsForAttribute(key, objectId, options.context).forEach(function (v) {
                     if (key === "container" && !capOk && (v === "open" || v === "close")) return;
                     if (verbs.indexOf(v) < 0) verbs.push(v);
                 });
@@ -99,7 +120,8 @@ var ActionSynth = {
             }
         } catch (eL) {}
         if (a.nativeUseVerb === "use" && verbs.indexOf("use") < 0) verbs.push("use");
-        return verbs;
+        return verbs.map(function (v) { return ActionSynth.projectGeneratedActivation(v, objectId, options.context); })
+            .filter(function (v, i, list) { return v && list.indexOf(v) === i; });
     },
 
     payloadPlayerId: (p) => {
@@ -259,7 +281,7 @@ var ActionSynth = {
             });
             return nested;
         }
-        var verbs = ActionSynth.verbsForAttrs(attrs, obj.id, options);
+        var verbs = ActionSynth.verbsForAttrs(attrs, obj.id, Object.assign({}, options, { context: context }));
         // Inventory: drop is "you are holding this", independent of takeable.
         // Zeroing takeable used to collateral-suppress drop because both verbs
         // shared one flag. Take stays gated on attrs.takeable and is removed
