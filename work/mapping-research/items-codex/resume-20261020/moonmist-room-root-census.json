@@ -1,0 +1,2412 @@
+{
+  "scope": "Original bounded253-object boot domain plus comment-aware historical-source declarations; not proof of all dynamic room mutations or exact recompilation",
+  "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+  "readerSha256": "9e4778c4a76185812b464350cbdd1faa8a65a8bc2b2d7237eb6e5f5fa2ef2f06",
+  "count": 253,
+  "first": 720,
+  "firstProperty": 2997,
+  "heuristicObjectCount": 256,
+  "root": {
+    "id": 37,
+    "name": "that",
+    "parent": 0,
+    "bits": [],
+    "properties": []
+  },
+  "rootChildren": [
+    {
+      "id": 2,
+      "name": "dungeon",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        29,
+        25,
+        24,
+        20,
+        19,
+        18,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 6,
+      "name": "secret door",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        19,
+        18,
+        17
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Wendish's bedroom",
+      "parent": 37,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        31,
+        29,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 9,
+      "name": "driveway",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        27,
+        21,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 11,
+      "name": "secret tomb",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        23,
+        22,
+        18,
+        17
+      ]
+    },
+    {
+      "id": 12,
+      "name": "drawing room",
+      "parent": 37,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        31,
+        27,
+        25,
+        24,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 13,
+      "name": "courtyard",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        29,
+        27,
+        26,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 14,
+      "name": "library landing",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        29,
+        27,
+        26,
+        25,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 24,
+      "name": "secret door",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        18,
+        17,
+        9
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Vivien's entrance",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        29,
+        25,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Jack's landing",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        30,
+        29,
+        28,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 30,
+      "name": "kitchen",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        29,
+        25,
+        23,
+        21,
+        20,
+        19,
+        18,
+        15,
+        14,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 31,
+      "name": "Ian's entrance",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        29,
+        27,
+        25,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 32,
+      "name": "dining room",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        27,
+        25,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 33,
+      "name": "your bedroom",
+      "parent": 37,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        31,
+        29,
+        25,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 38,
+      "name": "limbo",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        27,
+        15,
+        8
+      ]
+    },
+    {
+      "id": 39,
+      "name": "east hall",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        29,
+        27,
+        26,
+        25,
+        20,
+        18,
+        17,
+        16,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 40,
+      "name": "tower passage",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        29,
+        26,
+        25,
+        23,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 54,
+      "name": "office",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        25,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 62,
+      "name": "your bathroom",
+      "parent": 37,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        27,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 64,
+      "name": "secret door",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        18,
+        17
+      ]
+    },
+    {
+      "id": 67,
+      "name": "west hall",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        29,
+        28,
+        27,
+        25,
+        20,
+        18,
+        17,
+        16,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 70,
+      "name": "your entrance",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        27,
+        25,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 73,
+      "name": "Wendish's entrance",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        29,
+        27,
+        25,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 79,
+      "name": "secret door",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        18,
+        17,
+        9
+      ]
+    },
+    {
+      "id": 88,
+      "name": "sitting room",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        31,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 96,
+      "name": "game room",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        27,
+        20,
+        18,
+        17,
+        16,
+        15,
+        14,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 105,
+      "name": "secret door",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        18,
+        17,
+        9
+      ]
+    },
+    {
+      "id": 107,
+      "name": "chapel",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 114,
+      "name": "lumber room",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        25,
+        24,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7,
+        6,
+        5
+      ]
+    },
+    {
+      "id": 117,
+      "name": "Ian's bedroom",
+      "parent": 37,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        31,
+        29,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 120,
+      "name": "front door",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        19,
+        18,
+        17
+      ]
+    },
+    {
+      "id": 121,
+      "name": "secret crypt",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 124,
+      "name": "new great hall",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        31,
+        29,
+        25,
+        23,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 126,
+      "name": "Tamara's bedroom",
+      "parent": 37,
+      "bits": [
+        21
+      ],
+      "properties": [
+        31,
+        28,
+        25,
+        24,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 131,
+      "name": "gallery",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        30,
+        29,
+        25,
+        24,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 132,
+      "name": "foyer",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        31,
+        29,
+        27,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 136,
+      "name": "old great hall",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        30,
+        29,
+        25,
+        23,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 140,
+      "name": "fighting deck",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        27,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 141,
+      "name": "dead end",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        5
+      ]
+    },
+    {
+      "id": 145,
+      "name": "secret door",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        18,
+        17,
+        9
+      ]
+    },
+    {
+      "id": 146,
+      "name": "library",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        30,
+        27,
+        26,
+        25,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 148,
+      "name": "Vivien's bedroom",
+      "parent": 37,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        29,
+        27,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 150,
+      "name": "Hyde's bedroom",
+      "parent": 37,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        31,
+        25,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 151,
+      "name": "master bedroom",
+      "parent": 37,
+      "bits": [
+        21
+      ],
+      "properties": [
+        29,
+        26,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 152,
+      "name": "sliding panel",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        18,
+        17,
+        9
+      ]
+    },
+    {
+      "id": 154,
+      "name": "drawing-room entrance",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        23,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 155,
+      "name": "dining passage",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        29,
+        23,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 159,
+      "name": "Iris's bedroom",
+      "parent": 37,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        29,
+        25,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 170,
+      "name": "sitting passage",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        25,
+        23,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 177,
+      "name": "Tamara's landing",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        30,
+        29,
+        25,
+        24,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 179,
+      "name": "Iris's entrance",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        27,
+        25,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 183,
+      "name": "study",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        29,
+        28,
+        27,
+        20,
+        18,
+        17,
+        16,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 186,
+      "name": "path",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        29,
+        28,
+        27,
+        21,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 196,
+      "name": "ground-floor corridor",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        31,
+        29,
+        27,
+        25,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7,
+        5
+      ]
+    },
+    {
+      "id": 199,
+      "name": "secret door",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        18,
+        17,
+        9
+      ]
+    },
+    {
+      "id": 208,
+      "name": "secret door",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        18,
+        17,
+        9
+      ]
+    },
+    {
+      "id": 216,
+      "name": "secret door",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        18,
+        17,
+        9
+      ]
+    },
+    {
+      "id": 222,
+      "name": "first-floor corridor",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        30,
+        29,
+        28,
+        27,
+        25,
+        24,
+        23,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 224,
+      "name": "Hyde's entrance",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        29,
+        27,
+        25,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 228,
+      "name": "midpoint",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        29,
+        27,
+        25,
+        20,
+        19,
+        18,
+        15,
+        14,
+        8
+      ]
+    },
+    {
+      "id": 229,
+      "name": "secret door",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        18,
+        17,
+        9
+      ]
+    },
+    {
+      "id": 235,
+      "name": "basement",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        29,
+        25,
+        23,
+        21,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 241,
+      "name": "hedge maze",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        30,
+        29,
+        28,
+        27,
+        26,
+        25,
+        24,
+        21,
+        20,
+        19,
+        18,
+        17,
+        16,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 243,
+      "name": "backstairs",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        29,
+        25,
+        22,
+        21,
+        20,
+        19,
+        18,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 246,
+      "name": "junction",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        29,
+        25,
+        22,
+        21,
+        20,
+        19,
+        18,
+        15,
+        14,
+        8,
+        7,
+        5
+      ]
+    },
+    {
+      "id": 249,
+      "name": "garden",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        30,
+        29,
+        28,
+        27,
+        26,
+        25,
+        24,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 250,
+      "name": "secret door",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        18,
+        17,
+        9
+      ]
+    },
+    {
+      "id": 252,
+      "name": "second-floor corridor",
+      "parent": 37,
+      "bits": [],
+      "properties": [
+        31,
+        29,
+        28,
+        27,
+        25,
+        23,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7
+      ]
+    }
+  ],
+  "overloadedInside": [
+    {
+      "id": 7,
+      "name": "Wendish's bedroom",
+      "parent": 37,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        31,
+        29,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 12,
+      "name": "drawing room",
+      "parent": 37,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        31,
+        27,
+        25,
+        24,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 30,
+      "name": "kitchen",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        29,
+        25,
+        23,
+        21,
+        20,
+        19,
+        18,
+        15,
+        14,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 32,
+      "name": "dining room",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        27,
+        25,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 33,
+      "name": "your bedroom",
+      "parent": 37,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        31,
+        29,
+        25,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 39,
+      "name": "east hall",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        29,
+        27,
+        26,
+        25,
+        20,
+        18,
+        17,
+        16,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 62,
+      "name": "your bathroom",
+      "parent": 37,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        27,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 67,
+      "name": "west hall",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        29,
+        28,
+        27,
+        25,
+        20,
+        18,
+        17,
+        16,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 88,
+      "name": "sitting room",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        31,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 117,
+      "name": "Ian's bedroom",
+      "parent": 37,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        31,
+        29,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 124,
+      "name": "new great hall",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        31,
+        29,
+        25,
+        23,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 126,
+      "name": "Tamara's bedroom",
+      "parent": 37,
+      "bits": [
+        21
+      ],
+      "properties": [
+        31,
+        28,
+        25,
+        24,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 131,
+      "name": "gallery",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        30,
+        29,
+        25,
+        24,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 132,
+      "name": "foyer",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        31,
+        29,
+        27,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7
+      ]
+    },
+    {
+      "id": 148,
+      "name": "Vivien's bedroom",
+      "parent": 37,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        29,
+        27,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 150,
+      "name": "Hyde's bedroom",
+      "parent": 37,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        31,
+        25,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 151,
+      "name": "master bedroom",
+      "parent": 37,
+      "bits": [
+        21
+      ],
+      "properties": [
+        29,
+        26,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 159,
+      "name": "Iris's bedroom",
+      "parent": 37,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        29,
+        25,
+        21,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 196,
+      "name": "ground-floor corridor",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        31,
+        29,
+        27,
+        25,
+        20,
+        19,
+        18,
+        17,
+        15,
+        14,
+        8,
+        7,
+        5
+      ]
+    },
+    {
+      "id": 243,
+      "name": "backstairs",
+      "parent": 37,
+      "bits": [
+        29
+      ],
+      "properties": [
+        29,
+        25,
+        22,
+        21,
+        20,
+        19,
+        18,
+        15,
+        14,
+        8,
+        7
+      ]
+    }
+  ],
+  "overloadedOutside": [
+    {
+      "id": 4,
+      "name": "nightshirt",
+      "parent": 59,
+      "bits": [
+        29
+      ],
+      "properties": [
+        19,
+        18,
+        17,
+        10,
+        9
+      ]
+    },
+    {
+      "id": 35,
+      "name": "contact lens",
+      "parent": 207,
+      "bits": [
+        29
+      ],
+      "properties": [
+        18,
+        17,
+        10
+      ]
+    },
+    {
+      "id": 61,
+      "name": "black pearl necklace",
+      "parent": 0,
+      "bits": [
+        29
+      ],
+      "properties": [
+        18,
+        17,
+        12,
+        10
+      ]
+    },
+    {
+      "id": 65,
+      "name": "earring",
+      "parent": 0,
+      "bits": [
+        29
+      ],
+      "properties": [
+        19,
+        18,
+        17,
+        12,
+        10
+      ]
+    },
+    {
+      "id": 66,
+      "name": "GO",
+      "parent": 0,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        12
+      ]
+    },
+    {
+      "id": 75,
+      "name": "second contact lens",
+      "parent": 0,
+      "bits": [
+        29
+      ],
+      "properties": [
+        19,
+        18,
+        17,
+        10,
+        9
+      ]
+    },
+    {
+      "id": 78,
+      "name": "tweed outfit",
+      "parent": 42,
+      "bits": [
+        21,
+        29
+      ],
+      "properties": [
+        19,
+        18,
+        17,
+        10,
+        9
+      ]
+    },
+    {
+      "id": 101,
+      "name": "first contact lens",
+      "parent": 0,
+      "bits": [
+        29
+      ],
+      "properties": [
+        18,
+        17,
+        10,
+        9
+      ]
+    },
+    {
+      "id": 113,
+      "name": "ghost costume",
+      "parent": 0,
+      "bits": [
+        29
+      ],
+      "properties": [
+        19,
+        18,
+        17,
+        10
+      ]
+    },
+    {
+      "id": 198,
+      "name": "exercise outfit",
+      "parent": 59,
+      "bits": [
+        29
+      ],
+      "properties": [
+        19,
+        18,
+        17,
+        10,
+        9
+      ]
+    },
+    {
+      "id": 217,
+      "name": "dinner outfit",
+      "parent": 59,
+      "bits": [
+        29
+      ],
+      "properties": [
+        19,
+        18,
+        17,
+        10,
+        9
+      ]
+    }
+  ],
+  "source": {
+    "revision": "c85885f",
+    "sourceHashes": {
+      "castle.zil": "f6361e60f57de05cf50355611102b75a97fb8e14cf5036c9ba438412054a9a02",
+      "colors.zil": "561378218396bfdd25f8c2501d98dc239da45ca8828fa2e7e6170897387dac29",
+      "global.zil": "0a9ef9f434090c7b700bfc0392ddf9ddc74326ec7f4f4f905d1bb32c99831fa2",
+      "goal.zil": "6d6a6988d4f4caa60e1145f1c214c378e73669d1386659c97beca4ad0ab959ee",
+      "m5.zil": "8f88bfe962547a49ea287531c0e9a744ef1084e4e5f1e47ff6b57216c2e9869e",
+      "macros.zil": "6582380f054665e2a23bb93d3f6bd2f9627691b53605254abc64c81c1ff67d1d",
+      "misc.zil": "06931a70c80f14b88926d904a0b51bd7105a9f1c40e131c7801d48be0d26886c",
+      "moonmist.zil": "8f88bfe962547a49ea287531c0e9a744ef1084e4e5f1e47ff6b57216c2e9869e",
+      "parser.zil": "8f92fe9df3769ab45f531801559b21172a3b767662c904cb4becb4c023f12da4",
+      "people.zil": "96bae02a8c65d184452caf67848d6d967c641060f2417fcbed289d89109fac2f",
+      "places.zil": "8d786818cd934aeb02da51849ce65eb566c460cdd97374c1d6c78472016f384c",
+      "syntax.zil": "7c786e13b9b7a838f987f3cbff1eb829928920426d2a5cd74998c1c291a954a6",
+      "things.zil": "c2d65ea79b24718b8c4c19fc22d069639bd943aa034ce83736520eeb98714944",
+      "tower.zil": "354b36fdff21866e1a129916b49b06b7350cea6522b3b2348a204ad77bf36d8e",
+      "verbs.zil": "a65d75680c3e84cfa716b689e4672c78fbe4fd4eca82d05f05eb37088cfccc27"
+    },
+    "warnings": [
+      {
+        "file": "colors.zil",
+        "unbalanced": 2
+      },
+      {
+        "file": "goal.zil",
+        "unbalanced": 77
+      },
+      {
+        "file": "m5.zil",
+        "unbalanced": 3
+      },
+      {
+        "file": "misc.zil",
+        "unbalanced": 8
+      },
+      {
+        "file": "moonmist.zil",
+        "unbalanced": 3
+      },
+      {
+        "file": "parser.zil",
+        "unbalanced": 40
+      },
+      {
+        "file": "people.zil",
+        "unbalanced": 12
+      },
+      {
+        "file": "syntax.zil",
+        "unbalanced": 1
+      },
+      {
+        "file": "tower.zil",
+        "unbalanced": 11
+      },
+      {
+        "file": "verbs.zil",
+        "unbalanced": 43
+      }
+    ],
+    "roomDeclarations": [
+      {
+        "file": "castle.zil",
+        "line": 525,
+        "kind": "ROOM",
+        "name": "COURTYARD",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SEENBIT"
+        ]
+      },
+      {
+        "file": "castle.zil",
+        "line": 605,
+        "kind": "ROOM",
+        "name": "MAZE",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SEENBIT"
+        ]
+      },
+      {
+        "file": "castle.zil",
+        "line": 646,
+        "kind": "ROOM",
+        "name": "GARDEN",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SEENBIT"
+        ]
+      },
+      {
+        "file": "castle.zil",
+        "line": 1302,
+        "kind": "ROOM",
+        "name": "CORR-1",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SEENBIT",
+          "WEARBIT"
+        ]
+      },
+      {
+        "file": "castle.zil",
+        "line": 1693,
+        "kind": "ROOM",
+        "name": "BACKSTAIRS",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SEENBIT",
+          "WEARBIT",
+          "NARTICLEBIT"
+        ]
+      },
+      {
+        "file": "castle.zil",
+        "line": 2317,
+        "kind": "ROOM",
+        "name": "EAST-HALL",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SEENBIT",
+          "WEARBIT"
+        ]
+      },
+      {
+        "file": "castle.zil",
+        "line": 2658,
+        "kind": "ROOM",
+        "name": "WEST-HALL",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SEENBIT",
+          "WEARBIT"
+        ]
+      },
+      {
+        "file": "tower.zil",
+        "line": 82,
+        "kind": "ROOM",
+        "name": "JUNCTION",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT"
+        ]
+      },
+      {
+        "file": "tower.zil",
+        "line": 472,
+        "kind": "ROOM",
+        "name": "LOVER-PATH",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SURFACEBIT",
+          "OPENBIT"
+        ]
+      },
+      {
+        "file": "tower.zil",
+        "line": 522,
+        "kind": "ROOM",
+        "name": "LIMBO",
+        "in": "ROOMS",
+        "flags": [
+          "NARTICLEBIT"
+        ]
+      },
+      {
+        "file": "tower.zil",
+        "line": 531,
+        "kind": "ROOM",
+        "name": "CORR-2",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SEENBIT"
+        ]
+      },
+      {
+        "file": "tower.zil",
+        "line": 805,
+        "kind": "ROOM",
+        "name": "STUDY",
+        "in": "ROOMS",
+        "flags": [
+          "SEENBIT",
+          "OPENBIT",
+          "DOORBIT"
+        ]
+      },
+      {
+        "file": "tower.zil",
+        "line": 1238,
+        "kind": "ROOM",
+        "name": "CORR-3",
+        "in": "ROOMS",
+        "flags": [
+          "SEENBIT"
+        ]
+      }
+    ],
+    "inRooms": [
+      {
+        "file": "castle.zil",
+        "line": 525,
+        "kind": "ROOM",
+        "name": "COURTYARD",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SEENBIT"
+        ]
+      },
+      {
+        "file": "castle.zil",
+        "line": 605,
+        "kind": "ROOM",
+        "name": "MAZE",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SEENBIT"
+        ]
+      },
+      {
+        "file": "castle.zil",
+        "line": 646,
+        "kind": "ROOM",
+        "name": "GARDEN",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SEENBIT"
+        ]
+      },
+      {
+        "file": "castle.zil",
+        "line": 712,
+        "kind": "OBJECT",
+        "name": "FRONT-DOOR",
+        "in": "ROOMS",
+        "flags": [
+          "OPENBIT",
+          "DOORBIT",
+          "SEENBIT",
+          "LOCKED"
+        ]
+      },
+      {
+        "file": "castle.zil",
+        "line": 1302,
+        "kind": "ROOM",
+        "name": "CORR-1",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SEENBIT",
+          "WEARBIT"
+        ]
+      },
+      {
+        "file": "castle.zil",
+        "line": 1686,
+        "kind": "OBJECT",
+        "name": "SECRET-DINING-DOOR",
+        "in": "ROOMS",
+        "flags": [
+          "SECRETBIT",
+          "DOORBIT"
+        ]
+      },
+      {
+        "file": "castle.zil",
+        "line": 1693,
+        "kind": "ROOM",
+        "name": "BACKSTAIRS",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SEENBIT",
+          "WEARBIT",
+          "NARTICLEBIT"
+        ]
+      },
+      {
+        "file": "castle.zil",
+        "line": 2317,
+        "kind": "ROOM",
+        "name": "EAST-HALL",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SEENBIT",
+          "WEARBIT"
+        ]
+      },
+      {
+        "file": "castle.zil",
+        "line": 2658,
+        "kind": "ROOM",
+        "name": "WEST-HALL",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SEENBIT",
+          "WEARBIT"
+        ]
+      },
+      {
+        "file": "tower.zil",
+        "line": 82,
+        "kind": "ROOM",
+        "name": "JUNCTION",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT"
+        ]
+      },
+      {
+        "file": "tower.zil",
+        "line": 472,
+        "kind": "ROOM",
+        "name": "LOVER-PATH",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SURFACEBIT",
+          "OPENBIT"
+        ]
+      },
+      {
+        "file": "tower.zil",
+        "line": 522,
+        "kind": "ROOM",
+        "name": "LIMBO",
+        "in": "ROOMS",
+        "flags": [
+          "NARTICLEBIT"
+        ]
+      },
+      {
+        "file": "tower.zil",
+        "line": 531,
+        "kind": "ROOM",
+        "name": "CORR-2",
+        "in": "ROOMS",
+        "flags": [
+          "ONBIT",
+          "SEENBIT"
+        ]
+      },
+      {
+        "file": "tower.zil",
+        "line": 805,
+        "kind": "ROOM",
+        "name": "STUDY",
+        "in": "ROOMS",
+        "flags": [
+          "SEENBIT",
+          "OPENBIT",
+          "DOORBIT"
+        ]
+      },
+      {
+        "file": "tower.zil",
+        "line": 1238,
+        "kind": "ROOM",
+        "name": "CORR-3",
+        "in": "ROOMS",
+        "flags": [
+          "SEENBIT"
+        ]
+      }
+    ],
+    "outsideRoomFlagCarriers": [
+      {
+        "file": "global.zil",
+        "line": 4,
+        "kind": "OBJECT",
+        "name": "GLOBAL-OBJECTS",
+        "in": null,
+        "flags": [
+          "CONTBIT",
+          "DOORBIT",
+          "FEMALE",
+          "INVISIBLE",
+          "LIGHTBIT",
+          "LOCKED",
+          "MUNGBIT",
+          "NARTICLEBIT",
+          "NDESCBIT",
+          "ONBIT",
+          "OPENBIT",
+          "READBIT",
+          "RMUNGBIT",
+          "SEARCHBIT",
+          "SECRETBIT",
+          "SEENBIT",
+          "SURFACEBIT",
+          "TAKEBIT",
+          "TOOLBIT",
+          "TOUCHBIT",
+          "TRANSBIT",
+          "TRYTAKEBIT",
+          "VEHBIT",
+          "VOWELBIT",
+          "WEAPONBIT",
+          "WEARBIT",
+          "WORNBIT"
+        ]
+      }
+    ]
+  },
+  "limits": "Common parent and authored declarations are corroboration; no name-based ID matching, title closure or candidate map-safety claim. Existing heuristic objectCount is recorded separately, never used as bounded census."
+}

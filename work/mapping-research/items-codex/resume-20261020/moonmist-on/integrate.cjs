@@ -1,0 +1,12 @@
+const fs=require('fs'),vm=require('vm');
+const d=__dirname+'/',p='js/ModuleStatFactsClaude.js',s=fs.readFileSync(p,'utf8');
+const old='"attributeMap": { "wearable": 29, "open": 14, "isOpen": 14, "container": 27, "supporter": 23, "animate": 31 }';
+if(s.split(old).length!==2)throw Error('not unique');
+fs.writeFileSync(d+'ModuleStatFactsClaude.before.js',s);
+const t=s.replace(old,'// Grok4129 independently replayed: lamp164/lantern153 native bit10 on; bed134/chair76 false/refused. State only.\n        '+old.replace('31 }','31, "on": 10 }'));
+fs.writeFileSync(p,t);const a={},b={};vm.runInNewContext(s,a);vm.runInNewContext(t,b);
+const digest=JSON.parse(fs.readFileSync(d+'current-domain.json')).digest;
+let expect=JSON.parse(JSON.stringify(a.ModuleStatFactsClaude));expect[digest].attributeMap.on=10;
+if(JSON.stringify(expect)!==JSON.stringify(b.ModuleStatFactsClaude))throw Error('semantic delta');
+fs.writeFileSync(d+'semantic-delta.json',JSON.stringify([{digest,field:'attributeMap.on',before:null,after:10}],null,2));
+fs.appendFileSync(d+'review.md','\nFresh native route40 confirms yourlamp164 true, bed134/chair76 false with actual refusals; route50 confirms lantern153 true/already-on then successful off. Original recovered lantern FALSE->TRUE captures corroborate transition. ACCEPT exact author-proposed on10 state for isolated current-source validation. No switchable/lightSource facts inferred.\n');

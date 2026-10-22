@@ -1,0 +1,9 @@
+# Ballyhoo activation consumer: sealed current-source audit
+
+Prior53c3a0f already owns on24 state; do not duplicate it. Native radio48 ON/OFF is accepted as state evidence, not universal switchability/light. Current consumer open is real; investigate the command form before extending identity capability metadata.
+
+Current ActionSynth.rules.switchable offers `switch on`/`switch off`, with literalAvailable checking dictionary-word existence, not proving a verb phrase/action dispatch. Cached historical source9f779e8 syntax.zil616–618 declares TURN ON and `<SYNONYM TURN SET ;SWITCH ROTATE FLIP FLICK TOGGLE>`: SWITCH is commented out. Outside.zil has an ignition SWITCH noun. A dictionary switch word therefore must not license an assumed SWITCH verb. These are qualified source predictions; fresh native `switch on radio` refusal is not yet captured.
+
+Existing Spellbreaker identity capability extension is initially edible-only and cannot just be extended to radio switchable under the frozen Z-text gate. Even after a future reviewed extension, a measured capability must lead to an actually accepted command form. No equation on24→switchable, no global on→light, no UI-specific title/noun branch, no fabricated learned opcode provenance. Source also has tape-recorder/ignition LAMP-ON handlers, so the prior sole on24 non-room owner claim is not a sole activation-capability owner claim.
+
+Next meaningful proof/design: reuse retained native radio ON/OFF packet and exact route to compare actual TURN versus SWITCH forms; identify the existing grammar/form owner that can preserve authored alternatives under semantic valves. Current dictionary literal existence alone is insufficient. Independent blind investigation and adversarial proposal required before product edits. This packet is a research finding, not native refusal or complete capability evidence.
