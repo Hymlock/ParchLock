@@ -400,6 +400,10 @@ var ModuleStatFactsClaude = {
     // (2026-10-11-zil-walk-pzmoonmist5.json, target-scoped probes: chest of drawers, sports car, wardrobe / wing chair, bed, night
     // table, bench) and source-exact. Together, so surfaces get no Open/Close. Closes the luggage-contents leak (ledger FINDING).
     "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0": {
+        // Bit21 is garment state only in its physical item domain; rooms
+        // reuse it for mirrors, and offstage GLOBAL-OBJECTS carries all flags.
+        "wornAttribute": 21,
+        "equipmentState": { "wornWhen": "bit-garment-domain", "roomRootObject": 37, "objectCount": 253 },
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
         // PERSONBIT 31 = animate (grok1 2026-10-17, g1-mmA.json; route moonmist step 32, courtyard with Tamara and Bolitho present; test_attr recorded
         // only during the named command): 'analyze tamara' tests Tamara 178:31 TRUE, 'analyze bolitho' tests Bolitho 91:31 TRUE (PRE-ANALYZE verbs.zil:1370,

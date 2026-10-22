@@ -330,7 +330,7 @@ var AttributeSchema = {
         // Anchorhead object) can never regress from loading this file.
         if (typeof AttrCalibrator !== "undefined") {
             try {
-                var mem = AttributeSchema._getMem();
+                var mem = mem || AttributeSchema._getMem();
                 if (mem) {
                     AttrCalibrator.hydrate(mem);
                     var bitOverrides = AttrCalibrator.overrideFor();
@@ -391,16 +391,67 @@ var AttributeSchema = {
         } catch (eMeasuredWorn) { return null; }
     },
 
+    // An authored physical garment domain, independently measured from the
+    // room/global flag reuse. Never resolve player/room through attrs here.
+    garmentWornDomainFact: function (mem, fact) {
+        try {
+            if (!mem || !fact || !fact.equipmentState || fact.equipmentState.wornWhen !== "bit-garment-domain" ||
+                typeof ZRamReader === "undefined" || !ZRamReader.executableLayoutFacts ||
+                ZRamReader.executableLayoutFacts(mem) !== fact) return null;
+            var h = ZRamReader.header(mem), state = fact.equipmentState;
+            var wearable = fact.attributeMap && fact.attributeMap.wearable, worn = fact.wornAttribute;
+            if (!h || h.version < 3 || h.version > 5) return null;
+            var limit = h.version <= 3 ? 32 : 48;
+            if (!Number.isInteger(wearable) || wearable < 0 || wearable >= limit ||
+                !Number.isInteger(worn) || worn < 0 || worn >= limit || wearable === worn ||
+                AttributeSchema.bitFor("wearable", mem) !== wearable) return null;
+            var family = AttributeSchema._familyOf(mem);
+            if (!family || family.classification !== "confirmed-zil-family" || family.evidence !== "validated") return null;
+            var count = state.objectCount, rootId = state.roomRootObject;
+            if (!Number.isInteger(count) || count < 2 || count > 20000 ||
+                !Number.isInteger(rootId) || rootId < 2 || rootId > count) return null;
+            var first = ZRamReader.objectBase(h, 1), firstProps = ZRamReader.u16(mem, first + (h.version <= 3 ? 7 : 12));
+            if (firstProps !== first + count * h.entrySize || firstProps >= h.staticMem ||
+                firstProps >= (mem.byteLength || mem.length || 0)) return null;
+            var root = ZRamReader.objectLinks(mem, rootId);
+            if (!root || root.parent !== 0 || !Number.isInteger(root.child) || root.child < 1 || root.child > count ||
+                ZRamReader.attr(root, wearable) || ZRamReader.attr(root, worn)) return null;
+            return { count: count, rootId: rootId, wearable: wearable, worn: worn };
+        } catch (eGarmentDomain) { return null; }
+    },
+
     // Measured executable semantics complement standard compiler attributes.
     // Never infer equipment state from an object's name or inventory prose.
     applyEquipmentState: function (attrs, obj, mem) {
+        var garmentDomainOwned = false;
         try {
             if (!obj || !mem || typeof ModuleLibrary === "undefined" ||
                 typeof ModuleStatFactsClaude === "undefined" || typeof ZRamReader === "undefined") return;
-            var digest = ModuleLibrary.currentExecutableDigest();
-            var fact = digest && ModuleStatFactsClaude[digest];
+            // Select this measured domain through the supplied-memory identity
+            // owner first, so a failing digest accessor cannot leak calibration.
+            var layoutFact = ZRamReader.executableLayoutFacts && ZRamReader.executableLayoutFacts(mem);
+            var layoutState = layoutFact && layoutFact.equipmentState;
+            var layoutOwnsGarment = layoutState && (layoutState.wornWhen === "bit-garment-domain" ||
+                Object.prototype.hasOwnProperty.call(layoutState, "roomRootObject") ||
+                Object.prototype.hasOwnProperty.call(layoutState, "objectCount"));
+            var digest = layoutOwnsGarment ? null : ModuleLibrary.currentExecutableDigest();
+            var fact = layoutOwnsGarment ? layoutFact : digest && ModuleStatFactsClaude[digest];
             if (fact && fact.objectUseVerb === "use") attrs.nativeUseVerb = "use";
             var state = fact && fact.equipmentState;
+            if (state && (state.wornWhen === "bit-garment-domain" ||
+                Object.prototype.hasOwnProperty.call(state, "roomRootObject") ||
+                Object.prototype.hasOwnProperty.call(state, "objectCount"))) {
+                garmentDomainOwned = true;
+                if (ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) return;
+                attrs.worn = attrs.isWorn = false;
+                var domain = AttributeSchema.garmentWornDomainFact(mem, fact);
+                if (!domain || !Number.isInteger(obj.id) || obj.id < 2 || obj.id > domain.count || obj.id === domain.rootId) return;
+                var garment = ZRamReader.objectLinks(mem, obj.id);
+                attrs.worn = attrs.isWorn = !!(garment && Number.isInteger(garment.parent) && garment.parent > 0 &&
+                    garment.parent <= domain.count && garment.parent !== domain.rootId &&
+                    ZRamReader.attr(garment, domain.wearable) && ZRamReader.attr(garment, domain.worn));
+                return;
+            }
             if (state && state.wornWhen === "wearable-direct-player") {
                 // Declared/bit-owned worn state remains ahead of this relation.
                 if ((ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) ||
@@ -426,7 +477,7 @@ var AttributeSchema = {
             attrs.worn = values[property] === 1;
             attrs.clothing = attrs.wearable = true;
             attrs.equipmentToggleVerb = state.toggleVerb;
-        } catch (eEquipment) {}
+        } catch (eEquipment) { if (garmentDomainOwned) attrs.worn = attrs.isWorn = false; }
     },
 
     /* Closed-tin rule (design addendum 3.1 / Phase 1 task). */

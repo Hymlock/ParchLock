@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-21T20:20:19.240Z",
-  "factsSha256": "ef060f2b5e9c96d0ba1cc33462fbb005d792d7368f3b1ab90320f3a621e82634",
+  "generatedAt": "2026-10-22T19:05:55.422Z",
+  "factsSha256": "96217a4e8165d170e16aef47fce762a907710007eafc44e1463290e3154e2061",
   "scope": "Reconciliation report only, not a second registry/ledger and not a completion percentage",
   "titleCount": 26,
   "keysPerTitle": 94,
@@ -6224,6 +6224,8 @@
       "historicClassification": "confirmed-zil-family/validated",
       "classificationNote": "Current source-bound decoder result is distinct from historical matrix",
       "factKeys": [
+        "wornAttribute",
+        "equipmentState",
         "openCapability",
         "attributeMap"
       ],
@@ -6542,7 +6544,9 @@
         {
           "area": "attribute",
           "key": "worn",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 21,
           "historicDraft": {
             "value": null,
             "status": "unknown",
@@ -6606,7 +6610,9 @@
         {
           "area": "attribute",
           "key": "isWorn",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED",
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 21,
           "historicDraft": {
             "value": null,
             "status": "unknown",
@@ -6734,7 +6740,9 @@
         {
           "area": "fact",
           "key": "wornAttribute",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "wornAttribute",
+          "value": 21
         },
         {
           "area": "fact",
@@ -6759,7 +6767,13 @@
         {
           "area": "fact",
           "key": "equipmentState",
-          "state": "EVIDENCE_RECONCILIATION_REQUIRED"
+          "state": "FACT_PRESENT_REVIEW_SCOPE",
+          "owner": "equipmentState",
+          "value": {
+            "wornWhen": "bit-garment-domain",
+            "roomRootObject": 37,
+            "objectCount": 253
+          }
         },
         {
           "area": "fact",
@@ -10709,6 +10723,7 @@
               123
             ]
           },
+          "auditPointer": "Codex integration independently ACCEPTED by non-author subagent sorcerer_worn_blind (not historical bus-seat acceptance): digest2d097ac9 identity-defined attributeObjects.edible[43,123], no FOODBIT. Native held+ground bread/fish consume; knife refusal/Drink refusal. Same-memory validated-ZIL bounded membership owner, strong declarations retained. Focused27/operator13/0, immutable309x2 seven paired-proven variable fields,0unresolved;7coveragegaps and existingD31eightfail retained. Packet items-codex/resume-20261020/spellbreaker-food-shared. No title closure.",
           "historicDraft": {
             "value": null,
             "status": "unknown",
