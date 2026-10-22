@@ -1,0 +1,13 @@
+# Codex sealed Z-text investigation, separate from classifier metadata
+
+Independent source auditor `/root/zil_food_independent` first identified this in its bounded Sherlock audit; Codex then verified current raw bytes and code. Do not count that auditor as a new blind half. A new problem-only investigation will use an unexposed investigator.
+
+Sherlock current digestba9c2c81…44ff0: dictionary21401,5separators,1193entries8bytes, first21410; alphabet pointer52=0 and extension54=0. First text bytes14c112eaaeea unpack to [5,6,1,4,23,10,11,23,10]. Current decodeZsc returns `and refre`; next entries return `and ver`/`and verif`. Under ten-bit escape the first4zchars encode ASCII36, so these are `$refre`, `$ver`, `$verif` (dictionary truncation retained, not expanded into guessed full words).
+
+Current _decodeZscRaw recognizes A2/6 then merely resets alphabet and continues; it does not consume the following two units. The high half1 is subsequently treated as abbreviation marker and lowhalf4 selects an expansion, explaining the accidental `and `. Header custom alphabet is zero; no evidence for encrypted vocabulary or a custom alphabet explains these vectors.
+
+Primary specification: https://inform-fiction.ifarchive.org/zmachine/standards/z1point1/sect03.html sections3.4,3.6.1,3.8. It defines an escape as two subsequent five-bit units, and permits unfinished constructions at string end to be ignored. Printable ASCII range32..126 includes dollar36. This is specification corroboration of the raw vector, not evidence that Sherlock grammar is validated.
+
+Prior-fix guard: PLAN D143 at3194ff keeps abbreviation spaces untouched recursively and normalizes only at top-level decodeZsc. Current callers include object/room shortName, dictionaryEntryText near1542, and dynamic-name routines near338/424/609. Any future shared fix must preserve those spaces and consume escape state across packed-word boundaries without reinterpreting payload as abbreviation/shift/space. Audit existing character conversion/default/custom Unicode support before selecting a bounded policy; do not map high ZSCII codes directly to Unicode as if they were ASCII. Existing V1/V2 shift semantics/custom alphabets remain separately qualified, not silently claimed complete.
+
+No product edit, classifier bound change or new full gate for this investigation. The active Spellbreaker shared candidate is frozen; finish its own gates/acceptance before another shared implementation. Sherlock six-text/two-metadata layout still fails the current minimum-size contract, and lowering9to8 previously still yielded unknown grammar. Correct text decoding alone does not classify Sherlock or solve metadata/action-table layout.

@@ -1,0 +1,2066 @@
+{
+  "scope": "Research only: dictionary minimum relaxation permits boundary observation, not classifier acceptance",
+  "hashes": {
+    "reader": "9e4778c4a76185812b464350cbdd1faa8a65a8bc2b2d7237eb6e5f5fa2ef2f06",
+    "grammar": "5f41584422c424ac503e289c287fb34bdf91636b115f6c421f53dd4fdfa32fb0",
+    "story": "ba9c2c81d6b55eb9fc7de43a2e439fc65304231cbb834c208005cd9460f44ff0"
+  },
+  "header": {
+    "version": 5,
+    "himem": 30954,
+    "dict": 21401,
+    "objTable": 1164,
+    "globals": 684,
+    "staticMem": 16441,
+    "abbrev": 492,
+    "entrySize": 14,
+    "defaultsWords": 63
+  },
+  "decoderReturned": false,
+  "ranges": {
+    "grammarRoot": 16441,
+    "grammarEnd": 20260,
+    "lastPointer": 20255,
+    "actionBase": 20260,
+    "actionCount": 236,
+    "maxAction": 235,
+    "prepBase": 21204,
+    "prepCount": 65,
+    "selectedPrepSize": 3
+  },
+  "actions": {
+    "base": 20260,
+    "end": 20732,
+    "invalid": []
+  },
+  "preactions": {
+    "base": 20732,
+    "end": 21204,
+    "invalid": []
+  },
+  "alternatives": [
+    {
+      "entrySize": 3,
+      "end": 21401,
+      "allChecksPass": false,
+      "dictionaryCrosslinksValid": true,
+      "indicesInRange": true,
+      "indicesUnique": false,
+      "required": [
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255
+      ],
+      "unmappedRequired": [],
+      "firstFailure": {
+        "i": 23,
+        "address": 21275,
+        "raw": [
+          116,
+          2,
+          233
+        ],
+        "dictionaryAddress": 29698,
+        "word": "till",
+        "index": 233,
+        "errors": [
+          "duplicate-index"
+        ]
+      },
+      "rows": [
+        {
+          "i": 0,
+          "address": 21206,
+          "raw": [
+            117,
+            170,
+            233
+          ],
+          "dictionaryAddress": 30122,
+          "word": "until",
+          "index": 233,
+          "errors": []
+        },
+        {
+          "i": 1,
+          "address": 21209,
+          "raw": [
+            96,
+            98,
+            234
+          ],
+          "dictionaryAddress": 24674,
+          "word": "go",
+          "index": 234,
+          "errors": []
+        },
+        {
+          "i": 2,
+          "address": 21212,
+          "raw": [
+            84,
+            250,
+            235
+          ],
+          "dictionaryAddress": 21754,
+          "word": "apart",
+          "index": 235,
+          "errors": []
+        },
+        {
+          "i": 3,
+          "address": 21215,
+          "raw": [
+            84,
+            58,
+            236
+          ],
+          "dictionaryAddress": 21562,
+          "word": "against",
+          "index": 236,
+          "errors": []
+        },
+        {
+          "i": 4,
+          "address": 21218,
+          "raw": [
+            85,
+            74,
+            237
+          ],
+          "dictionaryAddress": 21834,
+          "word": "around",
+          "index": 237,
+          "errors": []
+        },
+        {
+          "i": 5,
+          "address": 21221,
+          "raw": [
+            86,
+            106,
+            238
+          ],
+          "dictionaryAddress": 22122,
+          "word": "behind",
+          "index": 238,
+          "errors": []
+        },
+        {
+          "i": 6,
+          "address": 21224,
+          "raw": [
+            117,
+            66,
+            239
+          ],
+          "dictionaryAddress": 30018,
+          "word": "under",
+          "index": 239,
+          "errors": []
+        },
+        {
+          "i": 7,
+          "address": 21227,
+          "raw": [
+            105,
+            58,
+            240
+          ],
+          "dictionaryAddress": 26938,
+          "word": "over",
+          "index": 240,
+          "errors": []
+        },
+        {
+          "i": 8,
+          "address": 21230,
+          "raw": [
+            95,
+            138,
+            241
+          ],
+          "dictionaryAddress": 24458,
+          "word": "from",
+          "index": 241,
+          "errors": []
+        },
+        {
+          "i": 9,
+          "address": 21233,
+          "raw": [
+            92,
+            90,
+            242
+          ],
+          "dictionaryAddress": 23642,
+          "word": "down",
+          "index": 242,
+          "errors": []
+        },
+        {
+          "i": 10,
+          "address": 21236,
+          "raw": [
+            104,
+            186,
+            243
+          ],
+          "dictionaryAddress": 26810,
+          "word": "off",
+          "index": 243,
+          "errors": []
+        },
+        {
+          "i": 11,
+          "address": 21239,
+          "raw": [
+            86,
+            98,
+            244
+          ],
+          "dictionaryAddress": 22114,
+          "word": "before",
+          "index": 244,
+          "errors": []
+        },
+        {
+          "i": 12,
+          "address": 21242,
+          "raw": [
+            105,
+            42,
+            245
+          ],
+          "dictionaryAddress": 26922,
+          "word": "out",
+          "index": 245,
+          "errors": []
+        },
+        {
+          "i": 13,
+          "address": 21245,
+          "raw": [
+            117,
+            178,
+            246
+          ],
+          "dictionaryAddress": 30130,
+          "word": "up",
+          "index": 246,
+          "errors": []
+        },
+        {
+          "i": 14,
+          "address": 21248,
+          "raw": [
+            115,
+            210,
+            247
+          ],
+          "dictionaryAddress": 29650,
+          "word": "through",
+          "index": 247,
+          "errors": []
+        },
+        {
+          "i": 15,
+          "address": 21251,
+          "raw": [
+            104,
+            218,
+            248
+          ],
+          "dictionaryAddress": 26842,
+          "word": "on",
+          "index": 248,
+          "errors": []
+        },
+        {
+          "i": 16,
+          "address": 21254,
+          "raw": [
+            99,
+            34,
+            249
+          ],
+          "dictionaryAddress": 25378,
+          "word": "in",
+          "index": 249,
+          "errors": []
+        },
+        {
+          "i": 17,
+          "address": 21257,
+          "raw": [
+            85,
+            162,
+            250
+          ],
+          "dictionaryAddress": 21922,
+          "word": "away",
+          "index": 250,
+          "errors": []
+        },
+        {
+          "i": 18,
+          "address": 21260,
+          "raw": [
+            95,
+            82,
+            251
+          ],
+          "dictionaryAddress": 24402,
+          "word": "for",
+          "index": 251,
+          "errors": []
+        },
+        {
+          "i": 19,
+          "address": 21263,
+          "raw": [
+            84,
+            18,
+            252
+          ],
+          "dictionaryAddress": 21522,
+          "word": "about",
+          "index": 252,
+          "errors": []
+        },
+        {
+          "i": 20,
+          "address": 21266,
+          "raw": [
+            116,
+            18,
+            253
+          ],
+          "dictionaryAddress": 29714,
+          "word": "to",
+          "index": 253,
+          "errors": []
+        },
+        {
+          "i": 21,
+          "address": 21269,
+          "raw": [
+            120,
+            26,
+            254
+          ],
+          "dictionaryAddress": 30746,
+          "word": "with",
+          "index": 254,
+          "errors": []
+        },
+        {
+          "i": 22,
+          "address": 21272,
+          "raw": [
+            85,
+            122,
+            255
+          ],
+          "dictionaryAddress": 21882,
+          "word": "at",
+          "index": 255,
+          "errors": []
+        },
+        {
+          "i": 23,
+          "address": 21275,
+          "raw": [
+            116,
+            2,
+            233
+          ],
+          "dictionaryAddress": 29698,
+          "word": "till",
+          "index": 233,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 24,
+          "address": 21278,
+          "raw": [
+            115,
+            250,
+            233
+          ],
+          "dictionaryAddress": 29690,
+          "word": "til",
+          "index": 233,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 25,
+          "address": 21281,
+          "raw": [
+            103,
+            218,
+            236
+          ],
+          "dictionaryAddress": 26586,
+          "word": "near",
+          "index": 236,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 26,
+          "address": 21284,
+          "raw": [
+            86,
+            162,
+            238
+          ],
+          "dictionaryAddress": 22178,
+          "word": "beyond",
+          "index": 238,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 27,
+          "address": 21287,
+          "raw": [
+            84,
+            26,
+            240
+          ],
+          "dictionaryAddress": 21530,
+          "word": "across",
+          "index": 240,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 28,
+          "address": 21290,
+          "raw": [
+            84,
+            138,
+            237
+          ],
+          "dictionaryAddress": 21642,
+          "word": "along",
+          "index": 237,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 29,
+          "address": 21293,
+          "raw": [
+            117,
+            74,
+            239
+          ],
+          "dictionaryAddress": 30026,
+          "word": "underneat",
+          "index": 239,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 30,
+          "address": 21296,
+          "raw": [
+            86,
+            146,
+            239
+          ],
+          "dictionaryAddress": 22162,
+          "word": "beneath",
+          "index": 239,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 31,
+          "address": 21299,
+          "raw": [
+            86,
+            122,
+            239
+          ],
+          "dictionaryAddress": 22138,
+          "word": "below",
+          "index": 239,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 32,
+          "address": 21302,
+          "raw": [
+            105,
+            50,
+            245
+          ],
+          "dictionaryAddress": 26930,
+          "word": "outside",
+          "index": 245,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 33,
+          "address": 21305,
+          "raw": [
+            120,
+            42,
+            249
+          ],
+          "dictionaryAddress": 30762,
+          "word": "within",
+          "index": 249,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 34,
+          "address": 21308,
+          "raw": [
+            86,
+            154,
+            249
+          ],
+          "dictionaryAddress": 22170,
+          "word": "between",
+          "index": 249,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 35,
+          "address": 21311,
+          "raw": [
+            99,
+            114,
+            249
+          ],
+          "dictionaryAddress": 25458,
+          "word": "into",
+          "index": 249,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 36,
+          "address": 21314,
+          "raw": [
+            99,
+            66,
+            249
+          ],
+          "dictionaryAddress": 25410,
+          "word": "inside",
+          "index": 249,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 37,
+          "address": 21317,
+          "raw": [
+            117,
+            186,
+            248
+          ],
+          "dictionaryAddress": 30138,
+          "word": "upon",
+          "index": 248,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 38,
+          "address": 21320,
+          "raw": [
+            84,
+            10,
+            248
+          ],
+          "dictionaryAddress": 21514,
+          "word": "aboard",
+          "index": 248,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 39,
+          "address": 21323,
+          "raw": [
+            104,
+            226,
+            248
+          ],
+          "dictionaryAddress": 26850,
+          "word": "onto",
+          "index": 248,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 40,
+          "address": 21326,
+          "raw": [
+            115,
+            226,
+            247
+          ],
+          "dictionaryAddress": 29666,
+          "word": "thru",
+          "index": 247,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 41,
+          "address": 21329,
+          "raw": [
+            117,
+            242,
+            254
+          ],
+          "dictionaryAddress": 30194,
+          "word": "using",
+          "index": 254,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 42,
+          "address": 21332,
+          "raw": [
+            116,
+            130,
+            253
+          ],
+          "dictionaryAddress": 29826,
+          "word": "towards",
+          "index": 253,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 43,
+          "address": 21335,
+          "raw": [
+            116,
+            122,
+            253
+          ],
+          "dictionaryAddress": 29818,
+          "word": "toward",
+          "index": 253,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 44,
+          "address": 21338,
+          "raw": [
+            84,
+            58,
+            236
+          ],
+          "dictionaryAddress": 21562,
+          "word": "against",
+          "index": 236,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 45,
+          "address": 21341,
+          "raw": [
+            84,
+            250,
+            235
+          ],
+          "dictionaryAddress": 21754,
+          "word": "apart",
+          "index": 235,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 46,
+          "address": 21344,
+          "raw": [
+            96,
+            98,
+            234
+          ],
+          "dictionaryAddress": 24674,
+          "word": "go",
+          "index": 234,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 47,
+          "address": 21347,
+          "raw": [
+            86,
+            106,
+            238
+          ],
+          "dictionaryAddress": 22122,
+          "word": "behind",
+          "index": 238,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 48,
+          "address": 21350,
+          "raw": [
+            85,
+            74,
+            237
+          ],
+          "dictionaryAddress": 21834,
+          "word": "around",
+          "index": 237,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 49,
+          "address": 21353,
+          "raw": [
+            85,
+            162,
+            250
+          ],
+          "dictionaryAddress": 21922,
+          "word": "away",
+          "index": 250,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 50,
+          "address": 21356,
+          "raw": [
+            95,
+            138,
+            241
+          ],
+          "dictionaryAddress": 24458,
+          "word": "from",
+          "index": 241,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 51,
+          "address": 21359,
+          "raw": [
+            117,
+            66,
+            239
+          ],
+          "dictionaryAddress": 30018,
+          "word": "under",
+          "index": 239,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 52,
+          "address": 21362,
+          "raw": [
+            105,
+            58,
+            240
+          ],
+          "dictionaryAddress": 26938,
+          "word": "over",
+          "index": 240,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 53,
+          "address": 21365,
+          "raw": [
+            104,
+            218,
+            248
+          ],
+          "dictionaryAddress": 26842,
+          "word": "on",
+          "index": 248,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 54,
+          "address": 21368,
+          "raw": [
+            104,
+            186,
+            243
+          ],
+          "dictionaryAddress": 26810,
+          "word": "off",
+          "index": 243,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 55,
+          "address": 21371,
+          "raw": [
+            117,
+            178,
+            246
+          ],
+          "dictionaryAddress": 30130,
+          "word": "up",
+          "index": 246,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 56,
+          "address": 21374,
+          "raw": [
+            92,
+            90,
+            242
+          ],
+          "dictionaryAddress": 23642,
+          "word": "down",
+          "index": 242,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 57,
+          "address": 21377,
+          "raw": [
+            105,
+            42,
+            245
+          ],
+          "dictionaryAddress": 26922,
+          "word": "out",
+          "index": 245,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 58,
+          "address": 21380,
+          "raw": [
+            115,
+            210,
+            247
+          ],
+          "dictionaryAddress": 29650,
+          "word": "through",
+          "index": 247,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 59,
+          "address": 21383,
+          "raw": [
+            99,
+            34,
+            249
+          ],
+          "dictionaryAddress": 25378,
+          "word": "in",
+          "index": 249,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 60,
+          "address": 21386,
+          "raw": [
+            116,
+            18,
+            253
+          ],
+          "dictionaryAddress": 29714,
+          "word": "to",
+          "index": 253,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 61,
+          "address": 21389,
+          "raw": [
+            120,
+            26,
+            254
+          ],
+          "dictionaryAddress": 30746,
+          "word": "with",
+          "index": 254,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 62,
+          "address": 21392,
+          "raw": [
+            95,
+            82,
+            251
+          ],
+          "dictionaryAddress": 24402,
+          "word": "for",
+          "index": 251,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 63,
+          "address": 21395,
+          "raw": [
+            84,
+            18,
+            252
+          ],
+          "dictionaryAddress": 21522,
+          "word": "about",
+          "index": 252,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 64,
+          "address": 21398,
+          "raw": [
+            85,
+            122,
+            255
+          ],
+          "dictionaryAddress": 21882,
+          "word": "at",
+          "index": 255,
+          "errors": [
+            "duplicate-index"
+          ]
+        }
+      ]
+    },
+    {
+      "entrySize": 4,
+      "end": 21466,
+      "allChecksPass": false,
+      "dictionaryCrosslinksValid": false,
+      "indicesInRange": true,
+      "indicesUnique": false,
+      "required": [
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255
+      ],
+      "unmappedRequired": [
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255
+      ],
+      "firstFailure": {
+        "i": 2,
+        "address": 21214,
+        "raw": [
+          235,
+          84,
+          58,
+          236
+        ],
+        "dictionaryAddress": 60244,
+        "index": 15084,
+        "errors": [
+          "dictionary-crosslink"
+        ]
+      },
+      "rows": [
+        {
+          "i": 0,
+          "address": 21206,
+          "raw": [
+            117,
+            170,
+            233,
+            96
+          ],
+          "dictionaryAddress": 30122,
+          "word": "until",
+          "index": 59744,
+          "errors": []
+        },
+        {
+          "i": 1,
+          "address": 21210,
+          "raw": [
+            98,
+            234,
+            84,
+            250
+          ],
+          "dictionaryAddress": 25322,
+          "word": "hyde",
+          "index": 21754,
+          "errors": []
+        },
+        {
+          "i": 2,
+          "address": 21214,
+          "raw": [
+            235,
+            84,
+            58,
+            236
+          ],
+          "dictionaryAddress": 60244,
+          "index": 15084,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 3,
+          "address": 21218,
+          "raw": [
+            85,
+            74,
+            237,
+            86
+          ],
+          "dictionaryAddress": 21834,
+          "word": "around",
+          "index": 60758,
+          "errors": []
+        },
+        {
+          "i": 4,
+          "address": 21222,
+          "raw": [
+            106,
+            238,
+            117,
+            66
+          ],
+          "dictionaryAddress": 27374,
+          "index": 30018,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 5,
+          "address": 21226,
+          "raw": [
+            239,
+            105,
+            58,
+            240
+          ],
+          "dictionaryAddress": 61289,
+          "index": 15088,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 6,
+          "address": 21230,
+          "raw": [
+            95,
+            138,
+            241,
+            92
+          ],
+          "dictionaryAddress": 24458,
+          "word": "from",
+          "index": 61788,
+          "errors": []
+        },
+        {
+          "i": 7,
+          "address": 21234,
+          "raw": [
+            90,
+            242,
+            104,
+            186
+          ],
+          "dictionaryAddress": 23282,
+          "word": "crouch",
+          "index": 26810,
+          "errors": []
+        },
+        {
+          "i": 8,
+          "address": 21238,
+          "raw": [
+            243,
+            86,
+            98,
+            244
+          ],
+          "dictionaryAddress": 62294,
+          "index": 25332,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 9,
+          "address": 21242,
+          "raw": [
+            105,
+            42,
+            245,
+            117
+          ],
+          "dictionaryAddress": 26922,
+          "word": "out",
+          "index": 62837,
+          "errors": []
+        },
+        {
+          "i": 10,
+          "address": 21246,
+          "raw": [
+            178,
+            246,
+            115,
+            210
+          ],
+          "dictionaryAddress": 45814,
+          "index": 29650,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 11,
+          "address": 21250,
+          "raw": [
+            247,
+            104,
+            218,
+            248
+          ],
+          "dictionaryAddress": 63336,
+          "index": 56056,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 12,
+          "address": 21254,
+          "raw": [
+            99,
+            34,
+            249,
+            85
+          ],
+          "dictionaryAddress": 25378,
+          "word": "in",
+          "index": 63829,
+          "errors": []
+        },
+        {
+          "i": 13,
+          "address": 21258,
+          "raw": [
+            162,
+            250,
+            95,
+            82
+          ],
+          "dictionaryAddress": 41722,
+          "index": 24402,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 14,
+          "address": 21262,
+          "raw": [
+            251,
+            84,
+            18,
+            252
+          ],
+          "dictionaryAddress": 64340,
+          "index": 4860,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 15,
+          "address": 21266,
+          "raw": [
+            116,
+            18,
+            253,
+            120
+          ],
+          "dictionaryAddress": 29714,
+          "word": "to",
+          "index": 64888,
+          "errors": []
+        },
+        {
+          "i": 16,
+          "address": 21270,
+          "raw": [
+            26,
+            254,
+            85,
+            122
+          ],
+          "dictionaryAddress": 6910,
+          "index": 21882,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 17,
+          "address": 21274,
+          "raw": [
+            255,
+            116,
+            2,
+            233
+          ],
+          "dictionaryAddress": 65396,
+          "index": 745,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 18,
+          "address": 21278,
+          "raw": [
+            115,
+            250,
+            233,
+            103
+          ],
+          "dictionaryAddress": 29690,
+          "word": "til",
+          "index": 59751,
+          "errors": []
+        },
+        {
+          "i": 19,
+          "address": 21282,
+          "raw": [
+            218,
+            236,
+            86,
+            162
+          ],
+          "dictionaryAddress": 56044,
+          "index": 22178,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 20,
+          "address": 21286,
+          "raw": [
+            238,
+            84,
+            26,
+            240
+          ],
+          "dictionaryAddress": 61012,
+          "index": 6896,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 21,
+          "address": 21290,
+          "raw": [
+            84,
+            138,
+            237,
+            117
+          ],
+          "dictionaryAddress": 21642,
+          "word": "along",
+          "index": 60789,
+          "errors": []
+        },
+        {
+          "i": 22,
+          "address": 21294,
+          "raw": [
+            74,
+            239,
+            86,
+            146
+          ],
+          "dictionaryAddress": 19183,
+          "index": 22162,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 23,
+          "address": 21298,
+          "raw": [
+            239,
+            86,
+            122,
+            239
+          ],
+          "dictionaryAddress": 61270,
+          "index": 31471,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 24,
+          "address": 21302,
+          "raw": [
+            105,
+            50,
+            245,
+            120
+          ],
+          "dictionaryAddress": 26930,
+          "word": "outside",
+          "index": 62840,
+          "errors": []
+        },
+        {
+          "i": 25,
+          "address": 21306,
+          "raw": [
+            42,
+            249,
+            86,
+            154
+          ],
+          "dictionaryAddress": 11001,
+          "index": 22170,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 26,
+          "address": 21310,
+          "raw": [
+            249,
+            99,
+            114,
+            249
+          ],
+          "dictionaryAddress": 63843,
+          "index": 29433,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 27,
+          "address": 21314,
+          "raw": [
+            99,
+            66,
+            249,
+            117
+          ],
+          "dictionaryAddress": 25410,
+          "word": "inside",
+          "index": 63861,
+          "errors": []
+        },
+        {
+          "i": 28,
+          "address": 21318,
+          "raw": [
+            186,
+            248,
+            84,
+            10
+          ],
+          "dictionaryAddress": 47864,
+          "index": 21514,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 29,
+          "address": 21322,
+          "raw": [
+            248,
+            104,
+            226,
+            248
+          ],
+          "dictionaryAddress": 63592,
+          "index": 58104,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 30,
+          "address": 21326,
+          "raw": [
+            115,
+            226,
+            247,
+            117
+          ],
+          "dictionaryAddress": 29666,
+          "word": "thru",
+          "index": 63349,
+          "errors": []
+        },
+        {
+          "i": 31,
+          "address": 21330,
+          "raw": [
+            242,
+            254,
+            116,
+            130
+          ],
+          "dictionaryAddress": 62206,
+          "index": 29826,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 32,
+          "address": 21334,
+          "raw": [
+            253,
+            116,
+            122,
+            253
+          ],
+          "dictionaryAddress": 64884,
+          "index": 31485,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 33,
+          "address": 21338,
+          "raw": [
+            84,
+            58,
+            236,
+            84
+          ],
+          "dictionaryAddress": 21562,
+          "word": "against",
+          "index": 60500,
+          "errors": []
+        },
+        {
+          "i": 34,
+          "address": 21342,
+          "raw": [
+            250,
+            235,
+            96,
+            98
+          ],
+          "dictionaryAddress": 64235,
+          "index": 24674,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 35,
+          "address": 21346,
+          "raw": [
+            234,
+            86,
+            106,
+            238
+          ],
+          "dictionaryAddress": 59990,
+          "index": 27374,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 36,
+          "address": 21350,
+          "raw": [
+            85,
+            74,
+            237,
+            85
+          ],
+          "dictionaryAddress": 21834,
+          "word": "around",
+          "index": 60757,
+          "errors": []
+        },
+        {
+          "i": 37,
+          "address": 21354,
+          "raw": [
+            162,
+            250,
+            95,
+            138
+          ],
+          "dictionaryAddress": 41722,
+          "index": 24458,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 38,
+          "address": 21358,
+          "raw": [
+            241,
+            117,
+            66,
+            239
+          ],
+          "dictionaryAddress": 61813,
+          "index": 17135,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 39,
+          "address": 21362,
+          "raw": [
+            105,
+            58,
+            240,
+            104
+          ],
+          "dictionaryAddress": 26938,
+          "word": "over",
+          "index": 61544,
+          "errors": []
+        },
+        {
+          "i": 40,
+          "address": 21366,
+          "raw": [
+            218,
+            248,
+            104,
+            186
+          ],
+          "dictionaryAddress": 56056,
+          "index": 26810,
+          "errors": [
+            "dictionary-crosslink",
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 41,
+          "address": 21370,
+          "raw": [
+            243,
+            117,
+            178,
+            246
+          ],
+          "dictionaryAddress": 62325,
+          "index": 45814,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 42,
+          "address": 21374,
+          "raw": [
+            92,
+            90,
+            242,
+            105
+          ],
+          "dictionaryAddress": 23642,
+          "word": "down",
+          "index": 62057,
+          "errors": []
+        },
+        {
+          "i": 43,
+          "address": 21378,
+          "raw": [
+            42,
+            245,
+            115,
+            210
+          ],
+          "dictionaryAddress": 10997,
+          "index": 29650,
+          "errors": [
+            "dictionary-crosslink",
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 44,
+          "address": 21382,
+          "raw": [
+            247,
+            99,
+            34,
+            249
+          ],
+          "dictionaryAddress": 63331,
+          "index": 8953,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 45,
+          "address": 21386,
+          "raw": [
+            116,
+            18,
+            253,
+            120
+          ],
+          "dictionaryAddress": 29714,
+          "word": "to",
+          "index": 64888,
+          "errors": [
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 46,
+          "address": 21390,
+          "raw": [
+            26,
+            254,
+            95,
+            82
+          ],
+          "dictionaryAddress": 6910,
+          "index": 24402,
+          "errors": [
+            "dictionary-crosslink",
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 47,
+          "address": 21394,
+          "raw": [
+            251,
+            84,
+            18,
+            252
+          ],
+          "dictionaryAddress": 64340,
+          "index": 4860,
+          "errors": [
+            "dictionary-crosslink",
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 48,
+          "address": 21398,
+          "raw": [
+            85,
+            122,
+            255,
+            5
+          ],
+          "dictionaryAddress": 21882,
+          "word": "at",
+          "index": 65285,
+          "errors": []
+        },
+        {
+          "i": 49,
+          "address": 21402,
+          "raw": [
+            46,
+            44,
+            34,
+            33
+          ],
+          "dictionaryAddress": 11820,
+          "index": 8737,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 50,
+          "address": 21406,
+          "raw": [
+            63,
+            8,
+            4,
+            169
+          ],
+          "dictionaryAddress": 16136,
+          "index": 1193,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 51,
+          "address": 21410,
+          "raw": [
+            20,
+            193,
+            18,
+            234
+          ],
+          "dictionaryAddress": 5313,
+          "index": 4842,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 52,
+          "address": 21414,
+          "raw": [
+            174,
+            234,
+            65,
+            218
+          ],
+          "dictionaryAddress": 44778,
+          "index": 16858,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 53,
+          "address": 21418,
+          "raw": [
+            20,
+            193,
+            19,
+            106
+          ],
+          "dictionaryAddress": 5313,
+          "index": 4970,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 54,
+          "address": 21422,
+          "raw": [
+            220,
+            165,
+            65,
+            110
+          ],
+          "dictionaryAddress": 56485,
+          "index": 16750,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 55,
+          "address": 21426,
+          "raw": [
+            20,
+            193,
+            19,
+            106
+          ],
+          "dictionaryAddress": 5313,
+          "index": 4970,
+          "errors": [
+            "dictionary-crosslink",
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 56,
+          "address": 21430,
+          "raw": [
+            221,
+            203,
+            65,
+            110
+          ],
+          "dictionaryAddress": 56779,
+          "index": 16750,
+          "errors": [
+            "dictionary-crosslink",
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 57,
+          "address": 21434,
+          "raw": [
+            21,
+            69,
+            40,
+            169
+          ],
+          "dictionaryAddress": 5445,
+          "index": 10409,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 58,
+          "address": 21438,
+          "raw": [
+            151,
+            135,
+            32,
+            0
+          ],
+          "dictionaryAddress": 38791,
+          "index": 8192,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 59,
+          "address": 21442,
+          "raw": [
+            21,
+            69,
+            40,
+            169
+          ],
+          "dictionaryAddress": 5445,
+          "index": 10409,
+          "errors": [
+            "dictionary-crosslink",
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 60,
+          "address": 21446,
+          "raw": [
+            156,
+            165,
+            32,
+            0
+          ],
+          "dictionaryAddress": 40101,
+          "index": 8192,
+          "errors": [
+            "dictionary-crosslink",
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 61,
+          "address": 21450,
+          "raw": [
+            22,
+            69,
+            20,
+            165
+          ],
+          "dictionaryAddress": 5701,
+          "index": 5285,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 62,
+          "address": 21454,
+          "raw": [
+            148,
+            165,
+            4,
+            0
+          ],
+          "dictionaryAddress": 38053,
+          "index": 1024,
+          "errors": [
+            "dictionary-crosslink"
+          ]
+        },
+        {
+          "i": 63,
+          "address": 21458,
+          "raw": [
+            22,
+            101,
+            20,
+            165
+          ],
+          "dictionaryAddress": 5733,
+          "index": 5285,
+          "errors": [
+            "dictionary-crosslink",
+            "duplicate-index"
+          ]
+        },
+        {
+          "i": 64,
+          "address": 21462,
+          "raw": [
+            148,
+            165,
+            4,
+            0
+          ],
+          "dictionaryAddress": 38053,
+          "index": 1024,
+          "errors": [
+            "dictionary-crosslink",
+            "duplicate-index"
+          ]
+        }
+      ]
+    }
+  ]
+}

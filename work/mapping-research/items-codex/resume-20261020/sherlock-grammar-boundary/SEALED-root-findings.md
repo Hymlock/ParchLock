@@ -1,0 +1,9 @@
+# Sealed before independent grammar investigation
+
+Initial bounded structural investigation was performed by `/root/planetfall_status_independent`, exposed to Codex only afterward; it is not an independent blind half for any later proposal. Read inspect.cjs/report.json and representation-review.md as primary research evidence, not production acceptance.
+
+Current Sherlock has six text bytes plus two metadata bytes; production min9 rejects it. A research-only relaxation of dictionary minimum reaches later grammar preposition-index duplicate rejection. Raw ranges: grammar16441–20260;236 actions20260–20732, preactions20732–21204;65three-byte preposition records21204–21401, exactdictionaryboundary. All dictionary crosslinks valid/indices in range/required grammar indices covered; aliases share semantic indices e.g. until/till/til233. Four-byte alternative fails boundaries/crosslinks. No native action-dispatch proof or exact text-source recompilation established.
+
+Candidate representation research: ordered rawrecords plus index→alias groups, expand compatible alias combinations into distinct flattemplates preserving action/FIND. Deduplicate equaltemplates and reject excessive expansion without truncation. Consumer trace suggests current assumptions around +2metadata and uniqueness need explicit review; classification must stay unknown until complete contracts/nativeproof/semantic valves qualify. Do not merely lower minimum, overwrite aliases, infer flags or activate commands. Existing player fixes, D198/ARCH64, fixed-family TAKE and actor/exit authority remain prior-fix guards.
+
+The Z-text shared R2 candidate is frozen and unrelated grammar code must remain unchanged while its own gate is running. No grammar implementation before blind comparison and adversarial design consensus.

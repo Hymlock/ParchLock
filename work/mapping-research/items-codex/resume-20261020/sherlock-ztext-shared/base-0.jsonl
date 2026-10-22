@@ -1,0 +1,18 @@
+{"game":"905.z5.js","exits":["east>39","south>40"],"marks":["dirty laundry","clothing","dresser","south","door","east","endtable","telephone","wallet","keys"],"inv1":["30:soiled clothing","31:gold watch"],"inv2":["30:soiled clothing","31:gold watch"],"rooms":[]}
+{"game":"AllRoads.z5.js","exits":[],"marks":[],"inv1":["40:manacles","41:noose"],"inv2":["40:pair of manacles","41:noose"],"rooms":[]}
+{"game":"BeingSteve.zblorb.js","error":"no-prompt"}
+{"game":"CatcherInTheRye.zblorb.js","exits":[],"marks":["stadium","weather","cannon"],"inv1":[],"inv2":[],"rooms":["42:Thomsen Hill"]}
+{"game":"CragneManor.gblorb.js","exits":[],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"Deadline.z3.js","exits":["north>246","northeast>238","northwest>240","south>null"],"marks":["South","north","northeast","northwest"],"inv1":[],"inv2":[],"rooms":["222:North Lawn","226:Orchard Path","228:Among the Roses","231:Garden Path","234:West Side of House","238:East Lawn","240:West Lawn","244:West of Front Door","246:Front Path","249:South Lawn"]}
+{"game":"FFF.z5.js","exits":[],"marks":["river","dock","delivery van","rowboat","fox","duck","sack of grain"],"inv1":["54:jumpsuit","44:invoice"],"inv2":["42:sack of grain","41:duck","40:fox","54:jumpsuit","44:invoice"],"rooms":["35:South Shore"]}
+{"game":"Glass.zblorb.js","exits":[],"marks":["Prince","glass slipper","Lucinda","Theodora","wing chair","old lady"],"inv1":[],"inv2":["66:pillows","68:perch"],"rooms":["59:Idly discussing the king's health"]}
+{"game":"Heroine.z8.js","exits":[],"marks":[],"inv1":["115:laser beam","116:mechanical claws"],"inv2":["115:laser beam","116:mechanical claws"],"rooms":[]}
+{"game":"Inevita.z5.js","exits":["exit-31>3"],"marks":["sheets of rain","canopy","console","engine","switch"],"inv1":["72:clothing","139:utility belt","74:shoes","137:pouch"],"inv2":["72:clothing","139:utility belt","74:shoes","137:pouch"],"rooms":["202:Rocky Terrace"]}
+{"game":"LDoDoom.z5.js","exits":["southeast>344"],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"Mercy.z5.js","exits":["south>40"],"marks":["Cinderblocks","light","steel table","thermostat","south","victim"],"inv1":["26:identification card","24:blade"],"inv2":["26:identification card","24:blade"],"rooms":["32:E-Room 2","40:Second Floor Hallway"]}
+{"game":"PUTPBAA.z5.js","exits":[],"marks":["shiny metal phone booth"],"inv1":["26:pants"],"inv2":["26:pants"],"rooms":["25:The Town Square"]}
+{"game":"PlunderedHearts.z3.js","exits":["east>null","out>null"],"marks":["chemise","bed"],"inv1":["223:your reticule","11:smelling salts","186:banknote","13:your kid slippers","17:linen chemise","84:cotton frock"],"inv2":["69:coffer","223:your reticule","11:smelling salts","186:banknote","13:your kid slippers","17:linen chemise","84:cotton frock"],"rooms":["213:bed","80:Cabin"]}
+{"game":"RobinAndOrchid.gblorb.js","exits":[],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"Seastalker.z3.js","exits":[],"marks":[],"inv1":["195:Logbook"],"inv2":["195:Logbook"],"rooms":["65:lab center"]}
+{"game":"SoFar.z8.js","exits":[],"marks":["stage","benches","aisle"],"inv1":[],"inv2":[],"rooms":["27:Lower Theater"]}
+{"game":"Stationfall.z3.js","exits":["east>54","south>137","west>null"],"marks":["Form"],"error":"page.waitForTimeout: Page crashed"}

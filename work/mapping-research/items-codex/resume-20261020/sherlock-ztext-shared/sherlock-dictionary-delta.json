@@ -1,0 +1,36 @@
+{
+  "game": "Sherlock.z5.js",
+  "entrySize": 8,
+  "textBytes": 6,
+  "metadataBytes": 2,
+  "entries": 1193,
+  "changed": 3,
+  "diffs": [
+    {
+      "index": 0,
+      "addr": 21410,
+      "bytes": "14c112eaaeea",
+      "base": "and refre",
+      "candidate": "$refre"
+    },
+    {
+      "index": 1,
+      "addr": 21418,
+      "bytes": "14c1136adca5",
+      "base": "and ver",
+      "candidate": "$ver"
+    },
+    {
+      "index": 2,
+      "addr": 21426,
+      "bytes": "14c1136addcb",
+      "base": "and verif",
+      "candidate": "$verif"
+    }
+  ],
+  "classification": "Still unknown; text-only comparison does not validate grammar",
+  "source": {
+    "base": "028d620f0eec4e8dac08ca6db98799b2b56925623b146e9a4dca5e1fee1af418",
+    "candidate": "8d327bd5ace5394861288dc73cc520f877dcdc7649eae5444625dc9ee71f5f9c"
+  }
+}

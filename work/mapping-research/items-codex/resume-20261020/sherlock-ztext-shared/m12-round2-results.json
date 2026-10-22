@@ -1,0 +1,10 @@
+[
+  {
+    "label": "base",
+    "exit": 0
+  },
+  {
+    "label": "candidate",
+    "exit": 1
+  }
+]

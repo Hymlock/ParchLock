@@ -198,7 +198,7 @@ var GrammarProvider = {
         var entries = [], byAddress = {}, byWord = {};
         for (var i = 0; i < count; i++) {
             var addr = first + i * entryLen;
-            var word = String(ZRamReader.decodeZsc(mem, addr, textWords) || "").toLowerCase().trim();
+            var word = String(ZRamReader.decodeDictionaryText(mem, addr, textWords) || "").toLowerCase().trim();
             var data = [];
             for (var j = textBytes; j < entryLen; j++) data.push(ZRamReader.u8(mem, addr + j));
             var entry = { word: word, addr: addr, flags: data[0], data: data };

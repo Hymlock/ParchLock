@@ -1,0 +1,24 @@
+{
+  "verdict": "REVISE",
+  "provenance": "Independent non-author subagent zil_food_independent plus root paired original-memory evidence",
+  "counts": {
+    "base": 96,
+    "candidate": 96
+  },
+  "fullGate": "INTENTIONALLY STOPPED INCOMPLETE; not acceptance",
+  "stoppedOwnedPid": 39348,
+  "reason": "Correct escape text exposed compiler sentinel <unknown attribute>; attribute-name owner recognized only old misdecoded text, rejecting property tables and direct names in original WiR2/Warbler",
+  "m12": {
+    "baseline": {
+      "pass": 12,
+      "fail": 0
+    },
+    "candidate": {
+      "pass": 7,
+      "fail": 5
+    },
+    "pairedRound2SameResult": true
+  },
+  "controls": "19 new controls and operator13/0 passed but were insufficient; retained failed evidence",
+  "next": "Reviewed R2 exact compiler-sentinel owner correction; new original-memory regressions and fresh immutable gate"
+}

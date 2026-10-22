@@ -1,0 +1,1 @@
+PASS D198 grammar shadow/valve: 26 checks for off parity, isolated shadow, validated activation and fail-closed controls

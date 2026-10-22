@@ -1,0 +1,55 @@
+   blobs -> ["green blob","yellow blob","blue blob"]
+PASS: three same-named objects produce three DIFFERENT commands (was one command for all three)
+PASS: command "green blob" still names the object
+PASS: the qualifier "green" is one of that object's OWN dictionary words, so the parser accepts it
+PASS: command "yellow blob" still names the object
+PASS: the qualifier "yellow" is one of that object's OWN dictionary words, so the parser accepts it
+PASS: command "blue blob" still names the object
+PASS: the qualifier "blue" is one of that object's OWN dictionary words, so the parser accepts it
+PASS: a word every rival also answers to is never used as the qualifier -- it would not disambiguate anything
+PASS: an object with no rival in scope keeps the exact short command it had before -- no gratuitous qualifiers
+PASS: with no distinguishing dictionary word it keeps the real word rather than inventing a display phrase -- D107 proved 'long-handled shovel' is rejected by the parser outright
+PASS: specifically, the compound display name is never submitted
+PASS: the SAME object drops its qualifier once its rivals leave scope -- disambiguation tracks what is actually present
+PASS: an object with no minable dictionary words still yields a usable command (ZRamReader.parserWords is Inform-gated, so ZIL objects arrive with aliases:[])
+   spells -> ["rezrov spell","frotz spell","blorb spell"]
+PASS: three spells named '<name> spell' produce three DIFFERENT commands (all three were the bare word 'spell')
+PASS: and each is qualified by its OWN spell name, which the story's dictionary really contains -- 'cast rezrov spell at me' was confirmed live to parse
+PASS: a printed word absent from the dictionary is still refused as a qualifier -- verification, not guessing
+PASS: only instrumental verbs present in THIS story's dictionary are offered -- 'use' is absent here, and 'use X with Y' replies "I don't know the word 'use'" in Enchanter
+PASS: cast uses 'cast A at B' -- the form measured working live ('cast blorb at book' encloses the spell book in a strong box)
+PASS: unlock puts the INSTRUMENT second: 'unlock door with key', not 'unlock key with door'
+PASS: a game with no instrumental verb at all gets NO launcher rather than an unparseable command (D24)
+PASS: object vocabulary is minable for NON-Inform games too, so the whole ZIL catalog stops arriving with aliases:[]
+FAIL: and it is SELF-VERIFYING -- a property counts as vocabulary only if every 2-byte slot lands on a real dictionary entry, so no property number is assumed (D61)
+PASS: Z-text abbreviations expand WITHOUT being trimmed -- trimming inside the recursion welded names together ('smallmailbox', 'CanyonView', 'YourRoom')
+PASS: whitespace is normalised exactly once, at the top level
+PASS: a dictionary entry truncated by the Z-machine (6 chars in v3) is shown in full when a display token extends it -- 'mailbo' reads as a typo
+PASS: semantic attribute flags are not trusted on a compiler whose bit meanings have not been learned (D73)
+PASS: an Inform game is completely unaffected by that gate
+PASS: and a suppressed flag comes BACK automatically once the game's own opcodes confirm its bit -- no per-title branching
+PASS: shared identity-aware reference API exists
+PASS: unnamed colored vial selects its unique descriptor
+PASS: identical-looking rows never promise a unique parser target
+PASS: shared reference retains both physical identities
+PASS: adjective-only fallback retains distinguishing vocabulary
+PASS: visible descriptor is preserved
+PASS: unseen color is not disclosed
+PASS: descriptor evidence never joins across sentence punctuation
+PASS: unnamed item uses an observed singular alias
+PASS: shared observed display spelling is retained without choosing a physical sibling
+PASS: one-word display recovery never reduces a structural printed name
+PASS: custom parser keeps unique interaction but cannot supply automatic learning proof
+PASS: scope changes restore unique references without a stale candidate cache
+PASS: ZRamReader exposes non-executing parse_name property-table discovery
+PASS: duplicate observed head replaces unreadable dictionary fragment
+PASS: readable duplicate noun preserves both candidates
+PASS: shared synonym never replaces observed scribbled descriptor
+PASS: shared synonym never replaces observed scrawled descriptor
+PASS: shared synonym never replaces observed scribbled descriptor
+PASS: shared synonym never replaces observed scrawled descriptor
+PASS: structural descriptor survives even when generic synonym is unique in held scope
+PASS: unique observed descriptor can still extend a generic structural head
+PASS: identical copies retain shared full phrase recovery
+
+50 PASS / 1 FAIL

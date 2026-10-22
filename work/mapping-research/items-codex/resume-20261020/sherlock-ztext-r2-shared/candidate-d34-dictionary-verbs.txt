@@ -1,0 +1,56 @@
+PASS: GrammarProvider no longer hardcodes look/inventory specialCommands
+PASS: GrammarProvider is gated on informVerbFlags and tags dictionary-verb
+PASS: TranslatorUI skips dictionary-verb items on the special-commands bar
+PASS: Qol scores dictionary-verb below ram-exit/ram-synth
+PASS: GrammarProvider does not attach verbs to discoveredObjects
+PASS: parseDictionary still maps Advent 'take' text→address
+PASS: Advent is Inform v4+ entryLen 9 with verb flags
+PASS: Advent parseDictionary returns entries
+PASS: Advent 'take' is verb-flagged
+PASS: Advent 'pray' is verb-flagged
+PASS: Advent 'xyzzy' is verb-flagged
+PASS: Advent 'north' is not a verb flag (noun only)
+PASS: curses is Inform-gated
+PASS: curses 'wind' is verb-flagged
+PASS: curses is unstamped early Inform (no 6.xx at $3C) and still passes
+PASS: curses compass 'n' is a noun, which is the unstamped Inform signal
+PASS: Zork1 Infocom v3 entryLen 7 is gated off
+PASS: Zork1 does not expose Inform isVerb entries
+PASS: Zork1 words map still works without verb flags
+PASS: Wishbringer Infocom is gated off
+PASS: Wishbringer does not expose Inform isVerb entries
+PASS: Hitchhik Infocom v5 is entryLen 9 and still maps words
+PASS: Hitchhik Infocom v5 is gated off despite entryLen 9
+PASS: Hitchhik does not expose Inform isVerb entries
+PASS: Border Zone Infocom v5 is gated off despite entryLen 9
+PASS: Border Zone does not expose Inform isVerb entries
+PASS: Hitchhik/Border Zone have no Inform 6.xx stamp at $3C
+PASS: adverbum stamped Inform still passes when compass n is also a verb
+PASS: adverbum 'n' is verb-flagged (stamp, not compass-noun, is the Inform signal)
+PASS: Advent verb list includes pray/xyzzy
+PASS: Advent verb list includes take/look
+PASS: Advent verb list does not include compass nouns
+PASS: Advent verb list is a real vocabulary, not a 2-item stub (228)
+PASS: curses verb list includes wind
+PASS: Zork1 verb list is empty (Infocom gate)
+PASS: Wishbringer verb list is empty (Infocom gate)
+PASS: Hitchhik verb list is empty (Infocom v5 gate)
+PASS: Border Zone verb list is empty (Infocom v5 gate)
+PASS: adverbum still emits a real Inform verb list (293)
+PASS: collect() with no mem emits no hardcoded specialCommands
+PASS: collect() specialCommands matches readVerbWords
+PASS: every Advent specialCommand is tagged dictionary-verb
+PASS: collect() includes xyzzy
+PASS: collect() does not return discoveredObjects
+FAIL: Infocom collect() is empty, not a fake look/inventory pair
+FAIL: empty collect() does not advertise fake confidence
+FAIL: Hitchhik Infocom v5 collect() is empty despite entryLen 9
+PASS: input radial includes dictionary-verb xyzzy
+PASS: input radial still includes RAM exit aft
+PASS: non-dictionary specialCommands stay ram-special
+PASS: dictionary-verb score is below ram-exit so dumps do not bury exits
+PASS: chrome/universals still present
+PASS: look/inventory/wait stay universals even when the dictionary also flags them
+PASS: universal look outranks dictionary-verb dump items
+
+FAILURES 51 passed, 3 failed
