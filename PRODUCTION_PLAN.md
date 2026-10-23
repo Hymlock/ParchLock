@@ -9228,6 +9228,41 @@ Gate note: the Sherlock boot-intro 'coat' mark is a gate timing race (first mark
 not a regression. **Open:** phone re-profile on the next APK; grok2 H2 (Open -> addMoreActions builds the full wheel list)
 and H3 (200 ms Loop) only if still slow.
 
+<a id="pl-d228"></a>
+## D228 Authored food actions follow each owner's current game state
+
+**Lifecycle:** codex implemented (3b550fd, Seat codex), claude registry rules and audit; blind dual investigation
+(claude zil-titles/lurking-food-claude-blind-SEALED.md, codex lurking-food-consumer-investigation-SEALED.md), compare
+(zil-titles/lurking-food-compare.md), proposals R1/R2 (codex), claude ACCEPT R2. Gate: immutable 309x2, 3 paired-proven
+FLAKY (mary, Relief, weather marks), 0 unresolved. Phone (operator-authorized test APK 3fa577c1): Coke radial Drink
+without Eat, Chinese food Eat, carton no food action, heated snack Eat (r3-claude/phone-food/phone-result.json).
+
+**Problem.** Lurking Horror's held Coke offered no Eat/Drink although the game accepts them, and its food is
+state-dependent: the snack is too hot until cooled and its wrapper stays after eating; the Coke empties after four
+drinks; the Chinese food is eaten inside its open carton (TAKE refused). A flag bit cannot say any of this: FOODBIT 1 is
+also on the carton, which refuses EAT/DRINK.
+
+**Contract.**
+- `capabilityForms.edible` is a list of owner rules `{objectId, scope, actions}`; `scope` is `held` or
+  `{containerObject, openAttribute}`; each action is `{verb: eat|drink}` with optional `clearAttribute` and an
+  explicit two-byte `property` range. Owners must equal `attributeObjects.edible` exactly; any malformed rule fails
+  closed (no food action, never an inferred Drink). One format only (Border Zone 200/205 rewritten, no old-shape path).
+- `AttributeSchema.edibleForms` reads the current game memory each time (owner parent vs the measured player, the
+  container's open bit, the clear bit, the property value) and returns the forms available now; `null` means no
+  authored policy and leaves every other object and title unchanged.
+- One predicate (`ActionSynth.edibleCommandAllowed`) applies after every source that can offer Eat/Drink: the
+  synthesized list, learned words (`LearnedWords` candidates/independentForms/commands) and confirmed semantic actions
+  (`SemanticActions`). For authored owners only, eat/drink appear only when the rule allows them now. Stored learned
+  data and typed commands are untouched; other verbs and other objects are unaffected.
+- Nested authored food is appended after inspect and the existing Take-out entry; nested behaviour is otherwise unchanged.
+
+**Current rules.** Border Zone soda 200 and pretzel 205: held, eat and drink. Lurking Horror: Funny Bones 18 held, eat
+while bit 11 clear and heat property 3 in 0..12; Coke 61 held, drink while property 11 in 2..5 (its native EAT only
+prints a temperature line, so Eat is not offered); Chinese food 90 eat inside open (bit 13) carton 58 held by the player.
+
+**Prior fixes kept:** D148 nested visibility, D78 Take label, knapsack inspect-first, D150 Inform-only Drink inference,
+D201 reference guards, Spellbreaker/Infidel/Zork III Eat-only identity food (no authored rules).
+
 ## Backlog (low priority, research only): Glulx cold decoding
 
 **October 20 continuation:** the operator reaffirmed full ZIL flag decoding before regular Inform and Glulx work, and authorized Codex to recover all seats' work and integrate held files. R3.1 (`work/investigations/2026-10-20-plan-r3-zil-first.md`) governs: the 21-column completion table is only a subtotal, not the full key universe. The full-profile ledger's N? and UD entries are not absence verdicts. Retain player/world/status, command consumers, classifier gaps and per-title native checks from the full-decode doccheck. Current takeover checkpoint: `work/mapping-research/items-codex/resume-20261020/checkpoint.md`.
