@@ -4272,3 +4272,14 @@ edibleCommandAllowed / nestedEdibleForms, LearnedWords, SemanticActions; facts i
   confirmed semantic actions. Objects without an authored rule keep their existing behaviour.
 - Nested scope requires the owner inside the named container, the container held by the measured player and open, and
   the owner already visible in the inventory payload; it never reveals hidden contents.
+
+<a id="ar-ch86"></a>
+## 86. Measured container state and authored container forms (D229)
+
+Companion: [D229](PRODUCTION_PLAN.md#pl-d229). Runtime: AttributeSchema.containerOpenState / containerForms,
+ActionSynth.authoredCommandAllowed (shared with D228 food), LearnedWords, SemanticActions.
+
+- Open/Close are filtered by the current open bit only when both the container and open meanings have a positive owner;
+  otherwise the earlier behaviour stands. Structure (containment, open bit) is never rewritten.
+- Authored container forms restrict container-derived verbs for a named, measured owner in a named scope (held);
+  an empty list means none of search/empty/open/close is offered there (Ballyhoo radio 48).

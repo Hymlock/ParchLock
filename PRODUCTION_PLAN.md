@@ -9263,6 +9263,31 @@ prints a temperature line, so Eat is not offered); Chinese food 90 eat inside op
 **Prior fixes kept:** D148 nested visibility, D78 Take label, knapsack inspect-first, D150 Inform-only Drink inference,
 D201 reference guards, Spellbreaker/Infidel/Zork III Eat-only identity food (no authored rules).
 
+<a id="pl-d229"></a>
+## D229 Open/Close follow the measured open state; authored container forms for parts-only containers
+
+**Lifecycle:** codex implemented (a8de5f8, Seat codex), claude registry field + audit; blind dual investigation (claude
+zil-titles/ballyhoo-radio-empty-claude-SEALED.md, codex ballyhoo-radio-empty-codex-SEALED.md), proposal R1 (codex),
+claude OBJECT on scope, R2 agreed #4533 (claude's Empty generalisation withdrawn on codex's V-EMPTY evidence). Gate:
+immutable 309x2, 5 paired-proven FLAKY (Inevita by claude double recheck: base varies itself), 0 unresolved. Phone
+check PENDING operator return (radio held radial, carton Open/Close).
+
+**Contract.**
+- For any object whose container AND open meanings both have a positive owner (declared Inform names or a measured
+  digest fact), Open is offered only while the open bit is clear and Close only while it is set
+  (`AttributeSchema.containerOpenState`, current memory). Unknown or unowned bits keep the previous behaviour;
+  openCapability gates unchanged. Fixes the Lurking carton offering Open while open.
+- `capabilityForms.container` owner rules `{objectId, scope: "held", forms: [...]}` name the container-derived forms a
+  measured container may offer; Ballyhoo radio 48 (container only to hold its hidden dial; EMPTY refused, OPEN/CLOSE
+  "non-opening models", SEARCH/LOOK IN nothing) has `forms: []` while held. Structural container/open facts are kept.
+- `ActionSynth.authoredCommandAllowed` (renamed from edibleCommandAllowed) applies both food (D228) and container rules
+  at the same three merge points; food behaviour unchanged.
+- Generic Empty is unchanged: V-EMPTY needs CONTBIT and OPENBIT, empties all children including hidden parts.
+- operator-regressions mailbox guard now asserts the state contract: closed -> Open only; after native OPEN -> Close only.
+
+**Follow-up:** Inform always-open non-openable containers would show Close only; gate open/close on an owned `openable`
+meaning where present.
+
 ## Backlog (low priority, research only): Glulx cold decoding
 
 **October 20 continuation:** the operator reaffirmed full ZIL flag decoding before regular Inform and Glulx work, and authorized Codex to recover all seats' work and integrate held files. R3.1 (`work/investigations/2026-10-20-plan-r3-zil-first.md`) governs: the 21-column completion table is only a subtotal, not the full key universe. The full-profile ledger's N? and UD entries are not absence verdicts. Retain player/world/status, command consumers, classifier gaps and per-title native checks from the full-decode doccheck. Current takeover checkpoint: `work/mapping-research/items-codex/resume-20261020/checkpoint.md`.
