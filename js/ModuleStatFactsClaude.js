@@ -772,7 +772,12 @@ var ModuleStatFactsClaude = {
             { "objectId": 18, "scope": "held", "actions": [{ "verb": "eat", "clearAttribute": 11, "property": { "id": 3, "size": 2, "min": 0, "max": 12 } }] },
             { "objectId": 61, "scope": "held", "actions": [{ "verb": "drink", "property": { "id": 11, "size": 2, "min": 2, "max": 5 } }] },
             { "objectId": 90, "scope": { "containerObject": 58, "openAttribute": 13 }, "actions": [{ "verb": "eat" }] }
-        ] }
+        ],
+        // Held unlock tool for the generic "Unlock with..." launcher only (codex R4, claude ACCEPT #4589). Every UNLOCK handler
+        // in the module accepts only MASTER-KEY 95 as tool (whole-module search; claude zil-titles/lurking-unlock-domain-source.md,
+        // codex lurking-unlock-domain-audit.md); native: held 95 unlocks roof door 163 and padlock 135 (bit 19 clears), held
+        // crowbar 156 and assignment 97 refused. No key bit, no success promise, no target restriction, no door/locked map.
+        "unlockTools": { "scope": "held", "objectIds": [95] } }
     },
     // Zork I (Infocom v3)
     "0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd": {

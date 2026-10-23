@@ -2873,6 +2873,9 @@ var Actionable = {
                 // no launcher at all rather than an unparseable command.
                 if (others.length) {
                     Actionable.availableInstrumentals().forEach(function (inst) {
+                        if (inst.verb === "unlock" && typeof AttributeSchema !== "undefined" &&
+                            AttributeSchema.unlockToolAllowed && typeof ZRamProvider !== "undefined" &&
+                            AttributeSchema.unlockToolAllowed(ZRamProvider.getMem(), objectId, context.kind) === false) return;
                         slices.push({ Label: inst.label, Score: 50, Usage: 0, UsageKey: "launcher:" + inst.verb + "-with:" + objectId, TrackTap: true, Action: function () {
                             ParchLockQol.OpenRadial(x, y, Actionable.payloadPool().filter(function (o) {
                                 return o && String(o.id) !== String(objectId) && !o.examineOnly && Actionable.referenceFor(o).unique;

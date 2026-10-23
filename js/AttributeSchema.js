@@ -428,6 +428,49 @@ var AttributeSchema = {
         } catch (eContainerState) { return null; }
     },
 
+    // Exact authored TOOL domain for the generic Unlock-with launcher only.
+    // null preserves unknown/malformed/noncarried cases; false is a measured exclusion.
+    unlockToolAllowed: function (mem, objectId, context) {
+        try {
+            if (context !== "inventory" || !mem || typeof ZRamReader === "undefined") return null;
+            var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest
+                ? ModuleLibrary.currentExecutableDigest() : null;
+            var fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
+            if (!fact || ZRamReader.executableLayoutFacts(mem) !== fact || !fact.capabilityForms ||
+                !Object.prototype.hasOwnProperty.call(fact.capabilityForms, "unlockTools")) return null;
+            var rule = fact.capabilityForms.unlockTools;
+            if (!rule || typeof rule !== "object" || Array.isArray(rule) || Object.keys(rule).length !== 2 ||
+                rule.scope !== "held" || !Array.isArray(rule.objectIds) || !rule.objectIds.length) return null;
+            var family = AttributeSchema._familyOf(mem), h = ZRamReader.header(mem);
+            if (!h || !family || family.classification !== "confirmed-zil-family" || family.evidence !== "validated") return null;
+            // For this confirmed Infocom layout, property tables bound the contiguous object table.
+            // Do not admit property bytes via the reader's looser generic count heuristic.
+            var first = h.objTable + h.defaultsWords * 2;
+            var pointer = ZRamReader.u16(mem, first + (h.version <= 3 ? 7 : 12));
+            var count = (pointer - first) / h.entrySize, seen = {};
+            if (!Number.isInteger(count) || count < 2 || pointer > h.staticMem) return null;
+            if (!rule.objectIds.every(function (id) {
+                if (!Number.isInteger(id) || id < 2 || id > count || seen[id]) return false;
+                seen[id] = true;
+                return true;
+            })) return null;
+            var id = Number(objectId), player = ZRamReader.resolvePlayer(mem);
+            if (!Number.isInteger(id) || id < 2 || id > count || !player ||
+                ["measured-player-object", "measured-player-global"].indexOf(player.source) < 0 ||
+                !Number.isInteger(player.id) || player.id < 2 || player.id > count || id === player.id) return null;
+            var current = id, parents = {};
+            for (var depth = 0; depth < count; depth++) {
+                if (current === player.id) return rule.objectIds.indexOf(id) >= 0;
+                if (!Number.isInteger(current) || current < 2 || current > count || parents[current]) return null;
+                parents[current] = true;
+                var raw = ZRamReader.objectLinks(mem, current);
+                if (!raw) return null;
+                current = raw.parent;
+            }
+            return null;
+        } catch (eUnlockTool) { return null; }
+    },
+
     // Authored semantic forms do not replace structural containment/state.
     containerForms: function (mem, objectId, context) {
         var owned = false;
