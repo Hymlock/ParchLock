@@ -1,0 +1,3 @@
+{"game":"Alabaster.gblorb.js","exits":[],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"Cutthroats.z3.js","exits":["in>null","north>147","out>147","west>null"],"marks":["bed","north","closet","west","note","dresser"],"inv1":["6:wrist watch"],"inv2":["6:wrist watch"],"rooms":["147:Upstairs Hallway","183:Your Room"]}
+{"game":"LostPig.z8.js","exits":[],"marks":["Boss","moon","forest","strange animal","big field","stone wall","Farm"],"inv1":["92:torch","91:pants"],"inv2":["92:torch","91:pants"],"rooms":["93:Outside"]}

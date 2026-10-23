@@ -43,7 +43,10 @@ var ModuleStatFactsClaude = {
         // WEARBIT 18 (grok1 2026-10-17, same replay): 'wear wet suit' @280 tests 139:18 TRUE, 'wear flippers' @284 tests 138:18 TRUE
         // ("You are now wearing ..."); 'wear flashlight' @291 tests flashlight 116:18 FALSE ("You can't wear the flashlight."). RAM 18 =
         // watch 6, diving suit 81, air tank 136, mask 137, flippers 138, wet suit 139 = source WEARBIT exact 6/6.
-        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18 },
+        // ONBIT 17 (state only; R3 claude lane on codex-accepted design cutthroats-on-integration-proposal.md): native ON sets 17
+        // and OFF clears it on two distinct owners, flashlight 116 and the Mary Margaret's large compressor 89 (Aft Deck) (walkthrough 0-18 then
+        // w,w,n,e,s); named EXAMINE 89 after OFF tests 17 FALSE with the native "off" reply. No switchable capability implied.
+        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18, "on": 17 },
         // WORNBIT 13 (grok1 2026-10-17, g1-ctA/B Jericho replay, test_attr recorded only during the named command): 'remove watch' @287 tests
         // wrist watch 6:13 TRUE x3 ("You are now holding the wrist watch.") and the RAM scan after it drops 6 from the owners (UNWEAR FCLEARs);
         // 'remove wet suit' @287 tests 139:13 TRUE; 'wear flippers' @284 tests 138:13 FALSE before and TRUE after; 'remove flashlight' @291
