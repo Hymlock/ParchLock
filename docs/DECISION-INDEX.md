@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 113 decisions across
-9359 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 114 decisions across
+9383 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -27,6 +27,7 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 
 | D | claim | files | games | arch |
 |---|-------|-------|-------|------|
+| D230 | More-page object suggestions admit only letter-led, object-taking dictionary verbs |  |  | §87 |
 | D229 | Open/Close follow the measured open state; authored container forms for parts-only containers |  |  | §86 |
 | D228 | Authored food actions follow each owner's current game state |  |  | §85 |
 | D227 | One payload pool per read-only pass; the static dictionary is decoded once per story |  |  | §84 |
@@ -272,3 +273,4 @@ cites. Search here for a subsystem; the line number opens the chapter.
 | §84 | 4210 | 84. Read-only pass pool and static dictionary cache (D227) | D227 |
 | §85 | 4263 | 85. Authored state-gated food actions (D228) | D228 |
 | §86 | 4277 | 86. Measured container state and authored container forms (D229) | D229 |
+| §87 | 4288 | 87. More-page suggestion admission (D230) | D230 |

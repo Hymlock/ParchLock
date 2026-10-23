@@ -9288,6 +9288,30 @@ check PENDING operator return (radio held radial, carton Open/Close).
 **Follow-up:** Inform always-open non-openable containers would show Close only; gate open/close on an owned `openable`
 meaning where present.
 
+<a id="pl-d230"></a>
+## D230 More-page object suggestions admit only letter-led, object-taking dictionary verbs
+
+**Lifecycle:** codex implemented (56bbc89, Seat codex); blind dual investigation (claude
+zil-titles/more-debug-verbs-claude-SEALED.md, codex more-debug-verbs-codex-SEALED.md), claude proposal R1, codex
+ACCEPT with qualifications #4549, explicit R2 (#4556/#4557). Gate: immutable 309x2, 4 paired-proven FLAKY, 0 unresolved.
+Phone More screenshot PENDING operator return.
+
+**Problem.** Lurking Horror: long-press the held assignment, More -> "$so", "$ve", "#reco", "#comm", "#rand". These are
+the game's real system verbs ($SOUND, $VERIFY, #RECORD, #COMMAND/#COMMENT, #RANDOM), stored truncated by the v3
+dictionary, projected onto an object as "<verb> <object>". Their object slot, where present, takes a number (native
+"#random assignment" -> "Illegal call to #RANDOM.").
+
+**Contract (UI admission only).** Actionable.addMoreActions admits a dictionary-verb candidate as an object suggestion
+only when (1) its first character is a Unicode letter (all titles; a property of the dictionary token, not a
+decoded meta flag) and (2) where validated ZIL grammar exists, some template for it takes an object (parser arity
+only, not a capability claim). Unknown grammar leaves (2) open; no D198 decode on Inform memory. Raw vocabulary,
+specialCommands, the global wheel, typed input, D34 no-cap, D110 ranking, ram-synth and learned/AttrCalibrator verbs
+are unchanged. Catalogue census (r3-claude/dict-punct-verb-census.json, 298 Z games): punctuation-led verb words exist
+in 12 games (adverbum ".hold", amiss ";x", dreamhold ",noop" ...), none a world-object verb; it is a compatibility
+screen, not semantic proof.
+
+**Open:** Inform global resolver cold-decodes grammar about 6 times per call (pre-existing, separate perf item).
+
 ## Backlog (low priority, research only): Glulx cold decoding
 
 **October 20 continuation:** the operator reaffirmed full ZIL flag decoding before regular Inform and Glulx work, and authorized Codex to recover all seats' work and integrate held files. R3.1 (`work/investigations/2026-10-20-plan-r3-zil-first.md`) governs: the 21-column completion table is only a subtotal, not the full key universe. The full-profile ledger's N? and UD entries are not absence verdicts. Retain player/world/status, command consumers, classifier gaps and per-title native checks from the full-decode doccheck. Current takeover checkpoint: `work/mapping-research/items-codex/resume-20261020/checkpoint.md`.

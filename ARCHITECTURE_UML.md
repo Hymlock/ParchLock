@@ -4283,3 +4283,11 @@ ActionSynth.authoredCommandAllowed (shared with D228 food), LearnedWords, Semant
   otherwise the earlier behaviour stands. Structure (containment, open bit) is never rewritten.
 - Authored container forms restrict container-derived verbs for a named, measured owner in a named scope (held);
   an empty list means none of search/empty/open/close is offered there (Ballyhoo radio 48).
+
+<a id="ar-ch87"></a>
+## 87. More-page suggestion admission (D230)
+
+Companion: [D230](PRODUCTION_PLAN.md#pl-d230). Runtime: Actionable.moreDictionaryVerbAllowed / addMoreActions.
+
+- More suggestions are vocabulary, not capability. A dictionary verb becomes "<verb> <object>" only if it starts with a
+  letter and, under validated ZIL grammar, has an object-taking template. Everything else about vocabulary is unchanged.
