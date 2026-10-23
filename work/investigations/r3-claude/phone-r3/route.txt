@@ -1,0 +1,15 @@
+> stand
+  >stand / You already are standing. / >
+> s
+  Second Floor / This is the second floor of the Computer Center. An elevator and call buttons are on the south side of the hallway. A large, noisy room is to the north. Stairs also lead up and down, for the energetic. To 
+> w
+  Sitting on the kitchen counter is a package of Funny Bones. / >
+> open fridge
+  >open fridge / Opening the refrigerator reveals a two liter bottle of Classic Coke and a cardboard carton. / >
+   58:cardboard carton {on:false,worn:false,edible:false} tags[] -> examine carton | take carton | search carton | empty carton | open carton
+> get carton
+  >get carton / Taken. / >
+   58:cardboard carton {on:false,worn:false,edible:false} tags[] -> examine carton | take carton | search carton | empty carton | open carton | drop carton | give carton to  | put carton in 
+> i
+  >i / You are carrying a cardboard carton and an assignment. / >
+   58:cardboard carton {on:false,worn:false,edible:false} tags[] -> examine carton | take carton | search carton | empty carton | open carton | drop carton | give carton to  | put carton in 

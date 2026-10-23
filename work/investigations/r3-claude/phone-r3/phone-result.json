@@ -1,0 +1,39 @@
+{
+ "date": "2026-10-23T17:22-04:00",
+ "device": "NX799J 91260151019C vc47",
+ "apk": {
+  "sha256prefix": "955eac70d1e1969a",
+  "recipe": "build74 android+assets + HEAD 3ac4fdb js/css diff since 675e4aa (8 files, verified byte-equal) + SW cache v172-r3test"
+ },
+ "checks": [
+  {
+   "fix": "D229",
+   "what": "Lurking carton held closed",
+   "radial": "Examine, Search, Empty, Open, Drop, More (no Close)",
+   "shot": "carton-closed.png",
+   "result": "PASS"
+  },
+  {
+   "fix": "D229",
+   "what": "same carton after native OPEN CARTON",
+   "radial": "Examine, Search, Empty, Close, Drop, More (no Open)",
+   "shot": "carton-open.png",
+   "result": "PASS"
+  },
+  {
+   "fix": "D229",
+   "what": "Ballyhoo held radio 48 (walkthrough 0-193)",
+   "radial": "Examine, Turn on, Turn off, Drop, Give to, More (no Search/Empty/Open/Close)",
+   "shot": "radio.png",
+   "result": "PASS"
+  },
+  {
+   "fix": "D230",
+   "what": "Lurking held assignment More page",
+   "radial": "Admire, Answer, Ask, Apply, Approa..., More (no $so/$ve/#reco/#comm/#rand)",
+   "shot": "assignment-more.png",
+   "result": "PASS",
+   "note": "Approa = dictionary-truncated approach label, separate minor item"
+  }
+ ]
+}

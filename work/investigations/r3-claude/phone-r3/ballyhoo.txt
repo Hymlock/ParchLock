@@ -1,0 +1,418 @@
+> s
+  A midget decked out in a Russian general's uniform is standing before the drinking fountain. / >
+> help midget
+  >help midget / Once elevated, Comrade Thumb slurps his fill of water. He then plops down, gives you a quick salute, and waddles off into the darkness. / >
+> w
+  About waist-high, a barred passage for wild animals extends several yards out from the big top. / >
+> take mask
+  >take mask / Taken. / >
+> s
+  Adjacent to the turnstile to your south is a vertical cage. / >
+> w
+  You can hear muffled voices coming from outside and see two ominous shadows cast against the side wall of the tent. / >
+> hide behind president
+  From behind the figure of President Taft you hear footsteps enter the tent, a pause, then hushed conversation. / >
+> listen to conversation
+  "Mr. Munrab, why are we whispering?" / >
+> again
+  You can hear Mr. Munrab and the detective hustle out of the tent. You stand up. / >
+> e
+  Adjacent to the turnstile to your south is a vertical cage. / >
+> e
+  Part of a narrow pole is sticking out from under the wagon. / >
+> take pole
+  >take pole / Taken. / >
+> n
+  >n / Connection / >
+> n
+  A roustabout who is wearing a pair of headphones and carrying a large net over his shoulder passes you and exits the big top. / >
+> n
+  Just west lies the entrance to a large, round cage that completely encircles the second of the two rings. To the south the big top's vaulted wing leads out into the open air. The arena's rickety grandstands rise steeply 
+> drop mask
+  >drop mask / Dropped. / >
+> u
+  Platform / You're standing on a small, unstable platform which is suspended high above the arena floor by guy wires converging on it from all directions. A rope ladder dangles from the platform and the tightrope stretche
+> e
+  >e / You are standing, poised high above the arena floor, a couple of baby steps across the tightrope. / >
+> e
+  >e / You take a couple of tentative steps across the wire ... / >
+> e
+  >e / You take a couple of tentative steps across the wire, reaching the halfway point ... / >
+> e
+  >e / You take a couple of tentative steps across the wire ... / >
+> e
+  >e / You take a couple of tentative steps across the wire ... / >
+> e
+  Floating against the ceiling of the big top is a helium balloon. / >
+> take balloon
+  >take balloon / You grab the helium-filled balloon at the frill where it is tied. The balloon gives a constant upward tug at your fingertips. / >
+> w
+  >w / You are standing, poised high above the arena floor, a couple of baby steps across the tightrope. / >
+> w
+  >w / You take a couple of tentative steps across the wire ... / >
+> w
+  >w / You take a couple of tentative steps across the wire, reaching the halfway point ... / >
+> w
+  >w / You take a couple of tentative steps across the wire ... / >
+> w
+  >w / You take a couple of tentative steps across the wire ... / >
+> w
+  >w / Platform / >
+> d
+  >d / Trying to grip the ladder, you fumble away the fiberglass pole and it falls to the ground below. / >
+> d
+  You can see a fiberglass pole and a clown mask here. / >
+> take all
+  fiberglass pole: Taken. / clown mask: Taken. / >
+> s
+  >s / In the Wings / >
+> s
+  Connection / >
+> w
+  About waist-high, a barred passage for wild animals extends several yards out from the big top. / >
+> s
+  Adjacent to the turnstile to your south is a vertical cage. / >
+> untie balloon
+  >untie balloon / You untie the end of the balloon, holding it closed. / >
+> inhale helium
+  >inhale helium / The balloon shrinks rapidly before your eyes as your chest expands and tightens ... then it slips from your grasp! With helium spitting out of it, the fink zips wildly through the air and disappears. You
+> guard, hello
+  >guard, hello / The sound of your high-pitched, lighter-than-air voice is startling to yourself, but very familiar to the guard. You can hear an electromechanical buzzing sound from the turnstile. / >
+> s
+  At the eastern end of the camp sits one lone trailer. / >
+> w
+  At the northern border of the camp there is a pleated canvas wall, on either side of which runs the fence that was meant to keep you out. To the south, you see the long side of a dilapidated trailer, which sits off-kilte
+> wear clown mask
+  >wear clown mask / You put on the clown mask. / >
+> knock on door
+  >knock on door / Chuckles pops his head out from behind the trailer door and squints at you through a layer of cold cream, then flings the door open. He withdraws into the trailer. / >
+> s
+  Sitting on an upper bunk, with his arms folded and legs swinging, is Comrade Thumb. / >
+> take ash tray
+  Chuckles speaks, "Sorry about the door, Malcom, but Johnny Tin Plate's out there nosing around. Close it, will you?" / >
+> close door
+  >close door / Okay, the trailer door is now closed. / >
+> search ash
+  "Let's just hope he doesn't find the grift." / >
+> take scrap
+  >take scrap / Taken. / >
+> search tray
+  Camp, West / >
+> go under wall
+  President William Howard Taft is here. / >
+> e
+  From inside his cage, Harry calls out, "You're still around kicking sawdust, huh? Let me give a tip: Be careful, there's no telling what, or who, could be lurking around the lot here at night." / >
+> n
+  About waist-high, a barred passage for wild animals extends several yards out from the big top. / >
+> e
+  >e / Connection / >
+> n
+  >n / In the Wings / >
+> ne
+  Under the Bleachers / You're standing between the underside of the grandstand and the side wall of the big top. Not unexpectedly, the ground here is strewn with garbage. The only exit is southwest. / >
+> search garbage
+  >search garbage / Your foray into garbage reclamation pays off, as you turn up the unmarked ticket of some luckless circus-goer. / >
+> take ticket
+  >take ticket / Taken. / >
+> punch out blue dot
+  >punch out blue dot / You perforate the blue dot. / >
+> sw
+  >sw / In the Wings / >
+> s
+  Connection / >
+> put ticket in slot
+  >put ticket in slot / You feed your ticket into the slot and hear all kinds of internal computations being made, then the ticket rolls out into your hand. / >
+> e
+  Next to the big top, the detective is talking to a pitchman who's carrying an open trunk that's strapped to his upper body. / >
+> ask pitchman about dr nostrum
+  >ask pitchman about dr nostrum / He takes a deep breath. "Well, brother, step right up -- I don't care what's your sickness, I don't care what's draggin' you down, don't tell me 'cause I don't want to know whether it's p
+> s
+  Menagerie / This scrawny patch of dirt offers a square cage on its west side; an open tent giving off a dank, earthy smell on its east side; and a well-worn path along the tent to the southeast. A soiled, sagging banner 
+> se
+  Facing you on the east side there is a big old plywood sideshow front, faded beyond recognition. It serves as the barrier wall of an enclosed structure behind the elephant tent. / >
+> look into cage
+  >look into cage / The confines of the cage are so darkly shaded that you cannot distinguish anything inside, except for a hoop key ring hanging against the far wall which happens to be illuminated by a spot of soft light
+> take keys with pole
+  >take keys with pole / Using the fiberglass pole, you fish the hoop ring off the wall. It slides down the raised pole and jingles into your hand. / >
+> unlock door
+  (with the key) / The cage door is now unlocked. / >
+> open door
+  >open door / The cage door creaks slowly open. / >
+> n
+  Inside the bucket you see a corpuscular lump of meat. / >
+> take bucket
+  >take bucket / Taken. / >
+> s
+  >s / Menagerie Nook / >
+> nw
+  >nw / Menagerie / >
+> n
+  >n / Midway Entrance / >
+> w
+  Connection / >
+> w
+  About waist-high, a barred passage for wild animals extends several yards out from the big top. / >
+> s
+  Adjacent to the turnstile to your south is a vertical cage. / >
+> w
+  There's a piece of wood here. / >
+> s
+  Camp, West / >
+> e
+  >e / Camp, East / >
+> unlock compartment
+  (with the key) / The compartment is now unlocked. / >
+> open compartment
+  >open compartment / Opening the compartment reveals a rawhide bullwhip. / >
+> take whip
+  >take whip / Taken. / >
+> n
+  Adjacent to the turnstile to your south is a vertical cage. / >
+> e
+  >e / Near White Wagon / >
+> n
+  >n / Connection / >
+> put ticket in slot
+  >put ticket in slot / You feed your ticket into the slot and hear all kinds of internal computations being made, then the ticket rolls out into your hand. / >
+> e
+  Midway Entrance / >
+> e
+  Midway of Midway / This is about midway along the midway. Your eyes soak in the lavishly painted sideshow fronts -- Andrew Jenny's to the south and Rimshaw's to the north. / >
+> e
+  Far End of Midway / You've reached the far end of the midway. A sideshow front to the north advertises the "827 Pounds of Feminine Charm" that is Tina. / >
+> n
+  West Half of Fat Lady / Dominating this once spacious room, geographic in her enormity, mountainous in her irreducibility, the fat lady sits (though no chair is visible) breathtakingly to the east. Paths around the attra
+   18:radio dial {on:false,worn:false,edible:true} tags[] -> examine dial
+   48:transistor radio {on:false,worn:false,edible:false} tags[inactive] -> examine transistor radio | take transistor radio | search transistor radio | empty transistor radio | close transistor radio
+> ne
+  There's a stool here. / >
+   18:radio dial {on:false,worn:false,edible:true} tags[] -> examine dial
+   48:transistor radio {on:false,worn:false,edible:true} tags[inactive] -> examine transistor radio | take transistor radio | search transistor radio | empty transistor radio | close transistor radio
+> take stool
+  >take stool / Taken. / >
+   18:radio dial {on:false,worn:false,edible:true} tags[] -> examine dial
+   48:transistor radio {on:false,worn:false,edible:true} tags[inactive] -> examine transistor radio | take transistor radio | search transistor radio | empty transistor radio | close transistor radio
+> nw
+  West Half of Fat Lady / >
+   18:radio dial {on:false,worn:false,edible:true} tags[] -> examine dial
+   48:transistor radio {on:false,worn:false,edible:false} tags[inactive] -> examine transistor radio | take transistor radio | search transistor radio | empty transistor radio | close transistor radio
+> s
+  >s / Far End of Midway / >
+> w
+  >w / Midway of Midway / >
+> w
+  >w / Midway Entrance / >
+> w
+  Connection / >
+> n
+  >n / In the Wings / >
+> n
+  >n / Performance Ring / >
+> unlock cage
+  (with the key) / The cage door is now unlocked. / >
+> open cage
+  >open cage / The cage door creaks slowly open. / >
+> w
+  A lion stand sits here. / >
+> whip smooth lion
+  The shaggy lion keeps pacing nervously back and forth around the den, never letting you out of its sight. / >
+> again
+  The shaggy lion keeps pacing nervously back and forth around the den, never letting you out of its sight. / >
+> again
+  The shaggy lion keeps pacing nervously back and forth around the den, never letting you out of its sight. / >
+> lift grate
+  The shaggy lion keeps pacing nervously back and forth around the den, never letting you out of its sight. / >
+> throw meat in passage
+  The shaggy lion keeps pacing nervously back and forth around the den, never letting you out of its sight. / >
+> e
+  Performance Ring / >
+> w
+  >w / Lions' Den / >
+> lower grate
+  >lower grate / The rusty grate slides down to the ground. / >
+> search stand
+  >search stand / You tilt up the lion stand and see a cigarette case, which you pick up. / >
+> e
+  >e / Performance Ring / >
+> s
+  >s / In the Wings / >
+> s
+  Connection / >
+> s
+  >s / Near White Wagon / >
+> w
+  Adjacent to the turnstile to your south is a vertical cage. / >
+> give case to harry
+  >give case to harry / While you're still holding the cigarette case, the guard moves his hands gently over it and says, "Oh, that's Andrew's cigarette case. He's one to steal a smoke now and then; behind Jenny's back, of
+> n
+  About waist-high, a barred passage for wild animals extends several yards out from the big top. The barred passage is being patrolled by two large and bewildered cats. / >
+> e
+  >e / Connection / >
+> put ticket in slot
+  >put ticket in slot / You feed your ticket into the slot and hear all kinds of internal computations being made, then the ticket rolls out into your hand. / >
+> e
+  Midway Entrance / >
+> e
+  >e / Midway of Midway / >
+> s
+  Andrew Jenny is the attraction of this sideshow. He appears standoffish, she's looking bored. / >
+> show case to jenny
+  >show case to jenny / As Andrew realizes you know him to be the owner of the cigarette case, his eye gets wide, and then, behind his distinguished exterior, he begins to turn shades of purple. / >
+> give case to jenny
+  There ensues a hurly-burly struggle between the opposing personalities trapped within the one body. Jenny chases Andrew out of the sideshow amid shrieks of rage which echo down the midway. / >
+> n
+  >n / Midway of Midway / >
+> n
+  Standing here, attired in an immaculate black tuxedo, is none other than Rimshaw himself. / >
+> give ticket to rimshaw
+  He punches your ticket and hands it back. "Whadda you want?" / >
+> rimshaw, hypnotise me
+  Standing Room Only / You're in the "blues," sitting high above the arena floor. You know the exit from the grandstand to be vaguely eastward and down. All around you the crowd is in a state of pandemonium. / >
+> wait
+  You hear a loud growl nearby. / >
+> wait
+  You hear a loud roar nearby. / >
+> wait
+  You realize the noise is your own stomach. / >
+> wait
+  A hawker appears at the west end of your row, calling out in a sing-song manner, "Get your yogurt here. Get your tofu here." / >
+> buy candy from hawker
+  >buy candy from hawker / The hawker can barely hear you above the crowd noise. He flashes one finger, then eight fingers, then five fingers at you, and gestures to pass the money through the crowd. / >
+> give money to hawker
+  >give money to hawker / Your $1.85 is passed from hand to hand all the way down the row. As the hawker pockets your money, he's suddenly engulfed by the crowd, which erupts into a standing ovation. The state of riot pani
+> stand
+  The audience settles back down to a state of pandemonium. / >
+> e
+  The bank of people above you shouts, in chorus, "Hey, park it!" / >
+> u
+  The bank of people above you shouts, in chorus, "Move it!" / >
+> e
+  Standing Room Only / All around you the crowd is in a state of pandemonium. The paths of least resistance are down and west. / >
+> d
+  Standing Room Only / All around you the crowd is in a state of pandemonium. The paths of least resistance are up, down and east. / >
+> e
+  Standing Room Only / All around you the crowd is in a state of pandemonium. The paths of least resistance are up, down and west. / >
+> u
+  Standing Room Only / All around you the crowd is in a state of pandemonium. The paths of least resistance are down and east. / >
+> e
+  Standing Room Only / All around you the crowd is in a state of pandemonium. The paths of least resistance are down and west. / >
+> d
+  As you exhale a sigh of relief, a smallish and hairy animal inexplicably plops down upon you from the upper reaches of the big top. / >
+> s
+  Stretching away from a small concession stand is a long line of suckers. / >
+> stand in line
+  >stand in line / You are now standing at the tail end of the long line. / >
+> wait
+  >wait / Time passes... / >
+> wait
+  Right next to the long line a much shorter line begins to form. / >
+> get out of long line
+  >get out of long line / You get out of the long line. / >
+> stand in short line
+  >stand in short line / You are now standing at the tail end of the short line. / >
+> wait
+  The face of the man ahead of you lights up as he spots something. "Hey, guys! It's ME, Jerry," he yells to a sizable group nearby, and they approach. / >
+> wait
+  With both your resolve and your heaving bosom firm against the crush of interlopers, you are nevertheless forced to backpedal. / >
+> wait
+  Jerry continues ribbing the shortstop. / >
+> get out of long line
+  >get out of long line / You hear an inner voice whisper, "Do I really want to forfeit my position in the long line?" To which you answer: / >
+> yes
+  >yes / You nonchalantly walk away from the long line. / >
+> stand in long line
+  >stand in long line / A lot of other people must not have had the same idea as you, as they defect nearly en masse over to the short line. Steaming to the front of the line, you get a two-dollar-and-25-cent frozen banana
+> bite banana
+  >bite banana / As the monkey on your back catches a whiff of the tangy fruit beneath the chocolate, you feel its primal heart begin to race and, on the back of your neck, its warm breath quicken. / >
+> drop banana
+  >drop banana / Following its jungle appetite, the monkey dismounts your back, pounces on the banana, and saunters away with it. / >
+> n
+  One lone hawker stands waiting in the wings, taking his break. / >
+> ask hawker about candy
+  >ask hawker about candy / "Hey, you're the one I passed the granola bar to in the grandstand. I know that's not what you ordered, but that's all I had left. Well, the guy that was sitting next to you is holding the grano
+> u
+  The bank of people above you shouts, in chorus, "We can't see!" / >
+> w
+  The bank of people above you shouts, in chorus, "Down in front!" / >
+> d
+  The bank of people above you shouts, in chorus, "Down in front!" / >
+> w
+  Standing Room Only / All around you the crowd is in a state of pandemonium. The paths of least resistance are up, down and east. / >
+> u
+  The bank of people above you shouts, in chorus, "Hey, park it!" / >
+> w
+  The bank of people above you shouts, in chorus, "Move it!" / >
+> d
+  The bank of people above you shouts, in chorus, "We can't see!" / >
+> w
+  Standing here, attired in an immaculate black tuxedo, is none other than Rimshaw himself. / >
+> stand
+  >stand / You get off of the leather sofa. / >
+> s
+  >s / Midway of Midway / >
+> w
+  >w / Midway Entrance / >
+> go under wall
+  Under the Bleachers / >
+> search garbage
+  >search garbage / Recalling the precise trajectory of your fallen one-dollar-and-85-cent granola bar, you uncover it after a brief excavation. / >
+> take bar
+  >take bar / Taken. / >
+> s
+  Midway Entrance / >
+> e
+  >e / Midway of Midway / >
+> e
+  >e / Far End of Midway / >
+> n
+  >n / West Half of Fat Lady / >
+   18:radio dial {on:false,worn:false,edible:true} tags[] -> examine dial
+   48:transistor radio {on:false,worn:false,edible:false} tags[inactive] -> examine transistor radio | take transistor radio | search transistor radio | empty transistor radio | close transistor radio
+> ne
+  East Half of Fat Lady / >
+   18:radio dial {on:false,worn:false,edible:true} tags[] -> examine dial
+   48:transistor radio {on:false,worn:false,edible:true} tags[inactive] -> examine transistor radio | take transistor radio | search transistor radio | empty transistor radio | close transistor radio
+> show bar to tina
+  >show bar to tina / Tina is quick to confiscate the one-dollar-and-85-cent granola bar from your hand and grinds it up without hesitation. Turning her far-away gaze slowly in your direction, she seems to notice you for t
+   18:radio dial {on:false,worn:false,edible:true} tags[] -> examine dial
+   48:transistor radio {on:false,worn:false,edible:true} tags[inactive] -> examine transistor radio | take transistor radio | search transistor radio | empty transistor radio | close transistor radio
+> tina, hello
+  >tina, hello / She merely sighs wistfully, which creates a gale-force gust, and cranes her wrecking-ball-sized hand over to you. / >
+   18:radio dial {on:false,worn:false,edible:true} tags[] -> examine dial
+   48:transistor radio {on:false,worn:false,edible:true} tags[inactive] -> examine transistor radio | take transistor radio | search transistor radio | empty transistor radio | close transistor radio
+> shake hands
+  The fat lady appears quite taken by your kindnesses. She clasps both her hands up to her chins, and stares ahead in teary silence. / >
+> nw
+  Drifting out from the radio is a jumble of static. / >
+   18:radio dial {on:false,worn:false,edible:true} tags[] -> examine dial
+   48:transistor radio {on:true,worn:false,edible:false} tags[active] -> examine transistor radio | take transistor radio | search transistor radio | empty transistor radio | close transistor radio
+> take radio
+  Drifting out from the radio is a jumble of static. / >
+   48:transistor radio {on:true,worn:false,edible:false} tags[active] -> examine radio | take radio | search radio | empty radio | close radio | turn on radio | turn off radio | drop radio | give radio to  | put radio in 
+> s
+  Drifting out from the radio is a jumble of static. / >
+   48:transistor radio {on:true,worn:false,edible:false} tags[active] -> examine radio | take radio | search radio | empty radio | close radio | turn on radio | turn off radio | drop radio | give radio to  | put radio in 
+> w
+  Drifting out from the radio is a jumble of static. / >
+   48:transistor radio {on:true,worn:false,edible:false} tags[active] -> examine radio | take radio | search radio | empty radio | close radio | turn on radio | turn off radio | drop radio | give radio to  | put radio in 
+> w
+  Drifting out from the radio is a jumble of static. / >
+   48:transistor radio {on:true,worn:false,edible:false} tags[active] -> examine radio | take radio | search radio | empty radio | close radio | turn on radio | turn off radio | drop radio | give radio to  | put radio in 
+> s
+  Drifting out from the radio is a jumble of static. / >
+   48:transistor radio {on:true,worn:false,edible:false} tags[active] -> examine radio | take radio | search radio | empty radio | close radio | turn on radio | turn off radio | drop radio | give radio to  | put radio in 
+> se
+  Drifting out from the radio is a jumble of static. / >
+   48:transistor radio {on:true,worn:false,edible:false} tags[active] -> examine radio | take radio | search radio | empty radio | close radio | turn on radio | turn off radio | drop radio | give radio to  | put radio in 
+> drop all except radio
+  Drifting out from the radio is a jumble of static. / >
+   48:transistor radio {on:true,worn:false,edible:false} tags[active] -> examine radio | take radio | search radio | empty radio | close radio | turn on radio | turn off radio | drop radio | give radio to  | put radio in 
+> n
+  Drifting out from the radio is a jumble of static. / >
+   48:transistor radio {on:true,worn:false,edible:false} tags[active] -> examine radio | take radio | search radio | empty radio | close radio | turn on radio | turn off radio | drop radio | give radio to  | put radio in 
+> take headphones
+  Drifting out from the radio is a jumble of static. / >
+   48:transistor radio {on:true,worn:false,edible:false} tags[active] -> examine radio | take radio | search radio | empty radio | close radio | turn on radio | turn off radio | drop radio | give radio to  | put radio in 
+> i
+  Drifting out from the radio is a jumble of static. / >
+   48:transistor radio {on:true,worn:false,edible:false} tags[active] -> examine radio | take radio | search radio | empty radio | close radio | turn on radio | turn off radio | drop radio | give radio to  | put radio in 

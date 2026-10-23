@@ -9270,7 +9270,7 @@ D201 reference guards, Spellbreaker/Infidel/Zork III Eat-only identity food (no 
 zil-titles/ballyhoo-radio-empty-claude-SEALED.md, codex ballyhoo-radio-empty-codex-SEALED.md), proposal R1 (codex),
 claude OBJECT on scope, R2 agreed #4533 (claude's Empty generalisation withdrawn on codex's V-EMPTY evidence). Gate:
 immutable 309x2, 5 paired-proven FLAKY (Inevita by claude double recheck: base varies itself), 0 unresolved. Phone
-check PENDING operator return (radio held radial, carton Open/Close).
+check PASS 2026-10-23: held radio radial without Search/Empty/Open/Close; carton Open only closed, Close only open (r3-claude/phone-r3/phone-result.json).
 
 **Contract.**
 - For any object whose container AND open meanings both have a positive owner (declared Inform names or a measured
@@ -9294,7 +9294,7 @@ meaning where present.
 **Lifecycle:** codex implemented (56bbc89, Seat codex); blind dual investigation (claude
 zil-titles/more-debug-verbs-claude-SEALED.md, codex more-debug-verbs-codex-SEALED.md), claude proposal R1, codex
 ACCEPT with qualifications #4549, explicit R2 (#4556/#4557). Gate: immutable 309x2, 4 paired-proven FLAKY, 0 unresolved.
-Phone More screenshot PENDING operator return.
+Phone PASS 2026-10-23: assignment More page without system verbs (r3-claude/phone-r3/phone-result.json).
 
 **Problem.** Lurking Horror: long-press the held assignment, More -> "$so", "$ve", "#reco", "#comm", "#rand". These are
 the game's real system verbs ($SOUND, $VERIFY, #RECORD, #COMMAND/#COMMENT, #RANDOM), stored truncated by the v3
