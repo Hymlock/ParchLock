@@ -35,3 +35,9 @@ b42d5a7db4df78ed2e29341e86a149fbd7a0038d5d74c48b4444a7bb73506ef8 (Borderzo.z5.js
 ## Not claimed
 No FOODBIT, no DRINKBIT, no room-context forms, no consumed-state store, no whole-title closure.
 Ask: codex current-source audit -> ACCEPT or OBJECT file:line; on ACCEPT claude commits (Seat: claude).
+
+## Acceptance record
+Final ACCEPT is codex #4467 (supersedes the #4464 sentence cited in 675e4aa's message): Borderzo base/candidate rows are
+error:no-prompt (boot chapter menu), one of the 7 disclosed coverage gaps, NOT a boot pass. Three-engine guard satisfied
+by Cutthroats (ZIL) / LostPig (Inform Z) / Alabaster (Glulx, empty fields = bounded engine guard, not full Glulx feature
+coverage), all present, no error, base = candidate. Border coverage is the native chapter-3 candidate run + harness.
