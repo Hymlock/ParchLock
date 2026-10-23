@@ -109,13 +109,16 @@ var LearnedWords = {
     commands: function (obj) {
         var ref = Actionable.referenceFor(obj);
         if (!ref.unique || !ref.verified) return [];
-        return LearnedWords.candidates(obj.id).map(function (c) {
+        return LearnedWords.candidates(obj.id).filter(function (c) {
+            return !ActionSynth.edibleCommandAllowed || ActionSynth.edibleCommandAllowed(obj.id, c.form);
+        }).map(function (c) {
             return { objectId: obj.id, verb: c.form, command: c.form + " " + ref.noun,
                 Enter: c.enter, enter: c.enter, label: c.label, confidence: 0.5, source: "user-suggestion",
                 learnedWordScope: { key: LearnedWords.identity(), generation: LearnedWords.generation(), id: c.id, revision: c.revision } };
         });
     },
     commandCurrent: function (command) {
+        if (ActionSynth.edibleCommandAllowed && !ActionSynth.edibleCommandAllowed(command.objectId, command.verb)) return false;
         var scope = command.learnedWordScope;
         if (!scope || scope.key !== LearnedWords.identity() || scope.generation !== LearnedWords.generation()) return false;
         return LearnedWords.candidates(command.objectId).some(function (c) {
@@ -135,7 +138,7 @@ var LearnedWords = {
         // Use the same compiler/evidence policy as menu synthesis, not learned admission.
         if (ActionSynth.edibleDrinkAllowed(attrs, { directEvidenceOnly: !!obj.examineOnly })) forms.push('drink');
         var nested = held && ActionSynth.heldContainerName && ActionSynth.heldContainerName(obj,WorldModel.lastPayload);
-        if (nested) forms = ['take'];
+        if (nested) forms = ['take'].concat(ActionSynth.nestedEdibleForms ? ActionSynth.nestedEdibleForms(obj.id,context) : []);
         else if (held) {
             forms = forms.filter(function (v) { return v !== 'take' && v !== 'remove'; });
             if (ActionSynth.isWorn && ActionSynth.isWorn(obj)) forms = ['remove'];
@@ -146,7 +149,9 @@ var LearnedWords = {
                 (typeof SemanticActions[method] === 'function' ? SemanticActions[method](obj,context,null,WorldModel.lastPayload) || [] : []).forEach(function (f) { if (f.verb) forms.push(f.verb); });
             });
         }
-        return Array.from(new Set(forms));
+        return Array.from(new Set(forms)).filter(function (verb) {
+            return !ActionSynth.edibleCommandAllowed || ActionSynth.edibleCommandAllowed(obj.id,verb,context);
+        });
     },
     observeSubmit: function (event) {
         if (event.source === 'ambiguous-reference' || event.source === 'stat-probe') return;

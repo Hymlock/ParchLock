@@ -12,7 +12,10 @@ let checks=0;function check(name,fn){try{fn();checks++;console.log('PASS '+name)
 const B=load('Borderzo.z5.js',30),A=B.c.AttributeSchema,R=B.c.ZRamReader,S=B.c.ActionSynth,L=B.c.LearnedWords,h=R.header(B.mem),F=B.c.ModuleStatFactsClaude[B.digest];
 function obj(env,id){const R=env.c.ZRamReader,raw=R.objectLinks(env.mem,id);return{id,name:R.shortName(env.mem,id),parentId:raw.parent,attrs:env.c.AttributeSchema.applyTo({},raw,env.mem)};}
 // custody: set parent to the player (v3 parent byte at +4; v4+ parent word at +6)
-function hold(env,ids){const R=env.c.ZRamReader,h=R.header(env.mem);for(const id of ids){const b=R.objectBase(h,id);if(h.version<=3)env.mem.setUint8(b+4,env.player);else env.mem.setUint16(b+6,env.player);}env.payload.inventory=ids.map(id=>obj(env,id));env.payload.discoveredObjects=[];return env.payload.inventory;}
+function hold(env,ids){const R=env.c.ZRamReader,h=R.header(env.mem),fact=env.c.ModuleStatFactsClaude[env.digest];
+  // X-only custody control also initializes the measured actor slot; never native evidence.
+  if(Number.isInteger(fact.playerGlobal))env.mem.setUint16(h.globals+2*fact.playerGlobal,env.player);
+  for(const id of ids){const b=R.objectBase(h,id);if(h.version<=3)env.mem.setUint8(b+4,env.player);else env.mem.setUint16(b+6,env.player);}env.payload.inventory=ids.map(id=>obj(env,id));env.payload.discoveredObjects=[];return env.payload.inventory;}
 function verbs(env,id,ctx='inventory'){const o=env.payload.inventory.concat(env.payload.discoveredObjects).find(x=>x.id===id);return{menu:env.c.ActionSynth.commandsForObject(o,ctx).map(x=>x.verb),independent:env.c.LearnedWords.independentForms(o),obj:o};}
 function pair(id,present){hold(B,[200,205,101]);const r=verbs(B,id);for(const list of [r.menu,r.independent])for(const v of ['eat','drink'])assert.equal(list.includes(v),present,v+' in '+JSON.stringify(list));return r;}
 check('registry key is the Border Zone digest',()=>{assert.equal(B.digest,'b42d5a7db4df78ed2e29341e86a149fbd7a0038d5d74c48b4444a7bb73506ef8');assert(F&&F.capabilityForms);});

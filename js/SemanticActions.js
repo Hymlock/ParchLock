@@ -392,7 +392,9 @@ var SemanticActions = {
         // Step 8: no further fallback. Anything not covered above is simply
         // absent from the result -- never a speculative guess.
 
-        return order.map(function (v) { return byVerb[v]; });
+        return order.map(function (v) { return byVerb[v]; }).filter(function (entry) {
+            return !ActionSynth.edibleCommandAllowed || ActionSynth.edibleCommandAllowed(obj.id,entry.verb,context);
+        });
     },
 
     resolveForPayloadObjectId: function (objectId, context) {

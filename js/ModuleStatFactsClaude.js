@@ -322,7 +322,10 @@ var ModuleStatFactsClaude = {
         // held soda 200 and pretzel 205 each succeed on native EAT and DRINK (source FOOD-F handler); held cigarette 101 refuses
         // both. The authored pair is the only Drink licence; it is inventory-only because the native proof was held.
         "attributeObjects": { "edible": [200, 205] },
-        "capabilityForms": { "edible": ["eat", "drink"] }
+        "capabilityForms": { "edible": [
+            { "objectId": 200, "scope": "held", "actions": [{ "verb": "eat" }, { "verb": "drink" }] },
+            { "objectId": 205, "scope": "held", "actions": [{ "verb": "eat" }, { "verb": "drink" }] }
+        ] }
     },
     // Stationfall (ZIL): untouched native routes (Codex #3393-#3400). DROP chronometer inserts it into room 198,
     // TAKE into holder 218; global 183 is the only global equal to that holder, still so after STARBOARD moves
@@ -731,7 +734,6 @@ var ModuleStatFactsClaude = {
     },
     // The Lurking Horror (Infocom v3)
     "1862ef7ce4c25abd32d442392fe7eaba9c1595ed5411df75e99b06f43af6f5af": {
-        // on 15 WITHDRAWN (Codex #3451-#3453): LH walk had a 128-step empty tail; completion unproven; stays unknown.
         // CONTBIT 27: tested TRUE on refrigerator, cardboard carton, access panel; FALSE on Funny Bones package, microwave controls, display (zil-walk). Q8 player root: G188 is the only global holding object 56; walkthrough TAKEs (4) move items into 56; app read 29 with an empty inventory. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         "playerGlobal": 188,
         // OPENBIT 13 (original-scene native explorer, zil-native-explore2-c.json): refrigerator OPEN tests 13 false, sets it,
@@ -754,7 +756,20 @@ var ModuleStatFactsClaude = {
         // and omits them; FALSE on the printed chair 62, pc 191, assignment 97. Source NDESCBIT 18 exact (72/72). SOLO/SELF-AUDIT.
         "inventoryHiddenAttribute": 18,
         "command": "score", "fields": ["score.max", "rank"], "replyFamily": "inform-score", "outcome": "line",
-        "evidence": "2026-10-05 live SCORE: Your score is 0 of a possible 100, in 0 moves. Graded on the curve, you are in the class of Freshman. DIAGNOSE: You are wide awake, and are in good health."
+        "evidence": "2026-10-05 live SCORE: Your score is 0 of a possible 100, in 0 moves. Graded on the curve, you are in the class of Freshman. DIAGNOSE: You are wide awake, and are in good health.",
+        // Food, identity owners with authored state-gated actions (codex lurking-food-proposal-r2.md, claude ACCEPT; bit 1
+        // FOODBIT is NOT mapped: carton 58 carries it and refuses EAT/DRINK). Fresh native routes, no VM writes
+        // (resume-20261020 lurking-snack-heat/hot-native, lurking-coke-quantity-native, lurking-food-missing-native):
+        // Funny Bones 18: EAT succeeds at heat prop3 = 12 and sets bit11 (wrapper stays held, no longer edible); refuses at 16
+        // ("too hot"), succeeds after cooling to 10. Coke 61: DRINK lowers prop11 5->4->3->2->1, refuses at 1 (empty); its EAT
+        // only prints a temperature reply, so no Eat is offered. Chinese food 90: eaten while inside the open (bit13) carton 58
+        // held by the player; TAKE refused. Source 51d8060 (whole 16-file audit) corroborates, not an exact-build claim.
+        "attributeObjects": { "edible": [18, 61, 90] },
+        "capabilityForms": { "edible": [
+            { "objectId": 18, "scope": "held", "actions": [{ "verb": "eat", "clearAttribute": 11, "property": { "id": 3, "size": 2, "min": 0, "max": 12 } }] },
+            { "objectId": 61, "scope": "held", "actions": [{ "verb": "drink", "property": { "id": 11, "size": 2, "min": 2, "max": 5 } }] },
+            { "objectId": 90, "scope": { "containerObject": 58, "openAttribute": 13 }, "actions": [{ "verb": "eat" }] }
+        ] }
     },
     // Zork I (Infocom v3)
     "0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd": {

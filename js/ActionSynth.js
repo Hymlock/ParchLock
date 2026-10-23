@@ -81,6 +81,20 @@ var ActionSynth = {
         var forms = AttributeSchema.edibleForms(AttributeSchema._getMem(), objectId, context);
         return forms && forms.every(ActionSynth.literalAvailable) ? forms : forms === null ? null : [];
     },
+    // Authored food availability overrides only Eat/Drink for those owners.
+    // Evidence and saved user choices remain recorded; manual typing is untouched.
+    edibleCommandAllowed: (objectId, verb, context) => {
+        if (verb !== "eat" && verb !== "drink") return true;
+        if (!context) {
+            var payload = typeof WorldModel !== "undefined" && WorldModel.lastPayload;
+            context = payload && (payload.inventory || []).some(function (o) { return o && o.id === objectId; }) ? "inventory" : "room";
+        }
+        var policy = ActionSynth.edibleFormPolicy(objectId, context);
+        return policy === null || policy.indexOf(verb) >= 0;
+    },
+    nestedEdibleForms: (objectId, context) => {
+        return ActionSynth.edibleFormPolicy(objectId, context) || [];
+    },
     activationFormPolicy: (objectId, context) => {
         if (typeof AttributeSchema === "undefined" || !AttributeSchema.activationForms) return null;
         var forms = AttributeSchema.activationForms(AttributeSchema._getMem(), objectId, context);
@@ -288,6 +302,10 @@ var ActionSynth = {
                 command: "take " + name,
                 confidence: obj.confidence || 0.8
             });
+            ActionSynth.nestedEdibleForms(obj.id, context).forEach(function (verb) {
+                nested.push({ verb: verb, noun: name, objectId: obj.id || null,
+                    command: verb + " " + name, confidence: obj.confidence || 0.8 });
+            });
             return nested;
         }
         var verbs = ActionSynth.verbsForAttrs(attrs, obj.id, Object.assign({}, options, { context: context }));
@@ -356,7 +374,7 @@ var ActionSynth = {
         if (typeof LearnedWords !== "undefined") LearnedWords.commands(obj).forEach(function (c) {
             if (!result.some(function (existing) { return existing.command === c.command; })) result.push(c);
         });
-        return result;
+        return result.filter(function (entry) { return ActionSynth.edibleCommandAllowed(obj.id, entry.verb, context); });
     },
 
     // D201: objects whose printable identity was recovered from just-printed

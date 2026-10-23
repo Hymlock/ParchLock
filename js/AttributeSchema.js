@@ -406,9 +406,9 @@ var AttributeSchema = {
         } catch (eActivationForms) { return owned ? [] : null; }
     },
 
-    // Authored edible pair (Border Zone EAT+DRINK on the same identity owners). null = no authored policy, so
-    // existing Eat-only identity food (Spellbreaker, Infidel, Zork III) is untouched; [] = a claimed pair was rejected,
-    // and a rejected pair never falls back to a generic Drink inference.
+    // Authored owner-local food actions. Capability and current availability
+    // are distinct: an empty bottle or a consumed wrapper keeps its identity.
+    // null = no authored owner policy; [] = owned but unavailable/invalid.
     edibleForms: function (mem, objectId, context) {
         var owned = false;
         try {
@@ -418,19 +418,74 @@ var AttributeSchema = {
                 fact = digest && ModuleStatFactsClaude[digest];
             }
             if (!fact || !(fact.capabilityForms && Object.prototype.hasOwnProperty.call(fact.capabilityForms, "edible"))) return null;
-            owned = true;
             if ((ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) ||
                 (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, "edible"))) return null;
+            var claimed = fact.attributeObjects && fact.attributeObjects.edible;
+            if (!Array.isArray(claimed)) return [];
+            if (claimed.indexOf(objectId) < 0) return null;
+            owned = true;
             var ids = AttributeSchema.objectCapabilityIds(mem, "edible");
-            var forms = fact.capabilityForms.edible;
-            if (context !== "inventory" || !ids || !Number.isInteger(objectId) || ids.indexOf(objectId) < 0 ||
-                !Array.isArray(forms) || forms.length !== 2 || forms[0] !== "eat" || forms[1] !== "drink") return [];
-            var family = AttributeSchema._familyOf(mem);
-            if (!family || !Array.isArray(family.templates) || !forms.every(function (form) {
-                return family.templates.some(function (t) { return t.verb === form && t.objectCount === 1 &&
-                    (!t.prepositions || t.prepositions.length === 0); });
+            var rules = fact.capabilityForms.edible, header = ZRamReader.header(mem);
+            if (context !== "inventory" || !ids || !header || !Number.isInteger(objectId) ||
+                !Array.isArray(rules) || rules.length !== ids.length) return [];
+            var count = ZRamReader.objectCount(mem, header), limit = header.version <= 3 ? 32 : 48;
+            var family = AttributeSchema._familyOf(mem), seen = {}, selected = null;
+            function keys(value, required, optional) {
+                return value && typeof value === "object" && !Array.isArray(value) &&
+                    required.every(function (k) { return Object.prototype.hasOwnProperty.call(value, k); }) &&
+                    Object.keys(value).every(function (k) { return required.indexOf(k) >= 0 || optional.indexOf(k) >= 0; });
+            }
+            function bit(value) { return Number.isInteger(value) && value >= 0 && value < limit; }
+            function scope(value) {
+                return value === "held" || (keys(value, ["containerObject", "openAttribute"], []) &&
+                    Number.isInteger(value.containerObject) && value.containerObject >= 2 && value.containerObject <= count &&
+                    bit(value.openAttribute));
+            }
+            if (!family || !Array.isArray(family.templates) || !rules.every(function (rule) {
+                if (!keys(rule, ["objectId", "scope", "actions"], []) || ids.indexOf(rule.objectId) < 0 ||
+                    seen[rule.objectId] || !scope(rule.scope) || !Array.isArray(rule.actions) || !rule.actions.length) return false;
+                seen[rule.objectId] = true;
+                var verbs = {};
+                var valid = rule.actions.every(function (action) {
+                    if (!keys(action, ["verb"], ["clearAttribute", "property"]) ||
+                        ["eat", "drink"].indexOf(action.verb) < 0 || verbs[action.verb]) return false;
+                    verbs[action.verb] = true;
+                    if (Object.prototype.hasOwnProperty.call(action, "clearAttribute") && !bit(action.clearAttribute)) return false;
+                    if (Object.prototype.hasOwnProperty.call(action, "property")) {
+                        var p = action.property;
+                        if (!keys(p, ["id", "size", "min", "max"], []) || !Number.isInteger(p.id) || p.id < 1 ||
+                            p.id > (header.version <= 3 ? 31 : 63) || p.size !== 2 || !Number.isInteger(p.min) ||
+                            !Number.isInteger(p.max) || p.min < 0 || p.max > 65535 || p.min > p.max) return false;
+                    }
+                    return family.templates.some(function (t) { return t.verb === action.verb && t.objectCount === 1 &&
+                        (!t.prepositions || t.prepositions.length === 0); });
+                });
+                if (rule.objectId === objectId) selected = rule;
+                return valid;
             })) return [];
-            return forms.slice();
+            if (!selected) return [];
+            var player = ZRamReader.resolvePlayer(mem).id, object = ZRamReader.objectLinks(mem, objectId);
+            if (!Number.isInteger(player) || player < 2 || player > count || !object) return [];
+            if (selected.scope === "held") {
+                if (object.parent !== player) return [];
+            } else {
+                var parentId = selected.scope.containerObject, parent = ZRamReader.objectLinks(mem, parentId);
+                var payload = typeof WorldModel !== "undefined" && WorldModel.lastPayload;
+                if (object.parent !== parentId || !parent || parent.parent !== player ||
+                    !ZRamReader.attr(parent, selected.scope.openAttribute) || !payload ||
+                    !(payload.inventory || []).some(function (o) { return o && o.id === objectId; })) return [];
+            }
+            return selected.actions.filter(function (action) {
+                if (Object.prototype.hasOwnProperty.call(action, "clearAttribute") &&
+                    ZRamReader.attr(object, action.clearAttribute)) return false;
+                if (action.property) {
+                    var p = action.property, props = ZRamReader.listProps(mem, objectId).filter(function (q) { return q.num === p.id; });
+                    if (props.length !== 1 || props[0].sz !== p.size) return false;
+                    var value = ZRamReader.u16(mem, props[0].dataAddr);
+                    if (value < p.min || value > p.max) return false;
+                }
+                return true;
+            }).map(function (action) { return action.verb; });
         } catch (eEdibleForms) { return owned ? [] : null; }
     },
 
