@@ -9307,8 +9307,9 @@ decoded meta flag) and (2) where validated ZIL grammar exists, some template for
 only, not a capability claim). Unknown grammar leaves (2) open; no D198 decode on Inform memory. Raw vocabulary,
 specialCommands, the global wheel, typed input, D34 no-cap, D110 ranking, ram-synth and learned/AttrCalibrator verbs
 are unchanged. Catalogue census (r3-claude/dict-punct-verb-census.json, 298 Z games): punctuation-led verb words exist
-in 12 games (adverbum ".hold", amiss ";x", dreamhold ",noop" ...), none a world-object verb; it is a compatibility
-screen, not semantic proof.
+in 12 games (adverbum ".hold", amiss ";x", dreamhold ",noop" ...). They are not promoted as unproven object
+suggestions by this UI policy; the census inspects dictionary words only and does not establish handler semantics
+(adverbum's dot aliases may be real authored parser actions). It is a compatibility screen, not semantic proof.
 
 **Open:** Inform global resolver cold-decodes grammar about 6 times per call (pre-existing, separate perf item).
 
