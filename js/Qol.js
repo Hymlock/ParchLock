@@ -785,6 +785,7 @@ var ParchLockQol = {
         // belt-and-suspenders guard, not evidence the bug is currently live.)
         ParchLockQol._radialOpenedAt = Date.now();
         $("body").addClass("radial-open");
+        ParchLockQol.BeginRadialSelection();
         menu.data("context", context);
         context = context || {};
         commands = (commands || []).slice();
@@ -860,6 +861,7 @@ var ParchLockQol = {
                     }
                 }
             });
+            ParchLockQol.ClearRadialSelection();
             return;
         }
         menu.removeClass("pl-tools-list");
@@ -984,6 +986,7 @@ var ParchLockQol = {
         var top = Math.max(8, Math.min(clientY - height / 2, window.innerHeight - height - 8));
 
         menu.css({ left: left, top: top });
+        ParchLockQol.ClearRadialSelection();
 
         $(".radial-command").click(function() {
 
@@ -1049,6 +1052,45 @@ var ParchLockQol = {
         });
     },
 
+    // D210: a rendered radial owns page selection until close. The original
+    // held target still owns its independent begin/fire/end lifecycle.
+    GuardRadialSelection: (e) => {
+        if (!document.body.classList.contains("radial-open")) return;
+        var input = document.activeElement;
+        if (input && input.matches(".Input.LineInput") &&
+            (input === e.target || input.contains(e.target))) return;
+        e.preventDefault();
+    },
+
+    ClearRadialSelection: () => {
+        var menu = document.getElementById("radial-menu");
+        var selection = window.getSelection();
+        if (!menu || !selection) return;
+        // Preserve unrelated pre-existing transcript ranges, including on close.
+        for (var i = selection.rangeCount - 1; i >= 0; i--) {
+            var range = selection.getRangeAt(i);
+            if (range.intersectsNode(menu)) selection.removeRange(range);
+        }
+    },
+
+    BeginRadialSelection: () => {
+        if (!ParchLockQol._radialSelectionBound) {
+            document.addEventListener("selectstart", ParchLockQol.GuardRadialSelection, true);
+            document.addEventListener("contextmenu", ParchLockQol.GuardRadialSelection, true);
+            document.addEventListener("selectionchange", ParchLockQol.ClearRadialSelection);
+            ParchLockQol._radialSelectionBound = true;
+        }
+        ParchLockQol.ClearRadialSelection();
+    },
+
+    EndRadialSelection: () => {
+        ParchLockQol.ClearRadialSelection();
+        document.removeEventListener("selectstart", ParchLockQol.GuardRadialSelection, true);
+        document.removeEventListener("contextmenu", ParchLockQol.GuardRadialSelection, true);
+        document.removeEventListener("selectionchange", ParchLockQol.ClearRadialSelection);
+        ParchLockQol._radialSelectionBound = false;
+    },
+
     HideRadialMenu: (e) => {
 
         if (e && e.type === "mousedown" && $(e.target).closest("#tools-toggle, #game-menu").length) return;
@@ -1058,6 +1100,7 @@ var ParchLockQol = {
         // touch gesture that just opened it, not a real dismiss request.
         if (e && e.type === "mousedown" && ParchLockQol._radialOpenedAt
             && (Date.now() - ParchLockQol._radialOpenedAt) < 400) return;
+        ParchLockQol.EndRadialSelection();
         $("#radial-menu").removeClass("show").removeClass("pl-tools-list").attr("aria-hidden", "true");
         $("body").removeClass("radial-open");
     },

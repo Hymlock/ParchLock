@@ -3109,6 +3109,19 @@ body.pl-mobile.app-dialog-open #pl-input-mic {
 	visibility: hidden;
 	pointer-events: none;
 }
+/* D210: no new native highlighting while a radial is active. D105 retains
+   caret/selection/copy for the deliberately focused story line input. */
+body.radial-open,
+body.radial-open * {
+	-webkit-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
+}
+body.radial-open .Input.LineInput:focus {
+	-webkit-user-select: text;
+	user-select: text;
+	-webkit-touch-callout: default;
+}
 body.pl-mobile.radial-open #game-menu,
 body.pl-mobile.radial-open #pl-map-tab,
 body.pl-mobile.radial-open #pl-input-submit,
