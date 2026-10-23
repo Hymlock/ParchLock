@@ -9332,7 +9332,32 @@ non-carried. Targets, learned/resolved unlock commands and typing are untouched.
 any UNLOCK handler accepts (whole-module search; native roof 163 and padlock 135 unlock with 95, crowbar refused).
 
 **Open:** Unlock target list cannot include objects in scope via room local globals (hatch/padlock) - separate
-local-scope defect under investigation. No door/locked attributeMap was added.
+local-scope defect under investigation. No door/locked attributeMap was added. (Resolved for Lurking by D232.)
+
+## D232 Room-visible ZIL local globals enter object scope
+
+**Lifecycle:** blind dual investigation (claude zil-titles/local-globals-claude-SEALED.md + census, codex #4618/#4621);
+codex R1 design (resume-20261020/local-scope-proposal-r1-draft.md) adopted as base; resolutions and precisions claude
+#4626 / codex #4628 / #4632, recorded in zil-titles/local-scope-accepted.md. Implemented by claude b691ce2 while codex was
+out of usage. Bits grok2 #4635/#4637/#4642. Gate (grok2 #4647): 309x2 0 REGRESSION, mary/muse FLAKY base-vs-base;
+operator regressions 13/0. Source audit ACCEPT grok2 #4649; codex re-audit pending. Phone check pending.
+
+**Problem.** ZIL rooms list shared LOCAL-GLOBALS objects (doors, hatches, scenery) in a GLOBAL property; discovery walked
+room children only, so ~700 such objects in 21 ZIL titles never got underlines, long-press radials or instrument targets
+(Lurking Tomb: hatch 119 and padlock 135 missing from "Unlock with...").
+
+**Contract.** `ZRamReader.localScopeObjects`, called once at the end of `scopeObjects` (so both ZRamProvider and the
+reader's payload caller share it), driven only by an exact-digest `localScope {property, width, holder,
+roomLitAttribute, invisible, searchBit, surfaceBit, openBit, transBit?}` fact. Roots: room GLOBAL-property ids whose parent
+is the holder, not INVISIBLE (parser THIS-IT?). Contents follow parser SEARCH-CONTENTS?: SURFACE, or SEARCHBIT and
+(OPEN or TRANS); INVISIBLE contents skipped. Room light bit is positive-only (unset adds nothing and is not a dark
+verdict; measuredDark/DarkScope are not consulted). Generic canSeeInside and inventory walks untouched. Any missing or
+malformed field -> nothing added. Lurking: property 16, holder 59, lit 15, INVISIBLE 20, SEARCHBIT 10, SURFACE 8,
+OPEN 13, TRANS 5.
+
+**Open:** the other 20 census titles need their own measured localScope facts (Deadline, Moonmist, Suspect, Suspended,
+Sherlock ambiguous); lamp/door illumination (LIT locator); "take padlock" is offered but natively refused
+("The padlock locks the hatch in place") - separate take-capability defect.
 
 ## Backlog (low priority, research only): Glulx cold decoding
 

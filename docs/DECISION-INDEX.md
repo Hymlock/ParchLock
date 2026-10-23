@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 115 decisions across
-9405 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 116 decisions across
+9430 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -27,6 +27,7 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 
 | D | claim | files | games | arch |
 |---|-------|-------|-------|------|
+| D232 | Room-visible ZIL local globals enter object scope |  |  |  |
 | D231 | "Unlock with..." is offered only on a title's authored unlock tools |  |  | §88 |
 | D230 | More-page object suggestions admit only letter-led, object-taking dictionary verbs |  |  | §87 |
 | D229 | Open/Close follow the measured open state; authored container forms for parts-only containers |  |  | §86 |
