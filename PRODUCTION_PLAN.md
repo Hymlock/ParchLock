@@ -8155,6 +8155,35 @@ Physical Android check by the operator is pending. Operator issue I2.
   selection handles and Cut/Copy/Paste.
 - Plain text that does not open a radial stays selectable for copying.
 
+**Amendment 2026-10-23 (operator re-report; physical check failed on Build74).** The held-target
+scope above was not enough. On the phone a 1.5-2 s hold opened the radial under the still-down
+finger and Android then selected the radial's own label ("Eat", "Tools") and showed its
+Define/Copy/Web search toolbar over the ring (Build74 baseline: 1/7 presses at 1.5 s, 0/7 at
+0.9 s). The selection target was the newly rendered radial, outside the held target. Operator
+rule: "The highlighting is supposed to be turned off while a radial is active." Contract added:
+
+- While `body.radial-open`, the whole page owns no new selection: CSS `user-select: none` and
+  `-webkit-touch-callout: none` on `body.radial-open` and descendants, and Qol capture
+  listeners prevent `selectstart`/`contextmenu` for any target
+  (`ParchLockQol.BeginRadialSelection`/`EndRadialSelection`, bound on open, removed in
+  `HideRadialMenu`).
+- Exception: the focused story line input `.Input.LineInput:focus` (D105) keeps caret,
+  selection and Cut/Copy/Paste, in CSS and in the guard.
+- Selection ranges touching `#radial-menu` are removed on open, render, `selectionchange`
+  and close; unrelated ranges made before the radial opened are kept.
+- The held-target lifecycle above is unchanged; both owners apply.
+
+Evidence: blind dual investigation (claude zil-titles/radial-selection-claude-SEALED.md,
+codex d210-radial-selection-codex-SEALED.md), proposal R2 (codex), claude ACCEPT #4488 and
+current-source audit; browser repro work/investigations/r3-claude/d210-radial-selection-repro.cjs
+(HEAD 4 FAIL, candidate 0) and harness/d210-radial-selection.js (19/0). Physical Android check
+on a candidate test APK (operator-authorized): soda/cigarette marks and the radial's Eat button
+each held 2 s, no selection, no toolbar (r3-claude/phone-74/d210-post-lean/device-result.json,
+APK and candidate hashes recorded there). The agreed >=20-presses-per-hold gate was superseded by the
+operator ("testing is one of the things that holds us up the most. It is inefficient to test 42
+times for one touch feature"): device checks are a few presses per distinct path; the browser
+repro and harness carry exhaustive coverage. Fix committed 6268b07 (codex); immutable 309x2: 6 paired-proven FLAKY, 0 unresolved.
+
 <a id="pl-s325" data-chapter-id="pl-s325"></a><a id="pl-d211"></a>
 ## D211 Voice input lifecycle: settle barrier, bounded waits, backoff, diagnostics
 

@@ -3829,6 +3829,10 @@ EquipmentUI, CharKeys, Input line field and Send) drives one press state through
 
 - `pl-hold-active` and the `selectstart`/`contextmenu` capture guard apply to the held target
   only;
+- separately, while `body.radial-open` the open radial owns page selection: no new selection or
+  touch callout anywhere except the focused `.Input.LineInput` (D105); ranges touching
+  `#radial-menu` are removed, earlier unrelated ranges kept (`ParchLockQol.Begin/EndRadialSelection`,
+  D210 amendment 2026-10-23);
 - the fire removes only selection ranges touching the target;
 - suppression lasts until release or cancel, a pre-fire move, or the target leaving the DOM.
 

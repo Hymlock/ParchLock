@@ -1,0 +1,61 @@
+{
+ "date": "2026-10-23T06:29-04:00",
+ "device": {
+  "adbSerial": "91260151019C",
+  "model": "NX799J",
+  "package": "com.parchlock.app",
+  "versionCode": 47,
+  "installedAt": "2026-10-23 06:23:56"
+ },
+ "operatorAuthorization": "Yes: build a D210 test (dev) APK from the candidate, install it on my phone in place of build 74, and run the device gate.",
+ "operatorTestCountRuling": "testing is one of the things that holds us up the most. It is inefficient to test 42 times for one touch feature. (2026-10-23; 42-press run stopped, lean gate used)",
+ "apk": {
+  "path": "../wt-claude-d210-apk/android/app/build/outputs/apk/debug/app-debug.apk",
+  "sha256": "e69ad7978406f56581acae8613cc90a7b0d7759cd584fa2cc420124e74731e0d",
+  "build": "gradle assembleDebug in isolated worktree at 534e653; Android project + generated assets copied from ../wt-codex-apk74-20261022 (build74); only the files below changed"
+ },
+ "changedFromBuild74": {
+  "assets/public/js/Qol.js": "2dcdbcc33ecff041097533947fb0089373a3afa9fa1c6d3e0b1ba33128055d88",
+  "assets/public/css/ParchLock.css": "7ab2e3631b3096a73600b4ac1eb28b819f0fc44a8fafdce0990568d4503f13b8",
+  "assets/public/service-worker.js": "69b844a0d09c8e2b3362b6d2923de2847c523f402a6957d45b1f731a82e42b16 (CACHE_VERSION parchlock-shell-v172-d210test only)"
+ },
+ "workingCopyCandidate": {
+  "js/Qol.js": "2dcdbcc33ecff041097533947fb0089373a3afa9fa1c6d3e0b1ba33128055d88",
+  "css/ParchLock.css": "7ab2e3631b3096a73600b4ac1eb28b819f0fc44a8fafdce0990568d4503f13b8"
+ },
+ "onDeviceActive": {
+  "ParchLockQol.BeginRadialSelection": "function",
+  "cacheKeys": "parchlock-runtime-v1,parchlock-shell-v172-d210test"
+ },
+ "scene": "Border Zone chapter 3: se,w,examine cart,push cart,take soda,take pretzel,i",
+ "presses": [
+  {
+   "target": "mark soda",
+   "holdMs": 2000,
+   "radialOpen": true,
+   "selection": "",
+   "screenshot": "press0.png"
+  },
+  {
+   "target": "mark cigarette",
+   "holdMs": 2000,
+   "radialOpen": true,
+   "selection": "",
+   "screenshot": "press1.png"
+  },
+  {
+   "target": "radial button Eat (radial opened by 700 ms hold on soda)",
+   "holdMs": 2000,
+   "radialOpen": true,
+   "selection": "",
+   "screenshot": "press-eat-button.png",
+   "note": "no OS toolbar, no highlight; Eat not executed by a long hold"
+  }
+ ],
+ "preFixBaselineBuild74": {
+  "dir": "../d210-baseline-pre-bz-1500",
+  "hold1500": "1/7 selected Eat inside #radial-menu with toolbar",
+  "hold900": "0/7"
+ },
+ "result": "PASS"
+}
