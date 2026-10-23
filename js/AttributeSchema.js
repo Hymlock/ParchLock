@@ -406,6 +406,34 @@ var AttributeSchema = {
         } catch (eActivationForms) { return owned ? [] : null; }
     },
 
+    // Authored edible pair (Border Zone EAT+DRINK on the same identity owners). null = no authored policy, so
+    // existing Eat-only identity food (Spellbreaker, Infidel, Zork III) is untouched; [] = a claimed pair was rejected,
+    // and a rejected pair never falls back to a generic Drink inference.
+    edibleForms: function (mem, objectId, context) {
+        var owned = false;
+        try {
+            var fact = ZRamReader.executableLayoutFacts(mem);
+            if (!fact) {
+                var digest = ModuleLibrary.currentExecutableDigest();
+                fact = digest && ModuleStatFactsClaude[digest];
+            }
+            if (!fact || !(fact.capabilityForms && Object.prototype.hasOwnProperty.call(fact.capabilityForms, "edible"))) return null;
+            owned = true;
+            if ((ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) ||
+                (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, "edible"))) return null;
+            var ids = AttributeSchema.objectCapabilityIds(mem, "edible");
+            var forms = fact.capabilityForms.edible;
+            if (context !== "inventory" || !ids || !Number.isInteger(objectId) || ids.indexOf(objectId) < 0 ||
+                !Array.isArray(forms) || forms.length !== 2 || forms[0] !== "eat" || forms[1] !== "drink") return [];
+            var family = AttributeSchema._familyOf(mem);
+            if (!family || !Array.isArray(family.templates) || !forms.every(function (form) {
+                return family.templates.some(function (t) { return t.verb === form && t.objectCount === 1 &&
+                    (!t.prepositions || t.prepositions.length === 0); });
+            })) return [];
+            return forms.slice();
+        } catch (eEdibleForms) { return owned ? [] : null; }
+    },
+
     // Additional restriction on activation badges, never a source of on-state authority.
     activationStateAllows: function (mem, objectId) {
         var owned = false;

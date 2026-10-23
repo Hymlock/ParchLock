@@ -70,7 +70,16 @@ var ActionSynth = {
             var policy = ActionSynth.activationFormPolicy(objectId, context);
             if (policy !== null) return policy;
         }
+        if (key === "edible") {
+            var edible = ActionSynth.edibleFormPolicy(objectId, context);
+            if (edible !== null) return edible;
+        }
         return ActionSynth.rules[key] || [];
+    },
+    edibleFormPolicy: (objectId, context) => {
+        if (typeof AttributeSchema === "undefined" || !AttributeSchema.edibleForms) return null;
+        var forms = AttributeSchema.edibleForms(AttributeSchema._getMem(), objectId, context);
+        return forms && forms.every(ActionSynth.literalAvailable) ? forms : forms === null ? null : [];
     },
     activationFormPolicy: (objectId, context) => {
         if (typeof AttributeSchema === "undefined" || !AttributeSchema.activationForms) return null;

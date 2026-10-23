@@ -317,7 +317,12 @@ var ModuleStatFactsClaude = {
         // are rooms. FAIL-CLOSED: TOPAZ carries CONTBIT + SURFACEBIT + PERSON (bad.zil:3249), so animate joins the openCapability none list.
         // Grok4128: native WEAR chronograph81 and parka244 test41 true; oil can4 false/refused.
         "attributeMap": { "container": 43, "supporter": 36, "open": 34, "isOpen": 34, "animate": 47, "wearable": 41 },
-        "openCapability": { "all": ["container"], "none": ["supporter", "animate"] }
+        "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
+        // Identity food, no FOODBIT (codex border-food-evidence.json, design border-food-consumer-compared-proposal.md): chapter 3
+        // held soda 200 and pretzel 205 each succeed on native EAT and DRINK (source FOOD-F handler); held cigarette 101 refuses
+        // both. The authored pair is the only Drink licence; it is inventory-only because the native proof was held.
+        "attributeObjects": { "edible": [200, 205] },
+        "capabilityForms": { "edible": ["eat", "drink"] }
     },
     // Stationfall (ZIL): untouched native routes (Codex #3393-#3400). DROP chronometer inserts it into room 198,
     // TAKE into holder 218; global 183 is the only global equal to that holder, still so after STARBOARD moves

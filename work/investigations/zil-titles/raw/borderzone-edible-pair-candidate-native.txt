@@ -1,0 +1,33 @@
+STEP 0 "se" -> >se / You push your way through the crowd, reaching a spot near the middle of the square where a graceful column stands, dedicated to those who died in the War of Independence. Atop the column, a fift
+   changed: 
+   app: ["101:cigarette -> examine cigarette | take cigarette | drop cigarette | give cigarette to  | put cigarette in "]
+STEP 1 "w" -> Stretching from northeast through southeast, a series of barricades has been erected to separate the crowd from the dignitaries attending the ceremonies. Hundreds of uniformed police guard the barrica
+   changed: 
+   app: ["101:cigarette -> examine cigarette | take cigarette | drop cigarette | give cigarette to  | put cigarette in "]
+STEP 2 "examine cart" -> You press through the crowd until you reach Ostnitz Street at a point where a street vendor is busily peddling his wares - soda, pretzels, and hot dogs. His cart is practically overflowing with food, 
+   changed: 
+   app: ["101:cigarette -> examine cigarette | take cigarette | drop cigarette | give cigarette to  | put cigarette in "]
+STEP 3 "push cart" -> >push cart / With a hefty push, you manage to topple the entire cart, sending hundreds of cans of soda and dozens of pretzels flying. In the confusion, a few people are knocked to the ground, causing 
+   changed: 
+   app: ["101:cigarette -> examine cigarette | take cigarette | drop cigarette | give cigarette to  | put cigarette in "]
+STEP 4 "take soda" -> You're running down the alley now, just a few steps beyond the vendor's cart. The scene is somewhat comical, with dozens of people trying to regain their footing on a carpet of soda cans, which are ac
+   changed: 
+   app: ["200:can of soda -> examine soda | take soda | eat soda | drink soda | drop soda | give soda to  | put soda in ","101:cigarette -> examine cigarette | take cigarette | drop cigarette | give cigarette to  | put cigarette in "]
+STEP 5 "take pretzel" -> You take the can of soda. The vendor, in his confusion, will never be the wiser. / >take pretzel / You take the pretzel. The vendor, in his confusion, will never be the wiser. / >
+   changed: 
+   app: ["205:pretzel -> examine pretzel | take pretzel | eat pretzel | drink pretzel | drop pretzel | give pretzel to  | put pretzel in ","200:can of soda -> examine soda | take soda | eat soda | drink soda | drop soda | give soda to  | put soda in ","101:cigarette -> examine cigarette | take cigarette | drop cigarette | give cigarette to  | put cigarette in "]
+STEP 6 "i" -> You take the pretzel. The vendor, in his confusion, will never be the wiser. / >i / You are carrying a pretzel, a can of soda, a matchbook, a cigarette, a Gurthark Mark VI revolver and a business card
+   changed: 
+   app: ["205:pretzel -> examine pretzel | take pretzel | eat pretzel | drink pretzel | drop pretzel | give pretzel to  | put pretzel in ","200:can of soda -> examine soda | take soda | eat soda | drink soda | drop soda | give soda to  | put soda in ","101:cigarette -> examine cigarette | take cigarette | drop cigarette | give cigarette to  | put cigarette in "]
+STEP 7 "drink soda" -> You are carrying a pretzel, a can of soda, a matchbook, a cigarette, a Gurthark Mark VI revolver and a business card. You are wearing your clothes and a wristwatch. / >drink soda / You take a moment t
+   changed: 
+   app: ["205:pretzel -> examine pretzel | take pretzel | eat pretzel | drink pretzel | drop pretzel | give pretzel to  | put pretzel in ","101:cigarette -> examine cigarette | take cigarette | drop cigarette | give cigarette to  | put cigarette in "]
+STEP 8 "eat pretzel" -> You take a moment to finish the can of soda, and you throw the can away. / >eat pretzel / You take a moment to finish the pretzel. / >
+   changed: 
+   app: ["101:cigarette -> examine cigarette | take cigarette | drop cigarette | give cigarette to  | put cigarette in "]
+STEP 9 "eat cigarette" -> You take a moment to finish the pretzel. / >eat cigarette / Your incipient ulcer would not be helped by eating a cigarette. / >
+   changed: 
+   app: ["101:cigarette -> examine cigarette | take cigarette | drop cigarette | give cigarette to  | put cigarette in "]
+STEP 10 "i" -> Your incipient ulcer would not be helped by eating a cigarette. / >i / You are carrying a matchbook, a cigarette, a Gurthark Mark VI revolver and a business card. You are wearing your clothes and a wr
+   changed: 
+   app: ["101:cigarette -> examine cigarette | take cigarette | drop cigarette | give cigarette to  | put cigarette in "]
