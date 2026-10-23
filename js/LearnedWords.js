@@ -110,7 +110,7 @@ var LearnedWords = {
         var ref = Actionable.referenceFor(obj);
         if (!ref.unique || !ref.verified) return [];
         return LearnedWords.candidates(obj.id).filter(function (c) {
-            return !ActionSynth.edibleCommandAllowed || ActionSynth.edibleCommandAllowed(obj.id, c.form);
+            return !ActionSynth.authoredCommandAllowed || ActionSynth.authoredCommandAllowed(obj.id, c.form);
         }).map(function (c) {
             return { objectId: obj.id, verb: c.form, command: c.form + " " + ref.noun,
                 Enter: c.enter, enter: c.enter, label: c.label, confidence: 0.5, source: "user-suggestion",
@@ -118,7 +118,7 @@ var LearnedWords = {
         });
     },
     commandCurrent: function (command) {
-        if (ActionSynth.edibleCommandAllowed && !ActionSynth.edibleCommandAllowed(command.objectId, command.verb)) return false;
+        if (ActionSynth.authoredCommandAllowed && !ActionSynth.authoredCommandAllowed(command.objectId, command.verb)) return false;
         var scope = command.learnedWordScope;
         if (!scope || scope.key !== LearnedWords.identity() || scope.generation !== LearnedWords.generation()) return false;
         return LearnedWords.candidates(command.objectId).some(function (c) {
@@ -150,7 +150,7 @@ var LearnedWords = {
             });
         }
         return Array.from(new Set(forms)).filter(function (verb) {
-            return !ActionSynth.edibleCommandAllowed || ActionSynth.edibleCommandAllowed(obj.id,verb,context);
+            return !ActionSynth.authoredCommandAllowed || ActionSynth.authoredCommandAllowed(obj.id,verb,context);
         });
     },
     observeSubmit: function (event) {

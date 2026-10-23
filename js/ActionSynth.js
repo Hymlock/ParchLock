@@ -66,6 +66,15 @@ var ActionSynth = {
     },
 
     formsForAttribute: (key, objectId, context) => {
+        if (key === "container") {
+            var containerForms = null;
+            if (typeof AttributeSchema !== "undefined" && AttributeSchema.containerForms) {
+                containerForms = AttributeSchema.containerForms(AttributeSchema._getMem(), objectId, context);
+            }
+            return (containerForms === null ? ActionSynth.rules.container : containerForms).filter(function (verb) {
+                return ActionSynth.authoredCommandAllowed(objectId, verb, context);
+            });
+        }
         if (key === "switchable") {
             var policy = ActionSynth.activationFormPolicy(objectId, context);
             if (policy !== null) return policy;
@@ -81,16 +90,28 @@ var ActionSynth = {
         var forms = AttributeSchema.edibleForms(AttributeSchema._getMem(), objectId, context);
         return forms && forms.every(ActionSynth.literalAvailable) ? forms : forms === null ? null : [];
     },
-    // Authored food availability overrides only Eat/Drink for those owners.
+    // Semantic owner policy and measured state restrict only their own forms.
     // Evidence and saved user choices remain recorded; manual typing is untouched.
-    edibleCommandAllowed: (objectId, verb, context) => {
-        if (verb !== "eat" && verb !== "drink") return true;
+    authoredCommandAllowed: (objectId, verb, context) => {
+        if (["eat", "drink", "search", "empty", "open", "close"].indexOf(verb) < 0) return true;
         if (!context) {
             var payload = typeof WorldModel !== "undefined" && WorldModel.lastPayload;
             context = payload && (payload.inventory || []).some(function (o) { return o && o.id === objectId; }) ? "inventory" : "room";
         }
-        var policy = ActionSynth.edibleFormPolicy(objectId, context);
-        return policy === null || policy.indexOf(verb) >= 0;
+        if (verb === "eat" || verb === "drink") {
+            var policy = ActionSynth.edibleFormPolicy(objectId, context);
+            return policy === null || policy.indexOf(verb) >= 0;
+        }
+        if (typeof AttributeSchema !== "undefined") {
+            var mem = AttributeSchema._getMem && AttributeSchema._getMem();
+            var forms = AttributeSchema.containerForms && AttributeSchema.containerForms(mem, objectId, context);
+            if (forms != null && forms.indexOf(verb) < 0) return false;
+            if ((verb === "open" || verb === "close") && AttributeSchema.containerOpenState) {
+                var open = AttributeSchema.containerOpenState(mem, objectId);
+                if (open !== null) return verb === "open" ? !open : open;
+            }
+        }
+        return true;
     },
     nestedEdibleForms: (objectId, context) => {
         return ActionSynth.edibleFormPolicy(objectId, context) || [];
@@ -374,7 +395,7 @@ var ActionSynth = {
         if (typeof LearnedWords !== "undefined") LearnedWords.commands(obj).forEach(function (c) {
             if (!result.some(function (existing) { return existing.command === c.command; })) result.push(c);
         });
-        return result.filter(function (entry) { return ActionSynth.edibleCommandAllowed(obj.id, entry.verb, context); });
+        return result.filter(function (entry) { return ActionSynth.authoredCommandAllowed(obj.id, entry.verb, context); });
     },
 
     // D201: objects whose printable identity was recovered from just-printed

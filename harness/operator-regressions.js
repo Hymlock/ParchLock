@@ -25,8 +25,12 @@ async function open(b, story, seeded) {
     const mb = await p.evaluate(() => { WorldModel.tick(); const o = (Actionable.payloadPool() || []).find(x => /mailbox/i.test(x.name || '')); if (!o) return null; const a = o.attrs || o.attributes || {};
       let cmds = []; try { cmds = Actionable.resolveObjectCommands(o.id, 'object').map(c => c.command); } catch (e) {} return { container: a.container, cmds }; });
     check('zork1 mailbox is a container', !!(mb && mb.container), mb);
-    check('zork1 mailbox offers open and close', !!(mb && mb.cmds.includes('open mailbox') && mb.cmds.includes('close mailbox')), mb);
     await p.cmd('open mailbox'); let m = await p.marks();
+    const opened = await p.evaluate(() => { WorldModel.tick(); const o = (Actionable.payloadPool() || []).find(x => /mailbox/i.test(x.name || '')); if (!o) return null;
+      return { container: !!(o.attrs || o.attributes || {}).container, cmds: Actionable.resolveObjectCommands(o.id, 'object').map(c => c.command) }; });
+    check('zork1 mailbox offers Open when closed and Close after native opening', !!(mb && opened && opened.container &&
+      mb.cmds.includes('open mailbox') && !mb.cmds.includes('close mailbox') &&
+      opened.cmds.includes('close mailbox') && !opened.cmds.includes('open mailbox')), { closed: mb, opened });
     check('zork1 leaflet underlined after opening mailbox', m.some(x => /leaflet/.test(x)), m);
     for (const c of ['north', 'east', 'open window', 'enter window']) await p.cmd(c);
     await p.cmd('look'); m = await p.marks();

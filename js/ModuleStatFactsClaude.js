@@ -114,7 +114,10 @@ var ModuleStatFactsClaude = {
     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
         // Native held radio/headphones TURN ON/OFF; raw ONBIT24 owns radio state only.
         "attributeObjects": { "switchable": [36, 48] },
-        "capabilityForms": { "switchable": ["turn on", "turn off"] },
+        // Radio 48 carries CONTBIT 23 + OPENBIT 15 only to hold its hidden dial 18 (way.zil:2815/2950). Native, held
+        // (claude + codex blind, agreed #4533): EMPTY refused, OPEN/CLOSE "non-opening models", SEARCH/LOOK IN nothing,
+        // no state change. Structural facts stay; no container-derived action is offered for it while held.
+        "capabilityForms": { "switchable": ["turn on", "turn off"], "container": [{ "objectId": 48, "scope": "held", "forms": [] }] },
         "activationState": { "onObjects": [48] },
         // Worn state 20: Grok4114/4115 proposal, independently native-qualified by Codex October20; see recovered-wear review.
         "wornAttribute": 20,

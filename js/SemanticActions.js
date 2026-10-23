@@ -393,7 +393,7 @@ var SemanticActions = {
         // absent from the result -- never a speculative guess.
 
         return order.map(function (v) { return byVerb[v]; }).filter(function (entry) {
-            return !ActionSynth.edibleCommandAllowed || ActionSynth.edibleCommandAllowed(obj.id,entry.verb,context);
+            return !ActionSynth.authoredCommandAllowed || ActionSynth.authoredCommandAllowed(obj.id,entry.verb,context);
         });
     },
 

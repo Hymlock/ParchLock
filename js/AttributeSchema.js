@@ -406,6 +406,62 @@ var AttributeSchema = {
         } catch (eActivationForms) { return owned ? [] : null; }
     },
 
+    // State restricts existing commands only when both meanings have a
+    // positive owner. A legacy profile guess is never an open-state proof.
+    containerOpenState: function (mem, objectId) {
+        try {
+            if (!mem || !Number.isInteger(objectId)) return null;
+            var h = ZRamReader.header(mem), count = ZRamReader.objectCount(mem, h);
+            if (!h || objectId < 2 || objectId > count) return null;
+            var declared = ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem);
+            var owns = function (flag) {
+                return !!(declared && declared.bits && Number.isInteger(declared.bits[flag])) ||
+                    AttributeSchema.measuredFlagOwner(mem, flag, objectId);
+            };
+            if (!owns("container") || !owns("open")) return null;
+            var container = AttributeSchema.bitFor("container", mem), open = AttributeSchema.bitFor("open", mem);
+            var limit = h.version <= 3 ? 32 : 48;
+            if (!Number.isInteger(container) || !Number.isInteger(open) || container < 0 || open < 0 ||
+                container >= limit || open >= limit) return null;
+            var raw = ZRamReader.objectLinks(mem, objectId);
+            return raw && ZRamReader.attr(raw, container) ? !!ZRamReader.attr(raw, open) : null;
+        } catch (eContainerState) { return null; }
+    },
+
+    // Authored semantic forms do not replace structural containment/state.
+    containerForms: function (mem, objectId, context) {
+        var owned = false;
+        try {
+            var fact = ZRamReader.executableLayoutFacts(mem);
+            if (!fact || !fact.capabilityForms || !Object.prototype.hasOwnProperty.call(fact.capabilityForms, "container")) return null;
+            var rules = fact.capabilityForms.container;
+            if (!Array.isArray(rules)) return null;
+            var selected = rules.find(function (rule) { return rule && rule.objectId === objectId; });
+            if (!selected) return null;
+            owned = true;
+            var h = ZRamReader.header(mem), count = ZRamReader.objectCount(mem, h);
+            var family = AttributeSchema._familyOf(mem), seen = {};
+            if (!h || !family || family.classification !== "confirmed-zil-family" || family.evidence !== "validated" ||
+                !AttributeSchema.measuredFlagOwner(mem, "container", objectId) || !rules.every(function (rule) {
+                    if (!rule || typeof rule !== "object" || Array.isArray(rule) || Object.keys(rule).length !== 3 ||
+                        !Object.prototype.hasOwnProperty.call(rule, "objectId") || !Object.prototype.hasOwnProperty.call(rule, "scope") ||
+                        !Object.prototype.hasOwnProperty.call(rule, "forms") || !Number.isInteger(rule.objectId) ||
+                        rule.objectId < 2 || rule.objectId > count || seen[rule.objectId] || rule.scope !== "held" || !Array.isArray(rule.forms)) return false;
+                    seen[rule.objectId] = true;
+                    return rule.forms.every(function (form, index) {
+                        return ["search", "empty", "open", "close"].indexOf(form) >= 0 && rule.forms.indexOf(form) === index &&
+                            family.templates.some(function (t) { return t.verb === form && t.objectCount === 1 &&
+                                (!t.prepositions || t.prepositions.length === 0); });
+                    });
+                })) return [];
+            var raw = ZRamReader.objectLinks(mem, objectId), bit = AttributeSchema.bitFor("container", mem);
+            if (!raw || !Number.isInteger(bit) || !ZRamReader.attr(raw, bit)) return [];
+            var player = ZRamReader.resolvePlayer(mem).id;
+            if (context !== "inventory" || !Number.isInteger(player) || player < 2 || raw.parent !== player) return null;
+            return selected.forms.slice();
+        } catch (eContainerForms) { return owned ? [] : null; }
+    },
+
     // Authored owner-local food actions. Capability and current availability
     // are distinct: an empty bottle or a consumed wrapper keeps its identity.
     // null = no authored owner policy; [] = owned but unavailable/invalid.
