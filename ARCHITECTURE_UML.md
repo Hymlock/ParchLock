@@ -4291,3 +4291,10 @@ Companion: [D230](PRODUCTION_PLAN.md#pl-d230). Runtime: Actionable.moreDictionar
 
 - More suggestions are vocabulary, not capability. A dictionary verb becomes "<verb> <object>" only if it starts with a
   letter and, under validated ZIL grammar, has an object-taking template. Everything else about vocabulary is unchanged.
+
+<a id="ar-ch88"></a>
+## 88. Authored unlock tool domain (D231)
+
+Companion: [D231](PRODUCTION_PLAN.md#pl-d231). Runtime: AttributeSchema.unlockToolAllowed, Actionable instrumental
+launcher. The tool domain is per exact digest and only narrows the generic launcher; it never restricts targets or
+promises success.

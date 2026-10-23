@@ -9313,6 +9313,27 @@ suggestions by this UI policy; the census inspects dictionary words only and doe
 
 **Open:** Inform global resolver cold-decodes grammar about 6 times per call (pre-existing, separate perf item).
 
+<a id="pl-d231"></a>
+## D231 "Unlock with..." is offered only on a title's authored unlock tools
+
+**Lifecycle:** codex implemented (e239420, Seat codex); blind dual investigation (claude
+zil-titles/unlock-with-claude-SEALED.md, codex unlock-with-codex-SEALED.md), compare/proposals R1-R3 (claude) and R4
+(codex), carried-ancestry clarification (claude #4592). Gate: immutable 309x2, 1 paired FLAKY, 0 unresolved. Phone PASS
+2026-10-23 (r3-claude/phone-unlock/phone-result.json): held master key offers it; held assignment and Chinese food in the
+held carton do not.
+
+**Problem.** The D147 instrumental launcher offered "Unlock with..." on every carried item whenever "unlock" is a
+dictionary word (Lurking: food, paper, crowbar).
+
+**Contract.** `capabilityForms.unlockTools {scope:"held", objectIds:[...]}` (exact digest) is the complete tool domain
+for the generic launcher. `AttributeSchema.unlockToolAllowed` returns false only for a carried object (bounded,
+cycle-safe parent chain to the measured player) outside the list; null (unchanged behaviour) for unknown/malformed/
+non-carried. Targets, learned/resolved unlock commands and typing are untouched. Lurking: MASTER-KEY 95 is the only tool
+any UNLOCK handler accepts (whole-module search; native roof 163 and padlock 135 unlock with 95, crowbar refused).
+
+**Open:** Unlock target list cannot include objects in scope via room local globals (hatch/padlock) - separate
+local-scope defect under investigation. No door/locked attributeMap was added.
+
 ## Backlog (low priority, research only): Glulx cold decoding
 
 **October 20 continuation:** the operator reaffirmed full ZIL flag decoding before regular Inform and Glulx work, and authorized Codex to recover all seats' work and integrate held files. R3.1 (`work/investigations/2026-10-20-plan-r3-zil-first.md`) governs: the 21-column completion table is only a subtotal, not the full key universe. The full-profile ledger's N? and UD entries are not absence verdicts. Retain player/world/status, command consumers, classifier gaps and per-title native checks from the full-decode doccheck. Current takeover checkpoint: `work/mapping-research/items-codex/resume-20261020/checkpoint.md`.
