@@ -2355,6 +2355,61 @@ var ZRamReader = {
     // means "currently equipped by whatever it's parented under," never a
     // loose room object, regardless of whether that wrapper happened to
     // read as animate this session.
+    // D232: room-visible ZIL local globals and their parser-reachable contents.
+    // Roots: ids in the room's measured GLOBAL property whose parent is the
+    // measured LOCAL-GLOBALS holder, not INVISIBLE (parser THIS-IT?), and only
+    // while the room's measured light bit is set (positive-only; unset is not
+    // a dark verdict, it just adds nothing). Contents follow parser
+    // SEARCH-CONTENTS?: recurse into a SURFACE, or a SEARCHBIT object that is OPEN or
+    // TRANSBIT (when measured); INVISIBLE contents are skipped. Separate from canSeeInside on purpose.
+    localScopeObjects: (mem, roomId, playerId) => {
+        var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest
+            ? ModuleLibrary.currentExecutableDigest() : null;
+        var fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
+        var ls = fact && fact.localScope;
+        if (!ls || ZRamReader.executableLayoutFacts(mem) !== fact) return [];
+        var bits = ["roomLitAttribute", "invisible", "searchBit", "surfaceBit", "openBit"];
+        if (!(ls.width === 1 || ls.width === 2) || !Number.isInteger(ls.property) || !Number.isInteger(ls.holder) ||
+            !bits.every(function (k) { return Number.isInteger(ls[k]) && ls[k] >= 0 && ls[k] < 48; })) return [];
+        var h = ZRamReader.header(mem), first = h.objTable + h.defaultsWords * 2;
+        var count = (ZRamReader.u16(mem, first + (h.version <= 3 ? 7 : 12)) - first) / h.entrySize;
+        if (!Number.isInteger(count) || ls.holder < 1 || ls.holder > count || roomId < 1 || roomId > count) return [];
+        var room = ZRamReader.objectLinks(mem, roomId);
+        if (!room || !ZRamReader.attr(room, ls.roomLitAttribute)) return [];
+        var prop = (ZRamReader.listProps(mem, roomId) || []).find(function (q) { return q.num === ls.property; });
+        if (!prop || prop.sz % ls.width) return [];
+        var out = [], seen = {};
+        function add(id, parentId) {
+            if (!Number.isInteger(id) || id < 1 || id > count || seen[id] || (playerId && id === Number(playerId))) return null;
+            seen[id] = 1;
+            var raw = ZRamReader.objectLinks(mem, id), name = ZRamReader.shortName(mem, id);
+            if (!raw || ZRamReader.attr(raw, ls.invisible) || !name || name.charAt(0) === "(") return null;
+            out.push({ id: id, name: name, parentId: parentId, attrs: ZRamReader.attrsFromObject(mem, id),
+                aliases: ZRamReader.parserWordsAny(mem, id), confidence: 0.85, discovered: true, localGlobal: true });
+            return raw;
+        }
+        function contents(id, raw, d) {
+            if (d > count) return;
+            var surface = ZRamReader.attr(raw, ls.surfaceBit);
+            var searchOpen = ZRamReader.attr(raw, ls.searchBit) && (ZRamReader.attr(raw, ls.openBit) ||
+                (Number.isInteger(ls.transBit) && ZRamReader.attr(raw, ls.transBit)));
+            if (!surface && !searchOpen) return;
+            ZRamReader.children(mem, id).forEach(function (cid) {
+                var craw = add(cid, id);
+                if (craw) contents(cid, craw, d + 1);
+            });
+        }
+        for (var i = 0; i < prop.sz; i += ls.width) {
+            var id = ls.width === 2 ? ZRamReader.u16(mem, prop.dataAddr + i) : ZRamReader.u8(mem, prop.dataAddr + i);
+            if (!id) continue;
+            var links = ZRamReader.objectLinks(mem, id);
+            if (!links || links.parent !== ls.holder) continue;
+            var raw = add(id, roomId);
+            if (raw) contents(id, raw, 0);
+        }
+        return out;
+    },
+
     scopeObjects: (mem, roomId, opts) => {
         opts = opts || {};
         var depth = typeof opts.depth === "number" ? opts.depth : 2;
@@ -2421,6 +2476,15 @@ var ZRamReader = {
             });
         }
         walk(roomId, depth, false);
+        // D232: ZIL local globals (doors, hatches, scenery) named by the room's
+        // GLOBAL property. Exact-digest localScope fact only; unknown = nothing added.
+        try {
+            ZRamReader.localScopeObjects(mem, roomId, playerId).forEach(function (o) {
+                if (seen[o.id]) return;
+                seen[o.id] = 1;
+                out.push(o);
+            });
+        } catch (eLocal) {}
         // D184: attached rather than returned, so every existing caller
         // keeps receiving exactly the array it always did.
         try { Object.defineProperty(out, "unnamedCandidates", { value: candidates, enumerable: false }); } catch (eC) {}

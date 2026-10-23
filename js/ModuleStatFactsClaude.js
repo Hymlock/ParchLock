@@ -753,6 +753,12 @@ var ModuleStatFactsClaude = {
         // HAND (cs.zil:5582), no room carries PERSON, so ZRamReader.isPlausibleMapRoom is unaffected.
         // on 15 = ONBIT state (codex #4345/#4347: flashlight single player-switchable item; rooms = lit state, global waxer always on).
         "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31, "on": 15 },
+        // D232 local globals (claude census + codex #4618/#4621/#4632, grok2 #4637): room GLOBAL property 16 (byte ids),
+        // holder LOCAL-GLOBALS 59; native: EXAMINE ROOF DOOR succeeds from TopFloor 195 (prop16 [163]), refused from
+        // ComputerRoom 176; Tomb 9 padlock. Room ONBIT 15 positive-only (pzlurking trace TRUE 176/137/33, FALSE + pitch-black
+        // reply 140). INVISIBLE 20 (rod 231, examine refused), SEARCHBIT 10 (carton 58 look-in), SURFACEBIT 8, OPENBIT 13.
+        // TRANSBIT 5 (grok2 #4642: microwave 86 and smashed cabinet 88 look-through; refrigerator and assignment refused).
+        "localScope": { "property": 16, "width": 1, "holder": 59, "roomLitAttribute": 15, "invisible": 20, "searchBit": 10, "surfaceBit": 8, "openBit": 13, "transBit": 5 },
         // WEARBIT 3 = worn state (codex #4341: gloves 203 and boots 104 natively; crowbar refused).
         "wornAttribute": 3,
         // Native i (take all, i; 2026-10-16-hidden-bit-finder.json) tests bit18 TRUE on the pc's mouse 199 and HELP key 107
