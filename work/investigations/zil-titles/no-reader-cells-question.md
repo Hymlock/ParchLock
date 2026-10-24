@@ -14,3 +14,12 @@ claude leans A. Operator constraint: do not write off anything that is actually 
 
 Each seat: attack the claim (find a reader the grep missed, including read-aloud, article/pronoun or label code, and
 the Inform paths that ZIL could share), and say which option and why. Decision by group consensus; record here.
+
+## Decision (group consensus 2026-10-24): A, unanimous (claude, codex #5168, grok1 #5169)
+- New ledger status L:NC = "no current semantic reader". NOT counted as complete, NEVER L:NA (the game does have the
+  attribute). Not probed now. Reopened as soon as a real semantic consumer is added.
+- Precise wording (codex): generic attr carriers exist (Actionable.js:2252-2254 command-cache signature, the AttributeSchema
+  PROFILE/map export), and ZRamReader.js:390 checks only that the Inform name table contains "visited". None of these reads
+  these keys for a UI/action meaning.
+- visited shares TOUCHBIT with moved: reuse moved's measured provenance if a visited reader appears.
+- The 41 cells stay inside unfinished full-ZIL scope.
