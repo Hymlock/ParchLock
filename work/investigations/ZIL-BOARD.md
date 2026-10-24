@@ -16,13 +16,11 @@ Next ledger goal: settle U cells that change the radial first (below), then invi
 - grok2: evidence batches + ledger bulk work (N? done -> 295 NA/59 U); doors parked except queued.
 Every evidence packet: digest, 2 native positives + negative (or single owner + whole-source), ordinary commands only.
 
-## In flight (standing lanes - do not wait for replies, send packets as done)
-- claude: r23 open in working tree (Suspect enterable 28, Stationfall supporter 17 so far); Witness sit-on form proposal; reviews.
-- codex: OUT until 6:03 (operator). Moonmist R3 code is in the working tree under codex claim (js/ExitCalibrator.js, harness/d214-room-door-alias.js); claude snapshotted it (moonmist-r3-snapshot.diff) for audit + gate, no edits. Infidel door second positive pending.
-- grok1: PAUSED until 18:00 ET (operator). Released all PARKED rows (grok1/PARKED.md, files kept). Unvetted route drafts in grok1/routes/ (Moonmist red walk, Enchanter gate negative).
-  Planetfall 9, Spellbreaker 15, Starcross 25, Stationfall 13, Suspect 7, Wishbringer 23, Witness 6); then ENTER-working VEHBIT titles.
-- grok2: OUT until 5:25 (operator). Climb lane TAKEN OVER by grok1 after transparent (b): Zork2 23, Zork3 24, Enchanter 26, Sorcerer 8, Planetfall 29, Starcross 22, Suspended 27, Deadline 15, + Infidel 16.
-- Operator ruling: fatal climbs ARE offered (intentional game actions). Infidel CLIMBBIT 16 joins the climb lane.
+## In flight (all 4 seats back, 2026-10-24 evening)
+- claude: integrate (r28 gate running: enter-form code + Moonmist transparent; r29 staged: Planetfall transparent); reviews.
+- codex: (1) confirm Moonmist R3 snapshot -> commit; (2) BLIND locked investigation (#5100).
+- grok1: Witness enter-form checks (11-carrier sit-on sweep + get out of lounge) -> Witness enterForms fact; then HHGG pilot seat, Suspended.
+- grok2: Inform per-title bit checks for the 17 release games without name tables (offline); blind locked half if codex has not started it.
 
 ## Radial families: status
 | family (radial) | done | remaining |
