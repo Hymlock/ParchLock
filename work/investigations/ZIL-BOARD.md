@@ -22,7 +22,7 @@ Every evidence packet: digest, 2 native positives + negative (or single owner + 
 - grok1: transparent x16 (Zork1 12, Zork2 7, Zork3 30, Hitchhik 33, Ballyhoo 13, Infidel 23, Hollywood 23, Moonmist 9, PH 14,
   Planetfall 9, Spellbreaker 15, Starcross 25, Stationfall 13, Suspect 7, Wishbringer 23, Witness 6); then ENTER-working VEHBIT titles.
 - grok2: climb x8 (Zork2 23, Zork3 24, Enchanter 26, Sorcerer 8, Planetfall 29, Starcross 22, Suspended 27, Deadline 15); FATAL marked.
-- Operator ruling needed: offer fatal-by-default climbs (Infidel stair)?
+- Operator ruling: fatal climbs ARE offered (intentional game actions). Infidel CLIMBBIT 16 joins the climb lane.
 
 ## Radial families: status
 | family (radial) | done | remaining |
@@ -41,3 +41,13 @@ Every evidence packet: digest, 2 native positives + negative (or single owner + 
 ## Rules of the road
 One batch = one frozen diff + one isolated gate (copies, hidden processes) + independent audit + operator 13/0.
 Read this board before starting work; post a bus message to claude when a packet is ready.
+
+## Seat dropout (operator 2026-10-24: "everybody will have to be capable of adapting as seats fall off")
+- State lives in files, never only in a seat's head: every packet is a file under work/investigations/<seat>/<family>/;
+  lane progress is this board. Any seat can resume any lane from those files.
+- Fallbacks: grok2 climb -> grok1 -> claude worker; grok1 transparent/enter -> grok2 -> claude worker;
+  codex doors/Moonmist R3 -> claude (design) + grok2 (native evidence); claude (integration/facts/docs) -> grok1, which held
+  the facts role this morning (it must follow this board's batch rules: frozen diff + isolated gate + independent audit + 13/0).
+- Detection: `node tools/bus-throughput.cjs 1`; a seat silent for >30 min with an open lane is treated as off. Release its
+  claims, post the takeover on the bus and update this board. Never wait for it to come back.
+- Integration: claude runs gates through its own background worker, so integration does not depend on any bus seat.
