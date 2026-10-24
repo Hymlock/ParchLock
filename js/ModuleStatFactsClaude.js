@@ -95,7 +95,8 @@ var ModuleStatFactsClaude = {
 // scenery 9 = NDESCBIT (grok1 2026-10-24 user scenery ruling 11:45; g1-batch look + test_attr/print_obj trace, grok1/batch/cache-scenery4|5 judge-scenery.json): pos ledge 27, coffer 69 (look omits, pc 42969); neg Crulley 8, pile of clothes 125 (listed, same pc). Listing routine: historicalsource f3db372 verbs.zil:3056 DESCRIBABLE?.
         // enterable 28 = source VEHBIT exact; native (grok1 #4999 grok1/enter/plundered.json): carriers 213 and 93 ENTER moves the player inside, non-carrier refuses.
         // transparent 14 = source TRANSBIT exact; native (grok1 #5073 grok1/transp/plundered.json): closed fence 111 LOOK IN shows the cage contents, closed leather bottle 121 gives its contents reply; T read at pc 29297; closed coffer 69 T=0 (flag-level negative, the visible reply auto-opens).
-        "attributeMap": { "open": 16, "isOpen": 16, "animate": 31, "talkable": 31, "wearable": 21, "container": 24, "supporter": 18, "door": 26, "scenery": 9, "enterable": 28, "transparent": 14 },
+        // locked 10 = LOCKEDBIT exact; native (grok1 #5092 grok1/locked/plunderedhearts-locked.json): coffer 69 and gate 39 read 10=1 ("It's quite locked."); trapdoor reads 0.
+        "attributeMap": { "open": 16, "isOpen": 16, "animate": 31, "talkable": 31, "wearable": 21, "container": 24, "supporter": 18, "door": 26, "scenery": 9, "enterable": 28, "transparent": 14, "locked": 10 },
         "wornAttribute": 22,
         // Native i (walkthrough step 119, 2026-10-16-zil-inv-hidden-ops.json) tests bit9 TRUE on gunpowder 144 in the open
         // powder horn and laudanum 102 in the transparent bottle, omitting both; FALSE on 15 printed held items. Source
@@ -185,7 +186,8 @@ var ModuleStatFactsClaude = {
         // door 27 = source DOORBIT exact; native (codex door-ballyhoo-native.json + negative): trailer door 44 and cage door 164 toggle 15; pole refuses.
         // scenery 6 = NDESCBIT (grok1 2026-10-24, user ruling 11:45 ET): native look in Jericho, object directly in room with NDESCBIT set, look omits it, trace shows the listing routine (historicalsource 9f779e8 verbs.zil:3084 PRINT-CONTENTS) testing NDESCBIT on that object at pc 46920/46913 during that look, examine works. Positives 22:button, 168:crowd; negative 49:barred passage, 92:turnstile, 208:gorilla suit (listed, bit clear, same pc). work/investigations/grok1/batch/cache-scenery3 run-ballyhoo.json, judge-scenery.json. Take unaffected (D214 TAKEBIT owns takeable).
         // enterable 30 = source VEHBIT exact 5/5; native (grok1 #5030 grok1/enter/ballyhoo.json): ENTER NET -> parent 3, ENTER SOFA -> 20, ENTER LONG LINE -> 80; ENTER CHANDELIER refused.
-        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21, "on": 24, "door": 27, "scenery": 6, "enterable": 30 },
+        // locked 10 = LOCKEDBIT exact; native (grok1 #5096 grok1/locked/ballyhoo-locked.json): compartment 213 and office door 100 read 10=1 ("The office door is locked."). No room carries 10 (low risk, no negative).
+        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21, "on": 24, "door": 27, "scenery": 6, "enterable": 30, "locked": 10 },
         // Native i (walkthrough step 90) tests bit6 TRUE on pink dot 231 / blue dot 71 inside the open ticket 122 and
         // omits them; tests it FALSE on bucket 65, meat 102, bullwhip 16, ticket 122 and prints them. Source NDESCBIT 6
         // exact (114/114).
@@ -223,7 +225,10 @@ var ModuleStatFactsClaude = {
         "capabilityForms": { "switchable": ["turn on", "turn off"] },
         "activationState": { "onObjects": [110] },
         // wearable 20 = WEARBIT exact; native (grok1 #5090 grok1/open/lgop-wear.json): overalls 134 and white suit 170 read 20=1 (worn 21 toggles separately); stool/flashlight read 0.
-        "attributeMap": { "open": 15, "isOpen": 15, "supporter": 17, "animate": 31, "enterable": 29, "container": 24, "door": 26, "on": 30, "wearable": 20 }
+        // wornAttribute 21 = worn state (grok1 #5090 grok1/open/lgop-wear.json): WEAR WHITE SUIT sets 21, TAKE OFF clears it; WEARBIT 20 never changes (audit r26).
+        "wornAttribute": 21,
+        // locked 9 = LOCKEDBIT exact; native (grok1 #5096 grok1/locked/lgop-locked.json): back door 155 and igloo door 59 read 9=1 ("It's locked. Very locked."); unlocked cabin door 71 reads 0. No room carries 9.
+        "attributeMap": { "open": 15, "isOpen": 15, "supporter": 17, "animate": 31, "enterable": 29, "container": 24, "door": 26, "on": 30, "wearable": 20, "locked": 9 }
     },
     // Spellbreaker (ZIL): Q8 player root = constant PLAYER object 52 (historicalsource/spellbreaker 6f83ba4 globals.zil 324 OBJECT PLAYER
     // DESC "it"). No PLAYER global; WINNER G197 is mutable (globals.zil 923/928 BELBOZ, verbs.zil 334/359 PRSO). Native TAKE puts the
@@ -459,7 +464,8 @@ var ModuleStatFactsClaude = {
         // enterable 29 = source VEHBIT exact; native (grok1 #5001 grok1/enter/stationfall.json): carriers 50 and 90 ENTER moves the player inside, non-carrier refuses.
         // supporter 17 = source SURFACEBIT exact, 2 carriers in source (pedestal, counter); native (grok2 #5008 nq/supporter-Stationfall.json): PUT CHRONOMETER ON PEDESTAL works, ID card refuses; whole-source exception.
         // transparent 13 = source TRANSBIT exact; single closed carrier in source (whole-source exception, claude #5044); native (grok1 transp/stationfall.json): closed cage 9 LOOK IN shows the balloon creature; closed safe 123 refuses.
-        "attributeMap": { "wearable": 20, "animate": 31, "talkable": 31, "light": 24, "container": 25, "open": 15, "isOpen": 15, "scenery": 10, "door": 27, "enterable": 29, "supporter": 17, "transparent": 13 },
+        // locked 11 = LOCKEDBIT exact; native (grok1 #5092 grok1/locked/stationfall-locked.json): safe 123 reads 11=1 ("It's locked."); cage reads 0. One carrier + bit read (low risk: locked only steers Navigator).
+        "attributeMap": { "wearable": 20, "animate": 31, "talkable": 31, "light": 24, "container": 25, "open": 15, "isOpen": 15, "scenery": 10, "door": 27, "enterable": 29, "supporter": 17, "transparent": 13, "locked": 11 },
         "playerGlobal": 183,
         "wornAttribute": 21
     },
@@ -614,7 +620,8 @@ var ModuleStatFactsClaude = {
     // Fail-closed: animate joins openCapability none (actor Open/Close refused).
     "2290bb3440ac66e14d54d41dbde575066ebdbdc42138ec899496e359bc484824": {
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
-        "attributeMap": { "open": 8, "isOpen": 8, "container": 9, "supporter": 16, "animate": 31 },
+        // locked 17 = LOCKED exact; native (grok1 #5096 grok1/locked/witness-locked.json): front door 231 and office back door 213 read 17=1 ("unlock it first"); bedroom door 171 reads 0 and opens. Only the ROOMS container 249 (never a destination) carries 17; no room does.
+        "attributeMap": { "open": 8, "isOpen": 8, "container": 9, "supporter": 16, "animate": 31, "locked": 17 },
         "playerObject": 79
     },
     // Starcross (Infocom v3): animate 11 = VICBIT (grok1 2026-10-17; route agent-tools/g1-routes.json 'scs' = zil-routes starcross with
