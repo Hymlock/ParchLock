@@ -157,7 +157,104 @@ var ExitCalibrator = {
 
     // D214 Z1: parser-linked destinations are hints, including UEXIT: V-WALK
     // may dynamically override a direction before reading its property.
-    _d214ZilExitsFor: function (mem, roomId) {
+    // Room/door aliases are read from compiled exit relationships, never names
+    // or a DOORBIT guess. The index is local to one decode: targets can change.
+    _d214RoomDoorIndex: function (mem, roomId, mapping, stats) {
+        if (stats) stats.indexBuilds = (stats.indexBuilds || 0) + 1;
+        var R = ZRamReader, h = R.header(mem), size = mem && (mem.byteLength || mem.length);
+        if (!h || [3, 4, 5].indexOf(h.version) < 0 || !size) return null;
+        var family = GrammarProvider.decodeD198(mem);
+        if (!family || family.classification !== 'confirmed-zil-family' || family.evidence !== 'validated' ||
+            family.family !== 'infocom-pre-v6-fixed') return null;
+        var payload = typeof WorldModel !== 'undefined' && WorldModel.lastPayload;
+        if (!payload || String(payload.roomId) !== String(roomId)) return null;
+        if (typeof ZRamProvider !== 'undefined' && ZRamProvider.getMem) {
+            var live = ZRamProvider.getMem();
+            // The provider makes fresh DataViews over the same live buffer.
+            if (live !== mem && !(live && live.buffer && mem.buffer && live.buffer === mem.buffer &&
+                live.byteOffset === mem.byteOffset && live.byteLength === mem.byteLength)) return null;
+        }
+        // In this fixed layout the first property pointer is the end of the
+        // contiguous object records. objectCount's heuristic can scan past it.
+        var first = R.objectBase(h, 1), pointerOffset = h.version <= 3 ? 7 : 12;
+        if (!Number.isInteger(first) || first < 0 || first > size - h.entrySize) return null;
+        var firstProps = R.u16(mem, first + pointerOffset), count = (firstProps - first) / h.entrySize;
+        if (!Number.isInteger(count) || count < 2 || count > (h.version <= 3 ? 255 : 65535) ||
+            firstProps >= h.staticMem || h.staticMem > size) return null;
+        var player = payload.playerId || (payload.probe || {}).playerId;
+        if (!Number.isInteger(player) || player < 2 || player > count) return null;
+        var excluded = {}, walked = {}, at = player, reached = false;
+        for (var n = 0; at && n < 16; n++) {
+            if (!Number.isInteger(at) || at < 1 || at > count || walked[at]) return null;
+            walked[at] = true; excluded[at] = true;
+            if (String(at) === String(roomId)) reached = true;
+            at = R.objectLinks(mem, at).parent;
+        }
+        if (at || !reached) return null;
+        excluded[roomId] = true;
+        var directions = {}, byRoom = {}, incoming = {}, v3 = h.version <= 3;
+        mapping.forEach(function (entry) { directions[entry.prop] = true; });
+        function validId(id) { return Number.isInteger(id) && id >= 2 && id <= count; }
+        function boundedProps(ptr) {
+            if (!Number.isInteger(ptr) || ptr < firstProps || ptr >= h.staticMem) return null;
+            var at = ptr + 1 + R.u8(mem, ptr) * 2, previous = v3 ? 32 : 64, result = [];
+            while (at < h.staticMem && result.length < (v3 ? 31 : 63)) {
+                var tag = R.u8(mem, at++);
+                if (!tag) return result;
+                var num = tag & (v3 ? 31 : 63), length;
+                if (!num || num >= previous) return null;
+                previous = num;
+                if (v3) length = (tag >> 5) + 1;
+                else if (tag & 128) {
+                    if (at >= h.staticMem) return null;
+                    length = (R.u8(mem, at++) & 63) || 64;
+                } else length = (tag & 64) ? 2 : 1;
+                if (length > h.staticMem - at) return null;
+                result.push({ num: num, sz: length, dataAddr: at });
+                at += length;
+            }
+            return at < h.staticMem && R.u8(mem, at) === 0 ? result : null;
+        }
+        for (var id = 2; id <= count; id++) {
+            var links = R.objectLinks(mem, id);
+            if (!links || [links.parent, links.sibling, links.child].some(function (x) {
+                return !Number.isInteger(x) || x < 0 || x > count;
+            })) return null;
+            var props = boundedProps(links.props), edges = [];
+            if (!props) return null;
+            for (var j = 0; j < props.length; j++) {
+                if (stats) stats.propertiesExamined = (stats.propertiesExamined || 0) + 1;
+                var p = props[j], a = p.dataAddr;
+                if (!directions[p.num] || !Number.isInteger(a) || a < 0 ||
+                    !Number.isInteger(p.sz) || p.sz > size - a) continue;
+                var kind = p.sz === (v3 ? 1 : 2) ? 'U' : p.sz === (v3 ? 5 : 6) ? 'D' : null;
+                if (!kind) continue;
+                var dest = v3 ? R.u8(mem, a) : R.u16(mem, a), door = null;
+                if (!validId(dest)) continue;
+                if (kind === 'D') {
+                    door = v3 ? R.u8(mem, a + 1) : R.u16(mem, a + 2);
+                    if (!validId(door) || (v3 && R.u8(mem, a + 4) !== 0)) continue;
+                    var packed = R.u16(mem, a + (v3 ? 2 : 4)), stringAt = packed * (v3 ? 2 : 4);
+                    if (packed && (stringAt < h.staticMem || stringAt > size - 2)) continue;
+                }
+                var edge = { from: id, prop: p.num, dest: dest, door: door, kind: kind };
+                edges.push(edge);
+                if (kind === 'U' || door !== dest) (incoming[dest] || (incoming[dest] = [])).push(edge);
+            }
+            byRoom[id] = edges;
+        }
+        return { qualifies: function (dest, prop) {
+            if (!byRoom[dest] || !byRoom[dest].length || !(byRoom[roomId] || []).some(function (e) {
+                return e.prop === prop && e.kind === 'D' && e.dest === dest && e.door === dest;
+            })) return false;
+            return (incoming[dest] || []).some(function (e) {
+                return e.from !== dest && !excluded[e.from] &&
+                    GrammarProvider.d214RoomTarget(mem, roomId, e.from);
+            });
+        } };
+    },
+
+    _d214ZilExitsFor: function (mem, roomId, stats) {
         try {
             if (typeof GrammarProvider === 'undefined' || !GrammarProvider.d214DirectionProperties) return [];
             var mapping = GrammarProvider.d214DirectionProperties(mem);
@@ -170,6 +267,7 @@ var ExitCalibrator = {
             });
             if (conflict) return [];
             var h = ZRamReader.header(mem), v3 = h.version <= 3, props = ZRamReader.listProps(mem, roomId), out = [];
+            var aliasIndex, aliasIndexBuilt = false;
             mapping.forEach(function (entry) {
                 if (table && ExitCalibrator.isBlocked(table, roomId, entry.label)) return;
                 var p = props.find(function (p) { return p.num === entry.prop; });
@@ -183,7 +281,14 @@ var ExitCalibrator = {
                     name = ZRamReader.shortName(mem, dest) || '';
                     if (kind === 'D') {
                         door = v3 ? ZRamReader.u8(mem, p.dataAddr + 1) : ZRamReader.u16(mem, p.dataAddr + 2);
-                        if (!door || door === dest || door > ZRamReader.objectCount(mem, h)) return;
+                        if (!door || door > ZRamReader.objectCount(mem, h)) return;
+                        if (door === dest) {
+                            if (!aliasIndexBuilt) {
+                                aliasIndexBuilt = true;
+                                aliasIndex = ExitCalibrator._d214RoomDoorIndex(mem, roomId, mapping, stats);
+                            }
+                            if (!aliasIndex || !aliasIndex.qualifies(dest, entry.prop)) return;
+                        }
                     }
                 }
                 out.push({ label: entry.label, command: entry.label, prop: entry.prop, targetRoomId: dest, targetRoomName: name,

@@ -9552,4 +9552,18 @@ Zork I CLIMBBIT 24 (tree 241, chimney 234, with mailbox as the negative).
 **Contract.** AttributeSchema.PROFILE climbable: null (no Inform bit is ever guessed). It is in the ZIL fail-closed structural
 set and resolves only from an exact-digest attributeMap.climbable. ActionSynth rules.climbable = ["climb"], it is in
 SEMANTIC_FLAGS, and it is offered only when literalAvailable("climb"). There is no up/down synthesis and no route or map inference.
-Open: operator ruling on offering fatal-by-default climbs (Infidel stair); Infidel is unmapped until then.
+Operator ruling 2026-10-24: "if it is intentional, and it is part of the game, then definitely offer it" - fatal-by-default climbs are offered like any other real game action (Infidel included).
+
+## D240 Room-as-door exits (ZIL): a DEXIT whose door is its own destination
+
+**Lifecycle:** codex isolated the cause in Moonmist: the Great Hall's north/out exits are DEXIT [132,132,...] (door ==
+destination, the ZIL idiom "TO FOYER IF FOYER IS OPEN"), and js/ExitCalibrator.js rejected door===dest, so the hints
+were missing although native travel works. R2 (hand-listed room ids) got an OBJECT as masking. R3 uses a generic rule
+from the game's own exit tables; claude's attack added conditions K1'-K4. Codex implemented it; independent audit ACCEPT
+(audit-moonmist-r3-code.md); isolated 309x2 gate FLAKY-only; map harnesses and operator 13/0.
+**Contract.** In _d214ZilExitsFor, door==dest is allowed only when (i) dest has >=1 incoming witness exit (UEXIT, or a
+DEXIT whose door is not its destination) from a room W that passes GrammarProvider.d214RoomTarget(mem, roomId, W) for
+the room being read, where W is not the dest, roomId, the player, the root or a player ancestor; and (ii) dest has its
+own U/D exit table. No live payload -> fail closed. The witness index is built once per call, only when an equality
+candidate exists, and never cached. Output stays hintOnly (no route until travelled). Census: 18 new hints, all
+Moonmist; physical doors 120/128 never qualify. Harness: harness/d214-room-door-alias.js.
