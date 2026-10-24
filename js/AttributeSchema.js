@@ -87,7 +87,9 @@ var AttributeSchema = {
         female: 28,
         neuter: 29,
         pluralname: 30,
-        takeable: null
+        takeable: null,
+        // D239: ZIL CLIMBBIT. No Inform default bit; only an exact-digest attributeMap.climbable resolves it.
+        climbable: null
     },
 
     confidence: "unverified",
@@ -230,7 +232,7 @@ var AttributeSchema = {
             // animate included: I6 PROFILE bit 0 is not Infocom ACTORBIT (grok1 #3590).
             var zilStructural = {
                 animate: 1, container: 1, openable: 1, open: 1, isOpen: 1, supporter: 1,
-                lockable: 1, locked: 1, door: 1, transparent: 1, enterable: 1
+                lockable: 1, locked: 1, door: 1, transparent: 1, enterable: 1, climbable: 1
             };
             // Operator #3782/#3790: ZIL PROFILE skip only for confirmed-zil-family (D198),
             // not every !isInformCompiled title. Unknown family still fail-closed (null).

@@ -9528,3 +9528,28 @@ verbs apply: the measured player parent decides. Inside the object -> no Enter; 
 dictionary has "get" and "out". Outside -> Enter only (Exit removed). Unknown player/parent or Inform -> both kept.
 SemanticActions verbIntent maps "get out of" to EXIT. Follow-up nit: wrap isInformCompiled in try/catch.
 Not mapped: Deadline (ENTER refused, only SIT ON works), Hitchhiker's/Sorcerer (second carrier unreachable).
+
+## D237 A worn switchable item keeps Turn on / Turn off
+
+**Lifecycle:** the r18 independent audit found the worn-item branch in ActionSynth dropped every verb but Remove, so a worn
+headlamp-type switch lost Turn on/off. Fixed by claude in the r18/r19 batch; gate FLAKY-only.
+**Contract.** The worn branch keeps verbs matching /^(switch|turn) (on|off)$/ in addition to Remove. Nothing else changes.
+
+## D238 Drink owners in titles that also map edible
+
+**Lifecycle:** the drink coexist proposal (drink-coexist-proposal-r1.md, R2 after codex review) went through an independent
+audit ACCEPT. Committed caf5a81 with Zork I water 237 (bottle 236, open 11, held). The isolated 309x2 gate showed 0 diffs.
+**Contract.** When a title maps attributeMap.edible, AttributeSchema.edibleForms returns null for any object that is not in
+attributeObjects.edible (membership first), and objectCapabilityIds accepts allowMapped. When the attribute is not edible,
+ActionSynth adds the owner verbs from edibleFormPolicy for the pressed object id. Rule scope "held" or
+{containerObject, openAttribute, held?}; held:true rejects room context. Harness: harness/zil-drink-mapped.js.
+
+## D239 Climb (bare "climb X", ZIL only)
+
+**Lifecycle:** blind halves came from claude (climb-claude-SEALED.md) and codex. They were compared in climb-compare-proposal-r1.md;
+R2 adopted codex #4975 and was ACCEPTed by codex #4988 and grok2 #4994. The r22 independent audit ACCEPTed it. First fact:
+Zork I CLIMBBIT 24 (tree 241, chimney 234, with mailbox as the negative).
+**Contract.** AttributeSchema.PROFILE climbable: null (no Inform bit is ever guessed). It is in the ZIL fail-closed structural
+set and resolves only from an exact-digest attributeMap.climbable. ActionSynth rules.climbable = ["climb"], it is in
+SEMANTIC_FLAGS, and it is offered only when literalAvailable("climb"). There is no up/down synthesis and no route or map inference.
+Open: operator ruling on offering fatal-by-default climbs (Infidel stair); Infidel is unmapped until then.

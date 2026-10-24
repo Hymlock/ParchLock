@@ -13,6 +13,8 @@ var ActionSynth = {
         supporter: ["search"],
         animate: ["talk to"],
         talkable: ["talk to"],
+        // D239: bare "climb X" only; the game picks the direction (CLIMB OBJECT -> V-CLIMB-FOO).
+        climbable: ["climb"],
         default: ["examine"]
     },
 
@@ -66,6 +68,8 @@ var ActionSynth = {
     },
 
     formsForAttribute: (key, objectId, context) => {
+        // D239: Climb only when the story's dictionary has the verb.
+        if (key === "climbable") return ActionSynth.literalAvailable("climb") ? ["climb"] : [];
         if (key === "container") {
             var containerForms = null;
             if (typeof AttributeSchema !== "undefined" && AttributeSchema.containerForms) {
@@ -246,7 +250,7 @@ var ActionSynth = {
     // This is deliberately conservative rather than clever: the honest position
     // is that we do not yet know these bits for this compiler (D24/D61), and
     // AttrCalibrator restores each one as real evidence arrives.
-    SEMANTIC_FLAGS: ["lockable", "switchable", "edible", "wearable", "enterable", "animate", "talkable"],
+    SEMANTIC_FLAGS: ["lockable", "switchable", "edible", "wearable", "enterable", "animate", "talkable", "climbable"],
 
     trustworthyAttrs: (obj) => {
         var attrs = (obj && obj.attrs) || {};
