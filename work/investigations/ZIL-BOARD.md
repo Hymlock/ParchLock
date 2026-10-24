@@ -65,5 +65,4 @@ Read this board before starting work; post a bus message to claude when a packet
 - work/investigations/inform-bits/SUMMARY.md: all 17 release Inform titles without a name table read wrong PROFILE bits.
   16 fall into 4 layouts (L older library x12, TOY, WIN x2, TH); sutwin has no set bits.
   Visible today: missing Open/Close/Eat/Wear on doors, containers, food and clothing.
-- Fix direction: detect the layout from library-standard objects (compass=concealed, walls=scenery, yourself, lit rooms),
-  not 16 hand maps (no masking). Full procedure: blind halves, compare, proposal, review, implement, audit.
+- CORRECTION: D73 AttrCalibrator already self-corrects these bits during live play; the static read shows only the pre-calibration state. Possible refinement (start-correct layout), parked behind ZIL. Not a broken system.

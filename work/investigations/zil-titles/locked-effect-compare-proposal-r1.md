@@ -35,3 +35,20 @@ composed map payload before/after; negatives: non-DEXIT exit, room-vs-door ident
 unchanged. Harnesses: d214-zil-exits, exit-calibrator, d23-*, d46-room-identity, d214-room-door-alias,
 operator-regressions, three-engine gate.
 Prior-fix guards: D25, D134, D198, D214, D231, D234, D240.
+
+## R2 (claude, adopting codex OBJECT resume/locked-effect-r1-adversarial-review.md)
+P1a'. Trusted read: emit isLocked only when the exact-digest fact maps `locked`, the read uses the CURRENT memory
+      (same executable identity as the hint), doorObjectId is within objectCount, and the version bounds hold. Field
+      shape: isLocked true | false (a live boolean read) | absent (unknown). Also forward doorObjectId through
+      MapTopology:695 (it is dropped today), so a state belongs to an actual door identity.
+P1b'. Freshness (replaces R1 P1b): exit lock state is an observation, not a sticky fact. Each payload that carries the
+      exit REPLACES the state: true sets it; false clears it; absent/unknown CLEARS any earlier lock assertion (unknown
+      must never keep an old true). This clears both isLocked and legacy `locked` in MapTopology and MapIdentity. A change
+      of doorObjectId drops the state.
+P1c'. WorldMap: lock state joins the paint signature (with an early-return fix at WorldMap ~372), so a same-room
+      lock/unlock repaints without a layout move; reverse-twin edge merge must not merge asymmetric lock states.
+P1d'. Validate the real LH DEXIT door reference first: the padlock 135 may control an attached hatch rather than be
+      the DEXIT door object. The fact must follow the actual doorObjectId, not the padlock. Native checks: fresh false,
+      true, unknown, then a restore, all observed through the Navigator Pump before travel.
+P2.   Object status stays an open gap: the radial has no non-command status row (every entry is a command button; there
+      is only a Tools header). A context status outside the command array is a later design.
