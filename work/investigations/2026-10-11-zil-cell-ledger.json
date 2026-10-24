@@ -79,6 +79,10 @@
   "static": {
    "s": "S",
    "r": "grok1 2026-10-24 (operator 11:32 ET: static = no TAKEBIT, tested by take X): static is the complement of source TAKEBIT (bit 17), owned by D214 takeable (GrammarProvider.d214TakeAttribute -> AttributeSchema takeable; Actionable gates take on pa.takeable && !pa.static), so no attributeMap fact (attributeMap cannot express a negated bit). Native take X evidence, test_attr recorded only during the named command, no relocation/forced state (work/investigations/grok1/batch/cache-static/run-zork1.json, judge-static.json): TAKEBIT tested FALSE and refused (no Taken) on 111:wooden door, 181:door, 204:kitchen table; tested TRUE and Taken on 189:clove of garlic, 224:brown sack, 236:glass bottle; 0 contradictions."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Zork2-TheWizardofFrobozz.z3.js": {
@@ -101,6 +105,10 @@
   "animate": {
    "s": "S",
    "r": "SOLO/SELF-AUDIT: ACTORBIT 30 robot 58 / demon 26 TRUE when addressed; teapot 32 / mat 33 FALSE (cannot talk to); source exact 9/9. Gate 0 diffs."
+  },
+  "lightSource": {
+   "s": "O",
+   "r": "grok1 2026-10-17, g1-scan2 (Jericho walkthrough replay, test_attr recorded only during the named command): LIGHTBIT 31 tested TRUE on lamp 76 by 'turn off lamp' @251 and 'turn on lamp' @262 (\"The lamp is now on.\"); 'turn on club' @251 tests wooden club 190:31 FALSE (V-LAMP-ON falls to its BURNBIT branch). Whole RAM scan: lamp 76 is the only bit-31 owner = source LIGHTBIT exact 1/1 (historicalsource/zork2@3da9661 2dungeon.zil:1970), so the single-owner rule applies. Runtime caveat: the wand's FLUORESCE spell FSETs LIGHTBIT+ONBIT on any PRSO (V-ENCHANT, gverbs.zil:593-596, live for ZORK-NUMBER 2), so the original-state owner set can grow during play. Ledger-only (no runtime lightSource consumer), Zork I O-level precedent"
   },
   "identical": {
    "s": "UD",
@@ -157,6 +165,10 @@
   "static": {
    "s": "S",
    "r": "grok1 2026-10-24 (operator 11:32 ET: static = no TAKEBIT, tested by take X): static is the complement of source TAKEBIT (bit 17), owned by D214 takeable (GrammarProvider.d214TakeAttribute -> AttributeSchema takeable; Actionable gates take on pa.takeable && !pa.static), so no attributeMap fact (attributeMap cannot express a negated bit). Native take X evidence, test_attr recorded only during the named command, no relocation/forced state (work/investigations/grok1/batch/cache-static/run-zork2.json, judge-static.json): TAKEBIT tested FALSE and refused (no Taken) on 41:table, 42:metal lid, 206:huge dead dragon, 207:huge red dragon; tested TRUE and Taken on 23:sword, 76:lamp; 0 contradictions."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Zork3-TheDungeonMaster.z3.js": {
@@ -191,6 +203,10 @@
   "animate": {
    "s": "X",
    "r": "SOLO/SELF-AUDIT 2026-10-16: addressed orders do not test ACTORBIT 21 natively (DUNGEON MASTER, WAIT tests bit 11 on the master; OLD MAN, HELLO tests nothing), so the addressed-actor method gives no evidence for this title. Needs a verb whose routine tests 21 (GIVE/ATTACK) at a step with two distinct actors."
+  },
+  "lightSource": {
+   "s": "O",
+   "r": "grok1 2026-10-17, g1-scan2 (Jericho walkthrough replay, test_attr recorded only during the named command): LIGHTBIT is bit 19 (2026-10-11-zil-source-flags.json's bit 6 is FLAMEBIT, mislabeled). 'light lamp' @2 tests lamp 198:19 TRUE x2; bare 'light' @29 (FIND LIGHTBIT GWIM, \"(torch)\") tests torch 41:19 TRUE and viewing table 42, indicator 6, golden amulet 39 FALSE; 'light bread' @6 tests waybread 34:19 FALSE. RAM bit-19 owners among real objects (ids 1-219) = torch 41 and lamp 198 = source LIGHTBIT exact 2/2 (historicalsource/zork3@3ec9ed4: LAMP 3dungeon.zil:98, TORCH 3actions.zil:3878); higher ids are past the object table (garbage reads). There is no live runtime FSET or FCLEAR of LIGHTBIT: LIGHT-INT clears only ONBIT (3actions.zil:117), and the FLUORESCE FSET (gverbs.zil:594) only runs when ZORK-NUMBER is 2 (zork3.zil:5 sets 3). Ledger-only (no runtime lightSource consumer), Zork I O-level precedent"
   },
   "absent": {
    "s": "NA",
@@ -239,6 +255,14 @@
   "static": {
    "s": "S",
    "r": "grok1 2026-10-24 (operator 11:32 ET: static = no TAKEBIT, tested by take X): static is the complement of source TAKEBIT (bit 20), owned by D214 takeable (GrammarProvider.d214TakeAttribute -> AttributeSchema takeable; Actionable gates take on pa.takeable && !pa.static), so no attributeMap fact (attributeMap cannot express a negated bit). Native take X evidence, test_attr recorded only during the named command, no relocation/forced state (work/investigations/grok1/batch/cache-static/run-zork3.json, judge-static.json): TAKEBIT tested FALSE and refused (no Taken) on 32:tree, 116:old man, 132:runes; tested TRUE and Taken on 198:lamp; 0 contradictions."
+  },
+  "transparent": {
+   "s": "NA",
+   "r": "grok1 #5026 transparent 2026-10-24 (Claude #5051 agreed): no closed TRANSBIT container exists in source or object table, so no radial effect. zork3 TRANSBIT only on actors: 3actions.zil:3364 and shadow.zil:195 (ACTORBIT TRANSBIT CONTBIT OPENBIT). Census: Zork3-TheDungeonMaster.z3.js bit 30: 67 \"hooded figure\" bits[10,11,12,21,30]; 222 unnamed (all-high-bits sentinel). No container carrier. Packet work/investigations/grok1/transp/zork3.json"
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Enchanter.z3.js": {
@@ -266,10 +290,6 @@
    "s": "OPEN",
    "r": "OPERATOR DECISION PENDING (2026-10-16): native i tests NDESCBIT 7 TRUE on the egg parts (button 139, crank 136, slide 151, knob 149, handle 148) AND on every spell, omitting all; FALSE on every printed item (2026-10-16-zil-inv-hidden-ops.json @59). A blanket inventoryHiddenAttribute 7 would also hide the spells, contradicting D148 (spells usable from inventory). Options: hide egg parts only (executable-owned exemption for the spell book), or keep both listed."
   },
-  "identical": {
-   "s": "UD",
-   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 33 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
-  },
   "wearable": {
    "s": "UD",
    "r": "not applicable: historicalsource/enchanter@472c3b9 has no live WEARBIT (every use is commented out: globals.zil:16 ;WEARBIT, verbs.zil:596/618/802/1531) and no WORNBIT anywhere (27 .zil files grepped); V-WEAR (verbs.zil:1530) is unconditional \"You can't wear the X.\" and the only object WEAR handler is BED-F (castle.zil:166/174, WEAR = get into bed), so no wear capability or worn state exists (grok1 2026-10-17); in-app device check (grok1 g1-udE.json and claude #4064, untouched boot): 'wear book' -> \"You can't wear the spell book.\" (target-named refusal). No alternative mechanism. Review: claude #4064"
@@ -281,6 +301,10 @@
   "wornItems": {
    "s": "UD",
    "r": "not applicable: historicalsource/enchanter@472c3b9 has no live WEARBIT (every use is commented out: globals.zil:16 ;WEARBIT, verbs.zil:596/618/802/1531) and no WORNBIT anywhere (27 .zil files grepped); V-WEAR (verbs.zil:1530) is unconditional \"You can't wear the X.\" and the only object WEAR handler is BED-F (castle.zil:166/174, WEAR = get into bed), so no wear capability or worn state exists (grok1 2026-10-17); in-app device check (grok1 g1-udE.json and claude #4064, untouched boot): 'wear book' -> \"You can't wear the spell book.\" (target-named refusal). No alternative mechanism. Review: claude #4064"
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 33 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   },
   "absent": {
    "s": "NA",
@@ -341,6 +365,10 @@
   "static": {
    "s": "S",
    "r": "grok1 2026-10-24 (operator 11:32 ET: static = no TAKEBIT, tested by take X): static is the complement of source TAKEBIT (bit 19), owned by D214 takeable (GrammarProvider.d214TakeAttribute -> AttributeSchema takeable; Actionable gates take on pa.takeable && !pa.static), so no attributeMap fact (attributeMap cannot express a negated bit). Native take X evidence, test_attr recorded only during the named command, no relocation/forced state (work/investigations/grok1/batch/cache-static/run-enchanter.json, judge-static.json): TAKEBIT tested FALSE and refused (no Taken) on 85:oven, 239:sign; tested TRUE and Taken on 19:jug; 0 contradictions."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Hitchhik.z5.js": {
@@ -415,6 +443,10 @@
   "worn": {
    "s": "U",
    "r": "grok1/grok2 N? batch 5 2026-10-24: WORNBIT is used (0 carriers, 5 FSET/tests; e.g. earth.zil:295 <NOT <FSET? ,GOWN ,WORNBIT>>>; earth.zil:403 (<AND <FSET? ,GOWN ,WORNBIT>), source hitchhikersguide (grok2/nq/worn-Hitchhik.json). The player can wear things, so worn is not N/A; no measured wornAttribute yet (app worn fallback stays fail-closed). Stays U."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Ballyhoo.z3.js": {
@@ -477,6 +509,10 @@
   "static": {
    "s": "S",
    "r": "grok1 2026-10-24 (operator 11:32 ET: static = no TAKEBIT, tested by take X): static is the complement of source TAKEBIT (bit 22), owned by D214 takeable (GrammarProvider.d214TakeAttribute -> AttributeSchema takeable; Actionable gates take on pa.takeable && !pa.static), so no attributeMap fact (attributeMap cannot express a negated bit). Native take X evidence, test_attr recorded only during the named command, no relocation/forced state (work/investigations/grok1/batch/cache-static/run-ballyhoo.json, judge-static.json): TAKEBIT tested FALSE and refused (no Taken) on 22:button, 49:barred passage, 90:drinking fountain; tested TRUE and Taken on 93:clown mask; 0 contradictions."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Cutthroats.z3.js": {
@@ -547,6 +583,10 @@
   "talkable": {
    "s": "U",
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Deadline.z3.js": {
@@ -665,6 +705,10 @@
   "light": {
    "s": "NA",
    "r": "grok1 2026-10-24 (operator 11:32 ET, user NA standard = source + app refusal): source historicalsource/deadline: ONBIT carried by 0 objects (rooms only), 0 FSET ONBIT writes; no object carries LIGHTBIT (syntax FIND LIGHTBIT matches nothing); V-LAMP-ON refuses. Native app refusal (grok1/batch/cache-light/run-deadline.json, step 7): turn on mystery book / fine wooden cabinets / collection of portraits -> \"You can't turn that on.\"; in-app (grok1/nq/nq-inapp.cjs start-state, all 379 objects room+inventory): attribute-only key, no light verb offered."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Infidel.z3.js": {
@@ -747,6 +791,14 @@
   "worn": {
    "s": "U",
    "r": "grok1/grok2 N? batch 5 2026-10-24: no WORNBIT, but WEARBIT is the worn state: wearing exists (0 carriers, 5 FSET/tests, 3 FCLEAR/reads; e.g. camp.zil:1957 <FSET ,KNAPSACK ,WEARBIT>; camp.zil:1975 (<NOT <FSET? ,KNAPSACK ,WEARBIT>>), source infidel (grok2/nq/worn-Infidel.json). The player can wear things, so worn is not N/A; no measured wornAttribute yet (app worn fallback stays fail-closed). Stays U."
+  },
+  "transparent": {
+   "s": "NA",
+   "r": "grok1 #5026 transparent 2026-10-24 (Claude #5051 agreed): no closed TRANSBIT container exists in source or object table, so no radial effect. infidel: every TRANSBIT object is also OPENBIT (ante.zil:550/560/570 discs, barge.zil:263/305, camp.zil:103, camp.zil:1245 TRUNK, camp.zil:2092 CRATE, ra.zil:256, temple.zil:156/232); most are SURFACEBIT. None starts closed, so none can show contents through a closed lid. Census: Infidel.z3.js bit 23: 13 carriers (granite tables 6/9, crate 23, trunk 39, cot 51, pit 79, knothole 107, mast hole 108, discs 169-171, altar 199, sentinel 249); every one carries the same OPENBIT/CONTBIT/SURFACE set as the trunk [20,25,28]. Packet work/investigations/grok1/transp/infidel.json"
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "HollywoodHijinx.z3.js": {
@@ -817,6 +869,14 @@
   "static": {
    "s": "S",
    "r": "grok1 2026-10-24 (operator 11:32 ET: static = no TAKEBIT, tested by take X): static is the complement of source TAKEBIT (bit 17), owned by D214 takeable (GrammarProvider.d214TakeAttribute -> AttributeSchema takeable; Actionable gates take on pa.takeable && !pa.static), so no attributeMap fact (attributeMap cannot express a negated bit). Native take X evidence, test_attr recorded only during the named command, no relocation/forced state (work/investigations/grok1/batch/cache-static/run-hollywood.json, judge-static.json): TAKEBIT tested FALSE and refused (no Taken) on 14:small pond, 104:orchids, 114:bazooka, 228:doorbell; tested TRUE and Taken on 63:business card, 113:yellowed piece of paper, 181:copy of The Status Line; 0 contradictions."
+  },
+  "transparent": {
+   "s": "NA",
+   "r": "grok1 #5026 transparent 2026-10-24 (Claude #5051 agreed): no closed TRANSBIT container exists in source or object table, so no radial effect. hollywoodhijinx parlor.zil:60 (TAKEBIT TRANSBIT) and second-floor.zil:581 (NDESCBIT TRANSBIT); neither has CONTBIT. Census: HollywoodHijinx.z3.js bit 23: 226 \"slide\" bits[17,23] only. No container. Packet work/investigations/grok1/transp/hollywood.json"
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "LeatherGoddessesofPhobos.z3.js": {
@@ -871,6 +931,10 @@
   "worn": {
    "s": "U",
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (static object carrier; WORNBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Moonmist.z3.js": {
@@ -945,6 +1009,10 @@
   "static": {
    "s": "S",
    "r": "grok1 2026-10-24 (operator 11:32 ET: static = no TAKEBIT, tested by take X): static is the complement of source TAKEBIT (bit 26), owned by D214 takeable (GrammarProvider.d214TakeAttribute -> AttributeSchema takeable; Actionable gates take on pa.takeable && !pa.static), so no attributeMap fact (attributeMap cannot express a negated bit). Native take X evidence, test_attr recorded only during the named command, no relocation/forced state (work/investigations/grok1/batch/cache-static/run-moonmist.json, judge-static.json): TAKEBIT tested FALSE and refused (no Taken) on 21:horn, 91:Bolitho, 178:Tamara; tested TRUE and Taken on 59:your luggage; 0 contradictions."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "PlunderedHearts.z3.js": {
@@ -995,6 +1063,10 @@
   "lockable": {
    "s": "NA",
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/plunderedhearts@f3db372 (12 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 257 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Borderzo.z5.js": {
@@ -1002,13 +1074,13 @@
    "s": "S",
    "r": "D214 GrammarProvider.d214TakeAttribute decodes TAKE grammar FIND bit 42 = source TAKEBIT (exact object set); consumed by AttributeSchema takeable (no attributeMap fact needed)"
   },
-  "identical": {
-   "s": "UD",
-   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 42 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
-  },
   "lightSource": {
    "s": "UD",
    "r": "not applicable: historicalsource/borderzone@5c80126 has no LIGHTBIT anywhere (15 .zil files grepped); TURN ON / LIGHT (syntax.zil:618/317) have no FIND, V-ON (verbs.zil:851) is <CANT-TURN>, and LIT? is commented out (parser.zil:11, every room lit), so no light-source capability bit exists (grok1 2026-10-17); in-app device check (grok1 g1-udB.json and claude #4065, chapter 3 untouched boot): 'turn on revolver' -> \"You can't turn that on.\" (V-ON = CANT-TURN, verbs.zil:851), and 'light match' is a scripted refusal. No alternative mechanism (no light-source object). Review: claude #4064/#4065"
+  },
+  "identical": {
+   "s": "UD",
+   "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 42 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   },
   "absent": {
    "s": "NA",
@@ -1065,6 +1137,10 @@
   "talkable": {
    "s": "U",
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "TheLurkingHorror.z3.js": {
@@ -1143,6 +1219,10 @@
   "worn": {
    "s": "U",
    "r": "grok1/grok2 N? batch 5 2026-10-24: no WORNBIT, but WEARBIT is the worn state: wearing exists (0 carriers, 5 FSET/tests, 3 FCLEAR/reads; e.g. cs.zil:3340 <COND (<FSET? .OBJ ,WEARBIT>; cs.zil:3754 <COND (<FSET? ,GLOVES ,WEARBIT>), source lurkinghorror (grok2/nq/worn-TheLurkingHorror.json). The player can wear things, so worn is not N/A; no measured wornAttribute yet (app worn fallback stays fail-closed). Stays U."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Planetfall.z3.js": {
@@ -1221,6 +1301,10 @@
   "static": {
    "s": "S",
    "r": "grok1 2026-10-24 (operator 11:32 ET: static = no TAKEBIT, tested by take X): static is the complement of source TAKEBIT (bit 25), owned by D214 takeable (GrammarProvider.d214TakeAttribute -> AttributeSchema takeable; Actionable gates take on pa.takeable && !pa.static), so no attributeMap fact (attributeMap cannot express a negated bit). Native take X evidence, test_attr recorded only during the named command, no relocation/forced state (work/investigations/grok1/batch/cache-static/run-planetfall.json, judge-static.json): TAKEBIT tested FALSE and refused (no Taken) on 102:red button, 103:blue button, 145:large desk, 149:small desk, 159:crevice, 162:quantity of protein-rich liquid, 164:dispenser unit; tested TRUE and Taken on 225:ID card; 0 contradictions."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Seastalker.z3.js": {
@@ -1319,6 +1403,10 @@
   "female": {
    "s": "U",
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (static object carrier; FEMALE/FEMALEBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Sorcerer.z3.js": {
@@ -1397,6 +1485,10 @@
   "static": {
    "s": "S",
    "r": "grok1 2026-10-24 (operator 11:32 ET: static = no TAKEBIT, tested by take X): static is the complement of source TAKEBIT (bit 23), owned by D214 takeable (GrammarProvider.d214TakeAttribute -> AttributeSchema takeable; Actionable gates take on pa.takeable && !pa.static), so no attributeMap fact (attributeMap cannot express a negated bit). Native take X evidence, test_attr recorded only during the named command, no relocation/forced state (work/investigations/grok1/batch/cache-static/run-sorcerer.json, judge-static.json): TAKEBIT tested FALSE and refused (no Taken) on 2:purple button, 12:desk drawer, 14:gray button, 30:black button, 144:darkwood desk, 189:white button; tested TRUE and Taken on 11:scribbled note; 0 contradictions."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Spellbreaker.z3.js": {
@@ -1467,6 +1559,10 @@
   "static": {
    "s": "S",
    "r": "grok1 2026-10-24 (operator 11:32 ET: static = no TAKEBIT, tested by take X): static is the complement of source TAKEBIT (bit 24), owned by D214 takeable (GrammarProvider.d214TakeAttribute -> AttributeSchema takeable; Actionable gates take on pa.takeable && !pa.static), so no attributeMap fact (attributeMap cannot express a negated bit). Native take X evidence, test_attr recorded only during the named command, no relocation/forced state (work/investigations/grok1/batch/cache-static/run-spellbrkr.json, judge-static.json): TAKEBIT tested FALSE and refused (no Taken) on 1:Sneffle, 19:Orkan of Thriff, 21:sorcerer, 30:Gzornenplatz; tested TRUE and Taken on 43:chunk of rye bread, 123:smoked fish; 0 contradictions."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Starcross.z3.js": {
@@ -1565,6 +1661,14 @@
   "light": {
    "s": "NA",
    "r": "grok1 2026-10-24 (operator 11:32 ET, user NA standard = source + app refusal): source historicalsource/starcross: ONBIT carried by 0 objects (79 rooms), only ONBIT writes are in V-LAMP-ON (verbs.zil:798-816) gated on FSET? PRSO LIGHTBIT, and no object carries or sets LIGHTBIT, so no object can ever be lit. Native app refusal (grok1/batch/cache-light/run-starcross.json): turn on bunk (step 0) / space suit (step 21) -> \"You can't turn that on.\"; in-app (grok1/nq/nq-inapp.cjs start-state, all 246 objects room+inventory): attribute-only key, no light verb offered."
+  },
+  "transparent": {
+   "s": "NA",
+   "r": "grok1 #5026 transparent 2026-10-24 (Claude #5051 agreed): no closed TRANSBIT container exists in source or object table, so no radial effect. starcross dungeon.zil: TRANSBIT on the crystal rods (TAKEBIT KEYBIT TRANSBIT, not containers), MOUSE 1349 (VEHBIT CONTBIT SURFACEBIT OPENBIT TRANSBIT), GLOBAL-MOUSE 1338 (CONTBIT SURFACEBIT TRANSBIT, in GLOBAL-OBJECTS). Census: Starcross.z3.js bit 25: 16 carriers: 12 rods + visor fragment (no container), 212 maintenance mouse bits[8,9,25,26,28] (open, vehicle), 213 maintenance mouse (global stand-in) bits[8,25,28]. Packet work/investigations/grok1/transp/starcross.json"
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Stationfall.z3.js": {
@@ -1619,6 +1723,10 @@
   "static": {
    "s": "S",
    "r": "grok1 2026-10-24 (operator 11:32 ET: static = no TAKEBIT, tested by take X): static is the complement of source TAKEBIT (bit 23), owned by D214 takeable (GrammarProvider.d214TakeAttribute -> AttributeSchema takeable; Actionable gates take on pa.takeable && !pa.static), so no attributeMap fact (attributeMap cannot express a negated bit). Native take X evidence, test_attr recorded only during the named command, no relocation/forced state (work/investigations/grok1/batch/cache-static/run-stationfall.json, judge-static.json): TAKEBIT tested FALSE and refused (no Taken) on 46:SB radio, 50:pilot seat, 90:copilot seat; tested TRUE and Taken on 81:ID card; 0 contradictions."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Suspect.z3.js": {
@@ -1757,6 +1865,10 @@
   "visited": {
    "s": "U",
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Suspended.z3.js": {
@@ -1847,6 +1959,10 @@
   "worn": {
    "s": "U",
    "r": "grok1/grok2 N? batch 5 2026-10-24: no WORNBIT, but WEARBIT is the worn state: wearing exists (0 carriers, 5 FSET/tests, 3 FCLEAR/reads; e.g. main.zil:88 <COND (<FSET? ,SURGERY-HAND ,WEARBIT> <SETG NUM-EXT 7>)>); objects.zil:79 (<NOT <FSET? ,SURGERY-HAND ,WEARBIT>>), source suspended (grok2/nq/worn-Suspended.json). The player can wear things, so worn is not N/A; no measured wornAttribute yet (app worn fallback stays fail-closed). Stays U."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Wishbringer.z3.js": {
@@ -1917,6 +2033,10 @@
   "static": {
    "s": "S",
    "r": "grok1 2026-10-24 (operator 11:32 ET: static = no TAKEBIT, tested by take X): static is the complement of source TAKEBIT (bit 17), owned by D214 takeable (GrammarProvider.d214TakeAttribute -> AttributeSchema takeable; Actionable gates take on pa.takeable && !pa.static), so no attributeMap fact (attributeMap cannot express a negated bit). Native take X evidence, test_attr recorded only during the named command, no relocation/forced state (work/investigations/grok1/batch/cache-static/run-wishbringer.json, judge-static.json): TAKEBIT tested FALSE and refused (no Taken) on 18:service counter, 24:gravedigger, 64:open grave, 191:willow tree; tested TRUE and Taken on 43:mysterious envelope; 0 contradictions."
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "TheWitness.z3.js": {
@@ -2011,6 +2131,14 @@
   "visited": {
    "s": "U",
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "transparent": {
+   "s": "NA",
+   "r": "grok1 #5026 transparent 2026-10-24 (Claude #5051 agreed): no closed TRANSBIT container exists in source or object table, so no radial effect. witness people.zil:78 (NDESCBIT TRANSBIT), the only TRANSBIT object; not a container. Census: TheWitness.z3.js bit 6: 79 \"detective\" (player) bits[6,19] only. Packet work/investigations/grok1/transp/witness.json"
+  },
+  "openable": {
+   "s": "NA",
+   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
   }
  },
  "Sherlock.z5.js": {

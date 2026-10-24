@@ -7,7 +7,8 @@
 const fs = require('fs'), path = require('path'); const D = __dirname;
 const M = require('./2026-10-11-zil-matrix.json'), SRC = require('./2026-10-11-zil-source-flags.json');
 const LED = require('./2026-10-11-zil-cell-ledger.json'), AUD = require('./2026-10-11-zil-audited.json');
-const facts = fs.readFileSync(path.join(D, '../../js/ModuleStatFactsClaude.js'), 'utf8');
+// committed HEAD, not the working copy, so uncommitted candidate facts never count (codex R3 review)
+const facts = require('child_process').execSync('git show HEAD:js/ModuleStatFactsClaude.js', { cwd: path.join(D, '../..'), maxBuffer: 1 << 26 }).toString('utf8');
 // profile key -> ZIL source flag(s) (null = Inform-only concept, no ZIL flag).
 const MAP = { animate: ['ACTORBIT', 'PERSONBIT'], absent: null, clothing: ['WEARBIT'], wearable: ['WEARBIT'], concealed: ['INVISIBLE'],
   container: ['CONTBIT'], door: ['DOORBIT'], edible: ['FOODBIT'], enterable: ['VEHBIT'], general: null, light: ['ONBIT'], lockable: null,
@@ -27,7 +28,9 @@ md += 'Mapping (profile key -> ZIL flag): ' + Object.entries(MAP).map(([k, v]) =
 md += '| Title | ' + keys.join(' | ') + ' |\n|' + '---|'.repeat(keys.length + 1) + '\n'; const tally = {};
 for (const g of titles) { const fb = factBlock(g), src = (SRC[g] || {}).flags || {}, led = LED[g] || {}, aud = AUD[g] || {}; const cells = [];
   for (const k of keys) { let v;
-    const inFact = new RegExp('"' + k + '"\\s*:').test(fb);
+    // worn facts are stored as wornAttribute (e.g. Starcross 729af51), not under the profile key (claude 2026-10-22)
+    // and as equipmentState.wornWhen (Sorcerer 56d6016 measured relation, no bit; codex R3 review)
+    const inFact = new RegExp('"' + k + '"\\s*:').test(fb) || (k === 'worn' && /"wornAttribute"\s*:|"wornWhen"\s*:/.test(fb));
     if (inFact) v = aud[k] || (k === 'isOpen' && aud.open) ? 'F' : 'C';
     else if (led[k]) v = 'L:' + led[k].s;
     else if (!SRC[g]) v = 'B';
