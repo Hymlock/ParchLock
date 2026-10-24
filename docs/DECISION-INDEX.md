@@ -4,7 +4,7 @@ One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
 This exists because the plan itself is not greppable: 120 decisions across
-9524 lines, with single lines over 20,000 characters, so one grep match
+9531 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -278,6 +278,6 @@ cites. Search here for a subsystem; the line number opens the chapter.
 | §83 | 4192 | 83. Inventory holder authority and recovery (D226) | D226 |
 | §84 | 4210 | 84. Read-only pass pool and static dictionary cache (D227) | D227 |
 | §85 | 4263 | 85. Authored state-gated food actions (D228) | D228 |
-| §86 | 4277 | 86. Measured container state and authored container forms (D229) | D229 |
-| §87 | 4288 | 87. More-page suggestion admission (D230) | D230 |
-| §88 | 4296 | 88. Authored unlock tool domain (D231) | D231 |
+| §86 | 4280 | 86. Measured container state and authored container forms (D229) | D229 |
+| §87 | 4291 | 87. More-page suggestion admission (D230) | D230 |
+| §88 | 4299 | 88. Authored unlock tool domain (D231) | D231 |

@@ -9365,7 +9365,11 @@ parser-specific. Zork-era GLOBAL-CHECK (zork3 gparser.zil:1194-1202) never searc
 `contents: "search"` (proven for LH: native padlock-in-hatch); every other title is roots-only until its search shape is
 measured. Batch 2 rows (Zork I, Enchanter, Ballyhoo, Cutthroats; grok2 r4-grok2/localscope/) are HELD by codex #4669
 until each room-lit bit has a native lit/dark pair on the current checkout (saved in
-zil-titles/ModuleStatFactsClaude.with-batch2.js). A flag value null = proven absent is accepted ONLY under the audit's
+zil-titles/ModuleStatFactsClaude.with-batch2.js). SUPERSEDED (2026-10-24): Zork I and Enchanter landed in b673404 with
+native dark-room witnesses (Zork I Cellar; Enchanter lit/dark pair grok2 #4712). Ballyhoo and Cutthroats landed in
+2e4a5b8 under a bounded, source-qualified guard (audit-r12: LIGHTBIT = ONBIT in source; the lit gate is positive-only, so
+a room never seen dark can only admit its own GLOBAL list); no native dark run exists for Ballyhoo, Cutthroats or
+Starcross, and none is claimed. A flag value null = proven absent is accepted ONLY under the audit's
 bar (exact digest source, FLAGS and every FSET/FCLEAR absent, compiled parser routines test no bit, native negative);
 never used to paper over a different search shape (codex #4671). None exist yet.
 
@@ -9373,11 +9377,14 @@ never used to paper over a different search shape (codex #4671). None exist yet.
 localScope facts now on 18 ZIL titles - LH (contents:"search"), Zork I/II/III, Enchanter, Sorcerer, Infidel, Hollywood
 Hijinx, Planetfall, Hitchhiker's (width 2), Seastalker, Spellbreaker, Ballyhoo, Cutthroats, Starcross, Plundered Hearts,
 Deadline, Moonmist (commits 5ddf2dd, b673404, 7d9810b, fdcbdeb, 2e4a5b8, 0e42aef). Each: two lit rooms with native
-EXAMINE positives + reciprocal refusals, INVISIBLE/ONBIT exact vs source. The census picked room-list properties for
+EXAMINE positives + reciprocal refusals, INVISIBLE/ONBIT exact vs source except Zork II INVISIBLE 9 (tp 6, fn 1: the
+demon 26 has parent 0, outside the holder, so it can never be admitted). The census picked room-list properties for
 Deadline/Moonmist/Suspect/Suspended/Sherlock/Witness; localscope6/scan.cjs (single shared parent) finds the real GLOBAL
-property. Not mapped: Wishbringer, LGOP, Stationfall, Sherlock (no INVISIBLE flag), Borderzo (no ONBIT), Suspect (no room
+property. Not mapped (UNMEASURED, not absent): Wishbringer, LGOP, Stationfall, Sherlock have no INVISIBLE entry in the Oct-11
+source-flags table (Wishbringer source does use INVISIBLE: recovered trees, codex #4690/#4691); Borderzo has no ONBIT
+entry; Suspect (no room
 carries ONBIT, so a fact would admit nothing), Witness (no room scope natively), Suspended (robot-controller scope).
-Open: unparseable short names (Infidel "mirage") need a dictionary-word alias in the command noun.
+Open: Infidel "mirage" (only joke vocabulary gort/klaatu) - noun gap stays OPEN.
 
 ## D233 Objects behind a closed see-through container: in view, out of reach
 
