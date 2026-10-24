@@ -9359,6 +9359,37 @@ OPEN 13, TRANS 5.
 Sherlock ambiguous); lamp/door illumination (LIT locator); "take padlock" is offered but natively refused
 ("The padlock locks the hatch in place") - separate take-capability defect.
 
+**Update b2f1f2e (independent audit 2026-10-23, zil-titles/audit-independent-20261023.md):** contents recursion is
+parser-specific. Zork-era GLOBAL-CHECK (zork3 gparser.zil:1194-1202) never searches inside local globals; Cutthroats
+(parser.zil:1248-1252) searches one level under a different predicate. `contents()` now runs only when the fact says
+`contents: "search"` (proven for LH: native padlock-in-hatch); every other title is roots-only until its search shape is
+measured. Batch 2 rows (Zork I, Enchanter, Ballyhoo, Cutthroats; grok2 r4-grok2/localscope/) are HELD by codex #4669
+until each room-lit bit has a native lit/dark pair on the current checkout (saved in
+zil-titles/ModuleStatFactsClaude.with-batch2.js). A flag value null = proven absent is accepted ONLY under the audit's
+bar (exact digest source, FLAGS and every FSET/FCLEAR absent, compiled parser routines test no bit, native negative);
+never used to paper over a different search shape (codex #4671). None exist yet.
+
+## D233 Objects behind a closed see-through container: in view, out of reach
+
+**Lifecycle:** found by the R4.1 radial sweep pilot (LH step 10). Implemented claude b2f1f2e, with the companion
+transparent facts. Independent audit rounds 1-2; codex #4672 shape ACCEPT with three residuals (learned forms after the
+filter, inventory path, stale parentId), all fixed by the post-filter; codex re-audit of r2 pending. Gate grok2 #4682:
+309x2, six target titles identical, off-target FLAKY (Relief marks flip sides across reruns); operator regressions 13/0.
+
+**Problem.** Without a transparent fact, a closed see-through container hid contents the game describes (LH: "The
+microwave oven contains a cardboard carton."). With it, the carton became visible and was offered Take, which the game
+refuses: "You can't reach that!"
+
+**Contract.** `attributeMap.transparent` = measured TRANSBIT (LH 5, Zork I 12, Enchanter 10, Ballyhoo 13, Cutthroats 19,
+Infidel 23; carrier sets exact vs source, LH also native). Consumers: AttributeSchema.canSeeInside and the ZRamReader
+fallback copy. `ActionSynth.outOfReach(id)` walks the live RAM parent chain; true when an ancestor is measured
+container + transparent + not open. `Actionable.resolveObjectCommands` then keeps only the inspect verb, after every
+command source (synth, learned, calibrated), in room and inventory context. Unknown bits or any error keep normal offers.
+LH: oven open -> carton Examine/Take/Search/Empty/Close; oven closed -> Examine only.
+
+**Open:** Inform titles carry their own transparent attribute via PROFILE, so the rule also applies there (correct by
+Inform semantics; no gate difference observed). Phone check pending.
+
 ## Backlog (low priority, research only): Glulx cold decoding
 
 **October 20 continuation:** the operator reaffirmed full ZIL flag decoding before regular Inform and Glulx work, and authorized Codex to recover all seats' work and integrate held files. R3.1 (`work/investigations/2026-10-20-plan-r3-zil-first.md`) governs: the 21-column completion table is only a subtotal, not the full key universe. The full-profile ledger's N? and UD entries are not absence verdicts. Retain player/world/status, command consumers, classifier gaps and per-title native checks from the full-decode doccheck. Current takeover checkpoint: `work/mapping-research/items-codex/resume-20261020/checkpoint.md`.
