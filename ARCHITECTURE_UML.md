@@ -4270,8 +4270,11 @@ edibleCommandAllowed / nestedEdibleForms, LearnedWords, SemanticActions; facts i
   reviewed owner list; availability is recomputed from current memory on every request, never cached across turns.
 - One predicate filters Eat/Drink for authored owners after all merges: synthesized commands, learned words and
   confirmed semantic actions. Objects without an authored rule keep their existing behaviour.
-- Nested scope requires the owner inside the named container, the container held by the measured player and open, and
-  the owner already visible in the inventory payload; it never reveals hidden contents.
+- Nested scope requires the owner inside the named container (live parent) and the container open (live bit), and the
+  owner already visible in the current view: the inventory payload for inventory context, discoveredObjects for room
+  context (D235 supersedes D228's held-only container rule: native EAT succeeds from an open carton on the counter or
+  inside the closed glass oven). Only "inventory" and "room" contexts are accepted; held-scope rules still require the
+  measured player as parent. The payload never grants Eat by itself, and hidden contents are never revealed.
 
 <a id="ar-ch86"></a>
 ## 86. Measured container state and authored container forms (D229)
