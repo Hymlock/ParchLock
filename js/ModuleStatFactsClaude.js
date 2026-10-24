@@ -46,13 +46,13 @@ var ModuleStatFactsClaude = {
         // ONBIT 17 (state only; R3 claude lane on codex-accepted design cutthroats-on-integration-proposal.md): native ON sets 17
         // and OFF clears it on two distinct owners, flashlight 116 and the Mary Margaret's large compressor 89 (Aft Deck) (walkthrough 0-18 then
         // w,w,n,e,s); named EXAMINE 89 after OFF tests 17 FALSE with the native "off" reply. No switchable capability implied.
-        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18, "on": 17 },
+        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18, "on": 17, "transparent": 19 },
         // WORNBIT 13 (grok1 2026-10-17, g1-ctA/B Jericho replay, test_attr recorded only during the named command): 'remove watch' @287 tests
         // wrist watch 6:13 TRUE x3 ("You are now holding the wrist watch.") and the RAM scan after it drops 6 from the owners (UNWEAR FCLEARs);
         // 'remove wet suit' @287 tests 139:13 TRUE; 'wear flippers' @284 tests 138:13 FALSE before and TRUE after; 'remove flashlight' @291
         // tests flashlight 116:13 FALSE. Codex cold WEAR WATCH (items-codex/2026-10-17-cutthroats-wear-watch.json) 6:13 TRUE. Source V-WEAR
         // (verbs:2742) checks WEARBIT 18 then FSETs WORNBIT 13; UNWEAR (2756) FCLEARs it.
-        "wornAttribute": 13
+        "wornAttribute": 13,
     },
     // Plundered Hearts (ZIL): OPENBIT 16: OPEN sets 16 on large cupboard, coffer, canvas hatch, iron door; CLOSE clears (cupboard, coffer). WORNBIT 22: WEAR sets 22 on breeches, shirt, ball gown; REMOVE clears (frock, shirt). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     "b53a2588c7926892f8f5e9b201c1855a01892e972d938bf919b4f36e1b8bd7db": {
@@ -139,11 +139,11 @@ var ModuleStatFactsClaude = {
         // ONBIT24: native radio48 on/off tests and bit transitions; cited whole-source scan finds
         // RADIO the sole mutable non-room owner (single-owner exception). Adjacent source is not
         // asserted exact-build; room/global owners do not imply switchability. See ballyhoo-on/.
-        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21, "on": 24 },
+        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21, "on": 24, "transparent": 13 },
         // Native i (walkthrough step 90) tests bit6 TRUE on pink dot 231 / blue dot 71 inside the open ticket 122 and
         // omits them; tests it FALSE on bucket 65, meat 102, bullwhip 16, ticket 122 and prints them. Source NDESCBIT 6
         // exact (114/114).
-        "inventoryHiddenAttribute": 6
+        "inventoryHiddenAttribute": 6,
     },
     // Leather Goddesses of Phobos (ZIL): Q8 player root = constant PROTAGONIST object 200 (historicalsource/leathergoddesses 17cbbc1
     // globals.zil 908 OBJECT PROTAGONIST DESC "it" ACTORBIT). No PLAYER global exists; WINNER G189 is mutable (mars.zil sets MITRE/SULTAN/
@@ -196,13 +196,13 @@ var ModuleStatFactsClaude = {
     },
     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
         // light 22 / on 8 (codex #4349: FROTZ sets both on the battered lantern, candle carries both; bread/jug negatives).
-        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8 },
-        "openCapability": { "all": ["container"], "none": ["supporter"] }
+        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8, "transparent": 10 },
+        "openCapability": { "all": ["container"], "none": ["supporter"] },
     },
     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
         // FOODBIT7: sole bounded owner beef34, native EAT succeeds/removes;
         // shovel33 false/refuses; DRINK beef refuses (not a consumed bit).
-        "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25, "edible": 7 },
+        "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25, "edible": 7, "transparent": 23 },
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         // WEARBIT state22: native knapsack31/ring2 worn positives, shovel33 refusal; Grok4127 proposal independently replayed by Codex October20.
         "wornAttribute": 22
@@ -752,13 +752,13 @@ var ModuleStatFactsClaude = {
         // 20:31 TRUE; 'tell carton' @22 tests carton 58:31 FALSE. Source PERSON = bit 31 exact. Room-safe: the only runtime FSET is on
         // HAND (cs.zil:5582), no room carries PERSON, so ZRamReader.isPlausibleMapRoom is unaffected.
         // on 15 = ONBIT state (codex #4345/#4347: flashlight single player-switchable item; rooms = lit state, global waxer always on).
-        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31, "on": 15 },
+        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31, "on": 15, "transparent": 5 },
         // D232 local globals (claude census + codex #4618/#4621/#4632, grok2 #4637): room GLOBAL property 16 (byte ids),
         // holder LOCAL-GLOBALS 59; native: EXAMINE ROOF DOOR succeeds from TopFloor 195 (prop16 [163]), refused from
         // ComputerRoom 176; Tomb 9 padlock. Room ONBIT 15 positive-only (pzlurking trace TRUE 176/137/33, FALSE + pitch-black
         // reply 140). INVISIBLE 20 (rod 231, examine refused), SEARCHBIT 10 (carton 58 look-in), SURFACEBIT 8, OPENBIT 13.
         // TRANSBIT 5 (grok2 #4642: microwave 86 and smashed cabinet 88 look-through; refrigerator and assignment refused).
-        "localScope": { "property": 16, "width": 1, "holder": 59, "roomLitAttribute": 15, "invisible": 20, "searchBit": 10, "surfaceBit": 8, "openBit": 13, "transBit": 5 },
+        "localScope": { "property": 16, "width": 1, "holder": 59, "roomLitAttribute": 15, "invisible": 20, "searchBit": 10, "surfaceBit": 8, "openBit": 13, "transBit": 5, "contents": "search" },
         // WEARBIT 3 = worn state (codex #4341: gloves 203 and boots 104 natively; crowbar refused).
         "wornAttribute": 3,
         // Native i (take all, i; 2026-10-16-hidden-bit-finder.json) tests bit18 TRUE on the pc's mouse 199 and HELP key 107
@@ -803,12 +803,12 @@ var ModuleStatFactsClaude = {
         // does not handle LAMP-ON, so V-LAMP-ON gverbs.zil:786-789 tests FSET? PRSO LIGHTBIT); cold 'turn on' negatives mailbox 160:31 and leaflet
         // 161:31 FALSE ("You can't turn that on."). Source LIGHTBIT = torch, candles, lamp; bounded compiled-table scan (250 objects, ends at
         // first property 3000): bit-31 carriers = {104, 147, 164} = source 3/3. Consumers (#3904 audit, which answers the #3380 capability concern): no map-room effect (1679 blank names only).
-            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "edible": 21, "light": 31 },
+            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "edible": 21, "light": 31, "transparent": 12 },
         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
         // (source: THIEF (1dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
         "command": "score", "fields": ["score.max", "rank"], "replyFamily": "inform-score", "outcome": "line",
-        "evidence": "2026-10-05 live SCORE: Your score is 0 (total of 350 points), in 0 moves. / This gives you the rank of Beginner."
+        "evidence": "2026-10-05 live SCORE: Your score is 0 (total of 350 points), in 0 moves. / This gives you the rank of Beginner.",
     },
     // Risorgimento Represso
     "2ee4d715f51dfdde32559f8a079f2eb000f3864c6028b406dc1a7b1e5f5b06e8": {

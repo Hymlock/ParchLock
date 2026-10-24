@@ -2359,7 +2359,8 @@ var ZRamReader = {
     // Roots: ids in the room's measured GLOBAL property whose parent is the
     // measured LOCAL-GLOBALS holder, not INVISIBLE (parser THIS-IT?), and only
     // while the room's measured light bit is set (positive-only; unset is not
-    // a dark verdict, it just adds nothing). Contents follow parser
+    // a dark verdict, it just adds nothing). Contents (only when the fact says
+    // contents:"search", i.e. this parser search shape is proven) follow parser
     // SEARCH-CONTENTS?: recurse into a SURFACE, or a SEARCHBIT object that is OPEN or
     // TRANSBIT (when measured); INVISIBLE contents are skipped. Separate from canSeeInside on purpose.
     localScopeObjects: (mem, roomId, playerId) => {
@@ -2405,7 +2406,9 @@ var ZRamReader = {
             var links = ZRamReader.objectLinks(mem, id);
             if (!links || links.parent !== ls.holder) continue;
             var raw = add(id, roomId);
-            if (raw) contents(id, raw, 0);
+            // Contents only for a title whose parser search shape is proven (contents:"search", LH SEARCH-CONTENTS?).
+            // Zork-era GLOBAL-CHECK never looks inside local globals; other shapes stay roots-only until measured.
+            if (raw && ls.contents === "search") contents(id, raw, 0);
         }
         return out;
     },

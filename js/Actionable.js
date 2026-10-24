@@ -944,7 +944,17 @@ var Actionable = {
         var prior = Actionable._resolutionPool;
         try {
             if (!prior) Actionable._resolutionPool = Actionable.payloadPool();
-            return Actionable._resolveObjectCommands(objectId,kind,options);
+            var resolved = Actionable._resolveObjectCommands(objectId,kind,options);
+            // D233: after every source (synth, learned, calibrated), an object
+            // behind a closed transparent container keeps only the inspect verb.
+            if (Array.isArray(resolved) && typeof ActionSynth !== "undefined" && ActionSynth.outOfReach &&
+                ActionSynth.outOfReach(objectId)) {
+                var inspect = ActionSynth.defaultInspectVerb();
+                resolved = resolved.filter(function (c) {
+                    return !!inspect && c && String(c.command || "").toLowerCase().indexOf(inspect + " ") === 0;
+                });
+            }
+            return resolved;
         } finally { Actionable._resolutionPool = prior; }
     },
     _resolveObjectCommands: (objectId, kind, options) => {

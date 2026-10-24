@@ -404,6 +404,24 @@ var ActionSynth = {
     // rules for compiler-declared attributes and confirmed per-object learning,
     // while excluding dictionary-only additions (currently DRINK for EDIBLE).
     // Vocabulary proves how to address the object; it never proves a verb.
+    // D233: true when the object sits (at any depth, from its live RAM parent) inside a container that is
+    // measured transparent and measured closed: in view, out of reach (ZIL "You can't reach that!").
+    // Unknown bits, missing memory or any error -> false (normal offers kept).
+    outOfReach: (objectId) => {
+        try {
+            var mem = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null;
+            var id = Number(objectId);
+            if (!mem || !Number.isInteger(id) || id < 1) return false;
+            var link = ZRamReader.objectLinks(mem, id), cur = link && link.parent;
+            for (var guard = 0; cur && guard < 32; guard++) {
+                var pa = ZRamReader.attrsFromObject(mem, cur) || {};
+                if (pa.container && pa.transparent && !(pa.open || pa.isOpen)) return true;
+                var up = ZRamReader.objectLinks(mem, cur);
+                cur = up && up.parent;
+            }
+        } catch (e) {}
+        return false;
+    },
     commandsForEvidenceObject: (obj, context, options) => {
         return ActionSynth.commandsForObject(obj, context || "room", null, {
             directEvidenceOnly: true,
