@@ -1,0 +1,837 @@
+{
+ "story": "Infidel.z3.js",
+ "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+ "flags": {
+  "ACTORBIT": {
+   "bit": 17,
+   "exact": true
+  },
+  "BURNBIT": {
+   "bit": 11,
+   "exact": true
+  },
+  "CLAMPBIT": {
+   "bit": 1,
+   "exact": true
+  },
+  "CLIMBBIT": {
+   "bit": 16,
+   "exact": true
+  },
+  "CONTBIT": {
+   "bit": 20,
+   "exact": true
+  },
+  "DONTTAKE": {
+   "bit": 2,
+   "exact": true
+  },
+  "DOORBIT": {
+   "bit": 9,
+   "exact": true
+  },
+  "FOODBIT": {
+   "bit": 7,
+   "exact": true
+  },
+  "INVISIBLE": {
+   "bit": 30,
+   "exact": true
+  },
+  "NDESCBIT": {
+   "bit": 18,
+   "exact": true
+  },
+  "ONBIT": {
+   "bit": 21,
+   "exact": true
+  },
+  "OPENBIT": {
+   "bit": 25,
+   "exact": true
+  },
+  "READBIT": {
+   "bit": 5,
+   "exact": true
+  },
+  "RLANDBIT": {
+   "bit": 3,
+   "exact": true
+  },
+  "SEARCHBIT": {
+   "bit": 24,
+   "exact": true
+  },
+  "SURFACEBIT": {
+   "bit": 28,
+   "exact": true
+  },
+  "TAKEBIT": {
+   "bit": 15,
+   "exact": true
+  },
+  "TOOLBIT": {
+   "bit": 19,
+   "exact": true
+  },
+  "TOUCHBIT": {
+   "bit": 29,
+   "exact": false
+  },
+  "TRANSBIT": {
+   "bit": 23,
+   "exact": true
+  },
+  "TRYTAKEBIT": {
+   "bit": 27,
+   "exact": true
+  },
+  "TURNBIT": {
+   "bit": 4,
+   "exact": true
+  },
+  "VEHBIT": {
+   "bit": 14,
+   "exact": true
+  },
+  "VOWELBIT": {
+   "bit": 26,
+   "exact": true
+  }
+ },
+ "holder": {
+  "id": 248,
+  "name": ""
+ },
+ "kids": [
+  {
+   "id": 233,
+   "name": "sand",
+   "invisible": false
+  },
+  {
+   "id": 14,
+   "name": "glittering leaf",
+   "invisible": false
+  },
+  {
+   "id": 25,
+   "name": "mirage",
+   "invisible": false
+  },
+  {
+   "id": 74,
+   "name": "quantity of water",
+   "invisible": false
+  },
+  {
+   "id": 76,
+   "name": "tent",
+   "invisible": false
+  },
+  {
+   "id": 80,
+   "name": "thicket",
+   "invisible": false
+  },
+  {
+   "id": 144,
+   "name": "tile",
+   "invisible": false
+  },
+  {
+   "id": 190,
+   "name": "gem",
+   "invisible": false
+  },
+  {
+   "id": 185,
+   "name": "annex door",
+   "invisible": false
+  },
+  {
+   "id": 194,
+   "name": "burial door",
+   "invisible": false
+  },
+  {
+   "id": 191,
+   "name": "deep pit",
+   "invisible": true
+  },
+  {
+   "id": 201,
+   "name": "few steps",
+   "invisible": false
+  },
+  {
+   "id": 202,
+   "name": "narrow staircase",
+   "invisible": false
+  },
+  {
+   "id": 203,
+   "name": "winding staircase",
+   "invisible": false
+  },
+  {
+   "id": 204,
+   "name": "wide staircase",
+   "invisible": false
+  },
+  {
+   "id": 205,
+   "name": "steep staircase",
+   "invisible": false
+  },
+  {
+   "id": 209,
+   "name": "flap",
+   "invisible": false
+  },
+  {
+   "id": 210,
+   "name": "deck",
+   "invisible": false
+  },
+  {
+   "id": 211,
+   "name": "barge",
+   "invisible": false
+  },
+  {
+   "id": 212,
+   "name": "pillars",
+   "invisible": false
+  },
+  {
+   "id": 213,
+   "name": "decorations",
+   "invisible": false
+  },
+  {
+   "id": 214,
+   "name": "hieroglyphs",
+   "invisible": false
+  },
+  {
+   "id": 218,
+   "name": "stairs",
+   "invisible": false
+  },
+  {
+   "id": 219,
+   "name": "panel",
+   "invisible": false
+  },
+  {
+   "id": 220,
+   "name": "doorway",
+   "invisible": false
+  },
+  {
+   "id": 232,
+   "name": "hole",
+   "invisible": false
+  }
+ ],
+ "rooms": [
+  {
+   "id": 10,
+   "name": "Silver Alcove",
+   "lit": false,
+   "lg": [
+    "12:(par0)"
+   ]
+  },
+  {
+   "id": 11,
+   "name": "Silver Room",
+   "lit": false,
+   "lg": [
+    "214:hieroglyphs",
+    "14:glittering leaf"
+   ]
+  },
+  {
+   "id": 13,
+   "name": "Golden Alcove",
+   "lit": false,
+   "lg": [
+    "12:(par0)"
+   ]
+  },
+  {
+   "id": 15,
+   "name": "Golden Room",
+   "lit": false,
+   "lg": [
+    "214:hieroglyphs",
+    "14:glittering leaf"
+   ]
+  },
+  {
+   "id": 16,
+   "name": "Inner Chamber",
+   "lit": false,
+   "lg": [
+    "214:hieroglyphs",
+    "213:decorations",
+    "220:doorway"
+   ]
+  },
+  {
+   "id": 17,
+   "name": "Temple Chamber",
+   "lit": false,
+   "lg": [
+    "213:decorations",
+    "212:pillars"
+   ]
+  },
+  {
+   "id": 18,
+   "name": "Steep Passageway",
+   "lit": false,
+   "lg": [
+    "220:doorway"
+   ]
+  },
+  {
+   "id": 26,
+   "name": "Desert",
+   "lit": true,
+   "lg": [
+    "233:sand",
+    "25:mirage"
+   ]
+  },
+  {
+   "id": 53,
+   "name": "Desert",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole"
+   ]
+  },
+  {
+   "id": 54,
+   "name": "Desert",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole"
+   ]
+  },
+  {
+   "id": 55,
+   "name": "Desert",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole"
+   ]
+  },
+  {
+   "id": 56,
+   "name": "Desert",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole"
+   ]
+  },
+  {
+   "id": 57,
+   "name": "Desert",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole"
+   ]
+  },
+  {
+   "id": 58,
+   "name": "Desert",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole"
+   ]
+  },
+  {
+   "id": 59,
+   "name": "Desert",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole"
+   ]
+  },
+  {
+   "id": 60,
+   "name": "Desert",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole"
+   ]
+  },
+  {
+   "id": 61,
+   "name": "Desert",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole"
+   ]
+  },
+  {
+   "id": 62,
+   "name": "Work Tent",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole",
+    "209:flap"
+   ]
+  },
+  {
+   "id": 63,
+   "name": "Southern Path",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole"
+   ]
+  },
+  {
+   "id": 64,
+   "name": "Outside Work Tent",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole",
+    "209:flap"
+   ]
+  },
+  {
+   "id": 65,
+   "name": "Southern Path",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole",
+    "80:thicket"
+   ]
+  },
+  {
+   "id": 66,
+   "name": "Middle Path",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole"
+   ]
+  },
+  {
+   "id": 68,
+   "name": "Outside Supply Tent",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole",
+    "209:flap",
+    "80:thicket"
+   ]
+  },
+  {
+   "id": 69,
+   "name": "Supply Tent",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole",
+    "209:flap"
+   ]
+  },
+  {
+   "id": 70,
+   "name": "Northern Path",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole"
+   ]
+  },
+  {
+   "id": 71,
+   "name": "Your Tent",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole",
+    "209:flap"
+   ]
+  },
+  {
+   "id": 72,
+   "name": "Outside Your Tent",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole",
+    "209:flap"
+   ]
+  },
+  {
+   "id": 73,
+   "name": "Near the Nile",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole"
+   ]
+  },
+  {
+   "id": 78,
+   "name": "Fire Pit",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole"
+   ]
+  },
+  {
+   "id": 82,
+   "name": "River Bank",
+   "lit": true,
+   "lg": [
+    "76:tent",
+    "233:sand",
+    "232:hole",
+    "74:quantity of water",
+    "80:thicket"
+   ]
+  },
+  {
+   "id": 98,
+   "name": "Cube",
+   "lit": false,
+   "lg": [
+    "214:hieroglyphs"
+   ]
+  },
+  {
+   "id": 100,
+   "name": "Cube",
+   "lit": false,
+   "lg": [
+    "214:hieroglyphs",
+    "213:decorations"
+   ]
+  },
+  {
+   "id": 101,
+   "name": "Cube",
+   "lit": false,
+   "lg": [
+    "202:narrow staircase"
+   ]
+  },
+  {
+   "id": 102,
+   "name": "Cube",
+   "lit": false,
+   "lg": [
+    "204:wide staircase"
+   ]
+  },
+  {
+   "id": 110,
+   "name": "West End of Hold",
+   "lit": false,
+   "lg": [
+    "211:barge",
+    "232:hole",
+    "210:deck"
+   ]
+  },
+  {
+   "id": 111,
+   "name": "Below Deck",
+   "lit": false,
+   "lg": [
+    "211:barge",
+    "218:stairs",
+    "210:deck"
+   ]
+  },
+  {
+   "id": 112,
+   "name": "Aft Cabin",
+   "lit": false,
+   "lg": [
+    "218:stairs",
+    "211:barge",
+    "210:deck"
+   ]
+  },
+  {
+   "id": 113,
+   "name": "Fore Cabin",
+   "lit": false,
+   "lg": [
+    "211:barge",
+    "210:deck"
+   ]
+  },
+  {
+   "id": 114,
+   "name": "Center of Barge",
+   "lit": false,
+   "lg": [
+    "232:hole",
+    "211:barge",
+    "210:deck"
+   ]
+  },
+  {
+   "id": 115,
+   "name": "Barge Chamber",
+   "lit": false,
+   "lg": [
+    "211:barge"
+   ]
+  },
+  {
+   "id": 116,
+   "name": "Barge Chamber",
+   "lit": false,
+   "lg": [
+    "211:barge"
+   ]
+  },
+  {
+   "id": 117,
+   "name": "Barge Chamber",
+   "lit": false,
+   "lg": [
+    "211:barge"
+   ]
+  },
+  {
+   "id": 118,
+   "name": "Barge Chamber",
+   "lit": false,
+   "lg": [
+    "211:barge"
+   ]
+  },
+  {
+   "id": 119,
+   "name": "Barge Chamber",
+   "lit": false,
+   "lg": [
+    "211:barge"
+   ]
+  },
+  {
+   "id": 120,
+   "name": "Barge Chamber",
+   "lit": false,
+   "lg": [
+    "211:barge"
+   ]
+  },
+  {
+   "id": 121,
+   "name": "Narrow Hallway",
+   "lit": false,
+   "lg": [
+    "214:hieroglyphs"
+   ]
+  },
+  {
+   "id": 123,
+   "name": "South Landing",
+   "lit": false,
+   "lg": [
+    "203:winding staircase"
+   ]
+  },
+  {
+   "id": 135,
+   "name": "Room of Neith",
+   "lit": false,
+   "lg": [
+    "214:hieroglyphs",
+    "219:panel",
+    "213:decorations",
+    "190:gem"
+   ]
+  },
+  {
+   "id": 137,
+   "name": "Room of Isis",
+   "lit": false,
+   "lg": [
+    "214:hieroglyphs",
+    "219:panel",
+    "190:gem",
+    "220:doorway"
+   ]
+  },
+  {
+   "id": 139,
+   "name": "Room of Selkis",
+   "lit": false,
+   "lg": [
+    "214:hieroglyphs",
+    "220:doorway",
+    "144:tile",
+    "219:panel"
+   ]
+  },
+  {
+   "id": 145,
+   "name": "Room of Nephthys",
+   "lit": false,
+   "lg": [
+    "214:hieroglyphs",
+    "220:doorway",
+    "219:panel",
+    "144:tile"
+   ]
+  },
+  {
+   "id": 167,
+   "name": "Bottom of Stairs",
+   "lit": false,
+   "lg": [
+    "214:hieroglyphs",
+    "218:stairs",
+    "220:doorway"
+   ]
+  },
+  {
+   "id": 168,
+   "name": "Top of Stairway",
+   "lit": false,
+   "lg": [
+    "213:decorations",
+    "218:stairs"
+   ]
+  },
+  {
+   "id": 174,
+   "name": "Burial Chamber",
+   "lit": false,
+   "lg": [
+    "194:burial door",
+    "220:doorway"
+   ]
+  },
+  {
+   "id": 181,
+   "name": "Annex",
+   "lit": false,
+   "lg": [
+    "185:annex door",
+    "220:doorway",
+    "213:decorations"
+   ]
+  },
+  {
+   "id": 186,
+   "name": "Antechamber",
+   "lit": false,
+   "lg": [
+    "214:hieroglyphs",
+    "220:doorway",
+    "185:annex door"
+   ]
+  },
+  {
+   "id": 187,
+   "name": "Narrow Passageway",
+   "lit": false,
+   "lg": [
+    "220:doorway",
+    "214:hieroglyphs",
+    "191:deep pit"
+   ]
+  },
+  {
+   "id": 192,
+   "name": "Antechamber",
+   "lit": false,
+   "lg": [
+    "220:doorway",
+    "191:deep pit",
+    "219:panel",
+    "190:gem"
+   ]
+  },
+  {
+   "id": 195,
+   "name": "Antechamber",
+   "lit": false,
+   "lg": [
+    "194:burial door",
+    "220:doorway",
+    "214:hieroglyphs"
+   ]
+  },
+  {
+   "id": 200,
+   "name": "On the Steep Stairs",
+   "lit": true,
+   "lg": [
+    "205:steep staircase"
+   ]
+  },
+  {
+   "id": 206,
+   "name": "Chamber of Ra",
+   "lit": true,
+   "lg": [
+    "205:steep staircase",
+    "204:wide staircase",
+    "203:winding staircase",
+    "202:narrow staircase",
+    "201:few steps"
+   ]
+  },
+  {
+   "id": 248,
+   "name": "",
+   "lit": false,
+   "lg": [
+    "249:(par0)"
+   ]
+  }
+ ]
+}

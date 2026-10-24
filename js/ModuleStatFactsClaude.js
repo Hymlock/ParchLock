@@ -4,6 +4,8 @@
 // No stored numeric readings or title dispatch.
 var ModuleStatFactsClaude = {
     "abf145d22371f825f13388587d92632bcde90582698f774b896b123a90e1fb1e": {
+        // D232 local globals, roots only (work/investigations/r3-claude/localscope3/): Foot Bridge 228 bridge, Great Cavern 227 mosses, Narrow Tunnel stream; reciprocal refusals; Dark Tunnel 225 dark. INVISIBLE 9 tp6 fp0 fn1 (one source owner not set at start: disclosed).
+        "localScope": { "property": 12, "width": 1, "holder": 249, "roomLitAttribute": 19, "invisible": 9 },
         // on 19 WITHDRAWN (Codex #3451/#3453): single-object + source needs an authored terminal checkpoint, not list exhaustion; stays unknown.
         // ACTORBIT 30 original scene, target-scoped (SOLO/SELF-AUDIT 2026-10-16, 2026-10-16-zil-inv-hidden-ops.json command
         // records): 'ROBOT, EAST AND SOUTH' tests 30 TRUE on robot 58, 'DEMON, GIVE ME WAND' TRUE on demon 26; 'TEAPOT, HELLO' /
@@ -221,6 +223,8 @@ var ModuleStatFactsClaude = {
         "openCapability": { "all": ["container"], "none": ["supporter"] },
     },
     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
+        // D232 local globals, roots only (work/investigations/r3-claude/localscope3/): Your Tent 71 flap, River Bank 82 water; reciprocal refusals, Fire Pit refuses flap. No dark witness (positive-only lit).
+        "localScope": { "property": 17, "width": 1, "holder": 248, "roomLitAttribute": 21, "invisible": 30 },
         // FOODBIT7: sole bounded owner beef34, native EAT succeeds/removes;
         // shovel33 false/refuses; DRINK beef refuses (not a consumed bit).
         "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25, "edible": 7 },
@@ -231,6 +235,8 @@ var ModuleStatFactsClaude = {
     // Sorcerer (ZIL): stable PLAYER global 38 (Codex #3412/#3413, verified grok2 #3425): misc.zil WINNER=PROTAGONIST, PLAYER=WINNER;
     // binary 23591 store G38<-G163 at start, TELL stores only G163 (42801). Native TAKE book inserts into body 223 = G38. Ships with the v3 nested-room fix.
     "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e": {
+        // D232 local globals, roots only (work/investigations/r3-claude/localscope3/): Hallway 67 heavy wooden door, Lobby 18 road; reciprocal refusals; Your Quarters 17 dark ("too dark to see"). Stairs 177 listed but parented 31: skipped by the holder check.
+        "localScope": { "property": 17, "width": 1, "holder": 55, "roomLitAttribute": 11, "invisible": 19 },
         // OPENBIT 15: OPEN sets 15 on desk drawer, journal, receptacle, ochre vial; CLOSE clears (drawer, receptacle). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
         // 2026-10-15 original scene, target-scoped, source-exact: CONTBIT 27 TRUE on desk drawer, tiny box, ochre vial, sturdy
         // trunk, receptacle (2026-10-11-zil-walk-pzsorcerer.json); SURFACEBIT 17 TRUE on bed ('look on bed') and darkwood desk
@@ -436,6 +442,8 @@ var ModuleStatFactsClaude = {
     },
     // Hollywood Hijinx (ZIL): WEARBIT 22 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).
     "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e": {
+        // D232 local globals, roots only (work/investigations/r3-claude/localscope3/): Front Porch 185 oak door, Southwest Junction 31 garden; reciprocal refusals. No dark witness (positive-only lit).
+        "localScope": { "property": 15, "width": 1, "holder": 54, "roomLitAttribute": 20, "invisible": 29 },
         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): container - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
         // CONTBIT 4: TRUE on mailbox, small compartment, cannon, pile of cannon balls; FALSE on doorbell, Status Line. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         // Grok4112 independently audited: native SEARCH Herman163/Aunt126 tests18 true; buzz saw152 false. No room owners.
