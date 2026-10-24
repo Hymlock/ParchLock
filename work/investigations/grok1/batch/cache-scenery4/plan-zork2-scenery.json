@@ -1,0 +1,233 @@
+{
+ "key": "zork2",
+ "game": "Zork2-TheWizardofFrobozz.z3.js",
+ "bit": 14,
+ "tmpl": "look|examine X",
+ "tag": "scenery",
+ "tests": [
+  {
+   "id": 104,
+   "name": "table",
+   "step": 8,
+   "expect": 1,
+   "bit": 14,
+   "cmd": "look"
+  },
+  {
+   "id": 104,
+   "name": "table",
+   "step": 8,
+   "expect": 1,
+   "bit": 14,
+   "cmd": "examine table"
+  },
+  {
+   "id": 217,
+   "name": "hedge",
+   "step": 14,
+   "expect": 1,
+   "bit": 14,
+   "cmd": "look"
+  },
+  {
+   "id": 217,
+   "name": "hedge",
+   "step": 14,
+   "expect": 1,
+   "bit": 14,
+   "cmd": "examine hedge"
+  },
+  {
+   "id": 39,
+   "name": "keyhole",
+   "step": 24,
+   "expect": 1,
+   "bit": 14,
+   "cmd": "look"
+  },
+  {
+   "id": 39,
+   "name": "keyhole",
+   "step": 24,
+   "expect": 1,
+   "bit": 14,
+   "cmd": "examine keyhole"
+  },
+  {
+   "id": 43,
+   "name": "metal lid",
+   "step": 24,
+   "expect": 1,
+   "bit": 14,
+   "cmd": "look"
+  },
+  {
+   "id": 43,
+   "name": "metal lid",
+   "step": 24,
+   "expect": 1,
+   "bit": 14,
+   "cmd": "examine metal lid"
+  },
+  {
+   "id": 33,
+   "name": "place mat",
+   "step": 26,
+   "expect": 1,
+   "bit": 14,
+   "cmd": "look"
+  },
+  {
+   "id": 33,
+   "name": "place mat",
+   "step": 26,
+   "expect": 1,
+   "bit": 14,
+   "cmd": "examine place mat"
+  },
+  {
+   "id": 38,
+   "name": "keyhole",
+   "step": 34,
+   "expect": 1,
+   "bit": 14,
+   "cmd": "look"
+  },
+  {
+   "id": 38,
+   "name": "keyhole",
+   "step": 34,
+   "expect": 1,
+   "bit": 14,
+   "cmd": "examine keyhole"
+  },
+  {
+   "id": 40,
+   "name": "narrow crack",
+   "step": 34,
+   "expect": 1,
+   "bit": 14,
+   "cmd": "look"
+  },
+  {
+   "id": 40,
+   "name": "narrow crack",
+   "step": 34,
+   "expect": 1,
+   "bit": 14,
+   "cmd": "examine narrow crack"
+  },
+  {
+   "id": 41,
+   "name": "table",
+   "step": 34,
+   "expect": 1,
+   "bit": 14,
+   "cmd": "look"
+  },
+  {
+   "id": 41,
+   "name": "table",
+   "step": 34,
+   "expect": 1,
+   "bit": 14,
+   "cmd": "examine table"
+  },
+  {
+   "id": 23,
+   "name": "sword",
+   "step": 8,
+   "expect": 0,
+   "bit": 14,
+   "cmd": "look"
+  },
+  {
+   "id": 23,
+   "name": "sword",
+   "step": 8,
+   "expect": 0,
+   "bit": 14,
+   "cmd": "examine sword"
+  },
+  {
+   "id": 32,
+   "name": "china teapot",
+   "step": 8,
+   "expect": 0,
+   "bit": 14,
+   "cmd": "look"
+  },
+  {
+   "id": 32,
+   "name": "china teapot",
+   "step": 8,
+   "expect": 0,
+   "bit": 14,
+   "cmd": "examine china teapot"
+  },
+  {
+   "id": 34,
+   "name": "newspaper",
+   "step": 8,
+   "expect": 0,
+   "bit": 14,
+   "cmd": "look"
+  },
+  {
+   "id": 34,
+   "name": "newspaper",
+   "step": 8,
+   "expect": 0,
+   "bit": 14,
+   "cmd": "examine newspaper"
+  },
+  {
+   "id": 37,
+   "name": "letter opener",
+   "step": 8,
+   "expect": 0,
+   "bit": 14,
+   "cmd": "look"
+  },
+  {
+   "id": 37,
+   "name": "letter opener",
+   "step": 8,
+   "expect": 0,
+   "bit": 14,
+   "cmd": "examine letter opener"
+  },
+  {
+   "id": 76,
+   "name": "lamp",
+   "step": 8,
+   "expect": 0,
+   "bit": 14,
+   "cmd": "look"
+  },
+  {
+   "id": 76,
+   "name": "lamp",
+   "step": 8,
+   "expect": 0,
+   "bit": 14,
+   "cmd": "examine lamp"
+  },
+  {
+   "id": 105,
+   "name": "matchbook",
+   "step": 8,
+   "expect": 0,
+   "bit": 14,
+   "cmd": "look"
+  },
+  {
+   "id": 105,
+   "name": "matchbook",
+   "step": 8,
+   "expect": 0,
+   "bit": 14,
+   "cmd": "examine matchbook"
+  }
+ ]
+}

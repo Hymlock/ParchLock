@@ -1,0 +1,1761 @@
+{
+ "scenery @0:look#0": {
+  "tag": "scenery",
+  "id": 59,
+  "name": "frotz spell",
+  "step": 0,
+  "expect": 1,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   7,
+   18
+  ],
+  "after": [
+   4,
+   7,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 144,
+  "here": 42,
+  "opsOnId": [],
+  "nOps": 8,
+  "printedObjs": [
+   42
+  ],
+  "text": "Fork\nYou stand at a point of decision on a road which makes a wide fork to the northeast and southeast, circling the base of the Lonely Mountain, which looms high overhead to the east. A very long and winding road starts here and stretches out of sight to the west through low, smoky hills.\nThe sun is rising over the lands to the east.\n \n> ",
+  "ts": "2026-10-24T16:13:52.439Z"
+ },
+ "scenery @0:examine frotz spell#1": {
+  "tag": "scenery",
+  "id": 59,
+  "name": "frotz spell",
+  "step": 0,
+  "expect": 1,
+  "bit": 7,
+  "cmd": "examine frotz spell",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   7,
+   18
+  ],
+  "after": [
+   4,
+   7,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 144,
+  "here": 42,
+  "opsOnId": [
+   [
+    59,
+    16,
+    0,
+    30789
+   ],
+   [
+    59,
+    11,
+    0,
+    30039
+   ],
+   [
+    59,
+    14,
+    0,
+    30039
+   ]
+  ],
+  "nOps": 21,
+  "printedObjs": [],
+  "text": "cause something to give off light\n \n> ",
+  "ts": "2026-10-24T16:13:53.025Z"
+ },
+ "scenery @0:look#2": {
+  "tag": "scenery",
+  "id": 80,
+  "name": "gnusto spell",
+  "step": 0,
+  "expect": 1,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   7,
+   18
+  ],
+  "after": [
+   4,
+   7,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 144,
+  "here": 42,
+  "opsOnId": [],
+  "nOps": 11,
+  "printedObjs": [
+   42
+  ],
+  "text": "Fork\nYou stand at a point of decision on a road which makes a wide fork to the northeast and southeast, circling the base of the Lonely Mountain, which looms high overhead to the east. A very long and winding road starts here and stretches out of sight to the west through low, smoky hills.\nThe sun is rising over the lands to the east.\n \n> ",
+  "ts": "2026-10-24T16:13:53.598Z"
+ },
+ "scenery @0:examine gnusto spell#3": {
+  "tag": "scenery",
+  "id": 80,
+  "name": "gnusto spell",
+  "step": 0,
+  "expect": 1,
+  "bit": 7,
+  "cmd": "examine gnusto spell",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   7,
+   18
+  ],
+  "after": [
+   4,
+   7,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 144,
+  "here": 42,
+  "opsOnId": [
+   [
+    80,
+    16,
+    0,
+    30789
+   ],
+   [
+    80,
+    11,
+    0,
+    30039
+   ],
+   [
+    80,
+    14,
+    0,
+    30039
+   ]
+  ],
+  "nOps": 24,
+  "printedObjs": [],
+  "text": "write a magic spell into a spell book\n \n> ",
+  "ts": "2026-10-24T16:13:54.177Z"
+ },
+ "scenery @0:look#4": {
+  "tag": "scenery",
+  "id": 84,
+  "name": "nitfol spell",
+  "step": 0,
+  "expect": 1,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   7,
+   18
+  ],
+  "after": [
+   4,
+   7,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 144,
+  "here": 42,
+  "opsOnId": [],
+  "nOps": 11,
+  "printedObjs": [
+   42
+  ],
+  "text": "Fork\nYou stand at a point of decision on a road which makes a wide fork to the northeast and southeast, circling the base of the Lonely Mountain, which looms high overhead to the east. A very long and winding road starts here and stretches out of sight to the west through low, smoky hills.\n \n> ",
+  "ts": "2026-10-24T16:13:54.745Z"
+ },
+ "scenery @0:examine nitfol spell#5": {
+  "tag": "scenery",
+  "id": 84,
+  "name": "nitfol spell",
+  "step": 0,
+  "expect": 1,
+  "bit": 7,
+  "cmd": "examine nitfol spell",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   7,
+   18
+  ],
+  "after": [
+   4,
+   7,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 144,
+  "here": 42,
+  "opsOnId": [
+   [
+    84,
+    16,
+    0,
+    30789
+   ],
+   [
+    84,
+    11,
+    0,
+    30039
+   ],
+   [
+    84,
+    14,
+    0,
+    30039
+   ]
+  ],
+  "nOps": 24,
+  "printedObjs": [],
+  "text": "converse with the beasts in their own tongue\n \n> ",
+  "ts": "2026-10-24T16:13:55.318Z"
+ },
+ "scenery @0:look#6": {
+  "tag": "scenery",
+  "id": 193,
+  "name": "blorb spell",
+  "step": 0,
+  "expect": 1,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   7,
+   18
+  ],
+  "after": [
+   4,
+   7,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 144,
+  "here": 42,
+  "opsOnId": [],
+  "nOps": 11,
+  "printedObjs": [
+   42
+  ],
+  "text": "Fork\nYou stand at a point of decision on a road which makes a wide fork to the northeast and southeast, circling the base of the Lonely Mountain, which looms high overhead to the east. A very long and winding road starts here and stretches out of sight to the west through low, smoky hills.\n \n> ",
+  "ts": "2026-10-24T16:13:55.890Z"
+ },
+ "scenery @0:examine blorb spell#7": {
+  "tag": "scenery",
+  "id": 193,
+  "name": "blorb spell",
+  "step": 0,
+  "expect": 1,
+  "bit": 7,
+  "cmd": "examine blorb spell",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   7,
+   18
+  ],
+  "after": [
+   4,
+   7,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 144,
+  "here": 42,
+  "opsOnId": [
+   [
+    193,
+    16,
+    0,
+    30789
+   ],
+   [
+    193,
+    11,
+    0,
+    30039
+   ],
+   [
+    193,
+    14,
+    0,
+    30039
+   ]
+  ],
+  "nOps": 24,
+  "printedObjs": [],
+  "text": "safely protect a small object as though in a strong box\n \n> ",
+  "ts": "2026-10-24T16:13:56.464Z"
+ },
+ "scenery @0:look#8": {
+  "tag": "scenery",
+  "id": 144,
+  "name": "spell book",
+  "step": 0,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   12,
+   15,
+   18,
+   19,
+   21
+  ],
+  "after": [
+   12,
+   15,
+   18,
+   19,
+   21
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 55,
+  "here": 42,
+  "opsOnId": [
+   [
+    144,
+    12,
+    1,
+    30899
+   ],
+   [
+    144,
+    16,
+    0,
+    30865
+   ]
+  ],
+  "nOps": 11,
+  "printedObjs": [
+   42
+  ],
+  "text": "Fork\nYou stand at a point of decision on a road which makes a wide fork to the northeast and southeast, circling the base of the Lonely Mountain, which looms high overhead to the east. A very long and winding road starts here and stretches out of sight to the west through low, smoky hills.\n \n> ",
+  "ts": "2026-10-24T16:13:57.034Z"
+ },
+ "scenery @0:examine spell book#9": {
+  "tag": "scenery",
+  "id": 144,
+  "name": "spell book",
+  "step": 0,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "examine spell book",
+  "verdict": "NOTEST",
+  "before": [
+   12,
+   15,
+   18,
+   19,
+   21
+  ],
+  "after": [
+   12,
+   15,
+   18,
+   19,
+   21
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 55,
+  "here": 42,
+  "opsOnId": [
+   [
+    144,
+    16,
+    0,
+    30789
+   ],
+   [
+    144,
+    12,
+    1,
+    30051
+   ],
+   [
+    144,
+    14,
+    0,
+    30063
+   ],
+   [
+    144,
+    11,
+    0,
+    30073
+   ],
+   [
+    144,
+    12,
+    1,
+    30899
+   ],
+   [
+    144,
+    16,
+    0,
+    30865
+   ]
+  ],
+  "nOps": 25,
+  "printedObjs": [],
+  "text": "The title is \"My Spell Book\". The book looks pretty new, and it doesn't seem to have much written in it yet. There are some spells written in the book in glowing letters, with marginal notes about how to cast them and what their effects are.\nThe sun has now risen above the hills.\n \n> ",
+  "ts": "2026-10-24T16:13:57.636Z"
+ },
+ "scenery @2:look#10": {
+  "tag": "scenery",
+  "id": 85,
+  "name": "oven",
+  "step": 2,
+  "expect": 1,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   7,
+   9,
+   21
+  ],
+  "after": [
+   7,
+   9,
+   21
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 244,
+  "opsOnId": [
+   [
+    85,
+    16,
+    0,
+    31896
+   ],
+   [
+    85,
+    15,
+    0,
+    31896
+   ],
+   [
+    85,
+    16,
+    0,
+    32001
+   ],
+   [
+    85,
+    15,
+    0,
+    32001
+   ],
+   [
+    85,
+    7,
+    1,
+    32001
+   ],
+   [
+    85,
+    16,
+    0,
+    37967
+   ],
+   [
+    85,
+    10,
+    0,
+    37967
+   ],
+   [
+    85,
+    12,
+    0,
+    37967
+   ]
+  ],
+  "nOps": 34,
+  "printedObjs": [
+   244
+  ],
+  "text": "Inside Shack\nThe inside of the shack is a shambles. An overturned table and bench, and a few broken windows remain. An oven is the only fixture that's even recognizable. The door is to the south.\nThe top of a battered lantern is partially visible behind the overturned table.\nAn empty jug lies in a corner of the room, against the overturned table.\n \n> ",
+  "ts": "2026-10-24T16:13:59.404Z"
+ },
+ "scenery @2:examine oven#11": {
+  "tag": "scenery",
+  "id": 85,
+  "name": "oven",
+  "step": 2,
+  "expect": 1,
+  "bit": 7,
+  "cmd": "examine oven",
+  "verdict": "NOTEST",
+  "before": [
+   7,
+   9,
+   21
+  ],
+  "after": [
+   7,
+   9,
+   21
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 244,
+  "opsOnId": [
+   [
+    85,
+    16,
+    0,
+    30789
+   ],
+   [
+    85,
+    12,
+    0,
+    30051
+   ],
+   [
+    85,
+    10,
+    0,
+    30051
+   ]
+  ],
+  "nOps": 27,
+  "printedObjs": [],
+  "text": "Strangely, the oven is still slightly warm, as if it had been used recently.\n \n> ",
+  "ts": "2026-10-24T16:13:59.996Z"
+ },
+ "scenery @2:look#12": {
+  "tag": "scenery",
+  "id": 19,
+  "name": "jug",
+  "step": 2,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "FALSE",
+  "before": [
+   10,
+   12,
+   19,
+   21
+  ],
+  "after": [
+   10,
+   12,
+   19,
+   21
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 244,
+  "opsOnId": [
+   [
+    19,
+    16,
+    0,
+    31896
+   ],
+   [
+    19,
+    15,
+    0,
+    31896
+   ],
+   [
+    19,
+    7,
+    0,
+    31896
+   ],
+   [
+    19,
+    22,
+    0,
+    31563
+   ],
+   [
+    19,
+    16,
+    0,
+    37967
+   ],
+   [
+    19,
+    10,
+    1,
+    37967
+   ],
+   [
+    19,
+    16,
+    0,
+    32001
+   ],
+   [
+    19,
+    15,
+    0,
+    32001
+   ]
+  ],
+  "nOps": 34,
+  "printedObjs": [
+   244
+  ],
+  "text": "Inside Shack\nThe inside of the shack is a shambles. An overturned table and bench, and a few broken windows remain. An oven is the only fixture that's even recognizable. The door is to the south.\nThe top of a battered lantern is partially visible behind the overturned table.\nAn empty jug lies in a corner of the room, against the overturned table.\n \n> ",
+  "ts": "2026-10-24T16:14:00.608Z"
+ },
+ "scenery @2:examine jug#13": {
+  "tag": "scenery",
+  "id": 19,
+  "name": "jug",
+  "step": 2,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "examine jug",
+  "verdict": "NOTEST",
+  "before": [
+   10,
+   12,
+   19,
+   21
+  ],
+  "after": [
+   10,
+   12,
+   19,
+   21
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 244,
+  "opsOnId": [
+   [
+    19,
+    16,
+    0,
+    30789
+   ]
+  ],
+  "nOps": 27,
+  "printedObjs": [],
+  "text": "The jug is empty.\n \n> ",
+  "ts": "2026-10-24T16:14:01.237Z"
+ },
+ "scenery @2:look#14": {
+  "tag": "scenery",
+  "id": 94,
+  "name": "battered lantern",
+  "step": 2,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "FALSE",
+  "before": [
+   19
+  ],
+  "after": [
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 244,
+  "opsOnId": [
+   [
+    94,
+    16,
+    0,
+    31896
+   ],
+   [
+    94,
+    15,
+    0,
+    31896
+   ],
+   [
+    94,
+    7,
+    0,
+    31896
+   ],
+   [
+    94,
+    22,
+    0,
+    31563
+   ],
+   [
+    94,
+    16,
+    0,
+    37967
+   ],
+   [
+    94,
+    10,
+    0,
+    37967
+   ],
+   [
+    94,
+    12,
+    0,
+    37967
+   ],
+   [
+    94,
+    16,
+    0,
+    32001
+   ],
+   [
+    94,
+    15,
+    0,
+    32001
+   ]
+  ],
+  "nOps": 34,
+  "printedObjs": [
+   244
+  ],
+  "text": "Inside Shack\nThe inside of the shack is a shambles. An overturned table and bench, and a few broken windows remain. An oven is the only fixture that's even recognizable. The door is to the south.\nThe top of a battered lantern is partially visible behind the overturned table.\nAn empty jug lies in a corner of the room, against the overturned table.\n \n> ",
+  "ts": "2026-10-24T16:14:01.866Z"
+ },
+ "scenery @2:examine battered lantern#15": {
+  "tag": "scenery",
+  "id": 94,
+  "name": "battered lantern",
+  "step": 2,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "examine battered lantern",
+  "verdict": "NOTEST",
+  "before": [
+   19
+  ],
+  "after": [
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 244,
+  "opsOnId": [
+   [
+    94,
+    16,
+    0,
+    30789
+   ]
+  ],
+  "nOps": 27,
+  "printedObjs": [],
+  "text": "The lamp is made of brass and is old and battered. It doesn't seem likely that any use can be made of it.\n \n> ",
+  "ts": "2026-10-24T16:14:02.445Z"
+ },
+ "scenery @9:look#16": {
+  "tag": "scenery",
+  "id": 239,
+  "name": "sign",
+  "step": 9,
+  "expect": 1,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   7,
+   18
+  ],
+  "after": [
+   7,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 102,
+  "here": 102,
+  "opsOnId": [
+   [
+    239,
+    16,
+    0,
+    31896
+   ],
+   [
+    239,
+    15,
+    0,
+    31896
+   ],
+   [
+    239,
+    16,
+    0,
+    32001
+   ],
+   [
+    239,
+    15,
+    0,
+    32001
+   ],
+   [
+    239,
+    7,
+    1,
+    32001
+   ]
+  ],
+  "nOps": 14,
+  "printedObjs": [
+   102
+  ],
+  "text": "Trail Head\nYou are on the northeast side of the Lonely Mountain, walking a narrow path through rolling hills. On one side of the path is a sign and behind that, to the northeast, a winding path through the thick undergrowth. The trail continues to the southeast.\n \n> ",
+  "ts": "2026-10-24T16:14:07.119Z"
+ },
+ "scenery @9:examine sign#17": {
+  "tag": "scenery",
+  "id": 239,
+  "name": "sign",
+  "step": 9,
+  "expect": 1,
+  "bit": 7,
+  "cmd": "examine sign",
+  "verdict": "NOTEST",
+  "before": [
+   7,
+   18
+  ],
+  "after": [
+   7,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 102,
+  "here": 102,
+  "opsOnId": [
+   [
+    239,
+    16,
+    0,
+    30789
+   ]
+  ],
+  "nOps": 26,
+  "printedObjs": [],
+  "text": " \n  - Shady Brook Trail -\n \n    Old Lingolf House\n        1000 feet\n \n> ",
+  "ts": "2026-10-24T16:14:07.705Z"
+ },
+ "scenery @9:look#18": {
+  "tag": "scenery",
+  "id": 41,
+  "name": "loaf of bread",
+  "step": 9,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   15,
+   19
+  ],
+  "after": [
+   15,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 55,
+  "here": 102,
+  "opsOnId": [],
+  "nOps": 14,
+  "printedObjs": [
+   102
+  ],
+  "text": "Trail Head\nYou are on the northeast side of the Lonely Mountain, walking a narrow path through rolling hills. On one side of the path is a sign and behind that, to the northeast, a winding path through the thick undergrowth. The trail continues to the southeast.\n \n> ",
+  "ts": "2026-10-24T16:14:08.301Z"
+ },
+ "scenery @9:examine loaf of bread#19": {
+  "tag": "scenery",
+  "id": 41,
+  "name": "loaf of bread",
+  "step": 9,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "examine loaf of bread",
+  "verdict": "NOTEST",
+  "before": [
+   15,
+   19
+  ],
+  "after": [
+   15,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 55,
+  "here": 102,
+  "opsOnId": [
+   [
+    41,
+    16,
+    0,
+    30789
+   ]
+  ],
+  "nOps": 26,
+  "printedObjs": [],
+  "text": "There's an entire loaf left.\n \n> ",
+  "ts": "2026-10-24T16:14:08.879Z"
+ },
+ "scenery @10:look#20": {
+  "tag": "scenery",
+  "id": 157,
+  "name": "foundation",
+  "step": 10,
+  "expect": 1,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   7
+  ],
+  "after": [
+   7
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 89,
+  "here": 89,
+  "opsOnId": [
+   [
+    157,
+    16,
+    0,
+    31896
+   ],
+   [
+    157,
+    15,
+    0,
+    31896
+   ],
+   [
+    157,
+    16,
+    0,
+    32001
+   ],
+   [
+    157,
+    15,
+    0,
+    32001
+   ],
+   [
+    157,
+    7,
+    1,
+    32001
+   ]
+  ],
+  "nOps": 14,
+  "printedObjs": [
+   89
+  ],
+  "text": "Shady Brook\nThe trail ends here. A ruined stone foundation marks the site of the Old Lingolf House, which presumably was a monument of some sort. The trail head is off to the southwest, and a small brook flows slowly by.\n \n> ",
+  "ts": "2026-10-24T16:14:10.023Z"
+ },
+ "scenery @10:examine foundation#21": {
+  "tag": "scenery",
+  "id": 157,
+  "name": "foundation",
+  "step": 10,
+  "expect": 1,
+  "bit": 7,
+  "cmd": "examine foundation",
+  "verdict": "NOTEST",
+  "before": [
+   7
+  ],
+  "after": [
+   7
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 89,
+  "here": 89,
+  "opsOnId": [
+   [
+    157,
+    16,
+    0,
+    30789
+   ],
+   [
+    157,
+    21,
+    0,
+    31105
+   ],
+   [
+    157,
+    24,
+    0,
+    31105
+   ]
+  ],
+  "nOps": 28,
+  "printedObjs": [
+   157
+  ],
+  "text": "You see nothing special about the foundation.\n \n> ",
+  "ts": "2026-10-24T16:14:10.620Z"
+ },
+ "scenery @16:look#22": {
+  "tag": "scenery",
+  "id": 238,
+  "name": "rezrov spell",
+  "step": 16,
+  "expect": 1,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   7,
+   18
+  ],
+  "after": [
+   4,
+   7,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 25,
+  "here": 196,
+  "opsOnId": [],
+  "nOps": 9,
+  "printedObjs": [
+   196
+  ],
+  "text": "Deserted Village\nThis is the castle's village. Formerly, peasants lived here, going to their farm plots each day. Merchants and artisans made it a center of cultural activity. But now it's deserted. Or almost: there is smoke rising from a particularly decrepit hovel to the south. A path travels through the village from southwest to northeast, heading towards the castle, and a less-used trail heads north up the mountain.\n \n> ",
+  "ts": "2026-10-24T16:14:14.729Z"
+ },
+ "scenery @16:examine rezrov spell#23": {
+  "tag": "scenery",
+  "id": 238,
+  "name": "rezrov spell",
+  "step": 16,
+  "expect": 1,
+  "bit": 7,
+  "cmd": "examine rezrov spell",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   7,
+   18
+  ],
+  "after": [
+   4,
+   7,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 25,
+  "here": 196,
+  "opsOnId": [
+   [
+    238,
+    16,
+    0,
+    30789
+   ],
+   [
+    238,
+    11,
+    0,
+    30039
+   ],
+   [
+    238,
+    14,
+    0,
+    30039
+   ]
+  ],
+  "nOps": 39,
+  "printedObjs": [],
+  "text": "open even locked or enchanted objects\n \n> ",
+  "ts": "2026-10-24T16:14:15.346Z"
+ },
+ "scenery @16:look#24": {
+  "tag": "scenery",
+  "id": 25,
+  "name": "scribbled scroll",
+  "step": 16,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   10,
+   18,
+   19,
+   21,
+   28
+  ],
+  "after": [
+   3,
+   10,
+   18,
+   19,
+   21,
+   28
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 55,
+  "here": 196,
+  "opsOnId": [
+   [
+    25,
+    12,
+    0,
+    30899
+   ]
+  ],
+  "nOps": 10,
+  "printedObjs": [
+   196
+  ],
+  "text": "Deserted Village\nThis is the castle's village. Formerly, peasants lived here, going to their farm plots each day. Merchants and artisans made it a center of cultural activity. But now it's deserted. Or almost: there is smoke rising from a particularly decrepit hovel to the south. A path travels through the village from southwest to northeast, heading towards the castle, and a less-used trail heads north up the mountain.\nYour mouth is getting rather dry.\n \n> ",
+  "ts": "2026-10-24T16:14:15.921Z"
+ },
+ "scenery @16:examine scribbled scroll#25": {
+  "tag": "scenery",
+  "id": 25,
+  "name": "scribbled scroll",
+  "step": 16,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "examine scribbled scroll",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   10,
+   18,
+   19,
+   21,
+   28
+  ],
+  "after": [
+   3,
+   10,
+   18,
+   19,
+   21,
+   28
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 55,
+  "here": 196,
+  "opsOnId": [
+   [
+    25,
+    16,
+    0,
+    30789
+   ],
+   [
+    25,
+    12,
+    0,
+    30051
+   ],
+   [
+    25,
+    10,
+    1,
+    30051
+   ],
+   [
+    25,
+    14,
+    0,
+    30051
+   ],
+   [
+    25,
+    11,
+    0,
+    30073
+   ],
+   [
+    25,
+    12,
+    0,
+    30899
+   ]
+  ],
+  "nOps": 41,
+  "printedObjs": [
+   238
+  ],
+  "text": "The scroll reads \"rezrov spell: open even locked or enchanted objects\".\n \n> ",
+  "ts": "2026-10-24T16:14:16.491Z"
+ },
+ "scenery @16:look#26": {
+  "tag": "scenery",
+  "id": 182,
+  "name": "quantity of water",
+  "step": 16,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   19
+  ],
+  "after": [
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 19,
+  "here": 196,
+  "opsOnId": [],
+  "nOps": 9,
+  "printedObjs": [
+   196
+  ],
+  "text": "Deserted Village\nThis is the castle's village. Formerly, peasants lived here, going to their farm plots each day. Merchants and artisans made it a center of cultural activity. But now it's deserted. Or almost: there is smoke rising from a particularly decrepit hovel to the south. A path travels through the village from southwest to northeast, heading towards the castle, and a less-used trail heads north up the mountain.\n \n> ",
+  "ts": "2026-10-24T16:14:17.110Z"
+ },
+ "scenery @16:examine quantity of water#27": {
+  "tag": "scenery",
+  "id": 182,
+  "name": "quantity of water",
+  "step": 16,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "examine quantity of water",
+  "verdict": "NOTEST",
+  "before": [
+   19
+  ],
+  "after": [
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 19,
+  "here": 196,
+  "opsOnId": [
+   [
+    182,
+    16,
+    0,
+    30789
+   ],
+   [
+    182,
+    11,
+    0,
+    30039
+   ],
+   [
+    182,
+    14,
+    0,
+    30039
+   ],
+   [
+    182,
+    21,
+    0,
+    31092
+   ],
+   [
+    182,
+    24,
+    0,
+    31092
+   ]
+  ],
+  "nOps": 41,
+  "printedObjs": [
+   182
+  ],
+  "text": "You see nothing special about the quantity of water.\n \n> ",
+  "ts": "2026-10-24T16:14:17.682Z"
+ },
+ "scenery @29:look#28": {
+  "tag": "scenery",
+  "id": 234,
+  "name": "shredded scroll",
+  "step": 29,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   16,
+   18,
+   19
+  ],
+  "after": [
+   16,
+   18,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 112,
+  "here": 123,
+  "opsOnId": [
+   [
+    234,
+    16,
+    1,
+    31896
+   ],
+   [
+    234,
+    16,
+    1,
+    32001
+   ]
+  ],
+  "nOps": 50,
+  "printedObjs": [
+   123
+  ],
+  "text": "Jewel Room\nThis fabulous room commands a magnificent view of the Lonely Mountain which lies to the north and west. The room itself is filled with beautiful chests and cabinets which once contained precious jewels and other objets d'art. These are empty. Winding stone stairs lead down to the base of the tower.\nThere is an ornamented egg here, both beautiful and complex. It is carefully crafted and bears further examination.\n \n> ",
+  "ts": "2026-10-24T16:15:52.145Z"
+ },
+ "scenery @47:look#29": {
+  "tag": "scenery",
+  "id": 206,
+  "name": "slightly crumpled scroll",
+  "step": 47,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "FALSE",
+  "before": [
+   3,
+   10,
+   18,
+   19,
+   21,
+   28
+  ],
+  "after": [
+   3,
+   10,
+   18,
+   19,
+   21,
+   28
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 95,
+  "here": 95,
+  "opsOnId": [
+   [
+    206,
+    16,
+    0,
+    30865
+   ],
+   [
+    206,
+    16,
+    0,
+    31896
+   ],
+   [
+    206,
+    15,
+    0,
+    31896
+   ],
+   [
+    206,
+    7,
+    0,
+    31896
+   ],
+   [
+    206,
+    22,
+    0,
+    31563
+   ],
+   [
+    206,
+    16,
+    0,
+    37967
+   ],
+   [
+    206,
+    10,
+    1,
+    37967
+   ],
+   [
+    206,
+    16,
+    0,
+    32001
+   ],
+   [
+    206,
+    15,
+    0,
+    32001
+   ]
+  ],
+  "nOps": 23,
+  "printedObjs": [
+   95
+  ],
+  "text": "Forest\nYou are in a dark forest, just north of a rusted gate. Except to the east and south, the forest is thick all around you.\nDiscarded beneath a nearby tree is a slightly crumpled scroll.\n \n> ",
+  "ts": "2026-10-24T16:16:03.243Z"
+ },
+ "scenery @52:look#30": {
+  "tag": "scenery",
+  "id": 245,
+  "name": "faded scroll",
+  "step": 52,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   10,
+   18,
+   19,
+   21,
+   28
+  ],
+  "after": [
+   3,
+   10,
+   18,
+   19,
+   21,
+   28
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 55,
+  "here": 95,
+  "opsOnId": [
+   [
+    245,
+    16,
+    0,
+    30865
+   ]
+  ],
+  "nOps": 9,
+  "printedObjs": [
+   95
+  ],
+  "text": "Forest\nYou are in a dark forest, just north of a rusted gate. Except to the east and south, the forest is thick all around you.\n \n> ",
+  "ts": "2026-10-24T16:16:06.683Z"
+ },
+ "scenery @55:look#31": {
+  "tag": "scenery",
+  "id": 235,
+  "name": "damp scroll",
+  "step": 55,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   10,
+   16,
+   18,
+   19,
+   21,
+   28
+  ],
+  "after": [
+   3,
+   10,
+   16,
+   18,
+   19,
+   21,
+   28
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 118,
+  "here": 32,
+  "opsOnId": [
+   [
+    235,
+    16,
+    1,
+    31896
+   ],
+   [
+    235,
+    16,
+    1,
+    32001
+   ]
+  ],
+  "nOps": 27,
+  "printedObjs": [
+   32
+  ],
+  "text": "Swamp\nYou are in a thick forest shading into a deep and miasmic swamp. The ground is very wet and boggy here, and footing is treacherous. Lily pads cover the surface of the water, and frogs abound. Things look drier to the west.\nThe sounds of frogs and other swamp dwellers fill the air.\n \n> ",
+  "ts": "2026-10-24T16:16:08.974Z"
+ },
+ "scenery @64:look#32": {
+  "tag": "scenery",
+  "id": 20,
+  "name": "dusty book",
+  "step": 64,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "FALSE",
+  "before": [
+   12,
+   18,
+   19,
+   21
+  ],
+  "after": [
+   12,
+   18,
+   19,
+   21
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 146,
+  "here": 146,
+  "opsOnId": [
+   [
+    20,
+    16,
+    0,
+    31896
+   ],
+   [
+    20,
+    15,
+    0,
+    31896
+   ],
+   [
+    20,
+    7,
+    0,
+    31896
+   ],
+   [
+    20,
+    22,
+    0,
+    31563
+   ],
+   [
+    20,
+    16,
+    0,
+    37967
+   ],
+   [
+    20,
+    10,
+    0,
+    37967
+   ],
+   [
+    20,
+    12,
+    1,
+    37967
+   ],
+   [
+    20,
+    16,
+    0,
+    32001
+   ],
+   [
+    20,
+    15,
+    0,
+    32001
+   ],
+   [
+    20,
+    16,
+    0,
+    30789
+   ],
+   [
+    20,
+    8,
+    0,
+    30850
+   ],
+   [
+    20,
+    12,
+    1,
+    30051
+   ],
+   [
+    20,
+    14,
+    0,
+    30063
+   ],
+   [
+    20,
+    11,
+    0,
+    30073
+   ]
+  ],
+  "nOps": 149,
+  "printedObjs": [
+   146
+  ],
+  "text": "Library\nThis is a library, or rather it was until it was ransacked and despoiled. Most of the contents of the room have been burned in a huge bonfire in the center of the room. Hundreds of charred and empty tubes are scattered about, as if by someone searching, so ashes are strewn about. There are rat tracks in the ashes.\nTo the south you can hear the sound of a group of low, guttural voices.\nAmid the tubes is an old and dusty book.\n \n> ",
+  "ts": "2026-10-24T16:16:14.809Z"
+ },
+ "scenery @65:look#33": {
+  "tag": "scenery",
+  "id": 154,
+  "name": "frayed scroll",
+  "step": 65,
+  "expect": 0,
+  "bit": 7,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   10,
+   16,
+   18,
+   19,
+   21,
+   28
+  ],
+  "after": [
+   3,
+   10,
+   16,
+   18,
+   19,
+   21,
+   28
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 210,
+  "here": 146,
+  "opsOnId": [
+   [
+    154,
+    16,
+    1,
+    31896
+   ],
+   [
+    154,
+    16,
+    1,
+    32001
+   ],
+   [
+    154,
+    16,
+    1,
+    30789
+   ],
+   [
+    154,
+    11,
+    0,
+    30039
+   ],
+   [
+    154,
+    14,
+    0,
+    30039
+   ]
+  ],
+  "nOps": 169,
+  "printedObjs": [
+   146
+  ],
+  "text": "Library\nThis is a library, or rather it was until it was ransacked and despoiled. Most of the contents of the room have been burned in a huge bonfire in the center of the room. Hundreds of charred and empty tubes are scattered about, as if by someone searching, so ashes are strewn about. There are rat tracks in the ashes.\nTo the south you can hear the sound of a group of low, guttural voices.\nAmid the tubes is an old and dusty book.\nInspection has revealed that the tracks lead into a small hole in the wall.\n \n> ",
+  "ts": "2026-10-24T16:16:15.969Z"
+ }
+}

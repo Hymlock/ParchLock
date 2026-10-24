@@ -1,0 +1,25 @@
+{
+ "key": "infidel",
+ "game": "Infidel.z3.js",
+ "bit": 18,
+ "tmpl": "look",
+ "tag": "scenery",
+ "tests": [
+  {
+   "id": 31,
+   "name": "knapsack",
+   "step": 11,
+   "expect": 0,
+   "bit": 18,
+   "cmd": "look"
+  },
+  {
+   "id": 32,
+   "name": "rope",
+   "step": 11,
+   "expect": 0,
+   "bit": 18,
+   "cmd": "look"
+  }
+ ]
+}

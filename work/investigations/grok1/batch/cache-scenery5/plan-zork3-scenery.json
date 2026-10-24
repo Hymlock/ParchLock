@@ -1,0 +1,57 @@
+{
+ "key": "zork3",
+ "game": "Zork3-TheDungeonMaster.z3.js",
+ "bit": 25,
+ "tmpl": "look",
+ "tag": "scenery",
+ "tests": [
+  {
+   "id": 41,
+   "name": "torch",
+   "step": 28,
+   "expect": 0,
+   "bit": 25,
+   "cmd": "look"
+  },
+  {
+   "id": 17,
+   "name": "Frobozz Magic Grue Repellent",
+   "step": 33,
+   "expect": 0,
+   "bit": 25,
+   "cmd": "look"
+  },
+  {
+   "id": 7,
+   "name": "strange key",
+   "step": 49,
+   "expect": 0,
+   "bit": 25,
+   "cmd": "look"
+  },
+  {
+   "id": 29,
+   "name": "chest",
+   "step": 60,
+   "expect": 0,
+   "bit": 25,
+   "cmd": "look"
+  },
+  {
+   "id": 251,
+   "name": "oxm",
+   "step": 60,
+   "expect": 0,
+   "bit": 25,
+   "cmd": "look"
+  },
+  {
+   "id": 27,
+   "name": "man",
+   "step": 68,
+   "expect": 0,
+   "bit": 25,
+   "cmd": "look"
+  }
+ ]
+}

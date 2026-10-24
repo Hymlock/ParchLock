@@ -1,0 +1,6 @@
+plundered scenery @6 look #8 FALSE "Cabin\n   You are in an officer's cabin, lit by the firelight glowing through a p"
+plundered scenery @11 look #215 FALSE "Deck\n   The deck is an avalanche of noise and blood. Lit by roaring fires, silho"
+plundered scenery @13 look #206 NOTEST "Captain's Quarters, on the bed\n   The room has a masculine air, with ebony panel"
+plundered scenery @19 look #125 FALSE "Landing\n   You are on the landing of a steep stairway heading up and down. A lar"
+plundered scenery @21 look #130 NOTEST "Sleeping Cupboard\n   The bed is softer than it looks, plumped up with fresh stra"
+plundered scenery @21 look #194 NOTEST "Sleeping Cupboard\n   The bed is softer than it looks, plumped up with fresh stra"

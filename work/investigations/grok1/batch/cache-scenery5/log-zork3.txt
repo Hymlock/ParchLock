@@ -1,0 +1,6 @@
+zork3 scenery @28 look #41 FALSE "Scenic Vista\nYou are in a small chamber carved in the rock, with the sole exit t"
+zork3 scenery @33 look #17 FALSE "Room 8\nThis is a small chamber carved out of the rock at the end of a short craw"
+zork3 scenery @49 look #7 FALSE "Key Room\nYou are between some rock and a dark place, The room is lit dimly from "
+zork3 scenery @60 look #29 FALSE "Cliff Ledge\nThis is a rock-strewn ledge near the base of a tall cliff. The botto"
+zork3 scenery @60 look #251 NOTEST "Cliff Ledge\nThis is a rock-strewn ledge near the base of a tall cliff. The botto"
+zork3 scenery @68 look #27 FALSE "Cliff\nThis is a remarkable spot in the dungeon. Perhaps two hundred feet above y"

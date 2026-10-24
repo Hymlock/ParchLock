@@ -1,0 +1,1976 @@
+{
+ "scenery @1:look#0": {
+  "tag": "scenery",
+  "id": 69,
+  "name": "coffer",
+  "step": 1,
+  "expect": 1,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   9,
+   10,
+   15,
+   24
+  ],
+  "after": [
+   9,
+   10,
+   15,
+   24
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 80,
+  "here": 80,
+  "opsOnId": [
+   [
+    69,
+    20,
+    0,
+    42947
+   ],
+   [
+    69,
+    9,
+    1,
+    42969
+   ],
+   [
+    69,
+    20,
+    0,
+    42947
+   ],
+   [
+    69,
+    9,
+    1,
+    42969
+   ],
+   [
+    69,
+    20,
+    0,
+    42947
+   ],
+   [
+    69,
+    9,
+    1,
+    42969
+   ],
+   [
+    69,
+    24,
+    1,
+    42732
+   ],
+   [
+    69,
+    20,
+    0,
+    42947
+   ],
+   [
+    69,
+    31,
+    0,
+    42452
+   ],
+   [
+    69,
+    24,
+    1,
+    42452
+   ],
+   [
+    69,
+    16,
+    0,
+    42452
+   ],
+   [
+    69,
+    14,
+    0,
+    42452
+   ]
+  ],
+  "nOps": 29,
+  "printedObjs": [
+   80,
+   213
+  ],
+  "text": "Cabin, on the bed\n   You are in an officer's cabin, lit by the firelight glowing through a porthole. A door is to starboard. Except for the built-in bed, the room seems to have been emptied thoroughly, if hurriedly.\n   \"Cap'n Jamison! We've got 'em!\" cries a rough voice.\n \n> ",
+  "ts": "2026-10-24T16:13:36.370Z"
+ },
+ "scenery @1:examine coffer#1": {
+  "tag": "scenery",
+  "id": 69,
+  "name": "coffer",
+  "step": 1,
+  "expect": 1,
+  "bit": 9,
+  "cmd": "examine coffer",
+  "verdict": "NOTEST",
+  "before": [
+   9,
+   10,
+   15,
+   24
+  ],
+  "after": [
+   9,
+   10,
+   15,
+   24
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 80,
+  "here": 80,
+  "opsOnId": [
+   [
+    69,
+    20,
+    0,
+    30255
+   ],
+   [
+    69,
+    16,
+    0,
+    29322
+   ],
+   [
+    69,
+    14,
+    0,
+    29322
+   ],
+   [
+    69,
+    7,
+    0,
+    22704
+   ],
+   [
+    69,
+    31,
+    0,
+    22713
+   ],
+   [
+    69,
+    13,
+    0,
+    54978
+   ],
+   [
+    69,
+    16,
+    0,
+    53099
+   ]
+  ],
+  "nOps": 24,
+  "printedObjs": [],
+  "text": "It is a small heavy chest, with a lock. It is closed.\n   With a creak and a crash, somewhere a mast falls to the deck.\n \n> ",
+  "ts": "2026-10-24T16:13:36.969Z"
+ },
+ "scenery @1:look#2": {
+  "tag": "scenery",
+  "id": 213,
+  "name": "bed",
+  "step": 1,
+  "expect": 1,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   9,
+   15,
+   16,
+   18,
+   24,
+   28
+  ],
+  "after": [
+   9,
+   15,
+   16,
+   18,
+   24,
+   28
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 80,
+  "here": 80,
+  "opsOnId": [
+   [
+    213,
+    28,
+    1,
+    42132
+   ],
+   [
+    213,
+    8,
+    0,
+    42132
+   ],
+   [
+    213,
+    4,
+    0,
+    20087
+   ],
+   [
+    213,
+    20,
+    0,
+    42947
+   ],
+   [
+    213,
+    20,
+    0,
+    42947
+   ],
+   [
+    213,
+    20,
+    0,
+    42947
+   ],
+   [
+    213,
+    24,
+    1,
+    42732
+   ],
+   [
+    213,
+    20,
+    0,
+    42947
+   ],
+   [
+    213,
+    31,
+    0,
+    42452
+   ],
+   [
+    213,
+    24,
+    1,
+    42452
+   ],
+   [
+    213,
+    16,
+    1,
+    42452
+   ],
+   [
+    213,
+    15,
+    1,
+    42478
+   ],
+   [
+    213,
+    28,
+    1,
+    22924
+   ]
+  ],
+  "nOps": 30,
+  "printedObjs": [
+   80,
+   213
+  ],
+  "text": "Cabin, on the bed\n   You are in an officer's cabin, lit by the firelight glowing through a porthole. A door is to starboard. Except for the built-in bed, the room seems to have been emptied thoroughly, if hurriedly.\n \n> ",
+  "ts": "2026-10-24T16:13:37.555Z"
+ },
+ "scenery @1:examine bed#3": {
+  "tag": "scenery",
+  "id": 213,
+  "name": "bed",
+  "step": 1,
+  "expect": 1,
+  "bit": 9,
+  "cmd": "examine bed",
+  "verdict": "NOTEST",
+  "before": [
+   9,
+   15,
+   16,
+   18,
+   24,
+   28
+  ],
+  "after": [
+   9,
+   15,
+   16,
+   18,
+   24,
+   28
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 80,
+  "here": 80,
+  "opsOnId": [
+   [
+    213,
+    20,
+    0,
+    30225
+   ],
+   [
+    213,
+    16,
+    1,
+    29297
+   ],
+   [
+    213,
+    18,
+    1,
+    29312
+   ],
+   [
+    213,
+    7,
+    0,
+    22684
+   ],
+   [
+    213,
+    31,
+    0,
+    22704
+   ],
+   [
+    213,
+    31,
+    0,
+    33442
+   ],
+   [
+    213,
+    26,
+    0,
+    33473
+   ],
+   [
+    213,
+    18,
+    1,
+    33473
+   ],
+   [
+    213,
+    31,
+    0,
+    35485
+   ],
+   [
+    213,
+    8,
+    0,
+    43075
+   ],
+   [
+    213,
+    4,
+    0,
+    20087
+   ],
+   [
+    213,
+    28,
+    1,
+    22924
+   ]
+  ],
+  "nOps": 30,
+  "printedObjs": [
+   15,
+   213
+  ],
+  "text": "Other than yourself, you can see nothing on the bed.\n \n> ",
+  "ts": "2026-10-24T16:13:38.153Z"
+ },
+ "scenery @1:look#4": {
+  "tag": "scenery",
+  "id": 11,
+  "name": "smelling salts",
+  "step": 1,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   23
+  ],
+  "after": [
+   2,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 223,
+  "here": 80,
+  "opsOnId": [],
+  "nOps": 33,
+  "printedObjs": [
+   80,
+   213,
+   69
+  ],
+  "text": "Cabin, on the bed\n   You are in an officer's cabin, lit by the firelight glowing through a porthole. A door is to starboard. Except for the built-in bed, the room seems to have been emptied thoroughly, if hurriedly.\n   Suddenly, the ship lurches to one side, throwing you out of the bed. A coffer slides from under the bed and bumps against your foot.\n   \"The Falcon! The Falcon conquers!\" yells someone.\n \n> ",
+  "ts": "2026-10-24T16:13:38.758Z"
+ },
+ "scenery @1:examine smelling salts#5": {
+  "tag": "scenery",
+  "id": 11,
+  "name": "smelling salts",
+  "step": 1,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "examine smelling salts",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   23
+  ],
+  "after": [
+   2,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 223,
+  "here": 80,
+  "opsOnId": [
+   [
+    11,
+    20,
+    0,
+    30225
+   ],
+   [
+    11,
+    7,
+    0,
+    22684
+   ],
+   [
+    11,
+    31,
+    0,
+    22704
+   ]
+  ],
+  "nOps": 21,
+  "printedObjs": [
+   11
+  ],
+  "text": "You always carry your smelling salts, for emergencies. There is a small tag on one side of them.\n   \"Aaieeee!\" echoes a scream, followed by several grunts and thumps.\n \n> ",
+  "ts": "2026-10-24T16:13:39.356Z"
+ },
+ "scenery @1:look#6": {
+  "tag": "scenery",
+  "id": 13,
+  "name": "your kid slippers",
+  "step": 1,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   4,
+   21,
+   22
+  ],
+  "after": [
+   2,
+   4,
+   21,
+   22
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 192,
+  "here": 80,
+  "opsOnId": [],
+  "nOps": 38,
+  "printedObjs": [
+   80,
+   69
+  ],
+  "text": "Cabin\n   You are in an officer's cabin, lit by the firelight glowing through a porthole. A door is to starboard. Except for the built-in bed, the room seems to have been emptied thoroughly, if hurriedly.\n   You can see a coffer here.\n   You recognize a voice from far away, \"Don't take that! Look in the cabin at the stern -- you'll find some fun there!\" It sounds like Davis.\n \n> ",
+  "ts": "2026-10-24T16:13:39.928Z"
+ },
+ "scenery @1:examine your kid slippers#7": {
+  "tag": "scenery",
+  "id": 13,
+  "name": "your kid slippers",
+  "step": 1,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "examine your kid slippers",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   4,
+   21,
+   22
+  ],
+  "after": [
+   2,
+   4,
+   21,
+   22
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 192,
+  "here": 80,
+  "opsOnId": [
+   [
+    13,
+    20,
+    0,
+    30225
+   ]
+  ],
+  "nOps": 49,
+  "printedObjs": [],
+  "text": "You can't see any your kid slippers here!\n \n> ",
+  "ts": "2026-10-24T16:13:40.499Z"
+ },
+ "scenery @1:look#8": {
+  "tag": "scenery",
+  "id": 17,
+  "name": "linen chemise",
+  "step": 1,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   21,
+   22,
+   23
+  ],
+  "after": [
+   6,
+   21,
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 192,
+  "here": 80,
+  "opsOnId": [],
+  "nOps": 36,
+  "printedObjs": [
+   80,
+   69
+  ],
+  "text": "Cabin\n   You are in an officer's cabin, lit by the firelight glowing through a porthole. A door is to starboard. Except for the built-in bed, the room seems to have been emptied thoroughly, if hurriedly.\n   You can see a coffer here.\n \n> ",
+  "ts": "2026-10-24T16:13:41.072Z"
+ },
+ "scenery @1:examine linen chemise#9": {
+  "tag": "scenery",
+  "id": 17,
+  "name": "linen chemise",
+  "step": 1,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "examine linen chemise",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   21,
+   22,
+   23
+  ],
+  "after": [
+   6,
+   21,
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 192,
+  "here": 80,
+  "opsOnId": [
+   [
+    17,
+    20,
+    0,
+    30225
+   ],
+   [
+    17,
+    7,
+    0,
+    22684
+   ],
+   [
+    17,
+    31,
+    0,
+    22704
+   ],
+   [
+    17,
+    6,
+    1,
+    96385
+   ]
+  ],
+  "nOps": 24,
+  "printedObjs": [
+   217
+  ],
+  "text": "It's covered by other clothes.\n   Crash! You whirl around to see the door shatter, kicked by a hulking man, his twisted visage blackened with soot and blood. \"Me name's Andy Crulley, and ladies learn to love me,\" sniggers the pirate.\n \n> ",
+  "ts": "2026-10-24T16:13:41.643Z"
+ },
+ "scenery @1:look#10": {
+  "tag": "scenery",
+  "id": 84,
+  "name": "cotton frock",
+  "step": 1,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   21,
+   22,
+   23
+  ],
+  "after": [
+   21,
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 192,
+  "here": 80,
+  "opsOnId": [],
+  "nOps": 49,
+  "printedObjs": [
+   80,
+   8,
+   69
+  ],
+  "text": "Cabin\n   You are in an officer's cabin, lit by the firelight glowing through a porthole. A door is to starboard. Except for the built-in bed, the room seems to have been emptied thoroughly, if hurriedly.\n   Crulley the pirate, hook raised, leering, comes toward you.\n   You can see a coffer here.\n   \"Avast me, but ain't ye a beauty,\" sniggers the pirate. His breath is heavy with rum.\n \n> ",
+  "ts": "2026-10-24T16:13:42.216Z"
+ },
+ "scenery @1:examine cotton frock#11": {
+  "tag": "scenery",
+  "id": 84,
+  "name": "cotton frock",
+  "step": 1,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "examine cotton frock",
+  "verdict": "NOTEST",
+  "before": [
+   21,
+   22,
+   23
+  ],
+  "after": [
+   6,
+   21,
+   22,
+   23
+  ],
+  "set": [
+   6
+  ],
+  "cleared": [],
+  "parent": 192,
+  "here": 80,
+  "opsOnId": [
+   [
+    84,
+    20,
+    0,
+    30225
+   ],
+   [
+    84,
+    7,
+    0,
+    22684
+   ],
+   [
+    84,
+    31,
+    0,
+    22704
+   ],
+   [
+    84,
+    6,
+    0,
+    95231
+   ],
+   [
+    84,
+    13,
+    0,
+    95231
+   ]
+  ],
+  "nOps": 25,
+  "printedObjs": [
+   8
+  ],
+  "text": "It is your favorite old frock, looking rather bedraggled without its hoops, which you hadn't time to put on during the pirate attack. The worn fabric of the skirt often catches on things, tearing.\n   \"They calls me Andy, but I'm really randy,\" sniggers the pirate.\n   Crulley drags you, despite your resistance, towards him. Then suddenly he grunts, stiffens and slumps into your arms. Stunned, Crulley collapses at your feet, his eyes rolling.\n   A tall form blocks the shattered door, one fist still raised from striking your attacker. You catch a glimpse of the hard masculinity of his broad shoulders, the implied power in the scar that etches the stranger's jaw, and feel tremors course through your veins. Then you realize how ragged are his shirt, patched breeches and high boots. Intuitively, you understand -- he is the dreaded Falcon, scourge of the sea! Alas, your fate is sealed. Resigned, you meet his sea-blue eyes.\n   With a creak and a crash, somewhere a mast falls to the deck.\n \n> ",
+  "ts": "2026-10-24T16:13:42.793Z"
+ },
+ "scenery @1:look#12": {
+  "tag": "scenery",
+  "id": 186,
+  "name": "banknote",
+  "step": 1,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   23
+  ],
+  "after": [
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 223,
+  "here": 80,
+  "opsOnId": [],
+  "nOps": 76,
+  "printedObjs": [
+   80,
+   16,
+   8,
+   69,
+   206
+  ],
+  "text": "Cabin\n   You are in an officer's cabin, lit by the firelight glowing through a porthole. A door is to starboard. Except for the built-in bed, the room seems to have been emptied thoroughly, if hurriedly.\n   The pirate captain is studying you. He has a rapier.\n   Crulley the pirate lies unconscious on the floor.\n   You can see a coffer here.\n   To your surprise, the stranger bows. \"Well met, my lady.\" His accent is cultured, his smile vibrant. \"I am Captain Nicholas Jamison, known in these waters as 'The Falcon'. Your father has sent me.\" He chuckles at your glare of distrust. \"Yes, you are like your sire. You needn't believe me untried -- I carry this.\" He hands you a missive.\n \n> ",
+  "ts": "2026-10-24T16:13:43.680Z"
+ },
+ "scenery @1:examine banknote#13": {
+  "tag": "scenery",
+  "id": 186,
+  "name": "banknote",
+  "step": 1,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "examine banknote",
+  "verdict": "NOTEST",
+  "before": [
+   23
+  ],
+  "after": [
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 223,
+  "here": 80,
+  "opsOnId": [
+   [
+    186,
+    20,
+    0,
+    30225
+   ],
+   [
+    186,
+    7,
+    0,
+    22684
+   ],
+   [
+    186,
+    31,
+    0,
+    22704
+   ],
+   [
+    186,
+    4,
+    0,
+    20087
+   ]
+  ],
+  "nOps": 30,
+  "printedObjs": [
+   186,
+   8
+  ],
+  "text": "This is the banknote that came in your game package.\n   The pirate captain glances around the empty room, then notices the coffer. \"Davis's safety box -- my men were hoping I'd find it.\" He takes it and nudges the unconscious man on the floor, \"I wonder how Crulley knew you were here? Just his bad luck? He'll be flogged when he wakes.\"\n   The pirate bows. \"My lady, may I offer my protection and my ship until your father is free?\"\n \n> ",
+  "ts": "2026-10-24T16:13:44.402Z"
+ },
+ "scenery @1:look#14": {
+  "tag": "scenery",
+  "id": 223,
+  "name": "your reticule",
+  "step": 1,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   15,
+   16,
+   21,
+   24
+  ],
+  "after": [
+   4,
+   15,
+   16,
+   21,
+   24
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 192,
+  "here": 80,
+  "opsOnId": [
+   [
+    223,
+    16,
+    1,
+    44163
+   ],
+   [
+    223,
+    20,
+    0,
+    44117
+   ]
+  ],
+  "nOps": 66,
+  "printedObjs": [
+   80,
+   69,
+   16,
+   8,
+   190
+  ],
+  "text": "Cabin\n   You are in an officer's cabin, lit by the firelight glowing through a porthole. A door is to starboard. Except for the built-in bed, the room seems to have been emptied thoroughly, if hurriedly.\n   The pirate captain is studying you. He has a coffer and a rapier.\n   Crulley the pirate lies unconscious on the floor.\n   \"We haven't time to waste. Will you come willingly or not?\" says Captain Jamison.\n   \"The Falcon! The Falcon conquers!\" yells someone.\n \n> ",
+  "ts": "2026-10-24T16:13:44.979Z"
+ },
+ "scenery @1:examine your reticule#15": {
+  "tag": "scenery",
+  "id": 223,
+  "name": "your reticule",
+  "step": 1,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "examine your reticule",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   15,
+   16,
+   21,
+   24
+  ],
+  "after": [
+   4,
+   15,
+   16,
+   21,
+   24
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 192,
+  "here": 77,
+  "opsOnId": [
+   [
+    223,
+    20,
+    0,
+    30225
+   ],
+   [
+    223,
+    16,
+    1,
+    29297
+   ],
+   [
+    223,
+    18,
+    0,
+    29312
+   ],
+   [
+    223,
+    15,
+    1,
+    29322
+   ],
+   [
+    223,
+    16,
+    1,
+    44163
+   ],
+   [
+    223,
+    20,
+    0,
+    44117
+   ],
+   [
+    223,
+    7,
+    0,
+    22684
+   ],
+   [
+    223,
+    31,
+    0,
+    22704
+   ]
+  ],
+  "nOps": 57,
+  "printedObjs": [
+   57,
+   190,
+   77
+  ],
+  "text": "You and Mama made the little drawstring bag a few months before she passed on. It's amazing how much it can hold.\n   He sighs, \"You share your father's stubborn streak. I wished not to do this.\" He leaps to your side, hauling you up onto his shoulder, and carries you out of the room. Captain Jamison sets you on your feet again on the horror of the deck.\n \nDeck\n   The deck is an avalanche of noise and blood. Lit by roaring fires, silhouetted forms crash swords, dancing around the screaming wounded.\n   Out of the smoke staggers Davis, tugging a bloodied knife from the back of a pirate. Davis's eyes gleam white from a face blackened and bloody, his lips dark red as if he has been drinking blood. He turns to face you.\n \n> ",
+  "ts": "2026-10-24T16:13:45.553Z"
+ },
+ "scenery @6:look#16": {
+  "tag": "scenery",
+  "id": 235,
+  "name": "pcc k wI'm x i sgv",
+  "step": 6,
+  "expect": 1,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   3,
+   7,
+   8,
+   9,
+   13,
+   14,
+   15,
+   17,
+   20,
+   21,
+   22,
+   23
+  ],
+  "after": [
+   2,
+   3,
+   7,
+   8,
+   9,
+   13,
+   14,
+   15,
+   17,
+   20,
+   21,
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 8,
+  "here": 169,
+  "opsOnId": [],
+  "nOps": 58,
+  "printedObjs": [
+   169,
+   131,
+   190
+  ],
+  "text": "Captain's Quarters, on the bed\n   The room has a masculine air, with ebony panelling, a large messy table, and a rumpled bed (upon which you lie). A curtain masks the forward exit and gilded woodwork decorates the sill of the tall window looking aft.\n   Captain Jamison is adjusting his clothes.\n   His look darkens. \"You should know why I hate Lafond: Some years ago, as my brother and his bride sailed to a new life in Virginia, pirates struck. Their ship was boarded, looted and burned, the women taken, never to be seen again. A sailor, the one survivor, watched as a man of Lafond's description shot my brother in the back as he tried to save the women. Lafond has now bought respectability, but he shall never buy peace.\" Jamison straightens resolutely, bows, and departs.\n \n> ",
+  "ts": "2026-10-24T16:13:49.338Z"
+ },
+ "scenery @6:examine pcc k wi'm x i sgv#17": {
+  "tag": "scenery",
+  "id": 235,
+  "name": "pcc k wI'm x i sgv",
+  "step": 6,
+  "expect": 1,
+  "bit": 9,
+  "cmd": "examine pcc k wi'm x i sgv",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   3,
+   7,
+   8,
+   9,
+   13,
+   14,
+   15,
+   17,
+   20,
+   21,
+   22,
+   23
+  ],
+  "after": [
+   2,
+   3,
+   7,
+   8,
+   9,
+   13,
+   14,
+   15,
+   17,
+   20,
+   21,
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 8,
+  "here": 169,
+  "opsOnId": [],
+  "nOps": 2,
+  "printedObjs": [],
+  "text": "[I don't know the word \"pcc.\"]\n \n> ",
+  "ts": "2026-10-24T16:13:49.908Z"
+ },
+ "scenery @8:look#18": {
+  "tag": "scenery",
+  "id": 87,
+  "name": "new ring",
+  "step": 8,
+  "expect": 1,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   9
+  ],
+  "after": [
+   9
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 190,
+  "here": 169,
+  "opsOnId": [],
+  "nOps": 41,
+  "printedObjs": [
+   169,
+   131
+  ],
+  "text": "Captain's Quarters, on the bed\n   The room has a masculine air, with ebony panelling, a large messy table, and a rumpled bed (upon which you lie). A curtain masks the forward exit and gilded woodwork decorates the sill of the tall window looking aft.\n \n> ",
+  "ts": "2026-10-24T16:13:51.618Z"
+ },
+ "scenery @8:examine new ring#19": {
+  "tag": "scenery",
+  "id": 87,
+  "name": "new ring",
+  "step": 8,
+  "expect": 1,
+  "bit": 9,
+  "cmd": "examine new ring",
+  "verdict": "NOTEST",
+  "before": [
+   9
+  ],
+  "after": [
+   9
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 190,
+  "here": 169,
+  "opsOnId": [],
+  "nOps": 57,
+  "printedObjs": [],
+  "text": "You can't see any new ring here!\n \n> ",
+  "ts": "2026-10-24T16:13:52.191Z"
+ },
+ "scenery @11:look#20": {
+  "tag": "scenery",
+  "id": 190,
+  "name": "Captain Jamison",
+  "step": 11,
+  "expect": 1,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   15,
+   16,
+   24,
+   31
+  ],
+  "after": [
+   4,
+   15,
+   16,
+   24,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 0,
+  "here": 169,
+  "opsOnId": [],
+  "nOps": 59,
+  "printedObjs": [
+   169,
+   131,
+   69
+  ],
+  "text": "Captain's Quarters, on the bed\n   The room has a masculine air, with ebony panelling, a large messy table, and a rumpled bed (upon which you lie). A curtain masks the forward exit and gilded woodwork decorates the sill of the tall window looking aft.\n   You can see a coffer here.\n \n> ",
+  "ts": "2026-10-24T16:13:54.682Z"
+ },
+ "scenery @11:examine captain jamison#21": {
+  "tag": "scenery",
+  "id": 190,
+  "name": "Captain Jamison",
+  "step": 11,
+  "expect": 1,
+  "bit": 9,
+  "cmd": "examine captain jamison",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   15,
+   16,
+   24,
+   31
+  ],
+  "after": [
+   4,
+   15,
+   16,
+   24,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 0,
+  "here": 169,
+  "opsOnId": [],
+  "nOps": 61,
+  "printedObjs": [],
+  "text": "You can't see captain Jamison here!\n \n> ",
+  "ts": "2026-10-24T16:13:55.256Z"
+ },
+ "scenery @13:look#22": {
+  "tag": "scenery",
+  "id": 16,
+  "name": "rapier",
+  "step": 13,
+  "expect": 1,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   9,
+   17,
+   23
+  ],
+  "after": [
+   9,
+   17,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 190,
+  "here": 169,
+  "opsOnId": [],
+  "nOps": 59,
+  "printedObjs": [
+   169,
+   131,
+   69
+  ],
+  "text": "Captain's Quarters, on the bed\n   The room has a masculine air, with ebony panelling, a large messy table, and a rumpled bed (upon which you lie). A curtain masks the forward exit and gilded woodwork decorates the sill of the tall window looking aft.\n   You can see a coffer here.\n   The end of a rope ladder blows past the window.\n \n> ",
+  "ts": "2026-10-24T16:13:57.236Z"
+ },
+ "scenery @13:examine rapier#23": {
+  "tag": "scenery",
+  "id": 16,
+  "name": "rapier",
+  "step": 13,
+  "expect": 1,
+  "bit": 9,
+  "cmd": "examine rapier",
+  "verdict": "NOTEST",
+  "before": [
+   9,
+   17,
+   23
+  ],
+  "after": [
+   9,
+   17,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 190,
+  "here": 169,
+  "opsOnId": [],
+  "nOps": 61,
+  "printedObjs": [],
+  "text": "You can't see any rapier here!\n \n> ",
+  "ts": "2026-10-24T16:13:57.819Z"
+ },
+ "scenery @13:look#24": {
+  "tag": "scenery",
+  "id": 27,
+  "name": "ledge",
+  "step": 13,
+  "expect": 1,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   9,
+   14,
+   15,
+   16,
+   24,
+   28
+  ],
+  "after": [
+   9,
+   14,
+   15,
+   16,
+   24,
+   28
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 169,
+  "here": 169,
+  "opsOnId": [
+   [
+    27,
+    13,
+    0,
+    56243
+   ],
+   [
+    27,
+    20,
+    0,
+    42947
+   ],
+   [
+    27,
+    9,
+    1,
+    42969
+   ],
+   [
+    27,
+    20,
+    0,
+    42947
+   ],
+   [
+    27,
+    9,
+    1,
+    42969
+   ],
+   [
+    27,
+    20,
+    0,
+    42947
+   ],
+   [
+    27,
+    9,
+    1,
+    42969
+   ],
+   [
+    27,
+    24,
+    1,
+    42732
+   ],
+   [
+    27,
+    20,
+    0,
+    42947
+   ],
+   [
+    27,
+    31,
+    0,
+    42441
+   ]
+  ],
+  "nOps": 59,
+  "printedObjs": [
+   169,
+   131,
+   69
+  ],
+  "text": "Captain's Quarters, on the bed\n   The room has a masculine air, with ebony panelling, a large messy table, and a rumpled bed (upon which you lie). A curtain masks the forward exit and gilded woodwork decorates the sill of the tall window looking aft.\n   You can see a coffer here.\n \n> ",
+  "ts": "2026-10-24T16:13:58.399Z"
+ },
+ "scenery @13:examine ledge#25": {
+  "tag": "scenery",
+  "id": 27,
+  "name": "ledge",
+  "step": 13,
+  "expect": 1,
+  "bit": 9,
+  "cmd": "examine ledge",
+  "verdict": "NOTEST",
+  "before": [
+   9,
+   14,
+   15,
+   16,
+   24,
+   28
+  ],
+  "after": [
+   9,
+   14,
+   15,
+   16,
+   24,
+   28
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 169,
+  "here": 169,
+  "opsOnId": [
+   [
+    27,
+    20,
+    0,
+    30225
+   ],
+   [
+    27,
+    7,
+    0,
+    22684
+   ],
+   [
+    27,
+    31,
+    0,
+    22704
+   ],
+   [
+    27,
+    13,
+    0,
+    57344
+   ],
+   [
+    27,
+    4,
+    0,
+    20087
+   ]
+  ],
+  "nOps": 31,
+  "printedObjs": [
+   27
+  ],
+  "text": "Tall panes of glass are inset into the ledge.\n \n> ",
+  "ts": "2026-10-24T16:13:58.972Z"
+ },
+ "scenery @13:look#26": {
+  "tag": "scenery",
+  "id": 45,
+  "name": "large cupboard",
+  "step": 13,
+  "expect": 1,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   8,
+   9,
+   15,
+   24,
+   26
+  ],
+  "after": [
+   8,
+   9,
+   15,
+   24,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 169,
+  "here": 169,
+  "opsOnId": [
+   [
+    45,
+    20,
+    0,
+    42947
+   ],
+   [
+    45,
+    9,
+    1,
+    42969
+   ],
+   [
+    45,
+    20,
+    0,
+    42947
+   ],
+   [
+    45,
+    9,
+    1,
+    42969
+   ],
+   [
+    45,
+    20,
+    0,
+    42947
+   ],
+   [
+    45,
+    9,
+    1,
+    42969
+   ],
+   [
+    45,
+    24,
+    1,
+    42732
+   ],
+   [
+    45,
+    20,
+    0,
+    42947
+   ],
+   [
+    45,
+    31,
+    0,
+    42452
+   ],
+   [
+    45,
+    24,
+    1,
+    42452
+   ],
+   [
+    45,
+    16,
+    0,
+    42452
+   ],
+   [
+    45,
+    14,
+    0,
+    42452
+   ]
+  ],
+  "nOps": 59,
+  "printedObjs": [
+   169,
+   131,
+   69
+  ],
+  "text": "Captain's Quarters, on the bed\n   The room has a masculine air, with ebony panelling, a large messy table, and a rumpled bed (upon which you lie). A curtain masks the forward exit and gilded woodwork decorates the sill of the tall window looking aft.\n   You can see a coffer here.\n \n> ",
+  "ts": "2026-10-24T16:13:59.545Z"
+ },
+ "scenery @13:examine large cupboard#27": {
+  "tag": "scenery",
+  "id": 45,
+  "name": "large cupboard",
+  "step": 13,
+  "expect": 1,
+  "bit": 9,
+  "cmd": "examine large cupboard",
+  "verdict": "NOTEST",
+  "before": [
+   8,
+   9,
+   15,
+   24,
+   26
+  ],
+  "after": [
+   8,
+   9,
+   15,
+   24,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 169,
+  "here": 169,
+  "opsOnId": [
+   [
+    45,
+    20,
+    0,
+    30225
+   ],
+   [
+    45,
+    16,
+    0,
+    29297
+   ],
+   [
+    45,
+    14,
+    0,
+    29297
+   ]
+  ],
+  "nOps": 61,
+  "printedObjs": [],
+  "text": "You can't see any large cupboard here!\n \n> ",
+  "ts": "2026-10-24T16:14:00.120Z"
+ },
+ "scenery @6:look#28": {
+  "tag": "scenery",
+  "id": 8,
+  "name": "Crulley",
+  "step": 6,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "FALSE",
+  "before": [
+   4,
+   14,
+   16,
+   19,
+   24,
+   31
+  ],
+  "after": [
+   4,
+   14,
+   16,
+   19,
+   24,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 80,
+  "here": 80,
+  "opsOnId": [
+   [
+    8,
+    20,
+    0,
+    42947
+   ],
+   [
+    8,
+    9,
+    0,
+    42969
+   ],
+   [
+    8,
+    19,
+    1,
+    42238
+   ],
+   [
+    8,
+    20,
+    0,
+    42947
+   ],
+   [
+    8,
+    9,
+    0,
+    42969
+   ],
+   [
+    8,
+    5,
+    0,
+    99645
+   ],
+   [
+    8,
+    24,
+    1,
+    42341
+   ],
+   [
+    8,
+    31,
+    1,
+    42441
+   ],
+   [
+    8,
+    20,
+    0,
+    42947
+   ],
+   [
+    8,
+    9,
+    0,
+    42969
+   ],
+   [
+    8,
+    24,
+    1,
+    42732
+   ],
+   [
+    8,
+    20,
+    0,
+    42947
+   ],
+   [
+    8,
+    19,
+    1,
+    100897
+   ]
+  ],
+  "nOps": 31,
+  "printedObjs": [
+   80,
+   8
+  ],
+  "text": "Cabin\n   You are in an officer's cabin, lit by the firelight glowing through a porthole. A door is to starboard. Except for the built-in bed, the room seems to have been emptied thoroughly, if hurriedly.\n   Crulley the pirate, hook raised, leering, comes toward you.\n   \"Avast me, but ain't ye a beauty,\" sniggers the pirate. His breath is heavy with rum.\n \n> ",
+  "ts": "2026-10-24T16:15:38.429Z"
+ },
+ "scenery @11:look#29": {
+  "tag": "scenery",
+  "id": 215,
+  "name": "Davis",
+  "step": 11,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "FALSE",
+  "before": [
+   4,
+   31
+  ],
+  "after": [
+   4,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 77,
+  "here": 77,
+  "opsOnId": [
+   [
+    215,
+    20,
+    0,
+    42947
+   ],
+   [
+    215,
+    9,
+    0,
+    42969
+   ],
+   [
+    215,
+    19,
+    0,
+    42238
+   ],
+   [
+    215,
+    20,
+    0,
+    42947
+   ],
+   [
+    215,
+    9,
+    0,
+    42969
+   ],
+   [
+    215,
+    24,
+    0,
+    42345
+   ],
+   [
+    215,
+    20,
+    0,
+    42947
+   ],
+   [
+    215,
+    9,
+    0,
+    42969
+   ],
+   [
+    215,
+    24,
+    0,
+    42732
+   ]
+  ],
+  "nOps": 25,
+  "printedObjs": [
+   77,
+   190
+  ],
+  "text": "Deck\n   The deck is an avalanche of noise and blood. Lit by roaring fires, silhouetted forms crash swords, dancing around the screaming wounded.\n   Out of the smoke staggers Davis, tugging a bloodied knife from the back of a pirate. Davis's eyes gleam white from a face blackened and bloody, his lips dark red as if he has been drinking blood. He turns to face you.\n   Davis leaps across the deck to your side, \"Free me or she dies!\" he yells, jabbing a knife up to your throat. In one smooth motion, Captain Jamison draws his rapier, pulls you free and stabs. Davis slumps into a bloody heap.\n   Swooning, you fall into the Falcon's arms. You are dimly aware of being carried to the other ship, down a short flight of stairs, and laid gently on a soft bed. When you gather strength to look around, the Falcon has left you in peace.\n   You remain confined to this room, a large cupboard blocking the door. Meals are brought by a peg-legged old man and eaten in silence. Of your handsome rescuer you see nothing. Slowly the days pass.\n \n[Press RETURN or ENTER to continue.]\n  ",
+  "ts": "2026-10-24T16:15:42.045Z"
+ },
+ "scenery @13:look#30": {
+  "tag": "scenery",
+  "id": 206,
+  "name": "missive",
+  "step": 13,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   23
+  ],
+  "after": [
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 192,
+  "here": 169,
+  "opsOnId": [
+   [
+    206,
+    20,
+    0,
+    44117
+   ]
+  ],
+  "nOps": 58,
+  "printedObjs": [
+   169,
+   131,
+   190
+  ],
+  "text": "Captain's Quarters, on the bed\n   The room has a masculine air, with ebony panelling, a large messy table, and a rumpled bed (upon which you lie). A curtain masks the forward exit and gilded woodwork decorates the sill of the tall window looking aft.\n   Captain Jamison is adjusting his clothes.\n   \"I am sorry you have been confined down here, but I don't trust my lonely crew with such beauty. Crulley isn't the only man aboard with few principles.\" He smiles at you, eyes lingering, and takes your hand. You feel your color rising. \"If anything goes wrong, turn to Cookie. He is quite deaf, but capable. He'll see you through.\"\n \n> ",
+  "ts": "2026-10-24T16:15:43.781Z"
+ },
+ "scenery @19:look#31": {
+  "tag": "scenery",
+  "id": 125,
+  "name": "pile of clothes",
+  "step": 19,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "FALSE",
+  "before": [
+   17,
+   21,
+   23
+  ],
+  "after": [
+   17,
+   21,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 45,
+  "here": 92,
+  "opsOnId": [
+   [
+    125,
+    20,
+    0,
+    42947
+   ],
+   [
+    125,
+    9,
+    0,
+    42969
+   ],
+   [
+    125,
+    4,
+    0,
+    20049
+   ],
+   [
+    125,
+    11,
+    0,
+    20066
+   ],
+   [
+    125,
+    29,
+    0,
+    42619
+   ],
+   [
+    125,
+    7,
+    0,
+    22684
+   ],
+   [
+    125,
+    31,
+    0,
+    22704
+   ],
+   [
+    125,
+    24,
+    0,
+    42732
+   ]
+  ],
+  "nOps": 33,
+  "printedObjs": [
+   92,
+   45,
+   33,
+   125
+  ],
+  "text": "Landing\n   You are on the landing of a steep stairway heading up and down. A large cupboard against the aft wall blocks the doorway to the captain's quarters.\n   It seems that the large cupboard contains a pile of clothes.\n \n> ",
+  "ts": "2026-10-24T16:15:47.829Z"
+ },
+ "scenery @21:look#32": {
+  "tag": "scenery",
+  "id": 130,
+  "name": "shirt",
+  "step": 21,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   19,
+   21,
+   23
+  ],
+  "after": [
+   19,
+   21,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 192,
+  "here": 127,
+  "opsOnId": [],
+  "nOps": 18,
+  "printedObjs": [
+   127
+  ],
+  "text": "Sleeping Cupboard\n   The bed is softer than it looks, plumped up with fresh straw. A soft, if somewhat cramped, bunk for the tall bulk of Jamison. The cupboard opens to the fore.\n \n> ",
+  "ts": "2026-10-24T16:15:49.543Z"
+ },
+ "scenery @21:look#33": {
+  "tag": "scenery",
+  "id": 194,
+  "name": "breeches",
+  "step": 21,
+  "expect": 0,
+  "bit": 9,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   19,
+   21,
+   23
+  ],
+  "after": [
+   2,
+   19,
+   21,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 192,
+  "here": 127,
+  "opsOnId": [],
+  "nOps": 18,
+  "printedObjs": [
+   127
+  ],
+  "text": "Sleeping Cupboard\n   The bed is softer than it looks, plumped up with fresh straw. A soft, if somewhat cramped, bunk for the tall bulk of Jamison. The cupboard opens to the fore.\n \n> ",
+  "ts": "2026-10-24T16:15:50.116Z"
+ }
+}

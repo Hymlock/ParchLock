@@ -1,0 +1,6 @@
+cutthroat scenery @0 look #136 NOTEST "Your Room, on the bed\nYou're in your room in the Red Boar Inn. It's sparsely fur"
+cutthroat scenery @0 look #137 NOTEST "Your Room, on the bed\nYou're in your room in the Red Boar Inn. It's sparsely fur"
+cutthroat scenery @1 look #138 NOTEST "Your Room, on the bed\nYou're in your room in the Red Boar Inn. It's sparsely fur"
+cutthroat scenery @1 look #139 NOTEST "Your Room, on the bed\nYou're in your room in the Red Boar Inn. It's sparsely fur"
+cutthroat scenery @20 look #111 FALSE "The Shanty\nThis is The Shanty, a tavern which serves the locals. A wooden bar tr"
+cutthroat scenery @20 look #255 NOTEST "The Shanty\nThis is The Shanty, a tavern which serves the locals. A wooden bar tr"

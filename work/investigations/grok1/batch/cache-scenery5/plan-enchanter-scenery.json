@@ -1,0 +1,57 @@
+{
+ "key": "enchanter",
+ "game": "Enchanter.z3.js",
+ "bit": 7,
+ "tmpl": "look",
+ "tag": "scenery",
+ "tests": [
+  {
+   "id": 234,
+   "name": "shredded scroll",
+   "step": 29,
+   "expect": 0,
+   "bit": 7,
+   "cmd": "look"
+  },
+  {
+   "id": 206,
+   "name": "slightly crumpled scroll",
+   "step": 47,
+   "expect": 0,
+   "bit": 7,
+   "cmd": "look"
+  },
+  {
+   "id": 245,
+   "name": "faded scroll",
+   "step": 52,
+   "expect": 0,
+   "bit": 7,
+   "cmd": "look"
+  },
+  {
+   "id": 235,
+   "name": "damp scroll",
+   "step": 55,
+   "expect": 0,
+   "bit": 7,
+   "cmd": "look"
+  },
+  {
+   "id": 20,
+   "name": "dusty book",
+   "step": 64,
+   "expect": 0,
+   "bit": 7,
+   "cmd": "look"
+  },
+  {
+   "id": 154,
+   "name": "frayed scroll",
+   "step": 65,
+   "expect": 0,
+   "bit": 7,
+   "cmd": "look"
+  }
+ ]
+}

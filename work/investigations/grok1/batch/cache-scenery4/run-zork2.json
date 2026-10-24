@@ -1,0 +1,1478 @@
+{
+ "scenery @8:look#0": {
+  "tag": "scenery",
+  "id": 104,
+  "name": "table",
+  "step": 8,
+  "expect": 1,
+  "bit": 14,
+  "cmd": "look",
+  "verdict": "TRUE",
+  "before": [
+   8,
+   11,
+   14,
+   18
+  ],
+  "after": [
+   8,
+   11,
+   14,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 220,
+  "here": 220,
+  "opsOnId": [
+   [
+    104,
+    30,
+    0,
+    38959
+   ],
+   [
+    104,
+    9,
+    0,
+    37084
+   ],
+   [
+    104,
+    2,
+    0,
+    37084
+   ],
+   [
+    104,
+    9,
+    0,
+    37200
+   ],
+   [
+    104,
+    2,
+    0,
+    37200
+   ],
+   [
+    104,
+    14,
+    1,
+    37200
+   ],
+   [
+    104,
+    9,
+    0,
+    37399
+   ],
+   [
+    104,
+    7,
+    0,
+    37399
+   ],
+   [
+    104,
+    11,
+    1,
+    37399
+   ],
+   [
+    104,
+    8,
+    1,
+    37340
+   ],
+   [
+    104,
+    30,
+    0,
+    38959
+   ]
+  ],
+  "nOps": 72,
+  "printedObjs": [
+   220,
+   104,
+   105,
+   32,
+   33,
+   34,
+   37
+  ],
+  "text": "Gazebo\nThis is a gazebo in the midst of a formal garden. It is cool and restful here. A tea table adorns the center of the gazebo.\nSitting on the table is: \n  A matchbook\n  A china teapot\n  A place mat\n  A newspaper\n  A letter opener\n \n> ",
+  "ts": "2026-10-24T16:13:20.137Z"
+ },
+ "scenery @8:examine table#1": {
+  "tag": "scenery",
+  "id": 104,
+  "name": "table",
+  "step": 8,
+  "expect": 1,
+  "bit": 14,
+  "cmd": "examine table",
+  "verdict": "NOTEST",
+  "before": [
+   8,
+   11,
+   14,
+   18
+  ],
+  "after": [
+   8,
+   11,
+   14,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 220,
+  "here": 220,
+  "opsOnId": [
+   [
+    104,
+    9,
+    0,
+    27925
+   ],
+   [
+    104,
+    11,
+    1,
+    27253
+   ],
+   [
+    104,
+    8,
+    1,
+    27275
+   ],
+   [
+    104,
+    30,
+    0,
+    38959
+   ],
+   [
+    104,
+    18,
+    1,
+    31461
+   ],
+   [
+    104,
+    22,
+    0,
+    32920
+   ],
+   [
+    104,
+    18,
+    1,
+    32962
+   ],
+   [
+    104,
+    30,
+    0,
+    32962
+   ],
+   [
+    104,
+    9,
+    0,
+    37399
+   ],
+   [
+    104,
+    7,
+    0,
+    37399
+   ],
+   [
+    104,
+    11,
+    1,
+    37399
+   ],
+   [
+    104,
+    8,
+    1,
+    37340
+   ],
+   [
+    104,
+    30,
+    0,
+    38959
+   ]
+  ],
+  "nOps": 79,
+  "printedObjs": [
+   104,
+   105,
+   32,
+   33,
+   34,
+   37
+  ],
+  "text": "Sitting on the table is: \n  A matchbook\n  A china teapot\n  A place mat\n  A newspaper\n  A letter opener\nThe unicorn bounds lightly away.\nYour sword is no longer glowing.\n \n> ",
+  "ts": "2026-10-24T16:13:20.708Z"
+ },
+ "scenery @8:look#2": {
+  "tag": "scenery",
+  "id": 23,
+  "name": "sword",
+  "step": 8,
+  "expect": 0,
+  "bit": 14,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   13,
+   17,
+   29
+  ],
+  "after": [
+   2,
+   13,
+   17,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 4,
+  "here": 220,
+  "opsOnId": [],
+  "nOps": 72,
+  "printedObjs": [
+   220,
+   104,
+   105,
+   32,
+   33,
+   34,
+   37
+  ],
+  "text": "Gazebo\nThis is a gazebo in the midst of a formal garden. It is cool and restful here. A tea table adorns the center of the gazebo.\nSitting on the table is: \n  A matchbook\n  A china teapot\n  A place mat\n  A newspaper\n  A letter opener\nA unicorn is peacefully cropping grass at the north end of the garden. There is something hanging around its neck.\nYour sword is glowing with a faint blue glow.\n \n> ",
+  "ts": "2026-10-24T16:13:21.282Z"
+ },
+ "scenery @8:examine sword#3": {
+  "tag": "scenery",
+  "id": 23,
+  "name": "sword",
+  "step": 8,
+  "expect": 0,
+  "bit": 14,
+  "cmd": "examine sword",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   13,
+   17,
+   29
+  ],
+  "after": [
+   2,
+   13,
+   17,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 4,
+  "here": 220,
+  "opsOnId": [
+   [
+    23,
+    9,
+    0,
+    27925
+   ],
+   [
+    23,
+    18,
+    0,
+    31448
+   ],
+   [
+    23,
+    22,
+    0,
+    31448
+   ]
+  ],
+  "nOps": 25,
+  "printedObjs": [
+   23
+  ],
+  "text": "There's nothing special about the sword.\n \n> ",
+  "ts": "2026-10-24T16:13:21.851Z"
+ },
+ "scenery @8:look#4": {
+  "tag": "scenery",
+  "id": 32,
+  "name": "china teapot",
+  "step": 8,
+  "expect": 0,
+  "bit": 14,
+  "cmd": "look",
+  "verdict": "FALSE",
+  "before": [
+   7,
+   11,
+   17,
+   18
+  ],
+  "after": [
+   7,
+   11,
+   17,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 104,
+  "here": 220,
+  "opsOnId": [
+   [
+    32,
+    9,
+    0,
+    37084
+   ],
+   [
+    32,
+    2,
+    0,
+    37084
+   ],
+   [
+    32,
+    9,
+    0,
+    37200
+   ],
+   [
+    32,
+    2,
+    0,
+    37200
+   ],
+   [
+    32,
+    14,
+    0,
+    37200
+   ],
+   [
+    32,
+    19,
+    0,
+    36791
+   ],
+   [
+    32,
+    3,
+    0,
+    36824
+   ],
+   [
+    32,
+    9,
+    0,
+    37399
+   ],
+   [
+    32,
+    7,
+    1,
+    37399
+   ]
+  ],
+  "nOps": 72,
+  "printedObjs": [
+   220,
+   104,
+   105,
+   32,
+   33,
+   34,
+   37
+  ],
+  "text": "Gazebo\nThis is a gazebo in the midst of a formal garden. It is cool and restful here. A tea table adorns the center of the gazebo.\nSitting on the table is: \n  A matchbook\n  A china teapot\n  A place mat\n  A newspaper\n  A letter opener\n \n> ",
+  "ts": "2026-10-24T16:13:22.429Z"
+ },
+ "scenery @8:examine china teapot#5": {
+  "tag": "scenery",
+  "id": 32,
+  "name": "china teapot",
+  "step": 8,
+  "expect": 0,
+  "bit": 14,
+  "cmd": "examine china teapot",
+  "verdict": "NOTEST",
+  "before": [
+   7,
+   11,
+   17,
+   18
+  ],
+  "after": [
+   7,
+   11,
+   17,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 104,
+  "here": 220,
+  "opsOnId": [
+   [
+    32,
+    9,
+    0,
+    27925
+   ],
+   [
+    32,
+    18,
+    1,
+    31448
+   ],
+   [
+    32,
+    22,
+    0,
+    32877
+   ],
+   [
+    32,
+    18,
+    1,
+    32936
+   ],
+   [
+    32,
+    30,
+    0,
+    32936
+   ],
+   [
+    32,
+    9,
+    0,
+    37399
+   ],
+   [
+    32,
+    7,
+    1,
+    37399
+   ]
+  ],
+  "nOps": 29,
+  "printedObjs": [
+   32
+  ],
+  "text": "The china teapot is empty.\n \n> ",
+  "ts": "2026-10-24T16:13:22.997Z"
+ },
+ "scenery @8:look#6": {
+  "tag": "scenery",
+  "id": 34,
+  "name": "newspaper",
+  "step": 8,
+  "expect": 0,
+  "bit": 14,
+  "cmd": "look",
+  "verdict": "FALSE",
+  "before": [
+   16,
+   17,
+   26
+  ],
+  "after": [
+   16,
+   17,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 104,
+  "here": 220,
+  "opsOnId": [
+   [
+    34,
+    9,
+    0,
+    37084
+   ],
+   [
+    34,
+    2,
+    0,
+    37084
+   ],
+   [
+    34,
+    9,
+    0,
+    37200
+   ],
+   [
+    34,
+    2,
+    0,
+    37200
+   ],
+   [
+    34,
+    14,
+    0,
+    37200
+   ],
+   [
+    34,
+    19,
+    0,
+    36791
+   ],
+   [
+    34,
+    3,
+    0,
+    36824
+   ],
+   [
+    34,
+    9,
+    0,
+    37399
+   ],
+   [
+    34,
+    7,
+    0,
+    37399
+   ],
+   [
+    34,
+    11,
+    0,
+    37399
+   ]
+  ],
+  "nOps": 72,
+  "printedObjs": [
+   220,
+   104,
+   105,
+   32,
+   33,
+   34,
+   37
+  ],
+  "text": "Gazebo\nThis is a gazebo in the midst of a formal garden. It is cool and restful here. A tea table adorns the center of the gazebo.\nSitting on the table is: \n  A matchbook\n  A china teapot\n  A place mat\n  A newspaper\n  A letter opener\n \n> ",
+  "ts": "2026-10-24T16:13:23.570Z"
+ },
+ "scenery @8:examine newspaper#7": {
+  "tag": "scenery",
+  "id": 34,
+  "name": "newspaper",
+  "step": 8,
+  "expect": 0,
+  "bit": 14,
+  "cmd": "examine newspaper",
+  "verdict": "NOTEST",
+  "before": [
+   16,
+   17,
+   26
+  ],
+  "after": [
+   16,
+   17,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 104,
+  "here": 220,
+  "opsOnId": [
+   [
+    34,
+    9,
+    0,
+    27925
+   ]
+  ],
+  "nOps": 23,
+  "printedObjs": [],
+  "text": "** U.S. News and Dungeon Report **\n \nFAMED ADVENTURER TO EXPLORE GREAT UNDERGROUND EMPIRE\n \nOur correspondents report that a world-famous and battle-hardened adventurer has been seen in the vicinity of the Great Underground Empire. Local grues have been reported sharpening their (slavering) fangs....\n \n\"Zork II: The Wizard of Frobozz\" was written by Dave Lebling and Marc Blank, and is (c) Copyright 1981, 1982, 1983 by Infocom, Inc.\n \n \n \n> ",
+  "ts": "2026-10-24T16:13:24.197Z"
+ },
+ "scenery @8:look#8": {
+  "tag": "scenery",
+  "id": 37,
+  "name": "letter opener",
+  "step": 8,
+  "expect": 0,
+  "bit": 14,
+  "cmd": "look",
+  "verdict": "FALSE",
+  "before": [
+   17,
+   28
+  ],
+  "after": [
+   17,
+   28
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 104,
+  "here": 220,
+  "opsOnId": [
+   [
+    37,
+    9,
+    0,
+    37084
+   ],
+   [
+    37,
+    2,
+    0,
+    37084
+   ],
+   [
+    37,
+    9,
+    0,
+    37200
+   ],
+   [
+    37,
+    2,
+    0,
+    37200
+   ],
+   [
+    37,
+    14,
+    0,
+    37200
+   ],
+   [
+    37,
+    19,
+    0,
+    36791
+   ],
+   [
+    37,
+    3,
+    0,
+    36824
+   ],
+   [
+    37,
+    9,
+    0,
+    37399
+   ],
+   [
+    37,
+    7,
+    0,
+    37399
+   ],
+   [
+    37,
+    11,
+    0,
+    37399
+   ]
+  ],
+  "nOps": 70,
+  "printedObjs": [
+   220,
+   104,
+   105,
+   32,
+   33,
+   34,
+   37
+  ],
+  "text": "Gazebo\nThis is a gazebo in the midst of a formal garden. It is cool and restful here. A tea table adorns the center of the gazebo.\nSitting on the table is: \n  A matchbook\n  A china teapot\n  A place mat\n  A newspaper\n  A letter opener\nThe unicorn bounds lightly away.\nYour sword is no longer glowing.\n \n> ",
+  "ts": "2026-10-24T16:13:24.772Z"
+ },
+ "scenery @8:examine letter opener#9": {
+  "tag": "scenery",
+  "id": 37,
+  "name": "letter opener",
+  "step": 8,
+  "expect": 0,
+  "bit": 14,
+  "cmd": "examine letter opener",
+  "verdict": "NOTEST",
+  "before": [
+   17,
+   28
+  ],
+  "after": [
+   17,
+   28
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 104,
+  "here": 220,
+  "opsOnId": [
+   [
+    37,
+    9,
+    0,
+    27925
+   ],
+   [
+    37,
+    18,
+    0,
+    31448
+   ],
+   [
+    37,
+    22,
+    0,
+    31448
+   ]
+  ],
+  "nOps": 25,
+  "printedObjs": [
+   37
+  ],
+  "text": "There's nothing special about the letter opener.\nA unicorn is peacefully cropping grass at the north end of the garden. There is something hanging around its neck.\nYour sword is glowing with a faint blue glow.\n \n> ",
+  "ts": "2026-10-24T16:13:25.350Z"
+ },
+ "scenery @8:look#10": {
+  "tag": "scenery",
+  "id": 76,
+  "name": "lamp",
+  "step": 8,
+  "expect": 0,
+  "bit": 14,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   17,
+   19,
+   31
+  ],
+  "after": [
+   2,
+   17,
+   19,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 4,
+  "here": 220,
+  "opsOnId": [],
+  "nOps": 72,
+  "printedObjs": [
+   220,
+   104,
+   105,
+   32,
+   33,
+   34,
+   37
+  ],
+  "text": "Gazebo\nThis is a gazebo in the midst of a formal garden. It is cool and restful here. A tea table adorns the center of the gazebo.\nSitting on the table is: \n  A matchbook\n  A china teapot\n  A place mat\n  A newspaper\n  A letter opener\n \n> ",
+  "ts": "2026-10-24T16:13:25.929Z"
+ },
+ "scenery @8:examine lamp#11": {
+  "tag": "scenery",
+  "id": 76,
+  "name": "lamp",
+  "step": 8,
+  "expect": 0,
+  "bit": 14,
+  "cmd": "examine lamp",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   17,
+   19,
+   31
+  ],
+  "after": [
+   2,
+   17,
+   19,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 4,
+  "here": 220,
+  "opsOnId": [
+   [
+    76,
+    9,
+    0,
+    27925
+   ],
+   [
+    76,
+    24,
+    0,
+    53623
+   ],
+   [
+    76,
+    19,
+    1,
+    53667
+   ]
+  ],
+  "nOps": 25,
+  "printedObjs": [],
+  "text": "The lamp is on.\nYou suddenly decide that the Wizard isn't that terrifying...\n \n> ",
+  "ts": "2026-10-24T16:13:26.499Z"
+ },
+ "scenery @8:look#12": {
+  "tag": "scenery",
+  "id": 105,
+  "name": "matchbook",
+  "step": 8,
+  "expect": 0,
+  "bit": 14,
+  "cmd": "look",
+  "verdict": "FALSE",
+  "before": [
+   16,
+   17
+  ],
+  "after": [
+   16,
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 104,
+  "here": 220,
+  "opsOnId": [
+   [
+    105,
+    9,
+    0,
+    37084
+   ],
+   [
+    105,
+    2,
+    0,
+    37084
+   ],
+   [
+    105,
+    9,
+    0,
+    37200
+   ],
+   [
+    105,
+    2,
+    0,
+    37200
+   ],
+   [
+    105,
+    14,
+    0,
+    37200
+   ],
+   [
+    105,
+    19,
+    0,
+    36791
+   ],
+   [
+    105,
+    3,
+    0,
+    36824
+   ],
+   [
+    105,
+    9,
+    0,
+    37399
+   ],
+   [
+    105,
+    7,
+    0,
+    37399
+   ],
+   [
+    105,
+    11,
+    0,
+    37399
+   ]
+  ],
+  "nOps": 67,
+  "printedObjs": [
+   220,
+   104,
+   105,
+   32,
+   33,
+   34,
+   37
+  ],
+  "text": "Gazebo\nThis is a gazebo in the midst of a formal garden. It is cool and restful here. A tea table adorns the center of the gazebo.\nSitting on the table is: \n  A matchbook\n  A china teapot\n  A place mat\n  A newspaper\n  A letter opener\nThe unicorn bounds lightly away.\nYour sword is no longer glowing.\n \n> ",
+  "ts": "2026-10-24T16:13:27.077Z"
+ },
+ "scenery @8:examine matchbook#13": {
+  "tag": "scenery",
+  "id": 105,
+  "name": "matchbook",
+  "step": 8,
+  "expect": 0,
+  "bit": 14,
+  "cmd": "examine matchbook",
+  "verdict": "NOTEST",
+  "before": [
+   16,
+   17
+  ],
+  "after": [
+   16,
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 104,
+  "here": 220,
+  "opsOnId": [
+   [
+    105,
+    9,
+    0,
+    27925
+   ],
+   [
+    105,
+    19,
+    0,
+    53439
+   ]
+  ],
+  "nOps": 19,
+  "printedObjs": [],
+  "text": "No match is burning.\n \n> ",
+  "ts": "2026-10-24T16:13:27.677Z"
+ },
+ "scenery @14:look#14": {
+  "tag": "scenery",
+  "id": 217,
+  "name": "hedge",
+  "step": 14,
+  "expect": 1,
+  "bit": 14,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   14
+  ],
+  "after": [
+   14
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 218,
+  "here": 201,
+  "opsOnId": [],
+  "nOps": 56,
+  "printedObjs": [
+   201
+  ],
+  "text": "Cool Room\nThe room is cool and damp. The air is misty. A twisty path from the southeast splits here toward a wide northerly stone bridge, and a narrow westerly tunnel. It is from the latter that the mist and chill seem to originate.\n \n> ",
+  "ts": "2026-10-24T16:13:31.831Z"
+ },
+ "scenery @14:examine hedge#15": {
+  "tag": "scenery",
+  "id": 217,
+  "name": "hedge",
+  "step": 14,
+  "expect": 1,
+  "bit": 14,
+  "cmd": "examine hedge",
+  "verdict": "NOTEST",
+  "before": [
+   14
+  ],
+  "after": [
+   14
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 218,
+  "here": 201,
+  "opsOnId": [],
+  "nOps": 167,
+  "printedObjs": [],
+  "text": "You can't see any hedge here!\n \n> ",
+  "ts": "2026-10-24T16:13:32.423Z"
+ },
+ "scenery @24:look#16": {
+  "tag": "scenery",
+  "id": 39,
+  "name": "keyhole",
+  "step": 24,
+  "expect": 1,
+  "bit": 14,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   11,
+   14
+  ],
+  "after": [
+   4,
+   11,
+   14
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 100,
+  "here": 199,
+  "opsOnId": [],
+  "nOps": 56,
+  "printedObjs": [
+   199
+  ],
+  "text": "Lava Tube\nYou are in a tight chimney of solidified lava. It extends up at least another hundred feet and down to a large room far below. A large crack opens to the south, probably the result of a shift in the rock strata.\n \n> ",
+  "ts": "2026-10-24T16:13:38.917Z"
+ },
+ "scenery @24:examine keyhole#17": {
+  "tag": "scenery",
+  "id": 39,
+  "name": "keyhole",
+  "step": 24,
+  "expect": 1,
+  "bit": 14,
+  "cmd": "examine keyhole",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   11,
+   14
+  ],
+  "after": [
+   4,
+   11,
+   14
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 100,
+  "here": 199,
+  "opsOnId": [],
+  "nOps": 166,
+  "printedObjs": [],
+  "text": "You can't see any keyhole here!\n \n> ",
+  "ts": "2026-10-24T16:13:39.497Z"
+ },
+ "scenery @24:look#18": {
+  "tag": "scenery",
+  "id": 43,
+  "name": "metal lid",
+  "step": 24,
+  "expect": 1,
+  "bit": 14,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   14,
+   18
+  ],
+  "after": [
+   14,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 100,
+  "here": 199,
+  "opsOnId": [],
+  "nOps": 56,
+  "printedObjs": [
+   199
+  ],
+  "text": "Lava Tube\nYou are in a tight chimney of solidified lava. It extends up at least another hundred feet and down to a large room far below. A large crack opens to the south, probably the result of a shift in the rock strata.\n \n> ",
+  "ts": "2026-10-24T16:13:40.069Z"
+ },
+ "scenery @24:examine metal lid#19": {
+  "tag": "scenery",
+  "id": 43,
+  "name": "metal lid",
+  "step": 24,
+  "expect": 1,
+  "bit": 14,
+  "cmd": "examine metal lid",
+  "verdict": "NOTEST",
+  "before": [
+   14,
+   18
+  ],
+  "after": [
+   14,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 100,
+  "here": 199,
+  "opsOnId": [],
+  "nOps": 166,
+  "printedObjs": [],
+  "text": "You can't see any metal lid here!\n \n> ",
+  "ts": "2026-10-24T16:13:40.648Z"
+ },
+ "scenery @26:look#20": {
+  "tag": "scenery",
+  "id": 33,
+  "name": "place mat",
+  "step": 26,
+  "expect": 1,
+  "bit": 14,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   8,
+   11,
+   17,
+   18
+  ],
+  "after": [
+   2,
+   8,
+   11,
+   17,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 4,
+  "here": 199,
+  "opsOnId": [
+   [
+    33,
+    9,
+    0,
+    27925
+   ],
+   [
+    33,
+    19,
+    0,
+    27986
+   ],
+   [
+    33,
+    9,
+    0,
+    27925
+   ],
+   [
+    33,
+    19,
+    0,
+    27986
+   ],
+   [
+    33,
+    4,
+    0,
+    27241
+   ],
+   [
+    33,
+    8,
+    1,
+    27241
+   ]
+  ],
+  "nOps": 56,
+  "printedObjs": [
+   199
+  ],
+  "text": "Lava Tube\nYou are in a tight chimney of solidified lava. It extends up at least another hundred feet and down to a large room far below. A large crack opens to the south, probably the result of a shift in the rock strata.\n \n> ",
+  "ts": "2026-10-24T16:13:42.467Z"
+ },
+ "scenery @26:examine place mat#21": {
+  "tag": "scenery",
+  "id": 33,
+  "name": "place mat",
+  "step": 26,
+  "expect": 1,
+  "bit": 14,
+  "cmd": "examine place mat",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   8,
+   11,
+   17,
+   18
+  ],
+  "after": [
+   2,
+   8,
+   11,
+   17,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 4,
+  "here": 199,
+  "opsOnId": [
+   [
+    33,
+    9,
+    0,
+    27925
+   ],
+   [
+    33,
+    19,
+    0,
+    27986
+   ],
+   [
+    33,
+    9,
+    0,
+    27925
+   ],
+   [
+    33,
+    19,
+    0,
+    27986
+   ],
+   [
+    33,
+    4,
+    0,
+    27241
+   ],
+   [
+    33,
+    8,
+    1,
+    27241
+   ]
+  ],
+  "nOps": 49,
+  "printedObjs": [],
+  "text": "You used the word \"place\" in a way that I don't understand.\n \n> ",
+  "ts": "2026-10-24T16:13:43.052Z"
+ },
+ "scenery @34:look#22": {
+  "tag": "scenery",
+  "id": 38,
+  "name": "keyhole",
+  "step": 34,
+  "expect": 1,
+  "bit": 14,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   11,
+   14
+  ],
+  "after": [
+   4,
+   11,
+   14
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 103,
+  "here": 199,
+  "opsOnId": [],
+  "nOps": 64,
+  "printedObjs": [
+   199,
+   37
+  ],
+  "text": "Lava Tube\nYou are in a tight chimney of solidified lava. It extends up at least another hundred feet and down to a large room far below. A large crack opens to the south, probably the result of a shift in the rock strata.\nThere is a letter opener here.\n \n> ",
+  "ts": "2026-10-24T16:13:48.430Z"
+ },
+ "scenery @34:examine keyhole#23": {
+  "tag": "scenery",
+  "id": 38,
+  "name": "keyhole",
+  "step": 34,
+  "expect": 1,
+  "bit": 14,
+  "cmd": "examine keyhole",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   11,
+   14
+  ],
+  "after": [
+   4,
+   11,
+   14
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 103,
+  "here": 199,
+  "opsOnId": [],
+  "nOps": 163,
+  "printedObjs": [],
+  "text": "You can't see any keyhole here!\n \n> ",
+  "ts": "2026-10-24T16:13:49.023Z"
+ },
+ "scenery @34:look#24": {
+  "tag": "scenery",
+  "id": 40,
+  "name": "narrow crack",
+  "step": 34,
+  "expect": 1,
+  "bit": 14,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   14
+  ],
+  "after": [
+   14
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 103,
+  "here": 199,
+  "opsOnId": [],
+  "nOps": 64,
+  "printedObjs": [
+   199,
+   37
+  ],
+  "text": "Lava Tube\nYou are in a tight chimney of solidified lava. It extends up at least another hundred feet and down to a large room far below. A large crack opens to the south, probably the result of a shift in the rock strata.\nThere is a letter opener here.\n \n> ",
+  "ts": "2026-10-24T16:13:49.634Z"
+ },
+ "scenery @34:examine narrow crack#25": {
+  "tag": "scenery",
+  "id": 40,
+  "name": "narrow crack",
+  "step": 34,
+  "expect": 1,
+  "bit": 14,
+  "cmd": "examine narrow crack",
+  "verdict": "NOTEST",
+  "before": [
+   14
+  ],
+  "after": [
+   14
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 103,
+  "here": 199,
+  "opsOnId": [],
+  "nOps": 60,
+  "printedObjs": [],
+  "text": "The crack is fairly wide. You should be able to get into it.\n \n> ",
+  "ts": "2026-10-24T16:13:50.215Z"
+ },
+ "scenery @34:look#26": {
+  "tag": "scenery",
+  "id": 41,
+  "name": "table",
+  "step": 34,
+  "expect": 1,
+  "bit": 14,
+  "cmd": "look",
+  "verdict": "NOTEST",
+  "before": [
+   8,
+   11,
+   14,
+   18
+  ],
+  "after": [
+   8,
+   11,
+   14,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 103,
+  "here": 199,
+  "opsOnId": [],
+  "nOps": 64,
+  "printedObjs": [
+   199,
+   37
+  ],
+  "text": "Lava Tube\nYou are in a tight chimney of solidified lava. It extends up at least another hundred feet and down to a large room far below. A large crack opens to the south, probably the result of a shift in the rock strata.\nThere is a letter opener here.\n \n> ",
+  "ts": "2026-10-24T16:13:50.828Z"
+ },
+ "scenery @34:examine table#27": {
+  "tag": "scenery",
+  "id": 41,
+  "name": "table",
+  "step": 34,
+  "expect": 1,
+  "bit": 14,
+  "cmd": "examine table",
+  "verdict": "NOTEST",
+  "before": [
+   8,
+   11,
+   14,
+   18
+  ],
+  "after": [
+   8,
+   11,
+   14,
+   18
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 103,
+  "here": 199,
+  "opsOnId": [],
+  "nOps": 163,
+  "printedObjs": [],
+  "text": "You can't see any table here!\n \n> ",
+  "ts": "2026-10-24T16:13:51.425Z"
+ }
+}

@@ -1,0 +1,233 @@
+{
+ "key": "plundered",
+ "game": "PlunderedHearts.z3.js",
+ "bit": 9,
+ "tmpl": "look|examine X",
+ "tag": "scenery",
+ "tests": [
+  {
+   "id": 69,
+   "name": "coffer",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 69,
+   "name": "coffer",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "examine coffer"
+  },
+  {
+   "id": 213,
+   "name": "bed",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 213,
+   "name": "bed",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "examine bed"
+  },
+  {
+   "id": 235,
+   "name": "pcc k wI'm x i sgv",
+   "step": 6,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 235,
+   "name": "pcc k wI'm x i sgv",
+   "step": 6,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "examine pcc k wi'm x i sgv"
+  },
+  {
+   "id": 87,
+   "name": "new ring",
+   "step": 8,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 87,
+   "name": "new ring",
+   "step": 8,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "examine new ring"
+  },
+  {
+   "id": 190,
+   "name": "Captain Jamison",
+   "step": 11,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 190,
+   "name": "Captain Jamison",
+   "step": 11,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "examine captain jamison"
+  },
+  {
+   "id": 16,
+   "name": "rapier",
+   "step": 13,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 16,
+   "name": "rapier",
+   "step": 13,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "examine rapier"
+  },
+  {
+   "id": 27,
+   "name": "ledge",
+   "step": 13,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 27,
+   "name": "ledge",
+   "step": 13,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "examine ledge"
+  },
+  {
+   "id": 45,
+   "name": "large cupboard",
+   "step": 13,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 45,
+   "name": "large cupboard",
+   "step": 13,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "examine large cupboard"
+  },
+  {
+   "id": 11,
+   "name": "smelling salts",
+   "step": 1,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 11,
+   "name": "smelling salts",
+   "step": 1,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "examine smelling salts"
+  },
+  {
+   "id": 13,
+   "name": "your kid slippers",
+   "step": 1,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 13,
+   "name": "your kid slippers",
+   "step": 1,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "examine your kid slippers"
+  },
+  {
+   "id": 17,
+   "name": "linen chemise",
+   "step": 1,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 17,
+   "name": "linen chemise",
+   "step": 1,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "examine linen chemise"
+  },
+  {
+   "id": 84,
+   "name": "cotton frock",
+   "step": 1,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 84,
+   "name": "cotton frock",
+   "step": 1,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "examine cotton frock"
+  },
+  {
+   "id": 186,
+   "name": "banknote",
+   "step": 1,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 186,
+   "name": "banknote",
+   "step": 1,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "examine banknote"
+  },
+  {
+   "id": 223,
+   "name": "your reticule",
+   "step": 1,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 223,
+   "name": "your reticule",
+   "step": 1,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "examine your reticule"
+  }
+ ]
+}

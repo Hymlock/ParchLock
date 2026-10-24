@@ -1,0 +1,3 @@
+moonmist scenery @16 look #198 NOTEST "(You are now in the driveway.)\n(You're sitting in the sports car.)\nYou are by th"
+moonmist scenery @16 look #217 NOTEST "(You are in the driveway.)\n(You're sitting in the sports car.)\nYou are by the op"
+moonmist scenery @18 look #220 NOTEST "(You are in the courtyard.)\nIt looks even lovelier than it sounds in the tourist"
