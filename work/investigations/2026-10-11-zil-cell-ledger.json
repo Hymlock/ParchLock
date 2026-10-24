@@ -395,6 +395,10 @@
   "locked": {
    "s": "NA",
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LOCKEDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKED: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hitchhikersguide@1288855 (10 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 236 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "worn": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 5 2026-10-24: WORNBIT is used (0 carriers, 5 FSET/tests; e.g. earth.zil:295 <NOT <FSET? ,GOWN ,WORNBIT>>>; earth.zil:403 (<AND <FSET? ,GOWN ,WORNBIT>), source hitchhikersguide (grok2/nq/worn-Hitchhik.json). The player can wear things, so worn is not N/A; no measured wornAttribute yet (app worn fallback stays fail-closed). Stays U."
   }
  },
  "Ballyhoo.z3.js": {
@@ -449,6 +453,10 @@
   "lockable": {
    "s": "NA",
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/ballyhoo@9f779e8 (11 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 372 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "worn": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 5 2026-10-24: WORNBIT is used (0 carriers, 5 FSET/tests; e.g. bigtop.zil:1425 (<OR <FSET? ,SUIT ,WORNBIT>; bigtop.zil:1426 <FSET? ,DRESS ,WORNBIT>>), source ballyhoo (grok2/nq/worn-Ballyhoo.json). The player can wear things, so worn is not N/A; no measured wornAttribute yet (app worn fallback stays fail-closed). Stays U."
   }
  },
  "Cutthroats.z3.js": {
@@ -707,6 +715,10 @@
   "wearable": {
    "s": "U",
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); WEARBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "worn": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 5 2026-10-24: no WORNBIT, but WEARBIT is the worn state: wearing exists (0 carriers, 5 FSET/tests, 3 FCLEAR/reads; e.g. camp.zil:1957 <FSET ,KNAPSACK ,WEARBIT>; camp.zil:1975 (<NOT <FSET? ,KNAPSACK ,WEARBIT>>), source infidel (grok2/nq/worn-Infidel.json). The player can wear things, so worn is not N/A; no measured wornAttribute yet (app worn fallback stays fail-closed). Stays U."
   }
  },
  "HollywoodHijinx.z3.js": {
@@ -769,6 +781,10 @@
   "lockable": {
    "s": "NA",
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 393 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "worn": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 5 2026-10-24: WORNBIT is used (0 carriers, 5 FSET/tests; e.g. bshelter.zil:273 (<FSET? ,SKIS ,WORNBIT>; bshelter.zil:824 (<FSET? ,SKIS ,WORNBIT>), source hollywoodhijinx (grok2/nq/worn-HollywoodHijinx.json). The player can wear things, so worn is not N/A; no measured wornAttribute yet (app worn fallback stays fail-closed). Stays U."
   }
  },
  "LeatherGoddessesofPhobos.z3.js": {
@@ -1087,6 +1103,10 @@
   "talkable": {
    "s": "U",
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+  },
+  "worn": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 5 2026-10-24: no WORNBIT, but WEARBIT is the worn state: wearing exists (0 carriers, 5 FSET/tests, 3 FCLEAR/reads; e.g. cs.zil:3340 <COND (<FSET? .OBJ ,WEARBIT>; cs.zil:3754 <COND (<FSET? ,GLOVES ,WEARBIT>), source lurkinghorror (grok2/nq/worn-TheLurkingHorror.json). The player can wear things, so worn is not N/A; no measured wornAttribute yet (app worn fallback stays fail-closed). Stays U."
   }
  },
  "Planetfall.z3.js": {
@@ -1329,6 +1349,10 @@
   "locked": {
    "s": "NA",
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LOCKEDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKED: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/sorcerer@6417e1e (14 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 311 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
+  },
+  "worn": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 5 2026-10-24 (grok2 #4917): no worn state in source. WORNBIT absent (0 carriers, 0 FSET); WEARBIT is only the compile-time wearable marker on GRUE-SUIT end.zil:376 and MAGIC-AMULET guild.zil:215 with no FSET/FCLEAR writes (verbs.zil 911/1641/1675/1695/1914 are tests only), so nothing records an object as being worn. In-app attrs.worn never set. Source historicalsource/sorcerer (grok2/nq/worn-Sorcerer.json)."
   }
  },
  "Spellbreaker.z3.js": {
@@ -1481,6 +1505,10 @@
   "visited": {
    "s": "U",
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "worn": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 5 2026-10-24: no WORNBIT, but WEARBIT is the worn state: wearing exists (0 carriers, 5 FSET/tests, 3 FCLEAR/reads; e.g. actions.zil:1942 <FSET ,SPACESUIT ,WEARBIT>; actions.zil:1983 <COND (<FSET? ,PRSO ,WEARBIT>), source starcross (grok2/nq/worn-Starcross.json). The player can wear things, so worn is not N/A; no measured wornAttribute yet (app worn fallback stays fail-closed). Stays U."
   }
  },
  "Stationfall.z3.js": {
@@ -1755,6 +1783,10 @@
   "transparent": {
    "s": "U",
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TRANSBIT), so not N/A; no native target-named evidence yet. Stays U."
+  },
+  "worn": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 5 2026-10-24: no WORNBIT, but WEARBIT is the worn state: wearing exists (0 carriers, 5 FSET/tests, 3 FCLEAR/reads; e.g. main.zil:88 <COND (<FSET? ,SURGERY-HAND ,WEARBIT> <SETG NUM-EXT 7>)>); objects.zil:79 (<NOT <FSET? ,SURGERY-HAND ,WEARBIT>>), source suspended (grok2/nq/worn-Suspended.json). The player can wear things, so worn is not N/A; no measured wornAttribute yet (app worn fallback stays fail-closed). Stays U."
   }
  },
  "Wishbringer.z3.js": {
@@ -1817,6 +1849,10 @@
   "female": {
    "s": "U",
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): source scan PASS, but grok2 kept it conservative U (gender word handling unverified natively). Stays U."
+  },
+  "worn": {
+   "s": "U",
+   "r": "grok1/grok2 N? batch 5 2026-10-24: WORNBIT is used (1 carriers, 5 FSET/tests; e.g. globals.zil:228 PROTAGONIST; cemetery.zil:598 <COND (<FSET? .OBJ ,WORNBIT>), source wishbringer (grok2/nq/worn-Wishbringer.json). The player can wear things, so worn is not N/A; no measured wornAttribute yet (app worn fallback stays fail-closed). Stays U."
   }
  },
  "TheWitness.z3.js": {
