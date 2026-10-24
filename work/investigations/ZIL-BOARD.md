@@ -1,4 +1,4 @@
-# ZIL board - single source of truth for all seats (owner: claude, updated 2026-10-24 13:15 ET)
+# ZIL board - single source of truth for all seats (owner: claude, updated 2026-10-24 (r22 committed c1bd21f))
 
 Goal (operator): every ZIL flag decoded AND wired into the UI wrapper (radials, menus) - a flag with no visible
 effect in the app is not done. Missing right options matter more than harmless wrong ones; no masking.
@@ -16,24 +16,27 @@ Next ledger goal: settle U cells that change the radial first (below), then invi
 - grok2: evidence batches + ledger bulk work (N? done -> 295 NA/59 U); doors parked except queued.
 Every evidence packet: digest, 2 native positives + negative (or single owner + whole-source), ordinary commands only.
 
-## In flight
-- r20b (claude): D238 Drink owners with mapped edible + Zork I water; doors Stationfall 27, Seastalker 27. Gate running.
-- Climb (claude+codex): proposal R1 climb-compare-proposal-r1.md under codex review; operator ruling needed on fatal climbs.
-- Moonmist doors: BLOCKED by D134 room rule (DOORBIT on ~20 rooms); codex investigating a general rule change.
+## In flight (standing lanes - do not wait for replies, send packets as done)
+- claude: r23 open in working tree (Suspect enterable 28, Stationfall supporter 17 so far); Witness sit-on form proposal; reviews.
+- codex: Moonmist DEXIT R2 (under claude attack); Hitchhik apartment door; single-owner doors Infidel/Deadline/Spellbreaker.
+- grok1: transparent x16 (Zork1 12, Zork2 7, Zork3 30, Hitchhik 33, Ballyhoo 13, Infidel 23, Hollywood 23, Moonmist 9, PH 14,
+  Planetfall 9, Spellbreaker 15, Starcross 25, Stationfall 13, Suspect 7, Wishbringer 23, Witness 6); then ENTER-working VEHBIT titles.
+- grok2: climb x8 (Zork2 23, Zork3 24, Enchanter 26, Sorcerer 8, Planetfall 29, Starcross 22, Suspended 27, Deadline 15); FATAL marked.
+- Operator ruling needed: offer fatal-by-default climbs (Infidel stair)?
 
 ## Radial families: status
 | family (radial) | done | remaining |
 |---|---|---|
 | shared objects (long-press) | 18 titles | Wishbringer/LGOP/Stationfall/Sherlock (INVISIBLE unmeasured), Borderzo |
 | Open/Close containers | +Spellbreaker, Suspect, Stationfall, LGOP | Starcross (blocked), Suspended (robots) |
-| Open/Close doors | 15 titles (+2 in r20b) | Moonmist (D134), Infidel/Deadline/Spellbreaker/Hitchhik (1 door each) |
+| Open/Close doors | 17 titles | Moonmist (D134), Infidel/Deadline/Spellbreaker/Hitchhik (1 door each) |
 | Turn on/off | Zork II, Hollywood, LGOP, Starcross, Stationfall, Moonmist, Planetfall, Zork III | no-switch titles settled |
-| Enter / Get out of | LH, Zork II, Planetfall, Infidel | ~10 titles (grok1) |
-| Put on (surfaces) | Hollywood, Suspect (+existing) | Starcross, Stationfall, Suspended |
-| Eat / Drink | LH food (D235); Zork I water (r20b) | Zork II, Cutthroats drink (grok1) |
+| Enter / Get out of | LH, Zork II, Planetfall, Infidel, PH, Starcross, Stationfall, Moonmist (+Suspect r23) | ENTER-working VEHBIT titles (grok1); Witness/Deadline need sit-on form |
+| Put on (surfaces) | Hollywood, Suspect (+Stationfall r23) | Starcross, Suspended |
+| Eat / Drink | LH food; drink Zork I, Zork II, Cutthroats | - |
 | Talk to | +6 titles (grok1) | - |
-| Climb | none | rule + facts after consensus |
-| Transparent (see inside) | LH | Enchanter proven but held |
+| Climb | Zork I (D239) | 8 titles (grok2) |
+| Transparent (see inside) | LH | 16 titles (grok1); Enchanter held |
 
 ## Rules of the road
 One batch = one frozen diff + one isolated gate (copies, hidden processes) + independent audit + operator 13/0.
