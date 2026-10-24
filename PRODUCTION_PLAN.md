@@ -9390,6 +9390,27 @@ LH: oven open -> carton Examine/Take/Search/Empty/Close; oven closed -> Examine 
 **Open:** Inform titles carry their own transparent attribute via PROFILE, so the rule also applies there (correct by
 Inform semantics; no gate difference observed). Phone check pending.
 
+**R2 (1194ba0), supersedes the examine-only contract above.** Native fresh-command check (codex #4742): through the
+closed transparent oven, CLOSE carton and EAT food succeed; only TAKE ("You can't reach that!") and OPEN refuse. Under
+the operator's missing-options-first rule, `outOfReach` now removes only Take forms, after every command source; the
+`_open` examine-only branch is not used for it. The walk stops at the measured player, the current room and any animate
+ancestor (LH PLAYER 56 carries container+transparent bits; the held master key had lost Unlock with..., codex #4722).
+Transparent facts are kept only for LH 5; Zork I 12 removed to restore the operator's closed-bottle ruling (semantic
+bit proven, consumer integration deferred: exact-digest closedContentsHidden policy is the agreed later option);
+Enchanter/Ballyhoo/Cutthroats/Infidel pulled until native qualification. Phone: carton in closed oven shows no Take.
+Open: food 90 Eat through the closed oven is still missing because of D228's held-container scope (D235 proposal).
+
+## D234 Unlock with... on a room object makes it the target
+
+**Lifecycle:** found on the phone 2026-10-23 (padlock long-press -> Unlock with... -> master key submitted "unlock key
+with padlock", "You aren't holding the padlock."). Implemented claude 1194ba0; codex native audit d234-native-direction-
+audit.json PASS both launcher orientations with real DOM submit; isolated 309x2 gate FLAKY-only; operator 13/0.
+
+**Contract.** The D147 instrumental launcher keeps "verb <other> with <pressed>" for a carried (inventory-context)
+object (D231: the tool), but for unlock on a room object the pressed object is the target: "unlock <pressed> with
+<other>". Phone: "unlock padlock with key" -> "The lock, though rusty and unwilling, opens, releasing the hatch."
+Other instrumentals (use, cast) unchanged. Extra target candidates in the list are harmless by operator rule.
+
 ## Backlog (low priority, research only): Glulx cold decoding
 
 **October 20 continuation:** the operator reaffirmed full ZIL flag decoding before regular Inform and Glulx work, and authorized Codex to recover all seats' work and integrate held files. R3.1 (`work/investigations/2026-10-20-plan-r3-zil-first.md`) governs: the 21-column completion table is only a subtotal, not the full key universe. The full-profile ledger's N? and UD entries are not absence verdicts. Retain player/world/status, command consumers, classifier gaps and per-title native checks from the full-decode doccheck. Current takeover checkpoint: `work/mapping-research/items-codex/resume-20261020/checkpoint.md`.
