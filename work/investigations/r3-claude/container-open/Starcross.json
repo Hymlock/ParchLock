@@ -1,0 +1,456 @@
+{
+ "title": "Starcross.z3.js",
+ "sha256": "1d9a69257349060823893f4cfa616f1040a3b41cbf38a6717199f206cd8f678c",
+ "storyBytes": 92160,
+ "boundedObjectCount": 239,
+ "sourceBits": {
+  "CONTBIT": {
+   "bit": 8,
+   "exact": true,
+   "tp": 27,
+   "fp": 0,
+   "fn": 0
+  },
+  "OPENBIT": {
+   "bit": 9,
+   "exact": true,
+   "tp": 25,
+   "fp": 0,
+   "fn": 0
+  },
+  "actor": null,
+  "SURFACEBIT": {
+   "bit": 28,
+   "exact": true,
+   "tp": 2,
+   "fp": 0,
+   "fn": 0
+  }
+ },
+ "walkBits": {
+  "CB": 8,
+  "OB": 9,
+  "AB": null
+ },
+ "mismatch": false,
+ "status": {
+  "CONTBIT": "INCOMPLETE",
+  "OPENBIT": "CONFIRMED (doors only)",
+  "actor": "NO SOURCE ACTOR BIT (bit 31 carriers are rooms)"
+ },
+ "notes": "All CONTBIT carriers are on the alien artifact; reaching it needs docking coordinates from the feelie table (screen: mass UM24). OPENBIT toggled natively on inner door (39) and outer door (189). Negatives: tape library open/put-in refused; bunk (no CONTBIT) \"isn't open\" (PUT checks OPENBIT first - weak).",
+ "method": "headless Chromium play.html, Input.Inject commands, ZRamReader bit reads before/after each command; no memory writes",
+ "steps": [
+  {
+   "cmd": "get up",
+   "reply": ">get up You are on your own feet again. The alarm bell on the mass detector is ringing stridently. >",
+   "bitChanges": [],
+   "parentChanges": [
+    {
+     "id": 239,
+     "name": "cretin",
+     "from": 123,
+     "to": 10
+    }
+   ]
+  },
+  {
+   "cmd": "take library",
+   "reply": ">take library Taken. The alarm bell on the mass detector is ringing stridently. >",
+   "bitChanges": [],
+   "parentChanges": [
+    {
+     "id": 71,
+     "name": "tape library",
+     "from": 10,
+     "to": 239
+    }
+   ]
+  },
+  {
+   "cmd": "put library in bunk",
+   "reply": ">put library in bunk The bunk isn't open. The alarm bell on the mass detector is ringing stridently. >",
+   "bitChanges": [],
+   "parentChanges": []
+  },
+  {
+   "cmd": "open bunk",
+   "reply": ">open bunk You must be very clever to do that to the bunk. The alarm bell on the mass detector is ringing stridently. >",
+   "bitChanges": [],
+   "parentChanges": []
+  },
+  {
+   "cmd": "e",
+   "reply": ">e Bridge This is the control room of the Starcross. There are exits labelled (arbitrarily) \"Port,\" \"Starboard,\" and \"Out.\" The latter exit has a heavy bulkhead which is closed. Your ship's computer does the routine tasks of navigation and life support. A control couch is mounted before a control panel and a large viewport. The ship's registration is affixed nearby. Your mass detector, essential in the search for black holes, sits to one side. On the detector are a red button, a blue button, and a small screen on which something is displayed. The alarm bell on the mass detector is ringing stridently. >",
+   "bitChanges": [],
+   "parentChanges": [
+    {
+     "id": 239,
+     "name": "cretin",
+     "from": 10,
+     "to": 202
+    }
+   ]
+  },
+  {
+   "cmd": "e",
+   "reply": ">e Storage This cubicle is used for storage. The only exit is to port. Hanging on a rack is your space suit. A safety line hangs on the wall. The alarm bell on the mass detector is ringing stridently. >",
+   "bitChanges": [],
+   "parentChanges": [
+    {
+     "id": 239,
+     "name": "cretin",
+     "from": 202,
+     "to": 198
+    }
+   ]
+  },
+  {
+   "cmd": "take all",
+   "reply": ">take all space suit: Taken. safety line: Taken. The alarm bell on the mass detector is ringing stridently. >",
+   "bitChanges": [],
+   "parentChanges": [
+    {
+     "id": 144,
+     "name": "space suit",
+     "from": 198,
+     "to": 239
+    },
+    {
+     "id": 220,
+     "name": "safety line",
+     "from": 198,
+     "to": 239
+    }
+   ]
+  },
+  {
+   "cmd": "open library",
+   "reply": ">open library You must be very clever to do that to the tape library. The alarm bell on the mass detector is ringing stridently. >",
+   "bitChanges": [],
+   "parentChanges": []
+  },
+  {
+   "cmd": "put line in library",
+   "reply": ">put line in library I can't do that. The alarm bell on the mass detector is ringing stridently. >",
+   "bitChanges": [],
+   "parentChanges": []
+  },
+  {
+   "cmd": "w",
+   "reply": ">w Bridge The alarm bell on the mass detector is ringing stridently. An expressionless but nonetheless surly voice issues from the computer: \"Please turn that alarm off! We'll both have headaches if you don't.\" >",
+   "bitChanges": [],
+   "parentChanges": [
+    {
+     "id": 239,
+     "name": "cretin",
+     "from": 198,
+     "to": 202
+    }
+   ]
+  },
+  {
+   "cmd": "open door",
+   "reply": ">open door The inner door opens. The alarm bell on the mass detector is ringing stridently. >",
+   "bitChanges": [
+    {
+     "id": 39,
+     "name": "inner door",
+     "CB": 0,
+     "OB": "0->1"
+    }
+   ],
+   "parentChanges": []
+  },
+  {
+   "cmd": "s",
+   "reply": ">s Airlock This is the airlock of the Starcross. The inner door is open, and the outer door is closed. Neither door has a viewport. The alarm bell on the mass detector is ringing stridently. >",
+   "bitChanges": [],
+   "parentChanges": [
+    {
+     "id": 239,
+     "name": "cretin",
+     "from": 202,
+     "to": 122
+    }
+   ]
+  },
+  {
+   "cmd": "close inner door",
+   "reply": ">close inner door The inner door closes. >",
+   "bitChanges": [
+    {
+     "id": 39,
+     "name": "inner door",
+     "CB": 0,
+     "OB": "1->0"
+    }
+   ],
+   "parentChanges": []
+  },
+  {
+   "cmd": "wear suit",
+   "reply": ">wear suit You are now wearing the space suit, breathing internal oxygen. >",
+   "bitChanges": [],
+   "parentChanges": []
+  },
+  {
+   "cmd": "open outer door",
+   "reply": ">open outer door The outer door opens and air rushes out of the airlock. Outside the airlock is deep space. Beside the airlock is a safety hook to prevent you from drifting away into space. >",
+   "bitChanges": [
+    {
+     "id": 189,
+     "name": "outer door",
+     "CB": 0,
+     "OB": "0->1"
+    }
+   ],
+   "parentChanges": []
+  },
+  {
+   "cmd": "look",
+   "reply": ">look Airlock This is the airlock of the Starcross. The inner door is closed, and the outer door is open. Neither door has a viewport. Just outside the airlock is a hook. >",
+   "bitChanges": [],
+   "parentChanges": []
+  },
+  {
+   "cmd": "close outer door",
+   "reply": ">close outer door The outer door closes and air rushes into the airlock. >",
+   "bitChanges": [
+    {
+     "id": 189,
+     "name": "outer door",
+     "CB": 0,
+     "OB": "1->0"
+    }
+   ],
+   "parentChanges": []
+  },
+  {
+   "cmd": "open inner door",
+   "reply": ">open inner door The inner door opens. >",
+   "bitChanges": [
+    {
+     "id": 39,
+     "name": "inner door",
+     "CB": 0,
+     "OB": "0->1"
+    }
+   ],
+   "parentChanges": []
+  }
+ ],
+ "containerCarriersInitial": [
+  {
+   "id": 1,
+   "name": "red slot",
+   "open": true,
+   "parent": 148
+  },
+  {
+   "id": 6,
+   "name": "nest",
+   "open": true,
+   "parent": 102
+  },
+  {
+   "id": 12,
+   "name": "blue slot",
+   "open": true,
+   "parent": 0
+  },
+  {
+   "id": 13,
+   "name": "white slot",
+   "open": true,
+   "parent": 226
+  },
+  {
+   "id": 14,
+   "name": "ray gun",
+   "open": false,
+   "parent": 147
+  },
+  {
+   "id": 18,
+   "name": "weasel chieftain",
+   "open": true,
+   "parent": 111
+  },
+  {
+   "id": 23,
+   "name": "metal relief",
+   "open": true,
+   "parent": 188
+  },
+  {
+   "id": 26,
+   "name": "pink slot",
+   "open": true,
+   "parent": 0
+  },
+  {
+   "id": 28,
+   "name": "silver slot",
+   "open": true,
+   "parent": 136
+  },
+  {
+   "id": 29,
+   "name": "access panel",
+   "open": false,
+   "parent": 137
+  },
+  {
+   "id": 31,
+   "name": "silver sphere",
+   "open": true,
+   "parent": 80
+  },
+  {
+   "id": 34,
+   "name": "scorched alien",
+   "open": true,
+   "parent": 143
+  },
+  {
+   "id": 40,
+   "name": "metal basket",
+   "open": true,
+   "parent": 142
+  },
+  {
+   "id": 62,
+   "name": "green slot",
+   "open": true,
+   "parent": 0
+  },
+  {
+   "id": 66,
+   "name": "red disk",
+   "open": true,
+   "parent": 80
+  },
+  {
+   "id": 76,
+   "name": "brown slot",
+   "open": true,
+   "parent": 0
+  },
+  {
+   "id": 79,
+   "name": "silver sphere",
+   "open": true,
+   "parent": 0
+  },
+  {
+   "id": 101,
+   "name": "black slot",
+   "open": true,
+   "parent": 0
+  },
+  {
+   "id": 103,
+   "name": "blue disk",
+   "open": true,
+   "parent": 80
+  },
+  {
+   "id": 119,
+   "name": "holographic projector",
+   "open": true,
+   "parent": 153
+  },
+  {
+   "id": 146,
+   "name": "crystal slot",
+   "open": true,
+   "parent": 223
+  },
+  {
+   "id": 151,
+   "name": "silver sphere",
+   "open": true,
+   "parent": 0
+  },
+  {
+   "id": 157,
+   "name": "metal hatch",
+   "open": false,
+   "parent": 111
+  },
+  {
+   "id": 161,
+   "name": "slot",
+   "open": true,
+   "parent": 29
+  },
+  {
+   "id": 163,
+   "name": "silver sphere",
+   "open": true,
+   "parent": 0
+  },
+  {
+   "id": 169,
+   "name": "weasel chieftain",
+   "open": true,
+   "parent": 0
+  },
+  {
+   "id": 178,
+   "name": "gold slot",
+   "open": true,
+   "parent": 3
+  },
+  {
+   "id": 196,
+   "name": "giant spider",
+   "open": true,
+   "parent": 35
+  },
+  {
+   "id": 204,
+   "name": "yellow slot",
+   "open": true,
+   "parent": 148
+  },
+  {
+   "id": 205,
+   "name": "violet slot",
+   "open": true,
+   "parent": 0
+  },
+  {
+   "id": 212,
+   "name": "maintenance mouse",
+   "open": true,
+   "parent": 211
+  },
+  {
+   "id": 213,
+   "name": "maintenance mouse",
+   "open": false,
+   "parent": 11
+  },
+  {
+   "id": 222,
+   "name": "pink screen",
+   "open": true,
+   "parent": 0
+  },
+  {
+   "id": 228,
+   "name": "smashed nest",
+   "open": true,
+   "parent": 0
+  },
+  {
+   "id": 232,
+   "name": "trash bin",
+   "open": true,
+   "parent": 16
+  }
+ ],
+ "actorCarriersInitial": []
+}

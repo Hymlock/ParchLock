@@ -1,0 +1,603 @@
+{
+ "title": "Stationfall.z3.js",
+ "sha256": "3c5656897dd2503610945e80a0b42fc5d25614d967a010ace8e9cafd12f978a3",
+ "storyBytes": 128935,
+ "boundedObjectCount": 255,
+ "sourceBits": {
+  "CONTBIT": {
+   "bit": 25,
+   "exact": true,
+   "tp": 31,
+   "fp": 0,
+   "fn": 0
+  },
+  "OPENBIT": {
+   "bit": 15,
+   "exact": true,
+   "tp": 16,
+   "fp": 0,
+   "fn": 0
+  },
+  "actor": {
+   "name": "ACTORBIT",
+   "bit": 31,
+   "exact": true,
+   "tp": 4,
+   "fp": 0,
+   "fn": 0
+  },
+  "SURFACEBIT": {
+   "bit": 17,
+   "exact": true,
+   "tp": 2,
+   "fp": 0,
+   "fn": 0
+  }
+ },
+ "walkBits": {
+  "CB": 25,
+  "OB": 15,
+  "AB": 31
+ },
+ "mismatch": false,
+ "status": {
+  "CONTBIT": "CONFIRMED",
+  "OPENBIT": "CONFIRMED",
+  "actor": "CONFIRMED (Floyd/Plato/Rex/Helen carry 31)"
+ },
+ "notes": "Toggles: survival kit open/close/open, Thermos bottle open/close; spacetruck hatch (door) opens. Containment: completion form->pilot seat(50); kit/thermos contents listed. Negatives: chronometer open and put-in refused. Anomaly: bit 15 became set on player object 218 on the first turn (not a container; likely game sets it on the player).",
+ "method": "headless Chromium play.html, Input.Inject commands, ZRamReader bit reads before/after each command; no memory writes",
+ "steps": [
+  {
+   "cmd": "close uniform",
+   "reply": ">close uniform There's no way to open or close the pocket of the Patrol uniform. >",
+   "bitChanges": [
+    {
+     "id": 218,
+     "name": "it",
+     "CB": 0,
+     "OB": "0->1"
+    }
+   ],
+   "parentChanges": []
+  },
+  {
+   "cmd": "open uniform",
+   "reply": ">open uniform There's no way to open or close the pocket of the Patrol uniform. >",
+   "bitChanges": [],
+   "parentChanges": []
+  },
+  {
+   "cmd": "look in uniform",
+   "reply": ">look in uniform You can see an ID card. >",
+   "bitChanges": [],
+   "parentChanges": []
+  },
+  {
+   "cmd": "open chronometer",
+   "reply": ">open chronometer You can't open a chronometer! >",
+   "bitChanges": [],
+   "parentChanges": []
+  },
+  {
+   "cmd": "put robot form in chronometer",
+   "reply": ">put robot form in chronometer You can't put the Robot Use Authorization Form JZ-59-G in a chronometer! >",
+   "bitChanges": [],
+   "parentChanges": []
+  },
+  {
+   "cmd": "e",
+   "reply": ">e Cargo Bay Entrance The deck twelve corridor ends here at the entrance to the cargo bay, to starboard. A smaller entrance leads fore. Ensign Twelfth Class Blather walks by, lugging his toilet scrubbing supplies. He spots you, whimpers, and slouches away (Footnote 2). >",
+   "bitChanges": [],
+   "parentChanges": [
+    {
+     "id": 218,
+     "name": "it",
+     "from": 198,
+     "to": 54
+    }
+   ]
+  },
+  {
+   "cmd": "n",
+   "reply": ">n Robot Pool This is where a Lieutenant First Class would come to obtain a robot for use on an important assignment. Also for a trivial assignment like yours. The only part of the complex robot authorization equipment that is visible to you is a slot (for inserting your form) and a keypad (for typing your selection). You can exit aft. In the first bin is a bulky robot, obviously intended for heavy lifting. A brass plate on one of his pneumatic arm lifts says \"Rex.\" Bin number two holds a spindly little robot, a specialized model designed for bursting and decollating multi-part forms. A tiny nameplate on her perforating extension reads \"Helen.\" You can't see the robot in the third bin very well, because he's crouched in the corner. He's a short robot, and he seems to be playing marbles. >",
+   "bitChanges": [],
+   "parentChanges": [
+    {
+     "id": 218,
+     "name": "it",
+     "from": 54,
+     "to": 106
+    }
+   ]
+  },
+  {
+   "cmd": "insert robot form in slot",
+   "reply": ">insert robot form in slot The form is swallowed up, followed by a long pause for triple-redundancy processing. You hear a recorded voice. \"Authorization approved. Type the bin number of the desired robot.\" The third robot looks up from his marbles, jumps to his feet, and starts waving wildly. It's Floyd, your robotic companion from Resida! (Footnote 3) You've seen him only occasionally since he opted for assignment in the Stellar Patrol those five long years ago. >",
+   "bitChanges": [],
+   "parentChanges": [
+    {
+     "id": 248,
+     "name": "Robot Use Authorization Form JZ-59-G",
+     "from": 218,
+     "to": 0
+    }
+   ]
+  },
+  {
+   "cmd": "type 3",
+   "reply": ">type 3 \"Yippee!\" yells Floyd, bounding joyfully over and giving you a big hug. >",
+   "bitChanges": [],
+   "parentChanges": []
+  },
+  {
+   "cmd": "s",
+   "reply": ">s Cargo Bay Entrance >",
+   "bitChanges": [],
+   "parentChanges": [
+    {
+     "id": 218,
+     "name": "it",
+     "from": 106,
+     "to": 54
+    }
+   ]
+  },
+  {
+   "cmd": "e",
+   "reply": ">e Cargo Bay This huge airlock is essentially a giant loading dock, where truckloads of forms arrive from various printing planets throughout the sector and are immediately distributed throughout the administrative deck. The only exit on foot is back the way you came. A spacetruck, its hatch closed, waits in the cargo bay. >",
+   "bitChanges": [],
+   "parentChanges": [
+    {
+     "id": 218,
+     "name": "it",
+     "from": 54,
+     "to": 108
+    }
+   ]
+  },
+  {
+   "cmd": "open hatch",
+   "reply": ">open hatch The spacetruck hatch swings open. >",
+   "bitChanges": [
+    {
+     "id": 176,
+     "name": "spacetruck hatch",
+     "CB": 0,
+     "OB": "0->1"
+    }
+   ],
+   "parentChanges": []
+  },
+  {
+   "cmd": "enter spacetruck",
+   "reply": ">enter spacetruck Spacetruck This is a twelve-meter rig, the largest Class Three spacecraft made, with seats for a pilot and copilot. Below the viewport is a space band radio, a red button for activating the emergency beacon, plus a slot and keypad for controlling the autopilot. The hatch is open and the rear of the truck is empty of cargo. You can see a survival kit here. Floyd bounces in. \"Hey, wait for Floyd!\" he yells. >",
+   "bitChanges": [],
+   "parentChanges": [
+    {
+     "id": 26,
+     "name": "Floyd",
+     "from": 106,
+     "to": 230
+    },
+    {
+     "id": 218,
+     "name": "it",
+     "from": 108,
+     "to": 230
+    }
+   ]
+  },
+  {
+   "cmd": "look",
+   "reply": ">look Spacetruck This is a twelve-meter rig, the largest Class Three spacecraft made, with seats for a pilot and copilot. Below the viewport is a space band radio, a red button for activating the emergency beacon, plus a slot and keypad for controlling the autopilot. The hatch is open and the rear of the truck is empty of cargo. Floyd is here, also looking around the room. You can see a survival kit here. Floyd frets about the possibility of his batteries failing. >",
+   "bitChanges": [],
+   "parentChanges": []
+  },
+  {
+   "cmd": "take kit",
+   "reply": ">take kit Taken. Floyd rubs his head affectionately against your shoulder. >",
+   "bitChanges": [],
+   "parentChanges": [
+    {
+     "id": 189,
+     "name": "survival kit",
+     "from": 230,
+     "to": 218
+    }
+   ]
+  },
+  {
+   "cmd": "open kit",
+   "reply": ">open kit Opening the survival kit reveals a blob of orange goo, a blob of gray goo and a Thermos bottle. >",
+   "bitChanges": [
+    {
+     "id": 189,
+     "name": "survival kit",
+     "CB": 1,
+     "OB": "0->1"
+    }
+   ],
+   "parentChanges": []
+  },
+  {
+   "cmd": "look in kit",
+   "reply": ">look in kit You can see a blob of orange goo, a blob of gray goo and a Thermos bottle. Floyd boasts about the time he helped someone find a lost paper clip. >",
+   "bitChanges": [],
+   "parentChanges": []
+  },
+  {
+   "cmd": "close kit",
+   "reply": ">close kit Okay, the survival kit is now closed. >",
+   "bitChanges": [
+    {
+     "id": 189,
+     "name": "survival kit",
+     "CB": 1,
+     "OB": "1->0"
+    }
+   ],
+   "parentChanges": []
+  },
+  {
+   "cmd": "open kit",
+   "reply": ">open kit Opening the survival kit reveals a blob of orange goo, a blob of gray goo and a Thermos bottle. >",
+   "bitChanges": [
+    {
+     "id": 189,
+     "name": "survival kit",
+     "CB": 1,
+     "OB": "0->1"
+    }
+   ],
+   "parentChanges": []
+  },
+  {
+   "cmd": "put activation form in kit",
+   "reply": ">put activation form in kit There's no room in the survival kit for the Class Three Spacecraft Activation Form HB-56-V. Floyd paces impatiently. >",
+   "bitChanges": [],
+   "parentChanges": []
+  },
+  {
+   "cmd": "look in kit",
+   "reply": ">look in kit You can see a blob of orange goo, a blob of gray goo and a Thermos bottle. Floyd tells you how much it hurts to repair dents. >",
+   "bitChanges": [],
+   "parentChanges": []
+  },
+  {
+   "cmd": "put completion form in pilot seat",
+   "reply": ">put completion form in pilot seat Done. Floyd complains about a recent assignment in the forms filing department. >",
+   "bitChanges": [],
+   "parentChanges": [
+    {
+     "id": 210,
+     "name": "Assignment Completion Form QX-17-T",
+     "from": 218,
+     "to": 50
+    }
+   ]
+  },
+  {
+   "cmd": "look in pilot seat",
+   "reply": ">look in pilot seat You can see an Assignment Completion Form QX-17-T. Floyd yawns and looks bored. >",
+   "bitChanges": [],
+   "parentChanges": []
+  },
+  {
+   "cmd": "take thermos",
+   "reply": ">take thermos Taken. Floyd plays a quick game of paddleball, almost breaking his record of four hits. >",
+   "bitChanges": [],
+   "parentChanges": [
+    {
+     "id": 160,
+     "name": "Thermos bottle",
+     "from": 189,
+     "to": 218
+    }
+   ]
+  },
+  {
+   "cmd": "open thermos",
+   "reply": ">open thermos Opening the Thermos bottle reveals blue soup. >",
+   "bitChanges": [
+    {
+     "id": 160,
+     "name": "Thermos bottle",
+     "CB": 1,
+     "OB": "0->1"
+    }
+   ],
+   "parentChanges": []
+  },
+  {
+   "cmd": "look in thermos",
+   "reply": ">look in thermos You can see blue soup. >",
+   "bitChanges": [],
+   "parentChanges": []
+  },
+  {
+   "cmd": "close thermos",
+   "reply": ">close thermos Okay, the Thermos bottle is now closed. Floyd wanders restlessly around the room. >",
+   "bitChanges": [
+    {
+     "id": 160,
+     "name": "Thermos bottle",
+     "CB": 1,
+     "OB": "1->0"
+    }
+   ],
+   "parentChanges": []
+  },
+  {
+   "cmd": "open seat belt",
+   "reply": ">open seat belt [I don't know the word \"belt.\"] >",
+   "bitChanges": [],
+   "parentChanges": []
+  }
+ ],
+ "containerCarriersInitial": [
+  {
+   "id": 9,
+   "name": "cage",
+   "open": false,
+   "actor": false,
+   "parent": 31
+  },
+  {
+   "id": 23,
+   "name": "counter",
+   "open": false,
+   "actor": false,
+   "parent": 179
+  },
+  {
+   "id": 26,
+   "name": "Floyd",
+   "open": true,
+   "actor": true,
+   "parent": 106
+  },
+  {
+   "id": 29,
+   "name": "log reader",
+   "open": true,
+   "actor": false,
+   "parent": 87
+  },
+  {
+   "id": 35,
+   "name": "ceiling panel",
+   "open": false,
+   "actor": false,
+   "parent": 48
+  },
+  {
+   "id": 41,
+   "name": "detonator",
+   "open": false,
+   "actor": false,
+   "parent": 170
+  },
+  {
+   "id": 50,
+   "name": "pilot seat",
+   "open": true,
+   "actor": false,
+   "parent": 230
+  },
+  {
+   "id": 57,
+   "name": "it",
+   "open": true,
+   "actor": true,
+   "parent": 0
+  },
+  {
+   "id": 60,
+   "name": "locker",
+   "open": false,
+   "actor": false,
+   "parent": 64
+  },
+  {
+   "id": 63,
+   "name": "dryer",
+   "open": false,
+   "actor": false,
+   "parent": 255
+  },
+  {
+   "id": 69,
+   "name": "presser",
+   "open": false,
+   "actor": false,
+   "parent": 255
+  },
+  {
+   "id": 70,
+   "name": "pedestal",
+   "open": true,
+   "actor": false,
+   "parent": 157
+  },
+  {
+   "id": 90,
+   "name": "copilot seat",
+   "open": true,
+   "actor": false,
+   "parent": 230
+  },
+  {
+   "id": 96,
+   "name": "pulpit",
+   "open": false,
+   "actor": false,
+   "parent": 100
+  },
+  {
+   "id": 111,
+   "name": "exercise machine",
+   "open": true,
+   "actor": false,
+   "parent": 227
+  },
+  {
+   "id": 119,
+   "name": "bed",
+   "open": true,
+   "actor": false,
+   "parent": 48
+  },
+  {
+   "id": 123,
+   "name": "safe",
+   "open": false,
+   "actor": false,
+   "parent": 180
+  },
+  {
+   "id": 133,
+   "name": "trash can",
+   "open": false,
+   "actor": false,
+   "parent": 92
+  },
+  {
+   "id": 138,
+   "name": "seven-pointed star",
+   "open": false,
+   "actor": false,
+   "parent": 100
+  },
+  {
+   "id": 140,
+   "name": "heating chamber",
+   "open": true,
+   "actor": false,
+   "parent": 216
+  },
+  {
+   "id": 145,
+   "name": "nanofilm reader",
+   "open": true,
+   "actor": false,
+   "parent": 130
+  },
+  {
+   "id": 154,
+   "name": "plastic bag",
+   "open": false,
+   "actor": false,
+   "parent": 174
+  },
+  {
+   "id": 160,
+   "name": "Thermos bottle",
+   "open": false,
+   "actor": false,
+   "parent": 189
+  },
+  {
+   "id": 169,
+   "name": "simulation booth",
+   "open": true,
+   "actor": false,
+   "parent": 6
+  },
+  {
+   "id": 189,
+   "name": "survival kit",
+   "open": false,
+   "actor": false,
+   "parent": 230
+  },
+  {
+   "id": 200,
+   "name": "hole",
+   "open": true,
+   "actor": false,
+   "parent": 0
+  },
+  {
+   "id": 212,
+   "name": "innocuous machine",
+   "open": true,
+   "actor": false,
+   "parent": 115
+  },
+  {
+   "id": 223,
+   "name": "holding tank",
+   "open": true,
+   "actor": false,
+   "parent": 192
+  },
+  {
+   "id": 229,
+   "name": "Patrol uniform",
+   "open": true,
+   "actor": false,
+   "parent": 218
+  },
+  {
+   "id": 233,
+   "name": "jammer",
+   "open": true,
+   "actor": false,
+   "parent": 33
+  },
+  {
+   "id": 241,
+   "name": "drill",
+   "open": true,
+   "actor": false,
+   "parent": 11
+  },
+  {
+   "id": 244,
+   "name": "storage bin",
+   "open": false,
+   "actor": false,
+   "parent": 126
+  },
+  {
+   "id": 247,
+   "name": "Plato",
+   "open": true,
+   "actor": true,
+   "parent": 40
+  }
+ ],
+ "actorCarriersInitial": [
+  {
+   "id": 26,
+   "name": "Floyd",
+   "container": true
+  },
+  {
+   "id": 57,
+   "name": "it",
+   "container": true
+  },
+  {
+   "id": 120,
+   "name": "Rex",
+   "container": false
+  },
+  {
+   "id": 135,
+   "name": "Helen",
+   "container": false
+  },
+  {
+   "id": 218,
+   "name": "it",
+   "container": false
+  },
+  {
+   "id": 247,
+   "name": "Plato",
+   "container": true
+  }
+ ]
+}
