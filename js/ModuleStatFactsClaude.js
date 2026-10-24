@@ -31,7 +31,8 @@ var ModuleStatFactsClaude = {
         // talkable 30 = the proven animate bit (grok1 2026-10-24, item 4 talkable batch; same mapping as Spellbreaker/Stationfall): talk-command scoped,
         // native, test_attr recorded only during the named command (grok1/talk/talk-probe.json, no relocation): 'robot, hello' / 'tell robot' @96 test robot 58:30 TRUE ("My programming is insufficient..."), 'demon, hello' @273 tests demon 26:30 TRUE ("The genie grins demonically, but says nothing."); 'tell teapot' @9 tests china teapot 32:30 FALSE ("You can't talk to the china teapot!").
         // Source V-TELL / parser addressing tests this bit and refuses non-actors with "You can't talk to ...".
-        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30, "talkable": 30, "wearable": 3, "edible": 20, "light": 31, "enterable": 27, "door": 22, "on": 19 },
+        // climbable 23 = CLIMBBIT exact; single carrier stairs 188 (whole-source); native bare CLIMB STAIRS from Oddly-angled Room -> Stairway; CLIMB LAMP refused.
+        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30, "talkable": 30, "wearable": 3, "edible": 20, "light": 31, "enterable": 27, "door": 22, "on": 19, "climbable": 23 },
         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
         // (source: ROBOT, CERBERUS, UNICORN (2dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] }
@@ -147,7 +148,8 @@ var ModuleStatFactsClaude = {
         "attributeObjects": { "switchable": [198] },
         "capabilityForms": { "switchable": ["turn on", "turn off"] },
 // scenery 25 = NDESCBIT (grok1 2026-10-24 user scenery ruling 11:45; g1-batch look + test_attr/print_obj trace, grok1/batch/cache-scenery4|5 judge-scenery.json): pos tree 32, rope 33, shiny object 35, reeds 44, runes 132 (look omits, pc 25769); neg man 27 (listed, same pc). Listing routine: historicalsource 3ec9ed4 gverbs.zil:1824.
-        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10, "supporter": 26, "on": 15, "edible": 5, "door": 9, "scenery": 25 } // on 15 (codex #4333: lamp 198 +/-15, torch 41 -15 native)
+        // climbable 24 = CLIMBBIT exact; native bare (grok1 #5082): CLIMB STAIRS 216 Aqueduct View -> Lake Shore, bit read 1; CLIMB LAMP "Bizarre!". Ladder 23 unreached (low risk).
+        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10, "supporter": 26, "on": 15, "edible": 5, "door": 9, "scenery": 25, "climbable": 24 } // on 15 (codex #4333: lamp 198 +/-15, torch 41 -15 native)
     },
     // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
@@ -268,7 +270,8 @@ var ModuleStatFactsClaude = {
         // light 22 / on 8 (codex #4349: FROTZ sets both on the battered lantern, candle carries both; bread/jug negatives).
         // door 24 = source DOORBIT exact; native (r3-claude/doorbit): cell door 202 toggles; iron gate 232 door-specific refusal.
         // enterable 29 = source VEHBIT exact; single carrier in object table (whole-source exception); native (grok1 #5066 grok1/enter/enchanter.json): ENTER FOURPOSTER BED -> in bed 133; bedpost refuses.
-        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8, "door": 24, "enterable": 29 },
+        // climbable 26 = CLIMBBIT exact; single census carrier stairs 168 with bit read 26=1 (grok1 #5081 grok1/climb/enchanter.json); at step 28 climb walks UP generically, so the move is not object-specific; CLIMB LANTERN "Bizarre!"
+        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8, "door": 24, "enterable": 29, "climbable": 26 },
         "openCapability": { "all": ["container"], "none": ["supporter"] },
     },
     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
@@ -277,7 +280,8 @@ var ModuleStatFactsClaude = {
         // FOODBIT7: sole bounded owner beef34, native EAT succeeds/removes;
         // shovel33 false/refuses; DRINK beef refuses (not a consumed bit).
         // enterable 14 = source VEHBIT exact; native (r3-claude/vehbit + vehbit2): army cot 51 and barge 211 (GET IN/ENTER move the player inside; GET OUT returns; bare EXIT refused). Harmless extras: beam 104 refuses entry, mast hole 108 untested.
-        "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25, "edible": 7, "enterable": 14 },
+        // climbable 16 = CLIMBBIT exact; native bare (grok1 #5082): CLIMB ROPE 32 contextual ("while you are holding the rope"), bit read 1; knapsack (bit 0) "You can't climb that!". Fatal climbs offered per operator ruling 2026-10-24.
+        "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25, "edible": 7, "enterable": 14, "climbable": 16 },
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         // WEARBIT state22: native knapsack31/ring2 worn positives, shovel33 refusal; Grok4127 proposal independently replayed by Codex October20.
         "wornAttribute": 22
@@ -304,7 +308,8 @@ var ModuleStatFactsClaude = {
         // native, test_attr recorded only during the named command (grok1/talk/talk-probe.json, no relocation): 'GNOME, HELLO' @79 tests gnome 245:31 TRUE ("Sleeping gnomes make poor listeners."), 'TWIN, HELLO' @208 tests your older self 26:31 TRUE (actor reply); 'BOOK, HELLO' @3 tests spell book 139:31 FALSE ("You can't talk to a spell book!") (2026-10-16-zil-inv-hidden-ops.json).
         // Source V-TELL / parser addressing tests this bit and refuses non-actors with "You can't talk to ...".
         // enterable 29 = source VEHBIT exact; native (grok1 #5064 grok1/enter/sorcerer.json): ENTER BED -> in bed 128, ENTER LOG BOAT -> in boat 199; spell book and flume refuse.
-        "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31, "talkable": 31, "wearable": 21, "on": 11, "door": 24, "enterable": 29 },
+        // climbable 8 = CLIMBBIT exact; single carrier stairs 177 (whole-source); native bare CLIMB STAIRS -> Lobby; CLIMB SPELL BOOK "Bizarre."
+        "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31, "talkable": 31, "wearable": 21, "on": 11, "door": 24, "enterable": 29, "climbable": 8 },
         // Native amulet/suit inventory marks direct-held WEARBIT gear worn;
         // amulet dropped or nested in the carried box is not worn (no state bit).
         "equipmentState": { "wornWhen": "wearable-direct-player" },
@@ -526,7 +531,8 @@ var ModuleStatFactsClaude = {
         "attributeObjects": { "switchable": [25] },
         "capabilityForms": { "switchable": ["turn on", "turn off"] },
 // scenery 8 = NDESCBIT (grok1 2026-10-24 user scenery ruling 11:45; g1-batch look + test_attr/print_obj trace, grok1/batch/cache-scenery4|5 judge-scenery.json): pos crevice 159, padlock 172, safety web 215 (look omits, pc 48473); neg old battery 7, towel 214 (listed, same pc). Listing routine: historicalsource 7e7af12 verbs.zil:162 PRINT-CONT.
-        "attributeMap": { "wearable": 22, "open": 11, "isOpen": 11, "container": 24, "animate": 31, "enterable": 30, "door": 26, "scenery": 8 }
+        // climbable 29 = CLIMBBIT exact; native bare (grok1 #5082): CLIMB STAIRWAY 249 -> Courtyard, CLIMB SAFETY WEB 215 contextual; canteen 163 (bit 0) refused.
+        "attributeMap": { "wearable": 22, "open": 11, "isOpen": 11, "container": 24, "animate": 31, "enterable": 30, "door": 26, "scenery": 8, "climbable": 29 }
     },
     // Hollywood Hijinx (ZIL): WEARBIT 22 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).
     "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e": {
