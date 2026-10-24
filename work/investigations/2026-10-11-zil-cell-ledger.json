@@ -349,6 +349,34 @@
   "lightSource": {
    "s": "U",
    "r": "U untestable-by-rule-7 (claude #4040, d7077a1): LIGHTBIT 26 exists, but V-LAMP-ON is an unconditional refusal and nothing target-named tests or writes it; only a parser FIND reads it. The flag exists, so it stays U, not N/A."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/ballyhoo@9f779e8 (11 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/ballyhoo@9f779e8 (11 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/ballyhoo@9f779e8 (11 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/ballyhoo@9f779e8 (11 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/ballyhoo@9f779e8 (11 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/ballyhoo@9f779e8 (11 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/ballyhoo@9f779e8 (11 .zil files). Invisible flag: source check only."
   }
  },
  "Cutthroats.z3.js": {
@@ -557,6 +585,38 @@
   "identical": {
    "s": "UD",
    "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 57 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/hollywoodhijinx@e93d085 (18 .zil files). Invisible flag: source check only."
   }
  },
  "LeatherGoddessesofPhobos.z3.js": {
@@ -571,6 +631,30 @@
   "descriptors": {
    "s": "UD",
    "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share a head noun. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (no shared head noun in 31 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/leathergoddesses@17cbbc1 (13 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/leathergoddesses@17cbbc1 (13 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/leathergoddesses@17cbbc1 (13 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/leathergoddesses@17cbbc1 (13 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 86 read/syntax refs. Source https://github.com/historicalsource/leathergoddesses@17cbbc1 (13 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/leathergoddesses@17cbbc1 (13 .zil files). Invisible flag: source check only."
   }
  },
  "Moonmist.z3.js": {
@@ -605,6 +689,30 @@
   "identical": {
    "s": "UD",
    "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 27 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/moonmist@c85885f (15 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/moonmist@c85885f (15 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/moonmist@c85885f (15 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/moonmist@c85885f (15 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/moonmist@c85885f (15 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/moonmist@c85885f (15 .zil files). Invisible flag: source check only."
   }
  },
  "PlunderedHearts.z3.js": {
@@ -623,6 +731,30 @@
   "identical": {
    "s": "UD",
    "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 28 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/plunderedhearts@f3db372 (12 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/plunderedhearts@f3db372 (12 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/plunderedhearts@f3db372 (12 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/plunderedhearts@f3db372 (12 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 6 read/syntax refs. Source https://github.com/historicalsource/plunderedhearts@f3db372 (12 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/plunderedhearts@f3db372 (12 .zil files). Invisible flag: source check only."
   }
  },
  "Borderzo.z5.js": {
@@ -637,6 +769,34 @@
   "lightSource": {
    "s": "UD",
    "r": "not applicable: historicalsource/borderzone@5c80126 has no LIGHTBIT anywhere (15 .zil files grepped); TURN ON / LIGHT (syntax.zil:618/317) have no FIND, V-ON (verbs.zil:851) is <CANT-TURN>, and LIT? is commented out (parser.zil:11, every room lit), so no light-source capability bit exists (grok1 2026-10-17); in-app device check (grok1 g1-udB.json and claude #4065, chapter 3 untouched boot): 'turn on revolver' -> \"You can't turn that on.\" (V-ON = CANT-TURN, verbs.zil:851), and 'light match' is a scripted refusal. No alternative mechanism (no light-source object). Review: claude #4064/#4065"
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). Invisible flag: source check only."
   }
  },
  "TheLurkingHorror.z3.js": {
@@ -659,6 +819,42 @@
   "lightSource": {
    "s": "U",
    "r": "U untestable-by-rule-7 (claude #4028/#4040): LIGHTBIT 22 is read only by a parser FIND/GWIM scan (bare light/turn on); no target-named command tests or writes it, so a rule-7 positive is impossible. The flag exists, so this is not N/A; it stays U with this reason."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). Invisible flag: source check only."
   }
  },
  "Planetfall.z3.js": {
@@ -755,6 +951,34 @@
   "descriptors": {
    "s": "UD",
    "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share a head noun. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (no shared head noun in 15 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 2 read/syntax refs. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). Invisible flag: source check only."
   }
  },
  "Sorcerer.z3.js": {
@@ -1049,6 +1273,38 @@
   "nested": {
    "s": "UD",
    "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). Invisible flag: source check only."
   }
  },
  "Suspended.z3.js": {
@@ -1059,6 +1315,42 @@
   "rooms": {
    "s": "O",
    "r": "1/1 original-scene turns (short route): app payload room = the game's status-line location; zil-rooms-check.cjs 2026-10-15"
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
+  },
+  "female": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): FEMALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; FEMALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). Invisible flag: source check only."
   }
  },
  "Wishbringer.z3.js": {
@@ -1073,6 +1365,34 @@
   "supporter": {
    "s": "S",
    "r": "SOLO/SELF-AUDIT: SURFACEBIT 27 put envelope on counter TRUE (counter 18), look in trunk TRUE (trunk 230), 19 negatives; source exact. With openCapability. Gate 0 diffs."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). Invisible flag: source check only."
   }
  },
  "TheWitness.z3.js": {
@@ -1111,6 +1431,38 @@
   "lightSource": {
    "s": "U",
    "r": "U untestable-by-rule-7 (claude #4040, de32205): LIGHTBIT 25 exists, but V-LAMP-ON never tests it; only a parser FIND reads it. The flag exists, so it stays U, not N/A."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names ABSENTBIT absent. ABSENTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). Invisible flag: source check only."
+  },
+  "general": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names GENERALBIT absent. GENERALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). Invisible flag: source check only."
+  },
+  "proper": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): NARTICLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). Invisible flag: source check only."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names SCOREBIT/SCOREDBIT absent. SCOREBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; SCOREDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). Invisible flag: source check only."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names WORKFLAG/WORKBIT absent. WORKFLAG: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; WORKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). Invisible flag: source check only."
+  },
+  "male": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names MALEBIT/MALE absent. MALEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; MALE: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). Invisible flag: source check only."
+  },
+  "neuter": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): unmapped key; candidate names NEUTERBIT/NEUTER absent. NEUTERBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; NEUTER: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). Invisible flag: source check only."
+  },
+  "pluralname": {
+   "s": "NA",
+   "r": "grok1/grok2 N? batch 2 2026-10-24 (operator standard 9:52 ET, nq-batch.cjs): PLURALBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). Invisible flag: source check only."
   }
  },
  "Sherlock.z5.js": {
