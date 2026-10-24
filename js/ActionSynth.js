@@ -342,7 +342,10 @@ var ActionSynth = {
             var containerVerbs = attrs.container ? verbs.filter(function (v) {
                 return v === "open" || v === "close" || v === "search" || v === "empty";
             }) : [];
-            verbs = (ActionSynth.inspectVerbDisabled() ? ["remove"] : [ActionSynth.defaultInspectVerb(), "remove"]).concat(containerVerbs);
+            // D237: a worn switchable light (Stationfall headlamp, Starcross tape
+            // library) keeps its on/off verbs; wearing it is its normal state.
+            var switchVerbs = verbs.filter(function (v) { return /^(switch|turn) (on|off)$/.test(v); });
+            verbs = (ActionSynth.inspectVerbDisabled() ? ["remove"] : [ActionSynth.defaultInspectVerb(), "remove"]).concat(containerVerbs, switchVerbs);
         } else if (context === "inventory") {
             // "wearable" maps to the pair ["wear","remove"] since either
             // could apply depending on current worn state -- but "remove"
