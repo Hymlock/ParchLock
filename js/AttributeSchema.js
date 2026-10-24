@@ -161,7 +161,10 @@ var AttributeSchema = {
     },
     // Some source handlers define a capability by object identity, not a bit.
     // Only qualified capabilities are supported. Never use names/shared raw flags.
-    objectCapabilityIds: function (mem, flag) {
+    // opts.allowMapped (D238, edibleForms only): authored owners may coexist with a
+    // mapped bit for the same flag; every other caller keeps the strict form.
+    objectCapabilityIds: function (mem, flag, opts) {
+        var allowMapped = !!(opts && opts.allowMapped);
         try {
             if (["edible", "switchable"].indexOf(flag) < 0 || !mem || typeof ZRamReader === "undefined" ||
                 !ZRamReader.executableLayoutFacts) return null;
@@ -171,7 +174,7 @@ var AttributeSchema = {
             if (!fact || !fact.attributeObjects || !Object.prototype.hasOwnProperty.call(fact.attributeObjects, flag) ||
                 ZRamReader.executableLayoutFacts(mem) !== fact ||
                 (ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) ||
-                (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, flag))) return null;
+                (!allowMapped && fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, flag))) return null;
             var ids = fact.attributeObjects && fact.attributeObjects[flag], h = ZRamReader.header(mem);
             if (!Array.isArray(ids) || !ids.length || !h || h.version < 3 || h.version > 5) return null;
             var family = AttributeSchema._familyOf(mem);
@@ -517,13 +520,16 @@ var AttributeSchema = {
                 fact = digest && ModuleStatFactsClaude[digest];
             }
             if (!fact || !(fact.capabilityForms && Object.prototype.hasOwnProperty.call(fact.capabilityForms, "edible"))) return null;
-            if ((ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) ||
-                (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, "edible"))) return null;
+            if (ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) return null;
+            // D238: a title mapping the FOODBIT may still author owner rules (drinkables are not FOODBIT
+            // carriers). Membership is decided first, so an unlisted FOODBIT object keeps the bit path (null).
+            var mapped = !!(fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, "edible"));
             var claimed = fact.attributeObjects && fact.attributeObjects.edible;
+            if (mapped && !(Array.isArray(claimed) && claimed.indexOf(objectId) >= 0)) return null;
             if (!Array.isArray(claimed)) return [];
             if (claimed.indexOf(objectId) < 0) return null;
             owned = true;
-            var ids = AttributeSchema.objectCapabilityIds(mem, "edible");
+            var ids = AttributeSchema.objectCapabilityIds(mem, "edible", { allowMapped: mapped });
             var rules = fact.capabilityForms.edible, header = ZRamReader.header(mem);
             if ((context !== "inventory" && context !== "room") || !ids || !header || !Number.isInteger(objectId) ||
                 !Array.isArray(rules) || rules.length !== ids.length) return [];
@@ -536,9 +542,9 @@ var AttributeSchema = {
             }
             function bit(value) { return Number.isInteger(value) && value >= 0 && value < limit; }
             function scope(value) {
-                return value === "held" || (keys(value, ["containerObject", "openAttribute"], []) &&
+                return value === "held" || (keys(value, ["containerObject", "openAttribute"], ["held"]) &&
                     Number.isInteger(value.containerObject) && value.containerObject >= 2 && value.containerObject <= count &&
-                    bit(value.openAttribute));
+                    bit(value.openAttribute) && (value.held === undefined || value.held === true));
             }
             if (!family || !Array.isArray(family.templates) || !rules.every(function (rule) {
                 if (!keys(rule, ["objectId", "scope", "actions"], []) || ids.indexOf(rule.objectId) < 0 ||
@@ -574,6 +580,8 @@ var AttributeSchema = {
                 var parentId = selected.scope.containerObject, parent = ZRamReader.objectLinks(mem, parentId);
                 var payload = typeof WorldModel !== "undefined" && WorldModel.lastPayload;
                 var listed = payload && (context === "inventory" ? payload.inventory : payload.discoveredObjects);
+                // D238: scope.held (e.g. Zork I V-DRINK needs the bottle in hand) rejects room context.
+                if (selected.scope.held === true && context !== "inventory") return [];
                 if (object.parent !== parentId || !parent || (context === "inventory" && parent.parent !== player) ||
                     !ZRamReader.attr(parent, selected.scope.openAttribute) || !payload ||
                     !(listed || []).some(function (o) { return o && o.id === objectId; })) return [];

@@ -345,7 +345,8 @@ var ModuleStatFactsClaude = {
         // 'analyze videophone' tests 141:30 FALSE ("It looks normal."). Source PERSON on the people.zil FLAGS (the matcher pinned only 2 because most
         // persons are compiled twice); bounded compiled table (255 objects, ends at first property 3041): 20 carriers, all persons + yourself 194; none
         // are rooms. FAIL-CLOSED (defensive, container 26 mapped): animate joins the openCapability none list (P3/R pattern).
-        "attributeMap": { "supporter": 6, "open": 18, "isOpen": 18, "container": 26, "on": 19, "animate": 30 },
+        // door 27 = source DOORBIT exact; native (grok2 r4-grok2/doorbit/Seastalker.z3.js.json): lab door 88 and entry hatch 251 strict OPEN/CLOSE toggles on OPENBIT 18; Universal Tool refuses (reply says now: weak, conditional wording).
+        "attributeMap": { "supporter": 6, "open": 18, "isOpen": 18, "container": 26, "on": 19, "animate": 30, "door": 27 },
         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): supporter - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
         // SURFACEBIT 6: TRUE on workbench 64, mechanical/electronic/chemical supply shelves 67/70/72, work counter 189; FALSE on microphone 62, file drawer 78, electrolyte relay 115. Walk m1; source exact (9 objects). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         "inventoryHiddenAttribute": 17
@@ -436,7 +437,8 @@ var ModuleStatFactsClaude = {
         "attributeObjects": { "switchable": [141, 233] },
         "capabilityForms": { "switchable": ["turn on", "turn off"] },
         // scenery 10 = NDESCBIT (grok1 2026-10-24, user ruling 11:45 ET): native look in Jericho, object directly in room with NDESCBIT set, look omits it, trace shows the listing routine (historicalsource 5d05d5e verbs.zil:2893 DESCRIBABLE?) testing NDESCBIT on that object at pc 52787 during that look, examine works. Positives 46:SB radio, 50:pilot seat, 90:copilot seat; negative 26:Floyd (listed, bit clear, same pc). work/investigations/grok1/batch/cache-scenery3 run-stationfall.json, judge-scenery.json. Take unaffected (D214 TAKEBIT owns takeable).
-        "attributeMap": { "wearable": 20, "animate": 31, "talkable": 31, "light": 24, "container": 25, "open": 15, "isOpen": 15, "scenery": 10 },
+        // door 27 = source DOORBIT exact; native (codex door-stationfall-qualified.json): spacetruck hatch 176 and warehouse inner door 79 OPEN/CLOSE toggle OPENBIT 15; sign refuses. Automatic door 21 and the iris refuse manual OPEN (harmless extras).
+        "attributeMap": { "wearable": 20, "animate": 31, "talkable": 31, "light": 24, "container": 25, "open": 15, "isOpen": 15, "scenery": 10, "door": 27 },
         "playerGlobal": 183,
         "wornAttribute": 21
     },
@@ -948,6 +950,11 @@ var ModuleStatFactsClaude = {
         // 161:31 FALSE ("You can't turn that on."). Source LIGHTBIT = torch, candles, lamp; bounded compiled-table scan (250 objects, ends at
         // first property 3000): bit-31 carriers = {104, 147, 164} = source 3/3. Consumers (#3904 audit, which answers the #3380 capability concern): no map-room effect (1679 blank names only).
         // door 23 = source DOORBIT exact; native (r3-claude/doorbit): kitchen window 235, trap door 183 toggle; front/wooden doors refuse ("cannot be opened": harmless extra).
+        // D238 drink owner (grok1 #4859 grok1/drink/zork1.json): WATER 237 in glass bottle 236 is the only non-global DRINKBIT 22
+        // object (single owner + whole-source V-EAT DRINKBIT branch: container must be held and open). Native: bottle closed -> "You'll
+        // have to open the glass bottle first."; open -> "Thank you very much. I was rather thirsty" and 237 leaves; bottle refused.
+        "attributeObjects": { "edible": [237] },
+        "capabilityForms": { "edible": [{ "objectId": 237, "scope": { "containerObject": 236, "openAttribute": 11, "held": true }, "actions": [{ "verb": "drink" }] }] },
             // talkable 30 = the proven animate bit (grok1 2026-10-24, item 4 talkable batch; same mapping as Spellbreaker/Stationfall): talk-command scoped,
             // native, test_attr recorded only during the named command (grok1/talk/talk-probe.json, no relocation): 'troll, hello' @27 tests troll 217:30 TRUE ("The troll isn't much of a conversationalist."), 'tell thief' @260 tests thief 114:30 TRUE ("The thief is a strong, silent type."); 'tell sword' @27 tests sword 110:30 FALSE ("You can't talk to the sword!").
             // Source V-TELL / parser addressing tests this bit and refuses non-actors with "You can't talk to ...".

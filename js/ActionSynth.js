@@ -150,6 +150,14 @@ var ActionSynth = {
                 });
             }
         });
+        // D238: an authored owner that is not a FOODBIT carrier (drinkable water in a
+        // title that maps edible) still gets its rule's verbs as candidates; the
+        // owner policy and authoredCommandAllowed remain the gate.
+        if (!a.edible && objectId != null) {
+            var ownerVerbs = null;
+            try { ownerVerbs = ActionSynth.edibleFormPolicy(objectId, options.context); } catch (eOwner) { ownerVerbs = null; }
+            (ownerVerbs || []).forEach(function (v) { if (verbs.indexOf(v) < 0) verbs.push(v); });
+        }
         // Preserve D150's Inform rain behavior and D147's vocabulary gate.
         // A ZIL edible fact alone does not prove the distinct Drink capability.
         if (ActionSynth.edibleDrinkAllowed(a, options) && verbs.indexOf("drink") < 0) verbs.push("drink");
