@@ -9411,6 +9411,24 @@ object (D231: the tool), but for unlock on a room object the pressed object is t
 <other>". Phone: "unlock padlock with key" -> "The lock, though rusty and unwilling, opens, releasing the hatch."
 Other instrumentals (use, cast) unchanged. Extra target candidates in the list are harmless by operator rule.
 
+## D235 Eat from an open container that is in view, not only held
+
+**Lifecycle:** sweep MISSING-OFFER (LH "eat chinese food"); blind comparison sealed by codex (lh-food-scope-compare.md);
+proposal claude zil-titles/food-scope-proposal-r1.md; independent audit ACCEPT with required changes
+(audit-d235-r6-independent.md) and grok2 ACCEPT #4794. Implemented claude 5ddf2dd; harness/zil-food-state.js 30/30;
+isolated 309x2 gate FLAKY-only.
+
+**Problem.** D228 admitted container-scope food only when the container was held and the food listed in inventory.
+Natively EAT succeeds from an open carton on the counter and from an open carton inside the closed glass oven.
+
+**Contract.** `AttributeSchema.edibleForms` accepts context "inventory" or "room" only. Held-scope rules keep inventory +
+parent == player. Container-scope rules keep the live parent == container and the live open bit; the food must be in the
+current view (payload.inventory for inventory context, payload.discoveredObjects for room context). The payload never
+grants Eat by itself. Only LH has a container-scope rule. Closed carton, food out of view or wrong live parent -> no Eat.
+
+LH also gained enterable 29 (VEHBIT; 16 bit-29 carriers at boot, chair and forklift natively proven, extras such as
+elevator shafts disclosed as harmless) and Zork III localScope roots (D232) in the same commit.
+
 ## Backlog (low priority, research only): Glulx cold decoding
 
 **October 20 continuation:** the operator reaffirmed full ZIL flag decoding before regular Inform and Glulx work, and authorized Codex to recover all seats' work and integrate held files. R3.1 (`work/investigations/2026-10-20-plan-r3-zil-first.md`) governs: the 21-column completion table is only a subtotal, not the full key universe. The full-profile ledger's N? and UD entries are not absence verdicts. Retain player/world/status, command consumers, classifier gaps and per-title native checks from the full-decode doccheck. Current takeover checkpoint: `work/mapping-research/items-codex/resume-20261020/checkpoint.md`.
