@@ -1,0 +1,174 @@
+{
+ "title": "Planetfall (Planetfall.z3.js)",
+ "seat": "grok1",
+ "assignment": "#4818",
+ "source": "historicalsource/planetfall comptwo.zil:2186 OBJECT LAMP (IN RADIATION-LAB, FLAGS TAKEBIT only - no LIGHTBIT); LAMP-F comptwo.zil:2197: LAMP-ON: ONBIT -> \"It is on.\" else FSET ONBIT/TOUCHBIT \"The lamp is now producing a bright light.\"; LAMP-OFF: ONBIT -> FCLEAR ONBIT \"The lamp goes dark.\" else \"It isn't on.\" Generic V-LAMP-ON/OFF verbs.zil:810/821 refuse non-LIGHTBIT objects (\"You can't turn that on/off.\").",
+ "census": "LIGHTBIT (FIND target of TURN ON/OFF) = Floyd robot, reader machine, comptwo.zil:689 fixture - none holdable switches. The lamp (25) is the single switchable owner via its own action routine. ONBIT = 5 (also set on lit rooms; rooms never switchable). 25 = TAKEBIT, 18 = TOUCHBIT.",
+ "native": [
+  {
+   "step": 340,
+   "cmd": "open radiation door",
+   "key": "Planetfall.z3.js @340:open radiation door",
+   "reply": "The door opens.\nFloyd notices a mouse scurrying by and tries to hide behind you.\n \n> ",
+   "bits_after": [
+    25
+   ],
+   "parent": 27
+  },
+  {
+   "step": 340,
+   "cmd": "ne",
+   "key": "Planetfall.z3.js @340:ne",
+   "reply": "Radiation Lock West\nThis is the western half of a decontamination chamber to prevent dangerous radioactive materials from leaving the Radiation Lab which lies to the east. The door leads west to the main lab.\nFloyd follows you.\n \n> ",
+   "bits_after": [
+    25
+   ],
+   "parent": 27
+  },
+  {
+   "step": 340,
+   "cmd": "close radiation door",
+   "key": "Planetfall.z3.js @340:close radiation door",
+   "reply": "The door closes.\n \n> ",
+   "bits_after": [
+    25
+   ],
+   "parent": 27
+  },
+  {
+   "step": 340,
+   "cmd": "e",
+   "key": "Planetfall.z3.js @340:e",
+   "reply": "Radiation Lock East\nThis is the eastern half of the decontamination chamber. The door to the east leads to the Radiation Lab, and the chamber continues westward. A sign on the wall reads \"WORNEENG! Raadeeaashun suuts must bee worn beeyond xis point.\"\nFloyd follows you.\n \n> ",
+   "bits_after": [
+    25
+   ],
+   "parent": 27
+  },
+  {
+   "step": 340,
+   "cmd": "open lab door",
+   "key": "Planetfall.z3.js @340:open lab door",
+   "reply": "The door opens.\n \n> ",
+   "bits_after": [
+    25
+   ],
+   "parent": 27
+  },
+  {
+   "step": 340,
+   "cmd": "e ",
+   "key": "Planetfall.z3.js @340:e ",
+   "reply": "Radiation Lab\nThis room is filled with unfathomable equipment and large canisters bearing radioactive warnings. Many of the canisters are split open. You can see the Bio Lab through a large crack in the south wall. Sinister-looking forms move about within the Bio Lab. Although the lights here are off, the room is suffused with a pale blue glow.\nSitting on a long table is a small brown spool.\nThere is a powerful portable lamp here, currently off.\nFloyd follows you.\n \n> ",
+   "bits_after": [
+    25
+   ],
+   "parent": 27
+  },
+  {
+   "step": 340,
+   "cmd": "take lamp",
+   "key": "Planetfall.z3.js @340:take lamp",
+   "reply": "Taken.\n \n> ",
+   "bits_after": [
+    18,
+    25
+   ],
+   "parent": 236
+  },
+  {
+   "step": 340,
+   "cmd": "turn on lamp",
+   "key": "Planetfall.z3.js @340:turn on lamp",
+   "reply": "The lamp is now producing a bright light.\n \n> ",
+   "bits_after": [
+    5,
+    18,
+    25
+   ],
+   "parent": 236
+  },
+  {
+   "step": 340,
+   "cmd": "turn on lamp ",
+   "key": "Planetfall.z3.js @340:turn on lamp ",
+   "reply": "It is on.\n \n> ",
+   "bits_after": [
+    5,
+    18,
+    25
+   ],
+   "parent": 236
+  },
+  {
+   "step": 340,
+   "cmd": "turn off lamp",
+   "key": "Planetfall.z3.js @340:turn off lamp",
+   "reply": "The lamp goes dark.\n \n> ",
+   "bits_after": [
+    18,
+    25
+   ],
+   "parent": 236
+  },
+  {
+   "step": 340,
+   "cmd": "turn off lamp ",
+   "key": "Planetfall.z3.js @340:turn off lamp ",
+   "reply": "It isn't on.\n \nYou suddenly feel sick and dizzy.\n \n> ",
+   "bits_after": [
+    18,
+    25
+   ],
+   "parent": 236
+  },
+  {
+   "step": 340,
+   "cmd": "turn on lamp  ",
+   "key": "Planetfall.z3.js @340:turn on lamp  ",
+   "reply": "The lamp is now producing a bright light.\n \nYou feel incredibly nauseous and begin vomiting. Also, all your hair has fallen out. Floyd points at you and laughs hysterically. \"You look funny with no hair,\" he gasps.\n \n> ",
+   "bits_after": [
+    5,
+    18,
+    25
+   ],
+   "parent": 236
+  },
+  {
+   "step": 200,
+   "cmd": "turn on canteen",
+   "key": "Planetfall.z3.js @200:turn on canteen",
+   "reply": "You can't turn that on.\nFloyd absent-mindedly recites the first six hundred digits of pi.\n \n> ",
+   "refusal": true
+  },
+  {
+   "step": 200,
+   "cmd": "turn off canteen",
+   "key": "Planetfall.z3.js @200:turn off canteen",
+   "reply": "You can't turn that off.\n \n> ",
+   "refusal": true
+  }
+ ],
+ "route": "pf-route.json: planetfall walkthrough W[0..147) + [N,W,GET KIT,EAT GREEN GOO,E,S,GET ALL,N,W] + W[152:] (fixes thirst death), replayed to step 340 then native: open radiation door | ne | close radiation door | e | open lab door | e | take lamp | turn on lamp | turn on lamp | turn off lamp | turn off lamp | turn on lamp. Canteen refusal: same route step 200 (canteen held). No relocation, no forced state. Caveat: Radiation Lab irradiates the player: radiation sickness begins ~4 turns after entry, death ~6 turns after (pfr340d). All five on/off/already rows fit before sickness; the last row (on again, +5) is during sickness but still native.",
+ "bar": "Single-owner title: one holdable switchable (lamp 25). Native: on (+bit5, reply), already-on (\"It is on.\", no change), off (-bit5), already-off (\"It isn't on.\", no change), on again (+5); refusal on non-owner canteen (\"You can't turn that on/off.\") + whole-source LAMP-F.",
+ "proposedFact": {
+  "attributeObjects": {
+   "switchable": [
+    25
+   ]
+  },
+  "capabilityForms": {
+   "switchable": [
+    "turn on",
+    "turn off"
+   ]
+  },
+  "observedOnBit": 5,
+  "note": "ONBIT 5 also marks lit rooms; whether to map attributeMap.on=5 is Claude's call (rooms are never switchable, so switchable stays object-listed)."
+ },
+ "raw": {
+  "probe": "work/investigations/grok1/switch/pfr340e-probe.json",
+  "canteen": "work/investigations/grok1/switch/pfcan-probe.json",
+  "earlier": "pfr340d-probe.json"
+ }
+}

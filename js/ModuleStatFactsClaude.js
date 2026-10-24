@@ -413,8 +413,10 @@ var ModuleStatFactsClaude = {
         // PUT IN pilot seat; survival kit and Thermos OPEN/CLOSE toggle 15 and list contents; spacetruck hatch opens; chronometer (no
         // 25) refuses. Source exact 31/31, 16/16; walk CB 25 / OB 15. Floyd and Plato carry CONTBIT: excluded by animate 31.
         "openCapability": { "all": ["container"], "none": ["animate"] },
-        // Switch (grok1 #4848 grok1/switch/stationfall.json): headlamp 141: TURN ON -> "Okay, the headlamp is now on.", TURN OFF clears; kit refuses. ACTIVEBIT/ONBIT shared with Floyd, flame, rooms: no on mapping. Jammer 233 left out (no native).
-        "attributeObjects": { "switchable": [141] },
+        // Switch (grok1 #4848 grok1/switch/stationfall.json): headlamp 141: TURN ON -> "Okay, the headlamp is now on.", TURN OFF clears; kit refuses. ACTIVEBIT/ONBIT shared with Floyd, flame, rooms: no on mapping. Jammer 233 added below (sfv258).
+        // Jammer 233 (grok1 grok1/switch/stationfall.json sfv258, route sf-route2.json, grok2 ACCEPT #4896): take; TURN ON JAMMER sets 26 "Okay, the jammer is now on.";
+        // TURN OFF clears 26; off again "It isn't on!"; on again sets 26. No ONBIT 30 (not a light). Native walkthrough replay, no relocation.
+        "attributeObjects": { "switchable": [141, 233] },
         "capabilityForms": { "switchable": ["turn on", "turn off"] },
         "attributeMap": { "wearable": 20, "animate": 31, "talkable": 31, "light": 24, "container": 25, "open": 15, "isOpen": 15 },
         "playerGlobal": 183,
@@ -481,6 +483,10 @@ var ModuleStatFactsClaude = {
         // Residual: when FLOYD is switched off, FCLEAR ACTORBIT (1939) removes the exclusion; this is the dynamic-ACTORBIT gap of #4027 (family-default lane).
         // enterable 30 = source VEHBIT exact; native (r3-claude/vehbit + vehbit2): safety web 215 and bed 196 (ENTER moves the player inside; GET OUT returns; bare EXIT refused). Harmless extra: large vehicle 98 untested.
         // door 26 = source DOORBIT exact; native (r3-claude/doorbit): door 173 toggles, escape pod bulkhead 231 opens (floods: real game action).
+        // Switch (grok1 grok1/switch/planetfall.json, grok2 ACCEPT #4896): lamp 25 (source LAMP-F comptwo.zil:2197; LIGHTBIT-free LAMP, only holdable switch owner):
+        // native take; TURN ON -> sets 5, "It is on."; TURN OFF clears 5, "It isn't on."; on again; canteen refuses. ONBIT 5 is also room-lit, so no on map.
+        "attributeObjects": { "switchable": [25] },
+        "capabilityForms": { "switchable": ["turn on", "turn off"] },
         "attributeMap": { "wearable": 22, "open": 11, "isOpen": 11, "container": 24, "animate": 31, "enterable": 30, "door": 26 }
     },
     // Hollywood Hijinx (ZIL): WEARBIT 22 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).

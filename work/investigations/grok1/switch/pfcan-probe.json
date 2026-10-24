@@ -1,0 +1,11243 @@
+{
+ "Planetfall.z3.js @200:i": {
+  "step": 200,
+  "ts": "2026-10-24T13:37:15.113Z",
+  "nativeI": "You are carrying:\n  An upper elevator access card\n  A glass flask\n  The glass flask contains:\n    A quantity of chemical fluid\n  A lower elevator access card\n  A canteen\n  A shuttle access card\n  A Patrol uniform (being worn)\n  The Patrol uniform contains:\n    An ID card\n  A chronometer (being worn)\n \n> ",
+  "ops": [
+   [
+    147,
+    19,
+    0
+   ],
+   [
+    105,
+    30,
+    0
+   ],
+   [
+    147,
+    19,
+    0
+   ],
+   [
+    147,
+    8,
+    0
+   ],
+   [
+    147,
+    7,
+    1
+   ],
+   [
+    147,
+    12,
+    0
+   ],
+   [
+    147,
+    19,
+    0
+   ],
+   [
+    147,
+    9,
+    0
+   ],
+   [
+    147,
+    11,
+    0
+   ],
+   [
+    125,
+    19,
+    0
+   ],
+   [
+    125,
+    8,
+    0
+   ],
+   [
+    125,
+    7,
+    0
+   ],
+   [
+    125,
+    12,
+    0
+   ],
+   [
+    125,
+    19,
+    0
+   ],
+   [
+    125,
+    9,
+    0
+   ],
+   [
+    125,
+    11,
+    1
+   ],
+   [
+    105,
+    30,
+    0
+   ],
+   [
+    90,
+    19,
+    0
+   ],
+   [
+    90,
+    8,
+    0
+   ],
+   [
+    125,
+    17,
+    0
+   ],
+   [
+    125,
+    31,
+    0
+   ],
+   [
+    90,
+    7,
+    0
+   ],
+   [
+    90,
+    12,
+    0
+   ],
+   [
+    90,
+    19,
+    0
+   ],
+   [
+    90,
+    9,
+    0
+   ],
+   [
+    90,
+    11,
+    0
+   ],
+   [
+    144,
+    19,
+    0
+   ],
+   [
+    144,
+    8,
+    0
+   ],
+   [
+    144,
+    7,
+    0
+   ],
+   [
+    144,
+    12,
+    0
+   ],
+   [
+    144,
+    19,
+    0
+   ],
+   [
+    144,
+    9,
+    0
+   ],
+   [
+    144,
+    11,
+    0
+   ],
+   [
+    163,
+    19,
+    0
+   ],
+   [
+    163,
+    8,
+    0
+   ],
+   [
+    163,
+    7,
+    0
+   ],
+   [
+    163,
+    12,
+    0
+   ],
+   [
+    163,
+    19,
+    0
+   ],
+   [
+    163,
+    9,
+    0
+   ],
+   [
+    163,
+    11,
+    0
+   ],
+   [
+    146,
+    19,
+    0
+   ],
+   [
+    146,
+    8,
+    0
+   ],
+   [
+    146,
+    7,
+    0
+   ],
+   [
+    146,
+    12,
+    0
+   ],
+   [
+    146,
+    19,
+    0
+   ],
+   [
+    146,
+    9,
+    0
+   ],
+   [
+    146,
+    11,
+    0
+   ],
+   [
+    224,
+    19,
+    0
+   ],
+   [
+    224,
+    8,
+    0
+   ],
+   [
+    224,
+    7,
+    0
+   ],
+   [
+    224,
+    12,
+    1
+   ],
+   [
+    224,
+    19,
+    0
+   ],
+   [
+    224,
+    9,
+    0
+   ],
+   [
+    224,
+    11,
+    1
+   ],
+   [
+    105,
+    30,
+    0
+   ],
+   [
+    225,
+    19,
+    0
+   ],
+   [
+    225,
+    8,
+    0
+   ],
+   [
+    224,
+    17,
+    0
+   ],
+   [
+    224,
+    31,
+    0
+   ],
+   [
+    225,
+    7,
+    1
+   ],
+   [
+    225,
+    12,
+    0
+   ],
+   [
+    225,
+    19,
+    0
+   ],
+   [
+    225,
+    9,
+    0
+   ],
+   [
+    225,
+    11,
+    0
+   ],
+   [
+    226,
+    19,
+    0
+   ],
+   [
+    226,
+    8,
+    0
+   ],
+   [
+    226,
+    7,
+    0
+   ],
+   [
+    226,
+    12,
+    1
+   ],
+   [
+    226,
+    19,
+    0
+   ],
+   [
+    226,
+    9,
+    0
+   ],
+   [
+    226,
+    11,
+    0
+   ],
+   [
+    107,
+    11,
+    1
+   ],
+   [
+    226,
+    14,
+    0
+   ],
+   [
+    110,
+    6,
+    1
+   ],
+   [
+    105,
+    2,
+    0
+   ],
+   [
+    105,
+    30,
+    0
+   ]
+  ],
+  "objs": [
+   {
+    "id": 1,
+    "name": "mobile man-eating plant",
+    "parent": 29,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 2,
+    "name": "lurking fanged creature",
+    "parent": 29,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 3,
+    "name": "hairy growling biped",
+    "parent": 29,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 4,
+    "name": "rat-like, ant-like man-sized monster",
+    "parent": 29,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 5,
+    "name": "microbe",
+    "parent": 0,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 6,
+    "name": "new battery",
+    "parent": 38,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 7,
+    "name": "old battery",
+    "parent": 9,
+    "bits": [
+     4,
+     7,
+     25
+    ]
+   },
+   {
+    "id": 8,
+    "name": "laser setting dial",
+    "parent": 9,
+    "bits": [
+     8,
+     15
+    ]
+   },
+   {
+    "id": 9,
+    "name": "laser",
+    "parent": 126,
+    "bits": [
+     9,
+     11,
+     15,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 10,
+    "name": "speck",
+    "parent": 11,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 11,
+    "name": "micro-relay",
+    "parent": 12,
+    "bits": [
+     8,
+     9
+    ]
+   },
+   {
+    "id": 12,
+    "name": "Strip Near Relay",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 13,
+    "name": "Middle of Strip",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 14,
+    "name": "Strip Near Station",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 15,
+    "name": "silicon strip",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 16,
+    "name": "Station 384",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 17,
+    "name": "Auxiliary Booth",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 18,
+    "name": "red button",
+    "parent": 24,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 19,
+    "name": "black button",
+    "parent": 24,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 20,
+    "name": "white button",
+    "parent": 24,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 21,
+    "name": "memo",
+    "parent": 0,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 22,
+    "name": "gas mask",
+    "parent": 23,
+    "bits": [
+     4,
+     22,
+     25
+    ]
+   },
+   {
+    "id": 23,
+    "name": "desk",
+    "parent": 24,
+    "bits": [
+     8,
+     10,
+     24
+    ]
+   },
+   {
+    "id": 24,
+    "name": "Lab Office",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 25,
+    "name": "portable lamp",
+    "parent": 27,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 26,
+    "name": "brown spool",
+    "parent": 27,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 27,
+    "name": "Radiation Lab",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 28,
+    "name": "office door",
+    "parent": 254,
+    "bits": [
+     7,
+     8,
+     26
+    ]
+   },
+   {
+    "id": 29,
+    "name": "Bio Lab",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 30,
+    "name": "lab door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 31,
+    "name": "Radiation Lock East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 32,
+    "name": "Radiation Lock West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 33,
+    "name": "lab door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 34,
+    "name": "Bio Lock West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 35,
+    "name": "piece of paper",
+    "parent": 37,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 36,
+    "name": "teleportation access card",
+    "parent": 37,
+    "bits": [
+     23,
+     25
+    ]
+   },
+   {
+    "id": 37,
+    "name": "lab uniform",
+    "parent": 38,
+    "bits": [
+     10,
+     22,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 38,
+    "name": "Lab Storage",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 39,
+    "name": "radiation-lock door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 40,
+    "name": "bio-lock door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 41,
+    "name": "Main Lab",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 42,
+    "name": "Bio Lock East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 43,
+    "name": "miniaturization access card",
+    "parent": 42,
+    "bits": [
+     8,
+     19,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 44,
+    "name": "Miniaturization Booth",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 45,
+    "name": "pile of computer output",
+    "parent": 46,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 46,
+    "name": "Computer Room",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 47,
+    "name": "Project Corridor East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 48,
+    "name": "Cryo-Anteroom",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 49,
+    "name": "Cryo-Elevator",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 50,
+    "name": "cryo-elevator door",
+    "parent": 254,
+    "bits": [
+     8,
+     19
+    ]
+   },
+   {
+    "id": 51,
+    "name": "ProjCon Office",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 52,
+    "name": "Project Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 53,
+    "name": "SanFac F",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 54,
+    "name": "Project Corridor West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 55,
+    "name": "microfilm reader",
+    "parent": 57,
+    "bits": [
+     10,
+     11,
+     21,
+     24
+    ]
+   },
+   {
+    "id": 56,
+    "name": "terminal",
+    "parent": 60,
+    "bits": [
+     21
+    ]
+   },
+   {
+    "id": 57,
+    "name": "Library",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 58,
+    "name": "Booth 3",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 59,
+    "name": "green spool",
+    "parent": 60,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 60,
+    "name": "Library Lobby",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 61,
+    "name": "fused ninety-ohm bedistor",
+    "parent": 62,
+    "bits": [
+     4,
+     16,
+     25
+    ]
+   },
+   {
+    "id": 62,
+    "name": "large metal cube",
+    "parent": 63,
+    "bits": [
+     8,
+     10,
+     15,
+     24
+    ]
+   },
+   {
+    "id": 63,
+    "name": "Course Control",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 64,
+    "name": "fried seventeen-centimeter fromitz board",
+    "parent": 0,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 65,
+    "name": "second seventeen-centimeter fromitz board",
+    "parent": 69,
+    "bits": [
+     16,
+     25
+    ]
+   },
+   {
+    "id": 66,
+    "name": "third seventeen-centimeter fromitz board",
+    "parent": 69,
+    "bits": []
+   },
+   {
+    "id": 67,
+    "name": "fourth seventeen-centimeter fromitz board",
+    "parent": 69,
+    "bits": []
+   },
+   {
+    "id": 68,
+    "name": "first seventeen-centimeter fromitz board",
+    "parent": 69,
+    "bits": []
+   },
+   {
+    "id": 69,
+    "name": "access panel",
+    "parent": 70,
+    "bits": [
+     7,
+     8,
+     10,
+     24
+    ]
+   },
+   {
+    "id": 70,
+    "name": "Planetary Defense",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 71,
+    "name": "Physical Plant",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 72,
+    "name": "Systems Corridor East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 73,
+    "name": "Systems Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 74,
+    "name": "Systems Corridor West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 75,
+    "name": "shiny seventeen-centimeter fromitz board",
+    "parent": 76,
+    "bits": [
+     4,
+     8,
+     19
+    ]
+   },
+   {
+    "id": 76,
+    "name": "small doorway",
+    "parent": 78,
+    "bits": [
+     8,
+     9,
+     24
+    ]
+   },
+   {
+    "id": 77,
+    "name": "broken robot",
+    "parent": 78,
+    "bits": []
+   },
+   {
+    "id": 78,
+    "name": "Repair Room",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 79,
+    "name": "quantity of medicine",
+    "parent": 80,
+    "bits": [
+     27
+    ]
+   },
+   {
+    "id": 80,
+    "name": "medicine bottle",
+    "parent": 83,
+    "bits": [
+     9,
+     10,
+     23,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 81,
+    "name": "red spool",
+    "parent": 83,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 82,
+    "name": "medical robot breastplate",
+    "parent": 0,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 83,
+    "name": "Infirmary",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 84,
+    "name": "Fork",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 85,
+    "name": "Escalator",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 86,
+    "name": "Lawanda Platform",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 87,
+    "name": "Kalamontee Platform",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 88,
+    "name": "Waiting Area",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 89,
+    "name": "Observation Deck",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 90,
+    "name": "quantity of chemical fluid",
+    "parent": 125,
+    "bits": []
+   },
+   {
+    "id": 91,
+    "name": "funnel-shaped hole",
+    "parent": 96,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 92,
+    "name": "screen",
+    "parent": 96,
+    "bits": [
+     8,
+     23
+    ]
+   },
+   {
+    "id": 93,
+    "name": "communication send console",
+    "parent": 96,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 94,
+    "name": "glowing button",
+    "parent": 96,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 95,
+    "name": "communications receive console",
+    "parent": 96,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 96,
+    "name": "Comm Room",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 97,
+    "name": "Helicopter",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 98,
+    "name": "large vehicle",
+    "parent": 254,
+    "bits": [
+     8,
+     30
+    ]
+   },
+   {
+    "id": 99,
+    "name": "Helipad",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 100,
+    "name": "Tower Core",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 101,
+    "name": "Booth 2",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 102,
+    "name": "red button",
+    "parent": 108,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 103,
+    "name": "blue button",
+    "parent": 108,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 104,
+    "name": "Lower Elevator",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 105,
+    "name": "Upper Elevator",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 106,
+    "name": "red door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 107,
+    "name": "blue door",
+    "parent": 254,
+    "bits": [
+     8,
+     11,
+     26
+    ]
+   },
+   {
+    "id": 108,
+    "name": "Elevator Lobby",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 109,
+    "name": "mangled robot",
+    "parent": 0,
+    "bits": []
+   },
+   {
+    "id": 110,
+    "name": "multiple purpose robot",
+    "parent": 105,
+    "bits": [
+     6,
+     9,
+     10,
+     11,
+     18,
+     21,
+     24,
+     31
+    ]
+   },
+   {
+    "id": 111,
+    "name": "Robot Shop",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 112,
+    "name": "square white button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 113,
+    "name": "round white button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 114,
+    "name": "black button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 115,
+    "name": "brown button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 116,
+    "name": "gray button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 117,
+    "name": "yellow button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 118,
+    "name": "green button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 119,
+    "name": "blue button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 120,
+    "name": "red button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 121,
+    "name": "chemical dispenser",
+    "parent": 122,
+    "bits": [
+     8,
+     15
+    ]
+   },
+   {
+    "id": 122,
+    "name": "Machine Shop",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 123,
+    "name": "pair of wide-nosed pliers",
+    "parent": 126,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 124,
+    "name": "curved metal bar",
+    "parent": 160,
+    "bits": [
+     16,
+     18,
+     25
+    ]
+   },
+   {
+    "id": 125,
+    "name": "glass flask",
+    "parent": 236,
+    "bits": [
+     10,
+     11,
+     18,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 126,
+    "name": "Tool Room",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 127,
+    "name": "button",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 128,
+    "name": "Reactor Elevator",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 129,
+    "name": "Reactor Access Stairs",
+    "parent": 253,
+    "bits": [
+     6
+    ]
+   },
+   {
+    "id": 130,
+    "name": "reactor elevator door",
+    "parent": 254,
+    "bits": [
+     26
+    ]
+   },
+   {
+    "id": 131,
+    "name": "Reactor Control",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 132,
+    "name": "Physical Plant",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 133,
+    "name": "good ninety-ohm bedistor",
+    "parent": 137,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 134,
+    "name": "K-series megafuse",
+    "parent": 137,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 135,
+    "name": "B-series megafuse",
+    "parent": 137,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 136,
+    "name": "cracked seventeen-centimeter fromitz board",
+    "parent": 137,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 137,
+    "name": "cardboard box",
+    "parent": 139,
+    "bits": [
+     10,
+     11,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 138,
+    "name": "oil can",
+    "parent": 139,
+    "bits": [
+     7,
+     25
+    ]
+   },
+   {
+    "id": 139,
+    "name": "Storage East",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 140,
+    "name": "Mech Corridor South",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 141,
+    "name": "Mech Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 142,
+    "name": "Mech Corridor North",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 143,
+    "name": "Large Office",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 144,
+    "name": "lower elevator access card",
+    "parent": 236,
+    "bits": [
+     18,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 145,
+    "name": "large desk",
+    "parent": 143,
+    "bits": [
+     8,
+     10,
+     11,
+     24
+    ]
+   },
+   {
+    "id": 146,
+    "name": "shuttle access card",
+    "parent": 236,
+    "bits": [
+     18,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 147,
+    "name": "upper elevator access card",
+    "parent": 236,
+    "bits": [
+     7,
+     18,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 148,
+    "name": "kitchen access card",
+    "parent": 167,
+    "bits": [
+     18,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 149,
+    "name": "small desk",
+    "parent": 150,
+    "bits": [
+     8,
+     10,
+     11,
+     24
+    ]
+   },
+   {
+    "id": 150,
+    "name": "Small Office",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 151,
+    "name": "Transportation Supply",
+    "parent": 253,
+    "bits": [
+     6
+    ]
+   },
+   {
+    "id": 152,
+    "name": "Plan Room",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 153,
+    "name": "Systems Monitors",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 154,
+    "name": "SanFac E",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 155,
+    "name": "Admin Corridor North",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 156,
+    "name": "rift",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 157,
+    "name": "Admin Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 158,
+    "name": "key",
+    "parent": 171,
+    "bits": [
+     4,
+     18,
+     20,
+     25
+    ]
+   },
+   {
+    "id": 159,
+    "name": "crevice",
+    "parent": 160,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 160,
+    "name": "Admin Corridor South",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 161,
+    "name": "Corridor Junction",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 162,
+    "name": "quantity of protein-rich liquid",
+    "parent": 163,
+    "bits": [
+     27
+    ]
+   },
+   {
+    "id": 163,
+    "name": "canteen",
+    "parent": 236,
+    "bits": [
+     10,
+     18,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 164,
+    "name": "dispenser unit",
+    "parent": 165,
+    "bits": [
+     8,
+     9,
+     10,
+     11,
+     15,
+     24
+    ]
+   },
+   {
+    "id": 165,
+    "name": "Kitchen",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 166,
+    "name": "door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 167,
+    "name": "Mess Hall",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 168,
+    "name": "Dorm Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 169,
+    "name": "ladder",
+    "parent": 157,
+    "bits": [
+     8,
+     16,
+     18,
+     25
+    ]
+   },
+   {
+    "id": 170,
+    "name": "tin can",
+    "parent": 171,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 171,
+    "name": "Storage West",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 172,
+    "name": "padlock",
+    "parent": 174,
+    "bits": [
+     11,
+     15,
+     18,
+     25
+    ]
+   },
+   {
+    "id": 173,
+    "name": "door",
+    "parent": 254,
+    "bits": [
+     8,
+     11,
+     26
+    ]
+   },
+   {
+    "id": 174,
+    "name": "Mess Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 175,
+    "name": "SanFac D",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 176,
+    "name": "Dorm D",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 177,
+    "name": "SanFac C",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 178,
+    "name": "Dorm C",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 179,
+    "name": "SanFac B",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 180,
+    "name": "Dorm B",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 181,
+    "name": "SanFac A",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 182,
+    "name": "Dorm A",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 183,
+    "name": "Rec Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 184,
+    "name": "Booth 1",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 185,
+    "name": "combination dial",
+    "parent": 188,
+    "bits": [
+     8,
+     15
+    ]
+   },
+   {
+    "id": 186,
+    "name": "Conference Room",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 187,
+    "name": "door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 188,
+    "name": "Rec Area",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 189,
+    "name": "Plain Hall",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 190,
+    "name": "West Wing",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 191,
+    "name": "Courtyard",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 192,
+    "name": "Winding Stair",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 193,
+    "name": "Balcony",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 194,
+    "name": "Crag",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 195,
+    "name": "Underwater",
+    "parent": 253,
+    "bits": [
+     3,
+     5,
+     18
+    ]
+   },
+   {
+    "id": 196,
+    "name": "bed",
+    "parent": 254,
+    "bits": [
+     8,
+     29,
+     30
+    ]
+   },
+   {
+    "id": 197,
+    "name": "Betty Control West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 198,
+    "name": "Betty Control East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 199,
+    "name": "Shuttle Car Betty",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 200,
+    "name": "Alfie Control West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 201,
+    "name": "lever",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 202,
+    "name": "Alfie Control East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 203,
+    "name": "door",
+    "parent": 254,
+    "bits": [
+     11,
+     19,
+     26
+    ]
+   },
+   {
+    "id": 204,
+    "name": "Shuttle Car Alfie",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 205,
+    "name": "shuttle car",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 206,
+    "name": "tan button",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 207,
+    "name": "beige button",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 208,
+    "name": "brown button",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 209,
+    "name": "slot",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 210,
+    "name": "blob of green goo",
+    "parent": 0,
+    "bits": [
+     4,
+     27
+    ]
+   },
+   {
+    "id": 211,
+    "name": "blob of brown goo",
+    "parent": 213,
+    "bits": [
+     4,
+     27
+    ]
+   },
+   {
+    "id": 212,
+    "name": "blob of red goo",
+    "parent": 0,
+    "bits": [
+     4,
+     27
+    ]
+   },
+   {
+    "id": 213,
+    "name": "survival kit",
+    "parent": 161,
+    "bits": [
+     10,
+     11,
+     18,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 214,
+    "name": "towel",
+    "parent": 216,
+    "bits": [
+     23,
+     25
+    ]
+   },
+   {
+    "id": 215,
+    "name": "safety web",
+    "parent": 216,
+    "bits": [
+     8,
+     29,
+     30
+    ]
+   },
+   {
+    "id": 216,
+    "name": "Escape Pod",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 217,
+    "name": "brochure",
+    "parent": 0,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 218,
+    "name": "piece of celery",
+    "parent": 0,
+    "bits": [
+     8,
+     27
+    ]
+   },
+   {
+    "id": 219,
+    "name": "alien ambassador",
+    "parent": 0,
+    "bits": [
+     7,
+     31
+    ]
+   },
+   {
+    "id": 220,
+    "name": "Ensign First Class",
+    "parent": 0,
+    "bits": [
+     7,
+     31
+    ]
+   },
+   {
+    "id": 221,
+    "name": "Deck Eight",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 222,
+    "name": "Gangway",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 223,
+    "name": "Reactor Lobby",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 224,
+    "name": "Patrol uniform",
+    "parent": 236,
+    "bits": [
+     10,
+     11,
+     12,
+     22,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 225,
+    "name": "ID card",
+    "parent": 224,
+    "bits": [
+     7,
+     13,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 226,
+    "name": "chronometer",
+    "parent": 236,
+    "bits": [
+     12,
+     15,
+     22,
+     25
+    ]
+   },
+   {
+    "id": 227,
+    "name": "Patrol-issue self-contained multi-purpose scrub brush",
+    "parent": 171,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 228,
+    "name": "escape pod",
+    "parent": 254,
+    "bits": [
+     7,
+     8,
+     30
+    ]
+   },
+   {
+    "id": 229,
+    "name": "narrow bulkhead",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 230,
+    "name": "wide bulkhead",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 231,
+    "name": "escape pod bulkhead",
+    "parent": 254,
+    "bits": [
+     7,
+     8,
+     11,
+     26
+    ]
+   },
+   {
+    "id": 232,
+    "name": "Brig",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 233,
+    "name": "such thing",
+    "parent": 0,
+    "bits": []
+   },
+   {
+    "id": 234,
+    "name": "you",
+    "parent": 255,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 235,
+    "name": "Deck Nine",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 236,
+    "name": "player",
+    "parent": 105,
+    "bits": [
+     8,
+     19
+    ]
+   },
+   {
+    "id": 237,
+    "name": "sacred act of sleeping",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 238,
+    "name": "pair of hands",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 239,
+    "name": "game",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 240,
+    "name": "set of controls",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 241,
+    "name": "doorway",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 242,
+    "name": "light",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 243,
+    "name": "shelf",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 244,
+    "name": "table",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 245,
+    "name": "ocean",
+    "parent": 254,
+    "bits": [
+     7,
+     8
+    ]
+   },
+   {
+    "id": 246,
+    "name": "cliff",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 247,
+    "name": "window",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 248,
+    "name": "floor",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 249,
+    "name": "stairway",
+    "parent": 254,
+    "bits": [
+     8,
+     29
+    ]
+   },
+   {
+    "id": 250,
+    "name": "random object",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 251,
+    "name": "spout",
+    "parent": 0,
+    "bits": []
+   },
+   {
+    "id": 252,
+    "name": "number",
+    "parent": 255,
+    "bits": []
+   },
+   {
+    "id": 257,
+    "name": "de",
+    "parent": 2,
+    "bits": [
+     2,
+     4,
+     8,
+     9,
+     11,
+     12,
+     15,
+     18,
+     19,
+     20,
+     22,
+     25,
+     26,
+     28,
+     29
+    ]
+   },
+   {
+    "id": 262,
+    "name": "about control e",
+    "parent": 77,
+    "bits": [
+     1,
+     5,
+     6,
+     8,
+     9,
+     13,
+     15,
+     17,
+     20,
+     21,
+     23,
+     25,
+     26,
+     30,
+     31
+    ]
+   },
+   {
+    "id": 268,
+    "name": "pe pods. The pod bul",
+    "parent": 58,
+    "bits": [
+     1,
+     3,
+     4,
+     5,
+     8,
+     9,
+     11,
+     12,
+     15,
+     19,
+     21,
+     22,
+     23,
+     24,
+     27,
+     31
+    ]
+   },
+   {
+    "id": 278,
+    "name": "dx",
+    "parent": 103,
+    "bits": [
+     1,
+     3,
+     6,
+     10,
+     12,
+     15,
+     24,
+     25,
+     26,
+     29,
+     30
+    ]
+   },
+   {
+    "id": 281,
+    "name": "uq",
+    "parent": 48,
+    "bits": [
+     1,
+     2,
+     7,
+     9,
+     11,
+     12,
+     15,
+     17,
+     18,
+     21,
+     23,
+     24,
+     25,
+     27,
+     30,
+     31
+    ]
+   },
+   {
+    "id": 287,
+    "name": "Ddpgqlhv",
+    "parent": 74,
+    "bits": [
+     1,
+     3,
+     6,
+     9,
+     12,
+     17,
+     21,
+     23,
+     26,
+     28
+    ]
+   },
+   {
+    "id": 290,
+    "name": "in",
+    "parent": 25,
+    "bits": [
+     1,
+     3,
+     5,
+     6,
+     7,
+     21,
+     22,
+     23,
+     27,
+     30,
+     31
+    ]
+   },
+   {
+    "id": 315,
+    "name": "nxwould c/)",
+    "parent": 70,
+    "bits": [
+     1,
+     5,
+     7,
+     8,
+     11,
+     12,
+     18,
+     20,
+     21,
+     23,
+     24,
+     26,
+     29,
+     31
+    ]
+   },
+   {
+    "id": 317,
+    "name": "would",
+    "parent": 58,
+    "bits": [
+     1,
+     5,
+     7,
+     8,
+     11,
+     12,
+     18,
+     20,
+     21,
+     23,
+     24,
+     26,
+     29,
+     31
+    ]
+   },
+   {
+    "id": 324,
+    "name": "mFloyd",
+    "parent": 187,
+    "bits": [
+     2,
+     4,
+     5,
+     7,
+     8,
+     10,
+     13,
+     16,
+     17,
+     18,
+     20,
+     26,
+     28,
+     29
+    ]
+   }
+  ]
+ },
+ "Planetfall.z3.js @200:turn on canteen": {
+  "step": 200,
+  "ts": "2026-10-24T13:37:15.727Z",
+  "nativeI": "You can't turn that on.\nFloyd absent-mindedly recites the first six hundred digits of pi.\n \n> ",
+  "ops": [
+   [
+    110,
+    19,
+    0
+   ],
+   [
+    110,
+    19,
+    0
+   ],
+   [
+    236,
+    19,
+    1
+   ],
+   [
+    236,
+    19,
+    1
+   ],
+   [
+    147,
+    19,
+    0
+   ],
+   [
+    147,
+    19,
+    0
+   ],
+   [
+    125,
+    19,
+    0
+   ],
+   [
+    125,
+    19,
+    0
+   ],
+   [
+    125,
+    11,
+    1
+   ],
+   [
+    125,
+    17,
+    0
+   ],
+   [
+    125,
+    10,
+    1
+   ],
+   [
+    90,
+    19,
+    0
+   ],
+   [
+    90,
+    19,
+    0
+   ],
+   [
+    144,
+    19,
+    0
+   ],
+   [
+    144,
+    19,
+    0
+   ],
+   [
+    163,
+    19,
+    0
+   ],
+   [
+    163,
+    19,
+    0
+   ],
+   [
+    163,
+    11,
+    0
+   ],
+   [
+    163,
+    9,
+    0
+   ],
+   [
+    146,
+    19,
+    0
+   ],
+   [
+    146,
+    19,
+    0
+   ],
+   [
+    224,
+    19,
+    0
+   ],
+   [
+    224,
+    19,
+    0
+   ],
+   [
+    224,
+    11,
+    1
+   ],
+   [
+    224,
+    17,
+    0
+   ],
+   [
+    224,
+    10,
+    1
+   ],
+   [
+    225,
+    19,
+    0
+   ],
+   [
+    225,
+    19,
+    0
+   ],
+   [
+    226,
+    19,
+    0
+   ],
+   [
+    226,
+    19,
+    0
+   ],
+   [
+    147,
+    19,
+    0
+   ],
+   [
+    163,
+    21,
+    0
+   ],
+   [
+    107,
+    11,
+    1
+   ],
+   [
+    226,
+    14,
+    0
+   ],
+   [
+    110,
+    6,
+    1
+   ],
+   [
+    105,
+    2,
+    0
+   ],
+   [
+    105,
+    30,
+    0
+   ]
+  ],
+  "objs": [
+   {
+    "id": 1,
+    "name": "mobile man-eating plant",
+    "parent": 29,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 2,
+    "name": "lurking fanged creature",
+    "parent": 29,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 3,
+    "name": "hairy growling biped",
+    "parent": 29,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 4,
+    "name": "rat-like, ant-like man-sized monster",
+    "parent": 29,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 5,
+    "name": "microbe",
+    "parent": 0,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 6,
+    "name": "new battery",
+    "parent": 38,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 7,
+    "name": "old battery",
+    "parent": 9,
+    "bits": [
+     4,
+     7,
+     25
+    ]
+   },
+   {
+    "id": 8,
+    "name": "laser setting dial",
+    "parent": 9,
+    "bits": [
+     8,
+     15
+    ]
+   },
+   {
+    "id": 9,
+    "name": "laser",
+    "parent": 126,
+    "bits": [
+     9,
+     11,
+     15,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 10,
+    "name": "speck",
+    "parent": 11,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 11,
+    "name": "micro-relay",
+    "parent": 12,
+    "bits": [
+     8,
+     9
+    ]
+   },
+   {
+    "id": 12,
+    "name": "Strip Near Relay",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 13,
+    "name": "Middle of Strip",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 14,
+    "name": "Strip Near Station",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 15,
+    "name": "silicon strip",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 16,
+    "name": "Station 384",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 17,
+    "name": "Auxiliary Booth",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 18,
+    "name": "red button",
+    "parent": 24,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 19,
+    "name": "black button",
+    "parent": 24,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 20,
+    "name": "white button",
+    "parent": 24,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 21,
+    "name": "memo",
+    "parent": 0,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 22,
+    "name": "gas mask",
+    "parent": 23,
+    "bits": [
+     4,
+     22,
+     25
+    ]
+   },
+   {
+    "id": 23,
+    "name": "desk",
+    "parent": 24,
+    "bits": [
+     8,
+     10,
+     24
+    ]
+   },
+   {
+    "id": 24,
+    "name": "Lab Office",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 25,
+    "name": "portable lamp",
+    "parent": 27,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 26,
+    "name": "brown spool",
+    "parent": 27,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 27,
+    "name": "Radiation Lab",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 28,
+    "name": "office door",
+    "parent": 254,
+    "bits": [
+     7,
+     8,
+     26
+    ]
+   },
+   {
+    "id": 29,
+    "name": "Bio Lab",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 30,
+    "name": "lab door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 31,
+    "name": "Radiation Lock East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 32,
+    "name": "Radiation Lock West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 33,
+    "name": "lab door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 34,
+    "name": "Bio Lock West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 35,
+    "name": "piece of paper",
+    "parent": 37,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 36,
+    "name": "teleportation access card",
+    "parent": 37,
+    "bits": [
+     23,
+     25
+    ]
+   },
+   {
+    "id": 37,
+    "name": "lab uniform",
+    "parent": 38,
+    "bits": [
+     10,
+     22,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 38,
+    "name": "Lab Storage",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 39,
+    "name": "radiation-lock door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 40,
+    "name": "bio-lock door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 41,
+    "name": "Main Lab",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 42,
+    "name": "Bio Lock East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 43,
+    "name": "miniaturization access card",
+    "parent": 42,
+    "bits": [
+     8,
+     19,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 44,
+    "name": "Miniaturization Booth",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 45,
+    "name": "pile of computer output",
+    "parent": 46,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 46,
+    "name": "Computer Room",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 47,
+    "name": "Project Corridor East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 48,
+    "name": "Cryo-Anteroom",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 49,
+    "name": "Cryo-Elevator",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 50,
+    "name": "cryo-elevator door",
+    "parent": 254,
+    "bits": [
+     8,
+     19
+    ]
+   },
+   {
+    "id": 51,
+    "name": "ProjCon Office",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 52,
+    "name": "Project Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 53,
+    "name": "SanFac F",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 54,
+    "name": "Project Corridor West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 55,
+    "name": "microfilm reader",
+    "parent": 57,
+    "bits": [
+     10,
+     11,
+     21,
+     24
+    ]
+   },
+   {
+    "id": 56,
+    "name": "terminal",
+    "parent": 60,
+    "bits": [
+     21
+    ]
+   },
+   {
+    "id": 57,
+    "name": "Library",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 58,
+    "name": "Booth 3",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 59,
+    "name": "green spool",
+    "parent": 60,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 60,
+    "name": "Library Lobby",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 61,
+    "name": "fused ninety-ohm bedistor",
+    "parent": 62,
+    "bits": [
+     4,
+     16,
+     25
+    ]
+   },
+   {
+    "id": 62,
+    "name": "large metal cube",
+    "parent": 63,
+    "bits": [
+     8,
+     10,
+     15,
+     24
+    ]
+   },
+   {
+    "id": 63,
+    "name": "Course Control",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 64,
+    "name": "fried seventeen-centimeter fromitz board",
+    "parent": 0,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 65,
+    "name": "second seventeen-centimeter fromitz board",
+    "parent": 69,
+    "bits": [
+     16,
+     25
+    ]
+   },
+   {
+    "id": 66,
+    "name": "third seventeen-centimeter fromitz board",
+    "parent": 69,
+    "bits": []
+   },
+   {
+    "id": 67,
+    "name": "fourth seventeen-centimeter fromitz board",
+    "parent": 69,
+    "bits": []
+   },
+   {
+    "id": 68,
+    "name": "first seventeen-centimeter fromitz board",
+    "parent": 69,
+    "bits": []
+   },
+   {
+    "id": 69,
+    "name": "access panel",
+    "parent": 70,
+    "bits": [
+     7,
+     8,
+     10,
+     24
+    ]
+   },
+   {
+    "id": 70,
+    "name": "Planetary Defense",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 71,
+    "name": "Physical Plant",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 72,
+    "name": "Systems Corridor East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 73,
+    "name": "Systems Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 74,
+    "name": "Systems Corridor West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 75,
+    "name": "shiny seventeen-centimeter fromitz board",
+    "parent": 76,
+    "bits": [
+     4,
+     8,
+     19
+    ]
+   },
+   {
+    "id": 76,
+    "name": "small doorway",
+    "parent": 78,
+    "bits": [
+     8,
+     9,
+     24
+    ]
+   },
+   {
+    "id": 77,
+    "name": "broken robot",
+    "parent": 78,
+    "bits": []
+   },
+   {
+    "id": 78,
+    "name": "Repair Room",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 79,
+    "name": "quantity of medicine",
+    "parent": 80,
+    "bits": [
+     27
+    ]
+   },
+   {
+    "id": 80,
+    "name": "medicine bottle",
+    "parent": 83,
+    "bits": [
+     9,
+     10,
+     23,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 81,
+    "name": "red spool",
+    "parent": 83,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 82,
+    "name": "medical robot breastplate",
+    "parent": 0,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 83,
+    "name": "Infirmary",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 84,
+    "name": "Fork",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 85,
+    "name": "Escalator",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 86,
+    "name": "Lawanda Platform",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 87,
+    "name": "Kalamontee Platform",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 88,
+    "name": "Waiting Area",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 89,
+    "name": "Observation Deck",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 90,
+    "name": "quantity of chemical fluid",
+    "parent": 125,
+    "bits": []
+   },
+   {
+    "id": 91,
+    "name": "funnel-shaped hole",
+    "parent": 96,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 92,
+    "name": "screen",
+    "parent": 96,
+    "bits": [
+     8,
+     23
+    ]
+   },
+   {
+    "id": 93,
+    "name": "communication send console",
+    "parent": 96,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 94,
+    "name": "glowing button",
+    "parent": 96,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 95,
+    "name": "communications receive console",
+    "parent": 96,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 96,
+    "name": "Comm Room",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 97,
+    "name": "Helicopter",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 98,
+    "name": "large vehicle",
+    "parent": 254,
+    "bits": [
+     8,
+     30
+    ]
+   },
+   {
+    "id": 99,
+    "name": "Helipad",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 100,
+    "name": "Tower Core",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 101,
+    "name": "Booth 2",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 102,
+    "name": "red button",
+    "parent": 108,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 103,
+    "name": "blue button",
+    "parent": 108,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 104,
+    "name": "Lower Elevator",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 105,
+    "name": "Upper Elevator",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 106,
+    "name": "red door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 107,
+    "name": "blue door",
+    "parent": 254,
+    "bits": [
+     8,
+     11,
+     26
+    ]
+   },
+   {
+    "id": 108,
+    "name": "Elevator Lobby",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 109,
+    "name": "mangled robot",
+    "parent": 0,
+    "bits": []
+   },
+   {
+    "id": 110,
+    "name": "multiple purpose robot",
+    "parent": 105,
+    "bits": [
+     6,
+     9,
+     10,
+     11,
+     18,
+     21,
+     24,
+     31
+    ]
+   },
+   {
+    "id": 111,
+    "name": "Robot Shop",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 112,
+    "name": "square white button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 113,
+    "name": "round white button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 114,
+    "name": "black button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 115,
+    "name": "brown button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 116,
+    "name": "gray button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 117,
+    "name": "yellow button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 118,
+    "name": "green button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 119,
+    "name": "blue button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 120,
+    "name": "red button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 121,
+    "name": "chemical dispenser",
+    "parent": 122,
+    "bits": [
+     8,
+     15
+    ]
+   },
+   {
+    "id": 122,
+    "name": "Machine Shop",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 123,
+    "name": "pair of wide-nosed pliers",
+    "parent": 126,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 124,
+    "name": "curved metal bar",
+    "parent": 160,
+    "bits": [
+     16,
+     18,
+     25
+    ]
+   },
+   {
+    "id": 125,
+    "name": "glass flask",
+    "parent": 236,
+    "bits": [
+     10,
+     11,
+     18,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 126,
+    "name": "Tool Room",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 127,
+    "name": "button",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 128,
+    "name": "Reactor Elevator",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 129,
+    "name": "Reactor Access Stairs",
+    "parent": 253,
+    "bits": [
+     6
+    ]
+   },
+   {
+    "id": 130,
+    "name": "reactor elevator door",
+    "parent": 254,
+    "bits": [
+     26
+    ]
+   },
+   {
+    "id": 131,
+    "name": "Reactor Control",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 132,
+    "name": "Physical Plant",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 133,
+    "name": "good ninety-ohm bedistor",
+    "parent": 137,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 134,
+    "name": "K-series megafuse",
+    "parent": 137,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 135,
+    "name": "B-series megafuse",
+    "parent": 137,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 136,
+    "name": "cracked seventeen-centimeter fromitz board",
+    "parent": 137,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 137,
+    "name": "cardboard box",
+    "parent": 139,
+    "bits": [
+     10,
+     11,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 138,
+    "name": "oil can",
+    "parent": 139,
+    "bits": [
+     7,
+     25
+    ]
+   },
+   {
+    "id": 139,
+    "name": "Storage East",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 140,
+    "name": "Mech Corridor South",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 141,
+    "name": "Mech Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 142,
+    "name": "Mech Corridor North",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 143,
+    "name": "Large Office",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 144,
+    "name": "lower elevator access card",
+    "parent": 236,
+    "bits": [
+     18,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 145,
+    "name": "large desk",
+    "parent": 143,
+    "bits": [
+     8,
+     10,
+     11,
+     24
+    ]
+   },
+   {
+    "id": 146,
+    "name": "shuttle access card",
+    "parent": 236,
+    "bits": [
+     18,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 147,
+    "name": "upper elevator access card",
+    "parent": 236,
+    "bits": [
+     7,
+     18,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 148,
+    "name": "kitchen access card",
+    "parent": 167,
+    "bits": [
+     18,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 149,
+    "name": "small desk",
+    "parent": 150,
+    "bits": [
+     8,
+     10,
+     11,
+     24
+    ]
+   },
+   {
+    "id": 150,
+    "name": "Small Office",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 151,
+    "name": "Transportation Supply",
+    "parent": 253,
+    "bits": [
+     6
+    ]
+   },
+   {
+    "id": 152,
+    "name": "Plan Room",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 153,
+    "name": "Systems Monitors",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 154,
+    "name": "SanFac E",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 155,
+    "name": "Admin Corridor North",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 156,
+    "name": "rift",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 157,
+    "name": "Admin Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 158,
+    "name": "key",
+    "parent": 171,
+    "bits": [
+     4,
+     18,
+     20,
+     25
+    ]
+   },
+   {
+    "id": 159,
+    "name": "crevice",
+    "parent": 160,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 160,
+    "name": "Admin Corridor South",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 161,
+    "name": "Corridor Junction",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 162,
+    "name": "quantity of protein-rich liquid",
+    "parent": 163,
+    "bits": [
+     27
+    ]
+   },
+   {
+    "id": 163,
+    "name": "canteen",
+    "parent": 236,
+    "bits": [
+     10,
+     18,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 164,
+    "name": "dispenser unit",
+    "parent": 165,
+    "bits": [
+     8,
+     9,
+     10,
+     11,
+     15,
+     24
+    ]
+   },
+   {
+    "id": 165,
+    "name": "Kitchen",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 166,
+    "name": "door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 167,
+    "name": "Mess Hall",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 168,
+    "name": "Dorm Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 169,
+    "name": "ladder",
+    "parent": 157,
+    "bits": [
+     8,
+     16,
+     18,
+     25
+    ]
+   },
+   {
+    "id": 170,
+    "name": "tin can",
+    "parent": 171,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 171,
+    "name": "Storage West",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 172,
+    "name": "padlock",
+    "parent": 174,
+    "bits": [
+     11,
+     15,
+     18,
+     25
+    ]
+   },
+   {
+    "id": 173,
+    "name": "door",
+    "parent": 254,
+    "bits": [
+     8,
+     11,
+     26
+    ]
+   },
+   {
+    "id": 174,
+    "name": "Mess Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 175,
+    "name": "SanFac D",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 176,
+    "name": "Dorm D",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 177,
+    "name": "SanFac C",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 178,
+    "name": "Dorm C",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 179,
+    "name": "SanFac B",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 180,
+    "name": "Dorm B",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 181,
+    "name": "SanFac A",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 182,
+    "name": "Dorm A",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 183,
+    "name": "Rec Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 184,
+    "name": "Booth 1",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 185,
+    "name": "combination dial",
+    "parent": 188,
+    "bits": [
+     8,
+     15
+    ]
+   },
+   {
+    "id": 186,
+    "name": "Conference Room",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 187,
+    "name": "door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 188,
+    "name": "Rec Area",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 189,
+    "name": "Plain Hall",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 190,
+    "name": "West Wing",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 191,
+    "name": "Courtyard",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 192,
+    "name": "Winding Stair",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 193,
+    "name": "Balcony",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 194,
+    "name": "Crag",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 195,
+    "name": "Underwater",
+    "parent": 253,
+    "bits": [
+     3,
+     5,
+     18
+    ]
+   },
+   {
+    "id": 196,
+    "name": "bed",
+    "parent": 254,
+    "bits": [
+     8,
+     29,
+     30
+    ]
+   },
+   {
+    "id": 197,
+    "name": "Betty Control West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 198,
+    "name": "Betty Control East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 199,
+    "name": "Shuttle Car Betty",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 200,
+    "name": "Alfie Control West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 201,
+    "name": "lever",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 202,
+    "name": "Alfie Control East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 203,
+    "name": "door",
+    "parent": 254,
+    "bits": [
+     11,
+     19,
+     26
+    ]
+   },
+   {
+    "id": 204,
+    "name": "Shuttle Car Alfie",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 205,
+    "name": "shuttle car",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 206,
+    "name": "tan button",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 207,
+    "name": "beige button",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 208,
+    "name": "brown button",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 209,
+    "name": "slot",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 210,
+    "name": "blob of green goo",
+    "parent": 0,
+    "bits": [
+     4,
+     27
+    ]
+   },
+   {
+    "id": 211,
+    "name": "blob of brown goo",
+    "parent": 213,
+    "bits": [
+     4,
+     27
+    ]
+   },
+   {
+    "id": 212,
+    "name": "blob of red goo",
+    "parent": 0,
+    "bits": [
+     4,
+     27
+    ]
+   },
+   {
+    "id": 213,
+    "name": "survival kit",
+    "parent": 161,
+    "bits": [
+     10,
+     11,
+     18,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 214,
+    "name": "towel",
+    "parent": 216,
+    "bits": [
+     23,
+     25
+    ]
+   },
+   {
+    "id": 215,
+    "name": "safety web",
+    "parent": 216,
+    "bits": [
+     8,
+     29,
+     30
+    ]
+   },
+   {
+    "id": 216,
+    "name": "Escape Pod",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 217,
+    "name": "brochure",
+    "parent": 0,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 218,
+    "name": "piece of celery",
+    "parent": 0,
+    "bits": [
+     8,
+     27
+    ]
+   },
+   {
+    "id": 219,
+    "name": "alien ambassador",
+    "parent": 0,
+    "bits": [
+     7,
+     31
+    ]
+   },
+   {
+    "id": 220,
+    "name": "Ensign First Class",
+    "parent": 0,
+    "bits": [
+     7,
+     31
+    ]
+   },
+   {
+    "id": 221,
+    "name": "Deck Eight",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 222,
+    "name": "Gangway",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 223,
+    "name": "Reactor Lobby",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 224,
+    "name": "Patrol uniform",
+    "parent": 236,
+    "bits": [
+     10,
+     11,
+     12,
+     22,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 225,
+    "name": "ID card",
+    "parent": 224,
+    "bits": [
+     7,
+     13,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 226,
+    "name": "chronometer",
+    "parent": 236,
+    "bits": [
+     12,
+     15,
+     22,
+     25
+    ]
+   },
+   {
+    "id": 227,
+    "name": "Patrol-issue self-contained multi-purpose scrub brush",
+    "parent": 171,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 228,
+    "name": "escape pod",
+    "parent": 254,
+    "bits": [
+     7,
+     8,
+     30
+    ]
+   },
+   {
+    "id": 229,
+    "name": "narrow bulkhead",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 230,
+    "name": "wide bulkhead",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 231,
+    "name": "escape pod bulkhead",
+    "parent": 254,
+    "bits": [
+     7,
+     8,
+     11,
+     26
+    ]
+   },
+   {
+    "id": 232,
+    "name": "Brig",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 233,
+    "name": "such thing",
+    "parent": 0,
+    "bits": []
+   },
+   {
+    "id": 234,
+    "name": "you",
+    "parent": 255,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 235,
+    "name": "Deck Nine",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 236,
+    "name": "player",
+    "parent": 105,
+    "bits": [
+     8,
+     19
+    ]
+   },
+   {
+    "id": 237,
+    "name": "sacred act of sleeping",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 238,
+    "name": "pair of hands",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 239,
+    "name": "game",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 240,
+    "name": "set of controls",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 241,
+    "name": "doorway",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 242,
+    "name": "light",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 243,
+    "name": "shelf",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 244,
+    "name": "table",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 245,
+    "name": "ocean",
+    "parent": 254,
+    "bits": [
+     7,
+     8
+    ]
+   },
+   {
+    "id": 246,
+    "name": "cliff",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 247,
+    "name": "window",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 248,
+    "name": "floor",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 249,
+    "name": "stairway",
+    "parent": 254,
+    "bits": [
+     8,
+     29
+    ]
+   },
+   {
+    "id": 250,
+    "name": "random object",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 251,
+    "name": "spout",
+    "parent": 0,
+    "bits": []
+   },
+   {
+    "id": 252,
+    "name": "number",
+    "parent": 255,
+    "bits": []
+   },
+   {
+    "id": 257,
+    "name": "de",
+    "parent": 2,
+    "bits": [
+     2,
+     4,
+     8,
+     9,
+     11,
+     12,
+     15,
+     18,
+     19,
+     20,
+     22,
+     25,
+     26,
+     28,
+     29
+    ]
+   },
+   {
+    "id": 262,
+    "name": "about control e",
+    "parent": 77,
+    "bits": [
+     1,
+     5,
+     6,
+     8,
+     9,
+     13,
+     15,
+     17,
+     20,
+     21,
+     23,
+     25,
+     26,
+     30,
+     31
+    ]
+   },
+   {
+    "id": 268,
+    "name": "pe pods. The pod bul",
+    "parent": 58,
+    "bits": [
+     1,
+     3,
+     4,
+     5,
+     8,
+     9,
+     11,
+     12,
+     15,
+     19,
+     21,
+     22,
+     23,
+     24,
+     27,
+     31
+    ]
+   },
+   {
+    "id": 278,
+    "name": "dx",
+    "parent": 103,
+    "bits": [
+     1,
+     3,
+     6,
+     10,
+     12,
+     15,
+     24,
+     25,
+     26,
+     29,
+     30
+    ]
+   },
+   {
+    "id": 281,
+    "name": "uq",
+    "parent": 48,
+    "bits": [
+     1,
+     2,
+     7,
+     9,
+     11,
+     12,
+     15,
+     17,
+     18,
+     21,
+     23,
+     24,
+     25,
+     27,
+     30,
+     31
+    ]
+   },
+   {
+    "id": 287,
+    "name": "Ddpgqlhv",
+    "parent": 74,
+    "bits": [
+     1,
+     3,
+     6,
+     9,
+     12,
+     17,
+     21,
+     23,
+     26,
+     28
+    ]
+   },
+   {
+    "id": 290,
+    "name": "in",
+    "parent": 25,
+    "bits": [
+     1,
+     3,
+     5,
+     6,
+     7,
+     21,
+     22,
+     23,
+     27,
+     30,
+     31
+    ]
+   },
+   {
+    "id": 315,
+    "name": "nxwould c/)",
+    "parent": 70,
+    "bits": [
+     1,
+     5,
+     7,
+     8,
+     11,
+     12,
+     18,
+     20,
+     21,
+     23,
+     24,
+     26,
+     29,
+     31
+    ]
+   },
+   {
+    "id": 317,
+    "name": "would",
+    "parent": 58,
+    "bits": [
+     1,
+     5,
+     7,
+     8,
+     11,
+     12,
+     18,
+     20,
+     21,
+     23,
+     24,
+     26,
+     29,
+     31
+    ]
+   },
+   {
+    "id": 324,
+    "name": "mFloyd",
+    "parent": 187,
+    "bits": [
+     2,
+     4,
+     5,
+     7,
+     8,
+     10,
+     13,
+     16,
+     17,
+     18,
+     20,
+     26,
+     28,
+     29
+    ]
+   }
+  ]
+ },
+ "Planetfall.z3.js @200:turn off canteen": {
+  "step": 200,
+  "ts": "2026-10-24T13:37:16.329Z",
+  "nativeI": "You can't turn that off.\n \n> ",
+  "ops": [
+   [
+    110,
+    19,
+    0
+   ],
+   [
+    110,
+    19,
+    0
+   ],
+   [
+    236,
+    19,
+    1
+   ],
+   [
+    236,
+    19,
+    1
+   ],
+   [
+    147,
+    19,
+    0
+   ],
+   [
+    147,
+    19,
+    0
+   ],
+   [
+    125,
+    19,
+    0
+   ],
+   [
+    125,
+    19,
+    0
+   ],
+   [
+    125,
+    11,
+    1
+   ],
+   [
+    125,
+    17,
+    0
+   ],
+   [
+    125,
+    10,
+    1
+   ],
+   [
+    90,
+    19,
+    0
+   ],
+   [
+    90,
+    19,
+    0
+   ],
+   [
+    144,
+    19,
+    0
+   ],
+   [
+    144,
+    19,
+    0
+   ],
+   [
+    163,
+    19,
+    0
+   ],
+   [
+    163,
+    19,
+    0
+   ],
+   [
+    163,
+    11,
+    0
+   ],
+   [
+    163,
+    9,
+    0
+   ],
+   [
+    146,
+    19,
+    0
+   ],
+   [
+    146,
+    19,
+    0
+   ],
+   [
+    224,
+    19,
+    0
+   ],
+   [
+    224,
+    19,
+    0
+   ],
+   [
+    224,
+    11,
+    1
+   ],
+   [
+    224,
+    17,
+    0
+   ],
+   [
+    224,
+    10,
+    1
+   ],
+   [
+    225,
+    19,
+    0
+   ],
+   [
+    225,
+    19,
+    0
+   ],
+   [
+    226,
+    19,
+    0
+   ],
+   [
+    226,
+    19,
+    0
+   ],
+   [
+    163,
+    19,
+    0
+   ],
+   [
+    163,
+    21,
+    0
+   ],
+   [
+    107,
+    11,
+    1
+   ],
+   [
+    226,
+    14,
+    0
+   ],
+   [
+    110,
+    6,
+    1
+   ],
+   [
+    105,
+    2,
+    0
+   ],
+   [
+    105,
+    30,
+    0
+   ]
+  ],
+  "objs": [
+   {
+    "id": 1,
+    "name": "mobile man-eating plant",
+    "parent": 29,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 2,
+    "name": "lurking fanged creature",
+    "parent": 29,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 3,
+    "name": "hairy growling biped",
+    "parent": 29,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 4,
+    "name": "rat-like, ant-like man-sized monster",
+    "parent": 29,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 5,
+    "name": "microbe",
+    "parent": 0,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 6,
+    "name": "new battery",
+    "parent": 38,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 7,
+    "name": "old battery",
+    "parent": 9,
+    "bits": [
+     4,
+     7,
+     25
+    ]
+   },
+   {
+    "id": 8,
+    "name": "laser setting dial",
+    "parent": 9,
+    "bits": [
+     8,
+     15
+    ]
+   },
+   {
+    "id": 9,
+    "name": "laser",
+    "parent": 126,
+    "bits": [
+     9,
+     11,
+     15,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 10,
+    "name": "speck",
+    "parent": 11,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 11,
+    "name": "micro-relay",
+    "parent": 12,
+    "bits": [
+     8,
+     9
+    ]
+   },
+   {
+    "id": 12,
+    "name": "Strip Near Relay",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 13,
+    "name": "Middle of Strip",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 14,
+    "name": "Strip Near Station",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 15,
+    "name": "silicon strip",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 16,
+    "name": "Station 384",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 17,
+    "name": "Auxiliary Booth",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 18,
+    "name": "red button",
+    "parent": 24,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 19,
+    "name": "black button",
+    "parent": 24,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 20,
+    "name": "white button",
+    "parent": 24,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 21,
+    "name": "memo",
+    "parent": 0,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 22,
+    "name": "gas mask",
+    "parent": 23,
+    "bits": [
+     4,
+     22,
+     25
+    ]
+   },
+   {
+    "id": 23,
+    "name": "desk",
+    "parent": 24,
+    "bits": [
+     8,
+     10,
+     24
+    ]
+   },
+   {
+    "id": 24,
+    "name": "Lab Office",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 25,
+    "name": "portable lamp",
+    "parent": 27,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 26,
+    "name": "brown spool",
+    "parent": 27,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 27,
+    "name": "Radiation Lab",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 28,
+    "name": "office door",
+    "parent": 254,
+    "bits": [
+     7,
+     8,
+     26
+    ]
+   },
+   {
+    "id": 29,
+    "name": "Bio Lab",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 30,
+    "name": "lab door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 31,
+    "name": "Radiation Lock East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 32,
+    "name": "Radiation Lock West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 33,
+    "name": "lab door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 34,
+    "name": "Bio Lock West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 35,
+    "name": "piece of paper",
+    "parent": 37,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 36,
+    "name": "teleportation access card",
+    "parent": 37,
+    "bits": [
+     23,
+     25
+    ]
+   },
+   {
+    "id": 37,
+    "name": "lab uniform",
+    "parent": 38,
+    "bits": [
+     10,
+     22,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 38,
+    "name": "Lab Storage",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 39,
+    "name": "radiation-lock door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 40,
+    "name": "bio-lock door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 41,
+    "name": "Main Lab",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 42,
+    "name": "Bio Lock East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 43,
+    "name": "miniaturization access card",
+    "parent": 42,
+    "bits": [
+     8,
+     19,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 44,
+    "name": "Miniaturization Booth",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 45,
+    "name": "pile of computer output",
+    "parent": 46,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 46,
+    "name": "Computer Room",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 47,
+    "name": "Project Corridor East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 48,
+    "name": "Cryo-Anteroom",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 49,
+    "name": "Cryo-Elevator",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 50,
+    "name": "cryo-elevator door",
+    "parent": 254,
+    "bits": [
+     8,
+     19
+    ]
+   },
+   {
+    "id": 51,
+    "name": "ProjCon Office",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 52,
+    "name": "Project Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 53,
+    "name": "SanFac F",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 54,
+    "name": "Project Corridor West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 55,
+    "name": "microfilm reader",
+    "parent": 57,
+    "bits": [
+     10,
+     11,
+     21,
+     24
+    ]
+   },
+   {
+    "id": 56,
+    "name": "terminal",
+    "parent": 60,
+    "bits": [
+     21
+    ]
+   },
+   {
+    "id": 57,
+    "name": "Library",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 58,
+    "name": "Booth 3",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 59,
+    "name": "green spool",
+    "parent": 60,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 60,
+    "name": "Library Lobby",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 61,
+    "name": "fused ninety-ohm bedistor",
+    "parent": 62,
+    "bits": [
+     4,
+     16,
+     25
+    ]
+   },
+   {
+    "id": 62,
+    "name": "large metal cube",
+    "parent": 63,
+    "bits": [
+     8,
+     10,
+     15,
+     24
+    ]
+   },
+   {
+    "id": 63,
+    "name": "Course Control",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 64,
+    "name": "fried seventeen-centimeter fromitz board",
+    "parent": 0,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 65,
+    "name": "second seventeen-centimeter fromitz board",
+    "parent": 69,
+    "bits": [
+     16,
+     25
+    ]
+   },
+   {
+    "id": 66,
+    "name": "third seventeen-centimeter fromitz board",
+    "parent": 69,
+    "bits": []
+   },
+   {
+    "id": 67,
+    "name": "fourth seventeen-centimeter fromitz board",
+    "parent": 69,
+    "bits": []
+   },
+   {
+    "id": 68,
+    "name": "first seventeen-centimeter fromitz board",
+    "parent": 69,
+    "bits": []
+   },
+   {
+    "id": 69,
+    "name": "access panel",
+    "parent": 70,
+    "bits": [
+     7,
+     8,
+     10,
+     24
+    ]
+   },
+   {
+    "id": 70,
+    "name": "Planetary Defense",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 71,
+    "name": "Physical Plant",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 72,
+    "name": "Systems Corridor East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 73,
+    "name": "Systems Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 74,
+    "name": "Systems Corridor West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 75,
+    "name": "shiny seventeen-centimeter fromitz board",
+    "parent": 76,
+    "bits": [
+     4,
+     8,
+     19
+    ]
+   },
+   {
+    "id": 76,
+    "name": "small doorway",
+    "parent": 78,
+    "bits": [
+     8,
+     9,
+     24
+    ]
+   },
+   {
+    "id": 77,
+    "name": "broken robot",
+    "parent": 78,
+    "bits": []
+   },
+   {
+    "id": 78,
+    "name": "Repair Room",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 79,
+    "name": "quantity of medicine",
+    "parent": 80,
+    "bits": [
+     27
+    ]
+   },
+   {
+    "id": 80,
+    "name": "medicine bottle",
+    "parent": 83,
+    "bits": [
+     9,
+     10,
+     23,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 81,
+    "name": "red spool",
+    "parent": 83,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 82,
+    "name": "medical robot breastplate",
+    "parent": 0,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 83,
+    "name": "Infirmary",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 84,
+    "name": "Fork",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 85,
+    "name": "Escalator",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 86,
+    "name": "Lawanda Platform",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 87,
+    "name": "Kalamontee Platform",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 88,
+    "name": "Waiting Area",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 89,
+    "name": "Observation Deck",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 90,
+    "name": "quantity of chemical fluid",
+    "parent": 125,
+    "bits": []
+   },
+   {
+    "id": 91,
+    "name": "funnel-shaped hole",
+    "parent": 96,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 92,
+    "name": "screen",
+    "parent": 96,
+    "bits": [
+     8,
+     23
+    ]
+   },
+   {
+    "id": 93,
+    "name": "communication send console",
+    "parent": 96,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 94,
+    "name": "glowing button",
+    "parent": 96,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 95,
+    "name": "communications receive console",
+    "parent": 96,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 96,
+    "name": "Comm Room",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 97,
+    "name": "Helicopter",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 98,
+    "name": "large vehicle",
+    "parent": 254,
+    "bits": [
+     8,
+     30
+    ]
+   },
+   {
+    "id": 99,
+    "name": "Helipad",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 100,
+    "name": "Tower Core",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 101,
+    "name": "Booth 2",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 102,
+    "name": "red button",
+    "parent": 108,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 103,
+    "name": "blue button",
+    "parent": 108,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 104,
+    "name": "Lower Elevator",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 105,
+    "name": "Upper Elevator",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 106,
+    "name": "red door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 107,
+    "name": "blue door",
+    "parent": 254,
+    "bits": [
+     8,
+     11,
+     26
+    ]
+   },
+   {
+    "id": 108,
+    "name": "Elevator Lobby",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 109,
+    "name": "mangled robot",
+    "parent": 0,
+    "bits": []
+   },
+   {
+    "id": 110,
+    "name": "multiple purpose robot",
+    "parent": 105,
+    "bits": [
+     6,
+     9,
+     10,
+     11,
+     18,
+     21,
+     24,
+     31
+    ]
+   },
+   {
+    "id": 111,
+    "name": "Robot Shop",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 112,
+    "name": "square white button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 113,
+    "name": "round white button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 114,
+    "name": "black button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 115,
+    "name": "brown button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 116,
+    "name": "gray button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 117,
+    "name": "yellow button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 118,
+    "name": "green button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 119,
+    "name": "blue button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 120,
+    "name": "red button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 121,
+    "name": "chemical dispenser",
+    "parent": 122,
+    "bits": [
+     8,
+     15
+    ]
+   },
+   {
+    "id": 122,
+    "name": "Machine Shop",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 123,
+    "name": "pair of wide-nosed pliers",
+    "parent": 126,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 124,
+    "name": "curved metal bar",
+    "parent": 160,
+    "bits": [
+     16,
+     18,
+     25
+    ]
+   },
+   {
+    "id": 125,
+    "name": "glass flask",
+    "parent": 236,
+    "bits": [
+     10,
+     11,
+     18,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 126,
+    "name": "Tool Room",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 127,
+    "name": "button",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 128,
+    "name": "Reactor Elevator",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 129,
+    "name": "Reactor Access Stairs",
+    "parent": 253,
+    "bits": [
+     6
+    ]
+   },
+   {
+    "id": 130,
+    "name": "reactor elevator door",
+    "parent": 254,
+    "bits": [
+     26
+    ]
+   },
+   {
+    "id": 131,
+    "name": "Reactor Control",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 132,
+    "name": "Physical Plant",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 133,
+    "name": "good ninety-ohm bedistor",
+    "parent": 137,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 134,
+    "name": "K-series megafuse",
+    "parent": 137,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 135,
+    "name": "B-series megafuse",
+    "parent": 137,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 136,
+    "name": "cracked seventeen-centimeter fromitz board",
+    "parent": 137,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 137,
+    "name": "cardboard box",
+    "parent": 139,
+    "bits": [
+     10,
+     11,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 138,
+    "name": "oil can",
+    "parent": 139,
+    "bits": [
+     7,
+     25
+    ]
+   },
+   {
+    "id": 139,
+    "name": "Storage East",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 140,
+    "name": "Mech Corridor South",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 141,
+    "name": "Mech Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 142,
+    "name": "Mech Corridor North",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 143,
+    "name": "Large Office",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 144,
+    "name": "lower elevator access card",
+    "parent": 236,
+    "bits": [
+     18,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 145,
+    "name": "large desk",
+    "parent": 143,
+    "bits": [
+     8,
+     10,
+     11,
+     24
+    ]
+   },
+   {
+    "id": 146,
+    "name": "shuttle access card",
+    "parent": 236,
+    "bits": [
+     18,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 147,
+    "name": "upper elevator access card",
+    "parent": 236,
+    "bits": [
+     7,
+     18,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 148,
+    "name": "kitchen access card",
+    "parent": 167,
+    "bits": [
+     18,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 149,
+    "name": "small desk",
+    "parent": 150,
+    "bits": [
+     8,
+     10,
+     11,
+     24
+    ]
+   },
+   {
+    "id": 150,
+    "name": "Small Office",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 151,
+    "name": "Transportation Supply",
+    "parent": 253,
+    "bits": [
+     6
+    ]
+   },
+   {
+    "id": 152,
+    "name": "Plan Room",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 153,
+    "name": "Systems Monitors",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 154,
+    "name": "SanFac E",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 155,
+    "name": "Admin Corridor North",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 156,
+    "name": "rift",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 157,
+    "name": "Admin Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 158,
+    "name": "key",
+    "parent": 171,
+    "bits": [
+     4,
+     18,
+     20,
+     25
+    ]
+   },
+   {
+    "id": 159,
+    "name": "crevice",
+    "parent": 160,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 160,
+    "name": "Admin Corridor South",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 161,
+    "name": "Corridor Junction",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 162,
+    "name": "quantity of protein-rich liquid",
+    "parent": 163,
+    "bits": [
+     27
+    ]
+   },
+   {
+    "id": 163,
+    "name": "canteen",
+    "parent": 236,
+    "bits": [
+     10,
+     18,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 164,
+    "name": "dispenser unit",
+    "parent": 165,
+    "bits": [
+     8,
+     9,
+     10,
+     11,
+     15,
+     24
+    ]
+   },
+   {
+    "id": 165,
+    "name": "Kitchen",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 166,
+    "name": "door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 167,
+    "name": "Mess Hall",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 168,
+    "name": "Dorm Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 169,
+    "name": "ladder",
+    "parent": 157,
+    "bits": [
+     8,
+     16,
+     18,
+     25
+    ]
+   },
+   {
+    "id": 170,
+    "name": "tin can",
+    "parent": 171,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 171,
+    "name": "Storage West",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 172,
+    "name": "padlock",
+    "parent": 174,
+    "bits": [
+     11,
+     15,
+     18,
+     25
+    ]
+   },
+   {
+    "id": 173,
+    "name": "door",
+    "parent": 254,
+    "bits": [
+     8,
+     11,
+     26
+    ]
+   },
+   {
+    "id": 174,
+    "name": "Mess Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 175,
+    "name": "SanFac D",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 176,
+    "name": "Dorm D",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 177,
+    "name": "SanFac C",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 178,
+    "name": "Dorm C",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 179,
+    "name": "SanFac B",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 180,
+    "name": "Dorm B",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 181,
+    "name": "SanFac A",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 182,
+    "name": "Dorm A",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 183,
+    "name": "Rec Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 184,
+    "name": "Booth 1",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 185,
+    "name": "combination dial",
+    "parent": 188,
+    "bits": [
+     8,
+     15
+    ]
+   },
+   {
+    "id": 186,
+    "name": "Conference Room",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 187,
+    "name": "door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 188,
+    "name": "Rec Area",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 189,
+    "name": "Plain Hall",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 190,
+    "name": "West Wing",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 191,
+    "name": "Courtyard",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 192,
+    "name": "Winding Stair",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 193,
+    "name": "Balcony",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 194,
+    "name": "Crag",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 195,
+    "name": "Underwater",
+    "parent": 253,
+    "bits": [
+     3,
+     5,
+     18
+    ]
+   },
+   {
+    "id": 196,
+    "name": "bed",
+    "parent": 254,
+    "bits": [
+     8,
+     29,
+     30
+    ]
+   },
+   {
+    "id": 197,
+    "name": "Betty Control West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 198,
+    "name": "Betty Control East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 199,
+    "name": "Shuttle Car Betty",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 200,
+    "name": "Alfie Control West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 201,
+    "name": "lever",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 202,
+    "name": "Alfie Control East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 203,
+    "name": "door",
+    "parent": 254,
+    "bits": [
+     11,
+     19,
+     26
+    ]
+   },
+   {
+    "id": 204,
+    "name": "Shuttle Car Alfie",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 205,
+    "name": "shuttle car",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 206,
+    "name": "tan button",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 207,
+    "name": "beige button",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 208,
+    "name": "brown button",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 209,
+    "name": "slot",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 210,
+    "name": "blob of green goo",
+    "parent": 0,
+    "bits": [
+     4,
+     27
+    ]
+   },
+   {
+    "id": 211,
+    "name": "blob of brown goo",
+    "parent": 213,
+    "bits": [
+     4,
+     27
+    ]
+   },
+   {
+    "id": 212,
+    "name": "blob of red goo",
+    "parent": 0,
+    "bits": [
+     4,
+     27
+    ]
+   },
+   {
+    "id": 213,
+    "name": "survival kit",
+    "parent": 161,
+    "bits": [
+     10,
+     11,
+     18,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 214,
+    "name": "towel",
+    "parent": 216,
+    "bits": [
+     23,
+     25
+    ]
+   },
+   {
+    "id": 215,
+    "name": "safety web",
+    "parent": 216,
+    "bits": [
+     8,
+     29,
+     30
+    ]
+   },
+   {
+    "id": 216,
+    "name": "Escape Pod",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 217,
+    "name": "brochure",
+    "parent": 0,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 218,
+    "name": "piece of celery",
+    "parent": 0,
+    "bits": [
+     8,
+     27
+    ]
+   },
+   {
+    "id": 219,
+    "name": "alien ambassador",
+    "parent": 0,
+    "bits": [
+     7,
+     31
+    ]
+   },
+   {
+    "id": 220,
+    "name": "Ensign First Class",
+    "parent": 0,
+    "bits": [
+     7,
+     31
+    ]
+   },
+   {
+    "id": 221,
+    "name": "Deck Eight",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 222,
+    "name": "Gangway",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 223,
+    "name": "Reactor Lobby",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 224,
+    "name": "Patrol uniform",
+    "parent": 236,
+    "bits": [
+     10,
+     11,
+     12,
+     22,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 225,
+    "name": "ID card",
+    "parent": 224,
+    "bits": [
+     7,
+     13,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 226,
+    "name": "chronometer",
+    "parent": 236,
+    "bits": [
+     12,
+     15,
+     22,
+     25
+    ]
+   },
+   {
+    "id": 227,
+    "name": "Patrol-issue self-contained multi-purpose scrub brush",
+    "parent": 171,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 228,
+    "name": "escape pod",
+    "parent": 254,
+    "bits": [
+     7,
+     8,
+     30
+    ]
+   },
+   {
+    "id": 229,
+    "name": "narrow bulkhead",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 230,
+    "name": "wide bulkhead",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 231,
+    "name": "escape pod bulkhead",
+    "parent": 254,
+    "bits": [
+     7,
+     8,
+     11,
+     26
+    ]
+   },
+   {
+    "id": 232,
+    "name": "Brig",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 233,
+    "name": "such thing",
+    "parent": 0,
+    "bits": []
+   },
+   {
+    "id": 234,
+    "name": "you",
+    "parent": 255,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 235,
+    "name": "Deck Nine",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 236,
+    "name": "player",
+    "parent": 105,
+    "bits": [
+     8,
+     19
+    ]
+   },
+   {
+    "id": 237,
+    "name": "sacred act of sleeping",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 238,
+    "name": "pair of hands",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 239,
+    "name": "game",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 240,
+    "name": "set of controls",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 241,
+    "name": "doorway",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 242,
+    "name": "light",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 243,
+    "name": "shelf",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 244,
+    "name": "table",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 245,
+    "name": "ocean",
+    "parent": 254,
+    "bits": [
+     7,
+     8
+    ]
+   },
+   {
+    "id": 246,
+    "name": "cliff",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 247,
+    "name": "window",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 248,
+    "name": "floor",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 249,
+    "name": "stairway",
+    "parent": 254,
+    "bits": [
+     8,
+     29
+    ]
+   },
+   {
+    "id": 250,
+    "name": "random object",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 251,
+    "name": "spout",
+    "parent": 0,
+    "bits": []
+   },
+   {
+    "id": 252,
+    "name": "number",
+    "parent": 255,
+    "bits": []
+   },
+   {
+    "id": 257,
+    "name": "de",
+    "parent": 2,
+    "bits": [
+     2,
+     4,
+     8,
+     9,
+     11,
+     12,
+     15,
+     18,
+     19,
+     20,
+     22,
+     25,
+     26,
+     28,
+     29
+    ]
+   },
+   {
+    "id": 262,
+    "name": "about control e",
+    "parent": 77,
+    "bits": [
+     1,
+     5,
+     6,
+     8,
+     9,
+     13,
+     15,
+     17,
+     20,
+     21,
+     23,
+     25,
+     26,
+     30,
+     31
+    ]
+   },
+   {
+    "id": 268,
+    "name": "pe pods. The pod bul",
+    "parent": 58,
+    "bits": [
+     1,
+     3,
+     4,
+     5,
+     8,
+     9,
+     11,
+     12,
+     15,
+     19,
+     21,
+     22,
+     23,
+     24,
+     27,
+     31
+    ]
+   },
+   {
+    "id": 278,
+    "name": "dx",
+    "parent": 103,
+    "bits": [
+     1,
+     3,
+     6,
+     10,
+     12,
+     15,
+     24,
+     25,
+     26,
+     29,
+     30
+    ]
+   },
+   {
+    "id": 281,
+    "name": "uq",
+    "parent": 48,
+    "bits": [
+     1,
+     2,
+     7,
+     9,
+     11,
+     12,
+     15,
+     17,
+     18,
+     21,
+     23,
+     24,
+     25,
+     27,
+     30,
+     31
+    ]
+   },
+   {
+    "id": 287,
+    "name": "Ddpgqlhv",
+    "parent": 74,
+    "bits": [
+     1,
+     3,
+     6,
+     9,
+     12,
+     17,
+     21,
+     23,
+     26,
+     28
+    ]
+   },
+   {
+    "id": 290,
+    "name": "in",
+    "parent": 25,
+    "bits": [
+     1,
+     3,
+     5,
+     6,
+     7,
+     21,
+     22,
+     23,
+     27,
+     30,
+     31
+    ]
+   },
+   {
+    "id": 315,
+    "name": "nxwould c/)",
+    "parent": 70,
+    "bits": [
+     1,
+     5,
+     7,
+     8,
+     11,
+     12,
+     18,
+     20,
+     21,
+     23,
+     24,
+     26,
+     29,
+     31
+    ]
+   },
+   {
+    "id": 317,
+    "name": "would",
+    "parent": 58,
+    "bits": [
+     1,
+     5,
+     7,
+     8,
+     11,
+     12,
+     18,
+     20,
+     21,
+     23,
+     24,
+     26,
+     29,
+     31
+    ]
+   },
+   {
+    "id": 324,
+    "name": "mFloyd",
+    "parent": 187,
+    "bits": [
+     2,
+     4,
+     5,
+     7,
+     8,
+     10,
+     13,
+     16,
+     17,
+     18,
+     20,
+     26,
+     28,
+     29
+    ]
+   }
+  ]
+ },
+ "Planetfall.z3.js @200:turn on kit": {
+  "step": 200,
+  "ts": "2026-10-24T13:37:16.934Z",
+  "nativeI": "You can't see any kit here!\n \n> ",
+  "ops": [
+   [
+    110,
+    19,
+    0
+   ],
+   [
+    110,
+    19,
+    0
+   ],
+   [
+    236,
+    19,
+    1
+   ],
+   [
+    236,
+    19,
+    1
+   ],
+   [
+    147,
+    19,
+    0
+   ],
+   [
+    147,
+    19,
+    0
+   ],
+   [
+    125,
+    19,
+    0
+   ],
+   [
+    125,
+    19,
+    0
+   ],
+   [
+    125,
+    11,
+    1
+   ],
+   [
+    125,
+    17,
+    0
+   ],
+   [
+    125,
+    10,
+    1
+   ],
+   [
+    90,
+    19,
+    0
+   ],
+   [
+    90,
+    19,
+    0
+   ],
+   [
+    144,
+    19,
+    0
+   ],
+   [
+    144,
+    19,
+    0
+   ],
+   [
+    163,
+    19,
+    0
+   ],
+   [
+    163,
+    19,
+    0
+   ],
+   [
+    163,
+    11,
+    0
+   ],
+   [
+    163,
+    9,
+    0
+   ],
+   [
+    146,
+    19,
+    0
+   ],
+   [
+    146,
+    19,
+    0
+   ],
+   [
+    224,
+    19,
+    0
+   ],
+   [
+    224,
+    19,
+    0
+   ],
+   [
+    224,
+    11,
+    1
+   ],
+   [
+    224,
+    17,
+    0
+   ],
+   [
+    224,
+    10,
+    1
+   ],
+   [
+    225,
+    19,
+    0
+   ],
+   [
+    225,
+    19,
+    0
+   ],
+   [
+    226,
+    19,
+    0
+   ],
+   [
+    226,
+    19,
+    0
+   ],
+   [
+    242,
+    19,
+    0
+   ],
+   [
+    240,
+    19,
+    0
+   ],
+   [
+    209,
+    19,
+    0
+   ],
+   [
+    127,
+    19,
+    0
+   ],
+   [
+    107,
+    19,
+    0
+   ],
+   [
+    254,
+    19,
+    0
+   ],
+   [
+    254,
+    19,
+    0
+   ],
+   [
+    254,
+    11,
+    0
+   ],
+   [
+    254,
+    9,
+    0
+   ],
+   [
+    234,
+    19,
+    0
+   ],
+   [
+    234,
+    19,
+    0
+   ],
+   [
+    237,
+    19,
+    0
+   ],
+   [
+    237,
+    19,
+    0
+   ],
+   [
+    238,
+    19,
+    0
+   ],
+   [
+    238,
+    19,
+    0
+   ],
+   [
+    239,
+    19,
+    0
+   ],
+   [
+    239,
+    19,
+    0
+   ],
+   [
+    241,
+    19,
+    0
+   ],
+   [
+    241,
+    19,
+    0
+   ],
+   [
+    248,
+    19,
+    0
+   ],
+   [
+    248,
+    19,
+    0
+   ],
+   [
+    250,
+    19,
+    0
+   ],
+   [
+    250,
+    19,
+    0
+   ],
+   [
+    252,
+    19,
+    0
+   ],
+   [
+    252,
+    19,
+    0
+   ],
+   [
+    163,
+    19,
+    0
+   ],
+   [
+    107,
+    11,
+    1
+   ],
+   [
+    226,
+    14,
+    0
+   ],
+   [
+    105,
+    30,
+    0
+   ]
+  ],
+  "objs": [
+   {
+    "id": 1,
+    "name": "mobile man-eating plant",
+    "parent": 29,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 2,
+    "name": "lurking fanged creature",
+    "parent": 29,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 3,
+    "name": "hairy growling biped",
+    "parent": 29,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 4,
+    "name": "rat-like, ant-like man-sized monster",
+    "parent": 29,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 5,
+    "name": "microbe",
+    "parent": 0,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 6,
+    "name": "new battery",
+    "parent": 38,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 7,
+    "name": "old battery",
+    "parent": 9,
+    "bits": [
+     4,
+     7,
+     25
+    ]
+   },
+   {
+    "id": 8,
+    "name": "laser setting dial",
+    "parent": 9,
+    "bits": [
+     8,
+     15
+    ]
+   },
+   {
+    "id": 9,
+    "name": "laser",
+    "parent": 126,
+    "bits": [
+     9,
+     11,
+     15,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 10,
+    "name": "speck",
+    "parent": 11,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 11,
+    "name": "micro-relay",
+    "parent": 12,
+    "bits": [
+     8,
+     9
+    ]
+   },
+   {
+    "id": 12,
+    "name": "Strip Near Relay",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 13,
+    "name": "Middle of Strip",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 14,
+    "name": "Strip Near Station",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 15,
+    "name": "silicon strip",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 16,
+    "name": "Station 384",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 17,
+    "name": "Auxiliary Booth",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 18,
+    "name": "red button",
+    "parent": 24,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 19,
+    "name": "black button",
+    "parent": 24,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 20,
+    "name": "white button",
+    "parent": 24,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 21,
+    "name": "memo",
+    "parent": 0,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 22,
+    "name": "gas mask",
+    "parent": 23,
+    "bits": [
+     4,
+     22,
+     25
+    ]
+   },
+   {
+    "id": 23,
+    "name": "desk",
+    "parent": 24,
+    "bits": [
+     8,
+     10,
+     24
+    ]
+   },
+   {
+    "id": 24,
+    "name": "Lab Office",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 25,
+    "name": "portable lamp",
+    "parent": 27,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 26,
+    "name": "brown spool",
+    "parent": 27,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 27,
+    "name": "Radiation Lab",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 28,
+    "name": "office door",
+    "parent": 254,
+    "bits": [
+     7,
+     8,
+     26
+    ]
+   },
+   {
+    "id": 29,
+    "name": "Bio Lab",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 30,
+    "name": "lab door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 31,
+    "name": "Radiation Lock East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 32,
+    "name": "Radiation Lock West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 33,
+    "name": "lab door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 34,
+    "name": "Bio Lock West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 35,
+    "name": "piece of paper",
+    "parent": 37,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 36,
+    "name": "teleportation access card",
+    "parent": 37,
+    "bits": [
+     23,
+     25
+    ]
+   },
+   {
+    "id": 37,
+    "name": "lab uniform",
+    "parent": 38,
+    "bits": [
+     10,
+     22,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 38,
+    "name": "Lab Storage",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 39,
+    "name": "radiation-lock door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 40,
+    "name": "bio-lock door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 41,
+    "name": "Main Lab",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 42,
+    "name": "Bio Lock East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 43,
+    "name": "miniaturization access card",
+    "parent": 42,
+    "bits": [
+     8,
+     19,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 44,
+    "name": "Miniaturization Booth",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 45,
+    "name": "pile of computer output",
+    "parent": 46,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 46,
+    "name": "Computer Room",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 47,
+    "name": "Project Corridor East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 48,
+    "name": "Cryo-Anteroom",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 49,
+    "name": "Cryo-Elevator",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 50,
+    "name": "cryo-elevator door",
+    "parent": 254,
+    "bits": [
+     8,
+     19
+    ]
+   },
+   {
+    "id": 51,
+    "name": "ProjCon Office",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 52,
+    "name": "Project Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 53,
+    "name": "SanFac F",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 54,
+    "name": "Project Corridor West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 55,
+    "name": "microfilm reader",
+    "parent": 57,
+    "bits": [
+     10,
+     11,
+     21,
+     24
+    ]
+   },
+   {
+    "id": 56,
+    "name": "terminal",
+    "parent": 60,
+    "bits": [
+     21
+    ]
+   },
+   {
+    "id": 57,
+    "name": "Library",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 58,
+    "name": "Booth 3",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 59,
+    "name": "green spool",
+    "parent": 60,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 60,
+    "name": "Library Lobby",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 61,
+    "name": "fused ninety-ohm bedistor",
+    "parent": 62,
+    "bits": [
+     4,
+     16,
+     25
+    ]
+   },
+   {
+    "id": 62,
+    "name": "large metal cube",
+    "parent": 63,
+    "bits": [
+     8,
+     10,
+     15,
+     24
+    ]
+   },
+   {
+    "id": 63,
+    "name": "Course Control",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 64,
+    "name": "fried seventeen-centimeter fromitz board",
+    "parent": 0,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 65,
+    "name": "second seventeen-centimeter fromitz board",
+    "parent": 69,
+    "bits": [
+     16,
+     25
+    ]
+   },
+   {
+    "id": 66,
+    "name": "third seventeen-centimeter fromitz board",
+    "parent": 69,
+    "bits": []
+   },
+   {
+    "id": 67,
+    "name": "fourth seventeen-centimeter fromitz board",
+    "parent": 69,
+    "bits": []
+   },
+   {
+    "id": 68,
+    "name": "first seventeen-centimeter fromitz board",
+    "parent": 69,
+    "bits": []
+   },
+   {
+    "id": 69,
+    "name": "access panel",
+    "parent": 70,
+    "bits": [
+     7,
+     8,
+     10,
+     24
+    ]
+   },
+   {
+    "id": 70,
+    "name": "Planetary Defense",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 71,
+    "name": "Physical Plant",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 72,
+    "name": "Systems Corridor East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 73,
+    "name": "Systems Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 74,
+    "name": "Systems Corridor West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 75,
+    "name": "shiny seventeen-centimeter fromitz board",
+    "parent": 76,
+    "bits": [
+     4,
+     8,
+     19
+    ]
+   },
+   {
+    "id": 76,
+    "name": "small doorway",
+    "parent": 78,
+    "bits": [
+     8,
+     9,
+     24
+    ]
+   },
+   {
+    "id": 77,
+    "name": "broken robot",
+    "parent": 78,
+    "bits": []
+   },
+   {
+    "id": 78,
+    "name": "Repair Room",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 79,
+    "name": "quantity of medicine",
+    "parent": 80,
+    "bits": [
+     27
+    ]
+   },
+   {
+    "id": 80,
+    "name": "medicine bottle",
+    "parent": 83,
+    "bits": [
+     9,
+     10,
+     23,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 81,
+    "name": "red spool",
+    "parent": 83,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 82,
+    "name": "medical robot breastplate",
+    "parent": 0,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 83,
+    "name": "Infirmary",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 84,
+    "name": "Fork",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 85,
+    "name": "Escalator",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 86,
+    "name": "Lawanda Platform",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 87,
+    "name": "Kalamontee Platform",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 88,
+    "name": "Waiting Area",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 89,
+    "name": "Observation Deck",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 90,
+    "name": "quantity of chemical fluid",
+    "parent": 125,
+    "bits": []
+   },
+   {
+    "id": 91,
+    "name": "funnel-shaped hole",
+    "parent": 96,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 92,
+    "name": "screen",
+    "parent": 96,
+    "bits": [
+     8,
+     23
+    ]
+   },
+   {
+    "id": 93,
+    "name": "communication send console",
+    "parent": 96,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 94,
+    "name": "glowing button",
+    "parent": 96,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 95,
+    "name": "communications receive console",
+    "parent": 96,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 96,
+    "name": "Comm Room",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 97,
+    "name": "Helicopter",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 98,
+    "name": "large vehicle",
+    "parent": 254,
+    "bits": [
+     8,
+     30
+    ]
+   },
+   {
+    "id": 99,
+    "name": "Helipad",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 100,
+    "name": "Tower Core",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 101,
+    "name": "Booth 2",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 102,
+    "name": "red button",
+    "parent": 108,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 103,
+    "name": "blue button",
+    "parent": 108,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 104,
+    "name": "Lower Elevator",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 105,
+    "name": "Upper Elevator",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 106,
+    "name": "red door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 107,
+    "name": "blue door",
+    "parent": 254,
+    "bits": [
+     8,
+     11,
+     26
+    ]
+   },
+   {
+    "id": 108,
+    "name": "Elevator Lobby",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 109,
+    "name": "mangled robot",
+    "parent": 0,
+    "bits": []
+   },
+   {
+    "id": 110,
+    "name": "multiple purpose robot",
+    "parent": 105,
+    "bits": [
+     6,
+     9,
+     10,
+     11,
+     18,
+     21,
+     24,
+     31
+    ]
+   },
+   {
+    "id": 111,
+    "name": "Robot Shop",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 112,
+    "name": "square white button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 113,
+    "name": "round white button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 114,
+    "name": "black button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 115,
+    "name": "brown button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 116,
+    "name": "gray button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 117,
+    "name": "yellow button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 118,
+    "name": "green button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 119,
+    "name": "blue button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 120,
+    "name": "red button",
+    "parent": 122,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 121,
+    "name": "chemical dispenser",
+    "parent": 122,
+    "bits": [
+     8,
+     15
+    ]
+   },
+   {
+    "id": 122,
+    "name": "Machine Shop",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 123,
+    "name": "pair of wide-nosed pliers",
+    "parent": 126,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 124,
+    "name": "curved metal bar",
+    "parent": 160,
+    "bits": [
+     16,
+     18,
+     25
+    ]
+   },
+   {
+    "id": 125,
+    "name": "glass flask",
+    "parent": 236,
+    "bits": [
+     10,
+     11,
+     18,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 126,
+    "name": "Tool Room",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 127,
+    "name": "button",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 128,
+    "name": "Reactor Elevator",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 129,
+    "name": "Reactor Access Stairs",
+    "parent": 253,
+    "bits": [
+     6
+    ]
+   },
+   {
+    "id": 130,
+    "name": "reactor elevator door",
+    "parent": 254,
+    "bits": [
+     26
+    ]
+   },
+   {
+    "id": 131,
+    "name": "Reactor Control",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 132,
+    "name": "Physical Plant",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 133,
+    "name": "good ninety-ohm bedistor",
+    "parent": 137,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 134,
+    "name": "K-series megafuse",
+    "parent": 137,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 135,
+    "name": "B-series megafuse",
+    "parent": 137,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 136,
+    "name": "cracked seventeen-centimeter fromitz board",
+    "parent": 137,
+    "bits": [
+     4,
+     25
+    ]
+   },
+   {
+    "id": 137,
+    "name": "cardboard box",
+    "parent": 139,
+    "bits": [
+     10,
+     11,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 138,
+    "name": "oil can",
+    "parent": 139,
+    "bits": [
+     7,
+     25
+    ]
+   },
+   {
+    "id": 139,
+    "name": "Storage East",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 140,
+    "name": "Mech Corridor South",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 141,
+    "name": "Mech Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 142,
+    "name": "Mech Corridor North",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 143,
+    "name": "Large Office",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 144,
+    "name": "lower elevator access card",
+    "parent": 236,
+    "bits": [
+     18,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 145,
+    "name": "large desk",
+    "parent": 143,
+    "bits": [
+     8,
+     10,
+     11,
+     24
+    ]
+   },
+   {
+    "id": 146,
+    "name": "shuttle access card",
+    "parent": 236,
+    "bits": [
+     18,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 147,
+    "name": "upper elevator access card",
+    "parent": 236,
+    "bits": [
+     7,
+     18,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 148,
+    "name": "kitchen access card",
+    "parent": 167,
+    "bits": [
+     18,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 149,
+    "name": "small desk",
+    "parent": 150,
+    "bits": [
+     8,
+     10,
+     11,
+     24
+    ]
+   },
+   {
+    "id": 150,
+    "name": "Small Office",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 151,
+    "name": "Transportation Supply",
+    "parent": 253,
+    "bits": [
+     6
+    ]
+   },
+   {
+    "id": 152,
+    "name": "Plan Room",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 153,
+    "name": "Systems Monitors",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 154,
+    "name": "SanFac E",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 155,
+    "name": "Admin Corridor North",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 156,
+    "name": "rift",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 157,
+    "name": "Admin Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 158,
+    "name": "key",
+    "parent": 171,
+    "bits": [
+     4,
+     18,
+     20,
+     25
+    ]
+   },
+   {
+    "id": 159,
+    "name": "crevice",
+    "parent": 160,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 160,
+    "name": "Admin Corridor South",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 161,
+    "name": "Corridor Junction",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 162,
+    "name": "quantity of protein-rich liquid",
+    "parent": 163,
+    "bits": [
+     27
+    ]
+   },
+   {
+    "id": 163,
+    "name": "canteen",
+    "parent": 236,
+    "bits": [
+     10,
+     18,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 164,
+    "name": "dispenser unit",
+    "parent": 165,
+    "bits": [
+     8,
+     9,
+     10,
+     11,
+     15,
+     24
+    ]
+   },
+   {
+    "id": 165,
+    "name": "Kitchen",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 166,
+    "name": "door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 167,
+    "name": "Mess Hall",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 168,
+    "name": "Dorm Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 169,
+    "name": "ladder",
+    "parent": 157,
+    "bits": [
+     8,
+     16,
+     18,
+     25
+    ]
+   },
+   {
+    "id": 170,
+    "name": "tin can",
+    "parent": 171,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 171,
+    "name": "Storage West",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 172,
+    "name": "padlock",
+    "parent": 174,
+    "bits": [
+     11,
+     15,
+     18,
+     25
+    ]
+   },
+   {
+    "id": 173,
+    "name": "door",
+    "parent": 254,
+    "bits": [
+     8,
+     11,
+     26
+    ]
+   },
+   {
+    "id": 174,
+    "name": "Mess Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 175,
+    "name": "SanFac D",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 176,
+    "name": "Dorm D",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 177,
+    "name": "SanFac C",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 178,
+    "name": "Dorm C",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 179,
+    "name": "SanFac B",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 180,
+    "name": "Dorm B",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 181,
+    "name": "SanFac A",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 182,
+    "name": "Dorm A",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 183,
+    "name": "Rec Corridor",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 184,
+    "name": "Booth 1",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 185,
+    "name": "combination dial",
+    "parent": 188,
+    "bits": [
+     8,
+     15
+    ]
+   },
+   {
+    "id": 186,
+    "name": "Conference Room",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 187,
+    "name": "door",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 188,
+    "name": "Rec Area",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 189,
+    "name": "Plain Hall",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 190,
+    "name": "West Wing",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6
+    ]
+   },
+   {
+    "id": 191,
+    "name": "Courtyard",
+    "parent": 253,
+    "bits": [
+     2,
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 192,
+    "name": "Winding Stair",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 193,
+    "name": "Balcony",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 194,
+    "name": "Crag",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 195,
+    "name": "Underwater",
+    "parent": 253,
+    "bits": [
+     3,
+     5,
+     18
+    ]
+   },
+   {
+    "id": 196,
+    "name": "bed",
+    "parent": 254,
+    "bits": [
+     8,
+     29,
+     30
+    ]
+   },
+   {
+    "id": 197,
+    "name": "Betty Control West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 198,
+    "name": "Betty Control East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 199,
+    "name": "Shuttle Car Betty",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 200,
+    "name": "Alfie Control West",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 201,
+    "name": "lever",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 202,
+    "name": "Alfie Control East",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 203,
+    "name": "door",
+    "parent": 254,
+    "bits": [
+     11,
+     19,
+     26
+    ]
+   },
+   {
+    "id": 204,
+    "name": "Shuttle Car Alfie",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 205,
+    "name": "shuttle car",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 206,
+    "name": "tan button",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 207,
+    "name": "beige button",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 208,
+    "name": "brown button",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 209,
+    "name": "slot",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 210,
+    "name": "blob of green goo",
+    "parent": 0,
+    "bits": [
+     4,
+     27
+    ]
+   },
+   {
+    "id": 211,
+    "name": "blob of brown goo",
+    "parent": 213,
+    "bits": [
+     4,
+     27
+    ]
+   },
+   {
+    "id": 212,
+    "name": "blob of red goo",
+    "parent": 0,
+    "bits": [
+     4,
+     27
+    ]
+   },
+   {
+    "id": 213,
+    "name": "survival kit",
+    "parent": 161,
+    "bits": [
+     10,
+     11,
+     18,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 214,
+    "name": "towel",
+    "parent": 216,
+    "bits": [
+     23,
+     25
+    ]
+   },
+   {
+    "id": 215,
+    "name": "safety web",
+    "parent": 216,
+    "bits": [
+     8,
+     29,
+     30
+    ]
+   },
+   {
+    "id": 216,
+    "name": "Escape Pod",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 217,
+    "name": "brochure",
+    "parent": 0,
+    "bits": [
+     4,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 218,
+    "name": "piece of celery",
+    "parent": 0,
+    "bits": [
+     8,
+     27
+    ]
+   },
+   {
+    "id": 219,
+    "name": "alien ambassador",
+    "parent": 0,
+    "bits": [
+     7,
+     31
+    ]
+   },
+   {
+    "id": 220,
+    "name": "Ensign First Class",
+    "parent": 0,
+    "bits": [
+     7,
+     31
+    ]
+   },
+   {
+    "id": 221,
+    "name": "Deck Eight",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 222,
+    "name": "Gangway",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 223,
+    "name": "Reactor Lobby",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 224,
+    "name": "Patrol uniform",
+    "parent": 236,
+    "bits": [
+     10,
+     11,
+     12,
+     22,
+     24,
+     25
+    ]
+   },
+   {
+    "id": 225,
+    "name": "ID card",
+    "parent": 224,
+    "bits": [
+     7,
+     13,
+     23,
+     25
+    ]
+   },
+   {
+    "id": 226,
+    "name": "chronometer",
+    "parent": 236,
+    "bits": [
+     12,
+     15,
+     22,
+     25
+    ]
+   },
+   {
+    "id": 227,
+    "name": "Patrol-issue self-contained multi-purpose scrub brush",
+    "parent": 171,
+    "bits": [
+     25
+    ]
+   },
+   {
+    "id": 228,
+    "name": "escape pod",
+    "parent": 254,
+    "bits": [
+     7,
+     8,
+     30
+    ]
+   },
+   {
+    "id": 229,
+    "name": "narrow bulkhead",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 230,
+    "name": "wide bulkhead",
+    "parent": 254,
+    "bits": [
+     8,
+     26
+    ]
+   },
+   {
+    "id": 231,
+    "name": "escape pod bulkhead",
+    "parent": 254,
+    "bits": [
+     7,
+     8,
+     11,
+     26
+    ]
+   },
+   {
+    "id": 232,
+    "name": "Brig",
+    "parent": 253,
+    "bits": [
+     5,
+     6
+    ]
+   },
+   {
+    "id": 233,
+    "name": "such thing",
+    "parent": 0,
+    "bits": []
+   },
+   {
+    "id": 234,
+    "name": "you",
+    "parent": 255,
+    "bits": [
+     31
+    ]
+   },
+   {
+    "id": 235,
+    "name": "Deck Nine",
+    "parent": 253,
+    "bits": [
+     5,
+     6,
+     18
+    ]
+   },
+   {
+    "id": 236,
+    "name": "player",
+    "parent": 105,
+    "bits": [
+     8,
+     19
+    ]
+   },
+   {
+    "id": 237,
+    "name": "sacred act of sleeping",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 238,
+    "name": "pair of hands",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 239,
+    "name": "game",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 240,
+    "name": "set of controls",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 241,
+    "name": "doorway",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 242,
+    "name": "light",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 243,
+    "name": "shelf",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 244,
+    "name": "table",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 245,
+    "name": "ocean",
+    "parent": 254,
+    "bits": [
+     7,
+     8
+    ]
+   },
+   {
+    "id": 246,
+    "name": "cliff",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 247,
+    "name": "window",
+    "parent": 254,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 248,
+    "name": "floor",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 249,
+    "name": "stairway",
+    "parent": 254,
+    "bits": [
+     8,
+     29
+    ]
+   },
+   {
+    "id": 250,
+    "name": "random object",
+    "parent": 255,
+    "bits": [
+     8
+    ]
+   },
+   {
+    "id": 251,
+    "name": "spout",
+    "parent": 0,
+    "bits": []
+   },
+   {
+    "id": 252,
+    "name": "number",
+    "parent": 255,
+    "bits": []
+   },
+   {
+    "id": 257,
+    "name": "de",
+    "parent": 2,
+    "bits": [
+     2,
+     4,
+     8,
+     9,
+     11,
+     12,
+     15,
+     18,
+     19,
+     20,
+     22,
+     25,
+     26,
+     28,
+     29
+    ]
+   },
+   {
+    "id": 262,
+    "name": "about control e",
+    "parent": 77,
+    "bits": [
+     1,
+     5,
+     6,
+     8,
+     9,
+     13,
+     15,
+     17,
+     20,
+     21,
+     23,
+     25,
+     26,
+     30,
+     31
+    ]
+   },
+   {
+    "id": 268,
+    "name": "pe pods. The pod bul",
+    "parent": 58,
+    "bits": [
+     1,
+     3,
+     4,
+     5,
+     8,
+     9,
+     11,
+     12,
+     15,
+     19,
+     21,
+     22,
+     23,
+     24,
+     27,
+     31
+    ]
+   },
+   {
+    "id": 278,
+    "name": "dx",
+    "parent": 103,
+    "bits": [
+     1,
+     3,
+     6,
+     10,
+     12,
+     15,
+     24,
+     25,
+     26,
+     29,
+     30
+    ]
+   },
+   {
+    "id": 281,
+    "name": "uq",
+    "parent": 48,
+    "bits": [
+     1,
+     2,
+     7,
+     9,
+     11,
+     12,
+     15,
+     17,
+     18,
+     21,
+     23,
+     24,
+     25,
+     27,
+     30,
+     31
+    ]
+   },
+   {
+    "id": 287,
+    "name": "Ddpgqlhv",
+    "parent": 74,
+    "bits": [
+     1,
+     3,
+     6,
+     9,
+     12,
+     17,
+     21,
+     23,
+     26,
+     28
+    ]
+   },
+   {
+    "id": 290,
+    "name": "in",
+    "parent": 25,
+    "bits": [
+     1,
+     3,
+     5,
+     6,
+     7,
+     21,
+     22,
+     23,
+     27,
+     30,
+     31
+    ]
+   },
+   {
+    "id": 315,
+    "name": "nxwould c/)",
+    "parent": 70,
+    "bits": [
+     1,
+     5,
+     7,
+     8,
+     11,
+     12,
+     18,
+     20,
+     21,
+     23,
+     24,
+     26,
+     29,
+     31
+    ]
+   },
+   {
+    "id": 317,
+    "name": "would",
+    "parent": 58,
+    "bits": [
+     1,
+     5,
+     7,
+     8,
+     11,
+     12,
+     18,
+     20,
+     21,
+     23,
+     24,
+     26,
+     29,
+     31
+    ]
+   },
+   {
+    "id": 324,
+    "name": "mFloyd",
+    "parent": 187,
+    "bits": [
+     2,
+     4,
+     5,
+     7,
+     8,
+     10,
+     13,
+     16,
+     17,
+     18,
+     20,
+     26,
+     28,
+     29
+    ]
+   }
+  ]
+ }
+}
