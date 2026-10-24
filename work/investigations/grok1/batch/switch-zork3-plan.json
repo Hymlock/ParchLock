@@ -1,0 +1,105 @@
+{
+ "key": "zork3",
+ "game": "Zork3-TheDungeonMaster.z3.js",
+ "bit": 19,
+ "tmpl": "turn on X|turn off X|turn on X",
+ "tag": "switch",
+ "tests": [
+  {
+   "id": 198,
+   "name": "lamp",
+   "step": 0,
+   "expect": 1,
+   "bit": 19,
+   "cmd": "turn on lamp"
+  },
+  {
+   "id": 198,
+   "name": "lamp",
+   "step": 0,
+   "expect": 1,
+   "bit": 19,
+   "cmd": "turn off lamp"
+  },
+  {
+   "id": 198,
+   "name": "lamp",
+   "step": 0,
+   "expect": 1,
+   "bit": 19,
+   "cmd": "turn on lamp"
+  },
+  {
+   "id": 41,
+   "name": "torch",
+   "step": 28,
+   "expect": 1,
+   "bit": 19,
+   "cmd": "turn on torch"
+  },
+  {
+   "id": 41,
+   "name": "torch",
+   "step": 28,
+   "expect": 1,
+   "bit": 19,
+   "cmd": "turn off torch"
+  },
+  {
+   "id": 41,
+   "name": "torch",
+   "step": 28,
+   "expect": 1,
+   "bit": 19,
+   "cmd": "turn on torch"
+  },
+  {
+   "id": 6,
+   "name": "indicator",
+   "step": 28,
+   "expect": 0,
+   "bit": 19,
+   "cmd": "turn on indicator"
+  },
+  {
+   "id": 6,
+   "name": "indicator",
+   "step": 28,
+   "expect": 0,
+   "bit": 19,
+   "cmd": "turn off indicator"
+  },
+  {
+   "id": 6,
+   "name": "indicator",
+   "step": 28,
+   "expect": 0,
+   "bit": 19,
+   "cmd": "turn on indicator"
+  },
+  {
+   "id": 39,
+   "name": "golden amulet",
+   "step": 28,
+   "expect": 0,
+   "bit": 19,
+   "cmd": "turn on golden amulet"
+  },
+  {
+   "id": 39,
+   "name": "golden amulet",
+   "step": 28,
+   "expect": 0,
+   "bit": 19,
+   "cmd": "turn off golden amulet"
+  },
+  {
+   "id": 39,
+   "name": "golden amulet",
+   "step": 28,
+   "expect": 0,
+   "bit": 19,
+   "cmd": "turn on golden amulet"
+  }
+ ]
+}
