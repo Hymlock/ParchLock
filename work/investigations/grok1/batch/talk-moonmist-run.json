@@ -1,0 +1,1118 @@
+{
+ "talk @22:tamara, hello#0": {
+  "tag": "talk",
+  "id": 178,
+  "name": "Tamara",
+  "step": 22,
+  "expect": 1,
+  "bit": 31,
+  "cmd": "tamara, hello",
+  "verdict": "TRUE",
+  "before": [
+   14,
+   15,
+   16,
+   18,
+   20,
+   31
+  ],
+  "after": [
+   14,
+   15,
+   16,
+   18,
+   20,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    178,
+    6,
+    0
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    15,
+    1
+   ],
+   [
+    178,
+    13,
+    0
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    5,
+    0
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    5,
+    0
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    15,
+    1
+   ],
+   [
+    178,
+    5,
+    0
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    15,
+    1
+   ],
+   [
+    178,
+    13,
+    0
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    5,
+    0
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    15,
+    1
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    15,
+    1
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    15,
+    1
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    15,
+    1
+   ]
+  ],
+  "nOps": 47,
+  "text": "[I assume you mean: Greet her.]\nShe hugs you with affection. \"I'm so glad you're here!\"\n \n> ",
+  "ts": "2026-10-24T15:13:11.783Z"
+ },
+ "talk @22:talk to tamara#1": {
+  "tag": "talk",
+  "id": 178,
+  "name": "Tamara",
+  "step": 22,
+  "expect": 1,
+  "bit": 31,
+  "cmd": "talk to tamara",
+  "verdict": "TRUE",
+  "before": [
+   14,
+   15,
+   16,
+   18,
+   20,
+   31
+  ],
+  "after": [
+   14,
+   15,
+   16,
+   18,
+   20,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    178,
+    6,
+    0
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    15,
+    1
+   ],
+   [
+    178,
+    13,
+    0
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    5,
+    0
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    5,
+    0
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    15,
+    1
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    15,
+    1
+   ]
+  ],
+  "nOps": 32,
+  "text": "She is listening to you.\n \n> ",
+  "ts": "2026-10-24T15:13:12.365Z"
+ },
+ "talk @22:tell tamara about me#2": {
+  "tag": "talk",
+  "id": 178,
+  "name": "Tamara",
+  "step": 22,
+  "expect": 1,
+  "bit": 31,
+  "cmd": "tell tamara about me",
+  "verdict": "TRUE",
+  "before": [
+   14,
+   15,
+   16,
+   18,
+   20,
+   31
+  ],
+  "after": [
+   14,
+   15,
+   16,
+   18,
+   20,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    178,
+    6,
+    0
+   ],
+   [
+    178,
+    6,
+    0
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    15,
+    1
+   ],
+   [
+    178,
+    13,
+    0
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    5,
+    0
+   ],
+   [
+    178,
+    5,
+    0
+   ]
+  ],
+  "nOps": 48,
+  "text": "\"I don't know what you mean.\"\n \n> ",
+  "ts": "2026-10-24T15:13:12.962Z"
+ },
+ "talk @22:horn, hello#3": {
+  "tag": "talk",
+  "id": 21,
+  "name": "horn",
+  "step": 22,
+  "expect": 0,
+  "bit": 31,
+  "cmd": "horn, hello",
+  "verdict": "FALSE",
+  "before": [
+   17,
+   19
+  ],
+  "after": [
+   17,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    21,
+    6,
+    0
+   ],
+   [
+    21,
+    18,
+    0
+   ],
+   [
+    21,
+    23,
+    0
+   ],
+   [
+    21,
+    31,
+    0
+   ],
+   [
+    21,
+    13,
+    0
+   ],
+   [
+    21,
+    31,
+    0
+   ],
+   [
+    21,
+    20,
+    0
+   ],
+   [
+    21,
+    17,
+    1
+   ],
+   [
+    21,
+    31,
+    0
+   ],
+   [
+    21,
+    31,
+    0
+   ]
+  ],
+  "nOps": 28,
+  "text": "You talk to the horn for a minute before you realize that it won't respond.\n \n> ",
+  "ts": "2026-10-24T15:13:13.542Z"
+ },
+ "talk @22:talk to horn#4": {
+  "tag": "talk",
+  "id": 21,
+  "name": "horn",
+  "step": 22,
+  "expect": 0,
+  "bit": 31,
+  "cmd": "talk to horn",
+  "verdict": "FALSE",
+  "before": [
+   17,
+   19
+  ],
+  "after": [
+   17,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    21,
+    6,
+    0
+   ],
+   [
+    21,
+    18,
+    0
+   ],
+   [
+    21,
+    23,
+    0
+   ],
+   [
+    21,
+    6,
+    0
+   ],
+   [
+    21,
+    31,
+    0
+   ],
+   [
+    21,
+    13,
+    0
+   ],
+   [
+    21,
+    31,
+    0
+   ],
+   [
+    21,
+    20,
+    0
+   ],
+   [
+    21,
+    17,
+    1
+   ],
+   [
+    21,
+    31,
+    0
+   ],
+   [
+    21,
+    31,
+    0
+   ]
+  ],
+  "nOps": 30,
+  "text": "You talk to the horn for a minute before you realize that it won't respond.\n \n> ",
+  "ts": "2026-10-24T15:13:14.116Z"
+ },
+ "talk @22:tell horn about me#5": {
+  "tag": "talk",
+  "id": 21,
+  "name": "horn",
+  "step": 22,
+  "expect": 0,
+  "bit": 31,
+  "cmd": "tell horn about me",
+  "verdict": "FALSE",
+  "before": [
+   17,
+   19
+  ],
+  "after": [
+   17,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    21,
+    6,
+    0
+   ],
+   [
+    21,
+    18,
+    0
+   ],
+   [
+    21,
+    23,
+    0
+   ],
+   [
+    21,
+    6,
+    0
+   ],
+   [
+    21,
+    18,
+    0
+   ],
+   [
+    21,
+    23,
+    0
+   ],
+   [
+    21,
+    6,
+    0
+   ],
+   [
+    21,
+    31,
+    0
+   ],
+   [
+    21,
+    13,
+    0
+   ],
+   [
+    21,
+    31,
+    0
+   ],
+   [
+    21,
+    20,
+    0
+   ],
+   [
+    21,
+    17,
+    1
+   ],
+   [
+    21,
+    31,
+    0
+   ],
+   [
+    21,
+    31,
+    0
+   ]
+  ],
+  "nOps": 50,
+  "text": "You talk to the horn for a minute before you realize that it won't respond.\n \n> ",
+  "ts": "2026-10-24T15:13:14.688Z"
+ },
+ "talk @22:your luggage, hello#6": {
+  "tag": "talk",
+  "id": 59,
+  "name": "your luggage",
+  "step": 22,
+  "expect": 0,
+  "bit": 31,
+  "cmd": "your luggage, hello",
+  "verdict": "FALSE",
+  "before": [
+   16,
+   17,
+   18,
+   20,
+   26,
+   27
+  ],
+  "after": [
+   16,
+   17,
+   18,
+   20,
+   26,
+   27
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    59,
+    6,
+    0
+   ],
+   [
+    59,
+    14,
+    0
+   ],
+   [
+    59,
+    9,
+    0
+   ],
+   [
+    59,
+    31,
+    0
+   ],
+   [
+    59,
+    31,
+    0
+   ],
+   [
+    59,
+    13,
+    0
+   ],
+   [
+    59,
+    31,
+    0
+   ],
+   [
+    59,
+    20,
+    1
+   ],
+   [
+    59,
+    31,
+    0
+   ],
+   [
+    59,
+    31,
+    0
+   ]
+  ],
+  "nOps": 29,
+  "text": "You talk to your luggage for a minute before you realize that it won't respond.\n \n> ",
+  "ts": "2026-10-24T15:13:15.260Z"
+ },
+ "talk @22:talk to your luggage#7": {
+  "tag": "talk",
+  "id": 59,
+  "name": "your luggage",
+  "step": 22,
+  "expect": 0,
+  "bit": 31,
+  "cmd": "talk to your luggage",
+  "verdict": "FALSE",
+  "before": [
+   16,
+   17,
+   18,
+   20,
+   26,
+   27
+  ],
+  "after": [
+   16,
+   17,
+   18,
+   20,
+   26,
+   27
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    59,
+    6,
+    0
+   ],
+   [
+    59,
+    14,
+    0
+   ],
+   [
+    59,
+    9,
+    0
+   ],
+   [
+    59,
+    31,
+    0
+   ],
+   [
+    59,
+    6,
+    0
+   ],
+   [
+    59,
+    31,
+    0
+   ],
+   [
+    59,
+    13,
+    0
+   ],
+   [
+    59,
+    31,
+    0
+   ],
+   [
+    59,
+    20,
+    1
+   ],
+   [
+    59,
+    31,
+    0
+   ],
+   [
+    59,
+    31,
+    0
+   ]
+  ],
+  "nOps": 27,
+  "text": "You talk to your luggage for a minute before you realize that it won't respond.\n \n> ",
+  "ts": "2026-10-24T15:13:15.835Z"
+ },
+ "talk @22:tell your luggage about me#8": {
+  "tag": "talk",
+  "id": 59,
+  "name": "your luggage",
+  "step": 22,
+  "expect": 0,
+  "bit": 31,
+  "cmd": "tell your luggage about me",
+  "verdict": "FALSE",
+  "before": [
+   16,
+   17,
+   18,
+   20,
+   26,
+   27
+  ],
+  "after": [
+   16,
+   17,
+   18,
+   20,
+   26,
+   27
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    59,
+    6,
+    0
+   ],
+   [
+    59,
+    14,
+    0
+   ],
+   [
+    59,
+    9,
+    0
+   ],
+   [
+    59,
+    31,
+    0
+   ],
+   [
+    59,
+    6,
+    0
+   ],
+   [
+    59,
+    14,
+    0
+   ],
+   [
+    59,
+    9,
+    0
+   ],
+   [
+    59,
+    31,
+    0
+   ],
+   [
+    59,
+    6,
+    0
+   ],
+   [
+    59,
+    31,
+    0
+   ],
+   [
+    59,
+    13,
+    0
+   ],
+   [
+    59,
+    31,
+    0
+   ],
+   [
+    59,
+    20,
+    1
+   ],
+   [
+    59,
+    31,
+    0
+   ],
+   [
+    59,
+    31,
+    0
+   ]
+  ],
+  "nOps": 57,
+  "text": "You talk to your luggage for a minute before you realize that it won't respond.\n \n\"We can talk more later, Codex,\" says Tamara, taking your arm, \"but let's go in now, so you can meet the other guests. Bolitho will see to the car and bring your luggage.\"\nAn elderly butler appears. He has your luggage",
+  "ts": "2026-10-24T15:13:16.411Z"
+ },
+ "talk @29:bolitho, hello#9": {
+  "tag": "talk",
+  "id": 91,
+  "name": "Bolitho",
+  "step": 29,
+  "expect": 1,
+  "bit": 31,
+  "cmd": "bolitho, hello",
+  "verdict": "TRUE",
+  "before": [
+   14,
+   16,
+   17,
+   18,
+   20,
+   31
+  ],
+  "after": [
+   14,
+   16,
+   17,
+   18,
+   20,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    13,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    31,
+    1
+   ],
+   [
+    91,
+    15,
+    0
+   ],
+   [
+    91,
+    20,
+    1
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    31,
+    1
+   ],
+   [
+    91,
+    15,
+    0
+   ]
+  ],
+  "nOps": 446,
+  "text": "(Bolitho isn't here!)\n \n> ",
+  "ts": "2026-10-24T15:13:21.037Z"
+ },
+ "talk @29:talk to bolitho#10": {
+  "tag": "talk",
+  "id": 91,
+  "name": "Bolitho",
+  "step": 29,
+  "expect": 1,
+  "bit": 31,
+  "cmd": "talk to bolitho",
+  "verdict": "TRUE",
+  "before": [
+   14,
+   16,
+   17,
+   18,
+   20,
+   31
+  ],
+  "after": [
+   14,
+   16,
+   17,
+   18,
+   20,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    13,
+    0
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    31,
+    1
+   ],
+   [
+    91,
+    15,
+    0
+   ],
+   [
+    91,
+    20,
+    1
+   ],
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    31,
+    1
+   ],
+   [
+    91,
+    15,
+    0
+   ]
+  ],
+  "nOps": 446,
+  "text": "(Bolitho isn't here!)\n \n> ",
+  "ts": "2026-10-24T15:13:21.658Z"
+ },
+ "talk @29:tell bolitho about me#11": {
+  "tag": "talk",
+  "id": 91,
+  "name": "Bolitho",
+  "step": 29,
+  "expect": 1,
+  "bit": 31,
+  "cmd": "tell bolitho about me",
+  "verdict": "NOTEST",
+  "before": [
+   14,
+   16,
+   17,
+   18,
+   20,
+   31
+  ],
+  "after": [
+   14,
+   16,
+   17,
+   18,
+   20,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [],
+  "nOps": 80,
+  "text": "(You can't see Bolitho right here!)\n \n> ",
+  "ts": "2026-10-24T15:13:22.238Z"
+ }
+}

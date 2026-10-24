@@ -1,0 +1,24 @@
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index 4699306..d914d97 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -87,7 +87,8 @@ var ModuleStatFactsClaude = {
+         // SURFACEBIT 18 exact (tp 35/9, fp 0). Both together, so surfaces are never offered Open/Close
+         // (openCapability above). Closes the coffer/invitation leak (app listed the invitation inside the closed coffer).
+         // door 26 = source DOORBIT exact; native (codex door-ph-native.json): large cupboard 45 and canvas hatch 137 toggle 16; slippers refuse.
+-        "attributeMap": { "open": 16, "isOpen": 16, "animate": 31, "wearable": 21, "container": 24, "supporter": 18, "door": 26 },
++        // talkable 31 (grok2 #4933, verified grok1; g1-batch talk run grok1/batch/talk-plundered-{run,plan}.json, test_attr during the named talk command only): Crulley 8 "crulley, hello"/"talk to crulley" 8:31 TRUE, Captain Jamison 190 "talk to" 190:31 TRUE; smelling salts 11 11:31 FALSE.
++        "attributeMap": { "open": 16, "isOpen": 16, "animate": 31, "talkable": 31, "wearable": 21, "container": 24, "supporter": 18, "door": 26 },
+         "wornAttribute": 22,
+         // Native i (walkthrough step 119, 2026-10-16-zil-inv-hidden-ops.json) tests bit9 TRUE on gunpowder 144 in the open
+         // powder horn and laudanum 102 in the transparent bottle, omitting both; FALSE on 15 printed held items. Source
+@@ -546,7 +547,8 @@ var ModuleStatFactsClaude = {
+         // Switch (grok1 #4849 grok1/switch/moonmist.json): brass lantern 153: TURN ON -> "Okay, it is now on." (10 set), TURN OFF clears; nightlamp 164 fixed, left out. on 10 already mapped.
+         "attributeObjects": { "switchable": [153] },
+         "capabilityForms": { "switchable": ["turn on", "turn off"] },
+-        "attributeMap": { "wearable": 29, "open": 14, "isOpen": 14, "container": 27, "supporter": 23, "animate": 31, "on": 10 }
++        // talkable 31 (grok2 #4933, verified grok1; g1-batch talk run grok1/batch/talk-moonmist-{run,plan}.json, test_attr during the named talk command only): Tamara 178 "tamara, hello"/"talk to tamara" 178:31 TRUE, Bolitho 91 91:31 TRUE; horn 21 and luggage 59 31 FALSE.
++        "attributeMap": { "wearable": 29, "open": 14, "isOpen": 14, "container": 27, "supporter": 23, "animate": 31, "talkable": 31, "on": 10 }
+     },
+     // Deadline (ZIL): OPENBIT 28 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match). CONTBIT 21 is also proven but is NOT applied
+     // until SURFACEBIT/supporter is proven, so surfaces never gain container Open/Close (Zork I table lesson, a89704b).
