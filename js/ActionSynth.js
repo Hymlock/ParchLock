@@ -89,6 +89,18 @@ var ActionSynth = {
         }
         return ActionSynth.rules[key] || [];
     },
+    // The title's measured enter verb (fact enterForms.enter), or null.
+    enterFormFor: (mem) => {
+        try {
+            var fact = mem && ZRamReader.executableLayoutFacts(mem);
+            if (!fact) {
+                var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest();
+                fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
+            }
+            var form = fact && fact.enterForms && fact.enterForms.enter;
+            return typeof form === "string" && form ? form : null;
+        } catch (e) { return null; }
+    },
     edibleFormPolicy: (objectId, context) => {
         if (typeof AttributeSchema === "undefined" || !AttributeSchema.edibleForms) return null;
         var forms = AttributeSchema.edibleForms(AttributeSchema._getMem(), objectId, context);
@@ -417,6 +429,14 @@ var ActionSynth = {
                 if (ActionSynth.literalAvailable("get out")) verbs = verbs.map(function (v) { return v === "exit" ? "get out of" : v; });
             } else if (inside === false) {
                 verbs = verbs.filter(function (v) { return v !== "exit"; });
+            }
+            // Per-title enter form (enter-form R2): some ZIL titles refuse ENTER on every
+            // carrier but accept another verb (The Witness: SIT ON). Applied after the
+            // D236 filter so inside/outside still decides; no fact leaves "enter" as is.
+            var enterForm = ActionSynth.enterFormFor(memE);
+            if (enterForm) {
+                verbs = verbs.map(function (v) { return v === "enter" ? enterForm : v; })
+                    .filter(function (v) { return v !== enterForm || ActionSynth.literalAvailable(enterForm); });
             }
         }
         var result = verbs.map(function (v) {
