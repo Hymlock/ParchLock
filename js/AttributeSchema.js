@@ -525,7 +525,7 @@ var AttributeSchema = {
             owned = true;
             var ids = AttributeSchema.objectCapabilityIds(mem, "edible");
             var rules = fact.capabilityForms.edible, header = ZRamReader.header(mem);
-            if (context !== "inventory" || !ids || !header || !Number.isInteger(objectId) ||
+            if ((context !== "inventory" && context !== "room") || !ids || !header || !Number.isInteger(objectId) ||
                 !Array.isArray(rules) || rules.length !== ids.length) return [];
             var count = ZRamReader.objectCount(mem, header), limit = header.version <= 3 ? 32 : 48;
             var family = AttributeSchema._familyOf(mem), seen = {}, selected = null;
@@ -566,13 +566,17 @@ var AttributeSchema = {
             var player = ZRamReader.resolvePlayer(mem).id, object = ZRamReader.objectLinks(mem, objectId);
             if (!Number.isInteger(player) || player < 2 || player > count || !object) return [];
             if (selected.scope === "held") {
-                if (object.parent !== player) return [];
+                if (context !== "inventory" || object.parent !== player) return [];
             } else {
+                // D235: the open container may be held (inventory) or merely in view (room): EAT succeeds natively from an
+                // open carton on the counter or inside the closed glass oven. Live parent and open bit stay authoritative;
+                // the payload only says the food is currently in view, it never grants Eat by itself.
                 var parentId = selected.scope.containerObject, parent = ZRamReader.objectLinks(mem, parentId);
                 var payload = typeof WorldModel !== "undefined" && WorldModel.lastPayload;
-                if (object.parent !== parentId || !parent || parent.parent !== player ||
+                var listed = payload && (context === "inventory" ? payload.inventory : payload.discoveredObjects);
+                if (object.parent !== parentId || !parent || (context === "inventory" && parent.parent !== player) ||
                     !ZRamReader.attr(parent, selected.scope.openAttribute) || !payload ||
-                    !(payload.inventory || []).some(function (o) { return o && o.id === objectId; })) return [];
+                    !(listed || []).some(function (o) { return o && o.id === objectId; })) return [];
             }
             return selected.actions.filter(function (action) {
                 if (Object.prototype.hasOwnProperty.call(action, "clearAttribute") &&

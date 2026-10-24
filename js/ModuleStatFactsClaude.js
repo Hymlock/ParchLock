@@ -108,6 +108,11 @@ var ModuleStatFactsClaude = {
         // held lamp198 tests FALSE/refuses. Complete pinned source corroborates one active FOODBIT owner;
         // archived release25 differs from this release17, so no exact-build source claim. Shared food
         // policy4f2123f keeps Eat without inferring Drink. Evidence: resume-20261020/zork3-food/.
+        // D232 local globals, roots only (codex #4748, resume-20261020 zork3-local-roots-native): room property 7 lists LOCAL-GLOBALS
+        // holder 221 children; native Endless Stair 64 [216] EXAMINE stairs recognised, Cliff 58 [57,215,75,56] EXAMINE cliff
+        // recognised, reciprocal negatives refused. Room lit ONBIT 15 (exact 27 of 27; true both rooms, Junction 63 dark reply).
+        // INVISIBLE 28 exact 5 of 5. Zork-era GLOBAL-CHECK never searches inside local globals, so no contents key.
+        "localScope": { "property": 7, "width": 1, "holder": 221, "roomLitAttribute": 15, "invisible": 28 },
         "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10, "supporter": 26, "on": 15, "edible": 5 } // on 15 (codex #4333: lamp 198 +/-15, torch 41 -15 native)
     },
     // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
@@ -754,7 +759,9 @@ var ModuleStatFactsClaude = {
         // on 15 = ONBIT state (codex #4345/#4347: flashlight single player-switchable item; rooms = lit state, global waxer always on).
         // openable 2 = source OPENABLE, carrier set exact 22/22; native (codex #4752): OPEN Funny Bones 18 and fridge 105 set 13,
         // counter 160 (no bit) refuses. CLOSE on the package natively refuses: the extra Close offer is a disclosed harmless one.
-        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31, "on": 15, "transparent": 5, "openable": 2 },
+        // enterable 29 = source VEHBIT, carriers exact 7 of 7; native (codex #4771): ENTER chair 62 and forklift 197 move PLAYER 56
+        // inside, EXIT returns; ENTER pc 191 (no bit) refuses with the player unmoved.
+        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31, "on": 15, "transparent": 5, "openable": 2, "enterable": 29 },
         // D232 local globals (claude census + codex #4618/#4621/#4632, grok2 #4637): room GLOBAL property 16 (byte ids),
         // holder LOCAL-GLOBALS 59; native: EXAMINE ROOF DOOR succeeds from TopFloor 195 (prop16 [163]), refused from
         // ComputerRoom 176; Tomb 9 padlock. Room ONBIT 15 positive-only (pzlurking trace TRUE 176/137/33, FALSE + pitch-black
