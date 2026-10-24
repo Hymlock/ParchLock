@@ -1,0 +1,252 @@
+{
+ "light @7:turn on mystery book#0": {
+  "tag": "light",
+  "id": 7,
+  "name": "mystery book",
+  "step": 7,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "turn on mystery book",
+  "verdict": "NOTEST",
+  "before": [
+   18,
+   19
+  ],
+  "after": [
+   18,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    7,
+    31,
+    0
+   ],
+   [
+    7,
+    20,
+    0
+   ],
+   [
+    7,
+    20,
+    0
+   ]
+  ],
+  "nOps": 11,
+  "text": "You can't turn that on.\n \n> ",
+  "ts": "2026-10-24T15:35:13.691Z"
+ },
+ "light @7:light mystery book#1": {
+  "tag": "light",
+  "id": 7,
+  "name": "mystery book",
+  "step": 7,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "light mystery book",
+  "verdict": "NOTEST",
+  "before": [
+   18,
+   19
+  ],
+  "after": [
+   18,
+   19,
+   30
+  ],
+  "set": [
+   30
+  ],
+  "cleared": [],
+  "opsOnId": [
+   [
+    7,
+    31,
+    0
+   ],
+   [
+    7,
+    11,
+    0
+   ],
+   [
+    7,
+    19,
+    1
+   ],
+   [
+    7,
+    20,
+    0
+   ],
+   [
+    7,
+    20,
+    0
+   ]
+  ],
+  "nOps": 13,
+  "text": "(Taken)\nYou can't turn that on.\n \n> ",
+  "ts": "2026-10-24T15:35:14.271Z"
+ },
+ "light @7:turn on fine wooden cabinets#2": {
+  "tag": "light",
+  "id": 46,
+  "name": "fine wooden cabinets",
+  "step": 7,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "turn on fine wooden cabinets",
+  "verdict": "NOTEST",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    46,
+    31,
+    0
+   ],
+   [
+    46,
+    20,
+    0
+   ],
+   [
+    46,
+    20,
+    0
+   ]
+  ],
+  "nOps": 13,
+  "text": "You can't turn that on.\n \n> ",
+  "ts": "2026-10-24T15:35:14.845Z"
+ },
+ "light @7:light fine wooden cabinets#3": {
+  "tag": "light",
+  "id": 46,
+  "name": "fine wooden cabinets",
+  "step": 7,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "light fine wooden cabinets",
+  "verdict": "NOTEST",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    46,
+    31,
+    0
+   ],
+   [
+    46,
+    11,
+    0
+   ],
+   [
+    46,
+    19,
+    0
+   ]
+  ],
+  "nOps": 13,
+  "text": "You don't have the fine wooden cabinets.\n \n> ",
+  "ts": "2026-10-24T15:35:15.411Z"
+ },
+ "light @7:turn on collection of portraits#4": {
+  "tag": "light",
+  "id": 47,
+  "name": "collection of portraits",
+  "step": 7,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "turn on collection of portraits",
+  "verdict": "NOTEST",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    47,
+    31,
+    0
+   ],
+   [
+    47,
+    31,
+    0
+   ],
+   [
+    47,
+    20,
+    0
+   ],
+   [
+    47,
+    20,
+    0
+   ]
+  ],
+  "nOps": 23,
+  "text": "You can't turn that on.\n \n> ",
+  "ts": "2026-10-24T15:35:15.986Z"
+ },
+ "light @7:light collection of portraits#5": {
+  "tag": "light",
+  "id": 47,
+  "name": "collection of portraits",
+  "step": 7,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "light collection of portraits",
+  "verdict": "NOTEST",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    47,
+    31,
+    0
+   ],
+   [
+    47,
+    11,
+    0
+   ],
+   [
+    47,
+    19,
+    0
+   ]
+  ],
+  "nOps": 13,
+  "text": "You don't have the collection of portraits.\n \n> ",
+  "ts": "2026-10-24T15:35:16.558Z"
+ }
+}

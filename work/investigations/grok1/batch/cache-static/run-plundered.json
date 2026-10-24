@@ -1,0 +1,1086 @@
+{
+ "static @1:take smelling salts#0": {
+  "tag": "static",
+  "id": 11,
+  "name": "smelling salts",
+  "step": 1,
+  "expect": 1,
+  "bit": 23,
+  "cmd": "take smelling salts",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   23
+  ],
+  "after": [
+   2,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    11,
+    20,
+    0
+   ],
+   [
+    11,
+    7,
+    0
+   ],
+   [
+    11,
+    31,
+    0
+   ]
+  ],
+  "nOps": 22,
+  "text": "You'll have to stand up first.\n   \"Cap'n Jamison! We've got 'em!\" cries a rough voice.\n \n> ",
+  "ts": "2026-10-24T15:34:53.239Z"
+ },
+ "static @1:take linen chemise#1": {
+  "tag": "static",
+  "id": 17,
+  "name": "linen chemise",
+  "step": 1,
+  "expect": 1,
+  "bit": 23,
+  "cmd": "take linen chemise",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   21,
+   22,
+   23
+  ],
+  "after": [
+   6,
+   21,
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    17,
+    20,
+    0
+   ],
+   [
+    17,
+    7,
+    0
+   ],
+   [
+    17,
+    31,
+    0
+   ]
+  ],
+  "nOps": 25,
+  "text": "You'll have to stand up first.\n   With a creak and a crash, somewhere a mast falls to the deck.\n \n> ",
+  "ts": "2026-10-24T15:34:53.823Z"
+ },
+ "static @1:take your kid slippers#2": {
+  "tag": "static",
+  "id": 13,
+  "name": "your kid slippers",
+  "step": 1,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take your kid slippers",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   4,
+   21,
+   22
+  ],
+  "after": [
+   2,
+   4,
+   21,
+   22
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    13,
+    20,
+    0
+   ]
+  ],
+  "nOps": 51,
+  "text": "You can't see any your kid slippers here!\n \n> ",
+  "ts": "2026-10-24T15:34:54.400Z"
+ },
+ "static @1:take coffer#3": {
+  "tag": "static",
+  "id": 69,
+  "name": "coffer",
+  "step": 1,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take coffer",
+  "verdict": "NOTEST",
+  "before": [
+   9,
+   10,
+   15,
+   24
+  ],
+  "after": [
+   9,
+   10,
+   15,
+   24
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    69,
+    20,
+    0
+   ],
+   [
+    69,
+    16,
+    0
+   ],
+   [
+    69,
+    14,
+    0
+   ],
+   [
+    69,
+    7,
+    0
+   ],
+   [
+    69,
+    31,
+    0
+   ]
+  ],
+  "nOps": 23,
+  "text": "You'll have to stand up first.\n \n> ",
+  "ts": "2026-10-24T15:34:55.072Z"
+ },
+ "static @1:take bed#4": {
+  "tag": "static",
+  "id": 213,
+  "name": "bed",
+  "step": 1,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take bed",
+  "verdict": "NOTEST",
+  "before": [
+   9,
+   15,
+   16,
+   18,
+   24,
+   28
+  ],
+  "after": [
+   9,
+   15,
+   16,
+   18,
+   24,
+   28
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    213,
+    20,
+    0
+   ],
+   [
+    213,
+    16,
+    1
+   ],
+   [
+    213,
+    18,
+    1
+   ],
+   [
+    213,
+    7,
+    0
+   ],
+   [
+    213,
+    31,
+    0
+   ],
+   [
+    213,
+    28,
+    1
+   ]
+  ],
+  "nOps": 23,
+  "text": "You'll have to stand up first.\n \n> ",
+  "ts": "2026-10-24T15:34:55.639Z"
+ },
+ "static @1:take your reticule#5": {
+  "tag": "static",
+  "id": 223,
+  "name": "your reticule",
+  "step": 1,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take your reticule",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   15,
+   16,
+   21,
+   24
+  ],
+  "after": [
+   4,
+   15,
+   16,
+   21,
+   24
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    223,
+    20,
+    0
+   ],
+   [
+    223,
+    16,
+    1
+   ],
+   [
+    223,
+    18,
+    0
+   ],
+   [
+    223,
+    15,
+    1
+   ],
+   [
+    223,
+    7,
+    0
+   ],
+   [
+    223,
+    31,
+    0
+   ]
+  ],
+  "nOps": 26,
+  "text": "You'll have to stand up first.\n   Suddenly, the ship lurches to one side, throwing you out of the bed. A coffer slides from under the bed and bumps against your foot.\n   \"The Falcon! The Falcon conquers!\" yells someone.\n \n> ",
+  "ts": "2026-10-24T15:34:56.211Z"
+ },
+ "static @6:take crulley#6": {
+  "tag": "static",
+  "id": 8,
+  "name": "Crulley",
+  "step": 6,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take crulley",
+  "verdict": "FALSE",
+  "before": [
+   4,
+   5,
+   14,
+   16,
+   19,
+   24,
+   31
+  ],
+  "after": [
+   4,
+   5,
+   14,
+   16,
+   19,
+   24,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    8,
+    20,
+    0
+   ],
+   [
+    8,
+    7,
+    0
+   ],
+   [
+    8,
+    31,
+    1
+   ],
+   [
+    8,
+    23,
+    0
+   ]
+  ],
+  "nOps": 31,
+  "text": "It's not worth it. Believe me.\n   The pirate captain glances around the empty room, then notices the coffer in your arms. \"Davis's safety box -- my men were hoping I'd find it.\" He takes it and nudges the unconscious man on the floor, \"I wonder how Crulley knew you were here? Just his bad luck? He'l",
+  "ts": "2026-10-24T15:34:59.628Z"
+ },
+ "static @8:take new ring#7": {
+  "tag": "static",
+  "id": 87,
+  "name": "new ring",
+  "step": 8,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take new ring",
+  "verdict": "NOTEST",
+  "before": [
+   9
+  ],
+  "after": [
+   9
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    87,
+    20,
+    0
+   ],
+   [
+    87,
+    7,
+    0
+   ],
+   [
+    87,
+    31,
+    0
+   ]
+  ],
+  "nOps": 60,
+  "text": "Captain Jamison curls his fist around it. \"This is a copy of the family ring lost with my brother.\"\n   He sighs, \"You share your father's stubborn streak. I wished not to do this.\" He leaps to your side, hauling you up onto his shoulder, and carries you out of the room. Captain Jamison sets you on y",
+  "ts": "2026-10-24T15:35:01.344Z"
+ },
+ "static @1:take cotton frock#8": {
+  "tag": "static",
+  "id": 84,
+  "name": "cotton frock",
+  "step": 1,
+  "expect": 1,
+  "bit": 23,
+  "cmd": "take cotton frock",
+  "verdict": "NOTEST",
+  "before": [
+   21,
+   22,
+   23
+  ],
+  "after": [
+   21,
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    84,
+    20,
+    0
+   ],
+   [
+    84,
+    7,
+    0
+   ],
+   [
+    84,
+    31,
+    0
+   ]
+  ],
+  "nOps": 22,
+  "text": "You'll have to stand up first.\n   \"Cap'n Jamison! We've got 'em!\" cries a rough voice.\n \n> ",
+  "ts": "2026-10-24T15:39:04.965Z"
+ },
+ "static @1:take banknote#9": {
+  "tag": "static",
+  "id": 186,
+  "name": "banknote",
+  "step": 1,
+  "expect": 1,
+  "bit": 23,
+  "cmd": "take banknote",
+  "verdict": "NOTEST",
+  "before": [
+   23
+  ],
+  "after": [
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    186,
+    20,
+    0
+   ],
+   [
+    186,
+    7,
+    0
+   ],
+   [
+    186,
+    31,
+    0
+   ]
+  ],
+  "nOps": 23,
+  "text": "You'll have to stand up first.\n   With a creak and a crash, somewhere a mast falls to the deck.\n \n> ",
+  "ts": "2026-10-24T15:39:05.539Z"
+ },
+ "static @6:take pcc k wi'm x i sgv#10": {
+  "tag": "static",
+  "id": 235,
+  "name": "pcc k wI'm x i sgv",
+  "step": 6,
+  "expect": 1,
+  "bit": 23,
+  "cmd": "take pcc k wi'm x i sgv",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   3,
+   7,
+   8,
+   9,
+   13,
+   14,
+   15,
+   17,
+   20,
+   21,
+   22,
+   23
+  ],
+  "after": [
+   2,
+   3,
+   7,
+   8,
+   9,
+   13,
+   14,
+   15,
+   17,
+   20,
+   21,
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [],
+  "nOps": 2,
+  "text": "[I don't know the word \"pcc.\"]\n \n> ",
+  "ts": "2026-10-24T15:39:08.972Z"
+ },
+ "static @8:take captain jamison#11": {
+  "tag": "static",
+  "id": 190,
+  "name": "Captain Jamison",
+  "step": 8,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take captain jamison",
+  "verdict": "FALSE",
+  "before": [
+   4,
+   15,
+   16,
+   24,
+   31
+  ],
+  "after": [
+   4,
+   15,
+   16,
+   24,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    190,
+    20,
+    0
+   ],
+   [
+    190,
+    16,
+    1
+   ],
+   [
+    190,
+    18,
+    0
+   ],
+   [
+    190,
+    15,
+    1
+   ],
+   [
+    190,
+    7,
+    0
+   ],
+   [
+    190,
+    31,
+    1
+   ],
+   [
+    190,
+    5,
+    0
+   ],
+   [
+    190,
+    23,
+    0
+   ]
+  ],
+  "nOps": 32,
+  "text": "It's not worth it. Believe me.\n   The pirate captain glances around the empty room, then notices the coffer in your arms. \"Davis's safety box -- my men were hoping I'd find it.\" He takes it and nudges the unconscious man on the floor, \"I wonder how Crulley knew you were here? Just his bad luck? He'l",
+  "ts": "2026-10-24T15:39:10.689Z"
+ },
+ "static @8:take rapier#12": {
+  "tag": "static",
+  "id": 16,
+  "name": "rapier",
+  "step": 8,
+  "expect": 1,
+  "bit": 23,
+  "cmd": "take rapier",
+  "verdict": "NOTEST",
+  "before": [
+   17,
+   23
+  ],
+  "after": [
+   17,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    16,
+    20,
+    0
+   ],
+   [
+    16,
+    7,
+    0
+   ],
+   [
+    16,
+    31,
+    0
+   ]
+  ],
+  "nOps": 33,
+  "text": "Jamison prevents you, \"This is not a weapon for ladies.\"\n   \"We haven't time to waste. Will you come willingly or not?\" says Captain Jamison.\n \n> ",
+  "ts": "2026-10-24T15:39:11.255Z"
+ },
+ "static @11:take davis#13": {
+  "tag": "static",
+  "id": 215,
+  "name": "Davis",
+  "step": 11,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take davis",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   31
+  ],
+  "after": [
+   4,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [],
+  "nOps": 63,
+  "text": "You can't see Davis here!\n \n> ",
+  "ts": "2026-10-24T15:39:13.551Z"
+ },
+ "static @13:take ledge#14": {
+  "tag": "static",
+  "id": 27,
+  "name": "ledge",
+  "step": 13,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take ledge",
+  "verdict": "NOTEST",
+  "before": [
+   9,
+   14,
+   15,
+   16,
+   24,
+   28
+  ],
+  "after": [
+   9,
+   14,
+   15,
+   16,
+   24,
+   28
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    27,
+    20,
+    0
+   ],
+   [
+    27,
+    7,
+    0
+   ],
+   [
+    27,
+    31,
+    0
+   ]
+  ],
+  "nOps": 31,
+  "text": "You'll have to stand up first.\n   His look darkens. \"You should know why I hate Lafond: Some years ago, as my brother and his bride sailed to a new life in Virginia, pirates struck. Their ship was boarded, looted and burned, the women taken, never to be seen again. A sailor, the one survivor, watche",
+  "ts": "2026-10-24T15:39:15.270Z"
+ },
+ "static @13:take large cupboard#15": {
+  "tag": "static",
+  "id": 45,
+  "name": "large cupboard",
+  "step": 13,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take large cupboard",
+  "verdict": "NOTEST",
+  "before": [
+   8,
+   9,
+   15,
+   24,
+   26
+  ],
+  "after": [
+   8,
+   9,
+   15,
+   24,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    45,
+    20,
+    0
+   ],
+   [
+    45,
+    16,
+    0
+   ],
+   [
+    45,
+    14,
+    0
+   ]
+  ],
+  "nOps": 57,
+  "text": "You can't see any large cupboard here!\n \n> ",
+  "ts": "2026-10-24T15:39:15.842Z"
+ },
+ "static @13:take bed#16": {
+  "tag": "static",
+  "id": 131,
+  "name": "bed",
+  "step": 13,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take bed",
+  "verdict": "NOTEST",
+  "before": [
+   9,
+   15,
+   16,
+   18,
+   24,
+   28
+  ],
+  "after": [
+   9,
+   15,
+   16,
+   18,
+   24,
+   28
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    131,
+    20,
+    0
+   ],
+   [
+    131,
+    16,
+    1
+   ],
+   [
+    131,
+    18,
+    1
+   ],
+   [
+    131,
+    20,
+    0
+   ],
+   [
+    131,
+    16,
+    1
+   ],
+   [
+    131,
+    18,
+    1
+   ],
+   [
+    131,
+    7,
+    0
+   ],
+   [
+    131,
+    31,
+    0
+   ],
+   [
+    131,
+    28,
+    1
+   ]
+  ],
+  "nOps": 35,
+  "text": "You'll have to stand up first.\n \n> ",
+  "ts": "2026-10-24T15:39:16.416Z"
+ },
+ "static @29:take gate#17": {
+  "tag": "static",
+  "id": 39,
+  "name": "gate",
+  "step": 29,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take gate",
+  "verdict": "FALSE",
+  "before": [
+   9,
+   10,
+   26
+  ],
+  "after": [
+   9,
+   10,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    39,
+    20,
+    0
+   ],
+   [
+    39,
+    7,
+    0
+   ],
+   [
+    39,
+    31,
+    0
+   ],
+   [
+    39,
+    23,
+    0
+   ]
+  ],
+  "nOps": 35,
+  "text": "That is a waste of time.\n \n> ",
+  "ts": "2026-10-24T15:39:26.135Z"
+ },
+ "static @9:take missive#18": {
+  "tag": "static",
+  "id": 206,
+  "name": "missive",
+  "step": 9,
+  "expect": 1,
+  "bit": 23,
+  "cmd": "take missive",
+  "verdict": "NOTEST",
+  "before": [
+   23
+  ],
+  "after": [
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    206,
+    20,
+    0
+   ],
+   [
+    206,
+    20,
+    0
+   ],
+   [
+    206,
+    7,
+    0
+   ],
+   [
+    206,
+    31,
+    0
+   ],
+   [
+    206,
+    22,
+    0
+   ],
+   [
+    206,
+    4,
+    0
+   ]
+  ],
+  "nOps": 32,
+  "text": "You already have the missive.\n   The pirate captain glances around the empty room, then notices the coffer in your arms. \"Davis's safety box -- my men were hoping I'd find it.\" He takes it and nudges the unconscious man on the floor, \"I wonder how Crulley knew you were here? Just his bad luck? He'll",
+  "ts": "2026-10-24T15:41:32.672Z"
+ },
+ "static @19:take pile of clothes#19": {
+  "tag": "static",
+  "id": 125,
+  "name": "pile of clothes",
+  "step": 19,
+  "expect": 1,
+  "bit": 23,
+  "cmd": "take pile of clothes",
+  "verdict": "NOTEST",
+  "before": [
+   17,
+   21,
+   23
+  ],
+  "after": [
+   17,
+   21,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    125,
+    20,
+    0
+   ],
+   [
+    125,
+    20,
+    0
+   ],
+   [
+    125,
+    7,
+    0
+   ],
+   [
+    125,
+    31,
+    0
+   ],
+   [
+    125,
+    4,
+    0
+   ]
+  ],
+  "nOps": 34,
+  "text": "You can't reach the pile of clothes.\n \n> ",
+  "ts": "2026-10-24T15:41:38.962Z"
+ },
+ "static @20:take shirt#20": {
+  "tag": "static",
+  "id": 130,
+  "name": "shirt",
+  "step": 20,
+  "expect": 1,
+  "bit": 23,
+  "cmd": "take shirt",
+  "verdict": "NOTEST",
+  "before": [
+   9,
+   21,
+   23
+  ],
+  "after": [
+   19,
+   21,
+   23
+  ],
+  "set": [
+   19
+  ],
+  "cleared": [
+   9
+  ],
+  "opsOnId": [
+   [
+    130,
+    20,
+    0
+   ],
+   [
+    130,
+    7,
+    0
+   ],
+   [
+    130,
+    31,
+    0
+   ],
+   [
+    130,
+    4,
+    0
+   ],
+   [
+    130,
+    11,
+    0
+   ]
+  ],
+  "nOps": 35,
+  "text": "You pick up the pile of clothes. It separates into a pair of breeches and a shirt.\n \n> ",
+  "ts": "2026-10-24T15:41:40.109Z"
+ },
+ "static @20:take breeches#21": {
+  "tag": "static",
+  "id": 194,
+  "name": "breeches",
+  "step": 20,
+  "expect": 1,
+  "bit": 23,
+  "cmd": "take breeches",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   19,
+   21,
+   23
+  ],
+  "after": [
+   2,
+   19,
+   21,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    194,
+    20,
+    0
+   ],
+   [
+    194,
+    7,
+    0
+   ],
+   [
+    194,
+    31,
+    0
+   ],
+   [
+    194,
+    22,
+    0
+   ],
+   [
+    194,
+    4,
+    0
+   ]
+  ],
+  "nOps": 24,
+  "text": "You already have the breeches.\n \n> ",
+  "ts": "2026-10-24T15:41:40.680Z"
+ }
+}

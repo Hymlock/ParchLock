@@ -1,0 +1,41 @@
+{
+ "key": "hollywood",
+ "game": "HollywoodHijinx.z3.js",
+ "bit": 17,
+ "tmpl": "take X",
+ "tag": "static",
+ "tests": [
+  {
+   "id": 235,
+   "name": "Aunt Hildegarde's letter",
+   "step": 0,
+   "expect": 1,
+   "bit": 17,
+   "cmd": "take aunt hildegarde's letter"
+  },
+  {
+   "id": 63,
+   "name": "business card",
+   "step": 3,
+   "expect": 1,
+   "bit": 17,
+   "cmd": "take business card"
+  },
+  {
+   "id": 113,
+   "name": "yellowed piece of paper",
+   "step": 3,
+   "expect": 1,
+   "bit": 17,
+   "cmd": "take yellowed piece of paper"
+  },
+  {
+   "id": 181,
+   "name": "copy of The Status Line",
+   "step": 3,
+   "expect": 1,
+   "bit": 17,
+   "cmd": "take copy of the status line"
+  }
+ ]
+}

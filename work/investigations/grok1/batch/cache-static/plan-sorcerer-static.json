@@ -1,0 +1,73 @@
+{
+ "key": "sorcerer",
+ "game": "Sorcerer.z3.js",
+ "bit": 23,
+ "tmpl": "take X",
+ "tag": "static",
+ "tests": [
+  {
+   "id": 139,
+   "name": "spell book",
+   "step": 1,
+   "expect": 1,
+   "bit": 23,
+   "cmd": "take spell book"
+  },
+  {
+   "id": 11,
+   "name": "scribbled note",
+   "step": 5,
+   "expect": 1,
+   "bit": 23,
+   "cmd": "take scribbled note"
+  },
+  {
+   "id": 22,
+   "name": "rezrov spell",
+   "step": 1,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take rezrov spell"
+  },
+  {
+   "id": 27,
+   "name": "vezza spell",
+   "step": 1,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take vezza spell"
+  },
+  {
+   "id": 128,
+   "name": "bed",
+   "step": 1,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take bed"
+  },
+  {
+   "id": 140,
+   "name": "izyuk spell",
+   "step": 1,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take izyuk spell"
+  },
+  {
+   "id": 147,
+   "name": "frotz spell",
+   "step": 1,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take frotz spell"
+  },
+  {
+   "id": 162,
+   "name": "pulver spell",
+   "step": 1,
+   "expect": 0,
+   "bit": 23,
+   "cmd": "take pulver spell"
+  }
+ ]
+}

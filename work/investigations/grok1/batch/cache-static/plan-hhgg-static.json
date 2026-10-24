@@ -1,0 +1,73 @@
+{
+ "key": "hhgg",
+ "game": "Hitchhik.z5.js",
+ "bit": 41,
+ "tmpl": "take X",
+ "tag": "static",
+ "tests": [
+  {
+   "id": 8,
+   "name": "small key",
+   "step": 0,
+   "expect": 1,
+   "bit": 41,
+   "cmd": "take small key"
+  },
+  {
+   "id": 27,
+   "name": "glass of white wine",
+   "step": 0,
+   "expect": 1,
+   "bit": 41,
+   "cmd": "take glass of white wine"
+  },
+  {
+   "id": 2,
+   "name": "air",
+   "step": 0,
+   "expect": 0,
+   "bit": 41,
+   "cmd": "take air"
+  },
+  {
+   "id": 6,
+   "name": "your hand",
+   "step": 0,
+   "expect": 0,
+   "bit": 41,
+   "cmd": "take your hand"
+  },
+  {
+   "id": 10,
+   "name": "pile of rubble",
+   "step": 0,
+   "expect": 0,
+   "bit": 41,
+   "cmd": "take pile of rubble"
+  },
+  {
+   "id": 11,
+   "name": "window",
+   "step": 0,
+   "expect": 0,
+   "bit": 41,
+   "cmd": "take window"
+  },
+  {
+   "id": 13,
+   "name": "speech",
+   "step": 0,
+   "expect": 0,
+   "bit": 41,
+   "cmd": "take speech"
+  },
+  {
+   "id": 15,
+   "name": "liquid",
+   "step": 0,
+   "expect": 0,
+   "bit": 41,
+   "cmd": "take liquid"
+  }
+ ]
+}

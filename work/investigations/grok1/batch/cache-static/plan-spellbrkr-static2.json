@@ -1,0 +1,41 @@
+{
+ "key": "spellbrkr",
+ "game": "Spellbreaker.z3.js",
+ "bit": 24,
+ "tmpl": "take X",
+ "tag": "static",
+ "tests": [
+  {
+   "id": 149,
+   "name": "magic burin",
+   "step": 0,
+   "expect": 1,
+   "bit": 24,
+   "cmd": "take magic burin"
+  },
+  {
+   "id": 170,
+   "name": "knife",
+   "step": 0,
+   "expect": 1,
+   "bit": 24,
+   "cmd": "take knife"
+  },
+  {
+   "id": 43,
+   "name": "chunk of rye bread",
+   "step": 5,
+   "expect": 1,
+   "bit": 24,
+   "cmd": "take chunk of rye bread"
+  },
+  {
+   "id": 123,
+   "name": "smoked fish",
+   "step": 5,
+   "expect": 1,
+   "bit": 24,
+   "cmd": "take smoked fish"
+  }
+ ]
+}

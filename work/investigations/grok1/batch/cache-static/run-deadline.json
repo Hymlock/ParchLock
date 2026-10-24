@@ -1,0 +1,276 @@
+{
+ "static @3:take crystal lamp#0": {
+  "tag": "static",
+  "id": 50,
+  "name": "crystal lamp",
+  "step": 3,
+  "expect": 0,
+  "bit": 19,
+  "cmd": "take crystal lamp",
+  "verdict": "FALSE",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    50,
+    31,
+    0
+   ],
+   [
+    50,
+    20,
+    0
+   ],
+   [
+    50,
+    19,
+    0
+   ]
+  ],
+  "nOps": 7,
+  "text": "Surely you jest.\nMrs. Robner is to the north, heading toward the north.\n \n> ",
+  "ts": "2026-10-24T15:34:16.993Z"
+ },
+ "static @7:take mystery book#1": {
+  "tag": "static",
+  "id": 7,
+  "name": "mystery book",
+  "step": 7,
+  "expect": 1,
+  "bit": 19,
+  "cmd": "take mystery book",
+  "verdict": "TRUE",
+  "before": [
+   18,
+   19
+  ],
+  "after": [
+   18,
+   19,
+   30
+  ],
+  "set": [
+   30
+  ],
+  "cleared": [],
+  "opsOnId": [
+   [
+    7,
+    31,
+    0
+   ],
+   [
+    7,
+    20,
+    0
+   ],
+   [
+    7,
+    19,
+    1
+   ]
+  ],
+  "nOps": 12,
+  "text": "Taken.\n \n> ",
+  "ts": "2026-10-24T15:34:19.877Z"
+ },
+ "static @7:take fine wooden cabinets#2": {
+  "tag": "static",
+  "id": 46,
+  "name": "fine wooden cabinets",
+  "step": 7,
+  "expect": 0,
+  "bit": 19,
+  "cmd": "take fine wooden cabinets",
+  "verdict": "FALSE",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    46,
+    31,
+    0
+   ],
+   [
+    46,
+    20,
+    0
+   ],
+   [
+    46,
+    19,
+    0
+   ]
+  ],
+  "nOps": 14,
+  "text": "Surely you jest.\n \n> ",
+  "ts": "2026-10-24T15:34:20.466Z"
+ },
+ "static @7:take collection of portraits#3": {
+  "tag": "static",
+  "id": 47,
+  "name": "collection of portraits",
+  "step": 7,
+  "expect": 0,
+  "bit": 19,
+  "cmd": "take collection of portraits",
+  "verdict": "NOTEST",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    47,
+    31,
+    0
+   ],
+   [
+    47,
+    20,
+    0
+   ]
+  ],
+  "nOps": 13,
+  "text": "You would be an impolite guest to fool with these things without cause.\n \n> ",
+  "ts": "2026-10-24T15:34:21.057Z"
+ },
+ "static @7:take wood pile#4": {
+  "tag": "static",
+  "id": 48,
+  "name": "wood pile",
+  "step": 7,
+  "expect": 0,
+  "bit": 19,
+  "cmd": "take wood pile",
+  "verdict": "FALSE",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    48,
+    31,
+    0
+   ],
+   [
+    48,
+    20,
+    0
+   ],
+   [
+    48,
+    19,
+    0
+   ]
+  ],
+  "nOps": 14,
+  "text": "You can't be serious!\n \n> ",
+  "ts": "2026-10-24T15:34:21.645Z"
+ },
+ "static @7:take fieldstone fireplace#5": {
+  "tag": "static",
+  "id": 49,
+  "name": "fieldstone fireplace",
+  "step": 7,
+  "expect": 0,
+  "bit": 19,
+  "cmd": "take fieldstone fireplace",
+  "verdict": "FALSE",
+  "before": [
+   25
+  ],
+  "after": [
+   25
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    49,
+    31,
+    0
+   ],
+   [
+    49,
+    20,
+    0
+   ],
+   [
+    49,
+    19,
+    0
+   ]
+  ],
+  "nOps": 14,
+  "text": "Surely you jest.\n \n> ",
+  "ts": "2026-10-24T15:34:22.221Z"
+ },
+ "static @7:take living room table#6": {
+  "tag": "static",
+  "id": 103,
+  "name": "living room table",
+  "step": 7,
+  "expect": 0,
+  "bit": 19,
+  "cmd": "take living room table",
+  "verdict": "FALSE",
+  "before": [
+   13,
+   21,
+   25,
+   28,
+   29
+  ],
+  "after": [
+   13,
+   21,
+   25,
+   28,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    103,
+    31,
+    0
+   ],
+   [
+    103,
+    20,
+    0
+   ],
+   [
+    103,
+    19,
+    0
+   ]
+  ],
+  "nOps": 14,
+  "text": "Surely you jest.\n \n> ",
+  "ts": "2026-10-24T15:34:22.814Z"
+ }
+}

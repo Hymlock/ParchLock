@@ -1,0 +1,41 @@
+{
+ "key": "cutthroat",
+ "game": "Cutthroats.z3.js",
+ "bit": 7,
+ "tmpl": "take X",
+ "tag": "static",
+ "tests": [
+  {
+   "id": 133,
+   "name": "envelope",
+   "step": 76,
+   "expect": 1,
+   "bit": 7,
+   "cmd": "take envelope"
+  },
+  {
+   "id": 121,
+   "name": "glob of putty",
+   "step": 80,
+   "expect": 1,
+   "bit": 7,
+   "cmd": "take glob of putty"
+  },
+  {
+   "id": 130,
+   "name": "price list",
+   "step": 80,
+   "expect": 1,
+   "bit": 7,
+   "cmd": "take price list"
+  },
+  {
+   "id": 7,
+   "name": "Merchant Seaman's card",
+   "step": 137,
+   "expect": 1,
+   "bit": 7,
+   "cmd": "take merchant seaman's card"
+  }
+ ]
+}

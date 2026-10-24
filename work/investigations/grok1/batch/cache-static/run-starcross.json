@@ -1,0 +1,329 @@
+{
+ "static @0:take tape library#0": {
+  "tag": "static",
+  "id": 71,
+  "name": "tape library",
+  "step": 0,
+  "expect": 1,
+  "bit": 16,
+  "cmd": "take tape library",
+  "verdict": "TRUE",
+  "before": [
+   16,
+   27
+  ],
+  "after": [
+   16,
+   27,
+   29
+  ],
+  "set": [
+   29
+  ],
+  "cleared": [],
+  "opsOnId": [
+   [
+    71,
+    30,
+    0
+   ],
+   [
+    71,
+    30,
+    0
+   ],
+   [
+    71,
+    16,
+    1
+   ]
+  ],
+  "nOps": 9,
+  "text": "Taken.\nThe alarm bell on the mass detector is ringing stridently.\n \n> ",
+  "ts": "2026-10-24T15:35:04.514Z"
+ },
+ "static @0:take bunk#1": {
+  "tag": "static",
+  "id": 123,
+  "name": "bunk",
+  "step": 0,
+  "expect": 0,
+  "bit": 16,
+  "cmd": "take bunk",
+  "verdict": "NOTEST",
+  "before": [
+   14,
+   15,
+   22,
+   23
+  ],
+  "after": [
+   14,
+   15,
+   22,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    123,
+    30,
+    0
+   ],
+   [
+    123,
+    30,
+    0
+   ],
+   [
+    123,
+    9,
+    0
+   ],
+   [
+    123,
+    25,
+    0
+   ],
+   [
+    123,
+    15,
+    1
+   ]
+  ],
+  "nOps": 8,
+  "text": "You are in it, loser!\nThe alarm bell on the mass detector is ringing stridently.\n \n> ",
+  "ts": "2026-10-24T15:35:05.092Z"
+ },
+ "static @3:take computer#2": {
+  "tag": "static",
+  "id": 24,
+  "name": "computer",
+  "step": 3,
+  "expect": 0,
+  "bit": 16,
+  "cmd": "take computer",
+  "verdict": "FALSE",
+  "before": [
+   11,
+   23
+  ],
+  "after": [
+   11,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    24,
+    30,
+    0
+   ],
+   [
+    24,
+    30,
+    0
+   ],
+   [
+    24,
+    16,
+    0
+   ]
+  ],
+  "nOps": 19,
+  "text": "You can't be serious.\nThe alarm bell on the mass detector is ringing stridently.\n \n> ",
+  "ts": "2026-10-24T15:35:07.399Z"
+ },
+ "static @3:take seat belt#3": {
+  "tag": "static",
+  "id": 56,
+  "name": "seat belt",
+  "step": 3,
+  "expect": 0,
+  "bit": 16,
+  "cmd": "take seat belt",
+  "verdict": "NOTEST",
+  "before": [
+   23
+  ],
+  "after": [
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    56,
+    30,
+    0
+   ],
+   [
+    56,
+    30,
+    0
+   ]
+  ],
+  "nOps": 18,
+  "text": "You must sit down first.\nThe alarm bell on the mass detector is ringing stridently.\n \n> ",
+  "ts": "2026-10-24T15:35:07.970Z"
+ },
+ "static @3:take blue button#4": {
+  "tag": "static",
+  "id": 88,
+  "name": "blue button",
+  "step": 3,
+  "expect": 0,
+  "bit": 16,
+  "cmd": "take blue button",
+  "verdict": "FALSE",
+  "before": [
+   23
+  ],
+  "after": [
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    88,
+    30,
+    0
+   ],
+   [
+    88,
+    30,
+    0
+   ],
+   [
+    88,
+    16,
+    0
+   ]
+  ],
+  "nOps": 19,
+  "text": "A valiant attempt.\nThe alarm bell on the mass detector is ringing stridently.\n \n> ",
+  "ts": "2026-10-24T15:35:08.533Z"
+ },
+ "static @3:take red button#5": {
+  "tag": "static",
+  "id": 200,
+  "name": "red button",
+  "step": 3,
+  "expect": 0,
+  "bit": 16,
+  "cmd": "take red button",
+  "verdict": "FALSE",
+  "before": [
+   23
+  ],
+  "after": [
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    200,
+    30,
+    0
+   ],
+   [
+    200,
+    30,
+    0
+   ],
+   [
+    200,
+    16,
+    0
+   ]
+  ],
+  "nOps": 19,
+  "text": "Not bloody likely.\nThe alarm bell on the mass detector is ringing stridently.\n \n> ",
+  "ts": "2026-10-24T15:35:09.108Z"
+ },
+ "static @3:take mass detector#6": {
+  "tag": "static",
+  "id": 221,
+  "name": "mass detector",
+  "step": 3,
+  "expect": 0,
+  "bit": 16,
+  "cmd": "take mass detector",
+  "verdict": "FALSE",
+  "before": [
+   23
+  ],
+  "after": [
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    221,
+    30,
+    0
+   ],
+   [
+    221,
+    30,
+    0
+   ],
+   [
+    221,
+    16,
+    0
+   ]
+  ],
+  "nOps": 19,
+  "text": "A valiant attempt.\nThe alarm bell on the mass detector is ringing stridently.\nAn expressionless but nonetheless surly voice issues from the computer: \"Please turn that alarm off! We'll both have headaches if you don't.\"\n \n> ",
+  "ts": "2026-10-24T15:35:09.684Z"
+ },
+ "static @21:take space suit#7": {
+  "tag": "static",
+  "id": 144,
+  "name": "space suit",
+  "step": 21,
+  "expect": 1,
+  "bit": 16,
+  "cmd": "take space suit",
+  "verdict": "TRUE",
+  "before": [
+   16,
+   27
+  ],
+  "after": [
+   16,
+   27,
+   29
+  ],
+  "set": [
+   29
+  ],
+  "cleared": [],
+  "opsOnId": [
+   [
+    144,
+    30,
+    0
+   ],
+   [
+    144,
+    30,
+    0
+   ],
+   [
+    144,
+    16,
+    1
+   ]
+  ],
+  "nOps": 11,
+  "text": "Taken.\n \n> ",
+  "ts": "2026-10-24T15:35:20.572Z"
+ }
+}

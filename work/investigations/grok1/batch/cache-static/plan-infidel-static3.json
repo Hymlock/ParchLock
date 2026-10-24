@@ -1,0 +1,25 @@
+{
+ "key": "infidel",
+ "game": "Infidel.z3.js",
+ "bit": 15,
+ "tmpl": "take X",
+ "tag": "static",
+ "tests": [
+  {
+   "id": 31,
+   "name": "knapsack",
+   "step": 11,
+   "expect": 1,
+   "bit": 15,
+   "cmd": "take knapsack"
+  },
+  {
+   "id": 32,
+   "name": "rope",
+   "step": 11,
+   "expect": 1,
+   "bit": 15,
+   "cmd": "take rope"
+  }
+ ]
+}

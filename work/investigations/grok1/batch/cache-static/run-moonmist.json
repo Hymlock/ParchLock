@@ -1,0 +1,536 @@
+{
+ "static @0:take your luggage#0": {
+  "tag": "static",
+  "id": 59,
+  "name": "your luggage",
+  "step": 0,
+  "expect": 1,
+  "bit": 26,
+  "cmd": "take your luggage",
+  "verdict": "TRUE",
+  "before": [
+   18,
+   20,
+   26,
+   27
+  ],
+  "after": [
+   16,
+   17,
+   18,
+   20,
+   26,
+   27
+  ],
+  "set": [
+   16,
+   17
+  ],
+  "cleared": [],
+  "opsOnId": [
+   [
+    59,
+    6,
+    0
+   ],
+   [
+    59,
+    18,
+    1
+   ],
+   [
+    59,
+    14,
+    0
+   ],
+   [
+    59,
+    9,
+    0
+   ],
+   [
+    59,
+    31,
+    0
+   ],
+   [
+    59,
+    31,
+    0
+   ],
+   [
+    59,
+    13,
+    0
+   ],
+   [
+    59,
+    31,
+    0
+   ],
+   [
+    59,
+    26,
+    1
+   ],
+   [
+    59,
+    20,
+    1
+   ]
+  ],
+  "nOps": 36,
+  "text": "You are now holding your luggage.\n \nWhat next?\n> ",
+  "ts": "2026-10-24T15:34:27.068Z"
+ },
+ "static @0:take tweed outfit#1": {
+  "tag": "static",
+  "id": 78,
+  "name": "tweed outfit",
+  "step": 0,
+  "expect": 1,
+  "bit": 26,
+  "cmd": "take tweed outfit",
+  "verdict": "NOTEST",
+  "before": [
+   5,
+   17,
+   21,
+   26,
+   29
+  ],
+  "after": [
+   5,
+   17,
+   21,
+   26,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    78,
+    6,
+    0
+   ],
+   [
+    78,
+    31,
+    0
+   ],
+   [
+    78,
+    13,
+    0
+   ]
+  ],
+  "nOps": 24,
+  "text": "(That's ridiculous!)\n \nWhat next?\n> ",
+  "ts": "2026-10-24T15:34:27.683Z"
+ },
+ "static @0:take horn#2": {
+  "tag": "static",
+  "id": 21,
+  "name": "horn",
+  "step": 0,
+  "expect": 0,
+  "bit": 26,
+  "cmd": "take horn",
+  "verdict": "FALSE",
+  "before": [
+   17,
+   19
+  ],
+  "after": [
+   17,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    21,
+    6,
+    0
+   ],
+   [
+    21,
+    18,
+    0
+   ],
+   [
+    21,
+    23,
+    0
+   ],
+   [
+    21,
+    31,
+    0
+   ],
+   [
+    21,
+    13,
+    0
+   ],
+   [
+    21,
+    31,
+    0
+   ],
+   [
+    21,
+    26,
+    0
+   ],
+   [
+    21,
+    20,
+    0
+   ],
+   [
+    21,
+    17,
+    1
+   ]
+  ],
+  "nOps": 34,
+  "text": "(You can't take the horn.)\n \n[You won't see \"What next?\" any more.]\n \n> ",
+  "ts": "2026-10-24T15:34:28.256Z"
+ },
+ "static @0:take sports car#3": {
+  "tag": "static",
+  "id": 171,
+  "name": "sports car",
+  "step": 0,
+  "expect": 0,
+  "bit": 26,
+  "cmd": "take sports car",
+  "verdict": "NOTEST",
+  "before": [
+   14,
+   17,
+   27,
+   28
+  ],
+  "after": [
+   14,
+   17,
+   27,
+   28
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    171,
+    6,
+    0
+   ],
+   [
+    171,
+    14,
+    1
+   ],
+   [
+    171,
+    23,
+    0
+   ],
+   [
+    171,
+    18,
+    0
+   ],
+   [
+    171,
+    14,
+    1
+   ],
+   [
+    171,
+    6,
+    0
+   ],
+   [
+    171,
+    31,
+    0
+   ],
+   [
+    171,
+    13,
+    0
+   ],
+   [
+    171,
+    31,
+    0
+   ],
+   [
+    171,
+    31,
+    0
+   ],
+   [
+    171,
+    31,
+    0
+   ],
+   [
+    171,
+    28,
+    1
+   ]
+  ],
+  "nOps": 33,
+  "text": "(You are in it, nitwit!)\n \n> ",
+  "ts": "2026-10-24T15:34:28.858Z"
+ },
+ "static @0:take dragon's eye#4": {
+  "tag": "static",
+  "id": 187,
+  "name": "dragon's eye",
+  "step": 0,
+  "expect": 0,
+  "bit": 26,
+  "cmd": "take dragon's eye",
+  "verdict": "NOTEST",
+  "before": [
+   17,
+   19
+  ],
+  "after": [
+   17,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    187,
+    6,
+    0
+   ],
+   [
+    187,
+    31,
+    0
+   ],
+   [
+    187,
+    13,
+    0
+   ],
+   [
+    187,
+    31,
+    0
+   ]
+  ],
+  "nOps": 31,
+  "text": "It's part of the front gate.\n \n> ",
+  "ts": "2026-10-24T15:34:29.432Z"
+ },
+ "static @0:take dragon#5": {
+  "tag": "static",
+  "id": 190,
+  "name": "dragon",
+  "step": 0,
+  "expect": 0,
+  "bit": 26,
+  "cmd": "take dragon",
+  "verdict": "NOTEST",
+  "before": [
+   12,
+   19
+  ],
+  "after": [
+   12,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    190,
+    6,
+    0
+   ],
+   [
+    190,
+    31,
+    0
+   ],
+   [
+    190,
+    13,
+    0
+   ],
+   [
+    190,
+    31,
+    0
+   ]
+  ],
+  "nOps": 27,
+  "text": "It's part of the front gate.\n \n> ",
+  "ts": "2026-10-24T15:34:30.005Z"
+ },
+ "static @22:take tamara#6": {
+  "tag": "static",
+  "id": 178,
+  "name": "Tamara",
+  "step": 22,
+  "expect": 0,
+  "bit": 26,
+  "cmd": "take tamara",
+  "verdict": "FALSE",
+  "before": [
+   14,
+   15,
+   16,
+   18,
+   20,
+   31
+  ],
+  "after": [
+   14,
+   15,
+   16,
+   17,
+   18,
+   20,
+   31
+  ],
+  "set": [
+   17
+  ],
+  "cleared": [],
+  "opsOnId": [
+   [
+    178,
+    6,
+    0
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    15,
+    1
+   ],
+   [
+    178,
+    13,
+    0
+   ],
+   [
+    178,
+    31,
+    1
+   ],
+   [
+    178,
+    26,
+    0
+   ],
+   [
+    178,
+    20,
+    1
+   ]
+  ],
+  "nOps": 30,
+  "text": "(You can't take Tamara.)\n \n> ",
+  "ts": "2026-10-24T15:34:43.243Z"
+ },
+ "static @29:take bolitho#7": {
+  "tag": "static",
+  "id": 91,
+  "name": "Bolitho",
+  "step": 29,
+  "expect": 0,
+  "bit": 26,
+  "cmd": "take bolitho",
+  "verdict": "FALSE",
+  "before": [
+   14,
+   16,
+   18,
+   20,
+   31
+  ],
+  "after": [
+   14,
+   16,
+   17,
+   18,
+   20,
+   31
+  ],
+  "set": [
+   17
+  ],
+  "cleared": [],
+  "opsOnId": [
+   [
+    91,
+    6,
+    0
+   ],
+   [
+    91,
+    14,
+    1
+   ],
+   [
+    91,
+    23,
+    0
+   ],
+   [
+    91,
+    18,
+    1
+   ],
+   [
+    91,
+    31,
+    1
+   ],
+   [
+    91,
+    15,
+    0
+   ],
+   [
+    91,
+    13,
+    0
+   ],
+   [
+    91,
+    31,
+    1
+   ],
+   [
+    91,
+    26,
+    0
+   ],
+   [
+    91,
+    20,
+    1
+   ]
+  ],
+  "nOps": 36,
+  "text": "(You can't take Bolitho.)\n \n> ",
+  "ts": "2026-10-24T15:34:47.853Z"
+ }
+}

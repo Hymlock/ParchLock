@@ -1,0 +1,382 @@
+{
+ "static @0:take chronometer#0": {
+  "tag": "static",
+  "id": 1,
+  "name": "chronometer",
+  "step": 0,
+  "expect": 1,
+  "bit": 23,
+  "cmd": "take chronometer",
+  "verdict": "NOTEST",
+  "before": [
+   20,
+   21,
+   23
+  ],
+  "after": [
+   20,
+   21,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    1,
+    19,
+    0
+   ],
+   [
+    1,
+    31,
+    0
+   ],
+   [
+    1,
+    21,
+    1
+   ],
+   [
+    1,
+    7,
+    0
+   ],
+   [
+    1,
+    21,
+    1
+   ]
+  ],
+  "nOps": 19,
+  "text": "You're already wearing the chronometer.\n \n> ",
+  "ts": "2026-10-24T15:34:51.157Z"
+ },
+ "static @0:take id card#1": {
+  "tag": "static",
+  "id": 81,
+  "name": "ID card",
+  "step": 0,
+  "expect": 1,
+  "bit": 23,
+  "cmd": "take id card",
+  "verdict": "TRUE",
+  "before": [
+   12,
+   16,
+   22,
+   23
+  ],
+  "after": [
+   12,
+   16,
+   18,
+   22,
+   23
+  ],
+  "set": [
+   18
+  ],
+  "cleared": [],
+  "opsOnId": [
+   [
+    81,
+    19,
+    0
+   ],
+   [
+    81,
+    31,
+    0
+   ],
+   [
+    81,
+    23,
+    1
+   ],
+   [
+    81,
+    23,
+    1
+   ]
+  ],
+  "nOps": 26,
+  "text": "Taken.\n \n> ",
+  "ts": "2026-10-24T15:34:51.741Z"
+ },
+ "static @2:take floyd#2": {
+  "tag": "static",
+  "id": 26,
+  "name": "Floyd",
+  "step": 2,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take floyd",
+  "verdict": "NOTEST",
+  "before": [
+   7,
+   14,
+   15,
+   25,
+   26,
+   31
+  ],
+  "after": [
+   7,
+   14,
+   15,
+   16,
+   18,
+   25,
+   26,
+   31
+  ],
+  "set": [
+   16,
+   18
+  ],
+  "cleared": [],
+  "opsOnId": [
+   [
+    26,
+    19,
+    0
+   ],
+   [
+    26,
+    31,
+    1
+   ],
+   [
+    26,
+    7,
+    1
+   ],
+   [
+    26,
+    18,
+    0
+   ]
+  ],
+  "nOps": 19,
+  "text": "You can't reach Floyd from outside the bin.\n   The third robot looks up from his marbles, jumps to his feet, and starts waving wildly. It's Floyd, your robotic companion from Resida! (Footnote 3) You've seen him only occasionally since he opted for assignment in the Stellar Patrol those five long ye",
+  "ts": "2026-10-24T15:34:53.451Z"
+ },
+ "static @2:take rex#3": {
+  "tag": "static",
+  "id": 120,
+  "name": "Rex",
+  "step": 2,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take rex",
+  "verdict": "NOTEST",
+  "before": [
+   7,
+   31
+  ],
+  "after": [
+   7,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    120,
+    19,
+    0
+   ],
+   [
+    120,
+    31,
+    1
+   ],
+   [
+    120,
+    7,
+    1
+   ]
+  ],
+  "nOps": 19,
+  "text": "You can't reach Rex from outside the bin.\n   Floyd jumps up and down saying, \"Oh boy oh boy oh boy pick Floyd pick Floyd pick Floyd!\"\n   Ensign Twelfth Class Blather walks by, lugging his toilet scrubbing supplies. He spots you, whimpers, and slouches away (Footnote 2).\n \n> ",
+  "ts": "2026-10-24T15:34:54.025Z"
+ },
+ "static @2:take helen#4": {
+  "tag": "static",
+  "id": 135,
+  "name": "Helen",
+  "step": 2,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take helen",
+  "verdict": "NOTEST",
+  "before": [
+   7,
+   31
+  ],
+  "after": [
+   7,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    135,
+    19,
+    0
+   ],
+   [
+    135,
+    31,
+    1
+   ],
+   [
+    135,
+    7,
+    1
+   ]
+  ],
+  "nOps": 19,
+  "text": "You can't reach Helen from outside the bin.\n   Floyd jumps up and down saying, \"Oh boy oh boy oh boy pick Floyd pick Floyd pick Floyd!\"\n \n> ",
+  "ts": "2026-10-24T15:34:54.601Z"
+ },
+ "static @8:take sb radio#5": {
+  "tag": "static",
+  "id": 46,
+  "name": "SB radio",
+  "step": 8,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take sb radio",
+  "verdict": "FALSE",
+  "before": [
+   10,
+   12,
+   24
+  ],
+  "after": [
+   10,
+   12,
+   24
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    46,
+    19,
+    0
+   ],
+   [
+    46,
+    31,
+    0
+   ],
+   [
+    46,
+    23,
+    0
+   ]
+  ],
+  "nOps": 26,
+  "text": "A valiant attempt.\n \n> ",
+  "ts": "2026-10-24T15:34:58.589Z"
+ },
+ "static @8:take pilot seat#6": {
+  "tag": "static",
+  "id": 50,
+  "name": "pilot seat",
+  "step": 8,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take pilot seat",
+  "verdict": "FALSE",
+  "before": [
+   8,
+   10,
+   14,
+   15,
+   25,
+   29
+  ],
+  "after": [
+   8,
+   10,
+   14,
+   15,
+   25,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    50,
+    19,
+    0
+   ],
+   [
+    50,
+    31,
+    0
+   ],
+   [
+    50,
+    23,
+    0
+   ]
+  ],
+  "nOps": 28,
+  "text": "Fat chance.\n   Floyd hums the theme song from a popular Saturday morning hyperwave cartoon.\n \n> ",
+  "ts": "2026-10-24T15:34:59.165Z"
+ },
+ "static @8:take copilot seat#7": {
+  "tag": "static",
+  "id": 90,
+  "name": "copilot seat",
+  "step": 8,
+  "expect": 0,
+  "bit": 23,
+  "cmd": "take copilot seat",
+  "verdict": "FALSE",
+  "before": [
+   8,
+   10,
+   14,
+   15,
+   25,
+   29
+  ],
+  "after": [
+   8,
+   10,
+   14,
+   15,
+   25,
+   29
+  ],
+  "set": [],
+  "cleared": [],
+  "opsOnId": [
+   [
+    90,
+    19,
+    0
+   ],
+   [
+    90,
+    31,
+    0
+   ],
+   [
+    90,
+    23,
+    0
+   ]
+  ],
+  "nOps": 28,
+  "text": "Nice try.\n   Floyd produces a crayon from one of his compartments and scrawls his name on the wall.\n \n> ",
+  "ts": "2026-10-24T15:34:59.737Z"
+ }
+}

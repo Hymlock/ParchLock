@@ -1,0 +1,57 @@
+{
+ "key": "starcross",
+ "game": "Starcross.z3.js",
+ "bit": 18,
+ "tmpl": "turn on X|light X",
+ "tag": "light",
+ "tests": [
+  {
+   "id": 71,
+   "name": "tape library",
+   "step": 0,
+   "expect": 0,
+   "bit": 18,
+   "cmd": "turn on tape library"
+  },
+  {
+   "id": 71,
+   "name": "tape library",
+   "step": 0,
+   "expect": 0,
+   "bit": 18,
+   "cmd": "light tape library"
+  },
+  {
+   "id": 144,
+   "name": "space suit",
+   "step": 21,
+   "expect": 0,
+   "bit": 18,
+   "cmd": "turn on space suit"
+  },
+  {
+   "id": 144,
+   "name": "space suit",
+   "step": 21,
+   "expect": 0,
+   "bit": 18,
+   "cmd": "light space suit"
+  },
+  {
+   "id": 123,
+   "name": "bunk",
+   "step": 0,
+   "expect": 0,
+   "bit": 18,
+   "cmd": "turn on bunk"
+  },
+  {
+   "id": 123,
+   "name": "bunk",
+   "step": 0,
+   "expect": 0,
+   "bit": 18,
+   "cmd": "light bunk"
+  }
+ ]
+}

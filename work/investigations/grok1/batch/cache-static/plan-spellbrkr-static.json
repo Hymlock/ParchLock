@@ -1,0 +1,73 @@
+{
+ "key": "spellbrkr",
+ "game": "Spellbreaker.z3.js",
+ "bit": 24,
+ "tmpl": "take X",
+ "tag": "static",
+ "tests": [
+  {
+   "id": 136,
+   "name": "shadowy figure",
+   "step": 0,
+   "expect": 1,
+   "bit": 24,
+   "cmd": "take shadowy figure"
+  },
+  {
+   "id": 144,
+   "name": "spell book",
+   "step": 0,
+   "expect": 1,
+   "bit": 24,
+   "cmd": "take spell book"
+  },
+  {
+   "id": 1,
+   "name": "Sneffle",
+   "step": 0,
+   "expect": 0,
+   "bit": 24,
+   "cmd": "take sneffle"
+  },
+  {
+   "id": 14,
+   "name": "rezrov spell",
+   "step": 0,
+   "expect": 0,
+   "bit": 24,
+   "cmd": "take rezrov spell"
+  },
+  {
+   "id": 19,
+   "name": "Orkan of Thriff",
+   "step": 0,
+   "expect": 0,
+   "bit": 24,
+   "cmd": "take orkan of thriff"
+  },
+  {
+   "id": 21,
+   "name": "sorcerer",
+   "step": 0,
+   "expect": 0,
+   "bit": 24,
+   "cmd": "take sorcerer"
+  },
+  {
+   "id": 30,
+   "name": "Gzornenplatz",
+   "step": 0,
+   "expect": 0,
+   "bit": 24,
+   "cmd": "take gzornenplatz"
+  },
+  {
+   "id": 35,
+   "name": "lesoch spell",
+   "step": 0,
+   "expect": 0,
+   "bit": 24,
+   "cmd": "take lesoch spell"
+  }
+ ]
+}

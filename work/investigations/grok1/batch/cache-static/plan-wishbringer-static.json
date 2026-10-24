@@ -1,0 +1,73 @@
+{
+ "key": "wishbringer",
+ "game": "Wishbringer.z3.js",
+ "bit": 17,
+ "tmpl": "take X",
+ "tag": "static",
+ "tests": [
+  {
+   "id": 43,
+   "name": "mysterious envelope",
+   "step": 2,
+   "expect": 1,
+   "bit": 17,
+   "cmd": "take mysterious envelope"
+  },
+  {
+   "id": 117,
+   "name": "old bone",
+   "step": 11,
+   "expect": 1,
+   "bit": 17,
+   "cmd": "take old bone"
+  },
+  {
+   "id": 4,
+   "name": "little mailbox",
+   "step": 2,
+   "expect": 0,
+   "bit": 17,
+   "cmd": "take little mailbox"
+  },
+  {
+   "id": 18,
+   "name": "service counter",
+   "step": 2,
+   "expect": 0,
+   "bit": 17,
+   "cmd": "take service counter"
+  },
+  {
+   "id": 96,
+   "name": "wanted poster",
+   "step": 2,
+   "expect": 0,
+   "bit": 17,
+   "cmd": "take wanted poster"
+  },
+  {
+   "id": 24,
+   "name": "gravedigger",
+   "step": 11,
+   "expect": 0,
+   "bit": 17,
+   "cmd": "take gravedigger"
+  },
+  {
+   "id": 64,
+   "name": "open grave",
+   "step": 11,
+   "expect": 0,
+   "bit": 17,
+   "cmd": "take open grave"
+  },
+  {
+   "id": 191,
+   "name": "willow tree",
+   "step": 11,
+   "expect": 0,
+   "bit": 17,
+   "cmd": "take willow tree"
+  }
+ ]
+}

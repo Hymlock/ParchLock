@@ -1,0 +1,41 @@
+{
+ "key": "infidel",
+ "game": "Infidel.z3.js",
+ "bit": 15,
+ "tmpl": "take X",
+ "tag": "static",
+ "tests": [
+  {
+   "id": 40,
+   "name": "broken lock",
+   "step": 0,
+   "expect": 1,
+   "bit": 15,
+   "cmd": "take broken lock"
+  },
+  {
+   "id": 51,
+   "name": "army cot",
+   "step": 0,
+   "expect": 1,
+   "bit": 15,
+   "cmd": "take army cot"
+  },
+  {
+   "id": 38,
+   "name": "padlock",
+   "step": 0,
+   "expect": 0,
+   "bit": 15,
+   "cmd": "take padlock"
+  },
+  {
+   "id": 39,
+   "name": "trunk",
+   "step": 0,
+   "expect": 0,
+   "bit": 15,
+   "cmd": "take trunk"
+  }
+ ]
+}

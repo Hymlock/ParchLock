@@ -1,0 +1,73 @@
+{
+ "key": "cutthroat",
+ "game": "Cutthroats.z3.js",
+ "bit": 7,
+ "tmpl": "take X",
+ "tag": "static",
+ "tests": [
+  {
+   "id": 6,
+   "name": "wrist watch",
+   "step": 0,
+   "expect": 1,
+   "bit": 7,
+   "cmd": "take wrist watch"
+  },
+  {
+   "id": 136,
+   "name": "air tank",
+   "step": 0,
+   "expect": 1,
+   "bit": 7,
+   "cmd": "take air tank"
+  },
+  {
+   "id": 140,
+   "name": "closet",
+   "step": 0,
+   "expect": 0,
+   "bit": 7,
+   "cmd": "take closet"
+  },
+  {
+   "id": 145,
+   "name": "dresser",
+   "step": 0,
+   "expect": 0,
+   "bit": 7,
+   "cmd": "take dresser"
+  },
+  {
+   "id": 146,
+   "name": "bed",
+   "step": 0,
+   "expect": 0,
+   "bit": 7,
+   "cmd": "take bed"
+  },
+  {
+   "id": 8,
+   "name": "Weasel's knife",
+   "step": 14,
+   "expect": 0,
+   "bit": 7,
+   "cmd": "take weasel's knife"
+  },
+  {
+   "id": 9,
+   "name": "the Weasel",
+   "step": 14,
+   "expect": 0,
+   "bit": 7,
+   "cmd": "take the weasel"
+  },
+  {
+   "id": 10,
+   "name": "Pete's eyepatch",
+   "step": 20,
+   "expect": 0,
+   "bit": 7,
+   "cmd": "take pete's eyepatch"
+  }
+ ]
+}
