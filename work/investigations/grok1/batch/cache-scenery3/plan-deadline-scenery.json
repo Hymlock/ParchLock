@@ -1,0 +1,137 @@
+{
+ "key": "deadline",
+ "game": "Deadline.z3.js",
+ "bit": 25,
+ "tmpl": "look|examine X",
+ "tag": "scenery",
+ "tests": [
+  {
+   "id": 50,
+   "name": "crystal lamp",
+   "step": 3,
+   "expect": 1,
+   "bit": 25,
+   "cmd": "look"
+  },
+  {
+   "id": 50,
+   "name": "crystal lamp",
+   "step": 3,
+   "expect": 1,
+   "bit": 25,
+   "cmd": "examine crystal lamp"
+  },
+  {
+   "id": 129,
+   "name": "marble-top table",
+   "step": 3,
+   "expect": 1,
+   "bit": 25,
+   "cmd": "look"
+  },
+  {
+   "id": 129,
+   "name": "marble-top table",
+   "step": 3,
+   "expect": 1,
+   "bit": 25,
+   "cmd": "examine marble-top table"
+  },
+  {
+   "id": 46,
+   "name": "fine wooden cabinets",
+   "step": 7,
+   "expect": 1,
+   "bit": 25,
+   "cmd": "look"
+  },
+  {
+   "id": 46,
+   "name": "fine wooden cabinets",
+   "step": 7,
+   "expect": 1,
+   "bit": 25,
+   "cmd": "examine fine wooden cabinets"
+  },
+  {
+   "id": 47,
+   "name": "collection of portraits",
+   "step": 7,
+   "expect": 1,
+   "bit": 25,
+   "cmd": "look"
+  },
+  {
+   "id": 47,
+   "name": "collection of portraits",
+   "step": 7,
+   "expect": 1,
+   "bit": 25,
+   "cmd": "examine collection of portraits"
+  },
+  {
+   "id": 48,
+   "name": "wood pile",
+   "step": 7,
+   "expect": 1,
+   "bit": 25,
+   "cmd": "look"
+  },
+  {
+   "id": 48,
+   "name": "wood pile",
+   "step": 7,
+   "expect": 1,
+   "bit": 25,
+   "cmd": "examine wood pile"
+  },
+  {
+   "id": 49,
+   "name": "fieldstone fireplace",
+   "step": 7,
+   "expect": 1,
+   "bit": 25,
+   "cmd": "look"
+  },
+  {
+   "id": 49,
+   "name": "fieldstone fireplace",
+   "step": 7,
+   "expect": 1,
+   "bit": 25,
+   "cmd": "examine fieldstone fireplace"
+  },
+  {
+   "id": 103,
+   "name": "living room table",
+   "step": 7,
+   "expect": 1,
+   "bit": 25,
+   "cmd": "look"
+  },
+  {
+   "id": 103,
+   "name": "living room table",
+   "step": 7,
+   "expect": 1,
+   "bit": 25,
+   "cmd": "examine living room table"
+  },
+  {
+   "id": 7,
+   "name": "mystery book",
+   "step": 7,
+   "expect": 0,
+   "bit": 25,
+   "cmd": "look"
+  },
+  {
+   "id": 7,
+   "name": "mystery book",
+   "step": 7,
+   "expect": 0,
+   "bit": 25,
+   "cmd": "examine mystery book"
+  }
+ ]
+}

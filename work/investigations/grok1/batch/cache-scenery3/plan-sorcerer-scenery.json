@@ -1,0 +1,233 @@
+{
+ "key": "sorcerer",
+ "game": "Sorcerer.z3.js",
+ "bit": 9,
+ "tmpl": "look|examine X",
+ "tag": "scenery",
+ "tests": [
+  {
+   "id": 180,
+   "name": "hellhound",
+   "step": 0,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 180,
+   "name": "hellhound",
+   "step": 0,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "examine hellhound"
+  },
+  {
+   "id": 22,
+   "name": "rezrov spell",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 22,
+   "name": "rezrov spell",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "examine rezrov spell"
+  },
+  {
+   "id": 27,
+   "name": "vezza spell",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 27,
+   "name": "vezza spell",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "examine vezza spell"
+  },
+  {
+   "id": 140,
+   "name": "izyuk spell",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 140,
+   "name": "izyuk spell",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "examine izyuk spell"
+  },
+  {
+   "id": 147,
+   "name": "frotz spell",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 147,
+   "name": "frotz spell",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "examine frotz spell"
+  },
+  {
+   "id": 162,
+   "name": "pulver spell",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 162,
+   "name": "pulver spell",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "examine pulver spell"
+  },
+  {
+   "id": 183,
+   "name": "yomin spell",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 183,
+   "name": "yomin spell",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "examine yomin spell"
+  },
+  {
+   "id": 214,
+   "name": "gnusto spell",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 214,
+   "name": "gnusto spell",
+   "step": 1,
+   "expect": 1,
+   "bit": 9,
+   "cmd": "examine gnusto spell"
+  },
+  {
+   "id": 128,
+   "name": "bed",
+   "step": 1,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 128,
+   "name": "bed",
+   "step": 1,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "examine bed"
+  },
+  {
+   "id": 139,
+   "name": "spell book",
+   "step": 1,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 139,
+   "name": "spell book",
+   "step": 1,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "examine spell book"
+  },
+  {
+   "id": 11,
+   "name": "scribbled note",
+   "step": 5,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 11,
+   "name": "scribbled note",
+   "step": 5,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "examine scribbled note"
+  },
+  {
+   "id": 90,
+   "name": "parrot",
+   "step": 8,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 90,
+   "name": "parrot",
+   "step": 8,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "examine parrot"
+  },
+  {
+   "id": 87,
+   "name": "infotater",
+   "step": 9,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 87,
+   "name": "infotater",
+   "step": 9,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "examine infotater"
+  },
+  {
+   "id": 102,
+   "name": "tiny box",
+   "step": 9,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "look"
+  },
+  {
+   "id": 102,
+   "name": "tiny box",
+   "step": 9,
+   "expect": 0,
+   "bit": 9,
+   "cmd": "examine tiny box"
+  }
+ ]
+}
