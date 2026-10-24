@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 119 decisions across
-9510 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 120 decisions across
+9524 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -27,6 +27,7 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 
 | D | claim | files | games | arch |
 |---|-------|-------|-------|------|
+| D236 | Get out of X while inside an enterable object (ZIL) |  | Planetfall Deadline |  |
 | D235 | Eat from an open container that is in view, not only held | harness/zil-food-state.js |  |  |
 | D234 | Unlock with... on a room object makes it the target |  |  |  |
 | D233 | Objects behind a closed see-through container: in view, out of reach |  | Enchanter |  |

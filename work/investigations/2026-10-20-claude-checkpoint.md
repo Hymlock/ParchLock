@@ -114,3 +114,8 @@ VEHBIT other titles one-positive only (r3-claude/vehbit/); Deadline uses SIT ON 
 Infidel "mirage" unparseable short name -> noun-alias follow-up; Enchanter abstractions (noise/guards/mirrors) phone look;
 transparent natives for Ench/Bally/Cutt/Infidel still NEED; Zork I bottle closedContentsHidden policy deferred.
 Process: gates use isolated copies (no junctions), Start-Process -WindowStyle Hidden, cleanup with \?\ long-path delete.
+- Day 2026-10-24 continued: r11 fdcbdeb (localScope Planetfall/Hitchhik w2/Seastalker/Spellbreaker), r12 2e4a5b8 (Ballyhoo/
+  Cutthroats/Starcross/PlunderedHearts), r13 0e42aef (Deadline/Moonmist; real GLOBAL props via localscope6/scan.cjs), D232
+  rollout doc 6e0030f (18 titles), r14 20839b5 (D236 get out of X; enterable Zork II/Planetfall/Infidel).
+  Open: Enchanter transparent 10 proven but held (spells in scrolls, low value); isInformCompiled try/catch nit;
+  Hitchhik/Sorcerer second VEHBIT carriers; Wishbringer/LGOP/Stationfall/Sherlock/Borderzo localScope blocked by flags.
