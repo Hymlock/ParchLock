@@ -1,0 +1,174 @@
+{
+  "story": "Planetfall.z3.js",
+  "sha256": "989ebbfbe914de0fe034861b3e6b1bc1758b143ee288f3f07dd6b5ca020ba064",
+  "property": 9,
+  "width": 1,
+  "holder": 254,
+  "litBit": 5,
+  "at": "2026-10-24T05:27:39.897Z",
+  "log": [
+    {
+      "cmd": "look",
+      "roomIdAfter": 235,
+      "reply": [
+        "Deck Nine",
+        "This is a featureless corridor similar to every other corridor on the ship. It curves away to starboard, and a gangway leads up. To port is the entrance to one of the ship's primary escape pods. The pod bulkhead is closed.",
+        "The alien ambassador from the planet Blow'k-bibben-Gordo ambles toward you from down the corridor. He is munching on something resembling an enormous stalk of celery, and he leaves a trail of green slime on the deck. He stops nearby, and you wince as a pool of slime begins forming beneath him on your newly-polished deck. The ambassador wheezes loudly and hands you a brochure outlining his planet's major exports.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 235,
+        "roomName": "Deck Nine",
+        "lit": true,
+        "prop": {
+          "num": 9,
+          "sz": 5,
+          "dataAddr": 9739
+        },
+        "localGlobals": [
+          {
+            "id": 231,
+            "name": "escape pod bulkhead",
+            "parent": 254,
+            "parentIsHolder": true
+          },
+          {
+            "id": 230,
+            "name": "wide bulkhead",
+            "parent": 254,
+            "parentIsHolder": true
+          },
+          {
+            "id": 229,
+            "name": "narrow bulkhead",
+            "parent": 254,
+            "parentIsHolder": true
+          },
+          {
+            "id": 249,
+            "name": "stairway",
+            "parent": 254,
+            "parentIsHolder": true
+          },
+          {
+            "id": 228,
+            "name": "escape pod",
+            "parent": 254,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": [
+          "piece of celery",
+          "alien ambassador"
+        ]
+      }
+    },
+    {
+      "cmd": "examine stairway",
+      "roomIdAfter": 235,
+      "reply": [
+        "I see nothing special about the stairway.",
+        "The ambassador offers you a bit of celery.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine escape pod",
+      "roomIdAfter": 235,
+      "reply": [
+        "I see nothing special about the escape pod.",
+        "The ambassador offers you a bit of celery.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine wide bulkhead",
+      "roomIdAfter": 235,
+      "reply": [
+        "You can't see any wide bulkhead here!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine slot",
+      "roomIdAfter": 235,
+      "reply": [
+        "You can't see any slot here!",
+        "The ambassador recites a plea for coexistence between your races.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "u",
+      "roomIdAfter": 222,
+      "reply": [
+        "Gangway",
+        "This is a steep metal gangway connecting Deck Eight, above, and Deck Nine, below.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 222,
+        "roomName": "Gangway",
+        "lit": true,
+        "prop": {
+          "num": 9,
+          "sz": 2,
+          "dataAddr": 9374
+        },
+        "localGlobals": [
+          {
+            "id": 229,
+            "name": "narrow bulkhead",
+            "parent": 254,
+            "parentIsHolder": true
+          },
+          {
+            "id": 249,
+            "name": "stairway",
+            "parent": 254,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": []
+      }
+    },
+    {
+      "cmd": "examine stairway",
+      "roomIdAfter": 222,
+      "reply": [
+        "I see nothing special about the stairway.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine escape pod",
+      "roomIdAfter": 222,
+      "reply": [
+        "You can't see any escape pod here!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine narrow bulkhead",
+      "roomIdAfter": 222,
+      "reply": [
+        "You can't see any narrow bulkhead here!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "d",
+      "roomIdAfter": 235,
+      "reply": [
+        "Deck Nine",
+        "A high-ranking ambassador from a newly-contacted alien race is standing here on three of his legs, and watching you with seven of his eyes.",
+        "The ambassador grunts a polite farewell, and disappears up the gangway, leaving a trail of dripping slime.",
+        ">"
+      ]
+    }
+  ]
+}
