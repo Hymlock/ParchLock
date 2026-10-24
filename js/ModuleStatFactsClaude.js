@@ -287,7 +287,8 @@ var ModuleStatFactsClaude = {
         // shovel33 false/refuses; DRINK beef refuses (not a consumed bit).
         // enterable 14 = source VEHBIT exact; native (r3-claude/vehbit + vehbit2): army cot 51 and barge 211 (GET IN/ENTER move the player inside; GET OUT returns; bare EXIT refused). Harmless extras: beam 104 refuses entry, mast hole 108 untested.
         // climbable 16 = CLIMBBIT exact; native bare (grok1 #5082): CLIMB ROPE 32 contextual ("while you are holding the rope"), bit read 1; knapsack (bit 0) "You can't climb that!". Fatal climbs offered per operator ruling 2026-10-24.
-        "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25, "edible": 7, "enterable": 14, "climbable": 16 },
+        // door 9 = source DOORBIT exact (7 owners); native (codex #5132 resume/door-infidel-qualified.json, digest 91f78d4b): annex door 185 OPEN sets open 25 (fresh 208-command prefix), inner door 162 toggles (grok2 packet); pickaxe 37 (bit 9 false) refused.
+        "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25, "edible": 7, "enterable": 14, "climbable": 16, "door": 9 },
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         // WEARBIT state22: native knapsack31/ring2 worn positives, shovel33 refusal; Grok4127 proposal independently replayed by Codex October20.
         "wornAttribute": 22
@@ -540,7 +541,8 @@ var ModuleStatFactsClaude = {
 // scenery 8 = NDESCBIT (grok1 2026-10-24 user scenery ruling 11:45; g1-batch look + test_attr/print_obj trace, grok1/batch/cache-scenery4|5 judge-scenery.json): pos crevice 159, padlock 172, safety web 215 (look omits, pc 48473); neg old battery 7, towel 214 (listed, same pc). Listing routine: historicalsource 7e7af12 verbs.zil:162 PRINT-CONT.
         // climbable 29 = CLIMBBIT exact; native bare (grok1 #5082): CLIMB STAIRWAY 249 -> Courtyard, CLIMB SAFETY WEB 215 contextual; canteen 163 (bit 0) refused.
         // edible 27 = FOODBIT exact; native (grok1 #5090 grok1/open/planetfall-edible.json): bare EAT FIND reads 27=1 on red goo 212 and brown goo 211; canteen 163 negative.
-        "attributeMap": { "wearable": 22, "open": 11, "isOpen": 11, "container": 24, "animate": 31, "enterable": 30, "door": 26, "scenery": 8, "climbable": 29, "edible": 27 }
+        // transparent 9 = source TRANSBIT exact (6 carriers); native (grok1 #5117 pf-route, G1TRACE): medicine bottle 80 closed (OPENBIT 11=0) reads 9=1 and EXAMINE MEDICINE shows the contents, both on the Infirmary shelf @292 and held @293; closed small desk 149 (no bit) hides the kitchen card @61. One carrier + bit reads (low risk).
+        "attributeMap": { "wearable": 22, "open": 11, "isOpen": 11, "container": 24, "animate": 31, "enterable": 30, "door": 26, "scenery": 8, "climbable": 29, "edible": 27, "transparent": 9 }
     },
     // Hollywood Hijinx (ZIL): WEARBIT 22 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).
     "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e": {
