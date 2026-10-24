@@ -133,6 +133,8 @@ var WorldModel = {
         var worn = objs.filter(function (o) {
             if (!o || o.parentId == null || !o.attrs) return false;
             if (roomIds[String(o.parentId)]) return false;
+            // D232: a room-visible local global's parent is the LOCAL-GLOBALS holder, never an inventory root.
+            if (o.localGlobal) return false;
             if (typeof AttributeSchema !== "undefined" && AttributeSchema.isTrulyWorn) {
                 return AttributeSchema.isTrulyWorn(o.attrs);
             }

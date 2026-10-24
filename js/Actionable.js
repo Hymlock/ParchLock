@@ -945,13 +945,14 @@ var Actionable = {
         try {
             if (!prior) Actionable._resolutionPool = Actionable.payloadPool();
             var resolved = Actionable._resolveObjectCommands(objectId,kind,options);
-            // D233: after every source (synth, learned, calibrated), an object
-            // behind a closed transparent container keeps only the inspect verb.
+            // D233-R2: after every source (synth, learned, calibrated), an object
+            // behind a closed transparent container loses only Take forms: the
+            // ZIL parser refuses TAKE there ("You can't reach that!") while other
+            // verbs (CLOSE carton, EAT food) natively succeed (codex #4742).
             if (Array.isArray(resolved) && typeof ActionSynth !== "undefined" && ActionSynth.outOfReach &&
                 ActionSynth.outOfReach(objectId)) {
-                var inspect = ActionSynth.defaultInspectVerb();
                 resolved = resolved.filter(function (c) {
-                    return !!inspect && c && String(c.command || "").toLowerCase().indexOf(inspect + " ") === 0;
+                    return !(c && /^take\b/i.test(String(c.command || "").trim()));
                 });
             }
             return resolved;
@@ -2895,7 +2896,11 @@ var Actionable = {
                                 // sides -- with three spells held, "cast spell
                                 // at spell" names nothing.
                                 var sourceNoun = sharedCommands ? ((cmds[0] && cmds[0].noun) || noun) : Actionable.disambiguatedNoun(source);
-                                var cmd = inst.build(sourceNoun, Actionable.disambiguatedNoun(other));
+                                // D234: long-pressing a room object (padlock, door) makes it the TARGET of
+                                // Unlock, the chosen object the tool; a carried object stays the tool (D231).
+                                var cmd = inst.verb === "unlock" && context.kind !== "inventory"
+                                    ? inst.build(Actionable.disambiguatedNoun(other), sourceNoun)
+                                    : inst.build(sourceNoun, Actionable.disambiguatedNoun(other));
                                 return { Label: other.name, Command: cmd, Score: scoreFor(cmd, 50), Usage: usageFor(cmd), Action: function () { Actionable.Submit(cmd, sharedCommands ? "ambiguous-reference" : undefined); } };
                             }), context);
                         }});

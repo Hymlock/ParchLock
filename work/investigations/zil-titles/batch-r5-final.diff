@@ -1,0 +1,183 @@
+diff --git a/js/ActionSynth.js b/js/ActionSynth.js
+index ff8de8c..6190940 100644
+--- a/js/ActionSynth.js
++++ b/js/ActionSynth.js
+@@ -412,9 +412,19 @@ var ActionSynth = {
+             var mem = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null;
+             var id = Number(objectId);
+             if (!mem || !Number.isInteger(id) || id < 1) return false;
++            // The walk stops at the measured player / inventory root and at the current room, and never treats an
++            // actor as a box: LH PLAYER 56 carries container+transparent bits but is not a closed glass case
++            // (codex #4722: held master key lost Unlock with...).
++            var payload = (typeof WorldModel !== "undefined" && WorldModel.lastPayload) || {};
++            var stops = {};
++            [payload.playerId, payload.roomId, payload.probe && payload.probe.playerId, payload.probe && payload.probe.roomId]
++                .forEach(function (s) { if (s != null && s !== "" && s !== 0) stops[String(s)] = true; });
++            try { var pl = ZRamReader.resolvePlayer(mem); if (pl && pl.id) stops[String(pl.id)] = true; } catch (ePl) {}
+             var link = ZRamReader.objectLinks(mem, id), cur = link && link.parent;
+             for (var guard = 0; cur && guard < 32; guard++) {
++                if (stops[String(cur)]) return false;
+                 var pa = ZRamReader.attrsFromObject(mem, cur) || {};
++                if (pa.animate) return false;
+                 if (pa.container && pa.transparent && !(pa.open || pa.isOpen)) return true;
+                 var up = ZRamReader.objectLinks(mem, cur);
+                 cur = up && up.parent;
+diff --git a/js/Actionable.js b/js/Actionable.js
+index 467f592..9bd2cff 100644
+--- a/js/Actionable.js
++++ b/js/Actionable.js
+@@ -945,13 +945,14 @@ var Actionable = {
+         try {
+             if (!prior) Actionable._resolutionPool = Actionable.payloadPool();
+             var resolved = Actionable._resolveObjectCommands(objectId,kind,options);
+-            // D233: after every source (synth, learned, calibrated), an object
+-            // behind a closed transparent container keeps only the inspect verb.
++            // D233-R2: after every source (synth, learned, calibrated), an object
++            // behind a closed transparent container loses only Take forms: the
++            // ZIL parser refuses TAKE there ("You can't reach that!") while other
++            // verbs (CLOSE carton, EAT food) natively succeed (codex #4742).
+             if (Array.isArray(resolved) && typeof ActionSynth !== "undefined" && ActionSynth.outOfReach &&
+                 ActionSynth.outOfReach(objectId)) {
+-                var inspect = ActionSynth.defaultInspectVerb();
+                 resolved = resolved.filter(function (c) {
+-                    return !!inspect && c && String(c.command || "").toLowerCase().indexOf(inspect + " ") === 0;
++                    return !(c && /^take\b/i.test(String(c.command || "").trim()));
+                 });
+             }
+             return resolved;
+@@ -2895,7 +2896,11 @@ var Actionable = {
+                                 // sides -- with three spells held, "cast spell
+                                 // at spell" names nothing.
+                                 var sourceNoun = sharedCommands ? ((cmds[0] && cmds[0].noun) || noun) : Actionable.disambiguatedNoun(source);
+-                                var cmd = inst.build(sourceNoun, Actionable.disambiguatedNoun(other));
++                                // D234: long-pressing a room object (padlock, door) makes it the TARGET of
++                                // Unlock, the chosen object the tool; a carried object stays the tool (D231).
++                                var cmd = inst.verb === "unlock" && context.kind !== "inventory"
++                                    ? inst.build(Actionable.disambiguatedNoun(other), sourceNoun)
++                                    : inst.build(sourceNoun, Actionable.disambiguatedNoun(other));
+                                 return { Label: other.name, Command: cmd, Score: scoreFor(cmd, 50), Usage: usageFor(cmd), Action: function () { Actionable.Submit(cmd, sharedCommands ? "ambiguous-reference" : undefined); } };
+                             }), context);
+                         }});
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index fe29998..cbb3e89 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -46,7 +46,7 @@ var ModuleStatFactsClaude = {
+         // ONBIT 17 (state only; R3 claude lane on codex-accepted design cutthroats-on-integration-proposal.md): native ON sets 17
+         // and OFF clears it on two distinct owners, flashlight 116 and the Mary Margaret's large compressor 89 (Aft Deck) (walkthrough 0-18 then
+         // w,w,n,e,s); named EXAMINE 89 after OFF tests 17 FALSE with the native "off" reply. No switchable capability implied.
+-        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18, "on": 17, "transparent": 19 },
++        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18, "on": 17 },
+         // WORNBIT 13 (grok1 2026-10-17, g1-ctA/B Jericho replay, test_attr recorded only during the named command): 'remove watch' @287 tests
+         // wrist watch 6:13 TRUE x3 ("You are now holding the wrist watch.") and the RAM scan after it drops 6 from the owners (UNWEAR FCLEARs);
+         // 'remove wet suit' @287 tests 139:13 TRUE; 'wear flippers' @284 tests 138:13 FALSE before and TRUE after; 'remove flashlight' @291
+@@ -139,7 +139,7 @@ var ModuleStatFactsClaude = {
+         // ONBIT24: native radio48 on/off tests and bit transitions; cited whole-source scan finds
+         // RADIO the sole mutable non-room owner (single-owner exception). Adjacent source is not
+         // asserted exact-build; room/global owners do not imply switchability. See ballyhoo-on/.
+-        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21, "on": 24, "transparent": 13 },
++        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21, "on": 24 },
+         // Native i (walkthrough step 90) tests bit6 TRUE on pink dot 231 / blue dot 71 inside the open ticket 122 and
+         // omits them; tests it FALSE on bucket 65, meat 102, bullwhip 16, ticket 122 and prints them. Source NDESCBIT 6
+         // exact (114/114).
+@@ -196,13 +196,13 @@ var ModuleStatFactsClaude = {
+     },
+     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
+         // light 22 / on 8 (codex #4349: FROTZ sets both on the battered lantern, candle carries both; bread/jug negatives).
+-        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8, "transparent": 10 },
++        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8 },
+         "openCapability": { "all": ["container"], "none": ["supporter"] },
+     },
+     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
+         // FOODBIT7: sole bounded owner beef34, native EAT succeeds/removes;
+         // shovel33 false/refuses; DRINK beef refuses (not a consumed bit).
+-        "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25, "edible": 7, "transparent": 23 },
++        "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25, "edible": 7 },
+         "openCapability": { "all": ["container"], "none": ["supporter"] },
+         // WEARBIT state22: native knapsack31/ring2 worn positives, shovel33 refusal; Grok4127 proposal independently replayed by Codex October20.
+         "wornAttribute": 22
+@@ -752,7 +752,9 @@ var ModuleStatFactsClaude = {
+         // 20:31 TRUE; 'tell carton' @22 tests carton 58:31 FALSE. Source PERSON = bit 31 exact. Room-safe: the only runtime FSET is on
+         // HAND (cs.zil:5582), no room carries PERSON, so ZRamReader.isPlausibleMapRoom is unaffected.
+         // on 15 = ONBIT state (codex #4345/#4347: flashlight single player-switchable item; rooms = lit state, global waxer always on).
+-        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31, "on": 15, "transparent": 5 },
++        // openable 2 = source OPENABLE, carrier set exact 22/22; native (codex #4752): OPEN Funny Bones 18 and fridge 105 set 13,
++        // counter 160 (no bit) refuses. CLOSE on the package natively refuses: the extra Close offer is a disclosed harmless one.
++        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31, "on": 15, "transparent": 5, "openable": 2 },
+         // D232 local globals (claude census + codex #4618/#4621/#4632, grok2 #4637): room GLOBAL property 16 (byte ids),
+         // holder LOCAL-GLOBALS 59; native: EXAMINE ROOF DOOR succeeds from TopFloor 195 (prop16 [163]), refused from
+         // ComputerRoom 176; Tomb 9 padlock. Room ONBIT 15 positive-only (pzlurking trace TRUE 176/137/33, FALSE + pitch-black
+@@ -803,7 +805,7 @@ var ModuleStatFactsClaude = {
+         // does not handle LAMP-ON, so V-LAMP-ON gverbs.zil:786-789 tests FSET? PRSO LIGHTBIT); cold 'turn on' negatives mailbox 160:31 and leaflet
+         // 161:31 FALSE ("You can't turn that on."). Source LIGHTBIT = torch, candles, lamp; bounded compiled-table scan (250 objects, ends at
+         // first property 3000): bit-31 carriers = {104, 147, 164} = source 3/3. Consumers (#3904 audit, which answers the #3380 capability concern): no map-room effect (1679 blank names only).
+-            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "edible": 21, "light": 31, "transparent": 12 },
++            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "edible": 21, "light": 31 },
+         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
+         // (source: THIEF (1dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
+         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
+diff --git a/js/WorldModel.js b/js/WorldModel.js
+index f83e594..4109bfc 100644
+--- a/js/WorldModel.js
++++ b/js/WorldModel.js
+@@ -133,6 +133,8 @@ var WorldModel = {
+         var worn = objs.filter(function (o) {
+             if (!o || o.parentId == null || !o.attrs) return false;
+             if (roomIds[String(o.parentId)]) return false;
++            // D232: a room-visible local global's parent is the LOCAL-GLOBALS holder, never an inventory root.
++            if (o.localGlobal) return false;
+             if (typeof AttributeSchema !== "undefined" && AttributeSchema.isTrulyWorn) {
+                 return AttributeSchema.isTrulyWorn(o.attrs);
+             }
+diff --git a/js/ZRamReader.js b/js/ZRamReader.js
+index f02c06b..65f5506 100644
+--- a/js/ZRamReader.js
++++ b/js/ZRamReader.js
+@@ -2369,7 +2369,11 @@ var ZRamReader = {
+         var fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
+         var ls = fact && fact.localScope;
+         if (!ls || ZRamReader.executableLayoutFacts(mem) !== fact) return [];
+-        var bits = ["roomLitAttribute", "invisible", "searchBit", "surfaceBit", "openBit"];
++        // Roots need only the lit and INVISIBLE bits; the descendant bits are required only when contents
++        // search is enabled (codex #4718), so a roots-only title is not blocked by bits it never reads.
++        var bits = ls.contents === "search"
++            ? ["roomLitAttribute", "invisible", "searchBit", "surfaceBit", "openBit"]
++            : ["roomLitAttribute", "invisible"];
+         if (!(ls.width === 1 || ls.width === 2) || !Number.isInteger(ls.property) || !Number.isInteger(ls.holder) ||
+             !bits.every(function (k) { return Number.isInteger(ls[k]) && ls[k] >= 0 && ls[k] < 48; })) return [];
+         var h = ZRamReader.header(mem), first = h.objTable + h.defaultsWords * 2;
+@@ -2380,12 +2384,14 @@ var ZRamReader = {
+         var prop = (ZRamReader.listProps(mem, roomId) || []).find(function (q) { return q.num === ls.property; });
+         if (!prop || prop.sz % ls.width) return [];
+         var out = [], seen = {};
+-        function add(id, parentId) {
++        // parentId is the physical RAM parent (holder for roots); scopeRoomId is the room whose GLOBAL property
++        // admitted it. Parser membership is not containment (codex #4686).
++        function add(id) {
+             if (!Number.isInteger(id) || id < 1 || id > count || seen[id] || (playerId && id === Number(playerId))) return null;
+             seen[id] = 1;
+             var raw = ZRamReader.objectLinks(mem, id), name = ZRamReader.shortName(mem, id);
+             if (!raw || ZRamReader.attr(raw, ls.invisible) || !name || name.charAt(0) === "(") return null;
+-            out.push({ id: id, name: name, parentId: parentId, attrs: ZRamReader.attrsFromObject(mem, id),
++            out.push({ id: id, name: name, parentId: raw.parent, scopeRoomId: roomId, attrs: ZRamReader.attrsFromObject(mem, id),
+                 aliases: ZRamReader.parserWordsAny(mem, id), confidence: 0.85, discovered: true, localGlobal: true });
+             return raw;
+         }
+@@ -2396,7 +2402,7 @@ var ZRamReader = {
+                 (Number.isInteger(ls.transBit) && ZRamReader.attr(raw, ls.transBit)));
+             if (!surface && !searchOpen) return;
+             ZRamReader.children(mem, id).forEach(function (cid) {
+-                var craw = add(cid, id);
++                var craw = add(cid);
+                 if (craw) contents(cid, craw, d + 1);
+             });
+         }
+@@ -2405,7 +2411,7 @@ var ZRamReader = {
+             if (!id) continue;
+             var links = ZRamReader.objectLinks(mem, id);
+             if (!links || links.parent !== ls.holder) continue;
+-            var raw = add(id, roomId);
++            var raw = add(id);
+             // Contents only for a title whose parser search shape is proven (contents:"search", LH SEARCH-CONTENTS?).
+             // Zork-era GLOBAL-CHECK never looks inside local globals; other shapes stay roots-only until measured.
+             if (raw && ls.contents === "search") contents(id, raw, 0);

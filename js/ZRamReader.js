@@ -2369,7 +2369,11 @@ var ZRamReader = {
         var fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
         var ls = fact && fact.localScope;
         if (!ls || ZRamReader.executableLayoutFacts(mem) !== fact) return [];
-        var bits = ["roomLitAttribute", "invisible", "searchBit", "surfaceBit", "openBit"];
+        // Roots need only the lit and INVISIBLE bits; the descendant bits are required only when contents
+        // search is enabled (codex #4718), so a roots-only title is not blocked by bits it never reads.
+        var bits = ls.contents === "search"
+            ? ["roomLitAttribute", "invisible", "searchBit", "surfaceBit", "openBit"]
+            : ["roomLitAttribute", "invisible"];
         if (!(ls.width === 1 || ls.width === 2) || !Number.isInteger(ls.property) || !Number.isInteger(ls.holder) ||
             !bits.every(function (k) { return Number.isInteger(ls[k]) && ls[k] >= 0 && ls[k] < 48; })) return [];
         var h = ZRamReader.header(mem), first = h.objTable + h.defaultsWords * 2;
@@ -2380,12 +2384,14 @@ var ZRamReader = {
         var prop = (ZRamReader.listProps(mem, roomId) || []).find(function (q) { return q.num === ls.property; });
         if (!prop || prop.sz % ls.width) return [];
         var out = [], seen = {};
-        function add(id, parentId) {
+        // parentId is the physical RAM parent (holder for roots); scopeRoomId is the room whose GLOBAL property
+        // admitted it. Parser membership is not containment (codex #4686).
+        function add(id) {
             if (!Number.isInteger(id) || id < 1 || id > count || seen[id] || (playerId && id === Number(playerId))) return null;
             seen[id] = 1;
             var raw = ZRamReader.objectLinks(mem, id), name = ZRamReader.shortName(mem, id);
             if (!raw || ZRamReader.attr(raw, ls.invisible) || !name || name.charAt(0) === "(") return null;
-            out.push({ id: id, name: name, parentId: parentId, attrs: ZRamReader.attrsFromObject(mem, id),
+            out.push({ id: id, name: name, parentId: raw.parent, scopeRoomId: roomId, attrs: ZRamReader.attrsFromObject(mem, id),
                 aliases: ZRamReader.parserWordsAny(mem, id), confidence: 0.85, discovered: true, localGlobal: true });
             return raw;
         }
@@ -2396,7 +2402,7 @@ var ZRamReader = {
                 (Number.isInteger(ls.transBit) && ZRamReader.attr(raw, ls.transBit)));
             if (!surface && !searchOpen) return;
             ZRamReader.children(mem, id).forEach(function (cid) {
-                var craw = add(cid, id);
+                var craw = add(cid);
                 if (craw) contents(cid, craw, d + 1);
             });
         }
@@ -2405,7 +2411,7 @@ var ZRamReader = {
             if (!id) continue;
             var links = ZRamReader.objectLinks(mem, id);
             if (!links || links.parent !== ls.holder) continue;
-            var raw = add(id, roomId);
+            var raw = add(id);
             // Contents only for a title whose parser search shape is proven (contents:"search", LH SEARCH-CONTENTS?).
             // Zork-era GLOBAL-CHECK never looks inside local globals; other shapes stay roots-only until measured.
             if (raw && ls.contents === "search") contents(id, raw, 0);

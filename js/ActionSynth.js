@@ -412,9 +412,19 @@ var ActionSynth = {
             var mem = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null;
             var id = Number(objectId);
             if (!mem || !Number.isInteger(id) || id < 1) return false;
+            // The walk stops at the measured player / inventory root and at the current room, and never treats an
+            // actor as a box: LH PLAYER 56 carries container+transparent bits but is not a closed glass case
+            // (codex #4722: held master key lost Unlock with...).
+            var payload = (typeof WorldModel !== "undefined" && WorldModel.lastPayload) || {};
+            var stops = {};
+            [payload.playerId, payload.roomId, payload.probe && payload.probe.playerId, payload.probe && payload.probe.roomId]
+                .forEach(function (s) { if (s != null && s !== "" && s !== 0) stops[String(s)] = true; });
+            try { var pl = ZRamReader.resolvePlayer(mem); if (pl && pl.id) stops[String(pl.id)] = true; } catch (ePl) {}
             var link = ZRamReader.objectLinks(mem, id), cur = link && link.parent;
             for (var guard = 0; cur && guard < 32; guard++) {
+                if (stops[String(cur)]) return false;
                 var pa = ZRamReader.attrsFromObject(mem, cur) || {};
+                if (pa.animate) return false;
                 if (pa.container && pa.transparent && !(pa.open || pa.isOpen)) return true;
                 var up = ZRamReader.objectLinks(mem, cur);
                 cur = up && up.parent;
