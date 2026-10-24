@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-10-24T02:50:09.111Z",
+  "tier": "Mid-run provenance aid, NOT isolated candidate/full gate acceptance",
+  "head": "5e51ea7f0e0950dd8f53c57743010d5a8224572d",
+  "files": {
+    "js/Actionable.js": "0314134d8cba3248e587d68bafd4ff9218356bb87a27dc54bc996411ab2aad90",
+    "js/ActionSynth.js": "6f4f07a20abf51c698704b3f530085f689db04909004f83c2818bebcaac094da",
+    "js/ZRamReader.js": "867dc117efcc3d037f1201c5f9c8ff9578b8908a14a756cca41e4db2efc8383e",
+    "js/ModuleStatFactsClaude.js": "90087f3c471babfca881603f78a06a9736bad08159527574d65d458e85c05ac8",
+    "js/WorldModel.js": "902e97bdc68bb11ca935918ec17180938bf78854bdf88985b25c6afffe3bfab0"
+  },
+  "unchangedSinceOwnNativeAudit": true,
+  "configHashes": {
+    "work/investigations/r3-claude/gate-r4/run-base-0.bat": "b4418a25a36e36b02657c0b72909b1dc913bebacc435dc07ec5b0961774d37d2",
+    "work/investigations/r3-claude/gate-r4/run-base-1.bat": "0203218908263b0b18abfe4e7e4d9baaf20ca943679d931de7c6c6dfe8e3457d",
+    "work/investigations/r3-claude/gate-r4/run-base-2.bat": "e65e1b74bcf9c7e5fefd9bacdda611667876d6430d78032f086e2a8016f85f8f",
+    "work/investigations/r3-claude/gate-r4/run-base-3.bat": "53f03a539b5eb99ef169e53cdd32da04d27d48de0186ea8db5f4eb205c129aea",
+    "work/investigations/r3-claude/gate-r4/run-cand-0.bat": "a4a202b9a6ad333ab68a8275a52d359a8b5b017ec07cebcff3219fc69676606e",
+    "work/investigations/r3-claude/gate-r4/run-cand-1.bat": "0622f76139466a39b319f3e4c81d2c0de78ed8df82125a02a741066b38208cee",
+    "work/investigations/r3-claude/gate-r4/run-cand-2.bat": "a8b978b6a57a7a45c4d967a0d5100243516d7a3130ad73f6a4ee04770104672f",
+    "work/investigations/r3-claude/gate-r4/run-cand-3.bat": "f882b8f3a7b15c75590a7e704db61c1d7653c0b0a3805306fb42110c32bb29f9",
+    "work/investigations/regression-gate.cjs": "acc1229f9dd243f21d414a9bc8f19dbd340cf06bd2a1f99566480eeddcf071ab"
+  },
+  "candidateRoot": "Live main per run-cand-*.bat; separate immutable candidate requirement not satisfied by these hashes",
+  "next": "Owner must preserve originals and resolve final settled isolated-candidate gate scheduling; no blind/source/gate proof invented"
+}

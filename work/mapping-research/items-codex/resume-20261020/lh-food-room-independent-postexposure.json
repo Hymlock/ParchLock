@@ -1,0 +1,406 @@
+{
+  "scope": "Post-exposure independent native parser investigation; no fact/RAM writes; no excluded research read",
+  "root": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/Parchmap-main",
+  "sourceHashes": {
+    "js/ActionSynth.js": "6f4f07a20abf51c698704b3f530085f689db04909004f83c2818bebcaac094da",
+    "js/AttributeSchema.js": "f600132bfd98223c93f3551c0dfd33194ec398a6276d36429af439a5bfb17ce7",
+    "js/Actionable.js": "c4692093c5aae236ad0b0a16102e7ab147e4da4c536b4a6b80bdd8194d84d4b9",
+    "js/LearnedWords.js": "e4f3a9a26563aba43d28f366d66d83a2fb1c9e12de2717c00e9c5b0ca8ed3c40",
+    "js/ModuleStatFactsClaude.js": "ccc6104297cf4419cad5130215a80aeb49243a77f9d55c7afd00dc76c6117684"
+  },
+  "rows": [
+    {
+      "cmd": "stand",
+      "reply": "You already are standing.\n \n> ",
+      "room": 176,
+      "food": {
+        "id": 90,
+        "parent": 58,
+        "name": "Chinese food",
+        "open": false
+      },
+      "carton": {
+        "id": 58,
+        "parent": 105,
+        "name": "cardboard carton",
+        "open": false
+      },
+      "inventoryIds": [
+        97
+      ],
+      "discoveredIds": [
+        2,
+        3,
+        13,
+        43,
+        62,
+        107,
+        129,
+        191,
+        199,
+        244,
+        246,
+        252
+      ],
+      "visible": false,
+      "policyInventory": [],
+      "policyRoom": [],
+      "commands": []
+    },
+    {
+      "cmd": "s",
+      "reply": "Second Floor\nThis is the second floor of the Computer Center. An elevator and call buttons are on the south side of the hallway. A large, noisy room is to the north. Stairs also lead up and down, for the energetic. To the west a corridor leads into a smaller room.\n \n> ",
+      "room": 137,
+      "food": {
+        "id": 90,
+        "parent": 58,
+        "name": "Chinese food",
+        "open": false
+      },
+      "carton": {
+        "id": 58,
+        "parent": 105,
+        "name": "cardboard carton",
+        "open": false
+      },
+      "inventoryIds": [
+        97
+      ],
+      "discoveredIds": [
+        74,
+        115,
+        169,
+        209
+      ],
+      "visible": false,
+      "policyInventory": [],
+      "policyRoom": [],
+      "commands": []
+    },
+    {
+      "cmd": "w",
+      "reply": "Kitchen\nThis is a filthy kitchen. The exit is to the east. On the wall near a counter are a refrigerator and a microwave.\n \nSitting on the kitchen counter is a package of Funny Bones.\n \n> ",
+      "room": 33,
+      "food": {
+        "id": 90,
+        "parent": 58,
+        "name": "Chinese food",
+        "open": false
+      },
+      "carton": {
+        "id": 58,
+        "parent": 105,
+        "name": "cardboard carton",
+        "open": false
+      },
+      "inventoryIds": [
+        97
+      ],
+      "discoveredIds": [
+        18,
+        73,
+        86,
+        105,
+        160,
+        224
+      ],
+      "visible": false,
+      "policyInventory": [],
+      "policyRoom": [],
+      "commands": []
+    },
+    {
+      "cmd": "open fridge",
+      "reply": "Opening the refrigerator reveals a two liter bottle of Classic Coke and a cardboard carton.\n \n> ",
+      "room": 33,
+      "food": {
+        "id": 90,
+        "parent": 58,
+        "name": "Chinese food",
+        "open": false
+      },
+      "carton": {
+        "id": 58,
+        "parent": 105,
+        "name": "cardboard carton",
+        "open": false
+      },
+      "inventoryIds": [
+        97
+      ],
+      "discoveredIds": [
+        18,
+        58,
+        61,
+        73,
+        86,
+        105,
+        160,
+        224
+      ],
+      "visible": false,
+      "policyInventory": [],
+      "policyRoom": [],
+      "commands": []
+    },
+    {
+      "cmd": "get coke and carton",
+      "reply": "two liter bottle of Classic Coke: Taken.\ncardboard carton: Taken.\n \n> ",
+      "room": 33,
+      "food": {
+        "id": 90,
+        "parent": 58,
+        "name": "Chinese food",
+        "open": false
+      },
+      "carton": {
+        "id": 58,
+        "parent": 56,
+        "name": "cardboard carton",
+        "open": false
+      },
+      "inventoryIds": [
+        58,
+        61,
+        97
+      ],
+      "discoveredIds": [
+        18,
+        73,
+        86,
+        105,
+        160,
+        224
+      ],
+      "visible": false,
+      "policyInventory": [],
+      "policyRoom": [],
+      "commands": []
+    },
+    {
+      "cmd": "open carton",
+      "reply": "Opening the cardboard carton reveals Chinese food.\n \n> ",
+      "room": 33,
+      "food": {
+        "id": 90,
+        "parent": 58,
+        "name": "Chinese food",
+        "open": false
+      },
+      "carton": {
+        "id": 58,
+        "parent": 56,
+        "name": "cardboard carton",
+        "open": true
+      },
+      "inventoryIds": [
+        58,
+        90,
+        61,
+        97
+      ],
+      "discoveredIds": [
+        18,
+        73,
+        86,
+        105,
+        160,
+        224
+      ],
+      "visible": true,
+      "reference": {
+        "noun": "chinese food",
+        "candidateIds": [
+          90
+        ],
+        "unique": true,
+        "verified": true,
+        "provenance": "scoped-vocabulary"
+      },
+      "edible": true,
+      "policyInventory": [
+        "eat"
+      ],
+      "policyRoom": [],
+      "commands": [
+        "examine chinese food",
+        "take chinese food",
+        "eat chinese food"
+      ],
+      "independent": [
+        "take",
+        "eat"
+      ]
+    },
+    {
+      "cmd": "drop carton",
+      "reply": "Dropped.\n \n> ",
+      "room": 33,
+      "food": {
+        "id": 90,
+        "parent": 58,
+        "name": "Chinese food",
+        "open": false
+      },
+      "carton": {
+        "id": 58,
+        "parent": 33,
+        "name": "cardboard carton",
+        "open": true
+      },
+      "inventoryIds": [
+        61,
+        97
+      ],
+      "discoveredIds": [
+        18,
+        58,
+        73,
+        86,
+        90,
+        105,
+        160,
+        224
+      ],
+      "visible": true,
+      "reference": {
+        "noun": "chinese food",
+        "candidateIds": [
+          90
+        ],
+        "unique": true,
+        "verified": true,
+        "provenance": "scoped-vocabulary"
+      },
+      "edible": true,
+      "policyInventory": [],
+      "policyRoom": [],
+      "commands": [
+        "examine chinese food",
+        "take chinese food"
+      ],
+      "independent": [
+        "take"
+      ]
+    },
+    {
+      "cmd": "look",
+      "reply": "Kitchen\nThis is a filthy kitchen. The exit is to the east. On the wall near a counter are a refrigerator and a microwave.\n \nThere is a cardboard carton here. The cardboard carton contains Chinese food. Sitting on the kitchen counter is a package of Funny Bones.\n \n> ",
+      "room": 33,
+      "food": {
+        "id": 90,
+        "parent": 58,
+        "name": "Chinese food",
+        "open": false
+      },
+      "carton": {
+        "id": 58,
+        "parent": 33,
+        "name": "cardboard carton",
+        "open": true
+      },
+      "inventoryIds": [
+        61,
+        97
+      ],
+      "discoveredIds": [
+        18,
+        58,
+        73,
+        86,
+        90,
+        105,
+        160,
+        224
+      ],
+      "visible": true,
+      "reference": {
+        "noun": "chinese food",
+        "candidateIds": [
+          90
+        ],
+        "unique": true,
+        "verified": true,
+        "provenance": "scoped-vocabulary"
+      },
+      "edible": true,
+      "policyInventory": [],
+      "policyRoom": [],
+      "commands": [
+        "examine chinese food",
+        "take chinese food"
+      ],
+      "independent": [
+        "take"
+      ]
+    },
+    {
+      "cmd": "eat chinese food",
+      "reply": "It's very (chemically) hot, spicy, and cold. You immediately want to drink something to wash it down.\n \n> ",
+      "room": 33,
+      "food": {
+        "id": 90,
+        "parent": 0,
+        "name": "Chinese food",
+        "open": false
+      },
+      "carton": {
+        "id": 58,
+        "parent": 33,
+        "name": "cardboard carton",
+        "open": true
+      },
+      "inventoryIds": [
+        61,
+        97
+      ],
+      "discoveredIds": [
+        18,
+        58,
+        73,
+        86,
+        105,
+        160,
+        224
+      ],
+      "visible": false,
+      "policyInventory": [],
+      "policyRoom": [],
+      "commands": []
+    },
+    {
+      "cmd": "look",
+      "reply": "Kitchen\nThis is a filthy kitchen. The exit is to the east. On the wall near a counter are a refrigerator and a microwave.\n \nThere is a cardboard carton here. Sitting on the kitchen counter is a package of Funny Bones.\n \n> ",
+      "room": 33,
+      "food": {
+        "id": 90,
+        "parent": 0,
+        "name": "Chinese food",
+        "open": false
+      },
+      "carton": {
+        "id": 58,
+        "parent": 33,
+        "name": "cardboard carton",
+        "open": true
+      },
+      "inventoryIds": [
+        61,
+        97
+      ],
+      "discoveredIds": [
+        18,
+        58,
+        73,
+        86,
+        105,
+        160,
+        224
+      ],
+      "visible": false,
+      "policyInventory": [],
+      "policyRoom": [],
+      "commands": []
+    }
+  ]
+}

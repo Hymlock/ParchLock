@@ -1,0 +1,281 @@
+{
+  "tier": "Fresh native routes + official full menus/passive Equipment; no VM/object/fact writes or RNG override",
+  "before": {
+    "js/Actionable.js": "c4692093c5aae236ad0b0a16102e7ab147e4da4c536b4a6b80bdd8194d84d4b9",
+    "js/ActionSynth.js": "6f4f07a20abf51c698704b3f530085f689db04909004f83c2818bebcaac094da",
+    "js/ZRamReader.js": "867dc117efcc3d037f1201c5f9c8ff9578b8908a14a756cca41e4db2efc8383e",
+    "js/ModuleStatFactsClaude.js": "ccc6104297cf4419cad5130215a80aeb49243a77f9d55c7afd00dc76c6117684",
+    "js/WorldModel.js": "902e97bdc68bb11ca935918ec17180938bf78854bdf88985b25c6afffe3bfab0"
+  },
+  "lh": [
+    {
+      "id": 58,
+      "state": "closed",
+      "blocked": true,
+      "resolved": [
+        "examine carton",
+        "close carton",
+        "search carton",
+        "empty carton"
+      ],
+      "slices": [
+        {
+          "label": "Examine",
+          "command": "examine carton",
+          "enter": true
+        },
+        {
+          "label": "Close",
+          "command": "close carton",
+          "enter": true
+        },
+        {
+          "label": "Search",
+          "command": "search carton",
+          "enter": true
+        },
+        {
+          "label": "Empty",
+          "command": "empty carton",
+          "enter": true
+        },
+        {
+          "label": "Unlock with..."
+        },
+        {
+          "label": "More"
+        }
+      ]
+    },
+    {
+      "id": 90,
+      "state": "closed",
+      "blocked": true,
+      "resolved": [
+        "examine chinese food"
+      ],
+      "slices": [
+        {
+          "label": "Examine",
+          "command": "examine chinese food",
+          "enter": true
+        },
+        {
+          "label": "Unlock with..."
+        },
+        {
+          "label": "More"
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "state": "open",
+      "blocked": false,
+      "resolved": [
+        "examine carton",
+        "take carton",
+        "close carton",
+        "search carton",
+        "empty carton"
+      ],
+      "slices": [
+        {
+          "label": "Examine",
+          "command": "examine carton",
+          "enter": true
+        },
+        {
+          "label": "Take",
+          "command": "take carton",
+          "enter": true
+        },
+        {
+          "label": "Close",
+          "command": "close carton",
+          "enter": true
+        },
+        {
+          "label": "Search",
+          "command": "search carton",
+          "enter": true
+        },
+        {
+          "label": "Empty",
+          "command": "empty carton",
+          "enter": true
+        },
+        {
+          "label": "Unlock with..."
+        },
+        {
+          "label": "More"
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "state": "closed-again",
+      "blocked": true,
+      "resolved": [
+        "examine carton",
+        "close carton",
+        "search carton",
+        "empty carton"
+      ],
+      "slices": [
+        {
+          "label": "Examine",
+          "command": "examine carton",
+          "enter": true
+        },
+        {
+          "label": "Close",
+          "command": "close carton",
+          "enter": true
+        },
+        {
+          "label": "Search",
+          "command": "search carton",
+          "enter": true
+        },
+        {
+          "label": "Empty",
+          "command": "empty carton",
+          "enter": true
+        },
+        {
+          "label": "Unlock with..."
+        },
+        {
+          "label": "More"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "state": "initial-package",
+      "blocked": false,
+      "resolved": [
+        "examine bones",
+        "take bones",
+        "open bones",
+        "close bones"
+      ],
+      "slices": [
+        {
+          "label": "Examine",
+          "command": "examine bones",
+          "enter": true
+        },
+        {
+          "label": "Take",
+          "command": "take bones",
+          "enter": true
+        },
+        {
+          "label": "Open",
+          "command": "open bones",
+          "enter": true
+        },
+        {
+          "label": "Close",
+          "command": "close bones",
+          "enter": true
+        },
+        {
+          "label": "Unlock with..."
+        },
+        {
+          "label": "More"
+        }
+      ]
+    }
+  ],
+  "zork": [
+    {
+      "state": "closed",
+      "open": false,
+      "items": [
+        {
+          "id": 224,
+          "parentId": 4,
+          "name": "brown sack"
+        },
+        {
+          "id": 236,
+          "parentId": 4,
+          "name": "glass bottle"
+        }
+      ]
+    },
+    {
+      "state": "open",
+      "open": true,
+      "items": [
+        {
+          "id": 224,
+          "parentId": 4,
+          "name": "brown sack"
+        },
+        {
+          "id": 236,
+          "parentId": 4,
+          "name": "glass bottle"
+        },
+        {
+          "id": 237,
+          "parentId": 236,
+          "name": "quantity of water"
+        }
+      ]
+    },
+    {
+      "state": "closed-again",
+      "open": false,
+      "items": [
+        {
+          "id": 224,
+          "parentId": 4,
+          "name": "brown sack"
+        },
+        {
+          "id": 236,
+          "parentId": 4,
+          "name": "glass bottle"
+        }
+      ]
+    }
+  ],
+  "roots": {
+    "room": 176,
+    "roots": [
+      {
+        "id": 13,
+        "parentId": 59,
+        "rawParent": 59,
+        "scopeRoomId": 176
+      },
+      {
+        "id": 43,
+        "parentId": 59,
+        "rawParent": 59,
+        "scopeRoomId": 176
+      }
+    ]
+  },
+  "foodResidual": {
+    "id": 90,
+    "eatOffered": false,
+    "reason": "Existing D228 nested food requires carton held; native Eat in oven succeeds, separate missing consumer remains OPEN"
+  },
+  "packageContainer": false,
+  "after": {
+    "js/Actionable.js": "c4692093c5aae236ad0b0a16102e7ab147e4da4c536b4a6b80bdd8194d84d4b9",
+    "js/ActionSynth.js": "6f4f07a20abf51c698704b3f530085f689db04909004f83c2818bebcaac094da",
+    "js/ZRamReader.js": "867dc117efcc3d037f1201c5f9c8ff9578b8908a14a756cca41e4db2efc8383e",
+    "js/ModuleStatFactsClaude.js": "ccc6104297cf4419cad5130215a80aeb49243a77f9d55c7afd00dc76c6117684",
+    "js/WorldModel.js": "902e97bdc68bb11ca935918ec17180938bf78854bdf88985b25c6afffe3bfab0"
+  },
+  "status": "PASS affected native consumer controls only; no full gate/phone claim"
+}
