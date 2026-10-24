@@ -258,7 +258,8 @@ sandbox.ParchLockMap = {
         return this.Rooms.find(function (r) { return r.Name === name; }) || null;
     }
 };
-MapTopology.prevRoomId = null;
+// Arrival from room 99 (M09 admits a first room the player moved into).
+MapTopology.prevRoomId = 99;
 MapTopology.prevRoomName = "";
 MapTopology.lastCommand = "";
 MapTopology.applyPayloadExits({
@@ -421,7 +422,9 @@ assert(!ZRamReader.destIsMapRoom(i7.mem, i7.COMPASS, ZRamReader.objectCount(i7.m
 
 sandbox.ParchLockMap.Rooms = [];
 sandbox.ParchLockMap.CurrentRoom = "";
-MapTopology.prevRoomId = null;
+// M09 (df1d172) refuses exits from an unannounced first room on an empty map; this
+// fixture is the player arriving from room 37, which M09 admits.
+MapTopology.prevRoomId = 37;
 MapTopology.prevRoomName = "";
 MapTopology.lastCommand = "";
 MapTopology.applyPayloadExits({
