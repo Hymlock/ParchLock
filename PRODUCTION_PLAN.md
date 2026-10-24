@@ -9369,6 +9369,16 @@ zil-titles/ModuleStatFactsClaude.with-batch2.js). A flag value null = proven abs
 bar (exact digest source, FLAGS and every FSET/FCLEAR absent, compiled parser routines test no bit, native negative);
 never used to paper over a different search shape (codex #4671). None exist yet.
 
+**Rollout 2026-10-24 (claude, overnight; each batch isolated 309x2 gate + independent read-only audit):** roots-only
+localScope facts now on 18 ZIL titles - LH (contents:"search"), Zork I/II/III, Enchanter, Sorcerer, Infidel, Hollywood
+Hijinx, Planetfall, Hitchhiker's (width 2), Seastalker, Spellbreaker, Ballyhoo, Cutthroats, Starcross, Plundered Hearts,
+Deadline, Moonmist (commits 5ddf2dd, b673404, 7d9810b, fdcbdeb, 2e4a5b8, 0e42aef). Each: two lit rooms with native
+EXAMINE positives + reciprocal refusals, INVISIBLE/ONBIT exact vs source. The census picked room-list properties for
+Deadline/Moonmist/Suspect/Suspended/Sherlock/Witness; localscope6/scan.cjs (single shared parent) finds the real GLOBAL
+property. Not mapped: Wishbringer, LGOP, Stationfall, Sherlock (no INVISIBLE flag), Borderzo (no ONBIT), Suspect (no room
+carries ONBIT, so a fact would admit nothing), Witness (no room scope natively), Suspended (robot-controller scope).
+Open: unparseable short names (Infidel "mirage") need a dictionary-word alias in the command noun.
+
 ## D233 Objects behind a closed see-through container: in view, out of reach
 
 **Lifecycle:** found by the R4.1 radial sweep pilot (LH step 10). Implemented claude b2f1f2e, with the companion
