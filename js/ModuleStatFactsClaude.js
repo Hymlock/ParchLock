@@ -180,7 +180,8 @@ var ModuleStatFactsClaude = {
         // asserted exact-build; room/global owners do not imply switchability. See ballyhoo-on/.
         // door 27 = source DOORBIT exact; native (codex door-ballyhoo-native.json + negative): trailer door 44 and cage door 164 toggle 15; pole refuses.
         // scenery 6 = NDESCBIT (grok1 2026-10-24, user ruling 11:45 ET): native look in Jericho, object directly in room with NDESCBIT set, look omits it, trace shows the listing routine (historicalsource 9f779e8 verbs.zil:3084 PRINT-CONTENTS) testing NDESCBIT on that object at pc 46920/46913 during that look, examine works. Positives 22:button, 168:crowd; negative 49:barred passage, 92:turnstile, 208:gorilla suit (listed, bit clear, same pc). work/investigations/grok1/batch/cache-scenery3 run-ballyhoo.json, judge-scenery.json. Take unaffected (D214 TAKEBIT owns takeable).
-        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21, "on": 24, "door": 27, "scenery": 6 },
+        // enterable 30 = source VEHBIT exact 5/5; native (grok1 #5030 grok1/enter/ballyhoo.json): ENTER NET -> parent 3, ENTER SOFA -> 20, ENTER LONG LINE -> 80; ENTER CHANDELIER refused.
+        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21, "on": 24, "door": 27, "scenery": 6, "enterable": 30 },
         // Native i (walkthrough step 90) tests bit6 TRUE on pink dot 231 / blue dot 71 inside the open ticket 122 and
         // omits them; tests it FALSE on bucket 65, meat 102, bullwhip 16, ticket 122 and prints them. Source NDESCBIT 6
         // exact (114/114).
@@ -324,7 +325,8 @@ var ModuleStatFactsClaude = {
         // (parent changes); pen-on-notebook refused. Source exact 11 of 11. 10 surfaces also carry CONTBIT 16, so supporter joins
         // the Open/Close none list (tables, desks, mantel, workbench are not openable).
         // door 27 = source DOORBIT exact; native (codex door-suspect-native.json): east/west entry hall doors 241/240 toggle 13; ribbon refuses.
-        "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15, "door": 27 },
+        // enterable 28 = source VEHBIT exact 9/9; native (grok1 #5014 grok1/enter/suspect.json): ENTER CHAIR -> player in chair 153, SIT ON WINDOW SEAT -> 233; ENTER BOOKCASE refused.
+        "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15, "door": 27, "enterable": 28 },
         "inventoryHiddenAttribute": 19,
         "inventoryHiddenPreservesWorn": true
     },
@@ -443,7 +445,8 @@ var ModuleStatFactsClaude = {
         // scenery 10 = NDESCBIT (grok1 2026-10-24, user ruling 11:45 ET): native look in Jericho, object directly in room with NDESCBIT set, look omits it, trace shows the listing routine (historicalsource 5d05d5e verbs.zil:2893 DESCRIBABLE?) testing NDESCBIT on that object at pc 52787 during that look, examine works. Positives 46:SB radio, 50:pilot seat, 90:copilot seat; negative 26:Floyd (listed, bit clear, same pc). work/investigations/grok1/batch/cache-scenery3 run-stationfall.json, judge-scenery.json. Take unaffected (D214 TAKEBIT owns takeable).
         // door 27 = source DOORBIT exact; native (codex door-stationfall-qualified.json): spacetruck hatch 176 and warehouse inner door 79 OPEN/CLOSE toggle OPENBIT 15; sign refuses. Automatic door 21 and the iris refuse manual OPEN (harmless extras).
         // enterable 29 = source VEHBIT exact; native (grok1 #5001 grok1/enter/stationfall.json): carriers 50 and 90 ENTER moves the player inside, non-carrier refuses.
-        "attributeMap": { "wearable": 20, "animate": 31, "talkable": 31, "light": 24, "container": 25, "open": 15, "isOpen": 15, "scenery": 10, "door": 27, "enterable": 29 },
+        // supporter 17 = source SURFACEBIT exact, 2 carriers in source (pedestal, counter); native (grok2 #5008 nq/supporter-Stationfall.json): PUT CHRONOMETER ON PEDESTAL works, ID card refuses; whole-source exception.
+        "attributeMap": { "wearable": 20, "animate": 31, "talkable": 31, "light": 24, "container": 25, "open": 15, "isOpen": 15, "scenery": 10, "door": 27, "enterable": 29, "supporter": 17 },
         "playerGlobal": 183,
         "wornAttribute": 21
     },
@@ -577,7 +580,8 @@ var ModuleStatFactsClaude = {
         "localScope": { "property": 15, "width": 1, "holder": 254, "roomLitAttribute": 23, "invisible": 31 },
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
         // scenery 25 = NDESCBIT exact (grok1 scenery3): LOOK omits cabinets/portraits/wood pile/fireplace, EXAMINE works.
-        "attributeMap": { "open": 28, "isOpen": 28, "container": 21, "supporter": 29, "animate": 20, "scenery": 25 }
+        // door 22 = source DOORBIT exact; native (codex #5036 resume/door-deadline-qualified.json): front door 245 and closet door 215 OPEN/CLOSE toggle open 28 while bit 22 is set; OPEN ME (self 160, no bit 22) refused.
+        "attributeMap": { "open": 28, "isOpen": 28, "container": 21, "supporter": 29, "animate": 20, "scenery": 25, "door": 22 }
     },
     // The Witness (ZIL): OPENBIT 8 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match). CONTBIT 9 proven but held until supporter is proven (as Deadline).
     // The Witness (ZIL): constant PLAYER object 79 (historicalsource/witness 8fe092a people.zil 73 OBJECT PLAYER
@@ -970,7 +974,8 @@ var ModuleStatFactsClaude = {
             // scenery 14 = NDESCBIT (grok1 2026-10-24, user ruling 11:45 ET): native look in Jericho, object directly in room with NDESCBIT set, look omits it, trace shows the listing routine (historicalsource 97b7b3d gverbs.zil:1780 PRINT-CONT) testing NDESCBIT on that object at pc 36719 during that look, examine works. Positives 192:carpet, 204:kitchen table; negative 160:small mailbox (listed, bit clear, same pc). work/investigations/grok1/batch/cache-scenery3 run-zork1.json, judge-scenery.json. Take unaffected (D214 TAKEBIT owns takeable).
         // D239 climbable 24 = source CLIMBBIT exact 9 of 9; native (codex climb-zork-qualified.json): bare CLIMB TREE moves 75 -> 88,
         // CLIMB CHIMNEY from the Studio 94 -> Kitchen 203; mailbox 160 refuses. Bare climb from the Kitchen is a contextual refusal.
-            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "talkable": 30, "edible": 21, "light": 31, "door": 23, "scenery": 14, "climbable": 24 },
+        // transparent 12 = source TRANSBIT exact; native (grok1 #5039 grok1/transp/zork1.json): closed glass bottle 236 LOOK IN lists water, closed trophy case 194 takes the contents path; closed brown sack 224 (no bit) "is closed".
+            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "talkable": 30, "edible": 21, "light": 31, "door": 23, "scenery": 14, "climbable": 24, "transparent": 12 },
         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
         // (source: THIEF (1dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
