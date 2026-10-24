@@ -99,7 +99,8 @@ var ModuleStatFactsClaude = {
         // service counter 18 (zil-route-ops.cjs), 'look in trunk' TRUE on gnarled tree trunk 230 (pzwish); 19 negatives in the
         // same walks. Source exact 10/10. Applied with openCapability so surfaces get no Open/Close.
         "openCapability": { "all": ["container"], "none": ["supporter"] },
-        "attributeMap": { "container": 4, "open": 25, "isOpen": 25, "animate": 18, "supporter": 27, "wearable": 22 }
+        // door 2 = source DOORBIT exact; native (grok2 r4-grok2/doorbit/Wishbringer.z3.js.json strict): toll gate 190 and stump 19 OPEN/CLOSE toggle OPENBIT 25; held small stone refuses ("How can you do that to a small stone?").
+        "attributeMap": { "container": 4, "open": 25, "isOpen": 25, "animate": 18, "supporter": 27, "wearable": 22, "door": 2 }
     },
     // Zork III (ZIL): OPENBIT 12: OPEN sets 12 on secret door, stone door, wooden door; CLOSE clears (wooden door). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     // WEARBIT 4 original scene (2026-10-11-zil-walk-n4.json): TAKE tests 4 TRUE on golden amulet 39, golden ring 82; FALSE on
@@ -410,6 +411,9 @@ var ModuleStatFactsClaude = {
         // PUT IN pilot seat; survival kit and Thermos OPEN/CLOSE toggle 15 and list contents; spacetruck hatch opens; chronometer (no
         // 25) refuses. Source exact 31/31, 16/16; walk CB 25 / OB 15. Floyd and Plato carry CONTBIT: excluded by animate 31.
         "openCapability": { "all": ["container"], "none": ["animate"] },
+        // Switch (grok1 #4848 grok1/switch/stationfall.json): headlamp 141: TURN ON -> "Okay, the headlamp is now on.", TURN OFF clears; kit refuses. ACTIVEBIT/ONBIT shared with Floyd, flame, rooms: no on mapping. Jammer 233 left out (no native).
+        "attributeObjects": { "switchable": [141] },
+        "capabilityForms": { "switchable": ["turn on", "turn off"] },
         "attributeMap": { "wearable": 20, "animate": 31, "talkable": 31, "light": 24, "container": 25, "open": 15, "isOpen": 15 },
         "playerGlobal": 183,
         "wornAttribute": 21
@@ -516,6 +520,9 @@ var ModuleStatFactsClaude = {
         // 42/69 + upstairs maid 125 + White Lady 167); none are rooms. FAIL-CLOSED (defensive): the persons carry OPENBIT + SEARCHBIT (people.zil 181...1664), so animate joins
         // the openCapability none list (P3/R pattern).
         // Grok4129 independently replayed: lamp164/lantern153 native bit10 on; bed134/chair76 false/refused. State only.
+        // Switch (grok1 #4849 grok1/switch/moonmist.json): brass lantern 153: TURN ON -> "Okay, it is now on." (10 set), TURN OFF clears; nightlamp 164 fixed, left out. on 10 already mapped.
+        "attributeObjects": { "switchable": [153] },
+        "capabilityForms": { "switchable": ["turn on", "turn off"] },
         "attributeMap": { "wearable": 29, "open": 14, "isOpen": 14, "container": 27, "supporter": 23, "animate": 31, "on": 10 }
     },
     // Deadline (ZIL): OPENBIT 28 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match). CONTBIT 21 is also proven but is NOT applied
@@ -557,6 +564,9 @@ var ModuleStatFactsClaude = {
     "1d9a69257349060823893f4cfa616f1040a3b41cbf38a6717199f206cd8f678c": {
         // D232 local globals, roots only (work/investigations/r3-claude/localscope5/): ship Bridge 202 / Airlock 122 airlock; Living Quarters 10 refuses airlock and window. Artifact rooms not reached. INVISIBLE 30 exact, ONBIT 18 exact.
         "localScope": { "property": 18, "width": 1, "holder": 111, "roomLitAttribute": 18, "invisible": 30 },
+        // Switch (grok1 #4847 grok1/switch/starcross.json): tape library 71: TURN ON -> "The tape library comes on.", TURN OFF -> "...is now off."; bunk refuses. State is the global TAPE-ON (no object bit), so no activationState/on.
+        "attributeObjects": { "switchable": [71] },
+        "capabilityForms": { "switchable": ["turn on", "turn off"] },
         "attributeMap": { "animate": 11 },
         // Grok4124 design, new native two-owner proof: normal144 and tattered176; held library71/basket40 negative.
         "wornAttribute": 24
