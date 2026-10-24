@@ -93,7 +93,8 @@ var ModuleStatFactsClaude = {
         // talkable 31 (grok2 #4933, verified grok1; g1-batch talk run grok1/batch/talk-plundered-{run,plan}.json, test_attr during the named talk command only): Crulley 8 "crulley, hello"/"talk to crulley" 8:31 TRUE, Captain Jamison 190 "talk to" 190:31 TRUE; smelling salts 11 11:31 FALSE.
 // scenery 9 = NDESCBIT (grok1 2026-10-24 user scenery ruling 11:45; g1-batch look + test_attr/print_obj trace, grok1/batch/cache-scenery4|5 judge-scenery.json): pos ledge 27, coffer 69 (look omits, pc 42969); neg Crulley 8, pile of clothes 125 (listed, same pc). Listing routine: historicalsource f3db372 verbs.zil:3056 DESCRIBABLE?.
         // enterable 28 = source VEHBIT exact; native (grok1 #4999 grok1/enter/plundered.json): carriers 213 and 93 ENTER moves the player inside, non-carrier refuses.
-        "attributeMap": { "open": 16, "isOpen": 16, "animate": 31, "talkable": 31, "wearable": 21, "container": 24, "supporter": 18, "door": 26, "scenery": 9, "enterable": 28 },
+        // transparent 14 = source TRANSBIT exact; native (grok1 #5073 grok1/transp/plundered.json): closed fence 111 LOOK IN shows the cage contents, closed leather bottle 121 gives its contents reply; T read at pc 29297; closed coffer 69 T=0 (flag-level negative, the visible reply auto-opens).
+        "attributeMap": { "open": 16, "isOpen": 16, "animate": 31, "talkable": 31, "wearable": 21, "container": 24, "supporter": 18, "door": 26, "scenery": 9, "enterable": 28, "transparent": 14 },
         "wornAttribute": 22,
         // Native i (walkthrough step 119, 2026-10-16-zil-inv-hidden-ops.json) tests bit9 TRUE on gunpowder 144 in the open
         // powder horn and laudanum 102 in the transparent bottle, omitting both; FALSE on 15 printed held items. Source
@@ -110,7 +111,8 @@ var ModuleStatFactsClaude = {
         // same walks. Source exact 10/10. Applied with openCapability so surfaces get no Open/Close.
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         // door 2 = source DOORBIT exact; native (grok2 r4-grok2/doorbit/Wishbringer.z3.js.json strict): toll gate 190 and stump 19 OPEN/CLOSE toggle OPENBIT 25; held small stone refuses ("How can you do that to a small stone?").
-        "attributeMap": { "container": 4, "open": 25, "isOpen": 25, "animate": 18, "supporter": 27, "wearable": 22, "door": 2 }
+        // transparent 23 = source TRANSBIT exact; native (grok1 #5073 grok1/transp/wishbringer.json): locked display case 209 "contains a sculpture", glass case 235 T=1 at the same pc; closed metal can 229 and envelope 43 (no bit) "is closed".
+        "attributeMap": { "container": 4, "open": 25, "isOpen": 25, "animate": 18, "supporter": 27, "wearable": 22, "door": 2, "transparent": 23 }
     },
     // Zork III (ZIL): OPENBIT 12: OPEN sets 12 on secret door, stone door, wooden door; CLOSE clears (wooden door). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     // WEARBIT 4 original scene (2026-10-11-zil-walk-n4.json): TAKE tests 4 TRUE on golden amulet 39, golden ring 82; FALSE on
@@ -254,7 +256,9 @@ var ModuleStatFactsClaude = {
         // NOT excluded: the rodent idol 78 is surface + container + openable and must keep Open/Close.
         "openCapability": { "all": ["container"], "none": ["animate"] },
         // scenery 19 = NDESCBIT (grok1 2026-10-24, user ruling 11:45 ET): native look in Jericho, object directly in room with NDESCBIT set, look omits it, trace shows the listing routine (historicalsource 6f83ba4 verbs.zil:1889 PRINT-CONT) testing NDESCBIT on that object at pc 54920 during that look, examine works. Positives 19:Orkan of Thriff, 21:sorcerer, 30:Gzornenplatz, 59:Hoobly; negative 238:cube (listed, bit clear, same pc). work/investigations/grok1/batch/cache-scenery3 run-spellbrkr.json, judge-scenery.json. Take unaffected (D214 TAKEBIT owns takeable).
-        "attributeMap": { "supporter": 3, "animate": 31, "talkable": 31, "on": 8, "container": 27, "open": 21, "isOpen": 21, "scenery": 19 }
+        // transparent 15 = source TRANSBIT exact; single reachable closed carrier (whole-source exception); native (grok1 #5063 transp/spellbrkr.json): closed bottle 145 LOOK IN lists the damp scroll; closed zipper 198 (no bit) "is closed".
+        // enterable 29 = source VEHBIT exact; native (grok1 #5067 grok1/enter/spellbreaker.json): ENTER GREEN ROCK -> on rock 42; SIT ON CARPET -> on carpet 95.
+        "attributeMap": { "supporter": 3, "animate": 31, "talkable": 31, "on": 8, "container": 27, "open": 21, "isOpen": 21, "scenery": 19, "transparent": 15, "enterable": 29 }
     },
     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
         // D232 local globals, roots only (r3-claude/localscope2 + grok2 registry-ready): property 17, holder 58. Native: Outside of
@@ -263,7 +267,8 @@ var ModuleStatFactsClaude = {
         "localScope": { "property": 17, "width": 1, "holder": 58, "roomLitAttribute": 8, "invisible": 16 },
         // light 22 / on 8 (codex #4349: FROTZ sets both on the battered lantern, candle carries both; bread/jug negatives).
         // door 24 = source DOORBIT exact; native (r3-claude/doorbit): cell door 202 toggles; iron gate 232 door-specific refusal.
-        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8, "door": 24 },
+        // enterable 29 = source VEHBIT exact; single carrier in object table (whole-source exception); native (grok1 #5066 grok1/enter/enchanter.json): ENTER FOURPOSTER BED -> in bed 133; bedpost refuses.
+        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8, "door": 24, "enterable": 29 },
         "openCapability": { "all": ["container"], "none": ["supporter"] },
     },
     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
@@ -298,7 +303,8 @@ var ModuleStatFactsClaude = {
         // talkable 31 = the proven animate bit (grok1 2026-10-24, item 4 talkable batch; same mapping as Spellbreaker/Stationfall): talk-command scoped,
         // native, test_attr recorded only during the named command (grok1/talk/talk-probe.json, no relocation): 'GNOME, HELLO' @79 tests gnome 245:31 TRUE ("Sleeping gnomes make poor listeners."), 'TWIN, HELLO' @208 tests your older self 26:31 TRUE (actor reply); 'BOOK, HELLO' @3 tests spell book 139:31 FALSE ("You can't talk to a spell book!") (2026-10-16-zil-inv-hidden-ops.json).
         // Source V-TELL / parser addressing tests this bit and refuses non-actors with "You can't talk to ...".
-        "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31, "talkable": 31, "wearable": 21, "on": 11, "door": 24 },
+        // enterable 29 = source VEHBIT exact; native (grok1 #5064 grok1/enter/sorcerer.json): ENTER BED -> in bed 128, ENTER LOG BOAT -> in boat 199; spell book and flume refuse.
+        "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31, "talkable": 31, "wearable": 21, "on": 11, "door": 24, "enterable": 29 },
         // Native amulet/suit inventory marks direct-held WEARBIT gear worn;
         // amulet dropped or nested in the carried box is not worn (no state bit).
         "equipmentState": { "wornWhen": "wearable-direct-player" },
@@ -326,7 +332,7 @@ var ModuleStatFactsClaude = {
         // the Open/Close none list (tables, desks, mantel, workbench are not openable).
         // door 27 = source DOORBIT exact; native (codex door-suspect-native.json): east/west entry hall doors 241/240 toggle 13; ribbon refuses.
         // enterable 28 = source VEHBIT exact 9/9; native (grok1 #5014 grok1/enter/suspect.json): ENTER CHAIR -> player in chair 153, SIT ON WINDOW SEAT -> 233; ENTER BOOKCASE refused.
-        "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15, "door": 27, "enterable": 28 },
+        "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15, "door": 27 },
         "inventoryHiddenAttribute": 19,
         "inventoryHiddenPreservesWorn": true
     },
@@ -446,7 +452,8 @@ var ModuleStatFactsClaude = {
         // door 27 = source DOORBIT exact; native (codex door-stationfall-qualified.json): spacetruck hatch 176 and warehouse inner door 79 OPEN/CLOSE toggle OPENBIT 15; sign refuses. Automatic door 21 and the iris refuse manual OPEN (harmless extras).
         // enterable 29 = source VEHBIT exact; native (grok1 #5001 grok1/enter/stationfall.json): carriers 50 and 90 ENTER moves the player inside, non-carrier refuses.
         // supporter 17 = source SURFACEBIT exact, 2 carriers in source (pedestal, counter); native (grok2 #5008 nq/supporter-Stationfall.json): PUT CHRONOMETER ON PEDESTAL works, ID card refuses; whole-source exception.
-        "attributeMap": { "wearable": 20, "animate": 31, "talkable": 31, "light": 24, "container": 25, "open": 15, "isOpen": 15, "scenery": 10, "door": 27, "enterable": 29, "supporter": 17 },
+        // transparent 13 = source TRANSBIT exact; single closed carrier in source (whole-source exception, claude #5044); native (grok1 transp/stationfall.json): closed cage 9 LOOK IN shows the balloon creature; closed safe 123 refuses.
+        "attributeMap": { "wearable": 20, "animate": 31, "talkable": 31, "light": 24, "container": 25, "open": 15, "isOpen": 15, "scenery": 10, "door": 27, "enterable": 29, "supporter": 17, "transparent": 13 },
         "playerGlobal": 183,
         "wornAttribute": 21
     },
@@ -476,7 +483,7 @@ var ModuleStatFactsClaude = {
         // talkable 42 = the proven animate bit (grok1 2026-10-24, item 4 talkable batch; same mapping as Spellbreaker/Stationfall): talk-command scoped,
         // native, test_attr recorded only during the named command (grok1/talk/talk-probe.json, no relocation): 'ford, hello' @18 tests Ford Prefect 20:42 TRUE ("Hello to you too."), 'barman, hello' / 'tell barman' @22 test barman 230:42 TRUE, 'prosser, hello' @13 tests Mr. Prosser 155:42 TRUE; 'tell gown' @18 tests your gown 206:42 FALSE ("You can't talk to your gown!").
         // Source V-TELL / parser addressing tests this bit and refuses non-actors with "You can't talk to ...".
-        "attributeMap": { "open": 39, "isOpen": 39, "animate": 42, "talkable": 42, "container": 40, "supporter": 23, "wearable": 25 },
+        "attributeMap": { "open": 39, "isOpen": 39, "animate": 42, "talkable": 42, "container": 40, "supporter": 23, "wearable": 25, "enterable": 28 },
         "wornAttribute": 24,
         // Native i (walkthrough step 60) tests bit44 TRUE on guarantee 18, green 128 / red 197 button inside the Sub-Etha
         // device 211 and omits them; FALSE on satchel, gown, fluff, thing, device, all printed. Source NDESCBIT 44 exact (77/77).
