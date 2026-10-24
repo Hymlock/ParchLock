@@ -222,7 +222,8 @@ var ModuleStatFactsClaude = {
         "attributeObjects": { "switchable": [110] },
         "capabilityForms": { "switchable": ["turn on", "turn off"] },
         "activationState": { "onObjects": [110] },
-        "attributeMap": { "open": 15, "isOpen": 15, "supporter": 17, "animate": 31, "enterable": 29, "container": 24, "door": 26, "on": 30 }
+        // wearable 20 = WEARBIT exact; native (grok1 #5090 grok1/open/lgop-wear.json): overalls 134 and white suit 170 read 20=1 (worn 21 toggles separately); stool/flashlight read 0.
+        "attributeMap": { "open": 15, "isOpen": 15, "supporter": 17, "animate": 31, "enterable": 29, "container": 24, "door": 26, "on": 30, "wearable": 20 }
     },
     // Spellbreaker (ZIL): Q8 player root = constant PLAYER object 52 (historicalsource/spellbreaker 6f83ba4 globals.zil 324 OBJECT PLAYER
     // DESC "it"). No PLAYER global; WINNER G197 is mutable (globals.zil 923/928 BELBOZ, verbs.zil 334/359 PRSO). Native TAKE puts the
@@ -532,7 +533,8 @@ var ModuleStatFactsClaude = {
         "capabilityForms": { "switchable": ["turn on", "turn off"] },
 // scenery 8 = NDESCBIT (grok1 2026-10-24 user scenery ruling 11:45; g1-batch look + test_attr/print_obj trace, grok1/batch/cache-scenery4|5 judge-scenery.json): pos crevice 159, padlock 172, safety web 215 (look omits, pc 48473); neg old battery 7, towel 214 (listed, same pc). Listing routine: historicalsource 7e7af12 verbs.zil:162 PRINT-CONT.
         // climbable 29 = CLIMBBIT exact; native bare (grok1 #5082): CLIMB STAIRWAY 249 -> Courtyard, CLIMB SAFETY WEB 215 contextual; canteen 163 (bit 0) refused.
-        "attributeMap": { "wearable": 22, "open": 11, "isOpen": 11, "container": 24, "animate": 31, "enterable": 30, "door": 26, "scenery": 8, "climbable": 29 }
+        // edible 27 = FOODBIT exact; native (grok1 #5090 grok1/open/planetfall-edible.json): bare EAT FIND reads 27=1 on red goo 212 and brown goo 211; canteen 163 negative.
+        "attributeMap": { "wearable": 22, "open": 11, "isOpen": 11, "container": 24, "animate": 31, "enterable": 30, "door": 26, "scenery": 8, "climbable": 29, "edible": 27 }
     },
     // Hollywood Hijinx (ZIL): WEARBIT 22 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).
     "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e": {
@@ -550,7 +552,9 @@ var ModuleStatFactsClaude = {
         "capabilityForms": { "switchable": ["turn on", "turn off"] },
         "activationState": { "onObjects": [123] },
 // scenery 16 = NDESCBIT (grok1 2026-10-24 user scenery ruling 11:45; g1-batch look + test_attr/print_obj trace, grok1/batch/cache-scenery4|5 judge-scenery.json): pos small pond 14, orchids 104, bazooka 114, doorbell 228 (look omits, pc 36783); neg business card 63, Status Line 181 (listed, same pc). Listing routine: historicalsource e93d085 verbs.zil:211 DESCRIBABLE?.
-        "attributeMap": { "wearable": 22, "animate": 18, "supporter": 27, "door": 10, "on": 20, "scenery": 16 },
+        // open 25 = OPENBIT (tp19 fp0 fn1, under-report only); native (grok1 #5090 grok1/open/hollywood-open.json): mailbox 225 reads 25=1 and CLOSE clears it; oak door 117 reads 0 while locked; doorbell negative.
+        // isOpen 25 = same OPENBIT state.
+        "attributeMap": { "wearable": 22, "animate": 18, "supporter": 27, "door": 10, "on": 20, "scenery": 16, "open": 25, "isOpen": 25 },
         // WORNBIT state14: independent native ring127/skis188 wear+remove, flashlight123 refused; Grok4120 proposal, Codex October20 audit.
         "wornAttribute": 14
     },
@@ -628,7 +632,10 @@ var ModuleStatFactsClaude = {
         "capabilityForms": { "switchable": ["turn on", "turn off"] },
         // scenery 23 = NDESCBIT (grok1 2026-10-24, user ruling 11:45 ET): native look in Jericho, object directly in room with NDESCBIT set, look omits it, trace shows the listing routine (historicalsource 3ceaa9f verbs.zil:134 PRINT-CONT) testing NDESCBIT on that object at pc 24111 during that look, examine works. Positives 22:small bump, 56:seat belt; negative 71:tape library (listed, bit clear, same pc). work/investigations/grok1/batch/cache-scenery3 run-starcross.json, judge-scenery.json. Take unaffected (D214 TAKEBIT owns takeable).
         // enterable 15 = source VEHBIT exact; native (grok1 #5000 grok1/enter/starcross.json): carriers 123 and 128 ENTER moves the player inside, non-carrier refuses.
-        "attributeMap": { "animate": 11, "scenery": 23, "enterable": 15 },
+        // climbable 22 = CLIMBBIT exact; native bare (grok1 #5089 grok1/climb/starcross.json): CLIMB UP in Repair Room reads 22=1 on stairs 155, moves to Thin Forest; held tape library "Bizarre!". Other carriers unreached (low risk).
+        // open 9 = OPENBIT exact; native (grok1 #5090 grok1/open/starcross-open.json): inner door 39 and access panel 29 toggle 9 both ways; tape library / space suit negatives.
+        // isOpen 9 = same OPENBIT state.
+        "attributeMap": { "animate": 11, "scenery": 23, "enterable": 15, "climbable": 22, "open": 9, "isOpen": 9 },
         // Grok4124 design, new native two-owner proof: normal144 and tattered176; held library71/basket40 negative.
         "wornAttribute": 24
     },
