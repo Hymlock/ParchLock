@@ -1,0 +1,160 @@
+{
+ "title": "HollywoodHijinx",
+ "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+ "flag": "supporter (SURFACEBIT)",
+ "bit": 27,
+ "containerBitSource": 4,
+ "method": "drive.cjs headless Chromium, ordinary commands only; snapshot bits c=containerBit o=surface a=animate",
+ "appRowNow": {
+  "attributeMap": {
+   "wearable": 22,
+   "animate": 18
+  },
+  "openCapability": {
+   "all": [
+    "container"
+   ],
+   "none": [
+    "supporter",
+    "animate"
+   ]
+  }
+ },
+ "carriersInitial": [
+  {
+   "id": 9,
+   "name": "white wax statuette",
+   "parent": 194,
+   "containerBit": 1
+  },
+  {
+   "id": 69,
+   "name": "",
+   "parent": 0,
+   "containerBit": 1
+  },
+  {
+   "id": 82,
+   "name": "blue wax statuette",
+   "parent": 194,
+   "containerBit": 1
+  },
+  {
+   "id": 128,
+   "name": "bed",
+   "parent": 54,
+   "containerBit": 1
+  },
+  {
+   "id": 184,
+   "name": "red wax statuette",
+   "parent": 194,
+   "containerBit": 1
+  },
+  {
+   "id": 194,
+   "name": "mantle",
+   "parent": 80,
+   "containerBit": 1
+  },
+  {
+   "id": 207,
+   "name": "pile of cannon balls",
+   "parent": 219,
+   "containerBit": 1
+  },
+  {
+   "id": 211,
+   "name": "table",
+   "parent": 35,
+   "containerBit": 1
+  }
+ ],
+ "evidence": [
+  {
+   "run": "_hh.run.json",
+   "cmd": "put photo on table",
+   "room": 35,
+   "reply": ">put photo on table Done. > ",
+   "diff": [
+    {
+     "id": 67,
+     "n": "photo of Uncle Buddy",
+     "parent": [
+      52,
+      211
+     ]
+    }
+   ]
+  },
+  {
+   "run": "_hh.run.json",
+   "cmd": "put card on walnut table",
+   "room": 35,
+   "reply": ">put card on walnut table Done. > ",
+   "diff": [
+    {
+     "id": 63,
+     "n": "business card",
+     "parent": [
+      52,
+      211
+     ]
+    }
+   ]
+  },
+  {
+   "run": "_hh.run.json",
+   "cmd": "put photo on mantle",
+   "room": 80,
+   "reply": ">put photo on mantle Done. > ",
+   "diff": [
+    {
+     "id": 67,
+     "n": "photo of Uncle Buddy",
+     "parent": [
+      52,
+      194
+     ]
+    }
+   ]
+  },
+  {
+   "run": "_hh.run.json",
+   "cmd": "put photo on red statuette",
+   "room": 80,
+   "reply": ">put photo on red statuette There's no room. > ",
+   "diff": []
+  },
+  {
+   "run": "_hh.run.json",
+   "cmd": "put photo on letter",
+   "room": 80,
+   "reply": ">put photo on letter There's no good surface on Aunt Hildegarde's letter. > ",
+   "diff": []
+  },
+  {
+   "run": "_hh.run.json",
+   "cmd": "put photo on flashlight",
+   "room": 80,
+   "reply": ">put photo on flashlight There's no good surface on the flashlight. > ",
+   "diff": []
+  },
+  {
+   "run": "_hh.run.json",
+   "cmd": "put photo on sofa",
+   "room": 80,
+   "reply": ">put photo on sofa There's no good surface on the sofa. > ",
+   "diff": []
+  },
+  {
+   "run": "_hh.run.json",
+   "cmd": "put photo on telephone",
+   "room": 80,
+   "reply": ">put photo on telephone There's no good surface on the telephone. > ",
+   "diff": []
+  }
+ ],
+ "status": "CONFIRMED",
+ "notes": "put photo on table -> Done. (parent 211); put card on walnut table -> Done.; put photo on mantle -> Done. (parent 194). Negatives: letter/flashlight/sofa/telephone -> There's no good surface on the X. Concern: all 8 carriers also carry source CONTBIT 4 (app row maps no container), incl. 3 wax statuettes (9,82,184) which pass the surface check but reply There's no room. -> app would offer Put on that always fails. Door needs statue turned west,east,north first (Jericho walkthrough omits it)."
+}

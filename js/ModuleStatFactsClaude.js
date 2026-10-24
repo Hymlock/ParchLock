@@ -281,8 +281,11 @@ var ModuleStatFactsClaude = {
         // IN fireplace, pen IN trash basket succeed with parent change; gunbelt and fireplace CLOSE/OPEN toggle 13; notebook (no 16)
         // refuses open/put-in. Source exact 33/33, 36/36, PERSON carriers are the characters. Actors carrying CONTBIT (Alicia,
         // Veronica's body) are excluded from Open/Close by animate. Supporter 15 not mapped (no native evidence yet).
-        "openCapability": { "all": ["container"], "none": ["animate"] },
-        "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31 },
+        "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
+        // SURFACEBIT 15 (claude 2026-10-24, r3-claude/animate-supporter/Suspect.json): PUT notebook ON table / ON mantel -> "Okay."
+        // (parent changes); pen-on-notebook refused. Source exact 11 of 11. 10 surfaces also carry CONTBIT 16, so supporter joins
+        // the Open/Close none list (tables, desks, mantel, workbench are not openable).
+        "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15 },
         "inventoryHiddenAttribute": 19,
         "inventoryHiddenPreservesWorn": true
     },
@@ -464,7 +467,10 @@ var ModuleStatFactsClaude = {
         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): container - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
         // CONTBIT 4: TRUE on mailbox, small compartment, cannon, pile of cannon balls; FALSE on doorbell, Status Line. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         // Grok4112 independently audited: native SEARCH Herman163/Aunt126 tests18 true; buzz saw152 false. No room owners.
-        "attributeMap": { "wearable": 22, "animate": 18 },
+        // SURFACEBIT 27 (claude 2026-10-24, r3-claude/animate-supporter/HollywoodHijinx.json, ordinary commands): PUT photo ON table and
+        // ON mantle -> "Done." (parent changes); letter, flashlight, sofa, telephone refuse ("no good surface"). Source exact 7 of 7.
+        // The three wax statuettes carry it but refuse ("no room"): disclosed harmless extra Put on.
+        "attributeMap": { "wearable": 22, "animate": 18, "supporter": 27 },
         // WORNBIT state14: independent native ring127/skis188 wear+remove, flashlight123 refused; Grok4120 proposal, Codex October20 audit.
         "wornAttribute": 14
     },

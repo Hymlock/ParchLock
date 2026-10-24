@@ -385,10 +385,12 @@ var ActionSynth = {
         // are not inside. Inside -> "get out of X" (when the dictionary has both
         // words), outside -> Enter only. Unknown player/parent keeps both offers.
         // ZIL only: Inform grammar has "get out" / "get off X" but no "get out of X".
-        var memE = null;
-        try { memE = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null; } catch (eMemE) { memE = null; }
-        if ((verbs.indexOf("enter") >= 0 || verbs.indexOf("exit") >= 0) && memE &&
-            !(ZRamReader.isInformCompiled && ZRamReader.isInformCompiled(memE))) {
+        var memE = null, zilE = false;
+        try {
+            memE = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null;
+            zilE = !!memE && !(ZRamReader.isInformCompiled && ZRamReader.isInformCompiled(memE));
+        } catch (eMemE) { zilE = false; }
+        if ((verbs.indexOf("enter") >= 0 || verbs.indexOf("exit") >= 0) && zilE) {
             var inside = null;
             try {
                 var pl = memE && ZRamReader.resolvePlayer(memE);
