@@ -1,0 +1,170 @@
+{
+  "tier": "Fresh ordinary commands; no snapshots, VM/object/fact writes or RNG overrides. Post-exposure independent validation, not blind.",
+  "rows": [
+    {
+      "command": "take carton",
+      "before": {
+        "58": {
+          "parent": 86,
+          "open": true
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "after": {
+        "58": {
+          "parent": 86,
+          "open": true
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "reply": [
+        ">CLOSE OVEN",
+        "Okay, the microwave oven is now closed.",
+        " ",
+        ">take carton",
+        "You can't reach that!",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "eat chinese food",
+      "before": {
+        "58": {
+          "parent": 86,
+          "open": true
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 58,
+          "open": false
+        }
+      },
+      "after": {
+        "58": {
+          "parent": 86,
+          "open": true
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 0,
+          "open": false
+        }
+      },
+      "reply": [
+        ">take carton",
+        "You can't reach that!",
+        " ",
+        ">eat chinese food",
+        "It's very (chemically) hot, spicy, and cold. You immediately want to drink something to wash it down.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "close carton",
+      "before": {
+        "58": {
+          "parent": 86,
+          "open": true
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 0,
+          "open": false
+        }
+      },
+      "after": {
+        "58": {
+          "parent": 86,
+          "open": false
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 0,
+          "open": false
+        }
+      },
+      "reply": [
+        ">eat chinese food",
+        "It's very (chemically) hot, spicy, and cold. You immediately want to drink something to wash it down.",
+        " ",
+        ">close carton",
+        "Closed.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "open carton",
+      "before": {
+        "58": {
+          "parent": 86,
+          "open": false
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 0,
+          "open": false
+        }
+      },
+      "after": {
+        "58": {
+          "parent": 86,
+          "open": false
+        },
+        "86": {
+          "parent": 33,
+          "open": false
+        },
+        "90": {
+          "parent": 0,
+          "open": false
+        }
+      },
+      "reply": [
+        ">close carton",
+        "Closed.",
+        " ",
+        ">open carton",
+        "You can't get to that!",
+        " ",
+        "> "
+      ]
+    }
+  ],
+  "ready": {
+    "overlay": false,
+    "input": true
+  },
+  "status": "PASS: Take/Open refuse, Eat (open carton) and Close succeed through closed oven; no all-verbs success claim"
+}
