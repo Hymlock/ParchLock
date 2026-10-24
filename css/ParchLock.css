@@ -4806,6 +4806,9 @@ body.light.world-open #world-map { background: #f4f1e8; color: #222; }
 #world-map .world-lines { position: absolute; left: 0; top: 0; overflow: visible; color: var(--pl-accent, #74d4b3); }
 #world-map .world-edge { stroke: currentColor; stroke-width: 2; fill: none; opacity: 0.8; }
 #world-map .world-edge.dotted { stroke-dasharray: 3 5; opacity: 0.55; }
+/* Locked R2: a live-locked exit (map only; travel still pauses in Navigator). */
+#world-map .world-edge.locked { stroke-width: 3; }
+#world-map .world-edge-lock { font-size: 12px; text-anchor: middle; pointer-events: none; }
 #world-map .world-edge-label { fill: currentColor; font-size: 11px; text-anchor: middle; opacity: 0.85; }
 #world-map .world-nodes { position: absolute; left: 0; top: 0; }
 #world-map .world-room {

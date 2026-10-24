@@ -456,11 +456,24 @@ var MapTopology = {
             });
             if (blocked) return;
         }
+        var priorDoorId = from.ExitMeta[dir] && from.ExitMeta[dir].doorObjectId;
         from.ExitMeta[dir] = Object.assign({}, from.ExitMeta[dir] || {}, meta, {
             isNonCardinal: !MapTopology.isCardinal(dir),
             label: dir,
             command: command
         });
+        // Locked R2: lock state is an observation, not a sticky fact. A payload
+        // exit replaces it: true sets it, false or unknown clears it (and the
+        // legacy `locked`), so an older door's state is never inherited.
+        // Scoped to exits that carry, or previously carried, a ZIL door identity:
+        // losing that identity must not leave an old lock behind. Inform exits
+        // never carry one and are unchanged.
+        if (meta && (meta.doorObjectId != null || priorDoorId != null) &&
+            Object.prototype.hasOwnProperty.call(meta, "isLocked") && meta.isLocked !== true) {
+            delete from.ExitMeta[dir].isLocked;
+            delete from.ExitMeta[dir].locked;
+            if (meta.doorObjectId == null) delete from.ExitMeta[dir].doorObjectId;
+        }
         // World map (bus #1884/#1886): `source` is the LATEST observation, so a
         // later look-ahead overwrote the proof that this exit was walked. Keep
         // that proof separately, bound to the destination it reached: a real
@@ -693,7 +706,10 @@ var MapTopology = {
                 fromId: payload.roomId,
                 toId: ex.targetRoomId,
                 isDoor: !!ex.isDoor,
-                isLocked: !!ex.isLocked,
+                // Locked R2: true / false / unknown (undefined). Unknown is not coerced to
+                // false; link() lets the latest observation replace an older one.
+                isLocked: ex.isLocked === true ? true : ex.isLocked === false ? false : undefined,
+                doorObjectId: ex.doorObjectId,
                 confidence: ex.confidence,
                 source: raw && raw.source === "i7-mapstorage" ? "i7-mapstorage" : "ram-lookahead",
                 prop: ex.prop,

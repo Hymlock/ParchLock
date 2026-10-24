@@ -120,7 +120,7 @@ var WorldMap = {
                 if (!target || !keyOf.has(target)) return;
                 var meta = r.ExitMeta && r.ExitMeta[dir];
                 edges.push({ from: keyOf.get(r), to: keyOf.get(target), dir: dir, evidence: WorldMap.evidence(r, dir),
-                    command: (meta && meta.command) || dir });
+                    command: (meta && meta.command) || dir, locked: WorldMap.isLockedMeta(meta) });
             });
             // Decoder geography is a read-only hint graph, never the route
             // Exits[] graph. Bind by real ObjectId rather than array index.
@@ -129,7 +129,8 @@ var WorldMap = {
                 if (!meta.hintOnly || meta.toId == null || (r.Exits || {})[dir] != null) return;
                 var target = rooms.find(function (room) { return room.HasRealId && String(room.ObjectId) === String(meta.toId); });
                 if (!target || target === r || !keyOf.has(target)) return;
-                edges.push({ from: keyOf.get(r), to: keyOf.get(target), dir: dir, evidence: 'hinted', command: meta.command || dir });
+                edges.push({ from: keyOf.get(r), to: keyOf.get(target), dir: dir, evidence: 'hinted', command: meta.command || dir,
+                    locked: WorldMap.isLockedMeta(meta) });
             });
         });
         // Stored cells: valid ones only, first room wins a duplicate cell.
@@ -267,10 +268,17 @@ var WorldMap = {
         return !!(room && (room.WorldVisited || room === current));
     },
 
+    // Locked R2: only a positive live observation of a ZIL DEXIT's own door
+    // (doorObjectId) draws a lock; unknown draws none, and Inform exits, whose
+    // lock comes from destination attrs, stay as they were.
+    isLockedMeta: function (meta) {
+        return !!(meta && meta.doorObjectId != null && (meta.isLocked === true || meta.locked === true));
+    },
+
     paintSignature: function (g, current) {
         return JSON.stringify([WorldMap._layoutSig, WorldMap._level, current ? WorldMap.keyFor(current) : null,
             g.rooms.map(function (r) { return [r.Name, (r.Notes || []).length, WorldMap.isVisited(r, current) ? 1 : 0]; }),
-            WorldMap._selected]);
+            WorldMap._selected, (g.edges || []).map(function (e) { return e.locked ? 1 : 0; }).join("")]);
     },
 
     // Called on open and from ParchLockMap.RefreshMapPanels while open.
@@ -403,7 +411,7 @@ var WorldMap = {
                 var r = g.edges[j];
                 if (j !== i && r.from === e.to && r.to === e.from && mergeable(r, j)
                     && (WorldMap._edgeKinds[j] || "straight") === (WorldMap._edgeKinds[i] || "straight")
-                    && dottedOf(r) === dottedOf(e)) return j;
+                    && dottedOf(r) === dottedOf(e) && !!r.locked === !!e.locked) return j;
             }
             return -1;
         };
@@ -441,11 +449,21 @@ var WorldMap = {
                 var endS = trim(p, q);
                 el.setAttribute("x1", p.x); el.setAttribute("y1", p.y); el.setAttribute("x2", endS.x); el.setAttribute("y2", endS.y);
             }
-            el.setAttribute("class", "world-edge" + (dotted ? " dotted" : "") + (kind === "bent" ? " bent" : ""));
+            el.setAttribute("class", "world-edge" + (dotted ? " dotted" : "") + (kind === "bent" ? " bent" : "") + (e.locked ? " locked" : ""));
             el.setAttribute('data-from', e.from);
             el.setAttribute('data-to', e.to);
             if (!twoWay) el.setAttribute("marker-end", "url(#world-arrow)");
             svg.appendChild(el);
+            if (e.locked) {
+                // Lock glyph at the line's midpoint (Locked R2): live state only.
+                var lock = document.createElementNS(ns, "text");
+                lock.setAttribute("x", (p.x + q.x) / 2);
+                lock.setAttribute("y", (p.y + q.y) / 2 + 4);
+                lock.setAttribute("class", "world-edge-lock");
+                lock.setAttribute("aria-label", "locked");
+                lock.textContent = "🔒";
+                svg.appendChild(lock);
+            }
             if (kind === "labelled") {
                 // Several commands between one pair stack instead of overlapping.
                 var pairKey = [e.from, e.to].sort().join("|"), n = labelsAt[pairKey] = (labelsAt[pairKey] || 0) + 1;

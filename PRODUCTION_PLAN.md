@@ -9567,3 +9567,29 @@ the room being read, where W is not the dest, roomId, the player, the root or a 
 own U/D exit table. No live payload -> fail closed. The witness index is built once per call, only when an equality
 candidate exists, and never cached. Output stays hintOnly (no route until travelled). Census: 18 new hints, all
 Moonmist; physical doors 120/128 never qualify. Harness: harness/d214-room-door-alias.js.
+
+## D241 ZIL locked doors on the map (locked R2 phase 1)
+
+**Lifecycle:** the r27 audit showed mapped ZIL `locked` facts had no visible effect: navigation read locked on the exit's
+DESTINATION, and in ZIL that is the room, not the door (the door sits in the DEXIT door slot). Blind halves by claude
+and codex, compare, proposal R1 -> codex OBJECT -> R2 (freshness, identity, paint, twin), codex conditions (true object
+frontier, stable-header ownership via executableLayoutFacts, no digest fallback). Implemented by claude; codex early
+inspections #5146/#5147/#5150/#5155 and the independent audit (Inform scope) fixed before the final freeze; codex native
+ACCEPT #5161 (LH 41-command route with SAVE/RESTORE); isolated 309x2 gate FLAKY-only, Inform unchanged.
+**Contract.** ExitCalibrator._d214DoorLocked reads the live locked bit of a DEXIT's own door object, only for a confirmed
+ZIL family, on the live memory, with an exact-digest locked fact, inside the true object frontier; otherwise unknown.
+A learned (calibrated) exit with the same label/prop/destination takes the DEXIT's door identity and live lock. Lock is an
+observation: true sets it; false or unknown clears isLocked and legacy locked, when the incoming or prior exit carries a
+ZIL doorObjectId (Inform unchanged). WorldMap draws a lock glyph only for a positive ZIL door observation and repaints on
+change; twins with different lock state are not merged. Navigator unchanged (pauses on locked). LH binds hatch 119 and
+roof door 163, never the detached padlock 135. Harness: harness/zil-locked-map.js. Phase 2 (object "Locked" status)
+remains open.
+
+## D242 Per-title enter forms (sit on)
+
+**Lifecycle:** enter-form R1 by claude, grok1 OBJECT (D236 ordering, exit override not needed, Deadline separate), R2
+consensus #5116; code in r28 (6bf8a98); ownership fix (no digest fallback) in r30. Facts: The Witness enterable 29 and
+Deadline enterable 12, both enterForms {enter: "sit on"} (grok1 #5135, #5149).
+**Contract.** After the D236 inside/outside filter, a ZIL title's fact.enterForms.enter replaces the "enter" token, kept
+only if every word is in the dictionary; exit stays D236's "get out of X". No fact or a malformed fact leaves behaviour
+unchanged. "sit on" maps to the ENTER intent. Harness: harness/zil-enter-forms.js.

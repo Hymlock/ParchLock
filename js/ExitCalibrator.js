@@ -254,6 +254,35 @@ var ExitCalibrator = {
         } };
     },
 
+    // Locked R2 (claude+codex): the live locked bit of a DEXIT's own door object, or
+    // null (unknown). Only for a confirmed ZIL title whose exact-digest fact maps
+    // `locked`, on the live memory, with the door inside the true object frontier
+    // (first property pointer), never objectCount's heuristic. Never coerces unknown.
+    _d214DoorLocked: function (mem, door) {
+        try {
+            var R = ZRamReader, h = R.header(mem), size = mem && (mem.byteLength || mem.length);
+            if (!h || [3, 4, 5].indexOf(h.version) < 0 || !size) return null;
+            var family = GrammarProvider.decodeD198(mem);
+            if (!family || family.classification !== 'confirmed-zil-family' || family.evidence !== 'validated') return null;
+            if (typeof ZRamProvider !== 'undefined' && ZRamProvider.getMem) {
+                var live = ZRamProvider.getMem();
+                if (live !== mem && !(live && live.buffer && mem.buffer && live.buffer === mem.buffer &&
+                    live.byteOffset === mem.byteOffset && live.byteLength === mem.byteLength)) return null;
+            }
+            // Stable-header ownership (executableLayoutFacts) is required; no digest-only fallback.
+            var fact = R.executableLayoutFacts && R.executableLayoutFacts(mem);
+            var bit = fact && fact.attributeMap && fact.attributeMap.locked;
+            if (!Number.isInteger(bit) || bit < 0 || bit >= (h.version <= 3 ? 32 : 48)) return null;
+            var first = R.objectBase(h, 1), pointerOffset = h.version <= 3 ? 7 : 12;
+            if (!Number.isInteger(first) || first < 0 || first > size - h.entrySize) return null;
+            var firstProps = R.u16(mem, first + pointerOffset), count = (firstProps - first) / h.entrySize;
+            if (!Number.isInteger(count) || count < 2 || firstProps >= h.staticMem) return null;
+            if (!Number.isInteger(door) || door < 2 || door > count) return null;
+            var at = R.objectBase(h, door) + (bit >> 3);
+            return !!(R.u8(mem, at) & (128 >> (bit & 7)));
+        } catch (e) { return null; }
+    },
+
     _d214ZilExitsFor: function (mem, roomId, stats) {
         try {
             if (typeof GrammarProvider === 'undefined' || !GrammarProvider.d214DirectionProperties) return [];
@@ -291,9 +320,14 @@ var ExitCalibrator = {
                         }
                     }
                 }
-                out.push({ label: entry.label, command: entry.label, prop: entry.prop, targetRoomId: dest, targetRoomName: name,
+                var hint = { label: entry.label, command: entry.label, prop: entry.prop, targetRoomId: dest, targetRoomName: name,
                     isDoor: kind === 'D', doorObjectId: door, conditional: kind === 'C' || kind === 'D',
-                    hinted: true, hintOnly: true, roomHintSourceId: roomId, confidence: 0.8, source: 'd214-zil-exit-hint', exitForm: kind });
+                    hinted: true, hintOnly: true, roomHintSourceId: roomId, confidence: 0.8, source: 'd214-zil-exit-hint', exitForm: kind };
+                if (kind === 'D') {
+                    var locked = ExitCalibrator._d214DoorLocked(mem, door);
+                    if (locked !== null) hint.isLocked = locked;
+                }
+                out.push(hint);
             });
             return out;
         } catch (e) { return []; }
@@ -590,11 +624,24 @@ var ExitCalibrator = {
             if (mode === "shadow") {
                 ExitCalibrator._d198ShadowSnapshot = ExitCalibrator._d198Clone({ roomId: roomId, exits: hints });
             } else {
-                var labels = {};
-                out.forEach(function (exit) { labels[String(exit.label || "").toLowerCase()] = true; });
+                var labels = {}, byLabel = {};
+                out.forEach(function (exit) {
+                    var key = String(exit.label || "").toLowerCase();
+                    labels[key] = true; byLabel[key] = exit;
+                });
                 hints.forEach(function (exit) {
                     var label = String(exit.label || "").toLowerCase();
-                    if (!labels[label]) { labels[label] = true; out.push(exit); }
+                    if (!labels[label]) { labels[label] = true; out.push(exit); return; }
+                    // Locked R2: a learned exit keeps its route, but the same compiled
+                    // DEXIT's own door identity and live lock state replace the
+                    // destination-room attrs (in ZIL the room is not the door).
+                    var learned = byLabel[label];
+                    if (learned && exit.exitForm === 'D' && exit.doorObjectId != null &&
+                        learned.prop === exit.prop && String(learned.targetRoomId) === String(exit.targetRoomId)) {
+                        learned.doorObjectId = exit.doorObjectId;
+                        if (typeof exit.isLocked === 'boolean') learned.isLocked = exit.isLocked;
+                        else delete learned.isLocked;
+                    }
                 });
             }
         }

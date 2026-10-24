@@ -607,7 +607,10 @@ var ModuleStatFactsClaude = {
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
         // scenery 25 = NDESCBIT exact (grok1 scenery3): LOOK omits cabinets/portraits/wood pile/fireplace, EXAMINE works.
         // door 22 = source DOORBIT exact; native (codex #5036 resume/door-deadline-qualified.json): front door 245 and closet door 215 OPEN/CLOSE toggle open 28 while bit 22 is set; OPEN ME (self 160, no bit 22) refused.
-        "attributeMap": { "open": 28, "isOpen": 28, "container": 21, "supporter": 29, "animate": 20, "scenery": 25, "door": 22 }
+        // enterable 12 = source VEHBIT exact; native (grok1 #5149 routes/cache/dls*): SIT ON moves the player into bed 34, bathtub 105, toilet 209, bed 211, sofa 200 (V-CLIMB-ON reads 12=1); lounge 33, chair 212, counter 104 read 0 and refuse; GET OUT OF native on all five. ENTER refused (hits head), hence enterForms.
+        // enterForms (enter-form R2, grok1 #5116 consensus): the game refuses ENTER on every carrier; SIT ON is its enter verb.
+        "enterForms": { "enter": "sit on" },
+        "attributeMap": { "open": 28, "isOpen": 28, "container": 21, "supporter": 29, "animate": 20, "scenery": 25, "door": 22, "enterable": 12 }
     },
     // The Witness (ZIL): OPENBIT 8 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match). CONTBIT 9 proven but held until supporter is proven (as Deadline).
     // The Witness (ZIL): constant PLAYER object 79 (historicalsource/witness 8fe092a people.zil 73 OBJECT PLAYER
@@ -624,7 +627,10 @@ var ModuleStatFactsClaude = {
     "2290bb3440ac66e14d54d41dbde575066ebdbdc42138ec899496e359bc484824": {
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
         // locked 17 = LOCKED exact; native (grok1 #5096 grok1/locked/witness-locked.json): front door 231 and office back door 213 read 17=1 ("unlock it first"); bedroom door 171 reads 0 and opens. Only the ROOMS container 249 (never a destination) carries 17; no room does.
-        "attributeMap": { "open": 8, "isOpen": 8, "container": 9, "supporter": 16, "animate": 31, "locked": 17 },
+        // enterable 29 = source VEHBIT exact 11/11; native (grok1 #5135, routes/cache/ws*): SIT ON moves the player into 9 carriers (lounge 104, wooden chair 110, club chair 164, davenport 165, bench 155, table 156, bed 190 ("sit on bed"; four-poster 173 needs rephrase), bathtub 179, toilet 245) reading 29=1; carved chair 111 is Linder-intercepted (native); desk refuses; GET OUT OF LOUNGE native. ENTER refuses everywhere (V-THROUGH), hence enterForms.
+        // enterForms (enter-form R2, grok1 #5116 consensus): the game refuses ENTER on every carrier; SIT ON is its enter verb.
+        "enterForms": { "enter": "sit on" },
+        "attributeMap": { "open": 8, "isOpen": 8, "container": 9, "supporter": 16, "animate": 31, "locked": 17, "enterable": 29 },
         "playerObject": 79
     },
     // Starcross (Infocom v3): animate 11 = VICBIT (grok1 2026-10-17; route agent-tools/g1-routes.json 'scs' = zil-routes starcross with

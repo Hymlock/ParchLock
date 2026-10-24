@@ -92,11 +92,8 @@ var ActionSynth = {
     // The title's measured enter verb (fact enterForms.enter), or null.
     enterFormFor: (mem) => {
         try {
+            // Stable-header ownership (executableLayoutFacts) is required; no digest-only fallback.
             var fact = mem && ZRamReader.executableLayoutFacts(mem);
-            if (!fact) {
-                var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest();
-                fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
-            }
             var form = fact && fact.enterForms && fact.enterForms.enter;
             return typeof form === "string" && form ? form : null;
         } catch (e) { return null; }

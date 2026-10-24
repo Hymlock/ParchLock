@@ -42,9 +42,17 @@ var MapIdentity = {
             if (room.Exits[dir] === undefined) {
                 room.ExitMeta[dir] = Object.assign({}, room.ExitMeta[dir] || {}, { hinted: true });
             }
-            if (ex && ex.isLocked) {
-                room.ExitMeta = room.ExitMeta || {};
+            // Locked R2: for a ZIL DEXIT (doorObjectId) merge, never replace the
+            // exit's meta, and let a fresh non-true observation clear an old lock.
+            // Inform exits keep the original behaviour.
+            var zilDoor = ex && (ex.doorObjectId != null || (room.ExitMeta[dir] && room.ExitMeta[dir].doorObjectId != null));
+            if (ex && ex.isLocked && !zilDoor) {
                 room.ExitMeta[dir] = { locked: true, confidence: ex.confidence || 0.5 };
+            } else if (ex && ex.isLocked === true) {
+                room.ExitMeta[dir] = Object.assign({}, room.ExitMeta[dir] || {}, { locked: true, confidence: ex.confidence || 0.5 });
+            } else if (zilDoor && room.ExitMeta[dir]) {
+                delete room.ExitMeta[dir].locked;
+                delete room.ExitMeta[dir].isLocked;
             }
             if (ex && typeof ex.zDelta === "number" && ex.zDelta) {
                 room.Floor = (room.Floor || 0) + 0; // floor tabs consume z later; keep room.Floor stable

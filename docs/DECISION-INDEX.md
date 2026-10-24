@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 124 decisions across
-9570 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 126 decisions across
+9596 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -27,6 +27,8 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 
 | D | claim | files | games | arch |
 |---|-------|-------|-------|------|
+| D242 | Per-title enter forms (sit on) | harness/zil-enter-forms.js | Deadline |  |
+| D241 | ZIL locked doors on the map (locked R2 phase 1) |  |  |  |
 | D240 | Room-as-door exits (ZIL): a DEXIT whose door is its own destination | js/ExitCalibrator.js harness/d214-room-door-alias.js |  |  |
 | D239 | Climb (bare "climb X", ZIL only) | js/ExitCalibrator.js |  |  |
 | D238 | Drink owners in titles that also map edible | harness/zil-drink-mapped.js |  |  |

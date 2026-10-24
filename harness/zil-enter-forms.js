@@ -22,4 +22,5 @@ check('3 enterForms sit on: inside the lounge offers get out of only (D236 first
 check('4 a form whose words are not in the dictionary is dropped, not offered',()=>withFact({enter:'zzqx on'},()=>{at(DESK_ROOM);const v=verbs();assert(!v.includes('zzqx on')&&!v.includes('enter'),v);}));
 check('5 malformed enterForms (non-string) leaves enter unchanged',()=>withFact({enter:7},()=>{at(DESK_ROOM);assert(verbs().includes('enter'));}));
 check('6 sit on resolves to the ENTER intent',()=>{assert.strictEqual(c.SemanticActions.verbIntent['sit on'],'ENTER');});
+check('7 mismatched stable header: ownership fails, so no enter form (no digest fallback)',()=>withFact({enter:'sit on'},()=>{const ml=c.ModuleLibrary,old=ml.currentExecutableIdentity;ml.currentExecutableIdentity=()=>({digest,header:Array.from(bytes.slice(0,28)).map((x,i)=>i===2?x^1:x)});try{assert.strictEqual(S.enterFormFor(mem),null);}finally{ml.currentExecutableIdentity=old;}}));
 console.log(n+' enter-form checks passed; native evidence is separate.');
