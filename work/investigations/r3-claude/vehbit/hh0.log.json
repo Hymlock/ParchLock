@@ -1,0 +1,103 @@
+[
+ {
+  "cmd": null,
+  "state": {
+   "playerId": 202,
+   "roomId": 150,
+   "parent": 114,
+   "parentName": "bed",
+   "lines": 11
+  },
+  "reply": "THE HITCHHIKER'S GUIDE TO THE GALAXY\nInfocom interactive fiction - a science fiction story\nCopyright (c) 1984 by Infocom, Inc. All rights reserved.\nRelease 31 / Serial number 871119 / Interpreter 0 Version \n \n \nYou wake up. The room is spinning very gently round your head. Or at least it would be if you could see it which you can't.\n \nIt is pitch black.\n \n>"
+ },
+ {
+  "cmd": "Get Up",
+  "parentBefore": 114,
+  "parentBeforeName": "bed",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "  /   / You wake up. The room is spinning very gently round your head. Or at least it would be if you could see it which you can't. /   / It is pitch black. /   / >Get Up / Very difficult, but you manage it. The room is still spinning. It dips and sways a little. /   / > "
+ },
+ {
+  "cmd": "Turn on Light",
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": ">Turn on Light / Good start to the day. Pity it's going to be the worst one of your life. The light is now on. /   / Bedroom / The bedroom is a mess. / It is a small bedroom with a faded carpet and old wallpaper. There is a washbasin, a chair with a tatty dressing gown slung over it, and a window with the curtains drawn. Near the exit leading south is a phone. / There is a flathead screwdriver here. / There is a toothbrush here. /   / > "
+ },
+ {
+  "cmd": "get in bed",
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 114,
+  "parentAfterName": "bed",
+  "playerId": 202,
+  "reply": "Bedroom / The bedroom is a mess. / It is a small bedroom with a faded carpet and old wallpaper. There is a washbasin, a chair with a tatty dressing gown slung over it, and a window with the curtains drawn. Near the exit leading south is a phone. / There is a flathead screwdriver here. / There is a toothbrush here. /   / >get in bed / You are now in the bed. /   / > "
+ },
+ {
+  "cmd": "get out of bed",
+  "parentBefore": 114,
+  "parentBeforeName": "bed",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "There is a flathead screwdriver here. / There is a toothbrush here. /   / >get in bed / You are now in the bed. /   / >get out of bed / Very difficult, but you manage it. The room is still spinning. It dips and sways a little. /   / > "
+ },
+ {
+  "cmd": "sit on bed",
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 114,
+  "parentAfterName": "bed",
+  "playerId": 202,
+  "reply": ">get in bed / You are now in the bed. /   / >get out of bed / Very difficult, but you manage it. The room is still spinning. It dips and sways a little. /   / >sit on bed / You are now in the bed. /   / > "
+ },
+ {
+  "cmd": "stand up",
+  "parentBefore": 114,
+  "parentBeforeName": "bed",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": ">get out of bed / Very difficult, but you manage it. The room is still spinning. It dips and sways a little. /   / >sit on bed / You are now in the bed. /   / >stand up / Very difficult, but you manage it. The room is still spinning. It dips and sways a little. /   / > "
+ },
+ {
+  "cmd": "enter gown",
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": ">sit on bed / You are now in the bed. /   / >stand up / Very difficult, but you manage it. The room is still spinning. It dips and sways a little. /   / >enter gown / Not bloody likely. /   / > "
+ },
+ {
+  "cmd": "sit on gown",
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": ">stand up / Very difficult, but you manage it. The room is still spinning. It dips and sways a little. /   / >enter gown / Not bloody likely. /   / >sit on gown / You can't climb onto your gown. /   / > "
+ },
+ {
+  "cmd": "enter door",
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": ">enter gown / Not bloody likely. /   / >sit on gown / You can't climb onto your gown. /   / >enter door / Did you have any particular direction in mind? /   / > "
+ },
+ {
+  "cmd": "get gown",
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": ">sit on gown / You can't climb onto your gown. /   / >enter door / Did you have any particular direction in mind? /   / >get gown / Luckily, this is large enough for you to get hold of. You notice something in the pocket. /   / > "
+ }
+]

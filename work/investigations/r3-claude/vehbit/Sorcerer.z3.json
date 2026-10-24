@@ -1,0 +1,103 @@
+{
+ "title": "Sorcerer.z3.js",
+ "sha256": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+ "bit": 29,
+ "sourceFlagsVEHBIT": "\"VEHBIT\":{\"bit\":29,\"positives\":2,\"negatives\":228,\"tp\":2,\"fp\":0,\"fn\":0,\"exact\":true,\"examples\":[\"199:log boat\",\"176:car\"]}",
+ "bitMatchesSourceFlags": true,
+ "objectCount": 255,
+ "initialCarriers": [
+  {
+   "id": 128,
+   "name": "bed",
+   "parent": 17,
+   "parentName": "Quarters"
+  },
+  {
+   "id": 176,
+   "name": "car",
+   "parent": 218,
+   "parentName": "Roller Coaster"
+  },
+  {
+   "id": 188,
+   "name": "bed",
+   "parent": 55,
+   "parentName": ""
+  },
+  {
+   "id": 199,
+   "name": "log boat",
+   "parent": 119,
+   "parentName": "Flume"
+  }
+ ],
+ "status": "INCOMPLETE",
+ "distinctPositiveCarriers": [
+  128
+ ],
+ "positives": [
+  {
+   "carrier": 128,
+   "name": "bed",
+   "enterCmd": "get in bed",
+   "parentBefore": 17,
+   "parentBeforeName": "Your Quarters",
+   "parentAfter": 128,
+   "enterReply": "Your Quarters, in the bed / This is your chamber in the Hall of the Guild of Enchanters, with a doorway to the west. A private chamber is a great privilege, especially for an Enchanter as young as yourself, but how many Enchanters can say they defeated the infamous Krill? /   / >GET UP / You are now on your feet. /   / >get in bed / You are now in the bed. /   / > ",
+   "exitCmd": "get out of bed",
+   "exitParentAfter": 17,
+   "exitReply": ">GET UP / You are now on your feet. /   / >get in bed / You are now in the bed. /   / >get out of bed / You are now on your feet. /   / > ",
+   "log": "so.log.json",
+   "step": 5
+  },
+  {
+   "carrier": 128,
+   "name": "bed",
+   "enterCmd": "sit on bed",
+   "parentBefore": 17,
+   "parentBeforeName": "Your Quarters",
+   "parentAfter": 128,
+   "enterReply": ">get in bed / You are now in the bed. /   / >get out of bed / You are now on your feet. /   / >sit on bed / You are now in the bed. /   / > ",
+   "exitCmd": "stand up",
+   "exitParentAfter": 17,
+   "exitReply": ">get out of bed / You are now on your feet. /   / >sit on bed / You are now in the bed. /   / >stand up / You are now on your feet. /   / > ",
+   "log": "so.log.json",
+   "step": 7
+  }
+ ],
+ "gameMovedIntoCarrier": [
+  {
+   "carrier": 128,
+   "name": "bed",
+   "enterCmd": "WAIT",
+   "parentBefore": 36,
+   "parentBeforeName": "Twisted Forest",
+   "parentAfter": 128,
+   "enterReply": "  / SORCERER / Infocom interactive fiction - a fantasy story / Copyright (c) 1984 by Infocom, Inc. All rights reserved. / SORCERER is a trademark of Infocom, Inc. / Release 15 / Serial number 851108 /   / Your frotz spell seems to have worn off during the night, and it is now pitch black. /   / > ",
+   "log": "so.log.json",
+   "step": 1
+  }
+ ],
+ "negatives": [
+  {
+   "cmd": "enter book",
+   "parentBefore": 17,
+   "parentAfter": 17,
+   "parentName": "Your Quarters",
+   "reply": ">sit on bed / You are now in the bed. /   / >stand up / You are now on your feet. /   / >enter book / That would involve quite a contortion! /   / > ",
+   "log": "so.log.json",
+   "step": 9
+  },
+  {
+   "cmd": "enter desk",
+   "parentBefore": 67,
+   "parentAfter": 67,
+   "parentName": "Hallway",
+   "reply": "  / >W / Hallway / Rooms lie to the east and west from this north-south corridor. A heavy wooden door, currently closed, leads north. / Tacked to the doorframe of your room is a note, hurriedly scribbled on parchment. /   / >enter desk / You can't see any desk here! /   / > ",
+   "log": "so.log.json",
+   "step": 11
+  }
+ ],
+ "notes": "bed (128) confirmed (GET UP / GET IN BED / GET OUT OF BED / SIT ON BED / STAND UP). 'enter book' refused 'That would involve quite a contortion!'. car (176, Roller Coaster) and log boat (199, Flume) are deep in the amusement park; second bed (188) unplaced at start -> INCOMPLETE.",
+ "method": "headless Chromium play.html, Input.Inject ordinary commands, ~1.3s wait; parent via ZRamReader.objectLinks(ZRamProvider.getMem(), WorldModel.lastPayload.playerId). reply = last 10 BufferLines after the command (may include preceding turn text)."
+}

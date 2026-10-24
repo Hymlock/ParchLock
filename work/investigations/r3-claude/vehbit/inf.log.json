@@ -1,0 +1,130 @@
+[
+ {
+  "cmd": null,
+  "state": {
+   "playerId": 223,
+   "roomId": 71,
+   "parent": 51,
+   "parentName": "army cot",
+   "lines": 15
+  },
+  "reply": "ugh to find the pyramid and to survive, and that the plane's carrying the long-overdue box.\n \nINFIDEL\nCopyright 1983 by Infocom, Inc. All rights reserved.\nINFIDEL is a trademark of Infocom, Inc.\nRelease 22 / Serial number 830916\n \nYour Tent\n(You are in the army cot.)\nYou are in your tent. Golden rays of the sun filter through the open tent flaps on the southern wall, but no breeze makes its way through. The dry, searing heat in the tent would be bearable if only the air stirred, even a little.\nAt the foot of the cot is a large, unwieldy trunk. The trunk is closed and locked with a padlock.\n \n>"
+ },
+ {
+  "cmd": "look",
+  "parentBefore": 51,
+  "parentBeforeName": "army cot",
+  "parentAfter": 51,
+  "parentAfterName": "army cot",
+  "playerId": 223,
+  "reply": "  / >look / Your Tent / (You are in the army cot.) / You are in your tent. Golden rays of the sun filter through the open tent flaps on the southern wall, but no breeze makes its way through. The dry, searing heat in the tent would be bearable if only the air stirred, even a little. / At the foot of the cot is a large, unwieldy trunk. The trunk is closed and locked with a padlock. /   / You hear a plane flying high overhead, outside the tent. /   / > "
+ },
+ {
+  "cmd": "get out of cot",
+  "parentBefore": 51,
+  "parentBeforeName": "army cot",
+  "parentAfter": 71,
+  "parentAfterName": "Your Tent",
+  "playerId": 223,
+  "reply": "At the foot of the cot is a large, unwieldy trunk. The trunk is closed and locked with a padlock. /   / You hear a plane flying high overhead, outside the tent. /   / >get out of cot / You push yourself up and manage to get out of the cot. Your legs are a little wobbly, though, and your head swims. /   / You hear a plane flying high overhead, outside the tent. /   / > "
+ },
+ {
+  "cmd": "look",
+  "parentBefore": 71,
+  "parentBeforeName": "Your Tent",
+  "parentAfter": 71,
+  "parentAfterName": "Your Tent",
+  "playerId": 223,
+  "reply": "  / >look / Your Tent / You are in your tent. Golden rays of the sun filter through the open tent flaps on the southern wall, but no breeze makes its way through. The dry, searing heat in the tent would be bearable if only the air stirred, even a little. / There is an army cot here. / At the foot of the cot is a large, unwieldy trunk. The trunk is closed and locked with a padlock. /   / You hear a plane flying high overhead, outside the tent. /   / > "
+ },
+ {
+  "cmd": "get in cot",
+  "parentBefore": 71,
+  "parentBeforeName": "Your Tent",
+  "parentAfter": 51,
+  "parentAfterName": "army cot",
+  "playerId": 223,
+  "reply": "At the foot of the cot is a large, unwieldy trunk. The trunk is closed and locked with a padlock. /   / You hear a plane flying high overhead, outside the tent. /   / >get in cot / You are now in the army cot. /   / It sounds as if the plane is circling. /   / > "
+ },
+ {
+  "cmd": "get out of cot",
+  "parentBefore": 51,
+  "parentBeforeName": "army cot",
+  "parentAfter": 71,
+  "parentAfterName": "Your Tent",
+  "playerId": 223,
+  "reply": "You are now in the army cot. /   / It sounds as if the plane is circling. /   / >get out of cot / You are on your feet again. /   / It sounds as if the plane is circling. /   / > "
+ },
+ {
+  "cmd": "sit on cot",
+  "parentBefore": 71,
+  "parentBeforeName": "Your Tent",
+  "parentAfter": 71,
+  "parentAfterName": "Your Tent",
+  "playerId": 223,
+  "reply": "You are on your feet again. /   / It sounds as if the plane is circling. /   / >sit on cot / This is no time for sitting down on the job, especially after what you've been through to get here! /   / It sounds as if the plane is flying off. /   / > "
+ },
+ {
+  "cmd": "stand up",
+  "parentBefore": 71,
+  "parentBeforeName": "Your Tent",
+  "parentAfter": 71,
+  "parentAfterName": "Your Tent",
+  "playerId": 223,
+  "reply": "This is no time for sitting down on the job, especially after what you've been through to get here! /   / It sounds as if the plane is flying off. /   / >stand up / You are already standing, I think. /   / You can barely hear the plane. /   / > "
+ },
+ {
+  "cmd": "enter tent",
+  "parentBefore": 71,
+  "parentBeforeName": "Your Tent",
+  "parentAfter": 71,
+  "parentAfterName": "Your Tent",
+  "playerId": 223,
+  "reply": "You are already standing, I think. /   / You can barely hear the plane. /   / >enter tent / What are those canvas walls around you? Just where do you think you are? Maybe I should send for Craige, eh? /   / The sound of something heavy landing comes from nearby. /   / > "
+ },
+ {
+  "cmd": "s",
+  "parentBefore": 71,
+  "parentBeforeName": "Your Tent",
+  "parentAfter": 72,
+  "parentAfterName": "Outside Your Tent",
+  "playerId": 223,
+  "reply": ">enter tent / What are those canvas walls around you? Just where do you think you are? Maybe I should send for Craige, eh? /   / The sound of something heavy landing comes from nearby. /   / >s / Outside Your Tent / You are on an east/west path on the north side of the encampment. To the south you can see a firepit and to the north is the entrance to your tent. Everything is oddly quiet, unsettling, creating a feeling of floating anxiety. The stillness seems to enhance the eerie quality of the d"
+ },
+ {
+  "cmd": "sw",
+  "parentBefore": 72,
+  "parentBeforeName": "Outside Your Tent",
+  "parentAfter": 68,
+  "parentAfterName": "Outside Supply Tent",
+  "playerId": 223,
+  "reply": "  / >s / Outside Your Tent / You are on an east/west path on the north side of the encampment. To the south you can see a firepit and to the north is the entrance to your tent. Everything is oddly quiet, unsettling, creating a feeling of floating anxiety. The stillness seems to enhance the eerie quality of the desert, the feeling of being truly alone. There's an enlarged hole in the sand, a remnant of your excavation attempts. /   / >sw / Outside Supply Tent / You're on a north/south path on the"
+ },
+ {
+  "cmd": "w",
+  "parentBefore": 68,
+  "parentBeforeName": "Outside Supply Tent",
+  "parentAfter": 69,
+  "parentAfterName": "Supply Tent",
+  "playerId": 223,
+  "reply": "Outside Supply Tent / You're on a north/south path on the west edge of the encampment. Directly to the west is the supply tent, its flaps open, still in the hot, quiet air. To the east you can see the central firepit, a reminder of your being alone. A row of thickets, impossible to make any progress through even with a machete, grows along the western edge of the camp directly to the north and south of the tent. There's an enlarged hole in the sand, a remnant of your excavation attempts. /   / >"
+ },
+ {
+  "cmd": "get pickaxe",
+  "parentBefore": 69,
+  "parentBeforeName": "Supply Tent",
+  "parentAfter": 69,
+  "parentAfterName": "Supply Tent",
+  "playerId": 223,
+  "reply": ">w / Supply Tent / You are in a tent, very much like your own -- a tent which had originally contained the supplies for your expedition. You notice, however, that most of the items which were here just yesterday have vanished with your workers. The tent looks as if it's been cleaned out and, as your stomach growls, the empty tent ironically reminds you of a turkey carcass picked clean after a huge Thanksgiving meal. Through the open tent flaps to the east you can see the firepit. If only one of "
+ },
+ {
+  "cmd": "enter pickaxe",
+  "parentBefore": 69,
+  "parentBeforeName": "Supply Tent",
+  "parentAfter": 69,
+  "parentAfterName": "Supply Tent",
+  "playerId": 223,
+  "reply": "Stuck in the sand, handle down, is a small pick axe. / Half buried in the sand, in the corner of the tent, is a shovel. /   / >get pickaxe / Taken. /   / >enter pickaxe / That would involve quite a contortion! /   / > "
+ }
+]

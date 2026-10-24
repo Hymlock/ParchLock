@@ -1,0 +1,14 @@
+null undefined -> undefined undefined | DEADLINE: An INTERLOGIC Mystery Copyright 1982 by Infocom, Inc. All rights reserved. DEADLINE and INTERLOGIC are trademarks of Infocom, Inc.
+"open door" 249 -> 249 South Lawn | DEADLINE and INTERLOGIC are trademarks of Infocom, Inc. / Release 27 / Serial number 831005 / / South Lawn / You are on a wide lawn just nor
+"knock on door" 249 -> 249 South Lawn | South Lawn / You are on a wide lawn just north of the entrance to the Robner estate. Directly north at the end of a pebbled path is the Robn
+"z" 249 -> 249 South Lawn | >open door / You can't see any door here. / / >knock on door / You can't see any door here. / / >z / The word 'z' isn't in your vocabulary. 
+"n" 249 -> 246 Front Path |  / >z / The word 'z' isn't in your vocabulary. / / >n / Front Path / You are at the Robners' front door, which is closed. / You can walk aro
+"look" 246 -> 246 Front Path | Front Path / You are at the Robners' front door, which is closed. / You can walk around the house from here to the east or west. To the sout
+"u" 246 -> 246 Front Path |  / >look / Front Path / You are at the Robners' front door, which is closed. / You can walk around the house from here to the east or west. 
+"look" 246 -> 246 Front Path |  / >u / You can't go that way. / / >look / Front Path / You are at the Robners' front door, which is closed. / You can walk around the house
+"n" 246 -> 246 Front Path |  / >look / Front Path / You are at the Robners' front door, which is closed. / You can walk around the house from here to the east or west. 
+"e" 246 -> 242 East of Front Door |  / >n / The front door is closed. / / >e / East of Front Door / You are in front of the Robner house just east of the front door. A small wi
+"w" 242 -> 246 Front Path |  / >e / East of Front Door / You are in front of the Robner house just east of the front door. A small window, closed and securely locked, i
+"s" 246 -> 249 South Lawn | You are in front of the Robner house just east of the front door. A small window, closed and securely locked, is the only thing of note here
+"look" 249 -> 249 South Lawn | Front Path / / >s / South Lawn / / >look / South Lawn / You are on a wide lawn just north of the entrance to the Robner estate. Directly nor
+"u" 249 -> 249 South Lawn | South Lawn / / >look / South Lawn / You are on a wide lawn just north of the entrance to the Robner estate. Directly north at the end of a p

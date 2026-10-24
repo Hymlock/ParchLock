@@ -1,0 +1,148 @@
+[
+ {
+  "cmd": null,
+  "state": {
+   "playerId": 4,
+   "roomId": 231,
+   "parent": 231,
+   "parentName": "Inside the Barrow",
+   "lines": 11
+  },
+  "reply": "ZORK II: The Wizard of Frobozz\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nVersion 48 / Serial number 840904\n \nInside the Barrow\nYou are inside an ancient barrow hidden deep within a dark forest. The barrow opens into a narrow tunnel at its southern end. You can see a faint glow at the far end.\nA strangely familiar brass lantern is lying on the ground.\nA sword of Elvish workmanship is on the ground.\n \n>"
+ },
+ {
+  "cmd": "GET LAMP AND SWORD",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": "Inside the Barrow / You are inside an ancient barrow hidden deep within a dark forest. The barrow opens into a narrow tunnel at its southern end. You can see a faint glow at the far end. / A strangely familiar brass lantern is lying on the ground. / A sword of Elvish workmanship is on the ground. /   / >GET LAMP AND SWORD / lamp: Taken. / sword: Taken. /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 229,
+  "parentAfterName": "Narrow Tunnel",
+  "playerId": 4,
+  "reply": "  / >GET LAMP AND SWORD / lamp: Taken. / sword: Taken. /   / >S / Narrow Tunnel / You are standing at the southern end of a narrow tunnel where it opens into a wide cavern. The cavern is dimly illuminated by phosphorescent mosses clinging to its high ceiling. A deep ravine winds through the cavern, with a small stream at the bottom. The walls of the ravine are steep and crumbly. A foot bridge crosses the ravine to the south. /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 229,
+  "parentBeforeName": "Narrow Tunnel",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": "  / >S / Narrow Tunnel / You are standing at the southern end of a narrow tunnel where it opens into a wide cavern. The cavern is dimly illuminated by phosphorescent mosses clinging to its high ceiling. A deep ravine winds through the cavern, with a small stream at the bottom. The walls of the ravine are steep and crumbly. A foot bridge crosses the ravine to the south. /   / >S / Foot Bridge / You are standing on a crude but sturdy wooden foot bridge crossing a deep ravine. The path runs north a"
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 227,
+  "parentAfterName": "Great Cavern",
+  "playerId": 4,
+  "reply": "You are standing on a crude but sturdy wooden foot bridge crossing a deep ravine. The path runs north and south from here. /   / >S / Great Cavern / This is the center of the great cavern, carved out of the limestone. Stalactites and stalagmites of many sizes are everywhere. The room glows with dim light provided by phosphorescent moss, and weird shadows move all around you. A narrow path winds southwest among the stalagmites, and another leads northeast. / A strange little man in a long cloak a"
+ },
+ {
+  "cmd": "LIGHT LAMP",
+  "parentBefore": 227,
+  "parentBeforeName": "Great Cavern",
+  "parentAfter": 227,
+  "parentAfterName": "Great Cavern",
+  "playerId": 4,
+  "reply": "Great Cavern / This is the center of the great cavern, carved out of the limestone. Stalactites and stalagmites of many sizes are everywhere. The room glows with dim light provided by phosphorescent moss, and weird shadows move all around you. A narrow path winds southwest among the stalagmites, and another leads northeast. / A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrological signs. He has a long, stringy, and unkempt"
+ },
+ {
+  "cmd": "SW",
+  "parentBefore": 227,
+  "parentBeforeName": "Great Cavern",
+  "parentAfter": 226,
+  "parentAfterName": "Shallow Ford",
+  "playerId": 4,
+  "reply": "The Wizard, in a deep and resonant voice, speaks the word \"Fantasize!\" He cackles gleefully. /   / >LIGHT LAMP / The lamp is now on. /   / >SW / Shallow Ford / You are at the southern edge of a great cavern. To the south across a shallow ford is a dark tunnel which looks like it was once enlarged and smoothed. To the north a narrow path winds among stalagmites. Dim light illuminates the cavern. /   / > "
+ },
+ {
+  "cmd": "SW",
+  "parentBefore": 226,
+  "parentBeforeName": "Shallow Ford",
+  "parentAfter": 226,
+  "parentAfterName": "Shallow Ford",
+  "playerId": 4,
+  "reply": "The lamp is now on. /   / >SW / Shallow Ford / You are at the southern edge of a great cavern. To the south across a shallow ford is a dark tunnel which looks like it was once enlarged and smoothed. To the north a narrow path winds among stalagmites. Dim light illuminates the cavern. /   / >SW / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "look",
+  "parentBefore": 226,
+  "parentBeforeName": "Shallow Ford",
+  "parentAfter": 226,
+  "parentAfterName": "Shallow Ford",
+  "playerId": 4,
+  "reply": "You are at the southern edge of a great cavern. To the south across a shallow ford is a dark tunnel which looks like it was once enlarged and smoothed. To the north a narrow path winds among stalagmites. Dim light illuminates the cavern. /   / >SW / You can't go that way. /   / >look / Shallow Ford / You are at the southern edge of a great cavern. To the south across a shallow ford is a dark tunnel which looks like it was once enlarged and smoothed. To the north a narrow path winds among stalagm"
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 226,
+  "parentBeforeName": "Shallow Ford",
+  "parentAfter": 225,
+  "parentAfterName": "Dark Tunnel",
+  "playerId": 4,
+  "reply": "  / >look / Shallow Ford / You are at the southern edge of a great cavern. To the south across a shallow ford is a dark tunnel which looks like it was once enlarged and smoothed. To the north a narrow path winds among stalagmites. Dim light illuminates the cavern. /   / >S / Dark Tunnel / This is a dark tunnel with dim light to the northeast. The tunnel is smooth but dusty and filled with twigs and leaves, debris which becomes deeper as the tunnel branches into a wide corridor leading southwest "
+ },
+ {
+  "cmd": "SE",
+  "parentBefore": 225,
+  "parentBeforeName": "Dark Tunnel",
+  "parentAfter": 222,
+  "parentAfterName": "North End of Garden",
+  "playerId": 4,
+  "reply": "  / >S / Dark Tunnel / This is a dark tunnel with dim light to the northeast. The tunnel is smooth but dusty and filled with twigs and leaves, debris which becomes deeper as the tunnel branches into a wide corridor leading southwest and a narrower one leading southeast. /   / >SE / North End of Garden / This is the northern end of a formal garden. Hedges hide the cavern walls, and if you don't look up, the illusion is of a cloudy day outside. The light comes from a large growth of glowing mosses"
+ },
+ {
+  "cmd": "look",
+  "parentBefore": 222,
+  "parentBeforeName": "North End of Garden",
+  "parentAfter": 222,
+  "parentAfterName": "North End of Garden",
+  "playerId": 4,
+  "reply": "  / >SE / North End of Garden / This is the northern end of a formal garden. Hedges hide the cavern walls, and if you don't look up, the illusion is of a cloudy day outside. The light comes from a large growth of glowing mosses on the roof of the cave. A break in the hedge is almost overgrown to the north. A carefully manicured path leads south. In the center of a rosebed is a small open structure, painted white. It appears to be a gazebo. /   / >look / North End of Garden / This is the northern"
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 222,
+  "parentBeforeName": "North End of Garden",
+  "parentAfter": 222,
+  "parentAfterName": "North End of Garden",
+  "playerId": 4,
+  "reply": "This is the northern end of a formal garden. Hedges hide the cavern walls, and if you don't look up, the illusion is of a cloudy day outside. The light comes from a large growth of glowing mosses on the roof of the cave. A break in the hedge is almost overgrown to the north. A carefully manicured path leads south. In the center of a rosebed is a small open structure, painted white. It appears to be a gazebo. /   / >look / North End of Garden / This is the northern end of a formal garden. Hedges "
+ },
+ {
+  "cmd": "look",
+  "parentBefore": 222,
+  "parentBeforeName": "North End of Garden",
+  "parentAfter": 222,
+  "parentAfterName": "North End of Garden",
+  "playerId": 4,
+  "reply": "This is the northern end of a formal garden. Hedges hide the cavern walls, and if you don't look up, the illusion is of a cloudy day outside. The light comes from a large growth of glowing mosses on the roof of the cave. A break in the hedge is almost overgrown to the north. A carefully manicured path leads south. In the center of a rosebed is a small open structure, painted white. It appears to be a gazebo. /   / >E / You can't go that way. /   / >look / North End of Garden / This is the northe"
+ },
+ {
+  "cmd": "SE",
+  "parentBefore": 222,
+  "parentBeforeName": "North End of Garden",
+  "parentAfter": 222,
+  "parentAfterName": "North End of Garden",
+  "playerId": 4,
+  "reply": "You can't go that way. /   / >look / North End of Garden / This is the northern end of a formal garden. Hedges hide the cavern walls, and if you don't look up, the illusion is of a cloudy day outside. The light comes from a large growth of glowing mosses on the roof of the cave. A break in the hedge is almost overgrown to the north. A carefully manicured path leads south. In the center of a rosebed is a small open structure, painted white. It appears to be a gazebo. /   / >SE / You can't go that"
+ },
+ {
+  "cmd": "look",
+  "parentBefore": 222,
+  "parentBeforeName": "North End of Garden",
+  "parentAfter": 222,
+  "parentAfterName": "North End of Garden",
+  "playerId": 4,
+  "reply": "This is the northern end of a formal garden. Hedges hide the cavern walls, and if you don't look up, the illusion is of a cloudy day outside. The light comes from a large growth of glowing mosses on the roof of the cave. A break in the hedge is almost overgrown to the north. A carefully manicured path leads south. In the center of a rosebed is a small open structure, painted white. It appears to be a gazebo. /   / >SE / You can't go that way. /   / >look / North End of Garden / This is the north"
+ }
+]

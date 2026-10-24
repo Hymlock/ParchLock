@@ -1,0 +1,12 @@
+null undefined -> undefined undefined | You are in a strange location, but you cannot remember how you got here. Everything is hazy, as though viewed through a gauze... Twisted For
+"WAIT" 36 -> 128 bed |  / SORCERER / Infocom interactive fiction - a fantasy story / Copyright (c) 1984 by Infocom, Inc. All rights reserved. / SORCERER is a trade
+"FROTZ BOOK" 128 -> 128 bed |  / Your frotz spell seems to have worn off during the night, and it is now pitch black. / / >FROTZ BOOK / There is an almost blinding flash 
+"look" 128 -> 128 bed | There is an almost blinding flash of light as the spell book begins to glow! It slowly fades to a less painful level, but the spell book is 
+"GET UP" 128 -> 17 Your Quarters | This is your chamber in the Hall of the Guild of Enchanters, with a doorway to the west. A private chamber is a great privilege, especially 
+"get in bed" 17 -> 128 bed | Your Quarters, in the bed / This is your chamber in the Hall of the Guild of Enchanters, with a doorway to the west. A private chamber is a 
+"get out of bed" 128 -> 17 Your Quarters | >GET UP / You are now on your feet. / / >get in bed / You are now in the bed. / / >get out of bed / You are now on your feet. / / > 
+"sit on bed" 17 -> 128 bed | >get in bed / You are now in the bed. / / >get out of bed / You are now on your feet. / / >sit on bed / You are now in the bed. / / > 
+"stand up" 128 -> 17 Your Quarters | >get out of bed / You are now on your feet. / / >sit on bed / You are now in the bed. / / >stand up / You are now on your feet. / / > 
+"enter book" 17 -> 17 Your Quarters | >sit on bed / You are now in the bed. / / >stand up / You are now on your feet. / / >enter book / That would involve quite a contortion! / /
+"W" 17 -> 67 Hallway |  / >enter book / That would involve quite a contortion! / / >W / Hallway / Rooms lie to the east and west from this north-south corridor. A 
+"enter desk" 67 -> 67 Hallway |  / >W / Hallway / Rooms lie to the east and west from this north-south corridor. A heavy wooden door, currently closed, leads north. / Tacke

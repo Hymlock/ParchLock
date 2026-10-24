@@ -1,0 +1,322 @@
+{
+  "story": "Zork1-TheGreatUndergroundEmpire.z3.js",
+  "sha256": "7da3731fbfde5d0548f4bc6cbaa46b80fbc374e1e97f8fe894a5924a41b7b2a8",
+  "property": 5,
+  "holder": 249,
+  "litBit": 20,
+  "at": "2026-10-24T04:51:01.831Z",
+  "log": [
+    {
+      "dump": {
+        "roomId": 180,
+        "roomName": "West of House",
+        "lit": true,
+        "prop": {
+          "num": 5,
+          "sz": 2,
+          "dataAddr": 7236
+        },
+        "localGlobals": [
+          {
+            "id": 243,
+            "name": "white house",
+            "parent": 249,
+            "parentIsHolder": true
+          },
+          {
+            "id": 250,
+            "name": "board",
+            "parent": 249,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": [
+          "small mailbox",
+          "door"
+        ]
+      }
+    },
+    {
+      "cmd": "examine chimney",
+      "roomIdAfter": 180,
+      "reply": [
+        "You can't see any chimney here!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine window",
+      "roomIdAfter": 180,
+      "reply": [
+        "You can't see any window here!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "n",
+      "roomIdAfter": 81,
+      "reply": [
+        "North of House",
+        "You are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 81,
+        "roomName": "North of House",
+        "lit": true,
+        "prop": {
+          "num": 5,
+          "sz": 3,
+          "dataAddr": 4782
+        },
+        "localGlobals": [
+          {
+            "id": 182,
+            "name": "boarded window",
+            "parent": 249,
+            "parentIsHolder": true
+          },
+          {
+            "id": 250,
+            "name": "board",
+            "parent": 249,
+            "parentIsHolder": true
+          },
+          {
+            "id": 243,
+            "name": "white house",
+            "parent": 249,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": []
+      }
+    },
+    {
+      "cmd": "examine window",
+      "roomIdAfter": 81,
+      "reply": [
+        "There's nothing special about the boarded window.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "e",
+      "roomIdAfter": 79,
+      "reply": [
+        "Behind House",
+        "You are behind the white house. A path leads into the forest to the east. In one corner of the house there is a small window which is slightly ajar.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 79,
+        "roomName": "Behind House",
+        "lit": true,
+        "prop": {
+          "num": 5,
+          "sz": 2,
+          "dataAddr": 4719
+        },
+        "localGlobals": [
+          {
+            "id": 243,
+            "name": "white house",
+            "parent": 249,
+            "parentIsHolder": true
+          },
+          {
+            "id": 235,
+            "name": "kitchen window",
+            "parent": 249,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": []
+      }
+    },
+    {
+      "cmd": "examine window",
+      "roomIdAfter": 79,
+      "reply": [
+        "The window is slightly ajar, but not enough to allow entry.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "open window",
+      "roomIdAfter": 79,
+      "reply": [
+        "With great effort, you open the window far enough to allow entry.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "w",
+      "roomIdAfter": 203,
+      "reply": [
+        "Kitchen",
+        "You are in the kitchen of the white house. A table seems to have been used recently for the preparation of food. A passage leads to the west and a dark staircase can be seen leading upward. A dark chimney leads down and to the east is a small window which is open.",
+        "On the table is an elongated brown sack, smelling of hot peppers.",
+        "A bottle is sitting on the table.",
+        "The glass bottle contains:",
+        "A quantity of water",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 203,
+        "roomName": "Kitchen",
+        "lit": true,
+        "prop": {
+          "num": 5,
+          "sz": 3,
+          "dataAddr": 7759
+        },
+        "localGlobals": [
+          {
+            "id": 235,
+            "name": "kitchen window",
+            "parent": 249,
+            "parentIsHolder": true
+          },
+          {
+            "id": 234,
+            "name": "chimney",
+            "parent": 249,
+            "parentIsHolder": true
+          },
+          {
+            "id": 73,
+            "name": "stairs",
+            "parent": 249,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": [
+          "kitchen table",
+          "brown sack",
+          "glass bottle"
+        ]
+      }
+    },
+    {
+      "cmd": "examine chimney",
+      "roomIdAfter": 203,
+      "reply": [
+        "The chimney leads downward, and looks climbable.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine window",
+      "roomIdAfter": 203,
+      "reply": [
+        "The kitchen window is open, but I can't tell what's beyond it.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "w",
+      "roomIdAfter": 193,
+      "reply": [
+        "Living Room",
+        "You are in the living room. There is a doorway to the east, a wooden door with strange gothic lettering to the west, which appears to be nailed shut, a trophy case, and a large oriental rug in the center of the room.",
+        "Above the trophy case hangs an elvish sword of great antiquity.",
+        "A battery-powered brass lantern is on the trophy case.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 193,
+        "roomName": "Living Room",
+        "lit": true,
+        "prop": {
+          "num": 5,
+          "sz": 1,
+          "dataAddr": 7536
+        },
+        "localGlobals": [
+          {
+            "id": 73,
+            "name": "stairs",
+            "parent": 249,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": [
+          "sword",
+          "wooden door",
+          "brass lantern",
+          "trap door",
+          "carpet",
+          "trophy case"
+        ]
+      }
+    },
+    {
+      "cmd": "move rug",
+      "roomIdAfter": 193,
+      "reply": [
+        "With a great effort, the rug is moved to one side of the room, revealing the dusty cover of a closed trap door.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "open trap door",
+      "roomIdAfter": 193,
+      "reply": [
+        "The door reluctantly opens to reveal a rickety staircase descending into darkness.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "d",
+      "roomIdAfter": 72,
+      "reply": [
+        "You have moved into a dark place.",
+        "The trap door crashes shut, and you hear someone barring it.",
+        "It is pitch black. You are likely to be eaten by a grue.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 72,
+        "roomName": "Cellar",
+        "lit": false,
+        "prop": {
+          "num": 5,
+          "sz": 3,
+          "dataAddr": 4495
+        },
+        "localGlobals": [
+          {
+            "id": 183,
+            "name": "trap door",
+            "parent": 193,
+            "parentIsHolder": false
+          },
+          {
+            "id": 205,
+            "name": "chute",
+            "parent": 249,
+            "parentIsHolder": true
+          },
+          {
+            "id": 73,
+            "name": "stairs",
+            "parent": 249,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": []
+      }
+    }
+  ]
+}
