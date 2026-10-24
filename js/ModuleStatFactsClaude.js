@@ -24,7 +24,11 @@ var ModuleStatFactsClaude = {
         // objects (the lamp is named), 1749 is Inform-only, 2718 is inventory item-likeness; no map-room effect.
         // enterable 27 = source VEHBIT exact; native (r3-claude/vehbit + vehbit2): bucket 51 and basket 98 (ENTER/GET IN move the player inside; GET OUT returns; bare EXIT refused).
         // door 22 = source DOORBIT exact; native (r3-claude/doorbit): oak door 102 (locked, then opens), barred window 101.
-        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30, "wearable": 3, "edible": 20, "light": 31, "enterable": 27, "door": 22 },
+        // Switch (grok1 #4827 work/investigations/grok1/switch/zork2.json): lamp 76: TURN ON -> "The lamp is now on." (19 set), TURN OFF -> "The lamp is now off."; held sword refuses. V-LAMP-ON acts only on LIGHTBIT objects, LIGHTBIT exact 1 of 1 (single-owner + whole-source exception). ONBIT 19 on other carriers is room-lit state: never switchable.
+        "attributeObjects": { "switchable": [76] },
+        "capabilityForms": { "switchable": ["turn on", "turn off"] },
+        "activationState": { "onObjects": [76] },
+        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30, "wearable": 3, "edible": 20, "light": 31, "enterable": 27, "door": 22, "on": 19 },
         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
         // (source: ROBOT, CERBERUS, UNICORN (2dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] }
@@ -190,7 +194,11 @@ var ModuleStatFactsClaude = {
         // salesman carry CONTBIT: excluded by animate 31. Close on the lidless wicker basket is a disclosed harmless extra.
         "openCapability": { "all": ["container"], "none": ["animate"] },
         // door 26 = source DOORBIT exact; native (codex door-lgop-native.json): wide cell door 202 and narrow cell door 176 toggle 15; tray refuses.
-        "attributeMap": { "open": 15, "isOpen": 15, "supporter": 17, "animate": 31, "enterable": 29, "container": 24, "door": 26 }
+        // Switch (grok1 #4840 work/investigations/grok1/switch/lgop.json): flashlight 110: TURN OFF -> "Okay, the flashlight is now off." (30 cleared), TURN ON sets 30. Blender (momentary, never sets ONBIT) and torch (fire) left out. ONBIT 30 on other carriers is room-lit state: never switchable.
+        "attributeObjects": { "switchable": [110] },
+        "capabilityForms": { "switchable": ["turn on", "turn off"] },
+        "activationState": { "onObjects": [110] },
+        "attributeMap": { "open": 15, "isOpen": 15, "supporter": 17, "animate": 31, "enterable": 29, "container": 24, "door": 26, "on": 30 }
     },
     // Spellbreaker (ZIL): Q8 player root = constant PLAYER object 52 (historicalsource/spellbreaker 6f83ba4 globals.zil 324 OBJECT PLAYER
     // DESC "it"). No PLAYER global; WINNER G197 is mutable (globals.zil 923/928 BELBOZ, verbs.zil 334/359 PRSO). Native TAKE puts the
@@ -480,7 +488,11 @@ var ModuleStatFactsClaude = {
         // ON mantle -> "Done." (parent changes); letter, flashlight, sofa, telephone refuse ("no good surface"). Source exact 7 of 7.
         // The three wax statuettes carry it but refuse ("no room"): disclosed harmless extra Put on.
         // door 10 = source DOORBIT exact; native (r3-claude/doorbit): oak door 117 and patio door 25: door-specific "unlock it first" refusals (no toggle reached).
-        "attributeMap": { "wearable": 22, "animate": 18, "supporter": 27, "door": 10 },
+        // Switch (grok1 #4833 work/investigations/grok1/switch/hollywood.json): flashlight 123: TURN ON -> "Okay, the flashlight is now on." (20 set), TURN OFF clears; held paper and mailbox refuse. Only holdable LIGHTBIT object (computer/projectors fixed, left out). ONBIT 20 on other carriers is room-lit state: never switchable.
+        "attributeObjects": { "switchable": [123] },
+        "capabilityForms": { "switchable": ["turn on", "turn off"] },
+        "activationState": { "onObjects": [123] },
+        "attributeMap": { "wearable": 22, "animate": 18, "supporter": 27, "door": 10, "on": 20 },
         // WORNBIT state14: independent native ring127/skis188 wear+remove, flashlight123 refused; Grok4120 proposal, Codex October20 audit.
         "wornAttribute": 14
     },
