@@ -1,0 +1,594 @@
+{
+ "title": "spirit.z5",
+ "sha256": "258199e5fb7b494d3c6e60cc4fbe466b08f729e90a06753db49f4af7bfdca2d5",
+ "objects": 817,
+ "layout": "L",
+ "verdict": "SHIFTED (low block -1)",
+ "confidence": "high",
+ "evidence": "anchors compass=concealed 2, walls=scenery 17, yourself 0,2,16,23 (animate,concealed,proper,transparent), rooms light 9; doors carry 4+15(+10,11); containers 3+15 or 3+14; hats/clothes 1; food 5; supporters 20. Bits 1..8 are PROFILE-1 (no `absent` at 1, an extra attr at 8); 9..23 equal PROFILE.",
+ "proposedAttributeMap": {
+  "door": 4,
+  "open": 14,
+  "isOpen": 14,
+  "openable": 15,
+  "container": 3,
+  "supporter": 20,
+  "light": 9,
+  "edible": 5,
+  "clothing": 1,
+  "wearable": 1,
+  "worn": 26,
+  "lockable": 10,
+  "locked": 11,
+  "concealed": 2,
+  "animate": 0,
+  "scenery": 17,
+  "static": 19,
+  "enterable": 6,
+  "transparent": 23
+ },
+ "bitEvidence": {
+  "door": "doors",
+  "openable": "doors+containers",
+  "open": "open containers (bag/jar/basket/tray)",
+  "container": "containers",
+  "supporter": "tables/desks",
+  "light": "rooms (lit)",
+  "edible": "food (carrot,sweet,cake,pizza)",
+  "clothing": "hats/clothes",
+  "lockable": "locked doors",
+  "locked": "locked doors",
+  "worn": "NOT observed statically; inferred from library order (PROFILE 26 / layout shift)",
+  "enterable": "beds (theatre/windhal) else inferred"
+ },
+ "profileWrongFor": [
+  "clothing",
+  "concealed",
+  "container",
+  "door",
+  "edible"
+ ],
+ "exemplars": [
+  {
+   "n": 1,
+   "name": "compass",
+   "parent": 0,
+   "bits": [
+    2
+   ]
+  },
+  {
+   "n": 2,
+   "name": "north wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 3,
+   "name": "south wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 4,
+   "name": "east wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 5,
+   "name": "west wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 6,
+   "name": "northeast wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 7,
+   "name": "southeast wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 8,
+   "name": "northwest wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 9,
+   "name": "southwest wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 15,
+   "name": "yourself",
+   "parent": 0,
+   "bits": [
+    0,
+    2,
+    16,
+    23
+   ]
+  },
+  {
+   "n": 47,
+   "name": "Brother Toolbox's Quarters",
+   "parent": 0,
+   "bits": [
+    9
+   ]
+  },
+  {
+   "n": 61,
+   "name": "long table",
+   "parent": 58,
+   "bits": [
+    17,
+    20
+   ]
+  },
+  {
+   "n": 66,
+   "name": "preparing table",
+   "parent": 64,
+   "bits": [
+    19,
+    20
+   ]
+  },
+  {
+   "n": 72,
+   "name": "trapdoor",
+   "parent": 0,
+   "bits": [
+    4,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 73,
+   "name": "trapdoor",
+   "parent": 71,
+   "bits": [
+    4,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 75,
+   "name": "steel wall",
+   "parent": 74,
+   "bits": [
+    19
+   ]
+  },
+  {
+   "n": 92,
+   "name": "egg shards",
+   "parent": 0,
+   "bits": []
+  },
+  {
+   "n": 96,
+   "name": "corbie egg",
+   "parent": 95,
+   "bits": [
+    5,
+    18
+   ]
+  },
+  {
+   "n": 109,
+   "name": "dusty crate",
+   "parent": 108,
+   "bits": [
+    19
+   ]
+  },
+  {
+   "n": 110,
+   "name": "moldy crate",
+   "parent": 108,
+   "bits": [
+    19
+   ]
+  },
+  {
+   "n": 111,
+   "name": "filthy crate",
+   "parent": 108,
+   "bits": [
+    19
+   ]
+  },
+  {
+   "n": 120,
+   "name": "icebox",
+   "parent": 114,
+   "bits": [
+    3,
+    10,
+    11,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 121,
+   "name": "blue cereal box",
+   "parent": 120,
+   "bits": [
+    3,
+    15
+   ]
+  },
+  {
+   "n": 122,
+   "name": "navy:blue cereal box",
+   "parent": 0,
+   "bits": [
+    3,
+    15
+   ]
+  },
+  {
+   "n": 123,
+   "name": "royal:blue cereal box",
+   "parent": 0,
+   "bits": [
+    3,
+    15
+   ]
+  },
+  {
+   "n": 134,
+   "name": "desk",
+   "parent": 130,
+   "bits": [
+    17,
+    20
+   ]
+  },
+  {
+   "n": 141,
+   "name": "desk",
+   "parent": 140,
+   "bits": [
+    17,
+    20
+   ]
+  },
+  {
+   "n": 142,
+   "name": "door",
+   "parent": 0,
+   "bits": [
+    4,
+    10,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 155,
+   "name": "sugar:coated scroll",
+   "parent": 121,
+   "bits": [
+    18,
+    34
+   ]
+  },
+  {
+   "n": 163,
+   "name": "huge entrance gate",
+   "parent": 160,
+   "bits": [
+    4,
+    11,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 168,
+   "name": "glass wall",
+   "parent": 167,
+   "bits": [
+    2,
+    19
+   ]
+  },
+  {
+   "n": 362,
+   "name": "Royal Bedroom",
+   "parent": 0,
+   "bits": [
+    9
+   ]
+  },
+  {
+   "n": 364,
+   "name": "cabinet",
+   "parent": 362,
+   "bits": [
+    3,
+    10,
+    11,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 373,
+   "name": "red hat",
+   "parent": 370,
+   "bits": [
+    1
+   ]
+  },
+  {
+   "n": 375,
+   "name": "strange door",
+   "parent": 0,
+   "bits": [
+    4,
+    15
+   ]
+  },
+  {
+   "n": 387,
+   "name": "cap",
+   "parent": 386,
+   "bits": [
+    1
+   ]
+  },
+  {
+   "n": 406,
+   "name": "headdress",
+   "parent": 404,
+   "bits": [
+    1
+   ]
+  },
+  {
+   "n": 417,
+   "name": "Near Locker Room",
+   "parent": 0,
+   "bits": [
+    9
+   ]
+  },
+  {
+   "n": 418,
+   "name": "Locker Room",
+   "parent": 0,
+   "bits": [
+    9
+   ]
+  },
+  {
+   "n": 422,
+   "name": "bunch of dornberries",
+   "parent": 0,
+   "bits": [
+    5,
+    18
+   ]
+  },
+  {
+   "n": 433,
+   "name": "dark cloak",
+   "parent": 432,
+   "bits": [
+    1
+   ]
+  },
+  {
+   "n": 442,
+   "name": "bag",
+   "parent": 0,
+   "bits": [
+    3,
+    14
+   ]
+  },
+  {
+   "n": 483,
+   "name": "oyster beds",
+   "parent": 482,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 531,
+   "name": "Forest Clearing",
+   "parent": 0,
+   "bits": [
+    9
+   ]
+  },
+  {
+   "n": 552,
+   "name": "lettering",
+   "parent": 0,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 574,
+   "name": "northern door",
+   "parent": 573,
+   "bits": [
+    4,
+    10,
+    11,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 575,
+   "name": "southern door",
+   "parent": 573,
+   "bits": [
+    4,
+    10,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 579,
+   "name": "door",
+   "parent": 578,
+   "bits": [
+    4,
+    10,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 584,
+   "name": "large desk",
+   "parent": 582,
+   "bits": [
+    19,
+    20
+   ]
+  },
+  {
+   "n": 588,
+   "name": "Engineering Labs",
+   "parent": 0,
+   "bits": [
+    9
+   ]
+  },
+  {
+   "n": 591,
+   "name": "desk",
+   "parent": 590,
+   "bits": [
+    19,
+    20
+   ]
+  },
+  {
+   "n": 593,
+   "name": "lab door",
+   "parent": 0,
+   "bits": [
+    4,
+    10,
+    11,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 603,
+   "name": "flour:coated scroll",
+   "parent": 0,
+   "bits": [
+    18,
+    34
+   ]
+  },
+  {
+   "n": 619,
+   "name": "Jungle Clearing",
+   "parent": 0,
+   "bits": [
+    9
+   ]
+  },
+  {
+   "n": 647,
+   "name": "mailbox",
+   "parent": 646,
+   "bits": [
+    3,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 672,
+   "name": "portion of wall",
+   "parent": 670,
+   "bits": [
+    3,
+    14,
+    19
+   ]
+  },
+  {
+   "n": 675,
+   "name": "dusty metal box",
+   "parent": 674,
+   "bits": [
+    3,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 686,
+   "name": "cake",
+   "parent": 0,
+   "bits": [
+    5
+   ]
+  },
+  {
+   "n": 699,
+   "name": "platform gate",
+   "parent": 0,
+   "bits": [
+    4,
+    14,
+    19,
+    23
+   ]
+  },
+  {
+   "n": 701,
+   "name": "platform gate",
+   "parent": 0,
+   "bits": [
+    4,
+    14,
+    19,
+    23
+   ]
+  }
+ ]
+}

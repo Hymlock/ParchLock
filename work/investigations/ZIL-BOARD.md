@@ -20,7 +20,7 @@ Every evidence packet: digest, 2 native positives + negative (or single owner + 
 - claude: integrate (r28 gate running: enter-form code + Moonmist transparent; r29 staged: Planetfall transparent); reviews.
 - codex: (1) confirm Moonmist R3 snapshot -> commit; (2) BLIND locked investigation (#5100).
 - grok1: Witness enter-form checks (11-carrier sit-on sweep + get out of lounge) -> Witness enterForms fact; then HHGG pilot seat, Suspended.
-- grok2: Inform per-title bit checks for the 17 release games without name tables (offline); blind locked half if codex has not started it.
+- grok2: OUT OF CREDITS (operator). Mail taken over by claude; Inform bit checks run by a claude worker.
 
 ## Radial families: status
 | family (radial) | done | remaining |
@@ -60,3 +60,10 @@ Read this board before starting work; post a bus message to claude when a packet
 
 ## Inform next (work/investigations/inform-census/SUMMARY.md)
 - 58 of 80 release games have their own attribute name table (free). 17 release Inform games need a per-title bit check. 5 release Glulx games need a reader design.
+
+## Inform item 1 (queued behind ZIL): no-name-table titles read shifted flags
+- work/investigations/inform-bits/SUMMARY.md: all 17 release Inform titles without a name table read wrong PROFILE bits.
+  16 fall into 4 layouts (L older library x12, TOY, WIN x2, TH); sutwin has no set bits.
+  Visible today: missing Open/Close/Eat/Wear on doors, containers, food and clothing.
+- Fix direction: detect the layout from library-standard objects (compass=concealed, walls=scenery, yourself, lit rooms),
+  not 16 hand maps (no masking). Full procedure: blind halves, compare, proposal, review, implement, audit.

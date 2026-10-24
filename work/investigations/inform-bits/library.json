@@ -1,0 +1,220 @@
+{
+ "title": "library.z5",
+ "sha256": "b3665eaf5e30520355a1f07657ffbd69e967ecb53942f86913d044e65fa30e11",
+ "objects": 76,
+ "layout": "L",
+ "verdict": "SHIFTED (low block -1)",
+ "confidence": "high",
+ "evidence": "anchors compass=concealed 2, walls=scenery 17, yourself 0,2,16,23 (animate,concealed,proper,transparent), rooms light 9; doors carry 4+15(+10,11); containers 3+15 or 3+14; hats/clothes 1; food 5; supporters 20. Bits 1..8 are PROFILE-1 (no `absent` at 1, an extra attr at 8); 9..23 equal PROFILE.",
+ "proposedAttributeMap": {
+  "door": 4,
+  "open": 14,
+  "isOpen": 14,
+  "openable": 15,
+  "container": 3,
+  "supporter": 20,
+  "light": 9,
+  "edible": 5,
+  "clothing": 1,
+  "wearable": 1,
+  "worn": 26,
+  "lockable": 10,
+  "locked": 11,
+  "concealed": 2,
+  "animate": 0,
+  "scenery": 17,
+  "static": 19,
+  "enterable": 6,
+  "transparent": 23
+ },
+ "bitEvidence": {
+  "door": "doors",
+  "openable": "doors+containers",
+  "open": "open containers (bag/jar/basket/tray)",
+  "container": "containers",
+  "supporter": "tables/desks",
+  "light": "rooms (lit)",
+  "edible": "food (carrot,sweet,cake,pizza)",
+  "clothing": "hats/clothes",
+  "lockable": "locked doors",
+  "locked": "locked doors",
+  "worn": "NOT observed statically; inferred from library order (PROFILE 26 / layout shift)",
+  "enterable": "beds (theatre/windhal) else inferred"
+ },
+ "profileWrongFor": [
+  "clothing",
+  "concealed",
+  "container",
+  "door",
+  "edible"
+ ],
+ "exemplars": [
+  {
+   "n": 1,
+   "name": "compass",
+   "parent": 0,
+   "bits": [
+    2
+   ]
+  },
+  {
+   "n": 2,
+   "name": "north wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 3,
+   "name": "south wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 4,
+   "name": "east wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 5,
+   "name": "west wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 6,
+   "name": "northeast wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 7,
+   "name": "southeast wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 8,
+   "name": "northwest wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 9,
+   "name": "southwest wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 15,
+   "name": "yourself",
+   "parent": 0,
+   "bits": [
+    0,
+    2,
+    16,
+    23
+   ]
+  },
+  {
+   "n": 18,
+   "name": "card catalog drawer",
+   "parent": 16,
+   "bits": [
+    3,
+    17
+   ]
+  },
+  {
+   "n": 20,
+   "name": "security gates",
+   "parent": 16,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 22,
+   "name": "security gate lights",
+   "parent": 16,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 23,
+   "name": "circulation desk",
+   "parent": 16,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 25,
+   "name": "private door",
+   "parent": 16,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 26,
+   "name": "circulation desk attendant",
+   "parent": 16,
+   "bits": [
+    0,
+    23
+   ]
+  },
+  {
+   "n": 38,
+   "name": "reference desk",
+   "parent": 35,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 41,
+   "name": "reference doors",
+   "parent": 35,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 50,
+   "name": "red herring",
+   "parent": 0,
+   "bits": []
+  },
+  {
+   "n": 57,
+   "name": "rare books door",
+   "parent": 54,
+   "bits": [
+    4,
+    10,
+    11,
+    15,
+    19
+   ]
+  }
+ ]
+}

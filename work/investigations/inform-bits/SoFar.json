@@ -1,0 +1,501 @@
+{
+ "title": "SoFar.z8",
+ "sha256": "b94c01b794a728806f78a9ab5a2d2ac0fcbe04632206d501848c18c809feba1c",
+ "objects": 487,
+ "layout": "L",
+ "verdict": "SHIFTED (low block -1)",
+ "confidence": "high",
+ "evidence": "anchors compass=concealed 2, walls=scenery 17, yourself 0,2,16,23 (animate,concealed,proper,transparent), rooms light 9; doors carry 4+15(+10,11); containers 3+15 or 3+14; hats/clothes 1; food 5; supporters 20. Bits 1..8 are PROFILE-1 (no `absent` at 1, an extra attr at 8); 9..23 equal PROFILE.",
+ "proposedAttributeMap": {
+  "door": 4,
+  "open": 14,
+  "isOpen": 14,
+  "openable": 15,
+  "container": 3,
+  "supporter": 20,
+  "light": 9,
+  "edible": 5,
+  "clothing": 1,
+  "wearable": 1,
+  "worn": 26,
+  "lockable": 10,
+  "locked": 11,
+  "concealed": 2,
+  "animate": 0,
+  "scenery": 17,
+  "static": 19,
+  "enterable": 6,
+  "transparent": 23
+ },
+ "bitEvidence": {
+  "door": "doors",
+  "openable": "doors+containers",
+  "open": "open containers (bag/jar/basket/tray)",
+  "container": "containers",
+  "supporter": "tables/desks",
+  "light": "rooms (lit)",
+  "edible": "food (carrot,sweet,cake,pizza)",
+  "clothing": "hats/clothes",
+  "lockable": "locked doors",
+  "locked": "locked doors",
+  "worn": "NOT observed statically; inferred from library order (PROFILE 26 / layout shift)",
+  "enterable": "beds (theatre/windhal) else inferred"
+ },
+ "profileWrongFor": [
+  "clothing",
+  "concealed",
+  "container",
+  "door",
+  "edible"
+ ],
+ "exemplars": [
+  {
+   "n": 1,
+   "name": "compass",
+   "parent": 0,
+   "bits": [
+    2
+   ]
+  },
+  {
+   "n": 2,
+   "name": "north wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 3,
+   "name": "south wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 4,
+   "name": "east wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 5,
+   "name": "west wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 6,
+   "name": "northeast wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 7,
+   "name": "southeast wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 8,
+   "name": "northwest wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 9,
+   "name": "southwest wall",
+   "parent": 1,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 15,
+   "name": "yourself",
+   "parent": 0,
+   "bits": [
+    0,
+    2,
+    16,
+    23
+   ]
+  },
+  {
+   "n": 20,
+   "name": "yourself",
+   "parent": 0,
+   "bits": [
+    0,
+    2,
+    16,
+    23
+   ]
+  },
+  {
+   "n": 47,
+   "name": "doorway",
+   "parent": 0,
+   "bits": [
+    17,
+    23
+   ]
+  },
+  {
+   "n": 51,
+   "name": "crates and things",
+   "parent": 49,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 53,
+   "name": "heavy door",
+   "parent": 52,
+   "bits": [
+    4,
+    11,
+    15,
+    17
+   ]
+  },
+  {
+   "n": 61,
+   "name": "shadow behind the cabinet",
+   "parent": 57,
+   "bits": [
+    3,
+    17
+   ]
+  },
+  {
+   "n": 62,
+   "name": "cabinet",
+   "parent": 57,
+   "bits": [
+    3,
+    15,
+    19
+   ]
+  },
+  {
+   "n": 64,
+   "name": "odd wooden box",
+   "parent": 62,
+   "bits": [
+    23
+   ]
+  },
+  {
+   "n": 67,
+   "name": "stone wall",
+   "parent": 66,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 73,
+   "name": "stone wall",
+   "parent": 70,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 81,
+   "name": "Road at Gate",
+   "parent": 0,
+   "bits": [
+    9,
+    29
+   ]
+  },
+  {
+   "n": 83,
+   "name": "wooden gate",
+   "parent": 81,
+   "bits": [
+    4,
+    17
+   ]
+  },
+  {
+   "n": 85,
+   "name": "stone wall",
+   "parent": 81,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 88,
+   "name": "stone wall",
+   "parent": 87,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 89,
+   "name": "gate",
+   "parent": 87,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 94,
+   "name": "hatch",
+   "parent": 93,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 97,
+   "name": "stone wall",
+   "parent": 95,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 105,
+   "name": "gate",
+   "parent": 104,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 107,
+   "name": "stone wall",
+   "parent": 104,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 110,
+   "name": "hatch",
+   "parent": 109,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 113,
+   "name": "stone wall",
+   "parent": 111,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 120,
+   "name": "Road Beyond Gate",
+   "parent": 0,
+   "bits": [
+    9,
+    29
+   ]
+  },
+  {
+   "n": 121,
+   "name": "stone wall",
+   "parent": 120,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 166,
+   "name": "hatch",
+   "parent": 162,
+   "bits": [
+    4,
+    15,
+    17
+   ]
+  },
+  {
+   "n": 169,
+   "name": "northwest door",
+   "parent": 162,
+   "bits": [
+    4,
+    10,
+    11,
+    15,
+    17
+   ]
+  },
+  {
+   "n": 170,
+   "name": "southwest door",
+   "parent": 162,
+   "bits": [
+    4,
+    10,
+    11,
+    15,
+    17
+   ]
+  },
+  {
+   "n": 174,
+   "name": "brightly:painted egg",
+   "parent": 173,
+   "bits": []
+  },
+  {
+   "n": 176,
+   "name": "hatch",
+   "parent": 175,
+   "bits": [
+    4,
+    14,
+    15,
+    17
+   ]
+  },
+  {
+   "n": 177,
+   "name": "ring",
+   "parent": 175,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 202,
+   "name": "rings and chains",
+   "parent": 201,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 207,
+   "name": "northern gate",
+   "parent": 205,
+   "bits": [
+    4,
+    14,
+    17
+   ]
+  },
+  {
+   "n": 217,
+   "name": "southern gate",
+   "parent": 216,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 222,
+   "name": "wide door",
+   "parent": 221,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 223,
+   "name": "smaller door",
+   "parent": 221,
+   "bits": [
+    4,
+    15,
+    17
+   ]
+  },
+  {
+   "n": 236,
+   "name": "silver ring",
+   "parent": 233,
+   "bits": [
+    1
+   ]
+  },
+  {
+   "n": 292,
+   "name": "tiny spring",
+   "parent": 291,
+   "bits": [
+    3,
+    14,
+    17
+   ]
+  },
+  {
+   "n": 304,
+   "name": "Small Clearing",
+   "parent": 0,
+   "bits": [
+    9,
+    29
+   ]
+  },
+  {
+   "n": 322,
+   "name": "odd wooden boxes",
+   "parent": 320,
+   "bits": [
+    17
+   ]
+  },
+  {
+   "n": 407,
+   "name": "murmuring voices",
+   "parent": 0,
+   "bits": [
+    17,
+    19
+   ]
+  },
+  {
+   "n": 465,
+   "name": "ring of darkness",
+   "parent": 0,
+   "bits": [
+    0,
+    19,
+    27
+   ]
+  },
+  {
+   "n": 475,
+   "name": "red box",
+   "parent": 473,
+   "bits": [
+    3,
+    14
+   ]
+  },
+  {
+   "n": 485,
+   "name": "ring of brightness",
+   "parent": 484,
+   "bits": [
+    0,
+    19,
+    27
+   ]
+  }
+ ]
+}

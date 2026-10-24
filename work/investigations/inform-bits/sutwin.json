@@ -1,0 +1,152 @@
+{
+ "title": "sutwin.z5",
+ "sha256": "1e206e79c42111a8c1fe07ea9abe050dbaa7726986afd9433b8f74c36b022079",
+ "objects": 114,
+ "layout": null,
+ "verdict": "NO EXEMPLARS",
+ "confidence": "n/a",
+ "evidence": "Object table has class objects (Class/Object/Routine) and no attribute bits set on any object; nothing to infer. Flags must come from elsewhere.",
+ "proposedAttributeMap": null,
+ "bitEvidence": null,
+ "profileWrongFor": [],
+ "exemplars": [
+  {
+   "n": 4,
+   "name": "String",
+   "parent": 0,
+   "bits": []
+  },
+  {
+   "n": 10,
+   "name": ")begglass?",
+   "parent": 7,
+   "bits": []
+  },
+  {
+   "n": 21,
+   "name": ")initrmtable?",
+   "parent": 18,
+   "bits": []
+  },
+  {
+   "n": 24,
+   "name": ")initdoor?",
+   "parent": 18,
+   "bits": []
+  },
+  {
+   "n": 26,
+   "name": ")inittocandle?",
+   "parent": 18,
+   "bits": []
+  },
+  {
+   "n": 29,
+   "name": ")initrmdress?",
+   "parent": 18,
+   "bits": []
+  },
+  {
+   "n": 34,
+   "name": ")dimrmcandle?",
+   "parent": 32,
+   "bits": []
+  },
+  {
+   "n": 35,
+   "name": ")dimrmdoor?",
+   "parent": 32,
+   "bits": []
+  },
+  {
+   "n": 63,
+   "name": "DressRm",
+   "parent": 0,
+   "bits": []
+  },
+  {
+   "n": 64,
+   "name": ")dressrmdress?",
+   "parent": 63,
+   "bits": []
+  },
+  {
+   "n": 65,
+   "name": ")dressrmwindow?",
+   "parent": 63,
+   "bits": []
+  },
+  {
+   "n": 66,
+   "name": ")dressrmwait?",
+   "parent": 63,
+   "bits": []
+  },
+  {
+   "n": 67,
+   "name": ")dressrmeyes?",
+   "parent": 63,
+   "bits": []
+  },
+  {
+   "n": 68,
+   "name": ")dressrmlight?",
+   "parent": 63,
+   "bits": []
+  },
+  {
+   "n": 69,
+   "name": ")dressrmsmile?",
+   "parent": 63,
+   "bits": []
+  },
+  {
+   "n": 71,
+   "name": ")dedoor_fd?",
+   "parent": 0,
+   "bits": []
+  },
+  {
+   "n": 72,
+   "name": ")detable_fd?",
+   "parent": 0,
+   "bits": []
+  },
+  {
+   "n": 75,
+   "name": ")tocandle_fd?",
+   "parent": 0,
+   "bits": []
+  },
+  {
+   "n": 98,
+   "name": ")tocandle_el?",
+   "parent": 0,
+   "bits": []
+  },
+  {
+   "n": 99,
+   "name": ")dedoor_el?",
+   "parent": 0,
+   "bits": []
+  },
+  {
+   "n": 100,
+   "name": ")detable_el?",
+   "parent": 0,
+   "bits": []
+  },
+  {
+   "n": 102,
+   "name": "CandleRm",
+   "parent": 0,
+   "bits": []
+  },
+  {
+   "n": 112,
+   "name": ")canrmface_door?",
+   "parent": 102,
+   "bits": []
+  }
+ ]
+}
