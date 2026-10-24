@@ -66,3 +66,10 @@ Read this board before starting work; post a bus message to claude when a packet
   16 fall into 4 layouts (L older library x12, TOY, WIN x2, TH); sutwin has no set bits.
   Visible today: missing Open/Close/Eat/Wear on doors, containers, food and clothing.
 - CORRECTION: D73 AttrCalibrator already self-corrects these bits during live play; the static read shows only the pre-calibration state. Possible refinement (start-correct layout), parked behind ZIL. Not a broken system.
+
+## Hygiene (no visible effect today)
+- AttributeSchema zilStructural fail-closed set (js/AttributeSchema.js:233-236) omits clothing/wearable/edible/light/
+  scenery/static, so unmapped ZIL objects carry Inform PROFILE bits in attrs (Infidel inner door 162: clothing,
+  wearable, light; audit-r29/verbs.out). The radial is protected by ActionSynth.trustworthyAttrs (SEMANTIC_FLAGS), so
+  the composed menu is correct (examine|open|close). Risk only for a future direct attrs consumer. Candidate: extend
+  fail-closed to those keys after a consumer inventory (full procedure).
