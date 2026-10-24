@@ -1,0 +1,1347 @@
+{
+ "story": "Moonmist.z3.js",
+ "version": 3,
+ "digest": "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0",
+ "flags": {
+  ";\"evidence\"": {
+   "bit": 30,
+   "exact": false
+  },
+  ";\"so": {
+   "bit": 16,
+   "exact": false
+  },
+  ";BURNBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  ";CONTBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  ";LOCKED": {
+   "bit": 0,
+   "exact": false
+  },
+  ";NDESCBIT": {
+   "bit": 9,
+   "exact": false
+  },
+  ";ONBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  ";OPENBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  ";PERSONBIT": {
+   "bit": 4,
+   "exact": true
+  },
+  ";PLURALBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  ";READBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  ";RMUNGBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  ";SECRETBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  ";SEENBIT": {
+   "bit": 9,
+   "exact": false
+  },
+  ";SURFACEBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  ";TAKEBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  ";TOUCHBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  ";TRANSBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  ";TRY": {
+   "bit": 0,
+   "exact": false
+  },
+  ";TRYTAKEBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  ";WEARBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  ";WORNBIT": {
+   "bit": 0,
+   "exact": false
+  },
+  "CONTBIT": {
+   "bit": 27,
+   "exact": true
+  },
+  "DOORBIT": {
+   "bit": 7,
+   "exact": true
+  },
+  "FEMALE": {
+   "bit": 15,
+   "exact": true
+  },
+  "GO": {
+   "bit": 16,
+   "exact": false
+  },
+  "INVISIBLE": {
+   "bit": 6,
+   "exact": true
+  },
+  "LIGHTBIT": {
+   "bit": 24,
+   "exact": true
+  },
+  "LOCKED": {
+   "bit": 8,
+   "exact": true
+  },
+  "MUNGBIT": {
+   "bit": 5,
+   "exact": true
+  },
+  "NARTICLEBIT": {
+   "bit": 20,
+   "exact": false
+  },
+  "NDESCBIT": {
+   "bit": 19,
+   "exact": true
+  },
+  "ONBIT": {
+   "bit": 10,
+   "exact": true
+  },
+  "OPENBIT": {
+   "bit": 14,
+   "exact": true
+  },
+  "PERSONBIT": {
+   "bit": 31,
+   "exact": true
+  },
+  "READBIT": {
+   "bit": 22,
+   "exact": true
+  },
+  "RMUNGBIT": {
+   "bit": 30,
+   "exact": true
+  },
+  "SEARCHBIT": {
+   "bit": 18,
+   "exact": true
+  },
+  "SECRETBIT": {
+   "bit": 13,
+   "exact": true
+  },
+  "SEENBIT": {
+   "bit": 17,
+   "exact": true
+  },
+  "SURFACEBIT": {
+   "bit": 23,
+   "exact": true
+  },
+  "TAKEBIT": {
+   "bit": 26,
+   "exact": true
+  },
+  "TO": {
+   "bit": 16,
+   "exact": false
+  },
+  "TOOLBIT": {
+   "bit": 4,
+   "exact": true
+  },
+  "TOUCHBIT": {
+   "bit": 16,
+   "exact": true
+  },
+  "TRANSBIT": {
+   "bit": 9,
+   "exact": true
+  },
+  "TRYTAKEBIT": {
+   "bit": 12,
+   "exact": true
+  },
+  "VEHBIT": {
+   "bit": 28,
+   "exact": true
+  },
+  "VOWELBIT": {
+   "bit": 11,
+   "exact": true
+  },
+  "WEAPONBIT": {
+   "bit": 25,
+   "exact": true
+  },
+  "WEARBIT": {
+   "bit": 29,
+   "exact": true
+  },
+  "WORNBIT": {
+   "bit": 21,
+   "exact": true
+  },
+  "works\"": {
+   "bit": 16,
+   "exact": false
+  }
+ },
+ "holder": {
+  "id": 44,
+  "name": "stone"
+ },
+ "kids": [
+  {
+   "id": 111,
+   "name": "Deirdre's body",
+   "invisible": false,
+   "attrs": [
+    20
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 133,
+   "name": "table",
+   "invisible": false,
+   "attrs": [
+    17
+   ],
+   "listedBy": [
+    "12L",
+    "124L",
+    "132L",
+    "183d"
+   ]
+  },
+  {
+   "id": 45,
+   "name": "chair",
+   "invisible": false,
+   "attrs": [
+    17,
+    23
+   ],
+   "listedBy": [
+    "9L",
+    "12L",
+    "13L",
+    "30L",
+    "54d",
+    "88L",
+    "96d",
+    "107d",
+    "124L",
+    "132L",
+    "136L",
+    "146d",
+    "183d"
+   ]
+  },
+  {
+   "id": 174,
+   "name": "stairs",
+   "invisible": false,
+   "attrs": [
+    17
+   ],
+   "listedBy": [
+    "14d",
+    "27d",
+    "30L",
+    "40d",
+    "70d",
+    "124L",
+    "131L",
+    "136L",
+    "140L",
+    "154d",
+    "155d",
+    "177d",
+    "186L",
+    "222L",
+    "235d",
+    "243L",
+    "246L",
+    "252d"
+   ]
+  },
+  {
+   "id": 15,
+   "name": "window",
+   "invisible": false,
+   "attrs": [
+    17,
+    19
+   ],
+   "listedBy": [
+    "7L",
+    "9L",
+    "12L",
+    "13L",
+    "32L",
+    "33L",
+    "88L",
+    "117L",
+    "124L",
+    "126L",
+    "131L",
+    "132L",
+    "136L",
+    "148L",
+    "150L",
+    "151L",
+    "159L"
+   ]
+  },
+  {
+   "id": 123,
+   "name": "lever",
+   "invisible": false,
+   "attrs": [
+    12,
+    17
+   ],
+   "listedBy": [
+    "2d",
+    "14d",
+    "25d",
+    "27d",
+    "31d",
+    "70d",
+    "73d",
+    "154d",
+    "155d",
+    "177d",
+    "179d",
+    "186L",
+    "224d"
+   ]
+  },
+  {
+   "id": 172,
+   "name": "Deirdre's necklace",
+   "invisible": false,
+   "attrs": [
+    13,
+    14,
+    19,
+    20,
+    26,
+    27
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 253,
+   "name": "pseudo",
+   "invisible": false,
+   "attrs": [
+    17
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 55,
+   "name": "peephole",
+   "invisible": false,
+   "attrs": [
+    10,
+    13
+   ],
+   "listedBy": [
+    "131L",
+    "141d"
+   ]
+  },
+  {
+   "id": 90,
+   "name": "ladder",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "14d",
+    "40d",
+    "154d",
+    "155d",
+    "177d"
+   ]
+  },
+  {
+   "id": 43,
+   "name": "peephole",
+   "invisible": false,
+   "attrs": [
+    10,
+    19
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 138,
+   "name": "priest hole",
+   "invisible": false,
+   "attrs": [
+    7,
+    17
+   ],
+   "listedBy": [
+    "2d",
+    "186L"
+   ]
+  },
+  {
+   "id": 122,
+   "name": "brick hole",
+   "invisible": true,
+   "attrs": [
+    6,
+    7,
+    14,
+    17
+   ],
+   "listedBy": [
+    "121d",
+    "235d"
+   ]
+  },
+  {
+   "id": 128,
+   "name": "bathroom door",
+   "invisible": false,
+   "attrs": [
+    7,
+    14,
+    17
+   ],
+   "listedBy": [
+    "33L",
+    "62L"
+   ]
+  },
+  {
+   "id": 115,
+   "name": "wardrobe",
+   "invisible": false,
+   "attrs": [
+    17
+   ],
+   "listedBy": [
+    "7L",
+    "117L",
+    "126L",
+    "148L",
+    "150L",
+    "151L",
+    "159L"
+   ]
+  },
+  {
+   "id": 99,
+   "name": "dressing table",
+   "invisible": false,
+   "attrs": [
+    14,
+    17,
+    23,
+    27
+   ],
+   "listedBy": [
+    "7L",
+    "117L",
+    "126L",
+    "148L",
+    "150L",
+    "151L",
+    "159L"
+   ]
+  },
+  {
+   "id": 203,
+   "name": "night table",
+   "invisible": false,
+   "attrs": [
+    17
+   ],
+   "listedBy": [
+    "7L",
+    "117L",
+    "126L",
+    "148L",
+    "150L",
+    "151L",
+    "159L"
+   ]
+  },
+  {
+   "id": 226,
+   "name": "fireplace",
+   "invisible": false,
+   "attrs": [
+    17
+   ],
+   "listedBy": [
+    "7L",
+    "12L",
+    "32L",
+    "33L",
+    "54d",
+    "88L",
+    "117L",
+    "124L",
+    "126L",
+    "131L",
+    "136L",
+    "146d",
+    "148L",
+    "150L",
+    "151L",
+    "159L",
+    "183d"
+   ]
+  },
+  {
+   "id": 197,
+   "name": "bathroom",
+   "invisible": false,
+   "attrs": [
+    17
+   ],
+   "listedBy": [
+    "7L",
+    "117L",
+    "126L",
+    "148L",
+    "150L",
+    "151L",
+    "159L"
+   ]
+  },
+  {
+   "id": 28,
+   "name": "oil painting",
+   "invisible": false,
+   "attrs": [
+    11,
+    17,
+    19
+   ],
+   "listedBy": [
+    "12L",
+    "32L",
+    "132L"
+   ]
+  },
+  {
+   "id": 52,
+   "name": "front gate",
+   "invisible": false,
+   "attrs": [
+    7,
+    8,
+    9,
+    17
+   ],
+   "listedBy": [
+    "9L",
+    "13L"
+   ]
+  },
+  {
+   "id": 230,
+   "name": "ocean",
+   "invisible": false,
+   "attrs": [
+    11,
+    17
+   ],
+   "listedBy": [
+    "9L",
+    "13L",
+    "140L",
+    "186L",
+    "241L",
+    "249L"
+   ]
+  },
+  {
+   "id": 84,
+   "name": "full moon",
+   "invisible": false,
+   "attrs": [
+    17
+   ],
+   "listedBy": [
+    "9L",
+    "13L",
+    "140L",
+    "186L",
+    "241L",
+    "249L"
+   ]
+  },
+  {
+   "id": 209,
+   "name": "ghost",
+   "invisible": false,
+   "attrs": [
+    14,
+    17,
+    18,
+    19
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 167,
+   "name": "White Lady",
+   "invisible": false,
+   "attrs": [
+    15,
+    17,
+    31
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 125,
+   "name": "upstairs maid",
+   "invisible": false,
+   "attrs": [
+    11,
+    15,
+    17,
+    31
+   ],
+   "listedBy": []
+  }
+ ],
+ "rooms": [
+  {
+   "id": 2,
+   "name": "dungeon",
+   "parent": 37,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "138:priest hole",
+    "123:lever"
+   ]
+  },
+  {
+   "id": 7,
+   "name": "Wendish's bedroom",
+   "parent": 37,
+   "lit": true,
+   "sz": 8,
+   "lg": [
+    "7:Wendish's bedroom(par37)",
+    "105:secret door(par37)",
+    "197:bathroom",
+    "226:fireplace",
+    "203:night table",
+    "99:dressing table",
+    "115:wardrobe",
+    "15:window"
+   ]
+  },
+  {
+   "id": 9,
+   "name": "driveway",
+   "parent": 37,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "52:front gate",
+    "84:full moon",
+    "230:ocean",
+    "15:window",
+    "45:chair"
+   ]
+  },
+  {
+   "id": 12,
+   "name": "drawing room",
+   "parent": 37,
+   "lit": true,
+   "sz": 8,
+   "lg": [
+    "124:new great hall(par37)",
+    "12:drawing room(par37)",
+    "208:secret door(par37)",
+    "45:chair",
+    "226:fireplace",
+    "15:window",
+    "133:table",
+    "28:oil painting"
+   ]
+  },
+  {
+   "id": 13,
+   "name": "courtyard",
+   "parent": 37,
+   "lit": true,
+   "sz": 7,
+   "lg": [
+    "52:front gate",
+    "84:full moon",
+    "120:front door(par37)",
+    "136:old great hall(par37)",
+    "230:ocean",
+    "15:window",
+    "45:chair"
+   ]
+  },
+  {
+   "id": 14,
+   "name": "library landing",
+   "parent": 37,
+   "lit": false,
+   "sz": 5,
+   "lg": [
+    "79:secret door(par37)",
+    "146:library(par37)",
+    "123:lever",
+    "90:ladder",
+    "174:stairs"
+   ]
+  },
+  {
+   "id": 25,
+   "name": "Vivien's entrance",
+   "parent": 37,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "229:secret door(par37)",
+    "148:Vivien's bedroom(par37)",
+    "123:lever"
+   ]
+  },
+  {
+   "id": 27,
+   "name": "Jack's landing",
+   "parent": 37,
+   "lit": false,
+   "sz": 4,
+   "lg": [
+    "24:secret door(par37)",
+    "151:master bedroom(par37)",
+    "123:lever",
+    "174:stairs"
+   ]
+  },
+  {
+   "id": 30,
+   "name": "kitchen",
+   "parent": 37,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "45:chair",
+    "86:bell(par140)",
+    "174:stairs"
+   ]
+  },
+  {
+   "id": 31,
+   "name": "Ian's entrance",
+   "parent": 37,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "216:secret door(par37)",
+    "117:Ian's bedroom(par37)",
+    "123:lever"
+   ]
+  },
+  {
+   "id": 32,
+   "name": "dining room",
+   "parent": 37,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "32:dining room(par37)",
+    "226:fireplace",
+    "15:window",
+    "28:oil painting"
+   ]
+  },
+  {
+   "id": 33,
+   "name": "your bedroom",
+   "parent": 37,
+   "lit": true,
+   "sz": 6,
+   "lg": [
+    "33:your bedroom(par37)",
+    "199:secret door(par37)",
+    "62:your bathroom(par37)",
+    "226:fireplace",
+    "15:window",
+    "128:bathroom door"
+   ]
+  },
+  {
+   "id": 39,
+   "name": "east hall",
+   "parent": 37,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "7:Wendish's bedroom(par37)",
+    "159:Iris's bedroom(par37)"
+   ]
+  },
+  {
+   "id": 40,
+   "name": "tower passage",
+   "parent": 37,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "90:ladder",
+    "174:stairs"
+   ]
+  },
+  {
+   "id": 54,
+   "name": "office",
+   "parent": 37,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "54:office(par37)",
+    "45:chair",
+    "226:fireplace"
+   ]
+  },
+  {
+   "id": 62,
+   "name": "your bathroom",
+   "parent": 37,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "128:bathroom door"
+   ]
+  },
+  {
+   "id": 67,
+   "name": "west hall",
+   "parent": 37,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "150:Hyde's bedroom(par37)",
+    "117:Ian's bedroom(par37)"
+   ]
+  },
+  {
+   "id": 70,
+   "name": "your entrance",
+   "parent": 37,
+   "lit": false,
+   "sz": 4,
+   "lg": [
+    "199:secret door(par37)",
+    "33:your bedroom(par37)",
+    "174:stairs",
+    "123:lever"
+   ]
+  },
+  {
+   "id": 73,
+   "name": "Wendish's entrance",
+   "parent": 37,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "105:secret door(par37)",
+    "7:Wendish's bedroom(par37)",
+    "123:lever"
+   ]
+  },
+  {
+   "id": 88,
+   "name": "sitting room",
+   "parent": 37,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "88:sitting room(par37)",
+    "6:secret door(par37)",
+    "45:chair",
+    "226:fireplace",
+    "15:window"
+   ]
+  },
+  {
+   "id": 96,
+   "name": "game room",
+   "parent": 37,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "96:game room(par37)",
+    "45:chair"
+   ]
+  },
+  {
+   "id": 107,
+   "name": "chapel",
+   "parent": 37,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "107:chapel(par37)",
+    "45:chair"
+   ]
+  },
+  {
+   "id": 114,
+   "name": "lumber room",
+   "parent": 37,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "114:lumber room(par37)"
+   ]
+  },
+  {
+   "id": 117,
+   "name": "Ian's bedroom",
+   "parent": 37,
+   "lit": true,
+   "sz": 8,
+   "lg": [
+    "117:Ian's bedroom(par37)",
+    "216:secret door(par37)",
+    "197:bathroom",
+    "226:fireplace",
+    "203:night table",
+    "99:dressing table",
+    "115:wardrobe",
+    "15:window"
+   ]
+  },
+  {
+   "id": 121,
+   "name": "secret crypt",
+   "parent": 37,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "122:brick hole"
+   ]
+  },
+  {
+   "id": 124,
+   "name": "new great hall",
+   "parent": 37,
+   "lit": true,
+   "sz": 8,
+   "lg": [
+    "124:new great hall(par37)",
+    "132:foyer(par37)",
+    "45:chair",
+    "226:fireplace",
+    "15:window",
+    "133:table",
+    "174:stairs",
+    "12:drawing room(par37)"
+   ]
+  },
+  {
+   "id": 126,
+   "name": "Tamara's bedroom",
+   "parent": 37,
+   "lit": true,
+   "sz": 8,
+   "lg": [
+    "126:Tamara's bedroom(par37)",
+    "152:sliding panel(par37)",
+    "197:bathroom",
+    "226:fireplace",
+    "203:night table",
+    "99:dressing table",
+    "115:wardrobe",
+    "15:window"
+   ]
+  },
+  {
+   "id": 131,
+   "name": "gallery",
+   "parent": 37,
+   "lit": true,
+   "sz": 6,
+   "lg": [
+    "33:your bedroom(par37)",
+    "148:Vivien's bedroom(par37)",
+    "226:fireplace",
+    "15:window",
+    "55:peephole",
+    "174:stairs"
+   ]
+  },
+  {
+   "id": 132,
+   "name": "foyer",
+   "parent": 37,
+   "lit": true,
+   "sz": 6,
+   "lg": [
+    "120:front door(par37)",
+    "132:foyer(par37)",
+    "45:chair",
+    "133:table",
+    "15:window",
+    "28:oil painting"
+   ]
+  },
+  {
+   "id": 136,
+   "name": "old great hall",
+   "parent": 37,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "136:old great hall(par37)",
+    "226:fireplace",
+    "45:chair",
+    "15:window",
+    "174:stairs"
+   ]
+  },
+  {
+   "id": 140,
+   "name": "fighting deck",
+   "parent": 37,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "84:full moon",
+    "230:ocean",
+    "174:stairs"
+   ]
+  },
+  {
+   "id": 141,
+   "name": "dead end",
+   "parent": 37,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "55:peephole"
+   ]
+  },
+  {
+   "id": 146,
+   "name": "library",
+   "parent": 37,
+   "lit": false,
+   "sz": 4,
+   "lg": [
+    "146:library(par37)",
+    "79:secret door(par37)",
+    "226:fireplace",
+    "45:chair"
+   ]
+  },
+  {
+   "id": 148,
+   "name": "Vivien's bedroom",
+   "parent": 37,
+   "lit": true,
+   "sz": 8,
+   "lg": [
+    "148:Vivien's bedroom(par37)",
+    "229:secret door(par37)",
+    "197:bathroom",
+    "226:fireplace",
+    "203:night table",
+    "99:dressing table",
+    "115:wardrobe",
+    "15:window"
+   ]
+  },
+  {
+   "id": 150,
+   "name": "Hyde's bedroom",
+   "parent": 37,
+   "lit": true,
+   "sz": 8,
+   "lg": [
+    "150:Hyde's bedroom(par37)",
+    "250:secret door(par37)",
+    "197:bathroom",
+    "226:fireplace",
+    "203:night table",
+    "99:dressing table",
+    "115:wardrobe",
+    "15:window"
+   ]
+  },
+  {
+   "id": 151,
+   "name": "master bedroom",
+   "parent": 37,
+   "lit": true,
+   "sz": 8,
+   "lg": [
+    "151:master bedroom(par37)",
+    "24:secret door(par37)",
+    "197:bathroom",
+    "226:fireplace",
+    "203:night table",
+    "99:dressing table",
+    "115:wardrobe",
+    "15:window"
+   ]
+  },
+  {
+   "id": 154,
+   "name": "drawing:room entrance",
+   "parent": 37,
+   "lit": false,
+   "sz": 5,
+   "lg": [
+    "208:secret door(par37)",
+    "12:drawing room(par37)",
+    "123:lever",
+    "90:ladder",
+    "174:stairs"
+   ]
+  },
+  {
+   "id": 155,
+   "name": "dining passage",
+   "parent": 37,
+   "lit": false,
+   "sz": 5,
+   "lg": [
+    "64:secret door(par37)",
+    "243:backstairs(par37)",
+    "90:ladder",
+    "174:stairs",
+    "123:lever"
+   ]
+  },
+  {
+   "id": 159,
+   "name": "Iris's bedroom",
+   "parent": 37,
+   "lit": true,
+   "sz": 8,
+   "lg": [
+    "159:Iris's bedroom(par37)",
+    "145:secret door(par37)",
+    "197:bathroom",
+    "226:fireplace",
+    "203:night table",
+    "99:dressing table",
+    "115:wardrobe",
+    "15:window"
+   ]
+  },
+  {
+   "id": 170,
+   "name": "sitting passage",
+   "parent": 37,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "6:secret door(par37)"
+   ]
+  },
+  {
+   "id": 177,
+   "name": "Tamara's landing",
+   "parent": 37,
+   "lit": false,
+   "sz": 5,
+   "lg": [
+    "152:sliding panel(par37)",
+    "126:Tamara's bedroom(par37)",
+    "123:lever",
+    "90:ladder",
+    "174:stairs"
+   ]
+  },
+  {
+   "id": 179,
+   "name": "Iris's entrance",
+   "parent": 37,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "145:secret door(par37)",
+    "159:Iris's bedroom(par37)",
+    "123:lever"
+   ]
+  },
+  {
+   "id": 183,
+   "name": "study",
+   "parent": 37,
+   "lit": false,
+   "sz": 4,
+   "lg": [
+    "183:study(par37)",
+    "226:fireplace",
+    "45:chair",
+    "133:table"
+   ]
+  },
+  {
+   "id": 186,
+   "name": "path",
+   "parent": 37,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "138:priest hole",
+    "123:lever",
+    "84:full moon",
+    "230:ocean",
+    "174:stairs"
+   ]
+  },
+  {
+   "id": 196,
+   "name": "ground:floor corridor",
+   "parent": 37,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "88:sitting room(par37)",
+    "32:dining room(par37)"
+   ]
+  },
+  {
+   "id": 222,
+   "name": "first:floor corridor",
+   "parent": 37,
+   "lit": true,
+   "sz": 6,
+   "lg": [
+    "151:master bedroom(par37)",
+    "183:study(par37)",
+    "146:library(par37)",
+    "54:office(par37)",
+    "126:Tamara's bedroom(par37)",
+    "174:stairs"
+   ]
+  },
+  {
+   "id": 224,
+   "name": "Hyde's entrance",
+   "parent": 37,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "250:secret door(par37)",
+    "150:Hyde's bedroom(par37)",
+    "123:lever"
+   ]
+  },
+  {
+   "id": 235,
+   "name": "basement",
+   "parent": 37,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "122:brick hole",
+    "174:stairs"
+   ]
+  },
+  {
+   "id": 241,
+   "name": "hedge maze",
+   "parent": 37,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "84:full moon",
+    "230:ocean"
+   ]
+  },
+  {
+   "id": 243,
+   "name": "backstairs",
+   "parent": 37,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "64:secret door(par37)",
+    "174:stairs"
+   ]
+  },
+  {
+   "id": 246,
+   "name": "junction",
+   "parent": 37,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "174:stairs"
+   ]
+  },
+  {
+   "id": 249,
+   "name": "garden",
+   "parent": 37,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "84:full moon",
+    "230:ocean"
+   ]
+  },
+  {
+   "id": 252,
+   "name": "second:floor corridor",
+   "parent": 37,
+   "lit": false,
+   "sz": 4,
+   "lg": [
+    "114:lumber room(par37)",
+    "107:chapel(par37)",
+    "96:game room(par37)",
+    "174:stairs"
+   ]
+  }
+ ]
+}

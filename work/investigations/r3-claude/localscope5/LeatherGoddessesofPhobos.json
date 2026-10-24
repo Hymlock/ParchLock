@@ -1,0 +1,1392 @@
+{
+ "story": "LeatherGoddessesofPhobos.z3.js",
+ "executableDigest": "103324c3b7332528cc36cc15ce15ae593af5a33ac2b75fae0f04eecc1ffec8f8",
+ "proposalDigest": "103324c3b7332528cc36cc15ce15ae593af5a33ac2b75fae0f04eecc1ffec8f8",
+ "digestMatch": true,
+ "fileSha256": "5a0bd659782f91639c54ab1034390af315eba596fc9c7eab0163a03556c14a8c",
+ "localScope": {
+  "property": 15,
+  "width": 1,
+  "holder": 40,
+  "roomLitAttribute": 30,
+  "invisible": null,
+  "searchBit": 14,
+  "surfaceBit": 17,
+  "openBit": 15,
+  "transBit": null
+ },
+ "proposalLocalScope": {
+  "property": 15,
+  "width": 1,
+  "holder": 40,
+  "roomLitAttribute": 30,
+  "invisible": null,
+  "searchBit": 14,
+  "surfaceBit": 17,
+  "openBit": 15,
+  "transBit": null
+ },
+ "sourceFlags": {
+  "INVISIBLE": "ABSENT",
+  "ONBIT": {
+   "bit": 30,
+   "positives": 60,
+   "negatives": 121,
+   "tp": 60,
+   "fp": 0,
+   "fn": 0,
+   "exact": true
+  }
+ },
+ "summary": {
+  "width": 1,
+  "invisible": null,
+  "R1": "Joe's Bar (61)",
+  "R1obj": "gents' restroom",
+  "R2": "Gents' Room (160)",
+  "R2obj": "gents' restroom",
+  "negatives": "Joe's Bar 61: \"examine toilet\" (212, listed by 68/160) => \"You can't see any toilet here!\"; reciprocal positive \"Yechh.\" at 160; Gents' Room 160: \"examine window\" (12, listed by 61) => can't see; reciprocal positive at 61",
+  "extra": "61 \"examine gents' restroom\" reply is the room description (handler) - resolved. Holder children 83 (empty name) and 228 pseudo are abstractions.",
+  "dark": "not reached (dark listing rooms are Catacombs/Storehouse/Closet etc.)",
+  "status": "BLOCKED-INVISIBLE",
+  "caveat": "2026-10-11-zil-source-flags.json has no INVISIBLE flag for LeatherGoddessesofPhobos (proposal invisible=null); no bit invented. Room-scope positives/negatives otherwise behave as D232 predicts."
+ },
+ "holderChildren": [
+  {
+   "id": 141,
+   "name": "metal door",
+   "invisible": null,
+   "attrs": [
+    8,
+    26
+   ],
+   "listedBy": [
+    "161L"
+   ]
+  },
+  {
+   "id": 176,
+   "name": "narrow cell door",
+   "invisible": null,
+   "attrs": [
+    26
+   ],
+   "listedBy": [
+    "161L",
+    "165L"
+   ]
+  },
+  {
+   "id": 202,
+   "name": "wide cell door",
+   "invisible": null,
+   "attrs": [
+    26
+   ],
+   "listedBy": [
+    "50L",
+    "161L"
+   ]
+  },
+  {
+   "id": 173,
+   "name": "cell",
+   "invisible": null,
+   "attrs": [],
+   "listedBy": [
+    "50L",
+    "161L",
+    "165L"
+   ]
+  },
+  {
+   "id": 109,
+   "name": "small passenger spaceship",
+   "invisible": null,
+   "attrs": [],
+   "listedBy": [
+    "62L",
+    "100L",
+    "218L"
+   ]
+  },
+  {
+   "id": 133,
+   "name": "battleship",
+   "invisible": null,
+   "attrs": [],
+   "listedBy": [
+    "62L",
+    "100L",
+    "112L",
+    "119L",
+    "211L"
+   ]
+  },
+  {
+   "id": 139,
+   "name": "hatch",
+   "invisible": null,
+   "attrs": [
+    26
+   ],
+   "listedBy": [
+    "62L",
+    "112L"
+   ]
+  },
+  {
+   "id": 28,
+   "name": "Cleveland",
+   "invisible": null,
+   "attrs": [],
+   "listedBy": [
+    "29L",
+    "32L"
+   ]
+  },
+  {
+   "id": 108,
+   "name": "booth",
+   "invisible": null,
+   "attrs": [],
+   "listedBy": [
+    "26L",
+    "102L"
+   ]
+  },
+  {
+   "id": 69,
+   "name": "front door",
+   "invisible": null,
+   "attrs": [
+    9,
+    26
+   ],
+   "listedBy": [
+    "7L",
+    "104L"
+   ]
+  },
+  {
+   "id": 155,
+   "name": "back door",
+   "invisible": null,
+   "attrs": [
+    9,
+    26
+   ],
+   "listedBy": [
+    "6L",
+    "7L"
+   ]
+  },
+  {
+   "id": 43,
+   "name": "Venus",
+   "invisible": null,
+   "attrs": [
+    5
+   ],
+   "listedBy": [
+    "6L",
+    "7L",
+    "26L",
+    "65L",
+    "82L",
+    "102L",
+    "104L",
+    "111L",
+    "130L",
+    "145L"
+   ]
+  },
+  {
+   "id": 153,
+   "name": "igloo",
+   "invisible": null,
+   "attrs": [
+    10
+   ],
+   "listedBy": [
+    "74L",
+    "210L"
+   ]
+  },
+  {
+   "id": 59,
+   "name": "igloo door",
+   "invisible": null,
+   "attrs": [
+    9,
+    10,
+    26
+   ],
+   "listedBy": [
+    "74L",
+    "210L"
+   ]
+  },
+  {
+   "id": 106,
+   "name": "tower",
+   "invisible": null,
+   "attrs": [],
+   "listedBy": [
+    "93L",
+    "169L"
+   ]
+  },
+  {
+   "id": 152,
+   "name": "sand dunes",
+   "invisible": null,
+   "attrs": [
+    3,
+    5
+   ],
+   "listedBy": [
+    "77L",
+    "80L",
+    "84L",
+    "101L",
+    "124L",
+    "163L",
+    "164L",
+    "169L",
+    "172L",
+    "204L",
+    "215L"
+   ]
+  },
+  {
+   "id": 208,
+   "name": "dock",
+   "invisible": null,
+   "attrs": [],
+   "listedBy": [
+    "25L",
+    "84L",
+    "99L",
+    "101L",
+    "149L",
+    "163L",
+    "164L",
+    "169L",
+    "191L",
+    "201L",
+    "204L"
+   ]
+  },
+  {
+   "id": 67,
+   "name": "canal",
+   "invisible": null,
+   "attrs": [],
+   "listedBy": [
+    "25L",
+    "84L",
+    "99L",
+    "101L",
+    "149L",
+    "163L",
+    "164L",
+    "169L",
+    "191L",
+    "201L",
+    "204L"
+   ]
+  },
+  {
+   "id": 212,
+   "name": "toilet",
+   "invisible": null,
+   "attrs": [
+    15,
+    24,
+    29
+   ],
+   "listedBy": [
+    "68L",
+    "160L"
+   ]
+  },
+  {
+   "id": 21,
+   "name": "ladies' restroom",
+   "invisible": null,
+   "attrs": [],
+   "listedBy": [
+    "61L",
+    "68L"
+   ]
+  },
+  {
+   "id": 30,
+   "name": "gents' restroom",
+   "invisible": null,
+   "attrs": [],
+   "listedBy": [
+    "61L",
+    "160L"
+   ]
+  },
+  {
+   "id": 83,
+   "name": "",
+   "invisible": null,
+   "attrs": [],
+   "listedBy": [
+    "14L",
+    "50L",
+    "65L",
+    "92L",
+    "102L",
+    "105L",
+    "119L",
+    "124L",
+    "130L",
+    "159d",
+    "169L",
+    "194L",
+    "227L"
+   ]
+  },
+  {
+   "id": 95,
+   "name": "tree",
+   "invisible": null,
+   "attrs": [],
+   "listedBy": [
+    "6L",
+    "82L",
+    "89L",
+    "102L",
+    "104L",
+    "111L",
+    "132L",
+    "145L"
+   ]
+  },
+  {
+   "id": 12,
+   "name": "window",
+   "invisible": null,
+   "attrs": [],
+   "listedBy": [
+    "61L",
+    "74L",
+    "100L",
+    "120L",
+    "129L",
+    "147L",
+    "210L"
+   ]
+  },
+  {
+   "id": 157,
+   "name": "stair",
+   "invisible": null,
+   "attrs": [],
+   "listedBy": [
+    "7L",
+    "70L",
+    "92L",
+    "93L",
+    "120L",
+    "129L",
+    "130L",
+    "147L",
+    "161L",
+    "169L",
+    "191L",
+    "221L"
+   ]
+  },
+  {
+   "id": 148,
+   "name": "sign",
+   "invisible": null,
+   "attrs": [
+    22
+   ],
+   "listedBy": [
+    "25L",
+    "26L",
+    "74L",
+    "120L",
+    "126L",
+    "161L",
+    "189L",
+    "204L"
+   ]
+  },
+  {
+   "id": 72,
+   "name": "house",
+   "invisible": null,
+   "attrs": [],
+   "listedBy": [
+    "6L",
+    "7L",
+    "32L",
+    "70L",
+    "104L",
+    "130L",
+    "147L",
+    "227L"
+   ]
+  },
+  {
+   "id": 166,
+   "name": "water",
+   "invisible": null,
+   "attrs": [
+    5
+   ],
+   "listedBy": [
+    "17d",
+    "25L",
+    "31d",
+    "68L",
+    "84L",
+    "99L",
+    "101L",
+    "105L",
+    "124L",
+    "129L",
+    "149L",
+    "160L",
+    "164L",
+    "169L",
+    "182d",
+    "191L",
+    "201L",
+    "204L",
+    "213d"
+   ]
+  },
+  {
+   "id": 23,
+   "name": "odor",
+   "invisible": null,
+   "attrs": [
+    10
+   ],
+   "listedBy": [
+    "62L",
+    "68L",
+    "81L",
+    "137L",
+    "159d",
+    "160L",
+    "223L"
+   ]
+  },
+  {
+   "id": 228,
+   "name": "pseudo",
+   "invisible": null,
+   "attrs": [],
+   "listedBy": []
+  }
+ ],
+ "roomsListingProperty": [
+  {
+   "id": 6,
+   "name": "Back Door",
+   "parent": 34,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "155:back door",
+    "72:house",
+    "95:tree",
+    "43:Venus"
+   ]
+  },
+  {
+   "id": 7,
+   "name": "Looks Can Be Deceiving",
+   "parent": 34,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "157:stair",
+    "69:front door",
+    "155:back door",
+    "72:house",
+    "43:Venus"
+   ]
+  },
+  {
+   "id": 14,
+   "name": "Allusion Room",
+   "parent": 34,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "83:"
+   ]
+  },
+  {
+   "id": 17,
+   "name": "Catacombs",
+   "parent": 34,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "166:water"
+   ]
+  },
+  {
+   "id": 25,
+   "name": "Wattz:Upp Dock",
+   "parent": 34,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "67:canal",
+    "208:dock",
+    "166:water",
+    "148:sign"
+   ]
+  },
+  {
+   "id": 26,
+   "name": "Vizicomm Booth",
+   "parent": 34,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "148:sign",
+    "108:booth",
+    "43:Venus"
+   ]
+  },
+  {
+   "id": 29,
+   "name": "Lawn",
+   "parent": 34,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "28:Cleveland"
+   ]
+  },
+  {
+   "id": 31,
+   "name": "Forgotten Storehouse",
+   "parent": 34,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "166:water"
+   ]
+  },
+  {
+   "id": 32,
+   "name": "Cleveland",
+   "parent": 34,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "28:Cleveland",
+    "72:house"
+   ]
+  },
+  {
+   "id": 50,
+   "name": "Cell",
+   "parent": 34,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "202:wide cell door",
+    "83:",
+    "173:cell"
+   ]
+  },
+  {
+   "id": 61,
+   "name": "Joe's Bar",
+   "parent": 34,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "30:gents' restroom",
+    "21:ladies' restroom",
+    "12:window"
+   ]
+  },
+  {
+   "id": 62,
+   "name": "In Space",
+   "parent": 34,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "139:hatch",
+    "23:odor",
+    "133:battleship",
+    "109:small passenger spaceship"
+   ]
+  },
+  {
+   "id": 65,
+   "name": "Spawning Ground",
+   "parent": 34,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "83:",
+    "43:Venus"
+   ]
+  },
+  {
+   "id": 68,
+   "name": "Ladies' Room",
+   "parent": 34,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "212:toilet",
+    "23:odor",
+    "166:water",
+    "21:ladies' restroom"
+   ]
+  },
+  {
+   "id": 70,
+   "name": "Teensy:Weensy House",
+   "parent": 34,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "157:stair",
+    "72:house"
+   ]
+  },
+  {
+   "id": 74,
+   "name": "South Pole",
+   "parent": 34,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "148:sign",
+    "153:igloo",
+    "59:igloo door",
+    "12:window"
+   ]
+  },
+  {
+   "id": 77,
+   "name": "Canalview Mall",
+   "parent": 34,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "152:sand dunes"
+   ]
+  },
+  {
+   "id": 80,
+   "name": "Martian Desert",
+   "parent": 34,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "152:sand dunes"
+   ]
+  },
+  {
+   "id": 81,
+   "name": "Boudoir",
+   "parent": 34,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "23:odor"
+   ]
+  },
+  {
+   "id": 82,
+   "name": "Jungle",
+   "parent": 34,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "95:tree",
+    "43:Venus"
+   ]
+  },
+  {
+   "id": 84,
+   "name": "Donald Dock",
+   "parent": 34,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "67:canal",
+    "208:dock",
+    "166:water",
+    "152:sand dunes"
+   ]
+  },
+  {
+   "id": 89,
+   "name": "Oriental Garden",
+   "parent": 34,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "95:tree"
+   ]
+  },
+  {
+   "id": 92,
+   "name": "Roof",
+   "parent": 34,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "157:stair",
+    "83:"
+   ]
+  },
+  {
+   "id": 93,
+   "name": "Base of Tower",
+   "parent": 34,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "157:stair",
+    "106:tower"
+   ]
+  },
+  {
+   "id": 99,
+   "name": "Icy Dock",
+   "parent": 34,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "166:water",
+    "208:dock",
+    "67:canal"
+   ]
+  },
+  {
+   "id": 100,
+   "name": "Hold",
+   "parent": 34,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "12:window",
+    "133:battleship",
+    "109:small passenger spaceship"
+   ]
+  },
+  {
+   "id": 101,
+   "name": "Baby Dock",
+   "parent": 34,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "67:canal",
+    "208:dock",
+    "166:water",
+    "152:sand dunes"
+   ]
+  },
+  {
+   "id": 102,
+   "name": "Rocky Clifftop",
+   "parent": 34,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "83:",
+    "95:tree",
+    "108:booth",
+    "43:Venus"
+   ]
+  },
+  {
+   "id": 104,
+   "name": "Front Door",
+   "parent": 34,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "69:front door",
+    "72:house",
+    "95:tree",
+    "43:Venus"
+   ]
+  },
+  {
+   "id": 105,
+   "name": "Well Bottom",
+   "parent": 34,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "83:",
+    "166:water"
+   ]
+  },
+  {
+   "id": 111,
+   "name": "Clearing",
+   "parent": 34,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "95:tree",
+    "43:Venus"
+   ]
+  },
+  {
+   "id": 112,
+   "name": "At Main Hatch",
+   "parent": 34,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "139:hatch",
+    "133:battleship"
+   ]
+  },
+  {
+   "id": 119,
+   "name": "Long Corridor",
+   "parent": 34,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "83:",
+    "133:battleship"
+   ]
+  },
+  {
+   "id": 120,
+   "name": "Observation Room",
+   "parent": 34,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "12:window",
+    "148:sign",
+    "157:stair"
+   ]
+  },
+  {
+   "id": 124,
+   "name": "Oasis",
+   "parent": 34,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "83:",
+    "166:water",
+    "152:sand dunes"
+   ]
+  },
+  {
+   "id": 126,
+   "name": "Exit Shop",
+   "parent": 34,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "148:sign"
+   ]
+  },
+  {
+   "id": 129,
+   "name": "Main Hall of Palace",
+   "parent": 34,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "166:water",
+    "157:stair",
+    "12:window"
+   ]
+  },
+  {
+   "id": 130,
+   "name": "Laboratory",
+   "parent": 34,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "83:",
+    "157:stair",
+    "72:house",
+    "43:Venus"
+   ]
+  },
+  {
+   "id": 132,
+   "name": "Plaza",
+   "parent": 34,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "95:tree"
+   ]
+  },
+  {
+   "id": 137,
+   "name": "Inner Harem",
+   "parent": 34,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "23:odor"
+   ]
+  },
+  {
+   "id": 145,
+   "name": "Fork, Of Sorts",
+   "parent": 34,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "95:tree",
+    "43:Venus"
+   ]
+  },
+  {
+   "id": 147,
+   "name": "Bedroom",
+   "parent": 34,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "157:stair",
+    "12:window",
+    "72:house"
+   ]
+  },
+  {
+   "id": 149,
+   "name": "Hickory & Dickory Dock",
+   "parent": 34,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "67:canal",
+    "208:dock",
+    "166:water"
+   ]
+  },
+  {
+   "id": 159,
+   "name": "Closet",
+   "parent": 34,
+   "lit": false,
+   "sz": 2,
+   "lg": [
+    "83:",
+    "23:odor"
+   ]
+  },
+  {
+   "id": 160,
+   "name": "Gents' Room",
+   "parent": 34,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "212:toilet",
+    "23:odor",
+    "166:water",
+    "30:gents' restroom"
+   ]
+  },
+  {
+   "id": 161,
+   "name": "End of Hallway",
+   "parent": 34,
+   "lit": true,
+   "sz": 6,
+   "lg": [
+    "148:sign",
+    "202:wide cell door",
+    "176:narrow cell door",
+    "141:metal door",
+    "173:cell",
+    "157:stair"
+   ]
+  },
+  {
+   "id": 163,
+   "name": "Dunetop",
+   "parent": 34,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "152:sand dunes",
+    "67:canal",
+    "208:dock"
+   ]
+  },
+  {
+   "id": 164,
+   "name": "Abandoned Dock",
+   "parent": 34,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "67:canal",
+    "208:dock",
+    "166:water",
+    "152:sand dunes"
+   ]
+  },
+  {
+   "id": 165,
+   "name": "Other Cell",
+   "parent": 34,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "176:narrow cell door",
+    "173:cell"
+   ]
+  },
+  {
+   "id": 169,
+   "name": "Minaret",
+   "parent": 34,
+   "lit": true,
+   "sz": 7,
+   "lg": [
+    "83:",
+    "157:stair",
+    "106:tower",
+    "67:canal",
+    "166:water",
+    "152:sand dunes",
+    "208:dock"
+   ]
+  },
+  {
+   "id": 172,
+   "name": "Martian Dessert",
+   "parent": 34,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "152:sand dunes"
+   ]
+  },
+  {
+   "id": 182,
+   "name": "Ladder Room",
+   "parent": 34,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "166:water"
+   ]
+  },
+  {
+   "id": 189,
+   "name": "Penguin Park",
+   "parent": 34,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "148:sign"
+   ]
+  },
+  {
+   "id": 191,
+   "name": "My Kinda Dock!",
+   "parent": 34,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "67:canal",
+    "208:dock",
+    "166:water",
+    "157:stair"
+   ]
+  },
+  {
+   "id": 194,
+   "name": "Ruined Castle",
+   "parent": 34,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "83:"
+   ]
+  },
+  {
+   "id": 201,
+   "name": "Royal Docks",
+   "parent": 34,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "67:canal",
+    "208:dock",
+    "166:water"
+   ]
+  },
+  {
+   "id": 204,
+   "name": "Martian Canal",
+   "parent": 34,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "67:canal",
+    "208:dock",
+    "166:water",
+    "152:sand dunes",
+    "148:sign"
+   ]
+  },
+  {
+   "id": 210,
+   "name": "Orphanage Foyer",
+   "parent": 34,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "59:igloo door",
+    "153:igloo",
+    "12:window"
+   ]
+  },
+  {
+   "id": 211,
+   "name": "Stable",
+   "parent": 34,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "133:battleship"
+   ]
+  },
+  {
+   "id": 213,
+   "name": "Burial Chamber",
+   "parent": 34,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "166:water"
+   ]
+  },
+  {
+   "id": 215,
+   "name": "Among the Dunes",
+   "parent": 34,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "152:sand dunes"
+   ]
+  },
+  {
+   "id": 218,
+   "name": "Space Yacht",
+   "parent": 34,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "109:small passenger spaceship"
+   ]
+  },
+  {
+   "id": 221,
+   "name": "Basement",
+   "parent": 34,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "157:stair"
+   ]
+  },
+  {
+   "id": 223,
+   "name": "Harem",
+   "parent": 34,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "23:odor"
+   ]
+  },
+  {
+   "id": 227,
+   "name": "Garden",
+   "parent": 34,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "83:",
+    "72:house"
+   ]
+  }
+ ],
+ "commands": 7,
+ "log": [
+  {
+   "dump": {
+    "roomId": 61,
+    "roomName": "Joe's Bar",
+    "lit": true,
+    "prop": {
+     "num": 15,
+     "sz": 3,
+     "dataAddr": 4251
+    },
+    "localGlobals": [
+     {
+      "id": 30,
+      "name": "gents' restroom",
+      "parent": 40,
+      "parentIsHolder": true
+     },
+     {
+      "id": 21,
+      "name": "ladies' restroom",
+      "parent": 40,
+      "parentIsHolder": true
+     },
+     {
+      "id": 12,
+      "name": "window",
+      "parent": 40,
+      "parentIsHolder": true
+     }
+    ],
+    "discoveredObjects": [
+     "Joe"
+    ]
+   }
+  },
+  {
+   "cmd": "examine gents' restroom",
+   "roomIdAfter": 61,
+   "reply": [
+    "The place: Upper Sandusky, Ohio. The time: 1936. The beer: at a nickel a mug, you don't ask for brand names. All you know is that your fifth one tasted as bad as the first.",
+    "LEATHER GODDESSES OF PHOBOS",
+    "Infocom interactive fiction -- a racy space-age spoof",
+    "Copyright (c) 1986 by Infocom, Inc. All rights reserved.",
+    "LEATHER GODDESSES OF PHOBOS is a trademark of Infocom, Inc.",
+    "Release 59 / Serial number 860730",
+    "Joe's Bar",
+    "An undistinguished bar, yet the social center of Upper Sandusky. The front door is almost lost amidst the hazy maze of neon that shrouds the grimy glass of the south wall. Doors marked \"Ladies\" and \"Gents\" lead, respectively, northeast and northwest.",
+    "You feel an urge.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine window",
+   "roomIdAfter": 61,
+   "reply": [
+    "Totally ordinary looking window.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine toilet",
+   "roomIdAfter": 61,
+   "reply": [
+    "You can't see any toilet here!",
+    ">"
+   ]
+  },
+  {
+   "cmd": "nw",
+   "roomIdAfter": 160,
+   "reply": [
+    "Gents' Room",
+    "This filthy bathroom belies the existence of disinfectant. A single toilet and sink are the only fixtures. More breathable air can be found to the southeast.",
+    "You can see a stool here.",
+    "You trace the urge to the region of your bladder.",
+    ">"
+   ]
+  },
+  {
+   "dump": {
+    "roomId": 160,
+    "roomName": "Gents' Room",
+    "lit": true,
+    "prop": {
+     "num": 15,
+     "sz": 4,
+     "dataAddr": 6715
+    },
+    "localGlobals": [
+     {
+      "id": 212,
+      "name": "toilet",
+      "parent": 40,
+      "parentIsHolder": true
+     },
+     {
+      "id": 23,
+      "name": "odor",
+      "parent": 40,
+      "parentIsHolder": true
+     },
+     {
+      "id": 166,
+      "name": "water",
+      "parent": 40,
+      "parentIsHolder": true
+     },
+     {
+      "id": 30,
+      "name": "gents' restroom",
+      "parent": 40,
+      "parentIsHolder": true
+     }
+    ],
+    "discoveredObjects": [
+     "stool"
+    ]
+   }
+  },
+  {
+   "cmd": "examine gents' restroom",
+   "roomIdAfter": 160,
+   "reply": [
+    "Filthy.",
+    "Though operating at far below normal speed, your mind begins to conclude that it would be best at this point to use the bathroom.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine toilet",
+   "roomIdAfter": 160,
+   "reply": [
+    "Yechh.",
+    "Even if you don't care about your clothes, imagine the embarrassment!",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine window",
+   "roomIdAfter": 160,
+   "reply": [
+    "You can't see any window here!",
+    ">"
+   ]
+  }
+ ]
+}

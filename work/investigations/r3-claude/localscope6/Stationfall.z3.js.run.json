@@ -1,0 +1,213 @@
+{
+  "story": "Stationfall.z3.js",
+  "sha256": "2121546d5874ad023d162af7d78f8820920583894294f9e827c654da19784a1d",
+  "property": 8,
+  "width": 1,
+  "holder": 48,
+  "litBit": 30,
+  "at": "2026-10-24T06:09:39.598Z",
+  "log": [
+    {
+      "cmd": "look",
+      "roomIdAfter": 198,
+      "reply": [
+        "Deck Twelve",
+        "You are in the heart of the administrative level of the ship, the largest level of the S.P.S. Duffy or any other Stellar Patrol ship for that matter. The corridor continues starboard and a room lies aft. Beyond the door to port lies the bulk of the Duffy. Next to the door is a slot.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine auto-door",
+      "roomIdAfter": 198,
+      "reply": [
+        "You can't see any auto-door here!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "e",
+      "roomIdAfter": 54,
+      "reply": [
+        "Cargo Bay Entrance",
+        "The deck twelve corridor ends here at the entrance to the cargo bay, to starboard. A smaller entrance leads fore.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine keypad",
+      "roomIdAfter": 54,
+      "reply": [
+        "You can't see any keypad here!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine spacetruck",
+      "roomIdAfter": 54,
+      "reply": [
+        "You can't see any spacetruck here!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "n",
+      "roomIdAfter": 106,
+      "reply": [
+        "Robot Pool",
+        "This is where a Lieutenant First Class would come to obtain a robot for use on an important assignment. Also for a trivial assignment like yours. The only part of the complex robot authorization equipment that is visible to you is a slot (for inserting your form) and a keypad (for typing your selection). You can exit aft.",
+        "In the first bin is a bulky robot, obviously intended for heavy lifting. A brass plate on one of his pneumatic arm lifts says \"Rex.\"",
+        "Bin number two holds a spindly little robot, a specialized model designed for bursting and decollating multi-part forms. A tiny nameplate on her perforating extension reads \"Helen.\"",
+        "You can't see the robot in the third bin very well, because he's crouched in the corner. He's a short robot, and he seems to be playing marbles.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 106,
+        "roomName": "Robot Pool",
+        "lit": true,
+        "prop": {
+          "num": 8,
+          "sz": 2,
+          "dataAddr": 5655
+        },
+        "localGlobals": [
+          {
+            "id": 151,
+            "name": "keypad",
+            "parent": 48,
+            "parentIsHolder": true
+          },
+          {
+            "id": 84,
+            "name": "equipment",
+            "parent": 48,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": [
+          "Floyd",
+          "Rex",
+          "Helen"
+        ]
+      }
+    },
+    {
+      "cmd": "examine keypad",
+      "roomIdAfter": 106,
+      "reply": [
+        "There's nothing eye-catching about the keypad.",
+        "The third robot looks up from his marbles, jumps to his feet, and starts waving wildly. It's Floyd, your robotic companion from Resida! (Footnote 3) You've seen him only occasionally since he opted for assignment in the Stellar Patrol those five long years ago.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine equipment",
+      "roomIdAfter": 106,
+      "reply": [
+        "The only part of the complex robot authorization equipment that is visible to you is a slot (for inserting your form) and a keypad (for typing your selection).",
+        "Floyd jumps up and down saying, \"Oh boy oh boy oh boy pick Floyd pick Floyd pick Floyd!\"",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine spacetruck",
+      "roomIdAfter": 106,
+      "reply": [
+        "You can't see any spacetruck here!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine window",
+      "roomIdAfter": 106,
+      "reply": [
+        "You can't see any window here!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "s",
+      "roomIdAfter": 54,
+      "reply": [
+        "Cargo Bay Entrance",
+        "Ensign Twelfth Class Blather walks by, lugging his toilet scrubbing supplies. He spots you, whimpers, and slouches away (Footnote 2).",
+        ">"
+      ]
+    },
+    {
+      "cmd": "e",
+      "roomIdAfter": 108,
+      "reply": [
+        "Cargo Bay",
+        "This huge airlock is essentially a giant loading dock, where truckloads of forms arrive from various printing planets throughout the sector and are immediately distributed throughout the administrative deck. The only exit on foot is back the way you came. A spacetruck, its hatch closed, waits in the cargo bay.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 108,
+        "roomName": "Cargo Bay",
+        "lit": true,
+        "prop": {
+          "num": 8,
+          "sz": 3,
+          "dataAddr": 5699
+        },
+        "localGlobals": [
+          {
+            "id": 73,
+            "name": "spacetruck",
+            "parent": 48,
+            "parentIsHolder": true
+          },
+          {
+            "id": 176,
+            "name": "spacetruck hatch",
+            "parent": 48,
+            "parentIsHolder": true
+          },
+          {
+            "id": 14,
+            "name": "window",
+            "parent": 48,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": []
+      }
+    },
+    {
+      "cmd": "examine spacetruck",
+      "roomIdAfter": 108,
+      "reply": [
+        "It seems that the spacetruck hatch is closed.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine window",
+      "roomIdAfter": 108,
+      "reply": [
+        "Totally ordinary looking window.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine keypad",
+      "roomIdAfter": 108,
+      "reply": [
+        "You can't see any keypad here!",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine equipment",
+      "roomIdAfter": 108,
+      "reply": [
+        "You can't see any equipment here!",
+        ">"
+      ]
+    }
+  ]
+}

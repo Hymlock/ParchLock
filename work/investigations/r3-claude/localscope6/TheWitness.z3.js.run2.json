@@ -1,0 +1,65 @@
+{
+  "story": "TheWitness.z3.js",
+  "sha256": "cb84cdddd8f57c448f6820a52b9545f0508926eb9d33800ac13e620a60bf13b7",
+  "property": 12,
+  "width": 1,
+  "holder": 247,
+  "litBit": 14,
+  "at": "2026-10-24T06:05:47.491Z",
+  "log": [
+    {
+      "cmd": "examine sink",
+      "roomIdAfter": 224,
+      "reply": [
+        "There's nothing special about the sink.",
+        "What next?",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine toilet",
+      "roomIdAfter": 224,
+      "reply": [
+        "You have stooped to a new low by snooping around toilet bowls.",
+        "What next?",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine grandfather clock",
+      "roomIdAfter": 224,
+      "reply": [
+        "(You can't see any clock here!)",
+        "What next?",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine lamp",
+      "roomIdAfter": 224,
+      "reply": [
+        "There's nothing special about the lamp.",
+        "What next?",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine office window",
+      "roomIdAfter": 224,
+      "reply": [
+        "The window is a simple wooden sash, locked tight against the cold.",
+        "What next?",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine house",
+      "roomIdAfter": 224,
+      "reply": [
+        "The house looks like a mixture of a California bungalow and East Asian influences.",
+        "What next?",
+        ">"
+      ]
+    }
+  ]
+}

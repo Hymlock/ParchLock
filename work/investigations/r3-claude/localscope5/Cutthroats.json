@@ -1,0 +1,1930 @@
+{
+ "story": "Cutthroats.z3.js",
+ "executableDigest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+ "proposalDigest": "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180",
+ "digestMatch": true,
+ "fileSha256": "c999acd85d6590f4772622e959c7729adc8341ea974c77a7e98074b4b73c7618",
+ "localScope": {
+  "property": 8,
+  "width": 1,
+  "holder": 222,
+  "roomLitAttribute": 17,
+  "invisible": 30,
+  "searchBit": 20,
+  "surfaceBit": 28,
+  "openBit": 21,
+  "transBit": 19
+ },
+ "proposalLocalScope": {
+  "property": 8,
+  "width": 1,
+  "holder": 222,
+  "roomLitAttribute": 17,
+  "invisible": 30,
+  "searchBit": 20,
+  "surfaceBit": 28,
+  "openBit": 21,
+  "transBit": 19
+ },
+ "sourceFlags": {
+  "INVISIBLE": {
+   "bit": 30,
+   "positives": 4,
+   "negatives": 129,
+   "tp": 4,
+   "fp": 0,
+   "fn": 0,
+   "exact": true
+  },
+  "ONBIT": {
+   "bit": 17,
+   "positives": 11,
+   "negatives": 122,
+   "tp": 11,
+   "fp": 0,
+   "fn": 0,
+   "exact": true
+  }
+ },
+ "summary": {
+  "width": 1,
+  "invisible": 30,
+  "R1": "Your Room (183)",
+  "R1obj": "wallpaper",
+  "R2": "Upstairs Hallway (147)",
+  "R2obj": "wallpaper",
+  "negatives": "Your Room 183: \"examine stairs\" (175, listed by 147/190) => \"You can't see any stairs here.\"; reciprocal positive at 147; Upstairs Hallway 147: \"examine window\" (179, listed by 183) => can't see; reciprocal positive \"I see nothing special about the window.\" at 183",
+  "extra": "In bed, examine replies \"You should get out of bed first.\" (pre-scope verb gate) - not used as evidence. Both evidence rooms lit (bit 17). INVISIBLE holder children (ferry, hole, mast, doors) are at dock/shipwreck rooms - not probed.",
+  "dark": "not reached (dark listing rooms are the shipwreck/underwater rooms, late game)",
+  "status": "CONFIRMED"
+ },
+ "holderChildren": [
+  {
+   "id": 220,
+   "name": "thingy",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": []
+  },
+  {
+   "id": 1,
+   "name": "dinner plate",
+   "invisible": false,
+   "attrs": [
+    6,
+    27
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 2,
+   "name": "gold coin",
+   "invisible": false,
+   "attrs": [
+    6,
+    27
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 5,
+   "name": "Outfitters' delivery boy",
+   "invisible": false,
+   "attrs": [
+    22,
+    26
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 7,
+   "name": "Merchant Seaman's card",
+   "invisible": false,
+   "attrs": [
+    6,
+    7
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 16,
+   "name": "giant squid",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": []
+  },
+  {
+   "id": 19,
+   "name": "bunch of mines",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": []
+  },
+  {
+   "id": 20,
+   "name": "loose mine",
+   "invisible": false,
+   "attrs": [
+    7,
+    12
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 21,
+   "name": "oak chest",
+   "invisible": false,
+   "attrs": [
+    5,
+    9,
+    14,
+    21,
+    22,
+    27,
+    28
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 43,
+   "name": "barnacle",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "46d"
+   ]
+  },
+  {
+   "id": 24,
+   "name": "scabbard",
+   "invisible": false,
+   "attrs": [
+    11,
+    21,
+    27
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 25,
+   "name": "skeleton",
+   "invisible": false,
+   "attrs": [
+    19,
+    20,
+    27
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 26,
+   "name": "door",
+   "invisible": true,
+   "attrs": [
+    6,
+    21,
+    25,
+    30
+   ],
+   "listedBy": [
+    "22d",
+    "27d"
+   ]
+  },
+  {
+   "id": 28,
+   "name": "orange line",
+   "invisible": false,
+   "attrs": [
+    7,
+    22
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 31,
+   "name": "jagged hole",
+   "invisible": true,
+   "attrs": [
+    30
+   ],
+   "listedBy": [
+    "18d",
+    "22d",
+    "29d",
+    "32d"
+   ]
+  },
+  {
+   "id": 30,
+   "name": "maple chest",
+   "invisible": false,
+   "attrs": [
+    5,
+    9,
+    14,
+    21,
+    27,
+    28
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 34,
+   "name": "glass case",
+   "invisible": false,
+   "attrs": [
+    7,
+    11,
+    19
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 36,
+   "name": "ladder",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "15d",
+    "37d"
+   ]
+  },
+  {
+   "id": 38,
+   "name": "row of fallen bunks",
+   "invisible": true,
+   "attrs": [
+    19,
+    30
+   ],
+   "listedBy": [
+    "37d",
+    "39d"
+   ]
+  },
+  {
+   "id": 40,
+   "name": "wooden cask",
+   "invisible": false,
+   "attrs": [
+    5,
+    9,
+    11,
+    14,
+    21,
+    28
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 44,
+   "name": "lot of iron bars",
+   "invisible": false,
+   "attrs": [
+    27
+   ],
+   "listedBy": [
+    "46d"
+   ]
+  },
+  {
+   "id": 42,
+   "name": "iron bar",
+   "invisible": false,
+   "attrs": [
+    7,
+    12,
+    22
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 45,
+   "name": "door",
+   "invisible": true,
+   "attrs": [
+    21,
+    25,
+    30
+   ],
+   "listedBy": [
+    "41d",
+    "46d"
+   ]
+  },
+  {
+   "id": 47,
+   "name": "mast",
+   "invisible": false,
+   "attrs": [
+    12
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 48,
+   "name": "rope",
+   "invisible": false,
+   "attrs": [
+    12,
+    27
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 52,
+   "name": "ladder",
+   "invisible": false,
+   "attrs": [
+    27
+   ],
+   "listedBy": [
+    "49d",
+    "53d"
+   ]
+  },
+  {
+   "id": 55,
+   "name": "shark",
+   "invisible": false,
+   "attrs": [
+    12
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 62,
+   "name": "",
+   "invisible": true,
+   "attrs": [
+    12,
+    30
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 63,
+   "name": "",
+   "invisible": true,
+   "attrs": [
+    12,
+    30
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 90,
+   "name": "orange line",
+   "invisible": true,
+   "attrs": [
+    12,
+    22,
+    27,
+    30
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 155,
+   "name": "ferry",
+   "invisible": true,
+   "attrs": [
+    9,
+    30
+   ],
+   "listedBy": [
+    "98L",
+    "154L",
+    "156L"
+   ]
+  },
+  {
+   "id": 133,
+   "name": "envelope",
+   "invisible": true,
+   "attrs": [
+    6,
+    7,
+    11,
+    22,
+    30
+   ],
+   "listedBy": []
+  },
+  {
+   "id": 168,
+   "name": "",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "135L",
+    "148L",
+    "149L",
+    "152L",
+    "153L",
+    "169L"
+   ]
+  },
+  {
+   "id": 151,
+   "name": "back window",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "135L",
+    "152L"
+   ]
+  },
+  {
+   "id": 164,
+   "name": "front door",
+   "invisible": false,
+   "attrs": [
+    25
+   ],
+   "listedBy": [
+    "101L",
+    "112L",
+    "131L",
+    "135L",
+    "154L",
+    "160L",
+    "161L",
+    "163L",
+    "165L",
+    "190L"
+   ]
+  },
+  {
+   "id": 171,
+   "name": "collection of decrepit bunks",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "17d",
+    "32d",
+    "37d",
+    "46d",
+    "49d"
+   ]
+  },
+  {
+   "id": 172,
+   "name": "railing",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "67L",
+    "68L",
+    "69L",
+    "70L",
+    "91L",
+    "92L",
+    "93L",
+    "95L"
+   ]
+  },
+  {
+   "id": 173,
+   "name": "ladder bottom",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "57L",
+    "59L",
+    "60L",
+    "61L",
+    "71L",
+    "75L",
+    "77L",
+    "80L"
+   ]
+  },
+  {
+   "id": 174,
+   "name": "ladder top",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "59L",
+    "66L",
+    "67L",
+    "70L",
+    "75L",
+    "87L",
+    "91L",
+    "95L"
+   ]
+  },
+  {
+   "id": 175,
+   "name": "stairs",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "147L",
+    "190L"
+   ]
+  },
+  {
+   "id": 176,
+   "name": "ocean",
+   "invisible": false,
+   "attrs": [
+    10,
+    21,
+    22
+   ],
+   "listedBy": [
+    "15d",
+    "17d",
+    "18d",
+    "22d",
+    "27d",
+    "29d",
+    "32d",
+    "41d",
+    "46d",
+    "49d",
+    "50d",
+    "51d",
+    "53d",
+    "54d",
+    "56d",
+    "66L",
+    "67L",
+    "68L",
+    "69L",
+    "70L",
+    "87L",
+    "91L",
+    "92L",
+    "93L",
+    "95L",
+    "97L",
+    "98L",
+    "99L",
+    "154L",
+    "156L",
+    "157L",
+    "158L",
+    "159L",
+    "160L",
+    "161L",
+    "162L",
+    "163L",
+    "165L",
+    "169L"
+   ]
+  },
+  {
+   "id": 177,
+   "name": "bedroom door",
+   "invisible": false,
+   "attrs": [
+    12,
+    25
+   ],
+   "listedBy": [
+    "147L",
+    "183L"
+   ]
+  },
+  {
+   "id": 178,
+   "name": "window",
+   "invisible": false,
+   "attrs": [
+    19
+   ],
+   "listedBy": [
+    "68L",
+    "69L",
+    "70L",
+    "92L",
+    "93L",
+    "95L"
+   ]
+  },
+  {
+   "id": 179,
+   "name": "window",
+   "invisible": false,
+   "attrs": [
+    19
+   ],
+   "listedBy": [
+    "66L",
+    "87L",
+    "101L",
+    "183L"
+   ]
+  },
+  {
+   "id": 192,
+   "name": "carpeting",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "147L",
+    "183L",
+    "190L"
+   ]
+  },
+  {
+   "id": 193,
+   "name": "wallpaper",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "147L",
+    "183L",
+    "190L"
+   ]
+  },
+  {
+   "id": 196,
+   "name": "rocky coastline",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "99L",
+    "157L",
+    "158L",
+    "159L"
+   ]
+  },
+  {
+   "id": 197,
+   "name": "abandoned field",
+   "invisible": false,
+   "attrs": [
+    22
+   ],
+   "listedBy": [
+    "148L",
+    "149L",
+    "150L",
+    "152L",
+    "153L",
+    "156L",
+    "158L"
+   ]
+  },
+  {
+   "id": 199,
+   "name": "shipwreck",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "15d",
+    "17d",
+    "18d",
+    "22d",
+    "27d",
+    "29d",
+    "32d",
+    "37d",
+    "39d",
+    "41d",
+    "46d",
+    "49d",
+    "50d",
+    "51d",
+    "53d"
+   ]
+  },
+  {
+   "id": 200,
+   "name": "Mary Margaret",
+   "invisible": false,
+   "attrs": [
+    15
+   ],
+   "listedBy": [
+    "66L",
+    "71L",
+    "73L",
+    "75L",
+    "77L",
+    "80L",
+    "86L",
+    "87L",
+    "91L",
+    "92L",
+    "93L",
+    "95L",
+    "97L",
+    "131L"
+   ]
+  },
+  {
+   "id": 201,
+   "name": "Night Wind",
+   "invisible": false,
+   "attrs": [
+    15
+   ],
+   "listedBy": [
+    "57L",
+    "58L",
+    "59L",
+    "60L",
+    "61L",
+    "65L",
+    "66L",
+    "67L",
+    "68L",
+    "69L",
+    "70L",
+    "87L",
+    "97L",
+    "131L"
+   ]
+  },
+  {
+   "id": 203,
+   "name": "lighthouse",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "97L",
+    "98L",
+    "99L",
+    "132L",
+    "154L",
+    "156L",
+    "157L",
+    "158L",
+    "159L",
+    "160L",
+    "161L",
+    "162L",
+    "163L",
+    "165L",
+    "166L",
+    "167L",
+    "169L"
+   ]
+  },
+  {
+   "id": 204,
+   "name": "mast",
+   "invisible": true,
+   "attrs": [
+    30
+   ],
+   "listedBy": [
+    "50d",
+    "53d"
+   ]
+  },
+  {
+   "id": 209,
+   "name": "",
+   "invisible": true,
+   "attrs": [
+    30
+   ],
+   "listedBy": [
+    "22d",
+    "32d",
+    "49d"
+   ]
+  },
+  {
+   "id": 210,
+   "name": "hole",
+   "invisible": true,
+   "attrs": [
+    30
+   ],
+   "listedBy": [
+    "15d",
+    "39d",
+    "49d"
+   ]
+  },
+  {
+   "id": 211,
+   "name": "",
+   "invisible": true,
+   "attrs": [
+    30
+   ],
+   "listedBy": [
+    "41d",
+    "46d",
+    "49d",
+    "53d"
+   ]
+  },
+  {
+   "id": 212,
+   "name": "hole",
+   "invisible": true,
+   "attrs": [
+    30
+   ],
+   "listedBy": [
+    "37d",
+    "50d",
+    "53d"
+   ]
+  },
+  {
+   "id": 213,
+   "name": "deck",
+   "invisible": false,
+   "attrs": [],
+   "listedBy": [
+    "15d",
+    "17d",
+    "22d",
+    "27d",
+    "32d",
+    "37d",
+    "39d",
+    "41d",
+    "46d",
+    "49d",
+    "50d",
+    "51d",
+    "53d",
+    "57L",
+    "58L",
+    "59L",
+    "60L",
+    "61L",
+    "65L",
+    "66L",
+    "67L",
+    "68L",
+    "69L",
+    "70L",
+    "71L",
+    "73L",
+    "75L",
+    "77L",
+    "80L",
+    "86L",
+    "87L",
+    "91L",
+    "92L",
+    "93L",
+    "95L"
+   ]
+  }
+ ],
+ "roomsListingProperty": [
+  {
+   "id": 15,
+   "name": "Below Decks",
+   "parent": 221,
+   "lit": false,
+   "sz": 5,
+   "lg": [
+    "199:shipwreck",
+    "176:ocean",
+    "213:deck",
+    "36:ladder",
+    "210:hole"
+   ]
+  },
+  {
+   "id": 17,
+   "name": "Below Decks",
+   "parent": 221,
+   "lit": false,
+   "sz": 4,
+   "lg": [
+    "199:shipwreck",
+    "176:ocean",
+    "213:deck",
+    "171:collection of decrepit bunks"
+   ]
+  },
+  {
+   "id": 18,
+   "name": "Ocean Floor",
+   "parent": 221,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "199:shipwreck",
+    "176:ocean",
+    "31:jagged hole"
+   ]
+  },
+  {
+   "id": 22,
+   "name": "Below Decks",
+   "parent": 221,
+   "lit": false,
+   "sz": 6,
+   "lg": [
+    "199:shipwreck",
+    "176:ocean",
+    "213:deck",
+    "26:door",
+    "31:jagged hole",
+    "209:"
+   ]
+  },
+  {
+   "id": 27,
+   "name": "Below Decks",
+   "parent": 221,
+   "lit": false,
+   "sz": 4,
+   "lg": [
+    "199:shipwreck",
+    "176:ocean",
+    "213:deck",
+    "26:door"
+   ]
+  },
+  {
+   "id": 29,
+   "name": "Ocean Floor",
+   "parent": 221,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "199:shipwreck",
+    "176:ocean",
+    "31:jagged hole"
+   ]
+  },
+  {
+   "id": 32,
+   "name": "Below Decks",
+   "parent": 221,
+   "lit": false,
+   "sz": 6,
+   "lg": [
+    "199:shipwreck",
+    "176:ocean",
+    "213:deck",
+    "171:collection of decrepit bunks",
+    "31:jagged hole",
+    "209:"
+   ]
+  },
+  {
+   "id": 37,
+   "name": "Middle Deck",
+   "parent": 221,
+   "lit": false,
+   "sz": 6,
+   "lg": [
+    "199:shipwreck",
+    "213:deck",
+    "171:collection of decrepit bunks",
+    "38:row of fallen bunks",
+    "36:ladder",
+    "212:hole"
+   ]
+  },
+  {
+   "id": 39,
+   "name": "Middle Deck",
+   "parent": 221,
+   "lit": false,
+   "sz": 4,
+   "lg": [
+    "199:shipwreck",
+    "213:deck",
+    "38:row of fallen bunks",
+    "210:hole"
+   ]
+  },
+  {
+   "id": 41,
+   "name": "Middle Deck",
+   "parent": 221,
+   "lit": false,
+   "sz": 5,
+   "lg": [
+    "199:shipwreck",
+    "176:ocean",
+    "213:deck",
+    "45:door",
+    "211:"
+   ]
+  },
+  {
+   "id": 46,
+   "name": "Middle Deck",
+   "parent": 221,
+   "lit": false,
+   "sz": 8,
+   "lg": [
+    "199:shipwreck",
+    "176:ocean",
+    "213:deck",
+    "171:collection of decrepit bunks",
+    "45:door",
+    "211:",
+    "44:lot of iron bars",
+    "43:barnacle"
+   ]
+  },
+  {
+   "id": 49,
+   "name": "Middle Deck",
+   "parent": 221,
+   "lit": false,
+   "sz": 8,
+   "lg": [
+    "199:shipwreck",
+    "176:ocean",
+    "213:deck",
+    "52:ladder",
+    "171:collection of decrepit bunks",
+    "210:hole",
+    "209:",
+    "211:"
+   ]
+  },
+  {
+   "id": 50,
+   "name": "Top Deck",
+   "parent": 221,
+   "lit": false,
+   "sz": 5,
+   "lg": [
+    "204:mast",
+    "199:shipwreck",
+    "176:ocean",
+    "213:deck",
+    "212:hole"
+   ]
+  },
+  {
+   "id": 51,
+   "name": "Top Deck",
+   "parent": 221,
+   "lit": false,
+   "sz": 3,
+   "lg": [
+    "199:shipwreck",
+    "176:ocean",
+    "213:deck"
+   ]
+  },
+  {
+   "id": 53,
+   "name": "Top Deck",
+   "parent": 221,
+   "lit": false,
+   "sz": 7,
+   "lg": [
+    "199:shipwreck",
+    "176:ocean",
+    "213:deck",
+    "52:ladder",
+    "212:hole",
+    "211:",
+    "204:mast"
+   ]
+  },
+  {
+   "id": 54,
+   "name": "Ocean Floor",
+   "parent": 221,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "176:ocean"
+   ]
+  },
+  {
+   "id": 56,
+   "name": "Underwater",
+   "parent": 221,
+   "lit": false,
+   "sz": 1,
+   "lg": [
+    "176:ocean"
+   ]
+  },
+  {
+   "id": 57,
+   "name": "Engine Room",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "213:deck",
+    "201:Night Wind",
+    "173:ladder bottom"
+   ]
+  },
+  {
+   "id": 58,
+   "name": "Captain's Cabin",
+   "parent": 221,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "213:deck",
+    "201:Night Wind"
+   ]
+  },
+  {
+   "id": 59,
+   "name": "Lounge",
+   "parent": 221,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "213:deck",
+    "201:Night Wind",
+    "173:ladder bottom",
+    "174:ladder top"
+   ]
+  },
+  {
+   "id": 60,
+   "name": "Galley",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "213:deck",
+    "201:Night Wind",
+    "173:ladder bottom"
+   ]
+  },
+  {
+   "id": 61,
+   "name": "Crew's Quarters",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "213:deck",
+    "201:Night Wind",
+    "173:ladder bottom"
+   ]
+  },
+  {
+   "id": 65,
+   "name": "Storage Locker",
+   "parent": 221,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "213:deck",
+    "201:Night Wind"
+   ]
+  },
+  {
+   "id": 66,
+   "name": "Wheelhouse",
+   "parent": 221,
+   "lit": true,
+   "sz": 6,
+   "lg": [
+    "213:deck",
+    "201:Night Wind",
+    "200:Mary Margaret",
+    "174:ladder top",
+    "179:window",
+    "176:ocean"
+   ]
+  },
+  {
+   "id": 67,
+   "name": "Aft Deck",
+   "parent": 221,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "176:ocean",
+    "213:deck",
+    "201:Night Wind",
+    "172:railing",
+    "174:ladder top"
+   ]
+  },
+  {
+   "id": 68,
+   "name": "Port Deck",
+   "parent": 221,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "176:ocean",
+    "213:deck",
+    "201:Night Wind",
+    "172:railing",
+    "178:window"
+   ]
+  },
+  {
+   "id": 69,
+   "name": "Starboard Deck",
+   "parent": 221,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "176:ocean",
+    "213:deck",
+    "201:Night Wind",
+    "172:railing",
+    "178:window"
+   ]
+  },
+  {
+   "id": 70,
+   "name": "Fore Deck",
+   "parent": 221,
+   "lit": true,
+   "sz": 6,
+   "lg": [
+    "176:ocean",
+    "213:deck",
+    "201:Night Wind",
+    "172:railing",
+    "178:window",
+    "174:ladder top"
+   ]
+  },
+  {
+   "id": 71,
+   "name": "Engine Room",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "213:deck",
+    "200:Mary Margaret",
+    "173:ladder bottom"
+   ]
+  },
+  {
+   "id": 73,
+   "name": "Captain's Cabin",
+   "parent": 221,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "213:deck",
+    "200:Mary Margaret"
+   ]
+  },
+  {
+   "id": 75,
+   "name": "Lounge",
+   "parent": 221,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "213:deck",
+    "200:Mary Margaret",
+    "173:ladder bottom",
+    "174:ladder top"
+   ]
+  },
+  {
+   "id": 77,
+   "name": "Galley",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "213:deck",
+    "200:Mary Margaret",
+    "173:ladder bottom"
+   ]
+  },
+  {
+   "id": 80,
+   "name": "Crew's Quarters",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "213:deck",
+    "200:Mary Margaret",
+    "173:ladder bottom"
+   ]
+  },
+  {
+   "id": 86,
+   "name": "Storage Locker",
+   "parent": 221,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "213:deck",
+    "200:Mary Margaret"
+   ]
+  },
+  {
+   "id": 87,
+   "name": "Wheelhouse",
+   "parent": 221,
+   "lit": true,
+   "sz": 6,
+   "lg": [
+    "213:deck",
+    "200:Mary Margaret",
+    "201:Night Wind",
+    "174:ladder top",
+    "179:window",
+    "176:ocean"
+   ]
+  },
+  {
+   "id": 91,
+   "name": "Aft Deck",
+   "parent": 221,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "176:ocean",
+    "213:deck",
+    "200:Mary Margaret",
+    "172:railing",
+    "174:ladder top"
+   ]
+  },
+  {
+   "id": 92,
+   "name": "Port Deck",
+   "parent": 221,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "176:ocean",
+    "213:deck",
+    "200:Mary Margaret",
+    "172:railing",
+    "178:window"
+   ]
+  },
+  {
+   "id": 93,
+   "name": "Starboard Deck",
+   "parent": 221,
+   "lit": true,
+   "sz": 5,
+   "lg": [
+    "176:ocean",
+    "213:deck",
+    "200:Mary Margaret",
+    "172:railing",
+    "178:window"
+   ]
+  },
+  {
+   "id": 95,
+   "name": "Fore Deck",
+   "parent": 221,
+   "lit": true,
+   "sz": 6,
+   "lg": [
+    "176:ocean",
+    "213:deck",
+    "200:Mary Margaret",
+    "172:railing",
+    "178:window",
+    "174:ladder top"
+   ]
+  },
+  {
+   "id": 97,
+   "name": "Wharf",
+   "parent": 221,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "203:lighthouse",
+    "176:ocean",
+    "200:Mary Margaret",
+    "201:Night Wind"
+   ]
+  },
+  {
+   "id": 98,
+   "name": "Ferry Landing",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "203:lighthouse",
+    "155:ferry",
+    "176:ocean"
+   ]
+  },
+  {
+   "id": 99,
+   "name": "Point Lookout",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "203:lighthouse",
+    "176:ocean",
+    "196:rocky coastline"
+   ]
+  },
+  {
+   "id": 101,
+   "name": "Mariners' Trust",
+   "parent": 221,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "179:window",
+    "164:front door"
+   ]
+  },
+  {
+   "id": 112,
+   "name": "The Shanty",
+   "parent": 221,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "164:front door"
+   ]
+  },
+  {
+   "id": 131,
+   "name": "Outfitters Int'l",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "201:Night Wind",
+    "200:Mary Margaret",
+    "164:front door"
+   ]
+  },
+  {
+   "id": 132,
+   "name": "Vacant Lot",
+   "parent": 221,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "203:lighthouse"
+   ]
+  },
+  {
+   "id": 135,
+   "name": "McGinty Salvage",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "151:back window",
+    "164:front door",
+    "168:"
+   ]
+  },
+  {
+   "id": 147,
+   "name": "Upstairs Hallway",
+   "parent": 221,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "177:bedroom door",
+    "175:stairs",
+    "193:wallpaper",
+    "192:carpeting"
+   ]
+  },
+  {
+   "id": 148,
+   "name": "Back Alley",
+   "parent": 221,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "168:",
+    "197:abandoned field"
+   ]
+  },
+  {
+   "id": 149,
+   "name": "Back Alley",
+   "parent": 221,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "168:",
+    "197:abandoned field"
+   ]
+  },
+  {
+   "id": 150,
+   "name": "Back Alley",
+   "parent": 221,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "197:abandoned field"
+   ]
+  },
+  {
+   "id": 152,
+   "name": "Back Alley",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "151:back window",
+    "168:",
+    "197:abandoned field"
+   ]
+  },
+  {
+   "id": 153,
+   "name": "Back Alley",
+   "parent": 221,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "168:",
+    "197:abandoned field"
+   ]
+  },
+  {
+   "id": 154,
+   "name": "Shore Road",
+   "parent": 221,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "203:lighthouse",
+    "155:ferry",
+    "176:ocean",
+    "164:front door"
+   ]
+  },
+  {
+   "id": 156,
+   "name": "Shore Road",
+   "parent": 221,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "203:lighthouse",
+    "155:ferry",
+    "176:ocean",
+    "197:abandoned field"
+   ]
+  },
+  {
+   "id": 157,
+   "name": "Ocean Road",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "203:lighthouse",
+    "176:ocean",
+    "196:rocky coastline"
+   ]
+  },
+  {
+   "id": 158,
+   "name": "Ocean Road",
+   "parent": 221,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "203:lighthouse",
+    "176:ocean",
+    "197:abandoned field",
+    "196:rocky coastline"
+   ]
+  },
+  {
+   "id": 159,
+   "name": "Ocean Road",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "203:lighthouse",
+    "176:ocean",
+    "196:rocky coastline"
+   ]
+  },
+  {
+   "id": 160,
+   "name": "Wharf Road",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "203:lighthouse",
+    "176:ocean",
+    "164:front door"
+   ]
+  },
+  {
+   "id": 161,
+   "name": "Wharf Road",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "203:lighthouse",
+    "176:ocean",
+    "164:front door"
+   ]
+  },
+  {
+   "id": 162,
+   "name": "Wharf Road",
+   "parent": 221,
+   "lit": true,
+   "sz": 2,
+   "lg": [
+    "203:lighthouse",
+    "176:ocean"
+   ]
+  },
+  {
+   "id": 163,
+   "name": "Wharf Road",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "203:lighthouse",
+    "176:ocean",
+    "164:front door"
+   ]
+  },
+  {
+   "id": 165,
+   "name": "Wharf Road",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "203:lighthouse",
+    "176:ocean",
+    "164:front door"
+   ]
+  },
+  {
+   "id": 166,
+   "name": "Winding Road",
+   "parent": 221,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "203:lighthouse"
+   ]
+  },
+  {
+   "id": 167,
+   "name": "Winding Road",
+   "parent": 221,
+   "lit": true,
+   "sz": 1,
+   "lg": [
+    "203:lighthouse"
+   ]
+  },
+  {
+   "id": 169,
+   "name": "Winding Road",
+   "parent": 221,
+   "lit": true,
+   "sz": 3,
+   "lg": [
+    "203:lighthouse",
+    "176:ocean",
+    "168:"
+   ]
+  },
+  {
+   "id": 183,
+   "name": "Your Room",
+   "parent": 221,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "177:bedroom door",
+    "193:wallpaper",
+    "192:carpeting",
+    "179:window"
+   ]
+  },
+  {
+   "id": 190,
+   "name": "Red Boar Inn",
+   "parent": 221,
+   "lit": true,
+   "sz": 4,
+   "lg": [
+    "175:stairs",
+    "193:wallpaper",
+    "192:carpeting",
+    "164:front door"
+   ]
+  }
+ ],
+ "commands": 12,
+ "log": [
+  {
+   "dump": {
+    "roomId": 183,
+    "roomName": "Your Room",
+    "lit": true,
+    "prop": {
+     "num": 8,
+     "sz": 4,
+     "dataAddr": 7963
+    },
+    "localGlobals": [
+     {
+      "id": 177,
+      "name": "bedroom door",
+      "parent": 222,
+      "parentIsHolder": true
+     },
+     {
+      "id": 193,
+      "name": "wallpaper",
+      "parent": 222,
+      "parentIsHolder": true
+     },
+     {
+      "id": 192,
+      "name": "carpeting",
+      "parent": 222,
+      "parentIsHolder": true
+     },
+     {
+      "id": 179,
+      "name": "window",
+      "parent": 222,
+      "parentIsHolder": true
+     }
+    ],
+    "discoveredObjects": [
+     "air tank",
+     "diving mask",
+     "pair of flippers",
+     "wet suit",
+     "closet",
+     "note",
+     "dresser",
+     "bed"
+    ]
+   }
+  },
+  {
+   "cmd": "examine stairs",
+   "roomIdAfter": 183,
+   "reply": [
+    "You can't see any stairs here.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "get out of bed",
+   "roomIdAfter": 183,
+   "reply": [
+    "You get out of bed.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine wallpaper",
+   "roomIdAfter": 183,
+   "reply": [
+    "It's faded to a drab off-white.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine bedroom door",
+   "roomIdAfter": 183,
+   "reply": [
+    "The bedroom door is closed.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine stairs",
+   "roomIdAfter": 183,
+   "reply": [
+    "You can't see any stairs here.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "open door",
+   "roomIdAfter": 183,
+   "reply": [
+    "The bedroom door is now open.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "n",
+   "roomIdAfter": 147,
+   "reply": [
+    "Upstairs Hallway",
+    "You are at the top of the stairs in the Red Boar. Your room is to the south, and other rooms line the hall. The lighting in the hallway is dim and drab like the wallpaper and carpeting.",
+    ">"
+   ]
+  },
+  {
+   "dump": {
+    "roomId": 147,
+    "roomName": "Upstairs Hallway",
+    "lit": true,
+    "prop": {
+     "num": 8,
+     "sz": 4,
+     "dataAddr": 6966
+    },
+    "localGlobals": [
+     {
+      "id": 177,
+      "name": "bedroom door",
+      "parent": 222,
+      "parentIsHolder": true
+     },
+     {
+      "id": 175,
+      "name": "stairs",
+      "parent": 222,
+      "parentIsHolder": true
+     },
+     {
+      "id": 193,
+      "name": "wallpaper",
+      "parent": 222,
+      "parentIsHolder": true
+     },
+     {
+      "id": 192,
+      "name": "carpeting",
+      "parent": 222,
+      "parentIsHolder": true
+     }
+    ],
+    "discoveredObjects": []
+   }
+  },
+  {
+   "cmd": "examine wallpaper",
+   "roomIdAfter": 147,
+   "reply": [
+    "It's faded to a drab off-white.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine stairs",
+   "roomIdAfter": 147,
+   "reply": [
+    "The carpeted stairway leads down.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine window",
+   "roomIdAfter": 147,
+   "reply": [
+    "You can't see any window here.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "s",
+   "roomIdAfter": 183,
+   "reply": [
+    "Your Room",
+    "On the floor is a note that must have been slipped under the door while you slept.",
+    "In a corner of the room is a lopsided wooden dresser.",
+    "A comfortable bed sits along the wall.",
+    ">"
+   ]
+  },
+  {
+   "cmd": "examine window",
+   "roomIdAfter": 183,
+   "reply": [
+    "I see nothing special about the window.",
+    ">"
+   ]
+  }
+ ]
+}

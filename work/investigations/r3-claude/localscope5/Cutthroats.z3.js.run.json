@@ -1,0 +1,198 @@
+{
+  "story": "Cutthroats.z3.js",
+  "sha256": "c999acd85d6590f4772622e959c7729adc8341ea974c77a7e98074b4b73c7618",
+  "property": 8,
+  "width": 1,
+  "holder": 222,
+  "litBit": 17,
+  "at": "2026-10-24T05:54:06.214Z",
+  "log": [
+    {
+      "dump": {
+        "roomId": 183,
+        "roomName": "Your Room",
+        "lit": true,
+        "prop": {
+          "num": 8,
+          "sz": 4,
+          "dataAddr": 7963
+        },
+        "localGlobals": [
+          {
+            "id": 177,
+            "name": "bedroom door",
+            "parent": 222,
+            "parentIsHolder": true
+          },
+          {
+            "id": 193,
+            "name": "wallpaper",
+            "parent": 222,
+            "parentIsHolder": true
+          },
+          {
+            "id": 192,
+            "name": "carpeting",
+            "parent": 222,
+            "parentIsHolder": true
+          },
+          {
+            "id": 179,
+            "name": "window",
+            "parent": 222,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": [
+          "air tank",
+          "diving mask",
+          "pair of flippers",
+          "wet suit",
+          "closet",
+          "note",
+          "dresser",
+          "bed"
+        ]
+      }
+    },
+    {
+      "cmd": "examine stairs",
+      "roomIdAfter": 183,
+      "reply": [
+        "You can't see any stairs here.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "get out of bed",
+      "roomIdAfter": 183,
+      "reply": [
+        "You get out of bed.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine wallpaper",
+      "roomIdAfter": 183,
+      "reply": [
+        "It's faded to a drab off-white.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine bedroom door",
+      "roomIdAfter": 183,
+      "reply": [
+        "The bedroom door is closed.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine stairs",
+      "roomIdAfter": 183,
+      "reply": [
+        "You can't see any stairs here.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "open door",
+      "roomIdAfter": 183,
+      "reply": [
+        "The bedroom door is now open.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "n",
+      "roomIdAfter": 147,
+      "reply": [
+        "Upstairs Hallway",
+        "You are at the top of the stairs in the Red Boar. Your room is to the south, and other rooms line the hall. The lighting in the hallway is dim and drab like the wallpaper and carpeting.",
+        ">"
+      ]
+    },
+    {
+      "dump": {
+        "roomId": 147,
+        "roomName": "Upstairs Hallway",
+        "lit": true,
+        "prop": {
+          "num": 8,
+          "sz": 4,
+          "dataAddr": 6966
+        },
+        "localGlobals": [
+          {
+            "id": 177,
+            "name": "bedroom door",
+            "parent": 222,
+            "parentIsHolder": true
+          },
+          {
+            "id": 175,
+            "name": "stairs",
+            "parent": 222,
+            "parentIsHolder": true
+          },
+          {
+            "id": 193,
+            "name": "wallpaper",
+            "parent": 222,
+            "parentIsHolder": true
+          },
+          {
+            "id": 192,
+            "name": "carpeting",
+            "parent": 222,
+            "parentIsHolder": true
+          }
+        ],
+        "discoveredObjects": []
+      }
+    },
+    {
+      "cmd": "examine wallpaper",
+      "roomIdAfter": 147,
+      "reply": [
+        "It's faded to a drab off-white.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine stairs",
+      "roomIdAfter": 147,
+      "reply": [
+        "The carpeted stairway leads down.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine window",
+      "roomIdAfter": 147,
+      "reply": [
+        "You can't see any window here.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "s",
+      "roomIdAfter": 183,
+      "reply": [
+        "Your Room",
+        "On the floor is a note that must have been slipped under the door while you slept.",
+        "In a corner of the room is a lopsided wooden dresser.",
+        "A comfortable bed sits along the wall.",
+        ">"
+      ]
+    },
+    {
+      "cmd": "examine window",
+      "roomIdAfter": 183,
+      "reply": [
+        "I see nothing special about the window.",
+        ">"
+      ]
+    }
+  ]
+}

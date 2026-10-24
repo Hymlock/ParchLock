@@ -30,6 +30,8 @@ var ModuleStatFactsClaude = {
     // Cutthroats (ZIL): OPENBIT 21 (original-scene native explorer, zil-native-explore4.json, no relocation): hotel-room dresser RAM bit 21
     // 0 closed -> 1 after OPEN (reveals book/key/passbook) -> 0 after CLOSE (contents hidden); OPEN on the bed tests 21 TRUE ("already open"). Container 11 unknown.
     "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180": {
+        // D232 local globals, roots only (work/investigations/r3-claude/localscope5/): Your Room 183 / Upstairs Hallway 147 wallpaper; stairs refused at 183, window refused at 147. Lit bit set in all reached rooms. INVISIBLE 30 exact, ONBIT 17 exact.
+        "localScope": { "property": 8, "width": 1, "holder": 222, "roomLitAttribute": 17, "invisible": 30 },
         // RE-ADDED from target-scoped PROBE walk p2 (original scene, command names the object): CONTBIT 11 tested TRUE on bar, table, tube of putty, closet, bed; FALSE on Weasel knife, Pete the Rat, Johnny Red, cigar. supporter 28 already proven, so surface-aware Open/Close applies. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): container, wearable - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
         // SURFACEBIT 28: TRUE on stove 76, chair 108, table 109, bed 146; FALSE on dinner plate 1, wrist watch 6, knife 8. WEARBIT 18: TRUE on wrist watch 6, air tank 136, diving mask 137, flippers 138, wet suit 139; FALSE on envelope 133, room key 143, passbook 144. Observer-captured walk m1 (object ids, analyzer2). Surface-aware Open/Close as Zork I. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
@@ -58,6 +60,8 @@ var ModuleStatFactsClaude = {
     },
     // Plundered Hearts (ZIL): OPENBIT 16: OPEN sets 16 on large cupboard, coffer, canvas hatch, iron door; CLOSE clears (cupboard, coffer). WORNBIT 22: WEAR sets 22 on breeches, shirt, ball gown; REMOVE clears (frock, shirt). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     "b53a2588c7926892f8f5e9b201c1855a01892e972d938bf919b4f36e1b8bd7db": {
+        // D232 local globals, roots only (work/investigations/r3-claude/localscope5/): Captain's Quarters 169 / Landing 92 curtain; stair refused at 169, window refused at 92. INVISIBLE 20 exact, ONBIT 29 exact.
+        "localScope": { "property": 11, "width": 1, "holder": 37, "roomLitAttribute": 29, "invisible": 20 },
         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): container, supporter - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
         // SURFACEBIT 18: TRUE on table 75, cot 82, silver tray 198; FALSE on well 4, whip 6, powder horn 14. WEARBIT 21: TRUE on shirt 130, breeches 194, ball gown 200; FALSE on line 74. Walk m2 (terminal ending). Surface-aware Open/Close as Zork I. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
@@ -119,6 +123,8 @@ var ModuleStatFactsClaude = {
     },
     // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
+        // D232 local globals, roots only (work/investigations/r3-claude/localscope5/): In the Wings 81 / Performance Ring 131 grandstand and center pole; ladder refused at 81, path refused at 131. No dark room exists (lit gate positive-only). INVISIBLE 19 exact, ONBIT 24 exact.
+        "localScope": { "property": 17, "width": 1, "holder": 50, "roomLitAttribute": 24, "invisible": 19 },
         // Native held radio/headphones TURN ON/OFF; raw ONBIT24 owns radio state only.
         "attributeObjects": { "switchable": [36, 48] },
         // Radio 48 carries CONTBIT 23 + OPENBIT 15 only to hold its hidden dial 18 (way.zil:2815/2950). Native, held
@@ -514,6 +520,8 @@ var ModuleStatFactsClaude = {
     // verbs.zil:671). Bounded table: 6 carriers = weasel chieftain x2, rat-ant, giant spider, weasel-like alien, ship computer 24
     // (addressed by 'computer, ...'); no rooms. VILLAIN 20 is NOT animate (palisade, laser beam, nest). No container is mapped.
     "1d9a69257349060823893f4cfa616f1040a3b41cbf38a6717199f206cd8f678c": {
+        // D232 local globals, roots only (work/investigations/r3-claude/localscope5/): ship Bridge 202 / Airlock 122 airlock; Living Quarters 10 refuses airlock and window. Artifact rooms not reached. INVISIBLE 30 exact, ONBIT 18 exact.
+        "localScope": { "property": 18, "width": 1, "holder": 111, "roomLitAttribute": 18, "invisible": 30 },
         "attributeMap": { "animate": 11 },
         // Grok4124 design, new native two-owner proof: normal144 and tattered176; held library71/basket40 negative.
         "wornAttribute": 24
