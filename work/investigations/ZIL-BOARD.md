@@ -1,11 +1,12 @@
-# ZIL board - single source of truth for all seats (owner: claude, updated 2026-10-24 (r22 committed c1bd21f))
+# ZIL board - single source of truth for all seats (owner: claude, updated 2026-10-24 evening (r27 committed e7e7743))
 
 Goal (operator): every ZIL flag decoded AND wired into the UI wrapper (radials, menus) - a flag with no visible
 effect in the app is not done. Missing right options matter more than harmless wrong ones; no masking.
 
 ## Ledger (work/investigations/2026-10-16-zil-profile-ledger.md, regenerate: node work/investigations/zil-profile-ledger.js)
-988 cells (26 titles x 38 keys): settled 648 (F 134, C 124, L:NA 279, L:S 38, L:UD 29, L:U 39, L:O/L:X 5) = 66%;
-open U 310 (flag exists in source, no fact yet); N? 3; blocked B 27 (Sherlock, no source).
+988 cells: settled 681 (C 158, F 134, L:NA 279, L:S 38, L:U 38, L:UD 29, L:O/X 5) = 69%; open U 277; N? 3; B 27 (Sherlock).
+Not yet merged into the ledger generator (settled by ruling today): openable x24 = covered by container+door; transparent L:NA x5
+(Zork3, Witness, Hollywood, Infidel, Starcross: grok1/transp/lna-ledger-entries.json); wearable L:NA LH/Starcross/Infidel; climb L:NA Deadline.
 Next ledger goal: settle U cells that change the radial first (below), then invisible U cells in bulk.
 
 ## Roles
@@ -29,14 +30,14 @@ Every evidence packet: digest, 2 native positives + negative (or single owner + 
 |---|---|---|
 | shared objects (long-press) | 18 titles | Wishbringer/LGOP/Stationfall/Sherlock (INVISIBLE unmeasured), Borderzo |
 | Open/Close containers | +Spellbreaker, Suspect, Stationfall, LGOP | Starcross (blocked), Suspended (robots) |
-| Open/Close doors | 17 titles | Moonmist (D134), Infidel/Deadline/Spellbreaker/Hitchhik (1 door each) |
+| Open/Close doors | 18 titles (+Deadline) | Moonmist (R3 code ready, awaiting codex confirm), Infidel, Spellbreaker, Hitchhik |
 | Turn on/off | Zork II, Hollywood, LGOP, Starcross, Stationfall, Moonmist, Planetfall, Zork III | no-switch titles settled |
-| Enter / Get out of | LH, Zork II, Planetfall, Infidel, PH, Starcross, Stationfall, Moonmist (+Suspect r23) | ENTER-working VEHBIT titles (grok1); Witness/Deadline need sit-on form |
-| Put on (surfaces) | Hollywood, Suspect (+Stationfall r23) | Starcross, Suspended |
-| Eat / Drink | LH food; drink Zork I, Zork II, Cutthroats | - |
+| Enter / Get out of | LH, Zork II, Planetfall, Infidel, PH, Starcross, Stationfall, Moonmist, Suspect, Ballyhoo, Sorcerer, Enchanter, Spellbreaker | Witness/Deadline need a sit-on form; Hitchhik held (no carrier ENTER); Suspended/Hollywood route-blocked |
+| Put on (surfaces) | Hollywood, Suspect, Stationfall | Starcross, Suspended |
+| Eat / Drink | LH food; Planetfall eat; drink Zork I, Zork II, Cutthroats | - |
 | Talk to | +6 titles (grok1) | - |
-| Climb | Zork I (D239) | 8 titles (grok2) |
-| Transparent (see inside) | LH | 16 titles (grok1); Enchanter held |
+| Climb | Zork I, Enchanter, Sorcerer, Zork II, Planetfall, Zork III, Infidel, Starcross | Deadline L:NA (generic reply); Suspended parked |
+| Transparent (see inside) | LH, Zork I, Stationfall, Spellbreaker, PH, Wishbringer | HHGG/Zork II held; Planetfall/Moonmist parked; 5 L:NA |
 
 ## Rules of the road
 One batch = one frozen diff + one isolated gate (copies, hidden processes) + independent audit + operator 13/0.
@@ -51,3 +52,14 @@ Read this board before starting work; post a bus message to claude when a packet
 - Detection: `node tools/bus-throughput.cjs 1`; a seat silent for >30 min with an open lane is treated as off. Release its
   claims, post the takeover on the bus and update this board. Never wait for it to come back.
 - Integration: claude runs gates through its own background worker, so integration does not depend on any bus seat.
+
+## Wear / worn
+- wearable: LGOP 20 (+wornAttribute 21 so a worn suit offers Remove). LH/Starcross/Infidel L:NA.
+
+## Locked (needs design before more evidence)
+- Facts committed: LH 19, PH 10, Stationfall 11, LGOP 9, Witness 17, Ballyhoo 10. Hollywood 15 pulled (bit is on 5 rooms).
+- NO visible effect in ZIL today (audit-r27): nav reads locked on the exit destination, ZIL doors are in the DEXIT door slot.
+  Design: claude half sealed (zil-titles/locked-effect-claude-SEALED.md); codex blind half requested (#5100). No more locked probing.
+
+## Inform next (work/investigations/inform-census/SUMMARY.md)
+- 58 of 80 release games have their own attribute name table (free). 17 release Inform games need a per-title bit check. 5 release Glulx games need a reader design.
