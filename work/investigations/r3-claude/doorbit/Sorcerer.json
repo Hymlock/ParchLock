@@ -1,0 +1,167 @@
+{
+ "title": "Sorcerer",
+ "doorbit": 24,
+ "openbit": 15,
+ "openbitFromFacts": 15,
+ "containerbit": 27,
+ "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+ "objectCount": 255,
+ "carriers": [
+  {
+   "id": 42,
+   "name": "black marble door",
+   "parent": 48,
+   "parentName": "Mammoth Cavern",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 56,
+   "name": "toll gate",
+   "parent": 198,
+   "parentName": "Toll Gate",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 63,
+   "name": "shiny silver door",
+   "parent": 48,
+   "parentName": "Mammoth Cavern",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 164,
+   "name": "heavy door",
+   "parent": 55,
+   "parentName": "",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 230,
+   "name": "white wooden door",
+   "parent": 48,
+   "parentName": "Mammoth Cavern",
+   "container": false,
+   "open": false
+  },
+  {
+   "id": 251,
+   "name": "heavy wooden door",
+   "parent": 55,
+   "parentName": "",
+   "container": false,
+   "open": false
+  }
+ ],
+ "positives": [
+  {
+   "run": "_Sorcerer.run.json",
+   "cmd": "OPEN DOOR",
+   "reply": "The door opens easily. >",
+   "openToggles": [
+    {
+     "id": 164,
+     "name": "heavy door",
+     "before": 0,
+     "after": 1
+    }
+   ]
+  },
+  {
+   "run": "_Sorcerer.run.json",
+   "cmd": "CLOSE DOOR",
+   "reply": "Okay, the heavy door is now closed. >",
+   "openToggles": [
+    {
+     "id": 164,
+     "name": "heavy door",
+     "before": 1,
+     "after": 0
+    }
+   ]
+  },
+  {
+   "run": "_Sorcerer.run.json",
+   "cmd": "OPEN DOOR",
+   "reply": "The door opens easily. >",
+   "openToggles": [
+    {
+     "id": 164,
+     "name": "heavy door",
+     "before": 0,
+     "after": 1
+    }
+   ]
+  },
+  {
+   "run": "_SorcererC.run.json",
+   "cmd": "OPEN HEAVY WOODEN DOOR",
+   "reply": "Okay, the heavy wooden door is now open. >",
+   "openToggles": [
+    {
+     "id": 251,
+     "name": "heavy wooden door",
+     "before": 0,
+     "after": 1
+    }
+   ]
+  },
+  {
+   "run": "_SorcererC.run.json",
+   "cmd": "CLOSE HEAVY WOODEN DOOR",
+   "reply": "Okay, the heavy wooden door is now closed. >",
+   "openToggles": [
+    {
+     "id": 251,
+     "name": "heavy wooden door",
+     "before": 1,
+     "after": 0
+    }
+   ]
+  },
+  {
+   "run": "_SorcererC.run.json",
+   "cmd": "OPEN HEAVY WOODEN DOOR",
+   "reply": "Okay, the heavy wooden door is now open. >",
+   "openToggles": [
+    {
+     "id": 251,
+     "name": "heavy wooden door",
+     "before": 0,
+     "after": 1
+    }
+   ]
+  },
+  {
+   "run": "_SorcererB.run.json",
+   "cmd": "OPEN DOOR",
+   "reply": "The door opens easily. >",
+   "openToggles": [
+    {
+     "id": 164,
+     "name": "heavy door",
+     "before": 0,
+     "after": 1
+    }
+   ]
+  }
+ ],
+ "doorSpecificRefusals": [],
+ "negatives": [
+  {
+   "run": "_SorcererC.run.json",
+   "cmd": "OPEN NOTE",
+   "reply": "You must tell me how to do that to a scribbled note. >",
+   "openToggles": []
+  }
+ ],
+ "problemCarriers": {
+  "56": "toll gate: opened by the gnome, not by OPEN",
+  "230": "white wooden door: OPEN replies \"creaks slowly open\" but teleports you into Belboz hideout; OPENBIT 15 not seen to toggle"
+ },
+ "status": "CONFIRMED",
+ "method": "headless Chromium play.html; ordinary commands via Input.Inject; Jericho walkthrough prefixes with inserted probes; JSEED-style random-opcode shim (seed 0) for walkthrough parity, no VM memory writes/snapshots"
+}

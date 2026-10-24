@@ -1,0 +1,8 @@
+> OPEN LID @100 |  The lid is now open. >  ["43metal lid:o0->1"]
+> OPEN DOOR @100 |  The door is locked. >  []
+> OPEN WINDOW @100 |  The barred window opens. >  ["101barred window:o0->1"]
+> UNLOCK DOOR WITH KEY @100 |  The door is now unlocked. >  []
+> OPEN DOOR @100 |  The door is now open. >  ["102door made of oak:o0->1"]
+> CLOSE DOOR @213 |  You can't see any door here! >  []
+> OPEN DOOR @213 |  You can't see any door here! >  []
+> OPEN SWORD @213 |  You must tell me how to do that to a sword. >  []

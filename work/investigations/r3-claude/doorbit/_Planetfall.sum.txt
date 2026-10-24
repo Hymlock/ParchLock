@@ -1,0 +1,7 @@
+> W @216 |  Escape Pod This is one of the Feinstein's primary escape pods, for use in extreme emergencies. A mass of safety webbing, large enough to hold several dozen peo ["231escape pod bulkhead:o1->0"]
+> OPEN DOOR @216 |  The bulkhead opens and cold ocean water rushes in! The pod is now completely submerged, and you feel it smash against underwater rocks. Bubbles streaming upwar ["231escape pod bulkhead:o0->1"]
+> UNLOCK PADLOCK WITH KEY @174 |  The padlock springs open. >  ["172padlock:o0->1"]
+> OPEN DOOR @174 |  Opened. >  ["173door:o0->1"]
+> CLOSE DOOR @174 |  The door is now closed. >  ["173door:o1->0"]
+> OPEN DOOR @174 |  Opened. >  ["173door:o0->1"]
+> OPEN LADDER @171 |  You can't extend the ladder in this tiny space! >  []
