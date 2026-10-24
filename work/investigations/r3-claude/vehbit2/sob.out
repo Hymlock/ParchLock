@@ -1,0 +1,200 @@
+"WAIT"  36 -> 128 bed | Time passes... The hellhound reaches you and tears you apart with its powerful teeth. ...and a moment later you wake up in a cold sweat and realize yo
+"FROTZ BOOK"  128 -> 128 bed | There is an almost blinding flash of light as the spell book begins to glow! It slowly fades to a less painful level, but the spell book is now quite 
+"get in bed" probe:bed 128 -> 128 bed | You are already in the bed! >
+"get out of bed" probe:bed 128 -> 17 Your Quarters | You are now on your feet. >
+"enter bed" probe:bed 17 -> 128 bed | You are now in the bed. >
+"exit" probe:bed 128 -> 128 bed | You're not going anywhere until you get out of the bed. >
+"sit on bed" probe:bed 128 -> 128 bed | You are already in the bed! >
+"stand up" probe:bed 128 -> 17 Your Quarters | You are now on your feet. >
+"board bed" probe:bed 17 -> 128 bed | You are now in the bed. >
+"get out of bed" probe:bed 128 -> 17 Your Quarters | You are now on your feet. >
+"climb on bed" probe:bed 17 -> 128 bed | You are now in the bed. >
+"get off bed" probe:bed 128 -> 17 Your Quarters | You are now on your feet. >
+"GET UP"  17 -> 17 Your Quarters | You are already standing. >
+"W"  17 -> 67 Hallway | Hallway Rooms lie to the east and west from this north-south corridor. A heavy wooden door, currently closed, leads north. Tacked to the doorframe of 
+"READ NOTE"  67 -> 67 Hallway | (taking the scribbled note first) "I have taken the apprentices into town to shop for the Guild picnic. I tried rousing you, but you seemed deep aslee
+"DROP IT"  67 -> 67 Hallway | Dropped. >
+"W"  67 -> 115 Belboz's Quarters | Belboz's Quarters The personal chamber of Belboz, who presides over the Circle of Enchanters, is appointed with a beautiful woven wall hanging, an exo
+"OPEN DESK"  115 -> 115 Belboz's Quarters | Opening the desk drawer reveals a tiny box, an infotater, and a journal. >
+"GET BOX AND JOURNAL"  115 -> 115 Belboz's Quarters | tiny box: Taken. journal: Taken. You are now a bit thirsty. >
+"LOOK BEHIND TAPESTRY"  115 -> 115 Belboz's Quarters | As you move the tapestry, a key falls out from behind it and lands on the floor. >
+"GET KEY"  115 -> 115 Belboz's Quarters | Taken. "Squawk! You should never have let down your mindshield, you doddering old Enchanter. Squawk!" >
+"OPEN JOURNAL"  115 -> 115 Belboz's Quarters | (with the key) The journal springs open. You are now a bit hungry. >
+"READ IT"  115 -> 115 Belboz's Quarters | You skim through the pages of the journal, a combination diary and notebook. Most of the notations, written in Belboz's familiar flowing script, deal 
+"DROP JOURNAL AND KEY"  115 -> 115 Belboz's Quarters | journal: Dropped. small key: Dropped. >
+"E"  115 -> 67 Hallway | Hallway There is a scribbled note here. >
+"S"  67 -> 50 Hallway | Hallway Rooms lie to the east and west from this north-south corridor. A large marble archway to the south leads into an open area. The Guild Hall doo
+"S"  50 -> 18 Lobby | Lobby This is the entrance lobby of the Guild Hall. Befitting the status and wealth of the Guild, the lobby is finished with polished Antharian marble
+"W"  18 -> 231 Store Room | Store Room This is a closet for storage. The only exit is east. Among the provisions here is a small ochre-colored vial, closed and labelled with tiny
+"GET VIAL, CALENDAR AND MATCHBOOK"  231 -> 231 Store Room | ochre vial: Taken. calendar: Taken. depleted matchbook: Taken. >
+"E"  231 -> 18 Lobby | Lobby Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. >
+"OPEN RECEPTACLE"  18 -> 18 Lobby | Opening the receptacle reveals an issue of Popular Enchanting. >
+"READ MATCHBOOK"  18 -> 18 Lobby | "Amazing Vilstu Potion! Get by without breathing! Amaze your friends! Be the first person on the block to own some! Order today by dropping this in an
+"PUT IT IN RECEPTACLE"  18 -> 18 Lobby | Done. You are now somewhat hungry. >
+"E"  18 -> 142 Library | Library This is a study chamber for members of the Guild. Usually, there would be several elder Enchanters patiently training novices, but no one is h
+"GET SCROLL"  142 -> 142 Library | Taken. >
+"READ IT"  142 -> 142 Library | The scroll reads "meef spell: cause plants to wilt". >
+"GNUSTO MEEF SPELL"  142 -> 142 Library | Your spell book begins to glow softly. Slowly, ornately, the words of the meef spell are inscribed, glowing even more brightly than the book itself. T
+"W"  142 -> 18 Lobby | Lobby Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. The receptacle contains: a depleted matchbook an iss
+"D"  18 -> 43 Cellar | >
+"PRESS white, gray, black, red, black"  43 -> 43 Cellar | 
+"GET SCROLL"  43 -> 43 Cellar | 
+"READ IT"  43 -> 43 Cellar | 
+"OPEN VIAL"  43 -> 43 Cellar | 
+"DRINK OCHRE POTION"  43 -> 43 Cellar | 
+"DROP VIAL"  43 -> 43 Cellar | 
+"U"  43 -> 18 Lobby | 
+"OPEN RECEPTACLE"  18 -> 18 Lobby | 
+"GET ORANGE VIAL"  18 -> 18 Lobby | 
+"N"  18 -> 50 Hallway | 
+"W"  50 -> 13 Helistar's Quarters | 
+"GET SCROLL"  13 -> 13 Helistar's Quarters | 
+"READ IT"  13 -> 13 Helistar's Quarters | 
+"GNUSTO GASPAR SPELL"  13 -> 13 Helistar's Quarters | 
+"AIMFIZ BELBOZ"  13 -> 13 Helistar's Quarters | 
+"NE"  13 -> 13 Helistar's Quarters | 
+"E"  13 -> 50 Hallway | 
+"NE"  50 -> 50 Hallway | 
+"LEARN PULVER"  50 -> 50 Hallway | 
+"PULVER RIVER"  50 -> 50 Hallway | 
+"D"  50 -> 50 Hallway | 
+"NE"  50 -> 50 Hallway | 
+"GET GUANO, SCROLL AND AMBER VIAL"  50 -> 50 Hallway | 
+"READ SCROLL"  50 -> 50 Hallway | 
+"GNUSTO FWEEP SPELL"  50 -> 50 Hallway | 
+"D"  50 -> 50 Hallway | 
+"S"  50 -> 18 Lobby | 
+"GET INDIGO VIAL"  18 -> 18 Lobby | 
+"W"  18 -> 231 Store Room | 
+"D"  231 -> 231 Store Room | 
+"W"  231 -> 231 Store Room | 
+"SW"  231 -> 231 Store Room | 
+"SW"  231 -> 231 Store Room | 
+"W"  231 -> 231 Store Room | 
+"LEARN IZYUK SPELL"  231 -> 231 Store Room | 
+"AGAIN"  231 -> 231 Store Room | 
+"IZYUK ME"  231 -> 231 Store Room | 
+"W"  231 -> 231 Store Room | 
+"W"  231 -> 231 Store Room | 
+"N"  231 -> 231 Store Room | 
+"GET COIN"  231 -> 231 Store Room | 
+"S"  231 -> 231 Store Room | 
+"E"  231 -> 18 Lobby | 
+"IZYUK ME"  18 -> 18 Lobby | 
+"E"  18 -> 142 Library | 
+"E"  142 -> 142 Library | 
+"NE"  142 -> 142 Library | 
+"NE"  142 -> 142 Library | 
+"E"  142 -> 142 Library | 
+"E"  142 -> 142 Library | 
+"WAKE GNOME"  142 -> 142 Library | 
+"GIVE COIN TO GNOME"  142 -> 142 Library | 
+"SEARCH GNOME"  142 -> 142 Library | 
+"E"  142 -> 142 Library | 
+"E"  142 -> 142 Library | 
+"N"  142 -> 142 Library | 
+"N"  142 -> 142 Library | 
+"SLEEP"  142 -> 123 Chamber of Living Death | 
+"LEARN FWEEP"  123 -> 123 Chamber of Living Death | 
+"LEARN FWEEP"  123 -> 123 Chamber of Living Death | 
+"LEARN FWEEP"  123 -> 123 Chamber of Living Death | 
+"LEARN FWEEP"  123 -> 123 Chamber of Living Death | 
+"LEARN FWEEP"  123 -> 123 Chamber of Living Death | 
+"DROP ALL"  123 -> 123 Chamber of Living Death | 
+"E"  123 -> 123 Chamber of Living Death | 
+"FWEEP ME"  123 -> 123 Chamber of Living Death | 
+"N"  123 -> 123 Chamber of Living Death | 
+"E"  123 -> 123 Chamber of Living Death | 
+"S"  123 -> 123 Chamber of Living Death | 
+"S"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"D"  123 -> 123 Chamber of Living Death | 
+"E"  123 -> 123 Chamber of Living Death | 
+"E"  123 -> 123 Chamber of Living Death | 
+"N"  123 -> 123 Chamber of Living Death | 
+"N"  123 -> 123 Chamber of Living Death | 
+"U"  123 -> 123 Chamber of Living Death | 
+"U"  123 -> 123 Chamber of Living Death | 
+"S"  123 -> 123 Chamber of Living Death | 
+"E"  123 -> 123 Chamber of Living Death | 
+"GET SCROLL"  123 -> 123 Chamber of Living Death | 
+"READ IT"  123 -> 123 Chamber of Living Death | 
+"PUT IT IN HOLE"  123 -> 123 Chamber of Living Death | 
+"FWEEP ME"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"S"  123 -> 123 Chamber of Living Death | 
+"E"  123 -> 123 Chamber of Living Death | 
+"D"  123 -> 123 Chamber of Living Death | 
+"D"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"U"  123 -> 123 Chamber of Living Death | 
+"U"  123 -> 123 Chamber of Living Death | 
+"N"  123 -> 123 Chamber of Living Death | 
+"N"  123 -> 123 Chamber of Living Death | 
+"D"  123 -> 123 Chamber of Living Death | 
+"E"  123 -> 123 Chamber of Living Death | 
+"FWEEP ME"  123 -> 123 Chamber of Living Death | 
+"S"  123 -> 123 Chamber of Living Death | 
+"E"  123 -> 123 Chamber of Living Death | 
+"N"  123 -> 123 Chamber of Living Death | 
+"D"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"S"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"U"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"WAIT"  123 -> 123 Chamber of Living Death | 
+"WAIT"  123 -> 123 Chamber of Living Death | 
+"GET ALL"  123 -> 123 Chamber of Living Death | 
+"S"  123 -> 123 Chamber of Living Death | 
+"S"  123 -> 123 Chamber of Living Death | 
+"E"  123 -> 123 Chamber of Living Death | 
+"OPEN BOX"  123 -> 123 Chamber of Living Death | 
+"DROP BOX"  123 -> 123 Chamber of Living Death | 
+"GET AMULET AND SCROLL"  123 -> 123 Chamber of Living Death | 
+"GNUSTO SWANZO SPELL"  123 -> 123 Chamber of Living Death | 
+"LEARN IZYUK"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"U"  123 -> 123 Chamber of Living Death | 
+"U"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"IZYUK ME"  123 -> 123 Chamber of Living Death | 
+"NE"  123 -> 123 Chamber of Living Death | 
+"SE"  123 -> 123 Chamber of Living Death | 
+"E"  123 -> 123 Chamber of Living Death | 
+"LOWER FLAG"  123 -> 123 Chamber of Living Death | 
+"EXAMINE IT"  123 -> 123 Chamber of Living Death | 
+"DROP CALENDAR"  123 -> 123 Chamber of Living Death | 
+"GET AQUA VIAL"  123 -> 123 Chamber of Living Death | 
+"E"  123 -> 123 Chamber of Living Death | 
+"LOOK IN CANNON"  123 -> 123 Chamber of Living Death | 
+"PUT GUANO IN CANNON"  123 -> 123 Chamber of Living Death | 
+"GET SCROLL"  123 -> 123 Chamber of Living Death | 
+"READ IT"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"LEARN IZYUK"  123 -> 123 Chamber of Living Death | 
+"IZYUK ME"  123 -> 123 Chamber of Living Death | 
+"NW"  123 -> 123 Chamber of Living Death | 
+"SW"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"D"  123 -> 123 Chamber of Living Death | 
+"D"  123 -> 123 Chamber of Living Death | 
+"S"  123 -> 123 Chamber of Living Death | 
+"S"  123 -> 123 Chamber of Living Death | 
+"SW"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"GIVE COIN TO GNOME"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"W"  123 -> 123 Chamber of Living Death | 
+"S"  123 -> 123 Chamber of Living Death | 
+"SLEEP"  123 -> 123 Chamber of Living Death | 
+"OPEN AQUA VIAL"  123 -> 123 Chamber of Living Death | 
+"DRINK POTION"  123 -> 123 Chamber of Living Death | 
+"DROP AQUA VIAL"  123 -> 123 Chamber of Living Death | 

@@ -1,0 +1,1522 @@
+[
+ {
+  "cmd": "GET LAMP AND SWORD",
+  "tag": null,
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": "lamp: Taken.\nsword: Taken.\n \n>"
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 229,
+  "parentAfterName": "Narrow Tunnel",
+  "playerId": 4,
+  "reply": "Narrow Tunnel\nYou are standing at the southern end of a narrow tunnel where it opens into a wide cavern. The cavern is dimly illuminated by phosphorescent mosses clinging to its high ceiling. A deep ravine winds through the cavern, with a small stream at the bottom. The walls of the ravine are steep and crumbly. A foot bridge crosses the ravine to the south.\n \n>"
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 229,
+  "parentBeforeName": "Narrow Tunnel",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": "Foot Bridge\nYou are standing on a crude but sturdy wooden foot bridge crossing a deep ravine. The path runs north and south from here.\n \n>"
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 227,
+  "parentAfterName": "Great Cavern",
+  "playerId": 4,
+  "reply": "Great Cavern\nThis is the center of the great cavern, carved out of the limestone. Stalactites and stalagmites of many sizes are everywhere. The room glows with dim light provided by phosphorescent moss, and weird shadows move all around you. A narrow path winds southwest among the stalagmites, and another leads northeast.\n \n>"
+ },
+ {
+  "cmd": "SW",
+  "tag": null,
+  "parentBefore": 227,
+  "parentBeforeName": "Great Cavern",
+  "parentAfter": 226,
+  "parentAfterName": "Shallow Ford",
+  "playerId": 4,
+  "reply": "Shallow Ford\nYou are at the southern edge of a great cavern. To the south across a shallow ford is a dark tunnel which looks like it was once enlarged and smoothed. To the north a narrow path winds among stalagmites. Dim light illuminates the cavern.\n \n>"
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 226,
+  "parentBeforeName": "Shallow Ford",
+  "parentAfter": 225,
+  "parentAfterName": "Dark Tunnel",
+  "playerId": 4,
+  "reply": "You have moved into a dark place.\nIt is pitch black. You are likely to be eaten by a grue.\n \n>"
+ },
+ {
+  "cmd": "LIGHT LAMP",
+  "tag": null,
+  "parentBefore": 225,
+  "parentBeforeName": "Dark Tunnel",
+  "parentAfter": 225,
+  "parentAfterName": "Dark Tunnel",
+  "playerId": 4,
+  "reply": "The lamp is now on.\n \nDark Tunnel\nThis is a dark tunnel with dim light to the northeast. The tunnel is smooth but dusty and filled with twigs and leaves, debris which becomes deeper as the tunnel branches into a wide corridor leading southwest and a narrower one leading southeast.\n \n>"
+ },
+ {
+  "cmd": "SE",
+  "tag": null,
+  "parentBefore": 225,
+  "parentBeforeName": "Dark Tunnel",
+  "parentAfter": 222,
+  "parentAfterName": "North End of Garden",
+  "playerId": 4,
+  "reply": "North End of Garden\nThis is the northern end of a formal garden. Hedges hide the cavern walls, and if you don't look up, the illusion is of a cloudy day outside. The light comes from a large growth of glowing mosses on the roof of the cave. A break in the hedge is almost overgrown to the north. A carefully manicured path leads south. In the center of a rosebed is a small open structure, painted white. It appears to be a gazebo.\n \n>"
+ },
+ {
+  "cmd": "ENTER GAZEBO",
+  "tag": null,
+  "parentBefore": 222,
+  "parentBeforeName": "North End of Garden",
+  "parentAfter": 220,
+  "parentAfterName": "Gazebo",
+  "playerId": 4,
+  "reply": "Gazebo\nThis is a gazebo in the midst of a formal garden. It is cool and restful here. A tea table adorns the center of the gazebo.\nSitting on the table is: \n  A matchbook\n  A china teapot\n  A place mat\n  A newspaper\n  A letter opener\nA unicorn is peacefully cropping grass at the north end of the garden. There is something hanging around its neck.\nYour sword is glowing with a faint blue glow.\n \n>"
+ },
+ {
+  "cmd": "GET TEAPOT, MAT, LETTER OPENER, MATCHBOOK AND PAPER",
+  "tag": null,
+  "parentBefore": 220,
+  "parentBeforeName": "Gazebo",
+  "parentAfter": 220,
+  "parentAfterName": "Gazebo",
+  "playerId": 4,
+  "reply": "china teapot: Taken.\nplace mat: Taken.\nletter opener: Taken.\nmatchbook: Taken.\nnewspaper: Taken.\nThe unicorn bounds lightly away.\nYour sword is no longer glowing.\n \n>"
+ },
+ {
+  "cmd": "OUT",
+  "tag": null,
+  "parentBefore": 220,
+  "parentBeforeName": "Gazebo",
+  "parentAfter": 222,
+  "parentAfterName": "North End of Garden",
+  "playerId": 4,
+  "reply": "North End of Garden\n \n>"
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 222,
+  "parentBeforeName": "North End of Garden",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": "Formal Garden\nThis is the middle part of a formal garden. Hedges hide the cavern walls and a dim illumination comes from mosses far above. The path is of small crushed white stones. It winds among bushes and flower beds from south to north. To the north a small structure can be seen. To the south are peculiarly shaped bushes. There is a small gap in the hedges to the west.\n \n>"
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": "Path Near Stream\nThe path follows the south edge of a deep ravine and heads northeast. A tunnel heads southwest, narrowing to a rather tight crawl. A faint whirring sound can be heard in that direction. On the east is a ruined archway choked with vegetation.\n \n>"
+ },
+ {
+  "cmd": "SW",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 138,
+  "parentAfterName": "Carousel Room",
+  "playerId": 4,
+  "reply": "Carousel Room\nYou are in a large circular room whose high ceiling is lost in gloom. Eight identical passages leave the room.\nA loud whirring sound comes from all around, and you feel sort of disoriented in here.\n \n>"
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 138,
+  "parentBeforeName": "Carousel Room",
+  "parentAfter": 218,
+  "parentAfterName": "Topiary",
+  "playerId": 4,
+  "reply": "You're not sure which direction is which. This room is very disorienting.\n \nTopiary\nThis is the southern end of a formal garden. Hedges hide the cavern walls and mosses provide dim illumination. Fantastically shaped hedges and bushes are arrayed with geometric precision. They have not recently been clipped, but you can discern creatures in the shapes of the bushes: There is a dragon, a unicorn, a great serpent, a huge misshapen dog, and several human figures. On the west side of the garden the path leads through a rose arbor into a tunnel.\n \n>"
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 218,
+  "parentBeforeName": "Topiary",
+  "parentAfter": 138,
+  "parentAfterName": "Carousel Room",
+  "playerId": 4,
+  "reply": "Carousel Room\n \n>"
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 138,
+  "parentBeforeName": "Carousel Room",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": "You're not sure which direction is which. This room is very disorienting.\n \nMarble Hall\nThis is an arched hall of fine marble. The hall stops abruptly to the north at a ford across a stream, where the marble is cracked and broken. Perhaps a flood or collapse of the cave was responsible. To the south the hall opens into a large room. There is rather annoying whirring sound coming from that room.\nThere is a square brick here which feels like clay.\n \n>"
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 214,
+  "parentAfterName": "Deep Ford",
+  "playerId": 4,
+  "reply": "Deep Ford\nYou are fording the stream at a deep but not impossible spot. The water is very cold. The walls of the ravine rise to east and west. There is a small ledge along the north wall of the ravine. To the south is the entrance to a well-constructed but somewhat ruined hall.\n \n>"
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 214,
+  "parentBeforeName": "Deep Ford",
+  "parentAfter": 214,
+  "parentAfterName": "Deep Ford",
+  "playerId": 4,
+  "reply": "You notice that the ledge above would be a drier route west.\n \n>"
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 214,
+  "parentBeforeName": "Deep Ford",
+  "parentAfter": 213,
+  "parentAfterName": "Ledge in Ravine",
+  "playerId": 4,
+  "reply": "Ledge in Ravine\nYou are on a narrow ledge near the bottom of a deep ravine. The ledge continues to the west. A precarious climb up to another tiny ledge is possible. A short scramble down the rock face leads to a stream.\n \n>"
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 213,
+  "parentBeforeName": "Ledge in Ravine",
+  "parentAfter": 213,
+  "parentAfterName": "Ledge in Ravine",
+  "playerId": 4,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "FILL POT WITH WATER",
+  "tag": null,
+  "parentBefore": 213,
+  "parentBeforeName": "Ledge in Ravine",
+  "parentAfter": 213,
+  "parentAfterName": "Ledge in Ravine",
+  "playerId": 4,
+  "reply": "You can't see any water here!\n \n>"
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 213,
+  "parentBeforeName": "Ledge in Ravine",
+  "parentAfter": 213,
+  "parentAfterName": "Ledge in Ravine",
+  "playerId": 4,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "U",
+  "tag": null,
+  "parentBefore": 213,
+  "parentBeforeName": "Ledge in Ravine",
+  "parentAfter": 100,
+  "parentAfterName": "Tiny Room",
+  "playerId": 4,
+  "reply": "Tiny Room\nThis is a tiny room carved out of the wall of the ravine. There is an exit down a precarious climb. On the north side of the room is a massive wooden door, which has a small window barred with iron. A formidable bolt lock is set within the door frame. A keyhole covered by a thin metal lid lies within the lock.\n \n>"
+ },
+ {
+  "cmd": "OPEN LID",
+  "tag": null,
+  "parentBefore": 100,
+  "parentBeforeName": "Tiny Room",
+  "parentAfter": 100,
+  "parentAfterName": "Tiny Room",
+  "playerId": 4,
+  "reply": "The lid is now open.\n \n>"
+ },
+ {
+  "cmd": "PUT MAT UNDER DOOR",
+  "tag": null,
+  "parentBefore": 100,
+  "parentBeforeName": "Tiny Room",
+  "parentAfter": 100,
+  "parentAfterName": "Tiny Room",
+  "playerId": 4,
+  "reply": "The place mat fits easily under the door.\n \n>"
+ },
+ {
+  "cmd": "PUT OPENER IN KEYHOLE",
+  "tag": null,
+  "parentBefore": 100,
+  "parentBeforeName": "Tiny Room",
+  "parentAfter": 100,
+  "parentAfterName": "Tiny Room",
+  "playerId": 4,
+  "reply": "There is a faint noise from behind the door and a small cloud of dust rises from beneath it.\nDone.\n \n>"
+ },
+ {
+  "cmd": "REMOVE OPENER AND DROP IT",
+  "tag": null,
+  "parentBefore": 100,
+  "parentBeforeName": "Tiny Room",
+  "parentAfter": 100,
+  "parentAfterName": "Tiny Room",
+  "playerId": 4,
+  "reply": "Taken.\n \nDropped.\n \n>"
+ },
+ {
+  "cmd": "PULL MAT",
+  "tag": null,
+  "parentBefore": 100,
+  "parentBeforeName": "Tiny Room",
+  "parentAfter": 100,
+  "parentAfterName": "Tiny Room",
+  "playerId": 4,
+  "reply": "As the place mat is moved, a rusty iron key falls from it and onto the floor.\n \n>"
+ },
+ {
+  "cmd": "GET KEY",
+  "tag": null,
+  "parentBefore": 100,
+  "parentBeforeName": "Tiny Room",
+  "parentAfter": 100,
+  "parentAfterName": "Tiny Room",
+  "playerId": 4,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "UNLOCK DOOR WITH KEY",
+  "tag": null,
+  "parentBefore": 100,
+  "parentBeforeName": "Tiny Room",
+  "parentAfter": 100,
+  "parentAfterName": "Tiny Room",
+  "playerId": 4,
+  "reply": "The door is now unlocked.\n \n>"
+ },
+ {
+  "cmd": "OPEN DOOR",
+  "tag": null,
+  "parentBefore": 100,
+  "parentBeforeName": "Tiny Room",
+  "parentAfter": 100,
+  "parentAfterName": "Tiny Room",
+  "playerId": 4,
+  "reply": "The door is now open.\n \n>"
+ },
+ {
+  "cmd": "DROP KEY",
+  "tag": null,
+  "parentBefore": 100,
+  "parentBeforeName": "Tiny Room",
+  "parentAfter": 100,
+  "parentAfterName": "Tiny Room",
+  "playerId": 4,
+  "reply": "Dropped.\n \n>"
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 100,
+  "parentBeforeName": "Tiny Room",
+  "parentAfter": 103,
+  "parentAfterName": "Dreary Room",
+  "playerId": 4,
+  "reply": "Dreary Room\nThis is a small and rather dreary room, eerily illuminated by a red glow emanating from a crack in one wall. The light falls upon a dusty wooden table in the center of the room. On the south side of the room is a massive wooden door, which has a small window barred with iron. A formidable bolt lock is set within the door frame. A keyhole lies within the lock.\nIn the center of the table sits a blue crystal sphere.\n \n>"
+ },
+ {
+  "cmd": "GET BLUE SPHERE",
+  "tag": null,
+  "parentBefore": 103,
+  "parentBeforeName": "Dreary Room",
+  "parentAfter": 103,
+  "parentAfterName": "Dreary Room",
+  "playerId": 4,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 103,
+  "parentBeforeName": "Dreary Room",
+  "parentAfter": 100,
+  "parentAfterName": "Tiny Room",
+  "playerId": 4,
+  "reply": "Tiny Room\nThere is a rusty iron key here.\nThere is a place mat here.\nThere is a letter opener here.\n \n>"
+ },
+ {
+  "cmd": "D",
+  "tag": null,
+  "parentBefore": 100,
+  "parentBeforeName": "Tiny Room",
+  "parentAfter": 213,
+  "parentAfterName": "Ledge in Ravine",
+  "playerId": 4,
+  "reply": "Ledge in Ravine\n \n>"
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 213,
+  "parentBeforeName": "Ledge in Ravine",
+  "parentAfter": 212,
+  "parentAfterName": "End of Ledge",
+  "playerId": 4,
+  "reply": "End of Ledge\nA ledge from the east ends here, and a tunnel leads north into the wall. There is a rather odd smokey odor in the warm air of the tunnel.\nYour sword is glowing with a faint blue glow.\n \n>"
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 212,
+  "parentBeforeName": "End of Ledge",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": "Dragon Room\nThe room is a large cavern full of broken stone. The walls are scorched and there are deep scratches on the floor. A sooty dry smell is very strong here. A paved path winds from a large passage to the west, through the room, and across a huge stone bridge to the south. To the east a small crack is visible. A dark and smokey tunnel leads north.\nA huge red dragon is lying here, blocking the entrance to a tunnel leading north. Smoke curls from his nostrils and out between his teeth.\nYour sword has begun to glow very brightly.\n \n>"
+ },
+ {
+  "cmd": "HIT DRAGON WITH SWORD",
+  "tag": null,
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": "You've made him rather angry. You had better be very careful now.\nThe dragon continues to watch you carefully.\n \n>"
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 202,
+  "parentAfterName": "Stone Bridge",
+  "playerId": 4,
+  "reply": "Stone Bridge\nThis is the middle of a ruined but still impressive stone bridge spanning a deep chasm. Water flows far beneath. A paved path leads north into a large open space. To the south, the path leads into a misty tunnel.\nThe dragon follows you, out of mingled curiosity and anger.\n \n>"
+ },
+ {
+  "cmd": "HIT DRAGON WITH SWORD",
+  "tag": null,
+  "parentBefore": 202,
+  "parentBeforeName": "Stone Bridge",
+  "parentAfter": 202,
+  "parentAfterName": "Stone Bridge",
+  "playerId": 4,
+  "reply": "The dragon is surprised and interested (for the moment).\nThe dragon continues to watch you carefully.\n \n>"
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 202,
+  "parentBeforeName": "Stone Bridge",
+  "parentAfter": 201,
+  "parentAfterName": "Cool Room",
+  "playerId": 4,
+  "reply": "The room is cool and damp. The air is misty. A twisty path from the southeast splits here toward a wide northerly stone bridge, and a narrow westerly tunnel. It is from the latter that the mist and chill seem to originate.\nThe dragon follows you, out of mingled curiosity and anger.\n \n>"
+ },
+ {
+  "cmd": "HIT DRAGON WITH SWORD",
+  "tag": null,
+  "parentBefore": 201,
+  "parentBeforeName": "Cool Room",
+  "parentAfter": 201,
+  "parentAfterName": "Cool Room",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 201,
+  "parentBeforeName": "Cool Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "DROP SWORD",
+  "tag": null,
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 201,
+  "parentAfterName": "Cool Room",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 201,
+  "parentBeforeName": "Cool Room",
+  "parentAfter": 202,
+  "parentAfterName": "Stone Bridge",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 202,
+  "parentBeforeName": "Stone Bridge",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 210,
+  "parentAfterName": "Dragon's Lair",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "OPEN CHEST",
+  "tag": null,
+  "parentBefore": 210,
+  "parentBeforeName": "Dragon's Lair",
+  "parentAfter": 210,
+  "parentAfterName": "Dragon's Lair",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "OPEN CHEST",
+  "tag": null,
+  "parentBefore": 210,
+  "parentBeforeName": "Dragon's Lair",
+  "parentAfter": 210,
+  "parentAfterName": "Dragon's Lair",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "GET DRAGON",
+  "tag": null,
+  "parentBefore": 210,
+  "parentBeforeName": "Dragon's Lair",
+  "parentAfter": 210,
+  "parentAfterName": "Dragon's Lair",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 210,
+  "parentBeforeName": "Dragon's Lair",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 212,
+  "parentAfterName": "End of Ledge",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 212,
+  "parentBeforeName": "End of Ledge",
+  "parentAfter": 213,
+  "parentAfterName": "Ledge in Ravine",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "D",
+  "tag": null,
+  "parentBefore": 213,
+  "parentBeforeName": "Ledge in Ravine",
+  "parentAfter": 214,
+  "parentAfterName": "Deep Ford",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 214,
+  "parentBeforeName": "Deep Ford",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 222,
+  "parentAfterName": "North End of Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "IN",
+  "tag": null,
+  "parentBefore": 222,
+  "parentBeforeName": "North End of Garden",
+  "parentAfter": 220,
+  "parentAfterName": "Gazebo",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 220,
+  "parentBeforeName": "Gazebo",
+  "parentAfter": 220,
+  "parentAfterName": "Gazebo",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 220,
+  "parentBeforeName": "Gazebo",
+  "parentAfter": 220,
+  "parentAfterName": "Gazebo",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "OUT",
+  "tag": null,
+  "parentBefore": 220,
+  "parentBeforeName": "Gazebo",
+  "parentAfter": 222,
+  "parentAfterName": "North End of Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 222,
+  "parentBeforeName": "North End of Garden",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 218,
+  "parentAfterName": "Topiary",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 218,
+  "parentBeforeName": "Topiary",
+  "parentAfter": 138,
+  "parentAfterName": "Carousel Room",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "SE",
+  "tag": null,
+  "parentBefore": 138,
+  "parentBeforeName": "Carousel Room",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "SE",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "SE",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "SE",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "SE",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "SE",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "ANSWER \"A WELL\"",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "DROP DRAGON AND PAPER",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "GET IN BUCKET",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "DROP WATER",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "GET OUT OF BUCKET",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "DROP TEAPOT",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "GET RED, BLUE AND GREEN CAKE",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "EAT GREEN",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "PUT RED CAKE IN POOL",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "GET CANDY",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "EAT BLUE CAKE",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "NW",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "ROBOT, EAST AND SOUTH",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 218,
+  "parentAfterName": "Topiary",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "GET RED SPHERE",
+  "tag": null,
+  "parentBefore": 218,
+  "parentBeforeName": "Topiary",
+  "parentAfter": 218,
+  "parentAfterName": "Topiary",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "ROBOT, LIFT CAGE",
+  "tag": null,
+  "parentBefore": 218,
+  "parentBeforeName": "Topiary",
+  "parentAfter": 218,
+  "parentAfterName": "Topiary",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "GET RED SPHERE",
+  "tag": null,
+  "parentBefore": 218,
+  "parentBeforeName": "Topiary",
+  "parentAfter": 218,
+  "parentAfterName": "Topiary",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "ROBOT, NORTH AND PRESS TRIANGULAR BUTTON",
+  "tag": null,
+  "parentBefore": 218,
+  "parentBeforeName": "Topiary",
+  "parentAfter": 218,
+  "parentAfterName": "Topiary",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 218,
+  "parentBeforeName": "Topiary",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "SE",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "SE",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "SE",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "GET TEAPOT",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "GET IN BUCKET",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "FILL TEAPOT",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "GET OUT OF BUCKET",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "NW",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "DROP TEAPOT, ROSE, CANDY AND GOLD KEY",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "SE",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "GET DRAGON AND PAPER",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "GET NECKLACE",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "NW",
+  "tag": null,
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "OPEN BOX",
+  "tag": null,
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "DROP NECKLACE AND DRAGON",
+  "tag": null,
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "GET BRICK",
+  "tag": null,
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "SW",
+  "tag": null,
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "GET STRING",
+  "tag": null,
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "NE",
+  "tag": null,
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "NW",
+  "tag": null,
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "GET RUBY",
+  "tag": null,
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "OPEN RECEPTACLE",
+  "tag": null,
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "PUT PAPER IN RECEPTACLE",
+  "tag": null,
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "GET IN BASKET",
+  "tag": null,
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "STRIKE MATCH",
+  "tag": null,
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "BURN PAPER",
+  "tag": null,
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "TIE WIRE TO HOOK",
+  "tag": null,
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "GET OUT OF BASKET",
+  "tag": null,
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 229,
+  "parentAfterName": "Narrow Tunnel",
+  "playerId": 4,
+  "reply": ""
+ }
+]

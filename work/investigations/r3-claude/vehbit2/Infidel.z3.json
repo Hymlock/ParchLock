@@ -1,0 +1,769 @@
+{
+ "title": "Infidel.z3.js",
+ "sha256": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+ "bit": 14,
+ "initialCarriers": [
+  {
+   "id": 51,
+   "name": "army cot",
+   "parent": 71,
+   "parentName": "Tent"
+  },
+  {
+   "id": 104,
+   "name": "wooden beam",
+   "parent": 114,
+   "parentName": "Center Barge"
+  },
+  {
+   "id": 108,
+   "name": "mast hole",
+   "parent": 114,
+   "parentName": "Center Barge"
+  },
+  {
+   "id": 199,
+   "name": "altar",
+   "parent": 206,
+   "parentName": "Ra"
+  },
+  {
+   "id": 211,
+   "name": "barge",
+   "parent": 248,
+   "parentName": ""
+  }
+ ],
+ "status": "CONFIRMED",
+ "priorCarriers": [
+  51
+ ],
+ "newCarriers": [
+  211
+ ],
+ "distinctPositiveCarriers": [
+  51,
+  211
+ ],
+ "positives": [
+  {
+   "carrier": 211,
+   "name": "barge",
+   "enterCmd": "get in barge",
+   "parentBefore": 115,
+   "parentBeforeName": "Barge Chamber",
+   "parentAfter": 211,
+   "enterReply": "You are now in the barge.\n \n>",
+   "exitCmd": "get out of barge",
+   "exitParentAfter": 115,
+   "exitReply": "You are on your feet again.\n \n>",
+   "log": "infc.log.json",
+   "step": 96
+  },
+  {
+   "carrier": 211,
+   "name": "barge",
+   "enterCmd": "enter barge",
+   "parentBefore": 115,
+   "parentBeforeName": "Barge Chamber",
+   "parentAfter": 211,
+   "enterReply": "You are now in the barge.\n \n>",
+   "exitCmd": "stand up",
+   "exitParentAfter": 115,
+   "exitReply": "You are on your feet again.\n \n>",
+   "log": "infc.log.json",
+   "step": 98
+  },
+  {
+   "carrier": 211,
+   "name": "barge",
+   "enterCmd": "board barge",
+   "parentBefore": 115,
+   "parentBeforeName": "Barge Chamber",
+   "parentAfter": 211,
+   "enterReply": "You are now in the barge.\n \n>",
+   "exitCmd": "get out of barge",
+   "exitParentAfter": 115,
+   "exitReply": "You are on your feet again.\n \n>",
+   "log": "infc.log.json",
+   "step": 102
+  }
+ ],
+ "verbMatrix": {
+  "104": [
+   {
+    "cmd": "get in beam",
+    "parentBefore": 114,
+    "parentAfter": 114,
+    "moved": false,
+    "reply": "Get real. You don't have fly feet.\n \n>",
+    "log": "infc.log.json",
+    "step": 140
+   },
+   {
+    "cmd": "get out of beam",
+    "parentBefore": 114,
+    "parentAfter": 114,
+    "moved": false,
+    "reply": "You're not in that!\n \n>",
+    "log": "infc.log.json",
+    "step": 141
+   },
+   {
+    "cmd": "enter beam",
+    "parentBefore": 114,
+    "parentAfter": 114,
+    "moved": false,
+    "reply": "Get real. You don't have fly feet.\n \n>",
+    "log": "infc.log.json",
+    "step": 142
+   },
+   {
+    "cmd": "sit on beam",
+    "parentBefore": 114,
+    "parentAfter": 114,
+    "moved": false,
+    "reply": "Get real. You don't have fly feet.\n \n>",
+    "log": "infc.log.json",
+    "step": 144
+   },
+   {
+    "cmd": "board beam",
+    "parentBefore": 114,
+    "parentAfter": 114,
+    "moved": false,
+    "reply": "Get real. You don't have fly feet.\n \n>",
+    "log": "infc.log.json",
+    "step": 146
+   },
+   {
+    "cmd": "get out of beam",
+    "parentBefore": 114,
+    "parentAfter": 114,
+    "moved": false,
+    "reply": "You're not in that!\n \n>",
+    "log": "infc.log.json",
+    "step": 147
+   },
+   {
+    "cmd": "climb on beam",
+    "parentBefore": 114,
+    "parentAfter": 114,
+    "moved": false,
+    "reply": "Get real. You don't have fly feet.\n \n>",
+    "log": "infc.log.json",
+    "step": 148
+   },
+   {
+    "cmd": "get off beam",
+    "parentBefore": 114,
+    "parentAfter": 114,
+    "moved": false,
+    "reply": "You're not in that!\n \n>",
+    "log": "infc.log.json",
+    "step": 149
+   }
+  ],
+  "211": [
+   {
+    "cmd": "get in barge",
+    "parentBefore": 120,
+    "parentAfter": 114,
+    "moved": true,
+    "reply": "Center of Barge\nYou are standing on the deck of an ancient wooden barge. Before you, cut into the deck, is a hole. To the south is a plank which leads down off the barge. You can see two cabins on the deck, one to the west and the other to ",
+    "log": "infc.log.json",
+    "step": 63
+   },
+   {
+    "cmd": "get out of barge",
+    "parentBefore": 114,
+    "parentAfter": 120,
+    "moved": true,
+    "reply": "Barge Chamber\n \n>",
+    "log": "infc.log.json",
+    "step": 64
+   },
+   {
+    "cmd": "enter barge",
+    "parentBefore": 120,
+    "parentAfter": 114,
+    "moved": true,
+    "reply": "Center of Barge\nBefore you, running down through a hole in the deck, is a sturdy beam made of wood. Although only a few feet of it rise above the deck, it was probably used at one time as a mast.\n \n>",
+    "log": "infc.log.json",
+    "step": 65
+   },
+   {
+    "cmd": "sit on barge",
+    "parentBefore": 114,
+    "parentAfter": 114,
+    "moved": false,
+    "reply": "Bizarre!\n \n>",
+    "log": "infc.log.json",
+    "step": 67
+   },
+   {
+    "cmd": "board barge",
+    "parentBefore": 114,
+    "parentAfter": 114,
+    "moved": false,
+    "reply": "Just where do you think you are?\n \n>",
+    "log": "infc.log.json",
+    "step": 69
+   },
+   {
+    "cmd": "get out of barge",
+    "parentBefore": 114,
+    "parentAfter": 120,
+    "moved": true,
+    "reply": "Barge Chamber\n \n>",
+    "log": "infc.log.json",
+    "step": 70
+   },
+   {
+    "cmd": "climb on barge",
+    "parentBefore": 120,
+    "parentAfter": 114,
+    "moved": true,
+    "reply": "Center of Barge\nBefore you, running down through a hole in the deck, is a sturdy beam made of wood. Although only a few feet of it rise above the deck, it was probably used at one time as a mast.\n \n>",
+    "log": "infc.log.json",
+    "step": 71
+   },
+   {
+    "cmd": "get off barge",
+    "parentBefore": 114,
+    "parentAfter": 120,
+    "moved": true,
+    "reply": "Barge Chamber\n \n>",
+    "log": "infc.log.json",
+    "step": 72
+   },
+   {
+    "cmd": "get in barge",
+    "parentBefore": 117,
+    "parentAfter": 117,
+    "moved": false,
+    "reply": "There's no way to do that from here.\n \n>",
+    "log": "infc.log.json",
+    "step": 74
+   },
+   {
+    "cmd": "get out of barge",
+    "parentBefore": 117,
+    "parentAfter": 117,
+    "moved": false,
+    "reply": "You're not on the barge!\n \n>",
+    "log": "infc.log.json",
+    "step": 75
+   },
+   {
+    "cmd": "enter barge",
+    "parentBefore": 117,
+    "parentAfter": 117,
+    "moved": false,
+    "reply": "There's no way to do that from here.\n \n>",
+    "log": "infc.log.json",
+    "step": 76
+   },
+   {
+    "cmd": "sit on barge",
+    "parentBefore": 117,
+    "parentAfter": 117,
+    "moved": false,
+    "reply": "Bizarre!\n \n>",
+    "log": "infc.log.json",
+    "step": 78
+   },
+   {
+    "cmd": "board barge",
+    "parentBefore": 117,
+    "parentAfter": 117,
+    "moved": false,
+    "reply": "There's no way to do that from here.\n \n>",
+    "log": "infc.log.json",
+    "step": 80
+   },
+   {
+    "cmd": "get out of barge",
+    "parentBefore": 117,
+    "parentAfter": 117,
+    "moved": false,
+    "reply": "You're not on the barge!\n \n>",
+    "log": "infc.log.json",
+    "step": 81
+   },
+   {
+    "cmd": "climb on barge",
+    "parentBefore": 117,
+    "parentAfter": 117,
+    "moved": false,
+    "reply": "Bizarre!\n \n>",
+    "log": "infc.log.json",
+    "step": 82
+   },
+   {
+    "cmd": "get off barge",
+    "parentBefore": 117,
+    "parentAfter": 117,
+    "moved": false,
+    "reply": "You're not on the barge!\n \n>",
+    "log": "infc.log.json",
+    "step": 83
+   },
+   {
+    "cmd": "get in barge",
+    "parentBefore": 116,
+    "parentAfter": 116,
+    "moved": false,
+    "reply": "There's no way to do that from here.\n \n>",
+    "log": "infc.log.json",
+    "step": 85
+   },
+   {
+    "cmd": "get out of barge",
+    "parentBefore": 116,
+    "parentAfter": 116,
+    "moved": false,
+    "reply": "You're not on the barge!\n \n>",
+    "log": "infc.log.json",
+    "step": 86
+   },
+   {
+    "cmd": "enter barge",
+    "parentBefore": 116,
+    "parentAfter": 116,
+    "moved": false,
+    "reply": "There's no way to do that from here.\n \n>",
+    "log": "infc.log.json",
+    "step": 87
+   },
+   {
+    "cmd": "sit on barge",
+    "parentBefore": 116,
+    "parentAfter": 116,
+    "moved": false,
+    "reply": "Bizarre!\n \n>",
+    "log": "infc.log.json",
+    "step": 89
+   },
+   {
+    "cmd": "board barge",
+    "parentBefore": 116,
+    "parentAfter": 116,
+    "moved": false,
+    "reply": "There's no way to do that from here.\n \n>",
+    "log": "infc.log.json",
+    "step": 91
+   },
+   {
+    "cmd": "get out of barge",
+    "parentBefore": 116,
+    "parentAfter": 116,
+    "moved": false,
+    "reply": "You're not on the barge!\n \n>",
+    "log": "infc.log.json",
+    "step": 92
+   },
+   {
+    "cmd": "climb on barge",
+    "parentBefore": 116,
+    "parentAfter": 116,
+    "moved": false,
+    "reply": "Bizarre!\n \n>",
+    "log": "infc.log.json",
+    "step": 93
+   },
+   {
+    "cmd": "get off barge",
+    "parentBefore": 116,
+    "parentAfter": 116,
+    "moved": false,
+    "reply": "You're not on the barge!\n \n>",
+    "log": "infc.log.json",
+    "step": 94
+   },
+   {
+    "cmd": "get in barge",
+    "parentBefore": 115,
+    "parentAfter": 211,
+    "moved": true,
+    "reply": "You are now in the barge.\n \n>",
+    "log": "infc.log.json",
+    "step": 96
+   },
+   {
+    "cmd": "get out of barge",
+    "parentBefore": 211,
+    "parentAfter": 115,
+    "moved": true,
+    "reply": "You are on your feet again.\n \n>",
+    "log": "infc.log.json",
+    "step": 97
+   },
+   {
+    "cmd": "enter barge",
+    "parentBefore": 115,
+    "parentAfter": 211,
+    "moved": true,
+    "reply": "You are now in the barge.\n \n>",
+    "log": "infc.log.json",
+    "step": 98
+   },
+   {
+    "cmd": "exit",
+    "parentBefore": 211,
+    "parentAfter": 211,
+    "moved": false,
+    "reply": "You can't go that way.\n \n>",
+    "log": "infc.log.json",
+    "step": 99
+   },
+   {
+    "cmd": "sit on barge",
+    "parentBefore": 211,
+    "parentAfter": 211,
+    "moved": false,
+    "reply": "Bizarre!\n \n>",
+    "log": "infc.log.json",
+    "step": 100
+   },
+   {
+    "cmd": "stand up",
+    "parentBefore": 211,
+    "parentAfter": 115,
+    "moved": true,
+    "reply": "You are on your feet again.\n \n>",
+    "log": "infc.log.json",
+    "step": 101
+   },
+   {
+    "cmd": "board barge",
+    "parentBefore": 115,
+    "parentAfter": 211,
+    "moved": true,
+    "reply": "You are now in the barge.\n \n>",
+    "log": "infc.log.json",
+    "step": 102
+   },
+   {
+    "cmd": "get out of barge",
+    "parentBefore": 211,
+    "parentAfter": 115,
+    "moved": true,
+    "reply": "You are on your feet again.\n \n>",
+    "log": "infc.log.json",
+    "step": 103
+   },
+   {
+    "cmd": "climb on barge",
+    "parentBefore": 115,
+    "parentAfter": 115,
+    "moved": false,
+    "reply": "Bizarre!\n \n>",
+    "log": "infc.log.json",
+    "step": 104
+   },
+   {
+    "cmd": "get off barge",
+    "parentBefore": 115,
+    "parentAfter": 115,
+    "moved": false,
+    "reply": "You're not in that!\n \n>",
+    "log": "infc.log.json",
+    "step": 105
+   },
+   {
+    "cmd": "get in barge",
+    "parentBefore": 114,
+    "parentAfter": 114,
+    "moved": false,
+    "reply": "Just where do you think you are?\n \n>",
+    "log": "infc.log.json",
+    "step": 150
+   },
+   {
+    "cmd": "get out of barge",
+    "parentBefore": 114,
+    "parentAfter": 120,
+    "moved": true,
+    "reply": "Barge Chamber\n \n>",
+    "log": "infc.log.json",
+    "step": 151
+   },
+   {
+    "cmd": "enter barge",
+    "parentBefore": 120,
+    "parentAfter": 114,
+    "moved": true,
+    "reply": "Center of Barge\nBefore you, running down through a hole in the deck, is a sturdy beam made of wood. Although only a few feet of it rise above the deck, it was probably used at one time as a mast.\n \n>",
+    "log": "infc.log.json",
+    "step": 152
+   },
+   {
+    "cmd": "sit on barge",
+    "parentBefore": 114,
+    "parentAfter": 114,
+    "moved": false,
+    "reply": "Bizarre!\n \n>",
+    "log": "infc.log.json",
+    "step": 154
+   },
+   {
+    "cmd": "board barge",
+    "parentBefore": 114,
+    "parentAfter": 114,
+    "moved": false,
+    "reply": "Just where do you think you are?\n \n>",
+    "log": "infc.log.json",
+    "step": 156
+   },
+   {
+    "cmd": "get out of barge",
+    "parentBefore": 114,
+    "parentAfter": 120,
+    "moved": true,
+    "reply": "Barge Chamber\n \n>",
+    "log": "infc.log.json",
+    "step": 157
+   },
+   {
+    "cmd": "climb on barge",
+    "parentBefore": 120,
+    "parentAfter": 114,
+    "moved": true,
+    "reply": "Center of Barge\nBefore you, running down through a hole in the deck, is a sturdy beam made of wood. Although only a few feet of it rise above the deck, it was probably used at one time as a mast.\n \n>",
+    "log": "infc.log.json",
+    "step": 158
+   },
+   {
+    "cmd": "get off barge",
+    "parentBefore": 114,
+    "parentAfter": 120,
+    "moved": true,
+    "reply": "Barge Chamber\n \n>",
+    "log": "infc.log.json",
+    "step": 159
+   },
+   {
+    "cmd": "get in barge",
+    "parentBefore": 119,
+    "parentAfter": 119,
+    "moved": false,
+    "reply": "There's no way to do that from here.\n \n>",
+    "log": "infc.log.json",
+    "step": 164
+   },
+   {
+    "cmd": "get out of barge",
+    "parentBefore": 119,
+    "parentAfter": 119,
+    "moved": false,
+    "reply": "You're not on the barge!\n \n>",
+    "log": "infc.log.json",
+    "step": 165
+   },
+   {
+    "cmd": "enter barge",
+    "parentBefore": 119,
+    "parentAfter": 119,
+    "moved": false,
+    "reply": "There's no way to do that from here.\n \n>",
+    "log": "infc.log.json",
+    "step": 166
+   },
+   {
+    "cmd": "sit on barge",
+    "parentBefore": 119,
+    "parentAfter": 119,
+    "moved": false,
+    "reply": "Bizarre!\n \n>",
+    "log": "infc.log.json",
+    "step": 168
+   },
+   {
+    "cmd": "board barge",
+    "parentBefore": 119,
+    "parentAfter": 119,
+    "moved": false,
+    "reply": "There's no way to do that from here.\n \n>",
+    "log": "infc.log.json",
+    "step": 170
+   },
+   {
+    "cmd": "get out of barge",
+    "parentBefore": 119,
+    "parentAfter": 119,
+    "moved": false,
+    "reply": "You're not on the barge!\n \n>",
+    "log": "infc.log.json",
+    "step": 171
+   },
+   {
+    "cmd": "climb on barge",
+    "parentBefore": 119,
+    "parentAfter": 119,
+    "moved": false,
+    "reply": "Bizarre!\n \n>",
+    "log": "infc.log.json",
+    "step": 172
+   },
+   {
+    "cmd": "get off barge",
+    "parentBefore": 119,
+    "parentAfter": 119,
+    "moved": false,
+    "reply": "You're not on the barge!\n \n>",
+    "log": "infc.log.json",
+    "step": 173
+   }
+  ]
+ },
+ "negatives": [
+  {
+   "cmd": "exit",
+   "parentBefore": 114,
+   "parentAfter": 114,
+   "parentName": "Center of Barge",
+   "reply": "You can't go that way.\n \n>",
+   "log": "infc.log.json",
+   "step": 66
+  },
+  {
+   "cmd": "exit",
+   "parentBefore": 117,
+   "parentAfter": 117,
+   "parentName": "Barge Chamber",
+   "reply": "You can't go that way.\n \n>",
+   "log": "infc.log.json",
+   "step": 77
+  },
+  {
+   "cmd": "exit",
+   "parentBefore": 116,
+   "parentAfter": 116,
+   "parentName": "Barge Chamber",
+   "reply": "You can't go that way.\n \n>",
+   "log": "infc.log.json",
+   "step": 88
+  },
+  {
+   "cmd": "exit",
+   "parentBefore": 211,
+   "parentAfter": 211,
+   "parentName": "barge",
+   "reply": "You can't go that way.\n \n>",
+   "log": "infc.log.json",
+   "step": 99
+  },
+  {
+   "cmd": "get in beam",
+   "parentBefore": 114,
+   "parentAfter": 114,
+   "parentName": "Center of Barge",
+   "reply": "Get real. You don't have fly feet.\n \n>",
+   "log": "infc.log.json",
+   "step": 140
+  },
+  {
+   "cmd": "enter beam",
+   "parentBefore": 114,
+   "parentAfter": 114,
+   "parentName": "Center of Barge",
+   "reply": "Get real. You don't have fly feet.\n \n>",
+   "log": "infc.log.json",
+   "step": 142
+  },
+  {
+   "cmd": "exit",
+   "parentBefore": 114,
+   "parentAfter": 114,
+   "parentName": "Center of Barge",
+   "reply": "You can't go that way.\n \n>",
+   "log": "infc.log.json",
+   "step": 143
+  },
+  {
+   "cmd": "sit on beam",
+   "parentBefore": 114,
+   "parentAfter": 114,
+   "parentName": "Center of Barge",
+   "reply": "Get real. You don't have fly feet.\n \n>",
+   "log": "infc.log.json",
+   "step": 144
+  },
+  {
+   "cmd": "board beam",
+   "parentBefore": 114,
+   "parentAfter": 114,
+   "parentName": "Center of Barge",
+   "reply": "Get real. You don't have fly feet.\n \n>",
+   "log": "infc.log.json",
+   "step": 146
+  },
+  {
+   "cmd": "climb on beam",
+   "parentBefore": 114,
+   "parentAfter": 114,
+   "parentName": "Center of Barge",
+   "reply": "Get real. You don't have fly feet.\n \n>",
+   "log": "infc.log.json",
+   "step": 148
+  },
+  {
+   "cmd": "exit",
+   "parentBefore": 114,
+   "parentAfter": 114,
+   "parentName": "Center of Barge",
+   "reply": "You can't go that way.\n \n>",
+   "log": "infc.log.json",
+   "step": 153
+  },
+  {
+   "cmd": "exit",
+   "parentBefore": 119,
+   "parentAfter": 119,
+   "parentName": "Barge Chamber",
+   "reply": "You can't go that way.\n \n>",
+   "log": "infc.log.json",
+   "step": 167
+  },
+  {
+   "cmd": "exit",
+   "parentBefore": 120,
+   "parentAfter": 120,
+   "parentName": "Barge Chamber",
+   "reply": "You can't go that way.\n \n>",
+   "log": "infc.log.json",
+   "step": 184
+  },
+  {
+   "cmd": "sit on cot",
+   "parentBefore": 71,
+   "parentAfter": 71,
+   "parentName": "Your Tent",
+   "reply": "You are on your feet again. /   / It sounds as if the plane is circling. /   / >sit on cot / This is no time for sitting down on the job, especially after what you've been through to get here! /   / It sounds as if the plane is flying off. /   / > ",
+   "log": "inf.log.json",
+   "step": 6
+  },
+  {
+   "cmd": "enter tent",
+   "parentBefore": 71,
+   "parentAfter": 71,
+   "parentName": "Your Tent",
+   "reply": "You are already standing, I think. /   / You can barely hear the plane. /   / >enter tent / What are those canvas walls around you? Just where do you think you are? Maybe I should send for Craige, eh? /   / The sound of something heavy landing comes from nearby. /   / > ",
+   "log": "inf.log.json",
+   "step": 8
+  },
+  {
+   "cmd": "enter pickaxe",
+   "parentBefore": 69,
+   "parentAfter": 69,
+   "parentName": "Supply Tent",
+   "reply": "Stuck in the sand, handle down, is a small pick axe. / Half buried in the sand, in the corner of the tent, is a shovel. /   / >get pickaxe / Taken. /   / >enter pickaxe / That would involve quite a contortion! /   / > ",
+   "log": "inf.log.json",
+   "step": 13
+  }
+ ],
+ "priorEvidenceFile": "work/investigations/r3-claude/vehbit/Infidel.z3.json",
+ "notes": "barge (211) CONFIRMED from Barge Chamber room 115 (infc.log.json): GET IN/ENTER/BOARD BARGE move parent 115->211; GET OUT OF BARGE and STAND UP return 211->115. EXIT is REFUSED in the barge ('You can't go that way.'), SIT ON BARGE 'Bizarre!', CLIMB ON BARGE fails. From other Barge Chamber rooms (116,117,119) 'There's no way to do that from here'; from room 120 GET IN/ENTER BARGE is plain travel to the Center of Barge ROOM 114 (parent = room, not 211). wooden beam (104): every enter verb refused ('Get real. You don't have fly feet.'); STAND ON BEAM over the niches prints 'You are now standing on the beam' but parent stays the room 187 (flag-based, not containment), and GET OFF BEAM there kills the player -> beam is a negative for Enter/Exit.",
+ "method": "headless Chromium play.html via drive2.cjs: Input.Inject of ordinary commands only (no VM writes/snapshots). Navigation helpers GOTO/ENSURE only issue ordinary direction commands chosen by BFS over ExitCalibrator.exitsFor (read-only). parent = ZRamReader.objectLinks(mem, WorldModel.lastPayload.playerId).parent before/after each command."
+}

@@ -1,0 +1,27 @@
+NE
+enter shack
+?look
+?look in oven
+?examine oven
+?take bread
+OPEN OVEN
+GET BREAD
+take JUG
+take LANTERN
+exit shack
+NE
+SE
+NE
+FILL JUG
+SW
+SE
+SW
+SW
+S
+?look
+?look in scroll
+?examine scroll
+?take spell
+?take rezrov spell
+READ SCROLL
+GNUSTO REZROV SPELL

@@ -379,6 +379,29 @@ var ActionSynth = {
             verbs = verbs.map(function (v) { return v === "wear" || v === "remove" ? "use" : v; })
                 .filter(function (v, i, all) { return all.indexOf(v) === i; });
         }
+        // D236: Enter/Exit follow the measured player parent. ZIL games refuse a
+        // bare EXIT while you sit in a bed, basket or barge ("You'll have to stand
+        // up, first.") but accept GET OUT OF X; and Exit is meaningless while you
+        // are not inside. Inside -> "get out of X" (when the dictionary has both
+        // words), outside -> Enter only. Unknown player/parent keeps both offers.
+        // ZIL only: Inform grammar has "get out" / "get off X" but no "get out of X".
+        var memE = null;
+        try { memE = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null; } catch (eMemE) { memE = null; }
+        if ((verbs.indexOf("enter") >= 0 || verbs.indexOf("exit") >= 0) && memE &&
+            !(ZRamReader.isInformCompiled && ZRamReader.isInformCompiled(memE))) {
+            var inside = null;
+            try {
+                var pl = memE && ZRamReader.resolvePlayer(memE);
+                var plLinks = pl && pl.id && ZRamReader.objectLinks(memE, pl.id);
+                if (plLinks && obj.id != null) inside = String(plLinks.parent) === String(obj.id);
+            } catch (eInside) { inside = null; }
+            if (inside === true) {
+                verbs = verbs.filter(function (v) { return v !== "enter"; });
+                if (ActionSynth.literalAvailable("get out")) verbs = verbs.map(function (v) { return v === "exit" ? "get out of" : v; });
+            } else if (inside === false) {
+                verbs = verbs.filter(function (v) { return v !== "exit"; });
+            }
+        }
         var result = verbs.map(function (v) {
             var cmd = v === "examine" ? ("examine " + name) : (v + " " + name);
             if (v === "talk to") cmd = "talk to " + name;

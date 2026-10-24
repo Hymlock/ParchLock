@@ -1,0 +1,2191 @@
+[
+ {
+  "cmd": null,
+  "state": {
+   "playerId": 202,
+   "roomId": 150,
+   "parent": 114,
+   "parentName": "bed",
+   "lines": 11
+  },
+  "reply": "THE HITCHHIKER'S GUIDE TO THE GALAXY\nInfocom interactive fiction - a science fiction story\nCopyright (c) 1984 by Infocom, Inc. All rights reserved.\nRelease 31 / Serial number 871119 / Interpreter 0 Version \n \n \nYou wake up. The room is spinning very gently round your head. Or at least it would be if you could see it which you can't.\n \nIt is pitch black.\n \n>"
+ },
+ {
+  "cmd": "Get Up",
+  "parentBefore": 114,
+  "parentBeforeName": "bed",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "  /   / You wake up. The room is spinning very gently round your head. Or at least it would be if you could see it which you can't. /   / It is pitch black. /   / >Get Up / Very difficult, but you manage it. The room is still spinning. It dips and sways a little. /   / > "
+ },
+ {
+  "cmd": "Turn on Light",
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": ">Turn on Light / Good start to the day. Pity it's going to be the worst one of your life. The light is now on. /   / Bedroom / The bedroom is a mess. / It is a small bedroom with a faded carpet and old wallpaper. There is a washbasin, a chair with a tatty dressing gown slung over it, and a window with the curtains drawn. Near the exit leading south is a phone. / There is a flathead screwdriver here. / There is a toothbrush here. /   / > "
+ },
+ {
+  "cmd": "Get Gown",
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "Bedroom / The bedroom is a mess. / It is a small bedroom with a faded carpet and old wallpaper. There is a washbasin, a chair with a tatty dressing gown slung over it, and a window with the curtains drawn. Near the exit leading south is a phone. / There is a flathead screwdriver here. / There is a toothbrush here. /   / >Get Gown / Luckily, this is large enough for you to get hold of. You notice something in the pocket. /   / > "
+ },
+ {
+  "cmd": "Wear Gown",
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "There is a flathead screwdriver here. / There is a toothbrush here. /   / >Get Gown / Luckily, this is large enough for you to get hold of. You notice something in the pocket. /   / >Wear Gown / You are now wearing your gown. /   / > "
+ },
+ {
+  "cmd": "Look in pocket",
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": ">Get Gown / Luckily, this is large enough for you to get hold of. You notice something in the pocket. /   / >Wear Gown / You are now wearing your gown. /   / >Look in pocket / Opening your gown reveals a buffered analgesic, pocket fluff, and a thing your aunt gave you which you don't know what it is. /   / > "
+ },
+ {
+  "cmd": "take analgesic",
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": ">Wear Gown / You are now wearing your gown. /   / >Look in pocket / Opening your gown reveals a buffered analgesic, pocket fluff, and a thing your aunt gave you which you don't know what it is. /   / >take analgesic / You swallow the tablet. After a few seconds the room begins to calm down and behave in an orderly manner. Your terrible headache goes. /   / > "
+ },
+ {
+  "cmd": "Get all",
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "  / >take analgesic / You swallow the tablet. After a few seconds the room begins to calm down and behave in an orderly manner. Your terrible headache goes. /   / >Get all / flathead screwdriver: Taken. / toothbrush: As you pick up the toothbrush a tree outside the window collapses. There is no causal relationship between these two events. / telephone: You pick up the receiver. A moment later, the dialing tone is suddenly cut off. Glancing through the window you can't help but notice the large o"
+ },
+ {
+  "cmd": "South",
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 174,
+  "parentAfterName": "Front Porch",
+  "playerId": 202,
+  "reply": "telephone: You pick up the receiver. A moment later, the dialing tone is suddenly cut off. Glancing through the window you can't help but notice the large old oak tree of which you are particularly fond crashing down through the phone cable. Shouldn't you be taking more interest in events in the world around you? While you've got it...? /   / >South / You make your way down to the front porch. /   / Front Porch / This is the enclosed front porch of your home. Your front garden lies to the south,"
+ },
+ {
+  "cmd": "Get Mail",
+  "parentBefore": 174,
+  "parentBeforeName": "Front Porch",
+  "parentAfter": 174,
+  "parentAfterName": "Front Porch",
+  "playerId": 202,
+  "reply": "You make your way down to the front porch. /   / Front Porch / This is the enclosed front porch of your home. Your front garden lies to the south, and you can reenter your home to the north. / On the doormat is a pile of junk mail. /   / >Get Mail / You gather up the pile of mail. /   / > "
+ },
+ {
+  "cmd": "South",
+  "parentBefore": 174,
+  "parentBeforeName": "Front Porch",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "You gather up the pile of mail. /   / >South / Front of House / You can enter your home to the north. A path leads around it to the northeast and northwest, and a country lane is visible to the south. All that lies between your home and the huge yellow bulldozer bearing down on it is a few yards of mud. / Mr. Prosser, from the local council, is standing on the other side of the bulldozer. He seems to be wearing a digital watch. He looks startled to see you emerge, and yells at you to get out of "
+ },
+ {
+  "cmd": "Lie Down In Front Of Bulldozer",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Front of House / You can enter your home to the north. A path leads around it to the northeast and northwest, and a country lane is visible to the south. All that lies between your home and the huge yellow bulldozer bearing down on it is a few yards of mud. / Mr. Prosser, from the local council, is standing on the other side of the bulldozer. He seems to be wearing a digital watch. He looks startled to see you emerge, and yells at you to get out of the way. /   / The bulldozer rumbles slowly tow"
+ },
+ {
+  "cmd": "Wait",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "  / >Lie Down In Front Of Bulldozer / You lie down in the path of the advancing bulldozer. Prosser yells at you to for crissake move!!! /   / >Wait / Time passes... /   / The bulldozer thunders toward you. The ground is shaking beneath you as you lie in the mud. /   / > "
+ },
+ {
+  "cmd": "Wait",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes... /   / The bulldozer thunders toward you. The ground is shaking beneath you as you lie in the mud. /   / >Wait / Time passes... /   / The noise of the giant bulldozer is now so violently loud that you can't even hear Prosser yelling to warn you that you will be killed if you don't get the hell out of the way. You just see him gesticulating wildly. /   / > "
+ },
+ {
+  "cmd": "Wait",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "The noise of the giant bulldozer is now so violently loud that you can't even hear Prosser yelling to warn you that you will be killed if you don't get the hell out of the way. You just see him gesticulating wildly. /   / >Wait / Time passes... /   / With a terrible grinding of gears the bulldozer comes to an abrupt halt just in front of you. It shakes, shudders, and emits noxious substances all over your rose bed. Prosser is incoherent with rage. /   / Moments later, your friend Ford Prefect ar"
+ },
+ {
+  "cmd": "Wait",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "With a terrible grinding of gears the bulldozer comes to an abrupt halt just in front of you. It shakes, shudders, and emits noxious substances all over your rose bed. Prosser is incoherent with rage. /   / Moments later, your friend Ford Prefect arrives. He hardly seems to notice your predicament, but keeps glancing nervously at the sky. He says, \"Hello, Arthur,\" takes a towel from his battered leather satchel, and offers it to you. /   / >Wait / Time passes... /   / Ford glances uncomfortably "
+ },
+ {
+  "cmd": "Wait",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": ">Wait / Time passes... /   / Ford seems oblivious to your trouble, so you ask \"Ford, what about my home?\" He looks startled, then guilty. He starts to say something and stops. He starts to say something else and stops. Suddenly, he seems to see the bulldozer for the first time, stops starting to say things and starts. /   / He seems to come to a momentous decision, says he has something of Earth-shattering importance to tell you, and stresses the importance of a quick drink at the Horse 'n Groom"
+ },
+ {
+  "cmd": "Wait",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "He seems to come to a momentous decision, says he has something of Earth-shattering importance to tell you, and stresses the importance of a quick drink at the Horse 'n Groom. /   / Pointing toward Prosser, you exclaim, \"But that man wants to knock my house down!\" Ford goes off for a quiet word with Prosser. From where you're lying, you cannot hear what's happening, although they seem deeply engrossed in conversation. /   / >Wait / Time passes... /   / Ford and Prosser stop talking and approach "
+ },
+ {
+  "cmd": "Wait",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes... /   / Ford and Prosser stop talking and approach you. Ford says that Prosser has agreed to lie in your place so that the two of you can go off to the Pub. Reluctantly, Prosser steps forward and lies down in front of the bulldozer. You stand up. /   / >Wait / Time passes... /   / Ford, urging you to follow, hurries toward the country lane. /   / > "
+ },
+ {
+  "cmd": "Follow Ford",
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": ">Follow Ford / In a state of anxiety and confusion you follow Ford down the lane... /   / Country Lane / The road runs from your home, to the north, toward the village Pub, to the west. / Ford Prefect is here. /   / \"Come along, Arthur,\" says Ford impatiently, and enters the Pub. /   / > "
+ },
+ {
+  "cmd": "Enter Pub",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 167,
+  "parentAfterName": "Pub",
+  "playerId": 202,
+  "reply": ">Enter Pub / Pub / The Pub is pleasant and cheerful and full of pleasant and cheerful people who don't know they've got about twelve minutes to live and are therefore having a spot of lunch. Some music is playing on an old jukebox. The exit is east. / Ford Prefect is here. / There is a barman serving at the bar. / Behind the bar is a shelf. It is full of the sort of items you find on shelves behind bars in pubs. /   / Ford buys lots of beer and offers half to you. \"Muscle relaxant...\" he says, i"
+ },
+ {
+  "cmd": "Look Shelf",
+  "parentBefore": 167,
+  "parentBeforeName": "Pub",
+  "parentAfter": 167,
+  "parentAfterName": "Pub",
+  "playerId": 202,
+  "reply": "Behind the bar is a shelf. It is full of the sort of items you find on shelves behind bars in pubs. /   / Ford buys lots of beer and offers half to you. \"Muscle relaxant...\" he says, impenetrably. /   / >Look Shelf / Use prepositions to indicate precisely what you want to do: LOOK AT the object, LOOK INSIDE it, LOOK UNDER it, etc. /   / \"Drink the beer,\" urges Ford. \"It will help cushion your system against the coming shock of the matter transference beam.\" /   / > "
+ },
+ {
+  "cmd": "Buy Sandwich",
+  "parentBefore": 167,
+  "parentBeforeName": "Pub",
+  "parentAfter": 167,
+  "parentAfterName": "Pub",
+  "playerId": 202,
+  "reply": "Use prepositions to indicate precisely what you want to do: LOOK AT the object, LOOK INSIDE it, LOOK UNDER it, etc. /   / \"Drink the beer,\" urges Ford. \"It will help cushion your system against the coming shock of the matter transference beam.\" /   / >Buy Sandwich / The barman gives you a cheese sandwich. The bread is like the stuff that stereos come packed in, the cheese would be great for rubbing out spelling mistakes, and margarine and pickle have performed an unedifying chemical reaction to "
+ },
+ {
+  "cmd": "Drink Beer",
+  "parentBefore": 167,
+  "parentBeforeName": "Pub",
+  "parentAfter": 167,
+  "parentAfterName": "Pub",
+  "playerId": 202,
+  "reply": "The barman gives you a cheese sandwich. The bread is like the stuff that stereos come packed in, the cheese would be great for rubbing out spelling mistakes, and margarine and pickle have performed an unedifying chemical reaction to produce something that shouldn't be, but is, turquoise. Since it is clearly unfit for human consumption you are grateful to be charged only a pound for it. /   / \"Drink the beer,\" urges Ford. \"It will help cushion your system against the coming shock of the matter tr"
+ },
+ {
+  "cmd": "Drink Beer",
+  "parentBefore": 167,
+  "parentBeforeName": "Pub",
+  "parentAfter": 167,
+  "parentAfterName": "Pub",
+  "playerId": 202,
+  "reply": "It's very good beer, brewed by a small local company. You particularly like its flavour, which is why you woke up feeling so wretched this morning. You were at somebody's birthday party here in the Pub last night. /   / You begin to relax and enjoy yourself, so when Ford mentions that he's from a small planet in the vicinity of Betelgeuse, not from Guildford as he usually claims, you take it in your stride, and say, \"Oh yes, which part?\" /   / >Drink Beer / It is really very pleasant stuff, with"
+ },
+ {
+  "cmd": "Drink Beer",
+  "parentBefore": 167,
+  "parentBeforeName": "Pub",
+  "parentAfter": 167,
+  "parentAfterName": "Pub",
+  "playerId": 202,
+  "reply": "  / >Drink Beer / It is really very pleasant stuff, with a very good dry, nutty flavour, some light froth on top, and a deep colour. It is at exactly room temperature. You reflect that the world cannot be all bad when there are such pleasures in it. /   / Ford mentions that the world is going to end in about twelve minutes. /   / >Drink Beer / There is a distant crash which Ford explains is nothing to worry about, probably just your house being knocked down. /   / > "
+ },
+ {
+  "cmd": "Exit",
+  "parentBefore": 167,
+  "parentBeforeName": "Pub",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": ">Drink Beer / There is a distant crash which Ford explains is nothing to worry about, probably just your house being knocked down. /   / >Exit / Country Lane / You see the huge bulldozer heaving itself among the cloud of brick dust which is all that remains of your home. As you start up the lane, a small dog runs up to you, yapping. /   / Ford hurries after you. /   / > "
+ },
+ {
+  "cmd": "Feed dog sandwich",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": ">Exit / Country Lane / You see the huge bulldozer heaving itself among the cloud of brick dust which is all that remains of your home. As you start up the lane, a small dog runs up to you, yapping. /   / Ford hurries after you. /   / >Feed dog sandwich / The dog is deeply moved. With powerful sweeps of its tail it indicates that it regards this cheese sandwich as one of the great cheese sandwiches. Nine out of ten pet owners could happen by at this point expressing any preference they pleased, b"
+ },
+ {
+  "cmd": "Get towel",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "  / Ford hurries after you. /   / >Feed dog sandwich / The dog is deeply moved. With powerful sweeps of its tail it indicates that it regards this cheese sandwich as one of the great cheese sandwiches. Nine out of ten pet owners could happen by at this point expressing any preference they pleased, but this dog would spurn both them and all their tins. This is a dog which has met its main sandwich. It eats with passion, and ignores a passing microscopic space fleet. /   / >Get towel / Taken. /   "
+ },
+ {
+  "cmd": "Wait",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": ">Feed dog sandwich / The dog is deeply moved. With powerful sweeps of its tail it indicates that it regards this cheese sandwich as one of the great cheese sandwiches. Nine out of ten pet owners could happen by at this point expressing any preference they pleased, but this dog would spurn both them and all their tins. This is a dog which has met its main sandwich. It eats with passion, and ignores a passing microscopic space fleet. /   / >Get towel / Taken. /   / >Wait / Time passes... /   / > "
+ },
+ {
+  "cmd": "wait",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": ">Get towel / Taken. /   / >Wait / Time passes... /   / >wait / Time passes... /   / > "
+ },
+ {
+  "cmd": "wait",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": ">Wait / Time passes... /   / >wait / Time passes... /   / >wait / Time passes... /   / > "
+ },
+ {
+  "cmd": "wait",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": ">wait / Time passes... /   / >wait / Time passes... /   / >wait / Time passes... /   / > "
+ },
+ {
+  "cmd": "wait",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": ">wait / Time passes... /   / >wait / Time passes... /   / >wait / Time passes... /   / > "
+ },
+ {
+  "cmd": "wait",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": ">wait / Time passes... /   / >wait / Time passes... /   / >wait / Time passes... /   / > "
+ },
+ {
+  "cmd": "wait",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "Time passes... /   / >wait / Time passes... /   / With a noise like a cross between Led Zeppelin's farewell concert and the eruption of Krakatoa, a huge fleet of Vogon Constructor ships flies overhead and announces that the Earth will be demolished to make way for a new hyperspace bypass in \"two of your Earth minutes.\" /   / In all the turmoil, you drop the thing your aunt gave you which you don't know what it is and it rolls away. It is the least of your worries. Anyway, you've been trying to g"
+ },
+ {
+  "cmd": "wait",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "In all the turmoil, you drop the thing your aunt gave you which you don't know what it is and it rolls away. It is the least of your worries. Anyway, you've been trying to get rid of it for years. /   / >wait / Time passes... /   / The vast yellow ships thunder across the sky, spreading waves of terror and panic in their wake. The voice of the Vogon Captain slams across the country, insisting that the planning charts and demolition orders have been available at the local planning office in Alpha"
+ },
+ {
+  "cmd": "get device",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "Throughout the noise, Ford is shouting at you. He removes a small black device from his satchel, but accidentally drops it at your feet. /   / >get device / Taken. /   / Fierce gales whip across the land, and thunder bangs continuously through the air in the wake of the giant ships. Ford fights to reach you, but the wind is too fierce. Further announcements from the Vogon Captain make it clear that demolition will begin in just a few seconds. /   / Through the blinding rain, you see lights flick"
+ },
+ {
+  "cmd": "push green button",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "Fierce gales whip across the land, and thunder bangs continuously through the air in the wake of the giant ships. Ford fights to reach you, but the wind is too fierce. Further announcements from the Vogon Captain make it clear that demolition will begin in just a few seconds. /   / Through the blinding rain, you see lights flickering on the small device. /   / >push green button / Lights whirl sickeningly around your head, the ground arches away beneath your feet, and every atom of your being is"
+ },
+ {
+  "cmd": "n",
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "  / >push green button / Lights whirl sickeningly around your head, the ground arches away beneath your feet, and every atom of your being is scrambled, an experience you're probably going to have to get used to. You are in... /   / Dark /   / >n / There's nothing you can taste, nothing you can see, nothing you can hear, nothing you can feel, nothing you can smell, you do not even know who you are. /   / > "
+ },
+ {
+  "cmd": "s",
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "  / Dark /   / >n / There's nothing you can taste, nothing you can see, nothing you can hear, nothing you can feel, nothing you can smell, you do not even know who you are. /   / >s / You can hear nothing, smell nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are. /   / > "
+ },
+ {
+  "cmd": "n",
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": ">n / There's nothing you can taste, nothing you can see, nothing you can hear, nothing you can feel, nothing you can smell, you do not even know who you are. /   / >s / You can hear nothing, smell nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are. /   / >n / You can't hear anything, see anything, smell anything, feel anything, or taste anything, and do not even know where you are or who you are or how you got there. /   / > "
+ },
+ {
+  "cmd": "s",
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": ">s / You can hear nothing, smell nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are. /   / >n / You can't hear anything, see anything, smell anything, feel anything, or taste anything, and do not even know where you are or who you are or how you got there. /   / >s / You can't hear anything, see anything, feel anything, or taste anything, and do not even know where you are or who you are or how you got there. /   / > "
+ },
+ {
+  "cmd": "smell",
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can't hear anything, see anything, smell anything, feel anything, or taste anything, and do not even know where you are or who you are or how you got there. /   / >s / You can't hear anything, see anything, feel anything, or taste anything, and do not even know where you are or who you are or how you got there. /   / >smell / (darkness) / It does smell a bit. There's something pungent being waved under your nose. Your head begins to clear. You can make out a shadow moving in the dark. /   / "
+ },
+ {
+  "cmd": "examine shadow",
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "Vogon Hold / This is a squalid room filled with grubby mattresses, unwashed cups, and unidentifiable bits of smelly alien underwear. A door lies to port, and an airlock lies to starboard. / In the corner is a glass case with a switch and a keyboard. / It looks like the glass case contains: /   an atomic vector plotter / Along one wall is a tall dispensing machine. /   / Ford removes the bottle of Santraginean Mineral Water which he's been waving under your nose. He tells you that you are aboard "
+ },
+ {
+  "cmd": "Eat Peanuts",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "It looks like the glass case contains: /   an atomic vector plotter / Along one wall is a tall dispensing machine. /   / Ford removes the bottle of Santraginean Mineral Water which he's been waving under your nose. He tells you that you are aboard a Vogon spaceship, and gives you some peanuts. /   / >Eat Peanuts / You feel stronger as the peanuts replace some of the protein you lost in the matter transference beam. /   / > "
+ },
+ {
+  "cmd": "Take off gown",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "  / Ford removes the bottle of Santraginean Mineral Water which he's been waving under your nose. He tells you that you are aboard a Vogon spaceship, and gives you some peanuts. /   / >Eat Peanuts / You feel stronger as the peanuts replace some of the protein you lost in the matter transference beam. /   / >Take off gown / Okay, you're no longer wearing your gown. /   / > "
+ },
+ {
+  "cmd": "Put Gown on hook",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": ">Eat Peanuts / You feel stronger as the peanuts replace some of the protein you lost in the matter transference beam. /   / >Take off gown / Okay, you're no longer wearing your gown. /   / >Put Gown on hook / The gown is now hanging from the hook, covering a tiny hole. /   / > "
+ },
+ {
+  "cmd": "put towel over drain",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": ">Take off gown / Okay, you're no longer wearing your gown. /   / >Put Gown on hook / The gown is now hanging from the hook, covering a tiny hole. /   / >put towel over drain / The towel completely covers the drain. /   / > "
+ },
+ {
+  "cmd": "wait",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "  / >put towel over drain / The towel completely covers the drain. /   / >wait / Time passes... /   / Ford yawns. \"Matter transference always tires me out. I'm going to take a nap.\" He places something on top of his satchel. \"If you have any questions, here's The Hitchhiker's Guide to the Galaxy\" (Footnote 14). Ford lowers his voice to a whisper. \"I'm not supposed to tell you this, but you'll never be able to finish the game without consulting the Guide about lots of stuff.\" As he curls up in a "
+ },
+ {
+  "cmd": "get satchel",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "  / >wait / Time passes... /   / Ford yawns. \"Matter transference always tires me out. I'm going to take a nap.\" He places something on top of his satchel. \"If you have any questions, here's The Hitchhiker's Guide to the Galaxy\" (Footnote 14). Ford lowers his voice to a whisper. \"I'm not supposed to tell you this, but you'll never be able to finish the game without consulting the Guide about lots of stuff.\" As he curls up in a corner and begins snoring, you pick up The Hitchhiker's Guide. /   / "
+ },
+ {
+  "cmd": "put satchel in front of panel",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "  / Ford yawns. \"Matter transference always tires me out. I'm going to take a nap.\" He places something on top of his satchel. \"If you have any questions, here's The Hitchhiker's Guide to the Galaxy\" (Footnote 14). Ford lowers his voice to a whisper. \"I'm not supposed to tell you this, but you'll never be able to finish the game without consulting the Guide about lots of stuff.\" As he curls up in a corner and begins snoring, you pick up The Hitchhiker's Guide. /   / >get satchel / Taken. /   / >"
+ },
+ {
+  "cmd": "put mail on satchel",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": ">get satchel / Taken. /   / >put satchel in front of panel / Okay, the satchel is lying on its side in front of the tiny robot panel. /   / >put mail on satchel / Okay, the loose pile of junk mail is now sitting on the satchel. /   / > "
+ },
+ {
+  "cmd": "push dispenser button",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": ">put satchel in front of panel / Okay, the satchel is lying on its side in front of the tiny robot panel. /   / >put mail on satchel / Okay, the loose pile of junk mail is now sitting on the satchel. /   / >push dispenser button / A single babel fish shoots out of the slot. It sails across the room and hits the dressing gown. The fish slides down the sleeve of the gown and falls to the floor, landing on the towel. A split second later, a tiny cleaning robot whizzes across the floor, grabs the fi"
+ },
+ {
+  "cmd": "get gown",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": ">put mail on satchel / Okay, the loose pile of junk mail is now sitting on the satchel. /   / >push dispenser button / A single babel fish shoots out of the slot. It sails across the room and hits the dressing gown. The fish slides down the sleeve of the gown and falls to the floor, landing on the towel. A split second later, a tiny cleaning robot whizzes across the floor, grabs the fish, and continues its breakneck pace toward a tiny robot panel at the base of the wall. The robot plows into the"
+ },
+ {
+  "cmd": "wear gown",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": ">push dispenser button / A single babel fish shoots out of the slot. It sails across the room and hits the dressing gown. The fish slides down the sleeve of the gown and falls to the floor, landing on the towel. A split second later, a tiny cleaning robot whizzes across the floor, grabs the fish, and continues its breakneck pace toward a tiny robot panel at the base of the wall. The robot plows into the satchel, sending the babel fish flying through the air in a graceful arc surrounded by a clou"
+ },
+ {
+  "cmd": "get all",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "You are now wearing your gown. /   / >get all / satchel: Taken. / towel: Taken. / keyboard: Nice try. /   / An announcement is coming over the ship's intercom. \"This is the Captain. My instruments show that we've picked up a couple of hitchhikers. I hate freeloaders, and when my guards find you I'll have you thrown into space. On second thought, maybe I'll read you some of my poetry first. Repeating...\" /   / > "
+ },
+ {
+  "cmd": "push switch",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "keyboard: Nice try. /   / An announcement is coming over the ship's intercom. \"This is the Captain. My instruments show that we've picked up a couple of hitchhikers. I hate freeloaders, and when my guards find you I'll have you thrown into space. On second thought, maybe I'll read you some of my poetry first. Repeating...\" /   / >push switch / A recording plays: \"To open the case, type in the second word from the second verse of the Captain's current favourite poem. WARNING: An incorrect input w"
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "A recording plays: \"To open the case, type in the second word from the second verse of the Captain's current favourite poem. WARNING: An incorrect input will cause the case to explode.\" /   / An announcement is coming over the ship's intercom. \"This is the Captain. My instruments show that we've picked up a couple of hitchhikers. I hate freeloaders, and when my guards find you I'll have you thrown into space. On second thought, maybe I'll read you some of my poetry first. Repeating...\" /   / >z "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": ">z / Time passes... /   / Guards burst in and grab you and Ford, who comes slowly awake. They drag you down the corridor to a large cabin, where they strap you into large, menacing chairs... /   / Captain's Quarters, in the poetry appreciation chair / This is the cabin of the Vogon Captain. You and Ford are strapped into poetry appreciation chairs. / The Captain is indescribably hideous, indescribably blubbery, and indescribably mid-to-dark green. He is holding samples of his favourite poetry. /"
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "The Captain is indescribably hideous, indescribably blubbery, and indescribably mid-to-dark green. He is holding samples of his favourite poetry. /   / >z / Time passes... /   / \"If he's going to read us his poetry,\" mutters Ford, sweating profusely, \"just pray he softens us up with some cudgels first...\" /   / \"Hello, hitchhikers!\" begins the Vogon Captain. \"I've decided to read you a verse of my poetry!\" /   / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "\"If he's going to read us his poetry,\" mutters Ford, sweating profusely, \"just pray he softens us up with some cudgels first...\" /   / \"Hello, hitchhikers!\" begins the Vogon Captain. \"I've decided to read you a verse of my poetry!\" /   / >z / Time passes... /   / \"Oh freddled gruntbuggly, thy nacturations are to me!\" /   / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "Time passes... /   / \"Oh freddled gruntbuggly, thy nacturations are to me!\" /   / >z / Time passes... /   / \"As plurdled gabbleblotchits on a lurgid bee.\" /   / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "Time passes... /   / \"As plurdled gabbleblotchits on a lurgid bee.\" /   / >z / Time passes... /   / \"Groop I implore thee, my foonting turlingdromes.\" /   / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "Time passes... /   / \"Groop I implore thee, my foonting turlingdromes.\" /   / >z / Time passes... /   / \"And hooptiously drangle me with crinkly bindlewurdles, or I will rend thee in the gobberwarts with my blurglecruncheon, see if I don't!\" /   / > "
+ },
+ {
+  "cmd": "enjoy poetry",
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "Time passes... /   / \"And hooptiously drangle me with crinkly bindlewurdles, or I will rend thee in the gobberwarts with my blurglecruncheon, see if I don't!\" /   / >enjoy poetry / You realise that, although the Vogon poetry is indeed astoundingly bad, worse things happen at sea, and in fact, at school. With an effort for which Hercules himself would have patted you on the back, you grit your teeth and enjoy the stuff. /   / \"You looked like you enjoyed my poem. I think...yes, I think I'll read "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "You realise that, although the Vogon poetry is indeed astoundingly bad, worse things happen at sea, and in fact, at school. With an effort for which Hercules himself would have patted you on the back, you grit your teeth and enjoy the stuff. /   / \"You looked like you enjoyed my poem. I think...yes, I think I'll read the NEXT verse, also!\" /   / >z / Time passes... /   / \"Fripping lyshus wimbgunts, awhilst moongrovenly kormzibs.\" /   / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "Time passes... /   / \"Fripping lyshus wimbgunts, awhilst moongrovenly kormzibs.\" /   / >z / Time passes... /   / \"Bleem miserable venchit! Bleem forever mestinglish asunder frapt.\" /   / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "Time passes... /   / \"Bleem miserable venchit! Bleem forever mestinglish asunder frapt.\" /   / >z / Time passes... /   / \"Gashee morphousite, thou expungiest quoopisk!\" /   / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "Time passes... /   / \"Gashee morphousite, thou expungiest quoopisk!\" /   / >z / Time passes... /   / \"Gerond withoutitude form into formless bloit, why not then? Moose.\" /   / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "Vogon Hold / This is a squalid room filled with grubby mattresses, unwashed cups, and unidentifiable bits of smelly alien underwear. A door lies to port, and an airlock lies to starboard. / In the corner is a glass case with a switch and a keyboard. / It looks like the glass case contains: /   an atomic vector plotter / Along one wall is a tall dispensing machine. /   / The guard releases you and Ford and begins cycling the air in the airlock. \"Hey, guard!\" shouts Ford, \"do you really enjoy this"
+ },
+ {
+  "cmd": "type \"bleem\"",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "  / The guard releases you and Ford and begins cycling the air in the airlock. \"Hey, guard!\" shouts Ford, \"do you really enjoy this sort of thing? Shouting, stomping around, shooting people, is it really a fulfilling career?\" /   / >type \"bleem\" / The hold of the Vogon ship is virtually undamaged by the explosion of the glass case. You, however, are blasted into tiny bits and smeared all over the room. Several cleaning robots fly in and wipe you neatly off the walls. /   /     ****  You have die"
+ },
+ {
+  "cmd": "get plotter",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "    ****  You have died  **** /   /   / We are about to give you your score. Put on your peril-sensitive sunglasses now. (Hit RETURN or ENTER when ready.) >get plotter /   / Your score is 60 of a possible 400, in 86 turns. /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "  / Your score is 60 of a possible 400, in 86 turns. /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "examine thumb",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >examine thumb /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "press green button",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >examine thumb /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >press green button /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "n",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >press green button /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >n /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "s",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >n /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >s /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "n",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >s /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >n /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "s",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >n /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >s /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "listen",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >s /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >listen /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "Aft",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >listen /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >Aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "read brochure",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >Aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >read brochure /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >read brochure /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "inventory",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >inventory /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "take pincer",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >inventory /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >take pincer /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "put all into thing",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >take pincer /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >put all into thing /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "d",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >put all into thing /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >d /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "port",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >d /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >port /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "touch pad",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >port /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >touch pad /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "get cup",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >touch pad /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >get cup /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "starboard",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >get cup /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >starboard /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "aft",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >starboard /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "aft",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "yes",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >yes /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "yes",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >yes /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >yes /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "aft",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >yes /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "no",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >no /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "look",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >no /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >look /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "look",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >look /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >look /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "drop thing",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >look /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >drop thing /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "get rasp",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >drop thing /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >get rasp /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "get pliers",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >get rasp /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >get pliers /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "put rasp into thing",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >get pliers /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >put rasp into thing /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "put pliers into thing",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >put rasp into thing /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >put pliers into thing /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "get improbability drive",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >put pliers into thing /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >get improbability drive /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "fore",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >get improbability drive /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >fore /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "fore",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >fore /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >fore /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "up",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >fore /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >up /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "drop drive",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >up /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >drop drive /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "drop cup",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >drop drive /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >drop cup /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "drop plotter",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >drop cup /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >drop plotter /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >drop plotter /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "drop plotter",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >drop plotter /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >drop plotter /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "drop plotter",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >drop plotter /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "put small plug in plotter",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >drop plotter /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >put small plug in plotter /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "put bit in cup",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >put small plug in plotter /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >put bit in cup /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "turn on drive",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >put bit in cup /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >turn on drive /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "n",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >turn on drive /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >n /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "s",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >n /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >s /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "n",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >s /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >n /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "s",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >n /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >s /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "smell",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >s /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >smell /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "look at shadow",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >smell /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >look at shadow /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "say my name",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >look at shadow /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >say my name /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "e",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >say my name /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >e /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "examine memorial",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >e /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >examine memorial /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "get sharp stone",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >examine memorial /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >get sharp stone /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "put towel on your head",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >get sharp stone /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >put towel on your head /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "carve my name on the memorial",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >put towel on your head /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >carve my name on the memorial /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "remove towel",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >carve my name on the memorial /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >remove towel /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "drop stone",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >remove towel /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >drop stone /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "w",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >drop stone /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >w /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "sw",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >w /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >sw /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "get interface",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >sw /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >get interface /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >get interface /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "hear the dark",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >hear the dark /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "aft",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >hear the dark /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "aft",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "up",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >up /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "d",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >up /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >d /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "port",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >d /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >port /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "open panel",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >port /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >open panel /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "take circuit",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >open panel /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >take circuit /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "insert interface in nutrimat",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >take circuit /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >insert interface in nutrimat /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "close panel",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >insert interface in nutrimat /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >close panel /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "touch pad",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >close panel /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >touch pad /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "starboard",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >touch pad /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >starboard /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "up",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >starboard /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >up /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "put large plug in large receptacle",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >up /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >put large plug in large receptacle /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >put large plug in large receptacle /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "turn on drive",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >turn on drive /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "d",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >turn on drive /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >d /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "port",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >d /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >port /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "get tea",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >port /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >get tea /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "starboard",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >get tea /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >starboard /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "up",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >starboard /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >up /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "drop tea",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >up /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >drop tea /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >drop tea /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "remove bit",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >remove bit /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "put bit in tea",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >remove bit /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >put bit in tea /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "turn on drive",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >put bit in tea /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >turn on drive /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >turn on drive /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "touch",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >touch /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "touch",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >touch /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >touch /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "drink liquid",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >touch /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >drink liquid /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "examine arthur",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >drink liquid /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >examine arthur /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "drop wine",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >examine arthur /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >drop wine /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "get fluff",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >drop wine /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >get fluff /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "open bag",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >get fluff /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >open bag /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "put fluff in bag",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >open bag /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >put fluff in bag /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "get wine",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >put fluff in bag /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >get wine /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >get wine /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "hear",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >hear /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "aft",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >hear /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "aft",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "up",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >up /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "open handbag",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >up /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >open handbag /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "get tweezers",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >open handbag /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >get tweezers /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "get fluff",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >get tweezers /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >get fluff /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "put all in thing",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >get fluff /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >put all in thing /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "turn on drive",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >put all in thing /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >turn on drive /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >turn on drive /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "touch",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >touch /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "touch",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >touch /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >touch /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "touch",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >touch /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >touch /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "touch",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >touch /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >touch /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "drink liquid",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >touch /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >drink liquid /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "get flowerpot",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >drink liquid /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >get flowerpot /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "put it in thing",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >get flowerpot /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >put it in thing /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "examine thumb",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >put it in thing /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >examine thumb /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "press red button",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >examine thumb /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >press red button /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "give thumb to robot",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >press red button /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >give thumb to robot /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >give thumb to robot /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "show warranty",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >show warranty /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "press green button",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >show warranty /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >press green button /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >press green button /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "z",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "hear",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >z /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >hear /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "aft",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >hear /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "aft",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "up",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >aft /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >up /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "turn on drive",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >up /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >turn on drive /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "see",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >turn on drive /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >see /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "see",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >see /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >see /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "see",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >see /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >see /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "see",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >see /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >see /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "examine light",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >see /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >examine light /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "look under seat",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >examine light /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >look under seat /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "look",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >look under seat /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >look /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "sit in seat",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >look /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >sit in seat /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "stand up",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >sit in seat /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >stand up /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "get in pilot seat",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >stand up /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >get in pilot seat /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "get out",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >get in pilot seat /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >get out /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "enter seat",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >get out /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >enter seat /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "exit",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >enter seat /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >exit /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "sit on seat",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >exit /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >sit on seat /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "stand up",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >sit on seat /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >stand up /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ },
+ {
+  "cmd": "look",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "(Type RESTART, RESTORE, HINTS or QUIT): / >stand up /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / >look /   / Would you like to start over, restore a saved position, get hints or end this session of the game? / (Type RESTART, RESTORE, HINTS or QUIT): / > "
+ }
+]

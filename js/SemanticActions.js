@@ -60,6 +60,7 @@ var SemanticActions = {
         "unlock": "UNLOCK",
         "enter": "ENTER",
         "exit": "EXIT",
+        "get out of": "EXIT",
         "switch on": "SWITCH_ON",
         "switch off": "SWITCH_OFF",
         "turn on": "SWITCH_ON",

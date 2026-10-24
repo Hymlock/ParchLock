@@ -1,0 +1,972 @@
+[
+ {
+  "cmd": "GET LAMP AND SWORD",
+  "tag": null,
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": "lamp: Taken.\nsword: Taken.\n \n>"
+ },
+ {
+  "cmd": "LIGHT LAMP",
+  "tag": null,
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": "The lamp is now on.\n \n>"
+ },
+ {
+  "cmd": "south",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 229,
+  "parentAfterName": "Narrow Tunnel",
+  "playerId": 4,
+  "reply": "Narrow Tunnel\nYou are standing at the southern end of a narrow tunnel where it opens into a wide cavern. The cavern is dimly illuminated by phosphorescent mosses clinging to its high ceiling. A deep ravine winds through the cavern, with a small stream at the bottom. The walls of the ravine are steep and crumbly. A foot bridge crosses the ravine to the south.\n \n>"
+ },
+ {
+  "cmd": "cross",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 229,
+  "parentBeforeName": "Narrow Tunnel",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": "Foot Bridge\nYou are standing on a crude but sturdy wooden foot bridge crossing a deep ravine. The path runs north and south from here.\n \n>"
+ },
+ {
+  "cmd": "south",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 227,
+  "parentAfterName": "Great Cavern",
+  "playerId": 4,
+  "reply": "Great Cavern\nThis is the center of the great cavern, carved out of the limestone. Stalactites and stalagmites of many sizes are everywhere. The room glows with dim light provided by phosphorescent moss, and weird shadows move all around you. A narrow path winds southwest among the stalagmites, and another leads northeast.\n \n>"
+ },
+ {
+  "cmd": "southwest",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 227,
+  "parentBeforeName": "Great Cavern",
+  "parentAfter": 226,
+  "parentAfterName": "Shallow Ford",
+  "playerId": 4,
+  "reply": "Shallow Ford\nYou are at the southern edge of a great cavern. To the south across a shallow ford is a dark tunnel which looks like it was once enlarged and smoothed. To the north a narrow path winds among stalagmites. Dim light illuminates the cavern.\n \n>"
+ },
+ {
+  "cmd": "south",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 226,
+  "parentBeforeName": "Shallow Ford",
+  "parentAfter": 225,
+  "parentAfterName": "Dark Tunnel",
+  "playerId": 4,
+  "reply": "Dark Tunnel\nThis is a dark tunnel with dim light to the northeast. The tunnel is smooth but dusty and filled with twigs and leaves, debris which becomes deeper as the tunnel branches into a wide corridor leading southwest and a narrower one leading southeast.\n \n>"
+ },
+ {
+  "cmd": "southwest",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 225,
+  "parentBeforeName": "Dark Tunnel",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": "Path Near Stream\nThe path follows the south edge of a deep ravine and heads northeast. A tunnel heads southwest, narrowing to a rather tight crawl. A faint whirring sound can be heard in that direction. On the east is a ruined archway choked with vegetation.\n \n>"
+ },
+ {
+  "cmd": "southwest",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 138,
+  "parentAfterName": "Carousel Room",
+  "playerId": 4,
+  "reply": "Carousel Room\nYou are in a large circular room whose high ceiling is lost in gloom. Eight identical passages leave the room.\nA loud whirring sound comes from all around, and you feel sort of disoriented in here.\n \n>"
+ },
+ {
+  "cmd": "northwest",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 138,
+  "parentBeforeName": "Carousel Room",
+  "parentAfter": 218,
+  "parentAfterName": "Topiary",
+  "playerId": 4,
+  "reply": "You're not sure which direction is which. This room is very disorienting.\n \nTopiary\nThis is the southern end of a formal garden. Hedges hide the cavern walls and mosses provide dim illumination. Fantastically shaped hedges and bushes are arrayed with geometric precision. They have not recently been clipped, but you can discern creatures in the shapes of the bushes: There is a dragon, a unicorn, a great serpent, a huge misshapen dog, and several human figures. On the west side of the garden the path leads through a rose arbor into a tunnel.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 218,
+  "parentBeforeName": "Topiary",
+  "parentAfter": 138,
+  "parentAfterName": "Carousel Room",
+  "playerId": 4,
+  "reply": "Carousel Room\n \n>"
+ },
+ {
+  "cmd": "northwest",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 138,
+  "parentBeforeName": "Carousel Room",
+  "parentAfter": 195,
+  "parentAfterName": "Menhir Room",
+  "playerId": 4,
+  "reply": "You're not sure which direction is which. This room is very disorienting.\n \nMenhir Room\nThis is a large room which was evidently used once as a quarry. Many large limestone chunks lie helter-skelter around the room. Some are rough-hewn and unworked, others smooth and well-finished. One side of the room appears to have been used to quarry building blocks, the other to produce menhirs (standing stones). Obvious passages lead north and south.\nOne particularly large menhir, at least twenty feet tall and eight feet thick, is leaning against the wall blocking a dark opening leading southwest. On this side of the menhir is carved an ornate letter \"F\".\n \n>"
+ },
+ {
+  "cmd": "north",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 195,
+  "parentBeforeName": "Menhir Room",
+  "parentAfter": 138,
+  "parentAfterName": "Carousel Room",
+  "playerId": 4,
+  "reply": "Carousel Room\n \n>"
+ },
+ {
+  "cmd": "northwest",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 138,
+  "parentBeforeName": "Carousel Room",
+  "parentAfter": 218,
+  "parentAfterName": "Topiary",
+  "playerId": 4,
+  "reply": "You're not sure which direction is which. This room is very disorienting.\n \nTopiary\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 218,
+  "parentBeforeName": "Topiary",
+  "parentAfter": 138,
+  "parentAfterName": "Carousel Room",
+  "playerId": 4,
+  "reply": "Carousel Room\n \n>"
+ },
+ {
+  "cmd": "northwest",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 138,
+  "parentBeforeName": "Carousel Room",
+  "parentAfter": 201,
+  "parentAfterName": "Cool Room",
+  "playerId": 4,
+  "reply": "You're not sure which direction is which. This room is very disorienting.\n \nCool Room\nThe room is cool and damp. The air is misty. A twisty path from the southeast splits here toward a wide northerly stone bridge, and a narrow westerly tunnel. It is from the latter that the mist and chill seem to originate.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 201,
+  "parentBeforeName": "Cool Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "Ice Room\nThis is a large hall of ancient lava, since worn smooth by the movement of a glacier. A large passage exits to the east and an upward lava tube is at the top of a jumble of fallen rocks.\nA mass of ice fills the western half of the room.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 201,
+  "parentAfterName": "Cool Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\nA strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrological signs. He has a long, stringy, and unkempt beard.\nThe Wizard draws forth his wand and waves it in your direction. It begins to glow with a faint blue glow.\nThe Wizard, in a deep and resonant voice, speaks the word \"Fear!\" He cackles gleefully.\nYou look at the Wizard in terror. You scramble away, trying to get as far as possible from him.\n \nCool Room\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 201,
+  "parentBeforeName": "Cool Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "Ice Room\nA mass of ice fills the western half of the room.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\nYou suddenly decide that the Wizard isn't that terrifying...\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Volcano Bottom",
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You don't even have an ice-pick.\n \n>"
+ },
+ {
+  "cmd": "LOOK",
+  "tag": null,
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "Ice Room\nThis is a large hall of ancient lava, since worn smooth by the movement of a glacier. A large passage exits to the east and an upward lava tube is at the top of a jumble of fallen rocks.\nA mass of ice fills the western half of the room.\n \n>"
+ },
+ {
+  "cmd": "ENTER BASKET",
+  "tag": null,
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You can't see any basket here!\n \n>"
+ },
+ {
+  "cmd": "EXIT",
+  "tag": null,
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "GET OUT OF BASKET",
+  "tag": null,
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You can't see any of basket here!\nA strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrological signs. He has a long, stringy, and unkempt beard.\nThe Wizard draws forth his wand and waves it in your direction. It begins to glow with a faint blue glow.\nThe Wizard, in a deep and resonant voice, speaks the word \"Fantasize!\" He cackles gleefully.\n \n>"
+ },
+ {
+  "cmd": "GET IN BASKET",
+  "tag": null,
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You can't see any basket here!\n \n>"
+ },
+ {
+  "cmd": "GET OUT OF BASKET",
+  "tag": null,
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You can't see any of basket here!\n \n>"
+ },
+ {
+  "cmd": "BOARD BASKET",
+  "tag": null,
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You can't see any basket here!\n \n>"
+ },
+ {
+  "cmd": "GET OUT OF BASKET",
+  "tag": null,
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You can't see any of basket here!\n \n>"
+ },
+ {
+  "cmd": "SIT IN BASKET",
+  "tag": null,
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You can't see any basket here!\n \n>"
+ },
+ {
+  "cmd": "STAND UP",
+  "tag": null,
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You are already standing, I think.\n \n>"
+ },
+ {
+  "cmd": "SIT ON BASKET",
+  "tag": null,
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You can't see any basket here!\n \n>"
+ },
+ {
+  "cmd": "STAND UP",
+  "tag": null,
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You are already standing, I think.\n \n>"
+ },
+ {
+  "cmd": "CLIMB IN BASKET",
+  "tag": null,
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You can't see any basket here!\n \n>"
+ },
+ {
+  "cmd": "LEAVE BASKET",
+  "tag": null,
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "You can't see any basket here!\n \n>"
+ },
+ {
+  "cmd": "LOOK",
+  "tag": null,
+  "parentBefore": 200,
+  "parentBeforeName": "Ice Room",
+  "parentAfter": 200,
+  "parentAfterName": "Ice Room",
+  "playerId": 4,
+  "reply": "Ice Room\nThis is a large hall of ancient lava, since worn smooth by the movement of a glacier. A large passage exits to the east and an upward lava tube is at the top of a jumble of fallen rocks.\nA mass of ice fills the western half of the room.\n \n>"
+ }
+]

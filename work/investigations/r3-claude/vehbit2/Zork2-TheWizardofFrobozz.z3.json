@@ -1,0 +1,297 @@
+{
+ "title": "Zork2-TheWizardofFrobozz.z3.js",
+ "sha256": "abf145d22371f825f13388587d92632bcde90582698f774b896b123a90e1fb1e",
+ "bit": 27,
+ "initialCarriers": [
+  {
+   "id": 51,
+   "name": "bucket",
+   "parent": 118,
+   "parentName": "Circular "
+  },
+  {
+   "id": 98,
+   "name": "basket",
+   "parent": 134,
+   "parentName": "Volcano Bottom"
+  }
+ ],
+ "status": "CONFIRMED",
+ "priorCarriers": [
+  51
+ ],
+ "newCarriers": [
+  98
+ ],
+ "distinctPositiveCarriers": [
+  51,
+  98
+ ],
+ "positives": [
+  {
+   "carrier": 51,
+   "name": "wooden bucket",
+   "enterCmd": "GET IN BUCKET",
+   "parentBefore": 118,
+   "parentBeforeName": "Circular Room",
+   "parentAfter": 51,
+   "enterReply": "You are now in the wooden bucket.\n \n>",
+   "exitCmd": "GET OUT OF BUCKET",
+   "exitParentAfter": 118,
+   "exitReply": "You are on your own feet again.\n \n>",
+   "log": "z2g2.log.json",
+   "step": 125
+  },
+  {
+   "carrier": 98,
+   "name": "basket",
+   "enterCmd": "ENTER BASKET",
+   "parentBefore": 134,
+   "parentBeforeName": "Volcano Bottom",
+   "parentAfter": 98,
+   "enterReply": "You are now in the basket.\n \n>",
+   "exitCmd": "GET OUT OF BASKET",
+   "exitParentAfter": 134,
+   "exitReply": "You are on your own feet again.\n \n>",
+   "log": "z2g2.log.json",
+   "step": 183
+  },
+  {
+   "carrier": 98,
+   "name": "basket",
+   "enterCmd": "GET IN BASKET",
+   "parentBefore": 134,
+   "parentBeforeName": "Volcano Bottom",
+   "parentAfter": 98,
+   "enterReply": "You are now in the basket.\nYou feel cooler and less angry now.\n \n>",
+   "exitCmd": "GET OUT OF BASKET",
+   "exitParentAfter": 134,
+   "exitReply": "You are on your own feet again.\n \n>",
+   "log": "z2g2.log.json",
+   "step": 186
+  },
+  {
+   "carrier": 98,
+   "name": "basket",
+   "enterCmd": "BOARD BASKET",
+   "parentBefore": 134,
+   "parentBeforeName": "Volcano Bottom",
+   "parentAfter": 98,
+   "enterReply": "You are now in the basket.\n \n>",
+   "exitCmd": "GET OUT OF BASKET",
+   "exitParentAfter": 134,
+   "exitReply": "You are on your own feet again.\n \n>",
+   "log": "z2g2.log.json",
+   "step": 188
+  },
+  {
+   "carrier": 98,
+   "name": "basket",
+   "enterCmd": "SIT IN BASKET",
+   "parentBefore": 134,
+   "parentBeforeName": "Volcano Bottom",
+   "parentAfter": 98,
+   "enterReply": "You are now in the basket.\nThe Wizard appears, floating nonchalantly in the air beside you. He grins sideways at you.\nThe Wizard draws forth his wand and waves it in your direction. It begins to glow with a faint blue glow.\nThe Wizard incants \"Fantasize!\" but nothing happens. He shakes the wand. Nothing happens. With a slightly embarrassed glance in your direction, he vanishes.\n \n>",
+   "exitCmd": "STAND UP",
+   "exitParentAfter": 134,
+   "exitReply": "You are on your own feet again.\n \n>",
+   "log": "z2g2.log.json",
+   "step": 190
+  },
+  {
+   "carrier": 98,
+   "name": "basket",
+   "enterCmd": "SIT ON BASKET",
+   "parentBefore": 134,
+   "parentBeforeName": "Volcano Bottom",
+   "parentAfter": 98,
+   "enterReply": "You are now in the basket.\n \n>",
+   "exitCmd": "STAND UP",
+   "exitParentAfter": 134,
+   "exitReply": "You are on your own feet again.\n \n>",
+   "log": "z2g2.log.json",
+   "step": 192
+  },
+  {
+   "carrier": 98,
+   "name": "basket",
+   "enterCmd": "CLIMB IN BASKET",
+   "parentBefore": 134,
+   "parentBeforeName": "Volcano Bottom",
+   "parentAfter": 98,
+   "enterReply": "You are now in the basket.\n \n>",
+   "exitCmd": "LEAVE BASKET",
+   "exitParentAfter": 134,
+   "exitReply": "You are on your own feet again.\n \n>",
+   "log": "z2g2.log.json",
+   "step": 194
+  },
+  {
+   "carrier": 51,
+   "name": "wooden bucket",
+   "enterCmd": "GET IN BUCKET",
+   "parentBefore": 118,
+   "parentBeforeName": "Circular Room",
+   "parentAfter": 51,
+   "enterReply": "You are now in the wooden bucket.\n \n>",
+   "exitCmd": "GET OUT OF BUCKET",
+   "exitParentAfter": 118,
+   "exitReply": "You are on your own feet again.\n \n>",
+   "log": "z2g1.log.json",
+   "step": 232
+  }
+ ],
+ "verbMatrix": {
+  "98": [
+   {
+    "cmd": "ENTER BASKET",
+    "parentBefore": 134,
+    "parentAfter": 98,
+    "moved": true,
+    "reply": "You are now in the basket.\n \n>",
+    "log": "z2g2.log.json",
+    "step": 183
+   },
+   {
+    "cmd": "EXIT",
+    "parentBefore": 98,
+    "parentAfter": 98,
+    "moved": false,
+    "reply": "You can't control the balloon this way.\n \n>",
+    "log": "z2g2.log.json",
+    "step": 184
+   },
+   {
+    "cmd": "GET OUT OF BASKET",
+    "parentBefore": 98,
+    "parentAfter": 134,
+    "moved": true,
+    "reply": "You are on your own feet again.\n \n>",
+    "log": "z2g2.log.json",
+    "step": 185
+   },
+   {
+    "cmd": "GET IN BASKET",
+    "parentBefore": 134,
+    "parentAfter": 98,
+    "moved": true,
+    "reply": "You are now in the basket.\nYou feel cooler and less angry now.\n \n>",
+    "log": "z2g2.log.json",
+    "step": 186
+   },
+   {
+    "cmd": "GET OUT OF BASKET",
+    "parentBefore": 98,
+    "parentAfter": 134,
+    "moved": true,
+    "reply": "You are on your own feet again.\n \n>",
+    "log": "z2g2.log.json",
+    "step": 187
+   },
+   {
+    "cmd": "BOARD BASKET",
+    "parentBefore": 134,
+    "parentAfter": 98,
+    "moved": true,
+    "reply": "You are now in the basket.\n \n>",
+    "log": "z2g2.log.json",
+    "step": 188
+   },
+   {
+    "cmd": "GET OUT OF BASKET",
+    "parentBefore": 98,
+    "parentAfter": 134,
+    "moved": true,
+    "reply": "You are on your own feet again.\n \n>",
+    "log": "z2g2.log.json",
+    "step": 189
+   },
+   {
+    "cmd": "SIT IN BASKET",
+    "parentBefore": 134,
+    "parentAfter": 98,
+    "moved": true,
+    "reply": "You are now in the basket.\nThe Wizard appears, floating nonchalantly in the air beside you. He grins sideways at you.\nThe Wizard draws forth his wand and waves it in your direction. It begins to glow with a faint blue glow.\nThe Wizard incan",
+    "log": "z2g2.log.json",
+    "step": 190
+   },
+   {
+    "cmd": "STAND UP",
+    "parentBefore": 98,
+    "parentAfter": 134,
+    "moved": true,
+    "reply": "You are on your own feet again.\n \n>",
+    "log": "z2g2.log.json",
+    "step": 191
+   },
+   {
+    "cmd": "SIT ON BASKET",
+    "parentBefore": 134,
+    "parentAfter": 98,
+    "moved": true,
+    "reply": "You are now in the basket.\n \n>",
+    "log": "z2g2.log.json",
+    "step": 192
+   },
+   {
+    "cmd": "STAND UP",
+    "parentBefore": 98,
+    "parentAfter": 134,
+    "moved": true,
+    "reply": "You are on your own feet again.\n \n>",
+    "log": "z2g2.log.json",
+    "step": 193
+   },
+   {
+    "cmd": "CLIMB IN BASKET",
+    "parentBefore": 134,
+    "parentAfter": 98,
+    "moved": true,
+    "reply": "You are now in the basket.\n \n>",
+    "log": "z2g2.log.json",
+    "step": 194
+   },
+   {
+    "cmd": "LEAVE BASKET",
+    "parentBefore": 98,
+    "parentAfter": 134,
+    "moved": true,
+    "reply": "You are on your own feet again.\n \n>",
+    "log": "z2g2.log.json",
+    "step": 195
+   }
+  ]
+ },
+ "negatives": [
+  {
+   "cmd": "EXIT",
+   "parentBefore": 98,
+   "parentAfter": 98,
+   "parentName": "basket",
+   "reply": "You can't control the balloon this way.\n \n>",
+   "log": "z2g2.log.json",
+   "step": 184
+  },
+  {
+   "cmd": "enter teapot",
+   "parentBefore": 220,
+   "parentAfter": 220,
+   "parentName": "Gazebo",
+   "reply": "china teapot: Taken. / place mat: Taken. / letter opener: Taken. / matchbook: Taken. / newspaper: Taken. /   / >enter teapot / That would involve quite a contortion! /   / > ",
+   "log": "z2.log.json",
+   "step": 11
+  },
+  {
+   "cmd": "sit on teapot",
+   "parentBefore": 220,
+   "parentAfter": 220,
+   "parentName": "Gazebo",
+   "reply": ">sit on teapot / You can't climb onto the china teapot. / A unicorn is peacefully cropping grass at the north end of the garden. There is something hanging around its neck. / Your sword is glowing with a faint blue glow. / A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrological signs. He has a long, stringy, and unkempt beard. / The Wizard draws forth his wand and waves it in your direction. It begins to glow with a faint ",
+   "log": "z2.log.json",
+   "step": 12
+  }
+ ],
+ "priorEvidenceFile": "work/investigations/r3-claude/vehbit/Zork2-TheWizardofFrobozz.z3.json",
+ "notes": "basket (98) CONFIRMED in Volcano Bottom (z2g2.log.json): ENTER/GET IN/BOARD/SIT IN/SIT ON/CLIMB IN BASKET all move parent 134->98; GET OUT OF/STAND UP/LEAVE BASKET return 98->134. EXIT is REFUSED inside the basket ('You can't control the balloon this way.', parent unchanged) -> an app 'exit' offer sending EXIT would fail; GET OUT OF BASKET works. Route: jericho/pk walk commands with ENSURE re-routing (ordinary direction commands) around the random Carousel Room; two of four attempts died (wizard freeze / topiary), one stalled at the dragon.",
+ "method": "headless Chromium play.html via drive2.cjs: Input.Inject of ordinary commands only (no VM writes/snapshots). Navigation helpers GOTO/ENSURE only issue ordinary direction commands chosen by BFS over ExitCalibrator.exitsFor (read-only). parent = ZRamReader.objectLinks(mem, WorldModel.lastPayload.playerId).parent before/after each command."
+}

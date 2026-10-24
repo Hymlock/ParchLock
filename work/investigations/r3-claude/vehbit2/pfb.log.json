@@ -1,0 +1,1592 @@
+[
+ {
+  "cmd": "WAIT",
+  "tag": "waituntil",
+  "parentBefore": 235,
+  "parentBeforeName": "Deck Nine",
+  "parentAfter": 235,
+  "parentAfterName": "Deck Nine",
+  "playerId": 236,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": "waituntil",
+  "parentBefore": 235,
+  "parentBeforeName": "Deck Nine",
+  "parentAfter": 235,
+  "parentAfterName": "Deck Nine",
+  "playerId": 236,
+  "reply": "Time passes...\n \nThe alien ambassador from the planet Blow'k-bibben-Gordo ambles toward you from down the corridor. He is munching on something resembling an enormous stalk of celery, and he leaves a trail of green slime on the deck. He stops nearby, and you wince as a pool of slime begins forming beneath him on your newly-polished deck. The ambassador wheezes loudly and hands you a brochure outlining his planet's major exports.\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": "waituntil",
+  "parentBefore": 235,
+  "parentBeforeName": "Deck Nine",
+  "parentAfter": 235,
+  "parentAfterName": "Deck Nine",
+  "playerId": 236,
+  "reply": "Time passes...\n \nThe ambassador asks if you are performing some sort of religious ceremony.\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": "waituntil",
+  "parentBefore": 235,
+  "parentBeforeName": "Deck Nine",
+  "parentAfter": 235,
+  "parentAfterName": "Deck Nine",
+  "playerId": 236,
+  "reply": "Time passes...\n \nThe ambassador introduces himself as Br'gun-te'elkner-ipg'nun.\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": "waituntil",
+  "parentBefore": 235,
+  "parentBeforeName": "Deck Nine",
+  "parentAfter": 235,
+  "parentAfterName": "Deck Nine",
+  "playerId": 236,
+  "reply": "Time passes...\n \nThe ambassador offers you a bit of celery.\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": "waituntil",
+  "parentBefore": 235,
+  "parentBeforeName": "Deck Nine",
+  "parentAfter": 235,
+  "parentAfterName": "Deck Nine",
+  "playerId": 236,
+  "reply": "Time passes...\n \nThe ambassador grunts a polite farewell, and disappears up the gangway, leaving a trail of dripping slime.\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": "waituntil",
+  "parentBefore": 235,
+  "parentBeforeName": "Deck Nine",
+  "parentAfter": 235,
+  "parentAfterName": "Deck Nine",
+  "playerId": 236,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": "waituntil",
+  "parentBefore": 235,
+  "parentBeforeName": "Deck Nine",
+  "parentAfter": 235,
+  "parentAfterName": "Deck Nine",
+  "playerId": 236,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": "waituntil",
+  "parentBefore": 235,
+  "parentBeforeName": "Deck Nine",
+  "parentAfter": 235,
+  "parentAfterName": "Deck Nine",
+  "playerId": 236,
+  "reply": "Time passes...\n \nA massive explosion rocks the ship. Echoes from the explosion resound deafeningly down the halls. The door to port slides open. \n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": "waituntil",
+  "parentBefore": 235,
+  "parentBeforeName": "Deck Nine",
+  "parentAfter": 235,
+  "parentAfterName": "Deck Nine",
+  "playerId": 236,
+  "reply": "Time passes...\n \nMore distant explosions! A narrow emergency bulkhead at the base of the gangway and a wider one along the corridor to starboard both crash shut!\n \n>"
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 235,
+  "parentBeforeName": "Deck Nine",
+  "parentAfter": 216,
+  "parentAfterName": "Escape Pod",
+  "playerId": 236,
+  "reply": "Escape Pod\nThis is one of the Feinstein's primary escape pods, for use in extreme emergencies. A mass of safety webbing, large enough to hold several dozen people, fills half the pod. The controls are entirely automated. The bulkhead leading out is open.\n \nThe pod door clangs shut as heavy explosions continue to buffet the Feinstein.\n \n>"
+ },
+ {
+  "cmd": "GET IN WEB",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Escape Pod",
+  "parentAfter": 215,
+  "parentAfterName": "safety web",
+  "playerId": 236,
+  "reply": "You are now safely cushioned within the web.\n \nYou feel the pod begin to slide down its ejection tube as explosions shake the mother ship.\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "safety web",
+  "parentAfter": 215,
+  "parentAfterName": "safety web",
+  "playerId": 236,
+  "reply": "Time passes...\n \nThrough the viewport of the pod you see the Feinstein dwindle as you head away. Bursts of light dot its hull. Suddenly, a huge explosion blows the Feinstein into tiny pieces, sending the escape pod tumbling away! \n \nAs the escape pod tumbles away from the former location of the Feinstein, its gyroscopes whine. The pod slowly stops tumbling. Lights on the control panel blink furiously as the autopilot searches for a reasonable destination.\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "safety web",
+  "parentAfter": 215,
+  "parentAfterName": "safety web",
+  "playerId": 236,
+  "reply": "Time passes...\n \nThe auxiliary rockets fire briefly, and a nearby planet swings into view through the port. It appears to be almost entirely ocean, with just a few visible islands and an unusually small polar ice cap. A moment later, the system's sun swings into view, and the viewport polarizes into a featureless black rectangle.\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "safety web",
+  "parentAfter": 215,
+  "parentAfterName": "safety web",
+  "playerId": 236,
+  "reply": "Time passes...\n \nThe main thrusters fire a long, gentle burst. A monotonic voice issues from the control panel. \"Approaching planet...human-habitable.\"\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "safety web",
+  "parentAfter": 215,
+  "parentAfterName": "safety web",
+  "playerId": 236,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "safety web",
+  "parentAfter": 215,
+  "parentAfterName": "safety web",
+  "playerId": 236,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "safety web",
+  "parentAfter": 215,
+  "parentAfterName": "safety web",
+  "playerId": 236,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "safety web",
+  "parentAfter": 215,
+  "parentAfterName": "safety web",
+  "playerId": 236,
+  "reply": "Time passes...\n \nThe pod is buffeted as it enters the planet's atmosphere.\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "safety web",
+  "parentAfter": 215,
+  "parentAfterName": "safety web",
+  "playerId": 236,
+  "reply": "Time passes...\n \nYou feel the temperature begin to rise, and the pod's climate control system roars as it labors to compensate.\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "safety web",
+  "parentAfter": 215,
+  "parentAfterName": "safety web",
+  "playerId": 236,
+  "reply": "Time passes...\n \nThe viewport suddenly becomes transparent again, giving you a view of endless ocean below. The lights on the control panel flash madly as the pod's computer searches for a suitable landing site. The thrusters fire long and hard, slowing the pod's descent.\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "safety web",
+  "parentAfter": 215,
+  "parentAfterName": "safety web",
+  "playerId": 236,
+  "reply": "Time passes...\n \nThe pod is now approaching the closer of a pair of islands. It appears to be surrounded by sheer cliffs rising from the water, and is topped by a wide plateau. The plateau seems to be covered by a sprawling complex of buildings.\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "safety web",
+  "parentAfter": 215,
+  "parentAfterName": "safety web",
+  "playerId": 236,
+  "reply": "Time passes...\n \nThe pod lands with a thud. Through the viewport you can see a rocky cleft and some water below. The pod rocks gently back and forth as if it was precariously balanced. A previously unseen panel slides open, revealing some emergency provisions, including a survival kit and a towel.\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "safety web",
+  "parentAfter": 215,
+  "parentAfterName": "safety web",
+  "playerId": 236,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "safety web",
+  "parentAfter": 215,
+  "parentAfterName": "safety web",
+  "playerId": 236,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "GET OUT OF WEB",
+  "tag": null,
+  "parentBefore": 215,
+  "parentBeforeName": "safety web",
+  "parentAfter": 216,
+  "parentAfterName": "Escape Pod",
+  "playerId": 236,
+  "reply": "As you stand, the pod shifts slightly and you feel it falling. A moment later, the fall stops with a shock, and you see water rising past the viewport.\n \n>"
+ },
+ {
+  "cmd": "GET KIT",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Escape Pod",
+  "parentAfter": 216,
+  "parentAfterName": "Escape Pod",
+  "playerId": 236,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "OPEN DOOR",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Escape Pod",
+  "parentAfter": 216,
+  "parentAfterName": "Escape Pod",
+  "playerId": 236,
+  "reply": "The bulkhead opens and cold ocean water rushes in!\n \nThe pod is now completely submerged, and you feel it smash against underwater rocks. Bubbles streaming upward past the window indicate that the pod is continuing to sink.\n \n>"
+ },
+ {
+  "cmd": "OUT",
+  "tag": null,
+  "parentBefore": 216,
+  "parentBeforeName": "Escape Pod",
+  "parentAfter": 195,
+  "parentAfterName": "Underwater",
+  "playerId": 236,
+  "reply": "Underwater\nYou are momentarily disoriented as you enter the turbulent waters. Currents buffet you against the sharp rocks of an underwater cliff. A dim light filters down from above.\n \n>"
+ },
+ {
+  "cmd": "U",
+  "tag": null,
+  "parentBefore": 195,
+  "parentBeforeName": "Underwater",
+  "parentAfter": 194,
+  "parentAfterName": "Crag",
+  "playerId": 236,
+  "reply": "Crag\nYou have reached a cleft in the cliff wall where the island rises from the water. The edge of the cleft displays recently exposed rock where it collapsed under the weight of the escape pod. About two meters below, turbulent waters swirl against sharp rocks. A small structure clings to the face of the cliff about eight meters above you. Even an out-of-shape Ensign Seventh Class could probably climb up to it.\n \n>"
+ },
+ {
+  "cmd": "U",
+  "tag": null,
+  "parentBefore": 194,
+  "parentBeforeName": "Crag",
+  "parentAfter": 193,
+  "parentAfterName": "Balcony",
+  "playerId": 236,
+  "reply": "Balcony\nThis is an octagonal room, half carved into and half built out from the cliff wall. Through the shattered windows which ring the outer wall you can see ocean to the horizon. A weathered metal plaque with barely readable lettering rests below the windows. The language seems to be a corrupt form of Galalingua. A steep stairway, roughly cut into the face of the cliff, leads upward. A rocky crag can be seen about eight meters below.\n \n>"
+ },
+ {
+  "cmd": "U",
+  "tag": null,
+  "parentBefore": 193,
+  "parentBeforeName": "Balcony",
+  "parentAfter": 192,
+  "parentAfterName": "Winding Stair",
+  "playerId": 236,
+  "reply": "Winding Stair\nThe middle of a long, steep stairway carved into the face of a cliff.\n \n>"
+ },
+ {
+  "cmd": "U",
+  "tag": null,
+  "parentBefore": 192,
+  "parentBeforeName": "Winding Stair",
+  "parentAfter": 191,
+  "parentAfterName": "Courtyard",
+  "playerId": 236,
+  "reply": "Courtyard\nYou are in the courtyard of an ancient stone edifice, vaguely reminiscent of the castles you saw during your leave on Ramos Two. It has decayed to the point where it can probably be termed a ruin. Openings lead north and west, and a stairway downward is visible to the south. \n \n>"
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 191,
+  "parentBeforeName": "Courtyard",
+  "parentAfter": 189,
+  "parentAfterName": "Plain Hall",
+  "playerId": 236,
+  "reply": "Plain Hall\nThis is a featureless hall leading north and south. Although the hallway is old and dusty, the construction is of a much more modern style than the castle to the south. A similar hall branches off to the northeast.\n \n>"
+ },
+ {
+  "cmd": "NE",
+  "tag": null,
+  "parentBefore": 189,
+  "parentBeforeName": "Plain Hall",
+  "parentAfter": 183,
+  "parentAfterName": "Rec Corridor",
+  "playerId": 236,
+  "reply": "Rec Corridor\nThis is a wide, east-west hallway. Portals lead north and south, and another corridor branches southwest.\n \n>"
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 183,
+  "parentBeforeName": "Rec Corridor",
+  "parentAfter": 174,
+  "parentAfterName": "Mess Corridor",
+  "playerId": 236,
+  "reply": "Mess Corridor\nThis is a wide, east-west hallway with a large portal to the south. A small door to the north is closed and hooked with a simple steel padlock which is also closed.\n \n>"
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 174,
+  "parentBeforeName": "Mess Corridor",
+  "parentAfter": 168,
+  "parentAfterName": "Dorm Corridor",
+  "playerId": 236,
+  "reply": "Dorm Corridor\nThis is a wide, east-west hallway with openings to the north and south. To the east, the corridor stretches off into the distance. That section of the hallway is lined with a motorized walkway (no longer running) that was probably intended to transport people or cargo down that tremendously long hall.\n \n>"
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 168,
+  "parentBeforeName": "Dorm Corridor",
+  "parentAfter": 161,
+  "parentAfterName": "Corridor Junction",
+  "playerId": 236,
+  "reply": "You walk down the long, featureless hallway for a long time. Finally, you see an intersection ahead...\n \nCorridor Junction\nA north-south corridor intersects the main corridor here. To the west, the main corridor extends as far as you can see; a non-working walkway from that direction ends here. To the east, the corridor widens into a well-lit area.\n \n>"
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 161,
+  "parentBeforeName": "Corridor Junction",
+  "parentAfter": 142,
+  "parentAfterName": "Mech Corridor North",
+  "playerId": 236,
+  "reply": "Mech Corridor North\nEntrances to rooms lie to the east and west from this north-south hall.\n \n>"
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 142,
+  "parentBeforeName": "Mech Corridor North",
+  "parentAfter": 141,
+  "parentAfterName": "Mech Corridor",
+  "playerId": 236,
+  "reply": "Mech Corridor\nEntrances to rooms lie to the east and west from this north-south hall.\n \n>"
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Mech Corridor",
+  "parentAfter": 140,
+  "parentAfterName": "Mech Corridor South",
+  "playerId": 236,
+  "reply": "Mech Corridor South\nThe corridor ends here with doorways to the southwest, south, and southeast.\n \n>"
+ },
+ {
+  "cmd": "SW",
+  "tag": null,
+  "parentBefore": 140,
+  "parentBeforeName": "Mech Corridor South",
+  "parentAfter": 126,
+  "parentAfterName": "Tool Room",
+  "playerId": 236,
+  "reply": "Tool Room\nThis is apparently a storage room for tools. Exits lead northeast and east.\nSitting on the floor below the lowest shelf is a large glass flask.\nA small device, labelled \"Akmee Portabul Laazur\", is resting on one of the lower shelves.\nThe laser contains:\n  An old battery\nOn an upper shelf is a metal bar, curved into a U-shape.\nThere is a pair of wide-nosed pliers here.\n \n>"
+ },
+ {
+  "cmd": "GET BAR",
+  "tag": null,
+  "parentBefore": 126,
+  "parentBeforeName": "Tool Room",
+  "parentAfter": 126,
+  "parentAfterName": "Tool Room",
+  "playerId": 236,
+  "reply": ">"
+ },
+ {
+  "cmd": "NE",
+  "tag": null,
+  "parentBefore": 126,
+  "parentBeforeName": "Tool Room",
+  "parentAfter": 140,
+  "parentAfterName": "Mech Corridor South",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 140,
+  "parentBeforeName": "Mech Corridor South",
+  "parentAfter": 141,
+  "parentAfterName": "Mech Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Mech Corridor",
+  "parentAfter": 142,
+  "parentAfterName": "Mech Corridor North",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 142,
+  "parentBeforeName": "Mech Corridor North",
+  "parentAfter": 161,
+  "parentAfterName": "Corridor Junction",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 161,
+  "parentBeforeName": "Corridor Junction",
+  "parentAfter": 160,
+  "parentAfterName": "Admin Corridor South",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "HOLD BAR OVER CREVICE",
+  "tag": null,
+  "parentBefore": 160,
+  "parentBeforeName": "Admin Corridor South",
+  "parentAfter": 160,
+  "parentAfterName": "Admin Corridor South",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "DROP BAR",
+  "tag": null,
+  "parentBefore": 160,
+  "parentBeforeName": "Admin Corridor South",
+  "parentAfter": 160,
+  "parentAfterName": "Admin Corridor South",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 160,
+  "parentBeforeName": "Admin Corridor South",
+  "parentAfter": 161,
+  "parentAfterName": "Corridor Junction",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 161,
+  "parentBeforeName": "Corridor Junction",
+  "parentAfter": 168,
+  "parentAfterName": "Dorm Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 168,
+  "parentBeforeName": "Dorm Corridor",
+  "parentAfter": 174,
+  "parentAfterName": "Mess Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "UNLOCK PADLOCK WITH KEY",
+  "tag": null,
+  "parentBefore": 174,
+  "parentBeforeName": "Mess Corridor",
+  "parentAfter": 174,
+  "parentAfterName": "Mess Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "REMOVE PADLOCK",
+  "tag": null,
+  "parentBefore": 174,
+  "parentBeforeName": "Mess Corridor",
+  "parentAfter": 174,
+  "parentAfterName": "Mess Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "DROP IT AND KIT",
+  "tag": null,
+  "parentBefore": 174,
+  "parentBeforeName": "Mess Corridor",
+  "parentAfter": 174,
+  "parentAfterName": "Mess Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "OPEN DOOR",
+  "tag": null,
+  "parentBefore": 174,
+  "parentBeforeName": "Mess Corridor",
+  "parentAfter": 174,
+  "parentAfterName": "Mess Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 174,
+  "parentBeforeName": "Mess Corridor",
+  "parentAfter": 171,
+  "parentAfterName": "Storage West",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "DROP KEY AND BRUSH",
+  "tag": null,
+  "parentBefore": 171,
+  "parentBeforeName": "Storage West",
+  "parentAfter": 171,
+  "parentAfterName": "Storage West",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "GET LADDER",
+  "tag": null,
+  "parentBefore": 171,
+  "parentBeforeName": "Storage West",
+  "parentAfter": 171,
+  "parentAfterName": "Storage West",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 171,
+  "parentBeforeName": "Storage West",
+  "parentAfter": 174,
+  "parentAfterName": "Mess Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 174,
+  "parentBeforeName": "Mess Corridor",
+  "parentAfter": 168,
+  "parentAfterName": "Dorm Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 168,
+  "parentBeforeName": "Dorm Corridor",
+  "parentAfter": 161,
+  "parentAfterName": "Corridor Junction",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 161,
+  "parentBeforeName": "Corridor Junction",
+  "parentAfter": 160,
+  "parentAfterName": "Admin Corridor South",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 160,
+  "parentBeforeName": "Admin Corridor South",
+  "parentAfter": 157,
+  "parentAfterName": "Admin Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "DROP LADDER",
+  "tag": null,
+  "parentBefore": 157,
+  "parentBeforeName": "Admin Corridor",
+  "parentAfter": 157,
+  "parentAfterName": "Admin Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "EXTEND LADDER",
+  "tag": null,
+  "parentBefore": 157,
+  "parentBeforeName": "Admin Corridor",
+  "parentAfter": 157,
+  "parentAfterName": "Admin Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "PUT LADDER ACROSS RIFT",
+  "tag": null,
+  "parentBefore": 157,
+  "parentBeforeName": "Admin Corridor",
+  "parentAfter": 157,
+  "parentAfterName": "Admin Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 157,
+  "parentBeforeName": "Admin Corridor",
+  "parentAfter": 155,
+  "parentAfterName": "Admin Corridor North",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 155,
+  "parentBeforeName": "Admin Corridor North",
+  "parentAfter": 150,
+  "parentAfterName": "Small Office",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "OPEN DESK",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Small Office",
+  "parentAfter": 150,
+  "parentAfterName": "Small Office",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "GET KITCHEN CARD AND UPPER CARD",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Small Office",
+  "parentAfter": 150,
+  "parentAfterName": "Small Office",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Small Office",
+  "parentAfter": 143,
+  "parentAfterName": "Large Office",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "OPEN DESK",
+  "tag": null,
+  "parentBefore": 143,
+  "parentBeforeName": "Large Office",
+  "parentAfter": 143,
+  "parentAfterName": "Large Office",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "GET SHUTTLE CARD",
+  "tag": null,
+  "parentBefore": 143,
+  "parentBeforeName": "Large Office",
+  "parentAfter": 143,
+  "parentAfterName": "Large Office",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 143,
+  "parentBeforeName": "Large Office",
+  "parentAfter": 150,
+  "parentAfterName": "Small Office",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Small Office",
+  "parentAfter": 155,
+  "parentAfterName": "Admin Corridor North",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 155,
+  "parentBeforeName": "Admin Corridor North",
+  "parentAfter": 157,
+  "parentAfterName": "Admin Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 157,
+  "parentBeforeName": "Admin Corridor",
+  "parentAfter": 160,
+  "parentAfterName": "Admin Corridor South",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 160,
+  "parentBeforeName": "Admin Corridor South",
+  "parentAfter": 161,
+  "parentAfterName": "Corridor Junction",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 161,
+  "parentBeforeName": "Corridor Junction",
+  "parentAfter": 168,
+  "parentAfterName": "Dorm Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 168,
+  "parentBeforeName": "Dorm Corridor",
+  "parentAfter": 174,
+  "parentAfterName": "Mess Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "GET KIT",
+  "tag": null,
+  "parentBefore": 174,
+  "parentBeforeName": "Mess Corridor",
+  "parentAfter": 174,
+  "parentAfterName": "Mess Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "OPEN IT",
+  "tag": null,
+  "parentBefore": 174,
+  "parentBeforeName": "Mess Corridor",
+  "parentAfter": 174,
+  "parentAfterName": "Mess Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "EAT RED GOO",
+  "tag": null,
+  "parentBefore": 174,
+  "parentBeforeName": "Mess Corridor",
+  "parentAfter": 174,
+  "parentAfterName": "Mess Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "DROP KIT",
+  "tag": null,
+  "parentBefore": 174,
+  "parentBeforeName": "Mess Corridor",
+  "parentAfter": 174,
+  "parentAfterName": "Mess Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 174,
+  "parentBeforeName": "Mess Corridor",
+  "parentAfter": 167,
+  "parentAfterName": "Mess Hall",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "GET CANTEEN",
+  "tag": null,
+  "parentBefore": 167,
+  "parentBeforeName": "Mess Hall",
+  "parentAfter": 167,
+  "parentAfterName": "Mess Hall",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "SLIDE KITCHEN CARD THROUGH SLOT",
+  "tag": null,
+  "parentBefore": 167,
+  "parentBeforeName": "Mess Hall",
+  "parentAfter": 167,
+  "parentAfterName": "Mess Hall",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 167,
+  "parentBeforeName": "Mess Hall",
+  "parentAfter": 165,
+  "parentAfterName": "Kitchen",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "EXAMINE MACHINE",
+  "tag": null,
+  "parentBefore": 165,
+  "parentBeforeName": "Kitchen",
+  "parentAfter": 165,
+  "parentAfterName": "Kitchen",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "OPEN CANTEEN",
+  "tag": null,
+  "parentBefore": 165,
+  "parentBeforeName": "Kitchen",
+  "parentAfter": 165,
+  "parentAfterName": "Kitchen",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "PUT IT IN NICHE",
+  "tag": null,
+  "parentBefore": 165,
+  "parentBeforeName": "Kitchen",
+  "parentAfter": 165,
+  "parentAfterName": "Kitchen",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "PRESS BUTTON",
+  "tag": null,
+  "parentBefore": 165,
+  "parentBeforeName": "Kitchen",
+  "parentAfter": 165,
+  "parentAfterName": "Kitchen",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "GET CANTEEN",
+  "tag": null,
+  "parentBefore": 165,
+  "parentBeforeName": "Kitchen",
+  "parentAfter": 165,
+  "parentAfterName": "Kitchen",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "CLOSE IT",
+  "tag": null,
+  "parentBefore": 165,
+  "parentBeforeName": "Kitchen",
+  "parentAfter": 165,
+  "parentAfterName": "Kitchen",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 165,
+  "parentBeforeName": "Kitchen",
+  "parentAfter": 167,
+  "parentAfterName": "Mess Hall",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "DROP KITCHEN CARD",
+  "tag": null,
+  "parentBefore": 167,
+  "parentBeforeName": "Mess Hall",
+  "parentAfter": 167,
+  "parentAfterName": "Mess Hall",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 167,
+  "parentBeforeName": "Mess Hall",
+  "parentAfter": 174,
+  "parentAfterName": "Mess Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 174,
+  "parentBeforeName": "Mess Corridor",
+  "parentAfter": 168,
+  "parentAfterName": "Dorm Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 168,
+  "parentBeforeName": "Dorm Corridor",
+  "parentAfter": 161,
+  "parentAfterName": "Corridor Junction",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 161,
+  "parentBeforeName": "Corridor Junction",
+  "parentAfter": 108,
+  "parentAfterName": "Elevator Lobby",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "PRESS BLUE BUTTON",
+  "tag": null,
+  "parentBefore": 108,
+  "parentBeforeName": "Elevator Lobby",
+  "parentAfter": 108,
+  "parentAfterName": "Elevator Lobby",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 108,
+  "parentBeforeName": "Elevator Lobby",
+  "parentAfter": 108,
+  "parentAfterName": "Elevator Lobby",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 108,
+  "parentBeforeName": "Elevator Lobby",
+  "parentAfter": 108,
+  "parentAfterName": "Elevator Lobby",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 108,
+  "parentBeforeName": "Elevator Lobby",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "SLIDE UPPER CARD THROUGH SLOT",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "PRESS UP BUTTON",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 100,
+  "parentAfterName": "Tower Core",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "NE",
+  "tag": null,
+  "parentBefore": 100,
+  "parentBeforeName": "Tower Core",
+  "parentAfter": 96,
+  "parentAfterName": "Comm Room",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "SW",
+  "tag": null,
+  "parentBefore": 96,
+  "parentBeforeName": "Comm Room",
+  "parentAfter": 100,
+  "parentAfterName": "Tower Core",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 100,
+  "parentBeforeName": "Tower Core",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "PRESS DOWN BUTTON",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 108,
+  "parentAfterName": "Elevator Lobby",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 108,
+  "parentBeforeName": "Elevator Lobby",
+  "parentAfter": 161,
+  "parentAfterName": "Corridor Junction",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 161,
+  "parentBeforeName": "Corridor Junction",
+  "parentAfter": 142,
+  "parentAfterName": "Mech Corridor North",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 142,
+  "parentBeforeName": "Mech Corridor North",
+  "parentAfter": 141,
+  "parentAfterName": "Mech Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Mech Corridor",
+  "parentAfter": 140,
+  "parentAfterName": "Mech Corridor South",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "SW",
+  "tag": null,
+  "parentBefore": 140,
+  "parentBeforeName": "Mech Corridor South",
+  "parentAfter": 126,
+  "parentAfterName": "Tool Room",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "GET FLASK",
+  "tag": null,
+  "parentBefore": 126,
+  "parentBeforeName": "Tool Room",
+  "parentAfter": 126,
+  "parentAfterName": "Tool Room",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 126,
+  "parentBeforeName": "Tool Room",
+  "parentAfter": 122,
+  "parentAfterName": "Machine Shop",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "PUT FLASK UNDER SPOUT",
+  "tag": null,
+  "parentBefore": 122,
+  "parentBeforeName": "Machine Shop",
+  "parentAfter": 122,
+  "parentAfterName": "Machine Shop",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "PRESS GRAY BUTTON",
+  "tag": null,
+  "parentBefore": 122,
+  "parentBeforeName": "Machine Shop",
+  "parentAfter": 122,
+  "parentAfterName": "Machine Shop",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "GET FLASK",
+  "tag": null,
+  "parentBefore": 122,
+  "parentBeforeName": "Machine Shop",
+  "parentAfter": 122,
+  "parentAfterName": "Machine Shop",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 122,
+  "parentBeforeName": "Machine Shop",
+  "parentAfter": 111,
+  "parentAfterName": "Robot Shop",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "OPEN FLOYD",
+  "tag": null,
+  "parentBefore": 111,
+  "parentBeforeName": "Robot Shop",
+  "parentAfter": 111,
+  "parentAfterName": "Robot Shop",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "TURN ON FLOYD",
+  "tag": null,
+  "parentBefore": 111,
+  "parentBeforeName": "Robot Shop",
+  "parentAfter": 111,
+  "parentAfterName": "Robot Shop",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "NW",
+  "tag": null,
+  "parentBefore": 111,
+  "parentBeforeName": "Robot Shop",
+  "parentAfter": 140,
+  "parentAfterName": "Mech Corridor South",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 140,
+  "parentBeforeName": "Mech Corridor South",
+  "parentAfter": 141,
+  "parentAfterName": "Mech Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 141,
+  "parentBeforeName": "Mech Corridor",
+  "parentAfter": 142,
+  "parentAfterName": "Mech Corridor North",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 142,
+  "parentBeforeName": "Mech Corridor North",
+  "parentAfter": 161,
+  "parentAfterName": "Corridor Junction",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "E",
+  "tag": null,
+  "parentBefore": 161,
+  "parentBeforeName": "Corridor Junction",
+  "parentAfter": 108,
+  "parentAfterName": "Elevator Lobby",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 108,
+  "parentBeforeName": "Elevator Lobby",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "SLIDE UPPER CARD THROUGH SLOT",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "PRESS UP BUTTON",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 100,
+  "parentAfterName": "Tower Core",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "NE",
+  "tag": null,
+  "parentBefore": 100,
+  "parentBeforeName": "Tower Core",
+  "parentAfter": 96,
+  "parentAfterName": "Comm Room",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "POUR FLUID IN HOLE",
+  "tag": null,
+  "parentBefore": 96,
+  "parentBeforeName": "Comm Room",
+  "parentAfter": 96,
+  "parentAfterName": "Comm Room",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "SW",
+  "tag": null,
+  "parentBefore": 96,
+  "parentBeforeName": "Comm Room",
+  "parentAfter": 100,
+  "parentAfterName": "Tower Core",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 100,
+  "parentBeforeName": "Tower Core",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "PRESS DOWN BUTTON",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 105,
+  "parentAfterName": "Upper Elevator",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 105,
+  "parentBeforeName": "Upper Elevator",
+  "parentAfter": 108,
+  "parentAfterName": "Elevator Lobby",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 108,
+  "parentBeforeName": "Elevator Lobby",
+  "parentAfter": 161,
+  "parentAfterName": "Corridor Junction",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 161,
+  "parentBeforeName": "Corridor Junction",
+  "parentAfter": 168,
+  "parentAfterName": "Dorm Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "S",
+  "tag": null,
+  "parentBefore": 168,
+  "parentBeforeName": "Dorm Corridor",
+  "parentAfter": 178,
+  "parentAfterName": "Dorm C",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "LIE DOWN",
+  "tag": null,
+  "parentBefore": 178,
+  "parentBeforeName": "Dorm C",
+  "parentAfter": 196,
+  "parentAfterName": "bed",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 196,
+  "parentBeforeName": "bed",
+  "parentAfter": 196,
+  "parentAfterName": "bed",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "STAND UP",
+  "tag": null,
+  "parentBefore": 196,
+  "parentBeforeName": "bed",
+  "parentAfter": 178,
+  "parentAfterName": "Dorm C",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "GET ALL",
+  "tag": null,
+  "parentBefore": 178,
+  "parentBeforeName": "Dorm C",
+  "parentAfter": 178,
+  "parentAfterName": "Dorm C",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "N",
+  "tag": null,
+  "parentBefore": 178,
+  "parentBeforeName": "Dorm C",
+  "parentAfter": 168,
+  "parentAfterName": "Dorm Corridor",
+  "playerId": 236,
+  "reply": ""
+ },
+ {
+  "cmd": "W",
+  "tag": null,
+  "parentBefore": 168,
+  "parentBeforeName": "Dorm Corridor",
+  "parentAfter": 174,
+  "parentAfterName": "Mess Corridor",
+  "playerId": 236,
+  "reply": ""
+ }
+]

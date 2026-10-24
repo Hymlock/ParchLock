@@ -1,0 +1,564 @@
+"GET LAMP AND SWORD"  231 -> 231 Inside the Barrow | lamp: Taken. sword: Taken. >
+"S"  231 -> 229 Narrow Tunnel | Narrow Tunnel You are standing at the southern end of a narrow tunnel where it opens into a wide cavern. The cavern is dimly illuminated by phosphores
+"S"  229 -> 228 Foot Bridge | Foot Bridge You are standing on a crude but sturdy wooden foot bridge crossing a deep ravine. The path runs north and south from here. >
+"S"  228 -> 227 Great Cavern | Great Cavern This is the center of the great cavern, carved out of the limestone. Stalactites and stalagmites of many sizes are everywhere. The room g
+"southwest" goto:Shallow Ford 227 -> 226 Shallow Ford | Shallow Ford You are at the southern edge of a great cavern. To the south across a shallow ford is a dark tunnel which looks like it was once enlarged
+"S"  226 -> 225 Dark Tunnel | You have moved into a dark place. It is pitch black. You are likely to be eaten by a grue. >
+"LIGHT LAMP"  225 -> 225 Dark Tunnel | The lamp is now on. Dark Tunnel This is a dark tunnel with dim light to the northeast. The tunnel is smooth but dusty and filled with twigs and leaves
+"SE"  225 -> 222 North End of Garden | North End of Garden This is the northern end of a formal garden. Hedges hide the cavern walls, and if you don't look up, the illusion is of a cloudy d
+"ENTER GAZEBO"  222 -> 220 Gazebo | Gazebo This is a gazebo in the midst of a formal garden. It is cool and restful here. A tea table adorns the center of the gazebo. Sitting on the tabl
+"GET TEAPOT, MAT, LETTER OPENER, MATCHBOOK AND PAPER"  220 -> 220 Gazebo | china teapot: Taken. place mat: Taken. letter opener: Taken. matchbook: Taken. newspaper: Taken. >
+"OUT"  220 -> 222 North End of Garden | North End of Garden There is a beautiful unicorn here cropping grass. Your sword has begun to glow very brightly. >
+"S"  222 -> 219 Formal Garden | Formal Garden This is the middle part of a formal garden. Hedges hide the cavern walls and a dim illumination comes from mosses far above. The path is
+"W"  219 -> 216 Path Near Stream | Path Near Stream The path follows the south edge of a deep ravine and heads northeast. A tunnel heads southwest, narrowing to a rather tight crawl. A 
+"SW"  216 -> 138 Carousel Room | Carousel Room You are in a large circular room whose high ceiling is lost in gloom. Eight identical passages leave the room. A loud whirring sound com
+"N"  138 -> 198 Cobwebby Corridor | You're not sure which direction is which. This room is very disorienting. Cobwebby Corridor A winding corridor is filled with cobwebs. Some are broken
+"northeast" goto:Topiary 198 -> 138 Carousel Room | Carousel Room >
+"east" goto:Topiary 138 -> 195 Menhir Room | You're not sure which direction is which. This room is very disorienting. Menhir Room This is a large room which was evidently used once as a quarry. 
+"north" goto:Topiary 195 -> 138 Carousel Room | Carousel Room >
+"east" goto:Topiary 138 -> 137 Riddle Room | You're not sure which direction is which. This room is very disorienting. Riddle Room This is a room which is bare on all sides. There is an exit down
+"down" goto:Topiary 137 -> 138 Carousel Room | Carousel Room >
+"east" goto:Topiary 138 -> 218 Topiary | You're not sure which direction is which. This room is very disorienting. Topiary This is the southern end of a formal garden. Hedges hide the cavern 
+"W"  218 -> 138 Carousel Room | Carousel Room >
+"N"  138 -> 216 Path Near Stream | You're not sure which direction is which. This room is very disorienting. Path Near Stream >
+"southwest" goto:Topiary:hub 216 -> 138 Carousel Room | Carousel Room >
+"east" goto:Topiary 138 -> 137 Riddle Room | You're not sure which direction is which. This room is very disorienting. Riddle Room >
+"down" goto:Topiary:hub 137 -> 138 Carousel Room | Carousel Room >
+"east" goto:Topiary 138 -> 218 Topiary | You're not sure which direction is which. This room is very disorienting. Topiary >
+"W"  218 -> 138 Carousel Room | Carousel Room >
+"N"  138 -> 215 Marble Hall | You're not sure which direction is which. This room is very disorienting. Marble Hall This is an arched hall of fine marble. The hall stops abruptly t
+"south" goto:Topiary:hub 215 -> 138 Carousel Room | Carousel Room >
+"east" goto:Topiary 138 -> 195 Menhir Room | You're not sure which direction is which. This room is very disorienting. Menhir Room >
+"north" goto:Topiary:hub 195 -> 138 Carousel Room | Carousel Room >
+"east" goto:Topiary 138 -> 195 Menhir Room | You're not sure which direction is which. This room is very disorienting. Menhir Room >
+"north" goto:Topiary:hub 195 -> 138 Carousel Room | Carousel Room >
+"east" goto:Topiary 138 -> 215 Marble Hall | You're not sure which direction is which. This room is very disorienting. Marble Hall There is a square brick here which feels like clay. >
+"south" goto:Topiary:hub 215 -> 138 Carousel Room | Carousel Room >
+"east" goto:Topiary 138 -> 218 Topiary | You're not sure which direction is which. This room is very disorienting. Topiary >
+"W"  218 -> 138 Carousel Room | Carousel Room >
+"N"  138 -> 201 Cool Room | You're not sure which direction is which. This room is very disorienting. Cool Room The room is cool and damp. The air is misty. A twisty path from th
+"southeast" goto:Marble Hall:hub 201 -> 138 Carousel Room | Carousel Room >
+"north" goto:Marble Hall 138 -> 195 Menhir Room | You're not sure which direction is which. This room is very disorienting. Menhir Room >
+"north" goto:Marble Hall:hub 195 -> 138 Carousel Room | Carousel Room >
+"north" goto:Marble Hall 138 -> 216 Path Near Stream | You're not sure which direction is which. This room is very disorienting. Path Near Stream >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrologic
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Marble Hall 216 -> 216 Path Near Stream | You can't go that way. >
+"N"  216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. You feel cooler and less angry now. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrologic
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"FILL POT WITH WATER"  216 -> 216 Path Near Stream | You can't see any water here! >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrologic
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You are frozen solid. You might as well wait it out, because you can't do anything else in this state. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You are frozen solid. You might as well wait it out, because you can't do anything else in this state. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You are frozen solid. You might as well wait it out, because you can't do anything else in this state. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You are frozen solid. You might as well wait it out, because you can't do anything else in this state. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You are frozen solid. You might as well wait it out, because you can't do anything else in this state. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You are frozen solid. You might as well wait it out, because you can't do anything else in this state. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You are frozen solid. You might as well wait it out, because you can't do anything else in this state. Your little finger begins to twitch, and then y
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Deep Ford 216 -> 216 Path Near Stream | You can't go that way. >
+"N"  216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrologic
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Ledge in Ravine 216 -> 216 Path Near Stream | You can't go that way. >
+"U"  216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrologic
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"OPEN LID"  216 -> 216 Path Near Stream | You can't see any lid here! >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrologic
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. You feel cooler and less angry now. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"PUT MAT UNDER DOOR"  216 -> 216 Path Near Stream | You can't see any door here! >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. The lamp appears a bit dimmer. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"PUT OPENER IN KEYHOLE"  216 -> 216 Path Near Stream | You can't see any keyhole here! >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrologic
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | I suppose you plan to do that by flapping your arms? >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | I suppose you plan to do that by flapping your arms? >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | I suppose you plan to do that by flapping your arms? >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | I suppose you plan to do that by flapping your arms? >
+"REMOVE OPENER AND DROP IT"  216 -> 216 Path Near Stream | You already have that! The letter opener drops to the ground. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | I suppose you plan to do that by flapping your arms? >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | I suppose you plan to do that by flapping your arms? >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | I suppose you plan to do that by flapping your arms? >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | I suppose you plan to do that by flapping your arms? >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | I suppose you plan to do that by flapping your arms? >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | I suppose you plan to do that by flapping your arms? >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | I suppose you plan to do that by flapping your arms? >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | I suppose you plan to do that by flapping your arms? >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | I suppose you plan to do that by flapping your arms? >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | I suppose you plan to do that by flapping your arms? You sink quietly down again. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"PULL MAT"  216 -> 216 Path Near Stream | You aren't an accomplished enough juggler. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"GET KEY"  216 -> 216 Path Near Stream | You can't see any key here! >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"UNLOCK DOOR WITH KEY"  216 -> 216 Path Near Stream | Those things aren't here! >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"OPEN DOOR"  216 -> 216 Path Near Stream | You can't see any door here! >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrologic
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. You feel cooler and less angry now. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"DROP KEY"  216 -> 216 Path Near Stream | You don't have that! >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"N"  216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"GET BLUE SPHERE"  216 -> 216 Path Near Stream | You can't see any blue sphere here! >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrologic
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Dreary Room 216 -> 216 Path Near Stream | You can't go that way. >
+"S"  216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 216 Path Near Stream | You can't go that way. >
+"west" goto:Tiny Room 216 -> 138 Carousel Room | You can't go that way. A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrologic
+"north" goto:Tiny Room 138 -> 137 Riddle Room | You're not sure which direction is which. This room is very disorienting. Riddle Room >
+"down" goto:Tiny Room:hub 137 -> 138 Carousel Room | Carousel Room >
+"north" goto:Tiny Room 138 -> 195 Menhir Room | You're not sure which direction is which. This room is very disorienting. Menhir Room >
+"north" goto:Tiny Room:hub 195 -> 138 Carousel Room | Carousel Room >
+"north" goto:Tiny Room 138 -> 198 Cobwebby Corridor | You're not sure which direction is which. This room is very disorienting. Cobwebby Corridor There is a coil of black, braided string here. >
+"northeast" goto:Tiny Room:hub 198 -> 138 Carousel Room | Carousel Room >
+"north" goto:Tiny Room 138 -> 198 Cobwebby Corridor | You're not sure which direction is which. This room is very disorienting. Cobwebby Corridor There is a coil of black, braided string here. >
+"northeast" goto:Tiny Room:hub 198 -> 138 Carousel Room | Carousel Room >
+"north" goto:Tiny Room 138 -> 198 Cobwebby Corridor | You're not sure which direction is which. This room is very disorienting. Cobwebby Corridor There is a coil of black, braided string here. >
+"northeast" goto:Tiny Room:hub 198 -> 138 Carousel Room | Carousel Room >
+"north" goto:Tiny Room 138 -> 137 Riddle Room | You're not sure which direction is which. This room is very disorienting. Riddle Room >
+"down" goto:Tiny Room:hub 137 -> 138 Carousel Room | Carousel Room >
+"north" goto:Tiny Room 138 -> 201 Cool Room | You're not sure which direction is which. This room is very disorienting. Cool Room >
+"D"  201 -> 201 Cool Room | You can't go that way. >
+"cross" goto:Ledge in Ravine 201 -> 202 Stone Bridge | Stone Bridge This is the middle of a ruined but still impressive stone bridge spanning a deep chasm. Water flows far beneath. A paved path leads north
+"north" goto:Ledge in Ravine 202 -> 211 Dragon Room | Dragon Room The room is a large cavern full of broken stone. The walls are scorched and there are deep scratches on the floor. A sooty dry smell is ve
+"east" goto:Ledge in Ravine 211 -> 202 Stone Bridge | All at once, you are overcome by fear! There's is a huge red dragon in here! Maybe it's after you! You run from the room screaming in terror! Stone Br
+"northeast" goto:Ledge in Ravine:random 202 -> 202 Stone Bridge | You can't go that way. >
+"southwest" goto:Ledge in Ravine:random 202 -> 202 Stone Bridge | You can't go that way. >
+"south" goto:Ledge in Ravine:random 202 -> 201 Cool Room | Cool Room >
+"southwest" goto:Ledge in Ravine:random 201 -> 201 Cool Room | You can't go that way. >
+"north" goto:Ledge in Ravine:random 201 -> 202 Stone Bridge | Stone Bridge >
+"up" goto:Ledge in Ravine:random 202 -> 202 Stone Bridge | You can't go that way. >
+"northwest" goto:Ledge in Ravine:random 202 -> 202 Stone Bridge | You can't go that way. >
+"southeast" goto:Ledge in Ravine:random 202 -> 202 Stone Bridge | You can't go that way. >
+"north" goto:Ledge in Ravine:random 202 -> 211 Dragon Room | Dragon Room A huge red dragon is lying here, blocking the entrance to a tunnel leading north. Smoke curls from his nostrils and out between his teeth.
+"down" goto:Ledge in Ravine:random 211 -> 202 Stone Bridge | All at once, you are overcome by fear! There's is a huge red dragon in here! Maybe it's after you! You run from the room screaming in terror! Stone Br
+"northwest" goto:Ledge in Ravine:random 202 -> 202 Stone Bridge | You can't go that way. >
+"southwest" goto:Ledge in Ravine:random 202 -> 202 Stone Bridge | You can't go that way. >
+"down" goto:Ledge in Ravine:random 202 -> 202 Stone Bridge | It's a long way down. >
+"southeast" goto:Ledge in Ravine:random 202 -> 202 Stone Bridge | You can't go that way. >
+"up" goto:Ledge in Ravine:random 202 -> 202 Stone Bridge | You can't go that way. >
+"southeast" goto:Ledge in Ravine:random 202 -> 202 Stone Bridge | You can't go that way. >
+"south" goto:Ledge in Ravine:random 202 -> 201 Cool Room | Cool Room >
+"north" goto:Ledge in Ravine:random 201 -> 202 Stone Bridge | Stone Bridge You suddenly decide that the Wizard isn't that terrifying... >
+"northeast" goto:Ledge in Ravine:random 202 -> 202 Stone Bridge | You can't go that way. >
+"down" goto:Ledge in Ravine:random 202 -> 202 Stone Bridge | It's a long way down. >
+"north" goto:Ledge in Ravine:random 202 -> 211 Dragon Room | Dragon Room A huge red dragon is lying here, blocking the entrance to a tunnel leading north. Smoke curls from his nostrils and out between his teeth.
+"east" goto:Ledge in Ravine:random 211 -> 212 End of Ledge | End of Ledge A ledge from the east ends here, and a tunnel leads north into the wall. There is a rather odd smokey odor in the warm air of the tunnel.
+"W"  212 -> 212 End of Ledge | You can't go that way. >
+"N"  212 -> 211 Dragon Room | Dragon Room A huge red dragon is lying here, blocking the entrance to a tunnel leading north. Smoke curls from his nostrils and out between his teeth.
+"HIT DRAGON WITH SWORD"  211 -> 211 Dragon Room | You don't have that! >
+"S"  211 -> 202 Stone Bridge | Stone Bridge >
+"HIT DRAGON WITH SWORD"  202 -> 202 Stone Bridge | You don't have that! >
+"S"  202 -> 201 Cool Room | Cool Room >
+"HIT DRAGON WITH SWORD"  201 -> 201 Cool Room | You don't have that! >
+"W"  201 -> 200 Ice Room | Ice Room This is a large hall of ancient lava, since worn smooth by the movement of a glacier. A large passage exits to the east and an upward lava tu
+"DROP SWORD"  200 -> 200 Ice Room | You don't have that! >
+"E"  200 -> 201 Cool Room | Cool Room >
+"N"  201 -> 202 Stone Bridge | Stone Bridge >
+"N"  202 -> 211 Dragon Room | Dragon Room A huge red dragon is lying here, blocking the entrance to a tunnel leading north. Smoke curls from his nostrils and out between his teeth.
+"N"  211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"northeast" goto:Dragon's Lair:random 211 -> 211 Dragon Room | You can't go that way. >
+"northwest" goto:Dragon's Lair:random 211 -> 211 Dragon Room | You can't go that way. >
+"south" goto:Dragon's Lair:random 211 -> 202 Stone Bridge | Stone Bridge >
+"southwest" goto:Dragon's Lair:random 202 -> 202 Stone Bridge | You can't go that way. >
+"up" goto:Dragon's Lair:random 202 -> 202 Stone Bridge | You can't go that way. >
+"down" goto:Dragon's Lair:random 202 -> 202 Stone Bridge | It's a long way down. >
+"northeast" goto:Dragon's Lair:random 202 -> 202 Stone Bridge | You can't go that way. >
+"west" goto:Dragon's Lair:random 202 -> 202 Stone Bridge | You can't go that way. >
+"southeast" goto:Dragon's Lair:random 202 -> 202 Stone Bridge | You can't go that way. >
+"northeast" goto:Dragon's Lair:random 202 -> 202 Stone Bridge | You can't go that way. >
+"east" goto:Dragon's Lair:random 202 -> 202 Stone Bridge | You can't go that way. A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrologic
+"southeast" goto:Dragon's Lair:random 202 -> 202 Stone Bridge | You can't go that way. >
+"down" goto:Dragon's Lair:random 202 -> 202 Stone Bridge | It's a long way down. >
+"north" goto:Dragon's Lair:random 202 -> 211 Dragon Room | Dragon Room A huge red dragon is lying here, blocking the entrance to a tunnel leading north. Smoke curls from his nostrils and out between his teeth.
+"southeast" goto:Dragon's Lair:random 211 -> 211 Dragon Room | You can't go that way. >
+"northwest" goto:Dragon's Lair:random 211 -> 211 Dragon Room | You can't go that way. >
+"north" goto:Dragon's Lair:random 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"east" goto:Dragon's Lair:random 211 -> 212 End of Ledge | End of Ledge >
+"down" goto:Dragon's Lair:random 212 -> 212 End of Ledge | There are a lot of sharp rocks down there. >
+"down" goto:Dragon's Lair:random 212 -> 212 End of Ledge | There are a lot of sharp rocks down there. >
+"northwest" goto:Dragon's Lair:random 212 -> 212 End of Ledge | You can't go that way. >
+"east" goto:Dragon's Lair:random 212 -> 213 Ledge in Ravine | Ledge in Ravine You are on a narrow ledge near the bottom of a deep ravine. The ledge continues to the west. A precarious climb up to another tiny led
+"east" goto:Dragon's Lair:random 213 -> 213 Ledge in Ravine | You can't go that way. >
+"northeast" goto:Dragon's Lair:random 213 -> 213 Ledge in Ravine | You can't go that way. >
+"southwest" goto:Dragon's Lair:random 213 -> 213 Ledge in Ravine | You can't go that way. >
+"OPEN CHEST"  213 -> 213 Ledge in Ravine | You can't see any chest here! >
+"west" goto:Dragon's Lair:random 213 -> 212 End of Ledge | End of Ledge >
+"in" goto:Dragon's Lair 212 -> 211 Dragon Room | Dragon Room A huge red dragon is lying here, blocking the entrance to a tunnel leading north. Smoke curls from his nostrils and out between his teeth.
+"in" goto:Dragon's Lair 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"in" goto:Dragon's Lair 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"in" goto:Dragon's Lair 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"in" goto:Dragon's Lair 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"in" goto:Dragon's Lair 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"in" goto:Dragon's Lair 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"in" goto:Dragon's Lair 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"in" goto:Dragon's Lair 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"in" goto:Dragon's Lair 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"in" goto:Dragon's Lair 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"in" goto:Dragon's Lair 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"in" goto:Dragon's Lair 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"in" goto:Dragon's Lair 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"in" goto:Dragon's Lair 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"in" goto:Dragon's Lair 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"in" goto:Dragon's Lair 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >
+"in" goto:Dragon's Lair 211 -> 211 Dragon Room | The dragon hisses at you and blocks your way. >

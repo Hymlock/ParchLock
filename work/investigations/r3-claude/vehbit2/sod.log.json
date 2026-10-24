@@ -1,0 +1,732 @@
+[
+ {
+  "cmd": "WAIT",
+  "tag": null,
+  "parentBefore": 36,
+  "parentBeforeName": "Twisted Forest",
+  "parentAfter": 128,
+  "parentAfterName": "bed",
+  "playerId": 223,
+  "reply": "The hellhound reaches you and tears you apart with its powerful teeth.\n \n...and a moment later you wake up in a cold sweat and realize you've been dreaming.\n \nSORCERER\nInfocom interactive fiction - a fantasy story\nCopyright (c) 1984 by Infocom, Inc. All rights reserved.\nSORCERER is a trademark of Infocom, Inc.\nRelease 15 / Serial number 851108\n \nYour frotz spell seems to have worn off during the night, and it is now pitch black.\n \n>"
+ },
+ {
+  "cmd": "FROTZ BOOK",
+  "tag": null,
+  "parentBefore": 128,
+  "parentBeforeName": "bed",
+  "parentAfter": 128,
+  "parentAfterName": "bed",
+  "playerId": 223,
+  "reply": "There is an almost blinding flash of light as the spell book begins to glow! It slowly fades to a less painful level, but the spell book is now quite usable as a light source.\n \nYour Quarters, in the bed\nThis is your chamber in the Hall of the Guild of Enchanters, with a doorway to the west. A private chamber is a great privilege, especially for an Enchanter as young as yourself, but how many Enchanters can say they defeated the infamous Krill?\n \n>"
+ },
+ {
+  "cmd": "GET UP",
+  "tag": null,
+  "parentBefore": 128,
+  "parentBeforeName": "bed",
+  "parentAfter": 17,
+  "parentAfterName": "Your Quarters",
+  "playerId": 223,
+  "reply": "You are now on your feet.\n \n>"
+ },
+ {
+  "cmd": "north",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 17,
+  "parentBeforeName": "Your Quarters",
+  "parentAfter": 17,
+  "parentAfterName": "Your Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "down",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 17,
+  "parentBeforeName": "Your Quarters",
+  "parentAfter": 17,
+  "parentAfterName": "Your Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "northeast",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 17,
+  "parentBeforeName": "Your Quarters",
+  "parentAfter": 17,
+  "parentAfterName": "Your Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "down",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 17,
+  "parentBeforeName": "Your Quarters",
+  "parentAfter": 17,
+  "parentAfterName": "Your Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "south",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 17,
+  "parentBeforeName": "Your Quarters",
+  "parentAfter": 17,
+  "parentAfterName": "Your Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "up",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 17,
+  "parentBeforeName": "Your Quarters",
+  "parentAfter": 17,
+  "parentAfterName": "Your Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "down",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 17,
+  "parentBeforeName": "Your Quarters",
+  "parentAfter": 17,
+  "parentAfterName": "Your Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "north",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 17,
+  "parentBeforeName": "Your Quarters",
+  "parentAfter": 17,
+  "parentAfterName": "Your Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "northeast",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 17,
+  "parentBeforeName": "Your Quarters",
+  "parentAfter": 17,
+  "parentAfterName": "Your Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "northwest",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 17,
+  "parentBeforeName": "Your Quarters",
+  "parentAfter": 17,
+  "parentAfterName": "Your Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "down",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 17,
+  "parentBeforeName": "Your Quarters",
+  "parentAfter": 17,
+  "parentAfterName": "Your Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "north",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 17,
+  "parentBeforeName": "Your Quarters",
+  "parentAfter": 17,
+  "parentAfterName": "Your Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "east",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 17,
+  "parentBeforeName": "Your Quarters",
+  "parentAfter": 17,
+  "parentAfterName": "Your Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "southwest",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 17,
+  "parentBeforeName": "Your Quarters",
+  "parentAfter": 17,
+  "parentAfterName": "Your Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "southeast",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 17,
+  "parentBeforeName": "Your Quarters",
+  "parentAfter": 17,
+  "parentAfterName": "Your Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 17,
+  "parentBeforeName": "Your Quarters",
+  "parentAfter": 67,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "Hallway\nRooms lie to the east and west from this north-south corridor. A heavy wooden door, currently closed, leads north.\nTacked to the doorframe of your room is a note, hurriedly scribbled on parchment.\n \nYou are now a bit thirsty.\n \n>"
+ },
+ {
+  "cmd": "northeast",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 67,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 67,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "north",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 67,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 67,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "The heavy wooden door is closed.\n \n>"
+ },
+ {
+  "cmd": "northwest",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 67,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 67,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \nYou are now a bit hungry.\n \n>"
+ },
+ {
+  "cmd": "north",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 67,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 67,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "The heavy wooden door is closed.\n \n>"
+ },
+ {
+  "cmd": "south",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 67,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "Hallway\nRooms lie to the east and west from this north-south corridor. A large marble archway to the south leads into an open area.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 13,
+  "parentAfterName": "Helistar's Quarters",
+  "playerId": 223,
+  "reply": "Helistar's Quarters\nHelistar is one of the foremost members of the Circle, and this is her private chamber.\nAmong Helistar's possessions is a scroll, new and shiny.\n \n>"
+ },
+ {
+  "cmd": "east",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 13,
+  "parentBeforeName": "Helistar's Quarters",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "Hallway\n \nThe Guild Hall doorbell chimes.\n \n>"
+ },
+ {
+  "cmd": "northwest",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "down",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \nYou are now somewhat thirsty.\n \n>"
+ },
+ {
+  "cmd": "northwest",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "southwest",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "northwest",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "south",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 18,
+  "parentAfterName": "Lobby",
+  "playerId": 223,
+  "reply": "Lobby\nThis is the entrance lobby of the Guild Hall. Befitting the status and wealth of the Guild, the lobby is finished with polished Antharian marble, inlaid with intricate patterns of silver leaf. To the north is a wide arch, and smaller openings flank the area on the eastern and western sides, as well as the northeastern and northwestern corners. A narrow stair leads downward. Through another arch to the south, you can see the entrance steps and the main road into town.\nAffixed to the southern arch is an ornate brass receptacle, intended for use by messengers.\n \n>"
+ },
+ {
+  "cmd": "east",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 18,
+  "parentBeforeName": "Lobby",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": "Library\nThis is a study chamber for members of the Guild. Usually, there would be several elder Enchanters patiently training novices, but no one is here at the moment. The only exit is west.\nLying open on a stand in one corner is a heavy volume, probably a copy of the Encyclopedia Frobizzica.\nThe servants have been lax lately, for a scroll is lying among the dust in the corner.\n \nYou are now somewhat hungry.\n \n>"
+ },
+ {
+  "cmd": "northwest",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "up",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 18,
+  "parentAfterName": "Lobby",
+  "playerId": 223,
+  "reply": "Lobby\nAffixed to the southern arch is an ornate brass receptacle, intended for use by messengers.\n \n>"
+ },
+ {
+  "cmd": "south",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 18,
+  "parentBeforeName": "Lobby",
+  "parentAfter": 18,
+  "parentAfterName": "Lobby",
+  "playerId": 223,
+  "reply": "A tiny warning nymph appears, floating in the air next to your ear. \"There's no one else here,\" it reminds you, \"so you'd better not leave just now. Bye!\" It winks at you before vanishing.\n \nYou are now quite thirsty.\n \n>"
+ },
+ {
+  "cmd": "north",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 18,
+  "parentBeforeName": "Lobby",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "Hallway\n \n>"
+ },
+ {
+  "cmd": "north",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 67,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "Hallway\nTacked to the doorframe of your room is a note, hurriedly scribbled on parchment.\n \n>"
+ },
+ {
+  "cmd": "southwest",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 67,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 67,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "northwest",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 67,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 67,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 67,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "Belboz's Quarters\nThe personal chamber of Belboz, who presides over the Circle of Enchanters, is appointed with a beautiful woven wall hanging, an exotic morgia plant, and a wide darkwood desk crafted by the artisans of Gurth. The hallway lies to the east.\nPacing back and forth on a perch in the corner is Belboz's prized pet parrot, native to the jungles of Miznia.\n \n\"Squawk! You should never have let down your mindshield, you doddering old Enchanter. Squawk!\"\n \n>"
+ },
+ {
+  "cmd": "south",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "southwest",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \nYou are now quite hungry.\n \n\"Squawk! This tea is cold! Get me another cup. Squawk!\"\n \n>"
+ },
+ {
+  "cmd": "north",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n\"Squawk! This tea is cold! Get me another cup. Squawk!\"\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \nYou are now very thirsty.\n \n>"
+ },
+ {
+  "cmd": "north",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "up",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n\"Squawk! You should never have let down your mindshield, you doddering old Enchanter. Squawk!\"\n \n>"
+ },
+ {
+  "cmd": "north",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n\"Squawk! Now where can I hide this key? Squawk!\"\n \n>"
+ },
+ {
+  "cmd": "down",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "south",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "southeast",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "south",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "down",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "south",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \nYou are now extremely thirsty.\n \nYou are now very hungry.\n \n>"
+ },
+ {
+  "cmd": "north",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "southwest",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "up",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n\"Squawk! Pollibar want a cracker! Squawk!\"\n \n>"
+ },
+ {
+  "cmd": "northeast",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "southwest",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "northeast",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "northeast",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \nYou are now incredibly thirsty.\n \n>"
+ },
+ {
+  "cmd": "up",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n\"Squawk! Pollibar want a cracker! Squawk!\"\n \n>"
+ },
+ {
+  "cmd": "south",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \nYou are now extremely hungry.\n \n>"
+ },
+ {
+  "cmd": "east",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 67,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "Hallway\nTacked to the doorframe of your room is a note, hurriedly scribbled on parchment.\n \n>"
+ },
+ {
+  "cmd": "north",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 67,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 67,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "The heavy wooden door is closed.\n \n>"
+ },
+ {
+  "cmd": "north",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 67,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 67,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "The heavy wooden door is closed.\n \n>"
+ },
+ {
+  "cmd": "southeast",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 67,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 67,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "southeast",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 67,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 67,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \n>"
+ },
+ {
+  "cmd": "west",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 67,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "Belboz's Quarters\nPacing back and forth on a perch in the corner is Belboz's prized pet parrot, native to the jungles of Miznia.\n \n>"
+ },
+ {
+  "cmd": "south",
+  "tag": "goto:Roller Coaster:random",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "You can't go that way.\n \nYou pass out from lack of food and water.\n \n   ****  You have died  ****\n \nUnfortunately, you made no provisions for your untimely death.\n \nYour score is 5 of a possible 400, in 72 moves. This puts you in the class of Charlatan.\n \nWould you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, RESTORE, or QUIT):\n \n>"
+ }
+]

@@ -1,0 +1,1822 @@
+[
+ {
+  "cmd": null,
+  "state": {
+   "playerId": 223,
+   "roomId": 36,
+   "parent": 36,
+   "parentName": "Twisted Forest",
+   "lines": 8
+  },
+  "reply": "You are in a strange location, but you cannot remember how you got here. Everything is hazy, as though viewed through a gauze...\n \nTwisted Forest\nYou are on a path through a blighted forest. The trees are sickly, and there is no undergrowth at all. One tree here looks climbable. The path, which ends here, continues to the northeast.\n \nA hellhound is racing straight toward you, its open jaws displaying rows of razor-sharp teeth.\n \n>"
+ },
+ {
+  "cmd": "WAIT",
+  "parentBefore": 36,
+  "parentBeforeName": "Twisted Forest",
+  "parentAfter": 128,
+  "parentAfterName": "bed",
+  "playerId": 223,
+  "reply": "  / SORCERER / Infocom interactive fiction - a fantasy story / Copyright (c) 1984 by Infocom, Inc. All rights reserved. / SORCERER is a trademark of Infocom, Inc. / Release 15 / Serial number 851108 /   / Your frotz spell seems to have worn off during the night, and it is now pitch black. /   / > "
+ },
+ {
+  "cmd": "FROTZ BOOK",
+  "parentBefore": 128,
+  "parentBeforeName": "bed",
+  "parentAfter": 128,
+  "parentAfterName": "bed",
+  "playerId": 223,
+  "reply": "  / Your frotz spell seems to have worn off during the night, and it is now pitch black. /   / >FROTZ BOOK / There is an almost blinding flash of light as the spell book begins to glow! It slowly fades to a less painful level, but the spell book is now quite usable as a light source. /   / Your Quarters, in the bed / This is your chamber in the Hall of the Guild of Enchanters, with a doorway to the west. A private chamber is a great privilege, especially for an Enchanter as young as yourself, bu"
+ },
+ {
+  "cmd": "GET UP",
+  "parentBefore": 128,
+  "parentBeforeName": "bed",
+  "parentAfter": 17,
+  "parentAfterName": "Your Quarters",
+  "playerId": 223,
+  "reply": ">FROTZ BOOK / There is an almost blinding flash of light as the spell book begins to glow! It slowly fades to a less painful level, but the spell book is now quite usable as a light source. /   / Your Quarters, in the bed / This is your chamber in the Hall of the Guild of Enchanters, with a doorway to the west. A private chamber is a great privilege, especially for an Enchanter as young as yourself, but how many Enchanters can say they defeated the infamous Krill? /   / >GET UP / You are now on "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 17,
+  "parentBeforeName": "Your Quarters",
+  "parentAfter": 67,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "  / >GET UP / You are now on your feet. /   / >W / Hallway / Rooms lie to the east and west from this north-south corridor. A heavy wooden door, currently closed, leads north. / Tacked to the doorframe of your room is a note, hurriedly scribbled on parchment. /   / > "
+ },
+ {
+  "cmd": "READ NOTE",
+  "parentBefore": 67,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 67,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "Rooms lie to the east and west from this north-south corridor. A heavy wooden door, currently closed, leads north. / Tacked to the doorframe of your room is a note, hurriedly scribbled on parchment. /   / >READ NOTE / (taking the scribbled note first) / \"I have taken the apprentices into town to shop for the Guild picnic. I tried rousing you, but you seemed deep asleep. By the way, have you seen Belboz anywhere? It's not like him to leave without telling someone -- but then, he's been acting pre"
+ },
+ {
+  "cmd": "DROP IT",
+  "parentBefore": 67,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 67,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": ">READ NOTE / (taking the scribbled note first) / \"I have taken the apprentices into town to shop for the Guild picnic. I tried rousing you, but you seemed deep asleep. By the way, have you seen Belboz anywhere? It's not like him to leave without telling someone -- but then, he's been acting pretty odd of late. /   /                             -- Frobar\" /   / >DROP IT / Dropped. /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 67,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "  / >DROP IT / Dropped. /   / >W / Belboz's Quarters / The personal chamber of Belboz, who presides over the Circle of Enchanters, is appointed with a beautiful woven wall hanging, an exotic morgia plant, and a wide darkwood desk crafted by the artisans of Gurth. The hallway lies to the east. / Pacing back and forth on a perch in the corner is Belboz's prized pet parrot, native to the jungles of Miznia. /   / > "
+ },
+ {
+  "cmd": "OPEN DESK",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "  / >W / Belboz's Quarters / The personal chamber of Belboz, who presides over the Circle of Enchanters, is appointed with a beautiful woven wall hanging, an exotic morgia plant, and a wide darkwood desk crafted by the artisans of Gurth. The hallway lies to the east. / Pacing back and forth on a perch in the corner is Belboz's prized pet parrot, native to the jungles of Miznia. /   / >OPEN DESK / Opening the desk drawer reveals a tiny box, an infotater, and a journal. /   / > "
+ },
+ {
+  "cmd": "GET BOX AND JOURNAL",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "Pacing back and forth on a perch in the corner is Belboz's prized pet parrot, native to the jungles of Miznia. /   / >OPEN DESK / Opening the desk drawer reveals a tiny box, an infotater, and a journal. /   / >GET BOX AND JOURNAL / tiny box: Taken. / journal: Taken. /   / > "
+ },
+ {
+  "cmd": "LOOK BEHIND TAPESTRY",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "Opening the desk drawer reveals a tiny box, an infotater, and a journal. /   / >GET BOX AND JOURNAL / tiny box: Taken. / journal: Taken. /   / >LOOK BEHIND TAPESTRY / As you move the tapestry, a key falls out from behind it and lands on the floor. /   / > "
+ },
+ {
+  "cmd": "GET KEY",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "tiny box: Taken. / journal: Taken. /   / >LOOK BEHIND TAPESTRY / As you move the tapestry, a key falls out from behind it and lands on the floor. /   / >GET KEY / Taken. /   / > "
+ },
+ {
+  "cmd": "OPEN JOURNAL",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": ">GET KEY / Taken. /   / >OPEN JOURNAL / (with the key) / The journal springs open. /   / \"Squawk! This tea is cold! Get me another cup. Squawk!\" /   / > "
+ },
+ {
+  "cmd": "READ IT",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "  / There is one interesting entry toward the end of the book. Belboz refers to an ancient and evil force known simply as Jeearr, a demon whose powers could endanger the Circle and possibly the entire kingdom. He has decided to conduct some dangerous exploratory experiments, operating alone to shield the Circle from the perils involved. /   / The last three entries are strange and frightening -- written in a hand quite different from that of Belboz, and in a language totally unfamiliar to you. /"
+ },
+ {
+  "cmd": "DROP JOURNAL AND KEY",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 115,
+  "parentAfterName": "Belboz's Quarters",
+  "playerId": 223,
+  "reply": "  / On the inside cover is an inscription, written in a light script, which reads \"Current code: hellhound\". /   / \"Squawk! Where did I leave my spectacles? Squawk!\" /   / >DROP JOURNAL AND KEY / journal: Dropped. / small key: Dropped. /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 115,
+  "parentBeforeName": "Belboz's Quarters",
+  "parentAfter": 67,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "  / >DROP JOURNAL AND KEY / journal: Dropped. / small key: Dropped. /   / >E / Hallway / There is a scribbled note here. /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 67,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": "  / >E / Hallway / There is a scribbled note here. /   / >S / Hallway / Rooms lie to the east and west from this north-south corridor. A large marble archway to the south leads into an open area. /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 18,
+  "parentAfterName": "Lobby",
+  "playerId": 223,
+  "reply": ">S / Hallway / Rooms lie to the east and west from this north-south corridor. A large marble archway to the south leads into an open area. /   / >S / Lobby / This is the entrance lobby of the Guild Hall. Befitting the status and wealth of the Guild, the lobby is finished with polished Antharian marble, inlaid with intricate patterns of silver leaf. To the north is a wide arch, and smaller openings flank the area on the eastern and western sides, as well as the northeastern and northwestern corne"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 18,
+  "parentBeforeName": "Lobby",
+  "parentAfter": 231,
+  "parentAfterName": "Store Room",
+  "playerId": 223,
+  "reply": "Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. /   / >W / Store Room / This is a closet for storage. The only exit is east. / Among the provisions here is a small ochre-colored vial, closed and labelled with tiny lettering. / There is a calendar here (providing light). / There is a depleted matchbook here. /   / > "
+ },
+ {
+  "cmd": "GET VIAL, CALENDAR AND MATCHBOOK",
+  "parentBefore": 231,
+  "parentBeforeName": "Store Room",
+  "parentAfter": 231,
+  "parentAfterName": "Store Room",
+  "playerId": 223,
+  "reply": "There is a depleted matchbook here. /   / >GET VIAL, CALENDAR AND MATCHBOOK / ochre vial: Taken. / calendar: Taken. / depleted matchbook: Taken. /   / You are now a bit thirsty. /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 231,
+  "parentBeforeName": "Store Room",
+  "parentAfter": 18,
+  "parentAfterName": "Lobby",
+  "playerId": 223,
+  "reply": "calendar: Taken. / depleted matchbook: Taken. /   / You are now a bit thirsty. /   / >E / Lobby / Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. /   / > "
+ },
+ {
+  "cmd": "OPEN RECEPTACLE",
+  "parentBefore": 18,
+  "parentBeforeName": "Lobby",
+  "parentAfter": 18,
+  "parentAfterName": "Lobby",
+  "playerId": 223,
+  "reply": "You are now a bit thirsty. /   / >E / Lobby / Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. /   / >OPEN RECEPTACLE / Opened. /   / > "
+ },
+ {
+  "cmd": "READ MATCHBOOK",
+  "parentBefore": 18,
+  "parentBeforeName": "Lobby",
+  "parentAfter": 18,
+  "parentAfterName": "Lobby",
+  "playerId": 223,
+  "reply": "mailbox. Our shipping department will / use the latest in temporal travel / techniques to insure that your potion / arrives the same day you order it! / (Orders received before noon will / arrive the day before you order).\" /   / You are now a bit hungry. /   / > "
+ },
+ {
+  "cmd": "PUT IT IN RECEPTACLE",
+  "parentBefore": 18,
+  "parentBeforeName": "Lobby",
+  "parentAfter": 18,
+  "parentAfterName": "Lobby",
+  "playerId": 223,
+  "reply": "arrives the same day you order it! / (Orders received before noon will / arrive the day before you order).\" /   / You are now a bit hungry. /   / >PUT IT IN RECEPTACLE / Done. /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 18,
+  "parentBeforeName": "Lobby",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": ">PUT IT IN RECEPTACLE / Done. /   / >E / Library / This is a study chamber for members of the Guild. Usually, there would be several elder Enchanters patiently training novices, but no one is here at the moment. The only exit is west. / Lying open on a stand in one corner is a heavy volume, probably a copy of the Encyclopedia Frobizzica. / The servants have been lax lately, for a scroll is lying among the dust in the corner. /   / > "
+ },
+ {
+  "cmd": "GET SCROLL",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": ">E / Library / This is a study chamber for members of the Guild. Usually, there would be several elder Enchanters patiently training novices, but no one is here at the moment. The only exit is west. / Lying open on a stand in one corner is a heavy volume, probably a copy of the Encyclopedia Frobizzica. / The servants have been lax lately, for a scroll is lying among the dust in the corner. /   / >GET SCROLL / Taken. /   / > "
+ },
+ {
+  "cmd": "READ IT",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": "  / >GET SCROLL / Taken. /   / >READ IT / The scroll reads \"meef spell: cause plants to wilt\". /   / The Guild Hall doorbell chimes. /   / > "
+ },
+ {
+  "cmd": "GNUSTO MEEF SPELL",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": "  / >READ IT / The scroll reads \"meef spell: cause plants to wilt\". /   / The Guild Hall doorbell chimes. /   / >GNUSTO MEEF SPELL / Your spell book begins to glow softly. Slowly, ornately, the words of the meef spell are inscribed, glowing even more brightly than the book itself. The book's brightness fades, but the spell remains! However, the scroll on which it was written vanishes as the last word is copied. /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 18,
+  "parentAfterName": "Lobby",
+  "playerId": 223,
+  "reply": ">GNUSTO MEEF SPELL / Your spell book begins to glow softly. Slowly, ornately, the words of the meef spell are inscribed, glowing even more brightly than the book itself. The book's brightness fades, but the spell remains! However, the scroll on which it was written vanishes as the last word is copied. /   / >W / Lobby / Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. /   / You are now somewhat thirsty. /   / > "
+ },
+ {
+  "cmd": "D",
+  "parentBefore": 18,
+  "parentBeforeName": "Lobby",
+  "parentAfter": 43,
+  "parentAfterName": "Cellar",
+  "playerId": 223,
+  "reply": "Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. /   / You are now somewhat thirsty. /   / >D / Cellar / You are in the basement of the Guild Hall. A steep, narrow stair leads upward from the southwest corner. / At the far end of the cellar, draped in cobwebs, is a large trunk. At each corner of its lid is a button: a black button with a picture of a star, a gray button depicting the moon, a red button illustrated with a bloody knife, and a purple butto"
+ },
+ {
+  "cmd": "PRESS white, gray, black, red, black",
+  "parentBefore": 43,
+  "parentBeforeName": "Cellar",
+  "parentAfter": 43,
+  "parentAfterName": "Cellar",
+  "playerId": 223,
+  "reply": "At the far end of the cellar, draped in cobwebs, is a large trunk. At each corner of its lid is a button: a black button with a picture of a star, a gray button depicting the moon, a red button illustrated with a bloody knife, and a purple button engraved with a royal crown. In the center of the lid is a white button picturing a dove in flight. /   / >PRESS white, gray, black, red, black / white button: There is a click from the lid of the trunk. / gray button: There is a click from the lid of t"
+ },
+ {
+  "cmd": "GET SCROLL",
+  "parentBefore": 43,
+  "parentBeforeName": "Cellar",
+  "parentAfter": 43,
+  "parentAfterName": "Cellar",
+  "playerId": 223,
+  "reply": "white button: There is a click from the lid of the trunk. / gray button: There is a click from the lid of the trunk. / black button: There is a click from the lid of the trunk. / red button: There is a click from the lid of the trunk. / black button: There is a click from the lid of the trunk. /   / >GET SCROLL / You can't see any scroll here! /   / > "
+ },
+ {
+  "cmd": "READ IT",
+  "parentBefore": 43,
+  "parentBeforeName": "Cellar",
+  "parentAfter": 43,
+  "parentAfterName": "Cellar",
+  "playerId": 223,
+  "reply": "red button: There is a click from the lid of the trunk. / black button: There is a click from the lid of the trunk. /   / >GET SCROLL / You can't see any scroll here! /   / >READ IT / How can you read a black button? /   / > "
+ },
+ {
+  "cmd": "OPEN VIAL",
+  "parentBefore": 43,
+  "parentBeforeName": "Cellar",
+  "parentAfter": 43,
+  "parentAfterName": "Cellar",
+  "playerId": 223,
+  "reply": ">GET SCROLL / You can't see any scroll here! /   / >READ IT / How can you read a black button? /   / >OPEN VIAL / Opening the ochre vial reveals ochre potion. /   / > "
+ },
+ {
+  "cmd": "DRINK OCHRE POTION",
+  "parentBefore": 43,
+  "parentBeforeName": "Cellar",
+  "parentAfter": 43,
+  "parentAfterName": "Cellar",
+  "playerId": 223,
+  "reply": ">READ IT / How can you read a black button? /   / >OPEN VIAL / Opening the ochre vial reveals ochre potion. /   / >DRINK OCHRE POTION / The potion was completely tasteless. You no longer feel hungry and thirsty, though. /   / > "
+ },
+ {
+  "cmd": "DROP VIAL",
+  "parentBefore": 43,
+  "parentBeforeName": "Cellar",
+  "parentAfter": 43,
+  "parentAfterName": "Cellar",
+  "playerId": 223,
+  "reply": ">OPEN VIAL / Opening the ochre vial reveals ochre potion. /   / >DRINK OCHRE POTION / The potion was completely tasteless. You no longer feel hungry and thirsty, though. /   / >DROP VIAL / Dropped. /   / > "
+ },
+ {
+  "cmd": "U",
+  "parentBefore": 43,
+  "parentBeforeName": "Cellar",
+  "parentAfter": 18,
+  "parentAfterName": "Lobby",
+  "playerId": 223,
+  "reply": "The potion was completely tasteless. You no longer feel hungry and thirsty, though. /   / >DROP VIAL / Dropped. /   / >U / Lobby / Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. /   / > "
+ },
+ {
+  "cmd": "OPEN RECEPTACLE",
+  "parentBefore": 18,
+  "parentBeforeName": "Lobby",
+  "parentAfter": 18,
+  "parentAfterName": "Lobby",
+  "playerId": 223,
+  "reply": "Dropped. /   / >U / Lobby / Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. /   / >OPEN RECEPTACLE / Opening the receptacle reveals an orange vial, and an issue of Popular Enchanting. /   / > "
+ },
+ {
+  "cmd": "GET ORANGE VIAL",
+  "parentBefore": 18,
+  "parentBeforeName": "Lobby",
+  "parentAfter": 18,
+  "parentAfterName": "Lobby",
+  "playerId": 223,
+  "reply": "Lobby / Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. /   / >OPEN RECEPTACLE / Opening the receptacle reveals an orange vial, and an issue of Popular Enchanting. /   / >GET ORANGE VIAL / Taken. /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 18,
+  "parentBeforeName": "Lobby",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": ">OPEN RECEPTACLE / Opening the receptacle reveals an orange vial, and an issue of Popular Enchanting. /   / >GET ORANGE VIAL / Taken. /   / >N / Hallway /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 13,
+  "parentAfterName": "Helistar's Quarters",
+  "playerId": 223,
+  "reply": "  / >N / Hallway /   / >W / Helistar's Quarters / Helistar is one of the foremost members of the Circle, and this is her private chamber. / Among Helistar's possessions is a scroll, new and shiny. /   / > "
+ },
+ {
+  "cmd": "GET SCROLL",
+  "parentBefore": 13,
+  "parentBeforeName": "Helistar's Quarters",
+  "parentAfter": 13,
+  "parentAfterName": "Helistar's Quarters",
+  "playerId": 223,
+  "reply": "  / >W / Helistar's Quarters / Helistar is one of the foremost members of the Circle, and this is her private chamber. / Among Helistar's possessions is a scroll, new and shiny. /   / >GET SCROLL / Taken. /   / > "
+ },
+ {
+  "cmd": "READ IT",
+  "parentBefore": 13,
+  "parentBeforeName": "Helistar's Quarters",
+  "parentAfter": 13,
+  "parentAfterName": "Helistar's Quarters",
+  "playerId": 223,
+  "reply": "Helistar is one of the foremost members of the Circle, and this is her private chamber. / Among Helistar's possessions is a scroll, new and shiny. /   / >GET SCROLL / Taken. /   / >READ IT / The scroll reads \"gaspar spell: provide for your own resurrection\". /   / > "
+ },
+ {
+  "cmd": "GNUSTO GASPAR SPELL",
+  "parentBefore": 13,
+  "parentBeforeName": "Helistar's Quarters",
+  "parentAfter": 13,
+  "parentAfterName": "Helistar's Quarters",
+  "playerId": 223,
+  "reply": ">GET SCROLL / Taken. /   / >READ IT / The scroll reads \"gaspar spell: provide for your own resurrection\". /   / >GNUSTO GASPAR SPELL / Your spell book begins to glow softly. Slowly, ornately, the words of the gaspar spell are inscribed, glowing even more brightly than the book itself. The book's brightness fades, but the spell remains! However, the scroll on which it was written vanishes as the last word is copied. /   / > "
+ },
+ {
+  "cmd": "AIMFIZ BELBOZ",
+  "parentBefore": 13,
+  "parentBeforeName": "Helistar's Quarters",
+  "parentAfter": 13,
+  "parentAfterName": "Helistar's Quarters",
+  "playerId": 223,
+  "reply": ">READ IT / The scroll reads \"gaspar spell: provide for your own resurrection\". /   / >GNUSTO GASPAR SPELL / Your spell book begins to glow softly. Slowly, ornately, the words of the gaspar spell are inscribed, glowing even more brightly than the book itself. The book's brightness fades, but the spell remains! However, the scroll on which it was written vanishes as the last word is copied. /   / >AIMFIZ BELBOZ / The aimfiz spell is not committed to memory, and you haven't seen any scroll on which"
+ },
+ {
+  "cmd": "NE",
+  "parentBefore": 13,
+  "parentBeforeName": "Helistar's Quarters",
+  "parentAfter": 13,
+  "parentAfterName": "Helistar's Quarters",
+  "playerId": 223,
+  "reply": ">GNUSTO GASPAR SPELL / Your spell book begins to glow softly. Slowly, ornately, the words of the gaspar spell are inscribed, glowing even more brightly than the book itself. The book's brightness fades, but the spell remains! However, the scroll on which it was written vanishes as the last word is copied. /   / >AIMFIZ BELBOZ / The aimfiz spell is not committed to memory, and you haven't seen any scroll on which it is written. /   / >NE / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 13,
+  "parentBeforeName": "Helistar's Quarters",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": ">AIMFIZ BELBOZ / The aimfiz spell is not committed to memory, and you haven't seen any scroll on which it is written. /   / >NE / You can't go that way. /   / >E / Hallway /   / > "
+ },
+ {
+  "cmd": "NE",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": ">NE / You can't go that way. /   / >E / Hallway /   / >NE / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "LEARN PULVER",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": ">E / Hallway /   / >NE / You can't go that way. /   / >LEARN PULVER / Using your best study habits, you learn the pulver spell. /   / > "
+ },
+ {
+  "cmd": "PULVER RIVER",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": ">NE / You can't go that way. /   / >LEARN PULVER / Using your best study habits, you learn the pulver spell. /   / >PULVER RIVER / You can't see any river here! /   / > "
+ },
+ {
+  "cmd": "D",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": ">LEARN PULVER / Using your best study habits, you learn the pulver spell. /   / >PULVER RIVER / You can't see any river here! /   / >D / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "NE",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": ">PULVER RIVER / You can't see any river here! /   / >D / You can't go that way. /   / >NE / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "GET GUANO, SCROLL AND AMBER VIAL",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": ">D / You can't go that way. /   / >NE / You can't go that way. /   / >GET GUANO, SCROLL AND AMBER VIAL / The objects that you mentioned aren't here. /   / > "
+ },
+ {
+  "cmd": "READ SCROLL",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": ">NE / You can't go that way. /   / >GET GUANO, SCROLL AND AMBER VIAL / The objects that you mentioned aren't here. /   / >READ SCROLL / You can't see any scroll here! /   / > "
+ },
+ {
+  "cmd": "GNUSTO FWEEP SPELL",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": ">GET GUANO, SCROLL AND AMBER VIAL / The objects that you mentioned aren't here. /   / >READ SCROLL / You can't see any scroll here! /   / >GNUSTO FWEEP SPELL / You can't see that spell here! /   / > "
+ },
+ {
+  "cmd": "D",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 50,
+  "parentAfterName": "Hallway",
+  "playerId": 223,
+  "reply": ">READ SCROLL / You can't see any scroll here! /   / >GNUSTO FWEEP SPELL / You can't see that spell here! /   / >D / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 50,
+  "parentBeforeName": "Hallway",
+  "parentAfter": 18,
+  "parentAfterName": "Lobby",
+  "playerId": 223,
+  "reply": ">D / You can't go that way. /   / >S / Lobby / Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. / The receptacle contains: /   an issue of Popular Enchanting /   / > "
+ },
+ {
+  "cmd": "GET INDIGO VIAL",
+  "parentBefore": 18,
+  "parentBeforeName": "Lobby",
+  "parentAfter": 18,
+  "parentAfterName": "Lobby",
+  "playerId": 223,
+  "reply": ">S / Lobby / Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. / The receptacle contains: /   an issue of Popular Enchanting /   / >GET INDIGO VIAL / You can't see any indigo vial here! /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 18,
+  "parentBeforeName": "Lobby",
+  "parentAfter": 231,
+  "parentAfterName": "Store Room",
+  "playerId": 223,
+  "reply": "The receptacle contains: /   an issue of Popular Enchanting /   / >GET INDIGO VIAL / You can't see any indigo vial here! /   / >W / Store Room /   / > "
+ },
+ {
+  "cmd": "D",
+  "parentBefore": 231,
+  "parentBeforeName": "Store Room",
+  "parentAfter": 231,
+  "parentAfterName": "Store Room",
+  "playerId": 223,
+  "reply": ">GET INDIGO VIAL / You can't see any indigo vial here! /   / >W / Store Room /   / >D / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 231,
+  "parentBeforeName": "Store Room",
+  "parentAfter": 231,
+  "parentAfterName": "Store Room",
+  "playerId": 223,
+  "reply": ">W / Store Room /   / >D / You can't go that way. /   / >W / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "SW",
+  "parentBefore": 231,
+  "parentBeforeName": "Store Room",
+  "parentAfter": 231,
+  "parentAfterName": "Store Room",
+  "playerId": 223,
+  "reply": ">D / You can't go that way. /   / >W / You can't go that way. /   / >SW / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "SW",
+  "parentBefore": 231,
+  "parentBeforeName": "Store Room",
+  "parentAfter": 231,
+  "parentAfterName": "Store Room",
+  "playerId": 223,
+  "reply": ">W / You can't go that way. /   / >SW / You can't go that way. /   / >SW / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 231,
+  "parentBeforeName": "Store Room",
+  "parentAfter": 231,
+  "parentAfterName": "Store Room",
+  "playerId": 223,
+  "reply": ">SW / You can't go that way. /   / >SW / You can't go that way. /   / >W / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "LEARN IZYUK SPELL",
+  "parentBefore": 231,
+  "parentBeforeName": "Store Room",
+  "parentAfter": 231,
+  "parentAfterName": "Store Room",
+  "playerId": 223,
+  "reply": ">SW / You can't go that way. /   / >W / You can't go that way. /   / >LEARN IZYUK SPELL / Using your best study habits, you learn the izyuk spell. /   / > "
+ },
+ {
+  "cmd": "AGAIN",
+  "parentBefore": 231,
+  "parentBeforeName": "Store Room",
+  "parentAfter": 231,
+  "parentAfterName": "Store Room",
+  "playerId": 223,
+  "reply": ">W / You can't go that way. /   / >LEARN IZYUK SPELL / Using your best study habits, you learn the izyuk spell. /   / >AGAIN / Using your best study habits, you learn the izyuk spell yet another time. /   / > "
+ },
+ {
+  "cmd": "IZYUK ME",
+  "parentBefore": 231,
+  "parentBeforeName": "Store Room",
+  "parentAfter": 231,
+  "parentAfterName": "Store Room",
+  "playerId": 223,
+  "reply": ">LEARN IZYUK SPELL / Using your best study habits, you learn the izyuk spell. /   / >AGAIN / Using your best study habits, you learn the izyuk spell yet another time. /   / >IZYUK ME / You are now floating serenely in midair. /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 231,
+  "parentBeforeName": "Store Room",
+  "parentAfter": 231,
+  "parentAfterName": "Store Room",
+  "playerId": 223,
+  "reply": ">AGAIN / Using your best study habits, you learn the izyuk spell yet another time. /   / >IZYUK ME / You are now floating serenely in midair. /   / >W / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 231,
+  "parentBeforeName": "Store Room",
+  "parentAfter": 231,
+  "parentAfterName": "Store Room",
+  "playerId": 223,
+  "reply": "  / >W / You can't go that way. /   / >W / You can't go that way. /   / You settle gently to the ground. /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 231,
+  "parentBeforeName": "Store Room",
+  "parentAfter": 231,
+  "parentAfterName": "Store Room",
+  "playerId": 223,
+  "reply": "  / >W / You can't go that way. /   / You settle gently to the ground. /   / >N / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "GET COIN",
+  "parentBefore": 231,
+  "parentBeforeName": "Store Room",
+  "parentAfter": 231,
+  "parentAfterName": "Store Room",
+  "playerId": 223,
+  "reply": "  / You settle gently to the ground. /   / >N / You can't go that way. /   / >GET COIN / You can't see any coin here! /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 231,
+  "parentBeforeName": "Store Room",
+  "parentAfter": 231,
+  "parentAfterName": "Store Room",
+  "playerId": 223,
+  "reply": ">N / You can't go that way. /   / >GET COIN / You can't see any coin here! /   / >S / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 231,
+  "parentBeforeName": "Store Room",
+  "parentAfter": 18,
+  "parentAfterName": "Lobby",
+  "playerId": 223,
+  "reply": ">S / You can't go that way. /   / >E / Lobby / Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. / The receptacle contains: /   an issue of Popular Enchanting /   / > "
+ },
+ {
+  "cmd": "IZYUK ME",
+  "parentBefore": 18,
+  "parentBeforeName": "Lobby",
+  "parentAfter": 18,
+  "parentAfterName": "Lobby",
+  "playerId": 223,
+  "reply": ">E / Lobby / Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. / The receptacle contains: /   an issue of Popular Enchanting /   / >IZYUK ME / You are now floating serenely in midair. /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 18,
+  "parentBeforeName": "Lobby",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": "The receptacle contains: /   an issue of Popular Enchanting /   / >IZYUK ME / You are now floating serenely in midair. /   / >E / Library (you are flying) /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": "  / >E / Library (you are flying) /   / >E / You can't go that way. /   / You settle gently to the ground. /   / > "
+ },
+ {
+  "cmd": "NE",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": "  / >E / You can't go that way. /   / You settle gently to the ground. /   / >NE / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "NE",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": "  / You settle gently to the ground. /   / >NE / You can't go that way. /   / >NE / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": ">NE / You can't go that way. /   / >NE / You can't go that way. /   / >E / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": ">NE / You can't go that way. /   / >E / You can't go that way. /   / >E / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "WAKE GNOME",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": ">E / You can't go that way. /   / >E / You can't go that way. /   / >WAKE GNOME / You can't see any gnome here! /   / > "
+ },
+ {
+  "cmd": "GIVE COIN TO GNOME",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": ">E / You can't go that way. /   / >WAKE GNOME / You can't see any gnome here! /   / >GIVE COIN TO GNOME / You're not holding that! /   / > "
+ },
+ {
+  "cmd": "SEARCH GNOME",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": ">WAKE GNOME / You can't see any gnome here! /   / >GIVE COIN TO GNOME / You're not holding that! /   / >SEARCH GNOME / You can't see any gnome here! /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": ">GIVE COIN TO GNOME / You're not holding that! /   / >SEARCH GNOME / You can't see any gnome here! /   / >E / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": ">SEARCH GNOME / You can't see any gnome here! /   / >E / You can't go that way. /   / >E / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": ">E / You can't go that way. /   / >E / You can't go that way. /   / >N / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": ">E / You can't go that way. /   / >N / You can't go that way. /   / >N / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "look",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": "  / >N / You can't go that way. /   / >look / Library / This is a study chamber for members of the Guild. Usually, there would be several elder Enchanters patiently training novices, but no one is here at the moment. The only exit is west. / Lying open on a stand in one corner is a heavy volume, probably a copy of the Encyclopedia Frobizzica. /   / > "
+ },
+ {
+  "cmd": "get in bed",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": "  / >look / Library / This is a study chamber for members of the Guild. Usually, there would be several elder Enchanters patiently training novices, but no one is here at the moment. The only exit is west. / Lying open on a stand in one corner is a heavy volume, probably a copy of the Encyclopedia Frobizzica. /   / >get in bed / You can't see any bed here! /   / > "
+ },
+ {
+  "cmd": "get out of bed",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": "This is a study chamber for members of the Guild. Usually, there would be several elder Enchanters patiently training novices, but no one is here at the moment. The only exit is west. / Lying open on a stand in one corner is a heavy volume, probably a copy of the Encyclopedia Frobizzica. /   / >get in bed / You can't see any bed here! /   / >get out of bed / You can't see any of bed here! /   / > "
+ },
+ {
+  "cmd": "enter bed",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": ">get in bed / You can't see any bed here! /   / >get out of bed / You can't see any of bed here! /   / >enter bed / You can't see any bed here! /   / > "
+ },
+ {
+  "cmd": "exit",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": ">get out of bed / You can't see any of bed here! /   / >enter bed / You can't see any bed here! /   / >exit / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "sit on bed",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": ">enter bed / You can't see any bed here! /   / >exit / You can't go that way. /   / >sit on bed / You can't see any bed here! /   / > "
+ },
+ {
+  "cmd": "stand up",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 142,
+  "parentAfterName": "Library",
+  "playerId": 223,
+  "reply": "  / >sit on bed / You can't see any bed here! /   / >stand up / You are already standing. /   / You are beginning to tire. /   / > "
+ },
+ {
+  "cmd": "SLEEP",
+  "parentBefore": 142,
+  "parentBeforeName": "Library",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": ">SLEEP / You drift off to sleep and dream of the distant Kovalli Desert. Waves of heat from the sand make breathing hard, and the bright sunlight burns against your eyelids. Suddenly you awake -- the Guild Hall is on fire! Through the thick smoke, you see Belboz standing before you. But no, this could not be Belboz, his face an unrecognizable mask of hatred, his outstretched arms dripping with blood. /   / He who is not Belboz speaks, in a voice filled with malevolence. \"So, you are the young En"
+ },
+ {
+  "cmd": "LEARN FWEEP",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / Chamber of Living Death / The very walls of this room seem to soak up all light, so it seems as though you're floating in the center of an infinite void. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >LEARN FWEEP / Your agony is too great to concentrate on such an action. / Hideous parasites descen"
+ },
+ {
+  "cmd": "LEARN FWEEP",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >LEARN FWEEP / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >LEARN FWEEP / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, a"
+ },
+ {
+  "cmd": "LEARN FWEEP",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >LEARN FWEEP / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >LEARN FWEEP / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, a"
+ },
+ {
+  "cmd": "LEARN FWEEP",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >LEARN FWEEP / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >LEARN FWEEP / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, a"
+ },
+ {
+  "cmd": "LEARN FWEEP",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >LEARN FWEEP / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >LEARN FWEEP / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, a"
+ },
+ {
+  "cmd": "DROP ALL",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >LEARN FWEEP / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >DROP ALL / You're not holding the cave! /   / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amaz"
+ },
+ {
+  "cmd": "FWEEP ME",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >FWEEP ME / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon"
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >FWEEP ME / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon"
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "D",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "U",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "U",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "GET SCROLL",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >GET SCROLL / You can't see any scroll here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. "
+ },
+ {
+  "cmd": "READ IT",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >GET SCROLL / You can't see any scroll here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >READ IT / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain ti"
+ },
+ {
+  "cmd": "PUT IT IN HOLE",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >READ IT / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body rege"
+ },
+ {
+  "cmd": "FWEEP ME",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >PUT IT IN HOLE / You're not holding yourself! /   / >FWEEP ME / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >FWEEP ME / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "D",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "D",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "U",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "U",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "D",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "FWEEP ME",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >FWEEP ME / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon"
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >FWEEP ME / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon"
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "D",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "U",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "WAIT",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >WAIT / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon you"
+ },
+ {
+  "cmd": "WAIT",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >WAIT / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >WAIT / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon "
+ },
+ {
+  "cmd": "GET ALL",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >WAIT / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >GET ALL / I don't see what you're referring to. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain t"
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >GET ALL / I don't see what you're referring to. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tiss"
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "OPEN BOX",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >OPEN BOX / You can't see any box here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazi"
+ },
+ {
+  "cmd": "DROP BOX",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >OPEN BOX / You can't see any box here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await t"
+ },
+ {
+  "cmd": "GET AMULET AND SCROLL",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >DROP BOX / You're not holding that! /   / >GET AMULET AND SCROLL / The objects that you mentioned aren't here. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Am"
+ },
+ {
+  "cmd": "GNUSTO SWANZO SPELL",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >GET AMULET AND SCROLL / The objects that you mentioned aren't here. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >GNUSTO SWANZO SPELL / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your socket"
+ },
+ {
+  "cmd": "LEARN IZYUK",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >GNUSTO SWANZO SPELL / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >LEARN IZYUK / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your so"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >LEARN IZYUK / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast u"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "U",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "U",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "IZYUK ME",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >IZYUK ME / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon"
+ },
+ {
+  "cmd": "NE",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >IZYUK ME / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >NE / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upo"
+ },
+ {
+  "cmd": "SE",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >NE / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >SE / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your"
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >SE / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your "
+ },
+ {
+  "cmd": "LOWER FLAG",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >LOWER FLAG / You can't see any flag here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Am"
+ },
+ {
+  "cmd": "EXAMINE IT",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >LOWER FLAG / You can't see any flag here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >EXAMINE IT / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain t"
+ },
+ {
+  "cmd": "DROP CALENDAR",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >EXAMINE IT / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body r"
+ },
+ {
+  "cmd": "GET AQUA VIAL",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >DROP CALENDAR / You're not holding that! /   / >GET AQUA VIAL / You can't see any aqua vial here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >GET AQUA VIAL / You can't see any aqua vial here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain ti"
+ },
+ {
+  "cmd": "LOOK IN CANNON",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >LOOK IN CANNON / You can't see any cannon here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tiss"
+ },
+ {
+  "cmd": "PUT GUANO IN CANNON",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >LOOK IN CANNON / You can't see any cannon here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as yo"
+ },
+ {
+  "cmd": "GET SCROLL",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >PUT GUANO IN CANNON / You're not holding that! /   / >GET SCROLL / You can't see any scroll here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you "
+ },
+ {
+  "cmd": "READ IT",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >GET SCROLL / You can't see any scroll here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >READ IT / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain ti"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >READ IT / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "LEARN IZYUK",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >LEARN IZYUK / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast u"
+ },
+ {
+  "cmd": "IZYUK ME",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >LEARN IZYUK / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >IZYUK ME / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and "
+ },
+ {
+  "cmd": "NW",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >IZYUK ME / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >NW / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upo"
+ },
+ {
+  "cmd": "SW",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >NW / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >SW / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >SW / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your "
+ },
+ {
+  "cmd": "D",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "D",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "SW",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >SW / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >SW / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your "
+ },
+ {
+  "cmd": "GIVE COIN TO GNOME",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerate"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >GIVE COIN TO GNOME / You're not holding that! /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your v"
+ },
+ {
+  "cmd": "look",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >look / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon you"
+ },
+ {
+  "cmd": "get in bed",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >look / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >get in bed / You can't see any bed here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. "
+ },
+ {
+  "cmd": "get out of bed",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >get in bed / You can't see any bed here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >get out of bed / You can't see any of bed here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do"
+ },
+ {
+  "cmd": "enter bed",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >get out of bed / You can't see any of bed here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >enter bed / You can't see any bed here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do "
+ },
+ {
+  "cmd": "exit",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >enter bed / You can't see any bed here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >exit / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. A"
+ },
+ {
+  "cmd": "sit on bed",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >exit / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >sit on bed / You can't see any bed here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. "
+ },
+ {
+  "cmd": "stand up",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >sit on bed / You can't see any bed here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >stand up / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tiss"
+ },
+ {
+  "cmd": "look",
+  "parentBefore": 123,
+  "parentBeforeName": "Chamber of Living Death",
+  "parentAfter": 123,
+  "parentAfterName": "Chamber of Living Death",
+  "playerId": 223,
+  "reply": "  / >stand up / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissue. Amazingly, you do not die, and your body regenerates itself as you await the next attack... /   / >look / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast u"
+ }
+]

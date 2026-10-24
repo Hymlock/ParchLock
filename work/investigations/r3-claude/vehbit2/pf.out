@@ -1,0 +1,159 @@
+null undefined -> undefined undefined | g's assignment for a certain lowly Ensign Seventh Class: scrubbing the filthy metal deck at the port end of Level Nine. With your Patrol-iss
+"WAITUNTIL:wider one|escape.pod.{0,60}open" 235 -> 235 Deck Nine |  / Another routine day of drudgery aboard the Stellar Patrol Ship Feinstein. This morning's assignment for a certain lowly Ensign Seventh Cl
+"W" 235 -> 235 Deck Nine | Deck Nine / This is a featureless corridor similar to every other corridor on the ship. It curves away to starboard, and a gangway leads up.
+"GET IN WEB" 235 -> 235 Deck Nine | >WAITUNTIL:wider one|escape.pod.{0,60}open / I don't know the word "waituntil:wider." / / >W / The escape pod bulkhead is closed. / / >GET I
+"WAIT" 235 -> 235 Deck Nine |  / >GET IN WEB / You can't see any web here! / / >WAIT / Time passes... / / The alien ambassador from the planet Blow'k-bibben-Gordo ambles 
+"WAIT" 235 -> 235 Deck Nine | Time passes... / / The alien ambassador from the planet Blow'k-bibben-Gordo ambles toward you from down the corridor. He is munching on some
+"WAIT" 235 -> 235 Deck Nine | Time passes... / / The ambassador inquires whether you are interested in a game of Bocci. / / >WAIT / Time passes... / / The ambassador inqu
+"WAIT" 235 -> 235 Deck Nine | Time passes... / / The ambassador inquires whether you are interested in a game of Bocci. / / >WAIT / Time passes... / / The ambassador inqu
+"WAIT" 235 -> 235 Deck Nine | Time passes... / / The ambassador inquires whether you are interested in a game of Bocci. / / >WAIT / Time passes... / / The ambassador grun
+"WAIT" 235 -> 235 Deck Nine |  / >WAIT / Time passes... / / The ambassador grunts a polite farewell, and disappears up the gangway, leaving a trail of dripping slime. / /
+"WAIT" 235 -> 235 Deck Nine |  / The ambassador grunts a polite farewell, and disappears up the gangway, leaving a trail of dripping slime. / / >WAIT / Time passes... / /
+"WAIT" 235 -> 235 Deck Nine |  / >WAIT / Time passes... / / >WAIT / Time passes... / / A massive explosion rocks the ship. Echoes from the explosion resound deafeningly d
+"WAIT" 235 -> 235 Deck Nine | Time passes... / / A massive explosion rocks the ship. Echoes from the explosion resound deafeningly down the halls. The door to port slides
+"WAIT" 235 -> 235 Deck Nine | Time passes... / / More distant explosions! A narrow emergency bulkhead at the base of the gangway and a wider one along the corridor to sta
+"WAIT" 235 -> 235 Deck Nine | Time passes... / / More powerful explosions buffet the ship. The lights flicker madly, and the escape-pod bulkhead clangs shut. / / >WAIT / 
+"WAIT" 235 -> 235 Deck Nine |  **** You have died **** / / Your score would be 0 (out of 80 points). It is Day 1 of your adventure. Current Galactic Standard Time (adjust
+"WAIT" 235 -> 235 Deck Nine | Oh, well. According to the Treaty of Gishen IV, signed in 8747 GY, all adventure game players must be given another chance after dying. In t
+"GET OUT OF WEB" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"GET KIT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"OPEN DOOR" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"OUT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"U" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"U" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"U" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"U" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"NE" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"E" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"E" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"E" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"SW" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"GET BAR" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"NE" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"HOLD BAR OVER CREVICE" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"DROP BAR" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"W" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"W" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"UNLOCK PADLOCK WITH KEY" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"REMOVE PADLOCK" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"DROP IT AND KIT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"OPEN DOOR" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"DROP KEY AND BRUSH" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"GET LADDER" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"E" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"E" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"DROP LADDER" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"EXTEND LADDER" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"PUT LADDER ACROSS RIFT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"W" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"OPEN DESK" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"GET KITCHEN CARD AND UPPER CARD" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"W" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"OPEN DESK" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"GET SHUTTLE CARD" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"E" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"E" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"W" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"W" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"GET KIT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"OPEN IT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"EAT RED GOO" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"DROP KIT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"GET CANTEEN" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"SLIDE KITCHEN CARD THROUGH SLOT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"EXAMINE MACHINE" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"OPEN CANTEEN" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"PUT IT IN NICHE" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"PRESS BUTTON" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"GET CANTEEN" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"CLOSE IT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"DROP KITCHEN CARD" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"E" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"E" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"E" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"PRESS BLUE BUTTON" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"WAIT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"WAIT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"SLIDE UPPER CARD THROUGH SLOT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"PRESS UP BUTTON" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"WAIT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"WAIT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"NE" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"SW" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"PRESS DOWN BUTTON" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"WAIT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"WAIT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"W" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"SW" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"GET FLASK" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"E" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"PUT FLASK UNDER SPOUT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"PRESS GRAY BUTTON" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"GET FLASK" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"E" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"OPEN FLOYD" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"TURN ON FLOYD" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"NW" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"E" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"SLIDE UPPER CARD THROUGH SLOT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"PRESS UP BUTTON" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"WAIT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"WAIT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"NE" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"POUR FLUID IN HOLE" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"SW" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"N" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"PRESS DOWN BUTTON" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"WAIT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"WAIT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"W" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"W" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"S" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"LOOK" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"GET IN BED" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"LOOK" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"GET OUT OF BED" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"ENTER BED" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"EXIT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"SIT ON BED" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"STAND UP" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"BOARD BED" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"GET OUT OF BED" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"LIE DOWN" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"WAIT" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"STAND UP" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R
+"LOOK" 235 -> 235 Deck Nine |  / / Would you like to restart the game from the beginning, restore a saved game position, or end this session of the game? (Type RESTART, R

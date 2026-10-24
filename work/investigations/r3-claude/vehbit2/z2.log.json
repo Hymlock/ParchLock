@@ -1,0 +1,1444 @@
+[
+ {
+  "cmd": null,
+  "state": {
+   "playerId": 4,
+   "roomId": 231,
+   "parent": 231,
+   "parentName": "Inside the Barrow",
+   "lines": 11
+  },
+  "reply": "ZORK II: The Wizard of Frobozz\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nVersion 48 / Serial number 840904\n \nInside the Barrow\nYou are inside an ancient barrow hidden deep within a dark forest. The barrow opens into a narrow tunnel at its southern end. You can see a faint glow at the far end.\nA strangely familiar brass lantern is lying on the ground.\nA sword of Elvish workmanship is on the ground.\n \n>"
+ },
+ {
+  "cmd": "GET LAMP AND SWORD",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": "Inside the Barrow / You are inside an ancient barrow hidden deep within a dark forest. The barrow opens into a narrow tunnel at its southern end. You can see a faint glow at the far end. / A strangely familiar brass lantern is lying on the ground. / A sword of Elvish workmanship is on the ground. /   / >GET LAMP AND SWORD / lamp: Taken. / sword: Taken. /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 229,
+  "parentAfterName": "Narrow Tunnel",
+  "playerId": 4,
+  "reply": "  / >GET LAMP AND SWORD / lamp: Taken. / sword: Taken. /   / >S / Narrow Tunnel / You are standing at the southern end of a narrow tunnel where it opens into a wide cavern. The cavern is dimly illuminated by phosphorescent mosses clinging to its high ceiling. A deep ravine winds through the cavern, with a small stream at the bottom. The walls of the ravine are steep and crumbly. A foot bridge crosses the ravine to the south. /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 229,
+  "parentBeforeName": "Narrow Tunnel",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": "  / >S / Narrow Tunnel / You are standing at the southern end of a narrow tunnel where it opens into a wide cavern. The cavern is dimly illuminated by phosphorescent mosses clinging to its high ceiling. A deep ravine winds through the cavern, with a small stream at the bottom. The walls of the ravine are steep and crumbly. A foot bridge crosses the ravine to the south. /   / >S / Foot Bridge / You are standing on a crude but sturdy wooden foot bridge crossing a deep ravine. The path runs north a"
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 227,
+  "parentAfterName": "Great Cavern",
+  "playerId": 4,
+  "reply": "  / >S / Foot Bridge / You are standing on a crude but sturdy wooden foot bridge crossing a deep ravine. The path runs north and south from here. /   / >S / Great Cavern / This is the center of the great cavern, carved out of the limestone. Stalactites and stalagmites of many sizes are everywhere. The room glows with dim light provided by phosphorescent moss, and weird shadows move all around you. A narrow path winds southwest among the stalagmites, and another leads northeast. /   / > "
+ },
+ {
+  "cmd": "SW",
+  "parentBefore": 227,
+  "parentBeforeName": "Great Cavern",
+  "parentAfter": 226,
+  "parentAfterName": "Shallow Ford",
+  "playerId": 4,
+  "reply": "  / >S / Great Cavern / This is the center of the great cavern, carved out of the limestone. Stalactites and stalagmites of many sizes are everywhere. The room glows with dim light provided by phosphorescent moss, and weird shadows move all around you. A narrow path winds southwest among the stalagmites, and another leads northeast. /   / >SW / Shallow Ford / You are at the southern edge of a great cavern. To the south across a shallow ford is a dark tunnel which looks like it was once enlarged "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 226,
+  "parentBeforeName": "Shallow Ford",
+  "parentAfter": 225,
+  "parentAfterName": "Dark Tunnel",
+  "playerId": 4,
+  "reply": "  / >SW / Shallow Ford / You are at the southern edge of a great cavern. To the south across a shallow ford is a dark tunnel which looks like it was once enlarged and smoothed. To the north a narrow path winds among stalagmites. Dim light illuminates the cavern. /   / >S / You have moved into a dark place. / It is pitch black. You are likely to be eaten by a grue. /   / > "
+ },
+ {
+  "cmd": "LIGHT LAMP",
+  "parentBefore": 225,
+  "parentBeforeName": "Dark Tunnel",
+  "parentAfter": 225,
+  "parentAfterName": "Dark Tunnel",
+  "playerId": 4,
+  "reply": "You have moved into a dark place. / It is pitch black. You are likely to be eaten by a grue. /   / >LIGHT LAMP / The lamp is now on. /   / Dark Tunnel / This is a dark tunnel with dim light to the northeast. The tunnel is smooth but dusty and filled with twigs and leaves, debris which becomes deeper as the tunnel branches into a wide corridor leading southwest and a narrower one leading southeast. /   / > "
+ },
+ {
+  "cmd": "SE",
+  "parentBefore": 225,
+  "parentBeforeName": "Dark Tunnel",
+  "parentAfter": 222,
+  "parentAfterName": "North End of Garden",
+  "playerId": 4,
+  "reply": "The lamp is now on. /   / Dark Tunnel / This is a dark tunnel with dim light to the northeast. The tunnel is smooth but dusty and filled with twigs and leaves, debris which becomes deeper as the tunnel branches into a wide corridor leading southwest and a narrower one leading southeast. /   / >SE / North End of Garden / This is the northern end of a formal garden. Hedges hide the cavern walls, and if you don't look up, the illusion is of a cloudy day outside. The light comes from a large growth "
+ },
+ {
+  "cmd": "ENTER GAZEBO",
+  "parentBefore": 222,
+  "parentBeforeName": "North End of Garden",
+  "parentAfter": 220,
+  "parentAfterName": "Gazebo",
+  "playerId": 4,
+  "reply": "Sitting on the table is:  /   A matchbook /   A china teapot /   A place mat /   A newspaper /   A letter opener / A unicorn is peacefully cropping grass at the north end of the garden. There is something hanging around its neck. / Your sword is glowing with a faint blue glow. /   / > "
+ },
+ {
+  "cmd": "GET TEAPOT, MAT, LETTER OPENER, MATCHBOOK AND PAPER",
+  "parentBefore": 220,
+  "parentBeforeName": "Gazebo",
+  "parentAfter": 220,
+  "parentAfterName": "Gazebo",
+  "playerId": 4,
+  "reply": ">GET TEAPOT, MAT, LETTER OPENER, MATCHBOOK AND PAPER / china teapot: Taken. / place mat: Taken. / letter opener: Taken. / matchbook: Taken. / newspaper: Taken. / The unicorn bounds lightly away. / Your sword is no longer glowing. /   / > "
+ },
+ {
+  "cmd": "OUT",
+  "parentBefore": 220,
+  "parentBeforeName": "Gazebo",
+  "parentAfter": 222,
+  "parentAfterName": "North End of Garden",
+  "playerId": 4,
+  "reply": "letter opener: Taken. / matchbook: Taken. / newspaper: Taken. / The unicorn bounds lightly away. / Your sword is no longer glowing. /   / >OUT / North End of Garden /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 222,
+  "parentBeforeName": "North End of Garden",
+  "parentAfter": 219,
+  "parentAfterName": "Formal Garden",
+  "playerId": 4,
+  "reply": "Your sword is no longer glowing. /   / >OUT / North End of Garden /   / >S / Formal Garden / This is the middle part of a formal garden. Hedges hide the cavern walls and a dim illumination comes from mosses far above. The path is of small crushed white stones. It winds among bushes and flower beds from south to north. To the north a small structure can be seen. To the south are peculiarly shaped bushes. There is a small gap in the hedges to the west. /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 219,
+  "parentBeforeName": "Formal Garden",
+  "parentAfter": 216,
+  "parentAfterName": "Path Near Stream",
+  "playerId": 4,
+  "reply": "  / >S / Formal Garden / This is the middle part of a formal garden. Hedges hide the cavern walls and a dim illumination comes from mosses far above. The path is of small crushed white stones. It winds among bushes and flower beds from south to north. To the north a small structure can be seen. To the south are peculiarly shaped bushes. There is a small gap in the hedges to the west. /   / >W / Path Near Stream / The path follows the south edge of a deep ravine and heads northeast. A tunnel head"
+ },
+ {
+  "cmd": "SW",
+  "parentBefore": 216,
+  "parentBeforeName": "Path Near Stream",
+  "parentAfter": 138,
+  "parentAfterName": "Carousel Room",
+  "playerId": 4,
+  "reply": ">W / Path Near Stream / The path follows the south edge of a deep ravine and heads northeast. A tunnel heads southwest, narrowing to a rather tight crawl. A faint whirring sound can be heard in that direction. On the east is a ruined archway choked with vegetation. /   / >SW / Carousel Room / You are in a large circular room whose high ceiling is lost in gloom. Eight identical passages leave the room. / A loud whirring sound comes from all around, and you feel sort of disoriented in here. /   / "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 138,
+  "parentBeforeName": "Carousel Room",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": "A loud whirring sound comes from all around, and you feel sort of disoriented in here. /   / >N / You're not sure which direction is which. This room is very disorienting. /   / Marble Hall / This is an arched hall of fine marble. The hall stops abruptly to the north at a ford across a stream, where the marble is cracked and broken. Perhaps a flood or collapse of the cave was responsible. To the south the hall opens into a large room. There is rather annoying whirring sound coming from that room"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 215,
+  "parentAfterName": "Marble Hall",
+  "playerId": 4,
+  "reply": "You're not sure which direction is which. This room is very disorienting. /   / Marble Hall / This is an arched hall of fine marble. The hall stops abruptly to the north at a ford across a stream, where the marble is cracked and broken. Perhaps a flood or collapse of the cave was responsible. To the south the hall opens into a large room. There is rather annoying whirring sound coming from that room. / There is a square brick here which feels like clay. /   / >W / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 215,
+  "parentBeforeName": "Marble Hall",
+  "parentAfter": 214,
+  "parentAfterName": "Deep Ford",
+  "playerId": 4,
+  "reply": "There is a square brick here which feels like clay. /   / >W / You can't go that way. /   / >N / Deep Ford / You are fording the stream at a deep but not impossible spot. The water is very cold. The walls of the ravine rise to east and west. There is a small ledge along the north wall of the ravine. To the south is the entrance to a well-constructed but somewhat ruined hall. /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 214,
+  "parentBeforeName": "Deep Ford",
+  "parentAfter": 214,
+  "parentAfterName": "Deep Ford",
+  "playerId": 4,
+  "reply": "You can't go that way. /   / >N / Deep Ford / You are fording the stream at a deep but not impossible spot. The water is very cold. The walls of the ravine rise to east and west. There is a small ledge along the north wall of the ravine. To the south is the entrance to a well-constructed but somewhat ruined hall. /   / >W / You notice that the ledge above would be a drier route west. /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 214,
+  "parentBeforeName": "Deep Ford",
+  "parentAfter": 213,
+  "parentAfterName": "Ledge in Ravine",
+  "playerId": 4,
+  "reply": "You are fording the stream at a deep but not impossible spot. The water is very cold. The walls of the ravine rise to east and west. There is a small ledge along the north wall of the ravine. To the south is the entrance to a well-constructed but somewhat ruined hall. /   / >W / You notice that the ledge above would be a drier route west. /   / >N / Ledge in Ravine / You are on a narrow ledge near the bottom of a deep ravine. The ledge continues to the west. A precarious climb up to another tiny"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 213,
+  "parentBeforeName": "Ledge in Ravine",
+  "parentAfter": 212,
+  "parentAfterName": "End of Ledge",
+  "playerId": 4,
+  "reply": ">N / Ledge in Ravine / You are on a narrow ledge near the bottom of a deep ravine. The ledge continues to the west. A precarious climb up to another tiny ledge is possible. A short scramble down the rock face leads to a stream. /   / >W / End of Ledge / A ledge from the east ends here, and a tunnel leads north into the wall. There is a rather odd smokey odor in the warm air of the tunnel. / Your sword is glowing with a faint blue glow. /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 212,
+  "parentBeforeName": "End of Ledge",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": "A ledge from the east ends here, and a tunnel leads north into the wall. There is a rather odd smokey odor in the warm air of the tunnel. / Your sword is glowing with a faint blue glow. /   / >N / Dragon Room / The room is a large cavern full of broken stone. The walls are scorched and there are deep scratches on the floor. A sooty dry smell is very strong here. A paved path winds from a large passage to the west, through the room, and across a huge stone bridge to the south. To the east a small"
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": ">N / Dragon Room / The room is a large cavern full of broken stone. The walls are scorched and there are deep scratches on the floor. A sooty dry smell is very strong here. A paved path winds from a large passage to the west, through the room, and across a huge stone bridge to the south. To the east a small crack is visible. A dark and smokey tunnel leads north. / A huge red dragon is lying here, blocking the entrance to a tunnel leading north. Smoke curls from his nostrils and out between his t"
+ },
+ {
+  "cmd": "FILL POT WITH WATER",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": "A huge red dragon is lying here, blocking the entrance to a tunnel leading north. Smoke curls from his nostrils and out between his teeth. / Your sword has begun to glow very brightly. /   / >N / The dragon hisses at you and blocks your way. /   / >FILL POT WITH WATER / You can't see any water here! /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": ">N / The dragon hisses at you and blocks your way. /   / >FILL POT WITH WATER / You can't see any water here! /   / >N / The dragon hisses at you and blocks your way. /   / > "
+ },
+ {
+  "cmd": "U",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": ">FILL POT WITH WATER / You can't see any water here! /   / >N / The dragon hisses at you and blocks your way. /   / >U / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "OPEN LID",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": ">N / The dragon hisses at you and blocks your way. /   / >U / You can't go that way. /   / >OPEN LID / You can't see any lid here! /   / > "
+ },
+ {
+  "cmd": "PUT MAT UNDER DOOR",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": ">U / You can't go that way. /   / >OPEN LID / You can't see any lid here! /   / >PUT MAT UNDER DOOR / You can't see any door here! /   / > "
+ },
+ {
+  "cmd": "PUT OPENER IN KEYHOLE",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": ">OPEN LID / You can't see any lid here! /   / >PUT MAT UNDER DOOR / You can't see any door here! /   / >PUT OPENER IN KEYHOLE / You can't see any keyhole here! /   / > "
+ },
+ {
+  "cmd": "REMOVE OPENER AND DROP IT",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": "  / >PUT OPENER IN KEYHOLE / You can't see any keyhole here! /   / >REMOVE OPENER AND DROP IT / You already have that! /   / Dropped. /   / > "
+ },
+ {
+  "cmd": "PULL MAT",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": "  / >REMOVE OPENER AND DROP IT / You already have that! /   / Dropped. /   / >PULL MAT / You aren't an accomplished enough juggler. /   / > "
+ },
+ {
+  "cmd": "GET KEY",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": "  / Dropped. /   / >PULL MAT / You aren't an accomplished enough juggler. /   / >GET KEY / You can't see any key here! /   / > "
+ },
+ {
+  "cmd": "UNLOCK DOOR WITH KEY",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": ">PULL MAT / You aren't an accomplished enough juggler. /   / >GET KEY / You can't see any key here! /   / >UNLOCK DOOR WITH KEY / Those things aren't here! /   / > "
+ },
+ {
+  "cmd": "OPEN DOOR",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": ">GET KEY / You can't see any key here! /   / >UNLOCK DOOR WITH KEY / Those things aren't here! /   / >OPEN DOOR / You can't see any door here! /   / > "
+ },
+ {
+  "cmd": "DROP KEY",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": ">UNLOCK DOOR WITH KEY / Those things aren't here! /   / >OPEN DOOR / You can't see any door here! /   / >DROP KEY / You don't have that! /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": ">OPEN DOOR / You can't see any door here! /   / >DROP KEY / You don't have that! /   / >N / The dragon hisses at you and blocks your way. /   / > "
+ },
+ {
+  "cmd": "GET BLUE SPHERE",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": ">DROP KEY / You don't have that! /   / >N / The dragon hisses at you and blocks your way. /   / >GET BLUE SPHERE / You can't see any blue sphere here! /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 202,
+  "parentAfterName": "Stone Bridge",
+  "playerId": 4,
+  "reply": "  / >GET BLUE SPHERE / You can't see any blue sphere here! /   / >S / Stone Bridge / This is the middle of a ruined but still impressive stone bridge spanning a deep chasm. Water flows far beneath. A paved path leads north into a large open space. To the south, the path leads into a misty tunnel. / Your sword is glowing with a faint blue glow. /   / > "
+ },
+ {
+  "cmd": "D",
+  "parentBefore": 202,
+  "parentBeforeName": "Stone Bridge",
+  "parentAfter": 202,
+  "parentAfterName": "Stone Bridge",
+  "playerId": 4,
+  "reply": "  / >S / Stone Bridge / This is the middle of a ruined but still impressive stone bridge spanning a deep chasm. Water flows far beneath. A paved path leads north into a large open space. To the south, the path leads into a misty tunnel. / Your sword is glowing with a faint blue glow. /   / >D / It's a long way down. /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 202,
+  "parentBeforeName": "Stone Bridge",
+  "parentAfter": 202,
+  "parentAfterName": "Stone Bridge",
+  "playerId": 4,
+  "reply": "This is the middle of a ruined but still impressive stone bridge spanning a deep chasm. Water flows far beneath. A paved path leads north into a large open space. To the south, the path leads into a misty tunnel. / Your sword is glowing with a faint blue glow. /   / >D / It's a long way down. /   / >W / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 202,
+  "parentBeforeName": "Stone Bridge",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": ">W / You can't go that way. /   / >N / Dragon Room / A huge red dragon is lying here, blocking the entrance to a tunnel leading north. Smoke curls from his nostrils and out between his teeth. / There is a letter opener here. / Your sword has begun to glow very brightly. /   / > "
+ },
+ {
+  "cmd": "HIT DRAGON WITH SWORD",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 211,
+  "parentAfterName": "Dragon Room",
+  "playerId": 4,
+  "reply": "Dragon Room / A huge red dragon is lying here, blocking the entrance to a tunnel leading north. Smoke curls from his nostrils and out between his teeth. / There is a letter opener here. / Your sword has begun to glow very brightly. /   / >HIT DRAGON WITH SWORD / Dragon hide is tough as steel, but you have succeeded in annoying him a bit. He looks at you as if deciding whether or not to eat you. / The dragon continues to watch you carefully. /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 211,
+  "parentBeforeName": "Dragon Room",
+  "parentAfter": 202,
+  "parentAfterName": "Stone Bridge",
+  "playerId": 4,
+  "reply": "  / >HIT DRAGON WITH SWORD / Dragon hide is tough as steel, but you have succeeded in annoying him a bit. He looks at you as if deciding whether or not to eat you. / The dragon continues to watch you carefully. /   / >S / Stone Bridge / The dragon follows you, out of mingled curiosity and anger. /   / > "
+ },
+ {
+  "cmd": "HIT DRAGON WITH SWORD",
+  "parentBefore": 202,
+  "parentBeforeName": "Stone Bridge",
+  "parentAfter": 202,
+  "parentAfterName": "Stone Bridge",
+  "playerId": 4,
+  "reply": "  / >S / Stone Bridge / The dragon follows you, out of mingled curiosity and anger. /   / >HIT DRAGON WITH SWORD / That captured his interest. He stares at you balefully. / The dragon continues to watch you carefully. /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 202,
+  "parentBeforeName": "Stone Bridge",
+  "parentAfter": 201,
+  "parentAfterName": "Cool Room",
+  "playerId": 4,
+  "reply": "Cool Room / The room is cool and damp. The air is misty. A twisty path from the southeast splits here toward a wide northerly stone bridge, and a narrow westerly tunnel. It is from the latter that the mist and chill seem to originate. / The dragon follows you, out of mingled curiosity and anger. / A strange little man in a long cloak appears suddenly in the room. He is wearing a high pointed hat embroidered with astrological signs. He has a long, stringy, and unkempt beard. / The Wizard draws fo"
+ },
+ {
+  "cmd": "HIT DRAGON WITH SWORD",
+  "parentBefore": 201,
+  "parentBeforeName": "Cool Room",
+  "parentAfter": 201,
+  "parentAfterName": "Cool Room",
+  "playerId": 4,
+  "reply": "The Wizard draws forth his wand and waves it in your direction. It begins to glow with a faint blue glow. / The Wizard, in a deep and resonant voice, speaks the word \"Fierce!\" He cackles gleefully. / You rush at the Wizard, intending to tear him limb from limb. / The Wizard mumbles something under his breath, and just before you reach him, he vanishes. /   / >HIT DRAGON WITH SWORD / That did no damage, but he turns his smoky yellow eyes in your direction and sighs. / The dragon continues to watc"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 201,
+  "parentBeforeName": "Cool Room",
+  "parentAfter": 201,
+  "parentAfterName": "Cool Room",
+  "playerId": 4,
+  "reply": ">HIT DRAGON WITH SWORD / That did no damage, but he turns his smoky yellow eyes in your direction and sighs. / The dragon continues to watch you carefully. /   / >W / You are maddened by an overwhelming ferocity, and attack the huge red dragon instead. / That did no damage, but he turns his smoky yellow eyes in your direction and sighs. / The dragon continues to watch you carefully. /   / > "
+ },
+ {
+  "cmd": "DROP SWORD",
+  "parentBefore": 201,
+  "parentBeforeName": "Cool Room",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": "   ****  You have died  ****  /   / Now, let's take a look here... Well, you probably deserve another chance. I can't quite fix you up completely, but you can't have everything. /   / Room of Red Mist / You are inside a huge crystalline sphere filled with thin red mist. The mist becomes blue to the west. / You strain to look out through the mist...  / You see a small room with a sign on the wall, but it is too blurry to read. /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": "  / Room of Red Mist / You are inside a huge crystalline sphere filled with thin red mist. The mist becomes blue to the west. / You strain to look out through the mist...  / You see a small room with a sign on the wall, but it is too blurry to read. /   / >E / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": "You strain to look out through the mist...  / You see a small room with a sign on the wall, but it is too blurry to read. /   / >E / You can't go that way. /   / >N / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">E / You can't go that way. /   / >N / You can't go that way. /   / >N / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">N / You can't go that way. /   / >N / You can't go that way. /   / >N / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "OPEN CHEST",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">N / You can't go that way. /   / >N / You can't go that way. /   / >OPEN CHEST / You can't see any chest here! /   / > "
+ },
+ {
+  "cmd": "OPEN CHEST",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">N / You can't go that way. /   / >OPEN CHEST / You can't see any chest here! /   / >OPEN CHEST / You can't see any chest here! /   / > "
+ },
+ {
+  "cmd": "GET DRAGON",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">OPEN CHEST / You can't see any chest here! /   / >OPEN CHEST / You can't see any chest here! /   / >GET DRAGON / You can't see any dragon here! /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">OPEN CHEST / You can't see any chest here! /   / >GET DRAGON / You can't see any dragon here! /   / >S / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">GET DRAGON / You can't see any dragon here! /   / >S / You can't go that way. /   / >E / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">S / You can't go that way. /   / >E / You can't go that way. /   / >E / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "D",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">E / You can't go that way. /   / >E / You can't go that way. /   / >D / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">E / You can't go that way. /   / >D / You can't go that way. /   / >S / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "WAIT",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">D / You can't go that way. /   / >S / You can't go that way. /   / >WAIT / Time passes... /   / > "
+ },
+ {
+  "cmd": "WAIT",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">S / You can't go that way. /   / >WAIT / Time passes... /   / >WAIT / Time passes... /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">WAIT / Time passes... /   / >WAIT / Time passes... /   / >E / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">WAIT / Time passes... /   / >E / You can't go that way. /   / >E / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">E / You can't go that way. /   / >E / You can't go that way. /   / >N / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "IN",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">E / You can't go that way. /   / >N / You can't go that way. /   / >IN / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "WAIT",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">N / You can't go that way. /   / >IN / You can't go that way. /   / >WAIT / Time passes... /   / > "
+ },
+ {
+  "cmd": "WAIT",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">IN / You can't go that way. /   / >WAIT / Time passes... /   / >WAIT / Time passes... /   / > "
+ },
+ {
+  "cmd": "OUT",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">WAIT / Time passes... /   / >WAIT / Time passes... /   / >OUT / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">WAIT / Time passes... /   / >OUT / You can't go that way. /   / >S / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 21,
+  "parentAfterName": "Room of Red Mist",
+  "playerId": 4,
+  "reply": ">OUT / You can't go that way. /   / >S / You can't go that way. /   / >S / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 21,
+  "parentBeforeName": "Room of Red Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">S / You can't go that way. /   / >W / Room of Blue Mist / You are inside a huge crystalline sphere filled with thin blue mist. The mist becomes white to the west. / You strain to look out through the mist...  / You look out into a large, dreary room with a great door and a huge table. There is an odd glow to the mist. /   / > "
+ },
+ {
+  "cmd": "SE",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">W / Room of Blue Mist / You are inside a huge crystalline sphere filled with thin blue mist. The mist becomes white to the west. / You strain to look out through the mist...  / You look out into a large, dreary room with a great door and a huge table. There is an odd glow to the mist. /   / >SE / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": "You strain to look out through the mist...  / You look out into a large, dreary room with a great door and a huge table. There is an odd glow to the mist. /   / >SE / You can't go that way. /   / >S / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "SE",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">SE / You can't go that way. /   / >S / You can't go that way. /   / >SE / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">S / You can't go that way. /   / >SE / You can't go that way. /   / >N / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "SE",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">SE / You can't go that way. /   / >N / You can't go that way. /   / >SE / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">N / You can't go that way. /   / >SE / You can't go that way. /   / >N / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "SE",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">SE / You can't go that way. /   / >N / You can't go that way. /   / >SE / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "SE",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">N / You can't go that way. /   / >SE / You can't go that way. /   / >SE / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "SE",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">SE / You can't go that way. /   / >SE / You can't go that way. /   / >SE / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "ANSWER \"A WELL\"",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">SE / You can't go that way. /   / >SE / You can't go that way. /   / >ANSWER \"A WELL\" / Nobody seems to be awaiting your answer. /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">SE / You can't go that way. /   / >ANSWER \"A WELL\" / Nobody seems to be awaiting your answer. /   / >E / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">ANSWER \"A WELL\" / Nobody seems to be awaiting your answer. /   / >E / You can't go that way. /   / >E / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "DROP DRAGON AND PAPER",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">E / You can't go that way. /   / >E / You can't go that way. /   / >DROP DRAGON AND PAPER / You don't have that! /   / > "
+ },
+ {
+  "cmd": "GET IN BUCKET",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">E / You can't go that way. /   / >DROP DRAGON AND PAPER / You don't have that! /   / >GET IN BUCKET / You can't see any bucket here! /   / > "
+ },
+ {
+  "cmd": "DROP WATER",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">DROP DRAGON AND PAPER / You don't have that! /   / >GET IN BUCKET / You can't see any bucket here! /   / >DROP WATER / You don't have that! /   / > "
+ },
+ {
+  "cmd": "GET OUT OF BUCKET",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">GET IN BUCKET / You can't see any bucket here! /   / >DROP WATER / You don't have that! /   / >GET OUT OF BUCKET / You can't see any of bucket here! /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">DROP WATER / You don't have that! /   / >GET OUT OF BUCKET / You can't see any of bucket here! /   / >E / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "DROP TEAPOT",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">GET OUT OF BUCKET / You can't see any of bucket here! /   / >E / You can't go that way. /   / >DROP TEAPOT / You don't have that! /   / > "
+ },
+ {
+  "cmd": "GET RED, BLUE AND GREEN CAKE",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": "  / >DROP TEAPOT / You don't have that! /   / >GET RED, BLUE AND GREEN CAKE / sphere: You can't be serious. / sphere: What a concept! / The other object that you mentioned isn't here. /   / > "
+ },
+ {
+  "cmd": "EAT GREEN",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": "  / >GET RED, BLUE AND GREEN CAKE / sphere: You can't be serious. / sphere: What a concept! / The other object that you mentioned isn't here. /   / >EAT GREEN / You can't see any green here! /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": "sphere: What a concept! / The other object that you mentioned isn't here. /   / >EAT GREEN / You can't see any green here! /   / >E / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "PUT RED CAKE IN POOL",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">EAT GREEN / You can't see any green here! /   / >E / You can't go that way. /   / >PUT RED CAKE IN POOL / You don't have that! /   / > "
+ },
+ {
+  "cmd": "GET CANDY",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 19,
+  "parentAfterName": "Room of Blue Mist",
+  "playerId": 4,
+  "reply": ">E / You can't go that way. /   / >PUT RED CAKE IN POOL / You don't have that! /   / >GET CANDY / You can't see any candy here! /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 19,
+  "parentBeforeName": "Room of Blue Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ">GET CANDY / You can't see any candy here! /   / >W / Room of White Mist / You are inside a huge crystalline sphere filled with thin white mist. The mist becomes black to the west. / You strain to look out through the mist...  / A strange blurry room is barely visible. An odd sinuous shadow crosses the mist as you look. /   / > "
+ },
+ {
+  "cmd": "EAT BLUE CAKE",
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ">W / Room of White Mist / You are inside a huge crystalline sphere filled with thin white mist. The mist becomes black to the west. / You strain to look out through the mist...  / A strange blurry room is barely visible. An odd sinuous shadow crosses the mist as you look. /   / >EAT BLUE CAKE / You can't see any blue cake here! /   / > "
+ },
+ {
+  "cmd": "NW",
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": "You strain to look out through the mist...  / A strange blurry room is barely visible. An odd sinuous shadow crosses the mist as you look. /   / >EAT BLUE CAKE / You can't see any blue cake here! /   / >NW / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "ROBOT, EAST AND SOUTH",
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ">EAT BLUE CAKE / You can't see any blue cake here! /   / >NW / You can't go that way. /   / >ROBOT, EAST AND SOUTH / You can't see any robot here! /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ">NW / You can't go that way. /   / >ROBOT, EAST AND SOUTH / You can't see any robot here! /   / >E / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ">ROBOT, EAST AND SOUTH / You can't see any robot here! /   / >E / You can't go that way. /   / >S / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "GET RED SPHERE",
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ">E / You can't go that way. /   / >S / You can't go that way. /   / >GET RED SPHERE / A valiant attempt. /   / > "
+ },
+ {
+  "cmd": "ROBOT, LIFT CAGE",
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ">S / You can't go that way. /   / >GET RED SPHERE / A valiant attempt. /   / >ROBOT, LIFT CAGE / You can't see any robot here! /   / > "
+ },
+ {
+  "cmd": "GET RED SPHERE",
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ">GET RED SPHERE / A valiant attempt. /   / >ROBOT, LIFT CAGE / You can't see any robot here! /   / >GET RED SPHERE / An interesting idea... /   / > "
+ },
+ {
+  "cmd": "ROBOT, NORTH AND PRESS TRIANGULAR BUTTON",
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ">ROBOT, LIFT CAGE / You can't see any robot here! /   / >GET RED SPHERE / An interesting idea... /   / >ROBOT, NORTH AND PRESS TRIANGULAR BUTTON / You can't see any robot here! /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 18,
+  "parentAfterName": "Room of White Mist",
+  "playerId": 4,
+  "reply": ">GET RED SPHERE / An interesting idea... /   / >ROBOT, NORTH AND PRESS TRIANGULAR BUTTON / You can't see any robot here! /   / >N / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 18,
+  "parentBeforeName": "Room of White Mist",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": "  / >W / You follow a corridor of black mist into a black walled spherical room. As you enter, a huge and horrible face materializes out of the mist. /   / \"What brings you here to trouble my imprisonment, wanderer?\" it asks. Hearing no immediate answer, it studies you for a moment. / \"Perhaps you may be of some use to me in gaining my freedom from this place. Return to your foolish quest! I shall not destroy you this time. Mayhap you will repay this favor in kind someday.\" The face vanishes and"
+ },
+ {
+  "cmd": "SE",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": "  / \"What brings you here to trouble my imprisonment, wanderer?\" it asks. Hearing no immediate answer, it studies you for a moment. / \"Perhaps you may be of some use to me in gaining my freedom from this place. Return to your foolish quest! I shall not destroy you this time. Mayhap you will repay this favor in kind someday.\" The face vanishes and the mist begins to swirl. When it clears you are returned to the world of life. / Inside the Barrow / There is a lamp here (providing light). /   / >SE"
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": "Inside the Barrow / There is a lamp here (providing light). /   / >SE / You can't go that way. /   / >W / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "SE",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">SE / You can't go that way. /   / >W / You can't go that way. /   / >SE / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">W / You can't go that way. /   / >SE / You can't go that way. /   / >W / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "SE",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">SE / You can't go that way. /   / >W / You can't go that way. /   / >SE / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "GET TEAPOT",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">W / You can't go that way. /   / >SE / You can't go that way. /   / >GET TEAPOT / You can't see any teapot here! /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">SE / You can't go that way. /   / >GET TEAPOT / You can't see any teapot here! /   / >W / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "GET IN BUCKET",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">GET TEAPOT / You can't see any teapot here! /   / >W / You can't go that way. /   / >GET IN BUCKET / You can't see any bucket here! /   / > "
+ },
+ {
+  "cmd": "FILL TEAPOT",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">W / You can't go that way. /   / >GET IN BUCKET / You can't see any bucket here! /   / >FILL TEAPOT / You don't have that! /   / > "
+ },
+ {
+  "cmd": "GET OUT OF BUCKET",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">GET IN BUCKET / You can't see any bucket here! /   / >FILL TEAPOT / You don't have that! /   / >GET OUT OF BUCKET / You can't see any of bucket here! /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">FILL TEAPOT / You don't have that! /   / >GET OUT OF BUCKET / You can't see any of bucket here! /   / >W / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">GET OUT OF BUCKET / You can't see any of bucket here! /   / >W / You can't go that way. /   / >W / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "NW",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">W / You can't go that way. /   / >W / You can't go that way. /   / >NW / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "DROP TEAPOT, ROSE, CANDY AND GOLD KEY",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">W / You can't go that way. /   / >NW / You can't go that way. /   / >DROP TEAPOT, ROSE, CANDY AND GOLD KEY / You don't have that! /   / > "
+ },
+ {
+  "cmd": "SE",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">NW / You can't go that way. /   / >DROP TEAPOT, ROSE, CANDY AND GOLD KEY / You don't have that! /   / >SE / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">DROP TEAPOT, ROSE, CANDY AND GOLD KEY / You don't have that! /   / >SE / You can't go that way. /   / >E / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "E",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">SE / You can't go that way. /   / >E / You can't go that way. /   / >E / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "GET DRAGON AND PAPER",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">E / You can't go that way. /   / >E / You can't go that way. /   / >GET DRAGON AND PAPER / The objects that you mentioned aren't here. /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">E / You can't go that way. /   / >GET DRAGON AND PAPER / The objects that you mentioned aren't here. /   / >W / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "GET NECKLACE",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">GET DRAGON AND PAPER / The objects that you mentioned aren't here. /   / >W / You can't go that way. /   / >GET NECKLACE / You can't see any necklace here! /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">W / You can't go that way. /   / >GET NECKLACE / You can't see any necklace here! /   / >W / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "NW",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">GET NECKLACE / You can't see any necklace here! /   / >W / You can't go that way. /   / >NW / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "OPEN BOX",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">W / You can't go that way. /   / >NW / You can't go that way. /   / >OPEN BOX / You can't see any box here! /   / > "
+ },
+ {
+  "cmd": "DROP NECKLACE AND DRAGON",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">NW / You can't go that way. /   / >OPEN BOX / You can't see any box here! /   / >DROP NECKLACE AND DRAGON / You don't have that! /   / > "
+ },
+ {
+  "cmd": "N",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">OPEN BOX / You can't see any box here! /   / >DROP NECKLACE AND DRAGON / You don't have that! /   / >N / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "GET BRICK",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 231,
+  "parentAfterName": "Inside the Barrow",
+  "playerId": 4,
+  "reply": ">DROP NECKLACE AND DRAGON / You don't have that! /   / >N / You can't go that way. /   / >GET BRICK / You can't see any brick here! /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 231,
+  "parentBeforeName": "Inside the Barrow",
+  "parentAfter": 229,
+  "parentAfterName": "Narrow Tunnel",
+  "playerId": 4,
+  "reply": ">N / You can't go that way. /   / >GET BRICK / You can't see any brick here! /   / >S / Narrow Tunnel /   / > "
+ },
+ {
+  "cmd": "SW",
+  "parentBefore": 229,
+  "parentBeforeName": "Narrow Tunnel",
+  "parentAfter": 229,
+  "parentAfterName": "Narrow Tunnel",
+  "playerId": 4,
+  "reply": ">GET BRICK / You can't see any brick here! /   / >S / Narrow Tunnel /   / >SW / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "GET STRING",
+  "parentBefore": 229,
+  "parentBeforeName": "Narrow Tunnel",
+  "parentAfter": 229,
+  "parentAfterName": "Narrow Tunnel",
+  "playerId": 4,
+  "reply": ">S / Narrow Tunnel /   / >SW / You can't go that way. /   / >GET STRING / You can't see any string here! /   / > "
+ },
+ {
+  "cmd": "NE",
+  "parentBefore": 229,
+  "parentBeforeName": "Narrow Tunnel",
+  "parentAfter": 229,
+  "parentAfterName": "Narrow Tunnel",
+  "playerId": 4,
+  "reply": ">SW / You can't go that way. /   / >GET STRING / You can't see any string here! /   / >NE / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "NW",
+  "parentBefore": 229,
+  "parentBeforeName": "Narrow Tunnel",
+  "parentAfter": 229,
+  "parentAfterName": "Narrow Tunnel",
+  "playerId": 4,
+  "reply": ">GET STRING / You can't see any string here! /   / >NE / You can't go that way. /   / >NW / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 229,
+  "parentBeforeName": "Narrow Tunnel",
+  "parentAfter": 229,
+  "parentAfterName": "Narrow Tunnel",
+  "playerId": 4,
+  "reply": ">NE / You can't go that way. /   / >NW / You can't go that way. /   / >W / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 229,
+  "parentBeforeName": "Narrow Tunnel",
+  "parentAfter": 229,
+  "parentAfterName": "Narrow Tunnel",
+  "playerId": 4,
+  "reply": ">NW / You can't go that way. /   / >W / You can't go that way. /   / >W / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "GET RUBY",
+  "parentBefore": 229,
+  "parentBeforeName": "Narrow Tunnel",
+  "parentAfter": 229,
+  "parentAfterName": "Narrow Tunnel",
+  "playerId": 4,
+  "reply": ">W / You can't go that way. /   / >W / You can't go that way. /   / >GET RUBY / You can't see any ruby here! /   / > "
+ },
+ {
+  "cmd": "S",
+  "parentBefore": 229,
+  "parentBeforeName": "Narrow Tunnel",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">W / You can't go that way. /   / >GET RUBY / You can't see any ruby here! /   / >S / Foot Bridge /   / > "
+ },
+ {
+  "cmd": "OPEN RECEPTACLE",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">GET RUBY / You can't see any ruby here! /   / >S / Foot Bridge /   / >OPEN RECEPTACLE / You can't see any receptacle here! /   / > "
+ },
+ {
+  "cmd": "PUT PAPER IN RECEPTACLE",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">S / Foot Bridge /   / >OPEN RECEPTACLE / You can't see any receptacle here! /   / >PUT PAPER IN RECEPTACLE / You don't have that! /   / > "
+ },
+ {
+  "cmd": "ENTER BASKET",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">OPEN RECEPTACLE / You can't see any receptacle here! /   / >PUT PAPER IN RECEPTACLE / You don't have that! /   / >ENTER BASKET / You can't see any basket here! /   / > "
+ },
+ {
+  "cmd": "EXIT",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">PUT PAPER IN RECEPTACLE / You don't have that! /   / >ENTER BASKET / You can't see any basket here! /   / >EXIT / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "BOARD BASKET",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">ENTER BASKET / You can't see any basket here! /   / >EXIT / You can't go that way. /   / >BOARD BASKET / You can't see any basket here! /   / > "
+ },
+ {
+  "cmd": "GET OUT OF BASKET",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">EXIT / You can't go that way. /   / >BOARD BASKET / You can't see any basket here! /   / >GET OUT OF BASKET / You can't see any of basket here! /   / > "
+ },
+ {
+  "cmd": "SIT IN BASKET",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">BOARD BASKET / You can't see any basket here! /   / >GET OUT OF BASKET / You can't see any of basket here! /   / >SIT IN BASKET / You can't see any basket here! /   / > "
+ },
+ {
+  "cmd": "STAND UP",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">GET OUT OF BASKET / You can't see any of basket here! /   / >SIT IN BASKET / You can't see any basket here! /   / >STAND UP / You are already standing, I think. /   / > "
+ },
+ {
+  "cmd": "GET IN BASKET",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">SIT IN BASKET / You can't see any basket here! /   / >STAND UP / You are already standing, I think. /   / >GET IN BASKET / You can't see any basket here! /   / > "
+ },
+ {
+  "cmd": "GET IN BASKET",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">STAND UP / You are already standing, I think. /   / >GET IN BASKET / You can't see any basket here! /   / >GET IN BASKET / You can't see any basket here! /   / > "
+ },
+ {
+  "cmd": "STRIKE MATCH",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">GET IN BASKET / You can't see any basket here! /   / >GET IN BASKET / You can't see any basket here! /   / >STRIKE MATCH / You can't see any match here! /   / > "
+ },
+ {
+  "cmd": "BURN PAPER",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">GET IN BASKET / You can't see any basket here! /   / >STRIKE MATCH / You can't see any match here! /   / >BURN PAPER / What do you want to burn the paper with? /   / > "
+ },
+ {
+  "cmd": "WAIT",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">STRIKE MATCH / You can't see any match here! /   / >BURN PAPER / What do you want to burn the paper with? /   / >WAIT / Time passes... /   / > "
+ },
+ {
+  "cmd": "WAIT",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">BURN PAPER / What do you want to burn the paper with? /   / >WAIT / Time passes... /   / >WAIT / Time passes... /   / > "
+ },
+ {
+  "cmd": "W",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">WAIT / Time passes... /   / >WAIT / Time passes... /   / >W / You can't go that way. /   / > "
+ },
+ {
+  "cmd": "TIE WIRE TO HOOK",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">WAIT / Time passes... /   / >W / You can't go that way. /   / >TIE WIRE TO HOOK / Those things aren't here! /   / > "
+ },
+ {
+  "cmd": "GET OUT OF BASKET",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": ">W / You can't go that way. /   / >TIE WIRE TO HOOK / Those things aren't here! /   / >GET OUT OF BASKET / You can't see any of basket here! /   / > "
+ },
+ {
+  "cmd": "LOOK",
+  "parentBefore": 228,
+  "parentBeforeName": "Foot Bridge",
+  "parentAfter": 228,
+  "parentAfterName": "Foot Bridge",
+  "playerId": 4,
+  "reply": "Those things aren't here! /   / >GET OUT OF BASKET / You can't see any of basket here! /   / >LOOK / Foot Bridge / You are standing on a crude but sturdy wooden foot bridge crossing a deep ravine. The path runs north and south from here. /   / > "
+ }
+]

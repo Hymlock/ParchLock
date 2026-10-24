@@ -1,0 +1,8 @@
+C:\Users\hymlo\Downloads\Projects\Parchmap-main\Parchmap-main\work\investigations\r3-claude\vehbit2\drive2.cjs:34
+ let g=/^GOTO:(.*)$/.exec(c);if(g){target=g[1];for(let i=0;i<80&&!dead;i++){const s0=await st();const nm=s0.parent?await p.evaluate(id=>ZRamReader.shortName(ZRamProvider.getMem(),id),WorldModel.lastPayload.roomId):'';if(String(nm).toLowerCase()===target.toLowerCase())break;const d=await step();const e=await run(d.dir,'goto:'+target+(d.path?'':':random'));if(probeOn&&!dead)await probe(e);}continue;}
+                                                                                                                                                                                       ^
+
+ReferenceError: WorldModel is not defined
+    at C:\Users\hymlo\Downloads\Projects\Parchmap-main\Parchmap-main\work\investigations\r3-claude\vehbit2\drive2.cjs:34:184
+
+Node.js v24.12.0

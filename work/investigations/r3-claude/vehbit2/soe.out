@@ -1,0 +1,561 @@
+"WAIT"  36 -> 128 bed | The hellhound reaches you and tears you apart with its powerful teeth. ...and a moment later you wake up in a cold sweat and realize you've been dream
+"FROTZ BOOK"  128 -> 128 bed | There is an almost blinding flash of light as the spell book begins to glow! It slowly fades to a less painful level, but the spell book is now quite 
+"GET UP"  128 -> 17 Your Quarters | You are now on your feet. >
+"W"  17 -> 67 Hallway | Hallway Rooms lie to the east and west from this north-south corridor. A heavy wooden door, currently closed, leads north. Tacked to the doorframe of 
+"READ NOTE"  67 -> 67 Hallway | (taking the scribbled note first) "I have taken the apprentices into town to shop for the Guild picnic. I tried rousing you, but you seemed deep aslee
+"DROP IT"  67 -> 67 Hallway | Dropped. >
+"W"  67 -> 115 Belboz's Quarters | Belboz's Quarters The personal chamber of Belboz, who presides over the Circle of Enchanters, is appointed with a beautiful woven wall hanging, an exo
+"OPEN DESK"  115 -> 115 Belboz's Quarters | Opening the desk drawer reveals a tiny box, an infotater, and a journal. >
+"GET BOX AND JOURNAL"  115 -> 115 Belboz's Quarters | tiny box: Taken. journal: Taken. "Squawk! Pollibar want a cracker! Squawk!" >
+"LOOK BEHIND TAPESTRY"  115 -> 115 Belboz's Quarters | As you move the tapestry, a key falls out from behind it and lands on the floor. "Squawk! Now where can I hide this key? Squawk!" >
+"GET KEY"  115 -> 115 Belboz's Quarters | Taken. >
+"OPEN JOURNAL"  115 -> 115 Belboz's Quarters | (with the key) The journal springs open. "Squawk! This tea is cold! Get me another cup. Squawk!" >
+"READ IT"  115 -> 115 Belboz's Quarters | You skim through the pages of the journal, a combination diary and notebook. Most of the notations, written in Belboz's familiar flowing script, deal 
+"DROP JOURNAL AND KEY"  115 -> 115 Belboz's Quarters | journal: Dropped. small key: Dropped. >
+"E"  115 -> 67 Hallway | Hallway There is a scribbled note here. >
+"S"  67 -> 50 Hallway | Hallway Rooms lie to the east and west from this north-south corridor. A large marble archway to the south leads into an open area. >
+"S"  50 -> 18 Lobby | Lobby This is the entrance lobby of the Guild Hall. Befitting the status and wealth of the Guild, the lobby is finished with polished Antharian marble
+"W"  18 -> 231 Store Room | Store Room This is a closet for storage. The only exit is east. Among the provisions here is a small ochre-colored vial, closed and labelled with tiny
+"GET VIAL, CALENDAR AND MATCHBOOK"  231 -> 231 Store Room | ochre vial: Taken. calendar: Taken. depleted matchbook: Taken. You are now a bit thirsty. >
+"E"  231 -> 18 Lobby | Lobby Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. >
+"OPEN RECEPTACLE"  18 -> 18 Lobby | Opened. >
+"READ MATCHBOOK"  18 -> 18 Lobby | friends! Be the first person on the block to own some! Order today by dropping this in any mailbox. Our shipping department will use the latest in tem
+"PUT IT IN RECEPTACLE"  18 -> 18 Lobby | Done. >
+"E"  18 -> 142 Library | Library This is a study chamber for members of the Guild. Usually, there would be several elder Enchanters patiently training novices, but no one is h
+"GET SCROLL"  142 -> 142 Library | Taken. >
+"READ IT"  142 -> 142 Library | The scroll reads "meef spell: cause plants to wilt". The Guild Hall doorbell chimes. >
+"GNUSTO MEEF SPELL"  142 -> 142 Library | Your spell book begins to glow softly. Slowly, ornately, the words of the meef spell are inscribed, glowing even more brightly than the book itself. T
+"W"  142 -> 18 Lobby | Lobby Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. You are now somewhat thirsty. >
+"D"  18 -> 43 Cellar | Cellar You are in the basement of the Guild Hall. A steep, narrow stair leads upward from the southwest corner. At the far end of the cellar, draped i
+"PRESS white, gray, black, red, black"  43 -> 43 Cellar | white button: There is a click from the lid of the trunk. gray button: There is a click from the lid of the trunk. black button: There is a click from
+"GET SCROLL"  43 -> 43 Cellar | You can't see any scroll here! >
+"READ IT"  43 -> 43 Cellar | How can you read a black button? >
+"OPEN VIAL"  43 -> 43 Cellar | Opening the ochre vial reveals ochre potion. >
+"DRINK OCHRE POTION"  43 -> 43 Cellar | The potion was completely tasteless. You no longer feel hungry and thirsty, though. >
+"DROP VIAL"  43 -> 43 Cellar | Dropped. >
+"U"  43 -> 18 Lobby | Lobby Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. >
+"OPEN RECEPTACLE"  18 -> 18 Lobby | Opening the receptacle reveals an orange vial, and an issue of Popular Enchanting. >
+"GET ORANGE VIAL"  18 -> 18 Lobby | Taken. >
+"N"  18 -> 50 Hallway | Hallway >
+"W"  50 -> 13 Helistar's Quarters | Helistar's Quarters Helistar is one of the foremost members of the Circle, and this is her private chamber. Among Helistar's possessions is a scroll, 
+"GET SCROLL"  13 -> 13 Helistar's Quarters | Taken. >
+"READ IT"  13 -> 13 Helistar's Quarters | The scroll reads "gaspar spell: provide for your own resurrection". >
+"GNUSTO GASPAR SPELL"  13 -> 13 Helistar's Quarters | Your spell book begins to glow softly. Slowly, ornately, the words of the gaspar spell are inscribed, glowing even more brightly than the book itself.
+"AIMFIZ BELBOZ"  13 -> 13 Helistar's Quarters | The aimfiz spell is not committed to memory, and you haven't seen any scroll on which it is written. >
+"southwest" goto:Twisted Forest:random 13 -> 13 Helistar's Quarters | You can't go that way. >
+"west" goto:Twisted Forest:random 13 -> 13 Helistar's Quarters | You can't go that way. >
+"south" goto:Twisted Forest:random 13 -> 13 Helistar's Quarters | You can't go that way. >
+"northeast" goto:Twisted Forest:random 13 -> 13 Helistar's Quarters | You can't go that way. >
+"south" goto:Twisted Forest:random 13 -> 13 Helistar's Quarters | You can't go that way. >
+"up" goto:Twisted Forest:random 13 -> 13 Helistar's Quarters | You can't go that way. >
+"northeast" goto:Twisted Forest:random 13 -> 13 Helistar's Quarters | You can't go that way. >
+"northwest" goto:Twisted Forest:random 13 -> 13 Helistar's Quarters | You can't go that way. >
+"up" goto:Twisted Forest:random 13 -> 13 Helistar's Quarters | You can't go that way. >
+"north" goto:Twisted Forest:random 13 -> 13 Helistar's Quarters | You can't go that way. >
+"up" goto:Twisted Forest:random 13 -> 13 Helistar's Quarters | You can't go that way. >
+"southwest" goto:Twisted Forest:random 13 -> 13 Helistar's Quarters | You can't go that way. >
+"southeast" goto:Twisted Forest:random 13 -> 13 Helistar's Quarters | You can't go that way. >
+"east" goto:Twisted Forest:random 13 -> 50 Hallway | Hallway >
+"up" goto:Twisted Forest:random 50 -> 50 Hallway | You can't go that way. >
+"south" goto:Twisted Forest:random 50 -> 18 Lobby | Lobby Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. The receptacle contains: an issue of Popular Enchant
+"north" goto:Twisted Forest:random 18 -> 50 Hallway | Hallway >
+"up" goto:Twisted Forest:random 50 -> 50 Hallway | You can't go that way. >
+"east" goto:Twisted Forest:random 50 -> 110 Frobar's Quarters | Frobar's Quarters This is the room of Frobar the Enchanter. There isn't much here in the way of furnishings, Frobar being a pretty dull kind of guy. >
+"down" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"up" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"south" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"east" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"northwest" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"west" goto:Twisted Forest:random 110 -> 50 Hallway | Hallway >
+"southeast" goto:Twisted Forest:random 50 -> 50 Hallway | You can't go that way. >
+"east" goto:Twisted Forest:random 50 -> 110 Frobar's Quarters | Frobar's Quarters >
+"southwest" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"south" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"up" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"east" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"east" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"north" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"down" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"northwest" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"west" goto:Twisted Forest:random 110 -> 50 Hallway | Hallway >
+"southeast" goto:Twisted Forest:random 50 -> 50 Hallway | You can't go that way. >
+"east" goto:Twisted Forest:random 50 -> 110 Frobar's Quarters | Frobar's Quarters You are beginning to tire. >
+"southeast" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"up" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"north" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"northwest" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"down" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"northwest" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"north" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"west" goto:Twisted Forest:random 110 -> 50 Hallway | Hallway You are feeling tired. >
+"east" goto:Twisted Forest:random 50 -> 110 Frobar's Quarters | Frobar's Quarters >
+"west" goto:Twisted Forest:random 110 -> 50 Hallway | Hallway >
+"southwest" goto:Twisted Forest:random 50 -> 50 Hallway | You can't go that way. >
+"down" goto:Twisted Forest:random 50 -> 50 Hallway | You can't go that way. >
+"east" goto:Twisted Forest:random 50 -> 110 Frobar's Quarters | Frobar's Quarters >
+"down" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"down" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"up" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. You are getting more and more tired. >
+"northwest" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"up" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"east" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"east" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"northeast" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"southeast" goto:Twisted Forest:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"west" goto:Twisted Forest:random 110 -> 50 Hallway | Hallway >
+"north" goto:Twisted Forest:random 50 -> 67 Hallway | Hallway There is a scribbled note here. You are worn out. >
+"northwest" goto:Twisted Forest:random 67 -> 67 Hallway | You can't go that way. >
+"southeast" goto:Twisted Forest:random 67 -> 67 Hallway | You can't go that way. >
+"north" goto:Twisted Forest:random 67 -> 67 Hallway | The heavy wooden door is closed. >
+"east" goto:Twisted Forest:random 67 -> 17 Your Quarters | Your Quarters Your bed occupies the far corner of the room. >
+"down" goto:Twisted Forest:random 17 -> 17 Your Quarters | You can't go that way. >
+"southwest" goto:Twisted Forest:random 17 -> 17 Your Quarters | You can't go that way. >
+"west" goto:Twisted Forest:random 17 -> 67 Hallway | Hallway There is a scribbled note here. >
+"west" goto:Twisted Forest:random 67 -> 115 Belboz's Quarters | Belboz's Quarters Pacing back and forth on a perch in the corner is Belboz's prized pet parrot, native to the jungles of Miznia. There is a small key 
+"north" goto:Twisted Forest:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"north" goto:Twisted Forest:random 115 -> 115 Belboz's Quarters | You can't go that way. "Squawk! Pollibar want a cracker! Squawk!" >
+"down" goto:Twisted Forest:random 115 -> 115 Belboz's Quarters | You can't go that way. "Squawk! Pollibar want a cracker! Squawk!" >
+"northeast" goto:Twisted Forest:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"north" goto:Twisted Forest:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"south" goto:Twisted Forest:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"south" goto:Twisted Forest:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"east" goto:Twisted Forest:random 115 -> 67 Hallway | Hallway There is a scribbled note here. You are so tired you can barely concentrate. >
+"southwest" goto:Twisted Forest:random 67 -> 67 Hallway | You can't go that way. >
+"west" goto:Twisted Forest:random 67 -> 115 Belboz's Quarters | Belboz's Quarters Pacing back and forth on a perch in the corner is Belboz's prized pet parrot, native to the jungles of Miznia. There is a small key 
+"NE"  115 -> 115 Belboz's Quarters | You can't go that way. >
+"south" goto:Forest Edge:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"south" goto:Forest Edge:random 115 -> 115 Belboz's Quarters | You can't go that way. "Squawk! Pollibar want a cracker! Squawk!" >
+"up" goto:Forest Edge:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"southwest" goto:Forest Edge:random 115 -> 115 Belboz's Quarters | You can't go that way. >
+"northwest" goto:Forest Edge:random 115 -> 115 Belboz's Quarters | You can't go that way. You are moving only on your last reserves of strength. >
+"up" goto:Forest Edge:random 115 -> 115 Belboz's Quarters | You can't go that way. "Squawk! Now where can I hide this key? Squawk!" >
+"north" goto:Forest Edge:random 115 -> 115 Belboz's Quarters | You can't go that way. "Squawk! You should never have let down your mindshield, you doddering old Enchanter. Squawk!" >
+"south" goto:Forest Edge:random 115 -> 115 Belboz's Quarters | You can't go that way. "Squawk! You should never have let down your mindshield, you doddering old Enchanter. Squawk!" >
+"east" goto:Forest Edge:random 115 -> 67 Hallway | Hallway There is a scribbled note here. >
+"down" goto:Forest Edge:random 67 -> 67 Hallway | You can't go that way. >
+"south" goto:Forest Edge:random 67 -> 50 Hallway | Hallway >
+"up" goto:Forest Edge:random 50 -> 50 Hallway | You can't go that way. >
+"east" goto:Forest Edge:random 50 -> 110 Frobar's Quarters | Frobar's Quarters You are practically asleep. >
+"northeast" goto:Forest Edge:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"up" goto:Forest Edge:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"northeast" goto:Forest Edge:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"east" goto:Forest Edge:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"northeast" goto:Forest Edge:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"east" goto:Forest Edge:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"south" goto:Forest Edge:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"south" goto:Forest Edge:random 110 -> 110 Frobar's Quarters | You can't go that way. You are unable to keep your eyes open for more than a few moments at a time. >
+"southwest" goto:Forest Edge:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"south" goto:Forest Edge:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"up" goto:Forest Edge:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"south" goto:Forest Edge:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"south" goto:Forest Edge:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"northeast" goto:Forest Edge:random 110 -> 110 Frobar's Quarters | You can't go that way. >
+"west" goto:Forest Edge:random 110 -> 50 Hallway | Hallway >
+"east" goto:Forest Edge:random 50 -> 123 Chamber of Living Death | Frobar's Quarters You drop in your tracks from exhaustion. You drift off to sleep and dream of the distant Kovalli Desert. Waves of heat from the sand
+"north" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:Forest Edge:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"E"  123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:Meadow:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"NE"  123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"LEARN PULVER"  123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"PULVER RIVER"  123 -> 123 Chamber of Living Death | You can't see any river here! Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon y
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bank:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"D"  123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"east" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southeast" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"down" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"south" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northeast" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"southwest" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"up" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"west" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"north" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"northwest" goto:River Bed:random 123 -> 123 Chamber of Living Death | Your agony is too great to concentrate on such an action. Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo

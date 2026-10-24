@@ -1,0 +1,213 @@
+null undefined -> undefined undefined | ugh to find the pyramid and to survive, and that the plane's carrying the long-overdue box. INFIDEL Copyright 1983 by Infocom, Inc. All righ
+"get out of cot" 51 -> 71 Your Tent | (You are in the army cot.) / You are in your tent. Golden rays of the sun filter through the open tent flaps on the southern wall, but no br
+"s" 71 -> 72 Outside Your Tent |  / You hear a plane flying high overhead, outside the tent. / / >s / Outside Your Tent / You are on an east/west path on the north side of t
+"sw" 72 -> 68 Outside Supply Tent |  / You crane your neck and see a plane, high overhead, circling the encampment. / / >sw / Outside Supply Tent / You're on a north/south path
+"w" 68 -> 69 Supply Tent |  / >w / Supply Tent / You are in a tent, very much like your own -- a tent which had originally contained the supplies for your expedition. 
+"get pickaxe" 69 -> 69 Supply Tent | Half buried in the sand, in the corner of the tent, is a shovel. / / It sounds as if the plane is circling. / / >get pickaxe / Taken. / / It
+"get shovel" 69 -> 69 Supply Tent | Taken. / / It sounds as if the plane is circling. / / >get shovel / Taken. / / It sounds as if the plane is flying off. / / > 
+"e" 69 -> 68 Outside Supply Tent | Taken. / / It sounds as if the plane is flying off. / / >e / Outside Supply Tent / / A small speck descending from the plane overhead gets l
+"se" 68 -> 64 Outside Work Tent |  / A small speck descending from the plane overhead gets larger until you see a crate, dangling from a parachute. / / >se / Outside Work Ten
+"s" 64 -> 62 Work Tent |  / At last, your luck seems to be changing. A large crate lands right before you, its parachute flapping in the breeze. The parachute breaks
+"read note" 62 -> 62 Work Tent |  / >read note / The note reads: / / Fi aman Allah! / Hereafter you shall pursue your fool dream of the hidden pyramid and its riches alone. 
+"get knapsack" 62 -> 62 Work Tent | Fi aman Allah! / Hereafter you shall pursue your fool dream of the hidden pyramid and its riches alone. May the jackals feed well on your bo
+"n" 62 -> 64 Outside Work Tent |  / >get knapsack / (wearing it) / You swing the knapsack over your shoulders and it settles on your back as its cover flap closes. / / >n / 
+"n" 64 -> 78 Fire Pit | Outside Work Tent / Lying in the sand is a wooden packing crate. / / >n / Fire Pit / You are in the center of the encampment, standing befor
+"get matchbook" 78 -> 78 Fire Pit | >n / Fire Pit / You are in the center of the encampment, standing before a charred pit, a hole dug in the sand surrounded by blackened rocks
+"n" 78 -> 72 Outside Your Tent | Half covered with sand is a bright piece of foil which catches your eye. / Sitting by a rock is what looks like a matchbook. / / >get matchb
+"n" 72 -> 71 Your Tent |  / >n / Outside Your Tent / / >n / Your Tent / There is an army cot here. / At the foot of the cot is a large, unwieldy trunk. The trunk is 
+"smash padlock with pickaxe" 71 -> 71 Your Tent |  / >n / Your Tent / There is an army cot here. / At the foot of the cot is a large, unwieldy trunk. The trunk is closed and locked with a pa
+"remove padlock" 71 -> 71 Your Tent | There is an army cot here. / At the foot of the cot is a large, unwieldy trunk. The trunk is closed and locked with a padlock. / / >smash pa
+"drop padlock" 71 -> 71 Your Tent | >smash padlock with pickaxe / The padlock breaks open. / / >remove padlock / Taken. / / >drop padlock / Dropped. / / > 
+"open trunk" 71 -> 71 Your Tent | >remove padlock / Taken. / / >drop padlock / Dropped. / / >open trunk / Opened. Opening the trunk reveals an inspection sticker, a piece of 
+"get beef" 71 -> 71 Your Tent | >drop padlock / Dropped. / / >open trunk / Opened. Opening the trunk reveals an inspection sticker, a piece of dried beef, and an ancient ma
+"get map" 71 -> 71 Your Tent | >open trunk / Opened. Opening the trunk reveals an inspection sticker, a piece of dried beef, and an ancient map. / / >get beef / Taken. / /
+"eat beef" 71 -> 71 Your Tent | >get beef / Taken. / / >get map / Taken. It feels fairly heavy, though, as though it were folded around something solid. / / >eat beef / Tha
+"s" 71 -> 72 Outside Your Tent | >get map / Taken. It feels fairly heavy, though, as though it were folded around something solid. / / >eat beef / That really hit the spot. 
+"w" 72 -> 73 Near the Nile | That really hit the spot. It did make you a little thirstier, though. / / >s / Outside Your Tent / / >w / Near the Nile / You are on an east
+"w" 73 -> 82 River Bank |  / >w / Near the Nile / You are on an east/west path on the north side of the encampment. A path to the south starts here, and you can see t
+"drink water" 82 -> 82 River Bank | You are on an east/west path on the north side of the encampment. A path to the south starts here, and you can see the riverbank clearly to 
+"drop knapsack" 82 -> 82 River Bank | River Bank / You are on the bank of the river Nile. The shoreline is sandy and cool, and reeds wave in a light but warm breeze. Directly to 
+"get canteen" 82 -> 82 River Bank | >drink water / You kneel down and drink deeply from the Nile and feel refreshed. / / >drop knapsack / You take the knapsack off and place it
+"open canteen" 82 -> 82 River Bank | >drop knapsack / You take the knapsack off and place it down. As it settles, the cover flaps open. / / >get canteen / Taken. / / >open cante
+"fill canteen" 82 -> 82 River Bank | >get canteen / Taken. / / >open canteen / Opened. / / >fill canteen / Okay, you have filled the canteen. / / > 
+"close canteen" 82 -> 82 River Bank | >open canteen / Opened. / / >fill canteen / Okay, you have filled the canteen. / / >close canteen / Closed. / / > 
+"put canteen in knapsack" 82 -> 82 River Bank | >fill canteen / Okay, you have filled the canteen. / / >close canteen / Closed. / / >put canteen in knapsack / Done. / / > 
+"get knapsack" 82 -> 82 River Bank | Closed. / / >put canteen in knapsack / Done. / / >get knapsack / (wearing it) / You swing the knapsack over your shoulders and it settles on
+"e" 82 -> 73 Near the Nile | Done. / / >get knapsack / (wearing it) / You swing the knapsack over your shoulders and it settles on your back as its cover flap closes. / 
+"e" 73 -> 72 Outside Your Tent | (wearing it) / You swing the knapsack over your shoulders and it settles on your back as its cover flap closes. / / >e / Near the Nile / / >
+"e" 72 -> 70 Northern Path | Near the Nile / / >e / Outside Your Tent / / >e / Northern Path / You are on an east/west path on the northern side of the encampment. To th
+"se" 70 -> 58 Desert |  / >e / Northern Path / You are on an east/west path on the northern side of the encampment. To the east you can see the sites of previous e
+"se" 58 -> 54 Desert |  / >se / Desert / You are in the desert, still within sight of the encampment, just a tiny oasis to the west. The tents, shimmering behind t
+"dig in sand" 54 -> 54 Desert |  / >se / Desert / You are in the desert, out of sight of the encampment. You are thankful there's no wind, even though a cooling breeze woul
+"dig in sand" 54 -> 54 Desert |  / >dig in sand / (with the shovel) / You've enlarged the hole a little, taking out two shovelsfull for every one that collapses back in fro
+"dig in sand" 54 -> 54 Desert |  / >dig in sand / (with the shovel) / You've made the hole quite sizable, though it's not very deep. The deeper you dig, the more the walls 
+"dig in sand" 54 -> 54 Desert |  / >dig in sand / (with the shovel) / You're knee-deep in the hole, digging away, taking out more and more sand. You silently curse those wo
+"dig in sand" 54 -> 54 Desert |  / >dig in sand / (with the shovel) / You've dug yourself into a deep hole. You're actually several feet below the surrounding sand. The wal
+"open map" 54 -> 54 Desert | You've dug yourself into a deep hole. You're actually several feet below the surrounding sand. The walls look very unstable. / / >dig in san
+"insert cube in opening" 54 -> 54 Desert | (with the shovel) / You've uncovered what could only be the top of a pyramid. After clearing it away with your hands, you notice a square op
+"d" 54 -> 206 Chamber of Ra | >insert cube in opening / The ancient stones beneath your feet shake and tremble as they move the sands. You leap out of the way and manage 
+"drop map" 206 -> 206 Chamber of Ra | >d / Chamber of Ra / You are standing in the Chamber of Ra, a tribute to the Sun God. Even though the only natural light enters through the 
+"open jar" 206 -> 206 Chamber of Ra | Lying on the floor, partially covered with dust, is a small pink alabaster jar. / Leaning against the altar is a bronze torch. / / >drop map
+"get torch" 206 -> 206 Chamber of Ra | >drop map / Dropped. / / >open jar / Opening the jar reveals a small amount of liquid. / / >get torch / Taken. / / > 
+"dip torch in liquid" 206 -> 206 Chamber of Ra | >open jar / Opening the jar reveals a small amount of liquid. / / >get torch / Taken. / / >dip torch in liquid / The tip of the torch has be
+"close jar" 206 -> 206 Chamber of Ra | >get torch / Taken. / / >dip torch in liquid / The tip of the torch has been covered with the liquid. / / >close jar / Closed. / / > 
+"drop knapsack" 206 -> 206 Chamber of Ra | >dip torch in liquid / The tip of the torch has been covered with the liquid. / / >close jar / Closed. / / >drop knapsack / You take the kna
+"put jar in knapsack" 206 -> 206 Chamber of Ra | >close jar / Closed. / / >drop knapsack / You take the knapsack off and place it down. As it settles, the cover flaps open. / / >put jar in 
+"open matchbook" 206 -> 206 Chamber of Ra | >drop knapsack / You take the knapsack off and place it down. As it settles, the cover flaps open. / / >put jar in knapsack / Done. / / >ope
+"get match" 206 -> 206 Chamber of Ra | >put jar in knapsack / Done. / / >open matchbook / Opening the matchbook reveals a few matches. / / >get match / Taken. / / > 
+"close matchbook" 206 -> 206 Chamber of Ra | >open matchbook / Opening the matchbook reveals a few matches. / / >get match / Taken. / / >close matchbook / Closed. / / > 
+"strike match" 206 -> 206 Chamber of Ra | >get match / Taken. / / >close matchbook / Closed. / / >strike match / You have now lit a match. / / > 
+"light torch" 206 -> 206 Chamber of Ra | >close matchbook / Closed. / / >strike match / You have now lit a match. / / >light torch / The bronze torch is now lit. / / > 
+"s" 206 -> 123 South Landing | >light torch / The bronze torch is now lit. / / >s / (down the winding staircase) / South Landing / You are on a landing in the middle of a 
+"s" 123 -> 122 Narrow Hallway | (down the winding staircase) / South Landing / You are on a landing in the middle of a set of stairs. The staircase goes down to the south a
+"ne" 122 -> 121 Narrow Hallway |  / >s / Narrow Hallway / You are at the entrance of a narrow hallway which goes to the northeast. A staircase goes up to the north. / / >ne 
+"nw" 121 -> 120 Barge Chamber |  / >ne / Narrow Hallway / You are at a bend in the Narrow Hallway. The hallway continues to the northwest and to the southwest. Inscribed on
+"w" 120 -> 117 Barge Chamber |  / >nw / Barge Chamber / You are in the southern section of a huge room which holds the royal barge. Before you, to the north, is a plank wh
+"n" 117 -> 116 Barge Chamber |  / >w / Barge Chamber / You're in the southwest corner of the Barge Chamber. You can still see the barge entrance to the east, while there's
+"e" 116 -> 115 Barge Chamber |  / >n / Barge Chamber / You're in the northwest corner of the Barge Chamber. You can see by your light that there's room enough to continue 
+"n" 115 -> 20 Steep Passageway |  / >e / Barge Chamber / You're at the start of a hallway which goes off to the north. To the south, directly behind you, is the back side of
+"n" 20 -> 19 Steep Passageway |  / >n / Steep Passageway / You are at the top of a steep, descending passage that plunges down to the north. Although the angle is steep, it
+"n" 19 -> 18 Steep Passageway |  / >n / Steep Passageway / You are about midway down a steep, descending, north/south passageway which seems to lead out of the pyramid to t
+"n" 18 -> 17 Temple Chamber |  / >n / Steep Passageway / You are at the north end of a descending passageway. You can see the smoothly polished passageway rising up and o
+"n" 17 -> 16 Inner Chamber | >n / Temple Chamber / You are in a huge chamber, immense in its size and scope, especially since it is far underground. Your light seems to 
+"w" 16 -> 15 Golden Room | >n / Inner Chamber / You are in the temple's inner chamber. The ceiling here is lower, low enough for your light to reach it. There are open
+"s" 15 -> 13 Golden Alcove | >w / Golden Room / You are in a room whose walls are covered with gold leaf. Your light reflects off the walls with a rich, warm tone and re
+"get golden chalice" 13 -> 13 Golden Alcove |  / >s / Golden Alcove / You are in a small alcove off the Golden Room. Sitting in the middle of this small room is a roughly-hewn slab of gr
+"n" 13 -> 15 Golden Room | You are in a small alcove off the Golden Room. Sitting in the middle of this small room is a roughly-hewn slab of granite, much like a legle
+"e" 15 -> 16 Inner Chamber | Taken. / / >n / Golden Room / / >e / Inner Chamber / Lying before you in tortured repose are the bony remains of a former adventurer, someon
+"e" 16 -> 11 Silver Room |  / >e / Inner Chamber / Lying before you in tortured repose are the bony remains of a former adventurer, someone who tried looting the pyram
+"s" 11 -> 10 Silver Alcove | >e / Silver Room / You are in the Silver Chamber, a room whose walls reflect your light brilliantly due to their silver surface. A doorway l
+"get silver chalice" 10 -> 10 Silver Alcove |  / >s / Silver Alcove / You are in a small alcove off the Silver Room. Sitting in the middle of this small room is a roughly-hewn slab of gr
+"n" 10 -> 11 Silver Room | You are in a small alcove off the Silver Room. Sitting in the middle of this small room is a roughly-hewn slab of granite, much like a legle
+"w" 11 -> 16 Inner Chamber | Taken. / / >n / Silver Room / / >w / Inner Chamber / Lying before you in tortured repose are the bony remains of a former adventurer, someon
+"s" 16 -> 17 Temple Chamber | Silver Room / / >w / Inner Chamber / Lying before you in tortured repose are the bony remains of a former adventurer, someone who tried loot
+"s" 17 -> 18 Steep Passageway | Inner Chamber / Lying before you in tortured repose are the bony remains of a former adventurer, someone who tried looting the pyramid long,
+"s" 18 -> 19 Steep Passageway | >s / Temple Chamber / / >s / Steep Passageway / / >s / Steep Passageway / / > 
+"s" 19 -> 20 Steep Passageway | >s / Steep Passageway / / >s / Steep Passageway / / >s / Steep Passageway / / > 
+"s" 20 -> 115 Barge Chamber | >s / Steep Passageway / / >s / Steep Passageway / / >s / Barge Chamber / / > 
+"w" 115 -> 116 Barge Chamber | >s / Steep Passageway / / >s / Barge Chamber / / >w / Barge Chamber / / > 
+"s" 116 -> 117 Barge Chamber | >s / Barge Chamber / / >w / Barge Chamber / / >s / Barge Chamber / / > 
+"e" 117 -> 120 Barge Chamber | >w / Barge Chamber / / >s / Barge Chamber / / >e / Barge Chamber / / > 
+"n" 120 -> 114 Center of Barge |  / >e / Barge Chamber / / >n / Center of Barge / You are standing on the deck of an ancient wooden barge. Before you, cut into the deck, is 
+"w" 114 -> 113 Fore Cabin | Center of Barge / You are standing on the deck of an ancient wooden barge. Before you, cut into the deck, is a hole. To the south is a plank
+"get scroll" 113 -> 113 Fore Cabin |  / >w / Fore Cabin / You are in the forward cabin aboard the barge. The cabin is bare with none of the luxuries you expected to see. You clo
+"e" 113 -> 114 Center of Barge | Sitting on the deck is a papyrus scroll. / / >get scroll / Taken. / / >e / Center of Barge / Before you, running down through a hole in the 
+"e" 114 -> 112 Aft Cabin |  / >e / Center of Barge / Before you, running down through a hole in the deck, is a sturdy beam made of wood. Although only a few feet of it
+"d" 112 -> 111 Below Deck |  / >e / Aft Cabin / You are in the aft cabin aboard the barge. There's a door to the west which leads out to the deck, and a short ladder, p
+"w" 111 -> 110 West End of Hold | >d / Below Deck / You are below the deck of the barge in what looks like a huge hold. To the west you can see the hold continuing, while a l
+"examine slot" 110 -> 110 West End of Hold |  / >w / West End of Hold / You are in the westmost portion of the hold, below the deck of the barge. On the north side of the hull is a smal
+"put torch in golden chalice" 110 -> 110 West End of Hold | You are in the westmost portion of the hold, below the deck of the barge. On the north side of the hull is a small knothole about three feet
+"remove shim" 110 -> 110 West End of Hold | >examine slot / A shim is wedged between the slot and the beam. / / >put torch in golden chalice / Done. / / >remove shim / Taken. / / > 
+"drop all" 110 -> 110 West End of Hold | >drop all / shim: Dropped. / papyrus scroll: Dropped. / silver chalice: Dropped. / golden chalice: Dropped. / matchbook: Dropped. / shovel: 
+"raise beam" 110 -> 110 West End of Hold | silver chalice: Dropped. / golden chalice: Dropped. / matchbook: Dropped. / shovel: Dropped. / pick axe: Dropped. / / >raise beam / You have
+"get all" 110 -> 110 West End of Hold | >get all / pick axe: Taken. / shovel: Taken. / matchbook: Taken. / golden chalice: Taken. / silver chalice: Taken. / papyrus scroll: Taken. 
+"drop shovel" 110 -> 110 West End of Hold | matchbook: Taken. / golden chalice: Taken. / silver chalice: Taken. / papyrus scroll: Taken. / shim: Taken. / / >drop shovel / Dropped. / / 
+"drop shim" 110 -> 110 West End of Hold | papyrus scroll: Taken. / shim: Taken. / / >drop shovel / Dropped. / / >drop shim / Dropped. / / > 
+"e" 110 -> 111 Below Deck | >drop shovel / Dropped. / / >drop shim / Dropped. / / >e / Below Deck / / > 
+"u" 111 -> 112 Aft Cabin | >drop shim / Dropped. / / >e / Below Deck / / >u / Aft Cabin / / > 
+"w" 112 -> 114 Center of Barge | Below Deck / / >u / Aft Cabin / / >w / Center of Barge / Lying on the deck of the barge is a long wooden beam. / / > 
+"get beam" 114 -> 114 Center of Barge | Aft Cabin / / >w / Center of Barge / Lying on the deck of the barge is a long wooden beam. / / >get beam / Taken. / / > 
+"s" 114 -> 120 Barge Chamber | Center of Barge / Lying on the deck of the barge is a long wooden beam. / / >get beam / Taken. / / >s / Barge Chamber / / > 
+"se" 120 -> 121 Narrow Hallway | >get beam / Taken. / / >s / Barge Chamber / / >se / Narrow Hallway / / > 
+"sw" 121 -> 122 Narrow Hallway | >s / Barge Chamber / / >se / Narrow Hallway / / >sw / Narrow Hallway / / > 
+"n" 122 -> 123 South Landing | >se / Narrow Hallway / / >sw / Narrow Hallway / / >n / South Landing / / > 
+"n" 123 -> 206 Chamber of Ra | >n / Chamber of Ra / There is a knapsack here. / The knapsack contains: / A pink jar / A canteen / A rope / There is an ancient map here. / 
+"put golden chalice in knapsack" 206 -> 206 Chamber of Ra | The knapsack contains: / A pink jar / A canteen / A rope / There is an ancient map here. / / >put golden chalice in knapsack / Done. / / > 
+"put silver chalice in knapsack" 206 -> 206 Chamber of Ra |  A rope / There is an ancient map here. / / >put golden chalice in knapsack / Done. / / >put silver chalice in knapsack / Done. / / > 
+"get rope" 206 -> 206 Chamber of Ra | >put golden chalice in knapsack / Done. / / >put silver chalice in knapsack / Done. / / >get rope / Taken. / / > 
+"get torch" 206 -> 206 Chamber of Ra | >put silver chalice in knapsack / Done. / / >get rope / Taken. / / >get torch / Taken. / / > 
+"tie rope to altar" 206 -> 206 Chamber of Ra | >get rope / Taken. / / >get torch / Taken. / / >tie rope to altar / The rope has been tied to the stone altar. / / > 
+"throw rope north" 206 -> 206 Chamber of Ra | >get torch / Taken. / / >tie rope to altar / The rope has been tied to the stone altar. / / >throw rope north / The rope descends into the s
+"get knapsack" 206 -> 206 Chamber of Ra | The rope has been tied to the stone altar. / / >throw rope north / The rope descends into the steep staircase. / / >get knapsack / (wearing 
+"n" 206 -> 141 Circular Room | >n / (down the rope) / Circular Room / You are in a strange, round room which sits in the center of four hallways. These hallways lead off t
+"push statue" 141 -> 141 Circular Room | You are in a strange, round room which sits in the center of four hallways. These hallways lead off to the northeast, southeast, southwest a
+"get head" 141 -> 141 Circular Room | A large golden cluster sits on the floor. / Sitting in the middle of the floor is a large statue, about two feet shorter than you. It remind
+"roll statue sw" 141 -> 127 Southwest Hallway | Taken. / / >roll statue sw / As you enter the corridor, a huge stone door begins to slide down from the ceiling closing off any further prog
+"drop knapsack" 127 -> 127 Southwest Hallway | As you enter the corridor, a huge stone door begins to slide down from the ceiling closing off any further progress. The closer you come to 
+"ne" 127 -> 141 Circular Room | >drop knapsack / You take the knapsack off and place it down. As it settles, the cover flaps open. / / >ne / As you peer down the dimly-lit 
+"ne" 141 -> 129 Northeast Hallway |  / Circular Room / A large golden cluster sits on the floor. / / >ne / Northeast Hallway / You are standing midway down the long Northeast H
+"ne" 129 -> 139 Room of Selkis | Northeast Hallway / You are standing midway down the long Northeast Hallway. The high walls are undecorated, but bear the marks of the stone
+"get ruby cluster" 139 -> 139 Room of Selkis |  / >ne / Room of Selkis / You are standing in a small room, that of the protective goddess Selkis. There are red, blue and green patterns on
+"read hieroglyphs" 139 -> 139 Room of Selkis | >read hieroglyphs / / (@@) / / . / )) / # / :: / / <-* (@@) =!= / * / / > 
+"sw" 139 -> 129 Northeast Hallway |  . / )) / # / :: / / <-* (@@) =!= / * / / >sw / Northeast Hallway / The path before you remains open, the stone door having risen to the cei
+"sw" 129 -> 141 Circular Room | Northeast Hallway / The path before you remains open, the stone door having risen to the ceiling, counterbalanced by the door in the opposit
+"get golden cluster" 141 -> 141 Circular Room | >sw / As you peer down the dimly-lit hallways, you notice that the door to the southwest is closed, while the one in the opposite hallway is
+"sw" 141 -> 127 Southwest Hallway | Southwest Hallway / There is a knapsack here. / The knapsack contains: / A silver chalice / A golden chalice / A pink jar / A canteen / Ther
+"put golden cluster in knapsack" 127 -> 127 Southwest Hallway |  A silver chalice / A golden chalice / A pink jar / A canteen / There is a large statue here. / / >put golden cluster in knapsack / Done. / 
+"put ruby cluster in knapsack" 127 -> 127 Southwest Hallway |  A canteen / There is a large statue here. / / >put golden cluster in knapsack / Done. / / >put ruby cluster in knapsack / Done. / / > 
+"get all" 127 -> 127 Southwest Hallway |  / >put ruby cluster in knapsack / Done. / / >get all / knapsack: (wearing it) / You swing the knapsack over your shoulders and it settles o
+"roll statue ne" 127 -> 141 Circular Room | You swing the knapsack over your shoulders and it settles on your back as its cover flap closes. / large statue: It's far too heavy. / / >ro
+"roll statue ne" 141 -> 129 Northeast Hallway | Circular Room / The pushed statue rests on the floor. / / >roll statue ne / As you enter the corridor, a huge stone door begins to slide dow
+"drop all" 129 -> 129 Northeast Hallway | >drop all / knapsack: You take the knapsack off and place it down. As it settles, the cover flaps open. / broken head: Dropped. / bronze tor
+"get torch" 129 -> 129 Northeast Hallway | bronze torch: Dropped. / wooden beam: Dropped. / papyrus scroll: Dropped. / matchbook: Dropped. / pick axe: Dropped. / / >get torch / Taken.
+"sw" 129 -> 141 Circular Room |  / >get torch / Taken. / / >sw / As you peer down the dimly-lit hallways, you notice that the door to the northeast is closed, while the one
+"sw" 141 -> 127 Southwest Hallway | >sw / As you peer down the dimly-lit hallways, you notice that the door to the northeast is closed, while the one in the opposite hallway is
+"sw" 127 -> 137 Room of Isis | >sw / Southwest Hallway / The path before you remains open, the stone door having risen to the ceiling, counterbalanced by the door in the o
+"get emerald cluster" 137 -> 137 Room of Isis |  / >sw / Room of Isis / This is the room of the protective goddess Isis. You stand in amazement in the center of the room as thousands of ti
+"read hieroglyphs" 137 -> 137 Room of Isis | >read hieroglyphs / / (@@@) / / / / )) / # . :: / / <-* (@@@) =!= / * / / > 
+"ne" 137 -> 127 Southwest Hallway |  / / )) / # . :: / / <-* (@@@) =!= / * / / >ne / Southwest Hallway / The path before you remains open, the stone door having risen to the ce
+"ne" 127 -> 141 Circular Room | >ne / Southwest Hallway / The path before you remains open, the stone door having risen to the ceiling, counterbalanced by the door in the o
+"ne" 141 -> 129 Northeast Hallway | The knapsack contains: / A ruby cluster / A golden cluster / A silver chalice / A golden chalice / A pink jar / A canteen / There is a large
+"put emerald cluster in knapsack" 129 -> 129 Northeast Hallway |  A silver chalice / A golden chalice / A pink jar / A canteen / There is a large statue here. / / >put emerald cluster in knapsack / Done. /
+"get all" 129 -> 129 Northeast Hallway | pick axe: Taken. / matchbook: Taken. / papyrus scroll: Taken. / wooden beam: Taken. / broken head: Taken. / knapsack: (wearing it) / You swi
+"roll statue sw" 129 -> 141 Circular Room | You swing the knapsack over your shoulders and it settles on your back as its cover flap closes. / large statue: It's far too heavy. / / >ro
+"roll statue nw" 141 -> 131 Northwest Hallway | The pushed statue rests on the floor. / / >roll statue nw / As you enter the corridor, a huge stone door begins to slide down from the ceili
+"drop all" 131 -> 131 Northwest Hallway | >drop all / knapsack: You take the knapsack off and place it down. As it settles, the cover flaps open. / broken head: Dropped. / wooden bea
+"get torch" 131 -> 131 Northwest Hallway | wooden beam: Dropped. / papyrus scroll: Dropped. / matchbook: Dropped. / pick axe: Dropped. / bronze torch: Dropped. / / >get torch / Taken.
+"se" 131 -> 141 Circular Room |  / >get torch / Taken. / / >se / As you peer down the dimly-lit hallways, you notice that the door to the northwest is closed, while the one
+"se" 141 -> 125 Southeast Hallway | As you peer down the dimly-lit hallways, you notice that the door to the northwest is closed, while the one in the opposite hallway is all t
+"se" 125 -> 135 Room of Neith | Southeast Hallway / You are midway down the Southeast Hallway. This corridor is undecorated and the walls are polished to a smooth lustre. T
+"get opal cluster" 135 -> 135 Room of Neith |  / >se / Room of Neith / You are standing in the room of the protective goddess Neith. This room seems dark and mysterious with its decorati
+"read hieroglyphs" 135 -> 135 Room of Neith | >read hieroglyphs / / (@) / / \ / )) / # . :: / / <-* (@) =!= / * / / > 
+"nw" 135 -> 125 Southeast Hallway |  \ / )) / # . :: / / <-* (@) =!= / * / / >nw / Southeast Hallway / The path before you remains open, the stone door having risen to the ceil
+"nw" 125 -> 141 Circular Room | >nw / Southeast Hallway / The path before you remains open, the stone door having risen to the ceiling, counterbalanced by the door in the o
+"nw" 141 -> 131 Northwest Hallway |  An emerald cluster / A ruby cluster / A golden cluster / A silver chalice / A golden chalice / A pink jar / A canteen / There is a large st
+"put opal cluster in knapsack" 131 -> 131 Northwest Hallway |  A silver chalice / A golden chalice / A pink jar / A canteen / There is a large statue here. / / >put opal cluster in knapsack / Done. / / 
+"get all" 131 -> 131 Northwest Hallway | pick axe: Taken. / matchbook: Taken. / papyrus scroll: Taken. / wooden beam: Taken. / broken head: Taken. / knapsack: (wearing it) / You swi
+"roll statue se" 131 -> 141 Circular Room | You swing the knapsack over your shoulders and it settles on your back as its cover flap closes. / large statue: It's far too heavy. / / >ro
+"roll statue se" 141 -> 125 Southeast Hallway | Circular Room / The pushed statue rests on the floor. / / >roll statue se / As you enter the corridor, a huge stone door begins to slide dow
+"drop all" 125 -> 125 Southeast Hallway | >drop all / knapsack: You take the knapsack off and place it down. As it settles, the cover flaps open. / broken head: Dropped. / wooden bea
+"get torch" 125 -> 125 Southeast Hallway | wooden beam: Dropped. / papyrus scroll: Dropped. / matchbook: Dropped. / pick axe: Dropped. / bronze torch: Dropped. / / >get torch / Taken.
+"nw" 125 -> 141 Circular Room |  / >get torch / Taken. / / >nw / As you peer down the dimly-lit hallways, you notice that the door to the southeast is closed, while the one
+"nw" 141 -> 131 Northwest Hallway | >nw / As you peer down the dimly-lit hallways, you notice that the door to the southeast is closed, while the one in the opposite hallway is
+"nw" 131 -> 145 Room of Nephthys | >nw / Northwest Hallway / The path before you remains open, the stone door having risen to the ceiling, counterbalanced by the door in the o
+"get diamond cluster" 145 -> 145 Room of Nephthys |  / >nw / Room of Nephthys / You have entered the room of the protective goddess Nephthys. The walls here are cut from pink granite, elaborat
+"read hieroglyphs" 145 -> 145 Room of Nephthys | >read hieroglyphs / / (@@@@) / / . / )) / # \ :: / / <-* (@@@@) =!= / * / / > 
+"se" 145 -> 131 Northwest Hallway |  . / )) / # \ :: / / <-* (@@@@) =!= / * / / >se / Northwest Hallway / The path before you remains open, the stone door having risen to the c
+"se" 131 -> 141 Circular Room | >se / Northwest Hallway / The path before you remains open, the stone door having risen to the ceiling, counterbalanced by the door in the o
+"se" 141 -> 125 Southeast Hallway |  An emerald cluster / A ruby cluster / A golden cluster / A silver chalice / A golden chalice / A pink jar / A canteen / There is a large st
+"get all" 125 -> 125 Southeast Hallway | pick axe: Taken. / matchbook: Taken. / papyrus scroll: Taken. / wooden beam: Taken. / broken head: Taken. / knapsack: (wearing it) / You swi
+"drop head" 125 -> 125 Southeast Hallway | wooden beam: Taken. / broken head: Taken. / knapsack: (wearing it) / You swing the knapsack over your shoulders and it settles on your back 
+"nw" 125 -> 141 Circular Room |  / >drop head / Dropped. / / >nw / As you peer down the dimly-lit hallways, you notice that the door to the southeast is closed, while the o
+"u" 141 -> 206 Chamber of Ra | As you peer down the dimly-lit hallways, you notice that the door to the southeast is closed, while the one in the opposite hallway is all t
+"w" 206 -> 101 Cube | There is an ancient map here. / / >w / (down the narrow staircase) / The staircase winds as you walk down, turning you around so you face in
+"s" 101 -> 97 Cube | The staircase winds as you walk down, turning you around so you face in the opposite direction. / / Cube / You are in a room whose walls, fl
+"e" 97 -> 98 Cube |  / >s / Cube / You are in a room whose symmetry is uncanny, at least to the unaided eye: the dimensions of the room seem to form a perfect c
+"read scroll" 98 -> 98 Cube | You are in a room whose symmetry is uncanny, at least to the unaided eye: the dimensions of the room seem to form a perfect cube. There are 
+"remove first brick" 98 -> 98 Cube | The scroll reads as follows: / / *-> <.> <:.> ... <::.> / / :: : ** --->> -) (*) / / >remove first brick / Taken. / / > 
+"drop first brick" 98 -> 98 Cube |  / :: : ** --->> -) (*) / / >remove first brick / Taken. / / >drop first brick / Dropped. / / > 
+"remove third brick" 98 -> 98 Cube | >remove first brick / Taken. / / >drop first brick / Dropped. / / >remove third brick / Taken. / / > 
+"drop third brick" 98 -> 98 Cube | >drop first brick / Dropped. / / >remove third brick / Taken. / / >drop third brick / Dropped. / / > 
+"remove fifth brick" 98 -> 98 Cube | >remove third brick / Taken. / / >drop third brick / Dropped. / / >remove fifth brick / As soon as you grasp this brick a square doorway swi
+"drop fifth brick" 98 -> 98 Cube | >drop third brick / Dropped. / / >remove fifth brick / As soon as you grasp this brick a square doorway swings open. You leap back, unsure o
+"drop scroll" 98 -> 98 Cube | >remove fifth brick / As soon as you grasp this brick a square doorway swings open. You leap back, unsure of what might happen, but quickly 
+"e" 98 -> 94 Turning Passage | Dropped. / / >drop scroll / Dropped. / / >e / Turning Passage / You are in a strange, turning passageway. The floor here descends, reminding
+"n" 94 -> 168 Top of Stairway |  / >e / Turning Passage / You are in a strange, turning passageway. The floor here descends, reminding you of a ramp Craige once told you ab
+"d" 168 -> 167 Bottom of Stairs |  / >n / Top of Stairway / You are at the top of a sixteen-step stairway. It leads west and down. The strange passageway into the cube rooms 
+"hit plaster with pickaxe" 167 -> 167 Bottom of Stairs | You are at the top of a sixteen-step stairway. It leads west and down. The strange passageway into the cube rooms lies to the south. The wal
+"w" 167 -> 166 Narrow Passageway | You are at the bottom of the sixteen-step stairway. The stairway goes up to the east, while to the west is solid plaster. Painted on the pla
+"w" 166 -> 165 Narrow Passageway |  / >w / Narrow Passageway / You are at the east end of what seems like a long, straight passageway. After carefully looking over the walls, 
+"w" 165 -> 187 Narrow Passageway |  / >w / Narrow Passageway / You are in the middle of a long, east/west passage. The passage is narrow and seems to be little more than a hal
+"insert beam in niches" 187 -> 187 Narrow Passageway |  / >w / Narrow Passageway / You have reached the west end of the passage. Before you is a door surrounded by a heavy timber frame. The door 
+"stand on beam" 187 -> 187 Narrow Passageway | You have reached the west end of the passage. Before you is a door surrounded by a heavy timber frame. The door is entirely blocked up with 
+"hit plaster with pickaxe" 187 -> 187 Narrow Passageway | Consider it done. / Stretching across the floor from niche to niche is the wooden beam. / / >stand on beam / You are now standing on the bea
+"look" 187 -> 187 Narrow Passageway |  / >hit plaster with pickaxe / The plaster chips fly from the door as the incessant tapping of your pick axe does its work. The tapping has 
+"get off beam" 187 -> 187 Narrow Passageway | >get off beam / Well, despite your "angelic" qualities, you aren't very good at walking on air and so, with a scream on your lips, you plung
+"enter beam" 187 -> 187 Narrow Passageway |  / **** You have died **** / / The great mysteries of the ancient pyramid remain unsolved. Although your desperation has served you well in 
+"get off beam" 187 -> 187 Narrow Passageway |  / **** You have died **** / / The great mysteries of the ancient pyramid remain unsolved. Although your desperation has served you well in 
+"sit on beam" 187 -> 187 Narrow Passageway |  / **** You have died **** / / The great mysteries of the ancient pyramid remain unsolved. Although your desperation has served you well in 
+"get off beam" 187 -> 187 Narrow Passageway |  / **** You have died **** / / The great mysteries of the ancient pyramid remain unsolved. Although your desperation has served you well in 
+"climb on beam" 187 -> 187 Narrow Passageway |  / **** You have died **** / / The great mysteries of the ancient pyramid remain unsolved. Although your desperation has served you well in 
+"get off beam" 187 -> 187 Narrow Passageway |  / **** You have died **** / / The great mysteries of the ancient pyramid remain unsolved. Although your desperation has served you well in 
+"stand on beam" 187 -> 187 Narrow Passageway |  / **** You have died **** / / The great mysteries of the ancient pyramid remain unsolved. Although your desperation has served you well in 
+"look" 187 -> 187 Narrow Passageway |  / **** You have died **** / / The great mysteries of the ancient pyramid remain unsolved. Although your desperation has served you well in 

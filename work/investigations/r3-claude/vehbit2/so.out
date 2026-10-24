@@ -1,0 +1,202 @@
+null undefined -> undefined undefined | You are in a strange location, but you cannot remember how you got here. Everything is hazy, as though viewed through a gauze... Twisted For
+"WAIT" 36 -> 128 bed |  / SORCERER / Infocom interactive fiction - a fantasy story / Copyright (c) 1984 by Infocom, Inc. All rights reserved. / SORCERER is a trade
+"FROTZ BOOK" 128 -> 128 bed |  / Your frotz spell seems to have worn off during the night, and it is now pitch black. / / >FROTZ BOOK / There is an almost blinding flash 
+"GET UP" 128 -> 17 Your Quarters | >FROTZ BOOK / There is an almost blinding flash of light as the spell book begins to glow! It slowly fades to a less painful level, but the 
+"W" 17 -> 67 Hallway |  / >GET UP / You are now on your feet. / / >W / Hallway / Rooms lie to the east and west from this north-south corridor. A heavy wooden door
+"READ NOTE" 67 -> 67 Hallway | Rooms lie to the east and west from this north-south corridor. A heavy wooden door, currently closed, leads north. / Tacked to the doorframe
+"DROP IT" 67 -> 67 Hallway | >READ NOTE / (taking the scribbled note first) / "I have taken the apprentices into town to shop for the Guild picnic. I tried rousing you, 
+"W" 67 -> 115 Belboz's Quarters |  / >DROP IT / Dropped. / / >W / Belboz's Quarters / The personal chamber of Belboz, who presides over the Circle of Enchanters, is appointed
+"OPEN DESK" 115 -> 115 Belboz's Quarters |  / >W / Belboz's Quarters / The personal chamber of Belboz, who presides over the Circle of Enchanters, is appointed with a beautiful woven 
+"GET BOX AND JOURNAL" 115 -> 115 Belboz's Quarters | Pacing back and forth on a perch in the corner is Belboz's prized pet parrot, native to the jungles of Miznia. / / >OPEN DESK / Opening the 
+"LOOK BEHIND TAPESTRY" 115 -> 115 Belboz's Quarters | Opening the desk drawer reveals a tiny box, an infotater, and a journal. / / >GET BOX AND JOURNAL / tiny box: Taken. / journal: Taken. / / >
+"GET KEY" 115 -> 115 Belboz's Quarters | tiny box: Taken. / journal: Taken. / / >LOOK BEHIND TAPESTRY / As you move the tapestry, a key falls out from behind it and lands on the flo
+"OPEN JOURNAL" 115 -> 115 Belboz's Quarters | >GET KEY / Taken. / / >OPEN JOURNAL / (with the key) / The journal springs open. / / "Squawk! This tea is cold! Get me another cup. Squawk!"
+"READ IT" 115 -> 115 Belboz's Quarters |  / There is one interesting entry toward the end of the book. Belboz refers to an ancient and evil force known simply as Jeearr, a demon who
+"DROP JOURNAL AND KEY" 115 -> 115 Belboz's Quarters |  / On the inside cover is an inscription, written in a light script, which reads "Current code: hellhound". / / "Squawk! Where did I leave m
+"E" 115 -> 67 Hallway |  / >DROP JOURNAL AND KEY / journal: Dropped. / small key: Dropped. / / >E / Hallway / There is a scribbled note here. / / > 
+"S" 67 -> 50 Hallway |  / >E / Hallway / There is a scribbled note here. / / >S / Hallway / Rooms lie to the east and west from this north-south corridor. A large 
+"S" 50 -> 18 Lobby | >S / Hallway / Rooms lie to the east and west from this north-south corridor. A large marble archway to the south leads into an open area. /
+"W" 18 -> 231 Store Room | Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. / / >W / Store Room / This is a closet for stora
+"GET VIAL, CALENDAR AND MATCHBOOK" 231 -> 231 Store Room | There is a depleted matchbook here. / / >GET VIAL, CALENDAR AND MATCHBOOK / ochre vial: Taken. / calendar: Taken. / depleted matchbook: Take
+"E" 231 -> 18 Lobby | calendar: Taken. / depleted matchbook: Taken. / / You are now a bit thirsty. / / >E / Lobby / Affixed to the southern arch is an ornate bras
+"OPEN RECEPTACLE" 18 -> 18 Lobby | You are now a bit thirsty. / / >E / Lobby / Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. / / 
+"READ MATCHBOOK" 18 -> 18 Lobby | mailbox. Our shipping department will / use the latest in temporal travel / techniques to insure that your potion / arrives the same day you
+"PUT IT IN RECEPTACLE" 18 -> 18 Lobby | arrives the same day you order it! / (Orders received before noon will / arrive the day before you order)." / / You are now a bit hungry. / 
+"E" 18 -> 142 Library | >PUT IT IN RECEPTACLE / Done. / / >E / Library / This is a study chamber for members of the Guild. Usually, there would be several elder Enc
+"GET SCROLL" 142 -> 142 Library | >E / Library / This is a study chamber for members of the Guild. Usually, there would be several elder Enchanters patiently training novices
+"READ IT" 142 -> 142 Library |  / >GET SCROLL / Taken. / / >READ IT / The scroll reads "meef spell: cause plants to wilt". / / The Guild Hall doorbell chimes. / / > 
+"GNUSTO MEEF SPELL" 142 -> 142 Library |  / >READ IT / The scroll reads "meef spell: cause plants to wilt". / / The Guild Hall doorbell chimes. / / >GNUSTO MEEF SPELL / Your spell b
+"W" 142 -> 18 Lobby | >GNUSTO MEEF SPELL / Your spell book begins to glow softly. Slowly, ornately, the words of the meef spell are inscribed, glowing even more b
+"D" 18 -> 43 Cellar | Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. / / You are now somewhat thirsty. / / >D / Cella
+"PRESS white, gray, black, red, black" 43 -> 43 Cellar | At the far end of the cellar, draped in cobwebs, is a large trunk. At each corner of its lid is a button: a black button with a picture of a
+"GET SCROLL" 43 -> 43 Cellar | white button: There is a click from the lid of the trunk. / gray button: There is a click from the lid of the trunk. / black button: There i
+"READ IT" 43 -> 43 Cellar | red button: There is a click from the lid of the trunk. / black button: There is a click from the lid of the trunk. / / >GET SCROLL / You ca
+"OPEN VIAL" 43 -> 43 Cellar | >GET SCROLL / You can't see any scroll here! / / >READ IT / How can you read a black button? / / >OPEN VIAL / Opening the ochre vial reveals
+"DRINK OCHRE POTION" 43 -> 43 Cellar | >READ IT / How can you read a black button? / / >OPEN VIAL / Opening the ochre vial reveals ochre potion. / / >DRINK OCHRE POTION / The poti
+"DROP VIAL" 43 -> 43 Cellar | >OPEN VIAL / Opening the ochre vial reveals ochre potion. / / >DRINK OCHRE POTION / The potion was completely tasteless. You no longer feel 
+"U" 43 -> 18 Lobby | The potion was completely tasteless. You no longer feel hungry and thirsty, though. / / >DROP VIAL / Dropped. / / >U / Lobby / Affixed to th
+"OPEN RECEPTACLE" 18 -> 18 Lobby | Dropped. / / >U / Lobby / Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. / / >OPEN RECEPTACLE /
+"GET ORANGE VIAL" 18 -> 18 Lobby | Lobby / Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. / / >OPEN RECEPTACLE / Opening the recep
+"N" 18 -> 50 Hallway | >OPEN RECEPTACLE / Opening the receptacle reveals an orange vial, and an issue of Popular Enchanting. / / >GET ORANGE VIAL / Taken. / / >N /
+"W" 50 -> 13 Helistar's Quarters |  / >N / Hallway / / >W / Helistar's Quarters / Helistar is one of the foremost members of the Circle, and this is her private chamber. / Amo
+"GET SCROLL" 13 -> 13 Helistar's Quarters |  / >W / Helistar's Quarters / Helistar is one of the foremost members of the Circle, and this is her private chamber. / Among Helistar's pos
+"READ IT" 13 -> 13 Helistar's Quarters | Helistar is one of the foremost members of the Circle, and this is her private chamber. / Among Helistar's possessions is a scroll, new and 
+"GNUSTO GASPAR SPELL" 13 -> 13 Helistar's Quarters | >GET SCROLL / Taken. / / >READ IT / The scroll reads "gaspar spell: provide for your own resurrection". / / >GNUSTO GASPAR SPELL / Your spel
+"AIMFIZ BELBOZ" 13 -> 13 Helistar's Quarters | >READ IT / The scroll reads "gaspar spell: provide for your own resurrection". / / >GNUSTO GASPAR SPELL / Your spell book begins to glow sof
+"NE" 13 -> 13 Helistar's Quarters | >GNUSTO GASPAR SPELL / Your spell book begins to glow softly. Slowly, ornately, the words of the gaspar spell are inscribed, glowing even mo
+"E" 13 -> 50 Hallway | >AIMFIZ BELBOZ / The aimfiz spell is not committed to memory, and you haven't seen any scroll on which it is written. / / >NE / You can't go
+"NE" 50 -> 50 Hallway | >NE / You can't go that way. / / >E / Hallway / / >NE / You can't go that way. / / > 
+"LEARN PULVER" 50 -> 50 Hallway | >E / Hallway / / >NE / You can't go that way. / / >LEARN PULVER / Using your best study habits, you learn the pulver spell. / / > 
+"PULVER RIVER" 50 -> 50 Hallway | >NE / You can't go that way. / / >LEARN PULVER / Using your best study habits, you learn the pulver spell. / / >PULVER RIVER / You can't see
+"D" 50 -> 50 Hallway | >LEARN PULVER / Using your best study habits, you learn the pulver spell. / / >PULVER RIVER / You can't see any river here! / / >D / You can
+"NE" 50 -> 50 Hallway | >PULVER RIVER / You can't see any river here! / / >D / You can't go that way. / / >NE / You can't go that way. / / > 
+"GET GUANO, SCROLL AND AMBER VIAL" 50 -> 50 Hallway | >D / You can't go that way. / / >NE / You can't go that way. / / >GET GUANO, SCROLL AND AMBER VIAL / The objects that you mentioned aren't h
+"READ SCROLL" 50 -> 50 Hallway | >NE / You can't go that way. / / >GET GUANO, SCROLL AND AMBER VIAL / The objects that you mentioned aren't here. / / >READ SCROLL / You can'
+"GNUSTO FWEEP SPELL" 50 -> 50 Hallway | >GET GUANO, SCROLL AND AMBER VIAL / The objects that you mentioned aren't here. / / >READ SCROLL / You can't see any scroll here! / / >GNUST
+"D" 50 -> 50 Hallway | >READ SCROLL / You can't see any scroll here! / / >GNUSTO FWEEP SPELL / You can't see that spell here! / / >D / You can't go that way. / / >
+"S" 50 -> 18 Lobby | >D / You can't go that way. / / >S / Lobby / Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. / T
+"GET INDIGO VIAL" 18 -> 18 Lobby | >S / Lobby / Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. / The receptacle contains: / an iss
+"W" 18 -> 231 Store Room | The receptacle contains: / an issue of Popular Enchanting / / >GET INDIGO VIAL / You can't see any indigo vial here! / / >W / Store Room / /
+"D" 231 -> 231 Store Room | >GET INDIGO VIAL / You can't see any indigo vial here! / / >W / Store Room / / >D / You can't go that way. / / > 
+"W" 231 -> 231 Store Room | >W / Store Room / / >D / You can't go that way. / / >W / You can't go that way. / / > 
+"SW" 231 -> 231 Store Room | >D / You can't go that way. / / >W / You can't go that way. / / >SW / You can't go that way. / / > 
+"SW" 231 -> 231 Store Room | >W / You can't go that way. / / >SW / You can't go that way. / / >SW / You can't go that way. / / > 
+"W" 231 -> 231 Store Room | >SW / You can't go that way. / / >SW / You can't go that way. / / >W / You can't go that way. / / > 
+"LEARN IZYUK SPELL" 231 -> 231 Store Room | >SW / You can't go that way. / / >W / You can't go that way. / / >LEARN IZYUK SPELL / Using your best study habits, you learn the izyuk spel
+"AGAIN" 231 -> 231 Store Room | >W / You can't go that way. / / >LEARN IZYUK SPELL / Using your best study habits, you learn the izyuk spell. / / >AGAIN / Using your best s
+"IZYUK ME" 231 -> 231 Store Room | >LEARN IZYUK SPELL / Using your best study habits, you learn the izyuk spell. / / >AGAIN / Using your best study habits, you learn the izyuk
+"W" 231 -> 231 Store Room | >AGAIN / Using your best study habits, you learn the izyuk spell yet another time. / / >IZYUK ME / You are now floating serenely in midair. 
+"W" 231 -> 231 Store Room |  / >W / You can't go that way. / / >W / You can't go that way. / / You settle gently to the ground. / / > 
+"N" 231 -> 231 Store Room |  / >W / You can't go that way. / / You settle gently to the ground. / / >N / You can't go that way. / / > 
+"GET COIN" 231 -> 231 Store Room |  / You settle gently to the ground. / / >N / You can't go that way. / / >GET COIN / You can't see any coin here! / / > 
+"S" 231 -> 231 Store Room | >N / You can't go that way. / / >GET COIN / You can't see any coin here! / / >S / You can't go that way. / / > 
+"E" 231 -> 18 Lobby | >S / You can't go that way. / / >E / Lobby / Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. / T
+"IZYUK ME" 18 -> 18 Lobby | >E / Lobby / Affixed to the southern arch is an ornate brass receptacle, intended for use by messengers. / The receptacle contains: / an iss
+"E" 18 -> 142 Library | The receptacle contains: / an issue of Popular Enchanting / / >IZYUK ME / You are now floating serenely in midair. / / >E / Library (you are
+"E" 142 -> 142 Library |  / >E / Library (you are flying) / / >E / You can't go that way. / / You settle gently to the ground. / / > 
+"NE" 142 -> 142 Library |  / >E / You can't go that way. / / You settle gently to the ground. / / >NE / You can't go that way. / / > 
+"NE" 142 -> 142 Library |  / You settle gently to the ground. / / >NE / You can't go that way. / / >NE / You can't go that way. / / > 
+"E" 142 -> 142 Library | >NE / You can't go that way. / / >NE / You can't go that way. / / >E / You can't go that way. / / > 
+"E" 142 -> 142 Library | >NE / You can't go that way. / / >E / You can't go that way. / / >E / You can't go that way. / / > 
+"WAKE GNOME" 142 -> 142 Library | >E / You can't go that way. / / >E / You can't go that way. / / >WAKE GNOME / You can't see any gnome here! / / > 
+"GIVE COIN TO GNOME" 142 -> 142 Library | >E / You can't go that way. / / >WAKE GNOME / You can't see any gnome here! / / >GIVE COIN TO GNOME / You're not holding that! / / > 
+"SEARCH GNOME" 142 -> 142 Library | >WAKE GNOME / You can't see any gnome here! / / >GIVE COIN TO GNOME / You're not holding that! / / >SEARCH GNOME / You can't see any gnome h
+"E" 142 -> 142 Library | >GIVE COIN TO GNOME / You're not holding that! / / >SEARCH GNOME / You can't see any gnome here! / / >E / You can't go that way. / / > 
+"E" 142 -> 142 Library | >SEARCH GNOME / You can't see any gnome here! / / >E / You can't go that way. / / >E / You can't go that way. / / > 
+"N" 142 -> 142 Library | >E / You can't go that way. / / >E / You can't go that way. / / >N / You can't go that way. / / > 
+"N" 142 -> 142 Library | >E / You can't go that way. / / >N / You can't go that way. / / >N / You can't go that way. / / > 
+"look" 142 -> 142 Library |  / >N / You can't go that way. / / >look / Library / This is a study chamber for members of the Guild. Usually, there would be several elder
+"get in bed" 142 -> 142 Library |  / >look / Library / This is a study chamber for members of the Guild. Usually, there would be several elder Enchanters patiently training n
+"get out of bed" 142 -> 142 Library | This is a study chamber for members of the Guild. Usually, there would be several elder Enchanters patiently training novices, but no one is
+"enter bed" 142 -> 142 Library | >get in bed / You can't see any bed here! / / >get out of bed / You can't see any of bed here! / / >enter bed / You can't see any bed here! 
+"exit" 142 -> 142 Library | >get out of bed / You can't see any of bed here! / / >enter bed / You can't see any bed here! / / >exit / You can't go that way. / / > 
+"sit on bed" 142 -> 142 Library | >enter bed / You can't see any bed here! / / >exit / You can't go that way. / / >sit on bed / You can't see any bed here! / / > 
+"stand up" 142 -> 142 Library |  / >sit on bed / You can't see any bed here! / / >stand up / You are already standing. / / You are beginning to tire. / / > 
+"SLEEP" 142 -> 123 Chamber of Living Death | >SLEEP / You drift off to sleep and dream of the distant Kovalli Desert. Waves of heat from the sand make breathing hard, and the bright sun
+"LEARN FWEEP" 123 -> 123 Chamber of Living Death |  / Chamber of Living Death / The very walls of this room seem to soak up all light, so it seems as though you're floating in the center of a
+"LEARN FWEEP" 123 -> 123 Chamber of Living Death |  / >LEARN FWEEP / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from you
+"LEARN FWEEP" 123 -> 123 Chamber of Living Death |  / >LEARN FWEEP / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from you
+"LEARN FWEEP" 123 -> 123 Chamber of Living Death |  / >LEARN FWEEP / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from you
+"LEARN FWEEP" 123 -> 123 Chamber of Living Death |  / >LEARN FWEEP / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from you
+"DROP ALL" 123 -> 123 Chamber of Living Death | Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissu
+"E" 123 -> 123 Chamber of Living Death | Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissu
+"FWEEP ME" 123 -> 123 Chamber of Living Death |  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"N" 123 -> 123 Chamber of Living Death |  / >FWEEP ME / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your b
+"E" 123 -> 123 Chamber of Living Death |  / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"S" 123 -> 123 Chamber of Living Death |  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"S" 123 -> 123 Chamber of Living Death |  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"W" 123 -> 123 Chamber of Living Death |  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"D" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"E" 123 -> 123 Chamber of Living Death |  / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"E" 123 -> 123 Chamber of Living Death |  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"N" 123 -> 123 Chamber of Living Death |  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"N" 123 -> 123 Chamber of Living Death |  / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"U" 123 -> 123 Chamber of Living Death |  / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"U" 123 -> 123 Chamber of Living Death |  / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"S" 123 -> 123 Chamber of Living Death |  / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"E" 123 -> 123 Chamber of Living Death |  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"GET SCROLL" 123 -> 123 Chamber of Living Death |  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"READ IT" 123 -> 123 Chamber of Living Death |  / >GET SCROLL / You can't see any scroll here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from 
+"PUT IT IN HOLE" 123 -> 123 Chamber of Living Death | Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissu
+"FWEEP ME" 123 -> 123 Chamber of Living Death | Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissu
+"W" 123 -> 123 Chamber of Living Death |  / >FWEEP ME / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your b
+"W" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"S" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"E" 123 -> 123 Chamber of Living Death |  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"D" 123 -> 123 Chamber of Living Death |  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"D" 123 -> 123 Chamber of Living Death |  / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"W" 123 -> 123 Chamber of Living Death |  / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"W" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"U" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"U" 123 -> 123 Chamber of Living Death |  / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"N" 123 -> 123 Chamber of Living Death |  / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"N" 123 -> 123 Chamber of Living Death |  / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"D" 123 -> 123 Chamber of Living Death |  / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"E" 123 -> 123 Chamber of Living Death |  / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"FWEEP ME" 123 -> 123 Chamber of Living Death |  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"S" 123 -> 123 Chamber of Living Death |  / >FWEEP ME / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your b
+"E" 123 -> 123 Chamber of Living Death |  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"N" 123 -> 123 Chamber of Living Death |  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"D" 123 -> 123 Chamber of Living Death |  / >N / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"W" 123 -> 123 Chamber of Living Death |  / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"S" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"W" 123 -> 123 Chamber of Living Death |  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"U" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"W" 123 -> 123 Chamber of Living Death |  / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"WAIT" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"WAIT" 123 -> 123 Chamber of Living Death |  / >WAIT / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones
+"GET ALL" 123 -> 123 Chamber of Living Death |  / >WAIT / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones
+"S" 123 -> 123 Chamber of Living Death |  / >GET ALL / I don't see what you're referring to. / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes f
+"S" 123 -> 123 Chamber of Living Death |  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"E" 123 -> 123 Chamber of Living Death |  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"OPEN BOX" 123 -> 123 Chamber of Living Death |  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"DROP BOX" 123 -> 123 Chamber of Living Death | Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissu
+"GET AMULET AND SCROLL" 123 -> 123 Chamber of Living Death | Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissu
+"GNUSTO SWANZO SPELL" 123 -> 123 Chamber of Living Death |  / >GET AMULET AND SCROLL / The objects that you mentioned aren't here. / Hideous parasites descend upon you and tear the flesh from your bo
+"LEARN IZYUK" 123 -> 123 Chamber of Living Death |  / >GNUSTO SWANZO SPELL / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh 
+"W" 123 -> 123 Chamber of Living Death |  / >LEARN IZYUK / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from you
+"W" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"W" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"W" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"U" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"U" 123 -> 123 Chamber of Living Death |  / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"W" 123 -> 123 Chamber of Living Death |  / >U / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"W" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"IZYUK ME" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"NE" 123 -> 123 Chamber of Living Death |  / >IZYUK ME / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your b
+"SE" 123 -> 123 Chamber of Living Death |  / >NE / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, 
+"E" 123 -> 123 Chamber of Living Death |  / >SE / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, 
+"LOWER FLAG" 123 -> 123 Chamber of Living Death |  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"EXAMINE IT" 123 -> 123 Chamber of Living Death |  / >LOWER FLAG / You can't see any flag here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from yo
+"DROP CALENDAR" 123 -> 123 Chamber of Living Death | Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissu
+"GET AQUA VIAL" 123 -> 123 Chamber of Living Death | Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissu
+"E" 123 -> 123 Chamber of Living Death |  / >GET AQUA VIAL / You can't see any aqua vial here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes
+"LOOK IN CANNON" 123 -> 123 Chamber of Living Death |  / >E / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"PUT GUANO IN CANNON" 123 -> 123 Chamber of Living Death | Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissu
+"GET SCROLL" 123 -> 123 Chamber of Living Death | Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissu
+"READ IT" 123 -> 123 Chamber of Living Death |  / >GET SCROLL / You can't see any scroll here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from 
+"W" 123 -> 123 Chamber of Living Death |  / >READ IT / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bo
+"W" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"LEARN IZYUK" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"IZYUK ME" 123 -> 123 Chamber of Living Death |  / >LEARN IZYUK / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from you
+"NW" 123 -> 123 Chamber of Living Death |  / >IZYUK ME / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your b
+"SW" 123 -> 123 Chamber of Living Death |  / >NW / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, 
+"W" 123 -> 123 Chamber of Living Death |  / >SW / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, 
+"D" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"D" 123 -> 123 Chamber of Living Death |  / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"S" 123 -> 123 Chamber of Living Death |  / >D / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"S" 123 -> 123 Chamber of Living Death |  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"SW" 123 -> 123 Chamber of Living Death |  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"W" 123 -> 123 Chamber of Living Death |  / >SW / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, 
+"GIVE COIN TO GNOME" 123 -> 123 Chamber of Living Death | Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissu
+"W" 123 -> 123 Chamber of Living Death | Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your sockets, and feast upon your very brain tissu
+"W" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"S" 123 -> 123 Chamber of Living Death |  / >W / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"look" 123 -> 123 Chamber of Living Death |  / >S / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones, g
+"get in bed" 123 -> 123 Chamber of Living Death |  / >look / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones
+"get out of bed" 123 -> 123 Chamber of Living Death |  / >get in bed / You can't see any bed here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from you
+"enter bed" 123 -> 123 Chamber of Living Death |  / >get out of bed / You can't see any of bed here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes f
+"exit" 123 -> 123 Chamber of Living Death |  / >enter bed / You can't see any bed here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from your
+"sit on bed" 123 -> 123 Chamber of Living Death |  / >exit / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your bones
+"stand up" 123 -> 123 Chamber of Living Death |  / >sit on bed / You can't see any bed here! / Hideous parasites descend upon you and tear the flesh from your bones, gnaw the eyes from you
+"look" 123 -> 123 Chamber of Living Death |  / >stand up / Your agony is too great to concentrate on such an action. / Hideous parasites descend upon you and tear the flesh from your b

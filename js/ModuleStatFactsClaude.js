@@ -22,7 +22,8 @@ var ModuleStatFactsClaude = {
         // ("You can't turn that on."). Source LIGHTBIT carried only by LAMP; bounded compiled-table scan (250 objects, ends at first property
         // 2992): bit-31 carriers = {76} -> rule-5 single-owner exception. Consumers (#3904): ZRamReader 1679 applies only to blank-named
         // objects (the lamp is named), 1749 is Inform-only, 2718 is inventory item-likeness; no map-room effect.
-        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30, "wearable": 3, "edible": 20, "light": 31 },
+        // enterable 27 = source VEHBIT exact; native (r3-claude/vehbit + vehbit2): bucket 51 and basket 98 (ENTER/GET IN move the player inside; GET OUT returns; bare EXIT refused).
+        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30, "wearable": 3, "edible": 20, "light": 31, "enterable": 27 },
         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
         // (source: ROBOT, CERBERUS, UNICORN (2dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] }
@@ -235,7 +236,8 @@ var ModuleStatFactsClaude = {
         "localScope": { "property": 17, "width": 1, "holder": 248, "roomLitAttribute": 21, "invisible": 30 },
         // FOODBIT7: sole bounded owner beef34, native EAT succeeds/removes;
         // shovel33 false/refuses; DRINK beef refuses (not a consumed bit).
-        "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25, "edible": 7 },
+        // enterable 14 = source VEHBIT exact; native (r3-claude/vehbit + vehbit2): army cot 51 and barge 211 (GET IN/ENTER move the player inside; GET OUT returns; bare EXIT refused). Harmless extras: beam 104 refuses entry, mast hole 108 untested.
+        "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25, "edible": 7, "enterable": 14 },
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         // WEARBIT state22: native knapsack31/ring2 worn positives, shovel33 refusal; Grok4127 proposal independently replayed by Codex October20.
         "wornAttribute": 22
@@ -452,7 +454,8 @@ var ModuleStatFactsClaude = {
         // (255 objects, ends at first property 3069): bit-31 carriers = mutants 1-4, microbe 5, ambassador 219, ensign 220, player 234, none rooms.
         // FAIL-CLOSED: FLOYD carries CONTBIT + OPENBIT (compone.zil 1846), so animate joins the openCapability none list (P3/R pattern).
         // Residual: when FLOYD is switched off, FCLEAR ACTORBIT (1939) removes the exclusion; this is the dynamic-ACTORBIT gap of #4027 (family-default lane).
-        "attributeMap": { "wearable": 22, "open": 11, "isOpen": 11, "container": 24, "animate": 31 }
+        // enterable 30 = source VEHBIT exact; native (r3-claude/vehbit + vehbit2): safety web 215 and bed 196 (ENTER moves the player inside; GET OUT returns; bare EXIT refused). Harmless extra: large vehicle 98 untested.
+        "attributeMap": { "wearable": 22, "open": 11, "isOpen": 11, "container": 24, "animate": 31, "enterable": 30 }
     },
     // Hollywood Hijinx (ZIL): WEARBIT 22 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).
     "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e": {

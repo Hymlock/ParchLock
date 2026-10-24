@@ -1,0 +1,46 @@
+"Get Up"  114 -> 150 Bedroom | Very difficult, but you manage it. The room is still spinning. It dips and sways a little. >
+"Turn on Light"  150 -> 150 Bedroom | Good start to the day. Pity it's going to be the worst one of your life. The light is now on. Bedroom The bedroom is a mess. It is a small bedroom wit
+"Get Gown"  150 -> 150 Bedroom | Luckily, this is large enough for you to get hold of. You notice something in the pocket. >
+"Wear Gown"  150 -> 150 Bedroom | You are now wearing your gown. >
+"Look in pocket"  150 -> 150 Bedroom | Opening your gown reveals a buffered analgesic, pocket fluff, and a thing your aunt gave you which you don't know what it is. >
+"take analgesic"  150 -> 150 Bedroom | You swallow the tablet. After a few seconds the room begins to calm down and behave in an orderly manner. Your terrible headache goes. >
+"Get all"  150 -> 150 Bedroom | flathead screwdriver: Taken. toothbrush: As you pick up the toothbrush a tree outside the window collapses. There is no causal relationship between th
+"South"  150 -> 174 Front Porch | You make your way down to the front porch. Front Porch This is the enclosed front porch of your home. Your front garden lies to the south, and you can
+"Get Mail"  174 -> 174 Front Porch | You gather up the pile of mail. >
+"South"  174 -> 71 Front of House | Front of House You can enter your home to the north. A path leads around it to the northeast and northwest, and a country lane is visible to the south
+"Lie Down In Front Of Bulldozer"  71 -> 71 Front of House | You lie down in the path of the advancing bulldozer. Prosser yells at you to for crissake move!!! >
+"Wait"  71 -> 71 Front of House | Time passes... The bulldozer thunders toward you. The ground is shaking beneath you as you lie in the mud. >
+"Wait"  71 -> 71 Front of House | Time passes... The noise of the giant bulldozer is now so violently loud that you can't even hear Prosser yelling to warn you that you will be killed 
+"Wait"  71 -> 71 Front of House | Time passes... With a terrible grinding of gears the bulldozer comes to an abrupt halt just in front of you. It shakes, shudders, and emits noxious su
+"get in bed" probe:bed 71 -> 71 Front of House | That's not important; leave it alone. Ford glances uncomfortably at the sky. He offers you the towel again. >
+"get out of bed" probe:bed 71 -> 71 Front of House | That's not important; leave it alone. Ford seems oblivious to your trouble, so you ask "Ford, what about my home?" He looks startled, then guilty. He 
+"enter bed" probe:bed 71 -> 71 Front of House | That's not important; leave it alone. >
+"exit" probe:bed 71 -> 71 Front of House | You can't do that while you're lying down! Ford and Prosser stop talking and approach you. Ford says that Prosser has agreed to lie in your place so t
+"sit on bed" probe:bed 71 -> 71 Front of House | That's not important; leave it alone. >
+"stand up" probe:bed 71 -> 71 Front of House | You are already standing. Ford, urging you to follow, hurries toward the country lane. >
+"board bed" probe:bed 71 -> 71 Front of House | That's not important; leave it alone. >
+"get out of bed" probe:bed 71 -> 71 Front of House | That's not important; leave it alone. >
+"climb on bed" probe:bed 71 -> 71 Front of House | That's not important; leave it alone. >
+"get off bed" probe:bed 71 -> 71 Front of House | You're not holding it. >
+"Wait"  71 -> 71 Front of House | Time passes... >
+"Wait"  71 -> 71 Front of House | Time passes... >
+"Wait"  71 -> 71 Front of House | Time passes... >
+"Wait"  71 -> 71 Front of House | Time passes... >
+"Follow Ford"  71 -> 71 Front of House | You have no idea where Ford Prefect is. >
+"Enter Pub"  71 -> 71 Front of House | You can't see any pub here! >
+"Look Shelf"  71 -> 71 Front of House | You can't see any shelf here! >
+"Buy Sandwich"  71 -> 71 Front of House | You can't see any sandwich here! >
+"Drink Beer"  71 -> 71 Front of House | You can't see any beer here! >
+"Drink Beer"  71 -> 71 Front of House | You can't see any beer here! >
+"Drink Beer"  71 -> 71 Front of House | You can't see any beer here! >
+"Exit"  71 -> 71 Front of House | Did you have any particular direction in mind? >
+"Feed dog sandwich"  71 -> 71 Front of House | You can't see that here! >
+"Get towel"  71 -> 71 Front of House | You can't see any towel here! >
+"Wait"  71 -> 71 Front of House | Time passes... >
+"wait"  71 -> 71 Front of House | Time passes... >
+"wait"  71 -> 71 Front of House | Time passes... >
+"wait"  71 -> 71 Front of House | Time passes... >
+"wait"  71 -> 71 Front of House | Time passes... With a noise like a cross between Led Zeppelin's farewell concert and the eruption of Krakatoa, a huge fleet of Vogon Constructor ships
+"wait"  71 -> 71 Front of House | Time passes... The vast yellow ships thunder across the sky, spreading waves of terror and panic in their wake. The voice of the Vogon Captain slams a
+"wait"  71 -> 71 Front of House | Time passes... Fierce gales whip across the land, and thunder bangs continuously through the air in the wake of the giant ships. Ford fights to reach 
+"wait"  71 -> 71 Front of House | The Earth is destroyed by the fleet of Vogon Constructor ships. **** You have died **** We are about to give you your score. Put on your peril-sensiti

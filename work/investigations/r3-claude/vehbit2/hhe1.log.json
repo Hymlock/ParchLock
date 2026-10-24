@@ -1,0 +1,2572 @@
+[
+ {
+  "cmd": "Get Up",
+  "tag": null,
+  "parentBefore": 114,
+  "parentBeforeName": "bed",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "Very difficult, but you manage it. The room is still spinning. It dips and sways a little.\n \n>"
+ },
+ {
+  "cmd": "Turn on Light",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "Good start to the day. Pity it's going to be the worst one of your life. The light is now on.\n \nBedroom\nThe bedroom is a mess.\nIt is a small bedroom with a faded carpet and old wallpaper. There is a washbasin, a chair with a tatty dressing gown slung over it, and a window with the curtains drawn. Near the exit leading south is a phone.\nThere is a flathead screwdriver here.\nThere is a toothbrush here.\n \n>"
+ },
+ {
+  "cmd": "Get Gown",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "Luckily, this is large enough for you to get hold of. You notice something in the pocket.\n \n>"
+ },
+ {
+  "cmd": "Wear Gown",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "You are now wearing your gown.\n \n>"
+ },
+ {
+  "cmd": "Look in pocket",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "Opening your gown reveals a buffered analgesic, pocket fluff, and a thing your aunt gave you which you don't know what it is.\n \n>"
+ },
+ {
+  "cmd": "take analgesic",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "You swallow the tablet. After a few seconds the room begins to calm down and behave in an orderly manner. Your terrible headache goes.\n \n>"
+ },
+ {
+  "cmd": "Get all",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 150,
+  "parentAfterName": "Bedroom",
+  "playerId": 202,
+  "reply": "flathead screwdriver: Taken.\ntoothbrush: As you pick up the toothbrush a tree outside the window collapses. There is no causal relationship between these two events.\ntelephone: You pick up the receiver. A moment later, the dialing tone is suddenly cut off. Glancing through the window you can't help but notice the large old oak tree of which you are particularly fond crashing down through the phone cable. Shouldn't you be taking more interest in events in the world around you? While you've got it...?\n \n>"
+ },
+ {
+  "cmd": "South",
+  "tag": null,
+  "parentBefore": 150,
+  "parentBeforeName": "Bedroom",
+  "parentAfter": 174,
+  "parentAfterName": "Front Porch",
+  "playerId": 202,
+  "reply": "You make your way down to the front porch.\n \nFront Porch\nThis is the enclosed front porch of your home. Your front garden lies to the south, and you can reenter your home to the north.\nOn the doormat is a pile of junk mail.\n \n>"
+ },
+ {
+  "cmd": "Get Mail",
+  "tag": null,
+  "parentBefore": 174,
+  "parentBeforeName": "Front Porch",
+  "parentAfter": 174,
+  "parentAfterName": "Front Porch",
+  "playerId": 202,
+  "reply": "You gather up the pile of mail.\n \n>"
+ },
+ {
+  "cmd": "South",
+  "tag": null,
+  "parentBefore": 174,
+  "parentBeforeName": "Front Porch",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Front of House\nYou can enter your home to the north. A path leads around it to the northeast and northwest, and a country lane is visible to the south. All that lies between your home and the huge yellow bulldozer bearing down on it is a few yards of mud.\nMr. Prosser, from the local council, is standing on the other side of the bulldozer. He seems to be wearing a digital watch. He looks startled to see you emerge, and yells at you to get out of the way.\n \nThe bulldozer rumbles slowly toward your home.\n \n>"
+ },
+ {
+  "cmd": "Lie Down In Front Of Bulldozer",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "You lie down in the path of the advancing bulldozer. Prosser yells at you to for crissake move!!!\n \n>"
+ },
+ {
+  "cmd": "Wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \nThe bulldozer thunders toward you. The ground is shaking beneath you as you lie in the mud.\n \n>"
+ },
+ {
+  "cmd": "Wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \nThe noise of the giant bulldozer is now so violently loud that you can't even hear Prosser yelling to warn you that you will be killed if you don't get the hell out of the way. You just see him gesticulating wildly.\n \n>"
+ },
+ {
+  "cmd": "Wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \nWith a terrible grinding of gears the bulldozer comes to an abrupt halt just in front of you. It shakes, shudders, and emits noxious substances all over your rose bed. Prosser is incoherent with rage.\n \nMoments later, your friend Ford Prefect arrives. He hardly seems to notice your predicament, but keeps glancing nervously at the sky. He says, \"Hello, Arthur,\" takes a towel from his battered leather satchel, and offers it to you.\n \n>"
+ },
+ {
+  "cmd": "Wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \nFord glances uncomfortably at the sky. He offers you the towel again.\n \n>"
+ },
+ {
+  "cmd": "Wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \nFord seems oblivious to your trouble, so you ask \"Ford, what about my home?\" He looks startled, then guilty. He starts to say something and stops. He starts to say something else and stops. Suddenly, he seems to see the bulldozer for the first time, stops starting to say things and starts.\n \nHe seems to come to a momentous decision, says he has something of Earth-shattering importance to tell you, and stresses the importance of a quick drink at the Horse 'n Groom.\n \nPointing toward Prosser, you exclaim, \"But that man wants to knock my house down!\" Ford goes off for a quiet word with Prosser. From where you're lying, you cannot hear what's happening, although they seem deeply"
+ },
+ {
+  "cmd": "Wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \nFord and Prosser stop talking and approach you. Ford says that Prosser has agreed to lie in your place so that the two of you can go off to the Pub. Reluctantly, Prosser steps forward and lies down in front of the bulldozer. You stand up.\n \n>"
+ },
+ {
+  "cmd": "Wait",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 71,
+  "parentAfterName": "Front of House",
+  "playerId": 202,
+  "reply": "Time passes...\n \nFord, urging you to follow, hurries toward the country lane.\n \n>"
+ },
+ {
+  "cmd": "Follow Ford",
+  "tag": null,
+  "parentBefore": 71,
+  "parentBeforeName": "Front of House",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "In a state of anxiety and confusion you follow Ford down the lane...\n \nCountry Lane\nThe road runs from your home, to the north, toward the village Pub, to the west.\nFord Prefect is here.\n \n\"Come along, Arthur,\" says Ford impatiently, and enters the Pub.\n \n>"
+ },
+ {
+  "cmd": "Enter Pub",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 167,
+  "parentAfterName": "Pub",
+  "playerId": 202,
+  "reply": "Pub\nThe Pub is pleasant and cheerful and full of pleasant and cheerful people who don't know they've got about twelve minutes to live and are therefore having a spot of lunch. Some music is playing on an old jukebox. The exit is east.\nFord Prefect is here.\nThere is a barman serving at the bar.\nBehind the bar is a shelf. It is full of the sort of items you find on shelves behind bars in pubs.\n \nFord buys lots of beer and offers half to you. \"Muscle relaxant...\" he says, impenetrably.\n \n>"
+ },
+ {
+  "cmd": "Look Shelf",
+  "tag": null,
+  "parentBefore": 167,
+  "parentBeforeName": "Pub",
+  "parentAfter": 167,
+  "parentAfterName": "Pub",
+  "playerId": 202,
+  "reply": "Use prepositions to indicate precisely what you want to do: LOOK AT the object, LOOK INSIDE it, LOOK UNDER it, etc.\n \n\"Drink the beer,\" urges Ford. \"It will help cushion your system against the coming shock of the matter transference beam.\"\n \n>"
+ },
+ {
+  "cmd": "Buy Sandwich",
+  "tag": null,
+  "parentBefore": 167,
+  "parentBeforeName": "Pub",
+  "parentAfter": 167,
+  "parentAfterName": "Pub",
+  "playerId": 202,
+  "reply": "The barman gives you a cheese sandwich. The bread is like the stuff that stereos come packed in, the cheese would be great for rubbing out spelling mistakes, and margarine and pickle have performed an unedifying chemical reaction to produce something that shouldn't be, but is, turquoise. Since it is clearly unfit for human consumption you are grateful to be charged only a pound for it.\n \n\"Drink the beer,\" urges Ford. \"It will help cushion your system against the coming shock of the matter transference beam.\"\n \n>"
+ },
+ {
+  "cmd": "Drink Beer",
+  "tag": null,
+  "parentBefore": 167,
+  "parentBeforeName": "Pub",
+  "parentAfter": 167,
+  "parentAfterName": "Pub",
+  "playerId": 202,
+  "reply": "It's very good beer, brewed by a small local company. You particularly like its flavour, which is why you woke up feeling so wretched this morning. You were at somebody's birthday party here in the Pub last night.\n \nYou begin to relax and enjoy yourself, so when Ford mentions that he's from a small planet in the vicinity of Betelgeuse, not from Guildford as he usually claims, you take it in your stride, and say, \"Oh yes, which part?\"\n \n>"
+ },
+ {
+  "cmd": "Drink Beer",
+  "tag": null,
+  "parentBefore": 167,
+  "parentBeforeName": "Pub",
+  "parentAfter": 167,
+  "parentAfterName": "Pub",
+  "playerId": 202,
+  "reply": "It is really very pleasant stuff, with a very good dry, nutty flavour, some light froth on top, and a deep colour. It is at exactly room temperature. You reflect that the world cannot be all bad when there are such pleasures in it.\n \nFord mentions that the world is going to end in about twelve minutes.\n \n>"
+ },
+ {
+  "cmd": "Drink Beer",
+  "tag": null,
+  "parentBefore": 167,
+  "parentBeforeName": "Pub",
+  "parentAfter": 167,
+  "parentAfterName": "Pub",
+  "playerId": 202,
+  "reply": "There is a distant crash which Ford explains is nothing to worry about, probably just your house being knocked down.\n \n>"
+ },
+ {
+  "cmd": "Exit",
+  "tag": null,
+  "parentBefore": 167,
+  "parentBeforeName": "Pub",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "Country Lane\nYou see the huge bulldozer heaving itself among the cloud of brick dust which is all that remains of your home. As you start up the lane, a small dog runs up to you, yapping.\n \nFord hurries after you.\n \n>"
+ },
+ {
+  "cmd": "Feed dog sandwich",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "The dog is deeply moved. With powerful sweeps of its tail it indicates that it regards this cheese sandwich as one of the great cheese sandwiches. Nine out of ten pet owners could happen by at this point expressing any preference they pleased, but this dog would spurn both them and all their tins. This is a dog which has met its main sandwich. It eats with passion, and ignores a passing microscopic space fleet.\n \n>"
+ },
+ {
+  "cmd": "Get towel",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "Wait",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "wait",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "wait",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "wait",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "wait",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "wait",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "wait",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "Time passes...\n \nWith a noise like a cross between Led Zeppelin's farewell concert and the eruption of Krakatoa, a huge fleet of Vogon Constructor ships flies overhead and announces that the Earth will be demolished to make way for a new hyperspace bypass in \"two of your Earth minutes.\"\n \nIn all the turmoil, you drop the thing your aunt gave you which you don't know what it is and it rolls away. It is the least of your worries. Anyway, you've been trying to get rid of it for years.\n \n>"
+ },
+ {
+  "cmd": "wait",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "Time passes...\n \nThe vast yellow ships thunder across the sky, spreading waves of terror and panic in their wake. The voice of the Vogon Captain slams across the country, insisting that the planning charts and demolition orders have been available at the local planning office in Alpha Centauri for fifty years and it's too late to start making a fuss about it now.\n \nThroughout the noise, Ford is shouting at you. He removes a small black device from his satchel, but accidentally drops it at your feet.\n \n>"
+ },
+ {
+  "cmd": "get device",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "Taken.\n \nFierce gales whip across the land, and thunder bangs continuously through the air in the wake of the giant ships. Ford fights to reach you, but the wind is too fierce. Further announcements from the Vogon Captain make it clear that demolition will begin in just a few seconds.\n \nThrough the blinding rain, you see lights flickering on the small device.\n \n>"
+ },
+ {
+  "cmd": "push green button",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "Lights whirl sickeningly around your head, the ground arches away beneath your feet, and every atom of your being is scrambled, an experience you're probably going to have to get used to. You are in...\n \nDark\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can hear nothing, smell nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are.\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can see nothing, feel nothing, hear nothing, taste nothing, smell nothing, and are not entirely certain who you are.\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "There's nothing you can taste, nothing you can see, nothing you can hear, nothing you can feel, nothing you can smell, you do not even know who you are.\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "There's nothing you can taste, nothing you can see, nothing you can hear, nothing you can feel, you do not even know who you are.\n \n>"
+ },
+ {
+  "cmd": "smell",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "(darkness)\nIt does smell a bit. There's something pungent being waved under your nose. Your head begins to clear. You can make out a shadow moving in the dark.\n \n>"
+ },
+ {
+  "cmd": "examine shadow",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "The shadow is vaguely Ford Prefect-shaped.\n \nVogon Hold\nThis is a squalid room filled with grubby mattresses, unwashed cups, and unidentifiable bits of smelly alien underwear. A door lies to port, and an airlock lies to starboard.\nIn the corner is a glass case with a switch and a keyboard.\nIt looks like the glass case contains:\n  an atomic vector plotter\nAlong one wall is a tall dispensing machine.\n \nFord removes the bottle of Santraginean Mineral Water which he's been waving under your nose. He tells you that you are aboard a Vogon spaceship, and gives you some peanuts.\n \n>"
+ },
+ {
+  "cmd": "Eat Peanuts",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "You feel stronger as the peanuts replace some of the protein you lost in the matter transference beam.\n \n>"
+ },
+ {
+  "cmd": "Take off gown",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "Okay, you're no longer wearing your gown.\n \n>"
+ },
+ {
+  "cmd": "Put Gown on hook",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "The gown is now hanging from the hook, covering a tiny hole.\n \n>"
+ },
+ {
+  "cmd": "put towel over drain",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "The towel completely covers the drain.\n \n>"
+ },
+ {
+  "cmd": "wait",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "Time passes...\n \nFord yawns. \"Matter transference always tires me out. I'm going to take a nap.\" He places something on top of his satchel. \"If you have any questions, here's The Hitchhiker's Guide to the Galaxy\" (Footnote 14). Ford lowers his voice to a whisper. \"I'm not supposed to tell you this, but you'll never be able to finish the game without consulting the Guide about lots of stuff.\" As he curls up in a corner and begins snoring, you pick up The Hitchhiker's Guide.\n \n>"
+ },
+ {
+  "cmd": "get satchel",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "put satchel in front of panel",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "Okay, the satchel is lying on its side in front of the tiny robot panel.\n \n>"
+ },
+ {
+  "cmd": "put mail on satchel",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "Okay, the loose pile of junk mail is now sitting on the satchel.\n \n>"
+ },
+ {
+  "cmd": "push dispenser button",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "A single babel fish shoots out of the slot. It sails across the room and hits the dressing gown. The fish slides down the sleeve of the gown and falls to the floor, landing on the towel. A split second later, a tiny cleaning robot whizzes across the floor, grabs the fish, and continues its breakneck pace toward a tiny robot panel at the base of the wall. The robot plows into the satchel, sending the babel fish flying through the air in a graceful arc surrounded by a cloud of junk mail. Another robot flies in and begins madly collecting the cluttered plume of mail. The babel fish continues its flight, landing with a loud \"squish\" in your ear.\n \n>"
+ },
+ {
+  "cmd": "get gown",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "wear gown",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "You are now wearing your gown.\n \n>"
+ },
+ {
+  "cmd": "get all",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "satchel: Taken.\nthing your aunt gave you which you don't know what it is: Taken.\ntowel: Taken.\nkeyboard: Nice try.\n \nAn announcement is coming over the ship's intercom. \"This is the Captain. My instruments show that we've picked up a couple of hitchhikers. I hate freeloaders, and when my guards find you I'll have you thrown into space. On second thought, maybe I'll read you some of my poetry first. Repeating...\"\n \n>"
+ },
+ {
+  "cmd": "push switch",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "A recording plays: \"To open the case, type in the third word from the second verse of the Captain's current favourite poem. WARNING: An incorrect input will cause the case to explode.\"\n \nAn announcement is coming over the ship's intercom. \"This is the Captain. My instruments show that we've picked up a couple of hitchhikers. I hate freeloaders, and when my guards find you I'll have you thrown into space. On second thought, maybe I'll read you some of my poetry first. Repeating...\"\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "Time passes...\n \nAn announcement is coming over the ship's intercom. \"This is the Captain. My instruments show that we've picked up a couple of hitchhikers. I hate freeloaders, and when my guards find you I'll have you thrown into space. On second thought, maybe I'll read you some of my poetry first. Repeating...\"\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "Time passes...\n \nGuards burst in and grab you and Ford, who comes slowly awake. They drag you down the corridor to a large cabin, where they strap you into large, menacing chairs...\n \nCaptain's Quarters, in the poetry appreciation chair\nThis is the cabin of the Vogon Captain. You and Ford are strapped into poetry appreciation chairs.\nThe Captain is indescribably hideous, indescribably blubbery, and indescribably mid-to-dark green. He is holding samples of his favourite poetry.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "Time passes...\n \n\"If he's going to read us his poetry,\" mutters Ford, sweating profusely, \"just pray he softens us up with some cudgels first...\"\n \n\"Hello, hitchhikers!\" begins the Vogon Captain. \"I've decided to read you a verse of my poetry!\"\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "Time passes...\n \n\"Oh freddled gruntbuggly, thy nacturations are to me!\"\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "Time passes...\n \n\"As plurdled gabbleblotchits on a lurgid bee.\"\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "Time passes...\n \n\"Groop I implore thee, my foonting turlingdromes.\"\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "Time passes...\n \n\"And hooptiously drangle me with crinkly bindlewurdles, or I will rend thee in the gobberwarts with my blurglecruncheon, see if I don't!\"\n \n>"
+ },
+ {
+  "cmd": "enjoy poetry",
+  "tag": null,
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "You realise that, although the Vogon poetry is indeed astoundingly bad, worse things happen at sea, and in fact, at school. With an effort for which Hercules himself would have patted you on the back, you grit your teeth and enjoy the stuff.\n \n\"You looked like you enjoyed my poem. I think...yes, I think I'll read the NEXT verse, also!\"\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "Time passes...\n \n\"Fripping lyshus wimbgunts, awhilst moongrovenly kormzibs.\"\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "Time passes...\n \n\"Bleem miserable venchit! Bleem forever mestinglish asunder frapt.\"\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "Time passes...\n \n\"Gashee morphousite, thou expungiest quoopisk!\"\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 164,
+  "parentAfterName": "poetry appreciation chair",
+  "playerId": 202,
+  "reply": "Time passes...\n \n\"Gerond withoutitude form into formless bloit, why not then? Moose.\"\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 164,
+  "parentBeforeName": "poetry appreciation chair",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "Time passes...\n \n\"Since you have somehow managed to survive two verses of my poetry, I have no choice but to space you. Guards!\" A guard grabs you and Ford, and drags you toward the hold. Ford whispers, \"Don't worry, I'll think of something!\"\n \nVogon Hold\nThis is a squalid room filled with grubby mattresses, unwashed cups, and unidentifiable bits of smelly alien underwear. A door lies to port, and an airlock lies to starboard.\nIn the corner is a glass case with a switch and a keyboard.\nIt looks like the glass case contains:\n  an atomic vector plotter\nAlong one wall is a tall dispensing machine.\n \nThe guard releases you and Ford and begins cycling the air in the airlock. \"Hey, guard!\" shouts "
+ },
+ {
+  "cmd": "type \"wimbgunts\"",
+  "tag": "typepoem:third word from the second verse",
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "The glass case opens.\n \nFord continues trying to talk the guard into a sudden career change.\n \n>"
+ },
+ {
+  "cmd": "get plotter",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "Taken.\n \nFord continues trying to talk the guard into a sudden career change.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "Time passes...\n \nFord continues trying to talk the guard into a sudden career change.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 99,
+  "parentAfterName": "Vogon Hold",
+  "playerId": 202,
+  "reply": "Time passes...\n \nFord continues trying to talk the guard into a sudden career change.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 99,
+  "parentBeforeName": "Vogon Hold",
+  "parentAfter": 135,
+  "parentAfterName": "Airlock",
+  "playerId": 202,
+  "reply": "Time passes...\n \nThe guard says, \"Well, all things considered, I guess I like being a guard. Especially the shouting. Resistance is useless!\" He throws you and Ford into the airlock and closes the door.\n \nAirlock\nThis airlock has massive doors to port and starboard.\n \nFord points at the outer door. \"In about two minutes, it will open and we'll be ejected into the vacuum of space. But don't panic, I'll think of something.\"\n \n>"
+ },
+ {
+  "cmd": "examine thumb",
+  "tag": null,
+  "parentBefore": 135,
+  "parentBeforeName": "Airlock",
+  "parentAfter": 135,
+  "parentAfterName": "Airlock",
+  "playerId": 202,
+  "reply": "The electronic Sub-Etha signaling device is shaped like a small fist with an extended thumb. Various lights along its \"knuckles\" are currently blinking wildly, indicating a spaceship in the vicinity. It has two small buttons, a red one labelled \"Call Engineer\" and a green one labelled \"Hitchhike.\" It bears a small label which reads \"Another fine product of the Sirius Cybernetics Corporation.\" Affixed to the Thumb is a lifetime guarantee.\n \nFord is mumbling to himself.\n \n>"
+ },
+ {
+  "cmd": "press green button",
+  "tag": null,
+  "parentBefore": 135,
+  "parentBeforeName": "Airlock",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "Every molecule in your body gets pulled away from every other molecule. Then suddenly they snap back together again like elastic, and you find, with a dizzy head and very sore molecules, that you are in...\n \nDark\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can see nothing, feel nothing, hear nothing, taste nothing, smell nothing, and are not entirely certain who you are.\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "There's nothing you can taste, nothing you can see, nothing you can hear, nothing you can feel, nothing you can smell, you do not even know who you are.\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "There's nothing you can taste, nothing you can see, nothing you can hear, nothing you can feel, nothing you can smell, you do not even know who you are.\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can see nothing, feel nothing, taste nothing, smell nothing, and are not entirely certain who you are.\n \n>"
+ },
+ {
+  "cmd": "listen",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "(to darkness)\nYou hear the deep and distant hum of a star drive coming from far above. There is an exit to port.\n \n>"
+ },
+ {
+  "cmd": "Aft",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 149,
+  "parentAfterName": "Entry Bay Number Two",
+  "playerId": 202,
+  "reply": "(We were lying about the exit to port.) You emerge from a small doorway...\n \nEntry Bay Number Two\nThis is an entry bay for the Heart of Gold. A corridor lies aft of here.\nThere is a sales brochure here.\n \n\"This looks like that incredible new Infinite Improbability Drive spaceship, the Heart of Gold!\" says Ford, with growing excitement.\n \n\"Announcement, announcement. This is Eddie (the shipboard computer). We have just picked up two hitchhikers at an improbability factor of 2 to the 21,914th power to 1 against.\"\n \n>"
+ },
+ {
+  "cmd": "read brochure",
+  "tag": null,
+  "parentBefore": 149,
+  "parentBeforeName": "Entry Bay Number Two",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "(Taking the sales brochure first)\n\"Equipped with a sensational breakthrough in Improbability Physics, the Heart of Gold will make you the envy of every major government. When the ship's Infinite Improbability Drive is activated, the Heart of Gold passes through every point in the universe simultaneously, making travel to any single location a breeze!\"\n \nThe sales brochure goes on to describe the ship's complement of Sirius Cybernetics Corporation-designed robots and computers, all equipped with GPP (Genuine People Personalities).\n \n\"Come on, let's look for the Bridge.\" You follow Ford, and eventually come to the...\n \nBridge\nThis is the bridge of the Heart of Gold. A gangway leads down, and s"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Time passes...\n \n\"Hey, Zaphod, how ya doing?\" says Ford. He's cool. \"Not bad, Ford. Great to see you,\" replies Zaphod. He's cooler. You suddenly realise that the woman is Tricia MacMillan (\"Call me Trillian\"), whom you were trying to pick up at a party in Islington just a few weeks ago, and that Zaphod is the guy she eventually left the party with! Odd.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Time passes...\n \n\"Like my spaceship, Ford?\" Zaphod asks. \"YOUR spaceship?\" says Ford, losing his cool for a second. \"Yeah, I stole it,\" Zaphod admits. \"I'm gonna use it to find the legendary lost planet of Magrathea. Let's go sit in the sauna while I explain.\" Zaphod, Ford, and Trillian all head off to port.\n \n>"
+ },
+ {
+  "cmd": "inventory",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "I don't know the word \"inventory\".\n \n>"
+ },
+ {
+  "cmd": "take pincer",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "You're holding too much already.\n \n>"
+ },
+ {
+  "cmd": "put all into thing",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "sales brochure: Done.\natomic vector plotter: Done.\ntowel: Done.\nyour gown: You'll have to remove it first.\npocket fluff: Done.\nbabel fish: You'll have to remove it first.\nThe Hitchhiker's Guide: Done.\nelectronic Sub-Etha signaling device: Done.\ntoothbrush: Done.\nflathead screwdriver: Done.\n \n>"
+ },
+ {
+  "cmd": "d",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 93,
+  "parentAfterName": "Corridor, Fore End",
+  "playerId": 202,
+  "reply": "Corridor, Fore End\nThis is one end of a short corridor that continues aft along the main deck of the Heart of Gold. Doorways lead to fore and port. In addition, a gangway leads upward.\n \n>"
+ },
+ {
+  "cmd": "port",
+  "tag": null,
+  "parentBefore": 93,
+  "parentBeforeName": "Corridor, Fore End",
+  "parentAfter": 138,
+  "parentAfterName": "Galley",
+  "playerId": 202,
+  "reply": "Galley\nYou are in the Galley area of the ship, containing a machine which is the state of the art in Nutritional Technology, a Sirius Cybernetics Corporation Nutrimat. There is an exit to starboard.\nA carton labelled \"Nutrimat/Computer Interface\" is sitting here.\n \nYou feel a wave of depression sweep over you, and you turn to see that Marvin the robot has stalked miserably into the room.\n \n>"
+ },
+ {
+  "cmd": "touch pad",
+  "tag": null,
+  "parentBefore": 138,
+  "parentBeforeName": "Galley",
+  "parentAfter": 138,
+  "parentAfterName": "Galley",
+  "playerId": 202,
+  "reply": "The Nutrimat makes an instant but highly detailed examination of your taste buds, a spectroscopic analysis of your metabolism and sends tiny experimental signals down your neural pathways to see what you like.\nA cupful of Advanced Tea Substitute appears in the dispensing slot.\n \nMarvin wanders off.\n \n>"
+ },
+ {
+  "cmd": "get cup",
+  "tag": null,
+  "parentBefore": 138,
+  "parentBeforeName": "Galley",
+  "parentAfter": 138,
+  "parentAfterName": "Galley",
+  "playerId": 202,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "starboard",
+  "tag": null,
+  "parentBefore": 138,
+  "parentBeforeName": "Galley",
+  "parentAfter": 93,
+  "parentAfterName": "Corridor, Fore End",
+  "playerId": 202,
+  "reply": "Corridor, Fore End\n \n>"
+ },
+ {
+  "cmd": "aft",
+  "tag": null,
+  "parentBefore": 93,
+  "parentBeforeName": "Corridor, Fore End",
+  "parentAfter": 69,
+  "parentAfterName": "Corridor, Aft End",
+  "playerId": 202,
+  "reply": "Corridor, Aft End\nThis is one end of a short corridor that continues fore along the main deck of the Heart of Gold. Doorways lead to aft and port. In addition, a gangway leads downward.\n \n>"
+ },
+ {
+  "cmd": "aft",
+  "tag": null,
+  "parentBefore": 69,
+  "parentBeforeName": "Corridor, Aft End",
+  "parentAfter": 69,
+  "parentAfterName": "Corridor, Aft End",
+  "playerId": 202,
+  "reply": "That entrance leads to the Infinite Improbability Drive chamber. It's supposed to be a terribly dangerous area of the ship. Are you sure you want to go in there?\n \n>"
+ },
+ {
+  "cmd": "yes",
+  "tag": null,
+  "parentBefore": 69,
+  "parentBeforeName": "Corridor, Aft End",
+  "parentAfter": 69,
+  "parentAfterName": "Corridor, Aft End",
+  "playerId": 202,
+  "reply": "Absolutely sure?\n \n>"
+ },
+ {
+  "cmd": "yes",
+  "tag": null,
+  "parentBefore": 69,
+  "parentBeforeName": "Corridor, Aft End",
+  "parentAfter": 69,
+  "parentAfterName": "Corridor, Aft End",
+  "playerId": 202,
+  "reply": "I can tell you don't want to really. You stride away with a spring in your step, wisely leaving the Drive Chamber safely behind you. Telegrams arrive from well-wishers in all corners of the Galaxy congratulating you on your prudence and wisdom, cheering you up immensely.\n \n>"
+ },
+ {
+  "cmd": "aft",
+  "tag": null,
+  "parentBefore": 69,
+  "parentBeforeName": "Corridor, Aft End",
+  "parentAfter": 69,
+  "parentAfterName": "Corridor, Aft End",
+  "playerId": 202,
+  "reply": "What? You're joking, of course. Can I ask you to reconsider?\n \n>"
+ },
+ {
+  "cmd": "no",
+  "tag": null,
+  "parentBefore": 69,
+  "parentBeforeName": "Corridor, Aft End",
+  "parentAfter": 123,
+  "parentAfterName": "Engine Room",
+  "playerId": 202,
+  "reply": "Engine Room\nYou're in the Infinite Improbability Drive chamber. Nothing happens; there is nothing to see.\n \n>"
+ },
+ {
+  "cmd": "look",
+  "tag": null,
+  "parentBefore": 123,
+  "parentBeforeName": "Engine Room",
+  "parentAfter": 123,
+  "parentAfterName": "Engine Room",
+  "playerId": 202,
+  "reply": "Engine Room\nI mean it! There's nothing to see here!\n \n>"
+ },
+ {
+  "cmd": "look",
+  "tag": null,
+  "parentBefore": 123,
+  "parentBeforeName": "Engine Room",
+  "parentAfter": 123,
+  "parentAfterName": "Engine Room",
+  "playerId": 202,
+  "reply": "Engine Room\nOkay, okay, there are a FEW things to see here. This is the room that houses the powerful Infinite Improbability Generator that drives the Heart of Gold. An exit lies fore of here.\nSitting in the corner is a spare, portable Improbability Generator.\nThere is an ionic diffusion rasp here.\nThere is a pair of hypersonic pliers here.\n \n(Footnote 10)\n \nYou feel a wave of depression sweep over you, and you turn to see that Marvin the robot has stalked miserably into the room.\n \n>"
+ },
+ {
+  "cmd": "drop thing",
+  "tag": null,
+  "parentBefore": 123,
+  "parentBeforeName": "Engine Room",
+  "parentAfter": 123,
+  "parentAfterName": "Engine Room",
+  "playerId": 202,
+  "reply": "It falls to the ground with a light \"thunk.\" It doesn't do anything else at all.\n \nMarvin wanders off.\n \n>"
+ },
+ {
+  "cmd": "get rasp",
+  "tag": null,
+  "parentBefore": 123,
+  "parentBeforeName": "Engine Room",
+  "parentAfter": 123,
+  "parentAfterName": "Engine Room",
+  "playerId": 202,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "get pliers",
+  "tag": null,
+  "parentBefore": 123,
+  "parentBeforeName": "Engine Room",
+  "parentAfter": 123,
+  "parentAfterName": "Engine Room",
+  "playerId": 202,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "put rasp into thing",
+  "tag": null,
+  "parentBefore": 123,
+  "parentBeforeName": "Engine Room",
+  "parentAfter": 123,
+  "parentAfterName": "Engine Room",
+  "playerId": 202,
+  "reply": "Done.\n \nYou feel a wave of depression sweep over you, and you turn to see that Marvin the robot has stalked miserably into the room.\n \n>"
+ },
+ {
+  "cmd": "put pliers into thing",
+  "tag": null,
+  "parentBefore": 123,
+  "parentBeforeName": "Engine Room",
+  "parentAfter": 123,
+  "parentAfterName": "Engine Room",
+  "playerId": 202,
+  "reply": "Done.\n \nMarvin wanders off.\n \n>"
+ },
+ {
+  "cmd": "get improbability drive",
+  "tag": null,
+  "parentBefore": 123,
+  "parentBeforeName": "Engine Room",
+  "parentAfter": 123,
+  "parentAfterName": "Engine Room",
+  "playerId": 202,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "fore",
+  "tag": null,
+  "parentBefore": 123,
+  "parentBeforeName": "Engine Room",
+  "parentAfter": 69,
+  "parentAfterName": "Corridor, Aft End",
+  "playerId": 202,
+  "reply": "Corridor, Aft End\n \n>"
+ },
+ {
+  "cmd": "fore",
+  "tag": null,
+  "parentBefore": 69,
+  "parentBeforeName": "Corridor, Aft End",
+  "parentAfter": 93,
+  "parentAfterName": "Corridor, Fore End",
+  "playerId": 202,
+  "reply": "Corridor, Fore End\n \n>"
+ },
+ {
+  "cmd": "up",
+  "tag": null,
+  "parentBefore": 93,
+  "parentBeforeName": "Corridor, Fore End",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Bridge\nThere is a satchel here.\nThere is a handbag here.\nThere is a molecular hyperwave pincer here.\n \n>"
+ },
+ {
+  "cmd": "drop drive",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Dropped.\n \n>"
+ },
+ {
+  "cmd": "drop cup",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Dropped.\n \n>"
+ },
+ {
+  "cmd": "drop plotter",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "You can't see that here!\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "drop plotter",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "You can't see that here!\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Time passes...\n \nYou feel a wave of depression sweep over you, and you turn to see that Marvin the robot has stalked miserably into the room.\n \n>"
+ },
+ {
+  "cmd": "drop plotter",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "You're not holding the atomic vector plotter.\n \n>"
+ },
+ {
+  "cmd": "put small plug in plotter",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Plugged.\n \nMarvin wanders off.\n \n>"
+ },
+ {
+  "cmd": "put bit in cup",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Done.\n \n>"
+ },
+ {
+  "cmd": "turn on drive",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "A mist spins round your head. You fall into what seems like a bottomless pit. Suddenly, you hit the bottom so hard that you wish it had been bottomless...\n \nDark\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can hear nothing, smell nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are.\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can hear nothing, smell nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are.\n \n>"
+ },
+ {
+  "cmd": "n",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can't hear anything, see anything, smell anything, feel anything, or taste anything, and do not even know where you are or who you are or how you got there.\n \n>"
+ },
+ {
+  "cmd": "s",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can hear nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are.\n \n>"
+ },
+ {
+  "cmd": "smell",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "(darkness)\nIt does smell a bit. There's something pungent waving under your nose. Your head begins to clear. You can make out a shadow moving in the dark.\n \n>"
+ },
+ {
+  "cmd": "look at shadow",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 106,
+  "parentAfterName": "Lair",
+  "playerId": 202,
+  "reply": "The shadow is vaguely Bugblatter Beast-shaped.\n \nLair\nThis is the lair of the Ravenous Bugblatter Beast of Traal. There are exits east and southwest.\nThe Ravenous Bugblatter Beast of Traal is here, looking particularly nasty and hungry.\n \nThe Beast whips its evil-smelling tail away from your nose and bellows a brain-shattering roar. By suddenly popping out of nowhere you have disturbed its train of thought. However, since its train of thought was the usual one, and in fact the only one it knows, which goes like this \"hungry ... hungry ... hungry ... hungry ... bad-tempered ... hungry ...\", it soon starts to chug along again.\n \nYou notice the Beast's Lasero-Zap eyes, its Swivel Shear Teeth, a"
+ },
+ {
+  "cmd": "say my name",
+  "tag": null,
+  "parentBefore": 106,
+  "parentBeforeName": "Lair",
+  "parentAfter": 106,
+  "parentAfterName": "Lair",
+  "playerId": 202,
+  "reply": "The Beast roars your name with relish, and explains that once it has eaten you, your name will be added to its list of remembrance.\n \n>"
+ },
+ {
+  "cmd": "e",
+  "tag": null,
+  "parentBefore": 106,
+  "parentBeforeName": "Lair",
+  "parentAfter": 157,
+  "parentAfterName": "Beast's Outer Lair",
+  "playerId": 202,
+  "reply": "Beast's Outer Lair\nThis is a large walled courtyard. Strewn about are a profusion of gnawed bones bleaching in the sun. In case the significance of these fails to strike you, there is also a sandstone memorial in the middle of the courtyard, on which the Beast has roughly carved the names of all its victims.\nSome sharp stones lie near the exit to the west.\n \nBellowing with rage, the Beast charges after you.\n \n>"
+ },
+ {
+  "cmd": "examine memorial",
+  "tag": null,
+  "parentBefore": 157,
+  "parentBeforeName": "Beast's Outer Lair",
+  "parentAfter": 157,
+  "parentAfterName": "Beast's Outer Lair",
+  "playerId": 202,
+  "reply": "There are countless names carved on the sandstone memorial:\nGleb Snardfitz, Bibs Trench, Zeke Fitzberry, Elmo Smith, Brian \"Spike\" Berkowitz, Clybert Quackentotter...\n \nWith a head-splitting roar, the Ravenous Bugblatter Beast of Traal charges towards you.\n \n>"
+ },
+ {
+  "cmd": "get sharp stone",
+  "tag": null,
+  "parentBefore": 157,
+  "parentBeforeName": "Beast's Outer Lair",
+  "parentAfter": 157,
+  "parentAfterName": "Beast's Outer Lair",
+  "playerId": 202,
+  "reply": "Taken.\n \nThe Beast is nearly upon you.\n \n>"
+ },
+ {
+  "cmd": "put towel on your head",
+  "tag": null,
+  "parentBefore": 157,
+  "parentBeforeName": "Beast's Outer Lair",
+  "parentAfter": 157,
+  "parentAfterName": "Beast's Outer Lair",
+  "playerId": 202,
+  "reply": "The Ravenous Bugblatter Beast of Traal is completely bewildered. It is so dim it thinks that if you can't see it, it can't see you. You have a few seconds before it realises its mistake.\n \n>"
+ },
+ {
+  "cmd": "carve my name on the memorial",
+  "tag": null,
+  "parentBefore": 157,
+  "parentBeforeName": "Beast's Outer Lair",
+  "parentAfter": 157,
+  "parentAfterName": "Beast's Outer Lair",
+  "playerId": 202,
+  "reply": "You chip away with the stone. It's not your best writing, what with your mounting sense of panic and a towel wrapped around your head. However, it suffices...\n \nJust as the Beast is trying to work out where you've disappeared to, it suddenly sees your name freshly carved on its memorial of remembrance. Mystery solved. It realises it must have already eaten you in a fit of absentmindedness. (Its mind is very very small and quite frequently absent.) It decides to give up the rest of its afternoon to the twin arts of digestion and contemplation. It settles down for a snooze.\n \n>"
+ },
+ {
+  "cmd": "remove towel",
+  "tag": null,
+  "parentBefore": 157,
+  "parentBeforeName": "Beast's Outer Lair",
+  "parentAfter": 157,
+  "parentAfterName": "Beast's Outer Lair",
+  "playerId": 202,
+  "reply": "You unwrap the towel from your head.\n \nBeast's Outer Lair\nThis is a large walled courtyard. Strewn about are a profusion of gnawed bones bleaching in the sun. In case the significance of these fails to strike you, there is also a sandstone memorial in the middle of the courtyard, on which the Beast has roughly carved the names of all its victims.\nThe Beast is in the corner, sleeping peacefully (Footnote 5).\n \n>"
+ },
+ {
+  "cmd": "drop stone",
+  "tag": null,
+  "parentBefore": 157,
+  "parentBeforeName": "Beast's Outer Lair",
+  "parentAfter": 157,
+  "parentAfterName": "Beast's Outer Lair",
+  "playerId": 202,
+  "reply": "Dropped.\n \n>"
+ },
+ {
+  "cmd": "w",
+  "tag": null,
+  "parentBefore": 157,
+  "parentBeforeName": "Beast's Outer Lair",
+  "parentAfter": 106,
+  "parentAfterName": "Lair",
+  "playerId": 202,
+  "reply": "Lair\n \n>"
+ },
+ {
+  "cmd": "sw",
+  "tag": null,
+  "parentBefore": 106,
+  "parentBeforeName": "Lair",
+  "parentAfter": 40,
+  "parentAfterName": "Inner Lair",
+  "playerId": 202,
+  "reply": "Inner Lair\nThis is the heart of the Beast's lair. The only exit leads northeast.\nThe skeleton of a dead Beasthunter lies nearby, clutching something labelled \"Nutrimat/Computer Interface.\"\n \n>"
+ },
+ {
+  "cmd": "get interface",
+  "tag": null,
+  "parentBefore": 40,
+  "parentBeforeName": "Inner Lair",
+  "parentAfter": 40,
+  "parentAfterName": "Inner Lair",
+  "playerId": 202,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 40,
+  "parentBeforeName": "Inner Lair",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "Time passes...\n \nSuddenly, a team of Fronurbdian Beasthunters charges in, intent on catching the Beast for their zoo. Mistaking you for the Beast, they fire stun guns at you, wrap you in nets, and install you in a lovely little lair in the Fronurbdi National Zoo.\n \nThree months later the error is discovered, but while your damage suit is pending in the Fronurbdian courts the planet is invaded by Bureaucratic Pirates from Pallidon IV. Impressed into bondage for a 16-year filing and sorting mission on the so-called \"basement world\" of Sporla in the Lesser Magellanic Cloud, you escape with the help of a tribe of nomadic asteroid painters.\n \nYou develop a unique talent for asteroid painting, gai"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "There's nothing you can taste, nothing you can see, nothing you can hear, nothing you can feel, nothing you can smell, you do not even know who you are.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can hear nothing, smell nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can see nothing, feel nothing, hear nothing, taste nothing, smell nothing, and are not entirely certain who you are.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can smell nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are.\n \n>"
+ },
+ {
+  "cmd": "hear the dark",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You hear the deep and distant hum of a star drive coming from far above. There is an exit to port.\n \n>"
+ },
+ {
+  "cmd": "aft",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 149,
+  "parentAfterName": "Entry Bay Number Two",
+  "playerId": 202,
+  "reply": "(We were lying about the exit to port.) You emerge from a small doorway...\n \nEntry Bay Number Two\n \n>"
+ },
+ {
+  "cmd": "aft",
+  "tag": null,
+  "parentBefore": 149,
+  "parentBeforeName": "Entry Bay Number Two",
+  "parentAfter": 93,
+  "parentAfterName": "Corridor, Fore End",
+  "playerId": 202,
+  "reply": "Corridor, Fore End\n \n>"
+ },
+ {
+  "cmd": "up",
+  "tag": null,
+  "parentBefore": 93,
+  "parentBeforeName": "Corridor, Fore End",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Bridge\nThere is a nice, hot cup of Advanced Tea Substitute here.\nLying on the deck is a plotter connected to a spare Improbability Drive. The plotter's long, dangly bit is submerged in Advanced Tea Substitute.\nThere is a spare Improbability Drive here.\nThere is a satchel here.\nThere is a handbag here.\nThere is a molecular hyperwave pincer here.\n \n>"
+ },
+ {
+  "cmd": "d",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 93,
+  "parentAfterName": "Corridor, Fore End",
+  "playerId": 202,
+  "reply": "Corridor, Fore End\n \n>"
+ },
+ {
+  "cmd": "port",
+  "tag": null,
+  "parentBefore": 93,
+  "parentBeforeName": "Corridor, Fore End",
+  "parentAfter": 138,
+  "parentAfterName": "Galley",
+  "playerId": 202,
+  "reply": "Galley\nA carton labelled \"Nutrimat/Computer Interface\" is sitting here.\n \nYou feel a wave of depression sweep over you, and you turn to see that Marvin the robot has stalked miserably into the room.\n \n>"
+ },
+ {
+  "cmd": "open panel",
+  "tag": null,
+  "parentBefore": 138,
+  "parentBeforeName": "Galley",
+  "parentAfter": 138,
+  "parentAfterName": "Galley",
+  "playerId": 202,
+  "reply": "Opening the Nutrimat reveals a circuit board.\n \nMarvin wanders off.\n \n>"
+ },
+ {
+  "cmd": "take circuit",
+  "tag": null,
+  "parentBefore": 138,
+  "parentBeforeName": "Galley",
+  "parentAfter": 138,
+  "parentAfterName": "Galley",
+  "playerId": 202,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "insert interface in nutrimat",
+  "tag": null,
+  "parentBefore": 138,
+  "parentBeforeName": "Galley",
+  "parentAfter": 138,
+  "parentAfterName": "Galley",
+  "playerId": 202,
+  "reply": "Done.\n \n>"
+ },
+ {
+  "cmd": "close panel",
+  "tag": null,
+  "parentBefore": 138,
+  "parentBeforeName": "Galley",
+  "parentAfter": 138,
+  "parentAfterName": "Galley",
+  "playerId": 202,
+  "reply": "Okay, the Nutrimat is now closed.\n \n>"
+ },
+ {
+  "cmd": "touch pad",
+  "tag": null,
+  "parentBefore": 138,
+  "parentBeforeName": "Galley",
+  "parentAfter": 138,
+  "parentAfterName": "Galley",
+  "playerId": 202,
+  "reply": "The Nutrimat is puzzled that you want something made by pouring boiling water on dead leaves and squirting stuff from a cow in it, and says that it will need some help from Eddie (the shipboard computer).\n \nThe nutrimat begins to whirr.\n \n>"
+ },
+ {
+  "cmd": "starboard",
+  "tag": null,
+  "parentBefore": 138,
+  "parentBeforeName": "Galley",
+  "parentAfter": 93,
+  "parentAfterName": "Corridor, Fore End",
+  "playerId": 202,
+  "reply": "Corridor, Fore End\n \n>"
+ },
+ {
+  "cmd": "up",
+  "tag": null,
+  "parentBefore": 93,
+  "parentBeforeName": "Corridor, Fore End",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Bridge\nThere is a nice, hot cup of Advanced Tea Substitute here.\nLying on the deck is a plotter connected to a spare Improbability Drive. The plotter's long, dangly bit is submerged in Advanced Tea Substitute.\nThere is a spare Improbability Drive here.\nThere is a satchel here.\nThere is a handbag here.\nThere is a molecular hyperwave pincer here.\n \nYou feel a wave of depression sweep over you, and you turn to see that Marvin the robot has stalked miserably into the room.\n \n>"
+ },
+ {
+  "cmd": "put large plug in large receptacle",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Plugged.\n \nMarvin wanders off.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Time passes...\n \n\"Announcement, announcement. This is Eddie (the shipboard computer). Emergency situation! Nuclear missiles have just been launched at us from the approaching planet, which my data banks indicate is the legendary lost planet of Magrathea. I cannot perform evasive maneuvers because all circuits are currently engaged by the Nutrimat. The missiles will turn this ship into a huge atomic fireball in approximately eight turns. By the way, somebody didn't finish their spinach at dinner.\"\n \n>"
+ },
+ {
+  "cmd": "turn on drive",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "As you flip the switch, sparks fly from the large receptacle. \"My new control console!\" wails Eddie (the shipboard computer). \"This is the thanks I get?\"\n \nThe universe goes crazy for a moment.\n \n\"Announcement, announcement. This is Eddie (the shipboard computer). The missiles have turned into a sperm whale at an improbability factor of 2 to the 39,745th power to 1 against. The whale is currently plummeting toward the legendary lost planet of Magrathea. I hope this will teach you to listen to me when I say that legendary lost planets can be dangerous. I am proceeding with the preset landing instructions.\"\n \nFord, Zaphod, and Trillian saunter by on their way back to the sauna. \"Good work, kid"
+ },
+ {
+  "cmd": "d",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 93,
+  "parentAfterName": "Corridor, Fore End",
+  "playerId": 202,
+  "reply": "Corridor, Fore End\n \n>"
+ },
+ {
+  "cmd": "port",
+  "tag": null,
+  "parentBefore": 93,
+  "parentBeforeName": "Corridor, Fore End",
+  "parentAfter": 138,
+  "parentAfterName": "Galley",
+  "playerId": 202,
+  "reply": "Galley\nA carton labelled \"Nutrimat/Computer Interface\" is sitting here.\nIt looks like the slot contains:\n  tea\n \n>"
+ },
+ {
+  "cmd": "get tea",
+  "tag": null,
+  "parentBefore": 138,
+  "parentBeforeName": "Galley",
+  "parentAfter": 138,
+  "parentAfterName": "Galley",
+  "playerId": 202,
+  "reply": "no tea: Dropped.\n \n>"
+ },
+ {
+  "cmd": "starboard",
+  "tag": null,
+  "parentBefore": 138,
+  "parentBeforeName": "Galley",
+  "parentAfter": 93,
+  "parentAfterName": "Corridor, Fore End",
+  "playerId": 202,
+  "reply": "Corridor, Fore End\n \n>"
+ },
+ {
+  "cmd": "up",
+  "tag": null,
+  "parentBefore": 93,
+  "parentBeforeName": "Corridor, Fore End",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Bridge\nThere is a nice, hot cup of Advanced Tea Substitute here.\nLying on the deck is a plotter connected to a spare Improbability Drive. The plotter's long, dangly bit is submerged in Advanced Tea Substitute.\nThere is a spare Improbability Drive here.\nThere is a satchel here.\nThere is a handbag here.\nThere is a molecular hyperwave pincer here.\n \n>"
+ },
+ {
+  "cmd": "drop tea",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "no tea: Taken.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Time passes...\n \nYou feel a wave of depression sweep over you, and you turn to see that Marvin the robot has stalked miserably into the room.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Time passes...\n \n\"Announcement, announcement. This is Eddie (the shipboard computer). We have just landed on the legendary lost planet of Magrathea. I don't want anyone going outside until I've checked the atmosphere, climatic conditions, existence of dangerous wildlife, airborne diseases, volcanic activity, presence of real estate agents, and more than eight thousand other possible dangers. This routine check will take 14.9 years. And don't even think about leaving until I finish, because I'm jamming the hatch.\"\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Time passes...\n \n>"
+ },
+ {
+  "cmd": "remove bit",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "The long, dangly bit is no longer suspended in Advanced Tea Substitute.\n \n>"
+ },
+ {
+  "cmd": "put bit in tea",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Done.\n \n>"
+ },
+ {
+  "cmd": "turn on drive",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "A mist spins round your head. You fall into what seems like a bottomless pit. Suddenly, you hit the bottom so hard that you wish it had been bottomless...\n \nDark\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can hear nothing, smell nothing, taste nothing, feel nothing, and are not even certain who you are.\n \nIt is of course well known that careless talk costs lives, but the full scale of the problem is not always appreciated. For instance, at the exact moment you said \"put bit in tea\" a freak wormhole opened in the fabric of the space-time continuum and carried your words far far back in time across almost infinite reaches of space to a distant galaxy where strange and warlike beings were poised on the brink of frightful interstellar battle.\n \nThe two opposing leaders were meeting for the last time. A dreadful silence fell across the conference table as the commander of the Vl'Hurgs, resplen"
+ },
+ {
+  "cmd": "touch",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "(darkness)\nThere's nothing you can taste, nothing you can see, nothing you can hear, nothing you can smell, you do not even know who you are.\n \n>"
+ },
+ {
+  "cmd": "touch",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "(darkness)\nIt does feel a bit cold and wet and squishy. There seems to be some liquid at your fingertips.\n \n>"
+ },
+ {
+  "cmd": "drink liquid",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 70,
+  "parentAfterName": "Living Room",
+  "playerId": 202,
+  "reply": "It tastes just like wine. In fact, you realise with growing embarrassment that your hand is sitting in a glass of white wine.\n \nYou're at a party being given by a distant and incredibly boring acquaintance. Among the people you've been introduced to are a shy, mousy fellow from the West Country named Arthur, and a flamboyant guy named Phil. You've had too many drinks already, and the room is beginning to buzz...\n \nLiving Room\nYou are in a large Living Room. There is a party going on. Other rooms lie to the west and southwest, and the apartment's front door is south of here.\nPhil is here.\nArthur Dent is here.\nYou notice the hostess approaching, but, using several mingling couples as cover, yo"
+ },
+ {
+  "cmd": "examine arthur",
+  "tag": null,
+  "parentBefore": 70,
+  "parentBeforeName": "Living Room",
+  "parentAfter": 70,
+  "parentAfterName": "Living Room",
+  "playerId": 202,
+  "reply": "Arthur seems nice and well meaning, but also terribly shy. He has tried to start a conversation with you several times, but still hasn't gotten past \"Hello.\" He has an enormous, unsightly ball of fluff on his jacket.\n \nArthur walks up and says, \"Hello, again.\" He looks shy, embarrassed and stuck for anything else to say, and quickly walks to the other end of the room.\n \n>"
+ },
+ {
+  "cmd": "drop wine",
+  "tag": null,
+  "parentBefore": 70,
+  "parentBeforeName": "Living Room",
+  "parentAfter": 70,
+  "parentAfterName": "Living Room",
+  "playerId": 202,
+  "reply": "Dropped.\n \n>"
+ },
+ {
+  "cmd": "get fluff",
+  "tag": null,
+  "parentBefore": 70,
+  "parentBeforeName": "Living Room",
+  "parentAfter": 70,
+  "parentAfterName": "Living Room",
+  "playerId": 202,
+  "reply": "You remove the jacket fluff, improving Arthur's appearance greatly. He is clearly touched, and starts happily to chat away to you. You discover that he is only slightly more interesting to talk to than an averagely interesting wall.\n \n>"
+ },
+ {
+  "cmd": "open bag",
+  "tag": null,
+  "parentBefore": 70,
+  "parentBeforeName": "Living Room",
+  "parentAfter": 70,
+  "parentAfterName": "Living Room",
+  "playerId": 202,
+  "reply": "Opening the handbag reveals a pair of tweezers.\n \nThe hostess, whom you've been avoiding all evening, scurries up with your glass of white wine. \"Oh, hello Tricia, how lovely to see you, I think you dropped this, dear.\"\n \nArthur tries, unsuccessfully, to interest you by talking about how badly Americans make tea.\n \n>"
+ },
+ {
+  "cmd": "put fluff in bag",
+  "tag": null,
+  "parentBefore": 70,
+  "parentBeforeName": "Living Room",
+  "parentAfter": 70,
+  "parentAfterName": "Living Room",
+  "playerId": 202,
+  "reply": "Done.\n \n\"Tricia dear,\" says the hostess insistently, \"don't you want your glass of white wine?\"\n \nArthur tries, unsuccessfully, to interest you by talking about a recent visit to Tiverton.\n \n>"
+ },
+ {
+  "cmd": "get wine",
+  "tag": null,
+  "parentBefore": 70,
+  "parentBeforeName": "Living Room",
+  "parentAfter": 70,
+  "parentAfterName": "Living Room",
+  "playerId": 202,
+  "reply": "Taken.\n \nArthur tries, unsuccessfully, to interest you by talking about a recent visit to Tiverton.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 70,
+  "parentBeforeName": "Living Room",
+  "parentAfter": 70,
+  "parentAfterName": "Living Room",
+  "playerId": 202,
+  "reply": "Time passes...\n \nArthur tries, unsuccessfully, to interest you by talking about newts he has known.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 70,
+  "parentBeforeName": "Living Room",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "Time passes...\n \nPhil comes up and grips your shoulder. \"Hey babe, this guy boring you? Why not come with me instead? I'm from a different planet.\" He takes you out to the parking lot, where his flashy interorbital ion scooter is parked between two Volkswagens. After mounting it, the scooter accelerates at such a great speed that you black out almost immediately. Everything becomes...\n \nDark\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can't hear anything, see anything, smell anything, feel anything, or taste anything, and do not even know where you are or who you are or how you got there.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can hear nothing, smell nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can hear nothing, smell nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can smell nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are.\n \n>"
+ },
+ {
+  "cmd": "hear",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "(darkness)\nYou hear the deep and distant hum of a star drive coming from far above. There is an exit to port.\n \n>"
+ },
+ {
+  "cmd": "aft",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 149,
+  "parentAfterName": "Entry Bay Number Two",
+  "playerId": 202,
+  "reply": "(We were lying about the exit to port.) You emerge from a small doorway...\n \nEntry Bay Number Two\n \n>"
+ },
+ {
+  "cmd": "aft",
+  "tag": null,
+  "parentBefore": 149,
+  "parentBeforeName": "Entry Bay Number Two",
+  "parentAfter": 93,
+  "parentAfterName": "Corridor, Fore End",
+  "playerId": 202,
+  "reply": "Corridor, Fore End\n \n>"
+ },
+ {
+  "cmd": "up",
+  "tag": null,
+  "parentBefore": 93,
+  "parentBeforeName": "Corridor, Fore End",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Bridge\nThere is a handbag here.\nThere is a nice, hot cup of tea here.\nLying on the deck is a plotter connected to a spare Improbability Drive. The plotter's long, dangly bit is submerged in tea.\nThere is a spare Improbability Drive here.\nThere is a nice, hot cup of Advanced Tea Substitute here.\nThere is a satchel here.\nThere is a molecular hyperwave pincer here.\n \n>"
+ },
+ {
+  "cmd": "open handbag",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Opening the handbag reveals a pair of tweezers, and jacket fluff.\n \n>"
+ },
+ {
+  "cmd": "get tweezers",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "get fluff",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Taken.\n \n>"
+ },
+ {
+  "cmd": "put all in thing",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "jacket fluff: Done.\npair of tweezers: Done.\ncircuit board: Done.\nnumber twelve asteroid paint chipper: Done.\ntowel: Done.\nyour gown: You can't put your gown in the thing your aunt gave you which you don't know what it is when the thing your aunt gave you which you don't know what it is is already in your gown!\nbabel fish: You'll have to remove it first.\n \n>"
+ },
+ {
+  "cmd": "turn on drive",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You are disoriented. Blackness swims toward you like a shoal of eels who have just seen something that eels like a lot...\n \nDark\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can't hear anything, see anything, feel anything, or taste anything, and do not even know where you are or who you are or how you got there.\n \n>"
+ },
+ {
+  "cmd": "touch",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "(darkness)\nThere's nothing you can taste, nothing you can hear, nothing you can feel, nothing you can smell, you do not even know who you are.\n \n>"
+ },
+ {
+  "cmd": "touch",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "(darkness)\nYou can't hear anything, see anything, smell anything, or taste anything, and do not even know where you are or who you are or how you got there.\n \n>"
+ },
+ {
+  "cmd": "touch",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "(darkness)\nIt does feel a bit cold and wet and squishy. There seems to be some liquid at your fingertips.\n \n>"
+ },
+ {
+  "cmd": "touch",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "(darkness)\nIt does feel a bit cold and wet and squishy. There seems to be some liquid at your fingertips.\n \n>"
+ },
+ {
+  "cmd": "drink liquid",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "It tastes just like wine. In fact, you realise with growing embarrassment that your hand is sitting in a glass of white wine.\n \nYou're at a party being given by a distant and incredibly boring acquaintance. Among the people you've been introduced to are a shy, mousy fellow from the West Country named Arthur, and a flamboyant guy named Phil. You've had too many drinks already, and the room is beginning to buzz...\n \nLiving Room\nYou are in a large Living Room. There is a party going on. Other rooms lie to the west and southwest, and the apartment's front door is south of here.\nPhil is here.\nArthur Dent is here.\n \nThe hostess, a lethally dull woman, corners you and bores you to death. Literally."
+ },
+ {
+  "cmd": "get flowerpot",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can't see any flowerpot here!\n \n>"
+ },
+ {
+  "cmd": "put it in thing",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "I don't see what you're referring to.\n \n>"
+ },
+ {
+  "cmd": "examine thumb",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can't see any thumb here!\n \n>"
+ },
+ {
+  "cmd": "press red button",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can't see any red button here!\n \n>"
+ },
+ {
+  "cmd": "give thumb to robot",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can't see that here!\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "There's nothing you can taste, nothing you can see, nothing you can hear, nothing you can feel, nothing you can smell, you do not even know who you are.\n \n>"
+ },
+ {
+  "cmd": "show warranty",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "What do you want to show the warranty to?\n \n>"
+ },
+ {
+  "cmd": "press green button",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can't see any green button here!\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "There's nothing you can taste, nothing you can see, nothing you can hear, nothing you can feel, nothing you can smell, you do not even know who you are.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can't hear anything, see anything, smell anything, feel anything, or taste anything, and do not even know where you are or who you are or how you got there.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "There's nothing you can taste, nothing you can see, nothing you can feel, nothing you can smell, you do not even know who you are.\n \n>"
+ },
+ {
+  "cmd": "z",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "You can smell nothing, taste nothing, see nothing, feel nothing, and are not even certain who you are.\n \n>"
+ },
+ {
+  "cmd": "hear",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "(darkness)\nYou hear the deep and distant hum of a star drive coming from far above. There is an exit to port.\n \n>"
+ },
+ {
+  "cmd": "aft",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 149,
+  "parentAfterName": "Entry Bay Number Two",
+  "playerId": 202,
+  "reply": "(We were lying about the exit to port.) You emerge from a small doorway...\n \nEntry Bay Number Two\n \n>"
+ },
+ {
+  "cmd": "aft",
+  "tag": null,
+  "parentBefore": 149,
+  "parentBeforeName": "Entry Bay Number Two",
+  "parentAfter": 93,
+  "parentAfterName": "Corridor, Fore End",
+  "playerId": 202,
+  "reply": "Corridor, Fore End\n \n>"
+ },
+ {
+  "cmd": "up",
+  "tag": null,
+  "parentBefore": 93,
+  "parentBeforeName": "Corridor, Fore End",
+  "parentAfter": 74,
+  "parentAfterName": "Bridge",
+  "playerId": 202,
+  "reply": "Bridge\nThere is a handbag here.\nThere is a nice, hot cup of tea here.\nLying on the deck is a plotter connected to a spare Improbability Drive. The plotter's long, dangly bit is submerged in tea.\nThere is a spare Improbability Drive here.\nThere is a nice, hot cup of Advanced Tea Substitute here.\nThere is a satchel here.\nThere is a molecular hyperwave pincer here.\n \n>"
+ },
+ {
+  "cmd": "turn on drive",
+  "tag": null,
+  "parentBefore": 74,
+  "parentBeforeName": "Bridge",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "A mist spins round your head. You fall into what seems like a bottomless pit. Suddenly, you hit the bottom so hard that you wish it had been bottomless...\n \nDark\n \n>"
+ },
+ {
+  "cmd": "see",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "(darkness)\nThere's nothing you can taste, nothing you can see, nothing you can hear, nothing you can feel, you do not even know who you are.\n \n>"
+ },
+ {
+  "cmd": "see",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "(darkness)\nYou can't hear anything, smell anything, feel anything, or taste anything, and do not even know where you are or who you are or how you got there.\n \n>"
+ },
+ {
+  "cmd": "see",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "(darkness)\nYou see a painfully bright light that stabs at the front of your eyes.\n \n>"
+ },
+ {
+  "cmd": "see",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 125,
+  "parentAfterName": "Dark",
+  "playerId": 202,
+  "reply": "(darkness)\nYou see a painfully bright light that stabs at the front of your eyes.\n \n>"
+ },
+ {
+  "cmd": "examine light",
+  "tag": null,
+  "parentBefore": 125,
+  "parentBeforeName": "Dark",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "The light resolves itself into the bright yellow Sun of Earth.\n \nYou are hurrying up a country lane. The sky is light and clear, but you keep glancing at it with apprehension because you know that it will shortly be torn apart by Vogon ships, and that the hills and trees around you will just burn up and blow away, and you hope there's time for a quick drink beforehand.\n \nYou want to hitch a ride aboard the Vogon fleet, but are anxious because it's so long since you were through a matter transference beam.\n \nCountry Lane\nThe road runs from Arthur's home, to the north, toward the village Pub, to the west.\n \n>"
+ },
+ {
+  "cmd": "look under seat",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any seat here!\n \n>"
+ },
+ {
+  "cmd": "get in seat",
+  "tag": "probe:seat",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any seat here!\n \n>"
+ },
+ {
+  "cmd": "get out of seat",
+  "tag": "probe:seat",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any of seat here!\n \n>"
+ },
+ {
+  "cmd": "enter seat",
+  "tag": "probe:seat",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any seat here!\n \n>"
+ },
+ {
+  "cmd": "exit",
+  "tag": "probe:seat",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "Did you have any particular direction in mind?\n \n>"
+ },
+ {
+  "cmd": "sit on seat",
+  "tag": "probe:seat",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any seat here!\n \n>"
+ },
+ {
+  "cmd": "stand up",
+  "tag": "probe:seat",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You are already standing.\n \n>"
+ },
+ {
+  "cmd": "board seat",
+  "tag": "probe:seat",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any seat here!\n \n>"
+ },
+ {
+  "cmd": "get out of seat",
+  "tag": "probe:seat",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any of seat here!\n \n>"
+ },
+ {
+  "cmd": "climb on seat",
+  "tag": "probe:seat",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any seat here!\n \n>"
+ },
+ {
+  "cmd": "get off seat",
+  "tag": "probe:seat",
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see that here!\n \n>"
+ },
+ {
+  "cmd": "LOOK",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "Country Lane\nThe road runs from Arthur's home, to the north, toward the village Pub, to the west.\n \n>"
+ },
+ {
+  "cmd": "ENTER SEAT",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any seat here!\n \n>"
+ },
+ {
+  "cmd": "EXIT",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "Did you have any particular direction in mind?\n \n>"
+ },
+ {
+  "cmd": "GET OUT OF SEAT",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any of seat here!\n \n>"
+ },
+ {
+  "cmd": "GET IN SEAT",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any seat here!\n \n>"
+ },
+ {
+  "cmd": "GET OUT OF SEAT",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any of seat here!\n \n>"
+ },
+ {
+  "cmd": "BOARD SEAT",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any seat here!\n \n>"
+ },
+ {
+  "cmd": "GET OUT OF SEAT",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any of seat here!\n \n>"
+ },
+ {
+  "cmd": "SIT IN SEAT",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any seat here!\n \n>"
+ },
+ {
+  "cmd": "STAND UP",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You are already standing.\n \n>"
+ },
+ {
+  "cmd": "SIT ON SEAT",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any seat here!\n \n>"
+ },
+ {
+  "cmd": "STAND UP",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You are already standing.\n \n>"
+ },
+ {
+  "cmd": "CLIMB IN SEAT",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any seat here!\n \n>"
+ },
+ {
+  "cmd": "LEAVE SEAT",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "You can't see any seat here!\n \n>"
+ },
+ {
+  "cmd": "LOOK",
+  "tag": null,
+  "parentBefore": 133,
+  "parentBeforeName": "Country Lane",
+  "parentAfter": 133,
+  "parentAfterName": "Country Lane",
+  "playerId": 202,
+  "reply": "Country Lane\nThe road runs from Arthur's home, to the north, toward the village Pub, to the west.\n \n>"
+ }
+]
