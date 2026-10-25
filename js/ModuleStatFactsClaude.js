@@ -121,7 +121,8 @@ var ModuleStatFactsClaude = {
         // transparent 23 = source TRANSBIT exact; native (grok1 #5073 grok1/transp/wishbringer.json): locked display case 209 "contains a sculpture", glass case 235 T=1 at the same pc; closed metal can 229 and envelope 43 (no bit) "is closed".
         // talkable 18 = ACTORBIT exact 21/21; native (grok1 #5181 talk2/cache/run-wishbringer-*): TALK TO / ASK Ms. Voss 193 reads 18=1 and answers; envelope 43 reads 0 and refuses; Mr. Crisp, gravedigger, old woman, Alexis, vulture, troll, platypus and King Anatinus answer natively (actor routines intercept before the bit test).
         // moved 28 = TOUCHBIT (native, grok1 #5208 grok1/moved/packet-*.json, source bit read clear -> set on TAKE): envelope 43 and old bone 117; little mailbox 4 stays clear.
-        "attributeMap": { "container": 4, "open": 25, "isOpen": 25, "animate": 18, "supporter": 27, "wearable": 22, "door": 2, "transparent": 23, "talkable": 18, "moved": 28 }
+        // locked 14 = LOCKEDBIT, runtime-mutable; 10 carriers, none a room (grok1 #5228 grok1/probe5/run-wbj-*): OPEN library door 40 and display case 209 read 14=1 ("It's locked."); refrigerator 82 and mailbox 4 read 0.
+        "attributeMap": { "container": 4, "open": 25, "isOpen": 25, "animate": 18, "supporter": 27, "wearable": 22, "door": 2, "transparent": 23, "talkable": 18, "moved": 28, "locked": 14 }
     },
     // Zork III (ZIL): OPENBIT 12: OPEN sets 12 on secret door, stone door, wooden door; CLOSE clears (wooden door). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     // WEARBIT 4 original scene (2026-10-11-zil-walk-n4.json): TAKE tests 4 TRUE on golden amulet 39, golden ring 82; FALSE on
@@ -293,7 +294,8 @@ var ModuleStatFactsClaude = {
         // climbable 26 = CLIMBBIT exact; single census carrier stairs 168 with bit read 26=1 (grok1 #5081 grok1/climb/enchanter.json); at step 28 climb walks UP generically, so the move is not object-specific; CLIMB LANTERN "Bizarre!"
         // moved 15 = TOUCHBIT (native, codex #5183 resume-20261020/moved/packet-enchanter.json): TAKE bread 41 and jug 19 set bit 15 (clear -> set); object 7 stays clear.
         // transparent 10 = source TRANSBIT exact (16 objects, fp 0 fn 0; historicalsource 472c3b9); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
-        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8, "door": 24, "enterable": 29, "climbable": 26, "moved": 15, "transparent": 10 },
+        // concealed 16 = INVISIBLE exact (native, codex #5240 resume-20261020/concealed/packet-enchanter.json): Flathead portrait 179 and Frobozz portrait 167 read 16=1 and cannot be seen; EXAMINE PORTRAITS 106 (16 clear, visible) identifies both and clears 16; named EXAMINE then succeeds.
+        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8, "door": 24, "enterable": 29, "climbable": 26, "moved": 15, "transparent": 10, "concealed": 16 },
         "openCapability": { "all": ["container"], "none": ["supporter"] },
     },
     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
@@ -305,7 +307,8 @@ var ModuleStatFactsClaude = {
         // climbable 16 = CLIMBBIT exact; native bare (grok1 #5082): CLIMB ROPE 32 contextual ("while you are holding the rope"), bit read 1; knapsack (bit 0) "You can't climb that!". Fatal climbs offered per operator ruling 2026-10-24.
         // door 9 = source DOORBIT exact (7 owners); native (codex #5132 resume/door-infidel-qualified.json, digest 91f78d4b): annex door 185 OPEN sets open 25 (fresh 208-command prefix), inner door 162 toggles (grok2 packet); pickaxe 37 (bit 9 false) refused.
         // moved 29 = TOUCHBIT (native, codex #5183 resume-20261020/moved/packet-infidel.json): TAKE pickaxe 37 and shovel 33 set bit 29; object 38 stays clear.
-        "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25, "edible": 7, "enterable": 14, "climbable": 16, "door": 9, "moved": 29 },
+        // concealed 30 = INVISIBLE exact (native, codex #5241 resume-20261020/concealed/packet-infidel.json): broken lock 40 (Tent) and opening 52 read 30=1 and cannot be seen; SMASH PADLOCK WITH PICKAXE / DIG clears 30 and EXAMINE succeeds; held pickaxe 37 visible with 30 clear.
+        "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25, "edible": 7, "enterable": 14, "climbable": 16, "door": 9, "moved": 29, "concealed": 30 },
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         // WEARBIT state22: native knapsack31/ring2 worn positives, shovel33 refusal; Grok4127 proposal independently replayed by Codex October20.
         "wornAttribute": 22
@@ -368,6 +371,8 @@ var ModuleStatFactsClaude = {
         // door 27 = source DOORBIT exact; native (codex door-suspect-native.json): east/west entry hall doors 241/240 toggle 13; ribbon refuses.
         // enterable 28 = source VEHBIT exact 9/9; native (grok1 #5014 grok1/enter/suspect.json): ENTER CHAIR -> player in chair 153, SIT ON WINDOW SEAT -> 233; ENTER BOOKCASE refused.
         // transparent 7 = source TRANSBIT exact (10 objects, fp 0 fn 0; historicalsource a18e100); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
+        // wornAttribute 5 = WEARBIT as worn state (grok1 #5218 run-suspect-*): TAKE OFF western mask 38 and EXAMINE gunbelt 96 read 5=1; no generic WEARBIT reader exists, so 2 carriers + exact census stand in for the negative.
+        "wornAttribute": 5,
         "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15, "door": 27, "transparent": 7 },
         "inventoryHiddenAttribute": 19,
         "inventoryHiddenPreservesWorn": true
@@ -455,7 +460,8 @@ var ModuleStatFactsClaude = {
         // door 45 = source DOORBIT exact; native (codex door-border-qualified.json): compartment 290 and lavatory 328 OPEN/CLOSE reverse OPENBIT 34; front-facing seat refuses ("Don't even consider it").
         // transparent 32 = source TRANSBIT exact (5 objects, fp 0 fn 0; historicalsource 5c80126); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
         // moved 37 = TOUCHBIT (native, grok1 #5210 grok1/moved/packet-*.json, clear -> set on TAKE): white down parka 244 and knapsack 306 (separate takes); oil can 4 stays clear.
-        "attributeMap": { "container": 43, "supporter": 36, "open": 34, "isOpen": 34, "animate": 47, "wearable": 41, "door": 45, "transparent": 32, "moved": 37 },
+        // scenery 29 = NDESCBIT; census 72 carriers, 0 takeable, none a room (grok1 #5217/#5227 grok1/probe5/run-bzs-*, G1PLAYER=30): LOOK in Your Compartment reads 29=1 on luggage rack 38, rear seat 218 and front seat 250 (not listed); camera bag 337 reads 0 (listed).
+        "attributeMap": { "container": 43, "supporter": 36, "open": 34, "isOpen": 34, "animate": 47, "wearable": 41, "door": 45, "transparent": 32, "moved": 37, "scenery": 29 },
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
         // Identity food, no FOODBIT (codex border-food-evidence.json, design border-food-consumer-compared-proposal.md): chapter 3
         // held soda 200 and pretzel 205 each succeed on native EAT and DRINK (source FOOD-F handler); held cigarette 101 refuses
@@ -527,7 +533,8 @@ var ModuleStatFactsClaude = {
         // transparent 33 = source TRANSBIT exact (7 objects, fp 0 fn 0; historicalsource 1288855); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
         // door 43 = source DOORBIT exact (4 carriers: bedroom, screening, corridor, inner door; none a room); native (grok1 #5199 probe4/cache19, G1PLAYER=19): bedroom door 205 CLOSE/OPEN read 43=1 and toggle OPENBIT 39; screening door 180 refuses natively.
         // moved 20 = TOUCHBIT (native, grok1 #5208 grok1/moved/packet-*.json, source bit read clear -> set on TAKE): toothbrush 31, screwdriver 105, junk mail 198 (separate takes); doormat 101 stays clear. Gown/analgesic take via own routines (exceptions).
-        "attributeMap": { "open": 39, "isOpen": 39, "animate": 42, "talkable": 42, "container": 40, "supporter": 23, "wearable": 25, "enterable": 28, "transparent": 33, "door": 43, "moved": 20 },
+        // concealed 21 = INVISIBLE (native, codex #5245 resume-20261020/concealed/packet-hitchhik.json): bulldozer 228 reads 21=1 and the parser refuses it until OPEN CURTAINS clears 21 (then EXAMINE describes it); conversation 169 hidden until WAIT (Ford decides) clears 21 and LISTEN resolves it; curtains 63 visible with 21 clear. Parser visibility only.
+        "attributeMap": { "open": 39, "isOpen": 39, "animate": 42, "talkable": 42, "container": 40, "supporter": 23, "wearable": 25, "enterable": 28, "transparent": 33, "door": 43, "moved": 20, "concealed": 21 },
         "wornAttribute": 24,
         // Native i (walkthrough step 60) tests bit44 TRUE on guarantee 18, green 128 / red 197 button inside the Sub-Etha
         // device 211 and omits them; FALSE on satchel, gown, fluff, thing, device, all printed. Source NDESCBIT 44 exact (77/77).
@@ -594,7 +601,9 @@ var ModuleStatFactsClaude = {
         // open 25 = OPENBIT (tp19 fp0 fn1, under-report only); native (grok1 #5090 grok1/open/hollywood-open.json): mailbox 225 reads 25=1 and CLOSE clears it; oak door 117 reads 0 while locked; doorbell negative.
         // isOpen 25 = same OPENBIT state.
         // moved 28 = TOUCHBIT (native, codex #5183 resume-20261020/moved/packet-hollywoodhijinx.json): TAKE paper 63 and card 113 set bit 28; object 44 stays clear.
-        "attributeMap": { "wearable": 22, "animate": 18, "supporter": 27, "door": 10, "on": 20, "scenery": 16, "open": 25, "isOpen": 25, "moved": 28 },
+        // talkable 18 = ACTORBIT (= animate), census exactly Aunt Hildegarde 126 + Cousin Herman 163 (+ player/globals); native (grok1 #5221 grok1/probe5/run-hollywood-*, vault route hw-vault.json): HELLO HERMAN / HELLO AUNT / AUNT, HELLO read 18=1; buzz saw 152 reads 0.
+        // concealed 29 = INVISIBLE (native, codex #5244 resume-20261020/concealed/packet-hollywood.json): safe 203 and card 46 (Outside Parlor) read 29=1 and EXAMINE is refused; MOVE PORTRAIT clears 29 on both and EXAMINE then succeeds; portrait 65 visible with 29 clear.
+        "attributeMap": { "wearable": 22, "animate": 18, "supporter": 27, "door": 10, "on": 20, "scenery": 16, "open": 25, "isOpen": 25, "moved": 28, "talkable": 18, "concealed": 29 },
         // WORNBIT state14: independent native ring127/skis188 wear+remove, flashlight123 refused; Grok4120 proposal, Codex October20 audit.
         "wornAttribute": 14
     },
@@ -1056,7 +1065,8 @@ var ModuleStatFactsClaude = {
             // switchable (grok1 #5162 grok1/switch2): brass lantern 164 TURN ON/OFF toggles ONBIT 20 (LIGHTBIT 31 read 1 each time); candles 147 TURN OFF clears 20 natively (TURN ON asks for a match: native reply); rope 129 (31=0) "You can't turn that on." Torch 104 excluded: it cannot be put out.
             "activationState": { "onObjects": [164, 147] },
         // moved 3 = TOUCHBIT (native, codex #5178 resume-20261020/moved/packet-zork1.json): TAKE leaflet 161 and egg 87 each set exactly bit 3; door 181 stays clear. Also set on opened containers (TOUCHBIT, not custody).
-            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "talkable": 30, "edible": 21, "light": 31, "door": 23, "scenery": 14, "climbable": 24, "transparent": 12, "moved": 3 },
+        // concealed 7 = INVISIBLE (native, codex #5239 resume-20261020/concealed/packet-zork1.json): grating 174 (Clearing) and trapdoor 183 (Living Room) read 7=1 and EXAMINE cannot see them; MOVE LEAVES / MOVE RUG clears 7 and EXAMINE then succeeds; mailbox 160 visible with 7 clear.
+            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "talkable": 30, "edible": 21, "light": 31, "door": 23, "scenery": 14, "climbable": 24, "transparent": 12, "moved": 3, "concealed": 7 },
         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
         // (source: THIEF (1dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
@@ -1145,7 +1155,8 @@ var ModuleStatFactsClaude = {
         // scan (191 objects, ends at first property 2527): bit 31 carriers = {63} -> rule-5 single-owner exception + source 1/1.
         // Grok4125 independently audited: native first33/second31 on, third32 off/on; state only, no animate or room rule.
         // moved 12 = TOUCHBIT (native, grok1 #5208 grok1/moved/packet-*.json, source bit read clear -> set on TAKE): robot custody: SENSA, TAKE RAMP / CONTAINER AND GRASPER set 12 on 64, 63 and 76 (parents move to Sensa 152); panel 80 stays clear. No radial effect (take verification only).
-        "attributeMap": { "wearable": 31, "on": 2, "moved": 12 },
+        // concealed 13 = INVISIBLE (native, codex #5246 resume-20261020/concealed/packet-suspended.json, robot-specific): Sensa (Gamma) cannot detect flowswitch 61 until EXAMINE CABINET clears 13; Waldo (Sub Supply) cannot detect crushed box 24 until MOVE BROKEN SHELF clears 13; cabinet 62 visible with 13 clear.
+        "attributeMap": { "wearable": 31, "on": 2, "moved": 12, "concealed": 13 },
         // WEARBIT 15 = worn (grok1 2026-10-17, route suspW): grasper 63:15 FALSE before 'waldo,install grasper', TRUE after; 'waldo,detach grasper'
         // tests 63:15 TRUE x3 ("It's been removed."); 'waldo,remove container' tests basket 76:15 FALSE (agent-tools/g1-suE.json). Single owner:
         // the only runtime FSET is V-WEAR (verbs.zil:1745), gated on WEARABLEBIT = SURGERY-HAND only; the bounded boot scan carrier {191} is
