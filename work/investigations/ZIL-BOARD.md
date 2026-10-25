@@ -73,3 +73,10 @@ Read this board before starting work; post a bus message to claude when a packet
   wearable, light; audit-r29/verbs.out). The radial is protected by ActionSynth.trustworthyAttrs (SEMANTIC_FLAGS), so
   the composed menu is correct (examine|open|close). Risk only for a future direct attrs consumer. Candidate: extend
   fail-closed to those keys after a consumer inventory (full procedure).
+
+## Open design items (need the full procedure before code)
+- Fixed-object switches: switch forms are inventory-only (AttributeSchema.activationForms), so room-fixed toggles get no
+  Turn on/off (e.g. the Witness radio 162 toggles natively; its state is not an attribute; grok1 #5186).
+- Locked phase 2: an object "Locked" status (codex notes resume/locked-phase2-current-fit-notes.md).
+- PROFILE bits leaking into ZIL attrs for unmapped keys (hygiene, no visible effect today).
+- world-map-ui 6 pre-existing failures (Zork I reload/travel), identical at HEAD: investigate.
