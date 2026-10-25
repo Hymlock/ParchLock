@@ -16,9 +16,13 @@ let pass = 0, fail = 0; const check = (name, ok, info) => { if (ok) pass++; else
   try {
     await cmd('no');
     let k = await cmds('knapsack', 'inventory');
-    check('worn knapsack (panel) offers open + close', !!(k && k.includes('open knapsack') && k.includes('close knapsack')), k);
+    check('closed worn knapsack offers Open and not Close', !!(k && k.includes('open knapsack') && !k.includes('close knapsack')), k);
     check('worn knapsack (panel) still offers remove', !!(k && k.includes('remove knapsack')), k);
+    check('worn knapsack retains Search and Empty', !!(k && k.includes('search knapsack') && k.includes('empty knapsack')), k);
     await cmd('open knapsack');
+    k = await cmds('knapsack', 'inventory');
+    check('open worn knapsack offers Close and not Open', !!(k && k.includes('close knapsack') && !k.includes('open knapsack')), k);
+    check('open worn knapsack retains Remove', !!(k && k.includes('remove knapsack')), k);
     const m = await cmds('matches', 'inventory');
     check('matches inside knapsack: first action inspects, not take', !!(m && m.length && !/^take /.test(m[0])), m);
     check('matches inside knapsack: take is still offered', !!(m && m.some(c => /^take /.test(c))), m);

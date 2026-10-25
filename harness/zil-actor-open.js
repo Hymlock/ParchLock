@@ -24,6 +24,9 @@ const CASES = [
   const tag = C.walk + ' @' + C.step + ': ';
   check(tag + C.actor + ' in scope', C.actor in oc, Object.keys(oc));
   check(tag + C.actor + ' (actor, CONTBIT+OPENBIT) offers no open/close', (oc[C.actor] || ['missing']).length === 0, oc[C.actor]);
-  if (C.keep) check(tag + C.keep + ' (real container) still offers open and close', (oc[C.keep] || []).length === 2, oc[C.keep]);
+  if (C.keep) {
+    const verbs = (oc[C.keep] || []).map(c => c.trim().split(/\s+/)[0]);
+    check(tag + C.keep + ' (open real container) offers Close and not Open', verbs.includes('close') && !verbs.includes('open'), oc[C.keep]);
+  }
   await p.close(); }
   await b.close(); console.log(`${pass} PASS / ${fail} FAIL`); process.exit(fail ? 1 : 0); })();
