@@ -80,3 +80,6 @@ Read this board before starting work; post a bus message to claude when a packet
 - Locked phase 2: an object "Locked" status (codex notes resume/locked-phase2-current-fit-notes.md).
 - PROFILE bits leaking into ZIL attrs for unmapped keys (hygiene, no visible effect today).
 - world-map-ui 6 pre-existing failures (Zork I reload/travel), identical at HEAD: investigate.
+- Suspect transparent actors: actors that are container+TRANSBIT expose carried items (Alicia 80 -> wet overcoat 74 gets
+  open/close/search). Harmless wrong option (audit-r33 note 2); later check. Note: transparent also makes contents of
+  closed see-through containers discovered/underlined, not only Take-suppressed (audit-r33 note 1).
