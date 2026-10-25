@@ -4,7 +4,7 @@ Goal (operator): every ZIL flag decoded AND wired into the UI wrapper (radials, 
 effect in the app is not done. Missing right options matter more than harmless wrong ones; no masking.
 
 ## Ledger (work/investigations/2026-10-16-zil-profile-ledger.md, regenerate: node work/investigations/zil-profile-ledger.js)
-988 cells: settled 710 (72%); open U 248; N? 3; B 27 (Sherlock). Rulings merged 2026-10-24 evening.
+988 cells: settled 730 (74%, excludes 41 L:NC no-reader cells); open U 187; N? 3; B 27 (Sherlock).
 Merged b4cd5ba: openable covered x25, transparent NA x5, wearable NA x3 (climb has no ledger key; Deadline climb NA on the board only).
 Next ledger goal: settle U cells that change the radial first (below), then invisible U cells in bulk.
 
