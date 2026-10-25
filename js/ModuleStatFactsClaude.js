@@ -316,6 +316,10 @@ var ModuleStatFactsClaude = {
         // Source V-TELL / parser addressing tests this bit and refuses non-actors with "You can't talk to ...".
         // enterable 29 = source VEHBIT exact; native (grok1 #5064 grok1/enter/sorcerer.json): ENTER BED -> in bed 128, ENTER LOG BOAT -> in boat 199; spell book and flume refuse.
         // climbable 8 = CLIMBBIT exact; single carrier stairs 177 (whole-source); native bare CLIMB STAIRS -> Lobby; CLIMB SPELL BOOK "Bizarre."
+        "attributeObjects": { "switchable": [192] },
+        "capabilityForms": { "switchable": ["turn on", "turn off"] },
+        // switchable (grok1 #5171 switch2/cache sosw*): brass lantern 192 TURN ON sets ONBIT 11, TURN OFF clears it; crate 145 "You can't turn that on." Single holdable LIGHTBIT owner on the walk.
+        "activationState": { "onObjects": [192] },
         "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31, "talkable": 31, "wearable": 21, "on": 11, "door": 24, "enterable": 29, "climbable": 8 },
         // Native amulet/suit inventory marks direct-held WEARBIT gear worn;
         // amulet dropped or nested in the carried box is not worn (no state bit).
@@ -942,6 +946,8 @@ var ModuleStatFactsClaude = {
         // inside, EXIT returns; ENTER pc 191 (no bit) refuses with the player unmoved.
         // door 25 = source DOORBIT exact; native (r3-claude/doorbit): outside door 84 toggles, elevator doors spring open.
         // locked 19 = LOCKED state (codex lurking-locked19-reconciled-qualified.json, grok2 ACCEPT #4990): padlock 135 and roof door 163 unlock/lock/unlock toggle 19; held assignment unlock refused. No lockable capability.
+        // switchable (grok1 #5170 switch2/cache/run-lurking-*): flashlight 132 TURN OFF clears ONBIT 15, TURN ON sets it ("clicks on/off"); crowbar 156 and gloves 203 refuse. Single holdable LIGHTBIT owner on the walk (whole-source exception).
+        "activationState": { "onObjects": [132] },
         "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31, "on": 15, "transparent": 5, "openable": 2, "enterable": 29, "door": 25, "locked": 19 },
         // D232 local globals (claude census + codex #4618/#4621/#4632, grok2 #4637): room GLOBAL property 16 (byte ids),
         // holder LOCAL-GLOBALS 59; native: EXAMINE ROOF DOOR succeeds from TopFloor 195 (prop16 [163]), refused from
@@ -963,8 +969,8 @@ var ModuleStatFactsClaude = {
         // ("too hot"), succeeds after cooling to 10. Coke 61: DRINK lowers prop11 5->4->3->2->1, refuses at 1 (empty); its EAT
         // only prints a temperature reply, so no Eat is offered. Chinese food 90: eaten while inside the open (bit13) carton 58
         // held by the player; TAKE refused. Source 51d8060 (whole 16-file audit) corroborates, not an exact-build claim.
-        "attributeObjects": { "edible": [18, 61, 90] },
-        "capabilityForms": { "edible": [
+        "attributeObjects": { "switchable": [132], "edible": [18, 61, 90] },
+        "capabilityForms": { "switchable": ["turn on", "turn off"], "edible": [
             { "objectId": 18, "scope": "held", "actions": [{ "verb": "eat", "clearAttribute": 11, "property": { "id": 3, "size": 2, "min": 0, "max": 12 } }] },
             { "objectId": 61, "scope": "held", "actions": [{ "verb": "drink", "property": { "id": 11, "size": 2, "min": 2, "max": 5 } }] },
             { "objectId": 90, "scope": { "containerObject": 58, "openAttribute": 13 }, "actions": [{ "verb": "eat" }] }
@@ -1002,8 +1008,8 @@ var ModuleStatFactsClaude = {
         // D238 drink owner (grok1 #4859 grok1/drink/zork1.json): WATER 237 in glass bottle 236 is the only non-global DRINKBIT 22
         // object (single owner + whole-source V-EAT DRINKBIT branch: container must be held and open). Native: bottle closed -> "You'll
         // have to open the glass bottle first."; open -> "Thank you very much. I was rather thirsty" and 237 leaves; bottle refused.
-        "attributeObjects": { "edible": [237] },
-        "capabilityForms": { "edible": [{ "objectId": 237, "scope": { "containerObject": 236, "openAttribute": 11, "held": true }, "actions": [{ "verb": "drink" }] }] },
+        "attributeObjects": { "switchable": [164, 147], "edible": [237] },
+        "capabilityForms": { "switchable": ["turn on", "turn off"], "edible": [{ "objectId": 237, "scope": { "containerObject": 236, "openAttribute": 11, "held": true }, "actions": [{ "verb": "drink" }] }] },
             // talkable 30 = the proven animate bit (grok1 2026-10-24, item 4 talkable batch; same mapping as Spellbreaker/Stationfall): talk-command scoped,
             // native, test_attr recorded only during the named command (grok1/talk/talk-probe.json, no relocation): 'troll, hello' @27 tests troll 217:30 TRUE ("The troll isn't much of a conversationalist."), 'tell thief' @260 tests thief 114:30 TRUE ("The thief is a strong, silent type."); 'tell sword' @27 tests sword 110:30 FALSE ("You can't talk to the sword!").
             // Source V-TELL / parser addressing tests this bit and refuses non-actors with "You can't talk to ...".
@@ -1011,6 +1017,8 @@ var ModuleStatFactsClaude = {
         // D239 climbable 24 = source CLIMBBIT exact 9 of 9; native (codex climb-zork-qualified.json): bare CLIMB TREE moves 75 -> 88,
         // CLIMB CHIMNEY from the Studio 94 -> Kitchen 203; mailbox 160 refuses. Bare climb from the Kitchen is a contextual refusal.
         // transparent 12 = source TRANSBIT exact; native (grok1 #5039 grok1/transp/zork1.json): closed glass bottle 236 LOOK IN lists water, closed trophy case 194 takes the contents path; closed brown sack 224 (no bit) "is closed".
+            // switchable (grok1 #5162 grok1/switch2): brass lantern 164 TURN ON/OFF toggles ONBIT 20 (LIGHTBIT 31 read 1 each time); candles 147 TURN OFF clears 20 natively (TURN ON asks for a match: native reply); rope 129 (31=0) "You can't turn that on." Torch 104 excluded: it cannot be put out.
+            "activationState": { "onObjects": [164, 147] },
             "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "talkable": 30, "edible": 21, "light": 31, "door": 23, "scenery": 14, "climbable": 24, "transparent": 12 },
         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
         // (source: THIEF (1dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
