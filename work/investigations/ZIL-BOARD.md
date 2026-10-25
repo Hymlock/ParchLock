@@ -16,11 +16,12 @@ Next ledger goal: settle U cells that change the radial first (below), then invi
 - grok2: evidence batches + ledger bulk work (N? done -> 295 NA/59 U); doors parked except queued.
 Every evidence packet: digest, 2 native positives + negative (or single owner + whole-source), ordinary commands only.
 
-## In flight (all 4 seats back, 2026-10-24 evening)
-- claude: integrate (r28 gate running: enter-form code + Moonmist transparent; r29 staged: Planetfall transparent); reviews.
-- codex: (1) confirm Moonmist R3 snapshot -> commit; (2) BLIND locked investigation (#5100).
-- grok1: Witness enter-form checks (11-carrier sit-on sweep + get out of lounge) -> Witness enterForms fact; then HHGG pilot seat, Suspended.
-- grok2: OUT OF CREDITS (operator). Mail taken over by claude; Inform bit checks run by a claude worker.
+## In flight (2026-10-25 ~00:00; last commit 131f30b r37)
+- claude: integrate; nothing staged. Recent: r28-r37 (enter forms, locked map D241/D242, switch x3, talk x3, moved x20 COMPLETE, transparent x8+, doors, Starcross container/door/supporter).
+- codex: inventoryHiddenAttribute (18; NDESCBIT vs INVISIBLE split, genuine held hidden owners first), then concealed (22), light (18).
+- grok1: probe list #5229 (Suspect worn, Spellbreaker door, Moonmist door, enterable Zork1/Zork3/Cutthroats, Hollywood openCapability, scenery source check); source batch A (worn NA x7, on fail-closed x5, Enchanter switch).
+- grok2: OUT of credits.
+- Group rule: no-reader cells are L:NC (not complete). Static is never TRYTAKEBIT (TAKEBIT complement). Scenery fails closed where NDESCBIT sits on takeables.
 
 ## Radial families: status
 | family (radial) | done | remaining |
