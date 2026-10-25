@@ -356,11 +356,9 @@ var ParchLockQol = {
         }
 
         Message.Show("Command History", "<div class='pl-tool-content'>" + body + "</div>", true);
+        // A chosen past command runs at once, like the Send-hold history radial.
         $(".qol-command").click(function() {
-            Message.Hide();
-            Input.Clear();
-            Input.Inject($(this).data("command"));
-            Input.Focus();
+            ParchLockQol.RunDialogCommand($(this).data("command"));
         });
     },
 
@@ -371,7 +369,7 @@ var ParchLockQol = {
         body += "<h3>Actions</h3>";
         body += ParchLockQol.BuildCommandButtons(ParchLockQol.CommonCommands);
         body += "<h3>Directions</h3>";
-        body += ParchLockQol.BuildCommandButtons(ParchLockQol.Directions, true);
+        body += ParchLockQol.BuildCommandButtons(ParchLockQol.Directions);
         body += "<h3>ParchLock</h3>";
         body += ParchLockQol.BuildCommandButtons(Input.GetAllSpecialCommands());
         body += "<h3>Map</h3>";
@@ -379,22 +377,25 @@ var ParchLockQol = {
 
         Message.Show("Commands", "<div class='pl-tool-content'>" + body + "</div>", true);
         $(".qol-command").click(function() {
-            var command = $(this).data("command");
-            var hitEnter = $(this).data("enter") === true || $(this).data("enter") === "true";
-
-            Message.Hide();
-            Input.Clear();
-            Input.Inject(command, hitEnter);
-            Input.Focus();
+            ParchLockQol.RunDialogCommand($(this).data("command"));
         });
     },
 
-    BuildCommandButtons: (commands, hitEnter) => {
+    // Operator rule (2026-10-25): Commands and History dialog buttons use the
+    // one shared decision (Actionable.runChosenCommand). A complete command --
+    // look, n, undo, /map, "/goto Room;" -- runs at once; a stem ("examine ",
+    // "take ", "unlock ") is left in the line for the player to finish.
+    RunDialogCommand: (command) => {
+        Message.Hide();
+        return Actionable.runChosenCommand(command == null ? "" : String(command));
+    },
+
+    BuildCommandButtons: (commands) => {
 
         var html = "<div class='qol-command-list'>";
 
         commands.forEach(command => {
-            html += "<button class='qol-command' data-enter='" + !!hitEnter + "' data-command='" + ParchLockQol.EscapeAttr(command) + "'>" + ParchLockQol.EscapeHtml(command) + "</button>";
+            html += "<button class='qol-command' data-command='" + ParchLockQol.EscapeAttr(command) + "'>" + ParchLockQol.EscapeHtml(command) + "</button>";
         });
 
         return html + "</div>";
@@ -845,21 +846,10 @@ var ParchLockQol = {
             });
             menu.find(".radial-command").off("click.pmToolsList").on("click.pmToolsList", function () {
                 var command = $(this).data("command");
-                var hitEnter = $(this).data("enter") === true || $(this).data("enter") === "true";
                 ParchLockQol.HideRadialMenu();
                 var action = $(this).data("action");
                 if (action) { action(); return; }
-                if (hitEnter) {
-                    Actionable.Submit(command);
-                } else {
-                    Input.Clear();
-                    Input.Inject(command, false);
-                    if (document.body.classList.contains("pl-mobile") && Input.DismissKeyboard) {
-                        Input.DismissKeyboard();
-                    } else {
-                        Input.Focus();
-                    }
-                }
+                Actionable.runChosenCommand(command);
             });
             ParchLockQol.ClearRadialSelection();
             return;
@@ -1007,8 +997,8 @@ var ParchLockQol = {
                directly. This also means a radial-clicked Undo/Restore gets
                the same RAM resync Submit already does for typed commands,
                which the old direct-Inject path skipped entirely. A stem
-               fill (Enter:false, e.g. "take ") is not a real submission
-               yet, so it stays a plain Inject with no usage note. */
+               (trailing whitespace, e.g. "take ") is not a real submission
+               yet; it goes through runChosenCommand below. */
             if (hitEnter) {
                 Actionable.Submit(command);
                 return;
@@ -1028,27 +1018,11 @@ var ParchLockQol = {
                     }), { source: "target" });
                     return;
                 }
-            } else if (text.trim()) {
-                // A complete command runs at once. App commands (/map, /history,
-                // /transcript ...) are handled by Input.Process from the line;
-                // anything else goes to the story through the normal path.
-                Input.Clear();
-                if (/^\//.test(text.trim())) { Input.Inject(text.trim(), false); Input.Process(); }
-                else Actionable.Submit(text.trim());
-                if (document.body.classList.contains("pl-mobile") && Input.DismissKeyboard) Input.DismissKeyboard();
-                return;
             }
-            {
-                // Only a stem with nothing in scope to act on is left in the
-                // line for the player to finish.
-                Input.Clear();
-                Input.Inject(command, false);
-                if (document.body.classList.contains("pl-mobile") && typeof Input !== "undefined" && Input.DismissKeyboard) {
-                    Input.DismissKeyboard();
-                } else {
-                    Input.Focus();
-                }
-            }
+            // One shared decision (Actionable.runChosenCommand): a complete
+            // command runs at once; only a stem with nothing in scope to act
+            // on is left in the line for the player to finish.
+            Actionable.runChosenCommand(command);
         });
     },
 

@@ -10,7 +10,7 @@ var Actionable = {
     /* Session usage counts for input-line radial ranking (D26/#33/#34).
        Incremented from Submit — the single command choke-point — not from
        DOM/text scraping. Full commands rank by exact match; verb-stem
-       radial items (Enter:false, e.g. "take ") rank by first-token verb
+       radial items (whitespace-terminated, e.g. "take ") rank by first-token verb
        frequency so submitting "take lamp" lifts the "take " stem. */
     usageCounts: {},
     verbCounts: {},
@@ -1118,23 +1118,7 @@ var Actionable = {
             var kind = this.dataset.kind || "object";
             var oid = this.dataset.objectId || null;
             if (kind === "direction") Actionable.Submit(Actionable.resolveExitCommand(noun));
-            else {
-                var primary = null;
-                var primaryIntent = null;
-                var primaryEnter = true;
-                try {
-                    if (oid) {
-                        var cmds = Actionable.resolveObjectCommands(oid, kind);
-                        if (cmds && cmds[0] && cmds[0].learnedWordScope && typeof LearnedWords !== "undefined" && !LearnedWords.commandCurrent(cmds[0])) return;
-                        if (cmds && cmds.length) { primary = cmds[0].command; primaryIntent = cmds[0].intent || null; primaryEnter = cmds[0].Enter !== false && cmds[0].enter !== false; }
-                    }
-                } catch (err) {}
-                if (!primary) Actionable.Open(noun, kind, e.clientX, e.clientY, oid);
-                if (primary) {
-                    if (!primaryEnter) { Input.Clear(); Input.Inject(primary, false); Input.Focus(); }
-                    else { Actionable.Submit(primary); if (primaryIntent) Actionable.noteIntentUsage(primaryIntent); }
-                }
-            }
+            else Actionable.activatePrimary(noun, kind, oid, e.clientX, e.clientY);
         }).on("contextmenu.pmAct", ".pl-act:not(.is-stale)", function (e) {
             e.preventDefault();
             e.stopPropagation();
@@ -1290,6 +1274,66 @@ var Actionable = {
     // which was self-cancelling legitimate long-presses before they could
     // ever fire.
     LongPressMoveCancelPx: 20,
+
+    // Operator rule (2026-10-25; amends T11 and the D205/D201 Enter:false
+    // lanes): ONE decision for every radial and menu choice. A chosen command
+    // that is complete -- non-empty and not a stem ending in whitespace -- runs
+    // at once, whatever its provenance flag. Enter:false marks unproven
+    // vocabulary for ranking and learning; it never means "make the player
+    // press Send". Only a genuinely incomplete stem ("put X in ", "give X to ",
+    // "unlock X with ", "say ") is left in the line for the player to finish.
+    // Callers keep their own currency/target guards, then route the final
+    // command through here.
+    isCompleteCommand: (command) => {
+        var text = String(command == null ? "" : command);
+        return !!text.trim() && !/\s$/.test(text);
+    },
+    runChosenCommand: (command, source) => {
+        var text = String(command == null ? "" : command);
+        if (!text.trim()) return false;
+        if (Actionable.isCompleteCommand(text)) {
+            var complete = text.trim();
+            if (/^\//.test(complete)) {
+                // App commands (/map, /history ...) are handled by Input.Process.
+                // Fail closed exactly like Submit: never behind an open dialog.
+                if (!$(".Input.LineInput").length || Message.IsOpen || $("#dialog").length) return false;
+                Input.Clear();
+                Input.Inject(complete, false);
+                if (Input.Process) Input.Process();
+                try { if (document.body.classList.contains("pl-mobile") && Input.DismissKeyboard) Input.DismissKeyboard(); } catch (eK) {}
+                return true;
+            }
+            // True only when the engine actually accepted the send, so callers
+            // never record usage for a command Submit refused.
+            return Actionable.Submit(complete, source) === true;
+        }
+        Input.Clear();
+        Input.Inject(text, false);
+        try {
+            if (document.body.classList.contains("pl-mobile") && Input.DismissKeyboard) Input.DismissKeyboard();
+            else if (Input.Focus) Input.Focus();
+        } catch (eF) {}
+        return false;
+    },
+
+    // Story-word click / phone tap: the object's top command goes through the
+    // same shared decision as every radial slice; no primary command means
+    // the radial opens instead. Returns true only when a command was sent.
+    activatePrimary: (noun, kind, oid, x, y) => {
+        var primary = null;
+        var primaryIntent = null;
+        try {
+            if (oid) {
+                var cmds = Actionable.resolveObjectCommands(oid, kind);
+                if (cmds && cmds[0] && cmds[0].learnedWordScope && typeof LearnedWords !== "undefined" && !LearnedWords.commandCurrent(cmds[0])) return false;
+                if (cmds && cmds.length) { primary = cmds[0].command; primaryIntent = cmds[0].intent || null; }
+            }
+        } catch (err) {}
+        if (!primary) { Actionable.Open(noun, kind, x, y, oid); return false; }
+        var ran = Actionable.runChosenCommand(primary);
+        if (ran && primaryIntent) Actionable.noteIntentUsage(primaryIntent);
+        return ran;
+    },
 
     Submit: (command, source) => {
         try {
@@ -2670,8 +2714,9 @@ var Actionable = {
             suggestions.push({ Label: verb.charAt(0).toUpperCase() + verb.slice(1), Command: command, Enter: false, Score: 30 });
         };
         // These are vocabulary suggestions, not claims of object capability.
-        // Selection fills the prompt for confirmation; existing proven actions
-        // and learned forms remain in the normal command resolver.
+        // Each is a complete one-object command, so choosing it runs it
+        // (Actionable.runChosenCommand); existing proven actions and learned
+        // forms remain in the normal command resolver.
         try {
             var grammar = null;
             try {
@@ -2787,7 +2832,8 @@ var Actionable = {
                         TrackTap: true,
                         Action: function () {
                             if (!Actionable.radialCommandCurrent(c)) return;
-                            if (c.Enter === false || c.enter === false) { Input.Clear();Input.Inject(command,false);Input.Focus();return; }
+                            // A review-only stem is incomplete: leave it for the player.
+                            if (c.Enter === false || c.enter === false) { Actionable.runChosenCommand(command); return; }
                             // D77: a real, live-reported case -- a hardcoded
                             // `.slice(0, 8)` here silently dropped a genuine
                             // container (trenchcoat, `attrs.container:true`)
@@ -2832,19 +2878,10 @@ var Actionable = {
                                 pool = primary.concat(rest);
                             }
                             var targets = pool;
-                            if (!targets.length) {
-                                Input.Clear();
-                                Input.Inject(command, false);
-                                if (document.body.classList.contains("pl-mobile") && Input.DismissKeyboard) {
-                                    Input.DismissKeyboard();
-                                } else {
-                                    Input.Focus();
-                                }
-                                return;
-                            }
+                            if (!targets.length) { Actionable.runChosenCommand(command); return; }
                             ParchLockQol.OpenRadial(x, y, targets.map(function (t) {
                                 var full = command + Actionable.referenceFor(t).noun;
-                                return { Label: t.name, Command: full, Score: scoreFor(full, base), Usage: usageFor(full), Action: function () { if (!Actionable.radialCommandCurrent(c)) return; Actionable.Submit(full, sharedCommands ? "ambiguous-reference" : undefined); if (c.intent) Actionable.noteIntentUsage(c.intent); } };
+                                return { Label: t.name, Command: full, Score: scoreFor(full, base), Usage: usageFor(full), Action: function () { if (!Actionable.radialCommandCurrent(c)) return; if (Actionable.runChosenCommand(full, sharedCommands ? "ambiguous-reference" : undefined) && c.intent) Actionable.noteIntentUsage(c.intent); } };
                             }), context);
                         }
                     };
@@ -2857,14 +2894,17 @@ var Actionable = {
                     Enter: c.Enter !== false && c.enter !== false,
                     Action: function () {
                         if (!Actionable.radialCommandCurrent(c)) return;
-                        if (c.Enter === false || c.enter === false) { Input.Clear(); Input.Inject(command, false); Input.Focus(); }
-                        else { Actionable.Submit(command, sharedCommands ? "ambiguous-reference" : undefined); if (c.intent) Actionable.noteIntentUsage(c.intent); }
+                        // Complete one-object command: runs at once even when
+                        // review-only (Enter:false); see runChosenCommand.
+                        if (Actionable.runChosenCommand(command, sharedCommands ? "ambiguous-reference" : undefined) && c.intent) Actionable.noteIntentUsage(c.intent);
                     }
                 };
             });
             if (sharedCommands && !cmds.length && typeof ActionSynth !== "undefined" && !ActionSynth.inspectVerbDisabled()) {
                 var inspect = ActionSynth.defaultInspectVerb();
-                if (inspect) slices.push({Label:"Specify...", Action:function () {Input.Clear();Input.Inject(inspect + " " + noun,false);Input.Focus();}});
+                // A complete inspect of the shared noun: it runs, and the game's own
+                // "Which do you mean...?" reply is how the player specifies.
+                if (inspect) slices.push({Label:"Specify...", Command: inspect + " " + noun, Action:function () {Actionable.runChosenCommand(inspect + " " + noun, "ambiguous-reference");}});
             }
             try {
                 var srcObj = Actionable.payloadPool().find(function (o) {

@@ -98,9 +98,10 @@ var EquipmentUI = {
         if (!obj) return;
         var candidate = EquipmentUI.yourselfCommands(obj, model).find(function (item) { return item.Form === form; });
         if (!candidate || (enter && !candidate.Enter)) return;
-        var command = form + " " + Actionable.referenceFor(obj).noun;
-        if (enter) Actionable.Submit(command);
-        else Input.Inject(command, false);
+        // Every Yourself form is a complete one-object command ("wield
+        // gauche"), so it runs at once like the object radial; Enter only
+        // records provenance. Shared decision: Actionable.runChosenCommand.
+        Actionable.runChosenCommand(form + " " + Actionable.referenceFor(obj).noun);
     },
     cleanupDrag: function (d) {
         EquipmentUI._drag = null;

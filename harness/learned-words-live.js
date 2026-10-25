@@ -87,7 +87,9 @@ function check(value, message) { assert(value,message); console.log('PASS:',mess
     }finally{Actionable.Submit=submit;ParchLockQol.HideRadialMenu();}
    },manual);
    check(gates.legacy===false&&gates.semantic===false,'legacy and semantic suggestions stay review-only '+width);
-   check(gates.node&&gates.sent===0&&gates.prompt.toLowerCase().startsWith(gates.verb+' '),'actual radial selection fills without submitting '+width+' '+JSON.stringify(gates));
+   // Operator rule 2026-10-25 (radial-auto-submit): a chosen complete review-only form
+   // runs at once through Actionable.runChosenCommand; only a stem fills the line.
+   check(gates.node&&gates.sent===1&&!gates.prompt.toLowerCase().startsWith(gates.verb+' '),'actual radial selection of a complete review-only form submits once, nothing filled '+width+' '+JSON.stringify(gates));
    const duplicateCases=await page.evaluate(()=>{
     const old={pool:Actionable.payloadPool,payload:WorldModel.lastPayload,more:Actionable.addMoreActions,radial:ParchLockQol.OpenRadial,submit:Actionable.Submit,nouns:Actionable.CommandNouns};
     const results=[];let captured,source;

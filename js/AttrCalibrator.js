@@ -32,9 +32,11 @@ var AttrCalibrator = {
     // D214 U5: editable-only (Enter:false) Yourself suggestions beyond the RPG
     // set -- things one commonly does to a held item. Each still passes
     // dictionaryForm (every token must be this story's own vocabulary). That
-    // licenses an editable SUGGESTION only; it is not proof the game accepts
-    // the command for this object (arity/semantics), which is why these are
-    // never auto-submitted. Not used by D205 learning, which keeps RPG_VERBS.
+    // licenses a lexical (Enter:false) SUGGESTION only; it is not proof the game
+    // accepts the command for this object (arity/semantics). Operator rule
+    // 2026-10-25: a chosen complete form still runs at once
+    // (Actionable.runChosenCommand); the game's own parser reply is the
+    // fail-closed backstop. Not used by D205 learning, which keeps RPG_VERBS.
     // "polish" is omitted deliberately: in the Inform library it is a synonym
     // of rub/clean, both already offered, so it would only duplicate them.
     ITEM_SUGGESTION_VERBS: ["light", "extinguish", "turn on", "turn off", "switch on", "switch off", "hold", "wave",

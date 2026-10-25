@@ -203,7 +203,7 @@ decisions and their later mentions, not only the first matching record.
   [D201](PRODUCTION_PLAN.md#pl-d201) separates structural player/room/item identity
   from status and parser-derived labels. Blank labels are not blank identities, but
   only containment-proven rooms and held items may use the recovery path.
-- **Yourself hold RPG radial:** [section 69](#ar-ch69) / [D205](PRODUCTION_PLAN.md#pl-d205) implements dictionary-gated inventory/RPG verbs on long-hold over Yourself (submit-ready vs Enter:false; Z-only); short drop remains take. Bounded exact-form AttrCalibrator persistence for non-rules verbs; no invented verbs. Independent audit pending.
+- **Yourself hold RPG radial:** [section 69](#ar-ch69) / [D205](PRODUCTION_PLAN.md#pl-d205) implements dictionary-gated inventory/RPG verbs on long-hold over Yourself (submit-ready vs Enter:false provenance; both submit when chosen since the 2026-10-25 operator amendment; Z-only); short drop remains take. Bounded exact-form AttrCalibrator persistence for non-rules verbs; no invented verbs. Independent audit pending.
 - **Original map controls:** [section 66](#ar-ch66) / [D202](PRODUCTION_PLAN.md#pl-d202) retains the original local-room renderer. The withdrawn overview/LOD implementation is removed; independent Center, gestures, path alignment and room-click fixes remain.
 - Some earlier status banners and diagrams describe old builds. This indexing change
   preserves them as records; it does not claim to reconcile every historical runtime claim.
@@ -3711,7 +3711,7 @@ at selection; preserve `submitDrop` draft/modal/dialog/probe/generation guards.
 synonyms when research shows a word is missing (RoTA has no `wield` — that absence
 must remain silent); parallel verb caches; title-specific branches; changing
 non-Yourself drop legality; auto-submitting `take` after the hold radial opens;
-auto-submitting lexical-only curated hits; promising Glulx radial support without an
+auto-submitting lexical-only curated hits *(superseded 2026-10-25: a chosen complete form submits; see the operator amendment below)*; promising Glulx radial support without an
 adapter.
 
 ```mermaid
@@ -3724,14 +3724,28 @@ flowchart TD
   Gate -->|empty| None[Honest empty / dismiss — no invented verbs]
   Gate -->|submit-ready| RadialS[Compass OpenRadial Enter true]
   Gate -->|lexical only| RadialE[Compass OpenRadial Enter false suggestion]
-  RadialS --> Submit[Input.Inject dictionary-owned confirmed form]
-  RadialE --> Edit[Line fill; player edits and submits]
+  RadialS --> Submit[runChosenCommand submits dictionary-owned confirmed form]
+  RadialE --> Edit[Complete form submits via runChosenCommand, stem fills line]
   Submit --> Learn[AttrCalibrator confirm via bounded extension]
 ```
 
 **Relationships.** Extends section 56 drag/drop and section 59 dictionary arbiter
 (Z-only). Composes ActionSynth + AttrCalibrator; does not replace ordinary object
 radials or directional UI. Plan authority: D205 (#1015 F1–F5 folded).
+
+**Operator amendment 2026-10-25 (supersedes lane 2's "fill"; see PRODUCTION_PLAN D205).**
+Both lanes now end in `Actionable.runChosenCommand`: a complete one-object form (every
+Yourself form, every object-radial slice, More suggestions, the primary word click) is
+submitted at once; only a whitespace-terminated compound stem (`put X in `, `give X to `,
+`unlock X with `, `say `) fills the line or opens its target picker. `Enter:false` is
+provenance/ranking only; the game's own parser reply is the fail-closed backstop for
+lexical-only and review-only forms. The same decision owns the Commands and History
+dialogs, the Tools list, the compound target picker and the shared-reference "Specify..."
+slice. `runChosenCommand` is true only when the engine accepted the send, and its `/`
+branch fails closed behind a dialog. Draft, probe, modal, generation and learned-currency
+guards run first, unchanged. Superseded here: the "auto-submitting lexical-only curated
+hits" prohibition above, the section 70 review-only/More sentences and section 74's
+"nothing is auto-submitted from the widened Yourself lane".
 
 **Agreed statistics extension (#1022-1024).** StatTracker alone owns condition readings (candidate/confirmed/cleared/unknown), exact provenance and epoch/generation invalidation. Explicit status flags and command-owned DIAGNOSE assertions confirm; narration asserts candidates, explicit negative/cure evidence clears, and stale evidence cannot override fresher facts. No TTL promotion. Render confirmed conditions inside the existing Status strip and Wins from the existing counter. EquipmentUI consumes per-item value/weight only through a StatTracker locator proven by explicit item-owned observations and two distinct value transitions with a unique individual-property match. Aggregate equality is not per-item proof; computed/routine-like, ambiguous or contradicted slots produce no row metric. Restore invalidates readings, retains learned locators and re-reads current RAM. D174 aggregate fallback, D204 required serial fulfillment and StatusGridDecoder ownership are unchanged. Authorization is not product/test acceptance; no APK or Glulx expansion.
 
@@ -3765,9 +3779,9 @@ existing resolveObjectCommands outputs for currently eligible ground/held candid
 then passes entries to the ordinary Open slice/ranking/target-submenu builder. Optional
 ambiguous-reference synthesis is limited to this eligibility calculation; default unique
 reference gates remain unchanged. Shared UI contexts retain null objectId and candidateIds.
-All supported learned members must remain current and any review-only member prevents
-automatic submission, including target stems. Submenu and instrumental submissions retain
-ambiguous-reference provenance. More remains editable suggestions. Normal ActionSynth
+All supported learned members must remain current and any review-only member keeps a target stem
+in the line (a complete review-only form submits when chosen; 2026-10-25 operator amendment). Submenu and instrumental submissions retain
+ambiguous-reference provenance. More suggestions are complete forms that submit when chosen (2026-10-25 amendment). Normal ActionSynth
 vocabulary rendering uses the same scoped observed row as Actionable marks, without
 changing physical membership or calibration. Nested copies use normal container retrieval.
 
@@ -3927,7 +3941,7 @@ flowchart TD
   - a mark never outlives its owner;
   - hidden probe output and commands never hold marks;
   - scope is unchanged by trigger filtering;
-  - nothing is auto-submitted from the widened Yourself lane.
+  - the widened Yourself lane is lexical provenance only; a chosen complete form submits (2026-10-25 operator amendment, D205).
 
 **P1 observed direct possession (D214 amendment).** The Actionable candidate pool may admit a DIRECT
 child of a trusted-animate, in-room actor when this turn's admitted text prints a distinguishing

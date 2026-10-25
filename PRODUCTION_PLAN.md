@@ -203,7 +203,7 @@ decisions and their later mentions, not only the first matching record.
   plans a shared player/location/display/inventory recovery for compiler-owned objects
   with blank short names. It may extend D184's parser-vocabulary lane, but it may not
   weaken D164's room rejection, override D84/D171, or make status text an identity source.
-- **Yourself hold RPG radial:** [D205](#pl-d205) implements long-hold dwell on the equipment Yourself drop target for a two-lane (submit-ready vs Enter:false) dictionary∩curated inventory/RPG verb radial; short release remains `take <noun>`. Z-dictionary only, with bounded exact-form AttrCalibrator persistence. Independent audit pending. No invented verbs (D24); RoTA lacks `wield` in-dict.
+- **Yourself hold RPG radial:** [D205](#pl-d205) implements long-hold dwell on the equipment Yourself drop target for a two-lane (submit-ready vs Enter:false provenance) [amended 2026-10-25: a chosen complete form submits; Enter:false is provenance only] dictionary∩curated inventory/RPG verb radial; short release remains `take <noun>`. Z-dictionary only, with bounded exact-form AttrCalibrator persistence. Independent audit pending. No invented verbs (D24); RoTA lacks `wield` in-dict.
 - **Actors and status probes:** [D206](#pl-d206) makes unnamed animate candidates discoverable
   (no Take on people). [D207](#pl-d207) makes status probes headless: probe-owned spans are hidden
   at insertion, turn events are released, and META probes stay hidden (js/StatTracker.js,
@@ -7649,6 +7649,38 @@ non-Glulx module. Only after parity may packaging/cache/APK and user documentati
 Operator authorization followed bus consensus #1022-1024. The amended contract below
 is normative; historical pre-authorization statements do not supersede that authorization.
 
+**Operator amendment 2026-10-25 (radial direct actions always submit; supersedes the
+Enter:false "fill the line" behavior in contract item 3 and Precedence row 4, and amends T11/D201).**
+Live report: holding on Yourself and choosing Wield for the steel main gauche only put
+"wield gauche" in the command line, needing an extra Send. Rule: choosing a **complete,
+direct** command from ANY radial or menu (Yourself hold radial, object radial slices and
+More suggestions, the primary word click, the generic QoL radial) runs it at once. Only a
+genuinely incomplete compound/addition **stem** that ends in whitespace (`put X in `,
+`give X to `, `unlock X with `, `cast X at `, `say `) is left in the line, or opens
+its target picker when targets are in scope. `Enter:false` remains provenance/ranking and
+learning metadata only (lexical vs provider/confirmed); it no longer means "make the
+player press Send". One shared decision owns this: `Actionable.runChosenCommand`
+(`Actionable.isCompleteCommand` = non-empty, no trailing whitespace). Existing guards
+are unchanged and still run first: player draft, status probe, modal, restore
+generation/module key, learned-word currency. The same decision also owns the Tools >
+Commands dialog (look, inventory, wait, again, undo, save, restore, verbose, brief, the
+directions, the `/` app commands and the map's `/goto Room;` buttons run; the stems
+`examine `, `take `, `unlock `... fill), the Tools > History dialog (a past command
+runs, matching the Send-hold history radial), the Tools list, the compound target picker
+and the shared-reference "Specify..." slice (`<inspect> <noun>` runs with
+ambiguous-reference provenance; the game's "Which do you mean...?" is the specification
+step). `runChosenCommand` returns true only when the engine accepted the send (usage is
+never recorded for a refused send), and the `/` branch fails closed behind a dialog like
+Submit. Lexical-only and review-only (fewer than two witnesses) learned forms therefore
+submit in one tap; the game's own parser reply is the fail-closed backstop for them.
+Superseded clauses: D205 contract item 3 (lane 2 "fill the line"), Precedence row 4
+("suggestion only"), the D205 flow "Enter:false fill", "Lexical hits remain Enter:false"
+and the `wield` paragraph (now provenance only), D214 U5 "editable lane", the D201/T11
+learned-word review-only rule (a review-only member now keeps only a target stem in the
+line), and ARCHITECTURE_UML section 69 "auto-submitting lexical-only curated hits", the
+section 70 review-only/More "editable suggestions" sentences and section 74 "nothing is
+auto-submitted from the widened Yourself lane". Harness: `harness/radial-auto-submit.js`.
+
 **Stable ID:** `pl-d205` / `pl-s317`. **Companion architecture:** [ARCHITECTURE_UML.md section 69](ARCHITECTURE_UML.md#ar-ch69).
 
 **Scope.** Desktop and mobile equipment-sheet Pointer Events drag (D122/D125/D127).
@@ -7684,9 +7716,10 @@ Agreed contract (Codex #1015 F1–F5 folded):
      applicable. Wear/remove/take/drop/eat/`switch on`/`switch off` that ActionSynth
      already synthesizes may auto-submit when admitted.
    - **Editable suggestion (Enter:false):** curated filter ∩ module dictionary hits that
-     lack a provider/semantic/confirmed exact one-object form. These fill the line via
-     the existing QoL/D201-style suggestion lane (`Enter:false` stems; player edits and
-     submits). Lexical `isGameWord` alone **never** licenses `Input.Inject` auto-submit.
+     lack a provider/semantic/confirmed exact one-object form. *Superseded by the
+     2026-10-25 operator amendment below:* a complete form chosen here runs at once through
+     `Actionable.runChosenCommand`; `Enter:false` is provenance/ranking only and the game's
+     own parser reply is the fail-closed backstop. Only a whitespace-terminated stem fills the line.
      Noun-homograph dictionary hits without verb grammar remain suggestions or absent.
 4. **Never invent verbs.** Lexical absence is an honest empty slot. Fail closed when
    Z RAM/dictionary is unavailable: offer no RPG radial verbs (short-drop `take` may
@@ -7726,7 +7759,7 @@ worn/held state per D59); `edible` → `eat`, with `drink` only if `isGameWord("
    the curated set (persistence without surface visibility is useless; ordinary radials
    already merge allowedVerbs).
 4. Curated ∩ dict lexical-only (no provider/confirmed one-object form) → Enter:false
-   suggestion only.
+   provenance; a chosen complete form submits (2026-10-25 operator amendment).
 5. Outside curated + unconfirmed → not shown on Yourself-hold; other surfaces unaffected.
 
 Intentional exclusions for this Yourself-hold radial (fail closed; use other surfaces):
@@ -7748,7 +7781,7 @@ pointerdown on grip → move ≥8px → drag active (unchanged)
           render-deferral; open RPG radial; CONSUME this gesture's pointerup
         radial item chosen → re-resolve live physical itemId/target/unique reference +
           generation; apply draft/modal/dialog/probe/sheet/generation guards; then
-          submit-ready Inject OR Enter:false fill
+          Actionable.runChosenCommand (complete form submits; only a stem fills; 2026-10-25)
         radial dismissed / cancelled → no take, no invented fallback
 ```
 
@@ -7772,7 +7805,7 @@ extension** before promising persistence for curated RPG verbs:
   the learner sees them.
 - Positive persistence round-trip harness must exercise **real newly admitted verbs**,
   not wear/take controls as stand-ins.
-- The bounded learner and cross-reload persistence for a real newly admitted verb are mandatory completion gates in this same implementation. Lexical hits remain Enter:false until independently confirmed; no persistence slice is deferred.
+- The bounded learner and cross-reload persistence for a real newly admitted verb are mandatory completion gates in this same implementation. Lexical hits remain Enter:false (provenance) until independently confirmed, though a chosen complete form still submits (2026-10-25 operator amendment); no persistence slice is deferred.
 
 Successful submit-ready commands that already pass `_isActionSynthVerb` continue on the
 existing D86 `Input.Inject` → calibrator path. Do not write verb legality into
@@ -7784,7 +7817,7 @@ Tolti-Aph (RoTA) noted **`wield` is absent from that module's dictionary**. Ther
 the Yourself-hold radial **must not** show `wield` on RoTA (or any module lacking the
 word). Offering it would be a vocabulary break and a D24 violation. The goal remains:
 when a story **does** ship `wield` (or `equip`, etc.), the verb appears after dictionary ∩
-filter as Enter:false until confirmed, or submit-ready once provider/learner admits an
+filter as Enter:false (provenance; it submits when chosen per the 2026-10-25 amendment) until confirmed, or submit-ready once provider/learner admits an
 exact form. Alternate discovery is limited to: (a) other curated verbs that **are**
 in-dict; (b) attribute shortcuts that survive the dict gate as exact forms; (c)
 AttrCalibrator confirmations of commands actually submitted successfully under the
@@ -8390,7 +8423,7 @@ as mark triggers. Full phrases (your gown) and physical scope are retained: HHG 
 its washbasin vocabulary, and nothing is deleted or re-identified.
 
 **U5 Yourself suggestion breadth** (EquipmentUI/AttrCalibrator).
-- The editable lane (Enter:false) widens from the 11 RPG verbs to curated item verbs
+- The lexical lane (Enter:false; editable-only until the 2026-10-25 operator amendment, now submitted when chosen) widens from the 11 RPG verbs to curated item verbs
   intersected with the module dictionary.
 - Submit-ready gates are unchanged.
 - It is Z-only, as D205.
