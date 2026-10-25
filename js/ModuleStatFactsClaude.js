@@ -687,7 +687,10 @@ var ModuleStatFactsClaude = {
         // isOpen 9 = same OPENBIT state.
         // container 8 = source CONTBIT exact (27 objects); native (grok1 #5191 probe3/cache run-starcross-*): LOOK IN metal basket 40 and nest 6 read 8=1; CLOSE/OPEN toggle open 9 both ways on both (grok1 #5193: opening the nest reveals a red rod); tape library 71, space suit 144 and square 180 read 8=0 (cannot look inside). No openCapability (supporter unmapped would fail closed).
         // door 12 = source DOORBIT exact (14 static carriers, none a room); native (grok1 #5195 probe3/cache run-starcross-*): outer door 189, inner door 39 and red outer door 121 (all carry 12) open/close by name with OPENBIT 9 tracking state; the game drives them via airlock routines, so DOORBIT itself is not tested; metal basket 40 reads 12=0.
-        "attributeMap": { "animate": 11, "scenery": 23, "enterable": 15, "climbable": 22, "open": 9, "isOpen": 9, "container": 8, "door": 12 },
+        // supporter 28 = SURFACEBIT, static (no runtime FSET/FCLEAR in historicalsource/starcross; carriers red disk 66, blue disk 103, silver sphere 31, mouse 212; the catalog name-match missed 31/212); native (grok1 #5213 support/run-starcross-*): CLOSE red disk / blue disk / silver sphere read 28=1 and refuse ("You cannot close that."); CLOSE metal basket reads 28=0 and closes.
+        // openCapability: Open/Close for containers that are not surfaces (the disks/sphere carry CONTBIT but refuse CLOSE natively, grok1 #5213).
+        "openCapability": { "all": ["container"], "none": ["supporter"] },
+        "attributeMap": { "animate": 11, "scenery": 23, "enterable": 15, "climbable": 22, "open": 9, "isOpen": 9, "container": 8, "door": 12, "supporter": 28 },
         // Grok4124 design, new native two-owner proof: normal144 and tattered176; held library71/basket40 negative.
         "wornAttribute": 24
     },
