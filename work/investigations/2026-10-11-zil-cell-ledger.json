@@ -483,6 +483,10 @@
   "proper": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+  },
+  "static": {
+   "s": "S",
+   "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 41 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 37: it means not-yet-taken and is cleared on first take (#5199)."
   }
  },
  "Ballyhoo.z3.js": {
@@ -647,6 +651,10 @@
   "visited": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added. Shares TOUCHBIT with moved: reuse moved provenance."
+  },
+  "static": {
+   "s": "S",
+   "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 7 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 27: it means not-yet-taken and is cleared on first take (#5199)."
   }
  },
  "Deadline.z3.js": {
@@ -863,6 +871,10 @@
   "visited": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added. Shares TOUCHBIT with moved: reuse moved provenance."
+  },
+  "static": {
+   "s": "S",
+   "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 15 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 27: it means not-yet-taken and is cleared on first take (#5199)."
   }
  },
  "HollywoodHijinx.z3.js": {
@@ -1031,6 +1043,10 @@
   "pluralname": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+  },
+  "static": {
+   "s": "S",
+   "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 23 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 16: it means not-yet-taken and is cleared on first take (#5199)."
   }
  },
  "Moonmist.z3.js": {
@@ -1199,6 +1215,10 @@
   "pluralname": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+  },
+  "static": {
+   "s": "S",
+   "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 23 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 17: it means not-yet-taken and is cleared on first take (#5199)."
   }
  },
  "Borderzo.z5.js": {
@@ -1289,6 +1309,10 @@
   "pluralname": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+  },
+  "static": {
+   "s": "S",
+   "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 42 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 35: it means not-yet-taken and is cleared on first take (#5199)."
   }
  },
  "TheLurkingHorror.z3.js": {
@@ -1375,6 +1399,10 @@
   "visited": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added. Shares TOUCHBIT with moved: reuse moved provenance."
+  },
+  "static": {
+   "s": "S",
+   "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 24 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 4: it means not-yet-taken and is cleared on first take (#5199)."
   }
  },
  "Planetfall.z3.js": {
@@ -1571,6 +1599,10 @@
   "proper": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+  },
+  "static": {
+   "s": "S",
+   "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 23 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 7: it means not-yet-taken and is cleared on first take (#5199)."
   }
  },
  "Sorcerer.z3.js": {
@@ -2073,6 +2105,10 @@
   "female": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+  },
+  "static": {
+   "s": "UD",
+   "r": "grok1 #5203: static follows takeable (L:UD) as its TAKEBIT complement; reopen together with takeable."
   }
  },
  "Suspended.z3.js": {
@@ -2363,6 +2399,10 @@
   "female": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+  },
+  "static": {
+   "s": "S",
+   "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 22 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 10: it means not-yet-taken and is cleared on first take (#5199)."
   }
  },
  "Sherlock.z5.js": {
