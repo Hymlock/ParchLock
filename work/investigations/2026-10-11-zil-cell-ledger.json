@@ -787,8 +787,8 @@
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (static object carrier; TRANSBIT), so not N/A; no native target-named evidence yet. Stays U."
   },
   "visited": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "NC",
+   "r": "group decision A (#5168) extended to this row, codex ACCEPT #5308 (grok1 #5311): flag present in source, but no useful semantic consumer of decoded attrs.visited in current js/ outside the generic AttributeSchema profile/attrs decoding (generic status candidate list, MapTopology prose and StatTracker score parsing are not attrs.visited consumers). NOT complete, never NA/feature-absent; generic decoding caveat stands; reopen when a consumer is added. Shares TOUCHBIT with moved: reuse moved provenance (grok1 probe5/moved)."
   },
   "static": {
    "s": "S",
@@ -1159,8 +1159,8 @@
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/moonmist@c85885f (15 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 256 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
   },
   "pluralname": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (static object carrier; PLURALBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "NC",
+   "r": "group decision A (#5168) extended to this row, codex ACCEPT #5308 (grok1 #5311): flag present in source, but no useful semantic consumer of decoded attrs.pluralname in current js/ outside the generic AttributeSchema profile/attrs decoding. NOT complete, never NA/feature-absent; generic decoding caveat stands; reopen when a consumer is added."
   },
   "static": {
    "s": "S",
@@ -1535,8 +1535,8 @@
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
   },
   "visited": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "NC",
+   "r": "group decision A (#5168) extended to this row, codex ACCEPT #5308 (grok1 #5311): flag present in source, but no useful semantic consumer of decoded attrs.visited in current js/ outside the generic AttributeSchema profile/attrs decoding (generic status candidate list, MapTopology prose and StatTracker score parsing are not attrs.visited consumers). NOT complete, never NA/feature-absent; generic decoding caveat stands; reopen when a consumer is added. Shares TOUCHBIT with moved: reuse moved provenance (grok1 probe5/moved)."
   },
   "static": {
    "s": "S",
@@ -1649,8 +1649,8 @@
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TRANSBIT), so not N/A; no native target-named evidence yet. Stays U."
   },
   "female": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (static object carrier; FEMALE/FEMALEBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "NC",
+   "r": "group decision A (#5168) extended to this row, codex ACCEPT #5308 (grok1 #5311): flag present in source, but no useful semantic consumer of decoded attrs.female in current js/ outside the generic AttributeSchema profile/attrs decoding. NOT complete, never NA/feature-absent; generic decoding caveat stands; reopen when a consumer is added."
   },
   "openable": {
    "s": "NA",
@@ -1943,8 +1943,8 @@
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
   },
   "visited": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "NC",
+   "r": "group decision A (#5168) extended to this row, codex ACCEPT #5308 (grok1 #5311): flag present in source, but no useful semantic consumer of decoded attrs.visited in current js/ outside the generic AttributeSchema profile/attrs decoding (generic status candidate list, MapTopology prose and StatTracker score parsing are not attrs.visited consumers). NOT complete, never NA/feature-absent; generic decoding caveat stands; reopen when a consumer is added. Shares TOUCHBIT with moved: reuse moved provenance (grok1 probe5/moved)."
   },
   "worn": {
    "s": "U",
@@ -2179,8 +2179,8 @@
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
   },
   "visited": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "NC",
+   "r": "group decision A (#5168) extended to this row, codex ACCEPT #5308 (grok1 #5311): flag present in source, but no useful semantic consumer of decoded attrs.visited in current js/ outside the generic AttributeSchema profile/attrs decoding (generic status candidate list, MapTopology prose and StatTracker score parsing are not attrs.visited consumers). NOT complete, never NA/feature-absent; generic decoding caveat stands; reopen when a consumer is added. Shares TOUCHBIT with moved: reuse moved provenance (grok1 probe5/moved)."
   },
   "openable": {
    "s": "NA",
@@ -2359,8 +2359,8 @@
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LIGHTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 1 read/syntax refs, 5 commented. Source https://github.com/historicalsource/wishbringer@e46c2ed (23 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 352 objects, room+inventory): no /^(turn|switch) (on|off)\\b/ verb offered."
   },
   "female": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): source scan PASS, but grok2 kept it conservative U (gender word handling unverified natively). Stays U."
+   "s": "NC",
+   "r": "group decision A (#5168) extended to this row, codex ACCEPT #5308 (grok1 #5311): flag present in source, but no useful semantic consumer of decoded attrs.female in current js/ outside the generic AttributeSchema profile/attrs decoding. NOT complete, never NA/feature-absent; generic decoding caveat stands; reopen when a consumer is added."
   },
   "worn": {
    "s": "U",
@@ -2485,8 +2485,8 @@
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
   },
   "visited": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "NC",
+   "r": "group decision A (#5168) extended to this row, codex ACCEPT #5308 (grok1 #5311): flag present in source, but no useful semantic consumer of decoded attrs.visited in current js/ outside the generic AttributeSchema profile/attrs decoding (generic status candidate list, MapTopology prose and StatTracker score parsing are not attrs.visited consumers). NOT complete, never NA/feature-absent; generic decoding caveat stands; reopen when a consumer is added. Shares TOUCHBIT with moved: reuse moved provenance (grok1 probe5/moved)."
   },
   "transparent": {
    "s": "NA",
