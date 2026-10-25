@@ -32,7 +32,9 @@ var ModuleStatFactsClaude = {
         // native, test_attr recorded only during the named command (grok1/talk/talk-probe.json, no relocation): 'robot, hello' / 'tell robot' @96 test robot 58:30 TRUE ("My programming is insufficient..."), 'demon, hello' @273 tests demon 26:30 TRUE ("The genie grins demonically, but says nothing."); 'tell teapot' @9 tests china teapot 32:30 FALSE ("You can't talk to the china teapot!").
         // Source V-TELL / parser addressing tests this bit and refuses non-actors with "You can't talk to ...".
         // climbable 23 = CLIMBBIT exact; single carrier stairs 188 (whole-source); native bare CLIMB STAIRS from Oddly-angled Room -> Stairway; CLIMB LAMP refused.
-        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30, "talkable": 30, "wearable": 3, "edible": 20, "light": 31, "enterable": 27, "door": 22, "on": 19, "climbable": 23 },
+        // moved 2 = TOUCHBIT (native, codex #5178 resume-20261020/moved/packet-zork2.json): TAKE sword 23 and lamp 76 set bit 2; bridge 245 stays clear.
+        // transparent 7 = source TRANSBIT exact (6 objects, fp 0 fn 0; historicalsource 3da9661); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
+        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30, "talkable": 30, "wearable": 3, "edible": 20, "light": 31, "enterable": 27, "door": 22, "on": 19, "climbable": 23, "moved": 2, "transparent": 7 },
         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
         // (source: ROBOT, CERBERUS, UNICORN (2dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] }
@@ -64,7 +66,8 @@ var ModuleStatFactsClaude = {
         // scenery 12 = NDESCBIT (tp 48 fp 0 fn 1; grok1 scenery3, operator scenery ruling 11:45): LOOK omits liquor/drink/mirror/bar/chair, EXAMINE works.
         "capabilityForms": { "edible": [{ "objectId": 103, "scope": { "containerObject": 109, "openAttribute": 21 }, "actions": [{ "verb": "drink" }] }] },
         "attributeObjects": { "edible": [103] },
-        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18, "on": 17, "door": 25, "scenery": 12 },
+        // transparent 19 = source TRANSBIT exact (9 objects, fp 0 fn 0; historicalsource 2febadb); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
+        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18, "on": 17, "door": 25, "scenery": 12, "transparent": 19 },
         // WORNBIT 13 (grok1 2026-10-17, g1-ctA/B Jericho replay, test_attr recorded only during the named command): 'remove watch' @287 tests
         // wrist watch 6:13 TRUE x3 ("You are now holding the wrist watch.") and the RAM scan after it drops 6 from the owners (UNWEAR FCLEARs);
         // 'remove wet suit' @287 tests 139:13 TRUE; 'wear flippers' @284 tests 138:13 FALSE before and TRUE after; 'remove flashlight' @291
@@ -114,7 +117,8 @@ var ModuleStatFactsClaude = {
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         // door 2 = source DOORBIT exact; native (grok2 r4-grok2/doorbit/Wishbringer.z3.js.json strict): toll gate 190 and stump 19 OPEN/CLOSE toggle OPENBIT 25; held small stone refuses ("How can you do that to a small stone?").
         // transparent 23 = source TRANSBIT exact; native (grok1 #5073 grok1/transp/wishbringer.json): locked display case 209 "contains a sculpture", glass case 235 T=1 at the same pc; closed metal can 229 and envelope 43 (no bit) "is closed".
-        "attributeMap": { "container": 4, "open": 25, "isOpen": 25, "animate": 18, "supporter": 27, "wearable": 22, "door": 2, "transparent": 23 }
+        // talkable 18 = ACTORBIT exact 21/21; native (grok1 #5181 talk2/cache/run-wishbringer-*): TALK TO / ASK Ms. Voss 193 reads 18=1 and answers; envelope 43 reads 0 and refuses; Mr. Crisp, gravedigger, old woman, Alexis, vulture, troll, platypus and King Anatinus answer natively (actor routines intercept before the bit test).
+        "attributeMap": { "container": 4, "open": 25, "isOpen": 25, "animate": 18, "supporter": 27, "wearable": 22, "door": 2, "transparent": 23, "talkable": 18 }
     },
     // Zork III (ZIL): OPENBIT 12: OPEN sets 12 on secret door, stone door, wooden door; CLOSE clears (wooden door). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
     // WEARBIT 4 original scene (2026-10-11-zil-walk-n4.json): TAKE tests 4 TRUE on golden amulet 39, golden ring 82; FALSE on
@@ -150,7 +154,8 @@ var ModuleStatFactsClaude = {
         "capabilityForms": { "switchable": ["turn on", "turn off"] },
 // scenery 25 = NDESCBIT (grok1 2026-10-24 user scenery ruling 11:45; g1-batch look + test_attr/print_obj trace, grok1/batch/cache-scenery4|5 judge-scenery.json): pos tree 32, rope 33, shiny object 35, reeds 44, runes 132 (look omits, pc 25769); neg man 27 (listed, same pc). Listing routine: historicalsource 3ec9ed4 gverbs.zil:1824.
         // climbable 24 = CLIMBBIT exact; native bare (grok1 #5082): CLIMB STAIRS 216 Aqueduct View -> Lake Shore, bit read 1; CLIMB LAMP "Bizarre!". Ladder 23 unreached (low risk).
-        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10, "supporter": 26, "on": 15, "edible": 5, "door": 9, "scenery": 25, "climbable": 24 } // on 15 (codex #4333: lamp 198 +/-15, torch 41 -15 native)
+        // moved 27 = TOUCHBIT (native, codex #5178 resume-20261020/moved/packet-zork3.json; the source catalog candidate 0 is wrong): TAKE lamp 198 and waybread 34 set bit 27; stairs 216 stay clear.
+        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10, "supporter": 26, "on": 15, "edible": 5, "door": 9, "scenery": 25, "climbable": 24, "moved": 27 } // on 15 (codex #4333: lamp 198 +/-15, torch 41 -15 native)
     },
     // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
@@ -187,7 +192,9 @@ var ModuleStatFactsClaude = {
         // scenery 6 = NDESCBIT (grok1 2026-10-24, user ruling 11:45 ET): native look in Jericho, object directly in room with NDESCBIT set, look omits it, trace shows the listing routine (historicalsource 9f779e8 verbs.zil:3084 PRINT-CONTENTS) testing NDESCBIT on that object at pc 46920/46913 during that look, examine works. Positives 22:button, 168:crowd; negative 49:barred passage, 92:turnstile, 208:gorilla suit (listed, bit clear, same pc). work/investigations/grok1/batch/cache-scenery3 run-ballyhoo.json, judge-scenery.json. Take unaffected (D214 TAKEBIT owns takeable).
         // enterable 30 = source VEHBIT exact 5/5; native (grok1 #5030 grok1/enter/ballyhoo.json): ENTER NET -> parent 3, ENTER SOFA -> 20, ENTER LONG LINE -> 80; ENTER CHANDELIER refused.
         // locked 10 = LOCKEDBIT exact; native (grok1 #5096 grok1/locked/ballyhoo-locked.json): compartment 213 and office door 100 read 10=1 ("The office door is locked."). No room carries 10 (low risk, no negative).
-        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21, "on": 24, "door": 27, "scenery": 6, "enterable": 30, "locked": 10 },
+        // talkable 31 = ACTORBIT exact (= animate); native (grok1 #5176 talk2/cache/run-ballyhoo-*): TALK TO Chuckles 113 and guard 207 read 31=1 and answer; sunglasses 32 reads 0 and refuses.
+        // transparent 13 = source TRANSBIT exact (7 objects, fp 0 fn 0; historicalsource 9f779e8); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
+        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21, "on": 24, "door": 27, "scenery": 6, "enterable": 30, "locked": 10, "talkable": 31, "transparent": 13 },
         // Native i (walkthrough step 90) tests bit6 TRUE on pink dot 231 / blue dot 71 inside the open ticket 122 and
         // omits them; tests it FALSE on bucket 65, meat 102, bullwhip 16, ticket 122 and prints them. Source NDESCBIT 6
         // exact (114/114).
@@ -228,7 +235,8 @@ var ModuleStatFactsClaude = {
         // wornAttribute 21 = worn state (grok1 #5090 grok1/open/lgop-wear.json): WEAR WHITE SUIT sets 21, TAKE OFF clears it; WEARBIT 20 never changes (audit r26).
         "wornAttribute": 21,
         // locked 9 = LOCKEDBIT exact; native (grok1 #5096 grok1/locked/lgop-locked.json): back door 155 and igloo door 59 read 9=1 ("It's locked. Very locked."); unlocked cabin door 71 reads 0. No room carries 9.
-        "attributeMap": { "open": 15, "isOpen": 15, "supporter": 17, "animate": 31, "enterable": 29, "container": 24, "door": 26, "on": 30, "wearable": 20, "locked": 9 }
+        // talkable 31 = ACTORBIT exact (= animate); native (grok1 #5175 talk2/cache/run-lgop-*): TALK TO Joe 117, King Mitre 3, proprietor 123 read 31=1 and answer; flashlight 110 reads 0, "You can't talk to a flashlight!".
+        "attributeMap": { "open": 15, "isOpen": 15, "supporter": 17, "animate": 31, "enterable": 29, "container": 24, "door": 26, "on": 30, "wearable": 20, "locked": 9, "talkable": 31 }
     },
     // Spellbreaker (ZIL): Q8 player root = constant PLAYER object 52 (historicalsource/spellbreaker 6f83ba4 globals.zil 324 OBJECT PLAYER
     // DESC "it"). No PLAYER global; WINNER G197 is mutable (globals.zil 923/928 BELBOZ, verbs.zil 334/359 PRSO). Native TAKE puts the
@@ -277,7 +285,9 @@ var ModuleStatFactsClaude = {
         // door 24 = source DOORBIT exact; native (r3-claude/doorbit): cell door 202 toggles; iron gate 232 door-specific refusal.
         // enterable 29 = source VEHBIT exact; single carrier in object table (whole-source exception); native (grok1 #5066 grok1/enter/enchanter.json): ENTER FOURPOSTER BED -> in bed 133; bedpost refuses.
         // climbable 26 = CLIMBBIT exact; single census carrier stairs 168 with bit read 26=1 (grok1 #5081 grok1/climb/enchanter.json); at step 28 climb walks UP generically, so the move is not object-specific; CLIMB LANTERN "Bizarre!"
-        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8, "door": 24, "enterable": 29, "climbable": 26 },
+        // moved 15 = TOUCHBIT (native, codex #5183 resume-20261020/moved/packet-enchanter.json): TAKE bread 41 and jug 19 set bit 15 (clear -> set); object 7 stays clear.
+        // transparent 10 = source TRANSBIT exact (16 objects, fp 0 fn 0; historicalsource 472c3b9); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
+        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8, "door": 24, "enterable": 29, "climbable": 26, "moved": 15, "transparent": 10 },
         "openCapability": { "all": ["container"], "none": ["supporter"] },
     },
     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
@@ -288,7 +298,8 @@ var ModuleStatFactsClaude = {
         // enterable 14 = source VEHBIT exact; native (r3-claude/vehbit + vehbit2): army cot 51 and barge 211 (GET IN/ENTER move the player inside; GET OUT returns; bare EXIT refused). Harmless extras: beam 104 refuses entry, mast hole 108 untested.
         // climbable 16 = CLIMBBIT exact; native bare (grok1 #5082): CLIMB ROPE 32 contextual ("while you are holding the rope"), bit read 1; knapsack (bit 0) "You can't climb that!". Fatal climbs offered per operator ruling 2026-10-24.
         // door 9 = source DOORBIT exact (7 owners); native (codex #5132 resume/door-infidel-qualified.json, digest 91f78d4b): annex door 185 OPEN sets open 25 (fresh 208-command prefix), inner door 162 toggles (grok2 packet); pickaxe 37 (bit 9 false) refused.
-        "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25, "edible": 7, "enterable": 14, "climbable": 16, "door": 9 },
+        // moved 29 = TOUCHBIT (native, codex #5183 resume-20261020/moved/packet-infidel.json): TAKE pickaxe 37 and shovel 33 set bit 29; object 38 stays clear.
+        "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25, "edible": 7, "enterable": 14, "climbable": 16, "door": 9, "moved": 29 },
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         // WEARBIT state22: native knapsack31/ring2 worn positives, shovel33 refusal; Grok4127 proposal independently replayed by Codex October20.
         "wornAttribute": 22
@@ -320,7 +331,8 @@ var ModuleStatFactsClaude = {
         "capabilityForms": { "switchable": ["turn on", "turn off"] },
         // switchable (grok1 #5171 switch2/cache sosw*): brass lantern 192 TURN ON sets ONBIT 11, TURN OFF clears it; crate 145 "You can't turn that on." Single holdable LIGHTBIT owner on the walk.
         "activationState": { "onObjects": [192] },
-        "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31, "talkable": 31, "wearable": 21, "on": 11, "door": 24, "enterable": 29, "climbable": 8 },
+        // transparent 5 = source TRANSBIT exact (9 objects, fp 0 fn 0; historicalsource 6417e1e); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
+        "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31, "talkable": 31, "wearable": 21, "on": 11, "door": 24, "enterable": 29, "climbable": 8, "transparent": 5 },
         // Native amulet/suit inventory marks direct-held WEARBIT gear worn;
         // amulet dropped or nested in the carried box is not worn (no state bit).
         "equipmentState": { "wornWhen": "wearable-direct-player" },
@@ -348,7 +360,8 @@ var ModuleStatFactsClaude = {
         // the Open/Close none list (tables, desks, mantel, workbench are not openable).
         // door 27 = source DOORBIT exact; native (codex door-suspect-native.json): east/west entry hall doors 241/240 toggle 13; ribbon refuses.
         // enterable 28 = source VEHBIT exact 9/9; native (grok1 #5014 grok1/enter/suspect.json): ENTER CHAIR -> player in chair 153, SIT ON WINDOW SEAT -> 233; ENTER BOOKCASE refused.
-        "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15, "door": 27 },
+        // transparent 7 = source TRANSBIT exact (10 objects, fp 0 fn 0; historicalsource a18e100); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
+        "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15, "door": 27, "transparent": 7 },
         "inventoryHiddenAttribute": 19,
         "inventoryHiddenPreservesWorn": true
     },
@@ -432,7 +445,8 @@ var ModuleStatFactsClaude = {
         // are rooms. FAIL-CLOSED: TOPAZ carries CONTBIT + SURFACEBIT + PERSON (bad.zil:3249), so animate joins the openCapability none list.
         // Grok4128: native WEAR chronograph81 and parka244 test41 true; oil can4 false/refused.
         // door 45 = source DOORBIT exact; native (codex door-border-qualified.json): compartment 290 and lavatory 328 OPEN/CLOSE reverse OPENBIT 34; front-facing seat refuses ("Don't even consider it").
-        "attributeMap": { "container": 43, "supporter": 36, "open": 34, "isOpen": 34, "animate": 47, "wearable": 41, "door": 45 },
+        // transparent 32 = source TRANSBIT exact (5 objects, fp 0 fn 0; historicalsource 5c80126); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
+        "attributeMap": { "container": 43, "supporter": 36, "open": 34, "isOpen": 34, "animate": 47, "wearable": 41, "door": 45, "transparent": 32 },
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
         // Identity food, no FOODBIT (codex border-food-evidence.json, design border-food-consumer-compared-proposal.md): chapter 3
         // held soda 200 and pretzel 205 each succeed on native EAT and DRINK (source FOOD-F handler); held cigarette 101 refuses
@@ -500,7 +514,8 @@ var ModuleStatFactsClaude = {
         // talkable 42 = the proven animate bit (grok1 2026-10-24, item 4 talkable batch; same mapping as Spellbreaker/Stationfall): talk-command scoped,
         // native, test_attr recorded only during the named command (grok1/talk/talk-probe.json, no relocation): 'ford, hello' @18 tests Ford Prefect 20:42 TRUE ("Hello to you too."), 'barman, hello' / 'tell barman' @22 test barman 230:42 TRUE, 'prosser, hello' @13 tests Mr. Prosser 155:42 TRUE; 'tell gown' @18 tests your gown 206:42 FALSE ("You can't talk to your gown!").
         // Source V-TELL / parser addressing tests this bit and refuses non-actors with "You can't talk to ...".
-        "attributeMap": { "open": 39, "isOpen": 39, "animate": 42, "talkable": 42, "container": 40, "supporter": 23, "wearable": 25, "enterable": 28 },
+        // transparent 33 = source TRANSBIT exact (7 objects, fp 0 fn 0; historicalsource 1288855); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
+        "attributeMap": { "open": 39, "isOpen": 39, "animate": 42, "talkable": 42, "container": 40, "supporter": 23, "wearable": 25, "enterable": 28, "transparent": 33 },
         "wornAttribute": 24,
         // Native i (walkthrough step 60) tests bit44 TRUE on guarantee 18, green 128 / red 197 button inside the Sub-Etha
         // device 211 and omits them; FALSE on satchel, gown, fluff, thing, device, all printed. Source NDESCBIT 44 exact (77/77).
@@ -566,7 +581,8 @@ var ModuleStatFactsClaude = {
 // scenery 16 = NDESCBIT (grok1 2026-10-24 user scenery ruling 11:45; g1-batch look + test_attr/print_obj trace, grok1/batch/cache-scenery4|5 judge-scenery.json): pos small pond 14, orchids 104, bazooka 114, doorbell 228 (look omits, pc 36783); neg business card 63, Status Line 181 (listed, same pc). Listing routine: historicalsource e93d085 verbs.zil:211 DESCRIBABLE?.
         // open 25 = OPENBIT (tp19 fp0 fn1, under-report only); native (grok1 #5090 grok1/open/hollywood-open.json): mailbox 225 reads 25=1 and CLOSE clears it; oak door 117 reads 0 while locked; doorbell negative.
         // isOpen 25 = same OPENBIT state.
-        "attributeMap": { "wearable": 22, "animate": 18, "supporter": 27, "door": 10, "on": 20, "scenery": 16, "open": 25, "isOpen": 25 },
+        // moved 28 = TOUCHBIT (native, codex #5183 resume-20261020/moved/packet-hollywoodhijinx.json): TAKE paper 63 and card 113 set bit 28; object 44 stays clear.
+        "attributeMap": { "wearable": 22, "animate": 18, "supporter": 27, "door": 10, "on": 20, "scenery": 16, "open": 25, "isOpen": 25, "moved": 28 },
         // WORNBIT state14: independent native ring127/skis188 wear+remove, flashlight123 refused; Grok4120 proposal, Codex October20 audit.
         "wornAttribute": 14
     },
@@ -948,7 +964,8 @@ var ModuleStatFactsClaude = {
         // locked 19 = LOCKED state (codex lurking-locked19-reconciled-qualified.json, grok2 ACCEPT #4990): padlock 135 and roof door 163 unlock/lock/unlock toggle 19; held assignment unlock refused. No lockable capability.
         // switchable (grok1 #5170 switch2/cache/run-lurking-*): flashlight 132 TURN OFF clears ONBIT 15, TURN ON sets it ("clicks on/off"); crowbar 156 and gloves 203 refuse. Single holdable LIGHTBIT owner on the walk (whole-source exception).
         "activationState": { "onObjects": [132] },
-        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31, "on": 15, "transparent": 5, "openable": 2, "enterable": 29, "door": 25, "locked": 19 },
+        // moved 6 = TOUCHBIT (native, codex #5183 resume-20261020/moved/packet-lurkinghorror.json): TAKE Coke 58 and carton 61 set bit 6 (ITAKE via SCORE-OBJECT); object 2 stays clear.
+        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31, "on": 15, "transparent": 5, "openable": 2, "enterable": 29, "door": 25, "locked": 19, "moved": 6 },
         // D232 local globals (claude census + codex #4618/#4621/#4632, grok2 #4637): room GLOBAL property 16 (byte ids),
         // holder LOCAL-GLOBALS 59; native: EXAMINE ROOF DOOR succeeds from TopFloor 195 (prop16 [163]), refused from
         // ComputerRoom 176; Tomb 9 padlock. Room ONBIT 15 positive-only (pzlurking trace TRUE 176/137/33, FALSE + pitch-black
@@ -1019,7 +1036,8 @@ var ModuleStatFactsClaude = {
         // transparent 12 = source TRANSBIT exact; native (grok1 #5039 grok1/transp/zork1.json): closed glass bottle 236 LOOK IN lists water, closed trophy case 194 takes the contents path; closed brown sack 224 (no bit) "is closed".
             // switchable (grok1 #5162 grok1/switch2): brass lantern 164 TURN ON/OFF toggles ONBIT 20 (LIGHTBIT 31 read 1 each time); candles 147 TURN OFF clears 20 natively (TURN ON asks for a match: native reply); rope 129 (31=0) "You can't turn that on." Torch 104 excluded: it cannot be put out.
             "activationState": { "onObjects": [164, 147] },
-            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "talkable": 30, "edible": 21, "light": 31, "door": 23, "scenery": 14, "climbable": 24, "transparent": 12 },
+        // moved 3 = TOUCHBIT (native, codex #5178 resume-20261020/moved/packet-zork1.json): TAKE leaflet 161 and egg 87 each set exactly bit 3; door 181 stays clear. Also set on opened containers (TOUCHBIT, not custody).
+            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "talkable": 30, "edible": 21, "light": 31, "door": 23, "scenery": 14, "climbable": 24, "transparent": 12, "moved": 3 },
         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
         // (source: THIEF (1dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
