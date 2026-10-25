@@ -87,6 +87,10 @@
   "visited": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added. Shares TOUCHBIT with moved: reuse moved provenance."
+  },
+  "wornAttribute": {
+   "s": "NA",
+   "r": "not applicable per Claude #5242 (grok #5214 A1, Witness #5207 precedent): no WORNBIT runtime worn state in source (WEARBIT, where present, is wearability only). verify: grok1/ledger/verify-a-batch.txt"
   }
  },
  "Zork2-TheWizardofFrobozz.z3.js": {
@@ -181,6 +185,14 @@
   "visited": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added. Shares TOUCHBIT with moved: reuse moved provenance."
+  },
+  "scenery": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5216/#5217): NDESCBIT also sits on takeable objects (and is toggled at runtime), so it is not a static scenery marker. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "wornAttribute": {
+   "s": "NA",
+   "r": "not applicable per Claude #5242 (grok #5214 A1, Witness #5207 precedent): no WORNBIT runtime worn state in source (WEARBIT, where present, is wearability only). verify: grok1/ledger/verify-a-batch.txt"
   }
  },
  "Zork3-TheDungeonMaster.z3.js": {
@@ -393,6 +405,18 @@
   "visited": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added. Shares TOUCHBIT with moved: reuse moved provenance."
+  },
+  "switchable": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5214 A3): LIGHTBIT 22 on 32 objects, 30 ROOMS. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "scenery": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5216/#5217): NDESCBIT also sits on takeable objects (and is toggled at runtime), so it is not a static scenery marker. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "wornAttribute": {
+   "s": "NA",
+   "r": "not applicable per Claude #5242 (grok #5214 A1, Witness #5207 precedent): no WORNBIT runtime worn state in source (WEARBIT, where present, is wearability only). verify: grok1/ledger/verify-a-batch.txt"
   }
  },
  "Hitchhik.z5.js": {
@@ -777,6 +801,14 @@
   "openable": {
    "s": "NA",
    "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
+  },
+  "on": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5214 A2, Hitchhiker precedent): ONBIT carriers are overwhelmingly ROOMS (lit-room family), not an on/off state. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "wornAttribute": {
+   "s": "NA",
+   "r": "not applicable per Claude #5242 (grok #5214 A1, Witness #5207 precedent): no WORNBIT runtime worn state in source (WEARBIT, where present, is wearability only). verify: grok1/ledger/verify-a-batch.txt"
   }
  },
  "Infidel.z3.js": {
@@ -875,6 +907,14 @@
   "static": {
    "s": "S",
    "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 15 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 27: it means not-yet-taken and is cleared on first take (#5199)."
+  },
+  "on": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5214 A2, Hitchhiker precedent): ONBIT carriers are overwhelmingly ROOMS (lit-room family), not an on/off state. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "scenery": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5216/#5217): NDESCBIT also sits on takeable objects (and is toggled at runtime), so it is not a static scenery marker. verify: grok1/ledger/verify-a-batch.txt"
   }
  },
  "HollywoodHijinx.z3.js": {
@@ -1047,6 +1087,10 @@
   "static": {
    "s": "S",
    "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 23 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 16: it means not-yet-taken and is cleared on first take (#5199)."
+  },
+  "scenery": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5216/#5217): NDESCBIT also sits on takeable objects (and is toggled at runtime), so it is not a static scenery marker. verify: grok1/ledger/verify-a-batch.txt"
   }
  },
  "Moonmist.z3.js": {
@@ -1141,6 +1185,10 @@
   "female": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+  },
+  "door": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5218): DOORBIT 7 is on 39 objects, 34 of them ROOMS; front door 120 @23 read 1, tweed outfit 0; bit is not a door marker. verify: grok1/ledger/verify-a-batch.txt"
   }
  },
  "PlunderedHearts.z3.js": {
@@ -1219,6 +1267,14 @@
   "static": {
    "s": "S",
    "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 23 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 17: it means not-yet-taken and is cleared on first take (#5199)."
+  },
+  "switchable": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5223): LIGHTBIT 25 objects (torch 9, chandelier 59) are fixed and the native toggle is refused (\"It already is.\"); bare turn off finds them via FIND LIGHTBIT only; no working switch semantics. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "on": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5219): ONBIT 29 on 61 objects, 56 ROOMS (light family), 0 takeable. verify: grok1/ledger/verify-a-batch.txt"
   }
  },
  "Borderzo.z5.js": {
@@ -1403,6 +1459,10 @@
   "static": {
    "s": "S",
    "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 24 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 4: it means not-yet-taken and is cleared on first take (#5199)."
+  },
+  "scenery": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5216/#5217): NDESCBIT also sits on takeable objects (and is toggled at runtime), so it is not a static scenery marker. verify: grok1/ledger/verify-a-batch.txt"
   }
  },
  "Planetfall.z3.js": {
@@ -1489,6 +1549,10 @@
   "clothing": {
    "s": "S",
    "r": "claude 2026-10-24 (grok1 #5187): clothing is covered by wearable. AttributeSchema.js:729 sets attrs.clothing with attrs.wearable on the same WEARBIT, so this cell follows the title's decided wearable cell (F). No separate fact."
+  },
+  "on": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5214 A2, Hitchhiker precedent): ONBIT carriers are overwhelmingly ROOMS (lit-room family), not an on/off state. verify: grok1/ledger/verify-a-batch.txt"
   }
  },
  "Seastalker.z3.js": {
@@ -1603,6 +1667,14 @@
   "static": {
    "s": "S",
    "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 23 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 7: it means not-yet-taken and is cleared on first take (#5199)."
+  },
+  "scenery": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5216/#5217): NDESCBIT also sits on takeable objects (and is toggled at runtime), so it is not a static scenery marker. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "wornAttribute": {
+   "s": "NA",
+   "r": "not applicable per Claude #5242 (grok #5214 A1, Witness #5207 precedent): no WORNBIT runtime worn state in source (WEARBIT, where present, is wearability only). verify: grok1/ledger/verify-a-batch.txt"
   }
  },
  "Sorcerer.z3.js": {
@@ -1697,6 +1769,14 @@
   "proper": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+  },
+  "scenery": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5216/#5217): NDESCBIT also sits on takeable objects (and is toggled at runtime), so it is not a static scenery marker. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "wornAttribute": {
+   "s": "NA",
+   "r": "not applicable per Claude #5242 (grok #5214 A1, Witness #5207 precedent): no WORNBIT runtime worn state in source (WEARBIT, where present, is wearability only). verify: grok1/ledger/verify-a-batch.txt"
   }
  },
  "Spellbreaker.z3.js": {
@@ -1775,6 +1855,10 @@
   "visited": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added. Shares TOUCHBIT with moved: reuse moved provenance."
+  },
+  "wornAttribute": {
+   "s": "NA",
+   "r": "not applicable per Claude #5242 (grok #5214 A1, Witness #5207 precedent): no WORNBIT runtime worn state in source (WEARBIT, where present, is wearability only). verify: grok1/ledger/verify-a-batch.txt"
   }
  },
  "Starcross.z3.js": {
@@ -1955,6 +2039,10 @@
   "pluralname": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+  },
+  "on": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5214 A2, Hitchhiker precedent): ONBIT carriers are overwhelmingly ROOMS (lit-room family), not an on/off state. verify: grok1/ledger/verify-a-batch.txt"
   }
  },
  "Suspect.z3.js": {
@@ -2109,6 +2197,10 @@
   "static": {
    "s": "UD",
    "r": "grok1 #5203: static follows takeable (L:UD) as its TAKEBIT complement; reopen together with takeable."
+  },
+  "scenery": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5216/#5217): NDESCBIT also sits on takeable objects (and is toggled at runtime), so it is not a static scenery marker. verify: grok1/ledger/verify-a-batch.txt"
   }
  },
  "Suspended.z3.js": {
@@ -2293,6 +2385,14 @@
   "proper": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+  },
+  "on": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5214 A2, Hitchhiker precedent): ONBIT carriers are overwhelmingly ROOMS (lit-room family), not an on/off state. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "scenery": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5242 (grok #5216/#5217): NDESCBIT also sits on takeable objects (and is toggled at runtime), so it is not a static scenery marker. verify: grok1/ledger/verify-a-batch.txt"
   }
  },
  "TheWitness.z3.js": {
