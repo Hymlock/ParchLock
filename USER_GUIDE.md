@@ -145,10 +145,10 @@ ParchLock's icon is a storybook with one of the four opening scenes on its left
 page.
 
 - **Android:** ParchLock offers a rotating home-screen widget. It starts at
-  **2 ? 2**. Touch and hold it, then drag the resize handles to choose a size
-  from **1 ? 1 to 4 ? 4**, subject to your launcher's grid. Tap the book to open
+  **2 × 2**. Touch and hold it, then drag the resize handles to choose a size
+  from **1 × 1 to 4 × 4**, subject to your launcher's grid. Tap the book to open
   ParchLock. Its picture changes once per fresh app launch; Home/return leaves
-  it unchanged. **Options ? App icon** can add or update it later. If automatic
+  it unchanged. **Options → App icon** can add or update it later. If automatic
   placement is unsupported, add ParchLock from your launcher's widget list.
   Once a widget exists, ParchLock disables its old rotating shortcut. Android
   does not let the app remove that shortcut or your ordinary app icon; remove
