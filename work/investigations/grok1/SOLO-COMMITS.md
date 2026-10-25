@@ -17,6 +17,7 @@ Doc check before each item: PRODUCTION_PLAN.md / ARCHITECTURE_UML.md (no product
 
 - 2026-10-25 16:36:30 -0400: ParchLock-dev.apk rebuilt with the existing `build-android.bat dev` from HEAD 8281fc2 (app-affecting change: 586fe85 r38 facts). Facts file set to HEAD for the build (bundled assets + dist facts sha256 782BBD9B...B621E7), then Claude's dirty file restored byte-identical (637DEDCA...49409F2). APK sha256 59DA1E53...7E081C3A, 88,063,232 bytes. Earlier 16:31 attempts failed at make-dist ("Could not replace ParchLock-dist", folder held by another worker's process; released by user).
 
+- 2026-10-25 18:44:30 -0400: ParchLock-dev.apk rebuilt with the existing `build-android.bat dev` from HEAD ec1d0a7 (radial auto-submit, grok2 ACCEPT #5322). Claude's dirty js/ModuleStatFactsClaude.js set to HEAD for the build, then restored byte-identical (637DEDCA...49409F2). APK sha256 76B35DB1...4C7DC592, 88,029,935 bytes; bundled public/js/Actionable.js contains activatePrimary.
 ## Known harness failures (predate tonight, not fixed)
 - knapsack-actions 4/1 and zil-actor-open 6/1: introduced by a8de5f8 (state-correct Open/Close); a8de5f8~1 passes 5/0. Harness expectation (both Open and Close at once) looks stale.
 - zil-authored-edible: AssertionError line 32 at clean HEAD and in the apk74 tree.
