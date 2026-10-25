@@ -84,3 +84,7 @@ Read this board before starting work; post a bus message to claude when a packet
 - Suspect transparent actors: actors that are container+TRANSBIT expose carried items (Alicia 80 -> wet overcoat 74 gets
   open/close/search). Harmless wrong option (audit-r33 note 2); later check. Note: transparent also makes contents of
   closed see-through containers discovered/underlined, not only Take-suppressed (audit-r33 note 1).
+- Inventory-hidden subtree (codex 2026-10-25, NOT reproduced natively): Zork-family PRINT-CONT hides an NDESC parent but
+  can list its visible contents, while ZRamReader.js:2808 skips the whole subtree. Precondition: no inventoryHiddenAttribute
+  fact for a title whose inventory recurses into hidden parents (Zork trilogy; LGOP/Stationfall DESCRIBE-CONTENTS) until
+  the reader is fixed through the full procedure. Evidence: codex resume/inventory-hidden/*.
