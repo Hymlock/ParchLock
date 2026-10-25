@@ -29,7 +29,10 @@ for(const bad of [null,[],['eat'],['drink','eat'],['eat','drink','quaff'],['eat'
 for(const bad of [null,[],[200,200],[200,999999],[200,'205']])check('malformed owner list '+JSON.stringify(bad)+' never yields Drink',()=>{const old=F.attributeObjects.edible;try{F.attributeObjects.edible=bad;hold(B,[200]);const z=verbs(B,200);assert(!z.menu.includes('drink'));}finally{F.attributeObjects.edible=old;}});
 check('missing DRINK template rejects the whole pair',()=>{const family=A._familyOf;try{const f=family(B.mem);A._familyOf=()=>Object.assign({},f,{templates:f.templates.filter(t=>t.verb!=='drink')});pair(200,false);}finally{A._familyOf=family;}});
 check('unknown family rejects the pair',()=>{const family=A._familyOf;try{A._familyOf=()=>({classification:'unknown'});hold(B,[200]);assert(!verbs(B,200).menu.includes('drink'));}finally{A._familyOf=family;}});
-check('explicit numeric edible map supersedes the authored pair (no authored Drink)',()=>{try{F.attributeMap.edible=8;hold(B,[200]);const z=verbs(B,200);assert(!z.menu.includes('drink'));}finally{delete F.attributeMap.edible;}});
+// D238 menu coexistence contract. Non-nested independent-provider parity is a separate open defect
+// (native Cutthroats witness: resume-20261020/concealed/cutthroats-drink-consumer-native.json).
+check('D238 listed owner keeps menu Eat and Drink alongside a numeric edible map',()=>{try{F.attributeMap.edible=8;hold(B,[200]);const z=verbs(B,200);assert(z.menu.includes('eat'));assert(z.menu.includes('drink'));}finally{delete F.attributeMap.edible;}});
+check('D238 unlisted cigarette gets no Drink alongside a numeric edible map',()=>{try{F.attributeMap.edible=8;hold(B,[101]);const z=verbs(B,101);assert(!z.menu.includes('drink'));assert(!z.independent.includes('drink'));}finally{delete F.attributeMap.edible;}});
 check('Inform Drink inference stays off for ZIL',()=>{hold(B,[200]);assert.equal(S.edibleDrinkAllowed(verbs(B,200).obj.attrs,{}),false);});
 const SB=load('Spellbreaker.z3.js',1);
 check('Spellbreaker identity food without a pair stays Eat-only (no Drink)',()=>{hold(SB,[43]);const z=verbs(SB,43);assert(z.obj.attrs.edible,'bread edible');assert(z.menu.includes('eat'),JSON.stringify(z.menu));assert(!z.menu.includes('drink'));assert.strictEqual(SB.c.AttributeSchema.edibleForms(SB.mem,43,'inventory'),null);});
