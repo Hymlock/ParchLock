@@ -511,6 +511,10 @@
   "static": {
    "s": "S",
    "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 41 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 37: it means not-yet-taken and is cleared on first take (#5199)."
+  },
+  "scenery": {
+   "s": "X",
+   "r": "FAIL CLOSED (grok1 b-batch; same rule as #5242 scenery x9): NDESCBIT 44 on 102 objects incl. 8 takeable (blaster 76, stone 147, handbag 158, fruit 176, telephone 190, gown 206, fluff 232, interface 81); 46 FSET / 42 FCLEAR at runtime. verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
   }
  },
  "Ballyhoo.z3.js": {
@@ -1965,6 +1969,10 @@
   "openable": {
    "s": "NA",
    "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
+  },
+  "on": {
+   "s": "X",
+   "r": "FAIL CLOSED (grok1 b-batch): ONBIT 18 on 79 objects, all 79 ROOMS (parent 110), 0 non-room; V-LAMP-ON only FSETs ONBIT on LIGHTBIT objects and no object carries LIGHTBIT (light already NA). verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
   }
  },
  "Stationfall.z3.js": {
@@ -2299,6 +2307,10 @@
   "visited": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added. Shares TOUCHBIT with moved: reuse moved provenance."
+  },
+  "scenery": {
+   "s": "X",
+   "r": "FAIL CLOSED (grok1 b-batch; same rule as #5242 scenery x9): NDESCBIT 4 on 68 objects incl. takeable FUSE 10 and all robots (Whiz/Poet/Auda/Sensa/Waldo/Iris); runtime FSET/FCLEAR on WEDGE, WHEEL, REDCABLE, ORANGECABLE. verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
   }
  },
  "Wishbringer.z3.js": {
@@ -2503,6 +2515,22 @@
   "static": {
    "s": "S",
    "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 22 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 10: it means not-yet-taken and is cleared on first take (#5199)."
+  },
+  "on": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5207: ONBIT 14 on 31 objects = 29 ROOMS (parent 251) + fixed NDESC lamp 159 + parentless 249; source never FSETs/FCLEARs ONBIT on objects (only FSET? HERE lit test). verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
+  },
+  "scenery": {
+   "s": "X",
+   "r": "FAIL CLOSED per Claude #5207: NDESCBIT 19 on 100 objects incl. takeable muddy boots 18, keys 33, powder 107; runtime FSET/FCLEAR (PHONG-KEYS, CLOCK-POWDER, MONICA-TIED-WITH). verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
+  },
+  "wornAttribute": {
+   "s": "NA",
+   "r": "not applicable per Claude #5207: no WEARBIT or WORNBIT anywhere in source or flag table. verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
+  },
+  "switchable": {
+   "s": "X",
+   "r": "FAIL CLOSED (grok1 b-batch): V-LAMP-ON (verbs.zil 1974) refuses every object (\"You can't turn on\" / sink water joke), V-LAMP-OFF likewise; LIGHTBIT 25 only on global cigarette 43 + 249; no toggle anywhere. verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
   }
  },
  "Sherlock.z5.js": {
