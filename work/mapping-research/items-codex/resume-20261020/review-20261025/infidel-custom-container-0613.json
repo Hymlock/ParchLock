@@ -1,0 +1,2600 @@
+{
+  "tier": "Fresh native normal input; passive known-ID RAM/actual resolver reads; no VM/fact/RNG writes",
+  "files": {
+    "js/AttributeSchema.js": "1184c06a7d22c039cc2a9dfae25bcc2613aaed604380e59d4eea410edebb8b72",
+    "js/ActionSynth.js": "b786ec9888cdbcdef8552d09c0d54b1d765f889819c87e83964cfcef71493fa8",
+    "js/Actionable.js": "4e713c639adac7a77d13a696af89bc6a4ca71545307406446ba50ac2241aac9f",
+    "js/ZRamReader.js": "36c95c54331695b3b17cce2098f64281e8bf10cda83e4916a9f8ffecdabd2c1b",
+    "js/ModuleStatFactsClaude.js": "f2b3c4ef4d34e53b1fc799f824dfbf9c3aa3d0ef5350a6ff62a4f2af76f21e1b",
+    "games/Infidel.z3.js": "1cdda43a7bb09aceaf0b856a019a09f1bc0e430c0ee3a304f8482f7d9669b35f"
+  },
+  "rows": [
+    {
+      "command": "get out of cot",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          }
+        ],
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          }
+        ],
+        "contents": []
+      },
+      "reply": [
+        ">get out of cot",
+        "You push yourself up and manage to get out of the cot. Your legs are a little wobbly, though, and your head swims.",
+        " ",
+        "You hear a plane flying high overhead, outside the tent.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "s",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          }
+        ],
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 72,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "reply": [
+        ">s",
+        "Outside Your Tent",
+        "You are on an east/west path on the north side of the encampment. To the south you can see a firepit and to the north is the entrance to your tent. Everything is oddly quiet, unsettling, creating a feeling of floating anxiety. The stillness seems to enhance the eerie quality of the desert, the feeling of being truly alone. There's an enlarged hole in the sand, a remnant of your excavation attempts.",
+        " ",
+        "You crane your neck and see a plane, high overhead, circling the encampment.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "sw",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 72,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 68,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "reply": [
+        ">sw",
+        "Outside Supply Tent",
+        "You're on a north/south path on the west edge of the encampment. Directly to the west is the supply tent, its flaps open, still in the hot, quiet air. To the east you can see the central firepit, a reminder of your being alone. A row of thickets, impossible to make any progress through even with a machete, grows along the western edge of the camp directly to the north and south of the tent. There's an enlarged hole in the sand, a remnant of your excavation attempts.",
+        " ",
+        "You crane your neck and see a plane, high overhead, circling the encampment.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "w",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 68,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 69,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "reply": [
+        ">w",
+        "Supply Tent",
+        "You are in a tent, very much like your own -- a tent which had originally contained the supplies for your expedition. You notice, however, that most of the items which were here just yesterday have vanished with your workers. The tent looks as if it's been cleaned out and, as your stomach growls, the empty tent ironically reminds you of a turkey carcass picked clean after a huge Thanksgiving meal. Through the open tent flaps to the east you can see the firepit. If only one of the workers had remained behind, you would make him pay.",
+        "Stuck in the sand, handle down, is a small pick axe.",
+        "Half buried in the sand, in the corner of the tent, is a shovel.",
+        " ",
+        "It sounds as if the plane is circling.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "get pickaxe",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 69,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 69,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "reply": [
+        ">get pickaxe",
+        "Taken.",
+        " ",
+        "It sounds as if the plane is circling.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "get shovel",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 69,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 69,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "reply": [
+        ">get shovel",
+        "Taken.",
+        " ",
+        "It sounds as if the plane is flying off.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "e",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 69,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 68,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "reply": [
+        ">e",
+        "Outside Supply Tent",
+        " ",
+        "A small speck descending from the plane overhead gets larger until you see a crate, dangling from a parachute.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "se",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 68,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 64,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "reply": [
+        ">se",
+        "Outside Work Tent",
+        "You are on an east/west path, directly to the north of the work tent. To the north you can see the firepit and, beyond that, your tent. The work tent borders an endless vista of fine, burning sand stretching out to the south. There's an enlarged hole in the sand, a remnant of your excavation attempts.",
+        " ",
+        "At last, your luck seems to be changing. A large crate lands right before you, its parachute flapping in the breeze. The parachute breaks away from the crate and drifts off in the wind.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "s",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 64,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 62,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "reply": [
+        ">s",
+        "Work Tent",
+        "You are in a tent which used to house the workers and their personal effects. Looking around, taking in the stripped and bare surroundings, you feel surprised that they even left the canvas walls. You quickly realize that they took what they needed -- taking everything would have been more trouble than it was worth. From the looks of things they cleared out quickly but quietly.",
+        "Tacked up to the inside of one of the tent flaps is a note.",
+        "Sitting in the sand, bulging a little, is a beaten-up knapsack.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "read note",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 62,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 62,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "reply": [
+        ">read note",
+        "The note reads:",
+        " ",
+        "Fi aman Allah! ",
+        "Hereafter you shall pursue your fool dream of the hidden pyramid and its riches alone. May the jackals feed well on your bones. We have left you what you need to get back, though we hope you do not. We put several things you treasure above life itself inside your trunk, locked with your precious padlock, but we could not bear to part with the key. Especially after what you said of our rites. We hope the drug we placed in your drink did you harm. If not, we are at least satisfied you slept especially soundly while we cleaned out the camp.",
+        " ",
+        "Farewell",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "get knapsack",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 62,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 62,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "reply": [
+        ">get knapsack",
+        "(wearing it)",
+        "You swing the knapsack over your shoulders and it settles on your back as its cover flap closes.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "n",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 62,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 64,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "reply": [
+        ">n",
+        "Outside Work Tent",
+        "Lying in the sand is a wooden packing crate.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "n",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 64,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 78,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "reply": [
+        ">n",
+        "Fire Pit",
+        "You are in the center of the encampment, standing before a charred pit, a hole dug in the sand surrounded by blackened rocks. The night breezes have already started the reclamation work of the desert, covering most of the pit's bottom. You can see your tent to the north, the work tent to the south, and the supply tent to the west. Far off to the east, through the heat waves rising off the shifting sands, you can see gentle, rolling dunes. There's an enlarged hole in the sand, a remnant of your excavation attempts.",
+        "Half covered with sand is a bright piece of foil which catches your eye.",
+        "Sitting by a rock is what looks like a matchbook.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "get matchbook",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 78,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 78,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "reply": [
+        ">get matchbook",
+        "Taken.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "n",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 78,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 72,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "reply": [
+        ">n",
+        "Outside Your Tent",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "n",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 72,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": null,
+        "offers": null,
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          }
+        ],
+        "contents": []
+      },
+      "reply": [
+        ">n",
+        "Your Tent",
+        "There is an army cot here.",
+        "At the foot of the cot is a large, unwieldy trunk. The trunk is closed and locked with a padlock.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "examine broken lock",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          }
+        ],
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          }
+        ],
+        "contents": []
+      },
+      "reply": [
+        ">examine broken lock",
+        "You can't see any broken lock here!",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "examine pickaxe",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          }
+        ],
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          }
+        ],
+        "contents": []
+      },
+      "reply": [
+        ">examine pickaxe",
+        "It's a small hand axe, similar to those used in mountain climbing.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "smash padlock with pickaxe",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          }
+        ],
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          }
+        ],
+        "contents": []
+      },
+      "reply": [
+        ">smash padlock with pickaxe",
+        "The padlock breaks open.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "examine broken lock",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          }
+        ],
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          }
+        ],
+        "contents": []
+      },
+      "reply": [
+        ">examine broken lock",
+        "This is a slightly messed-up lock which once functioned. Alas, like your personality, it has seen better days.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "remove padlock",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          }
+        ],
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          }
+        ],
+        "contents": []
+      },
+      "reply": [
+        ">remove padlock",
+        "Taken.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "drop padlock",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          }
+        ],
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          }
+        ],
+        "contents": []
+      },
+      "reply": [
+        ">drop padlock",
+        "Dropped.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "open trunk",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          }
+        ],
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": false,
+          "transparent23": true,
+          "child": 27
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          },
+          {
+            "command": "close trunk",
+            "verb": "close"
+          }
+        ],
+        "contents": [
+          {
+            "id": 27,
+            "name": "inspection sticker"
+          },
+          {
+            "id": 34,
+            "name": "piece of dried beef"
+          },
+          {
+            "id": 35,
+            "name": "ancient map"
+          }
+        ]
+      },
+      "reply": [
+        ">open trunk",
+        "Opened. Opening the trunk reveals an inspection sticker, a piece of dried beef, and an ancient map.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "look in trunk",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": false,
+          "transparent23": true,
+          "child": 27
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          },
+          {
+            "command": "close trunk",
+            "verb": "close"
+          }
+        ],
+        "contents": [
+          {
+            "id": 27,
+            "name": "inspection sticker"
+          },
+          {
+            "id": 34,
+            "name": "piece of dried beef"
+          },
+          {
+            "id": 35,
+            "name": "ancient map"
+          }
+        ]
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": false,
+          "transparent23": true,
+          "child": 27
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          },
+          {
+            "command": "close trunk",
+            "verb": "close"
+          }
+        ],
+        "contents": [
+          {
+            "id": 27,
+            "name": "inspection sticker"
+          },
+          {
+            "id": 34,
+            "name": "piece of dried beef"
+          },
+          {
+            "id": 35,
+            "name": "ancient map"
+          }
+        ]
+      },
+      "reply": [
+        ">look in trunk",
+        "The trunk contains:",
+        "  An inspection sticker",
+        "  A piece of dried beef",
+        "  An ancient map",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "close trunk",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": false,
+          "transparent23": true,
+          "child": 27
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          },
+          {
+            "command": "close trunk",
+            "verb": "close"
+          }
+        ],
+        "contents": [
+          {
+            "id": 27,
+            "name": "inspection sticker"
+          },
+          {
+            "id": 34,
+            "name": "piece of dried beef"
+          },
+          {
+            "id": 35,
+            "name": "ancient map"
+          }
+        ]
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          },
+          {
+            "command": "close trunk",
+            "verb": "close"
+          }
+        ],
+        "contents": []
+      },
+      "reply": [
+        ">close trunk",
+        "Closed.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "look in trunk",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          },
+          {
+            "command": "close trunk",
+            "verb": "close"
+          }
+        ],
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          },
+          {
+            "command": "close trunk",
+            "verb": "close"
+          }
+        ],
+        "contents": []
+      },
+      "reply": [
+        ">look in trunk",
+        "It's an old steamer trunk, very heavy and too clumsy for one person to carry.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "open trunk",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": true,
+          "transparent23": true,
+          "child": 0
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": true,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": true,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          },
+          {
+            "command": "close trunk",
+            "verb": "close"
+          }
+        ],
+        "contents": []
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": false,
+          "transparent23": true,
+          "child": 35
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          },
+          {
+            "command": "close trunk",
+            "verb": "close"
+          }
+        ],
+        "contents": [
+          {
+            "id": 27,
+            "name": "inspection sticker"
+          },
+          {
+            "id": 34,
+            "name": "piece of dried beef"
+          },
+          {
+            "id": 35,
+            "name": "ancient map"
+          }
+        ]
+      },
+      "reply": [
+        ">open trunk",
+        "Opened. Opening the trunk reveals an ancient map, a piece of dried beef, and an inspection sticker.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "look in trunk",
+      "before": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": false,
+          "transparent23": true,
+          "child": 35
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          },
+          {
+            "command": "close trunk",
+            "verb": "close"
+          }
+        ],
+        "contents": [
+          {
+            "id": 27,
+            "name": "inspection sticker"
+          },
+          {
+            "id": 34,
+            "name": "piece of dried beef"
+          },
+          {
+            "id": 35,
+            "name": "ancient map"
+          }
+        ]
+      },
+      "after": {
+        "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+        "room": 71,
+        "raw": {
+          "parent": 71,
+          "open25": true,
+          "surface28": false,
+          "transparent23": true,
+          "child": 35
+        },
+        "object": {
+          "id": 39,
+          "name": "trunk",
+          "parent": 71,
+          "attrs": {
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": true,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "moved": false,
+            "on": false,
+            "open": true,
+            "isOpen": true,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "visited": false,
+            "workflag": true,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "climbable": false,
+            "takeable": false
+          }
+        },
+        "offers": [
+          {
+            "command": "examine trunk",
+            "verb": "examine"
+          },
+          {
+            "command": "search trunk",
+            "verb": "search"
+          },
+          {
+            "command": "empty trunk",
+            "verb": "empty"
+          },
+          {
+            "command": "close trunk",
+            "verb": "close"
+          }
+        ],
+        "contents": [
+          {
+            "id": 27,
+            "name": "inspection sticker"
+          },
+          {
+            "id": 34,
+            "name": "piece of dried beef"
+          },
+          {
+            "id": 35,
+            "name": "ancient map"
+          }
+        ]
+      },
+      "reply": [
+        ">look in trunk",
+        "The trunk contains:",
+        "  An ancient map",
+        "  A piece of dried beef",
+        "  An inspection sticker",
+        " ",
+        "> "
+      ]
+    }
+  ],
+  "sourceStable": true
+}
