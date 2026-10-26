@@ -1,0 +1,3 @@
+# Independent design and current-source ACCEPT
+
+Standing non-author border_food_blind accepted composition design before implementation, then independently checked all five current candidate hashes and three original/rebound helper bindings. Registry normalized comparison against gitshowccd9b58 found exactly Infidel containerStateRules and Sorcerer illuminationState additions; all three facts123/B1 changes retained and dirty ZorkIII excluded. ActionSynth/Reader match InfidelR3; Equipment adds only light helper/tagconcat; Schema preserves full helper blocks, absent guard, surface branch and both postcalibration calls. No tests/native replay by reviewer. Root58controls and combined targeted native receipt are separately recorded; sharedgate/production remain pending.

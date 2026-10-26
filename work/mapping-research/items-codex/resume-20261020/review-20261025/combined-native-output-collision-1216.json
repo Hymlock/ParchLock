@@ -1,0 +1,15 @@
+{
+  "error": "Rebound Sorcerer helper retained interpolated old PNG path; overwrote working old PNGs. Original immutable Git bytes restored, new combined PNG bytes preserved at new unique paths. Raw combined helper preserved unchanged as executed. No replay; old evidence custody recovered from committed fdf6c37.",
+  "rows": [
+    {
+      "stage": "before",
+      "newSha": "9f8c6c2c5b18612798e915e9deb26d9727565d4b33c0f529e5b415de160eb75c",
+      "restoredSha": "dae5d7b238d4dee0d5755b134a964631fbf8a98c895e2462004b388364f7e3ce"
+    },
+    {
+      "stage": "after",
+      "newSha": "67573db314477f1386fe02656a98c9885077046a87dd9a4dedd00c18d85dd006",
+      "restoredSha": "7e45a3191e5f5658e997330a1767cf79c0f5f769114d3771d51812b6e2a988e0"
+    }
+  ]
+}

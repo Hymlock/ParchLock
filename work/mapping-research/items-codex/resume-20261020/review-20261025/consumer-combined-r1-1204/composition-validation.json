@@ -1,0 +1,35 @@
+{
+  "base": "ccd9b58",
+  "factsChanges": [
+    {
+      "digest": "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3",
+      "key": "containerStateRules",
+      "after": [
+        {
+          "objectId": 23,
+          "closedFlag": "supporter"
+        },
+        {
+          "objectId": 39,
+          "closedFlag": "supporter"
+        }
+      ]
+    },
+    {
+      "digest": "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e",
+      "key": "illuminationState",
+      "after": {
+        "flag": "on",
+        "scope": "inventory"
+      }
+    }
+  ],
+  "controls": {
+    "Infidel": 28,
+    "absent": 12,
+    "illumination": 18
+  },
+  "parse": "5sourcesPASS",
+  "patchSha": "751cdaf86678412e6efb04e5e0c925dac1fb3440882e478eecaa28e802e1c5c8",
+  "scope": "Isolated composition only; no native/sharedgate/production acceptance"
+}
