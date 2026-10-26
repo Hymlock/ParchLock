@@ -373,7 +373,9 @@ var ModuleStatFactsClaude = {
         // transparent 7 = source TRANSBIT exact (10 objects, fp 0 fn 0; historicalsource a18e100); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
         // wornAttribute 5 = WEARBIT as worn state (grok1 #5218 run-suspect-*): TAKE OFF western mask 38 and EXAMINE gunbelt 96 read 5=1; no generic WEARBIT reader exists, so 2 carriers + exact census stand in for the negative.
         "wornAttribute": 5,
-        "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15, "door": 27, "transparent": 7 },
+        // talkable 31 (seeded-native tier; grok1 packet K probe5/talk/suspect): ASK ostmann/johnson ABOUT X test 31 TRUE; bar/notebook FALSE; PRE-ASK-ABOUT verbs.zil:657-659.
+        // moved 1 = TOUCHBIT (seeded-native tier, Codex #5335; grok1 packet P1 probe5/moved/suspect): TAKE pen 95 / costume receipt 12 set 1 (ITAKE verbs.zil:436-438); negative bar 119 stays clear (mask EXAMINE was ambiguous, excluded). Trace = g1-batch before/after attr-byte diff (test_attr only; no FSET op in opsOnId).
+        "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15, "door": 27, "transparent": 7, "talkable": 31, "moved": 1 },
         "inventoryHiddenAttribute": 19,
         "inventoryHiddenPreservesWorn": true
     },
@@ -400,7 +402,8 @@ var ModuleStatFactsClaude = {
         // are rooms. FAIL-CLOSED (defensive, container 26 mapped): animate joins the openCapability none list (P3/R pattern).
         // door 27 = source DOORBIT exact; native (grok2 r4-grok2/doorbit/Seastalker.z3.js.json): lab door 88 and entry hatch 251 strict OPEN/CLOSE toggles on OPENBIT 18; Universal Tool refuses (reply says now: weak, conditional wording).
         // moved 4 = TOUCHBIT (native, grok1 #5208 grok1/moved/packet-*.json, source bit read clear -> set on TAKE): microphone 62 and catalyst capsule 190; technician 61 stays clear.
-        "attributeMap": { "supporter": 6, "open": 18, "isOpen": 18, "container": 26, "on": 19, "animate": 30, "door": 27, "moved": 4 },
+        // talkable 30 (seeded-native tier; grok1 packet J): ASK Bly/Tip ABOUT X TRUE; microphone/diagram FALSE; V-ASK-ABOUT 936 -> WONT-HELP-TO-TALK-TO 718-719.
+        "attributeMap": { "supporter": 6, "open": 18, "isOpen": 18, "container": 26, "on": 19, "animate": 30, "door": 27, "moved": 4, "talkable": 30 },
         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): supporter - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
         // SURFACEBIT 6: TRUE on workbench 64, mechanical/electronic/chemical supply shelves 67/70/72, work counter 189; FALSE on microphone 62, file drawer 78, electrolyte relay 115. Walk m1; source exact (9 objects). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         "inventoryHiddenAttribute": 17
@@ -461,7 +464,8 @@ var ModuleStatFactsClaude = {
         // transparent 32 = source TRANSBIT exact (5 objects, fp 0 fn 0; historicalsource 5c80126); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
         // moved 37 = TOUCHBIT (native, grok1 #5210 grok1/moved/packet-*.json, clear -> set on TAKE): white down parka 244 and knapsack 306 (separate takes); oil can 4 stays clear.
         // scenery 29 = NDESCBIT; census 72 carriers, 0 takeable, none a room (grok1 #5217/#5227 grok1/probe5/run-bzs-*, G1PLAYER=30): LOOK in Your Compartment reads 29=1 on luggage rack 38, rear seat 218 and front seat 250 (not listed); camera bag 337 reads 0 (listed).
-        "attributeMap": { "container": 43, "supporter": 36, "open": 34, "isOpen": 34, "animate": 47, "wearable": 41, "door": 45, "transparent": 32, "moved": 37, "scenery": 29 },
+        // talkable 47 (seeded-native tier; grok1 packet G probe5/talk/borderzone): ASK dignitary/mayor ABOUT ME 47 TRUE, revolver/building FALSE, same pc; V-ASK-ABOUT verbs.zil:289-296.
+        "attributeMap": { "container": 43, "supporter": 36, "open": 34, "isOpen": 34, "animate": 47, "wearable": 41, "door": 45, "transparent": 32, "moved": 37, "scenery": 29, "talkable": 47 },
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
         // Identity food, no FOODBIT (codex border-food-evidence.json, design border-food-consumer-compared-proposal.md): chapter 3
         // held soda 200 and pretzel 205 each succeed on native EAT and DRINK (source FOOD-F handler); held cigarette 101 refuses
@@ -580,7 +584,8 @@ var ModuleStatFactsClaude = {
         // climbable 29 = CLIMBBIT exact; native bare (grok1 #5082): CLIMB STAIRWAY 249 -> Courtyard, CLIMB SAFETY WEB 215 contextual; canteen 163 (bit 0) refused.
         // edible 27 = FOODBIT exact; native (grok1 #5090 grok1/open/planetfall-edible.json): bare EAT FIND reads 27=1 on red goo 212 and brown goo 211; canteen 163 negative.
         // transparent 9 = source TRANSBIT exact (6 carriers); native (grok1 #5117 pf-route, G1TRACE): medicine bottle 80 closed (OPENBIT 11=0) reads 9=1 and EXAMINE MEDICINE shows the contents, both on the Infirmary shelf @292 and held @293; closed small desk 149 (no bit) hides the kitchen card @61. One carrier + bit reads (low risk).
-        "attributeMap": { "wearable": 22, "open": 11, "isOpen": 11, "container": 24, "animate": 31, "enterable": 30, "door": 26, "scenery": 8, "climbable": 29, "edible": 27, "transparent": 9 }
+        // moved 18 = TOUCHBIT (seeded-native tier, Codex #5335; grok1 packet P4 probe5/moved/planetfall): TAKE scrub brush 227 / ID card 225 set 18 (ITAKE verbs.zil:580-583); chronometer 226 stays clear. Trace = g1-batch before/after attr-byte diff (test_attr only; no FSET op in opsOnId).
+        "attributeMap": { "wearable": 22, "open": 11, "isOpen": 11, "container": 24, "animate": 31, "enterable": 30, "door": 26, "scenery": 8, "climbable": 29, "edible": 27, "transparent": 9, "moved": 18 }
     },
     // Hollywood Hijinx (ZIL): WEARBIT 22 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).
     "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e": {
@@ -652,7 +657,9 @@ var ModuleStatFactsClaude = {
         // enterable 12 = source VEHBIT exact; native (grok1 #5149 routes/cache/dls*): SIT ON moves the player into bed 34, bathtub 105, toilet 209, bed 211, sofa 200 (V-CLIMB-ON reads 12=1); lounge 33, chair 212, counter 104 read 0 and refuse; GET OUT OF native on all five. ENTER refused (hits head), hence enterForms.
         // enterForms (enter-form R2, grok1 #5116 consensus): the game refuses ENTER on every carrier; SIT ON is its enter verb.
         "enterForms": { "enter": "sit on" },
-        "attributeMap": { "open": 28, "isOpen": 28, "container": 21, "supporter": 29, "animate": 20, "scenery": 25, "door": 22, "enterable": 12 }
+        // talkable 20 (seeded-native tier; grok1 packet H): ASK Robner/Rourke TRUE; china/shelf FALSE; V-ASK-ABOUT verbs.zil:1595-1596.
+        // moved 30 = TOUCHBIT (seeded-native tier, Codex #5335; grok1 probe5/moved/deadline2 FF873293): TAKE pencil 10 / cup 113 set 30 (ITAKE verbs.zil:435-436); desk 147 stays clear; room entry is supporting only. Trace = g1-batch before/after attr-byte diff (test_attr only; no FSET op in opsOnId).
+        "attributeMap": { "open": 28, "isOpen": 28, "container": 21, "supporter": 29, "animate": 20, "scenery": 25, "door": 22, "enterable": 12, "talkable": 20, "moved": 30 }
     },
     // The Witness (ZIL): OPENBIT 8 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match). CONTBIT 9 proven but held until supporter is proven (as Deadline).
     // The Witness (ZIL): constant PLAYER object 79 (historicalsource/witness 8fe092a people.zil 73 OBJECT PLAYER
@@ -673,7 +680,9 @@ var ModuleStatFactsClaude = {
         // enterForms (enter-form R2, grok1 #5116 consensus): the game refuses ENTER on every carrier; SIT ON is its enter verb.
         "enterForms": { "enter": "sit on" },
         // door 28 = source DOORBIT exact 16/16 (doors and gates only; no ROOM carries it); native (grok1 #5206, locked/cache/run-witness-*): front door 231, office back door 213, bedroom door 171 and office door 121 read 28=1; OPEN BEDROOM DOOR sets OPENBIT 8.
-        "attributeMap": { "open": 8, "isOpen": 8, "container": 9, "supporter": 16, "animate": 31, "locked": 17, "enterable": 29, "door": 28 },
+        // talkable 31 (seeded-native tier; grok1 packet I): ASK Monica/Linder ABOUT X TRUE; telegram/handcuffs FALSE; verbs.zil:734-735.
+        // moved 4 = TOUCHBIT (seeded-native tier, Codex #5335; grok1 packet P3 probe5/moved/witness): TAKE match book 53 / telegram 54 set 4 (ITAKE verbs.zil:461-462); held handcuffs 51 stays clear (off-scope boots excluded). Trace = g1-batch before/after attr-byte diff (test_attr only; no FSET op in opsOnId).
+        "attributeMap": { "open": 8, "isOpen": 8, "container": 9, "supporter": 16, "animate": 31, "locked": 17, "enterable": 29, "door": 28, "talkable": 31, "moved": 4 },
         "playerObject": 79
     },
     // Starcross (Infocom v3): animate 11 = VICBIT (grok1 2026-10-17; route agent-tools/g1-routes.json 'scs' = zil-routes starcross with
@@ -699,7 +708,8 @@ var ModuleStatFactsClaude = {
         // supporter 28 = SURFACEBIT, static (no runtime FSET/FCLEAR in historicalsource/starcross; carriers red disk 66, blue disk 103, silver sphere 31, mouse 212; the catalog name-match missed 31/212); native (grok1 #5213 support/run-starcross-*): CLOSE red disk / blue disk / silver sphere read 28=1 and refuse ("You cannot close that."); CLOSE metal basket reads 28=0 and closes.
         // openCapability: Open/Close for containers that are not surfaces (the disks/sphere carry CONTBIT but refuse CLOSE natively, grok1 #5213).
         "openCapability": { "all": ["container"], "none": ["supporter"] },
-        "attributeMap": { "animate": 11, "scenery": 23, "enterable": 15, "climbable": 22, "open": 9, "isOpen": 9, "container": 8, "door": 12, "supporter": 28 },
+        // moved 29 = TOUCHBIT (seeded-native tier, Codex #5335; grok1 probe5/moved/starcross2 D7C9410E): TAKE space suit 144 / black rod 84 set 29 (ITAKE verbs.zil:580-583); mass detector 221 and metal relief 23 stay clear; room entry is supporting only. Trace = g1-batch before/after attr-byte diff (test_attr only; no FSET op in opsOnId).
+        "attributeMap": { "animate": 11, "scenery": 23, "enterable": 15, "climbable": 22, "open": 9, "isOpen": 9, "container": 8, "door": 12, "supporter": 28, "moved": 29 },
         // Grok4124 design, new native two-owner proof: normal144 and tattered176; held library71/basket40 negative.
         "wornAttribute": 24
     },
@@ -993,7 +1003,8 @@ var ModuleStatFactsClaude = {
         // switchable (grok1 #5170 switch2/cache/run-lurking-*): flashlight 132 TURN OFF clears ONBIT 15, TURN ON sets it ("clicks on/off"); crowbar 156 and gloves 203 refuse. Single holdable LIGHTBIT owner on the walk (whole-source exception).
         "activationState": { "onObjects": [132] },
         // moved 6 = TOUCHBIT (native, codex #5183 resume-20261020/moved/packet-lurkinghorror.json): TAKE Coke 58 and carton 61 set bit 6 (ITAKE via SCORE-OBJECT); object 2 stays clear.
-        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31, "on": 15, "transparent": 5, "openable": 2, "enterable": 29, "door": 25, "locked": 19, "moved": 6 },
+        // talkable 31 (seeded-native tier; grok1 packet M): ASK hacker/maintenance man TRUE; chair/floor waxer FALSE -> V-TELL "You can't talk to" (verbs.zil:362-366, 1436-1447).
+        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31, "on": 15, "transparent": 5, "openable": 2, "enterable": 29, "door": 25, "locked": 19, "moved": 6, "talkable": 31 },
         // D232 local globals (claude census + codex #4618/#4621/#4632, grok2 #4637): room GLOBAL property 16 (byte ids),
         // holder LOCAL-GLOBALS 59; native: EXAMINE ROOF DOOR succeeds from TopFloor 195 (prop16 [163]), refused from
         // ComputerRoom 176; Tomb 9 padlock. Room ONBIT 15 positive-only (pzlurking trace TRUE 176/137/33, FALSE + pitch-black
