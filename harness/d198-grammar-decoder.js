@@ -76,6 +76,62 @@ for (const file of infocom) {
     ok(again.vocabulary[0] === originalWord && again.templates[0].verb !== 'mutated', file + ' cached result is immutable to callers');
 }
 
+// R4: real-title admission precedes synthetic boundary controls. The orphan
+// remains part of the parsed layout but supplies no dictionary-owned command.
+const suspect = story('Suspect.z3.js');
+const suspectResult = GP.decodeD198(suspect);
+ok(suspectResult.classification === 'confirmed-zil-family' && suspectResult.evidence === 'validated', 'Suspect real grammar validates');
+ok(JSON.stringify(suspectResult.orphanVerbIndices) === '[45]', 'Suspect records its one unreferenced syntax index');
+ok(!suspectResult.templates.some(t => t.verbIndex === 45), 'orphan syntax emits no command templates');
+ok(suspectResult.evidenceRefs.includes('bounded-unreferenced-syntax-index'), 'orphan admission has distinct provenance');
+suspectResult.orphanVerbIndices[0] = 999;
+ok(JSON.stringify(GP.decodeD198(suspect).orphanVerbIndices) === '[45]', 'orphan metadata is immutable to callers');
+
+function orphanFixture() {
+    const mem = new DataView(suspect.slice().buffer);
+    const h = sandbox.ZRamReader.header(mem);
+    const dict = GP._d198RawDictionary(mem, h, mem.byteLength);
+    return { mem, h, dict, decode: () => GP._d198InfocomGrammar(mem, h, mem.byteLength, dict) };
+}
+for (const offset of [1, 2]) {
+    const f = orphanFixture();
+    const entry = f.dict.entries.find(e => (e.flags & 0x40) && (((e.flags & 3) === 1) === (offset === 2)));
+    ok(!!entry, 'alternate verb-byte fixture exists at offset ' + offset);
+    entry.data[offset] = 255 - 45;
+    ok(f.decode() === null, 'raw alternate-offset reference rejects orphan admission at ' + offset);
+}
+{
+    const f = orphanFixture();
+    f.dict.entries.find(e => e.flags & 0x40).data = [1];
+    ok(f.decode() === null, 'short verb record cannot become an orphan loophole');
+}
+{
+    const f = orphanFixture(), entry = f.dict.entries.find(e => e.flags & 0x40);
+    entry.word = ''; entry.data[1] = 255 - 45;
+    ok(f.decode() === null, 'undecodable dictionary spelling does not erase a raw reference');
+}
+{
+    const f = orphanFixture();
+    for (const entry of f.dict.entries) {
+        if (!(entry.flags & 0x40)) continue;
+        const offset = (entry.flags & 3) === 1 ? 1 : 2;
+        if (255 - entry.data[offset] === 44) entry.data[offset] = 255 - 46;
+    }
+    ok(f.decode() === null, 'two missing syntax indices reject');
+}
+{
+    const f = orphanFixture(), pointer = sandbox.ZRamReader.u16(f.mem, f.h.staticMem + 45 * 2);
+    f.mem.setUint8(pointer, 0);
+    ok(f.decode() === null, 'malformed orphan syntax still rejects');
+}
+{
+    const f = orphanFixture(), pointer = sandbox.ZRamReader.u16(f.mem, f.h.staticMem + 45 * 2);
+    f.mem.setUint8(pointer + 2, 128);
+    ok(f.decode() === null, 'unresolved orphan preposition still rejects');
+}
+const sherlock = GP.decodeD198(story('Sherlock.z5.js'));
+ok(sherlock.classification === 'unknown' && sherlock.reason === 'invalid-dictionary', 'Sherlock stays rejected for its independent dictionary failure');
+
 const malformed = story('Zork1-TheGreatUndergroundEmpire.z3.js').slice();
 const staticBase = (malformed[14] << 8) | malformed[15];
 malformed[staticBase] = 0;

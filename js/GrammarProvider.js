@@ -353,7 +353,30 @@ var GrammarProvider = {
             mappedIndices[verbIndex] = true;
             verbEntries.push({ word: de.word, verbIndex: verbIndex });
         }
-        if (Object.keys(mappedIndices).length !== verbCount) return null;
+        var orphanVerbIndices = [];
+        for (i = 0; i < verbCount; i++) {
+            if (!mappedIndices[i]) orphanVerbIndices.push(i);
+        }
+        if (orphanVerbIndices.length) {
+            // A bounded syntax entry can be authored without a dictionary
+            // spelling. It still participates in action/preposition layout,
+            // but can never supply a command template by itself.
+            if (orphanVerbIndices.length > 1 || orphanVerbIndices.length * 100 > verbCount) return null;
+            var orphanIndex = orphanVerbIndices[0];
+            var orphanLines = syntaxByIndex[orphanIndex];
+            if (!orphanLines || !orphanLines.length || orphanLines.some(function (line) {
+                return line.prepIndices.some(function (prep) { return !prepByIndex[prep]; });
+            })) return null;
+            for (i = 0; i < dict.entries.length; i++) {
+                var rawVerb = dict.entries[i];
+                if (!(rawVerb.flags & 0x40)) continue;
+                // Check both possible data positions, including records whose
+                // undecodable word was excluded by the mapped-word pass.
+                if (!rawVerb.data || rawVerb.data.length < 3
+                    || 255 - rawVerb.data[1] === orphanIndex
+                    || 255 - rawVerb.data[2] === orphanIndex) return null;
+            }
+        }
 
         var vocabulary = [], seenWords = {}, templates = [];
         verbEntries.forEach(function (verb) {
@@ -377,7 +400,7 @@ var GrammarProvider = {
             });
         });
         if (!templates.length) return null;
-        return {
+        var decoded = {
             classification: "confirmed-zil-family",
             family: "infocom-pre-v6-" + family,
             evidence: "validated",
@@ -391,6 +414,11 @@ var GrammarProvider = {
             prepositions: prepositions,
             templates: templates
         };
+        if (orphanVerbIndices.length) {
+            decoded.orphanVerbIndices = orphanVerbIndices;
+            decoded.evidenceRefs.push("bounded-unreferenced-syntax-index");
+        }
+        return decoded;
     },
 
     d198Diagnostics: function (mem) {

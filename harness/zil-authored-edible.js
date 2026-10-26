@@ -29,9 +29,9 @@ for(const bad of [null,[],['eat'],['drink','eat'],['eat','drink','quaff'],['eat'
 for(const bad of [null,[],[200,200],[200,999999],[200,'205']])check('malformed owner list '+JSON.stringify(bad)+' never yields Drink',()=>{const old=F.attributeObjects.edible;try{F.attributeObjects.edible=bad;hold(B,[200]);const z=verbs(B,200);assert(!z.menu.includes('drink'));}finally{F.attributeObjects.edible=old;}});
 check('missing DRINK template rejects the whole pair',()=>{const family=A._familyOf;try{const f=family(B.mem);A._familyOf=()=>Object.assign({},f,{templates:f.templates.filter(t=>t.verb!=='drink')});pair(200,false);}finally{A._familyOf=family;}});
 check('unknown family rejects the pair',()=>{const family=A._familyOf;try{A._familyOf=()=>({classification:'unknown'});hold(B,[200]);assert(!verbs(B,200).menu.includes('drink'));}finally{A._familyOf=family;}});
-// D238 menu coexistence contract. Non-nested independent-provider parity is a separate open defect
-// (native Cutthroats witness: resume-20261020/concealed/cutthroats-drink-consumer-native.json).
-check('D238 listed owner keeps menu Eat and Drink alongside a numeric edible map',()=>{try{F.attributeMap.edible=8;hold(B,[200]);const z=verbs(B,200);assert(z.menu.includes('eat'));assert(z.menu.includes('drink'));}finally{delete F.attributeMap.edible;}});
+// D238 menu/provider coexistence regression. Native Cutthroats baseline witness:
+// resume-20261020/concealed/cutthroats-drink-consumer-native.json.
+check('D238 mapped listed owner keeps menu and independent Eat and Drink',()=>{try{F.attributeMap.edible=8;hold(B,[200]);const z=verbs(B,200);for(const list of [z.menu,z.independent])for(const v of ['eat','drink'])assert.equal(list.filter(x=>x===v).length,1);}finally{delete F.attributeMap.edible;}});
 check('D238 unlisted cigarette gets no Drink alongside a numeric edible map',()=>{try{F.attributeMap.edible=8;hold(B,[101]);const z=verbs(B,101);assert(!z.menu.includes('drink'));assert(!z.independent.includes('drink'));}finally{delete F.attributeMap.edible;}});
 check('Inform Drink inference stays off for ZIL',()=>{hold(B,[200]);assert.equal(S.edibleDrinkAllowed(verbs(B,200).obj.attrs,{}),false);});
 const SB=load('Spellbreaker.z3.js',1);

@@ -135,6 +135,12 @@ var LearnedWords = {
             if (key !== 'default' && attrs[key]) forms = forms.concat(ActionSynth.formsForAttribute
                 ? ActionSynth.formsForAttribute(key, obj.id, context) : ActionSynth.rules[key]);
         });
+        // D238: direct owner verbs can coexist with a mapped edible bit, even
+        // when this object's bit is clear. Keep the menu's scope policy; the
+        // nested branch below still replaces candidates with its own policy.
+        if (!attrs.edible && typeof ActionSynth.edibleFormPolicy === 'function') {
+            forms = forms.concat(ActionSynth.edibleFormPolicy(obj.id, context) || []);
+        }
         // Use the same compiler/evidence policy as menu synthesis, not learned admission.
         if (ActionSynth.edibleDrinkAllowed(attrs, { directEvidenceOnly: !!obj.examineOnly })) forms.push('drink');
         var nested = held && ActionSynth.heldContainerName && ActionSynth.heldContainerName(obj,WorldModel.lastPayload);

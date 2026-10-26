@@ -2809,10 +2809,43 @@ var ZRamReader = {
         var header = ZRamReader.header(mem);
         var hasHiddenBit = Number.isInteger(hiddenBit) && hiddenBit >= 0
             && hiddenBit < (header && header.version <= 3 ? 32 : 48);
+        // Explicit inventory rollout, independent of NDESC's worn exception.
+        // A concealed/local-scope mapping alone never opts a title in.
+        var invisibleBit = fact && fact.inventoryInvisibleAttribute;
+        var hasInvisibleBit = false;
+        try {
+            var validBit = function (bit) {
+                return Number.isInteger(bit) && bit >= 0
+                    && bit < (header.version === 3 ? 32 : 48);
+            };
+            if (header && header.version >= 3 && header.version <= 5
+                && validBit(invisibleBit) && !ZRamReader.informAttributeNames(mem)
+                && typeof GrammarProvider !== 'undefined' && GrammarProvider.decodeD198) {
+                var inventoryFamily = GrammarProvider.decodeD198(mem);
+                hasInvisibleBit = !!inventoryFamily
+                    && inventoryFamily.classification === 'confirmed-zil-family'
+                    && inventoryFamily.evidence === 'validated';
+                [ ['attributeMap', 'concealed'], ['localScope', 'invisible'] ].forEach(function (entry) {
+                    var owner = fact[entry[0]];
+                    if (owner !== undefined) {
+                        if (!owner || typeof owner !== 'object' || Array.isArray(owner)) hasInvisibleBit = false;
+                        else if (Object.prototype.hasOwnProperty.call(owner, entry[1])
+                            && (!validBit(owner[entry[1]]) || owner[entry[1]] !== invisibleBit)) hasInvisibleBit = false;
+                    }
+                });
+            }
+        } catch (eInventoryInvisible) { hasInvisibleBit = false; }
         function walk(id, d, viaUnnamedBypass) {
             if (!id || seen[id] || d < 0) return;
             seen[id] = 1;
             ZRamReader.children(mem, id).forEach(function (cid) {
+                // Re-read current RAM before names or wrapper traversal. Native
+                // INVISIBLE omits the object and subtree, including worn items.
+                if (hasInvisibleBit) {
+                    var invisibleLinks = ZRamReader.objectLinks(mem, cid);
+                    if (invisibleLinks && (invisibleLinks.attrBytes[invisibleBit >> 3]
+                        & (128 >> (invisibleBit & 7)))) return;
+                }
                 // Native inventory omission is executable-owned, never a
                 // universal ZIL flag. Native omission wins by default; only an
                 // executable-owned wardrobe exception preserves worn gear.
