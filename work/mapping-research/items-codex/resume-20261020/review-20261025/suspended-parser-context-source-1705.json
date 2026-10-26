@@ -1,0 +1,85 @@
+{
+  "scope": "Read-only authored-source audit; no native orphan/ambiguity reproduction, no compiled P-OFLAG slot qualification, no API/fact/code consensus",
+  "source": "C:/Users/hymlo/AppData/Local/Temp/hs-src/suspended/historicalsource-suspended-ce4b8ed",
+  "hashes": {
+    "suspended.zil": "96b7d5bdbe61f982e97300944bcd751eef5e413d19d86f972e586eac4382180b",
+    "macros.zil": "446c9149d4d6d3fd856bd22f43c3c742633464235bc4d9dce17a1c3b77c4bab0",
+    "syntax.zil": "ea11791d36f358047f6f821419127e5f3e8db6438e041a27b16fddd0d4c21f07",
+    "globals.zil": "16a619d4a05ea7daf44db74b16e7b946216c6cf2e3005512916720609b5cb283",
+    "clock.zil": "9c2d7f7202303414d3f5e79ba5ae6e485adc39f09f69173f49052505dffba178",
+    "main.zil": "d43514e5d8f42e1d839337fbec94eed1b271d874d590dedecda7b73a146529de",
+    "parser.zil": "f0d793355358533968234569fd63de873b3dd62402f57f841cc3658212768b17",
+    "crufty.zil": "9bb0db501707856f3c1d66f85eef07ce9d4531e6f40c11cb8b4daa17ef5956e5",
+    "verbs.zil": "562c3c9319cdcfc867f86e2ef9268e802e0d967f245f3b32cc2e0611f2f75ef1",
+    "status.zil": "b8c5b671566cb4a6c1600aa64910a596ad42931d0549a04dc7bae751a9ae6db7",
+    "robots.zil": "e44a44ddeb9d79616f4ce03bf7f603f25a68651508d85a0332d23ed22714ad29",
+    "rooms.zil": "1dcb9175883e24f4f97364799f09227b256cba3ab658585291a9da4123e20a3c",
+    "objects.zil": "1b7cd54ffe710a67edd15ab406ffe463b86f910258f9f83c46c3c38ac14640df",
+    "goal.zil": "d3ac934e0da54225ed5db51b0c2f9e556646420117158e603ac86976e4772704",
+    "people.zil": "c714a3059beea89cd5a06334abd4c42028abc32e740534117a32c9c693895d26",
+    "setup.zil": "480090940855dbdcd359f005f1dfc0077ce74b76f7f578ddf224dd5a821f70d9"
+  },
+  "rootDeclaredIncludes": [
+    "suspended.zil",
+    "macros.zil",
+    "syntax.zil",
+    "globals.zil",
+    "clock.zil",
+    "main.zil",
+    "parser.zil",
+    "crufty.zil",
+    "verbs.zil",
+    "status.zil",
+    "robots.zil",
+    "rooms.zil",
+    "objects.zil",
+    "goal.zil",
+    "people.zil",
+    "setup.zil"
+  ],
+  "readCalls": [
+    {
+      "file": "parser.zil",
+      "line": 177,
+      "text": "<READ ,P-INBUF ,P-LEXV>)>"
+    },
+    {
+      "file": "verbs.zil",
+      "line": 293,
+      "text": "<READ ,P-INBUF ,P-LEXV>"
+    },
+    {
+      "file": "setup.zil",
+      "line": 88,
+      "text": "<READ ,P-INBUF ,P-LEXV>"
+    }
+  ],
+  "findings": [
+    {
+      "file": "parser.zil",
+      "lines": "140-177",
+      "fact": "PARSER only resets P-OADJ/P-ADJECTIVE/P-MERGED etc before its ordinary READ; it does not clear P-OFLAG there."
+    },
+    {
+      "file": "parser.zil",
+      "lines": "606-620",
+      "fact": "Missing noun/syntax orphan asks what to do, sets P-OFLAG true, returns false; main loop can invoke PARSER again at same READ."
+    },
+    {
+      "file": "parser.zil",
+      "lines": "967-974",
+      "fact": "Ambiguous noun WHICH-PRINT path calls ORPHAN and sets P-OFLAG true before returning false."
+    },
+    {
+      "file": "parser.zil",
+      "line": 308,
+      "fact": "After next line is read, existing P-OFLAG triggers ORPHAN-MERGE; clearing happens inside merge, not before READ."
+    },
+    {
+      "file": "main.zil",
+      "line": 102,
+      "fact": "MAIN-LOOP invokes PARSER each iteration, so a failed parse can return to same READ while a clarification is pending."
+    }
+  ],
+  "conclusion": "The observed ordinary parser READ resumePC26723 is not by itself an ordinary fresh-command certificate: authored orphan/ambiguity continuations reuse this parser READ. Pending request freshness + PC discriminator excluding YES? still needs qualified parser-context admission. P-OFLAG and associated continuation state are source candidates only, no guessed numeric slots or value predicates."
+}
