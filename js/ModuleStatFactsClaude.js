@@ -68,7 +68,8 @@ var ModuleStatFactsClaude = {
         "attributeObjects": { "edible": [103] },
         // transparent 19 = source TRANSBIT exact (9 objects, fp 0 fn 0; historicalsource 2febadb); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
         // moved 29 = TOUCHBIT (native, codex batch3-native.cjs output resume-20261020/moved/Cutthroats.z3.js.json; packet via grok1 #5201): GET PASSBOOK AND ROOM KEY: room key 143 and passbook 144 each set bit 29; air tank 136 stays clear.
-        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18, "on": 17, "door": 25, "scenery": 12, "transparent": 19, "moved": 29 },
+        // enterable 9 = source VEHBIT exact (5 carriers incl. bunk 79, bed 146, cask 40, chair 108); native (grok1 #4853 grok1/enter/cutthroats.json, probes ect3/ect4): ENTER/GET IN BED -> player 184 parent 183->146 (step 3), ENTER/GET IN CHAIR -> 112->108 (step 27); GET OUT OF/STAND UP return; ENTER DRESSER / ENTER TABLE "You hit your head" (parent unchanged).
+        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18, "on": 17, "door": 25, "scenery": 12, "transparent": 19, "moved": 29, "enterable": 9 },
         // WORNBIT 13 (grok1 2026-10-17, g1-ctA/B Jericho replay, test_attr recorded only during the named command): 'remove watch' @287 tests
         // wrist watch 6:13 TRUE x3 ("You are now holding the wrist watch.") and the RAM scan after it drops 6 from the owners (UNWEAR FCLEARs);
         // 'remove wet suit' @287 tests 139:13 TRUE; 'wear flippers' @284 tests 138:13 FALSE before and TRUE after; 'remove flashlight' @291
@@ -159,7 +160,8 @@ var ModuleStatFactsClaude = {
 // scenery 25 = NDESCBIT (grok1 2026-10-24 user scenery ruling 11:45; g1-batch look + test_attr/print_obj trace, grok1/batch/cache-scenery4|5 judge-scenery.json): pos tree 32, rope 33, shiny object 35, reeds 44, runes 132 (look omits, pc 25769); neg man 27 (listed, same pc). Listing routine: historicalsource 3ec9ed4 gverbs.zil:1824.
         // climbable 24 = CLIMBBIT exact; native bare (grok1 #5082): CLIMB STAIRS 216 Aqueduct View -> Lake Shore, bit read 1; CLIMB LAMP "Bizarre!". Ladder 23 unreached (low risk).
         // moved 27 = TOUCHBIT (native, codex #5178 resume-20261020/moved/packet-zork3.json; the source catalog candidate 0 is wrong): TAKE lamp 198 and waybread 34 set bit 27; stairs 216 stay clear.
-        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10, "supporter": 26, "on": 15, "edible": 5, "door": 9, "scenery": 25, "climbable": 24, "moved": 27 } // on 15 (codex #4333: lamp 198 +/-15, torch 41 -15 native)
+        // enterable 7 = source VEHBIT exact (tier: seeded-native, g1-batch default zork3 seed 0; not a fresh unforced run); single carrier in object table (gold machine 91; whole-source exception, Enchanter precedent); native (grok1 g1-batch grok1/enter/zork3/run-zork3-20261025T230255-59496.json, G1PLAYER 202, step 131 Technology Museum): ENTER GOLD MACHINE -> player parent 101->91, test_attr 91:7=1, LOOK "(You are in the gold machine.)", GET OUT -> 101; ENTER GREY MACHINE 90 / BLACK MACHINE 89 read 7=0, "You hit your head", parent unchanged.
+        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10, "supporter": 26, "on": 15, "edible": 5, "door": 9, "scenery": 25, "climbable": 24, "moved": 27, "enterable": 7 } // on 15 (codex #4333: lamp 198 +/-15, torch 41 -15 native)
     },
     // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
@@ -377,7 +379,11 @@ var ModuleStatFactsClaude = {
         // moved 1 = TOUCHBIT (seeded-native tier, Codex #5335; grok1 packet P1 probe5/moved/suspect): TAKE pen 95 / costume receipt 12 set 1 (ITAKE verbs.zil:436-438); negative bar 119 stays clear (mask EXAMINE was ambiguous, excluded). Trace = g1-batch before/after attr-byte diff (test_attr only; no FSET op in opsOnId).
         "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15, "door": 27, "transparent": 7, "talkable": 31, "moved": 1 },
         "inventoryHiddenAttribute": 19,
-        "inventoryHiddenPreservesWorn": true
+        "inventoryHiddenPreservesWorn": true,
+        // inventoryInvisibleAttribute 10 = source INVISIBLE exact 7/7 (historicalsource a18e100): native i omits an INVISIBLE child and its subtree, worn items included (Codex R2 #5300, native resume-20261020/concealed/suspect-equipment-*-native.json, R4+R2 Equipment PASS #5357). Tested on the root's children only, never the root: reporter 99 itself carries 10.
+        "inventoryInvisibleAttribute": 10,
+        // playerObject 99 = source PLAYER "reporter" (people.zil sha256 96A22C9C, a18e100; no SETG PLAYER anywhere, SETG WINNER swaps for NPC orders are restored); ME 98 "yourself" is the GLOBAL-OBJECTS parser stand-in (negative: parent 246, no children). Native (Codex #5366/#5374 review-20261025/packet-suspect-player99.json, raw0128): 99.parent follows statusG0 118/120/121/207 over LOOK/W/W/W; TAKE pen 95 and receipt 12 land under 99. Player may sit in a vehicle (chair 153, window seat 233), so the room stays statusG0, not parent(99).
+        "playerObject": 99
     },
     // Native i tests bit17 and skips arm111 (including gash110) and badge184;
     // the held Logbook195 has this bit clear and is printed.
@@ -538,7 +544,8 @@ var ModuleStatFactsClaude = {
         // door 43 = source DOORBIT exact (4 carriers: bedroom, screening, corridor, inner door; none a room); native (grok1 #5199 probe4/cache19, G1PLAYER=19): bedroom door 205 CLOSE/OPEN read 43=1 and toggle OPENBIT 39; screening door 180 refuses natively.
         // moved 20 = TOUCHBIT (native, grok1 #5208 grok1/moved/packet-*.json, source bit read clear -> set on TAKE): toothbrush 31, screwdriver 105, junk mail 198 (separate takes); doormat 101 stays clear. Gown/analgesic take via own routines (exceptions).
         // concealed 21 = INVISIBLE (native, codex #5245 resume-20261020/concealed/packet-hitchhik.json): bulldozer 228 reads 21=1 and the parser refuses it until OPEN CURTAINS clears 21 (then EXAMINE describes it); conversation 169 hidden until WAIT (Ford decides) clears 21 and LISTEN resolves it; curtains 63 visible with 21 clear. Parser visibility only.
-        "attributeMap": { "open": 39, "isOpen": 39, "animate": 42, "talkable": 42, "container": 40, "supporter": 23, "wearable": 25, "enterable": 28, "transparent": 33, "door": 43, "moved": 20, "concealed": 21 },
+        // enterable withdrawn (grok1 facts-D2, Codex #5367): VEHBIT 28 not proven by native evidence (bed entry raw all NOTEST; seated chair 164 alone is not 2 owners). Status UNKNOWN (ledger U), not feature-absent.
+        "attributeMap": { "open": 39, "isOpen": 39, "animate": 42, "talkable": 42, "container": 40, "supporter": 23, "wearable": 25, "transparent": 33, "door": 43, "moved": 20, "concealed": 21 },
         "wornAttribute": 24,
         // Native i (walkthrough step 60) tests bit44 TRUE on guarantee 18, green 128 / red 197 button inside the Sub-Etha
         // device 211 and omits them; FALSE on satchel, gown, fluff, thing, device, all printed. Source NDESCBIT 44 exact (77/77).
@@ -709,7 +716,8 @@ var ModuleStatFactsClaude = {
         // openCapability: Open/Close for containers that are not surfaces (the disks/sphere carry CONTBIT but refuse CLOSE natively, grok1 #5213).
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         // moved 29 = TOUCHBIT (seeded-native tier, Codex #5335; grok1 probe5/moved/starcross2 D7C9410E): TAKE space suit 144 / black rod 84 set 29 (ITAKE verbs.zil:580-583); mass detector 221 and metal relief 23 stay clear; room entry is supporting only. Trace = g1-batch before/after attr-byte diff (test_attr only; no FSET op in opsOnId).
-        "attributeMap": { "animate": 11, "scenery": 23, "enterable": 15, "climbable": 22, "open": 9, "isOpen": 9, "container": 8, "door": 12, "supporter": 28, "moved": 29 },
+        // talkable 11 = VICBIT (seeded-native tier: g1-batch default seed; grok1 2026-10-25, packet E1 probe5/talk/run-starcross-20261026T011323-35324.json, test_attr during the named TELL command only): computer 24 "tell computer to look" 24:11 TRUE, giant spider 196 "tell spider to look" 196:11 TRUE; nest 6 "tell nest to look" 6:11 FALSE ("You can't talk to the nest!"), translator 9 "tell translator to look" 9:11 FALSE.
+        "attributeMap": { "animate": 11, "talkable": 11, "scenery": 23, "enterable": 15, "climbable": 22, "open": 9, "isOpen": 9, "container": 8, "door": 12, "supporter": 28, "moved": 29 },
         // Grok4124 design, new native two-owner proof: normal144 and tattered176; held library71/basket40 negative.
         "wornAttribute": 24
     },
