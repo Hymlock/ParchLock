@@ -1,0 +1,6 @@
+# Preserve byte-bound research captures and helpers across Windows checkouts.
+*.json -text
+*.jsonl -text
+*.cjs -text
+*.sha256 -text
+*.txt -text
