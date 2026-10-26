@@ -1,0 +1,104 @@
+{
+  "tier": "Peer seeded-native opcode trace, no relocation; retained root ordinary-native shop-door corroboration distinct",
+  "hashes": {
+    "work/investigations/grok1/udoor/cache/run-spellbrkr-20261026T021900-70584.json": "1774aeb2e32171a6e8e4310fbb361c2fc05fababaa8986ae9cc93c128bd57a7a",
+    "work/investigations/grok1/udoor/cache/plan-spellbrkr-door.json": "b8fe13f18e00d113538691136468e750b3dc89e282a0b90aa37f366846a34d75",
+    "work/investigations/grok1/udoor/cache/plan-spellbrkr-door2.json": "c8216aa0d9e2eaa484903feee965d03d6c72c45d6994410be8a3b3ae54b59f72",
+    "games/Spellbreaker.z3.js": "5ad1dc88e8c928bb1a25ec2f256183387c52fed428595137a8a625ec00e14251",
+    "work/investigations/grok1/batch/g1-batch.cjs": "2cfda3c75a60e0d1381c024f7bf02358653d9306566d641033d9ae7404c93167",
+    "work/investigations/grok1/udoor/packet-spellbrkr-door.json": "7247801d89aceb587b0e746def6619d19c6c3402700f0b35c7a5d4fe773bf4d0"
+  },
+  "rows": [
+    {
+      "id": 188,
+      "command": "close shop door",
+      "here": 115,
+      "parent": 54,
+      "bit25": [
+        [
+          188,
+          25,
+          1,
+          47503
+        ],
+        [
+          188,
+          25,
+          1,
+          47575
+        ]
+      ],
+      "reply": "Okay, the shop door is now closed.\n \n> ",
+      "planBinding": true,
+      "assetBinding": true
+    },
+    {
+      "id": 188,
+      "command": "open shop door",
+      "here": 115,
+      "parent": 54,
+      "bit25": [
+        [
+          188,
+          25,
+          1,
+          50173
+        ]
+      ],
+      "reply": "Okay, the shop door is now open.\n \n> ",
+      "planBinding": true,
+      "assetBinding": true
+    },
+    {
+      "id": 40,
+      "command": "close octagonal hole",
+      "here": 6,
+      "parent": 6,
+      "bit25": [
+        [
+          40,
+          25,
+          1,
+          47560
+        ]
+      ],
+      "reply": "Okay, the octagonal hole is now closed.\n \n> ",
+      "planBinding": true,
+      "assetBinding": true
+    },
+    {
+      "id": 4,
+      "command": "close gold box",
+      "here": 6,
+      "parent": 198,
+      "bit25": [],
+      "reply": "Closed.\n \n> ",
+      "planBinding": true,
+      "assetBinding": true
+    },
+    {
+      "id": 14,
+      "command": "close rezrov spell",
+      "here": 6,
+      "parent": 144,
+      "bit25": [
+        [
+          14,
+          25,
+          0,
+          47488
+        ],
+        [
+          14,
+          25,
+          0,
+          50173
+        ]
+      ],
+      "reply": "You must tell me how to do that to a rezrov spell.\n \n> ",
+      "planBinding": true,
+      "assetBinding": true
+    }
+  ],
+  "verdict": "ACCEPT bounded door25 semantic evidence for next batch; no new fact integration or full consumer closure"
+}
