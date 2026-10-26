@@ -1,0 +1,12 @@
+const fs=require('fs'),cp=require('child_process'),crypto=require('crypto'),p=require('path');
+const r='work/mapping-research/items-codex/resume-20261020/review-20261025', c=r+'/sorcerer-illumination-r1-candidate';
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const m=JSON.parse(fs.readFileSync(c+'/candidate-manifest.json'));
+let patch='';for(const n of Object.keys(m.after)){const rel='js/'+n+'.js', a=fs.readFileSync(m.baseline+'/'+rel),b=fs.readFileSync(c+'/'+rel);if(sha(a)!==m.before[n]||sha(b)!==m.after[n])throw Error('source drift '+n);let z=cp.spawnSync('git',['diff','--no-index','--',m.baseline+'/'+rel,c+'/'+rel],{encoding:'utf8'});if(z.status!==1)throw Error('diff '+z.status);let lines=z.stdout.split('\n');lines[0]='diff --git a/'+rel+' b/'+rel;lines=lines.map(x=>x.startsWith('--- ')?'--- a/'+rel:x.startsWith('+++ ')?'+++ b/'+rel:x);patch+=lines.join('\n');}
+fs.writeFileSync(r+'/sorcerer-illumination-r1.patch',patch);
+const raw=JSON.parse(fs.readFileSync(r+'/sorcerer-illumination-native-1147.json'));
+const focused=JSON.parse(fs.readFileSync(c+'/focused-results.json'));
+let receipt={created:new Date().toISOString(),scope:'Isolated Sorcerer illumination prototype only; not integrated or shared-gated',candidate:m,nativeStatus:raw.status,sourceStable:raw.sourceStable,focused,visualInspection:'Root individually inspected before and after PNG: book providing light before; box closed without tag before and providing light after FROTZ BOX; journal no tag.',limits:['Older accepted semantic packet was seeded; this new native run uses ordinary commands without VM/fact/RNG writes.','Inventory bootstrap may add documented native inventory/status commands beyond 11 scripted commands.','Local emission is not room-light authority; no new switchability or commands.','No phone/pointer or shared batch gate acceptance.'],artifacts:{}};
+for(const f of ['sorcerer-illumination-native-1147.cjs','sorcerer-illumination-native-1147.json','sorcerer-illumination-before-1147.png','sorcerer-illumination-after-1147.png','sorcerer-illumination-controls-1140.cjs','sorcerer-illumination-r1.patch'])receipt.artifacts[f]=sha(fs.readFileSync(r+'/'+f));
+fs.writeFileSync(r+'/sorcerer-illumination-validation-1150.json',JSON.stringify(receipt,null,2)+'\n');
+console.log(JSON.stringify({status:raw.status,stable:raw.sourceStable,patchSha:receipt.artifacts['sorcerer-illumination-r1.patch'],focused},null,2));

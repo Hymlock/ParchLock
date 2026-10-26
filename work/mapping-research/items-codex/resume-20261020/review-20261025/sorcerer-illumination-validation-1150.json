@@ -1,0 +1,60 @@
+{
+  "created": "2026-10-26T11:44:24.125Z",
+  "scope": "Isolated Sorcerer illumination prototype only; not integrated or shared-gated",
+  "candidate": {
+    "scope": "Separate copied illumination display prototype; main sources untouched",
+    "baseline": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\wt-g1gate-cand",
+    "before": {
+      "AttributeSchema": "1184c06a7d22c039cc2a9dfae25bcc2613aaed604380e59d4eea410edebb8b72",
+      "EquipmentUI": "1845b0c3ce79386f9fe55ddbca232dd7ba54777e49375bb47d62908ac43b07b7",
+      "ModuleStatFactsClaude": "b6ef5e48c978078a0dc48fcf4b7b148260105fb7f207bed0d0fe74c984eeb617"
+    },
+    "after": {
+      "AttributeSchema": "29652e1a099b79d4ac5ba6b44f2ba897171f22342dad1efd487e01591307fa73",
+      "EquipmentUI": "f052f3c41b0ebfba3c2a29e75c51f488099b31cfef0ad1914d24e65d10fbe2ac",
+      "ModuleStatFactsClaude": "0eaa1701247cb8167e0b49eebc09257ec0b73583c33c96b0e05c36f91ad9d999"
+    },
+    "gameSha": "d8a878364d0331ab789c859f7e4a3b6a1d0b3b3f3f0415ff566a702f543195b8",
+    "sourceBound": "Property-frontier bounded object domain; no generic count heuristic"
+  },
+  "nativeStatus": "PASS bounded real Gear emission, fresh custody, no new switchability/commands",
+  "sourceStable": true,
+  "focused": {
+    "tier": "X-only source/ancestry/ownership controls; actual decoder admission first; no native qualification",
+    "passed": [
+      "actual decoder/current fact, explicit uninitialized boot and X role fixture",
+      "held emission follows raw on false",
+      "held emission follows raw on true",
+      "local nested emission does not assert room visibility",
+      "dropping object removes Gear authority on next read",
+      "parent cycle returns unknown",
+      "self and compiled out-of-range objects excluded",
+      "missing rule clears stale field/no tag",
+      "extra rule field clears stale field/no tag",
+      "wrong flag clears stale field/no tag",
+      "wrong scope clears stale field/no tag",
+      "no positive on owner clears stale field/no tag",
+      "wrong current memory binding clears stale field/no tag",
+      "unknown family clears stale field/no tag",
+      "declared Inform exclusion clears stale field/no tag",
+      "heuristic player rejected clears stale field/no tag",
+      "raw read failure clears stale field/no tag",
+      "all legacy decoded attrs stay equal"
+    ]
+  },
+  "visualInspection": "Root individually inspected before and after PNG: book providing light before; box closed without tag before and providing light after FROTZ BOX; journal no tag.",
+  "limits": [
+    "Older accepted semantic packet was seeded; this new native run uses ordinary commands without VM/fact/RNG writes.",
+    "Inventory bootstrap may add documented native inventory/status commands beyond 11 scripted commands.",
+    "Local emission is not room-light authority; no new switchability or commands.",
+    "No phone/pointer or shared batch gate acceptance."
+  ],
+  "artifacts": {
+    "sorcerer-illumination-native-1147.cjs": "5b61facca42aade865aafb4c278952d74244f8940795daa5cf0f421f4c772ccd",
+    "sorcerer-illumination-native-1147.json": "c9541cf1fd0518dabbc6c007532edce724d5a7dcb09db8cd5389350d46f07cb4",
+    "sorcerer-illumination-before-1147.png": "dae5d7b238d4dee0d5755b134a964631fbf8a98c895e2462004b388364f7e3ce",
+    "sorcerer-illumination-after-1147.png": "7e45a3191e5f5658e997330a1767cf79c0f5f769114d3771d51812b6e2a988e0",
+    "sorcerer-illumination-controls-1140.cjs": "f5773a1e12a46958e18dab885386d1f296ee84be67db5dfb5f7c8817a34d6295",
+    "sorcerer-illumination-r1.patch": "468a06df59368569845f36ec90da5dccf7fc5c7b3a1fef2cdd9280c2ae903878"
+  }
+}

@@ -4,3 +4,4 @@
 *.cjs -text
 *.sha256 -text
 *.txt -text
+*.patch -text

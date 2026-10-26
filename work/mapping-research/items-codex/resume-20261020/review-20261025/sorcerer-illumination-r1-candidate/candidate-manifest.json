@@ -1,0 +1,16 @@
+{
+  "scope": "Separate copied illumination display prototype; main sources untouched",
+  "baseline": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\wt-g1gate-cand",
+  "before": {
+    "AttributeSchema": "1184c06a7d22c039cc2a9dfae25bcc2613aaed604380e59d4eea410edebb8b72",
+    "EquipmentUI": "1845b0c3ce79386f9fe55ddbca232dd7ba54777e49375bb47d62908ac43b07b7",
+    "ModuleStatFactsClaude": "b6ef5e48c978078a0dc48fcf4b7b148260105fb7f207bed0d0fe74c984eeb617"
+  },
+  "after": {
+    "AttributeSchema": "29652e1a099b79d4ac5ba6b44f2ba897171f22342dad1efd487e01591307fa73",
+    "EquipmentUI": "f052f3c41b0ebfba3c2a29e75c51f488099b31cfef0ad1914d24e65d10fbe2ac",
+    "ModuleStatFactsClaude": "0eaa1701247cb8167e0b49eebc09257ec0b73583c33c96b0e05c36f91ad9d999"
+  },
+  "gameSha": "d8a878364d0331ab789c859f7e4a3b6a1d0b3b3f3f0415ff566a702f543195b8",
+  "sourceBound": "Property-frontier bounded object domain; no generic count heuristic"
+}
