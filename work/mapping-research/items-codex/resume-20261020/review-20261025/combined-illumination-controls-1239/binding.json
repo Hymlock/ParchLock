@@ -1,0 +1,11 @@
+{
+  "oldHelperSha": "9323f3628c3d8ecb74fc786681bc7fdc9bcf40eaabde6a99ca383fef27ae107b",
+  "helperSha": "927f4f96609f27f9098aad3f32fb4e69212e2a6edd0bb573954b11f2e354987e",
+  "target": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\consumer-combined-r1-1204",
+  "output": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\combined-illumination-controls-1239\\results.json",
+  "review": "Independent ACCEPT before run: assert two known intended deltas explicitly; compare all remaining keys. Old helper target ACCEPT withdrawn, source composition ACCEPT retained.",
+  "expectationChange": {
+    "old": "delete a.providingLight;assert.deepEqual(JSON.parse(JSON.stringify(a)),JSON.parse(JSON.stringify(b)))",
+    "fresh": "assert.equal(Object.prototype.hasOwnProperty.call(a,'absent'),false);assert.strictEqual(f.A.bitFor('absent',f.mem),null);assert.equal(Object.prototype.hasOwnProperty.call(b,'absent'),true);assert.strictEqual(b.absent,false);assert.strictEqual(a.providingLight,true);delete b.absent;delete a.providingLight;assert.deepEqual(JSON.parse(JSON.stringify(a)),JSON.parse(JSON.stringify(b)))"
+  }
+}
