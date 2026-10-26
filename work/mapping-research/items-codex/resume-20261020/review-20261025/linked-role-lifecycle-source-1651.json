@@ -1,0 +1,44 @@
+{
+  "scope": "Read-only source mechanism audit, no native observations or role implementation",
+  "hashes": {
+    "lib/zvm.js": "12bf89d7f524abf72f223c89c98d68abf3df88d93b77a64838442b4eefb92e2f",
+    "lib/main.js": "5155f95821cf719e218aa54d614d2d57cc2fbae8e533c9bb3aba09ac7aeaa7b9",
+    "js/TurnRecorder.js": "97fb7542e75c8bd9d5d82c24d5a4c2366f31d8b03eed059703397b8ec2eaa1b8",
+    "js/Input.js": "48b3175d0931d0bba4d846a34f3e168505cd6be6afc17171a030de4cdd32f681",
+    "js/UndoRestoreSync.js": "ff465655f86e38690cb41224f573a4a2046c22f66915affeb4f3a313e16634ed",
+    "js/WorldModel.js": "902e97bdc68bb11ca935918ec17180938bf78854bdf88985b25c6afffe3bfab0"
+  },
+  "findings": [
+    {
+      "file": "lib/zvm.js",
+      "anchor": "read:function",
+      "fact": "read() creates a NEW read_data object with buffer/bufaddr/parseaddr and invokes Glk.glk_request_line_event_uni on current main/upper input window. read_char has a different read_data shape. read_data existence alone persists and is not readiness."
+    },
+    {
+      "file": "lib/main.js",
+      "anchor": "glk_request_line_event_uni:function",
+      "fact": "Window object line_request=true, line_request_uni=true, input_generation=g and linebuf=buffer. Accepted line handler clears line_request flags,input_generation,linebuf before e.resume(); cancellation also clears these fields. Saved/restore path can reconstruct requests, so generation alone is not command identity."
+    },
+    {
+      "file": "js/TurnRecorder.js",
+      "anchor": "onAcceptedSubmit",
+      "fact": "Real ordinary submit stamp exists: ++_submissionId with pageEpoch, carried in accepted event and _activeTurn. This differs from UndoRestoreSync.generation."
+    },
+    {
+      "file": "js/TurnRecorder.js",
+      "anchor": "_settle",
+      "fact": "450ms settle timer is attribution boundary, not a VM pending-input guarantee. _boundaryStamp can capture before a later command begins. Analyzer contract disallows reading live VM in analyze(); captureAfter owns snapshot."
+    },
+    {
+      "file": "js/UndoRestoreSync.js",
+      "anchor": "generation",
+      "fact": "Timeline generation handles undo/restore/restart; ordinary command freshness must not be inferred from it alone."
+    }
+  ],
+  "designImplications": [
+    "Proposed readiness can bind actual current VM/window/read_data references and active line_request/linebuf/input_generation; validate supplied mem is current VM memory. Neither visible DOM prompt nor WorldModel.tick nor elapsed timer alone proves a settled VM input request.",
+    "Use existing accepted-submission pageEpoch/submissionId plus restore generation and input request identity for freshness; do not call input_generation a turn number.",
+    "Recheck same current pending request plus current singular role/room before submitting a generated command. Request disappearance/replacement, group/invalid role or module/restore change invalidates old selection.",
+    "These are source-supported candidate seams, not an agreed new public API, no current role fact/code permission. Native validation of request lifecycle across commands/restore/char input still required."
+  ]
+}
