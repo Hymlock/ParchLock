@@ -1,0 +1,7 @@
+# Codex operator-authorized out-of-credits integration
+
+Operator 2026-10-26 explicitly directs Codex to take all other staged actions because other seats are out of credits. Established rule: strict adversarial self-review in place of unavailable peer acceptance, labeled as self-review. No impersonation, authentication bypass, invented peer review or overall goal completion.
+
+First slice: exact concealed5 facts blob3a740dabfab79a8af355276d95e0f631912728b2, already independently reviewed5490 and integration GO5500. Five fields Sorcerer19/Planetfall19/PlunderedHearts20/Starcross30/Deadline31 plus ZorkII evidence-comment clarification only. Strict takeover audit confirms no other parsed facts changed. Current raw retained77-file manifest unchanged; current76 nonfacts sources LF-identical to retained isolated guard. Accepted seven-row affectedZIL/InformZ/Glulx gate0diff reused; actual executed29ec vs reviewed3a differs comment only, not exact-byte execution. Glulx row boot-only, not functional coverage. Fresh required operator guard13PASS/0FAIL. No duplicate full catalog/native replay.
+
+Commit exact reviewed facts blob while preserving Claude two ZorkIII worn4 lines uncommitted byte-for-byte. No full title, inventoryHidden/actor-possession consumer or full26 completion. Later data-only slices require their own exact proposal/current-source audit and affected three-type/operator validation.
