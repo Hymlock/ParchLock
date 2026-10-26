@@ -34,7 +34,8 @@ var ModuleStatFactsClaude = {
         // climbable 23 = CLIMBBIT exact; single carrier stairs 188 (whole-source); native bare CLIMB STAIRS from Oddly-angled Room -> Stairway; CLIMB LAMP refused.
         // moved 2 = TOUCHBIT (native, codex #5178 resume-20261020/moved/packet-zork2.json): TAKE sword 23 and lamp 76 set bit 2; bridge 245 stays clear.
         // transparent 7 = source TRANSBIT exact (6 objects, fp 0 fn 0; historicalsource 3da9661); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
-        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30, "talkable": 30, "wearable": 3, "edible": 20, "light": 31, "enterable": 27, "door": 22, "on": 19, "climbable": 23, "moved": 2, "transparent": 7 },
+        // Proposed concealed 9 = native INVISIBLE; retained Codex packet concealed/packet-zork2.json (55/83 positives; 76 negative). Native/source tiers and SAVE/RESTORE qualifications remain in packet; no actor-possession or whole-title consumer closure.
+        "attributeMap": { "container": 18, "supporter": 8, "open": 11, "isOpen": 11, "animate": 30, "talkable": 30, "wearable": 3, "edible": 20, "light": 31, "enterable": 27, "door": 22, "on": 19, "climbable": 23, "moved": 2, "transparent": 7 , "concealed": 9 },
         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
         // (source: ROBOT, CERBERUS, UNICORN (2dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] }
@@ -162,7 +163,8 @@ var ModuleStatFactsClaude = {
         // climbable 24 = CLIMBBIT exact; native bare (grok1 #5082): CLIMB STAIRS 216 Aqueduct View -> Lake Shore, bit read 1; CLIMB LAMP "Bizarre!". Ladder 23 unreached (low risk).
         // moved 27 = TOUCHBIT (native, codex #5178 resume-20261020/moved/packet-zork3.json; the source catalog candidate 0 is wrong): TAKE lamp 198 and waybread 34 set bit 27; stairs 216 stay clear.
         // enterable 7 = source VEHBIT exact (tier: seeded-native, g1-batch default zork3 seed 0; not a fresh unforced run); single carrier in object table (gold machine 91; whole-source exception, Enchanter precedent); native (grok1 g1-batch grok1/enter/zork3/run-zork3-20261025T230255-59496.json, G1PLAYER 202, step 131 Technology Museum): ENTER GOLD MACHINE -> player parent 101->91, test_attr 91:7=1, LOOK "(You are in the gold machine.)", GET OUT -> 101; ENTER GREY MACHINE 90 / BLACK MACHINE 89 read 7=0, "You hit your head", parent unchanged.
-        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10, "supporter": 26, "on": 15, "edible": 5, "door": 9, "scenery": 25, "climbable": 24, "moved": 27, "enterable": 7 } // on 15 (codex #4333: lamp 198 +/-15, torch 41 -15 native)
+        // Proposed concealed 28 = native INVISIBLE; retained Codex packet concealed/packet-zork3.json (5/156 positives; 198 negative). Native/source tiers and SAVE/RESTORE qualifications remain in packet; no actor-possession or whole-title consumer closure.
+        "attributeMap": { "open": 12, "isOpen": 12, "wearable": 4, "container": 10, "supporter": 26, "on": 15, "edible": 5, "door": 9, "scenery": 25, "climbable": 24, "moved": 27, "enterable": 7 , "concealed": 28 } // on 15 (codex #4333: lamp 198 +/-15, torch 41 -15 native)
     },
     // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
@@ -202,7 +204,8 @@ var ModuleStatFactsClaude = {
         // talkable 31 = ACTORBIT exact (= animate); native (grok1 #5176 talk2/cache/run-ballyhoo-*): TALK TO Chuckles 113 and guard 207 read 31=1 and answer; sunglasses 32 reads 0 and refuses.
         // transparent 13 = source TRANSBIT exact (7 objects, fp 0 fn 0; historicalsource 9f779e8); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
         // moved 18 = TOUCHBIT (native, codex batch3-native.cjs output resume-20261020/moved/Ballyhoo.z3.js.json; packet via grok1 #5201): TAKE clown mask 93 and fiberglass pole 129 set bit 18 (clear -> set); center pole 79 stays clear.
-        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21, "on": 24, "door": 27, "scenery": 6, "enterable": 30, "locked": 10, "talkable": 31, "transparent": 13, "moved": 18 },
+        // Proposed concealed 19 = native INVISIBLE; retained Codex packet concealed/packet-ballyhoo.json (24/233 positives; 129 negative). Native/source tiers and SAVE/RESTORE qualifications remain in packet; no actor-possession or whole-title consumer closure.
+        "attributeMap": { "open": 15, "isOpen": 15, "animate": 31, "container": 23, "supporter": 17, "wearable": 21, "on": 24, "door": 27, "scenery": 6, "enterable": 30, "locked": 10, "talkable": 31, "transparent": 13, "moved": 18 , "concealed": 19 },
         // Native i (walkthrough step 90) tests bit6 TRUE on pink dot 231 / blue dot 71 inside the open ticket 122 and
         // omits them; tests it FALSE on bucket 65, meat 102, bullwhip 16, ticket 122 and prints them. Source NDESCBIT 6
         // exact (114/114).
@@ -285,7 +288,8 @@ var ModuleStatFactsClaude = {
         // enterable 29 = source VEHBIT exact; native (grok1 #5067 grok1/enter/spellbreaker.json): ENTER GREEN ROCK -> on rock 42; SIT ON CARPET -> on carpet 95.
         // moved 22 = TOUCHBIT (native, grok1 #5208 grok1/moved/packet-*.json, source bit read clear -> set on TAKE): rye bread 43 and cube 238; smoked fish 123 stays clear.
         // door 25 = DOORBIT, source exact 6/6 (vault door 2, octagonal hole 40, shop door 188, cell door 207, iron door 223, trap door 244). Seeded-native trace (grok1 #5399, udoor/cache run-spellbrkr-20261026T021900-70584.json; Codex ACCEPT #5402): CLOSE/OPEN shop door 188 and CLOSE octagonal hole 40 test 25 TRUE; CLOSE rezrov 14 tests 25 FALSE. Gold box 4 takes the container branch (no test).
-        "attributeMap": { "supporter": 3, "animate": 31, "talkable": 31, "on": 8, "container": 27, "open": 21, "isOpen": 21, "scenery": 19, "transparent": 15, "enterable": 29, "moved": 22, "door": 25 }
+        // Proposed concealed 12 = native INVISIBLE; retained Codex packet concealed/packet-spellbreaker.json (70/186 positives; 149 negative). Native/source tiers and SAVE/RESTORE qualifications remain in packet; no actor-possession or whole-title consumer closure.
+        "attributeMap": { "supporter": 3, "animate": 31, "talkable": 31, "on": 8, "container": 27, "open": 21, "isOpen": 21, "scenery": 19, "transparent": 15, "enterable": 29, "moved": 22, "door": 25 , "concealed": 12 }
     },
     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
         // D232 local globals, roots only (r3-claude/localscope2 + grok2 registry-ready): property 17, holder 58. Native: Outside of
@@ -380,7 +384,8 @@ var ModuleStatFactsClaude = {
         "wornAttribute": 5,
         // talkable 31 (seeded-native tier; grok1 packet K probe5/talk/suspect): ASK ostmann/johnson ABOUT X test 31 TRUE; bar/notebook FALSE; PRE-ASK-ABOUT verbs.zil:657-659.
         // moved 1 = TOUCHBIT (seeded-native tier, Codex #5335; grok1 packet P1 probe5/moved/suspect): TAKE pen 95 / costume receipt 12 set 1 (ITAKE verbs.zil:436-438); negative bar 119 stays clear (mask EXAMINE was ambiguous, excluded). Trace = g1-batch before/after attr-byte diff (test_attr only; no FSET op in opsOnId).
-        "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15, "door": 27, "enterable": 28, "transparent": 7, "talkable": 31, "moved": 1 },
+        // Proposed concealed 10 = native INVISIBLE; retained Codex packet concealed/packet-suspect.json (88/83 positives; 89 negative). Native/source tiers and SAVE/RESTORE qualifications remain in packet; no actor-possession or whole-title consumer closure.
+        "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15, "door": 27, "enterable": 28, "transparent": 7, "talkable": 31, "moved": 1 , "concealed": 10 },
         "inventoryHiddenAttribute": 19,
         "inventoryHiddenPreservesWorn": true,
         // inventoryInvisibleAttribute 10 = source INVISIBLE exact 7/7 (historicalsource a18e100): native i omits an INVISIBLE child and its subtree, worn items included (Codex R2 #5300, native resume-20261020/concealed/suspect-equipment-*-native.json, R4+R2 Equipment PASS #5357). Tested on the root's children only, never the root: reporter 99 itself carries 10.
@@ -651,7 +656,7 @@ var ModuleStatFactsClaude = {
         // enterable 28 = source VEHBIT exact; native (grok1 #5002 grok1/enter/moonmist.json): carriers 171, 134, 76 ENTER moves the player inside, non-carrier refuses.
         // transparent 9 = source TRANSBIT exact; native (grok1 #5112 grok1/routes/moonmist-red-bsmt.json, G1TRACE): LOOK THROUGH closed locked gate 52 reads 9=1 and reaches ROOM-PEEK via the TRANSBIT branch (verbs.zil 2687-2693); LOOK THROUGH bottle 142 reads 9=1; chest of drawers 160 (no bit) negative.
         // moved 16 = TOUCHBIT (native, grok1 #5210 grok1/moved/packet-*.json, clear -> set on TAKE): luggage 59 and aerosol device 247; sports car 171 stays clear.
-        "attributeMap": { "wearable": 29, "open": 14, "isOpen": 14, "container": 27, "supporter": 23, "animate": 31, "talkable": 31, "on": 10, "scenery": 19, "enterable": 28, "transparent": 9, "moved": 16 }
+        "attributeMap": { "wearable": 29, "open": 14, "isOpen": 14, "container": 27, "supporter": 23, "animate": 31, "talkable": 31, "on": 10, "scenery": 19, "enterable": 28, "transparent": 9, "moved": 16 , "concealed": 6 }
     },
     // Deadline (ZIL): OPENBIT 28 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match). CONTBIT 21 is also proven but is NOT applied
     // until SURFACEBIT/supporter is proven, so surfaces never gain container Open/Close (Zork I table lesson, a89704b).
@@ -694,7 +699,8 @@ var ModuleStatFactsClaude = {
         // door 28 = source DOORBIT exact 16/16 (doors and gates only; no ROOM carries it); native (grok1 #5206, locked/cache/run-witness-*): front door 231, office back door 213, bedroom door 171 and office door 121 read 28=1; OPEN BEDROOM DOOR sets OPENBIT 8.
         // talkable 31 (seeded-native tier; grok1 packet I): ASK Monica/Linder ABOUT X TRUE; telegram/handcuffs FALSE; verbs.zil:734-735.
         // moved 4 = TOUCHBIT (seeded-native tier, Codex #5335; grok1 packet P3 probe5/moved/witness): TAKE match book 53 / telegram 54 set 4 (ITAKE verbs.zil:461-462); held handcuffs 51 stays clear (off-scope boots excluded). Trace = g1-batch before/after attr-byte diff (test_attr only; no FSET op in opsOnId).
-        "attributeMap": { "open": 8, "isOpen": 8, "container": 9, "supporter": 16, "animate": 31, "locked": 17, "enterable": 29, "door": 28, "talkable": 31, "moved": 4 },
+        // Proposed concealed 12 = native INVISIBLE; retained Codex packet concealed/packet-witness.json (107/55 positives; 112 negative). Native/source tiers and SAVE/RESTORE qualifications remain in packet; no actor-possession or whole-title consumer closure.
+        "attributeMap": { "open": 8, "isOpen": 8, "container": 9, "supporter": 16, "animate": 31, "locked": 17, "enterable": 29, "door": 28, "talkable": 31, "moved": 4 , "concealed": 12 },
         "playerObject": 79
     },
     // Starcross (Infocom v3): animate 11 = VICBIT (grok1 2026-10-17; route agent-tools/g1-routes.json 'scs' = zil-routes starcross with
