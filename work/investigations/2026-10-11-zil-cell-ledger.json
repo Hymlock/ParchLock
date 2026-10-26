@@ -282,7 +282,7 @@
   },
   "transparent": {
    "s": "NA",
-   "r": "grok1 #5026 transparent 2026-10-24 (Claude #5051 agreed): no closed TRANSBIT container exists in source or object table, so no radial effect. zork3 TRANSBIT only on actors: 3actions.zil:3364 and shadow.zil:195 (ACTORBIT TRANSBIT CONTBIT OPENBIT). Census: Zork3-TheDungeonMaster.z3.js bit 30: 67 \"hooded figure\" bits[10,11,12,21,30]; 222 unnamed (all-high-bits sentinel). No container carrier. Packet work/investigations/grok1/transp/zork3.json"
+   "r": "grok1 Q7-R2 transparent 2026-10-26, Codex review 2026-10-26 (#5403 transparent-na-review-0602.md sha 4D7D77C6, #5409 transparent-current-source-bindings-0606.json sha 6D8C8342, #5410). Scope: narrow current closed-content-consumer non-applicability only (AttributeSchema canSeeInside needs a closed transparent container). Not feature absence, not \"no runtime use\". zork3.zil:22-30 includes GVERBS + 3ACTIONS; CAPACITY default 0 (zork3.zil:33). The only live TRANSBIT carrier is SHADOW / hooded figure 67 (3actions.zil:3364: ACTORBIT TRANSBIT CONTBIT OPENBIT, no CAPACITY, no DOORBIT). So the actor IS a container, but it stays open: GVERBS V-CLOSE (354-379) clears OPENBIT only for a non-surface with nonzero CAPACITY, or a DOORBIT object, and no SHADOW routine writes OPENBIT. Census bit 30: 67 bits[10,11,12,21,30]; 222 parentless sentinel. No native actor CLOSE claim. Supersedes grok1 #5026 wording (\"no container carrier\"). Packet work/investigations/grok1/transp/zork3.json"
   },
   "openable": {
    "s": "NA",
@@ -787,8 +787,8 @@
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
   },
   "transparent": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (static object carrier; TRANSBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "NA",
+   "r": "grok1 Q7-R2 transparent 2026-10-26, Codex review 2026-10-26 (#5403 transparent-na-review-0602.md sha 4D7D77C6, #5409 transparent-current-source-bindings-0606.json sha 6D8C8342, #5410). Scope: narrow current closed-content-consumer non-applicability only (AttributeSchema canSeeInside needs a closed transparent container). Not feature absence, not \"no runtime use\". TRANSBIT appears only in the GLOBAL-OBJECTS declaration; book flags (2362/2398) have TRANSBIT commented out; no FSET TRANSBIT. Packaged census: candidate bits 27 and 30 are held only by object 255, which is ambiguous, so NO numeric transparent map. Supersedes the N? batch 4 U. Packet work/investigations/grok1/transp/deadline.json"
   },
   "visited": {
    "s": "NC",
@@ -897,8 +897,8 @@
    "r": "grok1/grok2 N? batch 5 2026-10-24: no WORNBIT, but WEARBIT is the worn state: wearing exists (0 carriers, 5 FSET/tests, 3 FCLEAR/reads; e.g. camp.zil:1957 <FSET ,KNAPSACK ,WEARBIT>; camp.zil:1975 (<NOT <FSET? ,KNAPSACK ,WEARBIT>>), source infidel (grok2/nq/worn-Infidel.json). The player can wear things, so worn is not N/A; no measured wornAttribute yet (app worn fallback stays fail-closed). Stays U."
   },
   "transparent": {
-   "s": "NA",
-   "r": "grok1 #5026 transparent 2026-10-24 (Claude #5051 agreed): no closed TRANSBIT container exists in source or object table, so no radial effect. infidel: every TRANSBIT object is also OPENBIT (ante.zil:550/560/570 discs, barge.zil:263/305, camp.zil:103, camp.zil:1245 TRUNK, camp.zil:2092 CRATE, ra.zil:256, temple.zil:156/232); most are SURFACEBIT. None starts closed, so none can show contents through a closed lid. Census: Infidel.z3.js bit 23: 13 carriers (granite tables 6/9, crate 23, trunk 39, cot 51, pit 79, knothole 107, mast hole 108, discs 169-171, altar 199, sentinel 249); every one carries the same OPENBIT/CONTBIT/SURFACE set as the trunk [20,25,28]. Packet work/investigations/grok1/transp/infidel.json"
+   "s": "U",
+   "r": "grok1 Q7-R3 transparent 2026-10-26, Codex review 2026-10-26 (#5403 transparent-na-review-0602.md sha 4D7D77C6, #5409 transparent-current-source-bindings-0606.json sha 6D8C8342, #5410); grok2 #5426 REVISE option 1. UNDECIDED (U): reverted from NA because the owner-action audit is incomplete. COT camp.zil:877, ante.zil:550/560/570 discs, ra.zil:256 and temple.zil:156/232 are not yet covered, and the Codex Infidel R3 lane (#5411-#5416) is still changing the closed-lid helpers for trunk/crate. Corrects grok1 #5026: (1) \"every carrier has OPENBIT/CONTBIT/SURFACE [20,25,28]\" was FALSE (pit camp.zil:103, mast hole and knothole have no SURFACEBIT; their named routines reject OPEN/CLOSE). (2) \"starts open\" does not prove that closed states are impossible: TRUNK (camp.zil:1275 TRUNK-FCN) and CRATE (camp.zil:2102 CRATE-FCN) close semantically by toggling SURFACEBIT 28 and moving contents to off-tree tables (verbs.zil:2637/2661 TBL-TO-INSIDE / INSIDE-OBJ-TO) while OPENBIT 25 stays set. Native-confirmed by Codex 0613/0621. The open/close state and custody gap is tracked separately (Codex Infidel R3 lane, #5411-#5416). Packet work/investigations/grok1/transp/infidel.json"
   },
   "openable": {
    "s": "NA",
@@ -992,7 +992,7 @@
   },
   "transparent": {
    "s": "NA",
-   "r": "grok1 #5026 transparent 2026-10-24 (Claude #5051 agreed): no closed TRANSBIT container exists in source or object table, so no radial effect. hollywoodhijinx parlor.zil:60 (TAKEBIT TRANSBIT) and second-floor.zil:581 (NDESCBIT TRANSBIT); neither has CONTBIT. Census: HollywoodHijinx.z3.js bit 23: 226 \"slide\" bits[17,23] only. No container. Packet work/investigations/grok1/transp/hollywood.json"
+   "r": "grok1 Q7-R2 transparent 2026-10-26, Codex review 2026-10-26 (#5403 transparent-na-review-0602.md sha 4D7D77C6, #5409 transparent-current-source-bindings-0606.json sha 6D8C8342, #5410). Scope: narrow current closed-content-consumer non-applicability only (AttributeSchema canSeeInside needs a closed transparent container). Not feature absence, not \"no runtime use\". No compiled closed transparent-container carrier: parlor.zil:60 slide has TAKEBIT TRANSBIT and no CONTBIT (census bit 23: 226 bits[17,23]). The second-floor.zil JACK declaration is semicolon-commented out, so it is not a live carrier. Slide transparency and parser usage are kept separately. Packet work/investigations/grok1/transp/hollywood.json"
   },
   "openable": {
    "s": "NA",
@@ -1057,8 +1057,8 @@
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/leathergoddesses@17cbbc1 (13 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 258 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
   },
   "transparent": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TRANSBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "NA",
+   "r": "grok1 Q7-R2 transparent 2026-10-26, Codex review 2026-10-26 (#5403 transparent-na-review-0602.md sha 4D7D77C6, #5409 transparent-current-source-bindings-0606.json sha 6D8C8342, #5410). Scope: narrow current closed-content-consumer non-applicability only (AttributeSchema canSeeInside needs a closed transparent container). Not feature absence, not \"no runtime use\". The whole cached source has only the flag declaration and a temporary parser clear/set on the root/protagonist; no static carrier. Numeric bit unpinned, so this is a source-only candidate rejection. The public-source release binding for LGOP is UNVERIFIED. Supersedes the N? batch 4 U. Packet work/investigations/grok1/transp/lgop.json"
   },
   "worn": {
    "s": "U",
@@ -1649,8 +1649,8 @@
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
   },
   "transparent": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TRANSBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "NA",
+   "r": "grok1 Q7-R2 transparent 2026-10-26, Codex review 2026-10-26 (#5403 transparent-na-review-0602.md sha 4D7D77C6, #5409 transparent-current-source-bindings-0606.json sha 6D8C8342, #5410). Scope: narrow current closed-content-consumer non-applicability only (AttributeSchema canSeeInside needs a closed transparent container). Not feature absence, not \"no runtime use\". Source-only carrier is PLAYER 194 (bit 5), plus a paired transient parser clear/set; no CONTBIT. Not called feature-absent. Supersedes the N? batch 4 U. Packet work/investigations/grok1/transp/seastalker.json"
   },
   "female": {
    "s": "NC",
@@ -1964,7 +1964,7 @@
   },
   "transparent": {
    "s": "NA",
-   "r": "grok1 #5026 transparent 2026-10-24 (Claude #5051 agreed): no closed TRANSBIT container exists in source or object table, so no radial effect. starcross dungeon.zil: TRANSBIT on the crystal rods (TAKEBIT KEYBIT TRANSBIT, not containers), MOUSE 1349 (VEHBIT CONTBIT SURFACEBIT OPENBIT TRANSBIT), GLOBAL-MOUSE 1338 (CONTBIT SURFACEBIT TRANSBIT, in GLOBAL-OBJECTS). Census: Starcross.z3.js bit 25: 16 carriers: 12 rods + visor fragment (no container), 212 maintenance mouse bits[8,9,25,26,28] (open, vehicle), 213 maintenance mouse (global stand-in) bits[8,25,28]. Packet work/investigations/grok1/transp/starcross.json"
+   "r": "grok1 Q7-R2 transparent 2026-10-26, Codex review 2026-10-26 (#5403 transparent-na-review-0602.md sha 4D7D77C6, #5409 transparent-current-source-bindings-0606.json sha 6D8C8342, #5410). Scope: narrow current closed-content-consumer non-applicability only (AttributeSchema canSeeInside needs a closed transparent container). Not feature absence, not \"no runtime use\". Justified by authored semantics, not by an absence of carriers: the TRANSBIT containers are MOUSE (dungeon.zil:1349: VEHBIT CONTBIT SURFACEBIT OPENBIT TRANSBIT, census 212 bits[8,9,25,26,28]) and GLOBAL-MOUSE (dungeon.zil:1338: CONTBIT SURFACEBIT TRANSBIT; raw OPENBIT clear but a surface; census 213 bits[8,25,28]). actions.zil:926 OPEN/CLOSE on the mouse says it has no lid (an open receptacle), so there is never a closed lid to see through. The rods and visor fragment are not containers. Packet work/investigations/grok1/transp/starcross.json"
   },
   "openable": {
    "s": "NA",
@@ -2293,8 +2293,8 @@
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
   },
   "transparent": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TRANSBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "NA",
+   "r": "grok1 Q7-R2 transparent 2026-10-26, Codex review 2026-10-26 (#5403 transparent-na-review-0602.md sha 4D7D77C6, #5409 transparent-current-source-bindings-0606.json sha 6D8C8342, #5410). Scope: narrow current closed-content-consumer non-applicability only (AttributeSchema canSeeInside needs a closed transparent container). Not feature absence, not \"no runtime use\". The whole cached source has only the flag declaration and a temporary parser clear/set on the root/protagonist; no static carrier. Numeric bit unpinned, so this is a source-only candidate rejection. Supersedes the N? batch 4 U. Packet work/investigations/grok1/transp/suspended.json"
   },
   "worn": {
    "s": "U",
@@ -2502,7 +2502,7 @@
   },
   "transparent": {
    "s": "NA",
-   "r": "grok1 #5026 transparent 2026-10-24 (Claude #5051 agreed): no closed TRANSBIT container exists in source or object table, so no radial effect. witness people.zil:78 (NDESCBIT TRANSBIT), the only TRANSBIT object; not a container. Census: TheWitness.z3.js bit 6: 79 \"detective\" (player) bits[6,19] only. Packet work/investigations/grok1/transp/witness.json"
+   "r": "grok1 Q7-R2 transparent 2026-10-26, Codex review 2026-10-26 (#5403 transparent-na-review-0602.md sha 4D7D77C6, #5409 transparent-current-source-bindings-0606.json sha 6D8C8342, #5410). Scope: narrow current closed-content-consumer non-applicability only (AttributeSchema canSeeInside needs a closed transparent container). Not feature absence, not \"no runtime use\". The sole initial TRANSBIT carrier is the detective / PLAYER (people.zil:78; census bit 6: 79 bits[6,19]). The parser clears/sets PLAYER TRANSBIT temporarily (parser.zil:978/980). That is a root/protagonist use, not a closed container. Packet work/investigations/grok1/transp/witness.json"
   },
   "openable": {
    "s": "NA",
