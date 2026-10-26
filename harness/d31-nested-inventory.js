@@ -2,7 +2,8 @@
  * D31 nested-inventory fixture.
  *
  * Gate (PRODUCTION_PLAN.md Phase 4): an object inside a held container
- * only offers "take out of X", never WEAR / LIGHT / DROP / etc. directly.
+ * offers enabled Inspect first, then contextual "take out of X" with a plain
+ * Take command; never WEAR / LIGHT / DROP / etc. directly.
  * Also: worn items (parent == player) only EXAMINE/REMOVE; room items
  * suppress DROP/REMOVE/WEAR; ZRamProvider inventory recurses via
  * walkVisibleDescendants so nested parentId is the container, not the player.
@@ -229,9 +230,9 @@ const mockPayload = {
 WorldModel.lastPayload = mockPayload;
 
 const nested = ActionSynth.commandsForPayloadObjectId(LAMP, "inventory");
-assert(nested.length === 1, "nested lamp offers exactly one command");
-assert(nested[0].command === "take lamp", "nested lamp's REAL command is plain 'take lamp' (D78 -- 'take X out of Y' is never actually understood as a completed take, confirmed live on Anchorhead)");
-assert(nested[0].verb === "take out of box", "nested lamp's DISPLAY label still shows its container context (take out of box)");
+assert(nested.length === 2 && nested[0].command === "examine lamp", "nested lamp offers Inspect first, then contextual Take");
+assert(nested[1].command === "take lamp", "nested lamp's REAL command is plain 'take lamp' (D78 -- 'take X out of Y' is never actually understood as a completed take, confirmed live on Anchorhead)");
+assert(nested[1].verb === "take out of box", "nested lamp's DISPLAY label still shows its container context (take out of box)");
 assert(verbsOf(nested).indexOf("wear") < 0, "nested lamp does not offer wear");
 assert(verbsOf(nested).indexOf("remove") < 0, "nested lamp does not offer remove");
 assert(verbsOf(nested).indexOf("switch on") < 0 && verbsOf(nested).indexOf("switch off") < 0,
@@ -287,10 +288,24 @@ const probeOnly = {
 };
 WorldModel.lastPayload = probeOnly;
 const viaProbe = ActionSynth.commandsForPayloadObjectId(LAMP, "inventory");
-assert(viaProbe.length === 1 && viaProbe[0].command === "take key" && viaProbe[0].verb === "take out of satchel",
+assert(viaProbe.length === 2 && viaProbe[0].command === "examine key" && viaProbe[1].command === "take key" && viaProbe[1].verb === "take out of satchel",
     "nested take-out-of label still fires when only probe.playerId is set, with the D78 plain-take real command");
 
 WorldModel.lastPayload = mockPayload;
+
+// A disabled default inspect stays disabled without suppressing contextual Take.
+const hadCalibrator = Object.prototype.hasOwnProperty.call(sandbox, "AttrCalibrator");
+const savedCalibrator = sandbox.AttrCalibrator;
+try {
+    sandbox.AttrCalibrator = Object.assign({}, savedCalibrator || {}, { inspectVerbCurrentlyDisabled: function () { return true; } });
+    const inspectDisabled = ActionSynth.commandsForPayloadObjectId(LAMP, "inventory");
+    assert(inspectDisabled.length === 1 && inspectDisabled[0].command === "take lamp" && inspectDisabled[0].verb === "take out of box",
+        "disabled inspect menu retains only contextual Take with plain parser command");
+} finally {
+    if (hadCalibrator) sandbox.AttrCalibrator = savedCalibrator;
+    else delete sandbox.AttrCalibrator;
+    WorldModel.lastPayload = mockPayload;
+}
 
 // --- RAM walk: open bag exposes box+lamp with real parentIds ---
 const opened = buildWorld(true);
@@ -340,9 +355,9 @@ const liveNested = ActionSynth.commandsForPayloadObjectId(
     ticked.inventory.find(function (o) { return o.name === "lamp"; }).id,
     "inventory"
 );
-assert(liveNested.length === 1, "RAM-backed nested lamp offers exactly one command");
-assert(liveNested[0].command === "take lamp", "RAM-backed nested lamp's real command is plain 'take lamp' (D78)");
-assert(liveNested[0].verb === "take out of box", "RAM-backed nested lamp's display label is still take out of box");
+assert(liveNested.length === 2 && liveNested[0].command === "examine lamp", "RAM-backed nested lamp offers Inspect first, then contextual Take");
+assert(liveNested[1].command === "take lamp", "RAM-backed nested lamp's real command is plain 'take lamp' (D78)");
+assert(liveNested[1].verb === "take out of box", "RAM-backed nested lamp's display label is still take out of box");
 assert(!/wear|switch|drop|light/i.test(JSON.stringify(liveNested)),
     "RAM-backed nested lamp JSON has no wear/switch/drop/light");
 
@@ -386,8 +401,8 @@ assert(radialCalls.length === 1, "nested Open calls OpenRadial");
 const nestedLabels = (radialCalls[0].slices || []).map(function (s) { return s.Label; });
 const nestedCmds = (radialCalls[0].slices || []).filter(function (s) { return s.Command; }).map(function (s) { return s.Command; });
 assert(nestedCmds.indexOf("take lamp") >= 0, "radial Command is the real, working plain 'take lamp' (D78), not the never-understood 'take lamp out of box'");
-assert(nestedLabels.filter(function (l) { return !/^Use with/.test(l); }).length === 1,
-    "radial has exactly one verb slice besides optional Use with...");
+assert(nestedCmds.indexOf("examine lamp") >= 0 && nestedLabels.filter(function (l) { return !/^Use with/.test(l); }).length === 2,
+    "radial has Inspect and contextual Take besides optional Use with...");
 assert(nestedLabels.indexOf("Wear") < 0 && nestedLabels.indexOf("Drop") < 0 && nestedLabels.indexOf("Switch on") < 0,
     "radial does not offer Wear / Drop / Switch on for nested lamp");
 
@@ -395,7 +410,7 @@ console.log(JSON.stringify({
     ok: fail === 0,
     pass: pass,
     fail: fail,
-    nestedCommand: nested[0] && nested[0].command,
+    nestedCommand: nested[1] && nested[1].command,
     heldBagVerbs: verbsOf(bagCmds),
     wornCloakVerbs: verbsOf(wornCmds),
     roomRockVerbs: verbsOf(roomCmds),
