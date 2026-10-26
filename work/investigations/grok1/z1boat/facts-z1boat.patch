@@ -1,0 +1,14 @@
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index 756ab1b..8d8850b 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -1085,7 +1085,8 @@ var ModuleStatFactsClaude = {
+             "activationState": { "onObjects": [164, 147] },
+         // moved 3 = TOUCHBIT (native, codex #5178 resume-20261020/moved/packet-zork1.json): TAKE leaflet 161 and egg 87 each set exactly bit 3; door 181 stays clear. Also set on opened containers (TOUCHBIT, not custody).
+         // concealed 7 = INVISIBLE (native, codex #5239 resume-20261020/concealed/packet-zork1.json): grating 174 (Clearing) and trapdoor 183 (Living Room) read 7=1 and EXAMINE cannot see them; MOVE LEAVES / MOVE RUG clears 7 and EXAMINE then succeeds; mailbox 160 visible with 7 clear.
+-            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "talkable": 30, "edible": 21, "light": 31, "door": 23, "scenery": 14, "climbable": 24, "transparent": 12, "moved": 3, "concealed": 7 },
++        // enterable 27 = source VEHBIT exact 1/1 (magic boat 156 is the only carrier: single-owner whole-source exception, Zork3 gold machine / Zork2 crown precedent; tier: seeded-native, g1-batch default zork1 seed 12, G1PLAYER 4, step 217; grok1 z1boat/cache/run-zork1-20261026T094919-72504.json): ENTER BOAT and GET IN BOAT test 156:27 TRUE (pc 35036 V-THROUGH), player 4 -> 156, LOOK "in the magic boat"; GET OUT OF BOAT -> room 33; ENTER LABEL 108:27 and ENTER PUMP 173:27 FALSE at the same pc (joke refusal, parent unchanged).
++            "attributeMap": { "container": 19, "open": 11, "isOpen": 11, "supporter": 10, "on": 20, "animate": 30, "talkable": 30, "edible": 21, "light": 31, "door": 23, "enterable": 27, "scenery": 14, "climbable": 24, "transparent": 12, "moved": 3, "concealed": 7 },
+         // FAIL-CLOSED (grok1 2026-10-17, A1 of claude #3855; same leak as Enchanter turtle): actors carrying CONTBIT + OPENBIT + ACTORBIT
+         // (source: THIEF (1dungeon.zil)) must never get container Open/Close, so the already-proven animate bit joins the none list.
+         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
