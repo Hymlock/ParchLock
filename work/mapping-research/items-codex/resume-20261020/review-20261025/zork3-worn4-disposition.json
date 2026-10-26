@@ -1,0 +1,10 @@
+{
+  "authority": "Explicit operator out-of-credits takeover all staged actions",
+  "disposition": "Preserved rejected draft patch and full working bytes; removed only two rejected lines from active source. Livefacts now exact tested committed108c.",
+  "reason": "Independent review and fresh held/drop proof reject bareworn4. No evidence or unrelated work deleted.",
+  "archiveSha": "dfcdc96261a1806d23403b5e88392062da4ef4fb8ecd932b7d39f6fe99e5c150",
+  "preservedLines": [
+    "        // wornAttribute 4 = WEARBIT as worn state (grok1 #5218 grok1/probe5/run-zork3-*): \"i\" reads 4=1 on amulet 39, cloak 65, hood 66 \"(being worn)\"; strange key 7 and Grue Repellent 17 read 0.",
+    "        \"wornAttribute\": 4,"
+  ]
+}

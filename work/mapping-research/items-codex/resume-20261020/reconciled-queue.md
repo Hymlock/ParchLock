@@ -1,7 +1,11 @@
 <!-- CODEX_CURRENT_START -->
-# Current continuation state — 2026-10-26T21:56:59.878Z
+# Current continuation state — 2026-10-26T22:06:54.796Z
 
 This block supersedes stale assignments in the preserved historical log below.
+
+Operator2026-10-26 credit takeover now supersedes older Claude/Grok exclusive ownership holds for necessary recovery; stay codex, preserve claims/history and unrelated dirty work. Integrated12concealed source0d28bd9/5fd4c52, evidence/docsbc83e6b.
+
+
 
 - Production source B1 b0e2f9e +facts2188b68 +ledger70d77b4 accepted. Additional facts b8ae7e3/b3e57d3/ccd9b58 and ledger00ca215 accepted. Preserve Claude dirty ZorkIII worn4 two lines. Claude owns Schema/canonical docs; Grok owns facts. Codex retains own research directory only.
 - D31 harness-only correction COMMITTED23d6fd0 after independent blind halves, comparison/proposal consensus, current-source non-author ACCEPT5486. Exact reviewed SHA DA1BF657E64616F318F106E890766191FEB9573D27ED4310D532A2DCF0226C65;61PASS baseline+combined. Restores fixture to accepted Inspect-first then contextual Take, keeps D78 plain command, visibility/forbidden-action checks, adds disabledinspect menu guard. Does not certify separate LearnedWords policy. Harness claim released. Runtime unchanged.
@@ -34,6 +38,14 @@ This block supersedes stale assignments in the preserved historical log below.
 - OPERATOR TAKEOVER supersedes ownership hold: all other seats reported out of credits, Codex authorized all staged actions (bus5510/5511). Exactconcealed5 blob3a committed0d28bd9; freshoperator13/0, retained7row gate reused after77raw manifest match and76currentnonfactsLFparity; original29ec-vs3a comment distinction retained. Claude Z3two dirty lines preserved2/0. Next6+Moonmist combined7data-only frozen concealed-next7-takeover-r2;9row pair+operator runningonce, session34397. No duplicate309/native. SOLO takeover document labels actual prior review versus self-review.
 
 - TAKEOVER RESULT: exactconcealed5 committed0d28bd9 andnext7 committed5fd4c52, total12newmappedconcealed. Next7 actualnonauthor exactsource ACCEPT;79files/side stable,9uniquepairs0diff/noerror,operator13/0. Initial missingoperatorassets failure and ZorkIIcasefilter8row omission preserved; onlyoperator andmissing1pair rerun. DirtyZ3two lines still2/0. Ledger regeneration audited EXACT12concealedU->C, noothercellchange; canonicalPLAN/ARCH takeover note added. Shared3consumer2unresolvedmarks/Suspectlockhazard/Suspendedadmission remainheld. Nooverallclosure/APK.
+
+- Next recovered staged action: ZorkIII wornAttribute4 independently REVISE, sourceuses staticWEARBIT ANDdirectWINNERcustody; rawIpositives do not prove bitstate transitions. Retainedring82parent84NOTEST, no fabricatedpositive. Draft2lines preserved; audit zork3-worn-takeover-audit.md. Need sameowner custody/nativegeneratedRemove proof for a separate direct-player relation. No native replay or integration.
+
+- Bounded freshZ3custody probes2202/R2 retainedsourceStable. Attempt1 proves heldparent202bit4true/Ibeingworn ->DROPparent48bit4true/Iempty, butretakefailsrocdeath;partialNOTPASS. R2 exitslakeN->LakeShore52 safely butbothunforcedGETamuletslip,stopsnoheldproof. No blindretry. Rawhelpersandfailuresretained; independentpartialauditpending. Bareworn4stillREVISE; sourcewornconsumerwouldsuppressDropforRemove whileREMOVE=TAKE, needseparateusefulactionproposal. No furtherproductionintegration.
+
+- CURRENT Z3DRAFT DISPOSITION supersedes earlier2dirtylinepreservation: independentheld/dropaudit ACCEPTspartialproofrejectingbareworn4. Exactdraftpatch+fullfacts archived zork3-worn4-quarantined*; onlyrejected2linesremovedfromlive underoperatortakeover,nowfacts exacttested108c withnodirtydiff. Noevidence/unrelatedworkdeleted. New custody-action-proposal-r1 design reviewpending; noimplementation. Efficiency auditor directsconsumerdesign notmoreprobabilisticGET retries, adopted.
+
+- Z3custody-action draftactualindependentreview REVISE: currentZ3facts NOmeasuredplayerObject/playerGlobal, so directplayerrecipe cannotoptin. Need separatelyqualifiedidentity andoneobject-specific trustedselectoracrossActionSynth/LearnedWords/EquipmentUI, livecustody/grammar/uniquenoun/recheck andcleanupstrongerownerprecedence; preserveMore/Sorcerer/USE/Moonmist. DraftR2constraintsrecorded; noimplementationGO. Nextidentity+consumerdesign, nomoreprobabilisticacquisition.
 
 ## Preserved historical log
 <!-- CODEX_CURRENT_END -->
