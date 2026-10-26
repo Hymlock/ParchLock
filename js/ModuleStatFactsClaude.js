@@ -136,6 +136,8 @@ var ModuleStatFactsClaude = {
     // in cage' TRUE on steel cage 81, 'look in staff' FALSE (wooden staff 31), lamp 198 FALSE (pgapz3c); source exact 12/12.
     // Hooded figure 67 ('remove hood') excluded: not target-scoped. Applied together with openCapability.
     "dce7e6f757fb8379dea9da9c13cdda5412ba03fa9b70d79fb6b8c7faf5970692": {
+        // Primary PLAYER G178: current GO copies WINNER G163 into this separate role; native eight-command identity/custody proof, exact digest. No NPC/restore/all-lifecycle claim.
+        "playerGlobal": 178,
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         // supporter 26 RESTORED 2026-10-16 (grok1 #3615/#3640, operator rule 5 module-exhaustion exception). Codex #3556 is right
         // that the old pedestal test was ambient. Re-probe (grok1 g1-z3ring/z3ringneg): past-scene "put ring on pedestal" (step 145)
