@@ -1,0 +1,242 @@
+{
+  "at": "2026-10-26T21:27:37.727Z",
+  "kind": "retained evidence audit, no native replay",
+  "rawMatch": true,
+  "sourceBindings": [
+    {
+      "file": "C:/Users/hymlo/AppData/Local/Temp/hs-src/moonmist/historicalsource-moonmist-c85885f/castle.zil",
+      "match": true
+    },
+    {
+      "file": "C:/Users/hymlo/AppData/Local/Temp/hs-src/moonmist/historicalsource-moonmist-c85885f/global.zil",
+      "match": true
+    },
+    {
+      "file": "C:/Users/hymlo/AppData/Local/Temp/hs-src/moonmist/historicalsource-moonmist-c85885f/goal.zil",
+      "match": true
+    },
+    {
+      "file": "C:/Users/hymlo/AppData/Local/Temp/hs-src/moonmist/historicalsource-moonmist-c85885f/parser.zil",
+      "match": true
+    },
+    {
+      "file": "C:/Users/hymlo/AppData/Local/Temp/hs-src/moonmist/historicalsource-moonmist-c85885f/places.zil",
+      "match": true
+    },
+    {
+      "file": "C:/Users/hymlo/AppData/Local/Temp/hs-src/moonmist/historicalsource-moonmist-c85885f/tower.zil",
+      "match": true
+    },
+    {
+      "file": "C:/Users/hymlo/AppData/Local/Temp/hs-src/moonmist/historicalsource-moonmist-c85885f/verbs.zil",
+      "match": true
+    }
+  ],
+  "wholeDirectoryZilCount": 15,
+  "census": [
+    {
+      "file": "castle.zil",
+      "sha256": "f6361e60f57de05cf50355611102b75a97fb8e14cf5036c9ba438412054a9a02",
+      "hits": [
+        {
+          "line": 1450,
+          "text": "\t\t     <NOT <FSET? .OBJ ,INVISIBLE>>"
+        }
+      ]
+    },
+    {
+      "file": "colors.zil",
+      "sha256": "561378218396bfdd25f8c2501d98dc239da45ca8828fa2e7e6170897387dac29",
+      "hits": []
+    },
+    {
+      "file": "global.zil",
+      "sha256": "0a9ef9f434090c7b700bfc0392ddf9ddc74326ec7f4f4f905d1bb32c99831fa2",
+      "hits": [
+        {
+          "line": 9,
+          "text": "\t\tINVISIBLE LIGHTBIT LOCKED MUNGBIT"
+        }
+      ]
+    },
+    {
+      "file": "goal.zil",
+      "sha256": "6d6a6988d4f4caa60e1145f1c214c378e73669d1386659c97beca4ad0ab959ee",
+      "hits": [
+        {
+          "line": 1899,
+          "text": "\t\t     <NOT <FSET? .O ,INVISIBLE>>"
+        }
+      ]
+    },
+    {
+      "file": "m5.zil",
+      "sha256": "8f88bfe962547a49ea287531c0e9a744ef1084e4e5f1e47ff6b57216c2e9869e",
+      "hits": []
+    },
+    {
+      "file": "macros.zil",
+      "sha256": "6582380f054665e2a23bb93d3f6bd2f9627691b53605254abc64c81c1ff67d1d",
+      "hits": []
+    },
+    {
+      "file": "misc.zil",
+      "sha256": "06931a70c80f14b88926d904a0b51bd7105a9f1c40e131c7801d48be0d26886c",
+      "hits": []
+    },
+    {
+      "file": "moonmist.zil",
+      "sha256": "8f88bfe962547a49ea287531c0e9a744ef1084e4e5f1e47ff6b57216c2e9869e",
+      "hits": []
+    },
+    {
+      "file": "parser.zil",
+      "sha256": "8f92fe9df3769ab45f531801559b21172a3b767662c904cb4becb4c023f12da4",
+      "hits": [
+        {
+          "line": 362,
+          "text": "\t\t\t\t    <NOT <FSET? .OTHER ,INVISIBLE>>"
+        },
+        {
+          "line": 377,
+          "text": "\t     <NOT <FSET? ,QCONTEXT ,MUNGBIT ;,INVISIBLE>>"
+        },
+        {
+          "line": 3054,
+          "text": " <COND (<FSET? .OBJ ,INVISIBLE>"
+        }
+      ]
+    },
+    {
+      "file": "people.zil",
+      "sha256": "96bae02a8c65d184452caf67848d6d967c641060f2417fcbed289d89109fac2f",
+      "hits": []
+    },
+    {
+      "file": "places.zil",
+      "sha256": "8d786818cd934aeb02da51849ce65eb566c460cdd97374c1d6c78472016f384c",
+      "hits": [
+        {
+          "line": 40,
+          "text": "\t\t     <NOT <FSET? .O ,INVISIBLE>>"
+        },
+        {
+          "line": 50,
+          "text": "\t\t     <NOT <FSET? .O ,INVISIBLE>>"
+        },
+        {
+          "line": 61,
+          "text": "\t\t\t\t    <NOT <FSET? .O ,INVISIBLE>>"
+        },
+        {
+          "line": 71,
+          "text": "\t\t     <NOT <FSET? .O ,INVISIBLE>>"
+        },
+        {
+          "line": 82,
+          "text": "\t\t     <NOT <FSET? .O ,INVISIBLE>>"
+        },
+        {
+          "line": 93,
+          "text": "\t\t     <NOT <FSET? .O ,INVISIBLE>>"
+        }
+      ]
+    },
+    {
+      "file": "syntax.zil",
+      "sha256": "7c786e13b9b7a838f987f3cbff1eb829928920426d2a5cd74998c1c291a954a6",
+      "hits": []
+    },
+    {
+      "file": "things.zil",
+      "sha256": "c2d65ea79b24718b8c4c19fc22d069639bd943aa034ce83736520eeb98714944",
+      "hits": []
+    },
+    {
+      "file": "tower.zil",
+      "sha256": "354b36fdff21866e1a129916b49b06b7350cea6522b3b2348a204ad77bf36d8e",
+      "hits": [
+        {
+          "line": 253,
+          "text": "\t       <FCLEAR ,HOLE-IN-WALL ,INVISIBLE>"
+        },
+        {
+          "line": 263,
+          "text": "\t(FLAGS INVISIBLE DOORBIT ;NDESCBIT OPENBIT SEENBIT)"
+        }
+      ]
+    },
+    {
+      "file": "verbs.zil",
+      "sha256": "a65d75680c3e84cfa716b689e4672c78fbe4fd4eca82d05f05eb37088cfccc27",
+      "hits": [
+        {
+          "line": 208,
+          "text": "\t       <FCLEAR ,PRSO ,INVISIBLE>)>"
+        },
+        {
+          "line": 521,
+          "text": "\t\t       <COND (<OR <FSET? .OBJ ,INVISIBLE>"
+        },
+        {
+          "line": 568,
+          "text": "\t\t       <COND (<OR <FSET? .OBJ ,INVISIBLE>"
+        },
+        {
+          "line": 759,
+          "text": "\t\t\t<COND (<AND <NOT <FSET? .OBJ ,INVISIBLE>>"
+        },
+        {
+          "line": 1089,
+          "text": "\t\t<FCLEAR ,PRSO ,INVISIBLE>"
+        },
+        {
+          "line": 1131,
+          "text": "\t\t<FCLEAR ,PRSO ,INVISIBLE>"
+        },
+        {
+          "line": 1192,
+          "text": "\t<COND ;(<FSET? .OBJ ,INVISIBLE> <RFALSE>)\t;\"for LIT? - PLAYER\""
+        },
+        {
+          "line": 1280,
+          "text": "\t <COND (<FSET? .OBJ ,INVISIBLE>"
+        },
+        {
+          "line": 1323,
+          "text": "\t\t       <COND (<AND .INV <FSET? .OBJ ,INVISIBLE>>"
+        },
+        {
+          "line": 4256,
+          "text": "\t<FSET ,PLAYER ,INVISIBLE>"
+        },
+        {
+          "line": 4260,
+          "text": "\t<FCLEAR ,PLAYER ,INVISIBLE>"
+        }
+      ]
+    }
+  ],
+  "positive": {
+    "id": 122,
+    "before": {
+      "name": "brick hole",
+      "parent": 44,
+      "invisible6": true
+    },
+    "after": {
+      "name": "brick hole",
+      "parent": 44,
+      "invisible6": false
+    },
+    "roomBefore": 235,
+    "roomAfter": 235
+  },
+  "negative": {
+    "id": 52,
+    "room": 9,
+    "inScope": true,
+    "bit": false
+  },
+  "conclusion": "One persistent authored owner, plus transient PLAYER writes in GO TO. Singleton exception requires adversarial review; no integration/consumer GO. Same-parent LOCAL-GLOBALS reveal is supported by native scope and source, not physical placement alone."
+}
