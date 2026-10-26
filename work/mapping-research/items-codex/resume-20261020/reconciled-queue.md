@@ -1,5 +1,5 @@
 <!-- CODEX_CURRENT_START -->
-# Current continuation state — 2026-10-26T21:44:16.544Z
+# Current continuation state — 2026-10-26T21:56:59.878Z
 
 This block supersedes stale assignments in the preserved historical log below.
 
@@ -26,6 +26,14 @@ This block supersedes stale assignments in the preserved historical log below.
 - Resume21:28: Moonmist concealed6 independent semantic ACCEPT5506, qualified persistent-singleton with transient PLAYER exception. Audits2129/2131/consumer-boundary2133 retained. Existing localScope6 already mapped; concealed affects parser-vocabulary exclusion, not inventory opt-in. No product edits/replays/integration GO. Monitor ACTIVE; efficiency auditor no new finding. Concealed5 parent remains owner-pending.
 
 - Resume21:44: Suspended admission draft2145 actual non-author review REVISE5507. R2 requires guard BEFORE Actionable.Submit clears composition/before Inject side effects; exact sole DOM/window/request binding; edit revision including delete/programmatic/IME; token+command+target through dispatch, synchronous single-use with callback revalidation. TurnRecorder stamp precedes key delivery and is wrapper intent, not VM receipt. Source binding2145/report2148 preserved. No production changes or native/tests; G108/G98/PC necessary not exhaustive.
+
+- Disjoint source slice21:52: suspect-open-lock-event-plan-2152.md binds Alicia lock event to Veronica reaching OFFICE/queued2 and location exclusions; hallway doors differ from three explicitly closed office doors. Proposed minimal pre-event unlock/open -> neutral-room event -> exact native travel discriminator, not executed or integration proof. No repeated seeded/native/catalog tests.
+
+- Operator requests work with Claude: authenticated handoff5508 sent directly to claude with exact pending artifacts/ownership and request for next disjoint assignment. Delivery is confirmed; active Claude execution or reply is not yet confirmed. Continuing source-only Suspect event-plan adversarial review with existing border_food_blind; no duplicate native/gate and no claim takeover.
+
+- OPERATOR TAKEOVER supersedes ownership hold: all other seats reported out of credits, Codex authorized all staged actions (bus5510/5511). Exactconcealed5 blob3a committed0d28bd9; freshoperator13/0, retained7row gate reused after77raw manifest match and76currentnonfactsLFparity; original29ec-vs3a comment distinction retained. Claude Z3two dirty lines preserved2/0. Next6+Moonmist combined7data-only frozen concealed-next7-takeover-r2;9row pair+operator runningonce, session34397. No duplicate309/native. SOLO takeover document labels actual prior review versus self-review.
+
+- TAKEOVER RESULT: exactconcealed5 committed0d28bd9 andnext7 committed5fd4c52, total12newmappedconcealed. Next7 actualnonauthor exactsource ACCEPT;79files/side stable,9uniquepairs0diff/noerror,operator13/0. Initial missingoperatorassets failure and ZorkIIcasefilter8row omission preserved; onlyoperator andmissing1pair rerun. DirtyZ3two lines still2/0. Ledger regeneration audited EXACT12concealedU->C, noothercellchange; canonicalPLAN/ARCH takeover note added. Shared3consumer2unresolvedmarks/Suspectlockhazard/Suspendedadmission remainheld. Nooverallclosure/APK.
 
 ## Preserved historical log
 <!-- CODEX_CURRENT_END -->

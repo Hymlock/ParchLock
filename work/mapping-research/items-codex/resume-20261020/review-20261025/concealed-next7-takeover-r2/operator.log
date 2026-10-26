@@ -1,0 +1,2 @@
+FAIL zork1 run :: "locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.Input.LineInput')\u001b[22m\n"
+FAIL wumpus labels run :: "locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.Input.LineInput')\u001b[22m\n"
