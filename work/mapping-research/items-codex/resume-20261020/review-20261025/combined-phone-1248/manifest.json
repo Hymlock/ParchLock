@@ -1,0 +1,18 @@
+{
+  "reason": "New360px layout validation for new light tag; not duplicate semantic qualification or APK",
+  "candidate": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\consumer-combined-r1-1204",
+  "sourceHelper": "C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261025\\sorcerer-illumination-native-1147.cjs",
+  "sourceHelperSha": "5b61facca42aade865aafb4c278952d74244f8940795daa5cf0f421f4c772ccd",
+  "helperSha": "c592a0e4865511751197df8f0736998b59d21642bf5e85b2ef791bfbd2b3832b",
+  "outputs": [
+    "native.json",
+    "before.png",
+    "after.png",
+    "run.log"
+  ],
+  "guard": "All literal/interpolated artifact paths resolved inside new exclusive run directory; existing paths rejected",
+  "viewport": {
+    "width": 360,
+    "height": 800
+  }
+}

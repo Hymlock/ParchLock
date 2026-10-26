@@ -1,0 +1,122 @@
+PASS: the self container (payload.playerId) is picked up as the inventory root
+PASS: top level is what the player directly holds/wears, not everything (got 5)
+PASS: worn state comes from AttributeSchema, matching Actionable.RenderInventory
+PASS: containers are identified from the container/supporter bits
+PASS: the self container is rendered as a real base-level node, so worn gear reads as 'on you'
+PASS: worn container sits under the self node
+PASS: a container INSIDE a container nests one level further
+PASS: a SUB-container's contents nest again -- depth is not capped at one level
+PASS: loose carried items stay at the base level
+PASS: every row's parent is the nearest row exactly one level shallower (the tree is really a tree)
+PASS: trenchcoat's contents are alphabetised among themselves: faculty card, flask, keyring, old tin, towel
+PASS: the sub-container's contents are independently alphabetised: key to the cellar, key to the house
+PASS: Z-A reverses within a sub-container too
+PASS: most-recent and least-recent are exact inverses (first-seen order is tracked, since the payload has no timestamps)
+PASS: with container view off every item is one flat, evenly-ranked list
+PASS: the flat list honours the dropdown's sort
+PASS: searching finds the matching item
+PASS: a match keeps its whole container path, so a hit inside a sub-container is still reachable
+PASS: non-matching branches are dropped
+PASS: dropping onto an open container issues a real put-in command
+PASS: a CLOSED container refuses the drop
+PASS: dropping onto the self node takes the item out of its container
+PASS: a container cannot be dropped into its own descendant (no cycles)
+PASS: a container cannot be dropped into itself
+PASS: descendant detection reaches through sub-containers, not just direct children
+PASS: each draggable item bar carries a dedicated grab handle
+PASS: drags start from the handle only, not from anywhere on the row
+PASS: the item row keeps vertical panning, so the sheet stays scrollable
+PASS: only the handle opts out of touch scrolling
+PASS: the handle FLOATS above the bar, out of flow, so it interrupts nothing and costs the name no width
+PASS: the item name gets the full width of the bar
+PASS: the handle is faint at rest so it cannot compete with the item description
+PASS: dragging outlines the row rather than fading the text being read
+PASS: opening the map swaps away from equipment instead of stacking on top of it
+PASS: a structural backstop guarantees the two sheets can never render stacked
+PASS: no auto-scroll while the pointer is in the middle of the sheet
+PASS: holding near the top edge scrolls the list up
+PASS: holding near the bottom edge scrolls the list down
+PASS: speed ramps with depth into the edge zone: deeper is faster
+PASS: scroll speed is capped at EDGE_MAX per frame
+PASS: dragging far past the edge does not run away
+PASS: the edge zone ends exactly where it should
+PASS: a missing scroller is handled rather than throwing
+PASS: a re-render arriving mid-drag is deferred, not applied
+PASS: Render bails out while a drag is active -- rebuilding the list would detach the grip holding the pointer capture and abort the player's drag mid-gesture
+PASS: the drop target is re-resolved on each auto-scroll frame, since rows move under a stationary pointer
+PASS: the auto-scroll loop is cancelled on drop and on cancel
+PASS: a sample inventory exists for modules that start you empty-handed
+PASS: every sample item is flagged as an example
+PASS: the sample nests three levels under Yourself, so sub-containers are actually demonstrable
+PASS: the sample includes a WORN container, mirroring the real trenchcoat > keyring > key case
+PASS: the sample includes a closed container, so the refuse-drop rule has something to point at
+PASS: a module that DOES start you with items never shows examples
+PASS: examples are used only when the player genuinely has nothing
+PASS: examples never appear outside the tutorial
+PASS: the tour turns examples on for the equipment steps and off again when it leaves
+PASS: steps about an unexplored map use different wording instead of describing a blank panel as though it were full
+PASS: drop waits for silent status ownership without losing the gesture
+PASS: pending drop revalidates and submits after the probe
+PASS: restore generation cancels a pending drop
+PASS: drop never overwrites a player draft
+PASS: new dictionary-owned wield command reaches bounded analyzer with exact physical object
+PASS: one unconfirmed behavior does not license auto-submit
+PASS: two independent accepted wield submissions confirm exact object form
+PASS: analyzer replay cannot double-count exact-form evidence
+PASS: new wield form survives real localStorage hydrate roundtrip
+PASS: new exact form cannot leak across module identity
+PASS: multiword form checks separate literal tokens, never phrase lookup
+PASS: missing synonym head is not rewritten into an emitted form
+PASS: ambiguous wrong-arity response cannot train a lexical suggestion
+PASS: prerequisite/refusal does not train after two submissions: You must remove your coat first.
+PASS: prerequisite/refusal does not train after two submissions: You must remove your coat.
+PASS: prerequisite/refusal does not train after two submissions: You need to remove your coat before equipping that.
+PASS: prerequisite/refusal does not train after two submissions: First you have to remove your coat.
+PASS: prerequisite/refusal does not train after two submissions: You are unable to equip that.
+PASS: incidental embedded must and first do not classify successful prose as refusal
+PASS: uncertain sentence-owned must prose conservatively cannot train automatic actions
+PASS: embedded prerequisite quotation does not match sentence-owned refusal
+PASS: learner does not widen generic ActionSynth rules
+PASS: confirmed exact form submits while lexical-only apply remains editable
+PASS: dictionary absence removes wield without invented alternative
+PASS: held not worn candidate suppresses remove
+PASS: worn candidates preserve positional suppression
+PASS: nested item still offers provider take rather than conflicting RPG forms
+PASS: enabled real semantic resolver contributes submit-ready one-object provider form
+PASS: cutover off excludes semantic-only form
+PASS: semantic wrong physical object cannot enter hold radial
+PASS: editable semantic suggestion cannot become submit-ready
+PASS: semantic second-object descriptor cannot enter one-object radial
+PASS: semantic/legacy duplicates share one exact form
+PASS: semantic form without explicit object identity stays absent
+PASS: semantic hidden second-object command cannot masquerade as one-object form
+PASS: semantic provider failure preserves legacy actions
+PASS: lexical (Enter:false) Yourself choice runs through the shared complete-command path, never a prefill (operator rule 2026-10-25)
+PASS: suggestion cannot run over or overwrite a player draft
+PASS: probe owns input and blocks hold
+PASS: modal blocks hold
+PASS: generation mismatch blocks selection
+PASS: short dwell preserves ordinary drop
+PASS: leaving and retargeting reset dwell
+PASS: continuous Yourself dwell opens at documented750ms threshold
+PASS: missing dictionary leaves drop armed after 750ms empty dwell
+PASS: missing dictionary release still submits ordinary TAKE
+PASS: examine-only item leaves drop armed after 750ms empty dwell
+PASS: examine-only item release still submits ordinary TAKE
+PASS: ambiguous noun leaves drop armed after 750ms empty dwell
+PASS: ambiguous noun release still submits ordinary TAKE
+PASS: all ordinary rule lists remain unchanged
+PASS: untrusted compiler container bit cannot label a spell closed
+PASS: untrusted compiler supporter bit cannot invent surface tag
+PASS: confirmed or Inform closed-container state retained
+PASS: confirmed or Inform open-container state retained
+PASS: known openable object does not require container flag
+PASS: known switched-on object reports active
+PASS: known switched-off object reports inactive
+PASS: missing on flag cannot invent inactive state
+PASS: missing open flag cannot invent closed state
+PASS: resolved character container has Yourself even when empty
+PASS: unresolved zero player does not invent Yourself
+
+119 PASS / 0 FAIL
+
