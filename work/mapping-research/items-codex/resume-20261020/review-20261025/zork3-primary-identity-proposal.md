@@ -1,0 +1,11 @@
+# ZorkIII primary identity proposal — review pending
+
+Exact current digest dce7e6f757fb8379dea9da9c13cdda5412ba03fa9b70d79fb6b8c7faf5970692. Propose playerObject202, not mutable parser WINNER G163. Current GO native bytes store202 intoWINNER then copyintoPLAYER G178 and place202 at initialHERE64. Source included writer census has only GO PLAYERassignment; WINNER has independent parser/NPC paths. Source archive is not an exact rebuild, and this is not a complete compiled writer census. Native fresh8commands separately observe G178202 and object202 moves64->63->64 while lamp198 moves into202 and nativeinventory lists it; lamp-address refusal is nonactornegative only. Retained freshdeath/respawn transcript also leaves object202 atEndlessStair64, but was a failed acquisition/custody attempt and not complete role validation.
+
+Rationale: primary constantobject is backed by initialization/current compiled object identity and source's immutable ADVENTURER role, without conflating a temporary WINNER actor. Existing resolver validates exact executable+stableheader, bounded object/links and nonzero placement. This proposal does not opt into equipmentState, worn4, new Drop behavior or linked NPC actor. No shared source-code change. Alternate playerGlobal178 may be more suitable if review cannot establish current compiled primary constant; do not add both competing owners.
+
+Required: actual source/native evidence audit and exact onefield candidate, then affectedZorkIII+InformZ+Glulx paired guard/operator beforecommit. No need additional native acquisition or309catalog. Any current code/native contradiction remains REVISE; no invented allgame/restore/actor proof.
+
+## R2 after actual independent source/native evidence review
+
+Choose playerGlobal178 instead of the initial fixed-object proposal. Independent reviewer accepted compiled PLAYER-role binding and the fresh eight-command observations, and recommended designated runtime role over an unnecessary permanence assumption across the non-exact source/build boundary. Add only playerGlobal178; no playerObject202, worn/equipment recipe or shared runtime edits. Existing reader validates executable/header, slot/staticmem bounds and current object/link domain and returns fact-uninitialized when invalid. Exact candidate and guard remain required; this is not consumer implementation permission.
