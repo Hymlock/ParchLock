@@ -1481,11 +1481,14 @@ var StatTracker = {
             var z = typeof window !== "undefined" ? window.__PARCHLOCK_ZVM__ : null;
             if (z && typeof z.pc === "number") readSite = z.pc + "/" + (z.frames ? z.frames.length : "?");
         } catch (eZ) {}
+        var totals = null;
+        try { if (typeof SaveState !== "undefined" && SaveState.recordOutcome) totals = SaveState.recordOutcome(outcome, id); } catch (eHistory) {}
+        if (totals) { model.deaths = totals.deaths; model.wins = totals.wins; }
         if (outcome === "death") {
-            model.deaths = (model.deaths || 0) + 1;
+            if (!totals) model.deaths = (model.deaths || 0) + 1;
             StatTracker._events.push({ type: "death", text: "game ending", count: model.deaths, readSite: readSite });
         } else {
-            model.wins = (model.wins || 0) + 1;
+            if (!totals) model.wins = (model.wins || 0) + 1;
             StatTracker._events.push({ type: "win", text: "game ending", readSite: readSite });
         }
         if (StatTracker._key) StatTracker.save(StatTracker._key, model);
@@ -1555,12 +1558,21 @@ var StatTracker = {
         return rec;
     },
 
+    syncPlaythrough: function (model) {
+        model = model || StatTracker.model();
+        try {
+            var totals = typeof SaveState !== "undefined" && SaveState.outcomes ? SaveState.outcomes() : null;
+            if (totals) { model.deaths = totals.deaths; model.wins = totals.wins; }
+        } catch (eHistory) {}
+        return model;
+    },
+
     load: (key) => {
         var m = StatTracker.blank();
         try {
-            if (typeof localStorage === "undefined") return m;
+            if (typeof localStorage === "undefined") return StatTracker.syncPlaythrough(m);
             var raw = localStorage.getItem(StatTracker.STORAGE_PREFIX + key);
-            if (!raw) return m;
+            if (!raw) return StatTracker.syncPlaythrough(m);
             var parsed = JSON.parse(raw);
             Object.keys(m).forEach(function (k) {
                 if (parsed && parsed[k] != null) m[k] = parsed[k];
@@ -1590,7 +1602,7 @@ var StatTracker = {
             // so re-derivation is immediate rather than starting from scratch.
             StatTracker.forgetReadings(m);
         } catch (e) {}
-        return m;
+        return StatTracker.syncPlaythrough(m);
     },
     // D157: observe() is driven by WorldModel.apply, measured at about forty
     // calls per TURN. Serialising the model and writing localStorage on every
@@ -1687,7 +1699,11 @@ var StatTracker = {
         StatTracker.clearEndingNotice();
         try {
             StatTracker._aliasEv = null;               // D209: evidence is per timeline
+            // D182 startup restore decline is the explicit new-game owner.
+            // Native restart is owned once by Transcript, not by every resync.
+            if (reason === "new-game" && typeof SaveState !== "undefined" && SaveState.startPlaythrough) SaveState.startPlaythrough(reason);
             StatTracker.forgetReadings(StatTracker.model(), reason === "restart" || reason === "new-game");
+            StatTracker.syncPlaythrough();
             StatTracker._samples = [];
             StatTracker._probePending = null;
             StatTracker._probeTurns = 0;
@@ -1856,7 +1872,7 @@ var StatTracker = {
             StatTracker._storyEpoch++;
             StatTracker._probeDisclosureEpoch = -1;
         }
-        var model = StatTracker.model();
+        var model = StatTracker.syncPlaythrough(StatTracker.model());
         if (facts.clockGame) {
             var scoreFact = StatTracker.measuredScoreProbe();
             if (scoreFact && (scoreFact.fields||[]).indexOf("score.max")>=0) model.scoreUnavailable = false;

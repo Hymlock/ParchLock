@@ -559,7 +559,7 @@ var ParchLockQol = {
 
     ImportPackageData: (text) => {
 
-        var previous = [], previousRooms = ParchLockMap.Rooms;
+        var previous = [], previousRooms = ParchLockMap.Rooms, importSucceeded = false;
         var previousBlocked = ParchLockMap.PersistenceBlocked;
         try {
 
@@ -576,6 +576,13 @@ var ParchLockQol = {
             if (data.Save.length && !ParchLock.GameId) throw new Error("Wait for the story identity before importing saves");
             if (ParchLock.GameId && data.Save.some(entry => entry.Key.split(":")[2] !== ParchLock.GameId)) throw new Error("This save belongs to another story");
             if (!ParchLock.GameFilename) throw new Error("Open a story before importing a map");
+            if (new Set(data.Save.map(entry => entry.Key)).size !== data.Save.length) throw new Error("Duplicate save entries in this package");
+            var stateWrites = [];
+            if (typeof SaveState !== "undefined") {
+                if ((data.Save.length || data.SaveStates) && SaveState.importReady && !SaveState.importReady()) throw new Error("Wait for the story to finish loading before importing saves.");
+                var importedNames = data.Save.map(entry => entry.Key).filter(k => /^dirent:save:/.test(k)).map(k => k.split(":").slice(3).join(":"));
+                stateWrites = SaveState.importWrites(data.SaveStates, importedNames);
+            }
             var mapKey = "PL_Map_" + ParchLock.GameFilename;
             previous.push({ Key: mapKey, Data: localStorage.getItem(mapKey) });
 
@@ -593,8 +600,7 @@ var ParchLockQol = {
             // D215: each imported game save gets exactly its packaged map and
             // labels (or loses an old one), inside this import's rollback.
             if (typeof SaveState !== "undefined") {
-                var importedNames = data.Save.map(entry => entry.Key).filter(k => /^dirent:save:/.test(k)).map(k => k.split(":").slice(3).join(":"));
-                SaveState.importWrites(data.SaveStates, importedNames).forEach(w => {
+                stateWrites.forEach(w => {
                     previous.push({ Key: w.Key, Data: localStorage.getItem(w.Key) });
                     if (w.Data === null) localStorage.removeItem(w.Key); else localStorage.setItem(w.Key, w.Data);
                 });
@@ -609,6 +615,7 @@ var ParchLockQol = {
             try { if (typeof Transcript !== "undefined" && Transcript.importRecords && data.Transcripts) Transcript.importRecords(data.Transcripts); } catch (eTx) {}
 
             Message.Show("Import Complete", "The save package and map data were imported.");
+            importSucceeded = true;
         }
         catch(e) {
 
@@ -620,6 +627,7 @@ var ParchLockQol = {
             });
             Message.Show("Import Failed", ParchLockQol.EscapeHtml(e.message), true);
         }
+        if (importSucceeded && typeof SaveState !== "undefined" && SaveState.afterImport) SaveState.afterImport();
     },
 
     GetRadialCommands: () => {

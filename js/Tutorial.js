@@ -173,7 +173,7 @@ var Tutorial = {
             // nothing, so this step must not describe a panel that is not there
             // -- same reason the map steps carry an emptyBody.
             title: "Your character at a glance",
-            body: "The status card shows current information this story reveals: perhaps score, health, turns or a progress description. Fields vary by story, and unavailable readings stay hidden. Recognizable death and win endings are counted for this playthrough, with tiles appearing above zero. Starting a new game or restarting resets those counts; restoring a save keeps them.",
+            body: "The status card shows current information this story reveals: perhaps score, health, turns or a progress description. Fields vary by story, and unavailable readings stay hidden. Recognizable death and win endings are counted for this playthrough, with tiles appearing above zero. Counts persist for each playthrough through quitting and older saves. A new game or accepted restart starts separate history; restoring a saved playthrough returns to its accumulated count.",
             emptyBody: "This story has not supplied current status information yet. Identify stats can ask the story for more where supported. Inventory and status requests may use turns, including automatic checks when you open Equipment. ParchLock shows a one-time warning for each installed module.",
             isEmpty: function () {
                 try {
@@ -670,7 +670,10 @@ var Tutorial = {
         // beginning. Nothing is lost: the tour is non-interactive, so the
         // player never advanced the story while it was up.
         if (restart) {
-            try { location.replace(location.href); } catch (e) {}
+            var intent = typeof SaveState !== "undefined" && SaveState.prepareNewGame ? SaveState.prepareNewGame() : null;
+            if (intent === false) return;
+            try { location.replace(location.href); }
+            catch (e) { if (intent && typeof SaveState !== "undefined") SaveState.cancelNewGameIntent(intent); }
         }
     },
 

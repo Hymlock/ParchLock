@@ -14,6 +14,7 @@ public class RotatingIconWidget extends AppWidgetProvider {
     static int[] ids(Context c) {
         return AppWidgetManager.getInstance(c).getAppWidgetIds(new ComponentName(c, RotatingIconWidget.class));
     }
+    @androidx.annotation.ChecksSdkIntAtLeast(api = 26)
     static boolean canPin(Context c) {
         return Build.VERSION.SDK_INT >= 26 && AppWidgetManager.getInstance(c).isRequestPinAppWidgetSupported();
     }

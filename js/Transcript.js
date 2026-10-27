@@ -129,6 +129,7 @@ var Transcript = {
                 return;
             }
             Transcript.digest = digest;
+            Transcript.storyPath = typeof ParchLock !== "undefined" ? ParchLock.StoryPath || "" : "";
             Transcript.attachEngines();
             Transcript.meta = Transcript.loadMeta();
             try {
@@ -154,13 +155,14 @@ var Transcript = {
     // From js/ZvmCapture.js after a VM restart / restore_file returned.
     onVmEvent: function (name, success, isAutorestore) {
         try {
-            if (!Transcript.meta) return;
             if (name === "restart") {
-                if (Transcript._booting) return;   // the VM restarts once while booting
+                var submitted = typeof TurnRecorder !== "undefined" && TurnRecorder._submissionId > 0;
+                if (Transcript._booting && !submitted) return; // boot is not a new human playthrough
+                if (typeof SaveState !== "undefined") SaveState.onLifecycle("restart");
+                if (!Transcript.meta) return;
                 Transcript.collect();
                 Transcript.resetView([]);
-                // D215: the map and labels follow the game to a new start.
-                if (typeof SaveState !== "undefined") SaveState.onLifecycle("restart");
+                // Save-owned state already observed the successful restart above.
             } else if (name === "restore_file" && success) {
                 if (isAutorestore) { Transcript._autorestored = true; return; }
                 Transcript.commitRestore();
@@ -170,6 +172,11 @@ var Transcript = {
     commitRestore: function () {
         var c = Transcript._choice;
         Transcript._choice = null;
+        var earlyName = c && c.usage === "restore" && c.name && Date.now() - c.at < 120000 ? c.name : "";
+        if (!Transcript.meta) {
+            if (typeof SaveState !== "undefined") SaveState.onLifecycle("restore", { name: earlyName });
+            return;
+        }
         Transcript.collect();
         var token = c && c.usage === "restore" && Date.now() - c.at < 120000 ? Transcript.meta.saves[c.name] : null;
         Transcript.resetView(token || []);
@@ -183,6 +190,10 @@ var Transcript = {
         Transcript.append("[Restored" + (c && c.name ? " “" + c.name + "”" : "") + "]");
     },
     commitSave: function (name) {
+        if (!Transcript.meta) {
+            if (typeof SaveState !== "undefined") SaveState.onLifecycle("save", { name: name });
+            return;
+        }
         Transcript.collect();
         var toWrite = Transcript._live.slice();
         Transcript.meta.saves[name] = Transcript.closeView();   // the invisible token
@@ -229,7 +240,7 @@ var Transcript = {
                 var ok = write.apply(this, arguments);
                 try {
                     var c = Transcript._choice;
-                    if (ok && Transcript.meta && c && c.usage === "save" && Transcript.isSaveDirent(dirent)
+                    if (ok && c && c.usage === "save" && Transcript.isSaveDirent(dirent)
                         && Transcript.nameOf(dirent) === c.name) {
                         Transcript._choice = null;
                         Transcript.commitSave(c.name);

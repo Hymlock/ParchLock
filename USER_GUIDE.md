@@ -125,8 +125,12 @@ The status card above the list shows what the story tracks, such as score,
 turns or a progress line. When ParchLock recognises the story's own ending as a
 death or a win (for example "You have died"), it counts it as **Deaths this
 playthrough** or **Wins this playthrough**. Endings a story describes in its own
-way may not be recognised. The counts appear once they are above zero and reset
-with a new game or RESTART.
+way may not be recognised. The counts appear once they are above zero. They stay
+with that playthrough when you quit, reopen the story, or restore an earlier save;
+restoring does not erase deaths that happened later in the same playthrough. A
+new game or RESTART begins a separate count. Loading a save from another
+playthrough brings back that playthrough's count. Exported save packages carry
+the counts for their selected saves.
 
 ## Saves And Local Data
 
