@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "game": "AndromedaApocalypse.gblorb.js",
+      "prompt": true,
+      "elapsedMs": 400,
+      "errors": [],
+      "body": "as taken on that orange hue.\n \nIt's just a perfect day.\n \n \nShore\nKorhos is setting. Its outer halo burns with no warmth. Loud waves splash on the sand half a dozen meters from your feet. The deep blue of the ocean steals a bit of the sky's orange glow.\n \nThe morning is brilliant.\n \nYou can see Uncle Oren here.\n \nFrom the south, a thunderstorm is approaching.\n \n[First time players should type ABOUT or HELP for some important stuff about Interactive Fiction and this game]\n \n> \n➤\n🎤\nAndromeda Apocalypse\nExtended Edition (Glulx)\nBy Marco Innocenti\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n0 rooms / 0 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNotes\nParchLock! build 75\nMenu"
+    },
+    {
+      "game": "CounterfeitMonkey.gblorb.js",
+      "prompt": true,
+      "elapsedMs": 803,
+      "errors": [],
+      "body": " Back Alley, noon                                                                                                         Goals: 1  Score: 0   \n \n \n \nCan you hear me? >>  \n➤\n🎤\nCounterfeit Monkey\nGlulx format — added 2026-09-12 to unblock D28 Glulx structural-provider research\nBy Emily Short\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n0 rooms / 0 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNotes\nParchLock! build 75\nMenu"
+    }
+  ]
+}

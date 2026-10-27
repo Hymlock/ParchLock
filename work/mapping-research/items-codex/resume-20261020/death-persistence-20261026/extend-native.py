@@ -1,0 +1,2 @@
+from pathlib import Path
+p=Path('harness/death-persistence/native.cjs');s=p.read_text();old="await row('old native save after reopen',2);";new=old+"\nawait cmd('restart');await cmd('yes');await row('accepted native restart new run',0);await save('death-persistence-B');await restore('death-persistence-A');await row('switch back to earlier playthrough',2);await restore('death-persistence-B');await row('switch to new playthrough',0);await p.reload();await ready();await row('reopen selected new playthrough',0);";assert s.count(old)==1;s=s.replace(old,new);p.write_text(s)

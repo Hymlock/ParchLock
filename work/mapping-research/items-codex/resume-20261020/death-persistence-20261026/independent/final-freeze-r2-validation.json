@@ -1,0 +1,36 @@
+{
+  "retainedBaseRows": 174,
+  "retainedBaseUnique": 174,
+  "retainedRowsFromEarlierBase": true,
+  "status": "PASS",
+  "files": 531,
+  "changed": [
+    "service-worker.js",
+    "USER_GUIDE.md",
+    "js/Consts.js",
+    "js/Qol.js",
+    "js/SaveState.js",
+    "js/StatTracker.js",
+    "js/Transcript.js",
+    "js/Tutorial.js",
+    "js/WorkspaceUI.js"
+  ],
+  "groups": {
+    "index.html": 1,
+    "play.html": 1,
+    "tutorial.html": 1,
+    "manifest.json": 1,
+    "service-worker.js": 1,
+    "USER_GUIDE.md": 1,
+    "js": 61,
+    "css": 7,
+    "lib": 47,
+    "img": 86,
+    "licenses": 15,
+    "games": 309
+  },
+  "errors": [],
+  "baseCommit": "59aeaf71db10d50eedb531942c841863311acdb0",
+  "manifestSha256": "389993050e910db705064e8fc0d06df76ada1108391a5a7f54bc1c3f9ad6f79d",
+  "checkedAt": "2026-10-27T03:45:48.560Z"
+}

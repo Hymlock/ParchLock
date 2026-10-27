@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 126 decisions across
-9596 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 127 decisions across
+9656 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -27,6 +27,7 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 
 | D | claim | files | games | arch |
 |---|-------|-------|-------|------|
+| D243 | Save-linked cumulative playthrough death and win history | harness/death-terminal.js harness/save-state.js harness/stat-tracker.js harness/e4-transcript.js |  | §89 |
 | D242 | Per-title enter forms (sit on) | harness/zil-enter-forms.js | Deadline |  |
 | D241 | ZIL locked doors on the map (locked R2 phase 1) |  |  |  |
 | D240 | Room-as-door exits (ZIL): a DEXIT whose door is its own destination | js/ExitCalibrator.js harness/d214-room-door-alias.js |  |  |
@@ -264,26 +265,28 @@ cites. Search here for a subsystem; the line number opens the chapter.
 | §67 | 3486 | 67. Mobile side-rail readable-content geometry (D203) — IMPLEMENTED | D203 |
 | §68 | 3556 | 68. Holistic statistics evidence ledger (D204) - IMPLEMENTED | D204 |
 | §69 | 3682 | 69. Yourself hold radial for inventory/RPG verbs (D205) | D205 |
-| §70 | 3739 | 70. Learned words display and shared-copy repairs (2026-10-04) |  |
-| line 3776 | 3776 | Observed item descriptor precedence - regression correction (2026-10-04) |  |
-| §71 | 3785 | 71. Status probes, time games and the score alias (D207-D209) | D207 D208 D209 |
-| §72 | 3821 | 72. Hold selection ownership, voice input lifecycle and speech (D210-D212) | D210 D211 D212 |
-| §73 | 3879 | 73. In-room steps and combat actions (D213) | D213 |
-| §74 | 3907 | 74. Underline lifetime, reply observation and Yourself breadth (D214) | D214 |
-| §75 | 3957 | 75. Save-tied state, authored endings and the rotating icon (D215) | D215 |
-| §76 | 4028 | 76. Internal-named rooms, positional suffixes and measured player facts (D216) | D216 |
-| §77 | 4051 | 77. Library-compass lane for exit labels (D217) | D217 |
-| §78 | 4071 | 78. Inform 7 bookkeeping properties are not exits (D218) | D218 |
-| §79 | 4081 | 79. DarkScope: one heuristic darkness verdict per tick (D221) | D221 |
-| §80 | 4103 | 80. Inform 7 Map_Storage look-ahead lane (D223) | D223 |
-| §81 | 4122 | 81. Measured location fact and dark-admitted naming (D224) | D224 |
-| line 4141 | 4141 | ZIL semantic-flag ownership (2e1455e scoped closure; Codex #3442, carried by grok2 2026-10-11) |  |
-| line 4169 | 4169 | ZIL constant-actor player root: playerObject (2026-10-11, grok2; Codex AUDIT PASS #3504) |  |
-| line 4175 | 4175 | ZIL v4/v5 room: locationGlobal (2026-10-12, grok2, 5348c0f; Codex post-hoc audit pending) |  |
-| §82 | 4180 | 82. Mark coverage and inventory label admission (D225) | D225 |
-| §83 | 4192 | 83. Inventory holder authority and recovery (D226) | D226 |
-| §84 | 4210 | 84. Read-only pass pool and static dictionary cache (D227) | D227 |
-| §85 | 4263 | 85. Authored state-gated food actions (D228) | D228 |
-| §86 | 4280 | 86. Measured container state and authored container forms (D229) | D229 |
-| §87 | 4291 | 87. More-page suggestion admission (D230) | D230 |
-| §88 | 4299 | 88. Authored unlock tool domain (D231) | D231 |
+| §70 | 3753 | 70. Learned words display and shared-copy repairs (2026-10-04) |  |
+| line 3790 | 3790 | Observed item descriptor precedence - regression correction (2026-10-04) |  |
+| §71 | 3799 | 71. Status probes, time games and the score alias (D207-D209) | D207 D208 D209 |
+| §72 | 3835 | 72. Hold selection ownership, voice input lifecycle and speech (D210-D212) | D210 D211 D212 |
+| §73 | 3893 | 73. In-room steps and combat actions (D213) | D213 |
+| §74 | 3921 | 74. Underline lifetime, reply observation and Yourself breadth (D214) | D214 |
+| §75 | 3971 | 75. Save-tied state, authored endings and the rotating icon (D215) | D215 |
+| §76 | 4042 | 76. Internal-named rooms, positional suffixes and measured player facts (D216) | D216 |
+| §77 | 4065 | 77. Library-compass lane for exit labels (D217) | D217 |
+| §78 | 4085 | 78. Inform 7 bookkeeping properties are not exits (D218) | D218 |
+| §79 | 4095 | 79. DarkScope: one heuristic darkness verdict per tick (D221) | D221 |
+| §80 | 4117 | 80. Inform 7 Map_Storage look-ahead lane (D223) | D223 |
+| §81 | 4136 | 81. Measured location fact and dark-admitted naming (D224) | D224 |
+| line 4155 | 4155 | ZIL semantic-flag ownership (2e1455e scoped closure; Codex #3442, carried by grok2 2026-10-11) |  |
+| line 4183 | 4183 | ZIL constant-actor player root: playerObject (2026-10-11, grok2; Codex AUDIT PASS #3504) |  |
+| line 4189 | 4189 | ZIL v4/v5 room: locationGlobal (2026-10-12, grok2, 5348c0f; Codex post-hoc audit pending) |  |
+| §82 | 4194 | 82. Mark coverage and inventory label admission (D225) | D225 |
+| §83 | 4206 | 83. Inventory holder authority and recovery (D226) | D226 |
+| §84 | 4224 | 84. Read-only pass pool and static dictionary cache (D227) | D227 |
+| §85 | 4277 | 85. Authored state-gated food actions (D228) | D228 |
+| §86 | 4294 | 86. Measured container state and authored container forms (D229) | D229 |
+| §87 | 4305 | 87. More-page suggestion admission (D230) | D230 |
+| §88 | 4313 | 88. Authored unlock tool domain (D231) | D231 |
+| line 4319 | 4319 | October26 operator-authorized credit takeover: twelve concealed mappings |  |
+| §89 | 4332 | 89. Save-linked cumulative playthrough history (D243) | D243 |

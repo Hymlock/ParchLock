@@ -1,7 +1,9 @@
 <!-- CODEX_CURRENT_START -->
 # Current continuation state — 2026-10-26T22:19:03.086Z
 
-Direct operator out-of-credits takeover supersedes older Claude/Grok exclusive-writer holds for necessary recovery. Stay authenticated as codex; do not impersonate or fabricate claim releases/reviews. Preserve unrelated dirty/staged work. Full26 ZIL flags/world/status/useful consumers remain unfinished; no overall completion or APK.
+CURRENT OPERATOR PRIORITY COMPLETE: death persistence production07b18df and independently accepted test APK75/code48/cache173 delivered. Exact evidence/link/hash/limits: death-persistence-20261026/checkpoint.md. Resume full26 ZIL; next ZorkIII worn/Drop consumer proposalR3 must preserve Equipment descriptor provenance (R2 REVISE), no code or more probabilistic acquisition retries. Existing monitor remains ACTIVE. No further APK unless requested; no overall project completion.
+
+Direct operator out-of-credits takeover supersedes older Claude/Grok exclusive-writer holds for necessary recovery. Stay authenticated as codex; do not impersonate or fabricate claim releases/reviews. Preserve unrelated dirty/staged work. Full26 ZIL flags/world/status/useful consumers remain unfinished; no overall completion; APK75 is separately accepted/delivered.
 
 - CURRENT SOURCE: B1b0e2f9e/facts2188b68 +b8ae7e3/b3e57d3/ccd9b58/ledger00ca215;12concealed mappings now committed0d28bd9 and5fd4c52; ledger/canonical/evidencebc83e6b. Exact12concealedU->C audited, not full completion. No duplicate309/native semantic proof.
 - NEW IDENTITY4753da6: ZorkIII exactdigest primaryPLAYER playerGlobal178, distinct parserWINNERG163. Actual independent compiled/source/native/exact/final ACCEPT. Fresh passive8commands G178202/object202moves64->63->64/lamp198under202; lamp-address refusal is nonactor only. Source archive localbinding not exact rebuild/exhaustive compiledwriters. Exactb18e candidate guard3uniqueeachZ3/905/Alabaster0diff/noerrors,79files/side stable,operator13/0. Alabasterbootonly. Evidence review-20261025/z3p178 andzork3-player-role-2212. No equipment/worn/removal/NPC/restore/lifecycle approval.

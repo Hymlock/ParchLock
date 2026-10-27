@@ -1,0 +1,173 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "label": "fresh run",
+      "totals": {
+        "deaths": 0,
+        "wins": 0
+      },
+      "model": {
+        "deaths": 0,
+        "wins": 0
+      },
+      "text": " West of House                Score: 0  Turns: 0 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n> \nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nKNOWN ROOMS\nNotes"
+    },
+    {
+      "label": "first native death",
+      "totals": {
+        "deaths": 1,
+        "wins": 0
+      },
+      "model": {
+        "deaths": 1,
+        "wins": 0
+      },
+      "text": " Forest                      Score: 25  Turns: 9 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>save\nOk.\n \n>north\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n>east\nBehind House\nYou are behind the white house. A path leads into the forest to the east. In one corner of the house there is a small window which is slightly ajar.\n \n>open window\nWith great effort, you open the window far enough to allow entry.\n \n>west\nKitchen\nYou are in the kitchen of the white house. A table seems to have been used recently for the preparation of food. A passage leads to the west and a dark staircase can be seen leading upward. A dark chimney leads down and to the east is a small window which is open.\nOn the table is an elongated brown sack, smelling of hot peppers.\nA bottle is sitting on the table.\nThe glass bottle contains:\n  A quantity of water\n \n>west\nLiving Room\nYou are in the living room. There is a doorway to the east, a wooden door with strange gothic lettering to the west, which appears to be nailed shut, a trophy case, and a large oriental rug in the center of the room.\nAbove the trophy case hangs an elvish sword of great antiquity.\nA battery-powered brass lantern is on the trophy case.\n \n>move rug\nWith a great effort, the rug is moved to one side of the room, revealing the dusty cover of a closed trap door.\n \n>open trap door\nThe door reluctantly opens to reveal a rickety staircase descending into darkness.\n \n>down\nYou have moved into a dark place.\nThe trap door crashes shut, and you hear someone barring it.\n \nIt is pitch black. You are likely to be eaten by a grue.\n \n>north\nOh, no! A lurking grue slithered into the room and devoured you!\n \n   ****  You have died  **** \n \nNow, let's take a look here... Well, you probably deserve another chance. I can't quite fix you up completely, but you can't have everything.\n \nForest\nThis is a forest, with trees in all directions. To the east, there appears to be sunlight.\n \n> \nINWOUT\nUPLiving RoomEKitchenDOWN\n➤\n🎤\nYou died. Deaths this playthrough: 1"
+    },
+    {
+      "label": "restore dialog",
+      "options": [
+        {
+          "value": "death-persistence-A -- 10/27 3:38",
+          "label": "death-persistence-A -- 10/27 3:38"
+        }
+      ]
+    },
+    {
+      "label": "older save keeps first death",
+      "totals": {
+        "deaths": 1,
+        "wins": 0
+      },
+      "model": {
+        "deaths": 1,
+        "wins": 0
+      },
+      "text": " West of House                Score: 0  Turns: 0 \nOk.\n \n> \nWEST\nForest\nINWForestOUT\nUPLiving RoomEKitchenDOWN\n➤\n🎤"
+    },
+    {
+      "label": "second native death",
+      "totals": {
+        "deaths": 2,
+        "wins": 0
+      },
+      "model": {
+        "deaths": 2,
+        "wins": 0
+      },
+      "text": " Forest                     Score: 25  Turns: 10 \n>look\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n>east\nBehind House\nYou are behind the white house. A path leads into the forest to the east. In one corner of the house there is a small window which is slightly ajar.\n \n>open window\nWith great effort, you open the window far enough to allow entry.\n \n>west\nKitchen\nYou are in the kitchen of the white house. A table seems to have been used recently for the preparation of food. A passage leads to the west and a dark staircase can be seen leading upward. A dark chimney leads down and to the east is a small window which is open.\nOn the table is an elongated brown sack, smelling of hot peppers.\nA bottle is sitting on the table.\nThe glass bottle contains:\n  A quantity of water\n \n>west\nLiving Room\nYou are in the living room. There is a doorway to the east, a wooden door with strange gothic lettering to the west, which appears to be nailed shut, a trophy case, and a large oriental rug in the center of the room.\nAbove the trophy case hangs an elvish sword of great antiquity.\nA battery-powered brass lantern is on the trophy case.\n \n>move rug\nWith a great effort, the rug is moved to one side of the room, revealing the dusty cover of a closed trap door.\n \n>open trap door\nThe door reluctantly opens to reveal a rickety staircase descending into darkness.\n \n>down\nYou have moved into a dark place.\nThe trap door crashes shut, and you hear someone barring it.\n \nIt is pitch black. You are likely to be eaten by a grue.\n \n>north\nOh, no! A lurking grue slithered into the room and devoured you!\n \n   ****  You have died  **** \n \nNow, let's take a look here... Well, you probably deserve another chance. I can't quite fix you up completely, but you can't have everything.\n \nForest\nThis is a forest, with trees in all directions. To the east, there appears to be sunlight.\n \n> \nINWLiving RoomOUT\nUPLiving RoomEKitchenDOWN\n➤\n🎤\nYou died. Deaths this playthrough: 2"
+    },
+    {
+      "label": "page reopen keeps two deaths",
+      "totals": {
+        "deaths": 2,
+        "wins": 0
+      },
+      "model": {
+        "deaths": 2,
+        "wins": 0
+      },
+      "text": " West of House                Score: 0  Turns: 0 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n> \nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nKNOWN ROOMS\nNotes"
+    },
+    {
+      "label": "restore dialog",
+      "options": [
+        {
+          "value": "death-persistence-A -- 10/27 3:38",
+          "label": "death-persistence-A -- 10/27 3:38"
+        }
+      ]
+    },
+    {
+      "label": "old native save after reopen",
+      "totals": {
+        "deaths": 2,
+        "wins": 0
+      },
+      "model": {
+        "deaths": 2,
+        "wins": 0
+      },
+      "text": " West of House                Score: 0  Turns: 0 \nOk.\n \n> \nWEST\nForest\nINWForestOUT\nUPEDOWN\n➤\n🎤"
+    },
+    {
+      "label": "rendered persisted equipment",
+      "text": "DEATHS THIS PLAYTHROUGH\n2"
+    },
+    {
+      "label": "accepted native restart new run",
+      "totals": {
+        "deaths": 0,
+        "wins": 0
+      },
+      "model": {
+        "deaths": 0,
+        "wins": 0
+      },
+      "text": " West of House                Score: 0  Turns: 0 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n> \nWEST\nForest\nINWForestOUT\nUPEDOWN\n➤\n🎤"
+    },
+    {
+      "label": "restore dialog",
+      "options": [
+        {
+          "value": "death-persistence-B -- 10/27 3:39",
+          "label": "death-persistence-B -- 10/27 3:39"
+        },
+        {
+          "value": "death-persistence-A -- 10/27 3:38",
+          "label": "death-persistence-A -- 10/27 3:38"
+        }
+      ]
+    },
+    {
+      "label": "switch back to earlier playthrough",
+      "totals": {
+        "deaths": 2,
+        "wins": 0
+      },
+      "model": {
+        "deaths": 2,
+        "wins": 0
+      },
+      "text": " West of House                Score: 0  Turns: 0 \nOk.\n \n> \nWEST\nForest\nINWForestOUT\nUPEDOWN\n➤\n🎤"
+    },
+    {
+      "label": "restore dialog",
+      "options": [
+        {
+          "value": "death-persistence-B -- 10/27 3:39",
+          "label": "death-persistence-B -- 10/27 3:39"
+        },
+        {
+          "value": "death-persistence-A -- 10/27 3:38",
+          "label": "death-persistence-A -- 10/27 3:38"
+        }
+      ]
+    },
+    {
+      "label": "switch to new playthrough",
+      "totals": {
+        "deaths": 0,
+        "wins": 0
+      },
+      "model": {
+        "deaths": 0,
+        "wins": 0
+      },
+      "text": " West of House                Score: 0  Turns: 1 \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n> \nINWForestOUT\nUPEDOWN\n➤\n🎤"
+    },
+    {
+      "label": "reopen selected new playthrough",
+      "totals": {
+        "deaths": 0,
+        "wins": 0
+      },
+      "model": {
+        "deaths": 0,
+        "wins": 0
+      },
+      "text": " West of House                Score: 0  Turns: 0 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n> \nZork 1\nThe Great Underground Empire\nBy Infocom\nMap controls\nKNOWN ROOMS\nNotes"
+    }
+  ]
+}

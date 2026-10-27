@@ -1,0 +1,6 @@
+{
+  "ProcessId": 34804,
+  "ParentProcessId": 24692,
+  "Name": "node.exe",
+  "CommandLine": "\"E:\\Program Files\\nodejs\\node.exe\" work/mapping-research/items-codex/resume-20261020/death-persistence-20261026/shared-final/run-full-gate.cjs"
+}
