@@ -8,7 +8,7 @@ ruling that it needs nothing). Status: TODO / ACTIVE / BLOCKED(on X) / DONE / CL
 | # | Item | Status | Owner | Next action |
 |---|---|---|---|---|
 | D1 | Inventory reader: hidden held parent keeps visible contents. Proposal R1 written (zil-titles/invhidden-recurse-proposal-r1.md; per-title inventoryHiddenRecurses fact + walk children of an NDESC parent). | ACTIVE | claude | codex adversarial review. |
-| D2 | `light` key semantics: capability (LIGHTBIT) vs state (ONBIT); Zork I 31, Enchanter 22. 18 light cells wait on it. No live hazard (post-seal check). | ACTIVE | claude+codex | claude half sealed (light-semantics-claude-SEALED.md); codex blind half tonight. |
+| D2 | light semantics: CLOSED by consensus (codex ACCEPT): no code; light stays a heuristic key, illumination via illuminationState; 18 cells L:NC (no semantic light-emission reader). | CLOSED | claude+codex | - |
 | D3 | world-map-ui 6 failures: DONE. Bisected to 8291b5f (D215 save-tied map); the reload fixture was stale (a fresh boot archives the old map by design). Harness now loads the archived slot; 52/0. | DONE | claude | - |
 | D4 | Room-fixed switches: activationForms is inventory-only (3f1fd5d conservative scope, not a ruling). Witness radio toggles natively, stateless. | ACTIVE | claude | claude half SEALED (fixed-switch-claude-SEALED.md); blind request to codex tonight. |
 | D5 | Locked phase 2: an object "Locked" status row (no status row exists in the radial). | TODO | codex | codex fit notes exist (resume/locked-phase2-current-fit-notes.md); proposal. |

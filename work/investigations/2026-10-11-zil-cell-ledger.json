@@ -295,6 +295,10 @@
   "visited": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added. Shares TOUCHBIT with moved: reuse moved provenance."
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "Enchanter.z3.js": {
@@ -523,6 +527,10 @@
   "lightSource": {
    "s": "NC",
    "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "Ballyhoo.z3.js": {
@@ -605,6 +613,10 @@
   "female": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "Cutthroats.z3.js": {
@@ -695,6 +707,10 @@
   "lightSource": {
    "s": "NC",
    "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "Deadline.z3.js": {
@@ -947,6 +963,10 @@
   "animate": {
    "s": "NA",
    "r": "same as talkable: ACTORBIT marks only player objects (claude worker E4)."
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "HollywoodHijinx.z3.js": {
@@ -1041,6 +1061,10 @@
   "lightSource": {
    "s": "NC",
    "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "LeatherGoddessesofPhobos.z3.js": {
@@ -1131,6 +1155,10 @@
   "lightSource": {
    "s": "NC",
    "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "Moonmist.z3.js": {
@@ -1233,6 +1261,10 @@
   "lightSource": {
    "s": "NC",
    "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "PlunderedHearts.z3.js": {
@@ -1323,6 +1355,10 @@
   "lightSource": {
    "s": "NC",
    "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "Borderzo.z5.js": {
@@ -1515,6 +1551,10 @@
   "scenery": {
    "s": "X",
    "r": "FAIL CLOSED per Claude #5242 (grok #5216/#5217): NDESCBIT also sits on takeable objects (and is toggled at runtime), so it is not a static scenery marker. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "Planetfall.z3.js": {
@@ -1613,6 +1653,10 @@
   "talkable": {
    "s": "X",
    "r": "claude worker E4 2026-10-30: Floyd 110 (the only reachable actor) intercepts every command (look in, yell at, play with, shake, attack: NOTEST); the census is not exact (fp 1) and Floyd's bit is set at runtime (compone.zil 2154). Fail closed."
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "Seastalker.z3.js": {
@@ -1739,6 +1783,10 @@
   "lightSource": {
    "s": "NC",
    "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "Sorcerer.z3.js": {
@@ -1845,6 +1893,10 @@
   "lightSource": {
    "s": "NC",
    "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "Spellbreaker.z3.js": {
@@ -1931,6 +1983,10 @@
   "lightSource": {
    "s": "NC",
    "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "Starcross.z3.js": {
@@ -2285,6 +2341,10 @@
   "scenery": {
    "s": "X",
    "r": "FAIL CLOSED per Claude #5242 (grok #5216/#5217): NDESCBIT also sits on takeable objects (and is toggled at runtime), so it is not a static scenery marker. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "Suspended.z3.js": {
@@ -2391,6 +2451,10 @@
   "lightSource": {
    "s": "NC",
    "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "Wishbringer.z3.js": {
@@ -2493,6 +2557,10 @@
   "inventoryHiddenAttribute": {
    "s": "NA",
    "r": "claude worker E2 2026-10-30: Wishbringer V-INVENTORY PRINT-CONTENTS has its NDESCBIT filter commented out (parser.zil 2179); INVISIBLE is a separate key (inventoryInvisibleAttribute)."
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "TheWitness.z3.js": {
@@ -2619,6 +2687,10 @@
   "switchable": {
    "s": "X",
    "r": "FAIL CLOSED (grok1 b-batch): V-LAMP-ON (verbs.zil 1974) refuses every object (\"You can't turn on\" / sink water joke), V-LAMP-OFF likewise; LIGHTBIT 25 only on global cigarette 43 + 249; no toggle anywhere. verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
+  },
+  "light": {
+   "s": "NC",
+   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "Sherlock.z5.js": {
