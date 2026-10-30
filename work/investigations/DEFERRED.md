@@ -36,3 +36,4 @@ ruling that it needs nothing). Status: TODO / ACTIVE / BLOCKED(on X) / DONE / CL
 - Moonmist transparent 9: DONE r28 (6bf8a98). grok1/PARKED.md row 8 is stale.
 - Planetfall transparent: DONE r29. Infidel climb carrier 2: CLOSED (already mapped). Deadline climb: CLOSED L:NA.
 - 41 + 17 no-reader cells: L:NC by group rule A (not complete; reopen when a reader appears).
+| D12 | Hollywood: non-containers carrying CONTBIT+OPENBIT in source (matches, planks, pond, holes, niches, cannon, projectors, hopper) get close/Search/Empty. Probe CLOSE MATCH/POND natively; fix from game data, no masking. | OPEN | claude | audit-r43/AUDIT.md |

@@ -1,0 +1,46 @@
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index a957ef4..ac25650 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -293,7 +293,8 @@ var ModuleStatFactsClaude = {
+         // moved 22 = TOUCHBIT (native, grok1 #5208 grok1/moved/packet-*.json, source bit read clear -> set on TAKE): rye bread 43 and cube 238; smoked fish 123 stays clear.
+         // door 25 = DOORBIT, source exact 6/6 (vault door 2, octagonal hole 40, shop door 188, cell door 207, iron door 223, trap door 244). Seeded-native trace (grok1 #5399, udoor/cache run-spellbrkr-20261026T021900-70584.json; Codex ACCEPT #5402): CLOSE/OPEN shop door 188 and CLOSE octagonal hole 40 test 25 TRUE; CLOSE rezrov 14 tests 25 FALSE. Gold box 4 takes the container branch (no test).
+         // Proposed concealed 12 = native INVISIBLE; retained Codex packet concealed/packet-spellbreaker.json (70/186 positives; 149 negative). Native/source tiers and SAVE/RESTORE qualifications remain in packet; no actor-possession or whole-title consumer closure.
+-        "attributeMap": { "supporter": 3, "animate": 31, "talkable": 31, "on": 8, "container": 27, "open": 21, "isOpen": 21, "scenery": 19, "transparent": 15, "enterable": 29, "moved": 22, "door": 25 , "concealed": 12 }
++        // locked 11 = LOCKED (native, claude worker E3 claude-probe/locked/run-spellbrkr-*): massive cabinet 107 @199 and massive cabinet 67 @372 (Dungeon Cell) read 11=1 "The cabinet is locked."; both read 0 after unlocking (same V-OPEN read site). Neither is a room.
++        "attributeMap": { "supporter": 3, "animate": 31, "talkable": 31, "on": 8, "container": 27, "open": 21, "isOpen": 21, "scenery": 19, "transparent": 15, "enterable": 29, "moved": 22, "door": 25 , "concealed": 12, "locked": 11 }
+     },
+     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
+         // D232 local globals, roots only (r3-claude/localscope2 + grok2 registry-ready): property 17, holder 58. Native: Outside of
+@@ -307,7 +308,8 @@ var ModuleStatFactsClaude = {
+         // moved 15 = TOUCHBIT (native, codex #5183 resume-20261020/moved/packet-enchanter.json): TAKE bread 41 and jug 19 set bit 15 (clear -> set); object 7 stays clear.
+         // transparent 10 = source TRANSBIT exact (16 objects, fp 0 fn 0; historicalsource 472c3b9); static: the only runtime TRANSBIT writes are the parser's paired FCLEAR/FSET on the player inside the scope search (grok1 #5188). Effect: no Take on contents of a closed transparent container.
+         // concealed 16 = INVISIBLE exact (native, codex #5240 resume-20261020/concealed/packet-enchanter.json): Flathead portrait 179 and Frobozz portrait 167 read 16=1 and cannot be seen; EXAMINE PORTRAITS 106 (16 clear, visible) identifies both and clears 16; named EXAMINE then succeeds.
+-        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8, "door": 24, "enterable": 29, "climbable": 26, "moved": 15, "transparent": 10, "concealed": 16 },
++        // locked 1 = LOCKEDBIT (grok1 probe5 run-enj, claude worker E3): north gate 194 @44 OPEN GATE reads 1=1 "The gate is rusted shut.", @46 reads 0 after REZROV. Single-owner exception from source: NORTH-GATE-OBJ-F (castle.zil:1085) is the only player-facing LOCKEDBIT test; IRON-GATE-F prints fixed text; V-OPEN/LOCK/UNLOCK never test it. No room carriers.
++        "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8, "door": 24, "enterable": 29, "climbable": 26, "moved": 15, "transparent": 10, "concealed": 16, "locked": 1 },
+         "openCapability": { "all": ["container"], "none": ["supporter"] },
+     },
+     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
+@@ -425,7 +427,8 @@ var ModuleStatFactsClaude = {
+         // door 27 = source DOORBIT exact; native (grok2 r4-grok2/doorbit/Seastalker.z3.js.json): lab door 88 and entry hatch 251 strict OPEN/CLOSE toggles on OPENBIT 18; Universal Tool refuses (reply says now: weak, conditional wording).
+         // moved 4 = TOUCHBIT (native, grok1 #5208 grok1/moved/packet-*.json, source bit read clear -> set on TAKE): microphone 62 and catalyst capsule 190; technician 61 stays clear.
+         // talkable 30 (seeded-native tier; grok1 packet J): ASK Bly/Tip ABOUT X TRUE; microphone/diagram FALSE; V-ASK-ABOUT 936 -> WONT-HELP-TO-TALK-TO 718-719.
+-        "attributeMap": { "supporter": 6, "open": 18, "isOpen": 18, "container": 26, "on": 19, "animate": 30, "door": 27, "moved": 4, "talkable": 30 },
++        // locked 15 = LOCKED (native, claude worker E3 claude-probe/locked/run-seastalker-*, route fixed: dive to 15 m under the freighter): Horvak's locker 155 reads 15=1 on OPEN/UNLOCK/OPEN WITH TOOL ("It's locked."), 0 after unlocking; entry hatch 251 reads 0. Single tested carrier: the source windows 178/243 handle OPEN/LOCK in their own routines and never test LOCKED (single-owner exception). Not a room.
++        "attributeMap": { "supporter": 6, "open": 18, "isOpen": 18, "container": 26, "on": 19, "animate": 30, "door": 27, "moved": 4, "talkable": 30, "locked": 15 },
+         // WITHDRAWN 2026-10-11 (operator 23:15, fail closed): supporter - walk evidence was not target-scoped (Codex #3474); re-add only after targeted on-device tests.
+         // SURFACEBIT 6: TRUE on workbench 64, mechanical/electronic/chemical supply shelves 67/70/72, work counter 189; FALSE on microphone 62, file drawer 78, electrolyte relay 115. Walk m1; source exact (9 objects). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
+         "inventoryHiddenAttribute": 17
+@@ -632,7 +635,10 @@ var ModuleStatFactsClaude = {
+         // moved 28 = TOUCHBIT (native, codex #5183 resume-20261020/moved/packet-hollywoodhijinx.json): TAKE paper 63 and card 113 set bit 28; object 44 stays clear.
+         // talkable 18 = ACTORBIT (= animate), census exactly Aunt Hildegarde 126 + Cousin Herman 163 (+ player/globals); native (grok1 #5221 grok1/probe5/run-hollywood-*, vault route hw-vault.json): HELLO HERMAN / HELLO AUNT / AUNT, HELLO read 18=1; buzz saw 152 reads 0.
+         // concealed 29 = INVISIBLE (native, codex #5244 resume-20261020/concealed/packet-hollywood.json): safe 203 and card 46 (Outside Parlor) read 29=1 and EXAMINE is refused; MOVE PORTRAIT clears 29 on both and EXAMINE then succeeds; portrait 65 visible with 29 clear.
+-        "attributeMap": { "wearable": 22, "animate": 18, "supporter": 27, "door": 10, "on": 20, "scenery": 16, "open": 25, "isOpen": 25, "moved": 28, "talkable": 18, "concealed": 29 },
++        // container 4 = CONTBIT (tp24 fp0 fn1; native, claude worker E7 claude-probe/hollywood/run-hollywood-*): OPEN/LOOK IN read 4=1 on mailbox 225, piano 222, cloth sack 199, compartment 138 (contents shown); business card 63 reads 0 ("You can't look inside"). No room carries 4. Every SURFACEBIT 27 object also carries 4, hence openCapability.
++        // openCapability: Open/Close for containers that are not surfaces (mantle 194 / pile 207 / table 211 carry CONTBIT but refuse CLOSE natively, claude worker E7).
++        "openCapability": { "all": ["container"], "none": ["supporter"] },
++        "attributeMap": { "wearable": 22, "animate": 18, "supporter": 27, "door": 10, "on": 20, "scenery": 16, "open": 25, "isOpen": 25, "moved": 28, "talkable": 18, "concealed": 29, "container": 4 },
+         // WORNBIT state14: independent native ring127/skis188 wear+remove, flashlight123 refused; Grok4120 proposal, Codex October20 audit.
+         "wornAttribute": 14
+     },
