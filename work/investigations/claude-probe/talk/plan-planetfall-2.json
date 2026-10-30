@@ -1,0 +1,43 @@
+{
+ "key": "planetfall",
+ "game": "Planetfall.z3.js",
+ "tag": "talk-planetfall",
+ "tests": [
+  {
+   "id": 110,
+   "name": "multiple purpose robot",
+   "step": 124,
+   "expect": 1,
+   "bit": 31,
+   "cmd": "look",
+   "tag": "talk-planetfall"
+  },
+  {
+   "id": 110,
+   "name": "multiple purpose robot",
+   "step": 124,
+   "expect": 1,
+   "bit": 31,
+   "cmd": "squeeze robot",
+   "tag": "talk-planetfall"
+  },
+  {
+   "id": 110,
+   "name": "multiple purpose robot",
+   "step": 124,
+   "expect": 1,
+   "bit": 31,
+   "cmd": "shake robot",
+   "tag": "talk-planetfall"
+  },
+  {
+   "id": 110,
+   "name": "multiple purpose robot",
+   "step": 124,
+   "expect": 1,
+   "bit": 31,
+   "cmd": "attack robot",
+   "tag": "talk-planetfall"
+  }
+ ]
+}

@@ -1,0 +1,264 @@
+{
+ "talk-zork3 @101:look in hooded figure#0": {
+  "tag": "talk-zork3",
+  "id": 67,
+  "name": "hooded figure",
+  "step": 101,
+  "expect": 1,
+  "bit": 21,
+  "cmd": "look in hooded figure",
+  "plan": "plan-zork3-101.json",
+  "planSha": "a9c4ed5b65b4b433a8ecf43dec319454bfe980c78b2de8832b82c2fe410fd44a",
+  "gameSha": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+  "verdict": "NOTEST",
+  "before": [
+   10,
+   11,
+   12,
+   21,
+   30
+  ],
+  "after": [
+   10,
+   11,
+   12,
+   21,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 70,
+  "here": 70,
+  "opsOnId": [
+   [
+    67,
+    28,
+    0,
+    24663
+   ],
+   [
+    67,
+    12,
+    1,
+    24071
+   ],
+   [
+    67,
+    26,
+    0,
+    24083
+   ],
+   [
+    67,
+    31,
+    0,
+    24093
+   ],
+   [
+    67,
+    9,
+    0,
+    31124
+   ],
+   [
+    67,
+    10,
+    1,
+    31166
+   ],
+   [
+    67,
+    11,
+    1,
+    31166
+   ]
+  ],
+  "nOps": 27,
+  "printedObjs": [],
+  "text": "There is nothing special to be seen.\nYour quick reflexes cannot stop the hooded figure's stroke!  You are hit!\n \n> ",
+  "ts": "2026-10-30T11:09:53.506Z"
+ },
+ "talk-zork3 @101:find hooded figure#1": {
+  "tag": "talk-zork3",
+  "id": 67,
+  "name": "hooded figure",
+  "step": 101,
+  "expect": 1,
+  "bit": 21,
+  "cmd": "find hooded figure",
+  "plan": "plan-zork3-101.json",
+  "planSha": "a9c4ed5b65b4b433a8ecf43dec319454bfe980c78b2de8832b82c2fe410fd44a",
+  "gameSha": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+  "verdict": "NOTEST",
+  "before": [
+   10,
+   11,
+   12,
+   21,
+   30
+  ],
+  "after": [
+   10,
+   11,
+   12,
+   21,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 70,
+  "here": 70,
+  "opsOnId": [
+   [
+    67,
+    28,
+    0,
+    24663
+   ],
+   [
+    67,
+    12,
+    1,
+    24071
+   ],
+   [
+    67,
+    26,
+    0,
+    24083
+   ],
+   [
+    67,
+    31,
+    0,
+    24093
+   ]
+  ],
+  "nOps": 24,
+  "printedObjs": [],
+  "text": "It's right here.\nYou dodge as the hooded figure comes in low.\n \n> ",
+  "ts": "2026-10-30T11:09:54.074Z"
+ },
+ "talk-zork3 @101:hello hooded figure#2": {
+  "tag": "talk-zork3",
+  "id": 67,
+  "name": "hooded figure",
+  "step": 101,
+  "expect": 1,
+  "bit": 21,
+  "cmd": "hello hooded figure",
+  "plan": "plan-zork3-101.json",
+  "planSha": "a9c4ed5b65b4b433a8ecf43dec319454bfe980c78b2de8832b82c2fe410fd44a",
+  "gameSha": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+  "verdict": "NOTEST",
+  "before": [
+   10,
+   11,
+   12,
+   21,
+   30
+  ],
+  "after": [
+   10,
+   11,
+   12,
+   21,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 70,
+  "here": 70,
+  "opsOnId": [
+   [
+    67,
+    28,
+    0,
+    24663
+   ],
+   [
+    67,
+    12,
+    1,
+    24071
+   ],
+   [
+    67,
+    26,
+    0,
+    24083
+   ],
+   [
+    67,
+    31,
+    0,
+    24093
+   ]
+  ],
+  "nOps": 24,
+  "printedObjs": [],
+  "text": "The hooded figure does not respond to your words.\nThe hooded figure thrusts, but you fight back and send it flying to the ground!\n \n> ",
+  "ts": "2026-10-30T11:09:54.639Z"
+ },
+ "talk-zork3 @101:kiss hooded figure#3": {
+  "tag": "talk-zork3",
+  "id": 67,
+  "name": "hooded figure",
+  "step": 101,
+  "expect": 1,
+  "bit": 21,
+  "cmd": "kiss hooded figure",
+  "plan": "plan-zork3-101.json",
+  "planSha": "a9c4ed5b65b4b433a8ecf43dec319454bfe980c78b2de8832b82c2fe410fd44a",
+  "gameSha": "3d74553240bb5f1890ed1e397ac10fc7297acda6bb18593c97697a86a269518d",
+  "verdict": "NOTEST",
+  "before": [
+   10,
+   11,
+   12,
+   21,
+   30
+  ],
+  "after": [
+   10,
+   11,
+   12,
+   21,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 70,
+  "here": 70,
+  "opsOnId": [
+   [
+    67,
+    28,
+    0,
+    24663
+   ],
+   [
+    67,
+    12,
+    1,
+    24071
+   ],
+   [
+    67,
+    26,
+    0,
+    24083
+   ],
+   [
+    67,
+    31,
+    0,
+    24093
+   ]
+  ],
+  "nOps": 24,
+  "printedObjs": [],
+  "text": "I'd sooner kiss a pig.\nYou dodge as the hooded figure comes in low.\n \n> ",
+  "ts": "2026-10-30T11:09:55.205Z"
+ }
+}

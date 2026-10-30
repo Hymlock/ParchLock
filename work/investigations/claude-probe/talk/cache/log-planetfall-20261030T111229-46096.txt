@@ -1,0 +1,6 @@
+planetfall talk-planetfall @124 look in fluid #90 FALSE "You can't look inside a quantity of chemical fluid.\nFloyd relates some fond memo"
+planetfall talk-planetfall @124 yell at fluid #90 FALSE "For some reason, the quantity of chemical fluid doesn't seem too chagrined.\nFloy"
+planetfall talk-planetfall @124 look in robot #110 NOTEST "Floyd giggles and pushes you away. \"You're tickling Floyd!\" He clutches at his s"
+planetfall talk-planetfall @124 yell at robot #110 NOTEST "Floyd looks defensive. \"What did Floyd do wrong?\"\n \n> "
+planetfall talk-planetfall @124 play with robot #110 NOTEST "You play with Floyd for several centichrons until you drop to the floor, exhaust"
+planetfall talk-planetfall @124 smile at robot #110 NOTEST "How pleasant!\n \n> "

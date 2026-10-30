@@ -1,0 +1,4 @@
+zork3 talk-zork3 @101 look in hooded figure #67 NOTEST "There is nothing special to be seen.\nYour quick reflexes cannot stop the hooded "
+zork3 talk-zork3 @101 find hooded figure #67 NOTEST "It's right here.\nYou dodge as the hooded figure comes in low.\n \n> "
+zork3 talk-zork3 @101 hello hooded figure #67 NOTEST "The hooded figure does not respond to your words.\nThe hooded figure thrusts, but"
+zork3 talk-zork3 @101 kiss hooded figure #67 NOTEST "I'd sooner kiss a pig.\nYou dodge as the hooded figure comes in low.\n \n> "

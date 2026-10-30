@@ -1,0 +1,302 @@
+{
+ "talk-planetfall @124:look#0": {
+  "tag": "talk-planetfall",
+  "id": 110,
+  "name": "multiple purpose robot",
+  "step": 124,
+  "expect": 1,
+  "bit": 31,
+  "cmd": "look",
+  "plan": "plan-planetfall-2.json",
+  "planSha": "ad917680cbdac07473ae687569682ecf0da563563bd752da857a38d03c191cbf",
+  "gameSha": "989ebbfbe914de0fe034861b3e6b1bc1758b143ee288f3f07dd6b5ca020ba064",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   9,
+   10,
+   11,
+   18,
+   21,
+   24,
+   31
+  ],
+  "after": [
+   6,
+   9,
+   10,
+   11,
+   18,
+   21,
+   24,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 141,
+  "here": 141,
+  "opsOnId": [
+   [
+    110,
+    19,
+    0,
+    58019
+   ],
+   [
+    110,
+    19,
+    0,
+    48366
+   ],
+   [
+    110,
+    18,
+    1,
+    48366
+   ],
+   [
+    110,
+    19,
+    0,
+    48473
+   ],
+   [
+    110,
+    18,
+    1,
+    48473
+   ],
+   [
+    110,
+    8,
+    0,
+    48493
+   ],
+   [
+    110,
+    18,
+    1,
+    48129
+   ],
+   [
+    110,
+    7,
+    0,
+    48162
+   ],
+   [
+    110,
+    19,
+    0,
+    53343
+   ],
+   [
+    110,
+    9,
+    1,
+    53343
+   ],
+   [
+    110,
+    6,
+    1,
+    68036
+   ]
+  ],
+  "nOps": 17,
+  "printedObjs": [
+   141,
+   110
+  ],
+  "text": "Mech Corridor\nEntrances to rooms lie to the east and west from this north-south hall.\nThere is a multiple purpose robot here.\nFloyd relates some fond memories about his robotic friend Lazarus.\n \n> ",
+  "ts": "2026-10-30T11:15:19.285Z"
+ },
+ "talk-planetfall @124:squeeze robot#1": {
+  "tag": "talk-planetfall",
+  "id": 110,
+  "name": "multiple purpose robot",
+  "step": 124,
+  "expect": 1,
+  "bit": 31,
+  "cmd": "squeeze robot",
+  "plan": "plan-planetfall-2.json",
+  "planSha": "ad917680cbdac07473ae687569682ecf0da563563bd752da857a38d03c191cbf",
+  "gameSha": "989ebbfbe914de0fe034861b3e6b1bc1758b143ee288f3f07dd6b5ca020ba064",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   9,
+   10,
+   11,
+   18,
+   21,
+   24,
+   31
+  ],
+  "after": [
+   6,
+   9,
+   10,
+   11,
+   18,
+   21,
+   24,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 141,
+  "here": 141,
+  "opsOnId": [],
+  "nOps": 2,
+  "printedObjs": [],
+  "text": "I don't know the word \"squeeze.\"\n \n> ",
+  "ts": "2026-10-30T11:15:19.857Z"
+ },
+ "talk-planetfall @124:shake robot#2": {
+  "tag": "talk-planetfall",
+  "id": 110,
+  "name": "multiple purpose robot",
+  "step": 124,
+  "expect": 1,
+  "bit": 31,
+  "cmd": "shake robot",
+  "plan": "plan-planetfall-2.json",
+  "planSha": "ad917680cbdac07473ae687569682ecf0da563563bd752da857a38d03c191cbf",
+  "gameSha": "989ebbfbe914de0fe034861b3e6b1bc1758b143ee288f3f07dd6b5ca020ba064",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   9,
+   10,
+   11,
+   18,
+   21,
+   24,
+   31
+  ],
+  "after": [
+   6,
+   9,
+   10,
+   11,
+   18,
+   21,
+   24,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 141,
+  "here": 141,
+  "opsOnId": [
+   [
+    110,
+    19,
+    0,
+    47479
+   ],
+   [
+    110,
+    19,
+    0,
+    46779
+   ],
+   [
+    110,
+    19,
+    0,
+    58019
+   ],
+   [
+    110,
+    6,
+    1,
+    65654
+   ],
+   [
+    110,
+    6,
+    1,
+    68036
+   ]
+  ],
+  "nOps": 36,
+  "printedObjs": [],
+  "text": "\"Why you do that?\" Floyd whines. \"I think a wire now shaken loose.\" He goes off into a corner and sulks.\n \n> ",
+  "ts": "2026-10-30T11:15:20.443Z"
+ },
+ "talk-planetfall @124:attack robot#3": {
+  "tag": "talk-planetfall",
+  "id": 110,
+  "name": "multiple purpose robot",
+  "step": 124,
+  "expect": 1,
+  "bit": 31,
+  "cmd": "attack robot",
+  "plan": "plan-planetfall-2.json",
+  "planSha": "ad917680cbdac07473ae687569682ecf0da563563bd752da857a38d03c191cbf",
+  "gameSha": "989ebbfbe914de0fe034861b3e6b1bc1758b143ee288f3f07dd6b5ca020ba064",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   9,
+   10,
+   11,
+   18,
+   21,
+   24,
+   31
+  ],
+  "after": [
+   6,
+   9,
+   10,
+   11,
+   18,
+   21,
+   24,
+   31
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 141,
+  "here": 141,
+  "opsOnId": [
+   [
+    110,
+    19,
+    0,
+    47479
+   ],
+   [
+    110,
+    19,
+    0,
+    46779
+   ],
+   [
+    110,
+    19,
+    0,
+    58019
+   ],
+   [
+    110,
+    6,
+    1,
+    65654
+   ],
+   [
+    110,
+    6,
+    1,
+    68036
+   ]
+  ],
+  "nOps": 36,
+  "printedObjs": [],
+  "text": "Floyd starts dashing around the room. \"Oh boy oh boy oh boy! I haven't played Chase and Tag for years! You be It! Nah, nah!\"\n \n> ",
+  "ts": "2026-10-30T11:15:21.049Z"
+ }
+}

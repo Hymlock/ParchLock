@@ -1,0 +1,4 @@
+planetfall talk-planetfall @124 look #110 NOTEST "Mech Corridor\nEntrances to rooms lie to the east and west from this north-south "
+planetfall talk-planetfall @124 squeeze robot #110 NOTEST "I don't know the word \"squeeze.\"\n \n> "
+planetfall talk-planetfall @124 shake robot #110 NOTEST "\"Why you do that?\" Floyd whines. \"I think a wire now shaken loose.\" He goes off "
+planetfall talk-planetfall @124 attack robot #110 NOTEST "Floyd starts dashing around the room. \"Oh boy oh boy oh boy! I haven't played Ch"
