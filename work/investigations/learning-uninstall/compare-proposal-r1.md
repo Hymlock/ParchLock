@@ -54,3 +54,24 @@ Options > Learned words, then operator 13/0 and the three-engine gate.
   the store was hydrated before the stamp time; it re-hydrates on the next load.
 - No booting every game and no network scan for cleanup. A store whose identity is unknown stays until its owner record
   exists.
+
+## R3 (adopting codex D13-r1-attack.md, #5567; supersedes the P13 key-shape assumptions)
+1. Exact managed keys. The owner manifest is written at each store's own write site: LearnedWords.write,
+   AttrCalibrator persist, SemanticActions persist (whose key includes checksum/adapter/locale), ExitCalibrator persist,
+   ZRamReader diagonal persist, StatTracker save, DirectionalRadial save (keyed by filename). Each write registers
+   {key, kind, digest, path} into `PL_ModuleLearningOwner_v1` (a single JSON index, validated on read; malformed means
+   ignored, and the erase is disabled with a status message). No key is reconstructed from a prefix or header.
+2. Identity: registration happens when the store writes, so memory, header and digest exist at that point. Nothing runs
+   before the VM. Glulx: only stores that actually write for Glulx register (DirectionalRadial, if any). There is no
+   Z-header assumption.
+3. The current story is protected explicitly, by both its digest and its path, even if it was uninstalled while open.
+4. At confirm: re-read the installed set, the index revision and each key's current value. If any of these changed
+   since the listing, abort and re-list. Each key is removed individually; the result reports removed/failed counts.
+   A partial failure leaves the index entries for the failed keys.
+5. Cross-tab: each store re-checks the index revision before persisting. If its key was erased after it hydrated, it
+   drops the in-memory table rather than re-persisting it (a fresh start for that module).
+6. Unknown or legacy keys (with no manifest entry) are never erased and are counted separately as "unmanaged".
+7. Growth: the status line shows "about N KB (UTF-16 estimate)". "Small" is not claimed until per-store caps are
+   reviewed; that is a separate D13b item (LearnedWords has no row cap today).
+Tests: constructed collisions, aliases, reinstall race, partial failure, malformed index, the exact key formats of every
+store, current-but-uninstalled, and cross-tab resurrection.
