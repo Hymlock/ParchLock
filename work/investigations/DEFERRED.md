@@ -36,8 +36,8 @@ ruling that it needs nothing). Status: TODO / ACTIVE / BLOCKED(on X) / DONE / CL
 - Moonmist transparent 9: DONE r28 (6bf8a98). grok1/PARKED.md row 8 is stale.
 - Planetfall transparent: DONE r29. Infidel climb carrier 2: CLOSED (already mapped). Deadline climb: CLOSED L:NA.
 - 41 + 17 no-reader cells: L:NC by group rule A (not complete; reopen when a reader appears).
-| D12 | Hollywood close on non-containers: probed (claude-probe/hollywood-d12/FINDINGS.md). Proposal: Open/Close gated by game V-CLOSE rule CONTBIT && !SURFACEBIT && CAPACITY!=0 || DOORBIT (check if general across ZIL V-CLOSE). Action-routine refusers stay (honest refusal). Needs codex blind half. | ACTIVE | claude | blind request |
-| D13 | Learning stores: retained on uninstall (operator ruling 2026-10-30). Add to Options > Learned words group (WorkspaceUI.js:139/361) "erase learning data for uninstalled modules" (all 5 stores: LearnedWords, AttrCalib, SemanticActions, ExitCalib, DiagonalCalib) + size bound check. | ACTIVE | claude+codex | learning-uninstall/ |
+| D12 | Hollywood close-only rule (V-CLOSE: CONTBIT && !SURFACE && CAPACITY!=0 || DOOR): CONSENSUS R2 (codex #5581). Implement after r44. | ACTIVE | claude | after r44 |
+| D13 | Learning stores erase-uninstalled (Options > Learned words): design CONSENSUS R3-R6 (codex #5583). Implementing in wt-claude-d13 -> batch-d13.diff. D13b caps separate. | ACTIVE | claude | impl + audit |
 | D5b | Missing Unlock option: LH maps locked but not lockable; no generic lockable generator (codex d5-lh-census-r2). Radial-first: track and fix separately from D5 status. | TODO | codex | census count |
 | D14 | Merged into D8 (Suspended robot roles): codex prior D8 halves = first half, claude-SEALED (suspended-d14/) = second; codex preparing D8 API R3. | MERGED | codex | D8 R3 |
 | D15 | Suspended animate: VICBIT 24 (robots) might prove animate, reversing NA; that would let real openables (panel 80) get Open/Close. | TODO | claude | after D14 |
