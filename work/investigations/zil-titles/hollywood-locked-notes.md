@@ -49,3 +49,14 @@ cd2830b9833431f25bc50814e260faf8fb1c5317a983f7e661f0fd0d19b51f3a  work/investiga
 19e047ffbaa48fbcf34305590616c78eaacc851f2de0947f778243d35903ca66  work/investigations/2026-10-11-zil-source-flags.json
 765113aaa867313bc437a3152f5ec5b060ff757bd8e92c2048b7b14db9904a5d  work/investigations/claude-probe/hollywood-d12/run-attrs.cjs
 ```
+
+## Integration blocker (claude, 2026-10-30): LOCKEDBIT on rooms
+Hollywood rooms Foyer, Game Room, Bomb Shelter, Attic and the hedge maze carry LOCKEDBIT 15 ("lockable from here",
+V-LOCK `FSET? ,HERE`). The exit builders take isLocked from the DESTINATION object's attrs:
+ExitCalibrator.js:148 and :623, and ZRamReader.js:2584 `isLocked: !!tAttrs.locked`. Navigator.js:122 falls back to
+`nm.isLocked || nm.locked` when doorObjectId is null, so every route into those rooms would pause falsely once the
+locked fact is mapped. This is the same class as D10 "LOCKED on rooms" (Moonmist).
+Proposal P10b: an exit's isLocked comes from the destination only when that destination is a door object
+(tAttrs.door). A room destination never sets isLocked. The ZIL DEXIT door path (D246 routeBlocked) is unchanged. Then
+integrate Hollywood locked 15. Controls: the Hollywood Foyer exit has no pause; the oak door DEXIT locked+closed
+pauses; Inform locked-door exits are unchanged.
