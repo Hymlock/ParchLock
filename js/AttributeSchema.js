@@ -232,7 +232,10 @@ var AttributeSchema = {
             // animate included: I6 PROFILE bit 0 is not Infocom ACTORBIT (grok1 #3590).
             var zilStructural = {
                 animate: 1, absent: 1, container: 1, openable: 1, open: 1, isOpen: 1, supporter: 1,
-                lockable: 1, locked: 1, door: 1, transparent: 1, enterable: 1, climbable: 1
+                lockable: 1, locked: 1, door: 1, transparent: 1, enterable: 1, climbable: 1,
+                // D11 P11a (claude+codex #5543): PROFILE bit 2 read rooms as garments
+                // (Planetfall FLOYDBIT, Suspended ONBIT). A measured attributeMap still wins.
+                clothing: 1, wearable: 1
             };
             // Operator #3782/#3790: ZIL PROFILE skip only for confirmed-zil-family (D198),
             // not every !isInformCompiled title. Unknown family still fail-closed (null).

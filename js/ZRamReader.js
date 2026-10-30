@@ -2836,10 +2836,23 @@ var ZRamReader = {
                 });
             }
         } catch (eInventoryInvisible) { hasInvisibleBit = false; }
+        // D1 (claude+codex #5543): PRINT-CONT / DESCRIBE-CONTENTS titles hide an
+        // NDESC child's own label but still list its visible contents. Literal
+        // true on a validated confirmed-zil-family title only; otherwise today's
+        // subtree skip. INVISIBLE (above) still drops the whole subtree.
+        var hiddenRecurses = false;
+        try {
+            hiddenRecurses = hasHiddenBit && fact.inventoryHiddenRecurses === true
+                && typeof GrammarProvider !== 'undefined' && !!GrammarProvider.decodeD198
+                && (function (fam) {
+                    return !!fam && fam.classification === 'confirmed-zil-family' && fam.evidence === 'validated';
+                })(GrammarProvider.decodeD198(mem));
+        } catch (eRecurse) { hiddenRecurses = false; }
         function walk(id, d, viaUnnamedBypass) {
             if (!id || seen[id] || d < 0) return;
             seen[id] = 1;
             ZRamReader.children(mem, id).forEach(function (cid) {
+                var suppressLabel = false;
                 // Re-read current RAM before names or wrapper traversal. Native
                 // INVISIBLE omits the object and subtree, including worn items.
                 if (hasInvisibleBit) {
@@ -2856,7 +2869,11 @@ var ZRamReader = {
                     var hiddenLinks = ZRamReader.objectLinks(mem, cid);
                     var hidden = hiddenLinks && (hiddenLinks.attrBytes[hiddenBit >> 3] & (128 >> (hiddenBit & 7)));
                     if (hidden && !(fact.inventoryHiddenPreservesWorn === true
-                        && ZRamReader.attrsFromObject(mem, cid).worn)) return;
+                        && ZRamReader.attrsFromObject(mem, cid).worn)) {
+                        if (!hiddenRecurses) return;
+                        // Same per-child path as any child; only its own label is withheld.
+                        suppressLabel = true;
+                    }
                 }
                 var name = ZRamReader.shortName(mem, cid);
                 if (!name || name.charAt(0) === "(") {
@@ -2890,7 +2907,7 @@ var ZRamReader = {
                         var verified = content.length > 0 && content.every(function (w) { var k = vk(w); return !!k && !!own[k]; });
                         if (storyLabel && !/^yourself$/i.test(storyLabel) && verified) parserLabel = storyLabel;
                         if (parserLabel) {
-                            out.push({
+                            if (!suppressLabel) out.push({
                                 id: cid,
                                 name: parserLabel,
                                 parentId: id,
@@ -2914,7 +2931,7 @@ var ZRamReader = {
                 }
                 var attrs = ZRamReader.attrsFromObject(mem, cid);
                 if (viaUnnamedBypass && attrs.worn) return;
-                out.push({
+                if (!suppressLabel) out.push({
                     id: cid,
                     name: name,
                     parentId: id,
