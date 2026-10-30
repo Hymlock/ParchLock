@@ -30,7 +30,7 @@ ruling that it needs nothing). Status: TODO / ACTIVE / BLOCKED(on X) / DONE / CL
 | E6 | Hitchhik switchable/on, enterable pilot seat | TODO | grok1 | The Hitchhik jukebox is room-fixed (D4); the pilot seat walk drifts (multi-Dark RNG). |
 | E7 | Hollywood openCapability: needs a Hollywood container fact first | TODO | grok1 | Probe the Hollywood container (CONTBIT) with 2+neg, then openCapability. |
 | E8 | Zork II / HHGG transparent holds; Zork III ladder, Starcross tree climb carrier 2 | TODO | grok1 | Walk extensions (PARKED.md rows). Low radial value but owed. |
-| E9 | Death-count follow-ups from the claude audit: harness native.cjs needs an output path; late-identity loss window; DEATH_PHRASE false positive | TODO | codex | Small fixes + a harness default path. |
+| E9 | Death-count follow-ups: harness output-path crash FIXED (default temp path; 14 rows PASS). Remaining: late-identity startup loss window; DEATH_PHRASE false positive in non-death text. | ACTIVE | codex | Small source fixes, with the full procedure if behaviour changes. |
 
 ## Closed (kept for the record)
 - Moonmist transparent 9: DONE r28 (6bf8a98). grok1/PARKED.md row 8 is stale.

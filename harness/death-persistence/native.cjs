@@ -1,7 +1,8 @@
 const {chromium}=require('playwright');
 const fs=require('fs'),path=require('path'),assert=require('assert/strict');
 const {pathToFileURL}=require('url');
-const dest=process.argv[2]; const rows=[];
+// Output path is optional; default beside the OS temp dir so a bare run never crashes (claude audit E9).
+const dest=process.argv[2]||path.join(require('os').tmpdir(),'death-persistence-native.json'); const rows=[];
 (async()=>{const browser=await chromium.launch();try{
 const ctx=await browser.newContext({viewport:{width:420,height:900}});
 await ctx.addInitScript(()=>{sessionStorage.setItem('PL_ParchLockSplashSeen','1'); for(const k of ['PL_TutorialSeen','PL_MobileTutorialSeen','PL_LearnedWordsTutorialSeen','PL_TutorialLibrarySeen'])localStorage.setItem(k,'1');});
