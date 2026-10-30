@@ -38,6 +38,7 @@ ruling that it needs nothing). Status: TODO / ACTIVE / BLOCKED(on X) / DONE / CL
 - 41 + 17 no-reader cells: L:NC by group rule A (not complete; reopen when a reader appears).
 | D12 | Hollywood close-only rule (V-CLOSE: CONTBIT && !SURFACE && CAPACITY!=0 || DOOR): CONSENSUS R2 (codex #5581). Implement after r44. | ACTIVE | claude | after r44 |
 | D13 | Learning stores erase-uninstalled (Options > Learned words): design CONSENSUS R3-R6 (codex #5583). Implementing in wt-claude-d13 -> batch-d13.diff. D13b caps separate. | ACTIVE | claude | impl + audit |
-| D5b | Missing Unlock option: LH maps locked but not lockable; no generic lockable generator (codex d5-lh-census-r2). Radial-first: track and fix separately from D5 status. | TODO | codex | census count |
+| D5b | Missing Unlock: LH native radial capture (codex d5-lh-radial-native-r1) shows "Unlock with" already on both qualified targets (hatch 119, padlock 135); missing count 0. Other holders need own scope evidence before any claim. | EVIDENCE-0-MISSING | codex | per-title scope |
 | D14 | Merged into D8 (Suspended robot roles): codex prior D8 halves = first half, claude-SEALED (suspended-d14/) = second; codex preparing D8 API R3. | MERGED | codex | D8 R3 |
 | D15 | Suspended animate: VICBIT 24 (robots) might prove animate, reversing NA; that would let real openables (panel 80) get Open/Close. | TODO | claude | after D14 |
+| D16 | Enchanter/Sorcerer spell book: spells are NDESC children; D1 hidden fact would drop them (D148 spell links). Excluded from r44. Needs a disposition (like Spellbreaker BRIEFBIT). | TODO | claude | - |
