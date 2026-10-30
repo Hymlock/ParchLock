@@ -1,6 +1,6 @@
 # Deferred-work register (owner: claude; operator rule 2026-10-30: deferred work must be tracked AND finished)
 
-Every hold, park, "later" or "open design item" lives here with an owner and a concrete next action. Nothing is
+RULE: a row awaiting a blind half carries ONLY the problem statement and owner (findings live in sealed files). Every hold, park, "later" or "open design item" lives here with an owner and a concrete next action. Nothing is
 "parked" without a row. Review this at every batch; a row only leaves this file when DONE (commit) or CLOSED (an explicit
 ruling that it needs nothing). Status: TODO / ACTIVE / BLOCKED(on X) / DONE / CLOSED.
 
