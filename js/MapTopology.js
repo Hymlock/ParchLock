@@ -474,6 +474,9 @@ var MapTopology = {
             delete from.ExitMeta[dir].locked;
             if (meta.doorObjectId == null) delete from.ExitMeta[dir].doorObjectId;
         }
+        // P10 R2: route block (locked AND closed) is replaced the same way; only true survives.
+        if (meta && (meta.doorObjectId != null || priorDoorId != null) && meta.routeBlocked !== true)
+            delete from.ExitMeta[dir].routeBlocked;
         // World map (bus #1884/#1886): `source` is the LATEST observation, so a
         // later look-ahead overwrote the proof that this exit was walked. Keep
         // that proof separately, bound to the destination it reached: a real
@@ -709,6 +712,7 @@ var MapTopology = {
                 // Locked R2: true / false / unknown (undefined). Unknown is not coerced to
                 // false; link() lets the latest observation replace an older one.
                 isLocked: ex.isLocked === true ? true : ex.isLocked === false ? false : undefined,
+                routeBlocked: ex.routeBlocked === true ? true : ex.routeBlocked === false ? false : undefined,
                 doorObjectId: ex.doorObjectId,
                 confidence: ex.confidence,
                 source: raw && raw.source === "i7-mapstorage" ? "i7-mapstorage" : "ram-lookahead",

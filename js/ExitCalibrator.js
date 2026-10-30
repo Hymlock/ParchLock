@@ -258,7 +258,13 @@ var ExitCalibrator = {
     // null (unknown). Only for a confirmed ZIL title whose exact-digest fact maps
     // `locked`, on the live memory, with the door inside the true object frontier
     // (first property pointer), never objectCount's heuristic. Never coerces unknown.
-    _d214DoorLocked: function (mem, door) {
+    _d214DoorLocked: function (mem, door) { return ExitCalibrator._d214DoorBit(mem, door, 'locked'); },
+
+    // P10 R2 (claude+codex #5543): the live OPEN bit of the same DEXIT door, read with the
+    // identical validation through fact.attributeMap.open; missing/invalid => null (unknown).
+    _d214DoorOpen: function (mem, door) { return ExitCalibrator._d214DoorBit(mem, door, 'open'); },
+
+    _d214DoorBit: function (mem, door, key) {
         try {
             var R = ZRamReader, h = R.header(mem), size = mem && (mem.byteLength || mem.length);
             if (!h || [3, 4, 5].indexOf(h.version) < 0 || !size) return null;
@@ -271,7 +277,7 @@ var ExitCalibrator = {
             }
             // Stable-header ownership (executableLayoutFacts) is required; no digest-only fallback.
             var fact = R.executableLayoutFacts && R.executableLayoutFacts(mem);
-            var bit = fact && fact.attributeMap && fact.attributeMap.locked;
+            var bit = fact && fact.attributeMap && fact.attributeMap[key];
             if (!Number.isInteger(bit) || bit < 0 || bit >= (h.version <= 3 ? 32 : 48)) return null;
             var first = R.objectBase(h, 1), pointerOffset = h.version <= 3 ? 7 : 12;
             if (!Number.isInteger(first) || first < 0 || first > size - h.entrySize) return null;
@@ -326,6 +332,9 @@ var ExitCalibrator = {
                 if (kind === 'D') {
                     var locked = ExitCalibrator._d214DoorLocked(mem, door);
                     if (locked !== null) hint.isLocked = locked;
+                    // P10 R2: the route contract is narrower than the glyph: pause only for
+                    // locked AND closed. Unknown open is not closed, so no route block.
+                    hint.routeBlocked = locked === true && ExitCalibrator._d214DoorOpen(mem, door) === false;
                 }
                 out.push(hint);
             });
@@ -641,6 +650,8 @@ var ExitCalibrator = {
                         learned.doorObjectId = exit.doorObjectId;
                         if (typeof exit.isLocked === 'boolean') learned.isLocked = exit.isLocked;
                         else delete learned.isLocked;
+                        if (typeof exit.routeBlocked === 'boolean') learned.routeBlocked = exit.routeBlocked;
+                        else delete learned.routeBlocked;
                     }
                 });
             }

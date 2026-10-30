@@ -116,7 +116,10 @@ var Navigator = {
         try {
             var room = current;
             var next = Navigator.StepQueue[0];
-            if (room && room.ExitMeta && room.ExitMeta[next] && (room.ExitMeta[next].isLocked || room.ExitMeta[next].locked)) {
+            var nm = room && room.ExitMeta && room.ExitMeta[next];
+            // P10 R2: a ZIL DEXIT (doorObjectId) pauses only on routeBlocked (live locked
+            // AND closed); the lock glyph is a separate contract. Other exits unchanged.
+            if (nm && (nm.doorObjectId != null ? nm.routeBlocked === true : (nm.isLocked || nm.locked))) {
                 Navigator.ClearQueue('Exit "' + next + '" appears locked. Route paused.');
                 return;
             }

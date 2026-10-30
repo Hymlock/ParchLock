@@ -54,6 +54,11 @@ var MapIdentity = {
                 delete room.ExitMeta[dir].locked;
                 delete room.ExitMeta[dir].isLocked;
             }
+            // P10 R2: route block is its own observation for ZIL door exits.
+            if (zilDoor && room.ExitMeta[dir]) {
+                if (ex && ex.routeBlocked === true) room.ExitMeta[dir].routeBlocked = true;
+                else delete room.ExitMeta[dir].routeBlocked;
+            }
             if (ex && typeof ex.zDelta === "number" && ex.zDelta) {
                 room.Floor = (room.Floor || 0) + 0; // floor tabs consume z later; keep room.Floor stable
                 room.ExitMeta = room.ExitMeta || {};

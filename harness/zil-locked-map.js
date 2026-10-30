@@ -28,9 +28,12 @@ function boot(options = {}) {
     ctx.GrammarProvider = { decodeD198: () => ({ classification: options.family || 'confirmed-zil-family', evidence: 'validated', family: 'infocom-pre-v6-fixed' }),
         d214DirectionProperties: () => mapping, d214RoomTarget: () => true };
     ctx.ExitCalibrator.hydrate = () => ({ dirs: {} }); ctx.ExitCalibrator.isBlocked = () => false;
-    const setBit = (id, on) => { const a = R.objectBase(h, id) + (BIT >> 3), m = 128 >> (BIT & 7); bytes[a] = on ? bytes[a] | m : bytes[a] & ~m; };
+    if (options.noOpen) delete fact.attributeMap.open;
+    const setBitN = (n, id, on) => { const a = R.objectBase(h, id) + (n >> 3), m = 128 >> (n & 7); bytes[a] = on ? bytes[a] | m : bytes[a] & ~m; };
+    const setBit = (id, on) => setBitN(BIT, id, on);
+    const setOpen = (id, on) => setBitN(fact.attributeMap.open, id, on);
     const exits = room => ctx.ExitCalibrator._d214ZilExitsFor(mem, room);
-    return { bytes, mem, ctx, R, h, down, setBit, exits };
+    return { bytes, mem, ctx, R, h, down, setBit, setOpen, exits, fact };
 }
 const lockOf = (list, label) => { const e = list.find(x => x.label === label); assert(e, 'exit ' + label); return e; };
 
@@ -70,16 +73,45 @@ b.setBit(HATCH, false);
 learned = b.ctx.ExitCalibrator.exitsFor(b.mem, TOMB).filter(x => x.label === 'down');
 check(learned[0].isLocked === false, '8c learned direction follows the live hatch (unlocked -> false)');
 
+// --- P10 R2 route contract: pause = live locked AND closed; glyph stays raw locked ---
+b = boot();
+check(Number.isInteger(b.fact.attributeMap.open), 'P10 LH row maps open');
+b.setOpen(HATCH, false); d = lockOf(b.exits(TOMB), 'down');
+check(d.isLocked === true && d.routeBlocked === true, 'P10a hatch locked+closed -> routeBlocked (Lurking Horror hatch still pauses)');
+b.setOpen(HATCH, true); d = lockOf(b.exits(TOMB), 'down');
+check(d.isLocked === true && d.routeBlocked === false, 'P10b hatch locked+open -> glyph still locked, no route block');
+b.setOpen(HATCH, false); b.setBit(HATCH, false); d = lockOf(b.exits(TOMB), 'down');
+check(d.isLocked === false && d.routeBlocked === false, 'P10c unlocked+closed -> no route block');
+b = boot({ noOpen: true }); d = lockOf(b.exits(TOMB), 'down');
+check(d.isLocked === true && d.routeBlocked === false && b.ctx.ExitCalibrator._d214DoorOpen(b.mem, HATCH) === null, 'P10d unknown open (no mapping) -> no route block, glyph locked');
+b = boot({ foreign: true });
+check(b.ctx.ExitCalibrator._d214DoorOpen(b.mem, HATCH) === null, 'P10e open read on foreign memory -> unknown');
+// learned reconcile: same DEXIT carries routeBlocked; stale door id gives none.
+b = boot(); b.setOpen(HATCH, false);
+b.ctx.ExitCalibrator.hydrate = () => ({ dirs: { down: { prop: b.down.num, mode: 'u8', sizes: [5], confirmed: true } } });
+b.ctx.ExitCalibrator.destFor = () => TUNNEL;
+b.ctx.ZRamReader.isPlausibleExitTarget = () => true;
+b.ctx.ExitCalibrator.D198ExitValve._testOverride = 'on';
+learned = b.ctx.ExitCalibrator.exitsFor(b.mem, TOMB).filter(x => x.label === 'down');
+check(learned[0].routeBlocked === true, 'P10f learned direction carries routeBlocked from its own DEXIT');
+b.setOpen(HATCH, true);
+learned = b.ctx.ExitCalibrator.exitsFor(b.mem, TOMB).filter(x => x.label === 'down');
+check(learned[0].routeBlocked === false && learned[0].isLocked === true, 'P10g learned + opened hatch -> no route block');
+b.ctx.ExitCalibrator.destFor = () => TUNNEL + 1;
+learned = b.ctx.ExitCalibrator.exitsFor(b.mem, TOMB).filter(x => x.label === 'down');
+check(learned.every(x => !('routeBlocked' in x) || x.doorObjectId === HATCH && String(x.targetRoomId) === String(TUNNEL)), 'P10h stale alias (door not current in reconcile) -> no routeBlocked');
+
 // --- map: replaceable observation, legacy flag cleared, identity change ---
 const sandbox = { console, setTimeout, window: {} };
 vm.createContext(sandbox);
 for (const f of ['AttributeSchema', 'ZRamReader', 'MapIdentity', 'MapTopology']) vm.runInContext(fs.readFileSync('js/' + f + '.js', 'utf8'), sandbox);
 const MT = sandbox.MapTopology;
 sandbox.ParchLockMap = { Rooms: [], CurrentRoom: '', GetRoom(name) { return this.Rooms.find(r => r.Name === name) || null; } };
-const apply = isLocked => {
+const apply = (isLocked, routeBlocked) => {
     MT.prevRoomId = 8; MT.prevRoomName = ''; MT.lastCommand = '';
     const ex = { label: 'down', targetRoomId: TUNNEL, targetRoomName: 'Steam Tunnel', isDoor: true, doorObjectId: HATCH, hintOnly: true, hinted: true };
     if (isLocked !== undefined) ex.isLocked = isLocked;
+    if (routeBlocked !== undefined) ex.routeBlocked = routeBlocked;
     MT.applyPayloadExits({ roomId: TOMB, roomName: 'Tomb', exits: [ex] });
     return (sandbox.ParchLockMap.GetRoom('Tomb') || {}).ExitMeta || {};
 };
@@ -122,6 +154,26 @@ sandbox.MapIdentity.applyExits('Hall', [{ label: 'north', isLocked: true }]);
 const hall = sandbox.ParchLockMap.GetRoom('Hall').ExitMeta.north;
 sandbox.MapIdentity.applyExits('Hall', [{ label: 'north', isLocked: false }]);
 check(hall.locked === true && sandbox.ParchLockMap.GetRoom('Hall').ExitMeta.north.locked === true, '12b Inform exit: MapIdentity keeps its original lock handling (no new clearing)');
+// P10 R2 navigator: ZIL door exit pauses on routeBlocked only; Inform keeps isLocked||locked.
+const nav = { console, window: {}, setTimeout, clearTimeout, setInterval, clearInterval, Message: { Show() {} }, $: () => ({ length: 0 }) };
+vm.createContext(nav);
+vm.runInContext(fs.readFileSync('js/Navigator.js', 'utf8'), nav);
+const paused = meta => { nav.ParchLockMap = { GetCurrentRoom: () => ({ Id: 1, Exits: { down: 2 }, ExitMeta: { down: meta } }) };
+    nav.Navigator.startSpeechHold = () => {}; nav.Navigator.stopSpeechHold = () => {};
+    nav.Navigator.StepQueue = ['down']; nav.Navigator.Running = true; nav.Navigator.Awaiting = null; nav.Navigator.Interrupted = false; nav.Navigator.InterruptReason = '';
+    nav.Navigator.Pump(); return /appears locked/.test(nav.Navigator.InterruptReason); };
+m = apply(true, true);
+check(m.down.routeBlocked === true && paused(m.down), 'P10i map locked+closed hatch -> route pauses');
+m = apply(true, false);
+check(m.down.isLocked === true && !m.down.routeBlocked && !paused(m.down), 'P10j map locked+open -> glyph locked, route does not pause');
+apply(true, true); m = apply(true, undefined);
+check(m.down.isLocked === true && !('routeBlocked' in m.down) && !paused(m.down), 'P10k unknown route block clears an old true (link), no pause');
+check(!paused({ isLocked: true, locked: true, doorObjectId: HATCH }), 'P10l legacy locked-alone ZIL door meta no longer pauses');
+check(paused({ isLocked: true }) && paused({ locked: true }) && !paused({}), 'P10m Inform exit keeps isLocked||locked pause');
+sandbox.MapIdentity.applyExits('Vault', [{ label: 'down', isLocked: true, routeBlocked: true, doorObjectId: HATCH }]);
+const v1 = sandbox.ParchLockMap.GetRoom('Vault').ExitMeta.down.routeBlocked === true;
+sandbox.MapIdentity.applyExits('Vault', [{ label: 'down', isLocked: true, doorObjectId: HATCH }]);
+check(v1 && !('routeBlocked' in sandbox.ParchLockMap.GetRoom('Vault').ExitMeta.down), 'P10n MapIdentity sets and clears routeBlocked for ZIL door exits');
 const g = locked => ({ rooms: [], edges: [{ from: 'a', to: 'b', locked }] });
 check(W.paintSignature(g(true), null) !== W.paintSignature(g(false), null), '13 lock state is part of the paint signature (same-room repaint)');
 console.log(passed + ' locked-map checks passed; native evidence is separate.');
