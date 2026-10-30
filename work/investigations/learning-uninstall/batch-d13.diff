@@ -1,0 +1,878 @@
+diff --git a/harness/learning-stores.js b/harness/learning-stores.js
+new file mode 100644
+index 0000000..be4d2c9
+--- /dev/null
++++ b/harness/learning-stores.js
+@@ -0,0 +1,239 @@
++// D13 harness: LearningStores ownership index, serialized persists and the
++// erase-for-uninstalled action, against a constructed localStorage and a
++// navigator.locks stub. Run: node harness/learning-stores.js
++"use strict";
++const fs = require("fs");
++const path = require("path");
++const vm = require("vm");
++const ROOT = path.join(__dirname, "..");
++let pass = 0, fail = 0;
++function ok(cond, name) { if (cond) pass++; else { fail++; console.log("FAIL", name); } }
++
++function makeStorage() {
++    const m = new Map();
++    const s = {
++        failRemove: new Set(), failSet: false,
++        getItem: k => (m.has(k) ? m.get(k) : null),
++        setItem: (k, v) => { if (s.failSet) throw new Error("quota"); m.set(k, String(v)); },
++        removeItem: k => { if (!s.failRemove.has(k)) m.delete(k); },
++        key: i => Array.from(m.keys())[i] || null,
++        get length() { return m.size; },
++        _m: m
++    };
++    return s;
++}
++function makeLocks() {
++    let tail = Promise.resolve();
++    const l = {
++        fail: false, held: 0,
++        request(name, cb) {
++            if (l.fail) return Promise.reject(new Error("lock denied"));
++            const run = tail.then(() => { l.held++; try { return cb(); } finally { l.held--; } });
++            tail = run.catch(() => {});
++            return run;
++        }
++    };
++    return l;
++}
++const files = ["LearningStores", "LearnedWords", "AttrCalibrator", "SemanticActions", "ExitCalibrator", "StatTracker", "DirectionalRadial"];
++const srcCache = {};
++function makeTab(storage, locks, lib) {
++    const ctx = {
++        localStorage: storage, navigator: locks ? { locks } : {}, console: { log() {}, warn() {}, error() {} },
++        ModuleLibrary: lib, ParchLock: { StoryPath: "", GameFilename: "" },
++        setTimeout() {}, clearTimeout() {}, Date, Math, JSON, Promise
++    };
++    ctx.window = ctx;
++    vm.createContext(ctx);
++    files.forEach(f => {
++        const src = srcCache[f] || (srcCache[f] = fs.readFileSync(path.join(ROOT, "js", f + ".js"), "utf8"));
++        try { vm.runInContext(src + "\n;this." + f + "=" + f + ";", ctx, { filename: f + ".js" }); }
++        catch (e) { ctx["_err_" + f] = e; }
++    });
++    // ZRamReader is large; its diagonal key generator is checked separately.
++    return ctx;
++}
++function makeLib(installed) {
++    // installed: [{path, digest|null}]
++    const lib = {
++        installed,
++        current: null,
++        all: () => lib.installed.map(m => ({ Path: m.path })),
++        normalizePath: p => String(p || "").replace(/^\.\//, ""),
++        transcriptDigestKey: p => "PL_TranscriptDigest_" + p,
++        currentExecutableDigest: p => {
++            if (p === undefined) return lib.current;
++            const m = lib.installed.find(x => x.path === p);
++            return m ? m.digest : null;
++        }
++    };
++    return lib;
++}
++const flush = () => new Promise(r => setImmediate(r));
++async function settle() { for (let i = 0; i < 6; i++) await flush(); }
++
++(async function main() {
++    // ---- exact key formats per store -------------------------------------
++    {
++        const t = makeTab(makeStorage(), makeLocks(), makeLib([]));
++        files.forEach(f => ok(!t["_err_" + f], "load " + f + (t["_err_" + f] ? ": " + t["_err_" + f].message : "")));
++        ok(t.LearnedWords.learningKeyFor({ identityKey: "88-840726" }) === "PL_LearnedWordOverrides_88-840726", "LearnedWords key");
++        ok(t.AttrCalibrator.learningKeyFor({ identityKey: "88-840726" }) === "PL_AttrCalib_88-840726", "AttrCalib key");
++        ok(t.SemanticActions.learningKeyFor({ identityKey: "88-840726", checksum: "a129", adapter: t.SemanticActions.ADAPTER_VERSION, locale: "en" }) ===
++            "PL_SemanticActions_88-840726-a129-" + t.SemanticActions.ADAPTER_VERSION + "-en", "SemanticActions key");
++        ok(t.ExitCalibrator.learningKeyFor({ identityKey: "88-840726" }) === "PM_ExitCalib_88-840726", "ExitCalib key");
++        ok(t.StatTracker.learningKeyFor({ identityKey: "88-840726" }) === "PM_Stats_88-840726", "Stats key");
++        ok(t.DirectionalRadial.learningKeyFor({ filename: "zork1.z3.js" }) === "PL_DirRadial_zork1.z3.js", "DirRadial key");
++        ok(t.LearnedWords.learningKeyFor({}) === null && t.DirectionalRadial.learningKeyFor({ filename: "" }) === null, "empty inputs give no key");
++        const zsrc = fs.readFileSync(path.join(ROOT, "js", "ZRamReader.js"), "utf8");
++        ok(/diagonalLearningKeyFor: \(i\) => \(i && typeof i.identityKey === "string" && i.identityKey \? "PL_DiagonalCalib_" \+ i.identityKey : null\)/.test(zsrc), "Diagonal key generator");
++        ok(/LearningStores\.register\("diagonalCalib", "PL_DiagonalCalib_", ZRamReader\.diagonalLearningKeyFor\)/.test(zsrc), "Diagonal registered");
++        // persist goes through the index with the store's exact key
++        const s = t.localStorage;
++        t.ModuleLibrary.current = "d1"; t.ParchLock.StoryPath = "games/a.z5.js"; t.ParchLock.GameFilename = "a.z5.js";
++        t.StatTracker.save("88-840726", { score: 1 });
++        await settle();
++        const idx = JSON.parse(s.getItem("PL_ModuleLearningOwner_v1"));
++        ok(s.getItem("PM_Stats_88-840726") === JSON.stringify({ score: 1 }), "stats written");
++        ok(idx.entries["PM_Stats_88-840726"] && idx.entries["PM_Stats_88-840726"].owners[0].digest === "d1" &&
++            idx.entries["PM_Stats_88-840726"].owners[0].path === "games/a.z5.js", "stats owner registered");
++        t.DirectionalRadial.SaveCustomSlices([{ id: "x", label: "L", command: "c", angle: 0, ring: 1 }]);
++        await settle();
++        ok(JSON.parse(s.getItem("PL_ModuleLearningOwner_v1")).entries["PL_DirRadial_a.z5.js"], "dirRadial registered");
++    }
++
++    // ---- installed vs uninstalled vs unknown vs current -------------------
++    async function scenario(installed, owners, cur, opts) {
++        opts = opts || {};
++        const s = makeStorage(), l = makeLocks(), lib = makeLib(installed);
++        const t = makeTab(s, l, lib);
++        for (const o of owners) {
++            lib.current = o.digest; t.ParchLock.StoryPath = o.path;
++            t.LearningStores.persist("learnedWords", { identityKey: o.id }, "{\"v\":\"" + o.id + "\"}");
++            await settle();
++        }
++        lib.current = cur ? cur.digest : null; t.ParchLock.StoryPath = cur ? cur.path : "";
++        return { s, l, lib, t };
++    }
++    {
++        const { t, s } = await scenario([{ path: "games/a.z5.js", digest: "dA" }],
++            [{ id: "1-A", digest: "dA", path: "games/a.z5.js" }, { id: "2-B", digest: "dB", path: "games/b.z5.js" }], null);
++        const L = t.LearningStores.list();
++        ok(L.ok && L.removable === 1 && L.installed === 1 && L.candidates[0].key === "PL_LearnedWordOverrides_2-B", "uninstalled listed, installed kept");
++        ok(/about [0-9.]+ KB \(UTF-16 estimate\)/.test(t.LearningStores.describe(L)), "size line");
++        const r = await t.LearningStores.erase(L);
++        ok(!r.aborted && r.removed === 1 && r.failed === 0, "erase removed one");
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === null && s.getItem("PL_LearnedWordOverrides_1-A") !== null, "only uninstalled erased");
++        const idx = JSON.parse(s.getItem("PL_ModuleLearningOwner_v1"));
++        ok(idx.revision === 1 && idx.tombstones["PL_LearnedWordOverrides_2-B"].erasedAtIndexRevision === 1 && !idx.entries["PL_LearnedWordOverrides_2-B"], "revision + tombstone");
++    }
++    {   // unknown installed digest -> everything unknown
++        const { t } = await scenario([{ path: "games/a.z5.js", digest: null }], [{ id: "2-B", digest: "dB", path: "games/b.z5.js" }], null);
++        const L = t.LearningStores.list();
++        ok(L.ok && L.removable === 0 && L.unknown === 1, "unknown installed digest blocks erase");
++    }
++    {   // installed digest known only via transcript digest record
++        const { t, s } = await scenario([{ path: "games/a.z5.js", digest: null }], [{ id: "2-B", digest: "dB", path: "games/b.z5.js" }], null);
++        s.setItem("PL_TranscriptDigest_games/a.z5.js", "dA");
++        ok(t.LearningStores.list().removable === 1, "transcript digest makes installed known");
++    }
++    {   // owner with unknown digest -> unknown
++        const { t } = await scenario([], [{ id: "2-B", digest: null, path: "games/b.z5.js" }], null);
++        ok(t.LearningStores.list().unknown === 1, "owner without digest is unknown");
++    }
++    {   // current story uninstalled while open is protected by digest and path
++        const { t } = await scenario([], [{ id: "3-C", digest: "dC", path: "games/c.z5.js" }], { digest: "dC", path: "games/c.z5.js" });
++        ok(t.LearningStores.list().removable === 0, "current-but-uninstalled protected");
++        const { t: t2 } = await scenario([], [{ id: "3-C", digest: "dC", path: "games/c.z5.js" }], { digest: "dX", path: "games/c.z5.js" });
++        ok(t2.LearningStores.list().removable === 0, "current protected by path");
++    }
++    {   // alias/collision: same key, two owners; one installed (by digest under another path)
++        const { t } = await scenario([{ path: "local/zz.z5.js", digest: "dB2" }],
++            [{ id: "2-B", digest: "dB", path: "games/b.z5.js" }, { id: "2-B", digest: "dB2", path: "games/b-alt.z5.js" }], null);
++        const idx = t.LearningStores.readIndex().index;
++        ok(idx.entries["PL_LearnedWordOverrides_2-B"].owners.length === 2, "owners accumulate");
++        ok(t.LearningStores.list().removable === 0, "collision with installed digest kept");
++    }
++    {   // reinstall race: installed between listing and confirm
++        const { t, lib, s } = await scenario([], [{ id: "2-B", digest: "dB", path: "games/b.z5.js" }], null);
++        const L = t.LearningStores.list();
++        ok(L.removable === 1, "race: listed");
++        lib.installed.push({ path: "games/b.z5.js", digest: "dB" });
++        const r = await t.LearningStores.erase(L);
++        ok(r.aborted && s.getItem("PL_LearnedWordOverrides_2-B") !== null, "reinstall race aborts");
++    }
++    {   // value changed between listing and confirm
++        const { t } = await scenario([], [{ id: "2-B", digest: "dB", path: "games/b.z5.js" }], null);
++        const L = t.LearningStores.list();
++        t.localStorage.setItem("PL_LearnedWordOverrides_2-B", "{\"v\":\"changed\"}");
++        ok((await t.LearningStores.erase(L)).aborted, "changed value aborts");
++    }
++    {   // partial failure keeps failed index entries
++        const { t, s } = await scenario([], [{ id: "2-B", digest: "dB", path: "games/b.z5.js" }, { id: "4-D", digest: "dD", path: "games/d.z5.js" }], null);
++        s.failRemove.add("PL_LearnedWordOverrides_4-D");
++        const r = await t.LearningStores.erase(t.LearningStores.list());
++        const idx = t.LearningStores.readIndex().index;
++        ok(r.removed === 1 && r.failed === 1 && idx.entries["PL_LearnedWordOverrides_4-D"] && !idx.entries["PL_LearnedWordOverrides_2-B"] && idx.revision === 1, "partial failure");
++    }
++    {   // malformed index disables erase; unmanaged keys never erased
++        const { t, s } = await scenario([], [{ id: "2-B", digest: "dB", path: "games/b.z5.js" }], null);
++        s.setItem("PL_ModuleLearningOwner_v1", "{bad");
++        const L = t.LearningStores.list();
++        ok(!L.ok && /damaged/.test(L.reason), "malformed index disables erase");
++        s.setItem("PL_ModuleLearningOwner_v1", JSON.stringify({ v: 1, revision: 0, entries: { "PL_LearnedWordOverrides_9-Z": { key: "PL_LearnedWordOverrides_9-Z", kind: "learnedWords", owners: [{ digest: "dZ", path: "games/z.z5.js", inputs: { identityKey: "OTHER" } }], storeRevision: 1 } }, tombstones: {} }));
++        s.setItem("PL_LearnedWordOverrides_9-Z", "x"); s.setItem("PL_AttrCalib_legacy", "y"); s.setItem("PL_Map_games/b.z5.js", "map");
++        const L2 = t.LearningStores.list();
++        ok(L2.ok && L2.removable === 0 && L2.unmanaged === 3, "invalid generator entry + legacy key are unmanaged (" + L2.unmanaged + ")");
++        await t.LearningStores.erase(L2);
++        ok(s.getItem("PL_AttrCalib_legacy") === "y" && s.getItem("PL_Map_games/b.z5.js") === "map", "unmanaged and maps untouched");
++    }
++    {   // cross-tab resurrection: tab B hydrated before tab A erased
++        const s = makeStorage(), l = makeLocks(), lib = makeLib([]);
++        const A = makeTab(s, l, lib), B = makeTab(s, l, lib);
++        lib.current = "dB"; B.ParchLock.StoryPath = "games/b.z5.js";
++        B.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "{\"old\":1}"); await settle();
++        B.LearningStores.read("PL_LearnedWordOverrides_2-B");
++        lib.current = null; A.ParchLock.StoryPath = ""; B.ParchLock.StoryPath = "";
++        const r = await A.LearningStores.erase(A.LearningStores.list());
++        ok(r.removed === 1, "tab A erased");
++        let resetCalled = false;
++        lib.current = "dB"; B.ParchLock.StoryPath = "games/b.z5.js";
++        B.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "{\"old\":2}", () => { resetCalled = true; }); await settle();
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === null && resetCalled, "stale tab does not resurrect; resets");
++        B.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "{\"fresh\":1}"); await settle();
++        const idx = B.LearningStores.readIndex().index;
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === "{\"fresh\":1}" && !idx.tombstones["PL_LearnedWordOverrides_2-B"], "fresh-start write clears tombstone");
++    }
++    {   // restore/restart/story switch keep a pending persist; FIFO per key
++        const s = makeStorage(), l = makeLocks(), lib = makeLib([]);
++        const t = makeTab(s, l, lib);
++        l.fail = true;
++        lib.current = "dB"; t.ParchLock.StoryPath = "games/b.z5.js";
++        t.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "{\"n\":1}"); await settle();
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === null && t.LearningStores.pending() === 1 && t.LearningStores.lastError(), "lock failure: no write, dirty, reported");
++        // story switch to C, then a restore (generation change) -- the B snapshot must survive
++        lib.current = "dC"; t.ParchLock.StoryPath = "games/c.z5.js";
++        l.fail = false;
++        t.LearningStores.persist("learnedWords", { identityKey: "3-C" }, "{\"n\":2}"); await settle();
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === "{\"n\":1}" && s.getItem("PL_LearnedWordOverrides_3-C") === "{\"n\":2}", "pending persist kept across switch, written on retry");
++        const idx = t.LearningStores.readIndex().index;
++        ok(idx.entries["PL_LearnedWordOverrides_2-B"].owners[0].digest === "dB", "old key keeps its captured owner");
++        t.LearningStores.persist("learnedWords", { identityKey: "3-C" }, "{\"n\":3}");
++        t.LearningStores.persist("learnedWords", { identityKey: "3-C" }, "{\"n\":4}");
++        ok(t.LearningStores.read("PL_LearnedWordOverrides_3-C") === "{\"n\":4}", "read sees newest pending snapshot");
++        await settle();
++        ok(s.getItem("PL_LearnedWordOverrides_3-C") === "{\"n\":4}", "FIFO ends on newest");
++    }
++    {   // no Web Locks: cleanup disabled, persists write as today
++        const s = makeStorage(), lib = makeLib([]);
++        const t = makeTab(s, null, lib);
++        lib.current = "dB"; t.ParchLock.StoryPath = "games/b.z5.js";
++        t.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "{\"n\":1}");
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === "{\"n\":1}", "no-locks writes synchronously");
++        const L = t.LearningStores.list();
++        ok(!L.ok && /Web Locks/.test(L.reason), "no-locks disables erase");
++    }
++
++    console.log("learning-stores: " + pass + " PASS, " + fail + " FAIL");
++    process.exit(fail ? 1 : 0);
++})();
+diff --git a/js/AttrCalibrator.js b/js/AttrCalibrator.js
+index 60c1ee4..db69842 100644
+--- a/js/AttrCalibrator.js
++++ b/js/AttrCalibrator.js
+@@ -939,7 +939,7 @@ var AttrCalibrator = {
+         AttrCalibrator.table = { version: 2, verbs: {}, objects: {} };
+         try {
+             if (typeof localStorage === "undefined") return;
+-            var raw = localStorage.getItem("PL_AttrCalib_" + key);
++            var raw = typeof LearningStores !== "undefined" ? LearningStores.read("PL_AttrCalib_" + key) : localStorage.getItem("PL_AttrCalib_" + key);
+             if (!raw) return;
+             var parsed = JSON.parse(raw);
+             if (parsed && parsed.version === 2) AttrCalibrator.table = parsed;
+@@ -950,12 +950,14 @@ var AttrCalibrator = {
+             }
+         } catch (e) {}
+     },
++    learningKeyFor: function (inputs) { return inputs && typeof inputs.identityKey === "string" && inputs.identityKey ? "PL_AttrCalib_" + inputs.identityKey : null; },
+     persist: function (mem) {
+         var key = AttrCalibrator.gameIdentityKey(mem);
+         if (!key) return;
+         try {
+             if (typeof localStorage === "undefined") return;
+-            localStorage.setItem("PL_AttrCalib_" + key, JSON.stringify(AttrCalibrator.table));
++            if (typeof LearningStores !== "undefined") LearningStores.persist("attrCalib", { identityKey: key }, JSON.stringify(AttrCalibrator.table), function () { if (AttrCalibrator.hydratedForGame === key) AttrCalibrator.table = { version: 2, verbs: {}, objects: {} }; });
++            else localStorage.setItem("PL_AttrCalib_" + key, JSON.stringify(AttrCalibrator.table));
+         } catch (e) {}
+     },
+ 
+@@ -1411,3 +1413,4 @@ if (typeof setTimeout === "function") {
+     setTimeout(function () { AttrCalibrator.installHooks(); }, 0);
+     setTimeout(function () { AttrCalibrator.installHooks(); }, 50);
+ }
++if (typeof LearningStores !== "undefined") LearningStores.register("attrCalib", "PL_AttrCalib_", AttrCalibrator.learningKeyFor);
+diff --git a/js/DirectionalRadial.js b/js/DirectionalRadial.js
+index 7f78b17..a7cc3a1 100644
+--- a/js/DirectionalRadial.js
++++ b/js/DirectionalRadial.js
+@@ -394,9 +394,11 @@ var DirectionalRadial = {
+         return "PL_DirRadial_" + ((typeof ParchLock !== "undefined" && ParchLock.GameFilename) || "");
+     },
+ 
++    learningKeyFor: function (i) { return i && typeof i.filename === "string" && i.filename ? "PL_DirRadial_" + i.filename : null; },
++
+     GetCustomSlices: function () {
+         try {
+-            var raw = localStorage.getItem(DirectionalRadial.StorageKey());
++            var raw = typeof LearningStores !== "undefined" ? LearningStores.read(DirectionalRadial.StorageKey()) : localStorage.getItem(DirectionalRadial.StorageKey());
+             if (!raw) return [];
+             var data = JSON.parse(raw);
+             var list = Array.isArray(data.customSlices) ? data.customSlices : [];
+@@ -428,7 +430,11 @@ var DirectionalRadial = {
+     },
+ 
+     SaveCustomSlices: function (list) {
+-        try { localStorage.setItem(DirectionalRadial.StorageKey(), JSON.stringify({ customSlices: list })); } catch (e) {}
++        try {
++            var json = JSON.stringify({ customSlices: list });
++            var file = (typeof ParchLock !== "undefined" && ParchLock.GameFilename) || "";
++            if (!(typeof LearningStores !== "undefined" && file && LearningStores.persist("dirRadial", { filename: file }, json))) localStorage.setItem(DirectionalRadial.StorageKey(), json);
++        } catch (e) {}
+     },
+ 
+     AddCustomSlice: function (slice) {
+@@ -1144,6 +1150,7 @@ var DirectionalRadial = {
+     }
+ };
+ 
++if (typeof LearningStores !== "undefined") LearningStores.register("dirRadial", "PL_DirRadial_", DirectionalRadial.learningKeyFor);
+ if (typeof document !== "undefined") {
+     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", DirectionalRadial.Init);
+     else DirectionalRadial.Init();
+diff --git a/js/ExitCalibrator.js b/js/ExitCalibrator.js
+index 26a2564..554f1e1 100644
+--- a/js/ExitCalibrator.js
++++ b/js/ExitCalibrator.js
+@@ -396,6 +396,8 @@ var ExitCalibrator = {
+         return id ? ("PM_ExitCalib_" + id) : null;
+     },
+ 
++    learningKeyFor: function (i) { return i && typeof i.identityKey === "string" && i.identityKey ? "PM_ExitCalib_" + i.identityKey : null; },
++
+     emptyTable: function () {
+         return { v: ExitCalibrator.VERSION, dirs: {}, cand: {}, blocked: {} };
+     },
+@@ -407,7 +409,7 @@ var ExitCalibrator = {
+         ExitCalibrator._key = key;
+         ExitCalibrator._table = ExitCalibrator.emptyTable();
+         try {
+-            var raw = localStorage.getItem(key);
++            var raw = typeof LearningStores !== "undefined" ? LearningStores.read(key) : localStorage.getItem(key);
+             if (raw) {
+                 var p = JSON.parse(raw);
+                 // A table written by an older rule set is discarded rather
+@@ -421,7 +423,9 @@ var ExitCalibrator = {
+     persist: function () {
+         try {
+             if (ExitCalibrator._key && ExitCalibrator._table) {
+-                localStorage.setItem(ExitCalibrator._key, JSON.stringify(ExitCalibrator._table));
++                var ek = ExitCalibrator._key;
++                if (typeof LearningStores !== "undefined") LearningStores.persist("exitCalib", { identityKey: ek.slice("PM_ExitCalib_".length) }, JSON.stringify(ExitCalibrator._table), function () { if (ExitCalibrator._key === ek) ExitCalibrator._table = ExitCalibrator.emptyTable(); });
++                else localStorage.setItem(ek, JSON.stringify(ExitCalibrator._table));
+             }
+         } catch (e) {}
+     },
+@@ -664,3 +668,4 @@ var ExitCalibrator = {
+         ExitCalibrator.persist();
+     }
+ };
++if (typeof LearningStores !== "undefined") LearningStores.register("exitCalib", "PM_ExitCalib_", ExitCalibrator.learningKeyFor);
+diff --git a/js/LearnedWords.js b/js/LearnedWords.js
+index f3ff9ba..3afa898 100644
+--- a/js/LearnedWords.js
++++ b/js/LearnedWords.js
+@@ -17,7 +17,7 @@ var LearnedWords = {
+         LearnedWords._key = key; LearnedWords._undo = []; LearnedWords.clearProjection();
+         var data = { version: 1, gameIdentityKey: key, rows: {} };
+         try {
+-            var parsed = JSON.parse(localStorage.getItem(LearnedWords.PREFIX + key));
++            var parsed = JSON.parse(typeof LearningStores !== "undefined" ? LearningStores.read(LearnedWords.PREFIX + key) : localStorage.getItem(LearnedWords.PREFIX + key));
+             if (key && parsed && parsed.version === 1 && parsed.gameIdentityKey === key && parsed.rows && !Array.isArray(parsed.rows)) {
+                 var valid = Object.keys(parsed.rows).every(function (id) {
+                     var r = parsed.rows[id];
+@@ -38,11 +38,16 @@ var LearnedWords = {
+     },
+     write: function (next, history) {
+         if (!LearnedWords.identity() || next.gameIdentityKey !== LearnedWords.identity()) throw new Error("This story changed. Reopen the editor.");
+-        localStorage.setItem(LearnedWords.PREFIX + next.gameIdentityKey, JSON.stringify(next));
++        if (typeof LearningStores !== "undefined") LearningStores.persist("learnedWords", { identityKey: next.gameIdentityKey }, JSON.stringify(next), LearnedWords.resetErased);
++        else localStorage.setItem(LearnedWords.PREFIX + next.gameIdentityKey, JSON.stringify(next));
+         if (history) LearnedWords._undo.push(JSON.stringify(LearnedWords.load()));
+         if (LearnedWords._undo.length > 100) LearnedWords._undo.shift();
+         LearnedWords._data = next;
+     },
++    // D13: exact key generator for the learning ownership index.
++    learningKeyFor: function (inputs) { return inputs && typeof inputs.identityKey === "string" && inputs.identityKey ? LearnedWords.PREFIX + inputs.identityKey : null; },
++    // D13: this key was erased (another tab) after hydration -- start fresh.
++    resetErased: function () { LearnedWords._data = null; LearnedWords._key = null; LearnedWords._undo = []; },
+     rowKey: function (type, objectId, form) { return type + ":" + String(objectId) + ":" + encodeURIComponent(form); },
+     override: function (id) { var r = LearnedWords.load().rows[id]; return r && !r.classificationOnly ? r : null; },
+     suppressed: function (type, objectId, form) {
+@@ -623,3 +628,4 @@ var LearnedWords = {
+         if (LearnedWords._tourFocus && LearnedWords._tourFocus.isConnected) LearnedWords._tourFocus.focus();
+     }
+ };
++if (typeof LearningStores !== "undefined") LearningStores.register("learnedWords", LearnedWords.PREFIX, LearnedWords.learningKeyFor);
+diff --git a/js/LearningStores.js b/js/LearningStores.js
+new file mode 100644
+index 0000000..b7efb87
+--- /dev/null
++++ b/js/LearningStores.js
+@@ -0,0 +1,323 @@
++/* D13 (R3-R6): module learning store ownership and erase-for-uninstalled.
++ *
++ * Each module-scoped learning store registers its exact localStorage key at
++ * its own write site and persists through a serialized writer under the Web
++ * Lock "PL_learning_store". The index PL_ModuleLearningOwner_v1 records, per
++ * key, the kind, the owners {digest, path, inputs} and the committed
++ * storeRevision, plus the index revision and erase tombstones.
++ *
++ * Erase (Options > Learned words) removes only keys whose every owner is
++ * uninstalled AND whose owner digests are disjoint from the known digests of
++ * every installed module; the current story is protected by digest and path.
++ * Maps, saves, transcripts, preferences and unmanaged keys are never touched.
++ * Without Web Locks the erase is disabled and persists write as before.
++ */
++var LearningStores = (function () {
++    var INDEX_KEY = "PL_ModuleLearningOwner_v1";
++    var LOCK = "PL_learning_store";
++    var MAX_OWNERS = 16;
++    var generators = Object.create(null);
++    var prefixes = [];
++    var queue = [];            // FIFO of immutable snapshots
++    var draining = false;
++    var localRev = Object.create(null);   // key -> last captured storeRevision
++    var hydratedAt = Object.create(null); // key -> index revision when read/reset
++    var lastError = null, reported = false;
++
++    function storage() { try { return typeof localStorage !== "undefined" ? localStorage : null; } catch (e) { return null; } }
++    function locks() {
++        try { return typeof navigator !== "undefined" && navigator.locks && typeof navigator.locks.request === "function" ? navigator.locks : null; } catch (e) { return null; }
++    }
++    function emptyIndex() { return { v: 1, revision: 0, entries: {}, tombstones: {} }; }
++
++    function isObj(o) { return !!o && typeof o === "object" && !Array.isArray(o); }
++    function validInt(n) { return typeof n === "number" && isFinite(n) && n >= 0 && Math.floor(n) === n; }
++
++    // Returns {ok, index}; a malformed index is ignored (ok:false).
++    function readIndex() {
++        var ls = storage();
++        if (!ls) return { ok: false, index: emptyIndex(), reason: "storage unavailable" };
++        var raw;
++        try { raw = ls.getItem(INDEX_KEY); } catch (e) { return { ok: false, index: emptyIndex(), reason: "storage unavailable" }; }
++        if (raw == null) return { ok: true, index: emptyIndex() };
++        try {
++            var p = JSON.parse(raw);
++            if (!isObj(p) || p.v !== 1 || !validInt(p.revision) || !isObj(p.entries) || !isObj(p.tombstones)) throw 0;
++            Object.keys(p.entries).forEach(function (k) {
++                var e = p.entries[k];
++                if (!isObj(e) || e.key !== k || typeof e.kind !== "string" || !Array.isArray(e.owners) || !validInt(e.storeRevision)) throw 0;
++                e.owners.forEach(function (o) {
++                    if (!isObj(o) || !isObj(o.inputs) || (o.digest != null && typeof o.digest !== "string") || typeof o.path !== "string") throw 0;
++                });
++            });
++            Object.keys(p.tombstones).forEach(function (k) {
++                if (!isObj(p.tombstones[k]) || !validInt(p.tombstones[k].erasedAtIndexRevision)) throw 0;
++            });
++            return { ok: true, index: p };
++        } catch (e2) { return { ok: false, index: emptyIndex(), reason: "The learning index is damaged, so nothing can be erased." }; }
++    }
++    function writeIndex(index) { storage().setItem(INDEX_KEY, JSON.stringify(index)); }
++
++    function register(kind, prefix, generator) {
++        generators[kind] = generator;
++        if (prefix && prefixes.indexOf(prefix) < 0) prefixes.push(prefix);
++    }
++
++    function entryValid(entry) {
++        var gen = generators[entry.kind];
++        if (!gen || !entry.owners.length) return false;
++        return entry.owners.every(function (o) {
++            try { return gen(o.inputs) === entry.key; } catch (e) { return false; }
++        });
++    }
++
++    function normPath(p) {
++        try { return typeof ModuleLibrary !== "undefined" && ModuleLibrary.normalizePath ? ModuleLibrary.normalizePath(p) : String(p || ""); } catch (e) { return String(p || ""); }
++    }
++    function currentOwner() {
++        var path = "", digest = null;
++        try { if (typeof ParchLock !== "undefined") path = normPath(ParchLock.StoryPath || ParchLock.GameFilename || ""); } catch (e) {}
++        try { if (typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest) digest = ModuleLibrary.currentExecutableDigest() || null; } catch (e2) {}
++        return { digest: digest, path: path };
++    }
++
++    function sameOwner(a, b) {
++        return a.digest === b.digest && a.path === b.path && JSON.stringify(a.inputs) === JSON.stringify(b.inputs);
++    }
++
++    // Value a store should hydrate from: the newest queued snapshot for the
++    // key, else storage. Records the index revision the store hydrated at.
++    function read(key) {
++        hydratedAt[key] = readIndex().index.revision;
++        for (var i = queue.length - 1; i >= 0; i--) if (queue[i].key === key) return queue[i].value;
++        try { var ls = storage(); return ls ? ls.getItem(key) : null; } catch (e) { return null; }
++    }
++
++    function commit(snap) {
++        var ls = storage();
++        var r = readIndex();
++        var index = r.ok ? r.index : null;
++        if (index) {
++            var tomb = index.tombstones[snap.key];
++            var hyd = snap.hydratedRevision == null ? -1 : snap.hydratedRevision;
++            if (tomb && tomb.erasedAtIndexRevision > hyd) {
++                // Erased after this store hydrated: never resurrect it. The
++                // store starts fresh for that module.
++                hydratedAt[snap.key] = index.revision;
++                localRev[snap.key] = 0;
++                if (typeof snap.reset === "function") { try { snap.reset(); } catch (e) {} }
++                return "erased";
++            }
++            var entry = index.entries[snap.key];
++            // Superseded only by a strictly newer committed snapshot.
++            if (entry && entry.kind === snap.kind && entry.storeRevision > snap.storeRevision) {
++                return "superseded";
++            }
++        }
++        ls.setItem(snap.key, snap.value);
++        if (!index) return "written-unindexed";
++        var e = index.entries[snap.key];
++        if (!e || e.kind !== snap.kind) e = index.entries[snap.key] = { key: snap.key, kind: snap.kind, owners: [], storeRevision: 0 };
++        if (!e.owners.some(function (o) { return sameOwner(o, snap.owner); })) {
++            e.owners.push(snap.owner);
++            if (e.owners.length > MAX_OWNERS) e.owners.shift();
++        }
++        e.storeRevision = Math.max(e.storeRevision, snap.storeRevision);
++        if (index.tombstones[snap.key]) delete index.tombstones[snap.key];
++        writeIndex(index);
++        return "written";
++    }
++
++    var seqNo = 0;
++
++    function reportOnce(err) {
++        lastError = "Learned data could not be saved yet; it will retry.";
++        if (!reported) { reported = true; try { console.warn("[LearningStores] lock unavailable:", err); } catch (e) {} }
++        try { if (typeof $ !== "undefined") $("#pl-learning-erase-status").text(lastError); } catch (e2) {}
++    }
++
++    function drain() {
++        if (draining || !queue.length) return Promise.resolve();
++        var l = locks();
++        draining = true;
++        var p;
++        try {
++            p = l.request(LOCK, function () {
++                while (queue.length) {
++                    var snap = queue[0];
++                    commit(snap); // a throw keeps the snapshot queued (dirty)
++                    queue.shift();
++                }
++            });
++        } catch (eSync) { p = Promise.reject(eSync); }
++        return Promise.resolve(p).then(function () { draining = false; lastError = null; reported = false; if (queue.length) return drain(); },
++            function (err) { draining = false; reportOnce(err); });
++    }
++
++    // Capture an immutable snapshot and persist it. `value` is the serialized
++    // store; `reset` clears the store's in-memory table if the key was erased.
++    function persist(kind, inputs, value, reset) {
++        var gen = generators[kind];
++        if (!gen) return null;
++        var key = gen(inputs);
++        if (!key) return null;
++        var ls = storage();
++        if (!ls) return null;
++        var owner = currentOwner();
++        owner = { digest: owner.digest, path: owner.path, inputs: JSON.parse(JSON.stringify(inputs)) };
++        if (!locks()) {
++            // No Web Locks: cleanup is disabled for the session; write as today.
++            try { ls.setItem(key, value); } catch (e) { return null; }
++            try {
++                var r = readIndex();
++                if (r.ok) {
++                    var e = r.index.entries[key];
++                    if (!e || e.kind !== kind) e = r.index.entries[key] = { key: key, kind: kind, owners: [], storeRevision: 0 };
++                    if (!e.owners.some(function (o) { return sameOwner(o, owner); })) { e.owners.push(owner); if (e.owners.length > MAX_OWNERS) e.owners.shift(); }
++                    e.storeRevision += 1;
++                    writeIndex(r.index);
++                }
++            } catch (e2) {}
++            return Promise.resolve("written");
++        }
++        if (localRev[key] == null) {
++            var ent = readIndex().index.entries[key];
++            localRev[key] = ent ? ent.storeRevision : 0;
++        }
++        if (hydratedAt[key] == null) hydratedAt[key] = readIndex().index.revision;
++        var snap = Object.freeze({
++            key: key, kind: kind, owner: Object.freeze(owner), value: String(value),
++            storeRevision: ++localRev[key], hydratedRevision: hydratedAt[key], seq: ++seqNo, reset: reset
++        });
++        queue.push(snap);
++        return drain();
++    }
++
++    // ---- installed-set and erase -------------------------------------------------
++    function installedSet() {
++        var paths = [], digests = [], unknown = 0;
++        var mods = [];
++        try { mods = ModuleLibrary.all(); } catch (e) { return null; }
++        var ls = storage();
++        mods.forEach(function (m) {
++            var p = normPath(m.Path);
++            paths.push(p);
++            var d = null;
++            try { d = ModuleLibrary.currentExecutableDigest(p) || null; } catch (e1) {}
++            if (!d) { try { d = ls.getItem(ModuleLibrary.transcriptDigestKey(p)) || null; } catch (e2) {} }
++            if (d) digests.push(d); else unknown++;
++        });
++        return { paths: paths, digests: digests, unknown: unknown };
++    }
++
++    function list() {
++        var out = { ok: false, reason: "", candidates: [], removable: 0, installed: 0, unknown: 0, unmanaged: 0, bytes: 0, revision: 0, signature: "" };
++        if (!locks()) { out.reason = "Erasing is unavailable in this browser (no Web Locks)."; return out; }
++        var ls = storage();
++        if (!ls) { out.reason = "Storage is unavailable."; return out; }
++        var r = readIndex();
++        if (!r.ok) { out.reason = r.reason; return out; }
++        var inst = installedSet();
++        if (!inst) { out.reason = "The story library is unavailable."; return out; }
++        var cur = currentOwner();
++        out.revision = r.index.revision;
++        var managed = Object.create(null);
++        Object.keys(r.index.entries).forEach(function (k) {
++            var e = r.index.entries[k];
++            var value;
++            try { value = ls.getItem(k); } catch (eG) { value = null; }
++            if (!entryValid(e)) return; // counted as unmanaged below if present
++            managed[k] = true;
++            if (value != null) out.bytes += (k.length + value.length) * 2;
++            var installed = e.owners.some(function (o) {
++                return inst.paths.indexOf(o.path) >= 0 || (o.digest && inst.digests.indexOf(o.digest) >= 0) ||
++                    (cur.path && o.path === cur.path) || (cur.digest && o.digest === cur.digest);
++            });
++            if (installed) { out.installed++; return; }
++            if (inst.unknown > 0 || e.owners.some(function (o) { return !o.digest; })) { out.unknown++; return; }
++            if (value == null) return;
++            out.candidates.push({ key: k, value: value });
++        });
++        try {
++            for (var i = 0; i < ls.length; i++) {
++                var key = ls.key(i);
++                if (key && !managed[key] && prefixes.some(function (p) { return key.indexOf(p) === 0; })) out.unmanaged++;
++            }
++        } catch (eL) {}
++        out.removable = out.candidates.length;
++        out.signature = JSON.stringify([inst.paths.slice().sort(), inst.digests.slice().sort(), inst.unknown, cur, out.revision]);
++        out.ok = true;
++        return out;
++    }
++
++    // Erase what `listing` showed. Re-validated inside the lock: if the
++    // installed set, index revision or any candidate value changed, abort.
++    function erase(listing) {
++        var l = locks();
++        if (!l || !listing || !listing.ok) return Promise.resolve({ aborted: true, reason: (listing && listing.reason) || "Erasing is unavailable." });
++        return Promise.resolve(l.request(LOCK, function () {
++            var now = list();
++            if (!now.ok || now.signature !== listing.signature || now.candidates.length !== listing.candidates.length ||
++                now.candidates.some(function (c, i) { return c.key !== listing.candidates[i].key || c.value !== listing.candidates[i].value; })) {
++                return { aborted: true, reason: "Your stories changed; the list was refreshed.", listing: now };
++            }
++            var ls = storage();
++            var index = readIndex().index;
++            var nextRev = index.revision + 1;
++            var removed = 0, failed = 0;
++            listing.candidates.forEach(function (c) {
++                var gone = false;
++                try { ls.removeItem(c.key); gone = ls.getItem(c.key) == null; } catch (e) { gone = false; }
++                if (gone) {
++                    removed++;
++                    delete index.entries[c.key];
++                    index.tombstones[c.key] = { erasedAtIndexRevision: nextRev };
++                } else failed++;
++            });
++            index.revision = nextRev; // written last
++            try { writeIndex(index); } catch (eW) { return { aborted: false, removed: removed, failed: failed, indexWriteFailed: true }; }
++            return { aborted: false, removed: removed, failed: failed };
++        })).catch(function (err) { return { aborted: true, reason: "Could not get exclusive access; nothing was erased." }; });
++    }
++
++    function kb(bytes) { return Math.max(0, Math.round(bytes / 1024 * 10) / 10); }
++    function describe(listing, result) {
++        if (!listing.ok) return listing.reason;
++        var s = "Learned data: about " + kb(listing.bytes) + " KB (UTF-16 estimate). " +
++            listing.removable + " erasable, " + listing.installed + " kept for installed stories, " +
++            listing.unknown + " unknown, " + listing.unmanaged + " unmanaged.";
++        if (result) s = (result.aborted ? result.reason + " " : "Removed " + result.removed + ", failed " + result.failed + ". ") + s;
++        return s;
++    }
++
++    // Options > Learned words row (WorkspaceUI).
++    function addOptions(container) {
++        if (typeof $ === "undefined") return;
++        var row = $("<div class='pl-learning-erase'>").appendTo(container);
++        var status = $("<span id='pl-learning-erase-status' role='status'>");
++        var button = $("<button type='button'>").text("Erase learned data for uninstalled stories").appendTo(row);
++        status.appendTo(row);
++        function refresh(result) {
++            var listing = list();
++            button.prop("disabled", !listing.ok || listing.removable === 0);
++            status.text(lastError ? lastError + " " + describe(listing, result) : describe(listing, result));
++            return listing;
++        }
++        button.on("click", function () {
++            var listing = refresh();
++            if (!listing.ok || !listing.removable) return;
++            if (!confirm("Erase learned data for " + listing.removable + " item(s) from stories that are no longer installed? Maps, saves and transcripts are kept.")) return;
++            erase(listing).then(function (res) { refresh(res); });
++        });
++        refresh();
++    }
++
++    return {
++        INDEX_KEY: INDEX_KEY, LOCK: LOCK,
++        register: register, read: read, persist: persist, readIndex: readIndex,
++        list: list, erase: erase, describe: describe, addOptions: addOptions,
++        entryValid: entryValid, pending: function () { return queue.length; },
++        lastError: function () { return lastError; },
++        _drain: drain
++    };
++})();
+diff --git a/js/SemanticActions.js b/js/SemanticActions.js
+index 2e01b4b..d331405 100644
+--- a/js/SemanticActions.js
++++ b/js/SemanticActions.js
+@@ -632,6 +632,12 @@ var SemanticActions = {
+         } catch (e) { return null; }
+     },
+ 
++    // D13: exact key generator (inputs recorded by the persist above).
++    learningKeyFor: function (i) {
++        if (!i || typeof i.identityKey !== "string" || !i.identityKey || !/^[0-9a-f]+$/.test(String(i.checksum)) || typeof i.adapter !== "string" || typeof i.locale !== "string") return null;
++        return "PL_SemanticActions_" + i.identityKey + "-" + i.checksum + "-" + i.adapter + "-" + i.locale;
++    },
++
+     sidecarStorageKey: function (mem, locale) {
+         var key = SemanticActions.buildIdentityKey(mem, locale);
+         return key ? "PL_SemanticActions_" + key : null;
+@@ -653,7 +659,7 @@ var SemanticActions = {
+         SemanticActions.Evidence.clear();
+         try {
+             if (typeof localStorage === "undefined") return;
+-            var raw = localStorage.getItem("PL_SemanticActions_" + key);
++            var raw = typeof LearningStores !== "undefined" ? LearningStores.read("PL_SemanticActions_" + key) : localStorage.getItem("PL_SemanticActions_" + key);
+             if (raw) {
+                 var parsed = JSON.parse(raw);
+                 if (parsed && parsed.version === SemanticActions.SIDECAR_VERSION && parsed.buildKey === key && Array.isArray(parsed.entries)) {
+@@ -695,11 +701,17 @@ var SemanticActions = {
+         try {
+             if (typeof localStorage === "undefined") return;
+             var confirmedOnly = SemanticActions.Evidence.all().filter(function (e) { return e.confirmed; });
+-            localStorage.setItem("PL_SemanticActions_" + key, JSON.stringify({
++            var json = JSON.stringify({
+                 version: SemanticActions.SIDECAR_VERSION,
+                 buildKey: key,
+                 entries: confirmedOnly
+-            }));
++            });
++            if (typeof LearningStores !== "undefined") {
++                var head = key.slice(0, key.length - (SemanticActions.ADAPTER_VERSION.length + (locale || "en").length + 2));
++                var cut = head.lastIndexOf("-");
++                LearningStores.persist("semanticActions", { identityKey: head.slice(0, cut), checksum: head.slice(cut + 1), adapter: SemanticActions.ADAPTER_VERSION, locale: locale || "en" }, json,
++                    function () { if (SemanticActions.hydratedForBuild === key) SemanticActions.Evidence.clear(); });
++            } else localStorage.setItem("PL_SemanticActions_" + key, json);
+         } catch (e) {}
+     },
+ 
+@@ -715,3 +727,4 @@ var SemanticActions = {
+ if (typeof module !== "undefined" && module.exports) {
+     module.exports = SemanticActions;
+ }
++if (typeof LearningStores !== "undefined") LearningStores.register("semanticActions", "PL_SemanticActions_", SemanticActions.learningKeyFor);
+diff --git a/js/StatTracker.js b/js/StatTracker.js
+index cba2ee2..8126d70 100644
+--- a/js/StatTracker.js
++++ b/js/StatTracker.js
+@@ -1571,7 +1571,7 @@ var StatTracker = {
+         var m = StatTracker.blank();
+         try {
+             if (typeof localStorage === "undefined") return StatTracker.syncPlaythrough(m);
+-            var raw = localStorage.getItem(StatTracker.STORAGE_PREFIX + key);
++            var raw = typeof LearningStores !== "undefined" ? LearningStores.read(StatTracker.STORAGE_PREFIX + key) : localStorage.getItem(StatTracker.STORAGE_PREFIX + key);
+             if (!raw) return StatTracker.syncPlaythrough(m);
+             var parsed = JSON.parse(raw);
+             Object.keys(m).forEach(function (k) {
+@@ -1615,13 +1615,15 @@ var StatTracker = {
+     // The write is therefore skipped unless the serialised model actually
+     // differs from what was last written.
+     _lastSaved: null,
++    learningKeyFor: (i) => (i && typeof i.identityKey === "string" && i.identityKey ? StatTracker.STORAGE_PREFIX + i.identityKey : null),
+     save: (key, model) => {
+         try {
+             if (typeof localStorage === "undefined") return;
+             var json = JSON.stringify(model);
+             if (json === StatTracker._lastSaved) return;
+             StatTracker._lastSaved = json;
+-            localStorage.setItem(StatTracker.STORAGE_PREFIX + key, json);
++            if (typeof LearningStores !== "undefined") LearningStores.persist("stats", { identityKey: key }, json, function () { if (StatTracker._key === key) { StatTracker._model = StatTracker.blank(); StatTracker._lastSaved = null; } });
++            else localStorage.setItem(StatTracker.STORAGE_PREFIX + key, json);
+         } catch (e) {}
+     },
+ 
+@@ -4434,5 +4436,6 @@ try {
+     }
+ } catch (e) {}
+ 
++if (typeof LearningStores !== "undefined") LearningStores.register("stats", StatTracker.STORAGE_PREFIX, StatTracker.learningKeyFor);
+ try { if (typeof window !== "undefined") window.StatTracker = StatTracker; } catch (e) {}
+ try { if (typeof module !== "undefined" && module.exports) module.exports = StatTracker; } catch (e) {}
+diff --git a/js/WorkspaceUI.js b/js/WorkspaceUI.js
+index f558ff1..047164a 100644
+--- a/js/WorkspaceUI.js
++++ b/js/WorkspaceUI.js
+@@ -136,7 +136,7 @@ var WorkspaceUI = {
+         groups.scroll = group("Story scrolling", "Keep new passages in view");
+         groups.speech = group("Read aloud", "Narration, speech rate and repeats");
+         groups.interface = group("Accessibility & controls", "Notes, directions and tutorials");
+-        groups.learned = group("Learned words", "Choose the labels shown in your editor");
++        groups.learned = group("Learned words", "Choose the labels shown in your editor, and erase what was learned for stories you uninstalled");
+         // D215: Android only - the rotating storybook icon and its experimental launcher option.
+         try { if (typeof IconRotation !== "undefined") IconRotation.addOptions(group); } catch (eIcon) {}
+         [
+@@ -367,6 +367,8 @@ var WorkspaceUI = {
+             }).appendTo(label);
+             label.append(document.createTextNode(entry[1]));
+         });
++        // D13: erase learned data whose every owner story is uninstalled.
++        try { if (typeof LearningStores !== "undefined") LearningStores.addOptions(groups.learned); } catch (eLearn) {}
+     },
+     MapKey: () => "PL_MapSlots_" + ParchLock.GameFilename,
+     ReadSlots: () => {
+diff --git a/js/ZRamReader.js b/js/ZRamReader.js
+index 445b39c..292f330 100644
+--- a/js/ZRamReader.js
++++ b/js/ZRamReader.js
+@@ -844,7 +844,7 @@ var ZRamReader = {
+         dp.hydratedForGame = key;
+         try {
+             if (typeof localStorage === "undefined") return;
+-            var raw = localStorage.getItem("PL_DiagonalCalib_" + key);
++            var raw = typeof LearningStores !== "undefined" ? LearningStores.read("PL_DiagonalCalib_" + key) : localStorage.getItem("PL_DiagonalCalib_" + key);
+             if (!raw) return;
+             var saved = JSON.parse(raw);
+             if (saved && typeof saved.swapped === "boolean") {
+@@ -854,12 +854,16 @@ var ZRamReader = {
+         } catch (e) {}
+     },
+ 
++    diagonalLearningKeyFor: (i) => (i && typeof i.identityKey === "string" && i.identityKey ? "PL_DiagonalCalib_" + i.identityKey : null),
++
+     persistDiagonalCalibration: (mem) => {
+         try {
+             if (typeof localStorage === "undefined") return;
+             var key = ZRamReader.gameIdentityKey(mem);
+             if (!key) return;
+-            localStorage.setItem("PL_DiagonalCalib_" + key, JSON.stringify({ swapped: ZRamReader.directionProps.diagonalSwapped }));
++            var json = JSON.stringify({ swapped: ZRamReader.directionProps.diagonalSwapped });
++            if (typeof LearningStores !== "undefined") LearningStores.persist("diagonalCalib", { identityKey: key }, json, function () { var dp = ZRamReader.directionProps; if (dp.hydratedForGame === key) { dp.diagonalCalibrated = false; } });
++            else localStorage.setItem("PL_DiagonalCalib_" + key, json);
+         } catch (e) {}
+     },
+ 
+@@ -3070,3 +3074,4 @@ var ZRamReader = {
+         };
+     }
+ };
++if (typeof LearningStores !== "undefined") LearningStores.register("diagonalCalib", "PL_DiagonalCalib_", ZRamReader.diagonalLearningKeyFor);
+diff --git a/play.html b/play.html
+index 6e171a2..9c1a02e 100644
+--- a/play.html
++++ b/play.html
+@@ -57,6 +57,7 @@
+ 
+ 		<script src="lib/jquery.min.js"></script>
+ 		<script src="js/ModuleLibrary.js"></script>
++		<script src="js/LearningStores.js"></script>
+ 		<script src="js/Transcript.js"></script>
+ 		<script src="js/SaveState.js"></script>
+ 		<script src="js/ZvmCapture.js"></script>

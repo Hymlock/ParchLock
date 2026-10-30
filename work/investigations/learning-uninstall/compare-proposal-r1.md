@@ -119,3 +119,14 @@ No broad rewrite and no booting every game.
   that key has been erased.
 - Erase tombstone: cleanup records {key, erasedAtIndexRevision} in the index. A later fresh-start write for the same
   key, from a store that hydrated after the tombstone, clears it.
+
+## R7 amendment (claude, after implementation; batch-d13.diff)
+Finding: an installed module's digest is known only from ModuleLibrary's in-memory identity or from
+PL_TranscriptDigest_<path> (written after a play). A built-in or import that was never played has an unknown digest. So
+the R4 rule ("every installed module has a known digest") marks everything unknown, and the erase removes nothing in
+practice.
+Amendment: at confirm time, inside the lock, for each installed module whose digest is unknown, compute the executable
+digest by hashing its stored bytes. This uses ModuleLibrary's existing captureExecutableIdentity hash routine on the
+locally stored file: no VM boot, no network for imports, and for built-ins a same-origin read of the packaged file. It
+is bounded to the modules whose digest is missing, and cached in memory for the session. If any hash fails, keep the
+R4 conservative "unknown" result for keys sharing that module's possible identity.
