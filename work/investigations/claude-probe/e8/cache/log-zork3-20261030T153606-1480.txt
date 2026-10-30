@@ -1,0 +1,2 @@
+zork3 e8climb24b @32 climb ladder #23 NOTEST "Ladder Top\nThis is a very small room. In the corner is a rickety wooden ladder, "
+zork3 e8climb24b @32 climb torch #41 NOTEST "Bizarre!\nThe indicator above the table flickers briefly, then changes to \"II\".\n "

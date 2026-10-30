@@ -1,0 +1,5 @@
+{"key":"starcross","game":"Starcross.z3.js","bit":22,"tag":"e8climb22","tests":[
+{"id":170,"name":"wall","step":2,"expect":1,"cmd":"climb"},
+{"id":170,"name":"wall","step":2,"expect":1,"cmd":"climb wall"},
+{"id":191,"name":"knobs","step":2,"expect":1,"cmd":"climb"},
+{"id":227,"name":"tree","step":2,"expect":1,"cmd":"climb"}]}

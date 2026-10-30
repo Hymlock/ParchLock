@@ -1,0 +1,3 @@
+zork3 e8climb24 @31 climb broken timber #26 NOTEST "Bizarre!\n \n> "
+zork3 e8climb24 @31 climb torch #41 NOTEST "Bizarre!\nYou suddenly find yourself back in the viewing room!\n \n> "
+zork3 e8climb24 @32 climb ladder #23 NOTEST "I can't see any ladder here.\n \n> "
