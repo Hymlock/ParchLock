@@ -1,0 +1,51 @@
+{
+ "HollywoodHijinx.z3.js": {
+  "bit": 4,
+  "sha256": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+  "exitDestParents": [
+   [
+    "41",
+    94
+   ],
+   [
+    "0",
+    1
+   ]
+  ],
+  "ROOMS": 41,
+  "nRooms": 67,
+  "bitHolders": [
+   "8:left end of the plank parent 90:Bomb Shelter",
+   "9:white wax statuette parent 194:mantle",
+   "14:small pond parent 86:Garden, North",
+   "20:red match parent 111:matchbox",
+   "62:rusty bucket parent 166:Closet",
+   "68:right end of the plank parent 90:Bomb Shelter",
+   "69: parent 0:",
+   "82:blue wax statuette parent 194:mantle",
+   "92:hole parent 223:Fireplace",
+   "109:niche parent 192:Crawl Space, North",
+   "111:matchbox parent 30:Kitchen",
+   "128:bed parent 54:",
+   "133:slide projector parent 70:Projection Booth",
+   "138:small compartment parent 219:Cannon Emplacement",
+   "150:hole parent 0:",
+   "171:green match parent 88:Beach",
+   "172:cannon parent 219:Cannon Emplacement",
+   "184:red wax statuette parent 194:mantle",
+   "191:film projector parent 70:Projection Booth",
+   "194:mantle parent 80:Living Room",
+   "199:cloth sack parent 58:Upstairs Hall, East",
+   "203:wall safe parent 231:Hallway",
+   "207:pile of cannon balls parent 219:Cannon Emplacement",
+   "211:table parent 35:Dining Room",
+   "212:niche parent 105:Crawl Space, South",
+   "216:hopper parent 36:Cellar",
+   "220:dusty trunk parent 178:Attic",
+   "222:piano parent 5:Parlor",
+   "225:Buck Palace-endorsed, regulation mailbox parent 185:Front Porch",
+   "227:safe parent 90:Bomb Shelter"
+  ],
+  "roomsWithBit": []
+ }
+}

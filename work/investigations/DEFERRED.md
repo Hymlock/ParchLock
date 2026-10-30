@@ -28,7 +28,7 @@ ruling that it needs nothing). Status: TODO / ACTIVE / BLOCKED(on X) / DONE / CL
 | E4 | talkable: Zork3 21 PROVEN (squeeze/shake reach the generic ACTORBIT test; 3 actors + waybread) and staged r40. Infidel: NOT APPLICABLE (ACTORBIT only on player objects). Planetfall: FAIL CLOSED (Floyd intercepts every command; census not exact). | DONE | claude worker | Ledger: Infidel talkable NA, Planetfall talkable X. |
 | E5 | Zork III wornAttribute (codex REVISE: custody relation required) | TODO | codex | Follow codex #5514 R2 path. |
 | E6 | Hitchhik switchable/on, enterable pilot seat | TODO | grok1 | The Hitchhik jukebox is room-fixed (D4); the pilot seat walk drifts (multi-Dark RNG). |
-| E7 | Hollywood openCapability: needs a Hollywood container fact first | TODO | grok1 | Probe the Hollywood container (CONTBIT) with 2+neg, then openCapability. |
+| E7 | Hollywood container 4 (4 natives + neg; no room) + openCapability none:[supporter] (all 7 surfaces carry CONTBIT) STAGED r43. | DONE | claude worker | - |
 | E8 | Zork II / HHGG transparent holds; Zork III ladder, Starcross tree climb carrier 2 | TODO | grok1 | Walk extensions (PARKED.md rows). Low radial value but owed. |
 | E9 | Death-count follow-ups: harness output-path crash FIXED (default temp path; 14 rows PASS). Remaining: late-identity startup loss window; DEATH_PHRASE false positive in non-death text. | ACTIVE | codex | Small source fixes, with the full procedure if behaviour changes. |
 
