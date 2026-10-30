@@ -107,3 +107,15 @@ No broad rewrite and no booting every game.
 - Kind generator owner metadata: each owner records the inputs the store's key generator uses (header
   release/serial/checksum, adapter, locale, filename, as applicable to that kind) alongside digest and path. Validation
   regenerates the key from those recorded inputs.
+
+## R6 (adopting codex #5581; replaces the R5 "generation" drop rule)
+- A queued persist is immutable: {key, kind, owner inputs, storeRevision (monotonic per key, incremented per mutation),
+  snapshot}. Undo/restore/restart generation and story switches never drop it. Durable learning survives them, per the
+  operator.
+- Writes per key are FIFO under the lock. A queued write is superseded only by a newer committed snapshot for the same
+  key (a higher storeRevision already written) or by an erase tombstone for that key recorded after the snapshot was
+  captured.
+- A write after a story switch goes to its own old key (never reading the current in-memory table). It is valid unless
+  that key has been erased.
+- Erase tombstone: cleanup records {key, erasedAtIndexRevision} in the index. A later fresh-start write for the same
+  key, from a store that hydrated after the tombstone, clears it.
