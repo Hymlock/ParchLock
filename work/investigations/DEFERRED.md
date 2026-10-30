@@ -36,4 +36,5 @@ ruling that it needs nothing). Status: TODO / ACTIVE / BLOCKED(on X) / DONE / CL
 - Moonmist transparent 9: DONE r28 (6bf8a98). grok1/PARKED.md row 8 is stale.
 - Planetfall transparent: DONE r29. Infidel climb carrier 2: CLOSED (already mapped). Deadline climb: CLOSED L:NA.
 - 41 + 17 no-reader cells: L:NC by group rule A (not complete; reopen when a reader appears).
-| D12 | Hollywood: non-containers carrying CONTBIT+OPENBIT in source (matches, planks, pond, holes, niches, cannon, projectors, hopper) get close/Search/Empty. Probe CLOSE MATCH/POND natively; fix from game data, no masking. | OPEN | claude | audit-r43/AUDIT.md |
+| D12 | Hollywood close on non-containers: probed (claude-probe/hollywood-d12/FINDINGS.md). Proposal: Open/Close gated by game V-CLOSE rule CONTBIT && !SURFACEBIT && CAPACITY!=0 || DOORBIT (check if general across ZIL V-CLOSE). Action-routine refusers stay (honest refusal). Needs codex blind half. | ACTIVE | claude | blind request |
+| D13 | Learning stores: retained on uninstall (operator ruling 2026-10-30). Add Settings "erase learning data for uninstalled modules" (all 5 stores: LearnedWords, AttrCalib, SemanticActions, ExitCalib, DiagonalCalib) + size bound check. | ACTIVE | claude+codex | learning-uninstall/ |
