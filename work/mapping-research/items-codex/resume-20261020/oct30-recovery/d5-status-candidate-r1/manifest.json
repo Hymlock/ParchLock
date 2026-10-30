@@ -1,0 +1,26 @@
+{
+  "scope": "D5 R2 isolated narrow119/135 domain only; no active E5+D12 gate changes",
+  "head": "3db955745c258662f3454af20fb13731f4932b6d",
+  "files": {
+    "js/AttributeSchema.js": {
+      "base": "7acbedd6fb0c1cd9b0b32dcf761366671a9a977a7bc61299cfd4e2fae483ec93",
+      "candidate": "56ca7f50ed35c74e82b72aa6f3593cf810113e737af39a0e58b527aa0368d52c"
+    },
+    "js/Qol.js": {
+      "base": "1ebea551e8d54b556122242fddb47b153f1d9f319dbd972994e879db8aabc5ee",
+      "candidate": "eda572ce651bcd4af921c87eb5b8a830bdc10da5b21ae47ddf743fd63b4f0d9f"
+    },
+    "js/UndoRestoreSync.js": {
+      "base": "ff465655f86e38690cb41224f573a4a2046c22f66915affeb4f3a313e16634ed",
+      "candidate": "15c25dbf96a865ef7bcdbc4033f1747d95e7a48df3c63c120cb7c69d9832a575"
+    },
+    "js/ModuleStatFactsClaude.js": {
+      "base": "fc4f2908f8253d7967cd829a0eac28884081b815a3646bcc5851b949bb75f3e3",
+      "candidate": "3ee92ed298142c7f547e043127ecc62db22a033c1b2e58842c42db8ccf19b03d"
+    },
+    "css/ParchLock.css": {
+      "base": "43e0a23ab55f3ffbb3eaf1a362794003c60d4aeeeace43b0872ee749a5ec1f1a",
+      "candidate": "7ea2f2d22b1160e968b215f1e6ed4a16bc6d3499f762a85477b3ef533135096f"
+    }
+  }
+}
