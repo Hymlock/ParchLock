@@ -52,3 +52,18 @@ Candidate: work/mapping-research/items-codex/resume-20261020/oct30-recovery/d5-s
 - Native layout/unlock packets (native-layout-r2, native-unlock-r1) read, not re-run.
 
 Required for ACCEPT: fix 1-3, add controls for tool-picker omit and stale-generation omit, rerun the above.
+
+## R2 re-audit (claude, 2026-10-30) — candidate-r2.patch / manifest-r2.json (bus #5657)
+
+Verdict: **ACCEPT** (one cosmetic nit).
+
+Blockers:
+1. Facts reversion — FIXED. Facts hunk (ModuleStatFactsClaude.js @1048, Lurking Horror digest 1862ef7c…) adds only the comment + `"lockedStatusObjects": [119, 135]`; no removals, nothing else touched. `git apply --check` passes at HEAD da88623 and on HEAD + batch-r45r46.diff.
+2. Status on tool/target pickers — FIXED. Actionable.js ~2886 (target picker) and ~2946 (Unlock-with tool picker) pass `Object.assign({}, context, { objectStatusStamp: null })`; Qol.ObjectStatusForRadial returns null on a missing stamp.
+3. No generation guard — FIXED. Stamp {generation, digest, buffer, offset, length} taken at Actionable context build (~2794) and EquipmentUI.js:127; ObjectStatusForRadial (Qol ~776) omits on any mismatch, pending undo, composing, typed input, >1 LineInput, #dialog, Message.IsOpen, stat probes, ambiguous/unverified/unscoped ref. CSS now physical `left:50%` (rtl nit resolved).
+
+Lifecycle check: the attribute is read live on every OpenRadial (no cached value), so More/page reopens show current state; after undo/restore/restart generation++ makes old stamps omit, and UndoRestoreSync.resync also removes an open `.pl-object-status`; module switch changes the digest; CloseRadial removes the span. No hole found. Normal turns do not bump generation, but since the value is live-read this cannot show a stale value.
+
+Nit (non-blocking): patch line 161 adds a trailing blank line at EOF of css/ParchLock.css (git whitespace warning).
+
+Tests (temp worktree at HEAD + candidate-r2, real copies of games/ and node_modules, removed after): selector-controls-r2 24 PASS/0 FAIL; operator-regressions 13/0; d210-radial-selection 19/0; directional-radial 112/0; radial-auto-submit 60/0; shared-radial-integration 28 passed; t10-history-radial 26/0.
