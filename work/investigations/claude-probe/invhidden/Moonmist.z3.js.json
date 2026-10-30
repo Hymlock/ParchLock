@@ -1,0 +1,13 @@
+[
+ {
+  "cmd": "i",
+  "reply": ">i\nYou are holding the tweed outfit (actually, wearing it).\n \nWhat next?\n> ",
+  "player": 42,
+  "held": [
+   "78:tweed outfit [5,17,21,26,29]"
+  ],
+  "appInv": [
+   "78:tweed outfit"
+  ]
+ }
+]
