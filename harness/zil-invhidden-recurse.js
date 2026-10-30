@@ -3,7 +3,7 @@
 // HEAD's ZRamReader.js where the contract is "byte-identical". Run from the repo root: node harness/zil-invhidden-recurse.js
 const fs = require('fs'), vm = require('vm'), crypto = require('crypto'), assert = require('assert'), cp = require('child_process');
 const { story } = require(process.cwd() + '/work/investigations/zil-attr-analyzer.js');
-const HEAD_ZR = cp.execSync('git show HEAD:js/ZRamReader.js', { maxBuffer: 1 << 26 }).toString();
+const HEAD_ZR = cp.execSync('git show 9e461e6~1:js/ZRamReader.js', { maxBuffer: 1 << 26 }).toString();
 let passed = 0;
 function check(ok, label) { assert(ok, label); passed++; console.log('PASS ' + label); }
 
