@@ -671,7 +671,8 @@ var ModuleStatFactsClaude = {
         // openCapability: Open/Close for containers that are not surfaces (mantle 194 / pile 207 / table 211 carry CONTBIT but refuse CLOSE natively, claude worker E7).
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         // enterable 8 = VEHBIT (source exact 2/2; native claude-probe/e1d9 run-hollywood-*): ENTER left/right end of plank moves the player 90->8 / 90->68 with 8=1; ENTER SAFE 227 8=0 "You hit your head against the safe". Plain ENTER works natively (no enterForms override).
-        "attributeMap": { "wearable": 22, "animate": 18, "supporter": 27, "door": 10, "on": 20, "scenery": 16, "open": 25, "isOpen": 25, "moved": 28, "talkable": 18, "concealed": 29, "container": 4, "enterable": 8 },
+        // locked 15 = LOCKEDBIT (hollywood-locked-notes.md S; P10b door-only destination isLocked). Oak door 117 OPEN DOOR "unlock first" 15=1; statue click 1->0; Foyer LOCK/UNLOCK 0->1->0; hatch 155 15=0. Rooms carry 15 as lockable-from-here only — exits use doorObjectId/routeBlocked after P10b.
+        "attributeMap": { "wearable": 22, "animate": 18, "supporter": 27, "door": 10, "on": 20, "scenery": 16, "open": 25, "isOpen": 25, "moved": 28, "talkable": 18, "concealed": 29, "container": 4, "enterable": 8, "locked": 15 },
         // WORNBIT state14: independent native ring127/skis188 wear+remove, flashlight123 refused; Grok4120 proposal, Codex October20 audit.
         "wornAttribute": 14
     },

@@ -2581,7 +2581,7 @@ var ZRamReader = {
                 targetRoomId: val,
                 targetRoomName: tname,
                 isDoor: !!tAttrs.door,
-                isLocked: !!tAttrs.locked,
+                isLocked: !!(tAttrs.door && tAttrs.locked),
                 isNonCardinal: !CARD[lab],
                 ambiguousDiagonal: !!opts.ambiguousDiagonal,
                 hinted: !tname,
