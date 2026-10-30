@@ -1,9 +1,9 @@
 diff --git a/harness/learning-stores.js b/harness/learning-stores.js
 new file mode 100644
-index 0000000..57c17b1
+index 0000000..53e9d50
 --- /dev/null
 +++ b/harness/learning-stores.js
-@@ -0,0 +1,369 @@
+@@ -0,0 +1,393 @@
 +// D13 harness: LearningStores ownership index, serialized persists and the
 +// erase-for-uninstalled action, against a constructed localStorage and a
 +// navigator.locks stub. Run: node harness/learning-stores.js
@@ -370,6 +370,30 @@ index 0000000..57c17b1
 +        idx = t.LearningStores.readIndex().index;
 +        ok(!idx.pending && idx.revision === 1 && s.getItem("PL_LearnedWordOverrides_2-B") === null, "retry finishes recovery");
 +    }
++
++    {   // failed pending removal + fresh hydrate + persist: index stays valid,
++        // key not written while pending, fresh value written after retry
++        const s = makeStorage(), l = makeLocks(), lib = makeLib([]);
++        const t = makeTab(s, l, lib);
++        s.setItem("PL_LearnedWordOverrides_2-B", "old");
++        s.setItem("PL_ModuleLearningOwner_v1", JSON.stringify({ v: 1, revision: 0, entries: {},
++            tombstones: { "PL_LearnedWordOverrides_2-B": { erasedAtIndexRevision: 1 } },
++            pending: { revision: 1, records: [{ key: "PL_LearnedWordOverrides_2-B", kind: "learnedWords", inputs: { identityKey: "2-B" } }] } }));
++        s.failRemove.add("PL_LearnedWordOverrides_2-B");
++        lib.current = "dB"; t.ParchLock.StoryPath = "games/b.z5.js";
++        ok(t.LearningStores.read("PL_LearnedWordOverrides_2-B") === null, "fresh hydrate sees nothing");
++        t.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "fresh"); await settle();
++        t.LearningStores.persist("learnedWords", { identityKey: "3-C" }, "other"); await settle();
++        let r = t.LearningStores.readIndex();
++        ok(r.ok && r.index.pending && r.index.tombstones["PL_LearnedWordOverrides_2-B"], "index valid while pending");
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === "old" && t.LearningStores.pending() === 1, "pending key not written; snapshot kept");
++        ok(s.getItem("PL_LearnedWordOverrides_3-C") === "other", "unrelated key commits");
++        s.failRemove.clear();
++        t.LearningStores.persist("learnedWords", { identityKey: "3-C" }, "other2"); await settle();
++        r = t.LearningStores.readIndex();
++        ok(r.ok && !r.index.pending && r.index.revision === 1 && !r.index.tombstones["PL_LearnedWordOverrides_2-B"], "erase finalized, tombstone cleared by fresh write");
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === "fresh" && t.LearningStores.pending() === 0, "fresh value written after retry");
++    }
 +    console.log("learning-stores: " + pass + " PASS, " + fail + " FAIL");
 +    process.exit(fail ? 1 : 0);
 +})();
@@ -528,10 +552,10 @@ index f3ff9ba..203640f 100644
 +if (typeof LearningStores !== "undefined") LearningStores.register("learnedWords", LearnedWords.PREFIX, LearnedWords.learningKeyFor);
 diff --git a/js/LearningStores.js b/js/LearningStores.js
 new file mode 100644
-index 0000000..d1b30a9
+index 0000000..19159ee
 --- /dev/null
 +++ b/js/LearningStores.js
-@@ -0,0 +1,431 @@
+@@ -0,0 +1,445 @@
 +/* D13 (R3-R6): module learning store ownership and erase-for-uninstalled.
 + *
 + * Each module-scoped learning store registers its exact localStorage key at
@@ -690,6 +714,9 @@ index 0000000..d1b30a9
 +        var index = r.ok ? r.index : null;
 +        if (index) {
 +            recover(index);
++            // While this exact key's erase is unfinished, never write it or
++            // clear its tombstone: the snapshot stays queued until it is done.
++            if (pendingKeys(index).indexOf(snap.key) >= 0) return "pending";
 +            var tomb = index.tombstones[snap.key];
 +            var hyd = snap.hydratedRevision == null ? -1 : snap.hydratedRevision;
 +            if (tomb && tomb.erasedAtIndexRevision > hyd) {
@@ -717,6 +744,7 @@ index 0000000..d1b30a9
 +    }
 +
 +    var seqNo = 0;
++    var deferredCount = 0;
 +
 +    function reportOnce(err) {
 +        lastError = "Learned data could not be saved yet; it will retry.";
@@ -731,14 +759,24 @@ index 0000000..d1b30a9
 +        var p;
 +        try {
 +            p = l.request(LOCK, function () {
-+                while (queue.length) {
-+                    var snap = queue[0];
-+                    commit(snap); // a throw keeps the snapshot queued (dirty)
-+                    queue.shift();
++                // FIFO per key. A key whose erase is still pending is deferred
++                // (with every later snapshot of that key); other keys proceed.
++                var kept = [], deferred = Object.create(null);
++                try {
++                    while (queue.length) {
++                        var snap = queue[0];
++                        if (deferred[snap.key]) { kept.push(queue.shift()); continue; }
++                        var res = commit(snap); // a throw keeps the snapshot queued (dirty)
++                        queue.shift();
++                        if (res === "pending") { deferred[snap.key] = true; kept.push(snap); }
++                    }
++                } finally {
++                    queue = kept.concat(queue);
++                    deferredCount = kept.length;
 +                }
 +            });
 +        } catch (eSync) { p = Promise.reject(eSync); }
-+        return Promise.resolve(p).then(function () { draining = false; lastError = null; reported = false; if (queue.length) return drain(); },
++        return Promise.resolve(p).then(function () { draining = false; lastError = null; reported = false; if (queue.length > deferredCount) return drain(); },
 +            function (err) { draining = false; reportOnce(err); });
 +    }
 +
