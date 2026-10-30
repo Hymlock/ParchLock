@@ -1,0 +1,11 @@
+{
+  "commit": "8b76ec843adf9d1ad2ba5069367f9729210f5ef6",
+  "unrelatedStagingPreserved": true,
+  "executedCandidateMatch": "CRLF/LF-normalized text equality; Git text=auto",
+  "files": [
+    "js/ExitCalibrator.js",
+    "js/MapIdentity.js",
+    "js/MapTopology.js",
+    "js/Navigator.js"
+  ]
+}

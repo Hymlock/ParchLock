@@ -1,0 +1,3 @@
+# Settled raw artifact
+
+Seven research-only files rebased on current r44/P10 source. Plain git apply --check succeeds on exact copied raw baseline without whitespace-ignore flags. Initial direct old patch failed: stored patch CRLF then facts context changed by r44; six hunks reapplied on normalized research copies, exact same Z3 equipmentState inserted at its unique digest, final raw diff regenerated and verified. Focused constructed controls28/24/17/18 pass. Native and prior independent rendered evidence retained separately; no new native qualification, no main product edits or integration approval. Current-source nonauthor audit and one settled shared gate remain required.

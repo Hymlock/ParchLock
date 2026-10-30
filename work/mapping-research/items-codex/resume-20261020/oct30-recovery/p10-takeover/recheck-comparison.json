@@ -1,0 +1,135 @@
+{
+  "tier": "Constructed seeded bounded paired recheck, actual native memory/text snapshots recorded; no native semantic qualification",
+  "helperSha": "201509f39ef86b9484fd58c63c7f20c0dac00f0984a34313c9417f469368321b",
+  "sourceStable": {
+    "base": true,
+    "candidate": true
+  },
+  "rows": [
+    {
+      "game": "Mulldoon.z8.js",
+      "differentFields": [],
+      "sameNativeScene": true,
+      "sameRam": true,
+      "sameText": true,
+      "baseMarks": [
+        "piece of blue coral"
+      ],
+      "candidateMarks": [
+        "piece of blue coral"
+      ],
+      "baseScene": {
+        "roomId": 787,
+        "playerId": 788,
+        "pc": 65600,
+        "read": {
+          "bufaddr": 42980,
+          "parseaddr": 43101
+        },
+        "ramSha256": "c269beb7b36e3122c605f2b64cf16005abfec55165f559136eb1e1c788772b2b"
+      },
+      "candidateScene": {
+        "roomId": 787,
+        "playerId": 788,
+        "pc": 65600,
+        "read": {
+          "bufaddr": 42980,
+          "parseaddr": 43101
+        },
+        "ramSha256": "c269beb7b36e3122c605f2b64cf16005abfec55165f559136eb1e1c788772b2b"
+      }
+    },
+    {
+      "game": "gamlet.z5.js",
+      "differentFields": [
+        "marks"
+      ],
+      "sameNativeScene": true,
+      "sameRam": true,
+      "sameText": true,
+      "baseMarks": [
+        "balcony",
+        "balustrade",
+        "wall",
+        "night",
+        "stars",
+        "distant artillery",
+        "breeze",
+        "naked",
+        "Light",
+        "eyes"
+      ],
+      "candidateMarks": [
+        "eyes"
+      ],
+      "baseScene": {
+        "roomId": 104,
+        "playerId": 119,
+        "pc": 45774,
+        "read": {
+          "bufaddr": 19712,
+          "parseaddr": 19835
+        },
+        "ramSha256": "6a01e62734321709fc631e7bb2d98860c38c0d634caf0a56c433c98b37e3d5cb"
+      },
+      "candidateScene": {
+        "roomId": 104,
+        "playerId": 119,
+        "pc": 45774,
+        "read": {
+          "bufaddr": 19712,
+          "parseaddr": 19835
+        },
+        "ramSha256": "6a01e62734321709fc631e7bb2d98860c38c0d634caf0a56c433c98b37e3d5cb"
+      }
+    },
+    {
+      "game": "medusa.z5.js",
+      "differentFields": [
+        "marks"
+      ],
+      "sameNativeScene": false,
+      "sameRam": true,
+      "sameText": false,
+      "baseMarks": [
+        "vampire",
+        "elevator",
+        "red",
+        "toga",
+        "snakes",
+        "floor indicator",
+        "buttons"
+      ],
+      "candidateMarks": [
+        "toga",
+        "snakes",
+        "elevator",
+        "floor indicator",
+        "buttons",
+        "red",
+        "mirror",
+        "vampire"
+      ],
+      "baseScene": {
+        "roomId": 56,
+        "playerId": 61,
+        "pc": 50375,
+        "read": {
+          "bufaddr": 19436,
+          "parseaddr": 19559
+        },
+        "ramSha256": "6951cde1fc776814d1306e78a02f49eda12ab75d0112a92c3b3695810c77b4a6"
+      },
+      "candidateScene": {
+        "roomId": 56,
+        "playerId": 61,
+        "pc": 50375,
+        "read": {
+          "bufaddr": 19436,
+          "parseaddr": 19559
+        },
+        "ramSha256": "6951cde1fc776814d1306e78a02f49eda12ab75d0112a92c3b3695810c77b4a6"
+      }
+    }
+  ]
+}

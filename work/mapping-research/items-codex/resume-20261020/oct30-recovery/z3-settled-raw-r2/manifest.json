@@ -1,0 +1,36 @@
+{
+  "head": "d0dd25ca7e4a65982ab56d2815a6333a233cffdd",
+  "scope": "research only, no integration; facts hunk explicitly rebased around r44 insertions",
+  "files": {
+    "js/Actionable.js": {
+      "baseRaw": "4e713c639adac7a77d13a696af89bc6a4ca71545307406446ba50ac2241aac9f",
+      "candidateRaw": "9ed255bb5e924a70911eb7eecf9db34c1f677c7a43373e31299209fef34df4bd"
+    },
+    "js/ActionSynth.js": {
+      "baseRaw": "b17924fe3121043e60f110a0d59fd5518e85988d70f73d1fa478a37e167abaff",
+      "candidateRaw": "0d999068a00dbd877d94a726781c3d8e85cb0d90eaaa06325cd74bb389fda6bf"
+    },
+    "js/AttributeSchema.js": {
+      "baseRaw": "7acbedd6fb0c1cd9b0b32dcf761366671a9a977a7bc61299cfd4e2fae483ec93",
+      "candidateRaw": "4e88fccfd0cd153fa63d30931a025c0beef16595ca87041a5036b7a6a5eeea12"
+    },
+    "js/EquipmentUI.js": {
+      "baseRaw": "3c4ae552726bf698dd01ea257c1776d40f59cb5b426ee8d43ced81e02e12275f",
+      "candidateRaw": "cffad669c3e98ff4cf4b5da8d77f79ea6dc52391618d23b5c4d77c3e9d9f5945"
+    },
+    "js/LearnedWords.js": {
+      "baseRaw": "2e179163acca934ac27d57a5520e4f8bd7a2f2f0d9302fb056c8696234278afe",
+      "candidateRaw": "1da63775f4eb762171b903f4ddffb571f783288b7d4650d86b7cada12c0ffc46"
+    },
+    "js/ModuleStatFactsClaude.js": {
+      "baseRaw": "c254de13ee61567964e58b0b98396d3db2fc81ab2cde975e6973ef91d9549c6e",
+      "candidateRaw": "8bebc30a55ae3c4b4ab2cf1d2cb142381855bd91a2eb671087eafa7dd07b9197"
+    },
+    "js/SemanticActions.js": {
+      "baseRaw": "758de41f7c75678b324ec277f9142716c9f64913beb9eb25d7253132b1c2c5b6",
+      "candidateRaw": "423fba33c31dab62296592c588d10eddeea87f6910f1327ca253bfabcd241395"
+    }
+  },
+  "plainGitApplyCheck": true,
+  "patchSha": "3a85a477175b21f21bdadb593ed9454a4fbd4d8038217401e32a6bccd3629c91"
+}
