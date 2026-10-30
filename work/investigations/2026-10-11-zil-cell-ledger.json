@@ -299,6 +299,10 @@
   "light": {
    "s": "NC",
    "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
+  },
+  "wornAttribute": {
+   "s": "S",
+   "r": "E5 landed f5afbb3 (codex, claude audit audit-e5-raw-r2.md ACCEPT): equipmentState wornWhen wearable-direct-player + wornRemoval drop (WEARBIT 4 + measured PLAYER custody; native amulet 39 DROP). Worn state is derived from custody, not a separate worn bit."
   }
  },
  "Enchanter.z3.js": {
@@ -539,6 +543,10 @@
   "switchable": {
    "s": "S",
    "r": "r45+r46 batch-r45r46.diff gate ACCEPT grok2 2026-10-30; opreg 13/0; 309x2 4 FLAKY Inform only switchable=32 SWITCHBIT"
+  },
+  "on": {
+   "s": "NC",
+   "r": "r45 (claude-probe/r45, r45-notes.md): ONBIT 45 is the room-lit bit (24 of its carriers are rooms; non-room carriers are the jukebox and Eddie, and no routine toggles it on an object). Mapping it would mark rooms as switched-on devices. Not complete; reopen if an object on/off owner is found."
   }
  },
  "Ballyhoo.z3.js": {
@@ -1277,6 +1285,10 @@
   "light": {
    "s": "NC",
    "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
+  },
+  "locked": {
+   "s": "NC",
+   "r": "D10 (codex+claude consensus, D246): UNLOCK-DOOR?/WALK-THRU-DOOR? auto-unlock from most rooms, so a locked fact would cause false route pauses; no title-level passability owner. No fact by design until such an owner exists."
   }
  },
  "PlunderedHearts.z3.js": {
@@ -2491,6 +2503,10 @@
   "isOpen": {
    "s": "S",
    "r": "r45+r46 batch-r45r46.diff gate ACCEPT grok2 2026-10-30; opreg 13/0; 309x2 4 FLAKY Inform only isOpen=8"
+  },
+  "enterable": {
+   "s": "NC",
+   "r": "r45: the vehicle is the only VEHBIT carrier; no native positive reachable (Poet stuck at Hallway Junction) and only robots can board (D8 robot addressing). Reopen with D8 P8."
   }
  },
  "Wishbringer.z3.js": {
