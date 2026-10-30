@@ -119,6 +119,11 @@ var ActionSynth = {
             var mem = AttributeSchema._getMem && AttributeSchema._getMem();
             var forms = AttributeSchema.containerForms && AttributeSchema.containerForms(mem, objectId, context);
             if (forms != null && forms.indexOf(verb) < 0) return false;
+            if ((verb === "open" || verb === "close") && AttributeSchema.containerStateAuthority) {
+                var authority = AttributeSchema.containerStateAuthority(mem, objectId);
+                if (authority.status === "claimed-invalid") return false;
+                if (authority.status === "valid") return verb === "open" ? !authority.logicalOpen : authority.logicalOpen;
+            }
             if ((verb === "open" || verb === "close") && AttributeSchema.containerOpenState) {
                 var open = AttributeSchema.containerOpenState(mem, objectId);
                 if (open !== null) return verb === "open" ? !open : open;

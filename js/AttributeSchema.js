@@ -231,7 +231,7 @@ var AttributeSchema = {
             // AttrCalibrator object overrides still apply later in applyTo.
             // animate included: I6 PROFILE bit 0 is not Infocom ACTORBIT (grok1 #3590).
             var zilStructural = {
-                animate: 1, container: 1, openable: 1, open: 1, isOpen: 1, supporter: 1,
+                animate: 1, absent: 1, container: 1, openable: 1, open: 1, isOpen: 1, supporter: 1,
                 lockable: 1, locked: 1, door: 1, transparent: 1, enterable: 1, climbable: 1
             };
             // Operator #3782/#3790: ZIL PROFILE skip only for confirmed-zil-family (D198),
@@ -359,6 +359,8 @@ var AttributeSchema = {
         }
         AttributeSchema.applyObjectCapabilities(attrs, obj, mem);
         AttributeSchema.applyEquipmentState(attrs, obj, mem);
+        AttributeSchema.applyContainerState(attrs, obj, mem);
+        AttributeSchema.applyIlluminationState(attrs, obj, mem);
         return attrs;
     },
 
@@ -411,10 +413,116 @@ var AttributeSchema = {
         } catch (eActivationForms) { return owned ? [] : null; }
     },
 
+    // Explicit local light-emission state, separate from capability and room light.
+    illuminationState: function (mem, objectId) {
+        try {
+            if (!mem || !Number.isInteger(objectId) || typeof ZRamReader === 'undefined' ||
+                typeof ModuleLibrary === 'undefined' || typeof ModuleStatFactsClaude === 'undefined') return null;
+            var digest = ModuleLibrary.currentExecutableDigest(), fact = digest && ModuleStatFactsClaude[digest];
+            if (!fact || ZRamReader.executableLayoutFacts(mem) !== fact ||
+                (ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem))) return null;
+            var rule = fact.illuminationState;
+            if (!rule || typeof rule !== 'object' || Array.isArray(rule) || Object.keys(rule).length !== 2 ||
+                !Object.prototype.hasOwnProperty.call(rule, 'flag') || !Object.prototype.hasOwnProperty.call(rule, 'scope') ||
+                rule.flag !== 'on' || rule.scope !== 'inventory') return null;
+            var family = AttributeSchema._familyOf(mem), h = ZRamReader.header(mem);
+            if (!h || h.version < 3 || h.version > 5 || !family || family.classification !== 'confirmed-zil-family' ||
+                family.evidence !== 'validated' || !AttributeSchema.measuredFlagOwner(mem, 'on', objectId)) return null;
+            var first = ZRamReader.objectBase(h, 1), size = mem.byteLength || mem.length;
+            if (!Number.isInteger(first) || first < 0 || first > size - h.entrySize) return null;
+            var frontier = ZRamReader.u16(mem, first + (h.version <= 3 ? 7 : 12));
+            var count = (frontier - first) / h.entrySize, bit = fact.attributeMap && fact.attributeMap.on;
+            if (!Number.isInteger(count) || count < 2 || frontier >= h.staticMem || h.staticMem > size ||
+                objectId < 2 || objectId > count || !Number.isInteger(bit) || bit < 0 || bit >= (h.version <= 3 ? 32 : 48)) return null;
+            var player = ZRamReader.resolvePlayer(mem);
+            if (!player || player.ambiguous || ['measured-player-object', 'measured-player-global'].indexOf(player.source) < 0 ||
+                !Number.isInteger(player.id) || player.id < 2 || player.id > count || objectId === player.id) return null;
+            var current = objectId, seen = {};
+            for (var depth = 0; depth < count; depth++) {
+                if (current === player.id) return !!ZRamReader.attr(ZRamReader.objectLinks(mem, objectId), bit);
+                if (!Number.isInteger(current) || current < 2 || current > count || seen[current]) return null;
+                seen[current] = true;
+                var raw = ZRamReader.objectLinks(mem, current);
+                if (!raw) return null;
+                current = raw.parent;
+            }
+            return null;
+        } catch (eIlluminationState) { return null; }
+    },
+    applyIlluminationState: function (attrs, obj, mem) {
+        delete attrs.providingLight;
+        var state = AttributeSchema.illuminationState(mem, obj && obj.id);
+        if (state !== null) attrs.providingLight = state;
+    },
+
     // State restricts existing commands only when both meanings have a
     // positive owner. A legacy profile guess is never an open-state proof.
+    // Exact-executable authored container state; raw flags only, never calibration.
+    // Tagged invalid ownership prevents stale commands/badges from borrowing OPEN.
+    containerStateAuthority: function (mem, objectId) {
+        var claimed = false;
+        function result(status) { return { status: status }; }
+        try {
+            if (!mem || !Number.isInteger(objectId) || typeof ZRamReader === "undefined" ||
+                typeof ModuleLibrary === "undefined" || typeof ModuleStatFactsClaude === "undefined") return result("unowned");
+            var fact = ZRamReader.executableLayoutFacts(mem);
+            var digest = ModuleLibrary.currentExecutableDigest();
+            if (!fact || !digest || ModuleStatFactsClaude[digest] !== fact ||
+                (ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem))) return result("unowned");
+            var rules = fact.containerStateRules;
+            if (!Array.isArray(rules)) return result("unowned");
+            claimed = rules.some(function (rule) {
+                return rule && typeof rule === "object" && Number.isInteger(rule.objectId) &&
+                    rule.objectId > 0 && rule.objectId === objectId;
+            });
+            if (!claimed) return result("unowned");
+            var h = ZRamReader.header(mem), family = AttributeSchema._familyOf(mem);
+            if (!h || h.version < 3 || h.version > 5 || !family ||
+                family.classification !== "confirmed-zil-family" || family.evidence !== "validated") return result("claimed-invalid");
+            var size = mem.byteLength || mem.length, first = ZRamReader.objectBase(h, 1);
+            if (!Number.isInteger(first) || first < 0 || first > size - h.entrySize) return result("claimed-invalid");
+            var frontier = ZRamReader.u16(mem, first + (h.version <= 3 ? 7 : 12));
+            var count = (frontier - first) / h.entrySize, seen = {}, selected = null;
+            if (!Number.isInteger(count) || count < 2 || frontier >= h.staticMem || h.staticMem > size) return result("claimed-invalid");
+            var valid = rules.length > 0 && rules.every(function (rule) {
+                if (!rule || typeof rule !== "object" || Array.isArray(rule) || Object.keys(rule).length !== 2 ||
+                    !Object.prototype.hasOwnProperty.call(rule, "objectId") || !Object.prototype.hasOwnProperty.call(rule, "closedFlag") ||
+                    !Number.isInteger(rule.objectId) || rule.objectId < 2 || rule.objectId > count || seen[rule.objectId] ||
+                    rule.closedFlag !== "supporter") return false;
+                seen[rule.objectId] = true;
+                if (!AttributeSchema.measuredFlagOwner(mem, "container", rule.objectId) ||
+                    !AttributeSchema.measuredFlagOwner(mem, rule.closedFlag, rule.objectId)) return false;
+                var cb = fact.attributeMap && fact.attributeMap.container, sb = fact.attributeMap && fact.attributeMap.supporter;
+                var limit = h.version <= 3 ? 32 : 48;
+                if (!Number.isInteger(cb) || !Number.isInteger(sb) || cb < 0 || sb < 0 || cb >= limit || sb >= limit || cb === sb) return false;
+                var raw = ZRamReader.objectLinks(mem, rule.objectId);
+                if (!raw || [raw.parent, raw.sibling, raw.child].some(function (id) {
+                    return !Number.isInteger(id) || id < 0 || id > count;
+                }) || !ZRamReader.attr(raw, cb)) return false;
+                if (rule.objectId === objectId) selected = !ZRamReader.attr(raw, sb);
+                return true;
+            });
+            return valid && selected !== null ? { status: "valid", logicalOpen: selected, openable: true }
+                : result("claimed-invalid");
+        } catch (eContainerAuthority) { return result(claimed ? "claimed-invalid" : "unowned"); }
+    },
+    applyContainerState: function (attrs, obj, mem) {
+        delete attrs.containerContentsOnSurface;
+        var state = AttributeSchema.containerStateAuthority(mem, obj && obj.id);
+        if (state.status === "valid") {
+            attrs.open = attrs.isOpen = state.logicalOpen;
+            attrs.openable = true;
+            if (state.logicalOpen === false) attrs.containerContentsOnSurface = true;
+        } else if (state.status === "claimed-invalid") {
+            delete attrs.open; delete attrs.isOpen; delete attrs.openable;
+        }
+    },
+
     containerOpenState: function (mem, objectId) {
         try {
+            var authority = AttributeSchema.containerStateAuthority(mem, objectId);
+            if (authority.status === "valid") return authority.logicalOpen;
+            if (authority.status === "claimed-invalid") return null;
             if (!mem || !Number.isInteger(objectId)) return null;
             var h = ZRamReader.header(mem), count = ZRamReader.objectCount(mem, h);
             if (!h || objectId < 2 || objectId > count) return null;
@@ -734,6 +842,7 @@ var AttributeSchema = {
     /* Closed-tin rule (design addendum 3.1 / Phase 1 task). */
     canSeeInside: function (attrs) {
         attrs = attrs || {};
+        if (attrs.containerContentsOnSurface === true) return true;
         return !!(attrs.container ? (attrs.open || attrs.transparent) : attrs.supporter);
     },
 

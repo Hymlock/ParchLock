@@ -215,12 +215,23 @@ var EquipmentUI = {
         try {
             var mem = ZRamProvider.getMem();
             if (!mem) return false;
+            if ((flag === "open" || flag === "openable") && AttributeSchema.containerStateAuthority) {
+                var authority = AttributeSchema.containerStateAuthority(mem, obj && obj.id);
+                if (authority.status === "valid") return true;
+                if (authority.status === "claimed-invalid") return false;
+            }
             if (ZRamReader.isInformCompiled(mem)) return AttributeSchema.bitFor(flag, mem) !== null;
             if (typeof AttrCalibrator !== 'undefined' && AttrCalibrator.hasConfirmedFlag(mem, flag)) return true;
             // Non-Inform: also accept the bounded digest ownership path (verified ZIL facts). Capability and state stay
             // separate checks, so 'on' alone never implies 'switchable' (Codex #3466, #3380).
             return EquipmentUI.measuredOwner(mem, flag, obj && obj.id);
         } catch (e) { return false; }
+    },
+    illuminationStateTags: function (obj) {
+        try {
+            if (!obj || obj.demo || typeof AttributeSchema === 'undefined' || !AttributeSchema.illuminationState) return [];
+            return AttributeSchema.illuminationState(AttributeSchema._getMem(), obj.id) === true ? ['providing light'] : [];
+        } catch (eIlluminationTag) { return []; }
     },
     activationStateTags: function (obj) {
         var a = obj && obj.attrs || {};
@@ -703,6 +714,7 @@ var EquipmentUI = {
                 var a = o.attrs || {};
                 tags = tags.concat(EquipmentUI.containerStateTags(o));
                 tags = tags.concat(EquipmentUI.activationStateTags(o));
+                tags = tags.concat(EquipmentUI.illuminationStateTags(o));
                 var kidCount = EquipmentUI.childrenOf(m, o).length;
                 if (kidCount) tags.push(kidCount + " inside");
             }

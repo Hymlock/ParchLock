@@ -2761,6 +2761,7 @@ var ZRamReader = {
             return !!AttributeSchema.canSeeInside(attrs);
         }
         attrs = attrs || {};
+        if (attrs.containerContentsOnSurface === true) return true;
         if (attrs.container) return !!(attrs.open || attrs.isOpen || attrs.transparent);
         return !!attrs.supporter;
     },

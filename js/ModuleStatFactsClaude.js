@@ -309,6 +309,8 @@ var ModuleStatFactsClaude = {
         "openCapability": { "all": ["container"], "none": ["supporter"] },
     },
     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
+        // Native crate/trunk OPEN/CLOSE use supporter as closed-lid state; raw OPEN remains set.
+        "containerStateRules": [{ "objectId": 23, "closedFlag": "supporter" }, { "objectId": 39, "closedFlag": "supporter" }],
         // D232 local globals, roots only (work/investigations/r3-claude/localscope3/): Your Tent 71 flap, River Bank 82 water; reciprocal refusals, Fire Pit refuses flap. No dark witness (positive-only lit).
         "localScope": { "property": 17, "width": 1, "holder": 248, "roomLitAttribute": 21, "invisible": 30 },
         // FOODBIT7: sole bounded owner beef34, native EAT succeeds/removes;
@@ -326,6 +328,8 @@ var ModuleStatFactsClaude = {
     // Sorcerer (ZIL): stable PLAYER global 38 (Codex #3412/#3413, verified grok2 #3425): misc.zil WINNER=PROTAGONIST, PLAYER=WINNER;
     // binary 23591 store G38<-G163 at start, TELL stores only G163 (42801). Native TAKE book inserts into body 223 = G38. Ships with the v3 nested-room fix.
     "3bf24a3d2df3a0828ac1c3d2846580d92759bd20d408151632c760f4a92ec04e": {
+        // Accepted seeded-native FROTZ box/book on11 state; local Gear emission, never switchability or room light.
+        "illuminationState": { "flag": "on", "scope": "inventory" },
         // D232 local globals, roots only (work/investigations/r3-claude/localscope3/): Hallway 67 heavy wooden door, Lobby 18 road; reciprocal refusals; Your Quarters 17 dark ("too dark to see"). Stairs 177 listed but parented 31: skipped by the holder check.
         "localScope": { "property": 17, "width": 1, "holder": 55, "roomLitAttribute": 11, "invisible": 19 },
         // OPENBIT 15: OPEN sets 15 on desk drawer, journal, receptacle, ochre vial; CLOSE clears (drawer, receptacle). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
