@@ -1,0 +1,109 @@
+{
+ "i_default": "You are carrying:\n  a magic burin\n  a knife\n  a spell book\n \nSneffle of the Guild of Bakers is addressing the gathering. \"Do you know what this is doing to our business? Do you know how difficult it is to make those yummy butter pastries by hand? When a simple 'gloth' spell would fold the dough 83 times it was possible to make a profit, but now 'gloth' hardly works, and when it does, it usually folds the dough too often and the butter melts, or it doesn't come out the right size, or...\" He stops, apparently overwhelmed by the prospect of a world where the pastries have to be hand-made. \"Can't you do anything about this? You're supposed to know all about magic!\"\n \n>",
+ "ram": {
+  "book": 144,
+  "bookAttrBytes": [
+   0,
+   0,
+   15,
+   144
+  ],
+  "bookParent": 52,
+  "kids": [
+   {
+    "id": 178,
+    "name": "yomin spell",
+    "attrs": [
+     0,
+     0,
+     48,
+     0
+    ]
+   },
+   {
+    "id": 14,
+    "name": "rezrov spell",
+    "attrs": [
+     0,
+     0,
+     48,
+     0
+    ]
+   },
+   {
+    "id": 150,
+    "name": "frotz spell",
+    "attrs": [
+     0,
+     0,
+     48,
+     0
+    ]
+   },
+   {
+    "id": 204,
+    "name": "gnusto spell",
+    "attrs": [
+     0,
+     0,
+     48,
+     0
+    ]
+   },
+   {
+    "id": 229,
+    "name": "malyon spell",
+    "attrs": [
+     0,
+     0,
+     48,
+     0
+    ]
+   },
+   {
+    "id": 240,
+    "name": "jindak spell",
+    "attrs": [
+     0,
+     0,
+     48,
+     0
+    ]
+   },
+   {
+    "id": 35,
+    "name": "lesoch spell",
+    "attrs": [
+     0,
+     0,
+     48,
+     0
+    ]
+   }
+  ],
+  "playerKids": [
+   "magic burin",
+   "knife",
+   "spell book"
+  ]
+ },
+ "inv_collect": [
+  "magic burin",
+  "knife",
+  "spell book",
+  "yomin spell",
+  "rezrov spell",
+  "frotz spell",
+  "gnusto spell",
+  "malyon spell",
+  "jindak spell",
+  "lesoch spell"
+ ],
+ "verbose": "erbose\nVerbose descriptions.\n \nCouncil Chamber\nYou are in the Council Chamber of the ancient Guild Hall at Borphee. To the south is the entry of the Guild Hall. There is a meeting of the guildmasters going on. You are standing among a group of about ten sorcerers, each the master of an Enchanters Guild chapter somewhere in the land. Sneffle is addressing the meeting.\n \n>",
+ "i_verbose": "You are carrying:\n  a magic burin\n  a knife\n  a spell book\n \nHoobly of the Guild of Brewers stands, gesturing at the floury baker. \"You don't know what trouble is! Lately, what comes out of the vats, like as not, is cherry flavored or worse. The last vat, I swear it, tasted as if grues had been bathing in it. It takes magic to turn weird vegetables and water into good Borphee beer. Well, without magic, there isn't going to be any beer!\" This statement has a profound effect on portions of the crowd. You can hear rumblings from the back concerning Enchanters. The word \"traitors\" rises out of nowhere. Your fellow Enchanters are looking at one another nervously.\n \n>",
+ "brief": "rief\nBrief descriptions.\n \n>",
+ "i_brief": "You are carrying:\n  a magic burin\n  a knife\n  a spell book\n \nA tall, gruff fellow begins to speak. This is Gzornenplatz of the Guild of Huntsmen. \"I'm a simple man, and I don't know much about magic. But I do know that the wild beasts are kept out of the towns and villages not just by the huntsmen, but by spells as well. Just yesterday, one of my men was attacked and badly wounded by a troop of rat-ants. They'd slipped the bounds set down by a 'fripple' spell somehow. Are we going to let the sorcerers loose rat-ants on us, and worse?\" He sits, glaring significantly at the now-angry clump of mages around you.\n \n>",
+ "superbrief": "uperbrief\nSuper-brief descriptions.\n>",
+ "i_superbrief": "k.\n \nIn the midst of his splendid peroration, just as he was sketching out an insulting mythological allusion in iambic hexameter, the poet turns even greener than usual. His chin elongates and his skin begins to look sort of slimy. In the blink of an eye there stands at the podium, not the orator, but rather a large orange newt. \"Breek! Co-ax! Co-ax!\" it protests.\n \nAs you look around the room in shock, you discover that Ardis is not alone. Each and every guildmaster in the room has been turned into a frog, salamander, or other amphibian! All but one, that is: yourself!\n \nNo! There is one other survivor. At the rear of the room, a shadowy figure in a dark cloak slips quietly out the door.\n>",
+ "read": "ead book\nMy Spell Book\n \nThe blorple spell (explore an object's mystic connections).\nThe yomin spell (mind probe).\nThe rezrov spell (open even locked or enchanted objects).\nThe frotz spell (cause something to give off light).\nThe gnusto spell (write a magic spell into a spell book).\nThe malyon spell (animate).\nThe jindak spell (detect magic).\nThe lesoch spell (gust of wind).\n \nOddly enough, you have never before seen or heard of the blorple spell which now graces (or defaces?) your book.\n>"
+}

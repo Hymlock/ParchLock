@@ -1,0 +1,15 @@
+const {chromium}=require('playwright');const {pathToFileURL}=require('url');
+(async()=>{const b=await chromium.launch();try{const p=await b.newPage();
+await p.addInitScript(()=>{sessionStorage.setItem('PL_ParchLockSplashSeen','1');['PL_TutorialSeen','PL_MobileTutorialSeen','PL_LearnedWordsTutorialSeen'].forEach(k=>localStorage.setItem(k,'1'));});
+await p.goto(pathToFileURL(process.cwd()+'/play.html').href+'?story=games/Spellbreaker.z3.js');await p.waitForTimeout(1500);await p.evaluate(()=>{try{Message.Hide()}catch(e){}});
+const out={};let last='';
+const send=async c=>{await p.evaluate(c=>{Input.Clear();Input.Inject(c,true)},c);await p.waitForTimeout(500);const t=await p.locator('.BufferWindow').innerText();const d=t.slice(last.length);last=t;return d.trim().slice(-700);};
+last=await p.locator('.BufferWindow').innerText();
+const ram=()=>p.evaluate(()=>{const m=ZRamProvider.getMem(),R=ZRamReader;const all=[];for(let i=1;i<=255;i++){try{if(R.shortName(m,i)==='spell book')all.push(i)}catch(e){}}const bk=all[0];const kids=R.children(m,bk).map(id=>({id,name:R.shortName(m,id),attrs:Array.from(R.objectLinks(m,id).attrBytes)}));const pl=R.objectLinks(m,bk).parent;return{book:bk,bookAttrBytes:Array.from(R.objectLinks(m,bk).attrBytes),bookParent:pl,kids,playerKids:R.children(m,pl).map(id=>R.shortName(m,id))};});
+out.i_default=await send('i');out.ram=await ram();
+out.inv_collect=await p.evaluate(()=>ZRamProvider.collect().inventory.map(o=>o.name));
+out.verbose=await send('verbose');out.i_verbose=await send('i');
+out.brief=await send('brief');out.i_brief=await send('i');
+out.superbrief=await send('superbrief');out.i_superbrief=await send('i');
+out.read=await send('read book');
+console.log(JSON.stringify(out,null,1));}finally{await b.close();}})().catch(e=>{console.error(e);process.exitCode=1});
