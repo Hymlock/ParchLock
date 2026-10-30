@@ -349,6 +349,7 @@ var SemanticActions = {
             };
             if (c.Enter === false || c.enter === false) { form.Enter = false; form.enter = false; }
             if (c.learnedWordScope) form.learnedWordScope = c.learnedWordScope;
+            if (c.wornRemovalScope) form.wornRemovalScope = c.wornRemovalScope;
             return form;
         });
     },
@@ -373,6 +374,10 @@ var SemanticActions = {
                     context || "", String(c.objectId == null ? "" : c.objectId)].join("|");
                 if (byRendered[rendered]) {
                     var winner = byRendered[rendered];
+                    // Keep precedence/evidence while retaining the generated action's currency.
+                    if (c.wornRemovalScope && winner.command === c.command && String(winner.objectId) === String(c.objectId)) {
+                        winner.wornRemovalScope = c.wornRemovalScope;
+                    }
                     winner.evidence = (winner.evidence || []).concat((c.evidence || []).map(SemanticActions._d198Clone));
                     winner.provenance = winner.provenance || [];
                     if (c.source && winner.provenance.indexOf(c.source) < 0) winner.provenance.push(c.source);

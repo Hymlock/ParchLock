@@ -143,6 +143,8 @@ var ModuleStatFactsClaude = {
     // in cage' TRUE on steel cage 81, 'look in staff' FALSE (wooden staff 31), lamp 198 FALSE (pgapz3c); source exact 12/12.
     // Hooded figure 67 ('remove hood') excluded: not target-scoped. Applied together with openCapability.
     "dce7e6f757fb8379dea9da9c13cdda5412ba03fa9b70d79fb6b8c7faf5970692": {
+        // E5: Zork III WEARBIT4 + direct measured PLAYER G178; source requires DROP (no REMOVE). Retained native amulet39 DROP clears direct custody while bit4 stays set; generated/rendered dispatch independently verified at constructed tier (review-20261027/z3-custody-prototype-r1).
+        "equipmentState": { "wornWhen": "wearable-direct-player", "wornRemoval": "drop" },
         // D1 source-proven (r44): inventoryHiddenAttribute 25 = NDESCBIT (tp 59 fp 0 fn 0); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
         "inventoryHiddenAttribute": 25,
         "inventoryHiddenRecurses": true,
@@ -637,6 +639,8 @@ var ModuleStatFactsClaude = {
     },
     // Hollywood Hijinx (ZIL): WEARBIT 22 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match).
     "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e": {
+        // D12 R2: released V-CLOSE37544 tests compiled CAPACITY property8; Open has a different predicate.
+        "closeRule": { "capacityProp": 8 },
         // D1 source-proven (r44): inventoryHiddenAttribute 16 = NDESCBIT (tp 77 fp 0 fn 0); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
         "inventoryHiddenAttribute": 16,
         "inventoryHiddenRecurses": true,

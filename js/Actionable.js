@@ -1325,7 +1325,7 @@ var Actionable = {
         try {
             if (oid) {
                 var cmds = Actionable.resolveObjectCommands(oid, kind);
-                if (cmds && cmds[0] && cmds[0].learnedWordScope && typeof LearnedWords !== "undefined" && !LearnedWords.commandCurrent(cmds[0])) return false;
+                if (cmds && cmds[0] && !Actionable.radialCommandCurrent(cmds[0])) return false;
                 if (cmds && cmds.length) { primary = cmds[0].command; primaryIntent = cmds[0].intent || null; }
             }
         } catch (err) {}
@@ -2743,9 +2743,9 @@ var Actionable = {
     sharedObjectCommands: function (choices, kind) {
         var held = ((WorldModel.lastPayload || {}).inventory || []).map(function (o) { return String(o.id); });
         var eligible = choices.filter(function (o) { return (held.indexOf(String(o.id)) >= 0) === (kind === "inventory"); });
-        var lists = eligible.map(function (o) { return Actionable.resolveObjectCommands(o.id, kind, {allowAmbiguousReference:true}); });
+        var lists = eligible.map(function (o) { return Actionable.resolveObjectCommands(o.id, kind, {allowAmbiguousReference:true}).filter(function (entry) { return !entry.wornRemovalScope; }); });
         return (lists[0] || []).filter(function (entry) {
-            return lists.every(function (list) { return list.some(function (c) { return c.command === entry.command; }); });
+            return !entry.wornRemovalScope && lists.every(function (list) { return list.some(function (c) { return c.command === entry.command && !c.wornRemovalScope; }); });
         }).map(function (entry) {
             var members = lists.map(function (list) { return list.find(function (c) { return c.command === entry.command; }); });
             return Object.assign({}, entry, {
@@ -2756,7 +2756,9 @@ var Actionable = {
         });
     },
     radialCommandCurrent: function (command) {
+        if (command.sharedMembers && (command.wornRemovalScope || command.sharedMembers.some(function (c) { return !!c.wornRemovalScope; }))) return false;
         return (command.sharedMembers || [command]).every(function (c) {
+            if (c.wornRemovalScope && (typeof ActionSynth === "undefined" || !ActionSynth.wornRemovalCommandCurrent || !ActionSynth.wornRemovalCommandCurrent(c))) return false;
             return !c.learnedWordScope || typeof LearnedWords === "undefined" || LearnedWords.commandCurrent(c);
         });
     },

@@ -117,6 +117,7 @@ var ActionSynth = {
         }
         if (typeof AttributeSchema !== "undefined") {
             var mem = AttributeSchema._getMem && AttributeSchema._getMem();
+            if (verb === "close" && AttributeSchema.closeRuleAllows && AttributeSchema.closeRuleAllows(mem, objectId) === false) return false;
             var forms = AttributeSchema.containerForms && AttributeSchema.containerForms(mem, objectId, context);
             if (forms != null && forms.indexOf(verb) < 0) return false;
             if ((verb === "open" || verb === "close") && AttributeSchema.containerStateAuthority) {
@@ -294,6 +295,36 @@ var ActionSynth = {
         } catch (e) { return attrs; }
     },
 
+    wornRemovalScopeFor: function (obj) {
+        try {
+            if (!obj || obj.examineOnly || !Number.isInteger(obj.id) ||
+                typeof AttributeSchema === "undefined" || !AttributeSchema.wornRemovalForm ||
+                typeof Actionable === "undefined" || !Actionable.referenceFor ||
+                typeof ZRamProvider === "undefined" || !ZRamProvider.getMem) return null;
+            var inventory = (WorldModel.lastPayload || {}).inventory || [];
+            var matches = inventory.filter(function (item) { return item && String(item.id) === String(obj.id); });
+            if (matches.length !== 1 || matches[0].examineOnly) return null;
+            var mem = ZRamProvider.getMem();
+            if (AttributeSchema.wornRemovalForm(mem, obj.id) !== "drop" || !ActionSynth.literalAvailable("drop")) return null;
+            var grammar = GrammarProvider.decodeD198(mem);
+            if (!grammar || grammar.classification !== "confirmed-zil-family" || grammar.evidence !== "validated" ||
+                !(grammar.templates || []).some(function (t) { return t.verb === "drop" && t.objectCount === 1 && !t.prepositions.length; })) return null;
+            var ref = Actionable.referenceFor(matches[0]);
+            if (!ref || !ref.unique || !ref.verified || typeof ref.noun !== "string" || !ref.noun) return null;
+            var digest = ModuleLibrary.currentExecutableDigest();
+            if (!digest || !ActionSynth.authoredCommandAllowed(obj.id, "drop", "inventory")) return null;
+            return { kind: "wearable-direct-player-drop", digest: digest, id: obj.id, noun: ref.noun, command: "drop " + ref.noun };
+        } catch (eWornScope) { return null; }
+    },
+    wornRemovalCommandCurrent: function (command) {
+        if (!command || command.sharedMembers || !command.wornRemovalScope || command.verb !== "drop") return false;
+        var scope = command.wornRemovalScope, obj = { id: Number(command.objectId) };
+        var current = ActionSynth.wornRemovalScopeFor(obj);
+        return !!(current && scope.kind === current.kind && scope.digest === current.digest &&
+            scope.id === current.id && scope.noun === current.noun && scope.command === current.command &&
+            command.command === current.command && command.objectId === current.id);
+    },
+
     commandsForObject: (obj, context, containerName, options) => {
         if (!obj || !obj.name) return [];
         // Resolve the same observed vocabulary row used by marks and radials.
@@ -318,6 +349,8 @@ var ActionSynth = {
             ? Actionable.disambiguatedNoun(obj)
             : ((typeof Actionable !== "undefined" && Actionable.commandNounFor) ? Actionable.commandNounFor(obj) : obj.name));
         var attrs = ActionSynth.trustworthyAttrs(obj);
+        var wornRemoval = context === "inventory" && !containerName && !(options && options.allowAmbiguousReference)
+            ? ActionSynth.wornRemovalScopeFor(obj) : null;
         if (context === "inventory" && containerName) {
             // D78: "take X out of Y" was BOTH the display label and the
             // literal submitted command -- confirmed live on Anchorhead
@@ -371,7 +404,8 @@ var ActionSynth = {
             // D237: a worn switchable light (Stationfall headlamp, Starcross tape
             // library) keeps its on/off verbs; wearing it is its normal state.
             var switchVerbs = verbs.filter(function (v) { return /^(switch|turn) (on|off)$/.test(v); });
-            verbs = (ActionSynth.inspectVerbDisabled() ? ["remove"] : [ActionSynth.defaultInspectVerb(), "remove"]).concat(containerVerbs, switchVerbs);
+            var removal = wornRemoval ? "drop" : "remove";
+            verbs = (ActionSynth.inspectVerbDisabled() ? [removal] : [ActionSynth.defaultInspectVerb(), removal]).concat(containerVerbs, switchVerbs);
         } else if (context === "inventory") {
             // "wearable" maps to the pair ["wear","remove"] since either
             // could apply depending on current worn state -- but "remove"
@@ -453,6 +487,9 @@ var ActionSynth = {
                 command: cmd,
                 confidence: obj.confidence || 0.8
             };
+        });
+        if (wornRemoval) result.forEach(function (entry) {
+            if (entry.verb === "drop" && entry.command === wornRemoval.command) { entry.wornRemovalScope = wornRemoval; entry.label = "Drop"; }
         });
         if (typeof LearnedWords !== "undefined") LearnedWords.commands(obj).forEach(function (c) {
             if (!result.some(function (existing) { return existing.command === c.command; })) result.push(c);

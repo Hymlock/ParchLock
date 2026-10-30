@@ -116,6 +116,46 @@ var AttributeSchema = {
         c.set(key, { ident: ident, fam: fam });
         return fam;
     },
+    // D12 R2: title-owned V-CLOSE eligibility; null preserves existing forms.
+    closeRuleAllows: function (mem, objectId) {
+        try {
+            var live = AttributeSchema._getMem();
+            if (!mem || !live || mem.buffer !== live.buffer || mem.byteOffset !== live.byteOffset || mem.byteLength !== live.byteLength) return null;
+            var fact = ZRamReader.executableLayoutFacts(mem), rule = fact && fact.closeRule;
+            if (!rule || typeof rule !== "object" || Array.isArray(rule) || Object.keys(rule).length !== 1) return null;
+            var h = ZRamReader.header(mem), prop = rule.capacityProp;
+            if (!h || h.version < 3 || h.version > 5 || !Number.isInteger(prop) || prop < 1 || prop > (h.version <= 3 ? 31 : 63)) return null;
+            var fam = AttributeSchema._familyOf(mem);
+            if (!fam || fam.classification !== "confirmed-zil-family" || fam.evidence !== "validated") return null;
+            var count = ZRamReader.objectCount(mem, h);
+            if (!Number.isInteger(objectId) || objectId < 2 || objectId > count) return null;
+            var flags = ["container", "supporter", "door"];
+            if (!flags.every(function (k) { return AttributeSchema.measuredFlagOwner(mem, k, objectId); })) return null;
+            var raw = ZRamReader.objectLinks(mem, objectId);
+            if (!raw || !Number.isInteger(raw.props) || raw.props < 1 || raw.props >= mem.byteLength) return null;
+            var defaults = h.objTable + (h.version <= 3 ? 31 : 63) * 2;
+            if (!Number.isInteger(h.objTable) || h.objTable < 64 || defaults > mem.byteLength || defaults > h.staticMem) return null;
+            var start = raw.props + 1 + ZRamReader.u8(mem, raw.props) * 2;
+            if (start >= mem.byteLength) return null;
+            var props = ZRamReader.listProps(mem, objectId), previous = h.version <= 3 ? 32 : 64, end = start, matches = [];
+            if (!Array.isArray(props) || !props.every(function (p) {
+                var headerSize = h.version <= 3 || p.sz <= 2 ? 1 : 2;
+                // v4+ long headers may also encode one/two-byte values.
+                if (h.version > 3 && end < mem.byteLength && (ZRamReader.u8(mem, end) & 128)) headerSize = 2;
+                if (!Number.isInteger(p.num) || p.num < 1 || p.num >= previous || !Number.isInteger(p.sz) || p.sz < 1 || p.sz > 64 || p.dataAddr !== end + headerSize || p.dataAddr + p.sz > mem.byteLength) return false;
+                previous = p.num; end = p.dataAddr + p.sz;
+                if (p.num === prop) matches.push(p);
+                return true;
+            }) || end >= mem.byteLength || ZRamReader.u8(mem, end) !== 0 || matches.length > 1) return null;
+            var value;
+            if (matches.length) {
+                if (matches[0].sz !== 1 && matches[0].sz !== 2) return null;
+                value = matches[0].sz === 1 ? ZRamReader.u8(mem, matches[0].dataAddr) : ZRamReader.u16(mem, matches[0].dataAddr);
+            } else value = ZRamReader.u16(mem, h.objTable + (prop - 1) * 2);
+            var has = function (k) { return ZRamReader.attr(raw, fact.attributeMap[k]); };
+            return !!((has("container") && !has("supporter") && value !== 0) || has("door"));
+        } catch (eCloseRule) { return null; }
+    },
     openCapability: function () {
         try {
             var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest ? ModuleLibrary.currentExecutableDigest() : null;
@@ -751,6 +791,30 @@ var AttributeSchema = {
             var limit = header && header.version <= 3 ? 32 : 48;
             return measured && header && Number.isInteger(capability) && capability >= 0 && capability < limit ? fact : null;
         } catch (eMeasuredWorn) { return null; }
+    },
+
+    // Exact authored removal policy; capability alone never selects an action.
+    wornRemovalForm: function (mem, objectId) {
+        try {
+            var live = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null;
+            if (!mem || !live || !mem.buffer || mem.buffer !== live.buffer ||
+                mem.byteOffset !== live.byteOffset || mem.byteLength !== live.byteLength) return null;
+            var fact = AttributeSchema.directPlayerWornFact(mem);
+            if (!fact || fact.equipmentState.wornRemoval !== "drop" ||
+                Number.isInteger(fact.wornAttribute) ||
+                (ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem))) return null;
+            var h = ZRamReader.header(mem), family = AttributeSchema._familyOf(mem);
+            if (!h || h.version < 3 || h.version > 5 || !family ||
+                family.classification !== "confirmed-zil-family" || family.evidence !== "validated") return null;
+            var count = ZRamReader.objectCount(mem, h), bit = AttributeSchema.bitFor("wearable", mem);
+            if (!Number.isInteger(count) || !Number.isInteger(objectId) || objectId < 2 || objectId > count ||
+                bit !== fact.attributeMap.wearable) return null;
+            var player = ZRamReader.resolvePlayer(mem);
+            if (!player || player.ambiguous || !Number.isInteger(player.id) || player.id < 2 || player.id > count ||
+                player.id === objectId || ["measured-player-global", "measured-player-object"].indexOf(player.source) < 0) return null;
+            var links = ZRamReader.objectLinks(mem, objectId);
+            return links && links.parent === player.id && ZRamReader.attr(links, bit) ? "drop" : null;
+        } catch (eWornRemoval) { return null; }
     },
 
     // An authored physical garment domain, independently measured from the

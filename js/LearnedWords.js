@@ -147,7 +147,7 @@ var LearnedWords = {
         if (nested) forms = ['take'].concat(ActionSynth.nestedEdibleForms ? ActionSynth.nestedEdibleForms(obj.id,context) : []);
         else if (held) {
             forms = forms.filter(function (v) { return v !== 'take' && v !== 'remove'; });
-            if (ActionSynth.isWorn && ActionSynth.isWorn(obj)) forms = ['remove'];
+            if (ActionSynth.isWorn && ActionSynth.isWorn(obj)) forms = [ActionSynth.wornRemovalScopeFor && ActionSynth.wornRemovalScopeFor(obj) ? 'drop' : 'remove'];
             else forms = forms.concat(['drop','give to','put in']);
         } else forms = forms.filter(function (v) { return v !== 'drop' && v !== 'remove' && v !== 'wear'; });
         if (typeof SemanticActions !== 'undefined') {

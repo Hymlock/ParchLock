@@ -47,18 +47,26 @@ var EquipmentUI = {
         // parse_name alone is not ambiguity; learning owns its stricter gate.
         if (!ref.unique) return [];
         var nested = ActionSynth.heldContainerName(obj, WorldModel.lastPayload);
+        var scopedRemoval = !nested && ActionSynth.wornRemovalScopeFor ? ActionSynth.wornRemovalScopeFor(obj) : null;
         var forms = {}, candidates = [];
         function allowed(form) {
             if (!AttrCalibrator.dictionaryForm(form)) return false;
             if (form === ActionSynth.defaultInspectVerb() && ActionSynth.inspectVerbDisabled()) return false;
             if (nested) return form === "take" || form.indexOf("take out of ") === 0;
-            if (EquipmentUI.isWorn(obj)) return form === ((obj.attrs || {}).equipmentToggleVerb || "remove") || form === ActionSynth.defaultInspectVerb();
+            if (EquipmentUI.isWorn(obj)) return form === (scopedRemoval ? "drop" : ((obj.attrs || {}).equipmentToggleVerb || "remove")) || form === ActionSynth.defaultInspectVerb();
             return form !== "remove" && form !== "take";
         }
-        function add(form, enter) {
+        function add(form, enter, descriptor) {
             if (!allowed(form)) return;
-            if (forms[form]) { if (enter) forms[form].Enter = true; return; }
+            var scoped = descriptor && descriptor.wornRemovalScope ? descriptor : null;
+            if (scoped && !Actionable.radialCommandCurrent(scoped)) return;
+            if (forms[form]) {
+                if (scoped) { forms[form].ScopedCommand = scoped; forms[form].Enter = true; }
+                else if (enter && !forms[form].ScopedCommand) forms[form].Enter = true;
+                return;
+            }
             var item = { Label: form.charAt(0).toUpperCase() + form.slice(1), Form: form, Enter: enter };
+            if (scoped) item.ScopedCommand = scoped;
             forms[form] = item;
             candidates.push(item);
         }
@@ -82,7 +90,7 @@ var EquipmentUI = {
                 (command.objectIds && (command.objectIds.length !== 1 || String(command.objectIds[0]) !== String(obj.id)))) return;
             // The nested TAKE label is context only; preserve its actual provider command.
             var suffix = " " + ref.noun;
-            if (command.command && command.command.endsWith(suffix)) add(command.command.slice(0, -suffix.length), true);
+            if (command.command && command.command.endsWith(suffix)) add(command.command.slice(0, -suffix.length), true, command);
         });
         AttrCalibrator.exactFormsFor(obj.id).forEach(function (form) { add(form, true); });
         if (typeof LearnedWords !== "undefined") LearnedWords.candidates(obj.id).forEach(function (c) { add(c.form, c.enter); });
@@ -90,14 +98,24 @@ var EquipmentUI = {
         // D214 U5: wider editable lane, still dictionary-gated by allowed().
         (AttrCalibrator.ITEM_SUGGESTION_VERBS || []).forEach(function (form) { add(form, false); });
         if (typeof LearnedWords !== "undefined") candidates.forEach(function (c) { c.Label = LearnedWords.commandLabel(obj.id, c.Form, c.Label); });
+        if (scopedRemoval) candidates = candidates.filter(function (c) { return c.Form !== "drop" || !!c.ScopedCommand; });
+        candidates.forEach(function (c) { if (c.ScopedCommand) c.Label = "Drop"; });
         return candidates;
     },
-    selectYourselfAction: function (id, form, enter, generation, moduleKey) {
+    selectYourselfAction: function (id, form, enter, generation, moduleKey, selectedDescriptor) {
         if (!EquipmentUI.interactionReady(generation, moduleKey)) return;
         var model = EquipmentUI.model(), obj = model.byId[String(id)];
         if (!obj) return;
+        if (selectedDescriptor && !Actionable.radialCommandCurrent(selectedDescriptor)) return;
         var candidate = EquipmentUI.yourselfCommands(obj, model).find(function (item) { return item.Form === form; });
         if (!candidate || (enter && !candidate.Enter)) return;
+        if (selectedDescriptor) {
+            var current = candidate.ScopedCommand, prior = selectedDescriptor.wornRemovalScope;
+            if (!current || !prior || !Actionable.radialCommandCurrent(current) ||
+                current.command !== selectedDescriptor.command || current.objectId !== selectedDescriptor.objectId ||
+                current.wornRemovalScope.digest !== prior.digest || current.wornRemovalScope.noun !== prior.noun) return;
+            Actionable.runChosenCommand(current.command); return;
+        }
         // Every Yourself form is a complete one-object command ("wield
         // gauche"), so it runs at once like the object radial; Enter only
         // records provenance. Shared decision: Actionable.runChosenCommand.
@@ -120,8 +138,8 @@ var EquipmentUI = {
         EquipmentUI._holdPointerId = d.pointerId;
         EquipmentUI.cleanupDrag(d);
         candidates.forEach(function (item) {
-            item.Action = function () { EquipmentUI.selectYourselfAction(d.id, item.Form, item.Enter, d.generation, d.moduleKey); };
-            item.Command = item.Form + " " + Actionable.referenceFor(obj).noun;
+            item.Action = function () { EquipmentUI.selectYourselfAction(d.id, item.Form, item.Enter, d.generation, d.moduleKey, item.ScopedCommand); };
+            item.Command = item.ScopedCommand ? item.ScopedCommand.command : item.Form + " " + Actionable.referenceFor(obj).noun;
             item.Usage = Actionable.usageCount ? Actionable.usageCount(item.Command) : 0;
         });
         ParchLockQol.OpenRadial(d.lastX, d.lastY, candidates, { source: "inventory", noun: obj.name, objectId: obj.id });
