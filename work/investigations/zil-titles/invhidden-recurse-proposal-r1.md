@@ -35,3 +35,24 @@ parent is not); a FLAT control (Moonmist: both omitted); INVISIBLE control (subt
 operator 13/0; 309x2 gate.
 Prior guards: the inventory-hidden precondition (ZIL-BOARD), D145, the inventoryInvisibleAttribute rollout,
 inventoryHiddenPreservesWorn.
+
+## R2 (claude, adopting codex REVISE oct30-recovery/D1-r1-attack.md)
+1. P3 (actor possessions, Actionable.js ~1505) DEFERRED: player-inventory recursion does not establish an actor-possession
+   contract. Actors keep today's subtree skip.
+2. P2 is not an unconditional tunnel. An NDESC-hidden child goes through the SAME per-child path as any child (visibility,
+   container open/transparent, animate, unnamed-wrapper, cycle `seen`, depth budget, parentId); only its own label push is
+   suppressed. Concretely: compute `suppressLabel` instead of `return`, run the existing body, and skip only `out.push` for
+   that child.
+3. Title dispositions before any facts:
+   - Spellbreaker: EXCLUDED until its BRIEFBIT/verbosity exception (verbs.zil:1868) has a disposition. No
+     inventoryHiddenRecurses.
+   - Witness: DEBUG tags print only with DEBUG (PRINT-CONT 481). Normal play is plain RECURSES; disposition recorded.
+   - The fact requires the exact family/owner guards used elsewhere: confirmed-zil-family validated, executableLayoutFacts,
+     a boolean literal. Malformed means absent.
+4. Constructed harness matrix (Zork I bytes):
+   - hidden parent with a visible child (child listed, parent not);
+   - hidden + closed opaque parent (child not listed: normal container rule);
+   - hidden animate (normal animate rule);
+   - depth budget exhausted;
+   - worn + INVISIBLE (INVISIBLE skip wins; inventoryHiddenPreservesWorn still first for NDESC);
+   - no fact (byte-identical); Inform (unaffected); FLAT Moonmist (subtree skip unchanged).
