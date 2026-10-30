@@ -1,0 +1,28 @@
+[
+ {
+  "cmd": "look",
+  "root": 158,
+  "reply": ">look\nInternal map reference -- Weather Monitors\nGet me a seeing-eye robot.\n \n> ",
+  "player": 158,
+  "held": [
+   "80:panel [4,19]",
+   " 79:chip [12,18]",
+   " 77:obj [12,18]",
+   " 78:obj [12,18]"
+  ],
+  "appInv": []
+ },
+ {
+  "cmd": "waldo, look",
+  "root": 158,
+  "reply": ">waldo, look\nFC: Cryolink established to Waldo.\nWALDO: Internal map reference -- Gamma Repair\nI have reached the south end of this area. The walkway ends here.\nThe walkway is not in motion.\nA large object sits before me. Sonar indicates it is hollow, but not empty.\n \n> ",
+  "player": 158,
+  "held": [
+   "80:panel [4,19]",
+   " 79:chip [12,18]",
+   " 77:obj [12,18]",
+   " 78:obj [12,18]"
+  ],
+  "appInv": []
+ }
+]
