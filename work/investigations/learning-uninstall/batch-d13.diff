@@ -1,9 +1,9 @@
 diff --git a/harness/learning-stores.js b/harness/learning-stores.js
 new file mode 100644
-index 0000000..be4d2c9
+index 0000000..7aab603
 --- /dev/null
 +++ b/harness/learning-stores.js
-@@ -0,0 +1,239 @@
+@@ -0,0 +1,333 @@
 +// D13 harness: LearningStores ownership index, serialized persists and the
 +// erase-for-uninstalled action, against a constructed localStorage and a
 +// navigator.locks stub. Run: node harness/learning-stores.js
@@ -18,9 +18,9 @@ index 0000000..be4d2c9
 +function makeStorage() {
 +    const m = new Map();
 +    const s = {
-+        failRemove: new Set(), failSet: false,
++        failRemove: new Set(), failSet: false, failSetKeys: new Set(),
 +        getItem: k => (m.has(k) ? m.get(k) : null),
-+        setItem: (k, v) => { if (s.failSet) throw new Error("quota"); m.set(k, String(v)); },
++        setItem: (k, v) => { if (s.failSet || s.failSetKeys.has(k)) throw new Error("quota"); m.set(k, String(v)); },
 +        removeItem: k => { if (!s.failRemove.has(k)) m.delete(k); },
 +        key: i => Array.from(m.keys())[i] || null,
 +        get length() { return m.size; },
@@ -240,6 +240,100 @@ index 0000000..be4d2c9
 +        ok(!L.ok && /Web Locks/.test(L.reason), "no-locks disables erase");
 +    }
 +
++
++    {   // owner overflow: never forget an owner; entry becomes non-erasable
++        const { t } = await scenario([], Array.from({ length: 18 }, (_, i) => ({ id: "2-B", digest: "d" + i, path: "games/b" + i + ".z5.js" })), null);
++        const e = t.LearningStores.readIndex().index.entries["PL_LearnedWordOverrides_2-B"];
++        ok(e.owners.length === 16 && e.ownersOverflow === true && e.owners[0].digest === "d0", "overflow keeps owners + sentinel");
++        const L = t.LearningStores.list();
++        ok(L.removable === 0 && L.unknown === 1, "overflowed entry counted unknown");
++    }
++    {   // index write fails before erase: nothing removed
++        const { t, s } = await scenario([], [{ id: "2-B", digest: "dB", path: "games/b.z5.js" }], null);
++        const L = t.LearningStores.list();
++        s.failSetKeys.add("PL_ModuleLearningOwner_v1");
++        const r = await t.LearningStores.erase(L);
++        s.failSetKeys.clear();
++        ok(r.aborted && r.removed === 0 && s.getItem("PL_LearnedWordOverrides_2-B") !== null && !t.LearningStores.readIndex().index.tombstones["PL_LearnedWordOverrides_2-B"], "pre-write failure removes nothing");
++    }
++    {   // crash between durable tombstone and removal
++        const s = makeStorage(), l = makeLocks(), lib = makeLib([]);
++        const old = makeTab(s, l, lib);
++        lib.current = "dB"; old.ParchLock.StoryPath = "games/b.z5.js";
++        old.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "{\"old\":1}"); await settle();
++        old.LearningStores.read("PL_LearnedWordOverrides_2-B");
++        const idx = JSON.parse(s.getItem("PL_ModuleLearningOwner_v1"));
++        idx.tombstones["PL_LearnedWordOverrides_2-B"] = { erasedAtIndexRevision: idx.revision + 1 };
++        idx.pending = { revision: idx.revision + 1, keys: ["PL_LearnedWordOverrides_2-B"] };
++        s.setItem("PL_ModuleLearningOwner_v1", JSON.stringify(idx)); // the crash: keys never removed
++        const fresh = makeTab(s, l, lib);
++        ok(fresh.LearningStores.read("PL_LearnedWordOverrides_2-B") === null, "pending tombstone hides key from a new tab");
++        let reset = false;
++        old.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "{\"old\":2}", () => { reset = true; }); await settle();
++        const after = JSON.parse(s.getItem("PL_ModuleLearningOwner_v1"));
++        ok(reset && s.getItem("PL_LearnedWordOverrides_2-B") === null && !after.pending && after.revision === 1, "old hydrated tab after crash: no resurrection, erase recovered");
++        fresh.ParchLock.StoryPath = "games/b.z5.js";
++        fresh.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "{\"fresh\":1}"); await settle();
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === "{\"fresh\":1}", "fresh tab write after recovery allowed");
++    }
++    {   // R7 check(): pure hashing of unknown installed modules
++        const D = "a".repeat(64), E = "b".repeat(64);
++        const { t, lib } = await scenario([{ path: "games/a.z5.js", digest: null }], [{ id: "2-B", digest: E, path: "games/b.z5.js" }], { digest: null, path: "" });
++        lib.rev = 0; lib.libraryRevision = () => lib.rev;
++        let calls = 0;
++        lib.executableDigestForPath = p => { calls++; return Promise.resolve(D); };
++        ok(t.LearningStores.list().removable === 0, "before check: unknown");
++        const L = await t.LearningStores.check();
++        ok(calls === 1 && L.removable === 1 && lib.current === null, "check hashes unknown module, current identity untouched");
++        lib.rev = 1;
++        ok(t.LearningStores.list().removable === 0, "library change invalidates checked digests");
++        lib.executableDigestForPath = p => Promise.reject(new Error("io"));
++        ok((await t.LearningStores.check()).removable === 0, "hash failure stays unknown");
++        lib.executableDigestForPath = p => { lib.rev++; return Promise.resolve(D); };
++        ok((await t.LearningStores.check()).removable === 0, "library change during await fails closed");
++        lib.executableDigestForPath = p => Promise.resolve(E);
++        const L3 = await t.LearningStores.check();
++        ok(L3.removable === 0 && L3.installed === 1, "hashed installed digest matching owner keeps key");
++        const ml = fs.readFileSync(path.join(ROOT, "js", "ModuleLibrary.js"), "utf8");
++        const body = ml.slice(ml.indexOf("function executableDigestForPath"), ml.indexOf("function identityForPath"));
++        ok(body.length > 50 && !/captureExecutableIdentity|executableIdentity\s*=|executableIdentityByPath|executableIdentityPromise/.test(body) && /inspect\(/.test(body) && /executableBytes/.test(body), "executableDigestForPath is side-effect free");
++    }
++
++    {   // 7: cross-tab -- a newer mutation after another tab advanced is kept
++        const s = makeStorage(), l = makeLocks(), lib = makeLib([]);
++        const A = makeTab(s, l, lib), B = makeTab(s, l, lib);
++        lib.current = "dB"; A.ParchLock.StoryPath = B.ParchLock.StoryPath = "games/b.z5.js";
++        A.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "a1"); await settle();
++        for (const v of ["b1", "b2", "b3"]) { B.LearningStores.persist("learnedWords", { identityKey: "2-B" }, v); await settle(); }
++        A.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "a-latest-user-mutation"); await settle();
++        const e = A.LearningStores.readIndex().index.entries["PL_LearnedWordOverrides_2-B"];
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === "a-latest-user-mutation" && e.storeRevision === 5 && A.LearningStores.pending() === 0, "cross-tab newer mutation committed (rev " + e.storeRevision + ")");
++    }
++    {   // 5: queued A -> switch/load/write B -> A erased: B intact, A not resurrected
++        const s = makeStorage(), l = makeLocks(), lib = makeLib([]);
++        const t = makeTab(s, l, lib);
++        let id = "1-A";
++        t.LearnedWords.identity = () => id;
++        lib.current = "dA"; t.ParchLock.StoryPath = "games/a.z5.js";
++        t.LearnedWords.load();
++        l.fail = true;
++        t.LearnedWords.write({ version: 1, gameIdentityKey: "1-A", rows: { "exact:1:a": { label: "a" } } });
++        await settle();
++        ok(t.LearningStores.pending() === 1, "A queued");
++        // erase A elsewhere: tombstone after A hydrated
++        const idx = { v: 1, revision: 5, entries: {}, tombstones: { "PL_LearnedWordOverrides_1-A": { erasedAtIndexRevision: 5 } } };
++        s.setItem("PL_ModuleLearningOwner_v1", JSON.stringify(idx));
++        id = "2-B"; lib.current = "dB"; t.ParchLock.StoryPath = "games/b.z5.js";
++        t.LearnedWords.load();
++        t.LearnedWords._projection = { marker: 1 };
++        const bData = { version: 1, gameIdentityKey: "2-B", rows: { "exact:2:b": { label: "b" } } };
++        l.fail = false;
++        t.LearnedWords.write(bData, true);
++        await settle();
++        ok(s.getItem("PL_LearnedWordOverrides_1-A") === null, "A not resurrected");
++        ok(t.LearnedWords._key === "2-B" && t.LearnedWords._data === bData && t.LearnedWords._undo.length === 1 && t.LearnedWords._projection.marker === 1, "B rows/undo/projection preserved");
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === JSON.stringify(bData), "B written");
++    }
 +    console.log("learning-stores: " + pass + " PASS, " + fail + " FAIL");
 +    process.exit(fail ? 1 : 0);
 +})();
@@ -354,7 +448,7 @@ index 26a2564..554f1e1 100644
  };
 +if (typeof LearningStores !== "undefined") LearningStores.register("exitCalib", "PM_ExitCalib_", ExitCalibrator.learningKeyFor);
 diff --git a/js/LearnedWords.js b/js/LearnedWords.js
-index f3ff9ba..3afa898 100644
+index f3ff9ba..203640f 100644
 --- a/js/LearnedWords.js
 +++ b/js/LearnedWords.js
 @@ -17,7 +17,7 @@ var LearnedWords = {
@@ -366,12 +460,12 @@ index f3ff9ba..3afa898 100644
              if (key && parsed && parsed.version === 1 && parsed.gameIdentityKey === key && parsed.rows && !Array.isArray(parsed.rows)) {
                  var valid = Object.keys(parsed.rows).every(function (id) {
                      var r = parsed.rows[id];
-@@ -38,11 +38,16 @@ var LearnedWords = {
+@@ -38,11 +38,23 @@ var LearnedWords = {
      },
      write: function (next, history) {
          if (!LearnedWords.identity() || next.gameIdentityKey !== LearnedWords.identity()) throw new Error("This story changed. Reopen the editor.");
 -        localStorage.setItem(LearnedWords.PREFIX + next.gameIdentityKey, JSON.stringify(next));
-+        if (typeof LearningStores !== "undefined") LearningStores.persist("learnedWords", { identityKey: next.gameIdentityKey }, JSON.stringify(next), LearnedWords.resetErased);
++        if (typeof LearningStores !== "undefined") LearningStores.persist("learnedWords", { identityKey: next.gameIdentityKey }, JSON.stringify(next), LearnedWords.resetErasedFor(next.gameIdentityKey));
 +        else localStorage.setItem(LearnedWords.PREFIX + next.gameIdentityKey, JSON.stringify(next));
          if (history) LearnedWords._undo.push(JSON.stringify(LearnedWords.load()));
          if (LearnedWords._undo.length > 100) LearnedWords._undo.shift();
@@ -380,21 +474,28 @@ index f3ff9ba..3afa898 100644
 +    // D13: exact key generator for the learning ownership index.
 +    learningKeyFor: function (inputs) { return inputs && typeof inputs.identityKey === "string" && inputs.identityKey ? LearnedWords.PREFIX + inputs.identityKey : null; },
 +    // D13: this key was erased (another tab) after hydration -- start fresh.
-+    resetErased: function () { LearnedWords._data = null; LearnedWords._key = null; LearnedWords._undo = []; },
++    // Bound to identity A: a later erase of A never touches story B's state.
++    resetErasedFor: function (a) {
++        return function () {
++            if (LearnedWords._key !== a) return;
++            LearnedWords._data = null; LearnedWords._key = null; LearnedWords._undo = [];
++            LearnedWords.clearProjection();
++        };
++    },
      rowKey: function (type, objectId, form) { return type + ":" + String(objectId) + ":" + encodeURIComponent(form); },
      override: function (id) { var r = LearnedWords.load().rows[id]; return r && !r.classificationOnly ? r : null; },
      suppressed: function (type, objectId, form) {
-@@ -623,3 +628,4 @@ var LearnedWords = {
+@@ -623,3 +635,4 @@ var LearnedWords = {
          if (LearnedWords._tourFocus && LearnedWords._tourFocus.isConnected) LearnedWords._tourFocus.focus();
      }
  };
 +if (typeof LearningStores !== "undefined") LearningStores.register("learnedWords", LearnedWords.PREFIX, LearnedWords.learningKeyFor);
 diff --git a/js/LearningStores.js b/js/LearningStores.js
 new file mode 100644
-index 0000000..b7efb87
+index 0000000..9a9120a
 --- /dev/null
 +++ b/js/LearningStores.js
-@@ -0,0 +1,323 @@
+@@ -0,0 +1,401 @@
 +/* D13 (R3-R6): module learning store ownership and erase-for-uninstalled.
 + *
 + * Each module-scoped learning store registers its exact localStorage key at
@@ -443,6 +544,7 @@ index 0000000..b7efb87
 +            Object.keys(p.entries).forEach(function (k) {
 +                var e = p.entries[k];
 +                if (!isObj(e) || e.key !== k || typeof e.kind !== "string" || !Array.isArray(e.owners) || !validInt(e.storeRevision)) throw 0;
++                if (e.ownersOverflow != null && e.ownersOverflow !== true) throw 0;
 +                e.owners.forEach(function (o) {
 +                    if (!isObj(o) || !isObj(o.inputs) || (o.digest != null && typeof o.digest !== "string") || typeof o.path !== "string") throw 0;
 +                });
@@ -450,6 +552,8 @@ index 0000000..b7efb87
 +            Object.keys(p.tombstones).forEach(function (k) {
 +                if (!isObj(p.tombstones[k]) || !validInt(p.tombstones[k].erasedAtIndexRevision)) throw 0;
 +            });
++            if (p.pending != null && (!isObj(p.pending) || !validInt(p.pending.revision) || !Array.isArray(p.pending.keys) ||
++                !p.pending.keys.every(function (k) { return typeof k === "string" && p.tombstones[k]; }))) throw 0;
 +            return { ok: true, index: p };
 +        } catch (e2) { return { ok: false, index: emptyIndex(), reason: "The learning index is damaged, so nothing can be erased." }; }
 +    }
@@ -478,6 +582,30 @@ index 0000000..b7efb87
 +        return { digest: digest, path: path };
 +    }
 +
++    // Owners are never forgotten: past the bound the entry is marked
++    // ownersOverflow (a permanent sentinel) and can never be erased.
++    function addOwner(e, owner) {
++        if (e.owners.some(function (o) { return sameOwner(o, owner); })) return;
++        if (e.owners.length >= MAX_OWNERS) { e.ownersOverflow = true; return; }
++        e.owners.push(owner);
++    }
++
++    // Finish an erase interrupted after its tombstones became durable. Its
++    // keys stay tombstoned; removal is retried and the revision finalized.
++    function recover(index) {
++        if (!index.pending) return false;
++        var ls = storage();
++        index.pending.keys.forEach(function (k) {
++            var gone = false;
++            try { ls.removeItem(k); gone = ls.getItem(k) == null; } catch (e) {}
++            if (gone) delete index.entries[k];
++        });
++        index.revision = Math.max(index.revision, index.pending.revision);
++        delete index.pending;
++        writeIndex(index);
++        return true;
++    }
++
 +    function sameOwner(a, b) {
 +        return a.digest === b.digest && a.path === b.path && JSON.stringify(a.inputs) === JSON.stringify(b.inputs);
 +    }
@@ -485,7 +613,13 @@ index 0000000..b7efb87
 +    // Value a store should hydrate from: the newest queued snapshot for the
 +    // key, else storage. Records the index revision the store hydrated at.
 +    function read(key) {
-+        hydratedAt[key] = readIndex().index.revision;
++        var idx = readIndex().index;
++        hydratedAt[key] = idx.revision;
++        if (idx.pending && idx.pending.keys.indexOf(key) >= 0) {
++            // Mid-erase (or interrupted erase): the key is already gone.
++            hydratedAt[key] = idx.pending.revision;
++            return null;
++        }
 +        for (var i = queue.length - 1; i >= 0; i--) if (queue[i].key === key) return queue[i].value;
 +        try { var ls = storage(); return ls ? ls.getItem(key) : null; } catch (e) { return null; }
 +    }
@@ -495,6 +629,7 @@ index 0000000..b7efb87
 +        var r = readIndex();
 +        var index = r.ok ? r.index : null;
 +        if (index) {
++            recover(index);
 +            var tomb = index.tombstones[snap.key];
 +            var hyd = snap.hydratedRevision == null ? -1 : snap.hydratedRevision;
 +            if (tomb && tomb.erasedAtIndexRevision > hyd) {
@@ -505,21 +640,17 @@ index 0000000..b7efb87
 +                if (typeof snap.reset === "function") { try { snap.reset(); } catch (e) {} }
 +                return "erased";
 +            }
-+            var entry = index.entries[snap.key];
-+            // Superseded only by a strictly newer committed snapshot.
-+            if (entry && entry.kind === snap.kind && entry.storeRevision > snap.storeRevision) {
-+                return "superseded";
-+            }
 +        }
 +        ls.setItem(snap.key, snap.value);
 +        if (!index) return "written-unindexed";
 +        var e = index.entries[snap.key];
 +        if (!e || e.kind !== snap.kind) e = index.entries[snap.key] = { key: snap.key, kind: snap.kind, owners: [], storeRevision: 0 };
-+        if (!e.owners.some(function (o) { return sameOwner(o, snap.owner); })) {
-+            e.owners.push(snap.owner);
-+            if (e.owners.length > MAX_OWNERS) e.owners.shift();
-+        }
-+        e.storeRevision = Math.max(e.storeRevision, snap.storeRevision);
++        addOwner(e, snap.owner);
++        // The committed revision is assigned here, under the lock. Cross-tab
++        // writes are last-writer-wins in commit order; another tab's commit
++        // never discards this tab's newer mutation.
++        e.storeRevision = e.storeRevision + 1;
++        localRev[snap.key] = e.storeRevision;
 +        if (index.tombstones[snap.key]) delete index.tombstones[snap.key];
 +        writeIndex(index);
 +        return "written";
@@ -570,7 +701,7 @@ index 0000000..b7efb87
 +                if (r.ok) {
 +                    var e = r.index.entries[key];
 +                    if (!e || e.kind !== kind) e = r.index.entries[key] = { key: key, kind: kind, owners: [], storeRevision: 0 };
-+                    if (!e.owners.some(function (o) { return sameOwner(o, owner); })) { e.owners.push(owner); if (e.owners.length > MAX_OWNERS) e.owners.shift(); }
++                    addOwner(e, owner);
 +                    e.storeRevision += 1;
 +                    writeIndex(r.index);
 +                }
@@ -584,15 +715,41 @@ index 0000000..b7efb87
 +        if (hydratedAt[key] == null) hydratedAt[key] = readIndex().index.revision;
 +        var snap = Object.freeze({
 +            key: key, kind: kind, owner: Object.freeze(owner), value: String(value),
-+            storeRevision: ++localRev[key], hydratedRevision: hydratedAt[key], seq: ++seqNo, reset: reset
++            // baseRevision: the committed revision this tab hydrated from or
++            // last committed. Supersession is FIFO within this tab's queue only.
++            baseRevision: localRev[key], hydratedRevision: hydratedAt[key], seq: ++seqNo, reset: reset
 +        });
 +        queue.push(snap);
 +        return drain();
 +    }
 +
 +    // ---- installed-set and erase -------------------------------------------------
++    var checked = Object.create(null); // path -> {digest, rev}, from check()
++    function libRev() { try { return ModuleLibrary.libraryRevision ? ModuleLibrary.libraryRevision() : null; } catch (e) { return null; } }
++
++    // R7: hash installed modules whose executable digest is unknown, from
++    // their stored bytes, without touching the current-story identity. Any
++    // failure or library change leaves them unknown (fail closed).
++    function check() {
++        var inst = installedSet();
++        if (!inst || !ModuleLibrary.executableDigestForPath) return Promise.resolve(list());
++        var rev = libRev();
++        var chain = Promise.resolve(true);
++        inst.missingPaths.forEach(function (p) {
++            chain = chain.then(function (still) {
++                if (!still) return false;
++                return Promise.resolve().then(function () { return ModuleLibrary.executableDigestForPath(p); }).then(function (d) {
++                    if (libRev() !== rev) return false;
++                    if (typeof d === "string" && /^[0-9a-f]{64}$/.test(d)) checked[p] = { digest: d, rev: rev };
++                    return true;
++                }, function () { return libRev() === rev; });
++            });
++        });
++        return chain.then(function () { return list(); });
++    }
++
 +    function installedSet() {
-+        var paths = [], digests = [], unknown = 0;
++        var paths = [], digests = [], unknown = 0, missingPaths = [];
 +        var mods = [];
 +        try { mods = ModuleLibrary.all(); } catch (e) { return null; }
 +        var ls = storage();
@@ -602,9 +759,10 @@ index 0000000..b7efb87
 +            var d = null;
 +            try { d = ModuleLibrary.currentExecutableDigest(p) || null; } catch (e1) {}
 +            if (!d) { try { d = ls.getItem(ModuleLibrary.transcriptDigestKey(p)) || null; } catch (e2) {} }
-+            if (d) digests.push(d); else unknown++;
++            if (!d && checked[p] && checked[p].rev === libRev()) d = checked[p].digest;
++            if (d) digests.push(d); else { unknown++; missingPaths.push(p); }
 +        });
-+        return { paths: paths, digests: digests, unknown: unknown };
++        return { paths: paths, digests: digests, unknown: unknown, missingPaths: missingPaths };
 +    }
 +
 +    function list() {
@@ -631,7 +789,8 @@ index 0000000..b7efb87
 +                    (cur.path && o.path === cur.path) || (cur.digest && o.digest === cur.digest);
 +            });
 +            if (installed) { out.installed++; return; }
-+            if (inst.unknown > 0 || e.owners.some(function (o) { return !o.digest; })) { out.unknown++; return; }
++            if (r.index.pending && r.index.pending.keys.indexOf(k) >= 0) return;
++            if (e.ownersOverflow || inst.unknown > 0 || e.owners.some(function (o) { return !o.digest; })) { out.unknown++; return; }
 +            if (value == null) return;
 +            out.candidates.push({ key: k, value: value });
 +        });
@@ -653,6 +812,8 @@ index 0000000..b7efb87
 +        var l = locks();
 +        if (!l || !listing || !listing.ok) return Promise.resolve({ aborted: true, reason: (listing && listing.reason) || "Erasing is unavailable." });
 +        return Promise.resolve(l.request(LOCK, function () {
++            var pre = readIndex();
++            if (pre.ok && pre.index.pending) { try { recover(pre.index); } catch (eR) {} }
 +            var now = list();
 +            if (!now.ok || now.signature !== listing.signature || now.candidates.length !== listing.candidates.length ||
 +                now.candidates.some(function (c, i) { return c.key !== listing.candidates[i].key || c.value !== listing.candidates[i].value; })) {
@@ -661,18 +822,28 @@ index 0000000..b7efb87
 +            var ls = storage();
 +            var index = readIndex().index;
 +            var nextRev = index.revision + 1;
++            var keys = listing.candidates.map(function (c) { return c.key; });
++            // 1. Tombstones + pending set durable (read back) BEFORE any removal.
++            keys.forEach(function (k) { index.tombstones[k] = { erasedAtIndexRevision: nextRev }; });
++            index.pending = { revision: nextRev, keys: keys };
++            var notRecorded = { aborted: true, reason: "The erase could not be recorded; nothing was erased.", removed: 0, failed: 0 };
++            try { writeIndex(index); } catch (eW) { return notRecorded; }
++            var back = readIndex();
++            if (!back.ok || !back.index.pending || back.index.pending.revision !== nextRev ||
++                JSON.stringify(back.index.pending.keys) !== JSON.stringify(keys)) return notRecorded;
++            index = back.index;
++            // 2. Remove each key, confirmed by read-back.
 +            var removed = 0, failed = 0;
-+            listing.candidates.forEach(function (c) {
++            keys.forEach(function (k) {
 +                var gone = false;
-+                try { ls.removeItem(c.key); gone = ls.getItem(c.key) == null; } catch (e) { gone = false; }
-+                if (gone) {
-+                    removed++;
-+                    delete index.entries[c.key];
-+                    index.tombstones[c.key] = { erasedAtIndexRevision: nextRev };
-+                } else failed++;
++                try { ls.removeItem(k); gone = ls.getItem(k) == null; } catch (e) { gone = false; }
++                if (gone) { removed++; delete index.entries[k]; }
++                else { failed++; delete index.tombstones[k]; } // still present: keep its entry
 +            });
-+            index.revision = nextRev; // written last
-+            try { writeIndex(index); } catch (eW) { return { aborted: false, removed: removed, failed: failed, indexWriteFailed: true }; }
++            // 3. Finalize: revision written last.
++            delete index.pending;
++            index.revision = nextRev;
++            try { writeIndex(index); } catch (eF) { return { aborted: false, removed: removed, failed: failed, indexWriteFailed: true }; }
 +            return { aborted: false, removed: removed, failed: failed };
 +        })).catch(function (err) { return { aborted: true, reason: "Could not get exclusive access; nothing was erased." }; });
 +    }
@@ -691,33 +862,95 @@ index 0000000..b7efb87
 +    function addOptions(container) {
 +        if (typeof $ === "undefined") return;
 +        var row = $("<div class='pl-learning-erase'>").appendTo(container);
-+        var status = $("<span id='pl-learning-erase-status' role='status'>");
-+        var button = $("<button type='button'>").text("Erase learned data for uninstalled stories").appendTo(row);
-+        status.appendTo(row);
-+        function refresh(result) {
-+            var listing = list();
-+            button.prop("disabled", !listing.ok || listing.removable === 0);
-+            status.text(lastError ? lastError + " " + describe(listing, result) : describe(listing, result));
-+            return listing;
++        var checkBtn = $("<button type='button'>").text("Check learned data for uninstalled stories").appendTo(row);
++        var eraseBtn = $("<button type='button'>").text("Erase learned data for uninstalled stories").prop("disabled", true).appendTo(row);
++        var status = $("<span id='pl-learning-erase-status' role='status'>").appendTo(row);
++        var listing = null;
++        function show(l, result) {
++            listing = l;
++            eraseBtn.prop("disabled", !l || !l.ok || l.removable === 0);
++            status.text((lastError ? lastError + " " : "") + describe(l, result));
 +        }
-+        button.on("click", function () {
-+            var listing = refresh();
-+            if (!listing.ok || !listing.removable) return;
-+            if (!confirm("Erase learned data for " + listing.removable + " item(s) from stories that are no longer installed? Maps, saves and transcripts are kept.")) return;
-+            erase(listing).then(function (res) { refresh(res); });
++        var first = list();
++        status.text((lastError ? lastError + " " : "") + (first.ok ? "Check to find learned data from uninstalled stories. " + describe(first) : first.reason));
++        checkBtn.prop("disabled", !first.ok);
++        checkBtn.on("click", function () {
++            checkBtn.prop("disabled", true); eraseBtn.prop("disabled", true);
++            status.text("Checking your stories\u2026");
++            check().then(function (l) { checkBtn.prop("disabled", false); show(l); },
++                function () { checkBtn.prop("disabled", false); show(list()); });
 +        });
-+        refresh();
++        eraseBtn.on("click", function () {
++            if (!listing || !listing.ok || !listing.removable) return;
++            if (!confirm("Erase learned data for " + listing.removable + " item(s) from stories that are no longer installed? Maps, saves and transcripts are kept.")) return;
++            eraseBtn.prop("disabled", true);
++            erase(listing).then(function (res) { show(res.listing || list(), res); });
++        });
 +    }
 +
 +    return {
 +        INDEX_KEY: INDEX_KEY, LOCK: LOCK,
 +        register: register, read: read, persist: persist, readIndex: readIndex,
-+        list: list, erase: erase, describe: describe, addOptions: addOptions,
++        list: list, check: check, erase: erase, describe: describe, addOptions: addOptions,
 +        entryValid: entryValid, pending: function () { return queue.length; },
 +        lastError: function () { return lastError; },
 +        _drain: drain
 +    };
 +})();
+diff --git a/js/ModuleLibrary.js b/js/ModuleLibrary.js
+index 013bf18..4f0c7c4 100644
+--- a/js/ModuleLibrary.js
++++ b/js/ModuleLibrary.js
+@@ -19,6 +19,7 @@ var ModuleLibrary = (function () {
+     var executableIdentityPromiseByPath = Object.create(null);
+     var executableIdentitySequence = 0;
+     var channel = null;
++    var libraryRevision = 0; // D13: bumped on every library change
+     var cache = loadJson(CACHE_KEY, []);
+     var hidden = loadJson(HIDDEN_KEY, []);
+ 
+@@ -437,6 +438,25 @@ var ModuleLibrary = (function () {
+         return safe.then(function () { return base64; });
+     }
+ 
++    // D13/R7: side-effect-free executable digest of an installed module, over
++    // the exact stored bytes and the same extraction as identity capture
++    // (blorb Exec chunk). Never touches the current-story identity state.
++    function executableDigestForPath(value) {
++        var path = normalizePath(value);
++        var item = find(path);
++        if (!item) return Promise.reject(new Error("Module is not installed."));
++        var load = item.Local
++            ? getBytes(path).then(function (bytes) { return { bytes: bytes, name: path.replace(/\.js$/i, "") }; })
++            : fetch(path).then(function (res) {
++                if (!res.ok) throw new Error("Module bytes are unavailable.");
++                return res.arrayBuffer();
++            }).then(function (buffer) { return { bytes: new Uint8Array(buffer), name: path }; });
++        return load.then(function (x) {
++            var inspected = inspect(x.bytes, x.name);
++            return hash(inspected.executableBytes.slice());
++        });
++    }
++
+     function identityForPath(value) {
+         var sourcePath = value ? normalizePath(value) : "";
+         if (!sourcePath) {
+@@ -616,6 +636,7 @@ var ModuleLibrary = (function () {
+     }
+ 
+     function changed(suppressBroadcast) {
++        libraryRevision++;
+         listeners.slice().forEach(function (listener) { try { listener(); } catch (e) {} });
+         try { window.dispatchEvent(new CustomEvent("parchlock:modules-changed")); } catch (e) {}
+         try { if (channel && !suppressBroadcast) channel.postMessage("changed"); } catch (e2) {}
+@@ -734,6 +755,7 @@ var ModuleLibrary = (function () {
+         restoreBuiltIns: restoreBuiltIns, renameLocal: renameLocal, openManager: openManager, onChanged: onChanged,
+         reconcile: reconcile, inspect: inspect, hash: hash, sha256Fallback: sha256Fallback,
+         currentExecutableDigest: currentExecutableDigest,
++        executableDigestForPath: executableDigestForPath, libraryRevision: function () { return libraryRevision; },
+         currentExecutableBytes: currentExecutableBytes,
+         currentExecutableIdentity: currentExecutableIdentity, whenExecutableIdentityReady: whenExecutableIdentityReady,
+         normalizePath: normalizePath, canonicalLocalPath: canonicalLocalPath, localPathPattern: LOCAL_RE, legacy: LEGACY
 diff --git a/js/SemanticActions.js b/js/SemanticActions.js
 index 2e01b4b..d331405 100644
 --- a/js/SemanticActions.js
