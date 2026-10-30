@@ -1034,7 +1034,8 @@ var ModuleStatFactsClaude = {
         "activationState": { "onObjects": [132] },
         // moved 6 = TOUCHBIT (native, codex #5183 resume-20261020/moved/packet-lurkinghorror.json): TAKE Coke 58 and carton 61 set bit 6 (ITAKE via SCORE-OBJECT); object 2 stays clear.
         // talkable 31 (seeded-native tier; grok1 packet M): ASK hacker/maintenance man TRUE; chair/floor waxer FALSE -> V-TELL "You can't talk to" (verbs.zil:362-366, 1436-1447).
-        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31, "on": 15, "transparent": 5, "openable": 2, "enterable": 29, "door": 25, "locked": 19, "moved": 6, "talkable": 31 },
+        // concealed 20 = INVISIBLE (native, claude worker E1 claude-probe/concealed/packet-lurkinghorror-run10.json): bolt cutter 45 unseen inside the urchin until SHOW HAND TO URCHIN drops it (20: 1->0, EXAMINE works); reinforcing rod 231 unseen until REMOVE NEW BRICK WITH CROWBAR (20: 1->0, EXAMINE works); urchin 100 visible with 20 clear.
+        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31, "on": 15, "transparent": 5, "openable": 2, "enterable": 29, "door": 25, "locked": 19, "moved": 6, "talkable": 31, "concealed": 20 },
         // D232 local globals (claude census + codex #4618/#4621/#4632, grok2 #4637): room GLOBAL property 16 (byte ids),
         // holder LOCAL-GLOBALS 59; native: EXAMINE ROOF DOOR succeeds from TopFloor 195 (prop16 [163]), refused from
         // ComputerRoom 176; Tomb 9 padlock. Room ONBIT 15 positive-only (pzlurking trace TRUE 176/137/33, FALSE + pitch-black
