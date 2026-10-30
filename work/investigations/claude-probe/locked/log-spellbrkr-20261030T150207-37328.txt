@@ -1,0 +1,3 @@
+spellbrkr e3sbfix @372 open cabinet #67 TRUE "The cabinet is locked.\n \n> "
+spellbrkr e3sbfix @373 open cabinet #67 FALSE "Opening the massive cabinet reveals a vellum scroll.\n \n> "
+spellbrkr e3sbfix @383 open cabinet #67 TRUE "The cabinet is locked.\n \n> "

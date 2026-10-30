@@ -1,0 +1,282 @@
+{
+ "e3seafix @36:open hatch#0": {
+  "tag": "e3seafix",
+  "id": 251,
+  "name": "entry hatch",
+  "step": 36,
+  "cmd": "open hatch",
+  "expect": 0,
+  "bit": 15,
+  "plan": "plan-sea-fixed.json",
+  "planSha": "23dfc9ac829fa4776b5dec515fcd74f19c65128005ba064a33dfc5dd4baca463",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "FALSE",
+  "before": [
+   27
+  ],
+  "after": [
+   18,
+   27
+  ],
+  "set": [
+   18
+  ],
+  "cleared": [],
+  "parent": 244,
+  "here": 254,
+  "opsOnId": [
+   [
+    251,
+    12,
+    0,
+    90707
+   ],
+   [
+    251,
+    30,
+    0,
+    24464
+   ],
+   [
+    251,
+    26,
+    0,
+    102219
+   ],
+   [
+    251,
+    27,
+    1,
+    102219
+   ],
+   [
+    251,
+    27,
+    1,
+    102237
+   ],
+   [
+    251,
+    18,
+    0,
+    102253
+   ],
+   [
+    251,
+    15,
+    0,
+    102266
+   ],
+   [
+    251,
+    13,
+    0,
+    102279
+   ],
+   [
+    251,
+    27,
+    1,
+    102304
+   ],
+   [
+    251,
+    30,
+    0,
+    78439
+   ],
+   [
+    251,
+    8,
+    0,
+    78447
+   ]
+  ],
+  "nOps": 74,
+  "printedObjs": [
+   251
+  ],
+  "text": "Okay, the entry hatch is now open.\n \n> ",
+  "ts": "2026-10-30T11:41:16.230Z"
+ },
+ "e3seafix @104:open locker#1": {
+  "tag": "e3seafix",
+  "id": 155,
+  "name": "Horvak's locker",
+  "step": 104,
+  "cmd": "open locker",
+  "expect": 1,
+  "bit": 15,
+  "plan": "plan-sea-fixed.json",
+  "planSha": "23dfc9ac829fa4776b5dec515fcd74f19c65128005ba064a33dfc5dd4baca463",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   8,
+   10,
+   15,
+   17,
+   26
+  ],
+  "after": [
+   8,
+   10,
+   15,
+   17,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 158,
+  "here": 74,
+  "opsOnId": [],
+  "nOps": 105,
+  "printedObjs": [],
+  "text": "(You can't see any locker here!)\n \n> ",
+  "ts": "2026-10-30T11:41:56.639Z"
+ },
+ "e3seafix @104:unlock locker#2": {
+  "tag": "e3seafix",
+  "id": 155,
+  "name": "Horvak's locker",
+  "step": 104,
+  "cmd": "unlock locker",
+  "expect": 1,
+  "bit": 15,
+  "plan": "plan-sea-fixed.json",
+  "planSha": "23dfc9ac829fa4776b5dec515fcd74f19c65128005ba064a33dfc5dd4baca463",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   8,
+   10,
+   15,
+   17,
+   26
+  ],
+  "after": [
+   8,
+   10,
+   15,
+   17,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 158,
+  "here": 74,
+  "opsOnId": [],
+  "nOps": 105,
+  "printedObjs": [],
+  "text": "(You can't see any locker here!)\n \n> ",
+  "ts": "2026-10-30T11:41:57.220Z"
+ },
+ "e3seafix @105:open locker with tool#3": {
+  "tag": "e3seafix",
+  "id": 155,
+  "name": "Horvak's locker",
+  "step": 105,
+  "cmd": "open locker with tool",
+  "expect": 1,
+  "bit": 15,
+  "plan": "plan-sea-fixed.json",
+  "planSha": "23dfc9ac829fa4776b5dec515fcd74f19c65128005ba064a33dfc5dd4baca463",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   8,
+   10,
+   15,
+   17,
+   26
+  ],
+  "after": [
+   8,
+   10,
+   15,
+   17,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 158,
+  "here": 74,
+  "opsOnId": [],
+  "nOps": 130,
+  "printedObjs": [],
+  "text": "(You can't see any locker here!)\n \n> ",
+  "ts": "2026-10-30T11:41:58.367Z"
+ },
+ "e3seafix @106:close locker#4": {
+  "tag": "e3seafix",
+  "id": 155,
+  "name": "Horvak's locker",
+  "step": 106,
+  "cmd": "close locker",
+  "expect": 0,
+  "bit": 15,
+  "plan": "plan-sea-fixed.json",
+  "planSha": "23dfc9ac829fa4776b5dec515fcd74f19c65128005ba064a33dfc5dd4baca463",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   8,
+   10,
+   15,
+   17,
+   26
+  ],
+  "after": [
+   8,
+   10,
+   15,
+   17,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 158,
+  "here": 74,
+  "opsOnId": [],
+  "nOps": 105,
+  "printedObjs": [],
+  "text": "(You can't see any locker here!)\n \n> ",
+  "ts": "2026-10-30T11:41:59.532Z"
+ },
+ "e3seafix @106:open locker#5": {
+  "tag": "e3seafix",
+  "id": 155,
+  "name": "Horvak's locker",
+  "step": 106,
+  "cmd": "open locker",
+  "expect": 0,
+  "bit": 15,
+  "plan": "plan-sea-fixed.json",
+  "planSha": "23dfc9ac829fa4776b5dec515fcd74f19c65128005ba064a33dfc5dd4baca463",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   8,
+   10,
+   15,
+   17,
+   26
+  ],
+  "after": [
+   8,
+   10,
+   15,
+   17,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 158,
+  "here": 74,
+  "opsOnId": [],
+  "nOps": 105,
+  "printedObjs": [],
+  "text": "(You can't see any locker here!)\n \n> ",
+  "ts": "2026-10-30T11:42:00.103Z"
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "key": "seastalker",
+ "tag": "e3seafix",
+ "tests": [
+  {
+   "id": 155,
+   "name": "Horvak's locker",
+   "step": 104,
+   "cmd": "open locker",
+   "expect": 1,
+   "bit": 15
+  },
+  {
+   "id": 155,
+   "name": "Horvak's locker",
+   "step": 104,
+   "cmd": "unlock locker",
+   "expect": 1,
+   "bit": 15
+  },
+  {
+   "id": 155,
+   "name": "Horvak's locker",
+   "step": 105,
+   "cmd": "open locker with tool",
+   "expect": 1,
+   "bit": 15
+  },
+  {
+   "id": 155,
+   "name": "Horvak's locker",
+   "step": 106,
+   "cmd": "close locker",
+   "expect": 0,
+   "bit": 15
+  },
+  {
+   "id": 155,
+   "name": "Horvak's locker",
+   "step": 106,
+   "cmd": "open locker",
+   "expect": 0,
+   "bit": 15
+  }
+ ]
+}

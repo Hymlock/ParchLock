@@ -1,0 +1,5 @@
+seastalker e3seafix @104 open locker #155 TRUE "It's locked. The normal way to open its lock (which you yourself designed, Codex"
+seastalker e3seafix @104 unlock locker #155 TRUE "It's locked. The normal way to open its lock (which you yourself designed, Codex"
+seastalker e3seafix @105 open locker with tool #155 TRUE "The locker contains mostly clothing, toilet articles and books. One of the books"
+seastalker e3seafix @106 close locker #155 NOTEST "Okay, Horvak's locker is now closed.\nYou are having trouble breathing.\n \n> "
+seastalker e3seafix @106 open locker #155 FALSE "The locker contains mostly clothing, toilet articles and books. One of the books"
