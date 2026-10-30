@@ -95,3 +95,15 @@ store, current-but-uninstalled, and cross-tab resurrection.
 3. Counts and revisions: count a key as removed only after removeItem and a read-back confirms it is gone. A failed key
    keeps its index entry. The index revision increments once per committed cleanup, written last inside the lock.
 No broad rewrite and no booting every game.
+
+## R5 (adopting codex #5575)
+- Lock failure: a persist that cannot acquire the lock does not write. It keeps its table in memory, marks it dirty,
+  and reports once (console plus a status line in the Learned words section). It retries on the next persist trigger. No
+  unsynchronized write ever happens while cleanup is possible. If Web Locks are absent, cleanup is disabled for the
+  session, so persists write as today, unsynchronized (there is no cleanup to race with).
+- Queued persist: the store captures {identityKey, key, generation, snapshot JSON} at enqueue time. Inside the lock it
+  writes that snapshot only if the generation and key still match the store's current ones. Otherwise it drops the
+  write (a newer persist supersedes it, or the story changed).
+- Kind generator owner metadata: each owner records the inputs the store's key generator uses (header
+  release/serial/checksum, adapter, locale, filename, as applicable to that kind) alongside digest and path. Validation
+  regenerates the key from those recorded inputs.

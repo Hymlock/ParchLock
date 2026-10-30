@@ -23,3 +23,15 @@ Open/Close for a mapped ZIL container is offered only when the title's own gener
   excluded. Generalising to other ZIL titles needs each one's V-CLOSE checked (sample until proof).
 Validation: radial diff on Hollywood (only plank ends 8/68 lose Open/Close; hopper and mailbox keep them), operator
 13/0, gate.
+
+## R2 (adopting codex #5575)
+- Provenance correction: codex's half established the explicit refusals. "Keep the options on refusers" is claude's
+  policy, grounded in the operator rule (wrong is better than missing; More and manual vocabulary are retained). It is
+  not a codex conclusion. Generated eligibility for refusers is owned by claude and recorded as such.
+- Close-only: the closeRule gates only the Close form (V-CLOSE predicate). Open is unchanged until a separately qualified
+  openRule exists (V-OPEN rejects VEHBIT and otherwise accepts CONTBIT without a CAPACITY check, which differs).
+- Guards: the title is confirmed-zil-family validated with executableLayoutFacts for the digest. capacityProp must be an
+  integer in 1..31 (v3) or 1..63, and present in the property-defaults table. The live property is read with
+  ZRamReader.listProps size 1 or 2 (any other size makes the rule absent), falling back to the default. The
+  container/supporter/door bits come only from the measured attributeMap owners. If any of these is missing or
+  malformed, the rule is absent and the output is unchanged.
