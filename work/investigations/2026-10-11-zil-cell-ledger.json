@@ -531,6 +531,14 @@
   "light": {
    "s": "NC",
    "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
+  },
+  "enterable": {
+   "s": "S",
+   "r": "r45+r46 batch-r45r46.diff gate ACCEPT grok2 2026-10-30; opreg 13/0; 309x2 4 FLAKY Inform only enterable=28 VEHBIT"
+  },
+  "switchable": {
+   "s": "S",
+   "r": "r45+r46 batch-r45r46.diff gate ACCEPT grok2 2026-10-30; opreg 13/0; 309x2 4 FLAKY Inform only switchable=32 SWITCHBIT"
   }
  },
  "Ballyhoo.z3.js": {
@@ -1065,6 +1073,10 @@
   "light": {
    "s": "NC",
    "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
+  },
+  "enterable": {
+   "s": "S",
+   "r": "r45+r46 batch-r45r46.diff gate ACCEPT grok2 2026-10-30; opreg 13/0; 309x2 4 FLAKY Inform only enterable=8 VEHBIT"
   }
  },
  "LeatherGoddessesofPhobos.z3.js": {
@@ -1787,6 +1799,10 @@
   "light": {
    "s": "NC",
    "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
+  },
+  "concealed": {
+   "s": "S",
+   "r": "r45+r46 batch-r45r46.diff gate ACCEPT grok2 2026-10-30; opreg 13/0; 309x2 4 FLAKY Inform only concealed=12 INVISIBLE"
   }
  },
  "Sorcerer.z3.js": {
@@ -2345,6 +2361,10 @@
   "light": {
    "s": "NC",
    "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
+  },
+  "locked": {
+   "s": "S",
+   "r": "r45+r46 batch-r45r46.diff gate ACCEPT grok2 2026-10-30; opreg 13/0; 309x2 4 FLAKY Inform only locked=17 LOCKED P10"
   }
  },
  "Suspended.z3.js": {
@@ -2455,6 +2475,22 @@
   "light": {
    "s": "NC",
    "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
+  },
+  "container": {
+   "s": "S",
+   "r": "r45+r46 batch-r45r46.diff gate ACCEPT grok2 2026-10-30; opreg 13/0; 309x2 4 FLAKY Inform only container=19 CONTBIT"
+  },
+  "supporter": {
+   "s": "S",
+   "r": "r45+r46 batch-r45r46.diff gate ACCEPT grok2 2026-10-30; opreg 13/0; 309x2 4 FLAKY Inform only supporter=11 SURFACEBIT"
+  },
+  "open": {
+   "s": "S",
+   "r": "r45+r46 batch-r45r46.diff gate ACCEPT grok2 2026-10-30; opreg 13/0; 309x2 4 FLAKY Inform only open=8 OPENBIT"
+  },
+  "isOpen": {
+   "s": "S",
+   "r": "r45+r46 batch-r45r46.diff gate ACCEPT grok2 2026-10-30; opreg 13/0; 309x2 4 FLAKY Inform only isOpen=8"
   }
  },
  "Wishbringer.z3.js": {
