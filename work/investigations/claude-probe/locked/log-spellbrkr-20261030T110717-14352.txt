@@ -1,0 +1,7 @@
+spellbrkr e3sb @199 look #107 NOTEST "Dungeon Cell\nThis was once a very luxurious cell, obviously for the imprisonment"
+spellbrkr e3sb @199 open massive cabinet #107 TRUE "The cabinet is locked.\n \n> "
+spellbrkr e3sb @200 open cabinet #107 FALSE "It's already open.\n \n> "
+spellbrkr e3sb @372 open cabinet #67 NOTEST "You can't see any cabinet here.\n \n> "
+spellbrkr e3sb @374 close cabinet #67 NOTEST "You can't see any cabinet here.\n \n> "
+spellbrkr e3sb @374 open cabinet #67 NOTEST "You can't see any cabinet here.\n \n> "
+spellbrkr e3sb @383 open cabinet #67 NOTEST "You can't see any cabinet here.\n \n> "
