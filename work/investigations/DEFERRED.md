@@ -16,7 +16,7 @@ ruling that it needs nothing). Status: TODO / ACTIVE / BLOCKED(on X) / DONE / CL
 | D7 | Suspect transparent actors: CLOSED, correct per source. ALICIA-COAT (people.zil:1526) is TAKEBIT CONTBIT OPENBIT SEARCHBIT with an INVISIBLE LABEL inside (a clue). While worn, ALICIA-COAT-F refuses in character; once the butler has it, searching reveals the label. Open/close/search are real game actions. | CLOSED | claude | - |
 | D8 | Suspended robot-addressed actions (radial never addresses robots). IN PROGRESS as codex Suspended role design R2 (#5484; REVISE #5492: exact settled-input API and submit-time signature needed); native lifecycle evidence exists (suspended-input-lifecycle-1656, suspended-v5-unforced-1305). | ACTIVE | codex | codex R3 addressing #5492; claude reviews. |
 | D10 | Lock pause = locked AND closed: P10 R2 ACCEPTED (#5543). Implementing as batch-p10.diff in isolated worktree; then Suspect locked 17. Moonmist no fact. | ACTIVE | claude | p10 |
-| D11 | Rooms as garments: P11a ACCEPTED, in working tree (r44). P11b R3 sent (#5547): root = garmentWornDomainFact.rootId, listProps x d214DirectionProperties. | ACTIVE | claude+codex | P11b consensus |
+| D11 | Rooms as garments: P11a LANDED 9e461e6 (D245). P11b PARKED (codex #5678, disposition B): implemented in batch-p11b.diff + harness/zil-room-garment.js research only; 0 visible rooms/edges change (named-parent check rejects root-37 children). Reopen only on a concrete missing edge/room path. | PARKED | claude | evidence |
 | D9 | Enter-form for more titles: any title whose ENTER refuses but SIT/CLIMB ON works (Hollywood plank ends?). | TODO | grok1 | Probe the Hollywood plank and Cutthroats bunk with the D242 bar. |
 
 ## Evidence items (facts; native probes)
