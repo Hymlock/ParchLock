@@ -1085,6 +1085,10 @@
   "enterable": {
    "s": "S",
    "r": "r45+r46 batch-r45r46.diff gate ACCEPT grok2 2026-10-30; opreg 13/0; 309x2 4 FLAKY Inform only enterable=8 VEHBIT"
+  },
+  "locked": {
+   "s": "S",
+   "r": "locked=15 LOCKEDBIT P10b 4baf75c; hollywood-locked-notes.md; door-only destination isLocked ExitCalibrator+ZRamReader; opreg 13/0"
   }
  },
  "LeatherGoddessesofPhobos.z3.js": {
