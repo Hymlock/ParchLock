@@ -1,0 +1,2418 @@
+{
+  "story": "HollywoodHijinx.z3.js",
+  "config": "hw-locked-cfg2.json",
+  "tier": "Fresh unforced native commands and passive known-ID RAM reads; no VM/fact/RNG writes",
+  "assetSha256": "1067babf4f185c6c9579ce714412886d83de8410bf4a5a7212b236d96153f495",
+  "readerSha256": "5b114d0f4c1f0b61b56db3f5bdbdd9d8ae51014f17e15b2aa6a91f49b41c5784",
+  "factsSha256": "9c604fdea22e9f52e58f1cdb1329a8dcbe20d39b21dc4407bba0e01497617d68",
+  "bit": 15,
+  "ids": [
+    25,
+    117,
+    155,
+    175,
+    203,
+    227,
+    122,
+    1
+  ],
+  "rows": [
+    {
+      "command": "n",
+      "before": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 2,
+        "roomName": "South Junction",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 114,
+            "name": "bazooka",
+            "invisible": false
+          },
+          {
+            "id": 164,
+            "name": "stairs",
+            "invisible": false
+          },
+          {
+            "id": 243,
+            "name": "statue of Buck Palace, the fighting letter carrier",
+            "invisible": false
+          }
+        ]
+      },
+      "after": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 185,
+        "roomName": "Front Porch",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 117,
+            "name": "oak door",
+            "invisible": true
+          },
+          {
+            "id": 225,
+            "name": "Buck Palace-endorsed, regulation mailbox",
+            "invisible": false
+          },
+          {
+            "id": 228,
+            "name": "doorbell",
+            "invisible": false
+          }
+        ]
+      },
+      "reply": [
+        ">n",
+        "As you walk toward the house, a large black cat scurries across the path, heading toward Johnny Carson's house.",
+        " ",
+        "Front Porch",
+        "You're standing on the front porch of the house. Next to the front door is a regulation mailbox endorsed by Buck Palace. Beneath the mailbox is a doorbell once rung by Sonny Tufts. To the south is a walkway.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "open door",
+      "before": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 185,
+        "roomName": "Front Porch",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 117,
+            "name": "oak door",
+            "invisible": true
+          },
+          {
+            "id": 225,
+            "name": "Buck Palace-endorsed, regulation mailbox",
+            "invisible": false
+          },
+          {
+            "id": 228,
+            "name": "doorbell",
+            "invisible": false
+          }
+        ]
+      },
+      "after": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 185,
+        "roomName": "Front Porch",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 117,
+            "name": "oak door",
+            "invisible": true
+          },
+          {
+            "id": 225,
+            "name": "Buck Palace-endorsed, regulation mailbox",
+            "invisible": false
+          },
+          {
+            "id": 228,
+            "name": "doorbell",
+            "invisible": false
+          }
+        ]
+      },
+      "reply": [
+        ">open door",
+        "You'll have to unlock it first.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "unlock door",
+      "before": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 185,
+        "roomName": "Front Porch",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 117,
+            "name": "oak door",
+            "invisible": true
+          },
+          {
+            "id": 225,
+            "name": "Buck Palace-endorsed, regulation mailbox",
+            "invisible": false
+          },
+          {
+            "id": 228,
+            "name": "doorbell",
+            "invisible": false
+          }
+        ]
+      },
+      "after": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 185,
+        "roomName": "Front Porch",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 117,
+            "name": "oak door",
+            "invisible": true
+          },
+          {
+            "id": 225,
+            "name": "Buck Palace-endorsed, regulation mailbox",
+            "invisible": false
+          },
+          {
+            "id": 228,
+            "name": "doorbell",
+            "invisible": false
+          }
+        ]
+      },
+      "reply": [
+        ">unlock door",
+        "You can't unlock it from this side.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "s",
+      "before": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 185,
+        "roomName": "Front Porch",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 117,
+            "name": "oak door",
+            "invisible": true
+          },
+          {
+            "id": 225,
+            "name": "Buck Palace-endorsed, regulation mailbox",
+            "invisible": false
+          },
+          {
+            "id": 228,
+            "name": "doorbell",
+            "invisible": false
+          }
+        ]
+      },
+      "after": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 2,
+        "roomName": "South Junction",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 114,
+            "name": "bazooka",
+            "invisible": false
+          },
+          {
+            "id": 164,
+            "name": "stairs",
+            "invisible": false
+          },
+          {
+            "id": 243,
+            "name": "statue of Buck Palace, the fighting letter carrier",
+            "invisible": false
+          }
+        ]
+      },
+      "reply": [
+        ">s",
+        "South Junction",
+        " ",
+        "A life-size statue of Buck Palace, one of the stars of Uncle Buddy's talent stables, stands here. He's holding a bazooka pointing south. Hmmm. It looks as if the statue of Buck Palace, the fighting letter carrier, has changed position.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "turn statue west",
+      "before": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 2,
+        "roomName": "South Junction",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 114,
+            "name": "bazooka",
+            "invisible": false
+          },
+          {
+            "id": 164,
+            "name": "stairs",
+            "invisible": false
+          },
+          {
+            "id": 243,
+            "name": "statue of Buck Palace, the fighting letter carrier",
+            "invisible": false
+          }
+        ]
+      },
+      "after": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 2,
+        "roomName": "South Junction",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 114,
+            "name": "bazooka",
+            "invisible": false
+          },
+          {
+            "id": 164,
+            "name": "stairs",
+            "invisible": false
+          },
+          {
+            "id": 243,
+            "name": "statue of Buck Palace, the fighting letter carrier",
+            "invisible": false
+          }
+        ]
+      },
+      "reply": [
+        ">turn statue west",
+        "You turn the statue of Buck Palace, the fighting letter carrier, to the west.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "turn statue east",
+      "before": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 2,
+        "roomName": "South Junction",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 114,
+            "name": "bazooka",
+            "invisible": false
+          },
+          {
+            "id": 164,
+            "name": "stairs",
+            "invisible": false
+          },
+          {
+            "id": 243,
+            "name": "statue of Buck Palace, the fighting letter carrier",
+            "invisible": false
+          }
+        ]
+      },
+      "after": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 2,
+        "roomName": "South Junction",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 114,
+            "name": "bazooka",
+            "invisible": false
+          },
+          {
+            "id": 164,
+            "name": "stairs",
+            "invisible": false
+          },
+          {
+            "id": 243,
+            "name": "statue of Buck Palace, the fighting letter carrier",
+            "invisible": false
+          }
+        ]
+      },
+      "reply": [
+        ">turn statue east",
+        "You turn the statue of Buck Palace, the fighting letter carrier, to the east.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "turn statue north",
+      "before": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 2,
+        "roomName": "South Junction",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 114,
+            "name": "bazooka",
+            "invisible": false
+          },
+          {
+            "id": 164,
+            "name": "stairs",
+            "invisible": false
+          },
+          {
+            "id": 243,
+            "name": "statue of Buck Palace, the fighting letter carrier",
+            "invisible": false
+          }
+        ]
+      },
+      "after": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 2,
+        "roomName": "South Junction",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 114,
+            "name": "bazooka",
+            "invisible": false
+          },
+          {
+            "id": 164,
+            "name": "stairs",
+            "invisible": false
+          },
+          {
+            "id": 243,
+            "name": "statue of Buck Palace, the fighting letter carrier",
+            "invisible": false
+          }
+        ]
+      },
+      "reply": [
+        ">turn statue north",
+        "You turn the statue of Buck Palace, the fighting letter carrier, to the north, and hear a click from off to the north.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "n",
+      "before": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 2,
+        "roomName": "South Junction",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 114,
+            "name": "bazooka",
+            "invisible": false
+          },
+          {
+            "id": 164,
+            "name": "stairs",
+            "invisible": false
+          },
+          {
+            "id": 243,
+            "name": "statue of Buck Palace, the fighting letter carrier",
+            "invisible": false
+          }
+        ]
+      },
+      "after": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 185,
+        "roomName": "Front Porch",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 117,
+            "name": "oak door",
+            "invisible": false
+          },
+          {
+            "id": 225,
+            "name": "Buck Palace-endorsed, regulation mailbox",
+            "invisible": false
+          },
+          {
+            "id": 228,
+            "name": "doorbell",
+            "invisible": false
+          }
+        ]
+      },
+      "reply": [
+        ">n",
+        "Front Porch",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "open door",
+      "before": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 185,
+        "roomName": "Front Porch",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 117,
+            "name": "oak door",
+            "invisible": false
+          },
+          {
+            "id": 225,
+            "name": "Buck Palace-endorsed, regulation mailbox",
+            "invisible": false
+          },
+          {
+            "id": 228,
+            "name": "doorbell",
+            "invisible": false
+          }
+        ]
+      },
+      "after": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 185,
+        "roomName": "Front Porch",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.16.25"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 117,
+            "name": "oak door",
+            "invisible": false
+          },
+          {
+            "id": 225,
+            "name": "Buck Palace-endorsed, regulation mailbox",
+            "invisible": false
+          },
+          {
+            "id": 228,
+            "name": "doorbell",
+            "invisible": false
+          }
+        ]
+      },
+      "reply": [
+        ">open door",
+        "The oak door opens with a long squeal, and you hear hurried footsteps several rooms away.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "n",
+      "before": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 185,
+        "roomName": "Front Porch",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.16.25"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": [
+          {
+            "id": 44,
+            "name": "brick chimney",
+            "invisible": false
+          },
+          {
+            "id": 89,
+            "name": "Aunt Hildegarde's house",
+            "invisible": false
+          },
+          {
+            "id": 117,
+            "name": "oak door",
+            "invisible": false
+          },
+          {
+            "id": 225,
+            "name": "Buck Palace-endorsed, regulation mailbox",
+            "invisible": false
+          },
+          {
+            "id": 228,
+            "name": "doorbell",
+            "invisible": false
+          }
+        ]
+      },
+      "after": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 122,
+        "roomName": "Foyer",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.16.25"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": []
+      },
+      "reply": [
+        ">n",
+        "It is pitch black.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "close oak door",
+      "before": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 122,
+        "roomName": "Foyer",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.16.25"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": []
+      },
+      "after": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 122,
+        "roomName": "Foyer",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": []
+      },
+      "reply": [
+        ">close oak door",
+        "The oak door breaks into its nightclub act as it closes.",
+        " ",
+        "Somewhere in the house you hear the creaking of floorboards.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "lock oak door",
+      "before": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 122,
+        "roomName": "Foyer",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": []
+      },
+      "after": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 122,
+        "roomName": "Foyer",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": []
+      },
+      "reply": [
+        ">lock oak door",
+        "You lock the oak door.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "open oak door",
+      "before": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 122,
+        "roomName": "Foyer",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": []
+      },
+      "after": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 122,
+        "roomName": "Foyer",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": []
+      },
+      "reply": [
+        ">open oak door",
+        "It's too dark to see!",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "unlock oak door",
+      "before": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 122,
+        "roomName": "Foyer",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": []
+      },
+      "after": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 122,
+        "roomName": "Foyer",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": []
+      },
+      "reply": [
+        ">unlock oak door",
+        "With a click you unlock the oak door.",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "open oak door",
+      "before": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 122,
+        "roomName": "Foyer",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": []
+      },
+      "after": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 122,
+        "roomName": "Foyer",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": []
+      },
+      "reply": [
+        ">open oak door",
+        "It's too dark to see!",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "open hatch",
+      "before": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 122,
+        "roomName": "Foyer",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": []
+      },
+      "after": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 122,
+        "roomName": "Foyer",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": []
+      },
+      "reply": [
+        ">open hatch",
+        "It's too dark to see!",
+        " ",
+        "> "
+      ]
+    },
+    {
+      "command": "unlock hatch",
+      "before": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 122,
+        "roomName": "Foyer",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": []
+      },
+      "after": {
+        "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+        "room": 122,
+        "roomName": "Foyer",
+        "player": 52,
+        "objects": {
+          "1": {
+            "name": "sawhorse",
+            "parent": 90,
+            "invisible": "16"
+          },
+          "25": {
+            "name": "patio door",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "117": {
+            "name": "oak door",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "122": {
+            "name": "Foyer",
+            "parent": 41,
+            "invisible": "15.19"
+          },
+          "155": {
+            "name": "hatch",
+            "parent": 54,
+            "invisible": "10.16"
+          },
+          "175": {
+            "name": "panel",
+            "parent": 54,
+            "invisible": "10.15.16"
+          },
+          "203": {
+            "name": "wall safe",
+            "parent": 231,
+            "invisible": "4.15.16.24.29"
+          },
+          "227": {
+            "name": "safe",
+            "parent": 90,
+            "invisible": "4.15.16.24.26"
+          }
+        },
+        "scope": []
+      },
+      "reply": [
+        ">unlock hatch",
+        "It's too dark to see!",
+        " ",
+        "> "
+      ]
+    }
+  ],
+  "initial": {
+    "digest": "e3341f28a0cca7a2e7bdf151c7b31b16124e77f31bf0e0e1349be2e6ae2fbe5e",
+    "room": 2,
+    "roomName": "South Junction",
+    "player": 52,
+    "objects": {
+      "1": {
+        "name": "sawhorse",
+        "parent": 90,
+        "invisible": "16"
+      },
+      "25": {
+        "name": "patio door",
+        "parent": 54,
+        "invisible": "10.15.16"
+      },
+      "117": {
+        "name": "oak door",
+        "parent": 54,
+        "invisible": "10.15.16"
+      },
+      "122": {
+        "name": "Foyer",
+        "parent": 41,
+        "invisible": "15.19"
+      },
+      "155": {
+        "name": "hatch",
+        "parent": 54,
+        "invisible": "10.16"
+      },
+      "175": {
+        "name": "panel",
+        "parent": 54,
+        "invisible": "10.15.16"
+      },
+      "203": {
+        "name": "wall safe",
+        "parent": 231,
+        "invisible": "4.15.16.24.29"
+      },
+      "227": {
+        "name": "safe",
+        "parent": 90,
+        "invisible": "4.15.16.24.26"
+      }
+    },
+    "scope": [
+      {
+        "id": 44,
+        "name": "brick chimney",
+        "invisible": false
+      },
+      {
+        "id": 89,
+        "name": "Aunt Hildegarde's house",
+        "invisible": false
+      },
+      {
+        "id": 114,
+        "name": "bazooka",
+        "invisible": false
+      },
+      {
+        "id": 164,
+        "name": "stairs",
+        "invisible": false
+      },
+      {
+        "id": 243,
+        "name": "statue of Buck Palace, the fighting letter carrier",
+        "invisible": false
+      }
+    ]
+  },
+  "sourceStable": true,
+  "status": "Captured; review route and native replies before qualification"
+}
