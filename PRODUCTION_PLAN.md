@@ -9694,12 +9694,22 @@ for uninstalled modules. Design agreed R3-R7: work/investigations/learning-unins
 ## D249 Agreed designs pending integration (D12, D5, D16, D8, P4, P11b)
 
 Consensus reached 2026-10-30; none is landed in js/ yet. Each still needs implementation, gate and adversarial audit.
-- **D12** Hollywood open/close: action-routine refusals keep their options (claude-probe/hollywood-d12/compare-proposal-r1.md;
-  candidate audit audit-d12-candidate.md).
+- **D12** Hollywood Close gated by the game's own V-CLOSE rule (CONTBIT and not SURFACEBIT and CAPACITY != 0, or DOORBIT)
+  via a per-title closeRule {capacityProp 8}. Close only, so Open/Search/Empty are untouched. Action-routine refusers
+  (pond, cannon, matches...) keep their options under the missing-over-wrong rule. Plank ends lose Close. Files:
+  claude-probe/hollywood-d12/compare-proposal-r1.md R2, audit-d12-candidate.md ACCEPT, codex native mailbox #5621. It is
+  in the E5+D12 shared gate.
 - **D5** object "Locked" status (D241 phase 2): codex candidate oct30-recovery/d5-status-candidate-r1, audit
   zil-titles/audit-d5-candidate.md (bus #5647).
 - **D16/P16** spell book scope: label list vs scope set split; per-title `inventoryHiddenScopeRetained` before re-admitting
-  Enchanter/Sorcerer to D244 (zil-titles/D16-compare-proposal-r1.md; Sorcerer trace cb46b8d; Spellbreaker stays excluded).
-- **D8** Suspended robot radial (suspended-d14/D8-R3-attack-claude.md).
+  Enchanter (codex ACCEPT #5641, batch-p16.diff). Sorcerer qualified by native trace (D16-sorcerer-trace.md: 7 spells; "9" was
+  the NDESC bit number). Spellbreaker's BRIEFBIT exception never affects held objects (spellbreaker-invhidden-claude-SEALED.md),
+  and its extension is proposed (#5662).
+- **D8** Suspended robot radial, P8: addressed forms ("<robot>, <verb> <noun>") for every co-located robot from the exact
+  6-robot NAME-TBL domain (Iris/Waldo/Sensa/Auda/Poet/Whiz; VICBIT alone admits 14, which is rejected). No token/GlkOte
+  machinery. No addressed command is sent into setup/QUIT/missing-noun prompts (suspended-d14/D8-R3-attack-claude.md;
+  codex #5610/#5651).
 - **P4** `switchableScope` per-object room scope for activation forms; first candidate Witness radio 162 (#5186).
-- **P11b** garment rejection in isPlausibleMapRoom skipped only for room-shaped objects (codex #5543).
+- **P11b** garment rejection in isPlausibleMapRoom skipped only for clothing/wearable (never worn) objects whose parent is
+  the authenticated AttributeSchema.garmentWornDomainFact root (Moonmist root 37) and that have at least one valid
+  direction-exit property. It is non-circular (no isPlausibleMapRoom/d214RoomTarget) (codex ACCEPT #5549).
