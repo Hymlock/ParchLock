@@ -1,9 +1,9 @@
 diff --git a/harness/learning-stores.js b/harness/learning-stores.js
 new file mode 100644
-index 0000000..7aab603
+index 0000000..57c17b1
 --- /dev/null
 +++ b/harness/learning-stores.js
-@@ -0,0 +1,333 @@
+@@ -0,0 +1,369 @@
 +// D13 harness: LearningStores ownership index, serialized persists and the
 +// erase-for-uninstalled action, against a constructed localStorage and a
 +// navigator.locks stub. Run: node harness/learning-stores.js
@@ -264,7 +264,7 @@ index 0000000..7aab603
 +        old.LearningStores.read("PL_LearnedWordOverrides_2-B");
 +        const idx = JSON.parse(s.getItem("PL_ModuleLearningOwner_v1"));
 +        idx.tombstones["PL_LearnedWordOverrides_2-B"] = { erasedAtIndexRevision: idx.revision + 1 };
-+        idx.pending = { revision: idx.revision + 1, keys: ["PL_LearnedWordOverrides_2-B"] };
++        idx.pending = { revision: idx.revision + 1, records: [{ key: "PL_LearnedWordOverrides_2-B", kind: "learnedWords", inputs: { identityKey: "2-B" } }] };
 +        s.setItem("PL_ModuleLearningOwner_v1", JSON.stringify(idx)); // the crash: keys never removed
 +        const fresh = makeTab(s, l, lib);
 +        ok(fresh.LearningStores.read("PL_LearnedWordOverrides_2-B") === null, "pending tombstone hides key from a new tab");
@@ -333,6 +333,42 @@ index 0000000..7aab603
 +        ok(s.getItem("PL_LearnedWordOverrides_1-A") === null, "A not resurrected");
 +        ok(t.LearnedWords._key === "2-B" && t.LearnedWords._data === bData && t.LearnedWords._undo.length === 1 && t.LearnedWords._projection.marker === 1, "B rows/undo/projection preserved");
 +        ok(s.getItem("PL_LearnedWordOverrides_2-B") === JSON.stringify(bData), "B written");
++    }
++
++    {   // forged pending record naming a save/map key: recovery removes nothing
++        const s = makeStorage(), l = makeLocks(), lib = makeLib([]);
++        const t = makeTab(s, l, lib);
++        s.setItem("PL_SaveState_games/b.z5.js", "save"); s.setItem("PL_Map_games/b.z5.js", "map");
++        s.setItem("PL_LearnedWordOverrides_2-B", "lw");
++        s.setItem("PL_ModuleLearningOwner_v1", JSON.stringify({ v: 1, revision: 0, entries: {},
++            tombstones: { "PL_SaveState_games/b.z5.js": { erasedAtIndexRevision: 1 }, "PL_Map_games/b.z5.js": { erasedAtIndexRevision: 1 }, "PL_LearnedWordOverrides_2-B": { erasedAtIndexRevision: 1 } },
++            pending: { revision: 1, records: [
++                { key: "PL_LearnedWordOverrides_2-B", kind: "learnedWords", inputs: { identityKey: "2-B" } },
++                { key: "PL_SaveState_games/b.z5.js", kind: "learnedWords", inputs: { identityKey: "2-B" } },
++                { key: "PL_Map_games/b.z5.js", kind: "nosuchkind", inputs: {} }] } }));
++        lib.current = "dC"; t.ParchLock.StoryPath = "games/c.z5.js";
++        t.LearningStores.persist("learnedWords", { identityKey: "3-C" }, "c"); await settle();
++        const r = await t.LearningStores.erase(t.LearningStores.list());
++        ok(s.getItem("PL_SaveState_games/b.z5.js") === "save" && s.getItem("PL_Map_games/b.z5.js") === "map" && s.getItem("PL_LearnedWordOverrides_2-B") === "lw", "forged pending: nothing removed");
++        ok(r.aborted && /damaged/.test(t.LearningStores.lastError() || r.reason), "forged pending reported");
++    }
++    {   // recovery keeps failed keys pending and retries
++        const s = makeStorage(), l = makeLocks(), lib = makeLib([]);
++        const t = makeTab(s, l, lib);
++        s.setItem("PL_LearnedWordOverrides_2-B", "lw");
++        s.setItem("PL_ModuleLearningOwner_v1", JSON.stringify({ v: 1, revision: 0, entries: {},
++            tombstones: { "PL_LearnedWordOverrides_2-B": { erasedAtIndexRevision: 1 } },
++            pending: { revision: 1, records: [{ key: "PL_LearnedWordOverrides_2-B", kind: "learnedWords", inputs: { identityKey: "2-B" } }] } }));
++        s.failRemove.add("PL_LearnedWordOverrides_2-B");
++        lib.current = "dC"; t.ParchLock.StoryPath = "games/c.z5.js";
++        t.LearningStores.persist("learnedWords", { identityKey: "3-C" }, "c"); await settle();
++        let idx = t.LearningStores.readIndex().index;
++        ok(idx.pending && idx.pending.records.length === 1 && idx.tombstones["PL_LearnedWordOverrides_2-B"] && idx.revision === 0 && /retry/.test(t.LearningStores.lastError() || ""), "failed recovery stays pending + reported");
++        ok(t.LearningStores.read("PL_LearnedWordOverrides_2-B") === null, "still hidden while pending");
++        s.failRemove.clear();
++        t.LearningStores.persist("learnedWords", { identityKey: "3-C" }, "c2"); await settle();
++        idx = t.LearningStores.readIndex().index;
++        ok(!idx.pending && idx.revision === 1 && s.getItem("PL_LearnedWordOverrides_2-B") === null, "retry finishes recovery");
 +    }
 +    console.log("learning-stores: " + pass + " PASS, " + fail + " FAIL");
 +    process.exit(fail ? 1 : 0);
@@ -492,10 +528,10 @@ index f3ff9ba..203640f 100644
 +if (typeof LearningStores !== "undefined") LearningStores.register("learnedWords", LearnedWords.PREFIX, LearnedWords.learningKeyFor);
 diff --git a/js/LearningStores.js b/js/LearningStores.js
 new file mode 100644
-index 0000000..9a9120a
+index 0000000..d1b30a9
 --- /dev/null
 +++ b/js/LearningStores.js
-@@ -0,0 +1,401 @@
+@@ -0,0 +1,431 @@
 +/* D13 (R3-R6): module learning store ownership and erase-for-uninstalled.
 + *
 + * Each module-scoped learning store registers its exact localStorage key at
@@ -520,7 +556,7 @@ index 0000000..9a9120a
 +    var draining = false;
 +    var localRev = Object.create(null);   // key -> last captured storeRevision
 +    var hydratedAt = Object.create(null); // key -> index revision when read/reset
-+    var lastError = null, reported = false;
++    var lastError = null, reported = false, recoveryError = null;
 +
 +    function storage() { try { return typeof localStorage !== "undefined" ? localStorage : null; } catch (e) { return null; } }
 +    function locks() {
@@ -552,8 +588,10 @@ index 0000000..9a9120a
 +            Object.keys(p.tombstones).forEach(function (k) {
 +                if (!isObj(p.tombstones[k]) || !validInt(p.tombstones[k].erasedAtIndexRevision)) throw 0;
 +            });
-+            if (p.pending != null && (!isObj(p.pending) || !validInt(p.pending.revision) || !Array.isArray(p.pending.keys) ||
-+                !p.pending.keys.every(function (k) { return typeof k === "string" && p.tombstones[k]; }))) throw 0;
++            if (p.pending != null && (!isObj(p.pending) || !validInt(p.pending.revision) || !Array.isArray(p.pending.records) ||
++                !p.pending.records.every(function (rec) {
++                    return isObj(rec) && typeof rec.key === "string" && typeof rec.kind === "string" && isObj(rec.inputs) && p.tombstones[rec.key];
++                }))) throw 0;
 +            return { ok: true, index: p };
 +        } catch (e2) { return { ok: false, index: emptyIndex(), reason: "The learning index is damaged, so nothing can be erased." }; }
 +    }
@@ -592,18 +630,40 @@ index 0000000..9a9120a
 +
 +    // Finish an erase interrupted after its tombstones became durable. Its
 +    // keys stay tombstoned; removal is retried and the revision finalized.
++    // Every pending record is re-validated against its store's exact key
++    // generator first; a damaged or unmanaged record aborts recovery with
++    // nothing removed. Keys that fail to remove stay pending (tombstoned)
++    // and are retried on the next commit or erase.
++    function pendingKeys(index) { return index.pending ? index.pending.records.map(function (rec) { return rec.key; }) : []; }
++    function recordValid(rec) {
++        var gen = generators[rec.kind];
++        if (!gen) return false;
++        try { return gen(rec.inputs) === rec.key; } catch (e) { return false; }
++    }
 +    function recover(index) {
-+        if (!index.pending) return false;
++        if (!index.pending) return "none";
++        if (!index.pending.records.every(recordValid)) {
++            recoveryError = "An unfinished erase record is damaged; nothing more was erased.";
++            return "damaged";
++        }
 +        var ls = storage();
-+        index.pending.keys.forEach(function (k) {
++        var left = [];
++        index.pending.records.forEach(function (rec) {
 +            var gone = false;
-+            try { ls.removeItem(k); gone = ls.getItem(k) == null; } catch (e) {}
-+            if (gone) delete index.entries[k];
++            try { ls.removeItem(rec.key); gone = ls.getItem(rec.key) == null; } catch (e) {}
++            if (gone) delete index.entries[rec.key]; else left.push(rec);
 +        });
++        if (left.length) {
++            index.pending.records = left;
++            recoveryError = left.length + " learned item(s) could not be erased yet; will retry.";
++            writeIndex(index);
++            return "retry";
++        }
++        recoveryError = null;
 +        index.revision = Math.max(index.revision, index.pending.revision);
 +        delete index.pending;
 +        writeIndex(index);
-+        return true;
++        return "done";
 +    }
 +
 +    function sameOwner(a, b) {
@@ -615,7 +675,7 @@ index 0000000..9a9120a
 +    function read(key) {
 +        var idx = readIndex().index;
 +        hydratedAt[key] = idx.revision;
-+        if (idx.pending && idx.pending.keys.indexOf(key) >= 0) {
++        if (idx.pending && pendingKeys(idx).indexOf(key) >= 0) {
 +            // Mid-erase (or interrupted erase): the key is already gone.
 +            hydratedAt[key] = idx.pending.revision;
 +            return null;
@@ -789,10 +849,10 @@ index 0000000..9a9120a
 +                    (cur.path && o.path === cur.path) || (cur.digest && o.digest === cur.digest);
 +            });
 +            if (installed) { out.installed++; return; }
-+            if (r.index.pending && r.index.pending.keys.indexOf(k) >= 0) return;
++            if (r.index.pending && pendingKeys(r.index).indexOf(k) >= 0) return;
 +            if (e.ownersOverflow || inst.unknown > 0 || e.owners.some(function (o) { return !o.digest; })) { out.unknown++; return; }
 +            if (value == null) return;
-+            out.candidates.push({ key: k, value: value });
++            out.candidates.push({ key: k, value: value, kind: e.kind, inputs: e.owners[0].inputs });
 +        });
 +        try {
 +            for (var i = 0; i < ls.length; i++) {
@@ -813,7 +873,11 @@ index 0000000..9a9120a
 +        if (!l || !listing || !listing.ok) return Promise.resolve({ aborted: true, reason: (listing && listing.reason) || "Erasing is unavailable." });
 +        return Promise.resolve(l.request(LOCK, function () {
 +            var pre = readIndex();
-+            if (pre.ok && pre.index.pending) { try { recover(pre.index); } catch (eR) {} }
++            if (pre.ok && pre.index.pending) {
++                var rec;
++                try { rec = recover(pre.index); } catch (eR) { rec = "retry"; }
++                if (rec !== "done") return { aborted: true, reason: recoveryError || "An earlier erase is unfinished; nothing was erased.", removed: 0, failed: 0 };
++            }
 +            var now = list();
 +            if (!now.ok || now.signature !== listing.signature || now.candidates.length !== listing.candidates.length ||
 +                now.candidates.some(function (c, i) { return c.key !== listing.candidates[i].key || c.value !== listing.candidates[i].value; })) {
@@ -825,12 +889,14 @@ index 0000000..9a9120a
 +            var keys = listing.candidates.map(function (c) { return c.key; });
 +            // 1. Tombstones + pending set durable (read back) BEFORE any removal.
 +            keys.forEach(function (k) { index.tombstones[k] = { erasedAtIndexRevision: nextRev }; });
-+            index.pending = { revision: nextRev, keys: keys };
++            index.pending = { revision: nextRev, records: listing.candidates.map(function (c) {
++                return { key: c.key, kind: c.kind, inputs: JSON.parse(JSON.stringify(c.inputs)) };
++            }) };
 +            var notRecorded = { aborted: true, reason: "The erase could not be recorded; nothing was erased.", removed: 0, failed: 0 };
 +            try { writeIndex(index); } catch (eW) { return notRecorded; }
 +            var back = readIndex();
 +            if (!back.ok || !back.index.pending || back.index.pending.revision !== nextRev ||
-+                JSON.stringify(back.index.pending.keys) !== JSON.stringify(keys)) return notRecorded;
++                JSON.stringify(pendingKeys(back.index)) !== JSON.stringify(keys)) return notRecorded;
 +            index = back.index;
 +            // 2. Remove each key, confirmed by read-back.
 +            var removed = 0, failed = 0;
@@ -869,10 +935,10 @@ index 0000000..9a9120a
 +        function show(l, result) {
 +            listing = l;
 +            eraseBtn.prop("disabled", !l || !l.ok || l.removable === 0);
-+            status.text((lastError ? lastError + " " : "") + describe(l, result));
++            status.text(((lastError || recoveryError) ? (lastError || recoveryError) + " " : "") + describe(l, result));
 +        }
 +        var first = list();
-+        status.text((lastError ? lastError + " " : "") + (first.ok ? "Check to find learned data from uninstalled stories. " + describe(first) : first.reason));
++        status.text(((lastError || recoveryError) ? (lastError || recoveryError) + " " : "") + (first.ok ? "Check to find learned data from uninstalled stories. " + describe(first) : first.reason));
 +        checkBtn.prop("disabled", !first.ok);
 +        checkBtn.on("click", function () {
 +            checkBtn.prop("disabled", true); eraseBtn.prop("disabled", true);
@@ -893,7 +959,7 @@ index 0000000..9a9120a
 +        register: register, read: read, persist: persist, readIndex: readIndex,
 +        list: list, check: check, erase: erase, describe: describe, addOptions: addOptions,
 +        entryValid: entryValid, pending: function () { return queue.length; },
-+        lastError: function () { return lastError; },
++        lastError: function () { return lastError || recoveryError; },
 +        _drain: drain
 +    };
 +})();
