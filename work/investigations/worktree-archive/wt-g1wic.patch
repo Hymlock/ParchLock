@@ -1,0 +1,20 @@
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index f618b81..300b558 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -384,9 +384,13 @@ var ModuleStatFactsClaude = {
+     // CONTBIT 9 / SURFACEBIT 16 original scene (2026-10-11-zil-walk-pzwitness2.json, target-scoped, source-exact 27/27,
+     // 17/17): file cabinet, liquor cabinet, lounge / lounge, carved chair, desk; negatives cat, Monica, Linder, newspaper,
+     // putty, door bell. Applied together with openCapability so surfaces get no Open/Close.
++    // Animate 31 (PERSON, people.zil 158/507/695/895 + GLOBAL- twins): EXAMINE LINDER (office) tests 74:31 TRUE and
++    // EXAMINE MONICA (entry, step 3) tests 68:31 TRUE with their descriptions; EXAMINE DESK tests 118:31 FALSE (g1-wiA,
++    // test_attr only during the named command). Bounded table: 9 carriers = 4 people x2 + GLOBAL-OBJECTS 249; no rooms.
++    // Fail-closed: animate joins openCapability none (actor Open/Close refused).
+     "2290bb3440ac66e14d54d41dbde575066ebdbdc42138ec899496e359bc484824": {
+-        "openCapability": { "all": ["container"], "none": ["supporter"] },
+-        "attributeMap": { "open": 8, "isOpen": 8, "container": 9, "supporter": 16 },
++        "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
++        "attributeMap": { "open": 8, "isOpen": 8, "container": 9, "supporter": 16, "animate": 31 },
+         "playerObject": 79
+     },
+     // Sherlock (Infocom, z5; no historicalsource pin): constant PC object 232 "you" (Watson). Native i lists exactly

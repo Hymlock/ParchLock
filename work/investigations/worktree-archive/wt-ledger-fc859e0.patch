@@ -1,0 +1,112 @@
+diff --git a/work/investigations/2026-10-11-zil-cell-ledger.json b/work/investigations/2026-10-11-zil-cell-ledger.json
+index aa82cc8..fbae079 100644
+--- a/work/investigations/2026-10-11-zil-cell-ledger.json
++++ b/work/investigations/2026-10-11-zil-cell-ledger.json
+@@ -511,6 +511,10 @@
+   "static": {
+    "s": "S",
+    "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 41 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 37: it means not-yet-taken and is cleared on first take (#5199)."
++  },
++  "scenery": {
++   "s": "X",
++   "r": "FAIL CLOSED (grok1 b-batch; same rule as #5242 scenery x9): NDESCBIT 44 on 102 objects incl. 8 takeable (blaster 76, stone 147, handbag 158, fruit 176, telephone 190, gown 206, fluff 232, interface 81); 46 FSET / 42 FCLEAR at runtime. verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
+   }
+  },
+  "Ballyhoo.z3.js": {
+@@ -1965,6 +1969,10 @@
+   "openable": {
+    "s": "NA",
+    "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
++  },
++  "on": {
++   "s": "X",
++   "r": "FAIL CLOSED (grok1 b-batch): ONBIT 18 on 79 objects, all 79 ROOMS (parent 110), 0 non-room; V-LAMP-ON only FSETs ONBIT on LIGHTBIT objects and no object carries LIGHTBIT (light already NA). verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
+   }
+  },
+  "Stationfall.z3.js": {
+@@ -2299,6 +2307,10 @@
+   "visited": {
+    "s": "NC",
+    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added. Shares TOUCHBIT with moved: reuse moved provenance."
++  },
++  "scenery": {
++   "s": "X",
++   "r": "FAIL CLOSED (grok1 b-batch; same rule as #5242 scenery x9): NDESCBIT 4 on 68 objects incl. takeable FUSE 10 and all robots (Whiz/Poet/Auda/Sensa/Waldo/Iris); runtime FSET/FCLEAR on WEDGE, WHEEL, REDCABLE, ORANGECABLE. verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
+   }
+  },
+  "Wishbringer.z3.js": {
+@@ -2503,6 +2515,22 @@
+   "static": {
+    "s": "S",
+    "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 22 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 10: it means not-yet-taken and is cleared on first take (#5199)."
++  },
++  "on": {
++   "s": "X",
++   "r": "FAIL CLOSED per Claude #5207: ONBIT 14 on 31 objects = 29 ROOMS (parent 251) + fixed NDESC lamp 159 + parentless 249; source never FSETs/FCLEARs ONBIT on objects (only FSET? HERE lit test). verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
++  },
++  "scenery": {
++   "s": "X",
++   "r": "FAIL CLOSED per Claude #5207: NDESCBIT 19 on 100 objects incl. takeable muddy boots 18, keys 33, powder 107; runtime FSET/FCLEAR (PHONG-KEYS, CLOCK-POWDER, MONICA-TIED-WITH). verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
++  },
++  "wornAttribute": {
++   "s": "NA",
++   "r": "not applicable per Claude #5207: no WEARBIT or WORNBIT anywhere in source or flag table. verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
++  },
++  "switchable": {
++   "s": "X",
++   "r": "FAIL CLOSED (grok1 b-batch): V-LAMP-ON (verbs.zil 1974) refuses every object (\"You can't turn on\" / sink water joke), V-LAMP-OFF likewise; LIGHTBIT 25 only on global cigarette 43 + 249; no toggle anywhere. verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
+   }
+  },
+  "Sherlock.z5.js": {
+diff --git a/work/investigations/2026-10-16-zil-profile-ledger.md b/work/investigations/2026-10-16-zil-profile-ledger.md
+index 7225713..4993937 100644
+--- a/work/investigations/2026-10-16-zil-profile-ledger.md
++++ b/work/investigations/2026-10-16-zil-profile-ledger.md
+@@ -1,4 +1,4 @@
+-<!-- generated by zil-profile-ledger.js 2026-10-25T21:29:37.184Z -->
++<!-- generated by zil-profile-ledger.js 2026-10-26T01:24:35.957Z -->
+ # ZIL full-profile ledger (38 keys)
+ 
+ Mapping (profile key -> ZIL flag): animate=ACTORBIT/PERSONBIT, absent=none, clothing=WEARBIT, wearable=WEARBIT, concealed=INVISIBLE, container=CONTBIT, door=DOORBIT, edible=FOODBIT, enterable=VEHBIT, general=none, light=ONBIT, lockable=none, locked=LOCKEDBIT/LOCKED, moved=TOUCHBIT, on=ONBIT, open=OPENBIT, isOpen=OPENBIT, openable=OPENBIT/DOORBIT, proper=NARTICLEBIT, scenery=NDESCBIT, scored=none, static=TRYTAKEBIT, supporter=SURFACEBIT, switchable=LIGHTBIT, talkable=ACTORBIT/PERSONBIT, transparent=TRANSBIT, visited=TOUCHBIT, workflag=none, worn=WORNBIT, male=none, female=FEMALE/FEMALEBIT, neuter=none, pluralname=PLURALBIT, takeable=TAKEBIT. Special: lightSource, inventoryHiddenAttribute, wornAttribute, openCapability.
+@@ -9,30 +9,30 @@ Mapping (profile key -> ZIL flag): animate=ACTORBIT/PERSONBIT, absent=none, clot
+ | Zork2-TheWizardofFrobozz | F | L:NA | L:S | C | U | F | C | F | C | L:NA | C | L:NA | L:NA | C | C | F | F | L:NA | L:NA | L:X | L:NA | L:S | F | C | C | C | L:NC | L:NA | L:UD | L:NA | L:NA | L:NA | L:NA | L:S | L:O | U | L:NA | C |
+ | Zork3-TheDungeonMaster | L:X | L:NA | L:S | F | U | F | C | F | U | L:NA | U | L:NA | L:NA | C | F | F | F | L:NA | L:NA | C | L:NA | L:S | C | C | U | L:NA | L:NC | L:NA | L:UD | L:NA | L:NA | L:NA | L:NA | L:S | L:O | U | U | C |
+ | Enchanter | L:NA | L:NA | L:NA | L:UD | C | F | C | L:NA | C | L:NA | C | L:NA | U | C | F | F | F | L:NA | L:NA | L:X | L:NA | L:S | C | L:X | L:U | C | L:NC | L:NA | L:UD | L:NA | L:NA | L:NA | L:NA | L:S | U | U | L:NA | C |
+-| Hitchhik | C | L:NA | L:S | F | C | F | C | L:NA | C | L:NA | U | L:NA | L:NA | C | U | F | F | L:NA | L:NC | U | L:NA | L:S | F | U | C | C | L:NC | L:NA | F | L:NA | L:NA | L:NA | L:NA | L:S | U | F | F | C |
++| Hitchhik | C | L:NA | L:S | F | C | F | C | L:NA | C | L:NA | U | L:NA | L:NA | C | U | F | F | L:NA | L:NC | L:X | L:NA | L:S | F | U | C | C | L:NC | L:NA | F | L:NA | L:NA | L:NA | L:NA | L:S | U | F | F | C |
+ | Ballyhoo | C | L:NA | L:S | F | U | F | C | L:NA | C | L:NA | U | L:NA | C | C | F | F | F | L:NA | L:NC | C | L:NA | L:S | F | C | C | C | L:NC | L:NA | F | L:NA | L:NC | L:NA | L:NA | L:S | L:U | F | F | C |
+ | Cutthroats | F | L:NA | L:S | F | U | F | C | F | U | L:NA | U | L:NA | L:NA | C | C | F | F | L:NA | L:NA | C | L:NA | L:S | F | L:NA | L:U | C | L:NC | L:NA | C | L:NA | L:NA | L:NA | L:NA | L:S | U | U | C | C |
+-| Deadline | F | L:NA | L:NA | L:UD | U | F | C | L:NA | C | L:NA | L:NA | L:NA | L:NA | L:U | L:X | F | F | L:NA | L:NA | C | L:NA | L:S | F | L:NA | L:U | L:U | L:NC | L:NA | L:UD | L:NA | L:NA | L:NA | L:NA | L:S | U | U | L:NA | C |
++| Deadline | F | L:NA | L:NA | L:UD | U | F | C | L:NA | C | L:NA | L:NA | L:NA | L:NA | C | L:X | F | F | L:NA | L:NA | C | L:NA | L:S | F | L:NA | C | L:U | L:NC | L:NA | L:UD | L:NA | L:NA | L:NA | L:NA | L:S | U | U | L:NA | C |
+ | Infidel | U | L:NA | L:U | L:U | C | F | C | F | C | L:NA | U | L:NA | L:NA | C | L:X | F | F | L:NA | L:NA | L:X | L:NA | L:S | F | L:NA | U | L:NA | L:NC | L:NA | F | L:NA | L:NA | L:NA | L:NA | L:S | U | U | F | C |
+ | HollywoodHijinx | F | L:NA | L:S | F | C | L:O | C | L:NA | U | L:NA | U | L:NA | U | C | C | C | C | L:NA | L:NC | C | L:NA | L:S | C | C | C | L:NA | L:NC | L:NA | F | L:NA | L:NA | L:NA | L:NA | L:S | U | U | F | U |
+ | LeatherGoddessesofPhobos | F | L:NA | L:S | C | N? | C | C | L:NA | C | L:NA | U | L:NA | C | C | C | F | F | L:NA | L:NC | L:X | L:NA | L:S | F | C | C | L:U | L:NC | L:NA | C | L:NA | L:NC | L:NA | L:NC | L:S | U | U | C | C |
+ | Moonmist | C | L:NA | L:S | C | U | F | L:X | L:NA | C | L:NA | U | L:NA | U | C | F | F | F | L:NA | L:NC | C | L:NA | L:S | F | C | C | C | L:NC | L:NA | C | L:NA | L:NC | L:NA | L:NC | L:S | U | U | C | C |
+ | PlunderedHearts | F | L:NA | L:S | C | U | C | C | L:NA | C | L:NA | U | L:NA | C | C | L:X | F | F | L:NA | L:NC | C | L:NA | L:S | C | L:X | C | C | L:NC | L:NA | F | L:NA | L:NC | L:NA | L:NC | L:S | U | F | F | C |
+-| Borderzo | C | L:NA | L:S | F | U | F | C | C | L:NA | L:NA | L:NA | L:NA | L:NA | C | L:NA | F | F | L:NA | L:NC | C | L:NA | L:S | C | L:NA | L:U | C | L:NC | L:NA | F | L:NA | L:NA | L:NA | L:NC | L:S | L:UD | C | F | C |
+-| TheLurkingHorror | C | L:NA | L:U | L:U | U | C | C | C | C | L:NA | U | L:NA | C | C | F | F | F | C | L:NA | L:X | L:NA | L:S | F | C | L:U | C | L:NC | L:NA | F | L:NA | L:NA | L:NA | L:NA | L:S | L:U | F | C | C |
+-| Planetfall | C | L:NA | L:S | F | U | F | C | C | C | L:NA | U | L:NA | L:NA | L:U | L:X | F | F | L:NA | L:NA | C | L:NA | L:S | L:UD | C | U | C | L:NC | L:NA | F | L:NA | L:NA | L:NA | L:NA | L:S | U | U | F | C |
+-| Seastalker | F | L:NA | L:NA | L:UD | U | F | C | L:NA | L:U | L:NA | U | L:NA | U | C | F | F | F | L:NA | L:NC | L:X | L:NA | L:S | C | L:NA | L:U | L:U | L:NC | L:NA | L:UD | L:NA | L:NC | L:NA | L:NA | L:S | U | F | L:NA | C |
++| Borderzo | C | L:NA | L:S | F | U | F | C | C | L:NA | L:NA | L:NA | L:NA | L:NA | C | L:NA | F | F | L:NA | L:NC | C | L:NA | L:S | C | L:NA | C | C | L:NC | L:NA | F | L:NA | L:NA | L:NA | L:NC | L:S | L:UD | C | F | C |
++| TheLurkingHorror | C | L:NA | L:U | L:U | U | C | C | C | C | L:NA | U | L:NA | C | C | F | F | F | C | L:NA | L:X | L:NA | L:S | F | C | C | C | L:NC | L:NA | F | L:NA | L:NA | L:NA | L:NA | L:S | L:U | F | C | C |
++| Planetfall | C | L:NA | L:S | F | U | F | C | C | C | L:NA | U | L:NA | L:NA | C | L:X | F | F | L:NA | L:NA | C | L:NA | L:S | L:UD | C | U | C | L:NC | L:NA | F | L:NA | L:NA | L:NA | L:NA | L:S | U | U | F | C |
++| Seastalker | F | L:NA | L:NA | L:UD | U | F | C | L:NA | L:U | L:NA | U | L:NA | U | C | F | F | F | L:NA | L:NC | L:X | L:NA | L:S | C | L:NA | C | L:U | L:NC | L:NA | L:UD | L:NA | L:NC | L:NA | L:NA | L:S | U | F | L:NA | C |
+ | Sorcerer | F | L:NA | L:S | F | U | F | C | L:NA | C | L:NA | U | L:NA | L:NA | C | F | F | F | L:NA | L:NC | L:X | L:NA | L:S | F | C | C | C | L:NC | L:NA | F | L:NA | L:NA | L:NA | L:NA | L:S | U | U | L:NA | C |
+ | Spellbreaker | F | L:NA | L:NA | L:UD | U | C | U | F | C | L:NA | U | L:NA | U | C | C | C | C | L:NA | L:NA | C | L:NA | L:S | F | L:NA | F | C | L:NC | L:NA | L:UD | L:NA | L:NA | L:NA | L:NA | L:S | U | U | L:NA | C |
+-| Starcross | F | L:NA | L:U | L:U | U | C | C | L:NA | C | L:NA | L:NA | L:NA | L:NA | L:U | U | C | C | L:NA | L:NA | C | L:NA | L:S | C | C | L:U | L:NA | L:NC | L:NA | F | L:NA | L:NA | L:NA | L:NA | L:S | U | U | F | C |
++| Starcross | F | L:NA | L:U | L:U | U | C | C | L:NA | C | L:NA | L:NA | L:NA | L:NA | C | L:X | C | C | L:NA | L:NA | C | L:NA | L:S | C | C | L:U | L:NA | L:NC | L:NA | F | L:NA | L:NA | L:NA | L:NA | L:S | U | U | F | C |
+ | Stationfall | F | L:NA | L:S | F | N? | C | C | L:NA | C | L:NA | C | L:NA | C | C | L:X | C | C | L:NA | L:NC | C | L:NA | L:S | C | C | C | C | L:NC | L:NA | F | L:NA | L:NA | L:NA | L:NC | L:S | U | U | C | C |
+-| Suspect | C | L:NA | L:UD | L:UD | U | C | C | L:UD | U | L:NA | U | L:NA | U | L:U | L:UD | C | C | L:NA | L:NA | L:X | L:NA | L:UD | C | L:NA | L:U | C | L:NC | L:NA | C | L:NA | L:NC | L:NA | L:NA | L:UD | L:UD | C | C | C |
+-| Suspended | L:NA | L:NA | L:U | F | C | U | L:NA | L:NA | U | L:NA | U | L:NA | L:NA | C | F | U | U | L:NA | L:NA | U | L:NA | L:NA | U | L:NA | L:U | L:U | L:NC | L:NA | F | L:NA | L:NA | L:NA | L:NA | L:S | U | U | C | U |
++| Suspect | C | L:NA | L:UD | L:UD | U | C | C | L:UD | U | L:NA | U | L:NA | U | C | L:UD | C | C | L:NA | L:NA | L:X | L:NA | L:UD | C | L:NA | C | C | L:NC | L:NA | C | L:NA | L:NC | L:NA | L:NA | L:UD | L:UD | C | C | C |
++| Suspended | L:NA | L:NA | L:U | F | C | U | L:NA | L:NA | U | L:NA | U | L:NA | L:NA | C | F | U | U | L:NA | L:NA | L:X | L:NA | L:NA | U | L:NA | L:U | L:U | L:NC | L:NA | F | L:NA | L:NA | L:NA | L:NA | L:S | U | U | C | U |
+ | Wishbringer | F | L:NA | L:S | F | N? | F | C | L:NA | L:NA | L:NA | U | L:NA | C | C | L:X | F | F | L:NA | L:NC | L:X | L:NA | L:S | F | L:NA | C | C | L:NC | L:NA | F | L:NA | L:NC | L:NA | L:NA | L:S | U | U | F | C |
+-| TheWitness | C | L:NA | L:NA | L:UD | U | F | C | L:NA | C | L:NA | U | L:NA | C | L:U | U | F | F | L:NA | L:NA | U | L:NA | L:S | F | U | L:U | L:NA | L:NC | L:NA | L:UD | L:NA | L:NC | L:NA | L:NA | L:S | L:U | U | U | C |
++| TheWitness | C | L:NA | L:NA | L:UD | U | F | C | L:NA | C | L:NA | U | L:NA | C | C | L:X | F | F | L:NA | L:NA | L:X | L:NA | L:S | F | L:X | C | L:NA | L:NC | L:NA | L:UD | L:NA | L:NC | L:NA | L:NA | L:S | L:U | U | L:NA | C |
+ | Sherlock | L:UD | B | B | L:UD | B | C | B | L:UD | B | B | B | B | B | B | L:UD | C | C | B | B | B | B | B | L:UD | B | B | B | B | B | L:UD | B | B | B | B | L:UD | L:UD | B | B | B |
+ 
+-**Cells: F 134, L:NA 315, C 214, U 102, L:S 61, L:NC 49, L:UD 30, L:O 4, L:X 19, L:U 30, N? 3, B 27 of 988.** U = mapped flag present in source, undecided. N? = PROPOSED not-applicable (no mapped ZIL flag, or source lacks it): NOT a verdict; source absence alone is not NA and the mapping equivalences (e.g. static=TRYTAKEBIT, scenery=NDESCBIT, switchable=LIGHTBIT) are unaccepted until semantically checked (Codex #3533). B = blocked: no source pin for this title. This ledger is a proposal, not certification.
++**Cells: F 134, L:NA 316, C 225, U 95, L:S 61, L:NC 49, L:UD 30, L:O 4, L:X 25, L:U 19, N? 3, B 27 of 988.** U = mapped flag present in source, undecided. N? = PROPOSED not-applicable (no mapped ZIL flag, or source lacks it): NOT a verdict; source absence alone is not NA and the mapping equivalences (e.g. static=TRYTAKEBIT, scenery=NDESCBIT, switchable=LIGHTBIT) are unaccepted until semantically checked (Codex #3533). B = blocked: no source pin for this title. This ledger is a proposal, not certification.
+ 
+ ## Consumer inventory (generated from js/)
+ 

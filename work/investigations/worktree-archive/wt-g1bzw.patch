@@ -1,0 +1,18 @@
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index a2d3c91..91592a8 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -285,7 +285,12 @@ var ModuleStatFactsClaude = {
+         // building 127:47 FALSE ("You find nothing unusual."). Source PERSON: 12 carriers, exact (2026-10-11-zil-source-flags.json); bounded compiled
+         // table (351 objects, ends at first property 6214): 17 carriers = 12 persons + yourself 30, GloObj 79, protagonist "it" 305 and 2 more; none
+         // are rooms. FAIL-CLOSED: TOPAZ carries CONTBIT + SURFACEBIT + PERSON (bad.zil:3249), so animate joins the openCapability none list.
+-        "attributeMap": { "container": 43, "supporter": 36, "open": 34, "isOpen": 34, "animate": 47 },
++        // WEARBIT 41 = wearable (grok1 2026-10-17, g1-scan9.cjs chapter 2 (BZCH=2), test_attr recorded only during the named command): after
++        // 'take off chronograph', 'wear chronograph' tests chronograph 81:41 TRUE ("You are now wearing the chronograph."); route tear clothes, tie scrap,
++        // ne,ne,n,ne,ne, 8 waits (occupant leaves), open door, w -> Storage Area: 'wear parka' tests white down parka 244:41 TRUE ("You are now wearing
++        // the white down parka."). Negatives: 'wear pen' 259:41 FALSE, 'wear oil can' oil can 4:41 FALSE ("You can't wear the can of household oil.").
++        // Source WEARBIT carriers equal the in-memory bit-41 carriers (no rooms); SHOES-F answers WEAR itself, so the shoes were not used as a positive.
++        "attributeMap": { "container": 43, "supporter": 36, "open": 34, "isOpen": 34, "animate": 47, "wearable": 41 },
+         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] }
+     },
+     // Stationfall (ZIL): untouched native routes (Codex #3393-#3400). DROP chronometer inserts it into room 198,

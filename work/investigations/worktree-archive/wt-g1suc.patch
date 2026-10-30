@@ -1,0 +1,17 @@
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index f618b81..754301c 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -782,7 +782,11 @@ var ModuleStatFactsClaude = {
+         // being worn.", V-WEAR verbs.zil:1740-1745); 'waldo,install container' tests basket 76:31 FALSE ("An interesting but highly unlikely
+         // thought."). Source: WEARABLEBIT is carried ONLY by SURGERY-HAND (objects.zil:393, IN SUPPLIES-MID); bounded compiled object-table
+         // scan (191 objects, ends at first property 2527): bit 31 carriers = {63} -> rule-5 single-owner exception + source 1/1.
+-        "attributeMap": { "wearable": 31 },
++        // Animate 24 (VICBIT on the six robots + PEOPLE, robots.zil 870/880; grok1 2026-10-17, g1-suA/g1-suB @0, Central Chamber,
++        // test_attr only during the named command): 'sensa, look in poet' tests 146:24 TRUE and 'poet, look in sensa' tests 152:24 TRUE
++        // ("There is nothing special to be seen.", V-LOOK-INSIDE VICBIT branch verbs.zil:1298); 'sensa, look in column' tests the
++        // electrical column 81:24 FALSE ("The electrical column is closed."). Bounded table: bit 24 = exactly the 14 robot/People objects.
++        "attributeMap": { "wearable": 31, "animate": 24 },
+         // WEARBIT 15 = worn (grok1 2026-10-17, route suspW): grasper 63:15 FALSE before 'waldo,install grasper', TRUE after; 'waldo,detach grasper'
+         // tests 63:15 TRUE x3 ("It's been removed."); 'waldo,remove container' tests basket 76:15 FALSE (agent-tools/g1-suE.json). Single owner:
+         // the only runtime FSET is V-WEAR (verbs.zil:1745), gated on WEARABLEBIT = SURGERY-HAND only; the bounded boot scan carrier {191} is

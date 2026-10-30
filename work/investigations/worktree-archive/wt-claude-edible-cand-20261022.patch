@@ -1,0 +1,91 @@
+diff --git a/js/ActionSynth.js b/js/ActionSynth.js
+index ad87253..759517d 100644
+--- a/js/ActionSynth.js
++++ b/js/ActionSynth.js
+@@ -70,8 +70,17 @@ var ActionSynth = {
+             var policy = ActionSynth.activationFormPolicy(objectId, context);
+             if (policy !== null) return policy;
+         }
++        if (key === "edible") {
++            var edible = ActionSynth.edibleFormPolicy(objectId, context);
++            if (edible !== null) return edible;
++        }
+         return ActionSynth.rules[key] || [];
+     },
++    edibleFormPolicy: (objectId, context) => {
++        if (typeof AttributeSchema === "undefined" || !AttributeSchema.edibleForms) return null;
++        var forms = AttributeSchema.edibleForms(AttributeSchema._getMem(), objectId, context);
++        return forms && forms.every(ActionSynth.literalAvailable) ? forms : forms === null ? null : [];
++    },
+     activationFormPolicy: (objectId, context) => {
+         if (typeof AttributeSchema === "undefined" || !AttributeSchema.activationForms) return null;
+         var forms = AttributeSchema.activationForms(AttributeSchema._getMem(), objectId, context);
+diff --git a/js/AttributeSchema.js b/js/AttributeSchema.js
+index 915a2ca..8a065ca 100644
+--- a/js/AttributeSchema.js
++++ b/js/AttributeSchema.js
+@@ -406,6 +406,34 @@ var AttributeSchema = {
+         } catch (eActivationForms) { return owned ? [] : null; }
+     },
+ 
++    // Authored edible pair (Border Zone EAT+DRINK on the same identity owners). null = no authored policy, so
++    // existing Eat-only identity food (Spellbreaker, Infidel, Zork III) is untouched; [] = a claimed pair was rejected,
++    // and a rejected pair never falls back to a generic Drink inference.
++    edibleForms: function (mem, objectId, context) {
++        var owned = false;
++        try {
++            var fact = ZRamReader.executableLayoutFacts(mem);
++            if (!fact) {
++                var digest = ModuleLibrary.currentExecutableDigest();
++                fact = digest && ModuleStatFactsClaude[digest];
++            }
++            if (!fact || !(fact.capabilityForms && Object.prototype.hasOwnProperty.call(fact.capabilityForms, "edible"))) return null;
++            owned = true;
++            if ((ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) ||
++                (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, "edible"))) return null;
++            var ids = AttributeSchema.objectCapabilityIds(mem, "edible");
++            var forms = fact.capabilityForms.edible;
++            if (context !== "inventory" || !ids || !Number.isInteger(objectId) || ids.indexOf(objectId) < 0 ||
++                !Array.isArray(forms) || forms.length !== 2 || forms[0] !== "eat" || forms[1] !== "drink") return [];
++            var family = AttributeSchema._familyOf(mem);
++            if (!family || !Array.isArray(family.templates) || !forms.every(function (form) {
++                return family.templates.some(function (t) { return t.verb === form && t.objectCount === 1 &&
++                    (!t.prepositions || t.prepositions.length === 0); });
++            })) return [];
++            return forms.slice();
++        } catch (eEdibleForms) { return owned ? [] : null; }
++    },
++
+     // Additional restriction on activation badges, never a source of on-state authority.
+     activationStateAllows: function (mem, objectId) {
+         var owned = false;
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index 045844f..aa8cefc 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -43,7 +43,10 @@ var ModuleStatFactsClaude = {
+         // WEARBIT 18 (grok1 2026-10-17, same replay): 'wear wet suit' @280 tests 139:18 TRUE, 'wear flippers' @284 tests 138:18 TRUE
+         // ("You are now wearing ..."); 'wear flashlight' @291 tests flashlight 116:18 FALSE ("You can't wear the flashlight."). RAM 18 =
+         // watch 6, diving suit 81, air tank 136, mask 137, flippers 138, wet suit 139 = source WEARBIT exact 6/6.
+-        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18 },
++        // ONBIT 17 (state only; R3 claude lane on codex-accepted design cutthroats-on-integration-proposal.md): native ON sets 17
++        // and OFF clears it on two distinct owners, flashlight 116 and the Salvager's large compressor 89 (walkthrough 0-18 then
++        // w,w,n,e,s); named EXAMINE 89 after OFF tests 17 FALSE with the native "off" reply. No switchable capability implied.
++        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18, "on": 17 },
+         // WORNBIT 13 (grok1 2026-10-17, g1-ctA/B Jericho replay, test_attr recorded only during the named command): 'remove watch' @287 tests
+         // wrist watch 6:13 TRUE x3 ("You are now holding the wrist watch.") and the RAM scan after it drops 6 from the owners (UNWEAR FCLEARs);
+         // 'remove wet suit' @287 tests 139:13 TRUE; 'wear flippers' @284 tests 138:13 FALSE before and TRUE after; 'remove flashlight' @291
+@@ -314,7 +317,12 @@ var ModuleStatFactsClaude = {
+         // are rooms. FAIL-CLOSED: TOPAZ carries CONTBIT + SURFACEBIT + PERSON (bad.zil:3249), so animate joins the openCapability none list.
+         // Grok4128: native WEAR chronograph81 and parka244 test41 true; oil can4 false/refused.
+         "attributeMap": { "container": 43, "supporter": 36, "open": 34, "isOpen": 34, "animate": 47, "wearable": 41 },
+-        "openCapability": { "all": ["container"], "none": ["supporter", "animate"] }
++        "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
++        // Identity food, no FOODBIT (codex border-food-evidence.json, design border-food-consumer-compared-proposal.md): chapter 3
++        // held soda 200 and pretzel 205 each succeed on native EAT and DRINK (source FOOD-F handler); held cigarette 101 refuses
++        // both. The authored pair is the only Drink licence; it is inventory-only because the native proof was held.
++        "attributeObjects": { "edible": [200, 205] },
++        "capabilityForms": { "edible": ["eat", "drink"] }
+     },
+     // Stationfall (ZIL): untouched native routes (Codex #3393-#3400). DROP chronometer inserts it into room 198,
+     // TAKE into holder 218; global 183 is the only global equal to that holder, still so after STARBOARD moves

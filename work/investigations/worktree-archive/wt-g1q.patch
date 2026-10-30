@@ -1,0 +1,91 @@
+diff --git a/harness/operator-regressions.js b/harness/operator-regressions.js
+index de17926..a9c56f0 100644
+--- a/harness/operator-regressions.js
++++ b/harness/operator-regressions.js
+@@ -70,7 +70,7 @@ async function open(b, story, seeded) {
+     await p.cmd('look');
+     const info = await p.evaluate(() => {
+       const ms = [...document.querySelectorAll('.pl-act:not(.is-stale)')].filter(m => m.dataset.kind !== 'direction');
+-      const cov = ms.flatMap(m => Actionable.markCoverIds(m)); const dup = cov.filter((id, i) => cov.indexOf(id) !== i);
++      const cov = ms.flatMap(m => [...new Set(Actionable.markCoverIds(m))]); const dup = cov.filter((id, i) => cov.indexOf(id) !== i);
+       const inside = ms.filter(m => m.textContent.toLowerCase() === 'cage' && /brass\s*$/i.test((m.previousSibling && m.previousSibling.nodeValue) || ''));
+       const brass = ms.filter(m => m.textContent.toLowerCase() === 'brass cage').map(m => Actionable.markCoverIds(m));
+       return { dup, inside: inside.length, brass };
+@@ -92,9 +92,13 @@ async function open(b, story, seeded) {
+     const info = await p.evaluate(() => {
+       const inv = ((WorldModel.lastPayload || {}).inventory || []).map(o => o.id);
+       const text = String((Actionable.Scope && Actionable.Scope.lastInventoryText) || '');
+-      return { inv, has217: inv.indexOf(217) >= 0, textHasBrochure: /brochure/i.test(text) };
++      const mem = ZRamProvider.getMem(), links = ZRamReader.objectLinks(mem, 217);
++      const root = ((WorldModel.lastPayload || {}).probe || {}).inventoryRootId;
++      return { inv, has217: inv.indexOf(217) >= 0, textHasBrochure: /brochure/i.test(text), root, brochureParent: links && links.parent }; 
+     });
+-    check('planetfall cold inventory has no brochure 217', !info.has217 && !info.textHasBrochure, info);
++    // Planetfall globals.zil PROB15 may hand over the brochure during this turn.
++    // Native RAM custody, not a mention in ambient text, determines inventory.
++    check('planetfall brochure inventory matches native custody', info.root === 236 && info.has217 === (info.brochureParent === 236), info);
+     await p.close();
+   } catch (e) { check('planetfall brochure run', false, e.message); }
+   await b.close(); console.log(pass + ' PASS / ' + fail + ' FAIL'); process.exit(fail ? 1 : 0);
+diff --git a/harness/zil-actor-open.js b/harness/zil-actor-open.js
+index e998b31..645f915 100644
+--- a/harness/zil-actor-open.js
++++ b/harness/zil-actor-open.js
+@@ -1,4 +1,4 @@
+-// Guard (grok1 2026-10-17, A1 of claude #3855): ZIL actors carrying CONTBIT+OPENBIT (Zork II robot, H2G2 Prosser) must never
++// Guard (grok1 2026-10-17, A1 of claude #3855): ZIL actors carrying CONTBIT+OPENBIT (Zork II robot, H2G2 Prosser, Lurking Horror hacker) must never
+ // be offered container Open/Close; real containers in the same scene keep them. Replays the Jericho walkthrough (JSEED parity,
+ // no relocation/forcing) to a step where the actor is in scope, then reads Actionable's own Open/Close commands.
+ //   ROOT=<tree> node harness/zil-actor-open.js
+@@ -10,7 +10,9 @@ let pass = 0, fail = 0; const check = (n, ok, info) => { ok ? pass++ : fail++; c
+ // Add { story: 'Enchanter.z3.js', walk: 'enchanter', seed: 0, step: 111, actor: 'rainbow turtle', keep: 'jug' } once that is solved.
+ const CASES = [
+   { story: 'Zork2-TheWizardofFrobozz.z3.js', walk: 'zork2', seed: 0, step: 96, actor: 'robot', keep: null },
+-  { story: 'Hitchhik.z5.js', walk: 'hhgg', seed: 4, step: 18, actor: 'Mr. Prosser', keep: 'your gown' } ];
++  { story: 'Hitchhik.z5.js', walk: 'hhgg', seed: 4, step: 18, actor: 'Mr. Prosser', keep: 'your gown' },
++  // Lurking Horror HACKER (hacker.zil:9: SEARCHBIT PERSON OPENBIT CONTBIT), in scope in the computer center after 'N' @21.
++  { story: 'TheLurkingHorror.z3.js', walk: 'lurking', seed: 0, step: 22, actor: 'hacker', keep: null } ];
+ (async () => { const b = await chromium.launch();
+   for (const C of CASES) { const p = await b.newPage();
+   await p.addInitScript((J) => { let A = J >>> 0, iv = 0, ct = 0; const fr = function (t) { t = t << 16 >> 16; if (t <= 0) { const v = -t; if (v === 0) { A = J >>> 0; iv = 0; } else if (v < 1000) { ct = 0; iv = v; } else { A = v >>> 0; iv = 0; } return 0; } let r; if (iv) { r = ct++; if (ct === iv) ct = 0; } else { A = (Math.imul(0x015a4e35, A) + 1) >>> 0; r = (A >>> 16) & 0x7fff; } return r % t + 1; }; let cur; Object.defineProperty(window, '__PARCHLOCK_ZVM__', { configurable: true, get() { return cur; }, set(v) { cur = v; if (v && !v.__jr) { v.__jr = 1; v.random = fr; } } }); sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); for (const x of ['PL_TutorialSeen', 'PL_MobileTutorialSeen', 'PL_LearnedWordsTutorialSeen']) localStorage.setItem(x, '1'); }, C.seed);
+@@ -24,4 +26,4 @@ const CASES = [
+   check(tag + C.actor + ' (actor, CONTBIT+OPENBIT) offers no open/close', (oc[C.actor] || ['missing']).length === 0, oc[C.actor]);
+   if (C.keep) check(tag + C.keep + ' (real container) still offers open and close', (oc[C.keep] || []).length === 2, oc[C.keep]);
+   await p.close(); }
+-  await b.close(); console.log(`${pass} PASS / ${fail} FAIL`); process.exit(fail ? 1 : 0); })();
+\ No newline at end of file
++  await b.close(); console.log(`${pass} PASS / ${fail} FAIL`); process.exit(fail ? 1 : 0); })();
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index f383dee..53126b6 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -609,8 +609,14 @@ var ModuleStatFactsClaude = {
+         // SURFACEBIT 8 original scene (2026-10-11-zil-walk-pzlurking.json, target-scoped): chair, kitchen counter, forklift,
+         // floor waxer TRUE; catwalk, ladder, flask, refrigerator, microwave oven, flashlight, crowbar FALSE. Source exact 10/10.
+         // Applied with openCapability so surfaces get no Open/Close.
+-        "openCapability": { "all": ["container"], "none": ["supporter"] },
+-        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8 },
++        // FAIL-CLOSED (grok1 2026-10-17): actors carrying CONTBIT + OPENBIT + PERSON (source: HACKER (hacker.zil:9), URCHIN (frob.zil:201),
++        // PROFESSOR (cs.zil:5279)) must never get container Open/Close, so the proven animate bit joins the none list.
++        "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
++        // PERSON 31 = animate (grok1 2026-10-17, g1-scan2 = Jericho walkthrough replay, test_attr recorded only during the named command):
++        // 'tell hacker' @22 tests hacker 129:31 TRUE; 'tell maintenance man' @68 and 'maintenance man, hello' @69 test maintenance man
++        // 20:31 TRUE; 'tell carton' @22 tests carton 58:31 FALSE. Source PERSON = bit 31 exact. Room-safe: the only runtime FSET is on
++        // HAND (cs.zil:5582), no room carries PERSON, so ZRamReader.isPlausibleMapRoom is unaffected.
++        "attributeMap": { "open": 13, "isOpen": 13, "container": 27, "supporter": 8, "animate": 31 },
+         // Native i (take all, i; 2026-10-16-hidden-bit-finder.json) tests bit18 TRUE on the pc's mouse 199 and HELP key 107
+         // and omits them; FALSE on the printed chair 62, pc 191, assignment 97. Source NDESCBIT 18 exact (72/72). SOLO/SELF-AUDIT.
+         "inventoryHiddenAttribute": 18,
+@@ -712,6 +718,12 @@ var ModuleStatFactsClaude = {
+     },
+     // Suspended (Infocom v3)
+     "6011284a57a6200c4deebfbeae92b3bac2f98a570ddbbc8cfc8bcc382d5b524f": {
++        // WEARABLEBIT 31 (grok1 2026-10-17; custom route agent-tools/g1-routes.json suspW: Waldo goes to the Middle Supply Room, takes the
++        // container and grasper; test_attr recorded only during the named command): 'waldo,install grasper' tests 63:31 TRUE ("It's now
++        // being worn.", V-WEAR verbs.zil:1740-1745); 'waldo,install container' tests basket 76:31 FALSE ("An interesting but highly unlikely
++        // thought."). Source: WEARABLEBIT is carried ONLY by SURGERY-HAND (objects.zil:393, IN SUPPLIES-MID); bounded compiled object-table
++        // scan (191 objects, ends at first property 2527): bit 31 carriers = {63} -> rule-5 single-owner exception + source 1/1.
++        "attributeMap": { "wearable": 31 },
+         "command": "score", "fields": ["casualties", "population", "cycles"], "replyFamily": "casualty-cycles", "outcome": "line",
+         "evidence": "2026-10-05 live SCORE: There have been 3,000 casualties (original population: 30,172,000) in 0 cycles."
+     },

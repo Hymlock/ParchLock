@@ -1,0 +1,15 @@
+{
+ "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-apk73-20261022",
+ "head": "c8f589d",
+ "dirtyTracked": [
+  "android/app/build.gradle",
+  "android/app/capacitor.build.gradle",
+  "android/app/src/main/java/com/parchlock/app/RotatingIconWidget.java",
+  "android/capacitor.settings.gradle",
+  "build-android.bat",
+  "js/Consts.js",
+  "service-worker.js"
+ ],
+ "untrackedOther": [],
+ "links": []
+}

@@ -1,0 +1,22 @@
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index a2d3c91..f1f0f0d 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -81,7 +81,16 @@ var ModuleStatFactsClaude = {
+         // service counter 18 (zil-route-ops.cjs), 'look in trunk' TRUE on gnarled tree trunk 230 (pzwish); 19 negatives in the
+         // same walks. Source exact 10/10. Applied with openCapability so surfaces get no Open/Close.
+         "openCapability": { "all": ["container"], "none": ["supporter"] },
+-        "attributeMap": { "container": 4, "open": 25, "isOpen": 25, "animate": 18, "supporter": 27 }
++        // WEARBIT 22 = wearable, WORNBIT 10 = worn (grok1 2026-10-17, g1-scan9 on the Jericho walkthrough (route wbj) @155, Round Chamber,
++        // objects held, test_attr only during the named command): 'wear glasses' tests 3D glasses 89:22 TRUE ("Okay, you're now wearing the
++        // pair of 3D glasses."), 'wear coat' tests white lab coat 147:22 TRUE ("...now wearing the white lab coat."); 'wear note' tests violet
++        // note 14:22 FALSE ("You can't wear the violet note.", V-WEAR verbs.zil:2027). Worn: 'wear 3d glasses' (2nd) tests 89:10 TRUE
++        // ("You're already wearing...", V-WEAR:2024), 'remove glasses' 89:10 TRUE and 'take off coat' 147:10 TRUE ("Okay, you're no longer
++        // wearing the white lab coat.", V-TAKE-OFF:1820); 'wear note' tests 14:10 FALSE, 'wear coat' 147:10 FALSE before V-WEAR sets it.
++        // Source WEARBIT exact 5/5; bounded table (253 objects, ends 3021): bit 22 = the 5 + GLOBAL-OBJECTS 50; bit 10 at boot = GLOBAL-OBJECTS
++        // 50 only (the source POCKET with WORNBIT is not in this release's table; set at runtime by V-WEAR). No rooms.
++        "attributeMap": { "container": 4, "open": 25, "isOpen": 25, "animate": 18, "supporter": 27, "wearable": 22 },
++        "wornAttribute": 10
+     },
+     // Zork III (ZIL): OPENBIT 12: OPEN sets 12 on secret door, stone door, wooden door; CLOSE clears (wooden door). zil-walk.js native walkthrough run (Jericho walkthrough, no relocation/forcing; zil-walk-analysis.json).
+     // WEARBIT 4 original scene (2026-10-11-zil-walk-n4.json): TAKE tests 4 TRUE on golden amulet 39, golden ring 82; FALSE on

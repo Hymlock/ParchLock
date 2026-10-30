@@ -1,0 +1,42 @@
+diff --git a/js/Actionable.js b/js/Actionable.js
+index 57343df..3a1789e 100644
+--- a/js/Actionable.js
++++ b/js/Actionable.js
+@@ -2635,6 +2635,17 @@ var Actionable = {
+         // never disagree about what the player is carrying.
+         try { if (typeof EquipmentUI !== "undefined" && EquipmentUI.Render) EquipmentUI.Render(); } catch (e) {}
+     },
++    // More-page admission for unproven vocabulary only; grammar arity is not
++    // evidence that a verb succeeds on this object. Unknown grammar leaves arity open.
++    moreDictionaryVerbAllowed: function (verb, grammar) {
++        verb = String(verb || '').trim().toLowerCase();
++        if (!/^\p{L}/u.test(verb)) return false;
++        if (!grammar || grammar.evidence !== 'validated' ||
++            grammar.classification !== 'confirmed-zil-family') return true;
++        return (grammar.templates || []).some(function (t) {
++            return t.verb === verb && t.objectCount >= 1;
++        });
++    },
+     addMoreActions: function (slices, context, x, y) {
+         if (context.kind === "direction") return;
+         var suggestions = [], seen = {};
+@@ -2651,8 +2662,18 @@ var Actionable = {
+         // Selection fills the prompt for confirmation; existing proven actions
+         // and learned forms remain in the normal command resolver.
+         try {
++            var grammar = null;
++            try {
++                if (typeof GrammarProvider !== 'undefined' && typeof ZRamProvider !== 'undefined') {
++                    var mem = ZRamProvider.getMem();
++                    if (mem && (typeof ZRamReader === 'undefined' || !ZRamReader.isInformCompiled(mem)))
++                        grammar = GrammarProvider.decodeD198(mem);
++                }
++            } catch (grammarError) {}
+             ParchLockQol.GetRadialCommands().forEach(function (c) {
+-                if (c.source === 'dictionary-verb' || c.source === 'ram-synth') add(c.Command.trim());
++                if (c.source === 'dictionary-verb' &&
++                    Actionable.moreDictionaryVerbAllowed(c.Command, grammar)) add(c.Command.trim());
++                else if (c.source === 'ram-synth') add(c.Command.trim());
+             });
+             if (typeof AttrCalibrator !== 'undefined' && AttrCalibrator.allowedVerbsFor) {
+                 var ids = obj ? [obj.id] : (context.candidateIds || []);

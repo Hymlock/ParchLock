@@ -1,0 +1,1507 @@
+[
+ {
+  "path": "C:/Users/hymlo/.local/share/kilo/worktree-pool/parchmap-main-9bbd56c1384d/hospitable-marigold",
+  "head": "d65c9a0",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-23T21:01"
+ },
+ {
+  "path": "C:/Users/hymlo/agent-tools/wt-g1bzb",
+  "head": "ee48083",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T18:56"
+ },
+ {
+  "path": "C:/Users/hymlo/agent-tools/wt-g1bzc",
+  "head": "ee48083",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T18:56"
+ },
+ {
+  "path": "C:/Users/hymlo/agent-tools/wt-g1mm2",
+  "head": "f346f5f",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T18:43"
+ },
+ {
+  "path": "C:/Users/hymlo/agent-tools/wt-g1mmc",
+  "head": "66ccb55",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T18:28"
+ },
+ {
+  "path": "C:/Users/hymlo/agent-tools/wt-g1pfb",
+  "head": "66ccb55",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T18:00"
+ },
+ {
+  "path": "C:/Users/hymlo/agent-tools/wt-g1pfc",
+  "head": "66ccb55",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T18:00"
+ },
+ {
+  "path": "C:/Users/hymlo/agent-tools/wt-g1sf2",
+  "head": "f346f5f",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T18:43"
+ },
+ {
+  "path": "C:/Users/hymlo/agent-tools/wt-g1sfc",
+  "head": "66ccb55",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T18:02"
+ },
+ {
+  "path": "C:/Users/hymlo/agent-tools/wt-g1ssb",
+  "head": "bbe5aa3",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T20:59"
+ },
+ {
+  "path": "C:/Users/hymlo/agent-tools/wt-g1ssc",
+  "head": "bbe5aa3",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T20:59"
+ },
+ {
+  "path": "C:/Users/hymlo/agent-tools/wt-g2-rv-base",
+  "head": "7e5fe77",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "links": [
+   "games",
+   "node_modules"
+  ],
+  "mtime": "2026-10-25T22:46"
+ },
+ {
+  "path": "C:/Users/hymlo/AppData/Local/Temp/wt-ledger-fc859e0",
+  "head": "fc859e0",
+  "exists": true,
+  "dirtyTracked": [
+   "work/investigations/2026-10-11-zil-cell-ledger.json",
+   "work/investigations/2026-10-16-zil-profile-ledger.md"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-26T01:24"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-claude-d210-apk",
+  "head": "534e653",
+  "exists": true,
+  "dirtyTracked": [
+   "android/app/build.gradle",
+   "android/app/capacitor.build.gradle",
+   "android/app/src/main/java/com/parchlock/app/RotatingIconWidget.java",
+   "android/capacitor.settings.gradle"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-23T10:22"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-claude-edible-base-20261022",
+  "head": "3f1fd5d",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-23T00:15"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-claude-edible-cand-20261022",
+  "head": "3f1fd5d",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ActionSynth.js",
+   "js/AttributeSchema.js",
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [
+   "harness/zil-authored-edible.js"
+  ],
+  "mtime": "2026-10-23T00:15"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-claude-r20-base",
+  "head": "b954497",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-24T13:45"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-claude-r20-cand",
+  "head": "b954497",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ActionSynth.js",
+   "js/AttributeSchema.js",
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-24T13:45"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-claude-r20b-base",
+  "head": "7b0a793",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-24T23:52"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-claude-r20b-cand",
+  "head": "7b0a793",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-24T23:52"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-activation-base-20261022",
+  "head": "b8971be",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-22T19:17"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-activation-candidate-20261022",
+  "head": "b8971be",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ActionSynth.js",
+   "js/AttributeSchema.js",
+   "js/EquipmentUI.js",
+   "js/LearnedWords.js",
+   "js/ModuleStatFactsClaude.js",
+   "js/SemanticActions.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-22T19:17"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-apk73-20261022",
+  "head": "c8f589d",
+  "exists": true,
+  "dirtyTracked": [
+   "android/app/build.gradle",
+   "android/app/capacitor.build.gradle",
+   "android/app/src/main/java/com/parchlock/app/RotatingIconWidget.java",
+   "android/capacitor.settings.gradle",
+   "build-android.bat",
+   "js/Consts.js",
+   "service-worker.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-22T15:30"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-apk74-20261022",
+  "head": "675e4aa",
+  "exists": true,
+  "dirtyTracked": [
+   "android/app/build.gradle",
+   "android/app/capacitor.build.gradle",
+   "android/app/src/main/java/com/parchlock/app/RotatingIconWidget.java",
+   "android/capacitor.settings.gradle",
+   "js/Consts.js",
+   "service-worker.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-23T00:46"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-container-state-base-20261023",
+  "head": "436f5b1",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-23T11:13"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-container-state-candidate-20261023",
+  "head": "436f5b1",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ActionSynth.js",
+   "js/AttributeSchema.js",
+   "js/LearnedWords.js",
+   "js/ModuleStatFactsClaude.js",
+   "js/SemanticActions.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-23T11:13"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-d210-base-20261023",
+  "head": "534e653",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-23T10:20"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-d210-candidate-20261023",
+  "head": "534e653",
+  "exists": true,
+  "dirtyTracked": [
+   "css/ParchLock.css",
+   "js/Qol.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-23T10:20"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-death-base-20261027",
+  "head": "59aeaf7",
+  "exists": true,
+  "dirtyTracked": [
+   "USER_GUIDE.md",
+   "css/CharCell.css",
+   "css/RobotoMono-OFL.txt",
+   "img/ParchLockSplash.css",
+   "img/ParchLockSplash.js",
+   "index.html",
+   "js/ActionSynth.js",
+   "js/Autocomplete.js",
+   "js/BufferRevision.js",
+   "js/BufferTapProvider.js",
+   "js/CharKeys.js",
+   "js/Consts.js",
+   "js/DirectionalRadial.js",
+   "js/Directions.js",
+   "js/EmglkenHost.js",
+   "js/EmglkenProvider.js",
+   "js/GameList.js",
+   "js/GlkTapProvider.js",
+   "js/Global.js",
+   "js/GrammarProvider.js",
+   "js/GraphicsDock.js",
+   "js/HostEmglkenBridge.js",
+   "js/IconRotation.js",
+   "js/LiveHeapProvider.js",
+   "js/MainMenu.js",
+   "js/MapBeautify.js",
+   "js/MapIdentity.js",
+   "js/MapTopology.js",
+   "js/Message.js",
+   "js/ModuleStatFacts.js",
+   "js/ModuleStatFactsClaude.js",
+   "js/PronunciationCatalog.js",
+   "js/Qol.js",
+   "js/ReadAloud.js",
+   "js/RemGlkTapProvider.js",
+   "js/SaveState.js",
+   "js/SemanticActions.js",
+   "js/StatTracker.js",
+   "js/TextGate.js",
+   "js/Transcript.js",
+   "js/Tutorial.js",
+   "js/VmProbeLoader.js",
+   "js/WorkspaceUI.js",
+   "js/WorldMap.js",
+   "js/WorldMapLayout.js",
+   "js/ZRamReader.js",
+   "lib/emglken/README.md",
+   "lib/emglken/asyncglk.js",
+   "lib/emglken/bocfel-noz6.js",
+   "lib/emglken/bocfel.js",
+   "lib/emglken/glulxe.js",
+   "lib/jquery.min.js",
+   "lib/jquery.slimscroll.min.js",
+   "lib/main.js",
+   "lib/parchment-modern/README.md",
+   "lib/parchment-modern/bocfel-noz6.js",
+   "lib/parchment-modern/bocfel.js",
+   "lib/parchment-modern/glulxe.js",
+   "lib/parchment-modern/ie.js",
+   "lib/parchment-modern/jquery.min.js",
+   "lib/parchment-modern/lib/bocfel-noz6.js",
+   "lib/parchment-modern/lib/bocfel.js",
+   "lib/parchment-modern/lib/emglken/README.md",
+   "lib/parchment-modern/lib/emglken/asyncglk.js",
+   "lib/parchment-modern/lib/emglken/bocfel-noz6.js",
+   "lib/parchment-modern/lib/emglken/bocfel.js",
+   "lib/parchment-modern/lib/emglken/glulxe.js",
+   "lib/parchment-modern/lib/glulxe.js",
+   "lib/parchment-modern/parchment.css",
+   "lib/resourcemap.js",
+   "licenses/AsyncGlk-MIT.txt",
+   "licenses/Bocfel-MIT.txt",
+   "licenses/Capacitor-Filesystem-MIT.txt",
+   "licenses/Capacitor-MIT.txt",
+   "licenses/Capacitor-Share-MIT.txt",
+   "licenses/Capacitor-Speech-MIT.txt",
+   "licenses/Capacitor-TextToSpeech-MIT.txt",
+   "licenses/Emglken-MIT.txt",
+   "licenses/Glulxe-MIT.txt",
+   "licenses/Parchment-MIT.txt",
+   "licenses/Quixe-MIT.txt",
+   "licenses/RemGlk-MIT.txt",
+   "licenses/ifvms-MIT.txt",
+   "licenses/jQuery-MIT.txt",
+   "licenses/jQuery-slimScroll-MIT.txt",
+   "manifest.json",
+   "play.html",
+   "service-worker.js",
+   "tutorial.html"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-27T03:34"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-death-candidate-20261027",
+  "head": "59aeaf7",
+  "exists": true,
+  "dirtyTracked": [
+   "USER_GUIDE.md",
+   "css/CharCell.css",
+   "css/RobotoMono-OFL.txt",
+   "img/ParchLockSplash.css",
+   "img/ParchLockSplash.js",
+   "index.html",
+   "js/ActionSynth.js",
+   "js/Autocomplete.js",
+   "js/BufferRevision.js",
+   "js/BufferTapProvider.js",
+   "js/CharKeys.js",
+   "js/Consts.js",
+   "js/DirectionalRadial.js",
+   "js/Directions.js",
+   "js/EmglkenHost.js",
+   "js/EmglkenProvider.js",
+   "js/GameList.js",
+   "js/GlkTapProvider.js",
+   "js/Global.js",
+   "js/GrammarProvider.js",
+   "js/GraphicsDock.js",
+   "js/HostEmglkenBridge.js",
+   "js/IconRotation.js",
+   "js/LiveHeapProvider.js",
+   "js/MainMenu.js",
+   "js/MapBeautify.js",
+   "js/MapIdentity.js",
+   "js/MapTopology.js",
+   "js/Message.js",
+   "js/ModuleStatFacts.js",
+   "js/ModuleStatFactsClaude.js",
+   "js/PronunciationCatalog.js",
+   "js/Qol.js",
+   "js/ReadAloud.js",
+   "js/RemGlkTapProvider.js",
+   "js/SaveState.js",
+   "js/SemanticActions.js",
+   "js/StatTracker.js",
+   "js/TextGate.js",
+   "js/Transcript.js",
+   "js/Tutorial.js",
+   "js/VmProbeLoader.js",
+   "js/WorkspaceUI.js",
+   "js/WorldMap.js",
+   "js/WorldMapLayout.js",
+   "js/ZRamReader.js",
+   "lib/emglken/README.md",
+   "lib/emglken/asyncglk.js",
+   "lib/emglken/bocfel-noz6.js",
+   "lib/emglken/bocfel.js",
+   "lib/emglken/glulxe.js",
+   "lib/jquery.min.js",
+   "lib/jquery.slimscroll.min.js",
+   "lib/main.js",
+   "lib/parchment-modern/README.md",
+   "lib/parchment-modern/bocfel-noz6.js",
+   "lib/parchment-modern/bocfel.js",
+   "lib/parchment-modern/glulxe.js",
+   "lib/parchment-modern/ie.js",
+   "lib/parchment-modern/jquery.min.js",
+   "lib/parchment-modern/lib/bocfel-noz6.js",
+   "lib/parchment-modern/lib/bocfel.js",
+   "lib/parchment-modern/lib/emglken/README.md",
+   "lib/parchment-modern/lib/emglken/asyncglk.js",
+   "lib/parchment-modern/lib/emglken/bocfel-noz6.js",
+   "lib/parchment-modern/lib/emglken/bocfel.js",
+   "lib/parchment-modern/lib/emglken/glulxe.js",
+   "lib/parchment-modern/lib/glulxe.js",
+   "lib/parchment-modern/parchment.css",
+   "lib/resourcemap.js",
+   "licenses/AsyncGlk-MIT.txt",
+   "licenses/Bocfel-MIT.txt",
+   "licenses/Capacitor-Filesystem-MIT.txt",
+   "licenses/Capacitor-MIT.txt",
+   "licenses/Capacitor-Share-MIT.txt",
+   "licenses/Capacitor-Speech-MIT.txt",
+   "licenses/Capacitor-TextToSpeech-MIT.txt",
+   "licenses/Emglken-MIT.txt",
+   "licenses/Glulxe-MIT.txt",
+   "licenses/Parchment-MIT.txt",
+   "licenses/Quixe-MIT.txt",
+   "licenses/RemGlk-MIT.txt",
+   "licenses/ifvms-MIT.txt",
+   "licenses/jQuery-MIT.txt",
+   "licenses/jQuery-slimScroll-MIT.txt",
+   "manifest.json",
+   "play.html",
+   "service-worker.js",
+   "tutorial.html"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-27T03:34"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-death-candidate-r2-20261027",
+  "head": "59aeaf7",
+  "exists": true,
+  "dirtyTracked": [
+   "USER_GUIDE.md",
+   "css/CharCell.css",
+   "css/RobotoMono-OFL.txt",
+   "img/ParchLockSplash.css",
+   "img/ParchLockSplash.js",
+   "index.html",
+   "js/ActionSynth.js",
+   "js/Autocomplete.js",
+   "js/BufferRevision.js",
+   "js/BufferTapProvider.js",
+   "js/CharKeys.js",
+   "js/Consts.js",
+   "js/DirectionalRadial.js",
+   "js/Directions.js",
+   "js/EmglkenHost.js",
+   "js/EmglkenProvider.js",
+   "js/GameList.js",
+   "js/GlkTapProvider.js",
+   "js/Global.js",
+   "js/GrammarProvider.js",
+   "js/GraphicsDock.js",
+   "js/HostEmglkenBridge.js",
+   "js/IconRotation.js",
+   "js/LiveHeapProvider.js",
+   "js/MainMenu.js",
+   "js/MapBeautify.js",
+   "js/MapIdentity.js",
+   "js/MapTopology.js",
+   "js/Message.js",
+   "js/ModuleStatFacts.js",
+   "js/ModuleStatFactsClaude.js",
+   "js/PronunciationCatalog.js",
+   "js/Qol.js",
+   "js/ReadAloud.js",
+   "js/RemGlkTapProvider.js",
+   "js/SaveState.js",
+   "js/SemanticActions.js",
+   "js/StatTracker.js",
+   "js/TextGate.js",
+   "js/Transcript.js",
+   "js/Tutorial.js",
+   "js/VmProbeLoader.js",
+   "js/WorkspaceUI.js",
+   "js/WorldMap.js",
+   "js/WorldMapLayout.js",
+   "js/ZRamReader.js",
+   "lib/emglken/README.md",
+   "lib/emglken/asyncglk.js",
+   "lib/emglken/bocfel-noz6.js",
+   "lib/emglken/bocfel.js",
+   "lib/emglken/glulxe.js",
+   "lib/jquery.min.js",
+   "lib/jquery.slimscroll.min.js",
+   "lib/main.js",
+   "lib/parchment-modern/README.md",
+   "lib/parchment-modern/bocfel-noz6.js",
+   "lib/parchment-modern/bocfel.js",
+   "lib/parchment-modern/glulxe.js",
+   "lib/parchment-modern/ie.js",
+   "lib/parchment-modern/jquery.min.js",
+   "lib/parchment-modern/lib/bocfel-noz6.js",
+   "lib/parchment-modern/lib/bocfel.js",
+   "lib/parchment-modern/lib/emglken/README.md",
+   "lib/parchment-modern/lib/emglken/asyncglk.js",
+   "lib/parchment-modern/lib/emglken/bocfel-noz6.js",
+   "lib/parchment-modern/lib/emglken/bocfel.js",
+   "lib/parchment-modern/lib/emglken/glulxe.js",
+   "lib/parchment-modern/lib/glulxe.js",
+   "lib/parchment-modern/parchment.css",
+   "lib/resourcemap.js",
+   "licenses/AsyncGlk-MIT.txt",
+   "licenses/Bocfel-MIT.txt",
+   "licenses/Capacitor-Filesystem-MIT.txt",
+   "licenses/Capacitor-MIT.txt",
+   "licenses/Capacitor-Share-MIT.txt",
+   "licenses/Capacitor-Speech-MIT.txt",
+   "licenses/Capacitor-TextToSpeech-MIT.txt",
+   "licenses/Emglken-MIT.txt",
+   "licenses/Glulxe-MIT.txt",
+   "licenses/Parchment-MIT.txt",
+   "licenses/Quixe-MIT.txt",
+   "licenses/RemGlk-MIT.txt",
+   "licenses/ifvms-MIT.txt",
+   "licenses/jQuery-MIT.txt",
+   "licenses/jQuery-slimScroll-MIT.txt",
+   "manifest.json",
+   "play.html",
+   "service-worker.js",
+   "tutorial.html"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-27T03:42"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-food-base-20261021",
+  "head": "84159f5",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-21T11:20"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-food-candidate-20261021",
+  "head": "84159f5",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ActionSynth.js",
+   "js/LearnedWords.js"
+  ],
+  "untrackedOther": [
+   "harness/zil-food-drink.js"
+  ],
+  "mtime": "2026-10-21T11:20"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-food-state-base-20261023",
+  "head": "181ea72",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-23T10:45"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-food-state-candidate-20261023",
+  "head": "181ea72",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ActionSynth.js",
+   "js/AttributeSchema.js",
+   "js/LearnedWords.js",
+   "js/ModuleStatFactsClaude.js",
+   "js/SemanticActions.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-23T10:45"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-garment-base-20261021",
+  "head": "c8f589d",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-22T01:38"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-garment-candidate-20261021",
+  "head": "c8f589d",
+  "exists": true,
+  "dirtyTracked": [
+   "js/AttributeSchema.js",
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-22T01:38"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-more-base-20261023",
+  "head": "d65c9a0",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-23T21:00"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-more-candidate-20261023",
+  "head": "d65c9a0",
+  "exists": true,
+  "dirtyTracked": [
+   "js/Actionable.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-23T21:00"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-object-food-base-20261021",
+  "head": "8acb07e",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-21T20:12"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-object-food-candidate-20261021",
+  "head": "8acb07e",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ActionSynth.js",
+   "js/AttributeSchema.js",
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-21T20:12"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-unlock-base-20261023",
+  "head": "0243248",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-23T21:33"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-unlock-candidate-20261023",
+  "head": "0243248",
+  "exists": true,
+  "dirtyTracked": [
+   "js/Actionable.js",
+   "js/AttributeSchema.js",
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-23T21:33"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-worn-base-20261021",
+  "head": "6a40821",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-21T15:24"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-worn-candidate-20261021",
+  "head": "6a40821",
+  "exists": true,
+  "dirtyTracked": [
+   "js/AttributeSchema.js",
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-21T15:24"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-ztext-base-20261021",
+  "head": "7e1fa82",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-21T20:28"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-ztext-candidate-20261021",
+  "head": "7e1fa82",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ZRamReader.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-21T20:28"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-ztext-r2-base-20261021",
+  "head": "7e1fa82",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-21T20:33"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-ztext-r2-candidate-20261021",
+  "head": "7e1fa82",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ZRamReader.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-21T20:33"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-ztext-r3-base-20261021",
+  "head": "7e1fa82",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-22T01:10"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-ztext-r3-candidate-20261021",
+  "head": "7e1fa82",
+  "exists": true,
+  "dirtyTracked": [
+   "js/GrammarProvider.js",
+   "js/ZRamReader.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-22T01:10"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1-solo",
+  "head": "7b0a793",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-25T09:21"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1b",
+  "head": "8f70179",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T15:25"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1batch",
+  "head": "2c72ef2",
+  "exists": true,
+  "dirtyTracked": [
+   "harness/operator-regressions.js",
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T16:56"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1bh2",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T22:53"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1bhc",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T22:33"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1bzw",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-18T00:32"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1c",
+  "head": "1aac107",
+  "exists": true,
+  "dirtyTracked": [
+   "harness/operator-regressions.js",
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T16:39"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1c4",
+  "head": "ccd9b58",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-26T11:19"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1cnt",
+  "head": "a02fb7d",
+  "exists": true,
+  "dirtyTracked": [
+   "work/investigations/2026-10-11-zil-matrix.md"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-24T12:24"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1commit2",
+  "head": "285697b",
+  "exists": true,
+  "dirtyTracked": [
+   "harness/operator-regressions.js",
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T17:07"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1conc-base",
+  "head": "a67ada2",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-26T12:09"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1conc-cand",
+  "head": "a67ada2",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-26T12:09"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1d1b-base",
+  "head": "70d77b4",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-26T09:39"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1d1b-cand",
+  "head": "70d77b4",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-26T09:39"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1dlc",
+  "head": "4c375c5",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T21:26"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1door-base",
+  "head": "2188b68",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-26T09:12"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1door-cand",
+  "head": "2188b68",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-26T09:12"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1enc",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T23:18"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1g1208-base",
+  "head": "00ca215",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-26T12:16"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1g1208-cand",
+  "head": "00ca215",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ActionSynth.js",
+   "js/AttributeSchema.js",
+   "js/EquipmentUI.js",
+   "js/ModuleStatFactsClaude.js",
+   "js/ZRamReader.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-26T12:16"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1gate-base",
+  "head": "7ce4563",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-26T01:41"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1gate-cand",
+  "head": "6732a7a",
+  "exists": true,
+  "dirtyTracked": [
+   "harness/d198-grammar-decoder.js",
+   "harness/zil-authored-edible.js",
+   "harness/zil-drink-mapped.js",
+   "js/GrammarProvider.js",
+   "js/LearnedWords.js",
+   "js/ModuleStatFactsClaude.js",
+   "js/ZRamReader.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-26T01:41"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1head2",
+  "head": "285697b",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T17:07"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1hgo",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-18T01:00"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1hh2",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T23:07"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1hhb",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T22:21"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1hhc",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T22:21"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1inw",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-18T00:06"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1L-base",
+  "head": "e026b60",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-24T13:58"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1L-cand",
+  "head": "e026b60",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-24T13:58"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1lhc",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T23:27"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1mmo",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-18T00:38"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1mmw",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-18T00:49"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1n",
+  "head": "1aac107",
+  "exists": true,
+  "dirtyTracked": [
+   "harness/operator-regressions.js",
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T16:40"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1op",
+  "head": "0db0119",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [
+   "harness/zil-actor-open.js"
+  ],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T15:25"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1p",
+  "head": "533a98a",
+  "exists": true,
+  "dirtyTracked": [
+   "harness/operator-regressions.js",
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [
+   "harness/zil-actor-open.js"
+  ],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T15:28"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1q",
+  "head": "66ccc47",
+  "exists": true,
+  "dirtyTracked": [
+   "harness/operator-regressions.js",
+   "harness/zil-actor-open.js",
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T16:23"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1r38-base",
+  "head": "c5626a5",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "mtime": "2026-10-25T20:13"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1r38-cand",
+  "head": "c5626a5",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-25T20:13"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1regen",
+  "head": "ccd9b58",
+  "exists": true,
+  "dirtyTracked": [
+   "work/investigations/2026-10-16-zil-profile-ledger.md"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-26T09:22"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1scc",
+  "head": "4c375c5",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T21:50"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1scw",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T23:36"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1sl-base",
+  "head": "58270f7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-26T12:57"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1sl-cand",
+  "head": "58270f7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-26T12:57"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1so2",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T22:53"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1soc",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T22:42"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1su2",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T23:47"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1suc",
+  "head": "4c375c5",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T21:25"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1sus-cand",
+  "head": "70d77b4",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-26T10:20"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1t",
+  "head": "533a98a",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [
+   "harness/zil-actor-open.js"
+  ],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T15:31"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1w",
+  "head": "1aac107",
+  "exists": true,
+  "dirtyTracked": [
+   "harness/operator-regressions.js",
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T16:33"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1wbc",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T22:37"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1wib",
+  "head": "4c375c5",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T21:19"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1wic",
+  "head": "4c375c5",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T21:19"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1y",
+  "head": "0db0119",
+  "exists": true,
+  "dirtyTracked": [],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T15:25"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1z",
+  "head": "fd6edad",
+  "exists": true,
+  "dirtyTracked": [
+   "harness/operator-regressions.js",
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-17T16:47"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1z1-cand",
+  "head": "70d77b4",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-26T09:52"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1z3o",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "js/ModuleStatFactsClaude.js"
+  ],
+  "untrackedOther": [],
+  "links": [
+   "games"
+  ],
+  "mtime": "2026-10-18T00:00"
+ },
+ {
+  "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-g1zwl",
+  "head": "f2776d7",
+  "exists": true,
+  "dirtyTracked": [
+   "work/investigations/2026-10-11-zil-cell-ledger.json"
+  ],
+  "untrackedOther": [],
+  "mtime": "2026-10-17T23:37"
+ }
+]

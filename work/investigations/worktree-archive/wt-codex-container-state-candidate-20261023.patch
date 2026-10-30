@@ -1,0 +1,190 @@
+diff --git a/js/ActionSynth.js b/js/ActionSynth.js
+index 483491e..b96eff6 100644
+--- a/js/ActionSynth.js
++++ b/js/ActionSynth.js
+@@ -66,6 +66,15 @@ var ActionSynth = {
+     },
+ 
+     formsForAttribute: (key, objectId, context) => {
++        if (key === "container") {
++            var containerForms = null;
++            if (typeof AttributeSchema !== "undefined" && AttributeSchema.containerForms) {
++                containerForms = AttributeSchema.containerForms(AttributeSchema._getMem(), objectId, context);
++            }
++            return (containerForms === null ? ActionSynth.rules.container : containerForms).filter(function (verb) {
++                return ActionSynth.authoredCommandAllowed(objectId, verb, context);
++            });
++        }
+         if (key === "switchable") {
+             var policy = ActionSynth.activationFormPolicy(objectId, context);
+             if (policy !== null) return policy;
+@@ -81,16 +90,28 @@ var ActionSynth = {
+         var forms = AttributeSchema.edibleForms(AttributeSchema._getMem(), objectId, context);
+         return forms && forms.every(ActionSynth.literalAvailable) ? forms : forms === null ? null : [];
+     },
+-    // Authored food availability overrides only Eat/Drink for those owners.
++    // Semantic owner policy and measured state restrict only their own forms.
+     // Evidence and saved user choices remain recorded; manual typing is untouched.
+-    edibleCommandAllowed: (objectId, verb, context) => {
+-        if (verb !== "eat" && verb !== "drink") return true;
++    authoredCommandAllowed: (objectId, verb, context) => {
++        if (["eat", "drink", "search", "empty", "open", "close"].indexOf(verb) < 0) return true;
+         if (!context) {
+             var payload = typeof WorldModel !== "undefined" && WorldModel.lastPayload;
+             context = payload && (payload.inventory || []).some(function (o) { return o && o.id === objectId; }) ? "inventory" : "room";
+         }
+-        var policy = ActionSynth.edibleFormPolicy(objectId, context);
+-        return policy === null || policy.indexOf(verb) >= 0;
++        if (verb === "eat" || verb === "drink") {
++            var policy = ActionSynth.edibleFormPolicy(objectId, context);
++            return policy === null || policy.indexOf(verb) >= 0;
++        }
++        if (typeof AttributeSchema !== "undefined") {
++            var mem = AttributeSchema._getMem && AttributeSchema._getMem();
++            var forms = AttributeSchema.containerForms && AttributeSchema.containerForms(mem, objectId, context);
++            if (forms != null && forms.indexOf(verb) < 0) return false;
++            if ((verb === "open" || verb === "close") && AttributeSchema.containerOpenState) {
++                var open = AttributeSchema.containerOpenState(mem, objectId);
++                if (open !== null) return verb === "open" ? !open : open;
++            }
++        }
++        return true;
+     },
+     nestedEdibleForms: (objectId, context) => {
+         return ActionSynth.edibleFormPolicy(objectId, context) || [];
+@@ -374,7 +395,7 @@ var ActionSynth = {
+         if (typeof LearnedWords !== "undefined") LearnedWords.commands(obj).forEach(function (c) {
+             if (!result.some(function (existing) { return existing.command === c.command; })) result.push(c);
+         });
+-        return result.filter(function (entry) { return ActionSynth.edibleCommandAllowed(obj.id, entry.verb, context); });
++        return result.filter(function (entry) { return ActionSynth.authoredCommandAllowed(obj.id, entry.verb, context); });
+     },
+ 
+     // D201: objects whose printable identity was recovered from just-printed
+diff --git a/js/AttributeSchema.js b/js/AttributeSchema.js
+index 01fc781..96c3ae0 100644
+--- a/js/AttributeSchema.js
++++ b/js/AttributeSchema.js
+@@ -406,6 +406,62 @@ var AttributeSchema = {
+         } catch (eActivationForms) { return owned ? [] : null; }
+     },
+ 
++    // State restricts existing commands only when both meanings have a
++    // positive owner. A legacy profile guess is never an open-state proof.
++    containerOpenState: function (mem, objectId) {
++        try {
++            if (!mem || !Number.isInteger(objectId)) return null;
++            var h = ZRamReader.header(mem), count = ZRamReader.objectCount(mem, h);
++            if (!h || objectId < 2 || objectId > count) return null;
++            var declared = ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem);
++            var owns = function (flag) {
++                return !!(declared && declared.bits && Number.isInteger(declared.bits[flag])) ||
++                    AttributeSchema.measuredFlagOwner(mem, flag, objectId);
++            };
++            if (!owns("container") || !owns("open")) return null;
++            var container = AttributeSchema.bitFor("container", mem), open = AttributeSchema.bitFor("open", mem);
++            var limit = h.version <= 3 ? 32 : 48;
++            if (!Number.isInteger(container) || !Number.isInteger(open) || container < 0 || open < 0 ||
++                container >= limit || open >= limit) return null;
++            var raw = ZRamReader.objectLinks(mem, objectId);
++            return raw && ZRamReader.attr(raw, container) ? !!ZRamReader.attr(raw, open) : null;
++        } catch (eContainerState) { return null; }
++    },
++
++    // Authored semantic forms do not replace structural containment/state.
++    containerForms: function (mem, objectId, context) {
++        var owned = false;
++        try {
++            var fact = ZRamReader.executableLayoutFacts(mem);
++            if (!fact || !fact.capabilityForms || !Object.prototype.hasOwnProperty.call(fact.capabilityForms, "container")) return null;
++            var rules = fact.capabilityForms.container;
++            if (!Array.isArray(rules)) return null;
++            var selected = rules.find(function (rule) { return rule && rule.objectId === objectId; });
++            if (!selected) return null;
++            owned = true;
++            var h = ZRamReader.header(mem), count = ZRamReader.objectCount(mem, h);
++            var family = AttributeSchema._familyOf(mem), seen = {};
++            if (!h || !family || family.classification !== "confirmed-zil-family" || family.evidence !== "validated" ||
++                !AttributeSchema.measuredFlagOwner(mem, "container", objectId) || !rules.every(function (rule) {
++                    if (!rule || typeof rule !== "object" || Array.isArray(rule) || Object.keys(rule).length !== 3 ||
++                        !Object.prototype.hasOwnProperty.call(rule, "objectId") || !Object.prototype.hasOwnProperty.call(rule, "scope") ||
++                        !Object.prototype.hasOwnProperty.call(rule, "forms") || !Number.isInteger(rule.objectId) ||
++                        rule.objectId < 2 || rule.objectId > count || seen[rule.objectId] || rule.scope !== "held" || !Array.isArray(rule.forms)) return false;
++                    seen[rule.objectId] = true;
++                    return rule.forms.every(function (form, index) {
++                        return ["search", "empty", "open", "close"].indexOf(form) >= 0 && rule.forms.indexOf(form) === index &&
++                            family.templates.some(function (t) { return t.verb === form && t.objectCount === 1 &&
++                                (!t.prepositions || t.prepositions.length === 0); });
++                    });
++                })) return [];
++            var raw = ZRamReader.objectLinks(mem, objectId), bit = AttributeSchema.bitFor("container", mem);
++            if (!raw || !Number.isInteger(bit) || !ZRamReader.attr(raw, bit)) return [];
++            var player = ZRamReader.resolvePlayer(mem).id;
++            if (context !== "inventory" || !Number.isInteger(player) || player < 2 || raw.parent !== player) return null;
++            return selected.forms.slice();
++        } catch (eContainerForms) { return owned ? [] : null; }
++    },
++
+     // Authored owner-local food actions. Capability and current availability
+     // are distinct: an empty bottle or a consumed wrapper keeps its identity.
+     // null = no authored owner policy; [] = owned but unavailable/invalid.
+diff --git a/js/LearnedWords.js b/js/LearnedWords.js
+index 1f90081..f3262f8 100644
+--- a/js/LearnedWords.js
++++ b/js/LearnedWords.js
+@@ -110,7 +110,7 @@ var LearnedWords = {
+         var ref = Actionable.referenceFor(obj);
+         if (!ref.unique || !ref.verified) return [];
+         return LearnedWords.candidates(obj.id).filter(function (c) {
+-            return !ActionSynth.edibleCommandAllowed || ActionSynth.edibleCommandAllowed(obj.id, c.form);
++            return !ActionSynth.authoredCommandAllowed || ActionSynth.authoredCommandAllowed(obj.id, c.form);
+         }).map(function (c) {
+             return { objectId: obj.id, verb: c.form, command: c.form + " " + ref.noun,
+                 Enter: c.enter, enter: c.enter, label: c.label, confidence: 0.5, source: "user-suggestion",
+@@ -118,7 +118,7 @@ var LearnedWords = {
+         });
+     },
+     commandCurrent: function (command) {
+-        if (ActionSynth.edibleCommandAllowed && !ActionSynth.edibleCommandAllowed(command.objectId, command.verb)) return false;
++        if (ActionSynth.authoredCommandAllowed && !ActionSynth.authoredCommandAllowed(command.objectId, command.verb)) return false;
+         var scope = command.learnedWordScope;
+         if (!scope || scope.key !== LearnedWords.identity() || scope.generation !== LearnedWords.generation()) return false;
+         return LearnedWords.candidates(command.objectId).some(function (c) {
+@@ -150,7 +150,7 @@ var LearnedWords = {
+             });
+         }
+         return Array.from(new Set(forms)).filter(function (verb) {
+-            return !ActionSynth.edibleCommandAllowed || ActionSynth.edibleCommandAllowed(obj.id,verb,context);
++            return !ActionSynth.authoredCommandAllowed || ActionSynth.authoredCommandAllowed(obj.id,verb,context);
+         });
+     },
+     observeSubmit: function (event) {
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index e7f561f..0ee3e1b 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -114,7 +114,10 @@ var ModuleStatFactsClaude = {
+     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
+         // Native held radio/headphones TURN ON/OFF; raw ONBIT24 owns radio state only.
+         "attributeObjects": { "switchable": [36, 48] },
+-        "capabilityForms": { "switchable": ["turn on", "turn off"] },
++        // Radio 48 carries CONTBIT 23 + OPENBIT 15 only to hold its hidden dial 18 (way.zil:2815/2950). Native, held
++        // (claude + codex blind, agreed #4533): EMPTY refused, OPEN/CLOSE "non-opening models", SEARCH/LOOK IN nothing,
++        // no state change. Structural facts stay; no container-derived action is offered for it while held.
++        "capabilityForms": { "switchable": ["turn on", "turn off"], "container": [{ "objectId": 48, "scope": "held", "forms": [] }] },
+         "activationState": { "onObjects": [48] },
+         // Worn state 20: Grok4114/4115 proposal, independently native-qualified by Codex October20; see recovered-wear review.
+         "wornAttribute": 20,
+diff --git a/js/SemanticActions.js b/js/SemanticActions.js
+index caa178d..1d790e5 100644
+--- a/js/SemanticActions.js
++++ b/js/SemanticActions.js
+@@ -393,7 +393,7 @@ var SemanticActions = {
+         // absent from the result -- never a speculative guess.
+ 
+         return order.map(function (v) { return byVerb[v]; }).filter(function (entry) {
+-            return !ActionSynth.edibleCommandAllowed || ActionSynth.edibleCommandAllowed(obj.id,entry.verb,context);
++            return !ActionSynth.authoredCommandAllowed || ActionSynth.authoredCommandAllowed(obj.id,entry.verb,context);
+         });
+     },
+ 

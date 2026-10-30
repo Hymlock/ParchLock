@@ -1,0 +1,810 @@
+diff --git a/USER_GUIDE.md b/USER_GUIDE.md
+index 244db40..9f4aca9 100644
+--- a/USER_GUIDE.md
++++ b/USER_GUIDE.md
+@@ -125,8 +125,12 @@ The status card above the list shows what the story tracks, such as score,
+ turns or a progress line. When ParchLock recognises the story's own ending as a
+ death or a win (for example "You have died"), it counts it as **Deaths this
+ playthrough** or **Wins this playthrough**. Endings a story describes in its own
+-way may not be recognised. The counts appear once they are above zero and reset
+-with a new game or RESTART.
++way may not be recognised. The counts appear once they are above zero. They stay
++with that playthrough when you quit, reopen the story, or restore an earlier save;
++restoring does not erase deaths that happened later in the same playthrough. A
++new game or RESTART begins a separate count. Loading a save from another
++playthrough brings back that playthrough's count. Exported save packages carry
++the counts for their selected saves.
+ 
+ ## Saves And Local Data
+ 
+diff --git a/js/Consts.js b/js/Consts.js
+index 1b1dceb..4807e1f 100644
+--- a/js/Consts.js
++++ b/js/Consts.js
+@@ -1,4 +1,4 @@
+-const BUILD = 72;
++const BUILD = 75;
+ const APPNAME = "ParchLock";
+ const GA_TRACK = true;
+ 
+diff --git a/js/Qol.js b/js/Qol.js
+index d6563cb..352437f 100644
+--- a/js/Qol.js
++++ b/js/Qol.js
+@@ -559,7 +559,7 @@ var ParchLockQol = {
+ 
+     ImportPackageData: (text) => {
+ 
+-        var previous = [], previousRooms = ParchLockMap.Rooms;
++        var previous = [], previousRooms = ParchLockMap.Rooms, importSucceeded = false;
+         var previousBlocked = ParchLockMap.PersistenceBlocked;
+         try {
+ 
+@@ -576,6 +576,13 @@ var ParchLockQol = {
+             if (data.Save.length && !ParchLock.GameId) throw new Error("Wait for the story identity before importing saves");
+             if (ParchLock.GameId && data.Save.some(entry => entry.Key.split(":")[2] !== ParchLock.GameId)) throw new Error("This save belongs to another story");
+             if (!ParchLock.GameFilename) throw new Error("Open a story before importing a map");
++            if (new Set(data.Save.map(entry => entry.Key)).size !== data.Save.length) throw new Error("Duplicate save entries in this package");
++            var stateWrites = [];
++            if (typeof SaveState !== "undefined") {
++                if ((data.Save.length || data.SaveStates) && SaveState.importReady && !SaveState.importReady()) throw new Error("Wait for the story to finish loading before importing saves.");
++                var importedNames = data.Save.map(entry => entry.Key).filter(k => /^dirent:save:/.test(k)).map(k => k.split(":").slice(3).join(":"));
++                stateWrites = SaveState.importWrites(data.SaveStates, importedNames);
++            }
+             var mapKey = "PL_Map_" + ParchLock.GameFilename;
+             previous.push({ Key: mapKey, Data: localStorage.getItem(mapKey) });
+ 
+@@ -593,8 +600,7 @@ var ParchLockQol = {
+             // D215: each imported game save gets exactly its packaged map and
+             // labels (or loses an old one), inside this import's rollback.
+             if (typeof SaveState !== "undefined") {
+-                var importedNames = data.Save.map(entry => entry.Key).filter(k => /^dirent:save:/.test(k)).map(k => k.split(":").slice(3).join(":"));
+-                SaveState.importWrites(data.SaveStates, importedNames).forEach(w => {
++                stateWrites.forEach(w => {
+                     previous.push({ Key: w.Key, Data: localStorage.getItem(w.Key) });
+                     if (w.Data === null) localStorage.removeItem(w.Key); else localStorage.setItem(w.Key, w.Data);
+                 });
+@@ -609,6 +615,7 @@ var ParchLockQol = {
+             try { if (typeof Transcript !== "undefined" && Transcript.importRecords && data.Transcripts) Transcript.importRecords(data.Transcripts); } catch (eTx) {}
+ 
+             Message.Show("Import Complete", "The save package and map data were imported.");
++            importSucceeded = true;
+         }
+         catch(e) {
+ 
+@@ -620,6 +627,7 @@ var ParchLockQol = {
+             });
+             Message.Show("Import Failed", ParchLockQol.EscapeHtml(e.message), true);
+         }
++        if (importSucceeded && typeof SaveState !== "undefined" && SaveState.afterImport) SaveState.afterImport();
+     },
+ 
+     GetRadialCommands: () => {
+diff --git a/js/SaveState.js b/js/SaveState.js
+index ffe75a7..cdba566 100644
+--- a/js/SaveState.js
++++ b/js/SaveState.js
+@@ -19,11 +19,401 @@
+  * working map as a flagged "Before new game" Maps slot, so exploration is never
+  * silently lost; if that archive cannot be written, the map is not cleared.
+  */
++// Save-owned cumulative history: older saves select their playthrough without
++// rewinding its death/win totals. Current VM readings remain StatTracker-owned.
++var PlaythroughState = {
++    PREFIX: "PL_Playthroughs_", INTENT: "PL_PlaythroughIntent_",
++    MAX_RUNS: 2048, MAX_RECENT: 128, MAX_PENDING: 256,
++    _ctx: null, _nonce: 0,
++    path: function () {
++        try {
++            var path = typeof ParchLock !== "undefined" && ParchLock.StoryPath;
++            if (!path && typeof window !== "undefined" && window.location) path = new URLSearchParams(window.location.search).get("story");
++            if (!path && typeof ParchLock !== "undefined" && ParchLock.GameFilename) path = "games/" + String(ParchLock.GameFilename).replace(/^games\//, "");
++            return String(path || "").replace(/\\/g, "/").replace(/^\.\//, "");
++        } catch (e) { return ""; }
++    },
++    digest: function (path) {
++        try {
++            var id = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest ? ModuleLibrary.currentExecutableDigest(path) : null;
++            if (!id && typeof Transcript !== "undefined" && Transcript.storyPath === path) id = Transcript.digest;
++            return /^[a-f0-9]{64}$/.test(String(id || "")) ? id : null;
++        } catch (e) { return null; }
++    },
++    validId: function (id) { return typeof id === "string" && /^p_[A-Za-z0-9_-]{8,94}$/.test(id); },
++    count: function (n) { return Number.isSafeInteger(n) && n >= 0; },
++    cleanMeta: function (m) {
++        return m && PlaythroughState.validId(m.id) && PlaythroughState.count(m.deaths) && PlaythroughState.count(m.wins)
++            ? { id: m.id, deaths: m.deaths, wins: m.wins } : null;
++    },
++    empty: function (id) { return { schema: 1, story: id, active: null, runs: Object.create(null) }; },
++    cleanDoc: function (d, id) {
++        if (!d || d.schema !== 1 || d.story !== id || !d.runs || typeof d.runs !== "object" || Array.isArray(d.runs)) return null;
++        var keys = Object.keys(d.runs), out = PlaythroughState.empty(id);
++        if (keys.length > PlaythroughState.MAX_RUNS) return null;
++        for (var i = 0; i < keys.length; i++) {
++            var key = keys[i], r = d.runs[key];
++            if (!PlaythroughState.validId(key) || !r || !PlaythroughState.count(r.deaths) || !PlaythroughState.count(r.wins)
++                || !Array.isArray(r.recent) || r.recent.length > PlaythroughState.MAX_RECENT
++                || !r.recent.every(function (s) { return typeof s === "string" && s.length > 0 && s.length <= 256; })) return null;
++            out.runs[key] = { deaths: r.deaths, wins: r.wins, recent: Array.from(new Set(r.recent)) };
++        }
++        if (d.active !== null && (!PlaythroughState.validId(d.active) || !Object.prototype.hasOwnProperty.call(out.runs, d.active))) return null;
++        out.active = d.active;
++        return out;
++    },
++    readDoc: function (id) {
++        var raw = localStorage.getItem(PlaythroughState.PREFIX + id);
++        if (!raw) return PlaythroughState.empty(id);
++        var doc = PlaythroughState.cleanDoc(JSON.parse(raw), id);
++        if (!doc) throw new Error("The stored playthrough history is invalid; it has not been overwritten.");
++        return doc;
++    },
++    freshId: function (ctx) {
++        var id, source;
++        do {
++            source = "";
++            try {
++                if (typeof crypto !== "undefined" && crypto.randomUUID) source = crypto.randomUUID();
++                else if (typeof crypto !== "undefined" && crypto.getRandomValues) source = Array.from(crypto.getRandomValues(new Uint32Array(4))).map(function (n) { return n.toString(16); }).join("_");
++            } catch (e) {}
++            // Never draw from Math.random: the interpreter can use that stream.
++            if (!source) source = Date.now().toString(36) + "_" + (++PlaythroughState._nonce).toString(36) + "_" + String(typeof performance !== "undefined" ? performance.timeOrigin || performance.now() : 0).replace(/[^0-9]/g, "");
++            id = "p_" + source;
++        } while (ctx && ctx.doc && Object.prototype.hasOwnProperty.call(ctx.doc.runs, id));
++        return id;
++    },
++    report: function (ctx, message) {
++        if (ctx && ctx.warned) return;
++        if (ctx) ctx.warned = true;
++        try { SaveState.report(message); } catch (e) {}
++    },
++    intentKey: function (path) { return PlaythroughState.INTENT + encodeURIComponent(path); },
++    cleanCapture: function (capture) {
++        if (!capture || typeof capture !== "object" || Array.isArray(capture) || Object.keys(capture).length > PlaythroughState.MAX_RUNS + 1) return null;
++        var out = Object.create(null), keys = Object.keys(capture);
++        for (var i = 0; i < keys.length; i++) {
++            var key = keys[i], value = capture[key];
++            if (key === "error") { if (typeof value !== "string" || value.length > 1024) return null; out.error = value; continue; }
++            if (!/^[a-f0-9]{64}$/.test(key) || !value || ["missing", "invalid", "valid"].indexOf(value.state) < 0) return null;
++            if (value.state === "valid") { var meta = PlaythroughState.cleanMeta(value.meta); if (!meta) return null; out[key] = { state: "valid", meta: meta }; }
++            else out[key] = { state: value.state };
++        }
++        return out;
++    },
++    cleanSelection: function (selection, depth) {
++        if (!selection || (depth || 0) > PlaythroughState.MAX_PENDING) return null;
++        if (selection.resume === true) return { resume: true };
++        var meta = PlaythroughState.cleanMeta(selection.meta);
++        if (meta) return { meta: meta };
++        var capture = PlaythroughState.cleanCapture(selection.capture), fallback = PlaythroughState.cleanSelection(selection.fallback, (depth || 0) + 1);
++        return capture && fallback ? { capture: capture, fallback: fallback } : null;
++    },
++    logicalSelection: function (ctx) {
++        var selected = ctx.doc && ctx.doc.active ? { meta: PlaythroughState.meta(ctx) } : { resume: true };
++        var bindings = Object.create(null);
++        Object.keys(ctx.sidecars).forEach(function (name) {
++            var rec = ctx.sidecars[name], meta = rec && PlaythroughState.cleanMeta(rec.playthrough);
++            bindings[name] = meta ? { selection: { meta: meta }, snapshot: rec } : null;
++        });
++        ctx.ops.forEach(function (op) {
++            if (op.type === "select") selected = { meta: { id: op.id, deaths: 0, wins: 0 } };
++            else if (op.type === "save") bindings[op.name] = { selection: JSON.parse(JSON.stringify(selected)), snapshot: op.snapshot };
++            else if (op.type === "restore") selected = op.selection || { capture: op.capture, fallback: selected };
++            else if (op.type === "forget") op.names.forEach(function (name) { bindings[name] = null; });
++        });
++        return { selection: selected, bindings: bindings };
++    },
++    resolveSelection: function (ctx, selection, depth) {
++        if (!selection || (depth || 0) > PlaythroughState.MAX_PENDING) throw new Error("Invalid pending playthrough selection");
++        if (selection.resume) {
++            var r = PlaythroughState.run(ctx, ctx.initialId);
++            return { id: ctx.initialId, deaths: r.deaths, wins: r.wins };
++        }
++        if (selection.meta) return selection.meta;
++        var cap = selection.capture[ctx.digest] || { state: "missing" };
++        if (cap.state === "valid") return cap.meta;
++        if (cap.state === "invalid" || selection.capture.error) PlaythroughState.report(ctx, selection.capture.error || "The restored save has invalid playthrough metadata; its history was not guessed.");
++        return PlaythroughState.resolveSelection(ctx, selection.fallback, (depth || 0) + 1);
++    },
++    readIntent: function (path) {
++        try {
++            var raw = sessionStorage.getItem(PlaythroughState.intentKey(path)), i = raw && JSON.parse(raw);
++            if (!i || i.schema !== 1 || i.path !== path || !PlaythroughState.validId(i.nonce)) return null;
++            if (i.kind === "select" && PlaythroughState.validId(i.runId)) return i;
++            if (i.kind === "restore") {
++                var selection = PlaythroughState.cleanSelection(i.selection, 0), capture = PlaythroughState.cleanCapture(i.capture);
++                if (!selection || !capture || typeof i.name !== "string" || i.name.length > 255) return null;
++                var snapshot = null;
++                if (i.snapshot) {
++                    var map = SaveState.cleanMap(i.snapshot.map), labels = i.snapshot.labels == null ? null : SaveState.cleanLabels(i.snapshot.labels);
++                    if (!map || (i.snapshot.labels != null && !labels)) return null;
++                    snapshot = { schema: 1, story: null, savedAt: String(i.snapshot.savedAt || ""), map: map, labels: labels };
++                }
++                return { schema: 1, path: path, kind: "restore", nonce: i.nonce, name: i.name, selection: selection, capture: capture, snapshot: snapshot };
++            }
++        } catch (e) {}
++        return null;
++    },
++    writeIntent: function (ctx, intent) {
++        try { sessionStorage.setItem(PlaythroughState.intentKey(ctx.path), JSON.stringify(intent)); ctx.intent = intent; return true; }
++        catch (e) { PlaythroughState.report(ctx, "The playthrough selection could not be stored. Keep this page open and save again when storage is available."); return false; }
++    },
++    context: function () {
++        var path = PlaythroughState.path();
++        if (!path) return null;
++        var provider = typeof ModuleLibrary !== "undefined" && typeof ModuleLibrary.currentExecutableDigest === "function";
++        var boundTranscript = typeof Transcript !== "undefined" && Transcript.storyPath === path && /^[a-f0-9]{64}$/.test(String(Transcript.digest || ""));
++        if (!provider && !boundTranscript) return null; // no possible exact-identity authority
++
++        if (!PlaythroughState._ctx || PlaythroughState._ctx.path !== path) {
++            var ctx = { path: path, generation: ++PlaythroughState._nonce, digest: null, doc: null, ops: [], sidecars: Object.create(null), dirty: false, blocked: false, retryBlocked: false, warned: false, intent: null };
++            PlaythroughState._ctx = ctx;
++            var intent = PlaythroughState.readIntent(path);
++            if (intent) {
++                ctx.intent = intent;
++                ctx.ops.push(intent.kind === "select" ? { type: "select", id: intent.runId, nonce: intent.nonce }
++                    : { type: "restore", name: intent.name, capture: intent.capture, selection: intent.selection, snapshot: intent.snapshot, nonce: intent.nonce, forceBinding: !!intent.snapshot });
++            }
++        }
++        return PlaythroughState._ctx;
++    },
++    run: function (ctx, id) {
++        id = id || ctx.doc.active;
++        if (!id) id = PlaythroughState.freshId(ctx);
++        if (!Object.prototype.hasOwnProperty.call(ctx.doc.runs, id)) {
++            if (Object.keys(ctx.doc.runs).length >= PlaythroughState.MAX_RUNS) throw new Error("The playthrough history is full; no saved history was deleted.");
++            ctx.doc.runs[id] = { deaths: 0, wins: 0, recent: [] };
++            ctx.dirty = true;
++        }
++        ctx.doc.active = id;
++        return ctx.doc.runs[id];
++    },
++    meta: function (ctx) {
++        var r = PlaythroughState.run(ctx);
++        return { id: ctx.doc.active, deaths: r.deaths, wins: r.wins };
++    },
++    merge: function (ctx, meta) {
++        var active = ctx.doc.active, r = PlaythroughState.run(ctx, meta.id);
++        r.deaths = Math.max(r.deaths, meta.deaths); r.wins = Math.max(r.wins, meta.wins);
++        ctx.doc.active = active; ctx.dirty = true;
++    },
++    captureRestore: function (name, ctx) {
++        var capture = Object.create(null), id = PlaythroughState.digest(ctx.path);
++        function add(story, raw) {
++            try {
++                var rec = raw && JSON.parse(raw);
++                if (!rec || rec.schema !== 1 || rec.story !== story) { capture[story] = { state: raw ? "invalid" : "missing" }; return; }
++                var m = PlaythroughState.cleanMeta(rec.playthrough);
++                capture[story] = m ? { state: "valid", meta: m } : { state: rec.playthrough == null ? "missing" : "invalid" };
++            } catch (e) { capture[story] = { state: "invalid" }; }
++        }
++        if (!name) return capture;
++        try {
++            if (id) add(id, localStorage.getItem(SaveState.keyFor(id, name)));
++            else {
++                for (var i = 0; i < localStorage.length; i++) {
++                    var key = localStorage.key(i);
++                    if (!key || key.indexOf(SaveState.PREFIX) !== 0) continue;
++                    var rest = key.slice(SaveState.PREFIX.length), story = rest.slice(0, 64);
++                    if (/^[a-f0-9]{64}$/.test(story) && key === SaveState.keyFor(story, name)) add(story, localStorage.getItem(key));
++                    if (Object.keys(capture).length > PlaythroughState.MAX_RUNS) throw new Error("Too many restore metadata candidates");
++                }
++            }
++        } catch (e) { capture.error = "The restored save's playthrough metadata could not be read."; }
++        return capture;
++    },
++    selectIntent: function (ctx, id, nonce) {
++        var i = { schema: 1, path: ctx.path, kind: "select", runId: id, nonce: nonce || PlaythroughState.freshId(ctx) };
++        var prior = PlaythroughState.readIntent(ctx.path);
++        ctx.selection = { id: id, nonce: i.nonce, supersedes: prior && prior.nonce };
++        PlaythroughState.writeIntent(ctx, i);
++    },
++    apply: function (ctx, op) {
++        if (op.type === "select") {
++            PlaythroughState.run(ctx, op.id); ctx.dirty = true;
++            PlaythroughState.selectIntent(ctx, op.id, op.nonce);
++        } else if (op.type === "ending") {
++            var r = PlaythroughState.run(ctx), field = op.kind === "death" ? "deaths" : "wins";
++            if (r.recent.indexOf(op.key) >= 0) return;
++            if (r[field] < Number.MAX_SAFE_INTEGER) r[field]++;
++            else PlaythroughState.report(ctx, "The playthrough counter has reached its safe limit and cannot increase further.");
++            r.recent.push(op.key); r.recent = r.recent.slice(-PlaythroughState.MAX_RECENT); ctx.dirty = true;
++        } else if (op.type === "save") {
++            var rec = op.snapshot;
++            rec.story = ctx.digest; rec.playthrough = PlaythroughState.meta(ctx);
++            ctx.sidecars[op.name] = rec;
++        } else if (op.type === "restore") {
++            var captured = op.capture[ctx.digest] || { state: "missing" };
++            // An earlier queued SAVE/forget takes precedence over old disk state.
++            if (op.name && Object.prototype.hasOwnProperty.call(ctx.sidecars, op.name)) {
++                var prior = ctx.sidecars[op.name], ownMeta = prior && PlaythroughState.cleanMeta(prior.playthrough);
++                captured = ownMeta ? { state: "valid", meta: ownMeta } : { state: "missing" };
++            }
++            if (op.selection) {
++                var chosen = PlaythroughState.resolveSelection(ctx, op.selection, 0);
++                PlaythroughState.merge(ctx, chosen); PlaythroughState.run(ctx, chosen.id);
++            } else if (captured.state === "valid") {
++                PlaythroughState.merge(ctx, captured.meta); PlaythroughState.run(ctx, captured.meta.id);
++            } else PlaythroughState.run(ctx);
++            ctx.dirty = true;
++            if (op.capture.error || captured.state === "invalid") PlaythroughState.report(ctx, op.capture.error || "The restored save has invalid playthrough metadata. Its history has not been guessed or overwritten.");
++            if (op.name && op.forceBinding && op.snapshot) {
++                var restoredSave = JSON.parse(JSON.stringify(op.snapshot));
++                restoredSave.story = ctx.digest; restoredSave.playthrough = PlaythroughState.meta(ctx);
++                ctx.sidecars[op.name] = restoredSave;
++            } else if (op.name && !op.noAttach && captured.state === "missing" && !op.capture.error) {
++                var base = SaveState.read(ctx.digest, op.name);
++                ctx.sidecars[op.name] = { schema: 1, story: ctx.digest, savedAt: "", map: base ? base.map : [], labels: base ? base.labels : null, playthrough: PlaythroughState.meta(ctx) };
++            }
++            PlaythroughState.selectIntent(ctx, ctx.doc.active, op.nonce);
++        } else if (op.type === "forget") op.names.forEach(function (name) { ctx.sidecars[name] = null; });
++    },
++    flush: function (ctx) {
++        if (!ctx || !ctx.digest || ctx.retryBlocked) return;
++        var failed = false;
++        if (ctx.dirty && !ctx.blocked) {
++            try {
++                localStorage.setItem(PlaythroughState.PREFIX + ctx.digest, JSON.stringify(ctx.doc)); ctx.dirty = false;
++                var current = PlaythroughState.readIntent(ctx.path);
++                if (current && ctx.selection && ctx.selection.id === ctx.doc.active
++                    && (current.nonce === ctx.selection.nonce || current.nonce === ctx.selection.supersedes)) {
++                    try { sessionStorage.removeItem(PlaythroughState.intentKey(ctx.path)); ctx.intent = null; } catch (eIntent) {}
++                }
++            } catch (e) { failed = true; PlaythroughState.report(ctx, "The death and win history could not be stored. The current page keeps its count; keep it open and save again when storage is available."); }
++        }
++        Object.keys(ctx.sidecars).forEach(function (name) {
++            var rec = ctx.sidecars[name], key = SaveState.keyFor(ctx.digest, name);
++            try {
++                if (rec === null) localStorage.removeItem(key); else localStorage.setItem(key, JSON.stringify(rec));
++                delete ctx.sidecars[name];
++            } catch (e) {
++                failed = true;
++                try { localStorage.removeItem(key); } catch (eRemove) {}
++                PlaythroughState.report(ctx, "The save was written, but its map, labels and playthrough link could not be stored. An older link was removed; keep this page open and save again.");
++            }
++        });
++        ctx.retryBlocked = failed || ctx.blocked;
++        if (!ctx.retryBlocked) ctx.warned = false;
++    },
++    ready: function (flush) {
++        var ctx = PlaythroughState.context(); if (!ctx) return null;
++        var id = PlaythroughState.digest(ctx.path);
++        if (!id) {
++            if (!ctx.waitingIdentity && typeof ModuleLibrary !== "undefined" && ModuleLibrary.whenExecutableIdentityReady) {
++                ctx.waitingIdentity = true;
++                var path = ctx.path, generation = ctx.generation;
++                Promise.resolve(ModuleLibrary.whenExecutableIdentityReady(path)).then(function () {
++                    ctx.waitingIdentity = false;
++                    if (PlaythroughState._ctx === ctx && ctx.generation === generation && PlaythroughState.path() === path) {
++                        var ready = PlaythroughState.ready();
++                        if (ready && typeof StatTracker !== "undefined" && StatTracker.syncPlaythrough) StatTracker.syncPlaythrough();
++                    }
++                }, function () { ctx.waitingIdentity = false; });
++            }
++            return null;
++        }
++        if (ctx.digest && ctx.digest !== id) { PlaythroughState._ctx = null; return PlaythroughState.ready(flush); }
++        if (!ctx.digest) {
++            ctx.digest = id;
++            try { ctx.doc = PlaythroughState.readDoc(id); }
++            catch (e) { ctx.doc = PlaythroughState.empty(id); ctx.blocked = true; PlaythroughState.report(ctx, e.message); }
++            if (!ctx.doc.active) PlaythroughState.run(ctx);
++            ctx.initialId = ctx.doc.active;
++        }
++        try {
++            while (ctx.ops.length) PlaythroughState.apply(ctx, ctx.ops.shift());
++            if (!ctx.doc.active) { PlaythroughState.run(ctx); ctx.dirty = true; }
++        } catch (e) { ctx.blocked = true; PlaythroughState.report(ctx, e.message); }
++        if (flush !== false) PlaythroughState.flush(ctx);
++        return ctx;
++    },
++    enqueue: function (op) {
++        var ctx = PlaythroughState.context(); if (!ctx) return null;
++        if (ctx.ops.length >= PlaythroughState.MAX_PENDING) { PlaythroughState.report(ctx, "The story identity is not ready and playthrough events could not be stored. Keep this page open."); return null; }
++        ctx.retryBlocked = false;
++        if (ctx.digest && ctx.doc && !ctx.blocked) {
++            try { ctx.doc = PlaythroughState.peek(ctx.digest); }
++            catch (eRefresh) { ctx.blocked = true; PlaythroughState.report(ctx, eRefresh.message); }
++        }
++        ctx.ops.push(op);
++        return PlaythroughState.ready();
++    },
++    totals: function () { var ctx = PlaythroughState.ready(); if (!ctx) return null; var r = PlaythroughState.run(ctx); return { deaths: r.deaths, wins: r.wins }; },
++    ending: function (kind, key) {
++        if ((kind !== "death" && kind !== "win") || typeof key !== "string" || !key || key.length > 256) return null;
++        var ctx = PlaythroughState.enqueue({ type: "ending", kind: kind, key: key });
++        if (!ctx) return null; var r = PlaythroughState.run(ctx); return { deaths: r.deaths, wins: r.wins };
++    },
++    start: function () {
++        var ctx = PlaythroughState.context(); if (!ctx) return false;
++        var id = PlaythroughState.freshId(ctx), nonce = PlaythroughState.freshId(ctx);
++        PlaythroughState.selectIntent(ctx, id, nonce);
++        PlaythroughState.enqueue({ type: "select", id: id, nonce: nonce }); return true;
++    },
++    prepare: function () {
++        var ctx = PlaythroughState.context(); if (!ctx) return false;
++        var prior = PlaythroughState.readIntent(ctx.path);
++        if (ctx.prepared && prior && prior.nonce === ctx.prepared) return ctx.prepared;
++        var i = { schema: 1, path: ctx.path, kind: "select", runId: PlaythroughState.freshId(ctx), nonce: PlaythroughState.freshId(ctx) };
++        if (!PlaythroughState.writeIntent(ctx, i)) return false;
++        ctx.prepared = i.nonce; return i.nonce;
++    },
++    cancel: function (nonce) {
++        var ctx = PlaythroughState.context(); if (!ctx) return;
++        var i = PlaythroughState.readIntent(ctx.path);
++        if (i && i.nonce === nonce) { try { sessionStorage.removeItem(PlaythroughState.intentKey(ctx.path)); } catch (e) {} ctx.intent = null; ctx.prepared = null; }
++    },
++    restored: function (name) {
++        var ctx = PlaythroughState.context(); if (!ctx) return;
++        var cap = PlaythroughState.captureRestore(name, ctx), nonce = PlaythroughState.freshId(ctx), logical = PlaythroughState.logicalSelection(ctx);
++        var own = name && Object.prototype.hasOwnProperty.call(logical.bindings, name) ? logical.bindings[name] : undefined;
++        var selection = own ? own.selection : own === null ? logical.selection : { capture: cap, fallback: logical.selection };
++        var snapshot = own && own.snapshot ? JSON.parse(JSON.stringify(own.snapshot)) : null;
++        PlaythroughState.writeIntent(ctx, { schema: 1, path: ctx.path, kind: "restore", name: name, capture: cap, selection: selection, snapshot: snapshot, nonce: nonce });
++        PlaythroughState.enqueue({ type: "restore", name: name, capture: cap, selection: selection, snapshot: snapshot, forceBinding: !!snapshot, nonce: nonce });
++    },
++    snapshot: function (id, name, snapshot) {
++        var exact = PlaythroughState.digest(PlaythroughState.path());
++        if (exact || !id || /^[a-f0-9]{64}$/.test(String(id || ""))) { PlaythroughState.enqueue({ type: "save", name: name, snapshot: snapshot }); return true; }
++        return false; // legacy test environments without executable identity keep map-only behavior
++    },
++    peek: function (id) {
++        var ctx = PlaythroughState._ctx, disk = PlaythroughState.readDoc(id);
++        if (ctx && ctx.digest === id && ctx.doc) {
++            Object.keys(ctx.doc.runs).forEach(function (key) {
++                var local = ctx.doc.runs[key], old = disk.runs[key];
++                disk.runs[key] = old ? { deaths: Math.max(local.deaths, old.deaths), wins: Math.max(local.wins, old.wins), recent: Array.from(new Set(old.recent.concat(local.recent))).slice(-PlaythroughState.MAX_RECENT) } : JSON.parse(JSON.stringify(local));
++            });
++            disk.active = ctx.doc.active;
++        }
++        return disk;
++    }
++};
++
+ var SaveState = {
+     PREFIX: "PL_SaveState_",
+     ARCHIVE_KEEP: 3,
+     _pending: null,
+ 
++    outcomes: function () { return PlaythroughState.totals(); },
++    recordOutcome: function (kind, key) { return PlaythroughState.ending(kind, key); },
++    startPlaythrough: function () { return PlaythroughState.start(); },
++    prepareNewGame: function () { return PlaythroughState.prepare(); },
++    cancelNewGameIntent: function (nonce) { PlaythroughState.cancel(nonce); },
++    importReady: function () {
++        var ctx = PlaythroughState.context();
++        return !!(ctx && PlaythroughState.digest(ctx.path) && ctx.ops.length === 0);
++    },
++    afterImport: function () {
++        var ctx = PlaythroughState._ctx;
++        if (!ctx || !ctx.digest) return;
++        try {
++            ctx.doc = PlaythroughState.peek(ctx.digest);
++            if (typeof StatTracker !== "undefined" && StatTracker.syncPlaythrough) StatTracker.syncPlaythrough();
++        } catch (e) { PlaythroughState.report(ctx, e.message); }
++    },
++
+     // The exact executable digest, the same identity the transcript uses: a
+     // short native id could collide between different files.
+     storyId: function () {
+@@ -76,7 +466,8 @@ var SaveState = {
+             if (!rec || rec.schema !== 1 || rec.story !== id) return null;
+             var map = SaveState.cleanMap(rec.map);
+             if (!map) return null;
+-            return { map: map, labels: rec.labels ? SaveState.cleanLabels(rec.labels) : null };
++            return { map: map, labels: rec.labels ? SaveState.cleanLabels(rec.labels) : null,
++                playthrough: PlaythroughState.cleanMeta(rec.playthrough) };
+         } catch (e) { return null; }
+     },
+ 
+@@ -84,9 +475,13 @@ var SaveState = {
+     onLifecycle: function (kind, info) {
+         try {
+             var id = SaveState.storyId();
++            if (kind === "save") { SaveState.snapshot(id, String(info && info.name || "")); return; }
++            if (kind === "restore") PlaythroughState.restored(String(info && info.name || ""));
++            else if (kind === "restart" || kind === "new-game") PlaythroughState.start();
++            else if (kind === "forget") PlaythroughState.enqueue({ type: "forget", names: (info && info.names || []).slice() });
++            else PlaythroughState.ready();
+             if (!id) return;
+-            if (kind === "save") SaveState.snapshot(id, String(info && info.name || ""));
+-            else if (kind === "restore") SaveState._pending = { kind: "restore", story: id, snapshot: SaveState.read(id, String(info && info.name || "")) };
++            if (kind === "restore") SaveState._pending = { kind: "restore", story: id, snapshot: SaveState.read(id, String(info && info.name || "")) };
+             else if (kind === "restart") SaveState._pending = { kind: "newGame", story: id, archived: SaveState.archiveWorkingMap("restart") };
+             else if (kind === "boot") SaveState.freshBoot(id);
+             else if (kind === "forget") (info && info.names || []).forEach(function (n) { try { localStorage.removeItem(SaveState.keyFor(id, n)); } catch (e) {} });
+@@ -94,10 +489,12 @@ var SaveState = {
+     },
+ 
+     snapshot: function (id, name) {
+-        if (!name || typeof ParchLockMap === "undefined") return;
++        if (!name) return;
+         var labels = null;
+         try { if (typeof Actionable !== "undefined" && Actionable.labelSnapshot) labels = SaveState.cleanLabels(Actionable.labelSnapshot()); } catch (e) {}
+-        var rec = { schema: 1, story: id, savedAt: new Date().toISOString(), map: ParchLockMap.Rooms || [], labels: labels };
++        var rooms = typeof ParchLockMap !== "undefined" ? ParchLockMap.Rooms || [] : [];
++        var rec = { schema: 1, story: id, savedAt: new Date().toISOString(), map: JSON.parse(JSON.stringify(rooms)), labels: labels };
++        if (PlaythroughState.snapshot(id, name, rec)) return;
+         try {
+             localStorage.setItem(SaveState.keyFor(id, name), JSON.stringify(rec));
+         } catch (e) {
+@@ -192,7 +589,23 @@ var SaveState = {
+         var id = SaveState.storyId(), out = {};
+         if (!id) return null;
+         (names || []).forEach(function (n) {
+-            try { var raw = localStorage.getItem(SaveState.keyFor(id, n)); if (raw) out[n] = JSON.parse(raw); } catch (e) {}
++            try {
++                var raw = localStorage.getItem(SaveState.keyFor(id, n));
++                if (raw) {
++                    var rec = JSON.parse(raw), meta = PlaythroughState.cleanMeta(rec.playthrough);
++                    if (meta) {
++                        var latest = null;
++                        try { var doc = PlaythroughState.peek(id); latest = doc.runs[meta.id]; }
++                        catch (eLedger) {
++                            var memory = PlaythroughState._ctx;
++                            if (memory && memory.digest === id && memory.doc) latest = memory.doc.runs[meta.id];
++                            PlaythroughState.report(memory, "Stored playthrough history could not be read for export. Available validated save and current-page counts were kept.");
++                        }
++                        if (latest) rec.playthrough = { id: meta.id, deaths: Math.max(meta.deaths, latest.deaths), wins: Math.max(meta.wins, latest.wins) };
++                    }
++                    out[n] = rec;
++                }
++            } catch (e) {}
+         });
+         return Object.keys(out).length ? { schema: 1, story: id, saves: out } : null;
+     },
+@@ -203,7 +616,8 @@ var SaveState = {
+         return Object.keys(block.saves).every(function (n) {
+             var rec = block.saves[n];
+             return !SaveState.BAD_KEYS[n] && rec && rec.schema === 1 && rec.story === block.story && !!SaveState.cleanMap(rec.map)
+-                && (rec.labels == null || !!SaveState.cleanLabels(rec.labels));
++                && (rec.labels == null || !!SaveState.cleanLabels(rec.labels))
++                && (rec.playthrough == null || !!PlaythroughState.cleanMeta(rec.playthrough));
+         });
+     },
+     // The writes a package import makes, for the importer to apply inside its
+@@ -214,13 +628,26 @@ var SaveState = {
+     importWrites: function (block, importedNames) {
+         var id = SaveState.storyId(), out = [];
+         if (!id || !SaveState.validImport(block)) return out;
+-        var saves = (block && block.saves) || {};
+-        (importedNames || []).forEach(function (n) {
++        var saves = (block && block.saves) || {}, ledger = null, ledgerChanged = false;
++        (Array.from(new Set(importedNames || []))).forEach(function (n) {
+             var rec = Object.prototype.hasOwnProperty.call(saves, n) ? saves[n] : null;
+             if (!rec) { out.push({ Key: SaveState.keyFor(id, n), Data: null }); return; }
+             var clean = { schema: 1, story: id, savedAt: String(rec.savedAt || ""), map: SaveState.cleanMap(rec.map), labels: rec.labels ? SaveState.cleanLabels(rec.labels) : null };
++            var meta = PlaythroughState.cleanMeta(rec.playthrough);
++            if (meta) {
++                if (!ledger) ledger = PlaythroughState.peek(id);
++                var run = ledger.runs[meta.id];
++                ledger.runs[meta.id] = run ? { deaths: Math.max(run.deaths, meta.deaths), wins: Math.max(run.wins, meta.wins), recent: run.recent.slice() }
++                    : { deaths: meta.deaths, wins: meta.wins, recent: [] };
++                clean.playthrough = { id: meta.id, deaths: ledger.runs[meta.id].deaths, wins: ledger.runs[meta.id].wins };
++                ledgerChanged = true;
++            }
+             out.push({ Key: SaveState.keyFor(id, n), Data: JSON.stringify(clean) });
+         });
++        if (ledgerChanged) {
++            if (!PlaythroughState.cleanDoc(ledger, id)) throw new Error("Invalid imported playthrough history");
++            out.unshift({ Key: PlaythroughState.PREFIX + id, Data: JSON.stringify(ledger) });
++        }
+         return out;
+     },
+ 
+@@ -234,6 +661,12 @@ var SaveState = {
+                 if (k && k.indexOf(prefix) === 0) doomed.push(k);
+             }
+             doomed.forEach(function (k) { localStorage.removeItem(k); });
++            localStorage.removeItem(PlaythroughState.PREFIX + storyId);
++            var ctx = PlaythroughState._ctx;
++            if (ctx && ctx.digest === storyId) {
++                try { sessionStorage.removeItem(PlaythroughState.intentKey(ctx.path)); } catch (eIntent) {}
++                PlaythroughState._ctx = null;
++            }
+         } catch (e) {}
+     },
+ 
+diff --git a/js/StatTracker.js b/js/StatTracker.js
+index d872ec1..cba2ee2 100644
+--- a/js/StatTracker.js
++++ b/js/StatTracker.js
+@@ -1481,11 +1481,14 @@ var StatTracker = {
+             var z = typeof window !== "undefined" ? window.__PARCHLOCK_ZVM__ : null;
+             if (z && typeof z.pc === "number") readSite = z.pc + "/" + (z.frames ? z.frames.length : "?");
+         } catch (eZ) {}
++        var totals = null;
++        try { if (typeof SaveState !== "undefined" && SaveState.recordOutcome) totals = SaveState.recordOutcome(outcome, id); } catch (eHistory) {}
++        if (totals) { model.deaths = totals.deaths; model.wins = totals.wins; }
+         if (outcome === "death") {
+-            model.deaths = (model.deaths || 0) + 1;
++            if (!totals) model.deaths = (model.deaths || 0) + 1;
+             StatTracker._events.push({ type: "death", text: "game ending", count: model.deaths, readSite: readSite });
+         } else {
+-            model.wins = (model.wins || 0) + 1;
++            if (!totals) model.wins = (model.wins || 0) + 1;
+             StatTracker._events.push({ type: "win", text: "game ending", readSite: readSite });
+         }
+         if (StatTracker._key) StatTracker.save(StatTracker._key, model);
+@@ -1555,12 +1558,21 @@ var StatTracker = {
+         return rec;
+     },
+ 
++    syncPlaythrough: function (model) {
++        model = model || StatTracker.model();
++        try {
++            var totals = typeof SaveState !== "undefined" && SaveState.outcomes ? SaveState.outcomes() : null;
++            if (totals) { model.deaths = totals.deaths; model.wins = totals.wins; }
++        } catch (eHistory) {}
++        return model;
++    },
++
+     load: (key) => {
+         var m = StatTracker.blank();
+         try {
+-            if (typeof localStorage === "undefined") return m;
++            if (typeof localStorage === "undefined") return StatTracker.syncPlaythrough(m);
+             var raw = localStorage.getItem(StatTracker.STORAGE_PREFIX + key);
+-            if (!raw) return m;
++            if (!raw) return StatTracker.syncPlaythrough(m);
+             var parsed = JSON.parse(raw);
+             Object.keys(m).forEach(function (k) {
+                 if (parsed && parsed[k] != null) m[k] = parsed[k];
+@@ -1590,7 +1602,7 @@ var StatTracker = {
+             // so re-derivation is immediate rather than starting from scratch.
+             StatTracker.forgetReadings(m);
+         } catch (e) {}
+-        return m;
++        return StatTracker.syncPlaythrough(m);
+     },
+     // D157: observe() is driven by WorldModel.apply, measured at about forty
+     // calls per TURN. Serialising the model and writing localStorage on every
+@@ -1687,7 +1699,11 @@ var StatTracker = {
+         StatTracker.clearEndingNotice();
+         try {
+             StatTracker._aliasEv = null;               // D209: evidence is per timeline
++            // D182 startup restore decline is the explicit new-game owner.
++            // Native restart is owned once by Transcript, not by every resync.
++            if (reason === "new-game" && typeof SaveState !== "undefined" && SaveState.startPlaythrough) SaveState.startPlaythrough(reason);
+             StatTracker.forgetReadings(StatTracker.model(), reason === "restart" || reason === "new-game");
++            StatTracker.syncPlaythrough();
+             StatTracker._samples = [];
+             StatTracker._probePending = null;
+             StatTracker._probeTurns = 0;
+@@ -1856,7 +1872,7 @@ var StatTracker = {
+             StatTracker._storyEpoch++;
+             StatTracker._probeDisclosureEpoch = -1;
+         }
+-        var model = StatTracker.model();
++        var model = StatTracker.syncPlaythrough(StatTracker.model());
+         if (facts.clockGame) {
+             var scoreFact = StatTracker.measuredScoreProbe();
+             if (scoreFact && (scoreFact.fields||[]).indexOf("score.max")>=0) model.scoreUnavailable = false;
+diff --git a/js/Transcript.js b/js/Transcript.js
+index b810ab6..9197ce9 100644
+--- a/js/Transcript.js
++++ b/js/Transcript.js
+@@ -129,6 +129,7 @@ var Transcript = {
+                 return;
+             }
+             Transcript.digest = digest;
++            Transcript.storyPath = typeof ParchLock !== "undefined" ? ParchLock.StoryPath || "" : "";
+             Transcript.attachEngines();
+             Transcript.meta = Transcript.loadMeta();
+             try {
+@@ -154,13 +155,14 @@ var Transcript = {
+     // From js/ZvmCapture.js after a VM restart / restore_file returned.
+     onVmEvent: function (name, success, isAutorestore) {
+         try {
+-            if (!Transcript.meta) return;
+             if (name === "restart") {
+-                if (Transcript._booting) return;   // the VM restarts once while booting
++                var submitted = typeof TurnRecorder !== "undefined" && TurnRecorder._submissionId > 0;
++                if (Transcript._booting && !submitted) return; // boot is not a new human playthrough
++                if (typeof SaveState !== "undefined") SaveState.onLifecycle("restart");
++                if (!Transcript.meta) return;
+                 Transcript.collect();
+                 Transcript.resetView([]);
+-                // D215: the map and labels follow the game to a new start.
+-                if (typeof SaveState !== "undefined") SaveState.onLifecycle("restart");
++                // Save-owned state already observed the successful restart above.
+             } else if (name === "restore_file" && success) {
+                 if (isAutorestore) { Transcript._autorestored = true; return; }
+                 Transcript.commitRestore();
+@@ -170,6 +172,11 @@ var Transcript = {
+     commitRestore: function () {
+         var c = Transcript._choice;
+         Transcript._choice = null;
++        var earlyName = c && c.usage === "restore" && c.name && Date.now() - c.at < 120000 ? c.name : "";
++        if (!Transcript.meta) {
++            if (typeof SaveState !== "undefined") SaveState.onLifecycle("restore", { name: earlyName });
++            return;
++        }
+         Transcript.collect();
+         var token = c && c.usage === "restore" && Date.now() - c.at < 120000 ? Transcript.meta.saves[c.name] : null;
+         Transcript.resetView(token || []);
+@@ -183,6 +190,10 @@ var Transcript = {
+         Transcript.append("[Restored" + (c && c.name ? " “" + c.name + "”" : "") + "]");
+     },
+     commitSave: function (name) {
++        if (!Transcript.meta) {
++            if (typeof SaveState !== "undefined") SaveState.onLifecycle("save", { name: name });
++            return;
++        }
+         Transcript.collect();
+         var toWrite = Transcript._live.slice();
+         Transcript.meta.saves[name] = Transcript.closeView();   // the invisible token
+@@ -229,7 +240,7 @@ var Transcript = {
+                 var ok = write.apply(this, arguments);
+                 try {
+                     var c = Transcript._choice;
+-                    if (ok && Transcript.meta && c && c.usage === "save" && Transcript.isSaveDirent(dirent)
++                    if (ok && c && c.usage === "save" && Transcript.isSaveDirent(dirent)
+                         && Transcript.nameOf(dirent) === c.name) {
+                         Transcript._choice = null;
+                         Transcript.commitSave(c.name);
+diff --git a/js/Tutorial.js b/js/Tutorial.js
+index 058ccf2..a6329d2 100644
+--- a/js/Tutorial.js
++++ b/js/Tutorial.js
+@@ -173,7 +173,7 @@ var Tutorial = {
+             // nothing, so this step must not describe a panel that is not there
+             // -- same reason the map steps carry an emptyBody.
+             title: "Your character at a glance",
+-            body: "The status card shows current information this story reveals: perhaps score, health, turns or a progress description. Fields vary by story, and unavailable readings stay hidden. Recognizable death and win endings are counted for this playthrough, with tiles appearing above zero. Starting a new game or restarting resets those counts; restoring a save keeps them.",
++            body: "The status card shows current information this story reveals: perhaps score, health, turns or a progress description. Fields vary by story, and unavailable readings stay hidden. Recognizable death and win endings are counted for this playthrough, with tiles appearing above zero. Counts persist for each playthrough through quitting and older saves. A new game or accepted restart starts separate history; restoring a saved playthrough returns to its accumulated count.",
+             emptyBody: "This story has not supplied current status information yet. Identify stats can ask the story for more where supported. Inventory and status requests may use turns, including automatic checks when you open Equipment. ParchLock shows a one-time warning for each installed module.",
+             isEmpty: function () {
+                 try {
+@@ -670,7 +670,10 @@ var Tutorial = {
+         // beginning. Nothing is lost: the tour is non-interactive, so the
+         // player never advanced the story while it was up.
+         if (restart) {
+-            try { location.replace(location.href); } catch (e) {}
++            var intent = typeof SaveState !== "undefined" && SaveState.prepareNewGame ? SaveState.prepareNewGame() : null;
++            if (intent === false) return;
++            try { location.replace(location.href); }
++            catch (e) { if (intent && typeof SaveState !== "undefined") SaveState.cancelNewGameIntent(intent); }
+         }
+     },
+ 
+diff --git a/js/WorkspaceUI.js b/js/WorkspaceUI.js
+index 33e1683..f558ff1 100644
+--- a/js/WorkspaceUI.js
++++ b/js/WorkspaceUI.js
+@@ -11,7 +11,7 @@ var WorkspaceUI = {
+             ["Playing", "The command input stays at the bottom while you scroll the story. Enter submits a game command. Tab cycles autocomplete; Ctrl+Up and Ctrl+Down cycle command history. Startup screens and games waiting for a single key do not have a command prompt."],
+             ["Menus and windows", "On desktop, Menu opens game actions; right-click the command input for common commands, or type /tools to reveal a Tools shortcut. On a touch device, touch and hold the command line or submit arrow for about half a second. When its radial appears, tap Tools for the complete game and app menu; a quick tap on the command line opens the keyboard normally. At screens that wait for a single key, tapping the bottom field opens the keyboard. Arrow-navigable game menus automatically show the on-screen arrow pad; Tools > Arrow keys can also open it manually (arrows around a circle, Enter in the centre; tap outside to close). Tap the exposed bottom field when you need to type a letter or number instead. With the keyboard open, holding the command line gives the normal Cut/Copy/Paste menu. Tap the faint tab on the right edge to open or close the map. Escape closes a radial or dialog first; otherwise it toggles the map. Popups have a close button."],
+             ["Actions and items", "Underlined objects and exits offer actions supported by the current story's information. Tap or click for the primary action; touch and hold or right-click for other choices. Available words vary by story, and the game can reject a command because of its rules or your current situation. Items opens Equipment; /items toggles it. Glulx stories currently play without the Z-machine mapping and object-action layer."],
+-            ["Equipment and status", "Equipment shows your belongings and any known container hierarchy. Yourself represents the character carrying the items, where that holder can be identified; worn items appear beneath it. Use Options to sort, search or change the container view. Drag using an item's grip onto a known open container to put it in, or onto Yourself to take it out. Hold it over Yourself for available actions. Known worn, open/closed and active/inactive states appear as tags; unknown states stay unlabelled. Inventory and status requests can use turns in some stories. The warning appears once per installed module and returns after you uninstall and reinstall that module. The status card shows supported, current readings. Recognized death and win endings count for this playthrough; the tiles appear above zero. A new game or accepted RESTART resets them; restoring or undoing preserves the counts."],
++            ["Equipment and status", "Equipment shows your belongings and any known container hierarchy. Yourself represents the character carrying the items, where that holder can be identified; worn items appear beneath it. Use Options to sort, search or change the container view. Drag using an item's grip onto a known open container to put it in, or onto Yourself to take it out. Hold it over Yourself for available actions. Known worn, open/closed and active/inactive states appear as tags; unknown states stay unlabelled. Inventory and status requests can use turns in some stories. The warning appears once per installed module and returns after you uninstall and reinstall that module. The status card shows supported, current readings. Recognized death and win endings count for this playthrough; the tiles appear above zero. Counts are saved for each playthrough and survive quitting, reopening and older saves. A new game or accepted RESTART starts separate history; restoring a save returns to its playthrough history."],
+             ["Modules", "Modules opens the on-device library manager. It accepts Z-machine v3, v4, v5 and v8 files, zblorb packages, and Glulx ulx or gblorb files after checking their bytes. Z-machine modules have full mapping and action support; Glulx is play-only. Add files you have the right to use. Imported bytes do not upload to a ParchLock server. Clearing app or browser storage removes imported modules and local state."],
+             ["Mapping", "Map opens the local room view; the World tab (globe) opens the wider map of discovered rooms. Explored rooms stay recorded. Some stories also reveal destinations before you visit them: faded rooms and dotted links are hints, not routes for automatic travel. The same room can acquire a clearer description later without becoming a second room when its identity is known. Drag to pan and scroll to zoom. Search finds known rooms. Selecting a local room browses its connections; use its Go control for a known route. On touch, the first tap on a faded Back or Go control reveals it, and the next tap acts. /map toggles the local map; /goto room; travels along a known route, /see room; browses a room, and /see me; returns to your location. Game rules can still block travel."],
+             ["Map files", "Maps opens named map saves for this story. Save map stores a named snapshot in this browser; Load restores one, and Delete removes it. Download map exports reloadable JSON; Load file imports that JSON or the map from a compatible save package. Text export and /export-map produce a readable map report. Map saves contain rooms, paths and notes, not the game's current position. The working map also saves automatically in this browser."],
+@@ -109,8 +109,12 @@ var WorkspaceUI = {
+             location.href = "index.html";
+         });
+         $("#story-ended-restart").off("click.plStoryEnded").on("click.plStoryEnded", function () {
+-            if (story) location.href = "play.html?story=" + encodeURIComponent(story);
+-            else location.reload();
++            var intent = typeof SaveState !== "undefined" && SaveState.prepareNewGame ? SaveState.prepareNewGame() : null;
++            if (intent === false) return;
++            try {
++                if (story) location.href = "play.html?story=" + encodeURIComponent(story);
++                else location.reload();
++            } catch (e) { if (intent && typeof SaveState !== "undefined") SaveState.cancelNewGameIntent(intent); }
+         });
+         $("#story-ended-dismiss").off("click.plStoryEnded").on("click.plStoryEnded", Message.Hide);
+     },
+diff --git a/service-worker.js b/service-worker.js
+index ab11a64..a1bfc93 100644
+--- a/service-worker.js
++++ b/service-worker.js
+@@ -18,7 +18,7 @@
+  * Bump CACHE_VERSION when APP_SHELL's contents change so old clients pick
+  * up the new files instead of serving a stale cached shell forever.
+  */
+-const CACHE_VERSION = "parchlock-shell-v170"; // Build 72: Wumpus section groups on the World Map (frame) and local map (caption); first-room gate for Inform epigraph/menu boots (Curses, Ghost, Vespers); Facility player global; Build 71: Wumpus multi-section rooms (measured section, dark-room names, exit 3, objects); item names (no line crossing, game casing, full descriptors); I7 Map_Storage exits; dark-scope latest reply; Build 70: compass labels from the game's own compass, internal-named rooms, stale "(on the X)" names, I7 phantom exits, Degeneracy player; Item 8: full room names from the printed heading; Item 8: two-line exit names; Item 7: shared secondary words not underlined alone; Map closes instantly when Equipment replaces it; Item 6: first underline per reply; Automatic return paths, Mapping option removed; Build 69; Exit decoding respects property size (no punctured boat); Build 68; Item 4: verified display names survive undo; Item 5: equal fixed mobile borders, bottom exits under input, opacity dark scope; Item 3: display-key cache (latency); widget copy ASCII; Item 2: inventory load summary is probe reply; Issue 1: icon rotation at app start, native first-launch question, truthful Options result; Post-APK63 HHG noun-safe links, full inventory labels, ephemeral radial pool and Take/root evidence; APK63: D214 underlining/possession, generic ambiguous base words, ZIL room hints and World Map; APK62: BufferRevision cache + StatTracker render/version skips; Treasures burdened prowess; inventory hidden/worn facts, Yourself, state labels; TTS callback repair; Close ✕ glyph everywhere; native dialog Edit row; Export naming repairs + Tools beautification + legacy restore label; Export naming: readable unique download names (#1746); E4 rev: save-concrete transcript; E3 warning before guards; E5b prowess family; E3 install-owned inventory WARNING; E4 save-attached running transcript; Worn learner uses the game's own inventory listing; Inventory holder learned from the game's own INVENTORY routine (Suspect); Worn: one owner per story (declared > measured fact > learned from inventory opcodes > Inform default); D152/D153: interpreter-only slot2 seeding and turn-counter ambiguity repair.
++const CACHE_VERSION = "parchlock-shell-v173"; // Save-linked cumulative playthrough history; Build 72: Wumpus section groups on the World Map (frame) and local map (caption); first-room gate for Inform epigraph/menu boots (Curses, Ghost, Vespers); Facility player global; Build 71: Wumpus multi-section rooms (measured section, dark-room names, exit 3, objects); item names (no line crossing, game casing, full descriptors); I7 Map_Storage exits; dark-scope latest reply; Build 70: compass labels from the game's own compass, internal-named rooms, stale "(on the X)" names, I7 phantom exits, Degeneracy player; Item 8: full room names from the printed heading; Item 8: two-line exit names; Item 7: shared secondary words not underlined alone; Map closes instantly when Equipment replaces it; Item 6: first underline per reply; Automatic return paths, Mapping option removed; Build 69; Exit decoding respects property size (no punctured boat); Build 68; Item 4: verified display names survive undo; Item 5: equal fixed mobile borders, bottom exits under input, opacity dark scope; Item 3: display-key cache (latency); widget copy ASCII; Item 2: inventory load summary is probe reply; Issue 1: icon rotation at app start, native first-launch question, truthful Options result; Post-APK63 HHG noun-safe links, full inventory labels, ephemeral radial pool and Take/root evidence; APK63: D214 underlining/possession, generic ambiguous base words, ZIL room hints and World Map; APK62: BufferRevision cache + StatTracker render/version skips; Treasures burdened prowess; inventory hidden/worn facts, Yourself, state labels; TTS callback repair; Close ✕ glyph everywhere; native dialog Edit row; Export naming repairs + Tools beautification + legacy restore label; Export naming: readable unique download names (#1746); E4 rev: save-concrete transcript; E3 warning before guards; E5b prowess family; E3 install-owned inventory WARNING; E4 save-attached running transcript; Worn learner uses the game's own inventory listing; Inventory holder learned from the game's own INVENTORY routine (Suspect); Worn: one owner per story (declared > measured fact > learned from inventory opcodes > Inform default); D152/D153: interpreter-only slot2 seeding and turn-counter ambiguity repair.
+ // D215: approved storybook icons and bounded authored-ending death counter.
+ const RUNTIME_CACHE = "parchlock-runtime-v1";
+ 

@@ -1,0 +1,267 @@
+diff --git a/js/ActionSynth.js b/js/ActionSynth.js
+index 1b7b982..ad87253 100644
+--- a/js/ActionSynth.js
++++ b/js/ActionSynth.js
+@@ -65,6 +65,27 @@ var ActionSynth = {
+         } catch (e) { return false; }
+     },
+ 
++    formsForAttribute: (key, objectId, context) => {
++        if (key === "switchable") {
++            var policy = ActionSynth.activationFormPolicy(objectId, context);
++            if (policy !== null) return policy;
++        }
++        return ActionSynth.rules[key] || [];
++    },
++    activationFormPolicy: (objectId, context) => {
++        if (typeof AttributeSchema === "undefined" || !AttributeSchema.activationForms) return null;
++        var forms = AttributeSchema.activationForms(AttributeSchema._getMem(), objectId, context);
++        return forms && forms.every(ActionSynth.literalAvailable) ? forms : forms === null ? null : [];
++    },
++    projectGeneratedActivation: (verb, objectId, context) => {
++        var match = /^(?:switch|turn) (on|off)$/.exec(verb);
++        if (!match) return verb;
++        var policy = ActionSynth.activationFormPolicy(objectId, context);
++        if (policy === null) return verb;
++        var form = "turn " + match[1];
++        return policy.indexOf(form) >= 0 ? form : null;
++    },
++
+     verbsForAttrs: (attrs, objectId, options) => {
+         options = options || {};
+         var defaultVerb = ActionSynth.defaultInspectVerb();
+@@ -79,7 +100,7 @@ var ActionSynth = {
+         Object.keys(ActionSynth.rules).forEach(function (key) {
+             if (key === "default") return;
+             if (a[key]) {
+-                ActionSynth.rules[key].forEach(function (v) {
++                ActionSynth.formsForAttribute(key, objectId, options.context).forEach(function (v) {
+                     if (key === "container" && !capOk && (v === "open" || v === "close")) return;
+                     if (verbs.indexOf(v) < 0) verbs.push(v);
+                 });
+@@ -99,7 +120,8 @@ var ActionSynth = {
+             }
+         } catch (eL) {}
+         if (a.nativeUseVerb === "use" && verbs.indexOf("use") < 0) verbs.push("use");
+-        return verbs;
++        return verbs.map(function (v) { return ActionSynth.projectGeneratedActivation(v, objectId, options.context); })
++            .filter(function (v, i, list) { return v && list.indexOf(v) === i; });
+     },
+ 
+     payloadPlayerId: (p) => {
+@@ -259,7 +281,7 @@ var ActionSynth = {
+             });
+             return nested;
+         }
+-        var verbs = ActionSynth.verbsForAttrs(attrs, obj.id, options);
++        var verbs = ActionSynth.verbsForAttrs(attrs, obj.id, Object.assign({}, options, { context: context }));
+         // Inventory: drop is "you are holding this", independent of takeable.
+         // Zeroing takeable used to collateral-suppress drop because both verbs
+         // shared one flag. Take stays gated on attrs.takeable and is removed
+diff --git a/js/AttributeSchema.js b/js/AttributeSchema.js
+index 13865b1..915a2ca 100644
+--- a/js/AttributeSchema.js
++++ b/js/AttributeSchema.js
+@@ -160,10 +160,10 @@ var AttributeSchema = {
+         } catch (e) { return false; }
+     },
+     // Some source handlers define a capability by object identity, not a bit.
+-    // Initially only edible is qualified. Never use names/shared raw flags.
++    // Only qualified capabilities are supported. Never use names/shared raw flags.
+     objectCapabilityIds: function (mem, flag) {
+         try {
+-            if (flag !== "edible" || !mem || typeof ZRamReader === "undefined" ||
++            if (["edible", "switchable"].indexOf(flag) < 0 || !mem || typeof ZRamReader === "undefined" ||
+                 !ZRamReader.executableLayoutFacts) return null;
+             var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest
+                 ? ModuleLibrary.currentExecutableDigest() : null;
+@@ -215,7 +215,7 @@ var AttributeSchema = {
+             if (map && Object.prototype.hasOwnProperty.call(map, flagName) && map[flagName] === null) return null;
+             // Identity-owned capability has no numeric attribute. A malformed
+             // declaration must not silently borrow an Inform fallback bit.
+-            if (flagName === "edible" && fact && fact.attributeObjects &&
++            if (["edible", "switchable"].indexOf(flagName) >= 0 && fact && fact.attributeObjects &&
+                 Object.prototype.hasOwnProperty.call(fact.attributeObjects, flagName)) return null;
+             // ZIL fail-closed (operator 2026-10-11): never apply I6 PROFILE bit
+             // numbers to non-Inform stories for containment/open family. Wrong
+@@ -358,19 +358,74 @@ var AttributeSchema = {
+     },
+ 
+     applyObjectCapabilities: function (attrs, obj, mem) {
+-        var owns = false;
++        ["edible", "switchable"].forEach(function (flag) {
++            var owns = false;
++            try {
++                var fact = flag === "switchable" && ZRamReader.executableLayoutFacts && ZRamReader.executableLayoutFacts(mem);
++                if (!fact) {
++                    var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest
++                        ? ModuleLibrary.currentExecutableDigest() : null;
++                    fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
++                }
++                if (!fact || !fact.attributeObjects || !Object.prototype.hasOwnProperty.call(fact.attributeObjects, flag) ||
++                    (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, flag))) return;
++                owns = true;
++                if (ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) return;
++                attrs[flag] = false;
++                var ids = AttributeSchema.objectCapabilityIds(mem, flag);
++                attrs[flag] = !!(obj && ids && Number.isInteger(obj.id) && ids.indexOf(obj.id) >= 0);
++            } catch (eObjectCapability) { if (owns) attrs[flag] = false; }
++            });
++    },
++
++    // null means no authored spelling policy; [] means a claimed owner was rejected.
++    activationForms: function (mem, objectId, context) {
++        var owned = false;
+         try {
+-            var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest
+-                ? ModuleLibrary.currentExecutableDigest() : null;
+-            var fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
+-            if (!fact || !fact.attributeObjects || !Object.prototype.hasOwnProperty.call(fact.attributeObjects, "edible") ||
+-                (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, "edible"))) return;
+-            owns = true;
+-            if (ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) return;
+-            attrs.edible = false;
+-            var ids = AttributeSchema.objectCapabilityIds(mem, "edible");
+-            attrs.edible = !!(obj && ids && Number.isInteger(obj.id) && ids.indexOf(obj.id) >= 0);
+-        } catch (eObjectCapability) { if (owns) attrs.edible = false; }
++            var fact = ZRamReader.executableLayoutFacts(mem);
++            if (!fact) {
++                var digest = ModuleLibrary.currentExecutableDigest();
++                fact = digest && ModuleStatFactsClaude[digest];
++            }
++            if (!fact || !((fact.attributeObjects && Object.prototype.hasOwnProperty.call(fact.attributeObjects, "switchable")) ||
++                (fact.capabilityForms && Object.prototype.hasOwnProperty.call(fact.capabilityForms, "switchable")))) return null;
++            owned = true;
++            if ((ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) ||
++                (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, "switchable"))) return null;
++            var ids = AttributeSchema.objectCapabilityIds(mem, "switchable");
++            var forms = fact.capabilityForms && fact.capabilityForms.switchable;
++            if (context !== "inventory" || !ids || !Number.isInteger(objectId) || ids.indexOf(objectId) < 0 ||
++                !Array.isArray(forms) || forms.length !== 2 || forms[0] !== "turn on" || forms[1] !== "turn off") return [];
++            var family = AttributeSchema._familyOf(mem);
++            if (!family || !Array.isArray(family.templates) || !forms.every(function (form) {
++                var prep = form.split(" ")[1];
++                return family.templates.some(function (t) { return t.verb === "turn" && t.objectCount === 1 &&
++                    t.prepositions.length === 1 && t.prepositions[0] === prep; });
++            })) return [];
++            return forms.slice();
++        } catch (eActivationForms) { return owned ? [] : null; }
++    },
++
++    // Additional restriction on activation badges, never a source of on-state authority.
++    activationStateAllows: function (mem, objectId) {
++        var owned = false;
++        try {
++            var fact = ZRamReader.executableLayoutFacts(mem);
++            if (!fact) {
++                var digest = ModuleLibrary.currentExecutableDigest();
++                fact = digest && ModuleStatFactsClaude[digest];
++            }
++            if (!fact || !(Object.prototype.hasOwnProperty.call(fact, "activationState") ||
++                (fact.attributeObjects && Object.prototype.hasOwnProperty.call(fact.attributeObjects, "switchable")))) return true;
++            owned = true;
++            if ((ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) ||
++                (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, "switchable"))) return true;
++            var ids = AttributeSchema.objectCapabilityIds(mem, "switchable");
++            var stateIds = fact.activationState && fact.activationState.onObjects;
++            if (!ids || !Array.isArray(stateIds) || !stateIds.length ||
++                !stateIds.every(function (id, i) { return Number.isInteger(id) && ids.indexOf(id) >= 0 && stateIds.indexOf(id) === i; })) return false;
++            return Number.isInteger(objectId) && stateIds.indexOf(objectId) >= 0;
++        } catch (eActivationState) { return !owned; }
+     },
+ 
+     // Only an authenticated measured actor layout may own this relationship.
+diff --git a/js/EquipmentUI.js b/js/EquipmentUI.js
+index 73a979e..1cef102 100644
+--- a/js/EquipmentUI.js
++++ b/js/EquipmentUI.js
+@@ -202,10 +202,10 @@ var EquipmentUI = {
+         return tags;
+     },
+ 
+-    measuredOwner: function (mem, flag) {
++    measuredOwner: function (mem, flag, objectId) {
+         try {
+             return !!(mem && typeof AttributeSchema !== 'undefined' && AttributeSchema.measuredFlagOwner
+-                && AttributeSchema.measuredFlagOwner(mem, flag));
++                && AttributeSchema.measuredFlagOwner(mem, flag, objectId));
+         } catch (e) { return false; }
+     },
+ 
+@@ -218,11 +218,15 @@ var EquipmentUI = {
+             if (typeof AttrCalibrator !== 'undefined' && AttrCalibrator.hasConfirmedFlag(mem, flag)) return true;
+             // Non-Inform: also accept the bounded digest ownership path (verified ZIL facts). Capability and state stay
+             // separate checks, so 'on' alone never implies 'switchable' (Codex #3466, #3380).
+-            return EquipmentUI.measuredOwner(mem, flag);
++            return EquipmentUI.measuredOwner(mem, flag, obj && obj.id);
+         } catch (e) { return false; }
+     },
+     activationStateTags: function (obj) {
+         var a = obj && obj.attrs || {};
++        try {
++            if (!(obj && obj.demo) && typeof AttributeSchema !== 'undefined' && AttributeSchema.activationStateAllows &&
++                !AttributeSchema.activationStateAllows(AttributeSchema._getMem(), obj && obj.id)) return [];
++        } catch (eActivationState) { return []; }
+         return a.switchable && EquipmentUI.flagStateKnown(obj, 'switchable')
+             && EquipmentUI.flagStateKnown(obj, 'on') ? [a.on ? 'active' : 'inactive'] : [];
+     },
+diff --git a/js/LearnedWords.js b/js/LearnedWords.js
+index dc48d67..f58ab79 100644
+--- a/js/LearnedWords.js
++++ b/js/LearnedWords.js
+@@ -129,7 +129,8 @@ var LearnedWords = {
+         var held = ((WorldModel.lastPayload || {}).inventory || []).some(function (o) { return String(o.id) === String(obj.id); });
+         var context = held ? 'inventory' : 'room', attrs = ActionSynth.trustworthyAttrs ? ActionSynth.trustworthyAttrs(obj) : obj.attrs || {}, forms = [];
+         Object.keys(ActionSynth.rules || {}).forEach(function (key) {
+-            if (key !== 'default' && attrs[key]) forms = forms.concat(ActionSynth.rules[key]);
++            if (key !== 'default' && attrs[key]) forms = forms.concat(ActionSynth.formsForAttribute
++                ? ActionSynth.formsForAttribute(key, obj.id, context) : ActionSynth.rules[key]);
+         });
+         // Use the same compiler/evidence policy as menu synthesis, not learned admission.
+         if (ActionSynth.edibleDrinkAllowed(attrs, { directEvidenceOnly: !!obj.examineOnly })) forms.push('drink');
+@@ -158,7 +159,7 @@ var LearnedWords = {
+         var regex = AttrCalibrator.buildVerbRegex(), match = regex && regex.exec(event.command);
+         var form = match ? match[1].toLowerCase().replace(/\s+/g,' ') : split.verb;
+         if (!AttrCalibrator.dictionaryForm(form)) return;
+-        var known = LearnedWords.independentForms(obj).indexOf(AttrCalibrator.normalizeVerb(form)) >= 0;
++        var known = LearnedWords.independentForms(obj).map(AttrCalibrator.normalizeVerb).indexOf(AttrCalibrator.normalizeVerb(form)) >= 0;
+         var inspect = typeof ActionSynth.defaultInspectVerb === 'function' && form === ActionSynth.defaultInspectVerb();
+         var next = JSON.parse(JSON.stringify(data)), changed = false;
+         ['exact','allowed'].forEach(function (type) {
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index f37b463..045844f 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -109,6 +109,10 @@ var ModuleStatFactsClaude = {
+     },
+     // Ballyhoo (ZIL): OPENBIT 15: OPEN sets 15 on compartment, tests TRUE on bucket, transistor radio; CLOSE clears (compartment). zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
+     "8db665f95c6475121dadf5ffcec30b0f340816f9c88fabd63ae0fb4fa9a0d588": {
++        // Native held radio/headphones TURN ON/OFF; raw ONBIT24 owns radio state only.
++        "attributeObjects": { "switchable": [36, 48] },
++        "capabilityForms": { "switchable": ["turn on", "turn off"] },
++        "activationState": { "onObjects": [48] },
+         // Worn state 20: Grok4114/4115 proposal, independently native-qualified by Codex October20; see recovered-wear review.
+         "wornAttribute": 20,
+         // RE-ADDED from PROBE walk p1: ACTORBIT 31 TRUE on guard and Comrade Thumb (look in <actor>); FALSE on button, sunglasses, cheese morsel. Ballyhoo container 23 held: positives pass but SURFACEBIT 17 is unproven, so tables would be offered Open/Close. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
+diff --git a/js/SemanticActions.js b/js/SemanticActions.js
+index 7c6366e..0ac831b 100644
+--- a/js/SemanticActions.js
++++ b/js/SemanticActions.js
+@@ -62,6 +62,8 @@ var SemanticActions = {
+         "exit": "EXIT",
+         "switch on": "SWITCH_ON",
+         "switch off": "SWITCH_OFF",
++        "turn on": "SWITCH_ON",
++        "turn off": "SWITCH_OFF",
+         "eat": "EAT",
+         "wear": "WEAR",
+         "remove": "REMOVE",
+@@ -426,6 +428,8 @@ var SemanticActions = {
+         { arity: 1, prefix: "talk to ", intent: "TALK_TO" },
+         { arity: 1, prefix: "switch on ", intent: "SWITCH_ON" },
+         { arity: 1, prefix: "switch off ", intent: "SWITCH_OFF" },
++        { arity: 1, prefix: "turn on ", intent: "SWITCH_ON" },
++        { arity: 1, prefix: "turn off ", intent: "SWITCH_OFF" },
+         { arity: 2, prefix: "give ", connector: " to ", intent: "GIVE_TO" },
+         { arity: 2, prefix: "put ", connector: " in ", intent: "PUT_IN" },
+         { arity: 2, prefix: "ask ", connector: " about ", intent: "ASK_ABOUT" }

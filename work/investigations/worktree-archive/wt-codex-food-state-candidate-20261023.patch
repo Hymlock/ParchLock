@@ -1,0 +1,249 @@
+diff --git a/js/ActionSynth.js b/js/ActionSynth.js
+index 759517d..483491e 100644
+--- a/js/ActionSynth.js
++++ b/js/ActionSynth.js
+@@ -81,6 +81,20 @@ var ActionSynth = {
+         var forms = AttributeSchema.edibleForms(AttributeSchema._getMem(), objectId, context);
+         return forms && forms.every(ActionSynth.literalAvailable) ? forms : forms === null ? null : [];
+     },
++    // Authored food availability overrides only Eat/Drink for those owners.
++    // Evidence and saved user choices remain recorded; manual typing is untouched.
++    edibleCommandAllowed: (objectId, verb, context) => {
++        if (verb !== "eat" && verb !== "drink") return true;
++        if (!context) {
++            var payload = typeof WorldModel !== "undefined" && WorldModel.lastPayload;
++            context = payload && (payload.inventory || []).some(function (o) { return o && o.id === objectId; }) ? "inventory" : "room";
++        }
++        var policy = ActionSynth.edibleFormPolicy(objectId, context);
++        return policy === null || policy.indexOf(verb) >= 0;
++    },
++    nestedEdibleForms: (objectId, context) => {
++        return ActionSynth.edibleFormPolicy(objectId, context) || [];
++    },
+     activationFormPolicy: (objectId, context) => {
+         if (typeof AttributeSchema === "undefined" || !AttributeSchema.activationForms) return null;
+         var forms = AttributeSchema.activationForms(AttributeSchema._getMem(), objectId, context);
+@@ -288,6 +302,10 @@ var ActionSynth = {
+                 command: "take " + name,
+                 confidence: obj.confidence || 0.8
+             });
++            ActionSynth.nestedEdibleForms(obj.id, context).forEach(function (verb) {
++                nested.push({ verb: verb, noun: name, objectId: obj.id || null,
++                    command: verb + " " + name, confidence: obj.confidence || 0.8 });
++            });
+             return nested;
+         }
+         var verbs = ActionSynth.verbsForAttrs(attrs, obj.id, Object.assign({}, options, { context: context }));
+@@ -356,7 +374,7 @@ var ActionSynth = {
+         if (typeof LearnedWords !== "undefined") LearnedWords.commands(obj).forEach(function (c) {
+             if (!result.some(function (existing) { return existing.command === c.command; })) result.push(c);
+         });
+-        return result;
++        return result.filter(function (entry) { return ActionSynth.edibleCommandAllowed(obj.id, entry.verb, context); });
+     },
+ 
+     // D201: objects whose printable identity was recovered from just-printed
+diff --git a/js/AttributeSchema.js b/js/AttributeSchema.js
+index 8a065ca..01fc781 100644
+--- a/js/AttributeSchema.js
++++ b/js/AttributeSchema.js
+@@ -406,9 +406,9 @@ var AttributeSchema = {
+         } catch (eActivationForms) { return owned ? [] : null; }
+     },
+ 
+-    // Authored edible pair (Border Zone EAT+DRINK on the same identity owners). null = no authored policy, so
+-    // existing Eat-only identity food (Spellbreaker, Infidel, Zork III) is untouched; [] = a claimed pair was rejected,
+-    // and a rejected pair never falls back to a generic Drink inference.
++    // Authored owner-local food actions. Capability and current availability
++    // are distinct: an empty bottle or a consumed wrapper keeps its identity.
++    // null = no authored owner policy; [] = owned but unavailable/invalid.
+     edibleForms: function (mem, objectId, context) {
+         var owned = false;
+         try {
+@@ -418,19 +418,74 @@ var AttributeSchema = {
+                 fact = digest && ModuleStatFactsClaude[digest];
+             }
+             if (!fact || !(fact.capabilityForms && Object.prototype.hasOwnProperty.call(fact.capabilityForms, "edible"))) return null;
+-            owned = true;
+             if ((ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem)) ||
+                 (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, "edible"))) return null;
++            var claimed = fact.attributeObjects && fact.attributeObjects.edible;
++            if (!Array.isArray(claimed)) return [];
++            if (claimed.indexOf(objectId) < 0) return null;
++            owned = true;
+             var ids = AttributeSchema.objectCapabilityIds(mem, "edible");
+-            var forms = fact.capabilityForms.edible;
+-            if (context !== "inventory" || !ids || !Number.isInteger(objectId) || ids.indexOf(objectId) < 0 ||
+-                !Array.isArray(forms) || forms.length !== 2 || forms[0] !== "eat" || forms[1] !== "drink") return [];
+-            var family = AttributeSchema._familyOf(mem);
+-            if (!family || !Array.isArray(family.templates) || !forms.every(function (form) {
+-                return family.templates.some(function (t) { return t.verb === form && t.objectCount === 1 &&
+-                    (!t.prepositions || t.prepositions.length === 0); });
++            var rules = fact.capabilityForms.edible, header = ZRamReader.header(mem);
++            if (context !== "inventory" || !ids || !header || !Number.isInteger(objectId) ||
++                !Array.isArray(rules) || rules.length !== ids.length) return [];
++            var count = ZRamReader.objectCount(mem, header), limit = header.version <= 3 ? 32 : 48;
++            var family = AttributeSchema._familyOf(mem), seen = {}, selected = null;
++            function keys(value, required, optional) {
++                return value && typeof value === "object" && !Array.isArray(value) &&
++                    required.every(function (k) { return Object.prototype.hasOwnProperty.call(value, k); }) &&
++                    Object.keys(value).every(function (k) { return required.indexOf(k) >= 0 || optional.indexOf(k) >= 0; });
++            }
++            function bit(value) { return Number.isInteger(value) && value >= 0 && value < limit; }
++            function scope(value) {
++                return value === "held" || (keys(value, ["containerObject", "openAttribute"], []) &&
++                    Number.isInteger(value.containerObject) && value.containerObject >= 2 && value.containerObject <= count &&
++                    bit(value.openAttribute));
++            }
++            if (!family || !Array.isArray(family.templates) || !rules.every(function (rule) {
++                if (!keys(rule, ["objectId", "scope", "actions"], []) || ids.indexOf(rule.objectId) < 0 ||
++                    seen[rule.objectId] || !scope(rule.scope) || !Array.isArray(rule.actions) || !rule.actions.length) return false;
++                seen[rule.objectId] = true;
++                var verbs = {};
++                var valid = rule.actions.every(function (action) {
++                    if (!keys(action, ["verb"], ["clearAttribute", "property"]) ||
++                        ["eat", "drink"].indexOf(action.verb) < 0 || verbs[action.verb]) return false;
++                    verbs[action.verb] = true;
++                    if (Object.prototype.hasOwnProperty.call(action, "clearAttribute") && !bit(action.clearAttribute)) return false;
++                    if (Object.prototype.hasOwnProperty.call(action, "property")) {
++                        var p = action.property;
++                        if (!keys(p, ["id", "size", "min", "max"], []) || !Number.isInteger(p.id) || p.id < 1 ||
++                            p.id > (header.version <= 3 ? 31 : 63) || p.size !== 2 || !Number.isInteger(p.min) ||
++                            !Number.isInteger(p.max) || p.min < 0 || p.max > 65535 || p.min > p.max) return false;
++                    }
++                    return family.templates.some(function (t) { return t.verb === action.verb && t.objectCount === 1 &&
++                        (!t.prepositions || t.prepositions.length === 0); });
++                });
++                if (rule.objectId === objectId) selected = rule;
++                return valid;
+             })) return [];
+-            return forms.slice();
++            if (!selected) return [];
++            var player = ZRamReader.resolvePlayer(mem).id, object = ZRamReader.objectLinks(mem, objectId);
++            if (!Number.isInteger(player) || player < 2 || player > count || !object) return [];
++            if (selected.scope === "held") {
++                if (object.parent !== player) return [];
++            } else {
++                var parentId = selected.scope.containerObject, parent = ZRamReader.objectLinks(mem, parentId);
++                var payload = typeof WorldModel !== "undefined" && WorldModel.lastPayload;
++                if (object.parent !== parentId || !parent || parent.parent !== player ||
++                    !ZRamReader.attr(parent, selected.scope.openAttribute) || !payload ||
++                    !(payload.inventory || []).some(function (o) { return o && o.id === objectId; })) return [];
++            }
++            return selected.actions.filter(function (action) {
++                if (Object.prototype.hasOwnProperty.call(action, "clearAttribute") &&
++                    ZRamReader.attr(object, action.clearAttribute)) return false;
++                if (action.property) {
++                    var p = action.property, props = ZRamReader.listProps(mem, objectId).filter(function (q) { return q.num === p.id; });
++                    if (props.length !== 1 || props[0].sz !== p.size) return false;
++                    var value = ZRamReader.u16(mem, props[0].dataAddr);
++                    if (value < p.min || value > p.max) return false;
++                }
++                return true;
++            }).map(function (action) { return action.verb; });
+         } catch (eEdibleForms) { return owned ? [] : null; }
+     },
+ 
+diff --git a/js/LearnedWords.js b/js/LearnedWords.js
+index f58ab79..1f90081 100644
+--- a/js/LearnedWords.js
++++ b/js/LearnedWords.js
+@@ -109,13 +109,16 @@ var LearnedWords = {
+     commands: function (obj) {
+         var ref = Actionable.referenceFor(obj);
+         if (!ref.unique || !ref.verified) return [];
+-        return LearnedWords.candidates(obj.id).map(function (c) {
++        return LearnedWords.candidates(obj.id).filter(function (c) {
++            return !ActionSynth.edibleCommandAllowed || ActionSynth.edibleCommandAllowed(obj.id, c.form);
++        }).map(function (c) {
+             return { objectId: obj.id, verb: c.form, command: c.form + " " + ref.noun,
+                 Enter: c.enter, enter: c.enter, label: c.label, confidence: 0.5, source: "user-suggestion",
+                 learnedWordScope: { key: LearnedWords.identity(), generation: LearnedWords.generation(), id: c.id, revision: c.revision } };
+         });
+     },
+     commandCurrent: function (command) {
++        if (ActionSynth.edibleCommandAllowed && !ActionSynth.edibleCommandAllowed(command.objectId, command.verb)) return false;
+         var scope = command.learnedWordScope;
+         if (!scope || scope.key !== LearnedWords.identity() || scope.generation !== LearnedWords.generation()) return false;
+         return LearnedWords.candidates(command.objectId).some(function (c) {
+@@ -135,7 +138,7 @@ var LearnedWords = {
+         // Use the same compiler/evidence policy as menu synthesis, not learned admission.
+         if (ActionSynth.edibleDrinkAllowed(attrs, { directEvidenceOnly: !!obj.examineOnly })) forms.push('drink');
+         var nested = held && ActionSynth.heldContainerName && ActionSynth.heldContainerName(obj,WorldModel.lastPayload);
+-        if (nested) forms = ['take'];
++        if (nested) forms = ['take'].concat(ActionSynth.nestedEdibleForms ? ActionSynth.nestedEdibleForms(obj.id,context) : []);
+         else if (held) {
+             forms = forms.filter(function (v) { return v !== 'take' && v !== 'remove'; });
+             if (ActionSynth.isWorn && ActionSynth.isWorn(obj)) forms = ['remove'];
+@@ -146,7 +149,9 @@ var LearnedWords = {
+                 (typeof SemanticActions[method] === 'function' ? SemanticActions[method](obj,context,null,WorldModel.lastPayload) || [] : []).forEach(function (f) { if (f.verb) forms.push(f.verb); });
+             });
+         }
+-        return Array.from(new Set(forms));
++        return Array.from(new Set(forms)).filter(function (verb) {
++            return !ActionSynth.edibleCommandAllowed || ActionSynth.edibleCommandAllowed(obj.id,verb,context);
++        });
+     },
+     observeSubmit: function (event) {
+         if (event.source === 'ambiguous-reference' || event.source === 'stat-probe') return;
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index af94b50..e7f561f 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -322,7 +322,10 @@ var ModuleStatFactsClaude = {
+         // held soda 200 and pretzel 205 each succeed on native EAT and DRINK (source FOOD-F handler); held cigarette 101 refuses
+         // both. The authored pair is the only Drink licence; it is inventory-only because the native proof was held.
+         "attributeObjects": { "edible": [200, 205] },
+-        "capabilityForms": { "edible": ["eat", "drink"] }
++        "capabilityForms": { "edible": [
++            { "objectId": 200, "scope": "held", "actions": [{ "verb": "eat" }, { "verb": "drink" }] },
++            { "objectId": 205, "scope": "held", "actions": [{ "verb": "eat" }, { "verb": "drink" }] }
++        ] }
+     },
+     // Stationfall (ZIL): untouched native routes (Codex #3393-#3400). DROP chronometer inserts it into room 198,
+     // TAKE into holder 218; global 183 is the only global equal to that holder, still so after STARBOARD moves
+@@ -731,7 +734,6 @@ var ModuleStatFactsClaude = {
+     },
+     // The Lurking Horror (Infocom v3)
+     "1862ef7ce4c25abd32d442392fe7eaba9c1595ed5411df75e99b06f43af6f5af": {
+-        // on 15 WITHDRAWN (Codex #3451-#3453): LH walk had a 128-step empty tail; completion unproven; stays unknown.
+         // CONTBIT 27: tested TRUE on refrigerator, cardboard carton, access panel; FALSE on Funny Bones package, microwave controls, display (zil-walk). Q8 player root: G188 is the only global holding object 56; walkthrough TAKEs (4) move items into 56; app read 29 with an empty inventory. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
+         "playerGlobal": 188,
+         // OPENBIT 13 (original-scene native explorer, zil-native-explore2-c.json): refrigerator OPEN tests 13 false, sets it,
+@@ -754,7 +756,20 @@ var ModuleStatFactsClaude = {
+         // and omits them; FALSE on the printed chair 62, pc 191, assignment 97. Source NDESCBIT 18 exact (72/72). SOLO/SELF-AUDIT.
+         "inventoryHiddenAttribute": 18,
+         "command": "score", "fields": ["score.max", "rank"], "replyFamily": "inform-score", "outcome": "line",
+-        "evidence": "2026-10-05 live SCORE: Your score is 0 of a possible 100, in 0 moves. Graded on the curve, you are in the class of Freshman. DIAGNOSE: You are wide awake, and are in good health."
++        "evidence": "2026-10-05 live SCORE: Your score is 0 of a possible 100, in 0 moves. Graded on the curve, you are in the class of Freshman. DIAGNOSE: You are wide awake, and are in good health.",
++        // Food, identity owners with authored state-gated actions (codex lurking-food-proposal-r2.md, claude ACCEPT; bit 1
++        // FOODBIT is NOT mapped: carton 58 carries it and refuses EAT/DRINK). Fresh native routes, no VM writes
++        // (resume-20261020 lurking-snack-heat/hot-native, lurking-coke-quantity-native, lurking-food-missing-native):
++        // Funny Bones 18: EAT succeeds at heat prop3 = 12 and sets bit11 (wrapper stays held, no longer edible); refuses at 16
++        // ("too hot"), succeeds after cooling to 10. Coke 61: DRINK lowers prop11 5->4->3->2->1, refuses at 1 (empty); its EAT
++        // only prints a temperature reply, so no Eat is offered. Chinese food 90: eaten while inside the open (bit13) carton 58
++        // held by the player; TAKE refused. Source 51d8060 (whole 16-file audit) corroborates, not an exact-build claim.
++        "attributeObjects": { "edible": [18, 61, 90] },
++        "capabilityForms": { "edible": [
++            { "objectId": 18, "scope": "held", "actions": [{ "verb": "eat", "clearAttribute": 11, "property": { "id": 3, "size": 2, "min": 0, "max": 12 } }] },
++            { "objectId": 61, "scope": "held", "actions": [{ "verb": "drink", "property": { "id": 11, "size": 2, "min": 2, "max": 5 } }] },
++            { "objectId": 90, "scope": { "containerObject": 58, "openAttribute": 13 }, "actions": [{ "verb": "eat" }] }
++        ] }
+     },
+     // Zork I (Infocom v3)
+     "0ae5ac229e79094ff368b6669356444af0f35e21d862a1baaa546989085c15fd": {
+diff --git a/js/SemanticActions.js b/js/SemanticActions.js
+index 0ac831b..caa178d 100644
+--- a/js/SemanticActions.js
++++ b/js/SemanticActions.js
+@@ -392,7 +392,9 @@ var SemanticActions = {
+         // Step 8: no further fallback. Anything not covered above is simply
+         // absent from the result -- never a speculative guess.
+ 
+-        return order.map(function (v) { return byVerb[v]; });
++        return order.map(function (v) { return byVerb[v]; }).filter(function (entry) {
++            return !ActionSynth.edibleCommandAllowed || ActionSynth.edibleCommandAllowed(obj.id,entry.verb,context);
++        });
+     },
+ 
+     resolveForPayloadObjectId: function (objectId, context) {

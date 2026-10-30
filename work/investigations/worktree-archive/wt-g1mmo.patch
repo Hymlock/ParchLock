@@ -1,0 +1,19 @@
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index a2d3c91..8812fa3 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -371,7 +371,13 @@ var ModuleStatFactsClaude = {
+         // (2026-10-11-zil-source-flags.json); bounded compiled table (253 objects, ends at first property 2997): bit-31 carriers = 14 (10 persons + yourself
+         // 42/69 + upstairs maid 125 + White Lady 167); none are rooms. FAIL-CLOSED (defensive): the persons carry OPENBIT + SEARCHBIT (people.zil 181...1664), so animate joins
+         // the openCapability none list (P3/R pattern).
+-        "attributeMap": { "wearable": 29, "open": 14, "isOpen": 14, "container": 27, "supporter": 23, "animate": 31 }
++        // ONBIT 10 = on (grok1 2026-10-17, g1-scan9.cjs, test_attr recorded only during the named command; V-LAMP-ON verbs.zil:3846 tests ONBIT first):
++        // route mmy step 40 (your bedroom): 'turn on lamp' tests your lamp 164:10 TRUE ("(Your lamp is already on!)"); 'turn on bed' bed 134:10 FALSE and
++        // 'turn on chair' wing chair 76:10 FALSE ("(You can't turn on ...)"). Route mmg (answer Bolitho no/yes, walk to kitchen, take lantern):
++        // step 50 'turn on lantern' brass lantern 153:10 FALSE -> "Okay, it is now on."; step 51 'turn on lantern' 153:10 TRUE ("(The brass lantern is
++        // already on!)"). Bounded compiled table (253 objects, ends 2997): 34 bit-10 carriers at boot = 29 rooms (lit; attrs.on is read only for items) +
++        // your lamp 164, peepholes 43/55, GO 66 and ghost costume 113 (both parentless/limbo).
++        "attributeMap": { "wearable": 29, "open": 14, "isOpen": 14, "container": 27, "supporter": 23, "animate": 31, "on": 10 }
+     },
+     // Deadline (ZIL): OPENBIT 28 proven by native verb dispatch (work/investigations/zil-flags-native.js, 2026-10-11-zil-flags-native.json: >=2 positives + 1 negative inside the verb routine) and the Infocom source (historicalsource; 2026-10-11-zil-source-flags.json, exact object-set match). CONTBIT 21 is also proven but is NOT applied
+     // until SURFACEBIT/supporter is proven, so surfaces never gain container Open/Close (Zork I table lesson, a89704b).

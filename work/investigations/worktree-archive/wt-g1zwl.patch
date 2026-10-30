@@ -1,0 +1,15 @@
+diff --git a/work/investigations/2026-10-11-zil-cell-ledger.json b/work/investigations/2026-10-11-zil-cell-ledger.json
+index 6229f8a..bda034e 100644
+--- a/work/investigations/2026-10-11-zil-cell-ledger.json
++++ b/work/investigations/2026-10-11-zil-cell-ledger.json
+@@ -8,6 +8,10 @@
+    "s": "S",
+    "r": "existing ZRamReader.resolvePlayer (no fact) returns 4 = the RAM parent of the first walkthrough TAKE; app inventory lists jewel-encrusted egg (zil-player-root.js, 2026-10-11 23:3x run)"
+   },
++  "wearable": {
++   "s": "UD",
++   "r": "not applicable: historicalsource/zork1@97b7b3d declares WEARBIT (gglobals.zil:10) but no object carries it (no (FLAGS ... WEARBIT) in any of the 10 .zil files: 1dungeon/1actions/g*.zil grepped) and nothing FSETs it; the only uses are FSET? tests in gverbs.zil (1355/1384/1598/1713/1982/1992), and V-WEAR (gverbs.zil:1598) refuses \"You can't wear the X.\" when WEARBIT is clear, so no object can be worn. Bounded compiled-table census of the shipped story (agent-tools/g1-census.cjs, 250 objects, ends 3000): the release WEARBIT (bit 0, the bit V-WEAR tests on device) is set at boot only on 247 (parent 0, the global holder). In-app device check (grok1 2026-10-17 g1-scW.json, Jericho walkthrough @4 Up a Tree): 'wear egg' tests 87:0 FALSE -> \"You can't wear the jewel-encrusted egg.\"; 'wear nest' 89:0 FALSE -> \"You can't wear the bird's nest.\"; 'wear tree' 241:0 FALSE -> \"You can't wear the tree.\" No alternative mechanism (worn/wornItems are already UD for the same reason)."
++  },
+   "worn": {
+    "s": "UD",
+    "r": "no worn state exists: historicalsource/zork1@97b7b3d V-WEAR = <PERFORM ,V?TAKE> when WEARBIT, no WORNBIT, no object <VERB? WEAR/TAKE-OFF> handler; a worn item is indistinguishable from a carried one in RAM"

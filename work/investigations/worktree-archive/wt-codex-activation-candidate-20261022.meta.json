@@ -1,0 +1,14 @@
+{
+ "path": "C:/Users/hymlo/Downloads/Projects/Parchmap-main/wt-codex-activation-candidate-20261022",
+ "head": "b8971be",
+ "dirtyTracked": [
+  "js/ActionSynth.js",
+  "js/AttributeSchema.js",
+  "js/EquipmentUI.js",
+  "js/LearnedWords.js",
+  "js/ModuleStatFactsClaude.js",
+  "js/SemanticActions.js"
+ ],
+ "untrackedOther": [],
+ "links": []
+}
