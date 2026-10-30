@@ -22,3 +22,4 @@ reinstalls a module. Although there should be an option in settings to erase the
 user wants."
 So retention on uninstall is intended. New work: (1) a Settings action that erases the learning stores of every module
 that is not installed; (2) a check that the retained stores stay small (size bound per store).
+- Placement (operator, 2026-10-30): "This setting should live in the learned words section of the settings along with the rest of the settings for learned words." That is the Options "Learned words" group (WorkspaceUI.js:139 groups.learned, rows added ~361). Its description "Choose the labels shown in your editor" may need widening to cover the erase action.
