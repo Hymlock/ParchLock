@@ -9655,3 +9655,51 @@ Lifecycle: root and separate Codex session sealed blind halves, comparison, R2+R
 Production07b18df; BUILD75/code48/cache173 test APK separately accepted after501 packaged assets/365 corresponding source files, v2 signature/same APK74 signer and native lint0errors/73warnings. SHA256525f19f437259f562ec4824acd277772faf7901b7fa8065c3d6319557daee10b. No physical-phone or overall-ZIL completion claim. Evidence: work/mapping-research/items-codex/resume-20261020/death-persistence-20261026/checkpoint.md, independent/final-artifact-audit-accept.md, shared-r2/gate-classification.json, packaged-native-r2.json and production-commit.json. Guards: harness/death-persistence, harness/death-terminal.js, harness/save-state.js, harness/stat-tracker.js, harness/e4-transcript.js. Runtime: js/SaveState.js, js/StatTracker.js, js/Transcript.js, js/Qol.js, js/Tutorial.js, js/WorkspaceUI.js.
 **Operator ruling 2026-10-30:** restoring an older save KEEPS the higher playthrough count (running total; it does not rewind to the save's own count). RESTART still starts a new playthrough at 0. Second-seat audit ACCEPT-with-issues: work/investigations/death-audit-claude/AUDIT.md.
 
+
+## D244 ZIL inventory hidden-parent recursion (D1)
+
+**Lifecycle:** proposal work/investigations/zil-titles/invhidden-recurse-proposal-r1.md (claude); codex review/audit
+#5543, #5577, #5597; landed in r44 commit 9e461e6. Pre-D1 baseline pinned at 9e461e6~1 (30c4296).
+**Contract.** A per-title fact `inventoryHiddenRecurses` (13 ZIL titles) makes walkVisibleDescendants suppress the label of a
+hidden (NDESC) holder but still recurse into its visible children, matching native `i`. Rule-based, no ID lists.
+Enchanter, Sorcerer, Spellbreaker and Moonmist are excluded (D148 spell scope; Spellbreaker BRIEFBIT; see D249/P16).
+Harness: harness/zil-invhidden-recurse.js. Runtime: js/ModuleStatFactsClaude.js, inventory walk.
+
+## D245 ZIL clothing/wearable fail-closed (P11a)
+
+**Lifecycle:** D11 blind halves claude+codex, compare work/investigations/zil-titles/oct30-compare-proposals-r1.md, landed
+with D244 in 9e461e6. **Cause:** the PROFILE bit-2 (clothing/wearable) mapping leaked onto ZIL titles, so Suspended and
+Planetfall rooms read as garments. **Contract:** ZIL clothing/wearable is fail-closed: only an exact-digest per-title fact
+asserts it; no generic attribute inference. P11b (room-shaped garment rejection) is agreed but pending (D249).
+
+## D246 Lock pause requires locked AND closed (P10)
+
+**Lifecycle:** D10 compare/proposal P10 (oct30-compare-proposals-r1.md), codex implementation commit 8b76ec8.
+**Contract.** The raw ZIL lock glyph (D241) is a display observation, separate from route blockage. Navigation pauses on a
+door only when it is locked AND closed; an open locked door is passable (Suspect START-ALICIA open+locked doors).
+Harness: harness/zil-locked-map.js (37 checks). Extends D241.
+
+## D247 Light key semantics stay heuristic (D2)
+
+**Lifecycle:** D2 blind halves + compare (oct30-compare-proposals-r1.md), consensus close in commit aa1c52d.
+**Decision:** no code. There is no semantic light-emission reader; light remains heuristic. The 18 light cells in the
+ledger are recorded L:NC (not certified).
+
+## D248 Learning stores retained on uninstall (D13) -- AGREED, not landed
+
+**Operator ruling 2026-10-30:** learned-word stores survive module uninstall. Settings > Learned words gains Check/Erase
+for uninstalled modules. Design agreed R3-R7: work/investigations/learning-uninstall/compare-proposal-r1.md.
+**Status:** agreed design; implementation pending integration. No runtime change yet.
+
+## D249 Agreed designs pending integration (D12, D5, D16, D8, P4, P11b)
+
+Consensus reached 2026-10-30; none is landed in js/ yet. Each still needs implementation, gate and adversarial audit.
+- **D12** Hollywood open/close: action-routine refusals keep their options (claude-probe/hollywood-d12/compare-proposal-r1.md;
+  candidate audit audit-d12-candidate.md).
+- **D5** object "Locked" status (D241 phase 2): codex candidate oct30-recovery/d5-status-candidate-r1, audit
+  zil-titles/audit-d5-candidate.md (bus #5647).
+- **D16/P16** spell book scope: label list vs scope set split; per-title `inventoryHiddenScopeRetained` before re-admitting
+  Enchanter/Sorcerer to D244 (zil-titles/D16-compare-proposal-r1.md; Sorcerer trace cb46b8d; Spellbreaker stays excluded).
+- **D8** Suspended robot radial (suspended-d14/D8-R3-attack-claude.md).
+- **P4** `switchableScope` per-object room scope for activation forms; first candidate Witness radio 162 (#5186).
+- **P11b** garment rejection in isPlausibleMapRoom skipped only for room-shaped objects (codex #5543).

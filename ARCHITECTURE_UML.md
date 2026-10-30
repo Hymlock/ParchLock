@@ -4220,6 +4220,8 @@ Companion: PRODUCTION_PLAN.md, D226. Runtime: ZRamProvider.resolveInventoryRootI
 
 **Validation boundary:** reuse recorded native evidence and source-bound focused controls; run required operator and ZIL/InformZ/Glulx guards before a runtime commit. Solo309 sweeps are retained evidence with their stated scope, not a replacement for independent review of these concrete defects. This documentation update changes no status commands, speech behavior, map logic, inventory handles or runtime code.
 
+**Update 2026-10-30 (D244/D245, PRODUCTION_PLAN.md):** for `inventoryHiddenRecurses` titles the inventory walk suppresses a hidden holder's label but recurses into its visible children (native `i`). ZIL clothing/wearable is fail-closed to exact-digest facts. Label list vs parser-scope split (D16/P16) is agreed, pending (D249). Map: lock glyph is display only; route pause needs locked AND closed (D246).
+
 <a id="ar-ch84"></a><a id="ar-s113" data-chapter-id="ar-s113"></a>
 ## 84. Read-only pass pool and static dictionary cache (D227)
 

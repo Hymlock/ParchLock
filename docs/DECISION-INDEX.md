@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 127 decisions across
-9656 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 133 decisions across
+9706 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -27,6 +27,12 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 
 | D | claim | files | games | arch |
 |---|-------|-------|-------|------|
+| D249 | Agreed designs pending integration (D12, D5, D16, D8, P4, P11b) |  | Enchanter |  |
+| D248 | Learning stores retained on uninstall (D13) -- AGREED, not landed |  |  |  |
+| D247 | Light key semantics stay heuristic (D2) |  |  |  |
+| D246 | Lock pause requires locked AND closed (P10) | harness/zil-locked-map.js |  |  |
+| D245 | ZIL clothing/wearable fail-closed (P11a) | harness/zil-locked-map.js | Planetfall |  |
+| D244 | ZIL inventory hidden-parent recursion (D1) | harness/zil-invhidden-recurse.js js/ModuleStatFactsClaude.js | Enchanter Planetfall |  |
 | D243 | Save-linked cumulative playthrough death and win history | harness/death-terminal.js harness/save-state.js harness/stat-tracker.js harness/e4-transcript.js |  | §89 |
 | D242 | Per-title enter forms (sit on) | harness/zil-enter-forms.js | Deadline |  |
 | D241 | ZIL locked doors on the map (locked R2 phase 1) |  |  |  |
@@ -283,10 +289,10 @@ cites. Search here for a subsystem; the line number opens the chapter.
 | line 4189 | 4189 | ZIL v4/v5 room: locationGlobal (2026-10-12, grok2, 5348c0f; Codex post-hoc audit pending) |  |
 | §82 | 4194 | 82. Mark coverage and inventory label admission (D225) | D225 |
 | §83 | 4206 | 83. Inventory holder authority and recovery (D226) | D226 |
-| §84 | 4224 | 84. Read-only pass pool and static dictionary cache (D227) | D227 |
-| §85 | 4277 | 85. Authored state-gated food actions (D228) | D228 |
-| §86 | 4294 | 86. Measured container state and authored container forms (D229) | D229 |
-| §87 | 4305 | 87. More-page suggestion admission (D230) | D230 |
-| §88 | 4313 | 88. Authored unlock tool domain (D231) | D231 |
-| line 4319 | 4319 | October26 operator-authorized credit takeover: twelve concealed mappings |  |
-| §89 | 4332 | 89. Save-linked cumulative playthrough history (D243) | D243 |
+| §84 | 4226 | 84. Read-only pass pool and static dictionary cache (D227) | D227 |
+| §85 | 4279 | 85. Authored state-gated food actions (D228) | D228 |
+| §86 | 4296 | 86. Measured container state and authored container forms (D229) | D229 |
+| §87 | 4307 | 87. More-page suggestion admission (D230) | D230 |
+| §88 | 4315 | 88. Authored unlock tool domain (D231) | D231 |
+| line 4321 | 4321 | October26 operator-authorized credit takeover: twelve concealed mappings |  |
+| §89 | 4334 | 89. Save-linked cumulative playthrough history (D243) | D243 |
