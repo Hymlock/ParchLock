@@ -1,0 +1,6 @@
+{
+  "tier": "CONSTRUCTED selector/schema controls only; no VM/native/generated-consumer proof",
+  "pass": 25,
+  "fail": 0,
+  "scope": "Isolated prototype; consumer wiring and native integration hold remain"
+}

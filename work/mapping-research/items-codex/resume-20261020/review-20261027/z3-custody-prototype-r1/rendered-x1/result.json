@@ -1,0 +1,148 @@
+{
+  "tier": "X constructed actual VM/renderer consumer only; not native accessibility or semantic qualification",
+  "seed": "Explicit original native insert_obj used ONLY for synthetic fixture setup; no RNG substitution; not unforced native evidence",
+  "rows": [
+    {
+      "label": "before synthetic setup",
+      "player": {
+        "id": 202,
+        "source": "measured-player-global",
+        "ambiguous": false,
+        "candidates": []
+      },
+      "amulet": {
+        "parent": 0,
+        "bit4": true
+      },
+      "model": null,
+      "text": " Endless Stair                Score: 0  Turns: 0 \nAs in a dream, you see yourself tumbling down a great, dark staircase. All about you are shadowy images of struggles against fierce opponents and diabolical traps. These give way to another round of images: of imposing stone figures, a cool, clear lake, and, now, of an old, yet oddly youthful man. He turns toward you slowly, his long, silver hair dancing about him in a fresh breeze. \"You have reached the final test, my friend! You are proved clever and powerful, but this is not yet enough! Seek me when you feel yourself worthy!\" The dream dissolves around you as his last words echo through the void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n> "
+    },
+    {
+      "label": "constructed inventory",
+      "player": {
+        "id": 202,
+        "source": "measured-player-global",
+        "ambiguous": false,
+        "candidates": []
+      },
+      "amulet": {
+        "parent": 202,
+        "bit4": true
+      },
+      "model": {
+        "id": 39,
+        "name": "golden amulet",
+        "attrs": {
+          "absent": false,
+          "clothing": false,
+          "wearable": true,
+          "concealed": false,
+          "container": false,
+          "door": false,
+          "edible": false,
+          "enterable": false,
+          "general": false,
+          "light": false,
+          "moved": false,
+          "on": false,
+          "open": false,
+          "isOpen": false,
+          "proper": false,
+          "scenery": true,
+          "scored": false,
+          "static": false,
+          "supporter": false,
+          "talkable": false,
+          "visited": false,
+          "workflag": true,
+          "worn": true,
+          "isWorn": true,
+          "male": false,
+          "female": false,
+          "neuter": false,
+          "pluralname": false,
+          "climbable": false,
+          "takeable": true,
+          "switchable": false
+        }
+      },
+      "text": " Endless Stair                Score: 0  Turns: 1 \nAs in a dream, you see yourself tumbling down a great, dark staircase. All about you are shadowy images of struggles against fierce opponents and diabolical traps. These give way to another round of images: of imposing stone figures, a cool, clear lake, and, now, of an old, yet oddly youthful man. He turns toward you slowly, his long, silver hair dancing about him in a fresh breeze. \"You have reached the final test, my friend! You are proved clever and powerful, but this is not yet enough! Seek me when you feel yourself worthy!\" The dream dissolves around you as his last words echo through the void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>inventory\n \n> "
+    },
+    {
+      "label": "after rendered constructed Drop",
+      "player": {
+        "id": 202,
+        "source": "measured-player-global",
+        "ambiguous": false,
+        "candidates": []
+      },
+      "amulet": {
+        "parent": 202,
+        "bit4": true
+      },
+      "model": {
+        "id": 39,
+        "name": "golden amulet",
+        "attrs": {
+          "absent": false,
+          "clothing": false,
+          "wearable": true,
+          "concealed": false,
+          "container": false,
+          "door": false,
+          "edible": false,
+          "enterable": false,
+          "general": false,
+          "light": false,
+          "moved": false,
+          "on": false,
+          "open": false,
+          "isOpen": false,
+          "proper": false,
+          "scenery": true,
+          "scored": false,
+          "static": false,
+          "supporter": false,
+          "talkable": false,
+          "visited": false,
+          "workflag": true,
+          "worn": true,
+          "isWorn": true,
+          "male": false,
+          "female": false,
+          "neuter": false,
+          "pluralname": false,
+          "climbable": false,
+          "takeable": true,
+          "switchable": false
+        }
+      },
+      "text": " Endless Stair                Score: 0  Turns: 3 \nAs in a dream, you see yourself tumbling down a great, dark staircase. All about you are shadowy images of struggles against fierce opponents and diabolical traps. These give way to another round of images: of imposing stone figures, a cool, clear lake, and, now, of an old, yet oddly youthful man. He turns toward you slowly, his long, silver hair dancing about him in a fresh breeze. \"You have reached the final test, my friend! You are proved clever and powerful, but this is not yet enough! Seek me when you feel yourself worthy!\" The dream dissolves around you as his last words echo through the void....\n \nZORK III: The Dungeon Master\nCopyright 1982 by Infocom, Inc. All rights reserved.\nZORK is a trademark of Infocom, Inc.\nRelease 17 / Serial number 840727\n \nEndless Stair\nYou are at the bottom of a seemingly endless stair, winding its way upward beyond your vision. An eerie light, coming from all around you, casts strange shadows on the walls. To the south is a dark and winding trail.\nYour old friend, the brass lantern, is at your feet.\n \n>inventory\n \n>inventory\n \n>\nscore\nYour potential is 0 of a possible 7, in 2 moves.\n \n>diagnose\nYou are in perfect health.\n \n> "
+    }
+  ],
+  "choices": [
+    {
+      "Form": "examine",
+      "Label": "Examine"
+    },
+    {
+      "Form": "drop",
+      "Label": "Drop",
+      "Command": "drop amulet",
+      "scope": {
+        "kind": "wearable-direct-player-drop",
+        "digest": "dce7e6f757fb8379dea9da9c13cdda5412ba03fa9b70d79fb6b8c7faf5970692",
+        "id": 39,
+        "noun": "amulet",
+        "command": "drop amulet"
+      }
+    }
+  ],
+  "rendered": [
+    "Examine",
+    "Drop"
+  ],
+  "status": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: rendered guarded command must change synthetic custody\n    at C:\\Users\\hymlo\\Downloads\\Projects\\Parchmap-main\\Parchmap-main\\work\\mapping-research\\items-codex\\resume-20261020\\review-20261027\\render-x.cjs:2:2793",
+  "sourceStable": true
+}
