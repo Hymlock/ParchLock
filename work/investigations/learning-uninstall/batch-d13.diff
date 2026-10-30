@@ -1,9 +1,9 @@
 diff --git a/harness/learning-stores.js b/harness/learning-stores.js
 new file mode 100644
-index 0000000..dc6bd18
+index 0000000..d6aeb22
 --- /dev/null
 +++ b/harness/learning-stores.js
-@@ -0,0 +1,437 @@
+@@ -0,0 +1,477 @@
 +// D13 harness: LearningStores ownership index, serialized persists and the
 +// erase-for-uninstalled action, against a constructed localStorage and a
 +// navigator.locks stub. Run: node harness/learning-stores.js
@@ -131,7 +131,7 @@ index 0000000..dc6bd18
 +        ok(!r.aborted && r.removed === 1 && r.failed === 0, "erase removed one");
 +        ok(s.getItem("PL_LearnedWordOverrides_2-B") === null && s.getItem("PL_LearnedWordOverrides_1-A") !== null, "only uninstalled erased");
 +        const idx = JSON.parse(s.getItem("PL_ModuleLearningOwner_v1"));
-+        ok(idx.revision === 1 && idx.tombstones["PL_LearnedWordOverrides_2-B"].erasedAtIndexRevision === 1 && !idx.entries["PL_LearnedWordOverrides_2-B"], "revision + tombstone");
++        ok(idx.revision === 1 && idx.tombstones["PL_LearnedWordOverrides_2-B"].erasedAtIndexRevision === 1 && idx.entries["PL_LearnedWordOverrides_2-B"].eraseEpoch === 1 && !idx.entries["PL_LearnedWordOverrides_2-B"].owners.length, "revision + tombstone + erase epoch");
 +    }
 +    {   // unknown installed digest -> everything unknown
 +        const { t } = await scenario([{ path: "games/a.z5.js", digest: null }], [{ id: "2-B", digest: "dB", path: "games/b.z5.js" }], null);
@@ -179,7 +179,7 @@ index 0000000..dc6bd18
 +        s.failRemove.add("PL_LearnedWordOverrides_4-D");
 +        const r = await t.LearningStores.erase(t.LearningStores.list());
 +        const idx = t.LearningStores.readIndex().index;
-+        ok(r.removed === 1 && r.failed === 1 && idx.entries["PL_LearnedWordOverrides_4-D"] && !idx.entries["PL_LearnedWordOverrides_2-B"] && idx.revision === 1, "partial failure");
++        ok(r.removed === 1 && r.failed === 1 && idx.entries["PL_LearnedWordOverrides_4-D"] && !idx.entries["PL_LearnedWordOverrides_4-D"].eraseEpoch && idx.entries["PL_LearnedWordOverrides_2-B"].eraseEpoch === 1 && idx.revision === 1, "partial failure");
 +    }
 +    {   // malformed index disables erase; unmanaged keys never erased
 +        const { t, s } = await scenario([], [{ id: "2-B", digest: "dB", path: "games/b.z5.js" }], null);
@@ -324,6 +324,46 @@ index 0000000..dc6bd18
 +        ok(t.LearningStores._indexWrites() - w0 === 1 && ix.owners.length === 2, "new owner: exactly one index write");
 +        t.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "v6"); await settle();
 +        ok(t.LearningStores._indexWrites() - w0 === 1, "same new owner again: no further index write");
++    }
++    {   // codex #5692 (negative control fresh-cleared-tombstone-oldtab.json): three-tab resurrection
++        const { t: A, s, l, lib } = await scenario([], [{ id: "2-B", digest: "dB", path: "games/b.z5.js" }], null);
++        const r = await A.LearningStores.erase(A.LearningStores.list());
++        ok(!r.aborted && r.removed === 1, "3-tab: erase removed the key");
++        const C = makeTab(s, l, lib);
++        lib.current = "dB"; C.ParchLock.StoryPath = A.ParchLock.StoryPath = "games/b.z5.js";
++        ok(C.LearningStores.read("PL_LearnedWordOverrides_2-B") === null, "3-tab: fresh tab C hydrates after erase");
++        C.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "fresh-learning"); await settle();
++        let idx = C.LearningStores.readIndex().index;
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === "fresh-learning" && !idx.tombstones["PL_LearnedWordOverrides_2-B"] && idx.entries["PL_LearnedWordOverrides_2-B"].eraseEpoch === 1,
++            "3-tab: C's fresh write clears the tombstone but keeps eraseEpoch 1");
++        let reset = false;
++        A.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "old-resurrected", () => { reset = true; }); await settle();
++        idx = A.LearningStores.readIndex().index;
++        ok(reset && s.getItem("PL_LearnedWordOverrides_2-B") === "fresh-learning" && idx.entries["PL_LearnedWordOverrides_2-B"].eraseEpoch === 1 && A.LearningStores.pending() === 0,
++            "3-tab: stale tab A rejected (reset, no write), epoch kept");
++        A.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "a-after-reset"); await settle();
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === "a-after-reset", "3-tab: A writes normally after its reset");
++    }
++    {   // codex #5692 (negative control owner-index-failure-cleanup.json): new owner registered before its value
++        const { t, s, lib } = await scenario([{ path: "games/b.z5.js", digest: "dB" }], [{ id: "2-B", digest: "dA", path: "games/a.z5.js" }], null);
++        lib.current = "dB"; t.ParchLock.StoryPath = "games/b.z5.js";
++        s.failSetKeys.add("PL_ModuleLearningOwner_v1");
++        t.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "B"); await settle();
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === "{\"v\":\"2-B\"}" && t.LearningStores.pending() === 1 && /could not be saved/.test(t.LearningStores.lastError() || ""),
++            "owner-index failure: value not written, snapshot dirty, reported");
++        s.failSetKeys.clear();
++        t.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "B2"); await settle();
++        const e = t.LearningStores.readIndex().index.entries["PL_LearnedWordOverrides_2-B"];
++        lib.current = null; t.ParchLock.StoryPath = "";
++        const L = t.LearningStores.list();
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === "B2" && t.LearningStores.pending() === 0 && e.owners.some(o => o.digest === "dB") && L.removable === 0 && L.installed === 1,
++            "owner-index recovery: B registered then written; installed owner protects the key");
++        const w = t.LearningStores._indexWrites();
++        lib.current = "dB"; t.ParchLock.StoryPath = "games/b.z5.js";
++        s.failSetKeys.add("PL_ModuleLearningOwner_v1");
++        t.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "B3"); await settle();
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === "B3" && t.LearningStores._indexWrites() === w && t.LearningStores.pending() === 0, "existing-owner value-only fast path unchanged (no index write)");
++        s.failSetKeys.clear();
 +    }
 +    {   // bus #5674: tombstone clear on a fresh post-erase write still happens
 +        const s = makeStorage(), l = makeLocks(), lib = makeLib([]);
@@ -596,10 +636,10 @@ index ffa53f7..75a6c25 100644
 +if (typeof LearningStores !== "undefined") LearningStores.register("learnedWords", LearnedWords.PREFIX, LearnedWords.learningKeyFor);
 diff --git a/js/LearningStores.js b/js/LearningStores.js
 new file mode 100644
-index 0000000..f89b449
+index 0000000..154ee4d
 --- /dev/null
 +++ b/js/LearningStores.js
-@@ -0,0 +1,446 @@
+@@ -0,0 +1,480 @@
 +/* D13 (R3-R6): module learning store ownership and erase-for-uninstalled.
 + *
 + * Each module-scoped learning store registers its exact localStorage key at
@@ -627,6 +667,7 @@ index 0000000..f89b449
 +    var queue = [];            // FIFO of immutable snapshots
 +    var draining = false;
 +    var hydratedAt = Object.create(null); // key -> index revision when read/reset
++    var hydratedEpoch = Object.create(null); // key -> entry eraseEpoch when read/reset
 +    var lastError = null, reported = false, recoveryError = null;
 +
 +    function storage() { try { return typeof localStorage !== "undefined" ? localStorage : null; } catch (e) { return null; } }
@@ -650,7 +691,7 @@ index 0000000..f89b449
 +            if (!isObj(p) || p.v !== 1 || !validInt(p.revision) || !isObj(p.entries) || !isObj(p.tombstones)) throw 0;
 +            Object.keys(p.entries).forEach(function (k) {
 +                var e = p.entries[k];
-+                if (!isObj(e) || e.key !== k || typeof e.kind !== "string" || !Array.isArray(e.owners)) throw 0;
++                if (!isObj(e) || e.key !== k || typeof e.kind !== "string" || !Array.isArray(e.owners) || (e.eraseEpoch != null && !validInt(e.eraseEpoch))) throw 0;
 +                if (e.ownersOverflow != null && e.ownersOverflow !== true) throw 0;
 +                e.owners.forEach(function (o) {
 +                    if (!isObj(o) || !isObj(o.inputs) || (o.digest != null && typeof o.digest !== "string") || typeof o.path !== "string") throw 0;
@@ -723,7 +764,7 @@ index 0000000..f89b449
 +        index.pending.records.forEach(function (rec) {
 +            var gone = false;
 +            try { ls.removeItem(rec.key); gone = ls.getItem(rec.key) == null; } catch (e) {}
-+            if (gone) delete index.entries[rec.key]; else left.push(rec);
++            if (gone) eraseEntry(index, rec.key, index.pending.revision); else left.push(rec);
 +        });
 +        if (left.length) {
 +            index.pending.records = left;
@@ -738,6 +779,21 @@ index 0000000..f89b449
 +        return "done";
 +    }
 +
++    // codex #5692: an erased key keeps its entry as a permanent erase epoch
++    // (monotonic; fresh writes never lower or remove it). Owners are dropped.
++    function epochOf(index, key) { var e = index.entries[key]; return (e && e.eraseEpoch) || 0; }
++    // A store hydrating while the key's erase is pending already sees it gone,
++    // so it hydrates at the epoch that erase will commit.
++    function hydrateEpoch(index, key) {
++        var ep = epochOf(index, key);
++        if (index.pending && pendingKeys(index).indexOf(key) >= 0) ep = Math.max(ep, index.pending.revision);
++        return ep;
++    }
++    function eraseEntry(index, key, rev) {
++        var e = index.entries[key];
++        index.entries[key] = { key: key, kind: e ? e.kind : "", owners: [], eraseEpoch: Math.max(epochOf(index, key), rev) };
++    }
++
 +    function sameOwner(a, b) {
 +        return a.digest === b.digest && a.path === b.path && JSON.stringify(a.inputs) === JSON.stringify(b.inputs);
 +    }
@@ -747,6 +803,7 @@ index 0000000..f89b449
 +    function read(key) {
 +        var idx = readIndex().index;
 +        hydratedAt[key] = idx.revision;
++        hydratedEpoch[key] = hydrateEpoch(idx, key);
 +        if (idx.pending && pendingKeys(idx).indexOf(key) >= 0) {
 +            // Mid-erase (or interrupted erase): the key is already gone.
 +            hydratedAt[key] = idx.pending.revision;
@@ -767,24 +824,40 @@ index 0000000..f89b449
 +            if (pendingKeys(index).indexOf(snap.key) >= 0) return "pending";
 +            var tomb = index.tombstones[snap.key];
 +            var hyd = snap.hydratedRevision == null ? -1 : snap.hydratedRevision;
-+            if (tomb && tomb.erasedAtIndexRevision > hyd) {
++            var hydE = snap.hydratedEpoch == null ? 0 : snap.hydratedEpoch;
++            if ((tomb && tomb.erasedAtIndexRevision > hyd) || epochOf(index, snap.key) > hydE) {
 +                // Erased after this store hydrated: never resurrect it. The
 +                // store starts fresh for that module.
 +                hydratedAt[snap.key] = index.revision;
++                hydratedEpoch[snap.key] = epochOf(index, snap.key);
 +                if (typeof snap.reset === "function") { try { snap.reset(); } catch (e) {} }
 +                return "erased";
 +            }
 +        }
-+        ls.setItem(snap.key, snap.value);
-+        if (!index) return "written-unindexed";
++        if (!index) { ls.setItem(snap.key, snap.value); return "written-unindexed"; }
 +        // Cross-tab writes are last-writer-wins in commit order. The index
 +        // is rewritten only when entry metadata changed; recovery above
 +        // already committed its own index changes.
 +        var e = index.entries[snap.key], meta = false;
-+        if (!e || e.kind !== snap.kind) { e = index.entries[snap.key] = { key: snap.key, kind: snap.kind, owners: [] }; meta = true; }
++        if (!e || e.kind !== snap.kind) {
++            var ep = epochOf(index, snap.key);
++            e = index.entries[snap.key] = { key: snap.key, kind: snap.kind, owners: [] };
++            if (ep) e.eraseEpoch = ep; // never lowered or removed
++            meta = true;
++        }
 +        if (addOwner(e, snap.owner)) meta = true;
 +        if (index.tombstones[snap.key]) { delete index.tombstones[snap.key]; meta = true; }
-+        if (meta) { writeIndex(index); indexWrites++; }
++        if (meta) {
++            // codex #5692: owner registration is durable (read back) BEFORE the
++            // value is written. A failed index write throws, so the value is
++            // never written and the snapshot stays queued (dirty) and reported.
++            writeIndex(index); indexWrites++;
++            var back = readIndex();
++            var be = back.ok && back.index.entries[snap.key];
++            if (!be || !be.owners.some(function (o) { return sameOwner(o, snap.owner); }) && !be.ownersOverflow)
++                throw new Error("owner registration not durable");
++        }
++        ls.setItem(snap.key, snap.value);
 +        return "written";
 +    }
 +
@@ -853,10 +926,11 @@ index 0000000..f89b449
 +            return Promise.resolve("written");
 +        }
 +        if (hydratedAt[key] == null) hydratedAt[key] = readIndex().index.revision;
++        if (hydratedEpoch[key] == null) hydratedEpoch[key] = hydrateEpoch(readIndex().index, key);
 +        var snap = Object.freeze({
 +            key: key, kind: kind, owner: Object.freeze(owner), value: String(value),
 +            // Supersession is FIFO within this tab's queue only.
-+            hydratedRevision: hydratedAt[key], seq: ++seqNo, reset: reset
++            hydratedRevision: hydratedAt[key], hydratedEpoch: hydratedEpoch[key], seq: ++seqNo, reset: reset
 +        });
 +        queue.push(snap);
 +        return drain();
@@ -982,7 +1056,7 @@ index 0000000..f89b449
 +            keys.forEach(function (k) {
 +                var gone = false;
 +                try { ls.removeItem(k); gone = ls.getItem(k) == null; } catch (e) { gone = false; }
-+                if (gone) { removed++; delete index.entries[k]; }
++                if (gone) { removed++; eraseEntry(index, k, nextRev); }
 +                else { failed++; delete index.tombstones[k]; } // still present: keep its entry
 +            });
 +            // 3. Finalize: revision written last.

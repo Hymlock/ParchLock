@@ -1,9 +1,9 @@
 diff --git a/harness/zil-inventory-scope-retained.js b/harness/zil-inventory-scope-retained.js
 new file mode 100644
-index 0000000..fd61c95
+index 0000000..447c283
 --- /dev/null
 +++ b/harness/zil-inventory-scope-retained.js
-@@ -0,0 +1,147 @@
+@@ -0,0 +1,169 @@
 +// D16 P16 inventoryHiddenScopeRetained (claude R1+R2, codex ACCEPT #5641,
 +// work/investigations/zil-titles/D16-compare-proposal-r1.md). Constructed trees on Zork I story bytes (bits:
 +// NDESCBIT 14, CONTBIT 19, OPENBIT 11, TRANSBIT 12, INVISIBLE 7). Walk output compared with HEAD's ZRamReader.js
@@ -11,7 +11,7 @@ index 0000000..fd61c95
 +// exercised on the produced rows. Run from the repo root: node harness/zil-inventory-scope-retained.js
 +const fs = require('fs'), vm = require('vm'), crypto = require('crypto'), assert = require('assert'), cp = require('child_process');
 +const { story } = require(process.cwd() + '/work/investigations/zil-attr-analyzer.js');
-+const HEAD_ZR = cp.execSync('git show HEAD:js/ZRamReader.js', { maxBuffer: 1 << 26 }).toString();
++const HEAD_ZR = cp.execSync('git show ' + (process.env.P16_BASE || 'HEAD') + ':js/ZRamReader.js', { maxBuffer: 1 << 26 }).toString();
 +let passed = 0;
 +function check(ok, label) { assert(ok, label); passed++; console.log('PASS ' + label); }
 +
@@ -109,6 +109,28 @@ index 0000000..fd61c95
 +    '5e suppressed row with an absent parent never votes for the holder');
 +check(WM.recoverInventory({ inventory: [], discoveredObjects: [{ id: 9, name: 'x', parentId: 777, attrs: { worn: true }, labelSuppressed: true }], probe: {} }).length === 0,
 +    '5f recoverInventory never seeds from a suppressed row');
++{   // 5g-5k codex #5690: model rows keep physical custody; commands identical to payload rows.
++    const AS = vm.runInNewContext(fs.readFileSync('js/ActionSynth.js', 'utf8') + String.fromCharCode(10) + ';ActionSynth', { console, window: {} });
++    const p = { playerId: ROOT, probe: { playerId: ROOT }, inventory: b.rows, discoveredObjects: [] };
++    global.WorldModel.lastPayload = p;
++    const mr = m.byId[String(LEAFLET)], pr = row(b.rows, LEAFLET);
++    check(mr && mr.parentId === SACK && mr.labelParentId === ROOT, '5g model row keeps physical parentId ' + SACK + ' (display-only labelParentId ' + (mr && mr.labelParentId) + ')');
++    const hm = AS.heldContainerName(mr, p), hp = AS.heldContainerName(pr, p);
++    check(typeof hp === 'string' && hm === hp && hp === row(b.rows, SACK).name, '5h heldContainerName(model row) = payload row = "' + hm + '"');
++    const cm = JSON.stringify(AS.commandsForObject(mr, 'inventory', hm)), cp2 = JSON.stringify(AS.commandsForObject(pr, 'inventory', hp));
++    check(cm === cp2 && cm.length > 2, '5i commands from model row === commands from payload row');
++    for (const bad of ['false', '1', 1, 'true', {}]) {
++        const inv = [{ id: 50, name: 'pouch', parentId: ROOT, attrs: {}, labelSuppressed: bad }, { id: 51, name: 'gem', parentId: 50, attrs: {} }];
++        const mm = model(inv);
++        check(mm.byId['50'] && mm.byId['51'].parentId === 50 && !('labelParentId' in mm.byId['51']) && E.labelRows(inv).length === 2,
++            '5j malformed labelSuppressed ' + JSON.stringify(bad) + ' does not hide');
++        check(WM.correctPlayerId({ playerId: ROOT, inventory: [{ id: 9, name: 'x', parentId: ROOT, labelSuppressed: bad }] }) === ROOT &&
++            WM.recoverInventory({ inventory: [], discoveredObjects: [{ id: 9, name: 'x', parentId: ROOT, attrs: { worn: true }, labelSuppressed: bad }], probe: {} }).length === 1,
++            '5k WorldModel treats ' + JSON.stringify(bad) + ' as not suppressed');
++    }
++    const asrc = fs.readFileSync('js/Actionable.js', 'utf8');
++    check(/labelSuppressed !== true/.test(asrc) && !asrc.includes('!o.labelSuppressed') && asrc.includes('String(dispParent(o))'), '5l Actionable.RenderInventory: strict marker, display-only parent for nesting');
++}
 +
 +// 6 INVISIBLE NDESC child: excluded from scope.
 +b = boot({ fact: f => { f.inventoryInvisibleAttribute = 7; }, setup: b => { b.move(BOOK, ROOT); b.move(GARLIC, BOOK); b.bit(GARLIC, 14, true); b.bit(GARLIC, 7, true); } });
@@ -152,7 +174,7 @@ index 0000000..fd61c95
 +}
 +console.log('zil-inventory-scope-retained: ' + passed + ' checks passed');
 diff --git a/js/Actionable.js b/js/Actionable.js
-index 57a5582..ab4c0a8 100644
+index 57a5582..999f5ce 100644
 --- a/js/Actionable.js
 +++ b/js/Actionable.js
 @@ -2630,6 +2630,9 @@ var Actionable = {
@@ -161,43 +183,76 @@ index 57a5582..ab4c0a8 100644
              });
 +            // D16 P16: labelSuppressed rows stay in scope (payloadPool, invIds) but are not drawn.
 +            if (typeof EquipmentUI !== "undefined" && EquipmentUI.labelRows) items = EquipmentUI.labelRows(items);
-+            else items = items.filter(function (o) { return !o.labelSuppressed; });
++            else items = items.filter(function (o) { return o.labelSuppressed !== true; });
          } catch (e) {}
          var playerId = payload && (payload.playerId != null && payload.playerId !== ""
              ? payload.playerId
+@@ -2638,17 +2641,21 @@ var Actionable = {
+         // parentId->children index locally for rendering nesting, rather
+         // than expecting ZRamReader to emit a tree (keeps the same flat
+         // convention as discoveredObjects/scopeObjects everywhere else).
++        // D16 P16: nesting uses the display-only labelParentId when set;
++        // o.parentId stays physical for every command path.
++        var dispParent = function (o) { return Object.prototype.hasOwnProperty.call(o, "labelParentId") ? o.labelParentId : o.parentId; };
+         var byParent = {};
+         var itemIds = {};
+         items.forEach(function (o) {
+             itemIds[String(o.id)] = true;
+-            var key = String(o.parentId);
++            var key = String(dispParent(o));
+             (byParent[key] = byParent[key] || []).push(o);
+         });
+         var topLevel = items.filter(function (o) {
+-            if (o.parentId == null || o.parentId === "") return true;
+-            if (playerId != null && String(o.parentId) === String(playerId)) return true;
+-            if (!itemIds[String(o.parentId)]) return true;
++            var dp = dispParent(o);
++            if (dp == null || dp === "") return true;
++            if (playerId != null && String(dp) === String(playerId)) return true;
++            if (!itemIds[String(dp)]) return true;
+             return false;
+         });
+         var isWorn = function (obj) {
 diff --git a/js/EquipmentUI.js b/js/EquipmentUI.js
-index fa18e94..0b7665e 100644
+index fa18e94..0e24b36 100644
 --- a/js/EquipmentUI.js
 +++ b/js/EquipmentUI.js
-@@ -318,11 +318,26 @@ var EquipmentUI = {
+@@ -318,11 +318,33 @@ var EquipmentUI = {
          if (!EquipmentUI._demo) return false;
          try {
              var payload = (typeof WorldModel !== "undefined" && WorldModel.lastPayload) || null;
 -            var real = ((payload && payload.inventory) || []).filter(function (o) { return o && o.id != null && o.name; });
-+            var real = ((payload && payload.inventory) || []).filter(function (o) { return o && o.id != null && o.name && !o.labelSuppressed; });
++            var real = ((payload && payload.inventory) || []).filter(function (o) { return o && o.id != null && o.name && o.labelSuppressed !== true; });
              return real.length === 0;
          } catch (e) { return true; }
      },
  
 +    // D16 P16: label projection only. labelSuppressed rows (NDESC, still in parser
 +    // scope) are not drawn; a drawn row whose parent is suppressed hangs under the
-+    // nearest drawn ancestor, else top level. Copies only -- the payload's real
-+    // parentId (custody) is never rewritten.
++    // nearest drawn ancestor, else top level. That display parent goes in a
++    // separate labelParentId used ONLY by tree/hierarchy/topLevel rendering;
++    // parentId/pid stay physical so every command path (heldContainerName,
++    // scoped commands, Actionable, ActionSynth) reads real custody. Only a
++    // strict labelSuppressed === true hides a row.
 +    labelRows: function (rows) {
 +        var hidden = {};
-+        rows.forEach(function (o) { if (o.labelSuppressed) hidden[String(o.id)] = o; });
++        rows.forEach(function (o) { if (o.labelSuppressed === true) hidden[String(o.id)] = o; });
 +        if (!Object.keys(hidden).length) return rows;
-+        return rows.filter(function (o) { return !o.labelSuppressed; }).map(function (o) {
++        return rows.filter(function (o) { return o.labelSuppressed !== true; }).map(function (o) {
 +            var pid = o.parentId, guard = 0;
 +            while (pid != null && hidden[String(pid)] && guard++ < 64) pid = hidden[String(pid)].parentId;
-+            return pid === o.parentId ? o : Object.assign({}, o, { parentId: pid });
++            return pid === o.parentId ? o : Object.assign({}, o, { labelParentId: pid });
 +        });
++    },
++    // Display-only parent for tree rendering; never for commands.
++    displayParentId: function (o) {
++        return Object.prototype.hasOwnProperty.call(o, "labelParentId") ? o.labelParentId : o.parentId;
 +    },
 +
      model: function () {
          EquipmentUI.loadSeq();
          if (EquipmentUI.demoActive()) {
-@@ -339,7 +354,7 @@ var EquipmentUI = {
+@@ -339,7 +361,7 @@ var EquipmentUI = {
          var payload = (typeof WorldModel !== "undefined" && WorldModel.lastPayload) || null;
          var items = [];
          try {
@@ -206,8 +261,29 @@ index fa18e94..0b7665e 100644
          } catch (e) {}
  
          var playerId = payload && (payload.playerId != null && payload.playerId !== ""
+@@ -355,15 +377,16 @@ var EquipmentUI = {
+             var id = String(o.id);
+             itemIds[id] = true;
+             byId[id] = o;
+-            var key = String(o.parentId);
++            var key = String(EquipmentUI.displayParentId(o));
+             (byParent[key] = byParent[key] || []).push(o);
+         });
+ 
+         // Top level, matching Actionable.RenderInventory's rule exactly.
+         var topLevel = items.filter(function (o) {
+-            if (o.parentId == null || o.parentId === "") return true;
+-            if (playerId != null && String(o.parentId) === String(playerId)) return true;
+-            if (!itemIds[String(o.parentId)]) return true;
++            var dp = EquipmentUI.displayParentId(o);
++            if (dp == null || dp === "") return true;
++            if (playerId != null && String(dp) === String(playerId)) return true;
++            if (!itemIds[String(dp)]) return true;
+             return false;
+         });
+ 
 diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
-index 0766d2d..678e7c5 100644
+index 1e48cb3..cdd430d 100644
 --- a/js/ModuleStatFactsClaude.js
 +++ b/js/ModuleStatFactsClaude.js
 @@ -324,6 +324,13 @@ var ModuleStatFactsClaude = {
@@ -225,7 +301,7 @@ index 0766d2d..678e7c5 100644
      },
      "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
 diff --git a/js/WorldModel.js b/js/WorldModel.js
-index 4109bfc..0c0706c 100644
+index 4109bfc..d1cbe8f 100644
 --- a/js/WorldModel.js
 +++ b/js/WorldModel.js
 @@ -132,6 +132,8 @@ var WorldModel = {
@@ -233,7 +309,7 @@ index 4109bfc..0c0706c 100644
          var worn = objs.filter(function (o) {
              if (!o || o.parentId == null || !o.attrs) return false;
 +            // D16 P16: a labelSuppressed row is never a recovery seed.
-+            if (o.labelSuppressed) return false;
++            if (o.labelSuppressed === true) return false;
              if (roomIds[String(o.parentId)]) return false;
              // D232: a room-visible local global's parent is the LOCAL-GLOBALS holder, never an inventory root.
              if (o.localGlobal) return false;
@@ -242,7 +318,7 @@ index 4109bfc..0c0706c 100644
          inv.forEach(function (o) {
              if (!o || o.parentId == null) return;
 +            // D16 P16: a labelSuppressed row never votes for the holder.
-+            if (o.labelSuppressed) return;
++            if (o.labelSuppressed === true) return;
              var key = String(o.parentId);
              if (itemIds[key]) return;
              counts[key] = (counts[key] || 0) + 1;
