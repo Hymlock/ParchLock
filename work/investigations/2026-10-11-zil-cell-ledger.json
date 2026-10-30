@@ -417,6 +417,10 @@
   "wornAttribute": {
    "s": "NA",
    "r": "not applicable per Claude #5242 (grok #5214 A1, Witness #5207 precedent): no WORNBIT runtime worn state in source (WEARBIT, where present, is wearability only). verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "lightSource": {
+   "s": "NC",
+   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   }
  },
  "Hitchhik.z5.js": {
@@ -515,6 +519,10 @@
   "scenery": {
    "s": "X",
    "r": "FAIL CLOSED (grok1 b-batch; same rule as #5242 scenery x9): NDESCBIT 44 on 102 objects incl. 8 takeable (blaster 76, stone 147, handbag 158, fruit 176, telephone 190, gown 206, fluff 232, interface 81); 46 FSET / 42 FCLEAR at runtime. verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
+  },
+  "lightSource": {
+   "s": "NC",
+   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   }
  },
  "Ballyhoo.z3.js": {
@@ -683,6 +691,10 @@
   "static": {
    "s": "S",
    "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 7 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 27: it means not-yet-taken and is cleared on first take (#5199)."
+  },
+  "lightSource": {
+   "s": "NC",
+   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   }
  },
  "Deadline.z3.js": {
@@ -813,6 +825,10 @@
   "wornAttribute": {
    "s": "NA",
    "r": "not applicable per Claude #5242 (grok #5214 A1, Witness #5207 precedent): no WORNBIT runtime worn state in source (WEARBIT, where present, is wearability only). verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "lightSource": {
+   "s": "NC",
+   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   }
  },
  "Infidel.z3.js": {
@@ -919,6 +935,10 @@
   "scenery": {
    "s": "X",
    "r": "FAIL CLOSED per Claude #5242 (grok #5216/#5217): NDESCBIT also sits on takeable objects (and is toggled at runtime), so it is not a static scenery marker. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "lightSource": {
+   "s": "NC",
+   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   }
  },
  "HollywoodHijinx.z3.js": {
@@ -1009,6 +1029,10 @@
   "proper": {
    "s": "NC",
    "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+  },
+  "lightSource": {
+   "s": "NC",
+   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   }
  },
  "LeatherGoddessesofPhobos.z3.js": {
@@ -1095,6 +1119,10 @@
   "scenery": {
    "s": "X",
    "r": "FAIL CLOSED per Claude #5242 (grok #5216/#5217): NDESCBIT also sits on takeable objects (and is toggled at runtime), so it is not a static scenery marker. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "lightSource": {
+   "s": "NC",
+   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   }
  },
  "Moonmist.z3.js": {
@@ -1193,6 +1221,10 @@
   "door": {
    "s": "X",
    "r": "FAIL CLOSED per Claude #5242 (grok #5218): DOORBIT 7 is on 39 objects, 34 of them ROOMS; front door 120 @23 read 1, tweed outfit 0; bit is not a door marker. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "lightSource": {
+   "s": "NC",
+   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   }
  },
  "PlunderedHearts.z3.js": {
@@ -1279,6 +1311,10 @@
   "on": {
    "s": "X",
    "r": "FAIL CLOSED per Claude #5242 (grok #5219): ONBIT 29 on 61 objects, 56 ROOMS (light family), 0 takeable. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "lightSource": {
+   "s": "NC",
+   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   }
  },
  "Borderzo.z5.js": {
@@ -1557,6 +1593,10 @@
   "on": {
    "s": "X",
    "r": "FAIL CLOSED per Claude #5242 (grok #5214 A2, Hitchhiker precedent): ONBIT carriers are overwhelmingly ROOMS (lit-room family), not an on/off state. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "lightSource": {
+   "s": "NC",
+   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   }
  },
  "Seastalker.z3.js": {
@@ -1679,6 +1719,10 @@
   "wornAttribute": {
    "s": "NA",
    "r": "not applicable per Claude #5242 (grok #5214 A1, Witness #5207 precedent): no WORNBIT runtime worn state in source (WEARBIT, where present, is wearability only). verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "lightSource": {
+   "s": "NC",
+   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   }
  },
  "Sorcerer.z3.js": {
@@ -1781,6 +1825,10 @@
   "wornAttribute": {
    "s": "NA",
    "r": "not applicable per Claude #5242 (grok #5214 A1, Witness #5207 precedent): no WORNBIT runtime worn state in source (WEARBIT, where present, is wearability only). verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "lightSource": {
+   "s": "NC",
+   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   }
  },
  "Spellbreaker.z3.js": {
@@ -1863,6 +1911,10 @@
   "wornAttribute": {
    "s": "NA",
    "r": "not applicable per Claude #5242 (grok #5214 A1, Witness #5207 precedent): no WORNBIT runtime worn state in source (WEARBIT, where present, is wearability only). verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "lightSource": {
+   "s": "NC",
+   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   }
  },
  "Starcross.z3.js": {
@@ -1973,6 +2025,10 @@
   "on": {
    "s": "X",
    "r": "FAIL CLOSED (grok1 b-batch): ONBIT 18 on 79 objects, all 79 ROOMS (parent 110), 0 non-room; V-LAMP-ON only FSETs ONBIT on LIGHTBIT objects and no object carries LIGHTBIT (light already NA). verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
+  },
+  "lightSource": {
+   "s": "NC",
+   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   }
  },
  "Stationfall.z3.js": {
@@ -2051,6 +2107,10 @@
   "on": {
    "s": "X",
    "r": "FAIL CLOSED per Claude #5242 (grok #5214 A2, Hitchhiker precedent): ONBIT carriers are overwhelmingly ROOMS (lit-room family), not an on/off state. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "lightSource": {
+   "s": "NC",
+   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   }
  },
  "Suspect.z3.js": {
@@ -2311,6 +2371,10 @@
   "scenery": {
    "s": "X",
    "r": "FAIL CLOSED (grok1 b-batch; same rule as #5242 scenery x9): NDESCBIT 4 on 68 objects incl. takeable FUSE 10 and all robots (Whiz/Poet/Auda/Sensa/Waldo/Iris); runtime FSET/FCLEAR on WEDGE, WHEEL, REDCABLE, ORANGECABLE. verify: grok1/ledger/verify-b-batch.txt (room counts use the cited source parent, carriersUnderCitedParent; mostPopulousParent is a heuristic only and parentless allocation sentinels are excluded, Codex #5281). Codex ACCEPT #5282: fail-closed candidate-bit rejection / attribute-NA bookkeeping only; X is not feature-absent and not a universal no-toggle claim; does not close illumination, identity-based actions, alternative decoders or useful-consumer work."
+  },
+  "lightSource": {
+   "s": "NC",
+   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   }
  },
  "Wishbringer.z3.js": {
@@ -2405,6 +2469,10 @@
   "scenery": {
    "s": "X",
    "r": "FAIL CLOSED per Claude #5242 (grok #5216/#5217): NDESCBIT also sits on takeable objects (and is toggled at runtime), so it is not a static scenery marker. verify: grok1/ledger/verify-a-batch.txt"
+  },
+  "lightSource": {
+   "s": "NC",
+   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   }
  },
  "TheWitness.z3.js": {
