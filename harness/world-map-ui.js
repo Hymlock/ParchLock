@@ -201,12 +201,18 @@ const stubLayout = () => {
       return ParchLockMap.Rooms.filter(r => r.WorldX != null).map(r => [r.Name, r.WorldX, r.WorldY, r.WorldLevel]); });
     ok(removed.length === cells2.length - 1 && removed.every(c => cells2.some(d => JSON.stringify(d) === JSON.stringify(c))), 'removing a room renumbers Ids but every other room keeps its cell' + W);
 
-    // App reload: the per-story map save brings the same cells back.
+    // App reload with no save restored: D215 (8291b5f) starts the fresh game on a clean map and archives the
+    // previous one as an autoArchive Maps slot. Loading that slot brings the same cells back.
     const priorVisited = await p.evaluate(() => ParchLockMap.Rooms.filter(r => r.WorldVisited).map(r => String(r.ObjectId)));
     await p.evaluate(() => WorldMap.Close());
     await boot();
-    const reloaded = await p.evaluate(() => { ParchLockMap.Show(); WorldMap.Open(); return ParchLockMap.Rooms.filter(r => r.WorldX != null).map(r => [r.Name, r.WorldX, r.WorldY, r.WorldLevel]); });
-    ok(removed.every(c => reloaded.some(d => JSON.stringify(d) === JSON.stringify(c))), 'after an app reload the map save restores every prior cell (new decoded hints may be rediscovered)' + W);
+    const reloaded = await p.evaluate(() => {
+      const slots = JSON.parse(localStorage.getItem(WorkspaceUI.MapKey()) || '[]').filter(s => s && s.autoArchive === true);
+      const archived = slots[slots.length - 1];
+      if (!archived) return [];
+      WorkspaceUI.LoadMap(archived.Data); ParchLockMap.Show(); WorldMap.Open();
+      return ParchLockMap.Rooms.filter(r => r.WorldX != null).map(r => [r.Name, r.WorldX, r.WorldY, r.WorldLevel]); });
+    ok(removed.every(c => reloaded.some(d => JSON.stringify(d) === JSON.stringify(c))), 'after an app reload the previous map is archived (D215) and loading it restores every prior cell' + W);
     const vis = await p.evaluate(() => ({ rooms: ParchLockMap.Rooms.map(r => [r.Name, !!r.WorldVisited]),
       dotted: Array.from(document.querySelectorAll('#world-map .world-edge.dotted')).length,
       visitedIds: ParchLockMap.Rooms.filter(r => r.WorldVisited).map(r => String(r.ObjectId)),
