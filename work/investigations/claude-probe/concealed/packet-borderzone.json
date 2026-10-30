@@ -1,0 +1,15 @@
+{
+  "story": "Borderzo.z5.js",
+  "attribute": "concealed",
+  "bit": 17,
+  "positives": [],
+  "sourceReferences": [
+    "globals.zil:118 GLOBAL-OBJECTS FLAGS INVISIBLE",
+    "globals.zil:414 PROTAGONIST FLAGS INVISIBLE",
+    "bystander.zil:1653 COMP-BLOOD-STAIN ;INVISIBLE commented out"
+  ],
+  "sourceTriage": "remaining-source-triage.json lists writes:[] for Borderzone: no FSET/FCLEAR of INVISIBLE anywhere in the source, so no in-game action can reveal an object.",
+  "verdict": "FAIL",
+  "blocker": "Not provable by construction: only GLOBAL-OBJECTS and the PROTAGONIST carry INVISIBLE and nothing clears it.",
+  "status": "No native run made"
+}

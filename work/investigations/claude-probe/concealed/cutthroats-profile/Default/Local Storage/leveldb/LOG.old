@@ -1,0 +1,20 @@
+2026/10/30-07:02:43.639 3cd0 Reusing MANIFEST C:\Users\hymlo\Downloads\Projects\Parchmap-main\Parchmap-main\work\investigations\claude-probe\concealed\cutthroats-profile\Default\Local Storage\leveldb/MANIFEST-000001
+2026/10/30-07:02:43.640 3cd0 Recovering log #55
+2026/10/30-07:02:43.640 3cd0 Level-0 table #57: started
+2026/10/30-07:02:43.646 3cd0 Level-0 table #57: 33085 bytes OK
+2026/10/30-07:02:43.646 3cd0 Recovering log #56
+2026/10/30-07:02:43.647 3cd0 Level-0 table #58: started
+2026/10/30-07:02:43.652 3cd0 Level-0 table #58: 15720 bytes OK
+2026/10/30-07:02:43.656 3cd0 Delete type=0 #55
+2026/10/30-07:02:43.656 3cd0 Delete type=0 #56
+2026/10/30-07:02:43.657 b178 Compacting 4@0 + 1@1 files
+2026/10/30-07:02:43.664 b178 Generated table #60@0: 51 keys, 108459 bytes
+2026/10/30-07:02:43.664 b178 Compacted 4@0 + 1@1 files => 108459 bytes
+2026/10/30-07:02:43.668 b178 compacted to: files[ 0 1 0 0 0 0 0 ]
+2026/10/30-07:02:43.668 b178 Delete type=2 #51
+2026/10/30-07:02:43.668 b178 Delete type=2 #53
+2026/10/30-07:02:43.668 b178 Delete type=2 #54
+2026/10/30-07:02:43.668 b178 Delete type=2 #57
+2026/10/30-07:02:43.668 b178 Delete type=2 #58
+2026/10/30-07:03:11.625 890c Level-0 table #62: started
+2026/10/30-07:03:11.635 890c Level-0 table #62: 32229 bytes OK

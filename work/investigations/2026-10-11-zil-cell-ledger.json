@@ -1417,6 +1417,10 @@
   "static": {
    "s": "S",
    "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 42 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 35: it means not-yet-taken and is cleared on first take (#5199)."
+  },
+  "concealed": {
+   "s": "NA",
+   "r": "claude worker E1 2026-10-30: INVISIBLE 17 only on GLOBAL-OBJECTS and PROTAGONIST; no runtime writes (codex remaining-source-triage writes:[]); the blood stain INVISIBLE is commented out. Nothing to reveal."
   }
  },
  "TheLurkingHorror.z3.js": {
