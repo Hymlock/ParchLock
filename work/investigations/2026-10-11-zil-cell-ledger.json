@@ -939,6 +939,14 @@
   "lightSource": {
    "s": "NC",
    "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+  },
+  "talkable": {
+   "s": "NA",
+   "r": "claude worker E4 2026-10-30 (claude-probe/talk): ACTORBIT is set only on player objects (globals.zil 269/275, static 221 you, 223 cretin) and no routine tests it; no non-player characters to talk to."
+  },
+  "animate": {
+   "s": "NA",
+   "r": "same as talkable: ACTORBIT marks only player objects (claude worker E4)."
   }
  },
  "HollywoodHijinx.z3.js": {
@@ -1597,6 +1605,10 @@
   "lightSource": {
    "s": "NC",
    "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+  },
+  "talkable": {
+   "s": "X",
+   "r": "claude worker E4 2026-10-30: Floyd 110 (the only reachable actor) intercepts every command (look in, yell at, play with, shake, attack: NOTEST); the census is not exact (fp 1) and Floyd's bit is set at runtime (compone.zil 2154). Fail closed."
   }
  },
  "Seastalker.z3.js": {
@@ -2473,6 +2485,10 @@
   "lightSource": {
    "s": "NC",
    "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+  },
+  "inventoryHiddenAttribute": {
+   "s": "NA",
+   "r": "claude worker E2 2026-10-30: Wishbringer V-INVENTORY PRINT-CONTENTS has its NDESCBIT filter commented out (parser.zil 2179); INVISIBLE is a separate key (inventoryInvisibleAttribute)."
   }
  },
  "TheWitness.z3.js": {
