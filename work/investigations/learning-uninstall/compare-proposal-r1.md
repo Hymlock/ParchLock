@@ -37,3 +37,20 @@ uninstalled module, in Options > Learned words (WorkspaceUI.js:139/361).
    them is installed. Re-keying by digest is out of scope.
 Validation: a constructed localStorage harness (installed vs uninstalled vs unknown vs current), a UI check of the row in
 Options > Learned words, then operator 13/0 and the three-engine gate.
+
+## R2 (adopting codex SEALED-amendment, #5565)
+- Retention is expected, not a bug. Cleanup is optional and only runs from the Learned words Settings button. There is
+  no auto-purge and no module-manager hook.
+- Show an actual managed-bytes estimate: the sum of key+value lengths over the owned keys. We do not claim a global
+  bound.
+- Ownership is the exact manifest from P13.1. Aliases, header collisions and unknown keys are treated conservatively
+  (kept).
+- At click time, re-read ModuleLibrary's installed set and each owner record before erasing. Skip any identity that
+  becomes installed or current between the listing and the confirm.
+- Only the listed learning prefixes are removed. Installed modules' learning, and all maps, saves, transcripts and
+  preferences, are untouched.
+- Stale in-memory tables: erasing never targets the current identity. Other tabs: after erasing, write a
+  `PL_LearningErased` stamp. Each store's write path skips persisting when its identity key is in the stamp's set and
+  the store was hydrated before the stamp time; it re-hydrates on the next load.
+- No booting every game and no network scan for cleanup. A store whose identity is unknown stays until its owner record
+  exists.
