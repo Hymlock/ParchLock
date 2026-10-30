@@ -1,0 +1,216 @@
+{
+ "r45ssb @106:turn off generator switch#0": {
+  "tag": "r45ssb",
+  "id": 96,
+  "name": "generator switch",
+  "step": 106,
+  "cmd": "turn off generator switch",
+  "expect": 1,
+  "bit": 32,
+  "plan": "plan-hg8b.json",
+  "planSha": "5787228a73499718f964f80729191ed3629a61283b52c9277e397140f4e5cf04",
+  "gameSha": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267",
+  "verdict": "NOTEST",
+  "before": [
+   32,
+   44
+  ],
+  "after": [
+   32,
+   44
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 118,
+  "here": 58,
+  "opsOnId": [
+   [
+    96,
+    21,
+    0,
+    50501
+   ],
+   [
+    96,
+    34,
+    0,
+    49808
+   ],
+   [
+    96,
+    23,
+    0,
+    49808
+   ],
+   [
+    96,
+    35,
+    0,
+    55910
+   ]
+  ],
+  "nOps": 53,
+  "printedObjs": [],
+  "text": "You can't turn that off.\n \n> ",
+  "ts": "2026-10-30T22:51:59.855Z"
+ },
+ "r45ssb @106:switch on generator switch#1": {
+  "tag": "r45ssb",
+  "id": 96,
+  "name": "generator switch",
+  "step": 106,
+  "cmd": "switch on generator switch",
+  "expect": 1,
+  "bit": 32,
+  "plan": "plan-hg8b.json",
+  "planSha": "5787228a73499718f964f80729191ed3629a61283b52c9277e397140f4e5cf04",
+  "gameSha": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267",
+  "verdict": "NOTEST",
+  "before": [
+   32,
+   44
+  ],
+  "after": [
+   32,
+   44
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 118,
+  "here": 58,
+  "opsOnId": [
+   [
+    96,
+    21,
+    0,
+    50501
+   ],
+   [
+    96,
+    34,
+    0,
+    49808
+   ],
+   [
+    96,
+    23,
+    0,
+    49808
+   ],
+   [
+    96,
+    21,
+    0,
+    64961
+   ]
+  ],
+  "nOps": 52,
+  "printedObjs": [],
+  "text": "Nothing happens.\n \n> ",
+  "ts": "2026-10-30T22:52:00.659Z"
+ },
+ "r45ssb @106:turn on cup#2": {
+  "tag": "r45ssb",
+  "id": 96,
+  "name": "generator switch",
+  "step": 106,
+  "cmd": "turn on cup",
+  "expect": 1,
+  "bit": 32,
+  "plan": "plan-hg8b.json",
+  "planSha": "5787228a73499718f964f80729191ed3629a61283b52c9277e397140f4e5cf04",
+  "gameSha": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267",
+  "verdict": "NOTEST",
+  "before": [
+   32,
+   44
+  ],
+  "after": [
+   32,
+   44
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 118,
+  "here": 58,
+  "opsOnId": [
+   [
+    96,
+    21,
+    0,
+    50501
+   ],
+   [
+    96,
+    34,
+    0,
+    49808
+   ],
+   [
+    96,
+    23,
+    0,
+    49808
+   ],
+   [
+    96,
+    21,
+    0,
+    64961
+   ]
+  ],
+  "nOps": 53,
+  "printedObjs": [],
+  "text": "You can't turn that on.\n \n> ",
+  "ts": "2026-10-30T22:52:01.480Z"
+ },
+ "r45ssb @106:turn on improbability drive#3": {
+  "tag": "r45ssb",
+  "id": 96,
+  "name": "generator switch",
+  "step": 106,
+  "cmd": "turn on improbability drive",
+  "expect": 1,
+  "bit": 32,
+  "plan": "plan-hg8b.json",
+  "planSha": "5787228a73499718f964f80729191ed3629a61283b52c9277e397140f4e5cf04",
+  "gameSha": "7b7ea7abe8b125ad89a7b790c44ec20d24bfa6a114ea8bcac0034eef7c9e1267",
+  "verdict": "NOTEST",
+  "before": [
+   32,
+   44
+  ],
+  "after": [
+   32,
+   44
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 118,
+  "here": 58,
+  "opsOnId": [
+   [
+    96,
+    21,
+    0,
+    50501
+   ],
+   [
+    96,
+    34,
+    0,
+    49808
+   ],
+   [
+    96,
+    23,
+    0,
+    49808
+   ]
+  ],
+  "nOps": 51,
+  "printedObjs": [],
+  "text": "Nothing happens.\n \n> ",
+  "ts": "2026-10-30T22:52:02.279Z"
+ }
+}
