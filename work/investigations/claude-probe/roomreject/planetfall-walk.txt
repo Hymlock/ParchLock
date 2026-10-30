@@ -1,0 +1,32 @@
+{"cmd":"W","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"GET IN WEB","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"WAIT","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"WAIT","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"WAIT","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"WAIT","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"WAIT","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"WAIT","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"WAIT","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"WAIT","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"WAIT","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"WAIT","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"WAIT","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"WAIT","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"WAIT","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"GET OUT OF WEB","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"GET KIT","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"OPEN DOOR","cur":"Escape Pod","here":216,"n":4}
+{"cmd":"OUT","cur":"Underwater","here":195,"n":6}
+{"cmd":"U","cur":"Crag","here":194,"n":7}
+{"cmd":"U","cur":"Balcony","here":193,"n":8}
+{"cmd":"U","cur":"Winding Stair","here":192,"n":9}
+{"cmd":"U","cur":"Courtyard","here":191,"n":11}
+{"cmd":"N","cur":"Plain Hall","here":189,"n":13}
+{"cmd":"NE","cur":"Rec Corridor","here":183,"n":16}
+{"cmd":"E","cur":"Mess Corridor","here":174,"n":19}
+{"cmd":"E","cur":"Dorm Corridor","here":168,"n":21}
+{"cmd":"W","cur":"Mess Corridor","here":174,"n":21}
+{"cmd":"W","cur":"Rec Corridor","here":183,"n":21}
+{"cmd":"W","cur":"Rec Area","here":188,"n":22}
+{"cmd":"S","cur":"Plain Hall","here":189,"n":22}
+FINAL ["Deck Nine#235 {\"w\":1}","Escape Pod#216 {\"out\":4}","Gangway#222 {}","Reactor Lobby#223 {}","Underwater#195 {\"up\":5}","Crag#194 {\"up\":6}","Balcony#193 {\"up\":7}","Winding Stair#192 {\"up\":8}","Courtyard#191 {\"n\":10}","West Wing#190 {}","Plain Hall#189 {\"ne\":11}","Rec Corridor#183 {\"e\":14,\"w\":12}","Rec Area#188 {\"e\":11,\"s\":10}","Dorm A#182 {}","Mess Corridor#174 {\"e\":17,\"w\":11}","Dorm B#180 {}","Mess Hall#167 {}","Dorm Corridor#168 {\"w\":14}","Storage West#171 {}","Dorm C#178 {}","Dorm D#176 {}","Conference Room#186 {}"]
