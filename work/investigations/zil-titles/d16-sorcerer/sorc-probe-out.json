@@ -1,0 +1,187 @@
+{
+ "start": {
+  "book": 139,
+  "bookName": "spell book",
+  "bookAttr": "00012310",
+  "bookBits": [
+   15,
+   18,
+   22,
+   23,
+   27
+  ],
+  "parent": 16,
+  "parentName": "combination dial",
+  "here": 36,
+  "hereName": "Twisted Forest",
+  "kids": [
+   {
+    "id": 214,
+    "name": "gnusto spell",
+    "attr": "01400000",
+    "bits": [
+     7,
+     9
+    ],
+    "ndesc": true
+   },
+   {
+    "id": 27,
+    "name": "vezza spell",
+    "attr": "01400000",
+    "bits": [
+     7,
+     9
+    ],
+    "ndesc": true
+   },
+   {
+    "id": 162,
+    "name": "pulver spell",
+    "attr": "01400000",
+    "bits": [
+     7,
+     9
+    ],
+    "ndesc": true
+   },
+   {
+    "id": 140,
+    "name": "izyuk spell",
+    "attr": "01480000",
+    "bits": [
+     7,
+     9,
+     12
+    ],
+    "ndesc": true
+   },
+   {
+    "id": 183,
+    "name": "yomin spell",
+    "attr": "01400000",
+    "bits": [
+     7,
+     9
+    ],
+    "ndesc": true
+   },
+   {
+    "id": 22,
+    "name": "rezrov spell",
+    "attr": "01400000",
+    "bits": [
+     7,
+     9
+    ],
+    "ndesc": true
+   },
+   {
+    "id": 147,
+    "name": "frotz spell",
+    "attr": "01400000",
+    "bits": [
+     7,
+     9
+    ],
+    "ndesc": true
+   }
+  ]
+ },
+ "intro": " Twisted Forest                                                                                                             Score: 0  Turns: 0 \nYou are in a strange location, but you cannot remember how you got here. Everything is hazy, as though viewed through a gauze...\n \nTwisted Forest\nYou are on a path through a blighted forest. The trees are sickly, and there is no undergrowth at all. One tree here looks climbable. The path, which ends here, continues to the northeast.\n \nA hellhound is racing straight toward you, its open jaws displaying rows of razor-sharp teeth.\n \n> ",
+ "cmd:i": "\nYou are empty-handed.\n \nThe hellhound reaches you and tears you apart with its powerful teeth.\n \n...and a moment later you wake up in a cold sweat and realize you've been dreaming.\n \nSORCERER\nInfocom interactive fiction - a fantasy story\nCopyright (c) 1984 by Infocom, Inc. All rights reserved.\nSORCERER is a trademark of Infocom, Inc.\nRelease 15 / Serial number 851108\n \nYour frotz spell seems to have worn off during the night, and it is now pitch black.\n \n> ",
+ "cmd:read book": "ead book\nThough it is dark, the magic writing of your spells casts enough light that you can read them.\n \nMy Spell Book\n \nThe gnusto spell (write a magic spell into a spell book).\nThe vezza spell (view the future).\nThe pulver spell (cause liquids to become dry).\nThe izyuk spell (fly like a bird).\nThe yomin spell (mind probe).\nThe rezrov spell (open even locked or enchanted objects).\nThe frotz spell (cause something to give off light).\n \n> ",
+ "cmd:examine frotz spell": "xamine frotz spell\nIt's too dark to see!\n \n> ",
+ "cmd:examine gnusto spell": "xamine gnusto spell\nIt's too dark to see!\n \n> ",
+ "cmd:read frotz spell": "ead frotz spell\nThe spell reads \"cause something to give off light\".\n \n> ",
+ "cmd:learn frotz": "earn frotz\nYou already know that spell by heart.\n \n> ",
+ "after": {
+  "book": 139,
+  "bookName": "spell book",
+  "bookAttr": "00012310",
+  "bookBits": [
+   15,
+   18,
+   22,
+   23,
+   27
+  ],
+  "parent": 223,
+  "parentName": "protagonist",
+  "here": 17,
+  "hereName": "Your Quarters",
+  "kids": [
+   {
+    "id": 214,
+    "name": "gnusto spell",
+    "attr": "01400000",
+    "bits": [
+     7,
+     9
+    ],
+    "ndesc": true
+   },
+   {
+    "id": 27,
+    "name": "vezza spell",
+    "attr": "01400000",
+    "bits": [
+     7,
+     9
+    ],
+    "ndesc": true
+   },
+   {
+    "id": 162,
+    "name": "pulver spell",
+    "attr": "01400000",
+    "bits": [
+     7,
+     9
+    ],
+    "ndesc": true
+   },
+   {
+    "id": 140,
+    "name": "izyuk spell",
+    "attr": "01480000",
+    "bits": [
+     7,
+     9,
+     12
+    ],
+    "ndesc": true
+   },
+   {
+    "id": 183,
+    "name": "yomin spell",
+    "attr": "01400000",
+    "bits": [
+     7,
+     9
+    ],
+    "ndesc": true
+   },
+   {
+    "id": 22,
+    "name": "rezrov spell",
+    "attr": "01400000",
+    "bits": [
+     7,
+     9
+    ],
+    "ndesc": true
+   },
+   {
+    "id": 147,
+    "name": "frotz spell",
+    "attr": "01400000",
+    "bits": [
+     7,
+     9
+    ],
+    "ndesc": true
+   }
+  ]
+ }
+}
