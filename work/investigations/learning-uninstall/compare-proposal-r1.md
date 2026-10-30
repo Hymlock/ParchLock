@@ -75,3 +75,23 @@ Options > Learned words, then operator 13/0 and the three-engine gate.
    reviewed; that is a separate D13b item (LearnedWords has no row cap today).
 Tests: constructed collisions, aliases, reinstall race, partial failure, malformed index, the exact key formats of every
 store, current-but-uninstalled, and cross-tab resurrection.
+
+## R4 (adopting codex #5571)
+1. Owners are a set. Each index entry is {key, kind, owners: [{digest, path}...]} (deduped, bounded). Imported
+   same-executable aliases, blorb wrappers and header collisions all accumulate as owners.
+   - A key can be erased only if every owner is proven uninstalled AND every currently installed module has a known
+     executable digest (from ModuleLibrary's own identity metadata) that matches none of the key's owner digests.
+   - If any installed module's digest is unknown, every key sharing that module's identity key (or, if that is not
+     known either, every key) is skipped as "unknown". This is conservative.
+   - Kind validation: each store exposes `learningKeyFor(owner)`. An index entry is valid only if its key equals the
+     generator output for its kind and owner. Otherwise it is ignored (never erased, counted as unmanaged).
+2. Serialization: both the cleanup and every store persist run under `navigator.locks.request("PL_learning_store", ...)`
+   (Web Locks are shared across documents of one origin). Inside the lock the persist re-reads the index revision. If
+   its key was erased after hydration, it drops its table and does not write.
+   - If Web Locks are unavailable, the cleanup button is disabled with an explanation. Persists run as today, so no
+     erase ever happens without serialization.
+   - A store that persists without being able to take the lock (an exception path) writes as today; the next cleanup
+     simply sees the key as owned again.
+3. Counts and revisions: count a key as removed only after removeItem and a read-back confirms it is gone. A failed key
+   keeps its index entry. The index revision increments once per committed cleanup, written last inside the lock.
+No broad rewrite and no booting every game.
