@@ -1,0 +1,6 @@
+hhgg r45hh2 @61 switch on switch #134 NOTEST " \nWould you like to start over, restore a saved position, get hints or end this "
+hhgg r45hh2 @61 switch off switch #134 NOTEST " \nWould you like to start over, restore a saved position, get hints or end this "
+hhgg r45hh2 @70 get out of chair #164 NOTEST " \nWould you like to start over, restore a saved position, get hints or end this "
+hhgg r45hh2 @70 get in chair #164 NOTEST " \nWould you like to start over, restore a saved position, get hints or end this "
+hhgg r45hh2 @124 switch off generator switch #96 NOTEST " \nWould you like to start over, restore a saved position, get hints or end this "
+hhgg r45hh2 @124 switch on generator switch #96 NOTEST " \nWould you like to start over, restore a saved position, get hints or end this "

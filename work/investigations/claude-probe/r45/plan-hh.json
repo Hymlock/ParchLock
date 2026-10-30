@@ -1,0 +1,13 @@
+{"key":"hhgg","tag":"r45hh","bit":28,"tests":[{"id":114,"name":"bed","step":1,"cmd":"get in bed","expect":1,"bit":28},
+{"id":114,"name":"bed","step":1,"cmd":"get out of bed","expect":1,"bit":28},
+{"id":206,"name":"your gown","step":5,"cmd":"get in gown","expect":0,"bit":28},
+{"id":206,"name":"your gown","step":5,"cmd":"switch on gown","expect":0,"bit":32},
+{"id":98,"name":"jukebox","step":23,"cmd":"switch off jukebox","expect":1,"bit":45},
+{"id":98,"name":"jukebox","step":23,"cmd":"switch on jukebox","expect":1,"bit":45},
+{"id":98,"name":"jukebox","step":23,"cmd":"get in jukebox","expect":0,"bit":28},
+{"id":134,"name":"switch","step":61,"cmd":"switch on switch","expect":1,"bit":32},
+{"id":134,"name":"switch","step":61,"cmd":"switch off switch","expect":1,"bit":32},
+{"id":164,"name":"poetry appreciation chair","step":70,"cmd":"get out of chair","expect":1,"bit":28},
+{"id":164,"name":"poetry appreciation chair","step":70,"cmd":"get in chair","expect":1,"bit":28},
+{"id":96,"name":"generator switch","step":124,"cmd":"switch off generator switch","expect":1,"bit":32},
+{"id":96,"name":"generator switch","step":124,"cmd":"switch on generator switch","expect":1,"bit":32}]}
