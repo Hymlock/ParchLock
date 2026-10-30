@@ -1,9 +1,9 @@
 diff --git a/harness/learning-stores.js b/harness/learning-stores.js
 new file mode 100644
-index 0000000..53e9d50
+index 0000000..dc6bd18
 --- /dev/null
 +++ b/harness/learning-stores.js
-@@ -0,0 +1,393 @@
+@@ -0,0 +1,437 @@
 +// D13 harness: LearningStores ownership index, serialized persists and the
 +// erase-for-uninstalled action, against a constructed localStorage and a
 +// navigator.locks stub. Run: node harness/learning-stores.js
@@ -307,7 +307,51 @@ index 0000000..53e9d50
 +        for (const v of ["b1", "b2", "b3"]) { B.LearningStores.persist("learnedWords", { identityKey: "2-B" }, v); await settle(); }
 +        A.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "a-latest-user-mutation"); await settle();
 +        const e = A.LearningStores.readIndex().index.entries["PL_LearnedWordOverrides_2-B"];
-+        ok(s.getItem("PL_LearnedWordOverrides_2-B") === "a-latest-user-mutation" && e.storeRevision === 5 && A.LearningStores.pending() === 0, "cross-tab newer mutation committed (rev " + e.storeRevision + ")");
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === "a-latest-user-mutation" && e && e.storeRevision === undefined && A.LearningStores.pending() === 0, "cross-tab newer mutation committed (last-writer-wins, no per-write counter)");
++    }
++    {   // bus #5674: metadata-only index writes
++        const s = makeStorage(), l = makeLocks(), lib = makeLib([]);
++        const t = makeTab(s, l, lib);
++        lib.current = "dB"; t.ParchLock.StoryPath = "games/b.z5.js";
++        t.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "v0"); await settle();
++        const w0 = t.LearningStores._indexWrites();
++        ok(w0 === 1, "first write creates the entry with one index write (" + w0 + ")");
++        for (const v of ["v1", "v2", "v3", "v4"]) { t.LearningStores.persist("learnedWords", { identityKey: "2-B" }, v); await settle(); }
++        ok(t.LearningStores._indexWrites() - w0 === 0 && s.getItem("PL_LearnedWordOverrides_2-B") === "v4", "repeated value writes, same owner: 0 index writes, value saved");
++        lib.current = "dB2"; t.ParchLock.StoryPath = "games/b2.z5.js";
++        t.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "v5"); await settle();
++        const ix = t.LearningStores.readIndex().index.entries["PL_LearnedWordOverrides_2-B"];
++        ok(t.LearningStores._indexWrites() - w0 === 1 && ix.owners.length === 2, "new owner: exactly one index write");
++        t.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "v6"); await settle();
++        ok(t.LearningStores._indexWrites() - w0 === 1, "same new owner again: no further index write");
++    }
++    {   // bus #5674: tombstone clear on a fresh post-erase write still happens
++        const s = makeStorage(), l = makeLocks(), lib = makeLib([]);
++        s.setItem("PL_LearnedWordOverrides_2-B", "old");
++        s.setItem("PL_ModuleLearningOwner_v1", JSON.stringify({ v: 1, revision: 3, entries: {}, tombstones: { "PL_LearnedWordOverrides_2-B": { erasedAtIndexRevision: 3 } } }));
++        const t = makeTab(s, l, lib);
++        lib.current = "dB"; t.ParchLock.StoryPath = "games/b.z5.js";
++        t.LearningStores.read("PL_LearnedWordOverrides_2-B"); // hydrated after the erase
++        t.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "fresh"); await settle();
++        const ix = t.LearningStores.readIndex().index;
++        ok(s.getItem("PL_LearnedWordOverrides_2-B") === "fresh" && !ix.tombstones["PL_LearnedWordOverrides_2-B"] && ix.entries["PL_LearnedWordOverrides_2-B"], "post-erase fresh write clears tombstone in the index");
++    }
++    {   // bus #5674: recovery commit still happens on a value-only write
++        const s = makeStorage(), l = makeLocks(), lib = makeLib([]);
++        s.setItem("PL_LearnedWordOverrides_2-B", "known");
++        s.setItem("PL_LearnedWordOverrides_9-Z", "half-erased");
++        s.setItem("PL_ModuleLearningOwner_v1", JSON.stringify({ v: 1, revision: 1, tombstones: { "PL_LearnedWordOverrides_9-Z": { erasedAtIndexRevision: 2 } },
++            entries: { "PL_LearnedWordOverrides_2-B": { key: "PL_LearnedWordOverrides_2-B", kind: "learnedWords", owners: [{ digest: "dB", path: "games/b.z5.js", inputs: { identityKey: "2-B" } }] } },
++            pending: { revision: 2, records: [{ key: "PL_LearnedWordOverrides_9-Z", kind: "learnedWords", inputs: { identityKey: "9-Z" } }] } }));
++        const t = makeTab(s, l, lib);
++        lib.current = "dB"; t.ParchLock.StoryPath = "games/b.z5.js";
++        t.LearningStores.persist("learnedWords", { identityKey: "2-B" }, "known2"); await settle();
++        const ix = t.LearningStores.readIndex().index;
++        ok(!ix.pending && ix.revision === 2 && s.getItem("PL_LearnedWordOverrides_9-Z") === null && s.getItem("PL_LearnedWordOverrides_2-B") === "known2" && t.LearningStores._indexWrites() === 0, "value-only write still commits recovery");
++    }
++    {   // bus #5674: Erase disabled after abort until a fresh Check
++        const src = fs.readFileSync(path.join(ROOT, "js", "LearningStores.js"), "utf8");
++        ok(/Saved learned data changed; check again./.test(src) && /needCheck = true/.test(src) && /disabled", needCheck ||/.test(src), "abort disables Erase until Check, with the agreed text");
 +    }
 +    {   // 5: queued A -> switch/load/write B -> A erased: B intact, A not resurrected
 +        const s = makeStorage(), l = makeLocks(), lib = makeLib([]);
@@ -470,10 +514,10 @@ index 7f78b17..a7cc3a1 100644
      if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", DirectionalRadial.Init);
      else DirectionalRadial.Init();
 diff --git a/js/ExitCalibrator.js b/js/ExitCalibrator.js
-index 26a2564..554f1e1 100644
+index c8ab160..45fa1a2 100644
 --- a/js/ExitCalibrator.js
 +++ b/js/ExitCalibrator.js
-@@ -396,6 +396,8 @@ var ExitCalibrator = {
+@@ -405,6 +405,8 @@ var ExitCalibrator = {
          return id ? ("PM_ExitCalib_" + id) : null;
      },
  
@@ -482,7 +526,7 @@ index 26a2564..554f1e1 100644
      emptyTable: function () {
          return { v: ExitCalibrator.VERSION, dirs: {}, cand: {}, blocked: {} };
      },
-@@ -407,7 +409,7 @@ var ExitCalibrator = {
+@@ -416,7 +418,7 @@ var ExitCalibrator = {
          ExitCalibrator._key = key;
          ExitCalibrator._table = ExitCalibrator.emptyTable();
          try {
@@ -491,7 +535,7 @@ index 26a2564..554f1e1 100644
              if (raw) {
                  var p = JSON.parse(raw);
                  // A table written by an older rule set is discarded rather
-@@ -421,7 +423,9 @@ var ExitCalibrator = {
+@@ -430,7 +432,9 @@ var ExitCalibrator = {
      persist: function () {
          try {
              if (ExitCalibrator._key && ExitCalibrator._table) {
@@ -502,13 +546,13 @@ index 26a2564..554f1e1 100644
              }
          } catch (e) {}
      },
-@@ -664,3 +668,4 @@ var ExitCalibrator = {
+@@ -675,3 +679,4 @@ var ExitCalibrator = {
          ExitCalibrator.persist();
      }
  };
 +if (typeof LearningStores !== "undefined") LearningStores.register("exitCalib", "PM_ExitCalib_", ExitCalibrator.learningKeyFor);
 diff --git a/js/LearnedWords.js b/js/LearnedWords.js
-index f3ff9ba..203640f 100644
+index ffa53f7..75a6c25 100644
 --- a/js/LearnedWords.js
 +++ b/js/LearnedWords.js
 @@ -17,7 +17,7 @@ var LearnedWords = {
@@ -552,17 +596,21 @@ index f3ff9ba..203640f 100644
 +if (typeof LearningStores !== "undefined") LearningStores.register("learnedWords", LearnedWords.PREFIX, LearnedWords.learningKeyFor);
 diff --git a/js/LearningStores.js b/js/LearningStores.js
 new file mode 100644
-index 0000000..19159ee
+index 0000000..f89b449
 --- /dev/null
 +++ b/js/LearningStores.js
-@@ -0,0 +1,445 @@
+@@ -0,0 +1,446 @@
 +/* D13 (R3-R6): module learning store ownership and erase-for-uninstalled.
 + *
 + * Each module-scoped learning store registers its exact localStorage key at
 + * its own write site and persists through a serialized writer under the Web
 + * Lock "PL_learning_store". The index PL_ModuleLearningOwner_v1 records, per
-+ * key, the kind, the owners {digest, path, inputs} and the committed
-+ * storeRevision, plus the index revision and erase tombstones.
++ * key, the kind and the owners {digest, path, inputs}, plus the index
++ * revision and erase tombstones. Cross-tab value writes are
++ * last-writer-wins in commit order; there is no per-write counter. The
++ * index is rewritten only when entry metadata changes (new entry/kind,
++ * new owner, overflow flag, tombstone clear, recovery/pending changes),
++ * never for a value-only write.
 + *
 + * Erase (Options > Learned words) removes only keys whose every owner is
 + * uninstalled AND whose owner digests are disjoint from the known digests of
@@ -578,7 +626,6 @@ index 0000000..19159ee
 +    var prefixes = [];
 +    var queue = [];            // FIFO of immutable snapshots
 +    var draining = false;
-+    var localRev = Object.create(null);   // key -> last captured storeRevision
 +    var hydratedAt = Object.create(null); // key -> index revision when read/reset
 +    var lastError = null, reported = false, recoveryError = null;
 +
@@ -603,7 +650,7 @@ index 0000000..19159ee
 +            if (!isObj(p) || p.v !== 1 || !validInt(p.revision) || !isObj(p.entries) || !isObj(p.tombstones)) throw 0;
 +            Object.keys(p.entries).forEach(function (k) {
 +                var e = p.entries[k];
-+                if (!isObj(e) || e.key !== k || typeof e.kind !== "string" || !Array.isArray(e.owners) || !validInt(e.storeRevision)) throw 0;
++                if (!isObj(e) || e.key !== k || typeof e.kind !== "string" || !Array.isArray(e.owners)) throw 0;
 +                if (e.ownersOverflow != null && e.ownersOverflow !== true) throw 0;
 +                e.owners.forEach(function (o) {
 +                    if (!isObj(o) || !isObj(o.inputs) || (o.digest != null && typeof o.digest !== "string") || typeof o.path !== "string") throw 0;
@@ -647,9 +694,10 @@ index 0000000..19159ee
 +    // Owners are never forgotten: past the bound the entry is marked
 +    // ownersOverflow (a permanent sentinel) and can never be erased.
 +    function addOwner(e, owner) {
-+        if (e.owners.some(function (o) { return sameOwner(o, owner); })) return;
-+        if (e.owners.length >= MAX_OWNERS) { e.ownersOverflow = true; return; }
++        if (e.owners.some(function (o) { return sameOwner(o, owner); })) return false;
++        if (e.owners.length >= MAX_OWNERS) { if (e.ownersOverflow) return false; e.ownersOverflow = true; return true; }
 +        e.owners.push(owner);
++        return true;
 +    }
 +
 +    // Finish an erase interrupted after its tombstones became durable. Its
@@ -723,27 +771,25 @@ index 0000000..19159ee
 +                // Erased after this store hydrated: never resurrect it. The
 +                // store starts fresh for that module.
 +                hydratedAt[snap.key] = index.revision;
-+                localRev[snap.key] = 0;
 +                if (typeof snap.reset === "function") { try { snap.reset(); } catch (e) {} }
 +                return "erased";
 +            }
 +        }
 +        ls.setItem(snap.key, snap.value);
 +        if (!index) return "written-unindexed";
-+        var e = index.entries[snap.key];
-+        if (!e || e.kind !== snap.kind) e = index.entries[snap.key] = { key: snap.key, kind: snap.kind, owners: [], storeRevision: 0 };
-+        addOwner(e, snap.owner);
-+        // The committed revision is assigned here, under the lock. Cross-tab
-+        // writes are last-writer-wins in commit order; another tab's commit
-+        // never discards this tab's newer mutation.
-+        e.storeRevision = e.storeRevision + 1;
-+        localRev[snap.key] = e.storeRevision;
-+        if (index.tombstones[snap.key]) delete index.tombstones[snap.key];
-+        writeIndex(index);
++        // Cross-tab writes are last-writer-wins in commit order. The index
++        // is rewritten only when entry metadata changed; recovery above
++        // already committed its own index changes.
++        var e = index.entries[snap.key], meta = false;
++        if (!e || e.kind !== snap.kind) { e = index.entries[snap.key] = { key: snap.key, kind: snap.kind, owners: [] }; meta = true; }
++        if (addOwner(e, snap.owner)) meta = true;
++        if (index.tombstones[snap.key]) { delete index.tombstones[snap.key]; meta = true; }
++        if (meta) { writeIndex(index); indexWrites++; }
 +        return "written";
 +    }
 +
 +    var seqNo = 0;
++    var indexWrites = 0; // metadata index writes from commit (test control)
 +    var deferredCount = 0;
 +
 +    function reportOnce(err) {
@@ -798,24 +844,19 @@ index 0000000..19159ee
 +                var r = readIndex();
 +                if (r.ok) {
 +                    var e = r.index.entries[key];
-+                    if (!e || e.kind !== kind) e = r.index.entries[key] = { key: key, kind: kind, owners: [], storeRevision: 0 };
-+                    addOwner(e, owner);
-+                    e.storeRevision += 1;
-+                    writeIndex(r.index);
++                    var m = false;
++                    if (!e || e.kind !== kind) { e = r.index.entries[key] = { key: key, kind: kind, owners: [] }; m = true; }
++                    if (addOwner(e, owner)) m = true;
++                    if (m) writeIndex(r.index);
 +                }
 +            } catch (e2) {}
 +            return Promise.resolve("written");
 +        }
-+        if (localRev[key] == null) {
-+            var ent = readIndex().index.entries[key];
-+            localRev[key] = ent ? ent.storeRevision : 0;
-+        }
 +        if (hydratedAt[key] == null) hydratedAt[key] = readIndex().index.revision;
 +        var snap = Object.freeze({
 +            key: key, kind: kind, owner: Object.freeze(owner), value: String(value),
-+            // baseRevision: the committed revision this tab hydrated from or
-+            // last committed. Supersession is FIFO within this tab's queue only.
-+            baseRevision: localRev[key], hydratedRevision: hydratedAt[key], seq: ++seqNo, reset: reset
++            // Supersession is FIFO within this tab's queue only.
++            hydratedRevision: hydratedAt[key], seq: ++seqNo, reset: reset
 +        });
 +        queue.push(snap);
 +        return drain();
@@ -969,10 +1010,10 @@ index 0000000..19159ee
 +        var checkBtn = $("<button type='button'>").text("Check learned data for uninstalled stories").appendTo(row);
 +        var eraseBtn = $("<button type='button'>").text("Erase learned data for uninstalled stories").prop("disabled", true).appendTo(row);
 +        var status = $("<span id='pl-learning-erase-status' role='status'>").appendTo(row);
-+        var listing = null;
++        var listing = null, needCheck = false;
 +        function show(l, result) {
 +            listing = l;
-+            eraseBtn.prop("disabled", !l || !l.ok || l.removable === 0);
++            eraseBtn.prop("disabled", needCheck || !l || !l.ok || l.removable === 0);
 +            status.text(((lastError || recoveryError) ? (lastError || recoveryError) + " " : "") + describe(l, result));
 +        }
 +        var first = list();
@@ -981,14 +1022,18 @@ index 0000000..19159ee
 +        checkBtn.on("click", function () {
 +            checkBtn.prop("disabled", true); eraseBtn.prop("disabled", true);
 +            status.text("Checking your stories\u2026");
-+            check().then(function (l) { checkBtn.prop("disabled", false); show(l); },
-+                function () { checkBtn.prop("disabled", false); show(list()); });
++            check().then(function (l) { needCheck = false; checkBtn.prop("disabled", false); show(l); },
++                function () { needCheck = false; checkBtn.prop("disabled", false); show(list()); });
 +        });
 +        eraseBtn.on("click", function () {
 +            if (!listing || !listing.ok || !listing.removable) return;
 +            if (!confirm("Erase learned data for " + listing.removable + " item(s) from stories that are no longer installed? Maps, saves and transcripts are kept.")) return;
 +            eraseBtn.prop("disabled", true);
-+            erase(listing).then(function (res) { show(res.listing || list(), res); });
++            erase(listing).then(function (res) {
++                // After any abort, Erase stays disabled until a fresh Check.
++                if (res.aborted) { needCheck = true; res = { aborted: true, reason: "Saved learned data changed; check again." }; }
++                show(res.listing || list(), res);
++            });
 +        });
 +    }
 +
@@ -998,7 +1043,7 @@ index 0000000..19159ee
 +        list: list, check: check, erase: erase, describe: describe, addOptions: addOptions,
 +        entryValid: entryValid, pending: function () { return queue.length; },
 +        lastError: function () { return lastError || recoveryError; },
-+        _drain: drain
++        _drain: drain, _indexWrites: function () { return indexWrites; }
 +    };
 +})();
 diff --git a/js/ModuleLibrary.js b/js/ModuleLibrary.js
@@ -1056,10 +1101,10 @@ index 013bf18..4f0c7c4 100644
          currentExecutableIdentity: currentExecutableIdentity, whenExecutableIdentityReady: whenExecutableIdentityReady,
          normalizePath: normalizePath, canonicalLocalPath: canonicalLocalPath, localPathPattern: LOCAL_RE, legacy: LEGACY
 diff --git a/js/SemanticActions.js b/js/SemanticActions.js
-index 2e01b4b..d331405 100644
+index a84bc39..6a43e4a 100644
 --- a/js/SemanticActions.js
 +++ b/js/SemanticActions.js
-@@ -632,6 +632,12 @@ var SemanticActions = {
+@@ -637,6 +637,12 @@ var SemanticActions = {
          } catch (e) { return null; }
      },
  
@@ -1072,7 +1117,7 @@ index 2e01b4b..d331405 100644
      sidecarStorageKey: function (mem, locale) {
          var key = SemanticActions.buildIdentityKey(mem, locale);
          return key ? "PL_SemanticActions_" + key : null;
-@@ -653,7 +659,7 @@ var SemanticActions = {
+@@ -658,7 +664,7 @@ var SemanticActions = {
          SemanticActions.Evidence.clear();
          try {
              if (typeof localStorage === "undefined") return;
@@ -1081,7 +1126,7 @@ index 2e01b4b..d331405 100644
              if (raw) {
                  var parsed = JSON.parse(raw);
                  if (parsed && parsed.version === SemanticActions.SIDECAR_VERSION && parsed.buildKey === key && Array.isArray(parsed.entries)) {
-@@ -695,11 +701,17 @@ var SemanticActions = {
+@@ -700,11 +706,17 @@ var SemanticActions = {
          try {
              if (typeof localStorage === "undefined") return;
              var confirmedOnly = SemanticActions.Evidence.all().filter(function (e) { return e.confirmed; });
@@ -1101,7 +1146,7 @@ index 2e01b4b..d331405 100644
          } catch (e) {}
      },
  
-@@ -715,3 +727,4 @@ var SemanticActions = {
+@@ -720,3 +732,4 @@ var SemanticActions = {
  if (typeof module !== "undefined" && module.exports) {
      module.exports = SemanticActions;
  }
@@ -1166,7 +1211,7 @@ index f558ff1..047164a 100644
      MapKey: () => "PL_MapSlots_" + ParchLock.GameFilename,
      ReadSlots: () => {
 diff --git a/js/ZRamReader.js b/js/ZRamReader.js
-index 445b39c..292f330 100644
+index f64b4ec..8be126b 100644
 --- a/js/ZRamReader.js
 +++ b/js/ZRamReader.js
 @@ -844,7 +844,7 @@ var ZRamReader = {
@@ -1196,7 +1241,7 @@ index 445b39c..292f330 100644
          } catch (e) {}
      },
  
-@@ -3070,3 +3074,4 @@ var ZRamReader = {
+@@ -3087,3 +3091,4 @@ var ZRamReader = {
          };
      }
  };

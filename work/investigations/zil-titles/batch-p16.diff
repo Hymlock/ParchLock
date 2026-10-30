@@ -152,7 +152,7 @@ index 0000000..fd61c95
 +}
 +console.log('zil-inventory-scope-retained: ' + passed + ' checks passed');
 diff --git a/js/Actionable.js b/js/Actionable.js
-index 0d84d77..c1bbf98 100644
+index 57a5582..ab4c0a8 100644
 --- a/js/Actionable.js
 +++ b/js/Actionable.js
 @@ -2630,6 +2630,9 @@ var Actionable = {
@@ -166,10 +166,10 @@ index 0d84d77..c1bbf98 100644
          var playerId = payload && (payload.playerId != null && payload.playerId !== ""
              ? payload.playerId
 diff --git a/js/EquipmentUI.js b/js/EquipmentUI.js
-index 7fc62e2..43ed8b8 100644
+index fa18e94..0b7665e 100644
 --- a/js/EquipmentUI.js
 +++ b/js/EquipmentUI.js
-@@ -300,11 +300,26 @@ var EquipmentUI = {
+@@ -318,11 +318,26 @@ var EquipmentUI = {
          if (!EquipmentUI._demo) return false;
          try {
              var payload = (typeof WorldModel !== "undefined" && WorldModel.lastPayload) || null;
@@ -197,7 +197,7 @@ index 7fc62e2..43ed8b8 100644
      model: function () {
          EquipmentUI.loadSeq();
          if (EquipmentUI.demoActive()) {
-@@ -321,7 +336,7 @@ var EquipmentUI = {
+@@ -339,7 +354,7 @@ var EquipmentUI = {
          var payload = (typeof WorldModel !== "undefined" && WorldModel.lastPayload) || null;
          var items = [];
          try {
@@ -207,10 +207,10 @@ index 7fc62e2..43ed8b8 100644
  
          var playerId = payload && (payload.playerId != null && payload.playerId !== ""
 diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
-index f4caa47..22bc70f 100644
+index 0766d2d..678e7c5 100644
 --- a/js/ModuleStatFactsClaude.js
 +++ b/js/ModuleStatFactsClaude.js
-@@ -322,6 +322,13 @@ var ModuleStatFactsClaude = {
+@@ -324,6 +324,13 @@ var ModuleStatFactsClaude = {
          // concealed 16 = INVISIBLE exact (native, codex #5240 resume-20261020/concealed/packet-enchanter.json): Flathead portrait 179 and Frobozz portrait 167 read 16=1 and cannot be seen; EXAMINE PORTRAITS 106 (16 clear, visible) identifies both and clears 16; named EXAMINE then succeeds.
          // locked 1 = LOCKEDBIT (grok1 probe5 run-enj, claude worker E3): north gate 194 @44 OPEN GATE reads 1=1 "The gate is rusted shut.", @46 reads 0 after REZROV. Single-owner exception from source: NORTH-GATE-OBJ-F (castle.zil:1085) is the only player-facing LOCKEDBIT test; IRON-GATE-F prints fixed text; V-OPEN/LOCK/UNLOCK never test it. No room carriers.
          "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8, "door": 24, "enterable": 29, "climbable": 26, "moved": 15, "transparent": 10, "concealed": 16, "locked": 1 },
