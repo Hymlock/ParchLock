@@ -25,3 +25,9 @@ facts (Zork I 31, Enchanter 22) should then move to switchable/capability or be 
 ZRamReader:1725 hazard (does a LIGHTBIT lantern get admitted as a room?). If no consumer misbehaves, the fix is just
 ledger/fact hygiene, not a runtime change.
 Prior-fix guards: D134 (room plausibility), D232 (localScope roomLitAttribute), D75/D57/D58 (wrong-room cascades).
+
+## Post-seal measurement (claude 2026-10-30, after sealing; not part of the blind half)
+Constructed check on original story bytes with current facts: ZRamReader.isPlausibleMapRoom is FALSE for Zork I lantern 164,
+candles 147, torch 104 and Enchanter lanterns 94/175, although light=true and takeable=true on the LIGHTBIT-mapped ones.
+Other guards reject them before the :1725 exemption matters, so the room-admission hazard is not live today. The
+light-key mismatch is fact/ledger hygiene unless another consumer is found.
