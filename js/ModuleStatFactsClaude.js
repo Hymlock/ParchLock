@@ -774,6 +774,13 @@ var ModuleStatFactsClaude = {
         // moved 4 = TOUCHBIT (seeded-native tier, Codex #5335; grok1 packet P3 probe5/moved/witness): TAKE match book 53 / telegram 54 set 4 (ITAKE verbs.zil:461-462); held handcuffs 51 stays clear (off-scope boots excluded). Trace = g1-batch before/after attr-byte diff (test_attr only; no FSET op in opsOnId).
         // Proposed concealed 12 = native INVISIBLE; retained Codex packet concealed/packet-witness.json (107/55 positives; 112 negative). Native/source tiers and SAVE/RESTORE qualifications remain in packet; no actor-possession or whole-title consumer closure.
         "attributeMap": { "open": 8, "isOpen": 8, "container": 9, "supporter": 16, "animate": 31, "locked": 17, "enterable": 29, "door": 28, "talkable": 31, "moved": 4 , "concealed": 12 },
+        // switchable (P4 R2, codex ACCEPT #5543; native claude-probe/p4-witness/witness-radio-room.json): radio 162, fixed in the
+        // living room ("You can't take the radio."): TURN ON RADIO -> "You turn on the radio, spin the dial and find an Amos 'n' Andy
+        // serial."; TURN OFF RADIO -> "Monica looks at you with disgust as you turn off the radio."; coffee table / club chair refuse
+        // ("You can't turn on the coffee table."). State-less toggle (no ONBIT write, grok1 #5186): both forms, no state badge.
+        "attributeObjects": { "switchable": [162] },
+        "capabilityForms": { "switchable": ["turn on", "turn off"] },
+        "switchableScope": { "162": "room" },
         "playerObject": 79
     },
     // Starcross (Infocom v3): animate 11 = VICBIT (grok1 2026-10-17; route agent-tools/g1-routes.json 'scs' = zil-routes starcross with

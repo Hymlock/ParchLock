@@ -444,7 +444,9 @@ var AttributeSchema = {
                 (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, "switchable"))) return null;
             var ids = AttributeSchema.objectCapabilityIds(mem, "switchable");
             var forms = fact.capabilityForms && fact.capabilityForms.switchable;
-            if (context !== "inventory" || !ids || !Number.isInteger(objectId) || ids.indexOf(objectId) < 0 ||
+            var inScope = context === "inventory" || (context === "room" && ids &&
+                AttributeSchema.switchableRoomScoped(mem, fact, ids, objectId) && AttributeSchema.inPlayerRoom(mem, objectId));
+            if (!inScope || !ids || !Number.isInteger(objectId) || ids.indexOf(objectId) < 0 ||
                 !Array.isArray(forms) || forms.length !== 2 || forms[0] !== "turn on" || forms[1] !== "turn off") return [];
             var family = AttributeSchema._familyOf(mem);
             if (!family || !Array.isArray(family.templates) || !forms.every(function (form) {
@@ -454,6 +456,51 @@ var AttributeSchema = {
             })) return [];
             return forms.slice();
         } catch (eActivationForms) { return owned ? [] : null; }
+    },
+
+    // P4 (claude+codex #5543): an authored switchable owner may list ids proven to toggle natively
+    // in room context: switchableScope {"<id>": "room"}. Only for the exact executable fact of a
+    // validated confirmed-zil-family title; every key an integer id in the same entry's switchable
+    // list, every value exactly "room". Anything malformed makes the whole scope absent.
+    switchableRoomScoped: function (mem, fact, ids, objectId) {
+        try {
+            var digest = ModuleLibrary.currentExecutableDigest();
+            if (!fact || !digest || ModuleStatFactsClaude[digest] !== fact || ZRamReader.executableLayoutFacts(mem) !== fact) return false;
+            var family = AttributeSchema._familyOf(mem);
+            if (!family || family.classification !== "confirmed-zil-family" || family.evidence !== "validated") return false;
+            var scope = fact.switchableScope;
+            if (!scope || typeof scope !== "object" || Object.getPrototypeOf(scope) !== Object.prototype) return false;
+            var members = fact.attributeObjects && fact.attributeObjects.switchable, keys = Object.keys(scope);
+            if (!Array.isArray(members) || !keys.length || !keys.every(function (k) {
+                var id = Number(k);
+                return /^[1-9][0-9]*$/.test(k) && Number.isInteger(id) && members.indexOf(id) >= 0 && ids.indexOf(id) >= 0 &&
+                    scope[k] === "room";
+            })) return false;
+            return Number.isInteger(objectId) && Object.prototype.hasOwnProperty.call(scope, String(objectId));
+        } catch (eScope) { return false; }
+    },
+    // Live RAM: the object's parent chain reaches the player's actual current room, passing only
+    // supporters and open or transparent containers. Another actor's possessions never qualify.
+    inPlayerRoom: function (mem, objectId) {
+        try {
+            var player = ZRamReader.resolvePlayer(mem);
+            if (!player || player.ambiguous || !Number.isInteger(player.id) || player.id < 1) return false;
+            var room = ZRamReader.enclosingRoom(mem, player.id), count = ZRamReader.objectCount(mem);
+            if (!Number.isInteger(room) || room < 1 || objectId === room || objectId === player.id) return false;
+            var raw = ZRamReader.objectLinks(mem, objectId), seen = {};
+            for (var depth = 0; raw && depth < count; depth++) {
+                var parent = raw.parent;
+                if (parent === room || parent === player.id) return true;
+                if (!Number.isInteger(parent) || parent < 1 || parent > count || seen[parent]) return false;
+                seen[parent] = true;
+                raw = ZRamReader.objectLinks(mem, parent);
+                if (!raw) return false;
+                var a = AttributeSchema.applyTo({}, raw, mem);
+                if (a.animate) return false;
+                if (!(a.supporter || a.transparent || (a.container && (a.isOpen || a.open)))) return false;
+            }
+            return false;
+        } catch (eRoom) { return false; }
     },
 
     // Explicit local light-emission state, separate from capability and room light.
