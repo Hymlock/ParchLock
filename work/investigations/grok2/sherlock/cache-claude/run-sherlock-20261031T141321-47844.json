@@ -1,0 +1,966 @@
+{
+ "lamp3 @14:turn off lamp#0": {
+  "tag": "lamp3",
+  "id": 166,
+  "name": "lamp",
+  "step": 14,
+  "expect": 1,
+  "bit": 42,
+  "cmd": "turn off lamp",
+  "plan": "plan-sherlock-lamp3.json",
+  "planSha": "2bb64a0376b1b559f79a39cde7ecb02cf087f6a64b183ee7ee89b667c597a05a",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   4,
+   23,
+   24,
+   39,
+   42
+  ],
+  "after": [
+   3,
+   4,
+   23,
+   24,
+   39,
+   42
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 232,
+  "here": 0,
+  "opsOnId": [
+   [
+    166,
+    31,
+    0,
+    40953
+   ],
+   [
+    166,
+    47,
+    0,
+    37852
+   ],
+   [
+    166,
+    47,
+    0,
+    37864
+   ],
+   [
+    166,
+    10,
+    0,
+    37876
+   ],
+   [
+    166,
+    28,
+    0,
+    37887
+   ],
+   [
+    166,
+    31,
+    0,
+    37895
+   ],
+   [
+    166,
+    24,
+    1,
+    116073
+   ],
+   [
+    166,
+    29,
+    0,
+    32637
+   ],
+   [
+    166,
+    0,
+    0,
+    32637
+   ],
+   [
+    166,
+    30,
+    0,
+    32577
+   ],
+   [
+    166,
+    21,
+    0,
+    42716
+   ]
+  ],
+  "nOps": 82,
+  "printedObjs": [
+   166
+  ],
+  "text": "The lamp is already off.\n \n> ",
+  "ts": "2026-10-31T14:13:31.018Z"
+ },
+ "lamp3 @14:turn on lamp#1": {
+  "tag": "lamp3",
+  "id": 166,
+  "name": "lamp",
+  "step": 14,
+  "expect": 1,
+  "bit": 42,
+  "cmd": "turn on lamp",
+  "plan": "plan-sherlock-lamp3.json",
+  "planSha": "2bb64a0376b1b559f79a39cde7ecb02cf087f6a64b183ee7ee89b667c597a05a",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   4,
+   23,
+   24,
+   39,
+   42
+  ],
+  "after": [
+   3,
+   4,
+   23,
+   38,
+   39,
+   42
+  ],
+  "set": [
+   38
+  ],
+  "cleared": [
+   24
+  ],
+  "parent": 232,
+  "here": 0,
+  "opsOnId": [
+   [
+    166,
+    31,
+    0,
+    40953
+   ],
+   [
+    166,
+    47,
+    0,
+    37852
+   ],
+   [
+    166,
+    47,
+    0,
+    37864
+   ],
+   [
+    166,
+    10,
+    0,
+    37876
+   ],
+   [
+    166,
+    28,
+    0,
+    37887
+   ],
+   [
+    166,
+    31,
+    0,
+    37895
+   ],
+   [
+    166,
+    22,
+    0,
+    116002
+   ],
+   [
+    166,
+    24,
+    1,
+    116011
+   ],
+   [
+    166,
+    29,
+    0,
+    32637
+   ],
+   [
+    166,
+    0,
+    0,
+    32637
+   ],
+   [
+    166,
+    30,
+    0,
+    32577
+   ],
+   [
+    166,
+    21,
+    0,
+    42716
+   ]
+  ],
+  "nOps": 83,
+  "printedObjs": [
+   166
+  ],
+  "text": "You turn up the wick. The lamp emits a warm glow that lights up the area around you.\n \n> ",
+  "ts": "2026-10-31T14:13:31.604Z"
+ },
+ "lamp3 @14:light lamp#2": {
+  "tag": "lamp3",
+  "id": 166,
+  "name": "lamp",
+  "step": 14,
+  "expect": 1,
+  "bit": 42,
+  "cmd": "light lamp",
+  "plan": "plan-sherlock-lamp3.json",
+  "planSha": "2bb64a0376b1b559f79a39cde7ecb02cf087f6a64b183ee7ee89b667c597a05a",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   4,
+   23,
+   38,
+   39,
+   42
+  ],
+  "after": [
+   3,
+   4,
+   23,
+   38,
+   39,
+   42
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 232,
+  "here": 0,
+  "opsOnId": [
+   [
+    166,
+    31,
+    0,
+    40953
+   ],
+   [
+    166,
+    47,
+    0,
+    37852
+   ],
+   [
+    166,
+    47,
+    0,
+    37864
+   ],
+   [
+    166,
+    10,
+    0,
+    37876
+   ],
+   [
+    166,
+    28,
+    0,
+    37887
+   ],
+   [
+    166,
+    31,
+    0,
+    37895
+   ],
+   [
+    166,
+    22,
+    0,
+    115970
+   ],
+   [
+    166,
+    24,
+    0,
+    116002
+   ],
+   [
+    166,
+    29,
+    0,
+    32637
+   ],
+   [
+    166,
+    0,
+    0,
+    32637
+   ],
+   [
+    166,
+    30,
+    0,
+    32577
+   ],
+   [
+    166,
+    21,
+    0,
+    42716
+   ]
+  ],
+  "nOps": 77,
+  "printedObjs": [
+   166
+  ],
+  "text": "The lamp is already on.\n \n> ",
+  "ts": "2026-10-31T14:13:32.176Z"
+ },
+ "lamp3 @14:extinguish#3": {
+  "tag": "lamp3",
+  "id": 166,
+  "name": "lamp",
+  "step": 14,
+  "expect": 1,
+  "bit": 42,
+  "cmd": "extinguish",
+  "plan": "plan-sherlock-lamp3.json",
+  "planSha": "2bb64a0376b1b559f79a39cde7ecb02cf087f6a64b183ee7ee89b667c597a05a",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "TRUE",
+  "before": [
+   3,
+   4,
+   23,
+   38,
+   39,
+   42
+  ],
+  "after": [
+   3,
+   4,
+   23,
+   24,
+   39,
+   42
+  ],
+  "set": [
+   24
+  ],
+  "cleared": [
+   38
+  ],
+  "parent": 232,
+  "here": 0,
+  "opsOnId": [
+   [
+    166,
+    42,
+    1,
+    37439
+   ],
+   [
+    166,
+    29,
+    0,
+    32637
+   ],
+   [
+    166,
+    0,
+    0,
+    32637
+   ],
+   [
+    166,
+    30,
+    0,
+    32577
+   ],
+   [
+    166,
+    47,
+    0,
+    37852
+   ],
+   [
+    166,
+    47,
+    0,
+    37864
+   ],
+   [
+    166,
+    10,
+    0,
+    37876
+   ],
+   [
+    166,
+    28,
+    0,
+    37887
+   ],
+   [
+    166,
+    31,
+    0,
+    37895
+   ],
+   [
+    166,
+    24,
+    0,
+    116073
+   ],
+   [
+    166,
+    22,
+    0,
+    116118
+   ],
+   [
+    166,
+    29,
+    0,
+    32637
+   ],
+   [
+    166,
+    0,
+    0,
+    32637
+   ],
+   [
+    166,
+    30,
+    0,
+    32577
+   ],
+   [
+    166,
+    21,
+    0,
+    42716
+   ]
+  ],
+  "nOps": 49,
+  "printedObjs": [
+   166
+  ],
+  "text": "[the lamp]\nYou turn down the wick. The lamp goes dark.\n \n> ",
+  "ts": "2026-10-31T14:13:32.757Z"
+ },
+ "lamp3 @14:light lamp#4": {
+  "tag": "lamp3",
+  "id": 151,
+  "name": "knife",
+  "step": 14,
+  "expect": 0,
+  "bit": 42,
+  "cmd": "light lamp",
+  "plan": "plan-sherlock-lamp3.json",
+  "planSha": "2bb64a0376b1b559f79a39cde7ecb02cf087f6a64b183ee7ee89b667c597a05a",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   4,
+   5,
+   23,
+   33,
+   39,
+   43,
+   44
+  ],
+  "after": [
+   3,
+   4,
+   5,
+   23,
+   33,
+   39,
+   43,
+   44
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 232,
+  "here": 0,
+  "opsOnId": [],
+  "nOps": 77,
+  "printedObjs": [
+   166
+  ],
+  "text": "You turn up the wick. The lamp emits a warm glow that lights up the area around you.\n \n> ",
+  "ts": "2026-10-31T14:13:33.328Z"
+ },
+ "lamp3 @14:extinguish#5": {
+  "tag": "lamp3",
+  "id": 151,
+  "name": "knife",
+  "step": 14,
+  "expect": 0,
+  "bit": 42,
+  "cmd": "extinguish",
+  "plan": "plan-sherlock-lamp3.json",
+  "planSha": "2bb64a0376b1b559f79a39cde7ecb02cf087f6a64b183ee7ee89b667c597a05a",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   4,
+   5,
+   23,
+   33,
+   39,
+   43,
+   44
+  ],
+  "after": [
+   3,
+   4,
+   5,
+   23,
+   33,
+   39,
+   43,
+   44
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 232,
+  "here": 0,
+  "opsOnId": [],
+  "nOps": 49,
+  "printedObjs": [
+   166
+  ],
+  "text": "[the lamp]\nYou turn down the wick. The lamp goes dark.\n \n> ",
+  "ts": "2026-10-31T14:13:33.920Z"
+ },
+ "lamp3 @14:light lamp#6": {
+  "tag": "lamp3",
+  "id": 166,
+  "name": "lamp",
+  "step": 14,
+  "expect": 1,
+  "bit": 42,
+  "cmd": "light lamp",
+  "plan": "plan-sherlock-lamp3.json",
+  "planSha": "2bb64a0376b1b559f79a39cde7ecb02cf087f6a64b183ee7ee89b667c597a05a",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   4,
+   23,
+   24,
+   39,
+   42
+  ],
+  "after": [
+   3,
+   4,
+   23,
+   38,
+   39,
+   42
+  ],
+  "set": [
+   38
+  ],
+  "cleared": [
+   24
+  ],
+  "parent": 232,
+  "here": 0,
+  "opsOnId": [
+   [
+    166,
+    31,
+    0,
+    40953
+   ],
+   [
+    166,
+    47,
+    0,
+    37852
+   ],
+   [
+    166,
+    47,
+    0,
+    37864
+   ],
+   [
+    166,
+    10,
+    0,
+    37876
+   ],
+   [
+    166,
+    28,
+    0,
+    37887
+   ],
+   [
+    166,
+    31,
+    0,
+    37895
+   ],
+   [
+    166,
+    22,
+    0,
+    115970
+   ],
+   [
+    166,
+    24,
+    1,
+    116002
+   ],
+   [
+    166,
+    29,
+    0,
+    32637
+   ],
+   [
+    166,
+    0,
+    0,
+    32637
+   ],
+   [
+    166,
+    30,
+    0,
+    32577
+   ],
+   [
+    166,
+    21,
+    0,
+    42716
+   ]
+  ],
+  "nOps": 77,
+  "printedObjs": [
+   166
+  ],
+  "text": "You turn up the wick. The lamp emits a warm glow that lights up the area around you.\n \n> ",
+  "ts": "2026-10-31T14:13:34.496Z"
+ },
+ "lamp3 @14:extinguish lamp#7": {
+  "tag": "lamp3",
+  "id": 166,
+  "name": "lamp",
+  "step": 14,
+  "expect": 1,
+  "bit": 42,
+  "cmd": "extinguish lamp",
+  "plan": "plan-sherlock-lamp3.json",
+  "planSha": "2bb64a0376b1b559f79a39cde7ecb02cf087f6a64b183ee7ee89b667c597a05a",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   4,
+   23,
+   38,
+   39,
+   42
+  ],
+  "after": [
+   3,
+   4,
+   23,
+   24,
+   39,
+   42
+  ],
+  "set": [
+   24
+  ],
+  "cleared": [
+   38
+  ],
+  "parent": 232,
+  "here": 0,
+  "opsOnId": [
+   [
+    166,
+    31,
+    0,
+    40953
+   ],
+   [
+    166,
+    47,
+    0,
+    37852
+   ],
+   [
+    166,
+    47,
+    0,
+    37864
+   ],
+   [
+    166,
+    10,
+    0,
+    37876
+   ],
+   [
+    166,
+    28,
+    0,
+    37887
+   ],
+   [
+    166,
+    31,
+    0,
+    37895
+   ],
+   [
+    166,
+    24,
+    0,
+    116073
+   ],
+   [
+    166,
+    22,
+    0,
+    116098
+   ],
+   [
+    166,
+    29,
+    0,
+    32637
+   ],
+   [
+    166,
+    0,
+    0,
+    32637
+   ],
+   [
+    166,
+    30,
+    0,
+    32577
+   ],
+   [
+    166,
+    21,
+    0,
+    42716
+   ]
+  ],
+  "nOps": 83,
+  "printedObjs": [
+   166
+  ],
+  "text": "You turn down the wick. The lamp goes dark.\n \n> ",
+  "ts": "2026-10-31T14:13:35.073Z"
+ },
+ "lamp3 @14:turn on knife#8": {
+  "tag": "lamp3",
+  "id": 151,
+  "name": "knife",
+  "step": 14,
+  "expect": 0,
+  "bit": 42,
+  "cmd": "turn on knife",
+  "plan": "plan-sherlock-lamp3.json",
+  "planSha": "2bb64a0376b1b559f79a39cde7ecb02cf087f6a64b183ee7ee89b667c597a05a",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   4,
+   5,
+   23,
+   33,
+   39,
+   43,
+   44
+  ],
+  "after": [
+   3,
+   4,
+   5,
+   23,
+   33,
+   39,
+   43,
+   44
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 232,
+  "here": 0,
+  "opsOnId": [
+   [
+    151,
+    31,
+    0,
+    40953
+   ],
+   [
+    151,
+    47,
+    0,
+    37852
+   ],
+   [
+    151,
+    47,
+    0,
+    37864
+   ],
+   [
+    151,
+    10,
+    0,
+    37876
+   ],
+   [
+    151,
+    28,
+    0,
+    37887
+   ],
+   [
+    151,
+    31,
+    0,
+    37895
+   ],
+   [
+    151,
+    21,
+    0,
+    42716
+   ]
+  ],
+  "nOps": 78,
+  "printedObjs": [],
+  "text": "You couldn't turn that on.\n \n> ",
+  "ts": "2026-10-31T14:13:35.645Z"
+ },
+ "lamp3 @14:extinguish knife#9": {
+  "tag": "lamp3",
+  "id": 151,
+  "name": "knife",
+  "step": 14,
+  "expect": 0,
+  "bit": 42,
+  "cmd": "extinguish knife",
+  "plan": "plan-sherlock-lamp3.json",
+  "planSha": "2bb64a0376b1b559f79a39cde7ecb02cf087f6a64b183ee7ee89b667c597a05a",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "NOTEST",
+  "before": [
+   3,
+   4,
+   5,
+   23,
+   33,
+   39,
+   43,
+   44
+  ],
+  "after": [
+   3,
+   4,
+   5,
+   23,
+   33,
+   39,
+   43,
+   44
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 232,
+  "here": 0,
+  "opsOnId": [
+   [
+    151,
+    31,
+    0,
+    40953
+   ],
+   [
+    151,
+    47,
+    0,
+    37852
+   ],
+   [
+    151,
+    47,
+    0,
+    37864
+   ],
+   [
+    151,
+    10,
+    0,
+    37876
+   ],
+   [
+    151,
+    28,
+    0,
+    37887
+   ],
+   [
+    151,
+    31,
+    0,
+    37895
+   ],
+   [
+    151,
+    21,
+    0,
+    42716
+   ]
+  ],
+  "nOps": 78,
+  "printedObjs": [],
+  "text": "You couldn't extinguish that.\n \n> ",
+  "ts": "2026-10-31T14:13:36.235Z"
+ }
+}

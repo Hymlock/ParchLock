@@ -1,0 +1,89 @@
+{
+ "key": "sherlock",
+ "game": "Sherlock.z5.js",
+ "bit": 42,
+ "tmpl": "complete lamp verbs + bare extinguish GWIM",
+ "tag": "lamp3",
+ "tests": [
+  {
+   "id": 166,
+   "name": "lamp",
+   "step": 14,
+   "expect": 1,
+   "bit": 42,
+   "cmd": "turn off lamp"
+  },
+  {
+   "id": 166,
+   "name": "lamp",
+   "step": 14,
+   "expect": 1,
+   "bit": 42,
+   "cmd": "turn on lamp"
+  },
+  {
+   "id": 166,
+   "name": "lamp",
+   "step": 14,
+   "expect": 1,
+   "bit": 42,
+   "cmd": "light lamp"
+  },
+  {
+   "id": 166,
+   "name": "lamp",
+   "step": 14,
+   "expect": 1,
+   "bit": 42,
+   "cmd": "extinguish"
+  },
+  {
+   "id": 151,
+   "name": "knife",
+   "step": 14,
+   "expect": 0,
+   "bit": 42,
+   "cmd": "light lamp"
+  },
+  {
+   "id": 151,
+   "name": "knife",
+   "step": 14,
+   "expect": 0,
+   "bit": 42,
+   "cmd": "extinguish"
+  },
+  {
+   "id": 166,
+   "name": "lamp",
+   "step": 14,
+   "expect": 1,
+   "bit": 42,
+   "cmd": "light lamp"
+  },
+  {
+   "id": 166,
+   "name": "lamp",
+   "step": 14,
+   "expect": 1,
+   "bit": 42,
+   "cmd": "extinguish lamp"
+  },
+  {
+   "id": 151,
+   "name": "knife",
+   "step": 14,
+   "expect": 0,
+   "bit": 42,
+   "cmd": "turn on knife"
+  },
+  {
+   "id": 151,
+   "name": "knife",
+   "step": 14,
+   "expect": 0,
+   "bit": 42,
+   "cmd": "extinguish knife"
+  }
+ ]
+}
