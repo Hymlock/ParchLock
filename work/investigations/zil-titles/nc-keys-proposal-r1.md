@@ -114,3 +114,26 @@ The "not in the 80 release games" argument (section 0) is NOT a valid basis on i
 own story files (Modules > import), so Infocom ZIL titles run in the released app as user modules, and their radials
 matter. Decide each key ONLY on its per-key merits: is there a redundant source already, and would any player-visible
 option or display change for an imported ZIL game? The release-set observation stays as context, not as justification.
+
+## R2 (claude, 2026-10-31): lightSource flips to BUILD
+Evidence: work/investigations/zil-titles/lightsource-radial-check.md (live js/ ActionSynth radials, start state, lamp
+moved to inventory).
+- Light sources already get turn on/off when the title maps switchable: Zork1-3, Sorcerer, Planetfall, Stationfall, LH,
+  Moonmist, Hollywood and LGOP are OK.
+- There is NO way to light from the radial (MISSING) in Enchanter (brass lantern 175, battered lantern 94), Infidel
+  (bronze torch 198, matches 44-49), Wishbringer (candle 65), Witness (brass lantern 48, lamp 159, match book 53),
+  Cutthroats (flashlight 116), PlunderedHearts (torch 9) and Deadline (crystal lamp 50, possibly fixed). Lesser cases:
+  Zork3 torch and Hollywood matches. The Zork1 torch is always lit.
+- This is a missing radial option, which the operator rule ranks above wrong ones. lightSource becomes BUILD for the
+  titles where it is proven:
+  P-LS:
+  - per-title attributeMap.lightSource = LIGHTBIT, admitted per title only with the usual evidence (2 native positives,
+    LIGHT/TURN ON reads the bit and the game replies; plus 1 negative);
+  - ActionSynth offers the game's own lighting verbs for a held or in-scope object with lightSource && !switchable. The
+    verb is chosen from the title's grammar/dictionary ("turn on"/"turn off" for lamps and lanterns where TURN ON is in
+    the grammar; "light"/"extinguish" or "blow out" where those are the game's verbs for torches, matches and candles),
+    verified against the parser's verb table and never guessed from the name;
+  - fail-closed on an unknown verb, and no change where switchable already supplies the forms.
+  The 7 MISSING titles' lightSource cells move from NC to U (evidence work).
+All other keys keep the R1 OUT recommendation, judged on per-key merits (redundant source / no visible change); the
+release-set argument is withdrawn as justification.
