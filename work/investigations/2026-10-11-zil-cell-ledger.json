@@ -546,7 +546,7 @@
   },
   "switchable": {
    "s": "S",
-   "r": "r45+r46 batch-r45r46.diff gate ACCEPT grok2 2026-10-30; opreg 13/0; 309x2 4 FLAKY Inform only switchable=32 SWITCHBIT | REVIEW-HELD (codex #5684/#5689): committed 7ffb59e with one native positive (case switch 134) + exact census; second native owner (generator 96 / dipswitch 143) in progress, else field withdrawn."
+   "r": "switchable 32 = SWITCHBIT, landed 7ffb59e. KEEP ruling grok2 (hhgg-switchable-ruling.md; codex absent): exact census 3/3 real switches + bit-read positive case switch 134 + behavioural generator 96 (handles ON vs cup refused) + negatives gown/cup; census+behaviour tier (transparent x8 / Wishbringer precedent). No second bit-read positive (dipswitch 143 unreachable)."
   },
   "on": {
    "s": "NC",
