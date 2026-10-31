@@ -2853,6 +2853,18 @@
   "nested": {
    "s": "UD",
    "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+  },
+  "proper": {
+   "s": "NC",
+   "r": "Key-level FOUR-SEAT DECISION 2026-10-31 (nc-keys-proposal-r1.md R3-A; claude/codex/grok/grok2 ACCEPT) applied to Sherlock after D198 (0d1390ac) made it confirmed-zil: FL-NOARTC 29 exists in source (sherlock-source-flags.json) but no wrapper consumer composes articles/pronouns/number; reopen on a composing consumer."
+  },
+  "female": {
+   "s": "NC",
+   "r": "Key-level FOUR-SEAT DECISION 2026-10-31 (nc-keys-proposal-r1.md R3-A; claude/codex/grok/grok2 ACCEPT) applied to Sherlock after D198 (0d1390ac) made it confirmed-zil: FL-FEMALE 27 exists in source (sherlock-source-flags.json) but no wrapper consumer composes articles/pronouns/number; reopen on a composing consumer."
+  },
+  "pluralname": {
+   "s": "NC",
+   "r": "Key-level FOUR-SEAT DECISION 2026-10-31 (nc-keys-proposal-r1.md R3-A; claude/codex/grok/grok2 ACCEPT) applied to Sherlock after D198 (0d1390ac) made it confirmed-zil: FL-PLURAL 28 exists in source (sherlock-source-flags.json) but no wrapper consumer composes articles/pronouns/number; reopen on a composing consumer."
   }
  }
 }
