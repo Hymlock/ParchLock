@@ -2936,7 +2936,7 @@
   },
   "visited": {
    "s": "NC",
-   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): key-level visited rule (navigation supplies visited). Basis corrected per grok: FL-SEEN IS set on one room (places2.zil:358 RM-SHERMANS-HOUSE, read places3.zil:1123) as a script flag, not a remote-described map domain; no consumer use."
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): key-level visited NC (navigation supplies physical visited). Actual room-description carrier FL-TOUCHED 3: boot.zil:371-372 and places3.zil:103; same bit as object moved:3, separate room domain. Complete pinned-source caller audit (grok visited-touched-1040 packet; codex sherlock-domain-votes-1449.md, 27 Git-blob-verified ZIL files) finds only current-place RT-DESCRIBE-PLACE callers; remote rooms use CONTENTS, which does not set/read TOUCHED. FL-SEEN on RM-SHERMANS-HOUSE is a plot latch (places2:358, places3:1123), not visited. No attrs.visited consumer or new mapping; reopen on a qualified useful consumer."
   }
  }
 }
