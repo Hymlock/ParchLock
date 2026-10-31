@@ -38,3 +38,8 @@ Decision index: D216/D220 established exact-digest **playerObject / playerGlobal
 **Proposed fix class:** playerGlobal 18 for cabal and rameses (V34). Each needs one ChangePlayer/turn proof that V34 tracks the player (vs V69).
 Then room = enclosingRoom(player), through the seat/bunkbed. That gives roomSource player-containment, so M09 admits.
 bluechairs/Tokyo2 (player in the room, but existing-resolver) and Heroine (containment, announce fails) remain separate classes, still open.
+
+## Sealed step 3 (claude, 18:10): player-global stability
+- cabal: "stand" gives "YOU'RE STAYING PUT". The game keeps you seated, and V34 = V69 = 221 in "your seat" stays the same across turns. The app's pid flips 42 -> 20, unstable and parentless.
+- rameses: "stand" and "north" are refused ("don't want to get out of bed"); V34 = 24 on "my bunkbed" is stable.
+Both games hold the PC in furniture by design at the start. The library player global is the stable identity, and the app's named-player choice is not.
