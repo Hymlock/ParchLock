@@ -1,0 +1,305 @@
+{
+ "config": "lgop-noun-native.config.json",
+ "story": "LeatherGoddessesofPhobos.z3.js",
+ "seed": 0,
+ "tier": "T1 native: fresh play.html walk (JSEED RNG parity), unforced commands; test_attr ops recorded passively; no RAM/fact writes",
+ "gameSha256": "5a0bd659782f91639c54ab1034390af315eba596fc9c7eab0163a03556c14a8c",
+ "readerSha256": "da89f11f5c0e7fb4c9200e7f4c8e7caa2989f63aeb016fb4a3523769add1a260",
+ "configSha256": "6ef50f395157dc1fbffd4b01fdb9a97d55aac262a949dd988dea3c6e354c3c2d",
+ "routeLen": 170,
+ "reachedAt": 170,
+ "tests": [
+  {
+   "cmd": "examine circle",
+   "id": 83,
+   "role": "noun-acceptance",
+   "text": "It's like staring into an eternal void of blackest infinity sucking up all life and thought and hope and being -- or, like what you see after getting your face smashed in a bar fight. You can pick the metaphor you're most familiar with.\n \n>",
+   "before": {
+    "attrs": [],
+    "parent": 40,
+    "inScope": false
+   },
+   "after": {
+    "attrs": [],
+    "parent": 40,
+    "inScope": false,
+    "here": "Cell"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": [
+    [
+     83,
+     19,
+     0
+    ],
+    [
+     83,
+     19,
+     0
+    ],
+    [
+     83,
+     1,
+     0
+    ],
+    [
+     83,
+     31,
+     0
+    ]
+   ]
+  },
+  {
+   "cmd": "examine hole",
+   "id": 83,
+   "role": "noun-acceptance",
+   "text": "It's like staring into an eternal void of blackest infinity sucking up all life and thought and hope and being -- or, like what you see after getting your face smashed in a bar fight. You can pick the metaphor you're most familiar with.\n \n>",
+   "before": {
+    "attrs": [],
+    "parent": 40,
+    "inScope": false
+   },
+   "after": {
+    "attrs": [],
+    "parent": 40,
+    "inScope": false,
+    "here": "Cell"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": [
+    [
+     83,
+     19,
+     0
+    ],
+    [
+     83,
+     19,
+     0
+    ],
+    [
+     83,
+     1,
+     0
+    ],
+    [
+     83,
+     31,
+     0
+    ]
+   ]
+  },
+  {
+   "cmd": "examine black circle",
+   "id": 83,
+   "role": "noun-acceptance",
+   "text": "It's like staring into an eternal void of blackest infinity sucking up all life and thought and hope and being -- or, like what you see after getting your face smashed in a bar fight. You can pick the metaphor you're most familiar with.\n \n>",
+   "before": {
+    "attrs": [],
+    "parent": 40,
+    "inScope": false
+   },
+   "after": {
+    "attrs": [],
+    "parent": 40,
+    "inScope": false,
+    "here": "Cell"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": [
+    [
+     83,
+     19,
+     0
+    ],
+    [
+     83,
+     19,
+     0
+    ],
+    [
+     83,
+     1,
+     0
+    ],
+    [
+     83,
+     31,
+     0
+    ]
+   ]
+  },
+  {
+   "cmd": "examine black hole",
+   "id": 83,
+   "role": "noun-acceptance",
+   "text": "It's like staring into an eternal void of blackest infinity sucking up all life and thought and hope and being -- or, like what you see after getting your face smashed in a bar fight. You can pick the metaphor you're most familiar with.\n \n>",
+   "before": {
+    "attrs": [],
+    "parent": 40,
+    "inScope": false
+   },
+   "after": {
+    "attrs": [],
+    "parent": 40,
+    "inScope": false,
+    "here": "Cell"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": [
+    [
+     83,
+     19,
+     0
+    ],
+    [
+     83,
+     19,
+     0
+    ],
+    [
+     83,
+     1,
+     0
+    ],
+    [
+     83,
+     31,
+     0
+    ]
+   ]
+  }
+ ],
+ "ts": "2026-10-31T16:07:03.987Z",
+ "untilInfo": null,
+ "beforeConsumer": {
+  "room": 50,
+  "owner": {
+   "id": 83,
+   "name": "black circle",
+   "parentId": 40,
+   "scopeRoomId": 50,
+   "attrs": {
+    "animate": false,
+    "wearable": false,
+    "concealed": false,
+    "container": false,
+    "door": false,
+    "edible": false,
+    "enterable": false,
+    "general": false,
+    "light": false,
+    "locked": false,
+    "moved": false,
+    "on": false,
+    "open": false,
+    "isOpen": false,
+    "proper": false,
+    "scenery": false,
+    "scored": false,
+    "static": false,
+    "supporter": false,
+    "talkable": false,
+    "visited": false,
+    "workflag": false,
+    "worn": false,
+    "male": false,
+    "female": false,
+    "neuter": false,
+    "pluralname": false,
+    "takeable": false,
+    "switchable": false
+   },
+   "aliases": [
+    "hole",
+    "circle"
+   ],
+   "confidence": 0.85,
+   "discovered": true,
+   "localGlobal": true,
+   "revealedLocalGlobal": true,
+   "displayName": "black circle"
+  },
+  "name": "",
+  "rawParent": 40,
+  "marks": [
+   {
+    "text": "black circle",
+    "data": {
+     "noun": "black circle",
+     "kind": "object",
+     "candidateIds": "[83]",
+     "coverIds": "[\"83\"]",
+     "objectId": "83"
+    }
+   }
+  ]
+ },
+ "afterConsumer": {
+  "room": 50,
+  "owner": {
+   "id": 83,
+   "name": "black circle",
+   "parentId": 40,
+   "scopeRoomId": 50,
+   "attrs": {
+    "animate": false,
+    "wearable": false,
+    "concealed": false,
+    "container": false,
+    "door": false,
+    "edible": false,
+    "enterable": false,
+    "general": false,
+    "light": false,
+    "locked": false,
+    "moved": false,
+    "on": false,
+    "open": false,
+    "isOpen": false,
+    "proper": false,
+    "scenery": false,
+    "scored": false,
+    "static": false,
+    "supporter": false,
+    "talkable": false,
+    "visited": false,
+    "workflag": false,
+    "worn": false,
+    "male": false,
+    "female": false,
+    "neuter": false,
+    "pluralname": false,
+    "takeable": false,
+    "switchable": false
+   },
+   "aliases": [
+    "hole",
+    "circle"
+   ],
+   "confidence": 0.85,
+   "discovered": true,
+   "localGlobal": true,
+   "revealedLocalGlobal": true,
+   "displayName": "black circle"
+  },
+  "name": "",
+  "rawParent": 40,
+  "marks": [
+   {
+    "text": "black circle",
+    "data": {
+     "noun": "black circle",
+     "kind": "object",
+     "candidateIds": "[83]",
+     "coverIds": "[\"83\"]",
+     "objectId": "83"
+    }
+   }
+  ]
+ }
+}
