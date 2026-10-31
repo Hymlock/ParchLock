@@ -10,7 +10,7 @@ ruling that it needs nothing). Status: TODO / ACTIVE / BLOCKED(on X) / DONE / CL
 | D1 | Inventory hidden-parent recursion: R2 ACCEPTED (codex #5543). Code in working tree (walkVisibleDescendants hiddenRecurses); facts + harness + gate r44 in progress. | ACTIVE | claude | r44 |
 | D2 | light semantics: CLOSED by consensus (codex ACCEPT): no code; light stays a heuristic key, illumination via illuminationState; 18 cells L:NC (no semantic light-emission reader). | CLOSED | claude+codex | - |
 | D3 | world-map-ui 6 failures: DONE. Bisected to 8291b5f (D215 save-tied map); the reload fixture was stale (a fresh boot archives the old map by design). Harness now loads the archived slot; 52/0. | DONE | claude | - |
-| D4 | Room-fixed switches: P4 R2 ACCEPTED (#5543). Implement after D11/D10; first candidate Witness radio 162. | ACTIVE | claude | after P10 |
+| D4 | Room-fixed switches: LANDED d91a422 (P4 switchableScope; Witness radio 162). | DONE | claude | - |
 | D5 | Object Locked status row: codex R1 proposal; claude REVISE (D5-r1-attack-claude.md, #5550). | REVIEW | codex | R2 |
 | D6 | PROFILE bits leaking into ZIL attrs: MERGED into D11 (the leak does reach rooms). | MERGED | claude | see D11 |
 | D7 | Suspect transparent actors: CLOSED, correct per source. ALICIA-COAT (people.zil:1526) is TAKEBIT CONTBIT OPENBIT SEARCHBIT with an INVISIBLE LABEL inside (a clue). While worn, ALICIA-COAT-F refuses in character; once the butler has it, searching reveals the label. Open/close/search are real game actions. | CLOSED | claude | - |
@@ -41,5 +41,5 @@ ruling that it needs nothing). Status: TODO / ACTIVE / BLOCKED(on X) / DONE / CL
 | D5b | Missing Unlock: LH native radial capture (codex d5-lh-radial-native-r1) shows "Unlock with" already on both qualified targets (hatch 119, padlock 135); missing count 0. Other holders need own scope evidence before any claim. | EVIDENCE-0-MISSING | codex | per-title scope |
 | D14 | Merged into D8 (Suspended robot roles): codex prior D8 halves = first half, claude-SEALED (suspended-d14/) = second; codex preparing D8 API R3. | MERGED | codex | D8 R3 |
 | D15 | Suspended animate: VICBIT 24 (robots) might prove animate, reversing NA; that would let real openables (panel 80) get Open/Close. | TODO | claude | after D14 |
-| D16 | Enchanter/Sorcerer spell book: spells are NDESC children; D1 hidden fact would drop them (D148 spell links). Excluded from r44. Needs a disposition (like Spellbreaker BRIEFBIT). | TODO | claude | - |
+| D16 | Spell books: LANDED P16 37327b0 (Enchanter) + f7e1180 (Sorcerer, Spellbreaker). | DONE | claude | - |
 | D17 | Stats idle rewrites: FIXED (P17, grok2 ACCEPT). 33 -> 0 writes per 3 s idle. Follow-ups logged: Tick on grid characterData; double WorldModel.tick per Refresh (efficiency). | DONE | claude | - |
