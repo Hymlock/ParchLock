@@ -1,13 +1,13 @@
 // Identity Wear R3 (four-seat ACCEPTED PROPOSAL-identity-wear-r3 sha 4a1e90a7, codex correction to packet
 // instruction 3): fact wearForms offers bare WEAR for exact direct-held, unworn owners only (Infidel ring 2,
-// Lurking Horror gloves 203 / boots 104, Starcross suit 144). Original story bytes with test-only RAM edits;
+// Lurking Horror gloves 203 / boots 104, Starcross suit 144, LH hyrax 133, Starcross junk suit 176). Original story bytes with test-only RAM edits;
 // native evidence is separate (work/investigations/grok2/wear-concealed/cold-*.json, radial-infidel-ring-held-unworn.json).
 const fs=require('fs'),vm=require('vm'),crypto=require('crypto'),assert=require('assert');
 let n=0;function check(name,fn){fn();n++;console.log('PASS '+name);}
 const TITLES=[
   {game:'Infidel.z3.js',digest:'91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3',worn:22,owners:{2:'ring'},other:33,container:31},
-  {game:'TheLurkingHorror.z3.js',digest:'1862ef7ce4c25abd32d442392fe7eaba9c1595ed5411df75e99b06f43af6f5af',worn:3,owners:{203:'gloves',104:'boots'},other:199,playerGlobal:[188,56],room:202},
-  {game:'Starcross.z3.js',digest:'1d9a69257349060823893f4cfa616f1040a3b41cbf38a6717199f206cd8f678c',worn:24,owners:{144:'suit'},other:71}];
+  {game:'TheLurkingHorror.z3.js',digest:'1862ef7ce4c25abd32d442392fe7eaba9c1595ed5411df75e99b06f43af6f5af',worn:3,owners:{203:'gloves',104:'boots',133:'hyrax'},other:199,playerGlobal:[188,56],room:202},
+  {game:'Starcross.z3.js',digest:'1d9a69257349060823893f4cfa616f1040a3b41cbf38a6717199f206cd8f678c',worn:24,owners:{144:'suit',176:'suit'},other:71}];
 function load(t){
   const bytes=Uint8Array.from(require(process.cwd()+'/work/investigations/zil-attr-analyzer.js').story(t.game));
   const mem=new DataView(bytes.buffer),digest=crypto.createHash('sha256').update(bytes).digest('hex');
@@ -117,9 +117,9 @@ for(const t of TITLES){
     T.place(t.other,'held');const list=S.commandsForObject(T.object(t.other),'inventory',null);
     assert(!list.some(x=>x.identityWearScope),JSON.stringify(verbs(list)));assert.strictEqual(S.identityWearScopeFor(T.object(t.other)),null);});
 }
-check('other titles: only the three first-batch digests carry wearForms (LH ring, Starcross junk 176 stay out)',()=>{
+check('other titles: only the three first-batch digests carry wearForms (Infidel knapsack 31 stays out: take auto-wears)',()=>{
   const c=vm.createContext({});vm.runInContext(fs.readFileSync('js/ModuleStatFactsClaude.js','utf8'),c);
   const rows=vm.runInContext('ModuleStatFactsClaude',c),with_=Object.keys(rows).filter(k=>rows[k]&&rows[k].wearForms);
   assert.deepStrictEqual(with_.sort(),TITLES.map(t=>t.digest).sort());
-  assert(!rows[TITLES[2].digest].wearForms.objects.includes(176));});
+  assert(!rows[TITLES[0].digest].wearForms.objects.includes(31));});
 console.log(n+' identity-wear checks passed; native evidence is separate.');

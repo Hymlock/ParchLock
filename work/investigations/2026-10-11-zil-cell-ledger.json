@@ -937,12 +937,12 @@
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LIGHTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 4 commented. Source https://github.com/historicalsource/infidel@dca8235 (20 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 438 objects, room+inventory): no /^(turn|switch) (on|off)\\b/ verb offered."
   },
   "clothing": {
-   "s": "U",
-   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): PARTIAL: wearForms (D259) covers ring 2; OPEN owner subdomain: knapsack (camp.zil:1957 FSET KNAPSACK WEARBIT). Not whole-cell closed (codex 1422)."
+   "s": "S",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (claude author PROPOSAL-wear-subdomains-r1.md; grok VOTES-grok-wear-subdomains-r1.md; codex absent, audits on return): wearForms [2] complete; knapsack 31 NA for held-direct (take auto-wears, doff drops it; never held unworn)."
   },
   "wearable": {
-   "s": "U",
-   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): PARTIAL: wearForms (D259) covers ring 2; OPEN owner subdomain: knapsack (camp.zil:1957 FSET KNAPSACK WEARBIT). Not whole-cell closed (codex 1422)."
+   "s": "S",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (claude author PROPOSAL-wear-subdomains-r1.md; grok VOTES-grok-wear-subdomains-r1.md; codex absent, audits on return): wearForms [2] complete; knapsack 31 NA for held-direct (take auto-wears, doff drops it; never held unworn)."
   },
   "worn": {
    "s": "U",
@@ -1557,12 +1557,12 @@
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/lurkinghorror@51d8060 (16 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 323 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
   },
   "clothing": {
-   "s": "U",
-   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): PARTIAL: wearForms (D259) covers gloves 203, boots 104; OPEN owner subdomain: brass hyrax ring (RING-F cs.zil:5270). Not whole-cell closed (codex 1422)."
+   "s": "S",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (claude author PROPOSAL-wear-subdomains-r1.md; grok VOTES-grok-wear-subdomains-r1.md; codex absent, audits on return): wearForms [203,104,133]; brass hyrax 133 native wear (\"It fits surprisingly well\")/remove; gloves refusal is the game's own."
   },
   "wearable": {
-   "s": "U",
-   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): PARTIAL: wearForms (D259) covers gloves 203, boots 104; OPEN owner subdomain: brass hyrax ring (RING-F cs.zil:5270). Not whole-cell closed (codex 1422)."
+   "s": "S",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (claude author PROPOSAL-wear-subdomains-r1.md; grok VOTES-grok-wear-subdomains-r1.md; codex absent, audits on return): wearForms [203,104,133]; brass hyrax 133 native wear (\"It fits surprisingly well\")/remove; gloves refusal is the game's own."
   },
   "talkable": {
    "s": "S",
@@ -2103,12 +2103,12 @@
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LOCKEDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKED: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/starcross@3ceaa9f (13 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 246 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
   },
   "clothing": {
-   "s": "U",
-   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): PARTIAL: wearForms (D259) covers suit 144; OPEN owner subdomain: junk spacesuit 176 (JUNK-SPACESUIT-FCN actions.zil:1977). Not whole-cell closed (codex 1422)."
+   "s": "S",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (claude author PROPOSAL-wear-subdomains-r1.md; grok VOTES-grok-wear-subdomains-r1.md; codex absent, audits on return): wearForms [144,176]; junk suit 176 native wear, worn remove clears bit 24 (grok sc-worn-remove.json)."
   },
   "wearable": {
-   "s": "U",
-   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): PARTIAL: wearForms (D259) covers suit 144; OPEN owner subdomain: junk spacesuit 176 (JUNK-SPACESUIT-FCN actions.zil:1977). Not whole-cell closed (codex 1422)."
+   "s": "S",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (claude author PROPOSAL-wear-subdomains-r1.md; grok VOTES-grok-wear-subdomains-r1.md; codex absent, audits on return): wearForms [144,176]; junk suit 176 native wear, worn remove clears bit 24 (grok sc-worn-remove.json)."
   },
   "moved": {
    "s": "S",
@@ -2919,8 +2919,8 @@
    "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): no dedicated hide bit: reveal by MOVE; FL-NODESC 32 is list-suppression only, parser scope never tests it (PACKET-concealed-claude.md)."
   },
   "inventoryHiddenAttribute": {
-   "s": "U",
-   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): OPEN: held NODESC is reachable via the Lair double-tie then untie/cut rope (places2.zil:718, things2.zil:1886; grok). Native INVENTORY-omit proof not run; do not map 32 yet."
+   "s": "S",
+   "r": "TWO ACTIVE SEATS ACCEPT (codex out of credits; audits on return): grok author PACKET-sherlock-invhidden-lair-native-grok-1115.md (native INVENTORY omits held rope 176 with NODESC 32, lists it clear), claude CLAUDE-VOTES-sherlock-invhidden.md. Landed inventoryHiddenAttribute 32, recurses false; Sherlock gate inv/inv2 now match native i exactly (pocket/lapel/pound note dropped)."
   },
   "switchable": {
    "s": "NC",
@@ -2937,6 +2937,38 @@
   "visited": {
    "s": "NC",
    "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): key-level visited NC (navigation supplies physical visited). Actual room-description carrier FL-TOUCHED 3: boot.zil:371-372 and places3.zil:103; same bit as object moved:3, separate room domain. Complete pinned-source caller audit (grok visited-touched-1040 packet; codex sherlock-domain-votes-1449.md, 27 Git-blob-verified ZIL files) finds only current-place RT-DESCRIBE-PLACE callers; remote rooms use CONTENTS, which does not set/read TOUCHED. FL-SEEN on RM-SHERMANS-HOUSE is a plot latch (places2:358, places3:1123), not visited. No attrs.visited consumer or new mapping; reopen on a qualified useful consumer."
+  },
+  "absent": {
+   "s": "NA",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (grok author PACKET-sherlock-7key-NA-grok-1045.md; codex ACCEPT 1449; claude CLAUDE-VOTES-sherlock-invhidden.md): no dedicated bit (per-key candidate rejection in packet)."
+  },
+  "general": {
+   "s": "NA",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (grok author PACKET-sherlock-7key-NA-grok-1045.md; codex ACCEPT 1449; claude CLAUDE-VOTES-sherlock-invhidden.md): no dedicated bit (per-key candidate rejection in packet)."
+  },
+  "lockable": {
+   "s": "NA",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (grok author PACKET-sherlock-7key-NA-grok-1045.md; codex ACCEPT 1449; claude CLAUDE-VOTES-sherlock-invhidden.md): no dedicated bit (per-key candidate rejection in packet)."
+  },
+  "scored": {
+   "s": "NA",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (grok author PACKET-sherlock-7key-NA-grok-1045.md; codex ACCEPT 1449; claude CLAUDE-VOTES-sherlock-invhidden.md): no dedicated bit (per-key candidate rejection in packet)."
+  },
+  "workflag": {
+   "s": "NA",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (grok author PACKET-sherlock-7key-NA-grok-1045.md; codex ACCEPT 1449; claude CLAUDE-VOTES-sherlock-invhidden.md): no dedicated bit (per-key candidate rejection in packet)."
+  },
+  "male": {
+   "s": "NC",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (grok author PACKET-sherlock-7key-NA-grok-1045.md; codex ACCEPT 1449; claude CLAUDE-VOTES-sherlock-invhidden.md): NC per R3-A female precedent."
+  },
+  "neuter": {
+   "s": "NC",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (grok author PACKET-sherlock-7key-NA-grok-1045.md; codex ACCEPT 1449; claude CLAUDE-VOTES-sherlock-invhidden.md): NC per R3-A female precedent."
+  },
+  "static": {
+   "s": "NC",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (grok author PACKET-sherlock-static-26-corrected-grok-1050.md; claude CLAUDE-VOTES-sherlock-invhidden.md): 26 = FL-TRYTAKE (may try to handle; 5 takeable carriers), never static; takeability from D214 TAKE FIND. Supersedes R2 U."
   }
  }
 }

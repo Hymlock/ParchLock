@@ -368,7 +368,7 @@ var ModuleStatFactsClaude = {
         // WEARBIT state22: native knapsack31/ring2 worn positives, shovel33 refusal; Grok4127 proposal independently replayed by Codex October20.
         "wornAttribute": 22,
         // Identity Wear R3 (four-seat ACCEPTED, PROPOSAL-identity-wear-r3 sha 4a1e90a7): bare WEAR native-proven for these direct-held owners.
-        // Infidel ring 2 (radial-infidel-ring-held-unworn.json). Knapsack stays a disclosed under-offer.
+        // Infidel ring 2 (radial-infidel-ring-held-unworn.json). Knapsack 31 NA for held-direct (take auto-wears, doff drops it; PROPOSAL-wear-subdomains-r1).
         "wearForms": { "objects": [2], "verb": "wear", "scope": "held-direct" }
     },
     // Sorcerer (ZIL): stable PLAYER global 38 (Codex #3412/#3413, verified grok2 #3425): misc.zil WINNER=PROTAGONIST, PLAYER=WINNER;
@@ -834,8 +834,8 @@ var ModuleStatFactsClaude = {
         // Grok4124 design, new native two-owner proof: normal144 and tattered176; held library71/basket40 negative.
         "wornAttribute": 24,
         // Identity Wear R3 (four-seat ACCEPTED, PROPOSAL-identity-wear-r3 sha 4a1e90a7): bare WEAR native-proven for these direct-held owners.
-        // Starcross space suit 144 (cold-sc-suit.json). Junk suit 176 stays OPEN.
-        "wearForms": { "objects": [144], "verb": "wear", "scope": "held-direct" }
+        // Starcross space suit 144 (cold-sc-suit.json). Junk suit 176 added (PROPOSAL-wear-subdomains-r1: claude + grok ACCEPT; native wear, worn remove clears bit 24).
+        "wearForms": { "objects": [144, 176], "verb": "wear", "scope": "held-direct" }
     },
     // Sherlock (Infocom, z5; no historicalsource pin): constant PC object 232 "you" (Watson). Native i lists exactly
     // 232's children (black bag 172, whistle 173, hat 188, coat 302); G201 holds 232 and its parent follows the status-line
@@ -859,8 +859,12 @@ var ModuleStatFactsClaude = {
         "attributeMap": { "container": 9, "open": 5, "isOpen": 5, "wearable": 11, "animate": 40, "talkable": 47, "supporter": 16, "door": 8, "locked": 15, "openable": 44, "enterable": 1, "transparent": 2, "moved": 3, "edible": 41 },
         // wornAttribute 34 = FL-WORN (dynamic state): native set/clear on hat 188 and whistle 173; knife stays clear. REMOVE/TAKE OFF syntax FINDs FL-WORN.
         "wornAttribute": 34,
+        // inventoryHidden 32 = FL-NODESC (two-active-seat ACCEPT, codex absent/audits on return: grok PACKET-sherlock-invhidden-lair-native-grok-1115.md author, claude CLAUDE-VOTES-sherlock-invhidden.md):
+        // native INVENTORY omits the held rope 176 with 32 set (Lair untie), lists it with 32 clear (cut). Direct children only. Static stays NC (26 = TRYTAKE).
+        "inventoryHiddenAttribute": 32,
+        "inventoryHiddenRecurses": false,
         // lightForms (three-seat ACCEPT: claude PACKET-lamp-claude.md, grok VOTES-grok-claude-packets.md, codex sherlock-takeover-votes-1422.md):
-        // lamp 166 only; state FL-LIGHTED 38 (also room-lit, hence owner-scoped); FL-LAMP 42 informational (EXTINGUISH default). Natively run verbs only.
+        // lamp 166 only; state FL-LIGHTED 38 (also room-lit, hence owner-scoped); FL-LAMP 42 = parser default for LAMP-ON/OFF objects (FL-LAMP42); forms are the game defaults turn on/turn off.
         "lightForms": { "capabilityBit": 42, "stateBit": 38, "objects": [166], "on": { "default": "turn on" }, "off": { "default": "turn off" } }
     },
     // phlegm (Inform, no attribute-name table): this library numbers container 3 (I6 default: concealed 3, container 4).
@@ -1152,8 +1156,8 @@ var ModuleStatFactsClaude = {
         // WEARBIT 3 = worn state (codex #4341: gloves 203 and boots 104 natively; crowbar refused).
         "wornAttribute": 3,
         // Identity Wear R3 (four-seat ACCEPTED, PROPOSAL-identity-wear-r3 sha 4a1e90a7): bare WEAR native-proven for these direct-held owners.
-        // Lurking Horror gloves 203 / boots 104 (cold-lh-gloves.json, cold-lh-boots.json). Brass hyrax ring stays OPEN.
-        "wearForms": { "objects": [203, 104], "verb": "wear", "scope": "held-direct" },
+        // Lurking Horror gloves 203 / boots 104 (cold-lh-gloves.json, cold-lh-boots.json). Brass hyrax 133 added (PROPOSAL-wear-subdomains-r1: claude + grok ACCEPT; native wear/remove, gloves refusal is the game's own).
+        "wearForms": { "objects": [203, 104, 133], "verb": "wear", "scope": "held-direct" },
         // Native i (take all, i; 2026-10-16-hidden-bit-finder.json) tests bit18 TRUE on the pc's mouse 199 and HELP key 107
         // and omits them; FALSE on the printed chair 62, pc 191, assignment 97. Source NDESCBIT 18 exact (72/72). SOLO/SELF-AUDIT.
         "inventoryHiddenAttribute": 18,
