@@ -19,4 +19,8 @@ check('Restoring actual custody recovers current form',()=>{parent(232,38);paren
 function withPlayer(id,fn){const real=T.R.resolvePlayer;T.R.resolvePlayer=()=>({id:id,source:'stub'});try{fn();}finally{T.R.resolvePlayer=real;}}
 check('Holder id beyond the true object frontier is rejected (n2)',()=>{const big=0xFFFF;parent(166,big);withPlayer(big,()=>{assert.equal(forms().length,0);});parent(166,232);assert.equal(forms().length,1);});
 check('Holder equal to the lamp itself (self-loop) is rejected (n2)',()=>{parent(166,166);withPlayer(166,()=>{assert.equal(forms().length,0);});parent(166,232);assert.equal(forms().length,1);});
+function withLearned(verbs,fn){const C=T.c.AttrCalibrator,had=C&&C.allowedVerbsFor;if(!C)throw Error('no AttrCalibrator');C.allowedVerbsFor=()=>verbs.slice();try{fn();}finally{C.allowedVerbsFor=had;}}
+const verbsOf=()=>{const o=T.obj(166);T.payload.inventory=[o];return T.S.commandsForObject(o,'inventory').map(c=>c.command+(c.lightFormScope?'[LF]':''));};
+check('Learned switch pair is superseded by the scoped owner form (lit lamp -> only turn off)',()=>{parent(232,38);parent(166,232);T.bit(166,38,1);withLearned(['switch on','switch off','turn on'],()=>{const v=verbsOf().filter(x=>/ on | off |^(switch|turn) /.test(x));assert.deepEqual(v,['turn off lamp[LF]'],JSON.stringify(v));});T.bit(166,38,0);});
+check('Non-owner keeps its learned switch pair (filter only runs with an owner scope)',()=>{const o=T.obj(151);parent(151,232);T.payload.inventory=[o];withLearned(['switch on','switch off'],()=>{const v=T.S.commandsForObject(o,'inventory').map(c=>c.command);assert(v.includes('switch on knife')&&v.includes('switch off knife'),JSON.stringify(v));});});
 console.log('PASS '+checks+' unresolved-player custody controls (X tier)');

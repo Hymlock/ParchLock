@@ -443,7 +443,12 @@ var ModuleStatFactsClaude = {
         // moved 1 = TOUCHBIT (seeded-native tier, Codex #5335; grok1 packet P1 probe5/moved/suspect): TAKE pen 95 / costume receipt 12 set 1 (ITAKE verbs.zil:436-438); negative bar 119 stays clear (mask EXAMINE was ambiguous, excluded). Trace = g1-batch before/after attr-byte diff (test_attr only; no FSET op in opsOnId).
         // Proposed concealed 10 = native INVISIBLE; retained Codex packet concealed/packet-suspect.json (88/83 positives; 89 negative). Native/source tiers and SAVE/RESTORE qualifications remain in packet; no actor-possession or whole-title consumer closure.
         // locked 17 = LOCKED (source exact 18/18; native 2+1 + codex review-20261027/suspect-native-r3-diagnostic-r3: unforced START-ALICIA north door 212 locked+open and NORTH still reaches Walkway 169). With P10 (8b76ec8) route pause needs locked AND closed, so open-locked doors stay passable; raw lock glyph unchanged.
-        "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15, "door": 27, "enterable": 28, "transparent": 7, "talkable": 31, "moved": 1 , "concealed": 10, "locked": 17 },
+        // r51 Suspect 5U (two-active-seat ACCEPT: grok PACKET-suspect-5U-final-1332.md author, claude CLAUDE-VOTES-suspect-5U-1350.md; codex audits on return):
+        // edible 25 = FOODBIT (1/1, FOOD 143 local global; native eat food flavour; notInPayload so correct but invisible); on 11 = ONBIT (TV 190 native "The TV is on"),
+        // removes PROFILE leak (OPENBIT 13 read as on); switchable null = no switch flag in source (notebook PROFILE 21 leak; native turn on notebook refuses).
+        "attributeMap": { "container": 16, "open": 13, "isOpen": 13, "animate": 31, "supporter": 15, "door": 27, "enterable": 28, "transparent": 7, "talkable": 31, "moved": 1 , "concealed": 10, "locked": 17, "edible": 25, "on": 11, "switchable": null },
+        // wearForms (D259, W3): PRE-WEAR whitelist GUNBELT 96 / YOUR-COAT 93 / MASK 38 (verbs.zil:2642-2648); native wear/remove on 96 and 93, mask MASK-F; ALICIA-COAT 74 / FAIRY-MASK 84 excluded ("It doesn't fit").
+        "wearForms": { "objects": [96, 93, 38], "verb": "wear", "scope": "held-direct" },
         "inventoryHiddenAttribute": 19,
         "inventoryHiddenPreservesWorn": true,
         // inventoryInvisibleAttribute 10 = source INVISIBLE exact 7/7 (historicalsource a18e100): native i omits an INVISIBLE child and its subtree, worn items included (Codex R2 #5300, native resume-20261020/concealed/suspect-equipment-*-native.json, R4+R2 Equipment PASS #5357). Tested on the root's children only, never the root: reporter 99 itself carries 10.

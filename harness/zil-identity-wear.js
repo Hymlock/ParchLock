@@ -7,7 +7,8 @@ let n=0;function check(name,fn){fn();n++;console.log('PASS '+name);}
 const TITLES=[
   {game:'Infidel.z3.js',digest:'91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3',worn:22,owners:{2:'ring'},other:33,container:31},
   {game:'TheLurkingHorror.z3.js',digest:'1862ef7ce4c25abd32d442392fe7eaba9c1595ed5411df75e99b06f43af6f5af',worn:3,owners:{203:'gloves',104:'boots',133:'hyrax'},other:199,playerGlobal:[188,56],room:202},
-  {game:'Starcross.z3.js',digest:'1d9a69257349060823893f4cfa616f1040a3b41cbf38a6717199f206cd8f678c',worn:24,owners:{144:'suit',176:'suit'},other:71}];
+  {game:'Starcross.z3.js',digest:'1d9a69257349060823893f4cfa616f1040a3b41cbf38a6717199f206cd8f678c',worn:24,owners:{144:'suit',176:'suit'},other:71},
+  {game:'Suspect.z3.js',digest:'d02fd95bae5398f9b87fe0f537f288b45e93967008948970f1982a65b888eddb',worn:5,owners:{96:'gunbelt',93:'overcoat',38:'mask'},other:84}];
 function load(t){
   const bytes=Uint8Array.from(require(process.cwd()+'/work/investigations/zil-attr-analyzer.js').story(t.game));
   const mem=new DataView(bytes.buffer),digest=crypto.createHash('sha256').update(bytes).digest('hex');
@@ -117,7 +118,7 @@ for(const t of TITLES){
     T.place(t.other,'held');const list=S.commandsForObject(T.object(t.other),'inventory',null);
     assert(!list.some(x=>x.identityWearScope),JSON.stringify(verbs(list)));assert.strictEqual(S.identityWearScopeFor(T.object(t.other)),null);});
 }
-check('other titles: only the three first-batch digests carry wearForms (Infidel knapsack 31 stays out: take auto-wears)',()=>{
+check('other titles: only the wearForms digests (Infidel, LH, Starcross, Suspect) carry wearForms (Infidel knapsack 31 stays out: take auto-wears)',()=>{
   const c=vm.createContext({});vm.runInContext(fs.readFileSync('js/ModuleStatFactsClaude.js','utf8'),c);
   const rows=vm.runInContext('ModuleStatFactsClaude',c),with_=Object.keys(rows).filter(k=>rows[k]&&rows[k].wearForms);
   assert.deepStrictEqual(with_.sort(),TITLES.map(t=>t.digest).sort());

@@ -2333,6 +2333,26 @@
   "locked": {
    "s": "S",
    "r": "r45+r46 batch-r45r46.diff gate ACCEPT grok2 2026-10-30; opreg 13/0; 309x2 4 FLAKY Inform only locked=17 LOCKED P10"
+  },
+  "takeable": {
+   "s": "S",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (grok author PACKET-suspect-5U-final-1332.md; claude CLAUDE-VOTES-suspect-5U-1350.md; codex audits on return): D214 GrammarProvider.d214TakeAttribute TAKE FIND bit 22 = source TAKEBIT (census: takeable==b22 on all 220 objects); native take pen / refuse party; no fact."
+  },
+  "lightSource": {
+   "s": "NA",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (grok author PACKET-suspect-5U-final-1332.md; claude CLAUDE-VOTES-suspect-5U-1350.md; codex audits on return): no LIGHTBIT in source; house always lit; ONBIT only TV 190 + burglar alarm."
+  },
+  "wearable": {
+   "s": "S",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (grok author PACKET-suspect-5U-final-1332.md; claude CLAUDE-VOTES-suspect-5U-1350.md; codex audits on return): no wearable capability bit (WEARBIT 5 = worn state); PRE-WEAR whitelist via wearForms [96 gunbelt, 93 reporter's overcoat, 38 western mask] (D259 W3); native wear/remove on all three; live nouns wear gunbelt/overcoat/mask accepted; 74/84 excluded (doesn't fit)."
+  },
+  "edible": {
+   "s": "S",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (grok author PACKET-suspect-5U-final-1332.md; claude CLAUDE-VOTES-suspect-5U-1350.md; codex audits on return): edible 25 = FOODBIT (1/1 FOOD 143, native eat food flavour); local global not in payload, so correct but invisible."
+  },
+  "on": {
+   "s": "S",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (grok author PACKET-suspect-5U-final-1332.md; claude CLAUDE-VOTES-suspect-5U-1350.md; codex audits on return): on 11 = ONBIT (TV 190 native \"The TV is on\"); removes PROFILE leak (OPENBIT 13 read as on on gunbelt/overcoat/masks). switchable null (no source flag; notebook leak)."
   }
  },
  "Suspended.z3.js": {
