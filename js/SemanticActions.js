@@ -351,6 +351,7 @@ var SemanticActions = {
             if (c.learnedWordScope) form.learnedWordScope = c.learnedWordScope;
             if (c.wornRemovalScope) form.wornRemovalScope = c.wornRemovalScope;
             if (c.identityWearScope) form.identityWearScope = c.identityWearScope;
+            if (c.lightFormScope) form.lightFormScope = c.lightFormScope;
             return form;
         });
     },
@@ -381,6 +382,9 @@ var SemanticActions = {
                     }
                     if (c.identityWearScope && winner.command === c.command && String(winner.objectId) === String(c.objectId)) {
                         winner.identityWearScope = c.identityWearScope;
+                    }
+                    if (c.lightFormScope && winner.command === c.command && String(winner.objectId) === String(c.objectId)) {
+                        winner.lightFormScope = c.lightFormScope;
                     }
                     winner.evidence = (winner.evidence || []).concat((c.evidence || []).map(SemanticActions._d198Clone));
                     winner.provenance = winner.provenance || [];

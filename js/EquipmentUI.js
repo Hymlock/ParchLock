@@ -59,7 +59,7 @@ var EquipmentUI = {
         function add(form, enter, descriptor) {
             if (!allowed(form)) return;
             // Identity Wear (R3) carries its own scope; keep it like the E5 worn-removal scope.
-            var scoped = descriptor && (descriptor.wornRemovalScope || descriptor.identityWearScope) ? descriptor : null;
+            var scoped = descriptor && (descriptor.wornRemovalScope || descriptor.identityWearScope || descriptor.lightFormScope) ? descriptor : null;
             if (scoped && !Actionable.radialCommandCurrent(scoped)) return;
             if (forms[form]) {
                 if (scoped) { forms[form].ScopedCommand = scoped; forms[form].Enter = true; }
@@ -104,6 +104,7 @@ var EquipmentUI = {
             if (!c.ScopedCommand) return;
             if (c.ScopedCommand.wornRemovalScope) c.Label = "Drop";
             else if (c.ScopedCommand.identityWearScope) c.Label = "Wear";
+            else if (c.ScopedCommand.lightFormScope) c.Label = c.ScopedCommand.lightFormScope.verb.charAt(0).toUpperCase() + c.ScopedCommand.lightFormScope.verb.slice(1);
         });
         return candidates;
     },
@@ -116,12 +117,13 @@ var EquipmentUI = {
         if (!candidate || (enter && !candidate.Enter)) return;
         if (selectedDescriptor) {
             var current = candidate.ScopedCommand;
-            var kind = selectedDescriptor.wornRemovalScope ? "wornRemovalScope" : selectedDescriptor.identityWearScope ? "identityWearScope" : null;
+            var kind = selectedDescriptor.wornRemovalScope ? "wornRemovalScope" : selectedDescriptor.identityWearScope ? "identityWearScope" : selectedDescriptor.lightFormScope ? "lightFormScope" : null;
             var prior = kind && selectedDescriptor[kind];
             if (!current || !prior || !current[kind] || !Actionable.radialCommandCurrent(current) ||
                 current.command !== selectedDescriptor.command || current.objectId !== selectedDescriptor.objectId ||
                 current[kind].digest !== prior.digest || current[kind].noun !== prior.noun ||
-                (kind === "identityWearScope" && (current[kind].id !== prior.id || current[kind].generation !== prior.generation))) return;
+                ((kind === "identityWearScope" || kind === "lightFormScope") && (current[kind].id !== prior.id || current[kind].generation !== prior.generation)) ||
+                (kind === "lightFormScope" && (current[kind].side !== prior.side || current[kind].command !== prior.command || current[kind].context !== prior.context))) return;
             Actionable.runChosenCommand(current.command); return;
         }
         // Every Yourself form is a complete one-object command ("wield

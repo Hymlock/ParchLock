@@ -378,6 +378,38 @@ var ActionSynth = {
         return !!(current && scope.kind === current.kind && scope.digest === current.digest && scope.generation === current.generation &&
             scope.id === current.id && scope.noun === current.noun && scope.command === current.command && command.command === current.command);
     },
+    // lightForms tap currency (codex 1107, identity-Wear pattern): the exact fact, generation, owner,
+    // custody context, live state side and unique verified noun the light verb was built from.
+    lightFormScopeFor: function (obj, name, context) {
+        try {
+            if (!obj || obj.examineOnly || !Number.isInteger(Number(obj.id)) || (context !== "inventory" && context !== "room") ||
+                typeof AttributeSchema === "undefined" || !AttributeSchema.lightForms || typeof ZRamReader === "undefined" ||
+                typeof ModuleStatFactsClaude === "undefined" || typeof ModuleLibrary === "undefined" ||
+                typeof Actionable === "undefined" || !Actionable.referenceFor) return null;
+            var id = Number(obj.id), mem = AttributeSchema._getMem();
+            var digest = ModuleLibrary.currentExecutableDigest && ModuleLibrary.currentExecutableDigest();
+            var fact = mem && ZRamReader.executableLayoutFacts(mem);
+            if (!digest || !fact || ModuleStatFactsClaude[digest] !== fact || !fact.lightForms) return null;
+            var forms = AttributeSchema.lightForms(mem, id, context);
+            if (!Array.isArray(forms) || forms.length !== 1 || !ActionSynth.literalAvailable(forms[0])) return null;
+            var lf = fact.lightForms, h = ZRamReader.header(mem), base = ZRamReader.objectBase(h, id);
+            var lit = !!(mem.getUint8(base + (lf.stateBit >> 3)) & (0x80 >> (lf.stateBit & 7)));
+            var ref = Actionable.referenceFor(obj);
+            if (!ref || !ref.unique || !ref.verified || typeof ref.noun !== "string" || !ref.noun || (name != null && ref.noun !== name)) return null;
+            return { kind: "lightForms", digest: digest, generation: ActionSynth.currentGeneration(), id: id,
+                noun: ref.noun, verb: forms[0], command: forms[0] + " " + ref.noun, side: lit ? "off" : "on",
+                stateBit: lf.stateBit, context: context };
+        } catch (eLightScope) { return null; }
+    },
+    lightFormCommandCurrent: function (command) {
+        if (!command || command.sharedMembers || !command.lightFormScope) return false;
+        var scope = command.lightFormScope;
+        var current = ActionSynth.lightFormScopeFor({ id: Number(command.objectId), name: scope.noun }, scope.noun, scope.context);
+        return !!(current && scope.kind === current.kind && scope.digest === current.digest && scope.generation === current.generation &&
+            scope.id === current.id && scope.noun === current.noun && scope.verb === current.verb && scope.side === current.side &&
+            scope.stateBit === current.stateBit && scope.command === current.command && command.verb === current.verb &&
+            command.command === current.command);
+    },
     commandsForObject: (obj, context, containerName, options) => {
         if (!obj || !obj.name) return [];
         // Resolve the same observed vocabulary row used by marks and radials.
@@ -537,8 +569,13 @@ var ActionSynth = {
         }
         // lightForms (four-seat ACCEPT): a listed light owner, held or in the player's room, gets its
         // own on or off verb chosen by the live state bit. Additive; no fact leaves verbs unchanged.
+        // Each light verb carries a lightFormScope re-validated at tap (codex 1107); no scope -> no verb.
+        var lightScopes = {};
         if (!containerName) ActionSynth.lightFormsFor(obj.id, context).forEach(function (v) {
-            if (verbs.indexOf(v) < 0) verbs.push(v);
+            var scope = ActionSynth.lightFormScopeFor(obj, name, context);
+            if (!scope || scope.verb !== v || verbs.indexOf(v) >= 0) return;
+            lightScopes[v] = scope;
+            verbs.push(v);
         });
         var result = verbs.map(function (v) {
             var cmd = v === "examine" ? ("examine " + name) : (v + " " + name);
@@ -558,6 +595,10 @@ var ActionSynth = {
         });
         if (identityWear) result.forEach(function (entry) {
             if (entry.verb === "wear" && entry.command === identityWear.command) entry.identityWearScope = identityWear;
+        });
+        result.forEach(function (entry) {
+            var ls = lightScopes.hasOwnProperty(entry.verb) ? lightScopes[entry.verb] : null;
+            if (ls && entry.command === ls.command) entry.lightFormScope = ls;
         });
         if (typeof LearnedWords !== "undefined") LearnedWords.commands(obj).forEach(function (c) {
             if (!result.some(function (existing) { return existing.command === c.command; })) result.push(c);

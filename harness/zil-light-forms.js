@@ -9,8 +9,12 @@ function load(file){
   const bytes=Uint8Array.from(story(file)),mem=new DataView(bytes.buffer);
   const digest=crypto.createHash('sha256').update(bytes).digest('hex'),header=Array.from(bytes.slice(0,28));
   const T={payload:{inventory:[],discoveredObjects:[]},mem,digest,bytes};
-  const c=vm.createContext({console,setTimeout,clearTimeout,window:{},ModuleLibrary:{currentExecutableDigest:()=>T.digest,currentExecutableIdentity:()=>({digest:T.digest,header})},ZRamProvider:{getMem:()=>mem},WorldModel:{get lastPayload(){return T.payload;}},Actionable:{payloadPool:()=>T.payload.inventory.concat(T.payload.discoveredObjects),referenceFor:o=>({unique:true,verified:true,noun:o.name}),commandNounFor:o=>o.name,isGameWord:()=>true},AttrCalibrator:{hydrate(){},overrideFor:()=>({}),objectOverrideFor:()=>null,hasConfirmedFlag:()=>false,allowedVerbsFor:()=>[]}});
+  T.names={};
+  const c=vm.createContext({console,setTimeout,clearTimeout,window:{},document:{readyState:'loading',addEventListener(){}},UndoRestoreSync:{generation:7},ModuleLibrary:{currentExecutableDigest:()=>T.digest,currentExecutableIdentity:()=>({digest:T.digest,header})},ZRamProvider:{getMem:()=>mem},WorldModel:{get lastPayload(){return T.payload;}},Actionable:{payloadPool:()=>T.payload.inventory.concat(T.payload.discoveredObjects),referenceFor:o=>({unique:true,verified:true,noun:T.names[o.id]||o.name}),commandNounFor:o=>T.names[o.id]||o.name,isGameWord:()=>true},AttrCalibrator:{dictionaryForm:()=>true,exactFormsFor:()=>[],RPG_VERBS:[],ITEM_SUGGESTION_VERBS:[],hydrate(){},overrideFor:()=>({}),objectOverrideFor:()=>null,hasConfirmedFlag:()=>false,allowedVerbsFor:()=>[]}});
   for(const f of ['ModuleStatFactsClaude','ZRamReader','GrammarProvider','AttributeSchema','ActionSynth','LearnedWords','EquipmentUI','SemanticActions'])vm.runInContext(fs.readFileSync(root+'/js/'+f+'.js','utf8'),c);
+  // The REAL Actionable.radialCommandCurrent (extracted from js/Actionable.js), not a harness re-implementation.
+  {const src=fs.readFileSync(root+'/js/Actionable.js','utf8'),k=src.indexOf('radialCommandCurrent: function');let i=src.indexOf('{',k),d=0,j=i;for(;j<src.length;j++){if(src[j]==='{')d++;else if(src[j]==='}'&&--d===0)break;}
+  c.Actionable.radialCommandCurrent=vm.runInContext('(function'+src.slice(src.indexOf('(',k),j+1)+')',c);}
   Object.assign(T,{c,A:c.AttributeSchema,R:c.ZRamReader,S:c.ActionSynth,F:c.ModuleStatFactsClaude[digest]});
   T.h=T.R.header(mem);
   const pl=T.R.resolvePlayer(mem);T.player=pl&&pl.id;T.room=T.player&&T.R.enclosingRoom(mem,T.player);T.count=T.R.objectCount(mem,T.h);
@@ -60,4 +64,27 @@ check('Infidel/Cutthroats/Enchanter non-owners identical to no fact',()=>{for(co
 // Other titles: lightForms absent for every TRUE-frontier object (not heuristic count).
 const others=fs.readdirSync(root+'/games').filter(f=>/\.z[345]\.js$/.test(f)&&!Object.values(titles).includes(f));
 check('other Z titles: lightForms absent for every object (switchable titles unchanged)',()=>{let n=0;for(const f of others){let T;try{T=load(f);}catch(e){continue;}if(!T.h)continue;let tc;try{tc=trueCount(T);}catch(e){continue;}for(let id=1;id<=tc;id++)assert.strictEqual(T.A.lightForms(T.mem,id,'inventory'),null,f+' '+id);n++;}console.log('  other titles checked: '+n);assert(n>10);});
+// Tap currency (codex 1107; identity-Wear pattern): every light verb carries a lightFormScope re-validated at tap.
+const lightRow=(T,id,ctx)=>T.S.commandsForObject(T.obj(id),ctx).find(x=>LIGHT.test(x.command));
+const cur=(T,r)=>T.c.Actionable.radialCommandCurrent(r);
+check('Infidel torch held: light verb carries lightFormScope (digest, generation, id, noun, side, stateBit)',()=>{I.bit(198,21,0);I.parent(198,I.player);const r=lightRow(I,198,'inventory'),n=nm(I,198);
+  assert(r&&r.lightFormScope,'scoped');assert.deepStrictEqual(JSON.parse(JSON.stringify(r.lightFormScope)),{kind:'lightForms',digest:I.digest,generation:7,id:198,noun:n,verb:'light',command:'light '+n,side:'on',stateBit:21,context:'inventory'});
+  assert(I.S.lightFormCommandCurrent(r));assert(cur(I,r));});
+check('tap currency: state flipped after menu render -> rejected',()=>{for(const [T,id,b,start] of [[I,198,21,0],[Cu,116,17,0],[E,94,22,1]]){T.bit(id,b,start);T.parent(id,T.player);const r=lightRow(T,id,'inventory');assert(r&&cur(T,r));T.bit(id,b,!start);assert(!T.S.lightFormCommandCurrent(r));assert(!cur(T,r));T.bit(id,b,start);assert(cur(T,r));T.bit(id,b,0);}});
+check('tap currency: custody lost (dropped elsewhere / nested / off-stage) -> rejected',()=>{I.bit(198,21,0);I.parent(198,I.player);const r=lightRow(I,198,'inventory');assert(cur(I,r));
+  I.parent(198,0);assert(!cur(I,r));let box=0;const tc=trueCount(I);for(let id=1;id<=tc&&!box;id++)if(id!==198&&id!==I.player&&I.R.objectLinks(I.mem,id).parent===I.player)box=id;I.parent(198,box);assert(!cur(I,r));I.parent(198,I.player);assert(cur(I,r));});
+check('tap currency: room owner moved out of the player room -> rejected',()=>{I.bit(198,21,0);I.parent(198,I.R.enclosingRoom(I.mem,I.player));const r=lightRow(I,198,'room');assert(r&&r.lightFormScope&&r.lightFormScope.context==='room'&&cur(I,r));I.parent(198,0);assert(!cur(I,r));I.parent(198,I.player);});
+check('tap currency: generation bump -> rejected',()=>{I.bit(198,21,0);I.parent(198,I.player);const r=lightRow(I,198,'inventory');I.c.UndoRestoreSync.generation=8;try{assert(!cur(I,r));}finally{I.c.UndoRestoreSync.generation=7;}assert(cur(I,r));});
+check('tap currency: noun drift / command mismatch / digest drift -> rejected',()=>{I.bit(198,21,0);I.parent(198,I.player);const r=lightRow(I,198,'inventory'),n=nm(I,198);
+  I.names[198]=n+'x';try{assert(!cur(I,r));}finally{delete I.names[198];}assert(cur(I,r));
+  assert(!cur(I,Object.assign({},r,{command:'light '+n+' with match'})));
+  const ml=I.c.ModuleLibrary,old=ml.currentExecutableDigest;ml.currentExecutableDigest=()=>'0'.repeat(64);try{assert(!cur(I,r));}finally{ml.currentExecutableDigest=old;}});
+check('shared/multi-object rows exclude lightFormScope commands',()=>{I.bit(198,21,0);I.parent(198,I.player);const r=lightRow(I,198,'inventory');assert(!cur(I,{verb:r.verb,command:r.command,sharedMembers:[r,r]}));assert(!I.S.lightFormCommandCurrent(Object.assign({},r,{sharedMembers:[r]})));});
+check('SemanticActions keeps lightFormScope',()=>{for(const [T,id,b,v] of [[I,198,21,0],[Cu,116,17,1]]){T.bit(id,b,v);T.held(id);const sem=T.c.SemanticActions.resolveForPayloadObjectId(id,'inventory')||[];const s=sem.find(x=>LIGHT.test(x.command||''));assert(s&&s.lightFormScope&&s.lightFormScope.kind==='lightForms',JSON.stringify(sem.map(x=>x.command)));T.bit(id,b,0);}});
+check('Equipment Yourself row keeps lightFormScope + capitalized verb label; selection re-validates',()=>{for(const [T,id,b,v,label] of [[I,198,21,0,'Light'],[Cu,116,17,1,'Turn off'],[E,94,22,1,'Turn off']]){T.bit(id,b,v);T.held(id);
+  const rows=T.c.EquipmentUI.yourselfCommands(T.obj(id),{}),row=rows.find(x=>x.ScopedCommand&&x.ScopedCommand.lightFormScope);assert(row,JSON.stringify(rows.map(x=>x.Form)));assert.strictEqual(row.Label,label);
+  const ran=[],EU=T.c.EquipmentUI,old=[EU.interactionReady,EU.model,T.c.Actionable.runChosenCommand];EU.interactionReady=()=>true;EU.model=()=>({byId:{[String(id)]:T.obj(id)}});T.c.Actionable.runChosenCommand=x=>ran.push(x);
+  try{EU.selectYourselfAction(id,row.Form,true,0,'k',row.ScopedCommand);assert.deepStrictEqual(ran,[row.ScopedCommand.command]);
+    T.bit(id,b,!v);EU.selectYourselfAction(id,row.Form,true,0,'k',row.ScopedCommand);assert.strictEqual(ran.length,1,'flipped state rejected at Equipment tap');}
+  finally{[EU.interactionReady,EU.model,T.c.Actionable.runChosenCommand]=old;T.bit(id,b,0);}}});
 console.log(checks+' lightForms controls passed');
