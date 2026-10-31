@@ -1,0 +1,261 @@
+{
+ "config": "plundered.config.json",
+ "story": "PlunderedHearts.z3.js",
+ "seed": 0,
+ "tier": "T1 native: fresh play.html walk (JSEED RNG parity), unforced commands; test_attr ops recorded passively; no RAM/fact writes",
+ "gameSha256": "dd8dc2268adbc9981971ac885b21b0d9dec6db6f06efb368f86b28ec201b1c64",
+ "readerSha256": "4c7d47d956e9ec6a077e97d5e7b9c7ce57019815e253e07ffe81097082d8cecc",
+ "configSha256": "32e227d53f128b3397fa0b903af52868b3e5c18cf94ba9a6c6a507fc91d12cd3",
+ "routeLen": 189,
+ "reachedAt": 189,
+ "tests": [
+  {
+   "cmd": "look",
+   "id": null,
+   "role": "setup",
+   "text": "Thus you have finished the story of PLUNDERED HEARTS, earning the title, \"Happily Ever After.\"\n   You may start over, restore a saved position, or end this session of the game. (Type RESTART, RESTORE, or QUIT):\n>",
+   "before": null,
+   "after": null,
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": []
+  },
+  {
+   "cmd": "take torch",
+   "id": 9,
+   "role": "setup",
+   "text": "Thus you have finished the story of PLUNDERED HEARTS, earning the title, \"Happily Ever After.\"\n   You may start over, restore a saved position, or end this session of the game. (Type RESTART, RESTORE, or QUIT):\n>",
+   "before": {
+    "attrs": [
+     17,
+     25,
+     29
+    ],
+    "parent": 37,
+    "inScope": false
+   },
+   "after": {
+    "attrs": [
+     17,
+     25,
+     29
+    ],
+    "parent": 37,
+    "inScope": false,
+    "here": "Forecastle"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": []
+  },
+  {
+   "cmd": "turn off torch",
+   "id": 9,
+   "role": "off",
+   "text": "Thus you have finished the story of PLUNDERED HEARTS, earning the title, \"Happily Ever After.\"\n   You may start over, restore a saved position, or end this session of the game. (Type RESTART, RESTORE, or QUIT):\n>",
+   "before": {
+    "attrs": [
+     17,
+     25,
+     29
+    ],
+    "parent": 37,
+    "inScope": false
+   },
+   "after": {
+    "attrs": [
+     17,
+     25,
+     29
+    ],
+    "parent": 37,
+    "inScope": false,
+    "here": "Forecastle"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": []
+  },
+  {
+   "cmd": "extinguish torch",
+   "id": 9,
+   "role": "off",
+   "text": "Thus you have finished the story of PLUNDERED HEARTS, earning the title, \"Happily Ever After.\"\n   You may start over, restore a saved position, or end this session of the game. (Type RESTART, RESTORE, or QUIT):\n>",
+   "before": {
+    "attrs": [
+     17,
+     25,
+     29
+    ],
+    "parent": 37,
+    "inScope": false
+   },
+   "after": {
+    "attrs": [
+     17,
+     25,
+     29
+    ],
+    "parent": 37,
+    "inScope": false,
+    "here": "Forecastle"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": []
+  },
+  {
+   "cmd": "light torch",
+   "id": 9,
+   "role": "pos",
+   "text": "Thus you have finished the story of PLUNDERED HEARTS, earning the title, \"Happily Ever After.\"\n   You may start over, restore a saved position, or end this session of the game. (Type RESTART, RESTORE, or QUIT):\n>",
+   "before": {
+    "attrs": [
+     17,
+     25,
+     29
+    ],
+    "parent": 37,
+    "inScope": false
+   },
+   "after": {
+    "attrs": [
+     17,
+     25,
+     29
+    ],
+    "parent": 37,
+    "inScope": false,
+    "here": "Forecastle"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": []
+  },
+  {
+   "cmd": "turn on torch",
+   "id": 9,
+   "role": "pos",
+   "text": "Thus you have finished the story of PLUNDERED HEARTS, earning the title, \"Happily Ever After.\"\n   You may start over, restore a saved position, or end this session of the game. (Type RESTART, RESTORE, or QUIT):\n>",
+   "before": {
+    "attrs": [
+     17,
+     25,
+     29
+    ],
+    "parent": 37,
+    "inScope": false
+   },
+   "after": {
+    "attrs": [
+     17,
+     25,
+     29
+    ],
+    "parent": 37,
+    "inScope": false,
+    "here": "Forecastle"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": []
+  },
+  {
+   "cmd": "i",
+   "id": null,
+   "role": "setup",
+   "text": "Thus you have finished the story of PLUNDERED HEARTS, earning the title, \"Happily Ever After.\"\n   You may start over, restore a saved position, or end this session of the game. (Type RESTART, RESTORE, or QUIT):\n>",
+   "before": null,
+   "after": null,
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": []
+  },
+  {
+   "cmd": "light coffer",
+   "id": 69,
+   "role": "neg",
+   "text": "Thus you have finished the story of PLUNDERED HEARTS, earning the title, \"Happily Ever After.\"\n   You may start over, restore a saved position, or end this session of the game. (Type RESTART, RESTORE, or QUIT):\n>",
+   "before": {
+    "attrs": [
+     13,
+     15,
+     16,
+     19,
+     23,
+     24
+    ],
+    "parent": 0,
+    "inScope": false
+   },
+   "after": {
+    "attrs": [
+     13,
+     15,
+     16,
+     19,
+     23,
+     24
+    ],
+    "parent": 0,
+    "inScope": false,
+    "here": "Forecastle"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": []
+  },
+  {
+   "cmd": "turn on coffer",
+   "id": 69,
+   "role": "neg",
+   "text": "Thus you have finished the story of PLUNDERED HEARTS, earning the title, \"Happily Ever After.\"\n   You may start over, restore a saved position, or end this session of the game. (Type RESTART, RESTORE, or QUIT):\n>",
+   "before": {
+    "attrs": [
+     13,
+     15,
+     16,
+     19,
+     23,
+     24
+    ],
+    "parent": 0,
+    "inScope": false
+   },
+   "after": {
+    "attrs": [
+     13,
+     15,
+     16,
+     19,
+     23,
+     24
+    ],
+    "parent": 0,
+    "inScope": false,
+    "here": "Forecastle"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": []
+  }
+ ],
+ "ts": "2026-10-31T03:28:25.656Z",
+ "untilInfo": {
+  "id": 9,
+  "name": "torch",
+  "attrs": [
+   17,
+   25,
+   29
+  ],
+  "parent": 37,
+  "here": 114,
+  "hereName": "Forecastle",
+  "inScope": false,
+  "chain": [
+   "37:it",
+   "60:it"
+  ]
+ }
+}

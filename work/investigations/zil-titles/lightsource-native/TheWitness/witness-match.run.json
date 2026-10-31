@@ -1,0 +1,297 @@
+{
+ "config": "witness-match.config.json",
+ "story": "TheWitness.z3.js",
+ "seed": 0,
+ "tier": "T1 native: fresh play.html walk (JSEED RNG parity), unforced commands; test_attr ops recorded passively; no RAM/fact writes",
+ "gameSha256": "cb84cdddd8f57c448f6820a52b9545f0508926eb9d33800ac13e620a60bf13b7",
+ "readerSha256": "4c7d47d956e9ec6a077e97d5e7b9c7ce57019815e253e07ffe81097082d8cecc",
+ "configSha256": "82d8847d8817db583b791be8bbf0421119abe56e0117e9c86ceb7297fe240185",
+ "routeLen": 0,
+ "reachedAt": 0,
+ "tests": [
+  {
+   "cmd": "i",
+   "id": null,
+   "role": "setup",
+   "text": "You are carrying:\n  a telegram\n  a pair of handcuffs\n  a snub-nosed Colt\n  a match book\n \nWhat next?\n>",
+   "before": null,
+   "after": null,
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": []
+  },
+  {
+   "cmd": "look",
+   "id": 159,
+   "role": "setup",
+   "text": "You are now in the driveway entrance.\nYou are standing at the foot of the driveway, the entrance to the Linder property. The entire lot is screened from the street and the neighbors by a wooden fence, except on the east side, which fronts on dense bamboo woods. The house looks like a mixture of a California bungalow and East Asian influences. From here you can see the driveway leading north and, b",
+   "before": {
+    "attrs": [
+     14,
+     19,
+     20
+    ],
+    "parent": 247,
+    "inScope": false
+   },
+   "after": {
+    "attrs": [
+     14,
+     19,
+     20
+    ],
+    "parent": 247,
+    "inScope": false,
+    "here": "driveway entrance"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": []
+  },
+  {
+   "cmd": "examine match book",
+   "id": 53,
+   "role": "setup",
+   "text": "(You'll find the match book in your game package.)\n \nWhat next?\n>",
+   "before": {
+    "attrs": [
+     21,
+     22
+    ],
+    "parent": 79,
+    "inScope": true
+   },
+   "after": {
+    "attrs": [
+     21,
+     22
+    ],
+    "parent": 79,
+    "inScope": true,
+    "here": "driveway entrance"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": [
+    [
+     53,
+     12,
+     0
+    ],
+    [
+     53,
+     31,
+     0
+    ]
+   ]
+  },
+  {
+   "cmd": "light match",
+   "id": 53,
+   "role": "pos",
+   "text": "The matches don't seem to work.\n \nWhat next?\n>",
+   "before": {
+    "attrs": [
+     21,
+     22
+    ],
+    "parent": 79,
+    "inScope": true
+   },
+   "after": {
+    "attrs": [
+     21,
+     22
+    ],
+    "parent": 79,
+    "inScope": true,
+    "here": "driveway entrance"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": [
+    [
+     53,
+     12,
+     0
+    ],
+    [
+     53,
+     31,
+     0
+    ]
+   ]
+  },
+  {
+   "cmd": "strike match",
+   "id": 53,
+   "role": "pos",
+   "text": "The matches don't seem to work.\n \nWhat next?\n>",
+   "before": {
+    "attrs": [
+     21,
+     22
+    ],
+    "parent": 79,
+    "inScope": true
+   },
+   "after": {
+    "attrs": [
+     21,
+     22
+    ],
+    "parent": 79,
+    "inScope": true,
+    "here": "driveway entrance"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": [
+    [
+     53,
+     12,
+     0
+    ],
+    [
+     53,
+     31,
+     0
+    ]
+   ]
+  },
+  {
+   "cmd": "light match book",
+   "id": 53,
+   "role": "pos",
+   "text": "The matches don't seem to work.\nSuddenly, a clap of thunder rolls across the hills nearby.\n \nWhat next?\n>",
+   "before": {
+    "attrs": [
+     21,
+     22
+    ],
+    "parent": 79,
+    "inScope": true
+   },
+   "after": {
+    "attrs": [
+     21,
+     22
+    ],
+    "parent": 79,
+    "inScope": true,
+    "here": "driveway entrance"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": [
+    [
+     53,
+     12,
+     0
+    ],
+    [
+     53,
+     31,
+     0
+    ]
+   ]
+  },
+  {
+   "cmd": "turn on match book",
+   "id": 53,
+   "role": "pos",
+   "text": "The matches don't seem to work.\n \nWhat next?\n>",
+   "before": {
+    "attrs": [
+     21,
+     22
+    ],
+    "parent": 79,
+    "inScope": true
+   },
+   "after": {
+    "attrs": [
+     21,
+     22
+    ],
+    "parent": 79,
+    "inScope": true,
+    "here": "driveway entrance"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": [
+    [
+     53,
+     12,
+     0
+    ],
+    [
+     53,
+     31,
+     0
+    ]
+   ]
+  },
+  {
+   "cmd": "light brass lantern",
+   "id": 48,
+   "role": "pos",
+   "text": "(You don't have the Brass Lantern!)\n \nWhat next?\n>",
+   "before": {
+    "attrs": [],
+    "parent": 249,
+    "inScope": false
+   },
+   "after": {
+    "attrs": [],
+    "parent": 249,
+    "inScope": false,
+    "here": "driveway entrance"
+   },
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": [
+    [
+     48,
+     12,
+     0
+    ],
+    [
+     48,
+     10,
+     0
+    ],
+    [
+     48,
+     22,
+     0
+    ]
+   ]
+  },
+  {
+   "cmd": "light notebook",
+   "id": null,
+   "role": "neg",
+   "text": "(You don't need to use the word \"notebook\" to solve this mystery.)\n \nWhat next?\n>",
+   "before": null,
+   "after": null,
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": []
+  },
+  {
+   "cmd": "turn on notebook",
+   "id": null,
+   "role": "neg",
+   "text": "(You don't need to use the word \"notebook\" to solve this mystery.)\n \nWhat next?\n>",
+   "before": null,
+   "after": null,
+   "set": [],
+   "cleared": [],
+   "testAttrOnId": []
+  }
+ ],
+ "ts": "2026-10-31T03:28:38.488Z",
+ "untilInfo": null
+}

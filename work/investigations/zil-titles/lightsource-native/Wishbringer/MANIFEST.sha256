@@ -1,0 +1,3 @@
+30be65c50f839e760f3d4536c6f7cf55040c44d81d83f7168c4cd79c04808ff5 *wishbringer.config.json
+0020c24755bad9a3b7ff0ec7db2e698dee4f0dbb62ea4a268dc72447b67b2e86 *wishbringer.log
+# tier: T1 native play.html walk (probe.cjs), JSEED RNG parity, passive test_attr recording; no RAM/fact writes. *.run.json absent = run aborted/unreached

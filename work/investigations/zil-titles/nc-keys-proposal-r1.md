@@ -182,3 +182,18 @@ proposed.
 R3-A proper/female/pluralname: ACCEPT from all four (claude, codex #5785, grok #5786, grok2 #5801). Recorded in the
 ledger reasons. R3-B light: ACCEPT from all four (the D247 NC stands). R3-C: direction ACCEPT from all four; the work is
 assigned (lightSource claude, Moonmist display codex, Suspended BOARD grok, visited per-title audit unassigned).
+
+## R4 lightSource (claude, from lightsource-native/SUMMARY.md)
+Replaces a single "lightSource = LIGHTBIT" key with per-title owner-local light capability forms; each capability bit
+comes from native play, never from the flag name:
+- Infidel: capability = BURNBIT 11, lit state = ONBIT 21. Offer "light <X>" on held carriers with 11 set and 21 clear;
+  offer "extinguish torch" / "blow out match" (the game's own off verbs per object) when 21 is set. MEETS 2+1.
+- Cutthroats: single portable light, flashlight 116 (bit 27 capability, ONBIT 17 state): turn on when 17 clear, turn off
+  when 17 set. Single-owner exception (only carrier) + behaviour + 2 negatives.
+- Enchanter: no verb lights anything (FROTZ only), so NO on-form. When lit (22/8 set) on lantern 94, offer "turn off".
+  Candle 204 has no off-form ("cannot be extinguished").
+- Wishbringer, PlunderedHearts: stay U until a hand-written route puts the candle/torch in scope for 2+1.
+- TheWitness, Deadline: NA for lightSource (no usable player light; refuted natively). Removed from the BUILD list.
+Implementation shape: a per-title `lightForms` fact {capabilityBit, stateBit, objects?: [...], on: verb|null,
+off: {default verb, perObject overrides}} consumed by ActionSynth for held/in-scope carriers; malformed = absent;
+switchable titles unchanged.
