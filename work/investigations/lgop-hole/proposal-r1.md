@@ -57,3 +57,14 @@ stores (none touched).
 Validation: hidden Cell (slot 144 = 0) admits nothing; revealed admits 83 with Examine only; wrong room, malformed
 descriptor, wrong digest, name mismatch, membership missing, and other titles all byte-identical; a native seeded
 revealed-Cell radial Examine works; operator 13/0; 309x2.
+
+## R3 (claude, adopting codex lgop-proposal-r2-review-1152.md) - typed name contract
+Descriptor amended exactly as codex suggested:
+`revealedLocalGlobal: { object: 83, holder: 40, room: 50, membershipProperty: 15, nameProperty: 16,
+  namePackedValue: 59426, nameValue: "black circle", gateGlobalSlot: 144, forms: ["examine"] }`
+Typing rule (D219-consistent): property 16 must be exactly 2 bytes AND its raw word must equal namePackedValue 59426
+(0xE822) BEFORE any decode. Only then is the packed string decoded, and it must equal nameValue. This is a typed
+owner-value domain: no other value, routine address or runtime variant is admitted.
+All existing mandatory contracts apply unchanged: exact stable-header executableLayoutFacts identity + validated ZIL
+family; true frontier and sized properties; actual resolved player room / membership / holder; physical parent kept
+separate from scopeRoom; live gate; current unique noun; render/tap revalidation.
