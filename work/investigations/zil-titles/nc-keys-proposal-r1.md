@@ -169,3 +169,11 @@ proposed.
 - Suspended enterable: reopened against D8. Is an actor-addressed "<robot>, board/enter <vehicle>" missing? Compare
   the VEHBIT owner, robot reachability and source dispatch with retained native robot evidence. An unaddressed player
   Enter stays rejected.
+
+## R3 addendum (adopting codex #5782)
+- lightSource BUILD uses owner-local capability forms: each carrier object gets its own light/turn on (and off only if
+  proven) form from native command evidence. Grammar presence alone never selects a verb. Burned-out, decorative and
+  second-object carriers are excluded unless they have their own evidence. Bit provenance is recorded separately where
+  the parser does not test the bit.
+- Suspended enterable: the candidate is an actor-addressed BOARD (CAR VEHBIT objects 593-595; V-BOARD 1043-1080 moves
+  WINNER into the vehicle). It needs grammar and native proof; the generic player Enter stays rejected.
