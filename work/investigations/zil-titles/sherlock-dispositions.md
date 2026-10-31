@@ -63,3 +63,17 @@ Consumer counts below are tests / sets / clears, counted with `MC-IS?|MC-ISNOT?|
 - 8 UD cells: S 6 (one weak: switchable), NA 1 (male), UD 1 (inventoryHiddenAttribute).
 - No NC. switchable could become NC if the parser FIND use is not counted as a consumer.
 - Every S still needs the native evidence listed. Nothing is promoted on source alone.
+
+## Revisions adopting codex informed challenges (oct30-recovery/sherlock-informed-challenges.md, #5811)
+- lightSource: FL-LIGHTED 38 is emission / current-room-lit STATE (RT-IS-LIT parser.zil:1828+), not a lightable
+  capability. The capability candidate is FL-LAMP 42. The disposition is reopened: lightSource is not mapped to
+  FL-LIGHTED; FL-LAMP needs native light/extinguish evidence before any fact.
+- concealed: the NA is withdrawn. "No INVISIBLE symbol" repeats the naming-gap error that caused all the B cells.
+  Inspect Sherlock's semantic hide/reveal (parser scope exclusion, list suppression, any FL-* used like INVISIBLE)
+  before deciding. The same check applies to the other source-name-based NAs (absent, general, lockable, scored,
+  workflag, neuter): each needs its semantic counterpart searched, not just the symbol name.
+- Every S-candidate here remains source-only. A census is not native evidence and not a useful consumer.
+- D198 (see d198-sherlock/claude-SEALED.md): relaxing the minimum alone is insufficient. GrammarProvider ~66/349 selects
+  data[2] under low-bit flags, and orphan ~376-377 reads both data bytes. The fix needs the exact 8-byte metadata
+  semantics (no zero-filling), real grammar/direction ownership checks, malformed-short-dictionary and Inform controls,
+  and a D198 cache version bump.
