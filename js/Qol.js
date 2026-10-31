@@ -766,6 +766,29 @@ var ParchLockQol = {
         return ParchLockQol.RankRadialCommands(commands);
     },
 
+    ObjectStatusStamp: () => {
+        try {
+            var mem = AttributeSchema._getMem(), digest = ModuleLibrary.currentExecutableDigest();
+            if (!mem || !digest) return null;
+            return { generation: typeof UndoRestoreSync !== "undefined" ? UndoRestoreSync.generation : 0, digest: digest, buffer: mem.buffer, offset: mem.byteOffset, length: mem.byteLength };
+        } catch (eStamp) { return null; }
+    },
+    ObjectStatusForRadial: (context) => {
+        try {
+            var stamp = context && context.objectStatusStamp, now = ParchLockQol.ObjectStatusStamp();
+            if (!stamp || !now || stamp.generation !== now.generation || stamp.digest !== now.digest || stamp.buffer !== now.buffer || stamp.offset !== now.offset || stamp.length !== now.length ||
+                ["text", "inventory"].indexOf(context.source) < 0 || context.kind === "direction" || !Number.isInteger(context.objectId) ||
+                (typeof UndoRestoreSync !== "undefined" && UndoRestoreSync.pending) || (typeof CharKeys !== "undefined" && CharKeys._composing)) return null;
+            var fields = document.querySelectorAll(".Input.LineInput");
+            if (fields.length !== 1 || fields[0].value || document.getElementById("dialog") || (typeof Message !== "undefined" && Message.IsOpen) ||
+                (typeof StatTracker !== "undefined" && (StatTracker._probeActive || StatTracker._hideCarryProbe))) return null;
+            var pool = Actionable.payloadPool(), objects = pool.filter(o => o && o.id === context.objectId);
+            if (objects.length !== 1) return null;
+            var ref = Actionable.referenceFor(objects[0]);
+            if (!ref.unique || !ref.verified) return null;
+            return AttributeSchema.lockedObjectStatus(context.objectId);
+        } catch (eStatus) { return null; }
+    },
     OpenRadial: (clientX, clientY, commands, context, pageIndex) => {
 
         if (typeof LearnedWords !== "undefined" && context && context.objectId != null) commands = commands.map(function (c) {
@@ -915,6 +938,8 @@ var ParchLockQol = {
             ? Actionable.MAX_USAGE_BONUS : 36;
 
         menu.empty().addClass("show").attr("aria-hidden", "false");
+        var objectStatus = ParchLockQol.ObjectStatusForRadial(context);
+        if (objectStatus) $("<span>").addClass("pl-object-status").text(objectStatus).appendTo(menu);
 
         var menuSize = menu.outerWidth();
         // D215: give the desktop game-menu labels room; keep its outer ring.
@@ -1083,6 +1108,7 @@ var ParchLockQol = {
         if (e && e.type === "mousedown" && ParchLockQol._radialOpenedAt
             && (Date.now() - ParchLockQol._radialOpenedAt) < 400) return;
         ParchLockQol.EndRadialSelection();
+        $("#radial-menu .pl-object-status").remove();
         $("#radial-menu").removeClass("show").removeClass("pl-tools-list").attr("aria-hidden", "true");
         $("body").removeClass("radial-open");
     },

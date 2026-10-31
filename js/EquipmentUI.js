@@ -142,7 +142,7 @@ var EquipmentUI = {
             item.Command = item.ScopedCommand ? item.ScopedCommand.command : item.Form + " " + Actionable.referenceFor(obj).noun;
             item.Usage = Actionable.usageCount ? Actionable.usageCount(item.Command) : 0;
         });
-        ParchLockQol.OpenRadial(d.lastX, d.lastY, candidates, { source: "inventory", noun: obj.name, objectId: obj.id });
+        ParchLockQol.OpenRadial(d.lastX, d.lastY, candidates, { source: "inventory", noun: obj.name, objectId: obj.id, objectStatusStamp: ParchLockQol.ObjectStatusStamp ? ParchLockQol.ObjectStatusStamp() : null });
     },
 
     // ---- persistence of first-seen order (there are no timestamps in the

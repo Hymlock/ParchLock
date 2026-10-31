@@ -1,0 +1,22 @@
+Aug4.z8.js marks
+  base: ["guards","matching green tights","pit","gnarled root"]
+  cand: ["pit","gnarled root"]
+cycles.z5.js rooms
+  base: ["191:Charles St. Station","199:Darkness"]
+  cand: ["199:Darkness"]
+cycles.z5.js inv2
+  base: ["70:money card"]
+  cand: []
+huntdark.z5.js marks
+  base: ["tight crawl","limestone","low passage","side chamber","silent bulk"]
+  cand: ["crossbow","stone","tight crawl","low passage","side chamber","silent bulk"]
+permagic.z5.js marks
+  base: ["report","east","papers"]
+  cand: ["of junk","report","east"]
+suvehnux.z5.js marks
+  base: ["sliver of light","under","door","darkness","shelf","walls","brass cage","scroll"]
+  cand: ["vault","golden key","black","dark","sliver of light","door","shelf","walls","brass cage","scroll"]
+terror_tabby.z5.js marks
+  base: ["drawers","floor","mattress","south","east","bathroom","tabby cat"]
+  cand: ["mattress","south","east","bathroom","tabby cat"]
+GATE: 309 games, 7 differences (each must be an intended, reviewed change)

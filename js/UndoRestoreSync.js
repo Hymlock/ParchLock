@@ -20,6 +20,7 @@ var UndoRestoreSync = {
         clearTimeout(UndoRestoreSync._commandTimer);
         UndoRestoreSync._commandTimer = null;
         UndoRestoreSync.generation++;
+        try { $("#radial-menu .pl-object-status").remove(); } catch (eStatus) {}
         if (typeof LearnedWords !== 'undefined') { LearnedWords.clearProjection(); if (LearnedWords._open) LearnedWords.close(false); }
         UndoRestoreSync.pending = false;
         if (typeof Actionable !== "undefined") {

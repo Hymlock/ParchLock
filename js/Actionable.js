@@ -2800,6 +2800,7 @@ var Actionable = {
             }
         }
         var context = { source: "text", noun: (sharedCommands && sharedCommands[0] && sharedCommands[0].noun) || noun, kind: kind, objectId: objectId || null, candidateIds: sharedCommands ? choices.map(function (o) { return o.id; }) : undefined };
+        context.objectStatusStamp = ParchLockQol.ObjectStatusStamp ? ParchLockQol.ObjectStatusStamp() : null;
         var slices = [];
         // Score is a static confidence prior. Usage stays separate so the
         // shared D110 ranker can apply the strict usage/prior/order tuple.
@@ -2891,7 +2892,7 @@ var Actionable = {
                             ParchLockQol.OpenRadial(x, y, targets.map(function (t) {
                                 var full = command + Actionable.referenceFor(t).noun;
                                 return { Label: t.name, Command: full, Score: scoreFor(full, base), Usage: usageFor(full), Action: function () { if (!Actionable.radialCommandCurrent(c)) return; if (Actionable.runChosenCommand(full, sharedCommands ? "ambiguous-reference" : undefined) && c.intent) Actionable.noteIntentUsage(c.intent); } };
-                            }), context);
+                            }), Object.assign({}, context, { objectStatusStamp: null }));
                         }
                     };
                 }
@@ -2951,7 +2952,7 @@ var Actionable = {
                                     ? inst.build(Actionable.disambiguatedNoun(other), sourceNoun)
                                     : inst.build(sourceNoun, Actionable.disambiguatedNoun(other));
                                 return { Label: other.name, Command: cmd, Score: scoreFor(cmd, 50), Usage: usageFor(cmd), Action: function () { Actionable.Submit(cmd, sharedCommands ? "ambiguous-reference" : undefined); } };
-                            }), context);
+                            }), Object.assign({}, context, { objectStatusStamp: null }));
                         }});
                     });
                 }

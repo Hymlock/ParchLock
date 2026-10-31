@@ -156,6 +156,25 @@ var AttributeSchema = {
             return !!((has("container") && !has("supporter") && value !== 0) || has("door"));
         } catch (eCloseRule) { return null; }
     },
+    // D5 R2: current observed status on an audited owner domain; never capability.
+    lockedObjectStatus: function (objectId) {
+        try {
+            var mem = AttributeSchema._getMem(), fact = mem && ZRamReader.executableLayoutFacts(mem);
+            var ids = fact && fact.lockedStatusObjects, h = mem && ZRamReader.header(mem);
+            if (!Array.isArray(ids) || !ids.length || !h || h.version < 3 || h.version > 5) return null;
+            var first = ZRamReader.objectBase(h, 1), size = mem.byteLength;
+            if (!Number.isInteger(first) || first < 64 || first + h.entrySize > size) return null;
+            var frontier = ZRamReader.u16(mem, first + (h.version <= 3 ? 7 : 12));
+            var count = (frontier - first) / h.entrySize, seen = {};
+            if (!Number.isInteger(count) || count < 2 || frontier >= h.staticMem || h.staticMem > size ||
+                !ids.every(function (id) { if (!Number.isInteger(id) || id < 2 || id > count || seen[id]) return false; seen[id] = true; return true; }) || ids.indexOf(objectId) < 0) return null;
+            var family = AttributeSchema._familyOf(mem);
+            if (!family || family.classification !== "confirmed-zil-family" || family.evidence !== "validated" ||
+                !AttributeSchema.measuredFlagOwner(mem, "locked", objectId)) return null;
+            var raw = ZRamReader.objectLinks(mem, objectId), bit = fact.attributeMap && fact.attributeMap.locked;
+            return raw && Number.isInteger(bit) && ZRamReader.attr(raw, bit) ? "Locked" : null;
+        } catch (eLockedStatus) { return null; }
+    },
     openCapability: function () {
         try {
             var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest ? ModuleLibrary.currentExecutableDigest() : null;

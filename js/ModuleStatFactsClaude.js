@@ -1082,6 +1082,8 @@ var ModuleStatFactsClaude = {
     },
     // The Lurking Horror (Infocom v3)
     "1862ef7ce4c25abd32d442392fe7eaba9c1595ed5411df75e99b06f43af6f5af": {
+        // D5 R2 narrow audited status domain: native/source hatch119 and detached padlock135; not a lockable capability or route-block fact.
+        "lockedStatusObjects": [119, 135],
         // CONTBIT 27: tested TRUE on refrigerator, cardboard carton, access panel; FALSE on Funny Bones package, microwave controls, display (zil-walk). Q8 player root: G188 is the only global holding object 56; walkthrough TAKEs (4) move items into 56; app read 29 with an empty inventory. zil-walk.js native Jericho walkthrough, zil-walk-analysis.json (>=2 distinct non-room/non-player positives + >=1 negative).
         "playerGlobal": 188,
         // OPENBIT 13 (original-scene native explorer, zil-native-explore2-c.json): refrigerator OPEN tests 13 false, sets it,
