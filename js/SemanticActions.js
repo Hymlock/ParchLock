@@ -350,6 +350,7 @@ var SemanticActions = {
             if (c.Enter === false || c.enter === false) { form.Enter = false; form.enter = false; }
             if (c.learnedWordScope) form.learnedWordScope = c.learnedWordScope;
             if (c.wornRemovalScope) form.wornRemovalScope = c.wornRemovalScope;
+            if (c.identityWearScope) form.identityWearScope = c.identityWearScope;
             return form;
         });
     },
@@ -377,6 +378,9 @@ var SemanticActions = {
                     // Keep precedence/evidence while retaining the generated action's currency.
                     if (c.wornRemovalScope && winner.command === c.command && String(winner.objectId) === String(c.objectId)) {
                         winner.wornRemovalScope = c.wornRemovalScope;
+                    }
+                    if (c.identityWearScope && winner.command === c.command && String(winner.objectId) === String(c.objectId)) {
+                        winner.identityWearScope = c.identityWearScope;
                     }
                     winner.evidence = (winner.evidence || []).concat((c.evidence || []).map(SemanticActions._d198Clone));
                     winner.provenance = winner.provenance || [];

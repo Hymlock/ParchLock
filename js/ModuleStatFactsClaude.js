@@ -357,7 +357,10 @@ var ModuleStatFactsClaude = {
         "attributeMap": { "container": 20, "supporter": 28, "open": 25, "isOpen": 25, "edible": 7, "enterable": 14, "climbable": 16, "door": 9, "moved": 29, "concealed": 30 },
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         // WEARBIT state22: native knapsack31/ring2 worn positives, shovel33 refusal; Grok4127 proposal independently replayed by Codex October20.
-        "wornAttribute": 22
+        "wornAttribute": 22,
+        // Identity Wear R3 (four-seat ACCEPTED, PROPOSAL-identity-wear-r3 sha 4a1e90a7): bare WEAR native-proven for these direct-held owners.
+        // Infidel ring 2 (radial-infidel-ring-held-unworn.json). Knapsack stays a disclosed under-offer.
+        "wearForms": { "objects": [2], "verb": "wear", "scope": "held-direct" }
     },
     // Sorcerer (ZIL): stable PLAYER global 38 (Codex #3412/#3413, verified grok2 #3425): misc.zil WINNER=PROTAGONIST, PLAYER=WINNER;
     // binary 23591 store G38<-G163 at start, TELL stores only G163 (42801). Native TAKE book inserts into body 223 = G38. Ships with the v3 nested-room fix.
@@ -689,7 +692,7 @@ var ModuleStatFactsClaude = {
         // openCapability: Open/Close for containers that are not surfaces (mantle 194 / pile 207 / table 211 carry CONTBIT but refuse CLOSE natively, claude worker E7).
         "openCapability": { "all": ["container"], "none": ["supporter"] },
         // enterable 8 = VEHBIT (source exact 2/2; native claude-probe/e1d9 run-hollywood-*): ENTER left/right end of plank moves the player 90->8 / 90->68 with 8=1; ENTER SAFE 227 8=0 "You hit your head against the safe". Plain ENTER works natively (no enterForms override).
-        // locked 15 = LOCKEDBIT (hollywood-locked-notes.md S; P10b door-only destination isLocked). Oak door 117 OPEN DOOR "unlock first" 15=1; statue click 1->0; Foyer LOCK/UNLOCK 0->1->0; hatch 155 15=0. Rooms carry 15 as lockable-from-here only — exits use doorObjectId/routeBlocked after P10b.
+        // locked 15 = LOCKEDBIT (hollywood-locked-notes.md S; P10b door-only destination isLocked). Oak door 117 OPEN DOOR "unlock first" 15=1; statue click 1->0; Foyer LOCK/UNLOCK 0->1->0; hatch 155 15=0. Rooms carry 15 as lockable-from-here only ï¿½ exits use doorObjectId/routeBlocked after P10b.
         "attributeMap": { "wearable": 22, "animate": 18, "supporter": 27, "door": 10, "on": 20, "scenery": 16, "open": 25, "isOpen": 25, "moved": 28, "talkable": 18, "concealed": 29, "container": 4, "enterable": 8, "locked": 15 },
         // WORNBIT state14: independent native ring127/skis188 wear+remove, flashlight123 refused; Grok4120 proposal, Codex October20 audit.
         "wornAttribute": 14
@@ -820,7 +823,10 @@ var ModuleStatFactsClaude = {
         // concealed 30 = INVISIBLE (native, codex #5264 resume-20261020/concealed/packet-starcross.json, accepted grok1 #5270): actions.zil 1436-1443 SET-dial: dial 4 with an object UNDER-GLOBE sets 30 (black rod 84 / red disk 66, parent 80 unchanged, EXAMINE "can't see"); dial 2 clears it; space suit 144 negative.
         "attributeMap": { "animate": 11, "talkable": 11, "scenery": 23, "enterable": 15, "climbable": 22, "open": 9, "isOpen": 9, "container": 8, "door": 12, "supporter": 28, "moved": 29, "concealed": 30 },
         // Grok4124 design, new native two-owner proof: normal144 and tattered176; held library71/basket40 negative.
-        "wornAttribute": 24
+        "wornAttribute": 24,
+        // Identity Wear R3 (four-seat ACCEPTED, PROPOSAL-identity-wear-r3 sha 4a1e90a7): bare WEAR native-proven for these direct-held owners.
+        // Starcross space suit 144 (cold-sc-suit.json). Junk suit 176 stays OPEN.
+        "wearForms": { "objects": [144], "verb": "wear", "scope": "held-direct" }
     },
     // Sherlock (Infocom, z5; no historicalsource pin): constant PC object 232 "you" (Watson). Native i lists exactly
     // 232's children (black bag 172, whistle 173, hat 188, coat 302); G201 holds 232 and its parent follows the status-line
@@ -1131,6 +1137,9 @@ var ModuleStatFactsClaude = {
         "localScope": { "property": 16, "width": 1, "holder": 59, "roomLitAttribute": 15, "invisible": 20, "searchBit": 10, "surfaceBit": 8, "openBit": 13, "transBit": 5, "contents": "search" },
         // WEARBIT 3 = worn state (codex #4341: gloves 203 and boots 104 natively; crowbar refused).
         "wornAttribute": 3,
+        // Identity Wear R3 (four-seat ACCEPTED, PROPOSAL-identity-wear-r3 sha 4a1e90a7): bare WEAR native-proven for these direct-held owners.
+        // Lurking Horror gloves 203 / boots 104 (cold-lh-gloves.json, cold-lh-boots.json). Brass hyrax ring stays OPEN.
+        "wearForms": { "objects": [203, 104], "verb": "wear", "scope": "held-direct" },
         // Native i (take all, i; 2026-10-16-hidden-bit-finder.json) tests bit18 TRUE on the pc's mouse 199 and HELP key 107
         // and omits them; FALSE on the printed chair 62, pc 191, assignment 97. Source NDESCBIT 18 exact (72/72). SOLO/SELF-AUDIT.
         "inventoryHiddenAttribute": 18,

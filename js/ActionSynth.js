@@ -325,6 +325,50 @@ var ActionSynth = {
             command.command === current.command && command.objectId === current.id);
     },
 
+    // Identity Wear R3 (four-seat ACCEPTED, PROPOSAL-identity-wear-r3 sha 4a1e90a7): per-title fact
+    // wearForms {objects, verb:"wear", scope:"held-direct"} names the exact owners whose bare WEAR is
+    // native-proven although no wearable capability bit is asserted. Offered only for the exact
+    // executable fact of a validated confirmed-zil-family title, an owner inside the true object
+    // frontier, held directly by the player (never on the ground or nested), not worn by the measured
+    // wornAttribute, with bare one-object WEAR grammar and the current unique verified noun. Capability
+    // is never inferred from worn state. Anything malformed or drifted -> null (no Wear).
+    identityWearScopeFor: function (obj, name) {
+        try {
+            if (!obj || obj.examineOnly || !Number.isInteger(Number(obj.id)) || typeof ZRamReader === "undefined" ||
+                typeof ModuleStatFactsClaude === "undefined" || typeof ModuleLibrary === "undefined" ||
+                typeof ZRamProvider === "undefined" || !ZRamProvider.getMem || typeof Actionable === "undefined" || !Actionable.referenceFor) return null;
+            var id = Number(obj.id), mem = ZRamProvider.getMem();
+            var digest = ModuleLibrary.currentExecutableDigest && ModuleLibrary.currentExecutableDigest();
+            var fact = mem && ZRamReader.executableLayoutFacts(mem);
+            if (!digest || !fact || ModuleStatFactsClaude[digest] !== fact) return null;
+            var spec = fact.wearForms, plain = function (o) { return !!o && typeof o === "object" && Object.getPrototypeOf(o) === Object.prototype; };
+            if (!plain(spec) || Object.keys(spec).sort().join() !== "objects,scope,verb" || spec.verb !== "wear" ||
+                spec.scope !== "held-direct" || !Array.isArray(spec.objects) || !spec.objects.length ||
+                !spec.objects.every(function (n) { return Number.isInteger(n) && n >= 2; }) || spec.objects.indexOf(id) < 0) return null;
+            var family = GrammarProvider.decodeD198(mem);
+            if (!family || family.classification !== "confirmed-zil-family" || family.evidence !== "validated" ||
+                !(family.templates || []).some(function (t) { return t.verb === "wear" && t.objectCount === 1 && !(t.prepositions || []).length; }) ||
+                !ActionSynth.literalAvailable("wear")) return null;
+            var h = ZRamReader.header(mem), first = ZRamReader.objectBase(h, 1);
+            var frontier = (ZRamReader.u16(mem, first + (h.version <= 3 ? 7 : 12)) - first) / h.entrySize;
+            if (!Number.isInteger(frontier) || frontier < 2 || id > frontier) return null;
+            var worn = fact.wornAttribute, limit = h.version <= 3 ? 32 : 48;
+            if (!Number.isInteger(worn) || worn < 0 || worn >= limit) return null;
+            var player = ZRamReader.resolvePlayer(mem), links = ZRamReader.objectLinks(mem, id);
+            if (!player || !player.id || !links || links.parent !== player.id || ZRamReader.attr(links, worn)) return null;
+            var ref = Actionable.referenceFor(obj);
+            if (!ref || !ref.unique || !ref.verified || typeof ref.noun !== "string" || !ref.noun || (name != null && ref.noun !== name)) return null;
+            return { kind: "identity-wear-held-direct", digest: digest, generation: ActionSynth.currentGeneration(),
+                id: id, noun: ref.noun, command: "wear " + ref.noun };
+        } catch (eWear) { return null; }
+    },
+    currentGeneration: function () { return typeof UndoRestoreSync !== "undefined" ? UndoRestoreSync.generation : 0; },
+    identityWearCommandCurrent: function (command) {
+        if (!command || command.sharedMembers || !command.identityWearScope || command.verb !== "wear") return false;
+        var scope = command.identityWearScope, current = ActionSynth.identityWearScopeFor({ id: Number(command.objectId), name: scope.noun });
+        return !!(current && scope.kind === current.kind && scope.digest === current.digest && scope.generation === current.generation &&
+            scope.id === current.id && scope.noun === current.noun && scope.command === current.command && command.command === current.command);
+    },
     commandsForObject: (obj, context, containerName, options) => {
         if (!obj || !obj.name) return [];
         // Resolve the same observed vocabulary row used by marks and radials.
@@ -437,6 +481,13 @@ var ActionSynth = {
                     && (v !== "take" || !attrs.animate || actorTakeConfirmed);
             });
         }
+        // Identity Wear R3 (after kind filtering): the room branch keeps stripping Wear for ground and
+        // out-of-scope objects, but an identity-qualified owner the player actually holds directly keeps
+        // its Wear whatever the caller kind (codex correction, policy 6). Nested rows never; the helper itself
+        // requires the current unique verified reference, and shared rows exclude the scoped command.
+        var identityWear = !containerName && !ActionSynth.isWorn(obj)
+            ? ActionSynth.identityWearScopeFor(obj, name) : null;
+        if (identityWear && verbs.indexOf("wear") < 0) verbs.push("wear");
         // Some authenticated custom equipment uses one native toggle action.
         if (attrs.equipmentToggleVerb === "use") {
             verbs = verbs.map(function (v) { return v === "wear" || v === "remove" ? "use" : v; })
@@ -490,6 +541,9 @@ var ActionSynth = {
         });
         if (wornRemoval) result.forEach(function (entry) {
             if (entry.verb === "drop" && entry.command === wornRemoval.command) { entry.wornRemovalScope = wornRemoval; entry.label = "Drop"; }
+        });
+        if (identityWear) result.forEach(function (entry) {
+            if (entry.verb === "wear" && entry.command === identityWear.command) entry.identityWearScope = identityWear;
         });
         if (typeof LearnedWords !== "undefined") LearnedWords.commands(obj).forEach(function (c) {
             if (!result.some(function (existing) { return existing.command === c.command; })) result.push(c);

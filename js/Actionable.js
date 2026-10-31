@@ -2750,9 +2750,9 @@ var Actionable = {
     sharedObjectCommands: function (choices, kind) {
         var held = ((WorldModel.lastPayload || {}).inventory || []).map(function (o) { return String(o.id); });
         var eligible = choices.filter(function (o) { return (held.indexOf(String(o.id)) >= 0) === (kind === "inventory"); });
-        var lists = eligible.map(function (o) { return Actionable.resolveObjectCommands(o.id, kind, {allowAmbiguousReference:true}).filter(function (entry) { return !entry.wornRemovalScope; }); });
+        var lists = eligible.map(function (o) { return Actionable.resolveObjectCommands(o.id, kind, {allowAmbiguousReference:true}).filter(function (entry) { return !entry.wornRemovalScope && !entry.identityWearScope; }); });
         return (lists[0] || []).filter(function (entry) {
-            return !entry.wornRemovalScope && lists.every(function (list) { return list.some(function (c) { return c.command === entry.command && !c.wornRemovalScope; }); });
+            return !entry.wornRemovalScope && !entry.identityWearScope && lists.every(function (list) { return list.some(function (c) { return c.command === entry.command && !c.wornRemovalScope && !c.identityWearScope; }); });
         }).map(function (entry) {
             var members = lists.map(function (list) { return list.find(function (c) { return c.command === entry.command; }); });
             return Object.assign({}, entry, {
@@ -2766,6 +2766,8 @@ var Actionable = {
         if (command.sharedMembers && (command.wornRemovalScope || command.sharedMembers.some(function (c) { return !!c.wornRemovalScope; }))) return false;
         return (command.sharedMembers || [command]).every(function (c) {
             if (c.wornRemovalScope && (typeof ActionSynth === "undefined" || !ActionSynth.wornRemovalCommandCurrent || !ActionSynth.wornRemovalCommandCurrent(c))) return false;
+            // Identity Wear R3: re-validated at tap (digest, generation, owner, noun, held-direct, not worn).
+            if (c.identityWearScope && (command.sharedMembers || typeof ActionSynth === "undefined" || !ActionSynth.identityWearCommandCurrent || !ActionSynth.identityWearCommandCurrent(c))) return false;
             // D8 P8: an addressed robot command is re-validated at tap (domain, co-location, command prompt).
             if (c.actorAddressing && (command.sharedMembers || typeof ActionSynth === "undefined" || !ActionSynth.addressedCommandCurrent || !ActionSynth.addressedCommandCurrent(c))) return false;
             return !c.learnedWordScope || typeof LearnedWords === "undefined" || LearnedWords.commandCurrent(c);
