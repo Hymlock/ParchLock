@@ -1,0 +1,2 @@
+reached step 0 null
+fresh pocket inventory countercheck "inventory" #150 set [4] clr [] ops [[150,32,0],[150,29,0],[150,0,0],[150,28,0],[150,28,0],[150,19,0],[150,30,0],[150,38,0]] | "You are wearing:\n  your hat.\n  your coat.\n  a whistle.\nYour pocket contains:\n  a pound note.\nYou are holding:\n"
