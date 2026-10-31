@@ -1,0 +1,4 @@
+vespers.z8.js marks
+  base: ["room","west","desk","bed","blanket"]
+  cand: ["Saint Cuthbert's","place","hands","window","door","west","desk","bed","blanket"]
+GATE: 6 games, 1 differences (each must be an intended, reviewed change)
