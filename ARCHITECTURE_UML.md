@@ -4318,6 +4318,8 @@ Companion: [D231](PRODUCTION_PLAN.md#pl-d231). Runtime: AttributeSchema.unlockTo
 launcher. The tool domain is per exact digest and only narrows the generic launcher; it never restricts targets or
 promises success.
 
+Starcross (2026-10-31, grok PACKET-starcross-unlock-with-1354 + claude ACCEPT): no unlockTools fact by design. SEAT-BELT-FCN accepts UNLOCK with any tool (source actions.zil:2476; native 'unlock belt with space suit' while worn gives "Click."); V-UNLOCK refuses elsewhere. The generic launcher on every carried item is correct but low-value; narrowing it would remove a working path.
+
 ### October26 operator-authorized credit takeover: twelve concealed mappings
 
 Codex integrated reviewed five-title facts0d28bd9 and next seven-title facts5fd4c52 after the operator reported other seats out of credits and authorized takeover. Exact concealed bits: Sorcerer19, Planetfall19, PlunderedHearts20, Starcross30, Deadline31, Ballyhoo19, Spellbreaker12, ZorkII9, Witness12, ZorkIII28, Suspect10, Moonmist6. Prior actual independent semantic reviews and next7 exact-source review are retained separately from SOLO integration self-review. Moonmist uses the qualified persistent-single-owner/source-census exception; transient PLAYER INVISIBLE during GO TO is explicitly retained, not a second gameplay positive or feature-absence claim.
