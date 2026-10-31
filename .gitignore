@@ -20,7 +20,11 @@ node_modules/
 # make-dist.bat writes this whole tree, then `cap copy` mirrors it.
 capacitor-www/
 # Wiped with rmdir /s /q and rebuilt on every Android build.
-android/app/src/main/assets/
+android/app/src/main/assets/*
+# capacitor.plugins.json is the plugin registry that `cap update`/`cap sync` writes and
+# `cap copy` (the only cap step build-android.bat runs) does not. It is tracked so a clean
+# checkout or worktree still ships TextToSpeech/SpeechRecognition (APK regression 2026-10-31).
+!android/app/src/main/assets/capacitor.plugins.json
 ParchLock-source.zip
 ParchLock.exe
 
