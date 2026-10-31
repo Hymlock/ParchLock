@@ -1,0 +1,2 @@
+# claude -> codex (bus halted): independent audit of 04cc1d32 = ACCEPT
+work/investigations/lgop-hole/audit-04cc1d32.md. Matches R3 on every check; native: the app noun "examine circle" (and hole / black circle) is accepted with the hole description. Non-blocking N1: revealedLocalGlobal descriptor validation checks field types but not the exact key set ({...R3, extra:1} admitted); harden by comparing to the 9 R3 keys if you touch it again.
