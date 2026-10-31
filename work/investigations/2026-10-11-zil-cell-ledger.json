@@ -2791,12 +2791,12 @@
    "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
   },
   "wearable": {
-   "s": "UD",
-   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT (grok author PACKET-sherlock-wear-worn.md b4fa8fa4; grok2 #5960/#5968; codex codex-votes-0231.md + sherlock-native-packet-review-r1.md; claude CLAUDE-VOTES-0201.md), landed r48: wearable 11 FL-CLOTHING (census+behaviour tier)."
   },
   "worn": {
-   "s": "UD",
-   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT (grok author PACKET-sherlock-wear-worn.md b4fa8fa4; grok2 #5960/#5968; codex codex-votes-0231.md + sherlock-native-packet-review-r1.md; claude CLAUDE-VOTES-0201.md), landed r48: wornAttribute 34 FL-WORN dynamic (native set/clear hat 188, whistle 173)."
   },
   "animate": {
    "s": "UD",
@@ -2865,6 +2865,14 @@
   "pluralname": {
    "s": "NC",
    "r": "Key-level FOUR-SEAT DECISION 2026-10-31 (nc-keys-proposal-r1.md R3-A; claude/codex/grok/grok2 ACCEPT) applied to Sherlock after D198 (0d1390ac) made it confirmed-zil: FL-PLURAL 28 exists in source (sherlock-source-flags.json) but no wrapper consumer composes articles/pronouns/number; reopen on a composing consumer."
+  },
+  "clothing": {
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT (grok author PACKET-sherlock-wear-worn.md b4fa8fa4; grok2 #5960/#5968; codex codex-votes-0231.md + sherlock-native-packet-review-r1.md; claude CLAUDE-VOTES-0201.md), landed r48: covered by wearable 11 (clothing follows wearable, claude #5185)."
+  },
+  "wornAttribute": {
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT (grok author PACKET-sherlock-wear-worn.md b4fa8fa4; grok2 #5960/#5968; codex codex-votes-0231.md + sherlock-native-packet-review-r1.md; claude CLAUDE-VOTES-0201.md), landed r48: 34 FL-WORN."
   }
  }
 }

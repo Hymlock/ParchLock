@@ -835,7 +835,10 @@ var ModuleStatFactsClaude = {
     "ba9c2c81d6b55eb9fc7de43a2e439fc65304231cbb834c208005cd9460f44ff0": {
         "playerObject": 232,
         // No openCapability (grok2 REVISE #3576: "all containers" offered Open on the lapel, hat and bottles).
-        "attributeMap": { "container": 9, "open": 5, "isOpen": 5 }
+        // wearable 11 = FL-CLOTHING: census+behaviour tier (8 static carriers, 0 setters; WEAR WHISTLE 173 reads 11 TRUE, WEAR KNIFE 151 reads 11 FALSE); V-WEAR refuses non-FL-CLOTHING.
+        "attributeMap": { "container": 9, "open": 5, "isOpen": 5, "wearable": 11 },
+        // wornAttribute 34 = FL-WORN (dynamic state): native set/clear on hat 188 and whistle 173; knife stays clear. REMOVE/TAKE OFF syntax FINDs FL-WORN.
+        "wornAttribute": 34
     },
     // phlegm (Inform, no attribute-name table): this library numbers container 3 (I6 default: concealed 3, container 4).
     // Raw target-scoped PUT IN tests (zil-route-ops-raw.cjs): PUT MAP IN COAT tests 3 TRUE on the blue overcoat 39, PUT MAP
