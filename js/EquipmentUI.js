@@ -58,7 +58,8 @@ var EquipmentUI = {
         }
         function add(form, enter, descriptor) {
             if (!allowed(form)) return;
-            var scoped = descriptor && descriptor.wornRemovalScope ? descriptor : null;
+            // Identity Wear (R3) carries its own scope; keep it like the E5 worn-removal scope.
+            var scoped = descriptor && (descriptor.wornRemovalScope || descriptor.identityWearScope) ? descriptor : null;
             if (scoped && !Actionable.radialCommandCurrent(scoped)) return;
             if (forms[form]) {
                 if (scoped) { forms[form].ScopedCommand = scoped; forms[form].Enter = true; }
@@ -98,8 +99,12 @@ var EquipmentUI = {
         // D214 U5: wider editable lane, still dictionary-gated by allowed().
         (AttrCalibrator.ITEM_SUGGESTION_VERBS || []).forEach(function (form) { add(form, false); });
         if (typeof LearnedWords !== "undefined") candidates.forEach(function (c) { c.Label = LearnedWords.commandLabel(obj.id, c.Form, c.Label); });
-        if (scopedRemoval) candidates = candidates.filter(function (c) { return c.Form !== "drop" || !!c.ScopedCommand; });
-        candidates.forEach(function (c) { if (c.ScopedCommand) c.Label = "Drop"; });
+        if (scopedRemoval) candidates = candidates.filter(function (c) { return c.Form !== "drop" || !!(c.ScopedCommand && c.ScopedCommand.wornRemovalScope); });
+        candidates.forEach(function (c) {
+            if (!c.ScopedCommand) return;
+            if (c.ScopedCommand.wornRemovalScope) c.Label = "Drop";
+            else if (c.ScopedCommand.identityWearScope) c.Label = "Wear";
+        });
         return candidates;
     },
     selectYourselfAction: function (id, form, enter, generation, moduleKey, selectedDescriptor) {
@@ -110,10 +115,13 @@ var EquipmentUI = {
         var candidate = EquipmentUI.yourselfCommands(obj, model).find(function (item) { return item.Form === form; });
         if (!candidate || (enter && !candidate.Enter)) return;
         if (selectedDescriptor) {
-            var current = candidate.ScopedCommand, prior = selectedDescriptor.wornRemovalScope;
-            if (!current || !prior || !Actionable.radialCommandCurrent(current) ||
+            var current = candidate.ScopedCommand;
+            var kind = selectedDescriptor.wornRemovalScope ? "wornRemovalScope" : selectedDescriptor.identityWearScope ? "identityWearScope" : null;
+            var prior = kind && selectedDescriptor[kind];
+            if (!current || !prior || !current[kind] || !Actionable.radialCommandCurrent(current) ||
                 current.command !== selectedDescriptor.command || current.objectId !== selectedDescriptor.objectId ||
-                current.wornRemovalScope.digest !== prior.digest || current.wornRemovalScope.noun !== prior.noun) return;
+                current[kind].digest !== prior.digest || current[kind].noun !== prior.noun ||
+                (kind === "identityWearScope" && (current[kind].id !== prior.id || current[kind].generation !== prior.generation))) return;
             Actionable.runChosenCommand(current.command); return;
         }
         // Every Yourself form is a complete one-object command ("wield

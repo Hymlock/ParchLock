@@ -61,7 +61,10 @@ for(const t of TITLES){
       assert(S.identityWearCommandCurrent(w),'tap current');});
     check(tag+'Equipment Yourself offers Wear for the held-unworn owner',()=>{
       T.setWorn(id,false);T.place(id,'held');
-      const forms=T.c.EquipmentUI.yourselfCommands(T.object(id),{}).map(x=>x.Form);assert(forms.includes('wear'),JSON.stringify(forms));});
+      const rows=T.c.EquipmentUI.yourselfCommands(T.object(id),{}),forms=rows.map(x=>x.Form);assert(forms.includes('wear'),JSON.stringify(forms));
+      // codex #6000: the Equipment row must keep the identity-Wear descriptor and its own label (not "Drop").
+      const wr=rows.find(x=>x.Form==='wear');assert(wr.ScopedCommand&&wr.ScopedCommand.identityWearScope,'Equipment Wear keeps identityWearScope');
+      assert(wr.Label==='Wear','Equipment Wear label is Wear, got '+wr.Label);});
     check(tag+'room-kind caller (TranslatorUI/LearnedWords/evidence) on an actually held owner keeps Wear',()=>{
       T.setWorn(id,false);T.place(id,'held');const o=T.object(id);
       assert(verbs(S.commandsForObject(o,'room')).includes('wear'));
