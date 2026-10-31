@@ -2848,6 +2848,18 @@ var ZRamReader = {
                     return !!fam && fam.classification === 'confirmed-zil-family' && fam.evidence === 'validated';
                 })(GrammarProvider.decodeD198(mem));
         } catch (eRecurse) { hiddenRecurses = false; }
+        // D16 P16 (claude R1+R2, codex ACCEPT #5641): a per-title literal fact for titles whose
+        // parser SEARCH-LIST reaches through an open/transparent holder without testing NDESCBIT.
+        // Such an NDESC child with its own parser words stays in the payload (scope: links,
+        // underlines, D148 spell pool) marked labelSuppressed; label consumers skip it. Reaching
+        // it here already means every ancestor up to the root passed canSeeInside (or the D148
+        // bitless-held-named exception); a closed opaque holder is never walked.
+        var scopeRetained = hiddenRecurses && fact.inventoryHiddenScopeRetained === true;
+        function suppressedRow(cid, name, parentId, attrs, aliases) {
+            if (!scopeRetained || !aliases || !aliases.length) return;
+            out.push({ id: cid, name: name, parentId: parentId, attrs: attrs, aliases: aliases,
+                confidence: confidence, discovered: true, labelSuppressed: true });
+        }
         function walk(id, d, viaUnnamedBypass) {
             if (!id || seen[id] || d < 0) return;
             seen[id] = 1;
@@ -2917,6 +2929,7 @@ var ZRamReader = {
                                 confidence: confidence,
                                 discovered: true
                             });
+                            else suppressedRow(cid, parserLabel, id, wrapperAttrs, aliases);
                             var itemCanLookIn = ZRamReader.canSeeInside(wrapperAttrs);
                             if (!itemCanLookIn && !insideTrusted && !wrapperAttrs.container
                                 && !wrapperAttrs.supporter && ZRamReader.children(mem, cid).length) {
@@ -2942,6 +2955,7 @@ var ZRamReader = {
                     confidence: confidence,
                     discovered: true
                 });
+                else suppressedRow(cid, name, id, attrs, ZRamReader.parserWordsAny(mem, cid) || []);
                 var canLookIn = ZRamReader.canSeeInside(attrs);
                 if (!canLookIn && !insideTrusted && !attrs.container && !attrs.supporter
                     && ZRamReader.children(mem, cid).length) {

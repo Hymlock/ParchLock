@@ -318,9 +318,31 @@ var EquipmentUI = {
         if (!EquipmentUI._demo) return false;
         try {
             var payload = (typeof WorldModel !== "undefined" && WorldModel.lastPayload) || null;
-            var real = ((payload && payload.inventory) || []).filter(function (o) { return o && o.id != null && o.name; });
+            var real = ((payload && payload.inventory) || []).filter(function (o) { return o && o.id != null && o.name && o.labelSuppressed !== true; });
             return real.length === 0;
         } catch (e) { return true; }
+    },
+
+    // D16 P16: label projection only. labelSuppressed rows (NDESC, still in parser
+    // scope) are not drawn; a drawn row whose parent is suppressed hangs under the
+    // nearest drawn ancestor, else top level. That display parent goes in a
+    // separate labelParentId used ONLY by tree/hierarchy/topLevel rendering;
+    // parentId/pid stay physical so every command path (heldContainerName,
+    // scoped commands, Actionable, ActionSynth) reads real custody. Only a
+    // strict labelSuppressed === true hides a row.
+    labelRows: function (rows) {
+        var hidden = {};
+        rows.forEach(function (o) { if (o.labelSuppressed === true) hidden[String(o.id)] = o; });
+        if (!Object.keys(hidden).length) return rows;
+        return rows.filter(function (o) { return o.labelSuppressed !== true; }).map(function (o) {
+            var pid = o.parentId, guard = 0;
+            while (pid != null && hidden[String(pid)] && guard++ < 64) pid = hidden[String(pid)].parentId;
+            return pid === o.parentId ? o : Object.assign({}, o, { labelParentId: pid });
+        });
+    },
+    // Display-only parent for tree rendering; never for commands.
+    displayParentId: function (o) {
+        return Object.prototype.hasOwnProperty.call(o, "labelParentId") ? o.labelParentId : o.parentId;
     },
 
     model: function () {
@@ -339,7 +361,7 @@ var EquipmentUI = {
         var payload = (typeof WorldModel !== "undefined" && WorldModel.lastPayload) || null;
         var items = [];
         try {
-            items = ((payload && payload.inventory) || []).filter(function (o) { return o && o.id != null && o.name; });
+            items = EquipmentUI.labelRows(((payload && payload.inventory) || []).filter(function (o) { return o && o.id != null && o.name; }));
         } catch (e) {}
 
         var playerId = payload && (payload.playerId != null && payload.playerId !== ""
@@ -355,15 +377,16 @@ var EquipmentUI = {
             var id = String(o.id);
             itemIds[id] = true;
             byId[id] = o;
-            var key = String(o.parentId);
+            var key = String(EquipmentUI.displayParentId(o));
             (byParent[key] = byParent[key] || []).push(o);
         });
 
         // Top level, matching Actionable.RenderInventory's rule exactly.
         var topLevel = items.filter(function (o) {
-            if (o.parentId == null || o.parentId === "") return true;
-            if (playerId != null && String(o.parentId) === String(playerId)) return true;
-            if (!itemIds[String(o.parentId)]) return true;
+            var dp = EquipmentUI.displayParentId(o);
+            if (dp == null || dp === "") return true;
+            if (playerId != null && String(dp) === String(playerId)) return true;
+            if (!itemIds[String(dp)]) return true;
             return false;
         });
 

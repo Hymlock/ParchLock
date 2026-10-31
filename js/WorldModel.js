@@ -132,6 +132,8 @@ var WorldModel = {
         [payload && payload.roomId, payload && payload.probe && payload.probe.roomId].forEach(function (r) { if (r != null && r !== "" && r !== 0) roomIds[String(r)] = true; });
         var worn = objs.filter(function (o) {
             if (!o || o.parentId == null || !o.attrs) return false;
+            // D16 P16: a labelSuppressed row is never a recovery seed.
+            if (o.labelSuppressed === true) return false;
             if (roomIds[String(o.parentId)]) return false;
             // D232: a room-visible local global's parent is the LOCAL-GLOBALS holder, never an inventory root.
             if (o.localGlobal) return false;
@@ -171,6 +173,8 @@ var WorldModel = {
         var counts = {};
         inv.forEach(function (o) {
             if (!o || o.parentId == null) return;
+            // D16 P16: a labelSuppressed row never votes for the holder.
+            if (o.labelSuppressed === true) return;
             var key = String(o.parentId);
             if (itemIds[key]) return;
             counts[key] = (counts[key] || 0) + 1;

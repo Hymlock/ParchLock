@@ -324,6 +324,13 @@ var ModuleStatFactsClaude = {
         // concealed 16 = INVISIBLE exact (native, codex #5240 resume-20261020/concealed/packet-enchanter.json): Flathead portrait 179 and Frobozz portrait 167 read 16=1 and cannot be seen; EXAMINE PORTRAITS 106 (16 clear, visible) identifies both and clears 16; named EXAMINE then succeeds.
         // locked 1 = LOCKEDBIT (grok1 probe5 run-enj, claude worker E3): north gate 194 @44 OPEN GATE reads 1=1 "The gate is rusted shut.", @46 reads 0 after REZROV. Single-owner exception from source: NORTH-GATE-OBJ-F (castle.zil:1085) is the only player-facing LOCKEDBIT test; IRON-GATE-F prints fixed text; V-OPEN/LOCK/UNLOCK never test it. No room carriers.
         "attributeMap": { "container": 21, "supporter": 14, "open": 12, "isOpen": 12, "light": 22, "on": 8, "door": 24, "enterable": 29, "climbable": 26, "moved": 15, "transparent": 10, "concealed": 16, "locked": 1 },
+        // D1 source-proven (r44): inventoryHiddenAttribute 7 = NDESCBIT; PRINT-CONT withholds the NDESC spell labels but recurses.
+        // D16 P16 (claude R1+R2, codex ACCEPT #5641): scope retained. gparser.zil:1272 SEARCH-LIST descends any OPENBIT|TRANSBIT
+        // child with no NDESCBIT test (THIS-IT? rejects only INVISIBLE); spells are IN SPELL-BOOK with NDESCBIT and the book is
+        // OPENBIT; magic.zil:410 READ lists them. Native `i` shows the book only; the spells stay in scope (D148 cast route).
+        "inventoryHiddenAttribute": 7,
+        "inventoryHiddenRecurses": true,
+        "inventoryHiddenScopeRetained": true,
         "openCapability": { "all": ["container"], "none": ["supporter"] },
     },
     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {

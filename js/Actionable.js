@@ -2630,6 +2630,9 @@ var Actionable = {
             items = ((payload && payload.inventory) || []).filter(function (o) {
                 return o && o.id != null && o.name;
             });
+            // D16 P16: labelSuppressed rows stay in scope (payloadPool, invIds) but are not drawn.
+            if (typeof EquipmentUI !== "undefined" && EquipmentUI.labelRows) items = EquipmentUI.labelRows(items);
+            else items = items.filter(function (o) { return o.labelSuppressed !== true; });
         } catch (e) {}
         var playerId = payload && (payload.playerId != null && payload.playerId !== ""
             ? payload.playerId
@@ -2638,17 +2641,21 @@ var Actionable = {
         // parentId->children index locally for rendering nesting, rather
         // than expecting ZRamReader to emit a tree (keeps the same flat
         // convention as discoveredObjects/scopeObjects everywhere else).
+        // D16 P16: nesting uses the display-only labelParentId when set;
+        // o.parentId stays physical for every command path.
+        var dispParent = function (o) { return Object.prototype.hasOwnProperty.call(o, "labelParentId") ? o.labelParentId : o.parentId; };
         var byParent = {};
         var itemIds = {};
         items.forEach(function (o) {
             itemIds[String(o.id)] = true;
-            var key = String(o.parentId);
+            var key = String(dispParent(o));
             (byParent[key] = byParent[key] || []).push(o);
         });
         var topLevel = items.filter(function (o) {
-            if (o.parentId == null || o.parentId === "") return true;
-            if (playerId != null && String(o.parentId) === String(playerId)) return true;
-            if (!itemIds[String(o.parentId)]) return true;
+            var dp = dispParent(o);
+            if (dp == null || dp === "") return true;
+            if (playerId != null && String(dp) === String(playerId)) return true;
+            if (!itemIds[String(dp)]) return true;
             return false;
         });
         var isWorn = function (obj) {
