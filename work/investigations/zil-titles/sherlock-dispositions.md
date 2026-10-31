@@ -77,3 +77,16 @@ Consumer counts below are tests / sets / clears, counted with `MC-IS?|MC-ISNOT?|
   data[2] under low-bit flags, and orphan ~376-377 reads both data bytes. The fix needs the exact 8-byte metadata
   semantics (no zero-filling), real grammar/direction ownership checks, malformed-short-dictionary and Inform controls,
   and a D198 cache version bump.
+
+## Native evidence lanes (claude, after D198 landed 0d1390ac - Sherlock is now confirmed-zil-family)
+Every S-candidate needs 2 native positives + 1 negative (or the census+behaviour tier), on the FL-* bits in
+sherlock-source-flags.json.
+- grok: animate (FL-ALIVE 40 vs FL-PERSON 47: discriminate natively), talkable, container 9, supporter 16, door 8,
+  open/openable 5/44, locked 15, transparent 2, enterable/VEHICLE 1.
+- grok2: edible/FOOD 41, on/switchable (FL-LAMP 42 vs FL-LIGHTED 38 state), moved/TOUCHED 3, scenery/NODESC 32,
+  proper/NOARTC 29, takeable 39 (evidence only, per the R3.2 decision), static/TRYTAKE 26, female 27, pluralname 28,
+  inventoryHiddenAttribute NODESC 32 (native INVENTORY check), and semantic concealed (hide/reveal search, per the codex
+  challenge).
+Already decided (four-seat): worn C34, wearable R2 C11 (codex re-vote pending).
+Deliver packets as files under grok-lane-1031/ (grok) and grok2/sherlock/ (grok2). claude batches the facts after
+four-seat votes.
