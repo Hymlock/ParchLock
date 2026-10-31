@@ -427,8 +427,8 @@
    "r": "not applicable per Claude #5242 (grok #5214 A1, Witness #5207 precedent): no WORNBIT runtime worn state in source (WEARBIT, where present, is wearability only). verify: grok1/ledger/verify-a-batch.txt"
   },
   "lightSource": {
-   "s": "NC",
-   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT (nc-keys R4 lightForms; codex-votes-0231; grok review; grok2 code review lightforms-impl-review.md): landed lightForms (object-list authoritative, state-driven): lantern 94 off-only (state 22), turn off"
   },
   "inventoryHiddenAttribute": {
    "s": "S",
@@ -725,8 +725,8 @@
    "r": "grok1 #5203 (claude #5200): static = complement of source TAKEBIT 7 (exact), as decoded by the D214 Take grammar (GrammarProvider.d214TakeAttribute, takeable L:S). NEVER TRYTAKEBIT 27: it means not-yet-taken and is cleared on first take (#5199)."
   },
   "lightSource": {
-   "s": "NC",
-   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT (nc-keys R4 lightForms; codex-votes-0231; grok review; grok2 code review lightforms-impl-review.md): landed lightForms (object-list authoritative, state-driven): flashlight 116, state 17, turn on/off"
   },
   "light": {
    "s": "NC",
@@ -863,8 +863,8 @@
    "r": "not applicable per Claude #5242 (grok #5214 A1, Witness #5207 precedent): no WORNBIT runtime worn state in source (WEARBIT, where present, is wearability only). verify: grok1/ledger/verify-a-batch.txt"
   },
   "lightSource": {
-   "s": "NC",
-   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+   "s": "NA",
+   "r": "lightsource-native/SUMMARY.md: refuted natively - no usable player light source (Witness matches feelie / lantern refuses; Deadline lamp is scenery). Four-seat R4."
   }
  },
  "Infidel.z3.js": {
@@ -973,8 +973,8 @@
    "r": "FAIL CLOSED per Claude #5242 (grok #5216/#5217): NDESCBIT also sits on takeable objects (and is toggled at runtime), so it is not a static scenery marker. verify: grok1/ledger/verify-a-batch.txt"
   },
   "lightSource": {
-   "s": "NC",
-   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT (nc-keys R4 lightForms; codex-votes-0231; grok review; grok2 code review lightforms-impl-review.md): landed lightForms (object-list authoritative, state-driven): owners match 46/torch 198, state ONBIT 21, light / extinguish, blow out"
   },
   "talkable": {
    "s": "NA",
@@ -2673,8 +2673,8 @@
    "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 22 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   },
   "lightSource": {
-   "s": "NC",
-   "r": "Group rule A (as the other 17 lightSource cells, D2/D247): no js/ consumer reads lightSource (grep 2026-10-31). LIGHTBIT 25 exists in source (not NA); no target-named command tests/writes it (V-LAMP-ON refuses or never checks; only parser FIND/GWIM), so no rule-7 fact is producible. Was left U by #4028/#4040 before rule A. lightsource-3-notes.md."
+   "s": "NA",
+   "r": "lightsource-native/SUMMARY.md: refuted natively - no usable player light source (Witness matches feelie / lantern refuses; Deadline lamp is scenery). Four-seat R4."
   },
   "absent": {
    "s": "NA",

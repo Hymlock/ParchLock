@@ -517,6 +517,50 @@ var AttributeSchema = {
             return Number.isInteger(objectId) && Object.prototype.hasOwnProperty.call(scope, String(objectId));
         } catch (eScope) { return false; }
     },
+    // lightForms (four-seat ACCEPT, grok2 draft sha 76e755d4; codex 0231 + grok review): per-title light
+    // owners with per-owner on/off verbs. The objects list is AUTHORITATIVE; capabilityBit is informational
+    // only and never gates (Infidel BURNBIT 11 also marks flammable non-lights). The live stateBit picks
+    // on (clear) or off (set). Only the exact executable fact of a validated confirmed-zil-family title;
+    // any malformed descriptor makes the whole fact absent (null), leaving every other path unchanged.
+    lightForms: function (mem, objectId, context) {
+        try {
+            if (!mem || !Number.isInteger(objectId) || objectId < 1 || typeof ModuleLibrary === "undefined" ||
+                typeof ModuleStatFactsClaude === "undefined" || typeof ZRamReader === "undefined") return null;
+            var digest = ModuleLibrary.currentExecutableDigest(), fact = digest && ModuleStatFactsClaude[digest];
+            if (!fact || ZRamReader.executableLayoutFacts(mem) !== fact ||
+                (ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem))) return null;
+            var lf = fact.lightForms, own = Object.prototype.hasOwnProperty;
+            var plain = function (o) { return !!o && typeof o === "object" && Object.getPrototypeOf(o) === Object.prototype; };
+            if (!plain(lf) || !Object.keys(lf).every(function (k) { return ["capabilityBit", "stateBit", "objects", "on", "off"].indexOf(k) >= 0; }) ||
+                !own.call(lf, "stateBit") || !own.call(lf, "objects") || !own.call(lf, "on") || !own.call(lf, "off")) return null;
+            var family = AttributeSchema._familyOf(mem), h = ZRamReader.header(mem);
+            if (!h || h.version < 3 || h.version > 5 || !family || family.classification !== "confirmed-zil-family" ||
+                family.evidence !== "validated") return null;
+            var bits = h.version <= 3 ? 32 : 48, count = ZRamReader.objectCount(mem, h);
+            var bitOk = function (b) { return Number.isInteger(b) && b >= 0 && b < bits; };
+            if (!bitOk(lf.stateBit) || (own.call(lf, "capabilityBit") && lf.capabilityBit !== null && !bitOk(lf.capabilityBit))) return null;
+            var objs = lf.objects;
+            if (!Array.isArray(objs) || !objs.length || !Number.isInteger(count) || !objs.every(function (id, i) {
+                return Number.isInteger(id) && id >= 1 && id <= count && objs.indexOf(id) === i;
+            })) return null;
+            var formOk = function (side) {
+                if (side === null) return true;
+                if (!plain(side) || !Object.keys(side).length) return false;
+                return Object.keys(side).every(function (k) {
+                    return (k === "default" || (/^[1-9][0-9]*$/.test(k) && objs.indexOf(Number(k)) >= 0)) &&
+                        typeof side[k] === "string" && /^[a-z]+( [a-z]+)?$/.test(side[k]);
+                });
+            };
+            if (!formOk(lf.on) || !formOk(lf.off) || (lf.on === null && lf.off === null)) return null;
+            if (objs.indexOf(objectId) < 0) return null;
+            if (context !== "inventory" && !(context === "room" && AttributeSchema.inPlayerRoom(mem, objectId))) return [];
+            var base = ZRamReader.objectBase(h, objectId), size = mem.byteLength || mem.length;
+            if (!Number.isInteger(base) || base < 0 || base + 6 > size) return [];
+            var lit = !!(mem.getUint8(base + (lf.stateBit >> 3)) & (0x80 >> (lf.stateBit & 7)));
+            var side = lit ? lf.off : lf.on, form = side && (own.call(side, String(objectId)) ? side[String(objectId)] : side["default"]);
+            return typeof form === "string" ? [form] : [];
+        } catch (eLight) { return null; }
+    },
     // Live RAM: the object's parent chain reaches the player's actual current room, passing only
     // supporters and open or transparent containers. Another actor's possessions never qualify.
     inPlayerRoom: function (mem, objectId) {

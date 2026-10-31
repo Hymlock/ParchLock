@@ -89,6 +89,15 @@ var ActionSynth = {
         }
         return ActionSynth.rules[key] || [];
     },
+    // Per-title light owner verbs (AttributeSchema.lightForms); [] when absent or not offered.
+    lightFormsFor: (objectId, context) => {
+        try {
+            var id = Number(objectId);
+            if (objectId == null || typeof AttributeSchema === "undefined" || !AttributeSchema.lightForms || !Number.isInteger(id)) return [];
+            var forms = AttributeSchema.lightForms(AttributeSchema._getMem(), id, context);
+            return (forms || []).filter(ActionSynth.literalAvailable);
+        } catch (eLight) { return []; }
+    },
     // The title's measured enter verb (fact enterForms.enter), or null.
     enterFormFor: (mem) => {
         try {
@@ -526,6 +535,11 @@ var ActionSynth = {
                     .filter(function (v) { return v !== enterForm || ActionSynth.literalAvailable(enterForm); });
             }
         }
+        // lightForms (four-seat ACCEPT): a listed light owner, held or in the player's room, gets its
+        // own on or off verb chosen by the live state bit. Additive; no fact leaves verbs unchanged.
+        if (!containerName) ActionSynth.lightFormsFor(obj.id, context).forEach(function (v) {
+            if (verbs.indexOf(v) < 0) verbs.push(v);
+        });
         var result = verbs.map(function (v) {
             var cmd = v === "examine" ? ("examine " + name) : (v + " " + name);
             if (v === "talk to") cmd = "talk to " + name;

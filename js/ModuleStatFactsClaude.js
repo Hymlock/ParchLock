@@ -46,6 +46,8 @@ var ModuleStatFactsClaude = {
     // Cutthroats (ZIL): OPENBIT 21 (original-scene native explorer, zil-native-explore4.json, no relocation): hotel-room dresser RAM bit 21
     // 0 closed -> 1 after OPEN (reveals book/key/passbook) -> 0 after CLOSE (contents hidden); OPEN on the bed tests 21 TRUE ("already open"). Container 11 unknown.
     "8600730257949c099fa9c0b3ebf2ebed5038578b9bb9e5be2b0adb63a8786180": {
+        // lightForms (work/investigations/grok2/lightForms-DRAFT.md sha 76e755d4; four-seat ACCEPT (codex-votes-0231, grok-review-lightforms-draft); native lightsource-native/): flashlight 116 tests bit 27; TURN ON sets ONBIT 17, TURN OFF clears it; key 143/watch 6 refuse.
+        "lightForms": { "capabilityBit": 27, "stateBit": 17, "objects": [116], "on": { "default": "turn on" }, "off": { "default": "turn off" } },
         // D1 source-proven (r44): inventoryHiddenAttribute 12 = NDESCBIT (tp 48 fp 0 fn 1); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
         "inventoryHiddenAttribute": 12,
         "inventoryHiddenRecurses": true,
@@ -317,6 +319,8 @@ var ModuleStatFactsClaude = {
         "inventoryHiddenScopeRetained": true,
     },
     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
+        // lightForms (work/investigations/grok2/lightForms-DRAFT.md sha 76e755d4; four-seat ACCEPT (codex-votes-0231, grok-review-lightforms-draft); native lightsource-native/): battered lantern 94 is lit only by FROTZ (not an ordinary on form); TURN OFF clears ONBIT 8 + LIGHTBIT 22, after which TURN ON is refused. Off-only.
+        "lightForms": { "capabilityBit": null, "stateBit": 22, "objects": [94], "on": null, "off": { "94": "turn off" } },
         // D232 local globals, roots only (r3-claude/localscope2 + grok2 registry-ready): property 17, holder 58. Native: Outside of
         // Shack 227 EXAMINE SHACK, Long Road 45 EXAMINE FOREST, Fork EXAMINE HILLS succeed; Fork refuses shack and forest, Long Road
         // refuses shack. Lit ONBIT 8 (grok2 lit/dark pair: Fork on, Tower off). INVISIBLE 16 exact 7 of 7. No contents key.
@@ -340,6 +344,9 @@ var ModuleStatFactsClaude = {
         "openCapability": { "all": ["container"], "none": ["supporter"] },
     },
     "91f78d4bbb6bcea5b3a6047e1efbb0ae1efa1c2382d360e679285526125babb3": {
+        // lightForms (work/investigations/grok2/lightForms-DRAFT.md sha 76e755d4; four-seat ACCEPT (codex-votes-0231, grok-review-lightforms-draft); native lightsource-native/): match 46 + bronze torch 198 LIGHT tests BURNBIT 11 and sets ONBIT 21; EXTINGUISH TORCH / BLOW OUT MATCH clear it.
+        // capabilityBit is informational only (BURNBIT also marks flammable non-lights; shovel 33/pickaxe 37 refuse). Other match objects: declared under-offer.
+        "lightForms": { "capabilityBit": 11, "stateBit": 21, "objects": [46, 198], "on": { "default": "light" }, "off": { "198": "extinguish", "46": "blow out" } },
         // D1 source-proven (r44): inventoryHiddenAttribute 18 = NDESCBIT (tp 87 fp 0 fn 0); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
         "inventoryHiddenAttribute": 18,
         "inventoryHiddenRecurses": true,
