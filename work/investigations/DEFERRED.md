@@ -43,5 +43,5 @@ ruling that it needs nothing). Status: TODO / ACTIVE / BLOCKED(on X) / DONE / CL
 | D15 | Suspended animate (VICBIT 24): NOT needed for D8 (P8 uses the exact 6-robot NAME-TBL domain; VICBIT admits 14 incl People/proxies). Animate stays NA; panel 80 Open/Close would need a separate source census of robot-only VICBIT. | PARKED | claude | reopen on evidence |
 | D16 | Spell books: LANDED P16 37327b0 (Enchanter) + f7e1180 (Sorcerer, Spellbreaker). | DONE | claude | - |
 | D17 | Stats idle rewrites: FIXED (P17, grok2 ACCEPT). 33 -> 0 writes per 3 s idle. Follow-ups logged: Tick on grid characterData; double WorldModel.tick per Refresh (efficiency). | DONE | claude | - |
-| D13b | Per-store size caps for module learning stores (LearnedWords has no row cap; others unbounded maps). Status line shows a UTF-16 estimate only; no "small" claim yet. | TODO | claude | census per store |
+| D13b | Learning-store size caps: LANDED (P13b). Semantic entry cap doc deferred until witnesses land. | DONE | claude | - |
 | D18 | d198 harnesses: FIXED (stale harnesses, no app regression). | DONE | claude | - |
