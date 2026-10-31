@@ -536,7 +536,12 @@ var AttributeSchema = {
             var family = AttributeSchema._familyOf(mem), h = ZRamReader.header(mem);
             if (!h || h.version < 3 || h.version > 5 || !family || family.classification !== "confirmed-zil-family" ||
                 family.evidence !== "validated") return null;
-            var bits = h.version <= 3 ? 32 : 48, count = ZRamReader.objectCount(mem, h);
+            // True object frontier from the first object's property-table pointer (codex 0907: objectCount is a
+            // heuristic scan that runs past the table, e.g. Infidel 438 vs 249).
+            var bits = h.version <= 3 ? 32 : 48, size0 = mem.byteLength || mem.length;
+            var first = ZRamReader.objectBase(h, 1), firstProps = ZRamReader.u16(mem, first + (h.version <= 3 ? 7 : 12));
+            var count = (firstProps - first) / h.entrySize;
+            if (!Number.isInteger(count) || count < 2 || firstProps >= h.staticMem || firstProps >= size0) return null;
             var bitOk = function (b) { return Number.isInteger(b) && b >= 0 && b < bits; };
             if (!bitOk(lf.stateBit) || (own.call(lf, "capabilityBit") && lf.capabilityBit !== null && !bitOk(lf.capabilityBit))) return null;
             var objs = lf.objects;
@@ -553,7 +558,12 @@ var AttributeSchema = {
             };
             if (!formOk(lf.on) || !formOk(lf.off) || (lf.on === null && lf.off === null)) return null;
             if (objs.indexOf(objectId) < 0) return null;
-            if (context !== "inventory" && !(context === "room" && AttributeSchema.inPlayerRoom(mem, objectId))) return [];
+            // Actual custody, never the caller's context alone (codex 0907): inventory means the player holds it
+            // directly right now; room means its live parent chain reaches the player's room.
+            if (context === "inventory") {
+                var holder = ZRamReader.resolvePlayer(mem), link = ZRamReader.objectLinks(mem, objectId);
+                if (!holder || holder.ambiguous || !link || link.parent !== holder.id) return [];
+            } else if (!(context === "room" && AttributeSchema.inPlayerRoom(mem, objectId))) return [];
             var base = ZRamReader.objectBase(h, objectId), size = mem.byteLength || mem.length;
             if (!Number.isInteger(base) || base < 0 || base + 6 > size) return [];
             var lit = !!(mem.getUint8(base + (lf.stateBit >> 3)) & (0x80 >> (lf.stateBit & 7)));
