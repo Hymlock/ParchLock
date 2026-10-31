@@ -9768,3 +9768,57 @@ targeted replay, zero regressions/unresolved. Evidence:
 work/mapping-research/items-codex/resume-20261020/oct30-recovery/moonmist-display-shared-r1.
 Seven paired no-prompt gaps and boot-only Glulx
 coverage remain explicit. No whole-title or overall completion claim.
+
+## D255 Governance: four-seat unanimous adversarial decisions, no operator sign-off
+
+**Status:** RULED 2026-10-31 (operator, verbatim in work/investigations/zil-titles/CHECKIN-2026-10-31.md).
+"You should not wait for my sign-off. The four of you should use adversarial decision-making. And all four must decide."
+**Rule.** Every disposition (fact batches, design proposals, and ruling an L:NC/N?/B cell out of scope) is decided by all
+four seats (claude, codex, grok, grok2): a proposal, an adversarial attack, then an explicit ACCEPT from each. Any single
+REVISE blocks. There is no operator sign-off step; earlier "operator sign-off" wording for out-of-scope rulings is
+superseded. Seats self-commit their lanes after gate + peer ACCEPT (unchanged).
+
+## D256 r47 Cutthroats talkable / Suspended enterable; four-seat ledger dispositions
+
+**Status:** LANDED 949c3f5. Four-seat ACCEPT (zil-titles/CLAUDE-QUEUE-0201.md, CLAUDE-VOTES-0201.md).
+Files: `js/ModuleStatFactsClaude.js`, ledger json/md, `zil-titles/apply-r47.cjs`.
+**Facts.** Cutthroats talkable L:C VICBIT 26 (consumer suppresses self-objects ME/ADVENTURER); Suspended enterable L:C
+VEHBIT 28 limited to {CAR 58} (actor-addressed BOARD; the generic player Enter stays rejected, D8 stays for robot comms).
+Targeted gate 0 diffs (talk/board are not walk-visible); operator 13/0, zil-actor-addressing 49.
+**Ledger dispositions (same day, four-seat).** Enchanter talkable X; Seastalker enterable narrow NA (AIRLOCK-WALL BOARD gap
+stays OPEN); Suspended talkable NA; Infidel transparent NA (closed-with-visible-children domain); Stationfall/Wishbringer
+concealed NA; Sherlock worn C 34 / wearable C 11 (inert until D257). From nc-keys-proposal-r1.md DECIDED: proper/female/
+pluralname stay L:NC ("no current consumer composes articles, pronouns or number; reopen on a composing consumer"; no
+gender->animacy or plural->multiplicity inference); light stays NC under D247; lightSource reopened as BUILD with
+per-title owner-local lightForms (R4); Moonmist locked reopened as display (-> D254); Suspended enterable reopened (-> above).
+**visited correction** (zil-titles/visited-touchbit-audit.md, adopting codex #5830/#5837): Zork2 and Starcross set
+TOUCHBIT on remotely described rooms (GO&LOOK / remote LOOK; FCLEAR targets the origin), so they reopen as U (candidate
+"seen, not visited" map state, needs a consumer design + vote). The other 23 stay L:NC with softened reason ("no room
+flagged without entry found in source; reopen on any remote-description setter"); Suspended DIFFERENT-MEANING.
+
+## D257 D198 single-value (8-byte) v5 dictionary layout; Sherlock confirmed-zil-family
+
+**Status:** LANDED 0d1390a (claude). Four-seat ACCEPT of d198-sherlock/proposal-r1.md with grok binding additions
+(biconditional part-of-speech invariant; one word with two preposition IDs rejected; mutations f/g/h); grok2 code review
+813 checks. Files: `js/GrammarProvider.js`, harness `d198-single-value-layout.js`, `d198-grammar-decoder.js`.
+**Contract.** Whole-dictionary layout detection (classic | single-value). Single-value requires the invariant on every
+entry, data = [flags, v1] with no padding; directions/verbs read data[1]; orphan proof on 255-data[1]; preposition
+synonyms only when every record is a 0x08 word. Classic path byte-identical (263 Z titles identical to HEAD). Decoder
+version d198-infocom-pre-v6-v2. Gate 309x2 (work/investigations/d198-sherlock/audit-gate/GATE.md): Sherlock INTENDED
+(exits in/west, marks +west), 4 flaky; operator 13/0.
+**Harness repair (cf51b5b, D18).** Three stale d198 harnesses that failed identically on base were repaired, no js change:
+lifecycle stubs Actionable.Scope; loader-identity reads currentExecutableBytes() and checks summary/header immutability;
+grammar-shadow uses a constructed unknown-family v3 image (Suspect is confirmed-zil). Report: d18-harnesses/REPORT.md.
+
+## D258 P13b learned-data bounds and storage-full handling (D13b)
+
+**Status:** LANDED 97fb765. Four-seat R2 consensus (learning-uninstall/d13b-compare-proposal-r1.md R2, adopting grok2
+p13b-r1-attack A1-A9); grok2 code ACCEPT (grok2/p13b-impl-review.md).
+**Bounds.** AttrCalib compaction only (drop losing flag candidates, stable non-confirmed location slots, confirmed
+seen->count; no object LRU); ExitCalib drops candidates for confirmed directions, blocked LRU 512; StatTracker persists
+only pinned itemMetrics + latest 64 banners; LearnedWords cap 1000 (never evicts manual/user-edited/ignored); 64 custom
+slices; Semantic dedupe; LearningStores index keeps durable digests (erase authority) + 16 recent owners with lastWriteAt,
+legacy overflow stays unerasable.
+**Quota.** Per-kind compact hooks, one retry, then "Storage is full" status, no requeue; soft notes >1MB/>3MB.
+**Validation.** Gate 0 walk-visible; learning-caps 53, learning-stores 92, stat-tracker 211, save-state 34,
+death-terminal 40, exit 26, operator 13/0.

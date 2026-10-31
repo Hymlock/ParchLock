@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 138 decisions across
-9771 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 142 decisions across
+9825 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -27,6 +27,10 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 
 | D | claim | files | games | arch |
 |---|-------|-------|-------|------|
+| D258 | P13b learned-data bounds and storage-full handling (D13b) |  |  |  |
+| D257 | D198 single-value (8-byte) v5 dictionary layout; Sherlock confirmed-zil-family | js/GrammarProvider.js |  |  |
+| D256 | r47 Cutthroats talkable / Suspended enterable; four-seat ledger dispositions | js/ModuleStatFactsClaude.js | Enchanter Zork2 |  |
+| D255 | Governance: four-seat unanimous adversarial decisions, no operator sign-off | js/ModuleStatFactsClaude.js |  |  |
 | D254 | Moonmist display-only lock observation | js/AttributeSchema.js js/ModuleStatFactsClaude.js js/Qol.js |  | §90 |
 | D253 | r45/r46 ZIL fact batch; historical plain-U subtotal | js/AttributeSchema.js js/ModuleStatFactsClaude.js js/Qol.js |  |  |
 | D252 | Stats idle rewrites stopped (D17/P17) |  |  |  |
