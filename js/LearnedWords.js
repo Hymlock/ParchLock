@@ -17,7 +17,7 @@ var LearnedWords = {
         LearnedWords._key = key; LearnedWords._undo = []; LearnedWords.clearProjection();
         var data = { version: 1, gameIdentityKey: key, rows: {} };
         try {
-            var parsed = JSON.parse(localStorage.getItem(LearnedWords.PREFIX + key));
+            var parsed = JSON.parse(typeof LearningStores !== "undefined" ? LearningStores.read(LearnedWords.PREFIX + key) : localStorage.getItem(LearnedWords.PREFIX + key));
             if (key && parsed && parsed.version === 1 && parsed.gameIdentityKey === key && parsed.rows && !Array.isArray(parsed.rows)) {
                 var valid = Object.keys(parsed.rows).every(function (id) {
                     var r = parsed.rows[id];
@@ -38,10 +38,22 @@ var LearnedWords = {
     },
     write: function (next, history) {
         if (!LearnedWords.identity() || next.gameIdentityKey !== LearnedWords.identity()) throw new Error("This story changed. Reopen the editor.");
-        localStorage.setItem(LearnedWords.PREFIX + next.gameIdentityKey, JSON.stringify(next));
+        if (typeof LearningStores !== "undefined") LearningStores.persist("learnedWords", { identityKey: next.gameIdentityKey }, JSON.stringify(next), LearnedWords.resetErasedFor(next.gameIdentityKey));
+        else localStorage.setItem(LearnedWords.PREFIX + next.gameIdentityKey, JSON.stringify(next));
         if (history) LearnedWords._undo.push(JSON.stringify(LearnedWords.load()));
         if (LearnedWords._undo.length > 100) LearnedWords._undo.shift();
         LearnedWords._data = next;
+    },
+    // D13: exact key generator for the learning ownership index.
+    learningKeyFor: function (inputs) { return inputs && typeof inputs.identityKey === "string" && inputs.identityKey ? LearnedWords.PREFIX + inputs.identityKey : null; },
+    // D13: this key was erased (another tab) after hydration -- start fresh.
+    // Bound to identity A: a later erase of A never touches story B's state.
+    resetErasedFor: function (a) {
+        return function () {
+            if (LearnedWords._key !== a) return;
+            LearnedWords._data = null; LearnedWords._key = null; LearnedWords._undo = [];
+            LearnedWords.clearProjection();
+        };
     },
     rowKey: function (type, objectId, form) { return type + ":" + String(objectId) + ":" + encodeURIComponent(form); },
     override: function (id) { var r = LearnedWords.load().rows[id]; return r && !r.classificationOnly ? r : null; },
@@ -623,3 +635,4 @@ var LearnedWords = {
         if (LearnedWords._tourFocus && LearnedWords._tourFocus.isConnected) LearnedWords._tourFocus.focus();
     }
 };
+if (typeof LearningStores !== "undefined") LearningStores.register("learnedWords", LearnedWords.PREFIX, LearnedWords.learningKeyFor);

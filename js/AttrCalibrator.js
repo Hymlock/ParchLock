@@ -939,7 +939,7 @@ var AttrCalibrator = {
         AttrCalibrator.table = { version: 2, verbs: {}, objects: {} };
         try {
             if (typeof localStorage === "undefined") return;
-            var raw = localStorage.getItem("PL_AttrCalib_" + key);
+            var raw = typeof LearningStores !== "undefined" ? LearningStores.read("PL_AttrCalib_" + key) : localStorage.getItem("PL_AttrCalib_" + key);
             if (!raw) return;
             var parsed = JSON.parse(raw);
             if (parsed && parsed.version === 2) AttrCalibrator.table = parsed;
@@ -950,12 +950,14 @@ var AttrCalibrator = {
             }
         } catch (e) {}
     },
+    learningKeyFor: function (inputs) { return inputs && typeof inputs.identityKey === "string" && inputs.identityKey ? "PL_AttrCalib_" + inputs.identityKey : null; },
     persist: function (mem) {
         var key = AttrCalibrator.gameIdentityKey(mem);
         if (!key) return;
         try {
             if (typeof localStorage === "undefined") return;
-            localStorage.setItem("PL_AttrCalib_" + key, JSON.stringify(AttrCalibrator.table));
+            if (typeof LearningStores !== "undefined") LearningStores.persist("attrCalib", { identityKey: key }, JSON.stringify(AttrCalibrator.table), function () { if (AttrCalibrator.hydratedForGame === key) AttrCalibrator.table = { version: 2, verbs: {}, objects: {} }; });
+            else localStorage.setItem("PL_AttrCalib_" + key, JSON.stringify(AttrCalibrator.table));
         } catch (e) {}
     },
 
@@ -1411,3 +1413,4 @@ if (typeof setTimeout === "function") {
     setTimeout(function () { AttrCalibrator.installHooks(); }, 0);
     setTimeout(function () { AttrCalibrator.installHooks(); }, 50);
 }
+if (typeof LearningStores !== "undefined") LearningStores.register("attrCalib", "PL_AttrCalib_", AttrCalibrator.learningKeyFor);

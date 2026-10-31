@@ -91,7 +91,9 @@ const PREF = ['PL_LearnedWords_', 'PL_AttrCalib_', 'PL_SemanticActions_', 'PM_Ex
   R.writesAroundErase = await p1.evaluate(() => window.__w.map(x => Object.assign(x, { t: x.t - window.__t0 })));
   R.writesTab2 = await p2.evaluate(() => window.__w.slice(-10));
   R.firstEraseStatus = await st.innerText(); R.eraseAttempts = 1;
-  ok(/^Your stories changed; the list was refreshed\./.test(R.firstEraseStatus), 'fail-closed: erase aborted because tab 2 (still playing hidden Advent) rewrote an erasable key between Check and Erase: "' + R.firstEraseStatus + '"');
+  // Since P17 (77284e4) an idle tab no longer rewrites PM_Stats_, so the first Erase may legitimately succeed; it must
+  // either succeed or abort fail-closed, never partially or silently.
+  ok(/^(Your stories changed; the list was refreshed\.|Saved learned data changed; check again\.|Removed \d+, failed 0)/.test(R.firstEraseStatus), 'first erase succeeds or aborts fail-closed: "' + R.firstEraseStatus + '"');
   while (/changed/.test(await st.innerText()) && R.eraseAttempts < 6) { R.eraseAttempts++; await er.click(); await p1.waitForTimeout(800); }
   R.diag = await p1.evaluate(async () => { const a = LearningStores.list(); await new Promise(r => setTimeout(r, 1000)); const b = LearningStores.list();
     return { sigSame: a.signature === b.signature, sigA: a.signature.slice(-300), sigB: b.signature.slice(-300), diffVals: a.candidates.filter((c, i) => !b.candidates[i] || b.candidates[i].value !== c.value).map(c => c.key), libRev: ModuleLibrary.libraryRevision() }; });

@@ -844,7 +844,7 @@ var ZRamReader = {
         dp.hydratedForGame = key;
         try {
             if (typeof localStorage === "undefined") return;
-            var raw = localStorage.getItem("PL_DiagonalCalib_" + key);
+            var raw = typeof LearningStores !== "undefined" ? LearningStores.read("PL_DiagonalCalib_" + key) : localStorage.getItem("PL_DiagonalCalib_" + key);
             if (!raw) return;
             var saved = JSON.parse(raw);
             if (saved && typeof saved.swapped === "boolean") {
@@ -854,12 +854,16 @@ var ZRamReader = {
         } catch (e) {}
     },
 
+    diagonalLearningKeyFor: (i) => (i && typeof i.identityKey === "string" && i.identityKey ? "PL_DiagonalCalib_" + i.identityKey : null),
+
     persistDiagonalCalibration: (mem) => {
         try {
             if (typeof localStorage === "undefined") return;
             var key = ZRamReader.gameIdentityKey(mem);
             if (!key) return;
-            localStorage.setItem("PL_DiagonalCalib_" + key, JSON.stringify({ swapped: ZRamReader.directionProps.diagonalSwapped }));
+            var json = JSON.stringify({ swapped: ZRamReader.directionProps.diagonalSwapped });
+            if (typeof LearningStores !== "undefined") LearningStores.persist("diagonalCalib", { identityKey: key }, json, function () { var dp = ZRamReader.directionProps; if (dp.hydratedForGame === key) { dp.diagonalCalibrated = false; } });
+            else localStorage.setItem("PL_DiagonalCalib_" + key, json);
         } catch (e) {}
     },
 
@@ -3101,3 +3105,4 @@ var ZRamReader = {
         };
     }
 };
+if (typeof LearningStores !== "undefined") LearningStores.register("diagonalCalib", "PL_DiagonalCalib_", ZRamReader.diagonalLearningKeyFor);

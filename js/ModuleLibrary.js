@@ -19,6 +19,7 @@ var ModuleLibrary = (function () {
     var executableIdentityPromiseByPath = Object.create(null);
     var executableIdentitySequence = 0;
     var channel = null;
+    var libraryRevision = 0; // D13: bumped on every library change
     var cache = loadJson(CACHE_KEY, []);
     var hidden = loadJson(HIDDEN_KEY, []);
 
@@ -437,6 +438,25 @@ var ModuleLibrary = (function () {
         return safe.then(function () { return base64; });
     }
 
+    // D13/R7: side-effect-free executable digest of an installed module, over
+    // the exact stored bytes and the same extraction as identity capture
+    // (blorb Exec chunk). Never touches the current-story identity state.
+    function executableDigestForPath(value) {
+        var path = normalizePath(value);
+        var item = find(path);
+        if (!item) return Promise.reject(new Error("Module is not installed."));
+        var load = item.Local
+            ? getBytes(path).then(function (bytes) { return { bytes: bytes, name: path.replace(/\.js$/i, "") }; })
+            : fetch(path).then(function (res) {
+                if (!res.ok) throw new Error("Module bytes are unavailable.");
+                return res.arrayBuffer();
+            }).then(function (buffer) { return { bytes: new Uint8Array(buffer), name: path }; });
+        return load.then(function (x) {
+            var inspected = inspect(x.bytes, x.name);
+            return hash(inspected.executableBytes.slice());
+        });
+    }
+
     function identityForPath(value) {
         var sourcePath = value ? normalizePath(value) : "";
         if (!sourcePath) {
@@ -616,6 +636,7 @@ var ModuleLibrary = (function () {
     }
 
     function changed(suppressBroadcast) {
+        libraryRevision++;
         listeners.slice().forEach(function (listener) { try { listener(); } catch (e) {} });
         try { window.dispatchEvent(new CustomEvent("parchlock:modules-changed")); } catch (e) {}
         try { if (channel && !suppressBroadcast) channel.postMessage("changed"); } catch (e2) {}
@@ -734,6 +755,7 @@ var ModuleLibrary = (function () {
         restoreBuiltIns: restoreBuiltIns, renameLocal: renameLocal, openManager: openManager, onChanged: onChanged,
         reconcile: reconcile, inspect: inspect, hash: hash, sha256Fallback: sha256Fallback,
         currentExecutableDigest: currentExecutableDigest,
+        executableDigestForPath: executableDigestForPath, libraryRevision: function () { return libraryRevision; },
         currentExecutableBytes: currentExecutableBytes,
         currentExecutableIdentity: currentExecutableIdentity, whenExecutableIdentityReady: whenExecutableIdentityReady,
         normalizePath: normalizePath, canonicalLocalPath: canonicalLocalPath, localPathPattern: LOCAL_RE, legacy: LEGACY

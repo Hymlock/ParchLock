@@ -1571,7 +1571,7 @@ var StatTracker = {
         var m = StatTracker.blank();
         try {
             if (typeof localStorage === "undefined") return StatTracker.syncPlaythrough(m);
-            var raw = localStorage.getItem(StatTracker.STORAGE_PREFIX + key);
+            var raw = typeof LearningStores !== "undefined" ? LearningStores.read(StatTracker.STORAGE_PREFIX + key) : localStorage.getItem(StatTracker.STORAGE_PREFIX + key);
             if (!raw) return StatTracker.syncPlaythrough(m);
             var parsed = JSON.parse(raw);
             Object.keys(m).forEach(function (k) {
@@ -1616,6 +1616,7 @@ var StatTracker = {
     // differs from what was last written.
     _lastSaved: null,
     _saveReplacer: (k, v) => (k === "badgeUntil" || k === "badgeDelta" || k === "lastChange") ? undefined : v,
+    learningKeyFor: (i) => (i && typeof i.identityKey === "string" && i.identityKey ? StatTracker.STORAGE_PREFIX + i.identityKey : null),
     save: (key, model) => {
         try {
             if (typeof localStorage === "undefined") return;
@@ -1625,7 +1626,8 @@ var StatTracker = {
             var json = JSON.stringify(model, StatTracker._saveReplacer);
             if (json === StatTracker._lastSaved) return;
             StatTracker._lastSaved = json;
-            localStorage.setItem(StatTracker.STORAGE_PREFIX + key, json);
+            if (typeof LearningStores !== "undefined") LearningStores.persist("stats", { identityKey: key }, json, function () { if (StatTracker._key === key) { StatTracker._model = StatTracker.blank(); StatTracker._lastSaved = null; } });
+            else localStorage.setItem(StatTracker.STORAGE_PREFIX + key, json);
         } catch (e) {}
     },
 
@@ -4438,5 +4440,6 @@ try {
     }
 } catch (e) {}
 
+if (typeof LearningStores !== "undefined") LearningStores.register("stats", StatTracker.STORAGE_PREFIX, StatTracker.learningKeyFor);
 try { if (typeof window !== "undefined") window.StatTracker = StatTracker; } catch (e) {}
 try { if (typeof module !== "undefined" && module.exports) module.exports = StatTracker; } catch (e) {}

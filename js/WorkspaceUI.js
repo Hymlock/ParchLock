@@ -136,7 +136,7 @@ var WorkspaceUI = {
         groups.scroll = group("Story scrolling", "Keep new passages in view");
         groups.speech = group("Read aloud", "Narration, speech rate and repeats");
         groups.interface = group("Accessibility & controls", "Notes, directions and tutorials");
-        groups.learned = group("Learned words", "Choose the labels shown in your editor");
+        groups.learned = group("Learned words", "Choose the labels shown in your editor, and erase what was learned for stories you uninstalled");
         // D215: Android only - the rotating storybook icon and its experimental launcher option.
         try { if (typeof IconRotation !== "undefined") IconRotation.addOptions(group); } catch (eIcon) {}
         [
@@ -367,6 +367,8 @@ var WorkspaceUI = {
             }).appendTo(label);
             label.append(document.createTextNode(entry[1]));
         });
+        // D13: erase learned data whose every owner story is uninstalled.
+        try { if (typeof LearningStores !== "undefined") LearningStores.addOptions(groups.learned); } catch (eLearn) {}
     },
     MapKey: () => "PL_MapSlots_" + ParchLock.GameFilename,
     ReadSlots: () => {

@@ -637,6 +637,12 @@ var SemanticActions = {
         } catch (e) { return null; }
     },
 
+    // D13: exact key generator (inputs recorded by the persist above).
+    learningKeyFor: function (i) {
+        if (!i || typeof i.identityKey !== "string" || !i.identityKey || !/^[0-9a-f]+$/.test(String(i.checksum)) || typeof i.adapter !== "string" || typeof i.locale !== "string") return null;
+        return "PL_SemanticActions_" + i.identityKey + "-" + i.checksum + "-" + i.adapter + "-" + i.locale;
+    },
+
     sidecarStorageKey: function (mem, locale) {
         var key = SemanticActions.buildIdentityKey(mem, locale);
         return key ? "PL_SemanticActions_" + key : null;
@@ -658,7 +664,7 @@ var SemanticActions = {
         SemanticActions.Evidence.clear();
         try {
             if (typeof localStorage === "undefined") return;
-            var raw = localStorage.getItem("PL_SemanticActions_" + key);
+            var raw = typeof LearningStores !== "undefined" ? LearningStores.read("PL_SemanticActions_" + key) : localStorage.getItem("PL_SemanticActions_" + key);
             if (raw) {
                 var parsed = JSON.parse(raw);
                 if (parsed && parsed.version === SemanticActions.SIDECAR_VERSION && parsed.buildKey === key && Array.isArray(parsed.entries)) {
@@ -700,11 +706,17 @@ var SemanticActions = {
         try {
             if (typeof localStorage === "undefined") return;
             var confirmedOnly = SemanticActions.Evidence.all().filter(function (e) { return e.confirmed; });
-            localStorage.setItem("PL_SemanticActions_" + key, JSON.stringify({
+            var json = JSON.stringify({
                 version: SemanticActions.SIDECAR_VERSION,
                 buildKey: key,
                 entries: confirmedOnly
-            }));
+            });
+            if (typeof LearningStores !== "undefined") {
+                var head = key.slice(0, key.length - (SemanticActions.ADAPTER_VERSION.length + (locale || "en").length + 2));
+                var cut = head.lastIndexOf("-");
+                LearningStores.persist("semanticActions", { identityKey: head.slice(0, cut), checksum: head.slice(cut + 1), adapter: SemanticActions.ADAPTER_VERSION, locale: locale || "en" }, json,
+                    function () { if (SemanticActions.hydratedForBuild === key) SemanticActions.Evidence.clear(); });
+            } else localStorage.setItem("PL_SemanticActions_" + key, json);
         } catch (e) {}
     },
 
@@ -720,3 +732,4 @@ var SemanticActions = {
 if (typeof module !== "undefined" && module.exports) {
     module.exports = SemanticActions;
 }
+if (typeof LearningStores !== "undefined") LearningStores.register("semanticActions", "PL_SemanticActions_", SemanticActions.learningKeyFor);

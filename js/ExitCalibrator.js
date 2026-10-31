@@ -405,6 +405,8 @@ var ExitCalibrator = {
         return id ? ("PM_ExitCalib_" + id) : null;
     },
 
+    learningKeyFor: function (i) { return i && typeof i.identityKey === "string" && i.identityKey ? "PM_ExitCalib_" + i.identityKey : null; },
+
     emptyTable: function () {
         return { v: ExitCalibrator.VERSION, dirs: {}, cand: {}, blocked: {} };
     },
@@ -416,7 +418,7 @@ var ExitCalibrator = {
         ExitCalibrator._key = key;
         ExitCalibrator._table = ExitCalibrator.emptyTable();
         try {
-            var raw = localStorage.getItem(key);
+            var raw = typeof LearningStores !== "undefined" ? LearningStores.read(key) : localStorage.getItem(key);
             if (raw) {
                 var p = JSON.parse(raw);
                 // A table written by an older rule set is discarded rather
@@ -430,7 +432,9 @@ var ExitCalibrator = {
     persist: function () {
         try {
             if (ExitCalibrator._key && ExitCalibrator._table) {
-                localStorage.setItem(ExitCalibrator._key, JSON.stringify(ExitCalibrator._table));
+                var ek = ExitCalibrator._key;
+                if (typeof LearningStores !== "undefined") LearningStores.persist("exitCalib", { identityKey: ek.slice("PM_ExitCalib_".length) }, JSON.stringify(ExitCalibrator._table), function () { if (ExitCalibrator._key === ek) ExitCalibrator._table = ExitCalibrator.emptyTable(); });
+                else localStorage.setItem(ek, JSON.stringify(ExitCalibrator._table));
             }
         } catch (e) {}
     },
@@ -675,3 +679,4 @@ var ExitCalibrator = {
         ExitCalibrator.persist();
     }
 };
+if (typeof LearningStores !== "undefined") LearningStores.register("exitCalib", "PM_ExitCalib_", ExitCalibrator.learningKeyFor);

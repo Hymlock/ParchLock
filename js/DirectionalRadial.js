@@ -394,9 +394,11 @@ var DirectionalRadial = {
         return "PL_DirRadial_" + ((typeof ParchLock !== "undefined" && ParchLock.GameFilename) || "");
     },
 
+    learningKeyFor: function (i) { return i && typeof i.filename === "string" && i.filename ? "PL_DirRadial_" + i.filename : null; },
+
     GetCustomSlices: function () {
         try {
-            var raw = localStorage.getItem(DirectionalRadial.StorageKey());
+            var raw = typeof LearningStores !== "undefined" ? LearningStores.read(DirectionalRadial.StorageKey()) : localStorage.getItem(DirectionalRadial.StorageKey());
             if (!raw) return [];
             var data = JSON.parse(raw);
             var list = Array.isArray(data.customSlices) ? data.customSlices : [];
@@ -428,7 +430,11 @@ var DirectionalRadial = {
     },
 
     SaveCustomSlices: function (list) {
-        try { localStorage.setItem(DirectionalRadial.StorageKey(), JSON.stringify({ customSlices: list })); } catch (e) {}
+        try {
+            var json = JSON.stringify({ customSlices: list });
+            var file = (typeof ParchLock !== "undefined" && ParchLock.GameFilename) || "";
+            if (!(typeof LearningStores !== "undefined" && file && LearningStores.persist("dirRadial", { filename: file }, json))) localStorage.setItem(DirectionalRadial.StorageKey(), json);
+        } catch (e) {}
     },
 
     AddCustomSlice: function (slice) {
@@ -1144,6 +1150,7 @@ var DirectionalRadial = {
     }
 };
 
+if (typeof LearningStores !== "undefined") LearningStores.register("dirRadial", "PL_DirRadial_", DirectionalRadial.learningKeyFor);
 if (typeof document !== "undefined") {
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", DirectionalRadial.Init);
     else DirectionalRadial.Init();
