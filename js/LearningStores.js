@@ -21,6 +21,9 @@ var LearningStores = (function () {
     var LOCK = "PL_learning_store";
     var MAX_OWNERS = 16;
     var generators = Object.create(null);
+    var compactors = Object.create(null); // P13b: kind -> compact(value) used on QuotaExceededError
+    var QUOTA_MESSAGE = "Storage is full; learned data was not saved";
+    var quotaError = null, quotaReported = false;
     var prefixes = [];
     var queue = [];            // FIFO of immutable snapshots
     var draining = false;
@@ -51,8 +54,11 @@ var LearningStores = (function () {
                 var e = p.entries[k];
                 if (!isObj(e) || e.key !== k || typeof e.kind !== "string" || !Array.isArray(e.owners) || (e.eraseEpoch != null && !validInt(e.eraseEpoch))) throw 0;
                 if (e.ownersOverflow != null && e.ownersOverflow !== true) throw 0;
+                if (e.pathOnlyDropped != null && e.pathOnlyDropped !== true) throw 0;
+                if (e.digests != null && (!Array.isArray(e.digests) || !e.digests.every(function (d) { return typeof d === "string"; }))) throw 0;
                 e.owners.forEach(function (o) {
                     if (!isObj(o) || !isObj(o.inputs) || (o.digest != null && typeof o.digest !== "string") || typeof o.path !== "string") throw 0;
+                    if (o.lastWriteAt != null && !(typeof o.lastWriteAt === "number" && isFinite(o.lastWriteAt))) throw 0;
                 });
             });
             Object.keys(p.tombstones).forEach(function (k) {
@@ -67,8 +73,11 @@ var LearningStores = (function () {
     }
     function writeIndex(index) { storage().setItem(INDEX_KEY, JSON.stringify(index)); }
 
-    function register(kind, prefix, generator) {
+    // opts.compact(value) -> smaller serialized value; called only on a
+    // QuotaExceededError for this kind's own key (P13b R2 quota).
+    function register(kind, prefix, generator, opts) {
         generators[kind] = generator;
+        if (opts && typeof opts.compact === "function") compactors[kind] = opts.compact;
         if (prefix && prefixes.indexOf(prefix) < 0) prefixes.push(prefix);
     }
 
@@ -90,13 +99,67 @@ var LearningStores = (function () {
         return { digest: digest, path: path };
     }
 
-    // Owners are never forgotten: past the bound the entry is marked
-    // ownersOverflow (a permanent sentinel) and can never be erased.
-    function addOwner(e, owner) {
-        if (e.owners.some(function (o) { return sameOwner(o, owner); })) return false;
-        if (e.owners.length >= MAX_OWNERS) { if (e.ownersOverflow) return false; e.ownersOverflow = true; return true; }
-        e.owners.push(owner);
+    // P13b R2 index. `digests` is the durable erase authority: every owner
+    // digest ever added, never trimmed. `owners` metadata keeps the
+    // MAX_OWNERS most recent (by lastWriteAt). Dropping a path-only owner
+    // (no digest) sets pathOnlyDropped, which keeps the entry unerasable
+    // (path-only owners stay fail-closed).
+    // Migration: an entry without `digests` gets them rebuilt from its owners
+    // only when that list is complete (never overflowed). A legacy
+    // ownersOverflow entry already lost owners beyond 16, so its digest set
+    // cannot be rebuilt: it stays unerasable for good, and the overflow flag
+    // is never cleared without digests.
+    function ensureDigests(e) {
+        if (Array.isArray(e.digests) || e.ownersOverflow) return false;
+        e.digests = [];
+        e.owners.forEach(function (o) { if (o.digest && e.digests.indexOf(o.digest) < 0) e.digests.push(o.digest); });
         return true;
+    }
+    function addOwner(e, owner) {
+        // A known owner changes nothing (value-only writes never rewrite the
+        // index; entryDigests derives a complete legacy entry's digests).
+        if (e.owners.some(function (o) { return sameOwner(o, owner); })) return false;
+        // Legacy overflow (no digests): owners stay frozen, never erasable.
+        if (!Array.isArray(e.digests) && e.ownersOverflow) return false;
+        ensureDigests(e);
+        if (owner.digest && e.digests.indexOf(owner.digest) < 0) e.digests.push(owner.digest);
+        while (e.owners.length >= MAX_OWNERS) {
+            var oldest = 0;
+            for (var i = 1; i < e.owners.length; i++) if ((e.owners[i].lastWriteAt || 0) < (e.owners[oldest].lastWriteAt || 0)) oldest = i;
+            var gone = e.owners.splice(oldest, 1)[0];
+            if (!gone.digest) e.pathOnlyDropped = true;
+        }
+        e.owners.push({ digest: owner.digest, path: owner.path, inputs: owner.inputs, lastWriteAt: Date.now() });
+        return true;
+    }
+    function entryDigests(e) {
+        if (Array.isArray(e.digests)) return e.digests;
+        return e.owners.map(function (o) { return o.digest; }).filter(Boolean);
+    }
+    function isQuota(err) {
+        return !!err && (err.name === "QuotaExceededError" || err.name === "NS_ERROR_DOM_QUOTA_REACHED" || err.code === 22 || err.code === 1014);
+    }
+    function reportQuota() {
+        quotaError = QUOTA_MESSAGE;
+        if (!quotaReported) { quotaReported = true; try { console.warn("[LearningStores] " + QUOTA_MESSAGE); } catch (e) {} }
+        try { if (typeof $ !== "undefined") $("#pl-learning-erase-status").text(QUOTA_MESSAGE); } catch (e2) {}
+    }
+    // Writes a learning value. On QuotaExceededError the kind's registered
+    // compact(value) hook runs (kinds without one are skipped; only this
+    // learning key is touched -- never maps, saves, transcripts or prefs, and
+    // nothing is evicted from other keys), then the write is retried once. A
+    // second failure reports the quota status and returns false: the caller
+    // drops the snapshot instead of requeueing it, so it is next written only
+    // after a real mutation persists a new snapshot.
+    function writeValue(ls, kind, key, value) {
+        try { ls.setItem(key, value); quotaError = null; quotaReported = false; return true; }
+        catch (err) {
+            if (!isQuota(err)) throw err;
+            var next = value;
+            if (compactors[kind]) { try { var c = compactors[kind](value); if (typeof c === "string") next = c; } catch (eC) {} }
+            try { ls.setItem(key, next); quotaError = null; quotaReported = false; return true; }
+            catch (err2) { if (!isQuota(err2)) throw err2; reportQuota(); return false; }
+        }
     }
 
     // Finish an erase interrupted after its tombstones became durable. Its
@@ -192,7 +255,7 @@ var LearningStores = (function () {
                 return "erased";
             }
         }
-        if (!index) { ls.setItem(snap.key, snap.value); return "written-unindexed"; }
+        if (!index) return writeValue(ls, snap.kind, snap.key, snap.value) ? "written-unindexed" : "quota-dropped";
         // Cross-tab writes are last-writer-wins in commit order. The index
         // is rewritten only when entry metadata changed; recovery above
         // already committed its own index changes.
@@ -215,8 +278,7 @@ var LearningStores = (function () {
             if (!be || !be.owners.some(function (o) { return sameOwner(o, snap.owner); }) && !be.ownersOverflow)
                 throw new Error("owner registration not durable");
         }
-        ls.setItem(snap.key, snap.value);
-        return "written";
+        return writeValue(ls, snap.kind, snap.key, snap.value) ? "written" : "quota-dropped";
     }
 
     var seqNo = 0;
@@ -270,7 +332,7 @@ var LearningStores = (function () {
         owner = { digest: owner.digest, path: owner.path, inputs: JSON.parse(JSON.stringify(inputs)) };
         if (!locks()) {
             // No Web Locks: cleanup is disabled for the session; write as today.
-            try { ls.setItem(key, value); } catch (e) { return null; }
+            try { if (!writeValue(ls, kind, key, value)) return null; } catch (e) { return null; }
             try {
                 var r = readIndex();
                 if (r.ok) {
@@ -337,7 +399,7 @@ var LearningStores = (function () {
     }
 
     function list() {
-        var out = { ok: false, reason: "", candidates: [], removable: 0, installed: 0, unknown: 0, unmanaged: 0, bytes: 0, revision: 0, signature: "" };
+        var out = { ok: false, reason: "", candidates: [], removable: 0, installed: 0, unknown: 0, unmanaged: 0, bytes: 0, byModule: {}, revision: 0, signature: "" };
         if (!locks()) { out.reason = "Erasing is unavailable in this browser (no Web Locks)."; return out; }
         var ls = storage();
         if (!ls) { out.reason = "Storage is unavailable."; return out; }
@@ -354,14 +416,20 @@ var LearningStores = (function () {
             try { value = ls.getItem(k); } catch (eG) { value = null; }
             if (!entryValid(e)) return; // counted as unmanaged below if present
             managed[k] = true;
-            if (value != null) out.bytes += (k.length + value.length) * 2;
+            if (value != null) {
+                var b = (k.length + value.length) * 2;
+                out.bytes += b;
+                var newest = e.owners.reduce(function (a, o) { return !a || (o.lastWriteAt || 0) >= (a.lastWriteAt || 0) ? o : a; }, null);
+                var mod = (newest && newest.path) || "(unknown story)";
+                out.byModule[mod] = (out.byModule[mod] || 0) + b;
+            }
+            var digs = entryDigests(e);
             var installed = e.owners.some(function (o) {
-                return inst.paths.indexOf(o.path) >= 0 || (o.digest && inst.digests.indexOf(o.digest) >= 0) ||
-                    (cur.path && o.path === cur.path) || (cur.digest && o.digest === cur.digest);
-            });
+                return inst.paths.indexOf(o.path) >= 0 || (cur.path && o.path === cur.path);
+            }) || digs.some(function (d) { return inst.digests.indexOf(d) >= 0 || (cur.digest && d === cur.digest); });
             if (installed) { out.installed++; return; }
             if (r.index.pending && pendingKeys(r.index).indexOf(k) >= 0) return;
-            if (e.ownersOverflow || inst.unknown > 0 || e.owners.some(function (o) { return !o.digest; })) { out.unknown++; return; }
+            if (e.ownersOverflow || e.pathOnlyDropped || inst.unknown > 0 || e.owners.some(function (o) { return !o.digest; })) { out.unknown++; return; }
             if (value == null) return;
             out.candidates.push({ key: k, value: value, kind: e.kind, inputs: e.owners[0].inputs });
         });
@@ -426,11 +494,22 @@ var LearningStores = (function () {
     }
 
     function kb(bytes) { return Math.max(0, Math.round(bytes / 1024 * 10) / 10); }
+    // P13b R2 soft note (not a cap): measured long walks hold 87-156 KB of
+    // learned data per story, so 1 MB per story / 3 MB in total is several
+    // times any measured title.
+    var NOTE_MODULE_BYTES = 1024 * 1024, NOTE_TOTAL_BYTES = 3 * 1024 * 1024;
+    function sizeNote(listing) {
+        if (!listing || !listing.ok) return "";
+        var big = Object.keys(listing.byModule || {}).filter(function (m) { return listing.byModule[m] > NOTE_MODULE_BYTES; });
+        if (big.length) return " Note: learned data for " + big.map(function (m) { return String(m).split("/").pop(); }).join(", ") + " is over 1 MB.";
+        if (listing.bytes > NOTE_TOTAL_BYTES) return " Note: learned data is over 3 MB in total.";
+        return "";
+    }
     function describe(listing, result) {
         if (!listing.ok) return listing.reason;
         var s = "Learned data: about " + kb(listing.bytes) + " KB (UTF-16 estimate). " +
             listing.removable + " erasable, " + listing.installed + " kept for installed stories, " +
-            listing.unknown + " unknown, " + listing.unmanaged + " unmanaged.";
+            listing.unknown + " unknown, " + listing.unmanaged + " unmanaged." + sizeNote(listing);
         if (result) s = (result.aborted ? result.reason + " " : "Removed " + result.removed + ", failed " + result.failed + ". ") + s;
         return s;
     }
@@ -446,10 +525,12 @@ var LearningStores = (function () {
         function show(l, result) {
             listing = l;
             eraseBtn.prop("disabled", needCheck || !l || !l.ok || l.removable === 0);
-            status.text(((lastError || recoveryError) ? (lastError || recoveryError) + " " : "") + describe(l, result));
+            var err = quotaError || lastError || recoveryError;
+            status.text((err ? err + " " : "") + describe(l, result));
         }
         var first = list();
-        status.text(((lastError || recoveryError) ? (lastError || recoveryError) + " " : "") + (first.ok ? "Check to find learned data from uninstalled stories. " + describe(first) : first.reason));
+        var err0 = quotaError || lastError || recoveryError;
+        status.text((err0 ? err0 + " " : "") + (first.ok ? "Check to find learned data from uninstalled stories. " + describe(first) : first.reason));
         checkBtn.prop("disabled", !first.ok);
         checkBtn.on("click", function () {
             checkBtn.prop("disabled", true); eraseBtn.prop("disabled", true);
@@ -474,7 +555,8 @@ var LearningStores = (function () {
         register: register, read: read, persist: persist, readIndex: readIndex,
         list: list, check: check, erase: erase, describe: describe, addOptions: addOptions,
         entryValid: entryValid, pending: function () { return queue.length; },
-        lastError: function () { return lastError || recoveryError; },
+        lastError: function () { return quotaError || lastError || recoveryError; },
+        QUOTA_MESSAGE: QUOTA_MESSAGE, sizeNote: sizeNote, MAX_OWNERS: MAX_OWNERS,
         _drain: drain, _indexWrites: function () { return indexWrites; }
     };
 })();

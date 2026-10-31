@@ -36,8 +36,30 @@ var LearnedWords = {
         LearnedWords._data = data;
         return data;
     },
+    // P13b R2. Measured (grok2 p13b-measure): Zork I, 396 turns, 148 rows
+    // (all classificationOnly), 62 KB. 1000 rows is ~7x that walk.
+    MAX_ROWS: 1000,
+    // Evicts, oldest first, classificationOnly rows, then recorder exact/
+    // allowed rows that were never edited (revision 'classification',
+    // trigger === original) and are not ignored. Never evicted: manual:*
+    // rows, user-edited rows (committed: any other revision) and ignored rows.
+    capRows: function (data, max) {
+        if (!data || !data.rows) return data;
+        max = max == null ? LearnedWords.MAX_ROWS : max;
+        var ids = Object.keys(data.rows), over = ids.length - max;
+        if (over <= 0) return data;
+        function recorderUnedited(id) {
+            var r = data.rows[id];
+            return /^(exact|allowed):/.test(id) && r && !r.ignored && r.revision === "classification" && r.trigger === r.original;
+        }
+        var first = ids.filter(function (id) { return data.rows[id] && data.rows[id].classificationOnly && recorderUnedited(id); });
+        var second = ids.filter(function (id) { return first.indexOf(id) < 0 && recorderUnedited(id); });
+        first.concat(second).slice(0, over).forEach(function (id) { delete data.rows[id]; });
+        return data;
+    },
     write: function (next, history) {
         if (!LearnedWords.identity() || next.gameIdentityKey !== LearnedWords.identity()) throw new Error("This story changed. Reopen the editor.");
+        LearnedWords.capRows(next);
         if (typeof LearningStores !== "undefined") LearningStores.persist("learnedWords", { identityKey: next.gameIdentityKey }, JSON.stringify(next), LearnedWords.resetErasedFor(next.gameIdentityKey));
         else localStorage.setItem(LearnedWords.PREFIX + next.gameIdentityKey, JSON.stringify(next));
         if (history) LearnedWords._undo.push(JSON.stringify(LearnedWords.load()));
@@ -635,4 +657,6 @@ var LearnedWords = {
         if (LearnedWords._tourFocus && LearnedWords._tourFocus.isConnected) LearnedWords._tourFocus.focus();
     }
 };
-if (typeof LearningStores !== "undefined") LearningStores.register("learnedWords", LearnedWords.PREFIX, LearnedWords.learningKeyFor);
+if (typeof LearningStores !== "undefined") LearningStores.register("learnedWords", LearnedWords.PREFIX, LearnedWords.learningKeyFor, {
+    compact: function (value) { return JSON.stringify(LearnedWords.capRows(JSON.parse(value))); }
+});

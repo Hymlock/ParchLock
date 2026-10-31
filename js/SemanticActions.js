@@ -700,12 +700,23 @@ var SemanticActions = {
     // persists an empty set today. That is intentional, not a bug: writing
     // unconfirmed behavioral guesses into durable storage is exactly what
     // "fails closed" is guarding against.
+    // P13b R2: one persisted entry per (intent, formId, objectIds); the
+    // latest observation of a triple wins. The entry cap waits for the
+    // structural witnesses that will first produce confirmed entries.
+    dedupeEntries: function (entries) {
+        var at = Object.create(null), out = [];
+        (entries || []).forEach(function (e) {
+            var k = JSON.stringify([e && e.intent, e && e.formId, ((e && e.objectIds) || []).map(String)]);
+            if (k in at) out[at[k]] = e; else { at[k] = out.length; out.push(e); }
+        });
+        return out;
+    },
     persist: function (mem, locale) {
         var key = SemanticActions.buildIdentityKey(mem, locale);
         if (!key) return;
         try {
             if (typeof localStorage === "undefined") return;
-            var confirmedOnly = SemanticActions.Evidence.all().filter(function (e) { return e.confirmed; });
+            var confirmedOnly = SemanticActions.dedupeEntries(SemanticActions.Evidence.all().filter(function (e) { return e.confirmed; }));
             var json = JSON.stringify({
                 version: SemanticActions.SIDECAR_VERSION,
                 buildKey: key,

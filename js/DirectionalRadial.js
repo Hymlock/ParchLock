@@ -437,8 +437,13 @@ var DirectionalRadial = {
         } catch (e) {}
     },
 
+    // P13b R2: a module holds at most 64 custom slices; the 65th is refused
+    // (returns null) rather than evicting one the player made.
+    MAX_CUSTOM_SLICES: 64,
+    CUSTOM_LIMIT_MESSAGE: "This story already has 64 custom slices. Delete one before adding another.",
     AddCustomSlice: function (slice) {
         var list = DirectionalRadial.GetCustomSlices();
+        if (list.length >= DirectionalRadial.MAX_CUSTOM_SLICES) return null;
         slice = Object.assign({}, slice, { id: "cs" + Date.now().toString(36) + Math.random().toString(36).slice(2, 7) });
         list.push(slice);
         DirectionalRadial.SaveCustomSlices(list);
@@ -1138,7 +1143,10 @@ var DirectionalRadial = {
         if (DirectionalRadial._editingId) {
             DirectionalRadial.UpdateCustomSlice(DirectionalRadial._editingId, { label: label, command: command, angle: angle, ring: ring });
         } else {
-            DirectionalRadial.AddCustomSlice({ label: label, command: command, angle: angle, ring: ring });
+            if (!DirectionalRadial.AddCustomSlice({ label: label, command: command, angle: angle, ring: ring })) {
+                errEl.text(DirectionalRadial.CUSTOM_LIMIT_MESSAGE);
+                return;
+            }
         }
         DirectionalRadial._editingId = null;
         $("#pl-dirpad-add-label").val("");

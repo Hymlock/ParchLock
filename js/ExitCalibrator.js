@@ -380,7 +380,13 @@ var ExitCalibrator = {
         var t = ExitCalibrator.hydrate(mem);
         t.blocked = t.blocked || {};
         var k = String(roomId) + "|" + dir;
-        t.blocked[k] = (t.blocked[k] || 0) + 1;
+        var n = (t.blocked[k] || 0) + 1;
+        // P13b: re-insert so key order is recency order, then bound the key
+        // count (LRU). Blocked keys are only ever written for the room the
+        // player stood in, so every kept key belongs to a visited room.
+        delete t.blocked[k];
+        t.blocked[k] = n;
+        ExitCalibrator.compactTable(t);
         ExitCalibrator.persist();
     },
 
@@ -406,6 +412,22 @@ var ExitCalibrator = {
     },
 
     learningKeyFor: function (i) { return i && typeof i.identityKey === "string" && i.identityKey ? "PM_ExitCalib_" + i.identityKey : null; },
+
+    // P13b R2. Measured (grok2 p13b-measure): whole exit table 3.5-6.4 KB on
+    // 400-600 turn walks; 512 blocked keys is several times any measured walk.
+    BLOCKED_MAX_KEYS: 512,
+    // Drops evidence that can no longer change an answer: cand buckets for
+    // dirs already confirmed (a torn-down dir deletes its cand anyway) and
+    // the least recently blocked keys past BLOCKED_MAX_KEYS.
+    compactTable: function (t) {
+        if (!t || typeof t !== "object") return t;
+        if (t.cand && t.dirs) Object.keys(t.cand).forEach(function (d) { if (t.dirs[d] && t.dirs[d].confirmed) delete t.cand[d]; });
+        if (t.blocked) {
+            var keys = Object.keys(t.blocked);
+            for (var i = 0; i < keys.length - ExitCalibrator.BLOCKED_MAX_KEYS; i++) delete t.blocked[keys[i]];
+        }
+        return t;
+    },
 
     emptyTable: function () {
         return { v: ExitCalibrator.VERSION, dirs: {}, cand: {}, blocked: {} };
@@ -433,6 +455,7 @@ var ExitCalibrator = {
         try {
             if (ExitCalibrator._key && ExitCalibrator._table) {
                 var ek = ExitCalibrator._key;
+                ExitCalibrator.compactTable(ExitCalibrator._table);
                 if (typeof LearningStores !== "undefined") LearningStores.persist("exitCalib", { identityKey: ek.slice("PM_ExitCalib_".length) }, JSON.stringify(ExitCalibrator._table), function () { if (ExitCalibrator._key === ek) ExitCalibrator._table = ExitCalibrator.emptyTable(); });
                 else localStorage.setItem(ek, JSON.stringify(ExitCalibrator._table));
             }
@@ -679,4 +702,6 @@ var ExitCalibrator = {
         ExitCalibrator.persist();
     }
 };
-if (typeof LearningStores !== "undefined") LearningStores.register("exitCalib", "PM_ExitCalib_", ExitCalibrator.learningKeyFor);
+if (typeof LearningStores !== "undefined") LearningStores.register("exitCalib", "PM_ExitCalib_", ExitCalibrator.learningKeyFor, {
+    compact: function (value) { return JSON.stringify(ExitCalibrator.compactTable(JSON.parse(value))); }
+});

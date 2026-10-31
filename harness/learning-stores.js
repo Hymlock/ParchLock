@@ -235,12 +235,13 @@ async function settle() { for (let i = 0; i < 6; i++) await flush(); }
     }
 
 
-    {   // owner overflow: never forget an owner; entry becomes non-erasable
+    {   // P13b R2: owners metadata keeps the 16 most recent; the durable
+        // digests set (erase authority) keeps every digest, never trimmed
         const { t } = await scenario([], Array.from({ length: 18 }, (_, i) => ({ id: "2-B", digest: "d" + i, path: "games/b" + i + ".z5.js" })), null);
         const e = t.LearningStores.readIndex().index.entries["PL_LearnedWordOverrides_2-B"];
-        ok(e.owners.length === 16 && e.ownersOverflow === true && e.owners[0].digest === "d0", "overflow keeps owners + sentinel");
+        ok(e.owners.length === 16 && !e.ownersOverflow && e.owners[0].digest === "d2" && e.digests.length === 18 && e.digests[0] === "d0", "owners keep 16 most recent, digests keep all 18");
         const L = t.LearningStores.list();
-        ok(L.removable === 0 && L.unknown === 1, "overflowed entry counted unknown");
+        ok(L.removable === 1 && L.unknown === 0, "all 18 owners uninstalled: erasable by the digests set");
     }
     {   // index write fails before erase: nothing removed
         const { t, s } = await scenario([], [{ id: "2-B", digest: "dB", path: "games/b.z5.js" }], null);

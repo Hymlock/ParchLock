@@ -679,15 +679,20 @@ var AttrCalibrator = {
                     delete loc.candidates[g];
                     continue;
                 }
+                // P13b: a slot dropped once the cohort was stable is not re-learned
+                // while that cohort stays confirmed.
+                if (loc.dropped && loc.dropped.indexOf(g) >= 0) continue;
                 var c = loc.candidates[g];
                 if (!c) c = loc.candidates[g] = { transitions: 0, returns: 0, seen: {}, history: [] };
                 if (val !== prev && ZRamReader.isLocationObject(mem, prev, player)) {
                     // A changed descriptor, known containment, or an already learned
                     // cohort supplies evidence; a label is never an identity key.
                     if (enclosing || (textAfter && textAfter !== textBefore) || loc.confirmedSlots.indexOf(g) >= 0) {
-                        c.seen[prev] = true;
-                        if (c.seen[val]) c.returns++;
-                        c.seen[val] = true;
+                        if (c.seen) {
+                            c.seen[prev] = true;
+                            if (c.seen[val]) c.returns++;
+                            c.seen[val] = true;
+                        } else c.returns++; // P13b compacted confirmed slot: seen{} became seenCount
                         c.transitions++;
                         c.history.push(prev + ">" + val);
                         if (c.history.length > 12) c.history.shift();
@@ -701,6 +706,9 @@ var AttrCalibrator = {
             // Mirrored globals are one hypothesis. Divergent equal-support
             // hypotheses remain unresolved, rather than winning by slot order.
             var winner = ranked.length && (!ranked[1] || ranked[0].length > ranked[1].length) ? ranked[0] : [];
+            var same = winner.length && JSON.stringify(winner) === JSON.stringify(loc.confirmedSlots || []);
+            loc.stableFor = same ? (loc.stableFor || 0) + 1 : 0;
+            if (!winner.length) delete loc.dropped; // cohort lost: every slot may be learned again
             loc.confirmedSlots = winner;
             loc.confirmedSlot = winner.length ? winner[0] : null;
             AttrCalibrator.persist(mem);
@@ -950,12 +958,51 @@ var AttrCalibrator = {
             }
         } catch (e) {}
     },
+    // P13b R2: compaction only (no object LRU). Drops evidence that can no
+    // longer change any learned answer:
+    //  - a flag whose mutatedBit is set keeps only that bit as candidate;
+    //  - once confirmedSlots has been stable for LOCATION_STABLE_TURNS, the
+    //    non-confirmed locationGlobal slots are dropped (and not re-learned
+    //    while that cohort stays confirmed), and each confirmed slot's seen{}
+    //    map becomes a seenCount; never while a slot is still confirming;
+    //  - exactForms keep every form with confirmations > 0.
+    LOCATION_STABLE_TURNS: 8,
+    compactTable: function (t) {
+        if (!t || typeof t !== "object") return t;
+        Object.keys(t.verbs || {}).forEach(function (f) {
+            var v = t.verbs[f];
+            if (v && typeof v.mutatedBit === "number" && v.candidates && v.candidates[v.mutatedBit]) {
+                var keep = {}; keep[v.mutatedBit] = v.candidates[v.mutatedBit]; v.candidates = keep;
+            }
+        });
+        var loc = t.locationGlobal;
+        if (loc && loc.candidates && Array.isArray(loc.confirmedSlots) && loc.confirmedSlots.length &&
+            (loc.stableFor || 0) >= AttrCalibrator.LOCATION_STABLE_TURNS) {
+            Object.keys(loc.candidates).forEach(function (g) {
+                var n = Number(g);
+                if (loc.confirmedSlots.indexOf(n) < 0) {
+                    delete loc.candidates[g];
+                    loc.dropped = loc.dropped || [];
+                    if (loc.dropped.indexOf(n) < 0) loc.dropped.push(n);
+                } else {
+                    var c = loc.candidates[g];
+                    if (c && c.seen && c.returns > 0) { c.seenCount = Object.keys(c.seen).length; delete c.seen; }
+                }
+            });
+        }
+        Object.keys(t.objects || {}).forEach(function (id) {
+            var ef = t.objects[id] && t.objects[id].exactForms;
+            if (ef) Object.keys(ef).forEach(function (form) { if (!(ef[form] && ef[form].confirmations > 0)) delete ef[form]; });
+        });
+        return t;
+    },
     learningKeyFor: function (inputs) { return inputs && typeof inputs.identityKey === "string" && inputs.identityKey ? "PL_AttrCalib_" + inputs.identityKey : null; },
     persist: function (mem) {
         var key = AttrCalibrator.gameIdentityKey(mem);
         if (!key) return;
         try {
             if (typeof localStorage === "undefined") return;
+            AttrCalibrator.compactTable(AttrCalibrator.table);
             if (typeof LearningStores !== "undefined") LearningStores.persist("attrCalib", { identityKey: key }, JSON.stringify(AttrCalibrator.table), function () { if (AttrCalibrator.hydratedForGame === key) AttrCalibrator.table = { version: 2, verbs: {}, objects: {} }; });
             else localStorage.setItem("PL_AttrCalib_" + key, JSON.stringify(AttrCalibrator.table));
         } catch (e) {}
@@ -1413,4 +1460,6 @@ if (typeof setTimeout === "function") {
     setTimeout(function () { AttrCalibrator.installHooks(); }, 0);
     setTimeout(function () { AttrCalibrator.installHooks(); }, 50);
 }
-if (typeof LearningStores !== "undefined") LearningStores.register("attrCalib", "PL_AttrCalib_", AttrCalibrator.learningKeyFor);
+if (typeof LearningStores !== "undefined") LearningStores.register("attrCalib", "PL_AttrCalib_", AttrCalibrator.learningKeyFor, {
+    compact: function (value) { return JSON.stringify(AttrCalibrator.compactTable(JSON.parse(value))); }
+});

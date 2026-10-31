@@ -1616,6 +1616,33 @@ var StatTracker = {
     // differs from what was last written.
     _lastSaved: null,
     _saveReplacer: (k, v) => (k === "badgeUntil" || k === "badgeDelta" || k === "lastChange") ? undefined : v,
+    // P13b R2: the persisted projection keeps only learned item-metric pins
+    // (prop != null; forgetReadings drops the rest on load anyway) and the
+    // latest SEEN_BANNERS_MAX ending ids (each carries its page epoch, so an
+    // older one can never recur). The live model is not mutated.
+    SEEN_BANNERS_MAX: 64,
+    persistView: function (model) {
+        if (!model || typeof model !== "object") return model;
+        var out = Object.assign({}, model);
+        if (model.itemMetrics) {
+            var im = {};
+            Object.keys(model.itemMetrics).forEach(function (id) {
+                var recs = model.itemMetrics[id] || {}, kept = null;
+                Object.keys(recs).forEach(function (f) { if (recs[f] && recs[f].prop != null) (kept || (kept = {}))[f] = recs[f]; });
+                if (kept) im[id] = kept;
+            });
+            out.itemMetrics = im;
+        }
+        if (model.seenBanners) {
+            var ids = Object.keys(model.seenBanners);
+            if (ids.length > StatTracker.SEEN_BANNERS_MAX) {
+                var sb = {};
+                ids.slice(-StatTracker.SEEN_BANNERS_MAX).forEach(function (id) { sb[id] = model.seenBanners[id]; });
+                out.seenBanners = sb;
+            }
+        }
+        return out;
+    },
     learningKeyFor: (i) => (i && typeof i.identityKey === "string" && i.identityKey ? StatTracker.STORAGE_PREFIX + i.identityKey : null),
     save: (key, model) => {
         try {
@@ -1623,7 +1650,7 @@ var StatTracker = {
             // D17: badgeUntil/badgeDelta/lastChange are presentation state that
             // load() resets anyway; persisting them only dirties the compare.
             // A replacer projects them out without mutating the live model.
-            var json = JSON.stringify(model, StatTracker._saveReplacer);
+            var json = JSON.stringify(StatTracker.persistView(model), StatTracker._saveReplacer);
             if (json === StatTracker._lastSaved) return;
             StatTracker._lastSaved = json;
             if (typeof LearningStores !== "undefined") LearningStores.persist("stats", { identityKey: key }, json, function () { if (StatTracker._key === key) { StatTracker._model = StatTracker.blank(); StatTracker._lastSaved = null; } });
@@ -4440,6 +4467,8 @@ try {
     }
 } catch (e) {}
 
-if (typeof LearningStores !== "undefined") LearningStores.register("stats", StatTracker.STORAGE_PREFIX, StatTracker.learningKeyFor);
+if (typeof LearningStores !== "undefined") LearningStores.register("stats", StatTracker.STORAGE_PREFIX, StatTracker.learningKeyFor, {
+    compact: function (value) { return JSON.stringify(StatTracker.persistView(JSON.parse(value))); }
+});
 try { if (typeof window !== "undefined") window.StatTracker = StatTracker; } catch (e) {}
 try { if (typeof module !== "undefined" && module.exports) module.exports = StatTracker; } catch (e) {}
