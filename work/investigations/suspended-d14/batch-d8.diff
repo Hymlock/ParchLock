@@ -1,0 +1,248 @@
+diff --git a/harness/zil-actor-addressing.js b/harness/zil-actor-addressing.js
+new file mode 100644
+index 0000000..6c4248d
+--- /dev/null
++++ b/harness/zil-actor-addressing.js
+@@ -0,0 +1,60 @@
++// D8 P8 (claude takeover of codex D8): Suspended addressed robot forms from the per-title actorAddressing fact.
++// Original Suspended RAM; parent/global edits below are X-tier consumer controls. Native proof:
++// work/investigations/suspended-d14/p8-native/.
++const fs=require('fs'),vm=require('vm'),assert=require('assert');
++const story=require(process.cwd()+'/work/investigations/zil-attr-analyzer.js').story;
++const bytes=Uint8Array.from(story('Suspended.z3.js'));
++const mem=new DataView(bytes.buffer),digest='6011284a57a6200c4deebfbeae92b3bac2f98a570ddbbc8cfc8bcc382d5b524f';
++const identityHeader=Array.from(bytes.slice(0,28));
++let payload={inventory:[],discoveredObjects:[]},checks=0,promptText=null,curMem=mem,curDigest=digest,curBytes=bytes;
++const fakeDoc={querySelector:s=>{if(promptText===null||s!=='.Input.LineInput')return null;const prev={textContent:promptText,previousElementSibling:null};const line={textContent:'>',previousElementSibling:prev};return{closest:()=>line};}};
++const c=vm.createContext({console,setTimeout,clearTimeout,window:{},document:fakeDoc,ModuleLibrary:{currentExecutableDigest:()=>curDigest,currentExecutableIdentity:()=>({digest:curDigest,header:curBytes===bytes?identityHeader:Array.from(curBytes.slice(0,28))})},ZRamProvider:{getMem:()=>curMem},WorldModel:{get lastPayload(){return payload;}},Actionable:{payloadPool:()=>payload.inventory.concat(payload.discoveredObjects),referenceFor:o=>({unique:true,verified:true,noun:o.name}),commandNounFor:o=>o.name,isGameWord:()=>true},AttrCalibrator:{hydrate(){},overrideFor:()=>({}),objectOverrideFor:()=>null,hasConfirmedFlag:()=>false,allowedVerbsFor:()=>[]}});
++for(const f of ['ModuleStatFactsClaude','ZRamReader','GrammarProvider','AttributeSchema','ActionSynth','LearnedWords','StatTracker'])vm.runInContext(fs.readFileSync('./js/'+f+'.js','utf8'),c);
++const A=c.AttributeSchema,R=c.ZRamReader,S=c.ActionSynth,F=c.ModuleStatFactsClaude[digest],h=R.header(mem);
++const IRIS=158,WALDO=155,SENSA=152,AUDA=149,POET=146,WHIZ=144,PEOPLE=140,CABINET=62,BLT=37,HOME=81,GROOVE=45,GAMMA=154,CENTRAL=151;
++function setParent(id,p){mem.setUint8(R.objectBase(h,id)+4,p);}
++function setGlobal(n,v){mem.setUint16(h.globals+2*n,v);}
++function obj(id){const raw=R.objectLinks(mem,id);return{id,name:R.shortName(mem,id).toLowerCase(),parentId:raw.parent,attrs:A.applyTo({},raw,mem)};}
++function menu(id,ctx='room'){const o=obj(id);if(ctx==='inventory'){payload={inventory:[o],discoveredObjects:[]};}else payload={inventory:[],discoveredObjects:[o]};return Array.from(S.commandsForObject(o,ctx));}
++const addressed=l=>l.filter(x=>x.actorAddressing),bare=l=>l.filter(x=>!x.actorAddressing);
++const actorsOf=l=>[...new Set(addressed(l).map(x=>x.command.split(',')[0]))];
++function check(name,fn){const snap=bytes.slice();try{fn();checks++;console.log('PASS '+name);}catch(e){e.message=name+': '+e.message;throw e;}finally{bytes.set(snap);promptText=null;}}
++function withFact(v,fn){const had=Object.prototype.hasOwnProperty.call(F,'actorAddressing'),old=F.actorAddressing;try{if(v===undefined)delete F.actorAddressing;else F.actorAddressing=v;fn();}finally{if(had)F.actorAddressing=old;else delete F.actorAddressing;}}
++const vmJSON=vm.runInContext('JSON',c),vmObject=vm.runInContext('Object',c);
++const good=()=>vmJSON.parse(JSON.stringify(F.actorAddressing));
++const asg=(a,b)=>vmObject.assign(a,vmJSON.parse(JSON.stringify(b)));
++
++check('family validated and fact is the exact executable fact',()=>{const f=c.GrammarProvider.decodeD198(mem);assert.equal(f.classification,'confirmed-zil-family');assert.equal(f.evidence,'validated');assert.strictEqual(R.executableLayoutFacts(mem),F);});
++check('domain is exactly the 6 table robots in table order, People excluded',()=>{const d=S.actorAddressingDomain(mem);assert.deepStrictEqual(Array.from(d.robots.map(r=>r.id)),[IRIS,WALDO,SENSA,AUDA,POET,WHIZ]);assert.deepStrictEqual(Array.from(d.robots.map(r=>r.word)),['iris','waldo','sensa','auda','poet','whiz']);assert(!d.robots.some(r=>r.id===PEOPLE));});
++check('VICBIT 24 holders outside the table never enter the domain',()=>{const d=S.actorAddressingDomain(mem),ids=d.robots.map(r=>r.id);const vic=[];for(let id=1;id<=191;id++){const a=R.objectBase(h,id)+3;if(mem.getUint8(a)&128)vic.push(id);}assert.equal(vic.length,14,'VICBIT count '+vic);assert.equal(vic.filter(id=>ids.indexOf(id)<0).length,8);for(const id of vic.filter(id=>ids.indexOf(id)<0))assert.equal(addressed(menu(CABINET)).some(x=>x.actorAddressing.actor===id),false);});
++check('co-located robot offered: Waldo for the cabinet in Gamma Repair',()=>{const l=menu(CABINET);assert.deepStrictEqual(actorsOf(l),['waldo']);assert(addressed(l).some(x=>x.command==='waldo, examine cabinet'),JSON.stringify(l.map(x=>x.command)));});
++check('bare forms are kept unchanged and come first',()=>{const l=menu(CABINET);const b=bare(l).map(x=>x.command);withFact(undefined,()=>assert.deepStrictEqual(menu(CABINET).map(x=>x.command),b));assert(l.findIndex(x=>x.actorAddressing)>=b.length-0);});
++check('non-co-located robots never offered (cabinet: no Iris/Sensa/Auda/Poet/Whiz)',()=>{const a=actorsOf(menu(CABINET));for(const w of ['iris','sensa','auda','poet','whiz'])assert(!a.includes(w));});
++check('two co-located robots are both listed (HOME in Central Chamber: Sensa and Poet), table order',()=>{assert.deepStrictEqual(actorsOf(menu(HOME)),['sensa','poet']);});
++check('linked robot global G114 orders first, still lists all',()=>{setGlobal(114,POET);assert.deepStrictEqual(actorsOf(menu(HOME)),['poet','sensa']);});
++check('G114 outside the domain (People) changes nothing',()=>{setGlobal(114,PEOPLE);assert.deepStrictEqual(actorsOf(menu(HOME)),['sensa','poet']);});
++check('room is never inferred from the linked robot alone: linked Waldo, groove elsewhere -> none',()=>{setGlobal(114,WALDO);assert.deepStrictEqual(actorsOf(menu(GROOVE)),[]);});
++check('live parent chain: moving Whiz into the groove room offers Whiz',()=>{setParent(WHIZ,R.objectLinks(mem,GROOVE).parent);assert.deepStrictEqual(actorsOf(menu(GROOVE)),['whiz']);assert(addressed(menu(GROOVE)).some(x=>x.command==='whiz, examine groove'));});
++check('object held by another robot is not offered (animate possession)',()=>{setParent(CABINET,SENSA);setParent(SENSA,GAMMA);assert.deepStrictEqual(actorsOf(menu(CABINET)),[]);});
++check('robots and People are never addressed as objects',()=>{for(const id of [WALDO,PEOPLE])assert.deepStrictEqual(actorsOf(menu(id)),[]);});
++check('inventory context unchanged (no addressed forms)',()=>{assert.equal(addressed(menu(CABINET,'inventory')).length,0);});
++check('stems (give/put/talk) never addressed',()=>{for(const id of [CABINET,BLT,HOME])assert(!addressed(menu(id)).some(x=>/\s$/.test(x.command)));});
++check('table drift: G183 moved -> absent',()=>{setGlobal(183,8184);assert.equal(addressed(menu(CABINET)).length,0);});
++check('table drift: entry changed -> absent',()=>{mem.setUint16(8182+2,PEOPLE);assert.equal(addressed(menu(CABINET)).length,0);});
++const bad=[null,vmJSON.parse('[]'),'x',vmJSON.parse('{}'),asg(good(),{robots:[158,155,152,149,146,144,140]}),asg(good(),{robots:[155,158,152,149,146,144]}),asg(good(),{robots:[158,158,152,149,146,144]}),asg(good(),{form:'<command>'}),asg(good(),{nameTable:{global:183,address:8183}}),asg(good(),{nameTable:{global:183}}),asg(good(),{linkedGlobal:'114'}),asg(good(),{roomsHolder:0}),asg(good(),{extra:1}),(()=>{const g=good();delete g.roomsHolder;return g;})(),vmObject.assign(vmObject.create(vmJSON.parse('{"inherited":1}')),good()),asg(good(),{robots:[158,155,152,149,146,'144']})];
++for(const v of bad)check('malformed fact is absent '+JSON.stringify(v),()=>withFact(v,()=>{assert.equal(addressed(menu(CABINET)).length,0);assert.equal(S.actorAddressingDomain(mem),null);}));
++check('a prefix of the table (subset of robots) is still exact and valid',()=>withFact(asg(good(),{robots:[158,155]}),()=>assert.deepStrictEqual(actorsOf(menu(CABINET)),['waldo'])));
++check('wrong supplied header digest rejects',()=>{const old=mem.getUint8(2);try{mem.setUint8(2,old^1);assert.equal(addressed(menu(CABINET)).length,0);}finally{mem.setUint8(2,old);}});
++check('unknown family rejects',()=>{const d=c.GrammarProvider.decodeD198;try{c.GrammarProvider.decodeD198=()=>({classification:'unknown'});assert.equal(addressed(menu(CABINET)).length,0);}finally{c.GrammarProvider.decodeD198=d;}});
++for(const p of ['Do you wish to quit? (Y is affirmative):','Do you wish to restart? (Y is affirmative):','FC: What do you want to examine?','WALDO: What do you want to take?','Which cabinet do you mean, the steel cabinet or the tool cabinet?','Would you like to restore a saved session?'])
++  check('non-command prompt suppresses addressed forms: '+p,()=>{promptText=p;assert.equal(addressed(menu(CABINET)).length,0);const cmd=(promptText=null,addressed(menu(CABINET))[0]);promptText=p;assert.equal(S.addressedCommandCurrent(cmd),false);});
++check('ordinary story line keeps addressed forms and tap re-validation passes',()=>{promptText='FC: Cryolink established to Waldo.';const l=addressed(menu(CABINET));assert(l.length);assert.equal(S.addressedCommandCurrent(l[0]),true);});
++check('tap re-validation fails after the robot leaves',()=>{const cmd=addressed(menu(CABINET))[0];setParent(WALDO,CENTRAL);assert.equal(S.addressedCommandCurrent(cmd),false);});
++check('tap re-validation fails on a tampered command',()=>{const cmd=Object.assign({},addressed(menu(CABINET))[0]);cmd.command='iris, examine cabinet';assert.equal(S.addressedCommandCurrent(cmd),false);});
++// Other titles unchanged: no other fact carries actorAddressing; synthesis on another ZIL title is identical with or without the new code path.
++check('no other title has actorAddressing',()=>{const others=Object.keys(c.ModuleStatFactsClaude).filter(k=>k!==digest&&c.ModuleStatFactsClaude[k]&&c.ModuleStatFactsClaude[k].actorAddressing);assert.deepStrictEqual(others,[]);});
++for(const [file,dg] of [['TheWitness.z3.js','2290bb3440ac66e14d54d41dbde575066ebdbdc42138ec899496e359bc484824'],['Zork1-TheGreatUndergroundEmpire.z3.js',null],['Planetfall.z3.js',null]]){
++  check('other title '+file+' gets no addressed forms',()=>{let b2;try{b2=Uint8Array.from(story(file));}catch(e){console.log('  (skip: '+file+' not found)');return;}
++    const m2=new DataView(b2.buffer);curMem=m2;curBytes=b2;curDigest=dg||'other';try{assert.equal(S.actorAddressingDomain(m2),null);let n=0;for(let id=1;id<=Math.min(R.objectCount(m2),250);id++){const raw=R.objectLinks(m2,id);const o={id,name:String(R.shortName(m2,id)||'x').toLowerCase()||'x',parentId:raw.parent,attrs:A.applyTo({},raw,m2)};payload={inventory:[],discoveredObjects:[o]};n+=S.commandsForObject(o,'room').filter(x=>x.actorAddressing).length;}assert.equal(n,0);}finally{curMem=mem;curBytes=bytes;curDigest=digest;}});
++}
++console.log(checks+' actor-addressing controls passed');
+diff --git a/js/ActionSynth.js b/js/ActionSynth.js
+index 66ac0f2..5374fb3 100644
+--- a/js/ActionSynth.js
++++ b/js/ActionSynth.js
+@@ -494,7 +494,136 @@ var ActionSynth = {
+         if (typeof LearnedWords !== "undefined") LearnedWords.commands(obj).forEach(function (c) {
+             if (!result.some(function (existing) { return existing.command === c.command; })) result.push(c);
+         });
+-        return result.filter(function (entry) { return ActionSynth.authoredCommandAllowed(obj.id, entry.verb, context); });
++        var allowed = result.filter(function (entry) { return ActionSynth.authoredCommandAllowed(obj.id, entry.verb, context); });
++        if (context === "inventory" || containerName || (options && (options.allowAmbiguousReference || options.directEvidenceOnly))) return allowed;
++        return allowed.concat(ActionSynth.addressedFormsFor(obj, allowed));
++    },
++
++    // D8 P8: per-title fact actorAddressing {robots, form, nameTable:{global,address}, linkedGlobal, roomsHolder}.
++    // Only for the exact executable fact of a validated confirmed-zil-family title. The robot domain is
++    // the game's own actor table, re-read live: the named global must still point at the audited table
++    // and the table must list exactly these ids in this order. Each robot's name is its short name,
++    // which must be one of its own parser words and a dictionary word. Anything malformed or drifted
++    // makes the whole fact absent (no addressed forms; everything else unchanged).
++    actorAddressingDomain: (mem) => {
++        try {
++            if (!mem || typeof ZRamReader === "undefined" || typeof ModuleStatFactsClaude === "undefined") return null;
++            var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest && ModuleLibrary.currentExecutableDigest();
++            var fact = ZRamReader.executableLayoutFacts(mem);
++            if (!digest || !fact || ModuleStatFactsClaude[digest] !== fact) return null;
++            var family = typeof GrammarProvider !== "undefined" && GrammarProvider.decodeD198 ? GrammarProvider.decodeD198(mem) : null;
++            if (!family || family.classification !== "confirmed-zil-family" || family.evidence !== "validated") return null;
++            var spec = fact.actorAddressing, plain = function (o) { return !!o && typeof o === "object" && Object.getPrototypeOf(o) === Object.prototype; };
++            if (!plain(spec) || Object.keys(spec).sort().join() !== "form,linkedGlobal,nameTable,robots,roomsHolder") return null;
++            if (spec.form !== "<name>, <command>" || !plain(spec.nameTable) || Object.keys(spec.nameTable).sort().join() !== "address,global") return null;
++            var count = ZRamReader.objectCount(mem), h = ZRamReader.header(mem), robots = spec.robots;
++            var gslot = function (n) { return Number.isInteger(n) && n >= 0 && n < 240 && h.globals + 2 * n + 2 <= mem.byteLength; };
++            if (!Array.isArray(robots) || !robots.length || !gslot(spec.nameTable.global) || !gslot(spec.linkedGlobal)) return null;
++            if (!Number.isInteger(spec.roomsHolder) || spec.roomsHolder < 1 || spec.roomsHolder > count || robots.indexOf(spec.roomsHolder) >= 0) return null;
++            var address = spec.nameTable.address;
++            if (!Number.isInteger(address) || address < 64 || address + 2 * robots.length > mem.byteLength) return null;
++            if (ZRamReader.u16(mem, h.globals + 2 * spec.nameTable.global) !== address) return null;
++            var out = [], seen = {};
++            for (var i = 0; i < robots.length; i++) {
++                var id = robots[i];
++                if (!Number.isInteger(id) || id < 1 || id > count || seen[id] || ZRamReader.u16(mem, address + 2 * i) !== id) return null;
++                seen[id] = true;
++                var shortName = String(ZRamReader.shortName(mem, id) || "").trim(), word = shortName.toLowerCase();
++                if (!/^[a-z]+$/.test(word) || (ZRamReader.parserWordsAny(mem, id) || []).indexOf(word) < 0 ||
++                    !ZRamReader.hasDictionaryWord(mem, word)) return null;
++                out.push({ id: id, word: word, name: word.charAt(0).toUpperCase() + word.slice(1) });
++            }
++            var linked = ZRamReader.u16(mem, h.globals + 2 * spec.linkedGlobal);
++            return { digest: digest, robots: out, linked: seen[linked] ? linked : null, roomsHolder: spec.roomsHolder };
++        } catch (eDomain) { return null; }
++    },
++    // The robot's room: the first object on its live parent chain whose parent is the game's ROOMS holder.
++    actorRoom: (mem, id, holder) => {
++        try {
++            var count = ZRamReader.objectCount(mem), raw = ZRamReader.objectLinks(mem, id), seen = {};
++            for (var depth = 0; raw && depth < count; depth++) {
++                var parent = raw.parent;
++                if (!Number.isInteger(parent) || parent < 1 || parent > count || seen[parent]) return null;
++                seen[parent] = true;
++                raw = ZRamReader.objectLinks(mem, parent);
++                if (raw && raw.parent === holder) return parent;
++            }
++        } catch (eRoom) {}
++        return null;
++    },
++    // Live RAM: the object's parent chain reaches the robot's room through supporters and open or
++    // transparent containers only; another actor's possessions never qualify.
++    reachesActorRoom: (mem, objectId, room, actors) => {
++        try {
++            var count = ZRamReader.objectCount(mem), raw = ZRamReader.objectLinks(mem, objectId), seen = {};
++            for (var depth = 0; raw && depth < count; depth++) {
++                var parent = raw.parent;
++                if (parent === room) return true;
++                if (!Number.isInteger(parent) || parent < 1 || parent > count || seen[parent]) return false;
++                seen[parent] = true;
++                if (actors && actors[parent]) return false;
++                raw = ZRamReader.objectLinks(mem, parent);
++                if (!raw) return false;
++                var a = AttributeSchema.applyTo({}, raw, mem);
++                if (a.animate) return false;
++                if (!(a.supporter || a.transparent || (a.container && (a.isOpen || a.open)))) return false;
++            }
++        } catch (eReach) {}
++        return false;
++    },
++    // A line input that is answering a question (setup, QUIT/RESTART confirm, the parser's
++    // missing-noun or which-one prompt) is not a command prompt: no addressed story command goes there.
++    nonCommandPrompt: () => {
++        try {
++            if (typeof StatTracker !== "undefined" && StatTracker.hasQuestionPrompt && StatTracker.hasQuestionPrompt()) return true;
++            if (typeof document === "undefined") return false;
++            var input = document.querySelector(".Input.LineInput"), line = input && input.closest && input.closest(".BufferLine");
++            for (var n = 0; line && n < 4; n++, line = line.previousElementSibling) {
++                var text = String(line.textContent || "").replace(/ /g, " ").trim().replace(/\s*>+\s*$/, "");
++                if (!text || /^(?:>|=>|>>)$/.test(text)) continue;
++                return /\(Y is affirmative\):?$/i.test(text) || /^(?:[A-Z]+:\s*)?What do you want to [^?]{1,60}\?$/.test(text) ||
++                    /^(?:[A-Z]+:\s*)?Which\b[^?]{0,160}\?$/.test(text);
++            }
++        } catch (ePrompt) {}
++        return false;
++    },
++    addressedFormsFor: (obj, bare) => {
++        try {
++            var mem = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null;
++            var id = Number(obj && obj.id);
++            if (!mem || !Number.isInteger(id) || id < 1 || !(bare || []).length || ActionSynth.nonCommandPrompt()) return [];
++            var domain = ActionSynth.actorAddressingDomain(mem);
++            if (!domain || domain.robots.some(function (r) { return r.id === id; })) return [];
++            var actors = {};
++            domain.robots.forEach(function (r) { actors[r.id] = true; });
++            var eligible = domain.robots.filter(function (r) {
++                var room = ActionSynth.actorRoom(mem, r.id, domain.roomsHolder);
++                return room !== null && room !== id && ActionSynth.reachesActorRoom(mem, id, room, actors);
++            });
++            // The game's own linked-robot global orders first; nobody is ever chosen silently.
++            eligible.sort(function (a, b) { return (b.id === domain.linked) - (a.id === domain.linked); });
++            var out = [];
++            eligible.forEach(function (r) {
++                bare.forEach(function (c) {
++                    if (!c || typeof c.command !== "string" || /\s$/.test(c.command) || c.wornRemovalScope || c.learnedWordScope) return;
++                    out.push({ verb: c.verb, noun: c.noun, objectId: c.objectId, command: r.word + ", " + c.command,
++                        label: r.name + ": " + String(c.verb || "").charAt(0).toUpperCase() + String(c.verb || "").slice(1),
++                        confidence: c.confidence,
++                        actorAddressing: { digest: domain.digest, actor: r.id, objectId: id, command: r.word + ", " + c.command } });
++                });
++            });
++            return out;
++        } catch (eAddr) { return []; }
++    },
++    // Re-checked at radial tap: same digest, same actor still co-located, still offered, command prompt.
++    addressedCommandCurrent: (command) => {
++        var scope = command && command.actorAddressing;
++        if (!scope || command.command !== scope.command) return false;
++        var obj = { id: scope.objectId, name: command.noun || "x" };
++        var fresh = ActionSynth.addressedFormsFor(obj, [{ verb: command.verb, noun: command.noun, objectId: command.objectId,
++            command: scope.command.slice(scope.command.indexOf(", ") + 2), confidence: command.confidence }]);
++        return fresh.some(function (f) { return f.actorAddressing.digest === scope.digest && f.actorAddressing.actor === scope.actor &&
++            f.command === scope.command; });
+     },
+ 
+     // D201: objects whose printable identity was recovered from just-printed
+diff --git a/js/Actionable.js b/js/Actionable.js
+index 716a426..5c89e1b 100644
+--- a/js/Actionable.js
++++ b/js/Actionable.js
+@@ -2766,6 +2766,8 @@ var Actionable = {
+         if (command.sharedMembers && (command.wornRemovalScope || command.sharedMembers.some(function (c) { return !!c.wornRemovalScope; }))) return false;
+         return (command.sharedMembers || [command]).every(function (c) {
+             if (c.wornRemovalScope && (typeof ActionSynth === "undefined" || !ActionSynth.wornRemovalCommandCurrent || !ActionSynth.wornRemovalCommandCurrent(c))) return false;
++            // D8 P8: an addressed robot command is re-validated at tap (domain, co-location, command prompt).
++            if (c.actorAddressing && (command.sharedMembers || typeof ActionSynth === "undefined" || !ActionSynth.addressedCommandCurrent || !ActionSynth.addressedCommandCurrent(c))) return false;
+             return !c.learnedWordScope || typeof LearnedWords === "undefined" || LearnedWords.commandCurrent(c);
+         });
+     },
+@@ -2897,7 +2899,7 @@ var Actionable = {
+                     };
+                 }
+                 return {
+-                    Label: verb.charAt(0).toUpperCase() + verb.slice(1),
++                    Label: c.actorAddressing && c.label ? String(c.label) : verb.charAt(0).toUpperCase() + verb.slice(1),
+                     Command: command,
+                     Score: scoreFor(command, base),
+                     Usage: usageFor(command),
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index 6884b36..f0bf1a5 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -1293,6 +1293,13 @@ var ModuleStatFactsClaude = {
+         // the only runtime FSET is V-WEAR (verbs.zil:1745), gated on WEARABLEBIT = SURGERY-HAND only; the bounded boot scan carrier {191} is
+         // GLOBAL-OBJECTS (globals.zil:14-16, the flag-list pseudo object, never in inventory).
+         "wornAttribute": 15,
++        // D8 P8 actorAddressing (codex d8-addressed-source-r1 robot-domain.json, oct30-recovery): the game's own robot table at 8182
++        // (global G183 = NAME-TBL, source globals.zil) lists [158 Iris,155 Waldo,152 Sensa,149 Auda,146 Poet,144 Whiz] then 140 People
++        // (excluded; VICBIT 24 alone admits 14 incl. global proxies, rejected). Names are each robot's short name, verified as its own
++        // parser word and a dictionary word. G114 = linked robot (orders first). Rooms are children of ROOMS 189. Bare verbs fail
++        // ("Visual scanners cannot see..."); addressed forms are the game's command form. Native: work/investigations/suspended-d14/p8-native.
++        "actorAddressing": { "robots": [158, 155, 152, 149, 146, 144], "form": "<name>, <command>",
++            "nameTable": { "global": 183, "address": 8182 }, "linkedGlobal": 114, "roomsHolder": 189 },
+         "command": "score", "fields": ["casualties", "population", "cycles"], "replyFamily": "casualty-cycles", "outcome": "line",
+         "evidence": "2026-10-05 live SCORE: There have been 3,000 casualties (original population: 30,172,000) in 0 cycles."
+     },
