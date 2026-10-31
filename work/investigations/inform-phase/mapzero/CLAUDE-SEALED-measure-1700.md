@@ -17,3 +17,13 @@ Not yet tested: whether the map fills after the first move (the travel path). sa
 Two moves per title (out and back, with exits from the payload or the obvious compass direction). Rooms stay 0 and **payload roomName does not change** in all 9 tested (gostak, csbb, HugeCave, yagwad, cabal, Tokyo2, Heroine, LASH, windhal1).
 So the travel path (the prevRoomId change) never fires, because the resolved room is frozen. Not yet checked: whether the moves succeeded in the game, or whether the game text named a new room.
 This is not just a first-admission problem: the room resolver itself does not follow the player in these titles.
+
+## CORRECTION (claude, 17:40): the earlier measurements were contaminated by start-up prompts
+The earlier probe sent LOOK while several titles were still at an opening question ("restore a saved game?", a menu). Re-run, answering "no" first, then look and one move:
+- **Map works (rooms > 0):** saveprinceton 3, csbb 4, HugeCave 6, KoA 2, windhal1 1. These are **not defects**; the earlier result was a harness artefact.
+- **guess:** stuck at a NEW/RESTORE/SCRIPT/QUIT menu; needs "new". Unmeasured.
+- **Still 0, real candidates:**
+  - parentless player, existing-resolver: gostak (text was still at the copyright banner, so it may be in its intro), cabal, rameses, yagwad (text blank, possibly still in its intro).
+  - player in the room but existing-resolver: Tokyo2, bluechairs.
+  - containment present but 0: Heroine, LASH (text blank, possibly still in its intro).
+Next: per-title start-up scripts until the game prompt is real, then re-measure the 8 candidates. The 2026-10-17 audit likely had the same flaw.
