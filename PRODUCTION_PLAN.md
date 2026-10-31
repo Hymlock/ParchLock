@@ -9685,31 +9685,58 @@ Harness: harness/zil-locked-map.js (37 checks). Extends D241.
 **Decision:** no code. There is no semantic light-emission reader; light remains heuristic. The 18 light cells in the
 ledger are recorded L:NC (not certified).
 
-## D248 Learning stores retained on uninstall (D13) -- AGREED, not landed
+## D248 Learning stores retained on uninstall (D13) -- LANDED aae8445
 
-**Operator ruling 2026-10-30:** learned-word stores survive module uninstall. Settings > Learned words gains Check/Erase
+**Operator ruling 2026-10-30:** learned-word stores survive module uninstall. Options > Learned words gains Check/Erase
 for uninstalled modules. Design agreed R3-R7: work/investigations/learning-uninstall/compare-proposal-r1.md.
-**Status:** agreed design; implementation pending integration. No runtime change yet.
+**Landed** aae8445 (diff #5692, rebased onto E5+D12 in be7dbda). A LearningStores owner index records, for the 7 learning
+stores, exact keys and owner sets per module, an eraseEpoch, erase tombstones and pending-erase recovery, serialised by a
+Web Lock; metadata-only index writes (#5674). Erase removes only keys whose owner set is that uninstalled module.
+Gate: audit-d13. **Open:** D13b (store size caps) not yet designed.
 
 ## D249 Agreed designs pending integration (D12, D5, D16, D8, P4, P11b)
 
-Consensus reached 2026-10-30; none is landed in js/ yet. Each still needs implementation, gate and adversarial audit.
-- **D12** Hollywood Close gated by the game's own V-CLOSE rule (CONTBIT and not SURFACEBIT and CAPACITY != 0, or DOORBIT)
-  via a per-title closeRule {capacityProp 8}. Close only, so Open/Search/Empty are untouched. Action-routine refusers
-  (pond, cannon, matches...) keep their options under the missing-over-wrong rule. Plank ends lose Close. Files:
-  claude-probe/hollywood-d12/compare-proposal-r1.md R2, audit-d12-candidate.md ACCEPT, codex native mailbox #5621. It is
-  in the E5+D12 shared gate.
-- **D5** object "Locked" status (D241 phase 2): codex candidate oct30-recovery/d5-status-candidate-r1, audit
-  zil-titles/audit-d5-candidate.md (bus #5647).
-- **D16/P16** spell book scope: label list vs scope set split; per-title `inventoryHiddenScopeRetained` before re-admitting
-  Enchanter (codex ACCEPT #5641, batch-p16.diff). Sorcerer qualified by native trace (D16-sorcerer-trace.md: 7 spells; "9" was
-  the NDESC bit number). Spellbreaker's BRIEFBIT exception never affects held objects (spellbreaker-invhidden-claude-SEALED.md),
-  and its extension is proposed (#5662).
-- **D8** Suspended robot radial, P8: addressed forms ("<robot>, <verb> <noun>") for every co-located robot from the exact
-  6-robot NAME-TBL domain (Iris/Waldo/Sensa/Auda/Poet/Whiz; VICBIT alone admits 14, which is rejected). No token/GlkOte
-  machinery. No addressed command is sent into setup/QUIT/missing-noun prompts (suspended-d14/D8-R3-attack-claude.md;
-  codex #5610/#5651).
-- **P4** `switchableScope` per-object room scope for activation forms; first candidate Witness radio 162 (#5186).
-- **P11b** garment rejection in isPlausibleMapRoom skipped only for clothing/wearable (never worn) objects whose parent is
-  the authenticated AttributeSchema.garmentWornDomainFact root (Moonmist root 37) and that have at least one valid
-  direction-exit property. It is non-circular (no isPlausibleMapRoom/d214RoomTarget) (codex ACCEPT #5549).
+Consensus reached 2026-10-30. Status updated 2026-10-30 evening:
+- **D12** LANDED f5afbb3 (with E5, D250). Hollywood Close gated by the game's own V-CLOSE rule (CONTBIT and not SURFACEBIT
+  and CAPACITY != 0, or DOORBIT) via a per-title closeRule {capacityProp 8}. Close only; Open/Search/Empty untouched.
+  Action-routine refusers keep their options (missing-over-wrong). Plank ends lose Close. Files:
+  claude-probe/hollywood-d12/compare-proposal-r1.md R2, audit-d12-candidate.md ACCEPT, codex native mailbox #5621.
+- **D16/P16** LANDED 37327b0 (Enchanter; ledger 999974c), extension f7e1180 (Sorcerer NDESC 9, Spellbreaker NDESC 19).
+  Label list vs scope set split; per-title `inventoryHiddenScopeRetained` (codex ACCEPT #5641). Sorcerer qualified by native
+  trace (D16-sorcerer-trace.md: 7 spells); Spellbreaker BRIEFBIT exception never affects held objects.
+- **P4** LANDED d91a422 (D4): `switchableScope` per-object room scope for activation forms; The Witness radio 162 turns
+  on/off in its room (#5186).
+- **P11b** PARKED (8033eb9): codex disposition B, 0 player-visible change in the release set. Design (garment rejection
+  skipped only under the authenticated garmentWornDomainFact root with a valid exit property; codex ACCEPT #5549) kept for
+  reference only.
+- **D5** PENDING (codex): object "Locked" status (D241 phase 2); candidate oct30-recovery/d5-status-candidate-r1, audit
+  zil-titles/audit-d5-candidate.md (bus #5647). Needs rebase onto current main.
+- **D8** PENDING (codex): Suspended robot radial, P8 addressed forms ("<robot>, <verb> <noun>") from the exact 6-robot
+  NAME-TBL domain (Iris/Waldo/Sensa/Auda/Poet/Whiz; VICBIT alone admits 14, rejected). Never sent into setup/QUIT/
+  missing-noun prompts (suspended-d14/D8-R3-attack-claude.md; codex #5610/#5651).
+
+## D250 Zork III worn Drop custody (E5)
+
+**Lifecycle:** codex, landed f5afbb3 with D12; ledger 927021e (Zork3 worn S). **Contract.** A worn object in Zork III keeps
+the player as custodian for Drop scope: Drop stays offered for worn items, read from the game's own worn state, not a list.
+
+## D251 Door-only destination isLocked (P10b)
+
+**Lifecycle:** grok2, landed 4baf75c; ledger 5427fca (Hollywood locked=15 S). Gate audit-p10b. **Cause:** rooms carrying
+LOCKEDBIT never set the exit's isLocked, so a door-only destination showed no lock. **Contract.** When an exit's only route
+is a door whose destination carries LOCKEDBIT, the exit is marked isLocked; Hollywood locked count 15. Extends D241/D246
+(pause still requires locked AND closed).
+
+## D252 Stats idle rewrites stopped (D17/P17)
+
+**Lifecycle:** D17 blind halves (f092218 claude sealed), compare ec9beb0, measurement 302b341, landed 77284e4.
+**Cause:** the per-object `seen` counter grew every tick and badge fields were persisted, rewriting PM_Stats_ while idle.
+**Contract.** `seen` is capped at CONFIRM_SAMPLES; badge fields are derived, not persisted. Idle PM_Stats_ writes dropped
+from 33 to 0 per 3 s.
+
+## D253 r45/r46 ZIL fact batch; ledger at 0 U
+
+**Lifecycle:** frozen diff 76a6fcf, landed 7ffb59e; disposition 8033eb9; ledger 927021e.
+**Facts.** Suspended container/supporter/open/openCapability fail-closed (exact-digest facts only); Hitchhik enterable and
+switchable (switchable review-held); Seastalker concealed; Hollywood enterable; Suspect locked (17). With this batch the
+ZIL profile ledger (2026-10-16-zil-profile-ledger.md) has 0 U (unknown) cells; every cell is S, NC or L:NC.

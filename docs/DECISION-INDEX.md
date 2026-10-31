@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 133 decisions across
-9706 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 137 decisions across
+9743 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -27,8 +27,12 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 
 | D | claim | files | games | arch |
 |---|-------|-------|-------|------|
+| D253 | r45/r46 ZIL fact batch; ledger at 0 U |  |  |  |
+| D252 | Stats idle rewrites stopped (D17/P17) |  |  |  |
+| D251 | Door-only destination isLocked (P10b) |  |  |  |
+| D250 | Zork III worn Drop custody (E5) |  | Zork3 |  |
 | D249 | Agreed designs pending integration (D12, D5, D16, D8, P4, P11b) |  | Enchanter |  |
-| D248 | Learning stores retained on uninstall (D13) -- AGREED, not landed |  |  |  |
+| D248 | Learning stores retained on uninstall (D13) -- LANDED aae8445 |  |  |  |
 | D247 | Light key semantics stay heuristic (D2) |  |  |  |
 | D246 | Lock pause requires locked AND closed (P10) | harness/zil-locked-map.js |  |  |
 | D245 | ZIL clothing/wearable fail-closed (P11a) | harness/zil-locked-map.js | Planetfall |  |
