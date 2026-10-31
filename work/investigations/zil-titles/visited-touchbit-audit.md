@@ -50,3 +50,15 @@ Save restore is already covered by D215 per-save map snapshots. No player-visibl
 
 ## Recommendation
 All 25 stay NC. 24 REDUNDANT: "same meaning as navigation-derived visited; source deviations (FCLEAR replays, maze clear, remote-view un-set) only make TOUCHBIT less accurate." Suspended DIFFERENT-MEANING: "TOUCHBIT never set on rooms; object-touched flag." No USEFUL case: no title leaves TOUCHBIT set on a room the player has not entered.
+
+## CORRECTION (claude, adopting codex #5830/#5837 and oct30-recovery/visited-r1-adversarial-review.md)
+The Zork2 (2actions.zil:1536 GO&LOOK, palantir) and Starcross (actions.zil:2434) rows were WRONG. Each saves
+OHERE=HERE, sets HERE=.RM and PERFORMs LOOK, which sets TOUCHBIT on the REMOTE room. The conditional FCLEAR afterwards
+targets .OHERE (the origin), not .RM. So in these two titles a room CAN carry TOUCHBIT without being entered (remotely
+described), and the "equivalent to navigation" claim fails for them.
+Revised dispositions:
+- Zork2, Starcross: reopened as U. Candidate USEFUL: the map could mark remotely-seen rooms as "seen (not visited)".
+  Needs source/caller/native reconciliation of the remote-described domain and a consumer design, then a four-seat vote.
+- The other 23 titles: stay L:NC with the reason softened to "no room flagged without entry found in source; navigation
+  history already supplies visited; reopen on any remote-description setter". "Equivalent" is no longer claimed.
+- Suspended: DIFFERENT-MEANING (unchanged).
