@@ -1,0 +1,325 @@
+{
+    "tag":  "seE",
+    "game":  "Seastalker.z3.js",
+    "key":  "seastalker",
+    "bit":  0,
+    "tmpl":  "s",
+    "note":  "jdE: rise to 5m at 81; replay 81-125",
+    "tests":  [
+                  {
+                      "cmd":  "rise to 5 meters",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  81,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "nw",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  82,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "nw",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  83,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "n",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  84,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "n",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  85,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "turn on autopilot",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  86,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "set throttle to fast",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  87,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "z",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  88,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "yes",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  89,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "z",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  90,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "yes",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  91,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "dock",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  92,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "z",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  93,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "open hatch",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  94,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "exit scimitar",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  95,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "n",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  96,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "n",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  97,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "n",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  98,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "open air supply system with tool",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  99,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "get relay",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  100,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "screw relay into space",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  101,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "se",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  102,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "s",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  103,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "get bazooka",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  104,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "n",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  105,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "e",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  106,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "z",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  107,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "yes",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  108,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "ask about evidence",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  109,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "open box with tool",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  110,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "look in box",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  111,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "w",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  112,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "get wrench",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  113,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "open office door",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  114,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "z",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  115,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "yes",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  116,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "yes",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  117,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "yes",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  118,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "yes",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  119,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "yes",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  120,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "yes",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  121,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "yes",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  122,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "give magazine to doc",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  123,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "yes",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  124,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "yes",
+                      "step":  81,
+                      "name":  "x",
+                      "id":  125,
+                      "expect":  0
+                  }
+              ]
+}

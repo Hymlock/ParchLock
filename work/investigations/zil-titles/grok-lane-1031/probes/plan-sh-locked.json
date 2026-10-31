@@ -1,0 +1,38 @@
+{
+ "tag": "sh-locked",
+ "game": "Sherlock.z5.js",
+ "key": "sherlock",
+ "bit": 15,
+ "tmpl": "s",
+ "note": "grok Sherlock lane native",
+ "tests": [
+  {
+   "cmd": "OPEN BEDROOM DOOR",
+   "step": 4,
+   "name": "open bedroom door",
+   "id": 104,
+   "expect": 1
+  },
+  {
+   "cmd": "OPEN FRONT DOOR",
+   "step": 0,
+   "name": "open front door",
+   "id": 35,
+   "expect": 1
+  },
+  {
+   "cmd": "OPEN PARLOUR DOOR",
+   "step": 17,
+   "name": "open parlour door",
+   "id": 102,
+   "expect": 0
+  },
+  {
+   "cmd": "OPEN BLACK BAG",
+   "step": 4,
+   "name": "open black bag",
+   "id": 172,
+   "expect": 0
+  }
+ ]
+}

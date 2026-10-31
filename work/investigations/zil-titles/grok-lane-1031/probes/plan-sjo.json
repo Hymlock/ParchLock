@@ -1,0 +1,241 @@
+{
+    "tag":  "sjo",
+    "game":  "Seastalker.z3.js",
+    "key":  "seastalker",
+    "bit":  0,
+    "tmpl":  "s",
+    "note":  "orig j route replay 58-90",
+    "tests":  [
+                  {
+                      "cmd":  "ne",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  58,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "ne",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  59,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "x sonar",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  60,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "ne",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  61,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "ne",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  62,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "ne",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  63,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "ne",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  64,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "x sonar",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  65,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "n",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  66,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "n",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  67,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "n",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  68,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "n",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  69,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "x sonar",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  70,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "ne",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  71,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "ne",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  72,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "ne",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  73,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "ne",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  74,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "x sonar",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  75,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "ne",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  76,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "ne",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  77,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "ne",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  78,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "ne",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  79,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "x sonar",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  80,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "nw",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  81,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "nw",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  82,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "n",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  83,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "n",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  84,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "turn on autopilot",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  85,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "set throttle to fast",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  86,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "z",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  87,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "yes",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  88,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "z",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  89,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "yes",
+                      "step":  58,
+                      "name":  "x",
+                      "id":  90,
+                      "expect":  0
+                  }
+              ]
+}

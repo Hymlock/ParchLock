@@ -1,0 +1,1079 @@
+{
+ "sjo @58:ne#0": {
+  "tag": "sjo",
+  "cmd": "ne",
+  "step": 58,
+  "name": "x",
+  "id": 58,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   19,
+   20
+  ],
+  "after": [
+   4,
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 8,
+  "printedObjs": [
+   254
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the northeast.\n \n> ",
+  "ts": "2026-10-31T06:29:53.565Z"
+ },
+ "sjo @58:ne#1": {
+  "tag": "sjo",
+  "cmd": "ne",
+  "step": 58,
+  "name": "x",
+  "id": 59,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   17
+  ],
+  "after": [
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 60,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 8,
+  "printedObjs": [
+   254
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the northeast.\n \n> ",
+  "ts": "2026-10-31T06:29:54.922Z"
+ },
+ "sjo @58:x sonar#2": {
+  "tag": "sjo",
+  "cmd": "x sonar",
+  "step": 58,
+  "name": "x",
+  "id": 60,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   19,
+   20
+  ],
+  "after": [
+   4,
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 1,
+  "printedObjs": [],
+  "text": "(I don't know the word \"x\".)\n \n> ",
+  "ts": "2026-10-31T06:29:55.499Z"
+ },
+ "sjo @58:ne#3": {
+  "tag": "sjo",
+  "cmd": "ne",
+  "step": 58,
+  "name": "x",
+  "id": 61,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   17
+  ],
+  "after": [
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 65,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 8,
+  "printedObjs": [
+   254
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the northeast.\n \n> ",
+  "ts": "2026-10-31T06:29:56.567Z"
+ },
+ "sjo @58:ne#4": {
+  "tag": "sjo",
+  "cmd": "ne",
+  "step": 58,
+  "name": "x",
+  "id": 62,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   11,
+   19,
+   23
+  ],
+  "after": [
+   4,
+   11,
+   19,
+   23
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 65,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 8,
+  "printedObjs": [
+   254
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the northeast.\n \n> ",
+  "ts": "2026-10-31T06:29:57.671Z"
+ },
+ "sjo @58:ne#5": {
+  "tag": "sjo",
+  "cmd": "ne",
+  "step": 58,
+  "name": "x",
+  "id": 63,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   17
+  ],
+  "after": [
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 64,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 8,
+  "printedObjs": [
+   254
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the northeast.\n \n> ",
+  "ts": "2026-10-31T06:29:58.687Z"
+ },
+ "sjo @58:ne#6": {
+  "tag": "sjo",
+  "cmd": "ne",
+  "step": 58,
+  "name": "x",
+  "id": 64,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   10,
+   17,
+   18,
+   26
+  ],
+  "after": [
+   6,
+   10,
+   17,
+   18,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 65,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 8,
+  "printedObjs": [
+   254
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the northeast.\n \n> ",
+  "ts": "2026-10-31T06:29:59.784Z"
+ },
+ "sjo @58:x sonar#7": {
+  "tag": "sjo",
+  "cmd": "x sonar",
+  "step": 58,
+  "name": "x",
+  "id": 65,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   19,
+   20
+  ],
+  "after": [
+   4,
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 1,
+  "printedObjs": [],
+  "text": "(I don't know the word \"x\".)\n \n> ",
+  "ts": "2026-10-31T06:30:00.429Z"
+ },
+ "sjo @58:n#8": {
+  "tag": "sjo",
+  "cmd": "n",
+  "step": 58,
+  "name": "x",
+  "id": 66,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   17
+  ],
+  "after": [
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 67,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 8,
+  "printedObjs": [
+   254
+  ],
+  "text": "Okay, the SCIMITAR is now moving toward the north.\n \n> ",
+  "ts": "2026-10-31T06:30:01.487Z"
+ },
+ "sjo @58:n#9": {
+  "tag": "sjo",
+  "cmd": "n",
+  "step": 58,
+  "name": "x",
+  "id": 67,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   10,
+   17,
+   18,
+   26
+  ],
+  "after": [
+   6,
+   10,
+   17,
+   18,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 68,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 8,
+  "printedObjs": [
+   254
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the north.\n \n> ",
+  "ts": "2026-10-31T06:30:02.633Z"
+ },
+ "sjo @58:n#10": {
+  "tag": "sjo",
+  "cmd": "n",
+  "step": 58,
+  "name": "x",
+  "id": 68,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   19,
+   20
+  ],
+  "after": [
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 8,
+  "printedObjs": [
+   254
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the north.\n \n> ",
+  "ts": "2026-10-31T06:30:03.870Z"
+ },
+ "sjo @58:n#11": {
+  "tag": "sjo",
+  "cmd": "n",
+  "step": 58,
+  "name": "x",
+  "id": 69,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   17
+  ],
+  "after": [
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 70,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 8,
+  "printedObjs": [
+   254,
+   33
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the north.\n(You didn't change the SCIMITAR's heading. Remember, you don't have to type a compass direction every turn if you want to WAIT or do something else.)\n \n> ",
+  "ts": "2026-10-31T06:30:05.255Z"
+ },
+ "sjo @58:x sonar#12": {
+  "tag": "sjo",
+  "cmd": "x sonar",
+  "step": 58,
+  "name": "x",
+  "id": 70,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   10,
+   14,
+   17,
+   18,
+   26
+  ],
+  "after": [
+   6,
+   10,
+   14,
+   17,
+   18,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 74,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 1,
+  "printedObjs": [],
+  "text": "(I don't know the word \"x\".)\n \n> ",
+  "ts": "2026-10-31T06:30:05.834Z"
+ },
+ "sjo @58:ne#13": {
+  "tag": "sjo",
+  "cmd": "ne",
+  "step": 58,
+  "name": "x",
+  "id": 71,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   17
+  ],
+  "after": [
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 72,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 8,
+  "printedObjs": [
+   254
+  ],
+  "text": "Okay, the SCIMITAR is now moving toward the northeast.\n \n> ",
+  "ts": "2026-10-31T06:30:06.882Z"
+ },
+ "sjo @58:ne#14": {
+  "tag": "sjo",
+  "cmd": "ne",
+  "step": 58,
+  "name": "x",
+  "id": 72,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   10,
+   17,
+   18,
+   26
+  ],
+  "after": [
+   6,
+   10,
+   17,
+   18,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 74,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 8,
+  "printedObjs": [
+   254
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the northeast.\n \n> ",
+  "ts": "2026-10-31T06:30:08.125Z"
+ },
+ "sjo @58:ne#15": {
+  "tag": "sjo",
+  "cmd": "ne",
+  "step": 58,
+  "name": "x",
+  "id": 73,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   18,
+   27
+  ],
+  "after": [
+   18,
+   27
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 8,
+  "printedObjs": [
+   254
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the northeast.\n \n> ",
+  "ts": "2026-10-31T06:30:09.390Z"
+ },
+ "sjo @58:ne#16": {
+  "tag": "sjo",
+  "cmd": "ne",
+  "step": 58,
+  "name": "x",
+  "id": 74,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   19,
+   20
+  ],
+  "after": [
+   4,
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 8,
+  "printedObjs": [
+   254
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the northeast.\n \n> ",
+  "ts": "2026-10-31T06:30:10.568Z"
+ },
+ "sjo @58:x sonar#17": {
+  "tag": "sjo",
+  "cmd": "x sonar",
+  "step": 58,
+  "name": "x",
+  "id": 75,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   19,
+   20
+  ],
+  "after": [
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 1,
+  "printedObjs": [],
+  "text": "(I don't know the word \"x\".)\n \n> ",
+  "ts": "2026-10-31T06:30:11.147Z"
+ },
+ "sjo @58:ne#18": {
+  "tag": "sjo",
+  "cmd": "ne",
+  "step": 58,
+  "name": "x",
+  "id": 76,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   8,
+   10,
+   17,
+   18,
+   26
+  ],
+  "after": [
+   6,
+   8,
+   10,
+   17,
+   18,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 107,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 10,
+  "printedObjs": [
+   254,
+   230,
+   231
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the northeast.\nThe sonarscope warning light is flashing yellow! A ship is approaching!\nTip says, \"Hey, Codex, maybe you should look at the sonarscope.\"\nThe yellow light on the sonarscope continues to glow.\n \n> ",
+  "ts": "2026-10-31T06:30:12.270Z"
+ },
+ "sjo @58:ne#19": {
+  "tag": "sjo",
+  "cmd": "ne",
+  "step": 58,
+  "name": "x",
+  "id": 77,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   7,
+   22
+  ],
+  "after": [
+   7,
+   22
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 78,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 8,
+  "printedObjs": [
+   254
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the northeast.\nThe yellow light on the sonarscope continues to glow.\n \n> ",
+  "ts": "2026-10-31T06:30:13.291Z"
+ },
+ "sjo @58:ne#20": {
+  "tag": "sjo",
+  "cmd": "ne",
+  "step": 58,
+  "name": "x",
+  "id": 78,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   10,
+   18,
+   26
+  ],
+  "after": [
+   10,
+   18,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 107,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 7,
+  "printedObjs": [
+   254,
+   179,
+   47
+  ],
+  "text": "Okay, the SCIMITAR is still moving toward the northeast.\n \nYou and Tip are hurled from your seats as the SCIMITAR and the ship collide! The sub is up-ended and swept aside by the momentum of the ship. Thanks to the strength of your revolutionary hull design, the SCIMITAR is still okay, but its machinery is hopelessly damaged.\n \nBecause you didn't change heading or dive under the ship, you and Tip ",
+  "ts": "2026-10-31T06:30:13.879Z"
+ },
+ "sjo @58:ne#21": {
+  "tag": "sjo",
+  "cmd": "ne",
+  "step": 58,
+  "name": "x",
+  "id": 79,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   14,
+   17,
+   27
+  ],
+  "after": [
+   14,
+   17,
+   27
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 107,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:30:14.543Z"
+ },
+ "sjo @58:x sonar#22": {
+  "tag": "sjo",
+  "cmd": "x sonar",
+  "step": 58,
+  "name": "x",
+  "id": 80,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   19,
+   20
+  ],
+  "after": [
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:30:15.128Z"
+ },
+ "sjo @58:nw#23": {
+  "tag": "sjo",
+  "cmd": "nw",
+  "step": 58,
+  "name": "x",
+  "id": 81,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   17,
+   26
+  ],
+  "after": [
+   4,
+   17,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 84,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:30:15.701Z"
+ },
+ "sjo @58:nw#24": {
+  "tag": "sjo",
+  "cmd": "nw",
+  "step": 58,
+  "name": "x",
+  "id": 82,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   14,
+   17,
+   19
+  ],
+  "after": [
+   14,
+   17,
+   19
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 84,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:30:16.276Z"
+ },
+ "sjo @58:n#25": {
+  "tag": "sjo",
+  "cmd": "n",
+  "step": 58,
+  "name": "x",
+  "id": 83,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   27
+  ],
+  "after": [
+   27
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:30:16.847Z"
+ },
+ "sjo @58:n#26": {
+  "tag": "sjo",
+  "cmd": "n",
+  "step": 58,
+  "name": "x",
+  "id": 84,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   19,
+   20
+  ],
+  "after": [
+   4,
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:30:17.491Z"
+ },
+ "sjo @58:turn on autopilot#27": {
+  "tag": "sjo",
+  "cmd": "turn on autopilot",
+  "step": 58,
+  "name": "x",
+  "id": 85,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   10,
+   17,
+   18,
+   26
+  ],
+  "after": [
+   6,
+   10,
+   17,
+   18,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 89,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:30:18.076Z"
+ },
+ "sjo @58:set throttle to fast#28": {
+  "tag": "sjo",
+  "cmd": "set throttle to fast",
+  "step": 58,
+  "name": "x",
+  "id": 86,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   17
+  ],
+  "after": [
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 89,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:30:18.660Z"
+ },
+ "sjo @58:z#29": {
+  "tag": "sjo",
+  "cmd": "z",
+  "step": 58,
+  "name": "x",
+  "id": 87,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   14
+  ],
+  "after": [
+   14
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:30:19.238Z"
+ },
+ "sjo @58:yes#30": {
+  "tag": "sjo",
+  "cmd": "yes",
+  "step": 58,
+  "name": "x",
+  "id": 88,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   14,
+   18,
+   27
+  ],
+  "after": [
+   14,
+   18,
+   27
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 244,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:30:19.830Z"
+ },
+ "sjo @58:z#31": {
+  "tag": "sjo",
+  "cmd": "z",
+  "step": 58,
+  "name": "x",
+  "id": 89,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   4,
+   14,
+   19,
+   20
+  ],
+  "after": [
+   4,
+   14,
+   19,
+   20
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 253,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:30:20.407Z"
+ },
+ "sjo @58:yes#32": {
+  "tag": "sjo",
+  "cmd": "yes",
+  "step": 58,
+  "name": "x",
+  "id": 90,
+  "expect": 0,
+  "bit": 0,
+  "plan": "plan-sjo.json",
+  "planSha": "782d01df33c24e102602c5ca40ee5b8c5417c13fa038bed5f2d74c57124cd970",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   17
+  ],
+  "after": [
+   17
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 92,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T06:30:21.024Z"
+ }
+}

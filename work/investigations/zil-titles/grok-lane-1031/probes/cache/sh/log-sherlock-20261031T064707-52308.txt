@@ -1,0 +1,5 @@
+sherlock sh-openable @4 OPEN VIOLIN #207 FALSE "You could not possibly open the violin.\n \n> "
+sherlock sh-openable @4 OPEN SOFA #239 FALSE "You could not possibly open the sofa.\n \n> "
+sherlock sh-openable @4 OPEN MAIL #203 NOTEST "You should not read other people's mail.\n \n> "
+sherlock sh-openable @4 OPEN BLACK BAG #172 TRUE "You open the black bag.\nInside you see a brown bottle and a blue bottle.\n \n> "
+sherlock sh-openable @19 OPEN MATCHBOOK #236 NOTEST "You cannot see any matchbook here.\n \n> "

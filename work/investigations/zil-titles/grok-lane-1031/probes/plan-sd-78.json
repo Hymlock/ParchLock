@@ -1,0 +1,17 @@
+{
+    "key":  "seastalker",
+    "game":  "Seastalker.z3.js",
+    "bit":  0,
+    "tmpl":  "s",
+    "tag":  "sd78",
+    "note":  "route sanity",
+    "tests":  [
+                  {
+                      "id":  78,
+                      "name":  "x",
+                      "step":  78,
+                      "expect":  0,
+                      "cmd":  "ne"
+                  }
+              ]
+}

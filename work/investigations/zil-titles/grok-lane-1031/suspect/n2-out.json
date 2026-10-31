@@ -1,0 +1,2748 @@
+{
+  "game": "Suspect.z3.js",
+  "route": "suspect",
+  "n": 0,
+  "seed": 0,
+  "wornBit": 5,
+  "pattern": "^food$|overcoat|gunbelt|western mask|notebook",
+  "extra": [
+    "look",
+    "eat food",
+    "i",
+    "wear coat",
+    "i",
+    "remove coat",
+    "i",
+    "wear coat",
+    "light pen",
+    "turn on notebook",
+    "light notebook",
+    "turn on lamp"
+  ],
+  "log": [
+    {
+      "step": "after-route",
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 38,
+            "name": "western mask",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 74,
+            "name": "wet overcoat",
+            "chain": [
+              "80:Alicia"
+            ],
+            "worn": false
+          },
+          {
+            "id": 93,
+            "name": "reporter's overcoat",
+            "chain": [
+              "205:East Coat Closet",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 94,
+            "name": "notebook",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 96,
+            "name": "gunbelt",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 143,
+            "name": "food",
+            "chain": [
+              "248:",
+              "246:"
+            ],
+            "worn": false
+          }
+        ]
+      }
+    },
+    {
+      "step": "seedmove",
+      "res": {
+        "moved": 93,
+        "into": 99
+      },
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 38,
+            "name": "western mask",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 74,
+            "name": "wet overcoat",
+            "chain": [
+              "80:Alicia"
+            ],
+            "worn": false
+          },
+          {
+            "id": 93,
+            "name": "reporter's overcoat",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 94,
+            "name": "notebook",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 96,
+            "name": "gunbelt",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 143,
+            "name": "food",
+            "chain": [
+              "248:",
+              "246:"
+            ],
+            "worn": false
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "look",
+      "reply": ">look\nBallroom, Near Bar\nThis is the south end of the ballroom, at the bar.\nElsewhere in this large ballroom, there are scores of other party guests dressed in all sorts of outlandish costumes. On the dance floor are some of the older dancers. The band is playing \"Breathless.\"\nOn the periphery of the room small groups can be seen, discussing everything from politics to local scandals.\nThe bartender is busy behind the bar, his only concession to the party a small domino mask.\nSamuel Ostmann, enjoying himself hugely as a vampire, is here.\n \nThe sheik, seeing your reluctance to join them, shrugs his shoulders and rejoins the conversation, a proprietary hand on the fairy's shoulder.\n \n> \n➤\n🎤\nSuspect\nAn Interactive Mystery\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nNear Bar\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNear BarDance FloorNear FireplaceNear French Door\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 38,
+            "name": "western mask",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 74,
+            "name": "wet overcoat",
+            "chain": [
+              "80:Alicia"
+            ],
+            "worn": false
+          },
+          {
+            "id": 93,
+            "name": "reporter's overcoat",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 94,
+            "name": "notebook",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 96,
+            "name": "gunbelt",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 143,
+            "name": "food",
+            "chain": [
+              "248:",
+              "246:"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": [
+        [
+          143,
+          "notInPayload",
+          []
+        ],
+        [
+          93,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "examine overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "search overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "empty overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "close overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "drop overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "give overcoat to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "put overcoat in ",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          96,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "examine gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "remove gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "search gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "empty gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "close gunbelt",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          38,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "examine mask",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "remove mask",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          94,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "examine notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "drop notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "give notebook to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "put notebook in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "eat food",
+      "reply": ">eat food\nNot bad. Obviously Veronica found a good caterer.\n \nOff near the fireplace, the sheik and the fairy queen are conversing with a small group. The fairy is emphasizing some point when suddenly, she manages to spill her drink on her gown. Her reaction is audible even where you are standing, and she stalks off.\n \n> \n➤\n🎤\nSuspect\nAn Interactive Mystery\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nNear Bar\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNear BarDance FloorNear FireplaceNear French Door\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 38,
+            "name": "western mask",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 74,
+            "name": "wet overcoat",
+            "chain": [
+              "80:Alicia"
+            ],
+            "worn": false
+          },
+          {
+            "id": 93,
+            "name": "reporter's overcoat",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 94,
+            "name": "notebook",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 96,
+            "name": "gunbelt",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 143,
+            "name": "food",
+            "chain": [
+              "248:",
+              "246:"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": [
+        [
+          143,
+          "notInPayload",
+          []
+        ],
+        [
+          93,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "examine overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "search overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "empty overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "close overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "drop overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "give overcoat to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "put overcoat in ",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          96,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "examine gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "remove gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "search gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "empty gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "close gunbelt",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          38,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "examine mask",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "remove mask",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          94,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "examine notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "drop notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "give notebook to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "put notebook in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "i",
+      "reply": ">i\nYou are carrying:\n  a reporter's overcoat\n  a costume receipt\n  a western mask (being worn)\n  a notebook\n  a pen\n  a gunbelt (being worn)\nThe fairy queen is now near the south entrance.\n \n> \n➤\n🎤\nSuspect\nAn Interactive Mystery\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nNear Bar\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNear BarDance FloorNear FireplaceNear French Door\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 38,
+            "name": "western mask",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 74,
+            "name": "wet overcoat",
+            "chain": [
+              "80:Alicia"
+            ],
+            "worn": false
+          },
+          {
+            "id": 93,
+            "name": "reporter's overcoat",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 94,
+            "name": "notebook",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 96,
+            "name": "gunbelt",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 143,
+            "name": "food",
+            "chain": [
+              "248:",
+              "246:"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": [
+        [
+          143,
+          "notInPayload",
+          []
+        ],
+        [
+          93,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "examine overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "search overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "empty overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "close overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "drop overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "give overcoat to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "put overcoat in ",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          96,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "examine gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "remove gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "search gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "empty gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "close gunbelt",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          38,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "examine mask",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "remove mask",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          94,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "examine notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "drop notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "give notebook to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "put notebook in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "wear coat",
+      "reply": ">wear coat\nOkay.\nThe fairy queen leaves the ballroom.\n \n> \n➤\n🎤\nSuspect\nAn Interactive Mystery\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nNear Bar\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNear BarDance FloorNear FireplaceNear French Door\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 38,
+            "name": "western mask",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 74,
+            "name": "wet overcoat",
+            "chain": [
+              "80:Alicia"
+            ],
+            "worn": false
+          },
+          {
+            "id": 93,
+            "name": "reporter's overcoat",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 94,
+            "name": "notebook",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 96,
+            "name": "gunbelt",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 143,
+            "name": "food",
+            "chain": [
+              "248:",
+              "246:"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": [
+        [
+          143,
+          "notInPayload",
+          []
+        ],
+        [
+          93,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "examine overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "remove overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "search overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "empty overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "close overcoat",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          96,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "examine gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "remove gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "search gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "empty gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "close gunbelt",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          38,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "examine mask",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "remove mask",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          94,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "examine notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "drop notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "give notebook to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "put notebook in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "i",
+      "reply": ">i\nYou are carrying:\n  a reporter's overcoat (being worn)\n  a costume receipt\n  a western mask (being worn)\n  a notebook\n  a pen\n  a gunbelt (being worn)\n \n> \n➤\n🎤\nSuspect\nAn Interactive Mystery\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nNear Bar\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNear BarDance FloorNear FireplaceNear French Door\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 38,
+            "name": "western mask",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 74,
+            "name": "wet overcoat",
+            "chain": [
+              "80:Alicia"
+            ],
+            "worn": false
+          },
+          {
+            "id": 93,
+            "name": "reporter's overcoat",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 94,
+            "name": "notebook",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 96,
+            "name": "gunbelt",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 143,
+            "name": "food",
+            "chain": [
+              "248:",
+              "246:"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": [
+        [
+          143,
+          "notInPayload",
+          []
+        ],
+        [
+          93,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "examine overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "remove overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "search overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "empty overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "close overcoat",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          96,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "examine gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "remove gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "search gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "empty gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "close gunbelt",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          38,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "examine mask",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "remove mask",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          94,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "examine notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "drop notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "give notebook to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "put notebook in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "remove coat",
+      "reply": ">remove coat\nOkay, you're no longer wearing the reporter's overcoat.\n \n> \n➤\n🎤\nSuspect\nAn Interactive Mystery\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nNear Bar\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNear BarDance FloorNear FireplaceNear French Door\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 38,
+            "name": "western mask",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 74,
+            "name": "wet overcoat",
+            "chain": [
+              "80:Alicia"
+            ],
+            "worn": false
+          },
+          {
+            "id": 93,
+            "name": "reporter's overcoat",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 94,
+            "name": "notebook",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 96,
+            "name": "gunbelt",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 143,
+            "name": "food",
+            "chain": [
+              "248:",
+              "246:"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": [
+        [
+          143,
+          "notInPayload",
+          []
+        ],
+        [
+          93,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "examine overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "search overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "empty overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "close overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "drop overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "give overcoat to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "put overcoat in ",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          96,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "examine gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "remove gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "search gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "empty gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "close gunbelt",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          38,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "examine mask",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "remove mask",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          94,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "examine notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "drop notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "give notebook to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "put notebook in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "i",
+      "reply": ">i\nYou are carrying:\n  a reporter's overcoat\n  a costume receipt\n  a western mask (being worn)\n  a notebook\n  a pen\n  a gunbelt (being worn)\n \n> \n➤\n🎤\nSuspect\nAn Interactive Mystery\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nNear Bar\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNear BarDance FloorNear FireplaceNear French Door\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 38,
+            "name": "western mask",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 74,
+            "name": "wet overcoat",
+            "chain": [
+              "80:Alicia"
+            ],
+            "worn": false
+          },
+          {
+            "id": 93,
+            "name": "reporter's overcoat",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 94,
+            "name": "notebook",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 96,
+            "name": "gunbelt",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 143,
+            "name": "food",
+            "chain": [
+              "248:",
+              "246:"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": [
+        [
+          143,
+          "notInPayload",
+          []
+        ],
+        [
+          93,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "examine overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "search overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "empty overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "close overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "drop overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "give overcoat to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "put overcoat in ",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          96,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "examine gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "remove gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "search gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "empty gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "close gunbelt",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          38,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "examine mask",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "remove mask",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          94,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "examine notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "drop notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "give notebook to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "put notebook in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "wear coat",
+      "reply": ">wear coat\nOkay.\n \n> \n➤\n🎤\nSuspect\nAn Interactive Mystery\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nNear Bar\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNear BarDance FloorNear FireplaceNear French Door\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 38,
+            "name": "western mask",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 74,
+            "name": "wet overcoat",
+            "chain": [
+              "80:Alicia"
+            ],
+            "worn": false
+          },
+          {
+            "id": 93,
+            "name": "reporter's overcoat",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 94,
+            "name": "notebook",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 96,
+            "name": "gunbelt",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 143,
+            "name": "food",
+            "chain": [
+              "248:",
+              "246:"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": [
+        [
+          143,
+          "notInPayload",
+          []
+        ],
+        [
+          93,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "examine overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "remove overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "search overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "empty overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "close overcoat",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          96,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "examine gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "remove gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "search gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "empty gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "close gunbelt",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          38,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "examine mask",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "remove mask",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          94,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "examine notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "drop notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "give notebook to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "put notebook in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "light pen",
+      "reply": ">light pen\nYou can't turn on the pen.\nAfter a short pause, the band begins to play \"My Way.\"\n \n> \n➤\n🎤\nSuspect\nAn Interactive Mystery\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nNear Bar\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNear BarDance FloorNear FireplaceNear French Door\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 38,
+            "name": "western mask",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 74,
+            "name": "wet overcoat",
+            "chain": [
+              "80:Alicia"
+            ],
+            "worn": false
+          },
+          {
+            "id": 93,
+            "name": "reporter's overcoat",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 94,
+            "name": "notebook",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 96,
+            "name": "gunbelt",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 143,
+            "name": "food",
+            "chain": [
+              "248:",
+              "246:"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": [
+        [
+          143,
+          "notInPayload",
+          []
+        ],
+        [
+          93,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "examine overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "remove overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "search overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "empty overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "close overcoat",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          96,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "examine gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "remove gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "search gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "empty gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "close gunbelt",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          38,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "examine mask",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "remove mask",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          94,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "examine notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "drop notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "give notebook to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "put notebook in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "turn on notebook",
+      "reply": ">turn on notebook\nYou can't turn on the notebook.\nThe Astronaut is now near the south entrance.\n \n> \n➤\n🎤\nSuspect\nAn Interactive Mystery\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nNear Bar\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNear BarDance FloorNear FireplaceNear French Door\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 38,
+            "name": "western mask",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 74,
+            "name": "wet overcoat",
+            "chain": [
+              "80:Alicia"
+            ],
+            "worn": false
+          },
+          {
+            "id": 93,
+            "name": "reporter's overcoat",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 94,
+            "name": "notebook",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 96,
+            "name": "gunbelt",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 143,
+            "name": "food",
+            "chain": [
+              "248:",
+              "246:"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": [
+        [
+          143,
+          "notInPayload",
+          []
+        ],
+        [
+          93,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "examine overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "remove overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "search overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "empty overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "close overcoat",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          96,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "examine gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "remove gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "search gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "empty gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "close gunbelt",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          38,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "examine mask",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "remove mask",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          94,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "examine notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "drop notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "give notebook to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "put notebook in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "light notebook",
+      "reply": ">light notebook\nYou can't turn on the notebook.\nThe Astronaut is now near the center entrance.\n \n> \n➤\n🎤\nSuspect\nAn Interactive Mystery\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nNear Bar\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNear BarDance FloorNear FireplaceNear French Door\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 38,
+            "name": "western mask",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 74,
+            "name": "wet overcoat",
+            "chain": [
+              "80:Alicia"
+            ],
+            "worn": false
+          },
+          {
+            "id": 93,
+            "name": "reporter's overcoat",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 94,
+            "name": "notebook",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 96,
+            "name": "gunbelt",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 143,
+            "name": "food",
+            "chain": [
+              "248:",
+              "246:"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": [
+        [
+          143,
+          "notInPayload",
+          []
+        ],
+        [
+          93,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "examine overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "remove overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "search overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "empty overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "close overcoat",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          96,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "examine gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "remove gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "search gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "empty gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "close gunbelt",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          38,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "examine mask",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "remove mask",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          94,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "examine notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "drop notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "give notebook to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "put notebook in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd": "turn on lamp",
+      "reply": ">turn on lamp\nSorry, but the word \"lamp\" is not in the vocabulary you can use.\n \n> \n➤\n🎤\nSuspect\nAn Interactive Mystery\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n4 rooms / 4 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nNear Bar\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nNear BarDance FloorNear FireplaceNear French Door\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "118:Near Bar",
+        "objs": [
+          {
+            "id": 38,
+            "name": "western mask",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 74,
+            "name": "wet overcoat",
+            "chain": [
+              "80:Alicia"
+            ],
+            "worn": false
+          },
+          {
+            "id": 93,
+            "name": "reporter's overcoat",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 94,
+            "name": "notebook",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 96,
+            "name": "gunbelt",
+            "chain": [
+              "99:reporter",
+              "118:Near Bar",
+              "255:"
+            ],
+            "worn": true
+          },
+          {
+            "id": 143,
+            "name": "food",
+            "chain": [
+              "248:",
+              "246:"
+            ],
+            "worn": false
+          }
+        ]
+      },
+      "radial": [
+        [
+          143,
+          "notInPayload",
+          []
+        ],
+        [
+          93,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "examine overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "remove overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "search overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "empty overcoat",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "overcoat",
+              "objectId": 93,
+              "command": "close overcoat",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          96,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "examine gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "remove gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "search",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "search gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "empty",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "empty gunbelt",
+              "confidence": 0.9
+            },
+            {
+              "verb": "close",
+              "noun": "gunbelt",
+              "objectId": 96,
+              "command": "close gunbelt",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          38,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "examine mask",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "remove mask",
+              "confidence": 0.9
+            }
+          ]
+        ],
+        [
+          94,
+          "inPayload",
+          [
+            {
+              "verb": "examine",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "examine notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "drop notebook",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "give notebook to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "notebook",
+              "objectId": 94,
+              "command": "put notebook in ",
+              "confidence": 0.9
+            }
+          ]
+        ]
+      ]
+    }
+  ],
+  "ts": "2026-10-31T17:23:01.138Z"
+}

@@ -1,0 +1,32 @@
+{
+ "ss93 @93:look#0": {
+  "tag": "ss93",
+  "id": 93,
+  "name": "x",
+  "step": 93,
+  "expect": 0,
+  "cmd": "look",
+  "bit": 0,
+  "plan": "plan-ss-93.json",
+  "planSha": "90738b7865fdde6a9f2f2dd38602a60e98e43071ae1dcfef630eabb9ca05f2ce",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   17,
+   30
+  ],
+  "after": [
+   17,
+   30
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 207,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 0,
+  "printedObjs": [],
+  "text": "(Type RESTORE, RESTART, or QUIT.) > ",
+  "ts": "2026-10-31T04:02:11.581Z"
+ }
+}

@@ -1,0 +1,1 @@
+seastalker sx160 @160 look #160 NOTEST "(Type RESTORE, RESTART, or QUIT.) > "

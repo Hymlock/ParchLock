@@ -1,0 +1,4 @@
+sherlock sh-person @4 LOOK IN HOLMES #293 TRUE "You're a general practitioner, not a surgeon.\n \n> "
+sherlock sh-person @4 LOOK IN VIOLIN #207 FALSE "You cannot look inside a violin.\n \n> "
+sherlock sh-person @26 LOOK IN GUARD #155 NOTEST "You cannot see any guard here.\n \n> "
+sherlock sh-person @26 LOOK IN DOG #147 NOTEST "You cannot see any dog here.\n \n> "

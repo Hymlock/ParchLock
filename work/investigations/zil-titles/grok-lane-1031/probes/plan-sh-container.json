@@ -1,0 +1,45 @@
+{
+ "tag": "sh-container",
+ "game": "Sherlock.z5.js",
+ "key": "sherlock",
+ "bit": 9,
+ "tmpl": "s",
+ "note": "grok Sherlock lane native",
+ "tests": [
+  {
+   "cmd": "LOOK IN PERSIAN SLIPPER",
+   "step": 4,
+   "name": "look in persian slipper",
+   "id": 228,
+   "expect": 1
+  },
+  {
+   "cmd": "LOOK IN PIPE",
+   "step": 4,
+   "name": "look in pipe",
+   "id": 218,
+   "expect": 1
+  },
+  {
+   "cmd": "LOOK IN BLACK BAG",
+   "step": 4,
+   "name": "look in black bag",
+   "id": 172,
+   "expect": 1
+  },
+  {
+   "cmd": "LOOK IN SOFA",
+   "step": 4,
+   "name": "look in sofa",
+   "id": 239,
+   "expect": 0
+  },
+  {
+   "cmd": "LOOK IN MANTELPIECE",
+   "step": 4,
+   "name": "look in mantelpiece",
+   "id": 292,
+   "expect": 0
+  }
+ ]
+}

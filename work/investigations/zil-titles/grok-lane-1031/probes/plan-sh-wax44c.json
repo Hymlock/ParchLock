@@ -1,0 +1,38 @@
+{
+    "tag":  "sh-transp",
+    "game":  "Sherlock.z5.js",
+    "key":  "sherlock",
+    "bit":  2,
+    "tmpl":  "s",
+    "note":  "grok Sherlock lane native; single-run group; all @44 after MELT HEAD: wax pool 179 (charles.zil FSETs TRANSPARENT), magnifying glass 270 as PRSI with a gem PRSO (glass action RFALSEs for gems), pipe negative",
+    "tests":  [
+                  {
+                      "cmd":  "EXAMINE TORCH THROUGH POOL",
+                      "step":  44,
+                      "name":  "examine torch through pool",
+                      "id":  179,
+                      "expect":  1
+                  },
+                  {
+                      "cmd":  "EXAMINE EMERALD THROUGH GLASS",
+                      "step":  44,
+                      "name":  "examine emerald through glass",
+                      "id":  270,
+                      "expect":  1
+                  },
+                  {
+                      "cmd":  "EXAMINE TORCH THROUGH GLASS",
+                      "step":  44,
+                      "name":  "examine torch through glass (control)",
+                      "id":  270,
+                      "expect":  1
+                  },
+                  {
+                      "cmd":  "EXAMINE POOL THROUGH PIPE",
+                      "step":  44,
+                      "name":  "examine pool through pipe",
+                      "id":  218,
+                      "expect":  0
+                  }
+              ]
+}

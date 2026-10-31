@@ -1,0 +1,556 @@
+﻿1 p0 "compass" 2
+2 p1 "north wall" 17
+3 p1 "south wall" 17
+4 p1 "east wall" 17
+5 p1 "west wall" 17
+6 p1 "northeast wall" 17
+7 p1 "southeast wall" 17
+8 p1 "northwest wall" 17
+9 p1 "southwest wall" 17
+10 p1 "ceiling" 17
+11 p1 "floor" 17
+12 p1 "outside" 17
+13 p1 "inside" 17
+14 p0 "Darkness" 
+15 p0 "yourself" 0,2,16,23
+16 p0 "Graveyard" 9
+17 p16 "Uncle Henry's grave" 3,14,16,19
+18 p16 "group of mourners" 0
+19 p0 "black canvas bag" 3,14,15
+20 p0 "curious envelope" 
+21 p0 "strange man" 0
+22 p0 "perfectly written letter" 
+23 p0 "plain wooden box" 3,11,15
+24 p23 "credit card" 
+25 p0 "Recently Dug Grave" 9
+26 p25 "black coffin" 3,15,19
+27 p25 "simple plaque" 2,19
+28 p25 "short length of black ribbon" 17,18
+29 p26 "Uncle Henry's corpse" 16,19,22,23
+30 p29 "black leather shoes" 2,19
+31 p0 "glass cutter" 18,28
+32 p0 "Church" 9
+33 p32 "church organ" 19,23
+34 p33 "first key" 17
+35 p33 "second key" 17
+36 p33 "third key" 17
+37 p33 "fourth key" 17
+38 p33 "fifth key" 17
+39 p33 "sixth key" 17
+40 p33 "seventh key" 17
+41 p0 "Altar" 9
+42 p41 "dark stone altar" 17,20
+43 p41 "stained glass window" 17,29
+44 p0 "piece of red glass" 18,29
+45 p42 "wooden cane" 
+46 p0 "short stick of wood" 
+47 p0 "wooden crucifix" 
+48 p0 "Priest's Quarters" 9
+49 p48 "tall statue" 17
+50 p48 "deep hole" 3,14,19
+51 p48 "statue's eye" 2,17,23
+52 p0 "aged canvas painting" 19
+53 p0 "Main Street" 9
+54 p0 "Industrial District" 9
+55 p54 "old fairground machine" 19,23
+56 p54 "coin collection device" 17
+57 p54 "small compartment" 3,10,11,15,17
+58 p57 "glass sphere" 29
+59 p0 "shiny steel key" 
+60 p55 "coloured balls" 17
+61 p55 "glass case" 19,29
+62 p55 "mechanical arm" 18
+63 p0 "Scrapyard" 9
+64 p63 "heavy duty crane" 19
+65 p63 "metal ladder" 17
+66 p63 "iron bar" 17,18
+67 p0 "Rubbish Tip" 9
+68 p67 "clear piece of polythene" 
+69 p0 "Outside Warehouse" 9
+70 p69 "wooden packing crate" 17
+71 p69 "dirty coil of rope" 
+72 p0 "Town Centre" 9
+73 p72 "jewellers store" 4,6,10,14,15,19
+74 p0 "Jewellers" 9
+75 p74 "secure counter" 3,15,17,23,29
+76 p74 "store owner" 0
+77 p0 "alarm system switch" 17
+78 p0 "fire exit" 4,15,19
+79 p75 "Python's Eye" 16
+80 p0 "Side Street" 9
+81 p0 "Town Outskirts" 9
+82 p81 "shady man" 0
+83 p0 "Park Entrance" 9
+84 p0 "Riverside" 9
+85 p84 "fast flowing river" 3,14
+86 p0 "Flower Beds" 9
+87 p86 "flower beds" 17,30
+88 p0 "bunch of flowers" 18,23,30
+89 p0 "Downstream" 9
+90 p89 "fast flowing river" 3,14
+91 p0 "Estate" 9
+92 p0 "Lobby" 9
+93 p92 "landlady" 0,7,29
+94 p0 "Landing" 9
+95 p94 "tokens of respect" 17,23
+96 p0 "solid looking door" 4,6,10,11,15,19
+97 p0 "very thin gap" 2,17
+98 p0 "Uncle Henry's Flat" 9
+99 p98 "comfy armchair" 6,17
+100 p98 "cuckoo clock" 17,23
+101 p100 "shiny brass hour hand" 2,17
+102 p100 "shiny brass minute hand" 2,17
+103 p98 "armchair's cushion" 2,19
+104 p0 "Kitchen" 9
+105 p104 "dirty rear window" 15,19,29
+106 p104 "weird looking oven" 17,23
+107 p106 "central dial" 19
+108 p106 "red button" 19
+109 p106 "green button" 19
+110 p106 "nasty looking lever" 19
+111 p0 "cheap imitation jewel" 29
+112 p104 "tiny metal tray" 2,3,14,17
+113 p0 "wooden ledge" 2,17,23
+114 p0 "secret doorway" 4,14,19
+115 p0 "Memorabilia Room" 9,18
+116 p115 "beautiful scale model" 17
+117 p115 "replica of the Mona Lisa" 19
+118 p0 "metal hook" 19,20
+119 p0 "illuminated structure" 19
+120 p0 "Dark Alleyway" 9
+121 p120 "dirty rear window" 6,15,17
+122 p120 "council refuse bin" 3,14,17,23
+123 p122 "pair of surgical gloves" 1,18
+124 p19 "silver picture frame" 3,14
+125 p0 "itemstore" 
+126 p124 "student's photo" 27
+127 p0 "boy's photo" 18,27
+128 p0 "girl's photo" 18,27
+129 p0 "statue's photo" 18,27
+130 p0 "medal's photo" 18,27
+131 p0 "musician's photo" 18,27
+132 p0 "Observation Deck" 9
+133 p0 "Main Deck" 9
+134 p0 "Recreation Deck" 9
+135 p134 "Victorian style lamppost" 17
+136 p134 "rack of sunbeds" 17
+137 p134 "pieces of wire" 2,17
+138 p0 "piece of rusty wire" 18
+139 p0 "Swimming Pool" 9
+140 p139 "swimming pool" 19
+141 p139 "waiter's uniform" 1
+142 p139 "young couple" 0,17
+143 p0 "Starboard deck" 9
+144 p143 "emergency cabinet" 3,10,11,15,19
+145 p144 "can of oil" 31
+146 p144 "emergency distress flare" 32
+147 p0 "Port Deck" 9
+148 p147 "safety railings" 2,17
+149 p147 "lifebelts" 17
+150 p147 "old wooden lifeboat" 19
+151 p0 "wooden pole" 18
+152 p0 "Lifeboat" 9,18
+153 p152 "sheet of black cloth" 
+154 p152 "weak supporting rope" 17
+155 p152 "metal hull" 2,17
+156 p0 "Below Decks" 9
+157 p0 "Lounge" 9
+158 p157 "coffee table" 19,20
+159 p157 "hardwood chair" 6,17
+160 p157 "white haired man" 0,17,23
+161 p160 "deck of playing cards" 
+162 p0 "face down card" 
+163 p158 "bottle of champagne" 
+164 p0 "Cocktail Bar" 9
+165 p164 "silver tray" 20
+166 p0 "Dance Floor" 9
+167 p166 "ship's captain" 0
+168 p166 "richly dressed lady" 0,7,23
+169 p0 "glass of brandy" 
+170 p0 "Plush Corridor" 9
+171 p0 "End Of Corridor" 9
+172 p171 "memorial" 17,23
+173 p172 "bronze urn" 3,14,18
+174 p0 "Outside Cabin" 9
+175 p0 "impressive cabin door" 4,10,11,15,17
+176 p0 "First Class Cabin" 9,18
+177 p176 "four poster bed" 17
+178 p176 "bedside table" 17,20
+179 p176 "wardrobe" 3,15,19
+180 p179 "evening dress" 1
+181 p0 "Countess Venina" 0,7,16,17
+182 p0 "Captain's Cabin" 9,18
+183 p182 "ship's captain" 0,23
+184 p0 "glass of red wine" 
+185 p0 "Bathroom" 9
+186 p185 "wall cupboard" 3,15,19
+187 p186 "sleeping pill" 5
+188 p186 "hypodermic syringe" 
+189 p0 "Study" 9
+190 p189 "captain's desk" 17,20
+191 p189 "portrait of a naval commander" 17
+192 p0 "gold fountain pen" 18
+193 p0 "solidly built steel safe" 3,10,11,15,19
+194 p193 "hollow metallic square" 18,33
+195 p0 "large keyhole" 3,14,17
+196 p0 "Clifftop" 9
+197 p0 "Narrow Road" 9
+198 p197 "abandoned car" 19
+199 p197 "trunk" 3,15,17
+200 p197 "battered engine" 17,23
+201 p199 "cracked magnetic compass" 
+202 p0 "metal needle" 
+203 p199 "transparent plastic rod" 
+204 p200 "fan belt" 18
+205 p0 "Grasslands" 9
+206 p205 "patch of grassland" 17
+207 p0 "pirate's cutlass" 23
+208 p207 "golden handle" 17
+209 p0 "skeleton key" 18
+210 p0 "Lighthouse" 9
+211 p0 "Lamp Tower" 9
+212 p211 "massive electric lamp" 19,23
+213 p0 "beam of blinding yellow light" 19
+214 p0 "Basement" 9
+215 p214 "electricity generator" 19,23
+216 p0 "Beach" 9
+217 p216 "large rock" 
+218 p0 "Sheltered Cove" 9
+219 p218 "cave entrance" 4,14,19
+220 p218 "rock formation" 2,17,20
+221 p218 "clumps of seaweed" 2,17
+222 p0 "curved piece of glass" 18
+223 p0 "Cavern" 
+224 p223 "waterfall" 19
+225 p223 "large crack" 17
+226 p0 "pirate's treasure chest" 3,10,11,15,19
+227 p226 "small leather pouch" 3,15
+228 p226 "torn scrap of parchment" 
+229 p226 "red gemstone" 34
+230 p227 "small amount of gunpowder" 
+231 p0 "Cramped Space" 
+232 p231 "overhanging rock" 19,20
+233 p231 "loose stalactites" 17
+234 p0 "thin ray of sunlight" 9,19
+235 p0 "damp tunnel" 4,14,17
+236 p0 "Damp Tunnel" 
+237 p236 "skeleton" 19,23
+238 p236 "heavy iron door" 4,15,17
+239 p236 "wooden wheel" 17,23
+240 p239 "left lever" 17
+241 p239 "right lever" 17
+242 p239 "central lever" 17
+243 p237 "wooden leg" 
+244 p0 "Merciless Maria's Tomb" 
+245 p244 "Merciless Maria" 16,17,23
+246 p244 "tin pan" 3,14,19
+247 p245 "dusty eyepatch" 17
+248 p245 "Maria's mouth" 17,23
+249 p245 "gold ring" 17,23
+250 p249 "black gemstone" 34
+251 p0 "green gemstone" 34
+252 p0 "blue gemstone" 34
+253 p248 "white gemstone" 34
+254 p246 "hollow metallic circle" 18,33
+255 p0 "City Street" 9
+256 p255 "crowd of children" 0,17,23
+257 p256 "little boy" 0
+258 p0 "Foyer" 9
+259 p258 "security guard" 0,23
+260 p258 "alarm point" 17,23
+261 p259 "thermos flask" 3,15
+262 p0 "Information Desk" 9
+263 p262 "frustrated tourist" 0,23
+264 p262 "bowl of sweets" 19
+265 p262 "apologetic sign" 17
+266 p263 "cheap camera" 18
+267 p0 "colour photograph" 
+268 p0 "pink sweet" 5
+269 p0 "Exhibition Area" 9
+270 p269 "laser cannon" 19
+271 p0 "Main Corridor" 9
+272 p271 "collection of paintings" 17
+273 p0 "steel shutters" 19
+274 p0 "red curtain" 4,6,15,17
+275 p0 "Alcove" 9
+276 p275 "low powered lightbulb" 2,17
+277 p275 "suit of armour" 1
+278 p0 "detection device" 17,23
+279 p0 "South Balcony" 9
+280 p279 "museum tour guide" 0,7
+281 p0 "block of vanilla ice cream" 5
+282 p0 "Octagonal Chamber" 9
+283 p282 "display case" 3,15,17,23
+284 p283 "hollow metallic octagon" 18,33
+285 p0 "East Balcony" 9
+286 p285 "crossbow" 32
+287 p0 "night watchman" 0,23
+288 p287 "set of keys" 18
+289 p0 "West Balcony" 9
+290 p289 "pathetic wooden table" 17,20
+291 p289 "marble pillar" 17
+292 p289 "black cordon" 
+293 p289 "brass gong" 17
+294 p0 "North Balcony" 9
+295 p294 "security control box" 3,10,11,15,19
+296 p294 "glass display case" 2,17
+297 p294 "video camera" 17,23
+298 p295 "yellow button" 19
+299 p295 "blue button" 19
+300 p295 "red button" 19
+301 p295 "complicated meter" 19
+302 p0 "black cordon" 19
+303 p0 "Octagonal Chamber" 9,18
+304 p303 "glass display case" 3,11,15,17,23
+305 p304 "black cushion" 20
+306 p0 "Powerboat" 9
+307 p306 "combat helicopter" 17
+308 p306 "ocean waters" 6,17
+309 p306 "diving suit" 1
+310 p306 "enormous pile of fish" 2,17,23
+311 p0 "sampling device" 18
+312 p310 "old fishnet" 3,14
+313 p0 "Seabed" 18,35
+314 p0 "Underwater Junkyard" 35
+315 p314 "explosive sea mine" 
+316 p314 "steel container" 3,17
+317 p0 "trail of green liquid" 19
+318 p0 "Rocky Territory" 35
+319 p318 "algae coated rocks" 2,17
+320 p0 "dark passage" 4,6,14,19
+321 p0 "Underwater Cavern" 18,35
+322 p321 "reinforced wooden crate" 3,11,15
+323 p321 "dark passage" 4,6,14,17
+324 p322 "wire cutters" 18,28
+325 p322 "pair of connecting clips" 
+326 p0 "Coral Reefs" 35
+327 p326 "ship's anchor" 28
+328 p0 "Shallows" 35
+329 p328 "extensive patch of reeds" 2,17,30
+330 p0 "hollow reed" 18
+331 p0 "metal ladder" 19
+332 p0 "Landing Area" 9
+333 p0 "Clearing" 9
+334 p333 "thick bushes" 6,17
+335 p333 "sharp thorns" 2,17,30
+336 p0 "black thorn" 
+337 p0 "thick muscled guard" 0,23
+338 p337 "military uniform" 1
+339 p0 "childish boxer shorts" 19
+340 p0 "digital wristwatch" 1
+341 p0 "Outer Perimeter" 9
+342 p0 "Military Compound" 9,18
+343 p342 "security door" 4,10,11,15,19
+344 p0 "Power Room" 9
+345 p344 "black cable" 19
+346 p344 "backup battery" 17
+347 p344 "power cutoff switch" 19
+348 p0 "Inner Perimeter" 9
+349 p348 "chain link fence" 19
+350 p0 "Centre Of Compound" 9,18
+351 p0 "metal grating" 4,6,15,19
+352 p0 "Ventilation Shaft" 9
+353 p352 "ventilation fan" 19,23
+354 p352 "disjoint piping" 2,17
+355 p0 "dusty piece of pipe" 
+356 p0 "Military Arsenal" 9,18
+357 p356 "arsenal inventory sign" 17
+358 p356 "marked drawer" 3,11,15,19
+359 p356 "left dial" 2,17
+360 p356 "right dial" 2,17
+361 p358 "black plastic box" 3,11,15,22
+362 p361 "hollow metallic triangle" 18,33
+363 p0 "Country Estate" 9
+364 p363 "wooden gate" 4,10,11,15,19,23
+365 p364 "bronze keyhole" 17
+366 p365 "bronze key" 
+367 p0 "Forest" 9
+368 p367 "large evergreen leaves" 2,17,30
+369 p0 "circular leaf" 18
+370 p0 "Quiet Glade" 9
+371 p370 "pile of brown leaves" 2,17
+372 p370 "cute grey squirrel" 0
+373 p0 "tungsten peg" 18
+374 p0 "Rear Garden" 9,18
+375 p0 "fierce guard dog" 0
+376 p0 "Corner Of Garden" 9
+377 p376 "beautiful stone fountain" 3,6,14,17
+378 p376 "stone cobra's head" 2,3,14,17,23
+379 p0 "green lightbulb" 19
+380 p377 "pool of water" 19
+381 p0 "guard dog's corpse" 
+382 p0 "Servant's Entrance" 9
+383 p0 "Kitchen" 9
+384 p383 "wooden table" 17,23
+385 p383 "uncooked meat" 
+386 p384 "wedge of cheddar cheese" 5
+387 p0 "loose peanuts" 2,17
+388 p0 "handful of peanuts" 5,18
+389 p0 "Side Of House" 9
+390 p0 "fancy window" 4,6,15,19
+391 p0 "round white button" 2,17
+392 p0 "Library" 9,18
+393 p392 "neatly written note" 
+394 p392 "bookshelves" 2,17
+395 p0 "secret door" 4,6,10,11,15,19
+396 p0 "Long Corridor" 9
+397 p0 "Drawing Room" 9
+398 p397 "box of severed human fingers" 17
+399 p397 "pool table" 19,20
+400 p399 "silver tipped walking cane" 
+401 p0 "Entrance Hall" 9
+402 p401 "front door" 4,6,15,17
+403 p401 "comfortable pink sofa" 2,6,17
+404 p0 "remote control" 18,23
+405 p404 "top button" 19
+406 p404 "middle button" 19
+407 p404 "bottom button" 19
+408 p0 "Security Control Room" 9
+409 p408 "fat security guard" 0,17
+410 p408 "colour television" 17
+411 p408 "large iron key" 
+412 p0 "Front Drive" 9
+413 p412 "shrubbery" 2,17
+414 p412 "black limousine" 6,17
+415 p412 "female bodyguard" 0,7
+416 p0 "Limousine Trunk" 9,18
+417 p416 "expensive violin" 
+418 p416 "trunk lid" 4,6,15,17
+419 p0 "Aircraft Hangar" 9
+420 p419 "hangar doors" 2,14,15,17
+421 p419 "grimy window" 2,17
+422 p419 "limousine trunk" 3,14,15,17
+423 p419 "unconscious woman" 0,7,23
+424 p419 "first aid kit" 3,15
+425 p423 "black tie" 1
+426 p423 "woman's face" 17
+427 p423 "silver hairpin" 1
+428 p424 "bandages" 1
+429 p424 "stethoscope" 1
+430 p0 "high powered sniping rifle" 18,23,32
+431 p430 "telescopic sight" 19
+432 p0 "Hangar Roof" 9
+433 p432 "man in dark glasses" 0,2
+434 p432 "short figure" 0,2,17
+435 p0 "Misty Airfield" 9
+436 p0 "villain's corpse" 19
+437 p0 "brown leather briefcase" 3,11,15
+438 p437 "hollow metallic hexagon" 18,33
+439 p0 "Abandoned Toy Factory" 9,18
+440 p0 "Supervisor's Office" 9
+441 p440 "bare wooden desk" 17,20
+442 p440 "battered drawer" 2,3,15,17
+443 p442 "pornographic poster" 
+444 p0 "rectangular hole" 2,3,14,17
+445 p444 "gas cylinder" 
+446 p444 "interface terminal" 18
+447 p0 "Production Line" 9
+448 p447 "automated machinery" 17,36
+449 p447 "input tray" 2,3,14,17
+450 p447 "reject tray" 2,3,14,17
+451 p447 "control panel" 19,23
+452 p451 "first slider" 19
+453 p451 "second slider" 19
+454 p451 "large green button" 19
+455 p0 "conveyor belt" 2,17,36
+456 p0 "safety glass" 17
+457 p0 "Packing Room" 9
+458 p457 "output tray" 2,3,14,17
+459 p457 "peculiar plastic booth" 6,17
+460 p0 "mechanical arm" 36
+461 p0 "aerosol spray" 32
+462 p0 "Storeroom" 9
+463 p462 "cardboard box" 3,15
+464 p463 "white cotton" 
+465 p463 "plastic throwing ring" 
+466 p463 "child's doll" 23
+467 p466 "doll's head" 19
+468 p0 "manhole cover" 4,6,15,17
+469 p0 "Sewer System" 9,18
+470 p469 "chalk arrows" 19
+471 p0 "End Of Tunnel" 9
+472 p471 "cracked red brickwork" 2,17
+473 p0 "plug socket" 19
+474 p0 "Car Park" 9
+475 p0 "parked car" 19,23
+476 p475 "glass window" 17
+477 p475 "rear view mirror" 17
+478 p475 "control lever" 17,23
+479 p475 "driver's seat" 17,20
+480 p479 "identity card" 
+481 p479 "tiny silver key" 
+482 p0 "tiny gold key" 
+483 p0 "Compstore" 9
+484 p0 "Information Superhighway" 9,18
+485 p484 "spinning shape" 19
+486 p484 "can of spray paint" 31,32
+487 p484 "glass tubes" 2,17
+488 p0 "grey doorway" 17
+489 p0 "Cubical Chamber" 9,18
+490 p489 "stone bust" 17,23
+491 p490 "raised symbol" 
+492 p490 "bust's eyes" 17
+493 p490 "bust's hair" 17
+494 p0 "National Depository" 9
+495 p494 "secretary" 0,7,17
+496 p494 "elevator" 17
+497 p0 "Elevator" 9
+498 p497 "depository manager" 0
+499 p0 "Outer Vault" 9
+500 p499 "red and white sign" 19
+501 p499 "massive titanium door" 4,6,11,15,19
+502 p499 "top slot" 2,3,14,17
+503 p499 "central slot" 2,3,14,17
+504 p499 "left slot" 2,3,14,17
+505 p499 "right slot" 2,3,14,17
+506 p499 "bottom slot" 2,3,14,17
+507 p0 "Inner Vault" 9
+508 p507 "central platform" 19,20
+509 p507 "web of laser beams" 17
+510 p507 "maintenance hatch" 3,11,15,17
+511 p507 "left keyhole" 3,14,17
+512 p507 "right keyhole" 3,14,17
+513 p510 "stopwatch" 17
+514 p510 "circular socket" 17
+515 p510 "red lever" 17
+516 p0 "Virtual Plane" 9,37,39
+517 p0 "Virtual Plane" 9,37,38
+518 p0 "Virtual Plane" 8,9,37,38
+519 p0 "Virtual Plane" 9,37,39
+520 p0 "Virtual Plane" 9,37,38
+521 p0 "Virtual Plane" 8,9,37,38
+522 p0 "Virtual Plane" 9,37,39
+523 p0 "Virtual Plane" 8,9,37,39
+524 p0 "Virtual Plane" 8,9,37,38
+525 p0 "Virtual Plane" 8,9,37,38
+526 p0 "Virtual Plane" 8,9,37,39
+527 p0 "Virtual Plane" 8,9,37,38
+528 p0 "Virtual Plane" 8,9,37,38
+529 p0 "Virtual Plane" 8,9,37,39
+530 p0 "Virtual Plane" 8,9,37,39
+531 p0 "Virtual Plane" 9,37,38
+532 p0 "Virtual Plane" 8,9,37,38
+533 p0 "Virtual Plane" 8,9,37,39
+534 p0 "Virtual Plane" 8,9,37,38
+535 p0 "Virtual Plane" 9,37,38
+536 p0 "Virtual Plane" 8,9,37,39
+537 p0 "Virtual Plane" 8,9,37,39
+538 p0 "Virtual Plane" 8,9,37,38
+539 p0 "Virtual Plane" 8,9,37,38
+540 p0 "Virtual Plane" 8,9,37,39
+541 p0 "Virtual Plane" 9,37,38
+542 p0 "Virtual Plane" 8,9,37,38
+543 p0 "Virtual Plane" 8,9,37,39
+544 p516 "grey tunnel" 6,19
+545 p0 "glowing sphere" 19
+546 p0 "yellow beam of light" 17
+547 p508 "Crown Jewels of Denario" 
+548 p0 "silver arrow" 
+549 p0 "jewel studded mace" 23
+550 p0 "loose emerald" 17
+551 p0 "golden crown" 23
+552 p551 "perfectly shaped diamond" 
+553 p0 "black opaque crystal" 
+554 p0 "escape tunnel" 4,6,14,19
+555 p0 "Escape Tunnel" 9,18
+objects 555 version 8

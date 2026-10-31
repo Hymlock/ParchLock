@@ -1,0 +1,318 @@
+{
+  "game": "Starcross.z3.js",
+  "route": "starcross",
+  "n": 22,
+  "seed": 0,
+  "wornBit": 24,
+  "pattern": "suit",
+  "extra": [
+    "wear tattered suit",
+    "remove tattered suit",
+    "i",
+    "wear tattered suit",
+    "take off suit",
+    "wear suit",
+    "remove suit",
+    "doff tattered suit"
+  ],
+  "log": [
+    {
+      "step": "after-route",
+      "state": {
+        "here": "198:Storage",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "169:weasel chieftain"
+            ],
+            "worn": false
+          }
+        ]
+      }
+    },
+    {
+      "step": "seedmove",
+      "res": {
+        "moved": 176,
+        "into": 198
+      },
+      "state": {
+        "here": "198:Storage",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "wear tattered suit",
+      "reply": ">wear tattered suit\nYou are now wearing the tattered old suit, which smells of alien.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nStorage\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "198:Storage",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": true
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "remove tattered suit",
+      "reply": ">remove tattered suit\nYou are no longer wearing the tattered suit.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nStorage\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "198:Storage",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "i",
+      "reply": ">i\nYou are carrying:\n  A safety line\n  A space suit\n  A tape library\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nStorage\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "198:Storage",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "wear tattered suit",
+      "reply": ">wear tattered suit\nYou are now wearing the tattered old suit, which smells of alien.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nStorage\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "198:Storage",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": true
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "take off suit",
+      "reply": ">take off suit\nWhich suit do you mean, the tattered suit or the space suit?\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nStorage\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "198:Storage",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": true
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "wear suit",
+      "reply": ">wear suit\nWhich suit do you mean, the tattered suit or the space suit?\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nStorage\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "198:Storage",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": true
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "remove suit",
+      "reply": ">remove suit\nWhich suit do you mean, the tattered suit or the space suit?\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nStorage\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "198:Storage",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": true
+          }
+        ]
+      }
+    },
+    {
+      "cmd": "doff tattered suit",
+      "reply": ">doff tattered suit\nI don't know the word 'doff'.\n \n> \n➤\n🎤\nStarcross\nINTERLOGIC Science Fiction\nBy Infocom\nMap controls\nCenter\n-\n100%\n+\nMaps\nReset Map\n3 rooms / 7 exits / 0 notes\nIN\nUP\nNW\nN\nNE\nW\nBridge\nStorage\nE\nSW\nS\nSE\nDOWN\nOUT\nKNOWN ROOMS\nLiving QuartersBridgeStorage\nNotes\nParchLock! build 75\nMenu",
+      "lineInput": true,
+      "state": {
+        "here": "198:Storage",
+        "objs": [
+          {
+            "id": 144,
+            "name": "space suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": false
+          },
+          {
+            "id": 176,
+            "name": "tattered suit",
+            "chain": [
+              "239:cretin",
+              "198:Storage",
+              "110:"
+            ],
+            "worn": true
+          }
+        ]
+      }
+    }
+  ],
+  "ts": "2026-10-31T16:42:35.962Z"
+}

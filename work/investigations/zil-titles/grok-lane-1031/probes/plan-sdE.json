@@ -1,0 +1,136 @@
+{
+    "tag":  "sdE",
+    "game":  "Seastalker.z3.js",
+    "key":  "seastalker",
+    "bit":  0,
+    "tmpl":  "s",
+    "note":  "jdD steps 82-99 replayed as tests to read output",
+    "tests":  [
+                  {
+                      "cmd":  "nw",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  82,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "nw",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  83,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "n",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  84,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "n",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  85,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "turn on autopilot",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  86,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "set throttle to fast",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  87,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "z",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  88,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "yes",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  89,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "z",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  90,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "yes",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  91,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "dock",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  92,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "z",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  93,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "open hatch",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  94,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "exit scimitar",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  95,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "n",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  96,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "n",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  97,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "n",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  98,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "open air supply system with tool",
+                      "step":  82,
+                      "name":  "x",
+                      "id":  99,
+                      "expect":  0
+                  }
+              ]
+}

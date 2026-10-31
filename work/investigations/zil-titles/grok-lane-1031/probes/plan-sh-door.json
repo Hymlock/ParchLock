@@ -1,0 +1,38 @@
+{
+ "tag": "sh-door",
+ "game": "Sherlock.z5.js",
+ "key": "sherlock",
+ "bit": 8,
+ "tmpl": "s",
+ "note": "grok Sherlock lane native",
+ "tests": [
+  {
+   "cmd": "KNOCK ON BEDROOM DOOR",
+   "step": 4,
+   "name": "knock on bedroom door",
+   "id": 104,
+   "expect": 1
+  },
+  {
+   "cmd": "KNOCK ON STUDY DOOR",
+   "step": 4,
+   "name": "knock on study door",
+   "id": 70,
+   "expect": 1
+  },
+  {
+   "cmd": "KNOCK ON PARLOUR DOOR",
+   "step": 19,
+   "name": "knock on parlour door",
+   "id": 102,
+   "expect": 1
+  },
+  {
+   "cmd": "KNOCK ON VIOLIN",
+   "step": 4,
+   "name": "knock on violin",
+   "id": 207,
+   "expect": 0
+  }
+ ]
+}

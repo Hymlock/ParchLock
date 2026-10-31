@@ -1,0 +1,440 @@
+﻿1 p0 "compass" 2
+2 p1 "north wall" 17
+3 p1 "south wall" 17
+4 p1 "east wall" 17
+5 p1 "west wall" 17
+6 p1 "northeast wall" 17
+7 p1 "southeast wall" 17
+8 p1 "northwest wall" 17
+9 p1 "southwest wall" 17
+10 p1 "ceiling" 17
+11 p1 "floor" 17
+12 p1 "outside" 17
+13 p1 "inside" 17
+14 p0 "Darkness" 
+15 p0 "yourself" 0,2,16,23
+16 p0 "Princess Street" 9
+17 p16 "cinema" 17
+18 p16 "marquee" 17
+19 p0 "digital wristwatch" 1,26
+20 p0 "black motorcycle" 19,23
+21 p20 "leather-clad rider" 0
+22 p0 "cellular phone" 22,23,27
+23 p22 "answer button" 19
+24 p22 "redial button" 19
+25 p22 "cutoff button" 19
+26 p0 "recently taken photograph" 
+27 p0 "Pennyworth Lane" 9
+28 p27 "paved stone walls" 17
+29 p0 "Apartment Entrance" 9
+30 p29 "doorbell" 17,22
+31 p29 "garden gnome" 3,15,19
+32 p29 "circular base" 2,17
+33 p0 "apartment door" 4,10,11,15,17,23
+34 p33 "peephole" 2,17
+35 p0 "apartment building" 2,17
+36 p31 "small metal key" 18
+37 p0 "Hallway" 9,18
+38 p37 "rows of pictures" 17
+39 p37 "coffee table" 19,20,28
+40 p39 "Joanna's telephone" 2,16,17,22,27,33
+41 p0 "enemy" 0,2,17
+42 p0 "masked intruder" 0
+43 p0 "Bedroom" 9
+44 p43 "ceiling fan" 2,17
+45 p43 "skylight" 2,17
+46 p43 "hanging plants" 17
+47 p0 "steel canister" 3,11,15
+48 p47 "sixth pad" 2,17
+49 p47 "fifth pad" 2,17
+50 p47 "fourth pad" 2,17
+51 p47 "third pad" 2,17
+52 p47 "second pad" 2,17
+53 p47 "first pad" 2,17
+54 p0 "nasty hook" 17
+55 p0 "thorny vine" 17
+56 p0 "Kitchen" 9
+57 p56 "washing machine" 2,17
+58 p56 "kitchen knife" 23,29,31
+59 p56 "hi-tech cooking oven" 3,15,19
+60 p59 "smouldering animal remains" 2,17
+61 p59 "yellow flames" 2,17,30
+62 p0 "burning photograph" 30
+63 p0 "Bathroom" 9
+64 p63 "Jacuzzi" 17
+65 p63 "tap" 19
+66 p63 "lever" 2,17
+67 p63 "silk garter" 2,17
+68 p0 "vial of blue liquid" 5,15
+69 p0 "Flashback room" 
+70 p0 "Stage" 9
+71 p70 "spotlights" 2,17
+72 p70 "governing body" 2,17,22
+73 p70 "crowd" 17,22
+74 p70 "professor" 0,17,23
+75 p0 "prize certificate" 28
+76 p0 "College Road" 9
+77 p76 "tall iron fencing" 17,23
+78 p76 "faded sign" 2,17,28
+79 p76 "young girl" 0,7
+80 p77 "iron railing" 18,31
+81 p0 "weathered oak tree" 19,23
+82 p0 "soft red ball" 17
+83 p0 "Lower Branches" 9
+84 p0 "Tony" 0,16
+85 p0 "Storeroom" 9
+86 p85 "wooden shelving" 6,17,20
+87 p85 "bare electrical wiring" 2,17,23
+88 p87 "lightbulb" 17
+89 p0 "shattered lightbulb" 19,23
+90 p89 "tungsten filament" 18
+91 p0 "screwdriver" 18,28
+92 p0 "coppery bracelet" 1,23,26
+93 p86 "thick barrelled key" 23
+94 p93 "outer hole" 3,14
+95 p93 "middle hole" 3,14
+96 p93 "inner hole" 3,14
+97 p0 "bronze prong" 34
+98 p0 "tungsten prong" 34
+99 p0 "iron prong" 34
+100 p0 "Workshop" 9
+101 p100 "grafitti" 2,17,28
+102 p100 "easels" 17
+103 p0 "sheet of tracing paper" 18,28
+104 p0 "staircase" 4,14,17
+105 p0 "Pottery Room" 9
+106 p105 "clay shards" 17
+107 p105 "kiln" 19
+108 p105 "clay mould" 2,3,14,17
+109 p105 "multitude of pipes" 2,17,23
+110 p109 "gas valve" 19
+111 p109 "water valve" 19
+112 p0 "molten metal" 
+113 p0 "Rear Corridor" 9
+114 p0 "Classroom 8" 9
+115 p114 "historical posters" 17,28
+116 p114 "slide projector" 17,23
+117 p116 "advance button" 19,28
+118 p116 "large black dial" 19
+119 p116 "small black dial" 19
+120 p0 "Classroom 12" 9
+121 p120 "stereo sound system" 17
+122 p0 "sheet of music" 28
+123 p0 "Main Corridor" 9
+124 p123 "notice boards" 17,23,28
+125 p124 "newspaper clipping" 19
+126 p0 "Central Hall" 9
+127 p126 "grandfather clock" 17,23,28
+128 p0 "iron spring" 18
+129 p0 "war memorial" 17,28
+130 p0 "stained glass window" 2,17
+131 p0 "Headmaster's Study" 9
+132 p131 "cracks" 2,17
+133 p131 "mahogany desk" 17,20
+134 p131 "goldfish bowl" 3,14,17
+135 p134 "piranha fish" 0,2,17
+136 p131 "severed hand" 2,3,14,17
+137 p0 "dead piranha" 2,19
+138 p133 "antiquated table lamp" 23,31
+139 p138 "bronze slot screw" 18
+140 p131 "drawer" 3,15,17
+141 p140 "out of date invoice" 18,28
+142 p0 "Cloakroom" 9
+143 p142 "seized up radiator" 17
+144 p142 "tanned leather satchel" 3,14,15
+145 p0 "Locker Room" 9
+146 p145 "titanium locker" 3,10,11,15,19,28
+147 p145 "round white sticker" 2,17
+148 p146 "perfume bottle" 19
+149 p0 "Canteen" 9
+150 p149 "refrigerator" 19
+151 p149 "plastic dispenser" 17,23
+152 p151 "blackcurrant juice" 19
+153 p151 "plastic tap" 19
+154 p0 "woman's head" 19,28
+155 p0 "Kitchens" 9
+156 p155 "cutting table" 2,17
+157 p155 "carved up corpse" 17,23
+158 p155 "uniform" 2,17
+159 p155 "freezer room door" 4,15,19
+160 p0 "Freezer Room, South End" 9
+161 p160 "icicles" 2,17
+162 p160 "conveyor belt" 17
+163 p160 "plastic bags" 17,23,28
+164 p0 "woman's body" 17
+165 p0 "Freezer Room, North End" 9
+166 p165 "aluminium hooks" 17
+167 p165 "freezer unit" 3,15,17
+168 p167 "ice" 19
+169 p0 "frozen body" 19,23
+170 p169 "appointment book" 
+171 p0 "Entrance Hall" 9
+172 p171 "coat of arms" 17
+173 p171 "college entrance" 4,11,15,17
+174 p0 "Trophy Room" 9
+175 p174 "team photographs" 17
+176 p174 "display case" 3,11,15,19,23
+177 p174 "electronic keypad" 2,17,33
+178 p0 "First Floor" 9
+179 p178 "elevated windows" 17
+180 p0 "Astronomy Lab" 9
+181 p180 "photographs" 17
+182 p180 "telescope tubes" 17
+183 p180 "globe" 3,11,15,19
+184 p180 "obsidian slab" 2,6,17,20
+185 p180 "concrete slab" 2,6,17,20
+186 p180 "lava slab" 2,6,17,20
+187 p180 "limestone slab" 2,6,17,20
+188 p180 "marble slab" 2,6,17,20
+189 p180 "granite slab" 2,6,17,20
+190 p0 "Laboratory Wing" 9
+191 p190 "computer equipment" 17
+192 p190 "animal cages" 17
+193 p190 "plastic containers" 17
+194 p190 "blackboard" 17,28
+195 p191 "dot matrix printout" 18,28
+196 p0 "torn graph paper" 28
+197 p0 "Electronics Lab" 9
+198 p197 "main workbench" 17
+199 p197 "wired explosive" 17
+200 p197 "switch box" 2,17,23
+201 p197 "set of lamps" 2,17,23
+202 p197 "circuit board" 2,17,23
+203 p197 "electronic scales" 2,17,20
+204 p197 "enter button" 17,19,28
+205 p197 "charge transfer tube" 17,23
+206 p205 "positive terminal" 17,20,23
+207 p205 "negative terminal" 17,20,23
+208 p206 "battery" 35
+209 p197 "cubic capacitor" 28,35
+210 p197 "spherical capacitor" 28,35
+211 p202 "microchip" 28,35
+212 p201 "red lamp" 19
+213 p201 "amber lamp" 19
+214 p201 "green lamp" 19
+215 p200 "circular switch" 19
+216 p200 "cross shaped switch" 19
+217 p200 "square shaped switch" 19
+218 p200 "octagonal switch" 19
+219 p0 "Optics Lab" 9
+220 p219 "lightbulbs" 17
+221 p219 "equipment cupboards" 17
+222 p219 "chandelier" 19,23
+223 p222 "outer circuit" 17
+224 p222 "inner circuit" 17
+225 p222 "top hemisphere" 3,14
+226 p222 "bottom left hemisphere" 3,14
+227 p222 "bottom right hemisphere" 3,14
+228 p222 "top left cone" 3,14
+229 p222 "top right cone" 3,14
+230 p222 "bottom cone" 3,14
+231 p222 "central pyramid" 3,11,15,19
+232 p0 "green plastic figurine" 18,32
+233 p183 "red plastic figurine" 18,32
+234 p136 "purple plastic figurine" 18,32
+235 p176 "yellow plastic figurine" 18,32
+236 p203 "orange plastic figurine" 18,32
+237 p146 "blue plastic figurine" 18,32
+238 p231 "brown plastic figurine" 18,32
+239 p0 "Stone Prices" 
+240 p0 "Metal Prices" 
+241 p0 "Sports Centre Annexe" 9
+242 p241 "plan of the city" 19,23
+243 p242 "Joanna's apartment" 2,16,17,23,38
+244 p242 "nightclub district" 2,17,23,38
+245 p242 "cinema" 2,17,23,38
+246 p242 "Saint Martins College" 2,16,17,23,38
+247 p242 "shopping precinct" 2,17,23,38
+248 p242 "office block" 2,17,23,38
+249 p242 "industrial zone" 2,17,23,38
+250 p241 "computer screen" 17,23
+251 p250 "silk tie icon" 19,37
+252 p250 "hunting knife icon" 19,37
+253 p250 "poison needle icon" 19,37
+254 p250 "welding torch icon" 19,37
+255 p250 "crossbow" 19,37
+256 p250 "question mark" 19,37
+257 p250 "katana" 19,37
+258 p241 "laser pistol" 31,36
+259 p241 "steel shutters" 19
+260 p0 "Central Hall" 9
+261 p260 "uncomfortable wooden chair" 6,17,20
+262 p260 "other pupils" 2,17
+263 p260 "grandfather clock" 2,17
+264 p260 "Joanna" 0,7,16
+265 p260 "Colin" 0,16,17
+266 p260 "Big Jim" 0,16,17
+267 p260 "Smith" 0,16,17
+268 p260 "examination desk" 2,17,20
+269 p268 "fountain pen" 
+270 p268 "examination paper" 28
+271 p268 "pack of mints" 5
+272 p0 "calculator" 17
+273 p0 "Chinese Restaurant" 9
+274 p273 "scenic fishtanks" 2,17
+275 p273 "Sarah" 0,7,16,23
+276 p273 "hard backed chair" 6,17,20
+277 p273 "table" 17,20
+278 p275 "sapphire brooch" 19
+279 p277 "your food" 19
+280 p0 "wine bottle" 
+281 p0 "crystal glass" 
+282 p0 "fortune cookie" 5
+283 p0 "Screen Four" 9
+284 p283 "aisle seat" 6,17
+285 p283 "cinema screen" 17
+286 p283 "film buffs" 0,17
+287 p0 "Foyer" 9
+288 p287 "movie posters" 17
+289 p287 "male toilets door" 17
+290 p0 "female toilets door" 17
+291 p0 "Female Toilets" 9,18
+292 p291 "mirrors" 17
+293 p291 "porcelain sink" 3,14,17
+294 p291 "toilet cubicle" 11,15,19,23
+295 p294 "indicator lock" 17
+296 p0 "nail file" 18,31
+297 p0 "Sarah" 0,7,16,17,23
+298 p297 "silk tie" 17
+299 p0 "screwed up paper" 17,18,28
+300 p0 "Poolside" 9
+301 p300 "ventilation shafts" 2,17
+302 p300 "rooftop skylights" 2,17
+303 p300 "swimming pool" 17,23
+304 p300 "tarpaulin" 6,17,20
+305 p300 "corridor to gymnasium" 2,17
+306 p0 "control panel" 2,17
+307 p0 "underwater lights" 17
+308 p0 "Joanna" 0,7,16
+309 p0 "Gymnasium" 9,18
+310 p309 "wooden horse" 17,23
+311 p310 "Tony" 0,16,19
+312 p310 "iron chains" 19
+313 p310 "muffle" 19
+314 p0 "walkway" 19,20
+315 p314 "clown masked figure" 0,19,23
+316 p315 "loaded crossbow" 31,36
+317 p0 "crossbow bolt" 19,23
+318 p0 "hunting knife" 29,31
+319 p0 "Rear of Van" 9,18
+320 p319 "grille" 2,17
+321 p319 "rear doors" 2,15,17
+322 p319 "windows" 17
+323 p319 "operating trolley" 6,20,23,29
+324 p323 "handlebars" 2,17,23
+325 p324 "philips screw" 18,23
+326 p325 "ring shaped washer" 
+327 p319 "metal workbench" 2,17,20
+328 p327 "leather case" 2,17
+329 p327 "stereo" 2,17,23
+330 p0 "plastic buttons" 2,17
+331 p0 "portable generator" 2,17
+332 p0 "oxygen tank" 2,17
+333 p0 "leather straps" 19
+334 p0 "rear view mirror" 17
+335 p0 "pair of fluffy dice" 2,17
+336 p0 "passenger seat" 2,17
+337 p0 "driver's seat" 2,17
+338 p0 "windscreen" 2,17
+339 p0 "dashboard" 2,17,20
+340 p0 "electronic device" 2,17
+341 p0 "Tony" 0,16,19
+342 p0 "clown masked figure" 0,17,23
+343 p0 "clown masked figure" 0,2,7,17
+344 p0 "Joanna" 0,7,16,19,23
+345 p0 "discarded clown mask" 19
+346 p0 "blindfold" 1,23
+347 p346 "tough nylon cord" 19
+348 p0 "Outside" 9
+349 p0 "leg irons" 1,10,11,15,17,26
+350 p0 "freezing cold water" 2,17,23
+351 p0 "Water Tank" 9
+352 p0 "sapphire brooch" 2,17,18
+353 p0 "sapphire" 
+354 p0 "tiny silver pin" 29,31
+355 p0 "floating ice" 2,17
+356 p0 "chunk of ice" 18,29,31
+357 p0 "drainage grating" 19,23
+358 p357 "top left screw" 19
+359 p357 "top right screw" 19
+360 p357 "bottom left screw" 19
+361 p357 "bottom right screw" 19
+362 p0 "bolted trapdoor" 2,17
+363 p0 "water inlet" 3,14,17
+364 p0 "Drainage Tunnel" 9,18
+365 p364 "pressure jets" 2,17
+366 p364 "water pumps" 19
+367 p0 "ladder" 17
+368 p0 "Vertical Shaft" 9,18
+369 p368 "surrounding landscape" 17
+370 p0 "ladder" 17
+371 p0 "Maintenance Corridor" 9
+372 p371 "sloppy paintwork" 2,17,28
+373 p371 "electronic eye" 2,17
+374 p371 "service lift" 2,3,15,17
+375 p0 "security gate" 4,11,15,19,23,28
+376 p375 "diamond shaped panel" 19,23
+377 p376 "gold button" 19,28
+378 p376 "silver button" 19,28
+379 p376 "white button" 19,28
+380 p376 "black button" 19,28
+381 p0 "locking mechanism" 
+382 p0 "quartz edged keyhole" 2,17,28
+383 p0 "power cable" 2,17
+384 p374 "steel cables" 2,17
+385 p0 "Generator Room" 9
+386 p385 "concrete rubble" 2,17
+387 p385 "heaps of snow" 17
+388 p0 "hydroelectric generators" 2,17
+389 p0 "cubical slot" 3,14,17
+390 p0 "Workstation" 9
+391 p390 "overturned tables" 2,17
+392 p390 "television monitors" 2,17
+393 p390 "control panels" 2,17
+394 p390 "tools cabinet" 3,14,15,19
+395 p390 "rusty wrench" 17
+396 p394 "cranking handle" 18,31
+397 p390 "underneath cabinet" 2,3,14,17
+398 p0 "fragments of blue glass" 18
+399 p0 "Supply Room" 9
+400 p399 "steel runners" 2,17
+401 p399 "winching crane" 17
+402 p399 "wooden crates" 17,28
+403 p399 "remote control" 
+404 p0 "Rear of Crates" 9
+405 p404 "wooden crates" 19,23,28
+406 p0 "Joanna" 0,7,16,17,23
+407 p0 "welding torch" 19
+408 p0 "Joanna" 0,7,16,23
+409 p408 "japanese katana" 18,23,29,31
+410 p408 "hunting knife" 29,31
+411 p409 "serpent carved hilt" 19
+412 p0 "shuriken" 19
+413 p0 "question topics" 
+414 p413 "date" 
+415 p413 "psycho" 
+416 p413 "Keith" 16
+417 p413 "Joanna" 16
+418 p413 "girlfriend" 
+419 p413 "Sarah" 16
+420 p413 "player" 
+421 p413 "Colin" 
+422 p413 "headmaster" 
+423 p413 "Saint Martins College" 16
+424 p413 "Tony" 16
+425 p413 "Big Jim" 16
+426 p413 "Smith" 16
+427 p413 "Miss Gavaghan" 16
+428 p413 "Wrigley" 16
+429 p413 "Wilson" 16
+430 p0 "telephone numbers" 
+431 p430 "Joanna" 16
+432 p430 "psycho" 
+433 p430 "Keith" 16
+434 p430 "Sarah" 16
+435 p430 "taxi service" 
+436 p430 "yourself" 16
+437 p430 "home" 
+438 p430 "police" 
+439 p430 "author" 
+objects 439 version 8

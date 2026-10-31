@@ -1,0 +1,7 @@
+seastalker sdD @50 examine depth control #50 NOTEST "It's set for a desired depth of 5 meters.\nThe depth finder warning light fades t"
+seastalker sdD @66 examine depth control #66 NOTEST "It's set for a desired depth of 5 meters.\n \n> "
+seastalker sdD @74 examine depth control #74 NOTEST "It's set for a desired depth of 15 meters.\nThe depth finder warning light change"
+seastalker sdD @78 examine depth control #78 NOTEST "It's set for a desired depth of 15 meters.\nThe depth finder warning light is sti"
+seastalker sdD @80 examine depth control #80 NOTEST "It's set for a desired depth of 15 meters.\nThe depth finder warning light is sti"
+seastalker sdD @84 examine depth control #84 NOTEST "It's set for a desired depth of 15 meters.\nThe depth finder warning light is sti"
+seastalker sdD @90 examine depth control #90 NOTEST "(Please type YES or NO.) > "

@@ -1,0 +1,38 @@
+{
+ "ss72 @72:x sonar#0": {
+  "tag": "ss72",
+  "id": 72,
+  "name": "x",
+  "step": 72,
+  "expect": 0,
+  "cmd": "x sonar",
+  "bit": 0,
+  "plan": "plan-ss-72.json",
+  "planSha": "271ffa8068d1306a593780a79b11497a4dffca4c37adc341a4ce487d3c540d07",
+  "gameSha": "c5fc1d0f7ffd77b662888324ac755ab2d2b8e07622aa68ba88904514a5d4f925",
+  "verdict": "NOTEST",
+  "before": [
+   6,
+   10,
+   17,
+   18,
+   26
+  ],
+  "after": [
+   6,
+   10,
+   17,
+   18,
+   26
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 74,
+  "here": 254,
+  "opsOnId": [],
+  "nOps": 1,
+  "printedObjs": [],
+  "text": "(I don't know the word \"x\".)\n \n> ",
+  "ts": "2026-10-31T04:00:43.657Z"
+ }
+}

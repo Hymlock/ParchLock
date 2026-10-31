@@ -1,0 +1,982 @@
+{
+ "sherwear @0:i#0": {
+  "tag": "sherwear",
+  "id": 188,
+  "name": "hat",
+  "step": 0,
+  "expect": 0,
+  "cmd": "i",
+  "bit": 34,
+  "plan": "plan-sherlock-wear.json",
+  "planSha": "c2a0d7a728656156d218f08fe667670c89906d918d06a31bdfef6b089a5390ef",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "TRUE",
+  "before": [
+   0,
+   4,
+   9,
+   11,
+   23,
+   34,
+   39
+  ],
+  "after": [
+   0,
+   4,
+   9,
+   11,
+   23,
+   34,
+   39
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 232,
+  "here": 38,
+  "opsOnId": [
+   [
+    188,
+    34,
+    1,
+    71480
+   ],
+   [
+    188,
+    32,
+    0,
+    48527
+   ],
+   [
+    188,
+    29,
+    0,
+    32652
+   ],
+   [
+    188,
+    0,
+    1,
+    32652
+   ],
+   [
+    188,
+    30,
+    0,
+    32577
+   ],
+   [
+    188,
+    38,
+    0,
+    70110
+   ],
+   [
+    188,
+    16,
+    0,
+    32261
+   ],
+   [
+    188,
+    9,
+    1,
+    32261
+   ],
+   [
+    188,
+    5,
+    0,
+    32261
+   ],
+   [
+    188,
+    2,
+    0,
+    32261
+   ],
+   [
+    188,
+    47,
+    0,
+    32261
+   ],
+   [
+    188,
+    40,
+    0,
+    32261
+   ]
+  ],
+  "nOps": 77,
+  "printedObjs": [
+   188,
+   302,
+   173,
+   150,
+   172
+  ],
+  "text": "You are wearing:\n  your hat.\n  your coat.\n  a whistle.\nYour pocket contains:\n  a pound note.\nYou are holding:\n  a black bag.\n \n> ",
+  "ts": "2026-10-31T04:10:53.186Z"
+ },
+ "sherwear @0:take off hat#1": {
+  "tag": "sherwear",
+  "id": 188,
+  "name": "hat",
+  "step": 0,
+  "expect": 0,
+  "cmd": "take off hat",
+  "bit": 34,
+  "plan": "plan-sherlock-wear.json",
+  "planSha": "c2a0d7a728656156d218f08fe667670c89906d918d06a31bdfef6b089a5390ef",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "TRUE",
+  "before": [
+   0,
+   4,
+   9,
+   11,
+   23,
+   34,
+   39
+  ],
+  "after": [
+   0,
+   4,
+   5,
+   9,
+   11,
+   23,
+   39
+  ],
+  "set": [
+   5
+  ],
+  "cleared": [
+   34
+  ],
+  "parent": 232,
+  "here": 38,
+  "opsOnId": [
+   [
+    188,
+    31,
+    0,
+    40989
+   ],
+   [
+    188,
+    16,
+    0,
+    32229
+   ],
+   [
+    188,
+    9,
+    1,
+    32229
+   ],
+   [
+    188,
+    5,
+    0,
+    32229
+   ],
+   [
+    188,
+    2,
+    0,
+    32229
+   ],
+   [
+    188,
+    47,
+    0,
+    32229
+   ],
+   [
+    188,
+    40,
+    0,
+    32229
+   ],
+   [
+    188,
+    47,
+    0,
+    37864
+   ],
+   [
+    188,
+    47,
+    0,
+    37876
+   ],
+   [
+    188,
+    10,
+    0,
+    37887
+   ],
+   [
+    188,
+    28,
+    0,
+    37895
+   ],
+   [
+    188,
+    31,
+    0,
+    37920
+   ],
+   [
+    188,
+    34,
+    1,
+    119795
+   ],
+   [
+    188,
+    29,
+    0,
+    32637
+   ],
+   [
+    188,
+    0,
+    1,
+    32637
+   ],
+   [
+    188,
+    30,
+    0,
+    32577
+   ],
+   [
+    188,
+    21,
+    0,
+    42716
+   ]
+  ],
+  "nOps": 74,
+  "printedObjs": [
+   188,
+   262
+  ],
+  "text": "You take off your hat. Inside you see a stethoscope.\n \n> ",
+  "ts": "2026-10-31T04:10:53.779Z"
+ },
+ "sherwear @0:wear hat#2": {
+  "tag": "sherwear",
+  "id": 188,
+  "name": "hat",
+  "step": 0,
+  "expect": 0,
+  "cmd": "wear hat",
+  "bit": 34,
+  "plan": "plan-sherlock-wear.json",
+  "planSha": "c2a0d7a728656156d218f08fe667670c89906d918d06a31bdfef6b089a5390ef",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "FALSE",
+  "before": [
+   0,
+   4,
+   5,
+   9,
+   11,
+   23,
+   39
+  ],
+  "after": [
+   0,
+   4,
+   9,
+   11,
+   23,
+   34,
+   39
+  ],
+  "set": [
+   34
+  ],
+  "cleared": [
+   5
+  ],
+  "parent": 232,
+  "here": 38,
+  "opsOnId": [
+   [
+    188,
+    31,
+    0,
+    40953
+   ],
+   [
+    188,
+    16,
+    0,
+    32229
+   ],
+   [
+    188,
+    9,
+    1,
+    32229
+   ],
+   [
+    188,
+    5,
+    1,
+    32229
+   ],
+   [
+    188,
+    16,
+    0,
+    40792
+   ],
+   [
+    188,
+    47,
+    0,
+    40792
+   ],
+   [
+    188,
+    9,
+    1,
+    40809
+   ],
+   [
+    188,
+    5,
+    1,
+    40809
+   ],
+   [
+    188,
+    47,
+    0,
+    37852
+   ],
+   [
+    188,
+    47,
+    0,
+    37864
+   ],
+   [
+    188,
+    10,
+    0,
+    37876
+   ],
+   [
+    188,
+    28,
+    0,
+    37887
+   ],
+   [
+    188,
+    31,
+    0,
+    37895
+   ],
+   [
+    188,
+    34,
+    0,
+    119693
+   ],
+   [
+    188,
+    29,
+    0,
+    32637
+   ],
+   [
+    188,
+    0,
+    1,
+    32637
+   ],
+   [
+    188,
+    30,
+    0,
+    32577
+   ],
+   [
+    188,
+    21,
+    0,
+    42716
+   ]
+  ],
+  "nOps": 60,
+  "printedObjs": [
+   188
+  ],
+  "text": "You put on your hat.\n \n> ",
+  "ts": "2026-10-31T04:10:54.354Z"
+ },
+ "sherwear @0:take off whistle#3": {
+  "tag": "sherwear",
+  "id": 173,
+  "name": "whistle",
+  "step": 0,
+  "expect": 0,
+  "cmd": "take off whistle",
+  "bit": 34,
+  "plan": "plan-sherlock-wear.json",
+  "planSha": "c2a0d7a728656156d218f08fe667670c89906d918d06a31bdfef6b089a5390ef",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "TRUE",
+  "before": [
+   4,
+   11,
+   34,
+   39
+  ],
+  "after": [
+   4,
+   11,
+   39
+  ],
+  "set": [],
+  "cleared": [
+   34
+  ],
+  "parent": 232,
+  "here": 38,
+  "opsOnId": [
+   [
+    173,
+    31,
+    0,
+    40953
+   ],
+   [
+    173,
+    47,
+    0,
+    37852
+   ],
+   [
+    173,
+    47,
+    0,
+    37864
+   ],
+   [
+    173,
+    10,
+    0,
+    37876
+   ],
+   [
+    173,
+    28,
+    0,
+    37887
+   ],
+   [
+    173,
+    31,
+    0,
+    37895
+   ],
+   [
+    173,
+    39,
+    1,
+    65486
+   ],
+   [
+    173,
+    34,
+    1,
+    65486
+   ],
+   [
+    173,
+    29,
+    0,
+    32637
+   ],
+   [
+    173,
+    0,
+    0,
+    32637
+   ],
+   [
+    173,
+    30,
+    0,
+    32577
+   ],
+   [
+    173,
+    21,
+    0,
+    42716
+   ]
+  ],
+  "nOps": 66,
+  "printedObjs": [
+   173
+  ],
+  "text": "You take off the whistle.\n \n> ",
+  "ts": "2026-10-31T04:10:54.930Z"
+ },
+ "sherwear @0:wear whistle#4": {
+  "tag": "sherwear",
+  "id": 173,
+  "name": "whistle",
+  "step": 0,
+  "expect": 0,
+  "cmd": "wear whistle",
+  "bit": 34,
+  "plan": "plan-sherlock-wear.json",
+  "planSha": "c2a0d7a728656156d218f08fe667670c89906d918d06a31bdfef6b089a5390ef",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "FALSE",
+  "before": [
+   4,
+   11,
+   39
+  ],
+  "after": [
+   4,
+   11,
+   34,
+   39
+  ],
+  "set": [
+   34
+  ],
+  "cleared": [],
+  "parent": 232,
+  "here": 38,
+  "opsOnId": [
+   [
+    173,
+    31,
+    0,
+    40953
+   ],
+   [
+    173,
+    47,
+    0,
+    37852
+   ],
+   [
+    173,
+    47,
+    0,
+    37864
+   ],
+   [
+    173,
+    10,
+    0,
+    37876
+   ],
+   [
+    173,
+    28,
+    0,
+    37887
+   ],
+   [
+    173,
+    31,
+    0,
+    37895
+   ],
+   [
+    173,
+    34,
+    0,
+    67497
+   ],
+   [
+    173,
+    11,
+    1,
+    67519
+   ],
+   [
+    173,
+    29,
+    0,
+    32637
+   ],
+   [
+    173,
+    0,
+    0,
+    32637
+   ],
+   [
+    173,
+    30,
+    0,
+    32577
+   ],
+   [
+    173,
+    21,
+    0,
+    42716
+   ]
+  ],
+  "nOps": 60,
+  "printedObjs": [
+   173
+  ],
+  "text": "You put on the whistle.\n \n> ",
+  "ts": "2026-10-31T04:10:55.503Z"
+ },
+ "sherwear @7:wear knife#5": {
+  "tag": "sherwear",
+  "id": 151,
+  "name": "knife",
+  "step": 7,
+  "expect": 0,
+  "cmd": "wear knife",
+  "bit": 34,
+  "plan": "plan-sherlock-wear.json",
+  "planSha": "c2a0d7a728656156d218f08fe667670c89906d918d06a31bdfef6b089a5390ef",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "FALSE",
+  "before": [
+   3,
+   4,
+   5,
+   23,
+   33,
+   39,
+   43,
+   44
+  ],
+  "after": [
+   3,
+   4,
+   5,
+   23,
+   33,
+   39,
+   43,
+   44
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 232,
+  "here": 93,
+  "opsOnId": [
+   [
+    151,
+    31,
+    0,
+    40953
+   ],
+   [
+    151,
+    47,
+    0,
+    37852
+   ],
+   [
+    151,
+    47,
+    0,
+    37864
+   ],
+   [
+    151,
+    10,
+    0,
+    37876
+   ],
+   [
+    151,
+    28,
+    0,
+    37887
+   ],
+   [
+    151,
+    31,
+    0,
+    37895
+   ],
+   [
+    151,
+    34,
+    0,
+    67477
+   ],
+   [
+    151,
+    11,
+    0,
+    67512
+   ],
+   [
+    151,
+    29,
+    0,
+    32637
+   ],
+   [
+    151,
+    0,
+    0,
+    32637
+   ],
+   [
+    151,
+    30,
+    0,
+    32577
+   ],
+   [
+    151,
+    21,
+    0,
+    42716
+   ]
+  ],
+  "nOps": 80,
+  "printedObjs": [
+   151
+  ],
+  "text": "You cannot wear the knife.\n \nMrs Hudson appears at the door, accompanied by a worried-looking gentleman.\n \nHolmes jumps up and ushers the gentleman to the armchair, dismissing Mrs Hudson at the same time. \"Watson,\" he says, \"I am sure you recognize our distinguished visitor. I presume, sir, that you have come about the Jewels.\"\n \nThe visitor half rises from his chair in protest and sputters, \"But.",
+  "ts": "2026-10-31T04:11:00.083Z"
+ },
+ "sherwear @7:i#6": {
+  "tag": "sherwear",
+  "id": 151,
+  "name": "knife",
+  "step": 7,
+  "expect": 0,
+  "cmd": "i",
+  "bit": 34,
+  "plan": "plan-sherlock-wear.json",
+  "planSha": "c2a0d7a728656156d218f08fe667670c89906d918d06a31bdfef6b089a5390ef",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "FALSE",
+  "before": [
+   3,
+   4,
+   5,
+   23,
+   33,
+   39,
+   43,
+   44
+  ],
+  "after": [
+   3,
+   4,
+   5,
+   23,
+   33,
+   39,
+   43,
+   44
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 232,
+  "here": 93,
+  "opsOnId": [
+   [
+    151,
+    34,
+    0,
+    71487
+   ],
+   [
+    151,
+    32,
+    0,
+    48512
+   ],
+   [
+    151,
+    29,
+    0,
+    32637
+   ],
+   [
+    151,
+    0,
+    0,
+    32637
+   ],
+   [
+    151,
+    28,
+    0,
+    32662
+   ],
+   [
+    151,
+    28,
+    0,
+    32680
+   ],
+   [
+    151,
+    19,
+    0,
+    32696
+   ],
+   [
+    151,
+    30,
+    0,
+    32577
+   ],
+   [
+    151,
+    38,
+    0,
+    70077
+   ],
+   [
+    151,
+    16,
+    0,
+    32229
+   ],
+   [
+    151,
+    9,
+    0,
+    32229
+   ],
+   [
+    151,
+    47,
+    0,
+    32248
+   ],
+   [
+    151,
+    40,
+    0,
+    32248
+   ]
+  ],
+  "nOps": 143,
+  "printedObjs": [
+   188,
+   302,
+   173,
+   150,
+   164,
+   218,
+   151,
+   248,
+   289,
+   172
+  ],
+  "text": "You are wearing:\n  your hat.\n  your coat.\n  a whistle.\nYour pocket contains:\n  a pound note.\nYou are holding:\n  a clue paper.\n  a pipe.\n  a knife.\n  some tobacco.\n  a newspaper.\n  a black bag.\n \n> ",
+  "ts": "2026-10-31T04:11:00.659Z"
+ },
+ "sherwear @7:take off clothes#7": {
+  "tag": "sherwear",
+  "id": 183,
+  "name": "clothes",
+  "step": 7,
+  "expect": 0,
+  "cmd": "take off clothes",
+  "bit": 34,
+  "plan": "plan-sherlock-wear.json",
+  "planSha": "c2a0d7a728656156d218f08fe667670c89906d918d06a31bdfef6b089a5390ef",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "NOTEST",
+  "before": [
+   0,
+   4,
+   11,
+   25,
+   32,
+   34
+  ],
+  "after": [
+   0,
+   4,
+   11,
+   25,
+   32,
+   34
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 177,
+  "here": 93,
+  "opsOnId": [
+   [
+    183,
+    31,
+    0,
+    40953
+   ],
+   [
+    183,
+    31,
+    0,
+    40953
+   ],
+   [
+    183,
+    47,
+    0,
+    37852
+   ],
+   [
+    183,
+    47,
+    0,
+    37864
+   ],
+   [
+    183,
+    10,
+    0,
+    37876
+   ],
+   [
+    183,
+    28,
+    0,
+    37887
+   ],
+   [
+    183,
+    31,
+    0,
+    37895
+   ],
+   [
+    183,
+    21,
+    0,
+    42716
+   ]
+  ],
+  "nOps": 69,
+  "printedObjs": [],
+  "text": "That would hardly be an appropriate thing to do.\n \n> ",
+  "ts": "2026-10-31T04:11:01.240Z"
+ }
+}

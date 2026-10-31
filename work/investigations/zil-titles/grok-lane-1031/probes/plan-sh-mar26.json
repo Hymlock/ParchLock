@@ -1,0 +1,60 @@
+{
+ "tag": "sh-alive",
+ "game": "Sherlock.z5.js",
+ "key": "sherlock",
+ "bit": 40,
+ "tmpl": "s",
+ "note": "grok Sherlock lane native; isolated step cluster (no earlier test mutations)",
+ "tests": [
+  {
+   "cmd": "LISTEN TO GUARD",
+   "step": 26,
+   "name": "listen to guard",
+   "id": 155,
+   "expect": 1
+  },
+  {
+   "cmd": "LOOK IN DOG",
+   "step": 26,
+   "name": "look in dog",
+   "id": 147,
+   "expect": 1
+  },
+  {
+   "cmd": "LOOK IN DOG",
+   "step": 26,
+   "name": "look in dog",
+   "id": 147,
+   "expect": 0,
+   "bit": 47,
+   "tag": "sh-person"
+  },
+  {
+   "cmd": "LOOK IN GUARD",
+   "step": 26,
+   "name": "look in guard",
+   "id": 155,
+   "expect": 1,
+   "bit": 47,
+   "tag": "sh-person"
+  },
+  {
+   "cmd": "ASK GUARD ABOUT DOG",
+   "step": 26,
+   "name": "ask guard about dog",
+   "id": 155,
+   "expect": 1,
+   "bit": 47,
+   "tag": "sh-talk"
+  },
+  {
+   "cmd": "ASK DOG ABOUT GUARD",
+   "step": 26,
+   "name": "ask dog about guard",
+   "id": 147,
+   "expect": 0,
+   "bit": 47,
+   "tag": "sh-talk"
+  }
+ ]
+}

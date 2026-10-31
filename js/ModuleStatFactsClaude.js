@@ -1251,9 +1251,25 @@ var ModuleStatFactsClaude = {
     // All Quiet on the Library Front: grid Score conflicts with SCORE
     // (grid Score: 15, SCORE 0 of 30), so no SCORE bound is joined to it.
     "b3665eaf5e30520355a1f07657ffbd69e967ecb53942f86913d044e65fa30e11": {
+        // Inform P1 (two-seat: claude PACKET-library + grok heist layout): Inform 5-era alphabetical attributes, no name table.
+        // Measured: container 3 (drawer 18 LOOK IN/OPEN/CLOSE), concealed 2 (yourself, grue), clothing 1 (WEAR CARD tests 74:1=0); door 4 static;
+        // light 9 / open 14 / scenery 17 / transparent 23 / worn 26 agree with PROFILE. edible/enterable unmeasured here -> null (fail-closed).
+        "attributeMap": { "animate": 0, "clothing": 1, "wearable": 1, "concealed": 2, "container": 3, "door": 4, "edible": null, "enterable": null, "female": null, "absent": null, "male": null, "neuter": null, "pluralname": null },
         "statusPair": ["Score", "Moves"],
         "rejectedForms": ["score"],
         "evidence": "2026-10-05 live grid Score: 15 Moves: 0..2 and compact 15/2; SCORE: You have so far scored 0 out of a possible 30, in 1 turn. Game-authored conflict; grid kept, SCORE not asked."
+    },
+    // heist (Inform 5-era alphabetical attributes, no name table; grok PACKET-heist-1425, claude ACCEPT). Raw ops: container 3 / open 14 (bag 19,
+    // frame 124), edible 5 (eat bag), door 4 + enterable 6 (enter bag), concealed 2 (yourself); clothing 1 / female 7 / door 4 by object census.
+    // Bits 8-26 equal PROFILE. Visible: Equipment now lists frame 124 + photo 126 inside the bag, matching native i.
+    "251a02ace56207ff0b213e942a63732d3be6212c74a8a4e1412aa1c1aa7fb616": {
+        "attributeMap": { "clothing": 1, "wearable": 1, "concealed": 2, "container": 3, "door": 4, "edible": 5, "enterable": 6, "female": 7, "absent": null, "male": null, "neuter": null, "pluralname": null }
+    },
+    // break-in (Inform 6.05, same alphabetical layout; claude PACKET-break-in, grok heist layout). Raw ops: container 3 (rucksack 46 =1, desk 35 =0),
+    // enterable 6 (chair 34 seated), concealed 2 (yourself); door 4 / edible 5 / clothing 1 by object census (front door, gate, carrot, Hat class).
+    // Visible: removes "eat/drink chair", restores put in on the rucksack.
+    "45da361177da2e073616082377ea37654bb10b8289024833f61e1422dedb6201": {
+        "attributeMap": { "animate": 0, "clothing": 1, "wearable": 1, "concealed": 2, "container": 3, "door": 4, "edible": 5, "enterable": 6, "female": null, "absent": null, "male": null, "neuter": null, "pluralname": null }
     },
     // Limp
     "ab8e29c688af48c08ea29fac42e2ce3673efbb2728ae436396e6f261ce44d253": {

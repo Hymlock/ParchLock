@@ -1,0 +1,6 @@
+{"key":"enchanter","game":"Enchanter.z3.js","bit":20,"tmpl":"tell X","tag":"talkid","note":"Enchanter V-TELL (verbs.zil:1459) is an identity list TURTLE/ADVENTURER/FROG, not VICBIT. Placeholder id 62 where the talker id is unknown; read printedObjs.","tests":[
+{"id":62,"name":"frog","step":57,"expect":1,"cmd":"tell frog"},
+{"id":19,"name":"jug","step":57,"expect":0,"cmd":"tell jug"},
+{"id":62,"name":"turtle(id?)","step":112,"expect":1,"cmd":"tell turtle"},
+{"id":30,"name":"rope","step":155,"expect":1,"cmd":"tell rope"},
+{"id":62,"name":"adventurer(id?)","step":177,"expect":1,"cmd":"tell adventurer"}]}

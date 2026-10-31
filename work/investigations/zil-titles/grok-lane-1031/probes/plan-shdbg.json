@@ -1,0 +1,73 @@
+{
+    "tag":  "shdbg",
+    "game":  "Sherlock.z5.js",
+    "key":  "sherlock",
+    "bit":  40,
+    "tmpl":  "s",
+    "note":  "debug",
+    "tests":  [
+                  {
+                      "cmd":  "look",
+                      "step":  7,
+                      "name":  "x",
+                      "id":  293,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "i",
+                      "step":  7,
+                      "name":  "x",
+                      "id":  293,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "WAIT",
+                      "step":  7,
+                      "name":  "x",
+                      "id":  293,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "No",
+                      "step":  7,
+                      "name":  "x",
+                      "id":  293,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "READ PAPER",
+                      "step":  7,
+                      "name":  "x",
+                      "id":  293,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "WAIT",
+                      "step":  7,
+                      "name":  "x",
+                      "id":  293,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "No",
+                      "step":  7,
+                      "name":  "x",
+                      "id":  293,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "W",
+                      "step":  7,
+                      "name":  "x",
+                      "id":  293,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "look",
+                      "step":  7,
+                      "name":  "x",
+                      "id":  293,
+                      "expect":  0
+                  }
+              ]
+}

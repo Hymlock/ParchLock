@@ -1,0 +1,4 @@
+sherlock sh-transp @44 EXAMINE TORCH THROUGH POOL #179 TRUE "You do not see anything unusual through the wax pool.\n \n> "
+sherlock sh-transp @44 MELT AX WITH TORCH #259 NOTEST "You are not holding an axe.\n \n> "
+sherlock sh-transp @44 EXAMINE TORCH THROUGH MELTED AX #259 NOTEST "You cannot see any melted ax here.\n \n> "
+sherlock sh-transp @44 EXAMINE POOL THROUGH PIPE #218 FALSE "You can't look through the pipe.\n \n> "

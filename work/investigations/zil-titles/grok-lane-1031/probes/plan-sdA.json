@@ -1,0 +1,24 @@
+{
+    "tag":  "sdA",
+    "game":  "Seastalker.z3.js",
+    "tests":  [
+                  {
+                      "cmd":  "look",
+                      "step":  83,
+                      "name":  "x",
+                      "id":  83,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "examine depth control",
+                      "step":  83,
+                      "name":  "x",
+                      "id":  83,
+                      "expect":  0
+                  }
+              ],
+    "note":  "freighter dive fix A",
+    "key":  "seastalker",
+    "bit":  0,
+    "tmpl":  "s"
+}

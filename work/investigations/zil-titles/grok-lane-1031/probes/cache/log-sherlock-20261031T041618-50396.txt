@@ -1,0 +1,4 @@
+sherlock shertake @7 take violin #207 TRUE "You take the violin.\n \nMrs Hudson appears at the door, accompanied by a worried-"
+sherlock shertake @7 take slipper #228 TRUE "You take the persian slipper off of the mantelpiece.\n \n> "
+sherlock shertake @7 take sofa #239 FALSE "Your friend looks at you grimly and says, \"I thought you had more sense than tha"
+sherlock shertake @7 take mantelpiece #292 FALSE "The detective looks at you sharply and says, \"That can't be done, Watson.\"\n \nThe"

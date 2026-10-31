@@ -1,0 +1,8 @@
+sherlock sherwear @0 i #188 TRUE "You are wearing:\n  your hat.\n  your coat.\n  a whistle.\nYour pocket contains:\n  a"
+sherlock sherwear @0 take off hat #188 TRUE "You take off your hat. Inside you see a stethoscope.\n \n> "
+sherlock sherwear @0 wear hat #188 FALSE "You put on your hat.\n \n> "
+sherlock sherwear @0 take off whistle #173 TRUE "You take off the whistle.\n \n> "
+sherlock sherwear @0 wear whistle #173 FALSE "You put on the whistle.\n \n> "
+sherlock sherwear @7 wear knife #151 FALSE "You cannot wear the knife.\n \nMrs Hudson appears at the door, accompanied by a wo"
+sherlock sherwear @7 i #151 FALSE "You are wearing:\n  your hat.\n  your coat.\n  a whistle.\nYour pocket contains:\n  a"
+sherlock sherwear @7 take off clothes #183 NOTEST "That would hardly be an appropriate thing to do.\n \n> "

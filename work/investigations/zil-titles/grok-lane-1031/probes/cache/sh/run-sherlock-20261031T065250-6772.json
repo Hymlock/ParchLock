@@ -1,0 +1,192 @@
+{
+ "sh-transp @15:EXAMINE VIOLIN THROUGH NEWSPAPER#0": {
+  "tag": "sh-transp",
+  "cmd": "EXAMINE VIOLIN THROUGH NEWSPAPER",
+  "step": 15,
+  "name": "examine violin through newspaper",
+  "id": 289,
+  "expect": 0,
+  "bit": 2,
+  "plan": "plan-sh-thru15.json",
+  "planSha": "78224ba80a3344ed42012d332c0200863491e42e22e04c85d89d75fbea447470",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "FALSE",
+  "before": [
+   3,
+   4,
+   13,
+   16,
+   23,
+   35,
+   39
+  ],
+  "after": [
+   3,
+   4,
+   13,
+   16,
+   23,
+   35,
+   39
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 232,
+  "here": 93,
+  "opsOnId": [
+   [
+    289,
+    31,
+    0,
+    40953
+   ],
+   [
+    289,
+    47,
+    0,
+    37852
+   ],
+   [
+    289,
+    47,
+    0,
+    37864
+   ],
+   [
+    289,
+    10,
+    0,
+    37876
+   ],
+   [
+    289,
+    28,
+    0,
+    37887
+   ],
+   [
+    289,
+    31,
+    0,
+    37895
+   ],
+   [
+    289,
+    2,
+    0,
+    60493
+   ],
+   [
+    289,
+    29,
+    0,
+    32637
+   ],
+   [
+    289,
+    0,
+    0,
+    32637
+   ],
+   [
+    289,
+    30,
+    0,
+    32577
+   ],
+   [
+    289,
+    21,
+    0,
+    42699
+   ]
+  ],
+  "nOps": 134,
+  "printedObjs": [
+   289
+  ],
+  "text": "You can't look through the newspaper.\n \n> ",
+  "ts": "2026-10-31T06:53:00.453Z"
+ },
+ "sh-transp @15:EXAMINE VIOLIN THROUGH GLASS#1": {
+  "tag": "sh-transp",
+  "cmd": "EXAMINE VIOLIN THROUGH GLASS",
+  "step": 15,
+  "name": "examine violin through glass",
+  "id": 270,
+  "expect": 1,
+  "bit": 2,
+  "plan": "plan-sh-thru15.json",
+  "planSha": "78224ba80a3344ed42012d332c0200863491e42e22e04c85d89d75fbea447470",
+  "gameSha": "93994d13bd0bddb899ba94d14b082fbd1fbcd0b572e751171fb7f3f9b4b1ace8",
+  "verdict": "NOTEST",
+  "before": [
+   2,
+   3,
+   4,
+   23,
+   39
+  ],
+  "after": [
+   2,
+   3,
+   4,
+   23,
+   39
+  ],
+  "set": [],
+  "cleared": [],
+  "parent": 232,
+  "here": 93,
+  "opsOnId": [
+   [
+    270,
+    31,
+    0,
+    40953
+   ],
+   [
+    270,
+    47,
+    0,
+    37852
+   ],
+   [
+    270,
+    47,
+    0,
+    37864
+   ],
+   [
+    270,
+    10,
+    0,
+    37876
+   ],
+   [
+    270,
+    28,
+    0,
+    37887
+   ],
+   [
+    270,
+    31,
+    0,
+    37895
+   ],
+   [
+    270,
+    21,
+    0,
+    42699
+   ]
+  ],
+  "nOps": 133,
+  "printedObjs": [
+   207
+  ],
+  "text": "You train the magnifying glass on the violin.\nIt appears much larger now.\n \n> ",
+  "ts": "2026-10-31T06:53:01.026Z"
+ }
+}

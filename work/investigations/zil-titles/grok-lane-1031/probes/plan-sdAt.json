@@ -1,0 +1,73 @@
+{
+    "tag":  "sdAt",
+    "game":  "Seastalker.z3.js",
+    "tests":  [
+                  {
+                      "cmd":  "examine depth control",
+                      "step":  44,
+                      "name":  "x",
+                      "id":  44,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "examine depth control",
+                      "step":  45,
+                      "name":  "x",
+                      "id":  45,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "examine depth control",
+                      "step":  46,
+                      "name":  "x",
+                      "id":  46,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "examine depth control",
+                      "step":  50,
+                      "name":  "x",
+                      "id":  50,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "examine depth control",
+                      "step":  60,
+                      "name":  "x",
+                      "id":  60,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "examine depth control",
+                      "step":  70,
+                      "name":  "x",
+                      "id":  70,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "examine depth control",
+                      "step":  76,
+                      "name":  "x",
+                      "id":  76,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "examine depth control",
+                      "step":  79,
+                      "name":  "x",
+                      "id":  79,
+                      "expect":  0
+                  },
+                  {
+                      "cmd":  "examine depth control",
+                      "step":  80,
+                      "name":  "x",
+                      "id":  80,
+                      "expect":  0
+                  }
+              ],
+    "note":  "trace dive A",
+    "key":  "seastalker",
+    "bit":  0,
+    "tmpl":  "s"
+}
