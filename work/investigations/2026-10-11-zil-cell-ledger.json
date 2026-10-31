@@ -123,8 +123,8 @@
    "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 50 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   },
   "on": {
-   "s": "U",
-   "r": "U untestable-by-rule-7 (grok #4035, claude #4036 item 3): ONBIT 19 has target-named positives, but no different-object target-named negative exists (handlers short-circuit on LIGHTBIT/FLAMEBIT first), and a DESCRIBE-OBJECT inventory read is not target-named. The flag exists, so it stays U, not N/A."
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by ca4d0a5b; ledger record had lagged."
   },
   "absent": {
    "s": "NA",
@@ -827,12 +827,12 @@
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LIGHTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 5 read/syntax refs. Source https://github.com/historicalsource/deadline@2602bd5 (12 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 379 objects, room+inventory): no /^(turn|switch) (on|off)\\b/ verb offered."
   },
   "moved": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by fc859e0b; ledger record had lagged."
   },
   "talkable": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by fc859e0b; ledger record had lagged."
   },
   "transparent": {
    "s": "NA",
@@ -938,11 +938,11 @@
   },
   "clothing": {
    "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); WEARBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): PARTIAL: wearForms (D259) covers ring 2; OPEN owner subdomain: knapsack (camp.zil:1957 FSET KNAPSACK WEARBIT). Not whole-cell closed (codex 1422)."
   },
   "wearable": {
    "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); WEARBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): PARTIAL: wearForms (D259) covers ring 2; OPEN owner subdomain: knapsack (camp.zil:1957 FSET KNAPSACK WEARBIT). Not whole-cell closed (codex 1422)."
   },
   "worn": {
    "s": "U",
@@ -999,8 +999,8 @@
    "r": "existing ZRamReader.resolvePlayer (no fact) returns 52 = the RAM holder (parent chain) of every app inventory object after the original-scene walkthrough take \"GET PIECE OF PAPER AND BUSINESS CARD\"; the game's own i names each (business card, yellowed piece of paper, flashlight, photo of uncle buddy, aunt hildegarde's letter); zil-root-check.cjs 2026-10-15"
   },
   "container": {
-   "s": "O",
-   "r": "CONTBIT 4 original scene target-scoped MEETS 2+1 (pond, compartment, cannon, mailbox; neg orchids, bazooka, statue, doors; pzhollywood2/3). NOT applied: OPENBIT 25 only 1+3 (mailbox) - every other openable is indoors; front door \"can't unlock it from this side\", patio door locked; this release desyncs from the Jericho walkthrough at OPEN DOOR. SURFACEBIT 27 native-proven exact."
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by f1922043; ledger record had lagged."
   },
   "animate_method": {
    "s": "NOTE",
@@ -1187,6 +1187,10 @@
   "light": {
    "s": "NC",
    "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
+  },
+  "concealed": {
+   "s": "NA",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): narrow INVISIBLE-bit NA: INVISIBLE only on GLOBAL-OBJECTS/PROTAGONIST, zero FSET/FCLEAR. The conditional HOLE visibility is a separate routine-based domain (revealedLocalGlobal, LGOP R3)."
   }
  },
  "Moonmist.z3.js": {
@@ -1459,8 +1463,8 @@
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LIGHTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/borderzone@5c80126 (15 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 351 objects, room+inventory): no /^(turn|switch) (on|off)\\b/ verb offered."
   },
   "talkable": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by fc859e0b; ledger record had lagged."
   },
   "openable": {
    "s": "NA",
@@ -1554,23 +1558,23 @@
   },
   "clothing": {
    "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); WEARBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): PARTIAL: wearForms (D259) covers gloves 203, boots 104; OPEN owner subdomain: brass hyrax ring (RING-F cs.zil:5270). Not whole-cell closed (codex 1422)."
   },
   "wearable": {
    "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); WEARBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): PARTIAL: wearForms (D259) covers gloves 203, boots 104; OPEN owner subdomain: brass hyrax ring (RING-F cs.zil:5270). Not whole-cell closed (codex 1422)."
   },
   "talkable": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by d00d748c; ledger record had lagged."
   },
   "worn": {
    "s": "U",
    "r": "grok1/grok2 N? batch 5 2026-10-24: no WORNBIT, but WEARBIT is the worn state: wearing exists (0 carriers, 5 FSET/tests, 3 FCLEAR/reads; e.g. cs.zil:3340 <COND (<FSET? .OBJ ,WEARBIT>; cs.zil:3754 <COND (<FSET? ,GLOVES ,WEARBIT>), source lurkinghorror (grok2/nq/worn-TheLurkingHorror.json). The player can wear things, so worn is not N/A; no measured wornAttribute yet (app worn fallback stays fail-closed). Stays U."
   },
   "openable": {
-   "s": "NA",
-   "r": "claude 2026-10-24 (#5086): ZIL has no OPENABLE flag; openable would map to OPENBIT (state) or DOORBIT (already door). Open/Close for ZIL comes from container+openCapability (js/ActionSynth.js:146-153) and door, so this cell is covered, not a missing capability."
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): openable 2 = source OPENABLE (27 carriers, zero FSET/FCLEAR; count corrected by grok) landed 1194ba0f with native evidence (codex #4752). claude #5086 NA withdrawn."
   },
   "visited": {
    "s": "NC",
@@ -1655,8 +1659,8 @@
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LOCKEDBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKED: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/planetfall@7e7af12 (9 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 325 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
   },
   "moved": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by a731d450; ledger record had lagged."
   },
   "visited": {
    "s": "NC",
@@ -1777,8 +1781,8 @@
    "r": "FOUR-SEAT ACCEPT 2026-10-31 (codex/grok/grok2 per CLAUDE-QUEUE-0201.md + claude CLAUDE-VOTES-0201.md): narrow NA: no generic enterable bit; AIRLOCK-WALL BOARD shortcut gap tracked separately as nav follow-up (PACKET-seastalker-enterable.md 07f90c6f)."
   },
   "talkable": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by e4aa52f9; ledger record had lagged."
   },
   "transparent": {
    "s": "NA",
@@ -2100,19 +2104,19 @@
   },
   "clothing": {
    "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); WEARBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): PARTIAL: wearForms (D259) covers suit 144; OPEN owner subdomain: junk spacesuit 176 (JUNK-SPACESUIT-FCN actions.zil:1977). Not whole-cell closed (codex 1422)."
   },
   "wearable": {
    "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); WEARBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): PARTIAL: wearForms (D259) covers suit 144; OPEN owner subdomain: junk spacesuit 176 (JUNK-SPACESUIT-FCN actions.zil:1977). Not whole-cell closed (codex 1422)."
   },
   "moved": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by a1eb0fdf; ledger record had lagged."
   },
   "talkable": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by 2188b68e; ledger record had lagged."
   },
   "visited": {
    "s": "NC",
@@ -2239,16 +2243,16 @@
    "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
   },
   "container": {
-   "s": "UD",
-   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by 0d090c9e; ledger record had lagged."
   },
   "open": {
-   "s": "UD",
-   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by 31d29696; ledger record had lagged."
   },
   "supporter": {
-   "s": "UD",
-   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by 9bbe3378; ledger record had lagged."
   },
   "lightSource": {
    "s": "UD",
@@ -2267,8 +2271,8 @@
    "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
   },
   "animate": {
-   "s": "UD",
-   "r": "D198 decodeD198 rejects Suspect.z3 (unknown/rejected unvalidated-grammar-family; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by 9b72c38f; ledger record had lagged."
   },
   "edible": {
    "s": "UD",
@@ -2359,12 +2363,12 @@
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LIGHTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspect@a18e100 (16 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 536 objects, room+inventory): no /^(turn|switch) (on|off)\\b/ verb offered."
   },
   "moved": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by a1eb0fdf; ledger record had lagged."
   },
   "talkable": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by fc859e0b; ledger record had lagged."
   },
   "visited": {
    "s": "NC",
@@ -2473,8 +2477,8 @@
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LIGHTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/suspended@ce4b8ed (19 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 350 objects, room+inventory): no /^(turn|switch) (on|off)\\b/ verb offered."
   },
   "clothing": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); WEARBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): covered by wearable 31 (clothing follows wearable, #5185)."
   },
   "talkable": {
    "s": "NA",
@@ -2721,12 +2725,12 @@
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/witness@8fe092a (13 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 525 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
   },
   "moved": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); TOUCHBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by a731d450; ledger record had lagged."
   },
   "talkable": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): ledger reconcile (LEDGER-RECONCILE-r1.md): fact landed by d00d748c; ledger record had lagged."
   },
   "visited": {
    "s": "NC",
@@ -2909,6 +2913,30 @@
   "scenery": {
    "s": "X",
    "r": "THREE-SEAT ACCEPT (operator ruling while grok2 out; grok2 author ACCEPT pre-absence; codex codex-sherlock-votes-0837; grok VOTES-grok.md; claude CLAUDE-VOTES-sherlock.md), landed r50: scenery fail-closed: FL-NODESC 32 is list-suppression only; furniture still named in room prose (PACKET-scenery-32-lookomit.md)."
+  },
+  "concealed": {
+   "s": "NA",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): no dedicated hide bit: reveal by MOVE; FL-NODESC 32 is list-suppression only, parser scope never tests it (PACKET-concealed-claude.md)."
+  },
+  "inventoryHiddenAttribute": {
+   "s": "U",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): OPEN: held NODESC is reachable via the Lair double-tie then untie/cut rope (places2.zil:718, things2.zil:1886; grok). Native INVENTORY-omit proof not run; do not map 32 yet."
+  },
+  "switchable": {
+   "s": "NC",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): FL-LAMP 42 has one carrier and one use (EXTINGUISH FIND default); the lamp is served by lightForms {166, state 38}."
+  },
+  "light": {
+   "s": "NC",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): key-level D247; FL-LIGHTED 38 is a lit STATE."
+  },
+  "openCapability": {
+   "s": "NA",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): openable 44 (FL-OPENABLE) is mapped directly; the container openCapability heuristic is not needed."
+  },
+  "visited": {
+   "s": "NC",
+   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): key-level visited rule (navigation supplies visited). Basis corrected per grok: FL-SEEN IS set on one room (places2.zil:358 RM-SHERMANS-HOUSE, read places3.zil:1123) as a script flag, not a remote-described map domain; no consumer use."
   }
  }
 }
