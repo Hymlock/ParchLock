@@ -177,3 +177,8 @@ proposed.
   the parser does not test the bit.
 - Suspended enterable: the candidate is an actor-addressed BOARD (CAR VEHBIT objects 593-595; V-BOARD 1043-1080 moves
   WINNER into the vehicle). It needs grammar and native proof; the generic player Enter stays rejected.
+
+## DECIDED (four-seat, 2026-10-31)
+R3-A proper/female/pluralname: ACCEPT from all four (claude, codex #5785, grok #5786, grok2 #5801). Recorded in the
+ledger reasons. R3-B light: ACCEPT from all four (the D247 NC stands). R3-C: direction ACCEPT from all four; the work is
+assigned (lightSource claude, Moonmist display codex, Suspended BOARD grok, visited per-title audit unassigned).

@@ -522,7 +522,7 @@
   },
   "proper": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "static": {
    "s": "S",
@@ -628,11 +628,11 @@
   },
   "proper": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "female": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "light": {
    "s": "NC",
@@ -1076,7 +1076,7 @@
   },
   "proper": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "lightSource": {
    "s": "NC",
@@ -1162,15 +1162,15 @@
   },
   "proper": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "female": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "pluralname": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "static": {
    "s": "S",
@@ -1256,7 +1256,7 @@
   },
   "pluralname": {
    "s": "NC",
-   "r": "group decision A (#5168) extended to this row, codex ACCEPT #5308 (grok1 #5311): flag present in source, but no useful semantic consumer of decoded attrs.pluralname in current js/ outside the generic AttributeSchema profile/attrs decoding. NOT complete, never NA/feature-absent; generic decoding caveat stands; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "static": {
    "s": "S",
@@ -1276,11 +1276,11 @@
   },
   "proper": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "female": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "door": {
    "s": "X",
@@ -1362,15 +1362,15 @@
   },
   "proper": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "female": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "pluralname": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "static": {
    "s": "S",
@@ -1476,11 +1476,11 @@
   },
   "proper": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "pluralname": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "static": {
    "s": "S",
@@ -1786,7 +1786,7 @@
   },
   "female": {
    "s": "NC",
-   "r": "group decision A (#5168) extended to this row, codex ACCEPT #5308 (grok1 #5311): flag present in source, but no useful semantic consumer of decoded attrs.female in current js/ outside the generic AttributeSchema profile/attrs decoding. NOT complete, never NA/feature-absent; generic decoding caveat stands; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "openable": {
    "s": "NA",
@@ -1798,7 +1798,7 @@
   },
   "proper": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "static": {
    "s": "S",
@@ -1916,7 +1916,7 @@
   },
   "proper": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "scenery": {
    "s": "X",
@@ -2214,11 +2214,11 @@
   },
   "proper": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "pluralname": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "on": {
    "s": "X",
@@ -2376,7 +2376,7 @@
   },
   "female": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "static": {
    "s": "UD",
@@ -2584,7 +2584,7 @@
   },
   "female": {
    "s": "NC",
-   "r": "group decision A (#5168) extended to this row, codex ACCEPT #5308 (grok1 #5311): flag present in source, but no useful semantic consumer of decoded attrs.female in current js/ outside the generic AttributeSchema profile/attrs decoding. NOT complete, never NA/feature-absent; generic decoding caveat stands; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "worn": {
    "s": "U",
@@ -2608,7 +2608,7 @@
   },
   "proper": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "on": {
    "s": "X",
@@ -2734,7 +2734,7 @@
   },
   "female": {
    "s": "NC",
-   "r": "group decision 2026-10-24 (A, unanimous: claude, codex #5168, grok1 #5169): no current semantic reader in js/ (see work/investigations/zil-titles/no-reader-cells-question.md). NOT complete, never NA; reopen when a consumer is added."
+   "r": "FOUR-SEAT DECISION 2026-10-31 (claude/codex #5785/grok #5786/grok2 #5801 ACCEPT; nc-keys-proposal-r1.md R3-A): no current wrapper consumer composes articles/pronouns/grammatical number; imported ZIL titles fully in scope; reopen on any concrete composing consumer. No inference from gender/plural to talkability, animacy or multiplicity."
   },
   "static": {
    "s": "S",
