@@ -105,7 +105,9 @@ async function main() {
     assert.equal(deliveredA, nextResponse, 'adapter returns the exact original story response');
     const identityA = await sandbox.ModuleLibrary.whenExecutableIdentityReady();
     assert.equal(identityA.digest, expected, 'identity hashes executable ZCOD, not its container');
-    assert.deepEqual(Array.from(identityA.bytes), Array.from(exec), 'exposed bytes exactly match executable ZCOD');
+    assert.equal(identityA.bytes, undefined, 'identity summary does not carry the whole executable (b747e425 summary contract)');
+    assert.deepEqual(Array.from(sandbox.ModuleLibrary.currentExecutableBytes()), Array.from(exec), 'opt-in bytes exactly match executable ZCOD');
+    assert.deepEqual(identityA.header, Array.from(exec.subarray(0, 64)), 'summary header matches executable ZCOD header');
 
     nextResponse = b64(packageB);
     await sandbox.jQuery.ajax({ dataType: 'jsonp', url: 'games/b.zblorb.js' });
@@ -117,8 +119,10 @@ async function main() {
         'container/module identities remain distinct'
     );
 
-    identityB.bytes[0] = 8;
-    assert.equal(sandbox.ModuleLibrary.currentExecutableIdentity().bytes[0], 3, 'public getter cannot mutate retained bytes');
+    const bytesB = sandbox.ModuleLibrary.currentExecutableBytes();
+    bytesB[0] = 8;
+    assert.equal(sandbox.ModuleLibrary.currentExecutableBytes()[0], 3, 'public bytes getter cannot mutate retained bytes');
+    assert.ok(Object.isFrozen(identityB) && Object.isFrozen(identityB.header), 'public identity summary is immutable');
 
     assert.equal(
         sandbox.ModuleLibrary.currentExecutableIdentity('games/a.zblorb.js').digest,

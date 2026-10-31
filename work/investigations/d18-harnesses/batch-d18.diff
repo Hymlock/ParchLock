@@ -1,0 +1,70 @@
+diff --git a/harness/d198-grammar-shadow.js b/harness/d198-grammar-shadow.js
+index 065162af..c1202e18 100644
+--- a/harness/d198-grammar-shadow.js
++++ b/harness/d198-grammar-shadow.js
+@@ -42,7 +42,10 @@ const GP = sandbox.GrammarProvider;
+ const valve = GP.D198GrammarValve;
+ const zork = story('Zork1-TheGreatUndergroundEmpire.z3.js');
+ const advent = story('Advent.z5.js');
+-const suspect = story('Suspect.z3.js');
++// Suspect.z3 was the unknown-family fixture until b0e2f9e0 admitted it as
++// confirmed-zil-family; every shipped raw story now classifies, so use a
++// synthetic v3 image that no family validator can confirm.
++const unknownStory = new Uint8Array(65536); unknownStory[0] = 3; unknownStory[0x1a] = 0x80;
+ 
+ sandbox.ZRamProvider = { getMem: () => zork };
+ ok(valve.mode() === 'on', 'grammar valve defaults on after validated activation');
+@@ -81,7 +84,11 @@ ok(onZork.specialCommands.some(item => item.command === 'take' && item.source ==
+ same(sandbox.window.__PL_GRAMMAR_VERBS__, onZork.specialCommands.map(item => item.command), 'on publishes exactly the active grammar vocabulary');
+ ok(GP.d198ShadowDiagnostics() === null, 'on does not leave a shadow snapshot');
+ 
+-sandbox.ZRamProvider.getMem = () => suspect;
++sandbox.ZRamProvider.getMem = () => unknownStory;
++valve._testOverride = 'shadow';
++GP.collect();
++ok(GP.d198ShadowDiagnostics() && GP.d198ShadowDiagnostics().classification === 'unknown', 'unknown-family fixture really classifies unknown');
++valve._testOverride = 'on';
+ const unknownOn = GP.collect();
+ ok(unknownOn.specialCommands.length === 0, 'unknown family emits no facts even when valve is on');
+ 
+diff --git a/harness/d198-lifecycle.js b/harness/d198-lifecycle.js
+index a19f15d8..e90e0bde 100644
+--- a/harness/d198-lifecycle.js
++++ b/harness/d198-lifecycle.js
+@@ -11,7 +11,7 @@ const sandbox = {
+     StatTracker: { Resync() { calls.push("stats"); } },
+     WorldModel: { lastPayload: null, tick() { calls.push("world"); } },
+     MapTopology: { prevRoomId: 1, prevRoomName: "old" },
+-    Actionable: { Refresh() { calls.push("actionable"); } },
++    Actionable: { Scope: {}, Refresh() { calls.push("actionable"); } },
+     ParchLockMap: { Draw() { calls.push("map"); } },
+     SemanticActions: { generationReset() { calls.push("semantic-clear"); } },
+     AttrCalibrator: { clearD198GenerationEvidence() { calls.push("provenance-clear"); } },
+diff --git a/harness/d198-loader-identity.js b/harness/d198-loader-identity.js
+index e7f8702e..9c14cc8e 100644
+--- a/harness/d198-loader-identity.js
++++ b/harness/d198-loader-identity.js
+@@ -105,7 +105,9 @@ async function main() {
+     assert.equal(deliveredA, nextResponse, 'adapter returns the exact original story response');
+     const identityA = await sandbox.ModuleLibrary.whenExecutableIdentityReady();
+     assert.equal(identityA.digest, expected, 'identity hashes executable ZCOD, not its container');
+-    assert.deepEqual(Array.from(identityA.bytes), Array.from(exec), 'exposed bytes exactly match executable ZCOD');
++    assert.equal(identityA.bytes, undefined, 'identity summary does not carry the whole executable (b747e425 summary contract)');
++    assert.deepEqual(Array.from(sandbox.ModuleLibrary.currentExecutableBytes()), Array.from(exec), 'opt-in bytes exactly match executable ZCOD');
++    assert.deepEqual(identityA.header, Array.from(exec.subarray(0, 64)), 'summary header matches executable ZCOD header');
+ 
+     nextResponse = b64(packageB);
+     await sandbox.jQuery.ajax({ dataType: 'jsonp', url: 'games/b.zblorb.js' });
+@@ -117,8 +119,10 @@ async function main() {
+         'container/module identities remain distinct'
+     );
+ 
+-    identityB.bytes[0] = 8;
+-    assert.equal(sandbox.ModuleLibrary.currentExecutableIdentity().bytes[0], 3, 'public getter cannot mutate retained bytes');
++    const bytesB = sandbox.ModuleLibrary.currentExecutableBytes();
++    bytesB[0] = 8;
++    assert.equal(sandbox.ModuleLibrary.currentExecutableBytes()[0], 3, 'public bytes getter cannot mutate retained bytes');
++    assert.ok(Object.isFrozen(identityB) && Object.isFrozen(identityB.header), 'public identity summary is immutable');
+ 
+     assert.equal(
+         sandbox.ModuleLibrary.currentExecutableIdentity('games/a.zblorb.js').digest,

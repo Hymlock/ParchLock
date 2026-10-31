@@ -11,7 +11,7 @@ const sandbox = {
     StatTracker: { Resync() { calls.push("stats"); } },
     WorldModel: { lastPayload: null, tick() { calls.push("world"); } },
     MapTopology: { prevRoomId: 1, prevRoomName: "old" },
-    Actionable: { Refresh() { calls.push("actionable"); } },
+    Actionable: { Scope: {}, Refresh() { calls.push("actionable"); } },
     ParchLockMap: { Draw() { calls.push("map"); } },
     SemanticActions: { generationReset() { calls.push("semantic-clear"); } },
     AttrCalibrator: { clearD198GenerationEvidence() { calls.push("provenance-clear"); } },

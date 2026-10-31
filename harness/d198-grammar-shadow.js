@@ -42,7 +42,10 @@ const GP = sandbox.GrammarProvider;
 const valve = GP.D198GrammarValve;
 const zork = story('Zork1-TheGreatUndergroundEmpire.z3.js');
 const advent = story('Advent.z5.js');
-const suspect = story('Suspect.z3.js');
+// Suspect.z3 was the unknown-family fixture until b0e2f9e0 admitted it as
+// confirmed-zil-family; every shipped raw story now classifies, so use a
+// synthetic v3 image that no family validator can confirm.
+const unknownStory = new Uint8Array(65536); unknownStory[0] = 3; unknownStory[0x1a] = 0x80;
 
 sandbox.ZRamProvider = { getMem: () => zork };
 ok(valve.mode() === 'on', 'grammar valve defaults on after validated activation');
@@ -81,7 +84,11 @@ ok(onZork.specialCommands.some(item => item.command === 'take' && item.source ==
 same(sandbox.window.__PL_GRAMMAR_VERBS__, onZork.specialCommands.map(item => item.command), 'on publishes exactly the active grammar vocabulary');
 ok(GP.d198ShadowDiagnostics() === null, 'on does not leave a shadow snapshot');
 
-sandbox.ZRamProvider.getMem = () => suspect;
+sandbox.ZRamProvider.getMem = () => unknownStory;
+valve._testOverride = 'shadow';
+GP.collect();
+ok(GP.d198ShadowDiagnostics() && GP.d198ShadowDiagnostics().classification === 'unknown', 'unknown-family fixture really classifies unknown');
+valve._testOverride = 'on';
 const unknownOn = GP.collect();
 ok(unknownOn.specialCommands.length === 0, 'unknown family emits no facts even when valve is on');
 
