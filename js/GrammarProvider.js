@@ -1,6 +1,6 @@
 var GrammarProvider = {
     name: "grammar-ram",
-    D198DecoderVersion: "d198-infocom-pre-v6-v1",
+    D198DecoderVersion: "d198-infocom-pre-v6-v2",
     _d198DecodeCache: (typeof WeakMap !== "undefined") ? new WeakMap() : null,
     _d214DirectionCache: (typeof WeakMap !== "undefined") ? new WeakMap() : null,
 
@@ -63,7 +63,8 @@ var GrammarProvider = {
             }
             dict.entries.forEach(function (entry) {
                 if (!(entry.flags & 0x10)) return;
-                var prop = entry.data[(entry.flags & 3) === 3 ? 1 : 2];
+                // Single-value layout: the invariant proves P1 = direction, so the value is data[1].
+                var prop = dict.layout === 'single-value' ? entry.data[1] : entry.data[(entry.flags & 3) === 3 ? 1 : 2];
                 var label = typeof ExitCalibrator !== 'undefined' && ExitCalibrator.normalizeDir(entry.word) || entry.word;
                 if (!/^[a-z]+$/.test(label) || !Number.isInteger(prop) || prop < 1 || prop > (h.version <= 3 ? 31 : 63) || !present[prop]) { rejected = true; return; }
                 if (byLabel[label] != null && byLabel[label] !== prop) { rejected = true; return; }
@@ -194,19 +195,31 @@ var GrammarProvider = {
         var first = p + 3;
         var textWords = h.version <= 3 ? 2 : 3;
         var textBytes = textWords * 2;
-        if (entryLen < textBytes + 3 || count < 1 || count > 4000 || first + entryLen * count > length) return null;
+        // D198 layouts, chosen for the whole dictionary:
+        // classic = text + flags + two value bytes (or more);
+        // single-value = text + flags + ONE value byte (the P1 part's value, Sherlock v5
+        // parser.zil K-P-P1OFF 7). It is admitted only under a biconditional
+        // part-of-speech invariant, so data[1] always belongs to a known part.
+        var layout = entryLen >= textBytes + 3 ? 'classic'
+            : (entryLen === textBytes + 2 && h.version === 5 ? 'single-value' : null);
+        if (!layout || count < 1 || count > 4000 || first + entryLen * count > length) return null;
         var entries = [], byAddress = {}, byWord = {};
         for (var i = 0; i < count; i++) {
             var addr = first + i * entryLen;
             var word = String(ZRamReader.decodeDictionaryText(mem, addr, textWords) || "").toLowerCase().trim();
             var data = [];
             for (var j = textBytes; j < entryLen; j++) data.push(ZRamReader.u8(mem, addr + j));
+            if (layout === 'single-value') {
+                var f = data[0], p1 = f & 3;
+                if (((f & 0x40) !== 0) !== (p1 === 1) || ((f & 0x10) !== 0) !== (p1 === 3) || p1 === 2
+                    || (p1 === 0 && data[1] !== 0)) return null;
+            }
             var entry = { word: word, addr: addr, flags: data[0], data: data };
             entries.push(entry);
             byAddress[addr] = entry;
             if (word) byWord[word] = entry;
         }
-        return { entries: entries, byAddress: byAddress, byWord: byWord, first: first, end: first + entryLen * count, entryLen: entryLen };
+        return { entries: entries, byAddress: byAddress, byWord: byWord, first: first, end: first + entryLen * count, entryLen: entryLen, layout: layout };
     },
 
     _d198EarlyInformSignal: function (entries) {
@@ -330,13 +343,29 @@ var GrammarProvider = {
         var prepEntrySize = prepType === 0 ? 4 : 3;
         if (prepBase + 2 + prepCount * prepEntrySize > length) return null;
         var prepByIndex = {}, prepositions = [];
+        var singleValue = dict.layout === 'single-value', prepIdByWord = {}, prepAliases = {};
         var prepPos = prepBase + 2;
         for (i = 0; i < prepCount; i++) {
             var dictAddr = ZRamReader.u16(mem, prepPos);
             var prepEntry = dict.byAddress[dictAddr];
             if (!prepEntry || !prepEntry.word) return null;
             var prepIndex = prepType === 0 ? ZRamReader.u16(mem, prepPos + 2) : ZRamReader.u8(mem, prepPos + 2);
-            if (prepIndex < 0x80 || prepByIndex[prepIndex]) return null;
+            if (prepIndex < 0x80) return null;
+            if (singleValue) {
+                // Sherlock's PREPOSITIONS lists synonyms under one ID. Allowed only
+                // for preposition-flagged words; a word may never carry two IDs.
+                if (!(prepEntry.flags & 0x08)) return null;
+                if (prepIdByWord[prepEntry.word] != null && prepIdByWord[prepEntry.word] !== prepIndex) return null;
+                prepIdByWord[prepEntry.word] = prepIndex;
+                if (prepByIndex[prepIndex]) {
+                    var al = prepAliases[prepIndex];
+                    if (al.aliases.indexOf(prepEntry.word) < 0 && al.canonical !== prepEntry.word) al.aliases.push(prepEntry.word);
+                    prepositions.push(prepEntry.word);
+                    prepPos += prepEntrySize;
+                    continue;
+                }
+                prepAliases[prepIndex] = { id: prepIndex, canonical: prepEntry.word, aliases: [] };
+            } else if (prepByIndex[prepIndex]) return null;
             prepByIndex[prepIndex] = prepEntry.word;
             prepositions.push(prepEntry.word);
             prepPos += prepEntrySize;
@@ -346,7 +375,7 @@ var GrammarProvider = {
         for (i = 0; i < dict.entries.length; i++) {
             var de = dict.entries[i];
             if (!de.word || !(de.flags & 0x40)) continue;
-            var dataOffset = ((de.flags & 0x03) === 0x01) ? 1 : 2;
+            var dataOffset = (singleValue || (de.flags & 0x03) === 0x01) ? 1 : 2;
             if (dataOffset >= de.data.length) continue;
             var verbIndex = 255 - de.data[dataOffset];
             if (verbIndex < 0 || verbIndex >= verbCount) continue;
@@ -372,6 +401,10 @@ var GrammarProvider = {
                 if (!(rawVerb.flags & 0x40)) continue;
                 // Check both possible data positions, including records whose
                 // undecodable word was excluded by the mapped-word pass.
+                if (singleValue) {
+                    if (!rawVerb.data || rawVerb.data.length < 2 || 255 - rawVerb.data[1] === orphanIndex) return null;
+                    continue;
+                }
                 if (!rawVerb.data || rawVerb.data.length < 3
                     || 255 - rawVerb.data[1] === orphanIndex
                     || 255 - rawVerb.data[2] === orphanIndex) return null;
@@ -414,6 +447,11 @@ var GrammarProvider = {
             prepositions: prepositions,
             templates: templates
         };
+        if (singleValue) {
+            decoded.dictionaryLayout = 'single-value';
+            decoded.prepositionIds = Object.keys(prepAliases).map(function (k) { return prepAliases[k]; });
+            decoded.evidenceRefs.push("single-value-dictionary-invariant");
+        }
         if (orphanVerbIndices.length) {
             decoded.orphanVerbIndices = orphanVerbIndices;
             decoded.evidenceRefs.push("bounded-unreferenced-syntax-index");

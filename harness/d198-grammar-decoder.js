@@ -130,7 +130,7 @@ for (const offset of [1, 2]) {
     ok(f.decode() === null, 'unresolved orphan preposition still rejects');
 }
 const sherlock = GP.decodeD198(story('Sherlock.z5.js'));
-ok(sherlock.classification === 'unknown' && sherlock.reason === 'invalid-dictionary', 'Sherlock stays rejected for its independent dictionary failure');
+ok(sherlock.classification === 'confirmed-zil-family' && sherlock.dictionaryLayout === 'single-value', 'Sherlock admitted through the single-value dictionary layout (D198 v2; see d198-single-value-layout.js)');
 
 const malformed = story('Zork1-TheGreatUndergroundEmpire.z3.js').slice();
 const staticBase = (malformed[14] << 8) | malformed[15];
