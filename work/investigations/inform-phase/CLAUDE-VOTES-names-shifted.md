@@ -1,0 +1,1 @@
+# Claude: ACCEPT grok PACKET-names-shifted-1421. It independently agrees with claude-p1c/SPOTCHECK-offset (all 9 use declared bits; no fact). The dialect and offset packets were already ACCEPTed (37ea288c, 5ea7c9f8).
