@@ -5,15 +5,15 @@ Source: `work/investigations/2026-10-11-zil-cell-ledger.json` (cells with `s:"NC
 
 ## 0. Headline finding (attack this first)
 
-**None of the 25 titles carrying NC cells is in the release set.** `GAMES_INCLUDED.md` (80 games) contains no
+~~**None of the 25 titles carrying NC cells is in the release set.** `GAMES_INCLUDED.md` (80 games) contains no~~ (withdrawn R3: release inclusion is not a scope criterion)
 Zork / Hitchhiker / Planetfall / Enchanter / Sorcerer / Spellbreaker / Wishbringer / Lurking Horror / Stationfall /
 Moonmist / Ballyhoo / Deadline / Witness / Suspect / Infidel / Seastalker / Cutthroats / Hollywood Hijinx /
 Leather Goddesses / Plundered Hearts / Border Zone / Starcross / Suspended (case-insensitive grep: 0 hits each).
-Under "streamline to player-visible impact in the 80 release games", every NC cell has **zero release-visible
+~~Under "streamline to player-visible impact in the 80 release games", every NC cell has **zero release-visible~~ (withdrawn R3: release inclusion is not a scope criterion)
 impact**. The per-key analysis below therefore asks a second question: if the ZIL lane (dev catalogue) still wants
 a consumer, is there a visible gain the app does not already get another way?
 
-Check for seats: `for t in Zork Hitchhik Planetfall ...; do grep -ci "$t" GAMES_INCLUDED.md; done`.
+~~Check for seats: `for t in Zork Hitchhik Planetfall ...; do grep -ci "$t" GAMES_INCLUDED.md; done`.~~ (withdrawn R3: release inclusion is not a scope criterion)
 
 ## 1. Exact cells (90)
 
@@ -106,11 +106,11 @@ Check for seats: `for t in Zork Hitchhik Planetfall ...; do grep -ci "$t" GAMES_
 | enterable (Suspended) | 1 | OUT | robots-only vehicle (D8) | | | |
 
 Proposed ledger effect if unanimous: keep status L:NC (not NA, per the 2026-10-24 rule) with reason
-"out of release scope (no title in GAMES_INCLUDED.md) + redundant/no consumer"; reopen only if an Infocom title
-enters the release set or a seat demonstrates a missing radial option.
+~~"out of release scope (no title in GAMES_INCLUDED.md) + redundant/no consumer"; reopen only if an Infocom title~~ (withdrawn R3: release inclusion is not a scope criterion)
+~~enters the release set or a seat demonstrates a missing radial option.~~ (withdrawn R3: release inclusion is not a scope criterion)
 
 ## Claude self-attack before circulation (2026-10-31)
-The "not in the 80 release games" argument (section 0) is NOT a valid basis on its own. ParchLock lets players import their
+~~The "not in the 80 release games" argument (section 0) is NOT a valid basis on its own. ParchLock lets players import their~~ (withdrawn R3: release inclusion is not a scope criterion)
 own story files (Modules > import), so Infocom ZIL titles run in the released app as user modules, and their radials
 matter. Decide each key ONLY on its per-key merits: is there a redundant source already, and would any player-visible
 option or display change for an imported ZIL game? The release-set observation stays as context, not as justification.
@@ -137,3 +137,35 @@ moved to inventory).
   The 7 MISSING titles' lightSource cells move from NC to U (evidence work).
 All other keys keep the R1 OUT recommendation, judged on per-key merits (redundant source / no visible change); the
 release-set argument is withdrawn as justification.
+
+## R3 (claude, adopting codex nc-r1-adversarial-review.md; release-set reasoning struck from every row above)
+The review is split so that decided keys do not wait on open ones.
+
+### A. Decide now (four-seat vote): proper, female, pluralname
+Disposition: L:NC "no current wrapper consumer composes articles, pronouns or grammatical number; imported ZIL titles
+fully in scope; reopen on any concrete composing consumer". There is no inference from gender to talkability or animacy,
+and none from plural to physical multiplicity. This adopts codex's conditional wording verbatim. codex: ACCEPT
+(#5778). Needed: grok, grok2, claude ACCEPT.
+
+### B. Stays NC under an existing ruling, no new claim: light (18)
+The reader inventory is corrected: attrs.light IS read at ZRamReader.js:1729 (object admission heuristic) and :1799
+(Inform-scoped heuristic). The cells remain under D247 (heuristic key, illumination via illuminationState, NOT
+certified). R1's "OUT" is withdrawn. A per-title room/object meaning audit is future work only if a consumer is
+proposed.
+
+### C. Reopened as work (moved to U, evidence lanes)
+- lightSource: BUILD per R2. Adopting codex: per-title carrier domain compared with switchable/on and the accepted
+  grammar. "turn off"/"extinguish" is offered only where the game's own verb and handler support it; fire, magic light
+  and permanently emitting objects are excluded per title. Per-title provenance is kept. Native evidence is in flight
+  (lightsource-native/).
+- visited (25): per-title TOUCHBIT meaning compared with navigation history (moved vs described/revealed). The
+  no-backwards-compat premise is withdrawn; note that the map is saved per save (D215 snapshots), so an in-play RESTORE
+  restores visited with the map. The disposition will follow the per-title comparison.
+- Hitchhik on: no current device consumer; the room-lit meaning is recorded. Not a permanent exclusion; reopen on a
+  room-light map/display use.
+- Moonmist locked: reopened for D5-style raw "Locked" display (AttributeSchema.lockedObjectStatus), separate from route
+  pausing (P10/D246). Needs a source census of Moonmist lock owners and transitions (tested/set LOCKED) and a
+  usefulness check, given that auto-unlock makes the display short-lived.
+- Suspended enterable: reopened against D8. Is an actor-addressed "<robot>, board/enter <vehicle>" missing? Compare
+  the VEHBIT owner, robot reachability and source dispatch with retained native robot evidence. An unaddressed player
+  Enter stays rejected.
