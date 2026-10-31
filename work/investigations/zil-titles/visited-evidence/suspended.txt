@@ -1,0 +1,115 @@
+### main.zil:59 (historicalsource/suspended)
+	 <ENABLE <QUEUE I-DECAY 5>>
+	 <ENABLE <QUEUE I-FOOD -1>>
+	 <ENABLE <QUEUE I-WIRE-MESSAGE -1>>
+	 <ENABLE <QUEUE I-ROBOTKILLER -1>>
+         <ENABLE <QUEUE I-SCORE -1>>
+	 <ENABLE <QUEUE I-IRIS-HINTS -1>>
+	 <SETG P-IT-OBJECT <>>
+	 <SETG WINNER-HERE ,CPU-ROOM>
+	 <COND (<NOT <FSET? ,WINNER-HERE ,TOUCHBIT>>
+		<V-VERSION>
+		<CRLF>)>
+	 <BEGINNING>
+	 <CHANGE-WINNER ,IRIS T>
+
+### objects.zil:1618 (historicalsource/suspended)
+<ROUTINE CIRCLE-FCN ("AUX" (COUNT 0) (NUM-PRESSED 0) (PREMATURE T))
+	 <COND (<VERB? PUSH>
+		<COND (<NOT <IN? ,FUSE ,MACHINE>>
+		       <ROBOT-TELL "Nothing is happening. I don't think it's working anymore.">
+		       <RTRUE>)>
+		<COND (<FSET? ,PRSO ,TOUCHBIT>
+		       <TELL "FC: That one has already been pressed." CR>
+		       <RTRUE>)
+		      (T <FSET ,PRSO ,TOUCHBIT>)>
+		<COND (<AND <EQUAL? ,REDSET ,REDWIRE>
+			    <EQUAL? ,ORANGESET ,ORANGE-WIRE>>
+		       <SET PREMATURE <>>
+		       <COND (<EQUAL? ,PRSO ,CODE1>
+
+src-suspended/globals.zil:15:	(FLAGS RMUNGBIT INVISIBLE TOUCHBIT SURFACEBIT TRYTAKEBIT
+src-suspended/globals.zil:68:	(FLAGS NDESCBIT TOUCHBIT)>
+src-suspended/globals.zil:74:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/globals.zil:91:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/globals.zil:99:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/globals.zil:106:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/globals.zil:115:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/globals.zil:130:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/globals.zil:137:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/globals.zil:147:	(FLAGS NDESCBIT TOOLBIT TOUCHBIT)
+src-suspended/globals.zil:156:	(FLAGS VILLAIN TOUCHBIT)
+src-suspended/globals.zil:198:	(FLAGS TOUCHBIT NDESCBIT)
+src-suspended/globals.zil:206:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/globals.zil:215:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/globals.zil:227:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/globals.zil:237:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/globals.zil:248:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/globals.zil:266:	(FLAGS NDESCBIT TOUCHBIT)>
+src-suspended/globals.zil:271:	(FLAGS TOUCHBIT NDESCBIT)
+src-suspended/globals.zil:301:	(FLAGS NDESCBIT CLIMBBIT TOUCHBIT)
+src-suspended/globals.zil:307:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/objects.zil:10:	(FLAGS CONTBIT TOUCHBIT NDESCBIT)
+src-suspended/objects.zil:112:	(FLAGS TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:125:	(FLAGS TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:136:	(FLAGS TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:169:	(FLAGS TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:179:	(FLAGS TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:189:	(FLAGS TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:199:	(FLAGS TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:209:	(FLAGS TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:219:	(FLAGS TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:229:	(FLAGS TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:290:	(FLAGS OPENBIT CONTBIT TOUCHBIT SURFACEBIT)
+src-suspended/objects.zil:383:	(FLAGS OPENBIT CONTBIT TOUCHBIT SURFACEBIT NDESCBIT)
+src-suspended/objects.zil:500:                              <FSET ,CABINET ,TOUCHBIT>
+src-suspended/objects.zil:649:	(FLAGS TOUCHBIT NDESCBIT TURNBIT)
+src-suspended/objects.zil:662:	(FLAGS NDESCBIT TOUCHBIT TURNBIT)
+src-suspended/objects.zil:675:	(FLAGS TOUCHBIT NDESCBIT TURNBIT)
+src-suspended/objects.zil:800:	(FLAGS TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:815:	(FLAGS  TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:827:	(FLAGS  TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:840:	(FLAGS  TOUCHBIT TAKEBIT)
+src-suspended/objects.zil:854:	(FLAGS  TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:867:	(FLAGS  TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:880:	(FLAGS  TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:892:	(FLAGS  TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:996:	(FLAGS CONTBIT TOUCHBIT)
+src-suspended/objects.zil:1012:	(FLAGS TAKEBIT CONTBIT TOUCHBIT)
+src-suspended/objects.zil:1034:	(FLAGS FURNITURE CONTBIT SURFACEBIT NDESCBIT OPENBIT TOUCHBIT)
+src-suspended/objects.zil:1045:	(FLAGS FURNITURE CONTBIT SURFACEBIT NDESCBIT OPENBIT TOUCHBIT)
+src-suspended/objects.zil:1056:	(FLAGS TOUCHBIT FURNITURE CONTBIT SURFACEBIT NDESCBIT OPENBIT)
+src-suspended/objects.zil:1090:	(FLAGS TOUCHBIT NDESCBIT TURNBIT)
+src-suspended/objects.zil:1104:	(FLAGS NDESCBIT TOUCHBIT TURNBIT)
+src-suspended/objects.zil:1119:	(FLAGS TOUCHBIT NDESCBIT TURNBIT)
+src-suspended/objects.zil:1141:	(FLAGS NDESCBIT TOUCHBIT ONBIT)
+src-suspended/objects.zil:1151:	(FLAGS NDESCBIT TOUCHBIT ONBIT)
+src-suspended/objects.zil:1161:	(FLAGS NDESCBIT TOUCHBIT ONBIT)
+src-suspended/objects.zil:1235:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/objects.zil:1244:	(FLAGS TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:1255:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/objects.zil:1263:	(FLAGS NDESCBIT TOUCHBIT)>
+src-suspended/objects.zil:1267:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/objects.zil:1275:	(FLAGS TAKEBIT CONTBIT INVISIBLE TOUCHBIT)
+src-suspended/objects.zil:1285:	(FLAGS TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:1313:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/objects.zil:1326:	(FLAGS NDESCBIT TOUCHBIT)
+src-suspended/objects.zil:1338:	(FLAGS TOUCHBIT NDESCBIT)
+src-suspended/objects.zil:1351:	(FLAGS TOUCHBIT NDESCBIT)
+src-suspended/objects.zil:1367:	(FLAGS NDESCBIT TOUCHBIT)>
+src-suspended/objects.zil:1371:	(FLAGS TOUCHBIT NDESCBIT)
+src-suspended/objects.zil:1382:	 (FLAGS NDESCBIT TOUCHBIT)
+src-suspended/objects.zil:1391:	(FLAGS NDESCBIT TOUCHBIT CONTBIT SURFACEBIT OPENBIT)
+src-suspended/objects.zil:1401:	(FLAGS CONTBIT SEARCHBIT NDESCBIT TOUCHBIT)
+src-suspended/objects.zil:1458:	(FLAGS INVISIBLE TAKEBIT TOUCHBIT)
+src-suspended/objects.zil:1483:	(FLAGS TOUCHBIT CONTBIT OPENBIT NDESCBIT)
+src-suspended/objects.zil:1496:	(FLAGS TOUCHBIT CONTBIT OPENBIT NDESCBIT)
+src-suspended/objects.zil:1512:	(FLAGS NDESCBIT TOUCHBIT TAKEBIT INVISIBLE)
+src-suspended/objects.zil:1524:	(FLAGS CONTBIT SURFACEBIT TOUCHBIT OPENBIT)
+src-suspended/objects.zil:1618:		      (T <FSET ,PRSO ,TOUCHBIT>)>
+src-suspended/objects.zil:1655:			<FCLEAR <GET ,CODE-TBL .COUNT> ,TOUCHBIT>)>>
+src-suspended/robots.zil:480:		       <FSET ,DEADBOT ,TOUCHBIT>)>
+src-suspended/verbs.zil:682:		<FSET ,PRSO ,TOUCHBIT>
+src-suspended/verbs.zil:746:		<FSET ,PRSO ,TOUCHBIT>
+src-suspended/verbs.zil:2181:		<FSET ,PRSO ,TOUCHBIT>
+src-suspended/verbs.zil:2216:		<FSET ,PRSO ,TOUCHBIT>

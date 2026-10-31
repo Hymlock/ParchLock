@@ -1,0 +1,30 @@
+### c4.zil:1351 (historicalsource/spellbreaker)
+			    <IN? ,MAZE-2-DOOR ,HERE>>
+		       <TELL " ">
+		       <DESCRIBE-PLUG>)>
+		<CRLF>)
+	       (<EQUAL? .RARG ,M-ENTER>
+		<COND (<EQUAL? ,HERE ,MAZE-2>
+		       <MOVE ,OCTAGONAL-HOLE ,HERE>
+		       <FCLEAR ,OCTAGONAL-HOLE ,OPENBIT>)>
+		<FCLEAR ,HERE ,TOUCHBIT>)
+	       (<EQUAL? .RARG ,M-LEAVE>
+		<COND (<EQUAL? ,HERE ,MAZE-2>
+		       <MOVE ,MAZE-2-DOOR ,MAZE-2>
+		       <FCLEAR ,OCTAGONAL-HOLE ,OPENBIT>)>
+
+### verbs.zil:1800 (historicalsource/spellbreaker)
+		      (ELSE
+		       <TELL ", in ">)>
+		<TELL THE .AV>
+		<COND (<EQUAL? .AV ,ROC>
+		       <TELL "'s talons">)>)>
+	 <CRLF>
+	 <SET V? <OR .LOOK? <EQUAL? ,VERBOSITY 2>>>
+	 <COND (<NOT <FSET? ,HERE ,TOUCHBIT>>
+		<FSET ,HERE ,TOUCHBIT>
+		<COND (,VERBOSITY <SET V? T>)>)>
+	 <SETG DESCRIBED-ROOM? .V?>
+	 <COND (.V?
+		<COND (<AND <NOT <EQUAL? ,HERE .AV>>
+

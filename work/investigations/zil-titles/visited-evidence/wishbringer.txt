@@ -1,0 +1,15 @@
+### verbs.zil:2335 (historicalsource/wishbringer)
+		<COND (<AND <NOT ,ECLIPSE?>
+			    <OR ,FIRST-WARNING?
+			        <PROB 50>>>
+		       <TELL " You are likely to be eaten by a grue.">
+		       <SETG FIRST-WARNING? <>>)>
+		<CRLF>
+		<RFALSE>)>
+	 <COND (<NOT <FSET? ,HERE ,TOUCHBIT>>
+		<FSET ,HERE ,TOUCHBIT>
+		<SET V? T>)>
+	 <COND (<IN? ,HERE ,ROOMS>
+		<TELL D ,HERE CR>)>
+	 <COND (<OR .LOOK?
+

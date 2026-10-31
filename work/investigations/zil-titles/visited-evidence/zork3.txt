@@ -1,0 +1,75 @@
+### 3actions.zil:427 (historicalsource/zork3)
+
+<GLOBAL CPBLOCK-FLAG <>>
+
+<CONSTANT GCARDLOC 168>	;"8*(22-1)"
+
+<ROUTINE CPGOTO (FX "AUX" F X CNT TOP)
+	#DECL ((FX CNT TOP) FIX (F X) <OR FALSE OBJECT>)
+	<SETG CP-MOVED T>
+	<FCLEAR ,HERE ,TOUCHBIT>
+	<SET TOP <* 8 <- ,CPHERE 1>>>
+	<SET CNT <+ .TOP 1>>
+	<SET F <FIRST? ,CP>>
+	<REPEAT ()
+
+### actions.zil:382 (historicalsource/zork3)
+
+<GLOBAL CPBLOCK-FLAG <>>
+
+<CONSTANT GCARDLOC 168>	;"8*(22-1)"
+
+<ROUTINE CPGOTO (FX "AUX" F X CNT TOP)
+	#DECL ((FX CNT TOP) FIX (F X) <OR FALSE OBJECT>)
+	<SETG CP-MOVED T>
+	<FCLEAR ,HERE ,TOUCHBIT>
+	<SET TOP <* 8 <- ,CPHERE 1>>>
+	<SET CNT <+ .TOP 1>>
+	<SET F <FIRST? ,CP>>
+	<REPEAT ()
+
+### gverbs.zil:1695 (historicalsource/zork3)
+			'<COND (<EQUAL? ,HERE ,DARK-2>
+		                <TELL
+"The ground continues to slope upwards away from the lake. You can barely
+detect a dim light from the east." CR>)>)
+		       (T
+			'<NULL-F>)>
+		<RFALSE>)>
+	 <COND (<NOT <FSET? ,HERE ,TOUCHBIT>>
+		<FSET ,HERE ,TOUCHBIT>
+		<SET V? T>)>
+	 %<COND (<==? ,ZORK-NUMBER 1>
+		 '<COND (<FSET? ,HERE ,MAZEBIT>
+		         <FCLEAR ,HERE ,TOUCHBIT>)>)
+
+### gverbs.zil:1699 (historicalsource/zork3)
+		       (T
+			'<NULL-F>)>
+		<RFALSE>)>
+	 <COND (<NOT <FSET? ,HERE ,TOUCHBIT>>
+		<FSET ,HERE ,TOUCHBIT>
+		<SET V? T>)>
+	 %<COND (<==? ,ZORK-NUMBER 1>
+		 '<COND (<FSET? ,HERE ,MAZEBIT>
+		         <FCLEAR ,HERE ,TOUCHBIT>)>)
+		(T
+		 '<NULL-F>)>
+	 <COND (<IN? ,HERE ,ROOMS>
+		;"Was <TELL D ,HERE CR>"
+
+### verbs.zil:75 (historicalsource/zork3)
+		       <TELL " You are likely to be eaten by a grue.">)>
+		<CRLF>
+		<COND (<==? ,HERE ,DARK-2>
+		       <TELL
+"The ground continues to slope upwards away from the lake. You can barely
+detect a dim light from the east." CR>)>
+		<RETURN <>>)>
+	 <COND (<NOT <FSET? ,HERE ,TOUCHBIT>>
+		<FSET ,HERE ,TOUCHBIT>
+		<SET V? T>)>
+	 <COND (<IN? ,HERE ,ROOMS> <TELL D ,HERE CR>)>
+	 <COND (<OR .LOOK? <NOT ,SUPER-BRIEF>>
+		<SET AV <LOC ,WINNER>>
+

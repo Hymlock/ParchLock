@@ -1,0 +1,30 @@
+### actions.zil:2434 (historicalsource/starcross)
+	 #DECL ((RM) OBJECT)
+	 <SET OHERE ,HERE>
+	 <COND (<FSET? .OHERE ,TOUCHBIT>
+		<SET OSEEN T>)>
+	 <SET OLIT ,LIT>
+	 <SETG HERE .RM>
+	 <SETG LIT <LIT? .RM>>
+	 <PERFORM ,V?LOOK>
+	 <COND (<NOT .OSEEN> <FCLEAR .OHERE ,TOUCHBIT>)>
+	 <SETG HERE .OHERE>
+	 <SETG LIT .OLIT>
+	 T>
+
+
+### verbs.zil:59 (historicalsource/starcross)
+
+<ROUTINE DESCRIBE-ROOM ("OPTIONAL" (LOOK? <>) "AUX" V? STR AV)
+	 <SET V? <OR .LOOK? ,VERBOSE>>
+	 <COND (<NOT ,LIT>
+		<TELL
+"It is pitch black. You are likely to be eaten by a grue." CR>
+		<RETURN <>>)>
+	 <COND (<NOT <FSET? ,HERE ,TOUCHBIT>>
+		<FSET ,HERE ,TOUCHBIT>
+		<SET V? T>)>
+	 <COND (<IN? ,HERE ,ROOMS> <TELL D ,HERE CR>)>
+	 <COND (<OR .LOOK? <NOT ,SUPER-BRIEF>>
+		<SET AV <LOC ,WINNER>>
+
