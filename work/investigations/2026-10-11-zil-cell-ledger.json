@@ -567,8 +567,8 @@
    "r": "SOLO/SELF-AUDIT (operator #3542; no Codex sign-off): Codex #3539 gap: put pole on stand tests SURFACEBIT 17 TRUE on lion stand 96 (pgapbally2); with leather sofa 20 (pzballyhoo) = 2 distinct positives; bunk109 excluded. look on stand does not test the bit in this game."
   },
   "lightSource": {
-   "s": "U",
-   "r": "U untestable-by-rule-7 (claude #4040, d7077a1): LIGHTBIT 26 exists, but V-LAMP-ON is an unconditional refusal and nothing target-named tests or writes it; only a parser FIND reads it. The flag exists, so it stays U, not N/A."
+   "s": "NC",
+   "r": "Group rule A (as the other 17 lightSource cells, D2/D247): no js/ consumer reads lightSource (grep 2026-10-31). LIGHTBIT 26 exists in source (not NA); no target-named command tests/writes it (V-LAMP-ON refuses or never checks; only parser FIND/GWIM), so no rule-7 fact is producible. Was left U by #4028/#4040 before rule A. lightsource-3-notes.md."
   },
   "absent": {
    "s": "NA",
@@ -1509,8 +1509,8 @@
    "r": "SOLO/SELF-AUDIT 2026-10-16: inventoryHiddenAttribute 18 (native i tests NDESCBIT 18 TRUE on the pc mouse/HELP key and omits them; FALSE on printed chair/pc/assignment; source exact 72/72). Gate 0 diffs. Open: pc labelled computer terminals vs native pc."
   },
   "lightSource": {
-   "s": "U",
-   "r": "U untestable-by-rule-7 (claude #4028/#4040): LIGHTBIT 22 is read only by a parser FIND/GWIM scan (bare light/turn on); no target-named command tests or writes it, so a rule-7 positive is impossible. The flag exists, so this is not N/A; it stays U with this reason."
+   "s": "NC",
+   "r": "Group rule A (as the other 17 lightSource cells, D2/D247): no js/ consumer reads lightSource (grep 2026-10-31). LIGHTBIT 22 exists in source (not NA); no target-named command tests/writes it (V-LAMP-ON refuses or never checks; only parser FIND/GWIM), so no rule-7 fact is producible. Was left U by #4028/#4040 before rule A. lightsource-3-notes.md."
   },
   "absent": {
    "s": "NA",
@@ -2665,8 +2665,8 @@
    "r": "not applicable (BOUNDED STATIC finding): no two initially-takeable objects share an identical short name. Scope: the compiled object table of the shipped story file, objects with the exact source TAKEBIT at boot and a non-empty static short name (grok1 2026-10-17, agent-tools/g1-objtab.cjs -> g1-solid-objtable.json: CONFIRMED (0 duplicate short names in 22 objects)). Not covered: runtime renames, objects that become takeable later, unnamed/dynamic labels. Source sweep: claude zil-sweep-na.json @380d7e7. In-app spot check per type (live RAM via page-probe on main 754465f, after boot+look): Zork I identical 0 duplicates among 60 takeables; LGOP descriptors 0 shared heads among 31 takeables, equal to the compiled counts."
   },
   "lightSource": {
-   "s": "U",
-   "r": "U untestable-by-rule-7 (claude #4040, de32205): LIGHTBIT 25 exists, but V-LAMP-ON never tests it; only a parser FIND reads it. The flag exists, so it stays U, not N/A."
+   "s": "NC",
+   "r": "Group rule A (as the other 17 lightSource cells, D2/D247): no js/ consumer reads lightSource (grep 2026-10-31). LIGHTBIT 25 exists in source (not NA); no target-named command tests/writes it (V-LAMP-ON refuses or never checks; only parser FIND/GWIM), so no rule-7 fact is producible. Was left U by #4028/#4040 before rule A. lightsource-3-notes.md."
   },
   "absent": {
    "s": "NA",
