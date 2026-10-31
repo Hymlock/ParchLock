@@ -2787,12 +2787,12 @@
    "r": "FOUR-SEAT ACCEPT (grok author INDEX-sherlock-grok-lane 42ba8316; grok2 VOTES-grok2.md; claude VOTES-claude.md; codex codex-sherlock-votes-0837.md), landed r49 seeded native-command tier: FL-SURFACE 16"
   },
   "lightSource": {
-   "s": "UD",
-   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT (claude PACKET-lamp-claude.md; grok VOTES-grok-claude-packets.md; codex sherlock-takeover-votes-1422.md): lightForms {objects [166], stateBit 38 FL-LIGHTED, on turn on / off turn off; capabilityBit 42 FL-LAMP informational}."
   },
   "on": {
-   "s": "UD",
-   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+   "s": "NC",
+   "r": "THREE-SEAT ACCEPT (claude PACKET-lamp-claude.md; grok VOTES-grok-claude-packets.md; codex sherlock-takeover-votes-1422.md): FL-LIGHTED 38 is lit state (rooms and the lamp); lamp on/off served by lightForms owner-scoped; no generic on mapping."
   },
   "wearable": {
    "s": "S",

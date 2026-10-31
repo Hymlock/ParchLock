@@ -858,7 +858,10 @@ var ModuleStatFactsClaude = {
         // edible 41 = FL-FOOD (census+behaviour: 2 eats + 2 refusals, PACKET-edible-41.md). scenery FL-NODESC 32 is NOT mapped (L:X: list-suppression only).
         "attributeMap": { "container": 9, "open": 5, "isOpen": 5, "wearable": 11, "animate": 40, "talkable": 47, "supporter": 16, "door": 8, "locked": 15, "openable": 44, "enterable": 1, "transparent": 2, "moved": 3, "edible": 41 },
         // wornAttribute 34 = FL-WORN (dynamic state): native set/clear on hat 188 and whistle 173; knife stays clear. REMOVE/TAKE OFF syntax FINDs FL-WORN.
-        "wornAttribute": 34
+        "wornAttribute": 34,
+        // lightForms (three-seat ACCEPT: claude PACKET-lamp-claude.md, grok VOTES-grok-claude-packets.md, codex sherlock-takeover-votes-1422.md):
+        // lamp 166 only; state FL-LIGHTED 38 (also room-lit, hence owner-scoped); FL-LAMP 42 informational (EXTINGUISH default). Natively run verbs only.
+        "lightForms": { "capabilityBit": 42, "stateBit": 38, "objects": [166], "on": { "default": "turn on" }, "off": { "default": "turn off" } }
     },
     // phlegm (Inform, no attribute-name table): this library numbers container 3 (I6 default: concealed 3, container 4).
     // Raw target-scoped PUT IN tests (zil-route-ops-raw.cjs): PUT MAP IN COAT tests 3 TRUE on the blue overcoat 39, PUT MAP
