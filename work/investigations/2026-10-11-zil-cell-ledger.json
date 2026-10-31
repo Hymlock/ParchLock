@@ -429,6 +429,10 @@
   "lightSource": {
    "s": "NC",
    "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+  },
+  "inventoryHiddenAttribute": {
+   "s": "S",
+   "r": "D16/P16 landed 37327b0: inventoryHiddenAttribute 7 (NDESCBIT) + recurses + inventoryHiddenScopeRetained; native i = \"A spell book\"; spells kept in scope (D148 links unchanged). Gate audit-p16 INTENDED; grok2 ACCEPT #5713."
   }
  },
  "Hitchhik.z5.js": {
