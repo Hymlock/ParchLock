@@ -9822,3 +9822,48 @@ legacy overflow stays unerasable.
 **Quota.** Per-kind compact hooks, one retry, then "Storage is full" status, no requeue; soft notes >1MB/>3MB.
 **Validation.** Gate 0 walk-visible; learning-caps 53, learning-stores 92, stat-tracker 211, save-state 34,
 death-terminal 40, exit 26, operator 13/0.
+
+## D259 Identity-Wear R3: Wear for held unworn garments (per-title wearForms)
+
+**Status:** LANDED 9996cb2 + EquipmentUI descriptor fix 19109b0 (codex #6000). Four-seat ACCEPT (R3 + codex-votes-0231,
+including codex correction); grok2 code review ACCEPT (grok2/wear-impl-review.md).
+**Contract.** Per-title wearForms {objects, verb wear, scope held-direct}: Infidel ring 2, Lurking Horror gloves 203 /
+boots 104, Starcross suit 144. Offered only for owners held directly by the player and unworn, with a bare WEAR template
+and a unique verified noun; kept for held owners in room-kind callers (codex correction); re-validated at tap.
+**19109b0.** Equipment yourselfCommands kept only wornRemovalScope, so the Wear row lost identityWearScope and every scoped
+row read Drop. Both scope kinds are now retained, labelled (Drop / Wear) and re-validated per kind (digest/noun, plus
+id/generation for Wear). codex wear-equipment-review.cjs fails before, passes after.
+**Validation.** Gate 309x2 0 regressions; zil-identity-wear 48, equipment-ui 119/0, worn 20/42, operator 13/0.
+Files: `js/SemanticActions.js`, `js/EquipmentUI.js`, harness `zil-identity-wear.js`.
+
+## D260 lightForms: per-title Light/Extinguish and Turn on/off with tap-time scope
+
+**Status:** LANDED cb04cc1 + fc003d9 (codex REVISE 0907) + 6051d3d (codex REVISE 1107, current-source ACCEPT 1122).
+Four-seat ACCEPT (R4 + codex/grok conditions); grok2 code review ACCEPT (grok2/lightforms-impl-review.md).
+**Contract.** Per-title lightForms with authoritative owner lists: Infidel match + torch Light/Extinguish, Cutthroats
+flashlight Turn on/off, Enchanter lantern Turn off only (FROTZ is not ordinary Light). The live state bit selects the on/off
+side; the capability bit is informational and never gates. Owner ids are validated against the true object frontier
+(first object's property pointer; Infidel 438 vs heuristic 249), and inventory context requires direct custody (no
+off-stage/nested owners via caller context). Verbs carry lightFormScope {digest, generation, id, noun, verb, command, side,
+stateBit, context}, re-derived at tap; shared rows excluded; Equipment rows keep scope + label (Light / Turn off) with
+per-kind re-validation, parity across radial/Semantic/Equipment. Ledger: lightSource S x3; Witness/Deadline NA.
+**Validation.** zil-light-forms 48 (VM-realm clones; off-stage/nested/beyond-frontier controls), identity-wear 48,
+equipment-ui 119/0, operator 13/0. Final combined wear+lightForms 309x2 gate 50b9596 (zil-titles/wear-light-final-gate):
+7 differing fields across 6 titles, all FLAKY by retained serial paired reruns b4b8843 (author response c526029);
+codex final classification ACCEPT, 0 REGRESSION, 0 INTENDED
+(items-codex/resume-20261020/oct30-recovery/wear-light-final-classification-1337.md).
+Files: `js/AttributeSchema.js`, `js/SemanticActions.js`, `js/EquipmentUI.js`, harness `zil-light-forms.js`.
+
+## D261 r48/r49 Sherlock ledger facts
+
+**Status:** LANDED c9f1bfc (r48) and 12f4031 (r49). Four-seat ACCEPT (grok lane packets incl. b4fa8fa4, grok2, codex
+codex-votes-0231 / #5999 codex-sherlock-votes-0837, claude). Both need D257 (0d1390a).
+**r48.** wearable 11 (FL-CLOTHING), wornAttribute 34 (FL-WORN). Targeted gate 0 diffs; zil-direct-player-worn 20.
+**r49.** animate 40, talkable 47, supporter 16, door 8, locked 15, openable 44, enterable 1, transparent 2. Targeted gate
+0 diffs; zil-locked-map 37. Operator 13/0 for both. Scripts `zil-titles/apply-r48.cjs`, `apply-r49.cjs`.
+
+## D262 Pending (not landed): LGOP hole, Sherlock moved/edible/scenery
+
+**Status:** PENDING, no code. LGOP hole bounded revealedLocalGlobal proposal R3 (work/investigations/lgop-hole/
+proposal-r1.md): codex + claude ACCEPT, awaiting grok/grok2 votes; not extrapolated from the D260 gate. Sherlock moved 3 /
+edible 41 / scenery X awaiting grok vote.
