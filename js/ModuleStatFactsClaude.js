@@ -699,6 +699,11 @@ var ModuleStatFactsClaude = {
     // (2026-10-11-zil-walk-pzmoonmist5.json, target-scoped probes: chest of drawers, sports car, wardrobe / wing chair, bed, night
     // table, bench) and source-exact. Together, so surfaces get no Open/Close. Closes the luggage-contents leak (ledger FINDING).
     "bcf65075f2343fd3d10606141d7dbfa2c50f8bbf96b65161e2bda0f7fc65e3b0": {
+        // Four-seat accepted display-only LOCKED8 observation: native gate52 clear/set with
+        // opening/locking text, matched-source census + behaviour tier (not a singleton bit).
+        // Other LOCKED carriers include rooms/puzzle memory; no generic map/navigation fact.
+        // Evidence: items-codex/resume-20261020/oct30-recovery/moonmist-raw-lock-audit.md.
+        "lockedObservation": { "attribute": 8, "objects": [52] },
         // D232 local globals, roots only (work/investigations/r3-claude/localscope6/): GLOBAL property found by single-holder scan (census property 8 was the room list): driveway 9 / courtyard 13 ocean and front gate, foyer 132 oil painting; reciprocal refusals; GLOBAL entries parented 37 are skipped by the holder check. INVISIBLE 6 exact, ONBIT 10 exact.
         "localScope": { "property": 7, "width": 1, "holder": 44, "roomLitAttribute": 10, "invisible": 6 },
         // Bit21 is garment state only in its physical item domain; rooms

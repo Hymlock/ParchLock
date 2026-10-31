@@ -160,7 +160,26 @@ var AttributeSchema = {
     lockedObjectStatus: function (objectId) {
         try {
             var mem = AttributeSchema._getMem(), fact = mem && ZRamReader.executableLayoutFacts(mem);
-            var ids = fact && fact.lockedStatusObjects, h = mem && ZRamReader.header(mem);
+            var h = mem && ZRamReader.header(mem), ids = fact && fact.lockedStatusObjects;
+            var observation = fact && Object.prototype.hasOwnProperty.call(fact, "lockedObservation");
+            var bit = fact && fact.attributeMap && fact.attributeMap.locked;
+            if (observation) {
+                // Display-only ownership must never create the generic locked fact
+                // consumed by exit/navigation readers (Moonmist auto-unlocks).
+                var rule = fact.lockedObservation;
+                var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest
+                    ? ModuleLibrary.currentExecutableDigest() : null;
+                if (!rule || typeof rule !== "object" || Array.isArray(rule) ||
+                    !digest || typeof ModuleStatFactsClaude === "undefined" || ModuleStatFactsClaude[digest] !== fact ||
+                    Object.keys(rule).sort().join(",") !== "attribute,objects" ||
+                    Object.prototype.hasOwnProperty.call(fact, "lockedStatusObjects") ||
+                    (fact.attributeMap && Object.prototype.hasOwnProperty.call(fact.attributeMap, "locked")) ||
+                    !h || !Number.isInteger(rule.attribute) || rule.attribute < 0 ||
+                    rule.attribute >= (h.version <= 3 ? 32 : 48) ||
+                    (ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem))) return null;
+                ids = rule.objects;
+                bit = rule.attribute;
+            }
             if (!Array.isArray(ids) || !ids.length || !h || h.version < 3 || h.version > 5) return null;
             var first = ZRamReader.objectBase(h, 1), size = mem.byteLength;
             if (!Number.isInteger(first) || first < 64 || first + h.entrySize > size) return null;
@@ -170,8 +189,8 @@ var AttributeSchema = {
                 !ids.every(function (id) { if (!Number.isInteger(id) || id < 2 || id > count || seen[id]) return false; seen[id] = true; return true; }) || ids.indexOf(objectId) < 0) return null;
             var family = AttributeSchema._familyOf(mem);
             if (!family || family.classification !== "confirmed-zil-family" || family.evidence !== "validated" ||
-                !AttributeSchema.measuredFlagOwner(mem, "locked", objectId)) return null;
-            var raw = ZRamReader.objectLinks(mem, objectId), bit = fact.attributeMap && fact.attributeMap.locked;
+                (!observation && !AttributeSchema.measuredFlagOwner(mem, "locked", objectId))) return null;
+            var raw = ZRamReader.objectLinks(mem, objectId);
             return raw && Number.isInteger(bit) && ZRamReader.attr(raw, bit) ? "Locked" : null;
         } catch (eLockedStatus) { return null; }
     },
