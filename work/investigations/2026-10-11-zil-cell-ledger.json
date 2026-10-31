@@ -2861,6 +2861,10 @@
   "static": {
    "s": "NC",
    "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (grok author PACKET-sherlock-static-26-corrected-grok-1050.md; claude CLAUDE-VOTES-sherlock-invhidden.md): 26 = FL-TRYTAKE (may try to handle; 5 takeable carriers), never static; takeability from D214 TAKE FIND. Supersedes R2 U."
+  },
+  "takeable": {
+   "s": "NC",
+   "r": "TWO ACTIVE SEATS ACCEPT 2026-10-31 (claude PROPOSAL-sherlock-takeable-39-and-UD-split-1320 A'1; grok VOTES-grok-sherlock-takeable-and-radialrow-1325): D198 validated but variable grammar (D214 null). Take is offered on every non-actor via AttributeSchema static/scenery derivation, so no missing Take; extras (desk/sofa/mantelpiece take) are documented harmless-wrong (game refuses). FL-TAKEABLE 39 is the native capability bit (68 carriers). Pigeon 290 (alive+takeable) loses room Take only in a seeded state unreachable natively. Reopen on: an exact-digest takeable consumer, or a missing Take found."
   }
  }
 }

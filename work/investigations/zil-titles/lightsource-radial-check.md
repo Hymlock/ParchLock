@@ -20,7 +20,7 @@ Caveat: not Playwright and not a walked state; it is the same composer the app u
 | Planetfall | portable lamp 25 | turn on/off | OK |
 | Stationfall | headlamp 141 | turn on/off (+wear) | OK |
 | Infidel | bronze torch 198; match/matchbook 44-49 | no light | MISSING |
-| Wishbringer | candle 65 | no light | MISSING |
+| Wishbringer | candle 65 | no light | OK/NA (native refusal both sides; PACKET-wishbringer-candle65-lightforms-NA-grok-1248, two-seat ACCEPT) |
 | Hitchhik | none (only "light" scenery) | - | N/A |
 | Starcross | none (light beam scenery) | - | N/A |
 | LurkingHorror | flashlight 132 | turn on/off | OK |
