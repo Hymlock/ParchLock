@@ -9726,9 +9726,14 @@ amulet 39 DROP clears direct custody.
 
 ## D251 Door-only destination isLocked (P10b)
 
-**Lifecycle:** grok2, landed 4baf75c; ledger 5427fca (Hollywood locked=15 S). Gate audit-p10b. **Cause.** Exit builders took isLocked from the DESTINATION object's attrs (ExitCalibrator 148/623, ZRamReader 2584), and Navigator fell back to isLocked when there was no door object, so Hollywood rooms that carry LOCKEDBIT ("lockable from here") would have paused every route into them. **Contract.** When an exit's only route
-is a door whose destination carries LOCKEDBIT, the exit is marked isLocked; Hollywood locked count 15. Extends D241/D246
-(pause still requires locked AND closed).
+**Lifecycle:** grok2, landed 4baf75c (design: claude hollywood-locked-notes.md; review grok2 p10b-review.md); ledger
+5427fca (Hollywood locked=15 S); gate audit-p10b (Hollywood identical, Inform flaky only). **Cause.** Exit builders took
+isLocked from the DESTINATION object's attrs (ExitCalibrator 148/623, ZRamReader 2584), and Navigator fell back to
+isLocked when an exit had no door object. So Hollywood rooms carrying LOCKEDBIT 15 (meaning "lockable from here")
+would have paused every route into them. **Contract.** An exit's isLocked comes from its destination only when that
+destination is a door object (tAttrs.door && tAttrs.locked); a room destination never sets it. ZIL DEXIT exits keep
+the D246 routeBlocked (locked AND closed) path, and the lock glyph still requires doorObjectId. This unblocked the
+Hollywood locked 15 fact.
 
 ## D252 Stats idle rewrites stopped (D17/P17)
 
