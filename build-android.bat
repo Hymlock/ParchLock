@@ -47,6 +47,17 @@ if exist "%APK_WEB%" (
   exit /b 1
 )
 call npx cap copy android || exit /b 1
+set "CAP_PLUGINS=%SRC%\android\app\src\main\assets\capacitor.plugins.json"
+if not exist "%CAP_PLUGINS%" (
+  echo ERROR: capacitor.plugins.json missing; run "npx cap sync android" once.
+  exit /b 1
+)
+for %%P in (@capacitor-community/text-to-speech @capacitor-community/speech-recognition @capacitor/app @capacitor/filesystem @capacitor/share) do (
+  findstr /c:"\"%%P\"" "%CAP_PLUGINS%" >nul || (
+    echo ERROR: capacitor.plugins.json does not register %%P.
+    exit /b 1
+  )
+)
 for %%F in (play.html manifest.json js\ProductInfo.js js\ModuleLibrary.js js\ParchLock.js css\ParchLock.css) do if not exist "%APK_WEB%\%%F" (
   echo ERROR: Android asset missing: %%F
   exit /b 1

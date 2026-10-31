@@ -11,6 +11,14 @@ AI workflow files, build output, signing keys and secrets.
 - JDK 21
 - Android SDK and build tools
 
+From a fresh Git clone (not this archive), run `npm ci` and then
+`npx cap update android` once. That writes the generated, Git-ignored
+`android/capacitor-cordova-android-plugins` files and refreshes
+`android/app/src/main/assets/capacitor.plugins.json`; the `cap copy` step in
+`build-android.bat` writes neither. `build-android.bat` stops with an error if
+the plugin registry is missing or does not list every native plugin. This
+archive already contains these files.
+
 Run `npm ci`, then:
 
 - `make-dist.bat` rebuilds the static runtime and source archive from explicit
