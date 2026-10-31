@@ -20,7 +20,7 @@ function load(file){
   const pl=T.R.resolvePlayer(mem);T.player=pl&&pl.id;T.room=T.player&&T.R.enclosingRoom(mem,T.player);T.count=T.R.objectCount(mem,T.h);
   T.payload.playerId=T.player;
   T.bit=(id,b,v)=>{const a=T.R.objectBase(T.h,id)+(b>>3),m=0x80>>(b&7);if(v===undefined)return !!(mem.getUint8(a)&m);mem.setUint8(a,v?(mem.getUint8(a)|m):(mem.getUint8(a)&~m));};
-  T.parent=(id,p)=>mem.setUint8(T.R.objectBase(T.h,id)+4,p);
+  T.parent=(id,p)=>{const base=T.R.objectBase(T.h,id);if(T.h.version<=3)mem.setUint8(base+4,p);else mem.setUint16(base+6,p);};
   T.obj=id=>{const raw=T.R.objectLinks(mem,id);return{id,name:T.R.shortName(mem,id),parentId:raw.parent,attrs:T.A.applyTo({},raw,mem)};};
   T.menu=(id,ctx)=>{const o=T.obj(id);if(ctx==='inventory'){T.payload.inventory=[o];T.payload.discoveredObjects=[];}else{T.payload.inventory=[];T.payload.discoveredObjects=[o];}return Array.from(T.S.commandsForObject(o,ctx).map(x=>x.command));};
   T.held=id=>{T.parent(id,T.player);return T.menu(id,'inventory');};
@@ -62,7 +62,9 @@ check('Infidel descriptor naming an id beyond the TRUE frontier -> absent',()=>{
 check('Infidel unvalidated family -> absent',()=>{const f=I.A._familyOf;I.A._familyOf=()=>({classification:'unknown'});try{assert.deepStrictEqual(lv(I.held(198)),[]);}finally{I.A._familyOf=f;}});
 check('Infidel/Cutthroats/Enchanter non-owners identical to no fact',()=>{for(const T of [I,Cu,E]){const g=T.F.lightForms,own=new Set(g.objects),keep=l=>!own.has(+l.split(':')[0]);const a=sweep(T).filter(keep);delete T.F.lightForms;const b=sweep(T).filter(keep);T.F.lightForms=g;assert.deepStrictEqual(a,b);}});
 // Other titles: lightForms absent for every TRUE-frontier object (not heuristic count).
-const others=fs.readdirSync(root+'/games').filter(f=>/\.z[345]\.js$/.test(f)&&!Object.values(titles).includes(f));
+// Sherlock's explicit new opt-in has dedicated positive/custody controls in
+// zil-light-unresolved-player.js; it is no longer an absent-fact negative.
+const others=fs.readdirSync(root+'/games').filter(f=>/\.z[345]\.js$/.test(f)&&!Object.values(titles).includes(f)&&f!=='Sherlock.z5.js');
 check('other Z titles: lightForms absent for every object (switchable titles unchanged)',()=>{let n=0;for(const f of others){let T;try{T=load(f);}catch(e){continue;}if(!T.h)continue;let tc;try{tc=trueCount(T);}catch(e){continue;}for(let id=1;id<=tc;id++)assert.strictEqual(T.A.lightForms(T.mem,id,'inventory'),null,f+' '+id);n++;}console.log('  other titles checked: '+n);assert(n>10);});
 // Tap currency (codex 1107; identity-Wear pattern): every light verb carries a lightFormScope re-validated at tap.
 const lightRow=(T,id,ctx)=>T.S.commandsForObject(T.obj(id),ctx).find(x=>LIGHT.test(x.command));

@@ -562,7 +562,8 @@ var AttributeSchema = {
             // directly right now; room means its live parent chain reaches the player's room.
             if (context === "inventory") {
                 var holder = ZRamReader.resolvePlayer(mem), link = ZRamReader.objectLinks(mem, objectId);
-                if (!holder || holder.ambiguous || !link || link.parent !== holder.id) return [];
+                if (!holder || holder.ambiguous || !Number.isInteger(holder.id) || holder.id < 1 || holder.id > count ||
+                    holder.id === objectId || !link || link.parent !== holder.id) return [];
             } else if (!(context === "room" && AttributeSchema.inPlayerRoom(mem, objectId))) return [];
             var base = ZRamReader.objectBase(h, objectId), size = mem.byteLength || mem.length;
             if (!Number.isInteger(base) || base < 0 || base + 6 > size) return [];
