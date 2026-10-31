@@ -1293,6 +1293,13 @@ var ModuleStatFactsClaude = {
         // the only runtime FSET is V-WEAR (verbs.zil:1745), gated on WEARABLEBIT = SURGERY-HAND only; the bounded boot scan carrier {191} is
         // GLOBAL-OBJECTS (globals.zil:14-16, the flag-list pseudo object, never in inventory).
         "wornAttribute": 15,
+        // D8 P8 actorAddressing (codex d8-addressed-source-r1 robot-domain.json, oct30-recovery): the game's own robot table at 8182
+        // (global G183 = NAME-TBL, source globals.zil) lists [158 Iris,155 Waldo,152 Sensa,149 Auda,146 Poet,144 Whiz] then 140 People
+        // (excluded; VICBIT 24 alone admits 14 incl. global proxies, rejected). Names are each robot's short name, verified as its own
+        // parser word and a dictionary word. G114 = linked robot (orders first). Rooms are children of ROOMS 189. Bare verbs fail
+        // ("Visual scanners cannot see..."); addressed forms are the game's command form. Native: work/investigations/suspended-d14/p8-native.
+        "actorAddressing": { "robots": [158, 155, 152, 149, 146, 144], "form": "<name>, <command>",
+            "nameTable": { "global": 183, "address": 8182 }, "linkedGlobal": 114, "roomsHolder": 189 },
         "command": "score", "fields": ["casualties", "population", "cycles"], "replyFamily": "casualty-cycles", "outcome": "line",
         "evidence": "2026-10-05 live SCORE: There have been 3,000 casualties (original population: 30,172,000) in 0 cycles."
     },

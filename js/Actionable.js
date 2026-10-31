@@ -2766,6 +2766,8 @@ var Actionable = {
         if (command.sharedMembers && (command.wornRemovalScope || command.sharedMembers.some(function (c) { return !!c.wornRemovalScope; }))) return false;
         return (command.sharedMembers || [command]).every(function (c) {
             if (c.wornRemovalScope && (typeof ActionSynth === "undefined" || !ActionSynth.wornRemovalCommandCurrent || !ActionSynth.wornRemovalCommandCurrent(c))) return false;
+            // D8 P8: an addressed robot command is re-validated at tap (domain, co-location, command prompt).
+            if (c.actorAddressing && (command.sharedMembers || typeof ActionSynth === "undefined" || !ActionSynth.addressedCommandCurrent || !ActionSynth.addressedCommandCurrent(c))) return false;
             return !c.learnedWordScope || typeof LearnedWords === "undefined" || LearnedWords.commandCurrent(c);
         });
     },
@@ -2897,7 +2899,7 @@ var Actionable = {
                     };
                 }
                 return {
-                    Label: verb.charAt(0).toUpperCase() + verb.slice(1),
+                    Label: c.actorAddressing && c.label ? String(c.label) : verb.charAt(0).toUpperCase() + verb.slice(1),
                     Command: command,
                     Score: scoreFor(command, base),
                     Usage: usageFor(command),

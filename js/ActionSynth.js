@@ -494,7 +494,136 @@ var ActionSynth = {
         if (typeof LearnedWords !== "undefined") LearnedWords.commands(obj).forEach(function (c) {
             if (!result.some(function (existing) { return existing.command === c.command; })) result.push(c);
         });
-        return result.filter(function (entry) { return ActionSynth.authoredCommandAllowed(obj.id, entry.verb, context); });
+        var allowed = result.filter(function (entry) { return ActionSynth.authoredCommandAllowed(obj.id, entry.verb, context); });
+        if (context === "inventory" || containerName || (options && (options.allowAmbiguousReference || options.directEvidenceOnly))) return allowed;
+        return allowed.concat(ActionSynth.addressedFormsFor(obj, allowed));
+    },
+
+    // D8 P8: per-title fact actorAddressing {robots, form, nameTable:{global,address}, linkedGlobal, roomsHolder}.
+    // Only for the exact executable fact of a validated confirmed-zil-family title. The robot domain is
+    // the game's own actor table, re-read live: the named global must still point at the audited table
+    // and the table must list exactly these ids in this order. Each robot's name is its short name,
+    // which must be one of its own parser words and a dictionary word. Anything malformed or drifted
+    // makes the whole fact absent (no addressed forms; everything else unchanged).
+    actorAddressingDomain: (mem) => {
+        try {
+            if (!mem || typeof ZRamReader === "undefined" || typeof ModuleStatFactsClaude === "undefined") return null;
+            var digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest && ModuleLibrary.currentExecutableDigest();
+            var fact = ZRamReader.executableLayoutFacts(mem);
+            if (!digest || !fact || ModuleStatFactsClaude[digest] !== fact) return null;
+            var family = typeof GrammarProvider !== "undefined" && GrammarProvider.decodeD198 ? GrammarProvider.decodeD198(mem) : null;
+            if (!family || family.classification !== "confirmed-zil-family" || family.evidence !== "validated") return null;
+            var spec = fact.actorAddressing, plain = function (o) { return !!o && typeof o === "object" && Object.getPrototypeOf(o) === Object.prototype; };
+            if (!plain(spec) || Object.keys(spec).sort().join() !== "form,linkedGlobal,nameTable,robots,roomsHolder") return null;
+            if (spec.form !== "<name>, <command>" || !plain(spec.nameTable) || Object.keys(spec.nameTable).sort().join() !== "address,global") return null;
+            var count = ZRamReader.objectCount(mem), h = ZRamReader.header(mem), robots = spec.robots;
+            var gslot = function (n) { return Number.isInteger(n) && n >= 0 && n < 240 && h.globals + 2 * n + 2 <= mem.byteLength; };
+            if (!Array.isArray(robots) || !robots.length || !gslot(spec.nameTable.global) || !gslot(spec.linkedGlobal)) return null;
+            if (!Number.isInteger(spec.roomsHolder) || spec.roomsHolder < 1 || spec.roomsHolder > count || robots.indexOf(spec.roomsHolder) >= 0) return null;
+            var address = spec.nameTable.address;
+            if (!Number.isInteger(address) || address < 64 || address + 2 * robots.length > mem.byteLength) return null;
+            if (ZRamReader.u16(mem, h.globals + 2 * spec.nameTable.global) !== address) return null;
+            var out = [], seen = {};
+            for (var i = 0; i < robots.length; i++) {
+                var id = robots[i];
+                if (!Number.isInteger(id) || id < 1 || id > count || seen[id] || ZRamReader.u16(mem, address + 2 * i) !== id) return null;
+                seen[id] = true;
+                var shortName = String(ZRamReader.shortName(mem, id) || "").trim(), word = shortName.toLowerCase();
+                if (!/^[a-z]+$/.test(word) || (ZRamReader.parserWordsAny(mem, id) || []).indexOf(word) < 0 ||
+                    !ZRamReader.hasDictionaryWord(mem, word)) return null;
+                out.push({ id: id, word: word, name: word.charAt(0).toUpperCase() + word.slice(1) });
+            }
+            var linked = ZRamReader.u16(mem, h.globals + 2 * spec.linkedGlobal);
+            return { digest: digest, robots: out, linked: seen[linked] ? linked : null, roomsHolder: spec.roomsHolder };
+        } catch (eDomain) { return null; }
+    },
+    // The robot's room: the first object on its live parent chain whose parent is the game's ROOMS holder.
+    actorRoom: (mem, id, holder) => {
+        try {
+            var count = ZRamReader.objectCount(mem), raw = ZRamReader.objectLinks(mem, id), seen = {};
+            for (var depth = 0; raw && depth < count; depth++) {
+                var parent = raw.parent;
+                if (!Number.isInteger(parent) || parent < 1 || parent > count || seen[parent]) return null;
+                seen[parent] = true;
+                raw = ZRamReader.objectLinks(mem, parent);
+                if (raw && raw.parent === holder) return parent;
+            }
+        } catch (eRoom) {}
+        return null;
+    },
+    // Live RAM: the object's parent chain reaches the robot's room through supporters and open or
+    // transparent containers only; another actor's possessions never qualify.
+    reachesActorRoom: (mem, objectId, room, actors) => {
+        try {
+            var count = ZRamReader.objectCount(mem), raw = ZRamReader.objectLinks(mem, objectId), seen = {};
+            for (var depth = 0; raw && depth < count; depth++) {
+                var parent = raw.parent;
+                if (parent === room) return true;
+                if (!Number.isInteger(parent) || parent < 1 || parent > count || seen[parent]) return false;
+                seen[parent] = true;
+                if (actors && actors[parent]) return false;
+                raw = ZRamReader.objectLinks(mem, parent);
+                if (!raw) return false;
+                var a = AttributeSchema.applyTo({}, raw, mem);
+                if (a.animate) return false;
+                if (!(a.supporter || a.transparent || (a.container && (a.isOpen || a.open)))) return false;
+            }
+        } catch (eReach) {}
+        return false;
+    },
+    // A line input that is answering a question (setup, QUIT/RESTART confirm, the parser's
+    // missing-noun or which-one prompt) is not a command prompt: no addressed story command goes there.
+    nonCommandPrompt: () => {
+        try {
+            if (typeof StatTracker !== "undefined" && StatTracker.hasQuestionPrompt && StatTracker.hasQuestionPrompt()) return true;
+            if (typeof document === "undefined") return false;
+            var input = document.querySelector(".Input.LineInput"), line = input && input.closest && input.closest(".BufferLine");
+            for (var n = 0; line && n < 4; n++, line = line.previousElementSibling) {
+                var text = String(line.textContent || "").replace(/ /g, " ").trim().replace(/\s*>+\s*$/, "");
+                if (!text || /^(?:>|=>|>>)$/.test(text)) continue;
+                return /\(Y is affirmative\):?$/i.test(text) || /^(?:[A-Z]+:\s*)?What do you want to [^?]{1,60}\?$/.test(text) ||
+                    /^(?:[A-Z]+:\s*)?Which\b[^?]{0,160}\?$/.test(text);
+            }
+        } catch (ePrompt) {}
+        return false;
+    },
+    addressedFormsFor: (obj, bare) => {
+        try {
+            var mem = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null;
+            var id = Number(obj && obj.id);
+            if (!mem || !Number.isInteger(id) || id < 1 || !(bare || []).length || ActionSynth.nonCommandPrompt()) return [];
+            var domain = ActionSynth.actorAddressingDomain(mem);
+            if (!domain || domain.robots.some(function (r) { return r.id === id; })) return [];
+            var actors = {};
+            domain.robots.forEach(function (r) { actors[r.id] = true; });
+            var eligible = domain.robots.filter(function (r) {
+                var room = ActionSynth.actorRoom(mem, r.id, domain.roomsHolder);
+                return room !== null && room !== id && ActionSynth.reachesActorRoom(mem, id, room, actors);
+            });
+            // The game's own linked-robot global orders first; nobody is ever chosen silently.
+            eligible.sort(function (a, b) { return (b.id === domain.linked) - (a.id === domain.linked); });
+            var out = [];
+            eligible.forEach(function (r) {
+                bare.forEach(function (c) {
+                    if (!c || typeof c.command !== "string" || /\s$/.test(c.command) || c.wornRemovalScope || c.learnedWordScope) return;
+                    out.push({ verb: c.verb, noun: c.noun, objectId: c.objectId, command: r.word + ", " + c.command,
+                        label: r.name + ": " + String(c.verb || "").charAt(0).toUpperCase() + String(c.verb || "").slice(1),
+                        confidence: c.confidence,
+                        actorAddressing: { digest: domain.digest, actor: r.id, objectId: id, command: r.word + ", " + c.command } });
+                });
+            });
+            return out;
+        } catch (eAddr) { return []; }
+    },
+    // Re-checked at radial tap: same digest, same actor still co-located, still offered, command prompt.
+    addressedCommandCurrent: (command) => {
+        var scope = command && command.actorAddressing;
+        if (!scope || command.command !== scope.command) return false;
+        var obj = { id: scope.objectId, name: command.noun || "x" };
+        var fresh = ActionSynth.addressedFormsFor(obj, [{ verb: command.verb, noun: command.noun, objectId: command.objectId,
+            command: scope.command.slice(scope.command.indexOf(", ") + 2), confidence: command.confidence }]);
+        return fresh.some(function (f) { return f.actorAddressing.digest === scope.digest && f.actorAddressing.actor === scope.actor &&
+            f.command === scope.command; });
     },
 
     // D201: objects whose printable identity was recovered from just-printed
