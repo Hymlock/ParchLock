@@ -2772,15 +2772,15 @@
  "Sherlock.z5.js": {
   "container": {
    "s": "S",
-   "r": "SOLO/SELF-AUDIT: container 9 from raw target-scoped PUT IN tests (bag, pocket TRUE beyond background; whistle FALSE); census containers/vehicles. No source pin. Gate: closed bag/hat contents hidden as native."
+   "r": "FOUR-SEAT ACCEPT (grok author INDEX-sherlock-grok-lane 42ba8316; grok2 VOTES-grok2.md; claude VOTES-claude.md; codex codex-sherlock-votes-0837.md), landed r49 seeded native-command tier: FL-CONTAINER 9"
   },
   "open": {
    "s": "S",
-   "r": "SOLO/SELF-AUDIT: open 5 (OPEN BAG sets it, CLOSE finds it set; open pocket/coat carry it; doors carry it)."
+   "r": "FOUR-SEAT ACCEPT (grok author INDEX-sherlock-grok-lane 42ba8316; grok2 VOTES-grok2.md; claude VOTES-claude.md; codex codex-sherlock-votes-0837.md), landed r49 seeded native-command tier: FL-OPENED 5"
   },
   "supporter": {
-   "s": "UD",
-   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT (grok author INDEX-sherlock-grok-lane 42ba8316; grok2 VOTES-grok2.md; claude VOTES-claude.md; codex codex-sherlock-votes-0837.md), landed r49 seeded native-command tier: FL-SURFACE 16"
   },
   "lightSource": {
    "s": "UD",
@@ -2799,8 +2799,8 @@
    "r": "FOUR-SEAT ACCEPT (grok author PACKET-sherlock-wear-worn.md b4fa8fa4; grok2 #5960/#5968; codex codex-votes-0231.md + sherlock-native-packet-review-r1.md; claude CLAUDE-VOTES-0201.md), landed r48: wornAttribute 34 FL-WORN dynamic (native set/clear hat 188, whistle 173)."
   },
   "animate": {
-   "s": "UD",
-   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT (grok author INDEX-sherlock-grok-lane 42ba8316; grok2 VOTES-grok2.md; claude VOTES-claude.md; codex codex-sherlock-votes-0837.md), landed r49 seeded native-command tier: FL-ALIVE 40"
   },
   "edible": {
    "s": "UD",
@@ -2873,6 +2873,34 @@
   "wornAttribute": {
    "s": "S",
    "r": "FOUR-SEAT ACCEPT (grok author PACKET-sherlock-wear-worn.md b4fa8fa4; grok2 #5960/#5968; codex codex-votes-0231.md + sherlock-native-packet-review-r1.md; claude CLAUDE-VOTES-0201.md), landed r48: 34 FL-WORN."
+  },
+  "talkable": {
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT (grok author INDEX-sherlock-grok-lane 42ba8316; grok2 VOTES-grok2.md; claude VOTES-claude.md; codex codex-sherlock-votes-0837.md), landed r49 seeded native-command tier: FL-PERSON 47"
+  },
+  "door": {
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT (grok author INDEX-sherlock-grok-lane 42ba8316; grok2 VOTES-grok2.md; claude VOTES-claude.md; codex codex-sherlock-votes-0837.md), landed r49 seeded native-command tier: FL-DOOR 8"
+  },
+  "locked": {
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT (grok author INDEX-sherlock-grok-lane 42ba8316; grok2 VOTES-grok2.md; claude VOTES-claude.md; codex codex-sherlock-votes-0837.md), landed r49 seeded native-command tier: FL-LOCKED 15"
+  },
+  "openable": {
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT (grok author INDEX-sherlock-grok-lane 42ba8316; grok2 VOTES-grok2.md; claude VOTES-claude.md; codex codex-sherlock-votes-0837.md), landed r49 seeded native-command tier: FL-OPENABLE 44"
+  },
+  "enterable": {
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT (grok author INDEX-sherlock-grok-lane 42ba8316; grok2 VOTES-grok2.md; claude VOTES-claude.md; codex codex-sherlock-votes-0837.md), landed r49 seeded native-command tier: FL-VEHICLE 1"
+  },
+  "transparent": {
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT (grok author INDEX-sherlock-grok-lane 42ba8316; grok2 VOTES-grok2.md; claude VOTES-claude.md; codex codex-sherlock-votes-0837.md), landed r49 seeded native-command tier: FL-TRANSPARENT 2"
+  },
+  "isOpen": {
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT (grok author INDEX-sherlock-grok-lane 42ba8316; grok2 VOTES-grok2.md; claude VOTES-claude.md; codex codex-sherlock-votes-0837.md), landed r49 seeded native-command tier: FL-OPENED 5"
   }
  }
 }

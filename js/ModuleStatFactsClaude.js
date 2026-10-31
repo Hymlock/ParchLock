@@ -836,7 +836,10 @@ var ModuleStatFactsClaude = {
         "playerObject": 232,
         // No openCapability (grok2 REVISE #3576: "all containers" offered Open on the lapel, hat and bottles).
         // wearable 11 = FL-CLOTHING: census+behaviour tier (8 static carriers, 0 setters; WEAR WHISTLE 173 reads 11 TRUE, WEAR KNIFE 151 reads 11 FALSE); V-WEAR refuses non-FL-CLOTHING.
-        "attributeMap": { "container": 9, "open": 5, "isOpen": 5, "wearable": 11 },
+        // r49 grok-lane Sherlock (four-seat): animate 40 = FL-ALIVE (animals too; V-LISTEN/V-LOOK-INSIDE discriminate), talkable 47 = FL-PERSON,
+        // supporter 16 FL-SURFACE, door 8 FL-DOOR, locked 15 FL-LOCKED (box 137, front door 35, bedroom door 104; no rooms), openable 44,
+        // enterable 1 FL-VEHICLE, transparent 2 FL-TRANSPARENT (phial 128 + wax pool 179). Packets: grok-lane-1031/PACKET-sherlock-*.md.
+        "attributeMap": { "container": 9, "open": 5, "isOpen": 5, "wearable": 11, "animate": 40, "talkable": 47, "supporter": 16, "door": 8, "locked": 15, "openable": 44, "enterable": 1, "transparent": 2 },
         // wornAttribute 34 = FL-WORN (dynamic state): native set/clear on hat 188 and whistle 173; knife stays clear. REMOVE/TAKE OFF syntax FINDs FL-WORN.
         "wornAttribute": 34
     },
