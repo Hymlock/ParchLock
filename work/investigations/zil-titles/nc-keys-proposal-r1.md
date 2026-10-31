@@ -1,0 +1,116 @@
+# NC keys proposal R1 (claude, 2026-10-30) — BUILD or OUT-OF-SCOPE per L:NC key
+
+Source: `work/investigations/2026-10-11-zil-cell-ledger.json` (cells with `s:"NC"`), status rule from
+`zil-titles/no-reader-cells-question.md` (group decision A, 2026-10-24). Read-only research; no js/ edits.
+
+## 0. Headline finding (attack this first)
+
+**None of the 25 titles carrying NC cells is in the release set.** `GAMES_INCLUDED.md` (80 games) contains no
+Zork / Hitchhiker / Planetfall / Enchanter / Sorcerer / Spellbreaker / Wishbringer / Lurking Horror / Stationfall /
+Moonmist / Ballyhoo / Deadline / Witness / Suspect / Infidel / Seastalker / Cutthroats / Hollywood Hijinx /
+Leather Goddesses / Plundered Hearts / Border Zone / Starcross / Suspended (case-insensitive grep: 0 hits each).
+Under "streamline to player-visible impact in the 80 release games", every NC cell has **zero release-visible
+impact**. The per-key analysis below therefore asks a second question: if the ZIL lane (dev catalogue) still wants
+a consumer, is there a visible gain the app does not already get another way?
+
+Check for seats: `for t in Zork Hitchhik Planetfall ...; do grep -ci "$t" GAMES_INCLUDED.md; done`.
+
+## 1. Exact cells (90)
+
+| key | n | titles |
+|---|---|---|
+| visited | 25 | Zork1 Zork2 Zork3 Enchanter Hitchhik Ballyhoo Cutthroats Deadline Infidel HollywoodHijinx LeatherGoddessesofPhobos Moonmist PlunderedHearts Borderzo TheLurkingHorror Planetfall Seastalker Sorcerer Spellbreaker Starcross Stationfall Suspect Suspended Wishbringer TheWitness |
+| lightSource | 20 | Enchanter Hitchhik Ballyhoo Cutthroats Deadline Infidel HollywoodHijinx LeatherGoddessesofPhobos Moonmist PlunderedHearts TheLurkingHorror Planetfall Seastalker Sorcerer Spellbreaker Starcross Stationfall Suspended Wishbringer TheWitness |
+| light | 18 | Zork3 Hitchhik Ballyhoo Cutthroats Infidel HollywoodHijinx LeatherGoddessesofPhobos Moonmist PlunderedHearts TheLurkingHorror Planetfall Seastalker Sorcerer Spellbreaker Suspect Suspended Wishbringer TheWitness |
+| proper | 11 | Hitchhik Ballyhoo HollywoodHijinx LeatherGoddessesofPhobos Moonmist PlunderedHearts Borderzo Seastalker Sorcerer Stationfall Wishbringer |
+| female | 8 | Ballyhoo LeatherGoddessesofPhobos Moonmist PlunderedHearts Seastalker Suspect Wishbringer TheWitness |
+| pluralname | 5 | LeatherGoddessesofPhobos Moonmist PlunderedHearts Borderzo Stationfall |
+| on | 1 | Hitchhik |
+| locked | 1 | Moonmist |
+| enterable | 1 | Suspended |
+
+(Title = cell-ledger key minus `.zN.js`; total 90.)
+
+## 2. Per key
+
+### visited (25) — OUT-OF-SCOPE (redundant source)
+- Readers today: `WorldMap.isVisited` (WorldMap.js:267, used at :280/:406/:511) and MapTopology refinement derive
+  visited from the app's own navigation history; `ZRamReader.js:390` only checks the Inform name table. No reader of
+  `attrs.visited`.
+- Visible gain: none. The map's visited/unvisited styling and dotted edges already come from history. TOUCHBIT would
+  only add "visited before the app started watching" (restored save) — but project rule is no backwards compat /
+  fresh state, so that case is excluded.
+- Attack: find a map state where history and TOUCHBIT disagree on a fresh game (e.g. a teleport the map misses).
+
+### light (18) — OUT-OF-SCOPE (redundant + no radial effect)
+- Readers: none of `attrs.light`. Darkness on the map is handled by MapTopology dark-name provenance
+  (MapTopology.js:263-414, `NameProvenance === "dark"`) from the story's printed text; "providing light" tag comes
+  from `AttributeSchema.illuminationState` (AttributeSchema.js:526, D2/D247), which uses the `on` fact, not `light`.
+- Visible gain: a "room is lit" fact would not change any radial option; dark rooms already resolve by the game's own
+  "too dark" output. Ledger D2 consensus (2026-10-30) already says no semantic emission reader.
+- Attack: find a radial/map output that is wrong in a dark room of a ZIL title and would be fixed by a room-lit bit.
+
+### lightSource (20) — OUT-OF-SCOPE for release; optional BUILD design recorded
+- Readers: none (grep `lightSource` in js/: 0 hits outside ModuleStatFactsClaude).
+- Closest consumers: `ActionSynth` switchable -> "switch on/off" (ActionSynth.js:8, :82, D237 at :404) and
+  `EquipmentUI.illuminationStateTags` (EquipmentUI.js:248).
+- Possible gain (dev catalogue only): offer "turn on"/"light" on a LIGHTBIT object that lacks a switchable fact
+  (lamp, torch, matches). Minimal design: in ActionSynth, if `attrs.lightSource && !attrs.switchable` and the verbs
+  pass `hasDictionaryWord`, add "turn on"/"turn off"; gate on the same family/digest checks as illuminationState.
+  Risk: LIGHTBIT also marks permanently-lit objects (glowing items) -> harmless wrong options (acceptable per
+  missing-over-wrong). Do this only if a seat shows a ZIL lamp currently missing a Light/Turn on radial.
+- Attack: long-press the brass lantern (Zork1 is not lightSource-NC, so use Enchanter/Planetfall lamp) and see
+  whether Turn on is already offered via grammar/switchable.
+
+### proper (11) — OUT-OF-SCOPE (redundant: text comes from the story)
+- Readers: AttributeSchema PROFILE only (AttributeSchema.js:29/:75). Labels/underlines come from printed text
+  (Actionable grammar-particle handling, Actionable.js:218, :684-691); ReadAloud reads the story output, which the
+  game already articled correctly.
+- Visible gain: none; the app never synthesises "the X" itself in a way a NARTICLEBIT would change.
+- Attack: find any UI string the app composes as article + object name (radial title, inventory list, Learned Words).
+
+### female (8) — OUT-OF-SCOPE (no consumer)
+- Readers: AttributeSchema/ZRamReader name lists only. No pronoun generation anywhere (ReadAloud speaks game text).
+- Visible gain: none. Attack: same as proper — find app-composed pronoun text.
+
+### pluralname (5) — OUT-OF-SCOPE (no consumer)
+- Same as proper/female. Attack: find app-composed "is/are" or "it/them" text.
+
+### on (Hitchhik, 1) — OUT-OF-SCOPE (wrong meaning)
+- r45: ONBIT 45 in Hitchhiker is the room-lit bit (24 room carriers); mapping it makes rooms look like switched-on
+  devices. illuminationState requires `fact.illuminationState.flag === 'on'`, so it would also mis-tag items.
+- Attack: find a non-room HHG object whose ONBIT toggles with player action.
+
+### locked (Moonmist, 1) — OUT-OF-SCOPE (by design, D246)
+- Only reader: ExitCalibrator.js:148 (`attrs.door && attrs.locked` -> route pause). Moonmist auto-unlocks doors from
+  most rooms, so a locked fact would add false route pauses (a visible regression). No-fact is correct.
+- Attack: show a Moonmist door that stays locked and where the missing pause misleads the player.
+
+### enterable (Suspended, 1) — OUT-OF-SCOPE (unreachable for the player)
+- Readers exist (ActionSynth enterable -> enter/exit, ActionSynth.js:7/:268; ZRamReader.js:265). The only VEHBIT
+  carrier is a vehicle only robots can board (D8); a player "enter" option would be wrong, not missing.
+- Attack: reproduce a robot boarding where a radial Enter would be valid (D8 P8).
+
+## 3. Recommendation table (ACCEPT / REVISE per row)
+
+| key | cells | rec | reason | codex | grok | grok2 |
+|---|---|---|---|---|---|---|
+| visited | 25 | OUT | map history is the source; no release title | | | |
+| light | 18 | OUT | dark handled from printed text; no radial change | | | |
+| lightSource | 20 | OUT (BUILD design parked) | no release title; Turn on may already come from switchable | | | |
+| proper | 11 | OUT | articles come from game text | | | |
+| female | 8 | OUT | no app-composed pronouns | | | |
+| pluralname | 5 | OUT | no app-composed number agreement | | | |
+| on (HHG) | 1 | OUT | ONBIT = room-lit there | | | |
+| locked (Moonmist) | 1 | OUT | D246: would cause false pauses | | | |
+| enterable (Suspended) | 1 | OUT | robots-only vehicle (D8) | | | |
+
+Proposed ledger effect if unanimous: keep status L:NC (not NA, per the 2026-10-24 rule) with reason
+"out of release scope (no title in GAMES_INCLUDED.md) + redundant/no consumer"; reopen only if an Infocom title
+enters the release set or a seat demonstrates a missing radial option.
+
+## Claude self-attack before circulation (2026-10-31)
+The "not in the 80 release games" argument (section 0) is NOT a valid basis on its own. ParchLock lets players import their
+own story files (Modules > import), so Infocom ZIL titles run in the released app as user modules, and their radials
+matter. Decide each key ONLY on its per-key merits: is there a redundant source already, and would any player-visible
+option or display change for an imported ZIL game? The release-set observation stays as context, not as justification.
