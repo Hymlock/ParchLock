@@ -1,0 +1,48 @@
+REAL (stable in both runs, base != cand): 2
+  Mullmurd.z5.js marks
+    base: ["torch","museum","up","north","stone crocuses","pillars"]
+    cand: ["museum","up","north","light","stone crocuses","pillars"]
+  gamlet.z5.js marks
+    base: ["balcony","balustrade","wall","night","stars","distant artillery","breeze","naked","Light","eyes"]
+    cand: ["eyes"]
+UNSTABLE (flips within base or cand): 8
+  Help.z8.js marks
+    b1: ["Snark","large piece of equipment","trophy"]
+    b2: ["Snark","large piece of equipment","trophy"]
+    c1: []
+    c2: ["Snark","large piece of equipment","trophy"]
+  Inevita.z5.js marks
+    b1: ["vessel","straps","stick","pouch","sheets of rain","canopy","console","engine","switch"]
+    b2: ["sheets of rain","canopy","console","engine","switch"]
+    c1: ["vessel","straps","stick","pouch","sheets of rain","canopy","console","engine","switch"]
+    c2: ["vessel","straps","stick","pouch","sheets of rain","canopy","console","engine","switch"]
+  Jigsaw.z8.js marks
+    b1: ["party","attractive stranger","west","northeast","east"]
+    b2: ["west","northeast","Crowds","east"]
+    c1: ["west","northeast","Crowds","east"]
+    c2: ["west","northeast","Crowds","east"]
+  School.z5.js marks
+    b1: ["trees","campus","administration building","east","path","gate"]
+    b2: ["admission letter","trees","campus","administration building","east","path","gate"]
+    c1: ["trees","campus","administration building","east","path","gate"]
+    c2: ["trees","campus","administration building","east","path","gate"]
+  medusa.z5.js marks
+    b1: ["vampire","elevator","red","toga","snakes","floor indicator","buttons"]
+    b2: ["toga","snakes","elevator","floor indicator","buttons","red","mirror","vampire"]
+    c1: ["vampire","elevator","red","toga","snakes","floor indicator","buttons"]
+    c2: ["toga","snakes","elevator","floor indicator","buttons","red","mirror","vampire"]
+  permagic.z5.js marks
+    b1: ["of junk","report","east"]
+    b2: ["report","east","papers"]
+    c1: ["report","east","papers"]
+    c2: ["report","east","papers"]
+  suvehnux.z5.js marks
+    b1: ["vault","golden key","black","dark","sliver of light","door","shelf","walls","brass cage","scroll"]
+    b2: ["sliver of light","under","door","darkness","shelf","walls","brass cage","scroll"]
+    c1: ["vault","golden key","black","dark","sliver of light","door","shelf","walls","brass cage","scroll"]
+    c2: ["vault","golden key","black","dark","sliver of light","door","shelf","walls","brass cage","scroll"]
+  vespers.z8.js marks
+    b1: ["Saint Cuthbert's","place","hands","window","door","west","desk","bed","blanket"]
+    b2: ["room","west","desk","bed","blanket"]
+    c1: ["Saint Cuthbert's","place","hands","window","door","west","desk","bed","blanket"]
+    c2: ["Saint Cuthbert's","place","hands","window","door","west","desk","bed","blanket"]
