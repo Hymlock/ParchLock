@@ -11,7 +11,7 @@ ruling that it needs nothing). Status: TODO / ACTIVE / BLOCKED(on X) / DONE / CL
 | D2 | light semantics: CLOSED by consensus (codex ACCEPT): no code; light stays a heuristic key, illumination via illuminationState; 18 cells L:NC (no semantic light-emission reader). | CLOSED | claude+codex | - |
 | D3 | world-map-ui 6 failures: DONE. Bisected to 8291b5f (D215 save-tied map); the reload fixture was stale (a fresh boot archives the old map by design). Harness now loads the archived slot; 52/0. | DONE | claude | - |
 | D4 | Room-fixed switches: LANDED d91a422 (P4 switchableScope; Witness radio 162). | DONE | claude | - |
-| D5 | Object Locked status row: codex R1 proposal; claude REVISE (D5-r1-attack-claude.md, #5550). | REVIEW | codex | R2 |
+| D5 | Object Locked status: LANDED 7a61fa7 (codex authored, claude integrated during absence). Domain: LH 119/135 only; other locked holders need own source census. | DONE | codex | domain extension |
 | D6 | PROFILE bits leaking into ZIL attrs: MERGED into D11 (the leak does reach rooms). | MERGED | claude | see D11 |
 | D7 | Suspect transparent actors: CLOSED, correct per source. ALICIA-COAT (people.zil:1526) is TAKEBIT CONTBIT OPENBIT SEARCHBIT with an INVISIBLE LABEL inside (a clue). While worn, ALICIA-COAT-F refuses in character; once the butler has it, searching reveals the label. Open/close/search are real game actions. | CLOSED | claude | - |
 | D8 | Suspended robot-addressed actions (radial never addresses robots). IN PROGRESS as codex Suspended role design R2 (#5484; REVISE #5492: exact settled-input API and submit-time signature needed); native lifecycle evidence exists (suspended-input-lifecycle-1656, suspended-v5-unforced-1305). | ACTIVE | codex | codex R3 addressing #5492; claude reviews. |
