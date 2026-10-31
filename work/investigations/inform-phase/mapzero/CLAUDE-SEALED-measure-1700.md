@@ -12,3 +12,8 @@ Three classes measured (probe.playerSource / roomSource / parent(player)):
 - **A2, player HAS a room parent but roomSource is still existing-resolver -> refused:** cabal (42 in 32), Tokyo2 (81 in 29), bluechairs (100 in 419). Containment exists, but the room source doesn't report it.
 - **B, roomSource player-containment but still 0 -> isRoomAnnounced fails:** Heroine (Golden Horse 112, status shows another name), LASH (Attic 250), windhal1 (Central Windhall 24).
 Not yet tested: whether the map fills after the first move (the travel path). saveprinceton's "Hints" room suggests a hint/menu object misread as the room.
+
+## Sealed travel test (claude, 17:25)
+Two moves per title (out and back, with exits from the payload or the obvious compass direction). Rooms stay 0 and **payload roomName does not change** in all 9 tested (gostak, csbb, HugeCave, yagwad, cabal, Tokyo2, Heroine, LASH, windhal1).
+So the travel path (the prevRoomId change) never fires, because the resolved room is frozen. Not yet checked: whether the moves succeeded in the game, or whether the game text named a new room.
+This is not just a first-admission problem: the room resolver itself does not follow the player in these titles.
