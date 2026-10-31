@@ -22,6 +22,6 @@ No facts change.
 | Suspect talkable | U | 31 | (with animate 31; same evidence set) |
 | Witness moved | U | 4 | a731d450 |
 | Witness talkable | U | 31 | d00d748c |
-| **LurkingHorror openable** | **NA** | **2** | **1194ba0f** - CONFLICT: the ledger NA (claude #5086: "ZIL has no OPENABLE; open/close comes from container+openCapability and door") vs a later commit mapping openable 2. Needs a vote: keep the mapping (then cite the evidence that bit 2 = OPENBIT-as-openable in LH) or remove it from the facts. claude leans: investigate 1194ba0f's evidence before deciding; no relabel in this packet. |
+| LurkingHorror openable | NA | 2 | 1194ba0f - RESOLVED: LH source DOES define OPENABLE (carrier set exact 22/22) with native evidence (codex #4752: OPEN Funny Bones 18 and fridge 105 set 13; counter refuses). claude #5086 ("ZIL has no OPENABLE") was wrong for LH; the NA is withdrawn. Proposal: S. |
 Note (grok): the Suspect UD cells were set while decoder routing blocked the row; the facts landed afterwards.
 Vote: LEDGER-RECONCILE-VOTES-<seat>.md (ACCEPT/REVISE per row).
