@@ -399,8 +399,8 @@
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): unmapped key; candidate names LOCKABLEBIT/LOCKBIT absent. LOCKABLEBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes; LOCKBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes. Source https://github.com/historicalsource/enchanter@472c3b9 (27 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 388 objects, room+inventory): no /^(un)?lock\\b/ verb offered."
   },
   "talkable": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+   "s": "X",
+   "r": "FOUR-SEAT ACCEPT 2026-10-31 (codex/grok/grok2 per CLAUDE-QUEUE-0201.md + claude CLAUDE-VOTES-0201.md): fail-closed (PACKET-enchanter-talkable.md 0c80a145)."
   },
   "static": {
    "s": "S",
@@ -705,8 +705,8 @@
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LIGHTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 4 commented. Source https://github.com/historicalsource/cutthroats@2febadb (16 .zil files). In-app (grok1 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 273 objects, room+inventory): no /^(turn|switch) (on|off)\\b/ verb offered."
   },
   "talkable": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT 2026-10-31 (codex/grok/grok2 per CLAUDE-QUEUE-0201.md + claude CLAUDE-VOTES-0201.md): talkable 26 VICBIT landed r47 (PACKET-cutthroats-talkable.md 684f56dd)."
   },
   "openable": {
    "s": "NA",
@@ -949,8 +949,8 @@
    "r": "grok1/grok2 N? batch 5 2026-10-24: no WORNBIT, but WEARBIT is the worn state: wearing exists (0 carriers, 5 FSET/tests, 3 FCLEAR/reads; e.g. camp.zil:1957 <FSET ,KNAPSACK ,WEARBIT>; camp.zil:1975 (<NOT <FSET? ,KNAPSACK ,WEARBIT>>), source infidel (grok2/nq/worn-Infidel.json). The player can wear things, so worn is not N/A; no measured wornAttribute yet (app worn fallback stays fail-closed). Stays U."
   },
   "transparent": {
-   "s": "U",
-   "r": "grok1 Q7-R3 transparent 2026-10-26, Codex review 2026-10-26 (#5403 transparent-na-review-0602.md sha 4D7D77C6, #5409 transparent-current-source-bindings-0606.json sha 6D8C8342, #5410); grok2 #5426 REVISE option 1. UNDECIDED (U): reverted from NA because the owner-action audit is incomplete. COT camp.zil:877, ante.zil:550/560/570 discs, ra.zil:256 and temple.zil:156/232 are not yet covered, and the Codex Infidel R3 lane (#5411-#5416) is still changing the closed-lid helpers for trunk/crate. Corrects grok1 #5026: (1) \"every carrier has OPENBIT/CONTBIT/SURFACE [20,25,28]\" was FALSE (pit camp.zil:103, mast hole and knothole have no SURFACEBIT; their named routines reject OPEN/CLOSE). (2) \"starts open\" does not prove that closed states are impossible: TRUNK (camp.zil:1275 TRUNK-FCN) and CRATE (camp.zil:2102 CRATE-FCN) close semantically by toggling SURFACEBIT 28 and moving contents to off-tree tables (verbs.zil:2637/2661 TBL-TO-INSIDE / INSIDE-OBJ-TO) while OPENBIT 25 stays set. Native-confirmed by Codex 0613/0621. The open/close state and custody gap is tracked separately (Codex Infidel R3 lane, #5411-#5416). Packet work/investigations/grok1/transp/infidel.json"
+   "s": "NA",
+   "r": "FOUR-SEAT ACCEPT 2026-10-31 (codex/grok/grok2 per CLAUDE-QUEUE-0201.md + claude CLAUDE-VOTES-0201.md): no closed TRANSBIT container with visible children is reachable (PACKET-infidel-transparent.md 1b6b000b; native close negatives)."
   },
   "openable": {
    "s": "NA",
@@ -1773,8 +1773,8 @@
    "r": "grok1/grok2 N? batch 3 (visible) 2026-10-24 (operator standard 9:52 ET): LIGHTBIT: 0 object carriers (GLOBAL-OBJECTS bit allocation excluded), 0 FSET writes, 11 read/syntax refs. Source https://github.com/historicalsource/seastalker@258f825 (18 .zil files). In-app (grok2 nq-inapp.cjs, start-state RAM, app ActionSynth.commandsForObject on all 387 objects, room+inventory): no /^(turn|switch) (on|off)\\b/ verb offered."
   },
   "enterable": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (static object carrier; VEHBIT), so not N/A; no native target-named evidence yet. Stays U."
+   "s": "NA",
+   "r": "FOUR-SEAT ACCEPT 2026-10-31 (codex/grok/grok2 per CLAUDE-QUEUE-0201.md + claude CLAUDE-VOTES-0201.md): narrow NA: no generic enterable bit; AIRLOCK-WALL BOARD shortcut gap tracked separately as nav follow-up (PACKET-seastalker-enterable.md 07f90c6f)."
   },
   "talkable": {
    "s": "U",
@@ -2227,6 +2227,10 @@
   "lightSource": {
    "s": "NC",
    "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+  },
+  "concealed": {
+   "s": "NA",
+   "r": "FOUR-SEAT ACCEPT 2026-10-31 (codex/grok/grok2 per CLAUDE-QUEUE-0201.md + claude CLAUDE-VOTES-0201.md): INVISIBLE exists in parser/globals but has no setters and only never-toggled pseudo carriers (grok2 PACKET-concealed-Nq-R3/R4)."
   }
  },
  "Suspect.z3.js": {
@@ -2473,8 +2477,8 @@
    "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): flag exists in source (set at runtime (FSET); WEARBIT), so not N/A; no native target-named evidence yet. Stays U."
   },
   "talkable": {
-   "s": "U",
-   "r": "grok1/grok2 N? batch 4 2026-10-24 (operator standard 9:52 ET): no separate talkable flag in source, but Talk to is offered to actors through the animate/PERSONBIT path (nq-inapp verb hits on real NPCs), so the player-visible capability exists; stays U, not N/A (grok2 #4905, grok1 #4907)."
+   "s": "NA",
+   "r": "FOUR-SEAT ACCEPT 2026-10-31 (codex/grok/grok2 per CLAUDE-QUEUE-0201.md + claude CLAUDE-VOTES-0201.md): no ordinary target-talk verb; robot communication is D8 actorAddressing (PACKET-suspended-talkable.md 2bc010ae)."
   },
   "transparent": {
    "s": "NA",
@@ -2521,8 +2525,8 @@
    "r": "r45+r46 batch-r45r46.diff gate ACCEPT grok2 2026-10-30; opreg 13/0; 309x2 4 FLAKY Inform only isOpen=8"
   },
   "enterable": {
-   "s": "NC",
-   "r": "r45: the vehicle is the only VEHBIT carrier; no native positive reachable (Poet stuck at Hallway Junction) and only robots can board (D8 robot addressing). Reopen with D8 P8."
+   "s": "S",
+   "r": "FOUR-SEAT ACCEPT 2026-10-31 (codex/grok/grok2 per CLAUDE-QUEUE-0201.md + claude CLAUDE-VOTES-0201.md): enterable 28 VEHBIT singleton CAR 58 landed r47 (PACKET-suspended-enterable.md e290bc20); offered to robots via D8."
   }
  },
  "Wishbringer.z3.js": {
@@ -2629,6 +2633,10 @@
   "light": {
    "s": "NC",
    "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
+  },
+  "concealed": {
+   "s": "NA",
+   "r": "FOUR-SEAT ACCEPT 2026-10-31 (codex/grok/grok2 per CLAUDE-QUEUE-0201.md + claude CLAUDE-VOTES-0201.md): INVISIBLE exists in parser/globals but has no setters and only never-toggled pseudo carriers (grok2 PACKET-concealed-Nq-R3/R4)."
   }
  },
  "TheWitness.z3.js": {

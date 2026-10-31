@@ -77,7 +77,8 @@ var ModuleStatFactsClaude = {
         // moved 29 = TOUCHBIT (native, codex batch3-native.cjs output resume-20261020/moved/Cutthroats.z3.js.json; packet via grok1 #5201): GET PASSBOOK AND ROOM KEY: room key 143 and passbook 144 each set bit 29; air tank 136 stays clear.
         // enterable 9 = source VEHBIT exact (5 carriers incl. bunk 79, bed 146, cask 40, chair 108); native (grok1 #4853 grok1/enter/cutthroats.json, probes ect3/ect4): ENTER/GET IN BED -> player 184 parent 183->146 (step 3), ENTER/GET IN CHAIR -> 112->108 (step 27); GET OUT OF/STAND UP return; ENTER DRESSER / ENTER TABLE "You hit your head" (parent unchanged).
         // concealed 30 = INVISIBLE (native, claude worker E1 work/investigations/claude-probe/concealed/packet-cutthroats.json): ferry 155 cannot be seen until WAIT brings it (30: 1->0, then EXAMINE describes it; a daemon re-hides it after the turn); first hole 63 cannot be seen until DRILL SAFE WITH DRILL (30: 1->0, then "As holes go, it's very nice"); drill 64 visible with 30 clear.
-        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18, "on": 17, "door": 25, "scenery": 12, "transparent": 19, "moved": 29, "enterable": 9, "concealed": 30 },
+        // talkable 26 = VICBIT (four-seat ACCEPT, grok-lane-1031/PACKET-cutthroats-talkable.md sha 684f56dd): V-TELL (verbs:2588) sets WINNER only when PRSO has VICBIT; else TELL-NO-TELL. Source exact 9/9 (11 FLAGS carriers incl self objects ME/ADVENTURER - consumer may suppress self). Native 3+2 bit-tested.
+        "attributeMap": { "open": 21, "isOpen": 21, "supporter": 28, "container": 11, "animate": 23, "edible": 8, "wearable": 18, "on": 17, "door": 25, "scenery": 12, "transparent": 19, "moved": 29, "enterable": 9, "concealed": 30, "talkable": 26 },
         // WORNBIT 13 (grok1 2026-10-17, g1-ctA/B Jericho replay, test_attr recorded only during the named command): 'remove watch' @287 tests
         // wrist watch 6:13 TRUE x3 ("You are now holding the wrist watch.") and the RAM scan after it drops 6 from the owners (UNWEAR FCLEARs);
         // 'remove wet suit' @287 tests 139:13 TRUE; 'wear flippers' @284 tests 138:13 FALSE before and TRUE after; 'remove flashlight' @291
@@ -1292,7 +1293,8 @@ var ModuleStatFactsClaude = {
         // waldo,close blt 37 / whiz,close groove 45 "Not a likely occurrence within reality, no?", sensa,close poet 146 "I don't think he would like that" (robots carry 19+8, VICBIT 24 unmapped).
         // animate is unmapped, so the none-list fails closed (#3642 pattern): container keeps search/look-in, never Open/Close.
         "openCapability": { "all": ["container"], "none": ["supporter", "animate"] },
-        "attributeMap": { "wearable": 31, "on": 2, "moved": 12, "concealed": 13, "container": 19, "supporter": 11, "open": 8, "isOpen": 8 },
+        // enterable 28 = VEHBIT, singleton CAR 58 (four-seat ACCEPT, PACKET-suspended-enterable.md sha e290bc20): BOARD OBJECT (FIND VEHBIT) = V-BOARD; ENTER OBJECT = V-THROUGH -> PERFORM V?BOARD on VEHBIT. Native: poet, enter car TRUE (58 has 28; "I am now in the carriage"); scoped negatives. Robot-only vehicle: board is offered via D8 actorAddressing forms.
+        "attributeMap": { "wearable": 31, "on": 2, "moved": 12, "concealed": 13, "container": 19, "supporter": 11, "open": 8, "isOpen": 8, "enterable": 28 },
         // WEARBIT 15 = worn (grok1 2026-10-17, route suspW): grasper 63:15 FALSE before 'waldo,install grasper', TRUE after; 'waldo,detach grasper'
         // tests 63:15 TRUE x3 ("It's been removed."); 'waldo,remove container' tests basket 76:15 FALSE (agent-tools/g1-suE.json). Single owner:
         // the only runtime FSET is V-WEAR (verbs.zil:1745), gated on WEARABLEBIT = SURGERY-HAND only; the bounded boot scan carrier {191} is
