@@ -352,6 +352,7 @@ var SemanticActions = {
             if (c.wornRemovalScope) form.wornRemovalScope = c.wornRemovalScope;
             if (c.identityWearScope) form.identityWearScope = c.identityWearScope;
             if (c.lightFormScope) form.lightFormScope = c.lightFormScope;
+            if (c.revealedLocalGlobalScope) { form.revealedLocalGlobalScope = c.revealedLocalGlobalScope; form.context = c.context; }
             return form;
         });
     },
@@ -363,6 +364,9 @@ var SemanticActions = {
     // data; earlier steps are consulted first and simply defer per-verb
     // when they have nothing, which cannot happen yet (they always return []).
     resolveForObject: function (obj, context, containerName, payload) {
+        // The bounded local-global contribution owns its complete action domain.
+        // Do not augment it with learned, grammar, or capability guesses.
+        if (obj && obj.revealedLocalGlobal) return SemanticActions.migrationCompatFormsFor(obj, context, containerName);
         // Step 1: reject stale/ambiguous targets outright.
         if (!obj || !obj.name || obj.id == null) return [];
 

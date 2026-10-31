@@ -410,7 +410,43 @@ var ActionSynth = {
             scope.stateBit === current.stateBit && scope.command === current.command && command.verb === current.verb &&
             command.command === current.command);
     },
+    revealedLocalGlobalCommand: function (obj, context, containerName, options) {
+        try {
+            if (!obj || !obj.revealedLocalGlobal || ActionSynth.inspectVerbDisabled() || context !== "room" || containerName || (options && options.allowAmbiguousReference) ||
+                typeof ZRamReader === "undefined" || typeof AttributeSchema === "undefined" || typeof Actionable === "undefined") return null;
+            var mem = AttributeSchema._getMem(), player = ZRamReader.resolvePlayer(mem).id;
+            var room = ZRamReader.enclosingRoom(mem, player);
+            var current = ZRamReader.revealedLocalGlobalObjects(mem, room, player);
+            if (current.length !== 1 || Number(obj.id) !== current[0].id || obj.name !== current[0].name ||
+                obj.parentId !== current[0].parentId || obj.scopeRoomId !== room) return null;
+            var ref = Actionable.referenceFor(obj);
+            if (!ref || !ref.unique || !ref.verified || typeof ref.noun !== "string" || !ref.noun || !ActionSynth.literalAvailable("examine")) return null;
+            var command = "examine " + ref.noun;
+            return { verb: "examine", noun: ref.noun, objectId: current[0].id, context: "room", command: command,
+                confidence: 0.85, revealedLocalGlobalScope: { digest: ModuleLibrary.currentExecutableDigest(),
+                    generation: ActionSynth.currentGeneration(), id: current[0].id, room: room,
+                    parent: current[0].parentId, name: current[0].name, noun: ref.noun, command: command } };
+        } catch (eRevealedCommand) { return null; }
+    },
+    revealedLocalGlobalCommandCurrent: function (command) {
+        if (!command || command.sharedMembers || !command.revealedLocalGlobalScope || command.verb !== "examine" || command.context !== "room") return false;
+        var scope = command.revealedLocalGlobalScope;
+        var current = null;
+        try {
+            var mem = AttributeSchema._getMem(), player = ZRamReader.resolvePlayer(mem).id;
+            var room = ZRamReader.enclosingRoom(mem, player);
+            var owner = ZRamReader.revealedLocalGlobalObjects(mem, room, player).find(function (o) { return o.id === Number(command.objectId); });
+            if (owner) current = ActionSynth.revealedLocalGlobalCommand(owner, "room");
+        } catch (eCurrentRevealed) { return false; }
+        return !!(current && ["digest", "generation", "id", "room", "parent", "name", "noun", "command"].every(function (key) {
+            return scope[key] === current.revealedLocalGlobalScope[key];
+        }) && command.command === current.command && command.noun === current.noun);
+    },
     commandsForObject: (obj, context, containerName, options) => {
+        if (obj && obj.revealedLocalGlobal) {
+            var revealed = ActionSynth.revealedLocalGlobalCommand(obj, context, containerName, options);
+            return revealed ? [revealed] : [];
+        }
         if (!obj || !obj.name) return [];
         // Resolve the same observed vocabulary row used by marks and radials.
         // Raw payload names may still be dictionary fragments for shared copies.

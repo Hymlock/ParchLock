@@ -234,6 +234,8 @@ var ModuleStatFactsClaude = {
     // SULTANS-WIFE), so playerGlobal would be wrong after an order. Binary has 19 store G189<-200 = 19 SETG WINNER ,PROTAGONIST in source;
     // object 200 ("it") holds the flashlight at boot. App previously read player 16 with an empty inventory (Codex #3492).
     "103324c3b7332528cc36cc15ce15ae593af5a33ac2b75fae0f04eecc1ffec8f8": {
+        // LGOP R3, Claude/Codex/Grok design ACCEPT: Cell only; white SDESC variants remain outside this slice.
+        "revealedLocalGlobal": { "object": 83, "holder": 40, "room": 50, "membershipProperty": 15, "nameProperty": 16, "namePackedValue": 59426, "nameValue": "black circle", "gateGlobalSlot": 144, "forms": ["examine"] },
         // D1 source-proven (r44): inventoryHiddenAttribute 8 = NDESCBIT (tp 41 fp 0 fn 0); PRINT-CONT/DESCRIBE-CONTENTS withholds the NDESC label but lists its visible contents.
         "inventoryHiddenAttribute": 8,
         "inventoryHiddenRecurses": true,

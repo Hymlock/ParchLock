@@ -2423,6 +2423,50 @@ var ZRamReader = {
         return out;
     },
 
+    // LGOP R3: an exact, typed SDESC domain, independent of D232 localScope.
+    // Scope membership never changes the object's physical parent.
+    revealedLocalGlobalObjects: (mem, roomId, playerId) => {
+        try {
+            var fact = ZRamReader.executableLayoutFacts(mem), d = fact && fact.revealedLocalGlobal;
+            var family = typeof AttributeSchema !== "undefined" && AttributeSchema._familyOf(mem);
+            var h = ZRamReader.header(mem);
+            if (!d || !h || h.version !== 3 || !family || family.classification !== "confirmed-zil-family" || family.evidence !== "validated") return [];
+            var first = h.objTable + h.defaultsWords * 2;
+            var count = (ZRamReader.u16(mem, first + 7) - first) / h.entrySize;
+            if (!Number.isInteger(count) || count < 1) return [];
+            if (![d.object, d.holder, d.room].every(function (n) { return Number.isInteger(n) && n > 0 && n <= count; }) ||
+                ![d.membershipProperty, d.nameProperty].every(function (n) { return Number.isInteger(n) && n > 0 && n <= 31; }) ||
+                !Number.isInteger(d.gateGlobalSlot) || d.gateGlobalSlot < 0 || d.gateGlobalSlot > 239 ||
+                !Number.isInteger(d.namePackedValue) || d.namePackedValue < 1 || d.namePackedValue > 65535 ||
+                typeof d.nameValue !== "string" || !d.nameValue || !Array.isArray(d.forms) || d.forms.length !== 1 || d.forms[0] !== "examine" ||
+                roomId !== d.room || !playerId || ZRamReader.resolvePlayer(mem).id !== playerId ||
+                ZRamReader.enclosingRoom(mem, playerId) !== roomId) return [];
+            var owner = ZRamReader.objectLinks(mem, d.object);
+            if (!owner || owner.parent !== d.holder) return [];
+            var globals = ZRamReader.u16(mem, 12), gate = globals + 2 * d.gateGlobalSlot;
+            if (globals < 64 || gate + 2 > mem.byteLength || !ZRamReader.u16(mem, gate)) return [];
+            var membership = (ZRamReader.listProps(mem, roomId) || []).find(function (p) { return p.num === d.membershipProperty; });
+            if (!membership || membership.sz < 1 || membership.dataAddr + membership.sz > mem.byteLength) return [];
+            var member = false;
+            for (var i = 0; i < membership.sz; i++) if (ZRamReader.u8(mem, membership.dataAddr + i) === d.object) member = true;
+            if (!member) return [];
+            var nameProp = (ZRamReader.listProps(mem, d.object) || []).find(function (p) { return p.num === d.nameProperty; });
+            if (!nameProp || nameProp.sz !== 2 || nameProp.dataAddr + 2 > mem.byteLength ||
+                ZRamReader.u16(mem, nameProp.dataAddr) !== d.namePackedValue) return [];
+            var address = d.namePackedValue * 2, name = "";
+            if (address < h.himem || address >= mem.byteLength) return [];
+            for (var words = 1; words <= 60 && address + words * 2 <= mem.byteLength; words++) {
+                if (ZRamReader.u8(mem, address + (words - 1) * 2) & 128) {
+                    name = ZRamReader.decodeZsc(mem, address, words); break;
+                }
+            }
+            if (name !== d.nameValue) return [];
+            return [{ id: d.object, name: name, parentId: owner.parent, scopeRoomId: roomId,
+                attrs: ZRamReader.attrsFromObject(mem, d.object), aliases: ZRamReader.parserWordsAny(mem, d.object),
+                confidence: 0.85, discovered: true, localGlobal: true, revealedLocalGlobal: true }];
+        } catch (eRevealed) { return []; }
+    },
+
     scopeObjects: (mem, roomId, opts) => {
         opts = opts || {};
         var depth = typeof opts.depth === "number" ? opts.depth : 2;
@@ -2498,6 +2542,11 @@ var ZRamReader = {
                 out.push(o);
             });
         } catch (eLocal) {}
+        ZRamReader.revealedLocalGlobalObjects(mem, roomId, playerId).forEach(function (o) {
+            if (seen[o.id]) return;
+            seen[o.id] = 1;
+            out.push(o);
+        });
         // D184: attached rather than returned, so every existing caller
         // keeps receiving exactly the array it always did.
         try { Object.defineProperty(out, "unnamedCandidates", { value: candidates, enumerable: false }); } catch (eC) {}

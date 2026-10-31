@@ -2750,9 +2750,9 @@ var Actionable = {
     sharedObjectCommands: function (choices, kind) {
         var held = ((WorldModel.lastPayload || {}).inventory || []).map(function (o) { return String(o.id); });
         var eligible = choices.filter(function (o) { return (held.indexOf(String(o.id)) >= 0) === (kind === "inventory"); });
-        var lists = eligible.map(function (o) { return Actionable.resolveObjectCommands(o.id, kind, {allowAmbiguousReference:true}).filter(function (entry) { return !entry.wornRemovalScope && !entry.identityWearScope && !entry.lightFormScope; }); });
+        var lists = eligible.map(function (o) { return Actionable.resolveObjectCommands(o.id, kind, {allowAmbiguousReference:true}).filter(function (entry) { return !entry.wornRemovalScope && !entry.identityWearScope && !entry.lightFormScope && !entry.revealedLocalGlobalScope; }); });
         return (lists[0] || []).filter(function (entry) {
-            return !entry.wornRemovalScope && !entry.identityWearScope && !entry.lightFormScope && lists.every(function (list) { return list.some(function (c) { return c.command === entry.command && !c.wornRemovalScope && !c.identityWearScope && !c.lightFormScope; }); });
+            return !entry.wornRemovalScope && !entry.identityWearScope && !entry.lightFormScope && !entry.revealedLocalGlobalScope && lists.every(function (list) { return list.some(function (c) { return c.command === entry.command && !c.wornRemovalScope && !c.identityWearScope && !c.lightFormScope && !c.revealedLocalGlobalScope; }); });
         }).map(function (entry) {
             var members = lists.map(function (list) { return list.find(function (c) { return c.command === entry.command; }); });
             return Object.assign({}, entry, {
@@ -2770,6 +2770,7 @@ var Actionable = {
             if (c.identityWearScope && (command.sharedMembers || typeof ActionSynth === "undefined" || !ActionSynth.identityWearCommandCurrent || !ActionSynth.identityWearCommandCurrent(c))) return false;
             // lightForms (codex 1107): re-validated at tap (digest, generation, custody, live state side, noun).
             if (c.lightFormScope && (command.sharedMembers || typeof ActionSynth === "undefined" || !ActionSynth.lightFormCommandCurrent || !ActionSynth.lightFormCommandCurrent(c))) return false;
+            if (c.revealedLocalGlobalScope && (command.sharedMembers || typeof ActionSynth === "undefined" || !ActionSynth.revealedLocalGlobalCommandCurrent || !ActionSynth.revealedLocalGlobalCommandCurrent(c))) return false;
             // D8 P8: an addressed robot command is re-validated at tap (domain, co-location, command prompt).
             if (c.actorAddressing && (command.sharedMembers || typeof ActionSynth === "undefined" || !ActionSynth.addressedCommandCurrent || !ActionSynth.addressedCommandCurrent(c))) return false;
             return !c.learnedWordScope || typeof LearnedWords === "undefined" || LearnedWords.commandCurrent(c);
@@ -2882,7 +2883,7 @@ var Actionable = {
                             var wantsContainer = /^put\b/.test(vLower);
                             var wantsRecipient = /^(give|ask|show|tell)\b/.test(vLower);
                             var pool = Actionable.payloadPool().filter(function (o) {
-                                return o && String(o.id) !== String(objectId) && !o.examineOnly && Actionable.referenceFor(o).unique;
+                                return o && String(o.id) !== String(objectId) && !o.examineOnly && !o.revealedLocalGlobal && Actionable.referenceFor(o).unique;
                             });
                             if (wantsContainer || wantsRecipient) {
                                 var primary = [], rest = [];
@@ -2926,13 +2927,13 @@ var Actionable = {
                 var srcObj = Actionable.payloadPool().find(function (o) {
                     return o && String(o.id) === String(objectId);
                 });
-                if ((srcObj && srcObj.examineOnly) || (sharedCommands && choices.length && choices.some(function (o) { return o.examineOnly; }))) {
+                if ((srcObj && (srcObj.examineOnly || srcObj.revealedLocalGlobal)) || (sharedCommands && choices.length && choices.some(function (o) { return o.examineOnly || o.revealedLocalGlobal; }))) {
                     Actionable.addMoreActions(slices, context, x, y);
                     ParchLockQol.OpenRadial(x, y, slices, context);
                     return;
                 }
                 var others = Actionable.payloadPool().filter(function (o) {
-                    return o && String(o.id) !== String(objectId) && !o.examineOnly;
+                    return o && String(o.id) !== String(objectId) && !o.examineOnly && !o.revealedLocalGlobal;
                 });
                 // D147: one launcher per instrumental verb this story's own
                 // dictionary actually contains, instead of a single hardcoded
@@ -2945,7 +2946,7 @@ var Actionable = {
                             AttributeSchema.unlockToolAllowed(ZRamProvider.getMem(), objectId, context.kind) === false) return;
                         slices.push({ Label: inst.label, Score: 50, Usage: 0, UsageKey: "launcher:" + inst.verb + "-with:" + objectId, TrackTap: true, Action: function () {
                             ParchLockQol.OpenRadial(x, y, Actionable.payloadPool().filter(function (o) {
-                                return o && String(o.id) !== String(objectId) && !o.examineOnly && Actionable.referenceFor(o).unique;
+                                return o && String(o.id) !== String(objectId) && !o.examineOnly && !o.revealedLocalGlobal && Actionable.referenceFor(o).unique;
                             }).map(function (other) {
                                 var source = Actionable.payloadPool().find(function (o) { return String(o.id) === String(objectId); });
                                 // D141/D147: the disambiguating form on BOTH
