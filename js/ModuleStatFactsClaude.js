@@ -927,6 +927,8 @@ var ModuleStatFactsClaude = {
     },
     // SpiritWrak: opening DIAGNOSE is chanting, not health.
     "258199e5fb7b494d3c6e60cc4fbe466b08f729e90a06753db49f4af7bfdca2d5": {
+        // Inform P1b (claude PACKET-spirit): Inform 5-era alphabetical layout, yourself 0,2,16,23; raw-op + census.
+        "attributeMap": { "animate": 0, "clothing": null, "wearable": null, "concealed": 2, "container": 3, "door": 4, "edible": null, "enterable": 6, "female": 7, "absent": null, "male": null, "neuter": null, "pluralname": null },
         "command": "score",
         "fields": ["score.max", "rank"],
         "replyFamily": "inform-score",
@@ -1067,6 +1069,8 @@ var ModuleStatFactsClaude = {
     },
     // The Lost Spellmaker
     "9ad23948fdf8c4c4f72fadbe1818b4f17fc50dbf9d8fc81312ba9c4e44dc2ddb": {
+        // Inform P1b (claude PACKET-lost): Inform 5-era alphabetical layout, yourself 0,2,16,23; raw-op + census.
+        "attributeMap": { "animate": 0, "clothing": 1, "wearable": 1, "concealed": 2, "container": 3, "door": 4, "edible": 5, "enterable": 6, "female": 7, "absent": null, "male": null, "neuter": null, "pluralname": null },
         "command": "score",
         "fields": [],
         "replyFamily": "no-score",
@@ -1294,6 +1298,34 @@ var ModuleStatFactsClaude = {
     // SoFar (Inform 5-era alphabetical layout; grok PACKET-godot-lists-SoFar-1410, claude ACCEPT; unmeasured/uncarried bits null).
     "b94c01b794a728806f78a9ab5a2d2ac0fcbe04632206d501848c18c809feba1c": {
         "attributeMap": { "clothing": 1, "wearable": 1, "concealed": 2, "container": 3, "door": 4, "edible": null, "enterable": 6, "female": null, "absent": null, "male": null, "neuter": null, "pluralname": null }
+    },
+    // wedding (claude PACKET-wedding): Inform 5-era alphabetical layout; LOOK IN / WEAR / EAT test 3/1/5; doors 4, seats 6, women 7.
+    "2ab09dc0227163e8cb6916a1a3008dc25ef8698464dd7f3353dcaf1225bb81e5": {
+        "attributeMap": { "animate": 0, "clothing": 1, "wearable": 1, "concealed": 2, "container": 3, "door": 4, "edible": 5, "enterable": 6, "female": 7, "absent": null, "male": null, "neuter": null, "pluralname": null }
+    },
+    // magic-toyshop (claude PACKET-magic-toyshop): alphabetical + one game attribute at bit 4 (door..worn +1). Raw ops: chest container 3 / open 15 /
+    // openable 16 / locked 12 / lockable 11 / static 20 / enterable 7; woman animate 0 / female 8; light 10; supporter 21; transparent 24; moved 13.
+    // edible 6 / worn 27 from census. worn is read from wornAttribute, not attributeMap (PROFILE 26 = workflag here).
+    "7aea509542ba84a805a8c5cb423d3364739f19fa4cf00b1d41d3a058f410a667": {
+        "wornAttribute": 27,
+        "attributeMap": { "animate": 0, "clothing": null, "wearable": null, "concealed": 2, "container": 3, "door": 5, "edible": 6, "enterable": 7, "female": 8, "absent": null, "general": null, "light": 10, "lockable": 11, "locked": 12, "moved": 13, "on": null, "open": 15, "isOpen": 15, "openable": 16, "proper": 17, "scenery": 18, "scored": null, "static": 20, "supporter": 21, "switchable": 22, "talkable": null, "transparent": 24, "visited": null, "workflag": null, "male": null, "neuter": null, "pluralname": null }
+    },
+    // theatre (claude PACKET-theatre): alphabetical shifted +2 (two game attributes at 0-1). Raw ops: animate 2, container 5 / open 16 (desk),
+    // door 6 (trapdoor), enterable 8, edible 7, scenery 19, static 21, light 11, visited 26, supporter 22, transparent 25; openable 17 / proper 18 census.
+    // wornAttribute 28 from the uniform +2 shift (not separately measured; PROFILE 26 = visited here, so leaving it unset would be wrong).
+    "0fc8bdbfe929585cd0bb35883f511af5a61053f7fc8dfabdb32c7f10de5b7d80": {
+        "wornAttribute": 28,
+        "attributeMap": { "animate": 2, "clothing": null, "wearable": null, "concealed": 4, "container": 5, "door": 6, "edible": 7, "enterable": 8, "female": 9, "absent": null, "general": null, "light": 11, "lockable": null, "locked": null, "moved": null, "on": null, "open": 16, "isOpen": 16, "openable": 17, "proper": 18, "scenery": 19, "scored": null, "static": 21, "supporter": 22, "switchable": null, "talkable": null, "transparent": 25, "visited": 26, "workflag": null, "male": null, "neuter": null, "pluralname": null }
+    },
+    // windhal1 (grok PACKET-offset-windhal1-tube-sutwin-1413, claude ACCEPT): alphabetical +1 with a game bit at 5; live bits 3/4/11/14/19/26; upper bits match theatre.
+    "ffdecae479a6e5a4280c695fa67c39a0802005413e7221865fa0aa8ec32eac83": {
+        "wornAttribute": 28,
+        "attributeMap": { "animate": 1, "clothing": 2, "wearable": 2, "concealed": 3, "container": 4, "door": 6, "edible": 7, "enterable": 8, "female": 9, "general": 10, "light": 11, "lockable": 12, "locked": 13, "moved": 14, "on": 15, "open": 16, "isOpen": 16, "openable": 17, "proper": 18, "scenery": 19, "scored": 20, "static": 21, "supporter": 22, "switchable": 23, "talkable": 24, "transparent": 25, "visited": 26, "workflag": 27, "absent": null, "male": null, "neuter": null, "pluralname": null }
+    },
+    // tube (grok PACKET-offset-windhal1-tube-sutwin-1413, claude ACCEPT): alphabetical +1 with a game bit at 5; live bits 3/4/11/14/19/26; upper bits match theatre.
+    "ede1e3571bc16da5c27ca48f38b95f4afcb2c71da1c6be7d835750f760609c33": {
+        "wornAttribute": 28,
+        "attributeMap": { "animate": 1, "clothing": 2, "wearable": 2, "concealed": 3, "container": 4, "door": 6, "edible": 7, "enterable": 8, "female": 9, "general": 10, "light": 11, "lockable": 12, "locked": 13, "moved": 14, "on": 15, "open": 16, "isOpen": 16, "openable": 17, "proper": 18, "scenery": 19, "scored": 20, "static": 21, "supporter": 22, "switchable": 23, "talkable": 24, "transparent": 25, "visited": 26, "workflag": 27, "absent": null, "male": null, "neuter": null, "pluralname": null }
     },
     // Limp
     "ab8e29c688af48c08ea29fac42e2ce3673efbb2728ae436396e6f261ce44d253": {

@@ -1,0 +1,235 @@
+ver 5 release 4 serial 970602 inform? 6.05
+1 "Class" p 0 attrs 
+2 "Object" p 0 attrs 
+3 "Routine" p 0 attrs 
+4 "String" p 0 attrs 
+5 "GameController" p 0 attrs 
+6 "compass" p 0 attrs 2
+7 "north wall" p 6 attrs 17
+8 "south wall" p 6 attrs 17
+9 "east wall" p 6 attrs 17
+10 "west wall" p 6 attrs 17
+11 "northeast wall" p 6 attrs 17
+12 "southeast wall" p 6 attrs 17
+13 "northwest wall" p 6 attrs 17
+14 "southwest wall" p 6 attrs 17
+15 "ceiling" p 6 attrs 17
+16 "floor" p 6 attrs 17
+17 "outside" p 6 attrs 17
+18 "inside" p 6 attrs 17
+19 "Darkness" p 0 attrs 
+20 "yourself" p 0 attrs 0,2,16,23
+21 "Entrance Hall" p 0 attrs 9,27,35
+22 "cupboard" p 21 attrs 3,10,11,15,17
+23 "bell" p 21 attrs 17
+24 "mother of the bride" p 21 attrs 0,7
+25 "spade" p 22 attrs 
+26 "Outside the front entrance" p 0 attrs 9,35
+27 "burglar alarm" p 26 attrs 17
+28 "security guard" p 26 attrs 0
+29 "gravel drive" p 26 attrs 2,17,20
+30 "handful of small stones" p 29 attrs 2
+31 "evil pair" p 0 attrs 
+32 "Landing" p 0 attrs 9,27,35
+33 "painting" p 32 attrs 17
+34 "large window" p 32 attrs 2,17
+35 "hidden door" p 0 attrs 4,15,19
+36 "East end" p 0 attrs 9,27,35
+37 "West end" p 0 attrs 9,27,35
+38 "bathroom door" p 37 attrs 4,15,17,22
+39 "window" p 37 attrs 15,17
+40 "Bathroom" p 0 attrs 9,18,27,35
+41 "bronze key" p 40 attrs 
+42 "Uncle William" p 40 attrs 0,16
+43 "Deborah's bedroom" p 0 attrs 9,16,27,35
+44 "Deborah" p 43 attrs 0,7,16
+45 "Cooee! magazine" p 43 attrs 
+46 "curtains" p 43 attrs 3,15,17
+47 "remote control" p 46 attrs 
+48 "note" p 0 attrs 
+49 "Store room" p 0 attrs 9,27,35
+50 "plastic supermarket bag" p 49 attrs 3,14
+51 "torn cardboard box" p 49 attrs 2
+52 "video camera" p 0 attrs 3,15
+53 "Guest bedroom" p 0 attrs 9,27,35
+54 "cat" p 53 attrs 0,2,17
+55 "single bed" p 53 attrs 17
+56 "wardrobe" p 53 attrs 3,6,15,17
+57 "letter" p 0 attrs 
+58 "The patio outside the back of the house" p 0 attrs 9,16,35
+59 "windows" p 58 attrs 17
+60 "attic window vent" p 58 attrs 2,17
+61 "bathroom window" p 58 attrs 2,17
+62 "garden gate" p 58 attrs 4,15,19
+63 "Garden path" p 0 attrs 9,35
+64 "great apple tree" p 63 attrs 2,17
+65 "dark patch of earth" p 63 attrs 19
+66 "hole in the ground" p 0 attrs 3,14,19
+67 "cash tin box" p 66 attrs 3,10,11,15
+68 "diamond" p 67 attrs 18
+69 "By the Crazy Golf Course" p 0 attrs 9,35
+70 "great apple tree" p 69 attrs 2,17
+71 "thick hedge" p 69 attrs 17
+72 "crazy golf course" p 69 attrs 17,20
+73 "small steel key" p 0 attrs 
+74 "The edge of a fast:flowing river" p 0 attrs 9,35
+75 "river" p 74 attrs 3,6,14,17
+76 "golf ball" p 0 attrs 
+77 "Corner of the garden" p 0 attrs 9,35
+78 "large apple tree" p 77 attrs 17
+79 "cooking apple" p 0 attrs 
+80 "Spacious attic" p 0 attrs 9,18,27,35
+81 "Malcolm" p 80 attrs 0,16
+82 "window vent" p 80 attrs 17
+83 "Grand Hall" p 0 attrs 9,27,35
+84 "Uncle Albert" p 83 attrs 0,16
+85 "hall door" p 83 attrs 4,10,11,15,17
+86 "paintings" p 83 attrs 2
+87 "\"The Angel Gabrielle\"" p 83 attrs 2,16
+88 "alcove" p 83 attrs 2,17
+89 "antique jugs" p 83 attrs 2
+90 "furniture" p 83 attrs 2,17
+91 "Study" p 0 attrs 9,27,35
+92 "Barbara" p 91 attrs 0,7,16
+93 "wool packs" p 91 attrs 2
+94 "embroidery" p 91 attrs 2
+95 "furniture" p 91 attrs 2
+96 "small brass key" p 0 attrs 
+97 "Library" p 0 attrs 9,27,35
+98 "index" p 97 attrs 17
+99 "oak table" p 97 attrs 2,6,17,20
+100 "throne:like chair" p 97 attrs 2,6,17,20
+101 "curtains" p 97 attrs 2
+102 "lamps" p 97 attrs 2
+103 "Battlebase episode guide" p 0 attrs 
+104 "Wedding Hints book" p 0 attrs 
+105 "Passage" p 0 attrs 9,27,35
+106 "Scamp" p 105 attrs 0,16
+107 "simple table" p 105 attrs 6,19,20
+108 "cellar door" p 105 attrs 4,15,19,22
+109 "lock" p 105 attrs 17
+110 "Drawing room" p 0 attrs 9,27,35
+111 "fireplace" p 110 attrs 2,17
+112 "telephone" p 110 attrs 17
+113 "television" p 110 attrs 17,21
+114 "Chloe" p 110 attrs 0,7,16
+115 "Horror novel" p 110 attrs 2
+116 "video recorder" p 110 attrs 17,21
+117 "video cassette" p 116 attrs 
+118 "Kitchen" p 0 attrs 9,27,35
+119 "pompous chef" p 118 attrs 0,7
+120 "kitchen staff" p 118 attrs 0,2
+121 "water tap" p 118 attrs 2,17
+122 "Pantry" p 0 attrs 9,27,35
+123 "wedding programme" p 122 attrs 
+124 "pizza )in a boxundefined" p 0 attrs 5
+125 "Cellar" p 0 attrs 9,35
+126 "fluorescent tube" p 125 attrs 2,9,17
+127 "cobwebs" p 125 attrs 2
+128 "crate" p 125 attrs 19,20
+129 "water detector" p 128 attrs 
+130 "Tunnel" p 0 attrs 9,35
+131 "A gloomy dungeon" p 0 attrs 27,35
+132 "candle" p 131 attrs 9
+133 "small wooden stool" p 131 attrs 6,20
+134 "wooden door" p 131 attrs 4,15,17
+135 "!! ERROR( drip is visible. Please report bug. !!" p 0 attrs 
+136 "part of the ceiling" p 0 attrs 3,14,19,23
+137 "Above the dungeon" p 0 attrs 9,35
+138 "fast:flowing river" p 137 attrs 3,6,14,17
+139 "hole" p 137 attrs 2,17
+140 "!! ERROR( weather is visible. Please report bug. !!" p 0 attrs 
+141 "?" p 0 attrs 
+142 "?" p 141 attrs 
+143 "?" p 141 attrs 
+144 "?" p 141 attrs 
+145 "?" p 141 attrs 
+146 "?" p 141 attrs 
+147 "?" p 141 attrs 
+148 "?" p 141 attrs 
+149 "?" p 141 attrs 
+150 "?" p 141 attrs 
+151 "?" p 141 attrs 
+152 "?" p 141 attrs 
+153 "?" p 141 attrs 
+154 "?" p 141 attrs 
+155 "?" p 141 attrs 
+156 "?" p 141 attrs 
+157 "?" p 141 attrs 
+158 "?" p 141 attrs 
+159 "?" p 141 attrs 
+160 "?" p 141 attrs 
+161 "?" p 141 attrs 
+162 "?" p 141 attrs 
+163 "?" p 141 attrs 
+164 "?" p 141 attrs 
+165 "?" p 141 attrs 
+166 "?" p 141 attrs 
+167 "?" p 141 attrs 
+168 "?" p 141 attrs 
+169 "?" p 141 attrs 
+170 "?" p 141 attrs 
+171 "?" p 141 attrs 
+172 "?" p 141 attrs 
+173 "?" p 141 attrs 
+174 "?" p 141 attrs 
+175 "?" p 141 attrs 
+176 "?" p 141 attrs 
+177 "Oi you, put away that disassembler!" p 0 attrs 
+178 " wq   h" p 16896 attrs 6,11,15,19,23,24,27,28,30,31,35,36
+179 "" p 512 attrs 1,4,8,9,10,13,16,18,21,23,33,38
+180 "dkyeoqle   cfphnThat's fixed in place." p 787 attrs 1,5,7,17,22,38,39
+181 "bs xcu b   tRc " p 34377 attrs 1,6,21,37,38,43,47
+182 "" p 37460 attrs 2,4,6,8,9,11,12,13,16,18,21,23,38,39,42,46
+183 "   kgk" p 42330 attrs 0,3,5,6,7,9,10,13,15,16,18,25,26,27,32,33,35,39,40,41,45
+184 "" p 16346 attrs 13,14,15,16,23,24,29,30,34,35,36,37,38,39,41,44,46
+185 " bgundo" p 23040 attrs 1,2,5,7,8,10,17,18,19,24,25,27,31,32,33,37,40,42,45,47
+186 " \"Come in, come in!\" he beckons." p 21066 attrs 4,8,15,16,21,22,25,30,31,32,33,35,36,37,41,45,46
+187 "C kp  agKl" p 22148 attrs 3,4,5,8,11,12,14,18,19,23,25,27,28,30
+188 "\"bd   " p 3 attrs 2,3,5,6,7,11,18,19,21,22,23,26,28,30,31,33,36,38,40,41,42,44,45,47
+189 "ming in,\" he says, though you can't see a list anywhere. Maybe he was a bouncer in his last job.\n" p 18944 attrs 1,3,4,6,25,27,29,30,32,37,40,41,42,43,44,47
+190 "cbz" p 38757 attrs 1,3,9,12,14,16,17,18,20,21,23,37,39,41,44,45,46
+191 "lcodgo" p 64074 attrs 2,5,7,9,11,12,14,33,35,37,38,40,45
+192 "qk " p 25242 attrs 2,3,4,5,6,7,8,9,10,14,15,17,20,22,24,25,26,28,29,31,45,47
+193 "" p 34043 attrs 0,1,5,6,10,13,15,17,19,20,22,41,43,45,46
+194 "      2teo   " p 1358 attrs 1,2,6,7,9,13,14,17,19,20,22,23,25,28,30,32,33,34,36,37,39
+195 "C kp  agKl" p 22148 attrs 0,5,6,8,9,13,14,18,21,23,25,27,28,30
+196 "" p 5 attrs 1,10,11,13,18,19,20,21,22,23,24,25,26,28,29,33,36,38,40,41,42,44,45,47
+197 "     ainting" p 86 attrs 6,7,8,13,14,16,17,21,22,26,29,31,33,35,36,38
+198 "ge" p 60672 attrs 0,5,6,9,13,14,15,17,18,19,22,25,29,30,33,34,37,41,44,46
+199 "dco" p 65098 attrs 0,2,5,7,9,11,12,14,33,35,37,38,40,45
+200 "" p 11828 attrs 1,4,6,9,12,14,15,18,19,22,23,25,26,27,31,46
+201 "dxGc   pk   qkz" p 34357 attrs 0,5,8,9,10,11,12,13,14,15,17,20,22,35,40,47
+202 "ug dfu" p 42330 attrs 6,7,9,11,14,15,17,19,20,23,25,26,31,32,33,36,39,40,42,44
+203 "" p 47402 attrs 11,14,30,34,35,36,38,41,42,43,44
+204 " kc" p 9822 attrs 1,4,6,19,23,38,39,43,47
+205 "    mkz" p 3 attrs 1,3,5,8,13,15,21,25,27,30,31
+206 "you    ajft    a" p 23808 attrs 1,3,4,5,6,7,25,27,28,29,30
+207 "dr" p 65364 attrs 0,1,2,3,4,5,6,7,9,11,12,14,33,35,37,39,40,41,42,43,44,45,46,47
+208 "s   " p 65535 attrs 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,17,21,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,45
+209 "c   " p 21637 attrs 1,4,5,7,12,14,24,28,29,31,32,35,36,38,42,43,47
+210 " c   dv   g    fdzowcar   the          qc   btdsu   t" p 23368 attrs 2,9,12,14,25,26,28,29,30,33,36,39
+211 "   " p 16634 attrs 2,4,5,7,8,9,10,12,14,16,23,24,28,30,34,35,38,39,40,42,45,46,47
+212 "" p 56613 attrs 14,15,18,22,23,25,27,29,31,35,36,37,38,40,45,46
+213 "   umber.\n" p 2 attrs 1,5,10,12,13,15,16,17,18,20,21,22,25,31,34,35,37,39,42,43,46,47
+214 "yk " p 12593 attrs 1,2,3,5,7,9,13,18,20,21,23,24,25,26,27,29,30,32,39,40,45
+215 "adp" p 7918 attrs 2,3,5,7,9,11,13,14,15,22,24,28,30,31,41,47
+216 "d u" p 11902 attrs 2,4,5,6,12,14,15,17,19,21,26,28,29,30,34,35,36,38,39,41,45,46
+217 "" p 31541 attrs 0,1,2,3,9,12,14,15,16,17,21,23,25,29,31,37,39,42,43,45,47
+218 "e!de" p 42661 attrs 1,2,7,9,12,17,19,22,23,38,41,42,46
+219 "" p 50750 attrs 0,1,8,15,16,20,25,29,30,33,34,36,37,39,41,45
+220 "h" p 11102 attrs 0,3,4,6,9,10,13,14,15,20,21,22,26,29,31,33,44
+221 "dgo" p 21295 attrs 1,2,4,8,10,12,16,18,21,23,25,27,29,32,37,39,40,44,47
+222 "h   lgodg " p 5444 attrs 2,3,4,6,9,12,18,19,24,26,27,30,33,37,38,39
+223 "" p 16724 attrs 2,3,6,7,9,13,18,19,21,22,24,25,26,30,31,33,39,42,45,46,47
+224 "hroom" p 51365 attrs 2,3,6,10,13,14,17,19,20,21,29,30,33,37,40,41,43,45,46,47
+225 "ilcdgo" p 12746 attrs 0,7,8,12,13,14,18,20,21,22,23,24,27,28,29,34,35,38,41,42,43,45,47
+226 "" p 27374 attrs 2,3,4,5,7,8,9,11,12,15,29,31,33,34,39,41,44
+227 "tgode" p 22784 attrs 1,3,4,6,7,10,11,15,16,17,19,22,23,25,27,28,30
+228 " ck        that    0obfzs   uz" p 39230 attrs 0,1,2,3,6,8,15,16,19,20,26,27,28,30,32,35,37,41,45
+229 "zs " p 31041 attrs 4,5,9,13,14,16,17,19,26,27,28,29,30,31,32,42,43,47
+230 "" p 14267 attrs 5,10,11,14,16,17,18,21,22,25,26,28,29,31,33,35,39,47
+231 "e   Neageb2diedzeekefdefuegfegoegxehaehzeiceileiuejfejwek2kqelbelken   oeepnepweq2qieqrer erderues   sgesxetaeubeukeutev   vnevwew2xiexrey eylezeeznezwf 3 qf   f   f   fthat f   f4f?f)fabfakfatfb   bffbofchfcqfczfdkfe   euff   foffxfgafgjfgsfhdfhm c          'you              bz           c                          i c                          k c                          l by        m bx        l c          K                c          dk                c          v you bx        n by        o c          vc             p c          8g bw           by           bv           cyou           k)k " p 16679 attrs 2,3,4,6,9,10,13,14,15,18,19,21,22,24,25,26,30,31,34,35,38,40,41,42,43,44,45
+232 "" p 17432 attrs 1,5,11,13,18,20,21,27,28,33,36,40,41,43,47
+233 "lmadgodg " p 17220 attrs 0,1,2,4,5,6,7,9,11,13,18,19,23,24,25,26,27,31,33,37,39,42,43,46
+234 "s r" p 3 attrs 1,5,6,8,9,10,11,12,13,15,18,19,20,22,24,25,27,30,31,33,41,42,47

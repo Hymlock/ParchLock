@@ -1,0 +1,22 @@
+>z ::  "Fellow Brothers, the year, as you know, is 976 GUE. A difficult time indeed. Ten years have passed since the Cataclysm brought forth by the Circle of Enchanters changed our world forever. The outside world as we know it is in turmoil. A period of great change is upon all of us." > 
+  OPS ["20:9=1","18:12=1"]
+>z ::  Time passes. Brother Joseph continues speaking. "Our order has always maintained the strictest secrecy. Few outside of our order know of our existence. We are the keepers of the mystic balance that which embodies pure magic that can keep our world safe. It has always been thus -- we watch over all 
+  OPS ["20:9=1","18:12=1"]
+>z ::  Time passes. Brother Joseph continues speaking. "But we can no longer depend on enchantments to keep outsiders at bay. Magic as we know it is dying. The dreaded Age of Science is already upon us, and in short time, our order will be discovered, and the balance will be no more. Many of our order hav
+  OPS ["20:9=1","18:12=1"]
+>z ::  Time passes. Brother Joseph continues. "I have brought you all forth today to say that although we cannot protect the future of Quendor, we can protect ourselves!" He holds the Rod of the Ancients high. "This holy Rod, which the Ancient Ones used to defeat the demon Anabais, has the power to protec
+  OPS ["20:9=1","18:12=1"]
+>z ::  Time passes. There is a momentous pause. Brother Joseph looks at the entire Order. "May the Gods smile down upon us on this day! We go now, into the unknown!" He triumphantly joins the white cube to the end of the Rod of the Ancients. There is a sudden, blinding white flash! The chanting is instant
+  OPS ["22:9=1","38:7=0","60:7=0","84:7=0","98:7=0","103:7=0","142:7=0","163:7=0","357:7=0","375:7=0","20:19=0","491:7=0","552:7=0","593:7=0","637:7=0","699:7=0","701:7=0","703:7=0","705:7=0","707:7=0","709:7=0","711:7=0","713:7=0","728:7=0","729:7=0","735:7=0","782:7=0","15:2=1","23:2=0","23:17=0","23:4=0","23:21=0","23:3=0","23:12=0","24:2=0","24:17=0","24:4=0","24:21=0","24:3=0","24:12=0","15:25=0","23:25=1","24:25=1","24:25=1","23:16=0","23:9=0","23:3=0","23:3=0","24:25=1","24:16=0","24:9=0","24:3=0","24:3=0","22:24=0","22:18=0","22:9=1","18:12=1"]
+>z ::  Time passes. > 
+  OPS ["22:9=1","18:12=1"]
+>look :: ook Your Quarters You are in your room in the Monastery. It is sparsely furnished, but certainly feels like home. The exit is north. You can see a note and a sleeping pallet here. > 
+  OPS ["15:2=1","23:2=0","23:17=0","23:4=0","23:21=0","23:3=0","23:12=0","24:2=0","24:17=0","24:4=0","24:21=0","24:3=0","24:12=0","15:25=0","23:25=1","24:25=1","24:25=1","23:16=0","23:9=0","23:3=0","23:3=0","24:25=1","24:16=0","24:9=0","24:3=0","24:3=0","22:24=1","22:9=1","18:12=1"]
+>look in book :: ook in book You find nothing of interest. > 
+  OPS ["18:0=0","18:20=0","18:3=0","22:9=1","18:12=1"]
+>eat book :: at book That's plainly inedible. > 
+  OPS ["15:20=0","15:23=1","18:0=0","18:5=0","22:9=1","18:12=1"]
+>wear book :: ear book You can't wear that! > 
+  OPS ["15:20=0","15:23=1","18:0=0","18:1=0","22:9=1","18:12=1"]
+OPS ["15:20=0","15:23=1","18:0=0","18:1=0","22:9=1","18:12=1"]
+EQ ["18:prayer book@15"]
