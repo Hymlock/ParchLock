@@ -5,7 +5,7 @@
 // exercised on the produced rows. Run from the repo root: node harness/zil-inventory-scope-retained.js
 const fs = require('fs'), vm = require('vm'), crypto = require('crypto'), assert = require('assert'), cp = require('child_process');
 const { story } = require(process.cwd() + '/work/investigations/zil-attr-analyzer.js');
-const HEAD_ZR = cp.execSync('git show ' + (process.env.P16_BASE || 'HEAD') + ':js/ZRamReader.js', { maxBuffer: 1 << 26 }).toString();
+const HEAD_ZR = cp.execSync('git show ' + (process.env.P16_BASE || '37327b0~1') + ':js/ZRamReader.js', { maxBuffer: 1 << 26 }).toString();
 let passed = 0;
 function check(ok, label) { assert(ok, label); passed++; console.log('PASS ' + label); }
 
@@ -164,6 +164,6 @@ check(model(b.rows.filter(o => o.labelSuppressed), true).demo === true, '8c only
     const en = ctx.ModuleStatFactsClaude[digestOf('Enchanter.z3.js')] || {};
     check(en.inventoryHiddenAttribute === 7 && en.inventoryHiddenRecurses === true && en.inventoryHiddenScopeRetained === true, '9 Enchanter row: hidden 7, recurses, scope retained');
     const all = Object.entries(ctx.ModuleStatFactsClaude).filter(([, v]) => v && v.inventoryHiddenScopeRetained === true).map(([k]) => k);
-    check(all.length === 1 && all[0] === digestOf('Enchanter.z3.js'), '9b scope retention is Enchanter-only');
+    check(all.length === 3 && ['Enchanter.z3.js', 'Sorcerer.z3.js', 'Spellbreaker.z3.js'].every(function (g) { return all.indexOf(digestOf(g)) >= 0; }), '9b scope retention is exactly Enchanter, Sorcerer, Spellbreaker (P16 + ext)');
 }
 console.log('zil-inventory-scope-retained: ' + passed + ' checks passed');

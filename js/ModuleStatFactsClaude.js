@@ -308,7 +308,12 @@ var ModuleStatFactsClaude = {
         // door 25 = DOORBIT, source exact 6/6 (vault door 2, octagonal hole 40, shop door 188, cell door 207, iron door 223, trap door 244). Seeded-native trace (grok1 #5399, udoor/cache run-spellbrkr-20261026T021900-70584.json; Codex ACCEPT #5402): CLOSE/OPEN shop door 188 and CLOSE octagonal hole 40 test 25 TRUE; CLOSE rezrov 14 tests 25 FALSE. Gold box 4 takes the container branch (no test).
         // Proposed concealed 12 = native INVISIBLE; retained Codex packet concealed/packet-spellbreaker.json (70/186 positives; 149 negative). Native/source tiers and SAVE/RESTORE qualifications remain in packet; no actor-possession or whole-title consumer closure.
         // locked 11 = LOCKED (native, claude worker E3 claude-probe/locked/run-spellbrkr-*): massive cabinet 107 @199 and massive cabinet 67 @372 (Dungeon Cell) read 11=1 "The cabinet is locked."; both read 0 after unlocking (same V-OPEN read site). Neither is a room.
-        "attributeMap": { "supporter": 3, "animate": 31, "talkable": 31, "on": 8, "container": 27, "open": 21, "isOpen": 21, "scenery": 19, "transparent": 15, "enterable": 29, "moved": 22, "door": 25 , "concealed": 12, "locked": 11 }
+        "attributeMap": { "supporter": 3, "animate": 31, "talkable": 31, "on": 8, "container": 27, "open": 21, "isOpen": 21, "scenery": 19, "transparent": 15, "enterable": 29, "moved": 22, "door": 25 , "concealed": 12, "locked": 11 },
+        // D16 P16 ext (grok2 ACCEPT): inventoryHiddenAttribute 19 = NDESCBIT (exact 55/0/0). spellbreaker-invhidden-claude-SEALED.md: PRINT-CONT BRIEFBIT
+        // exception (verbs.zil:1888) never reaches held objects (TAKE clears NDESC, verbs.zil:1734); book 144 open, 7 spells; parser.zil:1562 no NDESC test.
+        "inventoryHiddenAttribute": 19,
+        "inventoryHiddenRecurses": true,
+        "inventoryHiddenScopeRetained": true,
     },
     "431678a618ba3e1b5506adb9b4b3da9221ad0bbb0426166d5fcc0b37403b5899": {
         // D232 local globals, roots only (r3-claude/localscope2 + grok2 registry-ready): property 17, holder 58. Native: Outside of
@@ -386,6 +391,11 @@ var ModuleStatFactsClaude = {
         // moved 18 = TOUCHBIT (native, codex batch3-native.cjs output resume-20261020/moved/Sorcerer.z3.js.json; packet via grok1 #5201): GET BOX AND JOURNAL: tiny box 102 and journal 225 each set bit 18; blighted forest 1 stays clear.
         // concealed 19 = INVISIBLE (native, codex #5261 resume-20261020/concealed/packet-sorcerer.json, accepted grok1 #5270): pile of identical scrolls 91 unseen until LOOK IN CANNON (fort.zil 308/336 YIPPLES FCLEAR); flume START-RIDE FSETs 19 on non-protagonist contents of LOC, END-RIDE clears (tiny box 102 / calendar 61); spell book 139 negative.
         "attributeMap": { "open": 15, "isOpen": 15, "container": 27, "supporter": 17, "animate": 31, "talkable": 31, "wearable": 21, "on": 11, "door": 24, "enterable": 29, "climbable": 8, "transparent": 5, "moved": 18, "concealed": 19 },
+        // D16 P16 ext (grok2 ACCEPT p16-ext-review.md): inventoryHiddenAttribute 9 = NDESCBIT. Native D16-sorcerer-trace.md: book 139 CONTBIT+OPENBIT,
+        // exactly 7 NDESC spells; READ BOOK lists them (globals.zil:937-949); gparser.zil:1318 SEARCH-LIST no NDESC test. Native i omits spells; scope kept.
+        "inventoryHiddenAttribute": 9,
+        "inventoryHiddenRecurses": true,
+        "inventoryHiddenScopeRetained": true,
         // Native amulet/suit inventory marks direct-held WEARBIT gear worn;
         // amulet dropped or nested in the carried box is not worn (no state bit).
         "equipmentState": { "wornWhen": "wearable-direct-player" },
