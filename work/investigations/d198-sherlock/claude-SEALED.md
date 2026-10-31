@@ -14,3 +14,4 @@ Determine the 2-byte data layout from the Sherlock source (parser.zil dictionary
 macros) and the bytes. Extend D198 with a validated alternate layout (entryLen === textBytes + 2) selected only when
 the whole dictionary is consistent with it and the rest of the D198 validations pass. It must not apply to unknown
 layouts, and Inform and other ZIL titles stay byte-identical. Validate with the gate and the existing D198 harnesses.
+- RETRACTED blind request #5792: the 5787-5791 broadcast disclosed the cause to all seats; grok's half is a disclosed-exposure challenge.
