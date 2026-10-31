@@ -1,0 +1,11 @@
+const fs=require('fs'),crypto=require('crypto'),path=require('path');
+const root='work/mapping-research/items-codex/resume-20261020';
+const rel=root+'/door-moonmist-tour-final.json',raw=fs.readFileSync(rel),j=JSON.parse(raw);
+const sha=x=>crypto.createHash('sha256').update(x).digest('hex');
+const selected=[[13,'52'],[21,'52'],[21,'120']].map(([row,id])=>{const r=j.rows[row];return {row,id:Number(id),command:r.command,accepted:r.accepted,before:r.before.objects[id],after:r.after.objects[id],reply:j.routeLog[row].output};});
+const src='C:/Users/hymlo/AppData/Local/Temp/hs-src/moonmist/historicalsource-moonmist-c85885f';
+const sources=['castle.zil','verbs.zil','goal.zil','tower.zil','people.zil'].map(f=>({path:path.join(src,f),sha256:sha(fs.readFileSync(path.join(src,f)))}));
+const binding=JSON.parse(fs.readFileSync(root+'/door-moonmist-qualified.json'));
+const out={kind:'retained evidence extraction, NOT a new native run or independent semantic qualification',original:{path:rel,sha256:sha(raw),tier:j.tier,status:j.status,digest:j.rows[0].before.digest},priorPacketBindingMatches:sha(raw)===binding.input.sha256,selected,sources,limits:['discovery census not true-frontier-certified','second-owner clear is automatic story effect, not manual UNLOCK','DOOR/OPEN qualification is separate from LOCKED','no rendered UI proof or navigation policy accepted']};
+fs.writeFileSync(root+'/oct30-recovery/moonmist-lock-retained-extract.json',JSON.stringify(out,null,2)+'\n');
+console.log(JSON.stringify({priorPacketBindingMatches:out.priorPacketBindingMatches,transitions:selected.map(x=>({row:x.row,id:x.id,bit8Before:x.before.bits.includes(8),bit8After:x.after.bits.includes(8)})),sha256:sha(raw)}));

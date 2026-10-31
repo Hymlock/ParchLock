@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "navigationByteIdentical": true,
+  "nonemptyNativeExits": 6,
+  "door52NeverBlocked": true,
+  "unchangedCommandsAndInput": true,
+  "widths": [
+    1280,
+    360
+  ],
+  "changedRuntimeFiles": [
+    "js/AttributeSchema.js",
+    "js/ModuleStatFactsClaude.js"
+  ],
+  "notes": [
+    "Native R2 failed due test selector role=status; actual span is .pl-object-status. Corrected R3 retained separately; no product CSS/UI change.",
+    "Original unit33 includes initially wrongdigest failure corrected before final33; previous overwritten unit output reconstructed only in diagnostic notes, not raw proof."
+  ]
+}

@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 137 decisions across
-9751 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 138 decisions across
+9771 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -27,11 +27,12 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 
 | D | claim | files | games | arch |
 |---|-------|-------|-------|------|
-| D253 | r45/r46 ZIL fact batch; ledger at 0 U |  |  |  |
+| D254 | Moonmist display-only lock observation | js/AttributeSchema.js js/ModuleStatFactsClaude.js js/Qol.js |  | §90 |
+| D253 | r45/r46 ZIL fact batch; historical plain-U subtotal | js/AttributeSchema.js js/ModuleStatFactsClaude.js js/Qol.js |  |  |
 | D252 | Stats idle rewrites stopped (D17/P17) |  |  |  |
 | D251 | Door-only destination isLocked (P10b) |  |  |  |
 | D250 | Zork III worn Drop custody (E5) |  | Zork3 |  |
-| D249 | Agreed designs pending integration (D12, D5, D16, D8, P4, P11b) |  | Enchanter |  |
+| D249 | Agreed designs and integration status (D12, D5, D16, D8, P4, P11b) |  | Enchanter |  |
 | D248 | Learning stores retained on uninstall (D13) -- LANDED aae8445 |  |  |  |
 | D247 | Light key semantics stay heuristic (D2) |  |  |  |
 | D246 | Lock pause requires locked AND closed (P10) | harness/zil-locked-map.js |  |  |
@@ -300,3 +301,4 @@ cites. Search here for a subsystem; the line number opens the chapter.
 | §88 | 4315 | 88. Authored unlock tool domain (D231) | D231 |
 | line 4321 | 4321 | October26 operator-authorized credit takeover: twelve concealed mappings |  |
 | §89 | 4334 | 89. Save-linked cumulative playthrough history (D243) | D243 |
+| §90 | 4345 | 90. Display-only lock observations (D254; landed f82f243) | D254 |

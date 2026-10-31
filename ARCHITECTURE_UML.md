@@ -4340,3 +4340,17 @@ Transcript forwards only successful native SAVE/RESTORE and accepted non-boot re
 Save-package export enriches selected same-run snapshots from durable/current memory counts. Import computes a pure unique write plan before mutations, includes ledger/sidecars/native/map in rollback, and refreshes cache only after transaction success. Import alone does not choose a run; deleting one save keeps history; uninstall removes the digest ledger. Legacy or invalid metadata never reconstructs lost deaths from learned-stat caches. Ranges/capacity reject/report instead of deleting linked histories.
 
 Production07b18df and independently accepted test APK75/code48/cache173 bind to death-persistence-20261026 evidence;531file immutable pair309each, targeted paired nondeterminism classification0unresolved and7 explicit no-prompt gaps. Native packaged15-row smoke includes visible retained deaths2. No physical-device or full26-ZIL completion claim.
+
+<a id="ar-ch90"></a>
+## 90. Display-only lock observations (D254; landed f82f243)
+
+Moonmist's exact executable fact owns `lockedObservation {attribute:8, objects:[52]}` separately from mapped attributes.
+AttributeSchema reads the current front-gate bit only after exact digest/header, family, descriptor and true-frontier
+validation. The existing D5 stamped/scoped radial selector displays Locked; actions, tool pickers and navigation receive
+no new capability or lock state. A malformed descriptor or simultaneous mapped/classic lock owner fails closed.
+
+This separation is deliberate: Moonmist can automatically unlock during travel, and LOCKED also represents sleeping
+rooms and puzzle memory. Raw status is neither an impassability predicate nor a key/Unlock capability. Existing Lurking
+Horror status owners 119/135 keep their mapped path. Native baseline/candidate menus at 360/1280 preserve commands/input;
+six nonempty DEXIT hints remain byte-identical. See D254 and the immutable Moonmist display gate evidence for exact
+scope, review, classification and coverage limits; no full-title completion is implied.

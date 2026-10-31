@@ -27,3 +27,27 @@ d5-status-candidate-r1/native-layout-r2/profile/
 
 d5-status-candidate-r1/native-unlock-r1/site/
 d5-status-candidate-r1/native-unlock-r1/profile/
+
+d5-status-candidate-r1/base-r2/
+
+d5-status-candidate-r1/native-layout-r3/site/
+d5-status-candidate-r1/native-layout-r3/profile/
+
+e5-d12-shared-r1/facts-reverse-check/
+
+d5-shared-gate-r1/base/
+d5-shared-gate-r1/candidate/
+
+moonmist-current-menu-r1/site/
+
+moonmist-current-menu-r2/site/
+
+moonmist-current-menu-r3/site/
+
+moonmist-display-shared-r1/base/
+moonmist-display-shared-r1/candidate/
+
+moonmist-source-integration.index
+moonmist-facts-before.bin
+
+moonmist-evidence-integration.index

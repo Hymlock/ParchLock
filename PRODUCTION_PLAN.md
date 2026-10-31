@@ -9694,7 +9694,7 @@ stores, exact keys and owner sets per module, an eraseEpoch, erase tombstones an
 Web Lock; metadata-only index writes (#5674). Erase removes only keys whose owner set is that uninstalled module.
 Gate: audit-d13. **Open:** D13b (store size caps) not yet designed.
 
-## D249 Agreed designs pending integration (D12, D5, D16, D8, P4, P11b)
+## D249 Agreed designs and integration status (D12, D5, D16, D8, P4, P11b)
 
 Consensus reached 2026-10-30. Status updated 2026-10-30 evening:
 - **D12** LANDED f5afbb3 (with E5, D250). Hollywood Close gated by the game's own V-CLOSE rule (CONTBIT and not SURFACEBIT
@@ -9709,9 +9709,9 @@ Consensus reached 2026-10-30. Status updated 2026-10-30 evening:
 - **P11b** PARKED (8033eb9): codex disposition B, 0 player-visible change in the release set. Design (garment rejection
   skipped only under the authenticated garmentWornDomainFact root with a valid exit property; codex ACCEPT #5549) kept for
   reference only.
-- **D5** PENDING (codex): object "Locked" status (D241 phase 2); candidate oct30-recovery/d5-status-candidate-r1, audit
-  zil-titles/audit-d5-candidate.md (bus #5647). Needs rebase onto current main.
-- **D8** PENDING (codex): Suspended robot radial, P8 addressed forms ("<robot>, <verb> <noun>") from the exact 6-robot
+- **D5** LANDED 7a61fa7: passive object "Locked" status (D241 phase 2), initially scoped to Lurking Horror owners
+  119/135. Current-source integration and paired gate: zil-titles/audit-d5/GATE.md. Moonmist display-only extension: D254.
+- **D8** LANDED 0fd428a: Suspended robot radial, P8 addressed forms ("<robot>, <verb> <noun>") from the exact 6-robot
   NAME-TBL domain (Iris/Waldo/Sensa/Auda/Poet/Whiz; VICBIT alone admits 14, rejected). Never sent into setup/QUIT/
   missing-noun prompts (suspended-d14/D8-R3-attack-claude.md; codex #5610/#5651).
 
@@ -9742,9 +9742,29 @@ Hollywood locked 15 fact.
 **Contract.** `seen` is capped at CONFIRM_SAMPLES; badge fields are derived, not persisted. Idle PM_Stats_ writes dropped
 from 33 to 0 per 3 s.
 
-## D253 r45/r46 ZIL fact batch; ledger at 0 U
+## D253 r45/r46 ZIL fact batch; historical plain-U subtotal
 
 **Lifecycle:** frozen diff 76a6fcf, landed 7ffb59e; disposition 8033eb9; ledger 927021e.
 **Facts.** Suspended container/supporter/open/openCapability fail-closed (exact-digest facts only); Hitchhik enterable and
 switchable (switchable review-held); Seastalker concealed; Hollywood enterable; Suspect locked (17). With this batch the
-ZIL profile ledger (2026-10-16-zil-profile-ledger.md) has 0 U (unknown) cells; every cell is S, NC or L:NC.
+earlier zero-U subtotal counted only plain-U cells. L:U, N?, Sherlock B and L:NC work remained open; see
+work/investigations/zil-titles/CHECKIN-2026-10-31.md and the current ledger. This subtotal is not full26 completion.
+
+## D254 Moonmist display-only lock observation
+
+**Status:** LANDED f82f243. Four-seat design and census+behaviour tier accepted;
+current-source audits Grok #5920 and Grok2 #5929. Operator-authorized unavailable-seat takeover; no new APK.
+Files: `js/AttributeSchema.js`, `js/ModuleStatFactsClaude.js`; the existing `js/Qol.js` selector is unchanged.
+**Contract.** Exact executable fact `lockedObservation: {attribute: 8, objects: [52]}` exposes the front gate's raw
+Locked label through AttributeSchema.lockedObjectStatus and the existing stamped/scoped D5 radial view. It creates no
+attributeMap.locked, generic attrs.locked, lockability or route-pause inference. Descriptor keys, bit range, unique owner
+domain, true object frontier, exact digest/stable-header ownership and validated ZIL family fail closed; Inform and
+conflicting old/new ownership are excluded. Existing Lurking Horror mapped status ownership stays unchanged.
+**Provenance/limits.** Native gate clear/set with opening/locking text plus matched-source LOCKED census; not a claim
+that every Moonmist LOCKED carrier is a physical lock. Rooms and puzzle memory reuse the bit. Owner 52 only; auto-unlock
+travel remains independent. Native paired 360/1280 menus retain Unlock/More and input; six nonempty exit hints are
+byte-identical. Focused33, operator13, three-engine0diff; sole309 pair, four FLAKY mark differences converging on paired
+targeted replay, zero regressions/unresolved. Evidence:
+work/mapping-research/items-codex/resume-20261020/oct30-recovery/moonmist-display-shared-r1.
+Seven paired no-prompt gaps and boot-only Glulx
+coverage remain explicit. No whole-title or overall completion claim.
