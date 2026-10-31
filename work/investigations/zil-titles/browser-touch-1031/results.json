@@ -29,7 +29,7 @@
   },
   {
     "check": "4 Sherlock lamp turn on -> turn off",
-    "pass": false,
+    "pass": true,
     "detail": {
       "lightFormsAfterOn": {
         "fact": {
@@ -76,10 +76,10 @@
       "reply": "\n \n>diagnose\n[What do you want to diagnose?]\n \n>turn on lamp\nYou turn up the wick. The lamp emits a warm glow that lights up the area around you.\n \n> \n 221-B Baker Street            Sat  5:02 AM     0",
       "after": [
         "Examine",
-        "Switch on",
-        "Switch off",
         "Drop",
         "Give to...",
+        "Put in...",
+        "Turn off",
         "More...",
         "Tools"
       ]
