@@ -9717,13 +9717,16 @@ Consensus reached 2026-10-30. Status updated 2026-10-30 evening:
 
 ## D250 Zork III worn Drop custody (E5)
 
-**Lifecycle:** codex, landed f5afbb3 with D12; ledger 927021e (Zork3 worn S). **Contract.** A worn object in Zork III keeps
-the player as custodian for Drop scope: Drop stays offered for worn items, read from the game's own worn state, not a list.
+**Lifecycle:** codex, landed f5afbb3 with D12; ledger 927021e (Zork3 worn S); claude audit audit-e5-raw-r2.md. **Cause.**
+Zork III has no REMOVE verb for worn gear (source requires DROP), so a "remove" radial option was wrong and the worn item
+needed a Drop. **Contract.** equipmentState { wornWhen: "wearable-direct-player", wornRemoval: "drop" }: an item is worn when
+it has WEARBIT 4 and its parent is the measured PLAYER (G178). For such an item the radial offers a scoped "drop <noun>"
+(unique verified noun, validated bare drop template, exact digest). All guards fail closed to the old behaviour. Native:
+amulet 39 DROP clears direct custody.
 
 ## D251 Door-only destination isLocked (P10b)
 
-**Lifecycle:** grok2, landed 4baf75c; ledger 5427fca (Hollywood locked=15 S). Gate audit-p10b. **Cause:** rooms carrying
-LOCKEDBIT never set the exit's isLocked, so a door-only destination showed no lock. **Contract.** When an exit's only route
+**Lifecycle:** grok2, landed 4baf75c; ledger 5427fca (Hollywood locked=15 S). Gate audit-p10b. **Cause.** Exit builders took isLocked from the DESTINATION object's attrs (ExitCalibrator 148/623, ZRamReader 2584), and Navigator fell back to isLocked when there was no door object, so Hollywood rooms that carry LOCKEDBIT ("lockable from here") would have paused every route into them. **Contract.** When an exit's only route
 is a door whose destination carries LOCKEDBIT, the exit is marked isLocked; Hollywood locked count 15. Extends D241/D246
 (pause still requires locked AND closed).
 
