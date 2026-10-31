@@ -9,7 +9,7 @@ const end = s.indexOf('\n    },', i); let row = s.slice(i, end);
 const m = row.match(/"attributeMap": \{([^}]*)\}/); const cur = JSON.parse('{' + m[1] + '}');
 for (const [k, b] of [['moved', 3], ['edible', 41]]) { if (cur[k] != null) throw new Error('has ' + k); if (Object.values(cur).includes(b)) throw new Error('collision ' + b); }
 row = row.replace(/\n(\s*)"attributeMap": \{([^}]*)\}/, (x, ind, body) =>
-  '\n' + ind + '// r50: moved 3 = FL-TOUCHED (object TOUCHBIT; byte-diff: pound note 150 / pistol 122 0->1 on take, Mrs Hudson refused 0->0; grok2/sherlock/PACKET-moved-3.md);\n' +
+  '\n' + ind + '// r50: moved 3 = FL-TOUCHED (object TOUCHBIT; byte-diff: pound note 150 / pistol 122 0->1 on take, Mrs Hudson refused 0->0 (run d854ecf6 / plan a51a105c, codex sherlock-moved-retained-substitution.json; not the PACKET-moved-3 parent-0 'cannot see' row));\n' +
   ind + '// edible 41 = FL-FOOD (census+behaviour: 2 eats + 2 refusals, PACKET-edible-41.md). scenery FL-NODESC 32 is NOT mapped (L:X: list-suppression only).\n' +
   ind + '"attributeMap": {' + body.replace(/\s*$/, '') + ', "moved": 3, "edible": 41 }');
 s = s.slice(0, i) + row + s.slice(end);

@@ -2803,8 +2803,8 @@
    "r": "FOUR-SEAT ACCEPT (grok author INDEX-sherlock-grok-lane 42ba8316; grok2 VOTES-grok2.md; claude VOTES-claude.md; codex codex-sherlock-votes-0837.md), landed r49 seeded native-command tier: FL-ALIVE 40"
   },
   "edible": {
-   "s": "UD",
-   "r": "D198 decodeD198 rejects Sherlock.z5 (unknown/rejected invalid-dictionary; Codex #3481): no confirmed ZIL family, so no ZIL decode path runs; documented unknown pending family-routing proof (Codex lane A)"
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT (operator ruling while grok2 out; grok2 author ACCEPT pre-absence; codex codex-sherlock-votes-0837; grok VOTES-grok.md; claude CLAUDE-VOTES-sherlock.md), landed r50: edible 41 FL-FOOD (census+behaviour)."
   },
   "takeable": {
    "s": "UD",
@@ -2901,6 +2901,14 @@
   "isOpen": {
    "s": "S",
    "r": "FOUR-SEAT ACCEPT (grok author INDEX-sherlock-grok-lane 42ba8316; grok2 VOTES-grok2.md; claude VOTES-claude.md; codex codex-sherlock-votes-0837.md), landed r49 seeded native-command tier: FL-OPENED 5"
+  },
+  "moved": {
+   "s": "S",
+   "r": "THREE-SEAT ACCEPT (operator ruling while grok2 out; grok2 author ACCEPT pre-absence; codex codex-sherlock-votes-0837; grok VOTES-grok.md; claude CLAUDE-VOTES-sherlock.md), landed r50: moved 3 FL-TOUCHED (byte-diff tier; negative run d854ecf6)."
+  },
+  "scenery": {
+   "s": "X",
+   "r": "THREE-SEAT ACCEPT (operator ruling while grok2 out; grok2 author ACCEPT pre-absence; codex codex-sherlock-votes-0837; grok VOTES-grok.md; claude CLAUDE-VOTES-sherlock.md), landed r50: scenery fail-closed: FL-NODESC 32 is list-suppression only; furniture still named in room prose (PACKET-scenery-32-lookomit.md)."
   }
  }
 }
