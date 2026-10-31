@@ -1259,7 +1259,7 @@ var ModuleStatFactsClaude = {
         "rejectedForms": ["score"],
         "evidence": "2026-10-05 live grid Score: 15 Moves: 0..2 and compact 15/2; SCORE: You have so far scored 0 out of a possible 30, in 1 turn. Game-authored conflict; grid kept, SCORE not asked."
     },
-    // heist (Inform 5-era alphabetical attributes, no name table; grok PACKET-heist-1425, claude ACCEPT). Raw ops: container 3 / open 14 (bag 19,
+    // heist (Inform 5-era alphabetical attributes, no name table; grok PACKET-heist-1404, claude ACCEPT). Raw ops: container 3 / open 14 (bag 19,
     // frame 124), edible 5 (eat bag), door 4 + enterable 6 (enter bag), concealed 2 (yourself); clothing 1 / female 7 / door 4 by object census.
     // Bits 8-26 equal PROFILE. Visible: Equipment now lists frame 124 + photo 126 inside the bag, matching native i.
     "251a02ace56207ff0b213e942a63732d3be6212c74a8a4e1412aa1c1aa7fb616": {
@@ -1270,6 +1270,30 @@ var ModuleStatFactsClaude = {
     // Visible: removes "eat/drink chair", restores put in on the rucksack.
     "45da361177da2e073616082377ea37654bb10b8289024833f61e1422dedb6201": {
         "attributeMap": { "animate": 0, "clothing": 1, "wearable": 1, "concealed": 2, "container": 3, "door": 4, "edible": 5, "enterable": 6, "female": null, "absent": null, "male": null, "neuter": null, "pluralname": null }
+    },
+    // minster (Inform 5-era alphabetical layout; grok PACKET-minster-1407, claude ACCEPT; BASE vs FACT in grok-lane-1031/inform-plan/minster-pageview.txt).
+    "41172c8e152229cde7a90aa78b04d2882223c8ba161cc67716a1660e26ea3cd1": {
+        "attributeMap": { "clothing": 1, "wearable": 1, "concealed": 2, "container": 3, "door": 4, "edible": 5, "enterable": 6, "female": null, "absent": null, "male": null, "neuter": null, "pluralname": null }
+    },
+    // Enemies (Inform 5-era alphabetical layout; grok PACKET-Enemies-1407, claude ACCEPT; BASE vs FACT in grok-lane-1031/inform-plan/Enemies-pageview.txt).
+    "4d054e03616ec2fac3a2dce408ff8007ceff8ff0bde43f504c89dc1bdb12c8be": {
+        "attributeMap": { "clothing": 1, "wearable": 1, "concealed": 2, "container": 3, "door": 4, "edible": 5, "enterable": 6, "female": 7, "absent": null, "male": null, "neuter": null, "pluralname": null }
+    },
+    // Gumshoe (Inform 5-era alphabetical layout; grok PACKET-Gumshoe-1407, claude ACCEPT; BASE vs FACT in grok-lane-1031/inform-plan/Gumshoe-pageview.txt).
+    "3fbd9f00d865302050cca79db955ee34ba2d51f98fcbb650048fa5447dc8f27f": {
+        "attributeMap": { "clothing": 1, "wearable": 1, "concealed": 2, "container": 3, "door": 4, "edible": null, "enterable": 6, "female": 7, "absent": null, "male": null, "neuter": null, "pluralname": null }
+    },
+    // godot (Inform 5-era alphabetical layout; grok PACKET-godot-lists-SoFar-1410, claude ACCEPT; unmeasured/uncarried bits null).
+    "1acdf2cc0519c9c96afdfa27d0107820a513de509050f1f23ed1710f30d6ef97": {
+        "attributeMap": { "clothing": 1, "wearable": 1, "concealed": 2, "container": 3, "door": 4, "edible": null, "enterable": null, "female": null, "absent": null, "male": null, "neuter": null, "pluralname": null }
+    },
+    // lists (Inform 5-era alphabetical layout; grok PACKET-godot-lists-SoFar-1410, claude ACCEPT; unmeasured/uncarried bits null).
+    "5e9cf5f5077975a461013294da134970ee7afe82a6f0c0121785c1446051cd59": {
+        "attributeMap": { "clothing": null, "wearable": null, "concealed": 2, "container": null, "door": 4, "edible": null, "enterable": null, "female": null, "absent": null, "male": null, "neuter": null, "pluralname": null }
+    },
+    // SoFar (Inform 5-era alphabetical layout; grok PACKET-godot-lists-SoFar-1410, claude ACCEPT; unmeasured/uncarried bits null).
+    "b94c01b794a728806f78a9ab5a2d2ac0fcbe04632206d501848c18c809feba1c": {
+        "attributeMap": { "clothing": 1, "wearable": 1, "concealed": 2, "container": 3, "door": 4, "edible": null, "enterable": 6, "female": null, "absent": null, "male": null, "neuter": null, "pluralname": null }
     },
     // Limp
     "ab8e29c688af48c08ea29fac42e2ce3673efbb2728ae436396e6f261ce44d253": {
