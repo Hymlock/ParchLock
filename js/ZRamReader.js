@@ -3026,7 +3026,54 @@ var ZRamReader = {
             });
         }
         walk(rootId, depth, false);
-        return out;
+        return ZRamReader.inventoryLabelProjection(mem, rootId, out, fact);
+    },
+    // Sherlock pocket R3 (codex pocket-R3-proposal; claude implementation): native V-INVENTORY prints the
+    // NODESC pocket's contents only while the coat holding it is worn, while the parser still reaches them.
+    // A wholly validated exact-digest rule clones admitted strict descendants of the holder with
+    // labelSuppressed:true when the garment is unworn. Any invalid input returns rows unchanged: this
+    // rule may only withhold labels, never remove scope rows, add rows or change parents/attributes.
+    inventoryLabelProjection: (mem, rootId, rows, fact) => {
+        try {
+            var rule = fact && fact.inventoryLabelRule;
+            if (!rule) return rows;
+            if (typeof rule !== "object" || Array.isArray(rule) || Object.getPrototypeOf(rule) !== Object.prototype
+                || Object.keys(rule).sort().join() !== "garment,holder,kind,wornAttribute"
+                || rule.kind !== "worn-holder-pocket") return rows;
+            var holder = rule.holder, garment = rule.garment, wbit = rule.wornAttribute;
+            if (!Number.isInteger(holder) || !Number.isInteger(garment) || holder === garment || holder < 1 || garment < 1) return rows;
+            if (typeof GrammarProvider === "undefined" || !GrammarProvider.decodeD198) return rows;
+            var fam = GrammarProvider.decodeD198(mem);
+            if (!fam || fam.classification !== "confirmed-zil-family" || fam.evidence !== "validated") return rows;
+            var h = ZRamReader.header(mem), first = ZRamReader.objectBase(h, 1);
+            var size = mem.byteLength || mem.length, firstProps = ZRamReader.u16(mem, first + (h.version <= 3 ? 7 : 12));
+            // The table/property boundary must lie in dynamic memory and the supplied buffer (codex R3 audit).
+            if (!Number.isInteger(firstProps) || firstProps <= first || firstProps > h.staticMem || firstProps > size) return rows;
+            var frontier = (firstProps - first) / h.entrySize;
+            if (!Number.isInteger(frontier) || frontier < 2 || holder > frontier || garment > frontier) return rows;
+            var limit = h.version <= 3 ? 32 : 48;
+            if (!Number.isInteger(wbit) || wbit < 0 || wbit >= limit || fact.wornAttribute !== wbit) return rows;
+            var player = ZRamReader.resolvePlayer(mem);
+            if (!player || player.ambiguous || !Number.isInteger(player.id) || player.id < 1 || player.id > frontier
+                || player.id !== Number(rootId) || player.id === holder || player.id === garment) return rows;
+            var hl = ZRamReader.objectLinks(mem, holder), gl = ZRamReader.objectLinks(mem, garment);
+            // A missing worn byte is unknown state, never "unworn" (codex R3 audit).
+            if (!hl || !gl || hl.parent !== garment || gl.parent !== player.id || !gl.attrBytes
+                || gl.attrBytes.length <= (wbit >> 3) || !Number.isInteger(gl.attrBytes[wbit >> 3])) return rows;
+            if (gl.attrBytes[wbit >> 3] & (128 >> (wbit & 7))) return rows; // worn: native lists the pocket
+            return rows.map(function (row) {
+                if (!row || row.labelSuppressed === true) return row;
+                var seen = {}, id = Number(row.id), steps = 0;
+                while (Number.isInteger(id) && id >= 1 && id <= frontier && !seen[id] && steps++ <= frontier) {
+                    seen[id] = 1;
+                    var l = ZRamReader.objectLinks(mem, id);
+                    if (!l) return row;
+                    if (l.parent === holder) return Object.assign({}, row, { labelSuppressed: true });
+                    id = l.parent;
+                }
+                return row;
+            });
+        } catch (eProjection) { return rows; }
     },
 
     // Wump2ka identity R4 (Codex GO #3103): a digest-bound measured

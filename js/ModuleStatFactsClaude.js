@@ -865,9 +865,11 @@ var ModuleStatFactsClaude = {
         // wornAttribute 34 = FL-WORN (dynamic state): native set/clear on hat 188 and whistle 173; knife stays clear. REMOVE/TAKE OFF syntax FINDs FL-WORN.
         "wornAttribute": 34,
         // inventoryHidden 32 = FL-NODESC (two-active-seat ACCEPT, codex absent/audits on return: grok PACKET-sherlock-invhidden-lair-native-grok-1115.md author, claude CLAUDE-VOTES-sherlock-invhidden.md):
-        // native INVENTORY omits the held rope 176 with 32 set (Lair untie), lists it with 32 clear (cut). Direct children only. Static stays NC (26 = TRYTAKE).
+        // native INVENTORY omits the held rope 176 with 32 set (Lair untie), lists it with 32 clear (cut). Hidden holders recurse (label withheld, contents walked); pocket contents gated by inventoryLabelRule. Static stays NC (26 = TRYTAKE).
         "inventoryHiddenAttribute": 32,
-        "inventoryHiddenRecurses": false,
+        "inventoryHiddenRecurses": true,
+        // R3 (codex pocket-R3-proposal, claude impl): pocket 287 contents labelled only while coat 302 is worn (V-INVENTORY ~4030); unworn they stay in scope, label withheld.
+        "inventoryLabelRule": { "kind": "worn-holder-pocket", "holder": 287, "garment": 302, "wornAttribute": 34 },
         // lightForms (three-seat ACCEPT: claude PACKET-lamp-claude.md, grok VOTES-grok-claude-packets.md, codex sherlock-takeover-votes-1422.md):
         // lamp 166 only; state FL-LIGHTED 38 (also room-lit, hence owner-scoped); FL-LAMP 42 = parser default for LAMP-ON/OFF objects (FL-LAMP42); forms are the game defaults turn on/turn off.
         "lightForms": { "capabilityBit": 42, "stateBit": 38, "objects": [166], "on": { "default": "turn on" }, "off": { "default": "turn off" } }
