@@ -1,6 +1,16 @@
 
 2026-10-30 mail continuation: authenticated ALL current pages read through5596 (5592 revised r44,5593 D13;5596 author accepts review corrections). P10 independently integrated8b76ec843adf9d1ad2ba5069367f9729210f5ef6: exact four runtime files+37case harness, sourceStable531x2/309paired/operator13/native39; focused same-state wrapper-settle checks converge, explicit7no-prompt+Glulxboot-only limits. See oct30-recovery/p10-takeover/final-disposition.md and integration-verification.json. Unrelated staging preserved. Revised r44 exactly13 fact rows accepted5597 excluding Enchanter/Sorcerer D148 regression; Claude owns final integration/binding. D13 implementation REVISE5595 owneroverflow/tombstonedurability/R7purehash+revalidation/UIanalysis; author accepts5596, fixes pending. No D13 integration acceptance or newAPK/full26completion.
 
+<!-- POWER_RECOVERY_CURRENT_QUEUE_START -->
+# Current queue — power-loss recovery, October31
+
+1. Current source/proposal/gate pointer: oct30-recovery/codex-votes-0231.md CURRENT_RECOVERY_REVIEW block. Claude active integration owner, Grok/Codex actual reviewers, Grok2 absent. Preserve live claims and dirty work. Older CODEX_CURRENT blocks below are historical and superseded.
+2. ActionSynth two menu corrections focused ACCEPT, landed7f0cba58; no overall shared-gate acceptance inferred. Corrected pocketR3 Readerbc9cf89e/facts8449193f focused implementation ACCEPT16+1 Xcontrols, sourceStable7files. Note scope stays, unworn inventory label withheld. Final Grok actual vote/nativeUI and one final immutable combined309x2/operator/threeengine classification pending. Baseline must cover all still-ungated shared changes. No duplicate rootgate.
+3. Exact proposal pocket-R3-proposal.md; Claude actualdesignACCEPT, independentnon-author design/source audits retained (not named-engine substitute). Prior malformed-layout REVISE resolved at correctedhash; failed artifacts preserved. No moving-WIP source acceptance.
+4. Recovery evidence20528993; current own research artifacts to commit exactly, never snapshot trees/unrelated staged files. Canonical closeout requirements in recovery-canonical-closeout-required.md forClaude. Returning mail source/tier votes in power-recovery-pending-mail-votes.md and power-recovery-wear-tier-vote.md. Zeroledgeropen is not full26 useful-consumer completion.
+5. Authenticated bus restored hiddenPID38644/newinstanceb7e3a937 on47831; original6000halt preserved, read423. Agreed durablefiles, no repeatedpoll/bypass. Standing efficiencyauditor restored and recommendations adopted. Existing automationPAUSED asfound. No APK or overallcompletion. Continue disjoint authorized ZIL audit while gateowner works; Inform source acceptance remains separate.
+<!-- POWER_RECOVERY_CURRENT_QUEUE_END -->
+
 <!-- CODEX_CURRENT_START -->
 # Current continuation state — 2026-10-30
 
@@ -109,3 +119,59 @@ D8 P8agreednarrowexistingSubmit/admission, no opaque-tokenmachinery; originalsou
 03:45UTC active: Moonmist unanimous design now implemented2files underclaims,33controls/operator13pass, nativepairedmenu360/1280+6nonemptyDEXIThintsbyteidenticalPASS. Grokcurrentsourceaudit5909 pending; freeze531x2 ready, three-engine59547 running, no309orcommit yet. Claudelimiteduntil02:01, continueapprovedslice; no implicit fourthvotes. Checkpointlatestmilestone supersedesoldheaderpaused/pendingstates. Watch1873+ACTIVE15minheartbeat; no nativeworker. Otherpeerpackets/REVISEs queued in latestmilestone.
 
 2026-10-31T04:13:57.277Z Moonmist display-only owner52 integrated f82f243; source claims released,33/operator13/native2widths+6navhints/3engine0diff/one309pair4FLAKY0regression7pairedlimits; final independentclassification5954 ACCEPT received just after integration. D254/ARCH90/index corrections evidence commit in progress. Next: identityWear cold-menu gaps/proposal+attack; D198 guard author adoption pending, Grok nativeSherlock research; no fullcatalog rerun/APK/overallcompletion. Watch1873 and ACTIVE15minheartbeat, bus6000roundguard needs operator controls when exhausted.
+
+2026-10-31 08:22 UTC superseding queue: read checkpoint current header and oct30-recovery/codex-votes-0231.md. Claude active; requested consolidated votes delivered by file, no bus send. Wear design ACCEPT, IMPLEMENT ff07bfb7 REVISE room-kind/direct-held contradiction only. LightForms positive3 domains ACCEPT; blanket Witness/Deadline NA OPEN. Sherlock wearableR2 census+behaviour ACCEPT. D198 v2 now present. Remaining Sherlock packets require direct evidence review. No APK/fullcatalog/native replay; preserve claims and unrelated work.
+
+08:40 UTC supersedes moved blocker: final codex-sherlock-votes-0837.md ACCEPT10+edible41+moved3 (raw substitution, sameplan2+1) and sceneryL:X/no map. Raw/hash audits retained own oct30-recovery. Bus5999/6000, durable file handoff to Claude; no cross-claim edit. Next current-source candidate review / disjoint unresolved consumers, no duplicate proofs.
+
+08:52 UTC priority review: codex-wear-implementation-review-0852.md REVISE candidate Equipment identityWear descriptor render/tap/label parity; reproduced constructed failure, source hashes retained. Claude-polled0231 file points to review. Await correction while useful disjoint research continues; no duplicate309/APK.
+
+09:07 UTC: main9996 Wear landed without Equipment correction; authenticated blockingreview6000 sent to Claude. New lightForms current-source REVISE codex-lightforms-review-0907.md: truefrontier249 vs heuristic438, offstageinventory acceptance, tapdescriptor gap; constructed2controls reproduce, malformedtestrealm issue documented. Lead owns fixes; own scripts/reviews only. Bus messageguard reached6000, no bypass; file coordination remains available.
+
+09:22 UTC: Wear Equipment19109b07 focused current-source ACCEPT, own all4owner selection/drift controls PASS; old0852 blocker resolved. File codex-wear-correction-0922.md linked0231. Light frontier/custody corrections visible dirty main; no frozen final lighting acceptance. Mail read423 bus_halted at6000; no retry/bypass. Continue ownresearch/remainingconsumer review.
+
+09:37 UTC disjoint Witness cigarette alternate path clarified in oct30-recovery/witness-cigarette-alternate-path.md with pinned source manifest and3-command seeded native capture. Smoke handler response without lighting-state write; Light custody refusal/Off refusal. No genericlight mapping or wholefeatureNA. Smoke wrapper consumer remains untested. Lighting correction still main dirty, no final candidate acceptance; no haltedbus retries.
+
+09:52 UTC Witness consumer boundary: new passive run afterSmoke finds no owner43 in Actionablepool and no cigarette/Camel/smoke marks; exactraw own witness-consumer.run.json. Keep globalhandler usefulconsumer research distinct from heldlightForms; no positive scopedowner fabricated, no newruntimeproposal/NA. Source lightingcorrections stillinprogress atsameHEAD. No haltedbus retry/fullgate/APK.
+
+10:07 UTC disjoint LGOP hole current-source prerequisite audit: exactfact103324... has no localScope; R4 existingD232onLGOP premise incorrect. Own lgop-local-scope-inventory.cjs structural diagnostic, report lgop-hole-current-scope-audit.md; dynamicglobal visibility remainsOPEN distinctfromINVISIBLE. No native route/facts/code/gate. Lighting pendinghandoff unchanged; no haltedbus retries.
+
+10:22 UTC LGOP native hiddenstate capture PASS guardCell50, global83 nativecannotsee +wrapperabsent. Own lgop-hole-hidden-native.md/raw; seeded tier, rawdriverT1label explicitly rejected. Revealedstate consumer stillOPEN, no genericfact/wholecoverage. Next source-qualified ordinaryreveal or retainedcapture beforelongwalk. Lighting leadhandoff unchanged; no busretry/catalog/APK.
+
+10:37 UTC LGOP revealpredecessor located sourceMinaret->CrampedSpace->queuedcollapseCell/HOLE-OPEN. lgop-hole-reveal-route-triage.md/sourcehashmanifest. Existing36stepcapture endsCloset, no verifiedrevealcheckpoint; do not blindreplay387. OldlocalscopepacketPROPOSAL missinginvisible notcoverage. Lightingfinalhandoff unchanged; no tests/buspoll/APK.
+
+10:52 UTC revealed LGOP usefulconsumer gap observed: fresh170command guardedprefix allroommatches; native EXAMINE global83 succeeds Cell50 postcollapse, wrapperpool/marks omit83. lgop-revealed-hole-sealed.md/raw/config. Hiddennegative retained; no bitflip/genericconcealfix. Next independentinvestigation +current-source proposalconsensus, not unreviewedlocalScope. No savedstatecreated; no repeatedrouteforlabels. Lighting leadhandoff unchanged, no bushaltretry/APK.
+
+11:07 UTC fc003d92 partialcurrent-source ACCEPT in codex-lightforms-correction-1107.md: truefrontier/custody/testrealm resolved, narrowowncontrols confirm. Remaining lighttapdescriptor/currentstate/noun revalidation OPEN. LGOP independentinvestigation pending; no blindclaim/runtimeedit/duplicategate. Busknownhalt no retry.
+
+11:22 UTC lighttapcandidate sourceACCEPT codex-light-scope-audit-1122.md; own9focusedcontrols PASS, hashstable4files. Finalsharedcandidate gate/integration remainsauthorowned, not recertified. ClaudeLGOP declaredproblem/config-only blindhalf nowavailable; compare next, no native replay needed.
+
+11:22 comparecompleted: lgop-hole-sealed-compare-1122.md; Claude declaredproblem/config-only half artifacts verified. Cell50prop15 measured[202,83,173]. SDESCtyping/stringdomain +liveHOLE-OPENbinding +currentconsumerproposal/4seatconsensus next; no arbitrarydecode/routineexecution/prosefallback. Lighttapcandidate current-sourceACCEPT distinct from finalgate/integration.
+
+11:37 UTC LGOP R1 REVISE lgop-proposal-r1-review-1137.md. All6prereqhashes verified; SDESC16 accepted measurementdirection. ScopeCell50/83only; Zvar160 isglobalSlot144, notslot160; typedname domain+actualD232contract+3engine needed. obj238 diagnostic isbeyondfrontier228. No code/native replay. Lighttapcandidate1122 ACCEPT separate authorgatespending.
+
+11:52 UTC LGOP R2 scope/slot/separatepath accepted direction; oneD219type correction beforecode: liveprop16 word mustmatch measured0xE822=59426 beforedecode. lgop-proposal-r2-review-1152.md suppliesexactamendment, no newevidencecycle. Fourseatadoption/currentcodeaudit/finalgates remain.
+
+12:07 UTC LGOP R3 designACCEPT lgop-proposal-r3-vote-1207.md exactSHA885c0e44; allfouractualvotes neededbeforecode, then currentsourceaudit/finalgates. Lighting6051sourceACCEPT remains; finalcombined309artifact/sourcebinding closeout separate (authorcites5titletargeted). Do not duplicateexistingfinalgate ifevidenceavailable.
+
+12:22 UTC no newLGOPvotes/finalgatehandoff; sourceunchanged exceptknowncommits. Disjoint remote-description currentconsumer memo remote-description-consumer-boundary-1222.md binds Map.WorldVisited/WorldMap/MapTopology/save boundaries; no nativebit→physicalvisit conflation or newmapping. Nextrecoverretainedpalantir/remoteview provenance beforeany newrun. No tests/buspoll/APK.
+
+12:37 UTC combinedgate50b95964 retained audit:309unique/side,7diff6titles,62JScontentbinding verified(26lineendonly),7pairednoPromptlimits. Finalclassification pendingexistingrawreruns/sourcefreezebinding/operator3enginerefs; no duplicategaterun. Report wear-light-final-gate-review-1237.md. LGOPR3peervotesstillpending.
+
+13:37 UTC finalcombinedgate classification ACCEPT wear-light-final-classification-1337.md: newretainedreruns b4b8843f independentlychecked,6fieldsconverge+vespersswap proving7FLAKY/0regressions.1237holdclosed;7pairednoPromptlimits retained. Sourceaccepted prior; no duplicategate/APK/full26closure. LGOPR3stillawaitactualpeervotes.
+
+13:52 UTC Starcross remote-described source/nativecorroboration sealed: actualairlockLOOK caller,2distincttargets/closednegatives, bit29sets whilephysicalplayer/payloadstayorigin. Guarded36+51prefixespassed,2freshseed0contexts explicit. starcross-remote-sealed-1352.md/rawsummary forreview; no genericvisitedmapping/consumercompletion. Zork2nativeOPEN; LGOPpeervotespending/lightgateaccepted.
+
+14:07 UTC usercontinue: ZorkII two-target remote native evidence sealed zork2-remote-sealed-1407.md; guard24/35prefixes PASS, bit2on103/142 setswithoutphysicalmovement, inspectnegativecontrols. Incorrect121diagnostic excluded. No newconsumer/mapping.19473884 operatorrecordThreeSeatsDecide activeClaude/Codex/Grok adopted; G2reviewsreturn, nofakevotes. LGOPGrokvote pending.
+
+14:22 UTC actualGrokLGOPR3ACCEPT verified =>3active designconsensus; implementation/gates next. Ownnewvotes: ledger19reconcileACCEPTmetadata; Sherlocklamp166/narrowconcealedbitNA ACCEPT, invHiddenUcorrected; static26mappingREVISE/parserTRYTAKE. Finaldispositions partialwear/LGOPconsumer/TOUCHEDvisited/broadNAlimits preserved. No newnative/gate/runtimeedits.
+
+Operator unavailable-Claude takeover active: LGOP R3 runtime implemented, corrected independentcurrent-source ACCEPT/19focusedcontrols/nativeactualExamineCirclePASS. Exact record oct30-recovery/lgop-implementation-review.md. Onefrozenpaired309gate running; ownsourceuncommitted pendingfinalclassification/non-authorreview; preserveClaude lampdirtyhunk. Bus6000halt durablemailtakeover only. No projectcompletion.
+
+Returning3seataudit currentpriority c3df-current-source-REVISE.md (2actualsourceblockers, root+childXrepros). Claudeactivelead/codeowner; Codexpostfixreview+newZILpacketreturns, childinventoryHidden32raw/sourceaudit underway. Currentcheckpointtop supersedesallhistoricalpendingLGOP/guard entries. Oldhandler-only LGOPnativeUIacceptance withdrawn; correctedSherlocknativebuttonacceptedtrue sourceStable qualifiedoldsource. Fullfinalsharedgateartifact required fornewcandidate; no duplicatependinggate/replay. AutomationexistingPAUSEDpreserved.
+
+Power recovery: runtime/facts dirty work preserved; bus status fetch failed, durable coordination. Sherlock R2 reopened by fresh ordinary REMOVE COAT negative: native note omitted, wrapper150 retained. See oct30-recovery/power-recovery-pocket-R2-REVISE.md, sourceStable62JS. ActionSynth independent recovered-source audit in progress. No APK/fullcatalog/source commit.
+
+Recovery20528993 evidence committed. Grok2318 independentlyconcurs pocketREVISE. New 'whenParentWorn' dirtyreader+fact candidate isalsoREVISE: subtreeRETURNremovesnativeaccessible scope; exactpocketlabelprojection required. Childcurrent-source audit underway. ActionSynth42311focusedACCEPT unchanged. Rootnojsedits; no gateonbadcandidate; actualGrok/Claude finalR3votes required.
+
+CurrentR3correctedsource focusedACCEPT: Readerbc9cf89e/facts8449193f,16+1PASS/sourceStable7files; actual malformedfrontierguardresolved. See0231CURRENTblock and pocket-R3-implementation-postfix-audit.md. ClaudeactualdesignACCEPT verified; Grokfinalvote/UIthenonecombinedsharedgatepending. No blanketcompletion/oldREVISEcarriedforwardascurrent.
