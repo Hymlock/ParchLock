@@ -1,0 +1,398 @@
+﻿{
+ "story": "Tokyo2.z5.js",
+ "trace": [
+  {
+   "input": "x popcorn",
+   "dig": "c805f56df1dd88dde0f869c07cd39136702026bf17589dc5071f656be5d87647",
+   "pid": 81,
+   "attrNames": {
+    "bits": {
+     "animate": 0,
+     "absent": 1,
+     "clothing": 2,
+     "concealed": 3,
+     "container": 4,
+     "door": 5,
+     "edible": 6,
+     "enterable": 7,
+     "general": 8,
+     "light": 9,
+     "lockable": 10,
+     "locked": 11,
+     "moved": 12,
+     "on": 13,
+     "open": 14,
+     "openable": 15,
+     "proper": 16,
+     "scenery": 17,
+     "scored": 18,
+     "static": 19,
+     "supporter": 20,
+     "switchable": 21,
+     "talkable": 22,
+     "transparent": 23,
+     "visited": 24,
+     "workflag": 25,
+     "worn": 26,
+     "male": 27,
+     "female": 28,
+     "neuter": 29,
+     "pluralname": 30,
+     "continuation": 31,
+     "grappleable": 32
+    },
+    "address": 6346,
+    "source": "inform-attribute-names"
+   },
+   "inv": [
+    "33:soup",
+    "82:popcorn"
+   ],
+   "tree": [
+    {
+     "id": 33,
+     "parent": 81,
+     "depth": 0,
+     "name": "soup",
+     "bits": [
+      6,
+      12,
+      17
+     ],
+     "attrs": [
+      "edible",
+      "moved",
+      "scenery"
+     ]
+    },
+    {
+     "id": 82,
+     "parent": 81,
+     "depth": 0,
+     "name": "popcorn",
+     "bits": [
+      6,
+      12
+     ],
+     "attrs": [
+      "edible",
+      "moved",
+      "takeable"
+     ]
+    }
+   ],
+   "tail": "s at an outdoor table surrounded by swirling crowds. He turns a page of his newspaper and takes a sip from a bowl of steaming soup. >x popcorn You can't help wondering why you bought this soggy mess, let alone the \"Monster Tub\" size. > "
+  },
+  {
+   "input": "drop popcorn",
+   "dig": "c805f56df1dd88dde0f869c07cd39136702026bf17589dc5071f656be5d87647",
+   "pid": 81,
+   "attrNames": {
+    "bits": {
+     "animate": 0,
+     "absent": 1,
+     "clothing": 2,
+     "concealed": 3,
+     "container": 4,
+     "door": 5,
+     "edible": 6,
+     "enterable": 7,
+     "general": 8,
+     "light": 9,
+     "lockable": 10,
+     "locked": 11,
+     "moved": 12,
+     "on": 13,
+     "open": 14,
+     "openable": 15,
+     "proper": 16,
+     "scenery": 17,
+     "scored": 18,
+     "static": 19,
+     "supporter": 20,
+     "switchable": 21,
+     "talkable": 22,
+     "transparent": 23,
+     "visited": 24,
+     "workflag": 25,
+     "worn": 26,
+     "male": 27,
+     "female": 28,
+     "neuter": 29,
+     "pluralname": 30,
+     "continuation": 31,
+     "grappleable": 32
+    },
+    "address": 6346,
+    "source": "inform-attribute-names"
+   },
+   "inv": [
+    "33:soup",
+    "82:popcorn"
+   ],
+   "tree": [
+    {
+     "id": 33,
+     "parent": 81,
+     "depth": 0,
+     "name": "soup",
+     "bits": [
+      6,
+      12,
+      17
+     ],
+     "attrs": [
+      "edible",
+      "moved",
+      "scenery"
+     ]
+    },
+    {
+     "id": 82,
+     "parent": 81,
+     "depth": 0,
+     "name": "popcorn",
+     "bits": [
+      6,
+      12
+     ],
+     "attrs": [
+      "edible",
+      "moved",
+      "takeable"
+     ]
+    }
+   ],
+   "tail": "paper and takes a sip from a bowl of steaming soup. >x popcorn You can't help wondering why you bought this soggy mess, let alone the \"Monster Tub\" size. >drop popcorn Your mother would be shocked if she saw you throwing away food. > "
+  },
+  {
+   "input": "x soup",
+   "dig": "c805f56df1dd88dde0f869c07cd39136702026bf17589dc5071f656be5d87647",
+   "pid": 81,
+   "attrNames": {
+    "bits": {
+     "animate": 0,
+     "absent": 1,
+     "clothing": 2,
+     "concealed": 3,
+     "container": 4,
+     "door": 5,
+     "edible": 6,
+     "enterable": 7,
+     "general": 8,
+     "light": 9,
+     "lockable": 10,
+     "locked": 11,
+     "moved": 12,
+     "on": 13,
+     "open": 14,
+     "openable": 15,
+     "proper": 16,
+     "scenery": 17,
+     "scored": 18,
+     "static": 19,
+     "supporter": 20,
+     "switchable": 21,
+     "talkable": 22,
+     "transparent": 23,
+     "visited": 24,
+     "workflag": 25,
+     "worn": 26,
+     "male": 27,
+     "female": 28,
+     "neuter": 29,
+     "pluralname": 30,
+     "continuation": 31,
+     "grappleable": 32
+    },
+    "address": 6346,
+    "source": "inform-attribute-names"
+   },
+   "inv": [
+    "33:soup",
+    "82:popcorn"
+   ],
+   "tree": [
+    {
+     "id": 33,
+     "parent": 81,
+     "depth": 0,
+     "name": "soup",
+     "bits": [
+      6,
+      12,
+      17
+     ],
+     "attrs": [
+      "edible",
+      "moved",
+      "scenery"
+     ]
+    },
+    {
+     "id": 82,
+     "parent": 81,
+     "depth": 0,
+     "name": "popcorn",
+     "bits": [
+      6,
+      12
+     ],
+     "attrs": [
+      "edible",
+      "moved",
+      "takeable"
+     ]
+    }
+   ],
+   "tail": "f circular ripples, forming and dissolving as if rocked by some tiny tremor of the earth. Our hero looks up sharply, but the crowds have registered nothing unusual. The flier pinned to a nearby pole shivers, though not with the breeze. > "
+  },
+  {
+   "input": "take soup",
+   "dig": "c805f56df1dd88dde0f869c07cd39136702026bf17589dc5071f656be5d87647",
+   "pid": 81,
+   "attrNames": {
+    "bits": {
+     "animate": 0,
+     "absent": 1,
+     "clothing": 2,
+     "concealed": 3,
+     "container": 4,
+     "door": 5,
+     "edible": 6,
+     "enterable": 7,
+     "general": 8,
+     "light": 9,
+     "lockable": 10,
+     "locked": 11,
+     "moved": 12,
+     "on": 13,
+     "open": 14,
+     "openable": 15,
+     "proper": 16,
+     "scenery": 17,
+     "scored": 18,
+     "static": 19,
+     "supporter": 20,
+     "switchable": 21,
+     "talkable": 22,
+     "transparent": 23,
+     "visited": 24,
+     "workflag": 25,
+     "worn": 26,
+     "male": 27,
+     "female": 28,
+     "neuter": 29,
+     "pluralname": 30,
+     "continuation": 31,
+     "grappleable": 32
+    },
+    "address": 6346,
+    "source": "inform-attribute-names"
+   },
+   "inv": [
+    "33:soup",
+    "82:popcorn"
+   ],
+   "tree": [
+    {
+     "id": 33,
+     "parent": 81,
+     "depth": 0,
+     "name": "soup",
+     "bits": [
+      6,
+      12,
+      17
+     ],
+     "attrs": [
+      "edible",
+      "moved",
+      "scenery"
+     ]
+    },
+    {
+     "id": 82,
+     "parent": 81,
+     "depth": 0,
+     "name": "popcorn",
+     "bits": [
+      6,
+      12
+     ],
+     "attrs": [
+      "edible",
+      "moved",
+      "takeable"
+     ]
+    }
+   ],
+   "tail": "o doesn't need to cart useless junk around wherever he goes. Suddenly the table jerks, upsetting a bottle of soy sauce and sending it rolling over the edge. The flier drops to the ground. The crowd pauses for a moment, then moves on. > "
+  },
+  {
+   "input": "i",
+   "dig": "c805f56df1dd88dde0f869c07cd39136702026bf17589dc5071f656be5d87647",
+   "pid": 81,
+   "attrNames": {
+    "bits": {
+     "animate": 0,
+     "absent": 1,
+     "clothing": 2,
+     "concealed": 3,
+     "container": 4,
+     "door": 5,
+     "edible": 6,
+     "enterable": 7,
+     "general": 8,
+     "light": 9,
+     "lockable": 10,
+     "locked": 11,
+     "moved": 12,
+     "on": 13,
+     "open": 14,
+     "openable": 15,
+     "proper": 16,
+     "scenery": 17,
+     "scored": 18,
+     "static": 19,
+     "supporter": 20,
+     "switchable": 21,
+     "talkable": 22,
+     "transparent": 23,
+     "visited": 24,
+     "workflag": 25,
+     "worn": 26,
+     "male": 27,
+     "female": 28,
+     "neuter": 29,
+     "pluralname": 30,
+     "continuation": 31,
+     "grappleable": 32
+    },
+    "address": 6346,
+    "source": "inform-attribute-names"
+   },
+   "inv": [
+    "82:popcorn"
+   ],
+   "tree": [
+    {
+     "id": 82,
+     "parent": 81,
+     "depth": 0,
+     "name": "popcorn",
+     "bits": [
+      6,
+      12
+     ],
+     "attrs": [
+      "edible",
+      "moved",
+      "takeable"
+     ]
+    }
+   ],
+   "tail": "s, a nimble mind, and an oversized jaw. What more can a hero need? This time the quake is obvious, and accompanied by a dull rumble. Abandoning his newspaper and soup, our man joins the hesitant crowd for a better look up the street. > "
+  }
+ ]
+}

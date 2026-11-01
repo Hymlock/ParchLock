@@ -18,3 +18,4 @@ Seat: grok-review (independent reviewer standing in for Claude/Codex/grok2 while
 | 14 | APK (pre-build) | gate 309 + operator 13/0 on HEAD e643191b | GO | none; 0 regressions (6 intended, 4 flaky, 1 env) | 11-01 00:38 |
 | 15 | APK (post-build) | ParchLock-dev.apk 7A9C9C18, vc49 | ACCEPT | none; vc49 not independently read (no aapt) | 11-01 00:41 |
 | 16 | 003 | OPEN_WORK.md -> Nov 1 list; old kept as OUTDATED | ACCEPT | none; banner was unstaged (F1), included by pathspec commit | 11-01 00:56 |
+| 17 | 004 | Blue Chairs inventoryHiddenAttribute 3, Tokyo2 17 | ACCEPT | gaps: shirt listed before first i; dollars/popcorn left (reachable, no bit); 309 gate not run | 11-01 08:53 |

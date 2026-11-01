@@ -532,12 +532,21 @@ var ModuleStatFactsClaude = {
     // mapzero (grok solo, grok-review): Blue Chairs. Player global pair g22=g63=100 "Dante" (k+41 here, not k+35) in 419 Stuck in an Attic; the app
     // chose self object 20 and the map stayed empty. With g22 room 419 is admitted at boot (measure4.cjs s6/s7/s8).
     "7b50dacf8d8b15e2a6429d2173a7c6d07630f4394587ddf1ddee11508503c25b": {
-        "playerGlobal": 22
+        "playerGlobal": 22,
+        // inv-extra (grok solo, REVIEW-REQUEST-004): declared attribute 3 = concealed (inform-attribute-names). Native i "You are carrying
+        // your wallet, your keys and a pager." omits worn shirt 105 (bits 2,3,12,26: concealed) and lists wallet 101/keys 103/pager 104 (bit 3 clear).
+        // The game's own i routine sets bit 3 on the worn shirt (sticky; clear before the first i, so the shirt still shows until then).
+        // Shirt stays in the parser (x shirt replies). review-lane-1101/inv-extra/p1,p2,p3-bluechairs*.json.
+        "inventoryHiddenAttribute": 3
     },
     // mapzero (grok solo, grok-review): Tokyo2. I6 pair g19=g54=81 "our hero" in 29 A Streetside Cafe; the app chose
     // self object 20 and the map stayed empty. With g19 room 29 is admitted (measure4.cjs s6/s7/s8).
     "c805f56df1dd88dde0f869c07cd39136702026bf17589dc5071f656be5d87647": {
-        "playerGlobal": 19
+        "playerGlobal": 19,
+        // inv-extra (grok solo, REVIEW-REQUEST-004): declared attribute 17 = scenery (inform-attribute-names). Held soup 33 (bits 6,12,17) is the
+        // NPC's bowl ("takes a sip from a bowl of steaming soup"); native i omits it. Popcorn 82 (bit 17 clear) stays: it is really held
+        // (x popcorn / drop popcorn reply), the game's own i text omits it by custom prose. review-lane-1101/inv-extra/p1,p2-Tokyo2.json.
+        "inventoryHiddenAttribute": 17
     },
     // mapzero (grok solo, grok-review): The Gostak. I6 pair g18=g53=123 "gostak" (the PC) tracks 80 Delcot <-> 98
     // (GomwaySE) on KILOFF/JIRF; the app chose parentless self 20 and the map stayed empty. With g18 the map admits
