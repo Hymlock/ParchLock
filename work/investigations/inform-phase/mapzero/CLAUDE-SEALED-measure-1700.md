@@ -43,3 +43,14 @@ bluechairs/Tokyo2 (player in the room, but existing-resolver) and Heroine (conta
 - cabal: "stand" gives "YOU'RE STAYING PUT". The game keeps you seated, and V34 = V69 = 221 in "your seat" stays the same across turns. The app's pid flips 42 -> 20, unstable and parentless.
 - rameses: "stand" and "north" are refused ("don't want to get out of bed"); V34 = 24 on "my bunkbed" is stable.
 Both games hold the PC in furniture by design at the start. The library player global is the stable identity, and the app's named-player choice is not.
+
+## Sealed step 4 (claude): one cause for 5 titles
+After start-up ("no", look), ZRamReader.resolvePlayer returns "(self object)" 20 (named-player, parent 0) in bluechairs and Tokyo2. Their real player sits in the room. Global slots holding the real player (index = slot, globals + 2*slot):
+- bluechairs slot22 = slot63 = 100 "Dante" < 419 (Stuck in an Attic)
+- Tokyo2 slot19 = slot54 (= 130, 133) = 81 "our hero" < 29
+- cabal slot18 = slot53 = 221 "you" < 33 (seat)
+- rameses slot18 = slot53 = 24 "myself" < 104 (bunkbed)
+- **Heroine slot18 = slot53 = 24 "Lisa Flint" < 28.** The app used parser-self 114 in 112 "Golden Horse", which is the wrong room: the audit saw "Drowning" printed.
+The pair is always (k, k+35): the I6 library player/actor pair.
+So **A1/A2/B for these 5 are one cause: wrong player object.** Fix class: exact-digest playerGlobal (the lower slot of the pair) per D216/D220.
+LASH: none of these ids; separate. gostak/yagwad/guess: still pre-game in my probe (grok STARTUP).
