@@ -1,0 +1,59 @@
+{
+  "tier": "constructed/X on actual walker/story bytes",
+  "source": {
+    "reader": "a2125d6a29438bd12760fad4c760575225b979b13bb9eaa12bb4232d4e40e26c",
+    "facts": "b53c5ad730ec526af82f1f7d3610eda09a1e853764eb10a97d94a2eb5c6918d0"
+  },
+  "rule": "whenParentWorn",
+  "worn": [
+    {
+      "id": 173,
+      "parentId": 232,
+      "labelSuppressed": false
+    },
+    {
+      "id": 172,
+      "parentId": 232,
+      "labelSuppressed": false
+    },
+    {
+      "id": 302,
+      "parentId": 232,
+      "labelSuppressed": false
+    },
+    {
+      "id": 150,
+      "parentId": 287,
+      "labelSuppressed": false
+    },
+    {
+      "id": 188,
+      "parentId": 232,
+      "labelSuppressed": false
+    }
+  ],
+  "unworn": [
+    {
+      "id": 173,
+      "parentId": 232,
+      "labelSuppressed": false
+    },
+    {
+      "id": 172,
+      "parentId": 232,
+      "labelSuppressed": false
+    },
+    {
+      "id": 302,
+      "parentId": 232,
+      "labelSuppressed": false
+    },
+    {
+      "id": 188,
+      "parentId": 232,
+      "labelSuppressed": false
+    }
+  ],
+  "wornHasNote": true,
+  "unwornHasNote": false
+}

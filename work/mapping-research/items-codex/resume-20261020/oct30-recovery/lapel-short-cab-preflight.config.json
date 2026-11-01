@@ -1,0 +1,10 @@
+{
+  "story":"Sherlock.z5.js","key":"sherlock","seed":0,"route":[],"ids":[232],
+  "tests":[
+    {"cmd":"blow whistle","id":232,"role":"short route preflight1"},
+    {"cmd":"blow whistle","id":232,"role":"short route preflight2"},
+    {"cmd":"enter cab","id":232,"role":"cab admission"},
+    {"cmd":"drive to Covent Garden","id":232,"role":"short destination"},
+    {"cmd":"get out","id":232,"role":"arrival guard before cure"}
+  ]
+}
