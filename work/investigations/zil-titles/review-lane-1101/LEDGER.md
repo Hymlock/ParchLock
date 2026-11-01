@@ -15,3 +15,5 @@ Seat: grok-review (independent reviewer standing in for Claude/Codex/grok2 while
 | 11 | 001-r2 | +Gostak playerGlobal 18 | REVISE | same Blue Chairs g57->g63 comment; Gostak verified | 11-01 00:27 |
 | 12 | 002 | versionCode 48->49 | ACCEPT | none; APK must show 49 | 11-01 00:27 |
 | 13 | 001-r3 | 6 mapzero playerGlobal facts (comment fixed) | ACCEPT | none | 11-01 00:31 |
+| 14 | APK (pre-build) | gate 309 + operator 13/0 on HEAD e643191b | GO | none; 0 regressions (6 intended, 4 flaky, 1 env) | 11-01 00:38 |
+| 15 | APK (post-build) | ParchLock-dev.apk 7A9C9C18, vc49 | ACCEPT | none; vc49 not independently read (no aapt) | 11-01 00:41 |
