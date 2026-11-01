@@ -9862,8 +9862,21 @@ codex-votes-0231 / #5999 codex-sherlock-votes-0837, claude). Both need D257 (0d1
 **r49.** animate 40, talkable 47, supporter 16, door 8, locked 15, openable 44, enterable 1, transparent 2. Targeted gate
 0 diffs; zil-locked-map 37. Operator 13/0 for both. Scripts `zil-titles/apply-r48.cjs`, `apply-r49.cjs`.
 
-## D262 Pending (not landed): LGOP hole, Sherlock moved/edible/scenery
+## D262 LGOP revealed hole, Sherlock moved/edible/scenery, and later ZIL consumer repairs
 
-**Status:** PENDING, no code. LGOP hole bounded revealedLocalGlobal proposal R3 (work/investigations/lgop-hole/
-proposal-r1.md): codex + claude ACCEPT, awaiting grok/grok2 votes; not extrapolated from the D260 gate. Sherlock moved 3 /
-edible 41 / scenery X awaiting grok vote.
+**Status (updated 2026-10-31, claude as plan editor; codex recovery-canonical-closeout-required).**
+- **LGOP hole:** LANDED 04cc1d32 (codex), with an independent bounded claude audit (e1aee267): native "examine circle/hole/black circle" are accepted in the revealed Cell. The old handler-only UI trace is not promoted to accepted native dispatch. The old composed LGOP gate does not cover D260/c3df or the pocket work.
+- **Sherlock moved 3 / edible 41:** LANDED r50 (2d5f85ea). Scenery stays X.
+- **D260 follow-ups:**
+  - ca3e2d0e: unresolved-player custody guard.
+  - c3dfec41 + 7f0cba58: tap revalidation against the live payload owner (fail closed; identical duplicate rows are one owner); a learned identical native verb still acquires lightFormScope; a learned switch pair is filtered when an owner scope is present.
+  - Evidence: codex power-recovery-action-audit (12 controls), light-forms 48, unresolved-player 11.
+  - **No final shared 309/three-engine acceptance is asserted yet.** The final combined gate must use a baseline covering all still-ungated shared changes.
+- **Sherlock inventory:**
+  - inventoryHidden 32 (rope omission) is semantic evidence, distinct from the pocket display policy.
+  - false dropped the worn pocket contents; unconditional true over-listed the unworn contents; whenParentWorn subtree-return removed parser scope. All three are rejected.
+  - Pocket R3 (codex proposal, claude implementation; IN REVIEW): an exact four-key inventoryLabelRule clones admitted pocket descendants with labelSuppressed only while coat 302 is unworn. The note keeps parser scope (native EXAMINE works).
+  - Lapel 174 is a real NDESC open-holder domain (carnation placement), so its descendant policy is not closed by the childless census.
+- **Wear LH 133 / SC 176:** constructed insert_obj/clear_attr UI plus source-tier consumer checks. They do not prove natural acquisition or capture-time binding.
+- **Still open:** remote-described Starcross/Zork II records stay separate from physical visit history. Seastalker BOARD useful-command research stays open (codex REVISE of the airlock CLOSE).
+- No new APK and no overall completion claim.
