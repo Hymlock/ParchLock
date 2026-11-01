@@ -1,0 +1,43 @@
+Gumshoe.z5.js exits
+  base: ["down>50","east>50"]
+  cand: ["down>50","east>50","in>36","south>36"]
+Gumshoe.z5.js marks
+  base: ["money","private investigator's","east","down","welcome mat","door","Los Angeles Times"]
+  cand: ["money","private investigator's","east","down","south","welcome mat","door","Los Angeles Times"]
+Sherlock.z5.js marks
+  base: ["coat","west"]
+  cand: ["west"]
+Sherlock.z5.js inv1
+  base: ["173:whistle","302:coat","287:pocket","150:pound note","174:lapel","188:hat","172:black bag"]
+  cand: ["173:whistle","302:coat","150:pound note","188:hat","172:black bag"]
+Sherlock.z5.js inv2
+  base: ["173:whistle","302:coat","287:pocket","150:pound note","174:lapel","188:hat","172:black bag"]
+  cand: ["173:whistle","302:coat","150:pound note","188:hat","172:black bag"]
+cycles.z5.js rooms
+  base: ["199:Darkness"]
+  cand: ["191:Charles St. Station","199:Darkness"]
+cycles.z5.js inv2
+  base: []
+  cand: ["70:money card"]
+gamlet.z5.js marks
+  base: ["balcony","balustrade","wall","night","stars","distant artillery","breeze","naked","Light","eyes"]
+  cand: ["eyes"]
+heist.z8.js inv1
+  base: ["20:curious envelope","19:black canvas bag"]
+  cand: ["20:curious envelope","19:black canvas bag","124:silver picture frame","126:student's photo"]
+heist.z8.js inv2
+  base: ["20:curious envelope","19:black canvas bag"]
+  cand: ["20:curious envelope","19:black canvas bag","124:silver picture frame","126:student's photo"]
+huntdark.z5.js marks
+  base: ["crossbow","stone","tight crawl","low passage","side chamber","silent bulk"]
+  cand: ["tight crawl","limestone","low passage","side chamber","silent bulk"]
+minster.z5.js exits
+  base: []
+  cand: ["east>95","in>95"]
+minster.z5.js marks
+  base: ["cobbles","great wooden gate"]
+  cand: ["cobbles","great wooden gate","east"]
+vespers.z8.js marks
+  base: ["Saint Cuthbert's","place","hands","window","door","west","desk","bed","blanket"]
+  cand: ["room","west","desk","bed","blanket"]
+GATE: 309 games, 14 differences (each must be an intended, reviewed change)
