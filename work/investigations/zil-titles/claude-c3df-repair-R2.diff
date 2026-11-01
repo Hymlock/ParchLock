@@ -1,0 +1,55 @@
+diff --git a/js/ActionSynth.js b/js/ActionSynth.js
+index d0a847b0..f0cd4fe1 100644
+--- a/js/ActionSynth.js
++++ b/js/ActionSynth.js
+@@ -375,12 +375,18 @@ var ActionSynth = {
+     // from: a bare {id,name} stub loses its vocabulary, so "tattered suit" decays to the shared
+     // head "suit" and the scoped Wear silently refuses (Starcross 176 vs space suit 144).
+     scopedLiveObject: function (command, scope) {
+-        var id = Number(command.objectId), live = null;
++        // Fail closed (codex c3df REVISE 1): an owner no longer in the live payload cannot be revalidated,
++        // so the old tap is refused instead of falling back to a stub. The pool concatenates discovered
++        // objects and inventory without dedupe, so identical-id rows with the same parent are one owner
++        // (grok 1745); rows that disagree on parent are ambiguous and refused.
++        var id = Number(command.objectId), rows = [];
+         try {
+-            live = (typeof Actionable !== "undefined" && Actionable.payloadPool ? Actionable.payloadPool() : [])
+-                .filter(function (o) { return o && Number(o.id) === id; })[0] || null;
+-        } catch (eLive) {}
+-        return live || { id: id, name: scope.noun };
++            rows = (typeof Actionable !== "undefined" && Actionable.payloadPool ? Actionable.payloadPool() : [])
++                .filter(function (o) { return o && Number(o.id) === id; });
++        } catch (eLive) { rows = []; }
++        if (!rows.length) return null;
++        var parent = String(rows[0].parentId);
++        return rows.every(function (o) { return String(o.parentId) === parent; }) ? rows[0] : null;
+     },
+     currentGeneration: function () { return typeof UndoRestoreSync !== "undefined" ? UndoRestoreSync.generation : 0; },
+     identityWearCommandCurrent: function (command) {
+@@ -620,9 +626,11 @@ var ActionSynth = {
+         var lightScopes = {};
+         if (!containerName) ActionSynth.lightFormsFor(obj.id, context).forEach(function (v) {
+             var scope = ActionSynth.lightFormScopeFor(obj, name, context);
+-            if (!scope || scope.verb !== v || verbs.indexOf(v) >= 0) return;
++            if (!scope || scope.verb !== v) return;
++            // Register the scope even when a learned verb already holds the same form (codex c3df REVISE 2),
++            // so the owner form stays scoped and the authoritative filter below still runs.
+             lightScopes[v] = scope;
+-            verbs.push(v);
++            if (verbs.indexOf(v) < 0) verbs.push(v);
+         });
+         // The owner fact reads the live state bit, so its one form is authoritative: a learned
+         // AttrCalibrator switch on/off pair (added after a successful turn-on) would otherwise offer
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index 98b0280f..9e9f4270 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -867,7 +867,7 @@ var ModuleStatFactsClaude = {
+         // inventoryHidden 32 = FL-NODESC (two-active-seat ACCEPT, codex absent/audits on return: grok PACKET-sherlock-invhidden-lair-native-grok-1115.md author, claude CLAUDE-VOTES-sherlock-invhidden.md):
+         // native INVENTORY omits the held rope 176 with 32 set (Lair untie), lists it with 32 clear (cut). Direct children only. Static stays NC (26 = TRYTAKE).
+         "inventoryHiddenAttribute": 32,
+-        "inventoryHiddenRecurses": false,
++        "inventoryHiddenRecurses": true,
+         // lightForms (three-seat ACCEPT: claude PACKET-lamp-claude.md, grok VOTES-grok-claude-packets.md, codex sherlock-takeover-votes-1422.md):
+         // lamp 166 only; state FL-LIGHTED 38 (also room-lit, hence owner-scoped); FL-LAMP 42 = parser default for LAMP-ON/OFF objects (FL-LAMP42); forms are the game defaults turn on/turn off.
+         "lightForms": { "capabilityBit": 42, "stateBit": 38, "objects": [166], "on": { "default": "turn on" }, "off": { "default": "turn off" } }

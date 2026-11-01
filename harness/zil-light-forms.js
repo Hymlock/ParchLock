@@ -67,7 +67,8 @@ check('Infidel/Cutthroats/Enchanter non-owners identical to no fact',()=>{for(co
 const others=fs.readdirSync(root+'/games').filter(f=>/\.z[345]\.js$/.test(f)&&!Object.values(titles).includes(f)&&f!=='Sherlock.z5.js');
 check('other Z titles: lightForms absent for every object (switchable titles unchanged)',()=>{let n=0;for(const f of others){let T;try{T=load(f);}catch(e){continue;}if(!T.h)continue;let tc;try{tc=trueCount(T);}catch(e){continue;}for(let id=1;id<=tc;id++)assert.strictEqual(T.A.lightForms(T.mem,id,'inventory'),null,f+' '+id);n++;}console.log('  other titles checked: '+n);assert(n>10);});
 // Tap currency (codex 1107; identity-Wear pattern): every light verb carries a lightFormScope re-validated at tap.
-const lightRow=(T,id,ctx)=>T.S.commandsForObject(T.obj(id),ctx).find(x=>LIGHT.test(x.command));
+// The row's owner is placed in the live payload exactly as the menu path does; tap revalidation reads it there (codex c3df REVISE 1).
+const lightRow=(T,id,ctx)=>{const o=T.obj(id);if(ctx==='inventory'){T.payload.inventory=[o];T.payload.discoveredObjects=[];}else{T.payload.inventory=[];T.payload.discoveredObjects=[o];}return T.S.commandsForObject(o,ctx).find(x=>LIGHT.test(x.command));};
 const cur=(T,r)=>T.c.Actionable.radialCommandCurrent(r);
 check('Infidel torch held: light verb carries lightFormScope (digest, generation, id, noun, side, stateBit)',()=>{I.bit(198,21,0);I.parent(198,I.player);const r=lightRow(I,198,'inventory'),n=nm(I,198);
   assert(r&&r.lightFormScope,'scoped');assert.deepStrictEqual(JSON.parse(JSON.stringify(r.lightFormScope)),{kind:'lightForms',digest:I.digest,generation:7,id:198,noun:n,verb:'light',command:'light '+n,side:'on',stateBit:21,context:'inventory'});
