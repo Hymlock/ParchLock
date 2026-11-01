@@ -1,0 +1,37 @@
+{
+ "story": "bluechairs.z5.js",
+ "pg": null,
+ "trace": [
+  {
+   "input": "(start)",
+   "dig": "7b50dacf8d8b15e2a6429d2173a7c6d07630f4394587ddf1ddee11508503c25b",
+   "factPG": null,
+   "probe": {
+    "playerId": 20,
+    "playerSource": "named-player",
+    "roomId": 419,
+    "roomSource": "existing-resolver"
+   },
+   "status": "Stuck in an Attic",
+   "tail": "could get any privacy. It's only ten o'clock and already the call to hook up has come down from the heavens. Stairs lead downward, back to the party and that awful trance-bop they keep playing. > ",
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "look",
+   "dig": "7b50dacf8d8b15e2a6429d2173a7c6d07630f4394587ddf1ddee11508503c25b",
+   "factPG": null,
+   "probe": {
+    "playerId": 20,
+    "playerSource": "named-player",
+    "roomId": 419,
+    "roomSource": "existing-resolver"
+   },
+   "status": "Stuck in an Attic",
+   "tail": "could get any privacy. It's only ten o'clock and already the call to hook up has come down from the heavens. Stairs lead downward, back to the party and that awful trance-bop they keep playing. > ",
+   "rooms": [],
+   "cur": null
+  }
+ ]
+}
+

@@ -1,0 +1,42 @@
+﻿{
+ "story": "rameses.zblorb.js",
+ "trace": [
+  {
+   "input": "(start)",
+   "tail": "-up grannies and biddies and ghastly yacht-clubbers waiting at the station stare at us as if we are mad. But we carry on, running up and down, screaming profanities, and let the rest of the world GO FUCK ITSELF! . . . ",
+   "status": "",
+   "line": false,
+   "char": true,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "#key",
+   "tail": "ow fits four bunkbeds, which are stacked up on opposite walls. There is a sink in one corner and an old wardrobe in another. The doorway leads east. A solitary window allows a cold light into the room. Wayne and Paddy are lying asleep in their bunkbeds. > ",
+   "status": "Dormitory Room Score: 7 Moves: 57",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "#key",
+   "tail": "ow fits four bunkbeds, which are stacked up on opposite walls. There is a sink in one corner and an old wardrobe in another. The doorway leads east. A solitary window allows a cold light into the room. Wayne and Paddy are lying asleep in their bunkbeds. > ",
+   "status": "Dormitory Room Score: 7 Moves: 57",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "look",
+   "tail": "ow fits four bunkbeds, which are stacked up on opposite walls. There is a sink in one corner and an old wardrobe in another. The doorway leads east. A solitary window allows a cold light into the room. Wayne and Paddy are lying asleep in their bunkbeds. > ",
+   "status": "Dormitory Room Score: 7 Moves: 57",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  }
+ ]
+}
+

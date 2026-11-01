@@ -1,0 +1,56 @@
+{
+ "story": "Heroine.z8.js",
+ "pg": 18,
+ "trace": [
+  {
+   "input": "(start)",
+   "dig": "35f2844ed997f5ce8782b8d77760193c50ab38438d2c2bd2426a036c516fc256",
+   "factPG": 18,
+   "probe": {
+    "playerId": 24,
+    "playerSource": "measured-player-global",
+    "roomId": 408,
+    "roomSource": "none"
+   },
+   "status": "\"It is the ordinary person who performs the acts of heroism in Atlantic City. We are merely the guid",
+   "tail": " [Press SPACE to continue] ",
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "#key",
+   "dig": "35f2844ed997f5ce8782b8d77760193c50ab38438d2c2bd2426a036c516fc256",
+   "factPG": 18,
+   "probe": {
+    "playerId": 24,
+    "playerSource": "measured-player-global",
+    "roomId": 27,
+    "roomSource": "player-containment"
+   },
+   "status": "Drowning Score: 0 Eight years before 2001 (at Maiden's Wharf) Moves: 1",
+   "tail": "irling waters drag sediments of sand up from the seabed. Moonlight filters through the planks of a wooden jetty, one of many around Maiden's Wharf. [Online assistance available by typing HELP.] > ",
+   "rooms": [
+    "27:Jetty"
+   ],
+   "cur": "27"
+  },
+  {
+   "input": "look",
+   "dig": "35f2844ed997f5ce8782b8d77760193c50ab38438d2c2bd2426a036c516fc256",
+   "factPG": 18,
+   "probe": {
+    "playerId": 24,
+    "playerSource": "measured-player-global",
+    "roomId": 27,
+    "roomSource": "player-containment"
+   },
+   "status": "Drowning Score: 0 Eight years before 2001 (at Maiden's Wharf) Moves: 2",
+   "tail": "om the seabed. Moonlight filters through the planks of a wooden jetty, one of many around Maiden's Wharf. [Online assistance available by typing HELP.] >look The salty water stings your eyes. > ",
+   "rooms": [
+    "27:Jetty"
+   ],
+   "cur": "27"
+  }
+ ]
+}
+

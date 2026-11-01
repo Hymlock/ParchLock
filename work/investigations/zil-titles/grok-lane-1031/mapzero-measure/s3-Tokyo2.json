@@ -1,0 +1,78 @@
+﻿{
+ "story": "Tokyo2.z5.js",
+ "trace": [
+  {
+   "input": "(start)",
+   "tail": " WARNING: Your screen may not be wide enough to display some menu items correctly. It is recommended that you enlarge your screen size, if possible, before continuing. [Press any key] ",
+   "status": "",
+   "line": false,
+   "char": true,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "#key",
+   "tail": "ers snort at some whispered wisecrack. Suddenly the lights dim. The murmur of conversation dies away and all eyes turn toward the screen... * * * * * Release 2 / Serial number 000615 / Inform v6.21 Library 6/10 New players type INFO or HELP [MORE] ",
+   "status": "",
+   "line": false,
+   "char": true,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "#key",
+   "tail": " [MORE] ",
+   "status": "DOWNTOWN TOKYO. PRESENT DAY.",
+   "line": false,
+   "char": true,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "look",
+   "tail": "owds. He turns a page of his newspaper and takes a sip from a bowl of steaming soup. >look A Streetside Cafe The man sits at an outdoor table surrounded by swirling crowds. He turns a page of his newspaper and takes a sip from a bowl of steaming soup. > ",
+   "status": "Prologue",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "n",
+   "tail": " A Streetside Cafe The man sits at an outdoor table surrounded by swirling crowds. He turns a page of his newspaper and takes a sip from a bowl of steaming soup. >n Though ordinarily a man of action, our hero has no urge to leave his comfortable table. > ",
+   "status": "Prologue",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "s",
+   "tail": "a page of his newspaper and takes a sip from a bowl of steaming soup. >n Though ordinarily a man of action, our hero has no urge to leave his comfortable table. >s Though ordinarily a man of action, our hero has no urge to leave his comfortable table. > ",
+   "status": "Prologue",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "e",
+   "tail": "a man of action, our hero has no urge to leave his comfortable table. >s Though ordinarily a man of action, our hero has no urge to leave his comfortable table. >e Though ordinarily a man of action, our hero has no urge to leave his comfortable table. > ",
+   "status": "Prologue",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "w",
+   "tail": "a man of action, our hero has no urge to leave his comfortable table. >e Though ordinarily a man of action, our hero has no urge to leave his comfortable table. >w Though ordinarily a man of action, our hero has no urge to leave his comfortable table. > ",
+   "status": "Prologue",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  }
+ ]
+}
+

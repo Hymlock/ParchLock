@@ -1,0 +1,72 @@
+﻿{
+ "story": "LASH.z8.js",
+ "trace": [
+  {
+   "input": "(start)",
+   "tail": " Would you like to restore a saved session? > ",
+   "status": "",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "no",
+   "tail": "onous Satellite Hookup An interactive utility for communicating with your MULE robot New users should type \"HELP\". Release 11 / Serial number 000806 / Inform v6.15 Library 6/7 DISCONNECTED Type \"CONNECT\" to link to your MULE robot. Type \"HELP\" for help. > ",
+   "status": "DISCONNECTED 09/22/2062 8:00 am",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "connect",
+   "tail": "",
+   "status": "Please type your last name at the prompt and press <Enter>. >",
+   "line": false,
+   "char": true,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "!noline:look",
+   "tail": "",
+   "status": "Please type your last name at the prompt and press <Enter>. >",
+   "line": false,
+   "char": true,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "n",
+   "tail": "nverging at a point south of here. In addition, I can see a finished brick path leading west, a rougher dirt walkway heading east to three wooden structures, and an overgrown trail that meanders northeast past these structures. The front door is closed. > ",
+   "status": "Portico 09/22/2062 8:02 am",
+   "line": true,
+   "char": false,
+   "rooms": [
+    "60:Foot of Driveway",
+    "63:Portico",
+    "82:Sand Lot",
+    "68:Vegetable Garden",
+    "115:Crushed Ruin"
+   ],
+   "cur": "63"
+  },
+  {
+   "input": "s",
+   "tail": " finished brick path leading west, a rougher dirt walkway heading east to three wooden structures, and an overgrown trail that meanders northeast past these structures. The front door is closed. >s Foot of Driveway I can see a cargo platform here. > ",
+   "status": "Foot of Driveway 09/22/2062 8:03 am",
+   "line": true,
+   "char": false,
+   "rooms": [
+    "60:Foot of Driveway",
+    "63:Portico",
+    "82:Sand Lot",
+    "68:Vegetable Garden",
+    "115:Crushed Ruin"
+   ],
+   "cur": "60"
+  }
+ ]
+}
+

@@ -1,0 +1,69 @@
+﻿{
+ "story": "guess.z5.js",
+ "trace": [
+  {
+   "input": "(start)",
+   "tail": "Would you like to start a NEW game, RESTORE a saved game, start a SCRIPT, or QUIT? > ",
+   "status": "",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "new",
+   "tail": "lash on his status panel as he loads a new pitch into extended memory. \"Hello, little boy or girl!\", bellows Lalrry in the alarming tone used by adults who are trying to be friendly. \"Wait a minute... are you a boy or a girl? Are you a BOY or a GIRL?\" => ",
+   "status": "",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "boy",
+   "tail": " memory. \"Hello, little boy or girl!\", bellows Lalrry in the alarming tone used by adults who are trying to be friendly. \"Wait a minute... are you a boy or a girl? Are you a BOY or a GIRL?\" => boy \"And what's your name, little boy or--little boy?\" => ",
+   "status": "",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "#key",
+   "tail": " memory. \"Hello, little boy or girl!\", bellows Lalrry in the alarming tone used by adults who are trying to be friendly. \"Wait a minute... are you a boy or a girl? Are you a BOY or a GIRL?\" => boy \"And what's your name, little boy or--little boy?\" => ",
+   "status": "",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "look",
+   "tail": "THE VERB!?!?! Just one shiny quarter gets you a spin of the wheel! And you can GUESS THE VERB for fun and prizes!\" His pitch delivered, Lalrry switches back to broadcast mode and begins his old banter with an occasional hopeful glance in your direction. > ",
+   "status": "Verb Guessing Booth Guessed: 0 Completed: 0 Moves: 1",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "n",
+   "tail": " quarter gets you a spin of the wheel! And you can GUESS THE VERB for fun and prizes!\" His pitch delivered, Lalrry switches back to broadcast mode and begins his old banter with an occasional hopeful glance in your direction. >n You can't go that way. > ",
+   "status": "Verb Guessing Booth Guessed: 0 Completed: 0 Moves: 2",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "s",
+   "tail": "the wheel! And you can GUESS THE VERB for fun and prizes!\" His pitch delivered, Lalrry switches back to broadcast mode and begins his old banter with an occasional hopeful glance in your direction. >n You can't go that way. >s You can't go that way. > ",
+   "status": "Verb Guessing Booth Guessed: 0 Completed: 0 Moves: 3",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  }
+ ]
+}
+

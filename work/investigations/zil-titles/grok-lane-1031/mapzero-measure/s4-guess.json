@@ -1,0 +1,106 @@
+﻿{
+ "story": "guess.z5.js",
+ "trace": [
+  {
+   "input": "(start)",
+   "probe": {
+    "status": "z-ram-live",
+    "playerId": 20,
+    "inventoryRootId": 20,
+    "playerSource": "named-player",
+    "roomId": 0,
+    "roomSource": "none",
+    "measuredDark": null,
+    "scopeCount": 0
+   },
+   "parent": 0,
+   "tail": "Would you like to start a NEW game, RESTORE a saved game, start a SCRIPT, or QUIT? > ",
+   "status": "",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "new",
+   "probe": {
+    "status": "z-ram-live",
+    "playerId": 20,
+    "inventoryRootId": 37,
+    "playerSource": "named-player",
+    "roomId": 51,
+    "roomSource": "existing-resolver",
+    "measuredDark": null,
+    "scopeCount": 1
+   },
+   "parent": 0,
+   "tail": "lash on his status panel as he loads a new pitch into extended memory. \"Hello, little boy or girl!\", bellows Lalrry in the alarming tone used by adults who are trying to be friendly. \"Wait a minute... are you a boy or a girl? Are you a BOY or a GIRL?\" => ",
+   "status": "",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "boy",
+   "probe": {
+    "status": "z-ram-live",
+    "playerId": 20,
+    "inventoryRootId": 37,
+    "playerSource": "named-player",
+    "roomId": 51,
+    "roomSource": "existing-resolver",
+    "measuredDark": null,
+    "scopeCount": 1
+   },
+   "parent": 0,
+   "tail": " memory. \"Hello, little boy or girl!\", bellows Lalrry in the alarming tone used by adults who are trying to be friendly. \"Wait a minute... are you a boy or a girl? Are you a BOY or a GIRL?\" => boy \"And what's your name, little boy or--little boy?\" => ",
+   "status": "",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "#key",
+   "probe": {
+    "status": "z-ram-live",
+    "playerId": 20,
+    "inventoryRootId": 37,
+    "playerSource": "named-player",
+    "roomId": 51,
+    "roomSource": "existing-resolver",
+    "measuredDark": null,
+    "scopeCount": 1
+   },
+   "parent": 0,
+   "tail": " memory. \"Hello, little boy or girl!\", bellows Lalrry in the alarming tone used by adults who are trying to be friendly. \"Wait a minute... are you a boy or a girl? Are you a BOY or a GIRL?\" => boy \"And what's your name, little boy or--little boy?\" => ",
+   "status": "",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  },
+  {
+   "input": "look",
+   "probe": {
+    "status": "z-ram-live",
+    "playerId": 20,
+    "inventoryRootId": 37,
+    "playerSource": "named-player",
+    "roomId": 51,
+    "roomSource": "existing-resolver",
+    "measuredDark": null,
+    "scopeCount": 1
+   },
+   "parent": 0,
+   "tail": "THE VERB!?!?! Just one shiny quarter gets you a spin of the wheel! And you can GUESS THE VERB for fun and prizes!\" His pitch delivered, Lalrry switches back to broadcast mode and begins his old banter with an occasional hopeful glance in your direction. > ",
+   "status": "Verb Guessing Booth Guessed: 0 Completed: 0 Moves: 1",
+   "line": true,
+   "char": false,
+   "rooms": [],
+   "cur": null
+  }
+ ]
+}
+
