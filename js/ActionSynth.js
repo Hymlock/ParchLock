@@ -144,6 +144,29 @@ var ActionSynth = {
     nestedEdibleForms: (objectId, context) => {
         return ActionSynth.edibleFormPolicy(objectId, context) || [];
     },
+    learnedFormAllowed: function (objectId, form, context) {
+        if (!ActionSynth.authoredCommandAllowed(objectId,form,context)) return false;
+        if (ActionSynth.inspectVerbDisabled() && form === ActionSynth.defaultInspectVerb()) return false;
+        var behavior=typeof AttrCalibrator !== 'undefined' && AttrCalibrator.table && AttrCalibrator.table.verbBehavior;
+        var disabled=behavior && behavior.disabled && behavior.disabled[form];
+        if (disabled && disabled.confirmed && !(typeof LearnedWords !== 'undefined' && LearnedWords.inspectSuppressed && LearnedWords.inspectSuppressed('disabled:'+form))) return false;
+        if (/^(switch|turn) (on|off)$/.test(form)) {
+            var activation=ActionSynth.activationFormPolicy(objectId,context);
+            if (activation !== null && activation.indexOf(form)<0) return false;
+        }
+        // A learned spelling never overrides a validated light owner's live side.
+        try {
+            var digest=ModuleLibrary.currentExecutableDigest(), fact=ModuleStatFactsClaude[digest], lf=fact && fact.lightForms;
+            if (lf && Array.isArray(lf.objects) && lf.objects.indexOf(Number(objectId))>=0) {
+                var owned=['on','off'].map(function(side) { var m=lf[side]; return m && (m[String(objectId)] || m.default); });
+                if (owned.indexOf(form)>=0) {
+                    var current=AttributeSchema.lightForms(AttributeSchema._getMem(),Number(objectId),context);
+                    if (current !== null && current.indexOf(form)<0) return false;
+                }
+            }
+        } catch(e) {}
+        return true;
+    },
     activationFormPolicy: (objectId, context) => {
         if (typeof AttributeSchema === "undefined" || !AttributeSchema.activationForms) return null;
         var forms = AttributeSchema.activationForms(AttributeSchema._getMem(), objectId, context);
@@ -527,6 +550,12 @@ var ActionSynth = {
             return nested;
         }
         var verbs = ActionSynth.verbsForAttrs(attrs, obj.id, Object.assign({}, options, { context: context }));
+        if (!(options && options.allowAmbiguousReference) && typeof AttrCalibrator !== 'undefined' && AttrCalibrator.learnedFormsFor) {
+            AttrCalibrator.learnedFormsFor(obj.id).forEach(function (v) {
+                if (!ActionSynth.learnedFormAllowed(obj.id,v,context)) return;
+                if (verbs.indexOf(v) < 0) verbs.push(v);
+            });
+        }
         // Inventory: drop is "you are holding this", independent of takeable.
         // Zeroing takeable used to collateral-suppress drop because both verbs
         // shared one flag. Take stays gated on attrs.takeable and is removed
@@ -665,6 +694,9 @@ var ActionSynth = {
             if (!result.some(function (existing) { return existing.command === c.command; })) result.push(c);
         });
         var allowed = result.filter(function (entry) { return ActionSynth.authoredCommandAllowed(obj.id, entry.verb, context); });
+        if (typeof Actionable !== 'undefined' && Actionable.learnedItemScopeFor && !(options && options.allowAmbiguousReference)) {
+            allowed.forEach(function (entry) { var scope = Actionable.learnedItemScopeFor(entry, context); if (scope) entry.learnedItemScope = scope; });
+        }
         if (context === "inventory" || containerName || (options && (options.allowAmbiguousReference || options.directEvidenceOnly))) return allowed;
         return allowed.concat(ActionSynth.addressedFormsFor(obj, allowed));
     },

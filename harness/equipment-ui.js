@@ -238,6 +238,11 @@ Actionable.payloadPool = () => WorldModel.lastPayload.inventory;
 AttributeSchema._getMem = () => new Uint8Array(128);
 AttributeSchema._findIdByName = () => 12;
 global.ZRamReader = {gameIdentityKey: () => gameKey};
+// Supply the identity/store seam explicitly in this constructed recorder
+// fixture; real executable hashing and store ownership have separate tests.
+global.LearningStores = {register(){},identity:()=>({identityKey:gameKey}),
+    readOwned:(kind,id)=>({status:'ready',value:localStorage.getItem('PL_AttrCalib_'+id.identityKey)}),
+    persist:(kind,i,value)=>localStorage.setItem('PL_AttrCalib_'+i.identityKey,value)};
 AttrCalibrator.hydratedForGame = null;
 const prepare = (id, command) => {
     const turn = {submissionId:id, command, source:'player', analyzerSnapshots:{'diag-verbSuccess':'You wield the lantern.'}};

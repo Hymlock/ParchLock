@@ -65,6 +65,43 @@ var AttrCalibrator = {
             });
         } catch (e) { return []; }
     },
+    // Remembered spellings are item preferences, NOT inferred capabilities or
+    // semantic success. Keep them separate from opcode/allowedVerb evidence.
+    rememberedFormsFor: function (objectId) {
+        try {
+            var mem = AttributeSchema._getMem();
+            if (!mem) return [];
+            AttrCalibrator.hydrate(mem);
+            var rec = AttrCalibrator.table.objects[String(objectId)];
+            var digest = AttrCalibrator._d198ExecutableDigest();
+            return Object.keys(rec && rec.rememberedForms || {}).filter(function (form) {
+                var e = rec.rememberedForms[form];
+                return digest && e.digest === digest && e.observations >= 2 && AttrCalibrator.dictionaryForm(form) &&
+                    !(typeof LearnedWords !== 'undefined' && LearnedWords.suppressed('exact', objectId, form));
+            });
+        } catch (e) { return []; }
+    },
+    learnedFormsFor: function (objectId) {
+        return AttrCalibrator.exactFormsFor(objectId).concat(AttrCalibrator.rememberedFormsFor(objectId))
+            .filter(function (v, i, all) { return all.indexOf(v) === i; });
+    },
+    recordRememberedForm: function (entry) {
+        if (!entry || !entry.rememberedOnly || entry.rejected || entry.ambiguous || !entry.responseObserved ||
+            !entry.digest || entry.digest !== AttrCalibrator._d198ExecutableDigest() ||
+            entry.generation !== (typeof UndoRestoreSync !== 'undefined' ? UndoRestoreSync.generation : 0) ||
+            !entry.d198Correlation || entry.d198Correlation.referenceVerified === false ||
+            String(entry.d198Correlation.objectId) !== String(entry.objectId) || !AttrCalibrator.dictionaryForm(entry.exactForm)) return false;
+        var rec = AttrCalibrator.table.objects[String(entry.objectId)] || (AttrCalibrator.table.objects[String(entry.objectId)] = {});
+        var forms = rec.rememberedForms || (rec.rememberedForms = {}), form = entry.exactForm;
+        var slot = forms[form];
+        if (!slot || slot.digest !== entry.digest) slot = forms[form] = { digest: entry.digest, observations: 0, source: 'remembered-item-preference' };
+        var key = entry.pageEpoch + ':' + entry.submissionId;
+        if (slot.submissionId === key) return false;
+        slot.submissionId = key;
+        slot.observations = Math.min(2, slot.observations + 1);
+        slot.outcome = 'response-observed';
+        return true;
+    },
     recordExactForm: function (entry) {
         if (!entry || entry.rejected || entry.ambiguous || !entry.exactForm ||
             !entry.d198Correlation || String(entry.d198Correlation.objectId) !== String(entry.objectId) ||
@@ -370,7 +407,10 @@ var AttrCalibrator = {
                         m = null;
                         extra = { verb: manual.form, noun: s.slice(manual.form.length).trim(), objectId: manual.objectId };
                     }
-                    if (!m && (!extra || (!manual && AttrCalibrator.RPG_VERBS.indexOf(extra.verb) < 0) || !AttrCalibrator.dictionaryForm(extra.verb))) return null;
+                    var rememberedOnly = !manual && !m && extra && AttrCalibrator.RPG_VERBS.indexOf(extra.verb) < 0;
+                    if (!m && (!extra || !AttrCalibrator.dictionaryForm(extra.verb))) return null;
+                    if (rememberedOnly && (!/^(typed|user-action|user-send|user-voice|user-autocomplete)$/.test(turn.source) ||
+                        !/^[a-z]+$/.test(extra.verb) || !AttrCalibrator._d198ExecutableDigest())) return null;
                     var exactForm = m ? m[1].toLowerCase().replace(/\s+/g, " ") : extra.verb;
                     var verb = AttrCalibrator.normalizeVerb(exactForm);
                     var noun = m ? m[2].replace(/^(the|a|an)\s+/i, "").trim() : extra.noun;
@@ -391,6 +431,12 @@ var AttrCalibrator = {
                     if (typeof Actionable !== "undefined" && Actionable.payloadPool && Actionable.payloadPool().length && (!d198Correlation || String(d198Correlation.objectId) !== String(id))) return null;
                     if (extra && (!d198Correlation || d198Correlation.referenceVerified === false)) return null;
                     turn.__diagVerbSuccessCtx = { verb: verb, exactForm: exactForm, extra: !!extra, noun: noun, id: id, ops: ops || [], trace: [], d198Correlation: d198Correlation };
+                    if (rememberedOnly) {
+                        turn.__diagVerbSuccessCtx.rememberedOnly = true;
+                        turn.__diagVerbSuccessCtx.ops = [];
+                        turn.__diagVerbSuccessCtx.digest = AttrCalibrator._d198ExecutableDigest();
+                        turn.__diagVerbSuccessCtx.generation = typeof UndoRestoreSync !== 'undefined' ? UndoRestoreSync.generation : 0;
+                    }
                     try { var links = ZRamReader.objectLinks(mem,id); if (links) turn.__diagVerbSuccessCtx.beforeParent = links.parent; } catch (eParent) {}
                     turn.__diagVerbSuccessCtx.beforeRoomId = typeof WorldModel !== 'undefined' && WorldModel.lastPayload && WorldModel.lastPayload.roomId;
 
@@ -415,7 +461,13 @@ var AttrCalibrator = {
                                 if (typeof $ !== "undefined") {
                                     var lines = $("#windowport .BufferWindow .BufferLine").toArray();
                                     var end = (t.endLine != null) ? t.endLine : lines.length;
-                                    text = lines.slice(t.startLine || 0, end).map(function (l) { return l.textContent || ""; }).join(" ");
+                                    var ownedLines = lines.slice(t.startLine || 0, end);
+                                    if (t.__diagVerbSuccessCtx.rememberedOnly) ownedLines = ownedLines.filter(function (line) {
+                                        if (line.classList && (line.classList.contains('pl-stat-probe') || line.classList.contains('pl-carry-probe'))) return false;
+                                        var value = String(line.textContent || '').replace(/\u00a0/g, ' ').trim().replace(/^>\s*/, '').trim();
+                                        return value && value.toLowerCase() !== t.command.trim().toLowerCase();
+                                    });
+                                    text = ownedLines.map(function (l) { return l.textContent || ""; }).join(t.__diagVerbSuccessCtx.rememberedOnly ? "\n" : " ");
                                 }
                             } catch (eT) {}
 
@@ -454,6 +506,8 @@ var AttrCalibrator = {
                     var failedText = /\b(can'?t|cannot|already|don't|dont|do not|not open|not close|nothing happens|that's not a verb|i don't know|i do not know|you can't|you cannot)\b/i.test(text);
                     if (ctx.extra && /\?|\b(?:not|unknown|understood|which do you mean|no such|not here|not important|not holding)\b/i.test(text)) failedText = true;
                     if (ctx.extra && AttrCalibrator.extraVerbRefusal(text)) failedText = true;
+                    if (ctx.rememberedOnly && /\?|\b(?:press (?:any|a) key|do you (?:want|wish)|what do you|which|first you|you (?:must|need|have to)|please (?:answer|specify)|only understood|not a verb|no effect)\b/i.test(text)) failedText = true;
+                    if (ctx.rememberedOnly && /\b(?:isn't|aren't|doesn't|didn't|won't|unrecognized|unrecognised|understand|nothing)\b/i.test(text)) failedText = true;
                     // Opcode mutation = structural success. No mutation + no
                     // refusal = accepted behavioral success (Glow Bar turn-on
                     // without I6 switchable bit). Ambiguous only when both
@@ -472,6 +526,17 @@ var AttrCalibrator = {
                         pageEpoch: turn.pageEpoch,
                         at: Date.now()
                     };
+                    if (ctx.rememberedOnly) {
+                        entry.rememberedOnly = true;
+                        entry.digest = ctx.digest;
+                        entry.generation = ctx.generation;
+                        entry.responseObserved = !!String(text).split(/\n/).filter(function (line) {
+                            var value = line.replace(/\u00a0/g, ' ').trim().replace(/^>\s*/, '').trim();
+                            return value && value.toLowerCase() !== turn.command.trim().toLowerCase();
+                        }).length;
+                        entry.success = false;
+                        entry.behavioralAccept = false;
+                    }
                     // Preserved byte-for-byte (existing diagnostic surface,
                     // unaffected by cutover -- same entry shape the legacy
                     // _resolvePending always wrote here).
@@ -938,24 +1003,28 @@ var AttrCalibrator = {
     // blob in localStorage, hydrate-once-per-game guard) -- reused, not
     // reinvented.
     gameIdentityKey: function (mem) {
-        return (typeof ZRamReader !== "undefined" && ZRamReader.gameIdentityKey) ? ZRamReader.gameIdentityKey(mem) : null;
+        if (typeof LearningStores !== 'undefined' && LearningStores.identity) {
+            var id = LearningStores.identity(mem); return id && id.identityKey;
+        }
+        return null;
     },
     hydrate: function (mem) {
         var key = AttrCalibrator.gameIdentityKey(mem);
-        if (!key || AttrCalibrator.hydratedForGame === key) return;
+        if (!key) { AttrCalibrator.hydratedForGame = null; AttrCalibrator._loadingKey = null; AttrCalibrator.table = { version: 2, verbs: {}, objects: {} }; return; }
+        if (AttrCalibrator.hydratedForGame === key) return;
+        if (AttrCalibrator._loadingKey !== key) {
+            AttrCalibrator._loadingKey = key;
+            AttrCalibrator.hydratedForGame = null;
+            AttrCalibrator.table = { version: 2, verbs: {}, objects: {} };
+        }
+        var owned = LearningStores.readOwned('attrCalib', LearningStores.identity(mem));
         AttrCalibrator.hydratedForGame = key;
         AttrCalibrator.table = { version: 2, verbs: {}, objects: {} };
         try {
             if (typeof localStorage === "undefined") return;
-            var raw = typeof LearningStores !== "undefined" ? LearningStores.read("PL_AttrCalib_" + key) : localStorage.getItem("PL_AttrCalib_" + key);
-            if (!raw) return;
-            var parsed = JSON.parse(raw);
+            var raw = owned.value;
+            var parsed = raw ? JSON.parse(raw) : null;
             if (parsed && parsed.version === 2) AttrCalibrator.table = parsed;
-            // Old location and bit evidence could be confirmed by constants or
-            // incidental mutations. Preserve only independent verb-response data.
-            else if (parsed && parsed.version === 1 && parsed.verbBehavior) {
-                AttrCalibrator.table.verbBehavior = parsed.verbBehavior;
-            }
         } catch (e) {}
     },
     // P13b R2: compaction only (no object LRU). Drops evidence that can no
@@ -999,7 +1068,7 @@ var AttrCalibrator = {
     learningKeyFor: function (inputs) { return inputs && typeof inputs.identityKey === "string" && inputs.identityKey ? "PL_AttrCalib_" + inputs.identityKey : null; },
     persist: function (mem) {
         var key = AttrCalibrator.gameIdentityKey(mem);
-        if (!key) return;
+        if (!key || AttrCalibrator.hydratedForGame !== key) return;
         try {
             if (typeof localStorage === "undefined") return;
             AttrCalibrator.compactTable(AttrCalibrator.table);
@@ -1024,6 +1093,10 @@ var AttrCalibrator = {
             var mem = AttributeSchema._getMem();
             if (!mem) return;
             AttrCalibrator.hydrate(mem);
+            if (entry && entry.rememberedOnly) {
+                if (AttrCalibrator.recordRememberedForm(entry)) AttrCalibrator.persist(mem);
+                return; // Never promote remembered preferences into flags or capabilities.
+            }
             if (entry && entry.verb) entry.verb = AttrCalibrator.normalizeVerb(entry.verb);
             var flag = AttrCalibrator.VERB_FLAG[entry.verb];
             var changed = false;

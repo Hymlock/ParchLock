@@ -4,6 +4,7 @@ const store={},mem={};let key='a',filename='a.z8.js';
 const obj={id:7,name:'axe',aliases:['axe'],attrs:{takeable:true}},payload={discoveredObjects:[obj],inventory:[]};
 function boot(){
  const c=vm.createContext({console,Date,Math,JSON,Map,Set,setTimeout:()=>0,clearTimeout(){},window:{},document:{readyState:'loading',addEventListener(){},querySelector:()=>null},localStorage:{getItem:k=>store[k]||null,setItem:(k,v)=>store[k]=v},ParchLock:{get GameFilename(){return filename}},UndoRestoreSync:{generation:0},ZRamReader:{gameIdentityKey:()=>key},AttributeSchema:{_getMem:()=>mem},WorldModel:{lastPayload:payload},Actionable:{payloadPool:()=>payload.discoveredObjects.concat(payload.inventory),referenceFor:o=>({unique:true,verified:true,noun:o.name}),isGameWord:()=>true,disambiguatedNoun:o=>o.name},Global:{Prefs:{}}});
+ c.LearningStores={register(){},identity:()=>({identityKey:key}),readOwned:(kind,id)=>({status:'ready',value:store[(kind==='attrCalib'?'PL_AttrCalib_':'PL_LearnedWordOverrides_')+id.identityKey]||null}),persist:(kind,i,value)=>{store[(kind==='attrCalib'?'PL_AttrCalib_':'PL_LearnedWordOverrides_')+i.identityKey]=value;}};
  for(const n of ['TurnRecorder','ActionSynth','EquipmentUI','AttrCalibrator','LearnedWords'])vm.runInContext(fs.readFileSync('js/'+n+'.js','utf8'),c);
  c.AttrCalibrator._splitAnyVerbNoun=command=>{const parts=command.split(' ');return {verb:parts[0],objectId:7,noun:'axe'}};
  c.AttrCalibrator.hydrate(mem);return c;

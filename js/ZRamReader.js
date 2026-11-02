@@ -837,21 +837,27 @@ var ZRamReader = {
     // waiting for the player to happen to travel the right direction
     // again -- still 100% evidence-derived, just remembered across visits
     // to the same compiled file rather than rediscovered every time.
+    learningIdentityKey: (mem) => {
+        var id = typeof LearningStores !== "undefined" ? LearningStores.identity(mem) : null;
+        return id ? id.identityKey : null;
+    },
     hydrateDiagonalCalibration: (mem) => {
         var dp = ZRamReader.directionProps;
-        var key = ZRamReader.gameIdentityKey(mem);
-        if (!key || dp.hydratedForGame === key) return;
-        dp.hydratedForGame = key;
+        var id = typeof LearningStores !== "undefined" ? LearningStores.identity(mem) : null;
+        var token = id ? id.identityKey : mem;
+        if (dp.activeIdentity !== token) {
+            dp.activeIdentity = token; dp.hydratedForGame = null;
+            dp.diagonalSwapped = false; dp.diagonalCalibrated = false;
+        }
+        if (!id || dp.hydratedForGame === id.identityKey) return;
+        var result = LearningStores.readOwned("diagonalCalib",id);
+        dp.hydratedForGame = id.identityKey;
         try {
-            if (typeof localStorage === "undefined") return;
-            var raw = typeof LearningStores !== "undefined" ? LearningStores.read("PL_DiagonalCalib_" + key) : localStorage.getItem("PL_DiagonalCalib_" + key);
-            if (!raw) return;
-            var saved = JSON.parse(raw);
+            var saved = JSON.parse(result.value);
             if (saved && typeof saved.swapped === "boolean") {
-                dp.diagonalSwapped = saved.swapped;
-                dp.diagonalCalibrated = true;
+                dp.diagonalSwapped = saved.swapped; dp.diagonalCalibrated = true;
             }
-        } catch (e) {}
+        } catch(e) {}
     },
 
     diagonalLearningKeyFor: (i) => (i && typeof i.identityKey === "string" && i.identityKey ? "PL_DiagonalCalib_" + i.identityKey : null),
@@ -859,7 +865,7 @@ var ZRamReader = {
     persistDiagonalCalibration: (mem) => {
         try {
             if (typeof localStorage === "undefined") return;
-            var key = ZRamReader.gameIdentityKey(mem);
+            var key = ZRamReader.learningIdentityKey(mem);
             if (!key) return;
             var json = JSON.stringify({ swapped: ZRamReader.directionProps.diagonalSwapped });
             if (typeof LearningStores !== "undefined") LearningStores.persist("diagonalCalib", { identityKey: key }, json, function () { var dp = ZRamReader.directionProps; if (dp.hydratedForGame === key) { dp.diagonalCalibrated = false; } });
@@ -868,6 +874,7 @@ var ZRamReader = {
     },
 
     directionLabelForProp: (propNum, mem) => {
+        ZRamReader.hydrateDiagonalCalibration(mem);
         var dp = ZRamReader.directionProps || {};
         var discovered = mem ? ZRamReader.labelCompassProfile(mem) : null;
         if (discovered && discovered.profile && discovered.profile[propNum]) {
@@ -911,6 +918,9 @@ var ZRamReader = {
         if (destRoomId == null || hintedDestRoomId == null || String(destRoomId) !== String(hintedDestRoomId)) return false;
         var isDiagonalWord = typedDirectionLabel === "northwest" || typedDirectionLabel === "southeast";
         if (!isDiagonalWord) return false;
+        var evidenceMem = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null;
+        ZRamReader.hydrateDiagonalCalibration(evidenceMem);
+        var dp = ZRamReader.directionProps;
         var baseline = ZRamReader.directionProps.PROFILE[propNum];
         ZRamReader.directionProps.diagonalSwapped = (baseline !== typedDirectionLabel);
         ZRamReader.directionProps.diagonalCalibrated = true;
@@ -2574,6 +2584,7 @@ var ZRamReader = {
     // compiler-agnostic fallback every other case in this system already
     // uses.
     lookAheadExits: (mem, roomId) => {
+        ZRamReader.hydrateDiagonalCalibration(mem);
         // D134: for a non-Inform game the Inform property convention below is
         // meaningless (D61), but that no longer means we know nothing. If
         // ExitCalibrator has LEARNED where this particular game keeps its

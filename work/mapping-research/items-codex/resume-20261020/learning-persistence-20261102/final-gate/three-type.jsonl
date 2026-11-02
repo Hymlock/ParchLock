@@ -1,0 +1,2 @@
+{"game":"CounterfeitMonkey.gblorb.js","exits":[],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"anchor.z8.js","exits":["east>106","in>106","southeast>107","west>118"],"marks":["estate","east","west","alley","southeast"],"inv1":["104:wedding ring","102:trenchcoat","103:clothes","101:umbrella"],"inv2":["104:wedding ring","102:trenchcoat","103:clothes","101:umbrella"],"rooms":["105:Outside the Real Estate Office","107:Alley","118:Narrow Street"]}

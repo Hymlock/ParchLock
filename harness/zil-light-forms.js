@@ -16,6 +16,7 @@ function load(file){
   {const src=fs.readFileSync(root+'/js/Actionable.js','utf8'),k=src.indexOf('radialCommandCurrent: function');let i=src.indexOf('{',k),d=0,j=i;for(;j<src.length;j++){if(src[j]==='{')d++;else if(src[j]==='}'&&--d===0)break;}
   c.Actionable.radialCommandCurrent=vm.runInContext('(function'+src.slice(src.indexOf('(',k),j+1)+')',c);}
   Object.assign(T,{c,A:c.AttributeSchema,R:c.ZRamReader,S:c.ActionSynth,F:c.ModuleStatFactsClaude[digest]});
+  c.AttrCalibrator.learnedFormsFor=function(id){return this.exactFormsFor(id);};
   T.h=T.R.header(mem);
   const pl=T.R.resolvePlayer(mem);T.player=pl&&pl.id;T.room=T.player&&T.R.enclosingRoom(mem,T.player);T.count=T.R.objectCount(mem,T.h);
   T.payload.playerId=T.player;

@@ -1360,7 +1360,7 @@ var Actionable = {
             // and never needed this clause.
             && !(typeof StatTracker !== "undefined" && StatTracker._carryProbeSubmitting)) return false;
         Input.Clear();
-        var accepted = Input.Inject(command, true, source || "inject");
+        var accepted = Input.Inject(command, true, source || "user-action");
         // Mobile: never Focus after a headless radial/tap submit -- that
         // pops the OS keyboard on every examine/go (operator). Keyboard
         // only after a deliberate short-tap on the line field.
@@ -2713,11 +2713,15 @@ var Actionable = {
         var suggestions = [], seen = {};
         var obj = Actionable.payloadPool().find(function (o) { return String(o.id) === String(context.objectId); });
         var noun = obj ? Actionable.referenceFor(obj).noun : context.noun;
+        var primary = {};
+        slices.forEach(function (s) { if (s.Command) primary[String(s.Command).trim().toLowerCase()] = true; });
         var add = function (verb) {
             verb = String(verb || '').trim();
             if (!verb || seen[verb.toLowerCase()]) return;
             seen[verb.toLowerCase()] = true;
             var command = verb + ' ' + noun;
+            if (primary[command.trim().toLowerCase()]) return;
+            if (obj && typeof ActionSynth !== 'undefined' && !ActionSynth.learnedFormAllowed(obj.id, verb, context.kind === 'inventory' || context.source === 'inventory' ? 'inventory' : 'room')) return;
             suggestions.push({ Label: verb.charAt(0).toUpperCase() + verb.slice(1), Command: command, Enter: false, Score: 30 });
         };
         // These are vocabulary suggestions, not claims of object capability.
@@ -2763,6 +2767,7 @@ var Actionable = {
         });
     },
     radialCommandCurrent: function (command) {
+        if (command.learnedItemScope && !Actionable.learnedItemScopeCurrent(command, command.learnedItemScope.context)) return false;
         if (command.sharedMembers && (command.wornRemovalScope || command.sharedMembers.some(function (c) { return !!c.wornRemovalScope; }))) return false;
         return (command.sharedMembers || [command]).every(function (c) {
             if (c.wornRemovalScope && (typeof ActionSynth === "undefined" || !ActionSynth.wornRemovalCommandCurrent || !ActionSynth.wornRemovalCommandCurrent(c))) return false;
@@ -2775,6 +2780,36 @@ var Actionable = {
             if (c.actorAddressing && (command.sharedMembers || typeof ActionSynth === "undefined" || !ActionSynth.addressedCommandCurrent || !ActionSynth.addressedCommandCurrent(c))) return false;
             return !c.learnedWordScope || typeof LearnedWords === "undefined" || LearnedWords.commandCurrent(c);
         });
+    },
+    // A trusted item/form preference marker. Never derived from global verb
+    // frequency or an arbitrary slice boolean; rechecked at render and tap.
+    learnedItemScopeFor: function (command, context) {
+        try {
+            if (!command || command.sharedMembers || command.objectId == null || command.targetObjectId != null || command.actorAddressing || /\s$/.test(command.command || '')) return null;
+            var digest=AttrCalibrator._d198ExecutableDigest();
+            if(!digest) return null;
+            var known=AttrCalibrator.learnedFormsFor(command.objectId).indexOf(command.verb)>=0;
+            var authored=typeof LearnedWords !== 'undefined' && LearnedWords.hasAuthoredFormRaw && LearnedWords.hasAuthoredFormRaw(command.objectId,command.verb);
+            if(!known && !authored) return null;
+            var manual=authored ? LearnedWords.candidates(command.objectId).find(function(c){return c.form===command.verb;}) : null;
+            if(!known && !manual) return null;
+            var obj = Actionable.payloadPool().find(function (o) { return String(o.id) === String(command.objectId); });
+            if (!obj || obj.revealedLocalGlobal) return null;
+            var ref = Actionable.referenceFor(obj);
+            if (!ref.unique || !ref.verified || command.command !== command.verb + ' ' + ref.noun) return null;
+            var actual = ((WorldModel.lastPayload || {}).inventory || []).some(function (o) { return String(o.id) === String(obj.id); }) ? 'inventory' : 'room';
+            if (actual !== context || (actual === 'inventory' && ActionSynth.heldContainerName(obj, WorldModel.lastPayload))) return null;
+            if (!ActionSynth.learnedFormAllowed(obj.id, command.verb, context)) return null;
+            return { digest: digest, generation: typeof UndoRestoreSync !== 'undefined' ? UndoRestoreSync.generation : 0,
+                objectId: obj.id, form: command.verb, noun: ref.noun, context: context,
+                revision: manual ? manual.revision : null, rowId: manual ? manual.id : null };
+        } catch (e) { return null; }
+    },
+    learnedItemScopeCurrent: function (command, context) {
+        var scope = command && command.learnedItemScope;
+        if (!scope) return false;
+        var now = Actionable.learnedItemScopeFor(command, context);
+        return !!now && ['digest','generation','objectId','form','noun','context','revision','rowId'].every(function (k) { return now[k] === scope[k]; });
     },
     Open: (noun, kind, x, y, objectId) => {
         var prior = Actionable._resolutionPool;
@@ -2825,6 +2860,7 @@ var Actionable = {
         } else if (objectId || sharedCommands) {
             var cmds = sharedCommands || Actionable.resolveObjectCommands(objectId, kind);
             slices = cmds.map(function (c) {
+                if (!sharedCommands) c = Object.assign({}, c, { learnedItemScope: Actionable.learnedItemScopeFor(c, kind === 'inventory' ? 'inventory' : 'room') });
                 var verb = String(c.verb || "examine");
                 var command = String(c.command || "");
                 var base = Math.round((typeof c.confidence === "number" ? c.confidence : 0.8) * 60);
@@ -2906,6 +2942,7 @@ var Actionable = {
                 return {
                     Label: c.actorAddressing && c.label ? String(c.label) : verb.charAt(0).toUpperCase() + verb.slice(1),
                     Command: command,
+                    LearnedCommand: !sharedCommands ? c : null,
                     Score: scoreFor(command, base),
                     Usage: usageFor(command),
                     Enter: c.Enter !== false && c.enter !== false,

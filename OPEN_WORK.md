@@ -1,5 +1,14 @@
 # Open work
 
+November 2 operator priority: D263 module learning persistence and learned-item radial precedence is implemented
+and independently accepted after final validation. Existing Learned Words editing/Ignore/tracking/erase is reused; no legacy migration or new
+learning database. Actual HugeCave older-save restore and unsaved exit/reopen retain Light/Douse and their priority.
+The final immutable309x2 comparison has zero unresolved regressions (seven measured annotation variances and seven matching no-prompt gaps); this entry does not close the unrelated rows below or announce an APK.
+
+Baseline annotation follow-up: `heist.z8.js` can link the introductory metaphor "frame of mind" to frame124.
+Natural-startup passive captures reproduce it on the unchanged baseline with identical RAM/prose to the candidate;
+this existing annotation race is retained in D263 evidence, not claimed fixed by the learning repair.
+
 Updated 2026-11-01 (America/New_York), HEAD e643191b. This is the repo's working list of what is still to be implemented. It replaces the Oct 22 list, which is kept for history as [OPEN_WORK-2026-10-22-OUTDATED.md](OPEN_WORK-2026-10-22-OUTDATED.md). Decisions and evidence remain in PRODUCTION_PLAN.md and ARCHITECTURE_UML.md.
 
 Source: the "What's Left to Implement (Nov 1, 2026)" report (48 items). Items the report marked "unverified" were rechecked on 2026-11-01 with `git log --since=2026-10-20 --grep` plus a code grep. None had a matching commit, so they stay open; corrections are noted in the rows.

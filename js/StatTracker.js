@@ -1571,7 +1571,11 @@ var StatTracker = {
         var m = StatTracker.blank();
         try {
             if (typeof localStorage === "undefined") return StatTracker.syncPlaythrough(m);
-            var raw = typeof LearningStores !== "undefined" ? LearningStores.read(StatTracker.STORAGE_PREFIX + key) : localStorage.getItem(StatTracker.STORAGE_PREFIX + key);
+            var mem=typeof ZRamProvider!=="undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null;
+            var id=typeof LearningStores!=="undefined" ? LearningStores.identity(mem,false) : null;
+            if(!id || id.identityKey!==key) return StatTracker.syncPlaythrough(m);
+            var result=LearningStores.readOwned("stats",id);
+            var raw=result.value;
             if (!raw) return StatTracker.syncPlaythrough(m);
             var parsed = JSON.parse(raw);
             Object.keys(m).forEach(function (k) {
@@ -1646,7 +1650,10 @@ var StatTracker = {
     learningKeyFor: (i) => (i && typeof i.identityKey === "string" && i.identityKey ? StatTracker.STORAGE_PREFIX + i.identityKey : null),
     save: (key, model) => {
         try {
-            if (typeof localStorage === "undefined") return;
+            if (typeof localStorage === "undefined" || !key) return;
+            var mem=typeof ZRamProvider!=="undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null;
+            var id=typeof LearningStores!=="undefined" ? LearningStores.identity(mem,false) : null;
+            if(!id || id.identityKey!==key) return;
             // D17: badgeUntil/badgeDelta/lastChange are presentation state that
             // load() resets anyway; persisting them only dirties the compare.
             // A replacer projects them out without mutating the live model.
@@ -1890,15 +1897,15 @@ var StatTracker = {
     observe: function (mem, statusRaw) {
         var facts = StatTracker.headerFacts(mem);
         var key = null;
-        try { key = ZRamReader.gameIdentityKey ? ZRamReader.gameIdentityKey(mem) : null; } catch (e) {}
-        key = key || "unknown";
+        try { var id=LearningStores.identity(mem,false); key=id && id.identityKey; } catch(e) {}
         var story = "";
         try { story = (typeof ParchLock !== "undefined" && ParchLock.GameFilename) || ""; } catch (eStory) {}
         if (StatTracker._key !== key || StatTracker._storyFile !== story) {
             StatTracker._key = key;
             StatTracker._storyFile = story;
             StatTracker._samples = [];
-            StatTracker._model = StatTracker.load(key);
+            StatTracker._lastSaved=null;
+            StatTracker._model=key ? StatTracker.load(key) : StatTracker.blank();
             // V4+ has no interpreter-defined turns slot. Legacy behavioral
             // pins can be room ids or offset counters; rederive this session.
             if (facts && facts.version > 3) delete StatTracker._model.globals.turns;

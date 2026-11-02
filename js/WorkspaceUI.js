@@ -82,10 +82,30 @@ var WorkspaceUI = {
         } catch (e) {}
         ParchLockQol.OpenRadial(cx, cy, entries.map(entry => ({ Label: entry[0], Action: entry[1] })), { source: "game" });
     },
+    _leaving: false,
+    LeaveWithLearning: async function (navigate) {
+        if (WorkspaceUI._leaving) return;
+        WorkspaceUI._leaving = true;
+        var block = function (e) {
+            if (e.target && e.target.matches && e.target.matches('.Input.LineInput,.Input.CharInput')) { e.preventDefault(); e.stopImmediatePropagation(); }
+        };
+        document.addEventListener('keypress', block, true);
+        var ok=false;
+        try {
+            ok = typeof TurnRecorder === 'undefined' || await TurnRecorder.whenSettled(1500);
+            if (ok && typeof LearningStores !== 'undefined') ok=(await LearningStores.flush(2000)).ok;
+            if(ok && navigate() !== false) return;
+        } catch(e) {}
+        WorkspaceUI._leaving=false;
+        document.removeEventListener('keypress',block,true);
+        Message.Show('Learning is still saving',"<p>Your learned words and actions could not be saved yet. Keep this game open and try again.</p><button id='learning-exit-retry'>Try again</button><button id='learning-exit-cancel'>Keep playing</button>",true);
+        $('#learning-exit-retry').click(function(){WorkspaceUI.LeaveWithLearning(navigate);});
+        $('#learning-exit-cancel').click(Message.Hide);
+    },
     ExitGame: () => {
         Message.Show("Exit game?", "<p>Progress since your last game save will be lost. A saved map does not save your game position.</p><div class='qol-window-actions'><button id='exit-save'>Save game first</button><button id='exit-confirm'>Exit without saving</button><button id='exit-cancel'>Keep playing</button></div>", true);
         $("#exit-save").click(() => WorkspaceUI.Command("save"));
-        $("#exit-confirm").click(() => { location.href = "index.html"; });
+        $("#exit-confirm").click(() => WorkspaceUI.LeaveWithLearning(function() { location.href = "index.html"; }));
         $("#exit-cancel").click(Message.Hide);
     },
     // After the story accepts QUIT (or otherwise glk_exit), GlkOte disables and
@@ -106,15 +126,17 @@ var WorkspaceUI = {
             true
         );
         $("#story-ended-library").off("click.plStoryEnded").on("click.plStoryEnded", function () {
-            location.href = "index.html";
+            WorkspaceUI.LeaveWithLearning(function() { location.href = "index.html"; });
         });
         $("#story-ended-restart").off("click.plStoryEnded").on("click.plStoryEnded", function () {
+            WorkspaceUI.LeaveWithLearning(function() {
             var intent = typeof SaveState !== "undefined" && SaveState.prepareNewGame ? SaveState.prepareNewGame() : null;
-            if (intent === false) return;
+            if (intent === false) return false;
             try {
                 if (story) location.href = "play.html?story=" + encodeURIComponent(story);
                 else location.reload();
-            } catch (e) { if (intent && typeof SaveState !== "undefined") SaveState.cancelNewGameIntent(intent); }
+            } catch (e) { if (intent && typeof SaveState !== "undefined") SaveState.cancelNewGameIntent(intent); return false; }
+            });
         });
         $("#story-ended-dismiss").off("click.plStoryEnded").on("click.plStoryEnded", Message.Hide);
     },

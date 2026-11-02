@@ -51,6 +51,7 @@ var EquipmentUI = {
         var forms = {}, candidates = [];
         function allowed(form) {
             if (!AttrCalibrator.dictionaryForm(form)) return false;
+            if (!ActionSynth.learnedFormAllowed(obj.id, form, 'inventory')) return false;
             if (form === ActionSynth.defaultInspectVerb() && ActionSynth.inspectVerbDisabled()) return false;
             if (nested) return form === "take" || form.indexOf("take out of ") === 0;
             if (EquipmentUI.isWorn(obj)) return form === (scopedRemoval ? "drop" : ((obj.attrs || {}).equipmentToggleVerb || "remove")) || form === ActionSynth.defaultInspectVerb();
@@ -93,7 +94,7 @@ var EquipmentUI = {
             var suffix = " " + ref.noun;
             if (command.command && command.command.endsWith(suffix)) add(command.command.slice(0, -suffix.length), true, command);
         });
-        AttrCalibrator.exactFormsFor(obj.id).forEach(function (form) { add(form, true); });
+        AttrCalibrator.learnedFormsFor(obj.id).forEach(function (form) { add(form, true); });
         if (typeof LearnedWords !== "undefined") LearnedWords.candidates(obj.id).forEach(function (c) { add(c.form, c.enter); });
         AttrCalibrator.RPG_VERBS.forEach(function (form) { add(form, false); });
         // D214 U5: wider editable lane, still dictionary-gated by allowed().
@@ -148,7 +149,12 @@ var EquipmentUI = {
         EquipmentUI._holdPointerId = d.pointerId;
         EquipmentUI.cleanupDrag(d);
         candidates.forEach(function (item) {
-            item.Action = function () { EquipmentUI.selectYourselfAction(d.id, item.Form, item.Enter, d.generation, d.moduleKey, item.ScopedCommand); };
+            var descriptor = item.ScopedCommand || { objectId: obj.id, verb: item.Form, command: item.Form + ' ' + Actionable.referenceFor(obj).noun };
+            item.LearnedCommand = Object.assign({}, descriptor, { learnedItemScope: Actionable.learnedItemScopeFor(descriptor, 'inventory') });
+            item.Action = function () {
+                if (item.LearnedCommand.learnedItemScope && !Actionable.radialCommandCurrent(item.LearnedCommand)) return;
+                EquipmentUI.selectYourselfAction(d.id, item.Form, item.Enter, d.generation, d.moduleKey, item.ScopedCommand);
+            };
             item.Command = item.ScopedCommand ? item.ScopedCommand.command : item.Form + " " + Actionable.referenceFor(obj).noun;
             item.Usage = Actionable.usageCount ? Actionable.usageCount(item.Command) : 0;
         });

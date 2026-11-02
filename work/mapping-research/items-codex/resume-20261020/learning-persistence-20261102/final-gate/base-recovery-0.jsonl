@@ -1,0 +1,9 @@
+{"game":"mimesis.z5.js","exits":["east>157","north>177","south>175","west>153"],"marks":["compass rose","west","north","east","south","mimesis plant"],"inv1":[],"inv2":["179:diskette case","184:\"Zork I\"","190:variegated mimesis plant"],"rooms":["151:Living Room","153:Bedroom","157:Kitchen","175:Bathroom","177:Front Hall"]}
+{"game":"praser5.z5.js","exits":[],"marks":["multi-dimensional object"],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"saveprinceton.z8.js","exits":[],"marks":["Library"],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"spirit.z5.js","exits":[],"marks":["the Order"],"inv1":["18:prayer book"],"inv2":["18:prayer book"],"rooms":["20:Monastery Chapel"]}
+{"game":"tatctae.z8.js","exits":["north>26","up>31"],"marks":["Hurriedly stacked pieces of paper","up","north","translocation machine"],"inv1":[],"inv2":[],"rooms":["16:Laboratory","26:Storeroom","31:Roof"]}
+{"game":"thorn.z5.js","exits":["east>36"],"marks":["scotch","chair","fire","Professor Wilkens","shadows","desk","window","east"],"inv1":["35:tumbler of scotch"],"inv2":["35:tumbler of scotch"],"rooms":["27:Professor Wilkens' Study","36:Beside the Road"]}
+{"game":"vampire.z8.js","exits":["south>61","west>90"],"marks":["forest","entrance","ancient black","Huge stone walls","moss","vines","late afternoon sky","forest path","SOUTH","WEST","collapsed archway"],"inv1":[],"inv2":[],"rooms":["42:The Dead Forest","61:A Winding path, deep in the forest","62:Forest Pond","71:A Forest Clearing","90:The Castle Graveyard"]}
+{"game":"weather.z5.js","exits":[],"marks":["cook-out","stream","wooden bridge","hillside"],"inv1":[],"inv2":[],"rooms":["23:Edge Of Meadow"]}
+{"game":"yagwad.z5.js","exits":["up>111"],"marks":[],"inv1":[],"inv2":[],"rooms":[]}

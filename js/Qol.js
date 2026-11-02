@@ -725,9 +725,9 @@ var ParchLockQol = {
         ParchLockQol.OpenRadial(e.clientX, e.clientY, commands, { source: "input" });
     },
 
-    /* D110 pure adaptive-radial ranker. Uncapped usage is authoritative;
-       confidence/source prior and original order only break usage ties. */
-    RankRadialCommands: (commands) => {
+    /* Confirmed item preferences precede usage. Within each tier, retain
+       D110's uncapped usage, source prior and stable original order. */
+    RankRadialCommands: (commands, context) => {
         var ranked = (commands || []).map(function (item, index) {
             var next = Object.assign({}, item);
             var prior = Number(next.Prior != null ? next.Prior : next.Score);
@@ -748,17 +748,27 @@ var ParchLockQol = {
             next.Score = prior;
             next.UsageCount = Number(count) > 0 ? Number(count) : 0;
             next.Usage = bonus;
+            next.LearnedPriority = 0;
+            try {
+                var c = next.LearnedCommand;
+                if (context && ['text', 'inventory'].indexOf(context.source) >= 0 && context.objectId != null &&
+                    c && String(c.objectId) === String(context.objectId) && c.command === next.Command &&
+                    Actionable.learnedItemScopeCurrent(c, c.learnedItemScope && c.learnedItemScope.context) && Actionable.radialCommandCurrent(c)) next.LearnedPriority = 1;
+            } catch (eLearning) {}
             next._radialOriginalIndex = index;
             return next;
         });
         ranked.sort(function (a, b) {
-            return (b.UsageCount - a.UsageCount)
+            return (b.LearnedPriority - a.LearnedPriority)
+                || (b.UsageCount - a.UsageCount)
                 || (b.Prior - a.Prior)
                 || (a._radialOriginalIndex - b._radialOriginalIndex);
         });
-        var maxCount = ranked.length ? ranked[0].UsageCount : 0;
-        var uniqueLeader = maxCount > 0 && ranked.filter(function (item) { return item.UsageCount === maxCount; }).length === 1;
-        ranked.forEach(function (item) { item._usageLeader = uniqueLeader && item.UsageCount === maxCount; });
+        var topTier = ranked.length ? ranked[0].LearnedPriority : 0;
+        var top = ranked.filter(function (item) { return item.LearnedPriority === topTier; });
+        var maxCount = top.reduce(function (n, item) { return Math.max(n, item.UsageCount); }, 0);
+        var uniqueLeader = maxCount > 0 && top.filter(function (item) { return item.UsageCount === maxCount; }).length === 1;
+        ranked.forEach(function (item) { item._usageLeader = uniqueLeader && item.LearnedPriority === topTier && item.UsageCount === maxCount; });
         return ranked;
     },
 
@@ -892,7 +902,7 @@ var ParchLockQol = {
            recomputed before pagination so a new tap can change the next open. */
         // T10: history keeps the order the player typed it in.
         if (context.source !== "tools" && context.source !== "game" && context.source !== "history") {
-            commands = ParchLockQol.RankRadialCommands(commands);
+            commands = ParchLockQol.RankRadialCommands(commands, context);
         }
         var capacity = window.innerWidth < 600 || window.innerHeight < 600 ? 6 : 16;
         if (commands.length > capacity) {

@@ -1,0 +1,3883 @@
+{
+  "phase": "settings",
+  "ts": "2026-11-02T16:53:51.020Z",
+  "tier": "ordinary typed commands in isolated persistent Chromium profile over local HTTP; no game save or VM/state injection",
+  "producerHash": "26319831fc2d9774654762a04240d72ce7bf773a918d9b2af77454e3f08e080d",
+  "pre": {
+    "js/Actionable.js": "4175c62dfd631a5796da5966be2bac114954fe855009c140c600edee19d363fb",
+    "js/ActionSynth.js": "adf403cdeb2d2a9bebdf96dd4d7da512f89facb27ca06df99430bbe4336efda1",
+    "js/AttrCalibrator.js": "14db4bb7873da64a7f422a2b0e21c40dae52f6be7c399a1634ac4633d222db83",
+    "js/AttributeSchema.js": "09ef46f6e0aefe242a243435364c0a9789504183ab8c7af9b7c58376f970aa08",
+    "js/Autocomplete.js": "ff901ee8fa164d61cd1742b6611bc3d44e6c356adbe2d0e0ab629f55e40b7bdf",
+    "js/BufferRevision.js": "5786f00bf1b39e5548c766813d71b2a2e264f7e4cc1c2f190ea66bcf80b85f8f",
+    "js/BufferTapProvider.js": "acfe7f92deb97decdbe6c9f2d99594c92c09ef9909e2ede4aee6d33c7ed0e178",
+    "js/CharKeys.js": "6d9fc8201a88f4e9655cae941a08c2c8d478e051e076f43095f086886b9ea685",
+    "js/Consts.js": "0c3e014242d052d698c1d3828626fcb85450188f9884fa89b52714dde5610510",
+    "js/DarkScope.js": "e8e731e4d5f536040b685b9a8d5bc2fa28196e3c8e1010b308cd3fc7475b76e9",
+    "js/DirectionalRadial.js": "9cfb3b8831a6d120b46429b789691611a94fbf913814c33f38facb0012c01a74",
+    "js/Directions.js": "0fd8408571cfcf72bed1b4ed4c385fb8308beadbbe831b6aa794b86945372d18",
+    "js/EmglkenHost.js": "04a215b7f8bc2207f6983ad970baec99b5f5d1a7e535f2c38174ed4cd0332615",
+    "js/EmglkenProvider.js": "dd29f6578aaad99d69c5e42652815f32e24a21920a609e6ce4d55779d5b79c79",
+    "js/EquipmentUI.js": "fc117f10118b66cbada48bfb22a920d9477b32094af4a41b8cdb45a18e737452",
+    "js/ExitCalibrator.js": "8ecf727db5add7cad94b0705d99352e4df079f25880c9bff04e1a3d0232f5eb1",
+    "js/GameList.js": "1638121054e486571eb11d5d2997fffb40383692bc5c0bc9ff1d55ec644e3bd4",
+    "js/GlkTapProvider.js": "9b08add9e5e9fb3a52d527700fc1e26f0e12eab38b9d318dca0d14f98f702391",
+    "js/Global.js": "a562bc3266c3238cb240281af905a08d6574dbd3e63d219355f0736337aede82",
+    "js/GrammarProvider.js": "02e1f8483939e34f109f19e10518de90fc44402ca99948e41d2d37932d1d4d20",
+    "js/GraphicsDock.js": "aa14da92da3a699aa7b2d08ea2f7b8d5f6afb7902d7bc549b1ae11ab553269dd",
+    "js/HostEmglkenBridge.js": "0eac2f9f1db6ed6a03363cae62ef78871d262708f9c8ee37dda8b0b8dc45a8b8",
+    "js/IconRotation.js": "82be3ccc016926092595149196206777318e7b1f19d8c55d31f70c6e58e32c87",
+    "js/Input.js": "fb6e8616d7c4ac94aaa3180812bfefd523d4a2f93e228a9a272fe947b643d700",
+    "js/LearnedWords.js": "702000be5ea8b20273035c9c3d39ca8a9de13cc88348760caacf49d86585e163",
+    "js/LearningStores.js": "a414a1b175fecf3c7a416cdf82ef83b6b72f15799f4400a19d703ffb99e9e6be",
+    "js/LiveHeapProvider.js": "30816c32a55a52721405132fb02987d80f7fc467f83f90b6eea7035f12465b22",
+    "js/MainMenu.js": "76f36899fccda9e86d972c3e04c993070475b4f8327afd7be7ef5774cc6b34c6",
+    "js/Map.js": "0768890d717842b6100626b539391dbc09523c6628d354a76e46cad2c29c48ed",
+    "js/MapBeautify.js": "3dbd4ab68ac1447ba2f11021647fadd26b315bfee3390affe9307dfeeb06426a",
+    "js/MapIdentity.js": "8b31f7b0abdedf8ea0bc88f5e3221ea0a5bd7fafc1abeee8fb0a3ce8a123f6a9",
+    "js/MapTopology.js": "1754f7a2336557def1007724d2596099ea82a99cb8d655e93e7b535f3fb91fde",
+    "js/Message.js": "4ba168368364c068983021cc53ec6277b825cef1f63840bc89373133dfb66d19",
+    "js/MobileLayout.js": "9efff64a3dbaaf3062da3af51a40188e63951d30744028db909aeded34c125c8",
+    "js/ModuleLibrary.js": "5bee5bd9ecd0df5f1de72e75a2e60b1120cd2d110b0c7de2bca23b3de68b92c4",
+    "js/ModuleStatFacts.js": "5df94a7e23fec8b6b1380054506ae4e358f89357ce83f8debd0bbb6c050399d3",
+    "js/ModuleStatFactsClaude.js": "a8bc41484058bd65a9585d2bc97bdf951907aae63c25fd7151165f65013311a4",
+    "js/Navigator.js": "aa0022e1d565b431bb56e28935c45b293848a93edcaec3102b95ee5e6c26989e",
+    "js/ParchLock.js": "8d12d4adaac10866bd1cbb25aac7cb25cb951c30fde35a0e3c25b0840b7ff010",
+    "js/ProductInfo.js": "669ef7e433dcfc0acb4e72488531aae365e35350ea71eafd5d2bff52f033cbff",
+    "js/PronunciationCatalog.js": "7e5458d4d7c489f03270893eb292de1459d1f2cb4f742e165f2460f3ca409ef4",
+    "js/Qol.js": "b23ee4ca984e6ff177715629d0170952e5e8ceca92bca495a0c35b9fe1c2885a",
+    "js/ReadAloud.js": "5a71ab0d620ffd827022d7286f1f3d6e9e0d0e84e1a2546c50744f0b18e30ee7",
+    "js/RemGlkTapProvider.js": "58a8d751b98d7b572f4622465f92e9a26ad5de00fcb4cbe82d7a2bb23432fc77",
+    "js/SaveState.js": "dc9b85c6baaf6ee9dac62f03c222395b1fbab23a4095c600fa843c098fcc10b6",
+    "js/SemanticActions.js": "db21fb39122af713211340f9bd87af14c1d0f5275fc56d03d34bb65da03f4587",
+    "js/StatTracker.js": "1d2d915a10b3f575c301bce20d6ad480a419ff92df28295d288fde3410f84699",
+    "js/StatusGridDecoder.js": "6b9fb0c4485a6e7908226512f1cd251a30f9bd20169d38dc0a0920b5d4c1ce75",
+    "js/TextGate.js": "b71a7eb6cdca2234cac182b248e57dcbc8985063619901c0032adc9f75e97a6b",
+    "js/Transcript.js": "5cddf48dd101579d8b0ec628f540183a89ae7546aa7b31d4d0555cd6c7fb1c7b",
+    "js/TranslatorUI.js": "5179a83c01e69eea4d6849ee87d942b3ce36d26c9aa9df4915307d0cdae124fd",
+    "js/TurnRecorder.js": "cac4b52ff1190e1f65ac35438ced0531eb171d0b93061290348e29f11110b040",
+    "js/Tutorial.js": "fcbebe25f96d378021d1cb97a696d319d00e8ecc4ffbd43bfe8ac5a72c34efcb",
+    "js/UndoRestoreSync.js": "40dd76d3e72d41b9d90fdd1571f342872edf677634b631d2918c7b10a329b842",
+    "js/VmProbeLoader.js": "39394dbfa280aeeaca03f5ba732fe690b1f4ba35b66f0790bdba437dc61d7fee",
+    "js/WorkspaceUI.js": "ca0566a69e7d78d80cf96c06f3977296de6ef96426c1d9aac1a962e7de2e53c1",
+    "js/WorldMap.js": "71d3c15f05983dc750da1c726ce7ffaa3faf733a53121474b6466e41ed322cbe",
+    "js/WorldMapLayout.js": "42a05712e33c110182148f7e066bdf6f660bca497114d6ea2c67082b48664f11",
+    "js/WorldModel.js": "8dc673cc4559b247b3d16a14f2757c37776283c51e382f1257ed4a993cc88262",
+    "js/ZRamProvider.js": "7cb9a84f7e09585c56652e5bc9c6419dd664d721a760b5a74c139597a128f109",
+    "js/ZRamReader.js": "046ede7fe3d18d640babb1639f8354cea80f44529b461ea848071d3072831d8c",
+    "js/ZvmCapture.js": "d1b2b3f2d65827ae37989ace07fdfc586139f6f635635716e1b09470d41f011d"
+  },
+  "post": {
+    "js/Actionable.js": "4175c62dfd631a5796da5966be2bac114954fe855009c140c600edee19d363fb",
+    "js/ActionSynth.js": "adf403cdeb2d2a9bebdf96dd4d7da512f89facb27ca06df99430bbe4336efda1",
+    "js/AttrCalibrator.js": "14db4bb7873da64a7f422a2b0e21c40dae52f6be7c399a1634ac4633d222db83",
+    "js/AttributeSchema.js": "09ef46f6e0aefe242a243435364c0a9789504183ab8c7af9b7c58376f970aa08",
+    "js/Autocomplete.js": "ff901ee8fa164d61cd1742b6611bc3d44e6c356adbe2d0e0ab629f55e40b7bdf",
+    "js/BufferRevision.js": "5786f00bf1b39e5548c766813d71b2a2e264f7e4cc1c2f190ea66bcf80b85f8f",
+    "js/BufferTapProvider.js": "acfe7f92deb97decdbe6c9f2d99594c92c09ef9909e2ede4aee6d33c7ed0e178",
+    "js/CharKeys.js": "6d9fc8201a88f4e9655cae941a08c2c8d478e051e076f43095f086886b9ea685",
+    "js/Consts.js": "0c3e014242d052d698c1d3828626fcb85450188f9884fa89b52714dde5610510",
+    "js/DarkScope.js": "e8e731e4d5f536040b685b9a8d5bc2fa28196e3c8e1010b308cd3fc7475b76e9",
+    "js/DirectionalRadial.js": "9cfb3b8831a6d120b46429b789691611a94fbf913814c33f38facb0012c01a74",
+    "js/Directions.js": "0fd8408571cfcf72bed1b4ed4c385fb8308beadbbe831b6aa794b86945372d18",
+    "js/EmglkenHost.js": "04a215b7f8bc2207f6983ad970baec99b5f5d1a7e535f2c38174ed4cd0332615",
+    "js/EmglkenProvider.js": "dd29f6578aaad99d69c5e42652815f32e24a21920a609e6ce4d55779d5b79c79",
+    "js/EquipmentUI.js": "fc117f10118b66cbada48bfb22a920d9477b32094af4a41b8cdb45a18e737452",
+    "js/ExitCalibrator.js": "8ecf727db5add7cad94b0705d99352e4df079f25880c9bff04e1a3d0232f5eb1",
+    "js/GameList.js": "1638121054e486571eb11d5d2997fffb40383692bc5c0bc9ff1d55ec644e3bd4",
+    "js/GlkTapProvider.js": "9b08add9e5e9fb3a52d527700fc1e26f0e12eab38b9d318dca0d14f98f702391",
+    "js/Global.js": "a562bc3266c3238cb240281af905a08d6574dbd3e63d219355f0736337aede82",
+    "js/GrammarProvider.js": "02e1f8483939e34f109f19e10518de90fc44402ca99948e41d2d37932d1d4d20",
+    "js/GraphicsDock.js": "aa14da92da3a699aa7b2d08ea2f7b8d5f6afb7902d7bc549b1ae11ab553269dd",
+    "js/HostEmglkenBridge.js": "0eac2f9f1db6ed6a03363cae62ef78871d262708f9c8ee37dda8b0b8dc45a8b8",
+    "js/IconRotation.js": "82be3ccc016926092595149196206777318e7b1f19d8c55d31f70c6e58e32c87",
+    "js/Input.js": "fb6e8616d7c4ac94aaa3180812bfefd523d4a2f93e228a9a272fe947b643d700",
+    "js/LearnedWords.js": "702000be5ea8b20273035c9c3d39ca8a9de13cc88348760caacf49d86585e163",
+    "js/LearningStores.js": "a414a1b175fecf3c7a416cdf82ef83b6b72f15799f4400a19d703ffb99e9e6be",
+    "js/LiveHeapProvider.js": "30816c32a55a52721405132fb02987d80f7fc467f83f90b6eea7035f12465b22",
+    "js/MainMenu.js": "76f36899fccda9e86d972c3e04c993070475b4f8327afd7be7ef5774cc6b34c6",
+    "js/Map.js": "0768890d717842b6100626b539391dbc09523c6628d354a76e46cad2c29c48ed",
+    "js/MapBeautify.js": "3dbd4ab68ac1447ba2f11021647fadd26b315bfee3390affe9307dfeeb06426a",
+    "js/MapIdentity.js": "8b31f7b0abdedf8ea0bc88f5e3221ea0a5bd7fafc1abeee8fb0a3ce8a123f6a9",
+    "js/MapTopology.js": "1754f7a2336557def1007724d2596099ea82a99cb8d655e93e7b535f3fb91fde",
+    "js/Message.js": "4ba168368364c068983021cc53ec6277b825cef1f63840bc89373133dfb66d19",
+    "js/MobileLayout.js": "9efff64a3dbaaf3062da3af51a40188e63951d30744028db909aeded34c125c8",
+    "js/ModuleLibrary.js": "5bee5bd9ecd0df5f1de72e75a2e60b1120cd2d110b0c7de2bca23b3de68b92c4",
+    "js/ModuleStatFacts.js": "5df94a7e23fec8b6b1380054506ae4e358f89357ce83f8debd0bbb6c050399d3",
+    "js/ModuleStatFactsClaude.js": "a8bc41484058bd65a9585d2bc97bdf951907aae63c25fd7151165f65013311a4",
+    "js/Navigator.js": "aa0022e1d565b431bb56e28935c45b293848a93edcaec3102b95ee5e6c26989e",
+    "js/ParchLock.js": "8d12d4adaac10866bd1cbb25aac7cb25cb951c30fde35a0e3c25b0840b7ff010",
+    "js/ProductInfo.js": "669ef7e433dcfc0acb4e72488531aae365e35350ea71eafd5d2bff52f033cbff",
+    "js/PronunciationCatalog.js": "7e5458d4d7c489f03270893eb292de1459d1f2cb4f742e165f2460f3ca409ef4",
+    "js/Qol.js": "b23ee4ca984e6ff177715629d0170952e5e8ceca92bca495a0c35b9fe1c2885a",
+    "js/ReadAloud.js": "5a71ab0d620ffd827022d7286f1f3d6e9e0d0e84e1a2546c50744f0b18e30ee7",
+    "js/RemGlkTapProvider.js": "58a8d751b98d7b572f4622465f92e9a26ad5de00fcb4cbe82d7a2bb23432fc77",
+    "js/SaveState.js": "dc9b85c6baaf6ee9dac62f03c222395b1fbab23a4095c600fa843c098fcc10b6",
+    "js/SemanticActions.js": "db21fb39122af713211340f9bd87af14c1d0f5275fc56d03d34bb65da03f4587",
+    "js/StatTracker.js": "1d2d915a10b3f575c301bce20d6ad480a419ff92df28295d288fde3410f84699",
+    "js/StatusGridDecoder.js": "6b9fb0c4485a6e7908226512f1cd251a30f9bd20169d38dc0a0920b5d4c1ce75",
+    "js/TextGate.js": "b71a7eb6cdca2234cac182b248e57dcbc8985063619901c0032adc9f75e97a6b",
+    "js/Transcript.js": "5cddf48dd101579d8b0ec628f540183a89ae7546aa7b31d4d0555cd6c7fb1c7b",
+    "js/TranslatorUI.js": "5179a83c01e69eea4d6849ee87d942b3ce36d26c9aa9df4915307d0cdae124fd",
+    "js/TurnRecorder.js": "cac4b52ff1190e1f65ac35438ced0531eb171d0b93061290348e29f11110b040",
+    "js/Tutorial.js": "fcbebe25f96d378021d1cb97a696d319d00e8ecc4ffbd43bfe8ac5a72c34efcb",
+    "js/UndoRestoreSync.js": "40dd76d3e72d41b9d90fdd1571f342872edf677634b631d2918c7b10a329b842",
+    "js/VmProbeLoader.js": "39394dbfa280aeeaca03f5ba732fe690b1f4ba35b66f0790bdba437dc61d7fee",
+    "js/WorkspaceUI.js": "ca0566a69e7d78d80cf96c06f3977296de6ef96426c1d9aac1a962e7de2e53c1",
+    "js/WorldMap.js": "71d3c15f05983dc750da1c726ce7ffaa3faf733a53121474b6466e41ed322cbe",
+    "js/WorldMapLayout.js": "42a05712e33c110182148f7e066bdf6f660bca497114d6ea2c67082b48664f11",
+    "js/WorldModel.js": "8dc673cc4559b247b3d16a14f2757c37776283c51e382f1257ed4a993cc88262",
+    "js/ZRamProvider.js": "7cb9a84f7e09585c56652e5bc9c6419dd664d721a760b5a74c139597a128f109",
+    "js/ZRamReader.js": "046ede7fe3d18d640babb1639f8354cea80f44529b461ea848071d3072831d8c",
+    "js/ZvmCapture.js": "d1b2b3f2d65827ae37989ace07fdfc586139f6f635635716e1b09470d41f011d"
+  },
+  "events": [],
+  "rows": [
+    {
+      "stage": "boot",
+      "state": {
+        "text": "         \n \n \n         [Press SPACE to begin.]\n  ",
+        "lineInput": false,
+        "charInput": true,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": null,
+        "objectCommands": [],
+        "yourselfCommands": [],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793638093697,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 3,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzht1dfa4111umpkm:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": 1,
+            "confirmedSlots": [
+              1,
+              26,
+              27,
+              30
+            ],
+            "stableFor": 1
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793638093697,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 3,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzht1dfa4111umpkm:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": 1,
+            "confirmedSlots": [
+              1,
+              26,
+              27,
+              30
+            ],
+            "stableFor": 1
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "wordStored": {
+          "version": 1,
+          "gameIdentityKey": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+          "rows": {
+            "exact:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "allowed:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "exact:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "exact:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            }
+          }
+        },
+        "projection": {},
+        "pending": 0,
+        "storageError": null,
+        "room": 113,
+        "inventory": [
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "native-start-space",
+      "state": {
+        "text": "Do you want to RESTORE a saved game? ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": null,
+        "objectCommands": [],
+        "yourselfCommands": [],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793638093697,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 3,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzht1dfa4111umpkm:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": 1,
+            "confirmedSlots": [
+              1,
+              26,
+              27,
+              30
+            ],
+            "stableFor": 1
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793638093697,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 3,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzht1dfa4111umpkm:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": 1,
+            "confirmedSlots": [
+              1,
+              26,
+              27,
+              30
+            ],
+            "stableFor": 1
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "wordStored": {
+          "version": 1,
+          "gameIdentityKey": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+          "rows": {
+            "exact:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "allowed:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "exact:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "exact:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            }
+          }
+        },
+        "projection": {},
+        "pending": 0,
+        "storageError": null,
+        "room": 113,
+        "inventory": [
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "no",
+      "state": {
+        "text": "Adventure in Humongous Cave\nDavid Malmberg's AGT version of \"Adventure\" \nwith some \"extra added\" features \nPorted to Inform By Al Golden \nLast Compiled On: 12/02/05 \nType \"HELP\" for HelpMenu \"CAVEHELP\" when underground\n \nRelease 1 / Serial number 000001 / Inform v6.30 Library 6/11 \n \nSomewhere nearby is Humongous Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. The object of the game is for you to explore the cave and return (safely) with as much treasure as possible. The cave is a mysterious and magical place. You will face many puzzling and perilous challenges as you explore.\n \nEnd of Road\nYou are standing at the end of a road before a small brick building.\nAround you is a forest. A small stream flows out of the building through a pair of one-foot pipes and down a gully to the south. Next to the door of the building, there is a faded sign.\n \nThere is an order form here.\n \n> ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": null,
+        "objectCommands": [],
+        "yourselfCommands": [],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793638093697,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 3,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzht1dfa4111umpkm:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": 1,
+            "confirmedSlots": [
+              1,
+              26,
+              27,
+              30
+            ],
+            "stableFor": 2
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793638093697,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 3,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzht1dfa4111umpkm:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": 1,
+            "confirmedSlots": [
+              1,
+              26,
+              27,
+              30
+            ],
+            "stableFor": 2
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "wordStored": {
+          "version": 1,
+          "gameIdentityKey": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+          "rows": {
+            "exact:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "allowed:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "exact:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "exact:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            }
+          }
+        },
+        "projection": {},
+        "pending": 0,
+        "storageError": null,
+        "room": 113,
+        "inventory": [
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "east",
+      "state": {
+        "text": "Adventure in Humongous Cave\nDavid Malmberg's AGT version of \"Adventure\" \nwith some \"extra added\" features \nPorted to Inform By Al Golden \nLast Compiled On: 12/02/05 \nType \"HELP\" for HelpMenu \"CAVEHELP\" when underground\n \nRelease 1 / Serial number 000001 / Inform v6.30 Library 6/11 \n \nSomewhere nearby is Humongous Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. The object of the game is for you to explore the cave and return (safely) with as much treasure as possible. The cave is a mysterious and magical place. You will face many puzzling and perilous challenges as you explore.\n \nEnd of Road\nYou are standing at the end of a road before a small brick building.\nAround you is a forest. A small stream flows out of the building through a pair of one-foot pipes and down a gully to the south. Next to the door of the building, there is a faded sign.\n \nThere is an order form here.\n \n>east\n \nInside Building\nYou are inside a small building, a well house for a large spring. The stream bubbles up out of the ground and flows out the side of the building through a pair of 1 foot diameter sewer pipes. The word \"THURB\" has been painted on one of the pipes. There is a doorway in the middle of the north wall. A huge steel safe has been installed into the brick wall on the east wall.\n \nThe safe door is locked.\nA large grandfather clock stands against the wall.\nThere are some old, ugly, dirty tennis shoes here.\nA Boy-Scout compass is lying nearby\nThere are several iron keys on the ground here.\nThere is a shiny brass lamp nearby. It is off.\nThere is some tasty food here.\nThere is a small bottle of water here.\nThere is a cloak made from a heavy metallic fabric here.\nThere is a sign here.\n \n \n> ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": {
+          "id": 135,
+          "name": "brass lamp",
+          "parentId": 127,
+          "attrs": {
+            "animate": false,
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": false,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "lockable": false,
+            "locked": false,
+            "moved": false,
+            "on": false,
+            "open": false,
+            "isOpen": false,
+            "openable": false,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "transparent": false,
+            "visited": false,
+            "workflag": false,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "takeable": true
+          },
+          "aliases": [
+            "lantern",
+            "lamp",
+            "light",
+            "brass"
+          ],
+          "confidence": 0.85,
+          "discovered": true,
+          "displayName": "brass lamp"
+        },
+        "objectCommands": [
+          {
+            "command": "examine lamp",
+            "verb": "examine"
+          },
+          {
+            "command": "light lamp",
+            "verb": "light"
+          },
+          {
+            "command": "douse lamp",
+            "verb": "douse"
+          },
+          {
+            "command": "drop lamp",
+            "verb": "drop"
+          },
+          {
+            "command": "give lamp to ",
+            "verb": "give to"
+          },
+          {
+            "command": "put lamp in ",
+            "verb": "put in"
+          }
+        ],
+        "yourselfCommands": [
+          {
+            "form": "take",
+            "enter": true
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793638093697,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 3,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzht1dfa4111umpkm:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": 1,
+            "confirmedSlots": [
+              1,
+              26,
+              27,
+              30
+            ],
+            "stableFor": 2
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793638093697,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 3,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzht1dfa4111umpkm:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 3,
+                "returns": 2,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": 1,
+            "confirmedSlots": [
+              1,
+              26,
+              27,
+              30
+            ],
+            "stableFor": 2
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "wordStored": {
+          "version": 1,
+          "gameIdentityKey": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+          "rows": {
+            "exact:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "allowed:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "exact:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "exact:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            }
+          }
+        },
+        "projection": {},
+        "pending": 0,
+        "storageError": null,
+        "room": 127,
+        "inventory": [
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "take lamp",
+      "state": {
+        "text": "Adventure in Humongous Cave\nDavid Malmberg's AGT version of \"Adventure\" \nwith some \"extra added\" features \nPorted to Inform By Al Golden \nLast Compiled On: 12/02/05 \nType \"HELP\" for HelpMenu \"CAVEHELP\" when underground\n \nRelease 1 / Serial number 000001 / Inform v6.30 Library 6/11 \n \nSomewhere nearby is Humongous Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. The object of the game is for you to explore the cave and return (safely) with as much treasure as possible. The cave is a mysterious and magical place. You will face many puzzling and perilous challenges as you explore.\n \nEnd of Road\nYou are standing at the end of a road before a small brick building.\nAround you is a forest. A small stream flows out of the building through a pair of one-foot pipes and down a gully to the south. Next to the door of the building, there is a faded sign.\n \nThere is an order form here.\n \n>east\n \nInside Building\nYou are inside a small building, a well house for a large spring. The stream bubbles up out of the ground and flows out the side of the building through a pair of 1 foot diameter sewer pipes. The word \"THURB\" has been painted on one of the pipes. There is a doorway in the middle of the north wall. A huge steel safe has been installed into the brick wall on the east wall.\n \nThe safe door is locked.\nA large grandfather clock stands against the wall.\nThere are some old, ugly, dirty tennis shoes here.\nA Boy-Scout compass is lying nearby\nThere are several iron keys on the ground here.\nThere is a shiny brass lamp nearby. It is off.\nThere is some tasty food here.\nThere is a small bottle of water here.\nThere is a cloak made from a heavy metallic fabric here.\nThere is a sign here.\n \n \n>take lamp\nYou take the the brass lamp.\n \n> ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": {
+          "id": 135,
+          "name": "brass lamp",
+          "parentId": 20,
+          "attrs": {
+            "animate": false,
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": false,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "lockable": false,
+            "locked": false,
+            "moved": true,
+            "on": false,
+            "open": false,
+            "isOpen": false,
+            "openable": false,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "transparent": false,
+            "visited": false,
+            "workflag": false,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "takeable": true
+          },
+          "aliases": [
+            "lantern",
+            "lamp",
+            "light",
+            "brass"
+          ],
+          "confidence": 0.9,
+          "discovered": true,
+          "displayName": "brass lamp"
+        },
+        "objectCommands": [
+          {
+            "command": "examine lamp",
+            "verb": "examine"
+          },
+          {
+            "command": "light lamp",
+            "verb": "light"
+          },
+          {
+            "command": "douse lamp",
+            "verb": "douse"
+          },
+          {
+            "command": "drop lamp",
+            "verb": "drop"
+          },
+          {
+            "command": "give lamp to ",
+            "verb": "give to"
+          },
+          {
+            "command": "put lamp in ",
+            "verb": "put in"
+          }
+        ],
+        "yourselfCommands": [
+          {
+            "form": "examine",
+            "enter": true
+          },
+          {
+            "form": "light",
+            "enter": true
+          },
+          {
+            "form": "douse",
+            "enter": true
+          },
+          {
+            "form": "drop",
+            "enter": true
+          },
+          {
+            "form": "wear",
+            "enter": false
+          },
+          {
+            "form": "eat",
+            "enter": false
+          },
+          {
+            "form": "drink",
+            "enter": false
+          },
+          {
+            "form": "extinguish",
+            "enter": false
+          },
+          {
+            "form": "turn on",
+            "enter": false
+          },
+          {
+            "form": "turn off",
+            "enter": false
+          },
+          {
+            "form": "switch on",
+            "enter": false
+          },
+          {
+            "form": "switch off",
+            "enter": false
+          },
+          {
+            "form": "hold",
+            "enter": false
+          },
+          {
+            "form": "wave",
+            "enter": false
+          },
+          {
+            "form": "throw",
+            "enter": false
+          },
+          {
+            "form": "read",
+            "enter": false
+          },
+          {
+            "form": "open",
+            "enter": false
+          },
+          {
+            "form": "close",
+            "enter": false
+          },
+          {
+            "form": "search",
+            "enter": false
+          },
+          {
+            "form": "look in",
+            "enter": false
+          },
+          {
+            "form": "clean",
+            "enter": false
+          },
+          {
+            "form": "rub",
+            "enter": false
+          },
+          {
+            "form": "squeeze",
+            "enter": false
+          },
+          {
+            "form": "push",
+            "enter": false
+          },
+          {
+            "form": "smell",
+            "enter": false
+          },
+          {
+            "form": "taste",
+            "enter": false
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793638428126,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 4,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzi07i7khuqmi7xtth:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": 1,
+            "confirmedSlots": [
+              1,
+              26,
+              27,
+              30
+            ],
+            "stableFor": 4
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793638428126,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 4,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzi07i7khuqmi7xtth:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": 1,
+            "confirmedSlots": [
+              1,
+              26,
+              27,
+              30
+            ],
+            "stableFor": 4
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "wordStored": {
+          "version": 1,
+          "gameIdentityKey": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+          "rows": {
+            "exact:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "allowed:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "exact:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "exact:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            }
+          }
+        },
+        "projection": {
+          "exact:135:take": {
+            "id": "exact:135:take",
+            "objectId": "135",
+            "form": "take",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          }
+        },
+        "pending": 0,
+        "storageError": null,
+        "room": 127,
+        "inventory": [
+          {
+            "id": 135,
+            "name": "brass lamp",
+            "parent": 20
+          },
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "existing-learned-settings",
+      "options": {
+        "text": "Learned words\nChoose the labels shown in your editor, and erase what was learned for stories you uninstalled\nEdit Learned Words\nStory actions · labels only\nNames · display labels only\nStatus labels · display text only\nCheck learned data for uninstalled storiesErase learned data for uninstalled storiesCheck to find learned data from uninstalled stories. Learned data: about 88.1 KB (UTF-16 estimate). 0 erasable, 4 kept for installed stories, 0 unknown, 0 unmanaged.",
+        "checkboxes": [
+          {
+            "text": "Edit Learned Words",
+            "checked": true
+          },
+          {
+            "text": "Story actions · labels only",
+            "checked": false
+          },
+          {
+            "text": "Names · display labels only",
+            "checked": false
+          },
+          {
+            "text": "Status labels · display text only",
+            "checked": true
+          }
+        ],
+        "buttons": [
+          {
+            "text": "Check learned data for uninstalled stories",
+            "disabled": false
+          },
+          {
+            "text": "Erase learned data for uninstalled stories",
+            "disabled": true
+          }
+        ],
+        "tracking": {
+          "ok": true,
+          "reason": "",
+          "candidates": [],
+          "removable": 0,
+          "installed": 4,
+          "unknown": 0,
+          "unmanaged": 0,
+          "bytes": 90658,
+          "byModule": {
+            "games/HugeCave.z8.js": 90658
+          },
+          "revision": 0,
+          "signature": "[[\"games/905.z5.js\",\"games/AOTYRZ.z5.js\",\"games/Accuse.zblorb.js\",\"games/Advent.z5.js\",\"games/Adventureland.z5.js\",\"games/Alabaster.gblorb.js\",\"games/AllRoads.z5.js\",\"games/AndromedaApocalypse.gblorb.js\",\"games/Aug4.z8.js\",\"games/Balances.z5.js\",\"games/Ballyhoo.z3.js\",\"games/BeingAndrewPlotkin.zblorb.js\",\"games/BeingSteve.zblorb.js\",\"games/BibleRetold.z5.js\",\"games/Biscuit.z5.js\",\"games/BlueLacuna.gblorb.js\",\"games/Borderzo.z5.js\",\"games/Bronze.zblorb.js\",\"games/CatcherInTheRye.zblorb.js\",\"games/ChildsPlay.zblorb.js\",\"games/ConanKillEverything.z5.js\",\"games/CosmoServe.gblorb.js\",\"games/CounterfeitMonkey.gblorb.js\",\"games/Cove.z5.js\",\"games/CragneManor.gblorb.js\",\"games/CtDoom.z5.js\",\"games/Cutthroats.z3.js\",\"games/Cyclops.z5.js\",\"games/DDIV.z5.js\",\"games/Damnatio-Memoriae.zblorb.js\",\"games/Deadline.z3.js\",\"games/Debate.z5.js\",\"games/Delusns.z5.js\",\"games/DreamTooReal.zblorb.js\",\"games/Enchanter.z3.js\",\"games/Enemies.z8.js\",\"games/FFF.z5.js\",\"games/Facility.z8.js\",\"games/Figaro.zblorb.js\",\"games/FineTune.z8.js\",\"games/Fork.z5.js\",\"games/Galatea.zblorb.js\",\"games/Glass.zblorb.js\",\"games/GreatXavio.z5.js\",\"games/Grooverland.gblorb.js\",\"games/Gumshoe.z5.js\",\"games/Heliopause.zblorb.js\",\"games/Help.z8.js\",\"games/Heroine.z8.js\",\"games/Hitchhik.z5.js\",\"games/HollywoodHijinx.z3.js\",\"games/HouseOfDreamOfMoon.z8.js\",\"games/HugeCave.z8.js\",\"games/I-0.z5.js\",\"games/Inevita.z5.js\",\"games/Infidel.z3.js\",\"games/Informat.z5.js\",\"games/Jigsaw.z8.js\",\"games/KoA.z5.js\",\"games/LASH.z8.js\",\"games/LDoDoom.z5.js\",\"games/LLR3.z8.js\",\"games/LeatherGoddessesofPhobos.z3.js\",\"games/LostPig.z8.js\",\"games/MakeItGood.zblorb.js\",\"games/Mask.z5.js\",\"games/Mercy.z5.js\",\"games/Mobius.zblorb.js\",\"games/Moonmist.z3.js\",\"games/Mulldoon.z8.js\",\"games/Mullmurd.z5.js\",\"games/NightBeforeChristmas.zblorb.js\",\"games/PUTPBAA.z5.js\",\"games/PataNoir.gblorb.js\",\"games/Peacock.z5.js\",\"games/PerrysWorld.zblorb.js\",\"games/Photograph.zblorb.js\",\"games/Planetfall.z3.js\",\"games/PlunderedHearts.z3.js\",\"games/Primrose.zblorb.js\",\"games/RBD.z8.js\",\"games/Ralph.z5.js\",\"games/Relief.z5.js\",\"games/RoTA.zblorb.js\",\"games/RobinAndOrchid.gblorb.js\",\"games/RoversDayOut.gblorb.js\",\"games/RtDoom.z5.js\",\"games/Savoir-Faire.zblorb.js\",\"games/School.z5.js\",\"games/ScrollThief.gblorb.js\",\"games/Seastalker.z3.js\",\"games/ShadowOfMemories.zblorb.js\",\"games/ShadowSoldiers.zblorb.js\",\"games/Shapes.z5.js\",\"games/Sherlock.z5.js\",\"games/Slackerx.z5.js\",\"games/SoFar.z8.js\",\"games/Somewhere.z5.js\",\"games/Sorcerer.z3.js\",\"games/SpAdventure.z5.js\",\"games/Spellbreaker.z3.js\",\"games/Starcross.z3.js\",\"games/Stationfall.z3.js\",\"games/Sushi.zblorb.js\",\"games/Suspect.z3.js\",\"games/Suspended.z3.js\",\"games/Swineback.z5.js\",\"games/TCOTY.zblorb.js\",\"games/Tangle.z5.js\",\"games/TheLurkingHorror.z3.js\",\"games/TheWarblersNest.zblorb.js\",\"games/TheWitness.z3.js\",\"games/Tokyo2.z5.js\",\"games/TreasuresofaSlaversKingdom.z8.js\",\"games/Vacation.z5.js\",\"games/Wallpaper.zblorb.js\",\"games/WiR1.zblorb.js\",\"games/WiR2.zblorb.js\",\"games/Wishbringer.z3.js\",\"games/Zork1-TheGreatUndergroundEmpire.z3.js\",\"games/Zork2-TheWizardofFrobozz.z3.js\",\"games/Zork3-TheDungeonMaster.z3.js\",\"games/acorncourt.z5.js\",\"games/adverbum.z5.js\",\"games/alice3.z5.js\",\"games/amish.z5.js\",\"games/amiss.z5.js\",\"games/anchor.z8.js\",\"games/annoy.z5.js\",\"games/appall.z5.js\",\"games/awaken.z5.js\",\"games/ayac.z5.js\",\"games/b2demo.z5.js\",\"games/ballerina102.z8.js\",\"games/baron_EN.z8.js\",\"games/bear.z5.js\",\"games/bedlam.z5.js\",\"games/beneath.z5.js\",\"games/bj.z5.js\",\"games/blair.z5.js\",\"games/bluechairs.z5.js\",\"games/blues.z5.js\",\"games/bofh.z5.js\",\"games/bookvol.z5.js\",\"games/booth.z5.js\",\"games/boothdye.z5.js\",\"games/break-in.z5.js\",\"games/bse.z5.js\",\"games/building.z5.js\",\"games/bunny.z5.js\",\"games/burglar.z5.js\",\"games/cabal.z5.js\",\"games/candy.z5.js\",\"games/catseye.z3.js\",\"games/causality.z5.js\",\"games/cavern.z5.js\",\"games/change.z5.js\",\"games/cheater.z5.js\",\"games/cheeseshop.z5.js\",\"games/chico.z5.js\",\"games/chix.z5.js\",\"games/cia.z5.js\",\"games/claw.z5.js\",\"games/csbb.z8.js\",\"games/curses.z5.js\",\"games/curves.z8.js\",\"games/cycles.z5.js\",\"games/deadreck.z5.js\",\"games/death.z5.js\",\"games/deephome.z5.js\",\"games/degen.z5.js\",\"games/dejavu.z3.js\",\"games/detective.z5.js\",\"games/devdoit.z5.js\",\"games/devours.z5.js\",\"games/dewdrops.z5.js\",\"games/djinni.z5.js\",\"games/dogslife.z5.js\",\"games/doll.z5.js\",\"games/dreamhold.z8.js\",\"games/dumont.z5.js\",\"games/edifice.z5.js\",\"games/enter.z5.js\",\"games/eric_dm.z5.js\",\"games/escape.zblorb.js\",\"games/eto.z5.js\",\"games/f209.z5.js\",\"games/fable.z5.js\",\"games/faculty.zblorb.js\",\"games/farm.z5.js\",\"games/forms.z5.js\",\"games/fracture.z5.js\",\"games/frozen.z5.js\",\"games/gamlet.z5.js\",\"games/gardening.zblorb.js\",\"games/geb.z5.js\",\"games/ghost.z8.js\",\"games/godot.z5.js\",\"games/gostak.z5.js\",\"games/gourmet.zblorb.js\",\"games/guess.z5.js\",\"games/gussdeath.z3.js\",\"games/heist.z8.js\",\"games/housekey1.z5.js\",\"games/huntdark.z5.js\",\"games/identity.z5.js\",\"games/inhumane.z5.js\",\"games/insight.z5.js\",\"games/jet.z8.js\",\"games/karn.z5.js\",\"games/kirby.z5.js\",\"games/kooku.z5.js\",\"games/lambs.z5.js\",\"games/lambs2.z5.js\",\"games/largemac.z5.js\",\"games/library.z5.js\",\"games/limp.z5.js\",\"games/lists.z5.js\",\"games/loose.z5.js\",\"games/lost.z5.js\",\"games/ludicorp.z5.js\",\"games/magic-toyshop.z5.js\",\"games/mary.z5.js\",\"games/medusa.z5.js\",\"games/metamorp.z5.js\",\"games/mhpquest.z5.js\",\"games/mimesis.z5.js\",\"games/mindelec.z5.js\",\"games/minster.z5.js\",\"games/moonglow.z3.js\",\"games/muse.z5.js\",\"games/musician.z8.js\",\"games/newday.z5.js\",\"games/night.z5.js\",\"games/ninepts.z5.js\",\"games/njag2.z5.js\",\"games/noroom.z5.js\",\"games/oad.z5.js\",\"games/omniquest.z5.js\",\"games/orevore.z8.js\",\"games/orion.z5.js\",\"games/pad.z5.js\",\"games/paperchase.z5.js\",\"games/parallel.z5.js\",\"games/pentari.z5.js\",\"games/permagic.z5.js\",\"games/phlegm.z5.js\",\"games/photopia.z5.js\",\"games/piece_v3.z5.js\",\"games/praser5.z5.js\",\"games/punkpnts.z5.js\",\"games/rameses.zblorb.js\",\"games/reser.z5.js\",\"games/reverb.z5.js\",\"games/ribbons.z5.js\",\"games/risorg.z8.js\",\"games/samhain.z5.js\",\"games/saveprinceton.z8.js\",\"games/schooldays.z5.js\",\"games/selection.z5.js\",\"games/sgate.z5.js\",\"games/shade.z5.js\",\"games/sherbet.z5.js\",\"games/solitary.z5.js\",\"games/spacest2.z5.js\",\"games/spirit.z5.js\",\"games/sporkery1.z5.js\",\"games/spot.z5.js\",\"games/spring.z8.js\",\"games/stiffmst.z5.js\",\"games/sutwin.z5.js\",\"games/suvehnux.z5.js\",\"games/sycamora.z5.js\",\"games/tatctae.z8.js\",\"games/teacher.z5.js\",\"games/tell.z5.js\",\"games/temple.z5.js\",\"games/terror_tabby.z5.js\",\"games/tess.z5.js\",\"games/theatre.z5.js\",\"games/thegreat.z5.js\",\"games/thorn.z5.js\",\"games/tirehoax.zblorb.js\",\"games/tk1.z5.js\",\"games/troll.z5.js\",\"games/tryst205.z5.js\",\"games/tube.z5.js\",\"games/uhoh-demo.z5.js\",\"games/under.z5.js\",\"games/vampire.z8.js\",\"games/vespers.z8.js\",\"games/vgame.z8.js\",\"games/vindaloo.z5.js\",\"games/vision.z5.js\",\"games/visitor.z5.js\",\"games/wadewar3.z5.js\",\"games/warp.z5.js\",\"games/weather.z5.js\",\"games/wedding.z5.js\",\"games/weirdness.z5.js\",\"games/whispers.z5.js\",\"games/windhal1.z8.js\",\"games/wireless.z5.js\",\"games/wossname.z5.js\",\"games/wump2ka.z5.js\",\"games/yagwad.z5.js\",\"games/zdungeon.z5.js\",\"games/zenon.z5.js\",\"games/ztuu.z5.js\"],[\"570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e\"],308,{\"digest\":\"570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e\",\"path\":\"games/HugeCave.z8.js\"},0]"
+        }
+      },
+      "state": {
+        "text": "Adventure in Humongous Cave\nDavid Malmberg's AGT version of \"Adventure\" \nwith some \"extra added\" features \nPorted to Inform By Al Golden \nLast Compiled On: 12/02/05 \nType \"HELP\" for HelpMenu \"CAVEHELP\" when underground\n \nRelease 1 / Serial number 000001 / Inform v6.30 Library 6/11 \n \nSomewhere nearby is Humongous Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. The object of the game is for you to explore the cave and return (safely) with as much treasure as possible. The cave is a mysterious and magical place. You will face many puzzling and perilous challenges as you explore.\n \nEnd of Road\nYou are standing at the end of a road before a small brick building.\nAround you is a forest. A small stream flows out of the building through a pair of one-foot pipes and down a gully to the south. Next to the door of the building, there is a faded sign.\n \nThere is an order form here.\n \n>east\n \nInside Building\nYou are inside a small building, a well house for a large spring. The stream bubbles up out of the ground and flows out the side of the building through a pair of 1 foot diameter sewer pipes. The word \"THURB\" has been painted on one of the pipes. There is a doorway in the middle of the north wall. A huge steel safe has been installed into the brick wall on the east wall.\n \nThe safe door is locked.\nA large grandfather clock stands against the wall.\nThere are some old, ugly, dirty tennis shoes here.\nA Boy-Scout compass is lying nearby\nThere are several iron keys on the ground here.\nThere is a shiny brass lamp nearby. It is off.\nThere is some tasty food here.\nThere is a small bottle of water here.\nThere is a cloak made from a heavy metallic fabric here.\nThere is a sign here.\n \n \n>take lamp\nYou take the the brass lamp.\n \n> ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": {
+          "id": 135,
+          "name": "brass lamp",
+          "parentId": 20,
+          "attrs": {
+            "animate": false,
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": false,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "lockable": false,
+            "locked": false,
+            "moved": true,
+            "on": false,
+            "open": false,
+            "isOpen": false,
+            "openable": false,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "transparent": false,
+            "visited": false,
+            "workflag": false,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "takeable": true
+          },
+          "aliases": [
+            "lantern",
+            "lamp",
+            "light",
+            "brass"
+          ],
+          "confidence": 0.9,
+          "discovered": true,
+          "displayName": "brass lamp"
+        },
+        "objectCommands": [
+          {
+            "command": "examine lamp",
+            "verb": "examine"
+          },
+          {
+            "command": "light lamp",
+            "verb": "light"
+          },
+          {
+            "command": "douse lamp",
+            "verb": "douse"
+          },
+          {
+            "command": "drop lamp",
+            "verb": "drop"
+          },
+          {
+            "command": "give lamp to ",
+            "verb": "give to"
+          },
+          {
+            "command": "put lamp in ",
+            "verb": "put in"
+          }
+        ],
+        "yourselfCommands": [
+          {
+            "form": "examine",
+            "enter": true
+          },
+          {
+            "form": "light",
+            "enter": true
+          },
+          {
+            "form": "douse",
+            "enter": true
+          },
+          {
+            "form": "drop",
+            "enter": true
+          },
+          {
+            "form": "wear",
+            "enter": false
+          },
+          {
+            "form": "eat",
+            "enter": false
+          },
+          {
+            "form": "drink",
+            "enter": false
+          },
+          {
+            "form": "extinguish",
+            "enter": false
+          },
+          {
+            "form": "turn on",
+            "enter": false
+          },
+          {
+            "form": "turn off",
+            "enter": false
+          },
+          {
+            "form": "switch on",
+            "enter": false
+          },
+          {
+            "form": "switch off",
+            "enter": false
+          },
+          {
+            "form": "hold",
+            "enter": false
+          },
+          {
+            "form": "wave",
+            "enter": false
+          },
+          {
+            "form": "throw",
+            "enter": false
+          },
+          {
+            "form": "read",
+            "enter": false
+          },
+          {
+            "form": "open",
+            "enter": false
+          },
+          {
+            "form": "close",
+            "enter": false
+          },
+          {
+            "form": "search",
+            "enter": false
+          },
+          {
+            "form": "look in",
+            "enter": false
+          },
+          {
+            "form": "clean",
+            "enter": false
+          },
+          {
+            "form": "rub",
+            "enter": false
+          },
+          {
+            "form": "squeeze",
+            "enter": false
+          },
+          {
+            "form": "push",
+            "enter": false
+          },
+          {
+            "form": "smell",
+            "enter": false
+          },
+          {
+            "form": "taste",
+            "enter": false
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793638428126,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 4,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzi07i7khuqmi7xtth:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": 1,
+            "confirmedSlots": [
+              1,
+              26,
+              27,
+              30
+            ],
+            "stableFor": 4
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793638428126,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 4,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzi07i7khuqmi7xtth:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": 1,
+            "confirmedSlots": [
+              1,
+              26,
+              27,
+              30
+            ],
+            "stableFor": 4
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "wordStored": {
+          "version": 1,
+          "gameIdentityKey": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+          "rows": {
+            "exact:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "allowed:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "exact:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "exact:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            }
+          }
+        },
+        "projection": {
+          "exact:135:take": {
+            "id": "exact:135:take",
+            "objectId": "135",
+            "form": "take",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          }
+        },
+        "pending": 0,
+        "storageError": null,
+        "room": 127,
+        "inventory": [
+          {
+            "id": 135,
+            "name": "brass lamp",
+            "parent": 20
+          },
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "existing-learned-editor",
+      "editor": {
+        "records": [
+          {
+            "id": "exact:135:light",
+            "type": "exact",
+            "objectId": "135",
+            "trigger": "light",
+            "original": "light",
+            "label": "Light",
+            "destination": "Radial menu",
+            "section": "learned",
+            "item": "brass lamp · instance 2",
+            "state": "Remembered",
+            "evidence": "{\"digest\":\"570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e\",\"observations\":2,\"source\":\"remembered-item-preference\",\"submissionId\":\"mvzhbkc77sak7qazobr:6\",\"outcome\":\"response-observed\",\"confirmations\":2}",
+            "editable": true
+          },
+          {
+            "id": "exact:135:douse",
+            "type": "exact",
+            "objectId": "135",
+            "trigger": "douse",
+            "original": "douse",
+            "label": "Douse",
+            "destination": "Radial menu",
+            "section": "learned",
+            "item": "brass lamp · instance 2",
+            "state": "Remembered",
+            "evidence": "{\"digest\":\"570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e\",\"observations\":2,\"source\":\"remembered-item-preference\",\"submissionId\":\"mvzhbkc77sak7qazobr:7\",\"outcome\":\"response-observed\",\"confirmations\":2}",
+            "editable": true
+          }
+        ],
+        "rows": [
+          "Trigger: lightResponse: Lightbrass lamp · instance 2 · Radial menu · RememberedTriggerResponseIgnore this learned entryAdvanced settingsUsed inRadial menuStory: sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e · Item: brass lamp · instance 2. Only compatible destinations are available.Original learning (read-only){\"digest\":\"570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e\",\"observations\":2,\"source\":\"remembered-item-preference\",\"submissionId\":\"mvzhbkc77sak7qazobr:6\",\"outcome\":\"response-observed\",\"confirmations\":2}Try a phrase (local comparison)Check",
+          "Trigger: douseResponse: Dousebrass lamp · instance 2 · Radial menu · RememberedTriggerResponseIgnore this learned entryAdvanced settingsUsed inRadial menuStory: sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e · Item: brass lamp · instance 2. Only compatible destinations are available.Original learning (read-only){\"digest\":\"570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e\",\"observations\":2,\"source\":\"remembered-item-preference\",\"submissionId\":\"mvzhbkc77sak7qazobr:7\",\"outcome\":\"response-observed\",\"confirmations\":2}Try a phrase (local comparison)Check",
+          "Trigger: brass lampResponse: brass lampinstance 2 · Items displayTriggerResponseAdvanced settingsUsed inItems displayStory: sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e · Item: brass lamp · instance 2. Only compatible destinations are available.Original learning (read-only)Item display text only. Parser name/aliases (read-only): [\"lantern\",\"lamp\",\"light\",\"brass\"]Try a phrase (local comparison)Check"
+        ]
+      },
+      "state": {
+        "text": "Adventure in Humongous Cave\nDavid Malmberg's AGT version of \"Adventure\" \nwith some \"extra added\" features \nPorted to Inform By Al Golden \nLast Compiled On: 12/02/05 \nType \"HELP\" for HelpMenu \"CAVEHELP\" when underground\n \nRelease 1 / Serial number 000001 / Inform v6.30 Library 6/11 \n \nSomewhere nearby is Humongous Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. The object of the game is for you to explore the cave and return (safely) with as much treasure as possible. The cave is a mysterious and magical place. You will face many puzzling and perilous challenges as you explore.\n \nEnd of Road\nYou are standing at the end of a road before a small brick building.\nAround you is a forest. A small stream flows out of the building through a pair of one-foot pipes and down a gully to the south. Next to the door of the building, there is a faded sign.\n \nThere is an order form here.\n \n>east\n \nInside Building\nYou are inside a small building, a well house for a large spring. The stream bubbles up out of the ground and flows out the side of the building through a pair of 1 foot diameter sewer pipes. The word \"THURB\" has been painted on one of the pipes. There is a doorway in the middle of the north wall. A huge steel safe has been installed into the brick wall on the east wall.\n \nThe safe door is locked.\nA large grandfather clock stands against the wall.\nThere are some old, ugly, dirty tennis shoes here.\nA Boy-Scout compass is lying nearby\nThere are several iron keys on the ground here.\nThere is a shiny brass lamp nearby. It is off.\nThere is some tasty food here.\nThere is a small bottle of water here.\nThere is a cloak made from a heavy metallic fabric here.\nThere is a sign here.\n \n \n>take lamp\nYou take the the brass lamp.\n \n> ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": {
+          "id": 135,
+          "name": "brass lamp",
+          "parentId": 20,
+          "attrs": {
+            "animate": false,
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": false,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "lockable": false,
+            "locked": false,
+            "moved": true,
+            "on": false,
+            "open": false,
+            "isOpen": false,
+            "openable": false,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "transparent": false,
+            "visited": false,
+            "workflag": false,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "takeable": true
+          },
+          "aliases": [
+            "lantern",
+            "lamp",
+            "light",
+            "brass"
+          ],
+          "confidence": 0.9,
+          "discovered": true,
+          "displayName": "brass lamp"
+        },
+        "objectCommands": [
+          {
+            "command": "examine lamp",
+            "verb": "examine"
+          },
+          {
+            "command": "light lamp",
+            "verb": "light"
+          },
+          {
+            "command": "douse lamp",
+            "verb": "douse"
+          },
+          {
+            "command": "drop lamp",
+            "verb": "drop"
+          },
+          {
+            "command": "give lamp to ",
+            "verb": "give to"
+          },
+          {
+            "command": "put lamp in ",
+            "verb": "put in"
+          }
+        ],
+        "yourselfCommands": [
+          {
+            "form": "examine",
+            "enter": true
+          },
+          {
+            "form": "light",
+            "enter": true
+          },
+          {
+            "form": "douse",
+            "enter": true
+          },
+          {
+            "form": "drop",
+            "enter": true
+          },
+          {
+            "form": "wear",
+            "enter": false
+          },
+          {
+            "form": "eat",
+            "enter": false
+          },
+          {
+            "form": "drink",
+            "enter": false
+          },
+          {
+            "form": "extinguish",
+            "enter": false
+          },
+          {
+            "form": "turn on",
+            "enter": false
+          },
+          {
+            "form": "turn off",
+            "enter": false
+          },
+          {
+            "form": "switch on",
+            "enter": false
+          },
+          {
+            "form": "switch off",
+            "enter": false
+          },
+          {
+            "form": "hold",
+            "enter": false
+          },
+          {
+            "form": "wave",
+            "enter": false
+          },
+          {
+            "form": "throw",
+            "enter": false
+          },
+          {
+            "form": "read",
+            "enter": false
+          },
+          {
+            "form": "open",
+            "enter": false
+          },
+          {
+            "form": "close",
+            "enter": false
+          },
+          {
+            "form": "search",
+            "enter": false
+          },
+          {
+            "form": "look in",
+            "enter": false
+          },
+          {
+            "form": "clean",
+            "enter": false
+          },
+          {
+            "form": "rub",
+            "enter": false
+          },
+          {
+            "form": "squeeze",
+            "enter": false
+          },
+          {
+            "form": "push",
+            "enter": false
+          },
+          {
+            "form": "smell",
+            "enter": false
+          },
+          {
+            "form": "taste",
+            "enter": false
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793638428126,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 4,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzi07i7khuqmi7xtth:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": 1,
+            "confirmedSlots": [
+              1,
+              26,
+              27,
+              30
+            ],
+            "stableFor": 4
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793638428126,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 4,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzi07i7khuqmi7xtth:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": 1,
+            "confirmedSlots": [
+              1,
+              26,
+              27,
+              30
+            ],
+            "stableFor": 4
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "wordStored": {
+          "version": 1,
+          "gameIdentityKey": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+          "rows": {
+            "exact:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "allowed:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "exact:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "exact:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            }
+          }
+        },
+        "projection": {
+          "exact:135:take": {
+            "id": "exact:135:take",
+            "objectId": "135",
+            "form": "take",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          }
+        },
+        "pending": 0,
+        "storageError": null,
+        "room": 127,
+        "inventory": [
+          {
+            "id": 135,
+            "name": "brass lamp",
+            "parent": 20
+          },
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "settled-before-close-no-save",
+      "state": {
+        "text": "Adventure in Humongous Cave\nDavid Malmberg's AGT version of \"Adventure\" \nwith some \"extra added\" features \nPorted to Inform By Al Golden \nLast Compiled On: 12/02/05 \nType \"HELP\" for HelpMenu \"CAVEHELP\" when underground\n \nRelease 1 / Serial number 000001 / Inform v6.30 Library 6/11 \n \nSomewhere nearby is Humongous Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. The object of the game is for you to explore the cave and return (safely) with as much treasure as possible. The cave is a mysterious and magical place. You will face many puzzling and perilous challenges as you explore.\n \nEnd of Road\nYou are standing at the end of a road before a small brick building.\nAround you is a forest. A small stream flows out of the building through a pair of one-foot pipes and down a gully to the south. Next to the door of the building, there is a faded sign.\n \nThere is an order form here.\n \n>east\n \nInside Building\nYou are inside a small building, a well house for a large spring. The stream bubbles up out of the ground and flows out the side of the building through a pair of 1 foot diameter sewer pipes. The word \"THURB\" has been painted on one of the pipes. There is a doorway in the middle of the north wall. A huge steel safe has been installed into the brick wall on the east wall.\n \nThe safe door is locked.\nA large grandfather clock stands against the wall.\nThere are some old, ugly, dirty tennis shoes here.\nA Boy-Scout compass is lying nearby\nThere are several iron keys on the ground here.\nThere is a shiny brass lamp nearby. It is off.\nThere is some tasty food here.\nThere is a small bottle of water here.\nThere is a cloak made from a heavy metallic fabric here.\nThere is a sign here.\n \n \n>take lamp\nYou take the the brass lamp.\n \n> ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": {
+          "id": 135,
+          "name": "brass lamp",
+          "parentId": 20,
+          "attrs": {
+            "animate": false,
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": false,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "lockable": false,
+            "locked": false,
+            "moved": true,
+            "on": false,
+            "open": false,
+            "isOpen": false,
+            "openable": false,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "transparent": false,
+            "visited": false,
+            "workflag": false,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "takeable": true
+          },
+          "aliases": [
+            "lantern",
+            "lamp",
+            "light",
+            "brass"
+          ],
+          "confidence": 0.9,
+          "discovered": true,
+          "displayName": "brass lamp"
+        },
+        "objectCommands": [
+          {
+            "command": "examine lamp",
+            "verb": "examine"
+          },
+          {
+            "command": "light lamp",
+            "verb": "light"
+          },
+          {
+            "command": "douse lamp",
+            "verb": "douse"
+          },
+          {
+            "command": "drop lamp",
+            "verb": "drop"
+          },
+          {
+            "command": "give lamp to ",
+            "verb": "give to"
+          },
+          {
+            "command": "put lamp in ",
+            "verb": "put in"
+          }
+        ],
+        "yourselfCommands": [
+          {
+            "form": "examine",
+            "enter": true
+          },
+          {
+            "form": "light",
+            "enter": true
+          },
+          {
+            "form": "douse",
+            "enter": true
+          },
+          {
+            "form": "drop",
+            "enter": true
+          },
+          {
+            "form": "wear",
+            "enter": false
+          },
+          {
+            "form": "eat",
+            "enter": false
+          },
+          {
+            "form": "drink",
+            "enter": false
+          },
+          {
+            "form": "extinguish",
+            "enter": false
+          },
+          {
+            "form": "turn on",
+            "enter": false
+          },
+          {
+            "form": "turn off",
+            "enter": false
+          },
+          {
+            "form": "switch on",
+            "enter": false
+          },
+          {
+            "form": "switch off",
+            "enter": false
+          },
+          {
+            "form": "hold",
+            "enter": false
+          },
+          {
+            "form": "wave",
+            "enter": false
+          },
+          {
+            "form": "throw",
+            "enter": false
+          },
+          {
+            "form": "read",
+            "enter": false
+          },
+          {
+            "form": "open",
+            "enter": false
+          },
+          {
+            "form": "close",
+            "enter": false
+          },
+          {
+            "form": "search",
+            "enter": false
+          },
+          {
+            "form": "look in",
+            "enter": false
+          },
+          {
+            "form": "clean",
+            "enter": false
+          },
+          {
+            "form": "rub",
+            "enter": false
+          },
+          {
+            "form": "squeeze",
+            "enter": false
+          },
+          {
+            "form": "push",
+            "enter": false
+          },
+          {
+            "form": "smell",
+            "enter": false
+          },
+          {
+            "form": "taste",
+            "enter": false
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793638428126,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 4,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzi07i7khuqmi7xtth:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": 1,
+            "confirmedSlots": [
+              1,
+              26,
+              27,
+              30
+            ],
+            "stableFor": 4
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793638428126,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 4,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzi07i7khuqmi7xtth:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 4,
+                "returns": 3,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127",
+                  "113>127",
+                  "113>127",
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": 1,
+            "confirmedSlots": [
+              1,
+              26,
+              27,
+              30
+            ],
+            "stableFor": 4
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "wordStored": {
+          "version": 1,
+          "gameIdentityKey": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+          "rows": {
+            "exact:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "allowed:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "exact:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "exact:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            }
+          }
+        },
+        "projection": {
+          "exact:135:take": {
+            "id": "exact:135:take",
+            "objectId": "135",
+            "form": "take",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          }
+        },
+        "pending": 0,
+        "storageError": null,
+        "room": 127,
+        "inventory": [
+          {
+            "id": 135,
+            "name": "brass lamp",
+            "parent": 20
+          },
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    }
+  ]
+}

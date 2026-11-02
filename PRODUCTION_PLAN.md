@@ -9880,3 +9880,47 @@ codex-votes-0231 / #5999 codex-sherlock-votes-0837, claude). Both need D257 (0d1
 - **Wear LH 133 / SC 176:** constructed insert_obj/clear_attr UI plus source-tier consumer checks. They do not prove natural acquisition or capture-time binding.
 - **Still open:** remote-described Starcross/Zork II records stay separate from physical visit history. Seastalker BOARD useful-command research stays open (codex REVISE of the airlock CLOSE).
 - No new APK and no overall completion claim.
+
+## D263 Module learning persistence and learned item priority
+
+**Status (November 2, codex operator-authorized integration): implemented; final shared gate/classification pending.**
+**Files:** `js/AttrCalibrator.js`, `js/LearningStores.js`, `js/ActionSynth.js`, `js/Actionable.js`, `js/Qol.js`,
+`js/EquipmentUI.js`, `js/LearnedWords.js`, `js/ZRamReader.js`, `js/ExitCalibrator.js`, `js/StatTracker.js`,
+`js/TurnRecorder.js`, `js/WorkspaceUI.js`, `js/Input.js`, `js/Autocomplete.js`, `js/Navigator.js`, `service-worker.js`.
+The Android HugeCave report was reproduced: successful LIGHT/DOUSE moved onto More through session usage,
+but the command recorder excluded those verbs, so no lasting item knowledge existed. Sealed independent
+investigations, comparison, revised design reviews and current-source corrections are retained under
+`work/mapping-research/items-codex/resume-20261020/learning-persistence-20261102/`.
+
+The existing AttrCalibrator observer/store now retains generic, uniquely referenced unary dictionary spellings as
+item preferences after two distinct eligible non-refusal response observations. This is weaker than semantic
+success: no inferred flags, allowedVerbs, opcode capability or synonym pairing. Unknown injection, automation,
+probes, ambiguity, known refusal/prompt and echo-only output do not qualify. Existing semantic calibration and
+exclusive manual-revision witnesses remain separate.
+
+Applicable item/action preferences precede usage in the shared radial comparator; unlearned entries retain their
+relative usage/prior/order. Ordinary and Yourself menus share current-authority checks, existing Ignore/revisions,
+exact item identity and generation/module guards. Strong scopes survive; More remains available. Remembered
+spellings appear in the existing Learned Words editor and attrCalib ownership/erase system, not another database.
+Settings visibility checkboxes retain their existing display-only meaning.
+Exact item/form membership is checked before resolving presentation scope or references. An unrelated authored
+form on the same item does not cause extra reference/cache work for a never-learned action.
+Confirmed disabled inspect spellings stay suppressed even after another inspect form becomes the default;
+the existing explicit Ignore control for that decision remains authoritative. The failing constructed regression
+and its correction are covered by the focused harness, separately from generic preference observations.
+
+Five owners (attributes, diagonal, exit layout, stats and word overrides) now use executable-digest keys. This
+removes observed HugeCave/Eric release+serial collisions and the shared stats `unknown` key. Per the operator's
+explicit development/no-compatibility instruction there is no legacy import/migration; old bytes are untouched
+and inactive. Diagonal consumers hydrate before use and reset on identity change. Current readings, scope,
+map/playthrough history and provisional semantic evidence retain their distinct lifecycles.
+
+Application exit/library/restart waits for all pending recorder turns and acknowledged existing-store writes,
+freezes submissions during that barrier, and stays open with Retry on failure. This does not guarantee a write
+after force-stop/power loss before persistence completes. Service-worker shell v174 delivers the changed assets;
+no APK or versionCode change is part of this repair.
+
+Prior-fix guards: D13 ownership/tombstones, D86 frozen observation windows, D110 usage, D198 identity/scopes,
+D205/D214 exact/user forms, D243 playthrough history, D258 quota/retention and D260 authored state restrictions.
+Focused retention/priority/erase checks, actual native older-save restore/unsaved exit/reopen and operator13/0 pass;
+the final candidate manifest binds exact source identities. Immutable309x2 final R3 independently ACCEPTED:0 intended/7 measured annotation variances/0 regression/0 unresolved. Seven matching no-prompt gaps and boot-only Glulx limits remain explicit. See learning-persistence-20261102/final-r3-gate-review.md.

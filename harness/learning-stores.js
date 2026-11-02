@@ -91,6 +91,9 @@ async function settle() { for (let i = 0; i < 6; i++) await flush(); }
         // persist goes through the index with the store's exact key
         const s = t.localStorage;
         t.ModuleLibrary.current = "d1"; t.ParchLock.StoryPath = "games/a.z5.js"; t.ParchLock.GameFilename = "a.z5.js";
+        // This fixture tests the persistence/index seam, with identity supplied
+        // explicitly. Real digest/header isolation is covered separately.
+        t.LearningStores.identity = () => ({identityKey:'88-840726',digest:'d1'});
         t.StatTracker.save("88-840726", { score: 1 });
         await settle();
         const idx = JSON.parse(s.getItem("PL_ModuleLearningOwner_v1"));

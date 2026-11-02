@@ -406,8 +406,8 @@ var ExitCalibrator = {
 
     // ---- persistence (same convention as AttrCalibrator/diagonal) --------
     storageKey: function (mem) {
-        var id = (typeof ZRamReader !== "undefined" && ZRamReader.gameIdentityKey)
-            ? ZRamReader.gameIdentityKey(mem) : null;
+        var id = (typeof ZRamReader !== "undefined" && ZRamReader.learningIdentityKey)
+            ? ZRamReader.learningIdentityKey(mem) : null;
         return id ? ("PM_ExitCalib_" + id) : null;
     },
 
@@ -435,12 +435,14 @@ var ExitCalibrator = {
 
     hydrate: function (mem) {
         var key = ExitCalibrator.storageKey(mem);
-        if (!key) { ExitCalibrator._table = ExitCalibrator._table || ExitCalibrator.emptyTable(); return ExitCalibrator._table; }
+        if (!key) { ExitCalibrator._key=null; ExitCalibrator._table=ExitCalibrator.emptyTable(); return ExitCalibrator._table; }
         if (ExitCalibrator._key === key && ExitCalibrator._table) return ExitCalibrator._table;
         ExitCalibrator._key = key;
         ExitCalibrator._table = ExitCalibrator.emptyTable();
         try {
-            var raw = typeof LearningStores !== "undefined" ? LearningStores.read(key) : localStorage.getItem(key);
+            var id = LearningStores.identity(mem);
+            var result = LearningStores.readOwned("exitCalib",id);
+            var raw = result.value;
             if (raw) {
                 var p = JSON.parse(raw);
                 // A table written by an older rule set is discarded rather

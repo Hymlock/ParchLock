@@ -1,0 +1,17 @@
+// Read-only CDP queries on the already running app. No navigation, commands, storage writes or game mutation.
+const fs=require('fs'),crypto=require('crypto');
+const dir=__dirname,sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const raw=fs.readFileSync('games/HugeCave.z8.js'),match=raw.toString().match(/processBase64Zcode\s*\(\s*['"]([\s\S]*?)['"]\s*\)/),bytes=Buffer.from(match[1].replace(/\s+/g,''),'base64');
+if(bytes[0]!==8)throw Error('Unexpected story container');
+const identity=bytes.readUInt16BE(2)+'-'+bytes.subarray(0x12,0x18).toString('ascii');
+const meta=JSON.parse(fs.readFileSync(dir+'/android-inspection-forward.json','utf8'));
+(async()=>{const targets=await(await fetch('http://127.0.0.1:'+meta.port+'/json/list')).json();const target=targets.find(t=>/^https:\/\/localhost\//.test(t.url));if(!target)throw Error('Expected existing app page');
+const expression=`(async()=>{
+const key=${JSON.stringify(identity)},parse=s=>{try{return JSON.parse(s)}catch(e){return s}};
+const a=localStorage.getItem('PL_AttrCalib_'+key),w=localStorage.getItem('PL_LearnedWordOverrides_'+key),ix=parse(localStorage.getItem('PL_ModuleLearningOwner_v1'));
+const src={};for(const f of ['AttrCalibrator','LearningStores','LearnedWords','EquipmentUI','ActionSynth']){try{const s=await(await fetch('/js/'+f+'.js')).text();const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));src[f]=Array.from(new Uint8Array(d),n=>n.toString(16).padStart(2,'0')).join('')}catch(e){src[f]=String(e)}}
+return {url:location.href,path:typeof ParchLock==='undefined'?null:ParchLock.StoryPath,filename:typeof ParchLock==='undefined'?null:ParchLock.GameFilename,targetIdentity:key,attrStored:parse(a),wordStored:parse(w),ownerEntries:ix&&ix.entries?Object.fromEntries(Object.entries(ix.entries).filter(([k])=>k==='PL_AttrCalib_'+key||k==='PL_LearnedWordOverrides_'+key)):null,attrHydrated:typeof AttrCalibrator==='undefined'?null:AttrCalibrator.hydratedForGame,attrMemory:typeof AttrCalibrator==='undefined'?null:AttrCalibrator.table,learningPending:typeof LearningStores==='undefined'?null:LearningStores.pending(),learningError:typeof LearningStores==='undefined'?null:LearningStores.lastError(),sourceHashes:src};})()`;
+const ws=new WebSocket(target.webSocketDebuggerUrl);const result=await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('CDP timeout')),15000);ws.addEventListener('open',()=>ws.send(JSON.stringify({id:1,method:'Runtime.evaluate',params:{expression,returnByValue:true,awaitPromise:true}})));ws.addEventListener('message',ev=>{const r=JSON.parse(String(ev.data));if(r.id===1){clearTimeout(timer);r.result?.exceptionDetails?reject(Error(JSON.stringify(r.result.exceptionDetails))):resolve(r.result?.result?.value)}});ws.addEventListener('error',reject)});ws.close();
+fs.writeFileSync(dir+'/android-readonly-inspection.json',JSON.stringify({ts:new Date().toISOString(),scope:'Already-running Android app, read-only state/asset inspection',wrapperSha256:sha(raw),identity,result},null,2),{flag:'wx'});
+console.log(JSON.stringify({identity,path:result.path,filename:result.filename,attrStoredPresent:!!result.attrStored,wordStoredPresent:!!result.wordStored,pending:result.learningPending,error:result.learningError,attrObjects:Object.keys(result.attrStored?.objects||{}),sourceHashes:result.sourceHashes}));
+})().catch(e=>{console.error(e.stack);process.exitCode=1});

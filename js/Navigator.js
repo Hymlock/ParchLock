@@ -161,9 +161,9 @@ var Navigator = {
         try {
             Navigator.Submitting = true;
             if (typeof Actionable !== "undefined" && Actionable.Submit) {
-                if (Actionable.Submit(command) === false) { Navigator.ClearQueue("The route command was not accepted."); return; }
+                if (Actionable.Submit(command, 'system-navigation') === false) { Navigator.ClearQueue("The route command was not accepted."); return; }
             }
-            else if (typeof Input !== "undefined") { Input.Clear(); Input.Inject(command, true); }
+            else if (typeof Input !== "undefined") { Input.Clear(); Input.Inject(command, true, 'system-navigation'); }
         } catch (e) {
             Navigator.ClearQueue("The route command failed.");
             return;

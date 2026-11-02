@@ -234,6 +234,30 @@ var LearningStores = (function () {
         try { var ls = storage(); return ls ? ls.getItem(key) : null; } catch (e) { return null; }
     }
 
+    // Digest learning identity is separate from the VM's legacy header identity.
+    function identity(mem, requireZMemory) {
+        try {
+            if (typeof ModuleLibrary === "undefined" || !ModuleLibrary.currentExecutableIdentity) return null;
+            var id = ModuleLibrary.currentExecutableIdentity();
+            if (!id || !/^[0-9a-f]{64}$/.test(id.digest || "")) return null;
+            var z = /^(?:z(?:3|4|5|8|blorb))$/.test(id.format || "");
+            if (requireZMemory !== false && !mem) return null;
+            if (mem) {
+                if (!z || !id.header || typeof ZRamReader === "undefined") return null;
+                var stable = [0,2,3,4,5,8,9,10,11,12,13,14,15,18,19,20,21,22,23,26,27];
+                if (!stable.every(function (at) { return id.header[at] === ZRamReader.u8(mem, at); })) return null;
+            } else if (requireZMemory !== false || !/^(?:ulx|gblorb)$/.test(id.format || "")) return null;
+            return { identityKey: "sha256:" + id.digest, digest: id.digest };
+        } catch (e) { return null; }
+    }
+    // Development format: exact executable keys only; no legacy import/migration.
+    function readOwned(kind, id) {
+        var gen = generators[kind], key = id && gen && gen({identityKey:id.identityKey});
+        if (!key || !id || id.identityKey !== "sha256:" + id.digest || currentOwner().digest !== id.digest)
+            return {status:"unavailable",value:null};
+        return {status:"ready",value:read(key)};
+    }
+
     function commit(snap) {
         var ls = storage();
         var r = readIndex();
@@ -284,6 +308,7 @@ var LearningStores = (function () {
     var seqNo = 0;
     var indexWrites = 0; // metadata index writes from commit (test control)
     var deferredCount = 0;
+    var activeDrain = null;
 
     function reportOnce(err) {
         lastError = "Learned data could not be saved yet; it will retry.";
@@ -292,7 +317,8 @@ var LearningStores = (function () {
     }
 
     function drain() {
-        if (draining || !queue.length) return Promise.resolve();
+        if (draining) return activeDrain || Promise.resolve();
+        if (!queue.length) return Promise.resolve();
         var l = locks();
         draining = true;
         var p;
@@ -315,8 +341,22 @@ var LearningStores = (function () {
                 }
             });
         } catch (eSync) { p = Promise.reject(eSync); }
-        return Promise.resolve(p).then(function () { draining = false; lastError = null; reported = false; if (queue.length > deferredCount) return drain(); },
+        activeDrain = Promise.resolve(p).then(function () { draining = false; lastError = null; reported = false; if (queue.length > deferredCount) return drain(); },
             function (err) { draining = false; reportOnce(err); });
+        return activeDrain;
+    }
+
+    // Acknowledged application navigation barrier under the existing write lock.
+    function flush(timeoutMs) {
+        var timer;
+        var work = Promise.resolve().then(function () { return drain(); }).then(function () {
+            var error = quotaError || lastError || recoveryError;
+            return {ok:queue.length===0 && !draining && !error,pending:queue.length,
+                error:error || (queue.length ? "Learned data is still waiting to be saved." : null)};
+        });
+        return Promise.race([work,new Promise(function(resolve) {
+            timer=setTimeout(function() { resolve({ok:false,pending:queue.length,error:"Saving learned data took too long. Please try again."}); },timeoutMs || 2000);
+        })]).then(function(result) { clearTimeout(timer); return result; });
     }
 
     // Capture an immutable snapshot and persist it. `value` is the serialized
@@ -332,7 +372,8 @@ var LearningStores = (function () {
         owner = { digest: owner.digest, path: owner.path, inputs: JSON.parse(JSON.stringify(inputs)) };
         if (!locks()) {
             // No Web Locks: cleanup is disabled for the session; write as today.
-            try { if (!writeValue(ls, kind, key, value)) return null; } catch (e) { return null; }
+            try { if (!writeValue(ls, kind, key, value)) return null; } catch (e) { reportOnce(e); return null; }
+            lastError = null; reported = false;
             try {
                 var r = readIndex();
                 if (r.ok) {
@@ -552,7 +593,8 @@ var LearningStores = (function () {
 
     return {
         INDEX_KEY: INDEX_KEY, LOCK: LOCK,
-        register: register, read: read, persist: persist, readIndex: readIndex,
+        register: register, read: read, persist: persist, readIndex: readIndex, flush: flush,
+        identity: identity, readOwned: readOwned,
         list: list, check: check, erase: erase, describe: describe, addOptions: addOptions,
         entryValid: entryValid, pending: function () { return queue.length; },
         lastError: function () { return quotaError || lastError || recoveryError; },

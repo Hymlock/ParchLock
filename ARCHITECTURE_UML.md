@@ -4356,3 +4356,32 @@ rooms and puzzle memory. Raw status is neither an impassability predicate nor a 
 Horror status owners 119/135 keep their mapped path. Native baseline/candidate menus at 360/1280 preserve commands/input;
 six nonempty DEXIT hints remain byte-identical. See D254 and the immutable Moonmist display gate evidence for exact
 scope, review, classification and coverage limits; no full-title completion is implied.
+
+<a id="ar-ch91"></a>
+## 91. Module learning and item preference retention (D263)
+
+Learning remains in existing owners and LearningStores' ownership/erase registry. AttrCalibrator stores generic
+observed item spellings in its existing module table as preference evidence, separate from exact opcode/semantic
+capabilities. The existing Learned Words editor projects these into its editable exact-item rows; Ignore and
+current user revisions remain authoritative. No second learning database or save-bound copy is introduced.
+
+```mermaid
+flowchart LR
+    Submit[Explicit user submission] --> Recorder[TurnRecorder frozen response]
+    Recorder --> Calibration[Existing semantic calibration]
+    Recorder --> Preference[AttrCalibrator item spelling preference]
+    Preference --> Stores[Existing LearningStores / executable digest]
+    Stores --> Projection[Live scoped item projection]
+    Projection --> Rank[Learned item tier then existing usage rank]
+    Words[Existing Learned Words edits / Ignore] --> Projection
+    Stores --> Erase[Existing uninstalled-module erase controls]
+```
+
+Five persistent learning owners use exact executable identity; diagonal labels/look-ahead hydrate before reading
+calibration. Stats retain learned pins/units while clearing old numeric readings. Per the development instruction,
+old release/serial stores are not imported. Provisional semantic evidence, live scope and playthrough/map history
+remain distinct from durable module knowledge. Ordinary leave waits for every unsettled recorder turn and the
+existing serialized write queue; failed acknowledgement keeps the page open. Force-stop durability is not claimed.
+
+D263 links sealed investigations, actual independent child reviews (not other-seat votes), exact-source native
+retention/settings evidence and the final immutable baseline/candidate gate. No new APK is implied.

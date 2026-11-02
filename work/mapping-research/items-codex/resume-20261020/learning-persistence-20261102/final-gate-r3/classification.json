@@ -1,0 +1,87 @@
+{
+  "rowsPerSide": 309,
+  "unchangedBaselineReused": true,
+  "sourceStable": true,
+  "differences": [
+    {
+      "game": "Mulldoon.z8.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "final-gate-r3/paired-base.jsonl + paired-candidate.jsonl: same-seed identical native command driver on both immutable trees, all compared fields equal in bounded fresh pair"
+    },
+    {
+      "game": "gamlet.z5.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "final-gate-r3/paired-base.jsonl + paired-candidate.jsonl: same-seed identical native command driver on both immutable trees, all compared fields equal in bounded fresh pair"
+    },
+    {
+      "game": "heist.z8.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "delayed-marks-diagnostic.json / passive-marks-diagnostic.json / persistent-marks-classification-acceptance.md: natural fresh startup2000/4000ms, identical RAM/prose, baseline itself reproduces frame124 mark; no forced refresh or VM writes"
+    },
+    {
+      "game": "jet.z8.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "final-gate-r3/paired-base.jsonl + paired-candidate.jsonl: same-seed identical native command driver on both immutable trees, all compared fields equal in bounded fresh pair"
+    },
+    {
+      "game": "medusa.z5.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "final-gate-r3/paired-base.jsonl + paired-candidate.jsonl: same-seed identical native command driver on both immutable trees, all compared fields equal in bounded fresh pair"
+    },
+    {
+      "game": "suvehnux.z5.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "final-gate-r3/paired-base.jsonl + paired-candidate.jsonl: same-seed identical native command driver on both immutable trees, all compared fields equal in bounded fresh pair"
+    },
+    {
+      "game": "vespers.z8.js",
+      "field": "marks",
+      "classification": "FLAKY",
+      "evidence": "final-gate-r3/paired-base.jsonl + paired-candidate.jsonl: same-seed identical native command driver on both immutable trees, all compared fields equal in bounded fresh pair"
+    }
+  ],
+  "totals": {
+    "INTENDED": 0,
+    "FLAKY": 7,
+    "REGRESSION": 0,
+    "UNRESOLVED": 0
+  },
+  "sameNoPromptGaps": [
+    {
+      "game": "BeingSteve.zblorb.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "BlueLacuna.gblorb.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "Borderzo.z5.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "bookvol.z5.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "chico.z5.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "stiffmst.z5.js",
+      "error": "no-prompt"
+    },
+    {
+      "game": "vgame.z8.js",
+      "error": "no-prompt"
+    }
+  ],
+  "coverage": "Boot/LOOK/travel/inventory snapshot comparison; seven unchanged no-prompt cases, Glulx play/boot-only. Not full26 semantic/flag completion. Existing heist metaphor annotation defect tracked separately.",
+  "author": "codex integrator; independent classification review recorded separately"
+}

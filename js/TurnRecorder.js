@@ -57,6 +57,14 @@
 // declared interest for THIS turn.
 var TurnRecorder = {
     _activeTurn: null,
+    _unsettled: [],
+    whenSettled: function (timeoutMs) {
+        var timer;
+        var pending = TurnRecorder._unsettled.map(function (t) { return t.settlement; });
+        return Promise.race([Promise.all(pending).then(function () { return true; }),new Promise(function(resolve) {
+            timer=setTimeout(function() { resolve(false); },timeoutMs || 1500);
+        })]).then(function(ok) { clearTimeout(timer); return ok; });
+    },
     _analyzers: [],
     _submitListeners: {},
     _submissionId: 0,
@@ -143,6 +151,8 @@ var TurnRecorder = {
             }); });
 
             TurnRecorder._activeTurn = turn;
+            turn.settlement = new Promise(function (resolve) { turn._resolveSettlement = resolve; });
+            TurnRecorder._unsettled.push(turn);
             setTimeout(function () { TurnRecorder._settle(turn); }, 450);
         } catch (e) {}
     },
@@ -183,6 +193,8 @@ var TurnRecorder = {
     // here specifically because nothing boundary-stamped it in the
     // meantime, so "current" and "this turn's own" are the same thing).
     _settle: function (turn) {
+        if (turn._settled) return;
+        turn._settled = true;
         if (turn.endLine == null) {
             turn.endLine = TurnRecorder._lineCount();
             if (TurnRecorder._activeTurn === turn) TurnRecorder._activeTurn = null;
@@ -194,6 +206,8 @@ var TurnRecorder = {
                 if (hasWitness && entry.analyzer.analyze) entry.analyzer.analyze(turn);
             } catch (e) {}
         });
+        TurnRecorder._unsettled = TurnRecorder._unsettled.filter(function (t) { return t !== turn; });
+        if (turn._resolveSettlement) turn._resolveSettlement();
     },
 
     _runCaptureAfter: function (turn) {

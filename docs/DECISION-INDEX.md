@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 146 decisions across
-9883 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 147 decisions across
+9927 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -27,6 +27,7 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 
 | D | claim | files | games | arch |
 |---|-------|-------|-------|------|
+| D263 | Module learning persistence and learned item priority | js/AttrCalibrator.js js/LearningStores.js js/ActionSynth.js js/Actionable.js |  | §91 |
 | D262 | LGOP revealed hole, Sherlock moved/edible/scenery, and later ZIL consumer repairs |  |  |  |
 | D261 | r48/r49 Sherlock ledger facts |  |  |  |
 | D260 | lightForms: per-title Light/Extinguish and Turn on/off with tap-time scope |  | Enchanter Deadline |  |
@@ -310,3 +311,4 @@ cites. Search here for a subsystem; the line number opens the chapter.
 | line 4323 | 4323 | October26 operator-authorized credit takeover: twelve concealed mappings |  |
 | §89 | 4336 | 89. Save-linked cumulative playthrough history (D243) | D243 |
 | §90 | 4347 | 90. Display-only lock observations (D254; landed f82f243) | D254 |
+| §91 | 4361 | 91. Module learning and item preference retention (D263) | D263 |

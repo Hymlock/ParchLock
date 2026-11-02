@@ -28,7 +28,7 @@ var Autocomplete = {
     },
     InjectCommand: (command, hitEnter) => {
         Input.Clear();
-        Input.Inject(command, !!hitEnter && !/\s$/.test(command));
+        Input.Inject(command, !!hitEnter && !/\s$/.test(command), 'user-autocomplete');
     },
 
     UpdateWords: () => {
@@ -211,7 +211,7 @@ var Autocomplete = {
                 }
                 else {
 
-                    Input.Inject(word + " ", hitEnter);
+                    Input.Inject(word + " ", hitEnter, 'user-autocomplete');
                 }
             }
         }

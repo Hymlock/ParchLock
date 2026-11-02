@@ -9,7 +9,7 @@ var LearnedWords = {
     _key: null, _data: null, _undo: [], _open: false,
     generation: function () { return typeof UndoRestoreSync !== "undefined" ? UndoRestoreSync.generation : 0; },
     identity: function () {
-        try { var mem = AttributeSchema._getMem(); return mem ? AttrCalibrator.gameIdentityKey(mem) : null; } catch (e) { return null; }
+        try { var id=LearningStores.identity(AttributeSchema._getMem()); return id ? id.identityKey : null; } catch(e) { return null; }
     },
     load: function () {
         var key = LearnedWords.identity();
@@ -17,7 +17,10 @@ var LearnedWords = {
         LearnedWords._key = key; LearnedWords._undo = []; LearnedWords.clearProjection();
         var data = { version: 1, gameIdentityKey: key, rows: {} };
         try {
-            var parsed = JSON.parse(typeof LearningStores !== "undefined" ? LearningStores.read(LearnedWords.PREFIX + key) : localStorage.getItem(LearnedWords.PREFIX + key));
+            if(!key) { LearnedWords._data=data; return data; }
+            var identity=LearningStores.identity(AttributeSchema._getMem());
+            var result=LearningStores.readOwned("learnedWords",identity);
+            var parsed=JSON.parse(result.value);
             if (key && parsed && parsed.version === 1 && parsed.gameIdentityKey === key && parsed.rows && !Array.isArray(parsed.rows)) {
                 var valid = Object.keys(parsed.rows).every(function (id) {
                     var r = parsed.rows[id];
@@ -58,6 +61,7 @@ var LearnedWords = {
         return data;
     },
     write: function (next, history) {
+        LearnedWords.load();
         if (!LearnedWords.identity() || next.gameIdentityKey !== LearnedWords.identity()) throw new Error("This story changed. Reopen the editor.");
         LearnedWords.capRows(next);
         if (typeof LearningStores !== "undefined") LearningStores.persist("learnedWords", { identityKey: next.gameIdentityKey }, JSON.stringify(next), LearnedWords.resetErasedFor(next.gameIdentityKey));
@@ -99,6 +103,17 @@ var LearnedWords = {
         }).filter(function (r) {
             return !r.ignored && (objectId == null || String(objectId) === String(r.objectId)) &&
                 (r.id.indexOf("manual:") === 0 || r.form !== r.original) && LearnedWords.eligible(r.objectId, r.form);
+        });
+    },
+    // Cheap membership only. Do not resolve objects/references for unrelated
+    // actions; candidates() performs those full checks after a raw match.
+    hasAuthoredFormRaw: function (objectId, form) {
+        var rows=LearnedWords.load().rows;
+        return Object.keys(rows).some(function (id) {
+            var r=rows[id];
+            return /^(manual|exact|allowed):/.test(id) && r && !r.ignored &&
+                String(r.objectId)===String(objectId) && r.trigger===form &&
+                (id.indexOf('manual:')===0 || r.trigger!==r.original);
         });
     },
     candidateForCommand: function (command) {
@@ -235,6 +250,14 @@ var LearnedWords = {
             var obj = pool.find(function (o) { return String(o.id) === objectId; });
             ["exact", "allowed"].forEach(function (type) {
                 var entries = table.objects[objectId][type === "exact" ? "exactForms" : "allowedVerbs"] || {};
+                if (type === 'exact') {
+                    var remembered = {};
+                    Object.keys(table.objects[objectId].rememberedForms || {}).forEach(function (form) {
+                        var e=table.objects[objectId].rememberedForms[form];
+                        if (e.digest === AttrCalibrator._d198ExecutableDigest()) remembered[form]=Object.assign({},e,{confirmations:e.observations});
+                    });
+                    entries=Object.assign(remembered,entries);
+                }
                 Object.keys(entries).forEach(function (form) {
                     var e = entries[form], id = LearnedWords.rowKey(type, objectId, form), metadata = data.rows[id];
                     var session = LearnedWords._projection[LearnedWords.rowKey('exact',objectId,form)];
@@ -557,7 +580,7 @@ var LearnedWords = {
         LearnedWords._flush.clear(); LearnedWords._tourStep = null; LearnedWords._discard = false;
     },
     TOUR: [
-        ["Your learned words", "The learned list shows commands the system did not already provide for that item. A first try may appear for this session without proving success. Two successful observations are needed to remember a new command. Leaving hides unconfirmed attempts without deleting their counts. User suggestions and learned inspect decisions remain here."],
+        ["Your learned words", "The learned list shows commands the system did not already provide for that item. New spellings tried twice without a recognised refusal are remembered as item preferences, not proof that every command works. Remembered actions take priority over usage suggestions for that item and survive leaving without saving or restoring an older save. Current game conditions still apply. User suggestions and learned inspect decisions remain here."],
         ["Trigger and Response", "Trigger is a command verb or form, such as wield. The item supplies its verified name. Response is the text shown on the menu, such as Wield. You are editing ParchLock's behavior and labels, never the game's written reply. Some triggers are read-only because the story owns them."],
         ["Where it appears", "Edit Learned Words opens first when enabled. Game options lets you show or hide each section. Story actions and Names start hidden. Visible banners keep their original order. The label on the right tells you where an entry is used. Used in lists only compatible destinations. A status label cannot become a command. Names change display text only, never parser aliases or command references."],
         ["Saving and Undo", "Valid edits save when you leave a field or close this screen. Errors keep the last valid record intact. Undo restores the last valid edit. Incomplete drafts are discarded when you close, go Back, or change stories. Original learning stays read-only."],

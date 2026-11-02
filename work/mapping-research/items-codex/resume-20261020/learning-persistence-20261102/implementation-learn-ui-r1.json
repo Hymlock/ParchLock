@@ -1,0 +1,4301 @@
+{
+  "phase": "learn-ui",
+  "ts": "2026-11-02T16:34:44.486Z",
+  "tier": "ordinary typed commands in isolated persistent Chromium profile over local HTTP; no game save or VM/state injection",
+  "producerHash": "8a52e0ed0365398b18224cfea524b9a11169337b91752cf91a70897ae7a2989a",
+  "pre": {
+    "js/AttrCalibrator.js": "6b595556834ea3dcb8a9f7eab6f3c437e02c3a00fee16772daa9a7fe053c385f",
+    "js/LearningStores.js": "7313916c95cf2debc4f29bbf46796f38b69245e72314cc15e454d6810c49e5d1",
+    "js/LearnedWords.js": "d6f90c47c9471719739bde886f62413ac05b8ec188e79f4174ee3781a375a7b4",
+    "js/EquipmentUI.js": "86b07043c4542911372e19f55186c256fc149f46d22e77dc16603121f6f791ba",
+    "js/ActionSynth.js": "d382cf4b782a2bc3711b09cebccbc6b66e9f10abcc35be1fd9a540fa273e8db4",
+    "js/ZRamReader.js": "41cfce60e207faa4891fd9a1ed79acd5130e4d672775bfd309567db3e2801415",
+    "js/Actionable.js": "4491e43db354a1e6bf3b872a61a8defe2e59c9a7920305e669ef4dade24df6e0",
+    "js/SemanticActions.js": "db21fb39122af713211340f9bd87af14c1d0f5275fc56d03d34bb65da03f4587",
+    "js/Qol.js": "5d886e57650aab9fd3c0725426a18de20e540a597eccd0150b8ab9ce148f0ac6"
+  },
+  "post": {
+    "js/AttrCalibrator.js": "6b595556834ea3dcb8a9f7eab6f3c437e02c3a00fee16772daa9a7fe053c385f",
+    "js/LearningStores.js": "7313916c95cf2debc4f29bbf46796f38b69245e72314cc15e454d6810c49e5d1",
+    "js/LearnedWords.js": "d6f90c47c9471719739bde886f62413ac05b8ec188e79f4174ee3781a375a7b4",
+    "js/EquipmentUI.js": "86b07043c4542911372e19f55186c256fc149f46d22e77dc16603121f6f791ba",
+    "js/ActionSynth.js": "d382cf4b782a2bc3711b09cebccbc6b66e9f10abcc35be1fd9a540fa273e8db4",
+    "js/ZRamReader.js": "41cfce60e207faa4891fd9a1ed79acd5130e4d672775bfd309567db3e2801415",
+    "js/Actionable.js": "4491e43db354a1e6bf3b872a61a8defe2e59c9a7920305e669ef4dade24df6e0",
+    "js/SemanticActions.js": "db21fb39122af713211340f9bd87af14c1d0f5275fc56d03d34bb65da03f4587",
+    "js/Qol.js": "5d886e57650aab9fd3c0725426a18de20e540a597eccd0150b8ab9ce148f0ac6"
+  },
+  "events": [],
+  "rows": [
+    {
+      "stage": "boot",
+      "state": {
+        "text": "         \n \n \n         [Press SPACE to begin.]\n  ",
+        "lineInput": false,
+        "charInput": true,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": null,
+        "objectCommands": [],
+        "yourselfCommands": [],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {}
+        },
+        "stored": null,
+        "wordStored": null,
+        "projection": {},
+        "pending": 0,
+        "storageError": null,
+        "room": 113,
+        "inventory": [
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "native-start-space",
+      "state": {
+        "text": "Do you want to RESTORE a saved game? ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": null,
+        "objectCommands": [],
+        "yourselfCommands": [],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {}
+        },
+        "stored": null,
+        "wordStored": null,
+        "projection": {},
+        "pending": 0,
+        "storageError": null,
+        "room": 113,
+        "inventory": [
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "no",
+      "state": {
+        "text": "Adventure in Humongous Cave\nDavid Malmberg's AGT version of \"Adventure\" \nwith some \"extra added\" features \nPorted to Inform By Al Golden \nLast Compiled On: 12/02/05 \nType \"HELP\" for HelpMenu \"CAVEHELP\" when underground\n \nRelease 1 / Serial number 000001 / Inform v6.30 Library 6/11 \n \nSomewhere nearby is Humongous Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. The object of the game is for you to explore the cave and return (safely) with as much treasure as possible. The cave is a mysterious and magical place. You will face many puzzling and perilous challenges as you explore.\n \nEnd of Road\nYou are standing at the end of a road before a small brick building.\nAround you is a forest. A small stream flows out of the building through a pair of one-foot pipes and down a gully to the south. Next to the door of the building, there is a faded sign.\n \nThere is an order form here.\n \n> ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": null,
+        "objectCommands": [],
+        "yourselfCommands": [],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {},
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "26": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "27": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "30": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "65": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          }
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {},
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "26": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "27": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "30": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "65": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          }
+        },
+        "wordStored": null,
+        "projection": {},
+        "pending": 0,
+        "storageError": null,
+        "room": 113,
+        "inventory": [
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "east",
+      "state": {
+        "text": "Adventure in Humongous Cave\nDavid Malmberg's AGT version of \"Adventure\" \nwith some \"extra added\" features \nPorted to Inform By Al Golden \nLast Compiled On: 12/02/05 \nType \"HELP\" for HelpMenu \"CAVEHELP\" when underground\n \nRelease 1 / Serial number 000001 / Inform v6.30 Library 6/11 \n \nSomewhere nearby is Humongous Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. The object of the game is for you to explore the cave and return (safely) with as much treasure as possible. The cave is a mysterious and magical place. You will face many puzzling and perilous challenges as you explore.\n \nEnd of Road\nYou are standing at the end of a road before a small brick building.\nAround you is a forest. A small stream flows out of the building through a pair of one-foot pipes and down a gully to the south. Next to the door of the building, there is a faded sign.\n \nThere is an order form here.\n \n>east\n \nInside Building\nYou are inside a small building, a well house for a large spring. The stream bubbles up out of the ground and flows out the side of the building through a pair of 1 foot diameter sewer pipes. The word \"THURB\" has been painted on one of the pipes. There is a doorway in the middle of the north wall. A huge steel safe has been installed into the brick wall on the east wall.\n \nThe safe door is locked.\nA large grandfather clock stands against the wall.\nThere are some old, ugly, dirty tennis shoes here.\nA Boy-Scout compass is lying nearby\nThere are several iron keys on the ground here.\nThere is a shiny brass lamp nearby. It is off.\nThere is some tasty food here.\nThere is a small bottle of water here.\nThere is a cloak made from a heavy metallic fabric here.\nThere is a sign here.\n \n \n> ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": {
+          "id": 135,
+          "name": "brass lamp",
+          "parentId": 127,
+          "attrs": {
+            "animate": false,
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": false,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "lockable": false,
+            "locked": false,
+            "moved": false,
+            "on": false,
+            "open": false,
+            "isOpen": false,
+            "openable": false,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "transparent": false,
+            "visited": false,
+            "workflag": false,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "takeable": true
+          },
+          "aliases": [
+            "lantern",
+            "lamp",
+            "light",
+            "brass"
+          ],
+          "confidence": 0.85,
+          "discovered": true,
+          "displayName": "brass lamp"
+        },
+        "objectCommands": [
+          {
+            "command": "examine lamp",
+            "verb": "examine"
+          },
+          {
+            "command": "drop lamp",
+            "verb": "drop"
+          },
+          {
+            "command": "give lamp to ",
+            "verb": "give to"
+          },
+          {
+            "command": "put lamp in ",
+            "verb": "put in"
+          }
+        ],
+        "yourselfCommands": [
+          {
+            "form": "take",
+            "enter": true
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {},
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "26": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "27": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "30": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "65": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          }
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {},
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "26": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "27": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "30": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              },
+              "65": {
+                "transitions": 0,
+                "returns": 0,
+                "seen": {},
+                "history": []
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          }
+        },
+        "wordStored": null,
+        "projection": {},
+        "pending": 1,
+        "storageError": null,
+        "room": 127,
+        "inventory": [
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "take lamp",
+      "state": {
+        "text": "Adventure in Humongous Cave\nDavid Malmberg's AGT version of \"Adventure\" \nwith some \"extra added\" features \nPorted to Inform By Al Golden \nLast Compiled On: 12/02/05 \nType \"HELP\" for HelpMenu \"CAVEHELP\" when underground\n \nRelease 1 / Serial number 000001 / Inform v6.30 Library 6/11 \n \nSomewhere nearby is Humongous Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. The object of the game is for you to explore the cave and return (safely) with as much treasure as possible. The cave is a mysterious and magical place. You will face many puzzling and perilous challenges as you explore.\n \nEnd of Road\nYou are standing at the end of a road before a small brick building.\nAround you is a forest. A small stream flows out of the building through a pair of one-foot pipes and down a gully to the south. Next to the door of the building, there is a faded sign.\n \nThere is an order form here.\n \n>east\n \nInside Building\nYou are inside a small building, a well house for a large spring. The stream bubbles up out of the ground and flows out the side of the building through a pair of 1 foot diameter sewer pipes. The word \"THURB\" has been painted on one of the pipes. There is a doorway in the middle of the north wall. A huge steel safe has been installed into the brick wall on the east wall.\n \nThe safe door is locked.\nA large grandfather clock stands against the wall.\nThere are some old, ugly, dirty tennis shoes here.\nA Boy-Scout compass is lying nearby\nThere are several iron keys on the ground here.\nThere is a shiny brass lamp nearby. It is off.\nThere is some tasty food here.\nThere is a small bottle of water here.\nThere is a cloak made from a heavy metallic fabric here.\nThere is a sign here.\n \n \n>take lamp\nYou take the the brass lamp.\n \n> ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": {
+          "id": 135,
+          "name": "brass lamp",
+          "parentId": 20,
+          "attrs": {
+            "animate": false,
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": false,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "lockable": false,
+            "locked": false,
+            "moved": true,
+            "on": false,
+            "open": false,
+            "isOpen": false,
+            "openable": false,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "transparent": false,
+            "visited": false,
+            "workflag": false,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "takeable": true
+          },
+          "aliases": [
+            "lantern",
+            "lamp",
+            "light",
+            "brass"
+          ],
+          "confidence": 0.9,
+          "discovered": true,
+          "displayName": "brass lamp"
+        },
+        "objectCommands": [
+          {
+            "command": "examine lamp",
+            "verb": "examine"
+          },
+          {
+            "command": "drop lamp",
+            "verb": "drop"
+          },
+          {
+            "command": "give lamp to ",
+            "verb": "give to"
+          },
+          {
+            "command": "put lamp in ",
+            "verb": "put in"
+          }
+        ],
+        "yourselfCommands": [
+          {
+            "form": "examine",
+            "enter": true
+          },
+          {
+            "form": "drop",
+            "enter": true
+          },
+          {
+            "form": "wear",
+            "enter": false
+          },
+          {
+            "form": "eat",
+            "enter": false
+          },
+          {
+            "form": "drink",
+            "enter": false
+          },
+          {
+            "form": "light",
+            "enter": false
+          },
+          {
+            "form": "extinguish",
+            "enter": false
+          },
+          {
+            "form": "turn on",
+            "enter": false
+          },
+          {
+            "form": "turn off",
+            "enter": false
+          },
+          {
+            "form": "switch on",
+            "enter": false
+          },
+          {
+            "form": "switch off",
+            "enter": false
+          },
+          {
+            "form": "hold",
+            "enter": false
+          },
+          {
+            "form": "wave",
+            "enter": false
+          },
+          {
+            "form": "throw",
+            "enter": false
+          },
+          {
+            "form": "read",
+            "enter": false
+          },
+          {
+            "form": "open",
+            "enter": false
+          },
+          {
+            "form": "close",
+            "enter": false
+          },
+          {
+            "form": "search",
+            "enter": false
+          },
+          {
+            "form": "look in",
+            "enter": false
+          },
+          {
+            "form": "clean",
+            "enter": false
+          },
+          {
+            "form": "rub",
+            "enter": false
+          },
+          {
+            "form": "squeeze",
+            "enter": false
+          },
+          {
+            "form": "push",
+            "enter": false
+          },
+          {
+            "form": "smell",
+            "enter": false
+          },
+          {
+            "form": "taste",
+            "enter": false
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793637278394,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 1,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzhbkc77sak7qazobr:3",
+                  "source": "opcode-state"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793637278394,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 1,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzhbkc77sak7qazobr:3",
+                  "source": "opcode-state"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "wordStored": {
+          "version": 1,
+          "gameIdentityKey": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+          "rows": {
+            "exact:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "allowed:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            }
+          }
+        },
+        "projection": {
+          "exact:135:take": {
+            "id": "exact:135:take",
+            "objectId": "135",
+            "form": "take",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          }
+        },
+        "pending": 0,
+        "storageError": null,
+        "room": 127,
+        "inventory": [
+          {
+            "id": 135,
+            "name": "brass lamp",
+            "parent": 20
+          },
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "rendered-before-teaching",
+      "renderedRadial": {
+        "entry": "actual Actionable.Open public renderer, no physical gesture claim",
+        "main": "Examine\nDrop\nGive to...\nPut in...\nUnlock with...\nMore\nTools",
+        "more": "Take\nAbra\nAbracadab\nAdjust\nAhriman\nMore...\nTools"
+      },
+      "state": {
+        "text": "Adventure in Humongous Cave\nDavid Malmberg's AGT version of \"Adventure\" \nwith some \"extra added\" features \nPorted to Inform By Al Golden \nLast Compiled On: 12/02/05 \nType \"HELP\" for HelpMenu \"CAVEHELP\" when underground\n \nRelease 1 / Serial number 000001 / Inform v6.30 Library 6/11 \n \nSomewhere nearby is Humongous Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. The object of the game is for you to explore the cave and return (safely) with as much treasure as possible. The cave is a mysterious and magical place. You will face many puzzling and perilous challenges as you explore.\n \nEnd of Road\nYou are standing at the end of a road before a small brick building.\nAround you is a forest. A small stream flows out of the building through a pair of one-foot pipes and down a gully to the south. Next to the door of the building, there is a faded sign.\n \nThere is an order form here.\n \n>east\n \nInside Building\nYou are inside a small building, a well house for a large spring. The stream bubbles up out of the ground and flows out the side of the building through a pair of 1 foot diameter sewer pipes. The word \"THURB\" has been painted on one of the pipes. There is a doorway in the middle of the north wall. A huge steel safe has been installed into the brick wall on the east wall.\n \nThe safe door is locked.\nA large grandfather clock stands against the wall.\nThere are some old, ugly, dirty tennis shoes here.\nA Boy-Scout compass is lying nearby\nThere are several iron keys on the ground here.\nThere is a shiny brass lamp nearby. It is off.\nThere is some tasty food here.\nThere is a small bottle of water here.\nThere is a cloak made from a heavy metallic fabric here.\nThere is a sign here.\n \n \n>take lamp\nYou take the the brass lamp.\n \n> ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": {
+          "id": 135,
+          "name": "brass lamp",
+          "parentId": 20,
+          "attrs": {
+            "animate": false,
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": false,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "lockable": false,
+            "locked": false,
+            "moved": true,
+            "on": false,
+            "open": false,
+            "isOpen": false,
+            "openable": false,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "transparent": false,
+            "visited": false,
+            "workflag": false,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "takeable": true
+          },
+          "aliases": [
+            "lantern",
+            "lamp",
+            "light",
+            "brass"
+          ],
+          "confidence": 0.9,
+          "discovered": true,
+          "displayName": "brass lamp"
+        },
+        "objectCommands": [
+          {
+            "command": "examine lamp",
+            "verb": "examine"
+          },
+          {
+            "command": "drop lamp",
+            "verb": "drop"
+          },
+          {
+            "command": "give lamp to ",
+            "verb": "give to"
+          },
+          {
+            "command": "put lamp in ",
+            "verb": "put in"
+          }
+        ],
+        "yourselfCommands": [
+          {
+            "form": "examine",
+            "enter": true
+          },
+          {
+            "form": "drop",
+            "enter": true
+          },
+          {
+            "form": "wear",
+            "enter": false
+          },
+          {
+            "form": "eat",
+            "enter": false
+          },
+          {
+            "form": "drink",
+            "enter": false
+          },
+          {
+            "form": "light",
+            "enter": false
+          },
+          {
+            "form": "extinguish",
+            "enter": false
+          },
+          {
+            "form": "turn on",
+            "enter": false
+          },
+          {
+            "form": "turn off",
+            "enter": false
+          },
+          {
+            "form": "switch on",
+            "enter": false
+          },
+          {
+            "form": "switch off",
+            "enter": false
+          },
+          {
+            "form": "hold",
+            "enter": false
+          },
+          {
+            "form": "wave",
+            "enter": false
+          },
+          {
+            "form": "throw",
+            "enter": false
+          },
+          {
+            "form": "read",
+            "enter": false
+          },
+          {
+            "form": "open",
+            "enter": false
+          },
+          {
+            "form": "close",
+            "enter": false
+          },
+          {
+            "form": "search",
+            "enter": false
+          },
+          {
+            "form": "look in",
+            "enter": false
+          },
+          {
+            "form": "clean",
+            "enter": false
+          },
+          {
+            "form": "rub",
+            "enter": false
+          },
+          {
+            "form": "squeeze",
+            "enter": false
+          },
+          {
+            "form": "push",
+            "enter": false
+          },
+          {
+            "form": "smell",
+            "enter": false
+          },
+          {
+            "form": "taste",
+            "enter": false
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793637278394,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 1,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzhbkc77sak7qazobr:3",
+                  "source": "opcode-state"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793637278394,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 1,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzhbkc77sak7qazobr:3",
+                  "source": "opcode-state"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "wordStored": {
+          "version": 1,
+          "gameIdentityKey": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+          "rows": {
+            "exact:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "allowed:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            }
+          }
+        },
+        "projection": {
+          "exact:135:take": {
+            "id": "exact:135:take",
+            "objectId": "135",
+            "form": "take",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          }
+        },
+        "pending": 0,
+        "storageError": null,
+        "room": 127,
+        "inventory": [
+          {
+            "id": 135,
+            "name": "brass lamp",
+            "parent": 20
+          },
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "light lamp",
+      "state": {
+        "text": "Adventure in Humongous Cave\nDavid Malmberg's AGT version of \"Adventure\" \nwith some \"extra added\" features \nPorted to Inform By Al Golden \nLast Compiled On: 12/02/05 \nType \"HELP\" for HelpMenu \"CAVEHELP\" when underground\n \nRelease 1 / Serial number 000001 / Inform v6.30 Library 6/11 \n \nSomewhere nearby is Humongous Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. The object of the game is for you to explore the cave and return (safely) with as much treasure as possible. The cave is a mysterious and magical place. You will face many puzzling and perilous challenges as you explore.\n \nEnd of Road\nYou are standing at the end of a road before a small brick building.\nAround you is a forest. A small stream flows out of the building through a pair of one-foot pipes and down a gully to the south. Next to the door of the building, there is a faded sign.\n \nThere is an order form here.\n \n>east\n \nInside Building\nYou are inside a small building, a well house for a large spring. The stream bubbles up out of the ground and flows out the side of the building through a pair of 1 foot diameter sewer pipes. The word \"THURB\" has been painted on one of the pipes. There is a doorway in the middle of the north wall. A huge steel safe has been installed into the brick wall on the east wall.\n \nThe safe door is locked.\nA large grandfather clock stands against the wall.\nThere are some old, ugly, dirty tennis shoes here.\nA Boy-Scout compass is lying nearby\nThere are several iron keys on the ground here.\nThere is a shiny brass lamp nearby. It is off.\nThere is some tasty food here.\nThere is a small bottle of water here.\nThere is a cloak made from a heavy metallic fabric here.\nThere is a sign here.\n \n \n>take lamp\nYou take the the brass lamp.\n \n>light lamp\nYou light the lamp.\n \n> ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": {
+          "id": 135,
+          "name": "brass lamp",
+          "parentId": 20,
+          "attrs": {
+            "animate": false,
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": false,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": true,
+            "lockable": false,
+            "locked": false,
+            "moved": true,
+            "on": false,
+            "open": false,
+            "isOpen": false,
+            "openable": false,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "transparent": false,
+            "visited": false,
+            "workflag": false,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "takeable": true
+          },
+          "aliases": [
+            "lantern",
+            "lamp",
+            "light",
+            "brass"
+          ],
+          "confidence": 0.9,
+          "discovered": true,
+          "displayName": "brass lamp"
+        },
+        "objectCommands": [
+          {
+            "command": "examine lamp",
+            "verb": "examine"
+          },
+          {
+            "command": "drop lamp",
+            "verb": "drop"
+          },
+          {
+            "command": "give lamp to ",
+            "verb": "give to"
+          },
+          {
+            "command": "put lamp in ",
+            "verb": "put in"
+          }
+        ],
+        "yourselfCommands": [
+          {
+            "form": "examine",
+            "enter": true
+          },
+          {
+            "form": "drop",
+            "enter": true
+          },
+          {
+            "form": "wear",
+            "enter": false
+          },
+          {
+            "form": "eat",
+            "enter": false
+          },
+          {
+            "form": "drink",
+            "enter": false
+          },
+          {
+            "form": "light",
+            "enter": false
+          },
+          {
+            "form": "extinguish",
+            "enter": false
+          },
+          {
+            "form": "turn on",
+            "enter": false
+          },
+          {
+            "form": "turn off",
+            "enter": false
+          },
+          {
+            "form": "switch on",
+            "enter": false
+          },
+          {
+            "form": "switch off",
+            "enter": false
+          },
+          {
+            "form": "hold",
+            "enter": false
+          },
+          {
+            "form": "wave",
+            "enter": false
+          },
+          {
+            "form": "throw",
+            "enter": false
+          },
+          {
+            "form": "read",
+            "enter": false
+          },
+          {
+            "form": "open",
+            "enter": false
+          },
+          {
+            "form": "close",
+            "enter": false
+          },
+          {
+            "form": "search",
+            "enter": false
+          },
+          {
+            "form": "look in",
+            "enter": false
+          },
+          {
+            "form": "clean",
+            "enter": false
+          },
+          {
+            "form": "rub",
+            "enter": false
+          },
+          {
+            "form": "squeeze",
+            "enter": false
+          },
+          {
+            "form": "push",
+            "enter": false
+          },
+          {
+            "form": "smell",
+            "enter": false
+          },
+          {
+            "form": "taste",
+            "enter": false
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793637278394,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 1,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzhbkc77sak7qazobr:3",
+                  "source": "opcode-state"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793637278394,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 1,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzhbkc77sak7qazobr:3",
+                  "source": "opcode-state"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "wordStored": {
+          "version": 1,
+          "gameIdentityKey": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+          "rows": {
+            "exact:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "allowed:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "exact:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            }
+          }
+        },
+        "projection": {
+          "exact:135:take": {
+            "id": "exact:135:take",
+            "objectId": "135",
+            "form": "take",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          },
+          "exact:135:light": {
+            "id": "exact:135:light",
+            "objectId": "135",
+            "form": "light",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          }
+        },
+        "pending": 0,
+        "storageError": null,
+        "room": 127,
+        "inventory": [
+          {
+            "id": 135,
+            "name": "brass lamp",
+            "parent": 20
+          },
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "douse lamp",
+      "state": {
+        "text": "Adventure in Humongous Cave\nDavid Malmberg's AGT version of \"Adventure\" \nwith some \"extra added\" features \nPorted to Inform By Al Golden \nLast Compiled On: 12/02/05 \nType \"HELP\" for HelpMenu \"CAVEHELP\" when underground\n \nRelease 1 / Serial number 000001 / Inform v6.30 Library 6/11 \n \nSomewhere nearby is Humongous Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. The object of the game is for you to explore the cave and return (safely) with as much treasure as possible. The cave is a mysterious and magical place. You will face many puzzling and perilous challenges as you explore.\n \nEnd of Road\nYou are standing at the end of a road before a small brick building.\nAround you is a forest. A small stream flows out of the building through a pair of one-foot pipes and down a gully to the south. Next to the door of the building, there is a faded sign.\n \nThere is an order form here.\n \n>east\n \nInside Building\nYou are inside a small building, a well house for a large spring. The stream bubbles up out of the ground and flows out the side of the building through a pair of 1 foot diameter sewer pipes. The word \"THURB\" has been painted on one of the pipes. There is a doorway in the middle of the north wall. A huge steel safe has been installed into the brick wall on the east wall.\n \nThe safe door is locked.\nA large grandfather clock stands against the wall.\nThere are some old, ugly, dirty tennis shoes here.\nA Boy-Scout compass is lying nearby\nThere are several iron keys on the ground here.\nThere is a shiny brass lamp nearby. It is off.\nThere is some tasty food here.\nThere is a small bottle of water here.\nThere is a cloak made from a heavy metallic fabric here.\nThere is a sign here.\n \n \n>take lamp\nYou take the the brass lamp.\n \n>light lamp\nYou light the lamp.\n \n>douse lamp\nYou extinguish the lamp.\n \n> ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": {
+          "id": 135,
+          "name": "brass lamp",
+          "parentId": 20,
+          "attrs": {
+            "animate": false,
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": false,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "lockable": false,
+            "locked": false,
+            "moved": true,
+            "on": false,
+            "open": false,
+            "isOpen": false,
+            "openable": false,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "transparent": false,
+            "visited": false,
+            "workflag": false,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "takeable": true
+          },
+          "aliases": [
+            "lantern",
+            "lamp",
+            "light",
+            "brass"
+          ],
+          "confidence": 0.9,
+          "discovered": true,
+          "displayName": "brass lamp"
+        },
+        "objectCommands": [
+          {
+            "command": "examine lamp",
+            "verb": "examine"
+          },
+          {
+            "command": "drop lamp",
+            "verb": "drop"
+          },
+          {
+            "command": "give lamp to ",
+            "verb": "give to"
+          },
+          {
+            "command": "put lamp in ",
+            "verb": "put in"
+          }
+        ],
+        "yourselfCommands": [
+          {
+            "form": "examine",
+            "enter": true
+          },
+          {
+            "form": "drop",
+            "enter": true
+          },
+          {
+            "form": "wear",
+            "enter": false
+          },
+          {
+            "form": "eat",
+            "enter": false
+          },
+          {
+            "form": "drink",
+            "enter": false
+          },
+          {
+            "form": "light",
+            "enter": false
+          },
+          {
+            "form": "extinguish",
+            "enter": false
+          },
+          {
+            "form": "turn on",
+            "enter": false
+          },
+          {
+            "form": "turn off",
+            "enter": false
+          },
+          {
+            "form": "switch on",
+            "enter": false
+          },
+          {
+            "form": "switch off",
+            "enter": false
+          },
+          {
+            "form": "hold",
+            "enter": false
+          },
+          {
+            "form": "wave",
+            "enter": false
+          },
+          {
+            "form": "throw",
+            "enter": false
+          },
+          {
+            "form": "read",
+            "enter": false
+          },
+          {
+            "form": "open",
+            "enter": false
+          },
+          {
+            "form": "close",
+            "enter": false
+          },
+          {
+            "form": "search",
+            "enter": false
+          },
+          {
+            "form": "look in",
+            "enter": false
+          },
+          {
+            "form": "clean",
+            "enter": false
+          },
+          {
+            "form": "rub",
+            "enter": false
+          },
+          {
+            "form": "squeeze",
+            "enter": false
+          },
+          {
+            "form": "push",
+            "enter": false
+          },
+          {
+            "form": "smell",
+            "enter": false
+          },
+          {
+            "form": "taste",
+            "enter": false
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793637278394,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 1,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzhbkc77sak7qazobr:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 1,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:4",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 1,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:5",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793637278394,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 1,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzhbkc77sak7qazobr:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 1,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:4",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 1,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:5",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "wordStored": {
+          "version": 1,
+          "gameIdentityKey": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+          "rows": {
+            "exact:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "allowed:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "exact:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "exact:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            }
+          }
+        },
+        "projection": {
+          "exact:135:take": {
+            "id": "exact:135:take",
+            "objectId": "135",
+            "form": "take",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          },
+          "exact:135:light": {
+            "id": "exact:135:light",
+            "objectId": "135",
+            "form": "light",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          },
+          "exact:135:douse": {
+            "id": "exact:135:douse",
+            "objectId": "135",
+            "form": "douse",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          }
+        },
+        "pending": 0,
+        "storageError": null,
+        "room": 127,
+        "inventory": [
+          {
+            "id": 135,
+            "name": "brass lamp",
+            "parent": 20
+          },
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "light lamp",
+      "state": {
+        "text": "Adventure in Humongous Cave\nDavid Malmberg's AGT version of \"Adventure\" \nwith some \"extra added\" features \nPorted to Inform By Al Golden \nLast Compiled On: 12/02/05 \nType \"HELP\" for HelpMenu \"CAVEHELP\" when underground\n \nRelease 1 / Serial number 000001 / Inform v6.30 Library 6/11 \n \nSomewhere nearby is Humongous Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. The object of the game is for you to explore the cave and return (safely) with as much treasure as possible. The cave is a mysterious and magical place. You will face many puzzling and perilous challenges as you explore.\n \nEnd of Road\nYou are standing at the end of a road before a small brick building.\nAround you is a forest. A small stream flows out of the building through a pair of one-foot pipes and down a gully to the south. Next to the door of the building, there is a faded sign.\n \nThere is an order form here.\n \n>east\n \nInside Building\nYou are inside a small building, a well house for a large spring. The stream bubbles up out of the ground and flows out the side of the building through a pair of 1 foot diameter sewer pipes. The word \"THURB\" has been painted on one of the pipes. There is a doorway in the middle of the north wall. A huge steel safe has been installed into the brick wall on the east wall.\n \nThe safe door is locked.\nA large grandfather clock stands against the wall.\nThere are some old, ugly, dirty tennis shoes here.\nA Boy-Scout compass is lying nearby\nThere are several iron keys on the ground here.\nThere is a shiny brass lamp nearby. It is off.\nThere is some tasty food here.\nThere is a small bottle of water here.\nThere is a cloak made from a heavy metallic fabric here.\nThere is a sign here.\n \n \n>take lamp\nYou take the the brass lamp.\n \n>light lamp\nYou light the lamp.\n \n>douse lamp\nYou extinguish the lamp.\n \n>light lamp\nYou light the lamp.\n \n> ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": {
+          "id": 135,
+          "name": "brass lamp",
+          "parentId": 20,
+          "attrs": {
+            "animate": false,
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": false,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": true,
+            "lockable": false,
+            "locked": false,
+            "moved": true,
+            "on": false,
+            "open": false,
+            "isOpen": false,
+            "openable": false,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "transparent": false,
+            "visited": false,
+            "workflag": false,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "takeable": true
+          },
+          "aliases": [
+            "lantern",
+            "lamp",
+            "light",
+            "brass"
+          ],
+          "confidence": 0.9,
+          "discovered": true,
+          "displayName": "brass lamp"
+        },
+        "objectCommands": [
+          {
+            "command": "examine lamp",
+            "verb": "examine"
+          },
+          {
+            "command": "light lamp",
+            "verb": "light"
+          },
+          {
+            "command": "drop lamp",
+            "verb": "drop"
+          },
+          {
+            "command": "give lamp to ",
+            "verb": "give to"
+          },
+          {
+            "command": "put lamp in ",
+            "verb": "put in"
+          }
+        ],
+        "yourselfCommands": [
+          {
+            "form": "examine",
+            "enter": true
+          },
+          {
+            "form": "light",
+            "enter": true
+          },
+          {
+            "form": "drop",
+            "enter": true
+          },
+          {
+            "form": "wear",
+            "enter": false
+          },
+          {
+            "form": "eat",
+            "enter": false
+          },
+          {
+            "form": "drink",
+            "enter": false
+          },
+          {
+            "form": "extinguish",
+            "enter": false
+          },
+          {
+            "form": "turn on",
+            "enter": false
+          },
+          {
+            "form": "turn off",
+            "enter": false
+          },
+          {
+            "form": "switch on",
+            "enter": false
+          },
+          {
+            "form": "switch off",
+            "enter": false
+          },
+          {
+            "form": "hold",
+            "enter": false
+          },
+          {
+            "form": "wave",
+            "enter": false
+          },
+          {
+            "form": "throw",
+            "enter": false
+          },
+          {
+            "form": "read",
+            "enter": false
+          },
+          {
+            "form": "open",
+            "enter": false
+          },
+          {
+            "form": "close",
+            "enter": false
+          },
+          {
+            "form": "search",
+            "enter": false
+          },
+          {
+            "form": "look in",
+            "enter": false
+          },
+          {
+            "form": "clean",
+            "enter": false
+          },
+          {
+            "form": "rub",
+            "enter": false
+          },
+          {
+            "form": "squeeze",
+            "enter": false
+          },
+          {
+            "form": "push",
+            "enter": false
+          },
+          {
+            "form": "smell",
+            "enter": false
+          },
+          {
+            "form": "taste",
+            "enter": false
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793637278394,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 1,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzhbkc77sak7qazobr:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 1,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:5",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793637278394,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 1,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzhbkc77sak7qazobr:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 1,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:5",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "wordStored": {
+          "version": 1,
+          "gameIdentityKey": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+          "rows": {
+            "exact:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "allowed:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "exact:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "exact:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            }
+          }
+        },
+        "projection": {
+          "exact:135:take": {
+            "id": "exact:135:take",
+            "objectId": "135",
+            "form": "take",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          },
+          "exact:135:light": {
+            "id": "exact:135:light",
+            "objectId": "135",
+            "form": "light",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          },
+          "exact:135:douse": {
+            "id": "exact:135:douse",
+            "objectId": "135",
+            "form": "douse",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          }
+        },
+        "pending": 0,
+        "storageError": null,
+        "room": 127,
+        "inventory": [
+          {
+            "id": 135,
+            "name": "brass lamp",
+            "parent": 20
+          },
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "douse lamp",
+      "state": {
+        "text": "Adventure in Humongous Cave\nDavid Malmberg's AGT version of \"Adventure\" \nwith some \"extra added\" features \nPorted to Inform By Al Golden \nLast Compiled On: 12/02/05 \nType \"HELP\" for HelpMenu \"CAVEHELP\" when underground\n \nRelease 1 / Serial number 000001 / Inform v6.30 Library 6/11 \n \nSomewhere nearby is Humongous Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. The object of the game is for you to explore the cave and return (safely) with as much treasure as possible. The cave is a mysterious and magical place. You will face many puzzling and perilous challenges as you explore.\n \nEnd of Road\nYou are standing at the end of a road before a small brick building.\nAround you is a forest. A small stream flows out of the building through a pair of one-foot pipes and down a gully to the south. Next to the door of the building, there is a faded sign.\n \nThere is an order form here.\n \n>east\n \nInside Building\nYou are inside a small building, a well house for a large spring. The stream bubbles up out of the ground and flows out the side of the building through a pair of 1 foot diameter sewer pipes. The word \"THURB\" has been painted on one of the pipes. There is a doorway in the middle of the north wall. A huge steel safe has been installed into the brick wall on the east wall.\n \nThe safe door is locked.\nA large grandfather clock stands against the wall.\nThere are some old, ugly, dirty tennis shoes here.\nA Boy-Scout compass is lying nearby\nThere are several iron keys on the ground here.\nThere is a shiny brass lamp nearby. It is off.\nThere is some tasty food here.\nThere is a small bottle of water here.\nThere is a cloak made from a heavy metallic fabric here.\nThere is a sign here.\n \n \n>take lamp\nYou take the the brass lamp.\n \n>light lamp\nYou light the lamp.\n \n>douse lamp\nYou extinguish the lamp.\n \n>light lamp\nYou light the lamp.\n \n>douse lamp\nYou extinguish the lamp.\n \n> ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": {
+          "id": 135,
+          "name": "brass lamp",
+          "parentId": 20,
+          "attrs": {
+            "animate": false,
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": false,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "lockable": false,
+            "locked": false,
+            "moved": true,
+            "on": false,
+            "open": false,
+            "isOpen": false,
+            "openable": false,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "transparent": false,
+            "visited": false,
+            "workflag": false,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "takeable": true
+          },
+          "aliases": [
+            "lantern",
+            "lamp",
+            "light",
+            "brass"
+          ],
+          "confidence": 0.9,
+          "discovered": true,
+          "displayName": "brass lamp"
+        },
+        "objectCommands": [
+          {
+            "command": "examine lamp",
+            "verb": "examine"
+          },
+          {
+            "command": "light lamp",
+            "verb": "light"
+          },
+          {
+            "command": "drop lamp",
+            "verb": "drop"
+          },
+          {
+            "command": "give lamp to ",
+            "verb": "give to"
+          },
+          {
+            "command": "put lamp in ",
+            "verb": "put in"
+          }
+        ],
+        "yourselfCommands": [
+          {
+            "form": "examine",
+            "enter": true
+          },
+          {
+            "form": "light",
+            "enter": true
+          },
+          {
+            "form": "drop",
+            "enter": true
+          },
+          {
+            "form": "wear",
+            "enter": false
+          },
+          {
+            "form": "eat",
+            "enter": false
+          },
+          {
+            "form": "drink",
+            "enter": false
+          },
+          {
+            "form": "extinguish",
+            "enter": false
+          },
+          {
+            "form": "turn on",
+            "enter": false
+          },
+          {
+            "form": "turn off",
+            "enter": false
+          },
+          {
+            "form": "switch on",
+            "enter": false
+          },
+          {
+            "form": "switch off",
+            "enter": false
+          },
+          {
+            "form": "hold",
+            "enter": false
+          },
+          {
+            "form": "wave",
+            "enter": false
+          },
+          {
+            "form": "throw",
+            "enter": false
+          },
+          {
+            "form": "read",
+            "enter": false
+          },
+          {
+            "form": "open",
+            "enter": false
+          },
+          {
+            "form": "close",
+            "enter": false
+          },
+          {
+            "form": "search",
+            "enter": false
+          },
+          {
+            "form": "look in",
+            "enter": false
+          },
+          {
+            "form": "clean",
+            "enter": false
+          },
+          {
+            "form": "rub",
+            "enter": false
+          },
+          {
+            "form": "squeeze",
+            "enter": false
+          },
+          {
+            "form": "push",
+            "enter": false
+          },
+          {
+            "form": "smell",
+            "enter": false
+          },
+          {
+            "form": "taste",
+            "enter": false
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793637278394,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 1,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzhbkc77sak7qazobr:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 1,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:5",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793637278394,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 1,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzhbkc77sak7qazobr:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 1,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:5",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "wordStored": {
+          "version": 1,
+          "gameIdentityKey": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+          "rows": {
+            "exact:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "allowed:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "exact:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "exact:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            }
+          }
+        },
+        "projection": {
+          "exact:135:take": {
+            "id": "exact:135:take",
+            "objectId": "135",
+            "form": "take",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          },
+          "exact:135:light": {
+            "id": "exact:135:light",
+            "objectId": "135",
+            "form": "light",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          },
+          "exact:135:douse": {
+            "id": "exact:135:douse",
+            "objectId": "135",
+            "form": "douse",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          }
+        },
+        "pending": 0,
+        "storageError": null,
+        "room": 127,
+        "inventory": [
+          {
+            "id": 135,
+            "name": "brass lamp",
+            "parent": 20
+          },
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "rendered-after-teaching",
+      "renderedRadial": {
+        "entry": "actual Actionable.Open public renderer, no physical gesture claim",
+        "main": "Light\nDouse\nExamine\nDrop\nGive to...\nMore...\nTools",
+        "more": "Put in...\nUnlock with...\nMore\nTools"
+      },
+      "state": {
+        "text": "Adventure in Humongous Cave\nDavid Malmberg's AGT version of \"Adventure\" \nwith some \"extra added\" features \nPorted to Inform By Al Golden \nLast Compiled On: 12/02/05 \nType \"HELP\" for HelpMenu \"CAVEHELP\" when underground\n \nRelease 1 / Serial number 000001 / Inform v6.30 Library 6/11 \n \nSomewhere nearby is Humongous Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. The object of the game is for you to explore the cave and return (safely) with as much treasure as possible. The cave is a mysterious and magical place. You will face many puzzling and perilous challenges as you explore.\n \nEnd of Road\nYou are standing at the end of a road before a small brick building.\nAround you is a forest. A small stream flows out of the building through a pair of one-foot pipes and down a gully to the south. Next to the door of the building, there is a faded sign.\n \nThere is an order form here.\n \n>east\n \nInside Building\nYou are inside a small building, a well house for a large spring. The stream bubbles up out of the ground and flows out the side of the building through a pair of 1 foot diameter sewer pipes. The word \"THURB\" has been painted on one of the pipes. There is a doorway in the middle of the north wall. A huge steel safe has been installed into the brick wall on the east wall.\n \nThe safe door is locked.\nA large grandfather clock stands against the wall.\nThere are some old, ugly, dirty tennis shoes here.\nA Boy-Scout compass is lying nearby\nThere are several iron keys on the ground here.\nThere is a shiny brass lamp nearby. It is off.\nThere is some tasty food here.\nThere is a small bottle of water here.\nThere is a cloak made from a heavy metallic fabric here.\nThere is a sign here.\n \n \n>take lamp\nYou take the the brass lamp.\n \n>light lamp\nYou light the lamp.\n \n>douse lamp\nYou extinguish the lamp.\n \n>light lamp\nYou light the lamp.\n \n>douse lamp\nYou extinguish the lamp.\n \n> ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": {
+          "id": 135,
+          "name": "brass lamp",
+          "parentId": 20,
+          "attrs": {
+            "animate": false,
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": false,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "lockable": false,
+            "locked": false,
+            "moved": true,
+            "on": false,
+            "open": false,
+            "isOpen": false,
+            "openable": false,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "transparent": false,
+            "visited": false,
+            "workflag": false,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "takeable": true
+          },
+          "aliases": [
+            "lantern",
+            "lamp",
+            "light",
+            "brass"
+          ],
+          "confidence": 0.9,
+          "discovered": true,
+          "displayName": "brass lamp"
+        },
+        "objectCommands": [
+          {
+            "command": "examine lamp",
+            "verb": "examine"
+          },
+          {
+            "command": "light lamp",
+            "verb": "light"
+          },
+          {
+            "command": "douse lamp",
+            "verb": "douse"
+          },
+          {
+            "command": "drop lamp",
+            "verb": "drop"
+          },
+          {
+            "command": "give lamp to ",
+            "verb": "give to"
+          },
+          {
+            "command": "put lamp in ",
+            "verb": "put in"
+          }
+        ],
+        "yourselfCommands": [
+          {
+            "form": "examine",
+            "enter": true
+          },
+          {
+            "form": "light",
+            "enter": true
+          },
+          {
+            "form": "douse",
+            "enter": true
+          },
+          {
+            "form": "drop",
+            "enter": true
+          },
+          {
+            "form": "wear",
+            "enter": false
+          },
+          {
+            "form": "eat",
+            "enter": false
+          },
+          {
+            "form": "drink",
+            "enter": false
+          },
+          {
+            "form": "extinguish",
+            "enter": false
+          },
+          {
+            "form": "turn on",
+            "enter": false
+          },
+          {
+            "form": "turn off",
+            "enter": false
+          },
+          {
+            "form": "switch on",
+            "enter": false
+          },
+          {
+            "form": "switch off",
+            "enter": false
+          },
+          {
+            "form": "hold",
+            "enter": false
+          },
+          {
+            "form": "wave",
+            "enter": false
+          },
+          {
+            "form": "throw",
+            "enter": false
+          },
+          {
+            "form": "read",
+            "enter": false
+          },
+          {
+            "form": "open",
+            "enter": false
+          },
+          {
+            "form": "close",
+            "enter": false
+          },
+          {
+            "form": "search",
+            "enter": false
+          },
+          {
+            "form": "look in",
+            "enter": false
+          },
+          {
+            "form": "clean",
+            "enter": false
+          },
+          {
+            "form": "rub",
+            "enter": false
+          },
+          {
+            "form": "squeeze",
+            "enter": false
+          },
+          {
+            "form": "push",
+            "enter": false
+          },
+          {
+            "form": "smell",
+            "enter": false
+          },
+          {
+            "form": "taste",
+            "enter": false
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793637278394,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 1,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzhbkc77sak7qazobr:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793637278394,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 1,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzhbkc77sak7qazobr:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "wordStored": {
+          "version": 1,
+          "gameIdentityKey": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+          "rows": {
+            "exact:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "allowed:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "exact:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "exact:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            }
+          }
+        },
+        "projection": {
+          "exact:135:take": {
+            "id": "exact:135:take",
+            "objectId": "135",
+            "form": "take",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          },
+          "exact:135:light": {
+            "id": "exact:135:light",
+            "objectId": "135",
+            "form": "light",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          },
+          "exact:135:douse": {
+            "id": "exact:135:douse",
+            "objectId": "135",
+            "form": "douse",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          }
+        },
+        "pending": 0,
+        "storageError": null,
+        "room": 127,
+        "inventory": [
+          {
+            "id": 135,
+            "name": "brass lamp",
+            "parent": 20
+          },
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    },
+    {
+      "stage": "settled-before-close-no-save",
+      "state": {
+        "text": "Adventure in Humongous Cave\nDavid Malmberg's AGT version of \"Adventure\" \nwith some \"extra added\" features \nPorted to Inform By Al Golden \nLast Compiled On: 12/02/05 \nType \"HELP\" for HelpMenu \"CAVEHELP\" when underground\n \nRelease 1 / Serial number 000001 / Inform v6.30 Library 6/11 \n \nSomewhere nearby is Humongous Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. The object of the game is for you to explore the cave and return (safely) with as much treasure as possible. The cave is a mysterious and magical place. You will face many puzzling and perilous challenges as you explore.\n \nEnd of Road\nYou are standing at the end of a road before a small brick building.\nAround you is a forest. A small stream flows out of the building through a pair of one-foot pipes and down a gully to the south. Next to the door of the building, there is a faded sign.\n \nThere is an order form here.\n \n>east\n \nInside Building\nYou are inside a small building, a well house for a large spring. The stream bubbles up out of the ground and flows out the side of the building through a pair of 1 foot diameter sewer pipes. The word \"THURB\" has been painted on one of the pipes. There is a doorway in the middle of the north wall. A huge steel safe has been installed into the brick wall on the east wall.\n \nThe safe door is locked.\nA large grandfather clock stands against the wall.\nThere are some old, ugly, dirty tennis shoes here.\nA Boy-Scout compass is lying nearby\nThere are several iron keys on the ground here.\nThere is a shiny brass lamp nearby. It is off.\nThere is some tasty food here.\nThere is a small bottle of water here.\nThere is a cloak made from a heavy metallic fabric here.\nThere is a sign here.\n \n \n>take lamp\nYou take the the brass lamp.\n \n>light lamp\nYou light the lamp.\n \n>douse lamp\nYou extinguish the lamp.\n \n>light lamp\nYou light the lamp.\n \n>douse lamp\nYou extinguish the lamp.\n \n> ",
+        "lineInput": true,
+        "charInput": false,
+        "identity": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+        "generation": 0,
+        "lamp": {
+          "id": 135,
+          "name": "brass lamp",
+          "parentId": 20,
+          "attrs": {
+            "animate": false,
+            "absent": false,
+            "clothing": false,
+            "wearable": false,
+            "concealed": false,
+            "container": false,
+            "door": false,
+            "edible": false,
+            "enterable": false,
+            "general": false,
+            "light": false,
+            "lockable": false,
+            "locked": false,
+            "moved": true,
+            "on": false,
+            "open": false,
+            "isOpen": false,
+            "openable": false,
+            "proper": false,
+            "scenery": false,
+            "scored": false,
+            "static": false,
+            "supporter": false,
+            "switchable": false,
+            "talkable": false,
+            "transparent": false,
+            "visited": false,
+            "workflag": false,
+            "worn": false,
+            "male": false,
+            "female": false,
+            "neuter": false,
+            "pluralname": false,
+            "takeable": true
+          },
+          "aliases": [
+            "lantern",
+            "lamp",
+            "light",
+            "brass"
+          ],
+          "confidence": 0.9,
+          "discovered": true,
+          "displayName": "brass lamp"
+        },
+        "objectCommands": [
+          {
+            "command": "examine lamp",
+            "verb": "examine"
+          },
+          {
+            "command": "light lamp",
+            "verb": "light"
+          },
+          {
+            "command": "douse lamp",
+            "verb": "douse"
+          },
+          {
+            "command": "drop lamp",
+            "verb": "drop"
+          },
+          {
+            "command": "give lamp to ",
+            "verb": "give to"
+          },
+          {
+            "command": "put lamp in ",
+            "verb": "put in"
+          }
+        ],
+        "yourselfCommands": [
+          {
+            "form": "examine",
+            "enter": true
+          },
+          {
+            "form": "light",
+            "enter": true
+          },
+          {
+            "form": "douse",
+            "enter": true
+          },
+          {
+            "form": "drop",
+            "enter": true
+          },
+          {
+            "form": "wear",
+            "enter": false
+          },
+          {
+            "form": "eat",
+            "enter": false
+          },
+          {
+            "form": "drink",
+            "enter": false
+          },
+          {
+            "form": "extinguish",
+            "enter": false
+          },
+          {
+            "form": "turn on",
+            "enter": false
+          },
+          {
+            "form": "turn off",
+            "enter": false
+          },
+          {
+            "form": "switch on",
+            "enter": false
+          },
+          {
+            "form": "switch off",
+            "enter": false
+          },
+          {
+            "form": "hold",
+            "enter": false
+          },
+          {
+            "form": "wave",
+            "enter": false
+          },
+          {
+            "form": "throw",
+            "enter": false
+          },
+          {
+            "form": "read",
+            "enter": false
+          },
+          {
+            "form": "open",
+            "enter": false
+          },
+          {
+            "form": "close",
+            "enter": false
+          },
+          {
+            "form": "search",
+            "enter": false
+          },
+          {
+            "form": "look in",
+            "enter": false
+          },
+          {
+            "form": "clean",
+            "enter": false
+          },
+          {
+            "form": "rub",
+            "enter": false
+          },
+          {
+            "form": "squeeze",
+            "enter": false
+          },
+          {
+            "form": "push",
+            "enter": false
+          },
+          {
+            "form": "smell",
+            "enter": false
+          },
+          {
+            "form": "taste",
+            "enter": false
+          }
+        ],
+        "table": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793637278394,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 1,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzhbkc77sak7qazobr:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "stored": {
+          "version": 2,
+          "verbs": {},
+          "objects": {
+            "135": {
+              "takeable": true,
+              "confirmedAt": 1793637278394,
+              "allowedVerbs": {
+                "take": {
+                  "confirmations": 2,
+                  "opcodeConfirmed": true,
+                  "form": "take",
+                  "at": 1793637278394
+                }
+              },
+              "exactForms": {
+                "take": {
+                  "confirmations": 1,
+                  "objectId": 135,
+                  "form": "take",
+                  "submissionId": "mvzhbkc77sak7qazobr:3",
+                  "source": "opcode-state"
+                }
+              },
+              "rememberedForms": {
+                "light": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:6",
+                  "outcome": "response-observed"
+                },
+                "douse": {
+                  "digest": "570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+                  "observations": 2,
+                  "source": "remembered-item-preference",
+                  "submissionId": "mvzhbkc77sak7qazobr:7",
+                  "outcome": "response-observed"
+                }
+              }
+            }
+          },
+          "locationGlobal": {
+            "candidates": {
+              "1": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "26": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "27": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "30": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              },
+              "65": {
+                "transitions": 1,
+                "returns": 0,
+                "seen": {
+                  "113": true,
+                  "127": true
+                },
+                "history": [
+                  "113>127"
+                ]
+              }
+            },
+            "confirmedSlot": null,
+            "confirmedSlots": [],
+            "stableFor": 0
+          },
+          "verbBehavior": {
+            "disabled": {},
+            "substituteVerb": null
+          },
+          "inventoryRootId": 20
+        },
+        "wordStored": {
+          "version": 1,
+          "gameIdentityKey": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+          "rows": {
+            "exact:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "allowed:135:take": {
+              "trigger": "take",
+              "label": "Take",
+              "ignored": false,
+              "objectId": "135",
+              "original": "take",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": true,
+              "inspectForm": false
+            },
+            "exact:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:light": {
+              "trigger": "light",
+              "label": "Light",
+              "ignored": false,
+              "objectId": "135",
+              "original": "light",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "exact:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            },
+            "allowed:135:douse": {
+              "trigger": "douse",
+              "label": "Douse",
+              "ignored": false,
+              "objectId": "135",
+              "original": "douse",
+              "revision": "classification",
+              "witnesses": [],
+              "classificationOnly": true,
+              "knownBefore": false,
+              "inspectForm": false
+            }
+          }
+        },
+        "projection": {
+          "exact:135:take": {
+            "id": "exact:135:take",
+            "objectId": "135",
+            "form": "take",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          },
+          "exact:135:light": {
+            "id": "exact:135:light",
+            "objectId": "135",
+            "form": "light",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          },
+          "exact:135:douse": {
+            "id": "exact:135:douse",
+            "objectId": "135",
+            "form": "douse",
+            "key": "sha256:570571dbc15e311d550fe271151a830e9a8be546e2a8e3305005f24d618db80e",
+            "generation": 0
+          }
+        },
+        "pending": 0,
+        "storageError": null,
+        "room": 127,
+        "inventory": [
+          {
+            "id": 135,
+            "name": "brass lamp",
+            "parent": 20
+          },
+          {
+            "id": 503,
+            "name": "Knapsack",
+            "parent": 20
+          }
+        ]
+      }
+    }
+  ]
+}

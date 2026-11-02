@@ -30,6 +30,7 @@ var Input = {
     Value: () => $(".Input.LineInput").val(),
 
     Inject: (text, hitEnter, source) => {
+        if (typeof WorkspaceUI !== 'undefined' && WorkspaceUI._leaving) return false;
         source = source || "inject";
         try { if (source !== "stat-probe" && typeof MapTopology !== "undefined") MapTopology.noteCommand(text); } catch (e) {}
         if (!$(".Input.LineInput").length || (hitEnter && (Message.IsOpen || $("#dialog").length))) return false;
@@ -173,7 +174,7 @@ var Input = {
             }
         }
         if ($line.length) {
-            Input.Inject("", true);
+            Input.Inject("", true, 'user-send');
             // D105: the keyboard retracts after a submitted command so it never covers the reply.
             if (Input.ManagesMobileIme()) Input.DismissKeyboard();
             return true;
@@ -920,7 +921,7 @@ var Input = {
                     try { Input.Clear(); } catch (e) {}
                     try {
                         if (typeof Actionable !== "undefined" && Actionable.Submit) {
-                            Actionable.Submit(say);
+                            Actionable.Submit(say, 'user-voice');
                             return;
                         }
                     } catch (e) {}

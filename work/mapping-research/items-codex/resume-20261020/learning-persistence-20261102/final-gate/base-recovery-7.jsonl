@@ -1,0 +1,8 @@
+{"game":"photopia.z5.js","exits":[],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"samhain.z5.js","exits":[],"marks":["others","trees","Farmer Brown","wife","scary faces","oddly shaped building"],"inv1":[],"inv2":[],"rooms":[]}
+{"game":"spacest2.z5.js","exits":["out>109"],"marks":["Patrol","radioactive isotopes","couch","viewport","slot","scooter's metre square steel hatch","toolbox"],"inv1":["44:mechanical translator","49:chronometer","42:Patrol uniform","50:box of radioactive isotopes"],"inv2":["114:toolbox","44:mechanical translator","49:chronometer","42:Patrol uniform","50:box of radioactive isotopes"],"rooms":["110:Scooter"]}
+{"game":"sycamora.z5.js","exits":["east>34","north>34","northeast>34","northwest>33","south>33","southeast>33","southwest>34","west>33"],"marks":[],"inv1":[],"inv2":[],"rooms":["33:Lost Deep in the Forest","34:Lost in the Forest"]}
+{"game":"thegreat.z5.js","exits":[],"marks":["flashlight","compass"],"inv1":["34:compass","33:flashlight"],"inv2":["34:compass","33:flashlight"],"rooms":["29:Cave Exit"]}
+{"game":"under.z5.js","exits":["west>27"],"marks":["under","decorations","west","door"],"inv1":[],"inv2":[],"rooms":["24:Your Bedroom"]}
+{"game":"warp.z5.js","exits":["east>34","north>37","west>28"],"marks":["north","west","east"],"inv1":[],"inv2":[],"rooms":["27:Bedroom","28:Bathroom","34:Library","37:Intersection","39:Dining Room","49:Intersection","57:Strange Bedroom"]}
+{"game":"wump2ka.z5.js","exits":[],"marks":[],"inv1":[],"inv2":[],"rooms":[]}
