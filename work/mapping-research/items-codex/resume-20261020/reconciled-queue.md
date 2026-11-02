@@ -6,7 +6,7 @@
 
 Learning persistence repair is implemented and actual independent final R3 review ACCEPTED. See learning-persistence-20261102/final-disposition.md and final-r3-gate-review.md for exact source, tests, classification and limits. Final baseline/candidate309 each;0 regression/0 unresolved,7 measured annotation variances,7 matching no-prompt coverage gaps. Focused learning47 and operator13 pass; actual older-save restore/unsaved exit/reopen retains learned Light/Douse without reteaching. Existing Learned Words settings/tracking/erase reused; no compatibility import/new database. No APK built/installed or physical-phone validation.
 
-Final runtime frozen to final-gate-r3/manifest.json; do not repeat unchanged catalogues/native proofs. Commit exact source/tests/docs/evidence only. Authenticated bus original6000halt retained, no bypass. After priority close, reconcile current full26 plans/durable peer responses before selecting next disjoint slice; historical assignments below are not fresh claims. Preserve unrelated dirty work; no overall completion.
+Final runtime frozen to final-gate-r3/manifest.json; do not repeat unchanged catalogues/native proofs. Repair/source/evidence committed 2044b6581df707d2fe716458ad0b671bee0cd0a8. Preserve that accepted snapshot. Authenticated bus original6000halt retained, no bypass. After priority close, reconcile current full26 plans/durable peer responses before selecting next disjoint slice; historical assignments below are not fresh claims. Preserve unrelated dirty work; no overall completion.
 <!-- NOV2_LEARNING_QUEUE_END -->
 
 <!-- POWER_RECOVERY_CURRENT_QUEUE_START -->

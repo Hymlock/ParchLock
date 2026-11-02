@@ -9,3 +9,5 @@ Final focused results in final-gate-r3/checks.json and logs: persistence47, stor
 Actual HugeCave older-save RESTORE, unsaved app exit, fresh reopen/reacquire without reteaching: final-native-r3-restore-existing.json. Identical remembered records, Light/Douse main radial priority, pending writes0, all pre/post JS hashes match manifest. Existing settings and Ignore/unignore controls: implementation-settings-r1.json and implementation-settings-controls-r1.json; these precede only the reviewed unrelated-pair preflight correction. Public renderer/native engine evidence, not physical Android gesture/cache proof.
 
 No APK built or installed; phone untouched. Existing bus remains authenticated but halted at maxRounds6000; no bypass. Private profiles/copied APK excluded from commit. No overall project completion declared.
+
+Production/source and sealed evidence commit: 2044b6581df707d2fe716458ad0b671bee0cd0a8. No runtime changes after accepted final R3.
