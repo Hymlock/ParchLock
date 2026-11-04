@@ -1,0 +1,56 @@
+{
+  "method": "Static independent current-source and exact executable identity audit; no browser/native/catalog rerun",
+  "mapzeroRows": [
+    {
+      "game": "cabal.z5.js",
+      "executableDigest": "5fe1406def45c0df5edb65362ec9fa2b840f3f30ab34169d92750b654ef5b114",
+      "playerGlobal": 18,
+      "currentMatchesReviewedCommit": true
+    },
+    {
+      "game": "bluechairs.z5.js",
+      "executableDigest": "7b50dacf8d8b15e2a6429d2173a7c6d07630f4394587ddf1ddee11508503c25b",
+      "playerGlobal": 22,
+      "currentMatchesReviewedCommit": true
+    },
+    {
+      "game": "Tokyo2.z5.js",
+      "executableDigest": "c805f56df1dd88dde0f869c07cd39136702026bf17589dc5071f656be5d87647",
+      "playerGlobal": 19,
+      "currentMatchesReviewedCommit": true
+    },
+    {
+      "game": "rameses.zblorb.js",
+      "executableDigest": "b41ec3bd73f033ed4fffac072d1d469e9d3c83f1a2e998fc56886885b18a73e6",
+      "playerGlobal": 18,
+      "currentMatchesReviewedCommit": true
+    },
+    {
+      "game": "Heroine.z8.js",
+      "executableDigest": "35f2844ed997f5ce8782b8d77760193c50ab38438d2c2bd2426a036c516fc256",
+      "playerGlobal": 18,
+      "currentMatchesReviewedCommit": true
+    },
+    {
+      "game": "gostak.z5.js",
+      "executableDigest": "fa704c43a7df79bceb3ecbddfa99b864758c6c714d09642eeb3220eb3131a5c5",
+      "playerGlobal": 18,
+      "currentMatchesReviewedCommit": true
+    }
+  ],
+  "hiddenRows": [
+    {
+      "file": "bluechairs.z5.js",
+      "digest": "7b50dacf8d8b15e2a6429d2173a7c6d07630f4394587ddf1ddee11508503c25b",
+      "bit": 3
+    },
+    {
+      "file": "Tokyo2.z5.js",
+      "digest": "c805f56df1dd88dde0f869c07cd39136702026bf17589dc5071f656be5d87647",
+      "bit": 17
+    }
+  ],
+  "commitsAllAncestors": true,
+  "sourceSha256": "a8bc41484058bd65a9585d2bc97bdf951907aae63c25fd7151165f65013311a4",
+  "limits": "Retained live proofs independently reviewed as artifacts, not newly executed. Does not close phone checks, runtime-changing actor roles or missing natural routes."
+}

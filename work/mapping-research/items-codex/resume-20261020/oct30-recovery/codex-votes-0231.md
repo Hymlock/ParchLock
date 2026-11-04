@@ -1,3 +1,8 @@
+<!-- NOV4_LEAD_COORDINATION -->
+# Current operator direction — Codex lead; two-active-seat work review
+
+User explicitly makes Codex lead and authorizes unavailable-seat recovery/takeover. BOTH active seats requested to review OPEN_WORK list independently and select next ZIL work. Grok: please read ../nov4-lead/TO-GROK-PRIORITY-REVIEW.md and seal your review in your lane before comparison. Authenticated bus restored normalservice; original6000halt retained, durablefile coordination only. Runtimekeyboard Build76/source378c0755 +evidenceaa141b8d done, no rework/newAPK withoutnewneed. Actual Grok independent review received: grok-lane-1031/NOV4-PRIORITY-REVIEW.md. Root decision ../nov4-lead/joint-next-work-plan.md confirms Grok leak-census-1104 read-only lane; Codex E5 audits. Root alreadyediting OPEN_WORK, no concurrentpeeredit.
+
 <!-- CURRENT_RECOVERY_REVIEW_START -->
 # Current recovery review — supersedes historical updates below
 
@@ -160,3 +165,5 @@ DISJOINT NEWNATIVE packet fordisclosedlapelgap: lapel-native-packet.md/config/ra
 OWNERGATE active verified: Claude final-combined-gate-1031 BASEec8d4a6a (codecandidatecertifiedby50b9596), pocketlanded2286cbdc; Codexno duplicatedworkers. Newlapelnatural37commandproof NOW independentlyretainedrawACCEPT lapel-native-independent-review.md, notjustearlierXcontrol; closesdisclosedcapturegap narrowlypendingactualpeer review. IMPORTANT APKscope: currentrootoperatorinstruction saysAPK75delivered/no rebuildunlessnewrequest; Claude/Grokplanningdevbuild shouldcite anyNEWrecordedoperatorphone-testrequestafterthatdelivery. No newAPKrequestinthisrecoverychat; ifnoneexists, do not build. Thisisrequestforpeerexistingauthorizationevidence, notuserreconfirmationoroverrideofactualnewoperatorrequest.
 
 Research14af8535 committed32exactproof/reviewfiles, noJSedits/unrelatedstagedworkincluded. Lapelpacket independentreadonlyACCEPT completed (full62JS/raw/config/wrapperverified, limitsdocumented), actualClaude/Grok domainvote pending. FinalcombinedgateClaudeactive BASEec8d4a6a/accepted50bsource; rootno duplicateworkers, JSworkingtreeclean observed. Updatedcheckpoint/queueCURRENTsupersedehistoricalheaders.
+
+Finalcombinedpairinitialread:309report/14fields/8titles; ownerpairedrerunsstarted, no duplicatefromCodex. final-combined-gate-initial-review.md. Sherlockinv1/2expectedholderlabelremovals ACCEPTintentdirection; SherlockcoatmarklossSEPARATEneedsactualpairedreruns/justification, notwaivedbyIparity. Awaitcompletedclassification+immutablepre/postroots/manifests+operator/3enginerefs; don'tlabelallknownflakywithoutthispair'sevidence. No prematuregateACCEPT/REGclaim.

@@ -1,0 +1,529 @@
+{
+  "date": "2026-11-04",
+  "source": {
+    "js/Input.js": "b7f94a2132e427e5fde6815e3bd8218c54fe5ce4fc2c9ec2350adb231818d25c",
+    "lib/main.js": "5155f95821cf719e218aa54d614d2d57cc2fbae8e533c9bb3aba09ac7aeaa7b9"
+  },
+  "method": "Fresh isolated Chromium; trusted Playwright keyboard events. Passive event traces plus forwarding Inject wrapper; no production edits or VM/state injection.",
+  "rows": [
+    {
+      "stage": "fresh-start-current-reference",
+      "state": {
+        "native": {
+          "room": 118,
+          "text": "ark of Infocom, Inc.\nRelease number 14 / Serial number 841005\n \nIt's Halloween night. Veronica Ashcroft and her mania for Halloween parties are putting new twists on a 110-year-old tradition. It isn't a very nice night for a party. The rain has been pelting down since early morning, but the weather hasn't deterred many guests. The ballroom at Ashcroft Farm is filled with oddly costumed visitors. The rather ridiculous western outfit you are wearing was the only thing you could find at the costumer's on such short notice, but it's out of place only for its relative sobriety and taste in this crowd.\n \nBallroom, Near Bar\nThis is the south end of the ballroom, at the bar.\nElsewhere in this large ballroom, there are scores of other party guests dressed in all sorts of outlandish costumes. On the dance floor are some of the older dancers. The band is playing \"Breathless.\"\nOn the periphery of the room small groups can be seen, discussing everything from politics to local scandals.\nThe bartender is busy behind the bar, his only concession to the party a small domino mask.\nSamuel Ostmann, enjoying himself hugely as a vampire, is here.\n \nA sheik, whom you can recognize as Michael Wellman, and a fairy queen, presumably Veronica Ashcroft under her ornate mask, are discussing something with a small group of guests near the fireplace. The sheik notices you and waves for you to join them.\n \n> ",
+          "input": "",
+          "keys": []
+        },
+        "projection": {
+          "mask": {
+            "id": 38,
+            "name": "western mask",
+            "parentId": 99,
+            "attrs": {
+              "animate": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "locked": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": true,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "takeable": true
+            },
+            "aliases": [
+              "mask"
+            ],
+            "confidence": 0.9,
+            "discovered": true,
+            "displayName": "western mask"
+          },
+          "reference": {
+            "noun": "mask",
+            "candidateIds": [
+              38
+            ],
+            "unique": true,
+            "verified": true,
+            "provenance": "scoped-vocabulary"
+          },
+          "commands": [
+            {
+              "verb": "examine",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "examine mask",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "remove mask",
+              "confidence": 0.9
+            }
+          ],
+          "player": 99,
+          "memDigest": "d02fd95bae5398f9b87fe0f537f288b45e93967008948970f1982a65b888eddb"
+        }
+      }
+    },
+    {
+      "stage": "remove mask",
+      "state": {
+        "native": {
+          "room": 118,
+          "text": "number 841005\n \nIt's Halloween night. Veronica Ashcroft and her mania for Halloween parties are putting new twists on a 110-year-old tradition. It isn't a very nice night for a party. The rain has been pelting down since early morning, but the weather hasn't deterred many guests. The ballroom at Ashcroft Farm is filled with oddly costumed visitors. The rather ridiculous western outfit you are wearing was the only thing you could find at the costumer's on such short notice, but it's out of place only for its relative sobriety and taste in this crowd.\n \nBallroom, Near Bar\nThis is the south end of the ballroom, at the bar.\nElsewhere in this large ballroom, there are scores of other party guests dressed in all sorts of outlandish costumes. On the dance floor are some of the older dancers. The band is playing \"Breathless.\"\nOn the periphery of the room small groups can be seen, discussing everything from politics to local scandals.\nThe bartender is busy behind the bar, his only concession to the party a small domino mask.\nSamuel Ostmann, enjoying himself hugely as a vampire, is here.\n \nA sheik, whom you can recognize as Michael Wellman, and a fairy queen, presumably Veronica Ashcroft under her ornate mask, are discussing something with a small group of guests near the fireplace. The sheik notices you and waves for you to join them.\n \n>remove mask\nYou'll have to be more specific.\n \n> ",
+          "input": "",
+          "keys": [
+            {
+              "target": "window",
+              "capture": true,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            },
+            {
+              "target": "document",
+              "capture": true,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            },
+            {
+              "target": "body",
+              "capture": true,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            },
+            {
+              "target": "body",
+              "capture": false,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            },
+            {
+              "target": "document",
+              "capture": false,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            },
+            {
+              "target": "window",
+              "capture": false,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            }
+          ]
+        },
+        "projection": {
+          "mask": {
+            "id": 38,
+            "name": "western mask",
+            "parentId": 99,
+            "attrs": {
+              "animate": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "locked": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": true,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "takeable": true
+            },
+            "aliases": [
+              "mask"
+            ],
+            "confidence": 0.9,
+            "discovered": true,
+            "displayName": "western mask"
+          },
+          "reference": {
+            "noun": "mask",
+            "candidateIds": [
+              38
+            ],
+            "unique": true,
+            "verified": true,
+            "provenance": "scoped-vocabulary"
+          },
+          "commands": [
+            {
+              "verb": "examine",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "examine mask",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "remove mask",
+              "confidence": 0.9
+            }
+          ],
+          "player": 99,
+          "memDigest": "d02fd95bae5398f9b87fe0f537f288b45e93967008948970f1982a65b888eddb"
+        }
+      }
+    },
+    {
+      "stage": "remove western mask",
+      "state": {
+        "native": {
+          "room": 118,
+          "text": "t the weather hasn't deterred many guests. The ballroom at Ashcroft Farm is filled with oddly costumed visitors. The rather ridiculous western outfit you are wearing was the only thing you could find at the costumer's on such short notice, but it's out of place only for its relative sobriety and taste in this crowd.\n \nBallroom, Near Bar\nThis is the south end of the ballroom, at the bar.\nElsewhere in this large ballroom, there are scores of other party guests dressed in all sorts of outlandish costumes. On the dance floor are some of the older dancers. The band is playing \"Breathless.\"\nOn the periphery of the room small groups can be seen, discussing everything from politics to local scandals.\nThe bartender is busy behind the bar, his only concession to the party a small domino mask.\nSamuel Ostmann, enjoying himself hugely as a vampire, is here.\n \nA sheik, whom you can recognize as Michael Wellman, and a fairy queen, presumably Veronica Ashcroft under her ornate mask, are discussing something with a small group of guests near the fireplace. The sheik notices you and waves for you to join them.\n \n>remove mask\nYou'll have to be more specific.\n \n>remove western mask\nYou remove your mask, revealing your smiling face and twinkling eyes.\n \nThe sheik, seeing your reluctance to join them, shrugs his shoulders and rejoins the conversation, a proprietary hand on the fairy's shoulder.\n \n> ",
+          "input": "",
+          "keys": [
+            {
+              "target": "window",
+              "capture": true,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            },
+            {
+              "target": "document",
+              "capture": true,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            },
+            {
+              "target": "body",
+              "capture": true,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            },
+            {
+              "target": "body",
+              "capture": false,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            },
+            {
+              "target": "document",
+              "capture": false,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            },
+            {
+              "target": "window",
+              "capture": false,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            }
+          ]
+        },
+        "projection": {
+          "mask": {
+            "id": 38,
+            "name": "western mask",
+            "parentId": 99,
+            "attrs": {
+              "animate": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "locked": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": false,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "takeable": true
+            },
+            "aliases": [
+              "mask"
+            ],
+            "confidence": 0.9,
+            "discovered": true,
+            "displayName": "western mask"
+          },
+          "reference": {
+            "noun": "mask",
+            "candidateIds": [
+              38
+            ],
+            "unique": true,
+            "verified": true,
+            "provenance": "scoped-vocabulary"
+          },
+          "commands": [
+            {
+              "verb": "examine",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "examine mask",
+              "confidence": 0.9
+            },
+            {
+              "verb": "drop",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "drop mask",
+              "confidence": 0.9
+            },
+            {
+              "verb": "give to",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "give mask to ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "put in",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "put mask in ",
+              "confidence": 0.9
+            },
+            {
+              "verb": "wear",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "wear mask",
+              "confidence": 0.9,
+              "identityWearScope": {
+                "kind": "identity-wear-held-direct",
+                "digest": "d02fd95bae5398f9b87fe0f537f288b45e93967008948970f1982a65b888eddb",
+                "generation": 0,
+                "id": 38,
+                "noun": "mask",
+                "command": "wear mask"
+              }
+            }
+          ],
+          "player": 99,
+          "memDigest": "d02fd95bae5398f9b87fe0f537f288b45e93967008948970f1982a65b888eddb"
+        }
+      }
+    },
+    {
+      "stage": "wear western mask",
+      "state": {
+        "native": {
+          "room": 118,
+          "text": "briety and taste in this crowd.\n \nBallroom, Near Bar\nThis is the south end of the ballroom, at the bar.\nElsewhere in this large ballroom, there are scores of other party guests dressed in all sorts of outlandish costumes. On the dance floor are some of the older dancers. The band is playing \"Breathless.\"\nOn the periphery of the room small groups can be seen, discussing everything from politics to local scandals.\nThe bartender is busy behind the bar, his only concession to the party a small domino mask.\nSamuel Ostmann, enjoying himself hugely as a vampire, is here.\n \nA sheik, whom you can recognize as Michael Wellman, and a fairy queen, presumably Veronica Ashcroft under her ornate mask, are discussing something with a small group of guests near the fireplace. The sheik notices you and waves for you to join them.\n \n>remove mask\nYou'll have to be more specific.\n \n>remove western mask\nYou remove your mask, revealing your smiling face and twinkling eyes.\n \nThe sheik, seeing your reluctance to join them, shrugs his shoulders and rejoins the conversation, a proprietary hand on the fairy's shoulder.\n \n>wear western mask\nOkay.\n \nOff near the fireplace, the sheik and the fairy queen are conversing with a small group. The fairy is emphasizing some point when suddenly, she manages to spill her drink on her gown. Her reaction is audible even where you are standing, and she stalks off.\n \n> ",
+          "input": "",
+          "keys": [
+            {
+              "target": "window",
+              "capture": true,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            },
+            {
+              "target": "document",
+              "capture": true,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            },
+            {
+              "target": "body",
+              "capture": true,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            },
+            {
+              "target": "body",
+              "capture": false,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            },
+            {
+              "target": "document",
+              "capture": false,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            },
+            {
+              "target": "window",
+              "capture": false,
+              "key": "Enter",
+              "ctrl": false,
+              "shift": false,
+              "defaultPrevented": false,
+              "eventTarget": "Input LineInput"
+            }
+          ]
+        },
+        "projection": {
+          "mask": {
+            "id": 38,
+            "name": "western mask",
+            "parentId": 99,
+            "attrs": {
+              "animate": false,
+              "concealed": false,
+              "container": false,
+              "door": false,
+              "edible": false,
+              "enterable": false,
+              "general": false,
+              "light": false,
+              "locked": false,
+              "moved": false,
+              "on": false,
+              "open": false,
+              "isOpen": false,
+              "proper": false,
+              "scenery": false,
+              "scored": true,
+              "static": false,
+              "supporter": false,
+              "talkable": false,
+              "transparent": false,
+              "visited": false,
+              "workflag": false,
+              "worn": true,
+              "male": false,
+              "female": false,
+              "neuter": false,
+              "pluralname": false,
+              "takeable": true
+            },
+            "aliases": [
+              "mask"
+            ],
+            "confidence": 0.9,
+            "discovered": true,
+            "displayName": "western mask"
+          },
+          "reference": {
+            "noun": "mask",
+            "candidateIds": [
+              38
+            ],
+            "unique": true,
+            "verified": true,
+            "provenance": "scoped-vocabulary"
+          },
+          "commands": [
+            {
+              "verb": "examine",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "examine mask",
+              "confidence": 0.9
+            },
+            {
+              "verb": "remove",
+              "noun": "mask",
+              "objectId": 38,
+              "command": "remove mask",
+              "confidence": 0.9
+            }
+          ],
+          "player": 99,
+          "memDigest": "d02fd95bae5398f9b87fe0f537f288b45e93967008948970f1982a65b888eddb"
+        }
+      }
+    }
+  ],
+  "errors": []
+}

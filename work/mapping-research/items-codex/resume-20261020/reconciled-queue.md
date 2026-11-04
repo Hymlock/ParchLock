@@ -1,3 +1,12 @@
+<!-- NOV4_ACTIVE_LEAD -->
+# Current work — Codex lead, actual Codex/Grok remaining-work review complete
+
+DirectoperatorNov4: Codexlead; recover/takeover unavailable seats and continue. Bothactualindependentreviews compared in nov4-lead/joint-next-work-plan.md. Runtime/noAPKchange thisreviewbatch. Codex E5fivecommitreturnaudit sealed:6exactdigestplayerGlobal+2hiddenfactsourcequalifiedACCEPT, oldAPK86dc evidenceREVISE(nonempty244shardsmiscalledzero/weakoldflakyclassification); actualoldphone/deepmapreviewsgapsremain. Grokclaimconfirmedread-only grok-lane-1031/leak-census-1104. RootpreflightrequiresSherlock26thtitle, realfrontier/actoridentity, finalconsumerimpact notrawPROFILEbit; nooverclaimednativecensus. CurrentnativeSuspectmaskrepro in nov4-lead shows referenceuniquetrueverifiedtrue mask->nativeambiguous; westernmaskremove/rewear succeeds. SentGrokforproposalreuse, no sourcepatchbeforeactualreview.
+
+Order: finishE5qualification +GrokA4/A1actualconsumerpacket -> narrowapproved sharedfix -> Sorcererremainingambient/UIgap (itemillumination/wornalreadylanded) -> otherexactZILusefulconsumers/proofdebt; regularInform/Glulxdeferred. OPEN_WORK stalebuild/availability/completionrows corrected fromcurrentproof, docreviewpending. No duplicatecatalog/nativeprefixes; no overallcompletion.
+
+Busnormalhiddenservice recoveredownPID51712, authenticatedinstanceb6fb424a, originalmaxRounds6000halt retained. Ownreadall423; statusunreadCodex0/Claude487/Grok144/Grok2zero, so absent-seatmailcontentsnotrecoveredorimpersonated. Actualpeerfilecoordination workingviaoct30-recovery/codex-votes-0231top +nov4-lead/. No bypass/repeatedhaltpoll. Preserveotherdirtywork/activeGrokclaim.
+
 <!-- NOV4_KEYBOARD_CURRENT -->
 # November4 priority — keyboard fix published and final validation accepted
 

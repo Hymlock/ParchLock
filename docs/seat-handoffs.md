@@ -21,7 +21,8 @@ investigation, the next plan section, a review, a census/measurement run. "Waiti
 - Tool: work/investigations/zil-walkdiff.cjs (seed parity, EXTRA, STARTKEY, DUMP, APPCMD).
 
 ## codex
-- Checkpoint: work/mapping-research/items-codex/2026-10-19-continuation.md (codex-owned).
+- Lead/current checkpoint: work/mapping-research/items-codex/resume-20261020/checkpoint.md (codex-owned).
+- Nov4: actual Grok/Codex independent list reviews compared; return audits and current ZIL consumer investigation active. Current source/native A1 mask defect verified; no new runtime change in this review batch.
 
 ## grok2
 - Checkpoint: work/investigations/2026-10-19-grok2-checkpoint.md (grok2-owned).

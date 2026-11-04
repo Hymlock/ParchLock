@@ -1,6 +1,8 @@
 # Open work
 
-November 2 operator priority: D263 module learning persistence and learned-item radial precedence is implemented
+Current November 4 order: Codex leads integration and return audits; Grok independently measures ZIL fallback/action defects. Both reviews and exact disjoint assignments: `work/mapping-research/items-codex/resume-20261020/nov4-lead/joint-next-work-plan.md`. Finish remaining ZIL useful consumers before regular Inform/Glulx. Closed rows below stay closed unless new evidence reopens them.
+
+Completed November 2 operator priority: D263 module learning persistence and learned-item radial precedence is implemented
 and independently accepted after final validation. Existing Learned Words editing/Ignore/tracking/erase is reused; no legacy migration or new
 learning database. Actual HugeCave older-save restore and unsaved exit/reopen retain Light/Douse and their priority.
 The final immutable309x2 comparison has zero unresolved regressions (seven measured annotation variances and seven matching no-prompt gaps); this entry does not close the unrelated rows below or announce an APK.
@@ -9,19 +11,19 @@ Baseline annotation follow-up: `heist.z8.js` can link the introductory metaphor 
 Natural-startup passive captures reproduce it on the unchanged baseline with identical RAM/prose to the candidate;
 this existing annotation race is retained in D263 evidence, not claimed fixed by the learning repair.
 
-Updated 2026-11-01 (America/New_York), HEAD e643191b. This is the repo's working list of what is still to be implemented. It replaces the Oct 22 list, which is kept for history as [OPEN_WORK-2026-10-22-OUTDATED.md](OPEN_WORK-2026-10-22-OUTDATED.md). Decisions and evidence remain in PRODUCTION_PLAN.md and ARCHITECTURE_UML.md.
+Reviewed 2026-11-04 (America/New_York), HEAD aa141b8d; Codex is integration lead per direct operator instruction. This is the repo's working list of what is still to be implemented. It replaces the Oct 22 list, which is kept for history as [OPEN_WORK-2026-10-22-OUTDATED.md](OPEN_WORK-2026-10-22-OUTDATED.md). Decisions and evidence remain in PRODUCTION_PLAN.md and ARCHITECTURE_UML.md.
 
 Source: the "What's Left to Implement (Nov 1, 2026)" report (48 items). Items the report marked "unverified" were rechecked on 2026-11-01 with `git log --since=2026-10-20 --grep` plus a code grep. None had a matching commit, so they stay open; corrections are noted in the rows.
 
 Status is one of: **Done** (with the commit), **Partly done**, **Not started** or **Blocked**. Size: S small, M medium, L large.
 
-Latest APK: ParchLock-dev.apk sha256 7A9C9C18...A72C, versionCode 49, built 2026-11-01 00:39 ET from e643191b (review-lane-1101/DONE.md).
+Latest published package: [Build 76 — November 4](https://github.com/Hymlock/ParchLock/releases/tag/v0.dev-2026-11-04), complete Windows PC + Android APK + corresponding source. APK SHA256 3b8a67c4960b29731e012bd5b17b5299495592f6aa67c862a8c910905598331f, versionCode50/cache175, runtime source378c0755; final evidence roy-keyboard-20261104/final-disposition.md. Publication does not satisfy any pending physical-phone check.
 
 ## Map
 
 | ID | Item | User-visible effect | Status | Blocker / notes | Source | Size |
 |---|---|---|---|---|---|---|
-| M1 | Empty map in Cabal, Blue Chairs, Tokyo2, Rameses, Heroine's Mantle: pin the real player object | Map panel stays empty and inventory shows the wrong character's items | **Done** e643191b | Exact-digest playerGlobal facts (D216/D220 path). grok-review VERDICT-001-r3 ACCEPT; gate 0 regressions. Codex/Claude audit pending (E5). Phone check pending (E7) | HANDOFF-grok-solo-1101 #1; mapzero/CLAUDE-SEALED | S |
+| M1 | Empty map in Cabal, Blue Chairs, Tokyo2, Rameses, Heroine's Mantle: pin the real player object | Map panel stays empty and inventory shows the wrong character's items | **Done** e643191b | Exact-digest playerGlobal facts (D216/D220 path). grok-review VERDICT-001-r3 ACCEPT; historical gate reported0 regressions (E5 evidence qualifications retained). Codex exact-source/retained-evidence audit accepted with qualifications (nov4-lead/solo-return-audit.md); historical gate evidence follow-up and phone check remain (E5/E7) | HANDOFF-grok-solo-1101 #1; mapzero/CLAUDE-SEALED | S |
 | M2 | The Gostak: room resolver frozen at room 80 | Map never moves past the first room | **Done** e643191b | Same cause as M1 (the app followed the wrong player object); playerGlobal 18 fact. Travel Delcot->Gomway proved (mapzero-measure/s10, s11) | HANDOFF-grok-solo-1101 #2 | M |
 | M3 | LASH: player id jumps 251 to 476 after CONNECT | After CONNECT, map and inventory may follow the old player object | Not started | Measure what the game swaps at CONNECT | HANDOFF-grok-solo-1101 #4 | M |
 | M4 | yagwad: room admitted through a third path that contradicts the first-room gate | Map works (1 room), but the path contradicts the documented rule | Not started | Reconcile MapTopology.mayAdmitFirstCurrentRoom with the "existing-resolver" path | HANDOFF-grok-solo-1101 #3 | S |
@@ -50,8 +52,8 @@ Latest APK: ParchLock-dev.apk sha256 7A9C9C18...A72C, versionCode 49, built 2026
 | ID | Item | User-visible effect | Status | Blocker / notes | Source | Size |
 |---|---|---|---|---|---|---|
 | A1 | Suspect: worn mask offers "remove mask", which the game rejects | Dead radial row ("You'll have to be more specific.") | Blocked | The noun comes from shared ActionSynth.referenceFor and there is no facts noun-override, so this is a shared-code change (skipped 11-01, REVIEW-REQUEST-002) | HANDOFF #8; TO-claude-1336 | S |
-| A2 | Sherlock lamp: duplicate generic switch verbs in the radial | Repeated switch rows beside on/off | **Done** c3dfec41, 7f0cba58 | Already fixed: other switch/turn verbs are dropped when an owner lightForms scope exists. Residual case is a user-saved LearnedWords command, tracked as A3 | HANDOFF #8 | S |
-| A3 | LearnedWords commands re-enter after the inspect filter | A taught verb can come back after being filtered | Not started | Choose: filter (ActionSynth.js ~660) or document as intended (TO-claude-1345). Low severity | HANDOFF #7 | S |
+| A2 | Sherlock lamp: duplicate generic switch verbs in the radial | Repeated switch rows beside on/off | **Done** c3dfec41, 7f0cba58 | Already fixed: other switch/turn verbs are dropped when an owner lightForms scope exists. Later learned-form filtering is covered separately by D263/A3; reopen on a new counterexample | HANDOFF #8 | S |
+| A3 | LearnedWords commands re-enter after the inspect filter | A taught verb can come back after being filtered | **Done** 2044b658 (D263) | Learned forms enter before live filtering; prior disabled inspect spellings remain suppressed, explicit Ignore remains authoritative. Actual independent source/final gate acceptance retained; reopen on a new counterexample | HANDOFF #7 | S |
 | A4 | static/scenery fallback bits leak onto wrong objects | Suspect food, lariat, mask, TV marked static; doors marked scenery | Not started | Own packet; touches shared code | PACKET-suspect-5U-final-1332 | M |
 | A5 | Commands stages 7-8: held-out challenge and legacy ActionSynth cleanup | Two command paths stay alive | Partly done | Cutover defaults ON; stages 7-8 have no commits | OPEN_WORK Oct 22 (D88) | L |
 | A6 | Options cosmetics: two panels still in monospace | "Configure directions" and "Replay tutorial" look off-style | Not started (rechecked 11-01: no commit) | Monospace is the app-wide body font by design (ParchLock.css); css/Tutorial.css:65 sets 'Roboto Mono'. Operator must confirm which two panels and the intended font | OPEN_WORK Oct 22 | S |
@@ -71,8 +73,8 @@ Latest APK: ParchLock-dev.apk sha256 7A9C9C18...A72C, versionCode 49, built 2026
 
 | ID | Item | User-visible effect | Status | Blocker / notes | Source | Size |
 |---|---|---|---|---|---|---|
-| Z1 | 94 "no reader" ZIL keys: build a consumer or rule out of scope | visited/light/lightSource decoded but unused; 7 imported-ZIL titles have no light option | Blocked | Three-seat decision (lightSource proposal R2, 2558870e); Claude and Codex back Nov 5-6 | ZIL ledger L:NC | L |
-| Z2 | Sorcerer: worn amulet and lighting not displayed | Amulet not shown worn; app says dark when lit | Not started | Consumer gap, marked OPEN | PRODUCTION_PLAN | M |
+| Z1 | Remaining ZIL no-reader domains: useful consumer or justified disposition | Some decoded flags still lack useful actions/status consumers | Partly done; per-domain review needed | D259/D260 owner-form consumers and illumination already landed. Reconcile current ledger against those consumers; old94 headline is stale and NC is not completion. Codex lead/takeover authorized Nov4; actual independent review still required | ZIL ledger L:NC | L |
+| Z2 | Sorcerer: separate worn/illumination display from ambient darkness | Worn and providing-light tags versus room-darkness handling | Partly done | Current wearable-direct-player worn path and illuminationState/Equipment tag implemented (0c266d6b; current facts/AttributeSchema). Ambient room-darkness complaint needs exact current evidence; do not redo accepted item-state consumers or close whole domain | PRODUCTION_PLAN | M |
 | Z3 | Sherlock: Take hints need the grammar FIND reader | Sherlock Take hints are generic | Blocked | D214 FIND-reader follow-up | FINAL-DISPOSITIONS-r1 | M |
 | Z4 | Seastalker: find a useful BOARD command | No correct one-tap boarding command | Blocked | Codex REVISE of the airlock CLOSE; research first | PRODUCTION_PLAN D262 | M |
 
@@ -82,8 +84,8 @@ Latest APK: ParchLock-dev.apk sha256 7A9C9C18...A72C, versionCode 49, built 2026
 |---|---|---|---|---|---|---|
 | B1 | make-dist deletes the old dist before building | A failed build leaves no dist at all | Not started | make-dist.bat line 20 (rmdir first); build to temp, then swap | make-dist.bat | S |
 | B2 | Builds ship working-tree files, including uncommitted ones | An APK can contain files not in git | Not started | robocopy reads the live tree; add a clean-tree check or use git archive | make-dist.bat | M |
-| B3 | Bump versionCode (was 48) | APK75 and the Oct 31 APK shared versionCode 48 | **Done** 1d9a3130 | versionCode 49 (VERDICT-002 ACCEPT) | android/app/build.gradle | S |
-| B4 | Write publish-release.ps1 | No scripted release | Not started | File doesn't exist | Release prep | M |
+| B3 | Bump versionCode (was 48) | APK75 and the Oct 31 APK shared versionCode 48 | **Done** 1d9a3130 / 378c0755 | Published Android versionCode50 in Build76; prior49 retained historically | android/app/build.gradle | S |
+| B4 | Write publish-release.ps1 | Scripted complete PC/APK/source publication | **Done** distribution repo bb93541 | Actual Hymlock/ParchLock publish-release.ps1 includes complete distribution ZIP plus APK/source. It lives in the distribution checkout, not this development tree | Release prep | M |
 | B5 | Public distro repo: clean history with only the 80 KEEP titles | Removed games remain in old commits | Blocked | List exists (GAMES_INCLUDED.md); re-clone needs the operator | docs/game-licensing-audit.md | M |
 | B6 | Release sign-off: keystore, art provenance, name clearance, legal, devices, pm_vm_probe rename | Release can't ship until done | Blocked | Operator decisions; lib/pm_vm_probe.* still present | OPEN_WORK Oct 22 (D99) | L |
 | B7 | Phase 9 hardening: performance, accessibility, fallbacks, full green harness | General robustness | Not started | Large | OPEN_WORK Oct 22 Phase 9 | L |
@@ -97,12 +99,12 @@ Latest APK: ParchLock-dev.apk sha256 7A9C9C18...A72C, versionCode 49, built 2026
 | E2 | Wear LH 133 / Starcross 176 natural-acquisition proof; LH ring id | Wear works in constructed tests only | Not started | Needs native routes | PRODUCTION_PLAN D262 | M |
 | E3 | V34/V69: document which slot is pinned and why | None | Not started | Docs only | HANDOFF #6 | S |
 | E4 | Seated/vehicle room-name rule: provenance | Active everywhere, proven only on seeds | Blocked | PARKED/UNACCEPTED (Codex) | PRODUCTION_PLAN D222 | M |
-| E5 | Codex audits: 16 Inform maps, ActionSynth, all solo-period commits (incl. e643191b, 1d9a3130) | Could reopen items | Blocked | Codex back Nov 6, Claude Nov 5 | codex-votes-0231; SOLO-COMMITS | M |
-| E6 | Other seats' uncommitted work (~3,300 dirty entries): commit or discard | Risk of lost or stray work | Blocked | Only the owners can decide | git status | M |
+| E5 | Codex audits: 16 Inform maps, ActionSynth, all solo-period commits (incl. e643191b, 1d9a3130) | Could reopen items | Partly done | Codex reviewed five solo commits (nov4-lead/solo-return-audit.md): source qualified ACCEPT, historical APK evidence REVISE; other16 Inform-map reviews remain. No duplicate catalog run | codex-votes-0231; SOLO-COMMITS | M |
+| E6 | Other seats' uncommitted work (~3,300 dirty entries): commit or discard | Risk of lost or stray work | Not started; takeover authorized | Operator Nov4 authorizes unavailable-seat recovery. Audit and preserve provenance before exact staging; no blanket discard or commit | git status | M |
 | E7 | Operator phone test of the 11-01 APK (7A9C9C18, versionCode 49) | Sherlock pocket/lamp, LH/Starcross Wear, Suspect clothes, heist bag, break-in chair, plus the 6 map-zero titles | Blocked | Needs the operator and the phone | TO-claude-from-grok-APK-BUILT; review-lane-1101/DONE.md | S |
 
 ## Known issues found 11-01 (not yet in the list above)
 
-- Blue Chairs: app inventory adds "twenty-three dollars" and a shirt that native INVENTORY does not list.
-- Tokyo2: app shows soup/popcorn while native inventory is empty.
+- Blue Chairs: shirt hiding addressed by8e2c906b; "twenty-three dollars" remains a representation/scope question (parser-reachable, no matching hidden bit). Return audit E5 still applies.
+- Tokyo2: soup hiding addressed by8e2c906b; popcorn remains a representation/scope question (parser-reachable, no matching hidden bit). Return audit E5 still applies.
 - Tokyo2 player id 81 also appears in globals 130/133 (VERDICT-001 N1).
