@@ -4385,3 +4385,8 @@ existing serialized write queue; failed acknowledgement keeps the page open. For
 
 D263 links sealed investigations, actual independent child reviews (not other-seat votes), exact-source native
 retention/settings evidence and the final immutable baseline/candidate gate. No new APK is implied.
+
+
+## 92. Desktop movement key ownership (D264)
+
+Ctrl+Shift+Up/Down -> Input.CaptureMovement (document capture, bound once) -> single line and target ownership -> consume owned chord -> overlay/leave/repeat guards -> Input.Clear + Input.Inject -> existing recorder/interpreter. GlkOte history retains ordinary arrows; its focused-input return-false no longer hides these owned movement chords from the app. Other controls/character prompts remain excluded. Map and guide describe Ctrl+Shift accurately. See D264 and roy-keyboard-20261104 for sealed findings, failed guard, review and final gate status.

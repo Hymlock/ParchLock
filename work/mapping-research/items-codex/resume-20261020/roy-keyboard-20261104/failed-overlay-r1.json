@@ -1,0 +1,10 @@
+{
+  "test": "constructed app-dialog-open draft preservation",
+  "before": "keep draft",
+  "actual": "",
+  "expected": "keep draft",
+  "result": "FAIL",
+  "cause": "GlkOte history ran after guard returned",
+  "action": "Reviewed amendment consumes owned chord before overlay guards; no send while blocked",
+  "initialGate": "partial cancelled own44164 tree, not passed"
+}

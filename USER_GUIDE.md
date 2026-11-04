@@ -19,7 +19,10 @@ copyright status or permission.
 ## Play And Commands
 
 Type a command and press Enter. Tab cycles autocomplete; Ctrl+Up and Ctrl+Down
-cycle command history. Highlighted objects and exits use structural state and
+cycle command history. Ctrl+Shift+Up moves North; Ctrl+Shift+Down moves South.
+Ctrl+Shift+Left/Right moves West/East. The older Ctrl+Shift+* (North) and
+Ctrl+Shift+numeric-keypad 5 (South, reported as Clear) shortcuts remain available.
+The new Up/Down shortcuts require a normal command prompt and pause while menus or dialogs are open. Highlighted objects and exits use structural state and
 the active module's grammar where the Z-machine adapter supports them. Click a
 highlight for its deterministic primary action. On touch, tap an underlined
 word for that primary action; touch and hold it for about half a second to open

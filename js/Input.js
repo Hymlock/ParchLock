@@ -2,8 +2,8 @@ var Input = {
 
     KeyboardNavigation: {
 
-        n: "/ or *",
-        s: "Numeric keypad 5",
+        n: "Up Arrow (or / or *)",
+        s: "Down Arrow (or numeric keypad 5)",
         w: "Left Arrow",
         e: "Right Arrow",
         ne: "PageUp",
@@ -133,6 +133,34 @@ var Input = {
     BindKeyboard: () => {
 
         $("body").unbind().keydown(Input.KeyPressed);
+        // Claim these keys before GlkOte's line-history handler stops bubbling.
+        if (!Input._movementCaptureBound) {
+            Input._movementCaptureBound = true;
+            document.addEventListener("keydown", Input.CaptureMovement, true);
+        }
+    },
+
+    CaptureMovement: (e) => {
+        if (!e.ctrlKey || !e.shiftKey || e.altKey || e.metaKey || e.isComposing
+            || (e.key !== "ArrowUp" && e.key !== "ArrowDown")) return;
+        var $line = $(".Input.LineInput");
+        if ($line.length !== 1 || !$line.is(":visible") || $line.prop("disabled")
+            || $(".Input.CharInput:visible").length) return;
+        var target = e.target;
+        if (target !== $line[0] && $(target).closest("input, textarea, select, button, a, [contenteditable], #pl-key-proxy").length) return;
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        if ((typeof WorkspaceUI !== "undefined" && WorkspaceUI._leaving)
+            || (typeof Message !== "undefined" && Message.IsOpen)
+            || $("#dialog, #dialog_frame, #dialog_screen").length
+            || $("body").is(".native-dialog-open, .app-dialog-open, .radial-open, .equip-open, .pl-dirpad-open")
+            || $("#radial-menu.show").length
+            || (typeof WorldMap !== "undefined" && WorldMap.IsOpen())
+            || $("body").is(".pl-mobile.map-open")) return;
+        // Holding a key must not queue multiple moves across prompt replacement.
+        if (e.repeat) return;
+        Input.Clear();
+        Input.Inject(e.key === "ArrowUp" ? "n" : "s", true, "user-navigation");
     },
 
     // D93: CharInput ("press any key") completes via ➤ without IME.
@@ -1023,8 +1051,6 @@ var Input = {
                 case "/": Input.Clear(); Input.Inject("n", true); break;
                 case "*": Input.Clear(); Input.Inject("n", true); break;
                 case "Clear": Input.Clear(); Input.Inject("s", true); break;
-                case "ArrowUp": Input.Clear(); Input.Inject("n", true); break;
-                case "ArrowDown": Input.Clear(); Input.Inject("s", true); break;
                 case "ArrowLeft": Input.Clear(); Input.Inject("w", true); break;
                 case "ArrowRight": Input.Clear(); Input.Inject("e", true); break;
                 case "PageUp": Input.Clear(); Input.Inject("ne", true); break;

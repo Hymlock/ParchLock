@@ -199,7 +199,7 @@ var ParchLockMap = {
             var room = $("<div>").addClass("room dir-" + dir).appendTo(row);
             $("<div>").addClass("dir").text(dir == "here" ? "" : dir).appendTo(room);
 
-            if (Input.KeyboardNavigation[dir]) room.attr("title", "Shift+" + Input.KeyboardNavigation[dir]);
+            if (Input.KeyboardNavigation[dir]) room.attr("title", "Ctrl+Shift+" + Input.KeyboardNavigation[dir]);
 
             if (dir != "here") {
 

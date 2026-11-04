@@ -1,5 +1,12 @@
 # ParchLock Release Notes
 
+## Build 76 - 2026-11-04
+
+- Desktop: Ctrl+Shift+Up and Ctrl+Shift+Down now send North/South even while the game command box is focused. Parchment no longer intercepts these combinations as command history.
+- Ordinary Up/Down and Ctrl+Up/Down history controls and the alternate movement keys remain available. The new Up/Down movement shortcuts preserve the draft while dialogs or overlays block movement, and held-key repeats do not queue extra moves.
+- Map shortcut tooltips now include Ctrl+Shift and advertise the arrow keys. Android versionCode 50; shell cache 175.
+
+
 ## Build 72 - 2026-10-10
 
 - Wumpus: sections of one big room are grouped. The World Map draws a frame around them, and the local map shows the room number and section count.

@@ -1,0 +1,114 @@
+PASS: GetSlices returns the room's real exits (n, e, up) PLUS a D63 numbered-exit key (exit 1), not silently dropped
+PASS: the numbered exit gets a short, legible borrowed label (E1), not the raw 'exit 1' text
+PASS: the borrowed slot never collides with n's own real angle/ring (n already claimed it)
+PASS: the borrowed slot never collides with e's own real angle/ring either
+PASS: once every ring-0 slot is claimed by real compass exits, a numbered exit borrows a ring-1 slot instead
+PASS: the borrowed ring-1 slot never collides with Up's own real angle
+PASS: a different room's slice set is fully dynamic -- only that room's own exits appear (w, out), matching D63's per-module-generality principle
+PASS: a room with zero exits and no custom slices yields zero slices (handle press becomes a no-op, per onPointerDown's own guard)
+PASS: a fresh module starts with no custom slices
+PASS: AddCustomSlice assigns a real id and persists
+PASS: the custom slice is retrievable after adding
+PASS: UpdateCustomSlice merges the patch, leaving untouched fields (command) alone
+PASS: GetSlices merges the module's saved custom slice in alongside the room's real exits
+PASS: ...without losing the room's own real exit
+PASS: RemoveCustomSlice deletes it
+PASS: a different module (different GameFilename) sees NO custom slices from the first one -- per-module storage key isolation (same PL_<Feature>_<file> convention as ParchLockMap.Save/Load)
+PASS: switching back to the original module still has its own saved slice
+PASS: ring 0 uses MAIN_RADIUS
+PASS: ring 1 uses OUTER_RADIUS
+PASS: ring 2 (first custom ring) steps out from OUTER_RADIUS by RING_STEP
+PASS: ring 3 steps out again -- unbounded, not hardcoded to two rings
+PASS: Up sits on the SAME angle as N but an outer ring -- 'above N' as an outward extension, not a separate direction
+PASS: Down sits on the SAME angle as S but an outer ring -- 'above S' (outward) mirrors Up
+PASS: In is on the SAME angle as E but the outer ring -- self-audit fix: a tight angular offset on the same ring as E made 'e'+'in' rooms render two overlapping pills every time (operator-reported live)
+PASS: Out mirrors In: same angle as W, outer ring, never the same ring as W itself
+PASS: every pair of same-ring slices is at least 45 degrees apart (the smallest real gap in the whole layout) -- no combination of a room's exits can ever produce two slices closer together than that, which is what actually caused the reported overlap
+PASS: at the main ring's radius, that minimum 45-degree gap is still comfortably wider (53.4px of arc) than a single rendered pill (~26-50px) -- not just angularly non-overlapping in theory, but with real visual clearance
+PASS: a finger straight above center, at the main ring's radius, hovers N (got n)
+PASS: a finger straight right of center, at the main ring's radius, hovers E
+PASS: the SAME angle at the outer ring's radius hovers Up, not N -- ring matters, not just angle
+PASS: the dead zone at the very center selects nothing (lets the player abort without committing)
+PASS: a finger positioned where no slice exists in the CURRENT set (only n/e/s/w/up here) selects nothing, rather than snapping to the nearest unrelated slice
+PASS: the ring does NOT move for a press still within its reach
+PASS: sliding too far RIGHT shifts the ring itself to the right (operator's own example)
+PASS: a purely rightward slide does not also shift the ring vertically
+PASS: sliding too far DOWN shifts the ring itself downward (moving it 'up' relative to the finger, operator's own example)
+PASS: the ring never chases the finger PAST the viewport's own edge -- stays fully on-screen
+PASS: WorkspaceUI.ShowOptions has a real checkbox wired to Global.Prefs.DirectionalRadialEnabled and DirectionalRadial.ApplyEnabledState -- 'togglable in its own settings UI' is not just a default pref with no control
+PASS: the handle/ring hide under any Message dialog on EVERY platform (desktop's own #message z-index:5 is otherwise below the dirpad's 27/28)
+PASS: the handle/ring hide while the full-screen mobile map sheet is open (z-index 27/28 would otherwise float above it)
+PASS: the handle/ring hide while the OTHER (unrelated) radial menu is open
+PASS: the handle sits at the horizontal CENTER of the screen (desktop), not anchored to the submit button's position
+PASS: the handle is centered on mobile too, not right-anchored above the submit button
+PASS: the radial's radii were shrunk from the previous build (operator: 'radials are too large')
+PASS: Tab from nothing selected starts at the first slice
+PASS: Tab again advances to the next slice in order
+PASS: Shift+Tab (delta -1) moves back
+PASS: ArrowUp selects whichever slice is closest to the 'up' compass angle (n)
+PASS: ArrowRight selects the slice closest to 'right' (e)
+PASS: Options has a real 'Configure directions...' button wired to DirectionalRadial.ShowSettings -- the second, conventional entry point to the full programmable suite (a short tap on the handle itself is the first)
+PASS: the settings panel's row/add-form CSS exists, not just the JS building unstyled markup
+PASS: a keyboard-only entry point (Ctrl+Alt+D, Tab/arrows, Enter, Escape) is wired at Init(), not just the mouse/touch gesture -- the operator's 'maps to PC' requirement in full, not just the drag gesture working with a mouse
+PASS: the open shortcut is Ctrl+Alt+D, not plain Alt+D (codex #782 blocker 9: plain Alt+D is reserved for the address bar in Chrome/Edge and may never reach page JS)
+PASS: a central CanOpen() gate exists (blocker 2/4)
+PASS: CanOpen() is true when nothing is blocking (clean state)
+PASS: CanOpen() is false while a Message dialog is open
+PASS: CanOpen() is false while the OTHER (unrelated) radial menu is open
+PASS: CanOpen() is false while CharKeys' arrow pad is open -- immediate mutual exclusion (blocker 4) even before the full D118 merge
+PASS: CanOpen() is true again once every blocking condition clears
+PASS: CanOpen() is true on desktop (no pl-mobile class) even while map-open is set -- desktop's map panel never covers the story
+PASS: CanOpen() is still false on MOBILE while map-open is set -- mobile's map really is a full-screen sheet that covers the story, so this block is still correct there
+PASS: RecenterHandle() positions the handle at #windowport's live horizontal center on desktop (100 + 800/2 = 500px), not a viewport-relative 50%
+PASS: RecenterHandle() clears any inline left on mobile so the mobile-only `left: 50% !important` CSS rule (correct there -- single column) wins instead
+PASS: GetCustomSlices discards every invalid record (null, empty label, non-finite/negative angle-ring, a bare string) and keeps only the one genuinely valid slice, instead of crashing
+PASS: GetSlices() itself does not crash or choke on the corrupted record either -- real exit (n) plus the one valid custom slice
+PASS: HasCollision detects a custom slice that would land exactly on N's real built-in slot
+PASS: HasCollision is false for a genuinely free angle/ring combination
+PASS: HasCollision detects a collision against an EXISTING custom slice at the same ring+angle
+PASS: ...but not against itself when editing (excludeId)
+PASS: expand() scales the ring DOWN when the requested geometry (a far-out custom ring) would exceed a 320px-wide viewport
+PASS: the actual rendered ring container never exceeds the real viewport, even for ring 6
+PASS: ParchLock.Init() re-applies DirectionalRadial's enabled state immediately after Global.LoadPrefs() -- and before the rest of Init() continues (blocker 1: closes the reload race where a disabled preference was ignored)
+PASS: js/DirectionalRadial.js is in the service worker's precache list (blocker 5: it was missing, so installed PWA clients might never get the feature)
+PASS: the cache version was bumped past the specific version that shipped without this file precached, so existing installed clients actually pick up the new shell file
+PASS: CharKeys.autoPadBlocked() now also blocks the auto arrow pad while DirectionalRadial's ring is open (blocker 4: immediate mutual exclusion, the existing extension point, not a rewrite of the auto-pad's own lifecycle)
+PASS: ExpandArrows populates exactly Up/Left/Enter/Right/Down, never the compass LAYOUT or a room's real exits/custom slices
+PASS: expand() records mode=arrows
+PASS: IsArrowModeOpen() is true right after ExpandArrows
+PASS: Enter is the special dead-center sentinel, not a normal angle/ring slice (D118 plan section 3 Q1)
+PASS: IsArrowModeOpen() is false after collapse() (mode reset)
+PASS: the shell correctly returns to exits mode afterward -- the two modes never bleed into each other's slice data
+PASS: ExpandArrows binds exactly one capture-phase document pointerdown listener for outside-tap-close
+PASS: a tap that hits neither an arrow button nor the handle closes arrow mode (and is itself swallowed, matching the old backdrop's behavior)
+PASS: a tap that DOES hit an arrow button does not also trigger outside-tap-close
+PASS: collapse() unbinds the outside-tap-close listener again (no leaked document-level handler once arrow mode is gone)
+PASS: CharKeys.buildPad() is fully retired -- DirectionalRadial owns the arrow-pad DOM now, not a second #pl-arrowpad tree
+PASS: openArrowPad/isPadOpen/refreshPad all delegate to DirectionalRadial's shared shell
+PASS: no remaining LIVE-CODE reference to the retired CharKeys.pad property (an assignment or property access) -- explanatory comments mentioning it by name for documentation are fine and expected
+PASS: autoPadBlocked()'s pl-dirpad-open check excludes the auto-pad's OWN open state (D118 correctness fix: without this, the very next sync() tick after auto-opening would immediately close what it just opened, since the pad's own open flag would satisfy its own 'blocked' condition)
+PASS: arrow-mode buttons explicitly re-enable pointer-events (the ring container is pointer-events:none, which is inherited -- without this override every arrow button would be silently unclickable in a real browser, a class of bug no fake-DOM test can catch on its own)
+PASS: the retired #pl-arrowpad/.pl-arrowpad__* CSS RULES are fully removed (comments mentioning the old names for documentation are fine)
+PASS: autoPadBlocked() now also blocks the auto arrow pad when the merged DirectionalRadialEnabled preference is off (previously only the exits-mode handle respected this preference)
+PASS: manual Tools > Arrow keys (openArrowPad) also refuses to open when the merged preference is off, not just the auto path
+PASS: Tools menu hides the 'Arrow keys' manual entry point when the merged preference is off, instead of leaving a dead menu item
+PASS: the Options checkbox label was updated to state it covers both the handle and the arrow-key pad, since one preference now governs the whole merged widget
+PASS: IsStoryPlayable() is true once #windowport has real BufferWindow/GridWindow content
+PASS: IsStoryPlayable() is false before any story content exists (e.g. mid-boot)
+PASS: CanOpen() itself refuses when the story isn't playable, not just the handle's own visibility
+PASS: ApplyEnabledState() hides the handle when the story isn't playable, even though the preference is on
+PASS: IsStoryPlayable() is false on the no-story recovery screen specifically (real operator/codex repro) even if #windowport somehow still had stale content
+PASS: the handle becomes visible again once the story is genuinely playable (leaving no-story, real content present)
+PASS: forceReset() in arrows mode calls CharKeys.resetAutoPadState() and CharKeys.closeArrowPad('system') -- not DirectionalRadial.collapse() directly -- so ownership/eligibility bookkeeping is never bypassed by a blur/visibilitychange
+PASS: forceReset() in arrows mode does not ALSO call collapse() itself directly (that is CharKeys.closeArrowPad's own job internally)
+PASS: forceReset() in exits mode still calls DirectionalRadial.collapse() directly -- the CharKeys ownership API is only relevant to arrows mode
+PASS: desktop arrow overlay stays closed when DesktopArrowPadEnabled is false (the required default)
+PASS: toggling DesktopArrowPadEnabled on opens the desktop arrow overlay via CharKeys.openArrowPad() (the existing manual, non-auto entry point)
+PASS: ApplyEnabledState() does not re-open an already-open desktop overlay on every re-evaluation (idempotent, no thrash)
+PASS: toggling DesktopArrowPadEnabled back off closes it via CharKeys.closeArrowPad()
+PASS: on mobile (pl-mobile), the desktop-only overlay logic never calls openArrowPad/closeArrowPad at all -- mobile's own auto-detect/Tools entry stays the sole owner of its arrow pad
+PASS: Global.Prefs.DesktopArrowPadEnabled defaults to false (operator: PC already has a keyboard with arrow keys)
+PASS: Options has a real checkbox wired to Global.Prefs.DesktopArrowPadEnabled
+PASS: the DesktopArrowPadEnabled checkbox is gated to the non-mobile (desktop) branch only, not shown on mobile where the merged DirectionalRadialEnabled checkbox already covers it
+
+112 PASS / 0 FAIL

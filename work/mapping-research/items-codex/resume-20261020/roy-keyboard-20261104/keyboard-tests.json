@@ -1,0 +1,1717 @@
+{
+  "passed": 18,
+  "date": "2026-11-04",
+  "source": {
+    "js/Input.js": "b7f94a2132e427e5fde6815e3bd8218c54fe5ce4fc2c9ec2350adb231818d25c",
+    "lib/main.js": "5155f95821cf719e218aa54d614d2d57cc2fbae8e533c9bb3aba09ac7aeaa7b9"
+  },
+  "method": "Fresh isolated Chromium; trusted Playwright keyboard events. Passive event traces plus forwarding Inject wrapper; no production edits or VM/state injection. Movement/history/editable use trusted keyboard events; overlay and char fixtures are constructed DOM/state controls, repeat/legacy-key events are constructed KeyboardEvents. No physical keyboard test.",
+  "rows": [
+    {
+      "stage": "boot",
+      "state": {
+        "room": 180,
+        "text": " West of House                                                                                                              Score: 0  Turns: 0 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n> ",
+        "input": "",
+        "keys": []
+      }
+    },
+    {
+      "stage": "ordinary-look",
+      "state": {
+        "room": 180,
+        "text": " West of House                                                        \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n> ",
+        "input": "",
+        "keys": [
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Enter",
+            "ctrl": false,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Enter",
+            "ctrl": false,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Enter",
+            "ctrl": false,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Enter",
+            "ctrl": false,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Enter",
+            "ctrl": false,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Enter",
+            "ctrl": false,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "focused-north",
+      "state": {
+        "room": 81,
+        "text": " North of House                                    Score: 0  Turns: 2 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>n\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n> ",
+        "input": "",
+        "keys": [
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "ArrowUp",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "inject": [
+              "n",
+              true,
+              "user-navigation"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "focused-south",
+      "state": {
+        "room": 81,
+        "text": " North of House                                    Score: 0  Turns: 3 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>n\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n>s\nThe windows are all boarded.\n \n> ",
+        "input": "",
+        "keys": [
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "ArrowDown",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "inject": [
+              "s",
+              true,
+              "user-navigation"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "ordinary-up-history",
+      "state": {
+        "room": 81,
+        "text": " North of House                                    Score: 0  Turns: 3 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>n\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n>s\nThe windows are all boarded.\n \n> ",
+        "input": "s",
+        "keys": [
+          {
+            "target": "window",
+            "capture": true,
+            "key": "ArrowUp",
+            "ctrl": false,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "ArrowUp",
+            "ctrl": false,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "ArrowUp",
+            "ctrl": false,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "ctrl-up-history",
+      "state": {
+        "room": 81,
+        "text": " North of House                                    Score: 0  Turns: 3 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>n\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n>s\nThe windows are all boarded.\n \n> ",
+        "input": "n",
+        "keys": [
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "ArrowUp",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "ArrowUp",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "ArrowUp",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "ordinary-down-history",
+      "state": {
+        "room": 81,
+        "text": " North of House                                    Score: 0  Turns: 3 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>n\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n>s\nThe windows are all boarded.\n \n> ",
+        "input": "s",
+        "keys": [
+          {
+            "target": "window",
+            "capture": true,
+            "key": "ArrowDown",
+            "ctrl": false,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "ArrowDown",
+            "ctrl": false,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "ArrowDown",
+            "ctrl": false,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "ctrl-down-history",
+      "state": {
+        "room": 81,
+        "text": " North of House                                    Score: 0  Turns: 3 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>n\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n>s\nThe windows are all boarded.\n \n> ",
+        "input": "",
+        "keys": [
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "ArrowDown",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "ArrowDown",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "ArrowDown",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "alt-modifier-excluded",
+      "state": {
+        "room": 81,
+        "text": " North of House                                    Score: 0  Turns: 3 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>n\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n>s\nThe windows are all boarded.\n \n> ",
+        "input": "s",
+        "keys": [
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Alt",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Alt",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Alt",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Alt",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Alt",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Alt",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "ArrowUp",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "ArrowUp",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "ArrowUp",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "constructed overlay app-dialog-open",
+      "state": {
+        "room": 81,
+        "text": " North of House                                    Score: 0  Turns: 3 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>n\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n>s\nThe windows are all boarded.\n \n> ",
+        "input": "keep draft",
+        "keys": [
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "ArrowDown",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "constructed overlay native-dialog-open",
+      "state": {
+        "room": 81,
+        "text": " North of House                                    Score: 0  Turns: 3 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>n\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n>s\nThe windows are all boarded.\n \n> ",
+        "input": "keep draft",
+        "keys": [
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "ArrowDown",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "constructed overlay radial-open",
+      "state": {
+        "room": 81,
+        "text": " North of House                                    Score: 0  Turns: 3 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>n\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n>s\nThe windows are all boarded.\n \n> ",
+        "input": "keep draft",
+        "keys": [
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "ArrowDown",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "constructed overlay equip-open",
+      "state": {
+        "room": 81,
+        "text": " North of House                                    Score: 0  Turns: 3 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>n\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n>s\nThe windows are all boarded.\n \n> ",
+        "input": "keep draft",
+        "keys": [
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "ArrowDown",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "constructed overlay pl-dirpad-open",
+      "state": {
+        "room": 81,
+        "text": " North of House                                    Score: 0  Turns: 3 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>n\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n>s\nThe windows are all boarded.\n \n> ",
+        "input": "keep draft",
+        "keys": [
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "ArrowDown",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "rebind-no-duplicate",
+      "state": {
+        "room": 81,
+        "text": " North of House                                    Score: 0  Turns: 4 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>n\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n>s\nThe windows are all boarded.\n \n>s\nThe windows are all boarded.\n \n> ",
+        "input": "",
+        "keys": [
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Control",
+            "ctrl": true,
+            "shift": false,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Shift",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": true,
+            "key": "ArrowDown",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "inject": [
+              "s",
+              true,
+              "user-navigation"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "constructed legacy-key event *",
+      "state": {
+        "room": 75,
+        "text": " Forest Path                                       Score: 0  Turns: 5 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>n\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n>s\nThe windows are all boarded.\n \n>s\nThe windows are all boarded.\n \n>n\nForest Path\nThis is a path winding through a dimly lit forest. The path heads north-south here. One particularly large tree with some low branches stands at the edge of the path.\n \n> ",
+        "input": "",
+        "keys": [
+          {
+            "target": "window",
+            "capture": true,
+            "key": "*",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "*",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "*",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "*",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "inject": [
+              "n",
+              true
+            ]
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "*",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "*",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "constructed legacy-key event Clear",
+      "state": {
+        "room": 81,
+        "text": " North of House                                    Score: 0  Turns: 6 \nZORK I: The Great Underground Empire\nCopyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.\nZORK is a registered trademark of Infocom, Inc.\nRevision 88 / Serial number 840726\n \nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>look\nWest of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a small mailbox here.\n \n>n\nNorth of House\nYou are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.\n \n>s\nThe windows are all boarded.\n \n>s\nThe windows are all boarded.\n \n>n\nForest Path\nThis is a path winding through a dimly lit forest. The path heads north-south here. One particularly large tree with some low branches stands at the edge of the path.\n \n>s\nNorth of House\n \n> ",
+        "input": "",
+        "keys": [
+          {
+            "target": "window",
+            "capture": true,
+            "key": "Clear",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "document",
+            "capture": true,
+            "key": "Clear",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": true,
+            "key": "Clear",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "body",
+            "capture": false,
+            "key": "Clear",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "inject": [
+              "s",
+              true
+            ]
+          },
+          {
+            "target": "document",
+            "capture": false,
+            "key": "Clear",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          },
+          {
+            "target": "window",
+            "capture": false,
+            "key": "Clear",
+            "ctrl": true,
+            "shift": true,
+            "defaultPrevented": false,
+            "eventTarget": "Input LineInput"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": []
+}

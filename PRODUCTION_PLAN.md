@@ -9924,3 +9924,12 @@ Prior-fix guards: D13 ownership/tombstones, D86 frozen observation windows, D110
 D205/D214 exact/user forms, D243 playthrough history, D258 quota/retention and D260 authored state restrictions.
 Focused retention/priority/erase checks, actual native older-save restore/unsaved exit/reopen and operator13/0 pass;
 the final candidate manifest binds exact source identities. Immutable309x2 final R3 independently ACCEPTED:0 intended/7 measured annotation variances/0 regression/0 unresolved. Seven matching no-prompt gaps and boot-only Glulx limits remain explicit. See learning-persistence-20261102/final-r3-gate-review.md.
+
+
+## D264 Desktop North/South keyboard ownership
+
+Operator/Roy report 2026-11-04: Ctrl+Shift+Up/Down should move North/South. Existing body-bubble bindings were unreachable when GlkOte's line handler used those keys for history and returned false. Actual trusted-key Zork I reproduction and independently sealed source findings agree.
+
+Input.BindKeyboard installs one capture handler for only those two exact modifier combinations. It requires one visible normal enabled line, excludes character prompts and other editable/control targets, consumes the owned chord before overlay guards, suppresses repeats, and submits through existing Input.Inject. Blocked movement preserves the draft. Legacy alternate bindings and ordinary history remain. Map tooltips include Ctrl+Shift and primary arrow labels; USER_GUIDE scopes the stronger guards to the new Up/Down route. Build76/cache175/Android50 identify this update. No interpreter changes.
+
+Prior-fix guards: D86 accepted submission choke point, D105 character/line ownership, D117/D118 directional controls, D263 acknowledged exit barrier. Independent design/amendment/current-source review accepted; actual keyboard18 passes, auto-submit60, directional112, operator13 and three-type3 pass. One provisional gate was aborted after the failing draft guard; not passed. Artifact signature/parity and packaged-keyboard18 accepted. Full shared candidate remains running; operator explicitly ordered publication without waiting on 2026-11-04. Do not classify that unfinished comparison as passed; exact evidence in roy-keyboard-20261104.

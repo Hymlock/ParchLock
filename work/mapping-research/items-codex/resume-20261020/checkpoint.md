@@ -1,3 +1,8 @@
+<!-- NOV4_KEYBOARD_CURRENT -->
+# November 4 priority — Roy keyboard fix and updated complete release
+
+Operator authorizes implement, push Roy update and draft reply. Current source CtrlShiftUp/Down capture + Map tooltip, BUILD76/SW175/android50. Actual independent design/amendment/runtime ACCEPT, keyboard18, operator13 and three-type3 pass. Runtime frozen to roy-keyboard-20261104/final-shared-gate/manifest.json; one309candidate active52303 with prior accepted learning309 baseline after exactsource/driver/wrapper parity, no baseline replay. Provisional early gate cancelled after failed draftguard; preserved notpassed. Build34331 provisional until finalgate/classification/artifactbytechecks. Busfetchfailed, no bypass; operator onlyseat takeover and exactscope ownership recorded. No overall completion or physical-device claim.
+
 <!-- NOV2_LEARNING_CURRENT_START -->
 # Current priority — learning repair accepted
 
