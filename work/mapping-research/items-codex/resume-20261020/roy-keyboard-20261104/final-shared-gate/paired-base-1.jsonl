@@ -1,0 +1,3 @@
+{"game":"Help.z8.js","exits":[],"marks":["Snark","large piece of equipment","trophy"],"inv1":[],"inv2":["145:gold trophy"],"rooms":["94:Crash Site"]}
+{"game":"heist.z8.js","exits":["down>25","north>32","south>53"],"marks":["north","south","uncle's final resting place","group of mourners"],"inv1":["20:curious envelope","19:black canvas bag","124:silver picture frame","126:student's photo"],"inv2":["20:curious envelope","19:black canvas bag","124:silver picture frame","126:student's photo"],"rooms":["16:Graveyard","25:Recently Dug Grave","32:Church","53:Main Street"]}
+{"game":"permagic.z5.js","exits":["east>34","out>34"],"marks":["of junk","report","east"],"inv1":["25:pen"],"inv2":["25:pen"],"rooms":["26:Your Cubicle","34:Hallway","36:Gunther's Cubicle"]}

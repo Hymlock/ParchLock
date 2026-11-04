@@ -1,7 +1,9 @@
 <!-- NOV4_KEYBOARD_CURRENT -->
-# November 4 priority — Roy keyboard fix and updated complete release
+# November4 priority — keyboard fix published and final validation accepted
 
-Operator authorizes implement, push Roy update and draft reply. Current source CtrlShiftUp/Down capture + Map tooltip, BUILD76/SW175/android50. Actual independent design/amendment/runtime ACCEPT, keyboard18, operator13 and three-type3 pass. Runtime frozen to roy-keyboard-20261104/final-shared-gate/manifest.json; one309candidate active52303 with prior accepted learning309 baseline after exactsource/driver/wrapper parity, no baseline replay. Provisional early gate cancelled after failed draftguard; preserved notpassed. Build34331 provisional until finalgate/classification/artifactbytechecks. Busfetchfailed, no bypass; operator onlyseat takeover and exactscope ownership recorded. No overall completion or physical-device claim.
+Roy CtrlShiftUp/Down conflict fixed source378c0755; same Hymlock/ParchLock distribution445bdf4 and releasev0.dev-2026-11-04 live, complete PC+APK+source all3remotehashverified. Build76/android50/cache175. User already emailed Roy; no message sent byagent. Independent design/amendment/runtime/artifact/finalgate ACCEPT; root+independentkeyboard18, packaged18, operator13, three-type3 and500asset/367sourceparity pass. Final309each complete exactsource/catalog/driverstable;12measured markvariances proven via paired12,0observedregression/0unresolved,7matchingnopromptgaps. No overallproject/all26completion or physicaldeviceclaim. Exact evidence roy-keyboard-20261104/final-disposition.md and final-gate-review.md.
+
+Operator explicitly ordered publish before finalcatalogfinished; this was recorded, never called unfinishedgatepassed. Subsequentfinalclassification accepted. ProvisionalR1 gateaborted after draftguardfailure preserved; finalsourcecorrected. Busfetchfailed, no bypass. Preserve unrelateddirtywork, no duplicate catalog/nativeproofs.
 
 <!-- NOV2_LEARNING_CURRENT_START -->
 # Current priority — learning repair accepted
