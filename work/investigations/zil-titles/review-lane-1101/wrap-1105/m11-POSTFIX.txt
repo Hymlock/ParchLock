@@ -1,0 +1,18 @@
+﻿PASS: HHG: dark at the opening (pitch black bedroom)
+FAIL: HHG: "Bedroom, in the bed" with unnamed bed is unproven -> state kept (documented limit, no prose)
+PASS: HHG: after GET UP, LOOK prints the bare "Bedroom" heading -> clears dark
+PASS: HHG: no dark-scope HUD entry once lit
+PASS: HHG: an inventory reply keeps lit (no sticky history)
+PASS: negative: styled "Help" heading does not clear dark
+PASS: negative: styled "Inventory" heading does not clear dark
+PASS: negative: "Bedroom, the door is shut." does not clear dark
+PASS: negative: another room's heading does not clear dark
+PASS: negative: heading of the previous room after relocation does not clear dark
+PASS: negative: no structural room -> no clear
+PASS: negative: a non-structural (heuristic-only) payload grants no heading clear
+PASS: positive: the exact current-room name line clears dark
+PASS: Zork I: cellar without the lamp shows dark
+PASS: Sorcerer: lit Twisted Forest at the opening is not dark (negative)
+PASS: Sorcerer: "it is now pitch black" in Your Quarters sets dark
+PASS: Sorcerer: FROTZ BOOK heading "Your Quarters, in the bed" clears dark
+16 PASS / 1 FAIL

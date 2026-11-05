@@ -21,3 +21,4 @@ Seat: grok-review (independent reviewer standing in for Claude/Codex/grok2 while
 | 17 | 004 | Blue Chairs inventoryHiddenAttribute 3, Tokyo2 17 | ACCEPT | gaps: shirt listed before first i; dollars/popcorn left (reachable, no bit); 309 gate not run | 11-01 08:53 |
 | 18 | 005 | A1 qualified Suspect REMOVE (Codex work) | ACCEPT | none; native evidence Codex's, not re-run | 11-05 05:50 |
 | 19 | 006 | Z3 Sherlock TAKE FIND 39 (variable syntax) | ACCEPT | none; Codex ACCEPT at same hashes | 11-05 05:50 |
+| 20 | 007 | DarkScope cue "it is now pitch black" (shared) | ACCEPT | none; HHG in-bed m11 FAIL pre-existing at HEAD; 309 not re-run | 11-05 05:52 |

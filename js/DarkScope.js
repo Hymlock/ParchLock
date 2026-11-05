@@ -84,7 +84,7 @@ var DarkScope = {
         if (key !== DarkScope.lastKey) {
             DarkScope.lastKey = key;
             var low = lines.join(" ").toLowerCase();
-            var darkCue = /it is pitch dark|it is pitch black|too dark to see|darkness|cannot see a thing|can't see a thing|you are in the dark|in the dark/.test(low);
+            var darkCue = /it is (?:now )?pitch (?:dark|black)|too dark to see|darkness|cannot see a thing|can't see a thing|you are in the dark|in the dark/.test(low);
             var inform = false;
             try { inform = !!(typeof ZRamReader !== "undefined" && ZRamReader.isInformCompiled(ZRamProvider.getMem())); } catch (eI) {}
             if (darkCue) DarkScope.dark = true;

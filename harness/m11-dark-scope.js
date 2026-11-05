@@ -1,7 +1,7 @@
 // D221 / M11 (codex #2694): DarkScope judges the latest reply once per tick on
 // the finalized payload. Positives: HHG dark at start, cleared by TURN ON LIGHT
 // ("Bedroom, in the bed", player chain proves the bed), exact room-name line;
-// Zork cellar dark. Negatives: styled Help / Inventory headings, prose that
+// Zork cellar dark; Sorcerer 'it is now pitch black'. Negatives: styled Help / Inventory headings, prose that
 // begins with the room name, another room's heading, a stale room (payload
 // moved but the heading names the old room), no structural room.
 //   node harness/m11-dark-scope.js
@@ -66,6 +66,17 @@ const open = async (b, g) => {
     for (const c of ['north', 'east', 'open window', 'enter window', 'west', 'move rug', 'open trap door']) await p.send(c);
     const dz = await p.send('down');
     check(dz === true, 'Zork I: cellar without the lamp shows dark');
+    await p.close();
+    // Sorcerer (grok 2026-11-05): the dream ends with "...it is now pitch black." in Your Quarters
+    // (player in bed 128, no measured dark fact). The cue must accept "now"; FROTZ BOOK then prints
+    // "Your Quarters, in the bed" (bed named, on the chain) and clears it. Lit start is the negative.
+    p = await open(b, 'Sorcerer.z3.js');
+    const s0 = await p.evaluate(() => { WorldModel.tick(); return DarkScope.dark; });
+    check(s0 === false, 'Sorcerer: lit Twisted Forest at the opening is not dark (negative)');
+    const s1 = await p.send('wait');
+    check(s1 === true, 'Sorcerer: "it is now pitch black" in Your Quarters sets dark');
+    const s2 = await p.send('frotz book');
+    check(s2 === false, 'Sorcerer: FROTZ BOOK heading "Your Quarters, in the bed" clears dark');
     await p.close();
     await b.close();
     console.log(pass + ' PASS / ' + fail + ' FAIL');
