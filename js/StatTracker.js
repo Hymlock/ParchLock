@@ -749,6 +749,8 @@ var StatTracker = {
         if (!t) return null;
         if (/^There is no score\./im.test(t)) return {scored:false,unavailable:true};
         if (/^You have yet to truly score, and that's why you're here\.$/im.test(t)) return {scored:false,unavailable:true};
+        // Make It Good's own SCORE reply (S6): the game keeps no score; recognising it stops the per-open re-probe.
+        if (/^What score do you want\? Either someone takes the rap or you do\.$/im.test(t)) return {scored:false,unavailable:true};
         if (/^"You don't get scores in the Secret Service - there is only success and failure\." \(SPSS Spy's Manual, page 12\)$/im.test(t)) return {scored:false,unavailable:true};
         if (StatTracker.NO_SCORE.test(t)) return { scored: false, unavailable: true };
         var potential = /Your potential is (-?\d+) of a possible (\d+)(?:, in (\d+) moves?)?/i.exec(t);
@@ -3845,7 +3847,11 @@ var StatTracker = {
         noLineInput: "Waiting for the command prompt",
         charInput: "Waiting for a keypress",
         dialog: "Waiting: a file dialog is open",
-        message: "Waiting: a message window is open"
+        message: "Waiting: a message window is open",
+        unrecognisedReply: "The game's reply to a status check was not recognised",
+        submitRefused: "A status check could not be sent",
+        noReply: "A status check got no reply in time",
+        tooManyTurns: "A status check took too many turns"
     },
     _fulfillDiag: [],
     noteUnavailable: function (reason) {
@@ -4003,7 +4009,13 @@ var StatTracker = {
         StatTracker.runProbeQueue();
     },
 
-    finishProbe: function (state) {
+    // reason (S6): an unavailable ending records why, for the strip's hover text; diagnostics only, no retry is armed here.
+    finishProbe: function (state, reason) {
+        if (state === "unavailable" && reason) {
+            StatTracker.model().unavailableReason = reason;
+            StatTracker._fulfillDiag.push({ t: Date.now(), reason: reason });
+            if (StatTracker._fulfillDiag.length > 20) StatTracker._fulfillDiag.shift();
+        }
         clearTimeout(StatTracker._probeTimer);
         StatTracker._probeTimer = null;
         StatTracker._probeActive = null;
@@ -4061,7 +4073,7 @@ var StatTracker = {
         StatTracker.beginProbeOwnership();
         var sent = false;
         try { sent = Actionable.Submit(next.verb, "stat-probe"); } catch (e) {}
-        if (!sent) { StatTracker.finishProbe("unavailable"); return; }
+        if (!sent) { StatTracker.finishProbe("unavailable", "submitRefused"); return; }
         var deadline = Date.now() + 5000;
         function scanPendingReply() {
             if (StatTracker._probeActive !== next) return;
@@ -4069,7 +4081,7 @@ var StatTracker = {
             // promptly; this submits nothing and keeps the original deadline.
             StatTracker.Tick();
             if (StatTracker._probeActive !== next) return;
-            if (Date.now() >= deadline) { StatTracker.finishProbe("unavailable"); return; }
+            if (Date.now() >= deadline) { StatTracker.finishProbe("unavailable", "noReply"); return; }
             StatTracker._probeTimer = setTimeout(scanPendingReply, 250);
         }
         StatTracker._probeTimer = setTimeout(scanPendingReply, 250);
@@ -4336,7 +4348,7 @@ var StatTracker = {
                         StatTracker.beginProbeOwnership();
                         if (Input.Inject("",true,"stat-probe")) return;
                     }
-                    if (replacedInput && StatTracker._probeActive === completed) StatTracker.finishProbe("unavailable");
+                    if (replacedInput && StatTracker._probeActive === completed) StatTracker.finishProbe("unavailable", "unrecognisedReply");
                 }, 0);
             }
         });
@@ -4411,7 +4423,7 @@ var StatTracker = {
         if (!pending.score && !pending.diagnose && !pending.prowess && !pending.progress && !pending.measured) { StatTracker.finishProbe("complete"); return; }
         // Give up after a few turns rather than misreading ordinary play as a
         // probe reply.
-        if (++StatTracker._probeTurns > 6) StatTracker.finishProbe("unavailable");
+        if (++StatTracker._probeTurns > 6) StatTracker.finishProbe("unavailable", "tooManyTurns");
     },
 
     Bind: function () {

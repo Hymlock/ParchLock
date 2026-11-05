@@ -1422,6 +1422,8 @@ var ModuleStatFactsClaude = {
     },
     // YAGWAD: SCORE only restates the grid score; compact pair is Score/Moves.
     "67b691534a025518db698c008f4a7251dea7a68ebe1ef728971967ae6c07986c": {
+        // M4: player 30 "Me" sits in globals 21/56, parent 29 Treasure Cave; the room had only been admitted through the travel clause after start-up screens (nov5/M4-yagwad.md).
+        "playerGlobal": 21,
         "rejectedForms": ["score"],
         "statusPair": ["Score", "Moves"],
         "evidence": "2026-10-05 live (SPACE, yes, yes) SCORE: You are a perfect 10. Grid compact 10/1 with no tracked stats."
@@ -1470,6 +1472,8 @@ var ModuleStatFactsClaude = {
     },
     // Guess The Verb: SCORE triggers an NPC sales pitch, not a status reply.
     "e17beb4180286c155ba4449618956fe4ae3bdc3e8933accaa04c1c584b3599bd": {
+        // M5: after NEW the player 37 "(StandardPlayer)" sits in globals 20/55, parent 51 Verb Guessing Booth; resolver picked parentless 20 "(self object)" so M09 refused the room (nov5/M5-guess.md).
+        "playerGlobal": 20,
         "rejectedForms": ["score"],
         "evidence": "2026-10-05 live (new, boy) SCORE: \"Well Score would you like to GUESS THE VERB!?!?! Just one shiny quarter gets you a spin of the wheel!...\" (story narration). Grid guessed/completed/moves 0/0/n; DIAGNOSE: You feel fine."
     },
