@@ -152,7 +152,16 @@ const act = fs.readFileSync(path.resolve(__dirname, "..", "js", "Actionable.js")
 
 assert(/parserWordsStructural/.test(zr) && /parserWordsAny/.test(zr),
     "object vocabulary is minable for NON-Inform games too, so the whole ZIL catalog stops arriving with aliases:[]");
-assert(/one bad slot disqualifies/.test(zr),
+// Behavioural, not a source grep (S7: the comment this used to grep was removed in 8f3b0c3a while the rule stayed).
+assert((function () {
+    const vm = require("vm"), c = { console, window: {} }; vm.createContext(c); vm.runInContext(zr, c);
+    const R = vm.runInContext("ZRamReader", c), words = { 100: "lamp", 102: "brass" };
+    R.reverseDictionary = () => words; R.u16 = (m, a) => m[a];
+    R.listProps = () => [{ num: 7, sz: 4, dataAddr: 0 }, { num: 9, sz: 4, dataAddr: 10 }];
+    const mem = { 0: 100, 2: 102, 10: 100, 12: 999 };   // prop 9's second slot is not a dictionary entry
+    const got = R.parserWordProperties(mem, 5).map(x => x.propId);
+    return got.length === 1 && got[0] === 7;
+})(),
     "and it is SELF-VERIFYING -- a property counts as vocabulary only if every 2-byte slot lands on a real dictionary entry, so no property number is assumed (D61)");
 assert(/_decodeZscRaw/.test(zr),
     "Z-text abbreviations expand WITHOUT being trimmed -- trimming inside the recursion welded names together ('smallmailbox', 'CanyonView', 'YourRoom')");
