@@ -1,0 +1,4 @@
+Sherlock.z5.js marks
+  base: ["coat","west"]
+  cand: ["west"]
+GATE: 7 games, 1 differences (each must be an intended, reviewed change)
