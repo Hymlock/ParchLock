@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 148 decisions across
-9936 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 151 decisions across
+9961 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -27,6 +27,9 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 
 | D | claim | files | games | arch |
 |---|-------|-------|-------|------|
+| D267 | Map visited comes only from the player's physical location (M9) | harness/m9-visited-physical-only.js |  |  |
+| D266 | Compact ZIL grammar FIND capability (source accepted; final gate pending) | harness/m9-visited-physical-only.js |  | §93 |
+| D265 | Exact owner-local removal references (source accepted; final gate pending) |  |  | §93 |
 | D264 | Desktop North/South keyboard ownership |  |  | §92 |
 | D263 | Module learning persistence and learned item priority | js/AttrCalibrator.js js/LearningStores.js js/ActionSynth.js js/Actionable.js |  | §91 |
 | D262 | LGOP revealed hole, Sherlock moved/edible/scenery, and later ZIL consumer repairs |  |  |  |
@@ -314,3 +317,4 @@ cites. Search here for a subsystem; the line number opens the chapter.
 | §90 | 4347 | 90. Display-only lock observations (D254; landed f82f243) | D254 |
 | §91 | 4361 | 91. Module learning and item preference retention (D263) | D263 |
 | §92 | 4390 | 92. Desktop movement key ownership (D264) | D264 |
+| §93 | 4395 | 93. Qualified owner-local Remove and compact FIND metadata (D265/D266) | D265 D266 |

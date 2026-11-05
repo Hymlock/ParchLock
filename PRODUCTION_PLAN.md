@@ -9933,3 +9933,28 @@ Operator/Roy report 2026-11-04: Ctrl+Shift+Up/Down should move North/South. Exis
 Input.BindKeyboard installs one capture handler for only those two exact modifier combinations. It requires one visible normal enabled line, excludes character prompts and other editable/control targets, consumes the owned chord before overlay guards, suppresses repeats, and submits through existing Input.Inject. Blocked movement preserves the draft. Legacy alternate bindings and ordinary history remain. Map tooltips include Ctrl+Shift and primary arrow labels; USER_GUIDE scopes the stronger guards to the new Up/Down route. Build76/cache175/Android50 identify this update. No interpreter changes.
 
 Prior-fix guards: D86 accepted submission choke point, D105 character/line ownership, D117/D118 directional controls, D263 acknowledged exit barrier. Independent design/amendment/current-source review accepted; actual keyboard18 passes, auto-submit60, directional112, operator13 and three-type3 pass. One provisional gate was aborted after the failing draft guard; not passed. Artifact signature/parity and packaged-keyboard18 accepted. Operator explicitly ordered publication without waiting on 2026-11-04. Subsequent full309each comparison and sourcebinding independently ACCEPTED:12 measured startup annotation variances,0 observed regression/0 unresolved; seven matching no-prompt gaps and Glulxboot-only limits remain. All3 remote artifact hashes verified; exact evidence in roy-keyboard-20261104.
+
+
+## D265 Exact owner-local removal references (source accepted; final gate pending)
+
+Suspect exact executable d02fd95bae5398f9b87fe0f537f288b45e93967008948970f1982a65b888eddb exposes a mismatch: app scoped vocabulary calls mask38 unique/verified as "mask", but native REMOVE MASK requests specificity. Native REMOVE WESTERN MASK and rewear succeed. Generic app-object identity is not native-parser phrase uniqueness.
+
+The optional removalReferences declaration owns only listed integer objects and a qualified bare REMOVE phrase. qualifiedRemovalPolicyFor distinguishes UNOWNED (cheap unchanged default), recognizable BLOCKED (drop only concrete unary Remove), and SCOPED (qualified command). Exact schema, true object frontier, safe dictionary phrase, validated bare REMOVE grammar, raw worn bit/direct measured-player custody, canonical single inventory owner, matching discovered copies and verified app reference are required. Missing/unrecognizable ownership is not guessed from noun keys. No universal Remove/Wear change and no raw typed-input rewrite.
+
+BUILD normalization precedes SemanticActions precedence and late learned/editor suggestions. Captured qualifiedRemovalScope binds exact digest, owner, generation, verb, noun and command. TAP revalidates without rebasing or synthesizing a missing selected descriptor. Target/topic, actor/shared and contradictory scope forms are excluded. Equipment and More preserve this scope; room/text presentation uses actual inventory custody for the configured owner. D263 markers use the qualified noun only after current authority and actual learned-pair checks; other forms/ranking remain unchanged.
+
+Actual Grok R2 design/current-source ACCEPT and root native main/Equipment rendered Remove/reWear/Remove evidence are retained in nov4-lead. Focused42+More4 and existing guards pass. Canonical inventory integer IDs fail closed if malformed. Physical-device and arbitrary phrase/module coverage are not claimed. Final immutable combined candidate gate is still running; no APK or overall completion.
+
+## D266 Compact ZIL grammar FIND capability (source accepted; final gate pending)
+
+Grok's two-line GrammarProvider change retains FWIM/FIND attributes at compact syntax offsets2/5 inside existing2/4/7-byte bounds and admits the validated infocom-pre-v6-variable family to d214TakeAttribute. Existing bare TAKE uniqueness, attribute range and same-action two-object witness checks remain. Sherlock native source bare TAKE action63 selects FL-TAKEABLE39; fixed-family behavior is unchanged.
+
+Actual Codex design/current-source ACCEPT, exact hash844a06230249325896bb38ac92d3945be4cc1337bec7647dbf6f7247a708e969 and root166 constructed checks retained. Mutation tests use fresh buffers and retarget all five witness lines;25 fixed-family templates/prepositions/bits compare equal. Null metadata means no D214 evidence, falling back to existing schema inference, not fail-closed UI. TRYTAKE-only objects may lose Take. Constructed projection is not whole-frontier native interaction; legacy unnamed eligibility is unchanged. Root owns the one immutable combined gate against the actual pre-change accepted baseline. Partial accidental Grok catalogue was aborted and is not gate evidence.
+
+## D267 Map visited comes only from the player's physical location (M9)
+
+**Status:** LANDED as a guard (b352cc53, grok; harness only, no product change). Real re-audit ACCEPT (claude, CLAUDE-REAUDIT-1105).
+**Rule.** A room is visited on the map only when the player has actually been there. WorldVisited has exactly one writer, ParchLockMap.SetCurrentRoom, fed by the payload room. The game's own touched/visited attribute is never fed into map code.
+**Why.** Remote description sets TOUCHBIT on rooms the player has not entered: Starcross LOOK IN airlock (Red Hall 20, Blue Dock 94) and Zork II LOOK IN WINDOW / BLUE SPHERE (103, 142). The payload room stays at the origin (codex sealed native evidence in oct30-recovery/*-remote-sealed-*.md).
+**Guard.** harness/m9-visited-physical-only.js (8/0). It fails if a second WorldVisited writer appears or a visited attribute reaches map code; the negative control fails 2 checks.
+Supersedes the M9 "still open" note in D262.
