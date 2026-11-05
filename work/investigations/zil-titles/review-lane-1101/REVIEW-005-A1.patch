@@ -1,0 +1,448 @@
+﻿diff --git a/harness/zil-identity-wear.js b/harness/zil-identity-wear.js
+index 73e68811..908f499e 100644
+--- a/harness/zil-identity-wear.js
++++ b/harness/zil-identity-wear.js
+@@ -18,7 +18,7 @@ function load(t){
+     UndoRestoreSync:{generation:7},
+     ModuleLibrary:{currentExecutableDigest:()=>digest,currentExecutableIdentity:()=>({digest,header:Array.from(bytes.slice(0,28))})},
+     ZRamProvider:{getMem:()=>mem},WorldModel:{lastPayload:payload},
+-    AttrCalibrator:{dictionaryForm:()=>true,exactFormsFor:()=>[],RPG_VERBS:[],ITEM_SUGGESTION_VERBS:[],hasConfirmedFlag:()=>false},
++    AttrCalibrator:{dictionaryForm:()=>true,exactFormsFor:()=>[],learnedFormsFor:()=>[],RPG_VERBS:[],ITEM_SUGGESTION_VERBS:[],hasConfirmedFlag:()=>false},
+     Actionable:{payloadPool:()=>payload.inventory.concat(payload.discoveredObjects),referenceFor:o=>({unique:true,verified:true,noun:names[o.id]||o.name}),
+       commandNounFor:o=>names[o.id]||o.name,isGameWord:()=>true}});
+   for(const f of ['ModuleStatFactsClaude','ZRamReader','GrammarProvider','AttributeSchema','ActionSynth','LearnedWords','SemanticActions','EquipmentUI'])vm.runInContext(fs.readFileSync('js/'+f+'.js','utf8'),c);
+diff --git a/js/ActionSynth.js b/js/ActionSynth.js
+index fdb330e8..b86135f7 100644
+--- a/js/ActionSynth.js
++++ b/js/ActionSynth.js
+@@ -327,6 +327,83 @@ var ActionSynth = {
+         } catch (e) { return attrs; }
+     },
+ 
++    // Exact action-owned reference. Unowned modules leave the legacy path untouched.
++    qualifiedRemovalPolicyFor: function (obj) {
++        var unowned = { status: "unowned" }, blocked = { status: "blocked" };
++        var own = function (o, k) { return !!o && Object.prototype.hasOwnProperty.call(o, k); };
++        var digest, fact, rule, id = obj && Number(obj.id);
++        try {
++            digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest ? ModuleLibrary.currentExecutableDigest() : null;
++            fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
++            if (!fact || !own(fact, "removalReferences")) return unowned;
++            rule = fact.removalReferences;
++            if (!Number.isInteger(id) || !own(rule, "objects") || !Array.isArray(rule.objects) ||
++                !rule.objects.some(function (v) { return Number.isInteger(v) && v === id; })) return unowned;
++        } catch (eOwner) { return unowned; }
++        try {
++            var plain = function (o) { if (!o || typeof o !== "object" || Array.isArray(o)) return false; var p = Object.getPrototypeOf(o); return p === null || Object.getPrototypeOf(p) === null; };
++            var keys = function (o) { return Object.getOwnPropertyNames(o).sort().join(","); };
++            if (!plain(rule) || keys(rule) !== "nouns,objects,scope,verb" ||
++                (Object.getOwnPropertySymbols && Object.getOwnPropertySymbols(rule).length) || rule.verb !== "remove" || rule.scope !== "worn-direct" ||
++                !plain(rule.nouns) || (Object.getOwnPropertySymbols && Object.getOwnPropertySymbols(rule.nouns).length)) return blocked;
++            var mem = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null;
++            if (!mem || typeof ZRamReader === "undefined" || ZRamReader.executableLayoutFacts(mem) !== fact ||
++                (ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem))) return blocked;
++            var grammar = typeof GrammarProvider !== "undefined" && GrammarProvider.decodeD198(mem), h = ZRamReader.header(mem);
++            if (!h || h.version < 3 || h.version > 5 || !grammar || grammar.classification !== "confirmed-zil-family" || grammar.evidence !== "validated" ||
++                !(grammar.templates || []).some(function (t) { return t.verb === "remove" && t.objectCount === 1 && !(t.prepositions || []).length; })) return blocked;
++            var first = ZRamReader.objectBase(h, 1), propertyStart = ZRamReader.u16(mem, first + (h.version <= 3 ? 7 : 12));
++            var count = (propertyStart - first) / h.entrySize, bits = h.version <= 3 ? 32 : 48;
++            if (propertyStart >= h.staticMem || !Number.isInteger(count) || count < 2 || !rule.objects.length || !rule.objects.every(function (v, i, all) {
++                return Number.isInteger(v) && v >= 1 && v <= count && all.indexOf(v) === i;
++            }) || Object.getOwnPropertyNames(rule.nouns).sort().join(",") !== rule.objects.map(String).sort().join(",")) return blocked;
++            if (!rule.objects.every(function (v) { var n = rule.nouns[String(v)]; return typeof n === "string" && /^[a-z]+(?: [a-z]+)*$/.test(n) &&
++                n.split(" ").every(function (word) { return !!ZRamReader.hasDictionaryWord(mem, word); }); }) || !ActionSynth.literalAvailable("remove")) return blocked;
++            var wornBit = fact.wornAttribute, links = ZRamReader.objectLinks(mem, id), player = ZRamReader.resolvePlayer(mem);
++            if (!Number.isInteger(wornBit) || wornBit < 0 || wornBit >= bits || !links || !player || player.ambiguous ||
++                ["measured-player-object", "measured-player-global"].indexOf(player.source) < 0 || !Number.isInteger(player.id) || player.id < 2 || player.id > count ||
++                id === player.id || links.parent !== player.id || !ZRamReader.attr(links, wornBit)) return blocked;
++            var payload = typeof WorldModel !== "undefined" && WorldModel.lastPayload, inventory = payload && payload.inventory || [];
++            var owners = inventory.filter(function (o) { return o && String(o.id) === String(id); });
++            if (owners.length !== 1) return blocked;
++            var owner = owners[0], rows = (payload.discoveredObjects || []).filter(function (o) { return o && String(o.id) === String(id); }).concat(owners);
++            if (obj.examineOnly || obj.sharedMembers || obj.revealedLocalGlobal || !rows.every(function (o) { return !o.examineOnly && !o.sharedMembers && !o.revealedLocalGlobal &&
++                Number.isInteger(o.id) && o.id === id && Number(o.parentId) === links.parent; })) return blocked;
++            var ref = typeof Actionable !== "undefined" && Actionable.referenceFor && Actionable.referenceFor(owner);
++            if (!ref || !ref.unique || !ref.verified || typeof ref.noun !== "string" || !ref.noun) return blocked;
++            var noun = rule.nouns[String(id)];
++            return { status: "scoped", scope: { kind: "qualified-worn-remove", digest: digest, id: id,
++                generation: ActionSynth.currentGeneration(), verb: "remove", noun: noun, command: "remove " + noun } };
++        } catch (ePolicy) { return blocked; }
++    },
++    normalizeQualifiedRemovalCandidate: function (command, obj) {
++        if (!command || command.verb !== "remove") return command;
++        var policy = ActionSynth.qualifiedRemovalPolicyFor(obj || { id: command.objectId });
++        if (policy.status === "unowned") return command;
++        if (policy.status !== "scoped" || command.sharedMembers || command.actorAddressing || command.examineOnly ||
++            command.targetObjectId != null || command.topicObjectId != null || command.requiresTarget ||
++            (command.arity != null && command.arity !== 1) || command.wornRemovalScope || command.identityWearScope || command.lightFormScope || command.revealedLocalGlobalScope ||
++            (command.objectIds && (command.objectIds.length !== 1 || String(command.objectIds[0]) !== String(policy.scope.id)))) return null;
++        if (command.objectId != null && String(command.objectId) !== String(policy.scope.id)) return null;
++        var owner = ((WorldModel.lastPayload || {}).inventory || []).find(function (o) { return String(o.id) === String(policy.scope.id); });
++        var ref = owner && Actionable.referenceFor(owner);
++        if (!ref || (command.command !== "remove " + ref.noun && command.command !== policy.scope.command)) return null;
++        return Object.assign({}, command, { objectId: policy.scope.id, noun: policy.scope.noun, command: policy.scope.command,
++            label: "Remove", qualifiedRemovalScope: policy.scope });
++    },
++    qualifiedRemovalCommandCurrent: function (command) {
++        if (!command || command.verb !== "remove" || !command.qualifiedRemovalScope || command.sharedMembers || command.actorAddressing ||
++            command.targetObjectId != null || command.topicObjectId != null || command.requiresTarget || command.wornRemovalScope || command.identityWearScope ||
++            command.lightFormScope || command.revealedLocalGlobalScope || (command.arity != null && command.arity !== 1) ||
++            (command.objectIds && (command.objectIds.length !== 1 || String(command.objectIds[0]) !== String(command.objectId)))) return false;
++        var policy = ActionSynth.qualifiedRemovalPolicyFor({ id: command.objectId }), scope = command.qualifiedRemovalScope;
++        return policy.status === "scoped" && Object.getOwnPropertyNames(scope).length === 7 &&
++            ["kind", "digest", "id", "generation", "verb", "noun", "command"].every(function (k) { return scope[k] === policy.scope[k]; }) &&
++            String(command.objectId) === String(policy.scope.id) && command.command === policy.scope.command &&
++            (command.noun == null || command.noun === policy.scope.noun) &&
++            ActionSynth.authoredCommandAllowed(policy.scope.id, "remove", "inventory") && ActionSynth.learnedFormAllowed(policy.scope.id, "remove", "inventory");
++    },
++
+     wornRemovalScopeFor: function (obj) {
+         try {
+             if (!obj || obj.examineOnly || !Number.isInteger(obj.id) ||
+@@ -509,6 +586,10 @@ var ActionSynth = {
+         var name = String((typeof Actionable !== "undefined" && Actionable.disambiguatedNoun)
+             ? Actionable.disambiguatedNoun(obj)
+             : ((typeof Actionable !== "undefined" && Actionable.commandNounFor) ? Actionable.commandNounFor(obj) : obj.name));
++        // A text/room presentation of the configured held owner uses actual custody.
++        // Do not change any unowned module or ambiguous/shared resolution path.
++        if (context === "room" && !containerName && !(options && options.allowAmbiguousReference) &&
++            ActionSynth.qualifiedRemovalPolicyFor(obj).status === "scoped") context = "inventory";
+         var attrs = ActionSynth.trustworthyAttrs(obj);
+         var wornRemoval = context === "inventory" && !containerName && !(options && options.allowAmbiguousReference)
+             ? ActionSynth.wornRemovalScopeFor(obj) : null;
+@@ -693,7 +774,7 @@ var ActionSynth = {
+         if (typeof LearnedWords !== "undefined") LearnedWords.commands(obj).forEach(function (c) {
+             if (!result.some(function (existing) { return existing.command === c.command; })) result.push(c);
+         });
+-        var allowed = result.filter(function (entry) { return ActionSynth.authoredCommandAllowed(obj.id, entry.verb, context); });
++        var allowed = result.map(function (entry) { return ActionSynth.normalizeQualifiedRemovalCandidate(entry, obj); }).filter(function (entry) { return entry && ActionSynth.authoredCommandAllowed(obj.id, entry.verb, context); });
+         if (typeof Actionable !== 'undefined' && Actionable.learnedItemScopeFor && !(options && options.allowAmbiguousReference)) {
+             allowed.forEach(function (entry) { var scope = Actionable.learnedItemScopeFor(entry, context); if (scope) entry.learnedItemScope = scope; });
+         }
+@@ -807,7 +888,7 @@ var ActionSynth = {
+             var out = [];
+             eligible.forEach(function (r) {
+                 bare.forEach(function (c) {
+-                    if (!c || typeof c.command !== "string" || /\s$/.test(c.command) || c.wornRemovalScope || c.learnedWordScope) return;
++                    if (!c || typeof c.command !== "string" || /\s$/.test(c.command) || c.wornRemovalScope || c.qualifiedRemovalScope || c.learnedWordScope) return;
+                     out.push({ verb: c.verb, noun: c.noun, objectId: c.objectId, command: r.word + ", " + c.command,
+                         label: r.name + ": " + String(c.verb || "").charAt(0).toUpperCase() + String(c.verb || "").slice(1),
+                         confidence: c.confidence,
+diff --git a/js/Actionable.js b/js/Actionable.js
+index bf99b89b..e19d4223 100644
+--- a/js/Actionable.js
++++ b/js/Actionable.js
+@@ -2719,10 +2719,23 @@ var Actionable = {
+             verb = String(verb || '').trim();
+             if (!verb || seen[verb.toLowerCase()]) return;
+             seen[verb.toLowerCase()] = true;
+-            var command = verb + ' ' + noun;
++            var command = verb + ' ' + noun, removalCommand = null;
++            if (verb === 'remove' && typeof ActionSynth !== 'undefined' && ActionSynth.normalizeQualifiedRemovalCandidate) {
++                if (!obj && (context.candidateIds || []).some(function (id) { return ActionSynth.qualifiedRemovalPolicyFor({ id: id }).status !== 'unowned'; })) return;
++                if (obj) {
++                    removalCommand = ActionSynth.normalizeQualifiedRemovalCandidate({ objectId: obj.id, verb: verb, command: command, Enter: false }, obj);
++                    if (!removalCommand) return;
++                    command = removalCommand.command;
++                }
++            }
+             if (primary[command.trim().toLowerCase()]) return;
+             if (obj && typeof ActionSynth !== 'undefined' && !ActionSynth.learnedFormAllowed(obj.id, verb, context.kind === 'inventory' || context.source === 'inventory' ? 'inventory' : 'room')) return;
+-            suggestions.push({ Label: verb.charAt(0).toUpperCase() + verb.slice(1), Command: command, Enter: false, Score: 30 });
++            var suggestion = { Label: verb.charAt(0).toUpperCase() + verb.slice(1), Command: command, Enter: false, Score: 30 };
++            if (removalCommand && removalCommand.qualifiedRemovalScope) {
++                suggestion.LearnedCommand = Object.assign({}, removalCommand, { learnedItemScope: Actionable.learnedItemScopeFor(removalCommand, 'inventory') });
++                suggestion.Action = function () { if (Actionable.radialCommandCurrent(suggestion.LearnedCommand)) Actionable.runChosenCommand(removalCommand.command); };
++            }
++            suggestions.push(suggestion);
+         };
+         // These are vocabulary suggestions, not claims of object capability.
+         // Each is a complete one-object command, so choosing it runs it
+@@ -2754,9 +2767,9 @@ var Actionable = {
+     sharedObjectCommands: function (choices, kind) {
+         var held = ((WorldModel.lastPayload || {}).inventory || []).map(function (o) { return String(o.id); });
+         var eligible = choices.filter(function (o) { return (held.indexOf(String(o.id)) >= 0) === (kind === "inventory"); });
+-        var lists = eligible.map(function (o) { return Actionable.resolveObjectCommands(o.id, kind, {allowAmbiguousReference:true}).filter(function (entry) { return !entry.wornRemovalScope && !entry.identityWearScope && !entry.lightFormScope && !entry.revealedLocalGlobalScope; }); });
++        var lists = eligible.map(function (o) { return Actionable.resolveObjectCommands(o.id, kind, {allowAmbiguousReference:true}).filter(function (entry) { return !entry.qualifiedRemovalScope && !entry.wornRemovalScope && !entry.identityWearScope && !entry.lightFormScope && !entry.revealedLocalGlobalScope; }); });
+         return (lists[0] || []).filter(function (entry) {
+-            return !entry.wornRemovalScope && !entry.identityWearScope && !entry.lightFormScope && !entry.revealedLocalGlobalScope && lists.every(function (list) { return list.some(function (c) { return c.command === entry.command && !c.wornRemovalScope && !c.identityWearScope && !c.lightFormScope && !c.revealedLocalGlobalScope; }); });
++            return !entry.qualifiedRemovalScope && !entry.wornRemovalScope && !entry.identityWearScope && !entry.lightFormScope && !entry.revealedLocalGlobalScope && lists.every(function (list) { return list.some(function (c) { return c.command === entry.command && !c.qualifiedRemovalScope && !c.wornRemovalScope && !c.identityWearScope && !c.lightFormScope && !c.revealedLocalGlobalScope; }); });
+         }).map(function (entry) {
+             var members = lists.map(function (list) { return list.find(function (c) { return c.command === entry.command; }); });
+             return Object.assign({}, entry, {
+@@ -2770,6 +2783,11 @@ var Actionable = {
+         if (command.learnedItemScope && !Actionable.learnedItemScopeCurrent(command, command.learnedItemScope.context)) return false;
+         if (command.sharedMembers && (command.wornRemovalScope || command.sharedMembers.some(function (c) { return !!c.wornRemovalScope; }))) return false;
+         return (command.sharedMembers || [command]).every(function (c) {
++            if (c.qualifiedRemovalScope && (command.sharedMembers || typeof ActionSynth === "undefined" || !ActionSynth.qualifiedRemovalCommandCurrent || !ActionSynth.qualifiedRemovalCommandCurrent(c))) return false;
++            if (c.verb === "remove" && typeof ActionSynth !== "undefined" && ActionSynth.qualifiedRemovalPolicyFor) {
++                var removalPolicy = ActionSynth.qualifiedRemovalPolicyFor({ id: c.objectId });
++                if (removalPolicy.status !== "unowned" && (!c.qualifiedRemovalScope || !ActionSynth.qualifiedRemovalCommandCurrent(c))) return false;
++            }
+             if (c.wornRemovalScope && (typeof ActionSynth === "undefined" || !ActionSynth.wornRemovalCommandCurrent || !ActionSynth.wornRemovalCommandCurrent(c))) return false;
+             // Identity Wear R3: re-validated at tap (digest, generation, owner, noun, held-direct, not worn).
+             if (c.identityWearScope && (command.sharedMembers || typeof ActionSynth === "undefined" || !ActionSynth.identityWearCommandCurrent || !ActionSynth.identityWearCommandCurrent(c))) return false;
+@@ -2778,7 +2796,13 @@ var Actionable = {
+             if (c.revealedLocalGlobalScope && (command.sharedMembers || typeof ActionSynth === "undefined" || !ActionSynth.revealedLocalGlobalCommandCurrent || !ActionSynth.revealedLocalGlobalCommandCurrent(c))) return false;
+             // D8 P8: an addressed robot command is re-validated at tap (domain, co-location, command prompt).
+             if (c.actorAddressing && (command.sharedMembers || typeof ActionSynth === "undefined" || !ActionSynth.addressedCommandCurrent || !ActionSynth.addressedCommandCurrent(c))) return false;
+-            return !c.learnedWordScope || typeof LearnedWords === "undefined" || LearnedWords.commandCurrent(c);
++            var authored = c;
++            if (c.qualifiedRemovalScope && c.learnedWordScope) {
++                var authoredOwner = ((WorldModel.lastPayload || {}).inventory || []).find(function (o) { return String(o.id) === String(c.objectId); });
++                if (!authoredOwner) return false;
++                authored = Object.assign({}, c, { command: c.verb + " " + Actionable.referenceFor(authoredOwner).noun });
++            }
++            return !c.learnedWordScope || typeof LearnedWords === "undefined" || LearnedWords.commandCurrent(authored);
+         });
+     },
+     // A trusted item/form preference marker. Never derived from global verb
+@@ -2796,12 +2820,18 @@ var Actionable = {
+             var obj = Actionable.payloadPool().find(function (o) { return String(o.id) === String(command.objectId); });
+             if (!obj || obj.revealedLocalGlobal) return null;
+             var ref = Actionable.referenceFor(obj);
+-            if (!ref.unique || !ref.verified || command.command !== command.verb + ' ' + ref.noun) return null;
++            var effectiveNoun = ref.noun;
++            if (command.qualifiedRemovalScope) {
++                if (!ActionSynth.qualifiedRemovalCommandCurrent(command)) return null;
++                effectiveNoun = command.qualifiedRemovalScope.noun;
++            }
++            if (!ref.unique || !ref.verified || command.command !== command.verb + ' ' + effectiveNoun) return null;
+             var actual = ((WorldModel.lastPayload || {}).inventory || []).some(function (o) { return String(o.id) === String(obj.id); }) ? 'inventory' : 'room';
++            if (command.qualifiedRemovalScope && (context === 'room' || context === 'inventory')) context = actual;
+             if (actual !== context || (actual === 'inventory' && ActionSynth.heldContainerName(obj, WorldModel.lastPayload))) return null;
+             if (!ActionSynth.learnedFormAllowed(obj.id, command.verb, context)) return null;
+             return { digest: digest, generation: typeof UndoRestoreSync !== 'undefined' ? UndoRestoreSync.generation : 0,
+-                objectId: obj.id, form: command.verb, noun: ref.noun, context: context,
++                objectId: obj.id, form: command.verb, noun: effectiveNoun, context: context,
+                 revision: manual ? manual.revision : null, rowId: manual ? manual.id : null };
+         } catch (e) { return null; }
+     },
+@@ -2859,6 +2889,7 @@ var Actionable = {
+             slices.push({ Label: "Go " + noun, Command: dirCommand, Score: scoreFor(dirCommand, 50), Usage: usageFor(dirCommand), Action: function () { Actionable.Submit(dirCommand); } });
+         } else if (objectId || sharedCommands) {
+             var cmds = sharedCommands || Actionable.resolveObjectCommands(objectId, kind);
++            if (!sharedCommands && typeof ActionSynth !== "undefined" && ActionSynth.normalizeQualifiedRemovalCandidate) cmds = cmds.map(function (c) { return ActionSynth.normalizeQualifiedRemovalCandidate(c, object || { id: c.objectId }); }).filter(Boolean);
+             slices = cmds.map(function (c) {
+                 if (!sharedCommands) c = Object.assign({}, c, { learnedItemScope: Actionable.learnedItemScopeFor(c, kind === 'inventory' ? 'inventory' : 'room') });
+                 var verb = String(c.verb || "examine");
+diff --git a/js/EquipmentUI.js b/js/EquipmentUI.js
+index 419caed8..a6d18005 100644
+--- a/js/EquipmentUI.js
++++ b/js/EquipmentUI.js
+@@ -58,12 +58,16 @@ var EquipmentUI = {
+             return form !== "remove" && form !== "take";
+         }
+         function add(form, enter, descriptor) {
++            if (form === "remove" && ActionSynth.normalizeQualifiedRemovalCandidate) {
++                descriptor = ActionSynth.normalizeQualifiedRemovalCandidate(descriptor || { objectId: obj.id, verb: form, command: form + " " + ref.noun, Enter: enter, enter: enter }, obj);
++                if (!descriptor) return;
++            }
+             if (!allowed(form)) return;
+             // Identity Wear (R3) carries its own scope; keep it like the E5 worn-removal scope.
+-            var scoped = descriptor && (descriptor.wornRemovalScope || descriptor.identityWearScope || descriptor.lightFormScope) ? descriptor : null;
++            var scoped = descriptor && (descriptor.qualifiedRemovalScope || descriptor.wornRemovalScope || descriptor.identityWearScope || descriptor.lightFormScope) ? descriptor : null;
+             if (scoped && !Actionable.radialCommandCurrent(scoped)) return;
+             if (forms[form]) {
+-                if (scoped) { forms[form].ScopedCommand = scoped; forms[form].Enter = true; }
++                if (scoped) { forms[form].ScopedCommand = scoped; forms[form].Enter = scoped.qualifiedRemovalScope ? enter !== false && scoped.Enter !== false && scoped.enter !== false : true; }
+                 else if (enter && !forms[form].ScopedCommand) forms[form].Enter = true;
+                 return;
+             }
+@@ -79,19 +83,20 @@ var EquipmentUI = {
+                     if (!command || command.objectId == null || String(command.objectId) !== String(obj.id)) return false;
+                     var direct = command.verb && command.command === command.verb + " " + ref.noun;
+                     var nestedTake = nested && command.verb === "take out of " + nested && command.command === "take " + ref.noun;
+-                    return direct || nestedTake;
++                    return direct || nestedTake || !!(command.qualifiedRemovalScope && Actionable.radialCommandCurrent(command));
+                 });
+             }
+         } catch (eSemantic) {}
+         commands = commands.concat(ActionSynth.commandsForObject(obj, "inventory", nested));
+         commands.forEach(function (command) {
+-            if (!command || command.Enter === false || command.enter === false ||
++            if (!command || ((command.Enter === false || command.enter === false) && !command.qualifiedRemovalScope) ||
+                 (command.objectId != null && String(command.objectId) !== String(obj.id)) ||
+                 command.targetObjectId != null || command.topicObjectId != null ||
+                 (command.arity != null && command.arity !== 1) ||
+                 (command.objectIds && (command.objectIds.length !== 1 || String(command.objectIds[0]) !== String(obj.id)))) return;
+             // The nested TAKE label is context only; preserve its actual provider command.
+             var suffix = " " + ref.noun;
++            if (command.qualifiedRemovalScope) { add("remove", command.Enter !== false && command.enter !== false, command); return; }
+             if (command.command && command.command.endsWith(suffix)) add(command.command.slice(0, -suffix.length), true, command);
+         });
+         AttrCalibrator.learnedFormsFor(obj.id).forEach(function (form) { add(form, true); });
+@@ -103,7 +108,8 @@ var EquipmentUI = {
+         if (scopedRemoval) candidates = candidates.filter(function (c) { return c.Form !== "drop" || !!(c.ScopedCommand && c.ScopedCommand.wornRemovalScope); });
+         candidates.forEach(function (c) {
+             if (!c.ScopedCommand) return;
+-            if (c.ScopedCommand.wornRemovalScope) c.Label = "Drop";
++            if (c.ScopedCommand.qualifiedRemovalScope) c.Label = "Remove";
++            else if (c.ScopedCommand.wornRemovalScope) c.Label = "Drop";
+             else if (c.ScopedCommand.identityWearScope) c.Label = "Wear";
+             else if (c.ScopedCommand.lightFormScope) c.Label = c.ScopedCommand.lightFormScope.verb.charAt(0).toUpperCase() + c.ScopedCommand.lightFormScope.verb.slice(1);
+         });
+@@ -113,17 +119,20 @@ var EquipmentUI = {
+         if (!EquipmentUI.interactionReady(generation, moduleKey)) return;
+         var model = EquipmentUI.model(), obj = model.byId[String(id)];
+         if (!obj) return;
++        if (form === "remove" && ActionSynth.qualifiedRemovalPolicyFor && ActionSynth.qualifiedRemovalPolicyFor(obj).status !== "unowned" &&
++            (!selectedDescriptor || !selectedDescriptor.qualifiedRemovalScope)) return;
+         if (selectedDescriptor && !Actionable.radialCommandCurrent(selectedDescriptor)) return;
+         var candidate = EquipmentUI.yourselfCommands(obj, model).find(function (item) { return item.Form === form; });
+         if (!candidate || (enter && !candidate.Enter)) return;
+         if (selectedDescriptor) {
+             var current = candidate.ScopedCommand;
+-            var kind = selectedDescriptor.wornRemovalScope ? "wornRemovalScope" : selectedDescriptor.identityWearScope ? "identityWearScope" : selectedDescriptor.lightFormScope ? "lightFormScope" : null;
++            var kind = selectedDescriptor.qualifiedRemovalScope ? "qualifiedRemovalScope" : selectedDescriptor.wornRemovalScope ? "wornRemovalScope" : selectedDescriptor.identityWearScope ? "identityWearScope" : selectedDescriptor.lightFormScope ? "lightFormScope" : null;
+             var prior = kind && selectedDescriptor[kind];
+             if (!current || !prior || !current[kind] || !Actionable.radialCommandCurrent(current) ||
+                 current.command !== selectedDescriptor.command || current.objectId !== selectedDescriptor.objectId ||
+                 current[kind].digest !== prior.digest || current[kind].noun !== prior.noun ||
+-                ((kind === "identityWearScope" || kind === "lightFormScope") && (current[kind].id !== prior.id || current[kind].generation !== prior.generation)) ||
++                ((kind === "identityWearScope" || kind === "lightFormScope" || kind === "qualifiedRemovalScope") && (current[kind].id !== prior.id || current[kind].generation !== prior.generation)) ||
++                (kind === "qualifiedRemovalScope" && ["kind", "verb", "command"].some(function (key) { return current[kind][key] !== prior[key]; })) ||
+                 (kind === "lightFormScope" && (current[kind].side !== prior.side || current[kind].command !== prior.command || current[kind].context !== prior.context))) return;
+             Actionable.runChosenCommand(current.command); return;
+         }
+diff --git a/js/ModuleStatFactsClaude.js b/js/ModuleStatFactsClaude.js
+index 098267ba..dc9ef9d2 100644
+--- a/js/ModuleStatFactsClaude.js
++++ b/js/ModuleStatFactsClaude.js
+@@ -426,6 +426,8 @@ var ModuleStatFactsClaude = {
+     // Native i tests bit19 and omits the absent lariat; the worn outfit also
+     // has this bit, so inventory traversal preserves confirmed worn gear.
+     "d02fd95bae5398f9b87fe0f537f288b45e93967008948970f1982a65b888eddb": {
++        // Exact REMOVE reference: bare mask is ambiguous to the native parser; western mask removes owner38.
++        "removalReferences": { "objects": [38], "verb": "remove", "scope": "worn-direct", "nouns": { "38": "western mask" } },
+         // CONTBIT 16 / OPENBIT 13 / PERSON 31 (claude 2026-10-24, r3-claude/container-open/Suspect.json, ordinary commands): PUT receipt
+         // IN fireplace, pen IN trash basket succeed with parent change; gunbelt and fireplace CLOSE/OPEN toggle 13; notebook (no 16)
+         // refuses open/put-in. Source exact 33/33, 36/36, PERSON carriers are the characters. Actors carrying CONTBIT (Alicia,
+diff --git a/js/SemanticActions.js b/js/SemanticActions.js
+index ade86413..80401616 100644
+--- a/js/SemanticActions.js
++++ b/js/SemanticActions.js
+@@ -350,6 +350,7 @@ var SemanticActions = {
+             if (c.Enter === false || c.enter === false) { form.Enter = false; form.enter = false; }
+             if (c.learnedWordScope) form.learnedWordScope = c.learnedWordScope;
+             if (c.wornRemovalScope) form.wornRemovalScope = c.wornRemovalScope;
++            if (c.qualifiedRemovalScope) form.qualifiedRemovalScope = c.qualifiedRemovalScope;
+             if (c.identityWearScope) form.identityWearScope = c.identityWearScope;
+             if (c.lightFormScope) form.lightFormScope = c.lightFormScope;
+             if (c.revealedLocalGlobalScope) { form.revealedLocalGlobalScope = c.revealedLocalGlobalScope; form.context = c.context; }
+@@ -375,11 +376,13 @@ var SemanticActions = {
+         var order = [];
+         function apply(list) {
+             (list || []).forEach(function (c) {
++                if (typeof ActionSynth !== "undefined" && ActionSynth.normalizeQualifiedRemovalCandidate) c = ActionSynth.normalizeQualifiedRemovalCandidate(c, obj);
+                 if (!c || !c.verb) return;
+                 var rendered = [String(c.command || "").toLowerCase().replace(/\s+/g, " ").trim(),
+                     context || "", String(c.objectId == null ? "" : c.objectId)].join("|");
+                 if (byRendered[rendered]) {
+                     var winner = byRendered[rendered];
++                    if (c.qualifiedRemovalScope && winner.command === c.command && String(winner.objectId) === String(c.objectId)) winner.qualifiedRemovalScope = c.qualifiedRemovalScope;
+                     // Keep precedence/evidence while retaining the generated action's currency.
+                     if (c.wornRemovalScope && winner.command === c.command && String(winner.objectId) === String(c.objectId)) {
+                         winner.wornRemovalScope = c.wornRemovalScope;
+diff --git a/harness/qualified-removal-reference.js b/harness/qualified-removal-reference.js
+new file mode 100644
+index 00000000..35fb6243
+--- /dev/null
++++ b/harness/qualified-removal-reference.js
+@@ -0,0 +1,96 @@
++// A1 qualified REMOVE consumer contract. Constructed controls on real Suspect RAM;
++// no native parser-success claim. Run from repository root. Baseline surface parity
++// is a separate integration gate; this file does not claim native or catalog coverage.
++'use strict';
++const fs=require('fs'),vm=require('vm'),assert=require('assert'),path=require('path');
++let checks=0;const failures=[];function check(name,fn){if(process.argv.includes('--more-only')&&!name.startsWith('More:'))return;try{fn();checks++;console.log('PASS '+name);}catch(e){failures.push({name,error:e.stack});console.error('FAIL '+name+': '+e.message);}}
++const fixture=fs.readFileSync('harness/zil-light-forms.js','utf8').split('const LIGHT=')[0];
++assert(fixture.includes('function load(file)'),'loader boundary');
++function loader(root){return new Function('require','process',fixture.replace("const root=process.env.LIGHT_SOURCE_ROOT||'.';",'const root='+JSON.stringify(root)+';')+'\nreturn load;')(require,process);}
++const load=loader(process.cwd()),T=load('Suspect.z3.js'),S=T.S,c=T.c;
++assert.equal(typeof S.qualifiedRemovalPolicyFor,'function','runtime API must be implemented before running this harness');
++const clone=x=>JSON.parse(JSON.stringify(x));
++const spec=()=>vm.runInContext('({objects:[38],verb:"remove",scope:"worn-direct",nouns:{"38":"western mask"}})',c);
++const originalSpec=T.F.removalReferences;assert(originalSpec,'production fact declaration required');
++function reset(){T.names[38]='mask';T.F.removalReferences=spec();T.parent(38,T.player);T.bit(38,5,1);T.payload.inventory=[T.obj(38)];T.payload.discoveredObjects=[];c.UndoRestoreSync.generation=7;}
++function object(){return T.payload.inventory[0];}
++function policy(){return S.qualifiedRemovalPolicyFor(object());}
++function row(extra){return Object.assign({verb:'remove',noun:'mask',objectId:38,command:'remove mask',confidence:.8},extra);}
++function normalized(extra){return S.normalizeQualifiedRemovalCandidate(row(extra),object());}
++function withValue(o,k,v,fn){const own=Object.prototype.hasOwnProperty.call(o,k),old=o[k];o[k]=v;try{fn();}finally{if(own)o[k]=old;else delete o[k];}}
++function scoped(){const p=policy();assert.equal(p.status,'scoped');return p.scope;}
++reset();
++check('exact live owner scope and current command',()=>{const p=scoped();assert.deepStrictEqual(clone(p),{kind:'qualified-worn-remove',digest:T.digest,id:38,generation:7,verb:'remove',noun:'western mask',command:'remove western mask'});const r=normalized();assert.equal(r.command,p.command);assert(r.qualifiedRemovalScope);assert(S.qualifiedRemovalCommandCurrent(r));assert(c.Actionable.radialCommandCurrent(r));});
++check('BUILD copy preserves edit-only/provenance; original remains unchanged',()=>{const r=row({Enter:false,enter:false,source:'manual',revision:11,customPriority:4}),before=clone(r),n=S.normalizeQualifiedRemovalCandidate(r,object());assert.notStrictEqual(n,r);assert.deepStrictEqual(clone(r),before);for(const k of ['Enter','enter','source','revision','customPriority'])assert.strictEqual(n[k],r[k]);});
++check('unknown ownership passes same DTO without guessing noun-key ownership',()=>{for(const value of [null,{}, {objects:['38'],nouns:{38:'western mask'}},{objects:[],nouns:{38:'western mask'}}]){T.F.removalReferences=value;const r=row();assert.equal(policy().status,'unowned');assert.strictEqual(S.normalizeQualifiedRemovalCandidate(r,object()),r);}reset();});
++const invalid=[
++ ['duplicate owners','({objects:[38,38],verb:"remove",scope:"worn-direct",nouns:{38:"western mask"}})'],
++ ['extra declaration key','({objects:[38],verb:"remove",scope:"worn-direct",nouns:{38:"western mask"},extra:true})'],
++ ['wrong verb','({objects:[38],verb:"drop",scope:"worn-direct",nouns:{38:"western mask"}})'],
++ ['wrong scope','({objects:[38],verb:"remove",scope:"held-direct",nouns:{38:"western mask"}})'],
++ ['missing noun','({objects:[38],verb:"remove",scope:"worn-direct",nouns:{}})'],
++ ['extra noun','({objects:[38],verb:"remove",scope:"worn-direct",nouns:{38:"western mask",84:"fairy mask"}})'],
++ ['noncanonical noun key','({objects:[38],verb:"remove",scope:"worn-direct",nouns:{"038":"western mask"}})'],
++ ['bad noun separator','({objects:[38],verb:"remove",scope:"worn-direct",nouns:{38:"western mask;drop all"}})'],
++ ['upper-case noun','({objects:[38],verb:"remove",scope:"worn-direct",nouns:{38:"Western mask"}})'],
++ ['frontier overflow on another owner','({objects:[38,99999],verb:"remove",scope:"worn-direct",nouns:{38:"western mask",99999:"mask"}})'],
++ ['inherited noun','({objects:[38],verb:"remove",scope:"worn-direct",nouns:Object.create({38:"western mask"})})']
++];
++for(const [label,expression]of invalid)check('recognizable invalid '+label+' suppresses Remove only',()=>{reset();T.F.removalReferences=vm.runInContext(expression,c);assert.equal(policy().status,'blocked');assert.equal(normalized(),null);const other=row({verb:'examine',command:'examine mask'});assert.strictEqual(S.normalizeQualifiedRemovalCandidate(other,object()),other);reset();});
++check('plain null-prototype record remains valid',()=>{reset();T.F.removalReferences=vm.runInContext('Object.assign(Object.create(null),{objects:[38],verb:"remove",scope:"worn-direct",nouns:{38:"western mask"}})',c);assert.equal(policy().status,'scoped');reset();});
++check('missing declaration is cheap UNOWNED before memory/payload/reference',()=>{delete T.F.removalReferences;let calls=0;const fail=()=>{calls++;throw Error('must not touch');};withValue(c.ZRamProvider,'getMem',fail,()=>withValue(c.Actionable,'payloadPool',fail,()=>withValue(c.Actionable,'referenceFor',fail,()=>{const r=row();assert.equal(S.qualifiedRemovalPolicyFor({id:38}).status,'unowned');assert.strictEqual(S.normalizeQualifiedRemovalCandidate(r,{id:38}),r);assert.equal(calls,0);})));reset();});
++for(const [label,mutate]of [
++ ['not worn',()=>T.bit(38,5,0)],['ground',()=>T.parent(38,T.room)],['nested',()=>{T.parent(93,T.player);T.parent(38,93);}],
++ ['duplicate inventory',()=>T.payload.inventory.push(Object.assign({},object()))],['conflicting discovered copy',()=>T.payload.discoveredObjects.push(Object.assign({},object(),{parentId:84}))],
++ ['examineOnly',()=>object().examineOnly=true],['noncanonical id',()=>object().id='38'],['missing inventory',()=>T.payload.inventory=[]]
++])check('live eligibility blocks '+label,()=>{reset();const old=normalized();mutate();assert(!S.qualifiedRemovalCommandCurrent(old));assert.equal(S.qualifiedRemovalPolicyFor({id:38}).status,'blocked');reset();});
++check('identical nonauthoritative discovered copy is allowed',()=>{reset();T.payload.discoveredObjects=[Object.assign({},object())];assert.equal(policy().status,'scoped');reset();});
++check('unresolved player and malformed worn fact block known owner',()=>{reset();withValue(T.R,'resolvePlayer',()=>({id:0}),()=>assert.equal(policy().status,'blocked'));withValue(T.F,'wornAttribute',48,()=>assert.equal(policy().status,'blocked'));});
++check('unverified/ambiguous generic reference blocks qualified owner',()=>{for(const ref of [{unique:false,verified:true,noun:'mask'},{unique:true,verified:false,noun:'mask'}])withValue(c.Actionable,'referenceFor',()=>ref,()=>assert.equal(policy().status,'blocked'));});
++check('missing bare REMOVE grammar blocks owner',()=>{const G=c.GrammarProvider,decode=G.decodeD198;withValue(G,'decodeD198',m=>{const d=decode(m);d.templates=d.templates.filter(t=>t.verb!=='remove');return d;},()=>assert.equal(policy().status,'blocked'));});
++check('invalid dictionary noun blocks owner',()=>{withValue(T.R,'hasDictionaryWord',()=>false,()=>assert.equal(policy().status,'blocked'));});
++check('captured scope rejects generation/schema/digest drift without rebasing',()=>{reset();const r=normalized();c.UndoRestoreSync.generation++;assert(!S.qualifiedRemovalCommandCurrent(r));c.UndoRestoreSync.generation--;T.F.removalReferences.nouns[38]='mask';assert(!S.qualifiedRemovalCommandCurrent(r));reset();withValue(c.ModuleLibrary,'currentExecutableDigest',()=> '0'.repeat(64),()=>assert(!S.qualifiedRemovalCommandCurrent(r)));assert(S.qualifiedRemovalCommandCurrent(r));});
++check('scope and outer-field tampering rejects at tap',()=>{reset();const r=normalized();for(const change of [{verb:'drop'},{objectId:84},{command:'remove mask'},{sharedMembers:[r]},{actorAddressing:{actor:1}},{identityWearScope:{}}])assert(!S.qualifiedRemovalCommandCurrent(Object.assign({},r,change)),JSON.stringify(change));for(const key of Object.keys(r.qualifiedRemovalScope)){const x=clone(r);x.qualifiedRemovalScope[key]='tampered';assert(!S.qualifiedRemovalCommandCurrent(x),key);}assert(!S.qualifiedRemovalCommandCurrent(row()));});
++check('unary scope cannot absorb target/topic/shared/actor variants',()=>{for(const extra of [{targetObjectId:84},{topicObjectId:84},{arity:2},{objectIds:[38,84]},{sharedMembers:[row()]},{actorAddressing:{actor:1}},{wornRemovalScope:{}},{identityWearScope:{}},{lightFormScope:{}}])assert.equal(normalized(extra),null,JSON.stringify(extra));});
++for(const [label,get]of [['inventory',()=>S.commandsForObject(object(),'inventory')],['room-presentation',()=>S.commandsForObject(object(),'room')],['semantic',()=>c.SemanticActions.resolveForPayloadObjectId(38,'inventory')]])check(label+' preserves exact qualified noun',()=>{reset();const list=get(),r=list.find(x=>x.verb==='remove');assert(r&&r.qualifiedRemovalScope,JSON.stringify(clone(list)));assert.equal(r.command,'remove western mask');});
++check('Yourself preserves exact command and Remove label',()=>{reset();const r=c.EquipmentUI.yourselfCommands(object(),{}).find(x=>x.Form==='remove');assert(r&&r.ScopedCommand&&r.ScopedCommand.qualifiedRemovalScope);assert.equal(r.Label,'Remove');assert.equal(r.ScopedCommand.command,'remove western mask');});
++check('invalid known-owner declaration leaves held-unworn Wear and Drop unchanged',()=>{reset();T.bit(38,5,0);T.payload.inventory=[T.obj(38)];const before=clone(S.commandsForObject(object(),'inventory'));T.F.removalReferences.verb='drop';assert.deepStrictEqual(clone(S.commandsForObject(object(),'inventory')),before);assert(before.some(r=>r.verb==='wear'));assert(before.some(r=>r.verb==='drop'));reset();});
++check('known invalid Remove cannot reappear via learned providers; other owner unchanged',()=>{reset();const original=c.AttrCalibrator.learnedFormsFor;withValue(c.AttrCalibrator,'learnedFormsFor',()=>['remove'],()=>{T.F.removalReferences.verb='drop';for(const list of [S.commandsForObject(object(),'inventory'),c.SemanticActions.resolveForPayloadObjectId(38,'inventory')])assert(!list.some(x=>x.verb==='remove'));assert(!c.EquipmentUI.yourselfCommands(object(),{}).some(x=>x.Form==='remove'));});reset();});
++check('other Suspect owner is byte-identical and cheap unowned',()=>{const o={id:93},r={verb:'remove',objectId:93,command:'remove coat'},before=clone(r);assert.equal(S.qualifiedRemovalPolicyFor(o).status,'unowned');assert.strictEqual(S.normalizeQualifiedRemovalCandidate(r,o),r);assert.deepStrictEqual(clone(r),before);});
++check('all 25 other declared exact facts plus Inform/Glulx identities return same DTO without RAM/payload work',()=>{const sheet=JSON.parse(fs.readFileSync('work/mapping-research/items-codex/resume-20261020/nov4-lead/current-zil-consumer-sheet.json'));const keys=sheet.rows.filter(r=>r.game!=='Suspect.z3.js').map(r=>r.digest);assert.equal(keys.length,25);for(const digest of keys.concat(['inform-unsupported','glulx-unsupported'])){let calls=0;const fail=()=>{calls++;throw Error('unexpected owner work');};withValue(c.ModuleLibrary,'currentExecutableDigest',()=>digest,()=>withValue(c.ZRamProvider,'getMem',fail,()=>withValue(c.Actionable,'payloadPool',fail,()=>withValue(c.Actionable,'referenceFor',fail,()=>{const o={id:38},r=row();assert.equal(S.qualifiedRemovalPolicyFor(o).status,'unowned');assert.strictEqual(S.normalizeQualifiedRemovalCandidate(r,o),r);assert.equal(calls,0);}))))}});
++check('D263 marker derives qualified noun only for an actual learned pair and rejects stale/tampered scope',()=>{
++ reset();const text=fs.readFileSync('js/Actionable.js','utf8');
++ for(const name of ['learnedItemScopeFor','learnedItemScopeCurrent']){const k=text.indexOf(name+': function');assert(k>=0,name);let start=text.indexOf('{',k),depth=0,end=start;for(;end<text.length;end++){if(text[end]==='{')depth++;else if(text[end]==='}'&&--depth===0)break;}c.Actionable[name]=vm.runInContext('(function'+text.slice(text.indexOf('(',k),end+1)+')',c);}
++ c.AttrCalibrator._d198ExecutableDigest=()=>T.digest;
++ const r=normalized();withValue(c.AttrCalibrator,'learnedFormsFor',()=>[],()=>assert.equal(c.Actionable.learnedItemScopeFor(r,'inventory'),null));
++ withValue(c.AttrCalibrator,'learnedFormsFor',()=>['remove'],()=>{const marker=c.Actionable.learnedItemScopeFor(r,'inventory');assert(marker,'learned qualified remove marker');assert.equal(marker.noun,'western mask');r.learnedItemScope=marker;assert(c.Actionable.learnedItemScopeCurrent(r,'inventory'));c.UndoRestoreSync.generation++;assert(!c.Actionable.learnedItemScopeCurrent(r,'inventory'));c.UndoRestoreSync.generation--;const bad=clone(r);bad.command='remove mask';assert.equal(c.Actionable.learnedItemScopeFor(bad,'inventory'),null);assert.equal(c.Actionable.learnedItemScopeFor(r,'room').context,'inventory');});
++});
++// Compare bounded UI consumer samples with an immutable pre-A1 source tree. Use the SAME
++// current GrammarProvider on both sides to avoid attributing concurrent Z3 changes to A1.
++check('25 exact non-Suspect ZIL UI sample surfaces remain baseline-equal',()=>{
++ const manifest=JSON.parse(fs.readFileSync('work/mapping-research/items-codex/resume-20261020/roy-keyboard-20261104/final-shared-gate/manifest.json'));
++ const baseRoot=process.env.QUALIFIED_REMOVAL_BASELINE_ROOT||manifest.cand;
++ assert(fs.existsSync(baseRoot+'/js/ActionSynth.js'),'immutable baseline available');
++ const sameGrammarFixture=fixture.replace("fs.readFileSync(root+'/js/'+f+'.js','utf8')","fs.readFileSync((f==='GrammarProvider'?process.cwd():root)+'/js/'+f+'.js','utf8')");
++ const make=r=>new Function('require','process',sameGrammarFixture.replace("const root=process.env.LIGHT_SOURCE_ROOT||'.';",'const root='+JSON.stringify(r)+';')+'\nreturn load;')(require,process);
++ const oldLoad=make(baseRoot),newLoad=make(process.cwd());
++ const sheet=JSON.parse(fs.readFileSync('work/mapping-research/items-codex/resume-20261020/nov4-lead/current-zil-consumer-sheet.json'));
++ for(const title of sheet.rows.filter(r=>r.game!=='Suspect.z3.js')){
++   const old=oldLoad(title.game),now=newLoad(title.game);assert.equal(now.digest,title.digest);assert.equal(old.digest,title.digest);
++   const ids=[];for(let id=2;id<=Math.min(now.count,600)&&ids.length<8;id++){try{if(now.R.shortName(now.mem,id))ids.push(id);}catch(e){}}
++   const snapshots=E=>ids.map(id=>{const o=E.obj(id);E.payload.inventory=[o];E.payload.discoveredObjects=[];return {id,main:clone(E.S.commandsForObject(o,'inventory')),semantic:clone(E.c.SemanticActions.resolveForPayloadObjectId(id,'inventory')),yourself:clone(E.c.EquipmentUI.yourselfCommands(o,{}))};});
++   assert.deepStrictEqual(snapshots(now),snapshots(old),title.game+' bounded8object consumer parity');
++ }
++});
++// Actual More constructor; the radial shell is a capture stub, never a reimplementation.
++function installMore(E,sourceRoot){const text=fs.readFileSync(path.join(sourceRoot,'js/Actionable.js'),'utf8');for(const name of ['addMoreActions','moreDictionaryVerbAllowed','learnedItemScopeFor','learnedItemScopeCurrent']){const k=text.indexOf(name+': function');assert(k>=0,name);let start=text.indexOf('{',k),depth=0,end=start;for(;end<text.length;end++){if(text[end]==='{')depth++;else if(text[end]==='}'&&--depth===0)break;}E.c.Actionable[name]=vm.runInContext('(function'+text.slice(text.indexOf('(',k),end+1)+')',E.c);}E.c.AttrCalibrator._d198ExecutableDigest=()=>E.digest;E.c.ParchLockQol={GetRadialCommands:()=>[{source:'ram-synth',Command:'remove'}],OpenRadial:(x,y,rows,ctx)=>{E.moreCaptured={rows,ctx};}};}
++installMore(T,process.cwd());
++function moreRows(E,primary,id){const list=primary||[];E.moreCaptured=null;E.c.Actionable.addMoreActions(list,{kind:'inventory',source:'inventory',objectId:id||38,noun:'mask'},10,20);const launch=list.find(x=>x.MoreSuggestions);if(launch)launch.Action();return E.moreCaptured?E.moreCaptured.rows:[];}
++check('More: qualified primary deduplicates canonical suggestion',()=>{reset();assert.equal(moreRows(T,[{Label:'Remove',Command:'remove western mask'}]).length,0);});
++check('More: absent primary captures exact scope; current dispatch and stale tap are distinct',()=>{reset();const rows=moreRows(T,[]);assert.equal(rows.length,1);const r=rows[0];assert.equal(r.Command,'remove western mask');assert.equal(r.Enter,false);assert(r.LearnedCommand.qualifiedRemovalScope);assert.equal(r.LearnedCommand.qualifiedRemovalScope.generation,7);const sent=[];withValue(c.Actionable,'runChosenCommand',cmd=>sent.push(cmd),()=>{r.Action();assert.deepStrictEqual(sent,['remove western mask']);c.UndoRestoreSync.generation++;r.Action();assert.deepStrictEqual(sent,['remove western mask']);c.UndoRestoreSync.generation--;T.bit(38,5,0);r.Action();assert.deepStrictEqual(sent,['remove western mask']);});reset();});
++check('More: recognizable invalid owner emits no Remove',()=>{reset();T.F.removalReferences.verb='drop';assert.equal(moreRows(T,[]).length,0);reset();});
++check('More: unowned owner suggestion DTO is baseline-identical',()=>{const manifest=JSON.parse(fs.readFileSync('work/mapping-research/items-codex/resume-20261020/roy-keyboard-20261104/final-shared-gate/manifest.json'));const old=loader(manifest.cand)('Suspect.z3.js');installMore(old,manifest.cand);reset();T.parent(93,T.player);T.payload.inventory=[T.obj(93)];old.parent(93,old.player);old.payload.inventory=[old.obj(93)];const current=moreRows(T,[],93),baseline=moreRows(old,[],93);assert.deepStrictEqual(clone(current),clone(baseline));assert(!current[0].LearnedCommand);reset();});
++T.F.removalReferences=originalSpec;
++console.log(checks+' qualified-removal constructed checks passed; '+failures.length+' failed; native rendered evidence and full baseline surface parity remain separate.');
++
++if(failures.length){console.error(JSON.stringify({failures},null,2));process.exitCode=1;}

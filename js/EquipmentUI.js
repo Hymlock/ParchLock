@@ -58,12 +58,16 @@ var EquipmentUI = {
             return form !== "remove" && form !== "take";
         }
         function add(form, enter, descriptor) {
+            if (form === "remove" && ActionSynth.normalizeQualifiedRemovalCandidate) {
+                descriptor = ActionSynth.normalizeQualifiedRemovalCandidate(descriptor || { objectId: obj.id, verb: form, command: form + " " + ref.noun, Enter: enter, enter: enter }, obj);
+                if (!descriptor) return;
+            }
             if (!allowed(form)) return;
             // Identity Wear (R3) carries its own scope; keep it like the E5 worn-removal scope.
-            var scoped = descriptor && (descriptor.wornRemovalScope || descriptor.identityWearScope || descriptor.lightFormScope) ? descriptor : null;
+            var scoped = descriptor && (descriptor.qualifiedRemovalScope || descriptor.wornRemovalScope || descriptor.identityWearScope || descriptor.lightFormScope) ? descriptor : null;
             if (scoped && !Actionable.radialCommandCurrent(scoped)) return;
             if (forms[form]) {
-                if (scoped) { forms[form].ScopedCommand = scoped; forms[form].Enter = true; }
+                if (scoped) { forms[form].ScopedCommand = scoped; forms[form].Enter = scoped.qualifiedRemovalScope ? enter !== false && scoped.Enter !== false && scoped.enter !== false : true; }
                 else if (enter && !forms[form].ScopedCommand) forms[form].Enter = true;
                 return;
             }
@@ -79,19 +83,20 @@ var EquipmentUI = {
                     if (!command || command.objectId == null || String(command.objectId) !== String(obj.id)) return false;
                     var direct = command.verb && command.command === command.verb + " " + ref.noun;
                     var nestedTake = nested && command.verb === "take out of " + nested && command.command === "take " + ref.noun;
-                    return direct || nestedTake;
+                    return direct || nestedTake || !!(command.qualifiedRemovalScope && Actionable.radialCommandCurrent(command));
                 });
             }
         } catch (eSemantic) {}
         commands = commands.concat(ActionSynth.commandsForObject(obj, "inventory", nested));
         commands.forEach(function (command) {
-            if (!command || command.Enter === false || command.enter === false ||
+            if (!command || ((command.Enter === false || command.enter === false) && !command.qualifiedRemovalScope) ||
                 (command.objectId != null && String(command.objectId) !== String(obj.id)) ||
                 command.targetObjectId != null || command.topicObjectId != null ||
                 (command.arity != null && command.arity !== 1) ||
                 (command.objectIds && (command.objectIds.length !== 1 || String(command.objectIds[0]) !== String(obj.id)))) return;
             // The nested TAKE label is context only; preserve its actual provider command.
             var suffix = " " + ref.noun;
+            if (command.qualifiedRemovalScope) { add("remove", command.Enter !== false && command.enter !== false, command); return; }
             if (command.command && command.command.endsWith(suffix)) add(command.command.slice(0, -suffix.length), true, command);
         });
         AttrCalibrator.learnedFormsFor(obj.id).forEach(function (form) { add(form, true); });
@@ -103,7 +108,8 @@ var EquipmentUI = {
         if (scopedRemoval) candidates = candidates.filter(function (c) { return c.Form !== "drop" || !!(c.ScopedCommand && c.ScopedCommand.wornRemovalScope); });
         candidates.forEach(function (c) {
             if (!c.ScopedCommand) return;
-            if (c.ScopedCommand.wornRemovalScope) c.Label = "Drop";
+            if (c.ScopedCommand.qualifiedRemovalScope) c.Label = "Remove";
+            else if (c.ScopedCommand.wornRemovalScope) c.Label = "Drop";
             else if (c.ScopedCommand.identityWearScope) c.Label = "Wear";
             else if (c.ScopedCommand.lightFormScope) c.Label = c.ScopedCommand.lightFormScope.verb.charAt(0).toUpperCase() + c.ScopedCommand.lightFormScope.verb.slice(1);
         });
@@ -113,17 +119,20 @@ var EquipmentUI = {
         if (!EquipmentUI.interactionReady(generation, moduleKey)) return;
         var model = EquipmentUI.model(), obj = model.byId[String(id)];
         if (!obj) return;
+        if (form === "remove" && ActionSynth.qualifiedRemovalPolicyFor && ActionSynth.qualifiedRemovalPolicyFor(obj).status !== "unowned" &&
+            (!selectedDescriptor || !selectedDescriptor.qualifiedRemovalScope)) return;
         if (selectedDescriptor && !Actionable.radialCommandCurrent(selectedDescriptor)) return;
         var candidate = EquipmentUI.yourselfCommands(obj, model).find(function (item) { return item.Form === form; });
         if (!candidate || (enter && !candidate.Enter)) return;
         if (selectedDescriptor) {
             var current = candidate.ScopedCommand;
-            var kind = selectedDescriptor.wornRemovalScope ? "wornRemovalScope" : selectedDescriptor.identityWearScope ? "identityWearScope" : selectedDescriptor.lightFormScope ? "lightFormScope" : null;
+            var kind = selectedDescriptor.qualifiedRemovalScope ? "qualifiedRemovalScope" : selectedDescriptor.wornRemovalScope ? "wornRemovalScope" : selectedDescriptor.identityWearScope ? "identityWearScope" : selectedDescriptor.lightFormScope ? "lightFormScope" : null;
             var prior = kind && selectedDescriptor[kind];
             if (!current || !prior || !current[kind] || !Actionable.radialCommandCurrent(current) ||
                 current.command !== selectedDescriptor.command || current.objectId !== selectedDescriptor.objectId ||
                 current[kind].digest !== prior.digest || current[kind].noun !== prior.noun ||
-                ((kind === "identityWearScope" || kind === "lightFormScope") && (current[kind].id !== prior.id || current[kind].generation !== prior.generation)) ||
+                ((kind === "identityWearScope" || kind === "lightFormScope" || kind === "qualifiedRemovalScope") && (current[kind].id !== prior.id || current[kind].generation !== prior.generation)) ||
+                (kind === "qualifiedRemovalScope" && ["kind", "verb", "command"].some(function (key) { return current[kind][key] !== prior[key]; })) ||
                 (kind === "lightFormScope" && (current[kind].side !== prior.side || current[kind].command !== prior.command || current[kind].context !== prior.context))) return;
             Actionable.runChosenCommand(current.command); return;
         }

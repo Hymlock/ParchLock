@@ -350,6 +350,7 @@ var SemanticActions = {
             if (c.Enter === false || c.enter === false) { form.Enter = false; form.enter = false; }
             if (c.learnedWordScope) form.learnedWordScope = c.learnedWordScope;
             if (c.wornRemovalScope) form.wornRemovalScope = c.wornRemovalScope;
+            if (c.qualifiedRemovalScope) form.qualifiedRemovalScope = c.qualifiedRemovalScope;
             if (c.identityWearScope) form.identityWearScope = c.identityWearScope;
             if (c.lightFormScope) form.lightFormScope = c.lightFormScope;
             if (c.revealedLocalGlobalScope) { form.revealedLocalGlobalScope = c.revealedLocalGlobalScope; form.context = c.context; }
@@ -375,11 +376,13 @@ var SemanticActions = {
         var order = [];
         function apply(list) {
             (list || []).forEach(function (c) {
+                if (typeof ActionSynth !== "undefined" && ActionSynth.normalizeQualifiedRemovalCandidate) c = ActionSynth.normalizeQualifiedRemovalCandidate(c, obj);
                 if (!c || !c.verb) return;
                 var rendered = [String(c.command || "").toLowerCase().replace(/\s+/g, " ").trim(),
                     context || "", String(c.objectId == null ? "" : c.objectId)].join("|");
                 if (byRendered[rendered]) {
                     var winner = byRendered[rendered];
+                    if (c.qualifiedRemovalScope && winner.command === c.command && String(winner.objectId) === String(c.objectId)) winner.qualifiedRemovalScope = c.qualifiedRemovalScope;
                     // Keep precedence/evidence while retaining the generated action's currency.
                     if (c.wornRemovalScope && winner.command === c.command && String(winner.objectId) === String(c.objectId)) {
                         winner.wornRemovalScope = c.wornRemovalScope;

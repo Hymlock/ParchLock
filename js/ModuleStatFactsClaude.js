@@ -426,6 +426,8 @@ var ModuleStatFactsClaude = {
     // Native i tests bit19 and omits the absent lariat; the worn outfit also
     // has this bit, so inventory traversal preserves confirmed worn gear.
     "d02fd95bae5398f9b87fe0f537f288b45e93967008948970f1982a65b888eddb": {
+        // Exact REMOVE reference: bare mask is ambiguous to the native parser; western mask removes owner38.
+        "removalReferences": { "objects": [38], "verb": "remove", "scope": "worn-direct", "nouns": { "38": "western mask" } },
         // CONTBIT 16 / OPENBIT 13 / PERSON 31 (claude 2026-10-24, r3-claude/container-open/Suspect.json, ordinary commands): PUT receipt
         // IN fireplace, pen IN trash basket succeed with parent change; gunbelt and fireplace CLOSE/OPEN toggle 13; notebook (no 16)
         // refuses open/put-in. Source exact 33/33, 36/36, PERSON carriers are the characters. Actors carrying CONTBIT (Alicia,

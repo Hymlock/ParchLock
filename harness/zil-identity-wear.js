@@ -18,7 +18,7 @@ function load(t){
     UndoRestoreSync:{generation:7},
     ModuleLibrary:{currentExecutableDigest:()=>digest,currentExecutableIdentity:()=>({digest,header:Array.from(bytes.slice(0,28))})},
     ZRamProvider:{getMem:()=>mem},WorldModel:{lastPayload:payload},
-    AttrCalibrator:{dictionaryForm:()=>true,exactFormsFor:()=>[],RPG_VERBS:[],ITEM_SUGGESTION_VERBS:[],hasConfirmedFlag:()=>false},
+    AttrCalibrator:{dictionaryForm:()=>true,exactFormsFor:()=>[],learnedFormsFor:()=>[],RPG_VERBS:[],ITEM_SUGGESTION_VERBS:[],hasConfirmedFlag:()=>false},
     Actionable:{payloadPool:()=>payload.inventory.concat(payload.discoveredObjects),referenceFor:o=>({unique:true,verified:true,noun:names[o.id]||o.name}),
       commandNounFor:o=>names[o.id]||o.name,isGameWord:()=>true}});
   for(const f of ['ModuleStatFactsClaude','ZRamReader','GrammarProvider','AttributeSchema','ActionSynth','LearnedWords','SemanticActions','EquipmentUI'])vm.runInContext(fs.readFileSync('js/'+f+'.js','utf8'),c);

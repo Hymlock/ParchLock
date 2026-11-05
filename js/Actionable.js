@@ -2719,10 +2719,23 @@ var Actionable = {
             verb = String(verb || '').trim();
             if (!verb || seen[verb.toLowerCase()]) return;
             seen[verb.toLowerCase()] = true;
-            var command = verb + ' ' + noun;
+            var command = verb + ' ' + noun, removalCommand = null;
+            if (verb === 'remove' && typeof ActionSynth !== 'undefined' && ActionSynth.normalizeQualifiedRemovalCandidate) {
+                if (!obj && (context.candidateIds || []).some(function (id) { return ActionSynth.qualifiedRemovalPolicyFor({ id: id }).status !== 'unowned'; })) return;
+                if (obj) {
+                    removalCommand = ActionSynth.normalizeQualifiedRemovalCandidate({ objectId: obj.id, verb: verb, command: command, Enter: false }, obj);
+                    if (!removalCommand) return;
+                    command = removalCommand.command;
+                }
+            }
             if (primary[command.trim().toLowerCase()]) return;
             if (obj && typeof ActionSynth !== 'undefined' && !ActionSynth.learnedFormAllowed(obj.id, verb, context.kind === 'inventory' || context.source === 'inventory' ? 'inventory' : 'room')) return;
-            suggestions.push({ Label: verb.charAt(0).toUpperCase() + verb.slice(1), Command: command, Enter: false, Score: 30 });
+            var suggestion = { Label: verb.charAt(0).toUpperCase() + verb.slice(1), Command: command, Enter: false, Score: 30 };
+            if (removalCommand && removalCommand.qualifiedRemovalScope) {
+                suggestion.LearnedCommand = Object.assign({}, removalCommand, { learnedItemScope: Actionable.learnedItemScopeFor(removalCommand, 'inventory') });
+                suggestion.Action = function () { if (Actionable.radialCommandCurrent(suggestion.LearnedCommand)) Actionable.runChosenCommand(removalCommand.command); };
+            }
+            suggestions.push(suggestion);
         };
         // These are vocabulary suggestions, not claims of object capability.
         // Each is a complete one-object command, so choosing it runs it
@@ -2754,9 +2767,9 @@ var Actionable = {
     sharedObjectCommands: function (choices, kind) {
         var held = ((WorldModel.lastPayload || {}).inventory || []).map(function (o) { return String(o.id); });
         var eligible = choices.filter(function (o) { return (held.indexOf(String(o.id)) >= 0) === (kind === "inventory"); });
-        var lists = eligible.map(function (o) { return Actionable.resolveObjectCommands(o.id, kind, {allowAmbiguousReference:true}).filter(function (entry) { return !entry.wornRemovalScope && !entry.identityWearScope && !entry.lightFormScope && !entry.revealedLocalGlobalScope; }); });
+        var lists = eligible.map(function (o) { return Actionable.resolveObjectCommands(o.id, kind, {allowAmbiguousReference:true}).filter(function (entry) { return !entry.qualifiedRemovalScope && !entry.wornRemovalScope && !entry.identityWearScope && !entry.lightFormScope && !entry.revealedLocalGlobalScope; }); });
         return (lists[0] || []).filter(function (entry) {
-            return !entry.wornRemovalScope && !entry.identityWearScope && !entry.lightFormScope && !entry.revealedLocalGlobalScope && lists.every(function (list) { return list.some(function (c) { return c.command === entry.command && !c.wornRemovalScope && !c.identityWearScope && !c.lightFormScope && !c.revealedLocalGlobalScope; }); });
+            return !entry.qualifiedRemovalScope && !entry.wornRemovalScope && !entry.identityWearScope && !entry.lightFormScope && !entry.revealedLocalGlobalScope && lists.every(function (list) { return list.some(function (c) { return c.command === entry.command && !c.qualifiedRemovalScope && !c.wornRemovalScope && !c.identityWearScope && !c.lightFormScope && !c.revealedLocalGlobalScope; }); });
         }).map(function (entry) {
             var members = lists.map(function (list) { return list.find(function (c) { return c.command === entry.command; }); });
             return Object.assign({}, entry, {
@@ -2770,6 +2783,11 @@ var Actionable = {
         if (command.learnedItemScope && !Actionable.learnedItemScopeCurrent(command, command.learnedItemScope.context)) return false;
         if (command.sharedMembers && (command.wornRemovalScope || command.sharedMembers.some(function (c) { return !!c.wornRemovalScope; }))) return false;
         return (command.sharedMembers || [command]).every(function (c) {
+            if (c.qualifiedRemovalScope && (command.sharedMembers || typeof ActionSynth === "undefined" || !ActionSynth.qualifiedRemovalCommandCurrent || !ActionSynth.qualifiedRemovalCommandCurrent(c))) return false;
+            if (c.verb === "remove" && typeof ActionSynth !== "undefined" && ActionSynth.qualifiedRemovalPolicyFor) {
+                var removalPolicy = ActionSynth.qualifiedRemovalPolicyFor({ id: c.objectId });
+                if (removalPolicy.status !== "unowned" && (!c.qualifiedRemovalScope || !ActionSynth.qualifiedRemovalCommandCurrent(c))) return false;
+            }
             if (c.wornRemovalScope && (typeof ActionSynth === "undefined" || !ActionSynth.wornRemovalCommandCurrent || !ActionSynth.wornRemovalCommandCurrent(c))) return false;
             // Identity Wear R3: re-validated at tap (digest, generation, owner, noun, held-direct, not worn).
             if (c.identityWearScope && (command.sharedMembers || typeof ActionSynth === "undefined" || !ActionSynth.identityWearCommandCurrent || !ActionSynth.identityWearCommandCurrent(c))) return false;
@@ -2778,7 +2796,13 @@ var Actionable = {
             if (c.revealedLocalGlobalScope && (command.sharedMembers || typeof ActionSynth === "undefined" || !ActionSynth.revealedLocalGlobalCommandCurrent || !ActionSynth.revealedLocalGlobalCommandCurrent(c))) return false;
             // D8 P8: an addressed robot command is re-validated at tap (domain, co-location, command prompt).
             if (c.actorAddressing && (command.sharedMembers || typeof ActionSynth === "undefined" || !ActionSynth.addressedCommandCurrent || !ActionSynth.addressedCommandCurrent(c))) return false;
-            return !c.learnedWordScope || typeof LearnedWords === "undefined" || LearnedWords.commandCurrent(c);
+            var authored = c;
+            if (c.qualifiedRemovalScope && c.learnedWordScope) {
+                var authoredOwner = ((WorldModel.lastPayload || {}).inventory || []).find(function (o) { return String(o.id) === String(c.objectId); });
+                if (!authoredOwner) return false;
+                authored = Object.assign({}, c, { command: c.verb + " " + Actionable.referenceFor(authoredOwner).noun });
+            }
+            return !c.learnedWordScope || typeof LearnedWords === "undefined" || LearnedWords.commandCurrent(authored);
         });
     },
     // A trusted item/form preference marker. Never derived from global verb
@@ -2796,12 +2820,18 @@ var Actionable = {
             var obj = Actionable.payloadPool().find(function (o) { return String(o.id) === String(command.objectId); });
             if (!obj || obj.revealedLocalGlobal) return null;
             var ref = Actionable.referenceFor(obj);
-            if (!ref.unique || !ref.verified || command.command !== command.verb + ' ' + ref.noun) return null;
+            var effectiveNoun = ref.noun;
+            if (command.qualifiedRemovalScope) {
+                if (!ActionSynth.qualifiedRemovalCommandCurrent(command)) return null;
+                effectiveNoun = command.qualifiedRemovalScope.noun;
+            }
+            if (!ref.unique || !ref.verified || command.command !== command.verb + ' ' + effectiveNoun) return null;
             var actual = ((WorldModel.lastPayload || {}).inventory || []).some(function (o) { return String(o.id) === String(obj.id); }) ? 'inventory' : 'room';
+            if (command.qualifiedRemovalScope && (context === 'room' || context === 'inventory')) context = actual;
             if (actual !== context || (actual === 'inventory' && ActionSynth.heldContainerName(obj, WorldModel.lastPayload))) return null;
             if (!ActionSynth.learnedFormAllowed(obj.id, command.verb, context)) return null;
             return { digest: digest, generation: typeof UndoRestoreSync !== 'undefined' ? UndoRestoreSync.generation : 0,
-                objectId: obj.id, form: command.verb, noun: ref.noun, context: context,
+                objectId: obj.id, form: command.verb, noun: effectiveNoun, context: context,
                 revision: manual ? manual.revision : null, rowId: manual ? manual.id : null };
         } catch (e) { return null; }
     },
@@ -2859,6 +2889,7 @@ var Actionable = {
             slices.push({ Label: "Go " + noun, Command: dirCommand, Score: scoreFor(dirCommand, 50), Usage: usageFor(dirCommand), Action: function () { Actionable.Submit(dirCommand); } });
         } else if (objectId || sharedCommands) {
             var cmds = sharedCommands || Actionable.resolveObjectCommands(objectId, kind);
+            if (!sharedCommands && typeof ActionSynth !== "undefined" && ActionSynth.normalizeQualifiedRemovalCandidate) cmds = cmds.map(function (c) { return ActionSynth.normalizeQualifiedRemovalCandidate(c, object || { id: c.objectId }); }).filter(Boolean);
             slices = cmds.map(function (c) {
                 if (!sharedCommands) c = Object.assign({}, c, { learnedItemScope: Actionable.learnedItemScopeFor(c, kind === 'inventory' ? 'inventory' : 'room') });
                 var verb = String(c.verb || "examine");

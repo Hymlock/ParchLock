@@ -327,6 +327,83 @@ var ActionSynth = {
         } catch (e) { return attrs; }
     },
 
+    // Exact action-owned reference. Unowned modules leave the legacy path untouched.
+    qualifiedRemovalPolicyFor: function (obj) {
+        var unowned = { status: "unowned" }, blocked = { status: "blocked" };
+        var own = function (o, k) { return !!o && Object.prototype.hasOwnProperty.call(o, k); };
+        var digest, fact, rule, id = obj && Number(obj.id);
+        try {
+            digest = typeof ModuleLibrary !== "undefined" && ModuleLibrary.currentExecutableDigest ? ModuleLibrary.currentExecutableDigest() : null;
+            fact = digest && typeof ModuleStatFactsClaude !== "undefined" && ModuleStatFactsClaude[digest];
+            if (!fact || !own(fact, "removalReferences")) return unowned;
+            rule = fact.removalReferences;
+            if (!Number.isInteger(id) || !own(rule, "objects") || !Array.isArray(rule.objects) ||
+                !rule.objects.some(function (v) { return Number.isInteger(v) && v === id; })) return unowned;
+        } catch (eOwner) { return unowned; }
+        try {
+            var plain = function (o) { if (!o || typeof o !== "object" || Array.isArray(o)) return false; var p = Object.getPrototypeOf(o); return p === null || Object.getPrototypeOf(p) === null; };
+            var keys = function (o) { return Object.getOwnPropertyNames(o).sort().join(","); };
+            if (!plain(rule) || keys(rule) !== "nouns,objects,scope,verb" ||
+                (Object.getOwnPropertySymbols && Object.getOwnPropertySymbols(rule).length) || rule.verb !== "remove" || rule.scope !== "worn-direct" ||
+                !plain(rule.nouns) || (Object.getOwnPropertySymbols && Object.getOwnPropertySymbols(rule.nouns).length)) return blocked;
+            var mem = typeof ZRamProvider !== "undefined" && ZRamProvider.getMem ? ZRamProvider.getMem() : null;
+            if (!mem || typeof ZRamReader === "undefined" || ZRamReader.executableLayoutFacts(mem) !== fact ||
+                (ZRamReader.informAttributeNames && ZRamReader.informAttributeNames(mem))) return blocked;
+            var grammar = typeof GrammarProvider !== "undefined" && GrammarProvider.decodeD198(mem), h = ZRamReader.header(mem);
+            if (!h || h.version < 3 || h.version > 5 || !grammar || grammar.classification !== "confirmed-zil-family" || grammar.evidence !== "validated" ||
+                !(grammar.templates || []).some(function (t) { return t.verb === "remove" && t.objectCount === 1 && !(t.prepositions || []).length; })) return blocked;
+            var first = ZRamReader.objectBase(h, 1), propertyStart = ZRamReader.u16(mem, first + (h.version <= 3 ? 7 : 12));
+            var count = (propertyStart - first) / h.entrySize, bits = h.version <= 3 ? 32 : 48;
+            if (propertyStart >= h.staticMem || !Number.isInteger(count) || count < 2 || !rule.objects.length || !rule.objects.every(function (v, i, all) {
+                return Number.isInteger(v) && v >= 1 && v <= count && all.indexOf(v) === i;
+            }) || Object.getOwnPropertyNames(rule.nouns).sort().join(",") !== rule.objects.map(String).sort().join(",")) return blocked;
+            if (!rule.objects.every(function (v) { var n = rule.nouns[String(v)]; return typeof n === "string" && /^[a-z]+(?: [a-z]+)*$/.test(n) &&
+                n.split(" ").every(function (word) { return !!ZRamReader.hasDictionaryWord(mem, word); }); }) || !ActionSynth.literalAvailable("remove")) return blocked;
+            var wornBit = fact.wornAttribute, links = ZRamReader.objectLinks(mem, id), player = ZRamReader.resolvePlayer(mem);
+            if (!Number.isInteger(wornBit) || wornBit < 0 || wornBit >= bits || !links || !player || player.ambiguous ||
+                ["measured-player-object", "measured-player-global"].indexOf(player.source) < 0 || !Number.isInteger(player.id) || player.id < 2 || player.id > count ||
+                id === player.id || links.parent !== player.id || !ZRamReader.attr(links, wornBit)) return blocked;
+            var payload = typeof WorldModel !== "undefined" && WorldModel.lastPayload, inventory = payload && payload.inventory || [];
+            var owners = inventory.filter(function (o) { return o && String(o.id) === String(id); });
+            if (owners.length !== 1) return blocked;
+            var owner = owners[0], rows = (payload.discoveredObjects || []).filter(function (o) { return o && String(o.id) === String(id); }).concat(owners);
+            if (obj.examineOnly || obj.sharedMembers || obj.revealedLocalGlobal || !rows.every(function (o) { return !o.examineOnly && !o.sharedMembers && !o.revealedLocalGlobal &&
+                Number.isInteger(o.id) && o.id === id && Number(o.parentId) === links.parent; })) return blocked;
+            var ref = typeof Actionable !== "undefined" && Actionable.referenceFor && Actionable.referenceFor(owner);
+            if (!ref || !ref.unique || !ref.verified || typeof ref.noun !== "string" || !ref.noun) return blocked;
+            var noun = rule.nouns[String(id)];
+            return { status: "scoped", scope: { kind: "qualified-worn-remove", digest: digest, id: id,
+                generation: ActionSynth.currentGeneration(), verb: "remove", noun: noun, command: "remove " + noun } };
+        } catch (ePolicy) { return blocked; }
+    },
+    normalizeQualifiedRemovalCandidate: function (command, obj) {
+        if (!command || command.verb !== "remove") return command;
+        var policy = ActionSynth.qualifiedRemovalPolicyFor(obj || { id: command.objectId });
+        if (policy.status === "unowned") return command;
+        if (policy.status !== "scoped" || command.sharedMembers || command.actorAddressing || command.examineOnly ||
+            command.targetObjectId != null || command.topicObjectId != null || command.requiresTarget ||
+            (command.arity != null && command.arity !== 1) || command.wornRemovalScope || command.identityWearScope || command.lightFormScope || command.revealedLocalGlobalScope ||
+            (command.objectIds && (command.objectIds.length !== 1 || String(command.objectIds[0]) !== String(policy.scope.id)))) return null;
+        if (command.objectId != null && String(command.objectId) !== String(policy.scope.id)) return null;
+        var owner = ((WorldModel.lastPayload || {}).inventory || []).find(function (o) { return String(o.id) === String(policy.scope.id); });
+        var ref = owner && Actionable.referenceFor(owner);
+        if (!ref || (command.command !== "remove " + ref.noun && command.command !== policy.scope.command)) return null;
+        return Object.assign({}, command, { objectId: policy.scope.id, noun: policy.scope.noun, command: policy.scope.command,
+            label: "Remove", qualifiedRemovalScope: policy.scope });
+    },
+    qualifiedRemovalCommandCurrent: function (command) {
+        if (!command || command.verb !== "remove" || !command.qualifiedRemovalScope || command.sharedMembers || command.actorAddressing ||
+            command.targetObjectId != null || command.topicObjectId != null || command.requiresTarget || command.wornRemovalScope || command.identityWearScope ||
+            command.lightFormScope || command.revealedLocalGlobalScope || (command.arity != null && command.arity !== 1) ||
+            (command.objectIds && (command.objectIds.length !== 1 || String(command.objectIds[0]) !== String(command.objectId)))) return false;
+        var policy = ActionSynth.qualifiedRemovalPolicyFor({ id: command.objectId }), scope = command.qualifiedRemovalScope;
+        return policy.status === "scoped" && Object.getOwnPropertyNames(scope).length === 7 &&
+            ["kind", "digest", "id", "generation", "verb", "noun", "command"].every(function (k) { return scope[k] === policy.scope[k]; }) &&
+            String(command.objectId) === String(policy.scope.id) && command.command === policy.scope.command &&
+            (command.noun == null || command.noun === policy.scope.noun) &&
+            ActionSynth.authoredCommandAllowed(policy.scope.id, "remove", "inventory") && ActionSynth.learnedFormAllowed(policy.scope.id, "remove", "inventory");
+    },
+
     wornRemovalScopeFor: function (obj) {
         try {
             if (!obj || obj.examineOnly || !Number.isInteger(obj.id) ||
@@ -509,6 +586,10 @@ var ActionSynth = {
         var name = String((typeof Actionable !== "undefined" && Actionable.disambiguatedNoun)
             ? Actionable.disambiguatedNoun(obj)
             : ((typeof Actionable !== "undefined" && Actionable.commandNounFor) ? Actionable.commandNounFor(obj) : obj.name));
+        // A text/room presentation of the configured held owner uses actual custody.
+        // Do not change any unowned module or ambiguous/shared resolution path.
+        if (context === "room" && !containerName && !(options && options.allowAmbiguousReference) &&
+            ActionSynth.qualifiedRemovalPolicyFor(obj).status === "scoped") context = "inventory";
         var attrs = ActionSynth.trustworthyAttrs(obj);
         var wornRemoval = context === "inventory" && !containerName && !(options && options.allowAmbiguousReference)
             ? ActionSynth.wornRemovalScopeFor(obj) : null;
@@ -693,7 +774,7 @@ var ActionSynth = {
         if (typeof LearnedWords !== "undefined") LearnedWords.commands(obj).forEach(function (c) {
             if (!result.some(function (existing) { return existing.command === c.command; })) result.push(c);
         });
-        var allowed = result.filter(function (entry) { return ActionSynth.authoredCommandAllowed(obj.id, entry.verb, context); });
+        var allowed = result.map(function (entry) { return ActionSynth.normalizeQualifiedRemovalCandidate(entry, obj); }).filter(function (entry) { return entry && ActionSynth.authoredCommandAllowed(obj.id, entry.verb, context); });
         if (typeof Actionable !== 'undefined' && Actionable.learnedItemScopeFor && !(options && options.allowAmbiguousReference)) {
             allowed.forEach(function (entry) { var scope = Actionable.learnedItemScopeFor(entry, context); if (scope) entry.learnedItemScope = scope; });
         }
@@ -807,7 +888,7 @@ var ActionSynth = {
             var out = [];
             eligible.forEach(function (r) {
                 bare.forEach(function (c) {
-                    if (!c || typeof c.command !== "string" || /\s$/.test(c.command) || c.wornRemovalScope || c.learnedWordScope) return;
+                    if (!c || typeof c.command !== "string" || /\s$/.test(c.command) || c.wornRemovalScope || c.qualifiedRemovalScope || c.learnedWordScope) return;
                     out.push({ verb: c.verb, noun: c.noun, objectId: c.objectId, command: r.word + ", " + c.command,
                         label: r.name + ": " + String(c.verb || "").charAt(0).toUpperCase() + String(c.verb || "").slice(1),
                         confidence: c.confidence,
