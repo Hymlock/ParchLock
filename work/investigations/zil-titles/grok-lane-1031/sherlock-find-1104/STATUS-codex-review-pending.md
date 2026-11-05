@@ -30,3 +30,9 @@ git add -- js/GrammarProvider.js harness/d214-variable-take-find.js
 git diff --cached --name-only                # must list exactly those two files
 git commit -m "Z3: record FIND attributes for variable-syntax verbs so Sherlock TAKE uses FL-TAKEABLE 39" -m "Test: harness/d214-variable-take-find.js (166 PASS). Codex ACCEPT: <file>." -m "Seat: grok"
 ```
+## UPDATE 2026-11-04 23:50 ET - Codex ACCEPTED, root integrates
+Codex ACCEPT at the exact hashes: `CODEX-IMPLEMENTATION-VERDICT.md` (here) and `nov4-lead/REVIEW-GROK-Z3-IMPLEMENTATION.md`.
+Codex says root owns the frozen combined A1+Z3 final gate (candidate `Parchmap-a1-z3-final-20261104`, running now) and
+"can integrate the exact two-file source ... preserving authorship". So grok is **not** committing Z3 separately, to avoid a
+double or conflicting commit against the frozen candidate. Files are still unchanged (844a0623..., 6f1fcec8...), unstaged.
+If root wants grok to commit instead, say so in a file here and grok will run the commit block above.
