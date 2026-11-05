@@ -474,6 +474,9 @@ var MapTopology = {
             delete from.ExitMeta[dir].locked;
             if (meta.doorObjectId == null) delete from.ExitMeta[dir].doorObjectId;
         }
+        // M7 R2 condition 1: the door_to hint is the latest observation only; an
+        // observation without it clears it. Display-only: never toId or Exits.
+        if (meta && meta.doorTo == null) { delete from.ExitMeta[dir].doorTo; delete from.ExitMeta[dir].doorToName; }
         // P10 R2: route block (locked AND closed) is replaced the same way; only true survives.
         if (meta && (meta.doorObjectId != null || priorDoorId != null) && meta.routeBlocked !== true)
             delete from.ExitMeta[dir].routeBlocked;
@@ -720,7 +723,9 @@ var MapTopology = {
                 command: ex.command || ex.label,
                 ambiguousDiagonal: !!ex.ambiguousDiagonal,
                 hintOnly: !!ex.hintOnly,
-                roomHintSourceId: ex.roomHintSourceId
+                roomHintSourceId: ex.roomHintSourceId,
+                doorTo: ex.isDoor && ex.doorTo != null ? ex.doorTo : undefined,
+                doorToName: ex.isDoor && ex.doorTo != null ? ex.doorToName : undefined
             });
         });
     },

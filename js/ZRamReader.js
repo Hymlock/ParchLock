@@ -517,6 +517,49 @@ var ZRamReader = {
         try { if (cache) cache.set(key, { gen: gen, ms: ms, lane: lane }); } catch (eS) {}
         return lane;
     },
+    // M7 R2: additive display hint for a door's static destination. Only a
+    // door-attribute object whose door_to is a 2-byte property holding an
+    // object id inside the true property-table frontier, not the current
+    // room, not the door itself, and a plausible map room. Routines and other
+    // sizes give nothing. Never an edge: callers add doorTo beside the
+    // unchanged door exit and nothing routes, links or marks visited by it.
+    doorToHint: (mem, doorId, roomId) => {
+        try {
+            var t = ZRamReader.informPropertyNames(mem), dt = t && t.names && t.names.door_to;
+            if (dt == null) return null;
+            var attrs = ZRamReader.attrsFromObject(mem, doorId) || {};
+            if (!attrs.door) return null;
+            var p = (ZRamReader.listProps(mem, doorId) || []).filter(function (q) { return q.num === dt; })[0];
+            if (!p || p.sz !== 2) return null;
+            var h = ZRamReader.header(mem), first = ZRamReader.objectBase(h, 1);
+            var firstProps = ZRamReader.u16(mem, first + (h.version <= 3 ? 7 : 12));
+            var frontier = (firstProps - first) / h.entrySize;
+            if (!Number.isInteger(frontier) || frontier < 2) return null;
+            var v = p.value;
+            if (!(v >= 1 && v <= frontier) || v === Number(roomId) || v === Number(doorId)) return null;
+            // Map-room test (never isPlausibleExitTarget, which admits doors).
+            // isPlausibleMapRoom rejects compiled "(Library)" names, which some
+            // stories (Book and Volume) give every room; such a target still
+            // counts when it is a parentless, non-door, non-animate object
+            // with a populated compass property inside the frontier.
+            var room = ZRamReader.isPlausibleMapRoom(mem, v);
+            if (!room) {
+                var lk = ZRamReader.objectLinks(mem, v), va = ZRamReader.attrsFromObject(mem, v) || {};
+                if (!lk || lk.parent !== 0 || va.door || va.animate) return null;
+                var dirNums = ["n_to", "s_to", "e_to", "w_to", "ne_to", "nw_to", "se_to", "sw_to", "u_to", "d_to", "in_to", "out_to"]
+                    .map(function (k) { return t.names[k]; }).filter(function (n) { return n != null && n !== dt; });
+                room = (ZRamReader.listProps(mem, v) || []).some(function (q) {
+                    return dirNums.indexOf(q.num) >= 0 && q.sz === 2 && q.value >= 1 && q.value <= frontier;
+                });
+            }
+            if (!room) return null;
+            var nm = ZRamReader.shortName(mem, v) || "";
+            // A compiled "(...)" name is not player-facing: keep the id, blank the
+            // name; the map display then uses the admitted room's name, if any.
+            if (nm.charAt(0) === "(" || /^c_rooms(_?\d+)?$/i.test(nm)) nm = "";
+            return { doorTo: v, doorToName: nm };
+        } catch (e) { return null; }
+    },
     i7MapStorageExits: (mem, roomId) => {
         var lane = ZRamReader.i7MapStorageLane(mem);
         if (!lane.active) return { active: false, valid: false, exits: [] };
@@ -536,8 +579,12 @@ var ZRamReader = {
             if (!val) continue;
             var isDoor = doorTo != null && (ZRamReader.listProps(mem, val) || []).some(function (q) { return q.num === doorTo; });
             if (isDoor) {
-                out.push({ label: label, command: label, prop: null, targetRoomId: null, targetRoomName: "", isDoor: true, isLocked: false,
-                    hinted: true, hintOnly: true, source: "i7-mapstorage", confidence: 0.6, stub: true });
+                var stubEx = { label: label, command: label, prop: null, targetRoomId: null, targetRoomName: "", isDoor: true, isLocked: false,
+                    hinted: true, hintOnly: true, source: "i7-mapstorage", confidence: 0.6, stub: true };
+                // M7 R2 condition 2: door attribute required (alias layouts share door_to with n_to).
+                var dh = ZRamReader.doorToHint(mem, val, roomId);
+                if (dh) { stubEx.doorTo = dh.doorTo; stubEx.doorToName = dh.doorToName; }
+                out.push(stubEx);
             } else if (lane.rowOf[val] != null) {
                 out.push({ label: label, command: label, prop: null, targetRoomId: val, targetRoomName: ZRamReader.shortName(mem, val) || "",
                     isDoor: false, isLocked: false, hinted: true, hintOnly: true, source: "i7-mapstorage", confidence: 0.8 });
@@ -2638,7 +2685,7 @@ var ZRamReader = {
             // D55: command may differ from label (e.g. label "exit 1",
             // command "x1"). Default remains label for ordinary compass.
             var cmd = String((opts.command != null ? opts.command : lab) || lab).toLowerCase();
-            exits.push({
+            var exRow = {
                 label: lab,
                 command: cmd,
                 prop: prop,
@@ -2650,7 +2697,13 @@ var ZRamReader = {
                 ambiguousDiagonal: !!opts.ambiguousDiagonal,
                 hinted: !tname,
                 confidence: opts.ambiguousDiagonal ? 0.5 : (CARD[lab] ? 0.85 : 0.75)
-            });
+            };
+            // M7 R2: additive "probably leads to" hint; door identity stays above.
+            if (tAttrs.door) {
+                var dh = ZRamReader.doorToHint(mem, val, roomId);
+                if (dh) { exRow.doorTo = dh.doorTo; exRow.doorToName = dh.doorToName; }
+            }
+            exits.push(exRow);
         }
         // D35: an honest, dest-less stub for a real, structurally-known
         // door_dir slot whose target failed destIsMapRoom's validation

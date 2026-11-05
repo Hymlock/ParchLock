@@ -433,7 +433,8 @@ var ParchLockMap = {
         // a genuinely clean slate; only the current pass's own
         // determination (either loop below) ever re-applies tentative-exit.
         $("#map .room").removeClass("shown tentative-exit");
-        $("#exits .exit").removeClass("shown");
+        $("#exits .exit").removeClass("shown door-hint");
+        $("#exits .exit .room-name").css({ fontStyle: "", opacity: "" }); // M7 R2 hint reset
         // D71: reset every slot's corner label back to its own native
         // compass letter before this pass's loops run -- otherwise a
         // borrowed-slot label written by an earlier tick (e.g. "exit 1")
@@ -610,6 +611,29 @@ var ParchLockMap = {
                 shownRoomIds[otherRoom.Id] = opp;
             }
         }
+
+        // M7 R2: display-only "probably leads to" hint for an unwalked door
+        // exit whose door carries a static door_to room. Only an exit chip with
+        // no drawn neighbour is used; nothing is linked, routed or visited.
+        Object.keys(room.ExitMeta || {}).forEach(function (hdir) {
+            var hm = room.ExitMeta[hdir];
+            if (!hm || !hm.isDoor || hm.doorTo == null || hm.travelledTo || (room.Exits || {})[hdir] != null) return;
+            if (!isRealCompassDir(hdir) || claimedSlots[hdir]) return;
+            // A compiled "(...)" target name arrives blank; use the admitted room's name if known.
+            var hname = hm.doorToName;
+            if (!hname) {
+                var known = (ParchLockMap.Rooms || []).find(function (r) { return r && r.HasRealId && String(r.ObjectId) === String(hm.doorTo); });
+                if (known && (typeof MapTopology === "undefined" || !MapTopology.isPlayerFacingRoom || MapTopology.isPlayerFacingRoom(known))) hname = known.Name;
+            }
+            if (!hname) return;
+            var chip = $("#exits .exit.dir-" + hdir);
+            if (!chip.length || chip.hasClass("shown")) return;
+            // Short chip text so a phone-width chip still shows the room name (M7 review); the full phrase stays in the title.
+            var hint = "probably leads to " + hname, chipText = "→ " + hname + "?";
+            chip.data("room", null).data("exit-label", hm.label || hdir).addClass("shown door-hint");
+            chip.find(".dir-name").attr("title", hint);
+            chip.find(".room-name").text(chipText).attr("title", hint).css({ fontStyle: "italic", opacity: 0.7 });
+        });
 
         ParchLockMap.ApplyViewport();
         requestAnimationFrame(WorkspaceUI.DrawPaths);

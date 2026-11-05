@@ -10,3 +10,6 @@ Scope reduced to an **additive hint field**. D155's "doors stay hinted until wal
 D155 (doors not exits), D251 (door-only isLocked), D240 (ZIL only, untouched), D267 (visited only physical). Harnesses: d214-room-door-alias, the D251 locked-map harness (zil-locked-map), m9-visited-physical-only, operator-regressions.
 ## Native check before ACCEPT (reviewer check 5)
 Book and Volume stairway (Muse Room <-> Library), plus one door each in Vacation Gone Awry and Save Princeton: walk through and compare the arrived room with doorTo.
+
+## Census correction (REVIEW-r2 condition 3, doorcensus-r2.cjs)
+Alias-layout titles (door_to shares a compass property number) are excluded: **Vacation Gone Awry** (door_to = n_to = 7) and **The Temple**. Corrected tally: 48 titles, 384 door_to objects, **129 static object values** (was 198; the 69 removed were Vacation 47 + Temple 22 rooms' compass values), 252 routines, 3 other sizes. Of the 129, **126 door objects in 13 titles** pass the implemented `doorToHint` (door attribute, 2-byte, true frontier, map-room test). R1's "Vacation 47/85" and "Temple 22/31" lines are void.
