@@ -66,7 +66,7 @@ Latest published package: [Build 76 — November 4](https://github.com/Hymlock/P
 | S2 | Duplicate items and names after loading | Cut-off names like "nutritiou" | Partly done | Fixed in source (8c2f2056); needs a phone recheck | OPEN_WORK Oct 22 items 4, 10 | S |
 | S3 | Phone: status-line fields overlap | Anchorhead room name and "day one" overlap | Not started (rechecked 11-01: no commit) | | OPEN_WORK Oct 22 (D137) | S |
 | S4 | Sherlock/Curses date columns; option to hide the game's status row | Raw text columns; status row duplicated | Not started (rechecked 11-01: no commit) | Designed, not built | OPEN_WORK Oct 22 (D149) | M |
-| S5 | Score pin edge cases | Score can show high after an early announcement or UNDO | Not started (rechecked 11-01: no commit) | Recorded, not fixed | OPEN_WORK Oct 22 (D175/D176) | M |
+| S5 | Score pin edge cases | Score can show high after an early announcement or UNDO | **Closed, no fix** (11-05) | Not reproduced live (Anchorhead +2/UNDO, Advent status column). The UNDO case was fixed by D180/D181 (UndoRestoreSync -> StatTracker.Resync -> forgetReadings); early announcements show the game's own total. Remaining unreproduced: the D176 tick fallback for stories with no turn counter (s5-score-pin/FINDINGS.md) | OPEN_WORK Oct 22 (D175/D176) | M |
 | S6 | Make It Good: SCORE and first Equipment check | Equipment can end "unavailable" with no reason | Fix in review (11-05) | Cause: SCORE reply "What score do you want? ..." unrecognised -> re-probe every Equipment open; unavailable ending recorded no reason (StatTracker finishProbe). Fix: exact reply line + reasons on all unavailable endings (s6-makeitgood/FINDINGS.md); adversarial review running | S |
 
 ## ZIL wrap-up
