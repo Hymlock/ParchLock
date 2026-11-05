@@ -62,7 +62,7 @@ Latest published package: [Build 76 — November 4](https://github.com/Hymlock/P
 
 | ID | Item | User-visible effect | Status | Blocker / notes | Source | Size |
 |---|---|---|---|---|---|---|
-| S1 | Status probe text leaks into the story on the first check | "You are carrying..." lines appear | Partly done | Partly fixed (4d6d0c0); general fix has no later commit (rechecked 11-01). Recheck on the 11-01 APK | OPEN_WORK Oct 22 item 2 | M |
+| S1 | Status probe text leaks into the story on the first check | "You are carrying..." lines appear | Partly done; cause found (11-05), second blind investigation running | Reproduced: anchor ("The pockets of your trenchcoat are empty.") and MakeItGood (worn-items paragraph) leak; Advent/Zork1/Curses/LostPig clean. StatTracker.releaseProbeEvents treats only the first paragraph as the reply and shows later paragraphs unless a text list matches (4d6d0c0 extended that list). Proper fix needs an engine reply-boundary hook (s1-probe-leak/FINDINGS.md, sealed) | OPEN_WORK Oct 22 item 2 | M |
 | S2 | Duplicate items and names after loading | Cut-off names like "nutritiou" | Partly done | Fixed in source (8c2f2056); needs a phone recheck | OPEN_WORK Oct 22 items 4, 10 | S |
 | S3 | Phone: status-line fields overlap | Anchorhead room name and "day one" overlap | Not started (rechecked 11-01: no commit) | | OPEN_WORK Oct 22 (D137) | S |
 | S4 | Sherlock/Curses date columns; option to hide the game's status row | Raw text columns; status row duplicated | Not started (rechecked 11-01: no commit) | Designed, not built | OPEN_WORK Oct 22 (D149) | M |
