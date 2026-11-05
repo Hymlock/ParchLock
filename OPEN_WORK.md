@@ -51,10 +51,10 @@ Latest published package: [Build 76 — November 4](https://github.com/Hymlock/P
 
 | ID | Item | User-visible effect | Status | Blocker / notes | Source | Size |
 |---|---|---|---|---|---|---|
-| A1 | Suspect: worn mask offers "remove mask", which the game rejects | Dead radial row ("You'll have to be more specific.") | Blocked | The noun comes from shared ActionSynth.referenceFor and there is no facts noun-override, so this is a shared-code change (skipped 11-01, REVIEW-REQUEST-002) | HANDOFF #8; TO-claude-1336 | S |
+| A1 | Suspect: worn mask offers "remove mask", which the game rejects | Dead radial row ("You'll have to be more specific.") | **Done** f7a01019 (Codex work, committed by grok 11-05) | Exact-digest removalReferences: worn owner 38 renders/submits "remove western mask"; other modules unchanged. qualified-removal-reference 46/0, zil-identity-wear 100/0, operator 13/0. grok-review stand-in VERDICT-005 ACCEPT under user override; Claude/Codex re-audit pending. In APK vc51 0B0F4EFD | nov4-lead A1 | M |
 | A2 | Sherlock lamp: duplicate generic switch verbs in the radial | Repeated switch rows beside on/off | **Done** c3dfec41, 7f0cba58 | Already fixed: other switch/turn verbs are dropped when an owner lightForms scope exists. Later learned-form filtering is covered separately by D263/A3; reopen on a new counterexample | HANDOFF #8 | S |
 | A3 | LearnedWords commands re-enter after the inspect filter | A taught verb can come back after being filtered | **Done** 2044b658 (D263) | Learned forms enter before live filtering; prior disabled inspect spellings remain suppressed, explicit Ignore remains authoritative. Actual independent source/final gate acceptance retained; reopen on a new counterexample | HANDOFF #7 | S |
-| A4 | static/scenery fallback bits leak onto wrong objects | Suspect food, lariat, mask, TV marked static; doors marked scenery | Not started | Own packet; touches shared code | PACKET-suspect-5U-final-1332 | M |
+| A4 | static/scenery fallback bits leak onto wrong objects | Raw attrs versus actual radial/status impact must be separated | Partly characterized; no product fix | Grok25-title constructed projection shows no command changes; Sherlock addition shows Take-selection gap, tracked as Z3. Scope/frontier/actor qualifications remain; do not apply blanket fail-closed or call all26 semantically clear | PACKET-suspect-5U-final-1332 | M |
 | A5 | Commands stages 7-8: held-out challenge and legacy ActionSynth cleanup | Two command paths stay alive | Partly done | Cutover defaults ON; stages 7-8 have no commits | OPEN_WORK Oct 22 (D88) | L |
 | A6 | Options cosmetics: two panels still in monospace | "Configure directions" and "Replay tutorial" look off-style | Not started (rechecked 11-01: no commit) | Monospace is the app-wide body font by design (ParchLock.css); css/Tutorial.css:65 sets 'Roboto Mono'. Operator must confirm which two panels and the intended font | OPEN_WORK Oct 22 | S |
 
@@ -74,8 +74,8 @@ Latest published package: [Build 76 — November 4](https://github.com/Hymlock/P
 | ID | Item | User-visible effect | Status | Blocker / notes | Source | Size |
 |---|---|---|---|---|---|---|
 | Z1 | Remaining ZIL no-reader domains: useful consumer or justified disposition | Some decoded flags still lack useful actions/status consumers | Partly done; per-domain review needed | D259/D260 owner-form consumers and illumination already landed. Reconcile current ledger against those consumers; old94 headline is stale and NC is not completion. Codex lead/takeover authorized Nov4; actual independent review still required | ZIL ledger L:NC | L |
-| Z2 | Sorcerer: separate worn/illumination display from ambient darkness | Worn and providing-light tags versus room-darkness handling | Partly done | Current wearable-direct-player worn path and illuminationState/Equipment tag implemented (0c266d6b; current facts/AttributeSchema). Ambient room-darkness complaint needs exact current evidence; do not redo accepted item-state consumers or close whole domain | PRODUCTION_PLAN | M |
-| Z3 | Sherlock: Take hints need the grammar FIND reader | Sherlock Take hints are generic | Blocked | D214 FIND-reader follow-up | FINAL-DISPOSITIONS-r1 | M |
+| Z2 | Sorcerer: separate worn/illumination display from ambient darkness | Worn and providing-light tags versus room-darkness handling | Partly done; ambient dark fixed d82276ba (11-05) | DarkScope now treats "it is now pitch black" (end of the dream, Your Quarters) as a dark cue; FROTZ BOOK clears it (m11 Sorcerer 3/3, focused 3-engine gate 0 diffs, VERDICT-007 stand-in). Worn/illumination path 0c266d6b unchanged. Open: Claude/Codex re-audit of the shared cue | PRODUCTION_PLAN | M |
+| Z3 | Sherlock: Take hints need the grammar FIND reader | Constructed projection offers Take on unsuitable objects and lacks correct capability source | **Done** 3f58ef00 (11-05) | Two-line GrammarProvider change: variable-syntax lines record FIND bytes; Sherlock TAKE uses FL-TAKEABLE 39. d214 166 PASS, operator 13/0. Codex implementation ACCEPT + grok-review stand-in VERDICT-006. In APK vc51 | sherlock-find-1104 | S |
 | Z4 | Seastalker: find a useful BOARD command | No correct one-tap boarding command | Blocked | Codex REVISE of the airlock CLOSE; research first | PRODUCTION_PLAN D262 | M |
 
 ## Build & release
@@ -84,12 +84,12 @@ Latest published package: [Build 76 — November 4](https://github.com/Hymlock/P
 |---|---|---|---|---|---|---|
 | B1 | make-dist deletes the old dist before building | A failed build leaves no dist at all | Not started | make-dist.bat line 20 (rmdir first); build to temp, then swap | make-dist.bat | S |
 | B2 | Builds ship working-tree files, including uncommitted ones | An APK can contain files not in git | Not started | robocopy reads the live tree; add a clean-tree check or use git archive | make-dist.bat | M |
-| B3 | Bump versionCode (was 48) | APK75 and the Oct 31 APK shared versionCode 48 | **Done** 1d9a3130 / 378c0755 | Published Android versionCode50 in Build76; prior49 retained historically | android/app/build.gradle | S |
+| B3 | Bump versionCode | Each APK must upgrade the last | **Done** aee925aa (50 -> 51, 11-05) | APK vc51 built 11-05 05:53 ET from aee925aa, sha256 0B0F4EFD...0EE0 (prior 1d9a3130 / 378c0755) | android/app/build.gradle | S |
 | B4 | Write publish-release.ps1 | Scripted complete PC/APK/source publication | **Done** distribution repo bb93541 | Actual Hymlock/ParchLock publish-release.ps1 includes complete distribution ZIP plus APK/source. It lives in the distribution checkout, not this development tree | Release prep | M |
 | B5 | Public distro repo: clean history with only the 80 KEEP titles | Removed games remain in old commits | Blocked | List exists (GAMES_INCLUDED.md); re-clone needs the operator | docs/game-licensing-audit.md | M |
 | B6 | Release sign-off: keystore, art provenance, name clearance, legal, devices, pm_vm_probe rename | Release can't ship until done | Blocked | Operator decisions; lib/pm_vm_probe.* still present | OPEN_WORK Oct 22 (D99) | L |
 | B7 | Phase 9 hardening: performance, accessibility, fallbacks, full green harness | General robustness | Not started | Large | OPEN_WORK Oct 22 Phase 9 | L |
-| B8 | Fix two flaky or failing harnesses | Gate noise | Not started (rechecked 11-01) | learned-words-corrections has no fix commit. d201-unnamed-identity 68/1 ("taken LLR object 195") and d201-unresolved-actions ("real printed sword vocabulary") fail on HEAD before and after e643191b (swap test). Gate flaky marks: Sherlock coat, huntdark, vespers, Delusns, medusa, permagic | OPEN_WORK Oct 22; review-lane-1101 | S |
+| B8 | Fix two flaky or failing harnesses | Gate noise | Not started (rechecked 11-01) | learned-words-corrections has no fix commit. d201-unnamed-identity 68/1 ("taken LLR object 195") and d201-unresolved-actions ("real printed sword vocabulary") fail on HEAD before and after e643191b (swap test). Gate flaky marks: Sherlock coat, huntdark, vespers, Delusns, medusa, permagic. 11-05: m11-dark-scope HHG "Bedroom, in the bed ... state kept" FAILS on HEAD before d82276ba too (bed now proven?) - needs an owner decision. Gate driver uses fixed sleeps; cycles/marks diffs of the A1+Z3 gate were nondeterminism (d54a294d) | OPEN_WORK Oct 22; review-lane-1101 | S |
 
 ## Evidence debt
 
@@ -101,7 +101,14 @@ Latest published package: [Build 76 — November 4](https://github.com/Hymlock/P
 | E4 | Seated/vehicle room-name rule: provenance | Active everywhere, proven only on seeds | Blocked | PARKED/UNACCEPTED (Codex) | PRODUCTION_PLAN D222 | M |
 | E5 | Codex audits: 16 Inform maps, ActionSynth, all solo-period commits (incl. e643191b, 1d9a3130) | Could reopen items | Partly done | Codex reviewed five solo commits (nov4-lead/solo-return-audit.md): source qualified ACCEPT, historical APK evidence REVISE; other16 Inform-map reviews remain. No duplicate catalog run | codex-votes-0231; SOLO-COMMITS | M |
 | E6 | Other seats' uncommitted work (~3,300 dirty entries): commit or discard | Risk of lost or stray work | Not started; takeover authorized | Operator Nov4 authorizes unavailable-seat recovery. Audit and preserve provenance before exact staging; no blanket discard or commit | git status | M |
-| E7 | Operator phone test of the 11-01 APK (7A9C9C18, versionCode 49) | Sherlock pocket/lamp, LH/Starcross Wear, Suspect clothes, heist bag, break-in chair, plus the 6 map-zero titles | Blocked | Needs the operator and the phone | TO-claude-from-grok-APK-BUILT; review-lane-1101/DONE.md | S |
+| E7 | Operator phone test of the newest APK (11-05, 0B0F4EFD, versionCode 51) | Suspect "remove western mask", Sherlock Take hints, Sorcerer dark after the dream, plus the 11-01 list (Sherlock pocket/lamp, LH/Starcross Wear, heist bag, break-in chair, 6 map-zero titles) | Blocked | Needs the operator and the phone; not installed by any seat | review-lane-1101/VERDICT-APK-1105.md | S |
+
+## Closed or recorded 11-05 (grok, user override; stand-in verdicts, re-audit pending)
+
+- M9 seen-from-afar: no product change needed; guard test harness/m9-visited-physical-only.js (b352cc53) fails if anything but SetCurrentRoom writes WorldVisited or a game touched bit feeds the map. DECISION-INDEX rule text left for Codex.
+- Plundered Hearts torch: lightForms NA (LOCAL-GLOBAL, untouchable). Optional radial UI check not run (b352cc53, VERDICT-009).
+- Moonmist locked display: closed with front gate 52 only; other LOCKED carriers rejected for display with reasons (b352cc53, VERDICT-009).
+- Handoff for Codex/Claude: work/investigations/zil-titles/grok-lane-1031/next-items-1104/HANDOFF-wrap-1105.md
 
 ## Known issues found 11-01 (not yet in the list above)
 

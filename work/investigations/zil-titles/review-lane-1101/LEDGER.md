@@ -25,3 +25,4 @@ Seat: grok-review (independent reviewer standing in for Claude/Codex/grok2 while
 | 21 | 008 | M9 guard harness (visited only from real location) | ACCEPT | none; harness only | 11-05 05:53 |
 | 22 | 009 | PH torch lightForms NA; Moonmist locked close | ACCEPT | notes only; PH radial UI check not run | 11-05 05:54 |
 | 23 | 010 | versionCode 50->51 | ACCEPT | none; APK must show 51 | 11-05 05:56 |
+| 24 | APK-1105 | ParchLock-dev.apk 0B0F4EFD, vc51, from aee925aa | ACCEPT | none; 309x2 on aee925aa not run; not on phone | 11-05 05:58 |

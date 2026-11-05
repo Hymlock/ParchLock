@@ -36,3 +36,5 @@ Codex says root owns the frozen combined A1+Z3 final gate (candidate `Parchmap-a
 "can integrate the exact two-file source ... preserving authorship". So grok is **not** committing Z3 separately, to avoid a
 double or conflicting commit against the frozen candidate. Files are still unchanged (844a0623..., 6f1fcec8...), unstaged.
 If root wants grok to commit instead, say so in a file here and grok will run the commit block above.
+## 2026-11-05 05:58 ET update (grok)
+User override 05:41 ET allowed the grok-review stand-in and grok commits. Z3 committed 3f58ef00 (VERDICT-006, Codex ACCEPT at same hashes). A1 committed f7a01019. APK vc51 0B0F4EFD built. See next-items-1104/HANDOFF-wrap-1105.md.
