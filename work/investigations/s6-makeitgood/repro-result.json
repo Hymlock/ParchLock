@@ -1,0 +1,142 @@
+{
+ "res": [
+  {
+   "label": "start",
+   "scoreUnavailable": false,
+   "probed": false,
+   "stats": [
+    "time"
+   ],
+   "diag": [],
+   "queue": [],
+   "active": null,
+   "hideCarry": false,
+   "hint": [
+    "No stats in this story's status bar yet. Ask it directly — costs one turn."
+   ],
+   "msgOpen": false,
+   "tail": [
+    "   -- Release 13 / Serial number 090921 / Inform v6.21 Library 6/10 ",
+    " ",
+    "Broken Top Boulevard, Outside No. 15 (in the black chevy)",
+    "The boulevard through the windscreen is lined with ash trees, thick trunks casting shadows and gnarled roots mangling up the sidewalk. You're sat in your car, parked too high up the kerb; just outside the gate to No. 15. Just an ordinary house. With a body inside.",
+    " ",
+    "\"Homicide. One Jack Draginam, accountant. Married, no kids. Stabbed. Yadda yadda, blah blah. We got the call from the maid - geez, who has a maid? Apparently she wanted to stress there's a lot of blood.\"",
+    " ",
+    "\"Oh, Inspector. Word is, if you don't crack this one, you're out of a job.\"",
+    " ",
+    "The glove compartment is closed. Sat on the passenger seat is a whiskey bottle.",
+    " ",
+    "> "
+   ]
+  },
+  {
+   "label": "after SCORE",
+   "scoreUnavailable": false,
+   "probed": true,
+   "stats": [
+    "time"
+   ],
+   "diag": [],
+   "queue": [],
+   "active": null,
+   "hideCarry": false,
+   "hint": [],
+   "msgOpen": false,
+   "tail": [
+    "The boulevard through the windscreen is lined with ash trees, thick trunks casting shadows and gnarled roots mangling up the sidewalk. You're sat in your car, parked too high up the kerb; just outside the gate to No. 15. Just an ordinary house. With a body inside.",
+    " ",
+    "\"Homicide. One Jack Draginam, accountant. Married, no kids. Stabbed. Yadda yadda, blah blah. We got the call from the maid - geez, who has a maid? Apparently she wanted to stress there's a lot of blood.\"",
+    " ",
+    "\"Oh, Inspector. Word is, if you don't crack this one, you're out of a job.\"",
+    " ",
+    "The glove compartment is closed. Sat on the passenger seat is a whiskey bottle.",
+    " ",
+    ">score",
+    "What score do you want? Either someone takes the rap or you do.",
+    " ",
+    "> "
+   ]
+  },
+  {
+   "label": "equipment opened (warning?)",
+   "scoreUnavailable": false,
+   "probed": true,
+   "stats": [
+    "time"
+   ],
+   "diag": [],
+   "queue": [],
+   "active": null,
+   "hideCarry": false,
+   "hint": [],
+   "msgOpen": true,
+   "tail": [
+    "The boulevard through the windscreen is lined with ash trees, thick trunks casting shadows and gnarled roots mangling up the sidewalk. You're sat in your car, parked too high up the kerb; just outside the gate to No. 15. Just an ordinary house. With a body inside.",
+    " ",
+    "\"Homicide. One Jack Draginam, accountant. Married, no kids. Stabbed. Yadda yadda, blah blah. We got the call from the maid - geez, who has a maid? Apparently she wanted to stress there's a lot of blood.\"",
+    " ",
+    "\"Oh, Inspector. Word is, if you don't crack this one, you're out of a job.\"",
+    " ",
+    "The glove compartment is closed. Sat on the passenger seat is a whiskey bottle.",
+    " ",
+    ">score",
+    "What score do you want? Either someone takes the rap or you do.",
+    " ",
+    "> "
+   ]
+  },
+  {
+   "label": "after warning dismissed +8s",
+   "fulfillment": "unavailable",
+   "reason": null,
+   "scoreUnavailable": false,
+   "probed": true,
+   "stats": [
+    "time"
+   ],
+   "diag": [],
+   "queue": [],
+   "active": null,
+   "hideCarry": false,
+   "hint": [
+    "Some current status is unavailable at this prompt."
+   ],
+   "msgOpen": false,
+   "tail": [
+    ">score",
+    "What score do you want? Either someone takes the rap or you do.",
+    " ",
+    ">inventory",
+    "In your trenchcoat pockets are your badge and a car key, and in your hands you hold some black leather gloves.",
+    " ",
+    "In addition to your trenchcoat, you are wearing your wide-brimmed hat and your scuffed black shoes.",
+    " ",
+    ">score",
+    "What score do you want? Either someone takes the rap or you do.",
+    " ",
+    "> "
+   ]
+  },
+  {
+   "finishProbeCalls": [
+    {
+     "s": "unavailable",
+     "active": "score",
+     "turns": 1,
+     "stack": "    at file:///C:/Users/hymlo/Downloads/Projects/Parchmap-main/Parchmap-main/js/StatTracker.js:4339:94"
+    }
+   ]
+  }
+ ],
+ "logs": [
+  "log: ParchLock build 76 by Roy Lazarovich",
+  "error: Fetch API cannot load file:///C:/Users/hymlo/Downloads/Projects/Parchmap-main/Parchmap-main/lib/pm_vm_probe.wasm. URL scheme \"file\" is not supported.",
+  "error: wasm streaming compile failed: TypeError: Failed to fetch",
+  "error: falling back to ArrayBuffer instantiation",
+  "error: Fetch API cannot load file:///C:/Users/hymlo/Downloads/Projects/Parchmap-main/Parchmap-main/lib/pm_vm_probe.wasm. URL scheme \"file\" is not supported.",
+  "error: failed to asynchronously prepare wasm: both async and sync fetching of the wasm failed",
+  "error: Aborted(both async and sync fetching of the wasm failed)",
+  "error: Fetch API cannot load file:///C:/Users/hymlo/Downloads/Projects/Parchmap-main/Parchmap-main/games/MakeItGood.zblorb.js. URL scheme \"file\" is not supported."
+ ]
+}

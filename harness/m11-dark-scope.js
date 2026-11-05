@@ -22,11 +22,12 @@ const open = async (b, g) => {
     let p = await open(b, 'Hitchhik.z5.js');
     const d0 = await p.evaluate(() => { WorldModel.tick(); return DarkScope.dark; });
     check(d0 === true, 'HHG: dark at the opening (pitch black bedroom)');
-    // Limit (fail closed, orchestrator 2026-10-10): bed 58 is unnamed (no shortName,
-    // no parser words), so "Bedroom, in the bed" has no structural proof; prose such as
-    // "outside the bed" is not used. State is kept until the bare heading.
+    // Since 5348c0f2 the HHG facts pin the real player 202 (PROTAGONIST) and the HERE global, so the
+    // player chain reaches bed 114 ("bed": shortName + parser word). The old "unnamed bed 58" limit was a
+    // side effect of tracking the wrong player 19 (bisect: review-lane-1101/HHG-dark-bisect-claude.md).
+    // "Bedroom, in the bed" is now structurally proven and clears dark; no prose ("outside the bed") is used.
     const d1 = await p.send('turn on light');
-    check(d1 === true, 'HHG: "Bedroom, in the bed" with unnamed bed is unproven -> state kept (documented limit, no prose)');
+    check(d1 === false, 'HHG: "Bedroom, in the bed" proven through the real player chain (bed 114) -> clears dark');
     await p.send('get up');
     const d1b = await p.send('look');
     check(d1b === false, 'HHG: after GET UP, LOOK prints the bare "Bedroom" heading -> clears dark');
