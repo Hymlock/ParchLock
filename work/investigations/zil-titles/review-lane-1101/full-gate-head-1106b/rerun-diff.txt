@@ -1,0 +1,7 @@
+School.z5.js marks
+  base: ["trees","campus","administration building","east","path","gate"]
+  cand: ["admission letter","trees","campus","administration building","east","path","gate"]
+cabal.z5.js marks
+  base: ["families","your coffee","vagrant","your PalmPilot"]
+  cand: ["table","families","your coffee","vagrant","your PalmPilot"]
+GATE: 4 games, 2 differences (each must be an intended, reviewed change)

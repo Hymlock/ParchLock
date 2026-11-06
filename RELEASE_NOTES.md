@@ -1,5 +1,15 @@
 # ParchLock Release Notes
 
+## Build 77 - 2026-11-06
+
+- Map: a door you have not walked through yet shows where it probably leads ("-> Entryway?"). It is a hint only; the map still links rooms after you walk.
+- Map: long-press a visited room for "Rewind to here" (Z-machine games, after UNDO has worked once). It asks for confirmation and rewinds with the game's own undo.
+- Map: rooms now appear in Guess the Verb, yagwad, Cabal, Blue Chairs, Tokyo2, Rameses, Heroine's Mantle and The Gostak; Book and Volume's Library and room names are correct.
+- Moving while seated: a tapped direction while you are in a bed or chair first sends the game's own "get out" command.
+- Status: the hidden inventory check no longer leaks text into the story (Anchorhead, Make It Good, Advent). Sherlock's clock is shown as a time. New option: hide the story's status line when the stat strip shows it.
+- Make It Good: SCORE is recognised as having no score. Android versionCode 52; shell cache 176.
+
+
 ## Build 76 - 2026-11-04
 
 - Desktop: Ctrl+Shift+Up and Ctrl+Shift+Down now send North/South even while the game command box is focused. Parchment no longer intercepts these combinations as command history.
