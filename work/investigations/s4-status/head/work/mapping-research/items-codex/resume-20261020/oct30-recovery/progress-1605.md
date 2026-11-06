@@ -1,0 +1,7 @@
+# Codex active slice
+D1 R2 design ACCEPT5543. D2 no-code accepted. P4/P10 R2 and P11a accepted; P11b R3 noncircular domainroot/directionprop design ACCEPT5549. Claude sole integration/gate owner; awaiting actualsourceaudit requests.
+E9 delayedWebCrypto immutablebrowser diagnostic: noVMprompt beforeexactdigest, defaultloader coverage independentlyACCEPT5551; optinEmglkeniframe remains uncovered, noallpathclaim/journalcode. Phrasefalsepositive residualrisk confirmed byClaude5541, no specimen/nobroadregex.
+E5 research delta rebased normalizedLF current7copies, controls28+24+18+17 and actualowner15 compatibility pass; latter explicitly originalstorymemory with X state edits, no nativequalification. Existing learnedguard preserved source+consumer assertion. Peer requires rawlineending applicationartifact afterr44settledroot; nointegration now.
+D10 new frozen sourceStable unforced18row proof: door212 tick13closedlocked ->unlock14falsefalse ->open15truefalse ->naturalAlicia16truetrue ->NORTH17Walkway169. Prior stops retained; noVM/RNGwrites. Peerpacket5552pendingaudit, no rerun.
+D5 R2 exactstatusdomain/missingUnlock/layoutproposal5555 awaitingattack, nocode. D8 exactadmissionAPI remains research requirement, not falselyclosed.
+Childreviewsquota-limited, bounded independentpeer efficiency requestsent; no duplication. Keep working disjoint review/research while peerbusy; source snapshots cannot be blindlyintegrated as root advances.

@@ -1,0 +1,29 @@
+# Independent evidence review
+
+2026-11-02. Read-only audit of browser-learn-real.json, browser-reopen-real.json, browser-exit-flow.json, hugecave-probe.cjs and installed-asset-comparison.json. No reruns, browser/device interactions, timers, source changes or user storage access by this reviewer.
+
+**Verdict: evidence supports the bounded learning-admission defect and preservation of already-written TAKE evidence across an unsaved browser close/reopen and confirmed application exit. It does not reproduce the complete phone radial symptom.**
+
+## Positive evidence checked
+
+- All three JSON records have matching six-file pre/post hashes and empty warning/error event arrays. Source hashes match between runs. This demonstrates those six files on disk did not change during capture; it is not a whole-repository or all-executed-assets hash assertion.
+- learn-real progresses through SPACE/startup RESTORE question, typed NO, native room113, EAST, TAKE LAMP, LIGHT/DOUSE/LIGHT/DOUSE. Transcript records two `You light the lamp.` and two `You extinguish the lamp.` responses with usable prompts. Lamp135 is in captured inventory after TAKE. These are successful game command responses, rather than injected game state.
+- Stored object135 has only exact `take` (one confirmation, opcode-state, page submission mvz6kb51b68jmd7gns:3) and allowed `take` (opcodeConfirmed true). It never gains LIGHT/DOUSE. At each light/douse snapshot and final settled snapshot pending is0 and storageError null. TAKE initially has pending1, then settles. Thus no generic persistence failure is needed to explain absent LIGHT/DOUSE; observer admission and producer source agree.
+- reopen-real boot already has the prior TAKE page/submission/confirmation before startup NO or new TAKE. It remains through startup/EAST; new TAKE increments to2 with new page mvz6pitvk7bnpdevjxn:3. This distinguishes retained prior evidence from only relearning it after reacquisition.
+- exit-flow begins with TAKE2, increments to3 on actual new TAKE (mvz6yc4wl72jmw0wtd:3), settles pending0, then captures index.html after WorkspaceUI.ExitGame() plus #exit-confirm click. Stored TAKE3 is unchanged on library page and reopened play page. This establishes the application confirm/navigation path preserves already-written evidence. Reopened page is at PRESS SPACE, so this row proves stored retention, not post-reacquisition interactive behavior after this particular exit. Earlier reopen-real does cover reacquisition.
+- Post-TAKE held command-model outputs lack LIGHT/DOUSE in ActionSynth output. Yourself model offers LIGHT Enter:false only; DOUSE is absent. This is lexical suggestion behavior, not newly confirmed learning. Ground lamp snapshots call inventory context erroneously and cannot certify room radial behavior.
+- installed-asset-comparison has8 rows, all same:true with equal installed/repo hashes: AttrCalibrator, LearningStores, LearnedWords, EquipmentUI, ActionSynth, ZRamReader, WorkspaceUI and Input. The first6 agree with browser disk-source hashes after case normalization. This ties the reported extracted APK subset to inspected source; it does not capture phone learning state, loaded WebView cache contents, actual UI interactions or a whole-APK/source equivalence result.
+
+## Producer provenance
+
+Recorded producerHash is0e56849fbe32a33353d0dd52dd288226470716c50024390ae09c8b59cdb1c91f for learn-real/reopen-real; exit-flow uses2ccd539548285c69619ba50f3029f3d777581228604024e5a3eabec87092b3cf. Current producer computes to the latter. Therefore current file is exact producer for exit-flow only; it must not be cited as byte-identical producer for earlier captures. Current producer is consistent with capture schema and command route, but reconstructing old producer bytes requires a retained earlier snapshot or version. Embedded hashes are capture metadata, not independent attestation of every old operation.
+
+Current producer launches a dedicated persistent profile beneath the evidence directory and fixed localhost HTTP origin; it neither invokes SAVE nor mutates VM/RNG/learning storage. It writes splash/tutorial preferences, calls Message.Hide, reads models/storage, uses native input fill+Enter/Space/n and invokes the exit entry point before clicking confirmation. Thus describe commands as ordinary parser input under automation, and exit as application entry-point plus confirmation. It does not click the workspace menu item itself or physically open/inspect radial DOM. Model calls can hydrate caches, but no learned-data injection is visible. First failed browser-learn stuck at RESTORE is excluded from positive evidence as instructed.
+
+## Limits that must accompany conclusions
+
+No captured temporary phone DOUSE radial; no proof that confirmed LIGHT/DOUSE were written and subsequently deleted; no physical Android reproduction or phone storage inspection. In this browser the commands never become durable learned records at all. No generic claim that all learning survives, no older save restore/restart/uninstall test, no queue-contention/quota/forced abrupt native shutdown proof. Settled pending0 at exit cannot certify a racing pending-write exit. Native browser transcript acceptance is distinct from observed opcode traces: the JSON does not include LIGHT/DOUSE analyzer trace and no such provenance should be invented.
+
+The producer intentionally reuses isolated profile to test retention; snapshots establish the specific TAKE evidence chain. They do not establish pristine state for every unrelated storage key, nor need they. Actual quit flow plus retention is valid for the captured store/key only. Header-collision defect is separately established by static decoding and not reproduced through multi-module interactions here.
+
+No additional execution is necessary to accept these bounded conclusions. Keep proposal design/review separate; this evidence supplies no authorization or consensus to change runtime code.

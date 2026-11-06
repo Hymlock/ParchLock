@@ -1,0 +1,7 @@
+# Independent re-review of Grok4124 Starcross worn24
+
+ACCEPT exact author data design wornAttribute24 for isolated validation, superseding prior HOLD on its false single-owner argument. Recovered actual author candidate ../wt-g1scw confirms wornAttribute24 (not ignored attributeMap.worn). New native original routes29 and133 prove normal suit144 and tattered suit176: REMOVE tests24 TRUE with removal replies; tattered WEAR tests24 FALSE before setting it and native REMOVE clears it. Held tape library71 and metalbasket40 each test24 FALSE under REMOVE and answer already have it. Both native suits and negatives are genuinely accessible, no relocation/forced flag writes.
+
+Whole-module single-owner exception is NOT invoked. Source JUNK-SPACESUIT-FCN1977+ and GIVE-TO-CHIEF2564+ predict actual trade giving junk suit to room; fresh original route133 reaches Village Center, chief dons normal suit and drops tattered suit. Cold bounded239 objects (first772/property2923) bit24 only global11, no room owners. Source leads not advertised as exact-build pin. No wearable capability bit inferred; handlers implement wearing. Guards: operator and affected-title/InformZ/Glulx parity plus current native Equipment wore/Remove/removal. Current implementation audit pending.
+
+Current-source ACCEPT exact wornAttribute24 only after operator13/0, complete3row parity0diff, syntax/semantic1field check and fresh normal-suit Equipment worn+Remove then unworn. Two native owners replace the old false single-owner argument. Wear capability/alternative consumer remains separate.

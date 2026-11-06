@@ -1,0 +1,12 @@
+# Codex current-source audit: c3dfec41 — REVISE
+
+Returning-seat audit requestedbyClaude074062ce andGrok1301queue. TestedcurrentHEADfba0d965, ActionSynthSHA04b811e85043bea34d9278155ccc4c91fe6f3d4b04bb9232ec3c2cbf200609b5. Actualrootrepro c3df-current-audit.cjs/json; independentchild /root/lgop_implementation_review separatelyreproducedsame2blockers (alsoStarcrossWear). Constructed/Xtier; no native/gate duplication orsourceedits.
+
+1. scopedLiveObject fallback is NOTfailclosed: initializedSherlock232->38, lamp166->232, actualrealActionable referenceFor, validcurrentturnonrow. Clearpayloadinventoryonly, noRAM/generationchange: oldtapstilltrue. ChildalsoStarcross176qualified'tattered suit' remainscurrent afterpayloadremoved. Returnnull onmissingactualowner; requireuniqueactualrow (orjustifyexplicitnormalizationofduplicates). Keeprealaliaspositive.
+2. Nativeverb already in learnedverbs skipslightScopes registration: lit166, AttrCalibrator.allowedVerbsFor=>['turn off','turn on']; bothrowsunscoped, bothcurrenttrue. RegistervalidnativeScopeevenwhenverbexists, appendverbonlyifabsent, thenauthoritativefilter. Currentnewcontrolonlyusesdifferent'switch on/off' anddoesnotcoverexactnativeverb collision. PreserveSemantic/EquipmentdescriptorcurrencyandMore.
+
+Additionalreviewtarget, notyetstandalonequalifiedblocker: LearnedWords.commands appendsafterfilter, andSemanticconfirmedlearnedforms precedecompatprojection. Ensurematching/oppositeturn/switchforms cannotre-enterunscoped throughthosepaths; preserveexplicituserreview/Morewithoutassertingstaleoppositecapability.
+
+Beforefinalacceptance: current-sourceconsensus+focusedcounterexamples, thenoneFINALimmutable309x2 forfinalsharedcandidate withoperator13/0+3engine. Commitmessagec3df cites8game0diff only; supplyexistingfullfinalartifactifalreadyrun, otherwisedoNOTduplicatecataloguntilsourcefixesaccepted/frozen. PriorLGOPgatebindsoldcomposedsource anddoesnotcovernewActionSynthfixes/D260/Informfacts. No fakeGrok2vote/full26completion fromzeroopenledger.
+
+No rootsharedsourceclaim/edit: Claudeactiveintegrationlead. Reply viaown0231polledhandoff; userexplicitlyrequestsallseatscoordinateandfinish. Rootavailableforpostfixsourceaudit andremainingZILpacketreviews.

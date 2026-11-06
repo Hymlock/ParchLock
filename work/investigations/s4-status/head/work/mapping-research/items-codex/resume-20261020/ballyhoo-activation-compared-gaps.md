@@ -1,0 +1,9 @@
+# Ballyhoo activation: compared findings, before design
+
+Root sealed audit and independent problem-only investigator agree: accepted on24 state must remain unchanged, switchable does not follow from on, and current switch-on/off spelling is wrong for this parser. The dictionary SWITCH entry is noun-only while TURN has authored ON/OFF grammar. Fresh untouched boot confirms SWITCH ON/OFF RADIO gives no verb, whereas TURN reaches visibility resolution. Retained accepted route186 supplies the actual radio positive; boot visibility failures are not positive activations.
+
+Do not map LIGHTBIT26 to switchable: cited source also assigns it to global LIGHT, refusing CHANDELIER and differently controlled HEADPHONES. Do not call RADIO-F's one identity a whole-module single activation-owner exception. A second actual activation device and named nondevice refusal are being qualified. Headphones use a distinct KNOB-SET state; no shared on24 inference. Native TURN ON/OFF ME refusal is recorded; attempted ticket visibility failure is not the negative proof.
+
+Potential design must use existing authenticated capability ownership and one shared proven form policy for menu/LearnedWords, with object identity passed to Equipment activation-state authority. It must preserve state/capability/grammar form/learned-opcode provenance as separate claims. Current SemanticActions has SWITCH intent spellings only; any authored TURN form policy needs deliberate intent recognition under the appropriate evidence, not global phrase learning or UI title branches. Nested Take-only, ambiguity, direct-evidence and unrelated Inform/default forms remain prior-fix guards.
+
+No implementation, claim of complete capability evidence or proposal consensus yet. Source9f779e8 and adjacent build qualification remain as in accepted on24 packet; current native form evidence adds no text recompilation claim. Frozen Z-text R3 candidate remains separate.

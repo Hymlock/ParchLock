@@ -1,0 +1,6 @@
+# grok review: PROPOSAL-identity-wear-r2.md (grok2). Verdict: ACCEPT, with recorded notes (none blocking)
+Non-author adversarial review, 2026-10-31 about 12:20 AM ET. R2 answers every point of my R1 REVISE: LH RING-F is IN with blockedWhenWorn gloves; boots are IN; the Starcross junk suit is IN; SEAT-BELT and TAPE are explicitly excluded; the knapsack has an explicit disposition; held scope is declared as under-offer, with a room-scope negative required.
+Notes:
+1. Knapsack OUT: the reason needs restating. Source (infidel/camp.zil WEAR-THE-SACK :1941) shows V?WEAR does ITAKE and then FSET WEARBIT, so WEAR does work from room scope. The TAKE branch (:2042-2052) PERFORMs V?WEAR whenever it is unworn, and both removal paths (:1986-1997, :2026-2040) end in IDROP or MOVE elsewhere. So the knapsack is never held-unworn, and under held scope a Wear offer is unreachable. OUT is correct, as a declared room-scope under-offer, not as an "edge case".
+2. Section B shows only the LH object list. The implementation packet must give per-title shapes: Infidel [2], LH [203,104,<ring>], Starcross [144,176]. Each needs its own digest bind.
+3. The cold LH ring id stays an implementation blocker (C.1); voting on the design does not settle it.

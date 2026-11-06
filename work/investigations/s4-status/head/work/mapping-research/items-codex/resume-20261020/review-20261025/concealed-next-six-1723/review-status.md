@@ -1,0 +1,9 @@
+# Six-title concealed proposal review
+
+Parent3a740dab is approved for integration but not committed. This proposal must wait for exact parent integration before freezing validation roots; verify the integrated parent semantics first. Candidate e024970e8d40397e9196d97ed4974bf9d2f3e1bf and patch502f90d430c2be5e2b96221c1429cb881a0f4bc9f7076a02510d0e4a8ba2a197 remain unchanged.
+
+Actual non-author retained-evidence reviews ACCEPT all six semantic rows: border_food_blind reviewed Ballyhoo19, Spellbreaker12 and ZorkII9; lh_food_scope_blind reviewed Witness12, ZorkIII28 and Suspect10. They checked hashes/current assets/source and scoped native observations without replay. These are semantic facts only, not consumer or integration acceptance. Restore retains wrapper learning; Witness receipt reveal changes book/custody; Suspect bullet reveal moves custody; ZorkIII ship reply proves parser acceptance only. Failed routes, inexact source catalogs and adjacent-build qualifications remain.
+
+Source supplement corrects initial manifest omission: Suspect packet contains a matching people.zil hash, separate from capture-time provenance. SourceStable flags cover the inputs each helper actually recorded.
+
+After parent integration: non-author exact application review, one affected-six ZIL plus InformZ/Glulx guard and required operator13/0 before commit. No fresh native routes or full309 replay for this data-only batch. No integration permission yet.

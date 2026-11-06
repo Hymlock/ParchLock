@@ -1,0 +1,137 @@
+{
+ "Sherlock-1280": {
+  "raw": "Saturday  5:11:00 a.m.                                                ",
+  "decoded": {
+   "raw": "Saturday  5:11:00 a.m.                                                ",
+   "columns": [
+    "Saturday  5:11:00 a.m."
+   ],
+   "roomCandidates": [
+    "Saturday 5:11:00 a.m."
+   ],
+   "roomLabel": "Saturday 5:11:00 a.m.",
+   "metrics": []
+  },
+  "gridText": [
+   "Saturday  5:11:00 a.m.                                                "
+  ],
+  "strip": [
+   ": \n\t\t\t\tStatus\n\t\t\t\tNo stats in this story's status bar yet. Ask it directly — costs one turn.\n\t\t\t\tIdentify stats\n\t\t\t"
+  ],
+  "tracker": null
+ },
+ "Sherlock-396": {
+  "raw": " 221-B Baker Street            Sat  5:11 AM     0",
+  "decoded": {
+   "raw": " 221-B Baker Street            Sat  5:11 AM     0",
+   "columns": [
+    "221-B Baker Street",
+    "Sat  5:11 AM",
+    "0"
+   ],
+   "roomCandidates": [
+    "221-B Baker Street",
+    "Sat 5:11 AM",
+    "0"
+   ],
+   "roomLabel": "221-B Baker Street",
+   "metrics": []
+  },
+  "gridText": [
+   " 221-B Baker Street            Sat  5:11 AM     0"
+  ],
+  "strip": [
+   ": \n\t\t\t\tStatus\n\t\t\t\tNo stats in this story's status bar yet. Ask it directly — costs one turn.\n\t\t\t\tIdentify stats\n\t\t\t"
+  ],
+  "tracker": null
+ },
+ "curses-1280": {
+  "raw": " Attic                                                                 (in Meldrew Hall)                       4           June 3rd, 1993                                                                                                                                                           Four be the things I'd been better without:                           Love, curiosity, freckles and doubt.                                                                                                        -- Dorothy Parker, \"Inventory\"                                                                                                                                                                        ",
+  "decoded": {
+   "raw": " Attic                                                                 (in Meldrew Hall)                       4           June 3rd, 1993                                                                                                                                                           Four be the things I'd been better without:                           Love, curiosity, freckles and doubt.                                                                                                        -- Dorothy Parker, \"Inventory\"                                                                                                                                                                        ",
+   "columns": [
+    "Attic",
+    "(in Meldrew Hall)",
+    "4",
+    "June 3rd, 1993",
+    "Four be the things I'd been better without:",
+    "Love, curiosity, freckles and doubt.",
+    "-- Dorothy Parker, \"Inventory\""
+   ],
+   "roomCandidates": [
+    "Attic",
+    "(in Meldrew Hall)",
+    "4",
+    "Four be the things I'd been better without:",
+    "Love, curiosity, freckles and doubt.",
+    "-- Dorothy Parker, \"Inventory\""
+   ],
+   "roomLabel": "Attic",
+   "metrics": [
+    {
+     "key": "date",
+     "label": "Date",
+     "value": "June 3rd, 1993",
+     "max": null,
+     "unit": "text",
+     "source": "status-grid"
+    }
+   ]
+  },
+  "gridText": [
+   " Attic                                                                \n (in Meldrew Hall)                       4           June 3rd, 1993   \n                                                                      \n                                                                      \n            Four be the things I'd been better without:               \n            Love, curiosity, freckles and doubt.                      \n                                                                      \n            -- Dorothy Parker, \"Inventory\"                            \n                                                                      \n                                                                      "
+  ],
+  "strip": [
+   ": \n\t\t\t\tStatus\n\t\t\t\tScore0DateJune 3rd, 1993Turns4\n\t\t\t\tIdentify stats\n\t\t\t"
+  ],
+  "tracker": null
+ },
+ "curses-396": {
+  "raw": " Attic       Score: 0                             (in Meldrew Hall)              June 3rd, 1993                                                                                                       Four be the things I'd been better without:      Love, curiosity, freckles and doubt.                                                              -- Dorothy Parker, \"Inventory\"                                                                                                                   ",
+  "decoded": {
+   "raw": " Attic       Score: 0                             (in Meldrew Hall)              June 3rd, 1993                                                                                                       Four be the things I'd been better without:      Love, curiosity, freckles and doubt.                                                              -- Dorothy Parker, \"Inventory\"                                                                                                                   ",
+   "columns": [
+    "Attic",
+    "Score: 0",
+    "(in Meldrew Hall)",
+    "June 3rd, 1993",
+    "Four be the things I'd been better without:",
+    "Love, curiosity, freckles and doubt.",
+    "-- Dorothy Parker, \"Inventory\""
+   ],
+   "roomCandidates": [
+    "Attic",
+    "(in Meldrew Hall)",
+    "Four be the things I'd been better without:",
+    "Love, curiosity, freckles and doubt.",
+    "-- Dorothy Parker, \"Inventory\""
+   ],
+   "roomLabel": "Attic",
+   "metrics": [
+    {
+     "key": "score",
+     "label": "Score",
+     "value": 0,
+     "max": null,
+     "unit": "plain",
+     "source": "status-grid"
+    },
+    {
+     "key": "date",
+     "label": "Date",
+     "value": "June 3rd, 1993",
+     "max": null,
+     "unit": "text",
+     "source": "status-grid"
+    }
+   ]
+  },
+  "gridText": [
+   " Attic       Score: 0                            \n (in Meldrew Hall)              June 3rd, 1993   \n                                                 \n                                                 \n  Four be the things I'd been better without:    \n  Love, curiosity, freckles and doubt.           \n                                                 \n  -- Dorothy Parker, \"Inventory\"                 \n                                                 \n                                                 "
+  ],
+  "strip": [
+   ": \n\t\t\t\tStatus\n\t\t\t\tScore0DateJune 3rd, 1993Turns4\n\t\t\t\tIdentify stats\n\t\t\t"
+  ],
+  "tracker": null
+ }
+}

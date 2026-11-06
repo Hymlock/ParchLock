@@ -1,0 +1,5 @@
+# Independent review of Grok4125 on2
+
+ACCEPT exact on2 state portion for isolated validation, excluding stacked animate24. Current native route13 first switch33 and second31 TRUE with already-on replies; third32 FALSE after native off with not-on reply and native successful on restores it. Source-recovered capture agrees; earlier out-of-scope attempts excluded. Current bounded191 objects has66 bit2 owners:63 room children of189 plus3switches in94. Existing inventory wrapper item-likeness and gated Equipment activation consumers do not establish manual switchability, playerRoot or a valid robot map room. Those gaps remain OPEN. No animate mapping, player root, room rule or shared algorithm changes. Guards: operator regressions, affected-title plus InformZ/Glulx parity, native decoded switch state transitions. Current implementation audit pending.
+
+Current-source ACCEPT exact on2 only. Operator13/0, complete3row parity0diff, VM semantic delta1field; native decoded states match third switch off/on. Boot bad Iris map unchanged; neither old stacked animate24 nor its groove result integrated. Robot/UI action consumer remains OPEN.

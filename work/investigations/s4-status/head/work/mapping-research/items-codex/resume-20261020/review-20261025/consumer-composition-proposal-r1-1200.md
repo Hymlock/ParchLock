@@ -1,0 +1,13 @@
+# Combined isolated consumer composition proposal R1
+
+This proposes only an ordinary copied candidate under Codex research ownership. Main production files remain untouched while Claude holds AttributeSchema. It does not authorize a main commit or expand semantic ownership.
+
+Base: clean committed ccd9b58 source, excluding Claude's two dirty ZorkIII lines. Retain all three newly accepted facts and prior B1 fixes. Compose accepted Infidel R3, absent R1 and Sorcerer illumination R1, without Suspended role changes or remaining concealed facts.
+
+The isolated patches share original Schema1184c06a baseline. Three-way composition must preserve both post-calibration calls, in order applyObjectCapabilities, applyEquipmentState, applyContainerState, applyIlluminationState. The container projection modifies open/isOpen/openable and containerContentsOnSurface; illumination only clears/sets providingLight. Neither may overwrite the other's fields. Unknown, Inform and invalid ownership behavior retain each reviewed contract. Absent adds only its existing structural-profile fallback exclusion, without removing explicit title or calibration authority.
+
+Schema helpers from Infidel and illumination occupy the same insertion seam; preserve both complete independently reviewed helper blocks without duplicate property names. Equipment retains both closed-container known-state guard and providing-light tag. Reader retains R3 surface visibility projection and existing B1 changes. ActionSynth retains final container action guard. Facts add only Infidel containerStateRules and Sorcerer illuminationState to exact current title owners, retaining current facts elsewhere.
+
+Before any combined native/shared gate: record exact base and candidate hashes, compare constituent semantic deltas against accepted individual patches, parse changed sources, run focused control suites against the combined candidate once with explicit current-memory bindings. Then a non-author current-source audit. All existing individual native evidence remains evidence for individual candidates; it is not silently relabelled as combined validation. Select only affected seam native checks if composition introduces a concern; one settled shared batch gate remains required for production integration. No additional full309 run before ownership and batch settle.
+
+Attack targets: a lost post-calibration call; helper-name collision; stale field cleanup interacting with the other projector; Facts accidentally restoring old base registry; Equipment duplicate tag/state guards; absent control fixture tied to original paths; preservation of Infidel physical lid custody under local emission field presence.
