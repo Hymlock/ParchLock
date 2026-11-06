@@ -1,5 +1,10 @@
 # ParchLock Release Notes
 
+## Build 79 - 2026-11-06
+
+- A Little Like Rogue: World map level buttons are named by dungeon depth (Depth 1, Depth 2, ...).
+- Status card: long stat names wrap between words ("Deaths this playthrough"). Android versionCode 54; shell cache 178.
+
 ## Build 78 - 2026-11-06
 
 - Status: the hidden inventory check no longer leaks text into older Inform 7 games (A Little Like Rogue, Accuse, Child's Play, Figaro, Wallpaper, gardening).
