@@ -729,8 +729,8 @@
    "r": "FOUR-SEAT ACCEPT (nc-keys R4 lightForms; codex-votes-0231; grok review; grok2 code review lightforms-impl-review.md): landed lightForms (object-list authoritative, state-driven): flashlight 116, state 17, turn on/off"
   },
   "light": {
-   "s": "NC",
-   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
+   "s": "S",
+   "r": "Z1 reconcile 2026-11-06 (z1-reconcile/RECONCILE.md): now consumed by D260 owner forms (lightForms); was NC. D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "Deadline.z3.js": {
@@ -985,8 +985,8 @@
    "r": "same as talkable: ACTORBIT marks only player objects (claude worker E4)."
   },
   "light": {
-   "s": "NC",
-   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
+   "s": "S",
+   "r": "Z1 reconcile 2026-11-06 (z1-reconcile/RECONCILE.md): now consumed by D260 owner forms (lightForms); was NC. D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   }
  },
  "HollywoodHijinx.z3.js": {
@@ -1931,12 +1931,12 @@
    "r": "not applicable per Claude #5242 (grok #5214 A1, Witness #5207 precedent): no WORNBIT runtime worn state in source (WEARBIT, where present, is wearability only). verify: grok1/ledger/verify-a-batch.txt"
   },
   "lightSource": {
-   "s": "NC",
-   "r": "claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
+   "s": "S",
+   "r": "Z1 reconcile 2026-11-06 (z1-reconcile/RECONCILE.md): now consumed by D260 owner forms (illuminationState); was NC. claude 2026-10-30, group rule A (no-reader-cells-question.md): no js/ reader of lightSource (grep, ModuleStatFactsClaude excluded). Not complete; reopen when a consumer is added."
   },
   "light": {
-   "s": "NC",
-   "r": "D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
+   "s": "S",
+   "r": "Z1 reconcile 2026-11-06 (z1-reconcile/RECONCILE.md): now consumed by D260 owner forms (illuminationState); was NC. D2 consensus 2026-10-30 (claude + codex ACCEPT oct30-recovery/oct30-proposals-r1-attack.md): no semantic light-emission reader of attrs.light (readers are object/room heuristics; Equipment illumination uses AttributeSchema.illuminationState). Not complete; reopen if a semantic consumer is added."
   },
   "inventoryHiddenAttribute": {
    "s": "S",
@@ -2743,8 +2743,8 @@
    "r": "THREE-SEAT ACCEPT (claude PACKET-lamp-claude.md; grok VOTES-grok-claude-packets.md; codex sherlock-takeover-votes-1422.md): lightForms {objects [166], stateBit 38 FL-LIGHTED, on turn on / off turn off; capabilityBit 42 FL-LAMP informational}."
   },
   "on": {
-   "s": "NC",
-   "r": "THREE-SEAT ACCEPT (claude PACKET-lamp-claude.md; grok VOTES-grok-claude-packets.md; codex sherlock-takeover-votes-1422.md): FL-LIGHTED 38 is lit state (rooms and the lamp); lamp on/off served by lightForms owner-scoped; no generic on mapping."
+   "s": "S",
+   "r": "Z1 reconcile 2026-11-06 (z1-reconcile/RECONCILE.md): now consumed by D260 owner forms (lightForms); was NC. THREE-SEAT ACCEPT (claude PACKET-lamp-claude.md; grok VOTES-grok-claude-packets.md; codex sherlock-takeover-votes-1422.md): FL-LIGHTED 38 is lit state (rooms and the lamp); lamp on/off served by lightForms owner-scoped; no generic on mapping."
   },
   "wearable": {
    "s": "S",
@@ -2835,12 +2835,12 @@
    "r": "TWO ACTIVE SEATS ACCEPT (codex out of credits; audits on return): grok author PACKET-sherlock-invhidden-lair-native-grok-1115.md (native INVENTORY omits held rope 176 with NODESC 32, lists it clear), claude CLAUDE-VOTES-sherlock-invhidden.md. Landed inventoryHiddenAttribute 32, recurses false; Sherlock gate inv/inv2 now match native i exactly (pocket/lapel/pound note dropped)."
   },
   "switchable": {
-   "s": "NC",
-   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): FL-LAMP 42 has one carrier and one use (EXTINGUISH FIND default); the lamp is served by lightForms {166, state 38}."
+   "s": "S",
+   "r": "Z1 reconcile 2026-11-06 (z1-reconcile/RECONCILE.md): now consumed by D260 owner forms (lightForms); was NC. THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): FL-LAMP 42 has one carrier and one use (EXTINGUISH FIND default); the lamp is served by lightForms {166, state 38}."
   },
   "light": {
-   "s": "NC",
-   "r": "THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): key-level D247; FL-LIGHTED 38 is a lit STATE."
+   "s": "S",
+   "r": "Z1 reconcile 2026-11-06 (z1-reconcile/RECONCILE.md): now consumed by D260 owner forms (lightForms); was NC. THREE-SEAT ACCEPT 2026-10-31 (claude; codex oct30-recovery/*-1422.md; grok *-VOTES-grok.md): key-level D247; FL-LIGHTED 38 is a lit STATE."
   },
   "openCapability": {
    "s": "NA",
