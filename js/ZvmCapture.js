@@ -145,9 +145,114 @@ var ZvmCapture = {
                 return result;
             };
         });
+        // S1 stage 1 (I6): while StatTracker owns a hidden probe span it arms
+        // ZvmCapture._pb with the probe verb's action routine, its action
+        // number, and the story's `after`/`react_after` property numbers.
+        // call/ret/_print are reached by property lookup from the JIT, so
+        // these wrappers see every routine call and every printed string.
+        // They record screen (main window, not memory stream 3, not the
+        // status window) character offsets: where the action routine is
+        // entered -- as a direct callee of a call whose first argument is the
+        // action number (the library's action dispatcher) -- where its after
+        // phase starts (stock InvSub calls AfterRoutines, which runs
+        // obj.react_after / RunRoutines(obj, after) inside the routine), and
+        // where it returns. Disarmed, each wrapper is a single null test.
+        if (!ZvmCapture._origCall && typeof Proto.call === "function" && typeof Proto.ret === "function" && typeof Proto._print === "function") {
+            var origCall = ZvmCapture._origCall = Proto.call;
+            var origRet = ZvmCapture._origRet = Proto.ret;
+            var origPrint = ZvmCapture._origPrint = Proto._print;
+            Proto.call = function (t, i, e, s) {
+                var pb = ZvmCapture._pb;
+                if (pb && t !== 0 && !pb.bad && ZvmCapture._pbLive(pb)) { try { ZvmCapture._pbCall(pb, this, t, s); } catch (ePb) { pb.bad = "hook-exception"; } }
+                return origCall.apply(this, arguments);
+            };
+            Proto.ret = function (t) {
+                var pb = ZvmCapture._pb;
+                if (pb && !pb.bad && ZvmCapture._pbLive(pb)) { try { ZvmCapture._pbRet(pb, this); } catch (ePb) { pb.bad = "hook-exception"; } }
+                return origRet.apply(this, arguments);
+            };
+            Proto._print = function (t) {
+                var pb = ZvmCapture._pb;
+                if (pb && !pb.bad && ZvmCapture._pbLive(pb)) {
+                    try {
+                        var io = this.io;
+                        if (io && !(io.streams[3] && io.streams[3].length) && !io.currentwin && io.streams[1]) {
+                            pb.text += String(t);
+                            if (pb.text.length > ZvmCapture.PB_TEXT_CAP) { pb.bad = "text-cap"; pb.text = ""; pb.stack = []; }
+                        }
+                    } catch (ePb) { pb.bad = "hook-exception"; }
+                }
+                return origPrint.apply(this, arguments);
+            };
+        }
         ZvmCapture.patched = true;
         try { window.__PARCHLOCK_ZVM_CAPTURE__ = { patched: true }; } catch (e) {}
         return true;
+    },
+
+    // S1 probe action boundary.
+    // spec = { routine: packed address, action: number, afterProps: [n...], objMax: n }.
+    PB_TEXT_CAP: 20000,
+    PB_STACK_CAP: 4096,
+    _pb: null,
+    armProbeBoundary: function (spec) {
+        ZvmCapture._pb = (spec && ZvmCapture._origCall) ? {
+            routine: spec.routine, action: spec.action,
+            afterProps: (spec.afterProps || []).slice(), objMax: spec.objMax || 0,
+            text: "", stack: [], entry: -1, after: -1, ret: -1, entryDepth: -1, bad: null
+        } : null;
+        return !!ZvmCapture._pb;
+    },
+    takeProbeBoundary: function () {
+        var pb = ZvmCapture._pb;
+        ZvmCapture._pb = null;
+        return pb;
+    },
+    // A probe that ends without endProbeOwnership must not keep recording:
+    // the boundary disarms itself once StatTracker no longer owns a span.
+    _pbLive: function (pb) {
+        try {
+            if (typeof StatTracker !== "undefined" && !StatTracker._statProbeOwned) {
+                if (ZvmCapture._pb === pb) ZvmCapture._pb = null;
+                return false;
+            }
+        } catch (eL) {}
+        return true;
+    },
+    _pbPrune: function (pb, vm) {
+        // A @throw unwinds frames without ret: drop calls that no longer exist.
+        var n = vm.frames.length;
+        while (pb.stack.length && pb.stack[pb.stack.length - 1].depth + 1 > n) pb.stack.pop();
+        if (pb.entry >= 0 && pb.ret < 0 && n < pb.entryDepth + 1) pb.bad = "unwound";
+    },
+    _pbCall: function (pb, vm, t, args) {
+        ZvmCapture._pbPrune(pb, vm);
+        var depth = vm.frames.length;
+        if (t === pb.routine) {
+            var parent = pb.stack.length ? pb.stack[pb.stack.length - 1] : null;
+            var direct = parent && parent.depth + 1 === depth && parent.arg0 === pb.action;
+            if (pb.entry < 0 && direct) { pb.entry = pb.text.length; pb.entryDepth = depth; }
+            else if (pb.entry < 0) pb.bad = pb.bad || "routine-without-dispatcher";
+            else if (pb.ret < 0) pb.bad = pb.bad || "reentered";
+        }
+        // After phase: inside the action routine, the first call made with
+        // (object, after|react_after). It starts at the entry of the action
+        // routine's direct callee that contains it (AfterRoutines), or at the
+        // call itself when the action routine makes it directly.
+        if (pb.entry >= 0 && pb.ret < 0 && pb.after < 0 && args && args.length >= 2
+            && pb.afterProps.indexOf(args[1]) >= 0 && args[0] >= 1 && args[0] <= pb.objMax && depth > pb.entryDepth) {
+            var outer = null;
+            for (var k = 0; k < pb.stack.length; k++) { if (pb.stack[k].depth === pb.entryDepth + 1) { outer = pb.stack[k]; break; } }
+            pb.after = outer ? outer.o : pb.text.length;
+        }
+        pb.stack.push({ depth: depth, arg0: args && args.length ? args[0] : null, o: pb.text.length });
+        if (pb.stack.length > ZvmCapture.PB_STACK_CAP) { pb.bad = "stack-overflow"; pb.stack = []; pb.text = ""; }
+    },
+    _pbRet: function (pb, vm) {
+        ZvmCapture._pbPrune(pb, vm);
+        var n = vm.frames.length;
+        if (pb.entry >= 0 && pb.ret < 0 && n === pb.entryDepth + 1) pb.ret = pb.text.length;
+        if (pb.stack.length && pb.stack[pb.stack.length - 1].depth + 1 === n) pb.stack.pop();
     },
 
     tick: () => {

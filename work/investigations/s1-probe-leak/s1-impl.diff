@@ -1,0 +1,447 @@
+﻿diff --git a/js/StatTracker.js b/js/StatTracker.js
+index 2d655e81..83179fdb 100644
+--- a/js/StatTracker.js
++++ b/js/StatTracker.js
+@@ -4268,6 +4268,27 @@ var StatTracker = {
+             });
+         };
+         var seenReply = false, afterGap = false, gap = null, revealed = false, continues = false;
++        var cut = null;
++        StatTracker._lastProbeCut = null;
++        try { cut = StatTracker.probeBoundaryCut(lines, StatTracker._probeBoundary); } catch (eC) { cut = null; }
++        if (cut) {
++            var pending = [];
++            cut.forEach(function (c) {
++                if (c.kind === "gap") { pending.push(c.line); return; }
++                if (c.kind === "prompt" || /^>\s*$/.test(String(c.line.textContent || "").replace(/ /g, " ").trim())) { unhide(c.line); pending = []; return; }
++                if (c.kind === "event") {
++                    if (revealed) pending.forEach(unhide);
++                    unhide(c.line);
++                    try { c.line.setAttribute("data-pl-probe-event", "1"); } catch (eM) {}
++                    revealed = true;
++                }
++                pending = [];
++            });
++            try { StatTracker._lastProbeCut = cut.map(function (c) { return c.kind; }); } catch (eL) {}
++            if (revealed) { try { if (typeof ReadAloud !== "undefined" && ReadAloud.schedule) ReadAloud.schedule(); } catch (eR) {} }
++            return;
++        }
++        StatTracker._lastProbeCut = null;
+         lines.forEach(function (line) {
+             if (!line || !line.isConnected) return;
+             if (line.querySelector && line.querySelector(".Style_input")) return;   // the probe's echo
+@@ -4381,15 +4402,152 @@ var StatTracker = {
+             ? { verb: active.verb, fact: active.measuredFact || null }
+             : (StatTracker._carrySpanOwned ? { verb: StatTracker._carryVerb, fact: null } : null);
+         StatTracker._statProbeOwned = true;
++        // S1 stage 1: arm the action-routine boundary for an I6 probe verb.
++        StatTracker._probeBoundary = null;
++        try {
++            var spec = StatTracker._spanOrigin && StatTracker.i6ProbeActionSpec(StatTracker._spanOrigin.verb);
++            if (typeof ZvmCapture !== "undefined" && ZvmCapture.armProbeBoundary) ZvmCapture.armProbeBoundary(spec || null);
++        } catch (eA) {}
+         StatTracker.ensureProbeDomGuard();
+     },
+ 
+     endProbeOwnership: function () {
++        try {
++            StatTracker._probeBoundary = (typeof ZvmCapture !== "undefined" && ZvmCapture.takeProbeBoundary) ? ZvmCapture.takeProbeBoundary() : null;
++        } catch (eT) { StatTracker._probeBoundary = null; }
+         if (StatTracker._statProbeOwned) StatTracker.releaseProbeEvents();
++        StatTracker._probeBoundary = null;
+         StatTracker._spanOrigin = null;
+         StatTracker._statProbeOwned = false;
+     },
+ 
++    // S1 stage 1: the probe verb's action routine in a validated Inform 6
++    // story, from the story's own tables. Grammar version 2: the grammar
++    // table's word pointers start static memory; each verb's lines are an
++    // action word plus 3-byte tokens ended by ENDIT (15); the actions table
++    // follows the last line. The whole layout must parse exactly and every
++    // action-table entry must be a routine, or nothing is armed. Inform 7
++    // (ik1_count/ik1_link compiler properties) and non-Inform stories are not
++    // armed, so they keep the paragraph rule. Cached per story.
++    _i6ActionCache: null,
++    i6ProbeActionSpec: function (verb) {
++        var words = String(verb || "").toLowerCase().trim().split(/\s+/);
++        if (words.length !== 1 || !words[0]) return null;
++        var mem = (typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) ? ZRamProvider.getMem() : null;
++        if (!mem || typeof ZRamReader === "undefined") return null;
++        var backing = mem.buffer || mem;
++        var key = ZRamReader.gameIdentityKey ? ZRamReader.gameIdentityKey(mem) : null;
++        var c = StatTracker._i6ActionCache;
++        if (!c || c.backing !== backing || c.key !== key || key == null) {
++            c = StatTracker._i6ActionCache = { backing: backing, key: key, layout: StatTracker.decodeI6ActionLayout(mem), verbs: {} };
++        }
++        var L = c.layout;
++        if (!L) return null;
++        var w = words[0];
++        if (Object.prototype.hasOwnProperty.call(c.verbs, w)) return c.verbs[w];
++        var spec = null;
++        try {
++            var d = ZRamReader.parseDictionary(mem);
++            var addr = d && d.words ? (d.words[w] != null ? d.words[w] : (w.length > 9 ? d.words[w.slice(0, 9)] : null)) : null;
++            if (addr != null && d.entryLen >= 8 && (ZRamReader.u8(mem, addr + 6) & 0x01)) {
++                var vn = 255 - ZRamReader.u8(mem, addr + 7);
++                var lines = L.verbs[vn] || [];
++                // The bare verb: exactly one zero-token grammar line.
++                var bare = lines.filter(function (l) { return l.tokens === 0; });
++                if (bare.length === 1 && !bare[0].reverse) {
++                    var act = bare[0].action;
++                    if (act < L.actionCount && L.afterProps.length === 2 && L.objMax > 0) {
++                        spec = { routine: ZRamReader.u16(mem, L.actionBase + 2 * act), action: act, afterProps: L.afterProps, objMax: L.objMax };
++                    }
++                }
++            }
++        } catch (eV) { spec = null; }
++        c.verbs[w] = spec;
++        return spec;
++    },
++    decodeI6ActionLayout: function (mem) {
++        try {
++            var h = ZRamReader.header(mem);
++            if (!h || (h.version !== 5 && h.version !== 8)) return null;
++            if (!(ZRamReader.isInformCompiled && ZRamReader.isInformCompiled(mem))) return null;
++            // The story's own property names: Inform 7 is excluded, and the
++            // after phase (react_after, after) is located by these numbers.
++            // Without them the after phase is unprovable, so nothing is armed.
++            var pn = ZRamReader.informPropertyNames && ZRamReader.informPropertyNames(mem);
++            var names = pn && pn.names;
++            if (!names || names.ik1_count != null || names.ik1_link != null) return null;
++            if (!(names.after > 0) || !(names.react_after > 0) || names.after === names.react_after) return null;
++            var objMax = ZRamReader.objectCount ? ZRamReader.objectCount(mem, h) : 0;
++            if (!(objMax > 0)) return null;
++            var length = mem.byteLength || mem.length || 0, base = h.staticMem;
++            if (!(base >= 0x40 && base + 4 <= length)) return null;
++            var first = ZRamReader.u16(mem, base);
++            if (!(first > base && first < length) || ((first - base) & 1)) return null;
++            var n = (first - base) / 2;
++            if (n < 2 || n > 256) return null;
++            var verbs = [], maxAction = -1, pos = first;
++            for (var i = 0; i < n; i++) {
++                if (ZRamReader.u16(mem, base + 2 * i) !== pos) return null;
++                var count = ZRamReader.u8(mem, pos++), lines = [];
++                if (count > 64) return null;
++                for (var k = 0; k < count; k++) {
++                    var aw = ZRamReader.u16(mem, pos); pos += 2;
++                    var tokens = 0;
++                    while (ZRamReader.u8(mem, pos) !== 15) { pos += 3; if (++tokens > 32 || pos >= length) return null; }
++                    pos++;
++                    var action = aw & 0x3ff;
++                    lines.push({ action: action, reverse: !!(aw & 0x400), tokens: tokens });
++                    if (action > maxAction) maxAction = action;
++                }
++                verbs.push(lines);
++            }
++            if (maxAction < 0) return null;
++            var actionBase = pos, actionCount = maxAction + 1;
++            if (actionBase + actionCount * 2 > length) return null;
++            var mult = h.version === 8 ? 8 : 4;
++            for (var a = 0; a < actionCount; a++) {
++                var r = ZRamReader.u16(mem, actionBase + 2 * a);
++                if (!r || r * mult >= length || ZRamReader.u8(mem, r * mult) > 15) return null;
++            }
++            return { verbs: verbs, actionBase: actionBase, actionCount: actionCount, afterProps: [names.after, names.react_after], objMax: objMax };
++        } catch (e) { return null; }
++    },
++
++    // S1 stage 1: cut the span at the recorded action-routine entry and the
++    // start of its after phase (or its return when it has none). Text the
++    // action routine printed before its after phase is the reply (stays
++    // hidden). Text before its entry (react_before, life, orders), from its
++    // after phase (AfterRoutines: react_after, after, GamePostRoutine -- run
++    // INSIDE a stock InvSub) and after its return (daemons, timers) is a turn
++    // event (shown). Every span line must match the VM's own printed text in
++    // order and none may cross a boundary; otherwise null, and the caller
++    // keeps the paragraph rule.
++    probeBoundaryCut: function (lines, pb) {
++        if (!pb || pb.bad || pb.entry < 0 || pb.ret < pb.entry) return null;
++        var end = (pb.after >= pb.entry && pb.after <= pb.ret) ? pb.after : pb.ret;
++        var norm = function (s) { return String(s || "").replace(/ /g, " ").replace(/\s+/g, ""); };
++        var pre = norm(pb.text.slice(0, pb.entry)), reply = norm(pb.text.slice(pb.entry, end));
++        var all = pre + reply + norm(pb.text.slice(end));
++        var b1 = pre.length, b2 = b1 + reply.length, cur = 0, out = [];
++        for (var i = 0; i < lines.length; i++) {
++            var line = lines[i];
++            if (!line || !line.isConnected) continue;
++            if (line.querySelector && line.querySelector(".Style_input")) continue;   // the probe's echo
++            var t = norm(line.textContent);
++            var live = !!(line.querySelector && line.querySelector(".Input, .LineInput, .CharInput"));
++            if (!t) { out.push({ line: line, kind: "gap" }); continue; }
++            if (all.substr(cur, t.length) !== t) return null;
++            var s = cur, e = cur + t.length;
++            cur = e;
++            var kind = (s >= b1 && e <= b2) ? "reply" : (e <= b1 || s >= b2) ? "event" : null;
++            if (!kind) return null;
++            if (live) kind = "prompt";
++            out.push({ line: line, kind: kind });
++        }
++        if (cur < b2) return null;   // the whole reply must be on screen
++        return out;
++    },
++
+     Identify: function () {
+         StatTracker.requestStatusFulfillment(true);
+     },
+diff --git a/js/ZvmCapture.js b/js/ZvmCapture.js
+index 4b3c7e10..3c253dbb 100644
+--- a/js/ZvmCapture.js
++++ b/js/ZvmCapture.js
+@@ -145,11 +145,116 @@ var ZvmCapture = {
+                 return result;
+             };
+         });
++        // S1 stage 1 (I6): while StatTracker owns a hidden probe span it arms
++        // ZvmCapture._pb with the probe verb's action routine, its action
++        // number, and the story's `after`/`react_after` property numbers.
++        // call/ret/_print are reached by property lookup from the JIT, so
++        // these wrappers see every routine call and every printed string.
++        // They record screen (main window, not memory stream 3, not the
++        // status window) character offsets: where the action routine is
++        // entered -- as a direct callee of a call whose first argument is the
++        // action number (the library's action dispatcher) -- where its after
++        // phase starts (stock InvSub calls AfterRoutines, which runs
++        // obj.react_after / RunRoutines(obj, after) inside the routine), and
++        // where it returns. Disarmed, each wrapper is a single null test.
++        if (!ZvmCapture._origCall && typeof Proto.call === "function" && typeof Proto.ret === "function" && typeof Proto._print === "function") {
++            var origCall = ZvmCapture._origCall = Proto.call;
++            var origRet = ZvmCapture._origRet = Proto.ret;
++            var origPrint = ZvmCapture._origPrint = Proto._print;
++            Proto.call = function (t, i, e, s) {
++                var pb = ZvmCapture._pb;
++                if (pb && t !== 0 && !pb.bad && ZvmCapture._pbLive(pb)) { try { ZvmCapture._pbCall(pb, this, t, s); } catch (ePb) { pb.bad = "hook-exception"; } }
++                return origCall.apply(this, arguments);
++            };
++            Proto.ret = function (t) {
++                var pb = ZvmCapture._pb;
++                if (pb && !pb.bad && ZvmCapture._pbLive(pb)) { try { ZvmCapture._pbRet(pb, this); } catch (ePb) { pb.bad = "hook-exception"; } }
++                return origRet.apply(this, arguments);
++            };
++            Proto._print = function (t) {
++                var pb = ZvmCapture._pb;
++                if (pb && !pb.bad && ZvmCapture._pbLive(pb)) {
++                    try {
++                        var io = this.io;
++                        if (io && !(io.streams[3] && io.streams[3].length) && !io.currentwin && io.streams[1]) {
++                            pb.text += String(t);
++                            if (pb.text.length > ZvmCapture.PB_TEXT_CAP) { pb.bad = "text-cap"; pb.text = ""; pb.stack = []; }
++                        }
++                    } catch (ePb) { pb.bad = "hook-exception"; }
++                }
++                return origPrint.apply(this, arguments);
++            };
++        }
+         ZvmCapture.patched = true;
+         try { window.__PARCHLOCK_ZVM_CAPTURE__ = { patched: true }; } catch (e) {}
+         return true;
+     },
+ 
++    // S1 probe action boundary.
++    // spec = { routine: packed address, action: number, afterProps: [n...], objMax: n }.
++    PB_TEXT_CAP: 20000,
++    PB_STACK_CAP: 4096,
++    _pb: null,
++    armProbeBoundary: function (spec) {
++        ZvmCapture._pb = (spec && ZvmCapture._origCall) ? {
++            routine: spec.routine, action: spec.action,
++            afterProps: (spec.afterProps || []).slice(), objMax: spec.objMax || 0,
++            text: "", stack: [], entry: -1, after: -1, ret: -1, entryDepth: -1, bad: null
++        } : null;
++        return !!ZvmCapture._pb;
++    },
++    takeProbeBoundary: function () {
++        var pb = ZvmCapture._pb;
++        ZvmCapture._pb = null;
++        return pb;
++    },
++    // A probe that ends without endProbeOwnership must not keep recording:
++    // the boundary disarms itself once StatTracker no longer owns a span.
++    _pbLive: function (pb) {
++        try {
++            if (typeof StatTracker !== "undefined" && !StatTracker._statProbeOwned) {
++                if (ZvmCapture._pb === pb) ZvmCapture._pb = null;
++                return false;
++            }
++        } catch (eL) {}
++        return true;
++    },
++    _pbPrune: function (pb, vm) {
++        // A @throw unwinds frames without ret: drop calls that no longer exist.
++        var n = vm.frames.length;
++        while (pb.stack.length && pb.stack[pb.stack.length - 1].depth + 1 > n) pb.stack.pop();
++        if (pb.entry >= 0 && pb.ret < 0 && n < pb.entryDepth + 1) pb.bad = "unwound";
++    },
++    _pbCall: function (pb, vm, t, args) {
++        ZvmCapture._pbPrune(pb, vm);
++        var depth = vm.frames.length;
++        if (t === pb.routine) {
++            var parent = pb.stack.length ? pb.stack[pb.stack.length - 1] : null;
++            var direct = parent && parent.depth + 1 === depth && parent.arg0 === pb.action;
++            if (pb.entry < 0 && direct) { pb.entry = pb.text.length; pb.entryDepth = depth; }
++            else if (pb.entry < 0) pb.bad = pb.bad || "routine-without-dispatcher";
++            else if (pb.ret < 0) pb.bad = pb.bad || "reentered";
++        }
++        // After phase: inside the action routine, the first call made with
++        // (object, after|react_after). It starts at the entry of the action
++        // routine's direct callee that contains it (AfterRoutines), or at the
++        // call itself when the action routine makes it directly.
++        if (pb.entry >= 0 && pb.ret < 0 && pb.after < 0 && args && args.length >= 2
++            && pb.afterProps.indexOf(args[1]) >= 0 && args[0] >= 1 && args[0] <= pb.objMax && depth > pb.entryDepth) {
++            var outer = null;
++            for (var k = 0; k < pb.stack.length; k++) { if (pb.stack[k].depth === pb.entryDepth + 1) { outer = pb.stack[k]; break; } }
++            pb.after = outer ? outer.o : pb.text.length;
++        }
++        pb.stack.push({ depth: depth, arg0: args && args.length ? args[0] : null, o: pb.text.length });
++        if (pb.stack.length > ZvmCapture.PB_STACK_CAP) { pb.bad = "stack-overflow"; pb.stack = []; pb.text = ""; }
++    },
++    _pbRet: function (pb, vm) {
++        ZvmCapture._pbPrune(pb, vm);
++        var n = vm.frames.length;
++        if (pb.entry >= 0 && pb.ret < 0 && n === pb.entryDepth + 1) pb.ret = pb.text.length;
++        if (pb.stack.length && pb.stack[pb.stack.length - 1].depth + 1 === n) pb.stack.pop();
++    },
++
+     tick: () => {
+         if (!ZvmCapture.patched) {
+             ZvmCapture.patchTries++;
+diff --git a/harness/probe-action-boundary.js b/harness/probe-action-boundary.js
+new file mode 100644
+index 00000000..f64bfc45
+--- /dev/null
++++ b/harness/probe-action-boundary.js
+@@ -0,0 +1,135 @@
++// S1 stage 1 (PROPOSAL-r2, I6 only): the hidden status probe's reply is cut
++// at the probe verb's own action routine (entry/return), not by paragraph.
++//   node harness/probe-action-boundary.js
++// Seeded like work/investigations/regression-gate.cjs. Scenarios:
++//   A anchor, first Equipment open on turn 1: no "pockets" line leaks.
++//   B anchor, two WAITs then Equipment: the train-whistle daemon prints after
++//     InvSub returns and stays visible as a turn event; pockets stay hidden.
++//   C anchor, constructed react_before: a line printed by the VM inside the
++//     action dispatcher before InvSub is entered stays visible.
++//   E anchor, constructed after phase (stock InvSub ends with AfterRoutines):
++//     react_after output printed INSIDE the action routine stays visible.
++//   D MakeItGood (I6 library whose dispatcher passes no argument): no cut is
++//     armed, so today's paragraph rule is unchanged (fail-visible).
++const path = require('path'); const { pathToFileURL } = require('url');
++const { chromium } = require(process.cwd() + '/node_modules/playwright');
++let pass = 0, fail = 0;
++const ok = (c, m) => { if (c) { pass++; console.log('PASS ' + m); } else { fail++; console.log('FAIL ' + m); } };
++
++async function boot(b, game) {
++    const p = await b.newPage({ viewport: { width: 1280, height: 900 } });
++    await p.addInitScript(() => { let s = 12345; Math.random = () => { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x80000000; }; });
++    await p.addInitScript(() => { sessionStorage.setItem('PL_ParchLockSplashSeen', '1'); for (const k of ['PL_TutorialSeen', 'PL_MobileTutorialSeen', 'PL_LearnedWordsTutorialSeen']) localStorage.setItem(k, '1'); });
++    await p.goto(pathToFileURL(path.resolve('play.html')).href + '?story=games/' + game); await p.waitForTimeout(2000);
++    for (let i = 0; i < 25; i++) { await p.evaluate(() => { document.querySelector('.parchlock-splash__start')?.click(); try { Message.Hide(); } catch (e) {} }); if (await p.locator('.Input.LineInput').count()) break; const c = p.locator('.Input.CharInput'); if (await c.count()) await c.first().focus(); await p.keyboard.press('Space'); await p.waitForTimeout(150); }
++    await p.waitForTimeout(500);
++    // Record each released span's boundary and cut.
++    await p.evaluate(() => {
++        window.__cuts = [];
++        const orig = StatTracker.releaseProbeEvents;
++        StatTracker.releaseProbeEvents = function () {
++            const pb = StatTracker._probeBoundary, verb = (StatTracker._spanOrigin || {}).verb;
++            const r = orig.apply(this, arguments);
++            window.__cuts.push({ verb, entry: pb && pb.entry, after: pb && pb.after, ret: pb && pb.ret, bad: pb && pb.bad, armed: !!pb, cut: StatTracker._lastProbeCut });
++            return r;
++        };
++    });
++    return p;
++}
++async function type(p, cmd) {
++    await p.locator('.Input.LineInput').first().focus();
++    await p.keyboard.type(cmd); await p.keyboard.press('Enter'); await p.waitForTimeout(1200);
++}
++async function openEquipment(p) {
++    const before = await p.evaluate(() => document.querySelectorAll('#windowport .BufferWindow .BufferLine').length);
++    await p.evaluate(() => EquipmentUI.Show()); await p.waitForTimeout(400);
++    await p.evaluate(() => { const c = document.querySelector('#message #close'); if (c) c.click(); });
++    await p.waitForTimeout(4000);
++    await p.evaluate(() => { const c = document.querySelector('#message #close'); if (c) c.click(); });
++    await p.waitForTimeout(500);
++    return p.evaluate((before) => {
++        const lines = [...document.querySelectorAll('#windowport .BufferWindow .BufferLine')].slice(before);
++        const hidden = l => l.classList.contains('pl-stat-probe') || l.getAttribute('aria-hidden') === 'true';
++        return { lines: lines.map(l => ({ t: l.textContent.replace(/ /g, ' ').trim(), shown: !hidden(l), ev: l.getAttribute('data-pl-probe-event') })).filter(x => x.t), cuts: window.__cuts };
++    }, before);
++}
++const find = (r, re) => r.lines.find(l => re.test(l.t));
++const invCut = r => r.cuts.find(c => /^(?:i|inv|inventory)$/i.test(c.verb || ''));
++
++(async () => {
++    const b = await chromium.launch();
++    try {
++        // A
++        let p = await boot(b, 'anchor.z8.js');
++        let r = await openEquipment(p);
++        let pk = find(r, /pockets of your trenchcoat/i), c = invCut(r);
++        ok(c && c.armed && !c.bad && c.entry === 0 && c.ret > 0 && Array.isArray(c.cut), 'A anchor: inventory span cut at InvSub entry/return ' + JSON.stringify(c));
++        ok(pk && !pk.shown && !pk.ev, 'A anchor first open: pockets line stays hidden ' + JSON.stringify(pk));
++        ok(!r.lines.some(l => l.shown && /You are wearing your wedding ring/.test(l.t)), 'A anchor first open: first paragraph stays hidden');
++        await p.close();
++        // B
++        p = await boot(b, 'anchor.z8.js');
++        await type(p, 'wait'); await type(p, 'wait');
++        r = await openEquipment(p);
++        pk = find(r, /pockets of your trenchcoat/i); c = invCut(r);
++        const wh = find(r, /train whistle/i);
++        ok(c && Array.isArray(c.cut) && c.cut.includes('event'), 'B anchor: cut has an event after return ' + JSON.stringify(c));
++        ok(wh && wh.shown && wh.ev === '1', 'B anchor: daemon line after InvSub return is visible ' + JSON.stringify(wh));
++        ok(pk && !pk.shown, 'B anchor: pockets line hidden');
++        await p.close();
++        // C: constructed react_before -- printed through the VM inside the
++        // dispatcher call (first argument = the action number) before InvSub.
++        p = await boot(b, 'anchor.z8.js');
++        await p.evaluate(() => {
++            const P = Object.getPrototypeOf(window.__PARCHLOCK_ZVM__), oc = P.call; let done = false;
++            P.call = function (t, i, e, s) {
++                const pb = ZvmCapture._pb;
++                if (!done && pb && pb.entry < 0 && s && s[0] === pb.action) { done = true; this._print('A constructed rat watches you from the gutter.\n'); }
++                return oc.apply(this, arguments);
++            };
++        });
++        r = await openEquipment(p);
++        const rat = find(r, /constructed rat/); pk = find(r, /pockets of your trenchcoat/i); c = invCut(r);
++        ok(c && c.entry > 0 && Array.isArray(c.cut) && c.cut[0] === 'event', 'C anchor: pre-entry text recorded before InvSub ' + JSON.stringify(c));
++        ok(rat && rat.shown && rat.ev === '1', 'C anchor: reaction printed before action entry is visible ' + JSON.stringify(rat));
++        ok(pk && !pk.shown, 'C anchor: pockets line hidden');
++        await p.close();
++        // E: constructed after phase. Anchorhead's own InvSub has no
++        // AfterRoutines call, so just before InvSub returns this emulates a
++        // stock one: a direct callee (AfterRoutines) that calls
++        // (player, react_after) and prints. That line must stay visible and
++        // the reply before it must stay hidden.
++        p = await boot(b, 'anchor.z8.js');
++        await p.evaluate(() => {
++            const P = Object.getPrototypeOf(window.__PARCHLOCK_ZVM__), or = P.ret; let done = false;
++            P.ret = function () {
++                const pb = ZvmCapture._pb;
++                if (!done && pb && !pb.bad && pb.entry >= 0 && pb.ret < 0 && this.frames.length === pb.entryDepth + 1) {
++                    done = true;
++                    ZvmCapture._pbCall(pb, this, 0x7777, []);                       // AfterRoutines()
++                    ZvmCapture._pbCall(pb, this, 0x7778, [20, pb.afterProps[1]]);   // obj.react_after()
++                    this._print('The constructed parrot squawks after your inventory.\n');
++                    pb.stack.pop(); pb.stack.pop();
++                }
++                return or.apply(this, arguments);
++            };
++        });
++        r = await openEquipment(p);
++        const parrot = find(r, /constructed parrot/); pk = find(r, /pockets of your trenchcoat/i); c = invCut(r);
++        ok(c && c.after > c.entry && c.after < c.ret && Array.isArray(c.cut) && c.cut.includes('event'), 'E anchor: after phase recorded inside [entry, return] ' + JSON.stringify(c));
++        ok(parrot && parrot.shown && parrot.ev === '1', 'E anchor: react_after output inside the action routine is visible ' + JSON.stringify(parrot));
++        ok(pk && !pk.shown, 'E anchor: pockets line (before the after phase) hidden');
++        await p.close();
++        // D
++        p = await boot(b, 'MakeItGood.zblorb.js');
++        r = await openEquipment(p);
++        c = invCut(r);
++        const shoes = find(r, /wide-brimmed hat/);
++        ok(c && c.cut === null && c.bad === 'routine-without-dispatcher', 'D MakeItGood: no cut, paragraph rule kept ' + JSON.stringify(c));
++        ok(shoes && shoes.shown && shoes.ev === '1', 'D MakeItGood: behaviour unchanged (second paragraph released as before)');
++        await p.close();
++    } catch (e) { fail++; console.log('FAIL exception ' + e.message); }
++    await b.close();
++    console.log(pass + ' PASS / ' + fail + ' FAIL');
++    process.exit(fail ? 1 : 0);
++})();
