@@ -1,0 +1,24 @@
+# ROUND 2 (narrowed gate). Full census GLULX=1, 309 games: game step roomId base cand storyShortName heading
+kirby.z5.js	0	102	"John And Your's Room"	"Room 201"	""	""
+rameses.zblorb.js	0	26	""	"Dormitory Room"	""	"I wake up."
+sherbet.z5.js	0		"cushioned basket"	""	""	""
+spring.z8.js	0	72	"Aspen Grove"	"Campsite"	""	""
+theatre.z5.js	0	49	""	"Theatre Lobby"	""	"This room is a tribute to the now-faded glory of the theatre. The still-smiling "
+# 309 games, 5 roomName differences
+
+# rerun x2 per tree: 5 changed + watch list (MakeItGood dewdrops vespers selection WiR1 WiR2 anchor Treasures wump2ka)
+# 14 games, 0 roomName differences
+# 14 games, 0 roomName differences
+
+# ROUND 1 (broad gate, superseded)
+MakeItGood.zblorb.js	0	391	""	".Broken Top Boulevard"	".Broken Top Boulevard"	""
+MakeItGood.zblorb.js	1	391	"Broken Top Boulevard, Outside No. 15"	".Broken Top Boulevard"	".Broken Top Boulevard"	"The boulevard through the windscreen is lined with ash trees, thick trunks casti"
+MakeItGood.zblorb.js	2	424	"Front Porch"	"egraphicalcis pmfront porch"	"egraphicalcis pmfront porch"	"A tasteful little porch; white painted wood strapped onto red-brick building. Th"
+MakeItGood.zblorb.js	3	424	"Front Porch"	"egraphicalcis pmfront porch"	"egraphicalcis pmfront porch"	"A tasteful little porch; white painted wood strapped onto red-brick building. Th"
+Mullmurd.z5.js	0	339	"Outside the Museum"	"Mulldoon"	""	""
+dewdrops.z5.js	0	39	"Stage (A German Forest)"	"edt .Stage (A German Forest)"	"edt .Stage (A German Forest)"	"You are onstage, a wide expanse of blank floor facing onto darkness. Nestled beh"
+dewdrops.z5.js	1	39	"Stage (A Ge"	"edt .Stage (A German Forest)"	"edt .Stage (A German Forest)"	"You are onstage, a wide expanse of blank floor facing onto darkness. Nestled beh"
+sherbet.z5.js	0		"cushioned basket"	""	""	""
+theatre.z5.js	0	49	""	"Theatre Lobby"	""	"This room is a tribute to the now-faded glory of the theatre. The still-smiling "
+vespers.z8.js	1	325	"Your Bedroom"	"b z"	"b z"	"The room is small; the same as all the others. But it seems smaller of late. The"
+# 309 games, 10 roomName differences

@@ -225,6 +225,13 @@ var WorldModel = {
     // Health/Moves/Turns -- genre-wide conventions, not per-title), and
     // take the first surviving column. A single-column game's own title
     // never matches either discard pattern, so its behavior is unchanged.
+    // M14: a status-grid label that cannot be a room name (fewer than two
+    // letters in a row, or a bare direction word).
+    _validGridRoomLabel: (label) => {
+        var t = String(label || "").trim();
+        if (!/[A-Za-z]{2}/.test(t)) return false;
+        return !/^(n|s|e|w|ne|nw|se|sw|u|d|up|down|in|out|north|south|east|west|northeast|northwest|southeast|southwest)$/.test(t.toLowerCase());
+    },
     refineRoomDisplayName: (payload) => {
         if (!payload) return "";
         // Status text is presentation only. Without either an existing
@@ -271,6 +278,28 @@ var WorldModel = {
             if (payload.roomId != null && typeof StatusGridDecoder !== "undefined"
                 && StatusGridDecoder.fromDocument) {
                 var translated = StatusGridDecoder.fromDocument(document);
+                // M14: a room whose compiled name is internal/meta (Book and
+                // Volume's "(Hallway)") whose status grid is not a name row
+                // (that game draws an ASCII street map, giving "|" or "down")
+                // takes the story's own short_name instead. A valid grid label
+                // keeps winning: storyShortName misreads several I6 games
+                // (MakeItGood, dewdrops, vespers). With no valid story name the
+                // label stays blank rather than showing the grid fragment.
+                var internalName = false;
+                try {
+                    internalName = !!payload.roomName && typeof MapTopology !== "undefined"
+                        && !!MapTopology.isInternalRoomName && MapTopology.isInternalRoomName(payload.roomName);
+                } catch (eInt2) {}
+                if (internalName && translated.roomLabel && !WorldModel._validGridRoomLabel(translated.roomLabel)) {
+                    var storyFallback = "";
+                    try {
+                        if (typeof ZRamReader !== "undefined" && ZRamReader.storyShortName
+                            && typeof ZRamProvider !== "undefined" && ZRamProvider.getMem) {
+                            storyFallback = String(ZRamReader.storyShortName(ZRamProvider.getMem(), Number(payload.roomId)) || "").trim();
+                        }
+                    } catch (eStory2) {}
+                    return /[A-Za-z]{2}/.test(storyFallback) ? storyFallback : "";
+                }
                 if (translated.roomLabel) return translated.roomLabel;
             }
             if (typeof $ === "undefined") return payload.roomName || "";
