@@ -115,7 +115,7 @@ var ZRamReader = {
         if ([obj.parent, obj.child, obj.sibling].some(function (v) { return v < 0 || v > count; })) return false;
         var name = String(ZRamReader.shortName(mem, id) || "");
         if (name.charAt(0) !== "(") return false;
-        if (/^\((darkness|self|class|object|thedark|inform|library|librarymessages)\b/i.test(name)) return false;
+        if (/^\((darkness|self|class|object|thedark|inform|library\s*messages|library\s*extensions?)\b/i.test(name)) return false;
         if (obj.parent && /^class$/i.test(ZRamReader.shortName(mem, obj.parent))) return false;
         return true;
     },
