@@ -36,7 +36,7 @@ Latest published package: [Build 76 — November 4](https://github.com/Hymlock/P
 | M11 | Click-to-rewind: tap a visited room to UNDO back to it | Feature from the original spec is missing | Not started | No commits | OPEN_WORK Oct 22 Phase 5 (D32) | L |
 | M12 | Map beautify: cluster layout, crossings, floor tabs, docking, narrow-screen collapse | Big maps look tangled | Partly done | Visual sweeps accepted; Phase 6 mechanics remain | OPEN_WORK Oct 22 Phase 6 (D30) | L |
 | M13 | Book and Volume: entering the Library loses the room (payload guesses shelves/Home/pager) | Map and room name wrong in the Library | **Done** ebfe76dd | ZRamReader.js:118 isInternalNamedLocation rejects the real room "(Library)" by a  prefix match meant for Inform's "(Inform Library)"/"(LibraryMessages)"; then ZRamProvider.matchRoomFromText guesses from prose and can pick the carried pager. Reproduced via the stair move with consistent RAM (parent and real_location 64) | bookvol lead 11-05 | S |
-| M14 | Book and Volume: payload roomName shows ASCII street-map fragments ("|", "_\|/_", "up") | Room label junk, though roomId is correct | Not started | Status-grid decoder reads the game's ASCII map as a room label | bookvol lead 11-05 | S |
+| M14 | Book and Volume: payload roomName shows ASCII street-map fragments ("|", "_\|/_", "up") | Room label junk, though roomId is correct | Cause found, fix + census in progress (11-05) | WorldModel.refineRoomDisplayName asks the story short_name (D219) only for blank names; bookvol "(Hallway)"-style names are internal, so the status-grid ASCII map wins. Fix: also ask short_name for internal compiled names; census over all titles so every changed name equals the printed heading | bookvol lead 11-05 | S |
 
 ## Inform phase
 
