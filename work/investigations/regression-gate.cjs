@@ -27,6 +27,8 @@ const games = fs.readdirSync('games').filter(f => f.endsWith('.js') && (process.
     // SHARD=i/N (bottleneck fix 2026-10-17): this process runs every N-th game starting at i; run N shards in parallel and
     // concatenate their OUT files. The --diff mode is unchanged (keyed by game).
     .filter((f, idx) => { const m = /^(\d+)\/(\d+)$/.exec(process.env.SHARD || ''); return !m || idx % +m[2] === +m[1]; });
+// I4 (2026-11-06): per-title opening input (menus/char prompts) from gate-startup.json, applied before the first LOOK.
+const STARTUP = JSON.parse(fs.readFileSync(path.join(__dirname, 'gate-startup.json'), 'utf8'));
 const out = fs.createWriteStream(process.env.OUT || 'gate.jsonl');
 (async () => {
     const b = await chromium.launch();
@@ -42,6 +44,9 @@ const out = fs.createWriteStream(process.env.OUT || 'gate.jsonl');
             const settle = async () => { for (let i = 0; i < 25; i++) { await p.evaluate(() => { document.querySelector('.parchlock-splash__start')?.click(); try { Message.Hide(); } catch (e) {} }); if (await p.locator('.Input.LineInput').count()) return true; const c = p.locator('.Input.CharInput'); if (await c.count()) await c.first().focus(); await p.keyboard.press('Space'); await p.waitForTimeout(120); } return false; };
             const cmd = async c => { await p.evaluate(c => { Input.Clear(); Input.Inject(c, true); }, c); await p.waitForTimeout(1300); await settle(); };
             const inv = () => p.evaluate(() => { try { const all = EquipmentUI.model().items, S = Actionable.Scope, dt = S.lastLookText + "\n" + S.lastInventoryText + "\n" + (S.lastReplyText || ""); return all.map(o => { let s = Actionable.displayNameFor(o, all, dt); if (typeof LearnedWords !== "undefined") s = LearnedWords.label("name", o.id, s); return o.id + ':' + s; }); } catch (e) { return 'ERR'; } });
+            for (const st of (STARTUP[g] || [])) { await p.waitForTimeout(500); await p.evaluate(() => { document.querySelector('.parchlock-splash__start')?.click(); try { Message.Hide(); } catch (e) {} });
+                if (st.char) { const c = p.locator('.Input.CharInput'); if (await c.count()) await c.first().focus(); await p.keyboard.press(st.char); } else if (st.line) await p.evaluate(c => { Input.Clear(); Input.Inject(c, true); }, st.line);
+                await p.waitForTimeout(1300); }
             if (await settle()) {
                 await cmd('look');
                 Object.assign(row, await p.evaluate(() => ({ exits: ((WorldModel.lastPayload || {}).exits || []).map(e => e.label + '>' + e.targetRoomId).sort(), marks: [...document.querySelectorAll('.pl-act')].slice(-25).map(e => e.textContent.trim()) })));
