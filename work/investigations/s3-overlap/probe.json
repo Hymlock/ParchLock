@@ -1,0 +1,158 @@
+{
+ "360": {
+  "lines": [
+   {
+    "t": " Outside the Real Estaday onece                  ",
+    "len": 49,
+    "w": 288,
+    "sw": 288
+   }
+  ],
+  "spans": [
+   {
+    "t": " Outside the Real Estaday onece                  ",
+    "x": 36,
+    "w": 282,
+    "fs": "9.6px",
+    "ff": "\"Roboto Mono\", \"Source Code Pro\", Monaco, Courier, monospace"
+   }
+  ],
+  "grid": {
+   "l": 26,
+   "t": 8,
+   "w": 308,
+   "h": 26,
+   "ff": "\"Roboto Mono\", \"Source Code Pro\", Monaco, Courier, monospace",
+   "fs": "9.6px",
+   "ls": "normal"
+  },
+  "gridLineFS": "9.6px",
+  "testPane": null,
+  "stats": {
+   "t": "\n\t\t\t\tStatus\n\t\t\t\tNo stats in this story's status bar yet. Ask it directly — costs one turn.\n\t\t\t\tIdentify stats\n\t\t\t",
+   "l": 0,
+   "t2": 0,
+   "w": 0,
+   "h": 0,
+   "vis": "block"
+  },
+  "metrics": null
+ },
+ "396": {
+  "lines": [
+   {
+    "t": " Outside the Real Estaday onece                  ",
+    "len": 49,
+    "w": 324,
+    "sw": 324
+   }
+  ],
+  "spans": [
+   {
+    "t": " Outside the Real Estaday onece                  ",
+    "x": 36,
+    "w": 318,
+    "fs": "10.8px",
+    "ff": "\"Roboto Mono\", \"Source Code Pro\", Monaco, Courier, monospace"
+   }
+  ],
+  "grid": {
+   "l": 26,
+   "t": 8,
+   "w": 344,
+   "h": 28,
+   "ff": "\"Roboto Mono\", \"Source Code Pro\", Monaco, Courier, monospace",
+   "fs": "10.8px",
+   "ls": "normal"
+  },
+  "gridLineFS": "10.8px",
+  "testPane": null,
+  "stats": {
+   "t": "\n\t\t\t\tStatus\n\t\t\t\tNo stats in this story's status bar yet. Ask it directly — costs one turn.\n\t\t\t\tIdentify stats\n\t\t\t",
+   "l": 0,
+   "t2": 0,
+   "w": 0,
+   "h": 0,
+   "vis": "block"
+  },
+  "metrics": null
+ },
+ "412": {
+  "lines": [
+   {
+    "t": " Outside the Real Estaday onece                  ",
+    "len": 49,
+    "w": 340,
+    "sw": 340
+   }
+  ],
+  "spans": [
+   {
+    "t": " Outside the Real Estaday onece                  ",
+    "x": 36,
+    "w": 333,
+    "fs": "11.3333px",
+    "ff": "\"Roboto Mono\", \"Source Code Pro\", Monaco, Courier, monospace"
+   }
+  ],
+  "grid": {
+   "l": 26,
+   "t": 8,
+   "w": 360,
+   "h": 28,
+   "ff": "\"Roboto Mono\", \"Source Code Pro\", Monaco, Courier, monospace",
+   "fs": "11.3333px",
+   "ls": "normal"
+  },
+  "gridLineFS": "11.3333px",
+  "testPane": null,
+  "stats": {
+   "t": "\n\t\t\t\tStatus\n\t\t\t\tNo stats in this story's status bar yet. Ask it directly — costs one turn.\n\t\t\t\tIdentify stats\n\t\t\t",
+   "l": 0,
+   "t2": 0,
+   "w": 0,
+   "h": 0,
+   "vis": "block"
+  },
+  "metrics": null
+ },
+ "1280": {
+  "lines": [
+   {
+    "t": " Outside the Real Estate Office                                       ",
+    "len": 70,
+    "w": 609.59375,
+    "sw": 610
+   }
+  ],
+  "spans": [
+   {
+    "t": " Outside the Real Estate Office                                       ",
+    "x": 28,
+    "w": 588,
+    "fs": "14px",
+    "ff": "\"Source Code Pro\", Monaco, Courier, monospace"
+   }
+  ],
+  "grid": {
+   "l": 28,
+   "t": 28,
+   "w": 609.59375,
+   "h": 28,
+   "ff": "\"Source Code Pro\", Monaco, Courier, monospace",
+   "fs": "14px",
+   "ls": "normal"
+  },
+  "gridLineFS": "14px",
+  "testPane": null,
+  "stats": {
+   "t": "\n\t\t\t\tStatus\n\t\t\t\tDay1\n\t\t\t\tIdentify stats\n\t\t\t",
+   "l": 0,
+   "t2": 0,
+   "w": 0,
+   "h": 0,
+   "vis": "block"
+  },
+  "metrics": null
+ }
+}
