@@ -627,8 +627,18 @@ assert(pm3.globals.score == null && !pm3.stats.score,
     quantities = { 98: 8, 100: 9 };
     S.pinCarryProp(m, {}, "weight", 9);
     assert(m.carry.weight.prop === 100, "D186: changed evidence uniquely resolves the carried property");
+    // S8: since 2044b658 StatTracker persists through LearningStores behind a module identity; stub both here.
+    const lsStore = {};
+    global.ZRamProvider = { getMem: () => ({}) };
+    global.LearningStores = {
+        identity: () => ({ identityKey: "d186-carry" }),
+        readOwned: (kind, id) => ({ value: lsStore[kind + ":" + id.identityKey] || null }),
+        persist: (kind, id, json) => { lsStore[kind + ":" + id.identityKey] = json; }
+    };
+    S._lastSaved = null;
     S.save("d186-carry", m);
     const loaded = S.load("d186-carry");
+    delete global.ZRamProvider; delete global.LearningStores;
     assert(loaded.carry && loaded.carry.weight.prop === 100, "D186: a learned carry pin survives reload");
     const repeated = S.blank();
     S.pinCarryProp(repeated, {}, "weight", 9);
