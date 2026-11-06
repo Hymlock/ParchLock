@@ -9958,3 +9958,27 @@ Actual Codex design/current-source ACCEPT, exact hash844a06230249325896bb38ac92d
 **Why.** Remote description sets TOUCHBIT on rooms the player has not entered: Starcross LOOK IN airlock (Red Hall 20, Blue Dock 94) and Zork II LOOK IN WINDOW / BLUE SPHERE (103, 142). The payload room stays at the origin (codex sealed native evidence in oct30-recovery/*-remote-sealed-*.md).
 **Guard.** harness/m9-visited-physical-only.js (8/0). It fails if a second WorldVisited writer appears or a visited attribute reaches map code; the negative control fails 2 checks.
 Supersedes the M9 "still open" note in D262.
+
+## D268 Door destination look-ahead hint (M7)
+
+**Status:** LANDED 5924ad83. A door exit whose door object has a static 2-byte door_to (an object within the property-table frontier, not the current room/door, passing the map-room test) gets a display-only doorTo/doorToName. The map chip shows "-> Room?". It never links, routes or marks anything visited (D155/D267 kept). Routine door_to is never executed. Alias-layout stories (door_to == n_to: Vacation, Temple) are excluded by the door-attribute gate. 126 doors in 13 titles. Harness m7-door-to-hint.
+
+## D269 Seated tapped moves send the game's get-out first (M6)
+
+**Status:** LANDED 7024d737. When the measured player parent is an object directly in the room, a tapped compass move (map chip, compass button, directional radial, Go slice, Ctrl+Shift arrows, Navigator route) first submits the game's own get-out form (ZIL D236 "get out of X"; Inform exit/get out if in the dictionary), then the move. The move is never dropped; a refused parent is remembered; one pending tap; typing, a route start or a room change cancels it. Typed commands are untouched. Structural, no refusal-prose learning. Harness m6-seated-move.
+
+## D270 Hidden status probe hides only the action routine's own reply (S1 stages 1, 1b)
+
+**Status:** LANDED 49922cea, ca70c357. Supersedes D207's first-paragraph rule for armed I6 spans. ZvmCapture records the probe action routine's entry/return screen offsets and the after-phase start (AfterRoutines: first call with an in-range object and the story's after/react_after property). The reply is [entry, after phase or return); everything else is shown as an event. The dispatcher is identified by arg0 == action (stage 1) or by the byte-exact no-argument ActionPrimitive shapes A/B with the action global (stage 1b); nested InvTallSub re-dispatch is rebased. Any fault means today's rule. Fixes Anchorhead, MakeItGood, Advent; 47 of 55 layout titles armable. Open: 8 inline-dispatch libraries, I7 and ZIL (stage 2). Harness probe-action-boundary.
+
+## D271 Real rooms with compiled "(...)" names (M13, M14)
+
+**Status:** LANDED ebfe76dd, 72c83847. (1) isInternalNamedLocation rejects only real internal objects (library messages/extensions, Inform Library/Parser, self/darkness/class); bookvol "(Library)" is a room. (2) An internal-named room whose status-grid label is invalid (<2 consecutive letters or a bare direction word) takes the story short_name if valid, else blank (D24); a valid grid label still wins. Harnesses m13-internal-room-name, m14-room-display-name.
+
+## D272 Status clock and optional hidden game status line (S4)
+
+**Status:** LANDED 0681bdcb. Closes D149's two open bullets. The StatusGridDecoder clock accepts 3-letter weekdays and a.m./p.m.; a metric segment leaves roomCandidates. Global.Prefs.HideStatusLine (default off, always shown) hides the live one-line #windowport GridWindow with visibility:hidden, never display:none and never the test pane, and only while the strip shows metrics plus a readable room label. The buffer reclaims the line; GlkOte sizes to the VM are unchanged. ZRamProvider fallbacks read textContent but skip hidden carry-probe rows. Harnesses s4-status-clock, s4-hide-status.
+
+## D273 Player globals for remaining empty-map titles (M4, M5); score reply (S6)
+
+**Status:** LANDED 056021d3. playerGlobal facts: guess 20 (player 37 in Verb Guessing Booth) and yagwad 21 (player 30 Me in Treasure Cave), following D216/D220. Make It Good's SCORE reply is recognised as no-score; every unavailable status ending records a reason and hover text.

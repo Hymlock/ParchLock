@@ -3,8 +3,8 @@
 One line per decision in PRODUCTION_PLAN.md, newest first. **Search here before
 measuring anything.**
 
-This exists because the plan itself is not greppable: 151 decisions across
-9961 lines, with single lines over 20,000 characters, so one grep match
+This exists because the plan itself is not greppable: 157 decisions across
+9985 lines, with single lines over 20,000 characters, so one grep match
 returns more text than anyone can read. Searching the full plan directly is how
 prior answers get missed and re-derived.
 
@@ -27,6 +27,12 @@ Regenerate after adding decisions or chapters: `node tools/decision-index.js`
 
 | D | claim | files | games | arch |
 |---|-------|-------|-------|------|
+| D273 | Player globals for remaining empty-map titles (M4, M5); score reply (S6) |  |  |  |
+| D272 | Status clock and optional hidden game status line (S4) |  |  |  |
+| D271 | Real rooms with compiled "(...)" names (M13, M14) |  |  |  |
+| D270 | Hidden status probe hides only the action routine's own reply (S1 stages 1, 1b) |  | Anchorhead |  |
+| D269 | Seated tapped moves send the game's get-out first (M6) |  | Anchorhead |  |
+| D268 | Door destination look-ahead hint (M7) |  | Anchorhead |  |
 | D267 | Map visited comes only from the player's physical location (M9) | harness/m9-visited-physical-only.js |  |  |
 | D266 | Compact ZIL grammar FIND capability (source accepted; final gate pending) | harness/m9-visited-physical-only.js |  | §93 |
 | D265 | Exact owner-local removal references (source accepted; final gate pending) |  |  | §93 |
