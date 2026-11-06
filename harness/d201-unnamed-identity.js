@@ -216,7 +216,7 @@ async function submit(page, command) {
         check(takeCase.radialCommands.some(command => /^take\s+/i.test(command)
             && command.toLowerCase() === "take " + takeCase.noun.toLowerCase()),
             "LLR generated object radial includes declaration-proven TAKE", JSON.stringify(takeCase));
-        check(takeCase.item && takeCase.item.labelProvenance === "parser-vocabulary"
+        check(takeCase.item && ["parser-vocabulary", "story-short-name"].includes(takeCase.item.labelProvenance) /* S9: 8ea2f663 story short_name wins when its words are the object's own */
             && takeCase.noun.split(/\s+/).every(word => takeCase.item.aliases.some(alias => String(alias).toLowerCase() === word.toLowerCase())),
             "taken LLR object enters inventory with its real ID, aliases and parser label", JSON.stringify(takeCase));
         check(takeCase.dropped, "dropping the generated LLR object removes it from inventory");

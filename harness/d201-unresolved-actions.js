@@ -71,14 +71,14 @@ const payload = { playerId: 55, roomId: 54, unnamedCandidates: candidates };
 check(A.promoteUnnamed(payload, "of the").length === 0,
     "particles alone cannot promote any unnamed candidate");
 let recovered = A.promoteUnnamed(payload, "view of the GLADIUS SWORD");
-check(recovered.find(o => o.id === 41).name === "gladius sword",
+check(recovered.find(o => o.id === 41).name.toLowerCase() === "gladius sword", /* S9: eb35f195 keeps printed case */
     "real printed sword vocabulary still recovers its full label");
 check(recovered.find(o => o.id === 42).name === "view",
     "particle-ended view of the cannot become a recovered label");
 check(recovered.every(o => !/^(?:a|an|the|of|and|or|to)$/.test(o.name)),
     "every promoted object has a non-particle trigger");
 check(A.observedPhraseFor({ id: 43, name: "the Order", aliases: ["the", "order"] },
-    [{ id: 43, aliases: ["the", "order"] }], "the Order", false) === "the order",
+    [{ id: 43, aliases: ["the", "order"] }], "the Order", false) === "the Order", /* S9: eb35f195 keeps printed case */
     "named structural proper names retain their article");
 check(A.promoteUnnamed({ unnamedCandidates: [{ id: 44, aliases: ["food", "pellets"] }] },
     "two food pellets")[0].name === "food pellets",
