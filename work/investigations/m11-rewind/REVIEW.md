@@ -25,3 +25,14 @@ B5. **Drop "Undo rewind".** A pre-rewind ZVM-shaped snapshot is only feasible on
 4. If commands are kept, define the probe and TurnRecorder ownership for the batch.
 5. Remove the one-level redo.
 6. Keep the Notes path one step when Rewind is unavailable, and update d112-notes-panel.js.
+
+## Re-review of R2: **REVISE** (one blocking issue; everything else accepted)
+
+Accepted: ZVM-only scope, `undo.length` as the depth source (it is a plain array that shift/pop keep current), dropping undo-rewind, the partial-failure report, map truncation and the target-room check, and the one-step Notes path.
+
+**Blocking issue R2-B1: `restore_undo` cannot be called directly between turns.** Evidence from lib/zvm.js:
+- `restore_undo` is an opcode handler. The compiled op 1010 is `if(e.restore_undo())return`. The function pops an entry, sets `this.pc` to the address after the game's `@save_undo`, and stores 2 into `t.var` (`this.variable(t.var,2)`). It needs no branch, but it relies on the JIT loop to return and then `run()` from the new pc.
+- Between turns, the VM is parked in `read` with `this.read_data` = {bufaddr, parseaddr, storer} and an outstanding Glk line request. A direct call only swaps the RAM and the pc. Nothing calls `run()`, so no output appears and LOOK cannot be submitted as a new command. The next line event goes to `handle_line_input`. That writes the text into the stale `read_data.bufaddr`, stores into the stale `storer`, and resumes at the restored pc, which is mid-Keyboard just after save_undo. The game then issues its own new @read while the old line request is still live. The result is corrupted input and a possible Glk double-request.
+- Calling it N times compounds this. Each call overwrites the pc and RAM, which is harmless, but the stale read context is still the problem.
+
+**Required fix (simple, and it uses existing paths):** discard the N-1 newest entries from `vm.undo` (pop them and subtract their sizes from `undo_len`, exactly as restore_undo does). Then submit one ordinary typed `undo`. The game's own @restore_undo then runs inside a real opcode context, the ZvmCapture.js:114 wrapper fires once, UndoRestoreSync resyncs, and the game prints its own undo message. The I6 "twice in a row" refusal cannot trigger, because only one UNDO is sent. That single command is a normal player-visible system command, so S1 and TurnRecorder need nothing new. The game's own output replaces the extra LOOK, or LOOK can follow as a second command. Failure handling: if `undo.length` did not drop by one after the command (the game refused UNDO, or UNDO is disabled), report it, and accept that the discarded entries are lost. Since that is irreversible, only offer Rewind once a first typed UNDO in this game has worked (a learned "undo works" flag), or check the game's own UNDO response first.

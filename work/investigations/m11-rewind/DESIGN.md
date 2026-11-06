@@ -98,3 +98,10 @@ one-level redo.
 - **Map:** truncate the visit log at the depth actually reached; the visited set and discoveries stay physical (D267, D263); verify the arrived room equals the target and report a mismatch (wump2ka).
 - **Long-press:** when Rewind is not offered, long-press opens Notes in one step, exactly as today (D112). When it is offered, show a two-item menu (Notes / Rewind to here). Update harness/d112-notes-panel.js for the menu path.
 - **Fixture:** a ZVM Inform game; walk 3 rooms; rewind to room 1; assert restore_undo was called N times, the payload room equals room 1, and the map highlight is on room 1. Plus operator-regressions and the three-type gate.
+
+## R3 (claude): adopts the re-review fix (restore_undo cannot be called between turns)
+**Mechanism:**
+1. Drop the N-1 newest entries from `vm.undo` and subtract their sizes from `undo_len`, exactly as restore_undo does.
+2. Submit ONE ordinary `undo` command through the normal path. The game's own opcode runs in its real context; ZvmCapture.js:114 and UndoRestoreSync fire once; S1/TurnRecorder see a normal player command.
+3. Verify `undo.length` decreased and the payload room equals the target; otherwise report failure honestly ("Rewind failed; N-1 undo steps were discarded").
+**Gate:** offer Rewind only once a native UNDO has been observed to succeed in this game this session (undo.length decreased after an UNDO). The confirmation names the turn count and warns that progress is lost. Everything else is as in R2.
